@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">Da</string>
   <string name="no">Ne</string>
   <string name="delete">Izbriši</string>
@@ -129,7 +129,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Ste prepričani, da res želite zapustiti to skupino?</string>
   <string name="ConversationActivity_transport_insecure_sms">Nezavarovan SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Nezavarovan MMS</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">Začni uporabljati aplikacijo Delta Chat %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Uporabljajva tole za pogovore: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Napaka ob zapuščanju skupine</string>
@@ -349,7 +349,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Pošiljanje ni uspelo</string>
   <string name="MessageDetailsRecipient_new_safety_number">Novo varnostno število</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">Povezava v ozadju je omogočena</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Napaka pri branju nastavitev MMS brezžičnega ponudnika</string>
@@ -611,7 +611,7 @@ Prejeto sporočilo za izmenjavo ključev za napačno različico protokola.</stri
   <string name="SearchToolbar_search">Poišči</string>
   <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Iskanje po pogovorih, stikih in sporočilih</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Novo sporočilo</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Naprava ni več registrirana</string>

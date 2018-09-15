@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Delta Chat</string>
+    <string name="app_name">Delta Chat dev</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="delete">Delete</string>
@@ -141,7 +141,7 @@
     <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Are you sure you want to leave this group?</string>
     <string name="ConversationActivity_transport_insecure_sms">Insecure SMS</string>
     <string name="ConversationActivity_transport_insecure_mms">Insecure MMS</string>
-    <string name="ConversationActivity_transport_signal">Delta Chat</string>
+    <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
     <string name="ConversationActivity_lets_switch_to_signal">Let\'s switch to Delta Chat %1$s</string>
     <string name="ConversationActivity_lets_use_this_to_chat">Let\'s use this to chat: %1$s</string>
     <string name="ConversationActivity_error_leaving_group">Error leaving group</string>
@@ -367,7 +367,7 @@
     <string name="MessageDetailsRecipient_new_safety_number">New safety number</string>
 
     <!-- MessageRetrievalService -->
-    <string name="MessageRetrievalService_signal">Delta Chat</string>
+    <string name="MessageRetrievalService_signal">Delta Chat dev</string>
     <string name="MessageRetrievalService_background_connection_enabled">Background connection enabled</string>
 
     <!-- MmsDownloader -->
@@ -675,7 +675,7 @@
     <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Search for conversations, contacts, and messages</string>
 
     <!-- SingleRecipientNotificationBuilder -->
-    <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+    <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
     <string name="SingleRecipientNotificationBuilder_new_message">New message</string>
 
     <!-- UnauthorizedReminder -->
@@ -1369,7 +1369,7 @@
     <string name="RegistrationLockDialog_reminder">Reminder:</string>
     <string name="recipient_preferences__about">About</string>
 
-    <string name="WelcomeActivity_intro1_headline">Delta Chat</string>
+    <string name="WelcomeActivity_intro1_headline">Delta Chat dev</string>
     <string name="WelcomeActivity_intro1_message">The messenger with the <b>broadest audience</b> in the world. <b>Free</b> and <b>independent</b>.</string>
     <string name="WelcomeActivity_intro2_headline">Independent</string>
     <string name="WelcomeActivity_intro2_message"><b>There is no Delta Chat server.</b> The app only uses your mail server.</string>
@@ -1378,11 +1378,11 @@
     <string name="WelcomeActivity_intro4_headline">Powerful</string>
     <string name="WelcomeActivity_intro4_message"><b>Unlimited</b> chats, images, videos, audio messages and more. Multi-client capable.</string>
     <string name="WelcomeActivity_intro5_headline">Free</string>
-    <string name="WelcomeActivity_intro5_message"><b>Delta Chat</b> is free forever.<br/>Open-source. No ads. No subscription. No vendor lock-in.</string>
+    <string name="WelcomeActivity_intro5_message"><b>Delta Chat dev</b> is free forever.<br/>Open-source. No ads. No subscription. No vendor lock-in.</string>
     <string name="WelcomeActivity_intro6_headline">Encrypted</string>
     <string name="WelcomeActivity_intro6_message"><b>Encrypted</b> with all common algorithms. Messages stay on your servers.</string>
     <string name="WelcomeActivity_intro7_headline">Trustworthy</string>
-    <string name="WelcomeActivity_intro7_message"><b>Delta Chat</b> is safe for business use, compatible and standards-based.</string>
+    <string name="WelcomeActivity_intro7_message"><b>Delta Chat dev</b> is safe for business use, compatible and standards-based.</string>
 
     <string name="RegistrationActivity_header">Login to Delta Chat</string>
     <string name="RegistrationActivity_subheader">For known email providers additional settings are setup automatically. Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help.</string>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">Ja</string>
   <string name="no">Nei</string>
   <string name="delete">Slett</string>
@@ -123,7 +123,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Er du sikker på at du vil forlata gruppa?</string>
   <string name="ConversationActivity_transport_insecure_sms">Usikker SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Usikker MMS</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">La oss byte til Delta Chat %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">La oss bruka dette til å prata: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Klarte ikkje forlata gruppa</string>
@@ -317,7 +317,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Sending mislukkast</string>
   <string name="MessageDetailsRecipient_new_safety_number">Nytt tryggleiksnummer</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">Bakgrunnstilkopling på</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Klarte ikkje lesa MMS-oppsettet til teleselskapet</string>
@@ -577,7 +577,7 @@ Mottok nøkkelutvekslingsmelding for ugyldig protokollversjon.</string>
   <string name="SearchToolbar_search">Søk</string>
   <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Søk etter samtalar, kontaktar og meldingar</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Ny melding</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Eininga er ikkje lenger registrert</string>

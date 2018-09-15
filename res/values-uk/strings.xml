@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">Так</string>
   <string name="no">Ні</string>
   <string name="delete">Видалити</string>
@@ -127,7 +127,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Ви дійсно хочете покинути цю групу?</string>
   <string name="ConversationActivity_transport_insecure_sms">Незахищене SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Незахищене MMS</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">Давай перейдемо у Delta Chat %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Давай використовувати це для чату: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Помилка при виході з групи</string>
@@ -345,7 +345,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Не вдалося надіслати</string>
   <string name="MessageDetailsRecipient_new_safety_number">Новий номер безпеки</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">Фонове підключення активоване</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Помилка читання налаштувань MMS провайдера</string>
@@ -608,7 +608,7 @@
   <!--SearchToolbar-->
   <string name="SearchToolbar_search">Пошук</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Нове повідомлення</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Цей пристрій більше не зареєстровано</string>

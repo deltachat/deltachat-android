@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">Sim</string>
   <string name="no">Não</string>
   <string name="delete">Excluir</string>
@@ -110,7 +110,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Tem certeza que deseja sair deste grupo?</string>
   <string name="ConversationActivity_transport_insecure_sms">SMS inseguro</string>
   <string name="ConversationActivity_transport_insecure_mms">MMS inseguro</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">Vamos mudar para o Delta Chat %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Vamos usar isto para conversar: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Erro ao sair do grupo</string>
@@ -300,7 +300,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Falha no envio</string>
   <string name="MessageDetailsRecipient_new_safety_number">Novo número de segurança</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">Conexão em segundo plano habilitada</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Erro ao ler configuracoes de MMS do provedor sem fio </string>
@@ -549,7 +549,7 @@
   <!--SearchToolbar-->
   <string name="SearchToolbar_search">Procurar</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Nova mensagem</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Aparelho não mais registrado</string>

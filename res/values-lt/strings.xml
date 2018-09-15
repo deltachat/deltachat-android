@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">Taip</string>
   <string name="no">Ne</string>
   <string name="delete">Ištrinti</string>
@@ -129,7 +129,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Ar tikrai norite išeiti iš šios grupės?</string>
   <string name="ConversationActivity_transport_insecure_sms">Nesaugi SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Nesaugi MMS</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">Persijunkime į Delta Chat %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Naudokime pokalbiui štai ką: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Klaida, išeinant iš grupės</string>
@@ -349,7 +349,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Nepavyko išsiųsti</string>
   <string name="MessageDetailsRecipient_new_safety_number">Naujas saugumo numeris</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">Foninis ryšys įjungtas</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Klaida, skaitant belaidžio tiekėjo MMS nustatymus</string>
@@ -620,7 +620,7 @@
   <string name="SearchToolbar_search">Ieškoti</string>
   <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Ieškoti pokalbių, kontaktų ir žinučių</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Nauja žinutė</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Įrenginys daugiau nebėra registruotas</string>

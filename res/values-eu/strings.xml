@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">Bai</string>
   <string name="no">Ez</string>
   <string name="delete">Ezabatu</string>
@@ -123,7 +123,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Ziur zaude talde hau utzi nahi izateaz?</string>
   <string name="ConversationActivity_transport_insecure_sms">SMS ez segurua</string>
   <string name="ConversationActivity_transport_insecure_mms">MMS ez segurua</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">Signalera aldatu dezagun %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Erabili dezagun hau txatarako: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Taldetik irteterakoan huts egin du</string>
@@ -318,7 +318,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Bidalketak huts egin du</string>
   <string name="MessageDetailsRecipient_new_safety_number">Segurtasun zenbaki berria</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">Atzeko planoko konexioa gaituta</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Errorea hari gabeko hornitzailearen MMS ezarpenak irakurtzerakoan</string>
@@ -582,7 +582,7 @@ Gakoaren elkar-trukeraro mezua jaso da protokoloaren bertsio baliogabe baterako.
   <string name="SearchToolbar_search">Bilatu</string>
   <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Bilatu solasaldiak, kontaktuak eta mezuak</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Mezu berria</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Gailua ez dago erregistratuta</string>

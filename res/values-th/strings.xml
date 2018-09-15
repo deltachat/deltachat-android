@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">ใช่</string>
   <string name="no">ไม่</string>
   <string name="delete">ลบ</string>
@@ -120,7 +120,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">คุณแน่ใจไหมว่าต้องการออกจากกลุ่มนี้?</string>
   <string name="ConversationActivity_transport_insecure_sms">เอสเอ็มเอสที่ไม่ปลอดภัย</string>
   <string name="ConversationActivity_transport_insecure_mms">เอ็มเอ็มเอสที่ไม่ปลอดภัย</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">เปลี่ยนมาใช้ Delta Chat กันเถอะ %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">ใช้อันนี้คุยกัน: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">เกิดข้อผิดพลาดระหว่างออกจากกลุ่ม</string>
@@ -299,7 +299,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">การส่งล้มเหลว</string>
   <string name="MessageDetailsRecipient_new_safety_number">ตัวเลขความปลอดภัยใหม่</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">เปิดใช้การเชื่อมต่อในฉากหลัง</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">เกิดข้อผิดพลาดระหว่างอ่านการตั้งค่าเอ็มเอ็มเอสของผู้ให้บริการไร้สาย</string>
@@ -559,7 +559,7 @@
   <!--SearchToolbar-->
   <string name="SearchToolbar_search">ค้นหา</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">ข้อความใหม่</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">อุปกรณ์ไม่ได้ลงทะเบียนอีกต่อไป</string>

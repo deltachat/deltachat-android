@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">是</string>
   <string name="no">否</string>
   <string name="delete">删除</string>
@@ -297,7 +297,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">发送失败</string>
   <string name="MessageDetailsRecipient_new_safety_number">新的安全代码</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">后台数据已启用</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">读取运营商的彩信设定时出错</string>

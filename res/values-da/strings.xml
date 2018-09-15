@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">Ja</string>
   <string name="no">Nej</string>
   <string name="delete">Slet</string>
@@ -111,7 +111,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Er du sikker, du vil forlade denne gruppe?</string>
   <string name="ConversationActivity_transport_insecure_sms">Usikker (ikke krypteret) SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Usikker (ikke krypteret) MMS</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">Skal vi ikke bruge Delta Chat %1$s?</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Skal vi ikke bruge Delta Chat %1$s?</string>
   <string name="ConversationActivity_error_leaving_group">Der skete en fejl da du forlod gruppen</string>
@@ -289,7 +289,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Kunne ikke sende</string>
   <string name="MessageDetailsRecipient_new_safety_number">Nyt sikkerhedsnummer</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">Baggrundsforbindelse aktiveret</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Kunne ikke læse indstillinger for trådløs MMS udbyder</string>
@@ -516,7 +516,7 @@ Modtog en nøgle-besked for en ugyldig protokol-version.
   <!--SearchToolbar-->
   <string name="SearchToolbar_search">Søg</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Ny besked</string>
   <!--UnauthorizedReminder-->
   <!--VideoPlayer-->

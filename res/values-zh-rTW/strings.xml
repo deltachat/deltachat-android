@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">是</string>
   <string name="no">否</string>
   <string name="delete">刪除</string>
@@ -120,7 +120,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">您確定要離開此群組？</string>
   <string name="ConversationActivity_transport_insecure_sms">不安全的簡訊</string>
   <string name="ConversationActivity_transport_insecure_mms">不安全的多媒體訊息</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">我們要不要切換到 Delta Chat %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">我們要不要用這個軟體來聊天：%1$s</string>
   <string name="ConversationActivity_error_leaving_group">離開群組時發生錯誤</string>
@@ -301,7 +301,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">傳送失敗</string>
   <string name="MessageDetailsRecipient_new_safety_number">新的安全碼</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">背景連線已經啟用</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">讀取無線供應商的 MMS 設定時發生錯誤</string>
@@ -562,7 +562,7 @@ signal 訊息</string>
   <string name="SearchToolbar_search">搜尋</string>
   <string name="SearchToolbar_search_for_conversations_contacts_and_messages">搜尋對話、聯絡人與訊息</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">新訊息</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">此裝置不再註冊於Signal</string>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Delta Chat</string>
+  <string name="app_name">Delta Chat dev</string>
   <string name="yes">כן</string>
   <string name="no">לא</string>
   <string name="delete">מחק</string>
@@ -129,7 +129,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">האם ברצונך באמת לעזוב את הקבוצה?</string>
   <string name="ConversationActivity_transport_insecure_sms">מסרון בלתי מאובטח</string>
   <string name="ConversationActivity_transport_insecure_mms">MMS בלתי מאובטח</string>
-  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
   <string name="ConversationActivity_lets_switch_to_signal">בוא נחליף אל Delta Chat %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">בוא נשתמש בזה להתכתבות: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">שגיאה בעזיבת קבוצה</string>
@@ -349,7 +349,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">נכשל לשלוח</string>
   <string name="MessageDetailsRecipient_new_safety_number">מספר ביטחון חדש</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Delta Chat</string>
+  <string name="MessageRetrievalService_signal">Delta Chat dev</string>
   <string name="MessageRetrievalService_background_connection_enabled">חיבור רקע מאופשר</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">שגיאה בקריאת הגדרות MMS של ספק התקשורת האלחוטית</string>
@@ -611,7 +611,7 @@
   <string name="SearchToolbar_search">חפש</string>
   <string name="SearchToolbar_search_for_conversations_contacts_and_messages">חפש שיחות, אנשי קשר והודעות</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
   <string name="SingleRecipientNotificationBuilder_new_message">הודעה חדשה</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">המכשיר אינו רשום יותר</string>
