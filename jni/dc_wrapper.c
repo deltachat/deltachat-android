@@ -18,7 +18,7 @@
  * this program.  If not, see http://www.gnu.org/licenses/ .
  *
  ******************************************************************************/
- 
+
 
 // Purpose: The C part of the Java<->C Wrapper, see also DcContext.java
 
@@ -1183,6 +1183,12 @@ static dc_contact_t* get_dc_contact(JNIEnv *env, jobject obj)
 JNIEXPORT void Java_com_b44t_messenger_DcContact_unrefContactCPtr(JNIEnv *env, jobject obj)
 {
 	dc_contact_unref(get_dc_contact(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcContact_getId(JNIEnv *env, jobject obj)
+{
+	return dc_contact_get_id(get_dc_contact(env, obj));
 }
 
 

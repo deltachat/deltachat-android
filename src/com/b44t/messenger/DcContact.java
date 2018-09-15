@@ -25,8 +25,8 @@ package com.b44t.messenger;
 
 public class DcContact {
 
-    public final static int DC_CONTACT_ID_SELF = 1;
-    public final static int DC_CONTACT_ID_DEVICE = 2;
+    public final static int DC_CONTACT_ID_SELF         = 1;
+    public final static int DC_CONTACT_ID_DEVICE       = 2;
     public final static int DC_CONTACT_ID_LAST_SPECIAL = 9;
 
     public DcContact(long contactCPtr) {
@@ -39,15 +39,16 @@ public class DcContact {
         contactCPtr = 0;
     }
 
-    public native String getName();
-    public native String getDisplayName();
-    public native String getFirstName();
-    public native String getAddr();
-    public native String getNameNAddr();
-    public native boolean isBlocked();
-    public native boolean isVerified();
+    public native int     getId            ();
+    public native String  getName          ();
+    public native String  getDisplayName   ();
+    public native String  getFirstName     ();
+    public native String  getAddr          ();
+    public native String  getNameNAddr     ();
+    public native boolean isBlocked        ();
+    public native boolean isVerified       ();
 
     // working with raw c-data
-    private long contactCPtr; // CAVE: the name is referenced in the JNI
-    private native void unrefContactCPtr();
+    private long          contactCPtr;     // CAVE: the name is referenced in the JNI
+    private native void   unrefContactCPtr ();
 }
