@@ -80,7 +80,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int type, String name, String number, String label, int color, boolean multiSelect);
+    public abstract void bind(@NonNull GlideRequests glideRequests, DcContact contact, String name, String number, String label, int color, boolean multiSelect);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     public abstract void setChecked(boolean checked);
   }
@@ -99,8 +99,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       return (ContactSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int type, String name, String number, String label, int color, boolean multiSelect) {
-      getView().set(glideRequests, type, name, number, label, color, multiSelect);
+    public void bind(@NonNull GlideRequests glideRequests, DcContact contact, String name, String addr, String label, int color, boolean multiSelect) {
+      getView().set(glideRequests, contact, name, addr, label, color, multiSelect);
     }
 
     @Override
@@ -124,7 +124,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     }
 
     @Override
-    public void bind(@NonNull GlideRequests glideRequests, int type, String name, String number, String label, int color, boolean multiSelect) {
+    public void bind(@NonNull GlideRequests glideRequests, DcContact contact, String name, String number, String label, int color, boolean multiSelect) {
       this.label.setText(name);
     }
 
@@ -194,7 +194,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
 
     ViewHolder holder = (ViewHolder)viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, ContactsDatabase.NORMAL_TYPE, name, addr, "", color, multiSelect);
+    holder.bind(glideRequests, dcContact, name, addr, "", color, multiSelect);
     holder.setChecked(selectedContacts.contains(addr));
   }
 

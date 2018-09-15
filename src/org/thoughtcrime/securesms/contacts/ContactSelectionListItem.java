@@ -9,8 +9,11 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcContact;
+
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -54,28 +57,22 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void set(@NonNull GlideRequests glideRequests, int type, String name, String number, String label, int color, boolean multiSelect) {
+  public void set(@NonNull GlideRequests glideRequests, DcContact contact, String name, String number, String label, int color, boolean multiSelect) {
     this.glideRequests = glideRequests;
     this.number        = number;
 
-    if (type == ContactsDatabase.NEW_TYPE) {
-      this.recipient = null;
-      this.contactPhotoImage.setAvatar(glideRequests, Recipient.from(getContext(), Address.UNKNOWN, true), false);
-    } else if (!TextUtils.isEmpty(number)) {
-      Address address = Address.fromExternal(getContext(), number);
-      this.recipient = Recipient.from(getContext(), address, true);
-      this.recipient.addListener(this);
+    this.recipient = DcHelper.getContext(getContext()).getRecipient(contact);
+    this.recipient.addListener(this);
 
-      if (this.recipient.getName() != null) {
-        name = this.recipient.getName();
-      }
+    if (this.recipient.getName() != null) {
+      name = this.recipient.getName();
     }
 
     this.nameView.setTextColor(color);
     this.numberView.setTextColor(color);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
-    setText(type, name, number, label);
+    setText(ContactsDatabase.NORMAL_TYPE, name, number, label);
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
     else             this.checkBox.setVisibility(View.GONE);

@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcLot;
@@ -102,6 +103,12 @@ public class ApplicationDcContext extends DcContext {
     public Recipient getRecipient(DcChat chat) {
         RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, null);
         return new Recipient(Address.fromChat(chat), recipientDetails);
+    }
+    @NonNull
+
+    public Recipient getRecipient(DcContact contact) {
+        RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(contact.getDisplayName(), null, false, null, null);
+        return new Recipient(Address.fromContact(contact), recipientDetails);
     }
 
     @NonNull

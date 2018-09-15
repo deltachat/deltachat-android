@@ -12,6 +12,7 @@ import android.util.Log;
 import android.util.Pair;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
@@ -54,6 +55,10 @@ public class Address implements Parcelable, Comparable<Address> {
 
   public static Address fromChat(DcChat chat) {
     return new Address("dc:" + chat.getId());
+  }
+
+  public static Address fromContact(DcContact contact) {
+    return new Address("dcc:" + contact.getId());
   }
 
   private Address(@NonNull String address) {
