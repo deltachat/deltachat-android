@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CheckBox;
@@ -57,22 +56,27 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void set(@NonNull GlideRequests glideRequests, DcContact contact, String name, String number, String label, int color, boolean multiSelect) {
+  public void set(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect) {
     this.glideRequests = glideRequests;
     this.number        = number;
 
-    this.recipient = DcHelper.getContext(getContext()).getRecipient(contact);
-    this.recipient.addListener(this);
-
-    if (this.recipient.getName() != null) {
-      name = this.recipient.getName();
+    if(type == ContactsDatabase.NEW_TYPE) {
+      this.recipient = null;
+      this.contactPhotoImage.setAvatar(glideRequests, Recipient.from(getContext(), Address.UNKNOWN, true), false);
+    }
+    else {
+      this.recipient = DcHelper.getContext(getContext()).getRecipient(contact);
+      this.recipient.addListener(this);
+      if (this.recipient.getName() != null) {
+        name = this.recipient.getName();
+      }
     }
 
     this.nameView.setTextColor(color);
     this.numberView.setTextColor(color);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
-    setText(ContactsDatabase.NORMAL_TYPE, name, number, label);
+    setText(type, name, number, label);
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
     else             this.checkBox.setVisibility(View.GONE);

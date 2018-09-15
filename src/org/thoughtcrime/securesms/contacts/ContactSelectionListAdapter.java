@@ -38,6 +38,7 @@ import com.b44t.messenger.DcContact;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller.FastScrollAdapter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -67,6 +68,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   private final @NonNull Context              context;
   private final @NonNull ApplicationDcContext dcContext;
   private @NonNull int[]                      dcContactList = new int[0];
+  private String                              query;
   private final boolean                       multiSelect;
   private final LayoutInflater                li;
   private final TypedArray                    drawables;
@@ -80,7 +82,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, DcContact contact, String name, String number, String label, int color, boolean multiSelect);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     public abstract void setChecked(boolean checked);
   }
@@ -99,8 +101,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       return (ContactSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, DcContact contact, String name, String addr, String label, int color, boolean multiSelect) {
-      getView().set(glideRequests, contact, name, addr, label, color, multiSelect);
+    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String addr, String label, int color, boolean multiSelect) {
+      getView().set(glideRequests, type, contact, name, addr, label, color, multiSelect);
     }
 
     @Override
@@ -124,7 +126,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     }
 
     @Override
-    public void bind(@NonNull GlideRequests glideRequests, DcContact contact, String name, String number, String label, int color, boolean multiSelect) {
+    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect) {
       this.label.setText(name);
     }
 
@@ -143,7 +145,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
 
   public ContactSelectionListAdapter(@NonNull  Context context,
                                      @NonNull  GlideRequests glideRequests,
-                                     @Nullable Cursor cursor,
                                      @Nullable ItemClickListener clickListener,
                                      boolean multiSelect)
   {
@@ -186,15 +187,29 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+
     int       id        = dcContactList[i];
-    DcContact dcContact = dcContext.getContact(id);
-    String    name      = dcContact.getDisplayName();
-    String    addr      = dcContact.getAddr();
+    int       type      = id==DcContact.DC_CONTACT_ID_NEW_CONTACT? ContactsDatabase.NEW_TYPE : ContactsDatabase.NORMAL_TYPE;
     int       color     = drawables.getColor(0, 0xff000000);
+    DcContact dcContact = null;
+    String    label     = null;
+    String    name;
+    String    addr;
+
+    if(id==DcContact.DC_CONTACT_ID_NEW_CONTACT) {
+      name = context.getString(R.string.contact_selection_list__unknown_contact);
+      addr = query==null? "" : query;
+      label = "\u21e2";
+    }
+    else {
+      dcContact = id==DcContact.DC_CONTACT_ID_NEW_CONTACT? null : dcContext.getContact(id);
+      name      = dcContact.getDisplayName();
+      addr      = dcContact.getAddr();
+    }
 
     ViewHolder holder = (ViewHolder)viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, dcContact, name, addr, "", color, multiSelect);
+    holder.bind(glideRequests, type, dcContact, name, addr, label, color, multiSelect);
     holder.setChecked(selectedContacts.contains(addr));
   }
 
@@ -261,8 +276,9 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     void onItemClick(ContactSelectionListItem item);
   }
 
-  public void changeData(int[] dcContactList) {
-    this.dcContactList = dcContactList==null? new int[0] : dcContactList;
+  public void changeData(DcContactsLoader.Ret loaderRet) {
+    this.dcContactList = loaderRet==null? new int[0] : loaderRet.ids;
+    this.query = loaderRet==null? null : loaderRet.query;
     notifyDataSetChanged();
   }
 }

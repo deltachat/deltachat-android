@@ -63,7 +63,7 @@ import java.util.Set;
  *
  */
 public class ContactSelectionListFragment extends    Fragment
-                                          implements LoaderManager.LoaderCallbacks<int[]>
+                                          implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>
 {
   @SuppressWarnings("unused")
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
@@ -159,7 +159,6 @@ public class ContactSelectionListFragment extends    Fragment
   private void initializeCursor() {
     ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(),
                                                                           GlideApp.with(this),
-                                                                          null,
                                                                           new ListClickListener(),
                                                                           isMulti());
     selectedContacts = adapter.getSelectedContacts();
@@ -212,13 +211,12 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   @Override
-  public Loader<int[]> onCreateLoader(int id, Bundle args) {
-    String query = (cursorFilter==null||cursorFilter.isEmpty())? null : cursorFilter;
-    return new DcContactsLoader(getActivity(), 0, query);
+  public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
+    return new DcContactsLoader(getActivity(), 0, cursorFilter);
   }
 
   @Override
-  public void onLoadFinished(Loader<int[]> loader, int[] data) {
+  public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
     swipeRefresh.setVisibility(View.VISIBLE);
     showContactsLayout.setVisibility(View.GONE);
 
@@ -233,7 +231,7 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   @Override
-  public void onLoaderReset(Loader<int[]> loader) {
+  public void onLoaderReset(Loader<DcContactsLoader.Ret> loader) {
     ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(null);
     fastScroller.setVisibility(View.GONE);
   }
