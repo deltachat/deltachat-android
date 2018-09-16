@@ -40,16 +40,16 @@ public class DcContact {
         contactCPtr = 0;
     }
 
-    public native int     getId            ();
-    public native String  getName          ();
-    public native String  getDisplayName   ();
-    public native String  getFirstName     ();
-    public native String  getAddr          ();
-    public native String  getNameNAddr     ();
-    public native boolean isBlocked        ();
-    public native boolean isVerified       ();
+    public native int     getId         ();
+    public native String  getName       ();
+    public native String  getDisplayName();
+    public native String  getFirstName  ();
+    public native String  getAddr       ();
+    public native String  getNameNAddr  ();
+    public native boolean isBlocked     ();
+    public native boolean isVerified    ();
 
     // working with raw c-data
-    private long          contactCPtr;     // CAVE: the name is referenced in the JNI
-    private native void   unrefContactCPtr ();
+    private long        contactCPtr;    // CAVE: the name is referenced in the JNI
+    private native void unrefContactCPtr();
 }
