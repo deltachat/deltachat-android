@@ -29,6 +29,8 @@ import com.annimon.stream.function.Consumer;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.color.MaterialColor;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactColors;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
@@ -96,6 +98,16 @@ public class Recipient implements RecipientModifiedListener {
   @SuppressWarnings("ConstantConditions")
   public static @NonNull Recipient from(@NonNull Context context, @NonNull Address address, boolean asynchronous) {
     if (address == null) throw new AssertionError(address);
+    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    if(address.isDcContact()) {
+      return dcContext.getRecipient(dcContext.getContact(address.getDcContactId()));
+    }
+    else if(address.isEmail()) {
+      int contactId = dcContext.lookupContactIdByAddr(address.toEmailString());
+      if(contactId!=0) {
+        return dcContext.getRecipient(dcContext.getContact(contactId));
+      }
+    }
     return provider.getRecipient(context, address, Optional.absent(), Optional.absent(), asynchronous);
   }
 

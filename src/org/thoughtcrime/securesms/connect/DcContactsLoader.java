@@ -28,14 +28,25 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
     public @NonNull
     DcContactsLoader.Ret loadInBackground() {
         DcContext dcContext = DcHelper.getContext(getContext());
-        int[] ids = dcContext.getContacts(listflags, query);
+        int[] contact_ids = dcContext.getContacts(listflags, query);
         if(query!=null) {
-            // show the "new" link also for partly typed e-mail addresses, so that the user knows he can continue
+            // show the "new contact" link also for partly typed e-mail addresses, so that the user knows he can continue
             if( dcContext.lookupContactIdByAddr(query)==0) {
-                ids = ArrayUtils.appendInt(ids, DcContact.DC_CONTACT_ID_NEW_CONTACT);
+                contact_ids = ArrayUtils.appendInt(contact_ids, DcContact.DC_CONTACT_ID_NEW_CONTACT);
             }
+            return new DcContactsLoader.Ret(contact_ids, query);
         }
-        return new DcContactsLoader.Ret(ids, query);
+        else {
+            // add "new group" and "new verified group" links
+            final int additional_items = 2; // if someone knows an easier way to prepend sth. to int[] please pr :)
+            int all_ids[] = new int[contact_ids.length+additional_items];
+            all_ids[0] = DcContact.DC_CONTACT_ID_NEW_GROUP;
+            all_ids[1] = DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP;
+            for(int i=0; i<contact_ids.length; i++) {
+                all_ids[i+additional_items] = contact_ids[i];
+            }
+            return new DcContactsLoader.Ret(all_ids, query);
+        }
     }
 
     public class Ret {

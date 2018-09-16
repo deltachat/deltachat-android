@@ -112,10 +112,10 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
   }
 
   @Override
-  public void onContactSelected(String number) {}
+  public void onContactSelected(int specialId, String number) {}
 
   @Override
-  public void onContactDeselected(String number) {}
+  public void onContactDeselected(int specialId, String number) {}
 
   private static class RefreshDirectoryTask extends AsyncTask<Context, Void, Void> {
 

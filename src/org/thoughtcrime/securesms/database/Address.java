@@ -136,6 +136,8 @@ public class Address implements Parcelable, Comparable<Address> {
 
   public boolean isDcChat() { return address.startsWith("dc:"); };
 
+  public boolean isDcContact() { return address.startsWith("dcc:"); };
+
   public @NonNull String toGroupString() {
     if (!isGroup()) throw new AssertionError("Not group: " + address);
     return address;
@@ -154,6 +156,11 @@ public class Address implements Parcelable, Comparable<Address> {
   public int getDcChatId() {
     if(!isDcChat()) throw new AssertionError("Not dc chat: " + address);
     return Integer.valueOf(address.substring("dc:".length()));
+  }
+
+  public int getDcContactId() {
+    if(!isDcContact()) throw new AssertionError("Not dc contact: " + address);
+    return Integer.valueOf(address.substring("dcc:".length()));
   }
 
   @Override

@@ -55,30 +55,36 @@ public class NewConversationActivity extends ContactSelectionActivity {
   }
 
   @Override
-  public void onContactSelected(String addr) {
+  public void onContactSelected(int specialId, String addr) {
     final DcContext dcContext = DcHelper.getContext(this);
-    final int contactId = dcContext.createContact(null, addr);
-    if (contactId == 0) {
-      Toast.makeText(this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
-      return;
-    }
-    DcContact dcContact = dcContext.getContact(contactId);
-
-    int chatId = dcContext.getChatIdByContactId(contactId);
-    if (chatId == 0) {
-      new AlertDialog.Builder(this)
-              .setMessage(getString(R.string.new_conversation_activity__ask_start_chat_with, dcContact.getNameNAddr()))
-              .setCancelable(true)
-              .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                  openConversation(dcContext.createChatByContactId(contactId));
-                }
-              }).show();
+    if(specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
+      Intent intent = new Intent(this, GroupCreateActivity.class);
+      startActivity(intent);
+      finish();
     }
     else {
-      openConversation(chatId);
+      final int contactId = dcContext.createContact(null, addr);
+      if (contactId == 0) {
+        Toast.makeText(this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
+        return;
+      }
+      DcContact dcContact = dcContext.getContact(contactId);
+
+      int chatId = dcContext.getChatIdByContactId(contactId);
+      if (chatId == 0) {
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.new_conversation_activity__ask_start_chat_with, dcContact.getNameNAddr()))
+                .setCancelable(true)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+                    openConversation(dcContext.createChatByContactId(contactId));
+                  }
+                }).show();
+      } else {
+        openConversation(chatId);
+      }
     }
   }
 
@@ -128,9 +134,11 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   @Override
   protected boolean onPrepareOptionsPanel(View view, Menu menu) {
+    /* currently not needed
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
     inflater.inflate(R.menu.new_conversation_activity, menu);
+    */
     super.onPrepareOptionsMenu(menu);
     return true;
   }

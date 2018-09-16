@@ -1421,5 +1421,11 @@
     <string name="loading">Loading …</string>
     <string name="one_moment">One moment …</string>
     <string name="new_conversation_activity__ask_start_chat_with">Chat with %1$s?</string>
+    <string name="contact_selection_list__new_group">New group</string>
+    <string name="contact_selection_list__new_verified_group">New verified group</string>
+    <string name="contact_selection_list__new_contact">New contact</string>
+    <string name="contact_selection_list__type_email_above">Type email address above</string>
+    <string name="text_secure_normal__menu_new_chat">New chat</string>
+    <string name="help_url">https://delta.chat/en/help</string>
 
 </resources>

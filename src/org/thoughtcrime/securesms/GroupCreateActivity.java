@@ -52,7 +52,6 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.GroupDatabase;
 import org.thoughtcrime.securesms.database.GroupDatabase.GroupRecord;
-import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.groups.GroupManager;
 import org.thoughtcrime.securesms.groups.GroupManager.GroupActionResult;
@@ -63,7 +62,6 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter.OnRecipientDeletedListener;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.whispersystems.libsignal.util.guava.Optional;
@@ -128,23 +126,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     updateViewState();
   }
 
-  private void disableSignalGroupViews(int reasonResId) {
-    View pushDisabled = findViewById(R.id.push_disabled);
-    pushDisabled.setVisibility(View.VISIBLE);
-    ((TextView) findViewById(R.id.push_disabled_reason)).setText(reasonResId);
-    avatar.setEnabled(false);
-    groupName.setEnabled(false);
-  }
-
-  private void enableSignalGroupViews() {
-    findViewById(R.id.push_disabled).setVisibility(View.GONE);
-    avatar.setEnabled(true);
-    groupName.setEnabled(true);
-  }
-
   @SuppressWarnings("ConstantConditions")
   private void updateViewState() {
-    enableSignalGroupViews();
+    avatar.setEnabled(true);
+    groupName.setEnabled(true);
     getSupportActionBar().setTitle(groupToUpdate.isPresent()
                                    ? R.string.GroupCreateActivity_actionbar_edit_title
                                    : R.string.GroupCreateActivity_actionbar_title);

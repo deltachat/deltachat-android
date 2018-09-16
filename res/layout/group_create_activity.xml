@@ -66,27 +66,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
-        <RelativeLayout android:id="@+id/push_disabled"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="106dp"
-            android:padding="15dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:background="#aa000000"
-            android:visibility="gone">
-
-            <TextView android:id="@+id/push_disabled_reason"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:padding="8dp"
-                android:background="#dd222222"
-                android:textColor="#ffeeeeee"
-                android:fontFamily="sans-serif-light"
-                android:textSize="16sp"
-                android:text="@string/GroupCreateActivity_contacts_dont_support_push" />
-
-            </RelativeLayout>
     </RelativeLayout>
 
     <org.thoughtcrime.securesms.components.PushRecipientsPanel android:id="@+id/recipients"
