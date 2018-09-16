@@ -182,7 +182,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
     void onSwitchToArchive();
   }
 
-  void changeCursor(DcChatlist chatlist) {
+  void changeData(DcChatlist chatlist) {
     dcChatlist = chatlist;
     notifyDataSetChanged();
   }
