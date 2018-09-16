@@ -34,10 +34,27 @@ public class DcContact {
         this.contactCPtr = contactCPtr;
     }
 
-    @Override protected void finalize() throws Throwable {
+    @Override
+    protected void finalize() throws Throwable {
         super.finalize();
         unrefContactCPtr();
         contactCPtr = 0;
+    }
+
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || !(other instanceof DcContact)) {
+            return false;
+        }
+
+        DcContact that = (DcContact) other;
+        return this.getId()==that.getId();
+    }
+
+    @Override
+    public String toString() {
+        return getAddr();
     }
 
     public native int     getId         ();
