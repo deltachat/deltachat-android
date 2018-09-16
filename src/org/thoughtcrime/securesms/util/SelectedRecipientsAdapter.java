@@ -74,13 +74,6 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
     return recipients.size();
   }
 
-  public boolean hasNonPushMembers() {
-    for (RecipientWrapper wrapper : recipients) {
-      if (!wrapper.isPush()) return true;
-    }
-    return false;
-  }
-
   @Override
   public Object getItem(int position) {
     return recipients.get(position);

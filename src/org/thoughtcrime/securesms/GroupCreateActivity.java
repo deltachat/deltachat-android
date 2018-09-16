@@ -128,10 +128,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     updateViewState();
   }
 
-  private boolean isSignalGroup() {
-    return TextSecurePreferences.isPushRegistered(this) && !getAdapter().hasNonPushMembers();
-  }
-
   private void disableSignalGroupViews(int reasonResId) {
     View pushDisabled = findViewById(R.id.push_disabled);
     pushDisabled.setVisibility(View.VISIBLE);
@@ -148,22 +144,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   @SuppressWarnings("ConstantConditions")
   private void updateViewState() {
-    if (!TextSecurePreferences.isPushRegistered(this)) {
-      disableSignalGroupViews(R.string.GroupCreateActivity_youre_not_registered_for_signal);
-      getSupportActionBar().setTitle(R.string.GroupCreateActivity_actionbar_mms_title);
-    } else if (getAdapter().hasNonPushMembers()) {
-      disableSignalGroupViews(R.string.GroupCreateActivity_contacts_dont_support_push);
-      getSupportActionBar().setTitle(R.string.GroupCreateActivity_actionbar_mms_title);
-    } else {
-      enableSignalGroupViews();
-      getSupportActionBar().setTitle(groupToUpdate.isPresent()
-                                     ? R.string.GroupCreateActivity_actionbar_edit_title
-                                     : R.string.GroupCreateActivity_actionbar_title);
-    }
-  }
-
-  private static boolean isActiveInDirectory(Recipient recipient) {
-    return recipient.resolve().getRegistered() == RecipientDatabase.RegisteredState.REGISTERED;
+    enableSignalGroupViews();
+    getSupportActionBar().setTitle(groupToUpdate.isPresent()
+                                   ? R.string.GroupCreateActivity_actionbar_edit_title
+                                   : R.string.GroupCreateActivity_actionbar_title);
   }
 
   private void addSelectedContacts(@NonNull Recipient... recipients) {
@@ -242,11 +226,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       Toast.makeText(getApplicationContext(), R.string.GroupCreateActivity_contacts_no_members, Toast.LENGTH_SHORT).show();
       return;
     }
-    if (isSignalGroup()) {
-      new CreateSignalGroupTask(this, avatarBmp, getGroupName(), getAdapter().getRecipients()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    } else {
-      new CreateMmsGroupTask(this, getAdapter().getRecipients()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
+    new CreateSignalGroupTask(this, avatarBmp, getGroupName(), getAdapter().getRecipients()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
 
   private void handleGroupUpdate() {
@@ -321,41 +301,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH | DisplayMode.FLAG_SMS);
       }
       startActivityForResult(intent, PICK_CONTACT);
-    }
-  }
-
-  private static class CreateMmsGroupTask extends AsyncTask<Void,Void,GroupActionResult> {
-    private final GroupCreateActivity activity;
-    private final Set<Recipient>      members;
-
-    public CreateMmsGroupTask(GroupCreateActivity activity, Set<Recipient> members) {
-      this.activity     = activity;
-      this.members      = members;
-    }
-
-    @Override
-    protected GroupActionResult doInBackground(Void... avoid) {
-      List<Address> memberAddresses = new LinkedList<>();
-
-      for (Recipient recipient : members) {
-        memberAddresses.add(recipient.getAddress());
-      }
-
-      String    groupId        = DatabaseFactory.getGroupDatabase(activity).getOrCreateGroupForMembers(memberAddresses, true);
-      Recipient groupRecipient = Recipient.from(activity, Address.fromSerialized(groupId), true);
-      long      threadId       = DatabaseFactory.getThreadDatabase(activity).getThreadIdFor(groupRecipient, ThreadDatabase.DistributionTypes.DEFAULT);
-
-      return new GroupActionResult(groupRecipient, threadId);
-    }
-
-    @Override
-    protected void onPostExecute(GroupActionResult result) {
-      activity.handleOpenConversation(result.getThreadId(), result.getGroupRecipient());
-    }
-
-    @Override
-    protected void onProgressUpdate(Void... values) {
-      super.onProgressUpdate(values);
     }
   }
 
@@ -461,22 +406,18 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private static class AddMembersTask extends AsyncTask<Recipient,Void,List<AddMembersTask.Result>> {
     static class Result {
       Optional<Recipient> recipient;
-      boolean             isPush;
       String              reason;
 
-      public Result(@Nullable Recipient recipient, boolean isPush, @Nullable String reason) {
+      public Result(@Nullable Recipient recipient, @Nullable String reason) {
         this.recipient = Optional.fromNullable(recipient);
-        this.isPush    = isPush;
         this.reason    = reason;
       }
     }
 
     private GroupCreateActivity activity;
-    private boolean             failIfNotPush;
 
     public AddMembersTask(@NonNull GroupCreateActivity activity) {
       this.activity      = activity;
-      this.failIfNotPush = activity.groupToUpdate.isPresent();
     }
 
     @Override
@@ -484,16 +425,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       final List<Result> results = new LinkedList<>();
 
       for (Recipient recipient : recipients) {
-        boolean isPush = isActiveInDirectory(recipient);
-
-        if (failIfNotPush && !isPush) {
-          results.add(new Result(null, false, activity.getString(R.string.GroupCreateActivity_cannot_add_non_push_to_existing_group,
-                                                                 recipient.toShortString())));
-        } else if (TextUtils.equals(TextSecurePreferences.getLocalNumber(activity), recipient.getAddress().serialize())) {
-          results.add(new Result(null, false, activity.getString(R.string.GroupCreateActivity_youre_already_in_the_group)));
-        } else {
-          results.add(new Result(recipient, isPush, null));
-        }
+        results.add(new Result(recipient, null));
       }
       return results;
     }
@@ -504,7 +436,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
       for (Result result : results) {
         if (result.recipient.isPresent()) {
-          activity.getAdapter().add(result.recipient.get(), result.isPush);
+          activity.getAdapter().add(result.recipient.get(), true);
         } else {
           Toast.makeText(activity, result.reason, Toast.LENGTH_SHORT).show();
         }
