@@ -99,7 +99,11 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
     final RecipientWrapper rw         = (RecipientWrapper)getItem(position);
     final Recipient        p          = rw.getRecipient();
     final boolean          modifiable = rw.isModifiable();
-    final DcContact        dcContact  = dcContext.getContact(p.getAddress().getDcContactId());
+    DcContact              dcContact  = new DcContact(0);
+
+    if(p.getAddress().isDcContact()) {
+      dcContact = dcContext.getContact(p.getAddress().getDcContactId());
+    }
 
     TextView    name   = (TextView)    v.findViewById(R.id.name);
     TextView    phone  = (TextView)    v.findViewById(R.id.phone);

@@ -434,9 +434,9 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_createGroupChat(JNIEnv *env, jo
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_isContactInChat(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isContactInChat(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
 {
-	return (jint)dc_is_contact_in_chat(get_dc_context(env, obj), chat_id, contact_id);
+	return (jboolean)dc_is_contact_in_chat(get_dc_context(env, obj), chat_id, contact_id);
 }
 
 

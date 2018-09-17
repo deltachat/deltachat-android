@@ -316,6 +316,7 @@
     
     <!-- GroupCreateActivity -->
     <string name="GroupCreateActivity_actionbar_title">New group</string>
+    <string name="GroupCreateActivity_actionbar_verified_title">New verified group</string>
     <string name="GroupCreateActivity_actionbar_edit_title">Edit group</string>
     <string name="GroupCreateActivity_group_name_hint">Group name</string>
     <string name="GroupCreateActivity_actionbar_mms_title">New MMS group</string>
@@ -1427,5 +1428,6 @@
     <string name="contact_selection_list__type_email_above">Type email address above</string>
     <string name="text_secure_normal__menu_new_chat">New chat</string>
     <string name="help_url">https://delta.chat/en/help</string>
+    <string name="GroupCreateActivity_please_enter_group_name">Please enter a name for the group.</string>
 
 </resources>

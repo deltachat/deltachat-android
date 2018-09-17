@@ -25,8 +25,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -44,6 +42,8 @@ import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.PushRecipientsPanel;
 import org.thoughtcrime.securesms.components.PushRecipientsPanel.RecipientsPanelChangedListener;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactsCursorLoader.DisplayMode;
 import org.thoughtcrime.securesms.contacts.RecipientsEditor;
 import org.thoughtcrime.securesms.contacts.avatars.ContactColors;
@@ -53,8 +53,6 @@ import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.GroupDatabase;
 import org.thoughtcrime.securesms.database.GroupDatabase.GroupRecord;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
-import org.thoughtcrime.securesms.groups.GroupManager;
-import org.thoughtcrime.securesms.groups.GroupManager.GroupActionResult;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.BitmapUtil;
@@ -65,7 +63,6 @@ import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter.OnRecipientDele
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.whispersystems.libsignal.util.guava.Optional;
-import org.whispersystems.signalservice.api.util.InvalidNumberException;
 
 import java.io.File;
 import java.util.Collection;
@@ -88,6 +85,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   public static final String GROUP_ADDRESS_EXTRA = "group_recipient";
   public static final String GROUP_THREAD_EXTRA  = "group_thread";
+  public static final String GROUP_CREATE_VERIFIED_EXTRA  = "group_create_verified";
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -95,6 +93,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private static final int PICK_CONTACT = 1;
   public static final  int AVATAR_SIZE  = 210;
 
+  private ApplicationDcContext dcContext;
+
+  private boolean      createVerified;
   private EditText     groupName;
   private ListView     lv;
   private ImageView    avatar;
@@ -111,8 +112,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
+    dcContext = DcHelper.getContext(this);
     setContentView(R.layout.group_create_activity);
     //noinspection ConstantConditions
+    createVerified = getIntent().getBooleanExtra(GROUP_CREATE_VERIFIED_EXTRA, false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     initializeResources();
     initializeExistingGroup();
@@ -130,9 +133,18 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private void updateViewState() {
     avatar.setEnabled(true);
     groupName.setEnabled(true);
-    getSupportActionBar().setTitle(groupToUpdate.isPresent()
-                                   ? R.string.GroupCreateActivity_actionbar_edit_title
-                                   : R.string.GroupCreateActivity_actionbar_title);
+
+    String title;
+    if(groupToUpdate.isPresent()) {
+      title = getString(R.string.GroupCreateActivity_actionbar_edit_title);
+    }
+    else if(createVerified) {
+      title = getString(R.string.GroupCreateActivity_actionbar_verified_title);
+    }
+    else {
+      title = getString(R.string.GroupCreateActivity_actionbar_title);
+    }
+    getSupportActionBar().setTitle(title);
   }
 
   private void addSelectedContacts(@NonNull Recipient... recipients) {
@@ -206,25 +218,47 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleGroupCreate() {
-    if (getAdapter().getCount() < 1) {
-      Log.i(TAG, getString(R.string.GroupCreateActivity_contacts_no_members));
-      Toast.makeText(getApplicationContext(), R.string.GroupCreateActivity_contacts_no_members, Toast.LENGTH_SHORT).show();
+    String groupName = getGroupName();
+    if(groupName==null) {
+      Toast.makeText(this, getString(R.string.GroupCreateActivity_please_enter_group_name), Toast.LENGTH_LONG).show();
       return;
     }
-    new CreateSignalGroupTask(this, avatarBmp, getGroupName(), getAdapter().getRecipients()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+    int chatId = dcContext.createGroupChat(createVerified, groupName);
+
+    Set<Recipient> members = getAdapter().getRecipients();
+    for(Recipient member : members) {
+      Address address = member.getAddress();
+      if(address.isDcContact()) {
+        int contactId = address.getDcContactId();
+        dcContext.addContactToChat(chatId, contactId);
+      }
+    }
+
+    // TODO: handle avatarBmp
+
+    Intent intent = new Intent(this, ConversationActivity.class);
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
+    intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, ThreadDatabase.DistributionTypes.DEFAULT);
+    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(dcContext.getChat((int)chatId)));
+    startActivity(intent);
+    finish();
   }
 
   private void handleGroupUpdate() {
-    new UpdateSignalGroupTask(this, groupToUpdate.get().id, avatarBmp,
-                              getGroupName(), getAdapter().getRecipients()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-  }
+    int chatId = 0;// TODO: get correct id from groupToUpdate.get().id; or so
 
-  private void handleOpenConversation(long threadId, Recipient recipient) {
-    Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-    intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, ThreadDatabase.DistributionTypes.DEFAULT);
-    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, recipient.getAddress());
-    startActivity(intent);
+    String groupName = getGroupName();
+    if(groupName!=null) {
+      dcContext.setChatName(chatId, groupName);
+    }
+
+    // TODO: compare dcContext.getChatContacts(chatId); against getAdapter().getRecipients();
+    // and add/remove contacts
+
+
+    // TODO: handle avatarBmp
+
     finish();
   }
 
@@ -233,7 +267,14 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private @Nullable String getGroupName() {
-    return groupName.getText() != null ? groupName.getText().toString() : null;
+    String ret = groupName.getText() != null ? groupName.getText().toString() : null;
+    if(ret!=null) {
+      ret = ret.trim();
+      if(ret.isEmpty()) {
+        ret = null;
+      }
+    }
+    return ret;
   }
 
   @Override
@@ -280,111 +321,13 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onClick(View v) {
       Intent intent = new Intent(GroupCreateActivity.this, PushContactSelectionActivity.class);
+      intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, createVerified);
       if (groupToUpdate.isPresent()) {
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH);
       } else {
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH | DisplayMode.FLAG_SMS);
       }
       startActivityForResult(intent, PICK_CONTACT);
-    }
-  }
-
-  private abstract static class SignalGroupTask extends AsyncTask<Void,Void,Optional<GroupActionResult>> {
-
-    protected GroupCreateActivity activity;
-    protected Bitmap              avatar;
-    protected Set<Recipient>      members;
-    protected String              name;
-
-    public SignalGroupTask(GroupCreateActivity activity,
-                           Bitmap              avatar,
-                           String              name,
-                           Set<Recipient>      members)
-    {
-      this.activity     = activity;
-      this.avatar       = avatar;
-      this.name         = name;
-      this.members      = members;
-    }
-
-    @Override
-    protected void onPreExecute() {
-      activity.findViewById(R.id.group_details_layout).setVisibility(View.GONE);
-      activity.findViewById(R.id.creating_group_layout).setVisibility(View.VISIBLE);
-      activity.findViewById(R.id.menu_create_group).setVisibility(View.GONE);
-        final int titleResId = activity.groupToUpdate.isPresent()
-                             ? R.string.GroupCreateActivity_updating_group
-                             : R.string.GroupCreateActivity_creating_group;
-        activity.creatingText.setText(activity.getString(titleResId, activity.getGroupName()));
-      }
-
-    @Override
-    protected void onPostExecute(Optional<GroupActionResult> groupActionResultOptional) {
-      if (activity.isFinishing()) return;
-      activity.findViewById(R.id.group_details_layout).setVisibility(View.VISIBLE);
-      activity.findViewById(R.id.creating_group_layout).setVisibility(View.GONE);
-      activity.findViewById(R.id.menu_create_group).setVisibility(View.VISIBLE);
-    }
-  }
-
-  private static class CreateSignalGroupTask extends SignalGroupTask {
-    public CreateSignalGroupTask(GroupCreateActivity activity, Bitmap avatar, String name, Set<Recipient> members) {
-      super(activity, avatar, name, members);
-    }
-
-    @Override
-    protected Optional<GroupActionResult> doInBackground(Void... aVoid) {
-      return Optional.of(GroupManager.createGroup(activity, members, avatar, name, false));
-    }
-
-    @Override
-    protected void onPostExecute(Optional<GroupActionResult> result) {
-      if (result.isPresent() && result.get().getThreadId() > -1) {
-        if (!activity.isFinishing()) {
-          activity.handleOpenConversation(result.get().getThreadId(), result.get().getGroupRecipient());
-        }
-      } else {
-        super.onPostExecute(result);
-        Toast.makeText(activity.getApplicationContext(),
-                       R.string.GroupCreateActivity_contacts_invalid_number, Toast.LENGTH_LONG).show();
-      }
-    }
-  }
-
-  private static class UpdateSignalGroupTask extends SignalGroupTask {
-    private String groupId;
-
-    public UpdateSignalGroupTask(GroupCreateActivity activity, String groupId,
-                                 Bitmap avatar, String name, Set<Recipient> members)
-    {
-      super(activity, avatar, name, members);
-      this.groupId = groupId;
-    }
-
-    @Override
-    protected Optional<GroupActionResult> doInBackground(Void... aVoid) {
-      try {
-        return Optional.of(GroupManager.updateGroup(activity, groupId, members, avatar, name));
-      } catch (InvalidNumberException e) {
-        return Optional.absent();
-      }
-    }
-
-    @Override
-    protected void onPostExecute(Optional<GroupActionResult> result) {
-      if (result.isPresent() && result.get().getThreadId() > -1) {
-        if (!activity.isFinishing()) {
-          Intent intent = activity.getIntent();
-          intent.putExtra(GROUP_THREAD_EXTRA, result.get().getThreadId());
-          intent.putExtra(GROUP_ADDRESS_EXTRA, result.get().getGroupRecipient().getAddress());
-          activity.setResult(RESULT_OK, intent);
-          activity.finish();
-        }
-      } else {
-        super.onPostExecute(result);
-        Toast.makeText(activity.getApplicationContext(),
-                       R.string.GroupCreateActivity_contacts_invalid_number, Toast.LENGTH_LONG).show();
-      }
     }
   }
 
@@ -418,12 +361,17 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected void onPostExecute(List<Result> results) {
       if (activity.isFinishing()) return;
+      ApplicationDcContext dcContext = DcHelper.getContext(activity);
 
       for (Result result : results) {
-        if (result.recipient.isPresent()) {
-          activity.getAdapter().add(result.recipient.get(), true);
-        } else {
-          Toast.makeText(activity, result.reason, Toast.LENGTH_SHORT).show();
+        Recipient recipient = result.recipient.get();
+        Address address = recipient.getAddress();
+        if(address.isDcContact()) {
+          activity.getAdapter().add(recipient, true);
+        }
+        else if(dcContext.mayBeValidAddr(address.toString())) {
+          int contactId = DcHelper.getContext(activity).createContact(null, address.toString());
+          activity.getAdapter().add(dcContext.getRecipient(dcContext.getContact(contactId)), true);
         }
       }
       activity.updateViewState();
