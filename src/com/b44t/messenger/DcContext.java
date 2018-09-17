@@ -119,7 +119,7 @@ public class DcContext {
     public native int     createChatByContactId(int contact_id);
     public native int     createChatByMsgId    (int msg_id);
     public native int     createGroupChat      (boolean verified, String name);
-    public native int     isContactInChat      (int chat_id, int contact_id);
+    public native boolean isContactInChat      (int chat_id, int contact_id);
     public native int     addContactToChat     (int chat_id, int contact_id);
     public native int     removeContactFromChat(int chat_id, int contact_id);
     public native void    setDraft             (int chat_id, String draft/*null=delete*/);

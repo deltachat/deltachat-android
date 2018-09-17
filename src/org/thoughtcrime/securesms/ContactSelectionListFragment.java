@@ -38,6 +38,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcContext;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
@@ -68,10 +69,11 @@ public class ContactSelectionListFragment extends    Fragment
   @SuppressWarnings("unused")
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
 
-  public static final String DISPLAY_MODE = "display_mode";
-  public static final String MULTI_SELECT = "multi_select";
-  public static final String REFRESHABLE  = "refreshable";
-  public static final String RECENTS      = "recents";
+  public static final String DISPLAY_MODE          = "display_mode";
+  public static final String MULTI_SELECT          = "multi_select";
+  public static final String REFRESHABLE           = "refreshable";
+  public static final String RECENTS               = "recents";
+  public static final String SELECT_VERIFIED_EXTRA = "select_verified";
 
   private TextView                  emptyText;
   private Set<String>               selectedContacts;
@@ -156,6 +158,10 @@ public class ContactSelectionListFragment extends    Fragment
     return getActivity().getIntent().getBooleanExtra(MULTI_SELECT, false);
   }
 
+  private boolean isSelectVerfied() {
+    return getActivity().getIntent().getBooleanExtra(SELECT_VERIFIED_EXTRA, false);
+  }
+
   private void initializeCursor() {
     ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(),
                                                                           GlideApp.with(this),
@@ -212,7 +218,12 @@ public class ContactSelectionListFragment extends    Fragment
 
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
-    return new DcContactsLoader(getActivity(), 0, cursorFilter);
+    boolean addCreateGroupLinks = !isMulti();
+    int listflags = 0;
+    if(isSelectVerfied()) {
+      listflags = DcContext.DC_GCL_VERIFIED_ONLY;
+    }
+    return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks);
   }
 
   @Override

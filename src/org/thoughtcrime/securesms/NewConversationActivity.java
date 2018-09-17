@@ -59,6 +59,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
     final DcContext dcContext = DcHelper.getContext(this);
     if(specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
+      intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP);
       startActivity(intent);
       finish();
     }
