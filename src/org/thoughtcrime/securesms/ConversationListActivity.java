@@ -114,7 +114,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     inflater.inflate(R.menu.text_secure_normal, menu);
 
-    menu.findItem(R.id.menu_clear_passphrase).setVisible(!TextSecurePreferences.isPasswordDisabled(this));
+    menu.findItem(R.id.menu_clear_passphrase).setVisible(false/*!TextSecurePreferences.isPasswordDisabled(this)*/);
 
     super.onPrepareOptionsMenu(menu);
     return true;
@@ -169,7 +169,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     super.onOptionsItemSelected(item);
 
     switch (item.getItemId()) {
-    case R.id.menu_new_group:         createGroup();           return true;
+    case R.id.menu_new_chat:          createChat();            return true;
     case R.id.menu_settings:          handleDisplaySettings(); return true;
     case R.id.menu_clear_passphrase:  handleClearPassphrase(); return true;
     case R.id.menu_mark_all_read:     handleMarkAllRead();     return true;
@@ -212,8 +212,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     else                           super.onBackPressed();
   }
 
-  private void createGroup() {
-    Intent intent = new Intent(this, GroupCreateActivity.class);
+  private void createChat() {
+    Intent intent = new Intent(this, NewConversationActivity.class);
     startActivity(intent);
   }
 
@@ -246,7 +246,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void handleHelp() {
     try {
-      startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://support.whispersystems.org")));
+      startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.help_url))));
     } catch (ActivityNotFoundException e) {
       Toast.makeText(this, R.string.ConversationListActivity_there_is_no_browser_installed_on_your_device, Toast.LENGTH_LONG).show();
     }

@@ -10,7 +10,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcContact;
+
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.whispersystems.libsignal.util.guava.Optional;
 
@@ -25,6 +29,7 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
   @NonNull  private Context                    context;
   @Nullable private OnRecipientDeletedListener onRecipientDeletedListener;
   @NonNull  private List<RecipientWrapper>     recipients;
+  @NonNull  private final ApplicationDcContext dcContext;
 
   public SelectedRecipientsAdapter(@NonNull Context context) {
     this(context, Collections.<Recipient>emptyList());
@@ -34,6 +39,7 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
                                    @NonNull Collection<Recipient> existingRecipients)
   {
     this.context    = context;
+    this.dcContext  = DcHelper.getContext(context);
     this.recipients = wrapExistingMembers(existingRecipients);
   }
 
@@ -93,13 +99,14 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
     final RecipientWrapper rw         = (RecipientWrapper)getItem(position);
     final Recipient        p          = rw.getRecipient();
     final boolean          modifiable = rw.isModifiable();
+    final DcContact        dcContact  = dcContext.getContact(p.getAddress().getDcContactId());
 
     TextView    name   = (TextView)    v.findViewById(R.id.name);
     TextView    phone  = (TextView)    v.findViewById(R.id.phone);
     ImageButton delete = (ImageButton) v.findViewById(R.id.delete);
 
-    name.setText(p.getName());
-    phone.setText(p.getAddress().serialize());
+    name.setText(dcContact.getDisplayName());
+    phone.setText(dcContact.getAddr());
     delete.setVisibility(modifiable ? View.VISIBLE : View.GONE);
     delete.setOnClickListener(new View.OnClickListener() {
       @Override

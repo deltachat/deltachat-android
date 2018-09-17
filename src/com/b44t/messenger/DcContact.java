@@ -25,10 +25,12 @@ package com.b44t.messenger;
 
 public class DcContact {
 
-    public final static int DC_CONTACT_ID_SELF         = 1;
-    public final static int DC_CONTACT_ID_DEVICE       = 2;
-    public final static int DC_CONTACT_ID_LAST_SPECIAL = 9;
-    public final static int DC_CONTACT_ID_NEW_CONTACT  = -1; // used by the UI, not valid to the core
+    public final static int DC_CONTACT_ID_SELF               = 1;
+    public final static int DC_CONTACT_ID_DEVICE             = 2;
+    public final static int DC_CONTACT_ID_LAST_SPECIAL       = 9;
+    public final static int DC_CONTACT_ID_NEW_CONTACT        = -1; // used by the UI, not valid to the core
+    public final static int DC_CONTACT_ID_NEW_GROUP          = -2; //      - " -
+    public final static int DC_CONTACT_ID_NEW_VERIFIED_GROUP = -3; //      - " -
 
     public DcContact(long contactCPtr) {
         this.contactCPtr = contactCPtr;

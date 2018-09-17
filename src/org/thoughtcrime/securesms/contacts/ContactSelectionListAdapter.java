@@ -189,27 +189,37 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
 
     int       id        = dcContactList[i];
-    int       type      = id==DcContact.DC_CONTACT_ID_NEW_CONTACT? ContactsDatabase.NEW_TYPE : ContactsDatabase.NORMAL_TYPE;
     int       color     = drawables.getColor(0, 0xff000000);
     DcContact dcContact = null;
     String    label     = null;
     String    name;
-    String    addr;
+    String    addr = null;
 
     if(id==DcContact.DC_CONTACT_ID_NEW_CONTACT) {
-      name = context.getString(R.string.contact_selection_list__unknown_contact);
-      addr = query==null? "" : query;
-      label = "\u21e2";
+      name = context.getString(R.string.contact_selection_list__new_contact);
+      if(dcContext.mayBeValidAddr(query)) {
+        addr = query == null ? "" : query;
+        label = "\u2026";
+      }
+      else {
+        addr = context.getString(R.string.contact_selection_list__type_email_above);
+      }
+    }
+    else if(id==DcContact.DC_CONTACT_ID_NEW_GROUP) {
+      name = context.getString(R.string.contact_selection_list__new_group);
+    }
+    else if(id==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
+      name = context.getString(R.string.contact_selection_list__new_verified_group);
     }
     else {
-      dcContact = id==DcContact.DC_CONTACT_ID_NEW_CONTACT? null : dcContext.getContact(id);
+      dcContact = dcContext.getContact(id);
       name      = dcContact.getDisplayName();
       addr      = dcContact.getAddr();
     }
 
     ViewHolder holder = (ViewHolder)viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, type, dcContact, name, addr, label, color, multiSelect);
+    holder.bind(glideRequests, id, dcContact, name, addr, label, color, multiSelect);
     holder.setChecked(selectedContacts.contains(addr));
   }
 

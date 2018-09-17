@@ -280,11 +280,11 @@ public class ContactSelectionListFragment extends    Fragment
       if (!isMulti() || !selectedContacts.contains(contact.getNumber())) {
         selectedContacts.add(contact.getNumber());
         contact.setChecked(true);
-        if (onContactSelectedListener != null) onContactSelectedListener.onContactSelected(contact.getNumber());
+        if (onContactSelectedListener != null) onContactSelectedListener.onContactSelected(contact.getSpecialId(), contact.getNumber());
       } else {
         selectedContacts.remove(contact.getNumber());
         contact.setChecked(false);
-        if (onContactSelectedListener != null) onContactSelectedListener.onContactDeselected(contact.getNumber());
+        if (onContactSelectedListener != null) onContactSelectedListener.onContactDeselected(contact.getSpecialId(), contact.getNumber());
       }
     }
   }
@@ -298,8 +298,8 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   public interface OnContactSelectedListener {
-    void onContactSelected(String number);
-    void onContactDeselected(String number);
+    void onContactSelected(int specialId, String number);
+    void onContactDeselected(int specialId, String number);
   }
 
 }
