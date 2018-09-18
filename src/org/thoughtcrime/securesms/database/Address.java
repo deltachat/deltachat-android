@@ -53,12 +53,12 @@ public class Address implements Parcelable, Comparable<Address> {
 
   private final String address;
 
-  public static Address fromChat(DcChat chat) {
-    return new Address("dc:" + chat.getId());
+  public static Address fromChat(int chatId) {
+    return new Address("dc:" + chatId);
   }
 
-  public static Address fromContact(DcContact contact) {
-    return new Address("dcc:" + contact.getId());
+  public static Address fromContact(int contactId) {
+    return new Address("dcc:" + contactId);
   }
 
   private Address(@NonNull String address) {

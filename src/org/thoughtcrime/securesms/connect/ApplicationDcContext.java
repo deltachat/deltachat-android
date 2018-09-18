@@ -102,13 +102,13 @@ public class ApplicationDcContext extends DcContext {
     @NonNull
     public Recipient getRecipient(DcChat chat) {
         RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, null);
-        return new Recipient(Address.fromChat(chat), recipientDetails);
+        return new Recipient(Address.fromChat(chat.getId()), recipientDetails);
     }
     @NonNull
 
     public Recipient getRecipient(DcContact contact) {
         RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(contact.getDisplayName(), null, false, null, null);
-        return new Recipient(Address.fromContact(contact), recipientDetails);
+        return new Recipient(Address.fromContact(contact.getId()), recipientDetails);
     }
 
     @NonNull

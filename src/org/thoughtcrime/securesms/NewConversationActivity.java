@@ -91,10 +91,9 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   private void openConversation(int chatId) {
     final DcContext dcContext = DcHelper.getContext(this);
-    DcChat dcChat = dcContext.getChat(chatId);
 
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(dcChat));
+    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(chatId));
     intent.putExtra(ConversationActivity.TEXT_EXTRA, getIntent().getStringExtra(ConversationActivity.TEXT_EXTRA));
     intent.setDataAndType(getIntent().getData(), getIntent().getType());
 
