@@ -40,8 +40,6 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.soundcloud.android.crop.Crop;
 
-import org.thoughtcrime.securesms.components.PushRecipientsPanel;
-import org.thoughtcrime.securesms.components.PushRecipientsPanel.RecipientsPanelChangedListener;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactsCursorLoader.DisplayMode;
@@ -77,8 +75,7 @@ import java.util.Set;
  * @author Jake McGinty
  */
 public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
-                                 implements OnRecipientDeletedListener,
-                                            RecipientsPanelChangedListener
+                                 implements OnRecipientDeletedListener
 {
 
   private final static String TAG = GroupCreateActivity.class.getSimpleName();
@@ -156,8 +153,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    RecipientsEditor    recipientsEditor = ViewUtil.findById(this, R.id.recipients_text);
-    PushRecipientsPanel recipientsPanel  = ViewUtil.findById(this, R.id.recipients);
     lv           = ViewUtil.findById(this, R.id.selected_contacts_list);
     avatar       = ViewUtil.findById(this, R.id.avatar);
     groupName    = ViewUtil.findById(this, R.id.group_name);
@@ -165,9 +160,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);
-    recipientsEditor.setHint(R.string.recipients_panel__add_members);
-    recipientsPanel.setPanelChangeListener(this);
-    findViewById(R.id.contacts_button).setOnClickListener(new AddRecipientButtonListener());
+
+    findViewById(R.id.add_member_button).setOnClickListener(new AddRecipientButtonListener());
     avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(this, ContactColors.UNKNOWN_COLOR.toConversationColor(this)));
     avatar.setOnClickListener(view -> Crop.pickImage(GroupCreateActivity.this));
   }
@@ -210,11 +204,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   public void onRecipientDeleted(Recipient recipient) {
     getAdapter().remove(recipient);
     updateViewState();
-  }
-
-  @Override
-  public void onRecipientsPanelUpdate(List<Recipient> recipients) {
-    if (recipients != null && !recipients.isEmpty()) addSelectedContacts(recipients);
   }
 
   private void handleGroupCreate() {

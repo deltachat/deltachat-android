@@ -68,11 +68,25 @@
 
     </RelativeLayout>
 
-    <org.thoughtcrime.securesms.components.PushRecipientsPanel android:id="@+id/recipients"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp" />
+    <com.dd.CircularProgressButton
+        android:id="@+id/add_member_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@color/signal_primary"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:textColor="@color/white"
+        app:cpb_colorIndicator="@color/white"
+        app:cpb_colorProgress="@color/textsecure_primary"
+        app:cpb_cornerRadius="20dp"
+        app:cpb_selectorIdle="@drawable/progress_button_state"
+        app:cpb_textIdle="@string/recipients_panel__add_members"
+        app:layout_constraintBottom_toTopOf="@id/skip_button_bottom_spacer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ListView android:id="@+id/selected_contacts_list"
         android:layout_width="match_parent"
