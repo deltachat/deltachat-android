@@ -194,9 +194,11 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     String    label     = null;
     String    name;
     String    addr = null;
+    boolean   itemMultiSelect = multiSelect;
 
     if(id==DcContact.DC_CONTACT_ID_NEW_CONTACT) {
       name = context.getString(R.string.contact_selection_list__new_contact);
+      itemMultiSelect = false; // the item creates a new contact in the list that will be selected instead
       if(dcContext.mayBeValidAddr(query)) {
         addr = query == null ? "" : query;
         label = "\u2026";
@@ -219,7 +221,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
 
     ViewHolder holder = (ViewHolder)viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, id, dcContact, name, addr, label, color, multiSelect);
+    holder.bind(glideRequests, id, dcContact, name, addr, label, color, itemMultiSelect);
     holder.setChecked(selectedContacts.contains(addr));
   }
 

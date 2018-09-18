@@ -38,11 +38,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -75,6 +78,8 @@ public class ContactSelectionListFragment extends    Fragment
   public static final String RECENTS               = "recents";
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";
 
+  private ApplicationDcContext dcContext;
+
   private TextView                  emptyText;
   private Set<String>               selectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
@@ -91,6 +96,7 @@ public class ContactSelectionListFragment extends    Fragment
   public void onActivityCreated(Bundle icicle) {
     super.onActivityCreated(icicle);
 
+    dcContext = DcHelper.getContext(getActivity());
     initializeCursor();
   }
 
@@ -287,15 +293,38 @@ public class ContactSelectionListFragment extends    Fragment
 
   private class ListClickListener implements ContactSelectionListAdapter.ItemClickListener {
     @Override
-    public void onItemClick(ContactSelectionListItem contact) {
-      if (!isMulti() || !selectedContacts.contains(contact.getNumber())) {
-        selectedContacts.add(contact.getNumber());
+    public void onItemClick(ContactSelectionListItem contact)
+    {
+      int    specialId = contact.getSpecialId();
+      String addr      = contact.getNumber();
+      if (!isMulti() || !selectedContacts.contains(addr))
+      {
+        if(specialId== DcContact.DC_CONTACT_ID_NEW_CONTACT
+         && dcContext.lookupContactIdByAddr(addr)==0) {
+          if (dcContext.createContact(null, addr)==0) {
+            Toast.makeText(getActivity(), R.string.bad_email_address, Toast.LENGTH_LONG).show();
+            return;
+          }
+        }
+
+        selectedContacts.add(addr);
         contact.setChecked(true);
-        if (onContactSelectedListener != null) onContactSelectedListener.onContactSelected(contact.getSpecialId(), contact.getNumber());
-      } else {
-        selectedContacts.remove(contact.getNumber());
+        if (onContactSelectedListener != null) {
+          onContactSelectedListener.onContactSelected(specialId, addr);
+        }
+
+        if(isMulti() && specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT) {
+          // do not check the "add contact" entry but add a new contact and check this. a reload makes this visible.
+          getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
+        }
+      }
+      else
+      {
+        selectedContacts.remove(addr);
         contact.setChecked(false);
-        if (onContactSelectedListener != null) onContactSelectedListener.onContactDeselected(contact.getSpecialId(), contact.getNumber());
+        if (onContactSelectedListener != null) {
+          onContactSelectedListener.onContactDeselected(specialId, addr);
+        }
       }
     }
   }

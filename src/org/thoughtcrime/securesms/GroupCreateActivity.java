@@ -152,6 +152,49 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     addSelectedContacts(recipients.toArray(new Recipient[recipients.size()]));
   }
 
+  private static class AddMembersTask extends AsyncTask<Recipient,Void,List<AddMembersTask.Result>> {
+    static class Result {
+      Optional<Recipient> recipient;
+      String              reason;
+
+      public Result(@Nullable Recipient recipient, @Nullable String reason) {
+        this.recipient = Optional.fromNullable(recipient);
+        this.reason    = reason;
+      }
+    }
+
+    private GroupCreateActivity activity;
+
+    public AddMembersTask(@NonNull GroupCreateActivity activity) {
+      this.activity      = activity;
+    }
+
+    @Override
+    protected List<Result> doInBackground(Recipient... recipients) {
+      final List<Result> results = new LinkedList<>();
+
+      for (Recipient recipient : recipients) {
+        results.add(new Result(recipient, null));
+      }
+      return results;
+    }
+
+    @Override
+    protected void onPostExecute(List<Result> results) {
+      if (activity.isFinishing()) return;
+      ApplicationDcContext dcContext = DcHelper.getContext(activity);
+
+      for (Result result : results) {
+        Recipient recipient = result.recipient.get();
+        Address address = recipient.getAddress();
+        if(address.isDcContact()) {
+          activity.getAdapter().add(recipient, true);
+        }
+      }
+      activity.updateViewState();
+    }
+  }
+
   private void initializeResources() {
     lv           = ViewUtil.findById(this, R.id.selected_contacts_list);
     avatar       = ViewUtil.findById(this, R.id.avatar);
@@ -317,53 +360,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH | DisplayMode.FLAG_SMS);
       }
       startActivityForResult(intent, PICK_CONTACT);
-    }
-  }
-
-  private static class AddMembersTask extends AsyncTask<Recipient,Void,List<AddMembersTask.Result>> {
-    static class Result {
-      Optional<Recipient> recipient;
-      String              reason;
-
-      public Result(@Nullable Recipient recipient, @Nullable String reason) {
-        this.recipient = Optional.fromNullable(recipient);
-        this.reason    = reason;
-      }
-    }
-
-    private GroupCreateActivity activity;
-
-    public AddMembersTask(@NonNull GroupCreateActivity activity) {
-      this.activity      = activity;
-    }
-
-    @Override
-    protected List<Result> doInBackground(Recipient... recipients) {
-      final List<Result> results = new LinkedList<>();
-
-      for (Recipient recipient : recipients) {
-        results.add(new Result(recipient, null));
-      }
-      return results;
-    }
-
-    @Override
-    protected void onPostExecute(List<Result> results) {
-      if (activity.isFinishing()) return;
-      ApplicationDcContext dcContext = DcHelper.getContext(activity);
-
-      for (Result result : results) {
-        Recipient recipient = result.recipient.get();
-        Address address = recipient.getAddress();
-        if(address.isDcContact()) {
-          activity.getAdapter().add(recipient, true);
-        }
-        else if(dcContext.mayBeValidAddr(address.toString())) {
-          int contactId = DcHelper.getContext(activity).createContact(null, address.toString());
-          activity.getAdapter().add(dcContext.getRecipient(dcContext.getContact(contactId)), true);
-        }
-      }
-      activity.updateViewState();
     }
   }
 

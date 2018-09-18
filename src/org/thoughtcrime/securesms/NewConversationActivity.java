@@ -64,13 +64,11 @@ public class NewConversationActivity extends ContactSelectionActivity {
       finish();
     }
     else {
-      final int contactId = dcContext.createContact(null, addr);
-      if (contactId == 0) {
-        Toast.makeText(this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
+      int contactId = dcContext.lookupContactIdByAddr(addr);
+      if(contactId==0) {
         return;
       }
       DcContact dcContact = dcContext.getContact(contactId);
-
       int chatId = dcContext.getChatIdByContactId(contactId);
       if (chatId == 0) {
         new AlertDialog.Builder(this)
