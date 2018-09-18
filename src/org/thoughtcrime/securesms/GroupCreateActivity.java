@@ -43,7 +43,6 @@ import com.soundcloud.android.crop.Crop;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactsCursorLoader.DisplayMode;
-import org.thoughtcrime.securesms.contacts.RecipientsEditor;
 import org.thoughtcrime.securesms.contacts.avatars.ContactColors;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
@@ -114,6 +113,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     //noinspection ConstantConditions
     createVerified = getIntent().getBooleanExtra(GROUP_CREATE_VERIFIED_EXTRA, false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
     initializeResources();
     initializeExistingGroup();
   }
@@ -352,7 +352,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private class AddRecipientButtonListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
-      Intent intent = new Intent(GroupCreateActivity.this, PushContactSelectionActivity.class);
+      Intent intent = new Intent(GroupCreateActivity.this, ContactMultiSelectionActivity.class);
       intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, createVerified);
       if (groupToUpdate.isPresent()) {
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH);

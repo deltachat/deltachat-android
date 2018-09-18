@@ -28,27 +28,36 @@ import java.util.List;
  * @author Moxie Marlinspike
  *
  */
-public class PushContactSelectionActivity extends ContactSelectionActivity {
+public class ContactMultiSelectionActivity extends ContactSelectionActivity {
 
   @SuppressWarnings("unused")
-  private final static String TAG = PushContactSelectionActivity.class.getSimpleName();
+  private final static String TAG = ContactMultiSelectionActivity.class.getSimpleName();
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     getIntent().putExtra(ContactSelectionListFragment.MULTI_SELECT, true);
     super.onCreate(icicle, ready);
 
-    getToolbar().setNavigationIcon(R.drawable.ic_check_white_24dp);
     getToolbar().setNavigationOnClickListener(v -> {
-      Intent resultIntent = getIntent();
-      List<String> selectedContacts = contactsFragment.getSelectedContacts();
-
-      if (selectedContacts != null) {
-        resultIntent.putStringArrayListExtra("contacts", new ArrayList<>(selectedContacts));
-      }
-
-      setResult(RESULT_OK, resultIntent);
+      saveSelection();
       finish();
     });
+  }
+
+  @Override
+  public void onBackPressed() {
+    saveSelection();
+    super.onBackPressed();
+  }
+
+  private void saveSelection() {
+    Intent resultIntent = getIntent();
+    List<String> selectedContacts = contactsFragment.getSelectedContacts();
+
+    if (selectedContacts != null) {
+      resultIntent.putStringArrayListExtra("contacts", new ArrayList<>(selectedContacts));
+    }
+
+    setResult(RESULT_OK, resultIntent);
   }
 }

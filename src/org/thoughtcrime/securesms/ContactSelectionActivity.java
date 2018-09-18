@@ -90,7 +90,7 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
     setSupportActionBar(toolbar);
 
     assert  getSupportActionBar() != null;
-    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setIcon(null);
     getSupportActionBar().setLogo(null);
