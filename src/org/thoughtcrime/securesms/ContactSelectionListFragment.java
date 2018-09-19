@@ -299,7 +299,8 @@ public class ContactSelectionListFragment extends    Fragment
       String addr      = contact.getNumber();
       if (!isMulti() || !selectedContacts.contains(addr))
       {
-        if(specialId== DcContact.DC_CONTACT_ID_NEW_CONTACT
+        if (isMulti()
+         && specialId== DcContact.DC_CONTACT_ID_NEW_CONTACT
          && dcContext.lookupContactIdByAddr(addr)==0) {
           if (dcContext.createContact(null, addr)==0) {
             Toast.makeText(getActivity(), R.string.bad_email_address, Toast.LENGTH_LONG).show();

@@ -64,20 +64,27 @@ public class NewConversationActivity extends ContactSelectionActivity {
       finish();
     }
     else {
-      int contactId = dcContext.lookupContactIdByAddr(addr);
-      if(contactId==0) {
+      if(!dcContext.mayBeValidAddr(addr)) {
+        Toast.makeText(this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
         return;
       }
-      DcContact dcContact = dcContext.getContact(contactId);
+
+      int contactId = dcContext.lookupContactIdByAddr(addr);
       int chatId = dcContext.getChatIdByContactId(contactId);
       if (chatId == 0) {
+        String nameNAddr = contactId==0? addr : dcContext.getContact(contactId).getNameNAddr();
         new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.new_conversation_activity__ask_start_chat_with, dcContact.getNameNAddr()))
+                .setMessage(getString(R.string.new_conversation_activity__ask_start_chat_with, nameNAddr))
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
+                    int contactId = dcContext.createContact(null, addr);
+                    if(contactId==0) {
+                      Toast.makeText(NewConversationActivity.this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
+                      return;
+                    }
                     openConversation(dcContext.createChatByContactId(contactId));
                   }
                 }).show();
