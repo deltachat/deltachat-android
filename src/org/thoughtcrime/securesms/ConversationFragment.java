@@ -60,6 +60,7 @@ import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.DcMsgListLoader;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.contactshare.SharedContactDetailsActivity;
 import org.thoughtcrime.securesms.contactshare.Contact;
@@ -94,7 +95,7 @@ import java.util.Set;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends Fragment
-  implements LoaderManager.LoaderCallbacks<Cursor>
+  implements LoaderManager.LoaderCallbacks<int[]>
 {
   private static final String TAG       = ConversationFragment.class.getSimpleName();
   private static final String KEY_LIMIT = "limit";
@@ -461,54 +462,29 @@ public class ConversationFragment extends Fragment
   }
 
   @Override
-  public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+  public Loader<int[]> onCreateLoader(int id, Bundle args) {
     Log.w(TAG, "onCreateLoader");
     loaderStartTime = System.currentTimeMillis();
 
-    int limit  = args.getInt(KEY_LIMIT, PARTIAL_CONVERSATION_LIMIT);
-    int offset = 0;
-    if (limit != 0 && startingPosition > limit) {
-      offset = Math.max(startingPosition - (limit / 2) + 1, 0);
-      startingPosition -= offset - 1;
-    }
-
-    return new ConversationLoader(getActivity(), threadId, offset, limit, lastSeen);
+    return new DcMsgListLoader(getActivity(), (int)threadId, 0, 0);
   }
 
   @Override
-  public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+  public void onLoadFinished(Loader<int[]> arg0, int[] dcMsgList) {
     long loadTime = System.currentTimeMillis() - loaderStartTime;
-    int  count    = cursor.getCount();
-    Log.w(TAG, "onLoadFinished - took " + loadTime + " ms to load a cursor of size " + count);
-    ConversationLoader loader = (ConversationLoader)cursorLoader;
+    int  count    = dcMsgList.length;
+    Log.w(TAG, "onLoadFinished - took " + loadTime + " ms to load a message list of size " + count);
 
     ConversationAdapter adapter = getListAdapter();
     if (adapter == null) {
       return;
     }
 
-    if (cursor.getCount() >= PARTIAL_CONVERSATION_LIMIT && loader.hasLimit()) {
-      adapter.setFooterView(topLoadMoreView);
-    } else {
-      adapter.setFooterView(null);
-    }
-
     if (lastSeen == -1) {
-      setLastSeen(loader.getLastSeen());
+      //setLastSeen(loader.getLastSeen()); -- TODO
     }
 
-    if (!loader.hasSent() && !recipient.isSystemContact() && !recipient.isGroupRecipient() && recipient.getRegistered() == RecipientDatabase.RegisteredState.REGISTERED) {
-      adapter.setHeaderView(unknownSenderView);
-    } else {
-      adapter.setHeaderView(null);
-    }
-
-    if (loader.hasOffset()) {
-      adapter.setHeaderView(bottomLoadMoreView);
-      previousOffset = loader.getOffset();
-    }
-
-    adapter.changeCursor(cursor);
+    adapter.changeData(dcMsgList);
 
     int lastSeenPosition = adapter.findLastSeenPosition(lastSeen);
 
@@ -536,9 +512,9 @@ public class ConversationFragment extends Fragment
   }
 
   @Override
-  public void onLoaderReset(Loader<Cursor> arg0) {
+  public void onLoaderReset(Loader<int[]> arg0) {
     if (list.getAdapter() != null) {
-      getListAdapter().changeCursor(null);
+      getListAdapter().changeData(null);
     }
   }
 

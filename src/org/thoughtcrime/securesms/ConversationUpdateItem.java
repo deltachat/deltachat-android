@@ -76,7 +76,7 @@ public class ConversationUpdateItem extends LinearLayout
                    @NonNull Optional<DcMsg>         nextMessageRecord,
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Locale                  locale,
-                   @NonNull int[]                   messageIdsSelected,
+                   @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               conversationRecipient,
                             boolean                 pulseUpdate)
   {

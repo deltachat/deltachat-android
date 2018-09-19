@@ -123,7 +123,7 @@ public class ConversationItem extends LinearLayout
   private   AlertView              alertView;
   private   ViewGroup              container;
 
-  private @NonNull  int[]                           batchSelected = new int[0];
+  private @NonNull  Set<DcMsg>                      batchSelected = new HashSet<>();
   private @NonNull  Recipient                       conversationRecipient;
   private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
   private @NonNull  Stub<AudioView>                 audioViewStub;
@@ -193,14 +193,14 @@ public class ConversationItem extends LinearLayout
                    @NonNull Optional<DcMsg>         nextDcMsg,
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Locale                  locale,
-                   @NonNull int[]                   messageIdsSelected,
+                   @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               recipients,
                    boolean                 pulseHighlight)
   {
     this.messageRecord          = messageRecord;
     this.locale                 = locale;
     this.glideRequests          = glideRequests;
-    this.batchSelected          = messageIdsSelected;
+    this.batchSelected          = batchSelected;
     this.conversationRecipient  = recipients;
     this.groupThread            = conversationRecipient.isGroupRecipient();
     this.recipient              = dcContext.getRecipient(dcContext.getChat(messageRecord.getChatId()));
@@ -329,20 +329,8 @@ public class ConversationItem extends LinearLayout
     }
   }
 
-  private boolean batchIsEmpty() {
-    return batchSelected.length == 0;
-  }
-
-  private boolean batchContains(DcMsg msg) {
-    for(int ii = 0; ii < batchSelected.length; ii++) {
-      if(batchSelected[ii] == msg.getId())
-        return true;
-    }
-    return false;
-  }
-
   private void setInteractionState(DcMsg messageRecord, boolean pulseHighlight) {
-    if (batchContains(messageRecord)) {
+    if (batchSelected.contains(messageRecord)) {
       setBackgroundResource(R.drawable.conversation_item_background);
       setSelected(true);
     } else if (pulseHighlight) {
@@ -354,20 +342,20 @@ public class ConversationItem extends LinearLayout
     }
 
     if (mediaThumbnailStub.resolved()) {
-      mediaThumbnailStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchIsEmpty());
-      mediaThumbnailStub.get().setClickable(!shouldInterceptClicks(messageRecord) && batchIsEmpty());
-      mediaThumbnailStub.get().setLongClickable(batchIsEmpty());
+      mediaThumbnailStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      mediaThumbnailStub.get().setClickable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      mediaThumbnailStub.get().setLongClickable(batchSelected.isEmpty());
     }
 
     if (audioViewStub.resolved()) {
-      audioViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchIsEmpty());
-      audioViewStub.get().setClickable(batchIsEmpty());
-      audioViewStub.get().setEnabled(batchIsEmpty());
+      audioViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      audioViewStub.get().setClickable(batchSelected.isEmpty());
+      audioViewStub.get().setEnabled(batchSelected.isEmpty());
     }
 
     if (documentViewStub.resolved()) {
-      documentViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchIsEmpty());
-      documentViewStub.get().setClickable(batchIsEmpty());
+      documentViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      documentViewStub.get().setClickable(batchSelected.isEmpty());
     }
   }
 
@@ -413,7 +401,7 @@ public class ConversationItem extends LinearLayout
     if (isCaptionlessMms(messageRecord)) {
       bodyText.setVisibility(View.GONE);
     } else {
-      bodyText.setText(linkifyMessageBody(new SpannableString(messageRecord.getText()), batchIsEmpty()));
+      bodyText.setText(linkifyMessageBody(new SpannableString(messageRecord.getText()), batchSelected.isEmpty()));
       bodyText.setVisibility(View.VISIBLE);
     }
   }
@@ -701,7 +689,7 @@ public class ConversationItem extends LinearLayout
   }
 
   private boolean shouldInterceptClicks(DcMsg messageRecord) {
-    return batchIsEmpty() && (messageRecord.isFailed() ||
+    return batchSelected.isEmpty() && (messageRecord.isFailed() ||
             messageRecord.isSetupMessage());
   }
 
@@ -824,7 +812,7 @@ public class ConversationItem extends LinearLayout
   private class SharedContactEventListener implements SharedContactView.EventListener {
     @Override
     public void onAddToContactsClicked(@NonNull Contact contact) {
-      if (eventListener != null && batchIsEmpty()) {
+      if (eventListener != null && batchSelected.isEmpty()) {
         eventListener.onAddToContactsClicked(contact);
       } else {
         passthroughClickListener.onClick(sharedContactStub.get());
@@ -833,7 +821,7 @@ public class ConversationItem extends LinearLayout
 
     @Override
     public void onInviteClicked(@NonNull List<Recipient> choices) {
-      if (eventListener != null && batchIsEmpty()) {
+      if (eventListener != null && batchSelected.isEmpty()) {
         eventListener.onInviteSharedContactClicked(choices);
       } else {
         passthroughClickListener.onClick(sharedContactStub.get());
@@ -842,7 +830,7 @@ public class ConversationItem extends LinearLayout
 
     @Override
     public void onMessageClicked(@NonNull List<Recipient> choices) {
-      if (eventListener != null && batchIsEmpty()) {
+      if (eventListener != null && batchSelected.isEmpty()) {
         eventListener.onMessageSharedContactClicked(choices);
       } else {
         passthroughClickListener.onClick(sharedContactStub.get());
@@ -884,7 +872,7 @@ public class ConversationItem extends LinearLayout
 
   private class ThumbnailClickListener implements SlideClickListener {
     public void onClick(final View v, final Slide slide) {
-      if (shouldInterceptClicks(messageRecord) || !batchIsEmpty()) {
+      if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
       } else if (MediaPreviewActivity.isContentTypeSupported(slide.getContentType()) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
