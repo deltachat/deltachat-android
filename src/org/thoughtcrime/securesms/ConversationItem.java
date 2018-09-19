@@ -811,16 +811,6 @@ public class ConversationItem extends LinearLayout
 
   /// Event handlers
 
-  private void handleApproveIdentity() {
-    List<IdentityKeyMismatch> mismatches = messageRecord.getIdentityKeyMismatches();
-
-    if (mismatches.size() != 1) {
-      throw new AssertionError("Identity mismatch count: " + mismatches.size());
-    }
-
-    new ConfirmIdentityDialog(context, messageRecord, mismatches.get(0)).show();
-  }
-
   @Override
   public void onModified(final Recipient modified) {
     Util.runOnMain(() -> {
@@ -951,16 +941,6 @@ public class ConversationItem extends LinearLayout
     public void onClick(View v) {
       if (!shouldInterceptClicks(messageRecord) && parent != null) {
         parent.onClick(v);
-      } else if (messageRecord.isFailed()) {
-        Intent intent = new Intent(context, MessageDetailsActivity.class);
-        intent.putExtra(MessageDetailsActivity.MESSAGE_ID_EXTRA, messageRecord.getId());
-        intent.putExtra(MessageDetailsActivity.THREAD_ID_EXTRA, messageRecord.getChatId());
-        intent.putExtra(MessageDetailsActivity.TYPE_EXTRA, /*messageRecord.isMms() ? MmsSmsDatabase.MMS_TRANSPORT :*/ MmsSmsDatabase.SMS_TRANSPORT);
-        intent.putExtra(MessageDetailsActivity.IS_PUSH_GROUP_EXTRA, false/*groupThread && messageRecord.isPush()*/);
-        intent.putExtra(MessageDetailsActivity.ADDRESS_EXTRA, conversationRecipient.getAddress());
-        context.startActivity(intent);
-      } else if (!messageRecord.isOutgoing() && messageRecord.isIdentityMismatchFailure()) {
-        handleApproveIdentity();
       }
     }
   }

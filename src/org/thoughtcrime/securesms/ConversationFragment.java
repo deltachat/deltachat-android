@@ -54,6 +54,7 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
@@ -226,7 +227,7 @@ public class ConversationFragment extends Fragment
 
   private void initializeListAdapter() {
     if (this.recipient != null && this.threadId != -1) {
-      ConversationAdapter adapter = new ConversationAdapter(getActivity(), GlideApp.with(this), locale, selectionClickListener, null, this.recipient);
+      ConversationAdapter adapter = new ConversationAdapter(getActivity(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
       list.setAdapter(adapter);
       list.addItemDecoration(new StickyHeaderDecoration(adapter, false, false));
 
@@ -408,13 +409,7 @@ public class ConversationFragment extends Fragment
   }
 
   private void handleDisplayDetails(MessageRecord message) {
-    Intent intent = new Intent(getActivity(), MessageDetailsActivity.class);
-    intent.putExtra(MessageDetailsActivity.MESSAGE_ID_EXTRA, message.getId());
-    intent.putExtra(MessageDetailsActivity.THREAD_ID_EXTRA, threadId);
-    intent.putExtra(MessageDetailsActivity.TYPE_EXTRA, message.isMms() ? MmsSmsDatabase.MMS_TRANSPORT : MmsSmsDatabase.SMS_TRANSPORT);
-    intent.putExtra(MessageDetailsActivity.ADDRESS_EXTRA, recipient.getAddress());
-    intent.putExtra(MessageDetailsActivity.IS_PUSH_GROUP_EXTRA, recipient.isGroupRecipient() && message.isPush());
-    startActivity(intent);
+    // TODO: show message info
   }
 
   private void handleForwardMessage(MessageRecord message) {
@@ -677,7 +672,7 @@ public class ConversationFragment extends Fragment
   private class ConversationFragmentItemClickListener implements ItemClickListener {
 
     @Override
-    public void onItemClick(MessageRecord messageRecord) {
+    public void onItemClick(DcMsg messageRecord) {
       if (actionMode != null) {
         ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
         list.getAdapter().notifyDataSetChanged();
@@ -692,7 +687,7 @@ public class ConversationFragment extends Fragment
     }
 
     @Override
-    public void onItemLongClick(MessageRecord messageRecord) {
+    public void onItemLongClick(DcMsg messageRecord) {
       if (actionMode == null) {
         ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
         list.getAdapter().notifyDataSetChanged();
@@ -702,7 +697,7 @@ public class ConversationFragment extends Fragment
     }
 
     @Override
-    public void onQuoteClicked(MmsMessageRecord messageRecord) {
+    public void onQuoteClicked(DcMsg messageRecord) {
       if (messageRecord.getQuote() == null) {
         Log.w(TAG, "Received a 'quote clicked' event, but there's no quote...");
         return;

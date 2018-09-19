@@ -94,7 +94,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private static final int MESSAGE_TYPE_DOCUMENT_OUTGOING  = 7;
   private static final int MESSAGE_TYPE_DOCUMENT_INCOMING  = 8;
 
-  private final Set<MessageRecord> batchSelected = Collections.synchronizedSet(new HashSet<MessageRecord>());
+  private final Set<DcMsg> batchSelected = Collections.synchronizedSet(new HashSet<DcMsg>());
 
   private final @Nullable ItemClickListener clickListener;
   private final @NonNull  GlideRequests     glideRequests;
@@ -254,7 +254,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return -1;
   }
 
-  public void toggleSelection(MessageRecord messageRecord) {
+  public void toggleSelection(DcMsg messageRecord) {
     if (!batchSelected.remove(messageRecord)) {
       batchSelected.add(messageRecord);
     }
@@ -264,7 +264,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     batchSelected.clear();
   }
 
-  public Set<MessageRecord> getSelectedItems() {
+  public Set<DcMsg> getSelectedItems() {
     return Collections.unmodifiableSet(new HashSet<>(batchSelected));
   }
 
@@ -404,5 +404,24 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 
+  public void setFooterView(@Nullable View footer) {
+    // TODO: must not be implemented, remove calls to this function
+  }
+
+  public void setHeaderView(@Nullable View footer) {
+    // TODO: must not be implemented, remove calls to this function
+  }
+
+  public void changeCursor(Cursor cursor) {
+    // TODO: implement this function
+  }
+
+  public void addFastRecord(@NonNull MessageRecord record) {
+    // TODO: i think this is not need, we simply should reload the view
+  }
+
+  public void releaseFastRecord(long id) {
+      // TODO: i think this is not need, we simply should reload the view
+  }
 }
 

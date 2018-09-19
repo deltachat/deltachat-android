@@ -171,6 +171,6 @@ public abstract class DisplayRecord {
   }
 
   public boolean isPendingInsecureSmsFallback() {
-    return SmsDatabase.Types.isPendingInsecureSmsFallbackType(type);
+    return false;
   }
 }

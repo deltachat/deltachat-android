@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.crypto.IdentityKeyParcelable;
 import org.thoughtcrime.securesms.database.IdentityDatabase;
 import org.thoughtcrime.securesms.database.IdentityDatabase.IdentityRecord;
@@ -38,14 +40,14 @@ public class ConversationUpdateItem extends LinearLayout
 {
   private static final String TAG = ConversationUpdateItem.class.getSimpleName();
 
-  private Set<MessageRecord> batchSelected;
+  private Set<DcMsg>    batchSelected;
 
   private ImageView     icon;
   private TextView      title;
   private TextView      body;
   private TextView      date;
   private Recipient     sender;
-  private MessageRecord messageRecord;
+  private DcMsg         messageRecord;
   private Locale        locale;
 
   public ConversationUpdateItem(Context context) {
@@ -69,12 +71,12 @@ public class ConversationUpdateItem extends LinearLayout
   }
 
   @Override
-  public void bind(@NonNull MessageRecord           messageRecord,
-                   @NonNull Optional<MessageRecord> previousMessageRecord,
-                   @NonNull Optional<MessageRecord> nextMessageRecord,
+  public void bind(@NonNull DcMsg                   messageRecord,
+                   @NonNull Optional<DcMsg>         previousMessageRecord,
+                   @NonNull Optional<DcMsg>         nextMessageRecord,
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Locale                  locale,
-                   @NonNull Set<MessageRecord>      batchSelected,
+                   @NonNull int[]                   messageIdsSelected,
                    @NonNull Recipient               conversationRecipient,
                             boolean                 pulseUpdate)
   {
@@ -89,11 +91,11 @@ public class ConversationUpdateItem extends LinearLayout
   }
 
   @Override
-  public MessageRecord getMessageRecord() {
+  public DcMsg getMessageRecord() {
     return messageRecord;
   }
 
-  private void bind(@NonNull MessageRecord messageRecord, @NonNull Locale locale) {
+  private void bind(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     this.messageRecord = messageRecord;
     this.sender        = messageRecord.getIndividualRecipient();
     this.locale        = locale;
@@ -114,7 +116,7 @@ public class ConversationUpdateItem extends LinearLayout
     else                                       setSelected(false);
   }
 
-  private void setCallRecord(MessageRecord messageRecord) {
+  private void setCallRecord(DcMsg messageRecord) {
     if      (messageRecord.isIncomingCall()) icon.setImageResource(R.drawable.ic_call_received_grey600_24dp);
     else if (messageRecord.isOutgoingCall()) icon.setImageResource(R.drawable.ic_call_made_grey600_24dp);
     else                                     icon.setImageResource(R.drawable.ic_call_missed_grey600_24dp);
@@ -127,7 +129,7 @@ public class ConversationUpdateItem extends LinearLayout
     date.setVisibility(View.VISIBLE);
   }
 
-  private void setTimerRecord(final MessageRecord messageRecord) {
+  private void setTimerRecord(final DcMsg messageRecord) {
     if (messageRecord.getExpiresIn() > 0) {
       icon.setImageResource(R.drawable.ic_timer);
       icon.setColorFilter(new PorterDuffColorFilter(Color.parseColor("#757575"), PorterDuff.Mode.MULTIPLY));
@@ -144,7 +146,7 @@ public class ConversationUpdateItem extends LinearLayout
     date.setVisibility(GONE);
   }
 
-  private void setIdentityRecord(final MessageRecord messageRecord) {
+  private void setIdentityRecord(final DcMsg messageRecord) {
     icon.setImageResource(R.drawable.ic_security_white_24dp);
     icon.setColorFilter(new PorterDuffColorFilter(Color.parseColor("#757575"), PorterDuff.Mode.MULTIPLY));
     body.setText(messageRecord.getDisplayBody());
@@ -154,7 +156,7 @@ public class ConversationUpdateItem extends LinearLayout
     date.setVisibility(GONE);
   }
 
-  private void setIdentityVerifyUpdate(final MessageRecord messageRecord) {
+  private void setIdentityVerifyUpdate(final DcMsg messageRecord) {
     if (messageRecord.isIdentityVerified()) icon.setImageResource(R.drawable.ic_check_white_24dp);
     else                                    icon.setImageResource(R.drawable.ic_info_outline_white_24dp);
 
@@ -166,7 +168,7 @@ public class ConversationUpdateItem extends LinearLayout
     date.setVisibility(GONE);
   }
 
-  private void setGroupRecord(MessageRecord messageRecord) {
+  private void setGroupRecord(DcMsg messageRecord) {
     icon.setImageResource(R.drawable.ic_group_grey600_24dp);
     icon.clearColorFilter();
 
@@ -178,7 +180,7 @@ public class ConversationUpdateItem extends LinearLayout
     date.setVisibility(GONE);
   }
 
-  private void setJoinedRecord(MessageRecord messageRecord) {
+  private void setJoinedRecord(DcMsg messageRecord) {
     icon.setImageResource(R.drawable.ic_favorite_grey600_24dp);
     icon.clearColorFilter();
     body.setText(messageRecord.getDisplayBody());
@@ -188,7 +190,7 @@ public class ConversationUpdateItem extends LinearLayout
     date.setVisibility(GONE);
   }
 
-  private void setEndSessionRecord(MessageRecord messageRecord) {
+  private void setEndSessionRecord(DcMsg messageRecord) {
     icon.setImageResource(R.drawable.ic_refresh_white_24dp);
     icon.setColorFilter(new PorterDuffColorFilter(Color.parseColor("#757575"), PorterDuff.Mode.MULTIPLY));
     body.setText(messageRecord.getDisplayBody());
