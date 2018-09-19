@@ -23,6 +23,16 @@
 package com.b44t.messenger;
 
 
+import android.support.annotation.Nullable;
+
+import org.thoughtcrime.securesms.database.Address;
+import org.thoughtcrime.securesms.database.model.Quote;
+import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.recipients.RecipientProvider;
+
+import java.util.Collections;
+import java.util.List;
+
 public class DcMsg {
 
     public final static int DC_MSG_UNDEFINED = 0;
@@ -53,10 +63,103 @@ public class DcMsg {
         this.msgCPtr = msgCPtr;
     }
 
-    @Override protected void finalize() throws Throwable {
+    @Override
+    protected void finalize() throws Throwable {
         super.finalize();
         unrefMsgCPtr();
         msgCPtr = 0;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || !(other instanceof DcMsg)) {
+            return false;
+        }
+
+        DcMsg that = (DcMsg) other;
+        return this.getId()==that.getId() && this.getId()!=0;
+    }
+
+    public boolean isOutgoing() {
+        return getFromId() != DcContact.DC_CONTACT_ID_SELF;
+    }
+
+    public boolean isGroupAction() {
+        // TODO: check DcChat
+        return false;
+    }
+
+    // the following are probably system messages in delta-land
+    public boolean isCallLog() { return false; }
+    public boolean isIncomingCall() { return false; }
+    public boolean isOutgoingCall() { return false; }
+    public boolean isJoined() { return false; }
+    public boolean isExpirationTimerUpdate() { return false; }
+    public boolean isEndSession() { return false; }
+    public boolean isIdentityUpdate() { return false; }
+    public boolean isIdentityVerified() { return false; }
+    public boolean isIdentityDefault() { return false; }
+
+    // aliases
+    public String getDisplayBody()  { return getText(); }
+    public String getBody()  { return getText(); }
+    public long getDateReceived() { return getTimestamp(); }
+
+    public boolean isFailed() {
+        return getState() == DC_STATE_OUT_ERROR;
+    }
+
+    public long getExpiresIn() {
+        return -1; // never.
+    }
+
+    public long getExpireStarted() {
+        return 0;
+    }
+
+    public boolean isSecure() {
+        return showPadlock()!=0;
+    }
+
+    public boolean isPending() {
+        return getState() == DC_STATE_OUT_PENDING;
+    }
+
+    public boolean isMediaPending() {
+        return isPending();
+    }
+
+    public boolean isDelivered() {
+        return getState() == DC_STATE_OUT_DELIVERED;
+    }
+
+    public boolean isRemoteRead() {
+        return getState() == DC_STATE_OUT_MDN_RCVD;
+    }
+
+    public boolean isUpdate() {
+        // I'm uncertain as what is meant by 'update' here, compare MessageRecord
+        return false;
+    }
+
+    public int getSubscriptionId() {
+        return -1;
+    }
+
+    public boolean isMms() {
+        return false;
+    }
+
+    @Nullable
+    public Quote getQuote() {
+        // TODO: remove the dependency to org.thoughtcrime.securesms.database.model.Quote
+        return null;
+    }
+
+    public Recipient getIndividualRecipient() {
+        // TODO: remove the dependency to org.thoughtcrime.securesms.recipients.Recipient
+        RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails("individualRecipient", null, false, null, null);
+        return new Recipient(Address.fromContact(getFromId()), recipientDetails);
     }
 
     public native int getId();

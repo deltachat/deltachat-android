@@ -54,11 +54,13 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.DcMsgListLoader;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.contactshare.SharedContactDetailsActivity;
 import org.thoughtcrime.securesms.contactshare.Contact;
@@ -93,7 +95,7 @@ import java.util.Set;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends Fragment
-  implements LoaderManager.LoaderCallbacks<Cursor>
+  implements LoaderManager.LoaderCallbacks<int[]>
 {
   private static final String TAG       = ConversationFragment.class.getSimpleName();
   private static final String KEY_LIMIT = "limit";
@@ -226,7 +228,7 @@ public class ConversationFragment extends Fragment
 
   private void initializeListAdapter() {
     if (this.recipient != null && this.threadId != -1) {
-      ConversationAdapter adapter = new ConversationAdapter(getActivity(), GlideApp.with(this), locale, selectionClickListener, null, this.recipient);
+      ConversationAdapter adapter = new ConversationAdapter(getActivity(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
       list.setAdapter(adapter);
       list.addItemDecoration(new StickyHeaderDecoration(adapter, false, false));
 
@@ -408,13 +410,7 @@ public class ConversationFragment extends Fragment
   }
 
   private void handleDisplayDetails(MessageRecord message) {
-    Intent intent = new Intent(getActivity(), MessageDetailsActivity.class);
-    intent.putExtra(MessageDetailsActivity.MESSAGE_ID_EXTRA, message.getId());
-    intent.putExtra(MessageDetailsActivity.THREAD_ID_EXTRA, threadId);
-    intent.putExtra(MessageDetailsActivity.TYPE_EXTRA, message.isMms() ? MmsSmsDatabase.MMS_TRANSPORT : MmsSmsDatabase.SMS_TRANSPORT);
-    intent.putExtra(MessageDetailsActivity.ADDRESS_EXTRA, recipient.getAddress());
-    intent.putExtra(MessageDetailsActivity.IS_PUSH_GROUP_EXTRA, recipient.isGroupRecipient() && message.isPush());
-    startActivity(intent);
+    // TODO: show message info
   }
 
   private void handleForwardMessage(MessageRecord message) {
@@ -466,54 +462,29 @@ public class ConversationFragment extends Fragment
   }
 
   @Override
-  public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+  public Loader<int[]> onCreateLoader(int id, Bundle args) {
     Log.w(TAG, "onCreateLoader");
     loaderStartTime = System.currentTimeMillis();
 
-    int limit  = args.getInt(KEY_LIMIT, PARTIAL_CONVERSATION_LIMIT);
-    int offset = 0;
-    if (limit != 0 && startingPosition > limit) {
-      offset = Math.max(startingPosition - (limit / 2) + 1, 0);
-      startingPosition -= offset - 1;
-    }
-
-    return new ConversationLoader(getActivity(), threadId, offset, limit, lastSeen);
+    return new DcMsgListLoader(getActivity(), (int)threadId, 0, 0);
   }
 
   @Override
-  public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+  public void onLoadFinished(Loader<int[]> arg0, int[] dcMsgList) {
     long loadTime = System.currentTimeMillis() - loaderStartTime;
-    int  count    = cursor.getCount();
-    Log.w(TAG, "onLoadFinished - took " + loadTime + " ms to load a cursor of size " + count);
-    ConversationLoader loader = (ConversationLoader)cursorLoader;
+    int  count    = dcMsgList.length;
+    Log.w(TAG, "onLoadFinished - took " + loadTime + " ms to load a message list of size " + count);
 
     ConversationAdapter adapter = getListAdapter();
     if (adapter == null) {
       return;
     }
 
-    if (cursor.getCount() >= PARTIAL_CONVERSATION_LIMIT && loader.hasLimit()) {
-      adapter.setFooterView(topLoadMoreView);
-    } else {
-      adapter.setFooterView(null);
-    }
-
     if (lastSeen == -1) {
-      setLastSeen(loader.getLastSeen());
+      //setLastSeen(loader.getLastSeen()); -- TODO
     }
 
-    if (!loader.hasSent() && !recipient.isSystemContact() && !recipient.isGroupRecipient() && recipient.getRegistered() == RecipientDatabase.RegisteredState.REGISTERED) {
-      adapter.setHeaderView(unknownSenderView);
-    } else {
-      adapter.setHeaderView(null);
-    }
-
-    if (loader.hasOffset()) {
-      adapter.setHeaderView(bottomLoadMoreView);
-      previousOffset = loader.getOffset();
-    }
-
-    adapter.changeCursor(cursor);
+    adapter.changeData(dcMsgList);
 
     int lastSeenPosition = adapter.findLastSeenPosition(lastSeen);
 
@@ -541,9 +512,9 @@ public class ConversationFragment extends Fragment
   }
 
   @Override
-  public void onLoaderReset(Loader<Cursor> arg0) {
+  public void onLoaderReset(Loader<int[]> arg0) {
     if (list.getAdapter() != null) {
-      getListAdapter().changeCursor(null);
+      getListAdapter().changeData(null);
     }
   }
 
@@ -677,7 +648,7 @@ public class ConversationFragment extends Fragment
   private class ConversationFragmentItemClickListener implements ItemClickListener {
 
     @Override
-    public void onItemClick(MessageRecord messageRecord) {
+    public void onItemClick(DcMsg messageRecord) {
       if (actionMode != null) {
         ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
         list.getAdapter().notifyDataSetChanged();
@@ -692,7 +663,7 @@ public class ConversationFragment extends Fragment
     }
 
     @Override
-    public void onItemLongClick(MessageRecord messageRecord) {
+    public void onItemLongClick(DcMsg messageRecord) {
       if (actionMode == null) {
         ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
         list.getAdapter().notifyDataSetChanged();
@@ -702,7 +673,7 @@ public class ConversationFragment extends Fragment
     }
 
     @Override
-    public void onQuoteClicked(MmsMessageRecord messageRecord) {
+    public void onQuoteClicked(DcMsg messageRecord) {
       if (messageRecord.getQuote() == null) {
         Log.w(TAG, "Received a 'quote clicked' event, but there's no quote...");
         return;

@@ -125,10 +125,6 @@ public interface MmsSmsColumns {
       return (type & BASE_TYPE_MASK) == BASE_PENDING_SECURE_SMS_FALLBACK;
     }
 
-    public static boolean isPendingInsecureSmsFallbackType(long type) {
-      return (type & BASE_TYPE_MASK) == BASE_PENDING_INSECURE_SMS_FALLBACK;
-    }
-
     public static boolean isInboxType(long type) {
       return (type & BASE_TYPE_MASK) == BASE_INBOX_TYPE;
     }

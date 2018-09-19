@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
@@ -72,7 +74,7 @@ public class ConversationItemFooter extends LinearLayout {
     timerView.stopAnimation();
   }
 
-  public void setMessageRecord(@NonNull MessageRecord messageRecord, @NonNull Locale locale) {
+  public void setMessageRecord(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     presentDate(messageRecord, locale);
     presentSimInfo(messageRecord);
     presentTimer(messageRecord);
@@ -91,19 +93,17 @@ public class ConversationItemFooter extends LinearLayout {
     deliveryStatusView.setTint(color);
   }
 
-  private void presentDate(@NonNull MessageRecord messageRecord, @NonNull Locale locale) {
+  private void presentDate(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     dateView.forceLayout();
 
     if (messageRecord.isFailed()) {
       dateView.setText(R.string.ConversationItem_error_not_delivered);
-    } else if (messageRecord.isPendingInsecureSmsFallback()) {
-      dateView.setText(R.string.ConversationItem_click_to_approve_unencrypted);
     } else {
       dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
     }
   }
 
-  private void presentSimInfo(@NonNull MessageRecord messageRecord) {
+  private void presentSimInfo(@NonNull DcMsg messageRecord) {
     SubscriptionManagerCompat subscriptionManager = new SubscriptionManagerCompat(getContext());
 
     if (messageRecord.getSubscriptionId() == -1 || !Permissions.hasAll(getContext(), Manifest.permission.READ_PHONE_STATE) || subscriptionManager.getActiveSubscriptionInfoList().size() < 2) {
@@ -124,7 +124,7 @@ public class ConversationItemFooter extends LinearLayout {
   }
 
   @SuppressLint("StaticFieldLeak")
-  private void presentTimer(@NonNull final MessageRecord messageRecord) {
+  private void presentTimer(@NonNull final DcMsg messageRecord) {
     if (messageRecord.getExpiresIn() > 0 && !messageRecord.isPending()) {
       this.timerView.setVisibility(View.VISIBLE);
       this.timerView.setPercentComplete(0);
@@ -158,12 +158,12 @@ public class ConversationItemFooter extends LinearLayout {
     }
   }
 
-  private void presentInsecureIndicator(@NonNull MessageRecord messageRecord) {
+  private void presentInsecureIndicator(@NonNull DcMsg messageRecord) {
     insecureIndicatorView.setVisibility(messageRecord.isSecure() ? View.GONE : View.VISIBLE);
   }
 
-  private void presentDeliveryStatus(@NonNull MessageRecord messageRecord) {
-    if (!messageRecord.isFailed() && !messageRecord.isPendingInsecureSmsFallback()) {
+  private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {
+    if (!messageRecord.isFailed()) {
       if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
       else if (messageRecord.isPending())    deliveryStatusView.setPending();
       else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();

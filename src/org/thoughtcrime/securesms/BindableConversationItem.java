@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
@@ -16,21 +18,21 @@ import java.util.Locale;
 import java.util.Set;
 
 public interface BindableConversationItem extends Unbindable {
-  void bind(@NonNull MessageRecord           messageRecord,
-            @NonNull Optional<MessageRecord> previousMessageRecord,
-            @NonNull Optional<MessageRecord> nextMessageRecord,
+  void bind(@NonNull DcMsg                   messageRecord,
+            @NonNull Optional<DcMsg>         previousMessageRecord,
+            @NonNull Optional<DcMsg>         nextMessageRecord,
             @NonNull GlideRequests           glideRequests,
             @NonNull Locale                  locale,
-            @NonNull Set<MessageRecord>      batchSelected,
+            @NonNull Set<DcMsg>              batchSelected,
             @NonNull Recipient               recipients,
                      boolean                 pulseHighlight);
 
-  MessageRecord getMessageRecord();
+  DcMsg getMessageRecord();
 
   void setEventListener(@Nullable EventListener listener);
 
   interface EventListener {
-    void onQuoteClicked(MmsMessageRecord messageRecord);
+    void onQuoteClicked(DcMsg messageRecord);
     void onSharedContactDetailsClicked(@NonNull Contact contact, @NonNull View avatarTransitionView);
     void onAddToContactsClicked(@NonNull Contact contact);
     void onMessageSharedContactClicked(@NonNull List<Recipient> choices);

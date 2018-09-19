@@ -30,13 +30,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.annimon.stream.Stream;
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.FastCursorRecyclerViewAdapter;
 import org.thoughtcrime.securesms.database.MmsSmsColumns;
 import org.thoughtcrime.securesms.database.MmsSmsDatabase;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
@@ -65,22 +67,22 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * A cursor adapter for a conversation thread.  Ultimately
- * used by ComposeMessageActivity to display a conversation
+ * A DC adapter for a conversation thread.  Ultimately
+ * used by ConversationActivity to display a conversation
  * thread in a ListActivity.
  *
  * @author Moxie Marlinspike
  *
  */
 public class ConversationAdapter <V extends View & BindableConversationItem>
-    extends FastCursorRecyclerViewAdapter<ConversationAdapter.ViewHolder, MessageRecord> // TODO: base this on RecyclerView.Adapter (see ConversationListAdapter)
+    extends RecyclerView.Adapter
   implements StickyHeaderDecoration.StickyHeaderAdapter<HeaderViewHolder>
 {
 
   private static final int MAX_CACHE_SIZE = 40;
   private static final String TAG = ConversationAdapter.class.getSimpleName();
-  private final Map<String,SoftReference<MessageRecord>> messageRecordCache =
-      Collections.synchronizedMap(new LRUCache<String, SoftReference<MessageRecord>>(MAX_CACHE_SIZE));
+  private final Map<Integer,SoftReference<DcMsg>> messageRecordCache =
+      Collections.synchronizedMap(new LRUCache<Integer,SoftReference<DcMsg>>(MAX_CACHE_SIZE)); // TODO: use the cache
 
   private static final int MESSAGE_TYPE_OUTGOING           = 0;
   private static final int MESSAGE_TYPE_INCOMING           = 1;
@@ -92,21 +94,20 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private static final int MESSAGE_TYPE_DOCUMENT_OUTGOING  = 7;
   private static final int MESSAGE_TYPE_DOCUMENT_INCOMING  = 8;
 
-  private final Set<MessageRecord> batchSelected = Collections.synchronizedSet(new HashSet<MessageRecord>());
+  private final Set<DcMsg> batchSelected = Collections.synchronizedSet(new HashSet<DcMsg>());
 
   private final @Nullable ItemClickListener clickListener;
   private final @NonNull  GlideRequests     glideRequests;
   private final @NonNull  Locale            locale;
   private final @NonNull  Recipient         recipient;
-  private final @NonNull  MmsSmsDatabase    db;
   private final @NonNull  LayoutInflater    inflater;
+  private final @NonNull  Context           context;
   private final @NonNull  Calendar          calendar;
   private final @NonNull  MessageDigest     digest;
 
-  private MessageRecord recordToPulseHighlight;
-
   private ApplicationDcContext dcContext;
-  private int[]                dcMsgList = new int[0];
+  private @NonNull int[]       dcMsgList = new int[0];
+  private int                  recordToPulseHighlight;
 
   protected static class ViewHolder extends RecyclerView.ViewHolder {
     public <V extends View & BindableConversationItem> ViewHolder(final @NonNull V itemView) {
@@ -117,8 +118,20 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     public <V extends View & BindableConversationItem> V getView() {
       return (V)itemView;
     }
+
+    public BindableConversationItem getItem() {
+      return getView();
+    }
   }
 
+  @Override
+  public int getItemCount() {
+    return dcMsgList.length;
+  }
+
+  private DcMsg getMsg(int position) {
+    return dcContext.getMsg(dcMsgList[position]);
+  }
 
   static class HeaderViewHolder extends RecyclerView.ViewHolder {
     TextView textView;
@@ -140,22 +153,21 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
 
   interface ItemClickListener extends BindableConversationItem.EventListener {
-    void onItemClick(MessageRecord item);
-    void onItemLongClick(MessageRecord item);
+    void onItemClick(DcMsg item);
+    void onItemLongClick(DcMsg item);
   }
 
   @SuppressWarnings("ConstantConditions")
   @VisibleForTesting
-  ConversationAdapter(Context context, Cursor cursor) {
-    super(context, cursor);
+  ConversationAdapter(Context context) {
     try {
       this.glideRequests = null;
       this.locale        = null;
       this.clickListener = null;
       this.recipient     = null;
       this.inflater      = null;
-      this.db            = null;
       this.calendar      = null;
+      this.context       = context;
       this.digest        = MessageDigest.getInstance("SHA1");
       this.dcContext     = DcHelper.getContext(context);
     } catch (NoSuchAlgorithmException nsae) {
@@ -167,20 +179,17 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
                              @NonNull GlideRequests glideRequests,
                              @NonNull Locale locale,
                              @Nullable ItemClickListener clickListener,
-                             @Nullable Cursor cursor,
-                             @NonNull Recipient recipient)
-  {
-    super(context, cursor);
-
+                             @NonNull Recipient recipient) {
     try {
       this.glideRequests = glideRequests;
-      this.locale        = locale;
+      this.locale = locale;
       this.clickListener = clickListener;
-      this.recipient     = recipient;
-      this.inflater      = LayoutInflater.from(context);
-      this.db            = DatabaseFactory.getMmsSmsDatabase(context);
-      this.calendar      = Calendar.getInstance();
-      this.digest        = MessageDigest.getInstance("SHA1");
+      this.recipient = recipient;
+      this.context = context;
+      this.inflater = LayoutInflater.from(context);
+      this.calendar = Calendar.getInstance();
+      this.digest = MessageDigest.getInstance("SHA1");
+      this.dcContext     = DcHelper.getContext(context);
 
       setHasStableIds(true);
     } catch (NoSuchAlgorithmException nsae) {
@@ -189,37 +198,16 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   @Override
-  public void changeCursor(Cursor cursor) { // TOOD: this should take a int[] instead of a cursor; the int[] is saved in dcMsgList then
-    messageRecordCache.clear();
-    super.cleanFastRecords();
-    super.changeCursor(cursor);
+  public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    ConversationAdapter.ViewHolder holder = (ConversationAdapter.ViewHolder)viewHolder;
+    Optional<DcMsg> previous = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
+    Optional<DcMsg> next = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
+    boolean pulseHighlight = dcMsgList[position] == recordToPulseHighlight;
+    holder.getItem().bind(getMsg(position), previous, next, glideRequests, locale, batchSelected, recipient, pulseHighlight);
   }
 
   @Override
-  protected void onBindItemViewHolder(ViewHolder viewHolder, @NonNull MessageRecord messageRecord) {
-    long          start            = System.currentTimeMillis();
-    int           adapterPosition  = viewHolder.getAdapterPosition();
-    MessageRecord previousRecord   = adapterPosition < getItemCount() - 1 && !isFooterPosition(adapterPosition + 1) ? getRecordForPositionOrThrow(adapterPosition + 1) : null;
-    MessageRecord nextRecord       = adapterPosition > 0 && !isHeaderPosition(adapterPosition - 1) ? getRecordForPositionOrThrow(adapterPosition - 1) : null;
-
-    viewHolder.getView().bind(messageRecord,
-                              Optional.fromNullable(previousRecord),
-                              Optional.fromNullable(nextRecord),
-                              glideRequests,
-                              locale,
-                              batchSelected,
-                              recipient,
-                              messageRecord == recordToPulseHighlight);
-
-    if (messageRecord == recordToPulseHighlight) {
-      recordToPulseHighlight = null;
-    }
-
-    Log.w(TAG, "Bind time: " + (System.currentTimeMillis() - start));
-  }
-
-  @Override
-  public ViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     long start = System.currentTimeMillis();
     final V itemView = ViewUtil.inflate(inflater, parent, getLayoutForViewType(viewType));
     itemView.setOnClickListener(view -> {
@@ -238,11 +226,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return new ViewHolder(itemView);
   }
 
-  @Override
-  public void onItemViewRecycled(ViewHolder holder) {
-    holder.getView().unbind();
-  }
-
   private @LayoutRes int getLayoutForViewType(int viewType) {
     switch (viewType) {
       case MESSAGE_TYPE_AUDIO_OUTGOING:
@@ -259,16 +242,18 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   @Override
-  public int getItemViewType(@NonNull MessageRecord messageRecord) {
+  public int getItemViewType(int i) {
+    DcMsg messageRecord = getMsg(i);
+    int type = messageRecord.getType();
     if (messageRecord.isUpdate()) {
       return MESSAGE_TYPE_UPDATE;
-    } else if (hasAudio(messageRecord)) {
+    } else if (type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE) {
       if (messageRecord.isOutgoing()) return MESSAGE_TYPE_AUDIO_OUTGOING;
       else                            return MESSAGE_TYPE_AUDIO_INCOMING;
-    } else if (hasDocument(messageRecord)) {
+    } else if (type==DcMsg.DC_MSG_FILE) {
       if (messageRecord.isOutgoing()) return MESSAGE_TYPE_DOCUMENT_OUTGOING;
       else                            return MESSAGE_TYPE_DOCUMENT_INCOMING;
-    } else if (hasThumbnail(messageRecord)) {
+    } else if (type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_VIDEO) {
       if (messageRecord.isOutgoing()) return MESSAGE_TYPE_THUMBNAIL_OUTGOING;
       else                            return MESSAGE_TYPE_THUMBNAIL_INCOMING;
     } else if (messageRecord.isOutgoing()) {
@@ -278,77 +263,25 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 
-  @Override
-  protected boolean isRecordForId(@NonNull MessageRecord record, long id) {
-    return record.getId() == id;
-  }
-
-  @Override
-  public long getItemId(@NonNull Cursor cursor) {
-    List<DatabaseAttachment> attachments        = DatabaseFactory.getAttachmentDatabase(getContext()).getAttachment(cursor);
-    List<DatabaseAttachment> messageAttachments = Stream.of(attachments).filterNot(DatabaseAttachment::isQuote).toList();
-
-    if (messageAttachments.size() > 0 && messageAttachments.get(0).getFastPreflightId() != null) {
-      return Long.valueOf(messageAttachments.get(0).getFastPreflightId());
-    }
-
-    final String unique = cursor.getString(cursor.getColumnIndexOrThrow(MmsSmsColumns.UNIQUE_ROW_ID));
-    final byte[] bytes  = digest.digest(unique.getBytes());
-    return Conversions.byteArrayToLong(bytes);
-  }
-
-  @Override
-  protected long getItemId(@NonNull MessageRecord record) {
-    if (record.isOutgoing() && record.isMms()) {
-      SlideDeck slideDeck = ((MmsMessageRecord)record).getSlideDeck();
-
-      if (slideDeck.getThumbnailSlide() != null && slideDeck.getThumbnailSlide().getFastPreflightId() != null) {
-        return Long.valueOf(slideDeck.getThumbnailSlide().getFastPreflightId());
-      }
-    }
-
-    return record.getId();
-  }
-
-  @Override
-  protected MessageRecord getRecordFromCursor(@NonNull Cursor cursor) {
-    long   messageId = cursor.getLong(cursor.getColumnIndexOrThrow(MmsSmsColumns.ID));
-    String type      = cursor.getString(cursor.getColumnIndexOrThrow(MmsSmsDatabase.TRANSPORT));
-
-    final SoftReference<MessageRecord> reference = messageRecordCache.get(type + messageId);
-    if (reference != null) {
-      final MessageRecord record = reference.get();
-      if (record != null) return record;
-    }
-
-    final MessageRecord messageRecord = db.readerFor(cursor).getCurrent();
-    messageRecordCache.put(type + messageId, new SoftReference<>(messageRecord));
-
-    return messageRecord;
-  }
-
-  public void close() {
-    getCursor().close();
-  }
-
   public int findLastSeenPosition(long lastSeen) {
+    /* TODO -- we shoud do this without loading all messages in the chat
     if (lastSeen <= 0)     return -1;
-    if (!isActiveCursor()) return -1;
+    if (isActive())        return -1;
 
-    int count = getItemCount() - (hasFooterView() ? 1 : 0);
+    int count = getItemCount();
 
-    for (int i=(hasHeaderView() ? 1 : 0);i<count;i++) {
-      MessageRecord messageRecord = getRecordForPositionOrThrow(i);
-
-      if (messageRecord.isOutgoing() || messageRecord.getDateReceived() <= lastSeen) {
+    for (int i = 0;i<count;i++) {
+      DcMsg msg = getMsg(i);
+      if (msg.isOutgoing() || msg.getTimestamp() <= lastSeen) {
         return i;
       }
     }
+    */
 
     return -1;
   }
 
-  public void toggleSelection(MessageRecord messageRecord) {
+  public void toggleSelection(DcMsg messageRecord) {
     if (!batchSelected.remove(messageRecord)) {
       batchSelected.add(messageRecord);
     }
@@ -358,54 +291,60 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     batchSelected.clear();
   }
 
-  public Set<MessageRecord> getSelectedItems() {
+  public Set<DcMsg> getSelectedItems() {
     return Collections.unmodifiableSet(new HashSet<>(batchSelected));
   }
 
   public void pulseHighlightItem(int position) {
     if (position < getItemCount()) {
-      recordToPulseHighlight = getRecordForPositionOrThrow(position);
+      recordToPulseHighlight = position;
       notifyItemChanged(position);
     }
   }
 
-  private boolean hasAudio(MessageRecord messageRecord) {
-    return messageRecord.isMms() && ((MmsMessageRecord)messageRecord).getSlideDeck().getAudioSlide() != null;
+  protected boolean isFooterPosition(int position) {
+//    return hasFooterView() && position == getItemCount() - 1;
+    return false;
   }
 
-  private boolean hasDocument(MessageRecord messageRecord) {
-    return messageRecord.isMms() && ((MmsMessageRecord)messageRecord).getSlideDeck().getDocumentSlide() != null;
-  }
-
-  private boolean hasThumbnail(MessageRecord messageRecord) {
-    return messageRecord.isMms() && ((MmsMessageRecord)messageRecord).getSlideDeck().getThumbnailSlide() != null;
+  protected boolean isHeaderPosition(int position) {
+//    return hasHeaderView() && position == 0;
+    return false;
   }
 
   @Override
   public long getHeaderId(int position) {
-    if (!isActiveCursor())          return -1;
-    if (isHeaderPosition(position)) return -1;
-    if (isFooterPosition(position)) return -1;
-    if (position >= getItemCount()) return -1;
-    if (position < 0)               return -1;
+    return -1; // no header Id.
+//    if (isActive())      return -1;
+//    if (isHeaderPosition(position)) return -1;
+//    if (isFooterPosition(position)) return -1;
+//    if (position >= getItemCount()) return -1;
+//    if (position < 0)               return -1;
+//
+//    MessageRecord record = getRecordForPositionOrThrow(position);
+//
+//    calendar.setTime(new Date(record.getDateSent()));
+//    return Util.hashCode(calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_YEAR));
+  }
 
-    MessageRecord record = getRecordForPositionOrThrow(position);
-
-    calendar.setTime(new Date(record.getDateSent()));
-    return Util.hashCode(calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_YEAR));
+  public boolean isActive() {
+    return dcMsgList.length > 0;
   }
 
   public long getReceivedTimestamp(int position) {
-    if (!isActiveCursor())          return 0;
+    if (isActive())                 return 0;
     if (isHeaderPosition(position)) return 0;
     if (isFooterPosition(position)) return 0;
     if (position >= getItemCount()) return 0;
     if (position < 0)               return 0;
 
-    MessageRecord messageRecord = getRecordForPositionOrThrow(position);
+    DcMsg msg = getMsg(position);
+    return msg.getTimestamp();
+  }
 
-    if (messageRecord.isOutgoing()) return 0;
-    else                            return messageRecord.getDateReceived();
+  @NonNull
+  public Context getContext() {
+    return context;
   }
 
   @Override
@@ -419,8 +358,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    MessageRecord messageRecord = getRecordForPositionOrThrow(position);
-    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, messageRecord.getDateReceived()));
+    DcMsg msg = getMsg(position);
+    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, msg.getTimestamp()));
   }
 
   public void onBindLastSeenViewHolder(HeaderViewHolder viewHolder, int position) {
@@ -440,7 +379,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
     @Override
     protected boolean hasHeader(RecyclerView parent, StickyHeaderAdapter stickyAdapter, int position) {
-      if (!adapter.isActiveCursor()) {
+      if (!adapter.isActive()) {
         return false;
       }
 
@@ -477,5 +416,22 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 
+  public void changeData(@Nullable int[] dcMsgList) {
+    this.dcMsgList = dcMsgList==null? new int[0] : dcMsgList;
+    messageRecordCache.clear();
+    notifyDataSetChanged();
+  }
+
+  public void setHeaderView(@Nullable View headerView) {
+    // TODO: must not be implemented, remove calls to this function
+  }
+
+  public void addFastRecord(@NonNull MessageRecord record) {
+    // TODO: i think this is not need, we simply should reload the view
+  }
+
+  public void releaseFastRecord(long id) {
+      // TODO: i think this is not need, we simply should reload the view
+  }
 }
 
