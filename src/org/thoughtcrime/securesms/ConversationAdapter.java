@@ -130,7 +130,10 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   private DcMsg getMsg(int position) {
-    return dcContext.getMsg(dcMsgList[position]);
+    if(position>=0 && position<dcMsgList.length) {
+      return dcContext.getMsg(dcMsgList[dcMsgList.length-1-position]);
+    }
+    return new DcMsg(0);
   }
 
   static class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -200,8 +203,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
     ConversationAdapter.ViewHolder holder = (ConversationAdapter.ViewHolder)viewHolder;
-    Optional<DcMsg> previous = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
-    Optional<DcMsg> next = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
+    Optional<DcMsg> previous = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
+    Optional<DcMsg> next = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
     boolean pulseHighlight = dcMsgList[position] == recordToPulseHighlight;
     holder.getItem().bind(getMsg(position), previous, next, glideRequests, locale, batchSelected, recipient, pulseHighlight);
   }

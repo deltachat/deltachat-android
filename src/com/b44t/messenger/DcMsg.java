@@ -81,7 +81,7 @@ public class DcMsg {
     }
 
     public boolean isOutgoing() {
-        return getFromId() != DcContact.DC_CONTACT_ID_SELF;
+        return getFromId() == DcContact.DC_CONTACT_ID_SELF;
     }
 
     public boolean isGroupAction() {
