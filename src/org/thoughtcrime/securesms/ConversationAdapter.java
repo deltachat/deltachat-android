@@ -17,7 +17,6 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,28 +28,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.annimon.stream.Stream;
-import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
-import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.MmsSmsColumns;
-import org.thoughtcrime.securesms.database.MmsSmsDatabase;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
-import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.Conversions;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.whispersystems.libsignal.util.guava.Optional;
 
@@ -59,9 +47,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -86,7 +72,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   private static final int MESSAGE_TYPE_OUTGOING           = 0;
   private static final int MESSAGE_TYPE_INCOMING           = 1;
-  private static final int MESSAGE_TYPE_UPDATE             = 2;
+  private static final int MESSAGE_TYPE_INFO               = 2;
   private static final int MESSAGE_TYPE_AUDIO_OUTGOING     = 3;
   private static final int MESSAGE_TYPE_AUDIO_INCOMING     = 4;
   private static final int MESSAGE_TYPE_THUMBNAIL_OUTGOING = 5;
@@ -206,6 +192,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     Optional<DcMsg> previous = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
     Optional<DcMsg> next = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
     boolean pulseHighlight = dcMsgList[position] == recordToPulseHighlight;
+
     holder.getItem().bind(getMsg(position), previous, next, glideRequests, locale, batchSelected, recipient, pulseHighlight);
   }
 
@@ -239,30 +226,29 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       case MESSAGE_TYPE_THUMBNAIL_INCOMING:
       case MESSAGE_TYPE_DOCUMENT_INCOMING:
       case MESSAGE_TYPE_INCOMING:        return R.layout.conversation_item_received;
-      case MESSAGE_TYPE_UPDATE:          return R.layout.conversation_item_update;
+      case MESSAGE_TYPE_INFO:            return R.layout.conversation_item_update;
       default: throw new IllegalArgumentException("unsupported item view type given to ConversationAdapter");
     }
   }
 
   @Override
   public int getItemViewType(int i) {
-    DcMsg messageRecord = getMsg(i);
-    int type = messageRecord.getType();
-    if (messageRecord.isUpdate()) {
-      return MESSAGE_TYPE_UPDATE;
-    } else if (type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE) {
-      if (messageRecord.isOutgoing()) return MESSAGE_TYPE_AUDIO_OUTGOING;
-      else                            return MESSAGE_TYPE_AUDIO_INCOMING;
-    } else if (type==DcMsg.DC_MSG_FILE) {
-      if (messageRecord.isOutgoing()) return MESSAGE_TYPE_DOCUMENT_OUTGOING;
-      else                            return MESSAGE_TYPE_DOCUMENT_INCOMING;
-    } else if (type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_VIDEO) {
-      if (messageRecord.isOutgoing()) return MESSAGE_TYPE_THUMBNAIL_OUTGOING;
-      else                            return MESSAGE_TYPE_THUMBNAIL_INCOMING;
-    } else if (messageRecord.isOutgoing()) {
-      return MESSAGE_TYPE_OUTGOING;
-    } else {
-      return MESSAGE_TYPE_INCOMING;
+    DcMsg dcMsg = getMsg(i);
+    int type = dcMsg.getType();
+    if (dcMsg.isInfo()) {
+      return MESSAGE_TYPE_INFO;
+    }
+    else if (type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE) {
+      return dcMsg.isOutgoing()? MESSAGE_TYPE_AUDIO_OUTGOING : MESSAGE_TYPE_AUDIO_INCOMING;
+    }
+    else if (type==DcMsg.DC_MSG_FILE) {
+      return dcMsg.isOutgoing()? MESSAGE_TYPE_DOCUMENT_OUTGOING : MESSAGE_TYPE_DOCUMENT_INCOMING;
+    }
+    else if (type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_VIDEO) {
+      return dcMsg.isOutgoing()? MESSAGE_TYPE_THUMBNAIL_OUTGOING : MESSAGE_TYPE_THUMBNAIL_INCOMING;
+    }
+    else {
+      return dcMsg.isOutgoing()? MESSAGE_TYPE_OUTGOING : MESSAGE_TYPE_INCOMING;
     }
   }
 

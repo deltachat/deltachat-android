@@ -103,30 +103,16 @@ public class ConversationUpdateItem extends LinearLayout
     this.sender.addListener(this);
 
     if      (messageRecord.isGroupAction())           setGroupRecord(messageRecord);
-    else if (messageRecord.isCallLog())               setCallRecord(messageRecord);
     else if (messageRecord.isJoined())                setJoinedRecord(messageRecord);
     else if (messageRecord.isExpirationTimerUpdate()) setTimerRecord(messageRecord);
     else if (messageRecord.isEndSession())            setEndSessionRecord(messageRecord);
     else if (messageRecord.isIdentityUpdate())        setIdentityRecord(messageRecord);
     else if (messageRecord.isIdentityVerified() ||
              messageRecord.isIdentityDefault())       setIdentityVerifyUpdate(messageRecord);
-    else                                              throw new AssertionError("Neither group nor log nor joined.");
+    else                                              setGenericInfoRecord(messageRecord);
 
     if (batchSelected.contains(messageRecord)) setSelected(true);
     else                                       setSelected(false);
-  }
-
-  private void setCallRecord(DcMsg messageRecord) {
-    if      (messageRecord.isIncomingCall()) icon.setImageResource(R.drawable.ic_call_received_grey600_24dp);
-    else if (messageRecord.isOutgoingCall()) icon.setImageResource(R.drawable.ic_call_made_grey600_24dp);
-    else                                     icon.setImageResource(R.drawable.ic_call_missed_grey600_24dp);
-
-    body.setText(messageRecord.getDisplayBody());
-    date.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), locale, messageRecord.getDateReceived()));
-
-    title.setVisibility(GONE);
-    body.setVisibility(VISIBLE);
-    date.setVisibility(View.VISIBLE);
   }
 
   private void setTimerRecord(final DcMsg messageRecord) {
@@ -199,7 +185,18 @@ public class ConversationUpdateItem extends LinearLayout
     body.setVisibility(VISIBLE);
     date.setVisibility(GONE);
   }
-  
+
+  private void setGenericInfoRecord(DcMsg messageRecord) {
+    icon.setImageResource(R.drawable.ic_group_grey600_24dp);
+    icon.clearColorFilter();
+
+    body.setText(messageRecord.getDisplayBody());
+
+    title.setVisibility(GONE);
+    body.setVisibility(VISIBLE);
+    date.setVisibility(GONE);
+  }
+
   @Override
   public void onModified(Recipient recipient) {
     Util.runOnMain(() -> bind(messageRecord, locale));

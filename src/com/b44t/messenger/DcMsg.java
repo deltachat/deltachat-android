@@ -90,9 +90,6 @@ public class DcMsg {
     }
 
     // the following are probably system messages in delta-land
-    public boolean isCallLog() { return false; }
-    public boolean isIncomingCall() { return false; }
-    public boolean isOutgoingCall() { return false; }
     public boolean isJoined() { return false; }
     public boolean isExpirationTimerUpdate() { return false; }
     public boolean isEndSession() { return false; }
@@ -135,11 +132,6 @@ public class DcMsg {
 
     public boolean isRemoteRead() {
         return getState() == DC_STATE_OUT_MDN_RCVD;
-    }
-
-    public boolean isUpdate() {
-        // I'm uncertain as what is meant by 'update' here, compare MessageRecord
-        return false;
     }
 
     public int getSubscriptionId() {
