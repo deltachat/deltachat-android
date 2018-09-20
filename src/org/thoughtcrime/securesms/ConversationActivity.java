@@ -346,7 +346,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer.onResume();
 
     initializeEnabledCheck();
-    initializeMmsEnabledCheck();
     composeText.setTransport(sendButton.getSelectedTransport());
 
     titleView.setTitle(glideRequests, dcChat);
@@ -931,7 +930,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeEnabledCheck() {
-    boolean enabled = !(isPushGroupConversation() && !isActiveGroup());
+    boolean enabled = true;
     inputPanel.setEnabled(enabled);
     sendButton.setEnabled(enabled);
     attachButton.setEnabled(enabled);
@@ -1010,53 +1009,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     handleSecurityChange(currentSecureText || isPushGroupConversation(), currentIsDefaultSms);
 
-    new AsyncTask<Recipient, Void, boolean[]>() {
-      @Override
-      protected boolean[] doInBackground(Recipient... params) {
-        Context           context         = ConversationActivity.this;
-        Recipient         recipient       = params[0];
-        Log.w(TAG, "Resolving registered state...");
-        RegisteredState registeredState;
-
-        if (recipient.isPushGroupRecipient()) {
-          Log.w(TAG, "Push group recipient...");
-          registeredState = RegisteredState.REGISTERED;
-        } else if (recipient.isResolving()) {
-          Log.w(TAG, "Talking to DB directly.");
-          registeredState = DatabaseFactory.getRecipientDatabase(ConversationActivity.this).isRegistered(recipient.getAddress());
-        } else {
-          Log.w(TAG, "Checking through resolved recipient");
-          registeredState = recipient.resolve().getRegistered();
-        }
-
-        Log.w(TAG, "Resolved registered state: " + registeredState);
-        boolean           signalEnabled   = TextSecurePreferences.isPushRegistered(context);
-
-        if (registeredState == RegisteredState.UNKNOWN) {
-          try {
-            Log.w(TAG, "Refreshing directory for user: " + recipient.getAddress().serialize());
-            registeredState = DirectoryHelper.refreshDirectoryFor(context, recipient);
-          } catch (IOException e) {
-            Log.w(TAG, e);
-          }
-        }
-
-        Log.w(TAG, "Returning registered state...");
-        return new boolean[] {registeredState == RegisteredState.REGISTERED && signalEnabled,
-                              false};
-      }
-
-      @Override
-      protected void onPostExecute(boolean[] result) {
-        if (result[0] != currentSecureText || result[1] != currentIsDefaultSms) {
-          Log.w(TAG, "onPostExecute() handleSecurityChange: " + result[0] + " , " + result[1]);
-          handleSecurityChange(result[0], result[1]);
-        }
-        future.set(true);
-        onSecurityUpdated();
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, recipient);
-
+    future.set(true);
+    onSecurityUpdated();
     return future;
   }
 
@@ -1082,20 +1036,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void updateDefaultSubscriptionId(Optional<Integer> defaultSubscriptionId) {
     Log.w(TAG, "updateDefaultSubscriptionId(" + defaultSubscriptionId.orNull() + ")");
     sendButton.setDefaultSubscriptionId(defaultSubscriptionId);
-  }
-
-  private void initializeMmsEnabledCheck() {
-    new AsyncTask<Void, Void, Boolean>() {
-      @Override
-      protected Boolean doInBackground(Void... params) {
-        return Util.isMmsCapable(ConversationActivity.this);
-      }
-
-      @Override
-      protected void onPostExecute(Boolean isMmsEnabled) {
-        ConversationActivity.this.isMmsEnabled = isMmsEnabled;
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
 
   private void initializeViews() {
