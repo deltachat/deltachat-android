@@ -154,6 +154,11 @@ public class DcMsg {
         return new Recipient(Address.fromContact(getFromId()), recipientDetails);
     }
 
+    public boolean hasFile() {
+        String file = getFile();
+        return file!=null && !file.isEmpty();
+    }
+
     public native int getId();
     public native String getText();
     public native long getTimestamp();

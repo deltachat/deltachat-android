@@ -265,7 +265,7 @@ public class ConversationFragment extends Fragment
   }
 
   private void setCorrectMenuVisibility(Menu menu) {
-    Set<MessageRecord> messageRecords = getListAdapter().getSelectedItems();
+    Set<DcMsg>         messageRecords = getListAdapter().getSelectedItems();
     boolean            actionMessage  = false;
     boolean            hasText        = false;
 
@@ -274,8 +274,8 @@ public class ConversationFragment extends Fragment
       return;
     }
 
-    for (MessageRecord messageRecord : messageRecords) {
-      if (messageRecord.isGroupAction() || messageRecord.isCallLog() ||
+    for (DcMsg messageRecord : messageRecords) {
+      if (messageRecord.isGroupAction() ||
           messageRecord.isJoined() || messageRecord.isExpirationTimerUpdate() ||
           messageRecord.isEndSession() || messageRecord.isIdentityUpdate() ||
           messageRecord.isIdentityVerified() || messageRecord.isIdentityDefault())
@@ -297,20 +297,17 @@ public class ConversationFragment extends Fragment
       menu.findItem(R.id.menu_context_save_attachment).setVisible(false);
       menu.findItem(R.id.menu_context_resend).setVisible(false);
     } else {
-      MessageRecord messageRecord = messageRecords.iterator().next();
+      DcMsg messageRecord = messageRecords.iterator().next();
 
-      menu.findItem(R.id.menu_context_resend).setVisible(messageRecord.isFailed());
-      menu.findItem(R.id.menu_context_save_attachment).setVisible(!actionMessage                     &&
-                                                                  messageRecord.isMms()              &&
-                                                                  !messageRecord.isMmsNotification() &&
-                                                                  ((MediaMmsMessageRecord)messageRecord).containsMediaSlide());
+      menu.findItem(R.id.menu_context_resend).setVisible(false/*messageRecord.isFailed()*/);
+      menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
 
       menu.findItem(R.id.menu_context_forward).setVisible(!actionMessage);
       menu.findItem(R.id.menu_context_details).setVisible(!actionMessage);
-      menu.findItem(R.id.menu_context_reply).setVisible(!actionMessage             &&
+      menu.findItem(R.id.menu_context_reply).setVisible(false/*!actionMessage             &&
                                                         !messageRecord.isPending() &&
                                                         !messageRecord.isFailed()  &&
-                                                        messageRecord.isSecure());
+                                                        messageRecord.isSecure()*/);
     }
     menu.findItem(R.id.menu_context_copy).setVisible(!actionMessage && hasText);
   }
@@ -319,8 +316,8 @@ public class ConversationFragment extends Fragment
     return (ConversationAdapter) list.getAdapter();
   }
 
-  private MessageRecord getSelectedMessageRecord() {
-    Set<MessageRecord> messageRecords = getListAdapter().getSelectedItems();
+  private DcMsg getSelectedMessageRecord() {
+    Set<DcMsg> messageRecords = getListAdapter().getSelectedItems();
 
     if (messageRecords.size() == 1) return messageRecords.iterator().next();
     else                            throw new AssertionError();
@@ -353,11 +350,11 @@ public class ConversationFragment extends Fragment
     list.addItemDecoration(lastSeenDecoration);
   }
 
-  private void handleCopyMessage(final Set<MessageRecord> messageRecords) {
-    List<MessageRecord> messageList = new LinkedList<>(messageRecords);
-    Collections.sort(messageList, new Comparator<MessageRecord>() {
+  private void handleCopyMessage(final Set<DcMsg> messageRecords) {
+    List<DcMsg> messageList = new LinkedList<>(messageRecords);
+    Collections.sort(messageList, new Comparator<DcMsg>() {
       @Override
-      public int compare(MessageRecord lhs, MessageRecord rhs) {
+      public int compare(DcMsg lhs, DcMsg rhs) {
         if      (lhs.getDateReceived() < rhs.getDateReceived())  return -1;
         else if (lhs.getDateReceived() == rhs.getDateReceived()) return 0;
         else                                                     return 1;
@@ -367,8 +364,8 @@ public class ConversationFragment extends Fragment
     StringBuilder    bodyBuilder = new StringBuilder();
     ClipboardManager clipboard   = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
 
-    for (MessageRecord messageRecord : messageList) {
-      String body = messageRecord.getDisplayBody().toString();
+    for (DcMsg messageRecord : messageList) {
+      String body = messageRecord.getDisplayBody();
       if (!TextUtils.isEmpty(body)) {
         bodyBuilder.append(body).append('\n');
       }
@@ -383,7 +380,7 @@ public class ConversationFragment extends Fragment
         clipboard.setText(result);
   }
 
-  private void handleDeleteMessages(final Set<MessageRecord> messageRecords) {
+  private void handleDeleteMessages(final Set<DcMsg> messageRecords) {
     int                 messagesCount = messageRecords.size();
     AlertDialog.Builder builder       = new AlertDialog.Builder(getActivity());
 
@@ -395,6 +392,7 @@ public class ConversationFragment extends Fragment
     builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
+        /* TODO: delete messages
         new ProgressDialogAsyncTask<MessageRecord, Void, Void>(getActivity(),
                                                                R.string.ConversationFragment_deleting,
                                                                R.string.ConversationFragment_deleting_messages)
@@ -419,6 +417,7 @@ public class ConversationFragment extends Fragment
             return null;
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, messageRecords.toArray(new MessageRecord[messageRecords.size()]));
+        */
       }
     });
 
@@ -426,13 +425,18 @@ public class ConversationFragment extends Fragment
     builder.show();
   }
 
-  private void handleDisplayDetails(MessageRecord message) {
-    // TODO: show message info
+  private void handleDisplayDetails(DcMsg dcMsg) {
+    String info_str = dcContext.getMsgInfo(dcMsg.getId());
+    new AlertDialog.Builder(getActivity())
+      .setMessage(info_str)
+      .setPositiveButton(android.R.string.ok, null)
+      .show();
   }
 
-  private void handleForwardMessage(MessageRecord message) {
+  private void handleForwardMessage(DcMsg message) {
     Intent composeIntent = new Intent(getActivity(), ShareActivity.class);
     composeIntent.putExtra(Intent.EXTRA_TEXT, message.getDisplayBody().toString());
+    /* TODO: handle fowarding media
     if (message.isMms()) {
       MmsMessageRecord mediaMessage = (MmsMessageRecord) message;
       if (mediaMessage.containsMediaSlide()) {
@@ -440,11 +444,13 @@ public class ConversationFragment extends Fragment
         composeIntent.putExtra(Intent.EXTRA_STREAM, slide.getUri());
         composeIntent.setType(slide.getContentType());
       }
-    }
+    }*/
     startActivity(composeIntent);
   }
 
-  private void handleResendMessage(final MessageRecord message) {
+  private void handleResendMessage(final DcMsg message) {
+    // TODO
+    /*
     final Context context = getActivity().getApplicationContext();
     new AsyncTask<MessageRecord, Void, Void>() {
       @Override
@@ -453,13 +459,16 @@ public class ConversationFragment extends Fragment
         return null;
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, message);
+    */
   }
 
-  private void handleReplyMessage(final MessageRecord message) {
-    listener.handleReplyMessage(message);
+  private void handleReplyMessage(final DcMsg message) {
+    // TODO
+    // listener.handleReplyMessage(message);
   }
 
-  private void handleSaveAttachment(final MediaMmsMessageRecord message) {
+  private void handleSaveAttachment(final DcMsg message) {
+    /* TODO
     SaveAttachmentTask.showWarningDialog(getActivity(), new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int which) {
         for (Slide slide : message.getSlideDeck().getSlides()) {
@@ -476,6 +485,7 @@ public class ConversationFragment extends Fragment
                        Toast.LENGTH_LONG).show();
       }
     });
+    */
   }
 
   @Override
@@ -849,7 +859,7 @@ public class ConversationFragment extends Fragment
           actionMode.finish();
           return true;
         case R.id.menu_context_save_attachment:
-          handleSaveAttachment((MediaMmsMessageRecord)getSelectedMessageRecord());
+          handleSaveAttachment(getSelectedMessageRecord());
           actionMode.finish();
           return true;
         case R.id.menu_context_reply:
