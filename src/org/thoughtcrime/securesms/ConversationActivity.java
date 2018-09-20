@@ -306,11 +306,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CHAT_MODIFIED);
     dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONTACTS_CHANGED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_INCOMING_MSG);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSGS_CHANGED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
   }
 
   @Override
@@ -1950,10 +1945,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void handleEvent(int eventId, Object data1, Object data2) {
     if (eventId==DcContext.DC_EVENT_CHAT_MODIFIED || eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
       onModified(recipient);
-    }
-    else {
-      // TODO: delivered/read events this can be optimized by just updating the single checkmark/icon
-      fragment.reloadList();
     }
   }
 }

@@ -54,6 +54,7 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
@@ -95,7 +96,8 @@ import java.util.Set;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends Fragment
-  implements LoaderManager.LoaderCallbacks<int[]>
+  implements LoaderManager.LoaderCallbacks<int[]>,
+             DcEventCenter.DcEventDelegate
 {
   private static final String TAG       = ConversationFragment.class.getSimpleName();
   private static final String KEY_LIMIT = "limit";
@@ -165,6 +167,18 @@ public class ConversationFragment extends Fragment
 
     initializeResources();
     initializeListAdapter();
+
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_INCOMING_MSG);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSGS_CHANGED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
+  }
+
+  @Override
+  public void onDestroy() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroy();
   }
 
   @Override
@@ -196,7 +210,10 @@ public class ConversationFragment extends Fragment
   }
 
   public void reloadList() {
-    getLoaderManager().restartLoader(0, Bundle.EMPTY, this);
+    LoaderManager loaderManager = getLoaderManager();
+    if (loaderManager!=null) {
+      getLoaderManager().restartLoader(0, Bundle.EMPTY, this);
+    }
   }
 
   public void moveToLastSeen() {
@@ -882,5 +899,10 @@ public class ConversationFragment extends Fragment
         }
       }, 400);
     }
+  }
+
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    // TODO: delivered/read events this can be optimized by just updating the single checkmark/icon
+    reloadList();
   }
 }
