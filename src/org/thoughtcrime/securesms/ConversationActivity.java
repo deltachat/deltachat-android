@@ -63,6 +63,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.protobuf.ByteString;
 
@@ -186,6 +188,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     implements ConversationFragment.ConversationFragmentListener,
                AttachmentManager.AttachmentListener,
                RecipientModifiedListener,
+               DcEventCenter.DcEventDelegate,
                OnKeyboardShownListener,
                AttachmentDrawerListener,
                InputPanel.Listener,
@@ -283,7 +286,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     initializeSecurity(false, isDefaultSms).addListener(new AssertedSuccessListener<Boolean>() {
       @Override
       public void onSuccess(Boolean result) {
-        initializeProfiles();
         initializeDraft().addListener(new AssertedSuccessListener<Boolean>() {
           @Override
           public void onSuccess(Boolean result) {
@@ -301,6 +303,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         });
       }
     });
+
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CHAT_MODIFIED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONTACTS_CHANGED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_INCOMING_MSG);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSGS_CHANGED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
   }
 
   @Override
@@ -398,6 +408,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     saveDraft();
     if (recipient != null)               recipient.removeListener(this);
     if (securityUpdateReceiver != null)  unregisterReceiver(securityUpdateReceiver);
+    dcContext.eventCenter.removeObservers(this);
     super.onDestroy();
   }
 
@@ -1134,18 +1145,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     recipient.addListener(this);
   }
 
-  private void initializeProfiles() {
-    if (!isSecureText) {
-      Log.w(TAG, "SMS contact, no profile fetch needed.");
-      return;
-    }
-
-    ApplicationContext.getInstance(this)
-                      .getJobManager()
-                      .add(new RetrieveProfileJob(this, recipient));
-  }
-
-  @Override
   public void onModified(final Recipient recipient) {
     Log.w(TAG, "onModified(" + recipient.getAddress().serialize() + ")");
     Util.runOnMain(() -> {
@@ -1945,6 +1944,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         Log.e(TAG, "Failed to restore a quote from a draft. No matching message record.");
         future.set(false);
       }
+    }
+  }
+
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    if (eventId==DcContext.DC_EVENT_CHAT_MODIFIED || eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+      onModified(recipient);
+    }
+    else {
+      // TODO: delivered/read events this can be optimized by just updating the single checkmark/icon
+      fragment.reloadList();
     }
   }
 }

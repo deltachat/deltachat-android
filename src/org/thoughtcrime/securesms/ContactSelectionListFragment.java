@@ -40,6 +40,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
@@ -67,7 +68,8 @@ import java.util.Set;
  *
  */
 public class ContactSelectionListFragment extends    Fragment
-                                          implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>
+                                          implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>,
+                                                     DcEventCenter.DcEventDelegate
 {
   @SuppressWarnings("unused")
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
@@ -97,7 +99,14 @@ public class ContactSelectionListFragment extends    Fragment
     super.onActivityCreated(icicle);
 
     dcContext = DcHelper.getContext(getActivity());
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONTACTS_CHANGED);
     initializeCursor();
+  }
+
+  @Override
+  public void onDestroy() {
+    DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
+    super.onDestroy();
   }
 
   @Override
@@ -343,4 +352,9 @@ public class ContactSelectionListFragment extends    Fragment
     void onContactDeselected(int specialId, String number);
   }
 
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    if (eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+      getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
+    }
+  }
 }
