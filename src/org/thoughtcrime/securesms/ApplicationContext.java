@@ -100,10 +100,10 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     initializeDependencyInjection();
     initializeJobManager();
     initializeExpiringMessageManager();
-    initializeGcmCheck();
-    initializeSignedPreKeyCheck();
+    //initializeGcmCheck(); -- we're not using google cloud management (aka firebase)
+    //initializeSignedPreKeyCheck(); -- keys are generated in the core
     initializePeriodicTasks();
-    initializeCircumvention();
+    //initializeCircumvention(); -- this is about countries where signal does not work
     initializeWebRtc();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
   }
@@ -188,13 +188,14 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   }
 
   private void initializePeriodicTasks() {
-    RotateSignedPreKeyListener.schedule(this);
-    DirectoryRefreshListener.schedule(this);
-    LocalBackupListener.schedule(this);
+    //RotateSignedPreKeyListener.schedule(this); -- no key rotation in the ui part
+    //DirectoryRefreshListener.schedule(this); -- directory in this sense seems to be the address book
+    //LocalBackupListener.schedule(this); -- disabled for now, there is no automatic backup; maybe the implicit IMAP backup is sufficient
 
-    if (BuildConfig.PLAY_STORE_DISABLED) {
-      UpdateApkRefreshListener.schedule(this);
-    }
+    // disabled for now, Delta Chat has no update url; maybe f-droid is sufficient
+    //if (BuildConfig.PLAY_STORE_DISABLED) {
+    //  UpdateApkRefreshListener.schedule(this);
+    //}
   }
 
   private void initializeWebRtc() {
