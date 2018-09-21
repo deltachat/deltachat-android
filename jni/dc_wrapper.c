@@ -65,6 +65,7 @@ static jstring jstring_new__(JNIEnv* env, const char* a)
 	return ret;
 }
 
+#define JTIMESTAMP(a) (((jlong)a)*((jlong)1000))
 
 static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
 {
@@ -897,7 +898,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getDraft(JNIEnv *env, jobject o
 
 JNIEXPORT jlong Java_com_b44t_messenger_DcChat_getDraftTimestamp(JNIEnv *env, jobject obj)
 {
-	return (jlong)dc_chat_get_draft_timestamp(get_dc_chat(env, obj));
+	return JTIMESTAMP(dc_chat_get_draft_timestamp(get_dc_chat(env, obj)));
 }
 
 
@@ -986,7 +987,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getText(JNIEnv *env, jobject obj
 
 JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getTimestamp(JNIEnv *env, jobject obj)
 {
-	return (jlong)dc_msg_get_timestamp(get_dc_msg(env, obj));
+	return JTIMESTAMP(dc_msg_get_timestamp(get_dc_msg(env, obj)));
 }
 
 
@@ -1312,7 +1313,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcLot_getText2(JNIEnv *env, jobject ob
 
 JNIEXPORT jlong Java_com_b44t_messenger_DcLot_getTimestamp(JNIEnv *env, jobject obj)
 {
-	return dc_lot_get_timestamp(get_dc_lot(env, obj));
+	return JTIMESTAMP(dc_lot_get_timestamp(get_dc_lot(env, obj)));
 }
 
 

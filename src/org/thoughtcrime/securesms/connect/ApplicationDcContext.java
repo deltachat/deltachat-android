@@ -128,7 +128,7 @@ public class ApplicationDcContext extends DcContext {
         body += summary.getText2();
 
         Recipient          recipient            = getRecipient(chat);
-        long               date                 = summary.getTimestamp()*1000;
+        long               date                 = summary.getTimestamp();
         long               count                = 1;
         int                unreadCount          = getFreshMsgCount(chatId);
         long               type                 = 0;//cursor.getLong(cursor.getColumnIndexOrThrow(ThreadDatabase.SNIPPET_TYPE));
