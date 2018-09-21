@@ -16,7 +16,6 @@ import org.thoughtcrime.securesms.jobs.PushNotificationReceiveJob;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.service.MessageRetrievalService;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 import java.util.Locale;
 
@@ -25,10 +24,8 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
 
   public static final String LOCALE_EXTRA = "locale_extra";
 
-  private static final int STATE_NORMAL                   = 0;
-  private static final int STATE_NEEDS_REGISTER           = 1;
-  private static final int STATE_UPGRADE_DATABASE         = 2;
-  private static final int STATE_EXPERIENCE_UPGRADE       = 3;
+  private static final int STATE_NORMAL          = 0;
+  private static final int STATE_NEEDS_CONFIGURE = 1;
 
   private SignalServiceNetworkAccess networkAccess;
   private BroadcastReceiver          clearKeyReceiver;
@@ -132,20 +129,16 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   }
 
   private Intent getIntentForState(int state) {
-    Log.w(TAG, "routeApplicationState(), state: " + state);
-
     switch (state) {
-      case STATE_UPGRADE_DATABASE:         return getUpgradeDatabaseIntent();
-      case STATE_NEEDS_REGISTER:           return getWelcomeIntent();
-      case STATE_EXPERIENCE_UPGRADE:       return getExperienceUpgradeIntent();
-    default:                             return null;
+      case STATE_NEEDS_CONFIGURE: return getWelcomeIntent();
+      default:                    return null;
     }
   }
 
   private int getApplicationState(boolean locked) {
     boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
     if (!isConfigured) {
-      return STATE_NEEDS_REGISTER;
+      return STATE_NEEDS_CONFIGURE;
     } else {
       return STATE_NORMAL;
     }
@@ -157,17 +150,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
 
   private Intent getPromptPassphraseIntent() {
     return getRoutedIntent(PassphrasePromptActivity.class, getIntent());
-  }
-
-  private Intent getUpgradeDatabaseIntent() {
-    return getRoutedIntent(DatabaseUpgradeActivity.class,
-                           TextSecurePreferences.hasPromptedPushRegistration(this)
-                               ? getConversationListIntent()
-                               : getLoginIntent());
-  }
-
-  private Intent getExperienceUpgradeIntent() {
-    return getRoutedIntent(ExperienceUpgradeActivity.class, getIntent());
   }
 
   private Intent getWelcomeIntent() {
