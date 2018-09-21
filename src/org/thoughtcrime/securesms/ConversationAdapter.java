@@ -20,7 +20,6 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,14 +38,14 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.lang.ref.SoftReference;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
@@ -89,7 +88,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private final @NonNull  LayoutInflater    inflater;
   private final @NonNull  Context           context;
   private final @NonNull  Calendar          calendar;
-  private final @NonNull  MessageDigest     digest;
 
   private ApplicationDcContext dcContext;
   private @NonNull int[]       dcMsgList = new int[0];
@@ -110,6 +108,11 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 
+
+  public boolean isActive() {
+    return dcMsgList.length > 0;
+  }
+
   @Override
   public int getItemCount() {
     return dcMsgList.length;
@@ -121,6 +124,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
     return new DcMsg(0);
   }
+
 
   static class HeaderViewHolder extends RecyclerView.ViewHolder {
     TextView textView;
@@ -146,44 +150,21 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     void onItemLongClick(DcMsg item);
   }
 
-  @SuppressWarnings("ConstantConditions")
-  @VisibleForTesting
-  ConversationAdapter(Context context) {
-    try {
-      this.glideRequests = null;
-      this.locale        = null;
-      this.clickListener = null;
-      this.recipient     = null;
-      this.inflater      = null;
-      this.calendar      = null;
-      this.context       = context;
-      this.digest        = MessageDigest.getInstance("SHA1");
-      this.dcContext     = DcHelper.getContext(context);
-    } catch (NoSuchAlgorithmException nsae) {
-      throw new AssertionError("SHA1 isn't supported!");
-    }
-  }
-
   public ConversationAdapter(@NonNull Context context,
                              @NonNull GlideRequests glideRequests,
                              @NonNull Locale locale,
                              @Nullable ItemClickListener clickListener,
                              @NonNull Recipient recipient) {
-    try {
-      this.glideRequests = glideRequests;
-      this.locale = locale;
-      this.clickListener = clickListener;
-      this.recipient = recipient;
-      this.context = context;
-      this.inflater = LayoutInflater.from(context);
-      this.calendar = Calendar.getInstance();
-      this.digest = MessageDigest.getInstance("SHA1");
-      this.dcContext     = DcHelper.getContext(context);
+    this.glideRequests = glideRequests;
+    this.locale = locale;
+    this.clickListener = clickListener;
+    this.recipient = recipient;
+    this.context = context;
+    this.inflater = LayoutInflater.from(context);
+    this.calendar = Calendar.getInstance();
+    this.dcContext     = DcHelper.getContext(context);
 
-      setHasStableIds(true);
-    } catch (NoSuchAlgorithmException nsae) {
-      throw new AssertionError("SHA1 isn't supported!");
-    }
+    setHasStableIds(true);
   }
 
   @Override
@@ -255,7 +236,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   public int findLastSeenPosition(long lastSeen) {
     /* TODO -- we shoud do this without loading all messages in the chat
     if (lastSeen <= 0)     return -1;
-    if (isActive())        return -1;
+    if (!isActive())       return -1;
 
     int count = getItemCount();
 
@@ -291,39 +272,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 
-  protected boolean isFooterPosition(int position) {
-//    return hasFooterView() && position == getItemCount() - 1;
-    return false;
-  }
-
-  protected boolean isHeaderPosition(int position) {
-//    return hasHeaderView() && position == 0;
-    return false;
-  }
-
-  @Override
-  public long getHeaderId(int position) {
-    return -1; // no header Id.
-//    if (isActive())      return -1;
-//    if (isHeaderPosition(position)) return -1;
-//    if (isFooterPosition(position)) return -1;
-//    if (position >= getItemCount()) return -1;
-//    if (position < 0)               return -1;
-//
-//    MessageRecord record = getRecordForPositionOrThrow(position);
-//
-//    calendar.setTime(new Date(record.getDateSent()));
-//    return Util.hashCode(calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_YEAR));
-  }
-
-  public boolean isActive() {
-    return dcMsgList.length > 0;
-  }
-
   public long getReceivedTimestamp(int position) {
-    if (isActive())                 return 0;
-    if (isHeaderPosition(position)) return 0;
-    if (isFooterPosition(position)) return 0;
+    if (!isActive())                return 0;
     if (position >= getItemCount()) return 0;
     if (position < 0)               return 0;
 
@@ -336,19 +286,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return context;
   }
 
-  @Override
-  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.conversation_item_header, parent, false));
-  }
-
   public HeaderViewHolder onCreateLastSeenViewHolder(ViewGroup parent) {
     return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.conversation_item_last_seen, parent, false));
-  }
-
-  @Override
-  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    DcMsg msg = getMsg(position);
-    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, msg.getTimestamp()));
   }
 
   public void onBindLastSeenViewHolder(HeaderViewHolder viewHolder, int position) {
@@ -405,14 +344,40 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 
-  public void changeData(@Nullable int[] dcMsgList) {
-    this.dcMsgList = dcMsgList==null? new int[0] : dcMsgList;
-    messageRecordCache.clear();
-    notifyDataSetChanged();
+
+  @Override
+  public long getHeaderId(int position) {
+    if (position >= getItemCount()) return -1;
+    if (position < 0)               return -1;
+
+    DcMsg dcMsg = getMsg(position);
+
+    calendar.setTime(new Date(dcMsg.getTimestamp()));
+    return Util.hashCode(calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_YEAR));
   }
 
-  public void setHeaderView(@Nullable View headerView) {
-    // TODO: must not be implemented, remove calls to this function
+  @Override
+  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
+    return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.conversation_item_header, parent, false));
+  }
+
+  @Override
+  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
+    DcMsg msg = getMsg(position);
+    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, msg.getTimestamp()));
+  }
+
+
+  public void changeData(@Nullable int[] dcMsgList) {
+    // should be called when there are new messages
+    this.dcMsgList = dcMsgList==null? new int[0] : dcMsgList;
+    reloadData();
+  }
+
+  public void reloadData() {
+    // should be called when some items in a message are changed, eg. seen-state
+    messageRecordCache.clear();
+    notifyDataSetChanged();
   }
 
   public void addFastRecord(@NonNull MessageRecord record) {

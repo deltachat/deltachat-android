@@ -99,7 +99,7 @@ public class ConversationItemFooter extends LinearLayout {
     if (messageRecord.isFailed()) {
       dateView.setText(R.string.ConversationItem_error_not_delivered);
     } else {
-      dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
+      dateView.setText(DateUtils.getTimeOfDayTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
     }
   }
 

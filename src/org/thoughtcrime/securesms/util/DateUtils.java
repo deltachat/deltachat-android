@@ -91,6 +91,21 @@ public class DateUtils extends android.text.format.DateUtils {
     }
   }
 
+  public static String getTimeOfDayTimeSpanString(final Context c, final Locale locale, final long timestamp) {
+    if (isWithin(timestamp, 1, TimeUnit.MINUTES)) {
+      return c.getString(R.string.DateUtils_just_now);
+    } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
+      int mins = (int)TimeUnit.MINUTES.convert(System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
+      return c.getResources().getString(R.string.DateUtils_minutes_ago, mins);
+    } else {
+      StringBuilder format = new StringBuilder();
+      if (DateFormat.is24HourFormat(c)) format.append("HH:mm");
+      else                              format.append("hh:mm a");
+
+      return getFormattedDateTime(timestamp, format.toString(), locale);
+    }
+  }
+
   public static String getDayPrecisionTimeSpanString(Context context, Locale locale, long timestamp) {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
 

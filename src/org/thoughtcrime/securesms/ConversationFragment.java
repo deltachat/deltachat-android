@@ -549,7 +549,7 @@ public class ConversationFragment extends Fragment
     MessageRecord messageRecord = DatabaseFactory.getMmsDatabase(getContext()).readerFor(message, threadId).getCurrent();
 
     if (getListAdapter() != null) {
-      getListAdapter().setHeaderView(null);
+      //getListAdapter().setHeaderView(null);
       setLastSeen(0);
       getListAdapter().addFastRecord(messageRecord);
     }
@@ -561,7 +561,7 @@ public class ConversationFragment extends Fragment
     MessageRecord messageRecord = DatabaseFactory.getSmsDatabase(getContext()).readerFor(message, threadId).getCurrent();
 
     if (getListAdapter() != null) {
-      getListAdapter().setHeaderView(null);
+      //getListAdapter().setHeaderView(null);
       setLastSeen(0);
       getListAdapter().addFastRecord(messageRecord);
     }
