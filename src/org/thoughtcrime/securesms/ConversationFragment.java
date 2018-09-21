@@ -21,7 +21,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -66,26 +65,15 @@ import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.contactshare.SharedContactDetailsActivity;
 import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.MmsSmsDatabase;
-import org.thoughtcrime.securesms.database.RecipientDatabase;
-import org.thoughtcrime.securesms.database.loaders.ConversationLoader;
-import org.thoughtcrime.securesms.database.model.MediaMmsMessageRecord;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
-import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
 import org.thoughtcrime.securesms.jobs.DirectoryRefreshJob;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.OutgoingMediaMessage;
-import org.thoughtcrime.securesms.mms.Slide;
-import org.thoughtcrime.securesms.profiles.UnknownSenderView;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.sms.MessageSender;
 import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.CommunicationActions;
-import org.thoughtcrime.securesms.util.SaveAttachmentTask;
-import org.thoughtcrime.securesms.util.SaveAttachmentTask.Attachment;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -102,7 +90,6 @@ public class ConversationFragment extends Fragment
   private static final String TAG       = ConversationFragment.class.getSimpleName();
   private static final String KEY_LIMIT = "limit";
 
-  private static final int PARTIAL_CONVERSATION_LIMIT = 500;
   private static final int SCROLL_ANIMATION_THRESHOLD = 50;
   private static final int CODE_ADD_EDIT_CONTACT      = 77;
 
@@ -122,9 +109,6 @@ public class ConversationFragment extends Fragment
   private Locale                      locale;
   private RecyclerView                list;
   private RecyclerView.ItemDecoration lastSeenDecoration;
-  private ViewSwitcher                topLoadMoreView;
-  private ViewSwitcher                bottomLoadMoreView;
-  private UnknownSenderView           unknownSenderView;
   private View                        composeDivider;
   private View                        scrollToBottomButton;
   private TextView                    scrollDateHeader;
@@ -152,11 +136,6 @@ public class ConversationFragment extends Fragment
     list.setHasFixedSize(false);
     list.setLayoutManager(layoutManager);
     list.setItemAnimator(null);
-
-    topLoadMoreView    = (ViewSwitcher) inflater.inflate(R.layout.load_more_header, container, false);
-    bottomLoadMoreView = (ViewSwitcher) inflater.inflate(R.layout.load_more_header, container, false);
-    initializeLoadMoreView(topLoadMoreView);
-    initializeLoadMoreView(bottomLoadMoreView);
 
     return view;
   }
@@ -237,7 +216,6 @@ public class ConversationFragment extends Fragment
     this.lastSeen          = this.getActivity().getIntent().getLongExtra(ConversationActivity.LAST_SEEN_EXTRA, -1);
     this.startingPosition  = this.getActivity().getIntent().getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
     this.firstLoad         = true;
-    this.unknownSenderView = new UnknownSenderView(getActivity(), recipient, threadId);
 
     OnScrollListener scrollListener = new ConversationScrollListener(getActivity());
     list.addOnScrollListener(scrollListener);
@@ -252,16 +230,6 @@ public class ConversationFragment extends Fragment
       setLastSeen(lastSeen);
       getLoaderManager().restartLoader(0, Bundle.EMPTY, this);
     }
-  }
-
-  private void initializeLoadMoreView(ViewSwitcher loadMoreView) {
-    loadMoreView.setOnClickListener(v -> {
-      Bundle args = new Bundle();
-      args.putInt(KEY_LIMIT, 0);
-      getLoaderManager().restartLoader(0, args, ConversationFragment.this);
-      loadMoreView.showNext();
-      loadMoreView.setOnClickListener(null);
-    });
   }
 
   private void setCorrectMenuVisibility(Menu menu) {
