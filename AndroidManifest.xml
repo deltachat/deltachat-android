@@ -130,14 +130,6 @@
             android:value="org.thoughtcrime.securesms.ConversationListActivity" />
     </activity>
 
-    <activity android:name=".PromptMmsActivity"
-              android:label="Configure MMS Settings"
-              android:windowSoftInputMode="stateUnchanged"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".preferences.MmsPreferencesActivity"
-               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
     <activity android:name=".ShareActivity"
               android:theme="@style/TextSecure.LightNoActionBar"
               android:excludeFromRecents="true"

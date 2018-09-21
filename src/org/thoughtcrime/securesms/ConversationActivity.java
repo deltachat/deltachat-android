@@ -865,23 +865,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleAddAttachment() {
-    if (this.isMmsEnabled || isSecureText) {
-      if (attachmentTypeSelector == null) {
-        attachmentTypeSelector = new AttachmentTypeSelector(this, getSupportLoaderManager(), new AttachmentTypeListener());
-      }
-      attachmentTypeSelector.show(this, attachButton);
-    } else {
-      handleManualMmsRequired();
+    if (attachmentTypeSelector == null) {
+      attachmentTypeSelector = new AttachmentTypeSelector(this, getSupportLoaderManager(), new AttachmentTypeListener());
     }
-  }
-
-  private void handleManualMmsRequired() {
-    Toast.makeText(this, R.string.MmsDownloader_error_reading_mms_settings, Toast.LENGTH_LONG).show();
-
-    Bundle extras = getIntent().getExtras();
-    Intent intent = new Intent(this, PromptMmsActivity.class);
-    if (extras != null) intent.putExtras(extras);
-    startActivity(intent);
+    attachmentTypeSelector.show(this, attachButton);
   }
 
   private void handleSecurityChange(boolean isSecureText, boolean isDefaultSms) {
@@ -1462,9 +1449,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       Log.w(TAG, "isManual Selection: " + sendButton.isManualSelection());
       Log.w(TAG, "forceSms: " + forceSms);
 
-      if ((recipient.isMmsGroupRecipient() || recipient.getAddress().isEmail()) && !isMmsEnabled) {
-        handleManualMmsRequired();
-      } else if (attachmentManager.isAttachmentPresent() || recipient.isGroupRecipient() || recipient.getAddress().isEmail() || inputPanel.getQuote().isPresent()) {
+      if (attachmentManager.isAttachmentPresent() || recipient.isGroupRecipient() || recipient.getAddress().isEmail() || inputPanel.getQuote().isPresent()) {
         sendMediaMessage(forceSms, expiresIn, subscriptionId, initiating);
       } else {
         sendTextMessage(forceSms, expiresIn, subscriptionId, initiating);
