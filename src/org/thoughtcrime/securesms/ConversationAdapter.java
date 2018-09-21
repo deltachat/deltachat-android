@@ -118,11 +118,22 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return dcMsgList.length;
   }
 
-  private DcMsg getMsg(int position) {
-    if(position>=0 && position<dcMsgList.length) {
-      return dcContext.getMsg(dcMsgList[dcMsgList.length-1-position]);
+  private @NonNull DcMsg getMsg(int position) {
+    if(position<0 || position>=dcMsgList.length) {
+      return new DcMsg(0);
     }
-    return new DcMsg(0);
+
+    final SoftReference<DcMsg> reference = messageRecordCache.get(position);
+    if (reference != null) {
+      final DcMsg msgFromCache = reference.get();
+      if (msgFromCache != null) {
+        return msgFromCache;
+      }
+    }
+
+    final DcMsg msgFromDb = dcContext.getMsg(dcMsgList[dcMsgList.length-1-position]);
+    messageRecordCache.put(position, new SoftReference<>(msgFromDb));
+    return msgFromDb;
   }
 
 
@@ -179,7 +190,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   @Override
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    long start = System.currentTimeMillis();
     final V itemView = ViewUtil.inflate(inflater, parent, getLayoutForViewType(viewType));
     itemView.setOnClickListener(view -> {
       if (clickListener != null) {
@@ -193,7 +203,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       return true;
     });
     itemView.setEventListener(clickListener);
-    Log.w(TAG, "Inflate time: " + (System.currentTimeMillis() - start));
     return new ViewHolder(itemView);
   }
 
