@@ -28,11 +28,7 @@ public class DcMsgListLoader extends AsyncLoader<int[]> {
     public @NonNull
     int[] loadInBackground() {
         try {
-            long loaderStartTime = System.currentTimeMillis();
-            int[] msgs = DcHelper.getContext(getContext()).getChatMsgs(chatId, listflags, marker1before);
-            long loadTime = System.currentTimeMillis() - loaderStartTime;
-            Log.i(TAG, "loadInBackground - took " + loadTime + " ms to load a message list of size " + msgs.length);
-            return msgs;
+            return DcHelper.getContext(getContext()).getChatMsgs(chatId, listflags, marker1before);
 
         } catch (Exception e) {
             Log.w(TAG, e);

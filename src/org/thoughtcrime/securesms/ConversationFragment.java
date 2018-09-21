@@ -184,14 +184,7 @@ public class ConversationFragment extends Fragment
     initializeListAdapter();
 
     if (threadId == -1) {
-      getLoaderManager().restartLoader(0, Bundle.EMPTY, this);
-    }
-  }
-
-  public void reloadList() {
-    LoaderManager loaderManager = getLoaderManager();
-    if (loaderManager!=null) {
-      getLoaderManager().restartLoader(0, Bundle.EMPTY, this);
+      reloadList();
     }
   }
 
@@ -228,7 +221,7 @@ public class ConversationFragment extends Fragment
       list.addItemDecoration(new StickyHeaderDecoration(adapter, false, false));
 
       setLastSeen(lastSeen);
-      getLoaderManager().restartLoader(0, Bundle.EMPTY, this);
+      reloadList();
     }
   }
 
@@ -454,6 +447,24 @@ public class ConversationFragment extends Fragment
       }
     });
     */
+  }
+
+  public void reloadList() {
+    // just for testing, here are two variants.
+    final boolean loadSynchronous = true;
+    if (loadSynchronous) {
+      // this typically takes <1 ms ...
+      loaderStartTime = System.currentTimeMillis();
+      int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int)threadId, 0, 0);
+      onLoadFinished(null, msgs);
+    }
+    else {
+      // ... while this takes >100 ms
+      LoaderManager loaderManager = getLoaderManager();
+      if (loaderManager != null) {
+        loaderManager.restartLoader(0, Bundle.EMPTY, this);
+      }
+    }
   }
 
   @Override
