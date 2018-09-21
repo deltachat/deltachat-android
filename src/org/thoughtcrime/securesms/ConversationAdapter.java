@@ -118,6 +118,14 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return dcMsgList.length;
   }
 
+  @Override
+  public long getItemId(int position) {
+    if (position<0 || position>=dcMsgList.length) {
+      return 0;
+    }
+    return dcMsgList[dcMsgList.length-1-position];
+  }
+
   private @NonNull DcMsg getMsg(int position) {
     if(position<0 || position>=dcMsgList.length) {
       return new DcMsg(0);
@@ -131,7 +139,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       }
     }
 
-    final DcMsg fromDb = dcContext.getMsg(dcMsgList[dcMsgList.length-1-position]);
+    final DcMsg fromDb = dcContext.getMsg((int)getItemId(position));
     recordCache.put(position, new SoftReference<>(fromDb));
     return fromDb;
   }
@@ -183,7 +191,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     ConversationAdapter.ViewHolder holder = (ConversationAdapter.ViewHolder)viewHolder;
     Optional<DcMsg> previous = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
     Optional<DcMsg> next = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
-    boolean pulseHighlight = dcMsgList[position] == recordToPulseHighlight;
+    boolean pulseHighlight = position == recordToPulseHighlight;
 
     holder.getItem().bind(getMsg(position), previous, next, glideRequests, locale, batchSelected, recipient, pulseHighlight);
   }

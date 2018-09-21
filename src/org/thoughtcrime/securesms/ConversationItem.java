@@ -184,7 +184,7 @@ public class ConversationItem extends LinearLayout
                    @NonNull Locale                  locale,
                    @NonNull Set<DcMsg>              batchSelected,
                    @NonNull Recipient               recipients,
-                   boolean                 pulseHighlight)
+                   boolean                          pulseHighlight)
   {
     this.messageRecord          = messageRecord;
     this.locale                 = locale;
