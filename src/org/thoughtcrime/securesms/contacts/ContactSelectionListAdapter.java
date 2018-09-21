@@ -18,21 +18,15 @@ package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.database.Cursor;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.R;
@@ -42,10 +36,14 @@ import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.lang.ref.SoftReference;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -65,6 +63,11 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   private final static int STYLE_ATTRIBUTES[] = new int[]{R.attr.contact_selection_push_user,
                                                           R.attr.contact_selection_lay_user};
 
+  private static final int MAX_CACHE_SIZE = 100;
+
+  private final Map<Integer,SoftReference<DcContact>> recordCache =
+          Collections.synchronizedMap(new LRUCache<Integer,SoftReference<DcContact>>(MAX_CACHE_SIZE));
+
   private final @NonNull Context              context;
   private final @NonNull ApplicationDcContext dcContext;
   private @NonNull int[]                      dcContactList = new int[0];
@@ -75,6 +78,30 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
   private final Set<String>                   selectedContacts = new HashSet<>(); // TODO: maybe better use contact-id here
+
+  @Override
+  public int getItemCount() {
+    return dcContactList.length;
+  }
+
+  private
+  @NonNull DcContact getContact(int position) {
+    if(position<0 || position>=dcContactList.length) {
+      return new DcContact(0);
+    }
+
+    final SoftReference<DcContact> reference = recordCache.get(position);
+    if (reference != null) {
+      final DcContact fromCache = reference.get();
+      if (fromCache != null) {
+        return fromCache;
+      }
+    }
+
+    final DcContact fromDb = dcContext.getContact(dcContactList[position]);
+    recordCache.put(position, new SoftReference<>(fromDb));
+    return fromDb;
+  }
 
   public abstract static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -159,24 +186,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   }
 
   @Override
-  public int getItemCount() {
-    return dcContactList.length;
-  }
-
-  @Override
-  public long getHeaderId(int i) {
-    return -1;
-    /* TODO: what should be done here?
-    if (!isActiveCursor()) return -1;
-
-    int contactType = getContactType(i);
-
-    if (contactType == ContactsDatabase.DIVIDER_TYPE) return -1;
-    return Util.hashCode(getHeaderString(i), getContactType(i));
-    */
-  }
-
-  @Override
   public ContactSelectionListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == VIEW_TYPE_CONTACT) {
       return new ContactViewHolder(li.inflate(R.layout.contact_selection_list_item, parent, false), clickListener);
@@ -214,7 +223,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       name = context.getString(R.string.contact_selection_list__new_verified_group);
     }
     else {
-      dcContact = dcContext.getContact(id);
+      dcContact = getContact(i);
       name      = dcContact.getDisplayName();
       addr      = dcContact.getAddr();
     }
@@ -231,16 +240,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   }
 
   @Override
-  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_recyclerview_header, parent, false));
-  }
-
-  @Override
-  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    ((TextView)viewHolder.itemView).setText(getSpannedHeaderString(position));
-  }
-
-  @Override
   public CharSequence getBubbleText(int position) {
     return getHeaderString(position);
   }
@@ -249,48 +248,47 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     return selectedContacts;
   }
 
-  private CharSequence getSpannedHeaderString(int position) {
-    final String headerString = getHeaderString(position);
-    /* TODO: what should be done here?
-    if (isPush(position)) {
-      SpannableString spannable = new SpannableString(headerString);
-      spannable.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.signal_primary)), 0, headerString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-      return spannable;
-    } else*/ {
-      return headerString;
-    }
-  }
-
-  private @NonNull String getHeaderString(int position) {
-    return " ";
-    /* TODO: what should be done here?
-    int contactType = getContactType(position);
-
-    if (contactType == ContactsDatabase.RECENT_TYPE || contactType == ContactsDatabase.DIVIDER_TYPE) {
-      return " ";
-    }
-
-    Cursor cursor = getCursorAtPositionOrThrow(position);
-    String letter = cursor.getString(cursor.getColumnIndexOrThrow(ContactsDatabase.NAME_COLUMN));
-
-    if (!TextUtils.isEmpty(letter)) {
-      String firstChar = letter.trim().substring(0, 1).toUpperCase();
-      if (Character.isLetterOrDigit(firstChar.codePointAt(0))) {
-        return firstChar;
-      }
-    }
-
-    return "#";
-    */
-  }
-
   public interface ItemClickListener {
     void onItemClick(ContactSelectionListItem item);
   }
 
+
+  @Override
+  public long getHeaderId(int position) {
+    if (position < 0 || position >= getItemCount()) {
+      return -1;
+    }
+
+    return Util.hashCode(getHeaderString(position));
+  }
+
+  private @NonNull String getHeaderString(int position) {
+    DcContact dcContact = getContact(position);
+    String name = dcContact.getDisplayName();
+    if (!TextUtils.isEmpty(name)) {
+      String firstChar = name.trim().substring(0, 1).toUpperCase();
+      if (Character.isLetterOrDigit(firstChar.codePointAt(0))) {
+        return firstChar;
+      }
+    }
+    return "";
+  }
+
+  @Override
+  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
+    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_recyclerview_header, parent, false));
+  }
+
+  @Override
+  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
+    ((TextView)viewHolder.itemView).setText(getHeaderString(position));
+  }
+
+
   public void changeData(DcContactsLoader.Ret loaderRet) {
     this.dcContactList = loaderRet==null? new int[0] : loaderRet.ids;
     this.query = loaderRet==null? null : loaderRet.query;
+    recordCache.clear();
     notifyDataSetChanged();
   }
 }

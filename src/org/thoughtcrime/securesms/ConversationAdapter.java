@@ -66,8 +66,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   private static final int MAX_CACHE_SIZE = 40;
   private static final String TAG = ConversationAdapter.class.getSimpleName();
-  private final Map<Integer,SoftReference<DcMsg>> messageRecordCache =
-      Collections.synchronizedMap(new LRUCache<Integer,SoftReference<DcMsg>>(MAX_CACHE_SIZE)); // TODO: use the cache
+  private final Map<Integer,SoftReference<DcMsg>> recordCache =
+      Collections.synchronizedMap(new LRUCache<Integer,SoftReference<DcMsg>>(MAX_CACHE_SIZE));
 
   private static final int MESSAGE_TYPE_OUTGOING           = 0;
   private static final int MESSAGE_TYPE_INCOMING           = 1;
@@ -123,17 +123,17 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       return new DcMsg(0);
     }
 
-    final SoftReference<DcMsg> reference = messageRecordCache.get(position);
+    final SoftReference<DcMsg> reference = recordCache.get(position);
     if (reference != null) {
-      final DcMsg msgFromCache = reference.get();
-      if (msgFromCache != null) {
-        return msgFromCache;
+      final DcMsg fromCache = reference.get();
+      if (fromCache != null) {
+        return fromCache;
       }
     }
 
-    final DcMsg msgFromDb = dcContext.getMsg(dcMsgList[dcMsgList.length-1-position]);
-    messageRecordCache.put(position, new SoftReference<>(msgFromDb));
-    return msgFromDb;
+    final DcMsg fromDb = dcContext.getMsg(dcMsgList[dcMsgList.length-1-position]);
+    recordCache.put(position, new SoftReference<>(fromDb));
+    return fromDb;
   }
 
 
@@ -385,7 +385,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   public void reloadData() {
     // should be called when some items in a message are changed, eg. seen-state
-    messageRecordCache.clear();
+    recordCache.clear();
     notifyDataSetChanged();
   }
 
