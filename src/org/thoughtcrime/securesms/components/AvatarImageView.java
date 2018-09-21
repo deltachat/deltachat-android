@@ -55,7 +55,7 @@ public class AvatarImageView extends AppCompatImageView {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .circleCrop()
                     .into(this);
-      setAvatarClickHandler(recipient, quickContactEnabled);
+      //setAvatarClickHandler(recipient, quickContactEnabled); -- see comment below
     } else {
       setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ContactColors.UNKNOWN_COLOR.toConversationColor(getContext()), inverted));
       super.setOnClickListener(listener);
@@ -66,6 +66,8 @@ public class AvatarImageView extends AppCompatImageView {
     glideRequests.clear(this);
   }
 
+  /* we could add an option in the profile for this,
+     in the avatar it is too easy to be confused with the normal action click (profile, open chat)
   private void setAvatarClickHandler(final Recipient recipient, boolean quickContactEnabled) {
     if (!recipient.isGroupRecipient() && quickContactEnabled) {
       super.setOnClickListener(v -> {
@@ -86,5 +88,6 @@ public class AvatarImageView extends AppCompatImageView {
       super.setOnClickListener(listener);
     }
   }
+  */
 
 }
