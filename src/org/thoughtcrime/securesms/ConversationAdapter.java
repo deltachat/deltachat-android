@@ -91,7 +91,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   private ApplicationDcContext dcContext;
   private @NonNull int[]       dcMsgList = new int[0];
-  private int                  recordToPulseHighlight;
+  private int                  positionToPulseHighlight = -1;
 
   protected static class ViewHolder extends RecyclerView.ViewHolder {
     public <V extends View & BindableConversationItem> ViewHolder(final @NonNull V itemView) {
@@ -191,9 +191,13 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     ConversationAdapter.ViewHolder holder = (ConversationAdapter.ViewHolder)viewHolder;
     Optional<DcMsg> previous = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
     Optional<DcMsg> next = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
-    boolean pulseHighlight = position == recordToPulseHighlight;
+    boolean pulseHighlight = position == positionToPulseHighlight;
 
     holder.getItem().bind(getMsg(position), previous, next, glideRequests, locale, batchSelected, recipient, pulseHighlight);
+
+    if (pulseHighlight) {
+      positionToPulseHighlight = -1;
+    }
   }
 
   @Override
@@ -283,8 +287,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   public void pulseHighlightItem(int position) {
-    if (position < getItemCount()) {
-      recordToPulseHighlight = position;
+    if (position>=0 && position < getItemCount()) {
+      positionToPulseHighlight = position;
       notifyItemChanged(position);
     }
   }
