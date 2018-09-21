@@ -23,6 +23,8 @@
 package com.b44t.messenger;
 
 
+import android.support.annotation.NonNull;
+
 public class DcContext {
 
     public final static int DC_EVENT_INFO                        = 100;
@@ -73,78 +75,78 @@ public class DcContext {
         contextCPtr = createContextCPtr(osName);
     }
 
-    public native int     open                 (String dbfile);
-    public native void    close                ();
-    public native String  getBlobdir           ();
-    public native void    configure            ();
-    public native void    stopOngoingProcess   ();
-    public native int     isConfigured         ();
-    public native void    performJobs          ();
-    public native void    fetch                ();
-    public native void    idle                 ();
-    public native void    interruptIdle        ();
-    public native void    performSmtpJobs      ();
-    public native void    performSmtpIdle      ();
-    public native void    interruptSmtpIdle    ();
-    public native void    setConfig            (String key, String value);
-    public native void    setConfigInt         (String key, int value);
-    public native String  getConfig            (String key, String def);
-    public native int     getConfigInt         (String key, int def);
-    public native String  getInfo              ();
-    public native String  cmdline              (String cmd);
-    public native String  initiateKeyTransfer  ();
-    public native boolean continueKeyTransfer  (int msg_id, String setup_code);
-    public native void    imex                 (int what, String dir);
-    public native String  imexHasBackup        (String dir);
-    public native int     checkPassword        (String pw);
-    public native boolean mayBeValidAddr       (String addr);
-    public native int     lookupContactIdByAddr(String addr);
-    public native int[]   getContacts          (int flags, String query);
-    public native int     getBlockedCount      ();
-    public native int[]   getBlockedContacts   ();
-    public DcContact      getContact           (int contact_id) { return new DcContact(getContactCPtr(contact_id)); }
-    public native int     createContact        (String name, String addr);
-    public native void    blockContact         (int id, int block);
-    public native String  getContactEncrInfo   (int contact_id);
-    public native int     deleteContact        (int id);
-    public native int     addAddressBook       (String adrbook);
-    public DcChatlist     getChatlist          (int listflags, String query, int queryId) { return new DcChatlist(getChatlistCPtr(listflags, query, queryId)); }
-    public DcChat         getChat              (int chat_id) { return new DcChat(getChatCPtr(chat_id)); }
-    public native void    markseenMsgs         (int msg_ids[]);
-    public native void    marknoticedChat      (int chat_id);
-    public native void    marknoticedAllChats  ();
-    public native void    marknoticedContact   (int contact_id);
-    public native void    archiveChat          (int chat_id, int archive);
-    public native int     getChatIdByContactId (int contact_id);
-    public native int     createChatByContactId(int contact_id);
-    public native int     createChatByMsgId    (int msg_id);
-    public native int     createGroupChat      (boolean verified, String name);
-    public native boolean isContactInChat      (int chat_id, int contact_id);
-    public native int     addContactToChat     (int chat_id, int contact_id);
-    public native int     removeContactFromChat(int chat_id, int contact_id);
-    public native void    setDraft             (int chat_id, String draft/*null=delete*/);
-    public native int     setChatName          (int chat_id, String name);
-    public native int     setChatProfileImage  (int chat_id, String name);
-    public native int[]   getChatMsgs          (int chat_id, int flags, int marker1before);
-    public native int[]   searchMsgs           (int chat_id, String query);
-    public native int[]   getFreshMsgs         ();
-    public native int[]   getChatMedia         (int chat_id, int msg_type, int or_msg_type);
-    public native int     getNextMedia         (int msg_id, int dir);
-    public native int[]   getChatContacts      (int chat_id);
-    public native void    deleteChat           (int chat_id);
-    public DcMsg          getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
-    public native String  getMsgInfo           (int id);
-    public native int     getFreshMsgCount     (int chat_id);
-    public native void    deleteMsgs           (int msg_ids[]);
-    public native void    forwardMsgs          (int msg_ids[], int chat_ids);
-    public native int     sendMsg              (int chat_id, DcMsg msg);
-    public native int     sendTextMsg          (int chat_id, String text);
-    public native int     sendVcardMsg         (int chat_id, int contact_id);
-    public native int     sendMediaMsg         (int chat_id, int type, String file, String mime, int w, int h, int time_ms, String author, String trackname);
-    public native int     checkQrCPtr          (String qr);
-    public DcLot          checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }
-    public native String  getSecurejoinQr      (int chat_id);
-    public native int     joinSecurejoin       (String qr);
+    public native int          open                 (String dbfile);
+    public native void         close                ();
+    public native String       getBlobdir           ();
+    public native void         configure            ();
+    public native void         stopOngoingProcess   ();
+    public native int          isConfigured         ();
+    public native void         performJobs          ();
+    public native void         fetch                ();
+    public native void         idle                 ();
+    public native void         interruptIdle        ();
+    public native void         performSmtpJobs      ();
+    public native void         performSmtpIdle      ();
+    public native void         interruptSmtpIdle    ();
+    public native void         setConfig            (String key, String value);
+    public native void         setConfigInt         (String key, int value);
+    public native String       getConfig            (String key, String def);
+    public native int          getConfigInt         (String key, int def);
+    public native String       getInfo              ();
+    public native String       cmdline              (String cmd);
+    public native String       initiateKeyTransfer  ();
+    public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
+    public native void         imex                 (int what, String dir);
+    public native String       imexHasBackup        (String dir);
+    public native int          checkPassword        (String pw);
+    public native boolean      mayBeValidAddr       (String addr);
+    public native int          lookupContactIdByAddr(String addr);
+    public native int[]        getContacts          (int flags, String query);
+    public native int          getBlockedCount      ();
+    public native int[]        getBlockedContacts   ();
+    public @NonNull DcContact  getContact           (int contact_id) { return new DcContact(getContactCPtr(contact_id)); }
+    public native int          createContact        (String name, String addr);
+    public native void         blockContact         (int id, int block);
+    public native String       getContactEncrInfo   (int contact_id);
+    public native int          deleteContact        (int id);
+    public native int          addAddressBook       (String adrbook);
+    public @NonNull DcChatlist getChatlist          (int listflags, String query, int queryId) { return new DcChatlist(getChatlistCPtr(listflags, query, queryId)); }
+    public @NonNull DcChat     getChat              (int chat_id) { return new DcChat(getChatCPtr(chat_id)); }
+    public native void         markseenMsgs         (int msg_ids[]);
+    public native void         marknoticedChat      (int chat_id);
+    public native void         marknoticedAllChats  ();
+    public native void         marknoticedContact   (int contact_id);
+    public native void         archiveChat          (int chat_id, int archive);
+    public native int          getChatIdByContactId (int contact_id);
+    public native int          createChatByContactId(int contact_id);
+    public native int          createChatByMsgId    (int msg_id);
+    public native int          createGroupChat      (boolean verified, String name);
+    public native boolean      isContactInChat      (int chat_id, int contact_id);
+    public native int          addContactToChat     (int chat_id, int contact_id);
+    public native int          removeContactFromChat(int chat_id, int contact_id);
+    public native void         setDraft             (int chat_id, String draft/*null=delete*/);
+    public native int          setChatName          (int chat_id, String name);
+    public native int          setChatProfileImage  (int chat_id, String name);
+    public native int[]        getChatMsgs          (int chat_id, int flags, int marker1before);
+    public native int[]        searchMsgs           (int chat_id, String query);
+    public native int[]        getFreshMsgs         ();
+    public native int[]        getChatMedia         (int chat_id, int msg_type, int or_msg_type);
+    public native int          getNextMedia         (int msg_id, int dir);
+    public native int[]        getChatContacts      (int chat_id);
+    public native void         deleteChat           (int chat_id);
+    public @NonNull DcMsg      getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
+    public native String       getMsgInfo           (int id);
+    public native int          getFreshMsgCount     (int chat_id);
+    public native void         deleteMsgs           (int msg_ids[]);
+    public native void         forwardMsgs          (int msg_ids[], int chat_ids);
+    public native int          sendMsg              (int chat_id, DcMsg msg);
+    public native int          sendTextMsg          (int chat_id, String text);
+    public native int          sendVcardMsg         (int chat_id, int contact_id);
+    public native int          sendMediaMsg         (int chat_id, int type, String file, String mime, int w, int h, int time_ms, String author, String trackname);
+    public native int          checkQrCPtr          (String qr);
+    public @NonNull DcLot      checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }
+    public native String       getSecurejoinQr      (int chat_id);
+    public native int          joinSecurejoin       (String qr);
 
     // event handling - you should @Override this function in derived classes
     public long handleEvent(int event, long data1, long data2) {

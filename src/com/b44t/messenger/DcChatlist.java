@@ -23,6 +23,8 @@
 package com.b44t.messenger;
 
 
+import android.support.annotation.NonNull;
+
 public class DcChatlist {
 
     public DcChatlist(long chatlistCPtr) {
@@ -35,11 +37,11 @@ public class DcChatlist {
         chatlistCPtr = 0;
     }
 
-    public native int   getCnt    ();
-    public native int   getChatId (int index);
-    public DcChat       getChat   (int index) { return new DcChat(getChatCPtr(index)); }
-    public DcMsg        getMsg    (int index) { return new DcMsg(getMsgCPtr(index)); }
-    public DcLot        getSummary(int index, DcChat chat) { return new DcLot(getSummaryCPtr(index, chat==null? null : chat.getChatCPtr())); }
+    public native int       getCnt    ();
+    public native int       getChatId (int index);
+    public @NonNull DcChat  getChat   (int index) { return new DcChat(getChatCPtr(index)); }
+    public @NonNull DcMsg   getMsg    (int index) { return new DcMsg(getMsgCPtr(index)); }
+    public @NonNull DcLot   getSummary(int index, DcChat chat) { return new DcLot(getSummaryCPtr(index, chat==null? null : chat.getChatCPtr())); }
 
     // working with raw c-data
     private long        chatlistCPtr;    // CAVE: the name is referenced in the JNI

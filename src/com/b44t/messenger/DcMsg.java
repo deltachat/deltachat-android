@@ -23,6 +23,7 @@
 package com.b44t.messenger;
 
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import org.thoughtcrime.securesms.database.Address;
@@ -80,12 +81,88 @@ public class DcMsg {
         return this.getId()==that.getId() && this.getId()!=0;
     }
 
+    public native int     getId              ();
+    public native String  getText            ();
+    public native long    getTimestamp       ();
+    public native int     getType            ();
+    public native int     getState           ();
+    public native int     getChatId          ();
+    public native int     getFromId          ();
+    public native int     getWidth           (int def);
+    public native int     getHeight          (int def);
+    public native int     getDuration        ();
+    public native void    lateFilingMediaSize(int width, int height, int duration);
+    public native int     getBytes           ();
+    public @NonNull DcLot getSummary         (DcChat chat) { return new DcLot(getSummaryCPtr(chat.getChatCPtr())); }
+    public native String  getSummarytext     (int approx_characters);
+    public native int     showPadlock        ();
+    public @NonNull DcLot getMediainfo       () { return new DcLot(getMediainfoCPtr()); }
+    public boolean        hasFile            () { String file = getFile(); return file!=null && !file.isEmpty(); }
+    public native String  getFile            ();
+    public native String  getFilemime        ();
+    public native String  getFilename        ();
+    public native boolean isForwarded        ();
+    public native boolean isInfo             ();
+    public native boolean isSetupMessage     ();
+    public native String  getSetupCodeBegin  ();
+    public native boolean isIncreation       ();
+    public native void    setType            (int type);
+    public native void    setText            (String text);
+    public native void    setFile            (String file, String filemime);
+    public native void    setDimension       (int width, int height);
+    public native void    setDuration        (int duration);
+    public native void    setMediainfo       (String author, String trackname);
+
+    // aliases and higher-level tools
+
     public boolean isOutgoing() {
         return getFromId() == DcContact.DC_CONTACT_ID_SELF;
     }
 
     public boolean isGroupAction() {
-        // TODO: check DcChat
+        return false;
+    }
+
+    public String getDisplayBody()  {
+        return getText();
+    }
+
+    public String getBody()  {
+        return getText();
+    }
+
+    public long getDateReceived() {
+        return getTimestamp();
+    }
+
+    public boolean isFailed() {
+        return getState() == DC_STATE_OUT_ERROR;
+    }
+    public long getExpiresIn() {
+        return -1; // never.
+    }
+    public long getExpireStarted() {
+        return 0;
+    }
+    public boolean isSecure() {
+        return showPadlock()!=0;
+    }
+    public boolean isPending() {
+        return getState() == DC_STATE_OUT_PENDING;
+    }
+    public boolean isMediaPending() {
+        return isPending();
+    }
+    public boolean isDelivered() {
+        return getState() == DC_STATE_OUT_DELIVERED;
+    }
+    public boolean isRemoteRead() {
+        return getState() == DC_STATE_OUT_MDN_RCVD;
+    }
+    public int getSubscriptionId() {
+        return -1;
+    }
+    public boolean isMms() {
         return false;
     }
 
@@ -96,51 +173,6 @@ public class DcMsg {
     public boolean isIdentityUpdate() { return false; }
     public boolean isIdentityVerified() { return false; }
     public boolean isIdentityDefault() { return false; }
-
-    // aliases
-    public String getDisplayBody()  { return getText(); }
-    public String getBody()  { return getText(); }
-    public long getDateReceived() { return getTimestamp(); }
-
-    public boolean isFailed() {
-        return getState() == DC_STATE_OUT_ERROR;
-    }
-
-    public long getExpiresIn() {
-        return -1; // never.
-    }
-
-    public long getExpireStarted() {
-        return 0;
-    }
-
-    public boolean isSecure() {
-        return showPadlock()!=0;
-    }
-
-    public boolean isPending() {
-        return getState() == DC_STATE_OUT_PENDING;
-    }
-
-    public boolean isMediaPending() {
-        return isPending();
-    }
-
-    public boolean isDelivered() {
-        return getState() == DC_STATE_OUT_DELIVERED;
-    }
-
-    public boolean isRemoteRead() {
-        return getState() == DC_STATE_OUT_MDN_RCVD;
-    }
-
-    public int getSubscriptionId() {
-        return -1;
-    }
-
-    public boolean isMms() {
-        return false;
-    }
 
     @Nullable
     public Quote getQuote() {
@@ -154,48 +186,9 @@ public class DcMsg {
         return new Recipient(Address.fromContact(getFromId()), recipientDetails);
     }
 
-    public boolean hasFile() {
-        String file = getFile();
-        return file!=null && !file.isEmpty();
-    }
-
-    public native int getId();
-    public native String getText();
-    public native long getTimestamp();
-    public native int getType();
-    public native int getState();
-    public native int getChatId();
-    public native int getFromId();
-
-    public native int getWidth(int def);
-    public native int getHeight(int def);
-    public native int getDuration();
-    public native void lateFilingMediaSize(int width, int height, int duration);
-
-    public native int getBytes();
-    public DcLot getSummary(DcChat chat) { return new DcLot(getSummaryCPtr(chat.getChatCPtr())); }
-    public native String getSummarytext(int approx_characters);
-    public native int showPadlock();
-    public DcLot getMediainfo() { return new DcLot(getMediainfoCPtr()); }
-    public native String getFile();
-    public native String getFilemime();
-    public native String getFilename();
-    public native boolean isForwarded();
-    public native boolean isInfo();
-    public native boolean isSetupMessage();
-    public native String getSetupCodeBegin();
-    public native boolean isIncreation();
-
-    public native void setType(int type);
-    public native void setText(String text);
-    public native void setFile(String file, String filemime);
-    public native void setDimension(int width, int height);
-    public native void setDuration(int duration);
-    public native void setMediainfo(String author, String trackname);
-
     // working with raw c-data
-    private long msgCPtr; // CAVE: the name is referenced in the JNI
-    private native void unrefMsgCPtr();
-    private native long getSummaryCPtr(long chatCPtr);
+    private long        msgCPtr;        // CAVE: the name is referenced in the JNI
+    private native void unrefMsgCPtr    ();
+    private native long getSummaryCPtr  (long chatCPtr);
     private native long getMediainfoCPtr();
 };
