@@ -39,17 +39,12 @@ import org.thoughtcrime.securesms.jobmanager.dependencies.DependencyInjector;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.jobmanager.requirements.NetworkRequirementProvider;
 import org.thoughtcrime.securesms.jobs.CreateSignedPreKeyJob;
-import org.thoughtcrime.securesms.jobs.GcmRefreshJob;
 import org.thoughtcrime.securesms.jobs.MultiDeviceContactUpdateJob;
 import org.thoughtcrime.securesms.jobs.requirements.MasterSecretRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.ServiceRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.SqlCipherMigrationRequirementProvider;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
-import org.thoughtcrime.securesms.service.DirectoryRefreshListener;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
-import org.thoughtcrime.securesms.service.LocalBackupListener;
-import org.thoughtcrime.securesms.service.RotateSignedPreKeyListener;
-import org.thoughtcrime.securesms.service.UpdateApkRefreshListener;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.webrtc.PeerConnectionFactory;
 import org.webrtc.PeerConnectionFactory.InitializationOptions;
@@ -100,10 +95,8 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     initializeDependencyInjection();
     initializeJobManager();
     initializeExpiringMessageManager();
-    //initializeGcmCheck(); -- we're not using google cloud management (aka firebase)
-    //initializeSignedPreKeyCheck(); -- keys are generated in the core
+    //initializeSignedPreKeyCheck(); -- keys are generated in the core, however, not sure if this is needed for the lock screen
     initializePeriodicTasks();
-    //initializeCircumvention(); -- this is about countries where signal does not work
     initializeWebRtc();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
   }
@@ -167,16 +160,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
                                           new AxolotlStorageModule(this));
   }
 
-  private void initializeGcmCheck() {
-    if (TextSecurePreferences.isPushRegistered(this)) {
-      long nextSetTime = TextSecurePreferences.getGcmRegistrationIdLastSetTime(this) + TimeUnit.HOURS.toMillis(6);
-
-      if (TextSecurePreferences.getGcmRegistrationId(this) == null || nextSetTime <= System.currentTimeMillis()) {
-        this.jobManager.add(new GcmRefreshJob(this));
-      }
-    }
-  }
-
   private void initializeSignedPreKeyCheck() {
     if (!TextSecurePreferences.isSignedPreKeyRegistered(this)) {
       jobManager.add(new CreateSignedPreKeyJob(this));
@@ -231,26 +214,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
       Log.w(TAG, e);
     }
   }
-
-  @SuppressLint("StaticFieldLeak")
-  private void initializeCircumvention() {
-    AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
-      @Override
-      protected Void doInBackground(Void... params) {
-        if (new SignalServiceNetworkAccess(ApplicationContext.this).isCensored(ApplicationContext.this)) {
-          try {
-            ProviderInstaller.installIfNeeded(ApplicationContext.this);
-          } catch (Throwable t) {
-            Log.w(TAG, t);
-          }
-        }
-        return null;
-      }
-    };
-
-    task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-  }
-
 
   private void executePendingContactSync() {
     if (TextSecurePreferences.needsFullContactSync(this)) {
