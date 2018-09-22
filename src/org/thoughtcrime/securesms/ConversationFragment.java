@@ -120,6 +120,12 @@ public class ConversationFragment extends Fragment
     super.onCreate(icicle);
     this.locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     this.dcContext = DcHelper.getContext(getContext());
+
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_INCOMING_MSG);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSGS_CHANGED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
   }
 
   @Override
@@ -146,12 +152,6 @@ public class ConversationFragment extends Fragment
 
     initializeResources();
     initializeListAdapter();
-
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_INCOMING_MSG);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSGS_CHANGED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
   }
 
   @Override
@@ -450,6 +450,11 @@ public class ConversationFragment extends Fragment
   }
 
   public void reloadList() {
+    ConversationAdapter adapter = getListAdapter();
+    if (adapter == null) {
+      return;
+    }
+
     // just for testing, here are two variants.
     final boolean loadSynchronous = true;
     if (loadSynchronous) {
@@ -891,7 +896,9 @@ public class ConversationFragment extends Fragment
   }
 
   public void handleEvent(int eventId, Object data1, Object data2) {
-    // TODO: delivered/read events this can be optimized by just updating the single checkmark/icon
+    if(eventId== DcContext.DC_EVENT_MSG_DELIVERED) {
+      Log.w(TAG, "DC_EVENT_MSG_DELIVERED reveived for msg#"+(Long)data1);
+    }
     reloadList();
   }
 }

@@ -1438,7 +1438,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       Log.w(TAG, "isManual Selection: " + sendButton.isManualSelection());
       Log.w(TAG, "forceSms: " + forceSms);
 
-      if (attachmentManager.isAttachmentPresent() || recipient.isGroupRecipient() || recipient.getAddress().isEmail() || inputPanel.getQuote().isPresent()) {
+      if (attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()) {
         sendMediaMessage(forceSms, expiresIn, subscriptionId, initiating);
       } else {
         sendTextMessage(forceSms, expiresIn, subscriptionId, initiating);
@@ -1512,47 +1512,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void sendTextMessage(final boolean forceSms, final long expiresIn, final int subscriptionId, final boolean initiatingConversation)
       throws InvalidMessageException
   {
-    final Context context     = getApplicationContext();
     final String  messageBody = getMessage();
-
-    OutgoingTextMessage message;
-
-    if(recipient.getAddress().isDcChat()) {
-      dcContext.sendTextMsg(recipient.getAddress().getDcChatId(), messageBody);
-    } else {
-      if (isSecureText && !forceSms) {
-        message = new OutgoingEncryptedMessage(recipient, messageBody, expiresIn);
-      } else {
-        message = new OutgoingTextMessage(recipient, messageBody, expiresIn, subscriptionId);
-      }
-
-      Permissions.with(this)
-               .request(Manifest.permission.SEND_SMS)
-               .ifNecessary(forceSms || !isSecureText)
-               .withPermanentDenialDialog(getString(R.string.ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms))
-               .onAllGranted(() -> {
-                 this.composeText.setText("");
-                 final long id = fragment.stageOutgoingMessage(message);
-
-                 new AsyncTask<OutgoingTextMessage, Void, Long>() {
-                   @Override
-                   protected Long doInBackground(OutgoingTextMessage... messages) {
-                     if (initiatingConversation) {
-                       DatabaseFactory.getRecipientDatabase(context).setProfileSharing(recipient, true);
-                     }
-
-                     return MessageSender.send(context, messages[0], threadId, forceSms, () -> fragment.releaseOutgoingMessage(id));
-                   }
-
-                   @Override
-                   protected void onPostExecute(Long result) {
-                     sendComplete(result);
-                   }
-                 }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, message);
-
-               })
-               .execute();
-    }
+    dcContext.sendTextMsg(dcChat.getId(), messageBody);
+    composeText.setText("");
+    sendComplete(dcChat.getId());
   }
 
   private void updateToggleButtonState() {
