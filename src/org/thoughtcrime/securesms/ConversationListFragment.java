@@ -236,7 +236,6 @@ public class ConversationListFragment extends Fragment
 
     new SnackbarAsyncTask<Void>(getView(), snackBarTitle,
                                 getString(R.string.ConversationListFragment_undo),
-                                getResources().getColor(R.color.amber_500),
                                 Snackbar.LENGTH_LONG, true)
     {
 
@@ -494,7 +493,6 @@ public class ConversationListFragment extends Fragment
         new SnackbarAsyncTask<Long>(getView(),
                                     getResources().getQuantityString(R.plurals.ConversationListFragment_moved_conversations_to_inbox, 1, 1),
                                     getString(R.string.ConversationListFragment_undo),
-                                    getResources().getColor(R.color.amber_500),
                                     Snackbar.LENGTH_LONG, false)
         {
           @Override
@@ -511,7 +509,6 @@ public class ConversationListFragment extends Fragment
         new SnackbarAsyncTask<Long>(getView(),
                                     getResources().getQuantityString(R.plurals.ConversationListFragment_conversations_archived, 1, 1),
                                     getString(R.string.ConversationListFragment_undo),
-                                    getResources().getColor(R.color.amber_500),
                                     Snackbar.LENGTH_LONG, false)
         {
           @Override

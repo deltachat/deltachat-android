@@ -14,7 +14,6 @@ public abstract class SnackbarAsyncTask<Params>
   private final View    view;
   private final String  snackbarText;
   private final String  snackbarActionText;
-  private final int     snackbarActionColor;
   private final int     snackbarDuration;
   private final boolean showProgress;
 
@@ -24,14 +23,12 @@ public abstract class SnackbarAsyncTask<Params>
   public SnackbarAsyncTask(View view,
                            String snackbarText,
                            String snackbarActionText,
-                           int snackbarActionColor,
                            int snackbarDuration,
                            boolean showProgress)
   {
     this.view                = view;
     this.snackbarText        = snackbarText;
     this.snackbarActionText  = snackbarActionText;
-    this.snackbarActionColor = snackbarActionColor;
     this.snackbarDuration    = snackbarDuration;
     this.showProgress        = showProgress;
   }
@@ -59,7 +56,6 @@ public abstract class SnackbarAsyncTask<Params>
 
     Snackbar.make(view, snackbarText, snackbarDuration)
             .setAction(snackbarActionText, this)
-            .setActionTextColor(snackbarActionColor)
             .show();
   }
 
