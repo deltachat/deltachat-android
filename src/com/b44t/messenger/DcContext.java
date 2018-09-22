@@ -93,7 +93,6 @@ public class DcContext {
     public native String       getConfig            (String key, String def);
     public native int          getConfigInt         (String key, int def);
     public native String       getInfo              ();
-    public native String       cmdline              (String cmd);
     public native String       initiateKeyTransfer  ();
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);

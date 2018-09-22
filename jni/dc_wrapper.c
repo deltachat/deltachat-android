@@ -25,7 +25,6 @@
 
 #include <jni.h>
 #include "messenger-backend/src/deltachat.h"
-#include "messenger-backend/cmdline/cmdline.h"
 
 
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
@@ -664,17 +663,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getContactEncrInfo(JNIEnv *e
 	char* temp = dc_get_contact_encrinfo(get_dc_context(env, obj), contact_id);
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
-	return ret;
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_cmdline(JNIEnv *env, jobject obj, jstring cmd)
-{
-	CHAR_REF(cmd);
-		char* temp = dc_cmdline(get_dc_context(env, obj), cmdPtr);
-			jstring ret = JSTRING_NEW(temp);
-		free(temp);
-	CHAR_UNREF(cmd);
 	return ret;
 }
 
