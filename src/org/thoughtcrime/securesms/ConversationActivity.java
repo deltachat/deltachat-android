@@ -90,8 +90,6 @@ import org.thoughtcrime.securesms.components.emoji.EmojiStrings;
 import org.thoughtcrime.securesms.components.location.SignalPlace;
 import org.thoughtcrime.securesms.components.reminder.ExpiredBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
-import org.thoughtcrime.securesms.components.reminder.ServiceOutageReminder;
-import org.thoughtcrime.securesms.components.reminder.UnauthorizedReminder;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
@@ -107,15 +105,12 @@ import org.thoughtcrime.securesms.database.DraftDatabase.Draft;
 import org.thoughtcrime.securesms.database.DraftDatabase.Drafts;
 import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
 import org.thoughtcrime.securesms.database.MmsSmsColumns.Types;
-import org.thoughtcrime.securesms.database.RecipientDatabase.RegisteredState;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
 import org.thoughtcrime.securesms.events.ReminderUpdateEvent;
 import org.thoughtcrime.securesms.giph.ui.GiphyActivity;
 import org.thoughtcrime.securesms.jobs.MultiDeviceBlockedUpdateJob;
-import org.thoughtcrime.securesms.jobs.RetrieveProfileJob;
-import org.thoughtcrime.securesms.jobs.ServiceOutageDetectionJob;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -148,7 +143,6 @@ import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.CharacterCalculator.CharacterState;
 import org.thoughtcrime.securesms.util.CommunicationActions;
 import org.thoughtcrime.securesms.util.Dialogs;
-import org.thoughtcrime.securesms.util.DirectoryHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ExpirationUtil;
@@ -1014,13 +1008,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   protected void updateReminders() {
-    if (UnauthorizedReminder.isEligible(this)) {
-      reminderView.get().showReminder(new UnauthorizedReminder(this));
-    } else if (ExpiredBuildReminder.isEligible()) {
+    if (ExpiredBuildReminder.isEligible()) {
       reminderView.get().showReminder(new ExpiredBuildReminder(this));
-    } else if (ServiceOutageReminder.isEligible(this)) {
-      ApplicationContext.getInstance(this).getJobManager().add(new ServiceOutageDetectionJob(this));
-      reminderView.get().showReminder(new ServiceOutageReminder(this));
     } else if (reminderView.resolved()) {
       reminderView.get().hide();
     }

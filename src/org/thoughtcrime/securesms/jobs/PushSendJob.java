@@ -78,7 +78,7 @@ public abstract class PushSendJob extends SendJob {
     super.onRetry();
 
     if (getRunIteration() > 1) {
-      ApplicationContext.getInstance(context).getJobManager().add(new ServiceOutageDetectionJob(context));
+//      ApplicationContext.getInstance(context).getJobManager().add(new ServiceOutageDetectionJob(context));
     }
   }
 

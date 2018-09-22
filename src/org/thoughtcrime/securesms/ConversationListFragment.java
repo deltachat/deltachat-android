@@ -65,14 +65,11 @@ import org.thoughtcrime.securesms.components.reminder.ExpiredBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.OutdatedBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.Reminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
-import org.thoughtcrime.securesms.components.reminder.ServiceOutageReminder;
 import org.thoughtcrime.securesms.components.reminder.ShareReminder;
-import org.thoughtcrime.securesms.components.reminder.UnauthorizedReminder;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.events.ReminderUpdateEvent;
-import org.thoughtcrime.securesms.jobs.ServiceOutageDetectionJob;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -194,13 +191,8 @@ public class ConversationListFragment extends Fragment
       @Override
       protected Optional<? extends Reminder> doInBackground(Context... params) {
         final Context context = params[0];
-        if (UnauthorizedReminder.isEligible(context)) {
-          return Optional.of(new UnauthorizedReminder(context));
-        } else if (ExpiredBuildReminder.isEligible()) {
+        if (ExpiredBuildReminder.isEligible()) {
           return Optional.of(new ExpiredBuildReminder(context));
-        } else if (ServiceOutageReminder.isEligible(context)) {
-          ApplicationContext.getInstance(context).getJobManager().add(new ServiceOutageDetectionJob(context));
-          return Optional.of(new ServiceOutageReminder(context));
         } else if (OutdatedBuildReminder.isEligible()) {
           return Optional.of(new OutdatedBuildReminder(context));
         } else if (ShareReminder.isEligible(context)) {
