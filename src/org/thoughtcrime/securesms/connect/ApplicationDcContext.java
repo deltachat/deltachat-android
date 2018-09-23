@@ -195,6 +195,7 @@ public class ApplicationDcContext extends DcContext {
                         }
                     }
                 }, "imapThread");
+                imapThread.setPriority(Thread.NORM_PRIORITY);
                 imapThread.start();
             }
 
@@ -224,6 +225,7 @@ public class ApplicationDcContext extends DcContext {
                         }
                     }
                 }, "smtpThread");
+                smtpThread.setPriority(Thread.MAX_PRIORITY);
                 smtpThread.start();
             }
         }
