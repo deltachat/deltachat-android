@@ -52,6 +52,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
@@ -311,9 +312,28 @@ public class ConversationFragment extends Fragment
     list.addItemDecoration(lastSeenDecoration);
   }
 
-  private void handleCopyMessage(final Set<DcMsg> messageRecords) {
-    List<DcMsg> messageList = new LinkedList<>(messageRecords);
-    Collections.sort(messageList, new Comparator<DcMsg>() {
+  private String getMessageContent(DcMsg msg, DcMsg prev_msg)
+  {
+    String ret = "";
+
+    if (msg.getFromId() != prev_msg.getFromId()) {
+      DcContact contact = dcContext.getContact(msg.getFromId());
+      ret += contact.getDisplayName() + ":\n";
+    }
+
+    if( msg.getType()==DcMsg.DC_MSG_TEXT ) {
+      ret += msg.getText();
+    }
+    else {
+      ret += msg.getSummarytext(1000);
+    }
+
+    return ret;
+  }
+
+  private void handleCopyMessage(final Set<DcMsg> dcMsgsSet) {
+    List<DcMsg> dcMsgsList = new LinkedList<>(dcMsgsSet);
+    Collections.sort(dcMsgsList, new Comparator<DcMsg>() {
       @Override
       public int compare(DcMsg lhs, DcMsg rhs) {
         if      (lhs.getDateReceived() < rhs.getDateReceived())  return -1;
@@ -322,23 +342,27 @@ public class ConversationFragment extends Fragment
       }
     });
 
-    StringBuilder    bodyBuilder = new StringBuilder();
-    ClipboardManager clipboard   = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+    StringBuilder result = new StringBuilder();
 
-    for (DcMsg messageRecord : messageList) {
-      String body = messageRecord.getDisplayBody();
-      if (!TextUtils.isEmpty(body)) {
-        bodyBuilder.append(body).append('\n');
+    DcMsg prevMsg = new DcMsg(dcContext);
+    for (DcMsg msg : dcMsgsList) {
+      if (result.length()>0) {
+        result.append("\n\n");
+      }
+      result.append(getMessageContent(msg, prevMsg));
+      prevMsg = msg;
+    }
+
+    if (result.length()>0) {
+      try {
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        clipboard.setText(result.toString());
+        Toast.makeText(getActivity(), getActivity().getResources().getQuantityString(R.plurals.ConversationFragment_n_selected_messages_copied_to_clipboard, dcMsgsList.size(), dcMsgsList.size()), Toast.LENGTH_LONG).show();
+      }
+      catch(Exception e) {
+        e.printStackTrace();
       }
     }
-    if (bodyBuilder.length() > 0 && bodyBuilder.charAt(bodyBuilder.length() - 1) == '\n') {
-      bodyBuilder.deleteCharAt(bodyBuilder.length() - 1);
-    }
-
-    String result = bodyBuilder.toString();
-
-    if (!TextUtils.isEmpty(result))
-        clipboard.setText(result);
   }
 
   private void handleDeleteMessages(final Set<DcMsg> messageRecords) {

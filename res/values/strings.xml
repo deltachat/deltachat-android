@@ -208,6 +208,10 @@
     <string name="ConversationFragment_deleting">Deleting</string>
     <string name="ConversationFragment_deleting_messages">Deleting messages...</string>
     <string name="ConversationFragment_quoted_message_not_found">Quoted message not found</string>
+    <plurals name="ConversationFragment_n_selected_messages_copied_to_clipboard">
+        <item quantity="one">Message copied to clipboard</item>
+        <item quantity="other">%1$d selected messages copied to clipboard</item>
+    </plurals>
 
     <!-- ConversationListActivity -->
     <string name="ConversationListActivity_there_is_no_browser_installed_on_your_device">There is no browser installed on your device.</string>
