@@ -179,6 +179,10 @@
         <item quantity="one">This will permanently delete the selected message.</item>
         <item quantity="other">This will permanently delete all %1$d selected messages.</item>
     </plurals>
+    <plurals name="ConversationFragment_this_will_delete_n_selected_messages_here_and_on_server">
+        <item quantity="one">This will permanently delete the selected message here and on the server.</item>
+        <item quantity="other">This will permanently delete all %1$d selected messages here and one the server.</item>
+    </plurals>
     <string name="ConversationFragment_save_to_sd_card">Save to storage?</string>
     <plurals name="ConversationFragment_saving_n_media_to_storage_warning">
         <item quantity="one">Saving this media to storage will allow any other apps on your device to access it.\n\nContinue?</item>

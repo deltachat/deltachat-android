@@ -33,6 +33,7 @@ import org.thoughtcrime.securesms.recipients.RecipientProvider;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class DcMsg {
 
@@ -114,6 +115,15 @@ public class DcMsg {
     public native void    setMediainfo       (String author, String trackname);
 
     // aliases and higher-level tools
+    public static int[] msgSetToIds(final Set<DcMsg> dcMsgs) {
+        int   cnt = dcMsgs==null? 0 : dcMsgs.size();
+        int[] ids = new int[cnt];
+        int   i = 0;
+        for (DcMsg dcMsg : dcMsgs) {
+            ids[i++] = dcMsg.getId();
+        }
+        return ids;
+    }
 
     public boolean isOutgoing() {
         return getFromId() == DcContact.DC_CONTACT_ID_SELF;

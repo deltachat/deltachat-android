@@ -347,38 +347,14 @@ public class ConversationFragment extends Fragment
 
     builder.setIconAttribute(R.attr.dialog_alert_icon);
     builder.setTitle(getActivity().getResources().getQuantityString(R.plurals.ConversationFragment_delete_selected_messages, messagesCount, messagesCount));
-    builder.setMessage(getActivity().getResources().getQuantityString(R.plurals.ConversationFragment_this_will_permanently_delete_all_n_selected_messages, messagesCount, messagesCount));
+    builder.setMessage(getActivity().getResources().getQuantityString(R.plurals.ConversationFragment_this_will_delete_n_selected_messages_here_and_on_server, messagesCount, messagesCount));
     builder.setCancelable(true);
 
     builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
-        /* TODO: delete messages
-        new ProgressDialogAsyncTask<MessageRecord, Void, Void>(getActivity(),
-                                                               R.string.ConversationFragment_deleting,
-                                                               R.string.ConversationFragment_deleting_messages)
-        {
-          @Override
-          protected Void doInBackground(MessageRecord... messageRecords) {
-            for (MessageRecord messageRecord : messageRecords) {
-              boolean threadDeleted;
-
-              if (messageRecord.isMms()) {
-                threadDeleted = DatabaseFactory.getMmsDatabase(getActivity()).delete(messageRecord.getId());
-              } else {
-                threadDeleted = DatabaseFactory.getSmsDatabase(getActivity()).deleteMessage(messageRecord.getId());
-              }
-
-              if (threadDeleted) {
-                threadId = -1;
-                listener.setThreadId(threadId);
-              }
-            }
-
-            return null;
-          }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, messageRecords.toArray(new MessageRecord[messageRecords.size()]));
-        */
+        int[] ids = DcMsg.msgSetToIds(messageRecords);
+        dcContext.deleteMsgs(ids);
       }
     });
 
