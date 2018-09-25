@@ -287,7 +287,8 @@ public class ApplicationDcContext extends DcContext {
         }
     }
 
-    @Override public long handleEvent(final int event, long data1, long data2) {
+    @Override
+    public long handleEvent(final int event, long data1, long data2) {
         switch(event) {
             case DC_EVENT_INFO:
                 Log.i("DeltaChat", dataToString(data2));

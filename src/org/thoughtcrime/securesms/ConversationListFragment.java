@@ -562,6 +562,7 @@ public class ConversationListFragment extends Fragment
     }
   }
 
+  @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
     getLoaderManager().restartLoader(0,null,this);
   }

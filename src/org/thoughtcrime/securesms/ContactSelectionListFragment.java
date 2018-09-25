@@ -352,6 +352,7 @@ public class ContactSelectionListFragment extends    Fragment
     void onContactDeselected(int specialId, String number);
   }
 
+  @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
     if (eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
       getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);

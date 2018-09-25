@@ -182,6 +182,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         dcContext.imex(DcContext.DC_IMEX_IMPORT_BACKUP, backupFile);
     }
 
+    @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
         if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS) {
             ApplicationDcContext dcContext = DcHelper.getContext(this);

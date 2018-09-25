@@ -895,6 +895,7 @@ public class ConversationFragment extends Fragment
     }
   }
 
+  @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
     if(eventId== DcContext.DC_EVENT_MSG_DELIVERED) {
       Log.w(TAG, "DC_EVENT_MSG_DELIVERED reveived for msg#"+(Long)data1);
