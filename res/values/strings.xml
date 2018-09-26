@@ -1128,6 +1128,8 @@
     <string name="preferences__read_receipts">Read receipts</string>
     <string name="preferences__if_read_receipts_are_disabled_you_wont_be_able_to_see_read_receipts">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
     <string name="preferences__request_keyboard_to_disable_personalized_learning">Request keyboard to disable personalized learning</string>
+    <string name="preferences__backup">Backup</string>
+    <string name="preferences__manage_keys">Manage keys</string>
     <string name="preferences_app_protection__blocked_contacts">Blocked contacts</string>
     <string name="preferences_chats__when_using_mobile_data">When using mobile data</string>
     <string name="preferences_chats__when_using_wifi">When using Wi-Fi</string>
@@ -1152,6 +1154,19 @@
     <string name="preferences_chats__message_text_size">Message font size</string>
     <string name="preferences_events__contact_joined_signal">Contact joined Delta Chat</string>
     <string name="preferences_notifications__priority">Priority</string>
+    <string name="preferences_backup__export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
+    <string name="preferences_backup__export_start_button">Start backup</string>
+    <string name="preferences_backup__backup_written_to_x">Backup written successfully to %1$s</string>
+    <string name="preferences_backup__ask_for_storage_permission">Delta Chat needs access to your files in order to create backups.</string>
+    <string name="preferences_managekeys__menu_title">Manage keys</string>
+    <string name="preferences_managekeys__ask_for_storage_permission">Delta Chat needs access to your files to import/export keys.</string>
+    <string name="preferences_managekeys__export_secret_keys">Export secret keys</string>
+    <string name="preferences_managekeys__export_explain">Export secret keys to \"%1$s\"?</string>
+    <string name="preferences_managekeys__import_secret_keys">Import secret keys</string>
+    <string name="preferences_managekeys__import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename</string>
+    <string name="preferences_managekeys__secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
+    <string name="preferences_managekeys__secret_keys_imported_from_x">Secret keys imported from \"%1$s\".</string>
+
     
     <!-- **************************************** -->
     <!-- menus -->

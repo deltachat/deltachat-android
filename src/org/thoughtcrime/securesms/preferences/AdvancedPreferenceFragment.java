@@ -1,56 +1,64 @@
 package org.thoughtcrime.securesms.preferences;
 
-import android.app.Activity;
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.LogSubmitActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.RegistrationActivity;
-import org.thoughtcrime.securesms.contacts.ContactAccessor;
-import org.thoughtcrime.securesms.contacts.ContactIdentityManager;
-import org.thoughtcrime.securesms.push.AccountManagerFactory;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
-import org.whispersystems.libsignal.util.guava.Optional;
-import org.whispersystems.signalservice.api.SignalServiceAccountManager;
-import org.whispersystems.signalservice.api.push.exceptions.AuthorizationFailedException;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.permissions.Permissions;
 
-import java.io.IOException;
+import java.io.File;
 
-public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment {
+
+public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
+                                        implements DcEventCenter.DcEventDelegate
+{
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
 
-  private static final String PUSH_MESSAGING_PREF   = "pref_toggle_push_messaging";
+  private static final String BACKUP_PREF           = "pref_backup";
+  private static final String MANAGE_KEYS_PREF      = "pref_manage_keys";
   private static final String SUBMIT_DEBUG_LOG_PREF = "pref_submit_debug_logs";
 
-  private static final int PICK_IDENTITY_CONTACT = 1;
+  private ApplicationDcContext dcContext;
 
   @Override
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
 
-    initializeIdentitySelection();
+    dcContext = DcHelper.getContext(getContext());
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_IMEX_PROGRESS);
+
+    Preference backup = this.findPreference(BACKUP_PREF);
+    backup.setOnPreferenceClickListener(new BackupListener());
+
+    Preference manageKeys = this.findPreference(MANAGE_KEYS_PREF);
+    manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
 
     Preference submitDebugLog = this.findPreference(SUBMIT_DEBUG_LOG_PREF);
     submitDebugLog.setOnPreferenceClickListener(new SubmitDebugLogListener());
     submitDebugLog.setSummary(getVersion(getActivity()));
+  }
+
+  @Override
+  public void onDestroy() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroy();
   }
 
   @Override
@@ -63,51 +71,6 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment {
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__advanced);
 
-    initializePushMessagingToggle();
-  }
-
-  @Override
-  public void onActivityResult(int reqCode, int resultCode, Intent data) {
-    super.onActivityResult(reqCode, resultCode, data);
-
-    Log.w(TAG, "Got result: " + resultCode + " for req: " + reqCode);
-    if (resultCode == Activity.RESULT_OK && reqCode == PICK_IDENTITY_CONTACT) {
-      handleIdentitySelection(data);
-    }
-  }
-
-  private void initializePushMessagingToggle() {
-    CheckBoxPreference preference = (CheckBoxPreference)this.findPreference(PUSH_MESSAGING_PREF);
-
-    if (TextSecurePreferences.isPushRegistered(getActivity())) {
-      preference.setChecked(true);
-      preference.setSummary(TextSecurePreferences.getLocalNumber(getActivity()));
-    } else {
-      preference.setChecked(false);
-      preference.setSummary(R.string.preferences__free_private_messages_and_calls);
-    }
-
-    preference.setOnPreferenceChangeListener(new PushMessagingClickListener());
-  }
-
-  private void initializeIdentitySelection() {
-    ContactIdentityManager identity = ContactIdentityManager.getInstance(getActivity());
-
-    Preference preference = this.findPreference(TextSecurePreferences.IDENTITY_PREF);
-
-    if (identity.isSelfIdentityAutoDetected()) {
-      this.getPreferenceScreen().removePreference(preference);
-    } else {
-      Uri contactUri = identity.getSelfIdentityUri();
-
-      if (contactUri != null) {
-        String contactName = ContactAccessor.getInstance().getNameFromContact(getActivity(), contactUri);
-        preference.setSummary(String.format(getString(R.string.ApplicationPreferencesActivity_currently_s),
-                                            contactName));
-      }
-
-      preference.setOnPreferenceClickListener(new IdentityPreferenceClickListener());
-    }
   }
 
   private @NonNull String getVersion(@Nullable Context context) {
@@ -124,25 +87,6 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment {
     }
   }
 
-  private class IdentityPreferenceClickListener implements Preference.OnPreferenceClickListener {
-    @Override
-    public boolean onPreferenceClick(Preference preference) {
-      Intent intent = new Intent(Intent.ACTION_PICK);
-      intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
-      startActivityForResult(intent, PICK_IDENTITY_CONTACT);
-      return true;
-    }
-  }
-
-  private void handleIdentitySelection(Intent data) {
-    Uri contactUri = data.getData();
-
-    if (contactUri != null) {
-      TextSecurePreferences.setIdentityContactUri(getActivity(), contactUri.toString());
-      initializeIdentitySelection();
-    }
-  }
-
   private class SubmitDebugLogListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
@@ -152,83 +96,132 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment {
     }
   }
 
-  private class PushMessagingClickListener implements Preference.OnPreferenceChangeListener {
-    private static final int SUCCESS       = 0;
-    private static final int NETWORK_ERROR = 1;
 
-    private class DisablePushMessagesTask extends ProgressDialogAsyncTask<Void, Void, Integer> {
-      private final CheckBoxPreference checkBoxPreference;
+  /***********************************************************************************************
+   * Import/Export
+   **********************************************************************************************/
 
-      public DisablePushMessagesTask(final CheckBoxPreference checkBoxPreference) {
-        super(getActivity(), R.string.ApplicationPreferencesActivity_unregistering, R.string.ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls);
-        this.checkBoxPreference = checkBoxPreference;
-      }
-
-      @Override
-      protected void onPostExecute(Integer result) {
-        super.onPostExecute(result);
-        switch (result) {
-        case NETWORK_ERROR:
-          Toast.makeText(getActivity(),
-                         R.string.ApplicationPreferencesActivity_error_connecting_to_server,
-                         Toast.LENGTH_LONG).show();
-          break;
-        case SUCCESS:
-          TextSecurePreferences.setPushRegistered(getActivity(), false);
-          initializePushMessagingToggle();
-          break;
-        }
-      }
-
-      @Override
-      protected Integer doInBackground(Void... params) {
-        try {
-          Context                     context        = getActivity();
-          SignalServiceAccountManager accountManager = AccountManagerFactory.createManager(context);
-
-          try {
-            accountManager.setGcmId(Optional.<String>absent());
-          } catch (AuthorizationFailedException e) {
-            Log.w(TAG, e);
-          }
-
-          if (!TextSecurePreferences.isGcmDisabled(context)) {
-            GoogleCloudMessaging.getInstance(context).unregister();
-          }
-
-          return SUCCESS;
-        } catch (IOException ioe) {
-          Log.w(TAG, ioe);
-          return NETWORK_ERROR;
-        }
-      }
-    }
-
+  private class BackupListener implements Preference.OnPreferenceClickListener {
     @Override
-    public boolean onPreferenceChange(final Preference preference, Object newValue) {
-      if (((CheckBoxPreference)preference).isChecked()) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setIconAttribute(R.attr.dialog_info_icon);
-        builder.setTitle(R.string.ApplicationPreferencesActivity_disable_signal_messages_and_calls);
-        builder.setMessage(R.string.ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering);
-        builder.setNegativeButton(android.R.string.cancel, null);
-        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialog, int which) {
-            new DisablePushMessagesTask((CheckBoxPreference)preference).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-          }
-        });
-        builder.show();
-      } else {
-        Intent nextIntent = new Intent(getActivity(), ApplicationPreferencesActivity.class);
+    public boolean onPreferenceClick(Preference preference) {
+      Permissions.with(getActivity())
+          .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+          .ifNecessary()
+          .withRationaleDialog(getActivity().getString(R.string.preferences_backup__ask_for_storage_permission), R.drawable.ic_folder_white_48dp)
+          .onAllGranted(() -> {
+            new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.preferences__backup)
+                .setMessage(R.string.preferences_backup__export_explain)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.preferences_backup__export_start_button, (dialogInterface, i) -> startImex(DcContext.DC_IMEX_EXPORT_BACKUP))
+                .show();
+          })
+          .execute();
 
-        Intent intent = new Intent(getActivity(), RegistrationActivity.class);
-        intent.putExtra(RegistrationActivity.RE_REGISTRATION_EXTRA, true);
-        intent.putExtra("next_intent", nextIntent);
-        startActivity(intent);
+      return true;
+    }
+  }
+
+  private class ManageKeysListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      Permissions.with(getActivity())
+          .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+          .ifNecessary()
+          .withRationaleDialog(getActivity().getString(R.string.preferences_managekeys__ask_for_storage_permission), R.drawable.ic_folder_white_48dp)
+          .onAllGranted(() -> {
+            new android.app.AlertDialog.Builder(getActivity())
+                .setTitle(R.string.preferences_managekeys__menu_title)
+                .setItems(new CharSequence[]{
+                        getActivity().getString(R.string.preferences_managekeys__export_secret_keys),
+                        getActivity().getString(R.string.preferences_managekeys__import_secret_keys)
+                    },
+                    (dialogInterface, i) -> {
+                      if (i==0) {
+                        new AlertDialog.Builder(getActivity())
+                            .setTitle(R.string.preferences_managekeys__export_secret_keys)
+                            .setMessage(getActivity().getString(R.string.preferences_managekeys__export_explain, dcContext.getImexDir().getAbsolutePath()))
+                            .setNegativeButton(android.R.string.cancel, null)
+                            .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_EXPORT_SELF_KEYS))
+                            .show();
+                      }
+                      else {
+                        new AlertDialog.Builder(getActivity())
+                            .setTitle(R.string.preferences_managekeys__import_secret_keys)
+                            .setMessage(getActivity().getString(R.string.preferences_managekeys__import_explain, dcContext.getImexDir().getAbsolutePath()))
+                            .setNegativeButton(android.R.string.cancel, null)
+                            .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_IMPORT_SELF_KEYS))
+                            .show();
+                      }
+                    }
+                )
+                .show();
+          })
+          .execute();
+      return true;
+    }
+  }
+
+  private ProgressDialog progressDialog = null;
+  private int            progressWhat = 0;
+  private String         imexDir = "";
+  private void startImex(int what)
+  {
+    if( progressDialog!=null ) {
+      progressDialog.dismiss();
+      progressDialog = null;
+    }
+    progressWhat = what;
+    progressDialog = new ProgressDialog(getActivity());
+    progressDialog.setMessage(getActivity().getString(R.string.one_moment));
+    progressDialog.setCanceledOnTouchOutside(false);
+    progressDialog.setCancelable(false);
+    progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog, which) -> dcContext.stopOngoingProcess());
+    progressDialog.show();
+
+    imexDir = dcContext.getImexDir().getAbsolutePath();
+    dcContext.captureNextError();
+    dcContext.imex(progressWhat, imexDir);
+  }
+
+  @Override
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS) {
+      long progress = (Long)data1;
+      if (progress==0/*error/aborted*/) {
+        dcContext.endCaptureNextError();
+        progressDialog.dismiss();
+        progressDialog = null;
+        if (dcContext.hasCapturedError()) {
+          new android.app.AlertDialog.Builder(getActivity())
+              .setMessage(dcContext.getCapturedError())
+              .setPositiveButton(android.R.string.ok, null)
+              .show();
+        }
       }
-
-      return false;
+      else if (progress<1000/*progress in permille*/) {
+        int percent = (int)progress / 10;
+        progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+      }
+      else if (progress==1000/*done*/) {
+        dcContext.endCaptureNextError();
+        progressDialog.dismiss();
+        progressDialog = null;
+        String msg = "";
+        if (progressWhat==DcContext.DC_IMEX_EXPORT_BACKUP) {
+          msg = getActivity().getString(R.string.preferences_backup__backup_written_to_x, imexDir);
+        }
+        else if (progressWhat==DcContext.DC_IMEX_EXPORT_SELF_KEYS) {
+          msg = getActivity().getString(R.string.preferences_managekeys__secret_keys_exported_to_x, imexDir);
+        }
+        else if (progressWhat==DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
+          msg = getActivity().getString(R.string.preferences_managekeys__secret_keys_imported_from_x, imexDir);
+        }
+        new android.app.AlertDialog.Builder(getActivity())
+            .setMessage(msg)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
+      }
     }
   }
 }
