@@ -349,7 +349,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
     titleView.setVerified(dcChat.isVerified());
-    setActionBarColor(recipient.getColor());
     setBlockedUserState(recipient, isSecureText, isDefaultSms);
     setGroupShareProfileReminder(recipient);
     calculateCharactersRemaining();
@@ -1122,7 +1121,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       Log.w(TAG, "onModifiedRun(): " + recipient.getRegistered());
       titleView.setTitle(glideRequests, dcChat);
       setBlockedUserState(recipient, isSecureText, isDefaultSms);
-      setActionBarColor(recipient.getColor());
       setGroupShareProfileReminder(recipient);
       updateReminders();
       updateDefaultSubscriptionId(recipient.getDefaultSubscriptionId());
@@ -1286,13 +1284,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, thisThreadId);
 
     return future;
-  }
-
-  private void setActionBarColor(MaterialColor color) {
-    ActionBar supportActionBar = getSupportActionBar();
-    if (supportActionBar == null) throw new AssertionError();
-    supportActionBar.setBackgroundDrawable(new ColorDrawable(color.toActionBarColor(this)));
-    setStatusBarColor(color.toStatusBarColor(this));
   }
 
   private void setBlockedUserState(Recipient recipient, boolean isSecureText, boolean isDefaultSms) {

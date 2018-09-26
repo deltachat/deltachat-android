@@ -72,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
+            app:backgroundTint="@color/signal_primary"
             android:src="@drawable/ic_create_white_24dp"
             android:focusable="true"
             android:contentDescription="@string/conversation_list_fragment__fab_content_description"/>

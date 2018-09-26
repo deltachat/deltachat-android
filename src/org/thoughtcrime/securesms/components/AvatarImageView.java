@@ -36,7 +36,7 @@ public class AvatarImageView extends AppCompatImageView {
 
     if (attrs != null) {
       TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.AvatarImageView, 0, 0);
-      inverted = typedArray.getBoolean(0, false);
+      //inverted = typedArray.getBoolean(0, false);
       typedArray.recycle();
     }
   }
