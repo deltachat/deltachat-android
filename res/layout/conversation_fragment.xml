@@ -38,8 +38,7 @@
           android:layout_height="2dp"
           android:layout_gravity="bottom"
           android:background="@drawable/compose_divider_background"
-          android:alpha="1"
-          android:visibility="invisible" />
+          android:alpha="1" />
 
     <ImageButton
             android:id="@+id/scroll_to_bottom_button"

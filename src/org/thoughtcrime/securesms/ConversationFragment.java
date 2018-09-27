@@ -110,7 +110,6 @@ public class ConversationFragment extends Fragment
   private Locale                      locale;
   private RecyclerView                list;
   private RecyclerView.ItemDecoration lastSeenDecoration;
-  private View                        composeDivider;
   private View                        scrollToBottomButton;
   private TextView                    scrollDateHeader;
 
@@ -133,7 +132,6 @@ public class ConversationFragment extends Fragment
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
     final View view = inflater.inflate(R.layout.conversation_fragment, container, false);
     list                 = ViewUtil.findById(view, android.R.id.list);
-    composeDivider       = ViewUtil.findById(view, R.id.compose_divider);
     scrollToBottomButton = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
     scrollDateHeader     = ViewUtil.findById(view, R.id.scroll_date_header);
 
@@ -603,10 +601,7 @@ public class ConversationFragment extends Fragment
       int     positionId                  = getHeaderPositionId();
 
       if (currentlyAtBottom && !wasAtBottom) {
-        ViewUtil.fadeOut(composeDivider, 50, View.INVISIBLE);
         ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
-      } else if (!currentlyAtBottom && wasAtBottom) {
-        ViewUtil.fadeIn(composeDivider, 500);
       }
 
       if (currentlyAtZoomScrollHeight && !wasAtZoomScrollHeight) {
