@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.crypto.IdentityKeyParcelable;
@@ -74,6 +75,7 @@ public class ConversationUpdateItem extends LinearLayout
   public void bind(@NonNull DcMsg                   messageRecord,
                    @NonNull Optional<DcMsg>         previousMessageRecord,
                    @NonNull Optional<DcMsg>         nextMessageRecord,
+                   @NonNull DcChat                  dcChat,
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Locale                  locale,
                    @NonNull Set<DcMsg>              batchSelected,

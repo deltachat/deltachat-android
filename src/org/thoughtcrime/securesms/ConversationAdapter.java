@@ -21,12 +21,12 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
@@ -40,7 +40,6 @@ import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.lang.ref.SoftReference;
 import java.util.Calendar;
@@ -90,6 +89,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private final @NonNull  Calendar          calendar;
 
   private ApplicationDcContext dcContext;
+  private @NonNull DcChat      dcChat;
   private @NonNull int[]       dcMsgList = new int[0];
   private int                  positionToPulseHighlight = -1;
 
@@ -170,10 +170,12 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   public ConversationAdapter(@NonNull Context context,
+                             @NonNull DcChat dcChat,
                              @NonNull GlideRequests glideRequests,
                              @NonNull Locale locale,
                              @Nullable ItemClickListener clickListener,
                              @NonNull Recipient recipient) {
+    this.dcChat = dcChat;
     this.glideRequests = glideRequests;
     this.locale = locale;
     this.clickListener = clickListener;
@@ -189,11 +191,11 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
     ConversationAdapter.ViewHolder holder = (ConversationAdapter.ViewHolder)viewHolder;
-    Optional<DcMsg> previous = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
-    Optional<DcMsg> next = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
+    //Optional<DcMsg> previous = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
+    //Optional<DcMsg> next = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
     boolean pulseHighlight = position == positionToPulseHighlight;
 
-    holder.getItem().bind(getMsg(position), previous, next, glideRequests, locale, batchSelected, recipient, pulseHighlight);
+    holder.getItem().bind(getMsg(position), null, null, dcChat, glideRequests, locale, batchSelected, recipient, pulseHighlight);
 
     if (pulseHighlight) {
       positionToPulseHighlight = -1;
