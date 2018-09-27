@@ -25,26 +25,26 @@ public class SendButton extends ImageButton
   @SuppressWarnings("unused")
   public SendButton(Context context) {
     super(context);
-    this.transportOptions = initializeTransportOptions(false);
+    this.transportOptions = initializeTransportOptions();
     ViewUtil.mirrorIfRtl(this, getContext());
   }
 
   @SuppressWarnings("unused")
   public SendButton(Context context, AttributeSet attrs) {
     super(context, attrs);
-    this.transportOptions = initializeTransportOptions(false);
+    this.transportOptions = initializeTransportOptions();
     ViewUtil.mirrorIfRtl(this, getContext());
   }
 
   @SuppressWarnings("unused")
   public SendButton(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
-    this.transportOptions = initializeTransportOptions(false);
+    this.transportOptions = initializeTransportOptions();
     ViewUtil.mirrorIfRtl(this, getContext());
   }
 
-  private TransportOptions initializeTransportOptions(boolean media) {
-    TransportOptions transportOptions = new TransportOptions(getContext(), media);
+  private TransportOptions initializeTransportOptions() {
+    TransportOptions transportOptions = new TransportOptions(getContext());
     transportOptions.addOnTransportChangedListener(this);
 
     setOnLongClickListener(this);
@@ -71,8 +71,8 @@ public class SendButton extends ImageButton
     return transportOptions.getSelectedTransport();
   }
 
-  public void resetAvailableTransports(boolean isMediaMessage) {
-    transportOptions.reset(isMediaMessage);
+  public void resetAvailableTransports() {
+    transportOptions.reset();
   }
 
   public void disableTransport(TransportOption.Type type) {
@@ -81,10 +81,6 @@ public class SendButton extends ImageButton
 
   public void setDefaultTransport(TransportOption.Type type) {
     transportOptions.setDefaultTransport(type);
-  }
-
-  public void setDefaultSubscriptionId(Optional<Integer> subscriptionId) {
-    transportOptions.setDefaultSubscriptionId(subscriptionId);
   }
 
   @Override

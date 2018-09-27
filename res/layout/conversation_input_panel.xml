@@ -211,7 +211,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:background="@drawable/circle_touch_highlight_background"
-            android:src="@drawable/ic_add_white_24dp"
+            android:src="@drawable/ic_attach_white_24dp"
             android:contentDescription="@string/ConversationActivity_add_attachment"
             android:nextFocusLeft="@+id/embedded_text_editor" />
 

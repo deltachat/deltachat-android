@@ -873,15 +873,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     this.isDefaultSms          = isDefaultSms;
     this.isSecurityInitialized = true;
 
-    boolean isMediaMessage = recipient.isMmsGroupRecipient() || attachmentManager.isAttachmentPresent();
-
-    sendButton.resetAvailableTransports(isMediaMessage);
-
-    if (!isSecureText && !isPushGroupConversation()) sendButton.disableTransport(Type.TEXTSECURE);
-    if (recipient.isPushGroupRecipient())            sendButton.disableTransport(Type.SMS);
-
-    if (isSecureText || isPushGroupConversation()) sendButton.setDefaultTransport(Type.TEXTSECURE);
-    else                                           sendButton.setDefaultTransport(Type.SMS);
+    sendButton.resetAvailableTransports();
+    sendButton.setDefaultTransport(Type.TEXTSECURE);
 
     calculateCharactersRemaining();
     supportInvalidateOptionsMenu();
@@ -1003,7 +996,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void onSecurityUpdated() {
     Log.w(TAG, "onSecurityUpdated()");
     updateReminders();
-    updateDefaultSubscriptionId(recipient.getDefaultSubscriptionId());
   }
 
   protected void updateReminders() {
@@ -1012,11 +1004,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     } else if (reminderView.resolved()) {
       reminderView.get().hide();
     }
-  }
-
-  private void updateDefaultSubscriptionId(Optional<Integer> defaultSubscriptionId) {
-    Log.w(TAG, "updateDefaultSubscriptionId(" + defaultSubscriptionId.orNull() + ")");
-    sendButton.setDefaultSubscriptionId(defaultSubscriptionId);
   }
 
   private void initializeViews() {
@@ -1123,7 +1110,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       setBlockedUserState(recipient, isSecureText, isDefaultSms);
       setGroupShareProfileReminder(recipient);
       updateReminders();
-      updateDefaultSubscriptionId(recipient.getDefaultSubscriptionId());
       initializeSecurity(isSecureText, isDefaultSms);
       invalidateOptionsMenu();
     });

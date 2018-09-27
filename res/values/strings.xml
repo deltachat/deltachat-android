@@ -757,6 +757,7 @@
     <string name="contact_selection_list_fragment__show_contacts">Show Contacts</string>
 
     <!-- conversation_activity -->
+    <string name="conversation_activity__type_message">Message</string>
     <string name="conversation_activity__type_message_push">Delta Chat message</string>
     <string name="conversation_activity__type_message_sms_insecure">Unsecured SMS</string>
     <string name="conversation_activity__type_message_mms_insecure">Unsecured MMS</string>
