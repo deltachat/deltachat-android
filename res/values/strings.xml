@@ -1157,6 +1157,7 @@
     <string name="preferences_chats__message_text_size">Message font size</string>
     <string name="preferences_events__contact_joined_signal">Contact joined Delta Chat</string>
     <string name="preferences_notifications__priority">Priority</string>
+    <string name="preferences_other">Other</string>
     <string name="preferences_backup__export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
     <string name="preferences_backup__export_start_button">Start backup</string>
     <string name="preferences_backup__backup_written_to_x">Backup written successfully to %1$s</string>
@@ -1169,6 +1170,10 @@
     <string name="preferences_managekeys__import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename</string>
     <string name="preferences_managekeys__secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
     <string name="preferences_managekeys__secret_keys_imported_from_x">Secret keys imported from \"%1$s\".</string>
+    <string name="preferences_autocrypt">Autocrypt</string>
+    <string name="preferences_autocrypt__send_asm">Send Autocrypt Setup Message</string>
+    <string name="preferences_autocrypt__prefer_e2ee">Prefer end-to-end encryption</string>
+    <string name="preferences_autocrypt__explain">Autocrypt is a new and open specification for automatic end-to-end email encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with Autocrypt Setup Messages.</string>
 
     
     <!-- **************************************** -->
