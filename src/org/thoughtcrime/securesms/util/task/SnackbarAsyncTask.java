@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
+import org.thoughtcrime.securesms.R;
+
 public abstract class SnackbarAsyncTask<Params>
     extends AsyncTask<Params, Void, Void>
     implements View.OnClickListener
@@ -56,6 +58,7 @@ public abstract class SnackbarAsyncTask<Params>
 
     Snackbar.make(view, snackbarText, snackbarDuration)
             .setAction(snackbarActionText, this)
+            .setActionTextColor(view.getResources().getColor(R.color.white))
             .show();
   }
 

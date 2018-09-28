@@ -542,7 +542,7 @@ public class ConversationListFragment extends Fragment
           if (archive) icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_unarchive_white_36dp);
           else         icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_archive_white_36dp);
 
-          if (alpha > 0) p.setColor(getResources().getColor(R.color.green_500));
+          if (alpha > 0) p.setColor(getResources().getColor(R.color.signal_primary));
           else           p.setColor(Color.WHITE);
 
           c.drawRect((float) itemView.getLeft(), (float) itemView.getTop(), dX,

@@ -313,7 +313,7 @@ public class ConversationListItem extends RelativeLayout
                                                  .textColor(Color.WHITE)
                                                  .bold()
                                                  .endConfig()
-                                                 .buildRound(String.valueOf(thread.getUnreadCount()), getResources().getColor(R.color.textsecure_primary_dark)));
+                                                 .buildRound(String.valueOf(thread.getUnreadCount()), getResources().getColor(R.color.green_A700)));
     unreadIndicator.setVisibility(View.VISIBLE);
   }
 
