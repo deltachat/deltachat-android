@@ -936,9 +936,10 @@
     <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">To send media and group messages, tap \'OK\' and complete the requested settings. The MMS settings for your carrier can generally be located by searching for \'your carrier APN\'. You will only need to do this once.</string>
 
     <!-- profile_create_activity -->
-    <string name="profile_create_activity__set_later">Set later</string>
+    <string name="profile_create_activity__password_account">password and account settings</string>
     <string name="profile_create_activity__finish">FINISH</string>
     <string name="profile_create_activity__who_can_see_this_information">Who can see this information?</string>
+    <string name="profile_create_activity__who_can_see_this_information_explained">Your profile picture and name will be shown alongside your messages when communicating with other users. Already sent information can not be deleted or removed.</string>
     <string name="profile_create_activity__your_name">Your name</string>
 
     <!-- recipient_preferences_activity -->
@@ -1067,6 +1068,7 @@
     <string name="preferences__enable_passphrase">Enable passphrase screen lock</string>
     <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Lock screen and notifications with a passphrase</string>
     <string name="preferences__screen_security">Screen security</string>
+    <string name="preferences__screen_security_restart_warning">To apply the screen security setting please restart the app</string>
     <string name="preferences__disable_screen_security_to_allow_screen_shots">Block screenshots in the recents list and inside the app</string>
     <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Auto-lock Delta Chat after a specified time interval of inactivity</string>
     <string name="preferences__inactivity_timeout_passphrase">Inactivity timeout passphrase</string>

@@ -2,9 +2,7 @@ package org.thoughtcrime.securesms.lock;
 
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -33,7 +31,6 @@ import android.widget.Toast;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.SwitchPreferenceCompat;
 import org.thoughtcrime.securesms.util.ServiceUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.whispersystems.libsignal.util.guava.Optional;
 import org.whispersystems.signalservice.api.SignalServiceAccountManager;
 
@@ -99,10 +96,6 @@ public class RegistrationLockDialog {
 
       @Override
       public void afterTextChanged(Editable s) {
-        if (s != null && s.toString().replace(" ", "").equals(TextSecurePreferences.getRegistrationLockPin(context))) {
-          dialog.dismiss();
-          RegistrationLockReminders.scheduleReminder(context, true);
-        }
       }
     });
 
@@ -153,9 +146,6 @@ public class RegistrationLockDialog {
           protected Boolean doInBackground(Void... voids) {
             try {
               accountManager.setPin(Optional.of(pinValue));
-              TextSecurePreferences.setRegistrationLockPin(context, pinValue);
-              TextSecurePreferences.setRegistrationLockLastReminderTime(context, System.currentTimeMillis());
-              TextSecurePreferences.setRegistrationLockNextReminderInterval(context, RegistrationLockReminders.INITIAL_INTERVAL);
               return true;
             } catch (IOException e) {
               Log.w(TAG, e);

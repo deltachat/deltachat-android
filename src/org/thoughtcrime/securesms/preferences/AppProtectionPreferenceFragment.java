@@ -53,7 +53,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
 
     disablePassphrase = (CheckBoxPreference) this.findPreference("pref_enable_passphrase_temporary");
 
-    this.findPreference(TextSecurePreferences.REGISTRATION_LOCK_PREF).setOnPreferenceClickListener(new AccountLockClickListener());
     this.findPreference(TextSecurePreferences.SCREEN_LOCK).setOnPreferenceChangeListener(new ScreenLockListener());
     this.findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT).setOnPreferenceClickListener(new ScreenLockTimeoutListener());
 
@@ -189,17 +188,9 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     final String offRes              = context.getString(R.string.ApplicationPreferencesActivity_off);
 
     if (TextSecurePreferences.isPasswordDisabled(context) && !TextSecurePreferences.isScreenLockEnabled(context)) {
-      if (TextSecurePreferences.isRegistrationtLockEnabled(context)) {
-        return context.getString(privacySummaryResId, offRes, onRes);
-      } else {
         return context.getString(privacySummaryResId, offRes, offRes);
-      }
     } else {
-      if (TextSecurePreferences.isRegistrationtLockEnabled(context)) {
-        return context.getString(privacySummaryResId, onRes, onRes);
-      } else {
         return context.getString(privacySummaryResId, onRes, offRes);
-      }
     }
   }
 

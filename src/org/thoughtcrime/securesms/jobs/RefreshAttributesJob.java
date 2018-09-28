@@ -40,7 +40,7 @@ public class RefreshAttributesJob extends ContextJob implements InjectableType {
     String  signalingKey    = TextSecurePreferences.getSignalingKey(context);
     int     registrationId  = TextSecurePreferences.getLocalRegistrationId(context);
     boolean fetchesMessages = TextSecurePreferences.isGcmDisabled(context);
-    String  pin             = TextSecurePreferences.getRegistrationLockPin(context);
+    String  pin             = "";
 
     signalAccountManager.setAccountAttributes(signalingKey, registrationId, fetchesMessages, pin);
   }

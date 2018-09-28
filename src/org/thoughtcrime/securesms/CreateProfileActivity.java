@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.WindowManager;
@@ -48,6 +49,7 @@ import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
 import org.thoughtcrime.securesms.profiles.SystemProfileUtil;
 import org.thoughtcrime.securesms.util.BitmapDecodingException;
 import org.thoughtcrime.securesms.util.BitmapUtil;
+import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.FileProviderUtil;
@@ -110,6 +112,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
 
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     getSupportActionBar().setTitle(R.string.CreateProfileActivity_your_profile_info);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     initializeResources();
     initializeEmojiInput();
@@ -124,6 +127,18 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    super.onOptionsItemSelected(item);
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
+
+    return false;
   }
 
   @Override
@@ -204,7 +219,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
   }
 
   private void initializeResources() {
-    TextView skipButton       = ViewUtil.findById(this, R.id.skip_button);
+    TextView passwordAccountSettings       = ViewUtil.findById(this, R.id.password_account_settings_button);
     TextView informationLabel = ViewUtil.findById(this, R.id.information_label);
 
     this.avatar       = ViewUtil.findById(this, R.id.avatar);
@@ -247,18 +262,13 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
       handleUpload();
     });
 
-    skipButton.setOnClickListener(view -> {
-      if (nextIntent != null) startActivity(nextIntent);
-      finish();
+    passwordAccountSettings.setOnClickListener(view -> {
+      Intent intent = new Intent(this, RegistrationActivity.class);
+      startActivity(intent);
     });
 
     informationLabel.setOnClickListener(view -> {
-      Intent intent = new Intent(Intent.ACTION_VIEW);
-      intent.setData(Uri.parse("https://support.signal.org/hc/en-us/articles/115001434171"));
-
-      if (getPackageManager().queryIntentActivities(intent, 0).size() > 0) {
-        startActivity(intent);
-      }
+      Dialogs.showInfoDialog(this, getString(R.string.profile_create_activity__who_can_see_this_information), getString(R.string.profile_create_activity__who_can_see_this_information_explained));
     });
   }
 

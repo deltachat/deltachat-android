@@ -12,12 +12,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.events.ReminderUpdateEvent;
 import org.thoughtcrime.securesms.jobs.requirements.SqlCipherMigrationRequirementProvider;
-import org.thoughtcrime.securesms.lock.RegistrationLockReminders;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 import org.whispersystems.libsignal.util.Medium;
 
@@ -115,7 +114,6 @@ public class TextSecurePreferences {
   public  static final String SYSTEM_EMOJI_PREF                = "pref_system_emoji";
   private static final String MULTI_DEVICE_PROVISIONED_PREF    = "pref_multi_device";
   public  static final String DIRECT_CAPTURE_CAMERA_ID         = "pref_direct_capture_camera_id";
-  private static final String ALWAYS_RELAY_CALLS_PREF          = "pref_turn_only";
   private static final String PROFILE_KEY_PREF                 = "pref_profile_key";
   private static final String PROFILE_NAME_PREF                = "pref_profile_name";
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
@@ -146,11 +144,6 @@ public class TextSecurePreferences {
   public static final String SCREEN_LOCK         = "pref_android_screen_lock";
   public static final String SCREEN_LOCK_TIMEOUT = "pref_android_screen_lock_timeout";
 
-  public static final  String REGISTRATION_LOCK_PREF                   = "pref_registration_lock";
-  private static final String REGISTRATION_LOCK_PIN_PREF               = "pref_registration_lock_pin";
-  private static final String REGISTRATION_LOCK_LAST_REMINDER_TIME     = "pref_registration_lock_last_reminder_time";
-  private static final String REGISTRATION_LOCK_NEXT_REMINDER_INTERVAL = "pref_registration_lock_next_reminder_interval";
-
   private static final String SERVICE_OUTAGE         = "pref_service_outage";
   private static final String LAST_OUTAGE_CHECK_TIME = "pref_last_outage_check_time";
 
@@ -171,38 +164,6 @@ public class TextSecurePreferences {
 
   public static void setScreenLockTimeout(@NonNull Context context, long value) {
     setLongPreference(context, SCREEN_LOCK_TIMEOUT, value);
-  }
-
-  public static boolean isRegistrationtLockEnabled(@NonNull Context context) {
-    return getBooleanPreference(context, REGISTRATION_LOCK_PREF, false);
-  }
-
-  public static void setRegistrationtLockEnabled(@NonNull Context context, boolean value) {
-    setBooleanPreference(context, REGISTRATION_LOCK_PREF, value);
-  }
-
-  public static @Nullable String getRegistrationLockPin(@NonNull Context context) {
-    return getStringPreference(context, REGISTRATION_LOCK_PIN_PREF, null);
-  }
-
-  public static void setRegistrationLockPin(@NonNull Context context, String pin) {
-    setStringPreference(context, REGISTRATION_LOCK_PIN_PREF, pin);
-  }
-
-  public static long getRegistrationLockLastReminderTime(@NonNull Context context) {
-    return getLongPreference(context, REGISTRATION_LOCK_LAST_REMINDER_TIME, 0);
-  }
-
-  public static void setRegistrationLockLastReminderTime(@NonNull Context context, long time) {
-    setLongPreference(context, REGISTRATION_LOCK_LAST_REMINDER_TIME, time);
-  }
-
-  public static long getRegistrationLockNextReminderInterval(@NonNull Context context) {
-    return getLongPreference(context, REGISTRATION_LOCK_NEXT_REMINDER_INTERVAL, RegistrationLockReminders.INITIAL_INTERVAL);
-  }
-
-  public static void setRegistrationLockNextReminderInterval(@NonNull Context context, long value) {
-    setLongPreference(context, REGISTRATION_LOCK_NEXT_REMINDER_INTERVAL, value);
   }
 
   public static void setBackupPassphrase(@NonNull Context context, @Nullable String passphrase) {
@@ -352,10 +313,6 @@ public class TextSecurePreferences {
 
   public static int getMessageBodyTextSize(Context context) {
     return Integer.valueOf(getStringPreference(context, MESSAGE_BODY_TEXT_SIZE_PREF, "16"));
-  }
-
-  public static boolean isTurnOnly(Context context) {
-    return getBooleanPreference(context, ALWAYS_RELAY_CALLS_PREF, false);
   }
 
   public static boolean isGcmDisabled(Context context) {
@@ -680,6 +637,7 @@ public class TextSecurePreferences {
   }
 
   public static void setScreenSecurityEnabled(Context context, boolean value) {
+    Toast.makeText(context, R.string.preferences__screen_security_restart_warning, Toast.LENGTH_LONG).show();
     setBooleanPreference(context, SCREEN_SECURITY_PREF, value);
   }
 

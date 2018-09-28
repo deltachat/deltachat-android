@@ -66,9 +66,7 @@ import org.webrtc.PeerConnection;
 import org.webrtc.PeerConnectionFactory;
 import org.webrtc.RtpReceiver;
 import org.webrtc.SessionDescription;
-import org.webrtc.SurfaceEglRenderer;
 import org.webrtc.SurfaceViewRenderer;
-import org.webrtc.VideoRenderer;
 import org.webrtc.VideoTrack;
 import org.whispersystems.libsignal.IdentityKey;
 import org.whispersystems.signalservice.api.SignalServiceAccountManager;
@@ -370,9 +368,7 @@ public class WebRtcCallService extends Service implements InjectableType,
             isSystemContact = ContactAccessor.getInstance().isSystemContact(WebRtcCallService.this, recipient.getAddress().serialize());
           }
 
-          boolean isAlwaysTurn = TextSecurePreferences.isTurnOnly(WebRtcCallService.this);
-
-          WebRtcCallService.this.peerConnection   = new PeerConnectionWrapper(WebRtcCallService.this, peerConnectionFactory, WebRtcCallService.this, localRenderer, result, WebRtcCallService.this, !isSystemContact || isAlwaysTurn);
+          WebRtcCallService.this.peerConnection   = new PeerConnectionWrapper(WebRtcCallService.this, peerConnectionFactory, WebRtcCallService.this, localRenderer, result, WebRtcCallService.this, !isSystemContact);
           WebRtcCallService.this.localCameraState = WebRtcCallService.this.peerConnection.getCameraState();
           WebRtcCallService.this.peerConnection.setRemoteDescription(new SessionDescription(SessionDescription.Type.OFFER, offer));
           WebRtcCallService.this.lockManager.updatePhoneState(LockManager.PhoneState.PROCESSING);
@@ -434,9 +430,7 @@ public class WebRtcCallService extends Service implements InjectableType,
         @Override
         public void onSuccessContinue(List<PeerConnection.IceServer> result) {
           try {
-            boolean isAlwaysTurn = TextSecurePreferences.isTurnOnly(WebRtcCallService.this);
-
-            WebRtcCallService.this.peerConnection = new PeerConnectionWrapper(WebRtcCallService.this, peerConnectionFactory, WebRtcCallService.this, localRenderer, result, WebRtcCallService.this, isAlwaysTurn);
+            WebRtcCallService.this.peerConnection = new PeerConnectionWrapper(WebRtcCallService.this, peerConnectionFactory, WebRtcCallService.this, localRenderer, result, WebRtcCallService.this, false);
             WebRtcCallService.this.localCameraState = WebRtcCallService.this.peerConnection.getCameraState();
             WebRtcCallService.this.dataChannel    = WebRtcCallService.this.peerConnection.createDataChannel(DATA_CHANNEL_NAME);
             WebRtcCallService.this.dataChannel.registerObserver(WebRtcCallService.this);
