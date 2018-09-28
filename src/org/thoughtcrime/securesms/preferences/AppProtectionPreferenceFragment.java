@@ -55,6 +55,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
 
     this.findPreference(TextSecurePreferences.SCREEN_LOCK).setOnPreferenceChangeListener(new ScreenLockListener());
     this.findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT).setOnPreferenceClickListener(new ScreenLockTimeoutListener());
+    this.findPreference(TextSecurePreferences.SCREEN_SECURITY_PREF).setOnPreferenceChangeListener(new ScreenSecurityListener());
 
     this.findPreference(TextSecurePreferences.CHANGE_PASSPHRASE_PREF).setOnPreferenceClickListener(new ChangePassphraseClickListener());
     this.findPreference(TextSecurePreferences.PASSPHRASE_TIMEOUT_INTERVAL_PREF).setOnPreferenceClickListener(new PassphraseIntervalClickListener());
@@ -113,6 +114,16 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     } else {
       findPreference(TextSecurePreferences.SCREEN_LOCK).setVisible(false);
       findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT).setVisible(false);
+    }
+  }
+
+  private class ScreenSecurityListener implements Preference.OnPreferenceChangeListener {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+      boolean enabled = (Boolean) newValue;
+      TextSecurePreferences.setScreenSecurityEnabled(getContext(), enabled);
+      Toast.makeText(getContext(), R.string.preferences__screen_security_restart_warning, Toast.LENGTH_LONG).show();
+      return true;
     }
   }
 

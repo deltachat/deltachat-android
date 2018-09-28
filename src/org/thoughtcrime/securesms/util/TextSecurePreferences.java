@@ -12,7 +12,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.thoughtcrime.securesms.R;
@@ -637,7 +636,6 @@ public class TextSecurePreferences {
   }
 
   public static void setScreenSecurityEnabled(Context context, boolean value) {
-    Toast.makeText(context, R.string.preferences__screen_security_restart_warning, Toast.LENGTH_LONG).show();
     setBooleanPreference(context, SCREEN_SECURITY_PREF, value);
   }
 
