@@ -119,7 +119,7 @@
         <item name="actionModeCloseDrawable">@drawable/ic_close_white_24dp</item>
         <item name="colorPrimary">@color/textsecure_primary</item>
         <item name="colorPrimaryDark">@color/textsecure_primary_dark</item>
-        <item name="colorAccent">@color/textsecure_primary_dark</item>
+        <item name="colorAccent">@color/delta_accent</item>
         <item name="colorControlActivated">@color/signal_primary</item>
         <item name="colorControlHighlight">@color/signal_primary</item>
         <item name="android:windowBackground">@color/white</item>
