@@ -63,6 +63,7 @@ public class ApplicationDcContext extends DcContext {
 
         File dbfile = new File(context.getFilesDir(), "messenger.db");
         open(dbfile.getAbsolutePath());
+        setConfig("e2ee_enabled", "1");
 
         try {
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);

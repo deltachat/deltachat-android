@@ -57,10 +57,10 @@
         tools:text="to SIM1" />
 
     <ImageView
-        android:id="@+id/footer_insecure_indicator"
+        android:id="@+id/footer_secure_indicator"
         android:layout_width="12dp"
         android:layout_height="11dp"
-        android:src="@drawable/ic_unlocked_white_18dp"
+        android:src="@drawable/msg_encr_out"
         android:visibility="gone"
         android:layout_gravity="center_vertical|end"
         android:contentDescription="@string/conversation_item__secure_message_description"

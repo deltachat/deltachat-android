@@ -18,7 +18,6 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
 import org.thoughtcrime.securesms.util.DateUtils;
@@ -33,7 +32,7 @@ public class ConversationItemFooter extends LinearLayout {
   private TextView            dateView;
   private TextView            simView;
   private ExpirationTimerView timerView;
-  private ImageView           insecureIndicatorView;
+  private ImageView           secureIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
 
   public ConversationItemFooter(Context context) {
@@ -57,7 +56,7 @@ public class ConversationItemFooter extends LinearLayout {
     dateView              = findViewById(R.id.footer_date);
     simView               = findViewById(R.id.footer_sim_info);
     timerView             = findViewById(R.id.footer_expiration_timer);
-    insecureIndicatorView = findViewById(R.id.footer_insecure_indicator);
+    secureIndicatorView   = findViewById(R.id.footer_secure_indicator);
     deliveryStatusView    = findViewById(R.id.footer_delivery_status);
 
     if (attrs != null) {
@@ -78,7 +77,7 @@ public class ConversationItemFooter extends LinearLayout {
     presentDate(messageRecord, locale);
     presentSimInfo(messageRecord);
     presentTimer(messageRecord);
-    presentInsecureIndicator(messageRecord);
+    presentSecureIndicator(messageRecord);
     presentDeliveryStatus(messageRecord);
   }
 
@@ -89,7 +88,7 @@ public class ConversationItemFooter extends LinearLayout {
 
   public void setIconColor(int color) {
     timerView.setColorFilter(color);
-    insecureIndicatorView.setColorFilter(color);
+    secureIndicatorView.setColorFilter(color);
     deliveryStatusView.setTint(color);
   }
 
@@ -158,8 +157,8 @@ public class ConversationItemFooter extends LinearLayout {
     }
   }
 
-  private void presentInsecureIndicator(@NonNull DcMsg messageRecord) {
-    insecureIndicatorView.setVisibility(messageRecord.isSecure() ? View.GONE : View.VISIBLE);
+  private void presentSecureIndicator(@NonNull DcMsg messageRecord) {
+    secureIndicatorView.setVisibility(messageRecord.isSecure() ? View.VISIBLE : View.GONE);
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {
