@@ -13,13 +13,13 @@
     <string name="ApplicationPreferencesActivity_currently_s">Currently: %s</string>
     <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">You haven\'t set a passphrase yet!</string>
     <plurals name="ApplicationPreferencesActivity_messages_per_conversation">
-        <item quantity="one">%d message per conversation</item>
-        <item quantity="other">%d messages per conversation</item>
+        <item quantity="one">%d message per chat</item>
+        <item quantity="other">%d messages per chat</item>
     </plurals>
     <string name="ApplicationPreferencesActivity_delete_all_old_messages_now">Delete all old messages now?</string>
     <plurals name="ApplicationPreferencesActivity_this_will_immediately_trim_all_conversations_to_the_d_most_recent_messages">
-        <item quantity="one">This will immediately trim all conversations to the most recent message.</item>
-        <item quantity="other">This will immediately trim all conversations to the %d most recent messages.</item>
+        <item quantity="one">This will immediately trim all chats to the most recent message.</item>
+        <item quantity="other">This will immediately trim all chats to the %d most recent messages.</item>
     </plurals>
     <string name="ApplicationPreferencesActivity_delete">Delete</string>
     <string name="ApplicationPreferencesActivity_disable_passphrase">Disable passphrase?</string>
@@ -124,7 +124,7 @@
 
     <!-- ConversationActivity -->
     <string name="ConversationActivity_reset_secure_session_question">Reset secure session?</string>
-    <string name="ConversationActivity_this_may_help_if_youre_having_encryption_problems">This may help if you\'re having encryption problems in this conversation. Your messages will be kept.</string>
+    <string name="ConversationActivity_this_may_help_if_youre_having_encryption_problems">This may help if you\'re having encryption problems in this chat. Your messages will be kept.</string>
     <string name="ConversationActivity_reset">Reset</string>
     <string name="ConversationActivity_add_attachment">Add attachment</string>
     <string name="ConversationActivity_select_contact_info">Select contact info</string>
@@ -220,30 +220,30 @@
     <string name="ConversationListFragment_no_results_found_for_s_">No results found for \'%s\'</string>
 
     <plurals name="ConversationListFragment_delete_selected_conversations">
-        <item quantity="one">Delete selected conversation?</item>
-        <item quantity="other">Delete selected conversations?</item>
+        <item quantity="one">Delete selected chats?</item>
+        <item quantity="other">Delete selected chats?</item>
     </plurals>
     <plurals name="ConversationListFragment_this_will_permanently_delete_all_n_selected_conversations">
-        <item quantity="one">This will permanently delete the selected conversation.</item>
-        <item quantity="other">This will permanently delete all %1$d selected conversations.</item>
+        <item quantity="one">This will permanently delete the selected chats.</item>
+        <item quantity="other">This will permanently delete all %1$d selected chats.</item>
     </plurals>
     <string name="ConversationListFragment_deleting">Deleting</string>
-    <string name="ConversationListFragment_deleting_selected_conversations">Deleting selected conversations...</string>
+    <string name="ConversationListFragment_deleting_selected_conversations">Deleting selected chats...</string>
     <plurals name="ConversationListFragment_conversations_archived">
-        <item quantity="one">Conversation archived</item>
-        <item quantity="other">%d conversations archived</item>
+        <item quantity="one">Chat archived</item>
+        <item quantity="other">%d chats archived</item>
     </plurals>
     <string name="ConversationListFragment_undo">UNDO</string>
     <plurals name="ConversationListFragment_moved_conversations_to_inbox">
-        <item quantity="one">Moved conversation to inbox</item>
-        <item quantity="other">Moved %d conversations to inbox</item>
+        <item quantity="one">Moved chat to inbox</item>
+        <item quantity="other">Moved %d chats to inbox</item>
     </plurals>
 
     <!-- ConversationListItem -->
     <string name="ConversationListItem_key_exchange_message">Key exchange message</string>
 
     <!-- ConversationListItemAction -->
-    <string name="ConversationListItemAction_archived_conversations_d">Archived conversations (%d)</string>
+    <string name="ConversationListItemAction_archived_conversations_d">Archived chats (%d)</string>
 
     <!-- CreateProfileActivity -->
     <string name="CreateProfileActivity_your_profile_info">Your profile info</string>
@@ -467,7 +467,7 @@
     <!-- ExpirationDialog -->
     <string name="ExpirationDialog_disappearing_messages">Disappearing messages</string>
     <string name="ExpirationDialog_your_messages_will_not_expire">Your messages will not expire.</string>
-    <string name="ExpirationDialog_your_messages_will_disappear_s_after_they_have_been_seen">Messages sent and received in this conversation will disappear %s after they have been seen.</string>
+    <string name="ExpirationDialog_your_messages_will_disappear_s_after_they_have_been_seen">Messages sent and received in this chat will disappear %s after they have been seen.</string>
 
     <!-- PassphrasePromptActivity -->
     <string name="PassphrasePromptActivity_enter_passphrase">Enter passphrase</string>
@@ -543,7 +543,7 @@
 
     <!-- Search -->
     <string name="SearchFragment_no_results">No results found for \'%s\'</string>
-    <string name="SearchFragment_header_conversations">Conversations</string>
+    <string name="SearchFragment_header_conversations">Chats</string>
     <string name="SearchFragment_header_contacts">Contacts</string>
     <string name="SearchFragment_header_messages">Messages</string>
 
@@ -659,7 +659,7 @@
     <string name="MediaPreviewActivity_media_delete_confirmation_message">This will permanently delete this message.</string>
 
     <!-- MessageNotifier -->
-    <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d new messages in %2$d conversations</string>
+    <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d new messages in %2$d chats</string>
     <string name="MessageNotifier_most_recent_from_s">Most recent from: %1$s</string>
     <string name="MessageNotifier_locked_message">Locked message</string>
     <string name="MessageNotifier_media_message_with_text">Media message: %s</string>
@@ -684,7 +684,7 @@
 
     <!-- SearchToolbar -->
     <string name="SearchToolbar_search">Search</string>
-    <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Search for conversations, contacts, and messages</string>
+    <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Search for chats, contacts, and messages</string>
 
     <!-- SingleRecipientNotificationBuilder -->
     <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
@@ -702,7 +702,7 @@
     <string name="WebRtcCallActivity_signal_requires_microphone_and_camera_permissions_in_order_to_make_or_receive_calls">Delta Chat requires Microphone and Camera permissions in order to make or receive calls, but they have been permanently denied. Please continue to app settings, select \"Permissions\", and enable \"Microphone\" and \"Camera\".</string>
 
     <!-- WebRtcCallScreen -->
-    <string name="WebRtcCallScreen_new_safety_numbers">The safety number for your conversation with %1$s has changed. This could either mean that someone is trying to intercept your communication, or that %2$s simply re-installed Delta Chat.</string>
+    <string name="WebRtcCallScreen_new_safety_numbers">The safety number for your chat with %1$s has changed. This could either mean that someone is trying to intercept your communication, or that %2$s simply re-installed Delta Chat.</string>
     <string name="WebRtcCallScreen_you_may_wish_to_verify_this_contact">You may wish to verify your safety number with this contact.</string>
     <string name="WebRtcCallScreen_new_safety_number_title">New safety number</string>
     <string name="WebRtcCallScreen_accept">Accept</string>
@@ -907,7 +907,7 @@
     <string name="import_fragment__import_a_plaintext_backup_file">Import a plaintext backup file. Compatible with \'SMS Backup &amp; Restore.\'</string>
 
     <!-- load_more_header -->
-    <string name="load_more_header__see_full_conversation">See full conversation</string>
+    <string name="load_more_header__see_full_conversation">See full chat</string>
     <string name="load_more_header__loading">Loading</string>
 
     <!-- media_overview_activity -->
@@ -945,7 +945,7 @@
     <string name="recipient_preference_activity__shared_media">Shared media</string>
 
     <!-- recipient_preferences -->
-    <string name="recipient_preferences__mute_conversation">Mute conversation</string>
+    <string name="recipient_preferences__mute_conversation">Mute chat</string>
     <string name="recipient_preferences__notification_sound">Notification sound</string>
     <string name="recipient_preferences__vibrate">Vibrate</string>
     <string name="recipient_preferences__block">Block</string>
@@ -1010,7 +1010,7 @@
     <string name="AndroidManifest__message_details">Message details</string>
     <string name="AndroidManifest__linked_devices">Linked devices</string>
     <string name="AndroidManifest__invite_friends">Invite friends</string>
-    <string name="AndroidManifest_archived_conversations">Archived conversations</string>
+    <string name="AndroidManifest_archived_conversations">Archived chats</string>
     <string name="AndroidManifest_remove_photo">Remove photo</string>
 
     <!-- arrays.xml -->
@@ -1107,12 +1107,12 @@
     <string name="preferences__mmsc_password">MMSC Password</string>
     <string name="preferences__sms_delivery_reports">SMS delivery reports</string>
     <string name="preferences__request_a_delivery_report_for_each_sms_message_you_send">Request a delivery report for each SMS message you send</string>
-    <string name="preferences__automatically_delete_older_messages_once_a_conversation_exceeds_a_specified_length">Automatically delete older messages once a conversation exceeds a specified length</string>
+    <string name="preferences__automatically_delete_older_messages_once_a_conversation_exceeds_a_specified_length">Automatically delete older messages once a chat exceeds a specified length</string>
     <string name="preferences__delete_old_messages">Delete old messages</string>
     <string name="preferences__chats">Chats and media</string>
-    <string name="preferences__conversation_length_limit">Conversation length limit</string>
-    <string name="preferences__trim_all_conversations_now">Trim all conversations now</string>
-    <string name="preferences__scan_through_all_conversations_and_enforce_conversation_length_limits">Scan through all conversations and enforce conversation length limits</string>
+    <string name="preferences__conversation_length_limit">Chat length limit</string>
+    <string name="preferences__trim_all_conversations_now">Trim all chats now</string>
+    <string name="preferences__scan_through_all_conversations_and_enforce_conversation_length_limits">Scan through all chats and enforce chat length limits</string>
     <string name="preferences__linked_devices">Linked devices</string>
     <string name="preferences__light_theme">Light</string>
     <string name="preferences__dark_theme">Dark</string>
@@ -1219,7 +1219,7 @@
 
 
     <!-- conversation_list_fragment -->
-    <string name="conversation_list_fragment__fab_content_description">New conversation</string>
+    <string name="conversation_list_fragment__fab_content_description">New chat</string>
     <string name="conversation_list_fragment__give_your_inbox_something_to_write_home_about_get_started_by_messaging_a_friend">Give your inbox something to write home about. Get started by messaging a friend.</string>
 
 
@@ -1237,7 +1237,7 @@
     <string name="conversation__menu_edit_group">Edit group</string>
     <string name="conversation__menu_leave_group">Leave group</string>
     <string name="conversation__menu_view_all_media">All media</string>
-    <string name="conversation__menu_conversation_settings">Conversation settings</string>
+    <string name="conversation__menu_conversation_settings">Chat settings</string>
 
     <!-- conversation_popup -->
     <string name="conversation_popup__menu_expand_popup">Expand popup</string>
@@ -1248,7 +1248,7 @@
     <!-- conversation_group_options -->
     <string name="convesation_group_options__recipients_list">Recipients list</string>
     <string name="conversation_group_options__delivery">Delivery</string>
-    <string name="conversation_group_options__conversation">Conversation</string>
+    <string name="conversation_group_options__conversation">Chat</string>
     <string name="conversation_group_options__broadcast">Broadcast</string>
 
     <!-- text_secure_normal -->
@@ -1279,7 +1279,7 @@
     <string name="reminder_header_push_title">Enable Delta Chat messages and calls</string>
     <string name="reminder_header_push_text">Upgrade your communication experience.</string>
     <string name="reminder_header_invite_title">Invite to Delta Chat</string>
-    <string name="reminder_header_invite_text">Take your conversation with %1$s to the next level.</string>
+    <string name="reminder_header_invite_text">Take your chat with %1$s to the next level.</string>
     <string name="reminder_header_share_title">Invite your friends!</string>
     <string name="reminder_header_share_text">The more friends use Delta Chat, the better it gets.</string>
     <string name="reminder_header_service_outage_text">Delta Chat is experiencing technical difficulties. We are working hard to restore service as quickly as possible.</string>
