@@ -117,10 +117,8 @@ public class ApplicationDcContext extends DcContext {
     }
 
     @NonNull
-    public ThreadRecord getThreadRecord(DcChatlist chatlist, int i) { // adapted from ThreadDatabase.getCurrent()
-        int     chatId           = chatlist.getChatId(i);
-        DcChat  chat             = chatlist.getChat(i);
-        DcLot   summary          = chatlist.getSummary(i, chat);
+    public ThreadRecord getThreadRecord(DcLot summary, DcChat chat) { // adapted from ThreadDatabase.getCurrent()
+        int     chatId = chat.getId();
         int     distributionType = chatId==DcChat.DC_CHAT_ID_ARCHIVED_LINK? ThreadDatabase.DistributionTypes.ARCHIVE : ThreadDatabase.DistributionTypes.CONVERSATION;
 
         String body = summary.getText1();

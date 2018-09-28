@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcLot;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -128,7 +129,9 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
     ViewHolder holder = (ViewHolder)viewHolder;
-    holder.getItem().bind(dcContext.getThreadRecord(dcChatlist, i), glideRequests, locale, batchSet, batchMode);
+    DcChat chat = dcContext.getChat(dcChatlist.getChatId(i));
+    DcLot summary = dcChatlist.getSummary(i, chat);
+    holder.getItem().bind(dcContext.getThreadRecord(summary, chat), summary, glideRequests, locale, batchSet, batchMode);
   }
 
   @Override

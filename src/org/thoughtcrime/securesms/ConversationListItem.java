@@ -38,6 +38,8 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.annimon.stream.Stream;
+import com.b44t.messenger.DcLot;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.components.AlertView;
 import org.thoughtcrime.securesms.components.AvatarImageView;
@@ -69,6 +71,7 @@ public class ConversationListItem extends RelativeLayout
   private final static Typeface  BOLD_TYPEFACE  = Typeface.create("sans-serif-medium", Typeface.NORMAL);
   private final static Typeface  LIGHT_TYPEFACE = Typeface.create("sans-serif", Typeface.NORMAL);
 
+  private DcLot              dcSummary;
   private Set<Long>          selectedThreads;
   private Recipient          recipient;
   private long               threadId;
@@ -116,21 +119,24 @@ public class ConversationListItem extends RelativeLayout
 
   @Override
   public void bind(@NonNull ThreadRecord thread,
+                   @NonNull DcLot dcSummary,
                    @NonNull GlideRequests glideRequests,
                    @NonNull Locale locale,
                    @NonNull Set<Long> selectedThreads,
                    boolean batchMode)
   {
-    bind(thread, glideRequests, locale, selectedThreads, batchMode, null);
+    bind(thread, dcSummary, glideRequests, locale, selectedThreads, batchMode, null);
   }
 
   public void bind(@NonNull ThreadRecord thread,
+                   @NonNull DcLot dcSummary,
                    @NonNull GlideRequests glideRequests,
                    @NonNull Locale locale,
                    @NonNull Set<Long> selectedThreads,
                    boolean batchMode,
                    @Nullable String highlightSubstring)
   {
+    this.dcSummary          = dcSummary;
     this.selectedThreads  = selectedThreads;
     this.recipient        = thread.getRecipient();
     this.threadId         = thread.getThreadId();
@@ -277,19 +283,25 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setStatusIcons(ThreadRecord thread) {
-    if (!thread.isOutgoing() || thread.isOutgoingCall() || thread.isVerificationStatusChange()) {
+    int state = dcSummary.getState();
+
+    if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED) {
       deliveryStatusIndicator.setNone();
       alertView.setNone();
-    } else if (thread.isFailed()) {
+    } else if (state==DcMsg.DC_STATE_OUT_ERROR) {
       deliveryStatusIndicator.setNone();
       alertView.setFailed();
     } else {
       alertView.setNone();
-
-      if      (thread.isPending())    deliveryStatusIndicator.setPending();
-      else if (thread.isRemoteRead()) deliveryStatusIndicator.setRead();
-      else if (thread.isDelivered())  deliveryStatusIndicator.setDelivered();
-      else                            deliveryStatusIndicator.setSent();
+      if(state==DcMsg.DC_STATE_OUT_MDN_RCVD) {
+        deliveryStatusIndicator.setRead();
+      }
+      else if(state==DcMsg.DC_STATE_OUT_DELIVERED) {
+        deliveryStatusIndicator.setDelivered();
+      }
+      else {
+        deliveryStatusIndicator.setPending();
+      }
     }
   }
 
@@ -301,7 +313,7 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setUnreadIndicator(ThreadRecord thread) {
-    if (thread.isOutgoing() || thread.getUnreadCount() == 0) {
+    if (thread.getUnreadCount() == 0) {
       unreadIndicator.setVisibility(View.GONE);
       return;
     }

@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcLot;
+
 import org.thoughtcrime.securesms.ConversationListItem;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
@@ -55,7 +57,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     ThreadRecord conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
-      holder.bind(conversationResult, glideRequests, eventListener, locale, searchResult.getQuery());
+      holder.bind(conversationResult, new DcLot(0), glideRequests, eventListener, locale, searchResult.getQuery());
       return;
     }
 
@@ -158,12 +160,13 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     }
 
     void bind(@NonNull  ThreadRecord  conversationResult,
+              @NonNull  DcLot         summary,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
               @NonNull  Locale        locale,
               @Nullable String        query)
     {
-      root.bind(conversationResult, glideRequests, locale, Collections.emptySet(), false, query);
+      root.bind(conversationResult, summary, glideRequests, locale, Collections.emptySet(), false, query);
       root.setOnClickListener(view -> eventListener.onConversationClicked(conversationResult));
     }
 
