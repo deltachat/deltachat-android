@@ -36,9 +36,9 @@ import com.soundcloud.android.crop.Crop;
 import org.thoughtcrime.securesms.components.InputAwareLayout;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
 import org.thoughtcrime.securesms.components.emoji.EmojiToggle;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.crypto.ProfileKeyUtil;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.jobs.MultiDeviceProfileKeyUpdateJob;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -287,14 +287,14 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
   }
 
   private void initializeProfileAvatar(boolean excludeSystem) {
-    Address ourAddress = Address.fromSerialized(TextSecurePreferences.getLocalNumber(this));
+    String address = DcHelper.get(this, DcHelper.CONFIG_ADDRESS);
 
-    if (AvatarHelper.getAvatarFile(this, ourAddress).exists() && AvatarHelper.getAvatarFile(this, ourAddress).length() > 0) {
+    if (AvatarHelper.getAvatarFile(this, address).exists() && AvatarHelper.getAvatarFile(this, address).length() > 0) {
       new AsyncTask<Void, Void, byte[]>() {
         @Override
         protected byte[] doInBackground(Void... params) {
           try {
-            return Util.readFully(AvatarHelper.getInputStreamFor(CreateProfileActivity.this, ourAddress));
+            return Util.readFully(AvatarHelper.getInputStreamFor(CreateProfileActivity.this, address));
           } catch (IOException e) {
             Log.w(TAG, e);
             return null;
@@ -429,18 +429,11 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
       protected Boolean doInBackground(Void... params) {
         Context context    = CreateProfileActivity.this;
         byte[]  profileKey = ProfileKeyUtil.getProfileKey(CreateProfileActivity.this);
+        DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
+        TextSecurePreferences.setProfileName(context, name);
 
         try {
-          accountManager.setProfileName(profileKey, name);
-          TextSecurePreferences.setProfileName(context, name);
-        } catch (IOException e) {
-          Log.w(TAG, e);
-          return false;
-        }
-
-        try {
-          accountManager.setProfileAvatar(profileKey, avatar);
-          AvatarHelper.setAvatar(CreateProfileActivity.this, Address.fromSerialized(TextSecurePreferences.getLocalNumber(context)), avatarBytes);
+          AvatarHelper.setAvatar(CreateProfileActivity.this, DcHelper.get(context, DcHelper.CONFIG_ADDRESS), avatarBytes);
           TextSecurePreferences.setProfileAvatarId(CreateProfileActivity.this, new SecureRandom().nextInt());
         } catch (IOException e) {
           Log.w(TAG, e);

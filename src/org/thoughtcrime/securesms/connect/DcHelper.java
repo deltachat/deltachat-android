@@ -8,19 +8,19 @@ import org.thoughtcrime.securesms.ApplicationContext;
 
 public class DcHelper {
 
-    private static final String CONFIG_ADDRESS = "addr";
-    private static final String CONFIG_MAIL_SERVER = "mail_server";
-    private static final String CONFIG_MAIL_USER = "mail_user";
-    private static final String CONFIG_MAIL_PASSWORD = "mail_pw";
-    private static final String CONFIG_MAIL_PORT = "mail_port";
-    private static final String CONFIG_SEND_SERVER = "send_server";
-    private static final String CONFIG_SEND_USER = "send_user";
-    private static final String CONFIG_SEND_PASSWORD = "send_pw";
-    private static final String CONFIG_SEND_PORT = "send_port";
-    private static final String CONFIG_SERVER_FLAGS = "server_flags";
-    private static final String CONFIG_DISPLAY_NAME = "displayname";
-    private static final String CONFIG_SELF_STATUS = "selfstatus";
-    private static final String CONFIG_E2EE_ENABLED = "e2ee_enabled";
+    public static final String CONFIG_ADDRESS = "addr";
+    public static final String CONFIG_MAIL_SERVER = "mail_server";
+    public static final String CONFIG_MAIL_USER = "mail_user";
+    public static final String CONFIG_MAIL_PASSWORD = "mail_pw";
+    public static final String CONFIG_MAIL_PORT = "mail_port";
+    public static final String CONFIG_SEND_SERVER = "send_server";
+    public static final String CONFIG_SEND_USER = "send_user";
+    public static final String CONFIG_SEND_PASSWORD = "send_pw";
+    public static final String CONFIG_SEND_PORT = "send_port";
+    public static final String CONFIG_SERVER_FLAGS = "server_flags";
+    public static final String CONFIG_DISPLAY_NAME = "displayname";
+    public static final String CONFIG_SELF_STATUS = "selfstatus";
+    public static final String CONFIG_E2EE_ENABLED = "e2ee_enabled";
 
     public static ApplicationDcContext getContext(Context context) {
         return ApplicationContext.getInstance(context).dcContext;
@@ -31,19 +31,14 @@ public class DcHelper {
         return dcContext.isConfigured() == 1;
     }
 
-    public static String getAccountAddress(Context context) {
+    public static String get(Context context, String key) {
         DcContext dcContext = getContext(context);
-        return dcContext.getConfig(CONFIG_ADDRESS, "");
+        return dcContext.getConfig(key, "");
     }
 
-    public static String getAccountName(Context context) {
+    public static void set(Context context, String key, String value) {
         DcContext dcContext = getContext(context);
-        return dcContext.getConfig(CONFIG_DISPLAY_NAME, "");
-    }
-
-    public static String getAccountStatus(Context context) {
-        DcContext dcContext = getContext(context);
-        return dcContext.getConfig(CONFIG_SELF_STATUS, "");
+        dcContext.setConfig(key, value);
     }
 
 }

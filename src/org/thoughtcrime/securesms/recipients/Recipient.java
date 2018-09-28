@@ -440,7 +440,7 @@ public class Recipient implements RecipientModifiedListener {
   public synchronized @Nullable ContactPhoto getContactPhoto() {
     if      (isGroupRecipient() && groupAvatarId != null) return new GroupRecordContactPhoto(address, groupAvatarId);
     else if (systemContactPhoto != null)                  return new SystemContactPhoto(address, systemContactPhoto, 0);
-    else if (profileAvatar != null)                       return new ProfileContactPhoto(address, profileAvatar);
+    else if (profileAvatar != null)                       return new ProfileContactPhoto(address.toEmailString(), profileAvatar);
     else                                                  return null;
   }
 

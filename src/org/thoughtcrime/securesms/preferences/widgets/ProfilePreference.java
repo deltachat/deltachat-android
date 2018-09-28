@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.preferences.widgets;
 
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.preference.Preference;
@@ -16,8 +15,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 public class ProfilePreference extends Preference {
 
@@ -63,9 +64,9 @@ public class ProfilePreference extends Preference {
   public void refresh() {
     if (profileAddressView == null) return;
 
-    final String address = DcHelper.getAccountAddress(getContext());
-    final String profileName  = DcHelper.getAccountName(getContext());
-    final Bitmap profileImage = null;
+    final String address = DcHelper.get(getContext(), DcHelper.CONFIG_ADDRESS);
+    final String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
+    final ProfileContactPhoto profileImage = new ProfileContactPhoto(address, String.valueOf(TextSecurePreferences.getProfileAvatarId(getContext())));
 
     GlideApp.with(getContext().getApplicationContext())
             .load(profileImage)

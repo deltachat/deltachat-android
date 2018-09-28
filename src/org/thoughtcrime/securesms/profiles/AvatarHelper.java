@@ -27,6 +27,12 @@ public class AvatarHelper {
     return new FileInputStream(getAvatarFile(context, address));
   }
 
+    public static InputStream getInputStreamFor(@NonNull Context context, @NonNull String address)
+            throws IOException
+    {
+        return new FileInputStream(getAvatarFile(context, address));
+    }
+
   public static List<File> getAvatarFiles(@NonNull Context context) {
     File   avatarDirectory = new File(context.getFilesDir(), AVATAR_DIRECTORY);
     File[] results         = avatarDirectory.listFiles();
@@ -36,14 +42,22 @@ public class AvatarHelper {
   }
 
   public static void delete(@NonNull Context context, @NonNull Address address) {
-    getAvatarFile(context, address).delete();
+    delete(getAvatarFile(context, address));
+  }
+
+  public static void delete(@NonNull File avatar) {
+      avatar.delete();
   }
 
   public static @NonNull File getAvatarFile(@NonNull Context context, @NonNull Address address) {
+    String name = new File(address.serialize()).getName();
+    return getAvatarFile(context, name);
+  }
+
+  public static @NonNull File getAvatarFile(@NonNull Context context, @NonNull String address) {
     File avatarDirectory = new File(context.getFilesDir(), AVATAR_DIRECTORY);
     avatarDirectory.mkdirs();
-
-    return new File(avatarDirectory, new File(address.serialize()).getName());
+    return new File(avatarDirectory, address);
   }
 
   public static void setAvatar(@NonNull Context context, @NonNull Address address, @Nullable byte[] data)
@@ -52,10 +66,24 @@ public class AvatarHelper {
     if (data == null)  {
       delete(context, address);
     } else {
-      FileOutputStream out = new FileOutputStream(getAvatarFile(context, address));
+        File avatar = getAvatarFile(context, address);
+        writeAvatarFile(avatar, data);
+    }
+  }
+
+  public static void setAvatar(@NonNull Context context, @NonNull String address, @Nullable byte[] data) throws IOException {
+      File avatar = getAvatarFile(context, address);
+      if (data == null)  {
+          delete(avatar);
+      } else {
+          writeAvatarFile(avatar, data);
+      }
+  }
+
+  private static void writeAvatarFile(@NonNull File avatar, @Nullable byte[] data) throws IOException {
+      FileOutputStream out = new FileOutputStream(avatar);
       out.write(data);
       out.close();
-    }
   }
 
 }
