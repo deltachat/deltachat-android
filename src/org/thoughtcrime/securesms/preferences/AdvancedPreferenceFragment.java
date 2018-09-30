@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.util.Log;
 
@@ -22,6 +23,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 
@@ -31,11 +33,9 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
 {
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
 
-  private static final String BACKUP_PREF           = "pref_backup";
-  private static final String MANAGE_KEYS_PREF      = "pref_manage_keys";
-  private static final String SUBMIT_DEBUG_LOG_PREF = "pref_submit_debug_logs";
-
   private ApplicationDcContext dcContext;
+
+  CheckBoxPreference preferE2eeCheckbox;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -44,13 +44,19 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     dcContext = DcHelper.getContext(getContext());
     dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_IMEX_PROGRESS);
 
-    Preference backup = this.findPreference(BACKUP_PREF);
+    Preference sendAsm = this.findPreference("pref_send_autocrypt_setup_message");
+    sendAsm.setOnPreferenceClickListener(new SendAsmListener());
+
+    preferE2eeCheckbox = (CheckBoxPreference) this.findPreference("pref_prefer_e2ee");
+    preferE2eeCheckbox.setOnPreferenceChangeListener(new PreferE2eeListener());
+
+    Preference backup = this.findPreference("pref_backup");
     backup.setOnPreferenceClickListener(new BackupListener());
 
-    Preference manageKeys = this.findPreference(MANAGE_KEYS_PREF);
+    Preference manageKeys = this.findPreference("pref_manage_keys");
     manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
 
-    Preference submitDebugLog = this.findPreference(SUBMIT_DEBUG_LOG_PREF);
+    Preference submitDebugLog = this.findPreference("pref_submit_debug_logs");
     submitDebugLog.setOnPreferenceClickListener(new SubmitDebugLogListener());
     submitDebugLog.setSummary(getVersion(getActivity()));
   }
@@ -70,6 +76,8 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
   public void onResume() {
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__advanced);
+
+    preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt("e2ee_enabled", DcContext.DC_PREF_DEFAULT_E2EE_ENABLED));
 
   }
 
@@ -96,6 +104,70 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     }
   }
 
+
+  /***********************************************************************************************
+   * Autocrypt
+   **********************************************************************************************/
+
+  private class SendAsmListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      new AlertDialog.Builder(getActivity())
+        .setTitle(getActivity().getString(R.string.preferences_autocrypt__send_asm))
+        .setMessage(getActivity().getString(R.string.autocrypt__msg_before_sending_asm))
+        .setNegativeButton(android.R.string.cancel, null)
+        .setPositiveButton(R.string.autocrypt__button_send_asm, (dialog, which) -> {
+
+          progressDialog = new ProgressDialog(getActivity());
+          progressDialog.setMessage(getActivity().getString(R.string.one_moment));
+          progressDialog.setCanceledOnTouchOutside(false);
+          progressDialog.setCancelable(false);
+          progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog1, which1) -> dcContext.stopOngoingProcess());
+          progressDialog.show();
+
+
+          new Thread(() -> {
+            final String sc = dcContext.initiateKeyTransfer();
+            Util.runOnMain(() -> {
+              if( progressDialog != null ) {
+                progressDialog.dismiss();
+                progressDialog = null;
+              }
+
+              if( sc != null ) {
+                String scFormatted = "";
+                try {
+                  scFormatted = sc.substring(0, 4) + "  -  " + sc.substring(5, 9) + "  -  " + sc.substring(10, 14) + "  -\n\n" +
+                      sc.substring(15, 19) + "  -  " + sc.substring(20, 24) + "  -  " + sc.substring(25, 29) + "  -\n\n" +
+                      sc.substring(30, 34) + "  -  " + sc.substring(35, 39) + "  -  " + sc.substring(40, 44);
+                } catch (Exception e) {
+                  e.printStackTrace();
+                }
+                new AlertDialog.Builder(getActivity())
+                  .setTitle(getActivity().getString(R.string.preferences_autocrypt__send_asm))
+                  .setMessage(getActivity().getString(R.string.autocrypt__msg_after_sending_asm, scFormatted))
+                  .setPositiveButton(android.R.string.ok, null)
+                  .setCancelable(false) // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
+                  .show();
+              }
+            });
+          }).start();
+
+
+        })
+        .show();
+      return true;
+    }
+  }
+
+  private class PreferE2eeListener implements Preference.OnPreferenceChangeListener {
+    @Override
+    public boolean onPreferenceChange(final Preference preference, Object newValue) {
+      boolean enabled = (Boolean) newValue;
+      dcContext.setConfigInt("e2ee_enabled", enabled? 1 : 0);
+      return true;
+    }
+  }
 
   /***********************************************************************************************
    * Import/Export

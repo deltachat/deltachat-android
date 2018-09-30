@@ -1446,6 +1446,10 @@
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to go with the normal setup process.</string>
 
+    <string name="autocrypt__button_send_asm">Send Autocrypt Setup Message</string>
+    <string name="autocrypt__msg_before_sending_asm">An \"Autocrypt Setup Message\" securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
+    <string name="autocrypt__msg_after_sending_asm">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt:\n\n%1$s\n\nOnce you\'re done, your other device will be ready to use Autocrypt.</string>
+
     <!-- Generic and reusable strings -->
     <string name="email_address">Email address</string>
     <string name="bad_email_address">Bad email address.</string>

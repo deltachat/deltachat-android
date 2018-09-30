@@ -27,6 +27,8 @@ import android.support.annotation.NonNull;
 
 public class DcContext {
 
+    public final static int DC_PREF_DEFAULT_E2EE_ENABLED = 1;
+
     public final static int DC_EVENT_INFO                        = 100;
     public final static int DC_EVENT_WARNING                     = 300;
     public final static int DC_EVENT_ERROR                       = 400;
