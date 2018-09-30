@@ -245,7 +245,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     else if (type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE) {
       return dcMsg.isOutgoing()? MESSAGE_TYPE_AUDIO_OUTGOING : MESSAGE_TYPE_AUDIO_INCOMING;
     }
-    else if (type==DcMsg.DC_MSG_FILE) {
+    else if (type==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage()) {
       return dcMsg.isOutgoing()? MESSAGE_TYPE_DOCUMENT_OUTGOING : MESSAGE_TYPE_DOCUMENT_INCOMING;
     }
     else if (type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_VIDEO) {

@@ -350,11 +350,6 @@ public class ConversationItem extends LinearLayout
     }
   }
 
-  private boolean isCaptionlessMms(DcMsg messageRecord) {
-    return false;
-//    return TextUtils.isEmpty(messageRecord.getText()) && messageRecord.isMms();
-  }
-
   private boolean hasAudio(DcMsg messageRecord) {
     return false;
 //    return messageRecord.isMms() && ((MmsDcMsg)messageRecord).getSlideDeck().getAudioSlide() != null;
@@ -389,12 +384,14 @@ public class ConversationItem extends LinearLayout
     bodyText.setFocusable(false);
     bodyText.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSecurePreferences.getMessageBodyTextSize(context));
 
-    if (isCaptionlessMms(messageRecord)) {
-      bodyText.setVisibility(View.GONE);
-    } else {
-      bodyText.setText(linkifyMessageBody(new SpannableString(messageRecord.getText()), batchSelected.isEmpty()));
-      bodyText.setVisibility(View.VISIBLE);
+    if (messageRecord.isSetupMessage()) {
+     bodyText.setText(context.getString(R.string.autocrypt__asm_tap_body));
     }
+    else {
+      bodyText.setText(linkifyMessageBody(new SpannableString(messageRecord.getText()), batchSelected.isEmpty()));
+    }
+
+    bodyText.setVisibility(View.VISIBLE);
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
@@ -584,7 +581,8 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setStatusIcons(DcMsg messageRecord) {
-    bodyText.setCompoundDrawablesWithIntrinsicBounds(0, 0, messageRecord.isSetupMessage() ? R.drawable.ic_menu_login : 0, 0);
+    // disable the icon for for, we should use the same ui on desktop/ios here, so, for now
+    //bodyText.setCompoundDrawablesWithIntrinsicBounds(0, 0, messageRecord.isSetupMessage() ? R.drawable.ic_menu_login : 0, 0);
 
     if (messageRecord.isFailed()) {
       alertView.setFailed();
@@ -680,8 +678,7 @@ public class ConversationItem extends LinearLayout
   }
 
   private boolean shouldInterceptClicks(DcMsg messageRecord) {
-    return batchSelected.isEmpty() && (messageRecord.isFailed() ||
-            messageRecord.isSetupMessage());
+    return batchSelected.isEmpty() && (messageRecord.isFailed());
   }
 
   @SuppressLint("SetTextI18n")

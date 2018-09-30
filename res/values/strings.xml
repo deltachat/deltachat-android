@@ -1449,6 +1449,14 @@
     <string name="autocrypt__button_send_asm">Send Autocrypt Setup Message</string>
     <string name="autocrypt__msg_before_sending_asm">An \"Autocrypt Setup Message\" securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
     <string name="autocrypt__msg_after_sending_asm">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt:\n\n%1$s\n\nOnce you\'re done, your other device will be ready to use Autocrypt.</string>
+    <string name="autocrypt__asm_subject">Autocrypt Setup Message</string>
+    <string name="autocrypt__asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
+    <string name="autocrypt__asm_tap_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, tap on this message.</string>
+    <string name="autocrypt__continue_transfer_title">Autocrypt Setup Message</string>
+    <string name="autocrypt__continue_transfer_please_enter_code">Please enter the setup code that is displayed on the other device.</string>
+    <string name="autocrypt__continue_transfer_bad_code">Bad setup code. Please try again.\n\nIf you do not remember the setup code, just send another Autocrypt Setup Message from the other device.</string>
+    <string name="autocrypt__continue_transfer_succeeded">End-to-end setup transferred. This device is now ready to use Autocrypt with the same setup as the other device.</string>
+    <string name="autocrypt__continue_button_retry">Retry</string>
 
     <!-- Generic and reusable strings -->
     <string name="email_address">Email address</string>

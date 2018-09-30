@@ -32,6 +32,7 @@ import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcLot;
 
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.GroupDatabase;
@@ -342,6 +343,15 @@ public class ApplicationDcContext extends DcContext {
                     e.printStackTrace();
                 }
                 return stringToData(httpContent);
+
+            case DC_EVENT_GET_STRING:
+                String s;
+                switch( (int)data1 ) { // the integers are defined in the core and used only here, an enum or sth. like that won't have a big benefit
+                    case 42: s = context.getString(R.string.autocrypt__asm_subject); break;
+                    case 43: s = context.getString(R.string.autocrypt__asm_general_body); break;
+                    default: s = null; break;
+                }
+                return stringToData(s);
 
             default:
                 {
