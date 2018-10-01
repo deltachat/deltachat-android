@@ -12,7 +12,6 @@ import android.support.annotation.NonNull;
 import android.support.constraint.Group;
 import android.support.design.widget.TextInputEditText;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,6 +26,16 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Dialogs;
+
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PORT;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SERVER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_USER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PASSWORD;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 
 /**
  * The register account activity.  Prompts ths user for their registration information
@@ -99,6 +108,21 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         advancedTextView.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setRotation(45);
+        boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
+        if (isConfigured) {
+            TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
+            emailInput.setText(DcHelper.get(this, CONFIG_ADDRESS));
+            passwordInput.setText(DcHelper.get(this, CONFIG_MAIL_PASSWORD));
+            imapLoginInput.setText(DcHelper.get(this, CONFIG_MAIL_USER));
+            imapServerInput.setText(DcHelper.get(this, CONFIG_MAIL_SERVER));
+            imapPortInput.setText(DcHelper.get(this, CONFIG_MAIL_PORT));
+            TextInputEditText smtpLoginInput = findViewById(R.id.smtp_login_text);
+            TextInputEditText smtpPasswordInput = findViewById(R.id.smtp_port_text);
+            smtpLoginInput.setText(DcHelper.get(this, CONFIG_SEND_USER));
+            smtpPasswordInput.setText(DcHelper.get(this, CONFIG_SEND_PASSWORD));
+            smtpServerInput.setText(DcHelper.get(this, CONFIG_SEND_SERVER));
+            smtpPortInput.setText(DcHelper.get(this, CONFIG_SEND_PORT));
+        }
     }
 
     private void focusListener(View view, boolean focused, VerificationType type) {
