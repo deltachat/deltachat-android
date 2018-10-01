@@ -7,22 +7,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.widget.Toast;
+
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.BlockedContactsActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.SwitchPreferenceCompat;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
-import org.thoughtcrime.securesms.jobs.MultiDeviceReadReceiptUpdateJob;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.whispersystems.signalservice.api.SignalServiceAccountManager;
 
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
 
 import mobi.upod.timedurationpicker.TimeDurationPickerDialog;
 
@@ -30,8 +31,9 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
 
     private static final String PREFERENCE_CATEGORY_BLOCKED = "preference_category_blocked";
 
-    @Inject
-    SignalServiceAccountManager accountManager;
+    private ApplicationDcContext dcContext;
+
+    CheckBoxPreference readReceiptsCheckbox;
 
     @Override
     public void onAttach(Activity activity) {
@@ -42,11 +44,17 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     @Override
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
+
+        dcContext = DcHelper.getContext(getContext());
+
         this.findPreference(TextSecurePreferences.SCREEN_LOCK).setOnPreferenceChangeListener(new ScreenLockListener());
         this.findPreference(TextSecurePreferences.CHANGE_PASSPHRASE_PREF).setOnPreferenceClickListener(new ChangePassphraseClickListener());
         this.findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT_INTERVAL_PREF).setOnPreferenceClickListener(new LockIntervalClickListener());
         this.findPreference(TextSecurePreferences.SCREEN_SECURITY_PREF).setOnPreferenceChangeListener(new ScreenSecurityListener());
-        this.findPreference(TextSecurePreferences.READ_RECEIPTS_PREF).setOnPreferenceChangeListener(new ReadReceiptToggleListener());
+
+        readReceiptsCheckbox = (CheckBoxPreference) this.findPreference("pref_read_receipts");
+        readReceiptsCheckbox.setOnPreferenceChangeListener(new ReadReceiptToggleListener());
+
         this.findPreference(PREFERENCE_CATEGORY_BLOCKED).setOnPreferenceClickListener(new BlockedContactsClickListener());
 
         initializeVisibility();
@@ -62,6 +70,8 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         super.onResume();
         ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__privacy);
         initializePassphraseTimeoutSummary();
+
+        readReceiptsCheckbox.setChecked(0!=dcContext.getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED));
     }
 
     private void initializePassphraseTimeoutSummary() {
@@ -115,10 +125,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             boolean enabled = (boolean) newValue;
-            ApplicationContext.getInstance(getContext())
-                    .getJobManager()
-                    .add(new MultiDeviceReadReceiptUpdateJob(getContext(), enabled));
-
+            dcContext.setConfigInt("mdns_enabled", enabled? 1 : 0);
             return true;
         }
     }

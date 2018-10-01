@@ -48,12 +48,12 @@ public class SendReadReceiptJob extends ContextJob implements InjectableType {
 
   @Override
   public void onRun() throws IOException, UntrustedIdentityException {
-    if (!TextSecurePreferences.isReadReceiptsEnabled(context)) return;
-
-    SignalServiceAddress        remoteAddress  = new SignalServiceAddress(address);
-    SignalServiceReceiptMessage receiptMessage = new SignalServiceReceiptMessage(SignalServiceReceiptMessage.Type.READ, messageIds, timestamp);
-
-    messageSender.sendReceipt(remoteAddress, receiptMessage);
+//    if (!TextSecurePreferences.isReadReceiptsEnabled(context)) return;
+//
+//    SignalServiceAddress        remoteAddress  = new SignalServiceAddress(address);
+//    SignalServiceReceiptMessage receiptMessage = new SignalServiceReceiptMessage(SignalServiceReceiptMessage.Type.READ, messageIds, timestamp);
+//
+//    messageSender.sendReceipt(remoteAddress, receiptMessage);
   }
 
   @Override

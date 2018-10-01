@@ -683,9 +683,9 @@ public class ThreadDatabase extends Database {
       long               lastSeen             = cursor.getLong(cursor.getColumnIndexOrThrow(ThreadDatabase.LAST_SEEN));
       Uri                snippetUri           = getSnippetUri(cursor);
 
-      if (!TextSecurePreferences.isReadReceiptsEnabled(context)) {
-        readReceiptCount = 0;
-      }
+//      if (!TextSecurePreferences.isReadReceiptsEnabled(context)) {
+//        readReceiptCount = 0;
+//      }
 
       return new ThreadRecord(context, body, snippetUri, recipient, date, count,
                               unreadCount, threadId, deliveryReceiptCount, status, type,

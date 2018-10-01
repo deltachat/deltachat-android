@@ -859,9 +859,9 @@ public class SmsDatabase extends MessagingDatabase {
       long    expireStarted        = cursor.getLong(cursor.getColumnIndexOrThrow(SmsDatabase.EXPIRE_STARTED));
       String  body                 = cursor.getString(cursor.getColumnIndexOrThrow(SmsDatabase.BODY));
 
-      if (!TextSecurePreferences.isReadReceiptsEnabled(context)) {
-        readReceiptCount = 0;
-      }
+//      if (!TextSecurePreferences.isReadReceiptsEnabled(context)) {
+//        readReceiptCount = 0;
+//      }
 
       List<IdentityKeyMismatch> mismatches = getMismatches(mismatchDocument);
       Recipient                 recipient  = Recipient.from(context, address, true);

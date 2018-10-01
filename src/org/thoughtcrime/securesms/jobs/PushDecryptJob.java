@@ -494,11 +494,11 @@ public class PushDecryptJob extends ContextJob {
                         .add(new MultiDeviceBlockedUpdateJob(getContext()));
     }
 
-    if (message.isConfigurationRequest()) {
-      ApplicationContext.getInstance(context)
-                        .getJobManager()
-                        .add(new MultiDeviceReadReceiptUpdateJob(getContext(), TextSecurePreferences.isReadReceiptsEnabled(getContext())));
-    }
+//    if (message.isConfigurationRequest()) {
+//      ApplicationContext.getInstance(context)
+//                        .getJobManager()
+//                        .add(new MultiDeviceReadReceiptUpdateJob(getContext(), TextSecurePreferences.isReadReceiptsEnabled(getContext())));
+//    }
   }
 
   private void handleSynchronizeReadMessage(@NonNull List<ReadMessage> readMessages, long envelopeTimestamp)
@@ -855,14 +855,14 @@ public class PushDecryptJob extends ContextJob {
   private void handleReadReceipt(@NonNull SignalServiceEnvelope envelope,
                                  @NonNull SignalServiceReceiptMessage message)
   {
-    if (TextSecurePreferences.isReadReceiptsEnabled(context)) {
-      for (long timestamp : message.getTimestamps()) {
-        Log.w(TAG, String.format("Received encrypted read receipt: (XXXXX, %d)", timestamp));
-
-        DatabaseFactory.getMmsSmsDatabase(context)
-                       .incrementReadReceiptCount(new SyncMessageId(Address.fromExternal(context, envelope.getSource()), timestamp), envelope.getTimestamp());
-      }
-    }
+//    if (TextSecurePreferences.isReadReceiptsEnabled(context)) {
+//      for (long timestamp : message.getTimestamps()) {
+//        Log.w(TAG, String.format("Received encrypted read receipt: (XXXXX, %d)", timestamp));
+//
+//        DatabaseFactory.getMmsSmsDatabase(context)
+//                       .incrementReadReceiptCount(new SyncMessageId(Address.fromExternal(context, envelope.getSource()), timestamp), envelope.getTimestamp());
+//      }
+//    }
   }
 
   private Optional<QuoteModel> getValidatedQuote(Optional<SignalServiceDataMessage.Quote> quote) {
