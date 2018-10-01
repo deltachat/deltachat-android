@@ -61,7 +61,7 @@ public class TextSecurePreferences {
   public  static final String ALL_MMS_PREF                     = "pref_all_mms";
   public  static final String ALL_SMS_PREF                     = "pref_all_sms";
   public  static final String SCREEN_LOCK_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
-  public  static final String PASSPHRASE_TIMEOUT_PREF          = "pref_timeout_passphrase";
+  public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
   private static final String ENTER_PRESENT_PREF               = "pref_enter_key";
@@ -698,8 +698,8 @@ public class TextSecurePreferences {
     return getBooleanPreference(context, SHOW_INVITE_REMINDER_PREF, true);
   }
 
-  public static boolean isPassphraseTimeoutEnabled(Context context) {
-    return getBooleanPreference(context, PASSPHRASE_TIMEOUT_PREF, false);
+  public static boolean isScreenLockTimeoutEnabled(Context context) {
+    return getBooleanPreference(context, SCREEN_LOCK_TIMEOUT_PREF, false);
   }
 
   public static int getScreenLockTimeoutInterval(Context context) {

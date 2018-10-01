@@ -1474,5 +1474,7 @@
     <string name="text_secure_normal__menu_new_chat">New chat</string>
     <string name="help_url">https://delta.chat/en/help</string>
     <string name="security_authentication_failed">Authentication failed.</string>
+    <string name="security_authentication_unlock_title">Unlock Delta Chat</string>
+    <string name="security_authentication_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
 
 </resources>

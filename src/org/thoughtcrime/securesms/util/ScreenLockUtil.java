@@ -5,7 +5,8 @@ import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+
+import org.thoughtcrime.securesms.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,7 +22,7 @@ public class ScreenLockUtil {
         KeyguardManager keyguardManager = (KeyguardManager) activity.getSystemService(Context.KEYGUARD_SERVICE);
         Intent intent;
         if (keyguardManager != null) {
-            intent = keyguardManager.createConfirmDeviceCredentialIntent(null, null);
+            intent = keyguardManager.createConfirmDeviceCredentialIntent(activity.getString(R.string.security_authentication_unlock_title), activity.getString(R.string.security_authentication_unlock_description));
             if (intent != null) {
                 activity.startActivityForResult(intent, REQUEST_CODE_CONFIRM_CREDENTIALS);
             }
@@ -30,6 +31,11 @@ public class ScreenLockUtil {
 
     public static boolean isScreenLockEnabled(Context context) {
         return TextSecurePreferences.isScreenLockEnabled(context)
+                && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
+    }
+
+    public static boolean isScreenLockTimeoutEnabled(Context context) {
+        return TextSecurePreferences.isScreenLockTimeoutEnabled(context)
                 && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
     }
 

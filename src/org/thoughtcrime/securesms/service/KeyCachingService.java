@@ -238,7 +238,7 @@ public class KeyCachingService extends Service {
   }
 
   private void startTimeoutIfAppropriate() {
-    boolean timeoutEnabled = TextSecurePreferences.isPassphraseTimeoutEnabled(this);
+    boolean timeoutEnabled = TextSecurePreferences.isScreenLockTimeoutEnabled(this);
     long    screenTimeout  = TextSecurePreferences.getScreenLockTimeout(this);
 
     if ((activitiesRunning == 0) && (KeyCachingService.masterSecret != null) &&

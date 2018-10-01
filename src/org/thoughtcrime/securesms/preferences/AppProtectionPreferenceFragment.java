@@ -76,7 +76,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
             SwitchPreferenceCompat screenLockPreference = (SwitchPreferenceCompat) findPreference(TextSecurePreferences.SCREEN_LOCK);
             screenLockPreference.setChecked(false);
             screenLockPreference.setEnabled(false);
-            SwitchPreferenceCompat timeoutPreference = (SwitchPreferenceCompat) findPreference(TextSecurePreferences.PASSPHRASE_TIMEOUT_PREF);
+            SwitchPreferenceCompat timeoutPreference = (SwitchPreferenceCompat) findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT_PREF);
             timeoutPreference.setChecked(false);
             timeoutPreference.setEnabled(false);
             findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT_INTERVAL_PREF).setEnabled(false);
