@@ -161,7 +161,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     case R.id.menu_new_chat:          createChat();            return true;
     case R.id.menu_settings:          handleDisplaySettings(); return true;
     case R.id.menu_clear_passphrase:  handleClearPassphrase(); return true;
-    case R.id.menu_mark_all_read:     handleMarkAllRead();     return true;
     case R.id.menu_invite:            handleInvite();          return true;
     case R.id.menu_help:              handleHelp();            return true;
     }
@@ -215,18 +214,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Intent intent = new Intent(this, KeyCachingService.class);
     intent.setAction(KeyCachingService.CLEAR_KEY_ACTION);
     startService(intent);
-  }
-
-  @SuppressLint("StaticFieldLeak")
-  private void handleMarkAllRead() {
-    new AsyncTask<Void, Void, Void>() {
-      @Override
-      protected Void doInBackground(Void... params) {
-        Context context = ConversationListActivity.this;
-        DcHelper.getContext(context).marknoticedAllChats();
-        return null;
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
 
   private void handleInvite() {
