@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms;
 
 import android.annotation.TargetApi;
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
@@ -15,15 +14,22 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 import java.lang.reflect.Field;
+import java.util.Timer;
+
+import static org.thoughtcrime.securesms.util.ScreenLockUtil.shouldLockApp;
 
 
 public abstract class BaseActionBarActivity extends AppCompatActivity {
+
   private static final String TAG = BaseActionBarActivity.class.getSimpleName();
+
+  private Timer timer;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +39,54 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
   }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (ScreenLockUtil.isScreenLockEnabled(this) && shouldLockApp) {
+            ScreenLockUtil.applyScreenLock(this);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
+            if (resultCode == RESULT_OK) {
+                shouldLockApp = false;
+            } else {
+                Toast.makeText(this, R.string.security_authentication_failed, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
   @Override
   protected void onResume() {
     super.onResume();
     initializeScreenshotSecurity();
+    initializeScreenLock();
+  }
+
+  private void initializeScreenLock() {
+    if (ScreenLockUtil.isScreenLockEnabled(this)) {
+        timer = ScreenLockUtil.scheduleScreenLockTimer(timer, this);
+    }
+  }
+
+  @Override
+    protected void onPause() {
+      super.onPause();
+      tearDownScreenLock();
+  }
+
+  private void tearDownScreenLock() {
+    if (ScreenLockUtil.isScreenLockEnabled(this)) {
+      ScreenLockUtil.cancelScreenLockTimer(timer);
+    }
+  }
+
+  @Override
+  public void onUserInteraction() {
+    super.onUserInteraction();
+    initializeScreenLock();
   }
 
   @Override
