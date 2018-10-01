@@ -45,8 +45,6 @@ public class TextSecurePreferences {
   public  static final String MMSC_USERNAME_PREF               = "pref_apn_mmsc_username";
   private static final String MMSC_CUSTOM_PASSWORD_PREF        = "pref_apn_mmsc_custom_password";
   public  static final String MMSC_PASSWORD_PREF               = "pref_apn_mmsc_password";
-  public  static final String THREAD_TRIM_LENGTH               = "pref_trim_length";
-  public  static final String THREAD_TRIM_NOW                  = "pref_trim_now";
   public  static final String ENABLE_MANUAL_MMS_PREF           = "pref_enable_manual_mms";
 
   private static final String LAST_VERSION_CODE_PREF           = "last_version_code";
@@ -106,10 +104,6 @@ public class TextSecurePreferences {
   public  static final String NEW_CONTACTS_NOTIFICATIONS       = "pref_enable_new_contacts_notifications";
   public  static final String WEBRTC_CALLING_PREF              = "pref_webrtc_calling";
 
-  public  static final String MEDIA_DOWNLOAD_MOBILE_PREF       = "pref_media_download_mobile";
-  public  static final String MEDIA_DOWNLOAD_WIFI_PREF         = "pref_media_download_wifi";
-  public  static final String MEDIA_DOWNLOAD_ROAMING_PREF      = "pref_media_download_roaming";
-
   public  static final String SYSTEM_EMOJI_PREF                = "pref_system_emoji";
   private static final String MULTI_DEVICE_PROVISIONED_PREF    = "pref_multi_device";
   public  static final String DIRECT_CAPTURE_CAMERA_ID         = "pref_direct_capture_camera_id";
@@ -134,11 +128,6 @@ public class TextSecurePreferences {
   private static final String ACTIVE_SIGNED_PRE_KEY_ID = "pref_active_signed_pre_key_id";
   private static final String NEXT_SIGNED_PRE_KEY_ID   = "pref_next_signed_pre_key_id";
 
-  public  static final String BACKUP_ENABLED    = "pref_backup_enabled";
-  private static final String BACKUP_PASSPHRASE = "pref_backup_passphrase";
-  private static final String BACKUP_TIME       = "pref_backup_next_time";
-  public  static final String BACKUP_NOW        = "pref_backup_create";
-
   public static final String SCREEN_LOCK         = "pref_android_screen_lock";
   public static final String SCREEN_LOCK_TIMEOUT = "pref_android_screen_lock_timeout";
 
@@ -162,30 +151,6 @@ public class TextSecurePreferences {
 
   public static void setScreenLockTimeout(@NonNull Context context, long value) {
     setLongPreference(context, SCREEN_LOCK_TIMEOUT, value);
-  }
-
-  public static void setBackupPassphrase(@NonNull Context context, @Nullable String passphrase) {
-    setStringPreference(context, BACKUP_PASSPHRASE, passphrase);
-  }
-
-  public static @Nullable String getBackupPassphrase(@NonNull Context context) {
-    return getStringPreference(context, BACKUP_PASSPHRASE, null);
-  }
-
-  public static void setBackupEnabled(@NonNull Context context, boolean value) {
-    setBooleanPreference(context, BACKUP_ENABLED, value);
-  }
-
-  public static boolean isBackupEnabled(@NonNull Context context) {
-    return getBooleanPreference(context, BACKUP_ENABLED, false);
-  }
-
-  public static void setNextBackupTime(@NonNull Context context, long time) {
-    setLongPreference(context, BACKUP_TIME, time);
-  }
-
-  public static long getNextBackupTime(@NonNull Context context) {
-    return getLongPreference(context, BACKUP_TIME, -1);
   }
 
   public static int getNextPreKeyId(@NonNull Context context) {
@@ -827,28 +792,8 @@ public class TextSecurePreferences {
     setStringPreference(context, LED_BLINK_PREF_CUSTOM, pattern);
   }
 
-  public static boolean isThreadLengthTrimmingEnabled(Context context) {
-    return getBooleanPreference(context, THREAD_TRIM_ENABLED, false);
-  }
-
-  public static int getThreadTrimLength(Context context) {
-    return Integer.parseInt(getStringPreference(context, THREAD_TRIM_LENGTH, "500"));
-  }
-
   public static boolean isSystemEmojiPreferred(Context context) {
     return getBooleanPreference(context, SYSTEM_EMOJI_PREF, false);
-  }
-
-  public static @NonNull Set<String> getMobileMediaDownloadAllowed(Context context) {
-    return getMediaDownloadAllowed(context, MEDIA_DOWNLOAD_MOBILE_PREF, R.array.pref_media_download_mobile_data_default);
-  }
-
-  public static @NonNull Set<String> getWifiMediaDownloadAllowed(Context context) {
-    return getMediaDownloadAllowed(context, MEDIA_DOWNLOAD_WIFI_PREF, R.array.pref_media_download_wifi_default);
-  }
-
-  public static @NonNull Set<String> getRoamingMediaDownloadAllowed(Context context) {
-    return getMediaDownloadAllowed(context, MEDIA_DOWNLOAD_ROAMING_PREF, R.array.pref_media_download_roaming_default);
   }
 
   private static @NonNull Set<String> getMediaDownloadAllowed(Context context, String key, @ArrayRes int defaultValuesRes) {

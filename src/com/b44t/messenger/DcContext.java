@@ -29,6 +29,8 @@ public class DcContext {
 
     public final static int DC_PREF_DEFAULT_E2EE_ENABLED = 1;
     public final static int DC_PREF_DEFAULT_MDNS_ENABLED = 1;
+    public final static int DC_PREF_DEFAULT_TRIM_ENABLED = 0;
+    public final static int DC_PREF_DEFAULT_TRIM_LENGTH  = 500;
 
     public final static int DC_EVENT_INFO                        = 100;
     public final static int DC_EVENT_WARNING                     = 300;

@@ -14,7 +14,8 @@
 
     <PreferenceCategory android:key="media_download" android:title="@string/preferences_other">
         <Preference android:key="pref_backup"
-                    android:title="@string/preferences__backup"/>
+                    android:title="@string/preferences__backup"
+                    android:summary="@string/preferences_chats__backup_chats_to_external_storage"/>
 
         <Preference android:key="pref_manage_keys"
                     android:title="@string/preferences__manage_keys"/>

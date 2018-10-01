@@ -26,25 +26,26 @@ public class AttachmentUtil {
 
   @WorkerThread
   public static boolean isAutoDownloadPermitted(@NonNull Context context, @Nullable DatabaseAttachment attachment) {
-    if (attachment == null) {
-      Log.w(TAG, "attachment was null, returning vacuous true");
-      return true;
-    }
-
-    if (isFromUnknownContact(context, attachment)) {
-      return false;
-    }
-
-    Set<String> allowedTypes = getAllowedAutoDownloadTypes(context);
-    String      contentType  = attachment.getContentType();
-
-    if (attachment.isVoiceNote() || (MediaUtil.isAudio(attachment) && TextUtils.isEmpty(attachment.getFileName()))) {
-      return true;
-    } else if (isNonDocumentType(contentType)) {
-      return allowedTypes.contains(MediaUtil.getDiscreteMimeType(contentType));
-    } else {
-      return allowedTypes.contains("documents");
-    }
+    return false;
+//    if (attachment == null) {
+//      Log.w(TAG, "attachment was null, returning vacuous true");
+//      return true;
+//    }
+//
+//    if (isFromUnknownContact(context, attachment)) {
+//      return false;
+//    }
+//
+//    Set<String> allowedTypes = getAllowedAutoDownloadTypes(context);
+//    String      contentType  = attachment.getContentType();
+//
+//    if (attachment.isVoiceNote() || (MediaUtil.isAudio(attachment) && TextUtils.isEmpty(attachment.getFileName()))) {
+//      return true;
+//    } else if (isNonDocumentType(contentType)) {
+//      return allowedTypes.contains(MediaUtil.getDiscreteMimeType(contentType));
+//    } else {
+//      return allowedTypes.contains("documents");
+//    }
   }
 
   /**
@@ -76,10 +77,11 @@ public class AttachmentUtil {
   }
 
   private static @NonNull Set<String> getAllowedAutoDownloadTypes(@NonNull Context context) {
-    if      (isConnectedWifi(context))    return TextSecurePreferences.getWifiMediaDownloadAllowed(context);
-    else if (isConnectedRoaming(context)) return TextSecurePreferences.getRoamingMediaDownloadAllowed(context);
-    else if (isConnectedMobile(context))  return TextSecurePreferences.getMobileMediaDownloadAllowed(context);
-    else                                  return Collections.emptySet();
+//    if      (isConnectedWifi(context))    return TextSecurePreferences.getWifiMediaDownloadAllowed(context);
+//    else if (isConnectedRoaming(context)) return TextSecurePreferences.getRoamingMediaDownloadAllowed(context);
+//    else if (isConnectedMobile(context))  return TextSecurePreferences.getMobileMediaDownloadAllowed(context);
+//    else                                  return Collections.emptySet();
+    return Collections.emptySet();
   }
 
   private static NetworkInfo getNetworkInfo(@NonNull Context context) {

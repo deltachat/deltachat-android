@@ -37,13 +37,11 @@ import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.database.model.SmsMessageRecord;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
-import org.thoughtcrime.securesms.jobs.TrimThreadJob;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.sms.IncomingGroupMessage;
 import org.thoughtcrime.securesms.sms.IncomingTextMessage;
 import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.JsonUtils;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.io.IOException;
@@ -461,7 +459,7 @@ public class SmsDatabase extends MessagingDatabase {
       DatabaseFactory.getThreadDatabase(context).update(record.getThreadId(), true);
       notifyConversationListeners(record.getThreadId());
 
-      jobManager.add(new TrimThreadJob(context, record.getThreadId()));
+//      jobManager.add(new TrimThreadJob(context, record.getThreadId()));
 
       return new Pair<>(newMessageId, record.getThreadId());
     } catch (NoSuchMessageException e) {
@@ -499,7 +497,7 @@ public class SmsDatabase extends MessagingDatabase {
 
     DatabaseFactory.getThreadDatabase(context).update(threadId, true);
     notifyConversationListeners(threadId);
-    jobManager.add(new TrimThreadJob(context, threadId));
+//    jobManager.add(new TrimThreadJob(context, threadId));
 
     if (unread) {
       DatabaseFactory.getThreadDatabase(context).incrementUnread(threadId, 1);
@@ -590,9 +588,9 @@ public class SmsDatabase extends MessagingDatabase {
 
       notifyConversationListeners(threadId);
 
-      if (!message.isIdentityUpdate() && !message.isIdentityVerified() && !message.isIdentityDefault()) {
-        jobManager.add(new TrimThreadJob(context, threadId));
-      }
+//      if (!message.isIdentityUpdate() && !message.isIdentityVerified() && !message.isIdentityDefault()) {
+//        jobManager.add(new TrimThreadJob(context, threadId));
+//      }
 
       return Optional.of(new InsertResult(messageId, threadId));
     }
@@ -648,9 +646,9 @@ public class SmsDatabase extends MessagingDatabase {
 
     notifyConversationListeners(threadId);
 
-    if (!message.isIdentityVerified() && !message.isIdentityDefault()) {
-      jobManager.add(new TrimThreadJob(context, threadId));
-    }
+//    if (!message.isIdentityVerified() && !message.isIdentityDefault()) {
+//      jobManager.add(new TrimThreadJob(context, threadId));
+//    }
 
     return messageId;
   }
