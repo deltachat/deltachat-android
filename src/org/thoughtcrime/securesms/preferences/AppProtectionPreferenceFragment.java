@@ -21,7 +21,6 @@ import org.thoughtcrime.securesms.components.SwitchPreferenceCompat;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
-import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 import java.util.concurrent.TimeUnit;
@@ -117,9 +116,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             boolean enabled = (Boolean) newValue;
             manageScreenLockChildren(enabled);
-            if (enabled) {
-                ScreenLockUtil.shouldLockApp = false;
-            }
             TextSecurePreferences.setScreenLockEnabled(getContext(), enabled);
             return true;
         }
@@ -148,7 +144,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         final String onRes = context.getString(R.string.ApplicationPreferencesActivity_on);
         final String offRes = context.getString(R.string.ApplicationPreferencesActivity_off);
         String screenLockState = TextSecurePreferences.isScreenLockEnabled(context) ? onRes : offRes;
-        String readReceiptState = TextSecurePreferences.isReadReceiptEnabled(context) ? onRes : offRes;
+        String readReceiptState = DcHelper.getContext(context).getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED)!=0? onRes : offRes;
         return context.getString(privacySummaryResId, screenLockState, readReceiptState);
     }
 
