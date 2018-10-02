@@ -59,7 +59,6 @@ import org.thoughtcrime.securesms.preferences.widgets.ColorPickerPreference;
 import org.thoughtcrime.securesms.preferences.widgets.ContactPreference;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
-import org.thoughtcrime.securesms.service.WebRtcCallService;
 import org.thoughtcrime.securesms.util.CommunicationActions;
 import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -438,10 +437,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       public boolean onPreferenceChange(Preference preference, Object newValue) {
         Uri value = (Uri)newValue;
 
-        Uri defaultValue;
-
-        if (calls) defaultValue = TextSecurePreferences.getCallNotificationRingtone(getContext());
-        else       defaultValue = TextSecurePreferences.getNotificationRingtone(getContext());
+        Uri defaultValue = TextSecurePreferences.getNotificationRingtone(getContext());
 
         if (defaultValue.equals(value)) value = null;
         else if (value == null)         value = Uri.EMPTY;
@@ -469,16 +465,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
       @Override
       public boolean onPreferenceClick(Preference preference) {
-        Uri current;
-        Uri defaultUri;
-
-        if (calls) {
-          current    = recipient.getCallRingtone();
-          defaultUri = TextSecurePreferences.getCallNotificationRingtone(getContext());
-        } else  {
-          current    = recipient.getMessageRingtone();
-          defaultUri = TextSecurePreferences.getNotificationRingtone(getContext());
-        }
+        Uri current = recipient.getMessageRingtone();
+        Uri defaultUri = TextSecurePreferences.getNotificationRingtone(getContext());
 
         if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
         else if (current.toString().isEmpty()) current = null;
