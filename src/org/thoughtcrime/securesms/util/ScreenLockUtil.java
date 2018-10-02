@@ -17,14 +17,18 @@ public class ScreenLockUtil {
 
     public static boolean shouldLockApp = true;
 
-    @TargetApi(21)
     public static void applyScreenLock(Activity activity) {
+        applyScreenLock(activity, REQUEST_CODE_CONFIRM_CREDENTIALS);
+    }
+
+    @TargetApi(21)
+    public static void applyScreenLock(Activity activity, int requestCode) {
         KeyguardManager keyguardManager = (KeyguardManager) activity.getSystemService(Context.KEYGUARD_SERVICE);
         Intent intent;
         if (keyguardManager != null) {
             intent = keyguardManager.createConfirmDeviceCredentialIntent(activity.getString(R.string.security_authentication_unlock_title), activity.getString(R.string.security_authentication_unlock_description));
             if (intent != null) {
-                activity.startActivityForResult(intent, REQUEST_CODE_CONFIRM_CREDENTIALS);
+                activity.startActivityForResult(intent, requestCode);
             }
         }
     }
