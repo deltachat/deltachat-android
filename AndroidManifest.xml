@@ -5,10 +5,6 @@
 
     <uses-sdk tools:overrideLibrary="com.amulyakhare.textdrawable,com.astuetz.pagerslidingtabstrip,pl.tajchert.waitingdots,com.h6ah4i.android.multiselectlistpreferencecompat,android.support.v13,com.davemorrissey.labs.subscaleview,com.tomergoldst.tooltips,com.klinker.android.send_message,com.takisoft.colorpicker,android.support.v14.preference"/>
 
-    <permission android:name="org.thoughtcrime.securesms.ACCESS_SECRETS"
-                android:label="Access to TextSecure Secrets"
-                android:protectionLevel="signature" />
-
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
     <uses-feature android:name="android.hardware.location" android:required="false"/>
@@ -87,10 +83,6 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.RAISED_THREAD_PRIORITY" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
-
-    <permission android:name="org.thoughtcrime.securesms.permission.C2D_MESSAGE"
-                android:protectionLevel="signature" />
-    <uses-permission android:name="org.thoughtcrime.securesms.permission.C2D_MESSAGE" />
 
     <application android:name=".ApplicationContext"
                  android:icon="@mipmap/ic_launcher_dev"
@@ -466,15 +458,15 @@
     <provider android:name=".providers.PartProvider"
               android:grantUriPermissions="true"
               android:exported="false"
-              android:authorities="org.thoughtcrime.provider.securesms" />
+              android:authorities="{$applicationId}.provider.securesms" />
 
     <provider android:name=".providers.MmsBodyProvider"
               android:grantUriPermissions="true"
               android:exported="false"
-              android:authorities="org.thoughtcrime.provider.securesms.mms" />
+              android:authorities="{$applicationId}.provider.securesms.mms" />
 
     <provider android:name="android.support.v4.content.FileProvider"
-              android:authorities="org.thoughtcrime.securesms.fileprovider"
+              android:authorities="{$applicationId}.securesms.fileprovider"
               android:exported="false"
               android:grantUriPermissions="true">
 

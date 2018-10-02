@@ -26,6 +26,8 @@ import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
+import org.thoughtcrime.securesms.BuildConfig;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -33,7 +35,7 @@ import java.io.OutputStream;
 
 public class MmsBodyProvider extends ContentProvider {
   private static final String TAG                = MmsBodyProvider.class.getSimpleName();
-  private static final String CONTENT_URI_STRING = "content://org.thoughtcrime.provider.securesms.mms/mms";
+  private static final String CONTENT_URI_STRING = "content://"+ BuildConfig.APPLICATION_ID+".provider.securesms.mms/mms";
   public  static final Uri    CONTENT_URI        = Uri.parse(CONTENT_URI_STRING);
   private static final int    SINGLE_ROW         = 1;
 
@@ -41,7 +43,7 @@ public class MmsBodyProvider extends ContentProvider {
 
   static {
     uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    uriMatcher.addURI("org.thoughtcrime.provider.securesms.mms", "mms/#", SINGLE_ROW);
+    uriMatcher.addURI(BuildConfig.APPLICATION_ID+".provider.securesms.mms", "mms/#", SINGLE_ROW);
   }
 
   @Override
