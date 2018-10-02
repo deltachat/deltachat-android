@@ -21,6 +21,7 @@ import org.thoughtcrime.securesms.components.SwitchPreferenceCompat;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 import java.util.concurrent.TimeUnit;
@@ -116,6 +117,9 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             boolean enabled = (Boolean) newValue;
             manageScreenLockChildren(enabled);
+            if (enabled) {
+                ScreenLockUtil.shouldLockApp = false;
+            }
             TextSecurePreferences.setScreenLockEnabled(getContext(), enabled);
             return true;
         }
