@@ -14,7 +14,6 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import org.greenrobot.eventbus.EventBus;
-import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.jobs.requirements.SqlCipherMigrationRequirementProvider;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 import org.whispersystems.libsignal.util.Medium;
@@ -84,6 +83,7 @@ public class TextSecurePreferences {
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
   private static final String SHOW_INVITE_REMINDER_PREF        = "pref_show_invite_reminder";
   public  static final String MESSAGE_BODY_TEXT_SIZE_PREF      = "pref_message_body_text_size";
+  public  static final String READ_RECEIPT_PREF                = "pref_read_receipts";
 
   private static final String LOCAL_REGISTRATION_ID_PREF       = "pref_local_registration_id";
   private static final String SIGNED_PREKEY_REGISTERED_PREF    = "pref_signed_prekey_registered";
@@ -652,6 +652,10 @@ public class TextSecurePreferences {
 
   public static boolean isShowInviteReminders(Context context) {
     return getBooleanPreference(context, SHOW_INVITE_REMINDER_PREF, true);
+  }
+
+  public static boolean isReadReceiptEnabled(Context context) {
+    return getBooleanPreference(context, READ_RECEIPT_PREF, false);
   }
 
   public static boolean isScreenLockTimeoutEnabled(Context context) {

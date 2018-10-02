@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/preferences_app_protection__app_access">
+    <PreferenceCategory android:title="@string/preferences_app_protection__screen_lock">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_android_screen_lock"
             android:summary="@string/preferences_app_protection__lock_signal_access_with_android_screen_lock_or_fingerprint"
             android:title="@string/preferences_app_protection__screen_lock" />
-
-        <Preference
-            android:key="pref_change_passphrase"
-            android:summary="@string/preferences__change_your_passphrase"
-            android:title="@string/preferences__change_passphrase" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
@@ -24,6 +19,17 @@
             android:dependency="pref_timeout_passphrase"
             android:key="pref_timeout_interval"
             android:title="@string/preferences__inactivity_timeout_interval" />
+
+        <Preference
+            android:key="pref_change_passphrase"
+            android:summary="@string/preferences__change_your_passphrase"
+            android:title="@string/preferences__change_passphrase" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:layout="@layout/preference_divider" />
+
+    <PreferenceCategory android:title="@string/preferences_app_protection__app_access">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"

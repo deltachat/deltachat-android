@@ -45,7 +45,9 @@ public class ScreenLockUtil {
         newTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                ScreenLockUtil.applyScreenLock(activity);
+                if (isScreenLockTimeoutEnabled(activity)) {
+                    ScreenLockUtil.applyScreenLock(activity);
+                }
             }
         }, TextSecurePreferences.getScreenLockTimeoutInterval(activity) * 1000);
         return newTimer;

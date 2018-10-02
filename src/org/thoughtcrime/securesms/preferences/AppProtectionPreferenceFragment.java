@@ -50,7 +50,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         this.findPreference(TextSecurePreferences.SCREEN_LOCK).setOnPreferenceChangeListener(new ScreenLockListener());
         this.findPreference(TextSecurePreferences.CHANGE_PASSPHRASE_PREF).setOnPreferenceClickListener(new ChangePassphraseClickListener());
         this.findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT_INTERVAL_PREF).setOnPreferenceClickListener(new LockIntervalClickListener());
-        this.findPreference(TextSecurePreferences.SCREEN_SECURITY_PREF).setOnPreferenceChangeListener(new ScreenSecurityListener());
+        this.findPreference(TextSecurePreferences.SCREEN_SECURITY_PREF).setOnPreferenceChangeListener(new ScreenShotSecurityListener());
 
         readReceiptsCheckbox = (CheckBoxPreference) this.findPreference("pref_read_receipts");
         readReceiptsCheckbox.setOnPreferenceChangeListener(new ReadReceiptToggleListener());
@@ -71,7 +71,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__privacy);
         initializePassphraseTimeoutSummary();
 
-        readReceiptsCheckbox.setChecked(0!=dcContext.getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED));
+        readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED));
     }
 
     private void initializePassphraseTimeoutSummary() {
@@ -82,18 +82,26 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
 
     private void initializeVisibility() {
         KeyguardManager keyguardManager = (KeyguardManager) getContext().getSystemService(Context.KEYGUARD_SERVICE);
+        SwitchPreferenceCompat screenLockPreference = (SwitchPreferenceCompat) findPreference(TextSecurePreferences.SCREEN_LOCK);
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP || keyguardManager == null || !keyguardManager.isKeyguardSecure()) {
-            SwitchPreferenceCompat screenLockPreference = (SwitchPreferenceCompat) findPreference(TextSecurePreferences.SCREEN_LOCK);
             screenLockPreference.setChecked(false);
             screenLockPreference.setEnabled(false);
-            SwitchPreferenceCompat timeoutPreference = (SwitchPreferenceCompat) findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT_PREF);
-            timeoutPreference.setChecked(false);
-            timeoutPreference.setEnabled(false);
-            findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT_INTERVAL_PREF).setEnabled(false);
+        }
+        if (!screenLockPreference.isChecked()) {
+            manageScreenLockChildren(false);
         }
     }
 
-    private class ScreenSecurityListener implements Preference.OnPreferenceChangeListener {
+    private void manageScreenLockChildren(boolean enable) {
+        SwitchPreferenceCompat timeoutPreference = (SwitchPreferenceCompat) findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT_PREF);
+        timeoutPreference.setEnabled(enable);
+        findPreference(TextSecurePreferences.SCREEN_LOCK_TIMEOUT_INTERVAL_PREF).setEnabled(enable);
+        if (!enable) {
+            timeoutPreference.setChecked(false);
+        }
+    }
+
+    private class ScreenShotSecurityListener implements Preference.OnPreferenceChangeListener {
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             boolean enabled = (Boolean) newValue;
@@ -107,6 +115,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             boolean enabled = (Boolean) newValue;
+            manageScreenLockChildren(enabled);
             TextSecurePreferences.setScreenLockEnabled(getContext(), enabled);
             return true;
         }
@@ -125,7 +134,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             boolean enabled = (boolean) newValue;
-            dcContext.setConfigInt("mdns_enabled", enabled? 1 : 0);
+            dcContext.setConfigInt("mdns_enabled", enabled ? 1 : 0);
             return true;
         }
     }
@@ -134,12 +143,9 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         final int privacySummaryResId = R.string.ApplicationPreferencesActivity_privacy_summary;
         final String onRes = context.getString(R.string.ApplicationPreferencesActivity_on);
         final String offRes = context.getString(R.string.ApplicationPreferencesActivity_off);
-
-        if (TextSecurePreferences.isPasswordDisabled(context) && !TextSecurePreferences.isScreenLockEnabled(context)) {
-            return context.getString(privacySummaryResId, offRes, offRes);
-        } else {
-            return context.getString(privacySummaryResId, onRes, offRes);
-        }
+        String screenLockState = TextSecurePreferences.isScreenLockEnabled(context) ? onRes : offRes;
+        String readReceiptState = TextSecurePreferences.isReadReceiptEnabled(context) ? onRes : offRes;
+        return context.getString(privacySummaryResId, screenLockState, readReceiptState);
     }
 
     private class ChangePassphraseClickListener implements Preference.OnPreferenceClickListener {
@@ -150,7 +156,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
             return true;
         }
     }
-
 
     private class LockIntervalClickListener implements Preference.OnPreferenceClickListener {
 

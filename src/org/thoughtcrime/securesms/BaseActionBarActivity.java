@@ -22,7 +22,6 @@ import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import java.lang.reflect.Field;
 import java.util.Timer;
 
-import static org.thoughtcrime.securesms.util.ScreenLockUtil.applyScreenLock;
 import static org.thoughtcrime.securesms.util.ScreenLockUtil.shouldLockApp;
 
 
@@ -54,9 +53,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 shouldLockApp = false;
             } else {
-                if (!ScreenLockUtil.isScreenLockEnabled(this)) {
-                  applyScreenLock(this);
-                }
                 Toast.makeText(this, R.string.security_authentication_failed, Toast.LENGTH_SHORT).show();
             }
         }
@@ -82,9 +78,7 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   }
 
   private void tearDownScreenLockTimeout() {
-    if (ScreenLockUtil.isScreenLockTimeoutEnabled(this)) {
-      ScreenLockUtil.cancelScreenLockTimer(timer);
-    }
+    ScreenLockUtil.cancelScreenLockTimer(timer);
   }
 
   @Override
