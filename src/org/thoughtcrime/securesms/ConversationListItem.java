@@ -297,7 +297,7 @@ public class ConversationListItem extends RelativeLayout
         deliveryStatusIndicator.setRead();
       }
       else if(state==DcMsg.DC_STATE_OUT_DELIVERED) {
-        deliveryStatusIndicator.setDelivered();
+        deliveryStatusIndicator.setSent();
       }
       else if (state==DcMsg.DC_STATE_OUT_PENDING){
         deliveryStatusIndicator.setPending();
