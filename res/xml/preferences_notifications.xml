@@ -69,13 +69,4 @@
                 android:entryValues="@array/pref_notification_priority_values"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:layout="@layout/preference_divider"/>
-
-    <PreferenceCategory android:title="@string/preferences_notifications__events">
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:key="pref_enable_new_contacts_notifications"
-            android:title="@string/preferences_events__contact_joined_signal"
-            android:defaultValue="true" />
-    </PreferenceCategory>
-
 </PreferenceScreen>
