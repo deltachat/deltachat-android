@@ -23,6 +23,8 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
@@ -30,8 +32,14 @@ import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ResUtil;
 
+import java.io.File;
+
 
 public class AudioSlide extends Slide {
+
+  public AudioSlide(Context context, DcMsg dcMsg) {
+    this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getBytes(), dcMsg.getType()==DcMsg.DC_MSG_VOICE);
+  }
 
   public AudioSlide(Context context, Uri uri, long dataSize, boolean voiceNote) {
     super(context, constructAttachmentFromUri(context, uri, MediaUtil.AUDIO_UNSPECIFIED, dataSize, 0, 0, false, null, voiceNote, false));

@@ -59,6 +59,8 @@ import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.jobs.AttachmentDownloadJob;
+import org.thoughtcrime.securesms.mms.AudioSlide;
+import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.Slide;
@@ -349,32 +351,25 @@ public class ConversationItem extends LinearLayout
   }
 
   private boolean hasAudio(DcMsg messageRecord) {
-    return false;
-//    return messageRecord.isMms() && ((MmsDcMsg)messageRecord).getSlideDeck().getAudioSlide() != null;
+    int type = messageRecord.getType();
+    return type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE;
   }
 
   private boolean hasThumbnail(DcMsg messageRecord) {
-    return false;
-//    return messageRecord.isMms() && ((MmsDcMsg)messageRecord).getSlideDeck().getThumbnailSlide() != null;
+    int type = messageRecord.getType();
+    return type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_VIDEO;
   }
 
   private boolean hasOnlyThumbnail(DcMsg messageRecord) {
-    return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord) && !hasSharedContact(messageRecord);
+    return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord);
   }
 
   private boolean hasDocument(DcMsg messageRecord) {
-    return false;
-//  return messageRecord.isMms() && ((MmsDcMsg)messageRecord).getSlideDeck().getDocumentSlide() != null;
+    return  messageRecord.getType()==DcMsg.DC_MSG_FILE;
   }
 
   private boolean hasQuote(DcMsg messageRecord) {
     return false;
-//  return messageRecord.isMms() && ((MmsDcMsg)messageRecord).getQuote() != null;
-  }
-
-  private boolean hasSharedContact(DcMsg messageRecord) {
-    return false;
-//  return messageRecord.isMms() && !((MmsDcMsg)messageRecord).getSharedContacts().isEmpty();
   }
 
   private void setBodyText(DcMsg messageRecord) {
@@ -393,83 +388,68 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
-                                  @NonNull Recipient               conversationRecipient,
-                                           boolean                 isGroupThread)
+                                  @NonNull Recipient       conversationRecipient,
+                                           boolean         isGroupThread)
   {
     boolean showControls = !messageRecord.isFailed() && !Util.isOwnNumber(context, conversationRecipient.getAddress());
 
-//    if (hasSharedContact(messageRecord)) {
-//      sharedContactStub.get().setVisibility(VISIBLE);
-//      if (audioViewStub.resolved())      mediaThumbnailStub.get().setVisibility(View.GONE);
-//      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-//      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-//
-//      sharedContactStub.get().setContact(((MediaMmsDcMsg) messageRecord).getSharedContacts().get(0), glideRequests, locale);
-//      sharedContactStub.get().setEventListener(sharedContactEventListener);
-//      sharedContactStub.get().setOnClickListener(sharedContactClickListener);
-//      sharedContactStub.get().setOnLongClickListener(passthroughClickListener);
-//
-//      setSharedContactCorners(messageRecord, previousRecord, nextRecord, isGroupThread);
-//
-//      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//      footer.setVisibility(GONE);
-//    } else if (hasAudio(messageRecord)) {
-//      audioViewStub.get().setVisibility(View.VISIBLE);
-//      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-//      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-//      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
-//
-//      //noinspection ConstantConditions
-//      audioViewStub.get().setAudio(((MediaMmsDcMsg) messageRecord).getSlideDeck().getAudioSlide(), showControls);
-//      audioViewStub.get().setDownloadClickListener(downloadClickListener);
-//      audioViewStub.get().setOnLongClickListener(passthroughClickListener);
-//
-//      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//      footer.setVisibility(VISIBLE);
-//    } else if (hasDocument(messageRecord)) {
-//      documentViewStub.get().setVisibility(View.VISIBLE);
-//      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-//      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-//      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
-//
-//      //noinspection ConstantConditions
-//      documentViewStub.get().setDocument(((MediaMmsDcMsg)messageRecord).getSlideDeck().getDocumentSlide(), showControls);
-//      documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
-//      documentViewStub.get().setDownloadClickListener(downloadClickListener);
-//      documentViewStub.get().setOnLongClickListener(passthroughClickListener);
-//
-//      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//      footer.setVisibility(VISIBLE);
-//    } else if (hasThumbnail(messageRecord)) {
-//      mediaThumbnailStub.get().setVisibility(View.VISIBLE);
-//      if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
-//      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
-//      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
-//
-//      //noinspection ConstantConditions
-//      Slide      thumbnailSlide = ((MmsDcMsg) messageRecord).getSlideDeck().getThumbnailSlide();
-//      Attachment attachment     = thumbnailSlide.asAttachment();
-//      mediaThumbnailStub.get().setImageResource(glideRequests,
-//                                                thumbnailSlide,
-//                                                showControls,
-//                                                false,
-//                                                attachment.getWidth(),
-//                                                attachment.getHeight());
-//      mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
-//      mediaThumbnailStub.get().setDownloadClickListener(downloadClickListener);
-//      mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
-//      mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
-//      mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
-//
-//      setThumbnailOutlineCorners(messageRecord, previousRecord, nextRecord, isGroupThread);
-//
-//      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//      footer.setVisibility(VISIBLE);
-//    } else {
+    if (hasAudio(messageRecord)) {
+      audioViewStub.get().setVisibility(View.VISIBLE);
+      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
+
+      //noinspection ConstantConditions
+      audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), showControls);
+      audioViewStub.get().setDownloadClickListener(downloadClickListener);
+      audioViewStub.get().setOnLongClickListener(passthroughClickListener);
+
+      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      footer.setVisibility(VISIBLE);
+    }
+    else if (hasDocument(messageRecord)) {
+      documentViewStub.get().setVisibility(View.VISIBLE);
+      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
+      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
+
+      //noinspection ConstantConditions
+      documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord), showControls);
+      documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
+      documentViewStub.get().setDownloadClickListener(downloadClickListener);
+      documentViewStub.get().setOnLongClickListener(passthroughClickListener);
+
+      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      footer.setVisibility(VISIBLE);
+    }
+    else if (hasThumbnail(messageRecord)) {
+      mediaThumbnailStub.get().setVisibility(View.VISIBLE);
+      if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
+
+      //noinspection ConstantConditions
+      mediaThumbnailStub.get().setImageResource(glideRequests,
+                                                new AudioSlide(context, messageRecord), // TODO: this is should a same as returned from getThumbnailSlide()
+                                                showControls,
+                                                false,
+                                                messageRecord.getWidth(100),
+                                                messageRecord.getHeight(100));
+      mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
+      mediaThumbnailStub.get().setDownloadClickListener(downloadClickListener);
+      mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
+      mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
+      mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
+
+      setThumbnailOutlineCorners(messageRecord, isGroupThread);
+
+      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      footer.setVisibility(VISIBLE);
+    }
+    else {
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
@@ -478,13 +458,11 @@ public class ConversationItem extends LinearLayout
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
-//    }
+    }
   }
 
   private void setThumbnailOutlineCorners(@NonNull DcMsg           current,
-                                          @NonNull Optional<DcMsg> previous,
-                                          @NonNull Optional<DcMsg> next,
-                                                   boolean                 isGroupThread)
+                                          boolean                  isGroupThread)
   {
     int defaultRadius  = readDimen(R.dimen.message_corner_radius);
     int collapseRadius = readDimen(R.dimen.message_corner_collapse_radius);
@@ -624,9 +602,7 @@ public class ConversationItem extends LinearLayout
   }
 
   private ConversationItemFooter getActiveFooter(@NonNull DcMsg messageRecord) {
-    if (hasSharedContact(messageRecord)) {
-      return sharedContactStub.get().getFooter();
-    } else if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
+    if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
       return mediaThumbnailStub.get().getFooter();
     } else {
       return footer;

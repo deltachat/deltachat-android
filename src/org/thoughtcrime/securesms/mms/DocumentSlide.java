@@ -6,13 +6,21 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.util.StorageUtil;
+
+import java.io.File;
 
 public class DocumentSlide extends Slide {
 
   public DocumentSlide(@NonNull Context context, @NonNull Attachment attachment) {
     super(context, attachment);
+  }
+
+  public DocumentSlide(Context context, DcMsg dcMsg) {
+    this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getFilemime(), dcMsg.getBytes(), dcMsg.getFilename());
   }
 
   public DocumentSlide(@NonNull Context context, @NonNull Uri uri,
