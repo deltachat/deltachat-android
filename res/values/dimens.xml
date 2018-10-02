@@ -18,7 +18,7 @@
 
     <!-- TODO: Consolidate these two message corner things -->
     <dimen name="message_corner_radius">16dp</dimen>
-    <dimen name="message_corner_collapse_radius">4dp</dimen>
+    <dimen name="message_corner_collapse_radius">1dp</dimen>
     <dimen name="message_bubble_corner_radius">2dp</dimen>
     <dimen name="message_bubble_shadow_distance">1.5dp</dimen>
     <dimen name="message_bubble_horizontal_padding">12dp</dimen>
