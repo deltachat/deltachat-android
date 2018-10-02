@@ -65,7 +65,12 @@ public class ProfilePreference extends Preference {
     if (profileAddressView == null) return;
 
     final String address = DcHelper.get(getContext(), DcHelper.CONFIG_ADDRESS);
-    final String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
+    String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
+
+    if(profileName==null || profileName.isEmpty()) {
+      profileName = getContext().getString(R.string.CreateProfileActivity_your_profile_info);
+    }
+
     final ProfileContactPhoto profileImage = new ProfileContactPhoto(address, String.valueOf(TextSecurePreferences.getProfileAvatarId(getContext())));
 
     GlideApp.with(getContext().getApplicationContext())
