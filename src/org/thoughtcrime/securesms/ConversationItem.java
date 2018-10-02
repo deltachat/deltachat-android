@@ -179,8 +179,6 @@ public class ConversationItem extends LinearLayout
 
   @Override
   public void bind(@NonNull DcMsg                   messageRecord,
-                   @NonNull Optional<DcMsg>         previousDcMsg,
-                   @NonNull Optional<DcMsg>         nextDcMsg,
                    @NonNull DcChat                  dcChat,
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Locale                  locale,
@@ -200,18 +198,18 @@ public class ConversationItem extends LinearLayout
     this.conversationRecipient.addListener(this);
 
     setGutterSizes(messageRecord, groupThread);
-    setMessageShape(messageRecord, previousDcMsg, nextDcMsg, groupThread);
-    setMediaAttributes(messageRecord, previousDcMsg, nextDcMsg, conversationRecipient, groupThread);
+    setMessageShape(messageRecord, groupThread);
+    setMediaAttributes(messageRecord, conversationRecipient, groupThread);
     setInteractionState(messageRecord, pulseHighlight);
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
     setStatusIcons(messageRecord);
     setContactPhoto(recipient);
     setGroupMessageStatus(messageRecord, recipient);
-    setAuthor(messageRecord, previousDcMsg, nextDcMsg, groupThread);
-    setQuote(messageRecord, previousDcMsg, nextDcMsg, groupThread);
-    setMessageSpacing(context, messageRecord, previousDcMsg, nextDcMsg, groupThread);
-    setFooter(messageRecord, nextDcMsg, locale, groupThread);
+    setAuthor(messageRecord, groupThread);
+    setQuote(messageRecord, groupThread);
+    setMessageSpacing(context, messageRecord, groupThread);
+    setFooter(messageRecord, locale, groupThread);
   }
 
   @Override
@@ -395,8 +393,6 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
-                                  @NonNull Optional<DcMsg> previousRecord,
-                                  @NonNull Optional<DcMsg> nextRecord,
                                   @NonNull Recipient               conversationRecipient,
                                            boolean                 isGroupThread)
   {
@@ -498,39 +494,17 @@ public class ConversationItem extends LinearLayout
     int bottomLeft  = defaultRadius;
     int bottomRight = defaultRadius;
 
-    if (isSingularMessage(current, previous, next, isGroupThread)) {
-      topLeft     = defaultRadius;
-      topRight    = defaultRadius;
-      bottomLeft  = defaultRadius;
-      bottomRight = defaultRadius;
-    } else if (isStartOfMessageCluster(current, previous, isGroupThread)) {
-      if (current.isOutgoing()) {
-        bottomRight = collapseRadius;
-      } else {
-        bottomLeft = collapseRadius;
-      }
-    } else if (isEndOfMessageCluster(current, next, isGroupThread)) {
-      if (current.isOutgoing()) {
-        topRight = collapseRadius;
-      } else {
-        topLeft = collapseRadius;
-      }
-    } else {
-      if (current.isOutgoing()) {
-        topRight    = collapseRadius;
-        bottomRight = collapseRadius;
-      } else {
-        topLeft    = collapseRadius;
-        bottomLeft = collapseRadius;
-      }
-    }
+    topLeft     = defaultRadius;
+    topRight    = defaultRadius;
+    bottomLeft  = defaultRadius;
+    bottomRight = defaultRadius;
 
     if (!TextUtils.isEmpty(current.getText())) {
       bottomLeft  = 0;
       bottomRight = 0;
     }
 
-    if (isStartOfMessageCluster(current, previous, isGroupThread) && !current.isOutgoing() && isGroupThread) {
+    if (!current.isOutgoing() && isGroupThread) {
       topLeft  = 0;
       topRight = 0;
     }
@@ -543,16 +517,8 @@ public class ConversationItem extends LinearLayout
     mediaThumbnailStub.get().setOutlineCorners(topLeft, topRight, bottomRight, bottomLeft);
   }
 
-  private void setSharedContactCorners(@NonNull DcMsg current, @NonNull Optional<DcMsg> previous, @NonNull Optional<DcMsg> next, boolean isGroupThread) {
-    if (isSingularMessage(current, previous, next, isGroupThread) || isEndOfMessageCluster(current, next, isGroupThread)) {
-      sharedContactStub.get().setSingularStyle();
-    } else {
-      if (current.isOutgoing()) {
-        sharedContactStub.get().setClusteredOutgoingStyle();
-      } else {
-        sharedContactStub.get().setClusteredIncomingStyle();
-      }
-    }
+  private void setSharedContactCorners(@NonNull DcMsg current, boolean isGroupThread) {
+    sharedContactStub.get().setSingularStyle();
   }
 
   private void setContactPhoto(@NonNull Recipient recipient) {
@@ -591,7 +557,7 @@ public class ConversationItem extends LinearLayout
     }
   }
 
-  private void setQuote(@NonNull DcMsg current, @NonNull Optional<DcMsg> previous, @NonNull Optional<DcMsg> next, boolean isGroupThread) {
+  private void setQuote(@NonNull DcMsg current, boolean isGroupThread) {
 //    if (current.isMms() && !current.isMmsNotification() && ((MediaMmsDcMsg)current).getQuote() != null) {
 //      Quote quote = ((MediaMmsDcMsg)current).getQuote();
 //      assert quote != null;
@@ -645,22 +611,16 @@ public class ConversationItem extends LinearLayout
     }
   }
 
-  private void setFooter(@NonNull DcMsg current, @NonNull Optional<DcMsg> next, @NonNull Locale locale, boolean isGroupThread) {
+  private void setFooter(@NonNull DcMsg current, @NonNull Locale locale, boolean isGroupThread) {
     ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
     footer.setVisibility(GONE);
     if (sharedContactStub.resolved()) sharedContactStub.get().getFooter().setVisibility(GONE);
     if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
 
-    /*boolean differentMinutes = next.isPresent() && !DateUtils.isSameBriefRelativeTimestamp(context, locale, next.get().getTimestamp(), current.getTimestamp());
-
-    if (current.getExpiresIn() > 0 || !current.isSecure() || current.isPending() ||
-        current.isFailed() || differentMinutes || isEndOfMessageCluster(current, next, isGroupThread))
-    {*/
-      ConversationItemFooter activeFooter = getActiveFooter(current);
-      activeFooter.setVisibility(VISIBLE);
-      activeFooter.setMessageRecord(current, locale);
-    //}
+    ConversationItemFooter activeFooter = getActiveFooter(current);
+    activeFooter.setVisibility(VISIBLE);
+    activeFooter.setMessageRecord(current, locale);
   }
 
   private ConversationItemFooter getActiveFooter(@NonNull DcMsg messageRecord) {
@@ -696,7 +656,7 @@ public class ConversationItem extends LinearLayout
     }
   }
 
-  private void setAuthor(@NonNull DcMsg current, @NonNull Optional<DcMsg> previous, @NonNull Optional<DcMsg> next, boolean isGroupThread) {
+  private void setAuthor(@NonNull DcMsg current, boolean isGroupThread) {
     if (isGroupThread && !current.isOutgoing()) {
 
       if (contactPhotoHolder != null) {
@@ -724,63 +684,16 @@ public class ConversationItem extends LinearLayout
     }
   }
 
-  private void setMessageShape(@NonNull DcMsg current, @NonNull Optional<DcMsg> previous, @NonNull Optional<DcMsg> next, boolean isGroupThread) {
+  private void setMessageShape(@NonNull DcMsg current, boolean isGroupThread) {
     int background;
-    if (isSingularMessage(current, previous, next, isGroupThread)) {
-      background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
-                                        : R.drawable.message_bubble_background_received_alone;
-    } else if (isStartOfMessageCluster(current, previous, isGroupThread)) {
-      background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_start
-                                        : R.drawable.message_bubble_background_received_start;
-    } else if (isEndOfMessageCluster(current, next, isGroupThread)) {
-      background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_end
-                                        : R.drawable.message_bubble_background_received_end;
-    } else {
-      background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_middle
-                                        : R.drawable.message_bubble_background_received_middle;
-    }
-
+    background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
+                                      : R.drawable.message_bubble_background_received_alone;
     bodyBubble.setBackgroundResource(background);
   }
 
-  private boolean isStartOfMessageCluster(@NonNull DcMsg current, @NonNull Optional<DcMsg> previous, boolean isGroupThread) {
-    return true;
-    /*if (isGroupThread) {
-      return !previous.isPresent() || previous.get().isInfo() || !DateUtils.isSameDay(current.getTimestamp(), previous.get().getTimestamp()) ||
-             current.getFromId() != previous.get().getFromId();
-    } else {
-      return !previous.isPresent() || previous.get().isInfo() || !DateUtils.isSameDay(current.getTimestamp(), previous.get().getTimestamp()) ||
-             current.isOutgoing() != previous.get().isOutgoing();
-    }*/
-  }
-
-  private boolean isEndOfMessageCluster(@NonNull DcMsg current, @NonNull Optional<DcMsg> next, boolean isGroupThread) {
-    return true;
-    /*if (isGroupThread) {
-      return !next.isPresent() || next.get().isInfo() || !DateUtils.isSameDay(current.getTimestamp(), next.get().getTimestamp()) ||
-             current.getFromId() != next.get().getFromId();
-    } else {
-      return !next.isPresent() || next.get().isInfo() || !DateUtils.isSameDay(current.getTimestamp(), next.get().getTimestamp()) ||
-             current.isOutgoing() != next.get().isOutgoing();
-    }*/
-  }
-
-  private boolean isSingularMessage(@NonNull DcMsg current, @NonNull Optional<DcMsg> previous, @NonNull Optional<DcMsg> next, boolean isGroupThread) {
-    return true;
-    //return isStartOfMessageCluster(current, previous, isGroupThread) && isEndOfMessageCluster(current, next, isGroupThread);
-  }
-
-  private void setMessageSpacing(@NonNull Context context, @NonNull DcMsg current, @NonNull Optional<DcMsg> previous, @NonNull Optional<DcMsg> next, boolean isGroupThread) {
+  private void setMessageSpacing(@NonNull Context context, @NonNull DcMsg current, boolean isGroupThread) {
     int spacingTop = readDimen(context, R.dimen.conversation_vertical_message_spacing_collapse);
     int spacingBottom = spacingTop;
-
-    /*if (isStartOfMessageCluster(current, previous, isGroupThread)) {
-      spacingTop = readDimen(context, R.dimen.conversation_vertical_message_spacing_default);
-    }
-
-    if (isEndOfMessageCluster(current, next, isGroupThread)) {
-      spacingBottom = readDimen(context, R.dimen.conversation_vertical_message_spacing_default);
-    }*/
 
     ViewUtil.setPaddingTop(this, spacingTop);
     ViewUtil.setPaddingBottom(this, spacingBottom);

@@ -20,8 +20,6 @@ import java.util.Set;
 
 public interface BindableConversationItem extends Unbindable {
   void bind(@NonNull DcMsg                   messageRecord,
-            @NonNull Optional<DcMsg>         previousMessageRecord,
-            @NonNull Optional<DcMsg>         nextMessageRecord,
             @NonNull DcChat                  dcChat,
             @NonNull GlideRequests           glideRequests,
             @NonNull Locale                  locale,

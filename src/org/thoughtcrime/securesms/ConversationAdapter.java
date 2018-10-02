@@ -191,11 +191,9 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
     ConversationAdapter.ViewHolder holder = (ConversationAdapter.ViewHolder)viewHolder;
-    //Optional<DcMsg> previous = position >= dcMsgList.length-1? Optional.absent() : Optional.of(getMsg(position+1));
-    //Optional<DcMsg> next = position <= 0? Optional.absent() : Optional.of(getMsg(position-1));
     boolean pulseHighlight = position == positionToPulseHighlight;
 
-    holder.getItem().bind(getMsg(position), null, null, dcChat, glideRequests, locale, batchSelected, recipient, pulseHighlight);
+    holder.getItem().bind(getMsg(position), dcChat, glideRequests, locale, batchSelected, recipient, pulseHighlight);
 
     if (pulseHighlight) {
       positionToPulseHighlight = -1;

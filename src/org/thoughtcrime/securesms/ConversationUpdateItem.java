@@ -73,8 +73,6 @@ public class ConversationUpdateItem extends LinearLayout
 
   @Override
   public void bind(@NonNull DcMsg                   messageRecord,
-                   @NonNull Optional<DcMsg>         previousMessageRecord,
-                   @NonNull Optional<DcMsg>         nextMessageRecord,
                    @NonNull DcChat                  dcChat,
                    @NonNull GlideRequests           glideRequests,
                    @NonNull Locale                  locale,
