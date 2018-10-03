@@ -364,8 +364,8 @@ public class ConversationItem extends LinearLayout
     return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord);
   }
 
-  private boolean hasDocument(DcMsg messageRecord) {
-    return  messageRecord.getType()==DcMsg.DC_MSG_FILE;
+  private boolean hasDocument(DcMsg dcMsg) {
+    return dcMsg.getType()==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
   }
 
   private boolean hasQuote(DcMsg messageRecord) {
