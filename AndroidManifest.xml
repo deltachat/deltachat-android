@@ -466,12 +466,19 @@
               android:authorities="{$applicationId}.provider.securesms.mms" />
 
     <provider android:name="android.support.v4.content.FileProvider"
-              android:authorities="{$applicationId}.securesms.fileprovider"
+              android:authorities="{$applicationId}.fileprovider"
               android:exported="false"
               android:grantUriPermissions="true">
 
         <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths" />
 
+    </provider>
+
+    <provider
+        android:name=".connect.AttachmentsContentProvider"
+        android:authorities="${applicationId}.attachments"
+        android:grantUriPermissions="true"
+        android:exported="false">
     </provider>
 
     <receiver android:name=".service.BootReceiver">

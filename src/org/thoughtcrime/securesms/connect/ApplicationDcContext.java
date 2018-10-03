@@ -16,11 +16,15 @@
  */
 package org.thoughtcrime.securesms.connect;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -30,8 +34,10 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcLot;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
@@ -52,6 +58,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
 
 public class ApplicationDcContext extends DcContext {
@@ -96,6 +103,52 @@ public class ApplicationDcContext extends DcContext {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     }
 
+    public static HashMap<String, Integer> sharedFiles = new HashMap<>();
+
+    public void openForViewOrShare(int msg_id, String cmd)
+    {
+        DcMsg msg = getMsg(msg_id);
+        String path = msg.getFile();
+        String mimeType = msg.getFilemime();
+        try {
+            File file = new File(path);
+            if( !file.exists() ) {
+                Toast.makeText(context, context.getString(R.string.ShareActivity_file_not_found, path), Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            Uri uri;
+            if (path.startsWith(getBlobdir())) {
+                uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
+                sharedFiles.put("/"+file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
+            } else {
+                if (Build.VERSION.SDK_INT >= 24) {
+                    uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file);
+                }
+                else {
+                    uri = Uri.fromFile(file);
+                }
+            }
+
+            if( cmd.equals(Intent.ACTION_VIEW) ) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(uri, mimeType);
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                context.startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType(mimeType);
+                intent.putExtra(Intent.EXTRA_STREAM, uri);
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                context.startActivity(Intent.createChooser(intent, context.getString(R.string.ShareActivity_share_with)));
+            }
+
+        }
+        catch (Exception e) {
+            Toast.makeText(context, R.string.ShareActivity_unable_to_open_media, Toast.LENGTH_LONG).show();
+        }
+    }
 
     /***********************************************************************************************
      * create objects compatible to the database model of Signal

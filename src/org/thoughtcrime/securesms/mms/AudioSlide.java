@@ -39,6 +39,7 @@ public class AudioSlide extends Slide {
 
   public AudioSlide(Context context, DcMsg dcMsg) {
     this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getBytes(), dcMsg.getType()==DcMsg.DC_MSG_VOICE);
+    dcMsgId = dcMsg.getId();
   }
 
   public AudioSlide(Context context, Uri uri, long dataSize, boolean voiceNote) {

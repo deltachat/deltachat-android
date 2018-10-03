@@ -35,6 +35,7 @@ import java.security.SecureRandom;
 
 public abstract class Slide {
 
+  protected int              dcMsgId;
   protected final Attachment attachment;
   protected final Context    context;
 
@@ -42,6 +43,10 @@ public abstract class Slide {
     this.context    = context;
     this.attachment = attachment;
 
+  }
+
+  public int getDcMsgId() {
+    return dcMsgId;
   }
 
   public String getContentType() {
