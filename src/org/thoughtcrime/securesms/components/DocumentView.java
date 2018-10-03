@@ -67,10 +67,6 @@ public class DocumentView extends FrameLayout {
     }
   }
 
-  public void setDownloadClickListener(@Nullable SlideClickListener listener) {
-    this.downloadListener = listener;
-  }
-
   public void setDocumentClickListener(@Nullable SlideClickListener listener) {
     this.viewListener = listener;
   }

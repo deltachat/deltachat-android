@@ -56,7 +56,6 @@ public class ThumbnailView extends FrameLayout {
   private final int[] measureDimens = new int[2];
 
   private SlideClickListener            thumbnailClickListener = null;
-  private SlideClickListener            downloadClickListener  = null;
   private Slide                         slide                  = null;
 
   private int radius;
@@ -282,10 +281,6 @@ public class ThumbnailView extends FrameLayout {
 
   public void setThumbnailClickListener(SlideClickListener listener) {
     this.thumbnailClickListener = listener;
-  }
-
-  public void setDownloadClickListener(SlideClickListener listener) {
-    this.downloadClickListener = listener;
   }
 
   public void clear(GlideRequests glideRequests) {

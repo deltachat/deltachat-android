@@ -108,10 +108,6 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     }
   }
 
-  public void setDownloadClickListener(@Nullable SlideClickListener listener) {
-    this.downloadListener = listener;
-  }
-
   @Override
   public void onStart() {
     if (this.pauseButton.getVisibility() != View.VISIBLE) {

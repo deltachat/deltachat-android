@@ -168,10 +168,6 @@ public class ConversationItemThumbnail extends FrameLayout {
     thumbnail.setThumbnailClickListener(listener);
   }
 
-  public void setDownloadClickListener(SlideClickListener listener) {
-    thumbnail.setDownloadClickListener(listener);
-  }
-
   public void clear(GlideRequests glideRequests) {
     thumbnail.clear(glideRequests);
   }

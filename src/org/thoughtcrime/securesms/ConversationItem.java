@@ -127,7 +127,6 @@ public class ConversationItem extends LinearLayout
   private int measureCalls;
 
   private final PassthroughClickListener        passthroughClickListener   = new PassthroughClickListener();
-  private final AttachmentDownloadClickListener downloadClickListener      = new AttachmentDownloadClickListener();
   private final SharedContactEventListener      sharedContactEventListener = new SharedContactEventListener();
   private final SharedContactClickListener      sharedContactClickListener = new SharedContactClickListener();
 
@@ -401,7 +400,6 @@ public class ConversationItem extends LinearLayout
 
       //noinspection ConstantConditions
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), showControls);
-      audioViewStub.get().setDownloadClickListener(downloadClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -417,7 +415,6 @@ public class ConversationItem extends LinearLayout
       //noinspection ConstantConditions
       documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord), showControls);
       documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
-      documentViewStub.get().setDownloadClickListener(downloadClickListener);
       documentViewStub.get().setOnLongClickListener(passthroughClickListener);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -438,7 +435,6 @@ public class ConversationItem extends LinearLayout
                                                 messageRecord.getWidth(100),
                                                 messageRecord.getHeight(100));
       mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
-      mediaThumbnailStub.get().setDownloadClickListener(downloadClickListener);
       mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
       mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
       mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
@@ -727,27 +723,6 @@ public class ConversationItem extends LinearLayout
 //        eventListener.onSharedContactDetailsClicked(((MmsDcMsg) messageRecord).getSharedContacts().get(0), sharedContactStub.get().getAvatarView());
 //      } else {
         passthroughClickListener.onClick(view);
-//      }
-    }
-  }
-
-  private class AttachmentDownloadClickListener implements SlideClickListener {
-    @Override
-    public void onClick(View v, final Slide slide) {
-//      if (messageRecord.isMmsNotification()) {
-//        ApplicationContext.getInstance(context)
-//                          .getJobManager()
-//                          .add(new MmsDownloadJob(context, messageRecord.getId(),
-//                                                  messageRecord.getThreadId(), false));
-//      } else {
-        DatabaseFactory.getAttachmentDatabase(context).setTransferState(messageRecord.getId(),
-                                                                        slide.asAttachment(),
-                                                                        AttachmentDatabase.TRANSFER_PROGRESS_STARTED);
-
-        ApplicationContext.getInstance(context)
-                          .getJobManager()
-                          .add(new AttachmentDownloadJob(context, messageRecord.getId(),
-                                                         ((DatabaseAttachment)slide.asAttachment()).getAttachmentId(), true));
 //      }
     }
   }
