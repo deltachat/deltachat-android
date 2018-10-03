@@ -226,7 +226,6 @@ public class AttachmentManager {
       @Override
       protected void onPreExecute() {
         thumbnail.clear(glideRequests);
-        thumbnail.showProgressSpinner();
         attachmentViewStub.get().setVisibility(View.VISIBLE);
       }
 

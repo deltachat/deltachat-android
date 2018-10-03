@@ -175,8 +175,4 @@ public class ConversationItemThumbnail extends FrameLayout {
   public void clear(GlideRequests glideRequests) {
     thumbnail.clear(glideRequests);
   }
-
-  public void showProgressSpinner() {
-    thumbnail.showProgressSpinner();
-  }
 }

@@ -55,7 +55,6 @@ public class ThumbnailView extends FrameLayout {
   private final int[] bounds        = new int[4];
   private final int[] measureDimens = new int[2];
 
-  private Optional<TransferControlView> transferControls       = Optional.absent();
   private SlideClickListener            thumbnailClickListener = null;
   private SlideClickListener            downloadClickListener  = null;
   private Slide                         slide                  = null;
@@ -196,20 +195,11 @@ public class ThumbnailView extends FrameLayout {
   @Override
   public void setFocusable(boolean focusable) {
     super.setFocusable(focusable);
-    if (transferControls.isPresent()) transferControls.get().setFocusable(focusable);
   }
 
   @Override
   public void setClickable(boolean clickable) {
     super.setClickable(clickable);
-    if (transferControls.isPresent()) transferControls.get().setClickable(clickable);
-  }
-
-  private TransferControlView getTransferControls() {
-    if (!transferControls.isPresent()) {
-      transferControls = Optional.of(ViewUtil.inflateStub(this, R.id.transfer_controls_stub));
-    }
-    return transferControls.get();
   }
 
   public void setBounds(int minWidth, int maxWidth, int minHeight, int maxHeight) {
@@ -233,13 +223,6 @@ public class ThumbnailView extends FrameLayout {
                                                     boolean showControls, boolean isPreview, int naturalWidth,
                                                     int naturalHeight)
   {
-    if (showControls) {
-      getTransferControls().setSlide(slide);
-      getTransferControls().setDownloadClickListener(new DownloadClickDispatcher());
-    } else if (transferControls.isPresent()) {
-      getTransferControls().setVisibility(View.GONE);
-    }
-
     if (slide.getThumbnailUri() != null && slide.hasPlayOverlay() &&
         (slide.getTransferState() == AttachmentDatabase.TRANSFER_PROGRESS_DONE || isPreview))
     {
@@ -288,7 +271,6 @@ public class ThumbnailView extends FrameLayout {
   public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {
     SettableFuture<Boolean> future = new SettableFuture<>();
 
-    if (transferControls.isPresent()) getTransferControls().setVisibility(View.GONE);
     glideRequests.load(new DecryptableUri(uri))
                  .diskCacheStrategy(DiskCacheStrategy.NONE)
                  .transforms(new CenterCrop(), new RoundedCorners(radius))
@@ -309,15 +291,7 @@ public class ThumbnailView extends FrameLayout {
   public void clear(GlideRequests glideRequests) {
     glideRequests.clear(image);
 
-    if (transferControls.isPresent()) {
-      getTransferControls().clear();
-    }
-
     slide = null;
-  }
-
-  public void showProgressSpinner() {
-    getTransferControls().showProgressSpinner();
   }
 
   private GlideRequest buildThumbnailGlideRequest(@NonNull GlideRequests glideRequests, @NonNull Slide slide) {
@@ -373,15 +347,6 @@ public class ThumbnailView extends FrameLayout {
         thumbnailClickListener.onClick(view, slide);
       } else if (parentClickListener != null) {
         parentClickListener.onClick(view);
-      }
-    }
-  }
-
-  private class DownloadClickDispatcher implements View.OnClickListener {
-    @Override
-    public void onClick(View view) {
-      if (downloadClickListener != null && slide != null) {
-        downloadClickListener.onClick(view, slide);
       }
     }
   }

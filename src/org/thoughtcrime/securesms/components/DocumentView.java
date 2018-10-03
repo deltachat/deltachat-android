@@ -4,11 +4,9 @@ package org.thoughtcrime.securesms.components;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.pnikosis.materialishprogress.ProgressWheel;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.events.PartProgressEvent;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.Util;
@@ -34,7 +26,6 @@ public class DocumentView extends FrameLayout {
 
   private final @NonNull AnimatingToggle controlToggle;
   private final @NonNull ImageView       downloadButton;
-  private final @NonNull ProgressWheel   downloadProgress;
   private final @NonNull View            container;
   private final @NonNull ViewGroup       iconContainer;
   private final @NonNull TextView        fileName;
@@ -61,7 +52,6 @@ public class DocumentView extends FrameLayout {
     this.iconContainer    = findViewById(R.id.icon_container);
     this.controlToggle    = findViewById(R.id.control_toggle);
     this.downloadButton   = findViewById(R.id.download);
-    this.downloadProgress = findViewById(R.id.download_progress);
     this.fileName         = findViewById(R.id.file_name);
     this.fileSize         = findViewById(R.id.file_size);
     this.document         = findViewById(R.id.document);
@@ -88,17 +78,7 @@ public class DocumentView extends FrameLayout {
   public void setDocument(final @NonNull DocumentSlide documentSlide,
                           final boolean showControls)
   {
-    if (showControls && documentSlide.isPendingDownload()) {
-      controlToggle.displayQuick(downloadButton);
-      downloadButton.setOnClickListener(new DownloadClickedListener(documentSlide));
-      if (downloadProgress.isSpinning()) downloadProgress.stopSpinning();
-    } else if (showControls && documentSlide.getTransferState() == AttachmentDatabase.TRANSFER_PROGRESS_STARTED) {
-      controlToggle.displayQuick(downloadProgress);
-      downloadProgress.spin();
-    } else {
-      controlToggle.displayQuick(iconContainer);
-      if (downloadProgress.isSpinning()) downloadProgress.stopSpinning();
-    }
+    controlToggle.displayQuick(iconContainer);
 
     this.documentSlide = documentSlide;
 
@@ -144,18 +124,6 @@ public class DocumentView extends FrameLayout {
     return "";
   }
 
-  @Subscribe(sticky = true, threadMode = ThreadMode.ASYNC)
-  public void onEventAsync(final PartProgressEvent event) {
-    if (documentSlide != null && event.attachment.equals(this.documentSlide.asAttachment())) {
-      Util.runOnMain(new Runnable() {
-        @Override
-        public void run() {
-          downloadProgress.setInstantProgress(((float) event.progress) / event.total);
-        }
-      });
-    }
-  }
-
   private class DownloadClickedListener implements View.OnClickListener {
     private final @NonNull DocumentSlide slide;
 
@@ -178,7 +146,7 @@ public class DocumentView extends FrameLayout {
 
     @Override
     public void onClick(View v) {
-      if (!slide.isPendingDownload() && !slide.isInProgress() && viewListener != null) {
+      if (viewListener != null) {
         viewListener.onClick(v, slide);
       }
     }
