@@ -429,7 +429,7 @@ public class ConversationItem extends LinearLayout
 
       //noinspection ConstantConditions
       mediaThumbnailStub.get().setImageResource(glideRequests,
-                                                new AudioSlide(context, messageRecord), // TODO: this is should a same as returned from getThumbnailSlide()
+                                                new DocumentSlide(context, messageRecord),
                                                 showControls,
                                                 false,
                                                 messageRecord.getWidth(100),
