@@ -94,9 +94,9 @@ public class DcContext {
     public native void         performSmtpIdle      ();
     public native void         interruptSmtpIdle    ();
     public native void         setConfig            (String key, String value);
-    public native void         setConfigInt         (String key, int value);
+    public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
     public native String       getConfig            (String key, String def);
-    public native int          getConfigInt         (String key, int def);
+    public int                 getConfigInt         (String key, int def) { return Integer.parseInt(getConfig(key, Integer.toString(def))); }
     public native String       getInfo              ();
     public native String       initiateKeyTransfer  ();
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);

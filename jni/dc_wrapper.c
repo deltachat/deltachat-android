@@ -587,14 +587,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_setConfig(JNIEnv *env, jobject 
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_setConfigInt(JNIEnv *env, jobject obj, jstring key, jint value)
-{
-	CHAR_REF(key);
-		dc_set_config_int(get_dc_context(env, obj), keyPtr, value);
-	CHAR_UNREF(key);
-}
-
-
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getConfig(JNIEnv *env, jobject obj, jstring key, jstring def/*may be NULL*/)
 {
 	CHAR_REF(key);
@@ -608,15 +600,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getConfig(JNIEnv *env, jobje
 	CHAR_UNREF(key);
 	CHAR_UNREF(def);
 	return ret; /* returns NULL only if key is unset and "def" is NULL */
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_getConfigInt(JNIEnv *env, jobject obj, jstring key, jint def)
-{
-	CHAR_REF(key);
-		jint ret = dc_get_config_int(get_dc_context(env, obj), keyPtr, def);
-	CHAR_UNREF(key);
-	return ret;
 }
 
 
