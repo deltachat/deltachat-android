@@ -1480,5 +1480,6 @@
     <string name="security_authentication_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
     <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="default_status_text">Sent with my Delta Chat Messenger: https://delta.chat</string>
+    <string name="default_status_hint">Status text</string>
 
 </resources>

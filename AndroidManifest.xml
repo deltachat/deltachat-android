@@ -458,15 +458,15 @@
     <provider android:name=".providers.PartProvider"
               android:grantUriPermissions="true"
               android:exported="false"
-              android:authorities="{$applicationId}.provider.securesms" />
+              android:authorities="${applicationId}.provider.securesms" />
 
     <provider android:name=".providers.MmsBodyProvider"
               android:grantUriPermissions="true"
               android:exported="false"
-              android:authorities="{$applicationId}.provider.securesms.mms" />
+              android:authorities="${applicationId}.provider.securesms.mms" />
 
     <provider android:name="android.support.v4.content.FileProvider"
-              android:authorities="{$applicationId}.fileprovider"
+              android:authorities="${applicationId}.fileprovider"
               android:exported="false"
               android:grantUriPermissions="true">
 

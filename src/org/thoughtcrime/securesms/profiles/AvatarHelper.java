@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 
 import com.annimon.stream.Stream;
 
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 
 import java.io.File;
@@ -42,11 +43,12 @@ public class AvatarHelper {
   }
 
   public static void delete(@NonNull Context context, @NonNull Address address) {
-    delete(getAvatarFile(context, address));
+    delete(context, getAvatarFile(context, address));
   }
 
-  public static void delete(@NonNull File avatar) {
+  public static void delete(@NonNull Context context, @NonNull File avatar) {
       avatar.delete();
+      DcHelper.set(context, DcHelper.CONFIG_SELF_AVATAR, null);
   }
 
   public static @NonNull File getAvatarFile(@NonNull Context context, @NonNull Address address) {
@@ -67,23 +69,25 @@ public class AvatarHelper {
       delete(context, address);
     } else {
         File avatar = getAvatarFile(context, address);
-        writeAvatarFile(avatar, data);
+        writeAvatarFile(context, avatar, data);
     }
   }
 
   public static void setAvatar(@NonNull Context context, @NonNull String address, @Nullable byte[] data) throws IOException {
       File avatar = getAvatarFile(context, address);
       if (data == null)  {
-          delete(avatar);
+          delete(context, avatar);
       } else {
-          writeAvatarFile(avatar, data);
+          writeAvatarFile(context, avatar, data);
       }
   }
 
-  private static void writeAvatarFile(@NonNull File avatar, @Nullable byte[] data) throws IOException {
+  private static void writeAvatarFile(@NonNull Context context, @NonNull File avatar, @Nullable byte[] data) throws IOException {
       FileOutputStream out = new FileOutputStream(avatar);
       out.write(data);
       out.close();
+      String path = avatar.getPath();
+      DcHelper.set(context, DcHelper.CONFIG_SELF_AVATAR, path);
   }
 
 }

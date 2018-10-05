@@ -16,6 +16,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.TextInputEditText;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -95,6 +96,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
   private EditText               name;
   private EmojiToggle            emojiToggle;
   private EmojiDrawer            emojiDrawer;
+  private TextInputEditText statusView;
   private View                   reveal;
 
   private Intent nextIntent;
@@ -118,6 +120,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
     initializeEmojiInput();
     initializeProfileName(getIntent().getBooleanExtra(EXCLUDE_SYSTEM, false));
     initializeProfileAvatar(getIntent().getBooleanExtra(EXCLUDE_SYSTEM, false));
+    initializeStatusText();
 
     ApplicationContext.getInstance(this).injectDependencies(this);
   }
@@ -229,6 +232,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
     this.container    = ViewUtil.findById(this, R.id.container);
     this.finishButton = ViewUtil.findById(this, R.id.finish_button);
     this.reveal       = ViewUtil.findById(this, R.id.reveal);
+    this.statusView = ViewUtil.findById(this, R.id.status_text);
     this.nextIntent   = getIntent().getParcelableExtra(NEXT_INTENT);
 
     this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
@@ -374,6 +378,14 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
     this.name.setOnClickListener(v -> container.showSoftkey(name));
   }
 
+  private void initializeStatusText() {
+    String status = DcHelper.get(this, DcHelper.CONFIG_SELF_STATUS);
+    if (status.isEmpty()) {
+      status = getString(R.string.default_status_text);
+    }
+    statusView.setText(status);
+  }
+
   private Intent createAvatarSelectionIntent(@Nullable File captureFile, boolean includeClear, boolean includeCamera) {
     List<Intent> extraIntents  = new LinkedList<>();
     Intent       galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -440,6 +452,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
         Context context    = CreateProfileActivity.this;
         byte[]  profileKey = ProfileKeyUtil.getProfileKey(CreateProfileActivity.this);
         DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
+        setStatusText();
         TextSecurePreferences.setProfileName(context, name);
 
         try {
@@ -468,6 +481,16 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
         }
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+  }
+
+  private void setStatusText() {
+    String newStatus = statusView.getText().toString().trim();
+    String defaultStatus = getString(R.string.default_status_text);
+    if (newStatus.equals(defaultStatus)) {
+      DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, null);
+    } else {
+      DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, newStatus);
+    }
   }
 
   private void handleFinishedLegacy() {
