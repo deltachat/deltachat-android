@@ -195,7 +195,10 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
   private class BackupListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
-      ScreenLockUtil.applyScreenLock(getActivity(), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
+      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
+      if (!result) {
+        performBackup();
+      }
       return true;
     }
   }
@@ -219,7 +222,10 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
   private class ManageKeysListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
-      ScreenLockUtil.applyScreenLock(getActivity(), REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS);
+      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS);
+      if (!result) {
+        exportKeys();
+      }
       return true;
     }
   }
