@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,14 +79,14 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
   private final Set<String>                   selectedContacts = new HashSet<>(); // TODO: maybe better use contact-id here
+  private final SparseIntArray                actionModeSelection = new SparseIntArray();
 
   @Override
   public int getItemCount() {
     return dcContactList.length;
   }
 
-  private
-  @NonNull DcContact getContact(int position) {
+  private @NonNull DcContact getContact(int position) {
     if(position<0 || position>=dcContactList.length) {
       return new DcContact(0);
     }
@@ -103,33 +104,93 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     return fromDb;
   }
 
+    public void resetActionModeSelection() {
+      actionModeSelection.clear();
+      notifyDataSetChanged();
+    }
+
+    public void selectAll() {
+        actionModeSelection.clear();
+        for(int index = 0; index < dcContactList.length; index++) {
+          int value = dcContactList[index];
+          if (value > 0) {
+            actionModeSelection.put(index, value);
+          }
+        }
+      notifyDataSetChanged();
+    }
+
+  public void removeActionModeSelection(int contactId) {
+    int indexOfContactId = actionModeSelection.indexOfValue(contactId);
+    actionModeSelection.removeAt(indexOfContactId);
+  }
+
+  private boolean isActionModeEnabled() {
+    return actionModeSelection.size() != 0;
+  }
+
   public abstract static class ViewHolder extends RecyclerView.ViewHolder {
 
     public ViewHolder(View itemView) {
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect, boolean enabled);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     public abstract void setChecked(boolean checked);
-  }
+    public abstract void setSelected(boolean enabled);
+    public abstract void setEnabled(boolean enabled);
+    }
 
-  public static class ContactViewHolder extends ViewHolder {
+  public class ContactViewHolder extends ViewHolder {
+
     ContactViewHolder(@NonNull  final View itemView,
-                      @Nullable final ItemClickListener clickListener)
-    {
+                      @Nullable final ItemClickListener clickListener) {
       super(itemView);
-      itemView.setOnClickListener(v -> {
-        if (clickListener != null) clickListener.onItemClick(getView());
+      itemView.setOnClickListener(view -> {
+        if (clickListener != null) {
+          if (isActionModeEnabled()) {
+            toggleSelection();
+            clickListener.onItemClick(getView(), true);
+          } else {
+            clickListener.onItemClick(getView(), false);
+          }
+        }
       });
+      itemView.setOnLongClickListener(view -> {
+          if (clickListener != null) {
+            int contactId = getContactId(getAdapterPosition());
+            if (contactId > 0) {
+              toggleSelection();
+              clickListener.onItemLongClick(getView());
+            }
+          }
+          return true;
+      });
+    }
+
+    private int getContactId(int adapterPosition) {
+      return ContactSelectionListAdapter.this.dcContactList[adapterPosition];
+    }
+
+    private void toggleSelection() {
+      int adapterPosition = getAdapterPosition();
+      int contactId = getContactId(adapterPosition);
+      boolean enabled = actionModeSelection.indexOfKey(adapterPosition) > -1;
+      if (enabled) {
+        ContactSelectionListAdapter.this.actionModeSelection.delete(adapterPosition);
+        } else {
+        ContactSelectionListAdapter.this.actionModeSelection.put(adapterPosition, contactId);
+      }
+      notifyDataSetChanged();
     }
 
     public ContactSelectionListItem getView() {
       return (ContactSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String addr, String label, int color, boolean multiSelect) {
-      getView().set(glideRequests, type, contact, name, addr, label, color, multiSelect);
+    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String addr, String label, int color, boolean multiSelect, boolean enabled) {
+      getView().set(glideRequests, type, contact, name, addr, label, color, multiSelect, enabled);
     }
 
     @Override
@@ -140,6 +201,16 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     @Override
     public void setChecked(boolean checked) {
       getView().setChecked(checked);
+    }
+
+    @Override
+    public void setSelected(boolean enabled) {
+      getView().setSelected(enabled);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+      getView().setEnabled(enabled);
     }
   }
 
@@ -153,7 +224,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     }
 
     @Override
-    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect) {
+    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect, boolean enabled) {
       this.label.setText(name);
     }
 
@@ -162,6 +233,15 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
 
     @Override
     public void setChecked(boolean checked) {}
+
+    @Override
+    public void setSelected(boolean enabled) {
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+
+    }
   }
 
   static class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -197,40 +277,46 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
 
-    int       id        = dcContactList[i];
-    int       color     = drawables.getColor(0, 0xff000000);
+    int id = dcContactList[i];
+    int color = drawables.getColor(0, 0xff000000);
     DcContact dcContact = null;
-    String    label     = null;
-    String    name;
-    String    addr = null;
-    boolean   itemMultiSelect = multiSelect;
+    String label = null;
+    String name;
+    String addr = null;
+    boolean itemMultiSelect = multiSelect;
 
-    if(id==DcContact.DC_CONTACT_ID_NEW_CONTACT) {
+    if (id == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
       name = context.getString(R.string.contact_selection_list__new_contact);
       itemMultiSelect = false; // the item creates a new contact in the list that will be selected instead
-      if(dcContext.mayBeValidAddr(query)) {
+      if (dcContext.mayBeValidAddr(query)) {
         addr = query == null ? "" : query;
         label = "\u2026";
-      }
-      else {
+      } else {
         addr = context.getString(R.string.contact_selection_list__type_email_above);
       }
-    }
-    else if(id==DcContact.DC_CONTACT_ID_NEW_GROUP) {
+    } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
       name = context.getString(R.string.contact_selection_list__new_group);
-    }
-    else if(id==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
+    } else if (id == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
       name = context.getString(R.string.contact_selection_list__new_verified_group);
-    }
-    else {
+    } else {
       dcContact = getContact(i);
-      name      = dcContact.getDisplayName();
-      addr      = dcContact.getAddr();
+      name = dcContact.getDisplayName();
+      addr = dcContact.getAddr();
     }
 
-    ViewHolder holder = (ViewHolder)viewHolder;
+    ViewHolder holder = (ViewHolder) viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, id, dcContact, name, addr, label, color, itemMultiSelect);
+    boolean enabled = true;
+    if (dcContact == null) {
+      holder.setEnabled(!isActionModeEnabled());
+      if (isActionModeEnabled()) {
+        enabled = false;
+      }
+    } else {
+      boolean selected = actionModeSelection.indexOfValue(id) > -1;
+      holder.setSelected(selected);
+    }
+    holder.bind(glideRequests, id, dcContact, name, addr, label, color, itemMultiSelect, enabled);
     holder.setChecked(selectedContacts.contains(addr));
   }
 
@@ -248,10 +334,15 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     return selectedContacts;
   }
 
-  public interface ItemClickListener {
-    void onItemClick(ContactSelectionListItem item);
+  public SparseIntArray getActionModeSelection() {
+    return actionModeSelection;
   }
 
+  public interface ItemClickListener {
+    void onItemClick(ContactSelectionListItem item, boolean handleActionMode);
+
+    void onItemLongClick(ContactSelectionListItem view);
+  }
 
   @Override
   public long getHeaderId(int position) {

@@ -17,7 +17,6 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
-import org.thoughtcrime.securesms.util.GroupUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -59,7 +58,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void set(@NonNull GlideRequests glideRequests, int specialId, DcContact contact, String name, String number, String label, int color, boolean multiSelect) {
+  public void set(@NonNull GlideRequests glideRequests, int specialId, DcContact contact, String name, String number, String label, int color, boolean multiSelect, boolean enabled) {
     this.glideRequests = glideRequests;
     this.specialId     = specialId;
     this.number        = number;
@@ -67,15 +66,20 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     if(specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
       this.recipient = null;
       this.contactPhotoImage.setAvatar(glideRequests, Recipient.from(getContext(), Address.UNKNOWN, true), false);
+      if (!enabled) {
+        this.setBackgroundColor(getResources().getColor(R.color.gray27));
+      } else {
+        resetBackground();
+      }
     }
     else {
+      resetBackground();
       this.recipient = DcHelper.getContext(getContext()).getRecipient(contact);
       this.recipient.addListener(this);
       if (this.recipient.getName() != null) {
         name = this.recipient.getName();
       }
     }
-
     this.nameView.setTextColor(color);
     this.numberView.setTextColor(color);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
@@ -84,6 +88,11 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
     else             this.checkBox.setVisibility(View.GONE);
+  }
+
+  private void resetBackground() {
+    this.setBackgroundColor(getResources().getColor(R.color.transparent));
+    this.setBackgroundResource(R.drawable.conversation_list_item_background);
   }
 
   public void setChecked(boolean selected) {

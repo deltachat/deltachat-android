@@ -30,7 +30,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.SparseIntArray;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -59,6 +64,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -93,6 +99,8 @@ public class ContactSelectionListFragment extends    Fragment
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
   private RecyclerViewFastScroller  fastScroller;
+  private ActionMode                actionMode;
+  private ActionMode.Callback       actionModeCallback;
 
   @Override
   public void onActivityCreated(Bundle icicle) {
@@ -148,11 +156,73 @@ public class ContactSelectionListFragment extends    Fragment
     showContactsDescription = view.findViewById(R.id.show_contacts_description);
     showContactsProgress    = view.findViewById(R.id.progress);
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    actionModeCallback = new ActionMode.Callback() {
+      @Override
+      public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.action_mode_delete, menu);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+          getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
+        }
+        return true;
+      }
+
+      @Override
+      public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+        return false;
+      }
+
+      @Override
+      public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+          case R.id.menu_select_all:
+            handleSelectAll();
+            return true;
+          case R.id.menu_delete_selected:
+            handleDeleteSelected();
+            return true;
+        }
+        return false;
+      }
+
+      @Override
+      public void onDestroyActionMode(ActionMode actionMode) {
+        ContactSelectionListFragment.this.actionMode = null;
+        getContactSelectionListAdapter().resetActionModeSelection();
+      }
+    };
 
     swipeRefresh.setEnabled(getActivity().getIntent().getBooleanExtra(REFRESHABLE, true) &&
                             Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN);
 
     return view;
+  }
+
+  private void handleSelectAll() {
+    getContactSelectionListAdapter().selectAll();
+  }
+
+  private void handleDeleteSelected() {
+    ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+    SparseIntArray actionModeSelection = adapter.getActionModeSelection();
+    boolean failed = false;
+    for (int index = 0; index < actionModeSelection.size(); index++) {
+      int contactId = actionModeSelection.valueAt(index);
+      boolean currentFailed = DcHelper.getContext(getContext()).deleteContact(contactId) == 0;
+      failed = currentFailed || failed;
+      if (!currentFailed) {
+        adapter.removeActionModeSelection(contactId);
+      }
+    }
+    if (failed) {
+      Toast.makeText(getActivity(), R.string.ContactSelectionListFragment_error_deleting_contacts_check_existing_conversations, Toast.LENGTH_LONG).show();
+    }
+    adapter.resetActionModeSelection();
+    actionMode.finish();
+  }
+
+  private ContactSelectionListAdapter getContactSelectionListAdapter() {
+    return (ContactSelectionListAdapter) recyclerView.getAdapter();
   }
 
   @Override
@@ -302,8 +372,14 @@ public class ContactSelectionListFragment extends    Fragment
 
   private class ListClickListener implements ContactSelectionListAdapter.ItemClickListener {
     @Override
-    public void onItemClick(ContactSelectionListItem contact)
+    public void onItemClick(ContactSelectionListItem contact, boolean handleActionMode)
     {
+      if (handleActionMode) {
+        if (actionMode != null) {
+          finishActionModeIfSelectionIsEmpty();
+        }
+        return;
+      }
       int    specialId = contact.getSpecialId();
       String addr      = contact.getNumber();
       if (!isMulti() || !selectedContacts.contains(addr))
@@ -337,9 +413,24 @@ public class ContactSelectionListFragment extends    Fragment
         }
       }
     }
+
+    @Override
+    public void onItemLongClick(ContactSelectionListItem view) {
+      if (actionMode == null) {
+        actionMode = Objects.requireNonNull(getActivity()).startActionMode(actionModeCallback);
+      } else {
+          finishActionModeIfSelectionIsEmpty();
+      }
+    }
   }
 
-  public void setOnContactSelectedListener(OnContactSelectedListener onContactSelectedListener) {
+    private void finishActionModeIfSelectionIsEmpty() {
+        if (getContactSelectionListAdapter().getActionModeSelection().size() == 0) {
+            actionMode.finish();
+        }
+    }
+
+    public void setOnContactSelectedListener(OnContactSelectedListener onContactSelectedListener) {
     this.onContactSelectedListener = onContactSelectedListener;
   }
 

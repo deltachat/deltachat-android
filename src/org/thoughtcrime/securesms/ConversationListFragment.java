@@ -410,7 +410,7 @@ public class ConversationListFragment extends Fragment
     if (archive) inflater.inflate(R.menu.conversation_list_batch_unarchive, menu);
     else         inflater.inflate(R.menu.conversation_list_batch_archive, menu);
 
-    inflater.inflate(R.menu.conversation_list_batch, menu);
+    inflater.inflate(R.menu.action_mode_delete, menu);
 
     mode.setTitle("1");
 
