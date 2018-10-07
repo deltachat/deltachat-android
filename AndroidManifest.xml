@@ -109,9 +109,6 @@
               android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|screenSize|fontScale"
               android:launchMode="singleTask"/>
 
-    <activity android:name=".CountrySelectionActivity"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
     <activity android:name=".InviteActivity"
               android:theme="@style/TextSecure.HighlightTheme"
               android:windowSoftInputMode="stateHidden"
