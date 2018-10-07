@@ -499,9 +499,9 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getMsgCPtr(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createMsgCPtr(JNIEnv *env, jobject obj)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createMsgCPtr(JNIEnv *env, jobject obj, jint viewtype)
 {
-	return (jlong)dc_msg_new(get_dc_context(env, obj));
+	return (jlong)dc_msg_new(get_dc_context(env, obj), viewtype);
 }
 
 
@@ -964,7 +964,7 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getTimestamp(JNIEnv *env, jobject 
 
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getType(JNIEnv *env, jobject obj)
 {
-	return dc_msg_get_type(get_dc_msg(env, obj));
+	return dc_msg_get_viewtype(get_dc_msg(env, obj));
 }
 
 
@@ -1102,12 +1102,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSetupCodeBegin(JNIEnv *env, j
 		jstring ret =  JSTRING_NEW(temp);
 	free(temp);
 	return ret;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcMsg_setType(JNIEnv *env, jobject obj, int type)
-{
-    dc_msg_set_type(get_dc_msg(env, obj), type);
 }
 
 

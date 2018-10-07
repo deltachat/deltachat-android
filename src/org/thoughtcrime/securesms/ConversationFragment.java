@@ -345,7 +345,7 @@ public class ConversationFragment extends Fragment
 
     StringBuilder result = new StringBuilder();
 
-    DcMsg prevMsg = new DcMsg(dcContext);
+    DcMsg prevMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     for (DcMsg msg : dcMsgsList) {
       if (result.length()>0) {
         result.append("\n\n");

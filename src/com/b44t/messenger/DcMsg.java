@@ -57,8 +57,8 @@ public class DcMsg {
     public final static int DC_MSG_ID_MARKER1 = 1;
     public final static int DC_MSG_ID_DAYMARKER = 9;
 
-    public DcMsg(DcContext context) {
-        msgCPtr = context.createMsgCPtr();
+    public DcMsg(DcContext context, int viewtype) {
+        msgCPtr = context.createMsgCPtr(viewtype);
     }
 
     public DcMsg(long msgCPtr) {
@@ -107,7 +107,6 @@ public class DcMsg {
     public native boolean isSetupMessage     ();
     public native String  getSetupCodeBegin  ();
     public native boolean isIncreation       ();
-    public native void    setType            (int type);
     public native void    setText            (String text);
     public native void    setFile            (String file, String filemime);
     public native void    setDimension       (int width, int height);

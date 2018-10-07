@@ -166,7 +166,7 @@ public class DcContext {
     // working with raw c-data
     private long        contextCPtr;     // CAVE: the name is referenced in the JNI
     private native long createContextCPtr(String osName);
-    public  native long createMsgCPtr    ();
+    public  native long createMsgCPtr    (int viewtype);
     private native long getChatlistCPtr  (int listflags, String query, int queryId);
     private native long getChatCPtr      (int chat_id);
     private native long getMsgCPtr       (int id);
