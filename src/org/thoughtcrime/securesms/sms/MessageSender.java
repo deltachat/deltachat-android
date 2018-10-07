@@ -17,7 +17,6 @@
 package org.thoughtcrime.securesms.sms;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.Pair;
@@ -34,11 +33,9 @@ import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
-import org.thoughtcrime.securesms.jobs.MmsSendJob;
 import org.thoughtcrime.securesms.jobs.PushGroupSendJob;
 import org.thoughtcrime.securesms.jobs.PushMediaSendJob;
 import org.thoughtcrime.securesms.jobs.PushTextSendJob;
-import org.thoughtcrime.securesms.jobs.SmsSendJob;
 import org.thoughtcrime.securesms.mms.MmsException;
 import org.thoughtcrime.securesms.mms.OutgoingMediaMessage;
 import org.thoughtcrime.securesms.push.AccountManagerFactory;
@@ -209,13 +206,13 @@ public class MessageSender {
   }
 
   private static void sendSms(Context context, Recipient recipient, long messageId) {
-    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
-    jobManager.add(new SmsSendJob(context, messageId, recipient.getName()));
+//    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
+//    jobManager.add(new SmsSendJob(context, messageId, recipient.getName()));
   }
 
   private static void sendMms(Context context, long messageId) {
-    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
-    jobManager.add(new MmsSendJob(context, messageId));
+//    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
+//    jobManager.add(new MmsSendJob(context, messageId));
   }
 
   private static boolean isPushTextSend(Context context, Recipient recipient, boolean keyExchange) {
