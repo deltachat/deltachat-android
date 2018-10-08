@@ -33,7 +33,6 @@ import android.os.Looper;
 import android.provider.Telephony;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -43,9 +42,6 @@ import android.util.Log;
 
 import com.google.android.mms.pdu_alt.CharacterSets;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
-import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.Phonenumber;
 
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.components.ComposeText;
@@ -253,27 +249,6 @@ public class Util {
     out.close();
 
     return total;
-  }
-
-  @RequiresPermission(anyOf = {
-      android.Manifest.permission.READ_PHONE_STATE,
-      android.Manifest.permission.READ_SMS,
-      android.Manifest.permission.READ_PHONE_NUMBERS
-  })
-  @SuppressLint("MissingPermission")
-  public static Optional<Phonenumber.PhoneNumber> getDeviceNumber(Context context) {
-    try {
-      final String           localNumber = ((TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE)).getLine1Number();
-      final Optional<String> countryIso  = getSimCountryIso(context);
-
-      if (TextUtils.isEmpty(localNumber)) return Optional.absent();
-      if (!countryIso.isPresent())        return Optional.absent();
-
-      return Optional.fromNullable(PhoneNumberUtil.getInstance().parse(localNumber, countryIso.get()));
-    } catch (NumberParseException e) {
-      Log.w(TAG, e);
-      return Optional.absent();
-    }
   }
 
   public static Optional<String> getSimCountryIso(Context context) {

@@ -27,7 +27,6 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -136,12 +135,9 @@ import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.sms.MessageSender;
-import org.thoughtcrime.securesms.sms.OutgoingEncryptedMessage;
 import org.thoughtcrime.securesms.sms.OutgoingEndSessionMessage;
 import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.CharacterCalculator.CharacterState;
-import org.thoughtcrime.securesms.util.CommunicationActions;
-import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ExpirationUtil;
@@ -166,7 +162,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
-
 import static org.whispersystems.signalservice.internal.push.SignalServiceProtos.GroupContext;
 
 /**
@@ -1428,35 +1423,27 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       outgoingMessage = outgoingMessageCandidate;
     }
 
-    Permissions.with(this)
-               .request(Manifest.permission.SEND_SMS, Manifest.permission.READ_SMS)
-               .ifNecessary(!isSecureText || forceSms)
-               .withPermanentDenialDialog(getString(R.string.ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms))
-               .onAllGranted(() -> {
-                 inputPanel.clearQuote();
-                 attachmentManager.clear(glideRequests, false);
-                 composeText.setText("");
-                 final long id = fragment.stageOutgoingMessage(outgoingMessage);
+    inputPanel.clearQuote();
+    attachmentManager.clear(glideRequests, false);
+    composeText.setText("");
+    final long id = fragment.stageOutgoingMessage(outgoingMessage);
 
-                 new AsyncTask<Void, Void, Long>() {
-                   @Override
-                   protected Long doInBackground(Void... param) {
-                     if (initiating) {
-                       DatabaseFactory.getRecipientDatabase(context).setProfileSharing(recipient, true);
-                     }
+    new AsyncTask<Void, Void, Long>() {
+      @Override
+      protected Long doInBackground(Void... param) {
+        if (initiating) {
+          DatabaseFactory.getRecipientDatabase(context).setProfileSharing(recipient, true);
+        }
 
-                     return MessageSender.send(context, outgoingMessage, threadId, forceSms, () -> fragment.releaseOutgoingMessage(id));
-                   }
+        return MessageSender.send(context, outgoingMessage, threadId, false, () -> fragment.releaseOutgoingMessage(id));
+      }
 
-                   @Override
-                   protected void onPostExecute(Long result) {
-                     sendComplete(result);
-                     future.set(null);
-                   }
-                 }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-               })
-               .onAnyDenied(() -> future.set(null))
-               .execute();
+      @Override
+      protected void onPostExecute(Long result) {
+        sendComplete(result);
+        future.set(null);
+      }
+    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     return future;
   }

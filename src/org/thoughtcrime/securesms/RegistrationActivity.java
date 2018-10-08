@@ -1,7 +1,5 @@
 package org.thoughtcrime.securesms;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -72,7 +70,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         setContentView(R.layout.registration_activity);
 
         initializeResources();
-        initializePermissions();
         DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
     }
 
@@ -196,17 +193,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             advancedGroup.setVisibility(View.VISIBLE);
             advancedIcon.setRotation(0);
         }
-    }
-
-    @SuppressLint("InlinedApi")
-    private void initializePermissions() {
-        Permissions.with(RegistrationActivity.this)
-                .request(Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                .ifNecessary()
-                .withRationaleDialog(getString(R.string.RegistrationActivity_dialog_permission_text),
-                        R.drawable.ic_contacts_white_48dp, R.drawable.ic_folder_white_48dp)
-                .execute();
     }
 
     private void onLogin() {
