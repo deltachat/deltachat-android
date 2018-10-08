@@ -66,14 +66,8 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     if(specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
       this.recipient = null;
       this.contactPhotoImage.setAvatar(glideRequests, Recipient.from(getContext(), Address.UNKNOWN, true), false);
-      if (!enabled) {
-        this.setBackgroundColor(getResources().getColor(R.color.gray27));
-      } else {
-        resetBackground();
-      }
     }
     else {
-      resetBackground();
       this.recipient = DcHelper.getContext(getContext()).getRecipient(contact);
       this.recipient.addListener(this);
       if (this.recipient.getName() != null) {
@@ -88,11 +82,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
     else             this.checkBox.setVisibility(View.GONE);
-  }
-
-  private void resetBackground() {
-    this.setBackgroundColor(getResources().getColor(R.color.transparent));
-    this.setBackgroundResource(R.drawable.conversation_list_item_background);
   }
 
   public void setChecked(boolean selected) {
