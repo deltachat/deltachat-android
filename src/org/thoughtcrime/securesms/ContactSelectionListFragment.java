@@ -52,6 +52,7 @@ import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -192,8 +193,9 @@ public class ContactSelectionListFragment extends    Fragment
       }
     };
 
-    swipeRefresh.setEnabled(getActivity().getIntent().getBooleanExtra(REFRESHABLE, true) &&
-                            Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN);
+    // There shouldn't be the need to pull to refresh the contacts
+    // swipeRefresh.setEnabled(getActivity().getIntent().getBooleanExtra(REFRESHABLE, true) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN);
+    swipeRefresh.setEnabled(false);
 
     return view;
   }
@@ -349,6 +351,11 @@ public class ContactSelectionListFragment extends    Fragment
       protected Boolean doInBackground(Void... voids) {
         try {
           DirectoryHelper.refreshDirectory(getContext(), false);
+          ContactAccessor contactAccessor = ContactAccessor.getInstance();
+          String allSystemContacts = contactAccessor.getAllSystemContactsAsString(getContext());
+          if (!allSystemContacts.isEmpty()) {
+            dcContext.addAddressBook(allSystemContacts);
+          }
           return true;
         } catch (IOException e) {
           Log.w(TAG, e);

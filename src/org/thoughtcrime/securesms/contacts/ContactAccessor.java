@@ -23,6 +23,7 @@ import android.database.MergeCursor;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.PhoneLookup;
@@ -56,6 +57,10 @@ import static org.thoughtcrime.securesms.database.GroupDatabase.GroupRecord;
 
 public class ContactAccessor {
 
+  private static final int CONTACT_CURSOR_NAME = 0;
+
+  private static final int CONTACT_CURSOR_MAIL = 1;
+
   public static final String PUSH_COLUMN = "push";
 
   private static final ContactAccessor instance = new ContactAccessor();
@@ -79,7 +84,25 @@ public class ContactAccessor {
   }
 
   public Cursor getAllSystemContacts(Context context) {
-    return context.getContentResolver().query(Phone.CONTENT_URI, new String[] {Phone.NUMBER, Phone.DISPLAY_NAME, Phone.LABEL, Phone.PHOTO_URI, Phone._ID, Phone.LOOKUP_KEY}, null, null, null);
+    return context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, new String[] {ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Email.ADDRESS}, null, null, null);
+  }
+
+  public String getAllSystemContactsAsString(Context context) {
+    Cursor systemContactsCursor = getAllSystemContacts(context);
+    StringBuilder result = new StringBuilder();
+    List<String> mailList = new ArrayList<>();
+    while (systemContactsCursor != null && systemContactsCursor.moveToNext()) {
+      String name = systemContactsCursor.getString(CONTACT_CURSOR_NAME);
+      String mail= systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
+      if (mail != null && !mail.isEmpty() && !mailList.contains(mail)) {
+          mailList.add(mail);
+          if (name.isEmpty()) {
+            name = mail;
+          }
+          result.append(name).append("\n").append(mail).append("\n");
+      }
+    }
+    return result.toString();
   }
 
   public boolean isSystemContact(Context context, String number) {
