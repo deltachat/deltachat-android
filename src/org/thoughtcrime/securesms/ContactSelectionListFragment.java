@@ -29,7 +29,6 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -38,15 +37,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
-import com.pnikosis.materialishprogress.ProgressWheel;
 
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -57,12 +53,9 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.DirectoryHelper;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -93,10 +86,6 @@ public class ContactSelectionListFragment extends    Fragment
   private Set<String>               selectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
   private SwipeRefreshLayout        swipeRefresh;
-  private View                      showContactsLayout;
-  private Button                    showContactsButton;
-  private TextView                  showContactsDescription;
-  private ProgressWheel             showContactsProgress;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
   private RecyclerViewFastScroller  fastScroller;
@@ -121,26 +110,11 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public void onStart() {
     super.onStart();
-
+    this.getLoaderManager().initLoader(0, null, this);
     Permissions.with(this)
                .request(Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS)
                .ifNecessary()
-               .onAllGranted(() -> {
-                 if (!TextSecurePreferences.hasSuccessfullyRetrievedDirectory(getActivity())) {
-                   handleContactPermissionGranted();
-                 } else {
-                   this.getLoaderManager().initLoader(0, null, this);
-                 }
-               })
-               .onAnyDenied(() -> {
-                 getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-                 if (getActivity().getIntent().getBooleanExtra(RECENTS, false)) {
-                   getLoaderManager().initLoader(0, null, ContactSelectionListFragment.this);
-                 } else {
-                   initializeNoContactsPermission();
-                 }
-               })
+               .onAllGranted(this::handleContactPermissionGranted)
                .execute();
   }
 
@@ -152,10 +126,6 @@ public class ContactSelectionListFragment extends    Fragment
     recyclerView            = ViewUtil.findById(view, R.id.recycler_view);
     swipeRefresh            = ViewUtil.findById(view, R.id.swipe_refresh);
     fastScroller            = ViewUtil.findById(view, R.id.fast_scroller);
-    showContactsLayout      = view.findViewById(R.id.show_contacts_container);
-    showContactsButton      = view.findViewById(R.id.show_contacts_button);
-    showContactsDescription = view.findViewById(R.id.show_contacts_description);
-    showContactsProgress    = view.findViewById(R.id.progress);
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     actionModeCallback = new ActionMode.Callback() {
       @Override
@@ -259,28 +229,6 @@ public class ContactSelectionListFragment extends    Fragment
     recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, true, true));
   }
 
-  private void initializeNoContactsPermission() {
-    swipeRefresh.setVisibility(View.GONE);
-
-    showContactsLayout.setVisibility(View.VISIBLE);
-    showContactsProgress.setVisibility(View.INVISIBLE);
-    showContactsDescription.setText(R.string.contact_selection_list_fragment__signal_needs_access_to_your_contacts_in_order_to_display_them);
-    showContactsButton.setVisibility(View.VISIBLE);
-
-    showContactsButton.setOnClickListener(v -> {
-      Permissions.with(this)
-                 .request(Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS)
-                 .ifNecessary()
-                 .withPermanentDenialDialog(getString(R.string.ContactSelectionListFragment_signal_requires_the_contacts_permission_in_order_to_display_your_contacts))
-                 .onSomeGranted(permissions -> {
-                   if (permissions.contains(Manifest.permission.WRITE_CONTACTS)) {
-                     handleContactPermissionGranted();
-                   }
-                 })
-                 .execute();
-    });
-  }
-
   public void setQueryFilter(String filter) {
     this.cursorFilter = filter;
     this.getLoaderManager().restartLoader(0, null, this);
@@ -315,9 +263,6 @@ public class ContactSelectionListFragment extends    Fragment
 
   @Override
   public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
-    swipeRefresh.setVisibility(View.VISIBLE);
-    showContactsLayout.setVisibility(View.GONE);
-
     ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(data);
     emptyText.setText(R.string.contact_selection_group_activity__no_contacts);
     boolean useFastScroller = (recyclerView.getAdapter().getItemCount() > 20);
@@ -336,45 +281,29 @@ public class ContactSelectionListFragment extends    Fragment
 
   @SuppressLint("StaticFieldLeak")
   private void handleContactPermissionGranted() {
-    new AsyncTask<Void, Void, Boolean>() {
-      @Override
-      protected void onPreExecute() {
-        swipeRefresh.setVisibility(View.GONE);
-        showContactsLayout.setVisibility(View.VISIBLE);
-        showContactsButton.setVisibility(View.INVISIBLE);
-        showContactsDescription.setText(R.string.ConversationListFragment_loading);
-        showContactsProgress.setVisibility(View.VISIBLE);
-        showContactsProgress.spin();
-      }
+    new AsyncTask<Void, Void, Void>() {
 
       @Override
-      protected Boolean doInBackground(Void... voids) {
-        try {
-          DirectoryHelper.refreshDirectory(getContext(), false);
-          ContactAccessor contactAccessor = ContactAccessor.getInstance();
-          String allSystemContacts = contactAccessor.getAllSystemContactsAsString(getContext());
-          if (!allSystemContacts.isEmpty()) {
-            dcContext.addAddressBook(allSystemContacts);
-          }
-          return true;
-        } catch (IOException e) {
-          Log.w(TAG, e);
-        }
-        return false;
+      protected Void doInBackground(Void... voids) {
+        loadSystemContacts();
+        return null;
       }
 
-      @Override
-      protected void onPostExecute(Boolean result) {
-        if (result) {
-          showContactsLayout.setVisibility(View.GONE);
-          swipeRefresh.setVisibility(View.VISIBLE);
-          reset();
-        } else {
-          Toast.makeText(getContext(), R.string.ContactSelectionListFragment_error_retrieving_contacts_check_your_network_connection, Toast.LENGTH_LONG).show();
-          initializeNoContactsPermission();
-        }
-      }
     }.execute();
+  }
+
+  private void loadSystemContacts() {
+    Thread thread = new Thread() {
+      @Override
+      public void run() {
+        ContactAccessor contactAccessor = ContactAccessor.getInstance();
+        String allSystemContacts = contactAccessor.getAllSystemContactsAsString(getContext());
+        if (!allSystemContacts.isEmpty()) {
+          dcContext.addAddressBook(allSystemContacts);
+        }
+      }
+    };
+    thread.start();
   }
 
   private class ListClickListener implements ContactSelectionListAdapter.ItemClickListener {
