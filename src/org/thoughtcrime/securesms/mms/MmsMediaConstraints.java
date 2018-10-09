@@ -18,24 +18,24 @@ class MmsMediaConstraints extends MediaConstraints {
 
   @Override
   public int getImageMaxWidth(Context context) {
-    MmsConfig mmsConfig = MmsConfigManager.getMmsConfig(context, subscriptionId);
-
-    if (mmsConfig != null) {
-      MmsConfig.Overridden overridden = new MmsConfig.Overridden(mmsConfig, new Bundle());
-      return overridden.getMaxImageWidth();
-    }
+//    MmsConfig mmsConfig = MmsConfigManager.getMmsConfig(context, subscriptionId);
+//
+//    if (mmsConfig != null) {
+//      MmsConfig.Overridden overridden = new MmsConfig.Overridden(mmsConfig, new Bundle());
+//      return overridden.getMaxImageWidth();
+//    }
 
     return DEFAULT_MAX_IMAGE_DIMEN;
   }
 
   @Override
   public int getImageMaxHeight(Context context) {
-    MmsConfig mmsConfig = MmsConfigManager.getMmsConfig(context, subscriptionId);
-
-    if (mmsConfig != null) {
-      MmsConfig.Overridden overridden = new MmsConfig.Overridden(mmsConfig, new Bundle());
-      return overridden.getMaxImageHeight();
-    }
+//    MmsConfig mmsConfig = MmsConfigManager.getMmsConfig(context, subscriptionId);
+//
+//    if (mmsConfig != null) {
+//      MmsConfig.Overridden overridden = new MmsConfig.Overridden(mmsConfig, new Bundle());
+//      return overridden.getMaxImageHeight();
+//    }
 
     return DEFAULT_MAX_IMAGE_DIMEN;
   }
@@ -66,12 +66,12 @@ class MmsMediaConstraints extends MediaConstraints {
   }
 
   private int getMaxMessageSize(Context context) {
-    MmsConfig mmsConfig = MmsConfigManager.getMmsConfig(context, subscriptionId);
-
-    if (mmsConfig != null) {
-      MmsConfig.Overridden overridden = new MmsConfig.Overridden(mmsConfig, new Bundle());
-      return overridden.getMaxMessageSize();
-    }
+//    MmsConfig mmsConfig = MmsConfigManager.getMmsConfig(context, subscriptionId);
+//
+//    if (mmsConfig != null) {
+//      MmsConfig.Overridden overridden = new MmsConfig.Overridden(mmsConfig, new Bundle());
+//      return overridden.getMaxMessageSize();
+//    }
 
     return DEFAULT_MAX_MESSAGE_SIZE;
   }
