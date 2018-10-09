@@ -182,9 +182,6 @@ public class ContactSelectionListFragment extends    Fragment
       int contactId = actionModeSelection.valueAt(index);
       boolean currentFailed = DcHelper.getContext(getContext()).deleteContact(contactId) == 0;
       failed = currentFailed || failed;
-      if (!currentFailed) {
-        adapter.removeActionModeSelection(contactId);
-      }
     }
     if (failed) {
       Toast.makeText(getActivity(), R.string.ContactSelectionListFragment_error_deleting_contacts_check_existing_conversations, Toast.LENGTH_LONG).show();
