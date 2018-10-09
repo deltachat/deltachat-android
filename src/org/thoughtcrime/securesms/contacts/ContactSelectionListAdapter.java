@@ -120,11 +120,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       notifyDataSetChanged();
     }
 
-  public void removeActionModeSelection(int contactId) {
-    int indexOfContactId = actionModeSelection.indexOfValue(contactId);
-    actionModeSelection.removeAt(indexOfContactId);
-  }
-
   private boolean isActionModeEnabled() {
     return actionModeSelection.size() != 0;
   }
@@ -308,6 +303,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     holder.unbind(glideRequests);
     boolean enabled = true;
     if (dcContact == null) {
+      holder.setSelected(false);
       holder.setEnabled(!isActionModeEnabled());
       if (isActionModeEnabled()) {
         enabled = false;
