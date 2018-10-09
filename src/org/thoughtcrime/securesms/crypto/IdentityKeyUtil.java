@@ -22,7 +22,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 
-import org.thoughtcrime.securesms.backup.BackupProtos;
 import org.thoughtcrime.securesms.util.Base64;
 import org.whispersystems.libsignal.IdentityKey;
 import org.whispersystems.libsignal.IdentityKeyPair;
@@ -109,23 +108,6 @@ public class IdentityKeyUtil {
         generateIdentityKeys(context);
       }
     }
-  }
-
-  public static List<BackupProtos.SharedPreference> getBackupRecord(@NonNull Context context) {
-    SharedPreferences preferences = context.getSharedPreferences(MasterSecretUtil.PREFERENCES_NAME, 0);
-
-    return new LinkedList<BackupProtos.SharedPreference>() {{
-      add(BackupProtos.SharedPreference.newBuilder()
-                                       .setFile(MasterSecretUtil.PREFERENCES_NAME)
-                                       .setKey(IDENTITY_PUBLIC_KEY_PREF)
-                                       .setValue(preferences.getString(IDENTITY_PUBLIC_KEY_PREF, null))
-                                       .build());
-      add(BackupProtos.SharedPreference.newBuilder()
-                                       .setFile(MasterSecretUtil.PREFERENCES_NAME)
-                                       .setKey(IDENTITY_PRIVATE_KEY_PREF)
-                                       .setValue(preferences.getString(IDENTITY_PRIVATE_KEY_PREF, null))
-                                       .build());
-    }};
   }
 
   private static boolean hasLegacyIdentityKeys(Context context) {
