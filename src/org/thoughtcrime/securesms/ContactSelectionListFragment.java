@@ -182,7 +182,7 @@ public class ContactSelectionListFragment extends    Fragment
       boolean failed = false;
       for (int index = 0; index < actionModeSelection.size(); index++) {
         int contactId = actionModeSelection.valueAt(index);
-        boolean currentFailed = dcContext.deleteContact(contactId);
+        boolean currentFailed = !dcContext.deleteContact(contactId);
         failed = currentFailed || failed;
       }
       if (failed) {
