@@ -112,7 +112,7 @@ public class DcContext {
     public native int          createContact        (String name, String addr);
     public native void         blockContact         (int id, int block);
     public native String       getContactEncrInfo   (int contact_id);
-    public native int          deleteContact        (int id);
+    public native boolean      deleteContact        (int id);
     public native int          addAddressBook       (String adrbook);
     public @NonNull DcChatlist getChatlist          (int listflags, String query, int queryId) { return new DcChatlist(getChatlistCPtr(listflags, query, queryId)); }
     public @NonNull DcChat     getChat              (int chat_id) { return new DcChat(getChatCPtr(chat_id)); }

@@ -345,9 +345,9 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_blockContact(JNIEnv *env, jobje
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_deleteContact(JNIEnv *env, jobject obj, jint contact_id)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_deleteContact(JNIEnv *env, jobject obj, jint contact_id)
 {
-	return (jint)dc_delete_contact(get_dc_context(env, obj), contact_id);
+	return (jboolean)dc_delete_contact(get_dc_context(env, obj), contact_id);
 }
 
 

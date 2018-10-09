@@ -54,6 +54,7 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.LinkedList;
@@ -176,16 +177,20 @@ public class ContactSelectionListFragment extends    Fragment
 
   private void handleDeleteSelected() {
     ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
-    SparseIntArray actionModeSelection = adapter.getActionModeSelection();
-    boolean failed = false;
-    for (int index = 0; index < actionModeSelection.size(); index++) {
-      int contactId = actionModeSelection.valueAt(index);
-      boolean currentFailed = DcHelper.getContext(getContext()).deleteContact(contactId) == 0;
-      failed = currentFailed || failed;
-    }
-    if (failed) {
-      Toast.makeText(getActivity(), R.string.ContactSelectionListFragment_error_deleting_contacts_check_existing_conversations, Toast.LENGTH_LONG).show();
-    }
+    final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
+    new Thread(() -> {
+      boolean failed = false;
+      for (int index = 0; index < actionModeSelection.size(); index++) {
+        int contactId = actionModeSelection.valueAt(index);
+        boolean currentFailed = dcContext.deleteContact(contactId);
+        failed = currentFailed || failed;
+      }
+      if (failed) {
+        Util.runOnMain(()-> {
+          Toast.makeText(getActivity(), R.string.ContactSelectionListFragment_error_deleting_contacts_check_existing_conversations, Toast.LENGTH_LONG).show();
+        });
+      }
+    }).start();
     adapter.resetActionModeSelection();
     actionMode.finish();
   }
