@@ -53,6 +53,7 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -161,6 +162,10 @@ public class ContactSelectionListFragment extends    Fragment
       public void onDestroyActionMode(ActionMode actionMode) {
         ContactSelectionListFragment.this.actionMode = null;
         getContactSelectionListAdapter().resetActionModeSelection();
+        ContactSelectionActivity activity = (ContactSelectionActivity) getActivity();
+        if (activity != null) {
+          activity.getToolbar().setBackgroundColor(getResources().getColor(R.color.textsecure_primary));
+        }
       }
     };
 
@@ -176,23 +181,25 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   private void handleDeleteSelected() {
-    ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
-    final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
-    new Thread(() -> {
-      boolean failed = false;
-      for (int index = 0; index < actionModeSelection.size(); index++) {
-        int contactId = actionModeSelection.valueAt(index);
-        boolean currentFailed = !dcContext.deleteContact(contactId);
-        failed = currentFailed || failed;
-      }
-      if (failed) {
-        Util.runOnMain(()-> {
-          Toast.makeText(getActivity(), R.string.ContactSelectionListFragment_error_deleting_contacts_check_existing_conversations, Toast.LENGTH_LONG).show();
-        });
-      }
-    }).start();
-    adapter.resetActionModeSelection();
-    actionMode.finish();
+    Dialogs.showResponseDialog(getActivity(), getString(R.string.ContactSelectionListFragment_contact_delete_confirmation_title), getString(R.string.ContactSelectionListFragment_contact_delete_confirmation_message), (dialogInterface, i) -> {
+      ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+      final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
+      new Thread(() -> {
+        boolean failed = false;
+        for (int index = 0; index < actionModeSelection.size(); index++) {
+          int contactId = actionModeSelection.valueAt(index);
+          boolean currentFailed = !dcContext.deleteContact(contactId);
+          failed = currentFailed || failed;
+        }
+        if (failed) {
+          Util.runOnMain(()-> {
+            Toast.makeText(getActivity(), R.string.ContactSelectionListFragment_error_deleting_contacts_check_existing_conversations, Toast.LENGTH_LONG).show();
+          });
+        }
+      }).start();
+      adapter.resetActionModeSelection();
+      actionMode.finish();
+    });
   }
 
   private ContactSelectionListAdapter getContactSelectionListAdapter() {
