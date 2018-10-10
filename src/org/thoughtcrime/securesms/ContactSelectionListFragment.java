@@ -19,6 +19,8 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,10 +29,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.view.ActionMode;
 import android.util.SparseIntArray;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -162,9 +165,11 @@ public class ContactSelectionListFragment extends    Fragment
       public void onDestroyActionMode(ActionMode actionMode) {
         ContactSelectionListFragment.this.actionMode = null;
         getContactSelectionListAdapter().resetActionModeSelection();
-        ContactSelectionActivity activity = (ContactSelectionActivity) getActivity();
-        if (activity != null) {
-          activity.getToolbar().setBackgroundColor(getResources().getColor(R.color.textsecure_primary));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+          TypedArray color = getActivity().getTheme().obtainStyledAttributes(new int[] {android.R.attr.statusBarColor});
+          getActivity().getWindow().setStatusBarColor(color.getColor(0, Color.BLACK));
+          color.recycle();
         }
       }
     };
@@ -362,7 +367,7 @@ public class ContactSelectionListFragment extends    Fragment
     @Override
     public void onItemLongClick(ContactSelectionListItem view) {
       if (actionMode == null) {
-        actionMode = Objects.requireNonNull(getActivity()).startActionMode(actionModeCallback);
+        actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
       } else {
           finishActionModeIfSelectionIsEmpty();
       }
