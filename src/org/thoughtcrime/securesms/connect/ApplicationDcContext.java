@@ -16,7 +16,6 @@
  */
 package org.thoughtcrime.securesms.connect;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -29,7 +28,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -40,16 +38,11 @@ import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.GroupDatabase;
-import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientProvider;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
-import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -189,10 +182,11 @@ public class ApplicationDcContext extends DcContext {
         int                status               = 0;
         long               expiresIn            = 0;
         long               lastSeen             = 0;
+        boolean            verified             = chat.isVerified();
 
         return new ThreadRecord(context, body, null, recipient, date, count,
                 unreadCount, chatId, 0, status, type,
-                distributionType, archived, expiresIn, lastSeen, 0);
+                distributionType, archived, expiresIn, lastSeen, 0, verified);
     }
 
 

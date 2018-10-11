@@ -39,59 +39,49 @@
             tools:src="@drawable/ic_contact_picture"
             android:contentDescription="@string/conversation_list_item_view__contact_photo_image"/>
 
-    <RelativeLayout android:id="@+id/content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/contact_photo_image"
-                    android:layout_toEndOf="@id/contact_photo_image"
-                    android:layout_centerVertical="true">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/contact_photo_image"
+        android:layout_toRightOf="@id/contact_photo_image">
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textSize="18dp"
-                android:transitionName="recipient_name"
-                android:drawablePadding="5dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                style="@style/TextSecure.TitleTextStyle"
-                tools:ignore="UnusedAttribute"/>
+            android:id="@+id/title"
+            style="@style/TextSecure.TitleTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="18dp"
+            android:transitionName="recipient_name" />
 
-        <ImageView android:id="@+id/verified_indicator"
-                   android:src="@drawable/ic_check_circle_white_18dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginRight="3dp"
-                   android:layout_marginEnd="3dp"
-                   android:layout_gravity="bottom"
-                   android:layout_alignParentLeft="true"
-                   android:layout_alignParentStart="true"
-                   android:layout_below="@id/title"
-                   android:alpha="0.7"
-                   android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/verified_indicator"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_verified"
+            android:visibility="visible"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintStart_toEndOf="@id/title"
+            app:layout_constraintTop_toTopOf="@id/title"
+            android:layout_marginStart="5dp" />
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-                android:id="@+id/subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:layout_gravity="center_vertical|start"
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@id/verified_indicator"
-                android:layout_toEndOf="@id/verified_indicator"
-                android:layout_below="@id/title"
-                android:textDirection="ltr"
-                android:textSize="13dp"
-                tools:text="(123) 123-1234"
-                style="@style/TextSecure.SubtitleTextStyle"/>
+            android:id="@+id/subtitle"
+            style="@style/TextSecure.SubtitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textDirection="ltr"
+            android:textSize="13dp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="(123) 123-1234" />
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </org.thoughtcrime.securesms.ConversationTitleView>

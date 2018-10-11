@@ -48,12 +48,13 @@ public class ThreadRecord extends DisplayRecord {
   private           final boolean archived;
   private           final long    expiresIn;
   private           final long    lastSeen;
+  private           final boolean verified;
 
   public ThreadRecord(@NonNull Context context, @NonNull String body, @Nullable Uri snippetUri,
                       @NonNull Recipient recipient, long date, long count, int unreadCount,
                       long threadId, int deliveryReceiptCount, int status, long snippetType,
                       int distributionType, boolean archived, long expiresIn, long lastSeen,
-                      int readReceiptCount)
+                      int readReceiptCount, boolean verified)
   {
     super(context, body, recipient, date, date, threadId, status, deliveryReceiptCount, snippetType, readReceiptCount);
     this.context          = context.getApplicationContext();
@@ -64,6 +65,7 @@ public class ThreadRecord extends DisplayRecord {
     this.archived         = archived;
     this.expiresIn        = expiresIn;
     this.lastSeen         = lastSeen;
+    this.verified         = verified;
   }
 
   public @Nullable Uri getSnippetUri() {
@@ -157,5 +159,9 @@ public class ThreadRecord extends DisplayRecord {
 
   public long getLastSeen() {
     return lastSeen;
+  }
+
+  public boolean isVerified() {
+    return verified;
   }
 }

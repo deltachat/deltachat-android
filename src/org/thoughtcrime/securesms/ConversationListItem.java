@@ -83,6 +83,7 @@ public class ConversationListItem extends RelativeLayout
   private DeliveryStatusView deliveryStatusIndicator;
   private AlertView          alertView;
   private ImageView          unreadIndicator;
+  private ImageView          verifiedIndicator;
   private long               lastSeen;
 
   private int             unreadCount;
@@ -103,7 +104,7 @@ public class ConversationListItem extends RelativeLayout
   protected void onFinishInflate() {
     super.onFinishInflate();
     this.subjectView             = findViewById(R.id.subject);
-    this.fromView                = findViewById(R.id.from);
+    this.fromView                = findViewById(R.id.from_text);
     this.dateView                = findViewById(R.id.date);
     this.deliveryStatusIndicator = findViewById(R.id.delivery_status);
     this.alertView               = findViewById(R.id.indicators_parent);
@@ -111,6 +112,7 @@ public class ConversationListItem extends RelativeLayout
     this.thumbnailView           = findViewById(R.id.thumbnail);
     this.archivedView            = findViewById(R.id.archived);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
+    this.verifiedIndicator       = findViewById(R.id.verified_indicator);
     thumbnailView.setClickable(false);
 
     ViewUtil.setTextViewGravityStart(this.fromView, getContext());
@@ -177,6 +179,7 @@ public class ConversationListItem extends RelativeLayout
     setRippleColor(recipient);
     setUnreadIndicator(thread);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, true);
+    verifiedIndicator.setVisibility(thread.isVerified() ? VISIBLE : GONE);
   }
 
   public void bind(@NonNull  Recipient     contact,
