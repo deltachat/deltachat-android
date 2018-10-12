@@ -66,6 +66,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   private static final String PREFERENCE_CATEGORY_CHATS          = "preference_category_chats";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
 
+  public static final int REQUEST_CODE_SET_BACKGROUND            = 11;
+
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
