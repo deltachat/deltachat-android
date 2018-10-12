@@ -34,6 +34,7 @@ public class TextSecurePreferences {
   public  static final String DISABLE_PASSPHRASE_PREF          = "pref_disable_passphrase";
   public  static final String THEME_PREF                       = "pref_theme";
   public  static final String LANGUAGE_PREF                    = "pref_language";
+  public  static final String BACKGROUND_PREF                  = "pref_chat_background";
   private static final String MMSC_CUSTOM_HOST_PREF            = "pref_apn_mmsc_custom_host";
   public  static final String MMSC_HOST_PREF                   = "pref_apn_mmsc_host";
   private static final String MMSC_CUSTOM_PROXY_PREF           = "pref_apn_mms_custom_proxy";
@@ -758,6 +759,14 @@ public class TextSecurePreferences {
 
   public static void setNotificationLedPatternCustom(Context context, String pattern) {
     setStringPreference(context, LED_BLINK_PREF_CUSTOM, pattern);
+  }
+
+  public static String getBackgroundImagePath(Context context) {
+    return getStringPreference(context, BACKGROUND_PREF, "");
+  }
+
+  public static void setBackgroundImagePath(Context context, String path) {
+    setStringPreference(context, BACKGROUND_PREF, path);
   }
 
   public static boolean isSystemEmojiPreferred(Context context) {

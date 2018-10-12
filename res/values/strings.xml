@@ -41,6 +41,8 @@
     <string name="ApplicationPreferencesActivity_sms_mms_summary">SMS %1$s, MMS %2$s</string>
     <string name="ApplicationPreferencesActivity_privacy_summary">Screen lock %1$s, Read receipts %2$s</string>
     <string name="ApplicationPreferencesActivity_appearance_summary">Theme %1$s, Language %2$s</string>
+    <!-- AppearancePreferenceFragment -->
+    <string name="AppearancePreferencesFragment_background_save_error">Background image could not be saved</string>
 
     <!-- AppProtectionPreferenceFragment -->
     <plurals name="AppProtectionPreferenceFragment_minutes">
@@ -1484,5 +1486,6 @@
     <string name="default_status_text">Sent with my Delta Chat Messenger: https://delta.chat</string>
     <string name="default_status_hint">Status text</string>
     <string name="registration_activity__login">Login</string>
+    <string name="preferences__chat_background">Chat-Background</string>
 
 </resources>
