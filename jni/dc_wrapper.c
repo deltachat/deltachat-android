@@ -590,15 +590,13 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_setConfig(JNIEnv *env, jobject 
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getConfig(JNIEnv *env, jobject obj, jstring key, jstring def/*may be NULL*/)
 {
 	CHAR_REF(key);
-	CHAR_REF(def);
-		char* temp = dc_get_config(get_dc_context(env, obj), keyPtr, defPtr /*is NULL if value is NULL, CHAR_REF() handles this*/);
+		char* temp = dc_get_config(get_dc_context(env, obj), keyPtr);
 			jstring ret = NULL;
 			if (temp) {
 				ret = JSTRING_NEW(temp);
 			}
 		free(temp);
 	CHAR_UNREF(key);
-	CHAR_UNREF(def);
 	return ret; /* returns NULL only if key is unset and "def" is NULL */
 }
 

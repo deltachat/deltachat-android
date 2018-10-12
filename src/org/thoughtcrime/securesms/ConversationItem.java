@@ -376,14 +376,20 @@ public class ConversationItem extends LinearLayout
     bodyText.setFocusable(false);
     bodyText.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSecurePreferences.getMessageBodyTextSize(context));
 
+    String text = messageRecord.getText();
+
     if (messageRecord.isSetupMessage()) {
-     bodyText.setText(context.getString(R.string.autocrypt__asm_tap_body));
+      bodyText.setText(context.getString(R.string.autocrypt__asm_tap_body));
+      bodyText.setVisibility(View.VISIBLE);
+    }
+    else if (text.isEmpty()) {
+      bodyText.setVisibility(View.GONE);
     }
     else {
-      bodyText.setText(linkifyMessageBody(new SpannableString(messageRecord.getText()), batchSelected.isEmpty()));
+      bodyText.setText(linkifyMessageBody(new SpannableString(text), batchSelected.isEmpty()));
+      bodyText.setVisibility(View.VISIBLE);
     }
 
-    bodyText.setVisibility(View.VISIBLE);
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
