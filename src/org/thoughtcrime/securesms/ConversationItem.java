@@ -16,14 +16,11 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.net.Uri;
 import android.support.annotation.DimenRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,12 +36,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
 import org.thoughtcrime.securesms.components.AlertView;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.AvatarImageView;
@@ -56,18 +52,12 @@ import org.thoughtcrime.securesms.components.SharedContactView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contactshare.Contact;
-import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.jobs.AttachmentDownloadJob;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
-import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
@@ -75,7 +65,6 @@ import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
-import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.util.HashSet;
 import java.util.List;
@@ -91,16 +80,17 @@ import java.util.Set;
  */
 
 public class ConversationItem extends LinearLayout
-    implements RecipientModifiedListener, BindableConversationItem
+    implements BindableConversationItem
 {
   private static final String TAG = ConversationItem.class.getSimpleName();
 
   private static final int MAX_MEASURE_CALLS = 3;
 
   private DcMsg         messageRecord;
+  private DcChat        dcChat;
+  private DcContact     dcContact;
   private Locale        locale;
   private boolean       groupThread;
-  private Recipient     recipient;
   private GlideRequests glideRequests;
 
   protected ViewGroup              bodyBubble;
@@ -108,7 +98,6 @@ public class ConversationItem extends LinearLayout
   private   TextView               bodyText;
   private   ConversationItemFooter footer;
   private   TextView               groupSender;
-  private   TextView               groupSenderProfileName;
   private   View                   groupSenderHolder;
   private   AvatarImageView        contactPhoto;
   private   ViewGroup              contactPhotoHolder;
@@ -157,7 +146,6 @@ public class ConversationItem extends LinearLayout
     this.bodyText                =            findViewById(R.id.conversation_item_body);
     this.footer                  =            findViewById(R.id.conversation_item_footer);
     this.groupSender             =            findViewById(R.id.group_message_sender);
-    this.groupSenderProfileName  =            findViewById(R.id.group_message_sender_profile);
     this.alertView               =            findViewById(R.id.indicators_parent);
     this.contactPhoto            =            findViewById(R.id.contact_photo);
     this.contactPhotoHolder      =            findViewById(R.id.contact_photo_container);
@@ -188,15 +176,16 @@ public class ConversationItem extends LinearLayout
                    boolean                          pulseHighlight)
   {
     this.messageRecord          = messageRecord;
+    this.dcChat                 = dcChat;
     this.locale                 = locale;
     this.glideRequests          = glideRequests;
     this.batchSelected          = batchSelected;
     this.conversationRecipient  = recipients;
     this.groupThread            = dcChat.isGroup();
-    this.recipient              = dcContext.getRecipient(dcContext.getChat(messageRecord.getChatId()));
 
-    this.recipient.addListener(this);
-    this.conversationRecipient.addListener(this);
+    if (groupThread && !messageRecord.isOutgoing()) {
+      this.dcContact = dcContext.getContact(messageRecord.getFromId());
+    }
 
     setGutterSizes(messageRecord, groupThread);
     setMessageShape(messageRecord, groupThread);
@@ -205,8 +194,8 @@ public class ConversationItem extends LinearLayout
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
     setStatusIcons(messageRecord);
-    setContactPhoto(recipient);
-    setGroupMessageStatus(messageRecord, recipient);
+    setContactPhoto();
+    setGroupMessageStatus();
     setAuthor(messageRecord, groupThread);
     setQuote(messageRecord, groupThread);
     setMessageSpacing(context, messageRecord, groupThread);
@@ -283,9 +272,6 @@ public class ConversationItem extends LinearLayout
 
   @Override
   public void unbind() {
-    if (recipient != null) {
-      recipient.removeListener(this);
-    }
   }
 
   public DcMsg getMessageRecord() {
@@ -299,7 +285,11 @@ public class ConversationItem extends LinearLayout
       bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
     } else {
       bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
-      bodyBubble.getBackground().setColorFilter(dcContext.getRecipient(messageRecord.getChatId()).getColor().toConversationColor(context), PorterDuff.Mode.MULTIPLY);
+      if(groupThread && dcContact!=null) {
+        bodyBubble.getBackground().setColorFilter(dcContext.getRecipient(dcContact).getColor().toConversationColor(context), PorterDuff.Mode.MULTIPLY);
+      } else {
+        bodyBubble.getBackground().setColorFilter(dcContext.getRecipient(dcChat).getColor().toConversationColor(context), PorterDuff.Mode.MULTIPLY);
+      }
     }
 
     if (audioViewStub.resolved()) {
@@ -501,13 +491,13 @@ public class ConversationItem extends LinearLayout
     sharedContactStub.get().setSingularStyle();
   }
 
-  private void setContactPhoto(@NonNull Recipient recipient) {
+  private void setContactPhoto() {
     if (contactPhoto == null) return;
 
-    if (messageRecord.isOutgoing() || !groupThread) {
+    if (messageRecord.isOutgoing() || !groupThread || dcContact ==null) {
       contactPhoto.setVisibility(View.GONE);
     } else {
-      contactPhoto.setAvatar(glideRequests, recipient, true);
+      contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
       contactPhoto.setVisibility(View.VISIBLE);
     }
   }
@@ -619,43 +609,21 @@ public class ConversationItem extends LinearLayout
     return batchSelected.isEmpty() && (messageRecord.isFailed());
   }
 
-  @SuppressLint("SetTextI18n")
-  private void setGroupMessageStatus(DcMsg messageRecord, Recipient recipient) {
-    if (groupThread && !messageRecord.isOutgoing()) {
-      this.groupSender.setText(recipient.toShortString());
-
-      if (recipient.getName() == null && !TextUtils.isEmpty(recipient.getProfileName())) {
-        this.groupSenderProfileName.setText("~" + recipient.getProfileName());
-        this.groupSenderProfileName.setVisibility(View.VISIBLE);
-      } else {
-        this.groupSenderProfileName.setText(null);
-        this.groupSenderProfileName.setVisibility(View.GONE);
-      }
+  private void setGroupMessageStatus() {
+    if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
+      this.groupSender.setText(dcContact.getDisplayName());
     }
   }
 
   private void setAuthor(@NonNull DcMsg current, boolean isGroupThread) {
     if (isGroupThread && !current.isOutgoing()) {
-
       if (contactPhotoHolder != null) {
         contactPhotoHolder.setVisibility(VISIBLE);
       }
-      /*if (!previous.isPresent() || previous.get().isInfo() || current.getFromId() != previous.get().getFromId() ||
-          !DateUtils.isSameDay(previous.get().getTimestamp(), current.getTimestamp()))
-      {*/
-        groupSenderHolder.setVisibility(VISIBLE);
-      /*} else {
-        groupSenderHolder.setVisibility(GONE);
-      }*/
-
-      //if (!next.isPresent() || next.get().isInfo() || current.getFromId() != previous.get().getFromId()) {
-        contactPhoto.setVisibility(VISIBLE);
-      //} else {
-      //  contactPhoto.setVisibility(GONE);
-      //}
+      groupSenderHolder.setVisibility(VISIBLE);
+      contactPhoto.setVisibility(VISIBLE);
     } else {
       groupSenderHolder.setVisibility(GONE);
-
       if (contactPhotoHolder != null) {
         contactPhotoHolder.setVisibility(GONE);
       }
@@ -682,16 +650,6 @@ public class ConversationItem extends LinearLayout
   }
 
   /// Event handlers
-
-  @Override
-  public void onModified(final Recipient modified) {
-    Util.runOnMain(() -> {
-      setBubbleState(messageRecord);
-      setContactPhoto(recipient);
-      setGroupMessageStatus(messageRecord, recipient);
-      setAudioViewTint(messageRecord, conversationRecipient);
-    });
-  }
 
   private class SharedContactEventListener implements SharedContactView.EventListener {
     @Override
