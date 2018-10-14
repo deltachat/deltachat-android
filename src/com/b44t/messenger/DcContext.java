@@ -96,7 +96,7 @@ public class DcContext {
     public native void         setConfig            (String key, String value);
     public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
     public native String       getConfig            (String key, String def);
-    public int                 getConfigInt         (String key, int def) { return Integer.parseInt(getConfig(key, Integer.toString(def))); }
+    public int                 getConfigInt         (String key, int def) { try{return Integer.parseInt(getConfig(key, Integer.toString(def)));} catch(Exception e) {} return 0; }
     public native String       getInfo              ();
     public native String       initiateKeyTransfer  ();
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
