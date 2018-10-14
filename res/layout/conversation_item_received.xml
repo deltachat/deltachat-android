@@ -166,13 +166,5 @@
 
         </LinearLayout>
 
-        <org.thoughtcrime.securesms.components.AlertView
-            android:id="@+id/indicators_parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:orientation="vertical"
-            android:gravity="center_vertical"/>
-
     </RelativeLayout>
 </org.thoughtcrime.securesms.ConversationItem>

@@ -41,7 +41,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.components.AlertView;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
@@ -101,7 +100,6 @@ public class ConversationItem extends LinearLayout
   private   View                   groupSenderHolder;
   private   AvatarImageView        contactPhoto;
   private   ViewGroup              contactPhotoHolder;
-  private   AlertView              alertView;
   private   ViewGroup              container;
 
   private @NonNull  Set<DcMsg>                      batchSelected = new HashSet<>();
@@ -146,7 +144,6 @@ public class ConversationItem extends LinearLayout
     this.bodyText                =            findViewById(R.id.conversation_item_body);
     this.footer                  =            findViewById(R.id.conversation_item_footer);
     this.groupSender             =            findViewById(R.id.group_message_sender);
-    this.alertView               =            findViewById(R.id.indicators_parent);
     this.contactPhoto            =            findViewById(R.id.contact_photo);
     this.contactPhotoHolder      =            findViewById(R.id.contact_photo_container);
     this.bodyBubble              =            findViewById(R.id.body_bubble);
@@ -193,7 +190,6 @@ public class ConversationItem extends LinearLayout
     setInteractionState(messageRecord, pulseHighlight);
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
-    setStatusIcons(messageRecord);
     setContactPhoto();
     setGroupMessageStatus();
     setAuthor(messageRecord, groupThread);
@@ -514,17 +510,6 @@ public class ConversationItem extends LinearLayout
       }
     }
     return messageBody;
-  }
-
-  private void setStatusIcons(DcMsg messageRecord) {
-    // disable the icon for for, we should use the same ui on desktop/ios here, so, for now
-    //bodyText.setCompoundDrawablesWithIntrinsicBounds(0, 0, messageRecord.isSetupMessage() ? R.drawable.ic_menu_login : 0, 0);
-
-    if (messageRecord.isFailed()) {
-      alertView.setFailed();
-    } else {
-      alertView.setNone();
-    }
   }
 
   private void setQuote(@NonNull DcMsg current, boolean isGroupThread) {

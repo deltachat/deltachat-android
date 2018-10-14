@@ -41,7 +41,6 @@ import com.annimon.stream.Stream;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.components.AlertView;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.components.FromTextView;
@@ -81,7 +80,6 @@ public class ConversationListItem extends RelativeLayout
   private TextView           dateView;
   private TextView           archivedView;
   private DeliveryStatusView deliveryStatusIndicator;
-  private AlertView          alertView;
   private ImageView          unreadIndicator;
   private ImageView          verifiedIndicator;
   private long               lastSeen;
@@ -107,7 +105,6 @@ public class ConversationListItem extends RelativeLayout
     this.fromView                = findViewById(R.id.from_text);
     this.dateView                = findViewById(R.id.date);
     this.deliveryStatusIndicator = findViewById(R.id.delivery_status);
-    this.alertView               = findViewById(R.id.indicators_parent);
     this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
     this.thumbnailView           = findViewById(R.id.thumbnail);
     this.archivedView            = findViewById(R.id.archived);
@@ -199,7 +196,6 @@ public class ConversationListItem extends RelativeLayout
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
-    alertView.setNone();
     thumbnailView.setVisibility(GONE);
 
     setBatchState(false);
@@ -224,7 +220,6 @@ public class ConversationListItem extends RelativeLayout
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
-    alertView.setNone();
     thumbnailView.setVisibility(GONE);
 
     setBatchState(false);
@@ -290,12 +285,9 @@ public class ConversationListItem extends RelativeLayout
 
     if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED) {
       deliveryStatusIndicator.setNone();
-      alertView.setNone();
     } else if (state==DcMsg.DC_STATE_OUT_ERROR) {
-      deliveryStatusIndicator.setNone();
-      alertView.setFailed();
+      deliveryStatusIndicator.setFailed();
     } else {
-      alertView.setNone();
       if(state==DcMsg.DC_STATE_OUT_MDN_RCVD) {
         deliveryStatusIndicator.setRead();
       }

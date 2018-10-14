@@ -75,12 +75,7 @@ public class ConversationItemFooter extends LinearLayout {
 
   private void presentDate(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     dateView.forceLayout();
-
-    if (messageRecord.isFailed()) {
-      dateView.setText(R.string.ConversationItem_error_not_delivered);
-    } else {
-      dateView.setText(DateUtils.getTimeOfDayTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
-    }
+    dateView.setText(DateUtils.getTimeOfDayTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
   }
 
   private void presentSecureIndicator(@NonNull DcMsg messageRecord) {
@@ -88,13 +83,10 @@ public class ConversationItemFooter extends LinearLayout {
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {
-    if (!messageRecord.isFailed()) {
-      if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
-      else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
-      else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
-      else                                   deliveryStatusView.setPending();
-    } else {
-      deliveryStatusView.setNone();
-    }
+    if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
+    else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
+    else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
+    else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
+    else                                   deliveryStatusView.setPending();
   }
 }

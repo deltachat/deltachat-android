@@ -133,7 +133,10 @@
 
         </LinearLayout>
 
-        <org.thoughtcrime.securesms.components.AlertView
+        <!-- the following view is only left because it is used as a reference for positioning above.
+         removing would require some re-layouting, it's just not done yet.-->
+        <View
+            android:visibility="gone"
             android:id="@+id/indicators_parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
