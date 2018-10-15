@@ -17,12 +17,9 @@
 package org.thoughtcrime.securesms;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.TooltipCompat;
@@ -33,10 +30,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import org.thoughtcrime.securesms.components.SearchToolbar;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.lock.RegistrationLockDialog;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.qr.QrScanHandler;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.service.KeyCachingService;
@@ -163,9 +163,20 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     case R.id.menu_clear_passphrase:  handleClearPassphrase(); return true;
     case R.id.menu_invite:            handleInvite();          return true;
     case R.id.menu_help:              handleHelp();            return true;
+    case R.id.menu_qr_scan:           handleQrScan();          return true;
+    case R.id.menu_qr_show:           handleQrShow();          return true;
     }
 
     return false;
+  }
+
+  private void handleQrScan() {
+    new IntentIntegrator(this).setCaptureActivity(QrScanActivity.class).initiateScan();
+  }
+
+  private void handleQrShow() {
+    Intent qrIntent = new Intent(this, QrShowActivity.class);
+    startActivity(qrIntent);
   }
 
   @Override
@@ -225,6 +236,15 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.help_url))));
     } catch (ActivityNotFoundException e) {
       Toast.makeText(this, R.string.ConversationListActivity_there_is_no_browser_installed_on_your_device, Toast.LENGTH_LONG).show();
+    }
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == IntentIntegrator.REQUEST_CODE) {
+      IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+      QrScanHandler qrScanHandler = new QrScanHandler(this);
+      qrScanHandler.onScanPerformed(scanResult);
     }
   }
 }

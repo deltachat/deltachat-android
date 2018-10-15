@@ -1312,6 +1312,31 @@
     <string name="new_conversation_activity__refresh">Refresh</string>
     <!-- redphone_audio_popup_menu -->
 
+    <!-- qr_scan_activity -->
+    <string name="qr_scan_activity__title">Scan QR code</string>
+    <string name="qr_scan_activity__hint">Place your camera over the QR code</string>
+
+    <!-- qr_scan_handler -->
+    <string name="qr_scan_handler_join_verified_group">Do you want to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="qr_scan_handler_fingerprint_ask_oob">Verify contact and start chatting with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="qr_scan_handler_fingerprint_ok">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> verified. Start chatting?</string>
+    <string name="qr_scan_handler_fingerprint_mismatch">The scanned fingerprint does <![CDATA[<b>]]>not match<![CDATA[</b>]]> the fingerprint last seen for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="qr_scan_handler_fingerprint_without_address">This QR code contains a fingerprint but no email address.\n\nFor an out-of-band-verification, please establish an encrpyted connection to the recipient first.</string>
+    <string name="qr_scan_handler_Scan_contains_text">Scanned QR code text:\n\n%1$s</string>
+    <string name="qr_scan_handler_qr_scan_contains_url">Scanned QR code URL:\n\n%1$s</string>
+    <string name="qr_scan_handler_fingerprint">Fingerprint</string>
+    <string name="qr_scan_handler_ask_start_chat_with">Chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+
+    <!-- qr_show_activity -->
+    <string name="qr_show_activity__title">Show QR verify code</string>
+    <string name="qr_show_activity__joining">%1$s joins.</string>
+    <string name="qr_show_activity__verified">%1$s verified.</string>
+    <string name="qr_show_activity__group_joined">%1$s securely joined the group.</string>
+    <string name="qr_show_activity__join_verified_group_hint">Scan this to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="qr_show_activity__join_verified_group_title">QR invite code</string>
+    <string name="qr_show_activity__join_contact_title">QR verify code</string>
+    <string name="qr_show_activity__join_contact_hint"><![CDATA[<b>]]>%1$s<![CDATA[</b><br>]]>Scan this to set up a verified contact.</string>
+
     <!-- Trimmer -->
     <string name="trimmer__deleting">Deleting</string>
     <string name="trimmer__deleting_old_messages">Deleting old messages...</string>
@@ -1487,5 +1512,8 @@
     <string name="default_status_hint">Status text</string>
     <string name="registration_activity__login">Login</string>
     <string name="preferences__chat_background">Chat-Background</string>
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="open">Open</string>
+    <string name="done">Done</string>
 
 </resources>
