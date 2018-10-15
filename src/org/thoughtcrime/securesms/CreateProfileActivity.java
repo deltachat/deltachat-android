@@ -22,6 +22,8 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -32,7 +34,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.dd.CircularProgressButton;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.InputAwareLayout;
@@ -92,16 +93,17 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
 
   private InputAwareLayout       container;
   private ImageView              avatar;
-  private CircularProgressButton finishButton;
   private EditText               name;
   private EmojiToggle            emojiToggle;
   private EmojiDrawer            emojiDrawer;
   private TextInputEditText statusView;
   private View                   reveal;
+  private MenuItem               finishMenuItem;
 
   private Intent nextIntent;
   private byte[] avatarBytes;
   private File   captureFile;
+
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -115,6 +117,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     getSupportActionBar().setTitle(R.string.CreateProfileActivity_your_profile_info);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
     initializeResources();
     initializeEmojiInput();
@@ -123,6 +126,14 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
     initializeStatusText();
 
     ApplicationContext.getInstance(this).injectDependencies(this);
+  }
+
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    MenuInflater inflater = this.getMenuInflater();
+    inflater.inflate(R.menu.preferences_create_profile_menu, menu);
+    finishMenuItem = menu.findItem(R.id.menu_create_profile);
+    return true;
   }
 
   @Override
@@ -139,6 +150,9 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
       case android.R.id.home:
         onBackPressed();
         return true;
+      case R.id.menu_create_profile:
+        handleUpload();
+        break;
     }
 
     return false;
@@ -230,7 +244,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
     this.emojiToggle  = ViewUtil.findById(this, R.id.emoji_toggle);
     this.emojiDrawer  = ViewUtil.findById(this, R.id.emoji_drawer);
     this.container    = ViewUtil.findById(this, R.id.container);
-    this.finishButton = ViewUtil.findById(this, R.id.finish_button);
     this.reveal       = ViewUtil.findById(this, R.id.reveal);
     this.statusView = ViewUtil.findById(this, R.id.status_text);
     this.nextIntent   = getIntent().getParcelableExtra(NEXT_INTENT);
@@ -250,20 +263,15 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
       public void onTextChanged(CharSequence s, int start, int before, int count) {}
       @Override
       public void afterTextChanged(Editable s) {
-        if (s.toString().getBytes().length > ProfileCipher.NAME_PADDED_LENGTH) {
-          name.setError(getString(R.string.CreateProfileActivity_too_long));
-          finishButton.setEnabled(false);
-        } else if (name.getError() != null || !finishButton.isEnabled()) {
-          name.setError(null);
-          finishButton.setEnabled(true);
-        }
-      }
-    });
-
-    this.finishButton.setOnClickListener(view -> {
-      this.finishButton.setIndeterminateProgressMode(true);
-      this.finishButton.setProgress(50);
-      handleUpload();
+        if(finishMenuItem != null){
+          if (s.toString().getBytes().length > ProfileCipher.NAME_PADDED_LENGTH) {
+            name.setError(getString(R.string.CreateProfileActivity_too_long));
+            finishMenuItem.setEnabled(false);
+          } else if (name.getError() != null || !finishMenuItem.isEnabled()) {
+            name.setError(null);
+            finishMenuItem.setEnabled(true);
+          }
+      }}
     });
 
     passwordAccountSettings.setOnClickListener(view -> {
@@ -494,26 +502,17 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
   }
 
   private void handleFinishedLegacy() {
-    finishButton.setProgress(0);
     if (nextIntent != null) startActivity(nextIntent);
     finish();
   }
 
   @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   private void handleFinishedLollipop() {
-    int[] finishButtonLocation = new int[2];
     int[] revealLocation       = new int[2];
 
-    finishButton.getLocationInWindow(finishButtonLocation);
     reveal.getLocationInWindow(revealLocation);
 
-    int finishX = finishButtonLocation[0] - revealLocation[0];
-    int finishY = finishButtonLocation[1] - revealLocation[1];
-
-    finishX += finishButton.getWidth() / 2;
-    finishY += finishButton.getHeight() / 2;
-
-    Animator animation = ViewAnimationUtils.createCircularReveal(reveal, finishX, finishY, 0f, (float) Math.max(reveal.getWidth(), reveal.getHeight()));
+    Animator animation = ViewAnimationUtils.createCircularReveal(reveal, reveal.getWidth(), 0, 0f, (float) Math.max(reveal.getWidth(), reveal.getHeight()));
     animation.setDuration(500);
     animation.addListener(new Animator.AnimatorListener() {
       @Override
@@ -521,7 +520,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
 
       @Override
       public void onAnimationEnd(Animator animation) {
-        finishButton.setProgress(0);
         if (nextIntent != null)  startActivity(nextIntent);
         finish();
       }

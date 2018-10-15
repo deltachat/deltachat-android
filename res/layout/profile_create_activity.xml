@@ -56,7 +56,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/default_status_hint"
-                android:inputType="text" />
+                android:gravity="top|left"
+                android:maxLines="3"
+                android:inputType="textMultiLine" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -97,23 +99,6 @@
                       android:gravity="bottom"
                       android:clipChildren="false"
                       android:clipToPadding="false">
-
-            <com.dd.CircularProgressButton
-                    android:id="@+id/finish_button"
-                    app:cpb_textIdle="@string/profile_create_activity__finish"
-                    app:cpb_selectorIdle="@drawable/progress_button_state"
-                    app:cpb_colorIndicator="@color/white"
-                    app:cpb_colorProgress="@color/textsecure_primary"
-                    app:cpb_cornerRadius="50dp"
-                    android:textAllCaps="true"
-                    android:background="@color/signal_primary"
-                    android:textColor="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_gravity="center_horizontal"/>
 
             <TextView android:id="@+id/password_account_settings_button"
                       android:layout_gravity="center_horizontal"
