@@ -14,7 +14,8 @@
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
         android:clipChildren="false"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:background="@color/white">
 
     <FrameLayout
         android:layout_width="0dp"

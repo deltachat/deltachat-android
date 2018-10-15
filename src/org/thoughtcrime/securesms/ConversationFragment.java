@@ -21,7 +21,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -41,10 +40,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.text.ClipboardManager;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -55,25 +52,22 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewSwitcher;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
-import com.bumptech.glide.request.RequestOptions;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DcMsgListLoader;
+import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.contactshare.SharedContactDetailsActivity;
-import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.jobs.DirectoryRefreshJob;
@@ -82,12 +76,10 @@ import org.thoughtcrime.securesms.mms.OutgoingMediaMessage;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.CommunicationActions;
-import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -124,7 +116,6 @@ public class ConversationFragment extends Fragment
   private RecyclerView.ItemDecoration lastSeenDecoration;
   private View                        scrollToBottomButton;
   private TextView                    scrollDateHeader;
-  private FrameLayout                 frameLayout;
 
   private ApplicationDcContext        dcContext;
 
@@ -148,7 +139,6 @@ public class ConversationFragment extends Fragment
     list                 = ViewUtil.findById(view, android.R.id.list);
     scrollToBottomButton = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
     scrollDateHeader     = ViewUtil.findById(view, R.id.scroll_date_header);
-    frameLayout          = ViewUtil.findById(view, R.id.conversation_container);
 
     scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
 
@@ -163,10 +153,6 @@ public class ConversationFragment extends Fragment
     {
       list.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
     }
-
-    String backgroundImagePath = TextSecurePreferences.getBackgroundImagePath(getContext());
-    Drawable image = Drawable.createFromPath(backgroundImagePath);
-    frameLayout.setBackground(image);
     return view;
   }
 

@@ -27,6 +27,7 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -57,6 +58,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -227,6 +229,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected HidingLinearLayout     quickAttachmentToggle;
   private   QuickAttachmentDrawer  quickAttachmentDrawer;
   private   InputPanel             inputPanel;
+  private   ImageView              imageView;
 
   private Recipient  recipient;
   private ApplicationDcContext dcContext;
@@ -997,6 +1000,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer = ViewUtil.findById(this, R.id.quick_attachment_drawer);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel            = ViewUtil.findById(this, R.id.bottom_panel);
+    imageView             = ViewUtil.findById(this, R.id.background_imageview);
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
@@ -1042,6 +1046,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       quickCameraToggle.setVisibility(View.GONE);
       quickCameraToggle.setEnabled(false);
     }
+
+    String backgroundImagePath = TextSecurePreferences.getBackgroundImagePath(this);
+    Drawable image = Drawable.createFromPath(backgroundImagePath);
+    imageView.setImageDrawable(image);
   }
 
   protected void initializeActionBar() {
