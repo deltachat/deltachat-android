@@ -268,7 +268,7 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
     boolean addCreateGroupLinks = !isMulti();
-    int listflags = 0;
+    int listflags = DcContext.DC_GCL_ADD_SELF;
     if(isSelectVerfied()) {
       listflags = DcContext.DC_GCL_VERIFIED_ONLY;
     }

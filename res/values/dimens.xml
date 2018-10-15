@@ -72,6 +72,4 @@
 
     <dimen name="floating_action_button_margin">16dp</dimen>
 
-    <dimen name="alertview_small_icon_size">14dp</dimen>
-
 </resources>

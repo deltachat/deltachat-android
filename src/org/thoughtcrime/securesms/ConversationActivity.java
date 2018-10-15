@@ -292,6 +292,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     });
 
+    dcContext.marknoticedChat((int)threadId);
+
     dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CHAT_MODIFIED);
     dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONTACTS_CHANGED);
   }

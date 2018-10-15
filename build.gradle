@@ -255,8 +255,8 @@ android {
     }
 
     defaultConfig {
-        versionCode 392
-        versionName "0.0.1"
+        versionCode 393
+        versionName "0.0.2"
         applicationId "chat.delta.androidii"
 
         minSdkVersion 14

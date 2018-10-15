@@ -78,7 +78,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.numberView.setTextColor(color);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
-    setText(name, number, label);
+    setText(name, number, label, contact);
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
     else             this.checkBox.setVisibility(View.GONE);
@@ -97,7 +97,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     contactPhotoImage.clear(glideRequests);
   }
 
-  private void setText(String name, String number, String label) {
+  private void setText(String name, String number, String label, DcContact contact) {
     this.nameView.setEnabled(true);
     this.nameView.setText(name==null? "#" : name);
 
@@ -108,6 +108,11 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     }
     else {
       this.numberContainer.setVisibility(View.GONE);
+    }
+    if (contact != null && contact.isVerified()) {
+      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_verified,0);
+    } else {
+      nameView.setCompoundDrawablesWithIntrinsicBounds(0,0, 0,0);
     }
   }
 

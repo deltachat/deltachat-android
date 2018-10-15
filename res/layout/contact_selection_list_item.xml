@@ -32,15 +32,16 @@
                   android:orientation="vertical">
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="16sp"
-                tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:drawablePadding="5dp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="16sp"
+            tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
 
         <LinearLayout android:id="@+id/number_container"
                       android:orientation="horizontal"
