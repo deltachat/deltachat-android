@@ -59,7 +59,7 @@ public class ApplicationDcContext extends DcContext {
     public Context context;
 
     public ApplicationDcContext(Context context) {
-        super("Android");
+        super("android-dev");
         this.context = context;
 
         File dbfile = new File(context.getFilesDir(), "messenger.db");
