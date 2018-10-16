@@ -547,34 +547,6 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendTextMsg(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendVcardMsg(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
-{
-	return dc_send_vcard_msg(get_dc_context(env, obj), chat_id, contact_id);
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendMediaMsg(JNIEnv *env, jobject obj, jint chat_id, jint type, jstring file, jstring mime, jint w, jint h, jint ms, jstring author, jstring trackname)
-{
-	jint msg_id = 0;
-	CHAR_REF(file);
-	CHAR_REF(mime);
-	CHAR_REF(author);
-	CHAR_REF(trackname);
-	switch (type) {
-		case DC_MSG_IMAGE: msg_id = (jint)dc_send_image_msg(get_dc_context(env, obj), chat_id, filePtr, mimePtr, w, h); break;
-		case DC_MSG_VIDEO: msg_id = (jint)dc_send_video_msg(get_dc_context(env, obj), chat_id, filePtr, mimePtr, w, h, ms); break;
-		case DC_MSG_VOICE: msg_id = (jint)dc_send_voice_msg(get_dc_context(env, obj), chat_id, filePtr, mimePtr, ms); break;
-		case DC_MSG_AUDIO: msg_id = (jint)dc_send_audio_msg(get_dc_context(env, obj), chat_id, filePtr, mimePtr, ms, authorPtr, tracknamePtr); break;
-		default:           msg_id = (jint)dc_send_file_msg (get_dc_context(env, obj), chat_id, filePtr, mimePtr); break;
-	}
-	CHAR_UNREF(trackname);
-	CHAR_UNREF(author);
-	CHAR_UNREF(mime);
-	CHAR_UNREF(file);
-	return msg_id;
-}
-
-
 /* DcContext - handle config */
 
 JNIEXPORT void Java_com_b44t_messenger_DcContext_setConfig(JNIEnv *env, jobject obj, jstring key, jstring value /*may be NULL*/)

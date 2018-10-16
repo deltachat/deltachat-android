@@ -145,8 +145,6 @@ public class DcContext {
     public native void         forwardMsgs          (int msg_ids[], int chat_id);
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);
-    public native int          sendVcardMsg         (int chat_id, int contact_id);
-    public native int          sendMediaMsg         (int chat_id, int type, String file, String mime, int w, int h, int time_ms, String author, String trackname);
     public native int          checkQrCPtr          (String qr);
     public @NonNull DcLot      checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }
     public native String       getSecurejoinQr      (int chat_id);
