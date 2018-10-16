@@ -157,6 +157,13 @@ public class ConversationFragment extends Fragment
     list.setLayoutManager(layoutManager);
     list.setItemAnimator(null);
 
+    // setLayerType() is needed to allow larger items (long texts in our case)
+    // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be rendered into a texture"
+    if (android.os.Build.VERSION.SDK_INT >= 11)
+    {
+      list.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+    }
+
     String backgroundImagePath = TextSecurePreferences.getBackgroundImagePath(getContext());
     Drawable image = Drawable.createFromPath(backgroundImagePath);
     frameLayout.setBackground(image);
