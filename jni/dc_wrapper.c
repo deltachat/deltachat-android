@@ -1036,12 +1036,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getFilename(JNIEnv *env, jobject
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getMediainfoCPtr(JNIEnv *env, jobject obj)
-{
-	return (jlong)dc_msg_get_mediainfo(get_dc_msg(env, obj));
-}
-
-
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isForwarded(JNIEnv *env, jobject obj)
 {
     return dc_msg_is_forwarded(get_dc_msg(env, obj))!=0;
@@ -1102,16 +1096,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setDimension(JNIEnv *env, jobject o
 JNIEXPORT void Java_com_b44t_messenger_DcMsg_setDuration(JNIEnv *env, jobject obj, int duration)
 {
     dc_msg_set_duration(get_dc_msg(env, obj), duration);
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcMsg_setMediainfo(JNIEnv *env, jobject obj, jstring author, jstring trackname)
-{
-	CHAR_REF(author);
-	CHAR_REF(trackname);
-		dc_msg_set_mediainfo(get_dc_msg(env, obj), authorPtr, tracknamePtr);
-	CHAR_UNREF(trackname);
-	CHAR_UNREF(author);
 }
 
 

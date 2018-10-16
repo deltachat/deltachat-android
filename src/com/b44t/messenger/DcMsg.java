@@ -97,7 +97,6 @@ public class DcMsg {
     public @NonNull DcLot getSummary         (DcChat chat) { return new DcLot(getSummaryCPtr(chat.getChatCPtr())); }
     public native String  getSummarytext     (int approx_characters);
     public native int     showPadlock        ();
-    public @NonNull DcLot getMediainfo       () { return new DcLot(getMediainfoCPtr()); }
     public boolean        hasFile            () { String file = getFile(); return file!=null && !file.isEmpty(); }
     public native String  getFile            ();
     public native String  getFilemime        ();
@@ -111,7 +110,6 @@ public class DcMsg {
     public native void    setFile            (String file, String filemime);
     public native void    setDimension       (int width, int height);
     public native void    setDuration        (int duration);
-    public native void    setMediainfo       (String author, String trackname);
 
     // aliases and higher-level tools
     public static int[] msgSetToIds(final Set<DcMsg> dcMsgs) {
@@ -199,5 +197,4 @@ public class DcMsg {
     private long        msgCPtr;        // CAVE: the name is referenced in the JNI
     private native void unrefMsgCPtr    ();
     private native long getSummaryCPtr  (long chatCPtr);
-    private native long getMediainfoCPtr();
 };
