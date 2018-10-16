@@ -927,7 +927,6 @@ messenger-backend/src/dc_strbuilder.c \
 messenger-backend/src/dc_strencode.c \
 messenger-backend/src/dc_token.c \
 messenger-backend/src/dc_tools.c \
-messenger-backend/src/dc_uudecode.c \
 dc_wrapper.c
 
 include $(BUILD_SHARED_LIBRARY)
