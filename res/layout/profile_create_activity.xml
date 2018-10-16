@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout android:layout_width="match_parent"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
              android:layout_height="match_parent"
              xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -23,44 +24,39 @@
                        android:layout_height="64dp"
                        android:transitionName="avatar"/>
 
-            <org.thoughtcrime.securesms.components.emoji.EmojiEditText
-                    android:id="@+id/name"
-                    android:hint="@string/profile_create_activity__your_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
-                    android:inputType="textCapWords"/>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
 
-            <org.thoughtcrime.securesms.components.emoji.EmojiToggle
-                    android:id="@+id/emoji_toggle"
-                    android:layout_width="37dp"
-                    android:layout_height="37dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/touch_highlight_background"
-                    android:contentDescription="@string/conversation_activity__emoji_toggle_description" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/profile_create_activity__your_name"
+                    android:inputType="textCapWords" />
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/status"
-            android:layout_marginTop="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/status_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/status_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/default_status_hint"
-                android:gravity="top|left"
-                android:maxLines="3"
-                android:inputType="textMultiLine" />
-
-        </android.support.design.widget.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:hint="@string/default_status_hint"
+            android:inputType="textMultiLine"
+            android:maxLines="3" />
+    </android.support.design.widget.TextInputLayout>
 
         <LinearLayout android:id="@+id/information_link_container"
                       android:clickable="true"
@@ -80,16 +76,17 @@
                        android:src="@drawable/ic_info_white_18dp"
                        android:tint="#73B7F0"/>
 
-            <TextView style="@style/Registration.Description"
-                      android:id="@+id/information_label"
-                      android:clickable="true"
-                      android:layout_width="wrap_content"
-                      android:layout_height="match_parent"
-                      android:layout_marginLeft="3dp"
-                      android:layout_gravity="center_vertical"
-                      android:gravity="center_vertical"
-                      android:textColor="#73B7F0"
-                      android:text="@string/profile_create_activity__who_can_see_this_information"/>
+            <TextView
+                android:id="@+id/information_label"
+                style="@style/Registration.Description"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="3dp"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:text="@string/profile_create_activity__who_can_see_this_information"
+                android:textColor="#73B7F0" />
         </LinearLayout>
 
 
@@ -100,14 +97,18 @@
                       android:clipChildren="false"
                       android:clipToPadding="false">
 
-            <TextView android:id="@+id/password_account_settings_button"
-                      android:layout_gravity="center_horizontal"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_marginTop="0dp"
-                      android:layout_marginBottom="20dp"
-                      android:textColor="@color/gray50"
-                      android:text="@string/profile_create_activity__password_account"/>
+            <TextView
+                android:id="@+id/password_account_settings_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/profile_create_activity__password_account"
+                android:textColor="#73B7F0"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:typeface="sans" />
 
             <org.thoughtcrime.securesms.components.emoji.EmojiDrawer
                     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -120,10 +121,11 @@
 
 </org.thoughtcrime.securesms.components.InputAwareLayout>
 
-    <View android:id="@+id/reveal"
-          android:background="@color/textsecure_primary"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:visibility="invisible"/>
+    <View
+        android:id="@+id/reveal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/textsecure_primary"
+        android:visibility="invisible" />
 
 </FrameLayout>

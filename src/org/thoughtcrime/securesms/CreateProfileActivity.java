@@ -94,7 +94,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
   private InputAwareLayout       container;
   private ImageView              avatar;
   private EditText               name;
-  private EmojiToggle            emojiToggle;
   private EmojiDrawer            emojiDrawer;
   private TextInputEditText statusView;
   private View                   reveal;
@@ -240,8 +239,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
     TextView informationLabel = ViewUtil.findById(this, R.id.information_label);
 
     this.avatar       = ViewUtil.findById(this, R.id.avatar);
-    this.name         = ViewUtil.findById(this, R.id.name);
-    this.emojiToggle  = ViewUtil.findById(this, R.id.emoji_toggle);
+    this.name         = ViewUtil.findById(this, R.id.name_text);
     this.emojiDrawer  = ViewUtil.findById(this, R.id.emoji_drawer);
     this.container    = ViewUtil.findById(this, R.id.container);
     this.reveal       = ViewUtil.findById(this, R.id.reveal);
@@ -356,15 +354,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
   }
 
   private void initializeEmojiInput() {
-    this.emojiToggle.attach(emojiDrawer);
-
-    this.emojiToggle.setOnClickListener(v -> {
-      if (container.getCurrentInput() == emojiDrawer) {
-        container.showSoftkey(name);
-      } else {
-        container.show(name, emojiDrawer);
-      }
-    });
 
     this.emojiDrawer.setEmojiEventListener(new EmojiDrawer.EmojiEventListener() {
       @Override
@@ -382,7 +371,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
       }
     });
 
-    this.container.addOnKeyboardShownListener(() -> emojiToggle.setToEmoji());
     this.name.setOnClickListener(v -> container.showSoftkey(name));
   }
 

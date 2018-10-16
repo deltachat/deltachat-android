@@ -5,5 +5,5 @@
         android:id="@+id/menu_create_profile"
         android:title="@string/profile_create_activity__finish"
         app:showAsAction="always"
-        android:icon="@drawable/check"/>
+        android:icon="?menu_accept_icon"/>
 </menu>
