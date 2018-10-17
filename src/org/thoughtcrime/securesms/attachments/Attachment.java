@@ -10,7 +10,7 @@ public abstract class Attachment {
 
   @NonNull
   private final String  contentType;
-  private final int     transferState;
+  private       int     transferState;
   private final long    size;
 
   @Nullable
@@ -62,6 +62,10 @@ public abstract class Attachment {
 
   @Nullable
   public abstract Uri getThumbnailUri();
+
+  public void setTransferState(int transferState) {
+    this.transferState = transferState;
+  }
 
   public int getTransferState() {
     return transferState;
