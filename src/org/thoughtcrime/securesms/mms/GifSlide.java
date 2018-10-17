@@ -4,10 +4,16 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 public class GifSlide extends ImageSlide {
+
+  public GifSlide(Context context, DcMsg dcMsg) {
+    super(context, dcMsg);
+  }
 
   public GifSlide(Context context, Attachment attachment) {
     super(context, attachment);
