@@ -982,9 +982,9 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_lateFilingMediaSize(JNIEnv *env, jo
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getBytes(JNIEnv *env, jobject obj)
+JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getFilebytes(JNIEnv *env, jobject obj)
 {
-	return (jint)dc_msg_get_filebytes(get_dc_msg(env, obj));
+	return (jlong)dc_msg_get_filebytes(get_dc_msg(env, obj));
 }
 
 
