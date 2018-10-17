@@ -20,18 +20,9 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.pnikosis.materialishprogress.ProgressWheel;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
-import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.events.PartProgressEvent;
 import org.thoughtcrime.securesms.mms.AudioSlide;
-import org.thoughtcrime.securesms.mms.SlideClickListener;
-import org.thoughtcrime.securesms.util.Util;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -45,11 +36,9 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   private final @NonNull ViewGroup       container;
   private final @NonNull ImageView       playButton;
   private final @NonNull ImageView       pauseButton;
-  private final @NonNull ImageView       downloadButton;
   private final @NonNull SeekBar         seekBar;
   private final @NonNull TextView        timestamp;
 
-  private @Nullable SlideClickListener downloadListener;
   private @Nullable AudioSlidePlayer   audioSlidePlayer;
   private int backwardsCounter;
 
@@ -69,7 +58,6 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     this.controlToggle    = (AnimatingToggle) findViewById(R.id.control_toggle);
     this.playButton       = (ImageView) findViewById(R.id.play);
     this.pauseButton      = (ImageView) findViewById(R.id.pause);
-    this.downloadButton   = (ImageView) findViewById(R.id.download);
     this.seekBar          = (SeekBar) findViewById(R.id.seek);
     this.timestamp        = (TextView) findViewById(R.id.timestamp);
 
@@ -134,7 +122,6 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     this.pauseButton.setFocusable(focusable);
     this.seekBar.setFocusable(focusable);
     this.seekBar.setFocusableInTouchMode(focusable);
-    this.downloadButton.setFocusable(focusable);
   }
 
   @Override
@@ -144,7 +131,6 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     this.pauseButton.setClickable(clickable);
     this.seekBar.setClickable(clickable);
     this.seekBar.setOnTouchListener(clickable ? null : new TouchIgnoringListener());
-    this.downloadButton.setClickable(clickable);
   }
 
   @Override
@@ -153,7 +139,6 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     this.playButton.setEnabled(enabled);
     this.pauseButton.setEnabled(enabled);
     this.seekBar.setEnabled(enabled);
-    this.downloadButton.setEnabled(enabled);
   }
 
   @Override
@@ -181,8 +166,6 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
       this.playButton.setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
       this.pauseButton.setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
     }
-
-    this.downloadButton.setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
 
     this.timestamp.setTextColor(foregroundTint);
     this.seekBar.getProgressDrawable().setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
@@ -245,19 +228,6 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
         togglePauseToPlay();
         audioSlidePlayer.stop();
       }
-    }
-  }
-
-  private class DownloadClickedListener implements View.OnClickListener {
-    private final @NonNull AudioSlide slide;
-
-    private DownloadClickedListener(@NonNull AudioSlide slide) {
-      this.slide = slide;
-    }
-
-    @Override
-    public void onClick(View v) {
-      if (downloadListener != null) downloadListener.onClick(v, slide);
     }
   }
 
