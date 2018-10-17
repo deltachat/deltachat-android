@@ -83,6 +83,8 @@ dependencies {
     compile 'org.whispersystems:signal-service-android:2.7.6'
     compile 'org.whispersystems:webrtc-android:M68'
 
+    compile 'com.journeyapps:zxing-android-embedded:3.4.0'
+
     compile "me.leolin:ShortcutBadger:1.1.16"
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
     compile 'com.jpardogo.materialtabstrip:library:1.0.9'
@@ -96,7 +98,6 @@ dependencies {
     compile 'pl.tajchert:waitingdots:0.1.0'
     compile 'com.soundcloud.android:android-crop:0.9.10@aar'
     compile 'com.melnykov:floatingactionbutton:1.3.0'
-    compile 'com.google.zxing:android-integration:3.1.0'
     compile 'com.squareup.dagger:dagger:1.2.2'
     annotationProcessor 'com.squareup.dagger:dagger-compiler:1.2.2'
     compile 'mobi.upod:time-duration-picker:1.1.3'
@@ -185,7 +186,6 @@ dependencyVerification {
         'com.makeramen:roundedimageview:1f5a1865796b308c6cdd114acc6e78408b110f0a62fc63553278fbeacd489cd1',
         'org.greenrobot:eventbus:180d4212467df06f2fbc9c8d8a2984533ac79c87769ad883bc421612f0b4e17c',
         'com.soundcloud.android:android-crop:ffd4b973cf6e97f7d64118a0dc088df50e9066fd5634fe6911dd0c0c5d346177',
-        'com.google.zxing:android-integration:89e56aadf1164bd71e57949163c53abf90af368b51669c0d4a47a163335f95c4',
         'com.squareup.dagger:dagger:789aca24537022e49f91fc6444078d9de8f1dd99e1bfb090f18491b186967883',
         'com.amulyakhare:com.amulyakhare.textdrawable:54c92b5fba38cfd316a07e5a30528068f45ce8515a6890f1297df4c401af5dcb',
         'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',

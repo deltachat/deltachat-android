@@ -22,6 +22,7 @@ public class DcHelper {
     public static final String CONFIG_SELF_STATUS = "selfstatus";
     public static final String CONFIG_SELF_AVATAR = "selfavatar";
     public static final String CONFIG_E2EE_ENABLED = "e2ee_enabled";
+    public static final String CONFIG_QR_OVERLAY_LOGO = "qr_overlay_logo";
 
     public static ApplicationDcContext getContext(Context context) {
         return ApplicationContext.getInstance(context).dcContext;
@@ -32,9 +33,18 @@ public class DcHelper {
         return dcContext.isConfigured() == 1;
     }
 
-    public static String get(Context context, String key) {
+    public static int getInt(Context context, String key, int defaultValue) {
         DcContext dcContext = getContext(context);
-        return dcContext.getConfig(key, "");
+        return dcContext.getConfigInt(key, defaultValue);
+    }
+
+    public static String get(Context context, String key, String defaultValue) {
+        DcContext dcContext = getContext(context);
+        return dcContext.getConfig(key, defaultValue);
+    }
+
+    public static String get(Context context, String key) {
+        return get(context, key, "");
     }
 
     public static void set(Context context, String key, String value) {
