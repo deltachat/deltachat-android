@@ -18,12 +18,14 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 
 public class QrScanHandler {
 
     private Activity activity;
+    ProgressDialog progressDialog;
 
     private DcContext dcContext;
 
@@ -140,6 +142,11 @@ public class QrScanHandler {
     }
 
     private void showVerifyContactOrGroup(Activity activity, AlertDialog.Builder builder, String qrRawString, DcLot qrParsed, String nameNAddr) {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+
         String msg;
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:
@@ -151,39 +158,42 @@ public class QrScanHandler {
         }
         builder.setMessage(Html.fromHtml(msg));
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
-            ProgressDialog progressDialog = new ProgressDialog(activity);
+            progressDialog = new ProgressDialog(activity);
             progressDialog.setMessage(activity.getString(R.string.one_moment));
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.setCancelable(false);
             progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, activity.getString(android.R.string.cancel), (dialog, which) -> dcContext.stopOngoingProcess());
             progressDialog.show();
 
-            new Thread() {
-                @Override
-                public void run() {
-                    ApplicationDcContext applicationDcContext = DcHelper.getContext(activity);
-                    applicationDcContext.captureNextError();
+            ApplicationDcContext dcContext = DcHelper.getContext(activity);
+            dcContext.captureNextError();
 
-                    final int oobDone = dcContext.joinSecurejoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
-                    String errorString = applicationDcContext.getCapturedError();
-                    applicationDcContext.endCaptureNextError();
+            new Thread(() -> {
 
-                    if (oobDone != 0) {
-                        Bundle bundle = new Bundle();
-                        bundle.putInt(ConversationActivity.THREAD_ID_EXTRA, oobDone);
-                        //TODO how to we get the contact ID here? We need it to avoid crashing when starting the ConversationActivity
-                        Intent intent = new Intent(activity, ConversationActivity.class);
-                        activity.startActivity(intent, bundle);
-                    } else if (!errorString.isEmpty()) {
-                        activity.runOnUiThread(() -> {
+                    int newChatId = dcContext.joinSecurejoin(qrRawString); // joinSecurejoin() runs until all needed messages are sent+received!
+
+                    Util.runOnMain(() -> {
+                        if (progressDialog != null) {
+                            progressDialog.dismiss();
+                            progressDialog = null;
+                        }
+
+                        String errorString = dcContext.getCapturedError();
+                        dcContext.endCaptureNextError();
+                        if (newChatId != 0) {
+                            Intent intent = new Intent(activity, ConversationActivity.class);
+                            intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(newChatId));
+                            intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)newChatId);
+                            activity.startActivity(intent);
+                        } else if (!errorString.isEmpty()) {
                             AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
                             builder1.setMessage(errorString);
                             builder1.setPositiveButton(android.R.string.ok, null);
                             builder1.create().show();
-                        });
-                    }
+                        }
+                    });
                 }
-            }.start();
+            ).start();
 
 
         });
