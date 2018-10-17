@@ -11,6 +11,7 @@ import android.text.Html;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcLot;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -22,12 +23,12 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 
-public class QrScanHandler {
+public class QrScanHandler implements DcEventCenter.DcEventDelegate {
 
     private Activity activity;
     ProgressDialog progressDialog;
 
-    private DcContext dcContext;
+    private ApplicationDcContext dcContext;
 
     public QrScanHandler(Activity activity) {
         this.activity = activity;
@@ -165,12 +166,13 @@ public class QrScanHandler {
             progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, activity.getString(android.R.string.cancel), (dialog, which) -> dcContext.stopOngoingProcess());
             progressDialog.show();
 
-            ApplicationDcContext dcContext = DcHelper.getContext(activity);
             dcContext.captureNextError();
 
             new Thread(() -> {
 
+                    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS);
                     int newChatId = dcContext.joinSecurejoin(qrRawString); // joinSecurejoin() runs until all needed messages are sent+received!
+                    dcContext.eventCenter.removeObservers(this);
 
                     Util.runOnMain(() -> {
                         if (progressDialog != null) {
@@ -200,4 +202,20 @@ public class QrScanHandler {
         builder.setNegativeButton(android.R.string.cancel, null);
     }
 
+    @Override
+    public void handleEvent(int eventId, Object data1, Object data2) {
+        if (eventId == DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS) {
+            long contact_id = (Long)data1;
+            long progress = (Long)data2;
+            String msg = null;
+            if( progress == 400) {
+                msg = activity.getString(R.string.qr_scan_handler_verfied_introduce_myself, dcContext.getContact((int)contact_id).getNameNAddr());
+            }
+
+            if( progressDialog != null && msg != null ) {
+                progressDialog.setMessage(msg);
+            }
+
+        }
+    }
 }

@@ -1326,6 +1326,7 @@
     <string name="qr_scan_handler_qr_scan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qr_scan_handler_fingerprint">Fingerprint</string>
     <string name="qr_scan_handler_ask_start_chat_with">Chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="qr_scan_handler_verfied_introduce_myself">%1$s verified, introduce myself …</string>
 
     <!-- qr_show_activity -->
     <string name="qr_show_activity__title">Show QR verify code</string>
