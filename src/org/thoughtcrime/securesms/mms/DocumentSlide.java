@@ -20,7 +20,7 @@ public class DocumentSlide extends Slide {
   }
 
   public DocumentSlide(Context context, DcMsg dcMsg) {
-    this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getFilemime(), dcMsg.getBytes(), dcMsg.getFilename());
+    this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getFilemime(), dcMsg.getFilebytes(), dcMsg.getFilename());
     dcMsgId = dcMsg.getId();
   }
 

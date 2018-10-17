@@ -38,7 +38,7 @@ import java.io.File;
 public class AudioSlide extends Slide {
 
   public AudioSlide(Context context, DcMsg dcMsg) {
-    this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getBytes(), dcMsg.getType()==DcMsg.DC_MSG_VOICE);
+    this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getFilebytes(), dcMsg.getType()==DcMsg.DC_MSG_VOICE);
     dcMsgId = dcMsg.getId();
   }
 
