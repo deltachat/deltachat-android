@@ -557,36 +557,6 @@ public class ConversationFragment extends Fragment
     }
   }
 
-  public long stageOutgoingMessage(OutgoingMediaMessage message) {
-    MessageRecord messageRecord = DatabaseFactory.getMmsDatabase(getContext()).readerFor(message, threadId).getCurrent();
-
-    if (getListAdapter() != null) {
-      //getListAdapter().setHeaderView(null);
-      setLastSeen(0);
-      getListAdapter().addFastRecord(messageRecord);
-    }
-
-    return messageRecord.getId();
-  }
-
-  public long stageOutgoingMessage(OutgoingTextMessage message) {
-    MessageRecord messageRecord = DatabaseFactory.getSmsDatabase(getContext()).readerFor(message, threadId).getCurrent();
-
-    if (getListAdapter() != null) {
-      //getListAdapter().setHeaderView(null);
-      setLastSeen(0);
-      getListAdapter().addFastRecord(messageRecord);
-    }
-
-    return messageRecord.getId();
-  }
-
-  public void releaseOutgoingMessage(long id) {
-    if (getListAdapter() != null) {
-      getListAdapter().releaseFastRecord(id);
-    }
-  }
-
   private void scrollToStartingPosition(final int startingPosition) {
     list.post(() -> {
       list.getLayoutManager().scrollToPosition(startingPosition);

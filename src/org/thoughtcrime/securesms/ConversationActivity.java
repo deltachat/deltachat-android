@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
@@ -35,6 +36,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Browser;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
@@ -66,12 +68,14 @@ import android.widget.Toast;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
+import com.b44t.messenger.DcMsg;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.protobuf.ByteString;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AnimatingToggle;
@@ -1419,42 +1423,63 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     sendMediaMessage(forceSms, getMessage(), attachmentManager.buildSlideDeck(), Collections.emptyList(), expiresIn, subscriptionId, initiating);
   }
 
+  private static String getRealPathFromURI(Context context, Uri contentUri) {
+    // TODO: this does not work with all URIs and it is hard to get it work with
+    // all URIs, see https://www.dev2qa.com/how-to-get-real-file-path-from-android-uri/
+    // INSTEAD we should just copy the content to the blobDir (the core copies anyway, so we can also do this)
+    String[] proj = { MediaStore.Images.Media.DATA };
+    Cursor cursor = context.getContentResolver().query(contentUri, proj,
+        null, null, null);
+    int column_index = cursor
+        .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+    cursor.moveToFirst();
+    return cursor.getString(column_index);
+  }
+
   private ListenableFuture<Void> sendMediaMessage(final boolean forceSms, String body, SlideDeck slideDeck, List<Contact> contacts, final long expiresIn, final int subscriptionId, final boolean initiating) {
-    OutgoingMediaMessage outgoingMessageCandidate = new OutgoingMediaMessage(recipient, slideDeck, body, System.currentTimeMillis(), subscriptionId, expiresIn, distributionType, inputPanel.getQuote().orNull(), contacts);
 
     final SettableFuture<Void> future  = new SettableFuture<>();
     final Context              context = getApplicationContext();
 
-    final OutgoingMediaMessage outgoingMessage;
-
-    if (isSecureText && !forceSms) {
-      outgoingMessage = new OutgoingSecureMediaMessage(outgoingMessageCandidate);
-    } else {
-      outgoingMessage = outgoingMessageCandidate;
-    }
-
     inputPanel.clearQuote();
     attachmentManager.clear(glideRequests, false);
     composeText.setText("");
-    final long id = fragment.stageOutgoingMessage(outgoingMessage);
 
-    new AsyncTask<Void, Void, Long>() {
-      @Override
-      protected Long doInBackground(Void... param) {
-        if (initiating) {
-          DatabaseFactory.getRecipientDatabase(context).setProfileSharing(recipient, true);
+    try {
+      DcMsg msg = null;
+
+      List<Attachment> attachments = slideDeck.asAttachments();
+      for (Attachment attachment : attachments) {
+        String contentType = attachment.getContentType();
+
+        if (MediaUtil.isImageType(contentType)) {
+          msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
+          msg.setDimension(attachment.getWidth(), attachment.getHeight());
+        }
+        else if (MediaUtil.isAudioType(contentType)) {
+          msg = new DcMsg(dcContext, DcMsg.DC_MSG_AUDIO);
+        }
+        else if (MediaUtil.isVideoType(contentType)) {
+          msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+        }
+        else {
+          msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
         }
 
-        return MessageSender.send(context, outgoingMessage, threadId, false, () -> fragment.releaseOutgoingMessage(id));
+        Uri uri = attachment.getDataUri();
+        String path = getRealPathFromURI(context, uri);
+        msg.setFile(path, null);
       }
 
-      @Override
-      protected void onPostExecute(Long result) {
-        sendComplete(result);
-        future.set(null);
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      msg.setText(body);
+      dcContext.sendMsg(dcChat.getId(), msg);
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
 
+    sendComplete(dcChat.getId());
+    future.set(null);
     return future;
   }
 
