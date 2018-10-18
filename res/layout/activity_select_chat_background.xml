@@ -3,25 +3,35 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/preview"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="bottom">
+
         <Button
             android:id="@+id/set_default_button"
+            android:theme="@style/Button.Primary"
             android:layout_width="0dp"
-            android:layout_weight="0.5"
             android:layout_height="wrap_content"
-            android:text="Set default"/>
+            android:layout_weight="0.5"
+            android:text="Set default" />
+
         <Button
             android:id="@+id/from_gallery_button"
+            android:theme="@style/Button.Primary"
             android:layout_width="0dp"
-            android:layout_weight="0.5"
             android:layout_height="wrap_content"
-            android:text="From gallery"/>
+            android:layout_weight="0.5"
+            android:text="From gallery" />
     </LinearLayout>
 
 </FrameLayout>

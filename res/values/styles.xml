@@ -182,6 +182,7 @@
 
     <style name="Button.Primary" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="colorAccent">@color/signal_primary</item>
+        <item name="colorButtonNormal">@color/signal_primary</item>
         <item name="android:textColor">@color/white</item>
     </style>
 

@@ -56,15 +56,23 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textSize="18dp"
-            android:transitionName="recipient_name" />
+            android:transitionName="recipient_name"
+            app:layout_constraintEnd_toStartOf="@id/verified_indicator"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_weight="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Jules Bonnot" />
 
         <ImageView
             android:id="@+id/verified_indicator"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_verified"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_marginLeft="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_weight="0.1"
             app:layout_constraintBottom_toBottomOf="@id/title"
             app:layout_constraintStart_toEndOf="@id/title"
             app:layout_constraintTop_toTopOf="@id/title"

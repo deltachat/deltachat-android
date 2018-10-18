@@ -2,32 +2,16 @@ package org.thoughtcrime.securesms.preferences;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
-import android.view.Display;
-import android.widget.Toast;
-
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.Arrays;
-import java.util.concurrent.ExecutionException;
-
-import static android.app.Activity.RESULT_OK;
 
 public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment {
 
@@ -85,7 +69,7 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
   private class BackgroundClickListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
-      Intent intent = new Intent(getContext(), ChatBackgroundDialogFragment.class);
+      Intent intent = new Intent(getContext(), ChatBackgroundActivity.class);
       getActivity().startActivity(intent);
       return true;
     }
