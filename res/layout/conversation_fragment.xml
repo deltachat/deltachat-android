@@ -34,6 +34,16 @@
               android:visibility="gone"
               tools:text="March 1, 2015" />
 
+    <TextView
+        android:id="@+id/no_messages_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        style="@style/NoMessagesTextView"
+        tools:text="@string/ConversationActivity_NoMessagesHint"
+        />
+
     <View android:id="@+id/compose_divider"
           android:layout_width="match_parent"
           android:layout_height="2dp"

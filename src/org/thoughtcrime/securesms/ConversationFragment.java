@@ -116,7 +116,7 @@ public class ConversationFragment extends Fragment
   private RecyclerView.ItemDecoration lastSeenDecoration;
   private View                        scrollToBottomButton;
   private TextView                    scrollDateHeader;
-
+  private TextView                    noMessageTextView;
   private ApplicationDcContext        dcContext;
 
   @Override
@@ -139,6 +139,7 @@ public class ConversationFragment extends Fragment
     list                 = ViewUtil.findById(view, android.R.id.list);
     scrollToBottomButton = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
     scrollDateHeader     = ViewUtil.findById(view, R.id.scroll_date_header);
+    noMessageTextView    = ViewUtil.findById(view, R.id.no_messages_text_view);
 
     scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
 
@@ -162,6 +163,16 @@ public class ConversationFragment extends Fragment
 
     initializeResources();
     initializeListAdapter();
+  }
+
+  private void setNoMessageText() {
+    if(getListAdapter().isGroupChat()){
+      noMessageTextView.setText(R.string.ConversationActivity_MsgNewGroupDraftHint);
+    }else{
+      String name = getListAdapter().getChatName();
+      String message = getString(R.string.ConversationActivity_NoMessagesHint, name, name);
+      noMessageTextView.setText(message);
+    }
   }
 
   @Override
@@ -524,6 +535,14 @@ public class ConversationFragment extends Fragment
 
       ((LinearLayoutManager) list.getLayoutManager()).scrollToPositionWithOffset(scrollPosition, pixelOffset);
       previousOffset = 0;
+    }
+
+    if(!adapter.isActive()){
+      setNoMessageText();
+      noMessageTextView.setVisibility(View.VISIBLE);
+    }
+    else{
+      noMessageTextView.setVisibility(View.GONE);
     }
 
     if (lastSeenPosition <= 0) {

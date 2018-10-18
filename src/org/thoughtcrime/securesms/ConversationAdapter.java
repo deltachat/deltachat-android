@@ -113,6 +113,14 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return dcMsgList.length > 0;
   }
 
+  public boolean isGroupChat(){
+    return dcChat.isGroup();
+  }
+
+  public String getChatName(){
+    return dcChat.getName();
+  }
+
   @Override
   public int getItemCount() {
     return dcMsgList.length;
