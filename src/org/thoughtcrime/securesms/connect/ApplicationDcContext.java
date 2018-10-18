@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.PowerManager;
+import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
@@ -51,10 +52,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class ApplicationDcContext extends DcContext {
+
+    @IntDef({RECIPIENT_TYPE_CHAT, RECIPIENT_TYPE_CONTACT})
+    public @interface RecipientType {}
+
+    public static final int RECIPIENT_TYPE_CHAT = 0;
+    public static final int RECIPIENT_TYPE_CONTACT = 1;
 
     public Context context;
 
@@ -148,13 +157,25 @@ public class ApplicationDcContext extends DcContext {
      **********************************************************************************************/
 
     @NonNull
-    public Recipient getRecipient(int chatId) {
-        return getRecipient(getChat(chatId));
+    public Recipient getRecipient(@RecipientType int recipientType, int id) {
+        switch (recipientType) {
+            case RECIPIENT_TYPE_CHAT:
+                return getRecipient(getChat(id));
+            case RECIPIENT_TYPE_CONTACT:
+                return getRecipient(getContact(id));
+            default:
+                throw new IllegalArgumentException("Wrong RecipientType");
+        }
     }
 
     @NonNull
     public Recipient getRecipient(DcChat chat) {
-        RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, null);
+        int[] contactIds = getChatContacts(chat.getId());
+        List<Recipient> participants = new ArrayList<>();
+        for(int contactId : contactIds) {
+            participants.add(getRecipient(RECIPIENT_TYPE_CONTACT, contactId));
+        }
+        RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, participants);
         return new Recipient(Address.fromChat(chat.getId()), recipientDetails);
     }
     @NonNull
