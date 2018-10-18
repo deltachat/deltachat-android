@@ -38,6 +38,7 @@ import android.widget.Toast;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.dd.CircularProgressButton;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -97,6 +98,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private ImageView    avatar;
   private TextView     creatingText;
   private Bitmap       avatarBmp;
+  private CircularProgressButton verifyButton;
 
   @NonNull private Optional<GroupData> groupToUpdate = Optional.absent();
 
@@ -200,11 +202,16 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     avatar       = ViewUtil.findById(this, R.id.avatar);
     groupName    = ViewUtil.findById(this, R.id.group_name);
     creatingText = ViewUtil.findById(this, R.id.creating_group_text);
+    verifyButton = ViewUtil.findById(this, R.id.verify_button);
     SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);
 
     findViewById(R.id.add_member_button).setOnClickListener(new AddRecipientButtonListener());
+    if (createVerified) {
+      verifyButton.setOnClickListener(new ShowQrButtonListener());
+      verifyButton.setVisibility(View.VISIBLE);
+    }
     avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(this, ContactColors.UNKNOWN_COLOR.toConversationColor(this)));
     avatar.setOnClickListener(view -> Crop.pickImage(GroupCreateActivity.this));
   }
@@ -360,6 +367,15 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH | DisplayMode.FLAG_SMS);
       }
       startActivityForResult(intent, PICK_CONTACT);
+    }
+  }
+
+  private class ShowQrButtonListener implements View.OnClickListener {
+
+    @Override
+    public void onClick(View view) {
+        Intent qrIntent = new Intent(GroupCreateActivity.this, QrShowActivity.class);
+        startActivity(qrIntent);
     }
   }
 

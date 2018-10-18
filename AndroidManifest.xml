@@ -300,6 +300,14 @@
               android:windowSoftInputMode="stateVisible"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
+    <activity android:name=".QrScanActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+
+     <activity android:name=".QrShowActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+
     <activity android:name=".ClearProfileAvatarActivity"
               android:theme="@style/Theme.AppCompat.Dialog.Alert"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
@@ -324,7 +332,7 @@
               android:theme="@style/TextSecure.LightNoActionBar"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-    <activity android:name=".preferences.ChatBackgroundDialogFragment"
+    <activity android:name=".preferences.ChatBackgroundActivity"
         android:theme="@style/TextSecure.LightTheme"
         android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 

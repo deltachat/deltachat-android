@@ -8,21 +8,14 @@ import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -38,12 +31,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.concurrent.ExecutionException;
 
-public class ChatBackgroundDialogFragment extends BaseActionBarActivity {
+public class ChatBackgroundActivity extends BaseActionBarActivity {
 
     Button galleryButton;
     Button defaultButton;
-    FrameLayout layoutContainer;
     MenuItem acceptMenuItem;
+    ImageView preview;
 
     String tempDestinationPath;
     Uri imageUri;
@@ -51,11 +44,11 @@ public class ChatBackgroundDialogFragment extends BaseActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_chat_background_dialog);
+        setContentView(R.layout.activity_select_chat_background);
 
         defaultButton = findViewById(R.id.set_default_button);
         galleryButton = findViewById(R.id.from_gallery_button);
-        layoutContainer = findViewById(R.id.layout_container);
+        preview = findViewById(R.id.preview);
 
         defaultButton.setOnClickListener(new DefaultClickListener());
         galleryButton.setOnClickListener(new GalleryClickListener());
@@ -64,8 +57,10 @@ public class ChatBackgroundDialogFragment extends BaseActionBarActivity {
         setLayoutBackgroundImage(backgroundImagePath);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+        }
     }
 
     @Override
@@ -140,7 +135,7 @@ public class ChatBackgroundDialogFragment extends BaseActionBarActivity {
 
     private void setLayoutBackgroundImage(String backgroundImagePath) {
         Drawable image = Drawable.createFromPath(backgroundImagePath);
-        layoutContainer.setBackground(image);
+        preview.setImageDrawable(image);
     }
 
     @Override

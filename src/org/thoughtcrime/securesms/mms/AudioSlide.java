@@ -27,6 +27,7 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -38,7 +39,7 @@ import java.io.File;
 public class AudioSlide extends Slide {
 
   public AudioSlide(Context context, DcMsg dcMsg) {
-    this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getBytes(), dcMsg.getType()==DcMsg.DC_MSG_VOICE);
+    super(context, new DcAttachment(dcMsg));
     dcMsgId = dcMsg.getId();
   }
 

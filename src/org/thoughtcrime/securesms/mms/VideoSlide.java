@@ -22,8 +22,11 @@ import android.net.Uri;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ResUtil;
 
@@ -31,6 +34,10 @@ public class VideoSlide extends Slide {
 
   public VideoSlide(Context context, Uri uri, long dataSize) {
     super(context, constructAttachmentFromUri(context, uri, MediaUtil.VIDEO_UNSPECIFIED, dataSize, 0, 0, MediaUtil.hasVideoThumbnail(uri), null, false, false));
+  }
+
+  public VideoSlide(Context context, DcMsg dcMsg) {
+    super(context, new DcAttachment(dcMsg));
   }
 
   public VideoSlide(Context context, Attachment attachment) {

@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.util.StorageUtil;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class DocumentSlide extends Slide {
   }
 
   public DocumentSlide(Context context, DcMsg dcMsg) {
-    this(context, Uri.fromFile(new File(dcMsg.getFile())), dcMsg.getFilemime(), dcMsg.getBytes(), dcMsg.getFilename());
+    this(context, new DcAttachment(dcMsg));
     dcMsgId = dcMsg.getId();
   }
 

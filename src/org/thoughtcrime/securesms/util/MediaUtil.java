@@ -13,6 +13,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.webkit.MimeTypeMap;
 
+import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 
@@ -46,6 +47,25 @@ public class MediaUtil {
   public static final String VIDEO_UNSPECIFIED = "video/*";
   public static final String VCARD             = "text/x-vcard";
 
+
+  public static Slide getSlideForMsg(Context context, DcMsg dcMsg) {
+    Slide slide = null;
+    if (isGif(dcMsg.getFilemime())) {
+      slide = new GifSlide(context, dcMsg);
+    } else if (isImageType(dcMsg.getFilemime())) {
+      slide = new ImageSlide(context, dcMsg);
+    } else if (isVideoType(dcMsg.getFilemime())) {
+      slide = new VideoSlide(context, dcMsg);
+    } else if (isAudioType(dcMsg.getFilemime())) {
+      slide = new AudioSlide(context, dcMsg);
+    } else if (isMms(dcMsg.getFilemime())) {
+      slide = new MmsSlide(context, dcMsg);
+    } else if (dcMsg.getFilemime() != null) {
+      slide = new DocumentSlide(context, dcMsg);
+    }
+
+    return slide;
+  }
 
   public static Slide getSlideForAttachment(Context context, Attachment attachment) {
     Slide slide = null;

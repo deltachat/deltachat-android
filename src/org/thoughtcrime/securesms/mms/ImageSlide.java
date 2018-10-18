@@ -23,14 +23,21 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 public class ImageSlide extends Slide {
 
   @SuppressWarnings("unused")
   private static final String TAG = ImageSlide.class.getSimpleName();
+
+  public ImageSlide(@NonNull Context context, @NonNull DcMsg dcMsg) {
+    super(context, new DcAttachment(dcMsg));
+  }
 
   public ImageSlide(@NonNull Context context, @NonNull Attachment attachment) {
     super(context, attachment);

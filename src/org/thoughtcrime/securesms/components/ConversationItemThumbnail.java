@@ -16,10 +16,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
+import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
+
+import java.util.concurrent.ExecutionException;
 
 public class ConversationItemThumbnail extends FrameLayout {
 
@@ -145,11 +149,25 @@ public class ConversationItemThumbnail extends FrameLayout {
     return footer;
   }
 
+  private void refreshSlideAttachmentState(ListenableFuture<Boolean> signal, Slide slide) {
+    signal.addListener(new ListenableFuture.Listener<Boolean>() {
+      @Override
+      public void onSuccess(Boolean result) {
+        slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_DONE);
+      }
+
+      @Override
+      public void onFailure(ExecutionException e) {
+        slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_FAILED);
+      }
+    });
+  }
+
   @UiThread
   public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
                                boolean showControls, boolean isPreview)
   {
-    thumbnail.setImageResource(glideRequests, slide, showControls, isPreview);
+    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, showControls, isPreview), slide);
   }
 
   @UiThread
@@ -157,7 +175,8 @@ public class ConversationItemThumbnail extends FrameLayout {
                                boolean showControls, boolean isPreview, int naturalWidth,
                                int naturalHeight)
   {
-    thumbnail.setImageResource(glideRequests, slide, showControls, isPreview, naturalWidth, naturalHeight);
+    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, showControls, isPreview, naturalWidth, naturalHeight), slide);
+
   }
 
   public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {

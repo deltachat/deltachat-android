@@ -93,7 +93,6 @@ public class DcMsg {
     public native int     getHeight          (int def);
     public native int     getDuration        ();
     public native void    lateFilingMediaSize(int width, int height, int duration);
-    public native int     getBytes           ();
     public @NonNull DcLot getSummary         (DcChat chat) { return new DcLot(getSummaryCPtr(chat.getChatCPtr())); }
     public native String  getSummarytext     (int approx_characters);
     public native int     showPadlock        ();
@@ -101,6 +100,7 @@ public class DcMsg {
     public native String  getFile            ();
     public native String  getFilemime        ();
     public native String  getFilename        ();
+    public native long    getFilebytes       ();
     public native boolean isForwarded        ();
     public native boolean isInfo             ();
     public native boolean isSetupMessage     ();
