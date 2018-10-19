@@ -86,8 +86,8 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
                     @Override
                     public void run() {
                         String destination = context.getFilesDir().getAbsolutePath() + "/background";
-                        scaleAndSaveImage(context, destination);
                         TextSecurePreferences.setBackgroundImagePath(context, destination);
+                        scaleAndSaveImage(context, destination);
                     }
                 };
                 thread.start();
@@ -123,12 +123,15 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
         } catch (InterruptedException e) {
             e.printStackTrace();
+            TextSecurePreferences.setBackgroundImagePath(context, "");
             showBackgroundSaveError();
         } catch (ExecutionException e) {
             e.printStackTrace();
+            TextSecurePreferences.setBackgroundImagePath(context, "");
             showBackgroundSaveError();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            TextSecurePreferences.setBackgroundImagePath(context, "");
             showBackgroundSaveError();
         }
     }

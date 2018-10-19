@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
+import android.util.Log;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
@@ -41,6 +42,15 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
   public void onResume() {
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__appearance);
+    String imagePath = TextSecurePreferences.getBackgroundImagePath(getContext());
+    String backgroundString;
+    if(imagePath.isEmpty()){
+      backgroundString = this.getString(R.string.AppearancePreferencesFragment_background_default_summary);
+    }
+    else{
+      backgroundString = this.getString(R.string.AppearancePreferencesFragment_background_custom_summary);
+    }
+    this.findPreference(TextSecurePreferences.BACKGROUND_PREF).setSummary(backgroundString);
   }
 
   @Override
@@ -61,9 +71,18 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     if (langIndex == -1)  langIndex = 0;
     if (themeIndex == -1) themeIndex = 0;
 
-    return context.getString(R.string.ApplicationPreferencesActivity_appearance_summary,
+    String imagePath = TextSecurePreferences.getBackgroundImagePath(context);
+    String backgroundString;
+    if(imagePath.isEmpty()){
+      backgroundString = context.getString(R.string.ApplicationPreferencesActivity_appearance_background_default);
+    }
+    else{
+      backgroundString = context.getString(R.string.ApplicationPreferencesActivity_appearance_background_custom);
+    }
+
+    return context.getString(R.string.ApplicationPreferencesActivity_appearance_summary_new,
                              themeEntries[themeIndex],
-                             languageEntries[langIndex]);
+                             languageEntries[langIndex], backgroundString);
   }
 
   private class BackgroundClickListener implements Preference.OnPreferenceClickListener {

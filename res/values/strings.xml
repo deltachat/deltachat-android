@@ -41,8 +41,14 @@
     <string name="ApplicationPreferencesActivity_sms_mms_summary">SMS %1$s, MMS %2$s</string>
     <string name="ApplicationPreferencesActivity_privacy_summary">Screen lock %1$s, Read receipts %2$s</string>
     <string name="ApplicationPreferencesActivity_appearance_summary">Theme %1$s, Language %2$s</string>
+    <string name="ApplicationPreferencesActivity_appearance_summary_new">Theme %1$s, Language %2$s, Background %3$s</string>
+    <string name="ApplicationPreferencesActivity_appearance_background_default">default</string>
+    <string name="ApplicationPreferencesActivity_appearance_background_custom">custom</string>
+
     <!-- AppearancePreferenceFragment -->
     <string name="AppearancePreferencesFragment_background_save_error">Background image could not be saved</string>
+    <string name="AppearancePreferencesFragment_background_custom_summary">Custom</string>
+    <string name="AppearancePreferencesFragment_background_default_summary">Default</string>
 
     <!-- AppProtectionPreferenceFragment -->
     <plurals name="AppProtectionPreferenceFragment_minutes">
