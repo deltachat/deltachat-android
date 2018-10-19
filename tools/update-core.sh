@@ -35,9 +35,7 @@ rm -r jni/messenger-backend/.??*
 cd ..
 ln --symbolic `pwd`/deltachat-core/src     deltachat-android-ii/jni/messenger-backend/src
 ln --symbolic `pwd`/deltachat-core/libs    deltachat-android-ii/jni/messenger-backend/libs
-ln --symbolic `pwd`/deltachat-core/cmdline deltachat-android-ii/jni/messenger-backend/cmdline
 cd deltachat-android-ii
-ndk-build
 
 # back to tools directory
 cd tools

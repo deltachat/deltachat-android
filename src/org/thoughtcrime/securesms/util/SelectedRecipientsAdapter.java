@@ -127,7 +127,7 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
   private static List<RecipientWrapper> wrapExistingMembers(Collection<Recipient> recipients) {
     final LinkedList<RecipientWrapper> wrapperList = new LinkedList<>();
     for (Recipient recipient : recipients) {
-      wrapperList.add(new RecipientWrapper(recipient, false, true));
+      wrapperList.add(new RecipientWrapper(recipient, true, true));
     }
     return wrapperList;
   }

@@ -47,13 +47,9 @@ import org.thoughtcrime.securesms.contacts.ContactsCursorLoader.DisplayMode;
 import org.thoughtcrime.securesms.contacts.avatars.ContactColors;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.GroupDatabase;
-import org.thoughtcrime.securesms.database.GroupDatabase.GroupRecord;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter;
@@ -63,8 +59,6 @@ import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -99,8 +93,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private TextView     creatingText;
   private Bitmap       avatarBmp;
   private CircularProgressButton verifyButton;
-
-  @NonNull private Optional<GroupData> groupToUpdate = Optional.absent();
+  private boolean editGroup;
 
   @Override
   protected void onPreCreate() {
@@ -134,7 +127,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     groupName.setEnabled(true);
 
     String title;
-    if(groupToUpdate.isPresent()) {
+    if(editGroup) {
       title = getString(R.string.GroupCreateActivity_actionbar_edit_title);
     }
     else if(createVerified) {
@@ -148,10 +141,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private void addSelectedContacts(@NonNull Recipient... recipients) {
     new AddMembersTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, recipients);
-  }
-
-  private void addSelectedContacts(@NonNull Collection<Recipient> recipients) {
-    addSelectedContacts(recipients.toArray(new Recipient[recipients.size()]));
   }
 
   private static class AddMembersTask extends AsyncTask<Recipient,Void,List<AddMembersTask.Result>> {
@@ -217,10 +206,11 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeExistingGroup() {
+    editGroup = true;
     final Address groupAddress = getIntent().getParcelableExtra(GROUP_ADDRESS_EXTRA);
-
     if (groupAddress != null) {
-      new FillExistingGroupInfoAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, groupAddress.toGroupString());
+      int chatId = groupAddress.getDcChatId();
+      new FillExistingGroupInfoAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
     }
   }
 
@@ -242,7 +232,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         finish();
         return true;
       case R.id.menu_create_group:
-        if (groupToUpdate.isPresent()) handleGroupUpdate();
+        if (editGroup) handleGroupUpdate();
         else                           handleGroupCreate();
         return true;
     }
@@ -361,7 +351,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     public void onClick(View v) {
       Intent intent = new Intent(GroupCreateActivity.this, ContactMultiSelectionActivity.class);
       intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, createVerified);
-      if (groupToUpdate.isPresent()) {
+      if (editGroup) {
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH);
       } else {
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH | DisplayMode.FLAG_SMS);
@@ -379,10 +369,11 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private static class FillExistingGroupInfoAsyncTask extends ProgressDialogAsyncTask<String,Void,Optional<GroupData>> {
-    private GroupCreateActivity activity;
+  private static class FillExistingGroupInfoAsyncTask extends ProgressDialogAsyncTask<Integer,Void,Recipient> {
 
-    public FillExistingGroupInfoAsyncTask(GroupCreateActivity activity) {
+    GroupCreateActivity activity;
+
+    FillExistingGroupInfoAsyncTask(GroupCreateActivity activity) {
       super(activity,
             R.string.GroupCreateActivity_loading_group_details,
             R.string.please_wait);
@@ -390,40 +381,27 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     }
 
     @Override
-    protected Optional<GroupData> doInBackground(String... groupIds) {
-      final GroupDatabase         db               = DatabaseFactory.getGroupDatabase(activity);
-      final List<Recipient>       recipients       = db.getGroupMembers(groupIds[0], false);
-      final Optional<GroupRecord> group            = db.getGroup(groupIds[0]);
-      final Set<Recipient>        existingContacts = new HashSet<>(recipients.size());
-      existingContacts.addAll(recipients);
-
-      if (group.isPresent()) {
-        return Optional.of(new GroupData(groupIds[0],
-                                         existingContacts,
-                                         BitmapUtil.fromByteArray(group.get().getAvatar()),
-                                         group.get().getAvatar(),
-                                         group.get().getTitle()));
-      } else {
-        return Optional.absent();
-      }
+    protected Recipient doInBackground(Integer... recipientIds) {
+      Integer recipientsId = recipientIds[0];
+      Recipient recipient = activity.dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, recipientsId);
+      return recipient;
     }
 
     @Override
-    protected void onPostExecute(Optional<GroupData> group) {
-      super.onPostExecute(group);
+    protected void onPostExecute(Recipient recipient) {
+      super.onPostExecute(recipient);
+      activity.fllExistingGroup(recipient);
+    }
+  }
 
-      if (group.isPresent() && !activity.isFinishing()) {
-        activity.groupToUpdate = group;
-
-        activity.groupName.setText(group.get().name);
-        if (group.get().avatarBmp != null) {
-          activity.setAvatar(group.get().avatarBytes, group.get().avatarBmp);
-        }
-        SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(activity, group.get().recipients);
-        adapter.setOnRecipientDeletedListener(activity);
-        activity.lv.setAdapter(adapter);
-        activity.updateViewState();
-      }
+  private void fllExistingGroup(Recipient recipient) {
+    List<Recipient> participants = recipient.getParticipants();
+    if (!isFinishing()) {
+      groupName.setText(recipient.getName());
+      SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, participants);
+      adapter.setOnRecipientDeletedListener(this);
+      lv.setAdapter(adapter);
+      updateViewState();
     }
   }
 

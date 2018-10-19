@@ -408,13 +408,5 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     recordCache.clear();
     notifyDataSetChanged();
   }
-
-  public void addFastRecord(@NonNull MessageRecord record) {
-    // TODO: i think this is not need, we simply should reload the view
-  }
-
-  public void releaseFastRecord(long id) {
-      // TODO: i think this is not need, we simply should reload the view
-  }
 }
 
