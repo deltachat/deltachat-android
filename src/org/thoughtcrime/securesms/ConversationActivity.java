@@ -1488,7 +1488,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           msg.setDimension(attachment.getWidth(), attachment.getHeight());
         }
         else if (MediaUtil.isAudioType(contentType)) {
-          msg = new DcMsg(dcContext, DcMsg.DC_MSG_AUDIO);
+          msg = new DcMsg(dcContext,
+              attachment.isVoiceNote()? DcMsg.DC_MSG_VOICE : DcMsg.DC_MSG_AUDIO);
         }
         else if (MediaUtil.isVideoType(contentType)) {
           msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
