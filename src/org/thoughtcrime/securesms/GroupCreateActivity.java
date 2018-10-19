@@ -206,9 +206,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeExistingGroup() {
-    editGroup = true;
     final Address groupAddress = getIntent().getParcelableExtra(GROUP_ADDRESS_EXTRA);
     if (groupAddress != null) {
+      editGroup = true;
       int chatId = groupAddress.getDcChatId();
       new FillExistingGroupInfoAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
     }
