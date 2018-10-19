@@ -39,9 +39,9 @@
             tools:src="@drawable/ic_contact_picture"
             android:contentDescription="@string/conversation_list_item_view__contact_photo_image"/>
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/contact_photo_image"
@@ -50,33 +50,32 @@
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
             android:id="@+id/title"
             style="@style/TextSecure.TitleTextStyle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@id/verified_indicator"
+            android:layout_toStartOf="@id/verified_indicator"
             android:drawablePadding="5dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textSize="18dp"
             android:transitionName="recipient_name"
-            app:layout_constraintEnd_toStartOf="@id/verified_indicator"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintHorizontal_weight="0.9"
-            app:layout_constraintStart_toStartOf="parent"
             tools:text="Jules Bonnot" />
 
         <ImageView
             android:id="@+id/verified_indicator"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_verified"
-            android:visibility="gone"
             android:layout_marginLeft="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintHorizontal_weight="0.1"
-            app:layout_constraintBottom_toBottomOf="@id/title"
-            app:layout_constraintStart_toEndOf="@id/title"
-            app:layout_constraintTop_toTopOf="@id/title"
-            android:layout_marginStart="5dp" />
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_verified"
+            android:visibility="gone" />
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
             android:id="@+id/subtitle"
@@ -87,9 +86,9 @@
             android:maxLines="1"
             android:textDirection="ltr"
             android:textSize="13dp"
-            app:layout_constraintTop_toBottomOf="@id/title"
+            android:layout_below="@id/title"
             tools:text="(123) 123-1234" />
 
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 
 </org.thoughtcrime.securesms.ConversationTitleView>
