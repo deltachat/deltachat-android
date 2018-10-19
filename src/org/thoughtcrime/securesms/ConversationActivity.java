@@ -58,6 +58,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -124,8 +125,7 @@ import org.thoughtcrime.securesms.mms.LocationSlide;
 import org.thoughtcrime.securesms.mms.MediaConstraints;
 import org.thoughtcrime.securesms.mms.OutgoingExpirationUpdateMessage;
 import org.thoughtcrime.securesms.mms.OutgoingGroupMediaMessage;
-import org.thoughtcrime.securesms.mms.OutgoingMediaMessage;
-import org.thoughtcrime.securesms.mms.OutgoingSecureMediaMessage;
+import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.QuoteId;
 import org.thoughtcrime.securesms.mms.QuoteModel;
 import org.thoughtcrime.securesms.mms.Slide;
@@ -160,8 +160,14 @@ import org.thoughtcrime.securesms.util.views.Stub;
 import org.whispersystems.libsignal.InvalidMessageException;
 import org.whispersystems.libsignal.util.guava.Optional;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -1423,23 +1429,48 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     sendMediaMessage(forceSms, getMessage(), attachmentManager.buildSlideDeck(), Collections.emptyList(), expiresIn, subscriptionId, initiating);
   }
 
-  private static String getRealPathFromURI(Context context, Uri contentUri) {
-    // TODO: this does not work with all URIs and it is hard to get it work with
-    // all URIs, see https://www.dev2qa.com/how-to-get-real-file-path-from-android-uri/
-    // INSTEAD we should just copy the content to the blobDir (the core copies anyway, so we can also do this)
-    String[] proj = { MediaStore.Images.Media.DATA };
-    Cursor cursor = context.getContentResolver().query(contentUri, proj,
-        null, null, null);
-    int column_index = cursor
-        .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-    cursor.moveToFirst();
-    return cursor.getString(column_index);
+  private String getRealPathFromAttachment(Attachment attachment) {
+    try {
+      // get file in the blobdir as `<blobdir>/<name>[-<uniqueNumber>].<ext>`
+      String filename = attachment.getFileName();
+      String ext = "";
+      if(filename==null) {
+        filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
+        ext = "."+MimeTypeMap.getSingleton().getExtensionFromMimeType(attachment.getContentType());
+      }
+      else {
+        int i = filename.lastIndexOf(".");
+        if(i>=0) {
+          ext = filename.substring(i);
+          filename = filename.substring(0, i);
+        }
+      }
+      String path = null;
+      for (int i=0; i<1000; i++) {
+        path = dcContext.getBlobdir()+"/"+filename+(i==0? "" : i<100? "-"+i : "-"+(new Date().getTime()+i))+ext;
+        if (!new File(path).exists()) {
+          break;
+        }
+      }
+
+      // copy content to this file
+      if(path!=null) {
+        InputStream inputStream = PartAuthority.getAttachmentStream(this, attachment.getDataUri());
+        OutputStream outputStream = new FileOutputStream(path);
+        Util.copy(inputStream, outputStream);
+      }
+
+      return path;
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
   private ListenableFuture<Void> sendMediaMessage(final boolean forceSms, String body, SlideDeck slideDeck, List<Contact> contacts, final long expiresIn, final int subscriptionId, final boolean initiating) {
 
     final SettableFuture<Void> future  = new SettableFuture<>();
-    final Context              context = getApplicationContext();
 
     inputPanel.clearQuote();
     attachmentManager.clear(glideRequests, false);
@@ -1466,8 +1497,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
         }
 
-        Uri uri = attachment.getDataUri();
-        String path = getRealPathFromURI(context, uri);
+        String path = getRealPathFromAttachment(attachment);
         msg.setFile(path, null);
       }
 
