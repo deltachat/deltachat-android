@@ -164,8 +164,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_new_chat:          createChat();            return true;
       case R.id.menu_settings:          handleDisplaySettings(); return true;
       case R.id.menu_clear_passphrase:  handleClearPassphrase(); return true;
-      case R.id.menu_invite:            handleInvite();          return true;
-      case R.id.menu_help:              handleHelp();            return true;
       case R.id.menu_qr_scan:           handleQrScan();          return true;
       case R.id.menu_qr_show:           handleQrShow();          return true;
       case R.id.menu_deaddrop:          handleDeaddrop();        return true;
@@ -236,18 +234,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Intent intent = new Intent(this, KeyCachingService.class);
     intent.setAction(KeyCachingService.CLEAR_KEY_ACTION);
     startService(intent);
-  }
-
-  private void handleInvite() {
-    startActivity(new Intent(this, InviteActivity.class));
-  }
-
-  private void handleHelp() {
-    try {
-      startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.help_url))));
-    } catch (ActivityNotFoundException e) {
-      Toast.makeText(this, R.string.ConversationListActivity_there_is_no_browser_installed_on_your_device, Toast.LENGTH_LONG).show();
-    }
   }
 
   @Override

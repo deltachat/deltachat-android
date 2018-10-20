@@ -18,11 +18,13 @@
 package org.thoughtcrime.securesms;
 
 import android.annotation.TargetApi;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -33,6 +35,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.preference.Preference;
+import android.widget.Toast;
 
 import org.thoughtcrime.securesms.preferences.AdvancedPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.AppProtectionPreferenceFragment;
@@ -65,6 +68,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   private static final String PREFERENCE_CATEGORY_APPEARANCE     = "preference_category_appearance";
   private static final String PREFERENCE_CATEGORY_CHATS          = "preference_category_chats";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
+  private static final String PREFERENCE_CATEGORY_INVITE         = "preference_category_invite";
+  private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
 
   public static final int REQUEST_CODE_SET_BACKGROUND            = 11;
 
@@ -147,6 +152,10 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_CHATS));
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
+      this.findPreference(PREFERENCE_CATEGORY_INVITE)
+          .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_INVITE));
+      this.findPreference(PREFERENCE_CATEGORY_HELP)
+          .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_HELP));
 
       if (VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
         tintIcons(getActivity());
@@ -179,37 +188,36 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           .setSummary(ChatsPreferenceFragment.getSummary(getActivity()));
     }
 
-    private void setCategoryVisibility() {
-    }
-
     @TargetApi(11)
     private void tintIcons(Context context) {
-      Drawable sms           = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_textsms_white_24dp));
       Drawable notifications = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_notifications_white_24dp));
       Drawable privacy       = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_security_white_24dp));
       Drawable appearance    = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_brightness_6_white_24dp));
       Drawable chats         = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_forum_white_24dp));
-      Drawable devices       = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_laptop_white_24dp));
       Drawable advanced      = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_advanced_white_24dp));
+      Drawable invite        = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_mood_white_24dp));
+      Drawable help          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_help_white_24dp));
 
       int[]      tintAttr   = new int[]{R.attr.pref_icon_tint};
       TypedArray typedArray = context.obtainStyledAttributes(tintAttr);
       int        color      = typedArray.getColor(0, 0x0);
       typedArray.recycle();
 
-      DrawableCompat.setTint(sms, color);
       DrawableCompat.setTint(notifications, color);
       DrawableCompat.setTint(privacy, color);
       DrawableCompat.setTint(appearance, color);
       DrawableCompat.setTint(chats, color);
-      DrawableCompat.setTint(devices, color);
       DrawableCompat.setTint(advanced, color);
+      DrawableCompat.setTint(invite, color);
+      DrawableCompat.setTint(help, color);
 
       this.findPreference(PREFERENCE_CATEGORY_NOTIFICATIONS).setIcon(notifications);
       this.findPreference(PREFERENCE_CATEGORY_APP_PROTECTION).setIcon(privacy);
       this.findPreference(PREFERENCE_CATEGORY_APPEARANCE).setIcon(appearance);
       this.findPreference(PREFERENCE_CATEGORY_CHATS).setIcon(chats);
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED).setIcon(advanced);
+      this.findPreference(PREFERENCE_CATEGORY_INVITE).setIcon(invite);
+      this.findPreference(PREFERENCE_CATEGORY_HELP).setIcon(help);
     }
 
     private class CategoryClickListener implements Preference.OnPreferenceClickListener {
@@ -236,8 +244,15 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         case PREFERENCE_CATEGORY_CHATS:
           fragment = new ChatsPreferenceFragment();
           break;
-        case PREFERENCE_CATEGORY_ADVANCED:
-          fragment = new AdvancedPreferenceFragment();
+        case PREFERENCE_CATEGORY_INVITE:
+          startActivity(new Intent(getActivity(), InviteActivity.class));
+          break;
+        case PREFERENCE_CATEGORY_HELP:
+          try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.help_url))));
+          } catch (ActivityNotFoundException e) {
+            Toast.makeText(getActivity(), R.string.ConversationListActivity_there_is_no_browser_installed_on_your_device, Toast.LENGTH_LONG).show();
+          }
           break;
         default:
           throw new AssertionError();

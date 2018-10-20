@@ -19,13 +19,7 @@
     <item android:title="@string/text_secure_normal__menu_clear_passphrase"
           android:id="@+id/menu_clear_passphrase" />
 
-    <item android:title="@string/text_secure_normal__invite_friends"
-          android:id="@+id/menu_invite" />
-
     <item android:title="@string/text_secure_normal__menu_settings"
           android:id="@+id/menu_settings" />
-
-    <item android:title="@string/text_secure_normal__help"
-          android:id="@+id/menu_help"/>
 
 </menu>

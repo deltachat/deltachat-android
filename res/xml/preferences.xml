@@ -25,4 +25,12 @@
                 android:title="@string/preferences__advanced"
                 android:icon="@drawable/ic_advanced_24dp"/>
 
+    <Preference android:key="preference_category_invite"
+                android:title="@string/text_secure_normal__invite_friends"
+                android:icon="@drawable/ic_invite_24dp"/>
+
+    <Preference android:key="preference_category_help"
+                android:title="@string/text_secure_normal__help"
+                android:icon="@drawable/ic_help_24dp"/>
+
 </PreferenceScreen>
