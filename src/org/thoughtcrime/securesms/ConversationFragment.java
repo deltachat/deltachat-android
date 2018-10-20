@@ -55,6 +55,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -68,7 +69,9 @@ import org.thoughtcrime.securesms.connect.DcMsgListLoader;
 import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.contactshare.SharedContactDetailsActivity;
+import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
+import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.jobs.DirectoryRefreshJob;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -739,6 +742,22 @@ public class ConversationFragment extends Fragment
           setCorrectMenuVisibility(actionMode.getMenu());
           actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
         }
+      }
+      else if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+        new AlertDialog.Builder(getActivity())
+          .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+            int chatId = dcContext.createChatByMsgId(messageRecord.getId());
+            if( chatId != 0 ) {
+              Intent intent = new Intent(getActivity(), ConversationActivity.class);
+              intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(chatId));
+              intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
+              startActivity(intent);
+            }
+          })
+          .setNegativeButton(android.R.string.cancel, null)
+          .setMessage(getActivity().getString(R.string.new_conversation_activity__ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
+          .show();
+
       }
       else if(messageRecord.isSetupMessage()) {
         querySetupCode(messageRecord,null);
