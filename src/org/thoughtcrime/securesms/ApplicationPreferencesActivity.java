@@ -244,6 +244,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         case PREFERENCE_CATEGORY_CHATS:
           fragment = new ChatsPreferenceFragment();
           break;
+        case PREFERENCE_CATEGORY_ADVANCED:
+          fragment = new AdvancedPreferenceFragment();
+          break;
         case PREFERENCE_CATEGORY_INVITE:
           startActivity(new Intent(getActivity(), InviteActivity.class));
           break;
