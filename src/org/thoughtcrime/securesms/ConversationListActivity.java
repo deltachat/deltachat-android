@@ -30,10 +30,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
+import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.lock.RegistrationLockDialog;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.QrScanHandler;
@@ -158,13 +161,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     super.onOptionsItemSelected(item);
 
     switch (item.getItemId()) {
-    case R.id.menu_new_chat:          createChat();            return true;
-    case R.id.menu_settings:          handleDisplaySettings(); return true;
-    case R.id.menu_clear_passphrase:  handleClearPassphrase(); return true;
-    case R.id.menu_invite:            handleInvite();          return true;
-    case R.id.menu_help:              handleHelp();            return true;
-    case R.id.menu_qr_scan:           handleQrScan();          return true;
-    case R.id.menu_qr_show:           handleQrShow();          return true;
+      case R.id.menu_new_chat:          createChat();            return true;
+      case R.id.menu_settings:          handleDisplaySettings(); return true;
+      case R.id.menu_clear_passphrase:  handleClearPassphrase(); return true;
+      case R.id.menu_invite:            handleInvite();          return true;
+      case R.id.menu_help:              handleHelp();            return true;
+      case R.id.menu_qr_scan:           handleQrScan();          return true;
+      case R.id.menu_qr_show:           handleQrShow();          return true;
+      case R.id.menu_deaddrop:          handleDeaddrop();        return true;
     }
 
     return false;
@@ -213,6 +217,13 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void createChat() {
     Intent intent = new Intent(this, NewConversationActivity.class);
+    startActivity(intent);
+  }
+
+  private void handleDeaddrop() {
+    Intent intent = new Intent(this, ConversationActivity.class);
+    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(DcChat.DC_CHAT_ID_DEADDROP));
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)DcChat.DC_CHAT_ID_DEADDROP);
     startActivity(intent);
   }
 

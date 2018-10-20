@@ -13,6 +13,9 @@
     <item android:title="@string/text_secure_normal__menu_new_chat"
           android:id="@+id/menu_new_chat" />
 
+    <item android:title="@string/menu_deaddrop"
+          android:id="@+id/menu_deaddrop" />
+
     <item android:title="@string/text_secure_normal__menu_clear_passphrase"
           android:id="@+id/menu_clear_passphrase" />
 

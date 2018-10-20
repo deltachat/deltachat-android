@@ -1524,5 +1524,6 @@
     <string name="copy_to_clipboard">Copy to clipboard</string>
     <string name="open">Open</string>
     <string name="done">Done</string>
+    <string name="menu_deaddrop">Contact requests</string>
 
 </resources>
