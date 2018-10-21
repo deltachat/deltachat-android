@@ -252,6 +252,10 @@ public class ConversationListItem extends RelativeLayout
     return threadId;
   }
 
+  public int getMsgId() {
+    return msgId;
+  }
+
   public int getContactId() {
     DcContext dcContext = DcHelper.getContext(getContext());
     return dcContext.getMsg(msgId).getFromId();

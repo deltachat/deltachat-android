@@ -1526,5 +1526,7 @@
     <string name="done">Done</string>
     <string name="menu_deaddrop">Contact requests</string>
     <string name="contact_request">Contact request</string>
+    <string name="not_now">Not now</string>
+    <string name="never">Never</string>
 
 </resources>

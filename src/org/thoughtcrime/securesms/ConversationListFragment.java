@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -50,7 +51,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 
@@ -368,7 +371,30 @@ public class ConversationListFragment extends Fragment
   @Override
   public void onItemClick(ConversationListItem item) {
     if (actionMode == null) {
-      handleCreateConversation(item.getThreadId(), item.getLastSeen());
+      long threadId = item.getThreadId();
+
+      if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+        DcContext dcContext = DcHelper.getContext(getActivity());
+        int msgId = item.getMsgId();
+        int contactId = item.getContactId();
+        DcContact contact = dcContext.getContact(contactId);
+        new AlertDialog.Builder(getActivity())
+          .setMessage(getActivity().getString(R.string.new_conversation_activity__ask_start_chat_with, contact.getNameNAddr()))
+          .setPositiveButton(android.R.string.ok, (dialog, which) ->  {
+              int belongingChatId = dcContext.createChatByMsgId(msgId);
+              if( belongingChatId != 0 ) {
+                handleCreateConversation(belongingChatId, 0);
+              }
+          })
+          .setNegativeButton(R.string.not_now, null)
+          .setNeutralButton(R.string.never, (dialog, which) -> {
+            dcContext.blockContact(contactId, 1);
+          })
+          .show();
+        return;
+      }
+
+      handleCreateConversation(threadId, item.getLastSeen());
     } else {
       ConversationListAdapter adapter = (ConversationListAdapter)list.getAdapter();
       adapter.toggleThreadInBatchSet(item.getThreadId());
@@ -505,6 +531,12 @@ public class ConversationListFragment extends Fragment
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
       } else {
+        if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+          int contactId = ((ConversationListItem)viewHolder.itemView).getContactId();
+          dcContext.marknoticedContact(contactId);
+          return;
+        }
+
         new SnackbarAsyncTask<Long>(getView(),
                                     getResources().getQuantityString(R.plurals.ConversationListFragment_conversations_archived, 1, 1),
                                     getString(R.string.ConversationListFragment_undo),
