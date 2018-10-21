@@ -41,7 +41,7 @@ public class ConversationListItemInboxZero extends LinearLayout implements Binda
   }
 
   @Override
-  public void bind(@NonNull ThreadRecord thread, @NonNull DcLot dcSummary, @NonNull GlideRequests glideRequests, @NonNull Locale locale, @NonNull Set<Long> selectedThreads, boolean batchMode) {
+  public void bind(@NonNull ThreadRecord thread, int msgId, @NonNull DcLot dcSummary, @NonNull GlideRequests glideRequests, @NonNull Locale locale, @NonNull Set<Long> selectedThreads, boolean batchMode) {
 
   }
 }

@@ -131,7 +131,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
     ViewHolder holder = (ViewHolder)viewHolder;
     DcChat chat = dcContext.getChat(dcChatlist.getChatId(i));
     DcLot summary = dcChatlist.getSummary(i, chat);
-    holder.getItem().bind(dcContext.getThreadRecord(summary, chat), summary, glideRequests, locale, batchSet, batchMode);
+    holder.getItem().bind(dcContext.getThreadRecord(summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, locale, batchSet, batchMode);
   }
 
   @Override

@@ -40,6 +40,7 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.annimon.stream.Stream;
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
@@ -47,6 +48,7 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.components.FromTextView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -76,6 +78,7 @@ public class ConversationListItem extends RelativeLayout
   private Set<Long>          selectedThreads;
   private Recipient          recipient;
   private long               threadId;
+  private int                msgId;
   private GlideRequests      glideRequests;
   private TextView           subjectView;
   private FromTextView       fromView;
@@ -120,16 +123,18 @@ public class ConversationListItem extends RelativeLayout
 
   @Override
   public void bind(@NonNull ThreadRecord thread,
+                   int msgId,
                    @NonNull DcLot dcSummary,
                    @NonNull GlideRequests glideRequests,
                    @NonNull Locale locale,
                    @NonNull Set<Long> selectedThreads,
                    boolean batchMode)
   {
-    bind(thread, dcSummary, glideRequests, locale, selectedThreads, batchMode, null);
+    bind(thread, msgId, dcSummary, glideRequests, locale, selectedThreads, batchMode, null);
   }
 
   public void bind(@NonNull ThreadRecord thread,
+                   int msgId,
                    @NonNull DcLot dcSummary,
                    @NonNull GlideRequests glideRequests,
                    @NonNull Locale locale,
@@ -141,6 +146,7 @@ public class ConversationListItem extends RelativeLayout
     this.selectedThreads  = selectedThreads;
     this.recipient        = thread.getRecipient();
     this.threadId         = thread.getThreadId();
+    this.msgId            = msgId;
     this.glideRequests    = glideRequests;
     this.unreadCount      = thread.getUnreadCount();
     this.distributionType = thread.getDistributionType();
@@ -246,12 +252,9 @@ public class ConversationListItem extends RelativeLayout
     return threadId;
   }
 
-  public int getUnreadCount() {
-    return unreadCount;
-  }
-
-  public int getDistributionType() {
-    return distributionType;
+  public int getContactId() {
+    DcContext dcContext = DcHelper.getContext(getContext());
+    return dcContext.getMsg(msgId).getFromId();
   }
 
   public long getLastSeen() {

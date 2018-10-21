@@ -57,7 +57,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     ThreadRecord conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
-      holder.bind(conversationResult, new DcLot(0), glideRequests, eventListener, locale, searchResult.getQuery());
+      holder.bind(conversationResult, 0, new DcLot(0), glideRequests, eventListener, locale, searchResult.getQuery());
       return;
     }
 
@@ -160,13 +160,14 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     }
 
     void bind(@NonNull  ThreadRecord  conversationResult,
+              int                     msgId,
               @NonNull  DcLot         summary,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
               @NonNull  Locale        locale,
               @Nullable String        query)
     {
-      root.bind(conversationResult, summary, glideRequests, locale, Collections.emptySet(), false, query);
+      root.bind(conversationResult, msgId, summary, glideRequests, locale, Collections.emptySet(), false, query);
       root.setOnClickListener(view -> eventListener.onConversationClicked(conversationResult));
     }
 
