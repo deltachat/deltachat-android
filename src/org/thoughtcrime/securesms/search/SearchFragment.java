@@ -137,8 +137,6 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
 
     if (conversationList != null) {
       conversationList.onCreateConversation(threadRecord.getThreadId(),
-                                            threadRecord.getRecipient(),
-                                            threadRecord.getDistributionType(),
                                             threadRecord.getLastSeen());
     }
   }
@@ -170,8 +168,6 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
         ConversationListActivity conversationList = (ConversationListActivity) getActivity();
         if (conversationList != null) {
           conversationList.openConversation(message.threadId,
-                                            message.recipient,
-                                            ThreadDatabase.DistributionTypes.DEFAULT,
                                             -1,
                                             startingPosition);
         }

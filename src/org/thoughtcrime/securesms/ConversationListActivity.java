@@ -182,11 +182,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   @Override
-  public void onCreateConversation(long threadId, Recipient recipient, int distributionType, long lastSeen) {
-    openConversation(threadId, recipient, distributionType, lastSeen, -1);
+  public void onCreateConversation(long threadId, long lastSeen) {
+    openConversation(threadId, lastSeen, -1);
   }
 
-  public void openConversation(long threadId, Recipient recipient, int distributionType, long lastSeen, int startingPosition) {
+  public void openConversation(long threadId, long lastSeen, int startingPosition) {
     searchToolbar.clearFocus();
 
     Intent intent = new Intent(this, ConversationActivity.class);

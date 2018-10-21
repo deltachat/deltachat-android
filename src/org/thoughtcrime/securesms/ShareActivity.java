@@ -240,11 +240,11 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       contactsFragment.getView().setVisibility(View.VISIBLE);
       progressWheel.setVisibility(View.GONE);
     } else {
-      createConversation(threadId, address, distributionType);
+      createConversation(threadId);
     }
   }
 
-  private void createConversation(long threadId, Address address, int distributionType) {
+  private void createConversation(long threadId) {
     final Intent intent = getBaseShareIntent(ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
 
@@ -273,7 +273,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   public void onContactSelected(int specialId, String number) {
     Recipient recipient = Recipient.from(this, Address.fromExternal(this, number), true);
     long existingThread = DatabaseFactory.getThreadDatabase(this).getThreadIdIfExistsFor(recipient);
-    createConversation(existingThread, recipient.getAddress(), ThreadDatabase.DistributionTypes.DEFAULT);
+    createConversation(existingThread);
   }
 
   @Override
