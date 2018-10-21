@@ -222,7 +222,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected ConversationTitleView       titleView;
   private   TextView                    charactersLeft;
   private   ConversationFragment        fragment;
-  private   Button                      unblockButton;
   private   InputAwareLayout            container;
   private   View                        composePanel;
   protected Stub<ReminderView>          reminderView;
@@ -353,7 +352,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
     titleView.setVerified(dcChat.isVerified());
-    setBlockedUserState(recipient, isSecureText, isDefaultSms);
     setGroupShareProfileReminder(recipient);
     calculateCharactersRemaining();
 
@@ -446,7 +444,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA), true);
       recipient.addListener(this);
       titleView.setTitle(glideRequests, dcChat);
-      setBlockedUserState(recipient, isSecureText, isDefaultSms);
       supportInvalidateOptionsMenu();
       break;
     case TAKE_PHOTO:
@@ -657,29 +654,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
 
-  private void handleUnblock() {
-    //noinspection CodeBlock2Expr
-    new AlertDialog.Builder(this)
-        .setTitle(R.string.ConversationActivity_unblock_this_contact_question)
-        .setMessage(R.string.ConversationActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
-        .setNegativeButton(android.R.string.cancel, null)
-        .setPositiveButton(R.string.ConversationActivity_unblock, (dialog, which) -> {
-          new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-              DatabaseFactory.getRecipientDatabase(ConversationActivity.this)
-                             .setBlocked(recipient, false);
-
-              ApplicationContext.getInstance(ConversationActivity.this)
-                                .getJobManager()
-                                .add(new MultiDeviceBlockedUpdateJob(ConversationActivity.this));
-
-              return null;
-            }
-          }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        }).show();
-  }
-
   private void handleResetSecureSession() {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle(R.string.ConversationActivity_reset_secure_session_question);
@@ -815,7 +789,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     calculateCharactersRemaining();
     supportInvalidateOptionsMenu();
-    setBlockedUserState(recipient, isSecureText, isDefaultSms);
   }
 
   ///// Initializers
@@ -954,7 +927,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText           = ViewUtil.findById(this, R.id.embedded_text_editor);
     charactersLeft        = ViewUtil.findById(this, R.id.space_left);
     emojiDrawerStub       = ViewUtil.findStubById(this, R.id.emoji_drawer_stub);
-    unblockButton         = ViewUtil.findById(this, R.id.unblock_button);
     composePanel          = ViewUtil.findById(this, R.id.bottom_panel);
     container             = ViewUtil.findById(this, R.id.layout_container);
     reminderView          = ViewUtil.findStubById(this, R.id.reminder_stub);
@@ -993,7 +965,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     titleView.setOnClickListener(v -> handleConversationSettings());
     titleView.setOnLongClickListener(v -> handleDisplayQuickContact());
     titleView.setOnBackClickedListener(view -> super.onBackPressed());
-    unblockButton.setOnClickListener(v -> handleUnblock());
 
     composeText.setOnKeyListener(composeKeyPressedListener);
     composeText.addTextChangedListener(composeKeyPressedListener);
@@ -1048,7 +1019,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Util.runOnMain(() -> {
       Log.w(TAG, "onModifiedRun(): " + recipient.getRegistered());
       titleView.setTitle(glideRequests, dcChat);
-      setBlockedUserState(recipient, isSecureText, isDefaultSms);
       setGroupShareProfileReminder(recipient);
       updateReminders();
       initializeSecurity(isSecureText, isDefaultSms);
@@ -1208,16 +1178,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, thisThreadId);
 
     return future;
-  }
-
-  private void setBlockedUserState(Recipient recipient, boolean isSecureText, boolean isDefaultSms) {
-    if (false) { // TODO: do we need a unblock button here? typically, the chatlist is closed when blocked
-      unblockButton.setVisibility(View.VISIBLE);
-      composePanel.setVisibility(View.GONE);
-    } else {
-      composePanel.setVisibility(View.VISIBLE);
-      unblockButton.setVisibility(View.GONE);
-    }
   }
 
   private void setGroupShareProfileReminder(@NonNull Recipient recipient) {
