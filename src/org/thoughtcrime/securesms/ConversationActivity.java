@@ -199,7 +199,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public static final String THREAD_ID_EXTRA         = "thread_id";
   public static final String IS_ARCHIVED_EXTRA       = "is_archived";
   public static final String TEXT_EXTRA              = "draft_text";
-  public static final String DISTRIBUTION_TYPE_EXTRA = "distribution_type";
   public static final String LAST_SEEN_EXTRA         = "last_seen";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
 
@@ -243,11 +242,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private ApplicationDcContext dcContext;
   private DcChat     dcChat                = new DcChat(0);
   private long       threadId;
-  private int        distributionType;
   private boolean    archived;
   private final boolean isSecureText = true;
   private boolean    isDefaultSms          = true;
-  private boolean    isMmsEnabled          = true;
   private boolean    isSecurityInitialized = false;
 
 
@@ -1034,7 +1031,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     dcChat           = dcContext.getChat((int)threadId);
     recipient        = dcContext.getRecipient(dcChat);
     archived         = getIntent().getBooleanExtra(IS_ARCHIVED_EXTRA, false);
-    distributionType = getIntent().getIntExtra(DISTRIBUTION_TYPE_EXTRA, ThreadDatabase.DistributionTypes.DEFAULT);
     glideRequests    = GlideApp.with(this);
 
 

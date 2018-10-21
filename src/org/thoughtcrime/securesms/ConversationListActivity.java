@@ -191,7 +191,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-    intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, distributionType);
     intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, lastSeen);
     intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
 

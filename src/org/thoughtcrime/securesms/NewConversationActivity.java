@@ -102,7 +102,6 @@ public class NewConversationActivity extends ContactSelectionActivity {
     intent.setDataAndType(getIntent().getData(), getIntent().getType());
 
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
-    intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, ThreadDatabase.DistributionTypes.DEFAULT);
     startActivity(intent);
     finish();
   }
