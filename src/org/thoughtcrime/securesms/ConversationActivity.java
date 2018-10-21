@@ -1184,7 +1184,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     final Drafts       drafts               = getDraftsForCurrentState();
     final long         thisThreadId         = this.threadId;
-    final int          thisDistributionType = this.distributionType;
 
     new AsyncTask<Long, Void, Long>() {
       @Override
@@ -1193,9 +1192,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         DraftDatabase  draftDatabase  = DatabaseFactory.getDraftDatabase(ConversationActivity.this);
         long           threadId       = params[0];
 
-        if (drafts.size() > 0) {
-          if (threadId == -1) threadId = threadDatabase.getThreadIdFor(getRecipient(), thisDistributionType);
-
+        if (drafts.size() > 0 && threadId>0) {
           draftDatabase.insertDrafts(threadId, drafts);
           threadDatabase.updateSnippet(threadId, drafts.getSnippet(ConversationActivity.this),
                                        drafts.getUriSnippet(),
