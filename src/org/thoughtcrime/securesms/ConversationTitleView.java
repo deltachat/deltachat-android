@@ -73,6 +73,10 @@ public class ConversationTitleView extends RelativeLayout {
     this.verified.setVisibility(verified ? View.VISIBLE : View.GONE);
   }
 
+  public void hideAvatar() {
+    avatar.setVisibility(View.GONE);
+  }
+
   @Override
   public void setOnClickListener(@Nullable OnClickListener listener) {
     this.content.setOnClickListener(listener);

@@ -169,7 +169,10 @@ public class ConversationFragment extends Fragment
   }
 
   private void setNoMessageText() {
-    if(getListAdapter().isGroupChat()){
+    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+      noMessageTextView.setText(R.string.menu_deaddrop);
+    }
+    else if(getListAdapter().isGroupChat()){
       noMessageTextView.setText(R.string.ConversationActivity_MsgNewGroupDraftHint);
     }else{
       String name = getListAdapter().getChatName();

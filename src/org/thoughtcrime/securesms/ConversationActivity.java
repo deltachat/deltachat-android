@@ -494,6 +494,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
+    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+      return true;
+    }
+
     if (isSecureText) {
       if (recipient.getExpireMessages() > 0) {
         inflater.inflate(R.menu.conversation_expiring_on, menu);
@@ -1012,6 +1016,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     recipient.addListener(this);
+
+    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+      composePanel.setVisibility(View.GONE);
+      titleView.hideAvatar();
+    }
   }
 
   public void onModified(final Recipient recipient) {
