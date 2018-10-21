@@ -269,7 +269,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
     intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, ThreadDatabase.DistributionTypes.DEFAULT);
-    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(chatId));
     startActivity(intent);
     finish();
   }

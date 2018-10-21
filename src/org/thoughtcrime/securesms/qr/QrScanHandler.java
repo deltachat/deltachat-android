@@ -184,7 +184,6 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
                         dcContext.endCaptureNextError();
                         if (newChatId != 0) {
                             Intent intent = new Intent(activity, ConversationActivity.class);
-                            intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(newChatId));
                             intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)newChatId);
                             activity.startActivity(intent);
                         } else if (!errorString.isEmpty()) {

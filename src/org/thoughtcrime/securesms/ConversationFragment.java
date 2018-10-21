@@ -749,7 +749,6 @@ public class ConversationFragment extends Fragment
             int chatId = dcContext.createChatByMsgId(messageRecord.getId());
             if( chatId != 0 ) {
               Intent intent = new Intent(getActivity(), ConversationActivity.class);
-              intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(chatId));
               intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
               startActivity(intent);
             }

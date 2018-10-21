@@ -56,7 +56,6 @@ public class CommunicationActions {
       @Override
       protected void onPostExecute(Long threadId) {
         Intent intent = new Intent(context, ConversationActivity.class);
-        intent.putExtra(ConversationActivity.ADDRESS_EXTRA, recipient.getAddress());
         intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
 
         if (!TextUtils.isEmpty(text)) {

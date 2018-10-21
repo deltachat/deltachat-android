@@ -190,7 +190,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     searchToolbar.clearFocus();
 
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, recipient.getAddress());
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
     intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, distributionType);
     intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, lastSeen);
@@ -219,7 +218,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void handleDeaddrop() {
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(DcChat.DC_CHAT_ID_DEADDROP));
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)DcChat.DC_CHAT_ID_DEADDROP);
     startActivity(intent);
   }
