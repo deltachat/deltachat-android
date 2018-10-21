@@ -132,6 +132,7 @@
         <item name="attachment_document_icon_large">@drawable/ic_document_large_light</item>
 
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background</item>
+        <item name="conversation_list_deaddrop_bg_color">#ffcccccc</item>
         <item name="conversation_list_item_contact_color">@color/core_light_90</item>
         <item name="conversation_list_item_subject_color">@color/core_light_60</item>
         <item name="conversation_list_item_delivery_icon_color">@color/core_light_35</item>
@@ -275,6 +276,7 @@
         <item name="attachment_document_icon_large">@drawable/ic_document_large_dark</item>
 
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_dark</item>
+        <item name="conversation_list_deaddrop_bg_color">#ff333333</item>
         <item name="conversation_list_item_contact_color">#ffdddddd</item>
         <item name="conversation_list_item_subject_color">#ffdddddd</item>
         <item name="conversation_list_item_delivery_icon_color">@color/core_dark_55</item>

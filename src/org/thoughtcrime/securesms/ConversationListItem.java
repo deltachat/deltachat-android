@@ -18,6 +18,7 @@ package org.thoughtcrime.securesms;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.RippleDrawable;
@@ -38,6 +39,7 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.annimon.stream.Stream;
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
@@ -305,8 +307,19 @@ public class ConversationListItem extends RelativeLayout
 
   private void setRippleColor(Recipient recipient) {
     if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-      ((RippleDrawable)(getBackground()).mutate())
-          .setColor(ColorStateList.valueOf(recipient.getColor().toConversationColor(getContext())));
+      if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
+        setBackgroundColor(ta.getColor(0, 0xffffffff));
+        ta.recycle();
+      }
+      else {
+        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_item_background});
+        setBackground(ta.getDrawable(0));
+        ta.recycle();
+
+        ((RippleDrawable)(getBackground()).mutate())
+            .setColor(ColorStateList.valueOf(recipient.getColor().toConversationColor(getContext())));
+      }
     }
   }
 
