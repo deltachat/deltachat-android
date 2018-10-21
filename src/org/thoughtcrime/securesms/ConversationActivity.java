@@ -518,14 +518,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (isGroupConversation()) {
       inflater.inflate(R.menu.conversation_group_options, menu);
 
-      if (!isPushGroupConversation()) {
-        inflater.inflate(R.menu.conversation_mms_group_options, menu);
-        if (distributionType == ThreadDatabase.DistributionTypes.BROADCAST) {
-          menu.findItem(R.id.menu_distribution_broadcast).setChecked(true);
-        } else {
-          menu.findItem(R.id.menu_distribution_conversation).setChecked(true);
-        }
-      } else if (isActiveGroup()) {
+      if (isActiveGroup()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
     }
@@ -558,8 +551,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case R.id.menu_add_to_contacts:           handleAddToContacts();                             return true;
     case R.id.menu_reset_secure_session:      handleResetSecureSession();                        return true;
     case R.id.menu_group_recipients:          handleDisplayGroupRecipients();                    return true;
-    case R.id.menu_distribution_broadcast:    handleDistributionBroadcastEnabled(item);          return true;
-    case R.id.menu_distribution_conversation: handleDistributionConversationEnabled(item);       return true;
     case R.id.menu_edit_group:                handleEditPushGroup();                             return true;
     case R.id.menu_leave:                     handleLeavePushGroup();                            return true;
     case R.id.menu_mute_notifications:        handleMuteNotifications();                         return true;
@@ -770,38 +761,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Intent intent = new Intent(ConversationActivity.this, GroupCreateActivity.class);
     intent.putExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA, recipient.getAddress());
     startActivityForResult(intent, GROUP_EDIT);
-  }
-
-  private void handleDistributionBroadcastEnabled(MenuItem item) {
-    distributionType = ThreadDatabase.DistributionTypes.BROADCAST;
-    item.setChecked(true);
-
-    if (threadId != -1) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          DatabaseFactory.getThreadDatabase(ConversationActivity.this)
-                         .setDistributionType(threadId, ThreadDatabase.DistributionTypes.BROADCAST);
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-  }
-
-  private void handleDistributionConversationEnabled(MenuItem item) {
-    distributionType = ThreadDatabase.DistributionTypes.CONVERSATION;
-    item.setChecked(true);
-
-    if (threadId != -1) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          DatabaseFactory.getThreadDatabase(ConversationActivity.this)
-                         .setDistributionType(threadId, ThreadDatabase.DistributionTypes.CONVERSATION);
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
   }
 
   private void handleDisplayGroupRecipients() {
