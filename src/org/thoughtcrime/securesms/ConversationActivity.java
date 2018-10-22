@@ -489,8 +489,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     }
 
-    if (recipient != null && recipient.isMuted()) inflater.inflate(R.menu.conversation_muted, menu);
-    else                                          inflater.inflate(R.menu.conversation_unmuted, menu);
+    if (recipient != null && recipient.isMuted()) {
+      inflater.inflate(R.menu.conversation_muted, menu);
+    }
+    else {
+      inflater.inflate(R.menu.conversation_unmuted, menu);
+    }
 
     inflater.inflate(R.menu.conversation, menu);
 
@@ -498,6 +502,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if (isActiveGroup()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
+    }
+
+    if( dcChat.getArchived()==0 ) {
+      inflater.inflate(R.menu.conversation_archive, menu);
+    }
+    else {
+      inflater.inflate(R.menu.conversation_unarchive, menu);
     }
 
     inflater.inflate(R.menu.conversation_delete, menu);
@@ -510,14 +521,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
-    case R.id.menu_add_attachment:            handleAddAttachment();                             return true;
-    case R.id.menu_view_media:                handleViewMedia();                                 return true;
-    case R.id.menu_edit_group:                handleEditPushGroup();                             return true;
-    case R.id.menu_leave:                     handleLeaveGroup();                                return true;
-    case R.id.menu_mute_notifications:        handleMuteNotifications();                         return true;
-    case R.id.menu_unmute_notifications:      handleUnmuteNotifications();                       return true;
-    case R.id.menu_conversation_settings:     handleConversationSettings();                      return true;
-    case android.R.id.home:                   handleReturnToConversationList();                  return true;
+      case R.id.menu_add_attachment:        handleAddAttachment();             return true;
+      case R.id.menu_view_media:            handleViewMedia();                 return true;
+      case R.id.menu_edit_group:            handleEditPushGroup();             return true;
+      case R.id.menu_leave:                 handleLeaveGroup();                return true;
+      case R.id.menu_archive_chat:          handleArchiveChat();               return true;
+      case R.id.menu_delete_chat:           handleDeleteChat();                return true;
+      case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
+      case R.id.menu_unmute_notifications:  handleUnmuteNotifications();       return true;
+      case R.id.menu_conversation_settings: handleConversationSettings();      return true;
+      case android.R.id.home:               handleReturnToConversationList();  return true;
     }
 
     return false;
@@ -604,9 +617,31 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       .setMessage(getString(R.string.ConversationActivity_are_you_sure_you_want_to_leave_this_group))
       .setPositiveButton(R.string.yes, (dialog, which) -> {
         dcContext.removeContactFromChat((int)threadId, DcContact.DC_CONTACT_ID_SELF);
+        Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
       })
       .setNegativeButton(R.string.no, null)
       .show();
+  }
+
+  private void handleArchiveChat() {
+    int doArchive = dcContext.getChat((int)threadId).getArchived()==0? 1: 0;
+    dcContext.archiveChat((int)threadId, doArchive);
+    Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
+    if( doArchive == 1 ) {
+      finish();
+    }
+  }
+
+  private void handleDeleteChat() {
+    new AlertDialog.Builder(this)
+        .setMessage(getString(R.string.ConversationActivity_ask_delete_chat))
+        .setPositiveButton(R.string.yes, (dialog, which) -> {
+          dcContext.deleteChat((int)threadId);
+          Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
+          finish();
+        })
+        .setNegativeButton(R.string.no, null)
+        .show();
   }
 
   private void handleEditPushGroup() {
