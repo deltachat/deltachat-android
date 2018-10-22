@@ -67,8 +67,6 @@ public class ConversationUpdateItem extends LinearLayout
     this.title = findViewById(R.id.conversation_update_title);
     this.body  = findViewById(R.id.conversation_update_body);
     this.date  = findViewById(R.id.conversation_update_date);
-
-    this.setOnClickListener(new InternalClickListener(null));
   }
 
   @Override
@@ -203,57 +201,9 @@ public class ConversationUpdateItem extends LinearLayout
   }
 
   @Override
-  public void setOnClickListener(View.OnClickListener l) {
-    super.setOnClickListener(new InternalClickListener(l));
-  }
-
-  @Override
   public void unbind() {
     if (sender != null) {
       sender.removeListener(this);
     }
   }
-
-  private class InternalClickListener implements View.OnClickListener {
-
-    @Nullable private final View.OnClickListener parent;
-
-    InternalClickListener(@Nullable View.OnClickListener parent) {
-      this.parent = parent;
-    }
-
-    @Override
-    public void onClick(View v) {
-      if ((!messageRecord.isIdentityUpdate()  &&
-           !messageRecord.isIdentityDefault() &&
-           !messageRecord.isIdentityVerified()) ||
-          !batchSelected.isEmpty())
-      {
-        if (parent != null) parent.onClick(v);
-        return;
-      }
-
-      final Recipient sender = ConversationUpdateItem.this.sender;
-
-      IdentityUtil.getRemoteIdentityKey(getContext(), sender).addListener(new ListenableFuture.Listener<Optional<IdentityRecord>>() {
-        @Override
-        public void onSuccess(Optional<IdentityRecord> result) {
-          if (result.isPresent()) {
-            Intent intent = new Intent(getContext(), VerifyIdentityActivity.class);
-            intent.putExtra(VerifyIdentityActivity.ADDRESS_EXTRA, sender.getAddress());
-            intent.putExtra(VerifyIdentityActivity.IDENTITY_EXTRA, new IdentityKeyParcelable(result.get().getIdentityKey()));
-            intent.putExtra(VerifyIdentityActivity.VERIFIED_EXTRA, result.get().getVerifiedStatus() == IdentityDatabase.VerifiedStatus.VERIFIED);
-
-            getContext().startActivity(intent);
-          }
-        }
-
-        @Override
-        public void onFailure(ExecutionException e) {
-          Log.w(TAG, e);
-        }
-      });
-    }
-  }
-
 }
