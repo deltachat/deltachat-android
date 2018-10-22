@@ -25,6 +25,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -59,6 +60,8 @@ import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -259,8 +262,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         dcContext.addContactToChat(chatId, contactId);
       }
     }
-
-    // TODO: handle avatarBmp
+    setGroupAvatar(chatId);
 
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
@@ -268,7 +270,25 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     finish();
   }
 
-  private boolean showGroupNameEmptyToast(String groupName) {
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void setGroupAvatar(int chatId) {
+        String avatarPath = getFilesDir().getAbsolutePath() + "/chatAvatar_" + chatId + ".jpg";
+        File oldImage = new File(avatarPath);
+        if (oldImage.exists()) {
+          oldImage.delete();
+        }
+        FileOutputStream outStream;
+        try {
+          outStream = new FileOutputStream(avatarPath);
+          avatarBmp.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
+          dcContext.setChatProfileImage(chatId, avatarPath);
+          Log.d("dboehrs", "setGroupAvatar: " + avatarPath);
+        } catch (FileNotFoundException e) {
+          e.printStackTrace();
+        }
+    }
+
+    private boolean showGroupNameEmptyToast(String groupName) {
     if(groupName == null) {
       Toast.makeText(this, getString(R.string.GroupCreateActivity_please_enter_group_name), Toast.LENGTH_LONG).show();
       return true;
@@ -287,7 +307,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     dcContext.setChatName(editGroupChatId, groupName);
     updateGroupParticipants();
 
-    // TODO: handle avatarBmp
+    setGroupAvatar(editGroupChatId);
 
     Intent intent = new Intent();
     Recipient recipient = dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, editGroupChatId);
@@ -453,22 +473,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
             .skipMemoryCache(true)
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(avatar);
-  }
-
-  private static class GroupData {
-    String         id;
-    Set<Recipient> recipients;
-    Bitmap         avatarBmp;
-    byte[]         avatarBytes;
-    String         name;
-
-    public GroupData(String id, Set<Recipient> recipients, Bitmap avatarBmp, byte[] avatarBytes, String name) {
-      this.id          = id;
-      this.recipients  = recipients;
-      this.avatarBmp   = avatarBmp;
-      this.avatarBytes = avatarBytes;
-      this.name        = name;
-    }
   }
 
   private boolean isEdit() {
