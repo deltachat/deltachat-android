@@ -25,6 +25,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -47,7 +48,6 @@ import org.thoughtcrime.securesms.contacts.ContactsCursorLoader.DisplayMode;
 import org.thoughtcrime.securesms.contacts.avatars.ContactColors;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -62,6 +62,8 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+
+import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
 
 /**
  * Activity to create and update groups
@@ -93,7 +95,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private TextView     creatingText;
   private Bitmap       avatarBmp;
   private CircularProgressButton verifyButton;
-  private boolean editGroup;
+  private Integer editGroupChatId = null;
 
   @Override
   protected void onPreCreate() {
@@ -127,7 +129,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     groupName.setEnabled(true);
 
     String title;
-    if(editGroup) {
+    if(isEdit()) {
       title = getString(R.string.GroupCreateActivity_actionbar_edit_title);
     }
     else if(createVerified) {
@@ -173,8 +175,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected void onPostExecute(List<Result> results) {
       if (activity.isFinishing()) return;
-      ApplicationDcContext dcContext = DcHelper.getContext(activity);
-
       for (Result result : results) {
         Recipient recipient = result.recipient.get();
         Address address = recipient.getAddress();
@@ -208,9 +208,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private void initializeExistingGroup() {
     final Address groupAddress = getIntent().getParcelableExtra(GROUP_ADDRESS_EXTRA);
     if (groupAddress != null) {
-      editGroup = true;
-      int chatId = groupAddress.getDcChatId();
-      new FillExistingGroupInfoAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
+      editGroupChatId = groupAddress.getDcChatId();
+      new FillExistingGroupInfoAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, editGroupChatId);
     }
   }
 
@@ -232,7 +231,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         finish();
         return true;
       case R.id.menu_create_group:
-        if (editGroup) handleGroupUpdate();
+        if (isEdit()) handleGroupUpdate();
         else                           handleGroupCreate();
         return true;
     }
@@ -248,16 +247,13 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private void handleGroupCreate() {
     String groupName = getGroupName();
-    if(groupName==null) {
-      Toast.makeText(this, getString(R.string.GroupCreateActivity_please_enter_group_name), Toast.LENGTH_LONG).show();
-      return;
-    }
+    if (showGroupNameEmptyToast(groupName)) return;
 
     int chatId = dcContext.createGroupChat(createVerified, groupName);
 
-    Set<Recipient> members = getAdapter().getRecipients();
-    for(Recipient member : members) {
-      Address address = member.getAddress();
+    Set<Recipient> recipients = getAdapter().getRecipients();
+    for(Recipient recipient : recipients) {
+      Address address = recipient.getAddress();
       if(address.isDcContact()) {
         int contactId = address.getDcContactId();
         dcContext.addContactToChat(chatId, contactId);
@@ -272,21 +268,57 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     finish();
   }
 
-  private void handleGroupUpdate() {
-    int chatId = 0;// TODO: get correct id from groupToUpdate.get().id; or so
-
-    String groupName = getGroupName();
-    if(groupName!=null) {
-      dcContext.setChatName(chatId, groupName);
+  private boolean showGroupNameEmptyToast(String groupName) {
+    if(groupName == null) {
+      Toast.makeText(this, getString(R.string.GroupCreateActivity_please_enter_group_name), Toast.LENGTH_LONG).show();
+      return true;
     }
+    return false;
+  }
 
-    // TODO: compare dcContext.getChatContacts(chatId); against getAdapter().getRecipients();
-    // and add/remove contacts
-
+  private void handleGroupUpdate() {
+    if(editGroupChatId == null) {
+      return;
+    }
+    String groupName = getGroupName();
+    if (showGroupNameEmptyToast(groupName)) {
+      return;
+    }
+    dcContext.setChatName(editGroupChatId, groupName);
+    updateGroupParticipants();
 
     // TODO: handle avatarBmp
 
+    Intent intent = new Intent();
+    Recipient recipient = dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, editGroupChatId);
+    intent.putExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA, recipient.getAddress());
+    setResult(RESULT_OK, intent);
     finish();
+  }
+
+  private void updateGroupParticipants() {
+    SparseBooleanArray currentChatContactIds = new SparseBooleanArray();
+    for(int chatContactId : dcContext.getChatContacts(editGroupChatId)) {
+      currentChatContactIds.put(chatContactId, chatContactId == DC_CONTACT_ID_SELF);
+    }
+
+    Set<Recipient> recipients = getAdapter().getRecipients();
+    for(Recipient recipient : recipients) {
+      Address address = recipient.getAddress();
+      if(address.isDcContact()) {
+        int contactId = address.getDcContactId();
+        if(currentChatContactIds.indexOfKey(contactId) < 0) {
+          dcContext.addContactToChat(editGroupChatId, contactId);
+        } else {
+          currentChatContactIds.put(contactId, true);
+        }
+      }
+    }
+    for(int index = 0; index < currentChatContactIds.size(); index++) {
+      if (!currentChatContactIds.valueAt(index)) {
+        dcContext.removeContactFromChat(editGroupChatId, currentChatContactIds.keyAt(index));
+      }
+    }
   }
 
   private SelectedRecipientsAdapter getAdapter() {
@@ -349,7 +381,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     public void onClick(View v) {
       Intent intent = new Intent(GroupCreateActivity.this, ContactMultiSelectionActivity.class);
       intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, createVerified);
-      if (editGroup) {
+      if (isEdit()) {
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH);
       } else {
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH | DisplayMode.FLAG_SMS);
@@ -381,8 +413,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected Recipient doInBackground(Integer... recipientIds) {
       Integer recipientsId = recipientIds[0];
-      Recipient recipient = activity.dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, recipientsId);
-      return recipient;
+      return activity.dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, recipientsId);
     }
 
     @Override
@@ -395,6 +426,17 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private void fllExistingGroup(Recipient recipient) {
     List<Recipient> participants = recipient.getParticipants();
     if (!isFinishing()) {
+      Recipient ownAddress = null;
+      for(Recipient participant : participants) {
+        if(participant.getAddress().getDcContactId() == DC_CONTACT_ID_SELF) {
+          ownAddress = participant;
+        } else {
+          addSelectedContacts(participant);
+        }
+      }
+      if (ownAddress != null) {
+        participants.remove(ownAddress);
+      }
       groupName.setText(recipient.getName());
       SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, participants);
       adapter.setOnRecipientDeletedListener(this);
@@ -428,4 +470,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       this.name        = name;
     }
   }
+
+  private boolean isEdit() {
+    return editGroupChatId != null;
+  }
+
 }
