@@ -506,8 +506,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (isGroupConversation()) {
-      inflater.inflate(R.menu.conversation_group_options, menu);
-
       if (isActiveGroup()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
@@ -540,7 +538,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case R.id.menu_view_media:                handleViewMedia();                                 return true;
     case R.id.menu_add_to_contacts:           handleAddToContacts();                             return true;
     case R.id.menu_reset_secure_session:      handleResetSecureSession();                        return true;
-    case R.id.menu_group_recipients:          handleDisplayGroupRecipients();                    return true;
     case R.id.menu_edit_group:                handleEditPushGroup();                             return true;
     case R.id.menu_leave:                     handleLeavePushGroup();                            return true;
     case R.id.menu_mute_notifications:        handleMuteNotifications();                         return true;
@@ -728,11 +725,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Intent intent = new Intent(ConversationActivity.this, GroupCreateActivity.class);
     intent.putExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA, recipient.getAddress());
     startActivityForResult(intent, GROUP_EDIT);
-  }
-
-  private void handleDisplayGroupRecipients() {
-    //TODO: i think this button is not needed and the group options just go to the profile
-    //new GroupMembersDialog(this, getRecipient()).display();
   }
 
   private void handleAddToContacts() {

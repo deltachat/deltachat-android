@@ -3,7 +3,8 @@
 
     <item android:id="@+id/menu_edit_group"
           android:title="@string/conversation__menu_edit_group"
-          app:showAsAction="collapseActionView" />
+          android:icon="?menu_group_icon"
+          app:showAsAction="ifRoom" />
 
     <item android:id="@+id/menu_leave"
           android:title="@string/conversation__menu_leave_group"
