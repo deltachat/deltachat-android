@@ -52,11 +52,9 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
 import org.thoughtcrime.securesms.search.model.MessageResult;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ThemeUtil;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Collections;
@@ -65,8 +63,7 @@ import java.util.Locale;
 import java.util.Set;
 
 public class ConversationListItem extends RelativeLayout
-                                  implements RecipientModifiedListener,
-                                             BindableConversationListItem, Unbindable
+                                  implements BindableConversationListItem, Unbindable
 {
   @SuppressWarnings("unused")
   private final static String TAG = ConversationListItem.class.getSimpleName();
@@ -152,7 +149,6 @@ public class ConversationListItem extends RelativeLayout
     this.distributionType = thread.getDistributionType();
     this.lastSeen         = thread.getLastSeen();
 
-    this.recipient.addListener(this);
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
     } else {
@@ -196,8 +192,6 @@ public class ConversationListItem extends RelativeLayout
     this.recipient       = contact;
     this.glideRequests   = glideRequests;
 
-    this.recipient.addListener(this);
-
     fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
     subjectView.setText(getHighlightedSpan(locale, contact.getAddress().toPhoneString(), highlightSubstring));
     dateView.setText("");
@@ -220,8 +214,6 @@ public class ConversationListItem extends RelativeLayout
     this.recipient       = messageResult.recipient;
     this.glideRequests   = glideRequests;
 
-    this.recipient.addListener(this);
-
     fromView.setText(recipient, true);
     subjectView.setText(getHighlightedSpan(locale, messageResult.bodySnippet, highlightSubstring));
     dateView.setText(DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, messageResult.receivedTimestampMs));
@@ -237,7 +229,6 @@ public class ConversationListItem extends RelativeLayout
 
   @Override
   public void unbind() {
-    if (this.recipient != null) this.recipient.removeListener(this);
   }
 
   private void setBatchState(boolean batch) {
@@ -383,15 +374,6 @@ public class ConversationListItem extends RelativeLayout
     }
 
     return spanned;
-  }
-
-  @Override
-  public void onModified(final Recipient recipient) {
-    Util.runOnMain(() -> {
-      fromView.setText(recipient, unreadCount == 0);
-      contactPhotoImage.setAvatar(glideRequests, recipient, true);
-      setRippleColor(recipient);
-    });
   }
 
   private static class ThumbnailPositioner implements Runnable {
