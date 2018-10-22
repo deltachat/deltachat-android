@@ -133,7 +133,6 @@ import org.thoughtcrime.securesms.profiles.GroupShareProfileView;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientFormattingException;
-import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.sms.MessageSender;
@@ -183,7 +182,6 @@ import static org.whispersystems.signalservice.internal.push.SignalServiceProtos
 public class ConversationActivity extends PassphraseRequiredActionBarActivity
     implements ConversationFragment.ConversationFragmentListener,
                AttachmentManager.AttachmentListener,
-               RecipientModifiedListener,
                DcEventCenter.DcEventDelegate,
                OnKeyboardShownListener,
                AttachmentDrawerListener,
@@ -390,7 +388,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onDestroy() {
     saveDraft();
-    if (recipient != null)               recipient.removeListener(this);
     if (securityUpdateReceiver != null)  unregisterReceiver(securityUpdateReceiver);
     dcContext.eventCenter.removeObservers(this);
     super.onDestroy();
@@ -438,7 +435,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case GROUP_EDIT:
       recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA), true);
-      recipient.addListener(this);
       dcChat = dcContext.getChat((int)threadId);
       titleView.setTitle(glideRequests, dcChat);
       supportInvalidateOptionsMenu();
@@ -450,7 +446,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case ADD_CONTACT:
       recipient = Recipient.from(this, recipient.getAddress(), true);
-      recipient.addListener(this);
       fragment.reloadList();
       break;
     case PICK_LOCATION:
@@ -997,8 +992,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    if (recipient != null) recipient.removeListener(this);
-
     threadId         = getIntent().getLongExtra(THREAD_ID_EXTRA, -1);
     dcChat           = dcContext.getChat((int)threadId);
     recipient        = dcContext.getRecipient(dcChat);
@@ -1012,24 +1005,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       conversationContainer.setClipToPadding(true);
     }
 
-    recipient.addListener(this);
-
     if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
       composePanel.setVisibility(View.GONE);
       titleView.hideAvatar();
     }
-  }
-
-  public void onModified(final Recipient recipient) {
-    Log.w(TAG, "onModified(" + recipient.getAddress().serialize() + ")");
-    Util.runOnMain(() -> {
-      Log.w(TAG, "onModifiedRun(): " + recipient.getRegistered());
-      titleView.setTitle(glideRequests, dcChat);
-      setGroupShareProfileReminder(recipient);
-      updateReminders();
-      initializeSecurity(isSecureText, isDefaultSms);
-      invalidateOptionsMenu();
-    });
   }
 
   private void initializeReceivers() {
@@ -1801,7 +1780,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
     if (eventId==DcContext.DC_EVENT_CHAT_MODIFIED || eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
-      onModified(recipient);
+      titleView.setTitle(glideRequests, dcChat);
+      setGroupShareProfileReminder(recipient);
+      updateReminders();
+      initializeSecurity(isSecureText, isDefaultSms);
+      invalidateOptionsMenu();
     }
   }
 }
