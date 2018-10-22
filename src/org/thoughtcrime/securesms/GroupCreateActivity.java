@@ -272,6 +272,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private void setGroupAvatar(int chatId) {
+        if(avatarBmp == null) {
+          return;
+        }
         String avatarPath = getFilesDir().getAbsolutePath() + "/chatAvatar_" + chatId + ".jpg";
         File oldImage = new File(avatarPath);
         if (oldImage.exists()) {
