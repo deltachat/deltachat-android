@@ -64,6 +64,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
@@ -512,7 +513,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case R.id.menu_add_attachment:            handleAddAttachment();                             return true;
     case R.id.menu_view_media:                handleViewMedia();                                 return true;
     case R.id.menu_edit_group:                handleEditPushGroup();                             return true;
-    case R.id.menu_leave:                     handleLeavePushGroup();                            return true;
+    case R.id.menu_leave:                     handleLeaveGroup();                                return true;
     case R.id.menu_mute_notifications:        handleMuteNotifications();                         return true;
     case R.id.menu_unmute_notifications:      handleUnmuteNotifications();                       return true;
     case R.id.menu_conversation_settings:     handleConversationSettings();                      return true;
@@ -598,42 +599,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     startActivity(intent);
   }
 
-  private void handleLeavePushGroup() {
-    if (getRecipient() == null) {
-      Toast.makeText(this, getString(R.string.ConversationActivity_invalid_recipient),
-                     Toast.LENGTH_LONG).show();
-      return;
-    }
-
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setTitle(getString(R.string.ConversationActivity_leave_group));
-    builder.setIconAttribute(R.attr.dialog_info_icon);
-    builder.setCancelable(true);
-    builder.setMessage(getString(R.string.ConversationActivity_are_you_sure_you_want_to_leave_this_group));
-    builder.setPositiveButton(R.string.yes, (dialog, which) -> {
-      Context self = ConversationActivity.this;
-
-      try {
-        String groupId = getRecipient().getAddress().toGroupString();
-        DatabaseFactory.getGroupDatabase(self).setActive(groupId, false);
-
-        GroupContext context = GroupContext.newBuilder()
-                                           .setId(ByteString.copyFrom(GroupUtil.getDecodedId(groupId)))
-                                           .setType(GroupContext.Type.QUIT)
-                                           .build();
-
-        OutgoingGroupMediaMessage outgoingMessage = new OutgoingGroupMediaMessage(getRecipient(), context, null, System.currentTimeMillis(), 0, null, Collections.emptyList());
-        MessageSender.send(self, outgoingMessage, threadId, false, null);
-        DatabaseFactory.getGroupDatabase(self).remove(groupId, Address.fromSerialized(TextSecurePreferences.getLocalNumber(self)));
-        initializeEnabledCheck();
-      } catch (IOException e) {
-        Log.w(TAG, e);
-        Toast.makeText(self, R.string.ConversationActivity_error_leaving_group, Toast.LENGTH_LONG).show();
-      }
-    });
-
-    builder.setNegativeButton(R.string.no, null);
-    builder.show();
+  private void handleLeaveGroup() {
+    new AlertDialog.Builder(this)
+      .setMessage(getString(R.string.ConversationActivity_are_you_sure_you_want_to_leave_this_group))
+      .setPositiveButton(R.string.yes, (dialog, which) -> {
+        dcContext.removeContactFromChat((int)threadId, DcContact.DC_CONTACT_ID_SELF);
+      })
+      .setNegativeButton(R.string.no, null)
+      .show();
   }
 
   private void handleEditPushGroup() {
