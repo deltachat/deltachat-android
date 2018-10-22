@@ -136,8 +136,6 @@ import org.thoughtcrime.securesms.recipients.RecipientFormattingException;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.sms.MessageSender;
-import org.thoughtcrime.securesms.sms.OutgoingEndSessionMessage;
-import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.CharacterCalculator.CharacterState;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -490,20 +488,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     }
 
-    if (isSecureText) {
-      if (recipient.getExpireMessages() > 0) {
-        inflater.inflate(R.menu.conversation_expiring_on, menu);
+    if (recipient != null && recipient.isMuted()) inflater.inflate(R.menu.conversation_muted, menu);
+    else                                          inflater.inflate(R.menu.conversation_unmuted, menu);
 
-        final MenuItem item       = menu.findItem(R.id.menu_expiring_messages);
-        final View     actionView = MenuItemCompat.getActionView(item);
-        final TextView badgeView  = actionView.findViewById(R.id.expiration_badge);
-
-        badgeView.setText(ExpirationUtil.getExpirationAbbreviatedDisplayValue(this, recipient.getExpireMessages()));
-        actionView.setOnClickListener(v -> onOptionsItemSelected(item));
-      } else {
-        inflater.inflate(R.menu.conversation_expiring_off, menu);
-      }
-    }
+    inflater.inflate(R.menu.conversation, menu);
 
     if (isGroupConversation()) {
       if (isActiveGroup()) {
@@ -511,20 +499,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    inflater.inflate(R.menu.conversation, menu);
-
-    if (isSingleConversation() && isSecureText) {
-      inflater.inflate(R.menu.conversation_secure, menu);
-    } else if (isSingleConversation()) {
-      inflater.inflate(R.menu.conversation_insecure, menu);
-    }
-
-    if (recipient != null && recipient.isMuted()) inflater.inflate(R.menu.conversation_muted, menu);
-    else                                          inflater.inflate(R.menu.conversation_unmuted, menu);
-
-    if (isSingleConversation() && getRecipient().getContactUri() == null) {
-      inflater.inflate(R.menu.conversation_add_to_contacts, menu);
-    }
+    inflater.inflate(R.menu.conversation_delete, menu);
 
     super.onPrepareOptionsMenu(menu);
     return true;
@@ -536,15 +511,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     switch (item.getItemId()) {
     case R.id.menu_add_attachment:            handleAddAttachment();                             return true;
     case R.id.menu_view_media:                handleViewMedia();                                 return true;
-    case R.id.menu_add_to_contacts:           handleAddToContacts();                             return true;
-    case R.id.menu_reset_secure_session:      handleResetSecureSession();                        return true;
     case R.id.menu_edit_group:                handleEditPushGroup();                             return true;
     case R.id.menu_leave:                     handleLeavePushGroup();                            return true;
     case R.id.menu_mute_notifications:        handleMuteNotifications();                         return true;
     case R.id.menu_unmute_notifications:      handleUnmuteNotifications();                       return true;
     case R.id.menu_conversation_settings:     handleConversationSettings();                      return true;
-    case R.id.menu_expiring_messages_off:
-    case R.id.menu_expiring_messages:         handleSelectMessageExpiration();                   return true;
     case android.R.id.home:                   handleReturnToConversationList();                  return true;
     }
 
@@ -580,32 +551,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     startActivity(intent);
     finish();
-  }
-
-  private void handleSelectMessageExpiration() {
-    if (isPushGroupConversation() && !isActiveGroup()) {
-      return;
-    }
-
-    //noinspection CodeBlock2Expr
-    ExpirationDialog.show(this, recipient.getExpireMessages(), expirationTime -> {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          DatabaseFactory.getRecipientDatabase(ConversationActivity.this).setExpireMessages(recipient, expirationTime);
-          OutgoingExpirationUpdateMessage outgoingMessage = new OutgoingExpirationUpdateMessage(getRecipient(), System.currentTimeMillis(), expirationTime * 1000L);
-          MessageSender.send(ConversationActivity.this, outgoingMessage, threadId, false, null);
-
-          return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-          invalidateOptionsMenu();
-          if (fragment != null) fragment.setLastSeen(0);
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    });
   }
 
   private void handleMuteNotifications() {
@@ -645,36 +590,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         return null;
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-  }
-
-  private void handleResetSecureSession() {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setTitle(R.string.ConversationActivity_reset_secure_session_question);
-    builder.setIconAttribute(R.attr.dialog_alert_icon);
-    builder.setCancelable(true);
-    builder.setMessage(R.string.ConversationActivity_this_may_help_if_youre_having_encryption_problems);
-    builder.setPositiveButton(R.string.ConversationActivity_reset, (dialog, which) -> {
-      if (isSingleConversation()) {
-        final Context context = getApplicationContext();
-
-        OutgoingEndSessionMessage endSessionMessage =
-            new OutgoingEndSessionMessage(new OutgoingTextMessage(getRecipient(), "TERMINATE", 0, -1));
-
-        new AsyncTask<OutgoingEndSessionMessage, Void, Long>() {
-          @Override
-          protected Long doInBackground(OutgoingEndSessionMessage... messages) {
-            return MessageSender.send(context, messages[0], threadId, false, null);
-          }
-
-          @Override
-          protected void onPostExecute(Long result) {
-            sendComplete(result);
-          }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, endSessionMessage);
-      }
-    });
-    builder.setNegativeButton(android.R.string.cancel, null);
-    builder.show();
   }
 
   private void handleViewMedia() {
@@ -725,35 +640,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Intent intent = new Intent(ConversationActivity.this, GroupCreateActivity.class);
     intent.putExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA, recipient.getAddress());
     startActivityForResult(intent, GROUP_EDIT);
-  }
-
-  private void handleAddToContacts() {
-    if (recipient.getAddress().isGroup()) return;
-
-    try {
-      final Intent intent = new Intent(Intent.ACTION_INSERT_OR_EDIT);
-      if (recipient.getAddress().isEmail()) {
-        intent.putExtra(ContactsContract.Intents.Insert.EMAIL, recipient.getAddress().toEmailString());
-      } else {
-        intent.putExtra(ContactsContract.Intents.Insert.PHONE, recipient.getAddress().toPhoneString());
-      }
-      intent.setType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
-      startActivityForResult(intent, ADD_CONTACT);
-    } catch (ActivityNotFoundException e) {
-      Log.w(TAG, e);
-    }
-  }
-
-  private boolean handleDisplayQuickContact() {
-    if (recipient.getAddress().isGroup()) return false;
-
-    if (recipient.getContactUri() != null) {
-      ContactsContract.QuickContact.showQuickContact(ConversationActivity.this, titleView, recipient.getContactUri(), ContactsContract.QuickContact.MODE_LARGE, null);
-    } else {
-      handleAddToContacts();
-    }
-
-    return true;
   }
 
   private void handleAddAttachment() {
@@ -951,7 +837,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
 
     titleView.setOnClickListener(v -> handleConversationSettings());
-    titleView.setOnLongClickListener(v -> handleDisplayQuickContact());
     titleView.setOnBackClickedListener(view -> super.onBackPressed());
 
     composeText.setOnKeyListener(composeKeyPressedListener);

@@ -1527,5 +1527,8 @@
     <string name="menu_deaddrop">Contact requests</string>
     <string name="not_now">Not now</string>
     <string name="never">Never</string>
+    <string name="conversation__menu_view_profile">View profile</string>
+    <string name="conversation__menu_archive_chat">Archive chat</string>
+    <string name="conversation__menu_delete_chat">Delete chat</string>
 
 </resources>
