@@ -305,19 +305,21 @@ public class ConversationListItem extends RelativeLayout
 
   private void setRippleColor(Recipient recipient) {
     if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-      if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
-        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
-        setBackgroundColor(ta.getColor(0, 0xffffffff));
-        ta.recycle();
-      }
-      else {
-        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_item_background});
-        setBackground(ta.getDrawable(0));
-        ta.recycle();
+// TODO: a different backgroupd for the deaddrop would be nice, however the following code collades with the selected state and should be fixex
+
+//      if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+//        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
+//        setBackgroundColor(ta.getColor(0, 0xffffffff));
+//        ta.recycle();
+//      }
+//      else {
+//        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_item_background});
+//        setBackground(ta.getDrawable(0));
+//        ta.recycle();
 
         ((RippleDrawable)(getBackground()).mutate())
             .setColor(ColorStateList.valueOf(recipient.getColor().toConversationColor(getContext())));
-      }
+//      }
     }
   }
 
