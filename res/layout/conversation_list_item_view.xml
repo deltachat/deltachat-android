@@ -44,8 +44,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/thumbnail"
-            android:layout_toStartOf="@+id/thumbnail">
+            android:layout_toLeftOf="@+id/date"
+            android:layout_toStartOf="@+id/date">
 
             <org.thoughtcrime.securesms.components.FromTextView
                 android:id="@+id/from_text"
@@ -85,22 +85,6 @@
                 android:maxLines="1"
                 tools:text="Wheels arrive at 3pm flat. This is a somewhat longer message."
                 android:ellipsize="end" />
-
-        <org.thoughtcrime.securesms.components.ThumbnailView
-                android:id="@+id/thumbnail"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@+id/date"
-                android:layout_toStartOf="@+id/date"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="5dp"
-                android:contentDescription="@string/conversation_activity__attachment_thumbnail"
-                android:visibility="gone"
-                tools:src="@drawable/ic_video_light"
-                tools:visibility="visible" />
 
         <TextView android:id="@id/date"
                   android:layout_marginLeft="3dp"
