@@ -83,7 +83,7 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp"
             android:layout_marginRight="12dp"
@@ -100,29 +100,36 @@
                       tools:text="30 mins"
                       android:singleLine="true"/>
 
-            <TextView android:id="@+id/archived"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:paddingLeft="6dp"
-                      android:paddingRight="6dp"
-                      android:paddingTop="2dp"
-                      android:paddingBottom="2dp"
-                      style="@style/Signal.Text.Caption"
-                      android:text="@string/conversation_list_item_view__archived"
-                      android:textColor="@color/core_white"
-                      android:textAllCaps="true"
-                      android:background="@drawable/archived_indicator_background" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minHeight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <org.thoughtcrime.securesms.components.DeliveryStatusView
-                      android:id="@+id/delivery_status"
-                      android:layout_marginTop="6dp"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      app:iconColor="?attr/conversation_list_item_delivery_icon_color"/>
+                <TextView android:id="@+id/archived"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:paddingLeft="6dp"
+                          android:paddingRight="6dp"
+                          android:paddingTop="2dp"
+                          android:paddingBottom="2dp"
+                          style="@style/Signal.Text.Caption"
+                          android:text="@string/conversation_list_item_view__archived"
+                          android:textColor="@color/core_white"
+                          android:textAllCaps="true"
+                          android:background="@drawable/archived_indicator_background" />
 
-            <ImageView android:id="@+id/unread_indicator"
-                      android:layout_width="24dp"
-                      android:layout_height="24dp"/>
+                <org.thoughtcrime.securesms.components.DeliveryStatusView
+                          android:id="@+id/delivery_status"
+                          android:layout_marginTop="6dp"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          app:iconColor="?attr/conversation_list_item_delivery_icon_color"/>
+
+                <ImageView android:id="@+id/unread_indicator"
+                          android:layout_width="24dp"
+                          android:layout_height="24dp"/>
+            </LinearLayout>
 
         </LinearLayout>
 
