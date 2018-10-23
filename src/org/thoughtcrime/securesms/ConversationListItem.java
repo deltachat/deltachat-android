@@ -38,6 +38,7 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.annimon.stream.Stream;
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
@@ -45,6 +46,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.components.FromTextView;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -159,7 +161,16 @@ public class ConversationListItem extends RelativeLayout
     setStatusIcons(thread);
     setBatchState(batchMode);
     setBgColor();
-    this.contactPhotoImage.setAvatar(glideRequests, recipient, true);
+
+    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+      ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+      DcContact dcContact = dcContext.getContact(dcContext.getMsg(msgId).getFromId());
+      this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
+    }
+    else {
+      this.contactPhotoImage.setAvatar(glideRequests, recipient, true);
+    }
+
     verifiedIndicator.setVisibility(thread.isVerified() ? VISIBLE : GONE);
   }
 
