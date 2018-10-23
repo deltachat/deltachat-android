@@ -32,6 +32,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -305,21 +306,20 @@ public class ConversationListItem extends RelativeLayout
 
   private void setRippleColor(Recipient recipient) {
     if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-// TODO: a different backgroupd for the deaddrop would be nice, however the following code collades with the selected state and should be fixex
-
-//      if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
-//        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
-//        setBackgroundColor(ta.getColor(0, 0xffffffff));
-//        ta.recycle();
-//      }
-//      else {
-//        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_item_background});
-//        setBackground(ta.getDrawable(0));
-//        ta.recycle();
-
-        ((RippleDrawable)(getBackground()).mutate())
-            .setColor(ColorStateList.valueOf(recipient.getColor().toConversationColor(getContext())));
-//      }
+      if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
+        setBackgroundColor(ta.getColor(0, 0xffffffff));
+        ta.recycle();
+      }
+      else {
+        try {
+          ((RippleDrawable) (getBackground()).mutate())
+              .setColor(ColorStateList.valueOf(recipient.getColor().toConversationColor(getContext())));
+        }
+        catch (Exception e) {
+          Log.i(TAG, "Item was converted to Deaddrop-Item with a colored background, this is not undoable");
+        }
+      }
     }
   }
 
