@@ -8,9 +8,7 @@
         android:focusable="true"
         android:nextFocusRight="@+id/fab"
         android:nextFocusLeft="@+id/container"
-        android:layout_height="72dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:layout_height="72dp">
 
     <org.thoughtcrime.securesms.components.AvatarImageView
         android:id="@+id/contact_photo_image"
@@ -23,13 +21,15 @@
         android:cropToPadding="true"
         tools:src="@drawable/ic_contact_picture"
         android:contentDescription="@string/conversation_list_item_view__contact_photo_image"
-        android:layout_marginRight="12dp"
-        android:layout_marginEnd="12dp" />
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp" />
 
     <RelativeLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_marginLeft="4dp"
-                  android:layout_marginStart="4dp"
+                  android:layout_marginLeft="3dp"
+                  android:layout_marginStart="3dp"
+                  android:layout_marginRight="14dp"
+                  android:layout_marginEnd="14dp"
                   android:layout_centerVertical="true"
                   android:layout_toRightOf="@id/contact_photo_image"
                   android:layout_toEndOf="@id/contact_photo_image"
@@ -160,5 +160,10 @@
         </FrameLayout>
 
     </RelativeLayout>
+
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_alignParentBottom="true"
+          android:background="@drawable/attachment_selector_shadow"/>
 
 </org.thoughtcrime.securesms.ConversationListItem>
