@@ -36,8 +36,9 @@
                   android:weightSum="1"
                   android:orientation="horizontal">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/from"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -51,11 +52,7 @@
                 style="@style/Signal.Text.Body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_marginBottom="2dp"
-                android:layout_toLeftOf="@id/verified_indicator"
-                android:layout_toStartOf="@id/verified_indicator"
                 android:drawablePadding="5dp"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
@@ -69,16 +66,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_verified"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_marginRight="5dp" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
                 android:id="@+id/subject"
