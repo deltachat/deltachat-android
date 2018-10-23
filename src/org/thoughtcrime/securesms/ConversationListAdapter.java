@@ -48,7 +48,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   private static final int MESSAGE_TYPE_SWITCH_ARCHIVE = 1;
   private static final int MESSAGE_TYPE_THREAD         = 2;
   private static final int MESSAGE_TYPE_INBOX_ZERO     = 3;
-  private static final int MESSAGE_TYPE_DEADDROP       = 4; // DEADDROP is modified on construction so it cannot be reused as THREAD
+  private static final int MESSAGE_TYPE_DEADDROP       = 4; // DEADDROP and THREAD share the same class, however, for DEADDROP it is modified on construction so it cannot be reused
 
   private final @NonNull  ApplicationDcContext dcContext;
   private @NonNull        DcChatlist           dcChatlist;
