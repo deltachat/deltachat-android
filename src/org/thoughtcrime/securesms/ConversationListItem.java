@@ -17,11 +17,9 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.RippleDrawable;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.support.annotation.NonNull;
@@ -32,7 +30,6 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -175,10 +172,10 @@ public class ConversationListItem extends RelativeLayout
       this.archivedView.setVisibility(View.GONE);
     }
 
-    setStatusIcons(thread);
+    setStatusIcons();
     setThumbnailSnippet(thread);
     setBatchState(batchMode);
-    setRippleColor(recipient);
+    setBgColor();
     setUnreadIndicator(thread);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, true);
     verifiedIndicator.setVisibility(thread.isVerified() ? VISIBLE : GONE);
@@ -202,7 +199,7 @@ public class ConversationListItem extends RelativeLayout
     thumbnailView.setVisibility(GONE);
 
     setBatchState(false);
-    setRippleColor(contact);
+    setBgColor();
     contactPhotoImage.setAvatar(glideRequests, recipient, true);
   }
 
@@ -224,7 +221,7 @@ public class ConversationListItem extends RelativeLayout
     thumbnailView.setVisibility(GONE);
 
     setBatchState(false);
-    setRippleColor(recipient);
+    setBgColor();
     contactPhotoImage.setAvatar(glideRequests, recipient, true);
   }
 
@@ -281,7 +278,7 @@ public class ConversationListItem extends RelativeLayout
     }
   }
 
-  private void setStatusIcons(ThreadRecord thread) {
+  private void setStatusIcons() {
     int state = dcSummary.getState();
 
     if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED) {
@@ -304,22 +301,11 @@ public class ConversationListItem extends RelativeLayout
     }
   }
 
-  private void setRippleColor(Recipient recipient) {
-    if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-      if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
-        TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
-        setBackgroundColor(ta.getColor(0, 0xffffffff));
-        ta.recycle();
-      }
-      else {
-        try {
-          ((RippleDrawable) (getBackground()).mutate())
-              .setColor(ColorStateList.valueOf(recipient.getColor().toConversationColor(getContext())));
-        }
-        catch (Exception e) {
-          Log.i(TAG, "Item was converted to Deaddrop-Item with a colored background, this is not undoable");
-        }
-      }
+  private void setBgColor() {
+    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+      TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
+      setBackgroundColor(ta.getColor(0, 0xffffffff));
+      ta.recycle();
     }
   }
 
