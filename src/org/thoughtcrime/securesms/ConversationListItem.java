@@ -156,16 +156,9 @@ public class ConversationListItem extends RelativeLayout
       dateView.setText(date);
     }
 
-    if (thread.isArchived()) {
-      this.archivedView.setVisibility(View.VISIBLE);
-    } else {
-      this.archivedView.setVisibility(View.GONE);
-    }
-
-    setStatusIcons();
+    setStatusIcons(thread);
     setBatchState(batchMode);
     setBgColor();
-    setUnreadIndicator(thread);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, true);
     verifiedIndicator.setVisibility(thread.isVerified() ? VISIBLE : GONE);
   }
@@ -241,25 +234,53 @@ public class ConversationListItem extends RelativeLayout
     return lastSeen;
   }
 
-  private void setStatusIcons() {
-    int state = dcSummary.getState();
-
-    if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED) {
+  private void setStatusIcons(ThreadRecord thread) {
+    if (thread.isArchived())
+    {
+      // archived
+      this.archivedView.setVisibility(View.VISIBLE);
       deliveryStatusIndicator.setNone();
-    } else if (state==DcMsg.DC_STATE_OUT_ERROR) {
-      deliveryStatusIndicator.setFailed();
-    } else {
-      if(state==DcMsg.DC_STATE_OUT_MDN_RCVD) {
-        deliveryStatusIndicator.setRead();
-      }
-      else if(state==DcMsg.DC_STATE_OUT_DELIVERED) {
-        deliveryStatusIndicator.setSent();
-      }
-      else if (state==DcMsg.DC_STATE_OUT_PENDING){
-        deliveryStatusIndicator.setPending();
-      }
-      else {
+      unreadIndicator.setVisibility(View.GONE);
+    }
+    else
+    {
+      this.archivedView.setVisibility(View.GONE);
+      int state = dcSummary.getState();
+      if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)
+      {
+        // incoming
         deliveryStatusIndicator.setNone();
+        int unreadCount = thread.getUnreadCount();
+        if(unreadCount==0) {
+          unreadIndicator.setVisibility(View.GONE);
+        }
+        else {
+          unreadIndicator.setImageDrawable(TextDrawable.builder()
+              .beginConfig()
+              .width(ViewUtil.dpToPx(getContext(), 24))
+              .height(ViewUtil.dpToPx(getContext(), 24))
+              .textColor(Color.WHITE)
+              .bold()
+              .endConfig()
+              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.green_A700)));
+          unreadIndicator.setVisibility(View.VISIBLE);
+        }
+      }
+      else
+      {
+        // outgoing
+        unreadIndicator.setVisibility(View.GONE);
+        if (state == DcMsg.DC_STATE_OUT_ERROR) {
+          deliveryStatusIndicator.setFailed();
+        } else if (state == DcMsg.DC_STATE_OUT_MDN_RCVD) {
+          deliveryStatusIndicator.setRead();
+        } else if (state == DcMsg.DC_STATE_OUT_DELIVERED) {
+          deliveryStatusIndicator.setSent();
+        } else if (state == DcMsg.DC_STATE_OUT_PENDING) {
+          deliveryStatusIndicator.setPending();
+        } else {
+          deliveryStatusIndicator.setNone();
+        }
       }
     }
   }
@@ -270,23 +291,6 @@ public class ConversationListItem extends RelativeLayout
       setBackgroundColor(ta.getColor(0, 0xffffffff));
       ta.recycle();
     }
-  }
-
-  private void setUnreadIndicator(ThreadRecord thread) {
-    if (thread.getUnreadCount() == 0) {
-      unreadIndicator.setVisibility(View.GONE);
-      return;
-    }
-
-    unreadIndicator.setImageDrawable(TextDrawable.builder()
-                                                 .beginConfig()
-                                                 .width(ViewUtil.dpToPx(getContext(), 24))
-                                                 .height(ViewUtil.dpToPx(getContext(), 24))
-                                                 .textColor(Color.WHITE)
-                                                 .bold()
-                                                 .endConfig()
-                                                 .buildRound(String.valueOf(thread.getUnreadCount()), getResources().getColor(R.color.green_A700)));
-    unreadIndicator.setVisibility(View.VISIBLE);
   }
 
   private Spanned getHighlightedSpan(@NonNull  Locale locale,
