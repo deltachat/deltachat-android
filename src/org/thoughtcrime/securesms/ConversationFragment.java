@@ -170,10 +170,15 @@ public class ConversationFragment extends Fragment
 
   private void setNoMessageText() {
     if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
-      noMessageTextView.setText(R.string.menu_deaddrop);
+      noMessageTextView.setText(R.string.conversation__no_messages);
     }
     else if(getListAdapter().isGroupChat()){
-      noMessageTextView.setText(R.string.ConversationActivity_MsgNewGroupDraftHint);
+      if( dcContext.getChat((int)threadId).isUnpromoted() ) {
+        noMessageTextView.setText(R.string.ConversationActivity_MsgNewGroupDraftHint);
+      }
+      else {
+        noMessageTextView.setText(R.string.conversation__no_messages);
+      }
     }else{
       String name = getListAdapter().getChatName();
       String message = getString(R.string.ConversationActivity_NoMessagesHint, name, name);
