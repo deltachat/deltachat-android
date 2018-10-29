@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.crypto.IdentityKeyParcelable;
 import org.thoughtcrime.securesms.database.IdentityDatabase;
 import org.thoughtcrime.securesms.database.IdentityDatabase.IdentityRecord;
@@ -95,7 +96,7 @@ public class ConversationUpdateItem extends LinearLayout
 
   private void bind(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     this.messageRecord = messageRecord;
-    this.sender        = messageRecord.getIndividualRecipient();
+    this.sender        = Recipient.from(DcHelper.getContext(getContext()), messageRecord.getId());
     this.locale        = locale;
 
     this.sender.addListener(this);

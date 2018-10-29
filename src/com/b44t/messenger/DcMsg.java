@@ -26,10 +26,7 @@ package com.b44t.messenger;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.model.Quote;
-import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.recipients.RecipientProvider;
 
 import java.io.File;
 import java.util.Set;
@@ -191,12 +188,6 @@ public class DcMsg {
     public Quote getQuote() {
         // TODO: remove the dependency to org.thoughtcrime.securesms.database.model.Quote
         return null;
-    }
-
-    public Recipient getIndividualRecipient() {
-        // TODO: remove the dependency to org.thoughtcrime.securesms.recipients.Recipient
-        RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails("individualRecipient", null, false, null, null);
-        return new Recipient(Address.fromContact(getFromId()), recipientDetails);
     }
 
     // working with raw c-data
