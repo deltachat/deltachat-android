@@ -31,6 +31,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -212,6 +213,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     final Address groupAddress = getIntent().getParcelableExtra(GROUP_ADDRESS_EXTRA);
     if (groupAddress != null) {
       editGroupChatId = groupAddress.getDcChatId();
+      getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
       new FillExistingGroupInfoAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, editGroupChatId);
     }
   }
