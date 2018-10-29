@@ -94,6 +94,10 @@ public class Recipient implements RecipientModifiedListener {
   private @Nullable String         profileAvatar;
   private           boolean        profileSharing;
 
+  public static @NonNull Recipient from(@NonNull Context context, int dcMsgId) {
+    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    return dcContext.getRecipient(dcContext.getChat(dcContext.getMsg(dcMsgId).getChatId()));
+  }
 
   @SuppressWarnings("ConstantConditions")
   public static @NonNull Recipient from(@NonNull Context context, @NonNull Address address, boolean asynchronous) {
@@ -101,6 +105,8 @@ public class Recipient implements RecipientModifiedListener {
     ApplicationDcContext dcContext = DcHelper.getContext(context);
     if(address.isDcContact()) {
       return dcContext.getRecipient(dcContext.getContact(address.getDcContactId()));
+    } else if (address.isDcChat()) {
+      return dcContext.getRecipient(dcContext.getChat(address.getDcChatId()));
     }
     else if(address.isEmail()) {
       int contactId = dcContext.lookupContactIdByAddr(address.toEmailString());

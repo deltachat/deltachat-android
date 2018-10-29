@@ -683,11 +683,9 @@ public class ConversationItem extends LinearLayout
       } else if (MediaPreviewActivity.isContentTypeSupported(slide.getContentType()) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.setDataAndType(slide.getUri(), slide.getContentType());
+        intent.putExtra(MediaPreviewActivity.DC_MSG_ID, slide.getDcMsgId());
         intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, conversationRecipient.getAddress());
         intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, messageRecord.isOutgoing());
-        intent.putExtra(MediaPreviewActivity.DATE_EXTRA, messageRecord.getTimestamp());
-        intent.putExtra(MediaPreviewActivity.SIZE_EXTRA, slide.asAttachment().getSize());
         intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, false);
 
         context.startActivity(intent);

@@ -67,6 +67,10 @@ public class MediaUtil {
     return slide;
   }
 
+  /**
+   * @deprecated use getSlideForMsg instead.
+   */
+  @Deprecated
   public static Slide getSlideForAttachment(Context context, Attachment attachment) {
     Slide slide = null;
     if (isGif(attachment.getContentType())) {

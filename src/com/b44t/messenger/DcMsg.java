@@ -31,8 +31,7 @@ import org.thoughtcrime.securesms.database.model.Quote;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientProvider;
 
-import java.util.Collections;
-import java.util.List;
+import java.io.File;
 import java.util.Set;
 
 public class DcMsg {
@@ -54,6 +53,7 @@ public class DcMsg {
     public final static int DC_STATE_OUT_DELIVERED = 26;
     public final static int DC_STATE_OUT_MDN_RCVD = 28;
 
+    public static final int DC_MSG_NO_ID = 0;
     public final static int DC_MSG_ID_MARKER1 = 1;
     public final static int DC_MSG_ID_DAYMARKER = 9;
 
@@ -110,6 +110,12 @@ public class DcMsg {
     public native void    setFile            (String file, String filemime);
     public native void    setDimension       (int width, int height);
     public native void    setDuration        (int duration);
+
+    public File getFileAsFile() {
+        if(getFile()==null)
+            throw new AssertionError("expected a file to be present.");
+        return new File(getFile());
+    }
 
     // aliases and higher-level tools
     public static int[] msgSetToIds(final Set<DcMsg> dcMsgs) {

@@ -47,17 +47,18 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.CursorRecyclerViewAdapter;
-import org.thoughtcrime.securesms.database.MediaDatabase;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader.BucketedThreadMedia;
 import org.thoughtcrime.securesms.database.loaders.ThreadMediaLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.AttachmentUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -257,7 +258,7 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
     }
 
     @Override
-    public void onMediaClicked(@NonNull MediaDatabase.MediaRecord mediaRecord) {
+    public void onMediaClicked(@NonNull DcMsg mediaRecord) {
       if (actionMode != null) {
         handleMediaMultiSelectClick(mediaRecord);
       } else {
@@ -265,7 +266,7 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       }
     }
 
-    private void handleMediaMultiSelectClick(@NonNull MediaDatabase.MediaRecord mediaRecord) {
+    private void handleMediaMultiSelectClick(@NonNull DcMsg mediaRecord) {
       MediaGalleryAdapter adapter = getListAdapter();
 
       adapter.toggleSelection(mediaRecord);
@@ -277,8 +278,8 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       }
     }
 
-    private void handleMediaPreviewClick(@NonNull MediaDatabase.MediaRecord mediaRecord) {
-      if (mediaRecord.getAttachment().getDataUri() == null) {
+    private void handleMediaPreviewClick(@NonNull DcMsg mediaRecord) {
+      if (mediaRecord.getFile() == null) {
         return;
       }
 
@@ -288,18 +289,15 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       }
 
       Intent intent = new Intent(context, MediaPreviewActivity.class);
-      intent.putExtra(MediaPreviewActivity.DATE_EXTRA, mediaRecord.getDate());
-      intent.putExtra(MediaPreviewActivity.SIZE_EXTRA, mediaRecord.getAttachment().getSize());
+      intent.putExtra(MediaPreviewActivity.DC_MSG_ID, mediaRecord.getId());
       intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, recipient.getAddress());
       intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, mediaRecord.isOutgoing());
       intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, true);
-
-      intent.setDataAndType(mediaRecord.getAttachment().getDataUri(), mediaRecord.getContentType());
       context.startActivity(intent);
     }
 
     @Override
-    public void onMediaLongClicked(MediaDatabase.MediaRecord mediaRecord) {
+    public void onMediaLongClicked(DcMsg mediaRecord) {
       if (actionMode == null) {
         ((MediaGalleryAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
         recyclerView.getAdapter().notifyDataSetChanged();
@@ -309,7 +307,7 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void handleDeleteMedia(@NonNull Collection<MediaDatabase.MediaRecord> mediaRecords) {
+    private void handleDeleteMedia(@NonNull Collection<DcMsg> mediaRecords) {
       int recordCount       = mediaRecords.size();
       Resources res         = getContext().getResources();
       String confirmTitle   = res.getQuantityString(R.plurals.MediaOverviewActivity_Media_delete_confirm_title,
@@ -324,25 +322,26 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       builder.setTitle(confirmTitle);
       builder.setMessage(confirmMessage);
       builder.setCancelable(true);
+      final DcContext dcContext = DcHelper.getContext(getContext());
 
       builder.setPositiveButton(R.string.delete, (dialogInterface, i) -> {
-        new ProgressDialogAsyncTask<MediaDatabase.MediaRecord, Void, Void>(getContext(),
+        new ProgressDialogAsyncTask<DcMsg, Void, Void>(getContext(),
                                                                            R.string.MediaOverviewActivity_Media_delete_progress_title,
                                                                            R.string.MediaOverviewActivity_Media_delete_progress_message)
         {
           @Override
-          protected Void doInBackground(MediaDatabase.MediaRecord... records) {
+          protected Void doInBackground(DcMsg... records) {
             if (records == null || records.length == 0) {
               return null;
             }
 
-            for (MediaDatabase.MediaRecord record : records) {
-              AttachmentUtil.deleteAttachment(getContext(), record.getAttachment());
+            for (DcMsg record : records) {
+              dcContext.deleteMsgs(new int[]{record.getId()});
             }
             return null;
           }
 
-        }.execute(mediaRecords.toArray(new MediaDatabase.MediaRecord[mediaRecords.size()]));
+        }.execute(mediaRecords.toArray(new DcMsg[mediaRecords.size()]));
       });
       builder.setNegativeButton(android.R.string.cancel, null);
       builder.show();

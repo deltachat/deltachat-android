@@ -47,6 +47,9 @@ public class Address implements Parcelable, Comparable<Address> {
 
   public static final Address UNKNOWN = new Address("Unknown");
 
+  private final static String DC_CHAT_PREFIX = "dc:";
+  private final static String DC_CONTACT_PREFIX = "dcc:";
+
   private static final String TAG = Address.class.getSimpleName();
 
   private static final AtomicReference<Pair<String, ExternalAddressFormatter>> cachedFormatter = new AtomicReference<>();
@@ -54,11 +57,11 @@ public class Address implements Parcelable, Comparable<Address> {
   private final String address;
 
   public static Address fromChat(int chatId) {
-    return new Address("dc:" + chatId);
+    return new Address(DC_CHAT_PREFIX + chatId);
   }
 
   public static Address fromContact(int contactId) {
-    return new Address("dcc:" + contactId);
+    return new Address(DC_CONTACT_PREFIX + contactId);
   }
 
   private Address(@NonNull String address) {
@@ -134,9 +137,9 @@ public class Address implements Parcelable, Comparable<Address> {
     return !isGroup() && !isEmail();
   }
 
-  public boolean isDcChat() { return address.startsWith("dc:"); };
+  public boolean isDcChat() { return address.startsWith(DC_CHAT_PREFIX); };
 
-  public boolean isDcContact() { return address.startsWith("dcc:"); };
+  public boolean isDcContact() { return address.startsWith(DC_CONTACT_PREFIX); };
 
   public @NonNull String toGroupString() {
     if (!isGroup()) throw new AssertionError("Not group: " + address);
@@ -155,12 +158,12 @@ public class Address implements Parcelable, Comparable<Address> {
 
   public int getDcChatId() {
     if(!isDcChat()) throw new AssertionError("Not dc chat: " + address);
-    return Integer.valueOf(address.substring("dc:".length()));
+    return Integer.valueOf(address.substring(DC_CHAT_PREFIX.length()));
   }
 
   public int getDcContactId() {
     if(!isDcContact()) throw new AssertionError("Not dc contact: " + address);
-    return Integer.valueOf(address.substring("dcc:".length()));
+    return Integer.valueOf(address.substring(DC_CONTACT_PREFIX.length()));
   }
 
   @Override

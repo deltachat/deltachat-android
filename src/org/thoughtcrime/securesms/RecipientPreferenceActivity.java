@@ -167,8 +167,11 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       Intent intent = new Intent(RecipientPreferenceActivity.this, MediaPreviewActivity.class);
       intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, address);
       intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, mediaRecord.isOutgoing());
-      intent.putExtra(MediaPreviewActivity.DATE_EXTRA, mediaRecord.getDate());
-      intent.putExtra(MediaPreviewActivity.SIZE_EXTRA, mediaRecord.getAttachment().getSize());
+      Log.e(TAG, "MEDIA PREVIEW NOT IMPLEMENTED HERE must have dcMsgId in Media Record first!");
+      if(true)
+        throw new IllegalStateException("Media Preview not implemented");
+/*      intent.putExtra(MediaPreviewActivity.DATE_EXTRA, mediaRecord.getDate());
+      intent.putExtra(MediaPreviewActivity.SIZE_EXTRA, mediaRecord.getAttachment().getSize());*/
       intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, ViewCompat.getLayoutDirection(threadPhotoRailView) == ViewCompat.LAYOUT_DIRECTION_LTR);
       intent.setDataAndType(mediaRecord.getAttachment().getDataUri(), mediaRecord.getContentType());
       startActivity(intent);

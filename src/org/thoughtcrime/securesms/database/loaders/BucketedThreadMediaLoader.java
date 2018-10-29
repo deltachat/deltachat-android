@@ -2,19 +2,16 @@ package org.thoughtcrime.securesms.database.loaders;
 
 
 import android.content.Context;
-import android.database.ContentObserver;
-import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v4.content.AsyncTaskLoader;
 
 import com.annimon.stream.Stream;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.Database;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.MediaDatabase;
-import org.thoughtcrime.securesms.recipients.Recipient;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,12 +30,10 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
   private static final String TAG = BucketedThreadMediaLoader.class.getSimpleName();
 
   private final Address         address;
-  private final ContentObserver observer;
 
   public BucketedThreadMediaLoader(@NonNull Context context, @NonNull Address address) {
     super(context);
     this.address  = address;
-    this.observer = new ForceLoadContentObserver();
 
     onContentChanged();
   }
@@ -57,19 +52,15 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
   @Override
   protected void onAbandon() {
-    DatabaseFactory.getMediaDatabase(getContext()).unsubscribeToMediaChanges(observer);
   }
 
   @Override
   public BucketedThreadMedia loadInBackground() {
     BucketedThreadMedia result   = new BucketedThreadMedia(getContext());
-    long                threadId = DatabaseFactory.getThreadDatabase(getContext()).getThreadIdFor(Recipient.from(getContext(), address, true));
-
-    DatabaseFactory.getMediaDatabase(getContext()).subscribeToMediaChanges(observer);
-    try (Cursor cursor = DatabaseFactory.getMediaDatabase(getContext()).getGalleryMediaForThread(threadId)) {
-      while (cursor != null && cursor.moveToNext()) {
-        result.add(MediaDatabase.MediaRecord.from(getContext(), cursor));
-      }
+    DcContext context = DcHelper.getContext(getContext());
+    int[] messages = context.getChatMedia(address.getDcChatId(), DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_IMAGE);
+    for(int nextId : messages) {
+      result.add(context.getMsg(nextId));
     }
 
     return result;
@@ -86,7 +77,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
     private final TimeBucket[] TIME_SECTIONS;
 
     public BucketedThreadMedia(@NonNull Context context) {
-      this.TODAY         = new TimeBucket(context.getString(R.string.BucketedThreadMedia_Today), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -1), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, 1000));
+      this.TODAY         = new TimeBucket(context.getString(R.string.BucketedThreadMedia_Today), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -1), TimeBucket.addToCalendar(Calendar.YEAR, 1000));
       this.YESTERDAY     = new TimeBucket(context.getString(R.string.BucketedThreadMedia_Yesterday), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -2), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -1));
       this.THIS_WEEK     = new TimeBucket(context.getString(R.string.BucketedThreadMedia_This_week), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -7), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -2));
       this.THIS_MONTH    = new TimeBucket(context.getString(R.string.BucketedThreadMedia_This_month), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -30), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -7));
@@ -94,16 +85,14 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       this.OLDER         = new MonthBuckets();
     }
 
-
-    public void add(MediaDatabase.MediaRecord mediaRecord) {
+    public void add(DcMsg imageMessage) {
       for (TimeBucket timeSection : TIME_SECTIONS) {
-        if (timeSection.inRange(mediaRecord.getDate())) {
-          timeSection.add(mediaRecord);
+        if (timeSection.inRange(imageMessage.getTimestamp())) {
+          timeSection.add(imageMessage);
           return;
         }
       }
-
-      OLDER.add(mediaRecord);
+      OLDER.add(imageMessage);
     }
 
     public int getSectionCount() {
@@ -120,7 +109,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       else                                    return OLDER.getSectionItemCount(section - activeTimeBuckets.size());
     }
 
-    public MediaDatabase.MediaRecord get(int section, int item) {
+    public DcMsg get(int section, int item) {
       List<TimeBucket> activeTimeBuckets = Stream.of(TIME_SECTIONS).filter(timeBucket -> !timeBucket.isEmpty()).toList();
 
       if (section < activeTimeBuckets.size()) return activeTimeBuckets.get(section).getItem(item);
@@ -136,24 +125,24 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
     private static class TimeBucket {
 
-      private final List<MediaDatabase.MediaRecord> records = new LinkedList<>();
+      private final List<DcMsg> records = new LinkedList<>();
 
       private final long   startTime;
-      private final long   endtime;
+      private final long endTime;
       private final String name;
 
-      TimeBucket(String name, long startTime, long endtime) {
+      TimeBucket(String name, long startTime, long endTime) {
         this.name      = name;
         this.startTime = startTime;
-        this.endtime   = endtime;
+        this.endTime = endTime;
       }
 
-      void add(MediaDatabase.MediaRecord record) {
+      void add(DcMsg record) {
         this.records.add(record);
       }
 
       boolean inRange(long timestamp) {
-        return timestamp > startTime && timestamp <= endtime;
+        return timestamp > startTime && timestamp <= endTime;
       }
 
       boolean isEmpty() {
@@ -164,7 +153,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
         return records.size();
       }
 
-      MediaDatabase.MediaRecord getItem(int position) {
+      DcMsg getItem(int position) {
         return records.get(position);
       }
 
@@ -181,11 +170,11 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
     private static class MonthBuckets {
 
-      private final Map<Date, List<MediaDatabase.MediaRecord>> months = new HashMap<>();
+      private final Map<Date, List<DcMsg>> months = new HashMap<>();
 
-      void add(MediaDatabase.MediaRecord record) {
+      void add(DcMsg record) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(record.getDate());
+        calendar.setTimeInMillis(record.getTimestamp());
 
         int  year  = calendar.get(Calendar.YEAR) - 1900;
         int  month = calendar.get(Calendar.MONTH);
@@ -194,7 +183,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
         if (months.containsKey(date)) {
           months.get(date).add(record);
         } else {
-          List<MediaDatabase.MediaRecord> list = new LinkedList<>();
+          List<DcMsg> list = new LinkedList<>();
           list.add(record);
           months.put(date, list);
         }
@@ -208,7 +197,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
         return months.get(getSection(section)).size();
       }
 
-      MediaDatabase.MediaRecord getItem(int section, int position) {
+      DcMsg getItem(int section, int position) {
         return months.get(getSection(section)).get(position);
       }
 

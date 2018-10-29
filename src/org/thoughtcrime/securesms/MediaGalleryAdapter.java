@@ -23,10 +23,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter;
 
 import org.thoughtcrime.securesms.components.ThumbnailView;
-import org.thoughtcrime.securesms.database.MediaDatabase.MediaRecord;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader.BucketedThreadMedia;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
@@ -46,7 +46,7 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
   private final GlideRequests       glideRequests;
   private final Locale              locale;
   private final ItemClickListener   itemClickListener;
-  private final Set<MediaRecord>    selected;
+  private final Set<DcMsg>    selected;
 
   private  BucketedThreadMedia media;
 
@@ -105,10 +105,10 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
 
   @Override
   public void onBindItemViewHolder(ItemViewHolder viewHolder, int section, int offset) {
-    MediaRecord   mediaRecord       = media.get(section, offset);
+    DcMsg         mediaRecord       = media.get(section, offset);
     ThumbnailView thumbnailView     = ((ViewHolder)viewHolder).imageView;
     View          selectedIndicator = ((ViewHolder)viewHolder).selectedIndicator;
-    Slide         slide             = MediaUtil.getSlideForAttachment(context, mediaRecord.getAttachment());
+    Slide         slide             = MediaUtil.getSlideForMsg(context, mediaRecord);
 
     if (slide != null) {
       thumbnailView.setImageResource(glideRequests, slide, false, false);
@@ -133,7 +133,7 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
     return media.getSectionItemCount(section);
   }
 
-  public void toggleSelection(@NonNull MediaRecord mediaRecord) {
+  public void toggleSelection(@NonNull DcMsg mediaRecord) {
     if (!selected.remove(mediaRecord)) {
       selected.add(mediaRecord);
     }
@@ -145,7 +145,7 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
   }
 
   @NonNull
-  public Collection<MediaRecord> getSelectedMedia() {
+  public Collection<DcMsg> getSelectedMedia() {
     return new HashSet<>(selected);
   }
 
@@ -155,7 +155,7 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
   }
 
   interface ItemClickListener {
-    void onMediaClicked(@NonNull MediaRecord mediaRecord);
-    void onMediaLongClicked(MediaRecord mediaRecord);
+    void onMediaClicked(@NonNull DcMsg mediaRecord);
+    void onMediaLongClicked(DcMsg mediaRecord);
   }
 }
