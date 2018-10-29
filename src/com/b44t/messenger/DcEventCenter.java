@@ -28,16 +28,16 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class DcEventCenter {
-    private Hashtable<Integer, ArrayList<Object>> allObservers = new Hashtable<>();
+    private Hashtable<Integer, ArrayList<DcEventDelegate>> allObservers = new Hashtable<>();
     private final Object LOCK = new Object();
 
     public interface DcEventDelegate {
         void handleEvent(int eventId, Object data1, Object data2);
     }
 
-    public void addObserver(Object observer, int eventId) {
+    public void addObserver(DcEventDelegate observer, int eventId) {
         synchronized (LOCK) {
-            ArrayList<Object> idObservers = allObservers.get(eventId);
+            ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
             if (idObservers == null) {
                 allObservers.put(eventId, (idObservers = new ArrayList<>()));
             }
@@ -45,9 +45,9 @@ public class DcEventCenter {
         }
     }
 
-    public void removeObserver(Object observer, int eventId) {
+    public void removeObserver(DcEventDelegate observer, int eventId) {
         synchronized (LOCK) {
-            ArrayList<Object> idObservers = allObservers.get(eventId);
+            ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
             if (idObservers != null) {
                 idObservers.remove(observer);
             }
@@ -59,7 +59,7 @@ public class DcEventCenter {
             Enumeration<Integer> enumKey = allObservers.keys();
             while(enumKey.hasMoreElements()) {
                 Integer eventId = enumKey.nextElement();
-                ArrayList<Object> idObservers = allObservers.get(eventId);
+                ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
                 if (idObservers != null) {
                     idObservers.remove(observer);
                 }
@@ -69,11 +69,11 @@ public class DcEventCenter {
 
     public void sendToObservers(int eventId, Object data1, Object data2) {
         synchronized (LOCK) {
-            ArrayList<Object> idObservers = allObservers.get(eventId);
+            ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
             if (idObservers != null) {
                 for (int i = 0; i < idObservers.size(); i++) {
-                    Object observer = idObservers.get(i);
-                    ((DcEventDelegate) observer).handleEvent(eventId, data1, data2);
+                    DcEventDelegate observer = idObservers.get(i);
+                    observer.handleEvent(eventId, data1, data2);
                 }
             }
         }
