@@ -288,7 +288,7 @@ public class ContactRepository {
   @WorkerThread
   private @Nullable AvatarInfo getRecipientAvatarInfo(@NonNull Address address) {
     Recipient    recipient    = Recipient.from(context, address, false);
-    ContactPhoto contactPhoto = recipient.getContactPhoto();
+    ContactPhoto contactPhoto = recipient.getContactPhoto(context);
 
     if (contactPhoto != null) {
       Uri avatarUri = contactPhoto.getUri(context);

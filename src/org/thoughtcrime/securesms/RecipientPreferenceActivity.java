@@ -192,13 +192,13 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   }
 
   private void setHeader(@NonNull Recipient recipient) {
-    glideRequests.load(recipient.getContactPhoto())
+    glideRequests.load(recipient.getContactPhoto(this))
                  .fallback(recipient.getFallbackContactPhoto().asCallCard(this))
                  .error(recipient.getFallbackContactPhoto().asCallCard(this))
                  .diskCacheStrategy(DiskCacheStrategy.ALL)
                  .into(this.avatar);
 
-    if (recipient.getContactPhoto() == null) this.avatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+    if (recipient.getContactPhoto(this) == null) this.avatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     else                                     this.avatar.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
     this.avatar.setBackgroundColor(recipient.getColor().toActionBarColor(this));

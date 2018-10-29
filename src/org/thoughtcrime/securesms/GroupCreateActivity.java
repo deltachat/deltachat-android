@@ -25,7 +25,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -54,6 +53,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter.OnRecipientDeletedListener;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -115,8 +115,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     createVerified = getIntent().getBooleanExtra(GROUP_CREATE_VERIFIED_EXTRA, false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
-    initializeResources();
     initializeExistingGroup();
+    initializeResources();
   }
 
   @Override
@@ -205,7 +205,25 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       verifyButton.setOnClickListener(new ShowQrButtonListener());
       verifyButton.setVisibility(View.VISIBLE);
     }
-    avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(this, ContactColors.UNKNOWN_COLOR.toConversationColor(this)));
+    initializeAvatarView();
+  }
+
+  private void initializeAvatarView() {
+    boolean imageLoaded = false;
+    if (editGroupChatId != null) {
+      String avatarPath = dcContext.getChat(editGroupChatId).getProfileImage();
+      File avatarFile = new File(avatarPath);
+      if (avatarFile.exists()) {
+        imageLoaded = true;
+        GlideApp.with(this)
+                .load(avatarFile)
+                .circleCrop()
+                .into(avatar);
+      }
+    }
+    if (!imageLoaded) {
+      avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(this, ContactColors.UNKNOWN_COLOR.toConversationColor(this)));
+    }
     avatar.setOnClickListener(view -> Crop.pickImage(GroupCreateActivity.this));
   }
 
@@ -272,28 +290,30 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     finish();
   }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void setGroupAvatar(int chatId) {
-        if(avatarBmp == null) {
-          return;
-        }
-        String avatarPath = getFilesDir().getAbsolutePath() + "/chatAvatar_" + chatId + ".jpg";
+      if(avatarBmp == null) {
+        return;
+      }
+      String avatarPath = dcContext.getChat(chatId).getProfileImage();
+      if (avatarPath != null && !avatarPath.isEmpty()) {
         File oldImage = new File(avatarPath);
         if (oldImage.exists()) {
+          //noinspection ResultOfMethodCallIgnored
           oldImage.delete();
         }
-        FileOutputStream outStream;
-        try {
-          outStream = new FileOutputStream(avatarPath);
-          avatarBmp.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
-          dcContext.setChatProfileImage(chatId, avatarPath);
-          Log.d("dboehrs", "setGroupAvatar: " + avatarPath);
-        } catch (FileNotFoundException e) {
-          e.printStackTrace();
-        }
+      }
+      avatarPath = FileUtils.getFilePathForChatAvatar(this, chatId, System.currentTimeMillis());
+      FileOutputStream outStream;
+      try {
+        outStream = new FileOutputStream(avatarPath);
+        avatarBmp.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
+        dcContext.setChatProfileImage(chatId, avatarPath);
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
     }
 
-    private boolean showGroupNameEmptyToast(String groupName) {
+  private boolean showGroupNameEmptyToast(String groupName) {
     if(groupName == null) {
       Toast.makeText(this, getString(R.string.GroupCreateActivity_please_enter_group_name), Toast.LENGTH_LONG).show();
       return true;
@@ -385,20 +405,25 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         new Crop(data.getData()).output(outputFile).asSquare().start(this);
         break;
       case Crop.REQUEST_CROP:
-        GlideApp.with(this)
-                .asBitmap()
-                .load(Crop.getOutput(data))
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .centerCrop()
-                .override(AVATAR_SIZE, AVATAR_SIZE)
-                .into(new SimpleTarget<Bitmap>() {
-                  @Override
-                  public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
-                    setAvatar(Crop.getOutput(data), resource);
-                  }
-                });
+        setAvatarView(data);
     }
+  }
+
+  private void setAvatarView(Intent data) {
+    final Uri output = Crop.getOutput(data);
+    GlideApp.with(this)
+            .asBitmap()
+            .load(output)
+            .skipMemoryCache(true)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .centerCrop()
+            .override(AVATAR_SIZE, AVATAR_SIZE)
+            .into(new SimpleTarget<Bitmap>() {
+              @Override
+              public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
+                setAvatar(output, resource);
+              }
+            });
   }
 
   private class AddRecipientButtonListener implements View.OnClickListener {

@@ -1,5 +1,8 @@
 package org.thoughtcrime.securesms.util;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
@@ -8,6 +11,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class FileUtils {
+
+  public static final String AVATAR_PATH_TEMPLATE = "/group_chat_avatar_%s_%o.jpg";
 
   public static native int getFileDescriptorOwner(FileDescriptor fileDescriptor);
 
@@ -50,4 +55,10 @@ public class FileUtils {
 
     directory.delete();
   }
+
+  @SuppressLint("DefaultLocale")
+  public static String getFilePathForChatAvatar(Context context, int chatId, long timestamp) {
+    return context.getFilesDir().getAbsolutePath() + String.format(AVATAR_PATH_TEMPLATE, chatId, timestamp);
+  }
+
 }

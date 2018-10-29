@@ -383,7 +383,7 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   public boolean isGroupRecipient() {
-    return address.isGroup();
+    return participants.size() > 1;
   }
 
   public boolean isMmsGroupRecipient() {
@@ -437,8 +437,8 @@ public class Recipient implements RecipientModifiedListener {
     else                               return new GeneratedContactPhoto("#");
   }
 
-  public synchronized @Nullable ContactPhoto getContactPhoto() {
-    if      (isGroupRecipient() && groupAvatarId != null) return new GroupRecordContactPhoto(address, groupAvatarId);
+  public synchronized @Nullable ContactPhoto getContactPhoto(Context context) {
+    if      (isGroupRecipient()) return new GroupRecordContactPhoto(context, getAddress());
     else if (systemContactPhoto != null)                  return new SystemContactPhoto(address, systemContactPhoto, 0);
     else if (profileAvatar != null)                       return new ProfileContactPhoto(address.toEmailString(), profileAvatar);
     else                                                  return null;

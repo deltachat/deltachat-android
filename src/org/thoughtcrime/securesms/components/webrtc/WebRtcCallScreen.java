@@ -293,7 +293,7 @@ public class WebRtcCallScreen extends FrameLayout implements RecipientModifiedLi
     this.recipient.addListener(this);
 
     GlideApp.with(getContext().getApplicationContext())
-            .load(recipient.getContactPhoto())
+            .load(recipient.getContactPhoto(getContext()))
             .fallback(recipient.getFallbackContactPhoto().asCallCard(getContext()))
             .error(recipient.getFallbackContactPhoto().asCallCard(getContext()))
             .diskCacheStrategy(DiskCacheStrategy.ALL)

@@ -22,7 +22,6 @@ import org.thoughtcrime.securesms.contacts.avatars.ContactColors;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
-import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.Slide;
@@ -65,7 +64,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
         addPerson(recipient.getContactUri().toString());
       }
 
-      ContactPhoto         contactPhoto         = recipient.getContactPhoto();
+      ContactPhoto         contactPhoto         = recipient.getContactPhoto(context);
       FallbackContactPhoto fallbackContactPhoto = recipient.getFallbackContactPhoto();
 
       if (contactPhoto != null) {
