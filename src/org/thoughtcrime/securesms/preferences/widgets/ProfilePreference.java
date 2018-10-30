@@ -15,7 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
+import org.thoughtcrime.securesms.contacts.avatars.MyProfileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
@@ -71,7 +71,7 @@ public class ProfilePreference extends Preference {
       profileName = getContext().getString(R.string.CreateProfileActivity_your_profile_info);
     }
 
-    final ProfileContactPhoto profileImage = new ProfileContactPhoto(address, String.valueOf(TextSecurePreferences.getProfileAvatarId(getContext())));
+    final MyProfileContactPhoto profileImage = new MyProfileContactPhoto(address, String.valueOf(TextSecurePreferences.getProfileAvatarId(getContext())));
 
     GlideApp.with(getContext().getApplicationContext())
             .load(profileImage)

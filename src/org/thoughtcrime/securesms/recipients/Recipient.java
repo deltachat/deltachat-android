@@ -73,7 +73,6 @@ public class Recipient implements RecipientModifiedListener {
   private           boolean resolving;
 
   private @Nullable Uri                  systemContactPhoto;
-  private @Nullable Long                 groupAvatarId;
   private           Uri                  contactUri;
   private @Nullable Uri                  messageRingtone       = null;
   private @Nullable Uri                  callRingtone          = null;
@@ -139,7 +138,6 @@ public class Recipient implements RecipientModifiedListener {
       this.name                  = stale.name;
       this.contactUri            = stale.contactUri;
       this.systemContactPhoto    = stale.systemContactPhoto;
-      this.groupAvatarId         = stale.groupAvatarId;
       this.color                 = stale.color;
       this.customLabel           = stale.customLabel;
       this.messageRingtone       = stale.messageRingtone;
@@ -163,7 +161,6 @@ public class Recipient implements RecipientModifiedListener {
     if (details.isPresent()) {
       this.name                  = details.get().name;
       this.systemContactPhoto    = details.get().systemContactPhoto;
-      this.groupAvatarId         = details.get().groupAvatarId;
       this.color                 = details.get().color;
       this.messageRingtone       = details.get().messageRingtone;
       this.callRingtone          = details.get().callRingtone;
@@ -191,7 +188,6 @@ public class Recipient implements RecipientModifiedListener {
             Recipient.this.name                  = result.name;
             Recipient.this.contactUri            = result.contactUri;
             Recipient.this.systemContactPhoto    = result.systemContactPhoto;
-            Recipient.this.groupAvatarId         = result.groupAvatarId;
             Recipient.this.color                 = result.color;
             Recipient.this.customLabel           = result.customLabel;
             Recipient.this.messageRingtone       = result.messageRingtone;
@@ -237,7 +233,6 @@ public class Recipient implements RecipientModifiedListener {
     this.contactUri            = details.contactUri;
     this.name                  = details.name;
     this.systemContactPhoto    = details.systemContactPhoto;
-    this.groupAvatarId         = details.groupAvatarId;
     this.color                 = details.color;
     this.customLabel           = details.customLabel;
     this.messageRingtone       = details.messageRingtone;
@@ -443,7 +438,7 @@ public class Recipient implements RecipientModifiedListener {
   public synchronized @Nullable ContactPhoto getContactPhoto(Context context) {
     if      (isGroupRecipient()) return new GroupRecordContactPhoto(context, getAddress());
     else if (systemContactPhoto != null)                  return new SystemContactPhoto(address, systemContactPhoto, 0);
-    else if (profileAvatar != null)                       return new ProfileContactPhoto(address.toEmailString(), profileAvatar);
+    else if (profileAvatar != null)                       return new ProfileContactPhoto(context, address);
     else                                                  return null;
   }
 
@@ -453,19 +448,6 @@ public class Recipient implements RecipientModifiedListener {
     synchronized (this) {
       if (!Util.equals(systemContactPhoto, this.systemContactPhoto)) {
         this.systemContactPhoto = systemContactPhoto;
-        notify = true;
-      }
-    }
-
-    if (notify) notifyListeners();
-  }
-
-  public void setGroupAvatarId(@Nullable Long groupAvatarId) {
-    boolean notify = false;
-
-    synchronized (this) {
-      if (!Util.equals(this.groupAvatarId, groupAvatarId)) {
-        this.groupAvatarId = groupAvatarId;
         notify = true;
       }
     }
@@ -655,7 +637,6 @@ public class Recipient implements RecipientModifiedListener {
         ", customLabel='" + customLabel + '\'' +
         ", resolving=" + resolving +
         ", systemContactPhoto=" + systemContactPhoto +
-        ", groupAvatarId=" + groupAvatarId +
         ", contactUri=" + contactUri +
         ", messageRingtone=" + messageRingtone +
         ", callRingtone=" + callRingtone +

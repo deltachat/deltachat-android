@@ -178,7 +178,6 @@ public class GroupDatabase extends Database {
 
     Recipient.applyCached(Address.fromSerialized(groupId), recipient -> {
       recipient.setName(title);
-      recipient.setGroupAvatarId(avatar != null ? avatar.getId() : null);
       recipient.setParticipants(Stream.of(members).map(memberAddress -> Recipient.from(context, memberAddress, true)).toList());
     });
 
@@ -202,7 +201,6 @@ public class GroupDatabase extends Database {
 
     Recipient.applyCached(Address.fromSerialized(groupId), recipient -> {
       recipient.setName(title);
-      recipient.setGroupAvatarId(avatar != null ? avatar.getId() : null);
     });
 
     notifyConversationListListeners();
@@ -236,7 +234,6 @@ public class GroupDatabase extends Database {
     databaseHelper.getWritableDatabase().update(TABLE_NAME, contentValues, GROUP_ID +  " = ?",
                                                 new String[] {groupId});
 
-    Recipient.applyCached(Address.fromSerialized(groupId), recipient -> recipient.setGroupAvatarId(avatarId == 0 ? null : avatarId));
   }
 
   public void updateMembers(String groupId, List<Address> members) {

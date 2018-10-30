@@ -50,10 +50,10 @@ import org.thoughtcrime.securesms.contacts.avatars.ContactColors;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter.OnRecipientDeletedListener;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -302,7 +302,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
           oldImage.delete();
         }
       }
-      avatarPath = FileUtils.getFilePathForChatAvatar(this, chatId, System.currentTimeMillis());
+      avatarPath = AvatarHelper.getFilePathForGroupAvatar(this, chatId, System.currentTimeMillis());
       FileOutputStream outStream;
       try {
         outStream = new FileOutputStream(avatarPath);

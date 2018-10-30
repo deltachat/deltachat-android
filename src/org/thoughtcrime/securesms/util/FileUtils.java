@@ -12,8 +12,6 @@ import java.security.NoSuchAlgorithmException;
 
 public class FileUtils {
 
-  public static final String AVATAR_PATH_TEMPLATE = "/group_chat_avatar_%s_%o.jpg";
-
   public static native int getFileDescriptorOwner(FileDescriptor fileDescriptor);
 
   public static byte[] getFileDigest(FileInputStream fin) throws IOException {
@@ -54,11 +52,6 @@ public class FileUtils {
     deleteDirectoryContents(directory);
 
     directory.delete();
-  }
-
-  @SuppressLint("DefaultLocale")
-  public static String getFilePathForChatAvatar(Context context, int chatId, long timestamp) {
-    return context.getFilesDir().getAbsolutePath() + String.format(AVATAR_PATH_TEMPLATE, chatId, timestamp);
   }
 
 }
