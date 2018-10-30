@@ -45,6 +45,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/group_indicator"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_group_white_24dp"
+                    android:visibility="gone"
+                    android:tint="@color/gray50"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp" />
+
                 <org.thoughtcrime.securesms.components.FromTextView
                     android:id="@+id/from_text"
                     style="@style/Signal.Text.Body"

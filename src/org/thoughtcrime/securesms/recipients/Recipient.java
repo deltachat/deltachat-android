@@ -27,7 +27,6 @@ import android.util.Log;
 
 import com.annimon.stream.function.Consumer;
 
-import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -37,7 +36,6 @@ import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GroupRecordContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
-import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.SystemContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.TransparentContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
@@ -438,7 +436,6 @@ public class Recipient implements RecipientModifiedListener {
 
   public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {
     if      (isResolving())            return new TransparentContactPhoto();
-    else if (isGroupRecipient())       return new ResourceContactPhoto(R.drawable.ic_group_white_24dp, R.drawable.ic_group_large);
     else if (!TextUtils.isEmpty(name)) return new GeneratedContactPhoto(name);
     else                               return new GeneratedContactPhoto("#");
   }

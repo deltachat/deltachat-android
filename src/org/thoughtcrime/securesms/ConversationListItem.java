@@ -20,8 +20,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Spannable;
@@ -83,6 +81,7 @@ public class ConversationListItem extends RelativeLayout
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
   private ImageView          verifiedIndicator;
+  private ImageView          groupIndicator;
   private long               lastSeen;
 
   private int             unreadCount;
@@ -107,6 +106,7 @@ public class ConversationListItem extends RelativeLayout
     this.archivedView            = findViewById(R.id.archived);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
     this.verifiedIndicator       = findViewById(R.id.verified_indicator);
+    this.groupIndicator          = findViewById(R.id.group_indicator);
 
     ViewUtil.setTextViewGravityStart(this.fromView, getContext());
     ViewUtil.setTextViewGravityStart(this.subjectView, getContext());
@@ -172,6 +172,7 @@ public class ConversationListItem extends RelativeLayout
     }
 
     verifiedIndicator.setVisibility(thread.isVerified() ? VISIBLE : GONE);
+    groupIndicator.setVisibility(recipient.isGroupRecipient() ? VISIBLE : GONE);
   }
 
   public void bind(@NonNull  Recipient     contact,
