@@ -31,6 +31,7 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
     public final static int BLACK = 0xFF000000;
     public final static int WIDTH = 400;
     public final static int HEIGHT = 400;
+    public final static String CHAT_ID = "chat_id";
 
     public int numJoiners;
 
@@ -50,7 +51,7 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         Bundle extras = getIntent().getExtras();
         int chatId = 0;
         if (extras != null) {
-            chatId = extras.getInt("chat_id");
+            chatId = extras.getInt(CHAT_ID);
         }
 
         ActionBar supportActionBar = getSupportActionBar();

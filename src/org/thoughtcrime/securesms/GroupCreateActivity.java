@@ -67,8 +67,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
-
 /**
  * Activity to create and update groups
  *
@@ -92,7 +90,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private ApplicationDcContext dcContext;
 
-  private boolean      createVerified;
+  private boolean verified;
   private EditText     groupName;
   private ListView     lv;
   private ImageView    avatar;
@@ -112,7 +110,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     dcContext = DcHelper.getContext(this);
     setContentView(R.layout.group_create_activity);
     //noinspection ConstantConditions
-    createVerified = getIntent().getBooleanExtra(GROUP_CREATE_VERIFIED_EXTRA, false);
+    verified = getIntent().getBooleanExtra(GROUP_CREATE_VERIFIED_EXTRA, false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
     initializeExistingGroup();
@@ -136,7 +134,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if(isEdit()) {
       title = getString(R.string.GroupCreateActivity_actionbar_edit_title);
     }
-    else if(createVerified) {
+    else if(verified) {
       title = getString(R.string.GroupCreateActivity_actionbar_verified_title);
     }
     else {
@@ -201,7 +199,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     lv.setAdapter(adapter);
 
     findViewById(R.id.add_member_button).setOnClickListener(new AddRecipientButtonListener());
-    if (createVerified) {
+    if (verified) {
       verifyButton.setOnClickListener(new ShowQrButtonListener());
       verifyButton.setVisibility(View.VISIBLE);
     }
@@ -272,7 +270,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     String groupName = getGroupName();
     if (showGroupNameEmptyToast(groupName)) return;
 
-    int chatId = dcContext.createGroupChat(createVerified, groupName);
+    int chatId = dcContext.createGroupChat(verified, groupName);
 
     Set<Recipient> recipients = getAdapter().getRecipients();
     for(Recipient recipient : recipients) {
@@ -344,7 +342,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private void updateGroupParticipants() {
     SparseBooleanArray currentChatContactIds = new SparseBooleanArray();
     for(int chatContactId : dcContext.getChatContacts(editGroupChatId)) {
-      currentChatContactIds.put(chatContactId, chatContactId == DC_CONTACT_ID_SELF);
+      currentChatContactIds.put(chatContactId, false);
     }
 
     Set<Recipient> recipients = getAdapter().getRecipients();
@@ -430,7 +428,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onClick(View v) {
       Intent intent = new Intent(GroupCreateActivity.this, ContactMultiSelectionActivity.class);
-      intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, createVerified);
+      intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, verified);
       if (isEdit()) {
         intent.putExtra(ContactSelectionListFragment.DISPLAY_MODE, DisplayMode.FLAG_PUSH);
       } else {
@@ -445,6 +443,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onClick(View view) {
         Intent qrIntent = new Intent(GroupCreateActivity.this, QrShowActivity.class);
+        if (isEdit()) {
+          qrIntent.putExtra(QrShowActivity.CHAT_ID, editGroupChatId);
+        }
         startActivity(qrIntent);
     }
   }
@@ -469,24 +470,16 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected void onPostExecute(Recipient recipient) {
       super.onPostExecute(recipient);
-      activity.fllExistingGroup(recipient);
+      activity.fillExistingGroup(recipient);
     }
   }
 
-  private void fllExistingGroup(Recipient recipient) {
+  private void fillExistingGroup(Recipient recipient) {
     List<Recipient> participants = recipient.getParticipants();
+    Recipient[] participantsArray = new Recipient[participants.size()];
+    participantsArray = participants.toArray(participantsArray);
     if (!isFinishing()) {
-      Recipient ownAddress = null;
-      for(Recipient participant : participants) {
-        if(participant.getAddress().getDcContactId() == DC_CONTACT_ID_SELF) {
-          ownAddress = participant;
-        } else {
-          addSelectedContacts(participant);
-        }
-      }
-      if (ownAddress != null) {
-        participants.remove(ownAddress);
-      }
+      addSelectedContacts(participantsArray);
       groupName.setText(recipient.getName());
       SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, participants);
       adapter.setOnRecipientDeletedListener(this);
