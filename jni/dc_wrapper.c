@@ -1181,6 +1181,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getNameNAddr(JNIEnv *env, jo
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getProfileImage(JNIEnv *env, jobject obj)
+{
+	return JSTRING_NEW("");
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBlocked(JNIEnv *env, jobject obj)
 {
 	return (jboolean)(dc_contact_is_blocked(get_dc_contact(env, obj))!=0);
