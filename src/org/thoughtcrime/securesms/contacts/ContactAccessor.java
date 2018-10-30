@@ -61,6 +61,8 @@ public class ContactAccessor {
 
   private static final int CONTACT_CURSOR_MAIL = 1;
 
+  private static final int CONTACT_CURSOR_PHOTO = 2;
+
   public static final String PUSH_COLUMN = "push";
 
   private static final ContactAccessor instance = new ContactAccessor();
@@ -84,7 +86,8 @@ public class ContactAccessor {
   }
 
   public Cursor getAllSystemContacts(Context context) {
-    return context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, new String[] {ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Email.ADDRESS}, null, null, null);
+    String[] projection = {ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Email.ADDRESS, Phone.PHOTO_ID};
+    return context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projection, null, null, null);
   }
 
   public String getAllSystemContactsAsString(Context context) {
@@ -93,7 +96,13 @@ public class ContactAccessor {
     List<String> mailList = new ArrayList<>();
     while (systemContactsCursor != null && systemContactsCursor.moveToNext()) {
       String name = systemContactsCursor.getString(CONTACT_CURSOR_NAME);
-      String mail= systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
+      String mail = systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
+      /*
+      TODO
+      - Persist this data to get it via DcContact.getProfileImage();
+      - Copy non existing images to the Delta avatar directory
+      - Use: String contactPhotoUri = systemContactsCursor.getString(CONTACT_CURSOR_PHOTO);
+      */
       if (mail != null && !mail.isEmpty() && !mailList.contains(mail)) {
           mailList.add(mail);
           if (name.isEmpty()) {
