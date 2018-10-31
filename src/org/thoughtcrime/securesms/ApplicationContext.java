@@ -25,6 +25,9 @@ import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
+
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.dependencies.AxolotlStorageModule;
@@ -38,6 +41,7 @@ import org.thoughtcrime.securesms.jobs.CreateSignedPreKeyJob;
 import org.thoughtcrime.securesms.jobs.MultiDeviceContactUpdateJob;
 import org.thoughtcrime.securesms.jobs.requirements.MasterSecretRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.SqlCipherMigrationRequirementProvider;
+import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
@@ -93,6 +97,7 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     //initializeSignedPreKeyCheck(); -- keys are generated in the core, however, not sure if this is needed for the lock screen
     initializePeriodicTasks();
     initializeWebRtc();
+    initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
   }
 
@@ -135,6 +140,13 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
 
   private void initializeLogging() {
     SignalProtocolLoggerProvider.setProvider(new AndroidSignalProtocolLogger());
+  }
+
+  private void initializeIncomingMessageNotifier() {
+
+    DcEventCenter dcEventCenter = dcContext.eventCenter;
+    dcEventCenter.addObserver((eventId, data1, data2)
+        -> MessageNotifier.updateNotification(dcContext.context), DcContext.DC_EVENT_INCOMING_MSG);
   }
 
   private void initializeJobManager() {

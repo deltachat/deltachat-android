@@ -23,7 +23,6 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.Ringtone;
@@ -37,17 +36,18 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
-import org.thoughtcrime.securesms.database.MmsSmsDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
-import org.thoughtcrime.securesms.database.model.MediaMmsMessageRecord;
-import org.thoughtcrime.securesms.database.model.MessageRecord;
-import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.service.KeyCachingService;
@@ -194,6 +194,11 @@ public class MessageNotifier {
 
   public static void updateNotification(@NonNull Context context, long threadId)
   {
+    throw new IllegalStateException("old signal code called. thread -> chat, long -> int");
+  }
+
+  public static void updateNotification(@NonNull Context context, int threadId)
+  {
     if (System.currentTimeMillis() - lastDesktopActivityTimestamp < DESKTOP_ACTIVITY_PERIOD) {
       Log.w(TAG, "Scheduling delayed notification...");
       executor.execute(new DelayedNotification(context, threadId));
@@ -204,27 +209,31 @@ public class MessageNotifier {
 
   public static void updateNotification(@NonNull  Context context,
                                         long      threadId,
+                                        boolean   signal) {
+    throw new IllegalStateException("Old signal code called. thread -> chat & long -> int");
+  }
+
+  public static void updateNotification(@NonNull  Context context,
+                                        int       chatId,
                                         boolean   signal)
   {
-    boolean    isVisible  = visibleThread == threadId;
+    boolean    isVisible  = visibleThread == chatId;
+    ApplicationDcContext dcContext = DcHelper.getContext(context);
 
-    ThreadDatabase threads    = DatabaseFactory.getThreadDatabase(context);
-    Recipient      recipients = DatabaseFactory.getThreadDatabase(context)
-                                               .getRecipientForThreadId(threadId);
+    Recipient recipient = dcContext.getRecipient(dcContext.getChat(chatId));
 
     if (isVisible) {
-      List<MarkedMessageInfo> messageIds = threads.setRead(threadId, false);
-      MarkReadReceiver.process(context, messageIds);
+      dcContext.marknoticedChat(chatId);
     }
 
     if (!TextSecurePreferences.isNotificationsEnabled(context) ||
-        (recipients != null && recipients.isMuted()))
+        (recipient != null && recipient.isMuted()))
     {
       return;
     }
 
     if (isVisible) {
-      sendInThreadNotification(context, threads.getRecipientForThreadId(threadId));
+      sendInThreadNotification(context, recipient);
     } else {
       updateNotification(context, signal, 0);
     }
@@ -234,51 +243,42 @@ public class MessageNotifier {
                                          boolean signal,
                                          int     reminderCount)
   {
-    Cursor telcoCursor = null;
-    Cursor pushCursor  = null;
+    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    int[] freshMessages = dcContext.getFreshMsgs();
 
-    try {
-      telcoCursor = DatabaseFactory.getMmsSmsDatabase(context).getUnread();
-      pushCursor  = DatabaseFactory.getPushDatabase(context).getPending();
+    if (freshMessages.length == 0)
+    {
+      cancelActiveNotifications(context);
+      updateBadge(context, 0);
+      clearReminder(context);
+      return;
+    }
 
-      if ((telcoCursor == null || telcoCursor.isAfterLast()) &&
-          (pushCursor == null || pushCursor.isAfterLast()))
-      {
-        cancelActiveNotifications(context);
-        updateBadge(context, 0);
-        clearReminder(context);
-        return;
-      }
+    NotificationState notificationState = constructNotificationState(dcContext, freshMessages);
 
-      NotificationState notificationState = constructNotificationState(context, telcoCursor);
+    if (signal && (System.currentTimeMillis() - lastAudibleNotification) < MIN_AUDIBLE_PERIOD_MILLIS) {
+      signal = false;
+    } else if (signal) {
+      lastAudibleNotification = System.currentTimeMillis();
+    }
 
-      if (signal && (System.currentTimeMillis() - lastAudibleNotification) < MIN_AUDIBLE_PERIOD_MILLIS) {
-        signal = false;
-      } else if (signal) {
-        lastAudibleNotification = System.currentTimeMillis();
-      }
-
-      if (notificationState.hasMultipleThreads()) {
-        if (Build.VERSION.SDK_INT >= 23) {
-          for (long threadId : notificationState.getThreads()) {
-            sendSingleThreadNotification(context, new NotificationState(notificationState.getNotificationsForThread(threadId)), false, true);
-          }
+    if (notificationState.hasMultipleThreads()) {
+      if (Build.VERSION.SDK_INT >= 23) {
+        for (int threadId : notificationState.getThreads()) {
+          sendSingleThreadNotification(context, new NotificationState(notificationState.getNotificationsForThread(threadId)), false, true);
         }
-
-        sendMultipleThreadNotification(context, notificationState, signal);
-      } else {
-        sendSingleThreadNotification(context, notificationState, signal, false);
       }
 
-      cancelOrphanedNotifications(context, notificationState);
-      updateBadge(context, notificationState.getMessageCount());
+      sendMultipleThreadNotification(context, notificationState, signal);
+    } else {
+      sendSingleThreadNotification(context, notificationState, signal, false);
+    }
 
-      if (signal) {
-        scheduleReminder(context, reminderCount);
-      }
-    } finally {
-      if (telcoCursor != null) telcoCursor.close();
-      if (pushCursor != null)  pushCursor.close();
+    cancelOrphanedNotifications(context, notificationState);
+    updateBadge(context, notificationState.getMessageCount());
+
+    if (signal) {
+      scheduleReminder(context, reminderCount);
     }
   }
 
@@ -404,51 +404,39 @@ public class MessageNotifier {
     ringtone.play();
   }
 
-  private static NotificationState constructNotificationState(@NonNull  Context context,
-                                                              @NonNull  Cursor cursor)
+  private static NotificationState constructNotificationState(@NonNull ApplicationDcContext dcContext,
+                                                              @NonNull  int[] freshMessages)
   {
     NotificationState     notificationState = new NotificationState();
-    MmsSmsDatabase.Reader reader            = DatabaseFactory.getMmsSmsDatabase(context).readerFor(cursor);
+    Context context = dcContext.context;
 
-    MessageRecord record;
-
-    while ((record = reader.getNext()) != null) {
-      long         id                    = record.getId();
-      boolean      mms                   = record.isMms() || record.isMmsNotification();
-      Recipient    recipient             = record.getIndividualRecipient();
-      Recipient    conversationRecipient = record.getRecipient();
-      long         threadId              = record.getThreadId();
+    for(int msgId : freshMessages) {
+      DcMsg record = dcContext.getMsg(msgId);
+      int          id                    = record.getId();
+      boolean      mms                   = record.isMms() || record.isMediaPending();
+      int          chatId                = record.getChatId();
       CharSequence body                  = record.getDisplayBody();
-      Recipient    threadRecipients      = null;
-      SlideDeck    slideDeck             = null;
+      Recipient    threadRecipients      = Recipient.from(dcContext, msgId);
+      SlideDeck    slideDeck             = new SlideDeck(dcContext.context, record);
       long         timestamp             = record.getTimestamp();
 
+      if(slideDeck.getSlides().isEmpty())
+        slideDeck = null;
 
-      if (threadId != -1) {
-        threadRecipients = DatabaseFactory.getThreadDatabase(context).getRecipientForThreadId(threadId);
-      }
-
-      if (KeyCachingService.isLocked(context)) {
-        body = SpanUtil.italic(context.getString(R.string.MessageNotifier_locked_message));
-      } else if (record.isMms() && !((MmsMessageRecord) record).getSharedContacts().isEmpty()) {
-        Contact contact = ((MmsMessageRecord) record).getSharedContacts().get(0);
-        body = ContactUtil.getStringSummary(context, contact);
-      } else if (record.isMms() && TextUtils.isEmpty(body) && !((MmsMessageRecord) record).getSlideDeck().getSlides().isEmpty()) {
+      // TODO: if message content should be hidden on screen lock, do it here.
+      if (record.isMms() && TextUtils.isEmpty(body)) {
         body = SpanUtil.italic(context.getString(R.string.MessageNotifier_media_message));
-        slideDeck = ((MediaMmsMessageRecord)record).getSlideDeck();
-      } else if (record.isMms() && !record.isMmsNotification() && !((MmsMessageRecord) record).getSlideDeck().getSlides().isEmpty()) {
+      } else if (record.isMms() && !record.isMediaPending()) {
         String message      = context.getString(R.string.MessageNotifier_media_message_with_text, body);
         int    italicLength = message.length() - body.length();
         body = SpanUtil.italic(message, italicLength);
-        slideDeck = ((MediaMmsMessageRecord)record).getSlideDeck();
       }
 
       if (threadRecipients == null || !threadRecipients.isMuted()) {
-        notificationState.addNotification(new NotificationItem(id, mms, recipient, conversationRecipient, threadRecipients, threadId, body, timestamp, slideDeck));
+        notificationState.addNotification(new NotificationItem(id, mms, threadRecipients, chatId, body, timestamp, slideDeck));
       }
     }
 
-    reader.close();
     return notificationState;
   }
 
@@ -511,10 +499,10 @@ public class MessageNotifier {
     private final AtomicBoolean canceled = new AtomicBoolean(false);
 
     private final Context context;
-    private final long    threadId;
+    private final int     threadId;
     private final long    delayUntil;
 
-    private DelayedNotification(Context context, long threadId) {
+    private DelayedNotification(Context context, int threadId) {
       this.context    = context;
       this.threadId   = threadId;
       this.delayUntil = System.currentTimeMillis() + DELAY;

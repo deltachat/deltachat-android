@@ -14,40 +14,30 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 
 public class NotificationItem {
 
-  private final long                        id;
+  private final int                         id;
   private final boolean                     mms;
-  private final @NonNull  Recipient         conversationRecipient;
-  private final @NonNull  Recipient         individualRecipient;
   private final @Nullable Recipient         threadRecipient;
-  private final long                        threadId;
+  private final int                         chatId;
   private final @Nullable CharSequence      text;
   private final long                        timestamp;
   private final @Nullable SlideDeck         slideDeck;
 
-  public NotificationItem(long id, boolean mms,
-                          @NonNull   Recipient individualRecipient,
-                          @NonNull   Recipient conversationRecipient,
+  public NotificationItem(int id, boolean mms,
                           @Nullable  Recipient threadRecipient,
-                          long threadId, @Nullable CharSequence text, long timestamp,
+                          int chatId, @Nullable CharSequence text, long timestamp,
                           @Nullable SlideDeck slideDeck)
   {
     this.id                    = id;
     this.mms                   = mms;
-    this.individualRecipient   = individualRecipient;
-    this.conversationRecipient = conversationRecipient;
     this.threadRecipient       = threadRecipient;
     this.text                  = text;
-    this.threadId              = threadId;
+    this.chatId                = chatId;
     this.timestamp             = timestamp;
     this.slideDeck             = slideDeck;
   }
 
   public @NonNull  Recipient getRecipient() {
-    return threadRecipient == null ? conversationRecipient : threadRecipient;
-  }
-
-  public @NonNull  Recipient getIndividualRecipient() {
-    return individualRecipient;
+    return threadRecipient;
   }
 
   public CharSequence getText() {
@@ -58,8 +48,21 @@ public class NotificationItem {
     return timestamp;
   }
 
-  public long getThreadId() {
-    return threadId;
+  public int getChatId() {
+    return chatId;
+  }
+
+  /**
+   * @deprecated Use getThreadRecipient instead.
+   */
+  @Deprecated
+  public @NonNull Recipient getIndividualRecipient() {
+    return threadRecipient;
+  }
+
+  @Deprecated
+  public int getThreadId() {
+    return chatId;
   }
 
   public @Nullable SlideDeck getSlideDeck() {
@@ -68,9 +71,8 @@ public class NotificationItem {
 
   public PendingIntent getPendingIntent(Context context) {
     Intent     intent           = new Intent(context, ConversationActivity.class);
-    Recipient  notifyRecipients = threadRecipient != null ? threadRecipient : conversationRecipient;
 
-    intent.putExtra("thread_id", threadId);
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
     intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
 
     return TaskStackBuilder.create(context)
@@ -78,7 +80,7 @@ public class NotificationItem {
                            .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 

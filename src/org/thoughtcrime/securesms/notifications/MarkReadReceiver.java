@@ -11,8 +11,11 @@ import android.util.Log;
 
 import com.annimon.stream.Collectors;
 import com.annimon.stream.Stream;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.MessagingDatabase.ExpirationInfo;
@@ -39,7 +42,7 @@ public class MarkReadReceiver extends BroadcastReceiver {
     if (!CLEAR_ACTION.equals(intent.getAction()))
       return;
 
-    final long[] threadIds = intent.getLongArrayExtra(THREAD_IDS_EXTRA);
+    final int[] threadIds = intent.getIntArrayExtra(THREAD_IDS_EXTRA);
 
     if (threadIds != null) {
       NotificationManagerCompat.from(context).cancel(intent.getIntExtra(NOTIFICATION_ID_EXTRA, -1));
@@ -49,12 +52,14 @@ public class MarkReadReceiver extends BroadcastReceiver {
         protected Void doInBackground(Void... params) {
           List<MarkedMessageInfo> messageIdsCollection = new LinkedList<>();
 
-          for (long threadId : threadIds) {
+          for (int threadId : threadIds) {
             Log.w(TAG, "Marking as read: " + threadId);
-            List<MarkedMessageInfo> messageIds = DatabaseFactory.getThreadDatabase(context).setRead(threadId, true);
-            messageIdsCollection.addAll(messageIds);
+            ApplicationDcContext dcContext = DcHelper.getContext(context);
+            dcContext.marknoticedChat(threadId);
+            // here the messageIdsCollection had been filled by Signal code. Remove this comment as soon as it doesn't make sense.
           }
 
+          // todo: the next line should be removed.
           process(context, messageIdsCollection);
 
           MessageNotifier.updateNotification(context);

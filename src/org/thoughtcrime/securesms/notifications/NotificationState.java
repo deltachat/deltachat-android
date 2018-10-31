@@ -20,7 +20,7 @@ import java.util.List;
 public class NotificationState {
 
   private final LinkedList<NotificationItem> notifications = new LinkedList<>();
-  private final LinkedHashSet<Long>          threads       = new LinkedHashSet<>();
+  private final LinkedHashSet<Integer>       threads       = new LinkedHashSet<>();
 
   private int notificationCount = 0;
 
@@ -71,7 +71,7 @@ public class NotificationState {
     return threads.size() > 1;
   }
 
-  public LinkedHashSet<Long> getThreads() {
+  public LinkedHashSet<Integer> getThreads() {
     return threads;
   }
 
@@ -87,7 +87,7 @@ public class NotificationState {
     return notifications;
   }
 
-  public List<NotificationItem> getNotificationsForThread(long threadId) {
+  public List<NotificationItem> getNotificationsForThread(int threadId) {
     LinkedList<NotificationItem> list = new LinkedList<>();
 
     for (NotificationItem item : notifications) {
@@ -98,10 +98,10 @@ public class NotificationState {
   }
 
   public PendingIntent getMarkAsReadIntent(Context context, int notificationId) {
-    long[] threadArray = new long[threads.size()];
+    int[] threadArray = new int[threads.size()];
     int    index       = 0;
 
-    for (long thread : threads) {
+    for (int thread : threads) {
       Log.w("NotificationState", "Added thread: " + thread);
       threadArray[index++] = thread;
     }
@@ -135,16 +135,16 @@ public class NotificationState {
     intent.setClass(context, AndroidAutoReplyReceiver.class);
     intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
     intent.putExtra(AndroidAutoReplyReceiver.ADDRESS_EXTRA, recipient.getAddress());
-    intent.putExtra(AndroidAutoReplyReceiver.THREAD_ID_EXTRA, (long)threads.toArray()[0]);
+    intent.putExtra(AndroidAutoReplyReceiver.THREAD_ID_EXTRA, (int)threads.toArray()[0]);
     intent.setPackage(context.getPackageName());
 
     return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
   }
 
   public PendingIntent getAndroidAutoHeardIntent(Context context, int notificationId) {
-    long[] threadArray = new long[threads.size()];
+    int[] threadArray = new int[threads.size()];
     int    index       = 0;
-    for (long thread : threads) {
+    for (int thread : threads) {
       Log.w("NotificationState", "getAndroidAutoHeardIntent Added thread: " + thread);
       threadArray[index++] = thread;
     }
@@ -164,7 +164,7 @@ public class NotificationState {
     if (threads.size() != 1) throw new AssertionError("We only support replies to single thread notifications! " + threads.size());
 
     Intent     intent           = new Intent(context, ConversationPopupActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)threads.toArray()[0]);
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (Integer)(threads.toArray())[0]);
     intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
 
     return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -173,17 +173,14 @@ public class NotificationState {
   public PendingIntent getDeleteIntent(Context context) {
     int       index = 0;
     long[]    ids   = new long[notifications.size()];
-    boolean[] mms   = new boolean[ids.length];
 
     for (NotificationItem notificationItem : notifications) {
       ids[index] = notificationItem.getId();
-      mms[index++]   = notificationItem.isMms();
     }
 
     Intent intent = new Intent(context, DeleteNotificationReceiver.class);
     intent.setAction(DeleteNotificationReceiver.DELETE_NOTIFICATION_ACTION);
     intent.putExtra(DeleteNotificationReceiver.EXTRA_IDS, ids);
-    intent.putExtra(DeleteNotificationReceiver.EXTRA_MMS, mms);
     intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
 
     return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
