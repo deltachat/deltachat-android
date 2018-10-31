@@ -53,6 +53,8 @@ public class AndroidAutoReplyReceiver extends BroadcastReceiver {
   @Override
   public void onReceive(final Context context, Intent intent)
   {
+    // TODO: rework to DeltaChat function of sending message.
+
     if (!REPLY_ACTION.equals(intent.getAction())) return;
 
     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);

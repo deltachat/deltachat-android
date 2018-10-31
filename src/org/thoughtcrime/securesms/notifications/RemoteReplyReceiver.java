@@ -50,7 +50,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
   @Override
   public void onReceive(final Context context, Intent intent) {
     if (!REPLY_ACTION.equals(intent.getAction())) return;
-
+    // todo: rework to DeltaChat code.
     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
 
     if (remoteInput == null) return;
