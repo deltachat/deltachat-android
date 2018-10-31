@@ -36,7 +36,6 @@ public class MarkReadReceiver extends BroadcastReceiver {
   public static final  String THREAD_IDS_EXTRA      = "thread_ids";
   public static final  String NOTIFICATION_ID_EXTRA = "notification_id";
 
-  @SuppressLint("StaticFieldLeak")
   @Override
   public void onReceive(final Context context, Intent intent) {
     if (!CLEAR_ACTION.equals(intent.getAction()))
@@ -47,26 +46,8 @@ public class MarkReadReceiver extends BroadcastReceiver {
     if (threadIds != null) {
       NotificationManagerCompat.from(context).cancel(intent.getIntExtra(NOTIFICATION_ID_EXTRA, -1));
 
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          List<MarkedMessageInfo> messageIdsCollection = new LinkedList<>();
-
-          for (int threadId : threadIds) {
-            Log.w(TAG, "Marking as read: " + threadId);
-            ApplicationDcContext dcContext = DcHelper.getContext(context);
-            dcContext.marknoticedChat(threadId);
-            // here the messageIdsCollection had been filled by Signal code. Remove this comment as soon as it doesn't make sense.
-          }
-
-          // todo: the next line should be removed.
-          process(context, messageIdsCollection);
-
-          MessageNotifier.updateNotification(context);
-
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      ApplicationDcContext dcContext = DcHelper.getContext(context);
+      new MarkAsNoticedAsyncTask(threadIds, dcContext, true).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
   }
 

@@ -18,24 +18,15 @@ public class DeleteNotificationReceiver extends BroadcastReceiver {
 
   @Override
   public void onReceive(final Context context, Intent intent) {
-    if (DELETE_NOTIFICATION_ACTION.equals(intent.getAction())) {
-      MessageNotifier.clearReminder(context);
+    if (!DELETE_NOTIFICATION_ACTION.equals(intent.getAction()))
+      return;
+    MessageNotifier.clearReminder(context);
 
-      final int[]    ids = intent.getIntArrayExtra(EXTRA_IDS);
+    final int[]    ids = intent.getIntArrayExtra(EXTRA_IDS);
+
+    if (ids != null) {
       final ApplicationDcContext dcContext = DcHelper.getContext(context);
-
-      if (ids == null || ids.length == 0) return;
-
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          for (int i=0;i<ids.length;i++) {
-            dcContext.marknoticedChat(dcContext.getMsg(ids[i]).getChatId());
-          }
-
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      new MarkAsNoticedAsyncTask(ids, dcContext, false).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
   }
 }
