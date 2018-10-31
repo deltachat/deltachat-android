@@ -16,10 +16,12 @@
  */
 package org.thoughtcrime.securesms;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.DefaultLifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ProcessLifecycleOwner;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
@@ -30,6 +32,8 @@ import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
+import org.thoughtcrime.securesms.database.DatabaseFactory;
+import org.thoughtcrime.securesms.database.MessagingDatabase;
 import org.thoughtcrime.securesms.dependencies.AxolotlStorageModule;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.dependencies.SignalCommunicationModule;
@@ -41,6 +45,7 @@ import org.thoughtcrime.securesms.jobs.CreateSignedPreKeyJob;
 import org.thoughtcrime.securesms.jobs.MultiDeviceContactUpdateJob;
 import org.thoughtcrime.securesms.jobs.requirements.MasterSecretRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.SqlCipherMigrationRequirementProvider;
+import org.thoughtcrime.securesms.notifications.MarkReadReceiver;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
@@ -54,6 +59,7 @@ import org.whispersystems.libsignal.logging.SignalProtocolLoggerProvider;
 import org.whispersystems.libsignal.util.AndroidSignalProtocolLogger;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import dagger.ObjectGraph;
@@ -142,11 +148,18 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     SignalProtocolLoggerProvider.setProvider(new AndroidSignalProtocolLogger());
   }
 
+  @SuppressLint("StaticFieldLeak")
   private void initializeIncomingMessageNotifier() {
 
     DcEventCenter dcEventCenter = dcContext.eventCenter;
     dcEventCenter.addObserver((eventId, data1, data2)
-        -> MessageNotifier.updateNotification(dcContext.context), DcContext.DC_EVENT_INCOMING_MSG);
+        -> new AsyncTask<Long, Void, Void>() {
+      @Override
+      protected Void doInBackground(Long... params) {
+        MessageNotifier.updateNotification(dcContext.context);
+        return null;
+        }
+    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR), DcContext.DC_EVENT_INCOMING_MSG);
   }
 
   private void initializeJobManager() {
