@@ -20,6 +20,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.whispersystems.libsignal.util.guava.Optional;
@@ -38,8 +40,23 @@ public class SlideDeck {
     }
   }
 
+  // this uses the odd order of arguments to avoid type erasure problems. If the constructor that takes attachments is gone
+  // update this.
+  public SlideDeck(@NonNull List<? extends DcMsg> messages, @NonNull Context context) {
+    for (DcMsg message : messages) {
+      Slide slide = MediaUtil.getSlideForMsg(context, message);
+      if (slide != null) slides.add(slide);
+    }
+  }
+
+
   public SlideDeck(@NonNull Context context, @NonNull Attachment attachment) {
     Slide slide = MediaUtil.getSlideForAttachment(context, attachment);
+    if (slide != null) slides.add(slide);
+  }
+
+  public SlideDeck(@NonNull Context context, @NonNull DcMsg message) {
+    Slide slide = MediaUtil.getSlideForMsg(context, message);
     if (slide != null) slides.add(slide);
   }
 
