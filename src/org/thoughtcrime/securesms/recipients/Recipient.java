@@ -26,6 +26,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.annimon.stream.function.Consumer;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -93,6 +94,10 @@ public class Recipient implements RecipientModifiedListener {
 
   public static @NonNull Recipient from(@NonNull Context context, int dcMsgId) {
     ApplicationDcContext dcContext = DcHelper.getContext(context);
+    return from(dcContext, dcMsgId);
+  }
+
+  public static @NonNull Recipient from (@NonNull ApplicationDcContext dcContext, int dcMsgId) {
     return dcContext.getRecipient(dcContext.getChat(dcContext.getMsg(dcMsgId).getChatId()));
   }
 
