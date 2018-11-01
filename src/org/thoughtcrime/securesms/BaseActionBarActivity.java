@@ -49,7 +49,8 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
+      super.onActivityResult(requestCode, resultCode, data);
+      if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
             if (resultCode == RESULT_OK) {
                 shouldLockApp = false;
             } else {
