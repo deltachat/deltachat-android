@@ -51,6 +51,7 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.search.model.MessageResult;
 import org.thoughtcrime.securesms.util.DateUtils;
+import org.thoughtcrime.securesms.util.ResUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -173,6 +174,8 @@ public class ConversationListItem extends RelativeLayout
 
     verifiedIndicator.setVisibility(thread.isVerified() ? VISIBLE : GONE);
     groupIndicator.setVisibility(recipient.isGroupRecipient() ? VISIBLE : GONE);
+    int color = ResUtil.getColor(getContext(), R.attr.conversation_list_item_contact_color);
+    groupIndicator.setColorFilter(color);
   }
 
   public void bind(@NonNull  Recipient     contact,

@@ -26,7 +26,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.annimon.stream.function.Consumer;
-import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -303,8 +302,7 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   public synchronized @NonNull MaterialColor getColor() {
-    if      (isGroupRecipient()) return MaterialColor.BLUE;
-    else if (color != null)      return color;
+    if (color != null)      return color;
     else if (name != null)       return ContactColors.generateFor(name);
     else                         return ContactColors.UNKNOWN_COLOR;
   }
