@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WebRtcCallActivity;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
@@ -47,14 +48,14 @@ public class CommunicationActions {
                                        @NonNull  Recipient recipient,
                                        @Nullable String    text)
   {
-    new AsyncTask<Void, Void, Long>() {
+    new AsyncTask<Void, Void, Integer>() {
       @Override
-      protected Long doInBackground(Void... voids) {
-        return DatabaseFactory.getThreadDatabase(context).getThreadIdFor(recipient);
+      protected Integer doInBackground(Void... voids) {
+        return recipient.getAddress().getDcChatId();
       }
 
       @Override
-      protected void onPostExecute(Long threadId) {
+      protected void onPostExecute(Integer threadId) {
         Intent intent = new Intent(context, ConversationActivity.class);
         intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
 

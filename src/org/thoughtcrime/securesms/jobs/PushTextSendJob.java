@@ -64,7 +64,8 @@ public class PushTextSendJob extends PushSendJob implements InjectableType {
     } catch (InsecureFallbackApprovalException e) {
       Log.w(TAG, e);
       database.markAsPendingInsecureSmsFallback(record.getId());
-      MessageNotifier.notifyMessageDeliveryFailed(context, record.getRecipient(), record.getThreadId());
+      // todo the following line will not work for signal because of the cast, remove the cast as soon as it is reworked to dc code.
+      MessageNotifier.notifyMessageDeliveryFailed(context, record.getRecipient(), (int)record.getThreadId());
       ApplicationContext.getInstance(context).getJobManager().add(new DirectoryRefreshJob(context, false));
     } catch (UntrustedIdentityException e) {
       Log.w(TAG, e);
@@ -89,7 +90,8 @@ public class PushTextSendJob extends PushSendJob implements InjectableType {
     Recipient recipient = DatabaseFactory.getThreadDatabase(context).getRecipientForThreadId(threadId);
 
     if (threadId != -1 && recipient != null) {
-      MessageNotifier.notifyMessageDeliveryFailed(context, recipient, threadId);
+      // todo the following line will not work for the signal code because of the cast, when its converted to dc code, remove the cast.
+      MessageNotifier.notifyMessageDeliveryFailed(context, recipient, (int)threadId);
     }
   }
 

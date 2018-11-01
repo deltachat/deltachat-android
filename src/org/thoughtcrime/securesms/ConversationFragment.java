@@ -236,7 +236,7 @@ public class ConversationFragment extends Fragment
   }
 
   private void initializeResources() {
-    this.threadId          = this.getActivity().getIntent().getLongExtra(ConversationActivity.THREAD_ID_EXTRA, -1);
+    this.threadId          = this.getActivity().getIntent().getIntExtra(ConversationActivity.THREAD_ID_EXTRA, -1);
     this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.threadId), true);
     this.lastSeen          = this.getActivity().getIntent().getLongExtra(ConversationActivity.LAST_SEEN_EXTRA, -1);
     this.startingPosition  = this.getActivity().getIntent().getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
@@ -582,7 +582,7 @@ public class ConversationFragment extends Fragment
   }
 
   public interface ConversationFragmentListener {
-    void setThreadId(long threadId);
+    void setThreadId(int threadId);
     void handleReplyMessage(MessageRecord messageRecord);
   }
 
@@ -757,7 +757,7 @@ public class ConversationFragment extends Fragment
             int chatId = dcContext.createChatByMsgId(messageRecord.getId());
             if( chatId != 0 ) {
               Intent intent = new Intent(getActivity(), ConversationActivity.class);
-              intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
+              intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
               startActivity(intent);
             }
           })

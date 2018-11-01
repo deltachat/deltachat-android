@@ -77,9 +77,9 @@ public class ConversationPopupActivity extends ConversationActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.menu_expand:
-        saveDraft().addListener(new ListenableFuture.Listener<Long>() {
+        saveDraft().addListener(new ListenableFuture.Listener<Integer>() {
           @Override
-          public void onSuccess(Long result) {
+          public void onSuccess(Integer result) {
             ActivityOptionsCompat transition = ActivityOptionsCompat.makeScaleUpAnimation(getWindow().getDecorView(), 0, 0, getWindow().getAttributes().width, getWindow().getAttributes().height);
             Intent intent = new Intent(ConversationPopupActivity.this, ConversationActivity.class);
             intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, result);
@@ -112,7 +112,7 @@ public class ConversationPopupActivity extends ConversationActivity {
   }
 
   @Override
-  protected void sendComplete(long threadId) {
+  protected void sendComplete(int threadId) {
     super.sendComplete(threadId);
     finish();
   }

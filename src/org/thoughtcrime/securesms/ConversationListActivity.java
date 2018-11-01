@@ -176,11 +176,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   @Override
-  public void onCreateConversation(long threadId, long lastSeen) {
+  public void onCreateConversation(int threadId, long lastSeen) {
     openConversation(threadId, lastSeen, -1);
   }
 
-  public void openConversation(long threadId, long lastSeen, int startingPosition) {
+  public void openConversation(int threadId, long lastSeen, int startingPosition) {
     searchToolbar.clearFocus();
 
     Intent intent = new Intent(this, ConversationActivity.class);
@@ -211,7 +211,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void handleDeaddrop() {
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)DcChat.DC_CHAT_ID_DEADDROP);
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
     startActivity(intent);
   }
 

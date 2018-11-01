@@ -51,7 +51,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   }
 
   @Override
-  public void onCreateConversation(long threadId, long lastSeenTime) {
+  public void onCreateConversation(int threadId, long lastSeenTime) {
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
     intent.putExtra(ConversationActivity.IS_ARCHIVED_EXTRA, true);

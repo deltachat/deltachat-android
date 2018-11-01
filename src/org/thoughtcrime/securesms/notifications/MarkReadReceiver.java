@@ -51,6 +51,10 @@ public class MarkReadReceiver extends BroadcastReceiver {
     }
   }
 
+  public static void process(@NonNull Context context, @NonNull int[] markedReadMessages) {
+
+  }
+
   public static void process(@NonNull Context context, @NonNull List<MarkedMessageInfo> markedReadMessages) {
     if (markedReadMessages.isEmpty()) return;
 

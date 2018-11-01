@@ -20,6 +20,8 @@ import android.widget.TextView;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
@@ -136,7 +138,8 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     ConversationListActivity conversationList = (ConversationListActivity) getActivity();
 
     if (conversationList != null) {
-      conversationList.onCreateConversation(threadRecord.getThreadId(),
+      // todo the following line won't work for signal code, and the cast needs to be removed.
+      conversationList.onCreateConversation((int)threadRecord.getThreadId(),
                                             threadRecord.getLastSeen());
     }
   }
@@ -144,8 +147,8 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
   @Override
   public void onContactClicked(@NonNull Recipient contact) {
     Intent intent = new Intent(getContext(), ConversationActivity.class);
-
-    long existingThread = DatabaseFactory.getThreadDatabase(getContext()).getThreadIdIfExistsFor(contact);
+    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+    int existingThread = dcContext.getChatIdByContactId(contact.getAddress().getDcContactId());
 
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, existingThread);
     startActivity(intent);
@@ -167,7 +170,8 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
       protected void onPostExecute(Integer startingPosition) {
         ConversationListActivity conversationList = (ConversationListActivity) getActivity();
         if (conversationList != null) {
-          conversationList.openConversation(message.threadId,
+          // todo the following line will fail on signal code because of the cast. As soon as that is reworked to dc code, remove the cast.
+          conversationList.openConversation((int)message.threadId,
                                             -1,
                                             startingPosition);
         }

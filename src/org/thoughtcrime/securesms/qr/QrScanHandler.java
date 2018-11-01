@@ -123,6 +123,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
             bundle.putInt(ConversationActivity.THREAD_ID_EXTRA, dcContext.createChatByContactId(qrParsed.getId()));
             Intent intent = new Intent(activity, ConversationActivity.class);
             //TODO how to we get the contact ID here? We need it to avoid crashing when starting the ConversationActivity
+            // probably solved by changing the type of the Thread_id_extra from long to int everywhere.
             activity.startActivity(intent, bundle);
         });
         builder.setNegativeButton(android.R.string.cancel, null);
@@ -184,7 +185,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
                         dcContext.endCaptureNextError();
                         if (newChatId != 0) {
                             Intent intent = new Intent(activity, ConversationActivity.class);
-                            intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)newChatId);
+                            intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, newChatId);
                             activity.startActivity(intent);
                         } else if (!errorString.isEmpty()) {
                             AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);

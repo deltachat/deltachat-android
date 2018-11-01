@@ -322,7 +322,7 @@ public class ConversationListFragment extends Fragment
     actionMode.setTitle(String.valueOf(getListAdapter().getBatchSelections().size()));
   }
 
-  private void handleCreateConversation(long threadId, long lastSeen) {
+  private void handleCreateConversation(int threadId, long lastSeen) {
     ((ConversationSelectedListener)getActivity()).onCreateConversation(threadId, lastSeen);
   }
 
@@ -368,7 +368,8 @@ public class ConversationListFragment extends Fragment
   @Override
   public void onItemClick(ConversationListItem item) {
     if (actionMode == null) {
-      long threadId = item.getThreadId();
+      // the next line will fail for signal calls, DC uses int, though.
+      int threadId = (int)item.getThreadId();
 
       if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
         DcContext dcContext = DcHelper.getContext(getActivity());
@@ -421,7 +422,7 @@ public class ConversationListFragment extends Fragment
   }
 
   public interface ConversationSelectedListener {
-    void onCreateConversation(long threadId, long lastSeen);
+    void onCreateConversation(int threadId, long lastSeen);
     void onSwitchToArchive();
 }
 

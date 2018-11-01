@@ -164,7 +164,7 @@ public class NotificationState {
     if (threads.size() != 1) throw new AssertionError("We only support replies to single thread notifications! " + threads.size());
 
     Intent     intent           = new Intent(context, ConversationPopupActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (Integer)(threads.toArray())[0]);
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (threads.toArray(new Integer[threads.size()]))[0]);
     intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
 
     return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);

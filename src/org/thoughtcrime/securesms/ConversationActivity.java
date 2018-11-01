@@ -224,7 +224,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private Recipient  recipient;
   private ApplicationDcContext dcContext;
   private DcChat     dcChat                = new DcChat(0);
-  private long       threadId;
+  private int       threadId;
   private boolean    archived;
   private final boolean isSecureText = true;
   private boolean    isDefaultSms          = true;
@@ -871,7 +871,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    threadId         = getIntent().getLongExtra(THREAD_ID_EXTRA, -1);
+    threadId         = getIntent().getIntExtra(THREAD_ID_EXTRA, -1);
+    if(threadId == DcChat.DC_CHAT_NO_CHAT)
+      throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = dcContext.getChat((int)threadId);
     recipient        = dcContext.getRecipient(dcChat);
     archived         = getIntent().getBooleanExtra(IS_ARCHIVED_EXTRA, false);
@@ -1004,8 +1006,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return drafts;
   }
 
-  protected ListenableFuture<Long> saveDraft() {
-    final SettableFuture<Long> future = new SettableFuture<>();
+  protected ListenableFuture<Integer> saveDraft() {
+    final SettableFuture<Integer> future = new SettableFuture<>();
 
     if (this.recipient == null) {
       future.set(threadId);
@@ -1013,29 +1015,25 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     final Drafts       drafts               = getDraftsForCurrentState();
-    final long         thisThreadId         = this.threadId;
+    final int          thisThreadId         = this.threadId;
 
-    new AsyncTask<Long, Void, Long>() {
+    new AsyncTask<Integer, Void, Integer>() {
       @Override
-      protected Long doInBackground(Long... params) {
-        ThreadDatabase threadDatabase = DatabaseFactory.getThreadDatabase(ConversationActivity.this);
-        DraftDatabase  draftDatabase  = DatabaseFactory.getDraftDatabase(ConversationActivity.this);
-        long           threadId       = params[0];
+      protected Integer doInBackground(Integer... params) {
+        int           threadId       = params[0];
 
         if (drafts.size() > 0 && threadId>0) {
-          draftDatabase.insertDrafts(threadId, drafts);
-          threadDatabase.updateSnippet(threadId, drafts.getSnippet(ConversationActivity.this),
-                                       drafts.getUriSnippet(),
-                                       System.currentTimeMillis(), Types.BASE_DRAFT_TYPE, true);
+          // todo: the following line only works for text drafts
+          dcContext.setDraft(dcChat.getId(), drafts.getSnippet(dcContext.context));
         } else if (threadId > 0) {
-          threadDatabase.update(threadId, false);
+          dcContext.setDraft(dcChat.getId(), null);
         }
 
         return threadId;
       }
 
       @Override
-      protected void onPostExecute(Long result) {
+      protected void onPostExecute(Integer result) {
         future.set(result);
       }
 
@@ -1118,11 +1116,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void markThreadAsRead() {
-    new AsyncTask<Long, Void, Void>() {
+    new AsyncTask<Integer, Void, Void>() {
       @Override
-      protected Void doInBackground(Long... params) {
+      protected Void doInBackground(Integer... params) {
         Context                 context    = ConversationActivity.this;
-        List<MarkedMessageInfo> messageIds = DatabaseFactory.getThreadDatabase(context).setRead(params[0], false);
+        ApplicationDcContext dcContext = DcHelper.getContext(context);
+        int[] messageIds = dcContext.getChatMsgs(((ConversationActivity) context).threadId, 0, 0);
+        dcContext.markseenMsgs(messageIds);
 
         MessageNotifier.updateNotification(context);
         MarkReadReceiver.process(context, messageIds);
@@ -1133,16 +1133,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void markLastSeen() {
-    new AsyncTask<Long, Void, Void>() {
+    new AsyncTask<Integer, Void, Void>() {
       @Override
-      protected Void doInBackground(Long... params) {
-        DatabaseFactory.getThreadDatabase(ConversationActivity.this).setLastSeen(params[0]);
+      protected Void doInBackground(Integer... params) {
+        dcContext.marknoticedChat(params[0]);
         return null;
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
   }
 
-  protected void sendComplete(long threadId) {
+  protected void sendComplete(int threadId) {
     boolean refreshFragment = (threadId != this.threadId);
     this.threadId = threadId;
 
@@ -1579,7 +1579,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void setThreadId(long threadId) {
+  public void setThreadId(int threadId) {
     this.threadId = threadId;
   }
 

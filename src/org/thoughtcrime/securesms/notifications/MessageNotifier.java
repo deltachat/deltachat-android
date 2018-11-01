@@ -102,7 +102,7 @@ public class MessageNotifier {
     lastDesktopActivityTimestamp = timestamp;
   }
 
-  public static void notifyMessageDeliveryFailed(Context context, Recipient recipient, long threadId) {
+  public static void notifyMessageDeliveryFailed(Context context, Recipient recipient, int threadId) {
     if (visibleThread == threadId) {
       sendInThreadNotification(context, recipient);
     } else {

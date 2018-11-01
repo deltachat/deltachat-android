@@ -218,7 +218,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleResolvedMedia(Intent intent, boolean animate) {
-    long      threadId         = intent.getLongExtra(EXTRA_THREAD_ID, -1);
+    int       threadId         = intent.getIntExtra(EXTRA_THREAD_ID, -1);
     int       distributionType = intent.getIntExtra(EXTRA_DISTRIBUTION_TYPE, -1);
     Address   address          = null;
 
@@ -244,7 +244,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private void createConversation(long threadId) {
+  private void createConversation(int threadId) {
     final Intent intent = getBaseShareIntent(ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
 
@@ -272,7 +272,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onContactSelected(int specialId, String number) {
     Recipient recipient = Recipient.from(this, Address.fromExternal(this, number), true);
-    long existingThread = DatabaseFactory.getThreadDatabase(this).getThreadIdIfExistsFor(recipient);
+    int existingThread = recipient.getAddress().getDcChatId();
     createConversation(existingThread);
   }
 

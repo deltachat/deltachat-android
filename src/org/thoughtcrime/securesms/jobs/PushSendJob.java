@@ -134,7 +134,8 @@ public abstract class PushSendJob extends SendJob {
     Recipient recipient = DatabaseFactory.getThreadDatabase(context).getRecipientForThreadId(threadId);
 
     if (threadId != -1 && recipient != null) {
-      MessageNotifier.notifyMessageDeliveryFailed(context, recipient, threadId);
+      // todo the following line will not work for the signal code because of the cast, as soon as it is converted to dc code, remove the cast.
+      MessageNotifier.notifyMessageDeliveryFailed(context, recipient, (int)threadId);
     }
   }
 

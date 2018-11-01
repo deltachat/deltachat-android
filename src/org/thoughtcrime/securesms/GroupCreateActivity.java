@@ -301,7 +301,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     setGroupAvatar(chatId);
 
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
     startActivity(intent);
     finish();
   }
