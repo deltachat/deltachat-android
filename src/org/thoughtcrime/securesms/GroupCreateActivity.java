@@ -37,6 +37,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -73,7 +75,7 @@ import java.util.Set;
  * @author Jake McGinty
  */
 public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
-                                 implements OnRecipientDeletedListener
+                                 implements OnRecipientDeletedListener, DcEventCenter.DcEventDelegate
 {
 
   private final static String TAG = GroupCreateActivity.class.getSimpleName();
@@ -115,6 +117,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
     initializeExistingGroup();
     initializeResources();
+
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CHAT_MODIFIED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONTACTS_CHANGED);
   }
 
   @Override
@@ -123,6 +128,12 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
     updateViewState();
+  }
+
+  @Override
+  protected void onDestroy() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroy();
   }
 
   @SuppressWarnings("ConstantConditions")
@@ -145,6 +156,13 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private void addSelectedContacts(@NonNull Recipient... recipients) {
     new AddMembersTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, recipients);
+  }
+
+  @Override
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    if (eventId== DcContext.DC_EVENT_CHAT_MODIFIED || eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+      initializeExistingGroup();
+    }
   }
 
   private static class AddMembersTask extends AsyncTask<Recipient,Void,List<AddMembersTask.Result>> {
