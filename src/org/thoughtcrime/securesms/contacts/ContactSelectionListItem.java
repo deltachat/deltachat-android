@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
@@ -17,6 +18,8 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
+import org.thoughtcrime.securesms.util.Hash;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -69,6 +72,11 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     }
     else {
       this.recipient = DcHelper.getContext(getContext()).getRecipient(contact);
+      String identifier = Hash.sha256(contact.getName() + contact.getAddr());
+      Uri systemContactPhoto = TextSecurePreferences.getSystemContactPhoto(getContext(), identifier);
+      if (systemContactPhoto != null) {
+        this.recipient.setSystemContactPhoto(systemContactPhoto);
+      }
       this.recipient.addListener(this);
       if (this.recipient.getName() != null) {
         name = this.recipient.getName();

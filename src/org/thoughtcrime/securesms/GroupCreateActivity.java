@@ -63,8 +63,6 @@ import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -298,36 +296,13 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         dcContext.addContactToChat(chatId, contactId);
       }
     }
-    setGroupAvatar(chatId);
+    AvatarHelper.setGroupAvatar(this, chatId, avatarBmp);
 
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
     startActivity(intent);
     finish();
   }
-
-    private void setGroupAvatar(int chatId) {
-      if(avatarBmp == null) {
-        return;
-      }
-      String avatarPath = dcContext.getChat(chatId).getProfileImage();
-      if (avatarPath != null && !avatarPath.isEmpty()) {
-        File oldImage = new File(avatarPath);
-        if (oldImage.exists()) {
-          //noinspection ResultOfMethodCallIgnored
-          oldImage.delete();
-        }
-      }
-      avatarPath = AvatarHelper.getFilePathForGroupAvatar(this, chatId, System.currentTimeMillis());
-      FileOutputStream outStream;
-      try {
-        outStream = new FileOutputStream(avatarPath);
-        avatarBmp.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
-        dcContext.setChatProfileImage(chatId, avatarPath);
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      }
-    }
 
   private boolean showGroupNameEmptyToast(String groupName) {
     if(groupName == null) {
@@ -348,7 +323,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     dcContext.setChatName(editGroupChatId, groupName);
     updateGroupParticipants();
 
-    setGroupAvatar(editGroupChatId);
+    AvatarHelper.setGroupAvatar(this, editGroupChatId, avatarBmp);
 
     Intent intent = new Intent();
     Recipient recipient = dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, editGroupChatId);

@@ -1,11 +1,13 @@
 package org.thoughtcrime.securesms.util;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.Camera.CameraInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.support.annotation.ArrayRes;
 import android.support.annotation.NonNull;
@@ -20,9 +22,11 @@ import org.whispersystems.libsignal.util.Medium;
 
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class TextSecurePreferences {
@@ -133,6 +137,8 @@ public class TextSecurePreferences {
 
   private static final String LAST_FULL_CONTACT_SYNC_TIME = "pref_last_full_contact_sync_time";
   private static final String NEEDS_FULL_CONTACT_SYNC     = "pref_needs_full_contact_sync";
+
+  private static final String PREF_CONTACT_PHOTO_IDENTIFIERS = "pref_contact_photo_identifiers";
 
   public static boolean isScreenLockEnabled(@NonNull Context context) {
     return getBooleanPreference(context, SCREEN_LOCK, false);
@@ -859,4 +865,21 @@ public class TextSecurePreferences {
       return defaultValues;
     }
   }
+
+  public static void setSystemContactPhotos(Context context, Set<String> contactPhotoIdentifiers) {
+    PreferenceManager.getDefaultSharedPreferences(context).edit().putStringSet(PREF_CONTACT_PHOTO_IDENTIFIERS, contactPhotoIdentifiers).apply();
+  }
+
+  public static Uri getSystemContactPhoto(Context context, String identifier) {
+    List<String> contactPhotoIdentifiers = new ArrayList<>(getStringSetPreference(context, PREF_CONTACT_PHOTO_IDENTIFIERS, new HashSet<>()));
+    for(String contactPhotoIdentifier : contactPhotoIdentifiers) {
+      if (contactPhotoIdentifier.contains(identifier)) {
+        String[] parts = contactPhotoIdentifier.split("\\|");
+        long contactId = Long.valueOf(parts[1]);
+        return ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId);
+      }
+    }
+    return null;
+  }
+
 }

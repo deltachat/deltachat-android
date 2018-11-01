@@ -33,6 +33,8 @@ import android.text.TextUtils;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.GroupDatabase;
+import org.thoughtcrime.securesms.util.Hash;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -61,7 +63,7 @@ public class ContactAccessor {
 
   private static final int CONTACT_CURSOR_MAIL = 1;
 
-  private static final int CONTACT_CURSOR_PHOTO = 2;
+  private static final int CONTACT_CURSOR_CONTACT_ID = 2;
 
   public static final String PUSH_COLUMN = "push";
 
@@ -86,7 +88,7 @@ public class ContactAccessor {
   }
 
   public Cursor getAllSystemContacts(Context context) {
-    String[] projection = {ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Email.ADDRESS, Phone.PHOTO_ID};
+    String[] projection = {ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Email.ADDRESS, ContactsContract.Data.CONTACT_ID};
     return context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projection, null, null, null);
   }
 
@@ -94,15 +96,16 @@ public class ContactAccessor {
     Cursor systemContactsCursor = getAllSystemContacts(context);
     StringBuilder result = new StringBuilder();
     List<String> mailList = new ArrayList<>();
+    Set<String> contactPhotoIdentifiers = new HashSet<>();
     while (systemContactsCursor != null && systemContactsCursor.moveToNext()) {
       String name = systemContactsCursor.getString(CONTACT_CURSOR_NAME);
       String mail = systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
-      /*
-      TODO
-      - Persist this data to get it via DcContact.getProfileImage();
-      - Copy non existing images to the Delta avatar directory
-      - Use: String contactPhotoUri = systemContactsCursor.getString(CONTACT_CURSOR_PHOTO);
-      */
+      String contactId = systemContactsCursor.getString(CONTACT_CURSOR_CONTACT_ID);
+      if (contactId != null) {
+        String identifier = name + mail;
+        String hashedIdentifierAndId = Hash.sha256(identifier) + "|" + contactId;
+        contactPhotoIdentifiers.add(hashedIdentifierAndId);
+      }
       if (mail != null && !mail.isEmpty() && !mailList.contains(mail)) {
           mailList.add(mail);
           if (name.isEmpty()) {
@@ -111,6 +114,7 @@ public class ContactAccessor {
           result.append(name).append("\n").append(mail).append("\n");
       }
     }
+    TextSecurePreferences.setSystemContactPhotos(context, contactPhotoIdentifiers);
     return result.toString();
   }
 

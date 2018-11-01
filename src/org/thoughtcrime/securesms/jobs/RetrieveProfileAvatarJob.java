@@ -64,7 +64,7 @@ public class RetrieveProfileAvatarJob extends ContextJob implements InjectableTy
 
     if (TextUtils.isEmpty(profileAvatar)) {
       Log.w(TAG, "Removing profile avatar for: " + recipient.getAddress().serialize());
-      AvatarHelper.delete(context, recipient.getAddress());
+      AvatarHelper.deleteSelfAvatar(context, recipient.getAddress());
       database.setProfileAvatar(recipient, profileAvatar);
       return;
     }
@@ -76,7 +76,7 @@ public class RetrieveProfileAvatarJob extends ContextJob implements InjectableTy
       File        decryptDestination = File.createTempFile("avatar", "jpg", context.getCacheDir());
 
       Util.copy(avatarStream, new FileOutputStream(decryptDestination));
-      decryptDestination.renameTo(AvatarHelper.getAvatarFile(context, recipient.getAddress()));
+      decryptDestination.renameTo(AvatarHelper.getSelfAvatarFile(context, recipient.getAddress()));
     } finally {
       if (downloadDestination != null) downloadDestination.delete();
     }

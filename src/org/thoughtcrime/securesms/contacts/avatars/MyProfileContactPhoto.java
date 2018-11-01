@@ -30,7 +30,7 @@ public class MyProfileContactPhoto implements ContactPhoto {
     @Override
     public @Nullable
     Uri getUri(@NonNull Context context) {
-        return Uri.fromFile(AvatarHelper.getAvatarFile(context, address));
+        return Uri.fromFile(AvatarHelper.getSelfAvatarFile(context, address));
     }
 
     @Override

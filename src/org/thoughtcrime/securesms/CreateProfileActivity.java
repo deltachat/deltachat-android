@@ -38,7 +38,6 @@ import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.InputAwareLayout;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
-import org.thoughtcrime.securesms.components.emoji.EmojiToggle;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.crypto.ProfileKeyUtil;
@@ -309,7 +308,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
   private void initializeProfileAvatar(boolean excludeSystem) {
     String address = DcHelper.get(this, DcHelper.CONFIG_ADDRESS);
 
-    if (AvatarHelper.getAvatarFile(this, address).exists() && AvatarHelper.getAvatarFile(this, address).length() > 0) {
+    if (AvatarHelper.getSelfAvatarFile(this, address).exists() && AvatarHelper.getSelfAvatarFile(this, address).length() > 0) {
       new AsyncTask<Void, Void, byte[]>() {
         @Override
         protected byte[] doInBackground(Void... params) {
@@ -452,7 +451,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
         TextSecurePreferences.setProfileName(context, name);
 
         try {
-          AvatarHelper.setAvatar(CreateProfileActivity.this, DcHelper.get(context, DcHelper.CONFIG_ADDRESS), avatarBytes);
+          AvatarHelper.setSelfAvatar(CreateProfileActivity.this, DcHelper.get(context, DcHelper.CONFIG_ADDRESS), avatarBytes);
           TextSecurePreferences.setProfileAvatarId(CreateProfileActivity.this, new SecureRandom().nextInt());
         } catch (IOException e) {
           Log.w(TAG, e);
