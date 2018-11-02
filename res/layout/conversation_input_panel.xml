@@ -15,7 +15,7 @@
         android:paddingBottom="6dp"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:background="@color/white">
+        android:background="?emoji_tab_strip_background">
 
     <FrameLayout
         android:layout_width="0dp"

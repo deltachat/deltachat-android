@@ -13,6 +13,7 @@
               android:horizontalSpacing="0dp"
               android:verticalSpacing="0dp"
               android:numColumns="auto_fit"
-              android:gravity="center"/>
+              android:gravity="center"
+              android:background="?emoji_tab_strip_background"/>
 
 </FrameLayout>
