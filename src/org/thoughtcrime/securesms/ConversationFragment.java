@@ -83,12 +83,15 @@ import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
+import static org.thoughtcrime.securesms.ShareActivity.EXTRA_MSG_IDS;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends Fragment
@@ -284,7 +287,7 @@ public class ConversationFragment extends Fragment
     }
 
     if (messageRecords.size() > 1) {
-      menu.findItem(R.id.menu_context_forward).setVisible(false);
+//      menu.findItem(R.id.menu_context_forward).setVisible(false);
       menu.findItem(R.id.menu_context_reply).setVisible(false);
       menu.findItem(R.id.menu_context_details).setVisible(false);
       menu.findItem(R.id.menu_context_save_attachment).setVisible(false);
@@ -425,9 +428,11 @@ public class ConversationFragment extends Fragment
       .show();
   }
 
-  private void handleForwardMessage(DcMsg message) {
+  private void handleForwardMessage(final Set<DcMsg> messageRecords) {
     Intent composeIntent = new Intent(getActivity(), ShareActivity.class);
-    composeIntent.putExtra(Intent.EXTRA_TEXT, message.getDisplayBody().toString());
+    int[] msgIds = DcMsg.msgSetToIds(messageRecords);
+    composeIntent.putExtra(EXTRA_MSG_IDS, msgIds);
+//    composeIntent.putExtra(Intent.EXTRA_TEXT, messageRecords.getDisplayBody().toString());
     /* TODO: handle fowarding media
     if (message.isMms()) {
       MmsMessageRecord mediaMessage = (MmsMessageRecord) message;
@@ -933,7 +938,8 @@ public class ConversationFragment extends Fragment
           actionMode.finish();
           return true;
         case R.id.menu_context_forward:
-          handleForwardMessage(getSelectedMessageRecord());
+//          handleForwardMessage(getSelectedMessageRecord());
+          handleForwardMessage(getListAdapter().getSelectedItems());
           actionMode.finish();
           return true;
         case R.id.menu_context_resend:

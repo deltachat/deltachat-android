@@ -305,6 +305,7 @@
     <string name="ShareActivity_share_with">Share with</string>
     <string name="ShareActivity_unable_to_open_media">Can\'t find an app able to open this media.</string>
     <string name="ShareActivity_file_not_found">Could not find %1$s.</string>
+    <string name="ShareActivity_forward_message_to_user_info">Forward selected messages to %1$s?</string>
 
     <!-- ExperienceUpgradeActivity -->
     <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Welcome to Delta Chat.</string>

@@ -38,6 +38,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactsCursorLoader;
 import org.thoughtcrime.securesms.contacts.ContactsCursorLoader.DisplayMode;
 import org.thoughtcrime.securesms.database.Address;
@@ -46,6 +48,7 @@ import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -57,6 +60,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * An activity to quickly share content with contacts
@@ -71,6 +75,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   public static final String EXTRA_THREAD_ID          = "thread_id";
   public static final String EXTRA_ADDRESS_MARSHALLED = "address_marshalled";
   public static final String EXTRA_DISTRIBUTION_TYPE  = "distribution_type";
+  public static final String EXTRA_MSG_IDS  = "message_ids";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -82,6 +87,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   private Uri                          resolvedExtra;
   private String                       mimeType;
   private boolean                      isPassingAlongMedia;
+  private ApplicationDcContext         dcContext;
 
   @Override
   protected void onPreCreate() {
@@ -100,6 +106,12 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
     getIntent().putExtra(ContactSelectionListFragment.REFRESHABLE, false);
     getIntent().putExtra(ContactSelectionListFragment.RECENTS, true);
+    getIntent().putExtra(ContactSelectionListFragment.MULTI_SELECT, false);
+    getIntent().putExtra(ContactSelectionListFragment.FROM_SHARE_ACTIVITY_EXTRA, true);
+
+
+
+    dcContext = DcHelper.getContext(this);
 
     setContentView(R.layout.share_activity);
 
@@ -247,7 +259,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   private void createConversation(int threadId) {
     final Intent intent = getBaseShareIntent(ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-
+    intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, distributionType);
     isPassingAlongMedia = true;
     startActivity(intent);
   }
@@ -271,9 +283,16 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onContactSelected(int specialId, String number) {
-    Recipient recipient = Recipient.from(this, Address.fromExternal(this, number), true);
-    int existingThread = recipient.getAddress().getDcChatId();
-    createConversation(existingThread);
+    Recipient recipient = dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CONTACT, specialId);
+    Dialogs.showResponseDialog(this, "", getString(R.string.ShareActivity_forward_message_to_user_info, dcContext.getContact(specialId).getDisplayName()), (dialogInterface, i) -> {
+      int chatId = dcContext.getChatIdByContactId(specialId);
+      if(chatId == 0){
+        chatId = dcContext.createChatByContactId(specialId);
+      }
+      int[] value = getIntent().getIntArrayExtra(EXTRA_MSG_IDS);
+      dcContext.forwardMsgs(value, chatId);
+      createConversation(chatId, recipient.getAddress(), ThreadDatabase.DistributionTypes.DEFAULT);
+    });
   }
 
   @Override

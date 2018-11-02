@@ -84,6 +84,7 @@ public class ContactSelectionListFragment extends    Fragment
   public static final String REFRESHABLE           = "refreshable";
   public static final String RECENTS               = "recents";
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";
+  public static final String FROM_SHARE_ACTIVITY_EXTRA = "from_share_activity";
 
   private ApplicationDcContext dcContext;
 
@@ -233,6 +234,10 @@ public class ContactSelectionListFragment extends    Fragment
     return getActivity().getIntent().getBooleanExtra(SELECT_VERIFIED_EXTRA, false);
   }
 
+  private boolean isFromShareActivity() {
+    return getActivity().getIntent().getBooleanExtra(FROM_SHARE_ACTIVITY_EXTRA, false);
+  }
+
   private void initializeCursor() {
     ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(),
                                                                           GlideApp.with(this),
@@ -267,11 +272,12 @@ public class ContactSelectionListFragment extends    Fragment
 
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
-    boolean addCreateGroupLinks = !isMulti();
+    boolean addCreateGroupLinks = isFromShareActivity() ? false : !isMulti();
     int listflags = DcContext.DC_GCL_ADD_SELF;
     if(isSelectVerfied()) {
       listflags = DcContext.DC_GCL_VERIFIED_ONLY;
     }
+
     return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks);
   }
 
