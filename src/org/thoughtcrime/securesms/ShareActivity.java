@@ -259,7 +259,6 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   private void createConversation(int threadId) {
     final Intent intent = getBaseShareIntent(ConversationActivity.class);
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-    intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, distributionType);
     isPassingAlongMedia = true;
     startActivity(intent);
   }
@@ -291,7 +290,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       }
       int[] value = getIntent().getIntArrayExtra(EXTRA_MSG_IDS);
       dcContext.forwardMsgs(value, chatId);
-      createConversation(chatId, recipient.getAddress(), ThreadDatabase.DistributionTypes.DEFAULT);
+      createConversation(chatId);
     });
   }
 
