@@ -92,13 +92,13 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
             e.printStackTrace();
         }
 
-        dcEventCenter.addObserver(this, DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS);
+        dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        dcEventCenter.removeObserver(this, DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS);
+        dcEventCenter.removeObservers(this);
     }
 
     @Override

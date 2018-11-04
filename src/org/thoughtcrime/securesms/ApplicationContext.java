@@ -152,23 +152,17 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   private void initializeIncomingMessageNotifier() {
 
     DcEventCenter dcEventCenter = dcContext.eventCenter;
-    dcEventCenter.addObserver((eventId, data1, data2)
-        -> new AsyncTask<Long, Void, Void>() {
+    dcEventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
       @Override
-      protected Void doInBackground(Long... params) {
-        if (data1 == null)
-          MessageNotifier.updateNotification(dcContext.context);
-        else {
-          if (data1 instanceof Long)
-            MessageNotifier.updateNotification(dcContext.context, ((Long)data1).intValue());
-          else {
-            Log.w(TAG, "The type of chat was unclear. " + data1.getClass());
-            MessageNotifier.updateNotification(dcContext.context);
-          }
-        }
-        return null;
-        }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR), DcContext.DC_EVENT_INCOMING_MSG);
+      public void handleEvent(int eventId, Object data1, Object data2) {
+        MessageNotifier.updateNotification(dcContext.context, ((Long) data1).intValue());
+      }
+
+      @Override
+      public boolean runOnMain() {
+        return false;
+      }
+    });
   }
 
   private void initializeJobManager() {
