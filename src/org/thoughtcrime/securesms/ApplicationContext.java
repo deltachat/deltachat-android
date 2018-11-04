@@ -156,7 +156,16 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
         -> new AsyncTask<Long, Void, Void>() {
       @Override
       protected Void doInBackground(Long... params) {
-        MessageNotifier.updateNotification(dcContext.context);
+        if (data1 == null)
+          MessageNotifier.updateNotification(dcContext.context);
+        else {
+          if (data1 instanceof Long)
+            MessageNotifier.updateNotification(dcContext.context, ((Long)data1).intValue());
+          else {
+            Log.w(TAG, "The type of chat was unclear. " + data1.getClass());
+            MessageNotifier.updateNotification(dcContext.context);
+          }
+        }
         return null;
         }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR), DcContext.DC_EVENT_INCOMING_MSG);
