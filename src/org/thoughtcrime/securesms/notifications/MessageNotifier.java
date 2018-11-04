@@ -189,7 +189,7 @@ public class MessageNotifier {
       return;
     }
 
-    updateNotification(context, false, 0);
+    updateNotification(context, true, 0);
   }
 
   public static void updateNotification(@NonNull Context context, long threadId)
