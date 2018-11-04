@@ -292,7 +292,7 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       intent.putExtra(MediaPreviewActivity.DC_MSG_ID, mediaRecord.getId());
       intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, recipient.getAddress());
       intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, mediaRecord.isOutgoing());
-      intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, true);
+      intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, false);
       context.startActivity(intent);
     }
 
