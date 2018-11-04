@@ -36,18 +36,12 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contactshare.ContactUtil;
-import org.thoughtcrime.securesms.contactshare.Contact;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
-import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.service.KeyCachingService;
@@ -81,7 +75,7 @@ public class MessageNotifier {
 
   private static final String TAG = MessageNotifier.class.getSimpleName();
 
-  public static final  String EXTRA_REMOTE_REPLY = "extra_remote_reply";
+  static final  String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
   private static final  int   SUMMARY_NOTIFICATION_ID   = 1338;
   private static final int    PENDING_MESSAGES_ID       = 1111;
@@ -111,18 +105,12 @@ public class MessageNotifier {
       intent.setData((Uri.parse("custom://" + System.currentTimeMillis())));
 
       FailedNotificationBuilder builder = new FailedNotificationBuilder(context, TextSecurePreferences.getNotificationPrivacy(context), intent);
-      ((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE))
-        .notify((int)threadId, builder.build());
+      NotificationManager notificationManager = ((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE));
+      if(notificationManager != null)
+        notificationManager.notify(threadId, builder.build());
+      else
+        Log.i(TAG, "notification manager was null");
     }
-  }
-
-  public static void notifyMessagesPending(Context context) {
-    if (!TextSecurePreferences.isNotificationsEnabled(context)) {
-      return;
-    }
-
-    PendingMessageNotificationBuilder builder = new PendingMessageNotificationBuilder(context, TextSecurePreferences.getNotificationPrivacy(context));
-    ServiceUtil.getNotificationManager(context).notify(PENDING_MESSAGES_ID, builder.build());
   }
 
   public static void cancelDelayedNotifications() {
@@ -166,7 +154,7 @@ public class MessageNotifier {
               notification.getId() != PENDING_MESSAGES_ID)
           {
             for (NotificationItem item : notificationState.getNotifications()) {
-              if (notification.getId() == (SUMMARY_NOTIFICATION_ID + item.getThreadId())) {
+              if (notification.getId() == (SUMMARY_NOTIFICATION_ID + item.getChatId())) {
                 validNotification = true;
                 break;
               }
@@ -192,6 +180,10 @@ public class MessageNotifier {
     updateNotification(context, true, 0);
   }
 
+  /**
+   * @deprecated use updateNotificatio(Context, int) instead.
+   */
+  @Deprecated
   public static void updateNotification(@NonNull Context context, long threadId)
   {
     throw new IllegalStateException("old signal code called. thread -> chat, long -> int");
@@ -207,6 +199,10 @@ public class MessageNotifier {
     }
   }
 
+  /**
+   * @deprecated used updateNotification(Context, int, boolean) instead.
+   */
+  @Deprecated
   public static void updateNotification(@NonNull  Context context,
                                         long      threadId,
                                         boolean   signal) {
@@ -227,7 +223,7 @@ public class MessageNotifier {
     }
 
     if (!TextSecurePreferences.isNotificationsEnabled(context) ||
-        (recipient != null && recipient.isMuted()))
+        recipient.isMuted())
     {
       return;
     }
@@ -294,13 +290,13 @@ public class MessageNotifier {
     SingleRecipientNotificationBuilder builder        = new SingleRecipientNotificationBuilder(context, TextSecurePreferences.getNotificationPrivacy(context));
     List<NotificationItem>             notifications  = notificationState.getNotifications();
     Recipient                          recipient      = notifications.get(0).getRecipient();
-    int                                notificationId = (int) (SUMMARY_NOTIFICATION_ID + (bundled ? notifications.get(0).getThreadId() : 0));
+    int                                notificationId = (SUMMARY_NOTIFICATION_ID + (bundled ? notifications.get(0).getChatId() : 0));
 
 
     builder.setThread(notifications.get(0).getRecipient());
     builder.setMessageCount(notificationState.getMessageCount());
-    builder.setPrimaryMessageBody(recipient, notifications.get(0).getIndividualRecipient(),
-                                  notifications.get(0).getText(), notifications.get(0).getSlideDeck());
+    builder.setPrimaryMessageBody(recipient, notifications.get(0).getRecipient(),
+                                  notifications.get(0).getText(""), notifications.get(0).getSlideDeck());
     builder.setContentIntent(notifications.get(0).getPendingIntent(context));
     builder.setGroup(NOTIFICATION_GROUP);
     builder.setDeleteIntent(notificationState.getDeleteIntent(context));
@@ -319,12 +315,12 @@ public class MessageNotifier {
 
     while(iterator.hasPrevious()) {
       NotificationItem item = iterator.previous();
-      builder.addMessageBody(item.getRecipient(), item.getIndividualRecipient(), item.getText());
+      builder.addMessageBody(item.getRecipient(), item.getRecipient(), item.getText());
     }
 
     if (signal) {
       builder.setAlarms(notificationState.getRingtone(), notificationState.getVibrate());
-      builder.setTicker(notifications.get(0).getIndividualRecipient(),
+      builder.setTicker(notifications.get(0).getRecipient(),
                         notifications.get(0).getText());
     }
 
@@ -343,7 +339,7 @@ public class MessageNotifier {
     List<NotificationItem>               notifications = notificationState.getNotifications();
 
     builder.setMessageCount(notificationState.getMessageCount(), notificationState.getThreadCount());
-    builder.setMostRecentSender(notifications.get(0).getIndividualRecipient());
+    builder.setMostRecentSender(notifications.get(0).getRecipient());
     builder.setGroup(NOTIFICATION_GROUP);
     builder.setDeleteIntent(notificationState.getDeleteIntent(context));
 
@@ -356,12 +352,12 @@ public class MessageNotifier {
 
     while(iterator.hasPrevious()) {
       NotificationItem item = iterator.previous();
-      builder.addMessageBody(item.getIndividualRecipient(), item.getText());
+      builder.addMessageBody(item.getRecipient(), item.getText());
     }
 
     if (signal) {
       builder.setAlarms(notificationState.getRingtone(), notificationState.getVibrate());
-      builder.setTicker(notifications.get(0).getIndividualRecipient(),
+      builder.setTicker(notifications.get(0).getRecipient(),
                         notifications.get(0).getText());
     }
 
@@ -432,7 +428,7 @@ public class MessageNotifier {
         body = SpanUtil.italic(message, italicLength);
       }
 
-      if (threadRecipients == null || !threadRecipients.isMuted()) {
+      if (!threadRecipients.isMuted()) {
         notificationState.addNotification(new NotificationItem(id, mms, threadRecipients, chatId, body, timestamp, slideDeck));
       }
     }
@@ -444,7 +440,7 @@ public class MessageNotifier {
     try {
       if (count == 0) ShortcutBadger.removeCount(context);
       else            ShortcutBadger.applyCount(context, count);
-    } catch (Throwable t) {
+    } catch (RuntimeException t) {
       // NOTE :: I don't totally trust this thing, so I'm catching
       // everything.
       Log.w("MessageNotifier", t);
@@ -457,6 +453,7 @@ public class MessageNotifier {
     }
 
     AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    if(alarmManager == null) return;
     Intent       alarmIntent  = new Intent(ReminderReceiver.REMINDER_ACTION);
     alarmIntent.putExtra("reminder_count", count);
 
@@ -466,10 +463,11 @@ public class MessageNotifier {
     alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeout, pendingIntent);
   }
 
-  public static void clearReminder(Context context) {
+  static void clearReminder(Context context) {
     Intent        alarmIntent   = new Intent(ReminderReceiver.REMINDER_ACTION);
     PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
     AlarmManager  alarmManager  = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    if(alarmManager == null) return;
     alarmManager.cancel(pendingIntent);
   }
 
@@ -543,14 +541,11 @@ public class MessageNotifier {
         tasks.add(runnable);
       }
 
-      Runnable wrapper = new Runnable() {
-        @Override
-        public void run() {
-          runnable.run();
+      Runnable wrapper = () -> {
+        runnable.run();
 
-          synchronized (tasks) {
-            tasks.remove(runnable);
-          }
+        synchronized (tasks) {
+          tasks.remove(runnable);
         }
       };
 

@@ -23,7 +23,7 @@ public class NotificationItem {
   private final @Nullable SlideDeck         slideDeck;
 
   public NotificationItem(int id, boolean mms,
-                          @Nullable  Recipient threadRecipient,
+                          @NonNull  Recipient threadRecipient,
                           int chatId, @Nullable CharSequence text, long timestamp,
                           @Nullable SlideDeck slideDeck)
   {
@@ -40,8 +40,12 @@ public class NotificationItem {
     return threadRecipient;
   }
 
-  public CharSequence getText() {
+  public @Nullable CharSequence getText() {
     return text;
+  }
+
+  public @NonNull CharSequence getText(@NonNull CharSequence defaul) {
+    return (text == null ? defaul : text);
   }
 
   public long getTimestamp() {
@@ -69,7 +73,7 @@ public class NotificationItem {
     return slideDeck;
   }
 
-  public PendingIntent getPendingIntent(Context context) {
+  public @NonNull PendingIntent getPendingIntent(Context context) {
     Intent     intent           = new Intent(context, ConversationActivity.class);
 
     intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
