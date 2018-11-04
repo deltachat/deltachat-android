@@ -427,15 +427,9 @@ public class ApplicationDcContext extends DcContext {
                 {
                     final Object data1obj = data1IsString(event)? dataToString(data1) : data1;
                     final Object data2obj = data2IsString(event)? dataToString(data2) : data2;
-                    Util.runOnMain(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(eventCenter!=null) {
-                                eventCenter.sendToObservers(event, data1obj, data2obj);
-                            }
-                        }
-                    });
-
+                    if(eventCenter!=null) {
+                        eventCenter.sendToObservers(event, data1obj, data2obj);
+                    }
                 }
                 break;
         }
