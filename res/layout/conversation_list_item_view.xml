@@ -68,16 +68,6 @@
                     android:textColor="?attr/conversation_list_item_contact_color"
                     tools:text="Jules Bonnot" />
 
-                <ImageView
-                    android:id="@+id/verified_indicator"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_verified"
-                    android:visibility="gone"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp" />
-
             </LinearLayout>
 
             <org.thoughtcrime.securesms.components.emoji.EmojiTextView

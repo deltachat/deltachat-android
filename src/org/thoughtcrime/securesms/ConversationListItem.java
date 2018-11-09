@@ -81,7 +81,6 @@ public class ConversationListItem extends RelativeLayout
   private TextView           archivedView;
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
-  private ImageView          verifiedIndicator;
   private ImageView          groupIndicator;
   private long               lastSeen;
 
@@ -106,7 +105,6 @@ public class ConversationListItem extends RelativeLayout
     this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
     this.archivedView            = findViewById(R.id.archived);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
-    this.verifiedIndicator       = findViewById(R.id.verified_indicator);
     this.groupIndicator          = findViewById(R.id.group_indicator);
 
     ViewUtil.setTextViewGravityStart(this.fromView, getContext());
@@ -171,8 +169,7 @@ public class ConversationListItem extends RelativeLayout
     else {
       this.contactPhotoImage.setAvatar(glideRequests, recipient, true);
     }
-
-    verifiedIndicator.setVisibility(thread.isVerified() ? VISIBLE : GONE);
+    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, thread.isVerified() ? R.drawable.ic_verified : 0, 0);
     groupIndicator.setVisibility(recipient.isGroupRecipient() ? VISIBLE : GONE);
     int color = ResUtil.getColor(getContext(), R.attr.conversation_list_item_contact_color);
     groupIndicator.setColorFilter(color);

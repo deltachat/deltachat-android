@@ -26,7 +26,6 @@ public class ConversationTitleView extends RelativeLayout {
   private AvatarImageView avatar;
   private TextView        title;
   private TextView        subtitle;
-  private ImageView       verified;
 
   public ConversationTitleView(Context context) {
     this(context, null);
@@ -45,7 +44,6 @@ public class ConversationTitleView extends RelativeLayout {
     this.content  = ViewUtil.findById(this, R.id.content);
     this.title    = ViewUtil.findById(this, R.id.title);
     this.subtitle = ViewUtil.findById(this, R.id.subtitle);
-    this.verified = ViewUtil.findById(this, R.id.verified_indicator);
     this.avatar   = ViewUtil.findById(this, R.id.contact_photo_image);
 
     ViewUtil.setTextViewGravityStart(this.title, getContext());
@@ -61,7 +59,7 @@ public class ConversationTitleView extends RelativeLayout {
     } else if (recipient != null && recipient.isMuted()) {
       title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_volume_off_white_18dp, 0, 0, 0);
     } else*/ {
-      title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      //title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     }
 
     if (dcChat != null) {
@@ -70,7 +68,7 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   public void setVerified(boolean verified) {
-    this.verified.setVisibility(verified ? View.VISIBLE : View.GONE);
+    title.setCompoundDrawablesWithIntrinsicBounds(0, 0, verified ? R.drawable.ic_verified : 0, 0);
   }
 
   public void hideAvatar() {

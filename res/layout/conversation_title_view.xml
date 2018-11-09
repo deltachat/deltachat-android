@@ -48,33 +48,17 @@
         android:layout_toEndOf="@id/contact_photo_image"
         android:layout_toRightOf="@id/contact_photo_image">
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/title"
+            style="@style/TextSecure.TitleTextStyle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-                android:id="@+id/title"
-                style="@style/TextSecure.TitleTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="5dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textSize="18dp"
-                android:transitionName="recipient_name"
-                tools:text="Jules Bonnot" />
-
-            <ImageView
-                android:id="@+id/verified_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/ic_verified"
-                android:visibility="gone" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="18dp"
+            android:transitionName="recipient_name"
+            tools:text="Jules Bonnot" />
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
             android:id="@+id/subtitle"
