@@ -44,6 +44,8 @@ public class AvatarHelper {
         if (bitmap == null) {
             return;
         }
+        //noinspection ResultOfMethodCallIgnored
+        new File(getAvatarDirectoryPath(context)).mkdirs();
         DcContext dcContext = DcHelper.getContext(context);
         String avatarPath = dcContext.getChat(chatId).getProfileImage();
         if (avatarPath != null && !avatarPath.isEmpty()) {

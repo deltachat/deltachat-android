@@ -38,11 +38,14 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.contacts.avatars.SystemContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientProvider;
+import org.thoughtcrime.securesms.util.Hash;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedInputStream;
@@ -176,13 +179,30 @@ public class ApplicationDcContext extends DcContext {
             participants.add(getRecipient(RECIPIENT_TYPE_CONTACT, contactId));
         }
         RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, participants);
-        return new Recipient(Address.fromChat(chat.getId()), recipientDetails);
+        Recipient recipient = new Recipient(Address.fromChat(chat.getId()), recipientDetails);
+        if (!chat.isGroup()) {
+            String identifier = Hash.sha256(chat.getName() + chat.getSubtitle());
+            Uri systemContactPhoto = TextSecurePreferences.getSystemContactPhoto(context, identifier);
+            if (systemContactPhoto != null) {
+                recipient.setSystemContactPhoto(systemContactPhoto);
+            }
+        }
+        return recipient;
     }
     @NonNull
 
     public Recipient getRecipient(DcContact contact) {
         RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(contact.getDisplayName(), null, false, null, null);
-        return new Recipient(Address.fromContact(contact.getId()), recipientDetails);
+        Recipient recipient = new Recipient(Address.fromContact(contact.getId()), recipientDetails);
+        String identifier = Hash.sha256(contact.getName() + contact.getAddr());
+        Uri systemContactPhoto = TextSecurePreferences.getSystemContactPhoto(context, identifier);
+        if (systemContactPhoto != null) {
+            recipient.setSystemContactPhoto(systemContactPhoto);
+        }
+        if (contact.getId() == DcContact.DC_CONTACT_ID_SELF) {
+            recipient.setProfileAvatar("SELF");
+        }
+        return recipient;
     }
 
     @NonNull
