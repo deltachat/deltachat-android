@@ -14,7 +14,7 @@ For ready-to-use binaries, please go to https://delta.chat .
 When checking out _deltachat-android-ii_, make sure also to check out the
 subproject _deltachat-core_:
 
-- When using Git, you can can do this initially by
+- When using Git, you can do this initially by
   `$ git clone --recursive https://github.com/deltachat/deltachat-android-ii`
   or later by `git submodule update --init --recursive`. If you do this in your
   home directory, this results in the folder `~/deltachat-android-ii` which is just fine.
