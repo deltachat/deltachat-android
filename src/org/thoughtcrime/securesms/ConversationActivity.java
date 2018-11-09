@@ -219,7 +219,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected HidingLinearLayout     quickAttachmentToggle;
   private   QuickAttachmentDrawer  quickAttachmentDrawer;
   private   InputPanel             inputPanel;
-  private   ImageView              imageView;
 
   private Recipient  recipient;
   private ApplicationDcContext dcContext;
@@ -810,7 +809,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer = ViewUtil.findById(this, R.id.quick_attachment_drawer);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel            = ViewUtil.findById(this, R.id.bottom_panel);
-    imageView             = ViewUtil.findById(this, R.id.background_imageview);
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
@@ -857,7 +855,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     String backgroundImagePath = TextSecurePreferences.getBackgroundImagePath(this);
     Drawable image = Drawable.createFromPath(backgroundImagePath);
-    imageView.setImageDrawable(image);
+    getWindow().setBackgroundDrawable(image);
   }
 
   protected void initializeActionBar() {
