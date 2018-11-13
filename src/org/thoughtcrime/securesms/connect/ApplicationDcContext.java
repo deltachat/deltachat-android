@@ -96,6 +96,8 @@ public class ApplicationDcContext extends DcContext {
 
         new ForegroundDetector(ApplicationContext.getInstance(context));
         startThreads();
+
+        TimerReceiver.scheduleNextAlarm(context);
     }
 
     public File getImexDir()
