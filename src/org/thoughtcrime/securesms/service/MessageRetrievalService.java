@@ -13,7 +13,6 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.gcm.GcmBroadcastReceiver;
 import org.thoughtcrime.securesms.jobmanager.requirements.NetworkRequirement;
-import org.thoughtcrime.securesms.jobmanager.requirements.NetworkRequirementProvider;
 import org.thoughtcrime.securesms.jobmanager.requirements.RequirementListener;
 import org.thoughtcrime.securesms.jobs.PushContentReceiveJob;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
@@ -42,7 +41,6 @@ public class MessageRetrievalService extends Service implements InjectableType, 
   private static final long   REQUEST_TIMEOUT_MINUTES  = 1;
 
   private NetworkRequirement         networkRequirement;
-  private NetworkRequirementProvider networkRequirementProvider;
 
   @Inject
   public SignalServiceMessageReceiver receiver;
@@ -59,9 +57,6 @@ public class MessageRetrievalService extends Service implements InjectableType, 
     ApplicationContext.getInstance(this).injectDependencies(this);
 
     networkRequirement         = new NetworkRequirement(this);
-    networkRequirementProvider = new NetworkRequirementProvider(this);
-
-    networkRequirementProvider.setListener(this);
 
     retrievalThread = new MessageRetrievalThread();
     retrievalThread.start();
