@@ -259,28 +259,25 @@ public class ApplicationDcContext extends DcContext {
                     imapThreadStartedVal = false;
                 }
 
-                imapThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // raise the starting condition
-                        // after acquiring a wakelock so that the process is not terminated.
-                        // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
+                imapThread = new Thread(() -> {
+                    // raise the starting condition
+                    // after acquiring a wakelock so that the process is not terminated.
+                    // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
+                    imapWakeLock.acquire();
+                    synchronized (imapThreadStartedCond) {
+                        imapThreadStartedVal = true;
+                        imapThreadStartedCond.notifyAll();
+                    }
+
+                    Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
+
+
+                    while (true) {
                         imapWakeLock.acquire();
-                        synchronized (imapThreadStartedCond) {
-                            imapThreadStartedVal = true;
-                            imapThreadStartedCond.notifyAll();
-                        }
-
-                        Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
-
-
-                        while (true) {
-                            imapWakeLock.acquire();
-                            performJobs();
-                            fetch();
-                            imapWakeLock.release();
-                            idle();
-                        }
+                        performImapJobs();
+                        performImapFetch();
+                        imapWakeLock.release();
+                        performImapIdle();
                     }
                 }, "imapThread");
                 imapThread.setPriority(Thread.NORM_PRIORITY);
@@ -293,24 +290,21 @@ public class ApplicationDcContext extends DcContext {
                     smtpThreadStartedVal = false;
                 }
 
-                smtpThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+                smtpThread = new Thread(() -> {
+                    smtpWakeLock.acquire();
+                    synchronized (smtpThreadStartedCond) {
+                        smtpThreadStartedVal = true;
+                        smtpThreadStartedCond.notifyAll();
+                    }
+
+                    Log.i("DeltaChat", "###################### SMTP-Thread started. ######################");
+
+
+                    while (true) {
                         smtpWakeLock.acquire();
-                        synchronized (smtpThreadStartedCond) {
-                            smtpThreadStartedVal = true;
-                            smtpThreadStartedCond.notifyAll();
-                        }
-
-                        Log.i("DeltaChat", "###################### SMTP-Thread started. ######################");
-
-
-                        while (true) {
-                            smtpWakeLock.acquire();
-                            performSmtpJobs();
-                            smtpWakeLock.release();
-                            performSmtpIdle();
-                        }
+                        performSmtpJobs();
+                        smtpWakeLock.release();
+                        performSmtpIdle();
                     }
                 }, "smtpThread");
                 smtpThread.setPriority(Thread.MAX_PRIORITY);
