@@ -27,3 +27,6 @@ jni/libspeex/.deps/
 
 # ignore private scripts and directories, eg. local2github.prv.sh
 *.prv*
+
+# contains files for ndk-build when done from gradle.
+.externalNativeBuild
