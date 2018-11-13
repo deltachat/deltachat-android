@@ -32,10 +32,6 @@ import org.thoughtcrime.securesms.database.SmsDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
-import org.thoughtcrime.securesms.jobmanager.JobManager;
-import org.thoughtcrime.securesms.jobs.PushGroupSendJob;
-import org.thoughtcrime.securesms.jobs.PushMediaSendJob;
-import org.thoughtcrime.securesms.jobs.PushTextSendJob;
 import org.thoughtcrime.securesms.mms.MmsException;
 import org.thoughtcrime.securesms.mms.OutgoingMediaMessage;
 import org.thoughtcrime.securesms.push.AccountManagerFactory;
@@ -108,29 +104,6 @@ public class MessageSender {
     }
   }
 
-  public static void resendGroupMessage(Context context, MessageRecord messageRecord, Address filterAddress) {
-    if (!messageRecord.isMms()) throw new AssertionError("Not Group");
-    sendGroupPush(context, messageRecord.getRecipient(), messageRecord.getId(), filterAddress);
-  }
-
-  public static void resend(Context context, MessageRecord messageRecord) {
-    try {
-      long       messageId   = messageRecord.getId();
-      boolean    forceSms    = messageRecord.isForcedSms();
-      boolean    keyExchange = messageRecord.isKeyExchange();
-      long       expiresIn   = messageRecord.getExpiresIn();
-      Recipient  recipient   = messageRecord.getRecipient();
-
-      if (messageRecord.isMms()) {
-        sendMediaMessage(context, recipient, forceSms, messageId, expiresIn);
-      } else {
-        sendTextMessage(context, recipient, forceSms, keyExchange, messageId, expiresIn);
-      }
-    } catch (MmsException e) {
-      Log.w(TAG, e);
-    }
-  }
-
   private static void sendMediaMessage(Context context, Recipient recipient, boolean forceSms, long messageId, long expiresIn)
       throws MmsException
   {
@@ -191,18 +164,18 @@ public class MessageSender {
   }
 
   private static void sendTextPush(Context context, Recipient recipient, long messageId) {
-    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
-    jobManager.add(new PushTextSendJob(context, messageId, recipient.getAddress()));
+//    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
+//    jobManager.add(new PushTextSendJob(context, messageId, recipient.getAddress()));
   }
 
   private static void sendMediaPush(Context context, Recipient recipient, long messageId) {
-    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
-    jobManager.add(new PushMediaSendJob(context, messageId, recipient.getAddress()));
+//    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
+//    jobManager.add(new PushMediaSendJob(context, messageId, recipient.getAddress()));
   }
 
   private static void sendGroupPush(Context context, Recipient recipient, long messageId, Address filterAddress) {
-    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
-    jobManager.add(new PushGroupSendJob(context, messageId, recipient.getAddress(), filterAddress));
+//    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
+//    jobManager.add(new PushGroupSendJob(context, messageId, recipient.getAddress(), filterAddress));
   }
 
   private static void sendSms(Context context, Recipient recipient, long messageId) {
