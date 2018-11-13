@@ -16,8 +16,10 @@
  */
 package org.thoughtcrime.securesms.connect;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -98,6 +100,9 @@ public class ApplicationDcContext extends DcContext {
         startThreads();
 
         TimerReceiver.scheduleNextAlarm(context);
+
+        BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
+        context.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
     public File getImexDir()
