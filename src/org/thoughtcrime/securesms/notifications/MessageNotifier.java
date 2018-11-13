@@ -229,7 +229,8 @@ public class MessageNotifier {
     }
 
     if (isVisible) {
-      sendInThreadNotification(context, recipient);
+      if (signal)
+        sendInThreadNotification(context, recipient);
     } else {
       updateNotification(context, signal, 0);
     }

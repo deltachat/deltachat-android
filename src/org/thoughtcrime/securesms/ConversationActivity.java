@@ -1122,7 +1122,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         int[] messageIds = dcContext.getChatMsgs(((ConversationActivity) context).threadId, 0, 0);
         dcContext.markseenMsgs(messageIds);
 
-        MessageNotifier.updateNotification(context);
+        MessageNotifier.updateNotification(context, threadId, false);
         MarkReadReceiver.process(context, messageIds);
 
         return null;
