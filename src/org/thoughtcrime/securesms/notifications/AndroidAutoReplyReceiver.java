@@ -25,12 +25,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.RemoteInput;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
 import org.thoughtcrime.securesms.mms.OutgoingMediaMessage;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.sms.MessageSender;
 import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.whispersystems.libsignal.logging.Log;
 
@@ -64,32 +65,21 @@ public class AndroidAutoReplyReceiver extends BroadcastReceiver {
     final Address      address      = intent.getParcelableExtra(ADDRESS_EXTRA);
     final long         threadId     = intent.getLongExtra(THREAD_ID_EXTRA, -1);
     final CharSequence responseText = getMessageText(intent);
-    final Recipient    recipient    = Recipient.from(context, address, false);
 
     if (responseText != null) {
       new AsyncTask<Void, Void, Void>() {
         @Override
         protected Void doInBackground(Void... params) {
 
-          long replyThreadId;
-
-          int  subscriptionId = recipient.getDefaultSubscriptionId().or(-1);
-          long expiresIn      = recipient.getExpireMessages() * 1000L;
-
-          if (recipient.isGroupRecipient()) {
-            Log.w("AndroidAutoReplyReceiver", "GroupRecipient, Sending media message");
-            OutgoingMediaMessage reply = new OutgoingMediaMessage(recipient, responseText.toString(), new LinkedList<>(), System.currentTimeMillis(), subscriptionId, expiresIn, 0, null, Collections.emptyList());
-            replyThreadId = MessageSender.send(context, reply, threadId, false, null);
-          } else {
-            Log.w("AndroidAutoReplyReceiver", "Sending regular message ");
-            OutgoingTextMessage reply = new OutgoingTextMessage(recipient, responseText.toString(), expiresIn, subscriptionId);
-            replyThreadId = MessageSender.send(context, reply, threadId, false, null);
+          ApplicationDcContext dcContext = DcHelper.getContext(context);
+          if(address.isDcChat()) {
+            dcContext.sendTextMsg(address.getDcChatId(), responseText.toString());
+          }
+          else if(threadId>0) {
+            dcContext.sendTextMsg((int)threadId, responseText.toString());
           }
 
-          List<MarkedMessageInfo> messageIds = DatabaseFactory.getThreadDatabase(context).setRead(replyThreadId, true);
-
           MessageNotifier.updateNotification(context);
-          MarkReadReceiver.process(context, messageIds);
 
           return null;
         }

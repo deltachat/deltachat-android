@@ -8,10 +8,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.sms.MessageSender;
-import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.Rfc5724Uri;
 
 import java.net.URISyntaxException;
@@ -47,14 +46,13 @@ public class QuickResponseService extends IntentService {
         number = URLDecoder.decode(number);
       }
 
-      Address   address        = Address.fromExternal(this, number);
-      Recipient recipient      = Recipient.from(this, address, false);
-      int       subscriptionId = recipient.getDefaultSubscriptionId().or(-1);
-      long      expiresIn      = recipient.getExpireMessages() * 1000L;
+      Address address = Address.fromExternal(this, number);
 
       if (!TextUtils.isEmpty(content)) {
-        MessageSender.send(this, new OutgoingTextMessage(recipient, content, expiresIn, subscriptionId), -1, false, null);
+        ApplicationDcContext dcContext = DcHelper.getContext(this);
+        dcContext.sendTextMsg(address.getDcChatId(), content);
       }
+
     } catch (URISyntaxException e) {
       Toast.makeText(this, R.string.QuickResponseService_problem_sending_message, Toast.LENGTH_LONG).show();
       Log.w(TAG, e);

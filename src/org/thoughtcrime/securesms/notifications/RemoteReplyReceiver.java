@@ -28,16 +28,7 @@ import android.support.v4.app.RemoteInput;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
-import org.thoughtcrime.securesms.mms.OutgoingMediaMessage;
-import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.sms.MessageSender;
-import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Get the response text from the Wearable Device and sends an message as a reply
@@ -64,10 +55,12 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
         @Override
         protected Void doInBackground(Void... params) {
 
-          ApplicationDcContext dcContext = DcHelper.getContext(context);
-          dcContext.sendTextMsg(address.getDcChatId(), responseText.toString());
+          if(address.isDcChat()) {
+            ApplicationDcContext dcContext = DcHelper.getContext(context);
+            dcContext.sendTextMsg(address.getDcChatId(), responseText.toString());
 
-          MessageNotifier.updateNotification(context);
+            MessageNotifier.updateNotification(context);
+          }
 
           return null;
         }
