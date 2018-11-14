@@ -56,7 +56,6 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 
-import org.greenrobot.eventbus.EventBus;
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
@@ -157,7 +156,6 @@ public class ConversationListFragment extends Fragment
 
     updateReminders(true);
     list.getAdapter().notifyDataSetChanged();
-    EventBus.getDefault().register(this);
   }
 
   @Override
@@ -165,7 +163,6 @@ public class ConversationListFragment extends Fragment
     super.onPause();
 
     fab.stopPulse();
-    EventBus.getDefault().unregister(this);
   }
 
   public ConversationListAdapter getListAdapter() {

@@ -24,7 +24,6 @@ import android.support.annotation.Nullable;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
-import org.greenrobot.eventbus.EventBus;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.util.Base64;
 import org.whispersystems.libsignal.IdentityKey;
@@ -123,9 +122,6 @@ public class IdentityDatabase extends Database {
     contentValues.put(FIRST_USE, firstUse ? 1 : 0);
 
     database.replace(TABLE_NAME, null, contentValues);
-
-    EventBus.getDefault().post(new IdentityRecord(address, identityKey, verifiedStatus,
-                                                  firstUse, timestamp, nonBlockingApproval));
   }
 
   public void setApproval(Address address, boolean nonBlockingApproval) {
@@ -148,7 +144,6 @@ public class IdentityDatabase extends Database {
 
     if (updated > 0) {
       Optional<IdentityRecord> record = getIdentity(address);
-      if (record.isPresent()) EventBus.getDefault().post(record.get());
     }
   }
 

@@ -67,7 +67,6 @@ import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
-import org.greenrobot.eventbus.EventBus;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
@@ -312,7 +311,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onStart() {
     super.onStart();
-    EventBus.getDefault().register(this);
   }
 
   @Override
@@ -345,13 +343,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     fragment.setLastSeen(System.currentTimeMillis());
     markLastSeen();
     AudioSlidePlayer.stopAll();
-    EventBus.getDefault().unregister(this);
   }
 
   @Override
   protected void onStop() {
     super.onStop();
-    EventBus.getDefault().unregister(this);
   }
 
   @Override
