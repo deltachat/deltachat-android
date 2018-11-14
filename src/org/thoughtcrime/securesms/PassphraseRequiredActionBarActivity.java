@@ -15,7 +15,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.jobs.PushNotificationReceiveJob;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.KeyCachingService;
-import org.thoughtcrime.securesms.service.MessageRetrievalService;
 
 import java.util.Locale;
 
@@ -57,9 +56,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     super.onResume();
     KeyCachingService.registerPassphraseActivityStarted(this);
 
-    if (!networkAccess.isCensored(this)) MessageRetrievalService.registerActivityStarted(this);
-    else                                 ApplicationContext.getInstance(this).getJobManager().add(new PushNotificationReceiveJob(this));
-
     isVisible = true;
   }
 
@@ -68,8 +64,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     Log.w(TAG, "onPause()");
     super.onPause();
     KeyCachingService.registerPassphraseActivityStopped(this);
-
-    if (!networkAccess.isCensored(this)) MessageRetrievalService.registerActivityStopped(this);
 
     isVisible = false;
   }

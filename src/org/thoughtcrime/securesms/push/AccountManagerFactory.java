@@ -20,24 +20,4 @@ public class AccountManagerFactory {
                                            TextSecurePreferences.getPushServerPassword(context),
                                            BuildConfig.USER_AGENT);
   }
-
-  public static SignalServiceAccountManager createManager(final Context context, String number, String password) {
-    if (new SignalServiceNetworkAccess(context).isCensored(number)) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          try {
-            ProviderInstaller.installIfNeeded(context);
-          } catch (Throwable t) {
-            Log.w(TAG, t);
-          }
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-
-    return new SignalServiceAccountManager(new SignalServiceNetworkAccess(context).getConfiguration(number),
-                                           number, password, BuildConfig.USER_AGENT);
-  }
-
 }

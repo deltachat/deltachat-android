@@ -42,10 +42,10 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.service.KeyCachingService;
-import org.thoughtcrime.securesms.service.MessageRetrievalService;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
@@ -146,7 +146,7 @@ public class MessageNotifier {
 
           if (notification.getId() != SUMMARY_NOTIFICATION_ID &&
               notification.getId() != KeyCachingService.SERVICE_RUNNING_ID          &&
-              notification.getId() != MessageRetrievalService.FOREGROUND_ID         &&
+              notification.getId() != KeepAliveService.FG_NOTIFICATION_ID           &&
               notification.getId() != PENDING_MESSAGES_ID)
           {
             for (NotificationItem item : notificationState.getNotifications()) {

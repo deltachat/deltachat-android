@@ -87,12 +87,5 @@ public class SignalServiceNetworkAccess {
     return this.uncensoredConfiguration;
   }
 
-  public boolean isCensored(Context context) {
-    return getConfiguration(context) != this.uncensoredConfiguration;
-  }
-
-  public boolean isCensored(String number) {
-    return getConfiguration(number) != this.uncensoredConfiguration;
-  }
 
 }
