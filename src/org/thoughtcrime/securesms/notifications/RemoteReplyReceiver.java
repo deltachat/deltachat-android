@@ -25,6 +25,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.RemoteInput;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
@@ -50,7 +52,6 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
   @Override
   public void onReceive(final Context context, Intent intent) {
     if (!REPLY_ACTION.equals(intent.getAction())) return;
-    // todo: rework to DeltaChat code.
     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
 
     if (remoteInput == null) return;
@@ -62,24 +63,11 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
       new AsyncTask<Void, Void, Void>() {
         @Override
         protected Void doInBackground(Void... params) {
-          long threadId;
 
-          Recipient recipient = Recipient.from(context, address, false);
-          int  subscriptionId = recipient.getDefaultSubscriptionId().or(-1);
-          long expiresIn      = recipient.getExpireMessages() * 1000L;
-
-          if (recipient.isGroupRecipient()) {
-            OutgoingMediaMessage reply = new OutgoingMediaMessage(recipient, responseText.toString(), new LinkedList<>(), System.currentTimeMillis(), subscriptionId, expiresIn, 0, null, Collections.emptyList());
-            threadId = MessageSender.send(context, reply, -1, false, null);
-          } else {
-            OutgoingTextMessage reply = new OutgoingTextMessage(recipient, responseText.toString(), expiresIn, subscriptionId);
-            threadId = MessageSender.send(context, reply, -1, false, null);
-          }
-
-          List<MarkedMessageInfo> messageIds = DatabaseFactory.getThreadDatabase(context).setRead(threadId, true);
+          ApplicationDcContext dcContext = DcHelper.getContext(context);
+          dcContext.sendTextMsg(address.getDcChatId(), responseText.toString());
 
           MessageNotifier.updateNotification(context);
-          MarkReadReceiver.process(context, messageIds);
 
           return null;
         }
