@@ -4,15 +4,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 public class BootReceiver extends BroadcastReceiver {
 
   @Override
   public void onReceive(Context context, Intent intent) {
-    if (intent != null && Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
-      Intent messageRetrievalService = new Intent(context, MessageRetrievalService.class);
-      context.startService(messageRetrievalService);
-    }
+    Log.i("DeltaChat", "*** BootReceiver.onReceive()");
+    // there's nothing more to do here as all initialisation stuff is already done in
+    // ApplicationDcContext() which is called before this broadcast is sent.
   }
 
 }

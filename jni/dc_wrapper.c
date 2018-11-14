@@ -238,25 +238,19 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_isConfigured(JNIEnv *env, jobje
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performJobs(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapJobs(JNIEnv *env, jobject obj)
 {
 	dc_perform_imap_jobs(get_dc_context(env, obj));
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_idle(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapIdle(JNIEnv *env, jobject obj)
 {
 	dc_perform_imap_idle(get_dc_context(env, obj));
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptIdle(JNIEnv *env, jobject obj)
-{
-	dc_interrupt_imap_idle(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_fetch(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapFetch(JNIEnv *env, jobject obj)
 {
 	dc_perform_imap_fetch(get_dc_context(env, obj));
 }
@@ -274,9 +268,9 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_performSmtpIdle(JNIEnv *env, jo
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptSmtpIdle(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_maybeNetwork(JNIEnv *env, jobject obj)
 {
-	dc_interrupt_smtp_idle(get_dc_context(env, obj));
+	dc_maybe_network(get_dc_context(env, obj));
 }
 
 

@@ -86,13 +86,12 @@ public class DcContext {
     public native void         configure            ();
     public native void         stopOngoingProcess   ();
     public native int          isConfigured         ();
-    public native void         performJobs          ();
-    public native void         fetch                ();
-    public native void         idle                 ();
-    public native void         interruptIdle        ();
+    public native void         performImapJobs      ();
+    public native void         performImapFetch     ();
+    public native void         performImapIdle      ();
     public native void         performSmtpJobs      ();
     public native void         performSmtpIdle      ();
-    public native void         interruptSmtpIdle    ();
+    public native void         maybeNetwork         ();
     public native void         setConfig            (String key, String value);
     public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
     public native String       getConfig            (String key, String def);

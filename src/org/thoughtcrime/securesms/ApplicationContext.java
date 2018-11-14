@@ -32,20 +32,16 @@ import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.MessagingDatabase;
 import org.thoughtcrime.securesms.dependencies.AxolotlStorageModule;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.dependencies.SignalCommunicationModule;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.jobmanager.dependencies.DependencyInjector;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
-import org.thoughtcrime.securesms.jobmanager.requirements.NetworkRequirementProvider;
 import org.thoughtcrime.securesms.jobs.CreateSignedPreKeyJob;
 import org.thoughtcrime.securesms.jobs.MultiDeviceContactUpdateJob;
 import org.thoughtcrime.securesms.jobs.requirements.MasterSecretRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.SqlCipherMigrationRequirementProvider;
-import org.thoughtcrime.securesms.notifications.MarkReadReceiver;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
@@ -171,7 +167,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
                                 .withDependencyInjector(this)
                                 .withJobSerializer(new JavaJobSerializer())
                                 .withRequirementProviders(new MasterSecretRequirementProvider(this),
-                                                          new NetworkRequirementProvider(this),
                                                           new SqlCipherMigrationRequirementProvider())
                                 .withConsumerThreads(5)
                                 .build();

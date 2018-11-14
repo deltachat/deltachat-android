@@ -19,11 +19,8 @@ import org.thoughtcrime.securesms.jobs.MultiDeviceProfileKeyUpdateJob;
 import org.thoughtcrime.securesms.jobs.MultiDeviceReadReceiptUpdateJob;
 import org.thoughtcrime.securesms.jobs.MultiDeviceReadUpdateJob;
 import org.thoughtcrime.securesms.jobs.MultiDeviceVerifiedUpdateJob;
-import org.thoughtcrime.securesms.jobs.PushGroupSendJob;
 import org.thoughtcrime.securesms.jobs.PushGroupUpdateJob;
-import org.thoughtcrime.securesms.jobs.PushMediaSendJob;
 import org.thoughtcrime.securesms.jobs.PushNotificationReceiveJob;
-import org.thoughtcrime.securesms.jobs.PushTextSendJob;
 import org.thoughtcrime.securesms.jobs.RefreshAttributesJob;
 import org.thoughtcrime.securesms.jobs.RefreshPreKeysJob;
 import org.thoughtcrime.securesms.jobs.RequestGroupInfoJob;
@@ -49,9 +46,6 @@ import dagger.Provides;
 
 @Module(complete = false, injects = {CleanPreKeysJob.class,
                                      CreateSignedPreKeyJob.class,
-                                     PushGroupSendJob.class,
-                                     PushTextSendJob.class,
-                                     PushMediaSendJob.class,
                                      AttachmentDownloadJob.class,
                                      RefreshPreKeysJob.class,
                                      MessageRetrievalService.class,

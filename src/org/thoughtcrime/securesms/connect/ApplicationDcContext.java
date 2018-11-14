@@ -1,23 +1,9 @@
-/*
- * Copyright (C) 2018 Delta Chat contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package org.thoughtcrime.securesms.connect;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -69,6 +55,7 @@ public class ApplicationDcContext extends DcContext {
     public static final int RECIPIENT_TYPE_CONTACT = 1;
 
     public Context context;
+    public volatile boolean isScreenOn = false;
 
     public ApplicationDcContext(Context context) {
         super("android-dev");
@@ -96,6 +83,27 @@ public class ApplicationDcContext extends DcContext {
 
         new ForegroundDetector(ApplicationContext.getInstance(context));
         startThreads();
+
+        TimerReceiver.scheduleNextAlarm(context);
+
+        BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
+        context.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
+        IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+        BroadcastReceiver screenReceiver = new ScreenReceiver();
+        context.registerReceiver(screenReceiver, filter);
+
+        try {
+            PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+            isScreenOn = pm.isScreenOn();
+        } catch (Exception e) {
+
+        }
+
+        if( !isScreenOn ) {
+            context.startService(new Intent(context, KeepAliveService.class));
+        }
     }
 
     public File getImexDir()
@@ -259,28 +267,25 @@ public class ApplicationDcContext extends DcContext {
                     imapThreadStartedVal = false;
                 }
 
-                imapThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // raise the starting condition
-                        // after acquiring a wakelock so that the process is not terminated.
-                        // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
+                imapThread = new Thread(() -> {
+                    // raise the starting condition
+                    // after acquiring a wakelock so that the process is not terminated.
+                    // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
+                    imapWakeLock.acquire();
+                    synchronized (imapThreadStartedCond) {
+                        imapThreadStartedVal = true;
+                        imapThreadStartedCond.notifyAll();
+                    }
+
+                    Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
+
+
+                    while (true) {
                         imapWakeLock.acquire();
-                        synchronized (imapThreadStartedCond) {
-                            imapThreadStartedVal = true;
-                            imapThreadStartedCond.notifyAll();
-                        }
-
-                        Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
-
-
-                        while (true) {
-                            imapWakeLock.acquire();
-                            performJobs();
-                            fetch();
-                            imapWakeLock.release();
-                            idle();
-                        }
+                        performImapJobs();
+                        performImapFetch();
+                        imapWakeLock.release();
+                        performImapIdle();
                     }
                 }, "imapThread");
                 imapThread.setPriority(Thread.NORM_PRIORITY);
@@ -293,24 +298,21 @@ public class ApplicationDcContext extends DcContext {
                     smtpThreadStartedVal = false;
                 }
 
-                smtpThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+                smtpThread = new Thread(() -> {
+                    smtpWakeLock.acquire();
+                    synchronized (smtpThreadStartedCond) {
+                        smtpThreadStartedVal = true;
+                        smtpThreadStartedCond.notifyAll();
+                    }
+
+                    Log.i("DeltaChat", "###################### SMTP-Thread started. ######################");
+
+
+                    while (true) {
                         smtpWakeLock.acquire();
-                        synchronized (smtpThreadStartedCond) {
-                            smtpThreadStartedVal = true;
-                            smtpThreadStartedCond.notifyAll();
-                        }
-
-                        Log.i("DeltaChat", "###################### SMTP-Thread started. ######################");
-
-
-                        while (true) {
-                            smtpWakeLock.acquire();
-                            performSmtpJobs();
-                            smtpWakeLock.release();
-                            performSmtpIdle();
-                        }
+                        performSmtpJobs();
+                        smtpWakeLock.release();
+                        performSmtpIdle();
                     }
                 }, "smtpThread");
                 smtpThread.setPriority(Thread.MAX_PRIORITY);

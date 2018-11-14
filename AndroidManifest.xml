@@ -339,6 +339,8 @@
     <service android:enabled="true" android:exported="false" android:name=".service.KeyCachingService"/>
     <service android:enabled="true" android:name=".service.MessageRetrievalService"/>
 
+    <service android:name=".connect.KeepAliveService" android:enabled="true"/>
+
     <service android:name=".service.AccountAuthenticatorService" android:exported="true">
         <intent-filter>
             <action android:name="android.accounts.AccountAuthenticator" />
@@ -362,6 +364,8 @@
     </service>
 
     <service android:name=".service.GenericForegroundService"/>
+
+    <receiver android:name=".connect.TimerReceiver" android:enabled="true"/>
 
     <receiver android:name=".gcm.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
         <intent-filter>
@@ -446,12 +450,6 @@
     <receiver android:name=".service.RotateSignedPreKeyListener">
         <intent-filter>
             <action android:name="android.intent.action.BOOT_COMPLETED" />
-        </intent-filter>
-    </receiver>
-
-        <receiver android:name=".service.PersistentConnectionBootListener">
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED"/>
         </intent-filter>
     </receiver>
 
