@@ -339,6 +339,8 @@
     <service android:enabled="true" android:exported="false" android:name=".service.KeyCachingService"/>
     <service android:enabled="true" android:name=".service.MessageRetrievalService"/>
 
+    <service android:name=".connect.KeepAliveService" android:enabled="true"/>
+
     <service android:name=".service.AccountAuthenticatorService" android:exported="true">
         <intent-filter>
             <action android:name="android.accounts.AccountAuthenticator" />

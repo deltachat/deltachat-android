@@ -1534,5 +1534,6 @@
     <string name="conversation__menu_unarchive_chat">Unarchive chat</string>
     <string name="conversation__menu_delete_chat">Delete chat</string>
     <string name="conversation__no_messages">No messages.</string>
+    <string name="permanent_notification_subtitle">Tap to open.</string>
 
 </resources>
