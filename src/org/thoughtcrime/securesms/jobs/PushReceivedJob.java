@@ -41,15 +41,6 @@ public abstract class PushReceivedJob extends ContextJob {
   }
 
   private void handleMessage(SignalServiceEnvelope envelope, Address source) {
-    Recipient  recipients = Recipient.from(context, source, false);
-    JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
-
-    if (!recipients.isBlocked()) {
-      long messageId = DatabaseFactory.getPushDatabase(context).insert(envelope);
-      jobManager.add(new PushDecryptJob(context, messageId));
-    } else {
-      Log.w(TAG, "*** Received blocked push message, ignoring...");
-    }
   }
 
   private void handleReceipt(SignalServiceEnvelope envelope) {

@@ -41,7 +41,6 @@ import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.jobs.AttachmentDownloadJob;
 import org.thoughtcrime.securesms.jobs.CreateSignedPreKeyJob;
 import org.thoughtcrime.securesms.jobs.DirectoryRefreshJob;
-import org.thoughtcrime.securesms.jobs.PushDecryptJob;
 import org.thoughtcrime.securesms.jobs.RefreshAttributesJob;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.service.KeyCachingService;
@@ -333,22 +332,6 @@ public class DatabaseUpgradeActivity extends BaseActivity {
     }
 
     private void scheduleMessagesInPushDatabase(Context context) {
-      PushDatabase pushDatabase = DatabaseFactory.getPushDatabase(context);
-      Cursor       pushReader   = null;
-
-      try {
-        pushReader = pushDatabase.getPending();
-
-        while (pushReader != null && pushReader.moveToNext()) {
-          ApplicationContext.getInstance(getApplicationContext())
-                            .getJobManager()
-                            .add(new PushDecryptJob(getApplicationContext(),
-                                                    pushReader.getLong(pushReader.getColumnIndexOrThrow(PushDatabase.ID))));
-        }
-      } finally {
-        if (pushReader != null)
-          pushReader.close();
-      }
     }
 
     @Override

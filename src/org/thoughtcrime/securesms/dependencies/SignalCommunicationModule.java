@@ -32,7 +32,6 @@ import org.thoughtcrime.securesms.preferences.AppProtectionPreferenceFragment;
 import org.thoughtcrime.securesms.push.SecurityEventListener;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.MessageRetrievalService;
-import org.thoughtcrime.securesms.service.WebRtcCallService;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.whispersystems.libsignal.util.guava.Optional;
 import org.whispersystems.signalservice.api.SignalServiceAccountManager;
@@ -59,7 +58,6 @@ import dagger.Provides;
                                      PushGroupUpdateJob.class,
                                      AvatarDownloadJob.class,
                                      RotateSignedPreKeyJob.class,
-                                     WebRtcCallService.class,
                                      RetrieveProfileJob.class,
                                      MultiDeviceVerifiedUpdateJob.class,
                                      CreateProfileActivity.class,
