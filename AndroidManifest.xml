@@ -453,12 +453,6 @@
         </intent-filter>
     </receiver>
 
-        <receiver android:name=".service.PersistentConnectionBootListener">
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED"/>
-        </intent-filter>
-    </receiver>
-
     <receiver android:name=".notifications.MessageNotifier$ReminderReceiver">
         <intent-filter>
             <action android:name="org.thoughtcrime.securesms.MessageNotifier.REMINDER_ACTION"/>
