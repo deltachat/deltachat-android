@@ -41,10 +41,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.color.MaterialColors;
 import org.thoughtcrime.securesms.components.ThreadPhotoRailView;
-import org.thoughtcrime.securesms.crypto.IdentityKeyParcelable;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.IdentityDatabase;
 import org.thoughtcrime.securesms.database.IdentityDatabase.IdentityRecord;
 import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.RecipientDatabase.VibrateState;
@@ -62,7 +60,6 @@ import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.IdentityUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -367,25 +364,26 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         if (recipient.isBlocked()) blockPreference.setTitle(R.string.RecipientPreferenceActivity_unblock);
         else                       blockPreference.setTitle(R.string.RecipientPreferenceActivity_block);
 
-        IdentityUtil.getRemoteIdentityKey(getActivity(), recipient).addListener(new ListenableFuture.Listener<Optional<IdentityRecord>>() {
-          @Override
-          public void onSuccess(Optional<IdentityRecord> result) {
-            if (result.isPresent()) {
-              if (identityPreference != null) identityPreference.setOnPreferenceClickListener(new IdentityClickedListener(result.get()));
-              if (identityPreference != null) identityPreference.setEnabled(true);
-            } else if (canHaveSafetyNumber) {
-              if (identityPreference != null) identityPreference.setSummary(R.string.RecipientPreferenceActivity_available_once_a_message_has_been_sent_or_received);
-              if (identityPreference != null) identityPreference.setEnabled(false);
-            } else {
-              if (identityPreference != null) getPreferenceScreen().removePreference(identityPreference);
-            }
-          }
-
-          @Override
-          public void onFailure(ExecutionException e) {
-            if (identityPreference != null) getPreferenceScreen().removePreference(identityPreference);
-          }
-        });
+//        IdentityUtil.getRemoteIdentityKey(getActivity(), recipient).addListener(new ListenableFuture.Listener<Optional<IdentityRecord>>() {
+//          @Override
+//          public void onSuccess(Optional<IdentityRecord> result) {
+//            if (result.isPresent()) {
+//              if (identityPreference != null) identityPreference.setOnPreferenceClickListener(new IdentityClickedListener(result.get()));
+//              if (identityPreference != null) identityPreference.setEnabled(true);
+//            } else if (canHaveSafetyNumber) {
+//              if (identityPreference != null) identityPreference.setSummary(R.string.RecipientPreferenceActivity_available_once_a_message_has_been_sent_or_received);
+//              if (identityPreference != null) identityPreference.setEnabled(false);
+//            } else {
+//              if (identityPreference != null) getPreferenceScreen().removePreference(identityPreference);
+//            }
+//          }
+//
+//          @Override
+//          public void onFailure(ExecutionException e) {
+//            if (identityPreference != null) getPreferenceScreen().removePreference(identityPreference);
+//          }
+//        });
+        getPreferenceScreen().removePreference(identityPreference);
       }
     }
 
