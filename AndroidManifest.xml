@@ -359,13 +359,6 @@
 
     <receiver android:name=".connect.TimerReceiver" android:enabled="true"/>
 
-    <receiver android:name=".gcm.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
-        <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <category android:name="org.thoughtcrime.securesms" />
-        </intent-filter>
-    </receiver>
-
     <receiver android:name=".notifications.MarkReadReceiver"
               android:enabled="true"
               android:exported="false">

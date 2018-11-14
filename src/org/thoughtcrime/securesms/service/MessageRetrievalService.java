@@ -11,7 +11,6 @@ import android.util.Log;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
-import org.thoughtcrime.securesms.gcm.GcmBroadcastReceiver;
 import org.thoughtcrime.securesms.jobmanager.requirements.NetworkRequirement;
 import org.thoughtcrime.securesms.jobmanager.requirements.RequirementListener;
 import org.thoughtcrime.securesms.jobs.PushContentReceiveJob;
@@ -47,7 +46,6 @@ public class MessageRetrievalService extends Service implements InjectableType, 
 
   private int                    activeActivities = 0;
   private List<Intent>           pushPending      = new LinkedList<>();
-  private MessageRetrievalThread retrievalThread  = null;
 
   public static SignalServiceMessagePipe pipe = null;
 
@@ -57,9 +55,6 @@ public class MessageRetrievalService extends Service implements InjectableType, 
     ApplicationContext.getInstance(this).injectDependencies(this);
 
     networkRequirement         = new NetworkRequirement(this);
-
-    retrievalThread = new MessageRetrievalThread();
-    retrievalThread.start();
 
     setForegroundIfNecessary();
   }
@@ -77,10 +72,6 @@ public class MessageRetrievalService extends Service implements InjectableType, 
   @Override
   public void onDestroy() {
     super.onDestroy();
-
-    if (retrievalThread != null) {
-      retrievalThread.stopThread();
-    }
 
     sendBroadcast(new Intent("org.thoughtcrime.securesms.RESTART"));
   }
@@ -126,42 +117,6 @@ public class MessageRetrievalService extends Service implements InjectableType, 
     notifyAll();
   }
 
-  private synchronized void decrementPushReceived() {
-    if (!pushPending.isEmpty()) {
-      Intent intent = pushPending.remove(0);
-      GcmBroadcastReceiver.completeWakefulIntent(intent);
-      notifyAll();
-    }
-  }
-
-  private synchronized boolean isConnectionNecessary() {
-    boolean isGcmDisabled = TextSecurePreferences.isGcmDisabled(this);
-
-    Log.w(TAG, String.format("Network requirement: %s, active activities: %s, push pending: %s, gcm disabled: %b",
-                             networkRequirement.isPresent(), activeActivities, pushPending.size(), isGcmDisabled));
-
-    return TextSecurePreferences.isPushRegistered(this)                       &&
-           TextSecurePreferences.isWebsocketRegistered(this)                  &&
-           (activeActivities > 0 || !pushPending.isEmpty() || isGcmDisabled)  &&
-           networkRequirement.isPresent();
-  }
-
-  private synchronized void waitForConnectionNecessary() {
-    try {
-      while (!isConnectionNecessary()) wait();
-    } catch (InterruptedException e) {
-      throw new AssertionError(e);
-    }
-  }
-
-  private void shutdown(SignalServiceMessagePipe pipe) {
-    try {
-      pipe.shutdown();
-    } catch (Throwable t) {
-      Log.w(TAG, t);
-    }
-  }
-
   public static void registerActivityStarted(Context activity) {
     Intent intent = new Intent(activity, MessageRetrievalService.class);
     intent.setAction(MessageRetrievalService.ACTION_ACTIVITY_STARTED);
@@ -178,66 +133,4 @@ public class MessageRetrievalService extends Service implements InjectableType, 
     return pipe;
   }
 
-  private class MessageRetrievalThread extends Thread implements Thread.UncaughtExceptionHandler {
-
-    private AtomicBoolean stopThread = new AtomicBoolean(false);
-
-    MessageRetrievalThread() {
-      super("MessageRetrievalService");
-      setUncaughtExceptionHandler(this);
-    }
-
-    @Override
-    public void run() {
-      while (!stopThread.get()) {
-        Log.w(TAG, "Waiting for websocket state change....");
-        waitForConnectionNecessary();
-
-        Log.w(TAG, "Making websocket connection....");
-        pipe = receiver.createMessagePipe();
-
-        SignalServiceMessagePipe localPipe = pipe;
-
-        try {
-          while (isConnectionNecessary() && !stopThread.get()) {
-            try {
-              Log.w(TAG, "Reading message...");
-              localPipe.read(REQUEST_TIMEOUT_MINUTES, TimeUnit.MINUTES,
-                             envelope -> {
-                               Log.w(TAG, "Retrieved envelope! " + envelope.getSource());
-
-                               PushContentReceiveJob receiveJob = new PushContentReceiveJob(MessageRetrievalService.this);
-                               receiveJob.handle(envelope);
-
-                               decrementPushReceived();
-                             });
-            } catch (TimeoutException e) {
-              Log.w(TAG, "Application level read timeout...");
-            } catch (InvalidVersionException e) {
-              Log.w(TAG, e);
-            }
-          }
-        } catch (Throwable e) {
-          Log.w(TAG, e);
-        } finally {
-          Log.w(TAG, "Shutting down pipe...");
-          shutdown(localPipe);
-        }
-
-        Log.w(TAG, "Looping...");
-      }
-
-      Log.w(TAG, "Exiting...");
-    }
-
-    private void stopThread() {
-      stopThread.set(true);
-    }
-
-    @Override
-    public void uncaughtException(Thread t, Throwable e) {
-      Log.w(TAG, "*** Uncaught exception!");
-      Log.w(TAG, e);
-    }
-  }
 }
