@@ -49,7 +49,6 @@ import org.thoughtcrime.securesms.service.MessageRetrievalService;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.thoughtcrime.securesms.webrtc.CallNotificationBuilder;
 import org.whispersystems.signalservice.internal.util.Util;
 
 import java.util.HashSet;
@@ -126,9 +125,7 @@ public class MessageNotifier {
         StatusBarNotification[] activeNotifications = notifications.getActiveNotifications();
 
         for (StatusBarNotification activeNotification : activeNotifications) {
-          if (activeNotification.getId() != CallNotificationBuilder.WEBRTC_NOTIFICATION) {
-            notifications.cancel(activeNotification.getId());
-          }
+          notifications.cancel(activeNotification.getId());
         }
       } catch (Throwable e) {
         // XXX Appears to be a ROM bug, see #6043
@@ -148,7 +145,6 @@ public class MessageNotifier {
           boolean validNotification = false;
 
           if (notification.getId() != SUMMARY_NOTIFICATION_ID &&
-              notification.getId() != CallNotificationBuilder.WEBRTC_NOTIFICATION   &&
               notification.getId() != KeyCachingService.SERVICE_RUNNING_ID          &&
               notification.getId() != MessageRetrievalService.FOREGROUND_ID         &&
               notification.getId() != PENDING_MESSAGES_ID)
