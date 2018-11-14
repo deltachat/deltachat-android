@@ -340,14 +340,6 @@
         <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator" />
     </service>
 
-    <service android:name=".service.ContactsSyncAdapterService" android:exported="true">
-        <intent-filter>
-            <action android:name="android.content.SyncAdapter"/>
-        </intent-filter>
-        <meta-data android:name="android.content.SyncAdapter" android:resource="@xml/syncadapter" />
-        <meta-data android:name="android.provider.CONTACTS_STRUCTURE" android:resource="@xml/contactsformat" />
-    </service>
-
     <service android:name=".service.DirectShareService"
              android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE">
         <intent-filter>
@@ -423,12 +415,6 @@
         <intent-filter>
             <action android:name="android.intent.action.BOOT_COMPLETED"/>
             <action android:name="org.thoughtcrime.securesms.RESTART"/>
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".service.DirectoryRefreshListener">
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
         </intent-filter>
     </receiver>
 

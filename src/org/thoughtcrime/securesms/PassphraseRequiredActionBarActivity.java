@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.KeyCachingService;
 
 import java.util.Locale;
@@ -25,14 +24,12 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   private static final int STATE_NORMAL          = 0;
   private static final int STATE_NEEDS_CONFIGURE = 1;
 
-  private SignalServiceNetworkAccess networkAccess;
   private BroadcastReceiver          clearKeyReceiver;
   private boolean                    isVisible;
 
   @Override
   protected final void onCreate(Bundle savedInstanceState) {
     Log.w(TAG, "onCreate(" + savedInstanceState + ")");
-    this.networkAccess = new SignalServiceNetworkAccess(this);
     onPreCreate();
 
     final boolean locked = KeyCachingService.isLocked(this);
