@@ -34,19 +34,14 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.dependencies.AxolotlStorageModule;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
-import org.thoughtcrime.securesms.dependencies.SignalCommunicationModule;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.jobmanager.dependencies.DependencyInjector;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
-import org.thoughtcrime.securesms.jobs.CreateSignedPreKeyJob;
-import org.thoughtcrime.securesms.jobs.MultiDeviceContactUpdateJob;
 import org.thoughtcrime.securesms.jobs.requirements.MasterSecretRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.SqlCipherMigrationRequirementProvider;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
-import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.webrtc.PeerConnectionFactory;
 import org.webrtc.PeerConnectionFactory.InitializationOptions;
 import org.webrtc.voiceengine.WebRtcAudioManager;
@@ -55,7 +50,6 @@ import org.whispersystems.libsignal.logging.SignalProtocolLoggerProvider;
 import org.whispersystems.libsignal.util.AndroidSignalProtocolLogger;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import dagger.ObjectGraph;
@@ -107,7 +101,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   public void onStart(@NonNull LifecycleOwner owner) {
     isAppVisible = true;
     Log.i(TAG, "App is now visible.");
-    executePendingContactSync();
   }
 
   @Override
@@ -173,14 +166,7 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   }
 
   private void initializeDependencyInjection() {
-    this.objectGraph = ObjectGraph.create(new SignalCommunicationModule(this, new SignalServiceNetworkAccess(this)),
-                                          new AxolotlStorageModule(this));
-  }
-
-  private void initializeSignedPreKeyCheck() {
-    if (!TextSecurePreferences.isSignedPreKeyRegistered(this)) {
-      jobManager.add(new CreateSignedPreKeyJob(this));
-    }
+    this.objectGraph = ObjectGraph.create(new AxolotlStorageModule(this));
   }
 
   private void initializeExpiringMessageManager() {
@@ -188,7 +174,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   }
 
   private void initializePeriodicTasks() {
-    //RotateSignedPreKeyListener.schedule(this); -- no key rotation in the ui part
     //DirectoryRefreshListener.schedule(this); -- directory in this sense seems to be the address book
     //LocalBackupListener.schedule(this); -- disabled for now, there is no automatic backup; maybe the implicit IMAP backup is sufficient
 
@@ -229,12 +214,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
                                                             .createInitializationOptions());
     } catch (UnsatisfiedLinkError e) {
       Log.w(TAG, e);
-    }
-  }
-
-  private void executePendingContactSync() {
-    if (TextSecurePreferences.needsFullContactSync(this)) {
-      ApplicationContext.getInstance(this).getJobManager().add(new MultiDeviceContactUpdateJob(this, true));
     }
   }
 }

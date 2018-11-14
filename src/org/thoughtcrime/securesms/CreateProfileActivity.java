@@ -42,7 +42,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.crypto.ProfileKeyUtil;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
-import org.thoughtcrime.securesms.jobs.MultiDeviceProfileKeyUpdateJob;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
@@ -458,7 +457,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Inje
           return false;
         }
 
-        ApplicationContext.getInstance(context).getJobManager().add(new MultiDeviceProfileKeyUpdateJob(context));
+//        ApplicationContext.getInstance(context).getJobManager().add(new MultiDeviceProfileKeyUpdateJob(context));
 
         return true;
       }

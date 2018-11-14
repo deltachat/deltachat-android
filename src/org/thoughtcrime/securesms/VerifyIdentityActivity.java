@@ -68,7 +68,6 @@ import org.thoughtcrime.securesms.crypto.IdentityKeyUtil;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.IdentityDatabase.VerifiedStatus;
-import org.thoughtcrime.securesms.jobs.MultiDeviceVerifiedUpdateJob;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.QrCode;
 import org.thoughtcrime.securesms.qr.ScanListener;
@@ -605,13 +604,13 @@ public class VerifyIdentityActivity extends PassphraseRequiredActionBarActivity 
                                           VerifiedStatus.DEFAULT);
             }
 
-            ApplicationContext.getInstance(getActivity())
-                              .getJobManager()
-                              .add(new MultiDeviceVerifiedUpdateJob(getActivity(),
-                                                                    recipient.getAddress(),
-                                                                    remoteIdentity,
-                                                                    isChecked ? VerifiedStatus.VERIFIED :
-                                                                                VerifiedStatus.DEFAULT));
+//            ApplicationContext.getInstance(getActivity())
+//                              .getJobManager()
+//                              .add(new MultiDeviceVerifiedUpdateJob(getActivity(),
+//                                                                    recipient.getAddress(),
+//                                                                    remoteIdentity,
+//                                                                    isChecked ? VerifiedStatus.VERIFIED :
+//                                                                                VerifiedStatus.DEFAULT));
 
             IdentityUtil.markIdentityVerified(getActivity(), recipient, isChecked, false);
           }

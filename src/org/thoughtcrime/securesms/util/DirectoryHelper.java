@@ -20,14 +20,12 @@ import com.annimon.stream.Stream;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
-import org.thoughtcrime.securesms.contacts.ContactsDatabase;
 import org.thoughtcrime.securesms.crypto.SessionUtil;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.MessagingDatabase.InsertResult;
 import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.RecipientDatabase.RegisteredState;
-import org.thoughtcrime.securesms.jobs.MultiDeviceContactUpdateJob;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.push.AccountManagerFactory;
@@ -56,12 +54,6 @@ public class DirectoryHelper {
     if (!Permissions.hasAll(context, Manifest.permission.WRITE_CONTACTS)) return;
 
     List<Address> newlyActiveUsers = refreshDirectory(context, AccountManagerFactory.createManager(context));
-
-    if (TextSecurePreferences.isMultiDevice(context)) {
-      ApplicationContext.getInstance(context)
-                        .getJobManager()
-                        .add(new MultiDeviceContactUpdateJob(context));
-    }
 
     if (notifyOfNewUsers) notifyNewUsers(context, newlyActiveUsers);
   }
@@ -136,10 +128,6 @@ public class DirectoryHelper {
 
       if (Permissions.hasAll(context, Manifest.permission.WRITE_CONTACTS)) {
         updateContactsDatabase(context, Util.asList(recipient.getAddress()), false);
-      }
-
-      if (!activeUser && TextSecurePreferences.isMultiDevice(context)) {
-        ApplicationContext.getInstance(context).getJobManager().add(new MultiDeviceContactUpdateJob(context));
       }
 
       if (!activeUser && systemContact && !TextSecurePreferences.getNeedsSqlCipherMigration(context)) {

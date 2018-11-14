@@ -122,7 +122,6 @@ import org.thoughtcrime.securesms.mms.QuoteId;
 import org.thoughtcrime.securesms.mms.QuoteModel;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideDeck;
-import org.thoughtcrime.securesms.notifications.MarkReadReceiver;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.GroupShareProfileView;
@@ -1123,7 +1122,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         dcContext.markseenMsgs(messageIds);
 
         MessageNotifier.updateNotification(context, threadId, false);
-        MarkReadReceiver.process(context, messageIds);
+//        MarkReadReceiver.process(context, messageIds);
 
         return null;
       }

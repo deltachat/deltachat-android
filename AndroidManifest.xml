@@ -329,8 +329,7 @@
         android:theme="@style/TextSecure.LightTheme"
         android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-        <service android:enabled="true" android:exported="false" android:name=".service.KeyCachingService"/>
-    <service android:enabled="true" android:name=".service.MessageRetrievalService"/>
+    <service android:enabled="true" android:exported="false" android:name=".service.KeyCachingService"/>
 
     <service android:name=".connect.KeepAliveService" android:enabled="true"/>
 
@@ -440,13 +439,7 @@
         </intent-filter>
     </receiver>
 
-    <receiver android:name=".service.RotateSignedPreKeyListener">
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.MessageNotifier$ReminderReceiver">
+        <receiver android:name=".notifications.MessageNotifier$ReminderReceiver">
         <intent-filter>
             <action android:name="org.thoughtcrime.securesms.MessageNotifier.REMINDER_ACTION"/>
         </intent-filter>
