@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 
 import com.b44t.messenger.DcLot;
 
-import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 

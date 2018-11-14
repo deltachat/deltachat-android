@@ -71,11 +71,4 @@ public class SignalGlideModule extends AppGlideModule {
     registry.append(GiphyPaddedUrl.class, InputStream.class, new GiphyPaddedUrlLoader.Factory());
     registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory());
   }
-
-  public static class NoopDiskCacheFactory implements DiskCache.Factory {
-    @Override
-    public DiskCache build() {
-      return new DiskCacheAdapter();
-    }
-  }
 }

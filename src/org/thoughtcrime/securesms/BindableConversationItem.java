@@ -8,11 +8,8 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.contactshare.Contact;
-import org.thoughtcrime.securesms.database.model.MessageRecord;
-import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.util.List;
 import java.util.Locale;

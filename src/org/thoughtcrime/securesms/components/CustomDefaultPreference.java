@@ -24,10 +24,6 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.CustomDefaultPreference.CustomDefaultPreferenceDialogFragmentCompat.CustomPreferenceValidator;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
-
 public class CustomDefaultPreference extends DialogPreference {
 
   private static final String TAG = CustomDefaultPreference.class.getSimpleName();
@@ -54,11 +50,6 @@ public class CustomDefaultPreference extends DialogPreference {
 
     setPersistent(false);
     setDialogLayoutResource(R.layout.custom_default_preference_dialog);
-  }
-
-  public CustomDefaultPreference setValidator(CustomPreferenceValidator validator) {
-    this.validator = validator;
-    return this;
   }
 
   public CustomDefaultPreference setDefaultValue(String defaultValue) {
@@ -189,46 +180,6 @@ public class CustomDefaultPreference extends DialogPreference {
         if (spinner.getSelectedItemPosition() == 1) {
           Button positiveButton = ((AlertDialog)getDialog()).getButton(AlertDialog.BUTTON_POSITIVE);
           positiveButton.setEnabled(preference.validator.isValid(s.toString()));
-        }
-      }
-    }
-
-    public static class UriValidator implements CustomPreferenceValidator {
-      @Override
-      public boolean isValid(String value) {
-        if (TextUtils.isEmpty(value)) return true;
-
-        try {
-          new URI(value);
-          return true;
-        } catch (URISyntaxException mue) {
-          return false;
-        }
-      }
-    }
-
-    public static class HostnameValidator implements CustomPreferenceValidator {
-      @Override
-      public boolean isValid(String value) {
-        if (TextUtils.isEmpty(value)) return true;
-
-        try {
-          URI uri = new URI(null, value, null, null);
-          return true;
-        } catch (URISyntaxException mue) {
-          return false;
-        }
-      }
-    }
-
-    public static class PortValidator implements CustomPreferenceValidator {
-      @Override
-      public boolean isValid(String value) {
-        try {
-          Integer.parseInt(value);
-          return true;
-        } catch (NumberFormatException e) {
-          return false;
         }
       }
     }
