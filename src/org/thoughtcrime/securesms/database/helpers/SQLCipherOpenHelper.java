@@ -30,7 +30,6 @@ import org.thoughtcrime.securesms.database.SessionDatabase;
 import org.thoughtcrime.securesms.database.SignedPreKeyDatabase;
 import org.thoughtcrime.securesms.database.SmsDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
-import org.thoughtcrime.securesms.jobs.RefreshPreKeysJob;
 import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
@@ -115,7 +114,7 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
       else                      TextSecurePreferences.setNeedsSqlCipherMigration(context, true);
 
       if (!PreKeyMigrationHelper.migratePreKeys(context, db)) {
-        ApplicationContext.getInstance(context).getJobManager().add(new RefreshPreKeysJob(context));
+//        ApplicationContext.getInstance(context).getJobManager().add(new RefreshPreKeysJob(context));
       }
 
       SessionStoreMigrationHelper.migrateSessions(context, db);
@@ -141,7 +140,7 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE one_time_prekeys (_id INTEGER PRIMARY KEY, key_id INTEGER UNIQUE, public_key TEXT NOT NULL, private_key TEXT NOT NULL)");
 
         if (!PreKeyMigrationHelper.migratePreKeys(context, db)) {
-          ApplicationContext.getInstance(context).getJobManager().add(new RefreshPreKeysJob(context));
+//          ApplicationContext.getInstance(context).getJobManager().add(new RefreshPreKeysJob(context));
         }
       }
 

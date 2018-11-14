@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.jobs;
 import android.content.Context;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.jobmanager.JobParameters;
 import org.thoughtcrime.securesms.jobmanager.requirements.NetworkRequirement;
 import org.whispersystems.signalservice.api.SignalServiceMessageReceiver;
@@ -15,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-public class PushNotificationReceiveJob extends PushReceivedJob implements InjectableType {
+public class PushNotificationReceiveJob extends PushReceivedJob {
 
   private static final String TAG = PushNotificationReceiveJob.class.getSimpleName();
 

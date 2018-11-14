@@ -20,14 +20,13 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.SwitchPreferenceCompat;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 import java.util.concurrent.TimeUnit;
 
 import mobi.upod.timedurationpicker.TimeDurationPickerDialog;
 
-public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment implements InjectableType {
+public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment {
 
     private static final String PREFERENCE_CATEGORY_BLOCKED = "preference_category_blocked";
 

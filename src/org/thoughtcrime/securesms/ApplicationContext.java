@@ -32,8 +32,6 @@ import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
-import org.thoughtcrime.securesms.dependencies.AxolotlStorageModule;
-import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.jobmanager.dependencies.DependencyInjector;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
@@ -52,8 +50,6 @@ import org.whispersystems.libsignal.util.AndroidSignalProtocolLogger;
 import java.util.HashSet;
 import java.util.Set;
 
-import dagger.ObjectGraph;
-
 /**
  * Will be called once when the TextSecure process is created.
  *
@@ -68,7 +64,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
 
   private ExpiringMessageManager expiringMessageManager;
   private JobManager             jobManager;
-  private ObjectGraph            objectGraph;
 
   private volatile boolean isAppVisible;
 
@@ -87,7 +82,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
 
     initializeRandomNumberFix();
     initializeLogging();
-    initializeDependencyInjection();
     initializeJobManager();
     initializeExpiringMessageManager();
     //initializeSignedPreKeyCheck(); -- keys are generated in the core, however, not sure if this is needed for the lock screen
@@ -112,9 +106,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
 
   @Override
   public void injectDependencies(Object object) {
-    if (object instanceof InjectableType) {
-      objectGraph.inject(object);
-    }
   }
 
   public JobManager getJobManager() {
@@ -163,10 +154,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
                                                           new SqlCipherMigrationRequirementProvider())
                                 .withConsumerThreads(5)
                                 .build();
-  }
-
-  private void initializeDependencyInjection() {
-    this.objectGraph = ObjectGraph.create(new AxolotlStorageModule(this));
   }
 
   private void initializeExpiringMessageManager() {
