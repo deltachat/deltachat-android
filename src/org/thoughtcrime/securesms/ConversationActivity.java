@@ -259,7 +259,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           @Override
           public void onSuccess(Boolean result) {
             if (result != null && result) {
-              Log.i(TAG, "Finished loading draft");
               Util.runOnMain(() -> {
                 if (fragment != null && fragment.isResumed()) {
                   fragment.moveToLastSeen();

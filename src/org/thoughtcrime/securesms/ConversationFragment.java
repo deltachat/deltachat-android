@@ -218,7 +218,6 @@ public class ConversationFragment extends Fragment
 
   public void moveToLastSeen() {
     if (lastSeen <= 0) {
-      Log.i(TAG, "No need to move to last seen.");
       return;
     }
 

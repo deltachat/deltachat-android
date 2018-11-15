@@ -91,13 +91,11 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   @Override
   public void onStart(@NonNull LifecycleOwner owner) {
     isAppVisible = true;
-    Log.i(TAG, "App is now visible.");
   }
 
   @Override
   public void onStop(@NonNull LifecycleOwner owner) {
     isAppVisible = false;
-    Log.i(TAG, "App is no longer visible.");
     ScreenLockUtil.shouldLockApp = true;
   }
 
