@@ -12,6 +12,7 @@ public class DcContext {
     public final static int DC_EVENT_INFO                        = 100;
     public final static int DC_EVENT_WARNING                     = 300;
     public final static int DC_EVENT_ERROR                       = 400;
+    public final static int DC_EVENT_ERROR_NETWORK               = 401;
     public final static int DC_EVENT_MSGS_CHANGED                = 2000;
     public final static int DC_EVENT_INCOMING_MSG                = 2005;
     public final static int DC_EVENT_MSG_DELIVERED               = 2010;

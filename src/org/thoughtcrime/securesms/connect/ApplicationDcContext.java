@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -349,6 +351,23 @@ public class ApplicationDcContext extends DcContext {
 
 
     /***********************************************************************************************
+     * Tools
+     **********************************************************************************************/
+
+    public boolean isNetworkConnected() {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            if (netInfo != null && netInfo.isConnected()) {
+                return true;
+            }
+
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    /***********************************************************************************************
      * Event Handling
      **********************************************************************************************/
 
@@ -383,6 +402,35 @@ public class ApplicationDcContext extends DcContext {
         }
     }
 
+    private void handleError(int event, boolean popUp, String string)
+    {
+        // log error
+        boolean showAsToast;
+        Log.e("DeltaChat", string);
+        synchronized (lastErrorLock) {
+            lastErrorString = string;
+            showAsToast = showNextErrorAsToast;
+            showNextErrorAsToast = true;
+        }
+
+        // show error to user
+        Util.runOnMain(() -> {
+            if (popUp && showAsToast) {
+                String toastString = string;
+
+                if(event==DC_EVENT_ERROR_NETWORK) {
+                    if(!isNetworkConnected()) {
+                        toastString = context.getString(R.string.error_no_network);
+                    }
+                }
+
+                if (ForegroundDetector.getInstance().isForeground()) {
+                    Toast.makeText(context, toastString, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
     @Override
     public long handleEvent(final int event, long data1, long data2) {
         switch(event) {
@@ -395,23 +443,11 @@ public class ApplicationDcContext extends DcContext {
                 break;
 
             case DC_EVENT_ERROR:
-                Log.e("DeltaChat", dataToString(data2));
-                synchronized (lastErrorLock) {
-                    lastErrorString = dataToString(data2);
-                }
-                Util.runOnMain(new Runnable() {
-                    @Override
-                    public void run() {
-                        synchronized (lastErrorLock) {
-                            if (showNextErrorAsToast) {
-                                if (ForegroundDetector.getInstance().isForeground()) {
-                                    Toast.makeText(context, lastErrorString, Toast.LENGTH_LONG).show();
-                                }
-                            }
-                            showNextErrorAsToast = true;
-                        }
-                    }
-                });
+                handleError(event, true, dataToString(data2));
+                break;
+
+            case DC_EVENT_ERROR_NETWORK:
+                handleError(event, data1!=0, dataToString(data2));
                 break;
 
             case DC_EVENT_HTTP_GET:
