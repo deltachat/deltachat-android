@@ -97,11 +97,11 @@
     <meta-data android:name="com.google.android.gms.car.application"
                android:resource="@xml/automotive_app_desc" />
 
-        <activity android:name=".InviteActivity"
-                  android:theme="@style/TextSecure.HighlightTheme"
-                  android:windowSoftInputMode="stateHidden"
-                  android:parentActivityName=".ConversationListActivity"
-                  android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+    <activity android:name=".InviteActivity"
+              android:theme="@style/TextSecure.HighlightTheme"
+              android:windowSoftInputMode="stateHidden"
+              android:parentActivityName=".ConversationListActivity"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="org.thoughtcrime.securesms.ConversationListActivity" />
@@ -292,12 +292,12 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".QrScanActivity"
-            android:theme="@style/TextSecure.LightTheme"
-            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+              android:theme="@style/TextSecure.LightTheme"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-     <activity android:name=".QrShowActivity"
-            android:theme="@style/TextSecure.LightTheme"
-            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+    <activity android:name=".QrShowActivity"
+              android:theme="@style/TextSecure.LightTheme"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".ClearProfileAvatarActivity"
               android:theme="@style/Theme.AppCompat.Dialog.Alert"
@@ -409,7 +409,7 @@
         </intent-filter>
     </receiver>
 
-        <receiver android:name=".notifications.MessageNotifier$ReminderReceiver">
+    <receiver android:name=".notifications.MessageNotifier$ReminderReceiver">
         <intent-filter>
             <action android:name="org.thoughtcrime.securesms.MessageNotifier.REMINDER_ACTION"/>
         </intent-filter>
