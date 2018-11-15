@@ -1,4 +1,5 @@
-// restart the smtp and imap threads every 60 seconds if they were killed by the os
+// restart the smtp and imap threads every 5 minutes if they were killed by the os.
+// however, we try to prevent the killing by the permanent notification KeepAliveService.
 
 package org.thoughtcrime.securesms.connect;
 
@@ -23,7 +24,11 @@ public class TimerReceiver extends BroadcastReceiver {
         scheduleNextAlarm(context);
 
         ApplicationDcContext dcContext = DcHelper.getContext(context);
-        dcContext.startThreads();
+
+        // start threads (if not up) and interrupt idle in case it is stalled for any reason
+        // (re-doing IMAP-IDLE should imply a NOOP call then, https://www.isode.com/whitepapers/imap-idle.html )
+        dcContext.startThreads(ApplicationDcContext.INTERRUPT_IDLE);
+
         dcContext.waitForThreadsRunning();
     }
 
@@ -33,7 +38,7 @@ public class TimerReceiver extends BroadcastReceiver {
             Intent intent = new Intent(context, TimerReceiver.class);
             PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
-            long triggerAtMillis = System.currentTimeMillis() + 60 * 1000;
+            long triggerAtMillis = System.currentTimeMillis() + 5 * 60 * 1000;
 
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Activity.ALARM_SERVICE);
             if( Build.VERSION.SDK_INT >= 23 ) {

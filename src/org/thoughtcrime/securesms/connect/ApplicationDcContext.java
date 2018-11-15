@@ -81,7 +81,7 @@ public class ApplicationDcContext extends DcContext {
         }
 
         new ForegroundDetector(ApplicationContext.getInstance(context));
-        startThreads();
+        startThreads(0);
 
         TimerReceiver.scheduleNextAlarm(context);
 
@@ -256,7 +256,8 @@ public class ApplicationDcContext extends DcContext {
 
     public PowerManager.WakeLock afterForgroundWakeLock = null;
 
-    public void startThreads()
+    public final static int INTERRUPT_IDLE = 0x01; // interrupt idle if the thread is already running
+    public void startThreads(int flags)
     {
         synchronized(threadsCritical) {
 
@@ -289,6 +290,12 @@ public class ApplicationDcContext extends DcContext {
                 }, "imapThread");
                 imapThread.setPriority(Thread.NORM_PRIORITY);
                 imapThread.start();
+            }
+            else
+            {
+                if ((flags&INTERRUPT_IDLE)!=0) {
+                    interruptImapIdle();
+                }
             }
 
             if (smtpThread == null || !smtpThread.isAlive()) {

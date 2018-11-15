@@ -22,7 +22,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             if (ni != null && ni.getState() == NetworkInfo.State.CONNECTED) {
                 Log.i("DeltaChat", "++++++++++++++++++ Connected ++++++++++++++++++");
                 ApplicationDcContext dcContext = DcHelper.getContext(context);
-                dcContext.startThreads();
+                dcContext.startThreads(0); // no need to interrupt idle as maybeNetwork() is called below
                 dcContext.waitForThreadsRunning();
                 dcContext.maybeNetwork();
             }
