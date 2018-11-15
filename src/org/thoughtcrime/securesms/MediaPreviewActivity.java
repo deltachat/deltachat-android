@@ -202,10 +202,10 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       }
     } else {
       messageRecord = dcContext.getMsg(msgId);
-      initialMedia = new MediaItem(Recipient.from(context, msgId), Uri.fromFile(messageRecord.getFileAsFile()),
+      initialMedia = new MediaItem(Recipient.fromChat(context, msgId), Uri.fromFile(messageRecord.getFileAsFile()),
           messageRecord.getFilemime(), messageRecord.getId(), messageRecord.getDateReceived(),
           messageRecord.getFilebytes(), messageRecord.isOutgoing());
-      conversationRecipient = Recipient.from(context, msgId);
+      conversationRecipient = Recipient.fromChat(context, msgId);
     }
     leftIsRecent     = getIntent().getBooleanExtra(LEFT_IS_RECENT_EXTRA, false);
     restartItem      = -1;
@@ -564,7 +564,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
       if (msg.getFile() == null) throw new AssertionError();
 
-      return new MediaItem(Recipient.from(context, msg.getId()),
+      return new MediaItem(Recipient.fromChat(context, msg.getId()),
                            Uri.fromFile(msg.getFileAsFile()),
                            msg.getFilemime(),
                            msg.getId(),

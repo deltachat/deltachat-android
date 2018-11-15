@@ -292,7 +292,7 @@ public class MessageNotifier {
 
     builder.setThread(notifications.get(0).getRecipient());
     builder.setMessageCount(notificationState.getMessageCount());
-    builder.setPrimaryMessageBody(recipient, notifications.get(0).getRecipient(),
+    builder.setPrimaryMessageBody(recipient, notifications.get(0).getIndividualRecipient(),
                                   notifications.get(0).getText(""), notifications.get(0).getSlideDeck());
     builder.setContentIntent(notifications.get(0).getPendingIntent(context));
     builder.setGroup(NOTIFICATION_GROUP);
@@ -312,12 +312,12 @@ public class MessageNotifier {
 
     while(iterator.hasPrevious()) {
       NotificationItem item = iterator.previous();
-      builder.addMessageBody(item.getRecipient(), item.getRecipient(), item.getText());
+      builder.addMessageBody(item.getRecipient(), item.getIndividualRecipient(), item.getText());
     }
 
     if (signal) {
       builder.setAlarms(notificationState.getRingtone(), notificationState.getVibrate());
-      builder.setTicker(notifications.get(0).getRecipient(),
+      builder.setTicker(notifications.get(0).getIndividualRecipient(),
                         notifications.get(0).getText());
     }
 
@@ -336,7 +336,7 @@ public class MessageNotifier {
     List<NotificationItem>               notifications = notificationState.getNotifications();
 
     builder.setMessageCount(notificationState.getMessageCount(), notificationState.getThreadCount());
-    builder.setMostRecentSender(notifications.get(0).getRecipient());
+    builder.setMostRecentSender(notifications.get(0).getIndividualRecipient());
     builder.setGroup(NOTIFICATION_GROUP);
     builder.setDeleteIntent(notificationState.getDeleteIntent(context));
 
@@ -349,12 +349,12 @@ public class MessageNotifier {
 
     while(iterator.hasPrevious()) {
       NotificationItem item = iterator.previous();
-      builder.addMessageBody(item.getRecipient(), item.getText());
+      builder.addMessageBody(item.getIndividualRecipient(), item.getText());
     }
 
     if (signal) {
       builder.setAlarms(notificationState.getRingtone(), notificationState.getVibrate());
-      builder.setTicker(notifications.get(0).getRecipient(),
+      builder.setTicker(notifications.get(0).getIndividualRecipient(),
                         notifications.get(0).getText());
     }
 
@@ -409,7 +409,8 @@ public class MessageNotifier {
       boolean      mms                   = record.isMms() || record.isMediaPending();
       int          chatId                = record.getChatId();
       CharSequence body                  = record.getDisplayBody();
-      Recipient    threadRecipients      = Recipient.from(dcContext, msgId);
+      Recipient    threadRecipient       = Recipient.fromChat(dcContext, msgId);
+      Recipient    individualRecipient   = Recipient.fromMsg(dcContext, msgId);
       SlideDeck    slideDeck             = new SlideDeck(dcContext.context, record);
       long         timestamp             = record.getTimestamp();
 
@@ -425,8 +426,8 @@ public class MessageNotifier {
         body = SpanUtil.italic(message, italicLength);
       }
 
-      if (!threadRecipients.isMuted()) {
-        notificationState.addNotification(new NotificationItem(id, mms, threadRecipients, chatId, body, timestamp, slideDeck));
+      if (!threadRecipient.isMuted()) {
+        notificationState.addNotification(new NotificationItem(id, mms, threadRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
       }
     }
 

@@ -84,7 +84,7 @@ public class ConversationUpdateItem extends LinearLayout
 
   private void bind(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     this.messageRecord = messageRecord;
-    this.sender        = Recipient.from(DcHelper.getContext(getContext()), messageRecord.getId());
+    this.sender        = Recipient.fromMsg(DcHelper.getContext(getContext()), messageRecord.getId());
     this.locale        = locale;
 
     this.sender.addListener(this);

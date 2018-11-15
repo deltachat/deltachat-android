@@ -91,13 +91,17 @@ public class Recipient implements RecipientModifiedListener {
   private @Nullable String         profileAvatar;
   private           boolean        profileSharing;
 
-  public static @NonNull Recipient from(@NonNull Context context, int dcMsgId) {
+  public static @NonNull Recipient fromChat(@NonNull Context context, int dcMsgId) {
     ApplicationDcContext dcContext = DcHelper.getContext(context);
-    return from(dcContext, dcMsgId);
+    return fromChat(dcContext, dcMsgId);
   }
 
-  public static @NonNull Recipient from (@NonNull ApplicationDcContext dcContext, int dcMsgId) {
+  public static @NonNull Recipient fromChat (@NonNull ApplicationDcContext dcContext, int dcMsgId) {
     return dcContext.getRecipient(dcContext.getChat(dcContext.getMsg(dcMsgId).getChatId()));
+  }
+
+  public static @NonNull Recipient fromMsg (@NonNull ApplicationDcContext dcContext, int dcMsgId) {
+    return dcContext.getRecipient(dcContext.getContact(dcContext.getMsg(dcMsgId).getFromId()));
   }
 
   @SuppressWarnings("ConstantConditions")
