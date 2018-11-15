@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.connect;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-
 
 public class NetworkStateReceiver extends BroadcastReceiver {
 

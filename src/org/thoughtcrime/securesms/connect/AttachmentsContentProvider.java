@@ -9,7 +9,6 @@ import android.os.ParcelFileDescriptor;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-
 public class AttachmentsContentProvider extends ContentProvider {
 
     /* We save all attachments in our private files-directory

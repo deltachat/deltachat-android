@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 
-
 @SuppressLint("NewApi")
 public class ForegroundDetector implements Application.ActivityLifecycleCallbacks {
 

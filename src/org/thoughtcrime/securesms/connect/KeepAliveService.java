@@ -16,7 +16,6 @@ import org.thoughtcrime.securesms.R;
 
 import java.util.Locale;
 
-
 public class KeepAliveService extends Service {
 
     static KeepAliveService s_this = null;

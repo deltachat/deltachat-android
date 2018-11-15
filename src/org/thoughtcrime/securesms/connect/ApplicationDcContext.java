@@ -45,7 +45,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class ApplicationDcContext extends DcContext {
 
     @IntDef({RECIPIENT_TYPE_CHAT, RECIPIENT_TYPE_CONTACT})
