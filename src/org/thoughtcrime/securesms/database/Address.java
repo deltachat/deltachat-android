@@ -117,7 +117,7 @@ public class Address implements Parcelable, Comparable<Address> {
 
       return formatter;
     } else {
-      return new ExternalAddressFormatter(Util.getSimCountryIso(context).or("US"), true);
+      return new ExternalAddressFormatter("US", true);
     }
   }
 

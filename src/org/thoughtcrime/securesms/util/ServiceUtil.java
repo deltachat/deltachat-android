@@ -8,7 +8,6 @@ import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.os.PowerManager;
 import android.os.Vibrator;
-import android.telephony.TelephonyManager;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
@@ -27,10 +26,6 @@ public class ServiceUtil {
 
   public static NotificationManager getNotificationManager(Context context) {
     return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-  }
-
-  public static TelephonyManager getTelephonyManager(Context context) {
-    return (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
   }
 
   public static AudioManager getAudioManager(Context context) {

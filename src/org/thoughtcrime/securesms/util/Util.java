@@ -33,7 +33,6 @@ import android.os.Looper;
 import android.provider.Telephony;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -249,11 +248,6 @@ public class Util {
     out.close();
 
     return total;
-  }
-
-  public static Optional<String> getSimCountryIso(Context context) {
-    String simCountryIso = ((TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE)).getSimCountryIso();
-    return Optional.fromNullable(simCountryIso != null ? simCountryIso.toUpperCase() : null);
   }
 
   public static <T> List<List<T>> partition(List<T> list, int partitionSize) {
