@@ -836,8 +836,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     String backgroundImagePath = TextSecurePreferences.getBackgroundImagePath(this);
-    Drawable image = Drawable.createFromPath(backgroundImagePath);
-    getWindow().setBackgroundDrawable(image);
+    if(!backgroundImagePath.isEmpty()) {
+      Drawable image = Drawable.createFromPath(backgroundImagePath);
+      getWindow().setBackgroundDrawable(image);
+    }
   }
 
   protected void initializeActionBar() {
