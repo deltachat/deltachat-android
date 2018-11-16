@@ -39,8 +39,8 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
         activity.stopService(new Intent(activity, KeepAliveService.class));
 
-        // start threads (if not up) and interrupt idle in case it is stalled for any reason
-        application.dcContext.startThreads(ApplicationDcContext.INTERRUPT_IDLE);
+        // probably no need to interrupt idle as this is done in the TimerReceiver every 5 minutes
+        application.dcContext.startThreads(0);
     }
 
 
