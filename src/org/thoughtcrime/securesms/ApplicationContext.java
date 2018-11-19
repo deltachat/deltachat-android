@@ -37,6 +37,7 @@ import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.webrtc.PeerConnectionFactory;
 import org.webrtc.PeerConnectionFactory.InitializationOptions;
 import org.webrtc.voiceengine.WebRtcAudioManager;
@@ -138,6 +139,10 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
         return false;
       }
     });
+
+    // in five seconds, the system should be up and ready so we can start issuing notifications.
+    Util.runOnMainDelayed(() -> {
+      MessageNotifier.updateNotification(dcContext.context);}, 5000);
   }
 
   private void initializeJobManager() {
