@@ -15,12 +15,26 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class MultipleRecipientNotificationBuilder extends AbstractNotificationBuilder {
 
-  private final List<CharSequence> messageBodies = new LinkedList<>();
+  private final List<MessageBody> messageBodies = new LinkedList<>();
+
+  private static class MessageBody {
+    final @Nullable Recipient group;
+    final @NonNull Recipient sender;
+    final @NonNull CharSequence message;
+
+    public MessageBody(@Nullable Recipient group, @NonNull Recipient sender, @NonNull CharSequence message) {
+      this.group = group;
+      this.sender = sender;
+      this.message = message;
+    }
+  }
 
   public MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
     super(context, privacy);
@@ -56,15 +70,13 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     extend(new NotificationCompat.WearableExtender().addAction(markAllAsReadAction));
   }
 
-  public void addMessageBody(@NonNull Recipient sender, @Nullable CharSequence body) {
-    if (privacy.isDisplayMessage()) {
-      messageBodies.add(getStyledMessage(sender, body));
-    } else if (privacy.isDisplayContact()) {
-      messageBodies.add(Util.getBoldedString(sender.toShortString()));
-    }
+  public void addMessageBody(@Nullable Recipient group, @NonNull Recipient sender, @Nullable CharSequence body) {
+    messageBodies.add(new MessageBody(group, sender, body));
 
     if (privacy.isDisplayContact() && sender.getContactUri() != null) {
       addPerson(sender.getContactUri().toString());
+    } else if (privacy.isDisplayContact() && group != null && group.getContactUri() != null) {
+      addPerson(group.getContactUri().toString());
     }
   }
 
@@ -72,9 +84,49 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
   public Notification build() {
     if (privacy.isDisplayMessage() || privacy.isDisplayContact()) {
       NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
+      Map<Recipient, List<MessageBody>> byGroup = new HashMap<>();
+      for (MessageBody body : messageBodies) {
+        Recipient key = body.group == null ? body.sender : body.group;
+        if(byGroup.containsKey(key)) {
+          byGroup.get(key).add(body);
+        } else {
+          byGroup.put(key, new LinkedList<>());
+          byGroup.get(key).add(body);
+        }
+      }
 
-      for (CharSequence body : messageBodies) {
-        style.addLine(body);
+      if (privacy.isDisplayMessage()) {
+        for (Recipient nextGroup : byGroup.keySet()) {
+          String groupName = nextGroup.getName();
+          List<MessageBody> messages = byGroup.get(nextGroup);
+          String firstMessageSender = messages.get(0).sender.getName();
+          if(groupName.equals(firstMessageSender)) { // individual
+            for (MessageBody body : messages) {
+              style.addLine(getStyledMessage(body.sender, body.message));
+            }
+          } else { // group chat
+            style.addLine(Util.getBoldedString(groupName));
+            for (MessageBody body : messages) {
+              style.addLine("- " + getStyledMessage(body.sender, body.message));
+            }
+          }
+        }
+      } else if (privacy.isDisplayContact()) {
+        for (Recipient nextGroup : byGroup.keySet()) {
+          String groupName = nextGroup.getName();
+          List<MessageBody> messages = byGroup.get(nextGroup);
+          String firstMessageSender = messages.get(0).sender.getName();
+          if(groupName.equals(firstMessageSender)) { // individual
+            for (MessageBody body : messages) {
+              style.addLine(body.sender.getName());
+            }
+          } else { // group chat
+            style.addLine(Util.getBoldedString(groupName));
+            for (MessageBody body : messages) {
+              style.addLine("- " + body.sender.getName());
+            }
+          }
+        }
       }
 
       setStyle(style);
