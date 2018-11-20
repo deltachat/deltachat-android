@@ -32,7 +32,6 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
-import org.thoughtcrime.securesms.jobmanager.dependencies.DependencyInjector;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
@@ -56,7 +55,7 @@ import java.util.Set;
  *
  * @author Moxie Marlinspike
  */
-public class ApplicationContext extends MultiDexApplication implements DependencyInjector, DefaultLifecycleObserver {
+public class ApplicationContext extends MultiDexApplication implements DefaultLifecycleObserver {
 
   private static final String TAG = ApplicationContext.class.getName();
 
@@ -98,10 +97,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   public void onStop(@NonNull LifecycleOwner owner) {
     isAppVisible = false;
     ScreenLockUtil.shouldLockApp = true;
-  }
-
-  @Override
-  public void injectDependencies(Object object) {
   }
 
   public JobManager getJobManager() {
@@ -150,7 +145,6 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   private void initializeJobManager() {
     this.jobManager = JobManager.newBuilder(this)
                                 .withName("TextSecureJobs")
-                                .withDependencyInjector(this)
                                 .withJobSerializer(new JavaJobSerializer())
                                 .withConsumerThreads(5)
                                 .build();

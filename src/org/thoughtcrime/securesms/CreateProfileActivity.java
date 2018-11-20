@@ -120,8 +120,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     initializeProfileName(getIntent().getBooleanExtra(EXCLUDE_SYSTEM, false));
     initializeProfileAvatar(getIntent().getBooleanExtra(EXCLUDE_SYSTEM, false));
     initializeStatusText();
-
-    ApplicationContext.getInstance(this).injectDependencies(this);
   }
 
   @Override

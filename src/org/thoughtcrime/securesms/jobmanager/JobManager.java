@@ -20,8 +20,6 @@ import android.content.Context;
 import android.os.PowerManager;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.jobmanager.dependencies.AggregateDependencyInjector;
-import org.thoughtcrime.securesms.jobmanager.dependencies.DependencyInjector;
 import org.thoughtcrime.securesms.jobmanager.persistence.JobSerializer;
 import org.thoughtcrime.securesms.jobmanager.persistence.PersistentStorage;
 import org.thoughtcrime.securesms.jobmanager.requirements.RequirementListener;
@@ -49,16 +47,13 @@ public class JobManager implements RequirementListener {
   private final Context                     context;
   private final PersistentStorage           persistentStorage;
   private final List<RequirementProvider>   requirementProviders;
-  private final AggregateDependencyInjector dependencyInjector;
 
   private JobManager(Context context, String name,
                      List<RequirementProvider> requirementProviders,
-                     DependencyInjector dependencyInjector,
                      JobSerializer jobSerializer, int consumers)
   {
     this.context              = context;
-    this.dependencyInjector   = new AggregateDependencyInjector(dependencyInjector);
-    this.persistentStorage    = new PersistentStorage(context, name, jobSerializer, this.dependencyInjector);
+    this.persistentStorage    = new PersistentStorage(context, name, jobSerializer);
     this.requirementProviders = requirementProviders;
 
     eventExecutor.execute(new LoadTask(null));
@@ -105,8 +100,6 @@ public class JobManager implements RequirementListener {
           if (job.isPersistent()) {
             persistentStorage.store(job);
           }
-
-          dependencyInjector.injectDependencies(context, job);
 
           job.onAdded();
           jobQueue.add(job);
@@ -161,7 +154,6 @@ public class JobManager implements RequirementListener {
     private final Context                   context;
     private       String                    name;
     private       List<RequirementProvider> requirementProviders;
-    private       DependencyInjector        dependencyInjector;
     private       JobSerializer             jobSerializer;
     private       int                       consumerThreads;
 
@@ -179,32 +171,6 @@ public class JobManager implements RequirementListener {
      */
     public Builder withName(String name) {
       this.name = name;
-      return this;
-    }
-
-    /**
-     * The {@link org.thoughtcrime.securesms.jobmanager.requirements.RequirementProvider}s to register with this
-     * JobManager.  Optional. Each {@link org.thoughtcrime.securesms.jobmanager.requirements.Requirement} an
-     * enqueued Job depends on should have a matching RequirementProvider registered here.
-     *
-     * @param requirementProviders The RequirementProviders
-     * @return The builder.
-     */
-    public Builder withRequirementProviders(RequirementProvider... requirementProviders) {
-      this.requirementProviders = Arrays.asList(requirementProviders);
-      return this;
-    }
-
-    /**
-     * The {@link org.thoughtcrime.securesms.jobmanager.dependencies.DependencyInjector} to use for injecting
-     * dependencies into {@link Job}s. Optional. Injection occurs just before a Job's onAdded() callback, or
-     * after deserializing a persistent job.
-     *
-     * @param dependencyInjector The injector to use.
-     * @return The builder.
-     */
-    public Builder withDependencyInjector(DependencyInjector dependencyInjector) {
-      this.dependencyInjector = dependencyInjector;
       return this;
     }
 
@@ -244,7 +210,7 @@ public class JobManager implements RequirementListener {
       }
 
       return new JobManager(context, name, requirementProviders,
-                            dependencyInjector, jobSerializer,
+                            jobSerializer,
                             consumerThreads);
     }
   }

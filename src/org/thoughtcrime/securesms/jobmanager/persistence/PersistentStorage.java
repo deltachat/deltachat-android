@@ -25,7 +25,6 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.jobmanager.EncryptionKeys;
 import org.thoughtcrime.securesms.jobmanager.Job;
-import org.thoughtcrime.securesms.jobmanager.dependencies.AggregateDependencyInjector;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -46,16 +45,13 @@ public class PersistentStorage {
   private final Context                     context;
   private final DatabaseHelper              databaseHelper;
   private final JobSerializer               jobSerializer;
-  private final AggregateDependencyInjector dependencyInjector;
 
   public PersistentStorage(Context context, String name,
-                           JobSerializer serializer,
-                           AggregateDependencyInjector dependencyInjector)
+                           JobSerializer serializer)
   {
     this.databaseHelper     = new DatabaseHelper(context, "_jobqueue-" + name);
     this.context            = context;
     this.jobSerializer      = serializer;
-    this.dependencyInjector = dependencyInjector;
   }
 
   public void store(Job job) throws IOException {
@@ -93,7 +89,6 @@ public class PersistentStorage {
 
           job.setPersistentId(id);
           job.setEncryptionKeys(keys);
-          dependencyInjector.injectDependencies(context, job);
 
           results.add(job);
         } catch (IOException e) {

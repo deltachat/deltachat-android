@@ -37,7 +37,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ApplicationContext.getInstance(activity).injectDependencies(this);
     }
 
     @Override
