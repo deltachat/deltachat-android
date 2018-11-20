@@ -65,28 +65,10 @@ public class DcEventCenter {
                     if(observer.runOnMain()) {
                         Util.runOnMain(() -> observer.handleEvent(eventId, data1, data2));
                     } else {
-                        new BackgroundEventHandler(observer, eventId)
-                            .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data1, data2);
+                        Util.runOnBackground(() -> observer.handleEvent(eventId, data1, data2));
                     }
                 }
             }
-        }
-    }
-
-    private static class BackgroundEventHandler extends AsyncTask<Object, Void, Void> {
-        private final WeakReference<DcEventDelegate> asyncDelegate;
-        private final int eventId;
-        BackgroundEventHandler(DcEventDelegate delegate, int eventId) {
-            asyncDelegate = new WeakReference<>(delegate);
-            this.eventId = eventId;
-        }
-        @Override
-        protected Void doInBackground(Object... data) {
-            DcEventDelegate delegate = asyncDelegate.get();
-            if(delegate != null) {
-                delegate.handleEvent(eventId, data[0], data[1]);
-            }
-            return null;
         }
     }
 }

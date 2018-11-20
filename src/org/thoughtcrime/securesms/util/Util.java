@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -39,6 +40,7 @@ import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
 
+import com.google.android.exoplayer2.extractor.ts.PsExtractor;
 import com.google.android.mms.pdu_alt.CharacterSets;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
 
@@ -52,6 +54,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.text.DecimalFormat;
@@ -379,6 +382,16 @@ public class Util {
         throw new AssertionError(ie);
       }
     }
+  }
+
+  public static void runOnBackground(final @NonNull Runnable runnable) {
+    AsyncTask.THREAD_POOL_EXECUTOR.execute(runnable);
+  }
+
+  public static void runOnBackgroundDelayed(final @NonNull Runnable runnable, long delayMillis) {
+    handler.postDelayed(() -> {
+      AsyncTask.THREAD_POOL_EXECUTOR.execute(runnable);
+    }, delayMillis);
   }
 
   public static <T> T getRandomElement(T[] elements) {

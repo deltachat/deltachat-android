@@ -141,8 +141,10 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     });
 
     // in five seconds, the system should be up and ready so we can start issuing notifications.
-    Util.runOnMainDelayed(() -> {
-      MessageNotifier.updateNotification(dcContext.context);}, 5000);
+
+    Util.runOnBackgroundDelayed(() -> {
+      MessageNotifier.updateNotification(dcContext.context);
+      }, 5000);
   }
 
   private void initializeJobManager() {
