@@ -748,21 +748,6 @@ public class ConversationFragment extends Fragment
           actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
         }
       }
-      else if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
-        new AlertDialog.Builder(getActivity())
-          .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-            int chatId = dcContext.createChatByMsgId(messageRecord.getId());
-            if( chatId != 0 ) {
-              Intent intent = new Intent(getActivity(), ConversationActivity.class);
-              intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
-              startActivity(intent);
-            }
-          })
-          .setNegativeButton(android.R.string.cancel, null)
-          .setMessage(getActivity().getString(R.string.new_conversation_activity__ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
-          .show();
-
-      }
       else if(messageRecord.isSetupMessage()) {
         querySetupCode(messageRecord,null);
       }

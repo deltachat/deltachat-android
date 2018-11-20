@@ -24,6 +24,7 @@ import android.graphics.PorterDuff;
 import android.support.annotation.DimenRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -391,7 +392,14 @@ public class ConversationItem extends LinearLayout
       if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
 
       //noinspection ConstantConditions
-      audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), showControls);
+      if(dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {  // no audio on dead drops
+        // TODO: replace the currently defunct display of a play button with some notification text
+        // to inform the user that here would be audio, if this were a proper chat, then ask the user
+        // if he wants to start the chat on click.
+        audioViewStub.get().setEnabled(false);
+        audioViewStub.get().setOnClickListener(passthroughClickListener);
+      } else
+        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), showControls);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -676,9 +684,26 @@ public class ConversationItem extends LinearLayout
     }
   }
 
+  private void handleDeadDropClick() {
+    new AlertDialog.Builder(context)
+      .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+        int chatId = dcContext.createChatByMsgId(messageRecord.getId());
+        if( chatId != 0 ) {
+          Intent intent = new Intent(context, ConversationActivity.class);
+          intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+          context.startActivity(intent);
+        }
+      })
+      .setNegativeButton(android.R.string.cancel, null)
+      .setMessage(context.getString(R.string.new_conversation_activity__ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
+      .show();
+  }
+
   private class ThumbnailClickListener implements SlideClickListener {
     public void onClick(final View v, final Slide slide) {
-      if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
+      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {
+        handleDeadDropClick();
+      } else if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
       } else if (MediaPreviewActivity.isContentTypeSupported(slide.getContentType()) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
@@ -720,7 +745,9 @@ public class ConversationItem extends LinearLayout
     }
 
     public void onClick(View v) {
-      if (!shouldInterceptClicks(messageRecord) && parent != null) {
+      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {
+        handleDeadDropClick();
+      } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
         parent.onClick(v);
       }
     }
