@@ -32,6 +32,7 @@ import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -189,16 +190,9 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
 
   @Override
   public Notification build() {
-    if (privacy.isDisplayMessage()) {
-      if (messageBodies.size() == 1 && hasBigPictureSlide(slideDeck)) {
-        setStyle(new NotificationCompat.BigPictureStyle()
-                     .bigPicture(getBigPicture(slideDeck))
-                     .setSummaryText(getBigText(messageBodies)));
-      } else {
-        setStyle(new NotificationCompat.BigTextStyle().bigText(getBigText(messageBodies)));
-      }
-    }
-
+    // the filtering whether or not to display messages and contacts is done in addMessageBody
+    // and setPrimaryMessageBody, no need to do it here again.
+    setStyle(new NotificationCompat.BigTextStyle().bigText(getBigText(messageBodies)));
     return super.build();
   }
 
