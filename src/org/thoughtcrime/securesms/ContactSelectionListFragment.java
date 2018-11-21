@@ -30,9 +30,9 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.view.ActionMode;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -63,7 +63,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -278,7 +277,7 @@ public class ContactSelectionListFragment extends    Fragment
       listflags = DcContext.DC_GCL_VERIFIED_ONLY;
     }
 
-    return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks);
+    return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks, false);
   }
 
   @Override

@@ -1,30 +1,30 @@
 package org.thoughtcrime.securesms;
 
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
-import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.loaders.BlockedContactsLoader;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
+
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcContactsLoader;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
+import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.preferences.BlockedContactListItem;
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity {
 
@@ -62,80 +62,96 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
   }
 
   public static class BlockedContactsFragment
-      extends ListFragment
-      implements LoaderManager.LoaderCallbacks<Cursor>, ListView.OnItemClickListener
-  {
+          extends Fragment
+          implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>,
+          DcEventCenter.DcEventDelegate, ContactSelectionListAdapter.ItemClickListener {
+
+    private RecyclerView recyclerView;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
-      return inflater.inflate(R.layout.blocked_contacts_fragment, container, false);
+      View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
+      recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
+      swipeRefreshLayout  = ViewUtil.findById(view, R.id.swipe_refresh);
+      recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+      return view;
     }
 
     @Override
     public void onCreate(Bundle bundle) {
       super.onCreate(bundle);
-      setListAdapter(new BlockedContactAdapter(getActivity(), GlideApp.with(this), null));
       getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
     public void onActivityCreated(Bundle bundle) {
       super.onActivityCreated(bundle);
-      getListView().setOnItemClickListener(this);
+      initializeAdapter();
+    }
+
+    private void initializeAdapter() {
+      ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(),
+              GlideApp.with(this),
+              this,
+              false);
+      recyclerView.setAdapter(adapter);
+      swipeRefreshLayout.setRefreshing(false);
+      swipeRefreshLayout.setEnabled(false);
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-      return new BlockedContactsLoader(getActivity());
+    public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
+      return new DcContactsLoader(getActivity(), -1, null, false, true);
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-      if (getListAdapter() != null) {
-        ((CursorAdapter) getListAdapter()).changeCursor(data);
-      }
+    public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
+      getContactSelectionListAdapter().changeData(data);
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-      if (getListAdapter() != null) {
-        ((CursorAdapter) getListAdapter()).changeCursor(null);
-      }
+    public void onLoaderReset(Loader<DcContactsLoader.Ret> loader) {
+      getContactSelectionListAdapter().changeData(null);
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-      Recipient recipient = ((BlockedContactListItem)view).getRecipient();
-      Intent    intent    = new Intent(getActivity(), RecipientPreferenceActivity.class);
-      intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
-
-      startActivity(intent);
-    }
-
-    private static class BlockedContactAdapter extends CursorAdapter {
-
-      private final GlideRequests glideRequests;
-
-      BlockedContactAdapter(@NonNull Context context, @NonNull GlideRequests glideRequests, @Nullable Cursor c) {
-        super(context, c);
-        this.glideRequests = glideRequests;
-      }
-
-      @Override
-      public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context)
-                             .inflate(R.layout.blocked_contact_list_item, parent, false);
-      }
-
-      @Override
-      public void bindView(View view, Context context, Cursor cursor) {
-        String    address   = cursor.getString(1);
-        Recipient recipient = Recipient.from(context, Address.fromSerialized(address), true);
-
-        ((BlockedContactListItem) view).set(glideRequests, recipient);
+    public void handleEvent(int eventId, Object data1, Object data2) {
+      if (eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+        restartLoader();
       }
     }
 
+    private void restartLoader() {
+      getLoaderManager().restartLoader(0, null, BlockedContactsFragment.this);
+    }
+
+    private ContactSelectionListAdapter getContactSelectionListAdapter() {
+      return (ContactSelectionListAdapter) recyclerView.getAdapter();
+    }
+
+    @Override
+    public void onItemClick(ContactSelectionListItem item, boolean handleActionMode) {
+      new AlertDialog.Builder(getActivity())
+              .setTitle(R.string.RecipientPreferenceActivity_unblock_this_contact_question)
+              .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
+              .setCancelable(true)
+              .setNegativeButton(android.R.string.cancel, null)
+              .setPositiveButton(R.string.RecipientPreferenceActivity_block, (dialog, which) -> unblockContact(item.getNumber())).show();
+    }
+
+    private void unblockContact(String addr) {
+      ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+      int contactId = dcContext.lookupContactIdByAddr(addr);
+      dcContext.blockContact(contactId, 0);
+      restartLoader();
+    }
+
+    @Override
+    public void onItemLongClick(ContactSelectionListItem view) {
+      // Not needed
+    }
   }
 
 }

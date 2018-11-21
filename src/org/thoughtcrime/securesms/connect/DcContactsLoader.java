@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.android.internal.util.ArrayUtils;
 import com.b44t.messenger.DcContact;
@@ -17,18 +16,25 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
     private final int     listflags;
     private final String  query;
     private final boolean addCreateGroupLinks;
+    private final boolean blockedContacts;
 
-    public DcContactsLoader(Context context, int listflags, String query, boolean addCreateGroupLinks) {
+    public DcContactsLoader(Context context, int listflags, String query, boolean addCreateGroupLinks, boolean blockedContacts) {
         super(context);
         this.listflags           = listflags;
         this.query               = (query==null||query.isEmpty())? null : query;
         this.addCreateGroupLinks = addCreateGroupLinks;
+        this.blockedContacts     = blockedContacts;
     }
 
     @Override
     public @NonNull
     DcContactsLoader.Ret loadInBackground() {
         DcContext dcContext = DcHelper.getContext(getContext());
+        if (blockedContacts) {
+            int[] blocked_ids = dcContext.getBlockedContacts();
+            return new DcContactsLoader.Ret(blocked_ids, query);
+        }
+
         int[] contact_ids = dcContext.getContacts(listflags, query);
         if(query!=null) {
             // show the "new contact" link also for partly typed e-mail addresses, so that the user knows he can continue
