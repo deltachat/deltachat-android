@@ -30,3 +30,6 @@ jni/libspeex/.deps/
 
 # contains files for ndk-build when done from gradle.
 .externalNativeBuild
+
+# no vi tmp files
+*.swp
