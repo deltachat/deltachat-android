@@ -48,14 +48,10 @@ public class DatabaseFactory {
   private final MmsSmsDatabase        mmsSmsDatabase;
   private final IdentityDatabase      identityDatabase;
   private final DraftDatabase         draftDatabase;
-  private final PushDatabase          pushDatabase;
   private final GroupDatabase         groupDatabase;
   private final RecipientDatabase     recipientDatabase;
   private final ContactsDatabase      contactsDatabase;
   private final GroupReceiptDatabase  groupReceiptDatabase;
-  private final OneTimePreKeyDatabase preKeyDatabase;
-  private final SignedPreKeyDatabase  signedPreKeyDatabase;
-  private final SessionDatabase       sessionDatabase;
   private final SearchDatabase        searchDatabase;
 
   public static DatabaseFactory getInstance(Context context) {
@@ -99,10 +95,6 @@ public class DatabaseFactory {
     return getInstance(context).draftDatabase;
   }
 
-  public static PushDatabase getPushDatabase(Context context) {
-    return getInstance(context).pushDatabase;
-  }
-
   public static GroupDatabase getGroupDatabase(Context context) {
     return getInstance(context).groupDatabase;
   }
@@ -119,29 +111,8 @@ public class DatabaseFactory {
     return getInstance(context).groupReceiptDatabase;
   }
 
-  public static OneTimePreKeyDatabase getPreKeyDatabase(Context context) {
-    return getInstance(context).preKeyDatabase;
-  }
-
-  public static SignedPreKeyDatabase getSignedPreKeyDatabase(Context context) {
-    return getInstance(context).signedPreKeyDatabase;
-  }
-
-  public static SessionDatabase getSessionDatabase(Context context) {
-    return getInstance(context).sessionDatabase;
-  }
-
   public static SearchDatabase getSearchDatabase(Context context) {
     return getInstance(context).searchDatabase;
-  }
-
-  public static SQLiteDatabase getBackupDatabase(Context context) {
-    return getInstance(context).databaseHelper.getReadableDatabase();
-  }
-
-  public static void upgradeRestored(Context context, SQLiteDatabase database){
-    getInstance(context).databaseHelper.onUpgrade(database, database.getVersion(), -1);
-    getInstance(context).databaseHelper.markCurrent(database);
   }
 
   private DatabaseFactory(@NonNull Context context) {
@@ -159,39 +130,13 @@ public class DatabaseFactory {
     this.mmsSmsDatabase       = new MmsSmsDatabase(context, databaseHelper);
     this.identityDatabase     = new IdentityDatabase(context, databaseHelper);
     this.draftDatabase        = new DraftDatabase(context, databaseHelper);
-    this.pushDatabase         = new PushDatabase(context, databaseHelper);
     this.groupDatabase        = new GroupDatabase(context, databaseHelper);
     this.recipientDatabase    = new RecipientDatabase(context, databaseHelper);
     this.groupReceiptDatabase = new GroupReceiptDatabase(context, databaseHelper);
     this.contactsDatabase     = new ContactsDatabase(context);
-    this.preKeyDatabase       = new OneTimePreKeyDatabase(context, databaseHelper);
-    this.signedPreKeyDatabase = new SignedPreKeyDatabase(context, databaseHelper);
-    this.sessionDatabase      = new SessionDatabase(context, databaseHelper);
     this.searchDatabase       = new SearchDatabase(context, databaseHelper);
   }
 
-  public void onApplicationLevelUpgrade(@NonNull Context context, @NonNull MasterSecret masterSecret,
-                                        int fromVersion, DatabaseUpgradeActivity.DatabaseUpgradeListener listener)
-  {
-    databaseHelper.getWritableDatabase();
 
-    ClassicOpenHelper legacyOpenHelper = null;
-
-    if (fromVersion < DatabaseUpgradeActivity.ASYMMETRIC_MASTER_SECRET_FIX_VERSION) {
-      legacyOpenHelper = new ClassicOpenHelper(context);
-      legacyOpenHelper.onApplicationLevelUpgrade(context, masterSecret, fromVersion, listener);
-    }
-
-    if (fromVersion < DatabaseUpgradeActivity.SQLCIPHER && TextSecurePreferences.getNeedsSqlCipherMigration(context)) {
-      if (legacyOpenHelper == null) {
-        legacyOpenHelper = new ClassicOpenHelper(context);
-      }
-
-      SQLCipherMigrationHelper.migrateCiphertext(context, masterSecret,
-                                                 legacyOpenHelper.getWritableDatabase(),
-                                                 databaseHelper.getWritableDatabase(),
-                                                 listener);
-    }
-  }
 
 }

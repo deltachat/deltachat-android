@@ -13,7 +13,6 @@ import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteDatabaseHook;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
 import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
@@ -22,12 +21,8 @@ import org.thoughtcrime.securesms.database.GroupDatabase;
 import org.thoughtcrime.securesms.database.GroupReceiptDatabase;
 import org.thoughtcrime.securesms.database.IdentityDatabase;
 import org.thoughtcrime.securesms.database.MmsDatabase;
-import org.thoughtcrime.securesms.database.OneTimePreKeyDatabase;
-import org.thoughtcrime.securesms.database.PushDatabase;
 import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.SearchDatabase;
-import org.thoughtcrime.securesms.database.SessionDatabase;
-import org.thoughtcrime.securesms.database.SignedPreKeyDatabase;
 import org.thoughtcrime.securesms.database.SmsDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.service.KeyCachingService;
@@ -83,13 +78,9 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
     db.execSQL(ThreadDatabase.CREATE_TABLE);
     db.execSQL(IdentityDatabase.CREATE_TABLE);
     db.execSQL(DraftDatabase.CREATE_TABLE);
-    db.execSQL(PushDatabase.CREATE_TABLE);
     db.execSQL(GroupDatabase.CREATE_TABLE);
     db.execSQL(RecipientDatabase.CREATE_TABLE);
     db.execSQL(GroupReceiptDatabase.CREATE_TABLE);
-    db.execSQL(OneTimePreKeyDatabase.CREATE_TABLE);
-    db.execSQL(SignedPreKeyDatabase.CREATE_TABLE);
-    db.execSQL(SessionDatabase.CREATE_TABLE);
     for (String sql : SearchDatabase.CREATE_TABLE) {
       db.execSQL(sql);
     }
@@ -113,12 +104,6 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
       if (masterSecret != null) SQLCipherMigrationHelper.migrateCiphertext(context, masterSecret, legacyDb, db, null);
       else                      TextSecurePreferences.setNeedsSqlCipherMigration(context, true);
 
-      if (!PreKeyMigrationHelper.migratePreKeys(context, db)) {
-//        ApplicationContext.getInstance(context).getJobManager().add(new RefreshPreKeysJob(context));
-      }
-
-//      SessionStoreMigrationHelper.migrateSessions(context, db);
-      PreKeyMigrationHelper.cleanUpPreKeys(context);
     }
   }
 
@@ -139,9 +124,6 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE signed_prekeys (_id INTEGER PRIMARY KEY, key_id INTEGER UNIQUE, public_key TEXT NOT NULL, private_key TEXT NOT NULL, signature TEXT NOT NULL, timestamp INTEGER DEFAULT 0)");
         db.execSQL("CREATE TABLE one_time_prekeys (_id INTEGER PRIMARY KEY, key_id INTEGER UNIQUE, public_key TEXT NOT NULL, private_key TEXT NOT NULL)");
 
-        if (!PreKeyMigrationHelper.migratePreKeys(context, db)) {
-//          ApplicationContext.getInstance(context).getJobManager().add(new RefreshPreKeysJob(context));
-        }
       }
 
       if (oldVersion < MIGRATE_SESSIONS_VERSION) {
@@ -239,9 +221,6 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
       db.endTransaction();
     }
 
-    if (oldVersion < MIGRATE_PREKEYS_VERSION) {
-      PreKeyMigrationHelper.cleanUpPreKeys(context);
-    }
   }
 
   public SQLiteDatabase getReadableDatabase() {
@@ -250,10 +229,6 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
 
   public SQLiteDatabase getWritableDatabase() {
     return getWritableDatabase(databaseSecret.asString());
-  }
-
-  public void markCurrent(SQLiteDatabase db) {
-    db.setVersion(DATABASE_VERSION);
   }
 
   private void executeStatements(SQLiteDatabase db, String[] statements) {
