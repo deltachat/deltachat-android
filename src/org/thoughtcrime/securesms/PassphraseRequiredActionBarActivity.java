@@ -134,34 +134,14 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     }
   }
 
-  private Intent getCreatePassphraseIntent() {
-    return getRoutedIntent(PassphraseCreateActivity.class, getIntent());
-  }
-
-  private Intent getPromptPassphraseIntent() {
-    return getRoutedIntent(PassphrasePromptActivity.class, getIntent());
-  }
-
   private Intent getWelcomeIntent() {
     return getRoutedIntent(WelcomeActivity.class, null);
-  }
-
-  private Intent getLoginIntent() {
-    return getRoutedIntent(RegistrationActivity.class, null);
-  }
-
-  private Intent getCreateProfileIntent() {
-    return getRoutedIntent(CreateProfileActivity.class, getConversationListIntent());
   }
 
   private Intent getRoutedIntent(Class<?> destination, @Nullable Intent nextIntent) {
     final Intent intent = new Intent(this, destination);
     if (nextIntent != null)   intent.putExtra("next_intent", nextIntent);
     return intent;
-  }
-
-  private Intent getConversationListIntent() {
-    return new Intent(this, ConversationListActivity.class);
   }
 
   private void initializeClearKeyReceiver() {

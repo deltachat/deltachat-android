@@ -22,7 +22,7 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.util.Base64;
 import org.thoughtcrime.securesms.util.Hex;
-import org.whispersystems.libsignal.InvalidMessageException;
+import org.thoughtcrime.securesms.InvalidMessageException;
 import org.whispersystems.libsignal.ecc.Curve;
 import org.whispersystems.libsignal.ecc.ECPrivateKey;
 
