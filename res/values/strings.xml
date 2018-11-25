@@ -1536,5 +1536,6 @@
     <string name="conversation__no_messages">No messages.</string>
     <string name="permanent_notification_subtitle">Tap to open.</string>
     <string name="error_no_network">Network unavailable.</string>
+    <string name="summary_draft">Draft</string>
 
 </resources>

@@ -688,7 +688,7 @@ public class ThreadDatabase extends Database {
 
       return new ThreadRecord(context, body, snippetUri, recipient, date, count,
                               unreadCount, threadId, deliveryReceiptCount, status, type,
-                              distributionType, archived, expiresIn, lastSeen, readReceiptCount, false);
+                              distributionType, archived, expiresIn, lastSeen, readReceiptCount, false, null);
     }
 
     private @Nullable Uri getSnippetUri(Cursor cursor) {

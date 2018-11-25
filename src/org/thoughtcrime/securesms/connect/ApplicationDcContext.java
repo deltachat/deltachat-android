@@ -236,7 +236,7 @@ public class ApplicationDcContext extends DcContext {
 
         return new ThreadRecord(context, body, null, recipient, date, count,
                 unreadCount, chatId, 0, status, type,
-                distributionType, archived, expiresIn, lastSeen, 0, verified);
+                distributionType, archived, expiresIn, lastSeen, 0, verified, summary);
     }
 
 
@@ -479,6 +479,7 @@ public class ApplicationDcContext extends DcContext {
             case DC_EVENT_GET_STRING:
                 String s;
                 switch( (int)data1 ) { // the integers are defined in the core and used only here, an enum or sth. like that won't have a big benefit
+                    case  3: s = context.getString(R.string.summary_draft); break;
                     case  8: s = context.getString(R.string.menu_deaddrop); break;
                     case 13: s = context.getString(R.string.default_status_text); break;
                     case 42: s = context.getString(R.string.autocrypt__asm_subject); break;
