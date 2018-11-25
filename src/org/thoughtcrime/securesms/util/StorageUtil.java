@@ -1,12 +1,7 @@
 package org.thoughtcrime.securesms.util;
 
-import android.content.Context;
-import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.Nullable;
-
-import com.annimon.stream.Objects;
-import com.annimon.stream.Stream;
 
 import org.thoughtcrime.securesms.database.NoExternalStorageException;
 
@@ -14,30 +9,7 @@ import java.io.File;
 
 public class StorageUtil {
 
-  public static File getBackupDirectory() throws NoExternalStorageException {
-    File storage = Environment.getExternalStorageDirectory();
-
-    if (!storage.canWrite()) {
-      throw new NoExternalStorageException();
-    }
-
-    File signal = new File(storage, "Signal");
-    File backups = new File(signal, "Backups");
-
-    if (!backups.exists()) {
-      if (!backups.mkdirs()) {
-        throw new NoExternalStorageException("Unable to create backup directory...");
-      }
-    }
-
-    return backups;
-  }
-
-  public static File getBackupCacheDirectory(Context context) {
-    return context.getExternalCacheDir();
-  }
-
-  private static File getSignalStorageDir() throws NoExternalStorageException {
+  private static File getStorageDir() throws NoExternalStorageException {
     final File storage = Environment.getExternalStorageDirectory();
 
     if (!storage.canWrite()) {
@@ -51,7 +23,7 @@ public class StorageUtil {
     File storage;
 
     try {
-      storage = getSignalStorageDir();
+      storage = getStorageDir();
     } catch (NoExternalStorageException e) {
       return false;
     }
@@ -59,24 +31,20 @@ public class StorageUtil {
     return storage.canWrite();
   }
 
-  public static File getLegacyBackupDirectory() throws NoExternalStorageException {
-    return getSignalStorageDir();
-  }
-
   public static File getVideoDir() throws NoExternalStorageException {
-    return new File(getSignalStorageDir(), Environment.DIRECTORY_MOVIES);
+    return new File(getStorageDir(), Environment.DIRECTORY_MOVIES);
   }
 
   public static File getAudioDir() throws NoExternalStorageException {
-    return new File(getSignalStorageDir(), Environment.DIRECTORY_MUSIC);
+    return new File(getStorageDir(), Environment.DIRECTORY_MUSIC);
   }
 
   public static File getImageDir() throws NoExternalStorageException {
-    return new File(getSignalStorageDir(), Environment.DIRECTORY_PICTURES);
+    return new File(getStorageDir(), Environment.DIRECTORY_PICTURES);
   }
 
   public static File getDownloadDir() throws NoExternalStorageException {
-    return new File(getSignalStorageDir(), Environment.DIRECTORY_DOWNLOADS);
+    return new File(getStorageDir(), Environment.DIRECTORY_DOWNLOADS);
   }
 
   public static @Nullable String getCleanFileName(@Nullable String fileName) {
