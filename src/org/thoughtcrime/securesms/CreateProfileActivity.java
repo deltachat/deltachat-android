@@ -40,7 +40,6 @@ import org.thoughtcrime.securesms.components.InputAwareLayout;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
-import org.thoughtcrime.securesms.crypto.ProfileKeyUtil;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
@@ -57,19 +56,13 @@ import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
-import org.whispersystems.signalservice.api.SignalServiceAccountManager;
-import org.whispersystems.signalservice.api.crypto.ProfileCipher;
-import org.whispersystems.signalservice.api.util.StreamDetails;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
-import javax.inject.Inject;
 
 import static android.provider.MediaStore.EXTRA_OUTPUT;
 
@@ -85,8 +78,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
-  @Inject SignalServiceAccountManager accountManager;
 
   private InputAwareLayout       container;
   private ImageView              avatar;
@@ -257,10 +248,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
       @Override
       public void afterTextChanged(Editable s) {
         if(finishMenuItem != null){
-          if (s.toString().getBytes().length > ProfileCipher.NAME_PADDED_LENGTH) {
-            name.setError(getString(R.string.CreateProfileActivity_too_long));
-            finishMenuItem.setEnabled(false);
-          } else if (name.getError() != null || !finishMenuItem.isEnabled()) {
+          if (name.getError() != null || !finishMenuItem.isEnabled()) {
             name.setError(null);
             finishMenuItem.setEnabled(true);
           }
@@ -428,20 +416,14 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private void handleUpload() {
     final String        name;
-    final StreamDetails avatar;
 
     if (TextUtils.isEmpty(this.name.getText().toString())) name = null;
     else                                                   name = this.name.getText().toString();
-
-    if (avatarBytes == null || avatarBytes.length == 0) avatar = null;
-    else                                                avatar = new StreamDetails(new ByteArrayInputStream(avatarBytes),
-                                                                                   "image/jpeg", avatarBytes.length);
 
     new AsyncTask<Void, Void, Boolean>() {
       @Override
       protected Boolean doInBackground(Void... params) {
         Context context    = CreateProfileActivity.this;
-        byte[]  profileKey = ProfileKeyUtil.getProfileKey(CreateProfileActivity.this);
         DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
         setStatusText();
         TextSecurePreferences.setProfileName(context, name);
@@ -453,8 +435,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
           Log.w(TAG, e);
           return false;
         }
-
-//        ApplicationContext.getInstance(context).getJobManager().add(new MultiDeviceProfileKeyUpdateJob(context));
 
         return true;
       }

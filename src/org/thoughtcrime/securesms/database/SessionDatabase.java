@@ -12,7 +12,6 @@ import net.sqlcipher.database.SQLiteDatabase;
 
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.whispersystems.libsignal.state.SessionRecord;
-import org.whispersystems.signalservice.api.push.SignalServiceAddress;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -69,29 +68,6 @@ public class SessionDatabase extends Database {
     return null;
   }
 
-  public @NonNull List<SessionRow> getAllFor(@NonNull Address address) {
-    SQLiteDatabase   database = databaseHelper.getReadableDatabase();
-    List<SessionRow> results  = new LinkedList<>();
-
-    try (Cursor cursor = database.query(TABLE_NAME, null,
-                                        ADDRESS + " = ?",
-                                        new String[] {address.serialize()},
-                                        null, null, null))
-    {
-      while (cursor != null && cursor.moveToNext()) {
-        try {
-          results.add(new SessionRow(address,
-                                     cursor.getInt(cursor.getColumnIndexOrThrow(DEVICE)),
-                                     new SessionRecord(cursor.getBlob(cursor.getColumnIndexOrThrow(RECORD)))));
-        } catch (IOException e) {
-          Log.w(TAG, e);
-        }
-      }
-    }
-
-    return results;
-  }
-
   public @NonNull List<SessionRow> getAll() {
     SQLiteDatabase   database = databaseHelper.getReadableDatabase();
     List<SessionRow> results  = new LinkedList<>();
@@ -111,37 +87,11 @@ public class SessionDatabase extends Database {
     return results;
   }
 
-  public @NonNull List<Integer> getSubDevices(@NonNull Address address) {
-    SQLiteDatabase database = databaseHelper.getReadableDatabase();
-    List<Integer>  results  = new LinkedList<>();
-
-    try (Cursor cursor = database.query(TABLE_NAME, new String[] {DEVICE},
-                                        ADDRESS + " = ?",
-                                        new String[] {address.serialize()},
-                                        null, null, null))
-    {
-      while (cursor != null && cursor.moveToNext()) {
-        int device = cursor.getInt(cursor.getColumnIndexOrThrow(DEVICE));
-
-        if (device != SignalServiceAddress.DEFAULT_DEVICE_ID) {
-          results.add(device);
-        }
-      }
-    }
-
-    return results;
-  }
-
   public void delete(@NonNull Address address, int deviceId) {
     SQLiteDatabase database = databaseHelper.getWritableDatabase();
 
     database.delete(TABLE_NAME, ADDRESS + " = ? AND " + DEVICE + " = ?",
                     new String[] {address.serialize(), String.valueOf(deviceId)});
-  }
-
-  public void deleteAllFor(@NonNull Address address) {
-    SQLiteDatabase database = databaseHelper.getWritableDatabase();
-    database.delete(TABLE_NAME, ADDRESS + " = ?", new String[] {address.serialize()});
   }
 
   public static final class SessionRow {
@@ -157,10 +107,6 @@ public class SessionDatabase extends Database {
 
     public Address getAddress() {
       return address;
-    }
-
-    public int getDeviceId() {
-      return deviceId;
     }
 
     public SessionRecord getRecord() {
