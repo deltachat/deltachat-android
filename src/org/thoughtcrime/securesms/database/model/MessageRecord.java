@@ -29,7 +29,6 @@ import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatch;
 import org.thoughtcrime.securesms.database.documents.NetworkFailure;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ExpirationUtil;
-import org.thoughtcrime.securesms.util.GroupUtil;
 
 import java.util.List;
 
@@ -90,8 +89,6 @@ public abstract class MessageRecord extends DisplayRecord {
   public SpannableString getDisplayBody() {
     if (isGroupUpdate() && isOutgoing()) {
       return new SpannableString(context.getString(R.string.MessageRecord_you_updated_group));
-    } else if (isGroupUpdate()) {
-      return new SpannableString(GroupUtil.getDescription(context, getBody()).toString(getIndividualRecipient()));
     } else if (isGroupQuit() && isOutgoing()) {
       return new SpannableString(context.getString(R.string.MessageRecord_left_group));
     } else if (isGroupQuit()) {
