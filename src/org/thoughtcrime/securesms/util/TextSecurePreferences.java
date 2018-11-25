@@ -16,7 +16,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
-import org.whispersystems.libsignal.util.Medium;
+import org.thoughtcrime.securesms.util.Medium;
 
 import java.io.IOException;
 import java.security.SecureRandom;

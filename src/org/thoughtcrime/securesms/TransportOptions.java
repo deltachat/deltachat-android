@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import org.thoughtcrime.securesms.util.PushCharacterCalculator;
-import org.whispersystems.libsignal.util.guava.Optional;
+import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.LinkedList;
 import java.util.List;

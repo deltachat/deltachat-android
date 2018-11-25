@@ -15,7 +15,6 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.NoExternalStorageException;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
-import org.whispersystems.libsignal.util.Pair;
 
 import java.io.File;
 import java.io.FileOutputStream;

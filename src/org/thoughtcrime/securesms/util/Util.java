@@ -47,7 +47,7 @@ import com.google.android.mms.pdu_alt.EncodedStringValue;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.components.ComposeText;
 import org.thoughtcrime.securesms.database.Address;
-import org.whispersystems.libsignal.util.guava.Optional;
+import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

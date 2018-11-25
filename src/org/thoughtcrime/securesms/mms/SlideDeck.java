@@ -24,7 +24,7 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.whispersystems.libsignal.util.guava.Optional;
+import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.LinkedList;
 import java.util.List;

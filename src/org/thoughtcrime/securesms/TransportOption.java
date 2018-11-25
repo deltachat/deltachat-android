@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 
 import org.thoughtcrime.securesms.util.CharacterCalculator;
 import org.thoughtcrime.securesms.util.CharacterCalculator.CharacterState;
-import org.whispersystems.libsignal.util.guava.Optional;
+import org.thoughtcrime.securesms.util.guava.Optional;
 
 public class TransportOption {
 

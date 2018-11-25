@@ -42,7 +42,7 @@ import org.webrtc.PeerConnectionFactory.InitializationOptions;
 import org.webrtc.voiceengine.WebRtcAudioManager;
 import org.webrtc.voiceengine.WebRtcAudioUtils;
 import org.whispersystems.libsignal.logging.SignalProtocolLoggerProvider;
-import org.whispersystems.libsignal.util.AndroidSignalProtocolLogger;
+import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 
 import java.util.HashSet;
 import java.util.Set;
