@@ -117,7 +117,7 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
 //        ApplicationContext.getInstance(context).getJobManager().add(new RefreshPreKeysJob(context));
       }
 
-      SessionStoreMigrationHelper.migrateSessions(context, db);
+//      SessionStoreMigrationHelper.migrateSessions(context, db);
       PreKeyMigrationHelper.cleanUpPreKeys(context);
     }
   }
@@ -146,7 +146,7 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
 
       if (oldVersion < MIGRATE_SESSIONS_VERSION) {
         db.execSQL("CREATE TABLE sessions (_id INTEGER PRIMARY KEY, address TEXT NOT NULL, device INTEGER NOT NULL, record BLOB NOT NULL, UNIQUE(address, device) ON CONFLICT REPLACE)");
-        SessionStoreMigrationHelper.migrateSessions(context, db);
+//        SessionStoreMigrationHelper.migrateSessions(context, db);
       }
 
       if (oldVersion < NO_MORE_IMAGE_THUMBNAILS_VERSION) {
