@@ -49,7 +49,7 @@ import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.whispersystems.signalservice.internal.util.Util;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashSet;
 import java.util.List;
