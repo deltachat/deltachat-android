@@ -32,8 +32,7 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     Log.w(TAG, "onCreate(" + savedInstanceState + ")");
     onPreCreate();
 
-    final boolean locked = KeyCachingService.isLocked(this);
-    routeApplicationState(locked);
+    routeApplicationState();
 
     super.onCreate(savedInstanceState);
 
@@ -74,7 +73,7 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   @Override
   public void onMasterSecretCleared() {
     Log.w(TAG, "onMasterSecretCleared()");
-    if (isVisible) routeApplicationState(true);
+    if (isVisible) routeApplicationState();
     else           finish();
   }
 
@@ -110,8 +109,8 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     return fragment;
   }
 
-  private void routeApplicationState(boolean locked) {
-    Intent intent = getIntentForState(getApplicationState(locked));
+  private void routeApplicationState() {
+    Intent intent = getIntentForState(getApplicationState());
     if (intent != null) {
       startActivity(intent);
       finish();
@@ -125,7 +124,7 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     }
   }
 
-  private int getApplicationState(boolean locked) {
+  private int getApplicationState() {
     boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
     if (!isConfigured) {
       return STATE_NEEDS_CONFIGURE;
