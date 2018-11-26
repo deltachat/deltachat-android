@@ -45,7 +45,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
@@ -145,7 +144,6 @@ public class MessageNotifier {
           boolean validNotification = false;
 
           if (notification.getId() != SUMMARY_NOTIFICATION_ID &&
-              notification.getId() != KeyCachingService.SERVICE_RUNNING_ID          &&
               notification.getId() != KeepAliveService.FG_NOTIFICATION_ID           &&
               notification.getId() != PENDING_MESSAGES_ID)
           {

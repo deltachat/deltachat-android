@@ -27,7 +27,6 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
-import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.VersionTracker;
 
@@ -84,12 +83,9 @@ public class DatabaseUpgradeActivity extends BaseActivity {
     add(BAD_IMPORT_CLEANUP);
   }};
 
-  private MasterSecret masterSecret;
-
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
-    this.masterSecret = KeyCachingService.getMasterSecret(this);
 
     if (needsUpgradeTask()) {
       Log.w("DatabaseUpgradeActivity", "Upgrading...");

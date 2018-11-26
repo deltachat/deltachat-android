@@ -34,7 +34,6 @@ import org.thoughtcrime.securesms.attachments.AttachmentId;
 import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.mms.PartUriParser;
-import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.MemoryFileUtil;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -72,11 +71,6 @@ public class PartProvider extends ContentProvider {
   @Override
   public ParcelFileDescriptor openFile(@NonNull Uri uri, @NonNull String mode) throws FileNotFoundException {
     Log.w(TAG, "openFile() called!");
-
-    if (KeyCachingService.isLocked(getContext())) {
-      Log.w(TAG, "masterSecret was null, abandoning.");
-      return null;
-    }
 
     switch (uriMatcher.match(uri)) {
     case SINGLE_ROW:

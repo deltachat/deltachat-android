@@ -25,7 +25,6 @@ import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.SearchDatabase;
 import org.thoughtcrime.securesms.database.SmsDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
-import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 import java.io.File;
@@ -98,12 +97,6 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
       android.database.sqlite.SQLiteDatabase legacyDb     = legacyHelper.getWritableDatabase();
 
       SQLCipherMigrationHelper.migratePlaintext(context, legacyDb, db);
-
-      MasterSecret masterSecret = KeyCachingService.getMasterSecret(context);
-
-      if (masterSecret != null) SQLCipherMigrationHelper.migrateCiphertext(context, masterSecret, legacyDb, db, null);
-      else                      TextSecurePreferences.setNeedsSqlCipherMigration(context, true);
-
     }
   }
 

@@ -44,7 +44,6 @@ import org.thoughtcrime.securesms.preferences.ChatsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.NotificationsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
-import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;

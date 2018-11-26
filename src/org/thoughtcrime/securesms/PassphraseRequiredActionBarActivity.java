@@ -1,9 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -12,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.service.KeyCachingService;
 
 import java.util.Locale;
 
@@ -48,7 +45,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   protected void onResume() {
     Log.w(TAG, "onResume()");
     super.onResume();
-    KeyCachingService.registerPassphraseActivityStarted(this);
 
     isVisible = true;
   }
@@ -57,7 +53,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   protected void onPause() {
     Log.w(TAG, "onPause()");
     super.onPause();
-    KeyCachingService.registerPassphraseActivityStopped(this);
 
     isVisible = false;
   }
