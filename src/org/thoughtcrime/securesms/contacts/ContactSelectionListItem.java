@@ -124,6 +124,14 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     return number;
   }
 
+  public int getContactId() {
+    if (recipient.getAddress().isDcContact()) {
+      return recipient.getAddress().getDcContactId();
+    } else {
+      return -1;
+    }
+  }
+
   @Override
   public void onModified(final Recipient recipient) {
     if (this.recipient == recipient) {

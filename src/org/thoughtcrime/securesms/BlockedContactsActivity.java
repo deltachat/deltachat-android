@@ -138,12 +138,11 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
               .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
               .setCancelable(true)
               .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(R.string.RecipientPreferenceActivity_block, (dialog, which) -> unblockContact(item.getNumber())).show();
+              .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, (dialog, which) -> unblockContact(item.getContactId())).show();
     }
 
-    private void unblockContact(String addr) {
+    private void unblockContact(int contactId) {
       ApplicationDcContext dcContext = DcHelper.getContext(getContext());
-      int contactId = dcContext.lookupContactIdByAddr(addr);
       dcContext.blockContact(contactId, 0);
       restartLoader();
     }

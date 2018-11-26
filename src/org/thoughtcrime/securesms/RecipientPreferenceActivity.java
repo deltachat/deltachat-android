@@ -41,6 +41,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.color.MaterialColors;
 import org.thoughtcrime.securesms.components.ThreadPhotoRailView;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.IdentityDatabase.IdentityRecord;
@@ -63,10 +65,6 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
-import org.thoughtcrime.securesms.util.guava.Optional;
-
-import java.util.concurrent.ExecutionException;
 
 @SuppressLint("StaticFieldLeak")
 public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActivity implements RecipientModifiedListener, LoaderManager.LoaderCallbacks<Cursor>
@@ -636,14 +634,9 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         new AsyncTask<Void, Void, Void>() {
           @Override
           protected Void doInBackground(Void... params) {
-            Context context = getActivity();
-
-            DatabaseFactory.getRecipientDatabase(context)
-                           .setBlocked(recipient, blocked);
-
-//            ApplicationContext.getInstance(context)
-//                              .getJobManager()
-//                              .add(new MultiDeviceBlockedUpdateJob(context));
+            ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+            int[] contactId = dcContext.getChatContacts(recipient.getAddress().getDcChatId());
+            dcContext.blockContact(contactId[0], blocked ? 1 : 0);
             return null;
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);

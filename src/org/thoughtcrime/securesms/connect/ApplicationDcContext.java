@@ -26,7 +26,6 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.contacts.avatars.SystemContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
@@ -44,8 +43,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ApplicationDcContext extends DcContext {
 
@@ -211,6 +212,15 @@ public class ApplicationDcContext extends DcContext {
         if (contact.getId() == DcContact.DC_CONTACT_ID_SELF) {
             recipient.setProfileAvatar("SELF");
         }
+        int[] blockedContacts = getBlockedContacts();
+        boolean blocked = false;
+        for(int blockedContact: blockedContacts) {
+            if (contact.getId() == blockedContact) {
+                blocked = true;
+                break;
+            }
+        }
+        recipient.setBlocked(blocked);
         return recipient;
     }
 
