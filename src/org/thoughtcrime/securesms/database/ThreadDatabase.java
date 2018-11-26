@@ -409,83 +409,6 @@ public class ThreadDatabase extends Database {
     notifyConversationListListeners();
   }
 
-  public void unarchiveConversation(long threadId) {
-    SQLiteDatabase db            = databaseHelper.getWritableDatabase();
-    ContentValues  contentValues = new ContentValues(1);
-    contentValues.put(ARCHIVED, 0);
-
-    db.update(TABLE_NAME, contentValues, ID_WHERE, new String[] {threadId + ""});
-    notifyConversationListListeners();
-  }
-
-  public void setLastSeen(long threadId) {
-    SQLiteDatabase db = databaseHelper.getWritableDatabase();
-    ContentValues contentValues = new ContentValues(1);
-    contentValues.put(LAST_SEEN, System.currentTimeMillis());
-
-    db.update(TABLE_NAME, contentValues, ID_WHERE, new String[] {String.valueOf(threadId)});
-    notifyConversationListListeners();
-  }
-
-  public Pair<Long, Boolean> getLastSeenAndHasSent(long threadId) {
-    SQLiteDatabase db     = databaseHelper.getReadableDatabase();
-    Cursor         cursor = db.query(TABLE_NAME, new String[]{LAST_SEEN, HAS_SENT}, ID_WHERE, new String[]{String.valueOf(threadId)}, null, null, null);
-
-    try {
-      if (cursor != null && cursor.moveToFirst()) {
-        return new Pair<>(cursor.getLong(0), cursor.getLong(1) == 1);
-      }
-
-      return new Pair<>(-1L, false);
-    } finally {
-      if (cursor != null) cursor.close();
-    }
-  }
-
-  public void deleteConversation(long threadId) {
-    DatabaseFactory.getSmsDatabase(context).deleteThread(threadId);
-    DatabaseFactory.getMmsDatabase(context).deleteThread(threadId);
-    DatabaseFactory.getDraftDatabase(context).clearDrafts(threadId);
-    deleteThread(threadId);
-    notifyConversationListeners(threadId);
-    notifyConversationListListeners();
-  }
-
-  public void deleteConversations(Set<Long> selectedConversations) {
-    DatabaseFactory.getSmsDatabase(context).deleteThreads(selectedConversations);
-    DatabaseFactory.getMmsDatabase(context).deleteThreads(selectedConversations);
-    DatabaseFactory.getDraftDatabase(context).clearDrafts(selectedConversations);
-    deleteThreads(selectedConversations);
-    notifyConversationListeners(selectedConversations);
-    notifyConversationListListeners();
-  }
-
-  public void deleteAllConversations() {
-    DatabaseFactory.getSmsDatabase(context).deleteAllThreads();
-    DatabaseFactory.getMmsDatabase(context).deleteAllThreads();
-    DatabaseFactory.getDraftDatabase(context).clearAllDrafts();
-    deleteAllThreads();
-  }
-
-  public long getThreadIdIfExistsFor(Recipient recipient) {
-    SQLiteDatabase db      = databaseHelper.getReadableDatabase();
-    String where           = ADDRESS + " = ?";
-    String[] recipientsArg = new String[] {recipient.getAddress().serialize()};
-    Cursor cursor          = null;
-
-    try {
-      cursor = db.query(TABLE_NAME, new String[]{ID}, where, recipientsArg, null, null, null);
-
-      if (cursor != null && cursor.moveToFirst())
-        return cursor.getLong(cursor.getColumnIndexOrThrow(ID));
-      else
-        return -1L;
-    } finally {
-      if (cursor != null)
-        cursor.close();
-    }
-  }
-
   public long getThreadIdFor(Recipient recipient) {
     return getThreadIdFor(recipient, DistributionTypes.DEFAULT);
   }
@@ -508,48 +431,6 @@ public class ThreadDatabase extends Database {
       if (cursor != null)
         cursor.close();
     }
-  }
-
-  public @Nullable Recipient getRecipientForThreadId(long threadId) {
-    SQLiteDatabase db = databaseHelper.getReadableDatabase();
-    Cursor cursor     = null;
-
-    try {
-      cursor = db.query(TABLE_NAME, null, ID + " = ?", new String[] {threadId+""}, null, null, null);
-
-      if (cursor != null && cursor.moveToFirst()) {
-        Address address = Address.fromSerialized(cursor.getString(cursor.getColumnIndexOrThrow(ADDRESS)));
-        return Recipient.from(context, address, false);
-      }
-    } finally {
-      if (cursor != null)
-        cursor.close();
-    }
-
-    return null;
-  }
-
-  public void setHasSent(long threadId, boolean hasSent) {
-    ContentValues contentValues = new ContentValues(1);
-    contentValues.put(HAS_SENT, hasSent ? 1 : 0);
-
-    databaseHelper.getWritableDatabase().update(TABLE_NAME, contentValues, ID_WHERE,
-                                                new String[] {String.valueOf(threadId)});
-
-    notifyConversationListeners(threadId);
-  }
-
-  void updateReadState(long threadId) {
-    int unreadCount = DatabaseFactory.getMmsSmsDatabase(context).getUnreadCount(threadId);
-
-    ContentValues contentValues = new ContentValues();
-    contentValues.put(READ, unreadCount == 0);
-    contentValues.put(UNREAD_COUNT, unreadCount);
-
-    databaseHelper.getWritableDatabase().update(TABLE_NAME, contentValues,ID_WHERE,
-                                                new String[] {String.valueOf(threadId)});
-
-    notifyConversationListListeners();
   }
 
   public boolean update(long threadId, boolean unarchive) {

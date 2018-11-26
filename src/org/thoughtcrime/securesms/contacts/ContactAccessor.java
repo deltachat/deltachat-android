@@ -135,32 +135,6 @@ public class ContactAccessor {
     return false;
   }
 
-  public Collection<ContactData> getContactsWithPush(Context context) {
-    final ContentResolver resolver = context.getContentResolver();
-    final String[] inProjection    = new String[]{PhoneLookup._ID, PhoneLookup.DISPLAY_NAME};
-
-    final List<Address>           registeredAddresses = DatabaseFactory.getRecipientDatabase(context).getRegistered();
-    final Collection<ContactData> lookupData          = new ArrayList<>(registeredAddresses.size());
-
-    for (Address registeredAddress : registeredAddresses) {
-      Uri    uri          = Uri.withAppendedPath(PhoneLookup.CONTENT_FILTER_URI, Uri.encode(registeredAddress.serialize()));
-      Cursor lookupCursor = resolver.query(uri, inProjection, null, null, null);
-
-      try {
-        if (lookupCursor != null && lookupCursor.moveToFirst()) {
-          final ContactData contactData = new ContactData(lookupCursor.getLong(0), lookupCursor.getString(1));
-          contactData.numbers.add(new NumberData("TextSecure", registeredAddress.serialize()));
-          lookupData.add(contactData);
-        }
-      } finally {
-        if (lookupCursor != null)
-          lookupCursor.close();
-      }
-    }
-
-    return lookupData;
-  }
-
   public String getNameFromContact(Context context, Uri uri) {
     Cursor cursor = null;
 
