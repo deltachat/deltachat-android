@@ -33,6 +33,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -117,7 +118,7 @@ public class ContactSelectionListFragment extends    Fragment
     super.onStart();
     this.getLoaderManager().initLoader(0, null, this);
     Permissions.with(this)
-               .request(Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS)
+               .request(Manifest.permission.READ_CONTACTS)
                .ifNecessary()
                .onAllGranted(this::handleContactPermissionGranted)
                .execute();
