@@ -21,9 +21,10 @@ public class PanicResponderListener extends BroadcastReceiver {
     if (intent != null  && !TextSecurePreferences.isPasswordDisabled(context) &&
         "info.guardianproject.panic.action.TRIGGER".equals(intent.getAction()))
     {
-      Intent lockIntent = new Intent(context, KeyCachingService.class);
-      lockIntent.setAction(KeyCachingService.CLEAR_KEY_ACTION);
-      context.startService(lockIntent);
+      // as delta is protected with the system credentials,
+      // the current suggestion on "panic" would probably just be to lock the device.
+      // this would also lock delta chat.
+      // however, we leave this class to allow easy changes on this.
     }
   }
 }

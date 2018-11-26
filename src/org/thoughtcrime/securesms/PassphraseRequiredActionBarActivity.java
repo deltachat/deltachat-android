@@ -37,7 +37,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     super.onCreate(savedInstanceState);
 
     if (!isFinishing()) {
-      initializeClearKeyReceiver();
       onCreate(savedInstanceState, true);
     }
   }
@@ -67,7 +66,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   protected void onDestroy() {
     Log.w(TAG, "onDestroy()");
     super.onDestroy();
-    removeClearKeyReceiver(this);
   }
 
   @Override
@@ -141,26 +139,5 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     final Intent intent = new Intent(this, destination);
     if (nextIntent != null)   intent.putExtra("next_intent", nextIntent);
     return intent;
-  }
-
-  private void initializeClearKeyReceiver() {
-    Log.w(TAG, "initializeClearKeyReceiver()");
-    this.clearKeyReceiver = new BroadcastReceiver() {
-      @Override
-      public void onReceive(Context context, Intent intent) {
-        Log.w(TAG, "onReceive() for clear key event");
-        onMasterSecretCleared();
-      }
-    };
-
-    IntentFilter filter = new IntentFilter(KeyCachingService.CLEAR_KEY_EVENT);
-    registerReceiver(clearKeyReceiver, filter, KeyCachingService.KEY_PERMISSION, null);
-  }
-
-  private void removeClearKeyReceiver(Context context) {
-    if (clearKeyReceiver != null) {
-      context.unregisterReceiver(clearKeyReceiver);
-      clearKeyReceiver = null;
-    }
   }
 }

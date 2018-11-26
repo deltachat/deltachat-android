@@ -154,7 +154,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     switch (item.getItemId()) {
       case R.id.menu_new_chat:          createChat();            return true;
       case R.id.menu_settings:          handleDisplaySettings(); return true;
-      case R.id.menu_clear_passphrase:  handleClearPassphrase(); return true;
       case R.id.menu_qr_scan:           handleQrScan();          return true;
       case R.id.menu_qr_show:           handleQrShow();          return true;
       case R.id.menu_deaddrop:          handleDeaddrop();        return true;
@@ -215,12 +214,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private void handleDisplaySettings() {
     Intent preferencesIntent = new Intent(this, ApplicationPreferencesActivity.class);
     startActivity(preferencesIntent);
-  }
-
-  private void handleClearPassphrase() {
-    Intent intent = new Intent(this, KeyCachingService.class);
-    intent.setAction(KeyCachingService.CLEAR_KEY_ACTION);
-    startService(intent);
   }
 
   @Override

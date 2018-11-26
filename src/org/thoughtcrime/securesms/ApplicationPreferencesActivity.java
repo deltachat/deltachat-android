@@ -127,10 +127,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       recreate();
     } else if (key.equals(TextSecurePreferences.LANGUAGE_PREF)) {
       recreate();
-
-      Intent intent = new Intent(this, KeyCachingService.class);
-      intent.setAction(KeyCachingService.LOCALE_CHANGE_EVENT);
-      startService(intent);
     }
   }
 
