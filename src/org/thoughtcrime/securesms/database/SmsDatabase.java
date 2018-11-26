@@ -20,19 +20,14 @@ package org.thoughtcrime.securesms.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.text.TextUtils;
 import android.util.Log;
 
-import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteDatabase;x
 
-import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatch;
-import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatchList;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.database.model.SmsMessageRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.JsonUtils;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -145,11 +140,6 @@ public class SmsDatabase extends MessagingDatabase {
     }
 
     return 0;
-  }
-
-  @Override
-  public void markAsSent(long id, boolean isSecure) {
-    updateTypeBitmask(id, Types.BASE_TYPE_MASK, Types.BASE_SENT_TYPE | (isSecure ? Types.PUSH_MESSAGE_BIT | Types.SECURE_MESSAGE_BIT : 0));
   }
 
   @Override
@@ -361,36 +351,19 @@ public class SmsDatabase extends MessagingDatabase {
 //        readReceiptCount = 0;
 //      }
 
-      List<IdentityKeyMismatch> mismatches = getMismatches(mismatchDocument);
       Recipient                 recipient  = Recipient.from(context, address, true);
 
       return new SmsMessageRecord(context, messageId, body, recipient,
                                   recipient,
                                   addressDeviceId,
                                   dateSent, dateReceived, deliveryReceiptCount, type,
-                                  threadId, status, mismatches, subscriptionId,
+                                  threadId, status, new LinkedList<>(), subscriptionId,
                                   expiresIn, expireStarted, readReceiptCount);
-    }
-
-    private List<IdentityKeyMismatch> getMismatches(String document) {
-      try {
-        if (!TextUtils.isEmpty(document)) {
-          return JsonUtils.fromJson(document, IdentityKeyMismatchList.class).getList();
-        }
-      } catch (IOException e) {
-        Log.w(TAG, e);
-      }
-
-      return new LinkedList<>();
     }
 
     public void close() {
       cursor.close();
     }
-  }
-
-  public interface InsertListener {
-    public void onComplete();
   }
 
 }

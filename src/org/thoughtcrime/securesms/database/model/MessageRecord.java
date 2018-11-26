@@ -197,18 +197,6 @@ public abstract class MessageRecord extends DisplayRecord {
     return type;
   }
 
-  public List<IdentityKeyMismatch> getIdentityKeyMismatches() {
-    return mismatches;
-  }
-
-  public List<NetworkFailure> getNetworkFailures() {
-    return networkFailures;
-  }
-
-  public boolean hasNetworkFailures() {
-    return networkFailures != null && !networkFailures.isEmpty();
-  }
-
   protected SpannableString emphasisAdded(String sequence) {
     SpannableString spannable = new SpannableString(sequence);
     spannable.setSpan(new RelativeSizeSpan(0.9f), 0, sequence.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

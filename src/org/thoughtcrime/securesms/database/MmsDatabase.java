@@ -36,8 +36,6 @@ import org.thoughtcrime.securesms.attachments.AttachmentId;
 import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
 import org.thoughtcrime.securesms.attachments.MmsNotificationAttachment;
 import org.thoughtcrime.securesms.contactshare.Contact;
-import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatch;
-import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatchList;
 import org.thoughtcrime.securesms.database.documents.NetworkFailure;
 import org.thoughtcrime.securesms.database.documents.NetworkFailureList;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
@@ -157,11 +155,6 @@ public class MmsDatabase extends MessagingDatabase {
     super(context, databaseHelper);
   }
 
-  @Override
-  protected String getTableName() {
-    return TABLE_NAME;
-  }
-
   public int getMessageCountForThread(long threadId) {
     SQLiteDatabase db = databaseHelper.getReadableDatabase();
     Cursor cursor     = null;
@@ -268,13 +261,6 @@ public class MmsDatabase extends MessagingDatabase {
     if (threadId.isPresent()) {
       DatabaseFactory.getThreadDatabase(context).update(threadId.get(), false);
     }
-  }
-
-  @Override
-  public void markAsSent(long messageId, boolean secure) {
-    long threadId = getThreadIdForMessage(messageId);
-    updateMailboxBitmask(messageId, Types.BASE_TYPE_MASK, Types.BASE_SENT_TYPE | (secure ? Types.PUSH_MESSAGE_BIT | Types.SECURE_MESSAGE_BIT : 0), Optional.of(threadId));
-    notifyConversationListeners(threadId);
   }
 
   @Override
@@ -553,7 +539,6 @@ public class MmsDatabase extends MessagingDatabase {
 //      }
 
       Recipient                 recipient          = getRecipientFor(address);
-      List<IdentityKeyMismatch> mismatches         = getMismatchedIdentities(mismatchDocument);
       List<NetworkFailure>      networkFailures    = getFailures(networkDocument);
       List<DatabaseAttachment>  attachments        = DatabaseFactory.getAttachmentDatabase(context).getAttachment(cursor);
       List<Contact>             contacts           = getSharedContacts(cursor, attachments);
@@ -563,7 +548,7 @@ public class MmsDatabase extends MessagingDatabase {
 
       return new MediaMmsMessageRecord(context, id, recipient, recipient,
                                        addressDeviceId, dateSent, dateReceived, deliveryReceiptCount,
-                                       threadId, body, slideDeck, partCount, box, mismatches,
+                                       threadId, body, slideDeck, partCount, box, new LinkedList<>(),
                                        networkFailures, subscriptionId, expiresIn, expireStarted,
                                        readReceiptCount, quote, contacts);
     }
@@ -578,18 +563,6 @@ public class MmsDatabase extends MessagingDatabase {
 
       }
       return Recipient.from(context, address, true);
-    }
-
-    private List<IdentityKeyMismatch> getMismatchedIdentities(String document) {
-      if (!TextUtils.isEmpty(document)) {
-        try {
-          return JsonUtils.fromJson(document, IdentityKeyMismatchList.class).getList();
-        } catch (IOException e) {
-          Log.w(TAG, e);
-        }
-      }
-
-      return new LinkedList<>();
     }
 
     private List<NetworkFailure> getFailures(String document) {
