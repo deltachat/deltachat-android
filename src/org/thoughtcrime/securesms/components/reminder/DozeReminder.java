@@ -39,8 +39,11 @@ public class DozeReminder extends Reminder {
   }
 
   public static boolean isEligible(Context context) {
-    return TextSecurePreferences.isGcmDisabled(context)            &&
-           !TextSecurePreferences.hasPromptedOptimizeDoze(context) &&
+    if(context!=null) { // condition is always true, disable reminder for now
+      return false;
+    }
+
+    return !TextSecurePreferences.hasPromptedOptimizeDoze(context) &&
            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M          &&
            !((PowerManager)context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName());
   }
