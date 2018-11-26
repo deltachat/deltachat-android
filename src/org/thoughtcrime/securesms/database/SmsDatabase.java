@@ -22,7 +22,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
-import net.sqlcipher.database.SQLiteDatabase;x
+import net.sqlcipher.database.SQLiteDatabase;
 
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.database.model.SmsMessageRecord;

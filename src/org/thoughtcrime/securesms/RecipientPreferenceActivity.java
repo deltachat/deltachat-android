@@ -45,7 +45,6 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.IdentityDatabase.IdentityRecord;
 import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.RecipientDatabase.VibrateState;
 import org.thoughtcrime.securesms.database.loaders.ThreadMediaLoader;
@@ -569,27 +568,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
             return null;
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-      }
-    }
-
-    private class IdentityClickedListener implements Preference.OnPreferenceClickListener {
-
-      private final IdentityRecord identityKey;
-
-      private IdentityClickedListener(IdentityRecord identityKey) {
-        Log.w(TAG, "Identity record: " + identityKey);
-        this.identityKey = identityKey;
-      }
-
-      @Override
-      public boolean onPreferenceClick(Preference preference) {
-//        Intent verifyIdentityIntent = new Intent(getActivity(), VerifyIdentityActivity.class);
-//        verifyIdentityIntent.putExtra(VerifyIdentityActivity.ADDRESS_EXTRA, recipient.getAddress());
-//        verifyIdentityIntent.putExtra(VerifyIdentityActivity.IDENTITY_EXTRA, new IdentityKeyParcelable(identityKey.getIdentityKey()));
-//        verifyIdentityIntent.putExtra(VerifyIdentityActivity.VERIFIED_EXTRA, identityKey.getVerifiedStatus() == IdentityDatabase.VerifiedStatus.VERIFIED);
-//        startActivity(verifyIdentityIntent);
-
-        return true;
       }
     }
 

@@ -22,7 +22,6 @@ import android.database.Cursor;
 import net.sqlcipher.database.SQLiteDatabase;
 
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
-import org.whispersystems.libsignal.IdentityKey;
 
 public class IdentityDatabase extends Database {
 
@@ -47,11 +46,6 @@ public class IdentityDatabase extends Database {
       VERIFIED + " INTEGER DEFAULT 0, " +
       NONBLOCKING_APPROVAL + " INTEGER DEFAULT 0);";
 
-  public enum VerifiedStatus {
-    DEFAULT, VERIFIED, UNVERIFIED;
-
-  }
-
   IdentityDatabase(Context context, SQLCipherOpenHelper databaseHelper) {
     super(context, databaseHelper);
   }
@@ -59,39 +53,5 @@ public class IdentityDatabase extends Database {
   public Cursor getIdentities() {
     SQLiteDatabase database = databaseHelper.getReadableDatabase();
     return database.query(TABLE_NAME, null, null, null, null, null, null);
-  }
-
-  public static class IdentityRecord {
-
-    private final Address        address;
-    private final IdentityKey    identitykey;
-    private final VerifiedStatus verifiedStatus;
-    private final boolean        firstUse;
-    private final long           timestamp;
-
-    private IdentityRecord(Address address,
-                           IdentityKey identitykey, VerifiedStatus verifiedStatus,
-                           boolean firstUse, long timestamp, boolean nonblockingApproval)
-    {
-      this.address             = address;
-      this.identitykey         = identitykey;
-      this.verifiedStatus      = verifiedStatus;
-      this.firstUse            = firstUse;
-      this.timestamp           = timestamp;
-    }
-
-    public Address getAddress() {
-      return address;
-    }
-
-    public long getTimestamp() {
-      return timestamp;
-    }
-
-    @Override
-    public String toString() {
-      return "{address: " + address + ", identityKey: " + identitykey + ", verifiedStatus: " + verifiedStatus + ", firstUse: " + firstUse + "}";
-    }
-
   }
 }
