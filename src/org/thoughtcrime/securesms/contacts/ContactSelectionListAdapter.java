@@ -74,6 +74,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   private @NonNull int[]                      dcContactList = new int[0];
   private String                              query;
   private final boolean                       multiSelect;
+  private final boolean                       longPressSelect;
   private final LayoutInflater                li;
   private final TypedArray                    drawables;
   private final ItemClickListener             clickListener;
@@ -169,6 +170,9 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     }
 
     private void toggleSelection() {
+      if (!longPressSelect) {
+        return;
+      }
       int adapterPosition = getAdapterPosition();
       int contactId = getContactId(adapterPosition);
       boolean enabled = actionModeSelection.indexOfKey(adapterPosition) > -1;
@@ -248,7 +252,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   public ContactSelectionListAdapter(@NonNull  Context context,
                                      @NonNull  GlideRequests glideRequests,
                                      @Nullable ItemClickListener clickListener,
-                                     boolean multiSelect)
+                                     boolean multiSelect,
+                                     boolean longPressSelect)
   {
     super();
     this.context       = context;
@@ -258,6 +263,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     this.drawables     = context.obtainStyledAttributes(STYLE_ATTRIBUTES);
     this.multiSelect   = multiSelect;
     this.clickListener = clickListener;
+    this.longPressSelect = longPressSelect;
   }
 
   @Override

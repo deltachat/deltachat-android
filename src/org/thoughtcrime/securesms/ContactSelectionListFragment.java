@@ -33,7 +33,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -240,9 +239,10 @@ public class ContactSelectionListFragment extends    Fragment
 
   private void initializeCursor() {
     ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(),
-                                                                          GlideApp.with(this),
-                                                                          new ListClickListener(),
-                                                                          isMulti());
+            GlideApp.with(this),
+            new ListClickListener(),
+            isMulti(),
+            true);
     selectedContacts = adapter.getSelectedContacts();
     recyclerView.setAdapter(adapter);
     recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, true, true));

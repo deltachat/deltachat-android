@@ -95,6 +95,7 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
       ContactSelectionListAdapter adapter = new ContactSelectionListAdapter(getActivity(),
               GlideApp.with(this),
               this,
+              false,
               false);
       recyclerView.setAdapter(adapter);
       swipeRefreshLayout.setRefreshing(false);
