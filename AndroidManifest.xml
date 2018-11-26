@@ -270,8 +270,6 @@
         android:theme="@style/TextSecure.LightTheme"
         android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-    <service android:enabled="true" android:exported="false" android:name=".service.KeyCachingService"/>
-
     <service android:name=".connect.KeepAliveService" android:enabled="true"/>
 
     <service android:name=".service.DirectShareService"
