@@ -14,7 +14,6 @@ import net.sqlcipher.database.SQLiteDatabaseHook;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
-import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.database.DraftDatabase;
 import org.thoughtcrime.securesms.database.GroupDatabase;
@@ -25,7 +24,6 @@ import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.SearchDatabase;
 import org.thoughtcrime.securesms.database.SmsDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 import java.io.File;
 
@@ -91,13 +89,6 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
     executeStatements(db, DraftDatabase.CREATE_INDEXS);
     executeStatements(db, GroupDatabase.CREATE_INDEXS);
     executeStatements(db, GroupReceiptDatabase.CREATE_INDEXES);
-
-    if (context.getDatabasePath(ClassicOpenHelper.NAME).exists()) {
-      ClassicOpenHelper                      legacyHelper = new ClassicOpenHelper(context);
-      android.database.sqlite.SQLiteDatabase legacyDb     = legacyHelper.getWritableDatabase();
-
-      SQLCipherMigrationHelper.migratePlaintext(context, legacyDb, db);
-    }
   }
 
   @Override

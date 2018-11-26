@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms;
 
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -13,16 +12,13 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.util.Locale;
 
-public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarActivity implements MasterSecretListener {
+public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarActivity {
   private static final String TAG = PassphraseRequiredActionBarActivity.class.getSimpleName();
 
   public static final String LOCALE_EXTRA = "locale_extra";
 
   private static final int STATE_NORMAL          = 0;
   private static final int STATE_NEEDS_CONFIGURE = 1;
-
-  private BroadcastReceiver          clearKeyReceiver;
-  private boolean                    isVisible;
 
   @Override
   protected final void onCreate(Bundle savedInstanceState) {
@@ -45,29 +41,18 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   protected void onResume() {
     Log.w(TAG, "onResume()");
     super.onResume();
-
-    isVisible = true;
   }
 
   @Override
   protected void onPause() {
     Log.w(TAG, "onPause()");
     super.onPause();
-
-    isVisible = false;
   }
 
   @Override
   protected void onDestroy() {
     Log.w(TAG, "onDestroy()");
     super.onDestroy();
-  }
-
-  @Override
-  public void onMasterSecretCleared() {
-    Log.w(TAG, "onMasterSecretCleared()");
-    if (isVisible) routeApplicationState();
-    else           finish();
   }
 
   protected <T extends Fragment> T initFragment(@IdRes int target,
