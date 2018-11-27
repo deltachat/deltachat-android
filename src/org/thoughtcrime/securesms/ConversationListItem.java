@@ -52,6 +52,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.search.model.MessageResult;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ResUtil;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -169,7 +170,13 @@ public class ConversationListItem extends RelativeLayout
     else {
       this.contactPhotoImage.setAvatar(glideRequests, recipient, true);
     }
-    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, thread.isVerified() ? R.drawable.ic_verified : 0, 0);
+
+    fromView.setCompoundDrawablesWithIntrinsicBounds(
+        TextSecurePreferences.isChatMuted(getContext(), (int)threadId)? R.drawable.ic_volume_off_grey600_18dp : 0,
+        0,
+        thread.isVerified()? R.drawable.ic_verified : 0,
+        0);
+
     groupIndicator.setVisibility(recipient.isGroupRecipient() ? VISIBLE : GONE);
     int color = ResUtil.getColor(getContext(), R.attr.conversation_list_item_contact_color);
     groupIndicator.setColorFilter(color);

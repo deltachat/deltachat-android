@@ -160,7 +160,6 @@ public class RecipientProvider {
     @Nullable final MaterialColor        color;
     @Nullable final Uri                  messageRingtone;
     @Nullable final Uri                  callRingtone;
-              final long                 mutedUntil;
     @Nullable final VibrateState         messageVibrateState;
     @Nullable final VibrateState         callVibrateState;
               final boolean              blocked;
@@ -186,7 +185,6 @@ public class RecipientProvider {
       this.color                 = settings     != null ? settings.getColor() : null;
       this.messageRingtone       = settings     != null ? settings.getMessageRingtone() : null;
       this.callRingtone          = settings     != null ? settings.getCallRingtone() : null;
-      this.mutedUntil            = settings     != null ? settings.getMuteUntil() : 0;
       this.messageVibrateState   = settings     != null ? settings.getMessageVibrateState() : null;
       this.callVibrateState      = settings     != null ? settings.getCallVibrateState() : null;
       this.blocked               = settings     != null && settings.isBlocked();

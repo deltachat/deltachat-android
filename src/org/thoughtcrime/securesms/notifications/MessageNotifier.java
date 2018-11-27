@@ -190,20 +190,18 @@ public class MessageNotifier {
     boolean    isVisible  = visibleThread == chatId;
     ApplicationDcContext dcContext = DcHelper.getContext(context);
 
-    Recipient recipient = dcContext.getRecipient(dcContext.getChat(chatId));
-
     if (isVisible) {
       dcContext.marknoticedChat(chatId);
     }
 
     if (!TextSecurePreferences.isNotificationsEnabled(context) ||
-        recipient.isMuted())
+        TextSecurePreferences.isChatMuted(context, chatId))
     {
       return;
     }
 
     if (isVisible && signal) {
-      sendInThreadNotification(context, recipient);
+      sendInThreadNotification(context, chatId);
     } else {
       updateNotification(context, signal, 0);
     }
@@ -338,14 +336,19 @@ public class MessageNotifier {
     NotificationManagerCompat.from(context).notify(SUMMARY_NOTIFICATION_ID, builder.build());
   }
 
-  private static void sendInThreadNotification(Context context, Recipient recipient) {
+  private static void sendInThreadNotification(Context context, int chatId) {
     if (!TextSecurePreferences.isInThreadNotifications(context) ||
         ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
     {
       return;
     }
 
-    Uri uri = recipient != null ? recipient.resolve().getMessageRingtone() : null;
+    if( TextSecurePreferences.isChatMuted(context, chatId) ) {
+      Log.d(TAG, "chat muted");
+      return;
+    }
+
+    Uri uri = null; // TODO: init with chat-specific ringtone; was: recipient.resolve().getMessageRingtone()
 
     if (uri == null) {
       uri = TextSecurePreferences.getNotificationRingtone(context);
@@ -403,7 +406,7 @@ public class MessageNotifier {
         body = SpanUtil.italic(message, italicLength);
       }
 
-      if (!threadRecipient.isMuted()) {
+      if (!TextSecurePreferences.isChatMuted(context, chatId)) {
         notificationState.addNotification(new NotificationItem(id, mms, threadRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
       }
     }

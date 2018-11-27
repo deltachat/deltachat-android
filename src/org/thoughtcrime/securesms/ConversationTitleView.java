@@ -14,6 +14,7 @@ import com.b44t.messenger.DcChat;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
@@ -51,24 +52,24 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat) {
-    if      (dcChat == null) setComposeTitle();
-    else                     setRecipientTitle(dcChat);
 
-    /*if (dcChat != null && recipient.isBlocked()) { TODO: dc: show icons when blocked or muted
-      title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_block_white_18dp, 0, 0, 0);
-    } else if (recipient != null && recipient.isMuted()) {
-      title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_volume_off_white_18dp, 0, 0, 0);
-    } else*/ {
-      //title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    }
+    int imgLeft = 0;
+    int imgRight = 0;
 
-    if (dcChat != null) {
+    if (dcChat == null) {
+      setComposeTitle();
+    } else {
+      setRecipientTitle(dcChat);
+      if (TextSecurePreferences.isChatMuted(getContext(), dcChat.getId())) {
+        imgLeft = R.drawable.ic_volume_off_white_18dp;
+      }
+      if (dcChat.isVerified()) {
+        imgRight = R.drawable.ic_verified;
+      }
       this.avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
     }
-  }
 
-  public void setVerified(boolean verified) {
-    title.setCompoundDrawablesWithIntrinsicBounds(0, 0, verified ? R.drawable.ic_verified : 0, 0);
+    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
   }
 
   public void hideAvatar() {

@@ -40,6 +40,7 @@ public class TextSecurePreferences {
   public  static final String LED_COLOR_PREF                   = "pref_led_color";
   public  static final String LED_BLINK_PREF                   = "pref_led_blink";
   private static final String LED_BLINK_PREF_CUSTOM            = "pref_led_blink_custom";
+  private static final String CHAT_MUTED_UNTIL                 = "pref_chat_muted_until_"; // followed by chat-id
   public  static final String ALL_SMS_PREF                     = "pref_all_sms";
   public  static final String SCREEN_LOCK_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
   public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
@@ -73,12 +74,6 @@ public class TextSecurePreferences {
   private static final String ATTACHMENT_UNENCRYPTED_SECRET = "pref_attachment_unencrypted_secret";
 
   public static final String SCREEN_LOCK         = "pref_android_screen_lock";
-
-  private static final String SERVICE_OUTAGE         = "pref_service_outage";
-  private static final String LAST_OUTAGE_CHECK_TIME = "pref_last_outage_check_time";
-
-  private static final String LAST_FULL_CONTACT_SYNC_TIME = "pref_last_full_contact_sync_time";
-  private static final String NEEDS_FULL_CONTACT_SYNC     = "pref_needs_full_contact_sync";
 
   private static final String PREF_CONTACT_PHOTO_IDENTIFIERS = "pref_contact_photo_identifiers";
 
@@ -340,6 +335,18 @@ public class TextSecurePreferences {
     return getStringPreference(context, LED_BLINK_PREF_CUSTOM, "500,2000");
   }
 
+  public static void setChatMutedUntil(Context context, int chatId, long until) {
+    setLongPreference(context, CHAT_MUTED_UNTIL+chatId, until);
+  }
+
+  public static long getChatMutedUntil(Context context, int chatId) {
+    return getLongPreference(context, CHAT_MUTED_UNTIL+chatId, 0);
+  }
+
+  public static boolean isChatMuted(Context context, int chatId) {
+    return System.currentTimeMillis() <= getChatMutedUntil(context, chatId);
+  }
+
   public static String getBackgroundImagePath(Context context) {
     return getStringPreference(context, BACKGROUND_PREF, "");
   }
@@ -351,6 +358,8 @@ public class TextSecurePreferences {
   public static boolean isSystemEmojiPreferred(Context context) {
     return getBooleanPreference(context, SYSTEM_EMOJI_PREF, false);
   }
+
+  // generic preference functions
 
   public static void setBooleanPreference(Context context, String key, boolean value) {
     PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(key, value).apply();

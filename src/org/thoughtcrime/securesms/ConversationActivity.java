@@ -19,7 +19,6 @@ package org.thoughtcrime.securesms;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -317,7 +316,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setTransport(sendButton.getSelectedTransport());
 
     titleView.setTitle(glideRequests, dcChat);
-    titleView.setVerified(dcChat.isVerified());
     setGroupShareProfileReminder(recipient);
     calculateCharactersRemaining();
 
@@ -459,7 +457,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     }
 
-    if (recipient != null && recipient.isMuted()) {
+    if (recipient != null && TextSecurePreferences.isChatMuted(this, threadId)) {
       inflater.inflate(R.menu.conversation_muted, menu);
     }
     else {
@@ -534,17 +532,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleMuteNotifications() {
     MuteDialog.show(this, until -> {
-      recipient.setMuted(until);
-
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          DatabaseFactory.getRecipientDatabase(ConversationActivity.this)
-                         .setMuted(recipient, until);
-
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      TextSecurePreferences.setChatMutedUntil(this, threadId, until);
+      titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
     });
   }
 
@@ -558,17 +547,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleUnmuteNotifications() {
-    recipient.setMuted(0);
-
-    new AsyncTask<Void, Void, Void>() {
-      @Override
-      protected Void doInBackground(Void... params) {
-        DatabaseFactory.getRecipientDatabase(ConversationActivity.this)
-                       .setMuted(recipient, 0);
-
-        return null;
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    TextSecurePreferences.setChatMutedUntil(this, threadId, 0);
+    titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
   }
 
   private void handleViewMedia() {

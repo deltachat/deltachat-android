@@ -314,6 +314,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     }
 
     private void setSummaries(Recipient recipient) {
+      int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
+
       CheckBoxPreference    mutePreference            = (CheckBoxPreference) this.findPreference(PREFERENCE_MUTED);
       Preference            ringtoneMessagePreference = this.findPreference(PREFERENCE_MESSAGE_TONE);
       Preference            ringtoneCallPreference    = this.findPreference(PREFERENCE_CALL_TONE);
@@ -328,7 +330,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       PreferenceCategory    privacyCategory           = (PreferenceCategory) this.findPreference("privacy_settings");
       PreferenceCategory    divider                   = (PreferenceCategory) this.findPreference("divider");
 
-      mutePreference.setChecked(recipient.isMuted());
+      mutePreference.setChecked(TextSecurePreferences.isChatMuted(getContext(), chatId));
 
       ringtoneMessagePreference.setSummary(getRingtoneSummary(getContext(), recipient.getMessageRingtone()));
       ringtoneCallPreference.setSummary(getRingtoneSummary(getContext(), recipient.getCallRingtone()));
@@ -541,16 +543,20 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     private class MuteClickedListener implements Preference.OnPreferenceClickListener {
       @Override
       public boolean onPreferenceClick(Preference preference) {
-        if (recipient.isMuted()) handleUnmute();
-        else                     handleMute();
+        int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
+
+        if (TextSecurePreferences.isChatMuted(getContext(), chatId)) {
+          handleUnmute();
+        }
+        else {
+          handleMute();
+        }
 
         return true;
       }
 
       private void handleMute() {
         MuteDialog.show(getActivity(), until -> setMuted(recipient, until));
-
-        setSummaries(recipient);
       }
 
       private void handleUnmute() {
@@ -558,16 +564,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       }
 
       private void setMuted(final Recipient recipient, final long until) {
-        recipient.setMuted(until);
-
-        new AsyncTask<Void, Void, Void>() {
-          @Override
-          protected Void doInBackground(Void... params) {
-            DatabaseFactory.getRecipientDatabase(getActivity())
-                           .setMuted(recipient, until);
-            return null;
-          }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        TextSecurePreferences.setChatMutedUntil(getActivity(), recipient.getAddress().getDcChatId(), until);
+        setSummaries(recipient);
       }
     }
 

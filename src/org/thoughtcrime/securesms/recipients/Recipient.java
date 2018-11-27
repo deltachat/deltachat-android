@@ -76,7 +76,6 @@ public class Recipient implements RecipientModifiedListener {
   private           Uri                  contactUri;
   private @Nullable Uri                  messageRingtone       = null;
   private @Nullable Uri                  callRingtone          = null;
-  private           long                 mutedUntil            = 0;
   private           boolean              blocked               = false;
   private           VibrateState         messageVibrate        = VibrateState.DEFAULT;
   private           VibrateState         callVibrate           = VibrateState.DEFAULT;
@@ -150,7 +149,6 @@ public class Recipient implements RecipientModifiedListener {
       this.customLabel           = stale.customLabel;
       this.messageRingtone       = stale.messageRingtone;
       this.callRingtone          = stale.callRingtone;
-      this.mutedUntil            = stale.mutedUntil;
       this.blocked               = stale.blocked;
       this.messageVibrate        = stale.messageVibrate;
       this.callVibrate           = stale.callVibrate;
@@ -172,7 +170,6 @@ public class Recipient implements RecipientModifiedListener {
       this.color                 = details.get().color;
       this.messageRingtone       = details.get().messageRingtone;
       this.callRingtone          = details.get().callRingtone;
-      this.mutedUntil            = details.get().mutedUntil;
       this.blocked               = details.get().blocked;
       this.messageVibrate        = details.get().messageVibrateState;
       this.callVibrate           = details.get().callVibrateState;
@@ -200,7 +197,6 @@ public class Recipient implements RecipientModifiedListener {
             Recipient.this.customLabel           = result.customLabel;
             Recipient.this.messageRingtone       = result.messageRingtone;
             Recipient.this.callRingtone          = result.callRingtone;
-            Recipient.this.mutedUntil            = result.mutedUntil;
             Recipient.this.blocked               = result.blocked;
             Recipient.this.messageVibrate        = result.messageVibrateState;
             Recipient.this.callVibrate           = result.callVibrateState;
@@ -245,7 +241,6 @@ public class Recipient implements RecipientModifiedListener {
     this.customLabel           = details.customLabel;
     this.messageRingtone       = details.messageRingtone;
     this.callRingtone          = details.callRingtone;
-    this.mutedUntil            = details.mutedUntil;
     this.blocked               = details.blocked;
     this.messageVibrate        = details.messageVibrateState;
     this.callVibrate           = details.callVibrateState;
@@ -494,18 +489,6 @@ public class Recipient implements RecipientModifiedListener {
     notifyListeners();
   }
 
-  public synchronized boolean isMuted() {
-    return System.currentTimeMillis() <= mutedUntil;
-  }
-
-  public void setMuted(long mutedUntil) {
-    synchronized (this) {
-      this.mutedUntil = mutedUntil;
-    }
-
-    notifyListeners();
-  }
-
   public synchronized boolean isBlocked() {
     return blocked;
   }
@@ -647,7 +630,6 @@ public class Recipient implements RecipientModifiedListener {
         ", contactUri=" + contactUri +
         ", messageRingtone=" + messageRingtone +
         ", callRingtone=" + callRingtone +
-        ", mutedUntil=" + mutedUntil +
         ", blocked=" + blocked +
         ", messageVibrate=" + messageVibrate +
         ", callVibrate=" + callVibrate +

@@ -17,6 +17,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ResUtil;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.spans.CenterAlignedRelativeSizeSpan;
 
 public class FromTextView extends EmojiTextView {
@@ -71,9 +72,14 @@ public class FromTextView extends EmojiTextView {
 
     setText(builder);
 
-    if      (recipient.isBlocked()) setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_block_grey600_18dp, 0, 0, 0);
-    else if (recipient.isMuted())   setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_volume_off_grey600_18dp, 0, 0, 0);
-    else                            setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
+
+    if (TextSecurePreferences.isChatMuted(getContext(), chatId)) {
+      setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_volume_off_grey600_18dp, 0, 0, 0);
+    }
+    else {
+      setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    }
   }
 
 

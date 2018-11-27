@@ -273,13 +273,6 @@ public class RecipientDatabase extends Database {
     recipient.resolve().setCallVibrate(enabled);
   }
 
-  public void setMuted(@NonNull Recipient recipient, long until) {
-    ContentValues values = new ContentValues();
-    values.put(MUTE_UNTIL, until);
-    updateOrInsert(recipient.getAddress(), values);
-    recipient.resolve().setMuted(until);
-  }
-
   public void setSeenInviteReminder(@NonNull Recipient recipient, @SuppressWarnings("SameParameterValue") boolean seen) {
     ContentValues values = new ContentValues(1);
     values.put(SEEN_INVITE_REMINDER, seen ? 1 : 0);
