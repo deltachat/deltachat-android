@@ -25,6 +25,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   @SuppressWarnings("unused")
   private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
+  private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -54,7 +55,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
           intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, Settings.System.DEFAULT_NOTIFICATION_URI);
           intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
 
-          startActivityForResult(intent, 1);
+          startActivityForResult(intent, REQUEST_CODE_NOTIFICATION_SELECTED);
 
           return true;
         });
@@ -81,7 +82,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+    if (requestCode == REQUEST_CODE_NOTIFICATION_SELECTED && resultCode == RESULT_OK && data != null) {
       Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
 
       if (Settings.System.DEFAULT_NOTIFICATION_URI.equals(uri)) {
