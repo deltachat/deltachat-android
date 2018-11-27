@@ -808,7 +808,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composeText.setTransport(newTransport);
       buttonToggle.getBackground().setColorFilter(newTransport.getBackgroundColor(), Mode.MULTIPLY);
       buttonToggle.getBackground().invalidateSelf();
-      if (manuallySelected) recordSubscriptionIdPreference(newTransport.getSimSubscriptionId());
     });
 
     titleView.setOnClickListener(v -> handleConversationSettings());
@@ -1267,17 +1266,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       buttonToggle.display(sendButton);
       quickAttachmentToggle.hide();
     }
-  }
-
-  private void recordSubscriptionIdPreference(final Optional<Integer> subscriptionId) {
-    new AsyncTask<Void, Void, Void>() {
-      @Override
-      protected Void doInBackground(Void... params) {
-        DatabaseFactory.getRecipientDatabase(ConversationActivity.this)
-                       .setDefaultSubscriptionId(recipient, subscriptionId.or(-1));
-        return null;
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
 
   @Override

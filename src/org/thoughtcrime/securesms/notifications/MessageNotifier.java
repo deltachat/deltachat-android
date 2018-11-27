@@ -49,6 +49,7 @@ import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
+import org.w3c.dom.Text;
 
 import java.util.HashSet;
 import java.util.List;
@@ -88,27 +89,6 @@ public class MessageNotifier {
 
   public static void setVisibleThread(long threadId) {
     visibleThread = threadId;
-  }
-
-  public static void setLastDesktopActivityTimestamp(long timestamp) {
-    lastDesktopActivityTimestamp = timestamp;
-  }
-
-  public static void notifyMessageDeliveryFailed(Context context, Recipient recipient, int threadId) {
-    if (visibleThread == threadId) {
-      sendInThreadNotification(context, recipient);
-    } else {
-      Intent intent = new Intent(context, ConversationActivity.class);
-      intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-      intent.setData((Uri.parse("custom://" + System.currentTimeMillis())));
-
-      FailedNotificationBuilder builder = new FailedNotificationBuilder(context, TextSecurePreferences.getNotificationPrivacy(context), intent);
-      NotificationManager notificationManager = ((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE));
-      if(notificationManager != null)
-        notificationManager.notify(threadId, builder.build());
-      else
-        Log.i(TAG, "notification manager was null");
-    }
   }
 
   public static void cancelDelayedNotifications() {
