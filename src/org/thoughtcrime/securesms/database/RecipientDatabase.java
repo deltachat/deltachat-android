@@ -64,24 +64,6 @@ public class RecipientDatabase extends Database {
                                                                .map(columnName -> TABLE_NAME + "." + columnName)
                                                                .toList();
 
-  public enum VibrateState {
-    DEFAULT(0), ENABLED(1), DISABLED(2);
-
-    private final int id;
-
-    VibrateState(int id) {
-      this.id = id;
-    }
-
-    public int getId() {
-      return id;
-    }
-
-    public static VibrateState fromId(int id) {
-      return values()[id];
-    }
-  }
-
   public enum RegisteredState {
     UNKNOWN(0), REGISTERED(1), NOT_REGISTERED(2);
 
@@ -106,7 +88,7 @@ public class RecipientDatabase extends Database {
           ADDRESS + " TEXT UNIQUE, " +
           BLOCK + " INTEGER DEFAULT 0," +
           NOTIFICATION + " TEXT DEFAULT NULL, " +
-          VIBRATE + " INTEGER DEFAULT " + VibrateState.DEFAULT.getId() + ", " +
+          VIBRATE + " INTEGER DEFAULT 0, " +
           MUTE_UNTIL + " INTEGER DEFAULT 0, " +
           COLOR + " TEXT DEFAULT NULL, " +
           SEEN_INVITE_REMINDER + " INTEGER DEFAULT 0, " +
@@ -122,7 +104,7 @@ public class RecipientDatabase extends Database {
           SIGNAL_PROFILE_AVATAR + " TEXT DEFAULT NULL, " +
           PROFILE_SHARING + " INTEGER DEFAULT 0, " +
           CALL_RINGTONE + " TEXT DEFAULT NULL, " +
-          CALL_VIBRATE + " INTEGER DEFAULT " + VibrateState.DEFAULT.getId() + ");";
+          CALL_VIBRATE + " INTEGER DEFAULT 0);";
 
   public RecipientDatabase(Context context, SQLCipherOpenHelper databaseHelper) {
     super(context, databaseHelper);
@@ -159,10 +141,6 @@ public class RecipientDatabase extends Database {
 
   Optional<RecipientSettings> getRecipientSettings(@NonNull Cursor cursor) {
     boolean blocked               = cursor.getInt(cursor.getColumnIndexOrThrow(BLOCK))                == 1;
-    String  messageRingtone       = cursor.getString(cursor.getColumnIndexOrThrow(NOTIFICATION));
-    String  callRingtone          = cursor.getString(cursor.getColumnIndexOrThrow(CALL_RINGTONE));
-    int     messageVibrateState   = cursor.getInt(cursor.getColumnIndexOrThrow(VIBRATE));
-    int     callVibrateState      = cursor.getInt(cursor.getColumnIndexOrThrow(CALL_VIBRATE));
     long    muteUntil             = cursor.getLong(cursor.getColumnIndexOrThrow(MUTE_UNTIL));
     String  serializedColor       = cursor.getString(cursor.getColumnIndexOrThrow(COLOR));
     boolean seenInviteReminder    = cursor.getInt(cursor.getColumnIndexOrThrow(SEEN_INVITE_REMINDER)) == 1;
@@ -198,9 +176,6 @@ public class RecipientDatabase extends Database {
     }
 
     return Optional.of(new RecipientSettings(blocked, muteUntil,
-                                             VibrateState.fromId(messageVibrateState),
-                                             VibrateState.fromId(callVibrateState),
-                                             Util.uri(messageRingtone), Util.uri(callRingtone),
                                              color, seenInviteReminder,
                                              defaultSubscriptionId, expireMessages,
                                              RegisteredState.fromId(registeredState),
@@ -243,34 +218,6 @@ public class RecipientDatabase extends Database {
     values.put(BLOCK, blocked ? 1 : 0);
     updateOrInsert(recipient.getAddress(), values);
     recipient.resolve().setBlocked(blocked);
-  }
-
-  public void setMessageRingtone(@NonNull Recipient recipient, @Nullable Uri notification) {
-    ContentValues values = new ContentValues();
-    values.put(NOTIFICATION, notification == null ? null : notification.toString());
-    updateOrInsert(recipient.getAddress(), values);
-    recipient.resolve().setMessageRingtone(notification);
-  }
-
-  public void setCallRingtone(@NonNull Recipient recipient, @Nullable Uri ringtone) {
-    ContentValues values = new ContentValues();
-    values.put(CALL_RINGTONE, ringtone == null ? null : ringtone.toString());
-    updateOrInsert(recipient.getAddress(), values);
-    recipient.resolve().setCallRingtone(ringtone);
-  }
-
-  public void setMessageVibrate(@NonNull Recipient recipient, @NonNull VibrateState enabled) {
-    ContentValues values = new ContentValues();
-    values.put(VIBRATE, enabled.getId());
-    updateOrInsert(recipient.getAddress(), values);
-    recipient.resolve().setMessageVibrate(enabled);
-  }
-
-  public void setCallVibrate(@NonNull Recipient recipient, @NonNull VibrateState enabled) {
-    ContentValues values = new ContentValues();
-    values.put(CALL_VIBRATE, enabled.getId());
-    updateOrInsert(recipient.getAddress(), values);
-    recipient.resolve().setCallVibrate(enabled);
   }
 
   public void setSeenInviteReminder(@NonNull Recipient recipient, @SuppressWarnings("SameParameterValue") boolean seen) {
@@ -448,10 +395,6 @@ public class RecipientDatabase extends Database {
   public static class RecipientSettings {
     private final boolean         blocked;
     private final long            muteUntil;
-    private final VibrateState    messageVibrateState;
-    private final VibrateState    callVibrateState;
-    private final Uri             messageRingtone;
-    private final Uri             callRingtone;
     private final MaterialColor   color;
     private final boolean         seenInviteReminder;
     private final int             defaultSubscriptionId;
@@ -467,10 +410,6 @@ public class RecipientDatabase extends Database {
     private final boolean         profileSharing;
 
     RecipientSettings(boolean blocked, long muteUntil,
-                      @NonNull VibrateState messageVibrateState,
-                      @NonNull VibrateState callVibrateState,
-                      @Nullable Uri messageRingtone,
-                      @Nullable Uri callRingtone,
                       @Nullable MaterialColor color,
                       boolean seenInviteReminder,
                       int defaultSubscriptionId,
@@ -487,10 +426,6 @@ public class RecipientDatabase extends Database {
     {
       this.blocked               = blocked;
       this.muteUntil             = muteUntil;
-      this.messageVibrateState   = messageVibrateState;
-      this.callVibrateState      = callVibrateState;
-      this.messageRingtone       = messageRingtone;
-      this.callRingtone          = callRingtone;
       this.color                 = color;
       this.seenInviteReminder    = seenInviteReminder;
       this.defaultSubscriptionId = defaultSubscriptionId;
@@ -516,22 +451,6 @@ public class RecipientDatabase extends Database {
 
     public long getMuteUntil() {
       return muteUntil;
-    }
-
-    public @NonNull VibrateState getMessageVibrateState() {
-      return messageVibrateState;
-    }
-
-    public @NonNull VibrateState getCallVibrateState() {
-      return callVibrateState;
-    }
-
-    public @Nullable Uri getMessageRingtone() {
-      return messageRingtone;
-    }
-
-    public @Nullable Uri getCallRingtone() {
-      return callRingtone;
     }
 
     public boolean hasSeenInviteReminder() {

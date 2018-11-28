@@ -10,7 +10,8 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationPopupActivity;
-import org.thoughtcrime.securesms.database.RecipientDatabase.VibrateState;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.TextSecurePreferences.VibrateState;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
 import java.util.LinkedHashSet;
@@ -43,24 +44,24 @@ public class NotificationState {
     notificationCount++;
   }
 
-  public @Nullable Uri getRingtone() {
+  public @Nullable Uri getRingtone(Context context) {
     if (!notifications.isEmpty()) {
       Recipient recipient = notifications.getFirst().getRecipient();
 
-      if (recipient != null) {
-        return recipient.resolve().getMessageRingtone();
+      if (recipient != null && recipient.getAddress().isDcChat()) {
+        return TextSecurePreferences.getChatRingtone(context, recipient.getAddress().getDcChatId());
       }
     }
 
     return null;
   }
 
-  public VibrateState getVibrate() {
+  public VibrateState getVibrate(Context context) {
     if (!notifications.isEmpty()) {
       Recipient recipient = notifications.getFirst().getRecipient();
 
-      if (recipient != null) {
-        return recipient.resolve().getMessageVibrate();
+      if (recipient != null && recipient.getAddress().isDcChat()) {
+        return TextSecurePreferences.getChatVibrate(context, recipient.getAddress().getDcChatId());
       }
     }
 

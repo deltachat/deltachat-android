@@ -101,7 +101,7 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
 
       if (oldVersion < RECIPIENT_CALL_RINGTONE_VERSION) {
         db.execSQL("ALTER TABLE recipient_preferences ADD COLUMN call_ringtone TEXT DEFAULT NULL");
-        db.execSQL("ALTER TABLE recipient_preferences ADD COLUMN call_vibrate INTEGER DEFAULT " + RecipientDatabase.VibrateState.DEFAULT.getId());
+        db.execSQL("ALTER TABLE recipient_preferences ADD COLUMN call_vibrate INTEGER DEFAULT 0");
       }
 
       if (oldVersion < MIGRATE_PREKEYS_VERSION) {

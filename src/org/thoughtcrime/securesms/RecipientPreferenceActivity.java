@@ -46,7 +46,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.RecipientDatabase;
-import org.thoughtcrime.securesms.database.RecipientDatabase.VibrateState;
 import org.thoughtcrime.securesms.database.loaders.ThreadMediaLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -62,6 +61,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.TextSecurePreferences.VibrateState;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -335,8 +335,9 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       ringtoneMessagePreference.setSummary(getRingtoneSummary(getContext(), recipient.getMessageRingtone()));
       ringtoneCallPreference.setSummary(getRingtoneSummary(getContext(), recipient.getCallRingtone()));
 
-      Pair<String, Integer> vibrateMessageSummary = getVibrateSummary(getContext(), recipient.getMessageVibrate());
-      Pair<String, Integer> vibrateCallSummary    = getVibrateSummary(getContext(), recipient.getCallVibrate());
+      VibrateState vibrateState = TextSecurePreferences.getChatVibrate(getContext(), chatId);
+      Pair<String, Integer> vibrateMessageSummary = getVibrateSummary(getContext(), vibrateState);
+      Pair<String, Integer> vibrateCallSummary    = getVibrateSummary(getContext(), vibrateState);
 
       vibrateMessagePreference.setSummary(vibrateMessageSummary.first);
       vibrateMessagePreference.setValueIndex(vibrateMessageSummary.second);
@@ -440,14 +441,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         if (defaultValue.equals(value)) value = null;
         else if (value == null)         value = Uri.EMPTY;
 
-        new AsyncTask<Uri, Void, Void>() {
-          @Override
-          protected Void doInBackground(Uri... params) {
-            if (calls) DatabaseFactory.getRecipientDatabase(getActivity()).setCallRingtone(recipient, params[0]);
-            else       DatabaseFactory.getRecipientDatabase(getActivity()).setMessageRingtone(recipient, params[0]);
-            return null;
-          }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, value);
+        int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
+        TextSecurePreferences.setChatRingtone(getContext(), chatId, value);
 
         return false;
       }
@@ -495,14 +490,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
               int          value        = Integer.parseInt((String) newValue);
         final VibrateState vibrateState = VibrateState.fromId(value);
 
-        new AsyncTask<Void, Void, Void>() {
-          @Override
-          protected Void doInBackground(Void... params) {
-            if (call) DatabaseFactory.getRecipientDatabase(getActivity()).setCallVibrate(recipient, vibrateState);
-            else      DatabaseFactory.getRecipientDatabase(getActivity()).setMessageVibrate(recipient, vibrateState);
-            return null;
-          }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
+        TextSecurePreferences.setChatVibrate(getContext(), chatId, vibrateState);
 
         return false;
       }

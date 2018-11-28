@@ -36,11 +36,13 @@ public class TextSecurePreferences {
   private static final String LAST_VERSION_CODE_PREF           = "last_version_code";
   public  static final String RINGTONE_PREF                    = "pref_key_ringtone";
   private static final String VIBRATE_PREF                     = "pref_key_vibrate";
+  private static final String CHAT_VIBRATE                     = "pref_chat_vibrate_"; // followed by chat-id
   private static final String NOTIFICATION_PREF                = "pref_key_enable_notifications";
   public  static final String LED_COLOR_PREF                   = "pref_led_color";
   public  static final String LED_BLINK_PREF                   = "pref_led_blink";
   private static final String LED_BLINK_PREF_CUSTOM            = "pref_led_blink_custom";
   private static final String CHAT_MUTED_UNTIL                 = "pref_chat_muted_until_"; // followed by chat-id
+  private static final String CHAT_RINGTONE                    = "pref_chat_ringtone_"; // followed by chat-id
   public  static final String ALL_SMS_PREF                     = "pref_all_sms";
   public  static final String SCREEN_LOCK_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
   public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
@@ -76,6 +78,14 @@ public class TextSecurePreferences {
   public static final String SCREEN_LOCK         = "pref_android_screen_lock";
 
   private static final String PREF_CONTACT_PHOTO_IDENTIFIERS = "pref_contact_photo_identifiers";
+
+  public enum VibrateState {
+    DEFAULT(0), ENABLED(1), DISABLED(2);
+    private final int id;
+    VibrateState(int id) { this.id = id; }
+    public int getId() { return id; }
+    public static VibrateState fromId(int id) { return values()[id]; }
+  }
 
   public static boolean isScreenLockEnabled(@NonNull Context context) {
     return getBooleanPreference(context, SCREEN_LOCK, false);
@@ -301,6 +311,8 @@ public class TextSecurePreferences {
     return getBooleanPreference(context, NOTIFICATION_PREF, true);
   }
 
+  // ringtone
+
   public static @NonNull Uri getNotificationRingtone(Context context) {
     String result = getStringPreference(context, RINGTONE_PREF, Settings.System.DEFAULT_NOTIFICATION_URI.toString());
 
@@ -315,13 +327,44 @@ public class TextSecurePreferences {
     removePreference(context, RINGTONE_PREF);
   }
 
-  public static void setNotificationRingtone(Context context, String ringtone) {
-    setStringPreference(context, RINGTONE_PREF, ringtone);
+  public static void setNotificationRingtone(Context context, Uri ringtone) {
+    setStringPreference(context, RINGTONE_PREF, ringtone.toString());
   }
+
+  public static void setChatRingtone(Context context, int chatId, Uri ringtone) {
+    if(ringtone!=null) {
+      setStringPreference(context, CHAT_RINGTONE+chatId, ringtone.toString());
+    }
+    else {
+      removePreference(context, CHAT_RINGTONE+chatId);
+    }
+  }
+
+  public static @Nullable Uri getChatRingtone(Context context, int chatId) {
+    String result = getStringPreference(context, CHAT_RINGTONE+chatId, null);
+    return result==null? null : Uri.parse(result);
+  }
+
+  // vibrate
 
   public static boolean isNotificationVibrateEnabled(Context context) {
     return getBooleanPreference(context, VIBRATE_PREF, true);
   }
+
+  public static void setChatVibrate(Context context, int chatId, VibrateState vibrateState) {
+    if(vibrateState!=VibrateState.DEFAULT) {
+      setIntegerPrefrence(context, CHAT_VIBRATE+chatId, vibrateState.getId());
+    }
+    else {
+      removePreference(context, CHAT_VIBRATE+chatId);
+    }
+  }
+
+  public static VibrateState getChatVibrate(Context context, int chatId) {
+    return VibrateState.fromId(getIntegerPreference(context, CHAT_VIBRATE+chatId, VibrateState.DEFAULT.getId()));
+  }
+
+  // led
 
   public static String getNotificationLedColor(Context context) {
     return getStringPreference(context, LED_COLOR_PREF, "blue");
@@ -335,6 +378,8 @@ public class TextSecurePreferences {
     return getStringPreference(context, LED_BLINK_PREF_CUSTOM, "500,2000");
   }
 
+  // mute
+
   public static void setChatMutedUntil(Context context, int chatId, long until) {
     setLongPreference(context, CHAT_MUTED_UNTIL+chatId, until);
   }
@@ -346,6 +391,8 @@ public class TextSecurePreferences {
   public static boolean isChatMuted(Context context, int chatId) {
     return System.currentTimeMillis() <= getChatMutedUntil(context, chatId);
   }
+
+  // misc.
 
   public static String getBackgroundImagePath(Context context) {
     return getStringPreference(context, BACKGROUND_PREF, "");

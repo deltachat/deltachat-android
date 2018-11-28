@@ -42,7 +42,6 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.GroupDatabase;
 import org.thoughtcrime.securesms.database.RecipientDatabase.RecipientSettings;
 import org.thoughtcrime.securesms.database.RecipientDatabase.RegisteredState;
-import org.thoughtcrime.securesms.database.RecipientDatabase.VibrateState;
 import org.thoughtcrime.securesms.recipients.RecipientProvider.RecipientDetails;
 import org.thoughtcrime.securesms.util.FutureTaskListener;
 import org.thoughtcrime.securesms.util.ListenableFutureTask;
@@ -77,8 +76,6 @@ public class Recipient implements RecipientModifiedListener {
   private @Nullable Uri                  messageRingtone       = null;
   private @Nullable Uri                  callRingtone          = null;
   private           boolean              blocked               = false;
-  private           VibrateState         messageVibrate        = VibrateState.DEFAULT;
-  private           VibrateState         callVibrate           = VibrateState.DEFAULT;
   private           int                  expireMessages        = 0;
   private           Optional<Integer>    defaultSubscriptionId = Optional.absent();
   private @NonNull  RegisteredState      registered            = RegisteredState.UNKNOWN;
@@ -150,8 +147,6 @@ public class Recipient implements RecipientModifiedListener {
       this.messageRingtone       = stale.messageRingtone;
       this.callRingtone          = stale.callRingtone;
       this.blocked               = stale.blocked;
-      this.messageVibrate        = stale.messageVibrate;
-      this.callVibrate           = stale.callVibrate;
       this.expireMessages        = stale.expireMessages;
       this.seenInviteReminder    = stale.seenInviteReminder;
       this.defaultSubscriptionId = stale.defaultSubscriptionId;
@@ -168,11 +163,7 @@ public class Recipient implements RecipientModifiedListener {
       this.name                  = details.get().name;
       this.systemContactPhoto    = details.get().systemContactPhoto;
       this.color                 = details.get().color;
-      this.messageRingtone       = details.get().messageRingtone;
-      this.callRingtone          = details.get().callRingtone;
       this.blocked               = details.get().blocked;
-      this.messageVibrate        = details.get().messageVibrateState;
-      this.callVibrate           = details.get().callVibrateState;
       this.expireMessages        = details.get().expireMessages;
       this.seenInviteReminder    = details.get().seenInviteReminder;
       this.defaultSubscriptionId = details.get().defaultSubscriptionId;
@@ -195,11 +186,7 @@ public class Recipient implements RecipientModifiedListener {
             Recipient.this.systemContactPhoto    = result.systemContactPhoto;
             Recipient.this.color                 = result.color;
             Recipient.this.customLabel           = result.customLabel;
-            Recipient.this.messageRingtone       = result.messageRingtone;
-            Recipient.this.callRingtone          = result.callRingtone;
             Recipient.this.blocked               = result.blocked;
-            Recipient.this.messageVibrate        = result.messageVibrateState;
-            Recipient.this.callVibrate           = result.callVibrateState;
             Recipient.this.expireMessages        = result.expireMessages;
             Recipient.this.seenInviteReminder    = result.seenInviteReminder;
             Recipient.this.defaultSubscriptionId = result.defaultSubscriptionId;
@@ -239,11 +226,7 @@ public class Recipient implements RecipientModifiedListener {
     this.systemContactPhoto    = details.systemContactPhoto;
     this.color                 = details.color;
     this.customLabel           = details.customLabel;
-    this.messageRingtone       = details.messageRingtone;
-    this.callRingtone          = details.callRingtone;
     this.blocked               = details.blocked;
-    this.messageVibrate        = details.messageVibrateState;
-    this.callVibrate           = details.callVibrateState;
     this.expireMessages        = details.expireMessages;
     this.seenInviteReminder    = details.seenInviteReminder;
     this.defaultSubscriptionId = details.defaultSubscriptionId;
@@ -501,30 +484,6 @@ public class Recipient implements RecipientModifiedListener {
     notifyListeners();
   }
 
-  public synchronized VibrateState getMessageVibrate() {
-    return messageVibrate;
-  }
-
-  public void setMessageVibrate(VibrateState vibrate) {
-    synchronized (this) {
-      this.messageVibrate = vibrate;
-    }
-
-    notifyListeners();
-  }
-
-  public synchronized  VibrateState getCallVibrate() {
-    return callVibrate;
-  }
-
-  public void setCallVibrate(VibrateState vibrate) {
-    synchronized (this) {
-      this.callVibrate = vibrate;
-    }
-
-    notifyListeners();
-  }
-
   public synchronized int getExpireMessages() {
     return expireMessages;
   }
@@ -628,11 +587,7 @@ public class Recipient implements RecipientModifiedListener {
         ", resolving=" + resolving +
         ", systemContactPhoto=" + systemContactPhoto +
         ", contactUri=" + contactUri +
-        ", messageRingtone=" + messageRingtone +
-        ", callRingtone=" + callRingtone +
         ", blocked=" + blocked +
-        ", messageVibrate=" + messageVibrate +
-        ", callVibrate=" + callVibrate +
         ", expireMessages=" + expireMessages +
         ", defaultSubscriptionId=" + defaultSubscriptionId +
         ", registered=" + registered +

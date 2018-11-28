@@ -88,7 +88,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       if (Settings.System.DEFAULT_NOTIFICATION_URI.equals(uri)) {
         TextSecurePreferences.removeNotificationRingtone(getContext());
       } else {
-        TextSecurePreferences.setNotificationRingtone(getContext(), uri != null ? uri.toString() : Uri.EMPTY.toString());
+        TextSecurePreferences.setNotificationRingtone(getContext(), uri != null ? uri : Uri.EMPTY);
       }
 
       initializeRingtoneSummary(findPreference(TextSecurePreferences.RINGTONE_PREF));

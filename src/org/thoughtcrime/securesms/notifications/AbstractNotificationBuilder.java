@@ -44,15 +44,15 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     return builder;
   }
 
-  public void setAlarms(@Nullable Uri ringtone, RecipientDatabase.VibrateState vibrate) {
+  public void setAlarms(@Nullable Uri ringtone, TextSecurePreferences.VibrateState vibrate) {
     Uri     defaultRingtone = TextSecurePreferences.getNotificationRingtone(context);
     boolean defaultVibrate  = TextSecurePreferences.isNotificationVibrateEnabled(context);
 
     if      (ringtone == null && !TextUtils.isEmpty(defaultRingtone.toString())) setSound(defaultRingtone);
     else if (ringtone != null && !ringtone.toString().isEmpty())                 setSound(ringtone);
 
-    if (vibrate == RecipientDatabase.VibrateState.ENABLED ||
-        (vibrate == RecipientDatabase.VibrateState.DEFAULT && defaultVibrate))
+    if (vibrate == TextSecurePreferences.VibrateState.ENABLED ||
+        (vibrate == TextSecurePreferences.VibrateState.DEFAULT && defaultVibrate))
     {
       setDefaults(Notification.DEFAULT_VIBRATE);
     }

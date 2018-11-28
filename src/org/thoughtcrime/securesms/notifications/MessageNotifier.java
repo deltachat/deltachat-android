@@ -291,7 +291,7 @@ public class MessageNotifier {
     }
 
     if (signal) {
-      builder.setAlarms(notificationState.getRingtone(), notificationState.getVibrate());
+      builder.setAlarms(notificationState.getRingtone(context), notificationState.getVibrate(context));
       builder.setTicker(notifications.get(0).getIndividualRecipient(),
                         notifications.get(0).getText());
     }
@@ -328,7 +328,7 @@ public class MessageNotifier {
     }
 
     if (signal) {
-      builder.setAlarms(notificationState.getRingtone(), notificationState.getVibrate());
+      builder.setAlarms(notificationState.getRingtone(context), notificationState.getVibrate(context));
       builder.setTicker(notifications.get(0).getIndividualRecipient(),
                         notifications.get(0).getText());
     }
@@ -348,8 +348,7 @@ public class MessageNotifier {
       return;
     }
 
-    Uri uri = null; // TODO: init with chat-specific ringtone; was: recipient.resolve().getMessageRingtone()
-
+    Uri uri = TextSecurePreferences.getChatRingtone(context, chatId);
     if (uri == null) {
       uri = TextSecurePreferences.getNotificationRingtone(context);
     }
