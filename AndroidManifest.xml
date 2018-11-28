@@ -279,8 +279,6 @@
         </intent-filter>
     </service>
 
-    <service android:name=".service.GenericForegroundService"/>
-
     <receiver android:name=".connect.TimerReceiver" android:enabled="true"/>
 
     <receiver android:name=".notifications.MarkReadReceiver"

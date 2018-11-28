@@ -64,7 +64,6 @@ import org.thoughtcrime.securesms.components.reminder.ExpiredBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.OutdatedBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.Reminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
-import org.thoughtcrime.securesms.components.reminder.ShareReminder;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -190,8 +189,6 @@ public class ConversationListFragment extends Fragment
           return Optional.of(new ExpiredBuildReminder(context));
         } else if (OutdatedBuildReminder.isEligible()) {
           return Optional.of(new OutdatedBuildReminder(context));
-        } else if (ShareReminder.isEligible(context)) {
-          return Optional.of(new ShareReminder(context));
         } else if (DozeReminder.isEligible(context)) {
           return Optional.of(new DozeReminder(context));
         } else {
