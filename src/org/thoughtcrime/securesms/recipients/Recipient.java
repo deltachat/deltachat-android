@@ -85,7 +85,6 @@ public class Recipient implements RecipientModifiedListener {
   private @Nullable byte[]         profileKey;
   private @Nullable String         profileName;
   private @Nullable String         profileAvatar;
-  private           boolean        profileSharing;
 
   public static @NonNull Recipient fromChat(@NonNull Context context, int dcMsgId) {
     ApplicationDcContext dcContext = DcHelper.getContext(context);
@@ -154,7 +153,6 @@ public class Recipient implements RecipientModifiedListener {
       this.profileKey            = stale.profileKey;
       this.profileName           = stale.profileName;
       this.profileAvatar         = stale.profileAvatar;
-      this.profileSharing        = stale.profileSharing;
       this.participants.clear();
       this.participants.addAll(stale.participants);
     }
@@ -171,7 +169,6 @@ public class Recipient implements RecipientModifiedListener {
       this.profileKey            = details.get().profileKey;
       this.profileName           = details.get().profileName;
       this.profileAvatar         = details.get().profileAvatar;
-      this.profileSharing        = details.get().profileSharing;
       this.participants.clear();
       this.participants.addAll(details.get().participants);
     }
@@ -194,7 +191,6 @@ public class Recipient implements RecipientModifiedListener {
             Recipient.this.profileKey            = result.profileKey;
             Recipient.this.profileName           = result.profileName;
             Recipient.this.profileAvatar         = result.profileAvatar;
-            Recipient.this.profileSharing        = result.profileSharing;
             Recipient.this.profileName           = result.profileName;
 
             Recipient.this.participants.clear();
@@ -234,7 +230,6 @@ public class Recipient implements RecipientModifiedListener {
     this.profileKey            = details.profileKey;
     this.profileName           = details.profileName;
     this.profileAvatar         = details.profileAvatar;
-    this.profileSharing        = details.profileSharing;
     this.participants.addAll(details.participants);
     this.resolving    = false;
   }
@@ -349,18 +344,6 @@ public class Recipient implements RecipientModifiedListener {
   public void setProfileAvatar(@Nullable String profileAvatar) {
     synchronized (this) {
       this.profileAvatar = profileAvatar;
-    }
-
-    notifyListeners();
-  }
-
-  public synchronized boolean isProfileSharing() {
-    return profileSharing;
-  }
-
-  public void setProfileSharing(boolean value) {
-    synchronized (this) {
-      this.profileSharing = value;
     }
 
     notifyListeners();
@@ -596,7 +579,6 @@ public class Recipient implements RecipientModifiedListener {
         ", profileKey=" + Arrays.toString(profileKey) +
         ", profileName='" + profileName + '\'' +
         ", profileAvatar='" + profileAvatar + '\'' +
-        ", profileSharing=" + profileSharing +
         '}';
   }
 

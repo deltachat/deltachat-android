@@ -113,7 +113,6 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.profiles.GroupShareProfileView;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientFormattingException;
@@ -195,7 +194,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputAwareLayout            container;
   private   View                        composePanel;
   protected Stub<ReminderView>          reminderView;
-  private   Stub<GroupShareProfileView> groupShareProfileView;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
@@ -316,7 +314,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setTransport(sendButton.getSelectedTransport());
 
     titleView.setTitle(glideRequests, dcChat);
-    setGroupShareProfileReminder(recipient);
     calculateCharactersRemaining();
 
     MessageNotifier.setVisibleThread(threadId);
@@ -760,7 +757,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composePanel          = ViewUtil.findById(this, R.id.bottom_panel);
     container             = ViewUtil.findById(this, R.id.layout_container);
     reminderView          = ViewUtil.findStubById(this, R.id.reminder_stub);
-    groupShareProfileView = ViewUtil.findStubById(this, R.id.group_share_profile_view_stub);
     quickAttachmentDrawer = ViewUtil.findById(this, R.id.quick_attachment_drawer);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel            = ViewUtil.findById(this, R.id.bottom_panel);
@@ -983,15 +979,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, thisThreadId);
 
     return future;
-  }
-
-  private void setGroupShareProfileReminder(@NonNull Recipient recipient) {
-    if (recipient.isPushGroupRecipient() && !recipient.isProfileSharing()) {
-      groupShareProfileView.get().setRecipient(recipient);
-      groupShareProfileView.get().setVisibility(View.VISIBLE);
-    } else if (groupShareProfileView.resolved()) {
-      groupShareProfileView.get().setVisibility(View.GONE);
-    }
   }
 
   private void calculateCharactersRemaining() {
@@ -1592,7 +1579,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void handleEvent(int eventId, Object data1, Object data2) {
     if (eventId==DcContext.DC_EVENT_CHAT_MODIFIED || eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
       titleView.setTitle(glideRequests, dcChat);
-      setGroupShareProfileReminder(recipient);
       updateReminders();
       initializeSecurity(isSecureText, isDefaultSms);
       invalidateOptionsMenu();

@@ -154,7 +154,6 @@ public class RecipientDatabase extends Database {
     String  systemContactUri      = cursor.getString(cursor.getColumnIndexOrThrow(SYSTEM_CONTACT_URI));
     String  signalProfileName     = cursor.getString(cursor.getColumnIndexOrThrow(SIGNAL_PROFILE_NAME));
     String  signalProfileAvatar   = cursor.getString(cursor.getColumnIndexOrThrow(SIGNAL_PROFILE_AVATAR));
-    boolean profileSharing        = cursor.getInt(cursor.getColumnIndexOrThrow(PROFILE_SHARING))      == 1;
 
     MaterialColor color;
     byte[]        profileKey = null;
@@ -181,7 +180,7 @@ public class RecipientDatabase extends Database {
                                              RegisteredState.fromId(registeredState),
                                              profileKey, systemDisplayName, systemContactPhoto,
                                              systemPhoneLabel, systemContactUri,
-                                             signalProfileName, signalProfileAvatar, profileSharing));
+                                             signalProfileName, signalProfileAvatar));
   }
 
   public BulkOperationsHandle resetAllSystemContactInfo() {
@@ -255,13 +254,6 @@ public class RecipientDatabase extends Database {
     contentValues.put(SIGNAL_PROFILE_AVATAR, profileAvatar);
     updateOrInsert(recipient.getAddress(), contentValues);
     recipient.resolve().setProfileAvatar(profileAvatar);
-  }
-
-  public void setProfileSharing(@NonNull Recipient recipient, @SuppressWarnings("SameParameterValue") boolean enabled) {
-    ContentValues contentValues = new ContentValues(1);
-    contentValues.put(PROFILE_SHARING, enabled ? 1 : 0);
-    updateOrInsert(recipient.getAddress(), contentValues);
-    recipient.setProfileSharing(enabled);
   }
 
   public Set<Address> getAllAddresses() {
@@ -407,7 +399,6 @@ public class RecipientDatabase extends Database {
     private final String          systemContactUri;
     private final String          signalProfileName;
     private final String          signalProfileAvatar;
-    private final boolean         profileSharing;
 
     RecipientSettings(boolean blocked, long muteUntil,
                       @Nullable MaterialColor color,
@@ -421,8 +412,7 @@ public class RecipientDatabase extends Database {
                       @Nullable String systemPhoneLabel,
                       @Nullable String systemContactUri,
                       @Nullable String signalProfileName,
-                      @Nullable String signalProfileAvatar,
-                      boolean profileSharing)
+                      @Nullable String signalProfileAvatar)
     {
       this.blocked               = blocked;
       this.muteUntil             = muteUntil;
@@ -438,7 +428,6 @@ public class RecipientDatabase extends Database {
       this.systemContactUri      = systemContactUri;
       this.signalProfileName     = signalProfileName;
       this.signalProfileAvatar   = signalProfileAvatar;
-      this.profileSharing        = profileSharing;
     }
 
     public @Nullable MaterialColor getColor() {
@@ -495,10 +484,6 @@ public class RecipientDatabase extends Database {
 
     public @Nullable String getProfileAvatar() {
       return signalProfileAvatar;
-    }
-
-    public boolean isProfileSharing() {
-      return profileSharing;
     }
   }
 

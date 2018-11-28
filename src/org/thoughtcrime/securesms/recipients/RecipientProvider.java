@@ -166,7 +166,6 @@ public class RecipientProvider {
     @NonNull  final RegisteredState      registered;
     @Nullable final byte[]               profileKey;
     @Nullable final String               profileAvatar;
-              final boolean              profileSharing;
               final boolean              systemContact;
 
     public RecipientDetails(@Nullable String name, @Nullable Long groupAvatarId,
@@ -187,7 +186,6 @@ public class RecipientProvider {
       this.registered            = settings     != null ? settings.getRegistered() : RegisteredState.UNKNOWN;
       this.profileKey            = settings     != null ? settings.getProfileKey() : null;
       this.profileAvatar         = settings     != null ? settings.getProfileAvatar() : null;
-      this.profileSharing        = settings     != null && settings.isProfileSharing();
       this.systemContact         = systemContact;
 
       if (name == null && settings != null) this.name = settings.getSystemDisplayName();
