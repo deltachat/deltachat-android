@@ -1,23 +1,15 @@
+// called when the user click the "clear" or "mark read" button in the system notification
+
 package org.thoughtcrime.securesms.notifications;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationManagerCompat;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.MessagingDatabase.ExpirationInfo;
-import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
-import org.thoughtcrime.securesms.database.MessagingDatabase.SyncMessageId;
-import org.thoughtcrime.securesms.service.ExpiringMessageManager;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class MarkReadReceiver extends BroadcastReceiver {
 
@@ -38,48 +30,6 @@ public class MarkReadReceiver extends BroadcastReceiver {
 
       ApplicationDcContext dcContext = DcHelper.getContext(context);
       new MarkAsNoticedAsyncTask(threadIds, dcContext, true).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-  }
-
-  public static void process(@NonNull Context context, @NonNull int[] markedReadMessages) {
-
-  }
-
-  public static void process(@NonNull Context context, @NonNull List<MarkedMessageInfo> markedReadMessages) {
-    if (markedReadMessages.isEmpty()) return;
-
-    List<SyncMessageId> syncMessageIds = new LinkedList<>();
-
-    for (MarkedMessageInfo messageInfo : markedReadMessages) {
-      scheduleDeletion(context, messageInfo.getExpirationInfo());
-      syncMessageIds.add(messageInfo.getSyncMessageId());
-    }
-
-//    ApplicationContext.getInstance(context)
-//                      .getJobManager()
-//                      .add(new MultiDeviceReadUpdateJob(context, syncMessageIds));
-
-//    Map<Address, List<SyncMessageId>> addressMap = Stream.of(markedReadMessages)
-//                                                         .map(MarkedMessageInfo::getSyncMessageId)
-//                                                         .collect(Collectors.groupingBy(SyncMessageId::getAddress));
-//
-//    for (Address address : addressMap.keySet()) {
-//      List<Long> timestamps = Stream.of(addressMap.get(address)).map(SyncMessageId::getTimetamp).toList();
-//
-//      ApplicationContext.getInstance(context)
-//                        .getJobManager()
-//                        .add(new SendReadReceiptJob(context, address, timestamps));
-//    }
-  }
-
-  private static void scheduleDeletion(Context context, ExpirationInfo expirationInfo) {
-    if (expirationInfo.getExpiresIn() > 0 && expirationInfo.getExpireStarted() <= 0) {
-      ExpiringMessageManager expirationManager = ApplicationContext.getInstance(context).getExpiringMessageManager();
-
-      if (expirationInfo.isMms()) DatabaseFactory.getMmsDatabase(context).markExpireStarted(expirationInfo.getId());
-      else                        DatabaseFactory.getSmsDatabase(context).markExpireStarted(expirationInfo.getId());
-
-      expirationManager.scheduleDeletion(expirationInfo.getId(), expirationInfo.isMms(), expirationInfo.getExpiresIn());
     }
   }
 }

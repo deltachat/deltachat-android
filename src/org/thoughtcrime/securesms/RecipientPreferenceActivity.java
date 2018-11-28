@@ -44,7 +44,6 @@ import org.thoughtcrime.securesms.components.ThreadPhotoRailView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.loaders.ThreadMediaLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -514,7 +513,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
           new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-              DatabaseFactory.getRecipientDatabase(context).setColor(recipient, selectedColor);
+//              DatabaseFactory.getRecipientDatabase(context).setColor(recipient, selectedColor);
 
 //              if (recipient.resolve().getRegistered() == RecipientDatabase.RegisteredState.REGISTERED) {
 //                ApplicationContext.getInstance(context)

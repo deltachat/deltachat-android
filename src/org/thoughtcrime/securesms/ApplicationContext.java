@@ -34,7 +34,6 @@ import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
-import org.thoughtcrime.securesms.service.ExpiringMessageManager;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.webrtc.PeerConnectionFactory;
@@ -59,7 +58,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
 
   private static final String TAG = ApplicationContext.class.getName();
 
-  private ExpiringMessageManager expiringMessageManager;
   private JobManager             jobManager;
 
   private volatile boolean isAppVisible;
@@ -80,7 +78,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeRandomNumberFix();
     initializeLogging();
     initializeJobManager();
-    initializeExpiringMessageManager();
     //initializeSignedPreKeyCheck(); -- keys are generated in the core, however, not sure if this is needed for the lock screen
     initializePeriodicTasks();
     initializeWebRtc();
@@ -101,10 +98,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
 
   public JobManager getJobManager() {
     return jobManager;
-  }
-
-  public ExpiringMessageManager getExpiringMessageManager() {
-    return expiringMessageManager;
   }
 
   public boolean isAppVisible() {
@@ -148,10 +141,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
                                 .withJobSerializer(new JavaJobSerializer())
                                 .withConsumerThreads(5)
                                 .build();
-  }
-
-  private void initializeExpiringMessageManager() {
-    this.expiringMessageManager = new ExpiringMessageManager(this);
   }
 
   private void initializePeriodicTasks() {
