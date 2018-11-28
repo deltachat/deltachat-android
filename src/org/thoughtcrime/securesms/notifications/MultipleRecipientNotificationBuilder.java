@@ -12,7 +12,7 @@ import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashMap;
@@ -44,7 +44,7 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     setContentTitle(context.getString(R.string.app_name));
     setContentIntent(PendingIntent.getActivity(context, 0, new Intent(context, ConversationListActivity.class), 0));
     setCategory(NotificationCompat.CATEGORY_MESSAGE);
-    setPriority(TextSecurePreferences.getNotificationPriority(context));
+    setPriority(Prefs.getNotificationPriority(context));
     setGroupSummary(true);
   }
 

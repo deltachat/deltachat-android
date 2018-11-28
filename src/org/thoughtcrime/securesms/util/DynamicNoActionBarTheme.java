@@ -7,7 +7,7 @@ import org.thoughtcrime.securesms.R;
 public class DynamicNoActionBarTheme extends DynamicTheme {
   @Override
   protected int getSelectedTheme(Activity activity) {
-    String theme = TextSecurePreferences.getTheme(activity);
+    String theme = Prefs.getTheme(activity);
 
     if (theme.equals("dark")) return R.style.TextSecure_DarkNoActionBar;
 

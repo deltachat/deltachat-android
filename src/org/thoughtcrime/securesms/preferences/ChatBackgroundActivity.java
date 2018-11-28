@@ -26,7 +26,7 @@ import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.ServiceUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -54,7 +54,7 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
         defaultButton.setOnClickListener(new DefaultClickListener());
         galleryButton.setOnClickListener(new GalleryClickListener());
 
-        String backgroundImagePath = TextSecurePreferences.getBackgroundImagePath(this);
+        String backgroundImagePath = Prefs.getBackgroundImagePath(this);
         setLayoutBackgroundImage(backgroundImagePath);
 
         ActionBar actionBar = getSupportActionBar();
@@ -87,14 +87,14 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
                     @Override
                     public void run() {
                         String destination = context.getFilesDir().getAbsolutePath() + "/background";
-                        TextSecurePreferences.setBackgroundImagePath(context, destination);
+                        Prefs.setBackgroundImagePath(context, destination);
                         scaleAndSaveImage(context, destination);
                     }
                 };
                 thread.start();
             }
             else {
-                TextSecurePreferences.setBackgroundImagePath(context, "");
+                Prefs.setBackgroundImagePath(context, "");
             }
             finish();
             return true;
@@ -124,15 +124,15 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
         } catch (InterruptedException e) {
             e.printStackTrace();
-            TextSecurePreferences.setBackgroundImagePath(context, "");
+            Prefs.setBackgroundImagePath(context, "");
             showBackgroundSaveError();
         } catch (ExecutionException e) {
             e.printStackTrace();
-            TextSecurePreferences.setBackgroundImagePath(context, "");
+            Prefs.setBackgroundImagePath(context, "");
             showBackgroundSaveError();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            TextSecurePreferences.setBackgroundImagePath(context, "");
+            Prefs.setBackgroundImagePath(context, "");
             showBackgroundSaveError();
         }
     }

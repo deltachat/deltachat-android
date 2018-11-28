@@ -11,9 +11,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
-import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContact;
-import com.b44t.messenger.DcContext;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
@@ -22,7 +19,7 @@ import com.google.i18n.phonenumbers.ShortNumberInfo;
 import org.thoughtcrime.securesms.util.DelimiterUtil;
 import org.thoughtcrime.securesms.util.GroupUtil;
 import org.thoughtcrime.securesms.util.NumberUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.Collections;
@@ -105,7 +102,7 @@ public class Address implements Parcelable, Comparable<Address> {
   }
 
   private static @NonNull ExternalAddressFormatter getExternalAddressFormatter(Context context) {
-    String localNumber = TextSecurePreferences.getLocalNumber(context);
+    String localNumber = Prefs.getLocalNumber(context);
 
     if (!TextUtils.isEmpty(localNumber)) {
       Pair<String, ExternalAddressFormatter> cached = cachedFormatter.get();

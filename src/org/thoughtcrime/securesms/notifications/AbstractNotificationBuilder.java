@@ -9,13 +9,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 public abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
@@ -44,24 +42,24 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     return builder;
   }
 
-  public void setAlarms(@Nullable Uri ringtone, TextSecurePreferences.VibrateState vibrate) {
-    Uri     defaultRingtone = TextSecurePreferences.getNotificationRingtone(context);
-    boolean defaultVibrate  = TextSecurePreferences.isNotificationVibrateEnabled(context);
+  public void setAlarms(@Nullable Uri ringtone, Prefs.VibrateState vibrate) {
+    Uri     defaultRingtone = Prefs.getNotificationRingtone(context);
+    boolean defaultVibrate  = Prefs.isNotificationVibrateEnabled(context);
 
     if      (ringtone == null && !TextUtils.isEmpty(defaultRingtone.toString())) setSound(defaultRingtone);
     else if (ringtone != null && !ringtone.toString().isEmpty())                 setSound(ringtone);
 
-    if (vibrate == TextSecurePreferences.VibrateState.ENABLED ||
-        (vibrate == TextSecurePreferences.VibrateState.DEFAULT && defaultVibrate))
+    if (vibrate == Prefs.VibrateState.ENABLED ||
+        (vibrate == Prefs.VibrateState.DEFAULT && defaultVibrate))
     {
       setDefaults(Notification.DEFAULT_VIBRATE);
     }
   }
 
   private void setLed() {
-    String ledColor              = TextSecurePreferences.getNotificationLedColor(context);
-    String ledBlinkPattern       = TextSecurePreferences.getNotificationLedPattern(context);
-    String ledBlinkPatternCustom = TextSecurePreferences.getNotificationLedPatternCustom(context);
+    String ledColor              = Prefs.getNotificationLedColor(context);
+    String ledBlinkPattern       = Prefs.getNotificationLedPattern(context);
+    String ledBlinkPatternCustom = Prefs.getNotificationLedPatternCustom(context);
 
     if (!ledColor.equals("none")) {
       String[] blinkPatternArray = parseBlinkPattern(ledBlinkPattern, ledBlinkPatternCustom);

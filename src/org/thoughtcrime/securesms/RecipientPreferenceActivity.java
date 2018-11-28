@@ -59,8 +59,8 @@ import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.thoughtcrime.securesms.util.TextSecurePreferences.VibrateState;
+import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Prefs.VibrateState;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -329,12 +329,12 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       PreferenceCategory    privacyCategory           = (PreferenceCategory) this.findPreference("privacy_settings");
       PreferenceCategory    divider                   = (PreferenceCategory) this.findPreference("divider");
 
-      mutePreference.setChecked(TextSecurePreferences.isChatMuted(getContext(), chatId));
+      mutePreference.setChecked(Prefs.isChatMuted(getContext(), chatId));
 
       ringtoneMessagePreference.setSummary(getRingtoneSummary(getContext(), recipient.getMessageRingtone()));
       ringtoneCallPreference.setSummary(getRingtoneSummary(getContext(), recipient.getCallRingtone()));
 
-      VibrateState vibrateState = TextSecurePreferences.getChatVibrate(getContext(), chatId);
+      VibrateState vibrateState = Prefs.getChatVibrate(getContext(), chatId);
       Pair<String, Integer> vibrateMessageSummary = getVibrateSummary(getContext(), vibrateState);
       Pair<String, Integer> vibrateCallSummary    = getVibrateSummary(getContext(), vibrateState);
 
@@ -435,13 +435,13 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       public boolean onPreferenceChange(Preference preference, Object newValue) {
         Uri value = (Uri)newValue;
 
-        Uri defaultValue = TextSecurePreferences.getNotificationRingtone(getContext());
+        Uri defaultValue = Prefs.getNotificationRingtone(getContext());
 
         if (defaultValue.equals(value)) value = null;
         else if (value == null)         value = Uri.EMPTY;
 
         int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
-        TextSecurePreferences.setChatRingtone(getContext(), chatId, value);
+        Prefs.setChatRingtone(getContext(), chatId, value);
 
         return false;
       }
@@ -458,7 +458,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       @Override
       public boolean onPreferenceClick(Preference preference) {
         Uri current = recipient.getMessageRingtone();
-        Uri defaultUri = TextSecurePreferences.getNotificationRingtone(getContext());
+        Uri defaultUri = Prefs.getNotificationRingtone(getContext());
 
         if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
         else if (current.toString().isEmpty()) current = null;
@@ -490,7 +490,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         final VibrateState vibrateState = VibrateState.fromId(value);
 
         int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
-        TextSecurePreferences.setChatVibrate(getContext(), chatId, vibrateState);
+        Prefs.setChatVibrate(getContext(), chatId, vibrateState);
 
         return false;
       }
@@ -533,7 +533,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       public boolean onPreferenceClick(Preference preference) {
         int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
 
-        if (TextSecurePreferences.isChatMuted(getContext(), chatId)) {
+        if (Prefs.isChatMuted(getContext(), chatId)) {
           handleUnmute();
         }
         else {
@@ -552,7 +552,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       }
 
       private void setMuted(final Recipient recipient, final long until) {
-        TextSecurePreferences.setChatMutedUntil(getActivity(), recipient.getAddress().getDcChatId(), until);
+        Prefs.setChatMutedUntil(getActivity(), recipient.getAddress().getDcChatId(), until);
         setSummaries(recipient);
       }
     }

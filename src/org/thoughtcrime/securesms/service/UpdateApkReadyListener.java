@@ -18,7 +18,7 @@ import org.thoughtcrime.securesms.util.FileProviderUtil;
 import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.Hex;
 import org.thoughtcrime.securesms.util.ServiceUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,9 +36,9 @@ public class UpdateApkReadyListener extends BroadcastReceiver {
     if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
       long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -2);
 
-      if (downloadId == TextSecurePreferences.getUpdateApkDownloadId(context)) {
+      if (downloadId == Prefs.getUpdateApkDownloadId(context)) {
         Uri    uri           = getLocalUriForDownloadId(context, downloadId);
-        String encodedDigest = TextSecurePreferences.getUpdateApkDigest(context);
+        String encodedDigest = Prefs.getUpdateApkDigest(context);
 
         if (uri == null) {
           Log.w(TAG, "Downloaded local URI is null?");

@@ -6,11 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
-import android.util.Log;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.Arrays;
 
@@ -20,11 +19,11 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
 
-    this.findPreference(TextSecurePreferences.THEME_PREF).setOnPreferenceChangeListener(new ListSummaryListener());
-    this.findPreference(TextSecurePreferences.LANGUAGE_PREF).setOnPreferenceChangeListener(new ListSummaryListener());
-    initializeListSummary((ListPreference)findPreference(TextSecurePreferences.THEME_PREF));
-    initializeListSummary((ListPreference)findPreference(TextSecurePreferences.LANGUAGE_PREF));
-    this.findPreference(TextSecurePreferences.BACKGROUND_PREF).setOnPreferenceClickListener(new BackgroundClickListener());
+    this.findPreference(Prefs.THEME_PREF).setOnPreferenceChangeListener(new ListSummaryListener());
+    this.findPreference(Prefs.LANGUAGE_PREF).setOnPreferenceChangeListener(new ListSummaryListener());
+    initializeListSummary((ListPreference)findPreference(Prefs.THEME_PREF));
+    initializeListSummary((ListPreference)findPreference(Prefs.LANGUAGE_PREF));
+    this.findPreference(Prefs.BACKGROUND_PREF).setOnPreferenceClickListener(new BackgroundClickListener());
   }
 
   @Override
@@ -42,7 +41,7 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
   public void onResume() {
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__appearance);
-    String imagePath = TextSecurePreferences.getBackgroundImagePath(getContext());
+    String imagePath = Prefs.getBackgroundImagePath(getContext());
     String backgroundString;
     if(imagePath.isEmpty()){
       backgroundString = this.getString(R.string.AppearancePreferencesFragment_background_default_summary);
@@ -50,7 +49,7 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     else{
       backgroundString = this.getString(R.string.AppearancePreferencesFragment_background_custom_summary);
     }
-    this.findPreference(TextSecurePreferences.BACKGROUND_PREF).setSummary(backgroundString);
+    this.findPreference(Prefs.BACKGROUND_PREF).setSummary(backgroundString);
   }
 
   @Override
@@ -65,13 +64,13 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     String[] themeEntries        = context.getResources().getStringArray(R.array.pref_theme_entries);
     String[] themeEntryValues    = context.getResources().getStringArray(R.array.pref_theme_values);
 
-    int langIndex  = Arrays.asList(languageEntryValues).indexOf(TextSecurePreferences.getLanguage(context));
-    int themeIndex = Arrays.asList(themeEntryValues).indexOf(TextSecurePreferences.getTheme(context));
+    int langIndex  = Arrays.asList(languageEntryValues).indexOf(Prefs.getLanguage(context));
+    int themeIndex = Arrays.asList(themeEntryValues).indexOf(Prefs.getTheme(context));
 
     if (langIndex == -1)  langIndex = 0;
     if (themeIndex == -1) themeIndex = 0;
 
-    String imagePath = TextSecurePreferences.getBackgroundImagePath(context);
+    String imagePath = Prefs.getBackgroundImagePath(context);
     String backgroundString;
     if(imagePath.isEmpty()){
       backgroundString = context.getString(R.string.ApplicationPreferencesActivity_appearance_background_default);

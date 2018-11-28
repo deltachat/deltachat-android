@@ -23,9 +23,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class TextSecurePreferences {
+public class Prefs {
 
-  private static final String TAG = TextSecurePreferences.class.getSimpleName();
+  private static final String TAG = Prefs.class.getSimpleName();
 
   public  static final String CHANGE_PASSPHRASE_PREF           = "pref_change_passphrase";
   public  static final String DISABLE_PASSPHRASE_PREF          = "pref_disable_passphrase";

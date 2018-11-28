@@ -32,7 +32,7 @@ import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientProvider;
 import org.thoughtcrime.securesms.util.Hash;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedInputStream;
@@ -43,10 +43,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ApplicationDcContext extends DcContext {
 
@@ -192,7 +190,7 @@ public class ApplicationDcContext extends DcContext {
         Recipient recipient = new Recipient(Address.fromChat(chat.getId()), recipientDetails);
         if (!chat.isGroup()) {
             String identifier = Hash.sha256(chat.getName() + chat.getSubtitle());
-            Uri systemContactPhoto = TextSecurePreferences.getSystemContactPhoto(context, identifier);
+            Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
             if (systemContactPhoto != null) {
                 recipient.setSystemContactPhoto(systemContactPhoto);
             }
@@ -205,7 +203,7 @@ public class ApplicationDcContext extends DcContext {
         RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(contact.getDisplayName(), null, false, null, null);
         Recipient recipient = new Recipient(Address.fromContact(contact.getId()), recipientDetails);
         String identifier = Hash.sha256(contact.getName() + contact.getAddr());
-        Uri systemContactPhoto = TextSecurePreferences.getSystemContactPhoto(context, identifier);
+        Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
         if (systemContactPhoto != null) {
             recipient.setSystemContactPhoto(systemContactPhoto);
         }

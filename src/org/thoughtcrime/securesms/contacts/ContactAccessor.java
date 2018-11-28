@@ -34,10 +34,9 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.GroupDatabase;
 import org.thoughtcrime.securesms.util.Hash;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -114,7 +113,7 @@ public class ContactAccessor {
           result.append(name).append("\n").append(mail).append("\n");
       }
     }
-    TextSecurePreferences.setSystemContactPhotos(context, contactPhotoIdentifiers);
+    Prefs.setSystemContactPhotos(context, contactPhotoIdentifiers);
     return result.toString();
   }
 

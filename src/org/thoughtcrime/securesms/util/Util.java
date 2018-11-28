@@ -40,21 +40,18 @@ import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
 
-import com.google.android.exoplayer2.extractor.ts.PsExtractor;
 import com.google.android.mms.pdu_alt.CharacterSets;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
 
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.components.ComposeText;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.lang.ref.WeakReference;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.text.DecimalFormat;
@@ -201,7 +198,7 @@ public class Util {
     if (address.isGroup()) return false;
     if (address.isEmail()) return false;
     if (address.isDcChat()) return false;
-    String localNumber = TextSecurePreferences.getLocalNumber(context);
+    String localNumber = Prefs.getLocalNumber(context);
     if (TextUtils.isEmpty(localNumber)) return false;
 
     return localNumber.equals(address.toPhoneString());

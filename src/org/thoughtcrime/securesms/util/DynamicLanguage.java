@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.util;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
@@ -67,7 +66,7 @@ public class DynamicLanguage {
   }
 
   private static Locale getSelectedLocale(Context context) {
-    String language[] = TextUtils.split(TextSecurePreferences.getLanguage(context), "_");
+    String language[] = TextUtils.split(Prefs.getLanguage(context), "_");
 
     if (language[0].equals(DEFAULT)) {
       return Locale.getDefault();

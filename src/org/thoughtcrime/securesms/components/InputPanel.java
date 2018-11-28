@@ -27,7 +27,7 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.QuoteModel;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
@@ -99,7 +99,7 @@ public class InputPanel extends LinearLayout
       this.microphoneRecorderView.setClickable(false);
     }
 
-    if (TextSecurePreferences.isSystemEmojiPreferred(getContext())) {
+    if (Prefs.isSystemEmojiPreferred(getContext())) {
       emojiToggle.setVisibility(View.GONE);
       emojiVisible = false;
     } else {

@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.CustomDefaultPreference.CustomDefaultPreferenceDialogFragmentCompat.CustomPreferenceValidator;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 public class CustomDefaultPreference extends DialogPreference {
 
@@ -75,19 +75,19 @@ public class CustomDefaultPreference extends DialogPreference {
   }
 
   private boolean isCustom() {
-    return TextSecurePreferences.getBooleanPreference(getContext(), customToggle, false);
+    return Prefs.getBooleanPreference(getContext(), customToggle, false);
   }
 
   private void setCustom(boolean custom) {
-    TextSecurePreferences.setBooleanPreference(getContext(), customToggle, custom);
+    Prefs.setBooleanPreference(getContext(), customToggle, custom);
   }
 
   private String getCustomValue() {
-    return TextSecurePreferences.getStringPreference(getContext(), customPreference, "");
+    return Prefs.getStringPreference(getContext(), customPreference, "");
   }
 
   private void setCustomValue(String value) {
-    TextSecurePreferences.setStringPreference(getContext(), customPreference, value);
+    Prefs.setStringPreference(getContext(), customPreference, value);
   }
 
   private String getDefaultValue() {

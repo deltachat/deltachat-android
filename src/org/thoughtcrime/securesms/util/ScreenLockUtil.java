@@ -36,12 +36,12 @@ public class ScreenLockUtil {
     }
 
     public static boolean isScreenLockEnabled(Context context) {
-        return TextSecurePreferences.isScreenLockEnabled(context)
+        return Prefs.isScreenLockEnabled(context)
                 && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
     }
 
     public static boolean isScreenLockTimeoutEnabled(Context context) {
-        return TextSecurePreferences.isScreenLockTimeoutEnabled(context)
+        return Prefs.isScreenLockTimeoutEnabled(context)
                 && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
     }
 
@@ -55,7 +55,7 @@ public class ScreenLockUtil {
                     ScreenLockUtil.applyScreenLock(activity);
                 }
             }
-        }, TextSecurePreferences.getScreenLockTimeoutInterval(activity) * 1000);
+        }, Prefs.getScreenLockTimeoutInterval(activity) * 1000);
         return newTimer;
     }
 

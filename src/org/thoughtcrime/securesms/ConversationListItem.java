@@ -52,7 +52,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.search.model.MessageResult;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ResUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -172,7 +172,7 @@ public class ConversationListItem extends RelativeLayout
     }
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
-        TextSecurePreferences.isChatMuted(getContext(), (int)threadId)? R.drawable.ic_volume_off_grey600_18dp : 0,
+        Prefs.isChatMuted(getContext(), (int)threadId)? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
         thread.isVerified()? R.drawable.ic_verified : 0,
         0);

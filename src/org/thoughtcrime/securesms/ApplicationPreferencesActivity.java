@@ -46,7 +46,7 @@ import org.thoughtcrime.securesms.preferences.NotificationsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 /**
  * The Activity for application preference display and management.
@@ -122,9 +122,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
   @Override
   public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-    if (key.equals(TextSecurePreferences.THEME_PREF)) {
+    if (key.equals(Prefs.THEME_PREF)) {
       recreate();
-    } else if (key.equals(TextSecurePreferences.LANGUAGE_PREF)) {
+    } else if (key.equals(Prefs.LANGUAGE_PREF)) {
       recreate();
     }
   }

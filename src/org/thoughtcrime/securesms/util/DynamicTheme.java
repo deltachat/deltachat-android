@@ -28,7 +28,7 @@ public class DynamicTheme {
   }
 
   protected int getSelectedTheme(Activity activity) {
-    String theme = TextSecurePreferences.getTheme(activity);
+    String theme = Prefs.getTheme(activity);
 
     if (theme.equals(DARK)) return R.style.TextSecure_DarkTheme;
 

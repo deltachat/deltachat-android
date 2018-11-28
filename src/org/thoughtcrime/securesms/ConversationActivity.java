@@ -122,7 +122,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
@@ -454,7 +454,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     }
 
-    if (recipient != null && TextSecurePreferences.isChatMuted(this, threadId)) {
+    if (recipient != null && Prefs.isChatMuted(this, threadId)) {
       inflater.inflate(R.menu.conversation_muted, menu);
     }
     else {
@@ -529,7 +529,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleMuteNotifications() {
     MuteDialog.show(this, until -> {
-      TextSecurePreferences.setChatMutedUntil(this, threadId, until);
+      Prefs.setChatMutedUntil(this, threadId, until);
       titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
     });
   }
@@ -544,7 +544,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleUnmuteNotifications() {
-    TextSecurePreferences.setChatMutedUntil(this, threadId, 0);
+    Prefs.setChatMutedUntil(this, threadId, 0);
     titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
   }
 
@@ -803,7 +803,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       quickCameraToggle.setEnabled(false);
     }
 
-    String backgroundImagePath = TextSecurePreferences.getBackgroundImagePath(this);
+    String backgroundImagePath = Prefs.getBackgroundImagePath(this);
     if(!backgroundImagePath.isEmpty()) {
       Drawable image = Drawable.createFromPath(backgroundImagePath);
       getWindow().setBackgroundDrawable(image);
@@ -1460,7 +1460,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     public boolean onKey(View v, int keyCode, KeyEvent event) {
       if (event.getAction() == KeyEvent.ACTION_DOWN) {
         if (keyCode == KeyEvent.KEYCODE_ENTER) {
-          if (TextSecurePreferences.isEnterSendsEnabled(ConversationActivity.this)) {
+          if (Prefs.isEnterSendsEnabled(ConversationActivity.this)) {
             sendButton.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
             sendButton.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_ENTER));
             return true;
@@ -1506,7 +1506,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Recipient author;
 
     if (messageRecord.isOutgoing()) {
-      author = Recipient.from(this, Address.fromSerialized(TextSecurePreferences.getLocalNumber(this)), true);
+      author = Recipient.from(this, Address.fromSerialized(Prefs.getLocalNumber(this)), true);
     } else {
       author = messageRecord.getIndividualRecipient();
     }

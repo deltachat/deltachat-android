@@ -21,7 +21,7 @@ import org.thoughtcrime.securesms.service.UpdateApkReadyListener;
 import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.Hex;
 import org.thoughtcrime.securesms.util.JsonUtils;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -106,7 +106,7 @@ public class UpdateApkJob extends ContextJob {
 
     query.setFilterByStatus(DownloadManager.STATUS_PAUSED | DownloadManager.STATUS_PENDING | DownloadManager.STATUS_RUNNING | DownloadManager.STATUS_SUCCESSFUL);
 
-    long   pendingDownloadId = TextSecurePreferences.getUpdateApkDownloadId(context);
+    long   pendingDownloadId = Prefs.getUpdateApkDownloadId(context);
     byte[] pendingDigest     = getPendingDigest(context);
     Cursor cursor            = downloadManager.query(query);
 
@@ -154,8 +154,8 @@ public class UpdateApkJob extends ContextJob {
     }
 
     long downloadId = downloadManager.enqueue(downloadRequest);
-    TextSecurePreferences.setUpdateApkDownloadId(context, downloadId);
-    TextSecurePreferences.setUpdateApkDigest(context, Hex.toStringCondensed(digest));
+    Prefs.setUpdateApkDownloadId(context, downloadId);
+    Prefs.setUpdateApkDigest(context, Hex.toStringCondensed(digest));
   }
 
   private void handleDownloadNotify(long downloadId) {
@@ -182,7 +182,7 @@ public class UpdateApkJob extends ContextJob {
 
   private @Nullable byte[] getPendingDigest(Context context) {
     try {
-      String encodedDigest = TextSecurePreferences.getUpdateApkDigest(context);
+      String encodedDigest = Prefs.getUpdateApkDigest(context);
 
       if (encodedDigest == null) return null;
 

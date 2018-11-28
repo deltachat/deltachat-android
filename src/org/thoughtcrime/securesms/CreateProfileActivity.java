@@ -52,7 +52,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.FileProviderUtil;
 import org.thoughtcrime.securesms.util.IntentUtils;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
@@ -266,8 +266,8 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   }
 
   private void initializeProfileName(boolean excludeSystem) {
-    if (!TextUtils.isEmpty(TextSecurePreferences.getProfileName(this))) {
-      String profileName = TextSecurePreferences.getProfileName(this);
+    if (!TextUtils.isEmpty(Prefs.getProfileName(this))) {
+      String profileName = Prefs.getProfileName(this);
 
       name.setText(profileName);
       name.setSelection(profileName.length(), profileName.length());
@@ -426,11 +426,11 @@ public class CreateProfileActivity extends BaseActionBarActivity {
         Context context    = CreateProfileActivity.this;
         DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
         setStatusText();
-        TextSecurePreferences.setProfileName(context, name);
+        Prefs.setProfileName(context, name);
 
         try {
           AvatarHelper.setSelfAvatar(CreateProfileActivity.this, DcHelper.get(context, DcHelper.CONFIG_ADDRESS), avatarBytes);
-          TextSecurePreferences.setProfileAvatarId(CreateProfileActivity.this, new SecureRandom().nextInt());
+          Prefs.setProfileAvatarId(CreateProfileActivity.this, new SecureRandom().nextInt());
         } catch (IOException e) {
           Log.w(TAG, e);
           return false;

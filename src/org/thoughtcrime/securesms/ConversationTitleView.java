@@ -14,7 +14,7 @@ import com.b44t.messenger.DcChat;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
@@ -60,7 +60,7 @@ public class ConversationTitleView extends RelativeLayout {
       setComposeTitle();
     } else {
       setRecipientTitle(dcChat);
-      if (TextSecurePreferences.isChatMuted(getContext(), dcChat.getId())) {
+      if (Prefs.isChatMuted(getContext(), dcChat.getId())) {
         imgLeft = R.drawable.ic_volume_off_white_18dp;
       }
       if (dcChat.isVerified()) {

@@ -19,7 +19,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private static final String TAG = ChatsPreferenceFragment.class.getSimpleName();
@@ -33,7 +33,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     super.onCreate(paramBundle);
     dcContext = DcHelper.getContext(getContext());
 
-    findPreference(TextSecurePreferences.MESSAGE_BODY_TEXT_SIZE_PREF)
+    findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
 
     trimEnabledCheckbox = (CheckBoxPreference) findPreference("pref_trim_threads");
@@ -44,7 +44,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     findPreference("pref_trim_now")
         .setOnPreferenceClickListener(new TrimNowClickListener());
 
-    initializeListSummary((ListPreference) findPreference(TextSecurePreferences.MESSAGE_BODY_TEXT_SIZE_PREF));
+    initializeListSummary((ListPreference) findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF));
   }
 
   @Override

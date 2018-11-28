@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.io.IOException;
 import java.security.SecureRandom;
@@ -22,8 +22,8 @@ public class DatabaseSecretProvider {
   }
 
   public DatabaseSecret getOrCreateDatabaseSecret() {
-    String unencryptedSecret = TextSecurePreferences.getDatabaseUnencryptedSecret(context);
-    String encryptedSecret   = TextSecurePreferences.getDatabaseEncryptedSecret(context);
+    String unencryptedSecret = Prefs.getDatabaseUnencryptedSecret(context);
+    String encryptedSecret   = Prefs.getDatabaseEncryptedSecret(context);
 
     if      (unencryptedSecret != null) return getUnencryptedDatabaseSecret(context, unencryptedSecret);
     else if (encryptedSecret != null)   return getEncryptedDatabaseSecret(encryptedSecret);
@@ -40,8 +40,8 @@ public class DatabaseSecretProvider {
       } else {
         KeyStoreHelper.SealedData encryptedSecret = KeyStoreHelper.seal(databaseSecret.asBytes());
 
-        TextSecurePreferences.setDatabaseEncryptedSecret(context, encryptedSecret.serialize());
-        TextSecurePreferences.setDatabaseUnencryptedSecret(context, null);
+        Prefs.setDatabaseEncryptedSecret(context, encryptedSecret.serialize());
+        Prefs.setDatabaseUnencryptedSecret(context, null);
 
         return databaseSecret;
       }
@@ -68,9 +68,9 @@ public class DatabaseSecretProvider {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       KeyStoreHelper.SealedData encryptedSecret = KeyStoreHelper.seal(databaseSecret.asBytes());
-      TextSecurePreferences.setDatabaseEncryptedSecret(context, encryptedSecret.serialize());
+      Prefs.setDatabaseEncryptedSecret(context, encryptedSecret.serialize());
     } else {
-      TextSecurePreferences.setDatabaseUnencryptedSecret(context, databaseSecret.asString());
+      Prefs.setDatabaseUnencryptedSecret(context, databaseSecret.asString());
     }
 
     return databaseSecret;

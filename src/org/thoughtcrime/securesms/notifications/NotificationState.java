@@ -10,8 +10,8 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationPopupActivity;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.thoughtcrime.securesms.util.TextSecurePreferences.VibrateState;
+import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Prefs.VibrateState;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
 import java.util.LinkedHashSet;
@@ -49,7 +49,7 @@ public class NotificationState {
       Recipient recipient = notifications.getFirst().getRecipient();
 
       if (recipient != null && recipient.getAddress().isDcChat()) {
-        return TextSecurePreferences.getChatRingtone(context, recipient.getAddress().getDcChatId());
+        return Prefs.getChatRingtone(context, recipient.getAddress().getDcChatId());
       }
     }
 
@@ -61,7 +61,7 @@ public class NotificationState {
       Recipient recipient = notifications.getFirst().getRecipient();
 
       if (recipient != null && recipient.getAddress().isDcChat()) {
-        return TextSecurePreferences.getChatVibrate(context, recipient.getAddress().getDcChatId());
+        return Prefs.getChatVibrate(context, recipient.getAddress().getDcChatId());
       }
     }
 

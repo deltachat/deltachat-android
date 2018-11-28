@@ -41,7 +41,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.jobmanager.Job;
 import org.thoughtcrime.securesms.jobmanager.JobParameters;
 import org.thoughtcrime.securesms.util.BitmapUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
@@ -83,7 +83,7 @@ public class CameraView extends ViewGroup {
       int        camera     = typedArray.getInt(R.styleable.CameraView_camera, -1);
 
       if      (camera != -1)    cameraId = camera;
-      else if (isMultiCamera()) cameraId = TextSecurePreferences.getDirectCaptureCameraId(context);
+      else if (isMultiCamera()) cameraId = Prefs.getDirectCaptureCameraId(context);
 
       typedArray.recycle();
     }
@@ -268,7 +268,7 @@ public class CameraView extends ViewGroup {
                  : CameraInfo.CAMERA_FACING_BACK;
       onPause();
       onResume();
-      TextSecurePreferences.setDirectCaptureCameraId(getContext(), cameraId);
+      Prefs.setDirectCaptureCameraId(getContext(), cameraId);
     }
   }
 

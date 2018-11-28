@@ -3,9 +3,8 @@ package org.thoughtcrime.securesms.service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 /**
  * Respond to a PanicKit trigger Intent by locking the app.  PanicKit provides a
@@ -18,7 +17,7 @@ public class PanicResponderListener extends BroadcastReceiver {
 
   @Override
   public void onReceive(Context context, Intent intent) {
-    if (intent != null  && !TextSecurePreferences.isPasswordDisabled(context) &&
+    if (intent != null  && !Prefs.isPasswordDisabled(context) &&
         "info.guardianproject.panic.action.TRIGGER".equals(intent.getAction()))
     {
       // as delta is protected with the system credentials,

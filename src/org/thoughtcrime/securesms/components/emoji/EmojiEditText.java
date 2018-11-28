@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider.EmojiDrawable;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 
 public class EmojiEditText extends AppCompatEditText {
@@ -26,7 +26,7 @@ public class EmojiEditText extends AppCompatEditText {
 
   public EmojiEditText(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-    if (!TextSecurePreferences.isSystemEmojiPreferred(getContext())) {
+    if (!Prefs.isSystemEmojiPreferred(getContext())) {
       setFilters(appendEmojiFilter(this.getFilters()));
     }
   }

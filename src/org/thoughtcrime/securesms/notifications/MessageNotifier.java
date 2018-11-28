@@ -38,7 +38,6 @@ import android.util.Log;
 
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -47,9 +46,8 @@ import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
-import org.w3c.dom.Text;
 
 import java.util.HashSet;
 import java.util.List;
@@ -147,7 +145,7 @@ public class MessageNotifier {
   }
 
   public static void updateNotification(@NonNull Context context) {
-    if (!TextSecurePreferences.isNotificationsEnabled(context)) {
+    if (!Prefs.isNotificationsEnabled(context)) {
       return;
     }
 
@@ -194,8 +192,8 @@ public class MessageNotifier {
       dcContext.marknoticedChat(chatId);
     }
 
-    if (!TextSecurePreferences.isNotificationsEnabled(context) ||
-        TextSecurePreferences.isChatMuted(context, chatId))
+    if (!Prefs.isNotificationsEnabled(context) ||
+        Prefs.isChatMuted(context, chatId))
     {
       return;
     }
@@ -259,7 +257,7 @@ public class MessageNotifier {
       return;
     }
 
-    SingleRecipientNotificationBuilder builder        = new SingleRecipientNotificationBuilder(context, TextSecurePreferences.getNotificationPrivacy(context));
+    SingleRecipientNotificationBuilder builder        = new SingleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
     List<NotificationItem>             notifications  = notificationState.getNotifications();
     Recipient                          recipient      = notifications.get(0).getRecipient();
     int                                notificationId = (SUMMARY_NOTIFICATION_ID + (bundled ? notifications.get(0).getChatId() : 0));
@@ -307,7 +305,7 @@ public class MessageNotifier {
                                                      @NonNull  NotificationState notificationState,
                                                      boolean signal)
   {
-    MultipleRecipientNotificationBuilder builder       = new MultipleRecipientNotificationBuilder(context, TextSecurePreferences.getNotificationPrivacy(context));
+    MultipleRecipientNotificationBuilder builder       = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
     List<NotificationItem>               notifications = notificationState.getNotifications();
 
     builder.setMessageCount(notificationState.getMessageCount(), notificationState.getThreadCount());
@@ -337,20 +335,20 @@ public class MessageNotifier {
   }
 
   private static void sendInThreadNotification(Context context, int chatId) {
-    if (!TextSecurePreferences.isInThreadNotifications(context) ||
+    if (!Prefs.isInThreadNotifications(context) ||
         ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
     {
       return;
     }
 
-    if( TextSecurePreferences.isChatMuted(context, chatId) ) {
+    if( Prefs.isChatMuted(context, chatId) ) {
       Log.d(TAG, "chat muted");
       return;
     }
 
-    Uri uri = TextSecurePreferences.getChatRingtone(context, chatId);
+    Uri uri = Prefs.getChatRingtone(context, chatId);
     if (uri == null) {
-      uri = TextSecurePreferences.getNotificationRingtone(context);
+      uri = Prefs.getNotificationRingtone(context);
     }
 
     if (uri.toString().isEmpty()) {
@@ -405,7 +403,7 @@ public class MessageNotifier {
         body = SpanUtil.italic(message, italicLength);
       }
 
-      if (!TextSecurePreferences.isChatMuted(context, chatId)) {
+      if (!Prefs.isChatMuted(context, chatId)) {
         notificationState.addNotification(new NotificationItem(id, mms, threadRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
       }
     }
@@ -425,7 +423,7 @@ public class MessageNotifier {
   }
 
   private static void scheduleReminder(Context context, int count) {
-    if (count >= TextSecurePreferences.getRepeatAlertsCount(context)) {
+    if (count >= Prefs.getRepeatAlertsCount(context)) {
       return;
     }
 

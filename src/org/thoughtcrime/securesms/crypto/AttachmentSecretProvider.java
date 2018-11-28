@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.security.SecureRandom;
 
@@ -35,8 +35,8 @@ public class AttachmentSecretProvider {
   public synchronized AttachmentSecret getOrCreateAttachmentSecret() {
     if (attachmentSecret != null) return attachmentSecret;
 
-    String unencryptedSecret = TextSecurePreferences.getAttachmentUnencryptedSecret(context);
-    String encryptedSecret   = TextSecurePreferences.getAttachmentEncryptedSecret(context);
+    String unencryptedSecret = Prefs.getAttachmentUnencryptedSecret(context);
+    String encryptedSecret   = Prefs.getAttachmentEncryptedSecret(context);
 
     if      (unencryptedSecret != null) attachmentSecret = getUnencryptedAttachmentSecret(context, unencryptedSecret);
     else if (encryptedSecret != null)   attachmentSecret = getEncryptedAttachmentSecret(encryptedSecret);
@@ -64,8 +64,8 @@ public class AttachmentSecretProvider {
     } else {
       KeyStoreHelper.SealedData encryptedSecret = KeyStoreHelper.seal(attachmentSecret.serialize().getBytes());
 
-      TextSecurePreferences.setAttachmentEncryptedSecret(context, encryptedSecret.serialize());
-      TextSecurePreferences.setAttachmentUnencryptedSecret(context, null);
+      Prefs.setAttachmentEncryptedSecret(context, encryptedSecret.serialize());
+      Prefs.setAttachmentUnencryptedSecret(context, null);
 
       return attachmentSecret;
     }
@@ -94,9 +94,9 @@ public class AttachmentSecretProvider {
   private void storeAttachmentSecret(@NonNull Context context, @NonNull AttachmentSecret attachmentSecret) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       KeyStoreHelper.SealedData encryptedSecret = KeyStoreHelper.seal(attachmentSecret.serialize().getBytes());
-      TextSecurePreferences.setAttachmentEncryptedSecret(context, encryptedSecret.serialize());
+      Prefs.setAttachmentEncryptedSecret(context, encryptedSecret.serialize());
     } else {
-      TextSecurePreferences.setAttachmentUnencryptedSecret(context, attachmentSecret.serialize());
+      Prefs.setAttachmentUnencryptedSecret(context, attachmentSecret.serialize());
     }
   }
 

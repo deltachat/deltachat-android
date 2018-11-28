@@ -15,7 +15,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.lang.reflect.Field;
 import java.util.Timer;
@@ -102,7 +102,7 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   private void initializeScreenshotSecurity() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH &&
-            TextSecurePreferences.isScreenSecurityEnabled(this))
+            Prefs.isScreenSecurityEnabled(this))
     {
       getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     } else {

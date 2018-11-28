@@ -13,7 +13,7 @@ import android.support.annotation.RequiresApi;
 import android.view.View;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
 public class DozeReminder extends Reminder {
@@ -24,7 +24,7 @@ public class DozeReminder extends Reminder {
           context.getString(R.string.DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery));
 
     setOkListener(v -> {
-      TextSecurePreferences.setPromptedOptimizeDoze(context, true);
+      Prefs.setPromptedOptimizeDoze(context, true);
       Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
                                  Uri.parse("package:" + context.getPackageName()));
       context.startActivity(intent);
@@ -33,7 +33,7 @@ public class DozeReminder extends Reminder {
     setDismissListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        TextSecurePreferences.setPromptedOptimizeDoze(context, true);
+        Prefs.setPromptedOptimizeDoze(context, true);
       }
     });
   }
@@ -43,7 +43,7 @@ public class DozeReminder extends Reminder {
       return false;
     }
 
-    return !TextSecurePreferences.hasPromptedOptimizeDoze(context) &&
+    return !Prefs.hasPromptedOptimizeDoze(context) &&
            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M          &&
            !((PowerManager)context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName());
   }

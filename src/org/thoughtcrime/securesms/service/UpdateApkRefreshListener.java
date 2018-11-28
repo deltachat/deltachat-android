@@ -8,7 +8,7 @@ import android.util.Log;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.jobs.UpdateApkJob;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +20,7 @@ public class UpdateApkRefreshListener extends PersistentAlarmManagerListener {
 
   @Override
   protected long getNextScheduledExecutionTime(Context context) {
-    return TextSecurePreferences.getUpdateApkRefreshTime(context);
+    return Prefs.getUpdateApkRefreshTime(context);
   }
 
   @Override
@@ -35,7 +35,7 @@ public class UpdateApkRefreshListener extends PersistentAlarmManagerListener {
     }
 
     long newTime = System.currentTimeMillis() + INTERVAL;
-    TextSecurePreferences.setUpdateApkRefreshTime(context, newTime);
+    Prefs.setUpdateApkRefreshTime(context, newTime);
 
     return newTime;
   }
