@@ -60,6 +60,6 @@ public abstract class LocalFileContactPhoto implements ContactPhoto {
 
     abstract int getId();
 
-    abstract String getPath(Context context);
+    abstract public String getPath(Context context);
 
 }

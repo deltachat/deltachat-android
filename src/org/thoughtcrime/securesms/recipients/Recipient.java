@@ -33,6 +33,7 @@ import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GroupRecordContactPhoto;
+import org.thoughtcrime.securesms.contacts.avatars.LocalFileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.SystemContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.TransparentContactPhoto;
@@ -338,10 +339,26 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   public synchronized @Nullable ContactPhoto getContactPhoto(Context context) {
-    if      (isGroupRecipient()) return new GroupRecordContactPhoto(context, getAddress());
-    else if (systemContactPhoto != null)                  return new SystemContactPhoto(address, systemContactPhoto, 0);
-    else if (profileAvatar != null)                       return new ProfileContactPhoto(context, address);
-    else                                                  return null;
+    LocalFileContactPhoto contactPhoto = null;
+    if (address.isDcChat()) {
+      contactPhoto = new GroupRecordContactPhoto(context, address);
+    }
+    else if (address.isDcContact()) {
+       contactPhoto = new ProfileContactPhoto(context, address);
+    }
+
+    if (contactPhoto!=null) {
+      String path = contactPhoto.getPath(context);
+      if (path != null && !path.isEmpty()) {
+        return contactPhoto;
+      }
+    }
+
+    if (systemContactPhoto != null) {
+      return new SystemContactPhoto(address, systemContactPhoto, 0);
+    }
+
+    return null;
   }
 
   public void setSystemContactPhoto(@Nullable Uri systemContactPhoto) {

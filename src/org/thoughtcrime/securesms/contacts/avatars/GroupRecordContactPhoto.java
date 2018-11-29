@@ -22,7 +22,7 @@ public class GroupRecordContactPhoto extends LocalFileContactPhoto {
     }
 
     @Override
-    String getPath(Context context) {
+    public String getPath(Context context) {
         String profileImage = DcHelper.getContext(context).getChat(getId()).getProfileImage();
         return profileImage != null ? profileImage : "";
     }
