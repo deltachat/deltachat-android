@@ -452,11 +452,15 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_removeContactFromChat(JNIEnv *e
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_setDraft(JNIEnv *env, jobject obj, jint chat_id, jstring draft /* NULL=delete */)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_setDraft(JNIEnv *env, jobject obj, jint chat_id, jobject msg /* NULL=delete */)
 {
-	CHAR_REF(draft);
-		dc_set_text_draft(get_dc_context(env, obj), chat_id, draftPtr /* NULL=delete */);
-	CHAR_UNREF(draft);
+	dc_set_draft(get_dc_context(env, obj), chat_id, get_dc_msg(env, msg));
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getDraftCPtr(JNIEnv *env, jobject obj, jint chat_id)
+{
+	return (jlong)dc_get_draft(get_dc_context(env, obj), chat_id);
 }
 
 
@@ -834,21 +838,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isVerified(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getDraft(JNIEnv *env, jobject obj) /* returns NULL for "no draft" */
-{
-	const char* temp = dc_chat_get_text_draft(get_dc_chat(env, obj));
-		jstring ret = temp? JSTRING_NEW(temp) : NULL;
-	free(temp);
-	return ret;
-}
-
-
-JNIEXPORT jlong Java_com_b44t_messenger_DcChat_getDraftTimestamp(JNIEnv *env, jobject obj)
-{
-	return JTIMESTAMP(dc_chat_get_draft_timestamp(get_dc_chat(env, obj)));
-}
-
-
 JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatMedia(JNIEnv *env, jobject obj, jint chat_id, jint msg_type, jint or_msg_type)
 {
 	dc_array_t* ca = dc_get_chat_media(get_dc_context(env, obj), chat_id, msg_type, or_msg_type);
@@ -900,12 +889,14 @@ JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatContacts(JNIEnv *en
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj)
 {
 	static jfieldID fid = 0;
-	if (fid==0) {
-		jclass cls = (*env)->GetObjectClass(env, obj);
-		fid = (*env)->GetFieldID(env, cls, "msgCPtr", "J" /*Signature, J=long*/);
-	}
-	if (fid) {
-		return (dc_msg_t*)(*env)->GetLongField(env, obj, fid);
+	if (env && obj) {
+		if (fid==0) {
+			jclass cls = (*env)->GetObjectClass(env, obj);
+			fid = (*env)->GetFieldID(env, cls, "msgCPtr", "J" /*Signature, J=long*/);
+		}
+		if (fid) {
+			return (dc_msg_t*)(*env)->GetLongField(env, obj, fid);
+		}
 	}
 	return NULL;
 }

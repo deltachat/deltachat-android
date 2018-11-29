@@ -1,6 +1,7 @@
 package com.b44t.messenger;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class DcContext {
 
@@ -106,7 +107,8 @@ public class DcContext {
     public native boolean      isContactInChat      (int chat_id, int contact_id);
     public native int          addContactToChat     (int chat_id, int contact_id);
     public native int          removeContactFromChat(int chat_id, int contact_id);
-    public native void         setDraft             (int chat_id, String draft/*null=delete*/);
+    public native void         setDraft             (int chat_id, DcMsg msg/*null=delete*/);
+    public @Nullable DcMsg     getDraft             (int chat_id) { return new DcMsg(getDraftCPtr(chat_id)); }
     public native int          setChatName          (int chat_id, String name);
     public native int          setChatProfileImage  (int chat_id, String name);
     public native int[]        getChatMsgs          (int chat_id, int flags, int marker1before);
@@ -146,5 +148,6 @@ public class DcContext {
     private native long getChatlistCPtr  (int listflags, String query, int queryId);
     private native long getChatCPtr      (int chat_id);
     private native long getMsgCPtr       (int id);
+    private native long getDraftCPtr    (int id);
     private native long getContactCPtr   (int id);
 }

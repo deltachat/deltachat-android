@@ -28,8 +28,6 @@ public class DcChat {
     public native boolean isUnpromoted      ();
     public native boolean isSelfTalk        ();
     public native boolean isVerified        ();
-    public native String  getDraft          ();
-    public native long    getDraftTimestamp ();
 
     // working with raw c-data
     private long        chatCPtr;    // CAVE: the name is referenced in the JNI
