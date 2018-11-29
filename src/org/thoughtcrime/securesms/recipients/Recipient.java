@@ -25,8 +25,6 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.annimon.stream.function.Consumer;
-
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -121,11 +119,6 @@ public class Recipient implements RecipientModifiedListener {
   public static @NonNull Recipient from(@NonNull Context context, @NonNull Address address, @NonNull Optional<RecipientSettings> settings, @NonNull Optional<GroupDatabase.GroupRecord> groupRecord, boolean asynchronous) {
     if (address == null) throw new AssertionError(address);
     return provider.getRecipient(context, address, settings, groupRecord, asynchronous);
-  }
-
-  public static void applyCached(@NonNull Address address, Consumer<Recipient> consumer) {
-    Optional<Recipient> recipient = provider.getCached(address);
-    if (recipient.isPresent()) consumer.accept(recipient.get());
   }
 
   Recipient(@NonNull  Address address,
@@ -238,19 +231,6 @@ public class Recipient implements RecipientModifiedListener {
     return this.contactUri;
   }
 
-  public void setContactUri(@Nullable Uri contactUri) {
-    boolean notify = false;
-
-    synchronized (this) {
-      if (!Util.equals(contactUri, this.contactUri)) {
-        this.contactUri = contactUri;
-        notify = true;
-      }
-    }
-
-    if (notify) notifyListeners();
-  }
-
   public synchronized @Nullable String getName() {
     if (this.name == null && isMmsGroupRecipient()) {
       List<String> names = new LinkedList<>();
@@ -300,45 +280,8 @@ public class Recipient implements RecipientModifiedListener {
     return customLabel;
   }
 
-  public void setCustomLabel(@Nullable String customLabel) {
-    boolean notify = false;
-
-    synchronized (this) {
-      if (!Util.equals(customLabel, this.customLabel)) {
-        this.customLabel = customLabel;
-        notify = true;
-      }
-    }
-
-    if (notify) notifyListeners();
-  }
-
-  public synchronized Optional<Integer> getDefaultSubscriptionId() {
-    return defaultSubscriptionId;
-  }
-
-  public void setDefaultSubscriptionId(Optional<Integer> defaultSubscriptionId) {
-    synchronized (this) {
-      this.defaultSubscriptionId = defaultSubscriptionId;
-    }
-
-    notifyListeners();
-  }
-
   public synchronized @Nullable String getProfileName() {
     return profileName;
-  }
-
-  public void setProfileName(@Nullable String profileName) {
-    synchronized (this) {
-      this.profileName = profileName;
-    }
-
-    notifyListeners();
-  }
-
-  public synchronized @Nullable String getProfileAvatar() {
-    return profileAvatar;
   }
 
   public void setProfileAvatar(@Nullable String profileAvatar) {
@@ -363,15 +306,6 @@ public class Recipient implements RecipientModifiedListener {
 
   public @NonNull synchronized List<Recipient> getParticipants() {
     return new LinkedList<>(participants);
-  }
-
-  public void setParticipants(@NonNull List<Recipient> participants) {
-    synchronized (this) {
-      this.participants.clear();
-      this.participants.addAll(participants);
-    }
-
-    notifyListeners();
   }
 
   public synchronized void addListener(RecipientModifiedListener listener) {
@@ -431,28 +365,12 @@ public class Recipient implements RecipientModifiedListener {
     return messageRingtone;
   }
 
-  public void setMessageRingtone(@Nullable Uri ringtone) {
-    synchronized (this) {
-      this.messageRingtone = ringtone;
-    }
-
-    notifyListeners();
-  }
-
   public synchronized @Nullable Uri getCallRingtone() {
     if (callRingtone != null && callRingtone.getScheme() != null && callRingtone.getScheme().startsWith("file")) {
       return null;
     }
 
     return callRingtone;
-  }
-
-  public void setCallRingtone(@Nullable Uri ringtone) {
-    synchronized (this) {
-      this.callRingtone = ringtone;
-    }
-
-    notifyListeners();
   }
 
   public synchronized boolean isBlocked() {
@@ -469,26 +387,6 @@ public class Recipient implements RecipientModifiedListener {
 
   public synchronized int getExpireMessages() {
     return expireMessages;
-  }
-
-  public void setExpireMessages(int expireMessages) {
-    synchronized (this) {
-      this.expireMessages = expireMessages;
-    }
-
-    notifyListeners();
-  }
-
-  public synchronized boolean hasSeenInviteReminder() {
-    return seenInviteReminder;
-  }
-
-  public void setHasSeenInviteReminder(boolean value) {
-    synchronized (this) {
-      this.seenInviteReminder = value;
-    }
-
-    notifyListeners();
   }
 
   public synchronized RegisteredState getRegistered() {
@@ -509,18 +407,6 @@ public class Recipient implements RecipientModifiedListener {
     }
 
     if (notify) notifyListeners();
-  }
-
-  public synchronized @Nullable byte[] getProfileKey() {
-    return profileKey;
-  }
-
-  public void setProfileKey(@Nullable byte[] profileKey) {
-    synchronized (this) {
-      this.profileKey = profileKey;
-    }
-
-    notifyListeners();
   }
 
   public synchronized boolean isSystemContact() {
