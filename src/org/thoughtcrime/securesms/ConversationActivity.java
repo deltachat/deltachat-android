@@ -905,17 +905,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void selectContactInfo(ContactData contactData) {
-    final CharSequence[] numbers     = new CharSequence[contactData.mails.size()];
+    final CharSequence[] mails     = new CharSequence[contactData.mails.size()];
 
     for (int i = 0; i < contactData.mails.size(); i++) {
-      numbers[i]     = contactData.mails.get(i).mail;
+      mails[i]     = contactData.mails.get(i).mail;
     }
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setIconAttribute(R.attr.conversation_attach_contact_info);
     builder.setTitle(R.string.ConversationActivity_select_contact_info);
 
-    builder.setItems(numbers, (dialog, which) -> composeText.append(appendName(contactData) + numbers[which]));
+    builder.setItems(mails, (dialog, which) -> composeText.append(appendName(contactData) + mails[which]));
     builder.show();
   }
 
