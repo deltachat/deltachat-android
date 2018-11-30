@@ -27,9 +27,7 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
 import android.telephony.PhoneNumberUtils;
-import android.text.TextUtils;
 
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.GroupDatabase;
 import org.thoughtcrime.securesms.util.Hash;
@@ -124,24 +122,24 @@ public class ContactAccessor {
 
   private ContactData getContactData(Context context, String displayName, long id) {
     ContactData contactData = new ContactData(id, displayName);
-    Cursor numberCursor     = null;
+    Cursor mailCursor     = null;
 
     try {
-      numberCursor = context.getContentResolver().query(Phone.CONTENT_URI, null,
+      mailCursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null,
                                                         Phone.CONTACT_ID + " = ?",
                                                         new String[] {contactData.id + ""}, null);
 
-      while (numberCursor != null && numberCursor.moveToNext()) {
-        int type         = numberCursor.getInt(numberCursor.getColumnIndexOrThrow(Phone.TYPE));
-        String label     = numberCursor.getString(numberCursor.getColumnIndexOrThrow(Phone.LABEL));
-        String number    = numberCursor.getString(numberCursor.getColumnIndexOrThrow(Phone.NUMBER));
+      while (mailCursor != null && mailCursor.moveToNext()) {
+        int type         = mailCursor.getInt(mailCursor.getColumnIndexOrThrow(Phone.TYPE));
+        String label     = mailCursor.getString(mailCursor.getColumnIndexOrThrow(Phone.LABEL));
+        String number    = mailCursor.getString(mailCursor.getColumnIndexOrThrow(Phone.NUMBER));
         String typeLabel = Phone.getTypeLabel(context.getResources(), type, label).toString();
 
-        contactData.numbers.add(new NumberData(typeLabel, number));
+        contactData.mails.add(new NumberData(typeLabel, number));
       }
     } finally {
-      if (numberCursor != null)
-        numberCursor.close();
+      if (mailCursor != null)
+        mailCursor.close();
     }
 
     return contactData;
@@ -198,16 +196,16 @@ public class ContactAccessor {
       }
     };
 
-    public final String number;
+    public final String mail;
     public final String type;
 
     public NumberData(String type, String number) {
       this.type = type;
-      this.number = number;
+      this.mail = number;
     }
 
     public NumberData(Parcel in) {
-      number = in.readString();
+      mail = in.readString();
       type   = in.readString();
     }
 
@@ -216,7 +214,7 @@ public class ContactAccessor {
     }
 
     public void writeToParcel(Parcel dest, int flags) {
-      dest.writeString(number);
+      dest.writeString(mail);
       dest.writeString(type);
     }
   }
@@ -235,19 +233,20 @@ public class ContactAccessor {
 
     public final long id;
     public final String name;
-    public final List<NumberData> numbers;
+    public final List<NumberData> mails;
 
     public ContactData(long id, String name) {
       this.id      = id;
       this.name    = name;
-      this.numbers = new LinkedList<NumberData>();
+      this.mails = new LinkedList<>();
     }
 
     public ContactData(Parcel in) {
       id      = in.readLong();
       name    = in.readString();
-      numbers = new LinkedList<NumberData>();
-      in.readTypedList(numbers, NumberData.CREATOR);
+      mails = new LinkedList<>();
+
+      in.readTypedList(mails, NumberData.CREATOR);
     }
 
     public int describeContents() {
@@ -257,7 +256,7 @@ public class ContactAccessor {
     public void writeToParcel(Parcel dest, int flags) {
       dest.writeLong(id);
       dest.writeString(name);
-      dest.writeTypedList(numbers);
+      dest.writeTypedList(mails);
     }
   }
 

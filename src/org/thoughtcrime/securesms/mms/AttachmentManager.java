@@ -383,7 +383,7 @@ public class AttachmentManager {
 
   public static void selectContactInfo(Activity activity, int requestCode) {
     Permissions.with(activity)
-               .request(Manifest.permission.WRITE_CONTACTS)
+               .request(Manifest.permission.READ_CONTACTS)
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_signal_requires_contacts_permission_in_order_to_attach_contact_information))
                .onAllGranted(() -> {
