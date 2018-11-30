@@ -22,7 +22,7 @@ public class ProfileContactPhoto extends LocalFileContactPhoto {
     }
 
     @Override
-    String getPath(Context context) {
+    public String getPath(Context context) {
         String profileImage = DcHelper.getContext(context).getContact(getId()).getProfileImage();
         return profileImage != null ? profileImage : "";
     }
