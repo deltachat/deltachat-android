@@ -26,7 +26,6 @@ import android.os.Parcelable;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
-import android.provider.ContactsContract.PhoneLookup;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 
@@ -64,26 +63,10 @@ public class ContactAccessor {
 
   private static final int CONTACT_CURSOR_CONTACT_ID = 2;
 
-  public static final String PUSH_COLUMN = "push";
-
   private static final ContactAccessor instance = new ContactAccessor();
 
   public static synchronized ContactAccessor getInstance() {
     return instance;
-  }
-
-  public Set<Address> getAllContactsWithNumbers(Context context) {
-    Set<Address> results = new HashSet<>();
-
-    try (Cursor cursor = context.getContentResolver().query(Phone.CONTENT_URI, new String[] {Phone.NUMBER}, null ,null, null)) {
-      while (cursor != null && cursor.moveToNext()) {
-        if (!TextUtils.isEmpty(cursor.getString(0))) {
-          results.add(Address.fromExternal(context, cursor.getString(0)));
-        }
-      }
-    }
-
-    return results;
   }
 
   public Cursor getAllSystemContacts(Context context) {
@@ -115,23 +98,6 @@ public class ContactAccessor {
     }
     Prefs.setSystemContactPhotos(context, contactPhotoIdentifiers);
     return result.toString();
-  }
-
-  public boolean isSystemContact(Context context, String number) {
-    Uri      uri        = Uri.withAppendedPath(PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
-    String[] projection = new String[]{PhoneLookup.DISPLAY_NAME, PhoneLookup.LOOKUP_KEY,
-                                       PhoneLookup._ID, PhoneLookup.NUMBER};
-    Cursor   cursor     = context.getContentResolver().query(uri, projection, null, null, null);
-
-    try {
-      if (cursor != null && cursor.moveToFirst()) {
-        return true;
-      }
-    } finally {
-      if (cursor != null) cursor.close();
-    }
-
-    return false;
   }
 
   public String getNameFromContact(Context context, Uri uri) {
