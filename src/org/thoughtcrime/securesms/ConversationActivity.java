@@ -92,7 +92,6 @@ import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.contactshare.ContactShareEditActivity;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.DraftDatabase.Draft;
 import org.thoughtcrime.securesms.database.DraftDatabase.Drafts;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
@@ -257,10 +256,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     });
 
-    dcContext.marknoticedChat((int)threadId);
+    dcContext.marknoticedChat(threadId);
 
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CHAT_MODIFIED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONTACTS_CHANGED);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
   }
 
   @Override
@@ -389,7 +388,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case GROUP_EDIT:
       recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA), true);
-      dcChat = dcContext.getChat((int)threadId);
+      dcChat = dcContext.getChat(threadId);
       titleView.setTitle(glideRequests, dcChat);
       supportInvalidateOptionsMenu();
       break;
@@ -542,7 +541,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     new AlertDialog.Builder(this)
       .setMessage(getString(R.string.ConversationActivity_are_you_sure_you_want_to_leave_this_group))
       .setPositiveButton(R.string.yes, (dialog, which) -> {
-        dcContext.removeContactFromChat((int)threadId, DcContact.DC_CONTACT_ID_SELF);
+        dcContext.removeContactFromChat(threadId, DcContact.DC_CONTACT_ID_SELF);
         Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
       })
       .setNegativeButton(R.string.no, null)
@@ -550,8 +549,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleArchiveChat() {
-    int doArchive = dcContext.getChat((int)threadId).getArchived()==0? 1: 0;
-    dcContext.archiveChat((int)threadId, doArchive);
+    int doArchive = dcContext.getChat(threadId).getArchived()==0? 1: 0;
+    dcContext.archiveChat(threadId, doArchive);
     Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
     if( doArchive == 1 ) {
       finish();
@@ -562,7 +561,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     new AlertDialog.Builder(this)
         .setMessage(getString(R.string.ConversationActivity_ask_delete_chat))
         .setPositiveButton(R.string.yes, (dialog, which) -> {
-          dcContext.deleteChat((int)threadId);
+          dcContext.deleteChat(threadId);
           Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
           finish();
         })
@@ -810,7 +809,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     threadId         = getIntent().getIntExtra(THREAD_ID_EXTRA, -1);
     if(threadId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
-    dcChat           = dcContext.getChat((int)threadId);
+    dcChat           = dcContext.getChat(threadId);
     recipient        = dcContext.getRecipient(dcChat);
     archived         = getIntent().getBooleanExtra(IS_ARCHIVED_EXTRA, false);
     glideRequests    = GlideApp.with(this);
@@ -826,9 +825,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composePanel.setVisibility(View.GONE);
       titleView.hideAvatar();
     }
-  }
-
-  private void initializeReceivers() {
   }
 
   //////// Helper Methods
@@ -887,11 +883,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void sendSharedContact(List<Contact> contacts) {
-    int        subscriptionId = sendButton.getSelectedTransport().getSimSubscriptionId().or(-1);
-    long       expiresIn      = recipient.getExpireMessages() * 1000L;
-    boolean    initiating     = threadId == -1;
-
-    sendMediaMessage(isSmsForced(), "", attachmentManager.buildSlideDeck(), contacts, expiresIn, subscriptionId, initiating);
+    sendMediaMessage("", attachmentManager.buildSlideDeck());
   }
 
   private void selectContactInfo(ContactData contactData) {
@@ -987,10 +979,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private boolean isSingleConversation() {
-    return !dcChat.isGroup();
-  }
-
   private boolean isActiveGroup() {
     return dcChat.isGroup();
   }
@@ -1005,10 +993,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private boolean isPushGroupConversation() {
     return isGroupConversation(); // push groups are non-sms groups, so in delta, these are all groups
-  }
-
-  private boolean isSmsForced() {
-    return sendButton.isManualSelection() && sendButton.getSelectedTransport().isSms();
   }
 
   protected Recipient getRecipient() {
@@ -1081,30 +1065,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void sendMessage() {
     try {
-      Recipient recipient = getRecipient();
-
-      if (recipient == null) {
-        throw new RecipientFormattingException("Badly formatted");
-      }
-
-      boolean    forceSms       = sendButton.isManualSelection() && sendButton.getSelectedTransport().isSms();
-      int        subscriptionId = sendButton.getSelectedTransport().getSimSubscriptionId().or(-1);
-      long       expiresIn      = recipient.getExpireMessages() * 1000L;
-      boolean    initiating     = threadId == -1;
-
-      Log.w(TAG, "isManual Selection: " + sendButton.isManualSelection());
-      Log.w(TAG, "forceSms: " + forceSms);
-
       if (attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()) {
-        sendMediaMessage(forceSms, expiresIn, subscriptionId, initiating);
+        sendMediaMessage();
       } else {
-        sendTextMessage(forceSms, expiresIn, subscriptionId, initiating);
+        sendTextMessage();
       }
-    } catch (RecipientFormattingException ex) {
-      Toast.makeText(ConversationActivity.this,
-                     R.string.ConversationActivity_recipient_is_not_a_valid_sms_or_email_address_exclamation,
-                     Toast.LENGTH_LONG).show();
-      Log.w(TAG, ex);
     } catch (InvalidMessageException ex) {
       Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_message_is_empty_exclamation,
                      Toast.LENGTH_SHORT).show();
@@ -1112,11 +1077,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private void sendMediaMessage(final boolean forceSms, final long expiresIn, final int subscriptionId, boolean initiating)
+  private void sendMediaMessage()
       throws InvalidMessageException
   {
     Log.w(TAG, "Sending media message...");
-    sendMediaMessage(forceSms, getMessage(), attachmentManager.buildSlideDeck(), Collections.emptyList(), expiresIn, subscriptionId, initiating);
+    sendMediaMessage(getMessage(), attachmentManager.buildSlideDeck());
   }
 
   private String getRealPathFromAttachment(Attachment attachment) {
@@ -1158,7 +1123,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private ListenableFuture<Void> sendMediaMessage(final boolean forceSms, String body, SlideDeck slideDeck, List<Contact> contacts, final long expiresIn, final int subscriptionId, final boolean initiating) {
+  private ListenableFuture<Void> sendMediaMessage(String body, SlideDeck slideDeck) {
 
     final SettableFuture<Void> future  = new SettableFuture<>();
 
@@ -1204,7 +1169,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return future;
   }
 
-  private void sendTextMessage(final boolean forceSms, final long expiresIn, final int subscriptionId, final boolean initiatingConversation)
+  private void sendTextMessage()
       throws InvalidMessageException
   {
     final String  messageBody = getMessage();
@@ -1291,15 +1256,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     future.addListener(new ListenableFuture.Listener<Pair<Uri, Long>>() {
       @Override
       public void onSuccess(final @NonNull Pair<Uri, Long> result) {
-        boolean    forceSms       = sendButton.isManualSelection() && sendButton.getSelectedTransport().isSms();
-        int        subscriptionId = sendButton.getSelectedTransport().getSimSubscriptionId().or(-1);
-        long       expiresIn      = recipient.getExpireMessages() * 1000L;
-        boolean    initiating     = threadId == -1;
         AudioSlide audioSlide     = new AudioSlide(ConversationActivity.this, result.first, result.second, MediaUtil.AUDIO_AAC, true);
         SlideDeck  slideDeck      = new SlideDeck();
         slideDeck.addSlide(audioSlide);
 
-        sendMediaMessage(forceSms, "", slideDeck, Collections.emptyList(), expiresIn, subscriptionId, initiating).addListener(new AssertedSuccessListener<Void>() {
+        sendMediaMessage("", slideDeck).addListener(new AssertedSuccessListener<Void>() {
           @Override
           public void onSuccess(Void nothing) {
             new AsyncTask<Void, Void, Void>() {
@@ -1528,39 +1489,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void onAttachmentChanged() {
     handleSecurityChange(isSecureText, isDefaultSms);
     updateToggleButtonState();
-  }
-
-  private class QuoteRestorationTask extends AsyncTask<Void, Void, MessageRecord> {
-
-    private final String                  serialized;
-    private final SettableFuture<Boolean> future;
-
-    QuoteRestorationTask(@NonNull String serialized, @NonNull SettableFuture<Boolean> future) {
-      this.serialized = serialized;
-      this.future     = future;
-    }
-
-    @Override
-    protected MessageRecord doInBackground(Void... voids) {
-      QuoteId quoteId = QuoteId.deserialize(serialized);
-
-      if (quoteId != null) {
-        return DatabaseFactory.getMmsSmsDatabase(getApplicationContext()).getMessageFor(quoteId.getId(), quoteId.getAuthor());
-      }
-
-      return null;
-    }
-
-    @Override
-    protected void onPostExecute(MessageRecord messageRecord) {
-      if (messageRecord != null) {
-        handleReplyMessage(messageRecord);
-        future.set(true);
-      } else {
-        Log.e(TAG, "Failed to restore a quote from a draft. No matching message record.");
-        future.set(false);
-      }
-    }
   }
 
   @Override
