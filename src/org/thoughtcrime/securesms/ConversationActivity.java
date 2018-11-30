@@ -1044,46 +1044,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
   }
 
-  protected void sendComplete(int threadId) {
-    boolean refreshFragment = (threadId != this.threadId);
-    this.threadId = threadId;
-
-    if (fragment == null || !fragment.isVisible() || isFinishing()) {
-      return;
-    }
-
-    fragment.setLastSeen(0);
-
-    if (refreshFragment) {
-      fragment.reload(recipient, threadId);
-      MessageNotifier.setVisibleThread(threadId);
-    }
-
-    fragment.scrollToBottom();
-    attachmentManager.cleanup();
-  }
-
-  private void sendMessage() {
-    try {
-      if (attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()) {
-        sendMediaMessage();
-      } else {
-        sendTextMessage();
-      }
-    } catch (InvalidMessageException ex) {
-      Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_message_is_empty_exclamation,
-                     Toast.LENGTH_SHORT).show();
-      Log.w(TAG, ex);
-    }
-  }
-
-  private void sendMediaMessage()
-      throws InvalidMessageException
-  {
-    Log.w(TAG, "Sending media message...");
-    sendMediaMessage(getMessage(), attachmentManager.buildSlideDeck());
-  }
-
   private String getRealPathFromAttachment(Attachment attachment) {
     try {
       // get file in the blobdir as `<blobdir>/<name>[-<uniqueNumber>].<ext>`
@@ -1121,6 +1081,37 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       e.printStackTrace();
       return null;
     }
+  }
+
+  //////// send message
+
+  private void sendMessage() {
+    try {
+      if (attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()) {
+        sendMediaMessage();
+      } else {
+        sendTextMessage();
+      }
+    } catch (InvalidMessageException ex) {
+      Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_message_is_empty_exclamation,
+          Toast.LENGTH_SHORT).show();
+      Log.w(TAG, ex);
+    }
+  }
+
+  private void sendTextMessage()
+      throws InvalidMessageException
+  {
+    final String  messageBody = getMessage();
+    dcContext.sendTextMsg(dcChat.getId(), messageBody);
+    composeText.setText("");
+    sendComplete(dcChat.getId());
+  }
+
+  private void sendMediaMessage()
+      throws InvalidMessageException
+  {
+    sendMediaMessage(getMessage(), attachmentManager.buildSlideDeck());
   }
 
   private ListenableFuture<Void> sendMediaMessage(String body, SlideDeck slideDeck) {
@@ -1169,14 +1160,27 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return future;
   }
 
-  private void sendTextMessage()
-      throws InvalidMessageException
-  {
-    final String  messageBody = getMessage();
-    dcContext.sendTextMsg(dcChat.getId(), messageBody);
-    composeText.setText("");
-    sendComplete(dcChat.getId());
+  protected void sendComplete(int threadId) {
+    boolean refreshFragment = (threadId != this.threadId);
+    this.threadId = threadId;
+
+    if (fragment == null || !fragment.isVisible() || isFinishing()) {
+      return;
+    }
+
+    fragment.setLastSeen(0);
+
+    if (refreshFragment) {
+      fragment.reload(recipient, threadId);
+      MessageNotifier.setVisibleThread(threadId);
+    }
+
+    fragment.scrollToBottom();
+    attachmentManager.cleanup();
   }
+
+
+  // handle attachment drawer, camera, recorder
 
   private void updateToggleButtonState() {
     if (composeText.getText().length() == 0 && !attachmentManager.isAttachmentPresent()) {
