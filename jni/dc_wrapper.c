@@ -1174,7 +1174,10 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getNameNAddr(JNIEnv *env, jo
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getProfileImage(JNIEnv *env, jobject obj)
 {
-	return JSTRING_NEW("");
+	const char* temp = dc_contact_get_profile_image(get_dc_contact(env, obj));
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 
