@@ -515,7 +515,7 @@ public class AttachmentManager {
   }
 
   public enum MediaType {
-    IMAGE, GIF, AUDIO, VIDEO, DOCUMENT, VCARD;
+    IMAGE, GIF, AUDIO, VIDEO, DOCUMENT;
 
     public @NonNull Slide createSlide(@NonNull  Context context,
                                       @NonNull  Uri     uri,
@@ -534,7 +534,6 @@ public class AttachmentManager {
       case GIF:      return new GifSlide(context, uri, dataSize, width, height);
       case AUDIO:    return new AudioSlide(context, uri, dataSize, false);
       case VIDEO:    return new VideoSlide(context, uri, dataSize);
-      case VCARD:
       case DOCUMENT: return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
       default:       throw  new AssertionError("unrecognized enum");
       }
@@ -546,7 +545,6 @@ public class AttachmentManager {
       if (MediaUtil.isImageType(mimeType)) return IMAGE;
       if (MediaUtil.isAudioType(mimeType)) return AUDIO;
       if (MediaUtil.isVideoType(mimeType)) return VIDEO;
-      if (MediaUtil.isVcard(mimeType))     return VCARD;
 
       return DOCUMENT;
     }

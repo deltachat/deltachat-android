@@ -45,7 +45,6 @@ public class MediaUtil {
   public static final String AUDIO_AAC         = "audio/aac";
   public static final String AUDIO_UNSPECIFIED = "audio/*";
   public static final String VIDEO_UNSPECIFIED = "video/*";
-  public static final String VCARD             = "text/x-vcard";
 
 
   public static Slide getSlideForMsg(Context context, DcMsg dcMsg) {
@@ -201,10 +200,6 @@ public class MediaUtil {
     return isGif(attachment.getContentType());
   }
 
-  public static boolean isJpeg(Attachment attachment) {
-    return isJpegType(attachment.getContentType());
-  }
-
   public static boolean isImage(Attachment attachment) {
     return isImageType(attachment.getContentType());
   }
@@ -221,10 +216,6 @@ public class MediaUtil {
     return !TextUtils.isEmpty(contentType) && contentType.trim().startsWith("video/");
   }
 
-  public static boolean isVcard(String contentType) {
-    return !TextUtils.isEmpty(contentType) && contentType.trim().equals(VCARD);
-  }
-
   public static boolean isGif(String contentType) {
     return !TextUtils.isEmpty(contentType) && contentType.trim().equals("image/gif");
   }
@@ -235,10 +226,6 @@ public class MediaUtil {
 
   public static boolean isFile(Attachment attachment) {
     return !isGif(attachment) && !isImage(attachment) && !isAudio(attachment) && !isVideo(attachment);
-  }
-
-  public static boolean isTextType(String contentType) {
-    return (null != contentType) && contentType.startsWith("text/");
   }
 
   public static boolean isImageType(String contentType) {
@@ -278,11 +265,6 @@ public class MediaUtil {
     }
 
     return null;
-  }
-
-  public static @Nullable String getDiscreteMimeType(@NonNull String mimeType) {
-    final String[] sections = mimeType.split("/", 2);
-    return sections.length > 1 ? sections[0] : null;
   }
 
   public static class ThumbnailData {

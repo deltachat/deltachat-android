@@ -89,7 +89,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.contacts.ContactAccessor.ContactData;
 import org.thoughtcrime.securesms.contactshare.Contact;
-import org.thoughtcrime.securesms.contactshare.ContactShareEditActivity;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DraftDatabase.Draft;
@@ -112,7 +111,6 @@ import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.recipients.RecipientFormattingException;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.CharacterCalculator.CharacterState;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -133,7 +131,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -169,7 +166,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int PICK_DOCUMENT       = 2;
   private static final int PICK_AUDIO          = 3;
   private static final int PICK_CONTACT        = 4;
-  private static final int GET_CONTACT_DETAILS = 5;
   private static final int GROUP_EDIT          = 6;
   private static final int TAKE_PHOTO          = 7;
   private static final int ADD_CONTACT         = 8;
@@ -382,9 +378,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case PICK_CONTACT:
       addAttachmentContactInfo(data.getData());
-      break;
-    case GET_CONTACT_DETAILS:
-      sendSharedContact(data.getParcelableArrayListExtra(ContactShareEditActivity.KEY_CONTACTS));
       break;
     case GROUP_EDIT:
       recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA), true);
@@ -848,25 +841,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private ListenableFuture<Boolean> setMedia(@Nullable Uri uri, @NonNull MediaType mediaType) {
-    return setMedia(uri, mediaType, 0, 0);
-  }
-
-  private ListenableFuture<Boolean> setMedia(@Nullable Uri uri, @NonNull MediaType mediaType, int width, int height) {
     if (uri == null) {
       return new SettableFuture<>(false);
     }
 
-    if (MediaType.VCARD.equals(mediaType) && isSecureText) {
-      openContactShareEditor(uri);
-      return new SettableFuture<>(false);
-    } else {
-      return attachmentManager.setMedia(glideRequests, uri, mediaType, getCurrentMediaConstraints(), width, height);
-    }
-  }
-
-  private void openContactShareEditor(Uri contactUri) {
-    Intent intent = ContactShareEditActivity.getIntent(this, Collections.singletonList(contactUri));
-    startActivityForResult(intent, GET_CONTACT_DETAILS);
+    return attachmentManager.setMedia(glideRequests, uri, mediaType, getCurrentMediaConstraints(), 0, 0);
   }
 
   private void addAttachmentContactInfo(Uri contactUri) {
@@ -880,10 +859,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @NonNull
   private String appendName(ContactData contactData) {
     return contactData.name + "\n";
-  }
-
-  private void sendSharedContact(List<Contact> contacts) {
-    sendMediaMessage("", attachmentManager.buildSlideDeck());
   }
 
   private void selectContactInfo(ContactData contactData) {
