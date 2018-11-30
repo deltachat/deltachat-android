@@ -48,10 +48,8 @@ import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
-import org.thoughtcrime.securesms.components.SharedContactView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -67,7 +65,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -108,15 +105,12 @@ public class ConversationItem extends LinearLayout
   private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
   private @NonNull  Stub<AudioView>                 audioViewStub;
   private @NonNull  Stub<DocumentView>              documentViewStub;
-  private @NonNull  Stub<SharedContactView>         sharedContactStub;
   private @Nullable EventListener                   eventListener;
 
   private int defaultBubbleColor;
   private int measureCalls;
 
   private final PassthroughClickListener        passthroughClickListener   = new PassthroughClickListener();
-  private final SharedContactEventListener      sharedContactEventListener = new SharedContactEventListener();
-  private final SharedContactClickListener      sharedContactClickListener = new SharedContactClickListener();
 
   private final Context context;
   private final ApplicationDcContext dcContext;
@@ -151,7 +145,6 @@ public class ConversationItem extends LinearLayout
     this.mediaThumbnailStub      = new Stub<>(findViewById(R.id.image_view_stub));
     this.audioViewStub           = new Stub<>(findViewById(R.id.audio_view_stub));
     this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
-    this.sharedContactStub       = new Stub<>(findViewById(R.id.shared_contact_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
     this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
@@ -389,7 +382,6 @@ public class ConversationItem extends LinearLayout
       audioViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
 
       //noinspection ConstantConditions
       if(dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {  // no audio on dead drops
@@ -410,7 +402,6 @@ public class ConversationItem extends LinearLayout
       documentViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
 
       //noinspection ConstantConditions
       documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord), showControls);
@@ -425,7 +416,6 @@ public class ConversationItem extends LinearLayout
       mediaThumbnailStub.get().setVisibility(View.VISIBLE);
       if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
-      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
 
       //noinspection ConstantConditions
       mediaThumbnailStub.get().setImageResource(glideRequests,
@@ -449,7 +439,6 @@ public class ConversationItem extends LinearLayout
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-      if (sharedContactStub.resolved())  sharedContactStub.get().setVisibility(GONE);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -489,10 +478,6 @@ public class ConversationItem extends LinearLayout
     }
 
     mediaThumbnailStub.get().setOutlineCorners(topLeft, topRight, bottomRight, bottomLeft);
-  }
-
-  private void setSharedContactCorners(@NonNull DcMsg current, boolean isGroupThread) {
-    sharedContactStub.get().setSingularStyle();
   }
 
   private void setContactPhoto() {
@@ -578,7 +563,6 @@ public class ConversationItem extends LinearLayout
     ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
     footer.setVisibility(GONE);
-    if (sharedContactStub.resolved()) sharedContactStub.get().getFooter().setVisibility(GONE);
     if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
@@ -643,46 +627,6 @@ public class ConversationItem extends LinearLayout
   }
 
   /// Event handlers
-
-  private class SharedContactEventListener implements SharedContactView.EventListener {
-    @Override
-    public void onAddToContactsClicked(@NonNull Contact contact) {
-      if (eventListener != null && batchSelected.isEmpty()) {
-        eventListener.onAddToContactsClicked(contact);
-      } else {
-        passthroughClickListener.onClick(sharedContactStub.get());
-      }
-    }
-
-    @Override
-    public void onInviteClicked(@NonNull List<Recipient> choices) {
-      if (eventListener != null && batchSelected.isEmpty()) {
-        eventListener.onInviteSharedContactClicked(choices);
-      } else {
-        passthroughClickListener.onClick(sharedContactStub.get());
-      }
-    }
-
-    @Override
-    public void onMessageClicked(@NonNull List<Recipient> choices) {
-      if (eventListener != null && batchSelected.isEmpty()) {
-        eventListener.onMessageSharedContactClicked(choices);
-      } else {
-        passthroughClickListener.onClick(sharedContactStub.get());
-      }
-    }
-  }
-
-  private class SharedContactClickListener implements View.OnClickListener {
-    @Override
-    public void onClick(View view) {
-//      if (eventListener != null && batchIsEmpty() && messageRecord.isMms() && !((MmsDcMsg) messageRecord).getSharedContacts().isEmpty()) {
-//        eventListener.onSharedContactDetailsClicked(((MmsDcMsg) messageRecord).getSharedContacts().get(0), sharedContactStub.get().getAvatarView());
-//      } else {
-        passthroughClickListener.onClick(view);
-//      }
-    }
-  }
 
   private void handleDeadDropClick() {
     new AlertDialog.Builder(context)

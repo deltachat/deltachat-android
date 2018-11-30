@@ -251,13 +251,6 @@
         <attr name="quote_colorSecondary" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="SharedContactView">
-        <attr name="contact_titleColor" format="color" />
-        <attr name="contact_captionColor" format="color" />
-        <attr name="contact_footerIconColor" format="color" />
-        <attr name="contact_footerAlpha" format="float" />
-    </declare-styleable>
-
     <declare-styleable name="DocumentView">
         <attr name="doc_titleColor" format="color" />
         <attr name="doc_captionColor" format="color" />

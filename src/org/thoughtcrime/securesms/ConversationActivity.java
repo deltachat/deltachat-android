@@ -80,7 +80,6 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.AttachmentDrawerListener;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
-import org.thoughtcrime.securesms.components.emoji.EmojiStrings;
 import org.thoughtcrime.securesms.components.location.SignalPlace;
 import org.thoughtcrime.securesms.components.reminder.ExpiredBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
@@ -88,13 +87,9 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.contacts.ContactAccessor.ContactData;
-import org.thoughtcrime.securesms.contactshare.Contact;
-import org.thoughtcrime.securesms.contactshare.ContactUtil;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DraftDatabase.Draft;
 import org.thoughtcrime.securesms.database.DraftDatabase.Drafts;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
-import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -1432,36 +1427,36 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleReplyMessage(MessageRecord messageRecord) {
-    Recipient author;
-
-    if (messageRecord.isOutgoing()) {
-      author = Recipient.from(this, Address.fromSerialized(Prefs.getLocalNumber(this)), true);
-    } else {
-      author = messageRecord.getIndividualRecipient();
-    }
-
-    if (messageRecord.isMms() && !((MmsMessageRecord) messageRecord).getSharedContacts().isEmpty()) {
-      Contact   contact     = ((MmsMessageRecord) messageRecord).getSharedContacts().get(0);
-      String    displayName = ContactUtil.getDisplayName(contact);
-      String    body        = getString(R.string.ConversationActivity_quoted_contact_message, EmojiStrings.BUST_IN_SILHOUETTE, displayName);
-      SlideDeck slideDeck   = new SlideDeck();
-
-      if (contact.getAvatarAttachment() != null) {
-        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, contact.getAvatarAttachment()));
-      }
-
-      inputPanel.setQuote(GlideApp.with(this),
-                          messageRecord.getDateSent(),
-                          author,
-                          body,
-                          slideDeck);
-    } else {
-      inputPanel.setQuote(GlideApp.with(this),
-                          messageRecord.getDateSent(),
-                          author,
-                          messageRecord.getBody(),
-                          messageRecord.isMms() ? ((MmsMessageRecord) messageRecord).getSlideDeck() : new SlideDeck());
-    }
+//    Recipient author;
+//
+//    if (messageRecord.isOutgoing()) {
+//      author = Recipient.from(this, Address.fromSerialized(Prefs.getLocalNumber(this)), true);
+//    } else {
+//      author = messageRecord.getIndividualRecipient();
+//    }
+//
+//    if (messageRecord.isMms() && !((MmsMessageRecord) messageRecord).getSharedContacts().isEmpty()) {
+//      Contact   contact     = ((MmsMessageRecord) messageRecord).getSharedContacts().get(0);
+//      String    displayName = ContactUtil.getDisplayName(contact);
+//      String    body        = getString(R.string.ConversationActivity_quoted_contact_message, EmojiStrings.BUST_IN_SILHOUETTE, displayName);
+//      SlideDeck slideDeck   = new SlideDeck();
+//
+//      if (contact.getAvatarAttachment() != null) {
+//        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, contact.getAvatarAttachment()));
+//      }
+//
+//      inputPanel.setQuote(GlideApp.with(this),
+//                          messageRecord.getDateSent(),
+//                          author,
+//                          body,
+//                          slideDeck);
+//    } else {
+//      inputPanel.setQuote(GlideApp.with(this),
+//                          messageRecord.getDateSent(),
+//                          author,
+//                          messageRecord.getBody(),
+//                          messageRecord.isMms() ? ((MmsMessageRecord) messageRecord).getSlideDeck() : new SlideDeck());
+//    }
   }
 
   @Override
