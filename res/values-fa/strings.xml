@@ -247,12 +247,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">ارتباط سیگنال بطور کل قطع شده است</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">نرم‌افزار سیگنال نمی‌تواند از طریق خدمات Google Play، شما را ثبت‌نام کند. پیام‌ها و تماس‌های سیگنال، غیرفعال شده‌اند، لطفاً تلاش کنید از طریق تنظیمات مجدداً ثبت‌نام کنید.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">خطا در هنگام دریافت GIF با کیفیت کامل</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">گیف ها</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">استیکر ها</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">گروه جدید</string>
   <string name="GroupCreateActivity_actionbar_edit_title">ویرایش گروه</string>
   <string name="GroupCreateActivity_group_name_hint">نام گروه</string>
@@ -625,11 +622,9 @@
     <item quantity="one">%d دیگران</item>
     <item quantity="other">%d دیگران</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">جست‌وجوی فایل گیف و استیکر</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">چیزی یافت نشد</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">نمی توانیم فایل گزارش را در دستگاه شما بخوانیم.شما می توانید از طریق ADB گزارش دیباگ را دریافت کنید.</string>
   <string name="log_submit_activity__thanks">تشکر از کمک شما!</string>
   <string name="log_submit_activity__submitting">ارسال</string>

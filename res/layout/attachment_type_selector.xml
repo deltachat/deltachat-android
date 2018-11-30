@@ -184,19 +184,22 @@
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:layout_weight="1"
+                          android:visibility="invisible"
                           android:gravity="center"
                           android:orientation="vertical">
 
                 <org.thoughtcrime.securesms.components.CircleColorImageView
-                        android:id="@+id/giphy_button"
+                        android:id="@+id/gif_button"
                         android:layout_width="53dp"
                         android:layout_height="53dp"
                         android:src="@drawable/ic_gif_white_24dp"
+                        android:visibility="gone"
                         android:scaleType="center"
                         android:contentDescription="@string/attachment_type_selector__gif_description"
                         app:circleColor="@color/cyan_400"/>
 
                 <TextView android:layout_marginTop="10dp"
+                          android:visibility="gone"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           style="@style/AttachmentTypeLabel"

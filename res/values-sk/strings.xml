@@ -259,12 +259,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Trvalá chyba komunikácie Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat sa nebol schopný registrovať cez Google Play Services. Delta Chat správy a hovory boli vypnuté, prosím zaregistrujte sa opätovne cez Nastavenia &gt; Rozšírené.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Chyba pri prijímaní plného rozlíšenia GIF</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFy</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Nálepky</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nová skupina</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Upraviť skupinu</string>
   <string name="GroupCreateActivity_group_name_hint">Názov skupiny</string>
@@ -681,11 +678,9 @@ Bola prijatá správa vzájomnej výmeny kľúčov s neplatnou verziou protokolu
     <item quantity="many">%d ďalších</item>
     <item quantity="other">%d ďalších</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Hľadať GIFy a nálepky</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Nič sa nenašlo</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Nepodarilo sa prečítať záznam z vášho zariadenia. Na získanie záznamu ladenia môžete použiť ADB.</string>
   <string name="log_submit_activity__thanks">Ďakujem za tvoju pomoc!</string>
   <string name="log_submit_activity__submitting">Posielanie</string>

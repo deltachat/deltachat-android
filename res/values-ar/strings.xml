@@ -320,12 +320,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">فشل دائما في اتصال سيجنال!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">سيجنال لم يتمكن من التسجيل مع خدمات جوجل بلاي، وتم تعطيل رسائل ومكالمات سيجنال. رجاء محاولة إعادة التسجيل عبر قائمة الإعدادات بالتطبيق ثم اختيار متقدم.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">خطأ أثناء جلب كامل دقة صورة GIF</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">صور GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">لصاقات</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">مجموعة جديدة</string>
   <string name="GroupCreateActivity_actionbar_edit_title">تدقيق المجموعة</string>
   <string name="GroupCreateActivity_group_name_hint">أسم المجموعة</string>
@@ -791,11 +788,9 @@
   <string name="IdentityUtil_untrusted_dialog_one">لقد تغير رقم أمانك مع %s الآن.</string>
   <string name="IdentityUtil_untrusted_dialog_two">لقد تغير الآن بيان سلامة المحادثة مع %1$s و%2$s.</string>
   <string name="IdentityUtil_untrusted_dialog_many">لقد تغير رقم أمانك مع %1$s و  %2$s و %3$s الآن.</string>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">ابحث في صور GIF واللصاقات</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">لا يوجد شيء</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">تعذر التقاط السجلات من هاتفك. يمكنك استخدام ADB للحصول على سجل التشغيل  بدلا من ذلك.</string>
   <string name="log_submit_activity__thanks">شكرا للمساعدة!</string>
   <string name="log_submit_activity__submitting">إرسال</string>

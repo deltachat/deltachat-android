@@ -293,12 +293,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">כישלון תקשורת קבוע של Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat לא היה יכול להירשם עם שירותי Google Play. הודעות ושיחות של Delta Chat הושבתו, אנא נסה להירשם מחדש בהגדרות &lt; מתקדם.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">שגיאה באחזור GIF ברזולוציה מלאה</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">קובצי GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">מדבקות</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">קבוצה חדשה</string>
   <string name="GroupCreateActivity_actionbar_edit_title">ערוך קבוצה</string>
   <string name="GroupCreateActivity_group_name_hint">שם הקבוצה</string>
@@ -768,11 +765,9 @@
     <item quantity="many">%d אחרים</item>
     <item quantity="other">%d אחרים</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">חיפוש קובצי GIF ומדבקות</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">לא נמצא דבר</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">לא ניתן לקרוא את היומן במכשיר שלך. עדיין אפשר להשתמש ב־ADB כדי לקבל יומן תיקון שגיאות.</string>
   <string name="log_submit_activity__thanks">תודה על העזרה שלך!</string>
   <string name="log_submit_activity__submitting">מגיש</string>

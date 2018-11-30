@@ -261,11 +261,8 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Erro de comunicación permanente!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Non foi posible rexistrar Delta Chat con Servizos de Google Play. As mensaxes e chamadas de Delta Chat foron desactivadas; tenta volver facer o rexistro en Axustes&gt;Avanzado.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Erro ao recuperar o GIF coa resolución completa</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Adhesivos</string>
+
+
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Novo grupo</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Editar grupo</string>
@@ -718,10 +715,8 @@
     <item quantity="one">%d máis</item>
     <item quantity="other">%dmáis</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Buscar GIF e adhesivos</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Non se atopou nada</string>
+
+
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Non se puido ler o rexistro do teu dispositivo. Aínda podes utilizar ADB para obter no seu lugar un rexistro de depuración.</string>
   <string name="log_submit_activity__thanks">Grazas pola túa axuda!</string>

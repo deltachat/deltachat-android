@@ -188,8 +188,7 @@ Bạn sẽ phải đăng ký lại số điện thoại để sử dụng Delta 
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Lỗi thường trực khi giao tiếp qua Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat không thể đăng ký với Google Play Services. Cuộc gọi và tin nhắn Delta Chat đã ngừng hoạt động, hãy thử đăng ký lại từ mục Cài đặt &gt; Nâng cao.</string>
-  <!--GiphyActivity-->
-  <!--GiphyFragmentPageAdapter-->
+
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Tạo nhóm mới</string>
   <string name="GroupCreateActivity_group_name_hint">Tên nhóm</string>
@@ -489,8 +488,8 @@ Nhận thông tin trao đổi chìa khóa về phiên bản giao thức không h
   <!--expiration-->
   <string name="expiration_off">Tắt</string>
   <!--unverified safety numbers-->
-  <!--giphy_activity-->
-  <!--giphy_fragment-->
+
+
   <!--import_export_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__thanks">Cám ơn sự trợ giúp của bạn!</string>

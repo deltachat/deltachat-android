@@ -94,8 +94,7 @@
   <string name="ExportFragment_cancel">Адмена</string>
   <string name="ExportFragment_exporting">Экспарт</string>
   <!--GcmRefreshJob-->
-  <!--GiphyActivity-->
-  <!--GiphyFragmentPageAdapter-->
+
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Новая група</string>
   <string name="GroupCreateActivity_group_name_hint">Імя групы</string>
@@ -276,8 +275,8 @@
   <!--expiration-->
   <string name="expiration_off">Выкл</string>
   <!--unverified safety numbers-->
-  <!--giphy_activity-->
-  <!--giphy_fragment-->
+
+
   <!--import_export_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__thanks">Дзякуй за вашу дапамогу!</string>

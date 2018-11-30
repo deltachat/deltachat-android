@@ -265,12 +265,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Permanente Delta Chat-communicatiefout!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat was niet in staat met Google Play services te registreren. Delta Chat berichten en oproepen zijn nu uitgeschakeld, probeer opnieuw te registreren via Instellingen &gt; Geavanceerd.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Fout bij het ophalen van de GIF in volledige resolutie</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFs</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Stickers</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nieuwe groep</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Groep bijwerken</string>
   <string name="GroupCreateActivity_group_name_hint">Groepsnaam</string>
@@ -721,11 +718,9 @@ Sleuteluitwisselingsbericht ontvangen voor een verkeerde protocol-versie.</strin
     <item quantity="one">%d andere</item>
     <item quantity="other">%d anderen</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">GIFs en stickers zoeken</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Niets gevonden</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Kon geen logs van je apparaat verzamelen. Je kan nog wel ADB gebruiken om debuglogs te verzamelen.</string>
   <string name="log_submit_activity__thanks">Bedankt voor je hulp!</string>
   <string name="log_submit_activity__submitting">Indienen</string>

@@ -265,12 +265,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Μόνιμη αποτυχία επικοινωνίας του Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Το Delta Chat δεν μπόρεσε να εγγραφτεί στις Υπηρεσίες Google Play. Τα μηνύματα και οι κλήσεις του Delta Chat έχουν απενεργοποιηθεί. Παρακαλώ προσπάθησε να επανεγγραφτείς στις Ρυθμίσεις &gt; Προχωρημένες Ρυθμίσεις.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Πρόβλημα κατά την ανάκτηση της πλήρους ανάλυσης της εικόνας GIF</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">Εικόνες GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Αυτοκόλλητα</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Νέα ομάδα</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Επεξεργασία ομάδας</string>
   <string name="GroupCreateActivity_group_name_hint">Όνομα ομάδας</string>
@@ -722,11 +719,9 @@
     <item quantity="one">%d άλλος/η</item>
     <item quantity="other">%d άλλοι/ες</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Αναζήτηση GIFs και αυτοκολλήτων</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Δε βρέθηκε τίποτα</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Αποτυχία ανάγνωσης αρχείου καταγραφής συμβάντων για τη συσκευή σου. Μπορείς να χρησιμοποιήσεις το ADB για να πάρεις ένα αρχείο συμβάντων αποσφαλμάτωσης.</string>
   <string name="log_submit_activity__thanks">Ευχαριστούμε για τη βοήθειά σου!</string>
   <string name="log_submit_activity__submitting">Αποστολή</string>

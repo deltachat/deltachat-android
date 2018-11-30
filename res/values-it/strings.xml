@@ -266,12 +266,9 @@
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Comunicazione Delta Chat fallita definitivamente!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat è stato impossibilitato a registrarsi con i sevizi di Google Play.
 I suoi messaggi e le chiamate sono state disabilitate, si prega di provare e ri-registrare in Impostazioni &gt; Avanzate.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Errore nel prelevare la GIF in risoluzione massima</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Adesivi</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nuovo gruppo</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Modifica gruppo</string>
   <string name="GroupCreateActivity_group_name_hint">Nome del gruppo</string>
@@ -722,11 +719,9 @@ Ricevuto un messaggio di scambio chiavi per una versione di protocollo non valid
     <item quantity="one">%d altro</item>
     <item quantity="other">%d altri</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Cerca GIF ed adesivi</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Non trovato</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Non è possibile leggere i log dal tuo dispositivo. Puoi provare ad usare ADB per ottenere i log di debug</string>
   <string name="log_submit_activity__thanks">Grazie dell\'aiuto!</string>
   <string name="log_submit_activity__submitting">Invio in corso</string>

@@ -185,11 +185,8 @@ a</string>
   <string name="ExportFragment_export_successful">Okufulumya kuwedde bulungi</string>
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat tasobodde kwewandisa ku mpereza ya Google Play store, Obubaka ku Delta Chat n\'amasimu bigyiddwako, bambi gezaako oddemu wewandiise mu kweroboza &gt; Okwawaggulu</string>
-  <!--GiphyActivity-->
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">Ekifananyi ekizanya</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Enkwaso</string>
-  <!--GroupCreateActivity-->
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Ekibinja ekipya</string>
   <string name="GroupCreateActivity_group_name_hint">Erinya ly\'ekibinja</string>
   <string name="GroupCreateActivity_actionbar_mms_title">Akaboondo ka mms akapya</string>
@@ -488,11 +485,9 @@ gy\'olonze (%s) sintuufu.</string>
   <string name="expiration_days_abbreviated">%dnnaku</string>
   <string name="expiration_weeks_abbreviated">%dwiiki</string>
   <!--unverified safety numbers-->
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Noonya GIFs ne sticka</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Tewali kisangidwa</string>
-  <!--import_export_fragment-->
+
+
+    <!--import_export_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Tesobodde ku soma kabonero ku kyuma kyo. Okyasobola okukozesa ABD okufuna akaboneero ka debug.</string>
   <string name="log_submit_activity__thanks">Webale obuyambi bwo</string>

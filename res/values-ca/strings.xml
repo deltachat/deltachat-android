@@ -265,12 +265,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">La comunicació del Delta Chat falla contínuament!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">El Delta Chat no s\'ha pogut registrar al Google Play Services. Els missatges i les trucades del Delta Chat s\'han inhabilitat, registreu-vos de nou a Configuració &gt; Avançada.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">S\'ha produït un error en recuperar el GIF a resolució completa</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Adhesius</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Grup nou</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Edita el grup</string>
   <string name="GroupCreateActivity_group_name_hint">Nom del grup</string>
@@ -723,11 +720,9 @@ S\'ha rebut un missatge d\'intercanvi de claus per a una versió del protocol no
     <item quantity="one">%d altre</item>
     <item quantity="other">%d més</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Cerca GIF i adhesius</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">No s\'ha trobat res</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">No s\'ha pogut llegir el registre del dispositiu. Podeu fer servir ADB per obtindre un registre de depuració.</string>
   <string name="log_submit_activity__thanks">Gràcies per ajudar-nos!</string>
   <string name="log_submit_activity__submitting">S\'està enviant</string>

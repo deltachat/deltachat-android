@@ -293,12 +293,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Ilgalaikė Delta Chat susisiekimo triktis!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat nepavyko prisiregistruoti prie „Google Play“ paslaugų. Delta Chat žinutės ir skambučiai buvo išjungti, prašome pabandyti iš naujo registruotis skyrelyje Nustatymai (angl. Settings) &gt; Išplėstiniai (angl. Advanced).</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Klaida, gaunant pilnos raiškos GIF</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Paveiksliukai</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nauja grupė</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Taisyti grupę</string>
   <string name="GroupCreateActivity_group_name_hint">Grupės pavadinimas</string>
@@ -777,11 +774,9 @@
     <item quantity="many">dar %d</item>
     <item quantity="other">dar %d</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Ieškoti GIF ir paveikslėlių</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Nieko nerasta</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Nepavyko perskaityti žurnalo jūsų įrenginyje. Jūs vis dar galite naudoti ADB, kad vietoj to, gautumėte derinimo žurnalą.</string>
   <string name="log_submit_activity__thanks">Ačiū už jūsų pagalbą!</string>
   <string name="log_submit_activity__submitting">Pateikiama</string>

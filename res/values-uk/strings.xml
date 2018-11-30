@@ -289,12 +289,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Постійний збій зв\'язку Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat не зміг зареєструватись у сервісах Google Play. Виклики та повідомлення Delta Chat наразі вимкнено, спробуйте перереєструватися у Налаштуваннях &gt; Додатково.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Помилка при отриманні GIF у повному розширенні</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Наліпки</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Нова група</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Редагувати групу</string>
   <string name="GroupCreateActivity_group_name_hint">Назва групи</string>
@@ -765,11 +762,9 @@
     <item quantity="many">%d інших</item>
     <item quantity="other">%d інших</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Пошук GIF та наліпок</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Нічого не знайдено</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Помилка читання журналу відлагодження з вашого пристрою. Ви також можете використати ADB для отримання журналу.</string>
   <string name="log_submit_activity__thanks">Дякуємо за вашу допомогу!</string>
   <string name="log_submit_activity__submitting">Надсилання</string>

@@ -278,12 +278,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Elhúzódó Delta Chat kommunikációs hiba!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">A Delta Chat nem tudott beregisztrálni a Google Play Szolgáltatásokra. A Delta Chat üzenetek és hívások ezért le lettek tiltva. Kérlek próbálj meg újraregisztrálni a Beállítások &gt; Haladó-ban!</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Hiba történt a teljes felbontású GIF letöltése során</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF-ek</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Matricák</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Új csoport</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Csoport szerkesztése</string>
   <string name="GroupCreateActivity_group_name_hint">Csoport neve</string>
@@ -802,11 +799,9 @@ Kulcs-csere üzenet érkezett érvénytelen protokoll verzióhoz.
     <item quantity="one">%d további</item>
     <item quantity="other">%d további</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">GIFek és matricák keresése</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Nincs találat</string>
-  <!--import_export_fragment-->
+
+
+    <!--import_export_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Nem lehet beolvasni a naplót készülékeden. Továbbra is használhatod az ADB-t, hogy hozzáférj a hibakeresési naplóhoz.</string>
   <string name="log_submit_activity__thanks">Köszönjük a segítségedet!</string>

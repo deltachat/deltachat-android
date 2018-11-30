@@ -38,7 +38,6 @@ public class AttachmentTypeSelector extends PopupWindow {
   public static final int ADD_CONTACT_INFO  = 4;
   public static final int TAKE_PHOTO        = 5;
   public static final int ADD_LOCATION      = 6;
-  public static final int ADD_GIF           = 7;
 
   private static final int ANIMATION_DURATION = 300;
 
@@ -53,7 +52,6 @@ public class AttachmentTypeSelector extends PopupWindow {
   private final @NonNull ImageView           contactButton;
   private final @NonNull ImageView           cameraButton;
   private final @NonNull ImageView           locationButton;
-  private final @NonNull ImageView           gifButton;
   private final @NonNull ImageView           closeButton;
 
   private @Nullable View                      currentAnchor;
@@ -74,7 +72,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.contactButton  = ViewUtil.findById(layout, R.id.contact_button);
     this.cameraButton   = ViewUtil.findById(layout, R.id.camera_button);
     this.locationButton = ViewUtil.findById(layout, R.id.location_button);
-    this.gifButton      = ViewUtil.findById(layout, R.id.giphy_button);
     this.closeButton    = ViewUtil.findById(layout, R.id.close_button);
 
     this.imageButton.setOnClickListener(new PropagatingClickListener(ADD_GALLERY));
@@ -83,7 +80,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.contactButton.setOnClickListener(new PropagatingClickListener(ADD_CONTACT_INFO));
     this.cameraButton.setOnClickListener(new PropagatingClickListener(TAKE_PHOTO));
     this.locationButton.setOnClickListener(new PropagatingClickListener(ADD_LOCATION));
-    this.gifButton.setOnClickListener(new PropagatingClickListener(ADD_GIF));
     this.closeButton.setOnClickListener(new CloseClickListener());
     this.recentRail.setListener(new RecentPhotoSelectedListener());
 
@@ -135,7 +131,6 @@ public class AttachmentTypeSelector extends PopupWindow {
       animateButtonIn(audioButton, ANIMATION_DURATION / 3);
       animateButtonIn(locationButton, ANIMATION_DURATION / 3);
       animateButtonIn(documentButton, ANIMATION_DURATION / 4);
-      animateButtonIn(gifButton, ANIMATION_DURATION / 4);
       animateButtonIn(contactButton, 0);
       animateButtonIn(closeButton, 0);
     }

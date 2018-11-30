@@ -245,12 +245,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Permanent fejl i Delta Chat-kommunikationen!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat var ude af stand til at registrere med Google Play Services. Delta Chat beskeder og opkald blev deaktiveret, prøv venligst at registrere igen i Indstillinger &gt; Advanceret.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Der skete en fejl i, mens vi hentede GIF i fuld opløsning.</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFs</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Klistermærke</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Ny gruppe</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Rediger gruppe</string>
   <string name="GroupCreateActivity_group_name_hint">Gruppenavn</string>
@@ -649,11 +646,9 @@ Modtog en nøgle-besked for en ugyldig protokol-version.
     <item quantity="one">%d anden</item>
     <item quantity="other">%d andre</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Søg i GIFs og klistermærker</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Fandt ingenting</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Kunne ikke tilgå loggen på din enhed. Du kan alternativt benytte ADB for at få en debug log.</string>
   <string name="log_submit_activity__thanks">Tak for hjælpen!</string>
   <string name="log_submit_activity__submitting">Sender</string>

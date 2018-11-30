@@ -277,12 +277,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">¡Fallo permanente de comunicación de Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat fué incapaz de registrarse con Google Play Services. Los mensajes y llamadas de Delta Chat han sido desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Error al obtener un GIF a resolución completa</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFs</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Pegatinas (stickers)</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nuevo grupo</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Editar grupo</string>
   <string name="GroupCreateActivity_group_name_hint">Nombre del grupo</string>
@@ -797,11 +794,9 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
     <item quantity="one">%d otro</item>
     <item quantity="other">%d otros</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Buscar GIFs y pegatinas (stickers)</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">No se encontró nada</string>
-  <!--import_export_fragment-->
+
+
+    <!--import_export_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">No se pudo leer el registro (log) en su dispositivo. Aún puede usar ADB para obtener un registro de depuración en su lugar.</string>
   <string name="log_submit_activity__thanks">¡Gracias por su ayuda!</string>

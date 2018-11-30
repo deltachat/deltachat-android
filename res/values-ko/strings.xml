@@ -223,12 +223,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">영구적인 Delta Chat 통신 실패!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal은 Google Play 서비스에 등록할 수 없습니다. Delta Chat 메시지와 통화는 사용 중지되었으므로 Delta Chat 설정 메뉴에서 재가입해 주세요.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">최대 해상도 GIF 파일을 받는 동안 오류 발생</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF 파일</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">스티커</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">그룹 만들기</string>
   <string name="GroupCreateActivity_actionbar_edit_title">그룹 편집</string>
   <string name="GroupCreateActivity_group_name_hint">그룹 이름</string>
@@ -590,11 +587,9 @@
   <string name="expiration_days_abbreviated">%d일</string>
   <string name="expiration_weeks_abbreviated">%d주</string>
   <!--unverified safety numbers-->
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">GIF 파일과 스티커 검색</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">찾지 못하였습니다.</string>
-  <!--import_export_fragment-->
+
+
+    <!--import_export_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">기기에서 로그 가져올 수 없지만 ADB로 수동 가져올 수 있음</string>
   <string name="log_submit_activity__thanks">도와주셔서 감사합니다.</string>

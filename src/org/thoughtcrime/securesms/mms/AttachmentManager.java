@@ -52,7 +52,6 @@ import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
 import org.thoughtcrime.securesms.components.location.SignalMapView;
 import org.thoughtcrime.securesms.components.location.SignalPlace;
-import org.thoughtcrime.securesms.giph.ui.GiphyActivity;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
@@ -406,12 +405,6 @@ public class AttachmentManager {
                  }
                })
                .execute();
-  }
-
-  public static void selectGif(Activity activity, int requestCode, boolean isForMms) {
-    Intent intent = new Intent(activity, GiphyActivity.class);
-    intent.putExtra(GiphyActivity.EXTRA_IS_MMS, isForMms);
-    activity.startActivityForResult(intent, requestCode);
   }
 
   private @Nullable Uri getSlideUri() {

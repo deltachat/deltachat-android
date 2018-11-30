@@ -230,12 +230,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Dështim i pëhershëm komunikimi nga Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat nuk mundi të regjistrohet me serviset Google Play. Porositë dhe thirrjet Delta Chat janë të pamundësuara, ju lutemi regjistrohuni në Rregullimet &gt; Të avancuara.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Gabim gjatë marrjes së GIF-it me rezolucion të plotë</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFe</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Afishe</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Grup i ri</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Edito grupin</string>
   <string name="GroupCreateActivity_group_name_hint">Emri i grupit</string>
@@ -616,11 +613,9 @@ U pranua porosi për shkëmbim çelësash për një version protokolli të pavle
     <item quantity="one">%d</item>
     <item quantity="other">%d të tjerë</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Kërko GIFe dhe afishe</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Asgjë nuk u gjetë</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Historia në pajisjen tuaj nuk mund të lexohet. Mund të përdorni ADB për ta lexuar historinë e gabimeve të përmirsuara.</string>
   <string name="log_submit_activity__thanks">Faleminderit për ndihmën!</string>
   <string name="log_submit_activity__submitting">Duke dorëzuar</string>

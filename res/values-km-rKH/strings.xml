@@ -246,12 +246,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">ការបរាជ័យក្នុងការទំនាក់ទំនង ស៊ីហ្គណល អចិន្រ្តៃយ៍!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">ស៊ីហ្គណល មិនអាចចុះឈ្មោះជាមួយ Google Play Services។ ការផ្ញើសារ​ និងការហៅចេញស៊ីហ្គណល ត្រូវបានបិទ សូមព្យាយាមចុះឈ្មោះសារជាថ្មីក្នុង ការកំណត់ &gt; កម្រិតខ្ពស់។</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">មានបញ្ហានៅពេលទាញយករូបភាព GIF ពេញខ្នាត</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFs</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">ស្ទីកគ័រ</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">ក្រុមថ្មី</string>
   <string name="GroupCreateActivity_actionbar_edit_title">កែប្រែក្រុម</string>
   <string name="GroupCreateActivity_group_name_hint">ឈ្មោះក្រុម</string>
@@ -687,11 +684,9 @@
   <plurals name="identity_others">
     <item quantity="other">%dផ្សេង</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">ស្វែករក GIFs និងស្ទីកគ័រ</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">ពុំរកមិនឃើញអ្វីទេ</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">មិនអាចអានកំណត់ហេតុនៅលើឧបករណ៍របស់អ្នកបានទេ។ អ្នកនៅតែអាចប្រើ ADB ដើម្បីទាញយកកំណត់ត្រាកំហុសជំនួសបាន។​</string>
   <string name="log_submit_activity__thanks">អរគុណសម្រាប់ការជួយរបស់អ្នក!</string>
   <string name="log_submit_activity__submitting">កំពុងបញ្ជូន</string>

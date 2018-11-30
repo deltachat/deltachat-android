@@ -251,12 +251,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Delta Chat 持續發生傳輸異常！</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat 無法順利與 Google Play Services 註冊，Delta Chat 訊息與通話已經停用，請嘗試在設定 &gt; 進階中重新註冊。</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">在下載完整解析度的 GIF 時發生錯誤</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">動態圖檔</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">貼圖</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">新增群組</string>
   <string name="GroupCreateActivity_actionbar_edit_title">編輯群組</string>
   <string name="GroupCreateActivity_group_name_hint">群組名稱</string>
@@ -701,11 +698,9 @@ signal 訊息</string>
   <plurals name="identity_others">
     <item quantity="other">%d 其他人</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">搜尋動態圖檔與貼圖</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">未找到任何東西</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">無法在您的設備上讀取日誌。您仍然可以使用 ADB 來獲得偵錯紀錄。</string>
   <string name="log_submit_activity__thanks">感謝您的協助！</string>
   <string name="log_submit_activity__submitting">上傳中</string>

@@ -265,12 +265,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Püsiv Signali ühendusviga!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat ei saanud registreerida teenusega Google Play Services. Signali sõnumid ja kõned on keelatud, palun proovi taas-registreerida menüüs Seaded &gt; Täpsem.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Täisresolutsiooniga GIFi vastuvõtmisel esines viga</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFid</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Kleepsud</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Uus grupp</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Muuda gruppi</string>
   <string name="GroupCreateActivity_group_name_hint">Grupi nimi</string>
@@ -729,11 +726,9 @@
     <item quantity="one">%d teine</item>
     <item quantity="other">%d teist</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Otsi GIFe ja kleepse</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Midagi ei leitud</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Ei saanud sinu seadmes lugeda logi. Sa võid siiski kasutada ADB-d, et saada selle asemel silumislogi.</string>
   <string name="log_submit_activity__thanks">Täname abi eest!</string>
   <string name="log_submit_activity__submitting">Saatmine</string>

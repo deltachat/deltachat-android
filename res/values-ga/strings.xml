@@ -219,10 +219,7 @@
   <string name="ExperienceUpgradeActivity_signal_profiles_are_here">Tá próifíl Delta Chat anseo</string>
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Fadhb cumarsáid Delta Chat buan!</string>
-  <!--GiphyActivity-->
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFeanna</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Greamáin</string>
+
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Baicle nua</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Athraigh an bhaicle</string>
@@ -615,10 +612,8 @@ a shonrú</string>
     <item quantity="many">%d eile</item>
     <item quantity="other">%d eile</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Cuardaigh GIFs agus greamáin</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Níor aimsíodh dada</string>
+
+
   <!--log_submit_activity-->
   <string name="log_submit_activity__thanks">Go raibh maith agat as ucht do chabhair!</string>
   <string name="log_submit_activity__submitting">Ag seol isteach</string>

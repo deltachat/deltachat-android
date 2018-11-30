@@ -248,12 +248,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Falha permanente de comunicação do Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">O Delta Chat não pôde cadastrar-se no Serviços Google Play. Mensagens e chamadas Delta Chat foram desabilitadas; tente recadastrar em Configurações &gt; Avançado.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Erro ao restaurar GIF com resolução total</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFs</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Stickers</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Novo grupo</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Editar grupo</string>
   <string name="GroupCreateActivity_group_name_hint">Nome do grupo</string>
@@ -694,11 +691,9 @@
     <item quantity="one">%d outro</item>
     <item quantity="other">%d outros</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Procurar GIFs e stickers</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Nada encontrado</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Não foi possível ler o log no seu dispositivo. Você pode usar o ADB para obter um log de depuração.</string>
   <string name="log_submit_activity__thanks">Obrigado por sua ajuda!</string>
   <string name="log_submit_activity__submitting">Enviando</string>

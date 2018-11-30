@@ -251,12 +251,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">永続的なSignal通信のエラー！</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Google PlayサービスにSignalを登録できなかったため、Signalのメッセージと通話は無効になっています。設定 &gt; 詳細設定で再登録を試してください。</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">GIFファイルの取り込みでエラー</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">ステッカー</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">新規グループ</string>
   <string name="GroupCreateActivity_actionbar_edit_title">グループを編集する</string>
   <string name="GroupCreateActivity_group_name_hint">グループ名</string>
@@ -691,11 +688,9 @@
   <plurals name="identity_others">
     <item quantity="other">ほか%d人</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">GIFやステッカーを検索</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">何も見つかりませんでした</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">デバイス上のログを読めません。ただしADBを使ってデバッグログを読むことはできます。</string>
   <string name="log_submit_activity__thanks">ご協力ありがとうございます！</string>
   <string name="log_submit_activity__submitting">送信中</string>

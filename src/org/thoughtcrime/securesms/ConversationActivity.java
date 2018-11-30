@@ -97,7 +97,6 @@ import org.thoughtcrime.securesms.database.DraftDatabase.Draft;
 import org.thoughtcrime.securesms.database.DraftDatabase.Drafts;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
-import org.thoughtcrime.securesms.giph.ui.GiphyActivity;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -176,7 +175,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int TAKE_PHOTO          = 7;
   private static final int ADD_CONTACT         = 8;
   private static final int PICK_LOCATION       = 9;
-  private static final int PICK_GIF            = 10;
   private static final int SMS_DEFAULT         = 11;
 
   private   GlideRequests               glideRequests;
@@ -407,12 +405,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case PICK_LOCATION:
       SignalPlace place = new SignalPlace(PlacePicker.getPlace(data, this));
       attachmentManager.setLocation(place, getCurrentMediaConstraints());
-      break;
-    case PICK_GIF:
-      setMedia(data.getData(),
-               MediaType.GIF,
-               data.getIntExtra(GiphyActivity.EXTRA_WIDTH, 0),
-               data.getIntExtra(GiphyActivity.EXTRA_HEIGHT, 0));
       break;
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
@@ -856,8 +848,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentManager.selectLocation(this, PICK_LOCATION); break;
     case AttachmentTypeSelector.TAKE_PHOTO:
       attachmentManager.capturePhoto(this, TAKE_PHOTO); break;
-    case AttachmentTypeSelector.ADD_GIF:
-      AttachmentManager.selectGif(this, PICK_GIF, !isSecureText); break;
     }
   }
 

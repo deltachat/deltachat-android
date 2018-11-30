@@ -293,12 +293,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Неустранимая ошибка соединения!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat не смог зарегистрироваться в службах Google Play. Сообщения и звонки через Delta Chat отключены. Пожалуйста, попробуйте зарегистрироваться снова через меню Наcтройки &gt; Расширенные.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Ошибка при получении полноразмерного GIF</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF-анимации</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Стикеры</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Новая группа</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Редактировать группу</string>
   <string name="GroupCreateActivity_group_name_hint">Название группы</string>
@@ -768,11 +765,9 @@
     <item quantity="many">%d прочие</item>
     <item quantity="other">%d другими</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Найти GIF-анимации и стикеры</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Ничего не найдено</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Не удается прочитать журнал отладки вашего устройства. Тем не менее, вы можете получить его при помощи ADB.</string>
   <string name="log_submit_activity__thanks">Спасибо за помощь!</string>
   <string name="log_submit_activity__submitting">Отправка</string>

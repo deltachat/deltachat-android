@@ -265,12 +265,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Kalıcı Delta Chat haberleşme hatası!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat Google Play Servislerine kayıt olamadı. Delta Chat mesajları ve aramaları devre dışı bırakıldı, Lütfen Ayarlar &gt; Gelişmiş kısmından tekrardan kayıt olmayı deneyin.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Tam çözünürlüklü GIF alınırken hata</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFler</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Çıkartmalar</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Yeni grup</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Grubu düzenle</string>
   <string name="GroupCreateActivity_group_name_hint">Grup adı</string>
@@ -723,11 +720,9 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
     <item quantity="one">%d diğer</item>
     <item quantity="other">%d diğer</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">GIFleri ve çıkartmaları ara</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Hiçbir şey bulunamadı</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Cihazınızda bulunan log kayıtları okunamadı. ADB kullanarak log kayıtlarına erişim sağlayabilirsiniz.</string>
   <string name="log_submit_activity__thanks">Yardımınız için teşekkürler!</string>
   <string name="log_submit_activity__submitting">Gönderiliyor</string>

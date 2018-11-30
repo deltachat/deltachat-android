@@ -293,12 +293,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Trajna okvara pri komunikaciji aplikacije Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Registracija z Google Play Services ni bila uspešna. Podatkovna komunikacija je izklopljena, prosimo, poskusite s ponovno registracijo v meniju Nastavive &gt; Napredno.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Napaka pri pridobivanju GIF-a v polni ločljivosti</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF-i</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Nalepke</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nova skupina</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Uredi skupino</string>
   <string name="GroupCreateActivity_group_name_hint">Ime skupine</string>
@@ -768,11 +765,9 @@ Prejeto sporočilo za izmenjavo ključev za napačno različico protokola.</stri
     <item quantity="few">%d drugi</item>
     <item quantity="other">%d drugih</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Iskanje po GIF-ih in nalepkah</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Nič ni bilo najdeno</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Sistemski dnevnik vaše naprave ni dostopen. Za oddajo sistemske zabeležbe lahko uporabite ADB.</string>
   <string name="log_submit_activity__thanks">Hvala za pomoč!</string>
   <string name="log_submit_activity__submitting">Oddajam</string>

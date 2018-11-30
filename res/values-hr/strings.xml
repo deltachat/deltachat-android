@@ -275,12 +275,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Trajna greška u Delta Chat komunikaciji!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat se nije uspješno registrirao na Google Play Services. Delta Chat poruke i pozivi su onemogućeni, pokušajte se ponovno registrirati kroz Postavke &gt; Napredno.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Greška pri dohvaćanju GIFa pune rezolucije</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFovi</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Naljepnice</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nova grupa</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Uredi grupu</string>
   <string name="GroupCreateActivity_group_name_hint">Naziv grupe</string>
@@ -685,11 +682,9 @@ Primljena poruka razmjene ključeva za pogrešnu inačicu protokola.</string>
     <item quantity="few">%d druga</item>
     <item quantity="other">%d drugih</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Pretraži GIFove i naljepnice</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Ništa nije pronađeno.</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Čitanje zapisa na Vašem uređaju nije moguće. Još uvijek možete koristiti ADB za pristup debug zapisu.</string>
   <string name="log_submit_activity__thanks">Hvala na pomoći!</string>
   <string name="log_submit_activity__submitting">Slanje</string>

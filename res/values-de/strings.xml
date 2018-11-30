@@ -265,12 +265,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Dauerhafter Delta Chat-Kommunikationsfehler!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat konnte nicht für die Google-Play-Dienste registriert werden. Delta Chat-Nachrichten und -Anrufe wurden daher deaktiviert. Bitte registriere Delta Chat im Menü »Einstellungen« &gt; »Weitere Einstellungen« erneut.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Fehler beim Abruf des GIFs in voller Auflösung</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFs</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Sticker</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Neue Gruppe</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Gruppe bearbeiten</string>
   <string name="GroupCreateActivity_group_name_hint">Gruppenname</string>
@@ -718,11 +715,9 @@ Schlüsselaustausch-Nachricht für eine ungültige Protokollversion empfangen</s
     <item quantity="one">%d weiterer</item>
     <item quantity="other">%d weitere</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">GIFs und Sticker suchen</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Nichts gefunden</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Das Diagnoseprotokoll auf deinem Gerät konnte nicht gelesen werden. Du kannst allerdings immer noch ADB verwenden, um ein Diagnoseprotokoll zu erhalten.</string>
   <string name="log_submit_activity__thanks">Danke für deine Hilfe!</string>
   <string name="log_submit_activity__submitting">Übermitteln</string>

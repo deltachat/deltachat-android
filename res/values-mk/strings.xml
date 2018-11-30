@@ -114,8 +114,7 @@
   <string name="ExportFragment_cancel">Откажи</string>
   <string name="ExportFragment_exporting">Се експортира</string>
   <!--GcmRefreshJob-->
-  <!--GiphyActivity-->
-  <!--GiphyFragmentPageAdapter-->
+
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Нова група</string>
   <string name="GroupCreateActivity_group_name_hint">Наслов на група</string>
@@ -350,8 +349,8 @@
   <!--expiration-->
   <string name="expiration_off">Исклучи</string>
   <!--unverified safety numbers-->
-  <!--giphy_activity-->
-  <!--giphy_fragment-->
+
+
   <!--import_export_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__thanks">Ви благодариме за вашата помош!</string>

@@ -253,12 +253,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">సిగ్నల్ లో శాశ్వత సమాచార వైఫల్యం!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">గూగ్లె ప్లే సదుపాయలతొ సిగ్నల్ నమోదు కాలెదు. సిగ్నల్ సందెశాలు మరియు  కాల్స్ నిలిపివేయబడ్డాయి. దయచేసి ఆధునిక అమరికలు లో మళ్ళి నమోదు చెసుకొనగలరు.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">పూతి స్పష్టత జి.ఐ.ఎఫ్. ను తిరిగి రప్పించుట లొ లొపము</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">గిఫ్ లు</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">స్టిక్కర్లు</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">కొత్త సమూహం</string>
   <string name="GroupCreateActivity_actionbar_edit_title">సమూహాన్ని మార్చు</string>
   <string name="GroupCreateActivity_group_name_hint">సమూహం పేరు</string>
@@ -684,11 +681,9 @@
   <!--unverified safety numbers-->
   <string name="IdentityUtil_unverified_banner_one">%s తో మీ భద్రతా నంబరు మారింది మరియు ధృవీకరించబడలేదు</string>
   <string name="IdentityUtil_untrusted_dialog_one">%s తో మీ భద్రతా నంబర్ ఇప్పుడు మార్చబడింది.</string>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">జిఫ్‌లు మరియు స్టిక్కర్లు వెతుకు</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">ఏమీ దొరకలేదు</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">మీ పరికరంలో లాగ్ చదవలేము. మీరు దీనికి బదులుగా ఒక డీబగ్ లాగ్ పొందడానికి  ADB  ని ఉపయోగించవచ్చు.</string>
   <string name="log_submit_activity__thanks">మీ సహాయానికి ధన్యవాదాలు!</string>
   <string name="log_submit_activity__submitting">సమర్పిస్తోంది</string>

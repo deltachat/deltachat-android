@@ -251,12 +251,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Kegagalan permanen komunikasi Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat tidak dapat melakukan registrasi dengan Layanan Google Play. Fitur Delta Chat seperti pesan dan panggilan di nonaktifkan, mohon registrasi ulang melalui Pengaturan &gt; Lanjutan.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Kesalahan saat mengambil berkas GIF dengan resolusi penuh</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Stiker</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Grup baru</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Ubah grup</string>
   <string name="GroupCreateActivity_group_name_hint">Nama grup</string>
@@ -701,11 +698,9 @@ Diterima pesan pertukaran kunci untuk versi protokol yang tidak valid.
   <plurals name="identity_others">
     <item quantity="other">%d yang lain</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Cari GIF dan stiker</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Tidak ada yang ditemukan</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Tidak bisa membaca catatan log pada perangkat Anda. Anda masih bisa menggunakan ADB untuk mengambil log celah keamanan.</string>
   <string name="log_submit_activity__thanks">Terima kasih atas bantuan Anda!</string>
   <string name="log_submit_activity__submitting">Mengirimkan</string>

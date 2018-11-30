@@ -279,12 +279,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Eroare permanentă de comunicare cu Delta Chat!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat nu s-a putut înregistra la Google Play Services. Mesajele și apelurile Delta Chat au fost dezactivate, te rog încearcă să te înregistrezi din nou din meniul Setări &gt; Avansat.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">A apărut o eroare la obținerea GIF-ului la rezoluție maximă</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF-uri</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Autocolante</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Grup nou</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Editați grupul</string>
   <string name="GroupCreateActivity_group_name_hint">Nume grup</string>
@@ -748,11 +745,9 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
     <item quantity="few">%d alții</item>
     <item quantity="other">%d alții</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Căutați GIF-uri și autocolante</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Nu s-a găsit nimic</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Fișierul jurnal nu a putut fi citit de pe dispozitivul tău. Poţi folosi în schimb ADB pentru a obţine jurnalul de depanare.</string>
   <string name="log_submit_activity__thanks">Vă mulțumim pentru ajutor!</string>
   <string name="log_submit_activity__submitting">Se trimite</string>

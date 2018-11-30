@@ -247,12 +247,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">暗号持续连接失效！</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">暗号无法在 Google Play 服务中注册。暗号消息和呼叫已经被金庸。请尝试在设置 &gt; 高级中重新注册。</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">获得原分辨率的GIF图片时出错</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF图片</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">表情</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">新群组</string>
   <string name="GroupCreateActivity_actionbar_edit_title">编辑群组</string>
   <string name="GroupCreateActivity_group_name_hint">群组名称</string>
@@ -683,11 +680,9 @@
   <plurals name="identity_others">
     <item quantity="other">%d 个其他人</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">搜索 GIF图片与表情</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">无结果</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">无法在您的设备上读取日志。您仍然可以使用 ADB 来获得调试日志。</string>
   <string name="log_submit_activity__thanks">感谢！</string>
   <string name="log_submit_activity__submitting">正在提交</string>

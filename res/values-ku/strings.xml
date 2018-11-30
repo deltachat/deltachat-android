@@ -260,12 +260,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Ragihandina Signalê çênabe!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Li Google Play Services Delta Chat nikaribû qeydbike. Peyam û gaziyên Signalê hatin seqetkirin, ka li Şikil &gt; Taybet biceribîne dîsa qeydbikin.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">GIF bi kalîteya bilid nehat vekirin</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Stickers</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Koma nû</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Weşandina kom</string>
   <string name="GroupCreateActivity_group_name_hint">Navê kom</string>
@@ -713,11 +710,9 @@
     <item quantity="one">%da din</item>
     <item quantity="other">%dên din</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Li GIF û sticker bigerre</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Tiştek nehat peydakirin</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Tomar li cihazê te nikarim bixwînim. Lê belê ji bo tomara çareserî tu dikarî ADB bikarbînî.</string>
   <string name="log_submit_activity__thanks">Ji ber alîkariya te sipas!</string>
   <string name="log_submit_activity__submitting">Wedişînin...</string>

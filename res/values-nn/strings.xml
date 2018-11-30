@@ -265,12 +265,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Varig Delta Chat-kommunikasjonsfeil.</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat klarte ikkje å registrera seg som Google Play-teneste. Delta Chat-meldingar og samtalar er difor slått av. Prøv å registrera programmet på nytt under Innstillingar &gt; Avansert.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Klarte ikkje henta GIF i full storleik</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIF-ar</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Klistremerke</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Ny gruppe</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Rediger gruppa</string>
   <string name="GroupCreateActivity_group_name_hint">Gruppenamn</string>
@@ -722,11 +719,9 @@ Mottok nøkkelutvekslingsmelding for ugyldig protokollversjon.</string>
     <item quantity="one">%d annan</item>
     <item quantity="other">%d andre</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Søk Gif-ar og klistremerke</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Ikkje noko funne</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Klarte ikkje å lesa einingsloggen. Du kan enno bruka ADB for å få ein feilsøkingslogg i staden.</string>
   <string name="log_submit_activity__thanks">Takk for hjelpa!</string>
   <string name="log_submit_activity__submitting">Innsending</string>

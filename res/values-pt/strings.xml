@@ -261,12 +261,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Falha de comunicação do Delta Chat permanente!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">O Delta Chat não se conseguiu registar com os Serviços Google Play. As mensagens e chamadas do Delta Chat estão desativadas, por favor tente registar-se novamente em Definições &gt; Avançadas.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Erro a obter o GIF de resolução integral</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFs</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Autocolantes</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Grupo novo</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Editar o grupo</string>
   <string name="GroupCreateActivity_group_name_hint">Nome do grupo</string>
@@ -710,11 +707,9 @@ Mensagem de troca de chaves inválida para esta versão do protocolo.
     <item quantity="one">%d outro</item>
     <item quantity="other">%d outros</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">Pesquisar GIFs e autocolantes</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Nada foi encontrado</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Não foi possivel ler o log no seu dispositivo. Poderá ainda usar ADB para efetuar o debugging do log.</string>
   <string name="log_submit_activity__thanks">Obrigado pela sua ajuda!</string>
   <string name="log_submit_activity__submitting">A enviar</string>

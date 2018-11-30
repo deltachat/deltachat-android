@@ -266,12 +266,9 @@
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Delta Chat behin betiko komunikazio hutsegitea!</string>
   <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat ez da gai izan Google Play Zerbitzuekin erregistratzeko. Delta Chat mezu eta deiak desgaitu egin dira, mesedez saiatu bererregistratzen Ezarpenak &gt; Aurreratua menuan.</string>
-  <!--GiphyActivity-->
-  <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Errorea bereizmen osoko GIFa eskuratzerakoan</string>
-  <!--GiphyFragmentPageAdapter-->
-  <string name="GiphyFragmentPagerAdapter_gifs">GIFak</string>
-  <string name="GiphyFragmentPagerAdapter_stickers">Eranskailuak</string>
-  <!--GroupCreateActivity-->
+
+
+    <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Talde berria</string>
   <string name="GroupCreateActivity_actionbar_edit_title">Taldea editatu</string>
   <string name="GroupCreateActivity_group_name_hint">Taldearen izena</string>
@@ -727,11 +724,9 @@ Gakoaren elkar-trukeraro mezua jaso da protokoloaren bertsio baliogabe baterako.
     <item quantity="one">%d gehiago</item>
     <item quantity="other">%d gehiago</item>
   </plurals>
-  <!--giphy_activity-->
-  <string name="giphy_activity_toolbar__search_gifs_and_stickers">GIF eta eranskailuak bilatu</string>
-  <!--giphy_fragment-->
-  <string name="giphy_fragment__nothing_found">Ez da ezer aurkitu</string>
-  <!--log_submit_activity-->
+
+
+    <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Ezin izan da gailuko erregistroa irakurri.  Dena den, ordenagailuko ADB programa erabil dezakezu arazketa-erregistroa eskuratzeko.</string>
   <string name="log_submit_activity__thanks">Eskerrik asko zure laguntzagatik!</string>
   <string name="log_submit_activity__submitting">Bidaltzen</string>

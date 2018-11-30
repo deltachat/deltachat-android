@@ -9,8 +9,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.load.engine.cache.DiskCache;
-import com.bumptech.glide.load.engine.cache.DiskCacheAdapter;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.UnitModelLoader;
 import com.bumptech.glide.load.resource.bitmap.Downsampler;
@@ -23,15 +21,13 @@ import com.bumptech.glide.module.AppGlideModule;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.crypto.AttachmentSecret;
 import org.thoughtcrime.securesms.crypto.AttachmentSecretProvider;
-import org.thoughtcrime.securesms.giph.model.GiphyPaddedUrl;
 import org.thoughtcrime.securesms.glide.ContactPhotoLoader;
+import org.thoughtcrime.securesms.glide.OkHttpUrlLoader;
 import org.thoughtcrime.securesms.glide.cache.EncryptedBitmapCacheDecoder;
+import org.thoughtcrime.securesms.glide.cache.EncryptedBitmapResourceEncoder;
 import org.thoughtcrime.securesms.glide.cache.EncryptedCacheEncoder;
 import org.thoughtcrime.securesms.glide.cache.EncryptedGifCacheDecoder;
-import org.thoughtcrime.securesms.glide.cache.EncryptedBitmapResourceEncoder;
 import org.thoughtcrime.securesms.glide.cache.EncryptedGifDrawableResourceEncoder;
-import org.thoughtcrime.securesms.glide.GiphyPaddedUrlLoader;
-import org.thoughtcrime.securesms.glide.OkHttpUrlLoader;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 
 import java.io.File;
@@ -66,7 +62,6 @@ public class SignalGlideModule extends AppGlideModule {
 
     registry.append(ContactPhoto.class, InputStream.class, new ContactPhotoLoader.Factory(context));
     registry.append(DecryptableUri.class, InputStream.class, new DecryptableStreamUriLoader.Factory(context));
-    registry.append(GiphyPaddedUrl.class, InputStream.class, new GiphyPaddedUrlLoader.Factory());
     registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory());
   }
 }
