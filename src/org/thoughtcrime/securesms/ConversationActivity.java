@@ -93,7 +93,6 @@ import org.thoughtcrime.securesms.contactshare.ContactShareEditActivity;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.DraftDatabase;
 import org.thoughtcrime.securesms.database.DraftDatabase.Draft;
 import org.thoughtcrime.securesms.database.DraftDatabase.Drafts;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
@@ -121,19 +120,18 @@ import org.thoughtcrime.securesms.util.CharacterCalculator.CharacterState;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
-import org.thoughtcrime.securesms.util.views.Stub;
 import org.thoughtcrime.securesms.util.guava.Optional;
+import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
@@ -141,8 +139,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
 
@@ -388,11 +384,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       setMedia(data.getData(), MediaType.AUDIO);
       break;
     case PICK_CONTACT:
-      if (isSecureText && !isSmsForced()) {
-        openContactShareEditor(data.getData());
-      } else {
-        addAttachmentContactInfo(data.getData());
-      }
+      addAttachmentContactInfo(data.getData());
       break;
     case GET_CONTACT_DETAILS:
       sendSharedContact(data.getParcelableArrayListExtra(ContactShareEditActivity.KEY_CONTACTS));
@@ -895,8 +887,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     ContactAccessor contactDataList = ContactAccessor.getInstance();
     ContactData contactData = contactDataList.getContactData(this, contactUri);
 
-    if      (contactData.numbers.size() == 1) composeText.append(contactData.numbers.get(0).number);
-    else if (contactData.numbers.size() > 1)  selectContactInfo(contactData);
+    if      (contactData.mails.size() == 1) composeText.append(appendName(contactData) + contactData.mails.get(0).mail);
+    else if (contactData.mails.size() > 1)  selectContactInfo(contactData);
+  }
+
+  @NonNull
+  private String appendName(ContactData contactData) {
+    return contactData.name + "\n";
   }
 
   private void sendSharedContact(List<Contact> contacts) {
@@ -908,19 +905,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void selectContactInfo(ContactData contactData) {
-    final CharSequence[] numbers     = new CharSequence[contactData.numbers.size()];
-    final CharSequence[] numberItems = new CharSequence[contactData.numbers.size()];
+    final CharSequence[] mails     = new CharSequence[contactData.mails.size()];
 
-    for (int i = 0; i < contactData.numbers.size(); i++) {
-      numbers[i]     = contactData.numbers.get(i).number;
-      numberItems[i] = contactData.numbers.get(i).type + ": " + contactData.numbers.get(i).number;
+    for (int i = 0; i < contactData.mails.size(); i++) {
+      mails[i]     = contactData.mails.get(i).mail;
     }
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setIconAttribute(R.attr.conversation_attach_contact_info);
     builder.setTitle(R.string.ConversationActivity_select_contact_info);
 
-    builder.setItems(numberItems, (dialog, which) -> composeText.append(numbers[which]));
+    builder.setItems(mails, (dialog, which) -> composeText.append(appendName(contactData) + mails[which]));
     builder.show();
   }
 
