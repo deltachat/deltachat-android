@@ -973,15 +973,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return this.threadId;
   }
 
-  private String getMessage() throws InvalidMessageException {
-    String rawText = composeText.getTextTrimmed();
-
-    if (rawText.length() < 1 && !attachmentManager.isAttachmentPresent())
-      throw new InvalidMessageException(getString(R.string.ConversationActivity_message_is_empty_exclamation));
-
-    return rawText;
-  }
-
   private MediaConstraints getCurrentMediaConstraints() {
     return sendButton.getSelectedTransport().getType() == Type.TEXTSECURE
            ? MediaConstraints.getPushMediaConstraints()
@@ -1057,18 +1048,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   //////// send message
 
   private void sendMessage() {
-    try {
-      sendMediaMessage(getMessage(),
-          attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()?
-            attachmentManager.buildSlideDeck() : null);
-    } catch (InvalidMessageException ex) {
-      Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_message_is_empty_exclamation,
-          Toast.LENGTH_SHORT).show();
-      Log.w(TAG, ex);
-    }
+    sendMessage(composeText.getTextTrimmed(),
+      attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()?
+        attachmentManager.buildSlideDeck() : null);
   }
 
-  private ListenableFuture<Void> sendMediaMessage(String body, SlideDeck slideDeck) {
+  private ListenableFuture<Void> sendMessage(String body, SlideDeck slideDeck) {
 
     final SettableFuture<Void> future  = new SettableFuture<>();
 
@@ -1224,7 +1209,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         SlideDeck  slideDeck      = new SlideDeck();
         slideDeck.addSlide(audioSlide);
 
-        sendMediaMessage("", slideDeck).addListener(new AssertedSuccessListener<Void>() {
+        sendMessage("", slideDeck).addListener(new AssertedSuccessListener<Void>() {
           @Override
           public void onSuccess(Void nothing) {
             new AsyncTask<Void, Void, Void>() {
@@ -1339,7 +1324,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private class SendButtonListener implements OnClickListener, TextView.OnEditorActionListener {
     @Override
     public void onClick(View v) {
-      sendMessage();
+      String rawText = composeText.getTextTrimmed();
+      if (rawText.length() < 1 && !attachmentManager.isAttachmentPresent()) {
+        Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_message_is_empty_exclamation,
+            Toast.LENGTH_SHORT).show();
+      }
+      else {
+        sendMessage();
+      }
     }
 
     @Override
