@@ -1058,25 +1058,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void sendMessage() {
     try {
-      if (attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()) {
-        sendMediaMessage(getMessage(), attachmentManager.buildSlideDeck());
-      } else {
-        sendTextMessage();
-      }
+      sendMediaMessage(getMessage(),
+          attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()?
+            attachmentManager.buildSlideDeck() : null);
     } catch (InvalidMessageException ex) {
       Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_message_is_empty_exclamation,
           Toast.LENGTH_SHORT).show();
       Log.w(TAG, ex);
     }
-  }
-
-  private void sendTextMessage()
-      throws InvalidMessageException
-  {
-    final String  messageBody = getMessage();
-    dcContext.sendTextMsg(dcChat.getId(), messageBody);
-    composeText.setText("");
-    sendComplete(dcChat.getId());
   }
 
   private ListenableFuture<Void> sendMediaMessage(String body, SlideDeck slideDeck) {
@@ -1087,6 +1076,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     composeText.setText("");
 
+    if(slideDeck!=null) {
       inputPanel.clearQuote();
       attachmentManager.clear(glideRequests, false);
 
@@ -1115,6 +1105,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       catch(Exception e) {
         e.printStackTrace();
       }
+    }
+    else {
+      msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    }
 
     if(msg!=null) {
       msg.setText(body);
