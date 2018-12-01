@@ -1083,41 +1083,42 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     final SettableFuture<Void> future  = new SettableFuture<>();
 
-    inputPanel.clearQuote();
-    attachmentManager.clear(glideRequests, false);
+    DcMsg msg = null;
+
     composeText.setText("");
 
-    try {
-      DcMsg msg = null;
+      inputPanel.clearQuote();
+      attachmentManager.clear(glideRequests, false);
 
-      List<Attachment> attachments = slideDeck.asAttachments();
-      for (Attachment attachment : attachments) {
-        String contentType = attachment.getContentType();
-
-        if (MediaUtil.isImageType(contentType)) {
-          msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
-          msg.setDimension(attachment.getWidth(), attachment.getHeight());
+      try {
+        List<Attachment> attachments = slideDeck.asAttachments();
+        for (Attachment attachment : attachments) {
+          String contentType = attachment.getContentType();
+          if (MediaUtil.isImageType(contentType)) {
+            msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
+            msg.setDimension(attachment.getWidth(), attachment.getHeight());
+          }
+          else if (MediaUtil.isAudioType(contentType)) {
+            msg = new DcMsg(dcContext,
+                attachment.isVoiceNote()? DcMsg.DC_MSG_VOICE : DcMsg.DC_MSG_AUDIO);
+          }
+          else if (MediaUtil.isVideoType(contentType)) {
+            msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+          }
+          else {
+            msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
+          }
+          String path = getRealPathFromAttachment(attachment);
+          msg.setFile(path, null);
         }
-        else if (MediaUtil.isAudioType(contentType)) {
-          msg = new DcMsg(dcContext,
-              attachment.isVoiceNote()? DcMsg.DC_MSG_VOICE : DcMsg.DC_MSG_AUDIO);
-        }
-        else if (MediaUtil.isVideoType(contentType)) {
-          msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
-        }
-        else {
-          msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
-        }
-
-        String path = getRealPathFromAttachment(attachment);
-        msg.setFile(path, null);
+      }
+      catch(Exception e) {
+        e.printStackTrace();
       }
 
+    if(msg!=null) {
       msg.setText(body);
       dcContext.sendMsg(dcChat.getId(), msg);
-    }
-    catch(Exception e) {
-      e.printStackTrace();
     }
 
     sendComplete(dcChat.getId());
