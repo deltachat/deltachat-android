@@ -1032,8 +1032,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       String path = null;
       for (int i=0; i<1000; i++) {
-        path = dcContext.getBlobdir()+"/"+filename+(i==0? "" : i<100? "-"+i : "-"+(new Date().getTime()+i))+ext;
-        if (!new File(path).exists()) {
+        String test = dcContext.getBlobdir()+"/"+filename+(i==0? "" : i<100? "-"+i : "-"+(new Date().getTime()+i))+ext;
+        if (!new File(test).exists()) {
+          path = test;
           break;
         }
       }
