@@ -1059,7 +1059,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void sendMessage() {
     try {
       if (attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()) {
-        sendMediaMessage();
+        sendMediaMessage(getMessage(), attachmentManager.buildSlideDeck());
       } else {
         sendTextMessage();
       }
@@ -1077,12 +1077,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     dcContext.sendTextMsg(dcChat.getId(), messageBody);
     composeText.setText("");
     sendComplete(dcChat.getId());
-  }
-
-  private void sendMediaMessage()
-      throws InvalidMessageException
-  {
-    sendMediaMessage(getMessage(), attachmentManager.buildSlideDeck());
   }
 
   private ListenableFuture<Void> sendMediaMessage(String body, SlideDeck slideDeck) {
