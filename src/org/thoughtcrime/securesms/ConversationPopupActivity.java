@@ -77,7 +77,7 @@ public class ConversationPopupActivity extends ConversationActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.menu_expand:
-        saveDraft().addListener(new ListenableFuture.Listener<Integer>() {
+        processComposeControls(ACTION_SAVE_DRAFT).addListener(new ListenableFuture.Listener<Integer>() {
           @Override
           public void onSuccess(Integer result) {
             ActivityOptionsCompat transition = ActivityOptionsCompat.makeScaleUpAnimation(getWindow().getDecorView(), 0, 0, getWindow().getAttributes().width, getWindow().getAttributes().height);

@@ -87,20 +87,14 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.contacts.ContactAccessor.ContactData;
-import org.thoughtcrime.securesms.database.DraftDatabase.Draft;
-import org.thoughtcrime.securesms.database.DraftDatabase.Drafts;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.mms.LocationSlide;
 import org.thoughtcrime.securesms.mms.MediaConstraints;
 import org.thoughtcrime.securesms.mms.PartAuthority;
-import org.thoughtcrime.securesms.mms.QuoteId;
-import org.thoughtcrime.securesms.mms.QuoteModel;
-import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -118,7 +112,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
-import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.io.File;
@@ -263,7 +256,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (!Util.isEmpty(composeText) || attachmentManager.isAttachmentPresent()) {
-      saveDraft();
+      processComposeControls(ACTION_SAVE_DRAFT);
       attachmentManager.clear(glideRequests, false);
       composeText.setText("");
     }
@@ -336,7 +329,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onDestroy() {
-    saveDraft();
+    processComposeControls(ACTION_SAVE_DRAFT);
     dcContext.eventCenter.removeObservers(this);
     super.onDestroy();
   }
@@ -871,67 +864,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     builder.show();
   }
 
-  private Drafts getDraftsForCurrentState() {
-    Drafts drafts = new Drafts();
-
-    if (!Util.isEmpty(composeText)) {
-      drafts.add(new Draft(Draft.TEXT, composeText.getTextTrimmed()));
-    }
-
-    for (Slide slide : attachmentManager.buildSlideDeck().getSlides()) {
-      if      (slide.hasAudio() && slide.getUri() != null)    drafts.add(new Draft(Draft.AUDIO, slide.getUri().toString()));
-      else if (slide.hasVideo() && slide.getUri() != null)    drafts.add(new Draft(Draft.VIDEO, slide.getUri().toString()));
-      else if (slide.hasLocation())                           drafts.add(new Draft(Draft.LOCATION, ((LocationSlide)slide).getPlace().serialize()));
-      else if (slide.hasImage() && slide.getUri() != null)    drafts.add(new Draft(Draft.IMAGE, slide.getUri().toString()));
-    }
-
-    Optional<QuoteModel> quote = inputPanel.getQuote();
-
-    if (quote.isPresent()) {
-      drafts.add(new Draft(Draft.QUOTE, new QuoteId(quote.get().getId(), quote.get().getAuthor()).serialize()));
-    }
-
-    return drafts;
-  }
-
-  protected ListenableFuture<Integer> saveDraft() {
-    final SettableFuture<Integer> future = new SettableFuture<>();
-
-    if (this.recipient == null) {
-      future.set(threadId);
-      return future;
-    }
-
-    final Drafts       drafts               = getDraftsForCurrentState();
-    final int          thisThreadId         = this.threadId;
-
-    new AsyncTask<Integer, Void, Integer>() {
-      @Override
-      protected Integer doInBackground(Integer... params) {
-        int           threadId       = params[0];
-
-        if (drafts.size() > 0 && threadId>0) {
-          // todo: the following line only works for text drafts
-          DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-          msg.setText(drafts.getSnippet(dcContext.context));
-          dcContext.setDraft(dcChat.getId(), msg);
-        } else if (threadId > 0) {
-          dcContext.setDraft(dcChat.getId(), null);
-        }
-
-        return threadId;
-      }
-
-      @Override
-      protected void onPostExecute(Integer result) {
-        future.set(result);
-      }
-
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, thisThreadId);
-
-    return future;
-  }
-
   private void calculateCharactersRemaining() {
     String          messageBody     = composeText.getTextTrimmed();
     TransportOption transportOption = sendButton.getSelectedTransport();
@@ -1047,15 +979,18 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   //////// send message
 
-  private void sendMessage() {
-    sendMessage(composeText.getTextTrimmed(),
+  protected static final int ACTION_SEND_OUT = 1;
+  protected static final int ACTION_SAVE_DRAFT = 2;
+
+  protected ListenableFuture<Integer> processComposeControls(int action) {
+    return processComposeControls(action, composeText.getTextTrimmed(),
       attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()?
         attachmentManager.buildSlideDeck() : null);
   }
 
-  private ListenableFuture<Void> sendMessage(String body, SlideDeck slideDeck) {
+  protected ListenableFuture<Integer> processComposeControls(final int action, String body, SlideDeck slideDeck) {
 
-    final SettableFuture<Void> future  = new SettableFuture<>();
+    final SettableFuture<Integer> future  = new SettableFuture<>();
 
     DcMsg msg = null;
 
@@ -1085,23 +1020,41 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           }
           String path = getRealPathFromAttachment(attachment);
           msg.setFile(path, null);
+          msg.setText(body);
         }
       }
       catch(Exception e) {
         e.printStackTrace();
       }
     }
-    else {
+    else if (!body.isEmpty()){
       msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+      msg.setText(body);
     }
 
-    if(msg!=null) {
-      msg.setText(body);
-      dcContext.sendMsg(dcChat.getId(), msg);
-    }
+    // msg may still be null to clear drafts
+    new AsyncTask<DcMsg, Void, Void>() {
+      @Override
+      protected Void doInBackground(DcMsg... msgs) {
+        if (action==ACTION_SEND_OUT) {
+          if(msgs[0]!=null) {
+            dcContext.sendMsg(dcChat.getId(), msgs[0]);
+          }
+          dcContext.setDraft(dcChat.getId(), null);
+        }
+        else {
+          dcContext.setDraft(dcChat.getId(), msgs[0]);
+        }
+        return null;
+      }
+
+      @Override
+      protected void onPostExecute(Void result) {
+        future.set(threadId);
+      }
+    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, msg);
 
     sendComplete(dcChat.getId());
-    future.set(null);
     return future;
   }
 
@@ -1209,9 +1162,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         SlideDeck  slideDeck      = new SlideDeck();
         slideDeck.addSlide(audioSlide);
 
-        sendMessage("", slideDeck).addListener(new AssertedSuccessListener<Void>() {
+        processComposeControls(ACTION_SEND_OUT, "", slideDeck).addListener(new AssertedSuccessListener<Integer>() {
           @Override
-          public void onSuccess(Void nothing) {
+          public void onSuccess(Integer chatId) {
             new AsyncTask<Void, Void, Void>() {
               @Override
               protected Void doInBackground(Void... params) {
@@ -1330,7 +1283,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             Toast.LENGTH_SHORT).show();
       }
       else {
-        sendMessage();
+        processComposeControls(ACTION_SEND_OUT);
       }
     }
 
