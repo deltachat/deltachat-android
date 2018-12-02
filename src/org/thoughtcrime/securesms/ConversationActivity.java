@@ -633,51 +633,35 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             composeText.setText(text);
             composeText.setSelection(composeText.getText().length());
           }
+
+          String filename = draft.getFile();
+          if(!filename.isEmpty()) {
+            File file = new File(filename);
+            if(file.exists()) {
+              Uri uri = Uri.fromFile(file);
+              switch (draft.getType()) {
+                case DcMsg.DC_MSG_IMAGE:
+                  setMedia(uri, MediaType.IMAGE);
+                  break;
+                case DcMsg.DC_MSG_GIF:
+                  setMedia(uri, MediaType.GIF);
+                  break;
+                case DcMsg.DC_MSG_AUDIO:
+                  setMedia(uri, MediaType.AUDIO);
+                  break;
+                case DcMsg.DC_MSG_VIDEO:
+                  setMedia(uri, MediaType.VIDEO);
+                  break;
+                default:
+                  setMedia(uri, MediaType.DOCUMENT);
+                  break;
+              }
+            }
+          }
         }
-//        AtomicInteger                      draftsRemaining = new AtomicInteger(drafts.size());
-//        AtomicBoolean                      success         = new AtomicBoolean(false);
-//        ListenableFuture.Listener<Boolean> listener        = new AssertedSuccessListener<Boolean>() {
-//          @Override
-//          public void onSuccess(Boolean result) {
-//            success.compareAndSet(false, result);
-//
-//            if (draftsRemaining.decrementAndGet() <= 0) {
-//              future.set(success.get());
-//            }
-//          }
-//        };
-//
-//        for (Draft draft : drafts) {
-//          try {
-//            switch (draft.getType()) {
-//              case Draft.TEXT:
-//                composeText.setText(draft.getValue());
-//                listener.onSuccess(true);
-//                break;
-//              case Draft.LOCATION:
-//                attachmentManager.setLocation(SignalPlace.deserialize(draft.getValue()), getCurrentMediaConstraints()).addListener(listener);
-//                break;
-//              case Draft.IMAGE:
-//                setMedia(Uri.parse(draft.getValue()), MediaType.IMAGE).addListener(listener);
-//                break;
-//              case Draft.AUDIO:
-//                setMedia(Uri.parse(draft.getValue()), MediaType.AUDIO).addListener(listener);
-//                break;
-//              case Draft.VIDEO:
-//                setMedia(Uri.parse(draft.getValue()), MediaType.VIDEO).addListener(listener);
-//                break;
-//              case Draft.QUOTE:
-//                SettableFuture<Boolean> quoteResult = new SettableFuture<>();
-//                new QuoteRestorationTask(draft.getValue(), quoteResult).execute();
-//                quoteResult.addListener(listener);
-//                break;
-//            }
-//          } catch (IOException e) {
-//            Log.w(TAG, e);
-//          }
-//        }
 
         updateToggleButtonState();
+        future.set(draft!=null);
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
