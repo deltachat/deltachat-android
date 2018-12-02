@@ -41,8 +41,6 @@ public class DatabaseFactory {
   private final MediaDatabase         media;
   private final ThreadDatabase        thread;
   private final MmsSmsDatabase        mmsSmsDatabase;
-  private final IdentityDatabase      identityDatabase;
-  private final DraftDatabase         draftDatabase;
   private final GroupDatabase         groupDatabase;
   private final RecipientDatabase     recipientDatabase;
   private final ContactsDatabase      contactsDatabase;
@@ -82,14 +80,6 @@ public class DatabaseFactory {
     return getInstance(context).media;
   }
 
-  public static IdentityDatabase getIdentityDatabase(Context context) {
-    return getInstance(context).identityDatabase;
-  }
-
-  public static DraftDatabase getDraftDatabase(Context context) {
-    return getInstance(context).draftDatabase;
-  }
-
   public static GroupDatabase getGroupDatabase(Context context) {
     return getInstance(context).groupDatabase;
   }
@@ -123,8 +113,6 @@ public class DatabaseFactory {
     this.media                = new MediaDatabase(context, databaseHelper);
     this.thread               = new ThreadDatabase(context, databaseHelper);
     this.mmsSmsDatabase       = new MmsSmsDatabase(context, databaseHelper);
-    this.identityDatabase     = new IdentityDatabase(context, databaseHelper);
-    this.draftDatabase        = new DraftDatabase(context, databaseHelper);
     this.groupDatabase        = new GroupDatabase(context, databaseHelper);
     this.recipientDatabase    = new RecipientDatabase(context, databaseHelper);
     this.groupReceiptDatabase = new GroupReceiptDatabase(context, databaseHelper);
