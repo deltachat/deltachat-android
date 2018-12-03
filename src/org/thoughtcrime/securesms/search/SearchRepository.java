@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.search;
 
-import android.Manifest;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
@@ -19,7 +18,6 @@ import org.thoughtcrime.securesms.database.MmsSmsColumns;
 import org.thoughtcrime.securesms.database.SearchDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
-import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.search.model.MessageResult;
 import org.thoughtcrime.securesms.search.model.SearchResult;

@@ -182,7 +182,7 @@ public class ConversationListItem extends RelativeLayout
     groupIndicator.setColorFilter(color);
   }
 
-  public void bind(@NonNull  Recipient     contact,
+  public void bind(@NonNull  DcContact     contact,
                    @NonNull  GlideRequests glideRequests,
                    @NonNull  Locale        locale,
                    @Nullable String        highlightSubstring)
@@ -203,7 +203,7 @@ public class ConversationListItem extends RelativeLayout
     contactPhotoImage.setAvatar(glideRequests, recipient, true);
   }
 
-  public void bind(@NonNull  MessageResult messageResult,
+  public void bind(@NonNull  DcMsg         messageResult,
                    @NonNull  GlideRequests glideRequests,
                    @NonNull  Locale        locale,
                    @Nullable String        highlightSubstring)
