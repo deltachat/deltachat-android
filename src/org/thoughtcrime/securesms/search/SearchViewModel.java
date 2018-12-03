@@ -33,14 +33,14 @@ class SearchViewModel extends ViewModel {
     this.searchRepository = searchRepository;
     this.debouncer        = new Debouncer(500);
 
-    searchResult.registerContentObserver(new ContentObserver(new Handler()) {
-      @Override
-      public void onChange(boolean selfChange) {
-        if (!TextUtils.isEmpty(getLastQuery())) {
-          searchRepository.query(getLastQuery(), searchResult::postValue);
-        }
-      }
-    });
+//    searchResult.registerContentObserver(new ContentObserver(new Handler()) {
+//      @Override
+//      public void onChange(boolean selfChange) {
+//        if (!TextUtils.isEmpty(getLastQuery())) {
+//          searchRepository.query(getLastQuery(), searchResult::postValue);
+//        }
+//      }
+//    });
   }
 
   LiveData<SearchResult> getSearchResult() {
@@ -60,42 +60,9 @@ class SearchViewModel extends ViewModel {
   @Override
   protected void onCleared() {
     debouncer.clear();
-    searchResult.close();
   }
 
-  /**
-   * Ensures that the previous {@link SearchResult} is always closed whenever we set a new one.
-   */
   private static class ObservingLiveData extends MutableLiveData<SearchResult> {
-
-    private ContentObserver observer;
-
-    @Override
-    public void setValue(SearchResult value) {
-      SearchResult previous = getValue();
-
-      if (previous != null) {
-        previous.unregisterContentObserver(observer);
-        previous.close();
-      }
-
-      value.registerContentObserver(observer);
-
-      super.setValue(value);
-    }
-
-    void close() {
-      SearchResult value = getValue();
-
-      if (value != null) {
-        value.unregisterContentObserver(observer);
-        value.close();
-      }
-    }
-
-    void registerContentObserver(@NonNull ContentObserver observer) {
-      this.observer = observer;
-    }
   }
 
   public static class Factory extends ViewModelProvider.NewInstanceFactory {

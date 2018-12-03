@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
@@ -42,9 +43,10 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   @NonNull
   private SearchResult searchResult = SearchResult.EMPTY;
 
+  Context              context;
   ApplicationDcContext dcContext;
 
-  SearchListAdapter(Context context,
+  SearchListAdapter(Context                context,
                     @NonNull GlideRequests glideRequests,
                     @NonNull EventListener eventListener,
                     @NonNull Locale        locale)
@@ -52,6 +54,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     this.glideRequests = glideRequests;
     this.eventListener = eventListener;
     this.locale        = locale;
+    this.context       = context;
     this.dcContext     = DcHelper.getContext(context);
   }
 
@@ -64,10 +67,10 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
 
   @Override
   public void onBindViewHolder(@NonNull SearchResultViewHolder holder, int position) {
-    DcChat conversationResult = getConversationResult(position);
+    DcChatlist.Item conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
-      holder.bind(conversationResult, 0, new DcLot(0), glideRequests, eventListener, locale, searchResult.getQuery());
+      holder.bind(context, conversationResult, glideRequests, eventListener, locale, searchResult.getQuery());
       return;
     }
 
@@ -123,9 +126,9 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   }
 
   @Nullable
-  private DcChat getConversationResult(int position) {
+  private DcChatlist.Item getConversationResult(int position) {
     if (position < searchResult.getConversations().getCnt()) {
-      return dcContext.getChat(searchResult.getConversations().getChatId(position));
+      return searchResult.getConversations().getItem(position);
     }
     return null;
   }
@@ -155,7 +158,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   }
 
   public interface EventListener {
-    void onConversationClicked(@NonNull DcChat chat);
+    void onConversationClicked(@NonNull DcChatlist.Item chatlistItem);
     void onContactClicked(@NonNull DcContact contact);
     void onMessageClicked(@NonNull DcMsg message);
   }
@@ -169,16 +172,17 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
       root = (ConversationListItem) itemView;
     }
 
-    void bind(@NonNull  DcChat        conversationResult,
-              int                     msgId,
-              @NonNull  DcLot         summary,
+    void bind(Context   context,
+              @NonNull  DcChatlist.Item chatlistItem,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
               @NonNull  Locale        locale,
               @Nullable String        query)
     {
-      root.bind(conversationResult, msgId, summary, glideRequests, locale, Collections.emptySet(), false, query);
-      root.setOnClickListener(view -> eventListener.onConversationClicked(conversationResult));
+      ApplicationDcContext dcContext = DcHelper.getContext(context);
+      ThreadRecord threadRecord = dcContext.getThreadRecord(chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
+      root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, locale, Collections.emptySet(), false, query);
+      root.setOnClickListener(view -> eventListener.onConversationClicked(chatlistItem));
     }
 
     void bind(@NonNull  DcContact     contactResult,

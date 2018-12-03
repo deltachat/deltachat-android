@@ -17,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
@@ -69,10 +73,6 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     this.locale = (Locale) getArguments().getSerializable(EXTRA_LOCALE);
 
     SearchRepository searchRepository = new SearchRepository(getContext(),
-                                                             DatabaseFactory.getSearchDatabase(getContext()),
-                                                             DatabaseFactory.getContactsDatabase(getContext()),
-                                                             DatabaseFactory.getThreadDatabase(getContext()),
-                                                             ContactAccessor.getInstance(),
                                                              Executors.newSingleThreadExecutor());
     viewModel = ViewModelProviders.of(this, new SearchViewModel.Factory(searchRepository)).get(SearchViewModel.class);
 
@@ -93,7 +93,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     noResultsView = view.findViewById(R.id.search_no_results);
     listView      = view.findViewById(R.id.search_list);
 
-    listAdapter    = new SearchListAdapter(GlideApp.with(this), this, locale);
+    listAdapter    = new SearchListAdapter(getContext(), GlideApp.with(this), this, locale);
     listDecoration = new StickyHeaderDecoration(listAdapter, false, false);
 
     listView.setAdapter(listAdapter);
@@ -134,49 +134,47 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
 
 
   @Override
-  public void onConversationClicked(@NonNull ThreadRecord threadRecord) {
-    ConversationListActivity conversationList = (ConversationListActivity) getActivity();
-
-    if (conversationList != null) {
-      // todo the following line won't work for signal code, and the cast needs to be removed.
-      conversationList.onCreateConversation((int)threadRecord.getThreadId(),
-                                            threadRecord.getLastSeen());
-    }
+  public void onConversationClicked(@NonNull DcChatlist.Item chatlistItem) {
+//    ConversationListActivity conversationList = (ConversationListActivity) getActivity();
+//    if (conversationList != null) {
+//      conversationList.onCreateConversation(chatlistItem.,
+//                                            threadRecord.getLastSeen());
+//    }
   }
 
   @Override
-  public void onContactClicked(@NonNull Recipient contact) {
-    Intent intent = new Intent(getContext(), ConversationActivity.class);
-    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
-    int existingThread = dcContext.getChatIdByContactId(contact.getAddress().getDcContactId());
-
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, existingThread);
-    startActivity(intent);
+  public void onContactClicked(@NonNull DcContact contact) {
+//    Intent intent = new Intent(getContext(), ConversationActivity.class);
+//    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+//    int existingThread = dcContext.getChatIdByContactId(contact.getId());
+//
+//    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, existingThread);
+//    startActivity(intent);
   }
 
   @SuppressLint("StaticFieldLeak")
   @Override
-  public void onMessageClicked(@NonNull MessageResult message) {
-    new AsyncTask<Void, Void, Integer>() {
-      @Override
-      protected Integer doInBackground(Void... voids) {
-        int  startingPosition = DatabaseFactory.getMmsSmsDatabase(getContext()).getMessagePositionInConversation(message.threadId, message.receivedTimestampMs);
-        startingPosition = Math.max(0, startingPosition);
-
-        return startingPosition;
-      }
-
-      @Override
-      protected void onPostExecute(Integer startingPosition) {
-        ConversationListActivity conversationList = (ConversationListActivity) getActivity();
-        if (conversationList != null) {
-          // todo the following line will fail on signal code because of the cast. As soon as that is reworked to dc code, remove the cast.
-          conversationList.openConversation((int)message.threadId,
-                                            -1,
-                                            startingPosition);
-        }
-      }
-    }.execute();
+  public void onMessageClicked(@NonNull DcMsg message) {
+//    new AsyncTask<Void, Void, Integer>() {
+//      @Override
+//      protected Integer doInBackground(Void... voids) {
+//        int  startingPosition = DatabaseFactory.getMmsSmsDatabase(getContext()).getMessagePositionInConversation(message.threadId, message.receivedTimestampMs);
+//        startingPosition = Math.max(0, startingPosition);
+//
+//        return startingPosition;
+//      }
+//
+//      @Override
+//      protected void onPostExecute(Integer startingPosition) {
+//        ConversationListActivity conversationList = (ConversationListActivity) getActivity();
+//        if (conversationList != null) {
+//          // todo the following line will fail on signal code because of the cast. As soon as that is reworked to dc code, remove the cast.
+//          conversationList.openConversation((int)message.threadId,
+//                                            -1,
+//                                            startingPosition);
+//        }
+//      }
+//    }.execute();
   }
 
   public void updateSearchQuery(@NonNull String query) {

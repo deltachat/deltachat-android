@@ -49,7 +49,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.search.model.MessageResult;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ResUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -188,11 +187,11 @@ public class ConversationListItem extends RelativeLayout
                    @Nullable String        highlightSubstring)
   {
     this.selectedThreads = Collections.emptySet();
-    this.recipient       = contact;
+    this.recipient       = DcHelper.getContext(getContext()).getRecipient(contact);
     this.glideRequests   = glideRequests;
 
-    fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
-    subjectView.setText(getHighlightedSpan(locale, contact.getAddress().toPhoneString(), highlightSubstring));
+    fromView.setText(getHighlightedSpan(locale, contact.getDisplayName(), highlightSubstring));
+    subjectView.setText(getHighlightedSpan(locale, contact.getAddr(), highlightSubstring));
     dateView.setText("");
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
@@ -208,13 +207,15 @@ public class ConversationListItem extends RelativeLayout
                    @NonNull  Locale        locale,
                    @Nullable String        highlightSubstring)
   {
+    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+    DcContact sender = dcContext.getContact(messageResult.getFromId());
     this.selectedThreads = Collections.emptySet();
-    this.recipient       = messageResult.recipient;
+    this.recipient       = DcHelper.getContext(getContext()).getRecipient(sender);
     this.glideRequests   = glideRequests;
 
     fromView.setText(recipient, true);
-    subjectView.setText(getHighlightedSpan(locale, messageResult.bodySnippet, highlightSubstring));
-    dateView.setText(DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, messageResult.receivedTimestampMs));
+    subjectView.setText(getHighlightedSpan(locale, messageResult.getSummarytext(512), highlightSubstring));
+    dateView.setText(DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, messageResult.getTimestamp()));
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
@@ -230,10 +231,6 @@ public class ConversationListItem extends RelativeLayout
 
   private void setBatchState(boolean batch) {
     setSelected(batch && selectedThreads.contains(threadId));
-  }
-
-  public Recipient getRecipient() {
-    return recipient;
   }
 
   public long getThreadId() {
