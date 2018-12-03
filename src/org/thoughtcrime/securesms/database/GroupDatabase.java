@@ -5,14 +5,10 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.annimon.stream.Stream;
-
-import net.sqlcipher.database.SQLiteDatabase;
 
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.util.GroupUtil;
@@ -20,8 +16,6 @@ import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -189,10 +183,6 @@ public class GroupDatabase extends Database {
     private final List<Address> members;
     private final byte[]        avatar;
     private final long          avatarId;
-    private final byte[]        avatarKey;
-    private final byte[]        avatarDigest;
-    private final String        avatarContentType;
-    private final String        relay;
     private final boolean       active;
     private final boolean       mms;
 
@@ -204,10 +194,6 @@ public class GroupDatabase extends Database {
       this.title             = title;
       this.avatar            = avatar;
       this.avatarId          = avatarId;
-      this.avatarKey         = avatarKey;
-      this.avatarDigest      = avatarDigest;
-      this.avatarContentType = avatarContentType;
-      this.relay             = relay;
       this.active            = active;
       this.mms               = mms;
 
@@ -241,10 +227,6 @@ public class GroupDatabase extends Database {
 
     public long getAvatarId() {
       return avatarId;
-    }
-
-    public String getRelay() {
-      return relay;
     }
 
     public boolean isActive() {

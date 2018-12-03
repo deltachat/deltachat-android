@@ -31,7 +31,6 @@ import com.annimon.stream.Stream;
 import net.sqlcipher.database.SQLiteDatabase;
 
 import org.thoughtcrime.securesms.database.GroupDatabase.GroupRecord;
-import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
 import org.thoughtcrime.securesms.database.RecipientDatabase.RecipientSettings;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.database.model.MediaMmsMessageRecord;
@@ -47,7 +46,6 @@ import org.thoughtcrime.securesms.util.guava.Optional;
 import java.io.Closeable;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class ThreadDatabase extends Database {
 
@@ -148,172 +146,10 @@ public class ThreadDatabase extends Database {
     notifyConversationListListeners();
   }
 
-  public void updateSnippet(long threadId, String snippet, @Nullable Uri attachment, long date, long type, boolean unarchive) {
-    ContentValues contentValues = new ContentValues(4);
-
-    contentValues.put(DATE, date - date % 1000);
-    contentValues.put(SNIPPET, snippet);
-    contentValues.put(SNIPPET_TYPE, type);
-    contentValues.put(SNIPPET_URI, attachment == null ? null : attachment.toString());
-
-    if (unarchive) {
-      contentValues.put(ARCHIVED, 0);
-    }
-
-    SQLiteDatabase db = databaseHelper.getWritableDatabase();
-    db.update(TABLE_NAME, contentValues, ID + " = ?", new String[] {threadId + ""});
-    notifyConversationListListeners();
-  }
-
   private void deleteThread(long threadId) {
     SQLiteDatabase db = databaseHelper.getWritableDatabase();
     db.delete(TABLE_NAME, ID_WHERE, new String[] {threadId + ""});
     notifyConversationListListeners();
-  }
-
-  private void deleteThreads(Set<Long> threadIds) {
-    SQLiteDatabase db = databaseHelper.getWritableDatabase();
-    String where      = "";
-
-    for (long threadId : threadIds) {
-      where += ID + " = '" + threadId + "' OR ";
-    }
-
-    where = where.substring(0, where.length() - 4);
-
-    db.delete(TABLE_NAME, where, null);
-    notifyConversationListListeners();
-  }
-
-  private void deleteAllThreads() {
-    SQLiteDatabase db = databaseHelper.getWritableDatabase();
-    db.delete(TABLE_NAME, null, null);
-    notifyConversationListListeners();
-  }
-
-  public void trimAllThreads(int length, ProgressListener listener) {
-    Cursor cursor   = null;
-    int threadCount = 0;
-    int complete    = 0;
-
-    try {
-      cursor = this.getConversationList();
-
-      if (cursor != null)
-        threadCount = cursor.getCount();
-
-      while (cursor != null && cursor.moveToNext()) {
-        long threadId = cursor.getLong(cursor.getColumnIndexOrThrow(ID));
-        trimThread(threadId, length);
-
-        listener.onProgress(++complete, threadCount);
-      }
-    } finally {
-      if (cursor != null)
-        cursor.close();
-    }
-  }
-
-  public void trimThread(long threadId, int length) {
-    Log.w("ThreadDatabase", "Trimming thread: " + threadId + " to: " + length);
-    Cursor cursor = null;
-
-    try {
-      cursor = DatabaseFactory.getMmsSmsDatabase(context).getConversation(threadId);
-
-      if (cursor != null && length > 0 && cursor.getCount() > length) {
-        Log.w("ThreadDatabase", "Cursor count is greater than length!");
-        cursor.moveToPosition(length - 1);
-
-        long lastTweetDate = cursor.getLong(cursor.getColumnIndexOrThrow(MmsSmsColumns.NORMALIZED_DATE_RECEIVED));
-
-        Log.w("ThreadDatabase", "Cut off tweet date: " + lastTweetDate);
-
-        DatabaseFactory.getSmsDatabase(context).deleteMessagesInThreadBeforeDate(threadId, lastTweetDate);
-        DatabaseFactory.getMmsDatabase(context).deleteMessagesInThreadBeforeDate(threadId, lastTweetDate);
-
-        update(threadId, false);
-        notifyConversationListeners(threadId);
-      }
-    } finally {
-      if (cursor != null)
-        cursor.close();
-    }
-  }
-
-  public List<MarkedMessageInfo> setAllThreadsRead() {
-    SQLiteDatabase db           = databaseHelper.getWritableDatabase();
-    ContentValues contentValues = new ContentValues(1);
-    contentValues.put(READ, 1);
-    contentValues.put(UNREAD_COUNT, 0);
-
-    db.update(TABLE_NAME, contentValues, null, null);
-
-    final List<MarkedMessageInfo> smsRecords = DatabaseFactory.getSmsDatabase(context).setAllMessagesRead();
-    final List<MarkedMessageInfo> mmsRecords = DatabaseFactory.getMmsDatabase(context).setAllMessagesRead();
-
-    notifyConversationListListeners();
-
-    return new LinkedList<MarkedMessageInfo>() {{
-      addAll(smsRecords);
-      addAll(mmsRecords);
-    }};
-  }
-
-  public List<MarkedMessageInfo> setRead(long threadId, boolean lastSeen) {
-    ContentValues contentValues = new ContentValues(1);
-    contentValues.put(READ, 1);
-    contentValues.put(UNREAD_COUNT, 0);
-
-    if (lastSeen) {
-      contentValues.put(LAST_SEEN, System.currentTimeMillis());
-    }
-
-    SQLiteDatabase db = databaseHelper.getWritableDatabase();
-    db.update(TABLE_NAME, contentValues, ID_WHERE, new String[] {threadId+""});
-
-    final List<MarkedMessageInfo> smsRecords = DatabaseFactory.getSmsDatabase(context).setMessagesRead(threadId);
-    final List<MarkedMessageInfo> mmsRecords = DatabaseFactory.getMmsDatabase(context).setMessagesRead(threadId);
-
-    notifyConversationListListeners();
-
-    return new LinkedList<MarkedMessageInfo>() {{
-      addAll(smsRecords);
-      addAll(mmsRecords);
-    }};
-  }
-
-  public void incrementUnread(long threadId, int amount) {
-    SQLiteDatabase db = databaseHelper.getWritableDatabase();
-    db.execSQL("UPDATE " + TABLE_NAME + " SET " + READ + " = 0, " +
-                   UNREAD_COUNT + " = " + UNREAD_COUNT + " + ? WHERE " + ID + " = ?",
-               new String[] {String.valueOf(amount),
-                             String.valueOf(threadId)});
-  }
-
-  public void setDistributionType(long threadId, int distributionType) {
-    ContentValues contentValues = new ContentValues(1);
-    contentValues.put(TYPE, distributionType);
-
-    SQLiteDatabase db = databaseHelper.getWritableDatabase();
-    db.update(TABLE_NAME, contentValues, ID_WHERE, new String[] {threadId + ""});
-    notifyConversationListListeners();
-  }
-
-  public int getDistributionType(long threadId) {
-    SQLiteDatabase db     = databaseHelper.getReadableDatabase();
-    Cursor         cursor = db.query(TABLE_NAME, new String[]{TYPE}, ID_WHERE, new String[]{String.valueOf(threadId)}, null, null, null);
-
-    try {
-      if (cursor != null && cursor.moveToNext()) {
-        return cursor.getInt(cursor.getColumnIndexOrThrow(TYPE));
-      }
-
-      return DistributionTypes.DEFAULT;
-    } finally {
-      if (cursor != null) cursor.close();
-    }
-
   }
 
   public Cursor getFilteredConversationList(@Nullable List<Address> filter) {
@@ -345,64 +181,11 @@ public class ThreadDatabase extends Database {
     return cursor;
   }
 
-  public Cursor getRecentConversationList(int limit) {
-    SQLiteDatabase db    = databaseHelper.getReadableDatabase();
-    String         query = createQuery(MESSAGE_COUNT + " != 0", limit);
-
-    return db.rawQuery(query, null);
-  }
-
-  public Cursor getConversationList() {
-    return getConversationList("0");
-  }
-
-  public Cursor getArchivedConversationList() {
-    return getConversationList("1");
-  }
-
-  private Cursor getConversationList(String archived) {
-    SQLiteDatabase db     = databaseHelper.getReadableDatabase();
-    String         query  = createQuery(ARCHIVED + " = ? AND " + MESSAGE_COUNT + " != 0", 0);
-    Cursor         cursor = db.rawQuery(query, new String[]{archived});
-
-    setNotifyConverationListListeners(cursor);
-
-    return cursor;
-  }
-
   public Cursor getDirectShareList() {
     SQLiteDatabase db    = databaseHelper.getReadableDatabase();
     String         query = createQuery(MESSAGE_COUNT + " != 0", 0);
 
     return db.rawQuery(query, null);
-  }
-
-  public int getArchivedConversationListCount() {
-    SQLiteDatabase db = databaseHelper.getReadableDatabase();
-    Cursor cursor     = null;
-
-    try {
-      cursor = db.query(TABLE_NAME, new String[] {"COUNT(*)"}, ARCHIVED + " = ?",
-                        new String[] {"1"}, null, null, null);
-
-      if (cursor != null && cursor.moveToFirst()) {
-        return cursor.getInt(0);
-      }
-
-    } finally {
-      if (cursor != null) cursor.close();
-    }
-
-    return 0;
-  }
-
-  public void archiveConversation(long threadId) {
-    SQLiteDatabase db            = databaseHelper.getWritableDatabase();
-    ContentValues  contentValues = new ContentValues(1);
-    contentValues.put(ARCHIVED, 1);
-
-    db.update(TABLE_NAME, contentValues, ID_WHERE, new String[] {threadId + ""});
-    notifyConversationListListeners();
   }
 
   public long getThreadIdFor(Recipient recipient) {
@@ -493,17 +276,12 @@ public class ThreadDatabase extends Database {
     return query;
   }
 
-  public interface ProgressListener {
-    void onProgress(int complete, int total);
-  }
-
   public Reader readerFor(Cursor cursor) {
     return new Reader(cursor);
   }
 
   public static class DistributionTypes {
     public static final int DEFAULT      = 2;
-    public static final int BROADCAST    = 1;
     public static final int CONVERSATION = 2;
     public static final int ARCHIVE      = 3;
     public static final int INBOX_ZERO   = 4;

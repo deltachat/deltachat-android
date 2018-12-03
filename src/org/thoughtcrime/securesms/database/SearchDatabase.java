@@ -23,7 +23,6 @@ public class SearchDatabase extends Database {
 
   public static final String ID      = "rowid";
   public static final String BODY    = MmsSmsColumns.BODY;
-  public static final String RANK    = "rank";
   public static final String SNIPPET = "snippet";
 
   public static final String[] CREATE_TABLE = {

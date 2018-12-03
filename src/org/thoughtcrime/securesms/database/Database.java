@@ -41,11 +41,6 @@ public abstract class Database {
     this.databaseHelper = databaseHelper;
   }
 
-  protected void notifyConversationListeners(Set<Long> threadIds) {
-    for (long threadId : threadIds)
-      notifyConversationListeners(threadId);
-  }
-
   protected void notifyConversationListeners(long threadId) {
     context.getContentResolver().notifyChange(Uri.parse(CONVERSATION_URI + threadId), null);
   }

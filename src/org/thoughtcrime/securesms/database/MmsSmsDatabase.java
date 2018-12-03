@@ -73,51 +73,6 @@ public class MmsSmsDatabase extends Database {
     super(context, databaseHelper);
   }
 
-  public @Nullable MessageRecord getMessageFor(long timestamp, Address author) {
-    MmsSmsDatabase db = DatabaseFactory.getMmsSmsDatabase(context);
-
-    try (Cursor cursor = queryTables(PROJECTION, MmsSmsColumns.NORMALIZED_DATE_SENT + " = " + timestamp, null, null)) {
-      MmsSmsDatabase.Reader reader = db.readerFor(cursor);
-
-      MessageRecord messageRecord;
-
-      while ((messageRecord = reader.getNext()) != null) {
-        if ((Util.isOwnNumber(context, author) && messageRecord.isOutgoing()) ||
-            (!Util.isOwnNumber(context, author) && messageRecord.getIndividualRecipient().getAddress().equals(author)))
-        {
-          return messageRecord;
-        }
-      }
-    }
-
-    return null;
-  }
-
-  public Cursor getConversation(long threadId, long offset, long limit) {
-    String order     = MmsSmsColumns.NORMALIZED_DATE_RECEIVED + " DESC";
-    String selection = MmsSmsColumns.THREAD_ID + " = " + threadId;
-    String limitStr  = limit > 0 || offset > 0 ? offset + ", " + limit : null;
-
-    Cursor cursor = queryTables(PROJECTION, selection, order, limitStr);
-    setNotifyConverationListeners(cursor, threadId);
-
-    return cursor;
-  }
-
-  public Cursor getConversation(long threadId) {
-    return getConversation(threadId, 0, 0);
-  }
-
-  public Cursor getIdentityConflictMessagesForThread(long threadId) {
-    String order           = MmsSmsColumns.NORMALIZED_DATE_RECEIVED + " ASC";
-    String selection       = MmsSmsColumns.THREAD_ID + " = " + threadId + " AND " + MmsSmsColumns.MISMATCHED_IDENTITIES + " IS NOT NULL";
-
-    Cursor cursor = queryTables(PROJECTION, selection, order, null);
-    setNotifyConverationListeners(cursor, threadId);
-
-    return cursor;
-  }
-
   public Cursor getConversationSnippet(long threadId) {
     String order     = MmsSmsColumns.NORMALIZED_DATE_RECEIVED + " DESC";
     String selection = MmsSmsColumns.THREAD_ID + " = " + threadId;
@@ -132,52 +87,11 @@ public class MmsSmsDatabase extends Database {
     return queryTables(PROJECTION, selection, order, null);
   }
 
-  public int getUnreadCount(long threadId) {
-    String selection = MmsSmsColumns.READ + " = 0 AND " + MmsSmsColumns.NOTIFIED + " = 0 AND " + MmsSmsColumns.THREAD_ID + " = " + threadId;
-    Cursor cursor    = queryTables(PROJECTION, selection, null, null);
-
-    try {
-      return cursor != null ? cursor.getCount() : 0;
-    } finally {
-      if (cursor != null) cursor.close();;
-    }
-  }
-
   public int getConversationCount(long threadId) {
     int count = DatabaseFactory.getSmsDatabase(context).getMessageCountForThread(threadId);
     count    += DatabaseFactory.getMmsDatabase(context).getMessageCountForThread(threadId);
 
     return count;
-  }
-
-  public void incrementDeliveryReceiptCount(SyncMessageId syncMessageId, long timestamp) {
-    DatabaseFactory.getSmsDatabase(context).incrementReceiptCount(syncMessageId, true, false);
-    DatabaseFactory.getMmsDatabase(context).incrementReceiptCount(syncMessageId, timestamp, true, false);
-  }
-
-  public void incrementReadReceiptCount(SyncMessageId syncMessageId, long timestamp) {
-    DatabaseFactory.getSmsDatabase(context).incrementReceiptCount(syncMessageId, false, true);
-    DatabaseFactory.getMmsDatabase(context).incrementReceiptCount(syncMessageId, timestamp, false, true);
-  }
-
-  public int getQuotedMessagePosition(long threadId, long quoteId, @NonNull Address address, int limit) {
-    String order     = MmsSmsColumns.NORMALIZED_DATE_RECEIVED + " DESC";
-    String selection = MmsSmsColumns.THREAD_ID + " = " + threadId;
-
-    try (Cursor cursor = queryTables(new String[]{ MmsSmsColumns.NORMALIZED_DATE_SENT, MmsSmsColumns.ADDRESS }, selection, order, String.valueOf(limit))) {
-      String  serializedAddress = address.serialize();
-      boolean isOwnNumber       = Util.isOwnNumber(context, address);
-
-      while (cursor != null && cursor.moveToNext()) {
-        boolean quoteIdMatches = cursor.getLong(0) == quoteId;
-        boolean addressMatches = serializedAddress.equals(cursor.getString(1));
-
-        if (quoteIdMatches && (addressMatches || isOwnNumber)) {
-          return cursor.getPosition();
-        }
-      }
-    }
-    return -1;
   }
 
   /**

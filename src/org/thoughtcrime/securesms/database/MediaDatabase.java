@@ -1,15 +1,12 @@
 package org.thoughtcrime.securesms.database;
 
 import android.content.Context;
-import android.database.ContentObservable;
-import android.database.ContentObserver;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
-import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 
@@ -60,14 +57,6 @@ public class MediaDatabase extends Database {
     Cursor cursor = database.rawQuery(GALLERY_MEDIA_QUERY, new String[]{threadId+""});
     setNotifyConverationListeners(cursor, threadId);
     return cursor;
-  }
-
-  public void subscribeToMediaChanges(@NonNull ContentObserver observer) {
-    registerAttachmentListeners(observer);
-  }
-
-  public void unsubscribeToMediaChanges(@NonNull ContentObserver observer) {
-    context.getContentResolver().unregisterContentObserver(observer);
   }
 
   public Cursor getDocumentMediaForThread(long threadId) {
