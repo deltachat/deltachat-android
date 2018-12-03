@@ -90,9 +90,6 @@ class SearchRepository {
   }
 
   private CursorList<Recipient> queryContacts(String query) {
-    if (!Permissions.hasAny(context, Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS)) {
-      return CursorList.emptyList();
-    }
 
     Cursor      textSecureContacts = contactsDatabase.queryTextSecureContacts(query);
     Cursor      systemContacts     = contactsDatabase.querySystemContacts(query);
