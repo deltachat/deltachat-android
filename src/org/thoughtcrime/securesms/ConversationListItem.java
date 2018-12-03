@@ -71,7 +71,6 @@ public class ConversationListItem extends RelativeLayout
 
   private DcLot              dcSummary;
   private Set<Long>          selectedThreads;
-  private Recipient          recipient;
   private long               threadId;
   private int                msgId;
   private GlideRequests      glideRequests;
@@ -132,9 +131,9 @@ public class ConversationListItem extends RelativeLayout
                    boolean batchMode,
                    @Nullable String highlightSubstring)
   {
-    this.dcSummary          = dcSummary;
+    this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
-    this.recipient        = thread.getRecipient();
+    Recipient recipient   = thread.getRecipient();
     this.threadId         = thread.getThreadId();
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
@@ -187,7 +186,7 @@ public class ConversationListItem extends RelativeLayout
                    @Nullable String        highlightSubstring)
   {
     this.selectedThreads = Collections.emptySet();
-    this.recipient       = DcHelper.getContext(getContext()).getRecipient(contact);
+    Recipient recipient  = DcHelper.getContext(getContext()).getRecipient(contact);
     this.glideRequests   = glideRequests;
 
     fromView.setText(getHighlightedSpan(locale, contact.getDisplayName(), highlightSubstring));
@@ -210,7 +209,7 @@ public class ConversationListItem extends RelativeLayout
     ApplicationDcContext dcContext = DcHelper.getContext(getContext());
     DcContact sender = dcContext.getContact(messageResult.getFromId());
     this.selectedThreads = Collections.emptySet();
-    this.recipient       = DcHelper.getContext(getContext()).getRecipient(sender);
+    Recipient recipient  = DcHelper.getContext(getContext()).getRecipient(sender);
     this.glideRequests   = glideRequests;
 
     fromView.setText(recipient, true);
