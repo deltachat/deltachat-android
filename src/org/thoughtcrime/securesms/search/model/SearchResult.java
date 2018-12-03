@@ -4,6 +4,8 @@ import android.database.ContentObserver;
 import android.database.DataSetObserver;
 import android.support.annotation.NonNull;
 
+import com.b44t.messenger.DcChatlist;
+
 import org.thoughtcrime.securesms.database.CursorList;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -16,17 +18,17 @@ import java.util.List;
  */
 public class SearchResult {
 
-  public static final SearchResult EMPTY = new SearchResult("", CursorList.emptyList(), CursorList.emptyList(), CursorList.emptyList());
+  public static final SearchResult EMPTY = new SearchResult("", new int[]{}, new DcChatlist(0), new int[]{});
 
-  private final String                    query;
-  private final CursorList<Recipient>     contacts;
-  private final CursorList<ThreadRecord>  conversations;
-  private final CursorList<MessageResult> messages;
+  private final String     query;
+  private final int[]      contacts;
+  private final DcChatlist conversations;
+  private final int[]      messages;
 
-  public SearchResult(@NonNull String                    query,
-                      @NonNull CursorList<Recipient>     contacts,
-                      @NonNull CursorList<ThreadRecord>  conversations,
-                      @NonNull CursorList<MessageResult> messages)
+  public SearchResult(@NonNull String     query,
+                      @NonNull int[]      contacts,
+                      @NonNull DcChatlist conversations,
+                      @NonNull int[]      messages)
   {
     this.query         = query;
     this.contacts      = contacts;
@@ -34,15 +36,15 @@ public class SearchResult {
     this.messages      = messages;
   }
 
-  public List<Recipient> getContacts() {
+  public int[] getContacts() {
     return contacts;
   }
 
-  public List<ThreadRecord> getConversations() {
+  public DcChatlist getConversations() {
     return conversations;
   }
 
-  public List<MessageResult> getMessages() {
+  public int[] getMessages() {
     return messages;
   }
 
@@ -51,28 +53,10 @@ public class SearchResult {
   }
 
   public int size() {
-    return contacts.size() + conversations.size() + messages.size();
+    return contacts.length + conversations.getCnt() + messages.length;
   }
 
   public boolean isEmpty() {
     return size() == 0;
-  }
-
-  public void registerContentObserver(@NonNull ContentObserver observer) {
-    contacts.registerContentObserver(observer);
-    conversations.registerContentObserver(observer);
-    messages.registerContentObserver(observer);
-  }
-
-  public void unregisterContentObserver(@NonNull ContentObserver observer) {
-    contacts.unregisterContentObserver(observer);
-    conversations.unregisterContentObserver(observer);
-    messages.unregisterContentObserver(observer);
-  }
-
-  public void close() {
-    contacts.close();
-    conversations.close();
-    messages.close();
   }
 }

@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.search;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -8,10 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcLot;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationListItem;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -36,13 +43,19 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   @NonNull
   private SearchResult searchResult = SearchResult.EMPTY;
 
-  SearchListAdapter(@NonNull GlideRequests glideRequests,
+  Context              context;
+  ApplicationDcContext dcContext;
+
+  SearchListAdapter(Context                context,
+                    @NonNull GlideRequests glideRequests,
                     @NonNull EventListener eventListener,
                     @NonNull Locale        locale)
   {
     this.glideRequests = glideRequests;
     this.eventListener = eventListener;
     this.locale        = locale;
+    this.context       = context;
+    this.dcContext     = DcHelper.getContext(context);
   }
 
   @NonNull
@@ -54,21 +67,21 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
 
   @Override
   public void onBindViewHolder(@NonNull SearchResultViewHolder holder, int position) {
-    ThreadRecord conversationResult = getConversationResult(position);
+    DcChatlist.Item conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
-      holder.bind(conversationResult, 0, new DcLot(0), glideRequests, eventListener, locale, searchResult.getQuery());
+      holder.bind(context, conversationResult, glideRequests, eventListener, locale, searchResult.getQuery());
       return;
     }
 
-    Recipient contactResult = getContactResult(position);
+    DcContact contactResult = getContactResult(position);
 
     if (contactResult != null) {
       holder.bind(contactResult, glideRequests, eventListener, locale, searchResult.getQuery());
       return;
     }
 
-    MessageResult messageResult = getMessageResult(position);
+    DcMsg messageResult = getMessageResult(position);
 
     if (messageResult != null) {
       holder.bind(messageResult, glideRequests, eventListener, locale, searchResult.getQuery());
@@ -113,41 +126,41 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   }
 
   @Nullable
-  private ThreadRecord getConversationResult(int position) {
-    if (position < searchResult.getConversations().size()) {
-      return searchResult.getConversations().get(position);
+  private DcChatlist.Item getConversationResult(int position) {
+    if (position < searchResult.getConversations().getCnt()) {
+      return searchResult.getConversations().getItem(position);
     }
     return null;
   }
 
   @Nullable
-  private Recipient getContactResult(int position) {
+  private DcContact getContactResult(int position) {
     if (position >= getFirstContactIndex() && position < getFirstMessageIndex()) {
-      return searchResult.getContacts().get(position - getFirstContactIndex());
+      return dcContext.getContact(searchResult.getContacts()[position - getFirstContactIndex()]);
     }
     return null;
   }
 
   @Nullable
-  private MessageResult getMessageResult(int position) {
+  private DcMsg getMessageResult(int position) {
     if (position >= getFirstMessageIndex() && position < searchResult.size()) {
-      return searchResult.getMessages().get(position - getFirstMessageIndex());
+      return dcContext.getMsg(searchResult.getMessages()[position - getFirstMessageIndex()]);
     }
     return null;
   }
 
   private int getFirstContactIndex() {
-    return searchResult.getConversations().size();
+    return searchResult.getConversations().getCnt();
   }
 
   private int getFirstMessageIndex() {
-    return getFirstContactIndex() + searchResult.getContacts().size();
+    return getFirstContactIndex() + searchResult.getContacts().length;
   }
 
   public interface EventListener {
-    void onConversationClicked(@NonNull ThreadRecord threadRecord);
-    void onContactClicked(@NonNull Recipient contact);
-    void onMessageClicked(@NonNull MessageResult message);
+    void onConversationClicked(@NonNull DcChatlist.Item chatlistItem);
+    void onContactClicked(@NonNull DcContact contact);
+    void onMessageClicked(@NonNull DcMsg message);
   }
 
   static class SearchResultViewHolder extends RecyclerView.ViewHolder {
@@ -159,19 +172,20 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
       root = (ConversationListItem) itemView;
     }
 
-    void bind(@NonNull  ThreadRecord  conversationResult,
-              int                     msgId,
-              @NonNull  DcLot         summary,
+    void bind(Context   context,
+              @NonNull  DcChatlist.Item chatlistItem,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
               @NonNull  Locale        locale,
               @Nullable String        query)
     {
-      root.bind(conversationResult, msgId, summary, glideRequests, locale, Collections.emptySet(), false, query);
-      root.setOnClickListener(view -> eventListener.onConversationClicked(conversationResult));
+      ApplicationDcContext dcContext = DcHelper.getContext(context);
+      ThreadRecord threadRecord = dcContext.getThreadRecord(chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
+      root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, locale, Collections.emptySet(), false, query);
+      root.setOnClickListener(view -> eventListener.onConversationClicked(chatlistItem));
     }
 
-    void bind(@NonNull  Recipient     contactResult,
+    void bind(@NonNull  DcContact     contactResult,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
               @NonNull  Locale        locale,
@@ -181,7 +195,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
       root.setOnClickListener(view -> eventListener.onContactClicked(contactResult));
     }
 
-    void bind(@NonNull  MessageResult messageResult,
+    void bind(@NonNull  DcMsg         messageResult,
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
               @NonNull  Locale        locale,

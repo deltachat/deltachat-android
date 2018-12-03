@@ -16,7 +16,6 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -32,7 +31,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
-import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.QrScanHandler;
 import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
