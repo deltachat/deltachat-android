@@ -14,6 +14,7 @@ import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
@@ -48,6 +49,8 @@ import java.util.List;
 
 public class ApplicationDcContext extends DcContext {
 
+  public static final String TAG = "DeltaChat";
+
   @IntDef({RECIPIENT_TYPE_CHAT, RECIPIENT_TYPE_CONTACT})
   public @interface RecipientType {
   }
@@ -79,7 +82,7 @@ public class ApplicationDcContext extends DcContext {
       afterForgroundWakeLock.setReferenceCounted(false);
 
     } catch (Exception e) {
-      Log.e("DeltaChat", "Cannot create wakeLocks");
+      Log.e(TAG, "Cannot create wakeLocks");
     }
 
     new ForegroundDetector(ApplicationContext.getInstance(context));
@@ -142,6 +145,7 @@ public class ApplicationDcContext extends DcContext {
       }
 
       if (cmd.equals(Intent.ACTION_VIEW)) {
+        mimeType = checkMime(path, mimeType);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -153,10 +157,20 @@ public class ApplicationDcContext extends DcContext {
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         context.startActivity(Intent.createChooser(intent, context.getString(R.string.ShareActivity_share_with)));
       }
-
-    } catch (Exception e) {
+    } catch (RuntimeException e) {
       Toast.makeText(context, R.string.ShareActivity_unable_to_open_media, Toast.LENGTH_LONG).show();
+      Toast.makeText(context, "Media-Type: " + mimeType, Toast.LENGTH_LONG).show();
+      Log.i(TAG, "opening of external activity failed.", e);
     }
+  }
+
+  private String checkMime(String path, String mimeType) {
+    if(mimeType == null || mimeType.equals("application/octet-stream")) {
+      String extension = MimeTypeMap.getFileExtensionFromUrl(path);
+      String newType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+      if(newType != null) return newType;
+    }
+    return mimeType;
   }
 
   /***********************************************************************************************
@@ -286,7 +300,7 @@ public class ApplicationDcContext extends DcContext {
             imapThreadStartedCond.notifyAll();
           }
 
-          Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
+          Log.i(TAG, "###################### IMAP-Thread started. ######################");
 
 
           while (true) {
@@ -318,7 +332,7 @@ public class ApplicationDcContext extends DcContext {
             smtpThreadStartedCond.notifyAll();
           }
 
-          Log.i("DeltaChat", "###################### SMTP-Thread started. ######################");
+          Log.i(TAG, "###################### SMTP-Thread started. ######################");
 
 
           while (true) {
@@ -408,7 +422,7 @@ public class ApplicationDcContext extends DcContext {
   private void handleError(int event, boolean popUp, String string) {
     // log error
     boolean showAsToast;
-    Log.e("DeltaChat", string);
+    Log.e(TAG, string);
     synchronized (lastErrorLock) {
       lastErrorString = string;
       showAsToast = showNextErrorAsToast;
@@ -437,11 +451,11 @@ public class ApplicationDcContext extends DcContext {
   public long handleEvent(final int event, long data1, long data2) {
     switch (event) {
       case DC_EVENT_INFO:
-        Log.i("DeltaChat", dataToString(data2));
+        Log.i(TAG, dataToString(data2));
         break;
 
       case DC_EVENT_WARNING:
-        Log.w("DeltaChat", dataToString(data2));
+        Log.w(TAG, dataToString(data2));
         break;
 
       case DC_EVENT_ERROR:
