@@ -20,7 +20,6 @@ package org.thoughtcrime.securesms.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.MergeCursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,12 +38,10 @@ import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.DelimiterUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.io.Closeable;
-import java.util.LinkedList;
 import java.util.List;
 
 public class ThreadDatabase extends Database {
@@ -150,35 +147,6 @@ public class ThreadDatabase extends Database {
     SQLiteDatabase db = databaseHelper.getWritableDatabase();
     db.delete(TABLE_NAME, ID_WHERE, new String[] {threadId + ""});
     notifyConversationListListeners();
-  }
-
-  public Cursor getFilteredConversationList(@Nullable List<Address> filter) {
-    if (filter == null || filter.size() == 0)
-      return null;
-
-    SQLiteDatabase      db                   = databaseHelper.getReadableDatabase();
-    List<List<Address>> partitionedAddresses = Util.partition(filter, 900);
-    List<Cursor>        cursors              = new LinkedList<>();
-
-    for (List<Address> addresses : partitionedAddresses) {
-      String   selection      = TABLE_NAME + "." + ADDRESS + " = ?";
-      String[] selectionArgs  = new String[addresses.size()];
-
-      for (int i=0;i<addresses.size()-1;i++)
-        selection += (" OR " + TABLE_NAME + "." + ADDRESS + " = ?");
-
-      int i= 0;
-      for (Address address : addresses) {
-        selectionArgs[i++] = DelimiterUtil.escape(address.serialize(), ' ');
-      }
-
-      String query = createQuery(selection, 0);
-      cursors.add(db.rawQuery(query, selectionArgs));
-    }
-
-    Cursor cursor = cursors.size() > 1 ? new MergeCursor(cursors.toArray(new Cursor[cursors.size()])) : cursors.get(0);
-    setNotifyConverationListListeners(cursor);
-    return cursor;
   }
 
   public Cursor getDirectShareList() {

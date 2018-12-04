@@ -57,16 +57,6 @@ public abstract class Database {
     cursor.setNotificationUri(context.getContentResolver(), Uri.parse(CONVERSATION_LIST_URI));
   }
 
-  protected void registerAttachmentListeners(@NonNull ContentObserver observer) {
-    context.getContentResolver().registerContentObserver(Uri.parse(ATTACHMENT_URI),
-                                                         true,
-                                                         observer);
-  }
-
-  protected void notifyAttachmentListeners() {
-    context.getContentResolver().notifyChange(Uri.parse(ATTACHMENT_URI), null);
-  }
-
   public void reset(SQLCipherOpenHelper databaseHelper) {
     this.databaseHelper = databaseHelper;
   }

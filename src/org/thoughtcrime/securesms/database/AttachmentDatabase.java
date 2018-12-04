@@ -185,38 +185,6 @@ public class AttachmentDatabase extends Database {
     }
   }
 
-  @SuppressWarnings("ResultOfMethodCallIgnored")
-  void deleteAttachmentsForMessage(long mmsId) {
-    SQLiteDatabase database = databaseHelper.getWritableDatabase();
-    Cursor cursor           = null;
-
-    try {
-      cursor = database.query(TABLE_NAME, new String[] {DATA, THUMBNAIL}, MMS_ID + " = ?",
-                              new String[] {mmsId+""}, null, null, null);
-
-      while (cursor != null && cursor.moveToNext()) {
-        deleteAttachmentOnDisk(cursor.getString(0), cursor.getString(1));
-      }
-    } finally {
-      if (cursor != null)
-        cursor.close();
-    }
-
-    database.delete(TABLE_NAME, MMS_ID + " = ?", new String[] {mmsId + ""});
-    notifyAttachmentListeners();
-  }
-
-  @SuppressWarnings("ResultOfMethodCallIgnored")
-  private void deleteAttachmentOnDisk(@Nullable String data, @Nullable String thumbnail) {
-    if (!TextUtils.isEmpty(data)) {
-      new File(data).delete();
-    }
-
-    if (!TextUtils.isEmpty(thumbnail)) {
-      new File(thumbnail).delete();
-    }
-  }
-
   @SuppressWarnings("WeakerAccess")
   @VisibleForTesting
   protected @Nullable InputStream getDataStream(AttachmentId attachmentId, String dataType, long offset)

@@ -12,16 +12,4 @@ public abstract class MessagingDatabase extends Database implements MmsSmsColumn
     super(context, databaseHelper);
   }
 
-  public static class SyncMessageId {
-
-    private final Address address;
-
-    public SyncMessageId(Address address, long timetamp) {
-      this.address  = address;
-    }
-
-    public Address getAddress() {
-      return address;
-    }
-  }
 }

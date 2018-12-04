@@ -144,11 +144,6 @@
     <activity android:name=".GroupCreateActivity"
           android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-    <activity android:name=".DatabaseUpgradeActivity"
-              android:theme="@style/NoAnimation.Theme.AppCompat.Light.DarkActionBar"
-              android:launchMode="singleTask"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
     <activity android:name=".NewConversationActivity"
               android:theme="@style/TextSecure.LightNoActionBar"
               android:windowSoftInputMode="stateAlwaysVisible"
@@ -158,10 +153,6 @@
           android:label="@string/AndroidManifest__select_contacts"
           android:windowSoftInputMode="stateHidden"
           android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".PassphraseChangeActivity"
-              android:label="@string/AndroidManifest__change_passphrase"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".ApplicationPreferencesActivity"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
