@@ -39,7 +39,6 @@ public class DatabaseFactory {
   private final AttachmentDatabase    attachments;
   private final MediaDatabase         media;
   private final ThreadDatabase        thread;
-  private final MmsSmsDatabase        mmsSmsDatabase;
   private final GroupDatabase         groupDatabase;
   private final RecipientDatabase     recipientDatabase;
 
@@ -50,10 +49,6 @@ public class DatabaseFactory {
 
       return instance;
     }
-  }
-
-  public static MmsSmsDatabase getMmsSmsDatabase(Context context) {
-    return getInstance(context).mmsSmsDatabase;
   }
 
   public static ThreadDatabase getThreadDatabase(Context context) {
@@ -96,11 +91,7 @@ public class DatabaseFactory {
     this.attachments          = new AttachmentDatabase(context, databaseHelper, attachmentSecret);
     this.media                = new MediaDatabase(context, databaseHelper);
     this.thread               = new ThreadDatabase(context, databaseHelper);
-    this.mmsSmsDatabase       = new MmsSmsDatabase(context, databaseHelper);
     this.groupDatabase        = new GroupDatabase(context, databaseHelper);
     this.recipientDatabase    = new RecipientDatabase(context, databaseHelper);
   }
-
-
-
 }

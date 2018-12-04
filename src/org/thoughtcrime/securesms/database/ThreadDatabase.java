@@ -181,36 +181,7 @@ public class ThreadDatabase extends Database {
   }
 
   public boolean update(long threadId, boolean unarchive) {
-    MmsSmsDatabase mmsSmsDatabase = DatabaseFactory.getMmsSmsDatabase(context);
-    long count                    = mmsSmsDatabase.getConversationCount(threadId);
-
-    if (count == 0) {
-      deleteThread(threadId);
-      notifyConversationListListeners();
-      return true;
-    }
-
-    MmsSmsDatabase.Reader reader = null;
-
-    try {
-      reader = mmsSmsDatabase.readerFor(mmsSmsDatabase.getConversationSnippet(threadId));
-      MessageRecord record;
-
-      if (reader != null && (record = reader.getNext()) != null) {
-        updateThread(threadId, count, getFormattedBodyFor(record), getAttachmentUriFor(record),
-                     record.getTimestamp(), record.getDeliveryStatus(), record.getDeliveryReceiptCount(),
-                     record.getType(), unarchive, record.getExpiresIn(), record.getReadReceiptCount());
-        notifyConversationListListeners();
-        return false;
-      } else {
-        deleteThread(threadId);
-        notifyConversationListListeners();
-        return true;
-      }
-    } finally {
-      if (reader != null)
-        reader.close();
-    }
+    return false;
   }
 
   private @NonNull String getFormattedBodyFor(@NonNull MessageRecord messageRecord) {
