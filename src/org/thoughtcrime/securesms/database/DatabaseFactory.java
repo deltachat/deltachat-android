@@ -21,7 +21,6 @@ import android.support.annotation.NonNull;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
-import org.thoughtcrime.securesms.contacts.ContactsDatabase;
 import org.thoughtcrime.securesms.crypto.AttachmentSecret;
 import org.thoughtcrime.securesms.crypto.AttachmentSecretProvider;
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
@@ -43,9 +42,6 @@ public class DatabaseFactory {
   private final MmsSmsDatabase        mmsSmsDatabase;
   private final GroupDatabase         groupDatabase;
   private final RecipientDatabase     recipientDatabase;
-  private final ContactsDatabase      contactsDatabase;
-  private final GroupReceiptDatabase  groupReceiptDatabase;
-  private final SearchDatabase        searchDatabase;
 
   public static DatabaseFactory getInstance(Context context) {
     synchronized (lock) {
@@ -88,18 +84,6 @@ public class DatabaseFactory {
     return getInstance(context).recipientDatabase;
   }
 
-  public static ContactsDatabase getContactsDatabase(Context context) {
-    return getInstance(context).contactsDatabase;
-  }
-
-  public static GroupReceiptDatabase getGroupReceiptDatabase(Context context) {
-    return getInstance(context).groupReceiptDatabase;
-  }
-
-  public static SearchDatabase getSearchDatabase(Context context) {
-    return getInstance(context).searchDatabase;
-  }
-
   private DatabaseFactory(@NonNull Context context) {
     SQLiteDatabase.loadLibs(context);
 
@@ -115,9 +99,6 @@ public class DatabaseFactory {
     this.mmsSmsDatabase       = new MmsSmsDatabase(context, databaseHelper);
     this.groupDatabase        = new GroupDatabase(context, databaseHelper);
     this.recipientDatabase    = new RecipientDatabase(context, databaseHelper);
-    this.groupReceiptDatabase = new GroupReceiptDatabase(context, databaseHelper);
-    this.contactsDatabase     = new ContactsDatabase(context);
-    this.searchDatabase       = new SearchDatabase(context, databaseHelper);
   }
 
 

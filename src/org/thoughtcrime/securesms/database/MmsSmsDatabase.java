@@ -19,16 +19,13 @@ package org.thoughtcrime.securesms.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteQueryBuilder;
 
-import org.thoughtcrime.securesms.database.MessagingDatabase.SyncMessageId;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
-import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -92,26 +89,6 @@ public class MmsSmsDatabase extends Database {
     count    += DatabaseFactory.getMmsDatabase(context).getMessageCountForThread(threadId);
 
     return count;
-  }
-
-  /**
-   * Retrieves the position of the message with the provided timestamp in the query results you'd
-   * get from calling {@link #getConversation(long)}.
-   *
-   * Note: This could give back incorrect results in the situation where multiple messages have the
-   * same received timestamp. However, because this was designed to determine where to scroll to,
-   * you'll still wind up in about the right spot.
-   */
-  public int getMessagePositionInConversation(long threadId, long receivedTimestamp) {
-    String order     = MmsSmsColumns.NORMALIZED_DATE_RECEIVED + " DESC";
-    String selection = MmsSmsColumns.THREAD_ID + " = " + threadId + " AND " + MmsSmsColumns.NORMALIZED_DATE_RECEIVED + " > " + receivedTimestamp;
-
-    try (Cursor cursor = queryTables(new String[]{ "COUNT(*)" }, selection, order, null)) {
-      if (cursor != null && cursor.moveToFirst()) {
-        return cursor.getInt(0);
-      }
-    }
-    return -1;
   }
 
   private Cursor queryTables(String[] projection, String selection, String order, String limit) {
