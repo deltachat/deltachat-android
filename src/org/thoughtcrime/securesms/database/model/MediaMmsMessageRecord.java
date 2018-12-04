@@ -23,8 +23,6 @@ import android.text.SpannableString;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.contactshare.Contact;
-import org.thoughtcrime.securesms.database.MmsDatabase;
-import org.thoughtcrime.securesms.database.SmsDatabase.Status;
 import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatch;
 import org.thoughtcrime.securesms.database.documents.NetworkFailure;
 import org.thoughtcrime.securesms.mms.SlideDeck;
@@ -58,7 +56,7 @@ public class MediaMmsMessageRecord extends MmsMessageRecord {
                                @Nullable Quote quote, @Nullable List<Contact> contacts)
   {
     super(context, id, body, conversationRecipient, individualRecipient, recipientDeviceId, dateSent,
-          dateReceived, threadId, Status.STATUS_NONE, deliveryReceiptCount, mailbox, mismatches, failures,
+          dateReceived, threadId, 0, deliveryReceiptCount, mailbox, mismatches, failures,
           subscriptionId, expiresIn, expireStarted, slideDeck, readReceiptCount, quote, contacts);
 
     this.context   = context.getApplicationContext();
@@ -76,13 +74,7 @@ public class MediaMmsMessageRecord extends MmsMessageRecord {
 
   @Override
   public SpannableString getDisplayBody() {
-    if (MmsDatabase.Types.isFailedDecryptType(type)) {
-      return emphasisAdded(context.getString(R.string.MmsMessageRecord_bad_encrypted_mms_message));
-    } else if (MmsDatabase.Types.isDuplicateMessageType(type)) {
-      return emphasisAdded(context.getString(R.string.SmsMessageRecord_duplicate_message));
-    } else if (MmsDatabase.Types.isNoRemoteSessionType(type)) {
-      return emphasisAdded(context.getString(R.string.MmsMessageRecord_mms_message_encrypted_for_non_existing_session));
-    } else if (isLegacyMessage()) {
+    if (isLegacyMessage()) {
       return emphasisAdded(context.getString(R.string.MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported));
     }
 

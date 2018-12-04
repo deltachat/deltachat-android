@@ -20,8 +20,6 @@ import android.content.Context;
 import android.text.SpannableString;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.database.MmsDatabase;
-import org.thoughtcrime.securesms.database.SmsDatabase.Status;
 import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatch;
 import org.thoughtcrime.securesms.database.documents.NetworkFailure;
 import org.thoughtcrime.securesms.mms.SlideDeck;
@@ -54,7 +52,7 @@ public class NotificationMmsMessageRecord extends MmsMessageRecord {
                                       int subscriptionId, SlideDeck slideDeck, int readReceiptCount)
   {
     super(context, id, "", conversationRecipient, individualRecipient, recipientDeviceId,
-          dateSent, dateReceived, threadId, Status.STATUS_NONE, deliveryReceiptCount, mailbox,
+          dateSent, dateReceived, threadId, 0, deliveryReceiptCount, mailbox,
           new LinkedList<IdentityKeyMismatch>(), new LinkedList<NetworkFailure>(), subscriptionId,
           0, 0, slideDeck, readReceiptCount, null, Collections.emptyList());
 
@@ -112,12 +110,6 @@ public class NotificationMmsMessageRecord extends MmsMessageRecord {
 
   @Override
   public SpannableString getDisplayBody() {
-    if (status == MmsDatabase.Status.DOWNLOAD_INITIALIZED) {
-      return emphasisAdded(context.getString(R.string.NotificationMmsMessageRecord_multimedia_message));
-    } else if (status == MmsDatabase.Status.DOWNLOAD_CONNECTING) {
-      return emphasisAdded(context.getString(R.string.NotificationMmsMessageRecord_downloading_mms_message));
-    } else {
-      return emphasisAdded(context.getString(R.string.NotificationMmsMessageRecord_error_downloading_mms_message));
-    }
+    return emphasisAdded(context.getString(R.string.NotificationMmsMessageRecord_error_downloading_mms_message));
   }
 }

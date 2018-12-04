@@ -34,8 +34,6 @@ public class DatabaseFactory {
   private static DatabaseFactory instance;
 
   private final SQLCipherOpenHelper   databaseHelper;
-  private final SmsDatabase           sms;
-  private final MmsDatabase           mms;
   private final AttachmentDatabase    attachments;
   private final MediaDatabase         media;
   private final ThreadDatabase        thread;
@@ -53,14 +51,6 @@ public class DatabaseFactory {
 
   public static ThreadDatabase getThreadDatabase(Context context) {
     return getInstance(context).thread;
-  }
-
-  public static SmsDatabase getSmsDatabase(Context context) {
-    return getInstance(context).sms;
-  }
-
-  public static MmsDatabase getMmsDatabase(Context context) {
-    return getInstance(context).mms;
   }
 
   public static AttachmentDatabase getAttachmentDatabase(Context context) {
@@ -86,8 +76,6 @@ public class DatabaseFactory {
     AttachmentSecret    attachmentSecret = AttachmentSecretProvider.getInstance(context).getOrCreateAttachmentSecret();
 
     this.databaseHelper       = new SQLCipherOpenHelper(context, databaseSecret);
-    this.sms                  = new SmsDatabase(context, databaseHelper);
-    this.mms                  = new MmsDatabase(context, databaseHelper);
     this.attachments          = new AttachmentDatabase(context, databaseHelper, attachmentSecret);
     this.media                = new MediaDatabase(context, databaseHelper);
     this.thread               = new ThreadDatabase(context, databaseHelper);

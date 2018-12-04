@@ -23,16 +23,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.TextUtils;
 import android.text.style.StyleSpan;
 
 import com.b44t.messenger.DcLot;
 
-import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.database.MmsSmsColumns;
-import org.thoughtcrime.securesms.database.SmsDatabase;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.ExpirationUtil;
 
 /**
  * The message record model which represents thread heading messages.
@@ -42,8 +37,6 @@ import org.thoughtcrime.securesms.util.ExpirationUtil;
  */
 public class ThreadRecord extends DisplayRecord {
 
-  private @NonNull  final Context context;
-  private @Nullable final Uri     snippetUri;
   private           final long    count;
   private           final int     unreadCount;
   private           final int     distributionType;
@@ -60,8 +53,6 @@ public class ThreadRecord extends DisplayRecord {
                       int readReceiptCount, boolean verified, @Nullable DcLot dcSummary)
   {
     super(context, body, recipient, date, date, threadId, status, deliveryReceiptCount, snippetType, readReceiptCount);
-    this.context          = context.getApplicationContext();
-    this.snippetUri       = snippetUri;
     this.count            = count;
     this.unreadCount      = unreadCount;
     this.distributionType = distributionType;

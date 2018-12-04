@@ -24,7 +24,6 @@ import android.text.style.StyleSpan;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.MmsSmsColumns;
-import org.thoughtcrime.securesms.database.SmsDatabase;
 import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatch;
 import org.thoughtcrime.securesms.database.documents.NetworkFailure;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -130,7 +129,7 @@ public abstract class MessageRecord extends DisplayRecord {
   }
 
   public boolean isPush() {
-    return SmsDatabase.Types.isPushType(type) && !SmsDatabase.Types.isForcedSms(type);
+    return false;
   }
 
   public long getTimestamp() {
@@ -140,40 +139,28 @@ public abstract class MessageRecord extends DisplayRecord {
     return getDateReceived();
   }
 
-  public boolean isForcedSms() {
-    return SmsDatabase.Types.isForcedSms(type);
-  }
-
   public boolean isIdentityVerified() {
-    return SmsDatabase.Types.isIdentityVerified(type);
+    return false;
   }
 
   public boolean isIdentityDefault() {
-    return SmsDatabase.Types.isIdentityDefault(type);
-  }
-
-  public boolean isIdentityMismatchFailure() {
-    return mismatches != null && !mismatches.isEmpty();
+    return false;
   }
 
   public boolean isBundleKeyExchange() {
-    return SmsDatabase.Types.isBundleKeyExchange(type);
-  }
-
-  public boolean isContentBundleKeyExchange() {
-    return SmsDatabase.Types.isContentBundleKeyExchange(type);
+    return false;
   }
 
   public boolean isIdentityUpdate() {
-    return SmsDatabase.Types.isIdentityUpdate(type);
+    return false;
   }
 
   public boolean isCorruptedKeyExchange() {
-    return SmsDatabase.Types.isCorruptedKeyExchange(type);
+    return false;
   }
 
   public boolean isInvalidVersionKeyExchange() {
-    return SmsDatabase.Types.isInvalidVersionKeyExchange(type);
+    return false;
   }
 
   public boolean isUpdate() {
