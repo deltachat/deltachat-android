@@ -111,4 +111,11 @@ public class ThreadRecord extends DisplayRecord {
   public boolean isVerified() {
     return verified;
   }
+
+  public static class DistributionTypes {
+    public static final int DEFAULT      = 2;
+    public static final int CONVERSATION = 2;
+    public static final int ARCHIVE      = 3;
+    public static final int INBOX_ZERO   = 4;
+  }
 }

@@ -35,8 +35,6 @@ public class DatabaseFactory {
 
   private final SQLCipherOpenHelper   databaseHelper;
   private final AttachmentDatabase    attachments;
-  private final MediaDatabase         media;
-  private final ThreadDatabase        thread;
   private final GroupDatabase         groupDatabase;
   private final RecipientDatabase     recipientDatabase;
 
@@ -48,19 +46,9 @@ public class DatabaseFactory {
       return instance;
     }
   }
-
-  public static ThreadDatabase getThreadDatabase(Context context) {
-    return getInstance(context).thread;
-  }
-
   public static AttachmentDatabase getAttachmentDatabase(Context context) {
     return getInstance(context).attachments;
   }
-
-  public static MediaDatabase getMediaDatabase(Context context) {
-    return getInstance(context).media;
-  }
-
   public static GroupDatabase getGroupDatabase(Context context) {
     return getInstance(context).groupDatabase;
   }
@@ -77,8 +65,6 @@ public class DatabaseFactory {
 
     this.databaseHelper       = new SQLCipherOpenHelper(context, databaseSecret);
     this.attachments          = new AttachmentDatabase(context, databaseHelper, attachmentSecret);
-    this.media                = new MediaDatabase(context, databaseHelper);
-    this.thread               = new ThreadDatabase(context, databaseHelper);
     this.groupDatabase        = new GroupDatabase(context, databaseHelper);
     this.recipientDatabase    = new RecipientDatabase(context, databaseHelper);
   }
