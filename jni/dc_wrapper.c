@@ -820,6 +820,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getProfileImage(JNIEnv *env, jo
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcChat_getColor(JNIEnv *env, jobject obj)
+{
+	return dc_chat_get_color(get_dc_chat(env, obj));
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isUnpromoted(JNIEnv *env, jobject obj)
 {
 	return dc_chat_is_unpromoted(get_dc_chat(env, obj))!=0;
@@ -1178,6 +1184,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getProfileImage(JNIEnv *env,
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcContact_getColor(JNIEnv *env, jobject obj)
+{
+	return dc_contact_get_color(get_dc_contact(env, obj));
 }
 
 

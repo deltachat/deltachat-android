@@ -25,6 +25,7 @@ public class DcChat {
     public native String  getName           ();
     public native String  getSubtitle       ();
     public native String  getProfileImage   ();
+    public native int     getColor          ();
     public native boolean isUnpromoted      ();
     public native boolean isSelfTalk        ();
     public native boolean isVerified        ();
