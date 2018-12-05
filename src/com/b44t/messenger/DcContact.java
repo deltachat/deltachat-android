@@ -43,6 +43,7 @@ public class DcContact {
     public native String  getAddr        ();
     public native String  getNameNAddr   ();
     public native String  getProfileImage();
+    public native int     getColor       ();
     public native boolean isBlocked      ();
     public native boolean isVerified     ();
 

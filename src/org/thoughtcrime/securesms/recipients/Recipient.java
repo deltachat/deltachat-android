@@ -18,12 +18,15 @@
 package org.thoughtcrime.securesms.recipients;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -329,7 +332,15 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   public synchronized @NonNull Drawable getFallbackContactPhotoDrawable(Context context, boolean inverted) {
-    return getFallbackContactPhoto().asDrawable(context, getColor().toConversationColor(context), inverted);
+    int rgb = 0x00808080;
+    if(address.isDcContact()) {
+      rgb = DcHelper.getContext(context).getContact(address.getDcContactId()).getColor();
+    }
+    else if(address.isDcChat()){
+      rgb = DcHelper.getContext(context).getChat(address.getDcChatId()).getColor();
+    }
+    int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
+    return getFallbackContactPhoto().asDrawable(context, argb, inverted);
   }
 
   public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {
