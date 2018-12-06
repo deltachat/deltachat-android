@@ -17,7 +17,6 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -30,7 +29,7 @@
             android:linksClickable="false"
             android:gravity="center"
             android:textColor="?attr/conversation_item_update_text_color"
-            android:background="?attr/conversation_item_update_bg_color"
+            android:background="@drawable/conversation_item_update_background"
             android:paddingLeft="10dp"
             android:paddingTop="3dp"
             android:paddingRight="10dp"

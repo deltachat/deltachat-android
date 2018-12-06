@@ -232,9 +232,9 @@
     </style>
 
     <style name="NoMessagesTextView">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">?attr/conversation_item_update_text_color</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:background">@drawable/no_message_rounded_background</item>
+        <item name="android:background">@drawable/conversation_item_update_background</item>
         <item name="android:layout_marginLeft">12dp</item>
         <item name="android:layout_marginRight">12dp</item>
         <item name="android:padding">12dp</item>

@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingTop="13dp"
-    android:paddingBottom="13dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="10dp"
     android:paddingLeft="28dp"
     android:paddingRight="28dp">
 
@@ -19,7 +19,7 @@
         style="@style/Delta.Text.UpdateHeader"
         android:textStyle="bold"
         android:textColor="?conversation_item_update_text_color"
-        android:background="?attr/conversation_item_update_bg_color"
+        android:background="@drawable/conversation_item_update_background"
         android:paddingLeft="10dp"
         android:paddingTop="3dp"
         android:paddingRight="10dp"
