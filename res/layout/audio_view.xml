@@ -59,7 +59,7 @@
               android:layout_height="wrap_content"
               android:layout_marginLeft="76dip"
               android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="?conversation_item_sent_text_secondary_color"
+              android:textColor="?conversation_item_outgoing_text_secondary_color"
               android:textSize="@dimen/conversation_item_date_text_size"
               android:fontFamily="sans-serif-light"
               android:autoLink="none"

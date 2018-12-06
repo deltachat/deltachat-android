@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:linksClickable="false"
         style="@style/Signal.Text.Caption.MessageSent"
-        android:textColor="?conversation_item_sent_text_secondary_color"
+        android:textColor="?conversation_item_outgoing_text_secondary_color"
         android:textAllCaps="true"
         tools:text="30 mins"/>
 

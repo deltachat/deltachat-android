@@ -86,8 +86,8 @@
                 android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
                 android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
                 style="@style/Signal.Text.Body"
-                android:textColor="?conversation_item_sent_text_primary_color"
-                android:textColorLink="?conversation_item_sent_text_primary_color"
+                android:textColor="?conversation_item_outgoing_text_primary_color"
+                android:textColorLink="?conversation_item_outgoing_text_primary_color"
                 app:scaleEmojis="true"
                 tools:text="Mango pickle lorem ipsum"/>
 
@@ -120,7 +120,7 @@
                 android:gravity="end"
                 android:clipChildren="false"
                 android:clipToPadding="false"
-                app:footer_text_color="?attr/conversation_item_sent_text_secondary_color"
+                app:footer_text_color="?attr/conversation_item_outgoing_text_secondary_color"
                 app:footer_icon_color="?attr/conversation_item_sent_icon_color"/>
 
         </LinearLayout>

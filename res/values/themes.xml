@@ -187,12 +187,11 @@
 
         <!-- light theme -->
         <item name="conversation_item_incoming_bubble_color">#ffffffff</item>
+        <item name="conversation_item_incoming_text_primary_color">@color/black</item>
+        <item name="conversation_item_incoming_text_secondary_color">#ff9ea7b0</item>
         <item name="conversation_item_outgoing_bubble_color">#ffefffde</item>
-        <item name="conversation_item_sent_text_primary_color">@color/core_light_90</item>
-        <item name="conversation_item_sent_text_secondary_color">@color/core_light_60</item>
-        <item name="conversation_item_sent_text_indicator_tab_color">#99000000</item>
-        <item name="conversation_item_received_text_primary_color">@color/white</item>
-        <item name="conversation_item_received_text_secondary_color">#ffffff</item>
+        <item name="conversation_item_outgoing_text_primary_color">@color/black</item>
+        <item name="conversation_item_outgoing_text_secondary_color">#ff70b15c</item>
         <item name="conversation_item_update_text_color">@color/core_light_60</item>
         <item name="conversation_item_last_seen_text_color">@color/core_light_90</item>
         <item name="conversation_item_last_seen_line_color">@color/core_light_60</item>
@@ -290,12 +289,11 @@
 
         <!-- dark theme -->
         <item name="conversation_item_incoming_bubble_color">@color/core_dark_70</item>
+        <item name="conversation_item_incoming_text_primary_color">@color/core_dark_05</item>
+        <item name="conversation_item_incoming_text_secondary_color">#efefef</item>
+        <item name="conversation_item_outgoing_text_primary_color">@color/core_dark_05</item>
+        <item name="conversation_item_outgoing_text_secondary_color">@color/core_dark_30</item>
         <item name="conversation_item_outgoing_bubble_color">#ff364e59</item>
-        <item name="conversation_item_sent_text_primary_color">@color/core_dark_05</item>
-        <item name="conversation_item_sent_text_secondary_color">@color/core_dark_30</item>
-        <item name="conversation_item_sent_text_indicator_tab_color">#99ffffff</item>
-        <item name="conversation_item_received_text_primary_color">@color/core_dark_05</item>
-        <item name="conversation_item_received_text_secondary_color">#efefef</item>
         <item name="conversation_item_sent_indicator_text_background">@drawable/conversation_item_sent_indicator_text_shape_dark</item>
         <item name="conversation_item_update_text_color">@color/core_light_35</item>
         <item name="conversation_item_last_seen_text_color">@color/core_dark_30</item>
