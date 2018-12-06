@@ -89,7 +89,7 @@ public class DirectShareService extends ChooserTargetService {
   }
 
   private Bitmap getFallbackDrawable(@NonNull Recipient recipient) {
-    return BitmapUtil.createFromDrawable(recipient.getFallbackContactPhotoDrawable(this, false),
+    return BitmapUtil.createFromDrawable(recipient.getFallbackAvatarDrawable(this),
                                          getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
                                          getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height));
   }

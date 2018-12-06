@@ -331,7 +331,7 @@ public class Recipient implements RecipientModifiedListener {
     return (getName() == null ? address.serialize() : getName());
   }
 
-  public synchronized @NonNull Drawable getFallbackContactPhotoDrawable(Context context, boolean inverted) {
+  public int getFallbackAvatarColor(Context context) {
     int rgb = 0x00808080;
     if(address.isDcContact()) {
       rgb = DcHelper.getContext(context).getContact(address.getDcContactId()).getColor();
@@ -340,7 +340,11 @@ public class Recipient implements RecipientModifiedListener {
       rgb = DcHelper.getContext(context).getChat(address.getDcChatId()).getColor();
     }
     int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
-    return getFallbackContactPhoto().asDrawable(context, argb, inverted);
+    return argb;
+  }
+
+  public synchronized @NonNull Drawable getFallbackAvatarDrawable(Context context) {
+    return getFallbackContactPhoto().asDrawable(context, getFallbackAvatarColor(context), false);
   }
 
   public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {

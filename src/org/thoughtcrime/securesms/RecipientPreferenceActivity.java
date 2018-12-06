@@ -195,9 +195,9 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     if (recipient.getContactPhoto(this) == null) this.avatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     else                                     this.avatar.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-    this.avatar.setBackgroundColor(recipient.getColor().toActionBarColor(this));
+    this.avatar.setBackgroundColor(recipient.getFallbackAvatarColor(this));
     this.toolbarLayout.setTitle(recipient.toShortString());
-    this.toolbarLayout.setContentScrimColor(recipient.getColor().toActionBarColor(this));
+    this.toolbarLayout.setContentScrimColor(recipient.getFallbackAvatarColor(this));
   }
 
   @Override
@@ -354,7 +354,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         if (aboutDivider       != null) getPreferenceScreen().removePreference(aboutDivider);
       } else {
         colorPreference.setColors(MaterialColors.CONVERSATION_PALETTE.asConversationColorArray(getActivity()));
-        colorPreference.setColor(recipient.getColor().toActionBarColor(getActivity()));
+        colorPreference.setColor(recipient.getFallbackAvatarColor(getActivity()));
 
         aboutPreference.setTitle(formatAddress(recipient.getAddress()));
         aboutPreference.setSummary(recipient.getCustomLabel());

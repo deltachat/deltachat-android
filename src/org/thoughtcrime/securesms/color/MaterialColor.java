@@ -79,34 +79,6 @@ public enum MaterialColor {
                                                                 : conversationColorLight);
   }
 
-  public int toActionBarColor(@NonNull Context context) {
-    return context.getResources().getColor(isDarkTheme(context) ? actionBarColorDark
-                                                                : actionBarColorLight);
-  }
-
-  public int toStatusBarColor(@NonNull Context context) {
-    return context.getResources().getColor(isDarkTheme(context) ? statusBarColorDark
-                                                                : statusBarColorLight);
-  }
-
-  public int toQuoteBarColorResource(@NonNull Context context, boolean outgoing) {
-    if (outgoing) {
-      return conversationColorDark;
-    }
-    return R.color.white;
-  }
-
-  public int toQuoteBackgroundColor(@NonNull Context context, boolean outgoing) {
-    if (outgoing) {
-      int color = toConversationColor(context);
-      int alpha = isDarkTheme(context) ? (int) (0.2 * 255) : (int) (0.4 * 255);
-
-      return Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color));
-    }
-    return context.getResources().getColor(isDarkTheme(context) ? R.color.transparent_black_70
-                                                                : R.color.transparent_white_aa);
-  }
-
   public boolean represents(Context context, int colorValue) {
     return context.getResources().getColor(conversationColorDark)  == colorValue ||
            context.getResources().getColor(conversationColorLight) == colorValue ||
