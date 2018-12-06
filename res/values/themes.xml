@@ -145,7 +145,8 @@
 
         <item name="conversation_group_member_name">#99000000</item>
 
-        <item name="conversation_background">@color/core_white</item>
+        <!-- light theme -->
+        <item name="conversation_background">#ffdddddd</item>
         <item name="conversation_editor_background">#22000000</item>
         <item name="conversation_editor_text_color">#ff111111</item>
         <item name="conversation_input_background">@drawable/compose_background_light</item>
@@ -325,7 +326,8 @@
         <item name="fab_color">@color/textsecure_primary_dark</item>
         <item name="lower_right_divet">@drawable/divet_lower_right_light</item>
 
-        <item name="conversation_background">@color/black</item>
+        <!-- dark theme -->
+        <item name="conversation_background">#ff000000</item>
         <item name="conversation_editor_background">#22ffffff</item>
         <item name="conversation_editor_text_color">#ffeeeeee</item>
         <item name="conversation_input_background">@drawable/compose_background_dark</item>
