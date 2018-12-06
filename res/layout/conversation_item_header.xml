@@ -4,20 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="vertical"
-    android:paddingTop="12dp"
+    android:paddingTop="13dp"
     android:paddingBottom="13dp"
     android:paddingLeft="28dp"
     android:paddingRight="28dp">
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        style="@style/Signal.Text.Caption"
+        style="@style/Delta.Text.UpdateHeader"
+        android:textStyle="bold"
         android:textColor="?conversation_item_update_text_color"
-        android:textAllCaps="true"
+        android:background="?attr/conversation_item_update_bg_color"
+        android:paddingLeft="10dp"
+        android:paddingTop="3dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="3dp"
         tools:text="March 1, 2015" />
 
 </LinearLayout>
