@@ -107,7 +107,8 @@ public class ConversationItem extends LinearLayout
   private @NonNull  Stub<DocumentView>              documentViewStub;
   private @Nullable EventListener                   eventListener;
 
-  private int defaultBubbleColor;
+  private int incomingBubbleColor;
+  private int outgoingBubbleColor;
   private int measureCalls;
 
   private final PassthroughClickListener        passthroughClickListener   = new PassthroughClickListener();
@@ -253,10 +254,14 @@ public class ConversationItem extends LinearLayout
   }
 
   private void initializeAttributes() {
-    final int[]      attributes = new int[] {R.attr.conversation_item_bubble_background};
+    final int[]      attributes = new int[] {
+        R.attr.conversation_item_incoming_bubble_color,
+        R.attr.conversation_item_outgoing_bubble_color
+    };
     final TypedArray attrs      = context.obtainStyledAttributes(attributes);
 
-    defaultBubbleColor = attrs.getColor(0, Color.WHITE);
+    incomingBubbleColor = attrs.getColor(0, Color.WHITE);
+    outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
     attrs.recycle();
   }
 
@@ -272,14 +277,9 @@ public class ConversationItem extends LinearLayout
 
   private void setBubbleState(DcMsg messageRecord) {
     if (messageRecord.isOutgoing()) {
-      bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
+      bodyBubble.getBackground().setColorFilter(outgoingBubbleColor, PorterDuff.Mode.MULTIPLY);
     } else {
-      bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
-      if(groupThread && dcContact!=null) {
-        bodyBubble.getBackground().setColorFilter(dcContext.getRecipient(dcContact).getColor().toConversationColor(context), PorterDuff.Mode.MULTIPLY);
-      } else {
-        bodyBubble.getBackground().setColorFilter(dcContext.getRecipient(dcChat).getColor().toConversationColor(context), PorterDuff.Mode.MULTIPLY);
-      }
+      bodyBubble.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
     }
 
     if (audioViewStub.resolved()) {
@@ -290,12 +290,12 @@ public class ConversationItem extends LinearLayout
   private void setAudioViewTint(DcMsg messageRecord, Recipient recipient) {
     if (messageRecord.isOutgoing()) {
       if (DynamicTheme.LIGHT.equals(Prefs.getTheme(context))) {
-        audioViewStub.get().setTint(getContext().getResources().getColor(R.color.core_light_60), defaultBubbleColor);
+        audioViewStub.get().setTint(getContext().getResources().getColor(R.color.core_light_60), outgoingBubbleColor);
       } else {
-        audioViewStub.get().setTint(Color.WHITE, defaultBubbleColor);
+        audioViewStub.get().setTint(Color.WHITE, outgoingBubbleColor);
       }
     } else {
-      audioViewStub.get().setTint(Color.WHITE, recipient.getColor().toConversationColor(context));
+      audioViewStub.get().setTint(Color.WHITE, incomingBubbleColor);
     }
   }
 

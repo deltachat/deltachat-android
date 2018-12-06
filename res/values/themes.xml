@@ -185,7 +185,9 @@
         <item name="emoji_category_emoticons">@drawable/emoji_category_emoticons_light</item>
 
 
-        <item name="conversation_item_bubble_background">@color/core_light_10</item>
+        <!-- light theme -->
+        <item name="conversation_item_incoming_bubble_color">#ffffffff</item>
+        <item name="conversation_item_outgoing_bubble_color">#ffefffde</item>
         <item name="conversation_item_sent_text_primary_color">@color/core_light_90</item>
         <item name="conversation_item_sent_text_secondary_color">@color/core_light_60</item>
         <item name="conversation_item_sent_text_indicator_tab_color">#99000000</item>
@@ -286,7 +288,9 @@
 
         <item name="conversation_group_member_name">#99ffffff</item>
 
-        <item name="conversation_item_bubble_background">@color/core_dark_70</item>
+        <!-- dark theme -->
+        <item name="conversation_item_incoming_bubble_color">@color/core_dark_70</item>
+        <item name="conversation_item_outgoing_bubble_color">#ff364e59</item>
         <item name="conversation_item_sent_text_primary_color">@color/core_dark_05</item>
         <item name="conversation_item_sent_text_secondary_color">@color/core_dark_30</item>
         <item name="conversation_item_sent_text_indicator_tab_color">#99ffffff</item>

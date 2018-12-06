@@ -66,7 +66,8 @@
     <attr name="quick_mic_icon" format="reference"/>
 
     <attr name="conversation_item_background" format="reference"/>
-    <attr name="conversation_item_bubble_background" format="reference|color"/>
+    <attr name="conversation_item_incoming_bubble_color" format="reference|color"/>
+    <attr name="conversation_item_outgoing_bubble_color" format="reference|color"/>
     <attr name="conversation_item_sent_text_primary_color" format="reference|color"/>
     <attr name="conversation_item_sent_text_secondary_color" format="reference|color"/>
     <attr name="conversation_item_received_text_primary_color" format="reference|color"/>
