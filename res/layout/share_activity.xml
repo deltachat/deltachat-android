@@ -32,24 +32,16 @@
                       android:layout_toLeftOf="@+id/search_action"
                       android:layout_toStartOf="@+id/search_action"/>
 
-            <ImageView android:id="@+id/search_action"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:src="@drawable/ic_search_white_24dp"
-                       android:layout_alignParentRight="true"
-                       android:layout_alignParentEnd="true"
-                       android:layout_centerVertical="true"/>
-
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 
 
-    <fragment android:id="@+id/contact_selection_list_fragment"
+    <fragment android:id="@+id/share_fragment"
               android:layout_below="@id/toolbar"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:name="org.thoughtcrime.securesms.ContactSelectionListFragment" />
+              android:name="org.thoughtcrime.securesms.ShareActivity$ShareFragment" />
 
     <org.thoughtcrime.securesms.components.SearchToolbar
             android:id="@+id/search_toolbar"
