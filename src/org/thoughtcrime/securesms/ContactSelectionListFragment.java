@@ -33,7 +33,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -278,7 +277,6 @@ public class ContactSelectionListFragment extends    Fragment
     if(isSelectVerfied()) {
       listflags = DcContext.DC_GCL_VERIFIED_ONLY;
     }
-    Log.d("dboehrs", "onCreateLoader: " + listflags);
     return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks, false);
   }
 

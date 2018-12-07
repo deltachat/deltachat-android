@@ -55,7 +55,11 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
         galleryButton.setOnClickListener(new GalleryClickListener());
 
         String backgroundImagePath = Prefs.getBackgroundImagePath(this);
-        setLayoutBackgroundImage(backgroundImagePath);
+        if(backgroundImagePath.isEmpty()){
+            setDefaultLayoutBackgroundImage();
+        }else {
+            setLayoutBackgroundImage(backgroundImagePath);
+        }
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -142,6 +146,11 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
         preview.setImageDrawable(image);
     }
 
+    private void setDefaultLayoutBackgroundImage() {
+        Drawable image = getResources().getDrawable(R.drawable.background_hd);
+        preview.setImageDrawable(image);
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         final Context context = getApplicationContext();
@@ -177,7 +186,7 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
         public void onClick(View view) {
             imageUri = null;
             tempDestinationPath = "";
-            setLayoutBackgroundImage("");
+            setDefaultLayoutBackgroundImage();
             enableMenuItem();
         }
 
