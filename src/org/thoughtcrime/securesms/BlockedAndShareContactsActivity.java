@@ -33,7 +33,7 @@ import java.util.Objects;
 public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBarActivity {
 
   public static final String SHOW_ONLY_BLOCKED_EXTRA = "show_only_blocked";
-  public static final String SHARE_CONTACT_NAME_EXTRA = "share_contact_Name";
+  public static final String SHARE_CONTACT_NAME_EXTRA = "share_contact_name";
   public static final String SHARE_CONTACT_MAIL_EXTRA = "share_contact_mail";
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
