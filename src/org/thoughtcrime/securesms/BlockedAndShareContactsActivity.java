@@ -1,7 +1,9 @@
 package org.thoughtcrime.securesms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -26,7 +28,13 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity {
+import java.util.Objects;
+
+public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBarActivity {
+
+  public static final String SHOW_ONLY_BLOCKED_EXTRA = "show_only_blocked";
+  public static final String SHARE_CONTACT_NAME_EXTRA = "share_contact_Name";
+  public static final String SHARE_CONTACT_MAIL_EXTRA = "share_contact_mail";
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -37,12 +45,12 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     dynamicLanguage.onCreate(this);
   }
 
-
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setTitle(R.string.BlockedContactsActivity_blocked_contacts);
-    initFragment(android.R.id.content, new BlockedContactsFragment());
+    boolean showOnlyBlocked = getIntent().getBooleanExtra(SHOW_ONLY_BLOCKED_EXTRA, false);
+    getSupportActionBar().setTitle(showOnlyBlocked ? R.string.BlockedContactsActivity_blocked_contacts : R.string.ContactsCursorLoader_contacts);
+    initFragment(android.R.id.content, new BlockedAndShareContactsFragment(), null, getIntent().getExtras());
   }
 
   @Override
@@ -61,14 +69,17 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     return false;
   }
 
-  public static class BlockedContactsFragment
+  public static class BlockedAndShareContactsFragment
           extends Fragment
           implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>,
           DcEventCenter.DcEventDelegate, ContactSelectionListAdapter.ItemClickListener {
 
+
     private RecyclerView recyclerView;
 
     private SwipeRefreshLayout swipeRefreshLayout;
+
+    private boolean showOnlyBlocked;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -82,6 +93,7 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onCreate(Bundle bundle) {
       super.onCreate(bundle);
+      showOnlyBlocked = getArguments().getBoolean(SHOW_ONLY_BLOCKED_EXTRA, false);
       getLoaderManager().initLoader(0, null, this);
     }
 
@@ -104,7 +116,7 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
-      return new DcContactsLoader(getActivity(), -1, null, false, true);
+      return new DcContactsLoader(getActivity(), showOnlyBlocked ? -1 : DcContext.DC_GCL_ADD_SELF, null, false, showOnlyBlocked);
     }
 
     @Override
@@ -125,7 +137,7 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
     }
 
     private void restartLoader() {
-      getLoaderManager().restartLoader(0, null, BlockedContactsFragment.this);
+      getLoaderManager().restartLoader(0, null, BlockedAndShareContactsFragment.this);
     }
 
     private ContactSelectionListAdapter getContactSelectionListAdapter() {
@@ -134,18 +146,31 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public void onItemClick(ContactSelectionListItem item, boolean handleActionMode) {
-      new AlertDialog.Builder(getActivity())
-              .setTitle(R.string.RecipientPreferenceActivity_unblock_this_contact_question)
-              .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
-              .setCancelable(true)
-              .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, (dialog, which) -> unblockContact(item.getContactId())).show();
+      if(showOnlyBlocked) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.RecipientPreferenceActivity_unblock_this_contact_question)
+                .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
+                .setCancelable(true)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, (dialog, which) -> unblockContact(item.getContactId())).show();
+      } else {
+        shareContact(item.getName(), item.getNumber());
+      }
     }
 
     private void unblockContact(int contactId) {
       ApplicationDcContext dcContext = DcHelper.getContext(getContext());
       dcContext.blockContact(contactId, 0);
       restartLoader();
+    }
+
+    private void shareContact(String name, String mail) {
+      Intent intent = new Intent();
+      intent.putExtra(BlockedAndShareContactsActivity.SHARE_CONTACT_NAME_EXTRA, name);
+      intent.putExtra(BlockedAndShareContactsActivity.SHARE_CONTACT_MAIL_EXTRA, mail);
+      FragmentActivity activity = Objects.requireNonNull(getActivity());
+      activity.setResult(RESULT_OK, intent);
+      activity.finish();
     }
 
     @Override

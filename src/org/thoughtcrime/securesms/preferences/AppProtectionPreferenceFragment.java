@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
-import org.thoughtcrime.securesms.BlockedContactsActivity;
+import org.thoughtcrime.securesms.BlockedAndShareContactsActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.SwitchPreferenceCompat;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -121,7 +121,8 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     private class BlockedContactsClickListener implements Preference.OnPreferenceClickListener {
         @Override
         public boolean onPreferenceClick(Preference preference) {
-            Intent intent = new Intent(getActivity(), BlockedContactsActivity.class);
+            Intent intent = new Intent(getActivity(), BlockedAndShareContactsActivity.class);
+            intent.putExtra(BlockedAndShareContactsActivity.SHOW_ONLY_BLOCKED_EXTRA, true);
             startActivity(intent);
             return true;
         }

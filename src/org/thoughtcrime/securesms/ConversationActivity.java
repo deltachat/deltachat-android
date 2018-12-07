@@ -85,8 +85,6 @@ import org.thoughtcrime.securesms.components.reminder.ExpiredBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contacts.ContactAccessor;
-import org.thoughtcrime.securesms.contacts.ContactAccessor.ContactData;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
@@ -365,7 +363,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       setMedia(data.getData(), MediaType.AUDIO);
       break;
     case PICK_CONTACT:
-      addAttachmentContactInfo(data.getData());
+      addAttachmentContactInfo(data);
       break;
     case GROUP_EDIT:
       recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA), true);
@@ -807,12 +805,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case AttachmentTypeSelector.ADD_SOUND:
       AttachmentManager.selectAudio(this, PICK_AUDIO); break;
     case AttachmentTypeSelector.ADD_CONTACT_INFO:
-      AttachmentManager.selectContactInfo(this, PICK_CONTACT); break;
+      startContactChooserActivity(); break;
     case AttachmentTypeSelector.ADD_LOCATION:
       AttachmentManager.selectLocation(this, PICK_LOCATION); break;
     case AttachmentTypeSelector.TAKE_PHOTO:
       attachmentManager.capturePhoto(this, TAKE_PHOTO); break;
     }
+  }
+
+  private void startContactChooserActivity() {
+    Intent intent = new Intent(ConversationActivity.this, BlockedAndShareContactsActivity.class);
+    startActivityForResult(intent, PICK_CONTACT);
   }
 
   private ListenableFuture<Boolean> setMedia(@Nullable Uri uri, @NonNull MediaType mediaType) {
@@ -823,32 +826,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return attachmentManager.setMedia(glideRequests, uri, mediaType, getCurrentMediaConstraints(), 0, 0);
   }
 
-  private void addAttachmentContactInfo(Uri contactUri) {
-    ContactAccessor contactDataList = ContactAccessor.getInstance();
-    ContactData contactData = contactDataList.getContactData(this, contactUri);
-
-    if      (contactData.mails.size() == 1) composeText.append(appendName(contactData) + contactData.mails.get(0).mail);
-    else if (contactData.mails.size() > 1)  selectContactInfo(contactData);
-  }
-
-  @NonNull
-  private String appendName(ContactData contactData) {
-    return contactData.name + "\n";
-  }
-
-  private void selectContactInfo(ContactData contactData) {
-    final CharSequence[] mails     = new CharSequence[contactData.mails.size()];
-
-    for (int i = 0; i < contactData.mails.size(); i++) {
-      mails[i]     = contactData.mails.get(i).mail;
-    }
-
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setIconAttribute(R.attr.conversation_attach_contact_info);
-    builder.setTitle(R.string.ConversationActivity_select_contact_info);
-
-    builder.setItems(mails, (dialog, which) -> composeText.append(appendName(contactData) + mails[which]));
-    builder.show();
+  private void addAttachmentContactInfo(Intent data) {
+    String name = data.getStringExtra(BlockedAndShareContactsActivity.SHARE_CONTACT_NAME_EXTRA);
+    String mail = data.getStringExtra(BlockedAndShareContactsActivity.SHARE_CONTACT_MAIL_EXTRA);
+    composeText.append(name + "\n" + mail);
   }
 
   private void calculateCharactersRemaining() {

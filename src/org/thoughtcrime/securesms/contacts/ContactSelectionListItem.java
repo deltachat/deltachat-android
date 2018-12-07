@@ -33,6 +33,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   private CheckBox        checkBox;
 
   private int           specialId;
+  private String        name;
   private String        number;
   private Recipient     recipient;
   private GlideRequests glideRequests;
@@ -61,6 +62,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   public void set(@NonNull GlideRequests glideRequests, int specialId, DcContact contact, String name, String number, String label, int color, boolean multiSelect, boolean enabled) {
     this.glideRequests = glideRequests;
     this.specialId     = specialId;
+    this.name        = name;
     this.number        = number;
 
     if(specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
@@ -118,6 +120,10 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
 
   public int getSpecialId() {
     return specialId;
+  }
+
+  public String getName() {
+    return name;
   }
 
   public String getNumber() {
