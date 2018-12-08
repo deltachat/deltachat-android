@@ -35,8 +35,6 @@ public class DatabaseFactory {
 
   private final SQLCipherOpenHelper   databaseHelper;
   private final AttachmentDatabase    attachments;
-  private final GroupDatabase         groupDatabase;
-  private final RecipientDatabase     recipientDatabase;
 
   public static DatabaseFactory getInstance(Context context) {
     synchronized (lock) {
@@ -49,13 +47,6 @@ public class DatabaseFactory {
   public static AttachmentDatabase getAttachmentDatabase(Context context) {
     return getInstance(context).attachments;
   }
-  public static GroupDatabase getGroupDatabase(Context context) {
-    return getInstance(context).groupDatabase;
-  }
-
-  public static RecipientDatabase getRecipientDatabase(Context context) {
-    return getInstance(context).recipientDatabase;
-  }
 
   private DatabaseFactory(@NonNull Context context) {
     SQLiteDatabase.loadLibs(context);
@@ -65,7 +56,5 @@ public class DatabaseFactory {
 
     this.databaseHelper       = new SQLCipherOpenHelper(context, databaseSecret);
     this.attachments          = new AttachmentDatabase(context, databaseHelper, attachmentSecret);
-    this.groupDatabase        = new GroupDatabase(context, databaseHelper);
-    this.recipientDatabase    = new RecipientDatabase(context, databaseHelper);
   }
 }
