@@ -421,10 +421,11 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-      ((CursorRecyclerViewAdapter)this.recyclerView.getAdapter()).changeCursor(data);
+      //((CursorRecyclerViewAdapter)this.recyclerView.getAdapter()).changeCursor(data);
       getActivity().invalidateOptionsMenu();
 
-      this.noMedia.setVisibility(data.getCount() > 0 ? View.GONE : View.VISIBLE);
+      // TODO: onLoadFinished() should no take a cursor but forward the loaded messages in a way
+      this.noMedia.setVisibility(/*data.getCount() > 0 ?*/ View.GONE /*: View.VISIBLE*/);
     }
 
     @Override
