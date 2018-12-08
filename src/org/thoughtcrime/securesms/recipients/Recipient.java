@@ -41,12 +41,8 @@ import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.SystemContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.TransparentContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.GroupDatabase;
-import org.thoughtcrime.securesms.database.RecipientDatabase.RecipientSettings;
 import org.thoughtcrime.securesms.database.RecipientDatabase.RegisteredState;
 import org.thoughtcrime.securesms.recipients.RecipientProvider.RecipientDetails;
-import org.thoughtcrime.securesms.util.FutureTaskListener;
-import org.thoughtcrime.securesms.util.ListenableFutureTask;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
@@ -57,7 +53,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.WeakHashMap;
-import java.util.concurrent.ExecutionException;
 
 public class Recipient implements RecipientModifiedListener {
 
@@ -116,100 +111,7 @@ public class Recipient implements RecipientModifiedListener {
         return dcContext.getRecipient(dcContext.getContact(contactId));
       }
     }
-    return provider.getRecipient(context, address, Optional.absent(), Optional.absent(), asynchronous);
-  }
-
-  @SuppressWarnings("ConstantConditions")
-  public static @NonNull Recipient from(@NonNull Context context, @NonNull Address address, @NonNull Optional<RecipientSettings> settings, @NonNull Optional<GroupDatabase.GroupRecord> groupRecord, boolean asynchronous) {
-    if (address == null) throw new AssertionError(address);
-    return provider.getRecipient(context, address, settings, groupRecord, asynchronous);
-  }
-
-  Recipient(@NonNull  Address address,
-            @Nullable Recipient stale,
-            @NonNull  Optional<RecipientDetails> details,
-            @NonNull  ListenableFutureTask<RecipientDetails> future)
-  {
-    this.address              = address;
-    this.color                = null;
-    this.resolving            = true;
-
-    if (stale != null) {
-      this.name                  = stale.name;
-      this.contactUri            = stale.contactUri;
-      this.systemContactPhoto    = stale.systemContactPhoto;
-      this.color                 = stale.color;
-      this.customLabel           = stale.customLabel;
-      this.messageRingtone       = stale.messageRingtone;
-      this.callRingtone          = stale.callRingtone;
-      this.blocked               = stale.blocked;
-      this.expireMessages        = stale.expireMessages;
-      this.seenInviteReminder    = stale.seenInviteReminder;
-      this.defaultSubscriptionId = stale.defaultSubscriptionId;
-      this.registered            = stale.registered;
-      this.profileKey            = stale.profileKey;
-      this.profileName           = stale.profileName;
-      this.profileAvatar         = stale.profileAvatar;
-      this.participants.clear();
-      this.participants.addAll(stale.participants);
-    }
-
-    if (details.isPresent()) {
-      this.name                  = details.get().name;
-      this.systemContactPhoto    = details.get().systemContactPhoto;
-      this.color                 = details.get().color;
-      this.blocked               = details.get().blocked;
-      this.expireMessages        = details.get().expireMessages;
-      this.seenInviteReminder    = details.get().seenInviteReminder;
-      this.defaultSubscriptionId = details.get().defaultSubscriptionId;
-      this.registered            = details.get().registered;
-      this.profileKey            = details.get().profileKey;
-      this.profileName           = details.get().profileName;
-      this.profileAvatar         = details.get().profileAvatar;
-      this.participants.clear();
-      this.participants.addAll(details.get().participants);
-    }
-
-    future.addListener(new FutureTaskListener<RecipientDetails>() {
-      @Override
-      public void onSuccess(RecipientDetails result) {
-        if (result != null) {
-          synchronized (Recipient.this) {
-            Recipient.this.name                  = result.name;
-            Recipient.this.contactUri            = result.contactUri;
-            Recipient.this.systemContactPhoto    = result.systemContactPhoto;
-            Recipient.this.color                 = result.color;
-            Recipient.this.customLabel           = result.customLabel;
-            Recipient.this.blocked               = result.blocked;
-            Recipient.this.expireMessages        = result.expireMessages;
-            Recipient.this.seenInviteReminder    = result.seenInviteReminder;
-            Recipient.this.defaultSubscriptionId = result.defaultSubscriptionId;
-            Recipient.this.registered            = result.registered;
-            Recipient.this.profileKey            = result.profileKey;
-            Recipient.this.profileName           = result.profileName;
-            Recipient.this.profileAvatar         = result.profileAvatar;
-            Recipient.this.profileName           = result.profileName;
-
-            Recipient.this.participants.clear();
-            Recipient.this.participants.addAll(result.participants);
-            Recipient.this.resolving = false;
-
-            if (!listeners.isEmpty()) {
-              for (Recipient recipient : participants) recipient.addListener(Recipient.this);
-            }
-
-            Recipient.this.notifyAll();
-          }
-
-          notifyListeners();
-        }
-      }
-
-      @Override
-      public void onFailure(ExecutionException error) {
-        Log.w(TAG, error);
-      }
-    });
+    return dcContext.getRecipient(dcContext.getContact(0));
   }
 
   public Recipient(@NonNull Address address, @NonNull RecipientDetails details) {
@@ -417,10 +319,6 @@ public class Recipient implements RecipientModifiedListener {
     notifyListeners();
   }
 
-  public synchronized int getExpireMessages() {
-    return expireMessages;
-  }
-
   public synchronized RegisteredState getRegistered() {
     if      (isPushGroupRecipient()) return RegisteredState.REGISTERED;
     else if (isMmsGroupRecipient())  return RegisteredState.NOT_REGISTERED;
@@ -439,10 +337,6 @@ public class Recipient implements RecipientModifiedListener {
     }
 
     if (notify) notifyListeners();
-  }
-
-  public synchronized boolean isSystemContact() {
-    return contactUri != null;
   }
 
   public synchronized Recipient resolve() {

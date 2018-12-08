@@ -34,14 +34,7 @@ public class DatabaseFactory {
   private static DatabaseFactory instance;
 
   private final SQLCipherOpenHelper   databaseHelper;
-  private final SmsDatabase           sms;
-  private final MmsDatabase           mms;
   private final AttachmentDatabase    attachments;
-  private final MediaDatabase         media;
-  private final ThreadDatabase        thread;
-  private final MmsSmsDatabase        mmsSmsDatabase;
-  private final GroupDatabase         groupDatabase;
-  private final RecipientDatabase     recipientDatabase;
 
   public static DatabaseFactory getInstance(Context context) {
     synchronized (lock) {
@@ -51,37 +44,8 @@ public class DatabaseFactory {
       return instance;
     }
   }
-
-  public static MmsSmsDatabase getMmsSmsDatabase(Context context) {
-    return getInstance(context).mmsSmsDatabase;
-  }
-
-  public static ThreadDatabase getThreadDatabase(Context context) {
-    return getInstance(context).thread;
-  }
-
-  public static SmsDatabase getSmsDatabase(Context context) {
-    return getInstance(context).sms;
-  }
-
-  public static MmsDatabase getMmsDatabase(Context context) {
-    return getInstance(context).mms;
-  }
-
   public static AttachmentDatabase getAttachmentDatabase(Context context) {
     return getInstance(context).attachments;
-  }
-
-  public static MediaDatabase getMediaDatabase(Context context) {
-    return getInstance(context).media;
-  }
-
-  public static GroupDatabase getGroupDatabase(Context context) {
-    return getInstance(context).groupDatabase;
-  }
-
-  public static RecipientDatabase getRecipientDatabase(Context context) {
-    return getInstance(context).recipientDatabase;
   }
 
   private DatabaseFactory(@NonNull Context context) {
@@ -91,16 +55,6 @@ public class DatabaseFactory {
     AttachmentSecret    attachmentSecret = AttachmentSecretProvider.getInstance(context).getOrCreateAttachmentSecret();
 
     this.databaseHelper       = new SQLCipherOpenHelper(context, databaseSecret);
-    this.sms                  = new SmsDatabase(context, databaseHelper);
-    this.mms                  = new MmsDatabase(context, databaseHelper);
     this.attachments          = new AttachmentDatabase(context, databaseHelper, attachmentSecret);
-    this.media                = new MediaDatabase(context, databaseHelper);
-    this.thread               = new ThreadDatabase(context, databaseHelper);
-    this.mmsSmsDatabase       = new MmsSmsDatabase(context, databaseHelper);
-    this.groupDatabase        = new GroupDatabase(context, databaseHelper);
-    this.recipientDatabase    = new RecipientDatabase(context, databaseHelper);
   }
-
-
-
 }

@@ -14,12 +14,6 @@ import net.sqlcipher.database.SQLiteDatabaseHook;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
-import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.database.GroupDatabase;
-import org.thoughtcrime.securesms.database.MmsDatabase;
-import org.thoughtcrime.securesms.database.RecipientDatabase;
-import org.thoughtcrime.securesms.database.SmsDatabase;
-import org.thoughtcrime.securesms.database.ThreadDatabase;
 
 import java.io.File;
 
@@ -65,18 +59,6 @@ public class SQLCipherOpenHelper extends SQLiteOpenHelper {
 
   @Override
   public void onCreate(SQLiteDatabase db) {
-    db.execSQL(SmsDatabase.CREATE_TABLE);
-    db.execSQL(MmsDatabase.CREATE_TABLE);
-    db.execSQL(AttachmentDatabase.CREATE_TABLE);
-    db.execSQL(ThreadDatabase.CREATE_TABLE);
-    db.execSQL(GroupDatabase.CREATE_TABLE);
-    db.execSQL(RecipientDatabase.CREATE_TABLE);
-
-    executeStatements(db, SmsDatabase.CREATE_INDEXS);
-    executeStatements(db, MmsDatabase.CREATE_INDEXS);
-    executeStatements(db, AttachmentDatabase.CREATE_INDEXS);
-    executeStatements(db, ThreadDatabase.CREATE_INDEXS);
-    executeStatements(db, GroupDatabase.CREATE_INDEXS);
   }
 
   @Override

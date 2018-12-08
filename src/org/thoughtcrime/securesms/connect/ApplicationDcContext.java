@@ -28,7 +28,6 @@ import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientProvider;
@@ -236,7 +235,7 @@ public class ApplicationDcContext extends DcContext {
   @NonNull
   public ThreadRecord getThreadRecord(DcLot summary, DcChat chat) { // adapted from ThreadDatabase.getCurrent()
     int chatId = chat.getId();
-    int distributionType = chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK ? ThreadDatabase.DistributionTypes.ARCHIVE : ThreadDatabase.DistributionTypes.CONVERSATION;
+    int distributionType = chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK ? ThreadRecord.DistributionTypes.ARCHIVE : ThreadRecord.DistributionTypes.CONVERSATION;
 
     String body = summary.getText1();
     if (!body.isEmpty()) {

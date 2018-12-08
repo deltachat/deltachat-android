@@ -1,9 +1,6 @@
 package com.b44t.messenger;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-import org.thoughtcrime.securesms.database.model.Quote;
 
 import java.io.File;
 import java.util.Set;
@@ -160,12 +157,6 @@ public class DcMsg {
     public boolean isIdentityUpdate() { return false; }
     public boolean isIdentityVerified() { return false; }
     public boolean isIdentityDefault() { return false; }
-
-    @Nullable
-    public Quote getQuote() {
-        // TODO: remove the dependency to org.thoughtcrime.securesms.database.model.Quote
-        return null;
-    }
 
     // working with raw c-data
     private long        msgCPtr;        // CAVE: the name is referenced in the JNI

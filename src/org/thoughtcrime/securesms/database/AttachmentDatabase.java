@@ -358,7 +358,8 @@ public class AttachmentDatabase extends Database {
 
     try {
       if (cursor != null && cursor.moveToFirst()) {
-        notifyConversationListeners(DatabaseFactory.getMmsDatabase(context).getThreadIdForMessage(cursor.getLong(cursor.getColumnIndexOrThrow(MMS_ID))));
+//        notifyConversationListeners(
+//            DatabaseFactory.getMmsDatabase(context).getThreadIdForMessage(cursor.getLong(cursor.getColumnIndexOrThrow(MMS_ID))));
       }
     } finally {
       if (cursor != null) cursor.close();
