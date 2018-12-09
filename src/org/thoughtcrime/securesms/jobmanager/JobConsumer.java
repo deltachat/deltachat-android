@@ -19,8 +19,6 @@ package org.thoughtcrime.securesms.jobmanager;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.jobmanager.persistence.PersistentStorage;
-
 class JobConsumer extends Thread {
 
   private static final String TAG = JobConsumer.class.getSimpleName();
@@ -32,12 +30,10 @@ class JobConsumer extends Thread {
   }
 
   private final JobQueue          jobQueue;
-  private final PersistentStorage persistentStorage;
 
-  public JobConsumer(String name, JobQueue jobQueue, PersistentStorage persistentStorage) {
+  public JobConsumer(String name, JobQueue jobQueue) {
     super(name);
     this.jobQueue          = jobQueue;
-    this.persistentStorage = persistentStorage;
   }
 
   @Override
@@ -51,10 +47,6 @@ class JobConsumer extends Thread {
       } else {
         if (result == JobResult.FAILURE) {
           job.onCanceled();
-        }
-
-        if (job.isPersistent()) {
-          persistentStorage.remove(job.getPersistentId());
         }
 
         if (job.getWakeLock() != null && job.getWakeLockTimeout() == 0) {

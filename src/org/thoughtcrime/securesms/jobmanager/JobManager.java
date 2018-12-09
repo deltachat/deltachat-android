@@ -18,14 +18,11 @@ package org.thoughtcrime.securesms.jobmanager;
 
 import android.content.Context;
 import android.os.PowerManager;
-import android.util.Log;
 
 import org.thoughtcrime.securesms.jobmanager.persistence.JobSerializer;
-import org.thoughtcrime.securesms.jobmanager.persistence.PersistentStorage;
 import org.thoughtcrime.securesms.jobmanager.requirements.RequirementListener;
 import org.thoughtcrime.securesms.jobmanager.requirements.RequirementProvider;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -42,7 +39,6 @@ public class JobManager implements RequirementListener {
   private final Executor      eventExecutor      = Executors.newSingleThreadExecutor();
 
   private final Context                     context;
-  private final PersistentStorage           persistentStorage;
   private final List<RequirementProvider>   requirementProviders;
 
   private JobManager(Context context, String name,
@@ -50,10 +46,7 @@ public class JobManager implements RequirementListener {
                      JobSerializer jobSerializer, int consumers)
   {
     this.context              = context;
-    this.persistentStorage    = new PersistentStorage(context, name, jobSerializer);
     this.requirementProviders = requirementProviders;
-
-    eventExecutor.execute(new LoadTask(null));
 
     if (requirementProviders != null && !requirementProviders.isEmpty()) {
       for (RequirementProvider provider : requirementProviders) {
@@ -62,7 +55,7 @@ public class JobManager implements RequirementListener {
     }
 
     for (int i=0;i<consumers;i++) {
-      new JobConsumer("JobConsumer-" + i, jobQueue, persistentStorage).start();
+      new JobConsumer("JobConsumer-" + i, jobQueue).start();
     }
   }
 
@@ -87,17 +80,8 @@ public class JobManager implements RequirementListener {
     eventExecutor.execute(new Runnable() {
       @Override
       public void run() {
-        try {
-          if (job.isPersistent()) {
-            persistentStorage.store(job);
-          }
-
-          job.onAdded();
-          jobQueue.add(job);
-        } catch (IOException e) {
-          Log.w("JobManager", e);
-          job.onCanceled();
-        }
+        job.onAdded();
+        jobQueue.add(job);
       }
     });
   }
@@ -120,25 +104,6 @@ public class JobManager implements RequirementListener {
     else              wakeLock.acquire(timeout);
 
     return wakeLock;
-  }
-
-  private class LoadTask implements Runnable {
-
-    private final EncryptionKeys keys;
-
-    public LoadTask(EncryptionKeys keys) {
-      this.keys = keys;
-    }
-
-    @Override
-    public void run() {
-      List<Job> pendingJobs;
-
-      if (keys == null) pendingJobs = persistentStorage.getAllUnencrypted();
-      else              pendingJobs = persistentStorage.getAllEncrypted(keys);
-
-      jobQueue.addAll(pendingJobs);
-    }
   }
 
   public static class Builder {
