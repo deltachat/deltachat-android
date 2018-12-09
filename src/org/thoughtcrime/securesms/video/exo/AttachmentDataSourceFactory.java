@@ -27,7 +27,6 @@ public class AttachmentDataSourceFactory implements DataSource.Factory {
 
   @Override
   public AttachmentDataSource createDataSource() {
-    return new AttachmentDataSource(defaultDataSourceFactory.createDataSource(),
-                                    new PartDataSource(context, listener));
+    return new AttachmentDataSource(defaultDataSourceFactory.createDataSource());
   }
 }

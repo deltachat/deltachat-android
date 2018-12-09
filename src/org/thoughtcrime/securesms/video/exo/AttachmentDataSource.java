@@ -14,20 +14,16 @@ import java.io.IOException;
 public class AttachmentDataSource implements DataSource {
 
   private final DefaultDataSource defaultDataSource;
-  private final PartDataSource    partDataSource;
 
   private DataSource dataSource;
 
-  public AttachmentDataSource(DefaultDataSource defaultDataSource, PartDataSource partDataSource) {
+  public AttachmentDataSource(DefaultDataSource defaultDataSource) {
     this.defaultDataSource = defaultDataSource;
-    this.partDataSource    = partDataSource;
   }
 
   @Override
   public long open(DataSpec dataSpec) throws IOException {
-    if (PartAuthority.isLocalUri(dataSpec.uri)) dataSource = partDataSource;
-    else                                        dataSource = defaultDataSource;
-
+    dataSource = defaultDataSource;
     return dataSource.open(dataSpec);
   }
 
