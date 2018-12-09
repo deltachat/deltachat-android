@@ -58,7 +58,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
   public BucketedThreadMedia loadInBackground() {
     BucketedThreadMedia result   = new BucketedThreadMedia(getContext());
     DcContext context = DcHelper.getContext(getContext());
-    int[] messages = context.getChatMedia(address.getDcChatId(), DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_IMAGE);
+    int[] messages = context.getChatMedia(address.getDcChatId(), DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_VIDEO);
     for(int nextId : messages) {
       result.add(context.getMsg(nextId));
     }

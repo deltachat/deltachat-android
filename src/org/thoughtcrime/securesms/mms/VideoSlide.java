@@ -38,6 +38,7 @@ public class VideoSlide extends Slide {
 
   public VideoSlide(Context context, DcMsg dcMsg) {
     super(context, new DcAttachment(dcMsg));
+    dcMsgId = dcMsg.getId();
   }
 
   public VideoSlide(Context context, Attachment attachment) {

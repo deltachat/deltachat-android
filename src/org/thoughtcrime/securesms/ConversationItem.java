@@ -55,6 +55,7 @@ import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
+import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
@@ -417,11 +418,21 @@ public class ConversationItem extends LinearLayout
       if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
 
-      //noinspection ConstantConditions
+      Slide slide;
+      boolean isPreview;
+      if (messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
+        slide = new VideoSlide(context, messageRecord);
+        isPreview = true;
+      }
+      else {
+        slide = new DocumentSlide(context, messageRecord);
+        isPreview = false;
+      }
+
       mediaThumbnailStub.get().setImageResource(glideRequests,
-                                                new DocumentSlide(context, messageRecord),
+                                                slide,
                                                 showControls,
-                                                false,
+                                                isPreview,
                                                 messageRecord.getWidth(100),
                                                 messageRecord.getHeight(100));
       mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
