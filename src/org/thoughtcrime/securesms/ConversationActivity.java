@@ -498,9 +498,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleConversationSettings() {
     Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
     intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
-    intent.putExtra(RecipientPreferenceActivity.CAN_HAVE_SAFETY_NUMBER_EXTRA,
-                    isSecureText && !isSelfConversation());
-
     startActivitySceneTransition(intent, titleView.findViewById(R.id.contact_photo_image), "avatar");
   }
 
