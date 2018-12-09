@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.Ringtone;
@@ -25,6 +26,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.b44t.messenger.DcChat;
@@ -473,6 +475,18 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     private class EditContactNameListener implements Preference.OnPreferenceClickListener {
       @Override
       public boolean onPreferenceClick(Preference preference) {
+        final DcContact dcContact = dcContext.getContact(contactToEditRecipient.getAddress().getDcContactId());
+        final EditText txt = new EditText(getActivity());
+        txt.setText(dcContact.getName());
+        new AlertDialog.Builder(getActivity())
+            .setTitle(R.string.recipient_preferences__edit_name)
+            .setView(txt)
+            .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
+              String newName = txt.getText().toString();
+              dcContext.createContact(newName, dcContact.getAddr());
+            })
+            .setNegativeButton(android.R.string.cancel, null)
+            .show();
         return true;
       }
     }
