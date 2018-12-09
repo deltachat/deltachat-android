@@ -2,8 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:key="about_divider" android:layout="@layout/preference_divider"/>
-
     <PreferenceCategory android:key="notification_settings" android:title="@string/recipient_preferences__chat_settings">
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                 android:key="pref_key_recipient_mute"
@@ -38,12 +36,12 @@
                     android:title="user@example.org"
                     android:persistent="false"/>
 
-        <Preference android:key="pref_key_recipient_encryption_info"
-                    android:title="@string/recipient_preferences__encryption_info"
-                    android:persistent="false"/>
-
         <Preference android:key="pref_key_recipient_edit_name"
                     android:title="@string/recipient_preferences__edit_name"
+                    android:persistent="false"/>
+
+        <Preference android:key="pref_key_recipient_encryption_info"
+                    android:title="@string/recipient_preferences__encryption_info"
                     android:persistent="false"/>
 
         <Preference android:key="pref_key_recipient_block"

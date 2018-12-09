@@ -178,19 +178,47 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     this.toolbarLayout.setContentScrimColor(recipient.getFallbackAvatarColor(this));
   }
 
+
+  // the fragment
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
   public static class RecipientPreferenceFragment
       extends    CorrectedPreferenceFragment
       implements DcEventCenter.DcEventDelegate
   {
     private ApplicationDcContext dcContext;
-    private Recipient recipient;
+    private Recipient profileRecipient;    // the recipient the profile was opened for, may be a chat or a contact
+    private DcChat    chatToEdit;          // may be an invalid chat that returns 0 as id
+    private Recipient chatToEditRecipient;
+    private Recipient contactToEditRecipient;
 
     @Override
     public void onCreate(Bundle icicle) {
-      dcContext = DcHelper.getContext(getActivity());
       super.onCreate(icicle);
 
-      this.recipient = Recipient.from(getActivity(), getArguments().getParcelable(ADDRESS_EXTRA), true);
+      dcContext = DcHelper.getContext(getActivity());
+      profileRecipient = Recipient.from(getActivity(), getArguments().getParcelable(ADDRESS_EXTRA));
+
+
+      // set the recipient to edit as the chat.
+      // when the profile shows a contact, this is _not_ the contact but the chat with the contact (if exists)
+      int chatToEditId = profileRecipient.getAddress().isDcChat()? profileRecipient.getAddress().getDcChatId() : 0;
+      if(chatToEditId==0 && profileRecipient.getAddress().isDcContact()) {
+        chatToEditId = dcContext.getChatIdByContactId(profileRecipient.getAddress().getDcContactId());
+      }
+      chatToEdit = dcContext.getChat(chatToEditId);
+      chatToEditRecipient = Recipient.from(getActivity(), Address.fromChat(chatToEditId));
+
+      // set the recipent really to edit as the contact
+      int contactToEditId = profileRecipient.getAddress().isDcContact()? profileRecipient.getAddress().getDcContactId() : 0;
+      if(contactToEditId==0 && !chatToEdit.isGroup() ) {
+        int members[] = dcContext.getChatContacts(chatToEdit.getId());
+        if(members.length>=1) {
+          contactToEditId = members[0];
+        }
+      }
+      contactToEditRecipient = Recipient.from(getActivity(), Address.fromContact(contactToEditId));
+
 
       this.findPreference(PREFERENCE_MESSAGE_TONE)
           .setOnPreferenceChangeListener(new RingtoneChangeListener());
@@ -220,7 +248,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     @Override
     public void onResume() {
       super.onResume();
-      setSummaries(recipient);
+      setSummaries();
     }
 
     @Override
@@ -238,42 +266,72 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       }
     }
 
-    private void setSummaries(Recipient recipient) {
-      int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
+    private void setSummaries() {
 
+      // chat settings
+      PreferenceCategory    notificationCategory      = (PreferenceCategory)this.findPreference("notification_settings");
       CheckBoxPreference    mutePreference            = (CheckBoxPreference) this.findPreference(PREFERENCE_MUTED);
       Preference            ringtoneMessagePreference = this.findPreference(PREFERENCE_MESSAGE_TONE);
       ListPreference        vibrateMessagePreference  = (ListPreference) this.findPreference(PREFERENCE_MESSAGE_VIBRATE);
-      Preference            blockPreference           = this.findPreference(PREFERENCE_BLOCK);
-      Preference            encryptionPreference      = this.findPreference(PREFERENCE_ENCRYPTION);
-      PreferenceCategory    aboutCategory             = (PreferenceCategory)this.findPreference("about");
-      PreferenceCategory    aboutDivider              = (PreferenceCategory)this.findPreference("about_divider");
+
+      // contact settings
       PreferenceCategory    privacyCategory           = (PreferenceCategory) this.findPreference("privacy_settings");
       PreferenceCategory    divider                   = (PreferenceCategory) this.findPreference("divider");
+      Preference            addrPreference            = this.findPreference("pref_key_recipient_addr");
+      Preference            encryptionPreference      = this.findPreference(PREFERENCE_ENCRYPTION);
+      Preference            editNamePreference        = this.findPreference("pref_key_recipient_edit_name");
+      Preference            blockPreference           = this.findPreference(PREFERENCE_BLOCK);
 
-      mutePreference.setChecked(Prefs.isChatMuted(getContext(), chatId));
+      editNamePreference.setOnPreferenceClickListener(new EditContactNameListener());
+      encryptionPreference.setOnPreferenceClickListener(new ShowEncrInfoListener());
 
-      ringtoneMessagePreference.setSummary(getRingtoneSummary(getContext(), recipient.getMessageRingtone()));
+      mutePreference.setChecked(Prefs.isChatMuted(getContext(), chatToEdit.getId()));
 
-      VibrateState vibrateState = Prefs.getChatVibrate(getContext(), chatId);
+      ringtoneMessagePreference.setSummary(getRingtoneSummary(getContext(), chatToEditRecipient.getMessageRingtone()));
+
+      VibrateState vibrateState = Prefs.getChatVibrate(getContext(), chatToEdit.getId());
       Pair<String, Integer> vibrateMessageSummary = getVibrateSummary(getContext(), vibrateState);
 
       vibrateMessagePreference.setSummary(vibrateMessageSummary.first);
       vibrateMessagePreference.setValueIndex(vibrateMessageSummary.second);
 
-      if (recipient.isGroupRecipient()) {
-        // chat view (groups and 1:1 chats with single contacts)
-        if (blockPreference      != null) blockPreference.setVisible(false);
-        if (encryptionPreference != null) encryptionPreference.setVisible(false);
+      if (chatToEdit.getId()!=0 && chatToEdit.isGroup()) {
+        // group
         if (privacyCategory      != null) privacyCategory.setVisible(false);
+        if (addrPreference       != null) addrPreference.setVisible(false);
+        if (encryptionPreference != null) encryptionPreference.setVisible(false);
+        if (editNamePreference   != null) editNamePreference.setVisible(false); // group name is currently somewhere else ...
+        if (blockPreference      != null) blockPreference.setVisible(false);
+
         if (divider              != null) divider.setVisible(false);
-        if (aboutCategory        != null) getPreferenceScreen().removePreference(aboutCategory);
-        if (aboutDivider         != null) getPreferenceScreen().removePreference(aboutDivider);
-      } else {
-        // contact view
-        if (recipient.isBlocked()) blockPreference.setTitle(R.string.RecipientPreferenceActivity_unblock);
-        else                       blockPreference.setTitle(R.string.RecipientPreferenceActivity_block);
       }
+      else {
+        // contact view
+        addrPreference.setTitle(getProfileContact().getAddr());
+
+        if (contactToEditRecipient.isBlocked()) blockPreference.setTitle(R.string.RecipientPreferenceActivity_unblock);
+        else                                    blockPreference.setTitle(R.string.RecipientPreferenceActivity_block);
+
+        if(chatToEdit.getId()==0) {
+          mutePreference.setVisible(false);
+          ringtoneMessagePreference.setVisible(false);
+          vibrateMessagePreference.setVisible(false);
+          notificationCategory.setVisible(false);
+        }
+      }
+    }
+
+    private DcContact getProfileContact() {
+      if(profileRecipient.getAddress().isDcContact()) {
+        return dcContext.getContact(profileRecipient.getAddress().getDcContactId());
+      }
+      else if(profileRecipient.getAddress().isDcChat()) {
+        int members[] = dcContext.getChatContacts(profileRecipient.getAddress().getDcChatId());
+        if(members.length>=1) {
+          return dcContext.getContact(members[0]);
+        }
+      }
+      return dcContext.getContact(0);
     }
 
     private @NonNull String getRingtoneSummary(@NonNull Context context, @Nullable Uri ringtone) {
@@ -305,7 +363,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
       if(eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
-        setSummaries(recipient);
+        setSummaries();
       }
     }
 
@@ -323,8 +381,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         if (defaultValue.equals(value)) value = null;
         else if (value == null)         value = Uri.EMPTY;
 
-        int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
-        Prefs.setChatRingtone(getContext(), chatId, value);
+        Prefs.setChatRingtone(getContext(), chatToEdit.getId(), value);
 
         return false;
       }
@@ -337,7 +394,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
       @Override
       public boolean onPreferenceClick(Preference preference) {
-        Uri current = recipient.getMessageRingtone();
+        Uri current = chatToEditRecipient.getMessageRingtone();
         Uri defaultUri = Prefs.getNotificationRingtone(getContext());
 
         if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
@@ -366,8 +423,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
               int          value        = Integer.parseInt((String) newValue);
         final VibrateState vibrateState = VibrateState.fromId(value);
 
-        int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
-        Prefs.setChatVibrate(getContext(), chatId, vibrateState);
+        Prefs.setChatVibrate(getContext(), chatToEdit.getId(), vibrateState);
 
         return false;
       }
@@ -376,9 +432,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     private class MuteClickedListener implements Preference.OnPreferenceClickListener {
       @Override
       public boolean onPreferenceClick(Preference preference) {
-        int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
-
-        if (Prefs.isChatMuted(getContext(), chatId)) {
+        if (Prefs.isChatMuted(getContext(), chatToEdit.getId())) {
           handleUnmute();
         }
         else {
@@ -389,26 +443,45 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       }
 
       private void handleMute() {
-        MuteDialog.show(getActivity(), until -> setMuted(recipient, until));
+        MuteDialog.show(getActivity(), until -> setMuted(until));
       }
 
       private void handleUnmute() {
-        setMuted(recipient, 0);
+        setMuted(0);
       }
 
-      private void setMuted(final Recipient recipient, final long until) {
-        if(recipient.getAddress().isDcChat()) {
-          Prefs.setChatMutedUntil(getActivity(), recipient.getAddress().getDcChatId(), until);
-          setSummaries(recipient);
+      private void setMuted(final long until) {
+        if(chatToEditRecipient.getAddress().isDcChat()) {
+          Prefs.setChatMutedUntil(getActivity(), chatToEditRecipient.getAddress().getDcChatId(), until);
+          setSummaries();
         }
+      }
+    }
+
+    private class ShowEncrInfoListener implements Preference.OnPreferenceClickListener {
+      @Override
+      public boolean onPreferenceClick(Preference preference) {
+        String info_str = dcContext.getContactEncrInfo(contactToEditRecipient.getAddress().getDcContactId());
+        new AlertDialog.Builder(getActivity())
+            .setMessage(info_str)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
+        return true;
+      }
+    }
+
+    private class EditContactNameListener implements Preference.OnPreferenceClickListener {
+      @Override
+      public boolean onPreferenceClick(Preference preference) {
+        return true;
       }
     }
 
     private class BlockClickedListener implements Preference.OnPreferenceClickListener {
       @Override
       public boolean onPreferenceClick(Preference preference) {
-        if (recipient.isBlocked()) handleUnblock();
-        else                       handleBlock();
+        if (contactToEditRecipient.isBlocked()) handleUnblock();
+        else                                    handleBlock();
 
         return true;
       }
@@ -419,7 +492,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
             .setMessage(R.string.RecipientPreferenceActivity_you_will_no_longer_receive_messages_and_calls_from_this_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.RecipientPreferenceActivity_block, (dialog, which) -> setBlocked(recipient, true)).show();
+            .setPositiveButton(R.string.RecipientPreferenceActivity_block, (dialog, which) -> setBlocked(true)).show();
       }
 
       private void handleUnblock() {
@@ -428,16 +501,14 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
             .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, (dialog, which) -> setBlocked(recipient, false)).show();
+            .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, (dialog, which) -> setBlocked(false)).show();
       }
 
-      private void setBlocked(final Recipient recipient, final boolean blocked) {
+      private void setBlocked(final boolean blocked) {
         new AsyncTask<Void, Void, Void>() {
           @Override
           protected Void doInBackground(Void... params) {
-            ApplicationDcContext dcContext = DcHelper.getContext(getContext());
-            int[] contactId = dcContext.getChatContacts(recipient.getAddress().getDcChatId());
-            dcContext.blockContact(contactId[0], blocked ? 1 : 0);
+            dcContext.blockContact(contactToEditRecipient.getAddress().getDcContactId(), blocked ? 1 : 0);
             return null;
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
