@@ -163,10 +163,10 @@ public class ConversationListItem extends RelativeLayout
     if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
       ApplicationDcContext dcContext = DcHelper.getContext(getContext());
       DcContact dcContact = dcContext.getContact(dcContext.getMsg(msgId).getFromId());
-      this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
+      this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), false);
     }
     else {
-      this.contactPhotoImage.setAvatar(glideRequests, recipient, true);
+      this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
     }
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(

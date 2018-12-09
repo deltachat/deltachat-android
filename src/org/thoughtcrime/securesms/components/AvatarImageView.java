@@ -57,7 +57,9 @@ public class AvatarImageView extends AppCompatImageView {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .circleCrop()
                     .into(this);
-      setAvatarClickHandler(recipient, quickContactEnabled);
+      if(quickContactEnabled) {
+        setAvatarClickHandler(recipient, quickContactEnabled);
+      }
     } else {
       setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ContactColors.UNKNOWN_COLOR.toConversationColor(getContext()), inverted));
       super.setOnClickListener(listener);
