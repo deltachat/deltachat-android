@@ -4,8 +4,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import org.thoughtcrime.securesms.database.AttachmentDatabase;
-
 public abstract class Attachment {
 
   @NonNull
@@ -71,11 +69,6 @@ public abstract class Attachment {
     return transferState;
   }
 
-  public boolean isInProgress() {
-    return transferState != AttachmentDatabase.TRANSFER_PROGRESS_DONE &&
-           transferState != AttachmentDatabase.TRANSFER_PROGRESS_FAILED;
-  }
-
   public long getSize() {
     return size;
   }
@@ -93,21 +86,6 @@ public abstract class Attachment {
   @Nullable
   public String getLocation() {
     return location;
-  }
-
-  @Nullable
-  public String getKey() {
-    return key;
-  }
-
-  @Nullable
-  public String getRelay() {
-    return relay;
-  }
-
-  @Nullable
-  public byte[] getDigest() {
-    return digest;
   }
 
   @Nullable

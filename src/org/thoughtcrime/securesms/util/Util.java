@@ -16,7 +16,6 @@
  */
 package org.thoughtcrime.securesms.util;
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.ClipData;
@@ -26,12 +25,10 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.Telephony;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Spannable;
@@ -40,7 +37,6 @@ import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
 
-import com.google.android.mms.pdu_alt.CharacterSets;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
 
 import org.thoughtcrime.securesms.BuildConfig;
@@ -51,8 +47,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.util.Arrays;
@@ -61,20 +55,12 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Util {
   private static final String TAG = Util.class.getSimpleName();
 
   public static Handler handler = new Handler(Looper.getMainLooper());
-
-  public static <T> List<T> asList(T... elements) {
-    List<T> result = new LinkedList<>();
-    Collections.addAll(result, elements);
-    return result;
-  }
 
   public static String join(String[] list, String delimiter) {
     return join(Arrays.asList(list), delimiter);
@@ -105,17 +91,6 @@ public class Util {
     return sb.toString();
   }
 
-  public static ExecutorService newSingleThreadedLifoExecutor() {
-    ThreadPoolExecutor executor = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingLifoQueue<Runnable>());
-
-    executor.execute(() -> {
-//        Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
-      Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
-    });
-
-    return executor;
-  }
-
   public static boolean isEmpty(EncodedStringValue[] value) {
     return value == null || value.length == 0;
   }
@@ -131,30 +106,6 @@ public class Util {
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
     return spanned;
-  }
-
-  public static @NonNull String toIsoString(byte[] bytes) {
-    try {
-      return new String(bytes, CharacterSets.MIMENAME_ISO_8859_1);
-    } catch (UnsupportedEncodingException e) {
-      throw new AssertionError("ISO_8859_1 must be supported!");
-    }
-  }
-
-  public static byte[] toIsoBytes(String isoString) {
-    try {
-      return isoString.getBytes(CharacterSets.MIMENAME_ISO_8859_1);
-    } catch (UnsupportedEncodingException e) {
-      throw new AssertionError("ISO_8859_1 must be supported!");
-    }
-  }
-
-  public static byte[] toUtf8Bytes(String utf8String) {
-    try {
-      return utf8String.getBytes(CharacterSets.MIMENAME_UTF_8);
-    } catch (UnsupportedEncodingException e) {
-      throw new AssertionError("UTF_8 must be supported!");
-    }
   }
 
   public static void wait(Object lock, long timeout) {
@@ -179,19 +130,6 @@ public class Util {
     } catch (IOException e) {
       Log.w(TAG, e);
     }
-  }
-
-  public static long getStreamLength(InputStream in) throws IOException {
-    byte[] buffer    = new byte[4096];
-    int    totalSize = 0;
-
-    int read;
-
-    while ((read = in.read(buffer)) != -1) {
-      totalSize += read;
-    }
-
-    return totalSize;
   }
 
   public static boolean isOwnNumber(Context context, Address address) {
@@ -230,10 +168,6 @@ public class Util {
     return bout.toByteArray();
   }
 
-  public static String readFullyAsString(InputStream in) throws IOException {
-    return new String(readFully(in));
-  }
-
   public static long copy(InputStream in, OutputStream out) throws IOException {
     byte[] buffer = new byte[8192];
     int read;
@@ -248,18 +182,6 @@ public class Util {
     out.close();
 
     return total;
-  }
-
-  public static <T> List<List<T>> partition(List<T> list, int partitionSize) {
-    List<List<T>> results = new LinkedList<>();
-
-    for (int index=0;index<list.size();index+=partitionSize) {
-      int subListSize = Math.min(partitionSize, list.size() - index);
-
-      results.add(list.subList(index, index + subListSize));
-    }
-
-    return results;
   }
 
   public static List<String> split(String source, String delimiter) {
@@ -308,23 +230,12 @@ public class Util {
     return result;
   }
 
-  @SuppressLint("NewApi")
-  public static boolean isDefaultSmsProvider(Context context){
-    return (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) ||
-      (context.getPackageName().equals(Telephony.Sms.getDefaultSmsPackage(context)));
-  }
-
   public static int getCurrentApkReleaseVersion(Context context) {
     try {
       return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
     } catch (PackageManager.NameNotFoundException e) {
       throw new AssertionError(e);
     }
-  }
-
-  public static String getSecret(int size) {
-    byte[] secret = getSecretBytes(size);
-    return Base64.encodeBytes(secret);
   }
 
   public static byte[] getSecretBytes(int size) {
@@ -391,14 +302,6 @@ public class Util {
     }, delayMillis);
   }
 
-  public static <T> T getRandomElement(T[] elements) {
-    try {
-      return elements[SecureRandom.getInstance("SHA1PRNG").nextInt(elements.length)];
-    } catch (NoSuchAlgorithmException e) {
-      throw new AssertionError(e);
-    }
-  }
-
   public static boolean equals(@Nullable Object a, @Nullable Object b) {
     return a == b || (a != null && a.equals(b));
   }
@@ -428,18 +331,6 @@ public class Util {
     return Math.min(Math.max(value, min), max);
   }
 
-  public static @Nullable String readTextFromClipboard(@NonNull Context context) {
-    {
-      ClipboardManager clipboardManager = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
-
-      if (clipboardManager.hasPrimaryClip() && clipboardManager.getPrimaryClip().getItemCount() > 0) {
-        return clipboardManager.getPrimaryClip().getItemAt(0).getText().toString();
-      } else {
-        return null;
-      }
-    }
-  }
-
   public static void writeTextToClipboard(@NonNull Context context, @NonNull String text) {
     {
       ClipboardManager clipboardManager = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
@@ -452,15 +343,6 @@ public class Util {
       throw new ArithmeticException("integer overflow");
     }
     return (int)value;
-  }
-
-  public static boolean isStringEquals(String first, String second) {
-    if (first == null) return second == null;
-    return first.equals(second);
-  }
-
-  public static boolean isEquals(@Nullable Long first, long second) {
-    return first != null && first == second;
   }
 
   public static String getPrettyFileSize(long sizeBytes) {

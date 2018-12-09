@@ -35,10 +35,8 @@ public class AttachmentDatabase extends Database {
   
   private static final String TAG = AttachmentDatabase.class.getSimpleName();
 
-  public  static final String ROW_ID                 = "_id";
   public  static final String DATA                   = "_data";
   public  static final String SIZE                   = "data_size";
-  public  static final String UNIQUE_ID              = "unique_id";
 
   public static final int TRANSFER_PROGRESS_DONE    = 0;
   public static final int TRANSFER_PROGRESS_STARTED = 1;

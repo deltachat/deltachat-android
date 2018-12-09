@@ -78,7 +78,6 @@ public class ContactSelectionListFragment extends    Fragment
   @SuppressWarnings("unused")
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
 
-  public static final String DISPLAY_MODE          = "display_mode";
   public static final String MULTI_SELECT          = "multi_select";
   public static final String REFRESHABLE           = "refreshable";
   public static final String RECENTS               = "recents";

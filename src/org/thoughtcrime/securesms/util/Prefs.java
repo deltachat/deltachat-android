@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.Camera.CameraInfo;
 import android.net.Uri;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.Settings;
@@ -43,16 +42,12 @@ public class Prefs {
   private static final String LED_BLINK_PREF_CUSTOM            = "pref_led_blink_custom";
   private static final String CHAT_MUTED_UNTIL                 = "pref_chat_muted_until_"; // followed by chat-id
   private static final String CHAT_RINGTONE                    = "pref_chat_ringtone_"; // followed by chat-id
-  public  static final String ALL_SMS_PREF                     = "pref_all_sms";
   public  static final String SCREEN_LOCK_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
   public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
   private static final String LOCAL_NUMBER_PREF                = "pref_local_number";
-  public  static final String REGISTERED_GCM_PREF              = "pref_gcm_registered";
-  private static final String PROMPTED_DEFAULT_SMS_PREF        = "pref_prompted_default_sms";
   private static final String PROMPTED_OPTIMIZE_DOZE_PREF      = "pref_prompted_optimize_doze";
-  private static final String PROMPTED_SHARE_PREF              = "pref_prompted_share";
   private static final String UPDATE_APK_REFRESH_TIME_PREF     = "pref_update_apk_refresh_time";
   private static final String UPDATE_APK_DOWNLOAD_ID           = "pref_update_apk_download_id";
   private static final String UPDATE_APK_DIGEST                = "pref_update_apk_digest";
@@ -131,14 +126,6 @@ public class Prefs {
     return getBooleanPreference(context, INCOGNITO_KEYBORAD_PREF, false);
   }
 
-  public static @Nullable String getProfileKey(Context context) {
-    return getStringPreference(context, PROFILE_KEY_PREF, null);
-  }
-
-  public static void setProfileKey(Context context, String key) {
-    setStringPreference(context, PROFILE_KEY_PREF, key);
-  }
-
   public static void setProfileName(Context context, String name) {
     setStringPreference(context, PROFILE_NAME_PREF, name);
   }
@@ -182,14 +169,6 @@ public class Prefs {
     } catch (NumberFormatException e) {
       Log.w(TAG, e);
       return 0;
-    }
-  }
-
-  public static boolean isSmsEnabled(Context context) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-      return Util.isDefaultSmsProvider(context);
-    } else {
-      return isInterceptAllSmsEnabled(context);
     }
   }
 
@@ -255,10 +234,6 @@ public class Prefs {
     return getStringPreference(context, THEME_PREF, "light");
   }
 
-  public static boolean isPushRegistered(Context context) {
-    return getBooleanPreference(context, REGISTERED_GCM_PREF, false);
-  }
-
   public static boolean isScreenLockTimeoutEnabled(Context context) {
     return getBooleanPreference(context, SCREEN_LOCK_TIMEOUT_PREF, false);
   }
@@ -279,32 +254,12 @@ public class Prefs {
     setStringPreference(context, LANGUAGE_PREF, language);
   }
 
-  public static boolean hasPromptedDefaultSmsProvider(Context context) {
-    return getBooleanPreference(context, PROMPTED_DEFAULT_SMS_PREF, false);
-  }
-
-  public static void setPromptedDefaultSmsProvider(Context context, boolean value) {
-    setBooleanPreference(context, PROMPTED_DEFAULT_SMS_PREF, value);
-  }
-
   public static void setPromptedOptimizeDoze(Context context, boolean value) {
     setBooleanPreference(context, PROMPTED_OPTIMIZE_DOZE_PREF, value);
   }
 
   public static boolean hasPromptedOptimizeDoze(Context context) {
     return getBooleanPreference(context, PROMPTED_OPTIMIZE_DOZE_PREF, false);
-  }
-
-  public static boolean hasPromptedShare(Context context) {
-    return getBooleanPreference(context, PROMPTED_SHARE_PREF, false);
-  }
-
-  public static void setPromptedShare(Context context, boolean value) {
-    setBooleanPreference(context, PROMPTED_SHARE_PREF, value);
-  }
-
-  public static boolean isInterceptAllSmsEnabled(Context context) {
-    return getBooleanPreference(context, ALL_SMS_PREF, true);
   }
 
   public static boolean isNotificationsEnabled(Context context) {
