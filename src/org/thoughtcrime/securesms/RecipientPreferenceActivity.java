@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,24 +37,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import org.thoughtcrime.securesms.color.MaterialColor;
-import org.thoughtcrime.securesms.color.MaterialColors;
 import org.thoughtcrime.securesms.components.ThreadPhotoRailView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.loaders.ThreadMediaLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
-import org.thoughtcrime.securesms.preferences.widgets.ColorPickerPreference;
-import org.thoughtcrime.securesms.preferences.widgets.ContactPreference;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
-import org.thoughtcrime.securesms.util.CommunicationActions;
-import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -73,13 +65,9 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
   private static final String PREFERENCE_MUTED           = "pref_key_recipient_mute";
   private static final String PREFERENCE_MESSAGE_TONE    = "pref_key_recipient_ringtone";
-  private static final String PREFERENCE_CALL_TONE       = "pref_key_recipient_call_ringtone";
   private static final String PREFERENCE_MESSAGE_VIBRATE = "pref_key_recipient_vibrate";
-  private static final String PREFERENCE_CALL_VIBRATE    = "pref_key_recipient_call_vibrate";
   private static final String PREFERENCE_BLOCK           = "pref_key_recipient_block";
-  private static final String PREFERENCE_COLOR           = "pref_key_recipient_color";
   private static final String PREFERENCE_IDENTITY        = "pref_key_recipient_identity";
-  private static final String PREFERENCE_ABOUT           = "pref_key_number";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -90,6 +78,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   private TextView                threadPhotoRailLabel;
   private ThreadPhotoRailView     threadPhotoRailView;
   private CollapsingToolbarLayout toolbarLayout;
+
+  private static final int REQUEST_CODE_PICK_RINGTONE = 1;
 
   @Override
   public void onPreCreate() {
@@ -236,7 +226,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       implements RecipientModifiedListener
   {
     private Recipient recipient;
-    private boolean   canHaveSafetyNumber;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -246,25 +235,15 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       initializeRecipients();
 
       this.findPreference(PREFERENCE_MESSAGE_TONE)
-          .setOnPreferenceChangeListener(new RingtoneChangeListener(false));
+          .setOnPreferenceChangeListener(new RingtoneChangeListener());
       this.findPreference(PREFERENCE_MESSAGE_TONE)
-          .setOnPreferenceClickListener(new RingtoneClickedListener(false));
-      this.findPreference(PREFERENCE_CALL_TONE)
-          .setOnPreferenceChangeListener(new RingtoneChangeListener(true));
-      this.findPreference(PREFERENCE_CALL_TONE)
-          .setOnPreferenceClickListener(new RingtoneClickedListener(true));
+          .setOnPreferenceClickListener(new RingtoneClickedListener());
       this.findPreference(PREFERENCE_MESSAGE_VIBRATE)
-          .setOnPreferenceChangeListener(new VibrateChangeListener(false));
-      this.findPreference(PREFERENCE_CALL_VIBRATE)
-          .setOnPreferenceChangeListener(new VibrateChangeListener(true));
+          .setOnPreferenceChangeListener(new VibrateChangeListener());
       this.findPreference(PREFERENCE_MUTED)
           .setOnPreferenceClickListener(new MuteClickedListener());
       this.findPreference(PREFERENCE_BLOCK)
           .setOnPreferenceClickListener(new BlockClickedListener());
-      this.findPreference(PREFERENCE_COLOR)
-          .setOnPreferenceChangeListener(new ColorChangeListener());
-      ((ContactPreference)this.findPreference(PREFERENCE_ABOUT))
-          .setListener(new AboutNumberClickedListener());
     }
 
     @Override
@@ -292,14 +271,10 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-      if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+      if (requestCode == REQUEST_CODE_PICK_RINGTONE && resultCode == RESULT_OK && data != null) {
         Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
 
         findPreference(PREFERENCE_MESSAGE_TONE).getOnPreferenceChangeListener().onPreferenceChange(findPreference(PREFERENCE_MESSAGE_TONE), uri);
-      } else if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-        Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-
-        findPreference(PREFERENCE_CALL_TONE).getOnPreferenceChangeListener().onPreferenceChange(findPreference(PREFERENCE_CALL_TONE), uri);
       }
     }
 
@@ -313,35 +288,25 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
       CheckBoxPreference    mutePreference            = (CheckBoxPreference) this.findPreference(PREFERENCE_MUTED);
       Preference            ringtoneMessagePreference = this.findPreference(PREFERENCE_MESSAGE_TONE);
-      Preference            ringtoneCallPreference    = this.findPreference(PREFERENCE_CALL_TONE);
       ListPreference        vibrateMessagePreference  = (ListPreference) this.findPreference(PREFERENCE_MESSAGE_VIBRATE);
-      ListPreference        vibrateCallPreference     = (ListPreference) this.findPreference(PREFERENCE_CALL_VIBRATE);
-      ColorPickerPreference colorPreference           = (ColorPickerPreference) this.findPreference(PREFERENCE_COLOR);
       Preference            blockPreference           = this.findPreference(PREFERENCE_BLOCK);
       Preference            identityPreference        = this.findPreference(PREFERENCE_IDENTITY);
       PreferenceCategory    aboutCategory             = (PreferenceCategory)this.findPreference("about");
       PreferenceCategory    aboutDivider              = (PreferenceCategory)this.findPreference("about_divider");
-      ContactPreference     aboutPreference           = (ContactPreference)this.findPreference(PREFERENCE_ABOUT);
       PreferenceCategory    privacyCategory           = (PreferenceCategory) this.findPreference("privacy_settings");
       PreferenceCategory    divider                   = (PreferenceCategory) this.findPreference("divider");
 
       mutePreference.setChecked(Prefs.isChatMuted(getContext(), chatId));
 
       ringtoneMessagePreference.setSummary(getRingtoneSummary(getContext(), recipient.getMessageRingtone()));
-      ringtoneCallPreference.setSummary(getRingtoneSummary(getContext(), recipient.getCallRingtone()));
 
       VibrateState vibrateState = Prefs.getChatVibrate(getContext(), chatId);
       Pair<String, Integer> vibrateMessageSummary = getVibrateSummary(getContext(), vibrateState);
-      Pair<String, Integer> vibrateCallSummary    = getVibrateSummary(getContext(), vibrateState);
 
       vibrateMessagePreference.setSummary(vibrateMessageSummary.first);
       vibrateMessagePreference.setValueIndex(vibrateMessageSummary.second);
 
-      vibrateCallPreference.setSummary(vibrateCallSummary.first);
-      vibrateCallPreference.setValueIndex(vibrateCallSummary.second);
-
       if (recipient.isGroupRecipient()) {
-        if (colorPreference    != null) colorPreference.setVisible(false);
         if (blockPreference    != null) blockPreference.setVisible(false);
         if (identityPreference != null) identityPreference.setVisible(false);
         if (privacyCategory    != null) privacyCategory.setVisible(false);
@@ -349,13 +314,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         if (aboutCategory      != null) getPreferenceScreen().removePreference(aboutCategory);
         if (aboutDivider       != null) getPreferenceScreen().removePreference(aboutDivider);
       } else {
-        colorPreference.setColors(MaterialColors.CONVERSATION_PALETTE.asConversationColorArray(getActivity()));
-        colorPreference.setColor(recipient.getFallbackAvatarColor(getActivity()));
-
-        aboutPreference.setTitle(formatAddress(recipient.getAddress()));
-        aboutPreference.setSummary(recipient.getCustomLabel());
-        aboutPreference.setSecure(recipient.getRegistered() == RecipientDatabase.RegisteredState.REGISTERED);
-
         if (recipient.isBlocked()) blockPreference.setTitle(R.string.RecipientPreferenceActivity_unblock);
         else                       blockPreference.setTitle(R.string.RecipientPreferenceActivity_block);
 
@@ -421,10 +379,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
     private class RingtoneChangeListener implements Preference.OnPreferenceChangeListener {
 
-      private final boolean calls;
-
-      RingtoneChangeListener(boolean calls) {
-        this.calls = calls;
+      RingtoneChangeListener() {
       }
 
       @Override
@@ -445,10 +400,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
     private class RingtoneClickedListener implements Preference.OnPreferenceClickListener {
 
-      private final boolean calls;
-
-      RingtoneClickedListener(boolean calls) {
-        this.calls = calls;
+      RingtoneClickedListener() {
       }
 
       @Override
@@ -463,10 +415,10 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, defaultUri);
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, calls ? RingtoneManager.TYPE_RINGTONE : RingtoneManager.TYPE_NOTIFICATION);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
 
-        startActivityForResult(intent, calls ? 2 : 1);
+        startActivityForResult(intent, REQUEST_CODE_PICK_RINGTONE);
 
         return true;
       }
@@ -474,10 +426,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
     private class VibrateChangeListener implements Preference.OnPreferenceChangeListener {
 
-      private final boolean call;
-
-      VibrateChangeListener(boolean call) {
-        this.call = call;
+      VibrateChangeListener() {
       }
 
       @Override
@@ -489,38 +438,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         Prefs.setChatVibrate(getContext(), chatId, vibrateState);
 
         return false;
-      }
-    }
-
-    private class ColorChangeListener implements Preference.OnPreferenceChangeListener {
-
-      @Override
-      public boolean onPreferenceChange(Preference preference, Object newValue) {
-        final Context context = getContext();
-        if (context == null) return true;
-
-        final int           value         = (Integer) newValue;
-        final MaterialColor selectedColor = MaterialColors.CONVERSATION_PALETTE.getByColor(context, value);
-        final MaterialColor currentColor  = recipient.getColor();
-
-        if (selectedColor == null) return true;
-
-        if (preference.isEnabled() && !currentColor.equals(selectedColor)) {
-          new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-//              DatabaseFactory.getRecipientDatabase(context).setColor(recipient, selectedColor);
-
-//              if (recipient.resolve().getRegistered() == RecipientDatabase.RegisteredState.REGISTERED) {
-//                ApplicationContext.getInstance(context)
-//                                  .getJobManager()
-//                                  .add(new MultiDeviceContactUpdateJob(context, recipient.getAddress()));
-//              }
-              return null;
-            }
-          }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        }
-        return true;
       }
     }
 
@@ -548,8 +465,10 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       }
 
       private void setMuted(final Recipient recipient, final long until) {
-        Prefs.setChatMutedUntil(getActivity(), recipient.getAddress().getDcChatId(), until);
-        setSummaries(recipient);
+        if(recipient.getAddress().isDcChat()) {
+          Prefs.setChatMutedUntil(getActivity(), recipient.getAddress().getDcChatId(), until);
+          setSummaries(recipient);
+        }
       }
     }
 
@@ -600,33 +519,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
             return null;
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-      }
-    }
-
-    private class AboutNumberClickedListener implements ContactPreference.Listener {
-
-      @Override
-      public void onMessageClicked() {
-        CommunicationActions.startConversation(getContext(), recipient, null);
-      }
-
-      @Override
-      public void onSecureCallClicked() {
-        CommunicationActions.startVoiceCall(getActivity(), recipient);
-      }
-
-      @Override
-      public void onInSecureCallClicked() {
-        try {
-          Intent dialIntent = new Intent(Intent.ACTION_DIAL,
-                                         Uri.parse("tel:" + recipient.getAddress().serialize()));
-          startActivity(dialIntent);
-        } catch (ActivityNotFoundException anfe) {
-          Log.w(TAG, anfe);
-          Dialogs.showAlertDialog(getContext(),
-                                  getString(R.string.ConversationActivity_calls_not_supported),
-                                  getString(R.string.ConversationActivity_this_device_does_not_appear_to_support_dial_actions));
-        }
       }
     }
   }
