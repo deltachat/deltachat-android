@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.Ringtone;
@@ -28,6 +27,8 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -38,17 +39,15 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Prefs.VibrateState;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 @SuppressLint("StaticFieldLeak")
-public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActivity implements RecipientModifiedListener
+public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActivity implements DcEventCenter.DcEventDelegate
 {
   private static final String TAG = RecipientPreferenceActivity.class.getSimpleName();
 
@@ -68,6 +67,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   private Address                 address;
   private CollapsingToolbarLayout toolbarLayout;
 
+  private ApplicationDcContext dcContext;
+
   private static final int REQUEST_CODE_PICK_RINGTONE = 1;
 
   @Override
@@ -78,6 +79,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
   @Override
   public void onCreate(Bundle instanceState, boolean ready) {
+    dcContext = DcHelper.getContext(this);
+
     setContentView(R.layout.recipient_preference_activity);
     this.glideRequests = GlideApp.with(this);
     this.address       = getIntent().getParcelableExtra(ADDRESS_EXTRA);
@@ -86,11 +89,18 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
     initializeToolbar();
     setHeader(recipient);
-    recipient.addListener(this);
 
     Bundle bundle = new Bundle();
     bundle.putParcelable(ADDRESS_EXTRA, address);
     initFragment(R.id.preference_fragment, new RecipientPreferenceFragment(), null, bundle);
+
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+  }
+
+  @Override
+  protected void onDestroy() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroy();
   }
 
   @Override
@@ -105,6 +115,14 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     super.onActivityResult(requestCode, resultCode, data);
     Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.preference_fragment);
     fragment.onActivityResult(requestCode, resultCode, data);
+  }
+
+  @Override
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    if(eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+      Recipient recipient = Recipient.from(this, address, true);
+      setHeader(recipient);
+    }
   }
 
   @Override
@@ -158,23 +176,19 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     this.toolbarLayout.setContentScrimColor(recipient.getFallbackAvatarColor(this));
   }
 
-  @Override
-  public void onModified(final Recipient recipient) {
-    Util.runOnMain(() -> setHeader(recipient));
-  }
-
   public static class RecipientPreferenceFragment
       extends    CorrectedPreferenceFragment
-      implements RecipientModifiedListener
+      implements DcEventCenter.DcEventDelegate
   {
+    private ApplicationDcContext dcContext;
     private Recipient recipient;
 
     @Override
     public void onCreate(Bundle icicle) {
-      Log.w(TAG, "onCreate (fragment)");
+      dcContext = DcHelper.getContext(getActivity());
       super.onCreate(icicle);
 
-      initializeRecipients();
+      this.recipient = Recipient.from(getActivity(), getArguments().getParcelable(ADDRESS_EXTRA), true);
 
       this.findPreference(PREFERENCE_MESSAGE_TONE)
           .setOnPreferenceChangeListener(new RingtoneChangeListener());
@@ -186,6 +200,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
           .setOnPreferenceClickListener(new MuteClickedListener());
       this.findPreference(PREFERENCE_BLOCK)
           .setOnPreferenceClickListener(new BlockClickedListener());
+
+      dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
     }
 
     @Override
@@ -207,8 +223,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
     @Override
     public void onDestroy() {
+      dcContext.eventCenter.removeObservers(this);
       super.onDestroy();
-      this.recipient.removeListener(this);
     }
 
     @Override
@@ -218,11 +234,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
         findPreference(PREFERENCE_MESSAGE_TONE).getOnPreferenceChangeListener().onPreferenceChange(findPreference(PREFERENCE_MESSAGE_TONE), uri);
       }
-    }
-
-    private void initializeRecipients() {
-      this.recipient = Recipient.from(getActivity(), getArguments().getParcelable(ADDRESS_EXTRA), true);
-      this.recipient.addListener(this);
     }
 
     private void setSummaries(Recipient recipient) {
@@ -309,8 +320,10 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     }
 
     @Override
-    public void onModified(final Recipient recipient) {
-      Util.runOnMain(() -> setSummaries(recipient));
+    public void handleEvent(int eventId, Object data1, Object data2) {
+      if(eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+        setSummaries(recipient);
+      }
     }
 
     private class RingtoneChangeListener implements Preference.OnPreferenceChangeListener {

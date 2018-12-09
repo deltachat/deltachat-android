@@ -14,13 +14,8 @@ import android.widget.TextView;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
-import org.thoughtcrime.securesms.util.ExpirationUtil;
-import org.thoughtcrime.securesms.util.GroupUtil;
-import org.thoughtcrime.securesms.util.Util;
 
 import java.util.Locale;
 import java.util.Set;
