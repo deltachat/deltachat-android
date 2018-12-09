@@ -17,69 +17,37 @@
 package org.thoughtcrime.securesms.database;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
-import android.text.TextUtils;
 import android.util.Log;
 
-import net.sqlcipher.database.SQLiteDatabase;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.thoughtcrime.securesms.attachments.AttachmentId;
-import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
 import org.thoughtcrime.securesms.crypto.AttachmentSecret;
 import org.thoughtcrime.securesms.crypto.ClassicDecryptingPartInputStream;
 import org.thoughtcrime.securesms.crypto.ModernDecryptingPartInputStream;
-import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
-import org.thoughtcrime.securesms.util.JsonUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 public class AttachmentDatabase extends Database {
   
   private static final String TAG = AttachmentDatabase.class.getSimpleName();
 
-  public  static final String TABLE_NAME             = "part";
   public  static final String ROW_ID                 = "_id";
-          static final String ATTACHMENT_JSON_ALIAS  = "attachment_json";
-  public  static final String MMS_ID                 = "mid";
-          static final String CONTENT_TYPE           = "ct";
-          static final String NAME                   = "name";
-          static final String CONTENT_DISPOSITION    = "cd";
-          static final String CONTENT_LOCATION       = "cl";
   public  static final String DATA                   = "_data";
-          static final String TRANSFER_STATE         = "pending_push";
   public  static final String SIZE                   = "data_size";
-          static final String FILE_NAME              = "file_name";
-  public  static final String THUMBNAIL              = "thumbnail";
   public  static final String UNIQUE_ID              = "unique_id";
-          static final String DIGEST                 = "digest";
-          static final String VOICE_NOTE             = "voice_note";
-          static final String QUOTE                  = "quote";
-          static final String FAST_PREFLIGHT_ID      = "fast_preflight_id";
-  public  static final String DATA_RANDOM            = "data_random";
-  private static final String THUMBNAIL_RANDOM       = "thumbnail_random";
-          static final String WIDTH                  = "width";
-          static final String HEIGHT                 = "height";
 
   public static final int TRANSFER_PROGRESS_DONE    = 0;
   public static final int TRANSFER_PROGRESS_STARTED = 1;
   public static final int TRANSFER_PROGRESS_FAILED  = 3;
 
-  private static final String PART_ID_WHERE = ROW_ID + " = ? AND " + UNIQUE_ID + " = ?";
-
   private final AttachmentSecret attachmentSecret;
 
-  public AttachmentDatabase(Context context, SQLCipherOpenHelper databaseHelper, AttachmentSecret attachmentSecret) {
-    super(context, databaseHelper);
+  public AttachmentDatabase(Context context, AttachmentSecret attachmentSecret) {
+    super(context);
     this.attachmentSecret = attachmentSecret;
   }
 
@@ -124,97 +92,7 @@ public class AttachmentDatabase extends Database {
 
   private @Nullable DataInfo getAttachmentDataFileInfo(@NonNull AttachmentId attachmentId, @NonNull String dataType)
   {
-    SQLiteDatabase database = databaseHelper.getReadableDatabase();
-    Cursor         cursor   = null;
-
-    String randomColumn;
-
-    switch (dataType) {
-      case DATA:      randomColumn = DATA_RANDOM;      break;
-      case THUMBNAIL: randomColumn = THUMBNAIL_RANDOM; break;
-      default:throw   new AssertionError("Unknown data type: " + dataType);
-    }
-
-    try {
-      cursor = database.query(TABLE_NAME, new String[]{dataType, SIZE, randomColumn}, PART_ID_WHERE, attachmentId.toStrings(),
-                              null, null, null);
-
-      if (cursor != null && cursor.moveToFirst()) {
-        if (cursor.isNull(0)) {
-          return null;
-        }
-
-        return new DataInfo(new File(cursor.getString(0)),
-                            cursor.getLong(1),
-                            cursor.getBlob(2));
-      } else {
-        return null;
-      }
-    } finally {
-      if (cursor != null)
-        cursor.close();
-    }
-
-  }
-
-  public List<DatabaseAttachment> getAttachment(@NonNull Cursor cursor) {
-    try {
-      if (cursor.getColumnIndex(AttachmentDatabase.ATTACHMENT_JSON_ALIAS) != -1) {
-        if (cursor.isNull(cursor.getColumnIndexOrThrow(ATTACHMENT_JSON_ALIAS))) {
-          return new LinkedList<>();
-        }
-
-        List<DatabaseAttachment> result = new LinkedList<>();
-        JSONArray                array  = new JSONArray(cursor.getString(cursor.getColumnIndexOrThrow(ATTACHMENT_JSON_ALIAS)));
-
-        for (int i=0;i<array.length();i++) {
-          JsonUtils.SaneJSONObject object = new JsonUtils.SaneJSONObject(array.getJSONObject(i));
-
-          if (!object.isNull(ROW_ID)) {
-            result.add(new DatabaseAttachment(new AttachmentId(object.getLong(ROW_ID), object.getLong(UNIQUE_ID)),
-                                              object.getLong(MMS_ID),
-                                              !TextUtils.isEmpty(object.getString(DATA)),
-                                              !TextUtils.isEmpty(object.getString(THUMBNAIL)),
-                                              object.getString(CONTENT_TYPE),
-                                              object.getInt(TRANSFER_STATE),
-                                              object.getLong(SIZE),
-                                              object.getString(FILE_NAME),
-                                              object.getString(CONTENT_LOCATION),
-                                              object.getString(CONTENT_DISPOSITION),
-                                              object.getString(NAME),
-                                              null,
-                                              object.getString(FAST_PREFLIGHT_ID),
-                                              object.getInt(VOICE_NOTE) == 1,
-                                              object.getInt(WIDTH),
-                                              object.getInt(HEIGHT),
-                                              object.getInt(QUOTE) == 1));
-          }
-        }
-
-        return result;
-      } else {
-        return Collections.singletonList(new DatabaseAttachment(new AttachmentId(cursor.getLong(cursor.getColumnIndexOrThrow(ROW_ID)),
-                                                                                 cursor.getLong(cursor.getColumnIndexOrThrow(UNIQUE_ID))),
-                                                                cursor.getLong(cursor.getColumnIndexOrThrow(MMS_ID)),
-                                                                !cursor.isNull(cursor.getColumnIndexOrThrow(DATA)),
-                                                                !cursor.isNull(cursor.getColumnIndexOrThrow(THUMBNAIL)),
-                                                                cursor.getString(cursor.getColumnIndexOrThrow(CONTENT_TYPE)),
-                                                                cursor.getInt(cursor.getColumnIndexOrThrow(TRANSFER_STATE)),
-                                                                cursor.getLong(cursor.getColumnIndexOrThrow(SIZE)),
-                                                                cursor.getString(cursor.getColumnIndexOrThrow(FILE_NAME)),
-                                                                cursor.getString(cursor.getColumnIndexOrThrow(CONTENT_LOCATION)),
-                                                                cursor.getString(cursor.getColumnIndexOrThrow(CONTENT_DISPOSITION)),
-                                                                cursor.getString(cursor.getColumnIndexOrThrow(NAME)),
-                                                                cursor.getBlob(cursor.getColumnIndexOrThrow(DIGEST)),
-                                                                cursor.getString(cursor.getColumnIndexOrThrow(FAST_PREFLIGHT_ID)),
-                                                                cursor.getInt(cursor.getColumnIndexOrThrow(VOICE_NOTE)) == 1,
-                                                                cursor.getInt(cursor.getColumnIndexOrThrow(WIDTH)),
-                                                                cursor.getInt(cursor.getColumnIndexOrThrow(HEIGHT)),
-                                                                cursor.getInt(cursor.getColumnIndexOrThrow(QUOTE)) == 1));
-      }
-    } catch (JSONException e) {
-      throw new AssertionError(e);
-    }
+    return null;
   }
 
   private static class DataInfo {

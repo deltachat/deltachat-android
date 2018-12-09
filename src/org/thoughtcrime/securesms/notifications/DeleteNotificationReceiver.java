@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
 
 public class DeleteNotificationReceiver extends BroadcastReceiver {
 

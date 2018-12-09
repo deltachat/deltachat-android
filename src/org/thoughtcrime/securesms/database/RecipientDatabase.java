@@ -6,10 +6,7 @@ import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import net.sqlcipher.database.SQLiteDatabase;
-
 import org.thoughtcrime.securesms.color.MaterialColor;
-import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
@@ -20,12 +17,7 @@ public class RecipientDatabase extends Database {
 
   private static final String TAG = RecipientDatabase.class.getSimpleName();
 
-          static final String TABLE_NAME              = "recipient_preferences";
-  private static final String ID                      = "_id";
-          static final String ADDRESS                 = "recipient_ids";
-  private static final String BLOCK                   = "block";
   private static final String COLOR                   = "color";
-  private static final String REGISTERED              = "registered";
 
   public enum RegisteredState {
     UNKNOWN(0), REGISTERED(1), NOT_REGISTERED(2);
@@ -41,15 +33,12 @@ public class RecipientDatabase extends Database {
     }
   }
 
-  public RecipientDatabase(Context context, SQLCipherOpenHelper databaseHelper) {
-    super(context, databaseHelper);
+  public RecipientDatabase(Context context) {
+    super(context);
   }
 
   public Cursor getBlocked() {
-    SQLiteDatabase database = databaseHelper.getReadableDatabase();
-
-    return database.query(TABLE_NAME, new String[] {ID, ADDRESS}, BLOCK + " = 1",
-                          null, null, null, null, null);
+    return null;
   }
 
   public void setColor(@NonNull Recipient recipient, @NonNull MaterialColor color) {
@@ -60,33 +49,11 @@ public class RecipientDatabase extends Database {
   }
 
   public List<Address> getRegistered() {
-    SQLiteDatabase db      = databaseHelper.getReadableDatabase();
     List<Address>  results = new LinkedList<>();
-
-    try (Cursor cursor = db.query(TABLE_NAME, new String[] {ADDRESS}, REGISTERED + " = ?", new String[] {"1"}, null, null, null)) {
-      while (cursor != null && cursor.moveToNext()) {
-        results.add(Address.fromSerialized(cursor.getString(0)));
-      }
-    }
-
     return results;
   }
 
   private void updateOrInsert(Address address, ContentValues contentValues) {
-    SQLiteDatabase database = databaseHelper.getWritableDatabase();
-
-    database.beginTransaction();
-
-    int updated = database.update(TABLE_NAME, contentValues, ADDRESS + " = ?",
-                                  new String[] {address.serialize()});
-
-    if (updated < 1) {
-      contentValues.put(ADDRESS, address.serialize());
-      database.insert(TABLE_NAME, null, contentValues);
-    }
-
-    database.setTransactionSuccessful();
-    database.endTransaction();
   }
 
   public static class RecipientSettings {

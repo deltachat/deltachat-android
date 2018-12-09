@@ -6,14 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
-import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 
 import java.util.List;
 
 public class MediaDatabase extends Database {
 
-  MediaDatabase(Context context, SQLCipherOpenHelper databaseHelper) {
-    super(context, databaseHelper);
+  MediaDatabase(Context context) {
+    super(context);
   }
 
   public static class MediaRecord {

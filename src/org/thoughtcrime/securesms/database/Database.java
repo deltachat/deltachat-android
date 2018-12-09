@@ -17,28 +17,12 @@
 package org.thoughtcrime.securesms.database;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-
-import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
 
 public abstract class Database {
 
-  private   static final String CONVERSATION_URI      = "content://textsecure/thread/";
-  protected       SQLCipherOpenHelper databaseHelper;
   protected final Context             context;
 
-  public Database(Context context, SQLCipherOpenHelper databaseHelper) {
+  public Database(Context context) {
     this.context        = context;
-    this.databaseHelper = databaseHelper;
   }
-
-  protected void setNotifyConverationListeners(Cursor cursor, long threadId) {
-    cursor.setNotificationUri(context.getContentResolver(), Uri.parse(CONVERSATION_URI + threadId));
-  }
-
-  public void reset(SQLCipherOpenHelper databaseHelper) {
-    this.databaseHelper = databaseHelper;
-  }
-
 }
