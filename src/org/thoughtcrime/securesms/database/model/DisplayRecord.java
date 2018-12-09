@@ -84,56 +84,12 @@ public abstract class DisplayRecord {
     return recipient;
   }
 
-  public long getDateSent() {
-    return dateSent;
-  }
-
   public long getDateReceived() {
     return dateReceived;
   }
 
   public long getThreadId() {
     return threadId;
-  }
-
-  public boolean isEndSession() {
-    return false;
-  }
-
-  public boolean isGroupUpdate() {
-    return false;
-  }
-
-  public boolean isGroupQuit() {
-    return false;
-  }
-
-  public boolean isGroupAction() {
-    return isGroupUpdate() || isGroupQuit();
-  }
-
-  public boolean isExpirationTimerUpdate() {
-    return false;
-  }
-
-  public boolean isCallLog() {
-    return false;
-  }
-
-  public boolean isJoined() {
-    return false;
-  }
-
-  public boolean isIncomingCall() {
-    return false;
-  }
-
-  public boolean isOutgoingCall() {
-    return false;
-  }
-
-  public boolean isMissedCall() {
-    return false;
   }
 
   public boolean isDelivered() {

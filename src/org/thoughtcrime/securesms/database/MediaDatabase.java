@@ -31,8 +31,8 @@ public class MediaDatabase extends Database {
     }
 
     public static MediaRecord from(@NonNull Context context, @NonNull Cursor cursor) {
-      AttachmentDatabase       attachmentDatabase = DatabaseFactory.getAttachmentDatabase(context);
-      List<DatabaseAttachment> attachments        = attachmentDatabase.getAttachment(cursor);
+      //AttachmentDatabase       attachmentDatabase = DatabaseFactory.getAttachmentDatabase(context);
+      List<DatabaseAttachment> attachments        = null;//attachmentDatabase.getAttachment(cursor);
       String                   serializedAddress  = null;//cursor.getString(cursor.getColumnIndexOrThrow(MmsDatabase.ADDRESS));
       boolean                  outgoing           = false; //MessagingDatabase.Types.isOutgoingMessageType(cursor.getLong(cursor.getColumnIndexOrThrow(MmsDatabase.MESSAGE_BOX)));
       Address                  address            = null;
