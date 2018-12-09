@@ -57,7 +57,7 @@ public class PersistentStorage {
   public void store(Job job) throws IOException {
     ContentValues contentValues = new ContentValues();
     contentValues.put(ITEM, jobSerializer.serialize(job));
-    contentValues.put(ENCRYPTED, job.getEncryptionKeys() != null);
+    contentValues.put(ENCRYPTED, false);
 
     long id = databaseHelper.getWritableDatabase().insert(TABLE_NAME, null, contentValues);
     job.setPersistentId(id);
@@ -88,7 +88,6 @@ public class PersistentStorage {
           Job job = jobSerializer.deserialize(keys, encrypted, item);
 
           job.setPersistentId(id);
-          job.setEncryptionKeys(keys);
 
           results.add(job);
         } catch (IOException e) {

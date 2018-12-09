@@ -26,12 +26,10 @@ import org.thoughtcrime.securesms.jobmanager.requirements.RequirementListener;
 import org.thoughtcrime.securesms.jobmanager.requirements.RequirementProvider;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * A JobManager allows you to enqueue {@link org.thoughtcrime.securesms.jobmanager.Job} tasks
@@ -42,7 +40,6 @@ public class JobManager implements RequirementListener {
 
   private final JobQueue      jobQueue           = new JobQueue();
   private final Executor      eventExecutor      = Executors.newSingleThreadExecutor();
-  private final AtomicBoolean hasLoadedEncrypted = new AtomicBoolean(false);
 
   private final Context                     context;
   private final PersistentStorage           persistentStorage;
@@ -75,12 +72,6 @@ public class JobManager implements RequirementListener {
    */
   public static Builder newBuilder(Context context) {
     return new Builder(context);
-  }
-
-  public void setEncryptionKeys(EncryptionKeys keys) {
-    if (hasLoadedEncrypted.compareAndSet(false, true)) {
-      eventExecutor.execute(new LoadTask(keys));
-    }
   }
 
   /**

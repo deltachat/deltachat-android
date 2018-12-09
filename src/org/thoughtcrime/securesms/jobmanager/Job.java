@@ -60,14 +60,6 @@ public abstract class Job implements Serializable {
     return parameters.isPersistent();
   }
 
-  public EncryptionKeys getEncryptionKeys() {
-    return parameters.getEncryptionKeys();
-  }
-
-  public void setEncryptionKeys(EncryptionKeys keys) {
-    parameters.setEncryptionKeys(keys);
-  }
-
   public int getRetryCount() {
     return parameters.getRetryCount();
   }
