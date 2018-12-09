@@ -66,7 +66,6 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DcMsgListLoader;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -449,8 +448,7 @@ public class ConversationFragment extends Fragment
   }
 
   private void handleReplyMessage(final DcMsg message) {
-    // TODO
-    // listener.handleReplyMessage(message);
+    listener.handleReplyMessage(message);
   }
 
   private void handleSaveAttachment(final DcMsg message) {
@@ -573,7 +571,7 @@ public class ConversationFragment extends Fragment
 
   public interface ConversationFragmentListener {
     void setThreadId(int threadId);
-    void handleReplyMessage(MessageRecord messageRecord);
+    void handleReplyMessage(DcMsg messageRecord);
   }
 
   private class ConversationScrollListener extends OnScrollListener {
