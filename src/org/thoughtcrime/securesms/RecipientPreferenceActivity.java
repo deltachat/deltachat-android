@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -17,31 +16,23 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.widget.Toolbar;
-import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import org.thoughtcrime.securesms.components.ThreadPhotoRailView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.loaders.ThreadMediaLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -57,7 +48,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 @SuppressLint("StaticFieldLeak")
-public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActivity implements RecipientModifiedListener, LoaderManager.LoaderCallbacks<Cursor>
+public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActivity implements RecipientModifiedListener
 {
   private static final String TAG = RecipientPreferenceActivity.class.getSimpleName();
 
@@ -75,8 +66,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   private ImageView               avatar;
   private GlideRequests           glideRequests;
   private Address                 address;
-  private TextView                threadPhotoRailLabel;
-  private ThreadPhotoRailView     threadPhotoRailView;
   private CollapsingToolbarLayout toolbarLayout;
 
   private static final int REQUEST_CODE_PICK_RINGTONE = 1;
@@ -99,7 +88,9 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     setHeader(recipient);
     recipient.addListener(this);
 
-    getSupportLoaderManager().initLoader(0, null, this);
+    Bundle bundle = new Bundle();
+    bundle.putParcelable(ADDRESS_EXTRA, address);
+    initFragment(R.id.preference_fragment, new RecipientPreferenceFragment(), null, bundle);
   }
 
   @Override
@@ -137,31 +128,9 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   private void initializeToolbar() {
     this.toolbarLayout        = ViewUtil.findById(this, R.id.collapsing_toolbar);
     this.avatar               = ViewUtil.findById(this, R.id.avatar);
-    this.threadPhotoRailView  = ViewUtil.findById(this, R.id.recent_photos);
-    this.threadPhotoRailLabel = ViewUtil.findById(this, R.id.rail_label);
 
     this.toolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.white));
     this.toolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
-
-    this.threadPhotoRailView.setListener(mediaRecord -> {
-      Intent intent = new Intent(RecipientPreferenceActivity.this, MediaPreviewActivity.class);
-      intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, address);
-      intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, mediaRecord.isOutgoing());
-      Log.e(TAG, "MEDIA PREVIEW NOT IMPLEMENTED HERE must have dcMsgId in Media Record first!");
-      if(true)
-        throw new IllegalStateException("Media Preview not implemented");
-/*      intent.putExtra(MediaPreviewActivity.DATE_EXTRA, mediaRecord.getDate());
-      intent.putExtra(MediaPreviewActivity.SIZE_EXTRA, mediaRecord.getAttachment().getSize());*/
-      intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, ViewCompat.getLayoutDirection(threadPhotoRailView) == ViewCompat.LAYOUT_DIRECTION_LTR);
-      intent.setDataAndType(mediaRecord.getAttachment().getDataUri(), mediaRecord.getContentType());
-      startActivity(intent);
-    });
-
-    this.threadPhotoRailLabel.setOnClickListener(v -> {
-      Intent intent = new Intent(this, MediaOverviewActivity.class);
-      intent.putExtra(MediaOverviewActivity.ADDRESS_EXTRA, address);
-      startActivity(intent);
-    });
 
     Toolbar toolbar = ViewUtil.findById(this, R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -192,33 +161,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   @Override
   public void onModified(final Recipient recipient) {
     Util.runOnMain(() -> setHeader(recipient));
-  }
-
-  @Override
-  public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-    return new ThreadMediaLoader(this, address, true);
-  }
-
-  @Override
-  public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-    if (data != null && data.getCount() > 0) {
-      this.threadPhotoRailLabel.setVisibility(View.VISIBLE);
-      this.threadPhotoRailView.setVisibility(View.VISIBLE);
-    } else {
-      this.threadPhotoRailLabel.setVisibility(View.GONE);
-      this.threadPhotoRailView.setVisibility(View.GONE);
-    }
-
-    this.threadPhotoRailView.setCursor(glideRequests, data);
-
-    Bundle bundle = new Bundle();
-    bundle.putParcelable(ADDRESS_EXTRA, address);
-    initFragment(R.id.preference_fragment, new RecipientPreferenceFragment(), null, bundle);
-  }
-
-  @Override
-  public void onLoaderReset(Loader<Cursor> loader) {
-    this.threadPhotoRailView.setCursor(glideRequests, null);
   }
 
   public static class RecipientPreferenceFragment
@@ -338,12 +280,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 //        });
         getPreferenceScreen().removePreference(identityPreference);
       }
-    }
-
-    private @NonNull String formatAddress(@NonNull Address address) {
-      if      (address.isPhone()) return PhoneNumberUtils.formatNumber(address.toPhoneString());
-      else if (address.isEmail()) return address.toEmailString();
-      else                        return "";
     }
 
     private @NonNull String getRingtoneSummary(@NonNull Context context, @Nullable Uri ringtone) {
@@ -487,12 +423,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
             .setMessage(R.string.RecipientPreferenceActivity_you_will_no_longer_receive_messages_and_calls_from_this_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.RecipientPreferenceActivity_block, new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int which) {
-                setBlocked(recipient, true);
-              }
-            }).show();
+            .setPositiveButton(R.string.RecipientPreferenceActivity_block, (dialog, which) -> setBlocked(recipient, true)).show();
       }
 
       private void handleUnblock() {
@@ -501,12 +432,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
             .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int which) {
-                setBlocked(recipient, false);
-              }
-            }).show();
+            .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, (dialog, which) -> setBlocked(recipient, false)).show();
       }
 
       private void setBlocked(final Recipient recipient, final boolean blocked) {

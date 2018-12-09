@@ -69,25 +69,6 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content">
 
-            <TextView android:id="@+id/rail_label"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:padding="16dp"
-                      android:text="@string/recipient_preference_activity__shared_media"
-                      android:visibility="gone"
-                      android:focusableInTouchMode="true"
-                      style="?android:attr/preferenceCategoryStyle"
-                      android:textColor="@color/textsecure_primary"/>
-
-            <org.thoughtcrime.securesms.components.ThreadPhotoRailView
-                    android:id="@+id/recent_photos"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:visibility="visible"
-                    android:layout_marginBottom="16dp"/>
-
-            <include layout="@layout/preference_divider"/>
-
             <FrameLayout android:id="@+id/preference_fragment"
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"/>
