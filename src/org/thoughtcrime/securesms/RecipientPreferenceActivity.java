@@ -27,6 +27,8 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -57,7 +59,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   private static final String PREFERENCE_MESSAGE_TONE    = "pref_key_recipient_ringtone";
   private static final String PREFERENCE_MESSAGE_VIBRATE = "pref_key_recipient_vibrate";
   private static final String PREFERENCE_BLOCK           = "pref_key_recipient_block";
-  private static final String PREFERENCE_IDENTITY        = "pref_key_recipient_identity";
+  private static final String PREFERENCE_ENCRYPTION      = "pref_key_recipient_encryption_info";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -243,7 +245,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       Preference            ringtoneMessagePreference = this.findPreference(PREFERENCE_MESSAGE_TONE);
       ListPreference        vibrateMessagePreference  = (ListPreference) this.findPreference(PREFERENCE_MESSAGE_VIBRATE);
       Preference            blockPreference           = this.findPreference(PREFERENCE_BLOCK);
-      Preference            identityPreference        = this.findPreference(PREFERENCE_IDENTITY);
+      Preference            encryptionPreference      = this.findPreference(PREFERENCE_ENCRYPTION);
       PreferenceCategory    aboutCategory             = (PreferenceCategory)this.findPreference("about");
       PreferenceCategory    aboutDivider              = (PreferenceCategory)this.findPreference("about_divider");
       PreferenceCategory    privacyCategory           = (PreferenceCategory) this.findPreference("privacy_settings");
@@ -260,36 +262,17 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       vibrateMessagePreference.setValueIndex(vibrateMessageSummary.second);
 
       if (recipient.isGroupRecipient()) {
-        if (blockPreference    != null) blockPreference.setVisible(false);
-        if (identityPreference != null) identityPreference.setVisible(false);
-        if (privacyCategory    != null) privacyCategory.setVisible(false);
-        if (divider            != null) divider.setVisible(false);
-        if (aboutCategory      != null) getPreferenceScreen().removePreference(aboutCategory);
-        if (aboutDivider       != null) getPreferenceScreen().removePreference(aboutDivider);
+        // chat view (groups and 1:1 chats with single contacts)
+        if (blockPreference      != null) blockPreference.setVisible(false);
+        if (encryptionPreference != null) encryptionPreference.setVisible(false);
+        if (privacyCategory      != null) privacyCategory.setVisible(false);
+        if (divider              != null) divider.setVisible(false);
+        if (aboutCategory        != null) getPreferenceScreen().removePreference(aboutCategory);
+        if (aboutDivider         != null) getPreferenceScreen().removePreference(aboutDivider);
       } else {
+        // contact view
         if (recipient.isBlocked()) blockPreference.setTitle(R.string.RecipientPreferenceActivity_unblock);
         else                       blockPreference.setTitle(R.string.RecipientPreferenceActivity_block);
-
-//        IdentityUtil.getRemoteIdentityKey(getActivity(), recipient).addListener(new ListenableFuture.Listener<Optional<IdentityRecord>>() {
-//          @Override
-//          public void onSuccess(Optional<IdentityRecord> result) {
-//            if (result.isPresent()) {
-//              if (identityPreference != null) identityPreference.setOnPreferenceClickListener(new IdentityClickedListener(result.get()));
-//              if (identityPreference != null) identityPreference.setEnabled(true);
-//            } else if (canHaveSafetyNumber) {
-//              if (identityPreference != null) identityPreference.setSummary(R.string.RecipientPreferenceActivity_available_once_a_message_has_been_sent_or_received);
-//              if (identityPreference != null) identityPreference.setEnabled(false);
-//            } else {
-//              if (identityPreference != null) getPreferenceScreen().removePreference(identityPreference);
-//            }
-//          }
-//
-//          @Override
-//          public void onFailure(ExecutionException e) {
-//            if (identityPreference != null) getPreferenceScreen().removePreference(identityPreference);
-//          }
-//        });
-        getPreferenceScreen().removePreference(identityPreference);
       }
     }
 

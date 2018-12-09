@@ -32,12 +32,19 @@
 
     <PreferenceCategory android:key="divider" android:layout="@layout/preference_divider"/>
 
-    <PreferenceCategory android:key="privacy_settings" android:title="@string/recipient_preferences__privacy">
+    <PreferenceCategory android:key="privacy_settings" android:title="@string/recipient_preferences__contact">
 
-        <Preference android:key="pref_key_recipient_identity"
-                    android:title="@string/recipient_preferences__view_safety_number"
-                    android:persistent="false"
-                    android:enabled="false"/>
+        <Preference android:key="pref_key_recipient_addr"
+                    android:title="user@example.org"
+                    android:persistent="false"/>
+
+        <Preference android:key="pref_key_recipient_encryption_info"
+                    android:title="@string/recipient_preferences__encryption_info"
+                    android:persistent="false"/>
+
+        <Preference android:key="pref_key_recipient_edit_name"
+                    android:title="@string/recipient_preferences__edit_name"
+                    android:persistent="false"/>
 
         <Preference android:key="pref_key_recipient_block"
                     android:title="@string/recipient_preferences__block"

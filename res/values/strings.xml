@@ -1523,5 +1523,8 @@
     <string name="permanent_notification_subtitle">Tap to open.</string>
     <string name="error_no_network">Network unavailable.</string>
     <string name="summary_draft">Draft</string>
+    <string name="recipient_preferences__contact">Contact</string>
+    <string name="recipient_preferences__encryption_info">Encryption</string>
+    <string name="recipient_preferences__edit_name">Edit name</string>
 
 </resources>
