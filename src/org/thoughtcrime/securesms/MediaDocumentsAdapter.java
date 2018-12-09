@@ -1,26 +1,24 @@
 package org.thoughtcrime.securesms;
 
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.thoughtcrime.securesms.MediaDocumentsAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.MediaDocumentsAdapter.ViewHolder;
 import org.thoughtcrime.securesms.components.DocumentView;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.CursorRecyclerViewAdapter;
 import org.thoughtcrime.securesms.database.MediaDatabase;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
-import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -30,8 +28,6 @@ import org.thoughtcrime.securesms.util.Util;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
-import static com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager.TAG;
 
 public class MediaDocumentsAdapter extends CursorRecyclerViewAdapter<ViewHolder> implements StickyHeaderDecoration.StickyHeaderAdapter<HeaderViewHolder> {
 
@@ -61,15 +57,9 @@ public class MediaDocumentsAdapter extends CursorRecyclerViewAdapter<ViewHolder>
       viewHolder.documentView.setVisibility(View.VISIBLE);
       viewHolder.date.setVisibility(View.VISIBLE);
       viewHolder.documentView.setOnClickListener(view -> {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.setDataAndType(PartAuthority.getAttachmentPublicUri(slide.getUri()), slide.getContentType());
-        try {
-          getContext().startActivity(intent);
-        } catch (ActivityNotFoundException anfe) {
-          Log.w(TAG, "No activity existed to view the media.");
-          Toast.makeText(getContext(), R.string.ConversationItem_unable_to_open_media, Toast.LENGTH_LONG).show();
-        }
+        int msgId = slide.getDcMsgId();
+        ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+        dcContext.openForViewOrShare(msgId, Intent.ACTION_VIEW);
       });
     } else {
       viewHolder.documentView.setVisibility(View.GONE);

@@ -7,11 +7,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.AttachmentId;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
-import org.thoughtcrime.securesms.providers.PartProvider;
 import org.thoughtcrime.securesms.providers.SingleUseBlobProvider;
 
 import java.io.IOException;
@@ -85,11 +82,6 @@ public class PartAuthority {
       default:
         return null;
     }
-  }
-
-  public static Uri getAttachmentPublicUri(Uri uri) {
-    PartUriParser partUri = new PartUriParser(uri);
-    return PartProvider.getContentUri(partUri.getPartId());
   }
 
   public static Uri getAttachmentDataUri(AttachmentId attachmentId) {
