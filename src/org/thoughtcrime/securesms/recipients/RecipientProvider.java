@@ -26,19 +26,13 @@ import org.thoughtcrime.securesms.database.RecipientDatabase.RegisteredState;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class RecipientProvider {
 
   @SuppressWarnings("unused")
   private static final String TAG = RecipientProvider.class.getSimpleName();
-
-  private static final Map<String, RecipientDetails> STATIC_DETAILS = new HashMap<String, RecipientDetails>() {{
-    put("262966", new RecipientDetails("Amazon", null, false, null, null));
-  }};
 
   public static class RecipientDetails {
     @Nullable final String               name;

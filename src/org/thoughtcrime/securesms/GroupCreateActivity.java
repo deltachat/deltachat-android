@@ -79,7 +79,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private final static String TAG = GroupCreateActivity.class.getSimpleName();
 
   public static final String GROUP_ADDRESS_EXTRA = "group_recipient";
-  public static final String GROUP_THREAD_EXTRA  = "group_thread";
   public static final String GROUP_CREATE_VERIFIED_EXTRA  = "group_create_verified";
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
@@ -386,7 +385,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
         for (String contact : selected) {
           Address   address   = Address.fromExternal(this, contact);
-          Recipient recipient = Recipient.from(this, address, false);
+          Recipient recipient = Recipient.from(this, address);
 
           addSelectedContacts(recipient);
         }

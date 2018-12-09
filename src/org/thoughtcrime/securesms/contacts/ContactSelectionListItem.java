@@ -67,7 +67,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
 
     if(specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
       this.recipient = null;
-      this.contactPhotoImage.setAvatar(glideRequests, Recipient.from(getContext(), Address.UNKNOWN, true), false);
+      this.contactPhotoImage.setAvatar(glideRequests, Recipient.from(getContext(), Address.UNKNOWN), false);
     }
     else {
       this.recipient = DcHelper.getContext(getContext()).getRecipient(contact);

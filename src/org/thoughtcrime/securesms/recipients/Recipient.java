@@ -24,9 +24,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
-
-import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -57,7 +54,6 @@ import java.util.WeakHashMap;
 public class Recipient implements RecipientModifiedListener {
 
   private static final String            TAG      = Recipient.class.getSimpleName();
-  private static final RecipientProvider provider = new RecipientProvider();
 
   private final Set<RecipientModifiedListener> listeners = Collections.newSetFromMap(new WeakHashMap<RecipientModifiedListener, Boolean>());
 
@@ -71,7 +67,6 @@ public class Recipient implements RecipientModifiedListener {
   private @Nullable Uri                  systemContactPhoto;
   private           Uri                  contactUri;
   private @Nullable Uri                  messageRingtone       = null;
-  private @Nullable Uri                  callRingtone          = null;
   private           boolean              blocked               = false;
   private           int                  expireMessages        = 0;
   private           Optional<Integer>    defaultSubscriptionId = Optional.absent();
@@ -97,7 +92,7 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   @SuppressWarnings("ConstantConditions")
-  public static @NonNull Recipient from(@NonNull Context context, @NonNull Address address, boolean asynchronous) {
+  public static @NonNull Recipient from(@NonNull Context context, @NonNull Address address) {
     if (address == null) throw new AssertionError(address);
     ApplicationDcContext dcContext = DcHelper.getContext(context);
     if(address.isDcContact()) {
@@ -180,10 +175,6 @@ public class Recipient implements RecipientModifiedListener {
 
   public @NonNull Address getAddress() {
     return address;
-  }
-
-  public synchronized @Nullable String getCustomLabel() {
-    return customLabel;
   }
 
   public synchronized @Nullable String getProfileName() {
@@ -297,14 +288,6 @@ public class Recipient implements RecipientModifiedListener {
     }
 
     return messageRingtone;
-  }
-
-  public synchronized @Nullable Uri getCallRingtone() {
-    if (callRingtone != null && callRingtone.getScheme() != null && callRingtone.getScheme().startsWith("file")) {
-      return null;
-    }
-
-    return callRingtone;
   }
 
   public synchronized boolean isBlocked() {

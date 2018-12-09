@@ -128,7 +128,7 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
     this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
-    this.recipient = Recipient.from(this, address, true);
+    this.recipient = Recipient.from(this, address);
   }
 
   private void initializeToolbar() {
@@ -194,7 +194,7 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       if (address == null)      throw new AssertionError();
       if (locale == null)       throw new AssertionError();
 
-      this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address), true);
+      this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
       this.locale       = locale;
 
       getLoaderManager().initLoader(0, null, this);

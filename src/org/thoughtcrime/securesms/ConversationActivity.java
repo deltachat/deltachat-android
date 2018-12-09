@@ -365,7 +365,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       addAttachmentContactInfo(data);
       break;
     case GROUP_EDIT:
-      recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA), true);
+      recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA));
       dcChat = dcContext.getChat(threadId);
       titleView.setTitle(glideRequests, dcChat);
       supportInvalidateOptionsMenu();
@@ -376,7 +376,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       break;
     case ADD_CONTACT:
-      recipient = Recipient.from(this, recipient.getAddress(), true);
+      recipient = Recipient.from(this, recipient.getAddress());
       fragment.reloadList();
       break;
     case PICK_LOCATION:

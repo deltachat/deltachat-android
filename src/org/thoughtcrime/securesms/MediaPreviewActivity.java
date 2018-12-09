@@ -196,7 +196,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
           DcMsg.DC_MSG_NO_ID, date, size, false);
 
       if (address != null) {
-        conversationRecipient = Recipient.from(context, address, false);
+        conversationRecipient = Recipient.from(context, address);
       } else {
         conversationRecipient = null;
       }

@@ -228,7 +228,7 @@ public class ConversationFragment extends Fragment
 
   private void initializeResources() {
     this.threadId          = this.getActivity().getIntent().getIntExtra(ConversationActivity.THREAD_ID_EXTRA, -1);
-    this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.threadId), true);
+    this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.threadId));
     this.lastSeen          = this.getActivity().getIntent().getLongExtra(ConversationActivity.LAST_SEEN_EXTRA, -1);
     this.startingPosition  = this.getActivity().getIntent().getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
     this.firstLoad         = true;

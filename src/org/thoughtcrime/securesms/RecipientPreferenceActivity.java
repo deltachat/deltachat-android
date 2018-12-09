@@ -87,7 +87,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     this.glideRequests = GlideApp.with(this);
     this.address       = getIntent().getParcelableExtra(ADDRESS_EXTRA);
 
-    Recipient recipient = Recipient.from(this, address, true);
+    Recipient recipient = Recipient.from(this, address);
 
     initializeToolbar();
     setHeader(recipient);
@@ -122,7 +122,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
     if(eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
-      Recipient recipient = Recipient.from(this, address, true);
+      Recipient recipient = Recipient.from(this, address);
       setHeader(recipient);
     }
   }
