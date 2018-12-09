@@ -17,19 +17,12 @@
 package org.thoughtcrime.securesms.database.model;
 
 import android.content.Context;
-import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.StyleSpan;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.MmsSmsColumns;
-import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatch;
-import org.thoughtcrime.securesms.database.documents.NetworkFailure;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ExpirationUtil;
-
-import java.util.List;
 
 /**
  * The base class for message record models that are displayed in
@@ -44,10 +37,7 @@ public abstract class MessageRecord extends DisplayRecord {
   private static final int MAX_DISPLAY_LENGTH = 2000;
 
   private final Recipient                 individualRecipient;
-  private final int                       recipientDeviceId;
   private final long                      id;
-  private final List<IdentityKeyMismatch> mismatches;
-  private final List<NetworkFailure>      networkFailures;
   private final int                       subscriptionId;
   private final long                      expiresIn;
   private final long                      expireStarted;
@@ -56,8 +46,6 @@ public abstract class MessageRecord extends DisplayRecord {
                 Recipient individualRecipient, int recipientDeviceId,
                 long dateSent, long dateReceived, long threadId,
                 int deliveryStatus, int deliveryReceiptCount, long type,
-                List<IdentityKeyMismatch> mismatches,
-                List<NetworkFailure> networkFailures,
                 int subscriptionId, long expiresIn, long expireStarted,
                 int readReceiptCount)
   {
@@ -65,23 +53,15 @@ public abstract class MessageRecord extends DisplayRecord {
           threadId, deliveryStatus, deliveryReceiptCount, type, readReceiptCount);
     this.id                  = id;
     this.individualRecipient = individualRecipient;
-    this.recipientDeviceId   = recipientDeviceId;
-    this.mismatches          = mismatches;
-    this.networkFailures     = networkFailures;
     this.subscriptionId      = subscriptionId;
     this.expiresIn           = expiresIn;
     this.expireStarted       = expireStarted;
   }
 
   public abstract boolean isMms();
-  public abstract boolean isMmsNotification();
 
   public boolean isSecure() {
     return MmsSmsColumns.Types.isSecureType(type);
-  }
-
-  public boolean isLegacyMessage() {
-    return MmsSmsColumns.Types.isLegacyType(type);
   }
 
   @Override
@@ -147,19 +127,7 @@ public abstract class MessageRecord extends DisplayRecord {
     return false;
   }
 
-  public boolean isBundleKeyExchange() {
-    return false;
-  }
-
   public boolean isIdentityUpdate() {
-    return false;
-  }
-
-  public boolean isCorruptedKeyExchange() {
-    return false;
-  }
-
-  public boolean isInvalidVersionKeyExchange() {
     return false;
   }
 
@@ -168,28 +136,12 @@ public abstract class MessageRecord extends DisplayRecord {
            isEndSession()  || isIdentityUpdate() || isIdentityVerified() || isIdentityDefault();
   }
 
-  public boolean isMediaPending() {
-    return false;
-  }
-
   public Recipient getIndividualRecipient() {
     return individualRecipient;
   }
 
-  public int getRecipientDeviceId() {
-    return recipientDeviceId;
-  }
-
   public long getType() {
     return type;
-  }
-
-  protected SpannableString emphasisAdded(String sequence) {
-    SpannableString spannable = new SpannableString(sequence);
-    spannable.setSpan(new RelativeSizeSpan(0.9f), 0, sequence.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-    spannable.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC), 0, sequence.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-    return spannable;
   }
 
   public boolean equals(Object other) {
@@ -203,15 +155,7 @@ public abstract class MessageRecord extends DisplayRecord {
     return (int)getId();
   }
 
-  public int getSubscriptionId() {
-    return subscriptionId;
-  }
-
   public long getExpiresIn() {
     return expiresIn;
-  }
-
-  public long getExpireStarted() {
-    return expireStarted;
   }
 }

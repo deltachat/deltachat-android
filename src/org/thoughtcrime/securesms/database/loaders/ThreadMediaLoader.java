@@ -11,12 +11,10 @@ import org.thoughtcrime.securesms.util.AbstractCursorLoader;
 public class ThreadMediaLoader extends AbstractCursorLoader {
 
   private final Address address;
-  private final boolean gallery;
 
   public ThreadMediaLoader(@NonNull Context context, @NonNull Address address, boolean gallery) {
     super(context);
     this.address = address;
-    this.gallery = gallery;
   }
 
   @Override

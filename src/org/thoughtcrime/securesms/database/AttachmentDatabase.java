@@ -16,19 +16,13 @@
  */
 package org.thoughtcrime.securesms.database;
 
-import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Pair;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
@@ -39,26 +33,15 @@ import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
 import org.thoughtcrime.securesms.crypto.AttachmentSecret;
 import org.thoughtcrime.securesms.crypto.ClassicDecryptingPartInputStream;
 import org.thoughtcrime.securesms.crypto.ModernDecryptingPartInputStream;
-import org.thoughtcrime.securesms.crypto.ModernEncryptingPartOutputStream;
 import org.thoughtcrime.securesms.database.helpers.SQLCipherOpenHelper;
-import org.thoughtcrime.securesms.mms.MmsException;
 import org.thoughtcrime.securesms.util.JsonUtils;
-import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.MediaUtil.ThumbnailData;
-import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.video.EncryptedMediaDataSource;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 
 public class AttachmentDatabase extends Database {
   
@@ -77,7 +60,6 @@ public class AttachmentDatabase extends Database {
   public  static final String SIZE                   = "data_size";
           static final String FILE_NAME              = "file_name";
   public  static final String THUMBNAIL              = "thumbnail";
-          static final String THUMBNAIL_ASPECT_RATIO = "aspect_ratio";
   public  static final String UNIQUE_ID              = "unique_id";
           static final String DIGEST                 = "digest";
           static final String VOICE_NOTE             = "voice_note";
@@ -88,40 +70,11 @@ public class AttachmentDatabase extends Database {
           static final String WIDTH                  = "width";
           static final String HEIGHT                 = "height";
 
-  public  static final String DIRECTORY              = "parts";
-
   public static final int TRANSFER_PROGRESS_DONE    = 0;
   public static final int TRANSFER_PROGRESS_STARTED = 1;
-  public static final int TRANSFER_PROGRESS_PENDING = 2;
   public static final int TRANSFER_PROGRESS_FAILED  = 3;
 
   private static final String PART_ID_WHERE = ROW_ID + " = ? AND " + UNIQUE_ID + " = ?";
-
-  private static final String[] PROJECTION = new String[] {ROW_ID,
-                                                           MMS_ID, CONTENT_TYPE, NAME, CONTENT_DISPOSITION,
-                                                           CONTENT_LOCATION, DATA, THUMBNAIL, TRANSFER_STATE,
-                                                           SIZE, FILE_NAME, THUMBNAIL, THUMBNAIL_ASPECT_RATIO,
-                                                           UNIQUE_ID, DIGEST, FAST_PREFLIGHT_ID, VOICE_NOTE,
-                                                           QUOTE, DATA_RANDOM, THUMBNAIL_RANDOM, WIDTH, HEIGHT};
-
-  public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + ROW_ID + " INTEGER PRIMARY KEY, " +
-    MMS_ID + " INTEGER, " + "seq" + " INTEGER DEFAULT 0, "                        +
-    CONTENT_TYPE + " TEXT, " + NAME + " TEXT, " + "chset" + " INTEGER, "             +
-    CONTENT_DISPOSITION + " TEXT, " + "fn" + " TEXT, " + "cid" + " TEXT, "  +
-    CONTENT_LOCATION + " TEXT, " + "ctt_s" + " INTEGER, "                 +
-    "ctt_t" + " TEXT, " + "encrypted" + " INTEGER, "                         +
-    TRANSFER_STATE + " INTEGER, "+ DATA + " TEXT, " + SIZE + " INTEGER, "   +
-    FILE_NAME + " TEXT, " + THUMBNAIL + " TEXT, " + THUMBNAIL_ASPECT_RATIO + " REAL, " +
-    UNIQUE_ID + " INTEGER NOT NULL, " + DIGEST + " BLOB, " + FAST_PREFLIGHT_ID + " TEXT, " +
-    VOICE_NOTE + " INTEGER DEFAULT 0, " + DATA_RANDOM + " BLOB, " + THUMBNAIL_RANDOM + " BLOB, " +
-    QUOTE + " INTEGER DEFAULT 0, " + WIDTH + " INTEGER DEFAULT 0, " + HEIGHT + " INTEGER DEFAULT 0);";
-
-  public static final String[] CREATE_INDEXS = {
-    "CREATE INDEX IF NOT EXISTS part_mms_id_index ON " + TABLE_NAME + " (" + MMS_ID + ");",
-    "CREATE INDEX IF NOT EXISTS pending_push_index ON " + TABLE_NAME + " (" + TRANSFER_STATE + ");",
-  };
-
-  private final ExecutorService thumbnailExecutor = Util.newSingleThreadedLifoExecutor();
 
   private final AttachmentSecret attachmentSecret;
 
@@ -137,52 +90,6 @@ public class AttachmentDatabase extends Database {
 
     if (dataStream == null) throw new IOException("No stream for: " + attachmentId);
     else                    return dataStream;
-  }
-
-  public @NonNull InputStream getThumbnailStream(@NonNull AttachmentId attachmentId)
-      throws IOException
-  {
-    Log.w(TAG, "getThumbnailStream(" + attachmentId + ")");
-    InputStream dataStream = getDataStream(attachmentId, THUMBNAIL, 0);
-
-    if (dataStream != null) {
-      return dataStream;
-    }
-
-    try {
-      InputStream generatedStream = thumbnailExecutor.submit(new ThumbnailFetchCallable(attachmentId)).get();
-
-      if (generatedStream == null) throw new FileNotFoundException("No thumbnail stream available: " + attachmentId);
-      else                         return generatedStream;
-    } catch (InterruptedException ie) {
-      throw new AssertionError("interrupted");
-    } catch (ExecutionException ee) {
-      Log.w(TAG, ee);
-      throw new IOException(ee);
-    }
-  }
-
-  public @Nullable DatabaseAttachment getAttachment(@NonNull AttachmentId attachmentId)
-  {
-    SQLiteDatabase database = databaseHelper.getReadableDatabase();
-    Cursor cursor           = null;
-
-    try {
-      cursor = database.query(TABLE_NAME, PROJECTION, PART_ID_WHERE, attachmentId.toStrings(), null, null, null);
-
-      if (cursor != null && cursor.moveToFirst()) {
-        List<DatabaseAttachment> list = getAttachment(cursor);
-
-        if (list != null && list.size() > 0) {
-          return list.get(0);
-        }
-      }
-
-      return null;
-    } finally {
-      if (cursor != null)
-        cursor.close();
-    }
   }
 
   @SuppressWarnings("WeakerAccess")
@@ -250,31 +157,6 @@ public class AttachmentDatabase extends Database {
 
   }
 
-  private @NonNull DataInfo setAttachmentData(@NonNull InputStream in)
-      throws MmsException
-  {
-    try {
-      File partsDirectory = context.getDir(DIRECTORY, Context.MODE_PRIVATE);
-      File dataFile       = File.createTempFile("part", ".mms", partsDirectory);
-      return setAttachmentData(dataFile, in);
-    } catch (IOException e) {
-      throw new MmsException(e);
-    }
-  }
-
-  private @NonNull DataInfo setAttachmentData(@NonNull File destination, @NonNull InputStream in)
-      throws MmsException
-  {
-    try {
-      Pair<byte[], OutputStream> out    = ModernEncryptingPartOutputStream.createFor(attachmentSecret, destination, false);
-      long                       length = Util.copy(in, out.second);
-
-      return new DataInfo(destination, length, out.first);
-    } catch (IOException e) {
-      throw new MmsException(e);
-    }
-  }
-
   public List<DatabaseAttachment> getAttachment(@NonNull Cursor cursor) {
     try {
       if (cursor.getColumnIndex(AttachmentDatabase.ATTACHMENT_JSON_ALIAS) != -1) {
@@ -335,110 +217,12 @@ public class AttachmentDatabase extends Database {
     }
   }
 
-
-  @SuppressWarnings("WeakerAccess")
-  @VisibleForTesting
-  protected void updateAttachmentThumbnail(AttachmentId attachmentId, InputStream in, float aspectRatio)
-      throws MmsException
-  {
-    Log.w(TAG, "updating part thumbnail for #" + attachmentId);
-
-    DataInfo thumbnailFile = setAttachmentData(in);
-
-    SQLiteDatabase database = databaseHelper.getWritableDatabase();
-    ContentValues  values   = new ContentValues(2);
-
-    values.put(THUMBNAIL, thumbnailFile.file.getAbsolutePath());
-    values.put(THUMBNAIL_ASPECT_RATIO, aspectRatio);
-    values.put(THUMBNAIL_RANDOM, thumbnailFile.random);
-
-    database.update(TABLE_NAME, values, PART_ID_WHERE, attachmentId.toStrings());
-
-    Cursor cursor = database.query(TABLE_NAME, new String[] {MMS_ID}, PART_ID_WHERE, attachmentId.toStrings(), null, null, null);
-
-    try {
-      if (cursor != null && cursor.moveToFirst()) {
-//        notifyConversationListeners(
-//            DatabaseFactory.getMmsDatabase(context).getThreadIdForMessage(cursor.getLong(cursor.getColumnIndexOrThrow(MMS_ID))));
-      }
-    } finally {
-      if (cursor != null) cursor.close();
-    }
-  }
-
-
-  @VisibleForTesting
-  class ThumbnailFetchCallable implements Callable<InputStream> {
-
-    private final AttachmentId attachmentId;
-
-    ThumbnailFetchCallable(AttachmentId attachmentId) {
-      this.attachmentId = attachmentId;
-    }
-
-    @Override
-    public @Nullable InputStream call() throws Exception {
-      Log.w(TAG, "Executing thumbnail job...");
-      final InputStream stream = getDataStream(attachmentId, THUMBNAIL, 0);
-
-      if (stream != null) {
-        return stream;
-      }
-
-      DatabaseAttachment attachment = getAttachment(attachmentId);
-
-      if (attachment == null || !attachment.hasData()) {
-        return null;
-      }
-
-      ThumbnailData data = null;
-
-      if (MediaUtil.isVideoType(attachment.getContentType())) {
-        data = generateVideoThumbnail(attachmentId);
-      }
-
-      if (data == null) {
-        return null;
-      }
-
-      updateAttachmentThumbnail(attachmentId, data.toDataStream(), data.getAspectRatio());
-
-      return getDataStream(attachmentId, THUMBNAIL, 0);
-    }
-
-    @SuppressLint("NewApi")
-    private ThumbnailData generateVideoThumbnail(AttachmentId attachmentId) {
-      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-        Log.w(TAG, "Video thumbnails not supported...");
-        return null;
-      }
-
-      DataInfo dataInfo = getAttachmentDataFileInfo(attachmentId, DATA);
-
-      if (dataInfo == null) {
-        Log.w(TAG, "No data file found for video thumbnail...");
-        return null;
-      }
-
-      EncryptedMediaDataSource dataSource = new EncryptedMediaDataSource(attachmentSecret, dataInfo.file, dataInfo.random, dataInfo.length);
-      MediaMetadataRetriever   retriever  = new MediaMetadataRetriever();
-      retriever.setDataSource(dataSource);
-
-      Bitmap bitmap = retriever.getFrameAtTime(1000);
-
-      Log.w(TAG, "Generated video thumbnail...");
-      return new ThumbnailData(bitmap);
-    }
-  }
-
   private static class DataInfo {
     private final File   file;
-    private final long   length;
     private final byte[] random;
 
     private DataInfo(File file, long length, byte[] random) {
       this.file = file;
-      this.length = length;
       this.random = random;
     }
   }

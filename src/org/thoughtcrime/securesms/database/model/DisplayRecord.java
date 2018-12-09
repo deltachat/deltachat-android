@@ -41,9 +41,6 @@ public abstract class DisplayRecord {
   private final long       dateReceived;
   private final long       threadId;
   private final String     body;
-  private final int        deliveryStatus;
-  private final int        deliveryReceiptCount;
-  private final int        readReceiptCount;
 
   DisplayRecord(Context context, String body, Recipient recipient, long dateSent,
                 long dateReceived, long threadId, int deliveryStatus, int deliveryReceiptCount,
@@ -56,9 +53,6 @@ public abstract class DisplayRecord {
     this.dateReceived         = dateReceived;
     this.type                 = type;
     this.body                 = body;
-    this.deliveryReceiptCount = deliveryReceiptCount;
-    this.readReceiptCount     = readReceiptCount;
-    this.deliveryStatus       = deliveryStatus;
   }
 
   public @NonNull String getBody() {
@@ -100,10 +94,6 @@ public abstract class DisplayRecord {
 
   public long getThreadId() {
     return threadId;
-  }
-
-  public boolean isKeyExchange() {
-    return false;
   }
 
   public boolean isEndSession() {

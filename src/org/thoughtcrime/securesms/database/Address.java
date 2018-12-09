@@ -16,16 +16,11 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
 import com.google.i18n.phonenumbers.ShortNumberInfo;
 
-import org.thoughtcrime.securesms.util.DelimiterUtil;
 import org.thoughtcrime.securesms.util.GroupUtil;
 import org.thoughtcrime.securesms.util.NumberUtil;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Util;
 
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
@@ -78,29 +73,6 @@ public class Address implements Parcelable, Comparable<Address> {
     return new Address(getExternalAddressFormatter(context).format(external));
   }
 
-  public static @NonNull List<Address> fromSerializedList(@NonNull String serialized, char delimiter) {
-    String[]      escapedAddresses = DelimiterUtil.split(serialized, delimiter);
-    List<Address> addresses        = new LinkedList<>();
-
-    for (String escapedAddress : escapedAddresses) {
-      addresses.add(Address.fromSerialized(DelimiterUtil.unescape(escapedAddress, delimiter)));
-    }
-
-    return addresses;
-  }
-
-  public static @NonNull String toSerializedList(@NonNull List<Address> addresses, char delimiter) {
-    Collections.sort(addresses);
-
-    List<String> escapedAddresses = new LinkedList<>();
-
-    for (Address address : addresses) {
-      escapedAddresses.add(DelimiterUtil.escape(address.serialize(), delimiter));
-    }
-
-    return Util.join(escapedAddresses, delimiter + "");
-  }
-
   private static @NonNull ExternalAddressFormatter getExternalAddressFormatter(Context context) {
     String localNumber = Prefs.getLocalNumber(context);
 
@@ -137,11 +109,6 @@ public class Address implements Parcelable, Comparable<Address> {
   public boolean isDcChat() { return address.startsWith(DC_CHAT_PREFIX); };
 
   public boolean isDcContact() { return address.startsWith(DC_CONTACT_PREFIX); };
-
-  public @NonNull String toGroupString() {
-    if (!isGroup()) throw new AssertionError("Not group: " + address);
-    return address;
-  }
 
   public @NonNull String toPhoneString() {
     if (!isPhone()) throw new AssertionError("Not e164: " + address);
