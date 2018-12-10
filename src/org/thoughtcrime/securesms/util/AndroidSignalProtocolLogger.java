@@ -8,8 +8,6 @@ package org.thoughtcrime.securesms.util;
 import android.util.Log;
 import android.util.SparseIntArray;
 
-import org.whispersystems.libsignal.logging.SignalProtocolLogger;
-
 public class AndroidSignalProtocolLogger implements SignalProtocolLogger {
 
   private static final SparseIntArray PRIORITY_MAP = new SparseIntArray(5) {{

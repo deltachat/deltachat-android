@@ -34,7 +34,7 @@ import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
-import org.whispersystems.libsignal.logging.SignalProtocolLoggerProvider;
+import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 
 /**
