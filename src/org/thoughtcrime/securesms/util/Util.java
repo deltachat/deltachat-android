@@ -36,10 +36,12 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.mms.pdu_alt.EncodedStringValue;
 
 import org.thoughtcrime.securesms.BuildConfig;
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ComposeText;
 import org.thoughtcrime.securesms.database.Address;
 
@@ -332,9 +334,12 @@ public class Util {
   }
 
   public static void writeTextToClipboard(@NonNull Context context, @NonNull String text) {
-    {
+    try {
       ClipboardManager clipboardManager = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
-      clipboardManager.setPrimaryClip(ClipData.newPlainText("Safety numbers", text));
+      clipboardManager.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.app_name), text));
+    }
+    catch(Exception e) {
+      e.printStackTrace();
     }
   }
 

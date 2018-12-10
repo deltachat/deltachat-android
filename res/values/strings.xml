@@ -1526,5 +1526,7 @@
     <string name="recipient_preferences__contact">Contact</string>
     <string name="recipient_preferences__encryption_info">Encryption</string>
     <string name="recipient_preferences__edit_name">Edit name</string>
+    <string name="AndroidManifest__view_log">View log</string>
+    <string name="preferences__view_log">View log</string>
 
 </resources>

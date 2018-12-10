@@ -168,8 +168,8 @@
               android:windowSoftInputMode="stateUnchanged"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-    <activity android:name=".LogSubmitActivity"
-              android:label="@string/AndroidManifest__log_submit"
+    <activity android:name=".LogViewActivity"
+              android:label="@string/AndroidManifest__view_log"
               android:windowSoftInputMode="stateHidden"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 

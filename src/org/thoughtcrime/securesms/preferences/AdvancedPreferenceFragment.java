@@ -19,7 +19,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
-import org.thoughtcrime.securesms.LogSubmitActivity;
+import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -62,8 +62,8 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     Preference manageKeys = this.findPreference("pref_manage_keys");
     manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
 
-    Preference submitDebugLog = this.findPreference("pref_submit_debug_logs");
-    submitDebugLog.setOnPreferenceClickListener(new SubmitDebugLogListener());
+    Preference submitDebugLog = this.findPreference("pref_view_log");
+    submitDebugLog.setOnPreferenceClickListener(new ViewLogListener());
     submitDebugLog.setSummary(getVersion(getActivity()));
   }
 
@@ -114,10 +114,10 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     }
   }
 
-  private class SubmitDebugLogListener implements Preference.OnPreferenceClickListener {
+  private class ViewLogListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
-      final Intent intent = new Intent(getActivity(), LogSubmitActivity.class);
+      final Intent intent = new Intent(getActivity(), LogViewActivity.class);
       startActivity(intent);
       return true;
     }

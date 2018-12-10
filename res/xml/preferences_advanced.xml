@@ -20,7 +20,7 @@
         <Preference android:key="pref_manage_keys"
                     android:title="@string/preferences__manage_keys"/>
 
-        <Preference android:key="pref_submit_debug_logs"
-                    android:title="@string/preferences__submit_debug_log"/>
+        <Preference android:key="pref_view_log"
+                    android:title="@string/preferences__view_log"/>
     </PreferenceCategory>
 </PreferenceScreen>
