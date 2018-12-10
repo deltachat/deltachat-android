@@ -493,9 +493,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleConversationSettings() {
-    Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
-    intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
-    startActivitySceneTransition(intent, titleView.findViewById(R.id.contact_photo_image), "avatar");
+    if(threadId!=DcChat.DC_CHAT_ID_DEADDROP) {
+      Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
+      intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
+      startActivitySceneTransition(intent, titleView.findViewById(R.id.contact_photo_image), "avatar");
+    }
   }
 
   private void handleUnmuteNotifications() {
