@@ -383,10 +383,11 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         List<String> selected = data.getStringArrayListExtra("contacts");
 
         for (String contact : selected) {
-          Address   address   = Address.fromExternal(this, contact);
-          Recipient recipient = Recipient.from(this, address);
-
-          addSelectedContacts(recipient);
+          if(contact!=null) {
+            Address address = Address.fromSerialized(contact);
+            Recipient recipient = Recipient.from(this, address);
+            addSelectedContacts(recipient);
+          }
         }
         break;
 
