@@ -34,6 +34,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.b44t.messenger.DcContext;
+
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Scrubber;
 
 import java.io.BufferedReader;
@@ -180,6 +183,10 @@ public class LogViewFragment extends Fragment {
     } catch (PackageManager.NameNotFoundException nnfe) {
       builder.append("Unknown\n");
     }
+
+    builder.append("\n");
+    DcContext dcContext = DcHelper.getContext(context);
+    builder.append(dcContext.getInfo());
 
     return builder.toString();
   }
