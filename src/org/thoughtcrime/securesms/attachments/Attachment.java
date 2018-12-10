@@ -18,15 +18,6 @@ public abstract class Attachment {
   private final String  location;
 
   @Nullable
-  private final String  key;
-
-  @Nullable
-  private final String relay;
-
-  @Nullable
-  private final byte[] digest;
-
-  @Nullable
   private final String fastPreflightId;
 
   private final boolean voiceNote;
@@ -45,9 +36,6 @@ public abstract class Attachment {
     this.size            = size;
     this.fileName        = fileName;
     this.location        = location;
-    this.key             = key;
-    this.relay           = relay;
-    this.digest          = digest;
     this.fastPreflightId = fastPreflightId;
     this.voiceNote       = voiceNote;
     this.width           = width;

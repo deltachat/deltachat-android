@@ -8,7 +8,6 @@ import org.thoughtcrime.securesms.mms.PartAuthority;
 public class DatabaseAttachment extends Attachment {
 
   private final AttachmentId attachmentId;
-  private final long         mmsId;
   private final boolean      hasData;
   private final boolean      hasThumbnail;
 
@@ -23,7 +22,6 @@ public class DatabaseAttachment extends Attachment {
     this.attachmentId = attachmentId;
     this.hasData      = hasData;
     this.hasThumbnail = hasThumbnail;
-    this.mmsId        = mmsId;
   }
 
   @Override
@@ -46,10 +44,6 @@ public class DatabaseAttachment extends Attachment {
     }
   }
 
-  public AttachmentId getAttachmentId() {
-    return attachmentId;
-  }
-
   @Override
   public boolean equals(Object other) {
     return other != null &&
@@ -60,17 +54,5 @@ public class DatabaseAttachment extends Attachment {
   @Override
   public int hashCode() {
     return attachmentId.hashCode();
-  }
-
-  public long getMmsId() {
-    return mmsId;
-  }
-
-  public boolean hasData() {
-    return hasData;
-  }
-
-  public boolean hasThumbnail() {
-    return hasThumbnail;
   }
 }

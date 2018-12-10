@@ -30,15 +30,6 @@ public interface MmsSmsColumns {
     protected static final long KEY_EXCHANGE_IDENTITY_VERIFIED_BIT = 0x4000;
     protected static final long KEY_EXCHANGE_IDENTITY_DEFAULT_BIT  = 0x2000;
 
-    // Secure Message Information
-    protected static final long SECURE_MESSAGE_BIT = 0x800000;
-
-    // Encrypted Storage Information XXX
-    // public    static final long ENCRYPTION_SYMMETRIC_BIT         = 0x80000000; Deprecated
-    // protected static final long ENCRYPTION_ASYMMETRIC_BIT        = 0x40000000; Deprecated
-    protected static final long ENCRYPTION_REMOTE_BIT            = 0x20000000;
-    protected static final long ENCRYPTION_REMOTE_LEGACY_BIT     = 0x02000000;
-
     public static boolean isFailedMessageType(long type) {
       return (type & BASE_TYPE_MASK) == BASE_SENT_FAILED_TYPE;
     }
@@ -62,10 +53,6 @@ public interface MmsSmsColumns {
       return (type & BASE_TYPE_MASK) == BASE_PENDING_SECURE_SMS_FALLBACK;
     }
 
-    public static boolean isSecureType(long type) {
-      return (type & SECURE_MESSAGE_BIT) != 0;
-    }
-
     public static boolean isIdentityVerified(long type) {
       return (type & KEY_EXCHANGE_IDENTITY_VERIFIED_BIT) != 0;
     }
@@ -74,9 +61,5 @@ public interface MmsSmsColumns {
       return (type & KEY_EXCHANGE_IDENTITY_DEFAULT_BIT) != 0;
     }
 
-    public static boolean isLegacyType(long type) {
-      return (type & ENCRYPTION_REMOTE_LEGACY_BIT) != 0 ||
-             (type & ENCRYPTION_REMOTE_BIT) != 0;
-    }
   }
 }

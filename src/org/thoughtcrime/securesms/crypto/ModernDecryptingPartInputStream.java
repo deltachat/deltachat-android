@@ -22,12 +22,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class ModernDecryptingPartInputStream {
 
-  public static InputStream createFor(@NonNull AttachmentSecret attachmentSecret, @NonNull byte[] random, @NonNull File file, long offset)
-      throws IOException
-  {
-    return createFor(attachmentSecret, random, new FileInputStream(file), offset);
-  }
-
   public static InputStream createFor(@NonNull AttachmentSecret attachmentSecret, @NonNull File file, long offset)
       throws IOException
   {
