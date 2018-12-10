@@ -48,9 +48,6 @@ public class Prefs {
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
   private static final String LOCAL_NUMBER_PREF                = "pref_local_number";
   private static final String PROMPTED_OPTIMIZE_DOZE_PREF      = "pref_prompted_optimize_doze";
-  private static final String UPDATE_APK_REFRESH_TIME_PREF     = "pref_update_apk_refresh_time";
-  private static final String UPDATE_APK_DOWNLOAD_ID           = "pref_update_apk_download_id";
-  private static final String UPDATE_APK_DIGEST                = "pref_update_apk_digest";
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
   public  static final String MESSAGE_BODY_TEXT_SIZE_PREF      = "pref_message_body_text_size";
 
@@ -60,7 +57,6 @@ public class Prefs {
 
   public  static final String SYSTEM_EMOJI_PREF                = "pref_system_emoji";
   public  static final String DIRECT_CAPTURE_CAMERA_ID         = "pref_direct_capture_camera_id";
-  private static final String PROFILE_KEY_PREF                 = "pref_profile_key";
   private static final String PROFILE_NAME_PREF                = "pref_profile_name";
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
   public  static final String INCOGNITO_KEYBORAD_PREF          = "pref_incognito_keyboard";
@@ -174,30 +170,6 @@ public class Prefs {
 
   public static boolean isInThreadNotifications(Context context) {
     return getBooleanPreference(context, IN_THREAD_NOTIFICATION_PREF, true);
-  }
-
-  public static long getUpdateApkRefreshTime(Context context) {
-    return getLongPreference(context, UPDATE_APK_REFRESH_TIME_PREF, 0L);
-  }
-
-  public static void setUpdateApkRefreshTime(Context context, long value) {
-    setLongPreference(context, UPDATE_APK_REFRESH_TIME_PREF, value);
-  }
-
-  public static void setUpdateApkDownloadId(Context context, long value) {
-    setLongPreference(context, UPDATE_APK_DOWNLOAD_ID, value);
-  }
-
-  public static long getUpdateApkDownloadId(Context context) {
-    return getLongPreference(context, UPDATE_APK_DOWNLOAD_ID, -1);
-  }
-
-  public static void setUpdateApkDigest(Context context, String value) {
-    setStringPreference(context, UPDATE_APK_DIGEST, value);
-  }
-
-  public static String getUpdateApkDigest(Context context) {
-    return getStringPreference(context, UPDATE_APK_DIGEST, null);
   }
 
   public static String getLocalNumber(Context context) {
