@@ -22,7 +22,6 @@ import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.crypto.AttachmentSecret;
 import org.thoughtcrime.securesms.crypto.AttachmentSecretProvider;
 import org.thoughtcrime.securesms.glide.ContactPhotoLoader;
-import org.thoughtcrime.securesms.glide.OkHttpUrlLoader;
 import org.thoughtcrime.securesms.glide.cache.EncryptedBitmapCacheDecoder;
 import org.thoughtcrime.securesms.glide.cache.EncryptedBitmapResourceEncoder;
 import org.thoughtcrime.securesms.glide.cache.EncryptedCacheEncoder;
@@ -62,6 +61,6 @@ public class SignalGlideModule extends AppGlideModule {
 
     registry.append(ContactPhoto.class, InputStream.class, new ContactPhotoLoader.Factory(context));
     registry.append(DecryptableUri.class, InputStream.class, new DecryptableStreamUriLoader.Factory(context));
-    registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory());
+    //registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory());
   }
 }
