@@ -37,19 +37,17 @@ public abstract class DisplayRecord {
   protected final long type;
 
   private final Recipient  recipient;
-  private final long       dateSent;
   private final long       dateReceived;
   private final long       threadId;
   private final String     body;
 
   DisplayRecord(Context context, String body, Recipient recipient, long dateSent,
                 long dateReceived, long threadId, int deliveryStatus, int deliveryReceiptCount,
-                long type, int readReceiptCount)
+                long type)
   {
     this.context              = context.getApplicationContext();
     this.threadId             = threadId;
     this.recipient            = recipient;
-    this.dateSent             = dateSent;
     this.dateReceived         = dateReceived;
     this.type                 = type;
     this.body                 = body;

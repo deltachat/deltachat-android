@@ -39,9 +39,7 @@ public class ThreadRecord extends DisplayRecord {
 
   private           final long    count;
   private           final int     unreadCount;
-  private           final int     distributionType;
   private           final boolean archived;
-  private           final long    expiresIn;
   private           final long    lastSeen;
   private           final boolean verified;
   private @Nullable final DcLot   dcSummary;
@@ -52,12 +50,10 @@ public class ThreadRecord extends DisplayRecord {
                       int distributionType, boolean archived, long expiresIn, long lastSeen,
                       int readReceiptCount, boolean verified, @Nullable DcLot dcSummary)
   {
-    super(context, body, recipient, date, date, threadId, status, deliveryReceiptCount, snippetType, readReceiptCount);
+    super(context, body, recipient, date, date, threadId, status, deliveryReceiptCount, snippetType);
     this.count            = count;
     this.unreadCount      = unreadCount;
-    this.distributionType = distributionType;
     this.archived         = archived;
-    this.expiresIn        = expiresIn;
     this.lastSeen         = lastSeen;
     this.verified         = verified;
     this.dcSummary        = dcSummary;

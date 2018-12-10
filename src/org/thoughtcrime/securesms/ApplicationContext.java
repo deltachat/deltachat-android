@@ -21,10 +21,8 @@ import android.arch.lifecycle.DefaultLifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ProcessLifecycleOwner;
 import android.content.Context;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
-import android.util.Log;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -36,15 +34,8 @@ import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
-import org.webrtc.PeerConnectionFactory;
-import org.webrtc.PeerConnectionFactory.InitializationOptions;
-import org.webrtc.voiceengine.WebRtcAudioManager;
-import org.webrtc.voiceengine.WebRtcAudioUtils;
 import org.whispersystems.libsignal.logging.SignalProtocolLoggerProvider;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Will be called once when the TextSecure process is created.
@@ -78,9 +69,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeRandomNumberFix();
     initializeLogging();
     initializeJobManager();
-    //initializeSignedPreKeyCheck(); -- keys are generated in the core, however, not sure if this is needed for the lock screen
     initializePeriodicTasks();
-    initializeWebRtc();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
   }
@@ -151,39 +140,5 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     //if (BuildConfig.PLAY_STORE_DISABLED) {
     //  UpdateApkRefreshListener.schedule(this);
     //}
-  }
-
-  private void initializeWebRtc() {
-    try {
-      Set<String> HARDWARE_AEC_BLACKLIST = new HashSet<String>() {{
-        add("Pixel");
-        add("Pixel XL");
-        add("Moto G5");
-        add("Moto G (5S) Plus");
-        add("Moto G4");
-        add("TA-1053");
-        add("Mi A1");
-        add("E5823"); // Sony z5 compact
-      }};
-
-      Set<String> OPEN_SL_ES_WHITELIST = new HashSet<String>() {{
-        add("Pixel");
-        add("Pixel XL");
-      }};
-
-      if (HARDWARE_AEC_BLACKLIST.contains(Build.MODEL)) {
-        WebRtcAudioUtils.setWebRtcBasedAcousticEchoCanceler(true);
-      }
-
-      if (!OPEN_SL_ES_WHITELIST.contains(Build.MODEL)) {
-        WebRtcAudioManager.setBlacklistDeviceForOpenSLESUsage(true);
-      }
-
-      PeerConnectionFactory.initialize(InitializationOptions.builder(this)
-                                                            .setEnableVideoHwAcceleration(true)
-                                                            .createInitializationOptions());
-    } catch (UnsatisfiedLinkError e) {
-      Log.w(TAG, e);
-    }
   }
 }
