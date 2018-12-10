@@ -110,6 +110,17 @@ public class Util {
     return spanned;
   }
 
+  public static @NonNull int[] appendInt(@Nullable int[] cur, int val) {
+    if (cur == null) {
+      return new int[] { val };
+    }
+    final int N = cur.length;
+    int[] ret = new int[N + 1];
+    System.arraycopy(cur, 0, ret, 0, N);
+    ret[N] = val;
+    return ret;
+  }
+
   public static void wait(Object lock, long timeout) {
     try {
       lock.wait(timeout);

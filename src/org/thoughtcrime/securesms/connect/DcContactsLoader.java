@@ -3,11 +3,11 @@ package org.thoughtcrime.securesms.connect;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.android.internal.util.ArrayUtils;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.util.AsyncLoader;
+import org.thoughtcrime.securesms.util.Util;
 
 public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
 
@@ -39,7 +39,7 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
         if(query!=null) {
             // show the "new contact" link also for partly typed e-mail addresses, so that the user knows he can continue
             if (dcContext.lookupContactIdByAddr(query)==0 && (listflags&DcContext.DC_GCL_VERIFIED_ONLY)==0) {
-                contact_ids = ArrayUtils.appendInt(contact_ids, DcContact.DC_CONTACT_ID_NEW_CONTACT);
+                contact_ids = Util.appendInt(contact_ids, DcContact.DC_CONTACT_ID_NEW_CONTACT);
             }
             return new DcContactsLoader.Ret(contact_ids, query);
         }
