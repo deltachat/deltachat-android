@@ -36,9 +36,6 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.google.android.mms.pdu_alt.EncodedStringValue;
 
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
@@ -91,10 +88,6 @@ public class Util {
     }
 
     return sb.toString();
-  }
-
-  public static boolean isEmpty(EncodedStringValue[] value) {
-    return value == null || value.length == 0;
   }
 
   public static boolean isEmpty(ComposeText value) {
