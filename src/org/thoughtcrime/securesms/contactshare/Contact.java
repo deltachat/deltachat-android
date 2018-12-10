@@ -6,14 +6,10 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.json.JSONException;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.AttachmentId;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
@@ -102,11 +98,6 @@ public class Contact implements Parcelable {
     return avatar;
   }
 
-  @JsonIgnore
-  public @Nullable Attachment getAvatarAttachment() {
-    return avatar != null ? avatar.getAttachment() : null;
-  }
-
   public String serialize() throws IOException {
     return JsonUtils.toJson(this);
   }
@@ -181,16 +172,8 @@ public class Contact implements Parcelable {
       this(in.readString(), in.readString(), in.readString(), in.readString(), in.readString(), in.readString());
     }
 
-    public @Nullable String getDisplayName() {
-      return displayName;
-    }
-
     public @Nullable String getGivenName() {
       return givenName;
-    }
-
-    public @Nullable String getFamilyName() {
-      return familyName;
     }
 
     public @Nullable String getPrefix() {
@@ -199,10 +182,6 @@ public class Contact implements Parcelable {
 
     public @Nullable String getSuffix() {
       return suffix;
-    }
-
-    public @Nullable String getMiddleName() {
-      return middleName;
     }
 
     public boolean isEmpty() {
@@ -478,28 +457,12 @@ public class Contact implements Parcelable {
       return street;
     }
 
-    public @Nullable String getPoBox() {
-      return poBox;
-    }
-
-    public @Nullable String getNeighborhood() {
-      return neighborhood;
-    }
-
-    public @Nullable String getCity() {
-      return city;
-    }
-
     public @Nullable String getRegion() {
       return region;
     }
 
     public @Nullable String getPostalCode() {
       return postalCode;
-    }
-
-    public @Nullable String getCountry() {
-      return country;
     }
 
     @Override
@@ -585,9 +548,6 @@ public class Contact implements Parcelable {
   public static class Avatar implements Selectable, Parcelable {
 
     @JsonProperty
-    private final AttachmentId attachmentId;
-
-    @JsonProperty
     private final boolean      isProfile;
 
     @JsonIgnore
@@ -597,7 +557,6 @@ public class Contact implements Parcelable {
     private boolean selected;
 
     public Avatar(@Nullable AttachmentId attachmentId, @Nullable Attachment attachment, boolean isProfile) {
-      this.attachmentId = attachmentId;
       this.attachment   = attachment;
       this.isProfile    = isProfile;
       this.selected     = true;
@@ -607,17 +566,8 @@ public class Contact implements Parcelable {
       this(null, attachmentFromUri(attachmentUri), isProfile);
     }
 
-    @JsonCreator
-    private Avatar(@JsonProperty("attachmentId") @Nullable AttachmentId attachmentId, @JsonProperty("isProfile") boolean isProfile) {
-      this(attachmentId, null, isProfile);
-    }
-
     private Avatar(Parcel in) {
       this((Uri) in.readParcelable(Uri.class.getClassLoader()), in.readByte() != 0);
-    }
-
-    public @Nullable AttachmentId getAttachmentId() {
-      return attachmentId;
     }
 
     public @Nullable Attachment getAttachment() {
