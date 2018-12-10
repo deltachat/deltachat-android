@@ -61,13 +61,7 @@ public class TransportOptionsAdapter extends BaseAdapter {
     imageView.getBackground().setColorFilter(transport.getBackgroundColor(), Mode.MULTIPLY);
     imageView.setImageResource(transport.getDrawable());
     textView.setText(transport.getDescription());
-
-    if (transport.getSimName().isPresent()) {
-      subtextView.setText(transport.getSimName().get());
-      subtextView.setVisibility(View.VISIBLE);
-    } else {
-      subtextView.setVisibility(View.GONE);
-    }
+    subtextView.setVisibility(View.GONE);
 
     return convertView;
   }

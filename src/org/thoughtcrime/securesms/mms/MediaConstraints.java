@@ -8,12 +8,10 @@ import android.util.Log;
 import android.util.Pair;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
-import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 import org.thoughtcrime.securesms.util.BitmapDecodingException;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -22,10 +20,6 @@ public abstract class MediaConstraints {
 
   public static MediaConstraints getPushMediaConstraints() {
     return new PushMediaConstraints();
-  }
-
-  public static MediaConstraints getMmsMediaConstraints(int subscriptionId) {
-    return new MmsMediaConstraints(subscriptionId);
   }
 
   public abstract int getImageMaxWidth(Context context);
@@ -63,21 +57,5 @@ public abstract class MediaConstraints {
 
   public boolean canResize(@Nullable Attachment attachment) {
     return attachment != null && MediaUtil.isImage(attachment) && !MediaUtil.isGif(attachment);
-  }
-
-  public MediaStream getResizedMedia(@NonNull Context context, @NonNull Attachment attachment)
-      throws IOException
-  {
-    if (!canResize(attachment)) {
-      throw new UnsupportedOperationException("Cannot resize this content type");
-    }
-
-    try {
-      // XXX - This is loading everything into memory! We want the send path to be stream-like.
-      BitmapUtil.ScaleResult scaleResult = BitmapUtil.createScaledBytes(context, new DecryptableUri(attachment.getDataUri()), this);
-      return new MediaStream(new ByteArrayInputStream(scaleResult.getBitmap()), MediaUtil.IMAGE_JPEG, scaleResult.getWidth(), scaleResult.getHeight());
-    } catch (BitmapDecodingException e) {
-      throw new IOException(e);
-    }
   }
 }

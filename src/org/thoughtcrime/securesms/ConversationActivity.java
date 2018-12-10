@@ -98,7 +98,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
-import org.thoughtcrime.securesms.util.CharacterCalculator.CharacterState;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -163,7 +162,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   SendButton                  sendButton;
   private   ImageButton                 attachButton;
   protected ConversationTitleView       titleView;
-  private   TextView                    charactersLeft;
   private   ConversationFragment        fragment;
   private   InputAwareLayout            container;
   private   View                        composePanel;
@@ -288,7 +286,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setTransport(sendButton.getSelectedTransport());
 
     titleView.setTitle(glideRequests, dcChat);
-    calculateCharactersRemaining();
 
     MessageNotifier.setVisibleThread(threadId);
     markThreadAsRead();
@@ -570,9 +567,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     this.isSecurityInitialized = true;
 
     sendButton.resetAvailableTransports();
-    sendButton.setDefaultTransport(Type.TEXTSECURE);
+    sendButton.setDefaultTransport(Type.NORMAL_MAIL);
 
-    calculateCharactersRemaining();
     supportInvalidateOptionsMenu();
   }
 
@@ -696,7 +692,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     sendButton            = ViewUtil.findById(this, R.id.send_button);
     attachButton          = ViewUtil.findById(this, R.id.attach_button);
     composeText           = ViewUtil.findById(this, R.id.embedded_text_editor);
-    charactersLeft        = ViewUtil.findById(this, R.id.space_left);
     emojiDrawerStub       = ViewUtil.findStubById(this, R.id.emoji_drawer_stub);
     composePanel          = ViewUtil.findById(this, R.id.bottom_panel);
     container             = ViewUtil.findById(this, R.id.layout_container);
@@ -724,7 +719,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     sendButton.setOnClickListener(sendButtonListener);
     sendButton.setEnabled(true);
     sendButton.addOnTransportChangedListener((newTransport, manuallySelected) -> {
-      calculateCharactersRemaining();
       composeText.setTransport(newTransport);
       buttonToggle.getBackground().setColorFilter(newTransport.getBackgroundColor(), Mode.MULTIPLY);
       buttonToggle.getBackground().invalidateSelf();
@@ -828,29 +822,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.append(name + "\n" + mail);
   }
 
-  private void calculateCharactersRemaining() {
-    String          messageBody     = composeText.getTextTrimmed();
-    TransportOption transportOption = sendButton.getSelectedTransport();
-    CharacterState  characterState  = transportOption.calculateCharacters(messageBody);
-
-    if (characterState.charactersRemaining <= 15 || characterState.messagesSpent > 1) {
-      charactersLeft.setText(String.format(dynamicLanguage.getCurrentLocale(),
-                                           "%d/%d (%d)",
-                                           characterState.charactersRemaining,
-                                           characterState.maxMessageSize,
-                                           characterState.messagesSpent));
-      charactersLeft.setVisibility(View.VISIBLE);
-    } else {
-      charactersLeft.setVisibility(View.GONE);
-    }
-  }
-
   private boolean isActiveGroup() {
     return dcChat.isGroup();
-  }
-
-  private boolean isSelfConversation() {
-    return dcChat.isSelfTalk();
   }
 
   private boolean isGroupConversation() {
@@ -870,9 +843,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private MediaConstraints getCurrentMediaConstraints() {
-    return sendButton.getSelectedTransport().getType() == Type.TEXTSECURE
-           ? MediaConstraints.getPushMediaConstraints()
-           : MediaConstraints.getMmsMediaConstraints(sendButton.getSelectedTransport().getSimSubscriptionId().or(-1));
+    return MediaConstraints.getPushMediaConstraints();
   }
 
   private void markThreadAsRead() {
@@ -1305,8 +1276,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public void afterTextChanged(Editable s) {
-      calculateCharactersRemaining();
-
       if (composeText.getTextTrimmed().length() == 0 || beforeLength == 0) {
         composeText.postDelayed(ConversationActivity.this::updateToggleButtonState, 50);
       }

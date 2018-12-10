@@ -23,7 +23,6 @@ import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
-import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.TransportOption;
 import org.thoughtcrime.securesms.components.emoji.EmojiEditText;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -95,22 +94,12 @@ public class ComposeText extends EmojiEditText {
     }
   }
 
-  public void appendInvite(String invite) {
-    if (!TextUtils.isEmpty(getText()) && !getText().toString().equals(" ")) {
-      append(" ");
-    }
-
-    append(invite);
-    setSelection(getText().length());
-  }
-
   private boolean isLandscape() {
     return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
   }
 
   public void setTransport(TransportOption transport) {
     final boolean useSystemEmoji = Prefs.isSystemEmojiPreferred(getContext());
-    final boolean isIncognito    = Prefs.isIncognitoKeyboardEnabled(getContext());
 
     int imeOptions = (getImeOptions() & ~EditorInfo.IME_MASK_ACTION) | EditorInfo.IME_ACTION_SEND;
     int inputType  = getInputType();
@@ -124,10 +113,7 @@ public class ComposeText extends EmojiEditText {
 
     setInputType(inputType);
     setImeOptions(imeOptions);
-    setHint(transport.getComposeHint(),
-            transport.getSimName().isPresent()
-                ? getContext().getString(R.string.conversation_activity__from_sim_name, transport.getSimName().get())
-                : null);
+    setHint(transport.getComposeHint(),null);
   }
 
   @Override

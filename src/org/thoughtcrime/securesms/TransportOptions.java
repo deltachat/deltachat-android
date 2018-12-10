@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import org.thoughtcrime.securesms.util.PushCharacterCalculator;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.LinkedList;
@@ -20,7 +19,7 @@ public class TransportOptions {
   private final Context                          context;
   private final List<TransportOption>            enabledTransports;
 
-  private Type                      defaultTransportType  = Type.TEXTSECURE;
+  private Type                      defaultTransportType  = Type.NORMAL_MAIL;
   private Optional<TransportOption> selectedOption        = Optional.absent();
 
   public TransportOptions(Context context) {
@@ -37,7 +36,7 @@ public class TransportOptions {
     if (selectedOption.isPresent() && !isEnabled(selectedOption.get())) {
       setSelectedTransport(null);
     } else {
-      this.defaultTransportType = Type.TEXTSECURE;
+      this.defaultTransportType = Type.NORMAL_MAIL;
 
       notifyTransportChangeListeners();
     }
@@ -95,11 +94,10 @@ public class TransportOptions {
   private List<TransportOption> initializeAvailableTransports() {
     List<TransportOption> results = new LinkedList<>();
 
-    results.add(new TransportOption(Type.TEXTSECURE, R.drawable.ic_send_sms_white_24dp,
+    results.add(new TransportOption(Type.NORMAL_MAIL, R.drawable.ic_send_sms_white_24dp,
                                     context.getResources().getColor(R.color.textsecure_primary),
                                     context.getString(R.string.ConversationActivity_transport_signal),
-                                    context.getString(R.string.conversation_activity__type_message),
-                                    new PushCharacterCalculator()));
+                                    context.getString(R.string.conversation_activity__type_message)));
 
     return results;
   }
