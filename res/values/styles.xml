@@ -157,10 +157,6 @@
         <item name="android:background">@drawable/info_round</item>
     </style>
 
-    <style name="ErrorButton" parent="@style/MaterialButton">
-        <item name="android:background">@drawable/error_round</item>
-    </style>
-
     <style name="ComposeEditText" parent="@style/Signal.Text.Body">
         <item name="android:padding">2dp</item>
         <item name="android:background">@null</item>
