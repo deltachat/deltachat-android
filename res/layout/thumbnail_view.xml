@@ -36,11 +36,4 @@
 
     </FrameLayout>
 
-    <ViewStub
-        android:id="@+id/transfer_controls_stub"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:layout="@layout/transfer_controls_stub" />
-
 </merge>
