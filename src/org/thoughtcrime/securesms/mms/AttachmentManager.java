@@ -380,18 +380,6 @@ public class AttachmentManager {
                .execute();
   }
 
-  public static void selectContactInfo(Activity activity, int requestCode) {
-    Permissions.with(activity)
-               .request(Manifest.permission.READ_CONTACTS)
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_signal_requires_contacts_permission_in_order_to_attach_contact_information))
-               .onAllGranted(() -> {
-                 Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                 activity.startActivityForResult(intent, requestCode);
-               })
-               .execute();
-  }
-
   public static void selectLocation(Activity activity, int requestCode) {
     Permissions.with(activity)
                .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)

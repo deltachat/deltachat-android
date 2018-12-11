@@ -25,16 +25,8 @@ public class AttachmentId {
     return uniqueId;
   }
 
-  public String[] toStrings() {
-    return new String[] {String.valueOf(rowId), String.valueOf(uniqueId)};
-  }
-
   public String toString() {
     return "(row id: " + rowId + ", unique ID: " + uniqueId + ")";
-  }
-
-  public boolean isValid() {
-    return rowId >= 0 && uniqueId >= 0;
   }
 
   @Override
