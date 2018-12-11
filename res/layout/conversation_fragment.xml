@@ -44,8 +44,8 @@
         tools:text="@string/ConversationActivity_NoMessagesHint"
         />
 
-    <View android:id="@+id/compose_divider"
-          android:layout_width="match_parent"
+    <View
+        android:layout_width="match_parent"
           android:layout_height="2dp"
           android:layout_gravity="bottom"
           android:background="@drawable/compose_divider_background"

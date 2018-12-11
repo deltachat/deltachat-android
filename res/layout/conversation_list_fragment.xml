@@ -27,8 +27,8 @@
                   tools:visibility="visible">
 
 
-        <ImageView android:id="@+id/empty"
-                   android:src="@drawable/conversation_list_empty_state"
+        <ImageView
+            android:src="@drawable/conversation_list_empty_state"
                    android:paddingTop="10dp"
                    android:layout_gravity="center_horizontal"
                    android:layout_width="wrap_content"

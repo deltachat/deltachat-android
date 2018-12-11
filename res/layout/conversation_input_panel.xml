@@ -25,7 +25,6 @@
         android:clipToPadding="false">
 
         <LinearLayout
-            android:id="@+id/compose_bubble"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipChildren="false"

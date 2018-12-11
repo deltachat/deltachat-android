@@ -10,8 +10,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.design.widget.AppBarLayout
-            android:id="@+id/app_bar_layout"
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
             android:layout_height="300dp"
             android:background="@color/transparent">
 
@@ -58,8 +57,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
-            android:id="@+id/scroll_view"
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
             android:descendantFocusability="blocksDescendants"
