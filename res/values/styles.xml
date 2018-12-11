@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="NoAnimation.Theme.BlackScreen" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:windowBackground">@android:color/black</item>
-    </style>
-
-    <style name="NoAnimation.Theme.AppCompat.Light.DarkActionBar" parent="@style/Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowAnimationStyle">@null</item>
-    </style>
-
-    <style name="TextSecure.DialogActivity" parent="Theme.AppCompat.Light">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
-    </style>
-
     <style name="AppCompatAlertDialogStyleLight" parent="Theme.AppCompat.Light.Dialog.Alert">
     </style>
 
@@ -53,12 +35,6 @@
         <item name="android:textColorSecondary">@color/white</item>
     </style>
 
-    <style name="TextSecure.LightActionBar.DarkText"
-           parent="TextSecure.LightActionBar">
-        <item name="android:textColorPrimary">@color/black</item>
-        <item name="android:textColorSecondary">@color/black</item>
-    </style>
-
     <style name="TextSecure.FlatLightActionBar"
            parent="@style/TextSecure.LightActionBar">
         <item name="elevation">0dp</item>
@@ -89,15 +65,6 @@
         <item name="android:textColor">#BFffffff</item>
     </style>
 
-    <style name="NotificationText">
-      <item name="android:textColor">?android:attr/textColorPrimary</item>
-    </style>
-
-    <style name="NotificationTitle">
-      <item name="android:textColor">?android:attr/textColorPrimary</item>
-      <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="Registration.Description" parent="@android:style/TextAppearance">
         <item name="android:textSize">16.0sp</item>
         <item name="android:typeface">sans</item>
@@ -111,47 +78,7 @@
         <item name="android:lineSpacingMultiplier">1.25</item>
     </style>
     
-    <style name="Registration.Label" parent="@android:style/TextAppearance">
-        <item name="android:textSize">12.0sp</item>
-        <item name="android:typeface">sans</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">#ff808080</item>
-        <item name="android:gravity">left</item>
-        <item name="android:layout_gravity">left</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:shadowColor">#ffffff</item>
-        <item name="android:shadowDx">1.0</item>
-        <item name="android:shadowDy">1.0</item>
-        <item name="android:shadowRadius">0.0</item>
-        <item name="android:lineSpacingMultiplier">1.25</item>
-    </style>
-    
-    <style name="Registration.BigLabel" parent="@style/Registration.Label">
-        <item name="android:textSize">20sp</item>
-    </style>
-    
-    <style name="Registration.Constant" parent="@android:style/TextAppearance">
-        <item name="android:typeface">sans</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">#ff808080</item>
-        <item name="android:shadowColor">#ffffff</item>
-        <item name="android:shadowDx">1.0</item>
-        <item name="android:shadowDy">1.0</item>
-        <item name="android:shadowRadius">0.0</item>
-        <item name="android:lineSpacingMultiplier">1.25</item>        
-    </style>
-
     <!-- For Holo Light Dialog Activity Styling Emulation -->
-
-    <style name="Widget.ProgressBar.Horizontal" parent="@android:style/Widget.ProgressBar.Horizontal">
-    </style>
-
-    <style name="MaterialButton">
-        <item name="android:elevation">1dp</item>
-        <item name="android:translationZ">1dp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">12sp</item>
-    </style>
 
     <style name="ComposeEditText" parent="@style/Signal.Text.Body">
         <item name="android:padding">2dp</item>
@@ -178,49 +105,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="Button.Borderless" parent="Base.Widget.AppCompat.Button.Borderless">
-        <item name="android:textColor">@color/signal_primary</item>
-    </style>
-
-    <!-- RedPhone -->
-
-    <!-- Buttons in the main "button row" of the in-call onscreen touch UI. -->
-
-    <!-- "Compound button" variation of InCallButton.
-           These buttons have the concept of two states: checked and unchecked.
-           (This style is just like "InCallButton" except that we also
-           clear out android:textOn and android:textOff, to avoid the default
-           text label behavior of the ToggleButton class.) -->
-
-    <style name="WebRtcCallCompoundButton">
-        <item name="android:layout_height">31dp</item>
-        <item name="android:layout_width">31dp</item>
-        <item name="android:textOn">@null</item>
-        <item name="android:textOff">@null</item>
-    </style>
-
-    <style name="IdentityKey">
-        <item name="android:fontFamily">monospace</item>
-        <item name="android:typeface">monospace</item>
-        <item name="android:textSize">17sp</item>
-        <item name="android:clickable">false</item>
-        <item name="android:focusable">false</item>
-    </style>
-
-    <style name="BackupPassphrase">
-        <item name="android:fontFamily">monospace</item>
-        <item name="android:typeface">monospace</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:clickable">false</item>
-        <item name="android:focusable">false</item>
-    </style>
-
-
     <style name="PreferenceThemeOverlay.Fix" parent="PreferenceThemeOverlay.v14.Material">
-    </style>
-
-    <style name="Color1SwitchStyle">
-        <item name="colorControlActivated">@color/white</item>
     </style>
 
     <style name="NoMessagesTextView">
