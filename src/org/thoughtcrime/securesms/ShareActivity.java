@@ -65,6 +65,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 /**
  * An activity to quickly share content with chats
@@ -156,7 +157,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     progressWheel    = findViewById(R.id.progress_wheel);
     shareFragment = (ShareFragment) getSupportFragmentManager().findFragmentById(R.id.share_fragment);
     shareFragment.setConversationClickedListener(this::onConversationClick);
-
+    shareFragment.setLocale(dynamicLanguage.getCurrentLocale());
   }
 
   private void onConversationClick(int chatId) {
@@ -330,10 +331,9 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
 
     private RecyclerView recyclerView;
-
     private SwipeRefreshLayout swipeRefreshLayout;
-
     private ConversationClickedListener conversationClickedListener;
+    private Locale locale;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -357,7 +357,8 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     }
 
     private void initializeAdapter() {
-      recyclerView.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this), null, null, this));
+      recyclerView.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this),
+          locale, null, this));
       getLoaderManager().restartLoader(0, null, this);
       swipeRefreshLayout.setRefreshing(false);
       swipeRefreshLayout.setEnabled(false);
@@ -412,6 +413,10 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onSwitchToArchive() {
       // Not needed
+    }
+
+    public void setLocale(Locale locale) {
+      this.locale = locale;
     }
 
     public void setConversationClickedListener(ConversationClickedListener listener) {
