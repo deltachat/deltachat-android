@@ -191,16 +191,9 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
-    case R.id.menu_new_message: handleNewConversation(); return true;
     case android.R.id.home:     finish();                return true;
     }
     return false;
-  }
-
-  private void handleNewConversation() {
-    Intent intent = getBaseShareIntent(NewConversationActivity.class);
-    isPassingAlongMedia = true;
-    startActivity(intent);
   }
 
   private void handleResolvedMedia(Intent intent, boolean animate) {
