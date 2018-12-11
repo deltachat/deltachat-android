@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="core_blue">#2090ea</color>
-    <color name="core_green">#4caf50</color>
     <color name="core_red">#f44336</color>
     <color name="core_red_highlight">#ef5350</color>
 
@@ -20,5 +19,4 @@
     <color name="core_dark_60">#797A7C</color>
     <color name="core_dark_70">#414347</color>
     <color name="core_dark_85">#1A1C20</color>
-    <color name="core_dark_95">#0A0C11</color>
 </resources>

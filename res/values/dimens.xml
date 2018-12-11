@@ -14,7 +14,6 @@
     <dimen name="transport_selection_popup_xoff">2dp</dimen>
     <dimen name="transport_selection_popup_yoff">2dp</dimen>
     <dimen name="contact_photo_target_size">64dp</dimen>
-    <dimen name="contact_selection_photo_size">50dp</dimen>
 
     <!-- TODO: Consolidate these two message corner things -->
     <dimen name="message_corner_radius">16dp</dimen>
@@ -37,7 +36,6 @@
     <dimen name="conversation_individual_right_gutter">16dp</dimen>
     <dimen name="conversation_individual_left_gutter">16dp</dimen>
     <dimen name="conversation_group_left_gutter">52dp</dimen>
-    <dimen name="conversation_vertical_message_spacing_default">8dp</dimen>
     <dimen name="conversation_vertical_message_spacing_collapse">1dp</dimen>
 
     <dimen name="quote_corner_radius_large">10dp</dimen>
@@ -45,31 +43,12 @@
     <dimen name="quote_corner_radius_preview">18dp</dimen>
 
     <integer name="media_overview_cols">3</integer>
-    <dimen name="message_details_table_row_pad">10dp</dimen>
 
     <dimen name="quick_camera_shutter_ring_size">52dp</dimen>
 
-    <dimen name="transfer_controls_expanded_width">150dp</dimen>
-    <dimen name="transfer_controls_contracted_width">70dp</dimen>
     <dimen name="conversation_list_fragment_archive_padding">16dp</dimen>
     <dimen name="contact_selection_actions_tap_area">10dp</dimen>
 
-    <!-- RedPhone -->
-
-    <!-- Height of the main row of in-call buttons. -->
-
-    <!-- Padding at the left and right edges of the incall_touch_ui button
-         cluster.  This padding is necessary because we can't allow the
-         buttons to be very close to the edges of the screen, due to the
-         risk of false touches (from your finger wrapping around while
-         holding the phone, *before* moving it up to your face and having
-         the prox sensor kick in.) -->
-
-    <dimen name="onboarding_title_size">34sp</dimen>
-    <dimen name="onboarding_subtitle_size">20sp</dimen>
-
     <dimen name="scribble_stroke_size">2dp</dimen>
-
-    <dimen name="floating_action_button_margin">16dp</dimen>
 
 </resources>
