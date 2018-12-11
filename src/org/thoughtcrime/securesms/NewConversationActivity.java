@@ -107,20 +107,12 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
     switch (item.getItemId()) {
     case android.R.id.home:   super.onBackPressed(); return true;
-    //case R.id.menu_refresh:   handleManualRefresh(); return true; -- seems unneeded for delta
     case R.id.menu_new_group: handleCreateGroup();   return true;
     case R.id.menu_invite:    handleInvite();        return true;
     }
 
     return false;
   }
-
-  /* seems unneeded for delta
-  private void handleManualRefresh() {
-    contactsFragment.setRefreshing(true);
-    onRefresh();
-  }
-  */
 
   private void handleCreateGroup() {
     startActivity(new Intent(this, GroupCreateActivity.class));
