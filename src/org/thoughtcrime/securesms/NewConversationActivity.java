@@ -107,19 +107,9 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
     switch (item.getItemId()) {
     case android.R.id.home:   super.onBackPressed(); return true;
-    case R.id.menu_new_group: handleCreateGroup();   return true;
-    case R.id.menu_invite:    handleInvite();        return true;
     }
 
     return false;
-  }
-
-  private void handleCreateGroup() {
-    startActivity(new Intent(this, GroupCreateActivity.class));
-  }
-
-  private void handleInvite() {
-    startActivity(new Intent(this, InviteActivity.class));
   }
 
   @Override
