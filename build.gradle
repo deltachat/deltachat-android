@@ -89,10 +89,7 @@ dependencies {
     compile 'com.pnikosis:materialish-progress:1.5'
     compile 'com.soundcloud.android:android-crop:0.9.10@aar'
     compile 'com.melnykov:floatingactionbutton:1.3.0'
-    compile 'com.squareup.dagger:dagger:1.2.2'
-    annotationProcessor 'com.squareup.dagger:dagger-compiler:1.2.2'
     compile 'mobi.upod:time-duration-picker:1.1.3'
-    provided 'com.squareup.dagger:dagger-compiler:1.2.2'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     compile 'com.google.zxing:core:3.2.1'
     compile ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') {
@@ -127,10 +124,6 @@ dependencies {
     androidTestCompile ('org.assertj:assertj-core:1.7.1') {
         exclude group: 'org.hamcrest', module: 'hamcrest-core'
     }
-    androidTestCompile ('com.squareup.assertj:assertj-android:1.1.1') {
-        exclude group: 'org.hamcrest',        module: 'hamcrest-core'
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
 }
 
 dependencyVerification {
@@ -163,7 +156,6 @@ dependencyVerification {
         'com.github.bumptech.glide:glide:997de7ac95be6c944d3b8cbe13de11307736ea45451c1b09a6cec7c328ead59f',
         'com.makeramen:roundedimageview:1f5a1865796b308c6cdd114acc6e78408b110f0a62fc63553278fbeacd489cd1',
         'com.soundcloud.android:android-crop:ffd4b973cf6e97f7d64118a0dc088df50e9066fd5634fe6911dd0c0c5d346177',
-        'com.squareup.dagger:dagger:789aca24537022e49f91fc6444078d9de8f1dd99e1bfb090f18491b186967883',
         'com.amulyakhare:com.amulyakhare.textdrawable:54c92b5fba38cfd316a07e5a30528068f45ce8515a6890f1297df4c401af5dcb',
         'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
         'com.davemorrissey.labs:subsampling-scale-image-view:550c5baa07e0bb4ff0a18b705e96d34436d22619248bd8c08c08c730b1f55cfe',
@@ -260,7 +252,6 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
                           'proguard-google-play-services.pro',
-                          'proguard-dagger.pro',
                           'proguard-jackson.pro',
                           'proguard-appcompat-v7.pro',
                           'proguard-rounded-image-view.pro',
@@ -268,7 +259,6 @@ android {
                           'proguard-shortcutbadger.pro',
                           'proguard-retrofit.pro',
                           'proguard-retrolambda.pro',
-                          'proguard-okhttp.pro',
                           'proguard.cfg'
             testProguardFiles 'proguard-automation.pro',
                           'proguard.cfg'
