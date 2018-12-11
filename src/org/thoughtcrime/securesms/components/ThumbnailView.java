@@ -295,7 +295,7 @@ public class ThumbnailView extends FrameLayout {
                                           .transition(withCrossFade()), new CenterCrop());
 
     if (slide.isInProgress()) return request;
-    else                      return request.apply(RequestOptions.errorOf(R.drawable.ic_missing_thumbnail_picture));
+    else                      return request.apply(RequestOptions.errorOf(R.drawable.ic_image_dark));
   }
 
   private RequestBuilder buildPlaceholderGlideRequest(@NonNull GlideRequests glideRequests, @NonNull Slide slide) {
