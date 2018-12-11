@@ -109,7 +109,6 @@
 
     <attr name="menu_new_conversation_icon" format="reference" />
     <attr name="menu_search_icon" format="reference" />
-    <attr name="menu_call_icon" format="reference" />
     <attr name="menu_popup_expand" format="reference"/>
     <attr name="menu_unlock_icon" format="reference" />
     <attr name="menu_lock_icon" format="reference" />
@@ -117,7 +116,6 @@
     <attr name="menu_trash_icon" format="reference" />
     <attr name="menu_selectall_icon" format="reference" />
     <attr name="menu_group_icon" format="reference" />
-    <attr name="menu_split_icon" format="reference" />
     <attr name="menu_accept_icon" format="reference" />
     <attr name="menu_refresh_directory" format="reference" />
     <attr name="menu_copy_icon" format="reference" />
