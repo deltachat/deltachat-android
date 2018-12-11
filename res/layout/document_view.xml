@@ -57,16 +57,6 @@
 
                 </FrameLayout>
 
-                <ImageView android:id="@+id/download"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center_vertical"
-                           android:clickable="true"
-                           android:visibility="gone"
-                           android:background="@drawable/circle_touch_highlight_background"
-                           android:src="@drawable/ic_download_circle_fill_white_48dp"
-                           android:contentDescription="@string/audio_view__download_accessibility_description"/>
-
             </org.thoughtcrime.securesms.components.AnimatingToggle>
 
             <LinearLayout android:layout_width="match_parent"

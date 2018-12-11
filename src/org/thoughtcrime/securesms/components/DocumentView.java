@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.thoughtcrime.securesms.R;
@@ -25,14 +24,12 @@ public class DocumentView extends FrameLayout {
   private static final String TAG = DocumentView.class.getSimpleName();
 
   private final @NonNull AnimatingToggle controlToggle;
-  private final @NonNull ImageView       downloadButton;
   private final @NonNull View            container;
   private final @NonNull ViewGroup       iconContainer;
   private final @NonNull TextView        fileName;
   private final @NonNull TextView        fileSize;
   private final @NonNull TextView        document;
 
-  private @Nullable SlideClickListener downloadListener;
   private @Nullable SlideClickListener viewListener;
   private @Nullable DocumentSlide      documentSlide;
 
@@ -51,7 +48,6 @@ public class DocumentView extends FrameLayout {
     this.container        = findViewById(R.id.document_container);
     this.iconContainer    = findViewById(R.id.icon_container);
     this.controlToggle    = findViewById(R.id.control_toggle);
-    this.downloadButton   = findViewById(R.id.download);
     this.fileName         = findViewById(R.id.file_name);
     this.fileSize         = findViewById(R.id.file_size);
     this.document         = findViewById(R.id.document);
@@ -87,19 +83,16 @@ public class DocumentView extends FrameLayout {
   @Override
   public void setFocusable(boolean focusable) {
     super.setFocusable(focusable);
-    this.downloadButton.setFocusable(focusable);
   }
 
   @Override
   public void setClickable(boolean clickable) {
     super.setClickable(clickable);
-    this.downloadButton.setClickable(clickable);
   }
 
   @Override
   public void setEnabled(boolean enabled) {
     super.setEnabled(enabled);
-    this.downloadButton.setEnabled(enabled);
   }
 
   private @NonNull String getFileType(Optional<String> fileName) {
@@ -118,19 +111,6 @@ public class DocumentView extends FrameLayout {
     }
 
     return "";
-  }
-
-  private class DownloadClickedListener implements View.OnClickListener {
-    private final @NonNull DocumentSlide slide;
-
-    private DownloadClickedListener(@NonNull DocumentSlide slide) {
-      this.slide = slide;
-    }
-
-    @Override
-    public void onClick(View v) {
-      if (downloadListener != null) downloadListener.onClick(v, slide);
-    }
   }
 
   private class OpenClickedListener implements View.OnClickListener {
