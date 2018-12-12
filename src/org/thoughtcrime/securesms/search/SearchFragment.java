@@ -85,7 +85,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     listView      = view.findViewById(R.id.search_list);
 
     listAdapter    = new SearchListAdapter(getContext(), GlideApp.with(this), this, locale);
-    listDecoration = new StickyHeaderDecoration(listAdapter, false, false);
+    listDecoration = new StickyHeaderDecoration(listAdapter, false, true);
 
     listView.setAdapter(listAdapter);
     listView.addItemDecoration(listDecoration);
@@ -99,6 +99,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
       result = result != null ? result : SearchResult.EMPTY;
 
       listAdapter.updateResults(result);
+      listDecoration.invalidateLayouts();
 
       if (result.isEmpty()) {
         if (TextUtils.isEmpty(viewModel.getLastQuery().trim())) {

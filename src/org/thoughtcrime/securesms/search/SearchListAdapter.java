@@ -28,7 +28,7 @@ import java.util.Locale;
 class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.SearchResultViewHolder>
                         implements StickyHeaderDecoration.StickyHeaderAdapter<SearchListAdapter.HeaderViewHolder>
 {
-  private static final int TYPE_CONVERSATIONS = 1;
+  private static final int TYPE_CHATS         = 1;
   private static final int TYPE_CONTACTS      = 2;
   private static final int TYPE_MESSAGES      = 3;
 
@@ -97,7 +97,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   @Override
   public long getHeaderId(int position) {
     if (getConversationResult(position) != null) {
-      return TYPE_CONVERSATIONS;
+      return TYPE_CHATS;
     } else if (getContactResult(position) != null) {
       return TYPE_CONTACTS;
     } else {
@@ -113,7 +113,24 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
 
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    viewHolder.bind((int) getHeaderId(position));
+    int headerType = (int)getHeaderId(position);
+    int textId = R.plurals.n_messages;
+    int count = 1;
+    switch (headerType) {
+      case TYPE_CHATS:
+        textId = R.plurals.n_chats;
+        count = searchResult.getChats().getCnt();
+        break;
+      case TYPE_CONTACTS:
+        textId = R.plurals.n_contacts;
+        count = searchResult.getContacts().length;
+        break;
+      case TYPE_MESSAGES:
+        textId = R.plurals.n_messages;
+        count = searchResult.getMessages().length;
+        break;
+    }
+    viewHolder.bind(context.getResources().getQuantityString(textId, count, count));
   }
 
   void updateResults(@NonNull SearchResult result) {
@@ -123,8 +140,8 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
 
   @Nullable
   private DcChatlist.Item getConversationResult(int position) {
-    if (position < searchResult.getConversations().getCnt()) {
-      return searchResult.getConversations().getItem(position);
+    if (position < searchResult.getChats().getCnt()) {
+      return searchResult.getChats().getItem(position);
     }
     return null;
   }
@@ -146,7 +163,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   }
 
   private int getFirstContactIndex() {
-    return searchResult.getConversations().getCnt();
+    return searchResult.getChats().getCnt();
   }
 
   private int getFirstMessageIndex() {
@@ -216,18 +233,8 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
       titleView = itemView.findViewById(R.id.label);
     }
 
-    public void bind(int headerType) {
-      switch (headerType) {
-        case TYPE_CONVERSATIONS:
-          titleView.setText(R.string.search_chats_header);
-          break;
-        case TYPE_CONTACTS:
-          titleView.setText(R.string.search_contacts_header);
-          break;
-        case TYPE_MESSAGES:
-          titleView.setText(R.string.search_msgs_header);
-          break;
-      }
+    public void bind(String text) {
+      titleView.setText(text);
     }
   }
 }

@@ -40,7 +40,7 @@ public class SearchResult {
     return contacts;
   }
 
-  public DcChatlist getConversations() {
+  public DcChatlist getChats() {
     return conversations;
   }
 
