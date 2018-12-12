@@ -492,25 +492,41 @@ public class ApplicationDcContext extends DcContext {
 
       case DC_EVENT_GET_STRING:
         String s;
-        switch ((int) data1) { // the integers are defined in the core and used only here, an enum or sth. like that won't have a big benefit
-          case 3:
-            s = context.getString(R.string.draft);
-            break;
-          case 8:
-            s = context.getString(R.string.menu_deaddrop);
-            break;
-          case 13:
-            s = context.getString(R.string.pref_default_status_text);
-            break;
-          case 42:
-            s = context.getString(R.string.autocrypt_asm_subject);
-            break;
-          case 43:
-            s = context.getString(R.string.autocrypt_asm_general_body);
-            break;
-          default:
-            s = null;
-            break;
+        switch ((int) data1) {
+          // the integers are defined in the core and used only here, an enum or sth. like that won't have a big benefit
+          case  1: s = context.getString(R.string.chat_no_messages); break;
+          case  2: s = context.getString(R.string.self); break;
+          case  3: s = context.getString(R.string.draft); break;
+          case  4: s = context.getResources().getQuantityString(R.plurals.n_members, (int)data2, (int)data2); break;
+          case  6: s = context.getResources().getQuantityString(R.plurals.n_contacts, (int)data2, (int)data2); break;
+          case  7: s = context.getString(R.string.voice_message); break;
+          case  8: s = context.getString(R.string.menu_deaddrop); break;
+          case  9: s = context.getString(R.string.image); break;
+          case 10: s = context.getString(R.string.video); break;
+          case 11: s = context.getString(R.string.audio); break;
+          case 12: s = context.getString(R.string.file); break;
+          case 13: s = context.getString(R.string.pref_default_status_text); break;
+          case 14: s = context.getString(R.string.group_hello_draft); break;
+          case 15: s = context.getString(R.string.systemmsg_group_name_changed); break;
+          case 16: s = context.getString(R.string.systemmsg_group_image_changed); break;
+          case 17: s = context.getString(R.string.systemmsg_member_added); break;
+          case 18: s = context.getString(R.string.systemmsg_member_removed); break;
+          case 19: s = context.getString(R.string.systemmsg_group_left); break;
+          case 20: s = context.getString(R.string.error_x); break;
+          case 21: s = context.getString(R.string.group_self_not_in_group); break;
+          case 22: s = context.getString(R.string.error_no_network); break;
+          case 23: s = context.getString(R.string.gif); break;
+          case 29: s = context.getString(R.string.systemmsg_cannot_decrypt); break;
+          case 31: s = context.getString(R.string.systemmsg_read_receipt_subject); break;
+          case 32: s = context.getString(R.string.systemmsg_read_receipt_body); break;
+          case 33: s = context.getString(R.string.systemmsg_group_image_deleted); break;
+          case 40: s = context.getString(R.string.chat_archived_chats_title); break;
+          case 42: s = context.getString(R.string.autocrypt_asm_subject); break;
+          case 43: s = context.getString(R.string.autocrypt_asm_general_body); break;
+          case 50: s = context.getString(R.string.chat_self_talk_subtitle); break;
+          case 60: s = context.getString(R.string.login_error_cannot_login); break;
+          case 61: s = context.getString(R.string.login_error_server_response); break;
+          default: s = null; break;
         }
         return stringToData(s);
 

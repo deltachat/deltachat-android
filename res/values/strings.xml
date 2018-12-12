@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Delta Chat</string>
+    <!-- Translators: please enter the name of the language you're translating to here -->
     <string name="language_name">English</string>
 
 
@@ -21,6 +22,7 @@
     <string name="done">Done</string>
     <string name="undo">Undo</string>
     <string name="error">Error</string>
+    <string name="error_x">Error: %1$s</string>
     <string name="error_no_network">Network unavailable.</string>
     <string name="no_app_to_handle_data">Can\'t find an app to handle this type of data.</string>
     <string name="no_browser_installed">No browser installed.</string>
@@ -56,12 +58,17 @@
         <item quantity="one">1 message</item>
         <item quantity="other">%1$d messages</item>
     </plurals>
+    <plurals name="n_members">
+        <item quantity="one">1 member</item>
+        <item quantity="other">%1$d members</item>
+    </plurals>
 
     <string name="self">Me</string>
     <string name="draft">Draft</string>
     <string name="image">Image</string>
     <string name="gif">Gif</string>
     <string name="audio">Audio</string>
+    <string name="voice_message">Voice message</string>
     <string name="video">Video</string>
     <string name="contact">Contact</string>
     <string name="camera">Camera</string>
@@ -190,12 +197,13 @@
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
     <string name="chat_no_messages">No messages.</string>
-
+    <string name="chat_self_talk_subtitle">Messages I sent to myself</string>
 
     <!-- search -->
     <string name="search">Search</string>
     <string name="search_explain">Search for chats, contacts, and messages</string>
     <string name="search_no_result_for_x">No results found for \"%s\"</string>
+
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Group name</string>
@@ -203,6 +211,8 @@
     <string name="group_create_button">Create group</string>
     <string name="group_please_enter_group_name">Please enter a name for the group.</string>
     <string name="group_add_members">Add members</string>
+    <string name="group_hello_draft">Hello, I\'ve just created the group \"%1$s\" for us.</string>
+    <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
     <string name="profile_encryption">Encryption</string>
 
 
@@ -257,6 +267,10 @@
     <string name="import_backup_title">Import backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to go with the normal setup process.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Cannot login as <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Please check if the email-address and the password are correct.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers place additional information in your inbox; you can check them it eg. in the web frontend. Consult your provider or friends if you run into problems.</string>
 
 
     <!-- preferences -->
@@ -358,6 +372,18 @@
     <string name="autocrypt_continue_transfer_succeeded">End-to-end setup transferred. This device is now ready to use Autocrypt with the same setup as the other device.</string>
     <string name="autocrypt_continue_transfer_retry">Retry</string>
     <string name="autocrypt_bad_setup_code">Bad setup code. Please try again.\n\nIf you do not remember the setup code, just send another Autocrypt Setup Message from the other device.</string>
+
+
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Group name changed from \"%1$s\" to \"%2$s\".</string>
+    <string name="systemmsg_group_image_changed">Group image changed.</string>
+    <string name="systemmsg_group_image_deleted">Group image deleted.</string>
+    <string name="systemmsg_member_added">Member %1$s added.</string>
+    <string name="systemmsg_member_removed">Member %1$s removed.</string>
+    <string name="systemmsg_group_left">Group left.</string>
+    <string name="systemmsg_read_receipt_subject">Read receipt</string>
+    <string name="systemmsg_read_receipt_body">This is a read receipt for the message \"%1$s\".\n\nIt means that message was displayed on the recipient\'s device, not necessarily that the content was read.</string>
+    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another email program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
 
 
     <!-- screen lock -->
