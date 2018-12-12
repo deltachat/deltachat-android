@@ -175,7 +175,7 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
     }
 
     private void showBackgroundSaveError() {
-        Toast.makeText(this, R.string.AppearancePreferencesFragment_background_save_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.error, Toast.LENGTH_LONG).show();
     }
 
     private void enableMenuItem() {

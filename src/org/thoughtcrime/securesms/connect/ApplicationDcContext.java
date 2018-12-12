@@ -127,7 +127,7 @@ public class ApplicationDcContext extends DcContext {
     try {
       File file = new File(path);
       if (!file.exists()) {
-        Toast.makeText(context, context.getString(R.string.ShareActivity_file_not_found, path), Toast.LENGTH_LONG).show();
+        Toast.makeText(context, context.getString(R.string.file_not_found, path), Toast.LENGTH_LONG).show();
         return;
       }
 
@@ -154,10 +154,10 @@ public class ApplicationDcContext extends DcContext {
         intent.setType(mimeType);
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        context.startActivity(Intent.createChooser(intent, context.getString(R.string.ShareActivity_share_with)));
+        context.startActivity(Intent.createChooser(intent, context.getString(R.string.chat_share_with_title)));
       }
     } catch (RuntimeException e) {
-      Toast.makeText(context, R.string.ShareActivity_unable_to_open_media, Toast.LENGTH_LONG).show();
+      Toast.makeText(context, R.string.no_app_to_handle_data, Toast.LENGTH_LONG).show();
       Toast.makeText(context, "Media-Type: " + mimeType, Toast.LENGTH_LONG).show();
       Log.i(TAG, "opening of external activity failed.", e);
     }
@@ -494,19 +494,19 @@ public class ApplicationDcContext extends DcContext {
         String s;
         switch ((int) data1) { // the integers are defined in the core and used only here, an enum or sth. like that won't have a big benefit
           case 3:
-            s = context.getString(R.string.summary_draft);
+            s = context.getString(R.string.draft);
             break;
           case 8:
             s = context.getString(R.string.menu_deaddrop);
             break;
           case 13:
-            s = context.getString(R.string.default_status_text);
+            s = context.getString(R.string.pref_default_status_text);
             break;
           case 42:
-            s = context.getString(R.string.autocrypt__asm_subject);
+            s = context.getString(R.string.autocrypt_asm_subject);
             break;
           case 43:
-            s = context.getString(R.string.autocrypt__asm_general_body);
+            s = context.getString(R.string.autocrypt_asm_general_body);
             break;
           default:
             s = null;

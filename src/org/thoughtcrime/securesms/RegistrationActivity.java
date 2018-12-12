@@ -140,14 +140,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void verifyEmail(TextInputEditText view) {
-        String error = getString(R.string.RegistrationActivity_error_mail);
+        String error = getString(R.string.login_error_mail);
         String email = view.getText().toString();
         if (!matchesEmailPattern(email)) {
             view.setError(error);
         }
         if (!TextUtils.isEmpty(email) && isGmail(email) && !gmailDialogShown) {
             gmailDialogShown = true;
-            Dialogs.showInfoDialog(this, getString(R.string.RegistrationActivity_dialog_gmail_title), getString(R.string.RegistrationActivity_dialog_gmail_text));
+            Dialogs.showInfoDialog(this, getString(R.string.login_info_gmail_text));
         }
     }
 
@@ -160,7 +160,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void verifyServer(TextInputEditText view) {
-        String error = getString(R.string.RegistrationActivity_error_server);
+        String error = getString(R.string.login_error_server);
         String server = view.getText().toString();
         if (!TextUtils.isEmpty(server) && !Patterns.DOMAIN_NAME.matcher(server).matches()
                 && !Patterns.IP_ADDRESS.matcher(server).matches()
@@ -170,7 +170,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void verifyPort(TextInputEditText view) {
-        String error = getString(R.string.RegistrationActivity_error_port);
+        String error = getString(R.string.login_error_port);
         String portString = view.getText().toString();
         if (!portString.isEmpty()) {
             try {
@@ -197,7 +197,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private void onLogin() {
         if (!verifyRequiredFields()) {
-            Toast.makeText(this, R.string.RegistrationActivity_error_required_fields, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.login_error_required_fields, Toast.LENGTH_LONG).show();
             return;
         }
         setupConfig();
@@ -208,7 +208,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getString(R.string.loading));
+        progressDialog.setMessage(getString(R.string.one_moment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(android.R.string.cancel), (dialog, which) -> stopLoginProcess());

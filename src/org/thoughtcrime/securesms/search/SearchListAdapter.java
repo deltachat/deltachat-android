@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
-import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationListItem;
@@ -21,8 +19,6 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.search.model.MessageResult;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
@@ -223,13 +219,13 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     public void bind(int headerType) {
       switch (headerType) {
         case TYPE_CONVERSATIONS:
-          titleView.setText(R.string.SearchFragment_header_conversations);
+          titleView.setText(R.string.search_chats_header);
           break;
         case TYPE_CONTACTS:
-          titleView.setText(R.string.SearchFragment_header_contacts);
+          titleView.setText(R.string.search_contacts_header);
           break;
         case TYPE_MESSAGES:
-          titleView.setText(R.string.SearchFragment_header_messages);
+          titleView.setText(R.string.search_msgs_header);
           break;
       }
     }

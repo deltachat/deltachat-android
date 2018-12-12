@@ -139,13 +139,13 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     String title;
     if(isEdit()) {
-      title = getString(R.string.GroupCreateActivity_actionbar_edit_title);
+      title = getString(R.string.menu_edit_group);
     }
     else if(verified) {
-      title = getString(R.string.GroupCreateActivity_actionbar_verified_title);
+      title = getString(R.string.menu_new_verified_group);
     }
     else {
-      title = getString(R.string.GroupCreateActivity_actionbar_title);
+      title = getString(R.string.menu_new_group);
     }
     getSupportActionBar().setTitle(title);
   }
@@ -304,7 +304,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private boolean showGroupNameEmptyToast(String groupName) {
     if(groupName == null) {
-      Toast.makeText(this, getString(R.string.GroupCreateActivity_please_enter_group_name), Toast.LENGTH_LONG).show();
+      Toast.makeText(this, getString(R.string.group_please_enter_group_name), Toast.LENGTH_LONG).show();
       return true;
     }
     return false;
@@ -443,8 +443,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     FillExistingGroupInfoAsyncTask(GroupCreateActivity activity) {
       super(activity,
-            R.string.GroupCreateActivity_loading_group_details,
-            R.string.please_wait);
+            R.string.one_moment,
+            R.string.one_moment);
       this.activity = activity;
     }
 

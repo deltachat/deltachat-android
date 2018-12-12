@@ -28,7 +28,6 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
@@ -249,15 +248,9 @@ public class AttachmentManager {
       protected void onPostExecute(@Nullable final Slide slide) {
         if (slide == null) {
           attachmentViewStub.get().setVisibility(View.GONE);
-          Toast.makeText(context,
-                         R.string.ConversationActivity_sorry_there_was_an_error_setting_your_attachment,
-                         Toast.LENGTH_SHORT).show();
           result.set(false);
         } else if (!areConstraintsSatisfied(context, slide, constraints)) {
           attachmentViewStub.get().setVisibility(View.GONE);
-          Toast.makeText(context,
-                         R.string.ConversationActivity_attachment_exceeds_size_limits,
-                         Toast.LENGTH_SHORT).show();
           result.set(false);
         } else {
           setSlide(slide);
@@ -357,7 +350,7 @@ public class AttachmentManager {
     Permissions.with(activity)
                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio))
+               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "*/*", null, requestCode))
                .execute();
   }
@@ -366,7 +359,7 @@ public class AttachmentManager {
     Permissions.with(activity)
                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio))
+               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode))
                .execute();
   }
@@ -375,7 +368,7 @@ public class AttachmentManager {
     Permissions.with(activity)
                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio))
+               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "audio/*", null, requestCode))
                .execute();
   }
@@ -384,7 +377,7 @@ public class AttachmentManager {
     Permissions.with(activity)
                .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
                .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_signal_requires_location_information_in_order_to_attach_a_location))
+               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
                .onAllGranted(() -> {
                  try {
                    activity.startActivityForResult(new PlacePicker.IntentBuilder().build(activity), requestCode);
@@ -407,7 +400,7 @@ public class AttachmentManager {
     Permissions.with(activity)
                .request(Manifest.permission.CAMERA)
                .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_signal_requires_the_camera_permission_in_order_to_take_photos_but_it_has_been_permanently_denied))
+               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
                .onAllGranted(() -> {
                  try {
                    Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -450,7 +443,7 @@ public class AttachmentManager {
       activity.startActivityForResult(intent, requestCode);
     } catch (ActivityNotFoundException anfe) {
       Log.w(TAG, "couldn't complete ACTION_GET_CONTENT intent, no activity found. falling back.");
-      Toast.makeText(activity, R.string.AttachmentManager_cant_open_media_selection, Toast.LENGTH_LONG).show();
+      Toast.makeText(activity, R.string.no_app_to_handle_data, Toast.LENGTH_LONG).show();
     }
   }
 

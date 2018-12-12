@@ -20,7 +20,7 @@
         android:layout_centerVertical="true"
         android:cropToPadding="true"
         tools:src="@drawable/ic_contact_picture"
-        android:contentDescription="@string/conversation_list_item_view__contact_photo_image"
+        android:contentDescription="@string/pref_profile_photo"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp" />
 
@@ -39,7 +39,6 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/from"
                 android:orientation="horizontal"
                 android:layout_marginBottom="2dp"
                 android:layout_width="wrap_content"
@@ -115,7 +114,7 @@
                           android:paddingTop="1dp"
                           android:paddingBottom="1dp"
                           style="@style/Signal.Text.Caption"
-                          android:text="@string/conversation_list_item_view__archived"
+                          android:text="@string/chat_archived_label"
                           android:textColor="?attr/conversation_list_item_date_color"
                           android:textAllCaps="true"
                           android:background="@drawable/archived_indicator_background" />

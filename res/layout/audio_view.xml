@@ -31,7 +31,7 @@
                            android:src="@drawable/ic_play_circle_fill_white_48dp"
                            android:scaleType="centerInside"
                            tools:visibility="gone"
-                           android:contentDescription="@string/audio_view__play_accessibility_description"/>
+                           android:contentDescription="@string/menu_play"/>
 
                 <ImageView android:id="@+id/pause"
                            android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                            android:background="@drawable/circle_touch_highlight_background"
                            android:src="@drawable/ic_pause_circle_fill_white_48dp"
                            android:scaleType="centerInside"
-                           android:contentDescription="@string/audio_view__pause_accessibility_description"/>
+                           android:contentDescription="@string/menu_pause"/>
 
             </org.thoughtcrime.securesms.components.AnimatingToggle>
 

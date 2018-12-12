@@ -55,7 +55,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   @Override
   public void onResume() {
     super.onResume();
-    ((ApplicationPreferencesActivity)getActivity()).getSupportActionBar().setTitle(R.string.preferences__chats);
+    ((ApplicationPreferencesActivity)getActivity()).getSupportActionBar().setTitle(R.string.pref_chats_and_media);
 
     trimEnabledCheckbox.setChecked(0!=dcContext.getConfigInt("trim_enabled", DcContext.DC_PREF_DEFAULT_TRIM_ENABLED));
   }
@@ -106,7 +106,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
       }
 
       dcContext.setConfigInt("trim_length", value);
-      preference.setSummary(getResources().getQuantityString(R.plurals.ApplicationPreferencesActivity_messages_per_conversation, value, value));
+      preference.setSummary(getResources().getString(R.string.pref_trim_length_limit_summary, value));
       return true;
     }
   }
@@ -116,10 +116,9 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     public boolean onPreferenceClick(Preference preference) {
       final int threadLengthLimit = dcContext.getConfigInt("trim_length", DcContext.DC_PREF_DEFAULT_TRIM_LENGTH);
       AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-      builder.setTitle(R.string.ApplicationPreferencesActivity_delete_all_old_messages_now);
-      builder.setMessage(getResources().getQuantityString(R.plurals.ApplicationPreferencesActivity_this_will_immediately_trim_all_conversations_to_the_d_most_recent_messages,
-          threadLengthLimit, threadLengthLimit));
-      builder.setPositiveButton(R.string.ApplicationPreferencesActivity_delete,
+      builder.setMessage(getResources().getString(R.string.pref_trim_now_ask,
+          threadLengthLimit));
+      builder.setPositiveButton(R.string.ok,
           (dialog, which) -> Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show());
 
       builder.setNegativeButton(android.R.string.cancel, null);

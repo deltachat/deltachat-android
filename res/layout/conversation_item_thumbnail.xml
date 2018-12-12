@@ -11,7 +11,7 @@
         android:clickable="false"
         android:longClickable="false"
         android:scaleType="fitCenter"
-        android:contentDescription="@string/conversation_item__mms_image_description"
+        android:contentDescription="@string/image"
         app:thumbnail_radius="1dp"/>
 
     <ImageView

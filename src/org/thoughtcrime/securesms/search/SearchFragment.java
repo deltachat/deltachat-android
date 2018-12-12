@@ -105,7 +105,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
           noResultsView.setVisibility(View.GONE);
         } else {
           noResultsView.setVisibility(View.VISIBLE);
-          noResultsView.setText(getString(R.string.SearchFragment_no_results, viewModel.getLastQuery()));
+          noResultsView.setText(getString(R.string.search_no_result_for_x, viewModel.getLastQuery()));
         }
       } else {
         noResultsView.setVisibility(View.VISIBLE);
@@ -140,7 +140,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
       int chatId = dcContext.getChatIdByContactId(contact.getId());
       if(chatId==0) {
         new AlertDialog.Builder(getContext())
-            .setMessage(getString(R.string.new_conversation_activity__ask_start_chat_with, contact.getNameNAddr()))
+            .setMessage(getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {

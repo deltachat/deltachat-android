@@ -44,9 +44,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         private int icons[] = new int[]{R.drawable.intro1, R.drawable.intro2, R.drawable.intro3, R.drawable.intro4, R.drawable.intro5, R.drawable.intro6, R.drawable.intro7};
 
-        private int titles[] = new int[]{R.string.WelcomeActivity_intro1_headline, R.string.WelcomeActivity_intro2_headline, R.string.WelcomeActivity_intro3_headline, R.string.WelcomeActivity_intro4_headline, R.string.WelcomeActivity_intro5_headline, R.string.WelcomeActivity_intro6_headline, R.string.WelcomeActivity_intro7_headline};
+        private int titles[] = new int[]{R.string.welcome_intro1_headline, R.string.welcome_intro2_headline, R.string.welcome_intro3_headline, R.string.welcome_intro4_headline, R.string.welcome_intro5_headline, R.string.welcome_intro6_headline, R.string.welcome_intro7_headline};
 
-        private int messages[] = new int[]{R.string.WelcomeActivity_intro1_message, R.string.WelcomeActivity_intro2_message, R.string.WelcomeActivity_intro3_message, R.string.WelcomeActivity_intro4_message, R.string.WelcomeActivity_intro5_message, R.string.WelcomeActivity_intro6_message, R.string.WelcomeActivity_intro7_message};
+        private int messages[] = new int[]{R.string.welcome_intro1_message, R.string.welcome_intro2_message, R.string.welcome_intro3_message, R.string.welcome_intro4_message, R.string.welcome_intro5_message, R.string.welcome_intro6_message, R.string.welcome_intro7_message};
 
         WelcomePagerAdapter(Context context) {
             this.context = context;

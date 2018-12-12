@@ -396,9 +396,9 @@ public class MessageNotifier {
 
       // TODO: if message content should be hidden on screen lock, do it here.
       if (record.isMms() && TextUtils.isEmpty(body)) {
-        body = SpanUtil.italic(context.getString(R.string.MessageNotifier_media_message));
+        body = SpanUtil.italic(context.getString(R.string.notify_media_message));
       } else if (record.isMms() && !record.isMediaPending()) {
-        String message      = context.getString(R.string.MessageNotifier_media_message_with_text, body);
+        String message      = context.getString(R.string.notify_media_message_with_text, body);
         int    italicLength = message.length() - body.length();
         body = SpanUtil.italic(message, italicLength);
       }

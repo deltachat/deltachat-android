@@ -74,7 +74,7 @@ public class DocumentView extends FrameLayout {
 
     this.documentSlide = documentSlide;
 
-    this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.DocumentView_unknown_file)));
+    this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
     this.fileSize.setText(Util.getPrettyFileSize(documentSlide.getFileSize()));
     this.document.setText(getFileType(documentSlide.getFileName()));
     this.setOnClickListener(new OpenClickedListener(documentSlide));

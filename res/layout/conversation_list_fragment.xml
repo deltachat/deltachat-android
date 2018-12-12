@@ -27,15 +27,15 @@
                   tools:visibility="visible">
 
 
-        <ImageView android:id="@+id/empty"
-                   android:src="@drawable/conversation_list_empty_state"
+        <ImageView
+            android:src="@drawable/conversation_list_empty_state"
                    android:paddingTop="10dp"
                    android:layout_gravity="center_horizontal"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
 
 
-        <TextView android:text="@string/conversation_list_fragment__give_your_inbox_something_to_write_home_about_get_started_by_messaging_a_friend"
+        <TextView android:text="@string/chat_no_chats_yet_hint"
                   android:textSize="20sp"
                   android:padding="16dp"
                   android:gravity="center"
@@ -75,7 +75,7 @@
             app:backgroundTint="@color/signal_primary"
             android:src="@drawable/ic_add_white_24dp"
             android:focusable="true"
-            android:contentDescription="@string/conversation_list_fragment__fab_content_description"/>
+            android:contentDescription="@string/menu_new_chat"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

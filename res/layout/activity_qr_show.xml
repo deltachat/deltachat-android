@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:contentDescription="@string/qr_scan_activity__title" />
+        android:contentDescription="@string/qrscan_title" />
 
     <TextView
         android:id="@+id/qrShowHint"

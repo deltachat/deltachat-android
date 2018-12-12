@@ -26,7 +26,7 @@ public class ScreenLockUtil {
         KeyguardManager keyguardManager = (KeyguardManager) activity.getSystemService(Context.KEYGUARD_SERVICE);
         Intent intent;
         if (keyguardManager != null) {
-            intent = keyguardManager.createConfirmDeviceCredentialIntent(activity.getString(R.string.security_authentication_unlock_title), activity.getString(R.string.security_authentication_unlock_description));
+            intent = keyguardManager.createConfirmDeviceCredentialIntent(activity.getString(R.string.screenlock_unlock_title), activity.getString(R.string.screenlock_unlock_description));
             if (intent != null) {
                 activity.startActivityForResult(intent, requestCode);
                 return true;

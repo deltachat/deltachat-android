@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:key="media_download" android:title="@string/preferences_autocrypt">
+    <PreferenceCategory android:key="media_download" android:title="@string/autocrypt">
         <Preference android:key="pref_send_autocrypt_setup_message"
-                    android:title="@string/preferences_autocrypt__send_asm"/>
+                    android:title="@string/autocrypt_send_asm_title"/>
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_prefer_e2ee"
-            android:title="@string/preferences_autocrypt__prefer_e2ee"/>
+            android:title="@string/autocrypt_prefer_e2ee"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:layout="@layout/preference_divider_explain_autocrypt"/>
 
-    <PreferenceCategory android:key="media_download" android:title="@string/preferences_other">
+    <PreferenceCategory android:key="media_download" android:title="@string/pref_other">
         <Preference android:key="pref_backup"
-                    android:title="@string/preferences__backup"
-                    android:summary="@string/preferences_chats__backup_chats_to_external_storage"/>
+                    android:title="@string/pref_backup"
+                    android:summary="@string/pref_backup_explain"/>
 
         <Preference android:key="pref_manage_keys"
-                    android:title="@string/preferences__manage_keys"/>
+                    android:title="@string/pref_manage_keys"/>
 
         <Preference android:key="pref_view_log"
-                    android:title="@string/preferences__view_log"/>
+                    android:title="@string/pref_view_log"/>
     </PreferenceCategory>
 </PreferenceScreen>

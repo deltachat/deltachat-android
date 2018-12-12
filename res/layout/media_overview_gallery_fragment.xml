@@ -17,6 +17,6 @@
               android:textSize="24sp"
               android:gravity="center"
               android:visibility="gone"
-              android:text="@string/media_overview_activity__no_media" />
+              android:text="@string/media_no_media_hint" />
 
 </RelativeLayout>

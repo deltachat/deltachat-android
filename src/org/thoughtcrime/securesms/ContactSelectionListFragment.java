@@ -185,7 +185,7 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   private void handleDeleteSelected() {
-    Dialogs.showResponseDialog(getActivity(), getString(R.string.ContactSelectionListFragment_contact_delete_confirmation_title), getString(R.string.ContactSelectionListFragment_contact_delete_confirmation_message), (dialogInterface, i) -> {
+    Dialogs.showResponseDialog(getActivity(), getString(R.string.ask_delete_contacts), (dialogInterface, i) -> {
       ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
       final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
       new Thread(() -> {
@@ -197,7 +197,7 @@ public class ContactSelectionListFragment extends    Fragment
         }
         if (failed) {
           Util.runOnMain(()-> {
-            Toast.makeText(getActivity(), R.string.ContactSelectionListFragment_error_deleting_contacts_check_existing_conversations, Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.error, Toast.LENGTH_LONG).show();
           });
         }
       }).start();
@@ -282,7 +282,7 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
     ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(data);
-    emptyText.setText(R.string.contact_selection_group_activity__no_contacts);
+    emptyText.setText(R.string.contacts_empty_hint);
     boolean useFastScroller = (recyclerView.getAdapter().getItemCount() > 20);
     recyclerView.setVerticalScrollBarEnabled(!useFastScroller);
     if (useFastScroller) {

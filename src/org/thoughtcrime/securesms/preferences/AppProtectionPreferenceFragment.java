@@ -65,7 +65,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__privacy);
+        ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_privacy);
         initializePassphraseTimeoutSummary();
 
         readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED));
@@ -74,7 +74,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     private void initializePassphraseTimeoutSummary() {
         int timeoutSeconds = Prefs.getScreenLockTimeoutInterval(getActivity());
         this.findPreference(Prefs.SCREEN_LOCK_TIMEOUT_INTERVAL_PREF)
-                .setSummary(getResources().getQuantityString(R.plurals.AppProtectionPreferenceFragment_minutes, timeoutSeconds, timeoutSeconds / 60));
+                .setSummary(getResources().getQuantityString(R.plurals.n_minutes, timeoutSeconds, timeoutSeconds / 60));
     }
 
     private void initializeVisibility() {
@@ -103,7 +103,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             boolean enabled = (Boolean) newValue;
             Prefs.setScreenSecurityEnabled(getContext(), enabled);
-            Toast.makeText(getContext(), R.string.preferences__screen_security_restart_warning, Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.pref_screen_security_please_restart_hint, Toast.LENGTH_LONG).show();
             return true;
         }
     }
@@ -138,9 +138,9 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     }
 
     public static CharSequence getSummary(Context context) {
-        final int privacySummaryResId = R.string.ApplicationPreferencesActivity_privacy_summary;
-        final String onRes = context.getString(R.string.ApplicationPreferencesActivity_on);
-        final String offRes = context.getString(R.string.ApplicationPreferencesActivity_off);
+        final int privacySummaryResId = R.string.pref_summary_privacy;
+        final String onRes = context.getString(R.string.pref_summary_on);
+        final String offRes = context.getString(R.string.pref_summary_off);
         String screenLockState = Prefs.isScreenLockEnabled(context) ? onRes : offRes;
         String readReceiptState = DcHelper.getContext(context).getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED)!=0? onRes : offRes;
         return context.getString(privacySummaryResId, screenLockState, readReceiptState);

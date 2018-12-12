@@ -41,7 +41,7 @@
         app:cpb_colorProgress="@color/textsecure_primary"
         app:cpb_cornerRadius="20dp"
         app:cpb_selectorIdle="@drawable/progress_button_state"
-        app:cpb_textIdle="@string/WelcomeActivity_start_messaging"
+        app:cpb_textIdle="@string/welcome_start_messaging"
         app:layout_constraintBottom_toTopOf="@id/skip_button_bottom_spacer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

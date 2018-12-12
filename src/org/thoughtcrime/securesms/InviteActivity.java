@@ -35,7 +35,7 @@ public class InviteActivity extends PassphraseRequiredActionBarActivity {
 
     setContentView(R.layout.invite_activity);
     assert getSupportActionBar() != null;
-    getSupportActionBar().setTitle(R.string.AndroidManifest__invite_friends);
+    getSupportActionBar().setTitle(R.string.menu_invite);
 
     initializeResources();
   }
@@ -50,7 +50,7 @@ public class InviteActivity extends PassphraseRequiredActionBarActivity {
     heart             = ViewUtil.findById(this, R.id.heart);
 
     String selfMail = DcHelper.getContext(this).getConfig("addr", "");
-    inviteText.setText(getString(R.string.InviteActivity_lets_switch_to_delta_chat, "https://delta.chat", selfMail));
+    inviteText.setText(getString(R.string.invite_default_text, "https://delta.chat", selfMail));
 
     if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
       heart.getViewTreeObserver().addOnPreDrawListener(new HeartPreDrawListener());
@@ -72,9 +72,9 @@ public class InviteActivity extends PassphraseRequiredActionBarActivity {
       sendIntent.putExtra(Intent.EXTRA_TEXT, inviteText.getText().toString());
       sendIntent.setType("text/plain");
       if (sendIntent.resolveActivity(getPackageManager()) != null) {
-        startActivity(Intent.createChooser(sendIntent, getString(R.string.InviteActivity_invite_to_signal)));
+        startActivity(Intent.createChooser(sendIntent, getString(R.string.menu_invite)));
       } else {
-        Toast.makeText(InviteActivity.this, R.string.InviteActivity_no_app_to_share_to, Toast.LENGTH_LONG).show();
+        Toast.makeText(InviteActivity.this, R.string.no_app_to_handle_data, Toast.LENGTH_LONG).show();
       }
     }
   }

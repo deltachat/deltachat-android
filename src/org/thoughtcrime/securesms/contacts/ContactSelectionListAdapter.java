@@ -287,18 +287,18 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     boolean itemMultiSelect = multiSelect;
 
     if (id == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
-      name = context.getString(R.string.contact_selection_list__new_contact);
+      name = context.getString(R.string.menu_new_contact);
       itemMultiSelect = false; // the item creates a new contact in the list that will be selected instead
       if (dcContext.mayBeValidAddr(query)) {
         addr = query == null ? "" : query;
         label = "\u2026";
       } else {
-        addr = context.getString(R.string.contact_selection_list__type_email_above);
+        addr = context.getString(R.string.contacts_type_email_above);
       }
     } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
-      name = context.getString(R.string.contact_selection_list__new_group);
+      name = context.getString(R.string.menu_new_group);
     } else if (id == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
-      name = context.getString(R.string.contact_selection_list__new_verified_group);
+      name = context.getString(R.string.menu_new_verified_group);
     } else {
       dcContact = getContact(i);
       name = dcContact.getDisplayName();

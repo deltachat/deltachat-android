@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu_edit_group"
-          android:title="@string/conversation__menu_edit_group"
+          android:title="@string/menu_edit_group"
           android:icon="?menu_group_icon"
           app:showAsAction="ifRoom" />
 
     <item android:id="@+id/menu_leave"
-          android:title="@string/conversation__menu_leave_group"
+          android:title="@string/menu_leave_group"
           app:showAsAction="collapseActionView"/>
 
 </menu>

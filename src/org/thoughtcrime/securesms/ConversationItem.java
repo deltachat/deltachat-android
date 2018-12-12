@@ -360,7 +360,7 @@ public class ConversationItem extends LinearLayout
     String text = messageRecord.getText();
 
     if (messageRecord.isSetupMessage()) {
-      bodyText.setText(context.getString(R.string.autocrypt__asm_tap_body));
+      bodyText.setText(context.getString(R.string.autocrypt_asm_click_body));
       bodyText.setVisibility(View.VISIBLE);
     }
     else if (text.isEmpty()) {
@@ -650,7 +650,7 @@ public class ConversationItem extends LinearLayout
         }
       })
       .setNegativeButton(android.R.string.cancel, null)
-      .setMessage(context.getString(R.string.new_conversation_activity__ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
+      .setMessage(context.getString(R.string.ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
       .show();
   }
 

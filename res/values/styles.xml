@@ -91,7 +91,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:imeOptions">flagNoEnterAction</item>
         <item name="android:inputType">textAutoCorrect|textCapSentences|textMultiLine</item>
-        <item name="android:contentDescription">@string/conversation_activity__compose_description</item>
+        <item name="android:contentDescription">@string/chat_input_placeholder</item>
     </style>
 
     <style name="AttachmentTypeLabel">

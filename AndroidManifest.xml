@@ -114,7 +114,7 @@
     </activity-alias>
 
     <activity android:name=".ConversationListArchiveActivity"
-              android:label="@string/AndroidManifest_archived_conversations"
+              android:label="@string/chat_archived_chats_title"
               android:launchMode="singleTask"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
               android:parentActivityName=".ConversationListActivity">
@@ -150,7 +150,7 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".ContactMultiSelectionActivity"
-          android:label="@string/AndroidManifest__select_contacts"
+          android:label="@string/contacts_title"
           android:windowSoftInputMode="stateHidden"
           android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
@@ -169,12 +169,12 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".LogViewActivity"
-              android:label="@string/AndroidManifest__view_log"
+              android:label="@string/pref_view_log"
               android:windowSoftInputMode="stateHidden"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".MediaPreviewActivity"
-              android:label="@string/AndroidManifest__media_preview"
+              android:label="@string/media_preview"
               android:windowSoftInputMode="stateHidden"
               android:launchMode="singleTask"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
@@ -232,7 +232,7 @@
               android:theme="@style/Theme.AppCompat.Dialog.Alert"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
               android:icon="@drawable/clear_profile_avatar"
-              android:label="@string/AndroidManifest_remove_photo">
+              android:label="@string/menu_delete_image">
 
         <intent-filter>
             <action android:name="org.thoughtcrime.securesms.action.CLEAR_PROFILE_PHOTO"/>

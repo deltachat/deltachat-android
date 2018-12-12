@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.Ringtone;
@@ -311,8 +310,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         // contact view
         addrPreference.setTitle(getProfileContact().getAddr());
 
-        if (contactToEditRecipient.isBlocked()) blockPreference.setTitle(R.string.RecipientPreferenceActivity_unblock);
-        else                                    blockPreference.setTitle(R.string.RecipientPreferenceActivity_block);
+        if (contactToEditRecipient.isBlocked()) blockPreference.setTitle(R.string.menu_unblock_contact);
+        else                                    blockPreference.setTitle(R.string.menu_block_contact);
 
         if(chatToEdit.getId()==0) {
           mutePreference.setVisible(false);
@@ -338,9 +337,9 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
     private @NonNull String getRingtoneSummary(@NonNull Context context, @Nullable Uri ringtone) {
       if (ringtone == null) {
-        return context.getString(R.string.preferences__default);
+        return context.getString(R.string.def);
       } else if (ringtone.toString().isEmpty()) {
-        return context.getString(R.string.preferences__silent);
+        return context.getString(R.string.pref_silent);
       } else {
         Ringtone tone = RingtoneManager.getRingtone(getActivity(), ringtone);
 
@@ -349,16 +348,16 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         }
       }
 
-      return context.getString(R.string.preferences__default);
+      return context.getString(R.string.def);
     }
 
     private @NonNull Pair<String, Integer> getVibrateSummary(@NonNull Context context, @NonNull VibrateState vibrateState) {
       if (vibrateState == VibrateState.DEFAULT) {
-        return new Pair<>(context.getString(R.string.preferences__default), 0);
+        return new Pair<>(context.getString(R.string.def), 0);
       } else if (vibrateState == VibrateState.ENABLED) {
-        return new Pair<>(context.getString(R.string.RecipientPreferenceActivity_enabled), 1);
+        return new Pair<>(context.getString(R.string.on), 1);
       } else {
-        return new Pair<>(context.getString(R.string.RecipientPreferenceActivity_disabled), 2);
+        return new Pair<>(context.getString(R.string.off), 2);
       }
     }
 
@@ -479,7 +478,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         final EditText txt = new EditText(getActivity());
         txt.setText(dcContact.getName());
         new AlertDialog.Builder(getActivity())
-            .setTitle(R.string.recipient_preferences__edit_name)
+            .setTitle(R.string.menu_edit_name)
             .setView(txt)
             .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
               String newName = txt.getText().toString();
@@ -502,20 +501,18 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
       private void handleBlock() {
         new AlertDialog.Builder(getActivity())
-            .setTitle(R.string.RecipientPreferenceActivity_block_this_contact_question)
-            .setMessage(R.string.RecipientPreferenceActivity_you_will_no_longer_receive_messages_and_calls_from_this_contact)
+            .setMessage(R.string.ask_block_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.RecipientPreferenceActivity_block, (dialog, which) -> setBlocked(true)).show();
+            .setPositiveButton(R.string.menu_block_contact, (dialog, which) -> setBlocked(true)).show();
       }
 
       private void handleUnblock() {
         new AlertDialog.Builder(getActivity())
-            .setTitle(R.string.RecipientPreferenceActivity_unblock_this_contact_question)
-            .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
+            .setMessage(R.string.ask_unblock_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, (dialog, which) -> setBlocked(false)).show();
+            .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> setBlocked(false)).show();
       }
 
       private void setBlocked(final boolean blocked) {

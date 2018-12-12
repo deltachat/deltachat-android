@@ -81,7 +81,6 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.Attach
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
 import org.thoughtcrime.securesms.components.location.SignalPlace;
-import org.thoughtcrime.securesms.components.reminder.ExpiredBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -399,7 +398,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       super.startActivity(intent);
     } catch (ActivityNotFoundException e) {
       Log.w(TAG, e);
-      Toast.makeText(this, R.string.ConversationActivity_there_is_no_app_available_to_handle_this_link_on_your_device, Toast.LENGTH_LONG).show();
+      Toast.makeText(this, R.string.no_app_to_handle_data, Toast.LENGTH_LONG).show();
     }
   }
 
@@ -513,7 +512,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleLeaveGroup() {
     new AlertDialog.Builder(this)
-      .setMessage(getString(R.string.ConversationActivity_are_you_sure_you_want_to_leave_this_group))
+      .setMessage(getString(R.string.ask_leave_group))
       .setPositiveButton(R.string.yes, (dialog, which) -> {
         dcContext.removeContactFromChat(threadId, DcContact.DC_CONTACT_ID_SELF);
         Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
@@ -533,7 +532,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleDeleteChat() {
     new AlertDialog.Builder(this)
-        .setMessage(getString(R.string.ConversationActivity_ask_delete_chat))
+        .setMessage(getResources().getQuantityString(R.plurals.ask_delete_chat, 1, 1))
         .setPositiveButton(R.string.yes, (dialog, which) -> {
           dcContext.deleteChat(threadId);
           Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
@@ -678,11 +677,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   protected void updateReminders() {
-    if (ExpiredBuildReminder.isEligible()) {
-      reminderView.get().showReminder(new ExpiredBuildReminder(this));
-    } else if (reminderView.resolved()) {
-      reminderView.get().hide();
-    }
+//    if (ExpiredBuildReminder.isEligible()) {
+//      reminderView.get().showReminder(new ExpiredBuildReminder(this));
+//    } else if (reminderView.resolved()) {
+//      reminderView.get().hide();
+//    }
   }
 
   private void initializeViews() {
@@ -1053,7 +1052,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onCameraFail() {
-    Toast.makeText(this, R.string.ConversationActivity_quick_camera_unavailable, Toast.LENGTH_SHORT).show();
+    Toast.makeText(this, R.string.chat_camera_unavailable, Toast.LENGTH_SHORT).show();
     quickAttachmentDrawer.hide(false);
     quickAttachmentToggle.disable();
   }
@@ -1069,8 +1068,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Permissions.with(this)
                .request(Manifest.permission.RECORD_AUDIO)
                .ifNecessary()
-               .withRationaleDialog(getString(R.string.ConversationActivity_to_send_audio_messages_allow_signal_access_to_your_microphone), R.drawable.ic_mic_white_48dp)
-               .withPermanentDenialDialog(getString(R.string.ConversationActivity_signal_requires_the_microphone_permission_in_order_to_send_audio_messages))
+               .withRationaleDialog(getString(R.string.perm_explain_need_for_mic_access), R.drawable.ic_mic_white_48dp)
+               .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_mic_denied))
                .execute();
   }
 
@@ -1115,7 +1114,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
       @Override
       public void onFailure(ExecutionException e) {
-        Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_unable_to_record_audio, Toast.LENGTH_LONG).show();
+        Toast.makeText(ConversationActivity.this, R.string.chat_unable_to_record_audio, Toast.LENGTH_LONG).show();
       }
     });
   }
@@ -1197,13 +1196,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         Permissions.with(ConversationActivity.this)
                    .request(Manifest.permission.CAMERA)
                    .ifNecessary()
-                   .withRationaleDialog(getString(R.string.ConversationActivity_to_capture_photos_and_video_allow_signal_access_to_the_camera), R.drawable.ic_photo_camera_white_48dp)
-                   .withPermanentDenialDialog(getString(R.string.ConversationActivity_signal_needs_the_camera_permission_to_take_photos_or_video))
+                   .withRationaleDialog(getString(R.string.perm_explain_need_for_camera_access), R.drawable.ic_photo_camera_white_48dp)
+                   .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
                    .onAllGranted(() -> {
                      composeText.clearFocus();
                      container.show(composeText, quickAttachmentDrawer);
                    })
-                   .onAnyDenied(() -> Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video, Toast.LENGTH_LONG).show())
+                   .onAnyDenied(() -> Toast.makeText(ConversationActivity.this, R.string.perm_explain_need_for_camera_access, Toast.LENGTH_LONG).show())
                    .execute();
       } else {
         container.hideAttachedInput(false);
@@ -1216,7 +1215,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     public void onClick(View v) {
       String rawText = composeText.getTextTrimmed();
       if (rawText.length() < 1 && !attachmentManager.isAttachmentPresent()) {
-        Toast.makeText(ConversationActivity.this, R.string.ConversationActivity_message_is_empty_exclamation,
+        Toast.makeText(ConversationActivity.this, R.string.chat_please_enter_message,
             Toast.LENGTH_SHORT).show();
       }
       else {

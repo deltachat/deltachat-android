@@ -168,8 +168,8 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
 
     @Override
     public CharSequence getPageTitle(int position) {
-      if      (position == 0) return getString(R.string.MediaOverviewActivity_Media);
-      else if (position == 1) return getString(R.string.MediaOverviewActivity_Documents);
+      if      (position == 0) return getString(R.string.media_tab_media);
+      else if (position == 1) return getString(R.string.media_tab_documents);
       else                    throw new AssertionError();
     }
   }
@@ -310,24 +310,19 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
     private void handleDeleteMedia(@NonNull Collection<DcMsg> mediaRecords) {
       int recordCount       = mediaRecords.size();
       Resources res         = getContext().getResources();
-      String confirmTitle   = res.getQuantityString(R.plurals.MediaOverviewActivity_Media_delete_confirm_title,
-                                                    recordCount,
-                                                    recordCount);
-      String confirmMessage = res.getQuantityString(R.plurals.MediaOverviewActivity_Media_delete_confirm_message,
+      String confirmMessage = res.getQuantityString(R.plurals.ask_delete_messages,
                                                     recordCount,
                                                     recordCount);
 
       AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-      builder.setIconAttribute(R.attr.dialog_alert_icon);
-      builder.setTitle(confirmTitle);
       builder.setMessage(confirmMessage);
       builder.setCancelable(true);
       final DcContext dcContext = DcHelper.getContext(getContext());
 
-      builder.setPositiveButton(R.string.delete, (dialogInterface, i) -> {
+      builder.setPositiveButton(R.string.menu_delete_messages, (dialogInterface, i) -> {
         new ProgressDialogAsyncTask<DcMsg, Void, Void>(getContext(),
-                                                                           R.string.MediaOverviewActivity_Media_delete_progress_title,
-                                                                           R.string.MediaOverviewActivity_Media_delete_progress_message)
+                                                                           R.string.one_moment,
+                                                                           R.string.one_moment)
         {
           @Override
           protected Void doInBackground(DcMsg... records) {

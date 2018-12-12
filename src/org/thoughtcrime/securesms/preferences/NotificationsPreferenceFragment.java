@@ -77,7 +77,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   @Override
   public void onResume() {
     super.onResume();
-    ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__notifications);
+    ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_notifications);
   }
 
   @Override
@@ -101,7 +101,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       Uri value = (Uri) newValue;
 
       if (value == null || TextUtils.isEmpty(value.toString())) {
-        preference.setSummary(R.string.preferences__silent);
+        preference.setSummary(R.string.pref_silent);
       } else {
         Ringtone tone = RingtoneManager.getRingtone(getActivity(), value);
 
@@ -122,8 +122,8 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   }
 
   public static CharSequence getSummary(Context context) {
-    final int onCapsResId   = R.string.ApplicationPreferencesActivity_On;
-    final int offCapsResId  = R.string.ApplicationPreferencesActivity_Off;
+    final int onCapsResId   = R.string.on;
+    final int offCapsResId  = R.string.off;
 
     return context.getString(Prefs.isNotificationsEnabled(context) ? onCapsResId : offCapsResId);
   }

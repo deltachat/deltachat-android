@@ -162,18 +162,18 @@ public class ConversationFragment extends Fragment
 
   private void setNoMessageText() {
     if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
-      noMessageTextView.setText(R.string.conversation__no_messages);
+      noMessageTextView.setText(R.string.chat_no_messages);
     }
     else if(getListAdapter().isGroupChat()){
       if( dcContext.getChat((int)threadId).isUnpromoted() ) {
-        noMessageTextView.setText(R.string.ConversationActivity_MsgNewGroupDraftHint);
+        noMessageTextView.setText(R.string.chat_new_group_hint);
       }
       else {
-        noMessageTextView.setText(R.string.conversation__no_messages);
+        noMessageTextView.setText(R.string.chat_no_messages);
       }
     }else{
       String name = getListAdapter().getChatName();
-      String message = getString(R.string.ConversationActivity_NoMessagesHint, name, name);
+      String message = getString(R.string.chat_no_messages_hint, name, name);
       noMessageTextView.setText(message);
     }
   }
@@ -379,7 +379,7 @@ public class ConversationFragment extends Fragment
       try {
         ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
         clipboard.setText(result.toString());
-        Toast.makeText(getActivity(), getActivity().getResources().getQuantityString(R.plurals.ConversationFragment_n_selected_messages_copied_to_clipboard, dcMsgsList.size(), dcMsgsList.size()), Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show();
       }
       catch(Exception e) {
         e.printStackTrace();
@@ -391,12 +391,10 @@ public class ConversationFragment extends Fragment
     int                 messagesCount = messageRecords.size();
     AlertDialog.Builder builder       = new AlertDialog.Builder(getActivity());
 
-    builder.setIconAttribute(R.attr.dialog_alert_icon);
-    builder.setTitle(getActivity().getResources().getQuantityString(R.plurals.ConversationFragment_delete_selected_messages, messagesCount, messagesCount));
-    builder.setMessage(getActivity().getResources().getQuantityString(R.plurals.ConversationFragment_this_will_delete_n_selected_messages_here_and_on_server, messagesCount, messagesCount));
+    builder.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount));
     builder.setCancelable(true);
 
-    builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+    builder.setPositiveButton(R.string.menu_delete_messages, new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         int[] ids = DcMsg.msgSetToIds(messageRecords);
@@ -456,8 +454,8 @@ public class ConversationFragment extends Fragment
       Permissions.with(this)
           .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
           .ifNecessary()
-          .withPermanentDenialDialog(getString(R.string.MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied))
-          .onAnyDenied(() -> Toast.makeText(getContext(), R.string.MediaPreviewActivity_unable_to_write_to_external_storage_without_permission, Toast.LENGTH_LONG).show())
+          .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
+          .onAnyDenied(() -> Toast.makeText(getContext(), R.string.perm_explain_access_to_storage_denied, Toast.LENGTH_LONG).show())
           .onAllGranted(() -> {
             SaveAttachmentTask saveTask = new SaveAttachmentTask(getContext());
             SaveAttachmentTask.Attachment attachment = new SaveAttachmentTask.Attachment(
@@ -696,8 +694,8 @@ public class ConversationFragment extends Fragment
       });
     }
 
-    builder1.setTitle(getActivity().getString(R.string.autocrypt__continue_transfer_title));
-    builder1.setMessage(getActivity().getString(R.string.autocrypt__continue_transfer_please_enter_code));
+    builder1.setTitle(getActivity().getString(R.string.autocrypt_continue_transfer_title));
+    builder1.setMessage(getActivity().getString(R.string.autocrypt_continue_transfer_please_enter_code));
     builder1.setNegativeButton(android.R.string.cancel, null);
     builder1.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
     builder1.setPositiveButton(android.R.string.ok, (dialog, which) -> {
@@ -710,14 +708,14 @@ public class ConversationFragment extends Fragment
       boolean success = dcContext.continueKeyTransfer(dcMsg.getId(), setup_code);
 
       android.app.AlertDialog.Builder builder2 = new android.app.AlertDialog.Builder(getActivity());
-      builder2.setTitle(getActivity().getString(R.string.autocrypt__continue_transfer_title));
-      builder2.setMessage(getActivity().getString(success? R.string.autocrypt__continue_transfer_succeeded : R.string.autocrypt__continue_transfer_bad_code));
+      builder2.setTitle(getActivity().getString(R.string.autocrypt_continue_transfer_title));
+      builder2.setMessage(getActivity().getString(success? R.string.autocrypt_continue_transfer_succeeded : R.string.autocrypt_bad_setup_code));
       if( success ) {
         builder2.setPositiveButton(android.R.string.ok, null);
       }
       else {
         builder2.setNegativeButton(android.R.string.cancel, null);
-        builder2.setPositiveButton(R.string.autocrypt__continue_button_retry, (dialog1, which1) -> querySetupCode(dcMsg, preload1));
+        builder2.setPositiveButton(R.string.autocrypt_continue_transfer_retry, (dialog1, which1) -> querySetupCode(dcMsg, preload1));
       }
       builder2.show();
     });

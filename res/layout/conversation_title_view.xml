@@ -37,7 +37,7 @@
             android:clickable="true"
             app:inverted="true"
             tools:src="@drawable/ic_contact_picture"
-            android:contentDescription="@string/conversation_list_item_view__contact_photo_image"/>
+            android:contentDescription="@string/pref_profile_photo"/>
 
     <LinearLayout
         android:orientation="vertical"
