@@ -2,7 +2,7 @@
 <resources>
 
   <string-array name="language_entries">
-      <item>@string/preferences__default</item>
+      <item>@string/def</item>
       <item>English</item>
       <item>Arabic العربية</item>
       <item>Bulgarian български</item>
@@ -108,8 +108,8 @@
   </string-array>
 
     <string-array name="pref_theme_entries">
-      <item>@string/preferences__light_theme</item>
-      <item>@string/preferences__dark_theme</item>
+      <item>@string/pref_light_theme</item>
+      <item>@string/pref_dark_theme</item>
   </string-array>
 
   <string-array name="pref_theme_values" translatable="false">
@@ -118,14 +118,14 @@
   </string-array>
 
   <string-array name="pref_led_color_entries">
-    <item>@string/preferences__green</item>
-    <item>@string/preferences__red</item>
-    <item>@string/preferences__blue</item>
-    <item>@string/preferences__orange</item>
-    <item>@string/preferences__cyan</item>
-    <item>@string/preferences__magenta</item>
-    <item>@string/preferences__white</item>
-    <item>@string/preferences__none</item>
+    <item>@string/green</item>
+    <item>@string/red</item>
+    <item>@string/blue</item>
+    <item>@string/orange</item>
+    <item>@string/cyan</item>
+    <item>@string/magenta</item>
+    <item>@string/white</item>
+    <item>@string/none</item>
   </string-array>
 
 
@@ -141,9 +141,9 @@
   </string-array>
 
   <string-array name="pref_led_blink_pattern_entries">
-    <item>@string/preferences__fast</item>
-    <item>@string/preferences__normal</item>
-    <item>@string/preferences__slow</item>
+    <item>@string/fast</item>
+    <item>@string/normal</item>
+    <item>@string/slow</item>
   </string-array>
 
   <string-array name="pref_led_blink_pattern_values" translatable="false">
@@ -153,12 +153,12 @@
   </string-array>
 
   <string-array name="pref_repeat_alerts_entries">
-      <item>@string/preferences__never</item>
-      <item>@string/preferences__one_time</item>
-      <item>@string/preferences__two_times</item>
-      <item>@string/preferences__three_times</item>
-      <item>@string/preferences__five_times</item>
-      <item>@string/preferences__ten_times</item>
+      <item>@string/never</item>
+      <item>@string/notify_repeat_one_time</item>
+      <item>@string/notify_repeat_two_times</item>
+      <item>@string/notify_repeat_three_times</item>
+      <item>@string/notify_repeat_five_times</item>
+      <item>@string/notify_repeat_ten_times</item>
   </string-array>
 
   <string-array name="pref_repeat_alerts_values" translatable="false">
@@ -176,22 +176,22 @@
   </string-array>
 
   <string-array name="default_or_custom_entries">
-      <item>@string/arrays__use_default</item>
-      <item>@string/arrays__use_custom</item>
+      <item>@string/def</item>
+      <item>@string/custom</item>
   </string-array>
 
   <string-array name="mute_durations">
-      <item>@string/arrays__mute_for_one_hour</item>
-      <item>@string/arrays__mute_for_two_hours</item>
-      <item>@string/arrays__mute_for_one_day</item>
-      <item>@string/arrays__mute_for_seven_days</item>
-      <item>@string/arrays__mute_for_one_year</item>
+      <item>@string/mute_for_one_hour</item>
+      <item>@string/mute_for_two_hours</item>
+      <item>@string/mute_for_one_day</item>
+      <item>@string/mute_for_seven_days</item>
+      <item>@string/mute_for_one_year</item>
   </string-array>
 
   <string-array name="recipient_vibrate_entries">
-      <item>@string/arrays__settings_default</item>
-      <item>@string/arrays__enabled</item>
-      <item>@string/arrays__disabled</item>
+      <item>@string/def</item>
+      <item>@string/on</item>
+      <item>@string/off</item>
   </string-array>
 
   <string-array name="recipient_vibrate_values">
@@ -201,9 +201,9 @@
   </string-array>
 
   <string-array name="pref_notification_privacy_entries">
-      <item>@string/arrays__name_and_message</item>
-      <item>@string/arrays__name_only</item>
-      <item>@string/arrays__no_name_or_message</item>
+      <item>@string/notify_name_and_message</item>
+      <item>@string/notify_name_only</item>
+      <item>@string/notify_no_name_or_message</item>
   </string-array>
 
   <string-array name="pref_notification_privacy_values">
@@ -230,10 +230,10 @@
     </array>
 
     <string-array name="pref_message_font_size_entries">
-        <item>@string/arrays__small</item>
-        <item>@string/arrays__normal</item>
-        <item>@string/arrays__large</item>
-        <item>@string/arrays__extra_large</item>
+        <item>@string/small</item>
+        <item>@string/normal</item>
+        <item>@string/large</item>
+        <item>@string/extra_large</item>
     </string-array>
 
     <string-array name="pref_message_font_size_values">
@@ -244,9 +244,9 @@
     </string-array>
 
     <string-array name="pref_notification_priority_entries">
-        <item>@string/arrays__default</item>
-        <item>@string/arrays__high</item>
-        <item>@string/arrays__max</item>
+        <item>@string/def</item>
+        <item>@string/notify_priority_high</item>
+        <item>@string/notify_priority_max</item>
     </string-array>
 
     <string-array name="pref_notification_priority_values">

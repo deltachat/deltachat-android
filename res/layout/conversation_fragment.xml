@@ -41,7 +41,7 @@
         android:layout_gravity="center"
         android:visibility="visible"
         style="@style/NoMessagesTextView"
-        tools:text="@string/ConversationActivity_NoMessagesHint"
+        tools:text="@string/chat_no_messages_hint"
         />
 
     <View
@@ -65,7 +65,7 @@
             android:tint="@color/grey_600"
             android:elevation="1dp"
             android:alpha="0.9"
-            android:contentDescription="@string/conversation_fragment__scroll_to_the_bottom_content_description"
+            android:contentDescription="@string/menu_scroll_to_bottom"
             android:src="@drawable/ic_scroll_down"/>
 
 </FrameLayout>

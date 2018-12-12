@@ -1,10 +1,8 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
@@ -13,8 +11,6 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
-
-import java.util.Locale;
 
 public class KeepAliveService extends Service {
 
@@ -74,7 +70,7 @@ public class KeepAliveService extends Service {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 
         builder.setContentTitle(getString(R.string.app_name));
-        builder.setContentText(getString(R.string.MessageRetrievalService_background_connection_enabled));
+        builder.setContentText(getString(R.string.notify_background_connection_enabled));
 
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ) {
             builder.setPriority(NotificationCompat.PRIORITY_MIN);

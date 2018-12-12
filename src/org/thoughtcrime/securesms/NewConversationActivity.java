@@ -21,7 +21,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -69,7 +68,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
       if (chatId == 0) {
         String nameNAddr = contactId==0? addr : dcContext.getContact(contactId).getNameNAddr();
         new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.new_conversation_activity__ask_start_chat_with, nameNAddr))
+                .setMessage(getString(R.string.ask_start_chat_with, nameNAddr))
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {

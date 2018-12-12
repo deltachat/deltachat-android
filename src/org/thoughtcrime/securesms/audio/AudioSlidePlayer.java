@@ -144,7 +144,7 @@ public class AudioSlidePlayer implements SensorEventListener {
       public boolean onError(MediaPlayer mp, int what, int extra) {
         Log.w(TAG, "MediaPlayer Error: " + what + " , " + extra);
 
-        Toast.makeText(context, R.string.AudioSlidePlayer_error_playing_audio, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show();
 
         synchronized (AudioSlidePlayer.this) {
           mediaPlayer = null;

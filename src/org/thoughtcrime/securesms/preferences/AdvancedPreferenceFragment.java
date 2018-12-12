@@ -81,7 +81,7 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
   @Override
   public void onResume() {
     super.onResume();
-    ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__advanced);
+    ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_advanced);
 
     preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt("e2ee_enabled", DcContext.DC_PREF_DEFAULT_E2EE_ENABLED));
 
@@ -96,7 +96,7 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
           exportKeys();
         }
       } else {
-        Toast.makeText(getActivity(), R.string.security_authentication_failed, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.screenlock_authentication_failed, Toast.LENGTH_SHORT).show();
       }
   }
 
@@ -132,10 +132,10 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     @Override
     public boolean onPreferenceClick(Preference preference) {
       new AlertDialog.Builder(getActivity())
-        .setTitle(getActivity().getString(R.string.preferences_autocrypt__send_asm))
-        .setMessage(getActivity().getString(R.string.autocrypt__msg_before_sending_asm))
+        .setTitle(getActivity().getString(R.string.autocrypt_send_asm_title))
+        .setMessage(getActivity().getString(R.string.autocrypt_send_asm_explain_before))
         .setNegativeButton(android.R.string.cancel, null)
-        .setPositiveButton(R.string.autocrypt__button_send_asm, (dialog, which) -> {
+        .setPositiveButton(R.string.autocrypt_send_asm_button, (dialog, which) -> {
 
           progressDialog = new ProgressDialog(getActivity());
           progressDialog.setMessage(getActivity().getString(R.string.one_moment));
@@ -163,8 +163,8 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
                   e.printStackTrace();
                 }
                 new AlertDialog.Builder(getActivity())
-                  .setTitle(getActivity().getString(R.string.preferences_autocrypt__send_asm))
-                  .setMessage(getActivity().getString(R.string.autocrypt__msg_after_sending_asm, scFormatted))
+                  .setTitle(getActivity().getString(R.string.autocrypt_send_asm_title))
+                  .setMessage(getActivity().getString(R.string.autocrypt_send_asm_explain_after, scFormatted))
                   .setPositiveButton(android.R.string.ok, null)
                   .setCancelable(false) // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
                   .show();
@@ -207,13 +207,13 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     Permissions.with(getActivity())
         .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
         .ifNecessary()
-        .withRationaleDialog(getActivity().getString(R.string.preferences_backup__ask_for_storage_permission), R.drawable.ic_folder_white_48dp)
+        .withRationaleDialog(getActivity().getString(R.string.perm_explain_need_for_storage_access), R.drawable.ic_folder_white_48dp)
         .onAllGranted(() -> {
           new AlertDialog.Builder(getActivity())
-              .setTitle(R.string.preferences__backup)
-              .setMessage(R.string.preferences_backup__export_explain)
+              .setTitle(R.string.pref_backup)
+              .setMessage(R.string.pref_backup_export_explain)
               .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(R.string.preferences_backup__export_start_button, (dialogInterface, i) -> startImex(DcContext.DC_IMEX_EXPORT_BACKUP))
+              .setPositiveButton(R.string.pref_backup_export_start_button, (dialogInterface, i) -> startImex(DcContext.DC_IMEX_EXPORT_BACKUP))
               .show();
         })
         .execute();
@@ -234,27 +234,27 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     Permissions.with(getActivity())
         .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
         .ifNecessary()
-        .withRationaleDialog(getActivity().getString(R.string.preferences_managekeys__ask_for_storage_permission), R.drawable.ic_folder_white_48dp)
+        .withRationaleDialog(getActivity().getString(R.string.pref_managekeys_ask_for_storage_permission), R.drawable.ic_folder_white_48dp)
         .onAllGranted(() -> {
           new android.app.AlertDialog.Builder(getActivity())
-              .setTitle(R.string.preferences_managekeys__menu_title)
+              .setTitle(R.string.pref_managekeys_menu_title)
               .setItems(new CharSequence[]{
-                      getActivity().getString(R.string.preferences_managekeys__export_secret_keys),
-                      getActivity().getString(R.string.preferences_managekeys__import_secret_keys)
+                      getActivity().getString(R.string.pref_managekeys_export_secret_keys),
+                      getActivity().getString(R.string.pref_managekeys_import_secret_keys)
                   },
                   (dialogInterface, i) -> {
                     if (i==0) {
                       new AlertDialog.Builder(getActivity())
-                          .setTitle(R.string.preferences_managekeys__export_secret_keys)
-                          .setMessage(getActivity().getString(R.string.preferences_managekeys__export_explain, dcContext.getImexDir().getAbsolutePath()))
+                          .setTitle(R.string.pref_managekeys_export_secret_keys)
+                          .setMessage(getActivity().getString(R.string.pref_managekeys_export_explain, dcContext.getImexDir().getAbsolutePath()))
                           .setNegativeButton(android.R.string.cancel, null)
                           .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_EXPORT_SELF_KEYS))
                           .show();
                     }
                     else {
                       new AlertDialog.Builder(getActivity())
-                          .setTitle(R.string.preferences_managekeys__import_secret_keys)
-                          .setMessage(getActivity().getString(R.string.preferences_managekeys__import_explain, dcContext.getImexDir().getAbsolutePath()))
+                          .setTitle(R.string.pref_managekeys_import_secret_keys)
+                          .setMessage(getActivity().getString(R.string.pref_managekeys_import_explain, dcContext.getImexDir().getAbsolutePath()))
                           .setNegativeButton(android.R.string.cancel, null)
                           .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_IMPORT_SELF_KEYS))
                           .show();
@@ -313,13 +313,13 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
         progressDialog = null;
         String msg = "";
         if (progressWhat==DcContext.DC_IMEX_EXPORT_BACKUP) {
-          msg = getActivity().getString(R.string.preferences_backup__backup_written_to_x, imexDir);
+          msg = getActivity().getString(R.string.pref_backup_written_to_x, imexDir);
         }
         else if (progressWhat==DcContext.DC_IMEX_EXPORT_SELF_KEYS) {
-          msg = getActivity().getString(R.string.preferences_managekeys__secret_keys_exported_to_x, imexDir);
+          msg = getActivity().getString(R.string.pref_managekeys_secret_keys_exported_to_x, imexDir);
         }
         else if (progressWhat==DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
-          msg = getActivity().getString(R.string.preferences_managekeys__secret_keys_imported_from_x, imexDir);
+          msg = getActivity().getString(R.string.pref_managekeys_secret_keys_imported_from_x, imexDir);
         }
         new android.app.AlertDialog.Builder(getActivity())
             .setMessage(msg)

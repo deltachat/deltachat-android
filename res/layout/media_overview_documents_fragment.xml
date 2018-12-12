@@ -17,6 +17,6 @@
               android:textSize="24sp"
               android:gravity="center"
               android:visibility="gone"
-              android:text="@string/media_overview_documents_fragment__no_documents_found" />
+              android:text="@string/media_no_documents_hint" />
 
 </RelativeLayout>

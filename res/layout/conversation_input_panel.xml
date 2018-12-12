@@ -62,7 +62,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/touch_highlight_background"
-                        android:contentDescription="@string/conversation_activity__emoji_toggle_description" />
+                        android:contentDescription="@string/menu_toggle_keyboard" />
 
                     <org.thoughtcrime.securesms.components.ComposeText
                         style="@style/ComposeEditText"
@@ -100,7 +100,7 @@
                             android:paddingTop="6dp"
                             android:paddingBottom="6dp"
                             android:background="@drawable/touch_highlight_background"
-                            android:contentDescription="@string/conversation_activity__quick_attachment_drawer_toggle_camera_description" />
+                            android:contentDescription="@string/camera" />
 
                         <org.thoughtcrime.securesms.components.MicrophoneRecorderView
                             android:id="@+id/recorder_view"
@@ -123,7 +123,7 @@
                                 android:paddingBottom="6dp"
                                 android:src="?quick_mic_icon"
                                 android:background="@null"
-                                android:contentDescription="@string/conversation_activity__quick_attachment_drawer_record_and_send_audio_description" />
+                                android:contentDescription="@string/audio" />
 
                             <ImageView
                                 android:id="@+id/quick_audio_fab"
@@ -177,7 +177,7 @@
                             android:drawableLeft="@drawable/ic_keyboard_arrow_left_grey600_24dp"
                             android:drawableStart="@drawable/ic_keyboard_arrow_left_grey600_24dp"
                             style="@style/Signal.Text.Caption"
-                            android:text="@string/conversation_input_panel__slide_to_cancel"
+                            android:text="@string/chat_record_slide_to_cancel"
                             android:textAllCaps="true"
                             android:textColor="@color/core_light_60"
                             android:ellipsize="none"
@@ -212,7 +212,7 @@
             android:layout_gravity="center"
             android:background="@drawable/circle_touch_highlight_background"
             android:src="@drawable/ic_attach_white_24dp"
-            android:contentDescription="@string/ConversationActivity_add_attachment"
+            android:contentDescription="@string/menu_add_attachment"
             android:nextFocusLeft="@+id/embedded_text_editor" />
 
         <org.thoughtcrime.securesms.components.SendButton
@@ -224,7 +224,7 @@
             android:paddingBottom="6dp"
             android:paddingLeft="11dp"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/conversation_activity__send"
+            android:contentDescription="@string/menu_send"
             android:nextFocusLeft="@+id/embedded_text_editor"
             android:src="?conversation_transport_sms_indicator"
             android:background="@drawable/circle_touch_highlight_background" />

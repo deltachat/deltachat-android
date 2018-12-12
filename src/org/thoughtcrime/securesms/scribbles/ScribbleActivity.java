@@ -243,7 +243,7 @@ public class ScribbleActivity extends PassphraseRequiredActionBarActivity implem
       @Override
       public void onFailure(ExecutionException e) {
         Log.w(TAG, e);
-        Toast.makeText(ScribbleActivity.this, R.string.ScribbleActivity_save_failure, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ScribbleActivity.this, R.string.error, Toast.LENGTH_SHORT).show();
         finish();
       }
     });

@@ -34,7 +34,7 @@
                     android:id="@+id/name_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/profile_create_activity__your_name"
+                    android:hint="@string/pref_your_name"
                     android:inputType="textCapWords" />
             </android.support.design.widget.TextInputLayout>
 
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top|left"
-            android:hint="@string/default_status_hint"
+            android:hint="@string/pref_default_status_label"
             android:inputType="textMultiLine"
             android:maxLines="3" />
     </android.support.design.widget.TextInputLayout>
@@ -84,7 +84,7 @@
                 android:layout_marginLeft="3dp"
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:text="@string/profile_create_activity__who_can_see_this_information"
+                android:text="@string/pref_who_can_see_this_information"
                 android:textColor="#73B7F0" />
         </LinearLayout>
 
@@ -103,7 +103,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="0dp"
-                android:text="@string/profile_create_activity__password_account"
+                android:text="@string/pref_password_and_account_settings"
                 android:textColor="#73B7F0"
                 android:textSize="16sp"
                 android:textStyle="normal"

@@ -72,7 +72,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     initializeSearchListener();
 
-    TooltipCompat.setTooltipText(searchAction, getText(R.string.SearchToolbar_search_for_conversations_contacts_and_messages));
+    TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
   }
 
   @Override
@@ -93,8 +93,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     menu.clear();
 
     inflater.inflate(R.menu.text_secure_normal, menu);
-
-    menu.findItem(R.id.menu_clear_passphrase).setVisible(false/*!TextSecurePreferences.isPasswordDisabled(this)*/);
 
     super.onPrepareOptionsMenu(menu);
     return true;

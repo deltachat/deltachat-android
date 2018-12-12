@@ -60,8 +60,6 @@ import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
-import org.thoughtcrime.securesms.components.reminder.ExpiredBuildReminder;
-import org.thoughtcrime.securesms.components.reminder.OutdatedBuildReminder;
 import org.thoughtcrime.securesms.components.reminder.Reminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -185,15 +183,15 @@ public class ConversationListFragment extends Fragment
       @Override
       protected Optional<? extends Reminder> doInBackground(Context... params) {
         final Context context = params[0];
-        if (ExpiredBuildReminder.isEligible()) {
-          return Optional.of(new ExpiredBuildReminder(context));
-        } else if (OutdatedBuildReminder.isEligible()) {
-          return Optional.of(new OutdatedBuildReminder(context));
-        } else if (DozeReminder.isEligible(context)) {
-          return Optional.of(new DozeReminder(context));
-        } else {
+//        if (ExpiredBuildReminder.isEligible()) {
+//          return Optional.of(new ExpiredBuildReminder(context));
+//        } else if (OutdatedBuildReminder.isEligible()) {
+//          return Optional.of(new OutdatedBuildReminder(context));
+//        } else if (DozeReminder.isEligible(context)) {
+//          return Optional.of(new DozeReminder(context));
+//        } else {
           return Optional.absent();
-        }
+//        }
       }
 
       @Override
@@ -220,14 +218,14 @@ public class ConversationListFragment extends Fragment
 
     int snackBarTitleId;
 
-    if (archive) snackBarTitleId = R.plurals.ConversationListFragment_moved_conversations_to_inbox;
-    else         snackBarTitleId = R.plurals.ConversationListFragment_conversations_archived;
+    if (archive) snackBarTitleId = R.plurals.chat_unarchived;
+    else         snackBarTitleId = R.plurals.chat_archived;
 
     int count            = selectedConversations.size();
     String snackBarTitle = getResources().getQuantityString(snackBarTitleId, count, count);
 
     new SnackbarAsyncTask<Void>(getView(), snackBarTitle,
-                                getString(R.string.ConversationListFragment_undo),
+                                getString(R.string.undo),
                                 Snackbar.LENGTH_LONG, true)
     {
 
@@ -262,11 +260,11 @@ public class ConversationListFragment extends Fragment
     final DcContext     dcContext          = DcHelper.getContext(getActivity());
     int                 conversationsCount = getListAdapter().getBatchSelections().size();
     AlertDialog.Builder alert              = new AlertDialog.Builder(getActivity());
-    alert.setMessage(getActivity().getResources().getQuantityString(R.plurals.ConversationListFragment_ask_selected_chats,
+    alert.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_chat,
                                                                     conversationsCount, conversationsCount));
     alert.setCancelable(true);
 
-    alert.setPositiveButton(R.string.delete, (dialog, which) -> {
+    alert.setPositiveButton(R.string.menu_delete_chat, (dialog, which) -> {
       final Set<Long> selectedConversations = (getListAdapter())
           .getBatchSelections();
 
@@ -277,8 +275,8 @@ public class ConversationListFragment extends Fragment
           @Override
           protected void onPreExecute() {
             dialog = ProgressDialog.show(getActivity(),
-                                         getActivity().getString(R.string.ConversationListFragment_deleting),
-                                         getActivity().getString(R.string.ConversationListFragment_deleting_selected_conversations),
+                                         getActivity().getString(R.string.one_moment),
+                                         getActivity().getString(R.string.one_moment),
                                          true, false);
           }
 
@@ -338,7 +336,7 @@ public class ConversationListFragment extends Fragment
       list.setVisibility(View.INVISIBLE);
       emptyState.setVisibility(View.GONE);
       emptySearch.setVisibility(View.VISIBLE);
-      emptySearch.setText(getString(R.string.ConversationListFragment_no_results_found_for_s_, queryFilter));
+      emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
     } else {
       list.setVisibility(View.VISIBLE);
       emptyState.setVisibility(View.GONE);
@@ -366,7 +364,7 @@ public class ConversationListFragment extends Fragment
         int contactId = item.getContactId();
         DcContact contact = dcContext.getContact(contactId);
         new AlertDialog.Builder(getActivity())
-          .setMessage(getActivity().getString(R.string.new_conversation_activity__ask_start_chat_with, contact.getNameNAddr()))
+          .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
           .setPositiveButton(android.R.string.ok, (dialog, which) ->  {
               int belongingChatId = dcContext.createChatByMsgId(msgId);
               if( belongingChatId != 0 ) {
@@ -498,8 +496,8 @@ public class ConversationListFragment extends Fragment
 
       if (archive) {
         new SnackbarAsyncTask<Long>(getView(),
-                                    getResources().getQuantityString(R.plurals.ConversationListFragment_moved_conversations_to_inbox, 1, 1),
-                                    getString(R.string.ConversationListFragment_undo),
+                                    getResources().getQuantityString(R.plurals.chat_unarchived, 1, 1),
+                                    getString(R.string.undo),
                                     Snackbar.LENGTH_LONG, false)
         {
           @Override
@@ -520,8 +518,8 @@ public class ConversationListFragment extends Fragment
         }
 
         new SnackbarAsyncTask<Long>(getView(),
-                                    getResources().getQuantityString(R.plurals.ConversationListFragment_conversations_archived, 1, 1),
-                                    getString(R.string.ConversationListFragment_undo),
+                                    getResources().getQuantityString(R.plurals.chat_archived, 1, 1),
+                                    getString(R.string.undo),
                                     Snackbar.LENGTH_LONG, false)
         {
           @Override

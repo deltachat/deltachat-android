@@ -143,10 +143,10 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       if (mediaItem.date > 0) {
         relativeTimeSpan = DateUtils.getExtendedRelativeTimeSpanString(this,dynamicLanguage.getCurrentLocale(), mediaItem.date);
       } else {
-        relativeTimeSpan = getString(R.string.MediaPreviewActivity_draft);
+        relativeTimeSpan = getString(R.string.draft);
       }
 
-      if      (mediaItem.outgoing)          getSupportActionBar().setTitle(getString(R.string.MediaPreviewActivity_you));
+      if      (mediaItem.outgoing)          getSupportActionBar().setTitle(getString(R.string.self));
       else if (mediaItem.recipient != null) getSupportActionBar().setTitle(mediaItem.recipient.toShortString());
       else                                  getSupportActionBar().setTitle("");
 
@@ -218,7 +218,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     if (!isContentTypeSupported(initialMedia.type)) {
       Log.w(TAG, "Unsupported media type sent to MediaPreviewActivity, finishing.");
-      Toast.makeText(getApplicationContext(), R.string.MediaPreviewActivity_unssuported_media_type, Toast.LENGTH_LONG).show();
+      Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_LONG).show();
       finish();
     }
 
@@ -268,8 +268,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
         Permissions.with(this)
                    .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                    .ifNecessary()
-                   .withPermanentDenialDialog(getString(R.string.MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied))
-                   .onAnyDenied(() -> Toast.makeText(this, R.string.MediaPreviewActivity_unable_to_write_to_external_storage_without_permission, Toast.LENGTH_LONG).show())
+                   .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
+                   .onAnyDenied(() -> Toast.makeText(this, R.string.perm_explain_access_to_storage_denied, Toast.LENGTH_LONG).show())
                    .onAllGranted(() -> {
                      SaveAttachmentTask saveTask = new SaveAttachmentTask(MediaPreviewActivity.this);
                      long saveDate = (mediaItem.date > 0) ? mediaItem.date : System.currentTimeMillis();
@@ -288,12 +288,10 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     }
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setIconAttribute(R.attr.dialog_alert_icon);
-    builder.setTitle(R.string.MediaPreviewActivity_media_delete_confirmation_title);
-    builder.setMessage(R.string.MediaPreviewActivity_media_delete_confirmation_message);
+    builder.setMessage(getResources().getQuantityString(R.plurals.ask_delete_messages, 1, 1));
     builder.setCancelable(true);
 
-    builder.setPositiveButton(R.string.delete, (dialogInterface, which) -> {
+    builder.setPositiveButton(R.string.menu_delete_messages, (dialogInterface, which) -> {
       new AsyncTask<Void, Void, Void>() {
         @Override
         protected Void doInBackground(Void... voids) {

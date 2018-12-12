@@ -93,7 +93,7 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   private void setComposeTitle() {
-    this.title.setText(R.string.ConversationActivity_compose_message);
+    this.title.setText(null);
     this.subtitle.setText(null);
     this.subtitle.setVisibility(View.GONE);
   }

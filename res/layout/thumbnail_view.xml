@@ -12,7 +12,7 @@
         android:clickable="false"
         android:longClickable="false"
         android:scaleType="fitCenter"
-        android:contentDescription="@string/conversation_item__mms_image_description" />
+        android:contentDescription="@null" />
 
     <FrameLayout
         android:id="@+id/play_overlay"

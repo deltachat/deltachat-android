@@ -40,14 +40,14 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
   @Override
   public void onResume() {
     super.onResume();
-    ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.preferences__appearance);
+    ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_appearance);
     String imagePath = Prefs.getBackgroundImagePath(getContext());
     String backgroundString;
     if(imagePath.isEmpty()){
-      backgroundString = this.getString(R.string.AppearancePreferencesFragment_background_default_summary);
+      backgroundString = this.getString(R.string.pref_summary_default);
     }
     else{
-      backgroundString = this.getString(R.string.AppearancePreferencesFragment_background_custom_summary);
+      backgroundString = this.getString(R.string.pref_summary_custom);
     }
     this.findPreference(Prefs.BACKGROUND_PREF).setSummary(backgroundString);
   }
@@ -73,13 +73,13 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     String imagePath = Prefs.getBackgroundImagePath(context);
     String backgroundString;
     if(imagePath.isEmpty()){
-      backgroundString = context.getString(R.string.ApplicationPreferencesActivity_appearance_background_default);
+      backgroundString = context.getString(R.string.pref_summary_default);
     }
     else{
-      backgroundString = context.getString(R.string.ApplicationPreferencesActivity_appearance_background_custom);
+      backgroundString = context.getString(R.string.pref_summary_custom);
     }
 
-    return context.getString(R.string.ApplicationPreferencesActivity_appearance_summary_new,
+    return context.getString(R.string.pref_summary_appearance,
                              themeEntries[themeIndex],
                              languageEntries[langIndex], backgroundString);
   }

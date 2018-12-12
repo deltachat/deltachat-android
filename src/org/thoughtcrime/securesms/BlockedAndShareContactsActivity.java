@@ -49,7 +49,7 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
   public void onCreate(Bundle bundle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     boolean showOnlyBlocked = getIntent().getBooleanExtra(SHOW_ONLY_BLOCKED_EXTRA, false);
-    getSupportActionBar().setTitle(showOnlyBlocked ? R.string.BlockedContactsActivity_blocked_contacts : R.string.ContactsCursorLoader_contacts);
+    getSupportActionBar().setTitle(showOnlyBlocked ? R.string.pref_blocked_contacts : R.string.contacts_headline);
     initFragment(android.R.id.content, new BlockedAndShareContactsFragment(), null, getIntent().getExtras());
   }
 
@@ -148,11 +148,10 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
     public void onItemClick(ContactSelectionListItem item, boolean handleActionMode) {
       if(showOnlyBlocked) {
         new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.RecipientPreferenceActivity_unblock_this_contact_question)
-                .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
+                .setMessage(R.string.ask_unblock_contact)
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, (dialog, which) -> unblockContact(item.getContactId())).show();
+                .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> unblockContact(item.getContactId())).show();
       } else {
         shareContact(item.getName(), item.getNumber());
       }

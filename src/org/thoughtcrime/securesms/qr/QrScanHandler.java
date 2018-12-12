@@ -19,7 +19,6 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -80,20 +79,20 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ERROR:
                 scannedText = qrRawString;
-                msg = qrParsed.getText1() + "<br><br><c#808080>" + String.format(activity.getString(R.string.qr_scan_handler_Scan_contains_text), scannedText) + "</c>";
+                msg = qrParsed.getText1() + "<br><br><c#808080>" + String.format(activity.getString(R.string.qrscan_contains_text), scannedText) + "</c>";
                 break;
             case DcContext.DC_QR_TEXT:
                 scannedText = qrParsed.getText1();
-                msg = String.format(activity.getString(R.string.qr_scan_handler_Scan_contains_text), scannedText);
+                msg = String.format(activity.getString(R.string.qrscan_contains_text), scannedText);
                 break;
             default:
                 scannedText = qrRawString;
-                msg = String.format(activity.getString(R.string.qr_scan_handler_Scan_contains_text), scannedText);
+                msg = String.format(activity.getString(R.string.qrscan_contains_text), scannedText);
                 break;
         }
         builder.setMessage(Html.fromHtml(msg));
         builder.setPositiveButton(android.R.string.ok, null);
-        builder.setNeutralButton(R.string.copy_to_clipboard, (dialog, which) -> {
+        builder.setNeutralButton(R.string.menu_copy_to_clipboard, (dialog, which) -> {
             Util.writeTextToClipboard(activity, scannedText);
             showDoneToast(activity);
         });
@@ -101,11 +100,11 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
 
     private void showQrUrl(AlertDialog.Builder builder, DcLot qrParsed) {
         final String url = qrParsed.getText1();
-        String msg = String.format(activity.getString(R.string.qr_scan_handler_qr_scan_contains_url), url);
+        String msg = String.format(activity.getString(R.string.qrscan_contains_url), url);
         builder.setMessage(msg);
         builder.setPositiveButton(R.string.open, (dialog, which) -> IntentUtils.showBrowserIntent(activity, url));
         builder.setNegativeButton(android.R.string.cancel, null);
-        builder.setNeutralButton(R.string.copy_to_clipboard, (dialog, which) -> {
+        builder.setNeutralButton(R.string.menu_copy_to_clipboard, (dialog, which) -> {
             Util.writeTextToClipboard(activity, url);
             showDoneToast(activity);
         });
@@ -116,7 +115,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
     }
 
     private void showFingerprintOrQrSuccess(AlertDialog.Builder builder, DcLot qrParsed, String nameAndAddress) {
-        @StringRes int resId = qrParsed.getState() == DcContext.DC_QR_ADDR ? R.string.qr_scan_handler_ask_start_chat_with : R.string.qr_scan_handler_fingerprint_ok;
+        @StringRes int resId = qrParsed.getState() == DcContext.DC_QR_ADDR ? R.string.ask_start_chat_with : R.string.qrscan_ask_chatting_fingerprint_ok;
         builder.setMessage(Html.fromHtml(String.format(activity.getString(resId, nameAndAddress))));
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
             Bundle bundle = new Bundle();
@@ -130,14 +129,14 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
     }
 
     private void showFingerPrintError(AlertDialog.Builder builder, String nameAndAddress) {
-        builder.setMessage(Html.fromHtml(String.format(activity.getString(R.string.qr_scan_handler_fingerprint_mismatch), nameAndAddress)));
+        builder.setMessage(Html.fromHtml(String.format(activity.getString(R.string.qrscan_fingerprint_mismatch), nameAndAddress)));
         builder.setPositiveButton(android.R.string.ok, null);
     }
 
     private void showVerifyFingerprintWithoutAddress(AlertDialog.Builder builder, DcLot qrParsed) {
-        builder.setMessage(Html.fromHtml(activity.getString(R.string.qr_scan_handler_fingerprint_without_address) + "<br><br><c#808080>" + activity.getString(R.string.qr_scan_handler_fingerprint) + ":<br>" + qrParsed.getText1() + "</c>"));
+        builder.setMessage(Html.fromHtml(activity.getString(R.string.qrscan_no_addr_found) + "<br><br><c#808080>" + activity.getString(R.string.qrscan_fingerprint_label) + ":<br>" + qrParsed.getText1() + "</c>"));
         builder.setPositiveButton(android.R.string.ok, null);
-        builder.setNeutralButton(R.string.copy_to_clipboard, (dialog, which) -> {
+        builder.setNeutralButton(R.string.menu_copy_to_clipboard, (dialog, which) -> {
             Util.writeTextToClipboard(activity, qrParsed.getText1());
             showDoneToast(activity);
         });
@@ -152,10 +151,10 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
         String msg;
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:
-                msg = String.format(activity.getString(R.string.qr_scan_handler_join_verified_group), qrParsed.getText1());
+                msg = String.format(activity.getString(R.string.qrscan_ask_join_verified_group), qrParsed.getText1());
                 break;
             default:
-                msg = String.format(activity.getString(R.string.qr_scan_handler_fingerprint_ask_oob), nameNAddr);
+                msg = String.format(activity.getString(R.string.qrscan_ask_fingerprint_ask_oob), nameNAddr);
                 break;
         }
         builder.setMessage(Html.fromHtml(msg));
@@ -209,7 +208,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
             long progress = (Long)data2;
             String msg = null;
             if( progress == 400) {
-                msg = activity.getString(R.string.qr_scan_handler_verfied_introduce_myself, dcContext.getContact((int)contact_id).getNameNAddr());
+                msg = activity.getString(R.string.qrscan_x_verified_introduce_myself, dcContext.getContact((int)contact_id).getNameNAddr());
             }
 
             if( progressDialog != null && msg != null ) {

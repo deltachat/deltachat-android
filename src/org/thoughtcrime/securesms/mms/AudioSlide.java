@@ -33,8 +33,6 @@ import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ResUtil;
 
-import java.io.File;
-
 
 public class AudioSlide extends Slide {
 
@@ -79,7 +77,7 @@ public class AudioSlide extends Slide {
   @NonNull
   @Override
   public String getContentDescription() {
-    return context.getString(R.string.Slide_audio);
+    return context.getString(R.string.audio);
   }
 
   @Override

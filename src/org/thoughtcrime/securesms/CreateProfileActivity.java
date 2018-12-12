@@ -102,7 +102,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     setContentView(R.layout.profile_create_activity);
 
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-    getSupportActionBar().setTitle(R.string.CreateProfileActivity_your_profile_info);
+    getSupportActionBar().setTitle(R.string.pref_profile_info_headline);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
@@ -211,7 +211,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
                         .circleCrop()
                         .into(avatar);
               } else {
-                Toast.makeText(CreateProfileActivity.this, R.string.CreateProfileActivity_error_setting_profile_photo, Toast.LENGTH_LONG).show();
+                Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_LONG).show();
               }
             }
           }.execute();
@@ -261,7 +261,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     });
 
     informationLabel.setOnClickListener(view -> {
-      Dialogs.showInfoDialog(this, getString(R.string.profile_create_activity__who_can_see_this_information), getString(R.string.profile_create_activity__who_can_see_this_information_explained));
+      Dialogs.showInfoDialog(this, getString(R.string.pref_who_can_see_profile_explain));
     });
   }
 
@@ -360,7 +360,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private void initializeStatusText() {
     String status = DcHelper.get(this, DcHelper.CONFIG_SELF_STATUS);
     if (status.isEmpty()) {
-      status = getString(R.string.default_status_text);
+      status = getString(R.string.pref_default_status_text);
     }
     statusView.setText(status);
   }
@@ -388,7 +388,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
       extraIntents.add(new Intent("org.thoughtcrime.securesms.action.CLEAR_PROFILE_PHOTO"));
     }
 
-    Intent chooserIntent = Intent.createChooser(galleryIntent, getString(R.string.CreateProfileActivity_profile_photo));
+    Intent chooserIntent = Intent.createChooser(galleryIntent, getString(R.string.pref_profile_photo));
 
     if (!extraIntents.isEmpty()) {
       chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents.toArray(new Intent[0]));
@@ -448,7 +448,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) handleFinishedLollipop();
           else                                                       handleFinishedLegacy();
         } else        {
-          Toast.makeText(CreateProfileActivity.this, R.string.CreateProfileActivity_problem_setting_profile, Toast.LENGTH_LONG).show();
+          Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_LONG).show();
         }
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -456,7 +456,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private void setStatusText() {
     String newStatus = statusView.getText().toString().trim();
-    String defaultStatus = getString(R.string.default_status_text);
+    String defaultStatus = getString(R.string.pref_default_status_text);
     if (newStatus.equals(defaultStatus)) {
       DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, null);
     } else {

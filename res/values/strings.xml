@@ -1,920 +1,421 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Delta Chat dev</string>
+    <string name="language_name">English</string>
+
+
+    <!-- common strings without special context -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="delete">Delete</string>
-    <string name="please_wait">Please wait...</string>
-
-    <!-- AbstractNotificationBuilder -->
-    <string name="AbstractNotificationBuilder_new_message">New message</string>
-
-    <!-- ApplicationPreferencesActivity -->
-    <plurals name="ApplicationPreferencesActivity_messages_per_conversation">
-        <item quantity="one">%d message per chat</item>
-        <item quantity="other">%d messages per chat</item>
-    </plurals>
-    <string name="ApplicationPreferencesActivity_delete_all_old_messages_now">Delete all old messages now?</string>
-    <plurals name="ApplicationPreferencesActivity_this_will_immediately_trim_all_conversations_to_the_d_most_recent_messages">
-        <item quantity="one">This will immediately trim all chats to the most recent message.</item>
-        <item quantity="other">This will immediately trim all chats to the %d most recent messages.</item>
-    </plurals>
-    <string name="ApplicationPreferencesActivity_delete">Delete</string>
-    <string name="ApplicationPreferencesActivity_on">on</string>
-    <string name="ApplicationPreferencesActivity_On">On</string>
-    <string name="ApplicationPreferencesActivity_off">off</string>
-    <string name="ApplicationPreferencesActivity_Off">Off</string>
-    <string name="ApplicationPreferencesActivity_privacy_summary">Screen lock %1$s, Read receipts %2$s</string>
-    <string name="ApplicationPreferencesActivity_appearance_summary_new">Theme %1$s, Language %2$s, Background %3$s</string>
-    <string name="ApplicationPreferencesActivity_appearance_background_default">default</string>
-    <string name="ApplicationPreferencesActivity_appearance_background_custom">custom</string>
-
-    <!-- AppearancePreferenceFragment -->
-    <string name="AppearancePreferencesFragment_background_save_error">Background image could not be saved</string>
-    <string name="AppearancePreferencesFragment_background_custom_summary">Custom</string>
-    <string name="AppearancePreferencesFragment_background_default_summary">Default</string>
-
-    <!-- AppProtectionPreferenceFragment -->
-    <plurals name="AppProtectionPreferenceFragment_minutes">
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="def">Default</string>
+    <string name="custom">Custom</string>
+    <string name="none">None</string>
+    <string name="open">Open</string>
+    <string name="not_now">Not now</string>
+    <string name="never">Never</string>
+    <string name="one_moment">One moment…</string>
+    <string name="done">Done</string>
+    <string name="undo">Undo</string>
+    <string name="error">Error</string>
+    <string name="error_no_network">Network unavailable.</string>
+    <string name="no_app_to_handle_data">Can\'t find an app to handle this type of data.</string>
+    <string name="no_browser_installed">No browser installed.</string>
+    <string name="file_not_found">Could not find %1$s.</string>
+    <string name="copied_to_clipboard">Copied to clipboard.</string>
+    <string name="contacts_headline">Contacts</string>
+    <string name="email_address">Email address</string>
+    <string name="bad_email_address">Bad email address.</string>
+    <string name="password">Password</string>
+    <string name="now">Now</string>
+    <string name="n_min_ago">%d min</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="this_week">This week</string>
+    <string name="this_month">This month</string>
+    <plurals name="n_minutes">
         <item quantity="one">%d minute</item>
         <item quantity="other">%d minutes</item>
     </plurals>
-
-    <!-- DraftDatabase -->
-
-    <!-- AttchmentManager -->
-    <string name="AttachmentManager_cant_open_media_selection">Can\'t find an app to select media.</string>
-    <string name="AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio">Delta Chat requires the Storage permission in order to attach photos, videos, or audio, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Storage\".</string>
-    <string name="AttachmentManager_signal_requires_location_information_in_order_to_attach_a_location">Delta Chat requires Location permission in order to attach a location, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Location\".</string>
-    <string name="AttachmentManager_signal_requires_the_camera_permission_in_order_to_take_photos_but_it_has_been_permanently_denied">Delta Chat requires the Camera permission in order to take photos, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Camera\".</string>
-
-    <!-- AudioSlidePlayer -->
-    <string name="AudioSlidePlayer_error_playing_audio">Error playing audio!</string>
-
-    <!-- BlockedContactsActivity -->
-    <string name="BlockedContactsActivity_blocked_contacts">Blocked contacts</string>
-
-    <!-- BucketedThreadMedia -->
-    <string name="BucketedThreadMedia_Today">Today</string>
-    <string name="BucketedThreadMedia_Yesterday">Yesterday</string>
-    <string name="BucketedThreadMedia_This_week">This week</string>
-    <string name="BucketedThreadMedia_This_month">This month</string>
-
-    <!-- CallScreen -->
-
-    <!-- ClearProfileActivity -->
-    <string name="ClearProfileActivity_remove">Remove</string>
-    <string name="ClearProfileActivity_remove_profile_photo">Remove profile photo?</string>
-
-    <!-- ConfirmIdentityDialog -->
-
-    <!-- ContactsCursorLoader -->
-    <string name="ContactsCursorLoader_contacts">Contacts</string>
-
-    <!-- ContactsDatabase -->
-
-    <!-- ContactNameEditActivity -->
-
-    <!-- ContactShareEditActivity -->
-
-    <!-- ConversationItem -->
-    <string name="ConversationItem_copied_text">Copied %s</string>
-
-    <!-- ConversationActivity -->
-    <string name="ConversationActivity_add_attachment">Add attachment</string>
-    <string name="ConversationActivity_compose_message">Compose message</string>
-    <string name="ConversationActivity_sorry_there_was_an_error_setting_your_attachment">Sorry, there was an error setting your attachment.</string>
-    <string name="ConversationActivity_message_is_empty_exclamation">Message is empty!</string>
-
-    <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Are you sure you want to leave this group?</string>
-    <string name="ConversationActivity_transport_signal">Delta Chat dev</string>
-    <string name="ConversationActivity_attachment_exceeds_size_limits">Attachment exceeds size limits for the type of message you\'re sending.</string>
-    <string name="ConversationActivity_quick_camera_unavailable">Camera unavailable</string>
-    <string name="ConversationActivity_unable_to_record_audio">Unable to record audio!</string>
-    <string name="ConversationActivity_there_is_no_app_available_to_handle_this_link_on_your_device">There is no app available to handle this link on your device.</string>
-
-    <string name="ConversationActivity_to_send_audio_messages_allow_signal_access_to_your_microphone">To send audio messages, allow Delta Chat access to your microphone.</string>
-    <string name="ConversationActivity_signal_requires_the_microphone_permission_in_order_to_send_audio_messages">Delta Chat requires the Microphone permission in order to send audio messages, but it has been permanently denied. Please continue to app settings, select \"Permissions\", and enable \"Microphone\".</string>
-    <string name="ConversationActivity_to_capture_photos_and_video_allow_signal_access_to_the_camera">To capture photos and video, allow Delta Chat access to the camera.</string>
-    <string name="ConversationActivity_signal_needs_the_camera_permission_to_take_photos_or_video">Delta Chat needs the Camera permission to take photos or video, but it has been permanently denied. Please continue to app settings, select \"Permissions\", and enable \"Camera\".</string>
-    <string name="ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video">Delta Chat needs Camera permissions to take photos or video</string>
-
-    <string name="ConversationActivity_NoMessagesHint">Send message to %1$s:\n\n• It is okay if %2$s does not use Delta Chat.\n\n• Delivering the first message may take a while.</string>
-    <string name="ConversationActivity_MsgNewGroupDraftHint">Compose the first message, allowing others to reply within this group.\n\n• It is okay if not all members use Delta Chat.\n\n• Delivering the first message may take a while.</string>
-    <string name="ConversationActivity_ask_delete_chat">Delete this chat? It will no longer be shown in the chat list, its messages will remain on the server.</string>
-
-    <!-- ConversationAdapter -->
-    <plurals name="ConversationAdapter_n_unread_messages">
-        <item quantity="one">%d unread message</item>
-        <item quantity="other">%d unread messages</item>
+    <plurals name="n_hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
     </plurals>
 
-    <!-- ConversationFragment -->
-    <plurals name="ConversationFragment_delete_selected_messages">
-        <item quantity="one">Delete selected message?</item>
-        <item quantity="other">Delete selected messages?</item>
-    </plurals>
-    <plurals name="ConversationFragment_this_will_delete_n_selected_messages_here_and_on_server">
-        <item quantity="one">This will permanently delete the selected message here and on the server.</item>
-        <item quantity="other">This will permanently delete all %1$d selected messages here and one the server.</item>
-    </plurals>
-    <string name="ConversationFragment_save_to_sd_card">Save to storage?</string>
-    <plurals name="ConversationFragment_saving_n_media_to_storage_warning">
-        <item quantity="one">Saving this file to storage will allow any other apps on your device to access it.\n\nContinue?</item>
-        <item quantity="other">Saving all %1$d files to storage will allow any other apps on your device to access them.\n\nContinue?</item>
-    </plurals>
-    <plurals name="ConversationFragment_error_while_saving_attachments_to_sd_card">
-        <item quantity="one">Error while saving file to storage!</item>
-        <item quantity="other">Error while saving file to storage!</item>
-    </plurals>
-    <string name="ConversationFragment_unable_to_write_to_sd_card_exclamation">Unable to write to storage!</string>
-    <plurals name="ConversationFragment_saving_n_attachments">
-        <item quantity="one">Saving file</item>
-        <item quantity="other">Saving %1$d files</item>
-    </plurals>
-    <plurals name="ConversationFragment_saving_n_attachments_to_sd_card">
-        <item quantity="one">Saving file to storage...</item>
-        <item quantity="other">Saving %1$d files to storage...</item>
-    </plurals>
-    <plurals name="ConversationFragment_n_selected_messages_copied_to_clipboard">
-        <item quantity="one">Message copied to clipboard</item>
-        <item quantity="other">%1$d selected messages copied to clipboard</item>
-    </plurals>
+    <string name="self">Me</string>
+    <string name="draft">Draft</string>
+    <string name="image">Image</string>
+    <string name="gif">Gif</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="contact">Contact</string>
+    <string name="camera">Camera</string>
+    <string name="location">Location</string>
+    <string name="gallery">Gallery</string>
+    <string name="file">File</string>
+    <string name="unknown">Unknown</string>
 
-    <!-- ConversationListActivity -->
-    <string name="ConversationListActivity_there_is_no_browser_installed_on_your_device">There is no browser installed on your device.</string>
+    <string name="green">Green</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="orange">Orange</string>
+    <string name="cyan">Cyan</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">White</string>
 
-    <!-- ConversationListFragment -->
-    <string name="ConversationListFragment_no_results_found_for_s_">No results found for \'%s\'</string>
+    <string name="small">Small</string>
+    <string name="normal">Normal</string>
+    <string name="large">Large</string>
+    <string name="extra_large">Extra large</string>
 
-    <plurals name="ConversationListFragment_ask_selected_chats">
-        <item quantity="one">Delete the selected chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
-        <item quantity="other">Delete %1%d selected chats? They will no longer be shown in the chat list, their messages will remain on the server.</item>
+    <string name="fast">Fast</string>
+    <string name="slow">Slow</string>
+
+    <string name="message_delivered">Message delivered</string>
+    <string name="message_read">Message read</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">New contact</string>
+    <string name="menu_new_chat">New chat</string>
+    <string name="menu_new_group">New group</string>
+    <string name="menu_new_verified_group">New verified group</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_toggle_keyboard">Toggle emoji keyboard</string>
+    <string name="menu_edit_group">Edit group</string>
+    <string name="menu_archive_chat">Archive chat</string>
+    <string name="menu_unarchive_chat">Unarchive chat</string>
+    <string name="menu_add_attachment">Add attachment</string>
+    <string name="menu_leave_group">Leave group</string>
+    <string name="menu_delete_chat">Delete chat</string>
+    <string name="menu_delete_messages">Delete messages</string>
+    <string name="menu_delete_image">Delete image</string>
+    <string name="menu_message_details">Message details</string>
+    <string name="menu_copy_to_clipboard">Copy to clipboard</string>
+    <string name="menu_forward">Forward message</string>
+    <string name="menu_resend">Resend message</string>
+    <string name="menu_reply">Reply to message</string>
+    <string name="menu_mute">Mute notifications</string>
+    <string name="menu_unmute">Unmute</string>
+    <string name="menu_export_attachment">Export attachment</string>
+    <string name="menu_all_media">All media</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_block_contact">Block contact</string>
+    <string name="menu_unblock_contact">Unblock contact</string>
+    <string name="menu_play">Play</string>
+    <string name="menu_pause">Pause</string>
+    <string name="menu_scroll_to_bottom">Scroll to the bottom</string>
+    <string name="menu_invite">Invite friends</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_select_all">Select all</string>
+    <string name="menu_expand">Expand</string>
+    <string name="menu_edit_name">Edit name</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_advanced">Advanced</string>
+    <string name="menu_deaddrop">Contact requests</string>
+    <string name="menu_view_profile">View profile</string>
+
+    <string name="mute_for_one_hour">Mute for 1 hour</string>
+    <string name="mute_for_two_hours">Mute for 2 hours</string>
+    <string name="mute_for_one_day">Mute for 1 day</string>
+    <string name="mute_for_seven_days">Mute for 7 days</string>
+    <string name="mute_for_one_year">Mute for 1 year</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Are you sure you want to leave this group?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Delete this chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
+        <item quantity="other">Delete %1%d chats? They will no longer be shown in the chat list, their messages will remain on the server.</item>
     </plurals>
-    <string name="ConversationListFragment_deleting">Deleting</string>
-    <string name="ConversationListFragment_deleting_selected_conversations">Deleting selected chats...</string>
-    <plurals name="ConversationListFragment_conversations_archived">
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Delete the message here and on the server?</item>
+        <item quantity="other">Delete %1$d messages here and one the server?</item>
+    </plurals>
+    <string name="ask_forward">Forward messages to %1$s?</string>
+    <string name="ask_export_attachment">Export attachment? Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
+    <string name="ask_block_contact">Block this contact? You will no longer receive messages and calls from this contact.</string>
+    <string name="ask_unblock_contact">Unblock this contact? You will once again be able to receive messages and calls from this contact.</string>
+    <string name="ask_delete_contacts">Delete contacts? This will permanently delete the selected contacts.\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
+    <string name="ask_start_chat_with">Chat with %1$s?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Contacts</string>
+    <string name="contacts_enter_name_or_email">Enter name or email address</string>
+    <string name="contacts_type_email_above">Type email address above</string>
+    <string name="contacts_empty_hint">No contacts.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
         <item quantity="one">Chat archived</item>
         <item quantity="other">%d chats archived</item>
     </plurals>
-    <string name="ConversationListFragment_undo">UNDO</string>
-    <plurals name="ConversationListFragment_moved_conversations_to_inbox">
-        <item quantity="one">Moved chat to inbox</item>
-        <item quantity="other">Moved %d chats to inbox</item>
+    <plurals name="chat_unarchived">
+        <item quantity="one">Chat unarchived</item>
+        <item quantity="other">%d chat unarchived</item>
     </plurals>
-
-    <!-- ConversationListItem -->
-
-    <!-- ConversationListItemAction -->
-
-    <!-- CreateProfileActivity -->
-    <string name="CreateProfileActivity_your_profile_info">Your profile info</string>
-    <string name="CreateProfileActivity_error_setting_profile_photo">Error setting profile photo</string>
-    <string name="CreateProfileActivity_problem_setting_profile">Problem setting profile</string>
-    <string name="CreateProfileActivity_profile_photo">Profile photo</string>
-
-    <!-- CustomDefaultPreference -->
-    <string name="CustomDefaultPreference_using_custom">Using custom: %s</string>
-    <string name="CustomDefaultPreference_using_default">Using default: %s</string>
-    <string name="CustomDefaultPreference_none">None</string>
-
-    <!-- DateUtils -->
-    <string name="DateUtils_just_now">Now</string>
-    <string name="DateUtils_minutes_ago">%d min</string>
-    <string name="DateUtils_today">Today</string>
-    <string name="DateUtils_yesterday">Yesterday</string>
-
-    <!-- DeliveryStatus -->
-
-    <!-- DeviceListActivity -->
-
-    <!-- DeviceListItem -->
-    <string name="DeviceListItem_today">Today</string>
-
-    <!-- DocumentView -->
-    <string name="DocumentView_unknown_file">Unknown file</string>
-
-    <!-- DozeReminder -->
-    <string name="DozeReminder_optimize_for_missing_play_services">Optimize for missing Play Services</string>
-    <string name="DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery">This device does not support Play Services. Tap to disable system battery optimizations that prevent Delta Chat from retrieving messages while inactive.</string>
-
-    <!-- ShareActivity -->
-    <string name="ShareActivity_share_with">Share with</string>
-    <string name="ShareActivity_unable_to_open_media">Can\'t find an app able to open this media.</string>
-    <string name="ShareActivity_file_not_found">Could not find %1$s.</string>
-    <string name="ShareActivity_forward_message_to_user_info">Forward selected messages to %1$s?</string>
-
-    <!-- ExperienceUpgradeActivity -->
-
-    <!-- GcmRefreshJob -->
-
-    <!-- GroupCreateActivity -->
-    <string name="GroupCreateActivity_actionbar_title">New group</string>
-    <string name="GroupCreateActivity_actionbar_verified_title">New verified group</string>
-    <string name="GroupCreateActivity_actionbar_edit_title">Edit group</string>
-    <string name="GroupCreateActivity_group_name_hint">Group name</string>
-    <string name="GroupCreateActivity_avatar_content_description">Group avatar</string>
-    <string name="GroupCreateActivity_menu_apply_button">Apply</string>
-    <string name="GroupCreateActivity_loading_group_details">Loading group details...</string>
-    <string name="GroupCreateActivity_please_enter_group_name">Please enter a name for the group.</string>
-
-    <!-- GroupShareProfileView -->
-
-    <!-- GroupMembersDialog -->
-
-    <!-- InputPanel -->
-    <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Tap and hold to record a voice message, release to send</string>
-
-    <!-- InviteActivity -->
-    <string name="InviteActivity_share">Share</string>
-    <string name="InviteActivity_cancel">Cancel</string>
-    <string name="InviteActivity_heart_content_description">Heart</string>
-    <string name="InviteActivity_invite_to_signal">Invite to Delta Chat</string>
-    <string name="InviteActivity_lets_switch_to_delta_chat">Let\'s switch to Delta Chat - %1$s - you can text me at %2$s</string>
-    <string name="InviteActivity_no_app_to_share_to">It looks like you don\'t have any apps to share to.</string>
-    <string name="InviteActivity_friends_dont_let_friends">Friends don\'t let friends locked in messaging silos.</string>
-
-    <!-- MessageDetailsRecipient -->
-
-    <!-- MessageRetrievalService -->
-    <string name="MessageRetrievalService_background_connection_enabled">Background connection enabled</string>
-
-    <!-- MmsDownloader -->
-
-    <!-- MediaOverviewActivity -->
-    <string name="MediaOverviewActivity_Media">Media</string>
-    <plurals name="MediaOverviewActivity_Media_delete_confirm_title">
-        <item quantity="one">Delete selected message?</item>
-        <item quantity="other">Delete selected messages?</item>
+    <string name="chat_archived_chats_title">Archived chats</string>
+    <string name="chat_please_enter_message">Please enter a message.</string>
+    <string name="chat_camera_unavailable">Camera unavailable.</string>
+    <string name="chat_unable_to_record_audio">Unable to record audio.</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%d unread message</item>
+        <item quantity="other">%d unread messages</item>
     </plurals>
-    <plurals name="MediaOverviewActivity_Media_delete_confirm_message">
-        <item quantity="one">This will permanently delete the selected message.</item>
-        <item quantity="other">This will permanently delete all %1$d selected messages.</item>
-    </plurals>
-    <string name="MediaOverviewActivity_Media_delete_progress_title">Deleting</string>
-    <string name="MediaOverviewActivity_Media_delete_progress_message">Deleting messages...</string>
-    <string name="MediaOverviewActivity_Documents">Documents</string>
-
-    <!--- NotificationBarManager -->
-
-    <!-- NotificationMmsMessageRecord -->
-
-    <!-- MessageRecord -->
-
-    <!-- PassphraseChangeActivity -->
-
-    <!-- DeviceProvisioningActivity -->
-
-    <!-- ExpirationDialog -->
-
-    <!-- PassphrasePromptActivity -->
-
-    <!-- PlayServicesProblemFragment -->
-
-    <!-- RatingManager -->
-
-    <!-- RecipientPreferencesActivity -->
-    <string name="RecipientPreferenceActivity_block_this_contact_question">Block this contact?</string>
-    <string name="RecipientPreferenceActivity_you_will_no_longer_receive_messages_and_calls_from_this_contact">You will no longer receive messages and calls from this contact.</string>
-    <string name="RecipientPreferenceActivity_block">Block</string>
-    <string name="RecipientPreferenceActivity_unblock_this_contact_question">Unblock this contact?</string>
-    <string name="RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact">You will once again be able to receive messages and calls from this contact.</string>
-    <string name="RecipientPreferenceActivity_unblock">Unblock</string>
-    <string name="RecipientPreferenceActivity_enabled">Enabled</string>
-    <string name="RecipientPreferenceActivity_disabled">Disabled</string>
-
-    <!-- RecipientProvider -->
-
-    <!-- RedPhone -->
-
-    <!-- RegistrationActivity -->
-
-    <!-- ScribbleActivity -->
-    <string name="ScribbleActivity_save_failure">Failed to save image changes</string>
-
-    <!-- Search -->
-    <string name="SearchFragment_no_results">No results found for \'%s\'</string>
-    <string name="SearchFragment_header_conversations">Chats</string>
-    <string name="SearchFragment_header_contacts">Contacts</string>
-    <string name="SearchFragment_header_messages">Messages</string>
-
-    <!-- SharedContactDetailsActivity -->
-
-    <!-- SharedContactView -->
-
-    <!-- Slide -->
-    <string name="Slide_image">Image</string>
-    <string name="Slide_audio">Audio</string>
-    <string name="Slide_video">Video</string>
-
-    <!-- SmsMessageRecord -->
-
-    <!-- ThreadRecord -->
-
-    <!-- UpdateApkReadyListener -->
-
-    <!-- UnknownSenderView -->
-
-    <!-- UntrustedSendDialog -->
-
-    <!-- UnverifiedSendDialog -->
-
-    <!-- VerifyIdentityActivity -->
-
-    <!-- MessageDisplayHelper -->
-
-    <!-- MmsMessageRecord -->
-
-    <!-- MuteDialog -->
-    <string name="MuteDialog_mute_notifications">Mute notifications</string>
-
-    <!-- OutdatedBuildReminder -->
-    <string name="OutdatedBuildReminder_no_web_browser_installed">No web browser installed!</string>
-
-    <!-- ApplicationMigrationService -->
-
-    <!-- KeyCachingService -->
-
-    <!-- MediaPreviewActivity -->
-    <string name="MediaPreviewActivity_you">You</string>
-    <string name="MediaPreviewActivity_unssuported_media_type">Unsupported media type</string>
-    <string name="MediaPreviewActivity_draft">Draft</string>
-    <string name="MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Delta Chat needs the Storage permission in order to save to external storage, but it has been permanently denied. Please continue to app settings, select \"Permissions\", and enable \"Storage\".</string>
-    <string name="MediaPreviewActivity_unable_to_write_to_external_storage_without_permission">Unable to save to external storage without permissions</string>
-    <string name="MediaPreviewActivity_media_delete_confirmation_title">Delete message?</string>
-    <string name="MediaPreviewActivity_media_delete_confirmation_message">This will permanently delete this message.</string>
-
-    <!-- MessageNotifier -->
-    <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d new messages in %2$d chats</string>
-    <string name="MessageNotifier_most_recent_from_s">Most recent from: %1$s</string>
-    <string name="MessageNotifier_media_message_with_text">Media message: %s</string>
-    <string name="MessageNotifier_mark_all_as_read">Mark all as read</string>
-    <string name="MessageNotifier_mark_read">Mark read</string>
-    <string name="MessageNotifier_media_message">Media message</string>
-    <string name="MessageNotifier_reply">Reply</string>
-
-    <!-- QuickResponseService -->
-
-    <!-- SaveAttachmentTask -->
-    <string name="SaveAttachmentTask_saved_to">Saved to %s</string>
-
-    <!-- SearchToolbar -->
-    <string name="SearchToolbar_search">Search</string>
-    <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Search for chats, contacts, and messages</string>
-
-    <!-- SingleRecipientNotificationBuilder -->
-    <string name="SingleRecipientNotificationBuilder_signal">Delta Chat dev</string>
-    <string name="SingleRecipientNotificationBuilder_new_message">New message</string>
-
-    <!-- UnauthorizedReminder -->
-
-    <!-- VideoPlayer -->
-    <string name="VideoPlayer_error_playing_video">Error playing video</string>
-
-    <!-- WebRtcCallActivity -->
-
-    <!-- WebRtcCallScreen -->
-
-    <!-- WebRtcCallControls -->
-
-    <!-- attachment_type_selector -->
-    <string name="attachment_type_selector__audio">Audio</string>
-    <string name="attachment_type_selector__audio_description">Audio</string>
-    <string name="attachment_type_selector__contact">Contact</string>
-    <string name="attachment_type_selector__contact_description">Contact</string>
-    <string name="attachment_type_selector__camera">Camera</string>
-    <string name="attachment_type_selector__camera_description">Camera</string>
-    <string name="attachment_type_selector__location">Location</string>
-    <string name="attachment_type_selector__location_description">Location</string>
-    <string name="attachment_type_selector__gif">GIF</string>
-    <string name="attachment_type_selector__gif_description">Gif</string>
-    <string name="attachment_type_selector__gallery_description">Image or video</string>
-    <string name="attachment_type_selector__file_description">File</string>
-    <string name="attachment_type_selector__gallery">Gallery</string>
-    <string name="attachment_type_selector__file">File</string>
-
-    <string name="attachment_type_selector__drawer_description">Toggle attachment drawer</string>
-
-    <!-- change_passphrase_activity -->
-
-    <!-- contact_selection_activity -->
-    <string name="contact_selection_activity__enter_name_or_email">Enter name or email address</string>
-
-    <!-- contact_selection_group_activity -->
-    <string name="contact_selection_group_activity__no_contacts">No contacts.</string>
-    <string name="contact_selection_group_activity__finding_contacts">Loading contacts&#8230;</string>
-
-    <!-- single_contact_selection_activity -->
-    <string name="SingleContactSelectionActivity_contact_photo">Contact Photo</string>
-
-    <!-- ContactSelectionListFragment-->
-    <string name="ContactSelectionListFragment_error_deleting_contacts_check_existing_conversations">Error deleting contacts, some contacts couldn\'t get deleted. Please delete existing conversations before.</string>
-    <string name="ContactSelectionListFragment_contact_delete_confirmation_title">Delete contacts?</string>
-    <string name="ContactSelectionListFragment_contact_delete_confirmation_message">This will permanently delete the selected contacts.\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
-
-    <!-- blocked_contacts_fragment -->
-
-    <!-- contact_selection_list_fragment -->
-
-    <!-- conversation_activity -->
-    <string name="conversation_activity__type_message">Message</string>
-    <string name="conversation_activity__send">Send</string>
-    <string name="conversation_activity__compose_description">Message composition</string>
-    <string name="conversation_activity__emoji_toggle_description">Toggle emoji keyboard</string>
-    <string name="conversation_activity__attachment_thumbnail">Attachment Thumbnail</string>
-    <string name="conversation_activity__quick_attachment_drawer_toggle_camera_description">Toggle quick camera attachment drawer</string>
-    <string name="conversation_activity__quick_attachment_drawer_record_and_send_audio_description">Record and send audio attachment</string>
-
-    <!-- conversation_input_panel -->
-    <string name="conversation_input_panel__slide_to_cancel">SLIDE TO CANCEL</string>
-
-    <!-- conversation_item -->
-    <string name="conversation_item__mms_image_description">Media message</string>
-    <string name="conversation_item__secure_message_description">Secure message</string>
-
-    <!-- conversation_item_sent -->
-    <string name="conversation_item_sent__send_failed_indicator_description">Send Failed</string>
-    <string name="conversation_item_sent__delivered_description">Delivered</string>
-    <string name="conversation_item_sent__message_read">Message read</string>
-
-    <!-- conversation_item_received -->
-    <string name="conversation_item_received__contact_photo_description">Contact photo</string>
-
-    <!-- audio_view -->
-    <string name="audio_view__play_accessibility_description">Play</string>
-    <string name="audio_view__pause_accessibility_description">Pause</string>
-
-    <!-- QuoteView -->
-    <string name="QuoteView_audio">Audio</string>
-    <string name="QuoteView_video">Video</string>
-    <string name="QuoteView_photo">Photo</string>
-    <string name="QuoteView_you">You</string>
-
-    <!-- conversation_fragment -->
-    <string name="conversation_fragment__scroll_to_the_bottom_content_description">Scroll to the bottom</string>
-
-    <!-- country_selection_fragment -->
-
-    <!-- device_add_fragment -->
-
-    <!-- device_link_fragment -->
-
-    <!-- device_list_fragment -->
-
-    <!-- experience_upgrade_activity -->
-
-    <!-- expiration -->
-    <string name="expiration_off">Off</string>
-    
-    <plurals name="expiration_seconds">
-        <item quantity="one">%d second</item>
-        <item quantity="other">%d seconds</item>
-    </plurals>
-
-    <string name="expiration_seconds_abbreviated">%ds</string>
-
-    <plurals name="expiration_minutes">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%d minutes</item>
-    </plurals>
-
-    <string name="expiration_minutes_abbreviated">%dm</string>
-
-    <plurals name="expiration_hours">
-        <item quantity="one">%d hour</item>
-        <item quantity="other">%d hours</item>
-    </plurals>
-
-    <string name="expiration_hours_abbreviated">%dh</string>
-
-    <plurals name="expiration_days">
-        <item quantity="one">%d day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-
-    <string name="expiration_days_abbreviated">%dd</string>
-
-    <plurals name="expiration_weeks">
-        <item quantity="one">%d week</item>
-        <item quantity="other">%d weeks</item>
-    </plurals>
-
-    <string name="expiration_weeks_abbreviated">%dw</string>
-    
-    <!-- unverified safety numbers -->
-
-    <!-- log_submit_activity -->
-
-    <!-- database_migration_activity -->
-
-    <!-- database_upgrade_activity -->
-
-    <!-- load_more_header -->
-
-    <!-- media_overview_activity -->
-    <string name="media_overview_activity__no_media">No media</string>
-
-    <!-- message_recipients_list_item -->
-
-    <!-- GroupUtil -->
-
-    <!-- profile_group_share_view -->
-
-    <!-- prompt_passphrase_activity -->
-
-    <!-- prompt_mms_activity -->
-
-    <!-- profile_create_activity -->
-    <string name="profile_create_activity__password_account">password and account settings</string>
-    <string name="profile_create_activity__finish">FINISH</string>
-    <string name="profile_create_activity__who_can_see_this_information">Who can see this information?</string>
-    <string name="profile_create_activity__who_can_see_this_information_explained">Your profile picture and name will be shown alongside your messages when communicating with other users. Already sent information can not be deleted or removed.</string>
-    <string name="profile_create_activity__your_name">Your name</string>
-
-    <!-- recipient_preferences_activity -->
-
-    <!-- recipient_preferences -->
-    <string name="recipient_preferences__mute_conversation">Mute chat</string>
-    <string name="recipient_preferences__notification_sound">Notification sound</string>
-    <string name="recipient_preferences__vibrate">Vibrate</string>
-    <string name="recipient_preferences__block">Block</string>
-    <string name="recipient_preferences__chat_settings">Chat settings</string>
-
-    <!--- redphone_call_controls -->
-
-    <!-- registration_activity -->
-
-    <!-- recipients_panel -->
-    <string name="recipients_panel__add_members">Add members</string>
-
-    <!-- unknown_sender_view -->
-
-    <!-- verify_display_fragment -->
-
-    <!-- verify_identity -->
-
-    <!-- webrtc_answer_decline_button -->
-
-    <!-- message_details_header -->
-
-    <!-- AndroidManifest.xml -->
-    <string name="AndroidManifest__select_contacts">Select contacts</string>
-    <string name="AndroidManifest__media_preview">Media preview</string>
-    <string name="AndroidManifest__invite_friends">Invite friends</string>
-    <string name="AndroidManifest_archived_conversations">Archived chats</string>
-    <string name="AndroidManifest_remove_photo">Remove photo</string>
-
-    <!-- arrays.xml -->
-    <string name="arrays__use_default">Use default</string>
-    <string name="arrays__use_custom">Use custom</string>
-
-    <string name="arrays__mute_for_one_hour">Mute for 1 hour</string>
-    <string name="arrays__mute_for_two_hours">Mute for 2 hours</string>
-    <string name="arrays__mute_for_one_day">Mute for 1 day</string>
-    <string name="arrays__mute_for_seven_days">Mute for 7 days</string>
-    <string name="arrays__mute_for_one_year">Mute for 1 year</string>
-
-    <string name="arrays__settings_default">Settings default</string>
-    <string name="arrays__enabled">Enabled</string>
-    <string name="arrays__disabled">Disabled</string>
-
-    <string name="arrays__name_and_message">Name and message</string>
-    <string name="arrays__name_only">Name only</string>
-    <string name="arrays__no_name_or_message">No name or message</string>
-
-    <string name="arrays__small">Small</string>
-    <string name="arrays__normal">Normal</string>
-    <string name="arrays__large">Large</string>
-    <string name="arrays__extra_large">Extra large</string>
-
-    <string name="arrays__default">Default</string>
-    <string name="arrays__high">High</string>
-    <string name="arrays__max">Max</string>
-
-    <!-- plurals.xml -->
-    <plurals name="hours_ago">
-        <item quantity="one">%d hour</item>
-        <item quantity="other">%d hours</item>
-    </plurals>
-
-    <!-- preferences.xml -->
-    <string name="preferences__pref_enter_sends_title">Enter key sends</string>
-    <string name="preferences__pressing_the_enter_key_will_send_text_messages">Pressing the Enter key will send text messages</string>
-    <string name="preferences__change_passphrase">Change secret</string>
-    <string name="preferences__change_your_passphrase">Change your pin / pattern / fingerprint via system settings</string>
-    <string name="preferences__screen_security">Screen security</string>
-    <string name="preferences__screen_security_restart_warning">To apply the screen security setting please restart the app</string>
-    <string name="preferences__disable_screen_security_to_allow_screen_shots">Block screenshots in the recents list and inside the app</string>
-    <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Auto-lock Delta Chat after a specified time interval of inactivity</string>
-    <string name="preferences__inactivity_timeout_passphrase">Inactivity timeout lock</string>
-    <string name="preferences__inactivity_timeout_interval">Inactivity timeout interval</string>
-    <string name="preferences__notifications">Notifications</string>
-    <string name="preferences__led_color">LED color</string>
-    <string name="preferences__led_color_unknown">Unknown</string>
-    <string name="preferences__pref_led_blink_title">LED blink pattern</string>
-    <string name="preferences__sound">Sound</string>
-    <string name="preferences__silent">Silent</string>
-    <string name="preferences__repeat_alerts">Repeat alerts</string>
-    <string name="preferences__never">Never</string>
-    <string name="preferences__one_time">One time</string>
-    <string name="preferences__two_times">Two times</string>
-    <string name="preferences__three_times">Three times</string>
-    <string name="preferences__five_times">Five times</string>
-    <string name="preferences__ten_times">Ten times</string>
-    <string name="preferences__vibrate">Vibrate</string>
-    <string name="preferences__green">Green</string>
-    <string name="preferences__red">Red</string>
-    <string name="preferences__blue">Blue</string>
-    <string name="preferences__orange">Orange</string>
-    <string name="preferences__cyan">Cyan</string>
-    <string name="preferences__magenta">Magenta</string>
-    <string name="preferences__white">White</string>
-    <string name="preferences__none">None</string>
-    <string name="preferences__fast">Fast</string>
-    <string name="preferences__normal">Normal</string>
-    <string name="preferences__slow">Slow</string>
-    <string name="preferences__advanced">Advanced</string>
-    <string name="preferences__privacy">Privacy</string>
-    <string name="preferences__automatically_delete_older_messages_once_a_conversation_exceeds_a_specified_length">Automatically delete older messages once a chat exceeds a specified length</string>
-    <string name="preferences__delete_old_messages">Delete old messages</string>
-    <string name="preferences__chats">Chats and media</string>
-    <string name="preferences__conversation_length_limit">Chat length limit</string>
-    <string name="preferences__trim_all_conversations_now">Trim all chats now</string>
-    <string name="preferences__scan_through_all_conversations_and_enforce_conversation_length_limits">Scan through all chats and enforce chat length limits</string>
-    <string name="preferences__light_theme">Light</string>
-    <string name="preferences__dark_theme">Dark</string>
-    <string name="preferences__appearance">Appearance</string>
-    <string name="preferences__theme">Theme</string>
-    <string name="preferences__default">Default</string>
-    <string name="preferences__language">Language</string>
-    <string name="preferences__incognito_keyboard">Incognito keyboard</string>
-    <string name="preferences__read_receipts">Read receipts</string>
-    <string name="preferences__if_read_receipts_are_disabled_you_wont_be_able_to_see_read_receipts">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
-    <string name="preferences__request_keyboard_to_disable_personalized_learning">Request keyboard to disable personalized learning</string>
-    <string name="preferences__backup">Backup</string>
-    <string name="preferences__manage_keys">Manage keys</string>
-    <string name="preferences_app_protection__blocked_contacts">Blocked contacts</string>
-    <string name="preferences_chats__message_trimming">Message trimming</string>
-    <string name="preferences_advanced__use_system_emoji">Use system emoji</string>
-    <string name="preferences_advanced__disable_signal_built_in_emoji_support">Disable Delta Chat\'s built-in emoji support</string>
-    <string name="preferences_app_protection__app_access">App access</string>
-    <string name="preferences_app_protection__communication">Communication</string>
-    <string name="preferences_chats__chats">Chats</string>
-    <string name="preferences_notifications__messages">Messages</string>
-    <string name="preferences_notifications__in_chat_sounds">In-chat sounds</string>
-    <string name="preferences_notifications__show">Show</string>
-    <string name="preferences_chats__message_text_size">Message font size</string>
-    <string name="preferences_notifications__priority">Priority</string>
-    <string name="preferences_other">Other</string>
-    <string name="preferences_backup__export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
-    <string name="preferences_backup__export_start_button">Start backup</string>
-    <string name="preferences_backup__backup_written_to_x">Backup written successfully to %1$s</string>
-    <string name="preferences_backup__ask_for_storage_permission">Delta Chat needs access to your files in order to create backups.</string>
-    <string name="preferences_managekeys__menu_title">Manage keys</string>
-    <string name="preferences_managekeys__ask_for_storage_permission">Delta Chat needs access to your files to import/export keys.</string>
-    <string name="preferences_managekeys__export_secret_keys">Export secret keys</string>
-    <string name="preferences_managekeys__export_explain">Export secret keys to \"%1$s\"?</string>
-    <string name="preferences_managekeys__import_secret_keys">Import secret keys</string>
-    <string name="preferences_managekeys__import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename</string>
-    <string name="preferences_managekeys__secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
-    <string name="preferences_managekeys__secret_keys_imported_from_x">Secret keys imported from \"%1$s\".</string>
-    <string name="preferences_autocrypt">Autocrypt</string>
-    <string name="preferences_autocrypt__send_asm">Send Autocrypt Setup Message</string>
-    <string name="preferences_autocrypt__prefer_e2ee">Prefer end-to-end encryption</string>
-    <string name="preferences_autocrypt__explain">Autocrypt is a new and open specification for automatic end-to-end email encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with Autocrypt Setup Messages.</string>
-
-    
-    <!-- **************************************** -->
-    <!-- menus -->
-    <!-- **************************************** -->
-
-    <!-- contact_selection_list -->
-
-    <!-- conversation_callable_insecure -->
-
-    <!-- conversation_callable_secure -->
-
-    <!-- conversation_context -->
-    <string name="conversation_context__menu_message_details">Message details</string>
-    <string name="conversation_context__menu_copy_text">Copy text</string>
-    <string name="conversation_context__menu_delete_message">Delete message</string>
-    <string name="conversation_context__menu_forward_message">Forward message</string>
-    <string name="conversation_context__menu_resend_message">Resend message</string>
-    <string name="conversation_context__menu_reply_to_message">Reply to message</string>
-
-    <!-- conversation_context_image -->
-    <string name="conversation_context_image__save_attachment">Save attachment</string>
-
-    <!-- conversation_expiring_off -->
-
-    <!-- conversation_expiring_on -->
-
-    <!-- conversation_insecure -->
-
-    <!-- conversation_list_batch -->
-    <string name="conversation_list_batch__menu_delete_selected">Delete selected</string>
-    <string name="conversation_list_batch__menu_select_all">Select all</string>
-    <string name="conversation_list_batch_archive__menu_archive_selected">Archive selected</string>
-    <string name="conversation_list_batch_unarchive__menu_unarchive_selected">Unarchive selected</string>
-
-    <!-- conversation_list -->
-
-    <!-- conversation_list_item_view -->
-    <string name="conversation_list_item_view__contact_photo_image">Contact Photo Image</string>
-    <string name="conversation_list_item_view__archived">Archived</string>
-
-    <string name="conversation_list_item_inbox_zero__inbox_zeeerrro">Inbox zeeerrro</string>
-    <string name="conversation_list_item_inbox_zero__zip_zilch_zero_nada_nyou_re_all_caught_up">Zip. Zilch. Zero. Nada.\nYou\'re all caught up!</string>
-
-
-    <!-- conversation_list_fragment -->
-    <string name="conversation_list_fragment__fab_content_description">New chat</string>
-    <string name="conversation_list_fragment__give_your_inbox_something_to_write_home_about_get_started_by_messaging_a_friend">Give your inbox something to write home about. Get started by messaging a friend.</string>
-
-
-    <!-- conversation_secure_verified -->
-
-    <!-- conversation_muted -->
-    <string name="conversation_muted__unmute">Unmute</string>
-
-    <!-- conversation_unmuted -->
-    <string name="conversation_unmuted__mute_notifications">Mute notifications</string>
-
-    <!-- conversation -->
-    <string name="conversation__menu_add_attachment">Add attachment</string>
-    <string name="conversation__menu_edit_group">Edit group</string>
-    <string name="conversation__menu_leave_group">Leave group</string>
-    <string name="conversation__menu_view_all_media">All media</string>
-
-    <!-- conversation_popup -->
-    <string name="conversation_popup__menu_expand_popup">Expand popup</string>
-
-    <!-- conversation_callable_insecure -->
-
-    <!-- conversation_group_options -->
-
-    <!-- text_secure_normal -->
-    <string name="text_secure_normal__menu_settings">Settings</string>
-    <string name="text_secure_normal__menu_clear_passphrase">Lock</string>
-    <string name="text_secure_normal__invite_friends">Invite friends</string>
-    <string name="text_secure_normal__help">Help</string>
-
-    <!-- verify_display_fragment -->
-
-    <!-- reminder_header -->
-    <string name="reminder_header_outdated_build">Your version of Delta Chat is outdated</string>
-    <plurals name="reminder_header_outdated_build_details">
-        <item quantity="one">Your version of Delta Chat will expire in %d day. Tap to update to the most recent version.</item>
-        <item quantity="other">Your version of Delta Chat will expire in %d days. Tap to update to the most recent version.</item>
-    </plurals>
-    <string name="reminder_header_outdated_build_details_today">Your version of Delta Chat will expire today. Tap to update to the most recent version.</string>
-    <string name="reminder_header_expired_build">Your version of Delta Chat has expired!</string>
-    <string name="reminder_header_expired_build_details">Messages will no longer send successfully. Tap to update to the most recent version.</string>
-
-    <!-- media_preview -->
-    <string name="media_preview__save_title">Save</string>
-    <string name="media_preview__forward_title">Forward</string>
-    <string name="media_preview__all_media_title">All media</string>
-
-    <!-- media_overview -->
-    <string name="media_overview_documents_fragment__no_documents_found">No documents</string>
-
-    <!-- media_preview_activity -->
-    <string name="media_preview_activity__media_content_description">Media preview</string>
-
-    <!-- new_conversation_activity -->
-    <!-- redphone_audio_popup_menu -->
-
-    <!-- qr_scan_activity -->
-    <string name="qr_scan_activity__title">Scan QR code</string>
-    <string name="qr_scan_activity__hint">Place your camera over the QR code</string>
-
-    <!-- qr_scan_handler -->
-    <string name="qr_scan_handler_join_verified_group">Do you want to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="qr_scan_handler_fingerprint_ask_oob">Verify contact and start chatting with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="qr_scan_handler_fingerprint_ok">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> verified. Start chatting?</string>
-    <string name="qr_scan_handler_fingerprint_mismatch">The scanned fingerprint does <![CDATA[<b>]]>not match<![CDATA[</b>]]> the fingerprint last seen for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
-    <string name="qr_scan_handler_fingerprint_without_address">This QR code contains a fingerprint but no email address.\n\nFor an out-of-band-verification, please establish an encrpyted connection to the recipient first.</string>
-    <string name="qr_scan_handler_Scan_contains_text">Scanned QR code text:\n\n%1$s</string>
-    <string name="qr_scan_handler_qr_scan_contains_url">Scanned QR code URL:\n\n%1$s</string>
-    <string name="qr_scan_handler_fingerprint">Fingerprint</string>
-    <string name="qr_scan_handler_ask_start_chat_with">Chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="qr_scan_handler_verfied_introduce_myself">%1$s verified, introduce myself …</string>
-
-    <!-- qr_show_activity -->
-    <string name="qr_show_activity__title">Show QR verify code</string>
-    <string name="qr_show_activity__joining">%1$s joins.</string>
-    <string name="qr_show_activity__verified">%1$s verified.</string>
-    <string name="qr_show_activity__group_joined">%1$s securely joined the group.</string>
-    <string name="qr_show_activity__join_verified_group_hint">Scan this to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
-    <string name="qr_show_activity__join_verified_group_title">QR invite code</string>
-    <string name="qr_show_activity__join_contact_title">QR verify code</string>
-    <string name="qr_show_activity__join_contact_hint"><![CDATA[<b>]]>%1$s<![CDATA[</b><br>]]>Scan this to set up a verified contact.</string>
-
-    <!-- Trimmer -->
-
-    <!-- transport_selection_list_item -->
-    <string name="transport_selection_list_item__transport_icon">Transport icon</string>
-    <string name="Permissions_permission_required">Permission required</string>
-    <string name="Permissions_continue">Continue</string>
-    <string name="Permissions_not_now">Not now</string>
-    <string name="preferences_chats__backup_chats_to_external_storage">Backup chats to external storage</string>
-    <string name="ProgressPreference_d_messages_so_far">%d messages so far</string>
-    <string name="preferences_app_protection__screen_lock">Screen lock</string>
-    <string name="preferences_app_protection__lock_signal_access_with_android_screen_lock_or_fingerprint">Lock Delta Chat access with Android screen lock or fingerprint</string>
-
-    <string name="WelcomeActivity_intro1_headline">Delta Chat dev</string>
-    <string name="WelcomeActivity_intro1_message">The messenger with the <b>broadest audience</b> in the world. <b>Free</b> and <b>independent</b>.</string>
-    <string name="WelcomeActivity_intro2_headline">Independent</string>
-    <string name="WelcomeActivity_intro2_message"><b>There is no Delta Chat server.</b> The app only uses your mail server.</string>
-    <string name="WelcomeActivity_intro3_headline">Fast</string>
-    <string name="WelcomeActivity_intro3_message"><b>Push messages</b> in seconds.<br/>Rapid interface.</string>
-    <string name="WelcomeActivity_intro4_headline">Powerful</string>
-    <string name="WelcomeActivity_intro4_message"><b>Unlimited</b> chats, images, videos, audio messages and more. Multi-client capable.</string>
-    <string name="WelcomeActivity_intro5_headline">Free</string>
-    <string name="WelcomeActivity_intro5_message"><b>Delta Chat dev</b> is free forever.<br/>Open-source. No ads. No subscription. No vendor lock-in.</string>
-    <string name="WelcomeActivity_intro6_headline">Encrypted</string>
-    <string name="WelcomeActivity_intro6_message"><b>Encrypted</b> with all common algorithms. Messages stay on your servers.</string>
-    <string name="WelcomeActivity_intro7_headline">Trustworthy</string>
-    <string name="WelcomeActivity_intro7_message"><b>Delta Chat dev</b> is safe for business use, compatible and standards-based.</string>
-    <string name="WelcomeActivity_start_messaging">Start Messaging</string>
-
-    <string name="RegistrationActivity_header">Login to Delta Chat</string>
-    <string name="RegistrationActivity_subheader">For known email providers additional settings are setup automatically. Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help.</string>
-    <string name="RegistrationActivity_inbox">Inbox</string>
-    <string name="RegistrationActivity_imap_login">IMAP login-name</string>
-    <string name="RegistrationActivity_imap_server">IMAP server</string>
-    <string name="RegistrationActivity_imap_port">IMAP port</string>
-    <string name="RegistrationActivity_imap_security">IMAP Security</string>
-    <string name="RegistrationActivity_outbox">Outbox</string>
-    <string name="RegistrationActivity_smtp_login">SMTP login-name</string>
-    <string name="RegistrationActivity_smtp_password">SMTP Password</string>
-    <string name="RegistrationActivity_smtp_server">SMTP server</string>
-    <string name="RegistrationActivity_smtp_port">SMTP port</string>
-    <string name="RegistrationActivity_smtp_security">SMTP Security</string>
-    <string name="RegistrationActivity_dialog_gmail_title">GMail information</string>
-    <string name="RegistrationActivity_dialog_gmail_text">For GMail Accounts you need to create an App-Password if you have 2FA enabled. If this setting is not available, you need to enable Less Secure Apps.</string>
-    <string name="RegistrationActivity_error_mail">Please enter a valid email address</string>
-    <string name="RegistrationActivity_error_server">Please enter a valid server / IP address</string>
-    <string name="RegistrationActivity_error_port">Please enter a valid port (1–65535)</string>
-    <string name="RegistrationActivity_error_required_fields">Please enter a valid email address and a password</string>
-
+    <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use Delta Chat.\n\n• Delivering the first message may take a while.</string>
+    <string name="chat_new_group_hint">Compose the first message, allowing others to reply within this group.\n\n• It is okay if not all members use Delta Chat.\n\n• Delivering the first message may take a while.</string>
+    <string name="chat_record_slide_to_cancel">Slide to cancel</string>
+    <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
+    <string name="chat_no_chats_yet_hint">Give your inbox something to write home about. Get started by messaging a friend.</string>
+    <string name="chat_all_done_hint">Inbox zeeerrro</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nYou\'re all caught up!</string>
+    <string name="chat_share_with_title">Share with</string>
+    <string name="chat_input_placeholder">Message</string>
+    <string name="chat_archived_label">Archived</string>
+    <string name="chat_no_messages">No messages.</string>
+
+
+    <!-- search -->
+    <string name="search">Search</string>
+    <string name="search_explain">Search for chats, contacts, and messages</string>
+    <string name="search_no_result_for_x">No results found for \"%s\"</string>
+    <string name="search_chats_header">Chats</string>
+    <string name="search_contacts_header">Contacts</string>
+    <string name="search_msgs_header">Messages</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Group name</string>
+    <string name="group_avatar">Group avatar</string>
+    <string name="group_create_button">Create group</string>
+    <string name="group_please_enter_group_name">Please enter a name for the group.</string>
+    <string name="group_add_members">Add members</string>
+    <string name="profile_encryption">Encryption</string>
+
+
+    <!-- chat media view -->
+    <string name="media_preview">Media preview</string>
+    <string name="media_tab_media">Media</string>
+    <string name="media_tab_documents">Documents</string>
+    <string name="media_no_media_hint">No media.</string>
+    <string name="media_no_documents_hint">No documents</string>
+
+
+    <!-- invite -->
+    <string name="invite_slogan">Friends don\'t let friends locked in messaging silos.</string>
+    <string name="invite_default_text">Let\'s switch to Delta Chat - %1$s - you can text me at %2$s</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat dev</string>
+    <string name="welcome_intro1_message">The messenger with the <b>broadest audience</b> in the world. <b>Free</b> and <b>independent</b>.</string>
+    <string name="welcome_intro2_headline">Independent</string>
+    <string name="welcome_intro2_message"><b>There is no Delta Chat server.</b> The app only uses your mail server.</string>
+    <string name="welcome_intro3_headline">Fast</string>
+    <string name="welcome_intro3_message"><b>Push messages</b> in seconds.<br/>Rapid interface.</string>
+    <string name="welcome_intro4_headline">Powerful</string>
+    <string name="welcome_intro4_message"><b>Unlimited</b> chats, images, videos, audio messages and more. Multi-client capable.</string>
+    <string name="welcome_intro5_headline">Free</string>
+    <string name="welcome_intro5_message"><b>Delta Chat dev</b> is free forever.<br/>Open-source. No ads. No subscription. No vendor lock-in.</string>
+    <string name="welcome_intro6_headline">Encrypted</string>
+    <string name="welcome_intro6_message"><b>Encrypted</b> with all common algorithms. Messages stay on your servers.</string>
+    <string name="welcome_intro7_headline">Trustworthy</string>
+    <string name="welcome_intro7_message"><b>Delta Chat dev</b> is safe for business use, compatible and standards-based.</string>
+    <string name="welcome_start_messaging">Start Messaging</string>
+    <string name="login_title">Login</string>
+    <string name="login_header">Login to Delta Chat</string>
+    <string name="login_subheader">For known email providers additional settings are setup automatically. Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help.</string>
+    <string name="login_inbox">Inbox</string>
+    <string name="login_imap_login">IMAP login-name</string>
+    <string name="login_imap_server">IMAP server</string>
+    <string name="login_imap_port">IMAP port</string>
+    <string name="login_imap_security">IMAP Security</string>
+    <string name="login_outbox">Outbox</string>
+    <string name="login_smtp_login">SMTP login-name</string>
+    <string name="login_smtp_password">SMTP Password</string>
+    <string name="login_smtp_server">SMTP server</string>
+    <string name="login_smtp_port">SMTP port</string>
+    <string name="login_smtp_security">SMTP Security</string>
+    <string name="login_info_gmail_text">For GMail Accounts you need to create an App-Password if you have 2FA enabled. If this setting is not available, you need to enable Less Secure Apps.</string>
+    <string name="login_error_mail">Please enter a valid email address</string>
+    <string name="login_error_server">Please enter a valid server / IP address</string>
+    <string name="login_error_port">Please enter a valid port (1–65535)</string>
+    <string name="login_error_required_fields">Please enter a valid email address and a password</string>
     <string name="import_backup_title">Import backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to go with the normal setup process.</string>
 
-    <string name="autocrypt__button_send_asm">Send Autocrypt Setup Message</string>
-    <string name="autocrypt__msg_before_sending_asm">An \"Autocrypt Setup Message\" securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
-    <string name="autocrypt__msg_after_sending_asm">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt:\n\n%1$s\n\nOnce you\'re done, your other device will be ready to use Autocrypt.</string>
-    <string name="autocrypt__asm_subject">Autocrypt Setup Message</string>
-    <string name="autocrypt__asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
-    <string name="autocrypt__asm_tap_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, tap on this message.</string>
-    <string name="autocrypt__continue_transfer_title">Autocrypt Setup Message</string>
-    <string name="autocrypt__continue_transfer_please_enter_code">Please enter the setup code that is displayed on the other device.</string>
-    <string name="autocrypt__continue_transfer_bad_code">Bad setup code. Please try again.\n\nIf you do not remember the setup code, just send another Autocrypt Setup Message from the other device.</string>
-    <string name="autocrypt__continue_transfer_succeeded">End-to-end setup transferred. This device is now ready to use Autocrypt with the same setup as the other device.</string>
-    <string name="autocrypt__continue_button_retry">Retry</string>
 
-    <!-- Generic and reusable strings -->
-    <string name="email_address">Email address</string>
-    <string name="bad_email_address">Bad email address.</string>
-    <string name="password">Password</string>
-    <string name="advanced">Advanced</string>
-    <string name="icon">icon</string>
-    <string name="loading">Loading …</string>
-    <string name="one_moment">One moment …</string>
-    <string name="new_conversation_activity__ask_start_chat_with">Chat with %1$s?</string>
-    <string name="contact_selection_list__new_group">New group</string>
-    <string name="contact_selection_list__new_verified_group">New verified group</string>
-    <string name="contact_selection_list__new_contact">New contact</string>
-    <string name="contact_selection_list__type_email_above">Type email address above</string>
-    <string name="text_secure_normal__menu_new_chat">New chat</string>
-    <string name="help_url">https://delta.chat/en/help</string>
-    <string name="security_authentication_failed">Authentication failed.</string>
-    <string name="security_authentication_unlock_title">Unlock Delta Chat</string>
-    <string name="security_authentication_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
-    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
-    <string name="default_status_text">Sent with my Delta Chat Messenger: https://delta.chat</string>
-    <string name="default_status_hint">Status text</string>
-    <string name="registration_activity__login">Login</string>
-    <string name="preferences__chat_background">Chat-Background</string>
-    <string name="copy_to_clipboard">Copy to clipboard</string>
-    <string name="open">Open</string>
-    <string name="done">Done</string>
-    <string name="menu_deaddrop">Contact requests</string>
-    <string name="not_now">Not now</string>
-    <string name="never">Never</string>
-    <string name="conversation__menu_view_profile">View profile</string>
-    <string name="conversation__menu_archive_chat">Archive chat</string>
-    <string name="conversation__menu_unarchive_chat">Unarchive chat</string>
-    <string name="conversation__menu_delete_chat">Delete chat</string>
-    <string name="conversation__no_messages">No messages.</string>
-    <string name="error_no_network">Network unavailable.</string>
-    <string name="summary_draft">Draft</string>
-    <string name="recipient_preferences__contact">Contact</string>
-    <string name="recipient_preferences__encryption_info">Encryption</string>
-    <string name="recipient_preferences__edit_name">Edit name</string>
-    <string name="AndroidManifest__view_log">View log</string>
-    <string name="preferences__view_log">View log</string>
+    <!-- preferences -->
+    <string name="pref_summary_privacy">Screen lock %1$s, Read receipts %2$s</string>
+    <string name="pref_summary_appearance">Theme %1$s, Language %2$s, Background %3$s</string>
+    <string name="pref_summary_on">on</string>
+    <string name="pref_summary_off">off</string>
+    <string name="pref_summary_default">default</string>
+    <string name="pref_summary_custom">custom</string>
+    <string name="pref_using_custom">Using custom: %s</string>
+    <string name="pref_using_default">Using default: %s</string>
+    <string name="pref_profile_info_headline">Your profile info</string>
+    <string name="pref_profile_photo">Profile photo</string>
+    <string name="pref_trim_headline">Message trimming</string>
+    <string name="pref_trim_option">Delete old messages</string>
+    <string name="pref_trim_option_explain">Automatically delete older messages once a chat exceeds a specified length</string>
+    <string name="pref_trim_length_limit">Chat length limit</string>
+    <string name="pref_trim_length_limit_summary">%d messages per chat</string>
+    <string name="pref_trim_now_button">Trim all chats now</string>
+    <string name="pref_trim_now_ask">Delete all old messages now? This will immediately trim all chats to the %d most recent messages.</string>
+    <string name="pref_blocked_contacts">Blocked contacts</string>
+    <string name="pref_profile_photo_remove_ask">Remove profile photo?</string>
+    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_password_and_account_settings">Password and account settings</string>
+    <string name="pref_who_can_see_this_information">Who can see this information?</string>
+    <string name="pref_who_can_see_profile_explain">Your profile picture and name will be shown alongside your messages when communicating with other users. Already sent information can not be deleted or removed.</string>
+    <string name="pref_your_name">Your name</string>
+    <string name="pref_default_status_label">Status text</string>
+    <string name="pref_default_status_text">Sent with my Delta Chat Messenger: https://delta.chat</string>
+    <string name="pref_enter_sends">Enter key sends</string>
+    <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
+    <string name="pref_vibrate">Vibrate</string>
+    <string name="pref_chat_settings">Chat settings</string>
+    <string name="pref_change_secret">Change secret</string>
+    <string name="pref_change_secret_explain">Change your pin / pattern / fingerprint via system settings</string>
+    <string name="pref_screen_security">Screen security</string>
+    <string name="pref_screen_security_explain">Block screenshots in the recents list and inside the app</string>
+    <string name="pref_screen_security_please_restart_hint">To apply the screen security setting please restart the app.</string>
+    <string name="pref_notifications">Notifications</string>
+    <string name="pref_notifications_show">Show</string>
+    <string name="pref_notifications_priority">Priority</string>
+    <string name="pref_led_color">LED color</string>
+    <string name="pref_led_pattern">LED blink pattern</string>
+    <string name="pref_sound">Sound</string>
+    <string name="pref_silent">Silent</string>
+    <string name="pref_repeat_notify">Repeat alerts</string>
+    <string name="pref_privacy">Privacy</string>
+    <string name="pref_chats_and_media">Chats and media</string>
+    <string name="pref_light_theme">Light</string>
+    <string name="pref_dark_theme">Dark</string>
+    <string name="pref_appearance">Appearance</string>
+    <string name="pref_theme">Theme</string>
+    <string name="pref_language">Language</string>
+    <string name="pref_incognito_keyboard">Incognito keyboard</string>
+    <string name="pref_incognito_keyboard_explain">Request keyboard to disable personalized learning</string>
+    <string name="pref_read_receipts">Read receipts</string>
+    <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
+    <string name="pref_manage_keys">Manage keys</string>
+    <string name="pref_use_system_emoji">Use system emoji</string>
+    <string name="pref_use_system_emoji_explain">Disable Delta Chat\'s built-in emoji support</string>
+    <string name="pref_app_access">App access</string>
+    <string name="pref_communication">Communication</string>
+    <string name="pref_chats">Chats</string>
+    <string name="pref_messages">Messages</string>
+    <string name="pref_in_chat_sounds">In-chat sounds</string>
+    <string name="pref_message_text_size">Message font size</string>
+    <string name="pref_view_log">View log</string>
+    <string name="pref_other">Other</string>
+    <string name="pref_backup">Backup</string>
+    <string name="pref_backup_explain">Backup chats to external storage</string>
+    <string name="pref_backup_export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
+    <string name="pref_backup_export_start_button">Start backup</string>
+    <string name="pref_backup_written_to_x">Backup written successfully to %1$s</string>
+    <string name="pref_managekeys_menu_title">Manage keys</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat needs access to your files to import/export keys.</string>
+    <string name="pref_managekeys_export_secret_keys">Export secret keys</string>
+    <string name="pref_managekeys_export_explain">Export secret keys to \"%1$s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">Import secret keys</string>
+    <string name="pref_managekeys_import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Secret keys imported from \"%1$s\".</string>
+    <string name="pref_background">Chat-Background</string>
 
+
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">Autocrypt is a new and open specification for automatic end-to-end email encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with Autocrypt Setup Messages.</string>
+    <string name="autocrypt_send_asm_title">Send Autocrypt Setup Message</string>
+    <string name="autocrypt_send_asm_explain_before">An \"Autocrypt Setup Message\" securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
+    <string name="autocrypt_send_asm_button">Send Autocrypt Setup Message</string>
+    <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt:\n\n%1$s\n\nOnce you\'re done, your other device will be ready to use Autocrypt.</string>
+    <string name="autocrypt_prefer_e2ee">Prefer end-to-end encryption</string>
+    <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
+    <string name="autocrypt_asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
+    <string name="autocrypt_asm_click_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, tap or click on this message.</string>
+    <string name="autocrypt_continue_transfer_title">Autocrypt Setup Message</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Please enter the setup code that is displayed on the other device.</string>
+    <string name="autocrypt_continue_transfer_succeeded">End-to-end setup transferred. This device is now ready to use Autocrypt with the same setup as the other device.</string>
+    <string name="autocrypt_continue_transfer_retry">Retry</string>
+    <string name="autocrypt_bad_setup_code">Bad setup code. Please try again.\n\nIf you do not remember the setup code, just send another Autocrypt Setup Message from the other device.</string>
+
+
+    <!-- screen lock -->
+    <string name="screenlock_title">Screen lock</string>
+    <string name="screenlock_explain">Lock Delta Chat access with Android screen lock or fingerprint</string>
+    <string name="screenlock_authentication_failed">Authentication failed.</string>
+    <string name="screenlock_unlock_title">Unlock Delta Chat</string>
+    <string name="screenlock_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
+    <string name="screenlock_inactivity_timeout">Inactivity timeout lock</string>
+    <string name="screenlock_inactivity_timeout_explain">Auto-lock Delta Chat after a specified time interval of inactivity</string>
+    <string name="screenlock_inactivity_timeout_interval">Inactivity timeout interval</string>
+
+
+    <!-- qr code stuff -->
+    <string name="qrscan_title">Scan QR code</string>
+    <string name="qrscan_hint">Place your camera over the QR code</string>
+    <string name="qrscan_ask_join_verified_group">Do you want to join the verified group \"%1$s\"?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Verify contact and start chatting with \"%1$s\"?</string>
+    <string name="qrscan_ask_chatting_fingerprint_ok">Contact \"%1$s\" verified. Start chatting?</string>
+    <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does \"not match\" the fingerprint last seen for \"%1$s\".</string>
+    <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no email address.\n\nFor an out-of-band-verification, please establish an encrpyted connection to the recipient first.</string>
+    <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
+    <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
+    <string name="qrscan_fingerprint_label">Fingerprint</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself …</string>
+    <string name="qrshow_title">Show QR verify code</string>
+    <string name="qrshow_x_joining">%1$s joins.</string>
+    <string name="qrshow_x_verified">%1$s verified.</string>
+    <string name="qrshow_x_has_joined_group">%1$s securely joined the group.</string>
+    <string name="qrshow_join_verified_group_hint">Scan this to join the verified group \"%1$s\".</string>
+    <string name="qrshow_join_verified_group_title">QR invite code</string>
+    <string name="qrshow_join_contact_title">QR verify code</string>
+    <string name="qrshow_join_contact_hint">\"%1$s\"Scan this to set up a verified contact.</string>
+
+
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">%1$d new messages in %2$d chats</string>
+    <string name="notify_most_recent_from">Most recent from: %1$s</string>
+    <string name="notify_media_message_with_text">Media message: %s</string>
+    <string name="notify_mark_all_read">Mark all as read</string>
+    <string name="notify_mark_read">Mark read</string>
+    <string name="notify_media_message">Media message</string>
+    <string name="notify_reply_button">Reply</string>
+    <string name="notify_new_message">New message</string>
+    <string name="notify_background_connection_enabled">Background connection enabled</string>
+    <string name="notify_priority_high">High</string>
+    <string name="notify_priority_max">Max</string>
+    <string name="notify_name_and_message">Name and message</string>
+    <string name="notify_name_only">Name only</string>
+    <string name="notify_no_name_or_message">No name or message</string>
+    <string name="notify_repeat_one_time">One time</string>
+    <string name="notify_repeat_two_times">Two times</string>
+    <string name="notify_repeat_three_times">Three times</string>
+    <string name="notify_repeat_five_times">Five times</string>
+    <string name="notify_repeat_ten_times">Ten times</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Permission required</string>
+    <string name="perm_continue">Continue</string>
+    <string name="perm_not_now">Not now</string>
+    <string name="perm_explain_need_for_camera_access">To capture photos and video, allow Delta Chat access to the camera.</string>
+    <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat access to your microphone.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat requires the Camera permission in order to take photos or videos, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Camera\".</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat requires the Microphone permission in order to send audio messages, but it has been permanently denied. Please continue to app settings, select \"Permissions\", and enable \"Microphone\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat requires the Storage permission in order to attach or export photos, videos, or audio, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Storage\".</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat requires Location permission in order to attach a location, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Location\".</string>
 </resources>

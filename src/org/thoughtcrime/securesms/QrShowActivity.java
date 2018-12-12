@@ -62,9 +62,9 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         if (chatId != 0) {
             // verified-group
             String groupName = dcContext.getChat(chatId).getName();
-            hint = String.format(this.getString(R.string.qr_show_activity__join_verified_group_hint), groupName);
+            hint = String.format(this.getString(R.string.qrshow_join_verified_group_hint), groupName);
             supportActionBar.setTitle(groupName);
-            supportActionBar.setSubtitle(R.string.qr_show_activity__join_verified_group_title);
+            supportActionBar.setSubtitle(R.string.qrshow_join_verified_group_title);
         } else {
             // verify-contact
             String selfName = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
@@ -75,9 +75,9 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
             } else {
                 nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(this, DcHelper.CONFIG_ADDRESS));
             }
-            hint = String.format(this.getString(R.string.qr_show_activity__join_contact_hint), nameAndAddress);
+            hint = String.format(this.getString(R.string.qrshow_join_contact_hint), nameAndAddress);
             supportActionBar.setTitle(selfName);
-            supportActionBar.setSubtitle(R.string.qr_show_activity__join_contact_title);
+            supportActionBar.setSubtitle(R.string.qrshow_join_contact_title);
         }
         TextView hintBelowQr = findViewById(R.id.qrShowHint);
         hintBelowQr.setText(Html.fromHtml(hint));
@@ -165,12 +165,12 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
             long progress = (Long) data2;
             String msg = null;
             if (progress == 300) {
-                msg = String.format(getString(R.string.qr_show_activity__joining), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_joining), dcContext.getContact(contact_id).getNameNAddr());
                 numJoiners++;
             } else if (progress == 600) {
-                msg = String.format(getString(R.string.qr_show_activity__verified), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_verified), dcContext.getContact(contact_id).getNameNAddr());
             } else if (progress == 800) {
-                msg = String.format(getString(R.string.qr_show_activity__group_joined), dcContext.getContact(contact_id).getNameNAddr());
+                msg = String.format(getString(R.string.qrshow_x_has_joined_group), dcContext.getContact(contact_id).getNameNAddr());
             }
 
             if (msg != null) {

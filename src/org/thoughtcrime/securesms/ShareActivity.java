@@ -162,7 +162,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
   private void onConversationClick(int chatId) {
     String name = dcContext.getChat(chatId).getName();
-    Dialogs.showResponseDialog(this, "", getString(R.string.ShareActivity_forward_message_to_user_info, name), (dialogInterface, i) -> {
+    Dialogs.showResponseDialog(this, getString(R.string.ask_forward, name), (dialogInterface, i) -> {
       int[] value = getIntent().getIntArrayExtra(EXTRA_MSG_IDS);
       dcContext.forwardMsgs(value, chatId);
       createConversation(chatId);

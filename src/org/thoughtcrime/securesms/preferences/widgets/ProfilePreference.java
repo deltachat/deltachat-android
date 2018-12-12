@@ -68,7 +68,7 @@ public class ProfilePreference extends Preference {
     String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
 
     if(profileName==null || profileName.isEmpty()) {
-      profileName = getContext().getString(R.string.CreateProfileActivity_your_profile_info);
+      profileName = getContext().getString(R.string.pref_profile_info_headline);
     }
 
     final MyProfileContactPhoto profileImage = new MyProfileContactPhoto(address, String.valueOf(Prefs.getProfileAvatarId(getContext())));

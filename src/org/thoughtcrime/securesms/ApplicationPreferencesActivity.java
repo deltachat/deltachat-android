@@ -166,7 +166,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     public void onResume() {
       super.onResume();
       //noinspection ConstantConditions
-      ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.text_secure_normal__menu_settings);
+      ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_settings);
       setCategorySummaries();
     }
 
@@ -247,9 +247,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           break;
         case PREFERENCE_CATEGORY_HELP:
           try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.help_url))));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.pref_help_url))));
           } catch (ActivityNotFoundException e) {
-            Toast.makeText(getActivity(), R.string.ConversationListActivity_there_is_no_browser_installed_on_your_device, Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.no_browser_installed, Toast.LENGTH_LONG).show();
           }
           break;
         default:

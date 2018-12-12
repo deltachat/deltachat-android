@@ -85,7 +85,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
       }
 
     } else {
-      setContentTitle(context.getString(R.string.SingleRecipientNotificationBuilder_signal));
+      setContentTitle(context.getString(R.string.app_name));
       setLargeIcon(new GeneratedContactPhoto("Unknown").asDrawable(context, ContactColors.UNKNOWN_COLOR.toConversationColor(context)));
     }
   }
@@ -110,7 +110,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
       setContentText(stringBuilder.append(message));
       this.slideDeck = slideDeck;
     } else {
-      setContentText(stringBuilder.append(context.getString(R.string.SingleRecipientNotificationBuilder_new_message)));
+      setContentText(stringBuilder.append(context.getString(R.string.notify_new_message)));
     }
   }
 
@@ -122,7 +122,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
       return;
 
     RemoteInput remoteInput = new RemoteInput.Builder(AndroidAutoReplyReceiver.VOICE_REPLY_KEY)
-                                  .setLabel(context.getString(R.string.MessageNotifier_reply))
+                                  .setLabel(context.getString(R.string.notify_reply_button))
                                   .build();
 
     NotificationCompat.CarExtender.UnreadConversation.Builder unreadConversationBuilder =
@@ -140,27 +140,27 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
                          @NonNull PendingIntent wearableReplyIntent)
   {
     Action markAsReadAction = new Action(R.drawable.check,
-                                         context.getString(R.string.MessageNotifier_mark_read),
+                                         context.getString(R.string.notify_mark_read),
                                          markReadIntent);
 
     Action replyAction = new Action(R.drawable.ic_reply_white_36dp,
-                                    context.getString(R.string.MessageNotifier_reply),
+                                    context.getString(R.string.notify_reply_button),
                                     quickReplyIntent);
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
       replyAction = new Action.Builder(R.drawable.ic_reply_white_36dp,
-                                       context.getString(R.string.MessageNotifier_reply),
+                                       context.getString(R.string.notify_reply_button),
                                        wearableReplyIntent)
           .addRemoteInput(new RemoteInput.Builder(MessageNotifier.EXTRA_REMOTE_REPLY)
-                              .setLabel(context.getString(R.string.MessageNotifier_reply)).build())
+                              .setLabel(context.getString(R.string.notify_reply_button)).build())
           .build();
     }
 
     Action wearableReplyAction = new Action.Builder(R.drawable.ic_reply,
-                                                    context.getString(R.string.MessageNotifier_reply),
+                                                    context.getString(R.string.notify_reply_button),
                                                     wearableReplyIntent)
         .addRemoteInput(new RemoteInput.Builder(MessageNotifier.EXTRA_REMOTE_REPLY)
-                            .setLabel(context.getString(R.string.MessageNotifier_reply)).build())
+                            .setLabel(context.getString(R.string.notify_reply_button)).build())
         .build();
 
     addAction(markAsReadAction);
@@ -183,7 +183,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     if (privacy.isDisplayMessage()) {
       messageBodies.add(stringBuilder.append(messageBody == null ? "" : messageBody));
     } else {
-      messageBodies.add(stringBuilder.append(context.getString(R.string.SingleRecipientNotificationBuilder_new_message)));
+      messageBodies.add(stringBuilder.append(context.getString(R.string.notify_new_message)));
     }
   }
 

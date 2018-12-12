@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
@@ -24,7 +23,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setTitle(R.string.AndroidManifest_archived_conversations);
+    getSupportActionBar().setTitle(R.string.chat_archived_chats_title);
 
     Bundle bundle = new Bundle();
     bundle.putBoolean(ConversationListFragment.ARCHIVE, true);

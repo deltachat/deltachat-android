@@ -28,7 +28,7 @@ public class LongClickCopySpan extends URLSpan {
     String preparedUrl = prepareUrl(getURL());
     copyUrl(context, preparedUrl);
     Toast.makeText(context,
-            context.getString(R.string.ConversationItem_copied_text, preparedUrl), Toast.LENGTH_SHORT).show();
+            context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
   }
 
   @Override

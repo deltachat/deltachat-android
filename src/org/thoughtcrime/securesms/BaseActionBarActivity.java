@@ -52,7 +52,7 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 shouldLockApp = false;
             } else {
-                Toast.makeText(this, R.string.security_authentication_failed, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.screenlock_authentication_failed, Toast.LENGTH_SHORT).show();
             }
         }
     }

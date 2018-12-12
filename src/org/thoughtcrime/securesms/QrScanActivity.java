@@ -27,11 +27,11 @@ public class QrScanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qr_scan);
 
         assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle(R.string.qr_scan_activity__title);
+        getSupportActionBar().setTitle(R.string.qrscan_title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
-        barcodeScannerView.setStatusText(getString(R.string.qr_scan_activity__hint) + "\n ");
+        barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
 
         if (savedInstanceState != null) {
             init(barcodeScannerView, getIntent(), savedInstanceState);

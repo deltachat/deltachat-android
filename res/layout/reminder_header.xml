@@ -50,6 +50,6 @@
         android:nextFocusLeft="@+id/container"
         android:nextFocusRight="@+id/container"
         android:src="@drawable/ic_close_white_24dp"
-        android:contentDescription="@string/InviteActivity_cancel"/>
+        android:contentDescription="@string/cancel"/>
 
 </LinearLayout>

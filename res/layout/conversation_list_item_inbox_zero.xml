@@ -11,7 +11,7 @@
               android:textSize="25sp"
               android:gravity="center"
               android:padding="16dp"
-              android:text="@string/conversation_list_item_inbox_zero__inbox_zeeerrro"/>
+              android:text="@string/chat_all_done_hint"/>
 
     <ImageView
             android:layout_gravity="center"
@@ -26,6 +26,6 @@
               android:gravity="center"
               android:textSize="20sp"
               android:padding="16dp"
-              android:text="@string/conversation_list_item_inbox_zero__zip_zilch_zero_nada_nyou_re_all_caught_up"/>
+              android:text="@string/chat_all_done_explain"/>
 
 </org.thoughtcrime.securesms.ConversationListItemInboxZero>

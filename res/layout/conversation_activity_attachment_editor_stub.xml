@@ -26,7 +26,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:visibility="gone"
-                android:contentDescription="@string/conversation_activity__attachment_thumbnail"
+                android:contentDescription="@string/menu_add_attachment"
                 app:minWidth="100dp"
                 app:maxWidth="300dp"
                 app:minHeight="100dp"

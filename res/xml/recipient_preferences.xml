@@ -2,10 +2,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:key="notification_settings" android:title="@string/recipient_preferences__chat_settings">
+    <PreferenceCategory android:key="notification_settings" android:title="@string/pref_chat_settings">
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                 android:key="pref_key_recipient_mute"
-                android:title="@string/recipient_preferences__mute_conversation"
+                android:title="@string/menu_mute"
                 android:defaultValue="false"
                 android:disableDependentsState="true"
                 android:persistent="false" />
@@ -13,13 +13,13 @@
         <org.thoughtcrime.securesms.preferences.widgets.SignalPreference
                             android:dependency="pref_key_recipient_mute"
                             android:key="pref_key_recipient_ringtone"
-                            android:title="@string/recipient_preferences__notification_sound"
+                            android:title="@string/pref_sound"
                             android:persistent="false"/>
 
         <org.thoughtcrime.securesms.preferences.widgets.SignalListPreference
                 android:dependency="pref_key_recipient_mute"
                 android:key="pref_key_recipient_vibrate"
-                android:title="@string/recipient_preferences__vibrate"
+                android:title="@string/pref_vibrate"
                 android:entries="@array/recipient_vibrate_entries"
                 android:entryValues="@array/recipient_vibrate_values"
                 android:defaultValue="0"
@@ -30,22 +30,22 @@
 
     <PreferenceCategory android:key="divider" android:layout="@layout/preference_divider"/>
 
-    <PreferenceCategory android:key="privacy_settings" android:title="@string/recipient_preferences__contact">
+    <PreferenceCategory android:key="privacy_settings" android:title="@string/contact">
 
         <Preference android:key="pref_key_recipient_addr"
                     android:title="user@example.org"
                     android:persistent="false"/>
 
         <Preference android:key="pref_key_recipient_edit_name"
-                    android:title="@string/recipient_preferences__edit_name"
+                    android:title="@string/menu_edit_name"
                     android:persistent="false"/>
 
         <Preference android:key="pref_key_recipient_encryption_info"
-                    android:title="@string/recipient_preferences__encryption_info"
+                    android:title="@string/profile_encryption"
                     android:persistent="false"/>
 
         <Preference android:key="pref_key_recipient_block"
-                    android:title="@string/recipient_preferences__block"
+                    android:title="@string/menu_block_contact"
                     android:persistent="false"/>
 
     </PreferenceCategory>

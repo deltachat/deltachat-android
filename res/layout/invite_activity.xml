@@ -20,14 +20,14 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center_horizontal"
-                       android:contentDescription="@string/InviteActivity_heart_content_description"
+                       android:contentDescription="@null"
                        android:src="@drawable/love_heart" />
 
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:textColor="@color/white"
                       android:textSize="20sp"
-                      android:text="@string/InviteActivity_friends_dont_let_friends"
+                      android:text="@string/invite_slogan"
                       android:gravity="center_horizontal"
                       android:layout_marginBottom="30dp"
                       android:layout_marginTop="18dp"
@@ -59,7 +59,7 @@
                         android:drawablePadding="10dp"
                         android:drawableLeft="@drawable/ic_share_black_18dp"
                         android:drawableStart="@drawable/ic_share_black_18dp"
-                        android:text="@string/InviteActivity_share"
+                        android:text="@string/menu_share"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:ignore="ButtonStyle" />

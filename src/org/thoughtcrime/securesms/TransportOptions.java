@@ -96,8 +96,8 @@ public class TransportOptions {
 
     results.add(new TransportOption(Type.NORMAL_MAIL, R.drawable.ic_send_sms_white_24dp,
                                     context.getResources().getColor(R.color.textsecure_primary),
-                                    context.getString(R.string.ConversationActivity_transport_signal),
-                                    context.getString(R.string.conversation_activity__type_message)));
+                                    context.getString(R.string.app_name),
+                                    context.getString(R.string.chat_input_placeholder)));
 
     return results;
   }

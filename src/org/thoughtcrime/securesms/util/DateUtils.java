@@ -56,13 +56,13 @@ public class DateUtils extends android.text.format.DateUtils {
 
   public static String getBriefRelativeTimeSpanString(final Context c, final Locale locale, final long timestamp) {
     if (isWithin(timestamp, 1, TimeUnit.MINUTES)) {
-      return c.getString(R.string.DateUtils_just_now);
+      return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
       int mins = convertDelta(timestamp, TimeUnit.MINUTES);
-      return c.getResources().getString(R.string.DateUtils_minutes_ago, mins);
+      return c.getResources().getString(R.string.n_min_ago, mins);
     } else if (isWithin(timestamp, 1, TimeUnit.DAYS)) {
       int hours = convertDelta(timestamp, TimeUnit.HOURS);
-      return c.getResources().getQuantityString(R.plurals.hours_ago, hours, hours);
+      return c.getResources().getQuantityString(R.plurals.n_hours, hours, hours);
     } else if (isWithin(timestamp, 6, TimeUnit.DAYS)) {
       return getFormattedDateTime(timestamp, "EEE", locale);
     } else if (isWithin(timestamp, 365, TimeUnit.DAYS)) {
@@ -74,10 +74,10 @@ public class DateUtils extends android.text.format.DateUtils {
 
   public static String getExtendedRelativeTimeSpanString(final Context c, final Locale locale, final long timestamp) {
     if (isWithin(timestamp, 1, TimeUnit.MINUTES)) {
-      return c.getString(R.string.DateUtils_just_now);
+      return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
       int mins = (int)TimeUnit.MINUTES.convert(System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
-      return c.getResources().getString(R.string.DateUtils_minutes_ago, mins);
+      return c.getResources().getString(R.string.n_min_ago, mins);
     } else {
       StringBuilder format = new StringBuilder();
       if      (isWithin(timestamp,   6, TimeUnit.DAYS)) format.append("EEE ");
@@ -93,10 +93,10 @@ public class DateUtils extends android.text.format.DateUtils {
 
   public static String getTimeOfDayTimeSpanString(final Context c, final Locale locale, final long timestamp) {
     if (isWithin(timestamp, 1, TimeUnit.MINUTES)) {
-      return c.getString(R.string.DateUtils_just_now);
+      return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
       int mins = (int)TimeUnit.MINUTES.convert(System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
-      return c.getResources().getString(R.string.DateUtils_minutes_ago, mins);
+      return c.getResources().getString(R.string.n_min_ago, mins);
     } else {
       StringBuilder format = new StringBuilder();
       if (DateFormat.is24HourFormat(c)) format.append("HH:mm");
@@ -110,7 +110,7 @@ public class DateUtils extends android.text.format.DateUtils {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
 
     if (simpleDateFormat.format(System.currentTimeMillis()).equals(simpleDateFormat.format(timestamp))) {
-      return context.getString(R.string.DeviceListItem_today);
+      return context.getString(R.string.today);
     } else {
       String format;
 
@@ -139,9 +139,9 @@ public class DateUtils extends android.text.format.DateUtils {
                                        long timestamp)
   {
     if (isToday(timestamp)) {
-      return context.getString(R.string.DateUtils_today);
+      return context.getString(R.string.today);
     } else if (isYesterday(timestamp)) {
-      return context.getString(R.string.DateUtils_yesterday);
+      return context.getString(R.string.yesterday);
     } else {
       return getFormattedDateTime(timestamp, "EEE, MMM d, yyyy", locale);
     }

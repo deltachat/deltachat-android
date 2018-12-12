@@ -34,7 +34,7 @@
             android:background="@color/signal_primary"
             android:gravity="center"
             android:padding="16dp"
-            android:text="@string/RegistrationActivity_header"
+            android:text="@string/login_header"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -48,7 +48,7 @@
             android:paddingBottom="48dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="@string/RegistrationActivity_subheader"
+            android:text="@string/login_subheader"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/header" />
 
@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:gravity="center"
-            android:text="@string/advanced"
+            android:text="@string/menu_advanced"
             android:textColor="@color/blue_400"
             app:layout_constraintEnd_toStartOf="@+id/advanced_icon"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -131,7 +131,7 @@
             android:id="@+id/advanced_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:contentDescription="@string/icon"
+            android:contentDescription="@null"
             android:padding="8dp"
             android:src="@drawable/ic_menu_remove_holo_light"
             android:tint="@color/blue_400"
@@ -146,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:gravity="center"
-            android:text="@string/RegistrationActivity_inbox"
+            android:text="@string/login_inbox"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/advanced_text" />
 
@@ -162,7 +162,7 @@
                 android:id="@+id/imap_login_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_imap_login" />
+                android:hint="@string/login_imap_login" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -179,7 +179,7 @@
                 android:id="@+id/imap_server_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_imap_server" />
+                android:hint="@string/login_imap_server" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -196,7 +196,7 @@
                 android:id="@+id/imap_port_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_imap_port"
+                android:hint="@string/login_imap_port"
                 android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
@@ -206,7 +206,7 @@
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/RegistrationActivity_imap_security"
+            android:text="@string/login_imap_security"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/imap_port" />
@@ -231,7 +231,7 @@
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:gravity="center"
-            android:text="@string/RegistrationActivity_outbox"
+            android:text="@string/login_outbox"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/outbox_view_spacer_top" />
 
@@ -247,7 +247,7 @@
                 android:id="@+id/smtp_login_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_smtp_login" />
+                android:hint="@string/login_smtp_login" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -264,7 +264,7 @@
                 android:id="@+id/smtp_password_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_smtp_password"
+                android:hint="@string/login_smtp_password"
                 android:inputType="textPassword" />
 
         </android.support.design.widget.TextInputLayout>
@@ -282,7 +282,7 @@
                 android:id="@+id/smtp_server_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_smtp_server" />
+                android:hint="@string/login_smtp_server" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -299,7 +299,7 @@
                 android:id="@+id/smtp_port_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_smtp_port"
+                android:hint="@string/login_smtp_port"
                 android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
@@ -309,7 +309,7 @@
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/RegistrationActivity_smtp_security"
+            android:text="@string/login_smtp_security"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/smtp_port" />
@@ -341,7 +341,7 @@
             app:cpb_colorProgress="@color/textsecure_primary"
             app:cpb_cornerRadius="50dp"
             app:cpb_selectorIdle="@drawable/progress_button_state"
-            app:cpb_textIdle="@string/registration_activity__login"
+            app:cpb_textIdle="@string/login_title"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/register_button_spacer_top" />

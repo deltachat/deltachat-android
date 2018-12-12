@@ -26,7 +26,7 @@
                 android:layout_height="70dp"
                 position="bottom_right"
                 android:layout_marginRight="10dp"
-                android:contentDescription="@string/GroupCreateActivity_avatar_content_description" />
+                android:contentDescription="@string/group_avatar" />
 
             <org.thoughtcrime.securesms.components.emoji.EmojiEditText
                 android:id="@+id/group_name"
@@ -37,7 +37,7 @@
                 android:lines="1"
                 android:maxLength="255"
                 android:inputType="textAutoCorrect"
-                android:hint="@string/GroupCreateActivity_group_name_hint" />
+                android:hint="@string/group_name" />
             </LinearLayout>
 
         <LinearLayout
@@ -88,7 +88,7 @@
             app:cpb_colorProgress="@color/textsecure_primary"
             app:cpb_cornerRadius="20dp"
             app:cpb_selectorIdle="@drawable/progress_button_state"
-            app:cpb_textIdle="@string/recipients_panel__add_members"/>
+            app:cpb_textIdle="@string/group_add_members"/>
 
         <com.dd.CircularProgressButton
             android:id="@+id/verify_button"
@@ -106,7 +106,7 @@
             app:cpb_cornerRadius="20dp"
             app:cpb_selectorIdle="@drawable/progress_button_state"
             android:visibility="gone"
-            app:cpb_textIdle="@string/qr_show_activity__title"/>
+            app:cpb_textIdle="@string/qrshow_title"/>
 
     </LinearLayout>
 
