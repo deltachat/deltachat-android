@@ -1,13 +1,9 @@
 package org.thoughtcrime.securesms.color;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 
 import org.thoughtcrime.securesms.R;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.thoughtcrime.securesms.util.ThemeUtil.isDarkTheme;
 
@@ -22,29 +18,6 @@ public enum MaterialColor {
   GREEN      (R.color.conversation_green,  R.color.conversation_green_shade,  "green"),
   ORANGE     (R.color.conversation_orange, R.color.conversation_orange_shade, "orange"),
   GREY       (R.color.conversation_grey,   R.color.conversation_grey_shade,   "grey");
-
-  private static final Map<String, MaterialColor> COLOR_MATCHES = new HashMap<String, MaterialColor>() {{
-    put("red", RED);
-    put("brown", RED);
-    put("pink", PINK);
-    put("purple", PURPLE);
-    put("deep_purple", PURPLE);
-    put("indigo", INDIGO);
-    put("blue", BLUE);
-    put("light_blue", BLUE);
-    put("cyan", CYAN);
-    put("blue_grey", CYAN);
-    put("teal", TEAL);
-    put("green", GREEN);
-    put("light_green", GREEN);
-    put("lime", GREEN);
-    put("orange", ORANGE);
-    put("amber", ORANGE);
-    put("deep_orange", ORANGE);
-    put("yellow", ORANGE);
-    put("grey", GREY);
-    put("group_color", BLUE);
-  }};
 
   private final int conversationColorLight;
   private final int actionBarColorLight;
@@ -90,20 +63,6 @@ public enum MaterialColor {
 
   public String serialize() {
     return serialized;
-  }
-
-  public static MaterialColor fromSerialized(String serialized) throws UnknownColorException {
-    if (COLOR_MATCHES.containsKey(serialized)) {
-      return COLOR_MATCHES.get(serialized);
-    }
-
-    throw new UnknownColorException("Unknown color: " + serialized);
-  }
-
-  public static class UnknownColorException extends Exception {
-    public UnknownColorException(String message) {
-      super(message);
-    }
   }
 
 }

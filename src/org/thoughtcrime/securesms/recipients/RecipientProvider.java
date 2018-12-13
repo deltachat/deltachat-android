@@ -20,7 +20,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.database.RecipientDatabase.RecipientSettings;
 import org.thoughtcrime.securesms.database.RecipientDatabase.RegisteredState;
 import org.thoughtcrime.securesms.util.Util;
@@ -40,7 +39,6 @@ public class RecipientProvider {
     @Nullable final Uri                  systemContactPhoto;
     @Nullable final Uri                  contactUri;
     @Nullable final Long                 groupAvatarId;
-    @Nullable final MaterialColor        color;
               final boolean              blocked;
               final int                  expireMessages;
     @NonNull  final List<Recipient>      participants;
@@ -60,7 +58,6 @@ public class RecipientProvider {
       this.systemContactPhoto    = settings     != null ? Util.uri(settings.getSystemContactPhotoUri()) : null;
       this.customLabel           = settings     != null ? settings.getSystemPhoneLabel() : null;
       this.contactUri            = settings     != null ? Util.uri(settings.getSystemContactUri()) : null;
-      this.color                 = settings     != null ? settings.getColor() : null;
       this.blocked               = settings     != null && settings.isBlocked();
       this.expireMessages        = settings     != null ? settings.getExpireMessages() : 0;
       this.participants          = participants == null ? new LinkedList<>() : participants;

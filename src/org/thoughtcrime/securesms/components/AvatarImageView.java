@@ -23,7 +23,6 @@ public class AvatarImageView extends AppCompatImageView {
 
   private static final String TAG = AvatarImageView.class.getSimpleName();
 
-  private boolean inverted;
   private OnClickListener listener = null;
 
   public AvatarImageView(Context context) {
@@ -37,7 +36,6 @@ public class AvatarImageView extends AppCompatImageView {
 
     if (attrs != null) {
       TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.AvatarImageView, 0, 0);
-      //inverted = typedArray.getBoolean(0, false);
       typedArray.recycle();
     }
   }
@@ -61,7 +59,7 @@ public class AvatarImageView extends AppCompatImageView {
         setAvatarClickHandler(recipient, quickContactEnabled);
       }
     } else {
-      setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ContactColors.UNKNOWN_COLOR.toConversationColor(getContext()), inverted));
+      setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ContactColors.UNKNOWN_COLOR.toConversationColor(getContext()), false));
       super.setOnClickListener(listener);
     }
   }

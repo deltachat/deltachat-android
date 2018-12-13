@@ -1,13 +1,10 @@
 package org.thoughtcrime.securesms.database;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import org.thoughtcrime.securesms.color.MaterialColor;
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.LinkedList;
@@ -16,8 +13,6 @@ import java.util.List;
 public class RecipientDatabase extends Database {
 
   private static final String TAG = RecipientDatabase.class.getSimpleName();
-
-  private static final String COLOR                   = "color";
 
   public enum RegisteredState {
     UNKNOWN(0), REGISTERED(1), NOT_REGISTERED(2);
@@ -41,24 +36,13 @@ public class RecipientDatabase extends Database {
     return null;
   }
 
-  public void setColor(@NonNull Recipient recipient, @NonNull MaterialColor color) {
-    ContentValues values = new ContentValues();
-    values.put(COLOR, color.serialize());
-    updateOrInsert(recipient.getAddress(), values);
-    recipient.resolve().setColor(color);
-  }
-
   public List<Address> getRegistered() {
     List<Address>  results = new LinkedList<>();
     return results;
   }
 
-  private void updateOrInsert(Address address, ContentValues contentValues) {
-  }
-
   public static class RecipientSettings {
     private final boolean         blocked;
-    private final MaterialColor   color;
     private final boolean         seenInviteReminder;
     private final int             defaultSubscriptionId;
     private final int             expireMessages;
@@ -72,7 +56,6 @@ public class RecipientDatabase extends Database {
     private final String          signalProfileAvatar;
 
     RecipientSettings(boolean blocked, long muteUntil,
-                      @Nullable MaterialColor color,
                       boolean seenInviteReminder,
                       int defaultSubscriptionId,
                       int expireMessages,
@@ -86,7 +69,6 @@ public class RecipientDatabase extends Database {
                       @Nullable String signalProfileAvatar)
     {
       this.blocked               = blocked;
-      this.color                 = color;
       this.seenInviteReminder    = seenInviteReminder;
       this.defaultSubscriptionId = defaultSubscriptionId;
       this.expireMessages        = expireMessages;
@@ -98,10 +80,6 @@ public class RecipientDatabase extends Database {
       this.systemContactUri      = systemContactUri;
       this.signalProfileName     = signalProfileName;
       this.signalProfileAvatar   = signalProfileAvatar;
-    }
-
-    public @Nullable MaterialColor getColor() {
-      return color;
     }
 
     public boolean isBlocked() {

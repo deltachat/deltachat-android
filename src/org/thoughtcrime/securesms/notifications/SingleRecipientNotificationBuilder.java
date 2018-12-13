@@ -78,10 +78,10 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
                                .get());
         } catch (InterruptedException | ExecutionException e) {
           Log.w(TAG, e);
-          setLargeIcon(fallbackContactPhoto.asDrawable(context, recipient.getColor().toConversationColor(context)));
+          setLargeIcon(fallbackContactPhoto.asDrawable(context, recipient.getFallbackAvatarColor(context)));
         }
       } else {
-        setLargeIcon(fallbackContactPhoto.asDrawable(context, recipient.getColor().toConversationColor(context)));
+        setLargeIcon(fallbackContactPhoto.asDrawable(context, recipient.getFallbackAvatarColor(context)));
       }
 
     } else {

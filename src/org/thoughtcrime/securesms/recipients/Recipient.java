@@ -25,10 +25,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contacts.avatars.ContactColors;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
@@ -72,7 +70,6 @@ public class Recipient implements RecipientModifiedListener {
   private           Optional<Integer>    defaultSubscriptionId = Optional.absent();
   private @NonNull  RegisteredState      registered            = RegisteredState.UNKNOWN;
 
-  private @Nullable MaterialColor  color;
   private           boolean        seenInviteReminder;
   private @Nullable byte[]         profileKey;
   private @Nullable String         profileName;
@@ -114,7 +111,6 @@ public class Recipient implements RecipientModifiedListener {
     this.contactUri            = details.contactUri;
     this.name                  = details.name;
     this.systemContactPhoto    = details.systemContactPhoto;
-    this.color                 = details.color;
     this.customLabel           = details.customLabel;
     this.blocked               = details.blocked;
     this.expireMessages        = details.expireMessages;
@@ -157,20 +153,6 @@ public class Recipient implements RecipientModifiedListener {
     }
 
     if (notify) notifyListeners();
-  }
-
-  public synchronized @NonNull MaterialColor getColor() {
-    if (color != null)      return color;
-    else if (name != null)       return ContactColors.generateFor(name);
-    else                         return ContactColors.UNKNOWN_COLOR;
-  }
-
-  public void setColor(@NonNull MaterialColor color) {
-    synchronized (this) {
-      this.color = color;
-    }
-
-    notifyListeners();
   }
 
   public @NonNull Address getAddress() {
@@ -369,7 +351,6 @@ public class Recipient implements RecipientModifiedListener {
         ", expireMessages=" + expireMessages +
         ", defaultSubscriptionId=" + defaultSubscriptionId +
         ", registered=" + registered +
-        ", color=" + color +
         ", seenInviteReminder=" + seenInviteReminder +
         ", profileKey=" + Arrays.toString(profileKey) +
         ", profileName='" + profileName + '\'' +
