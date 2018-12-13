@@ -30,7 +30,6 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.recipients.RecipientProvider;
 import org.thoughtcrime.securesms.util.Hash;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
@@ -195,8 +194,7 @@ public class ApplicationDcContext extends DcContext {
     for (int contactId : contactIds) {
       participants.add(getRecipient(RECIPIENT_TYPE_CONTACT, contactId));
     }
-    RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, participants);
-    Recipient recipient = new Recipient(Address.fromChat(chat.getId()), recipientDetails);
+    Recipient recipient = new Recipient(Address.fromChat(chat.getId()), chat.getName(), participants);
     if (!chat.isGroup()) {
       String identifier = Hash.sha256(chat.getName() + chat.getSubtitle());
       Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
@@ -210,8 +208,7 @@ public class ApplicationDcContext extends DcContext {
   @NonNull
 
   public Recipient getRecipient(DcContact contact) {
-    RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(contact.getDisplayName(), null, false, null, null);
-    Recipient recipient = new Recipient(Address.fromContact(contact.getId()), recipientDetails);
+    Recipient recipient = new Recipient(Address.fromContact(contact.getId()), contact.getDisplayName(), null);
     String identifier = Hash.sha256(contact.getName() + contact.getAddr());
     Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
     if (systemContactPhoto != null) {

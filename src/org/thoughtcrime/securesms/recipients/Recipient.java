@@ -36,12 +36,8 @@ import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.SystemContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.TransparentContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.database.RecipientDatabase.RegisteredState;
-import org.thoughtcrime.securesms.recipients.RecipientProvider.RecipientDetails;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.guava.Optional;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -50,8 +46,6 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 public class Recipient implements RecipientModifiedListener {
-
-  private static final String            TAG      = Recipient.class.getSimpleName();
 
   private final Set<RecipientModifiedListener> listeners = Collections.newSetFromMap(new WeakHashMap<RecipientModifiedListener, Boolean>());
 
@@ -66,12 +60,7 @@ public class Recipient implements RecipientModifiedListener {
   private           Uri                  contactUri;
   private @Nullable Uri                  messageRingtone       = null;
   private           boolean              blocked               = false;
-  private           int                  expireMessages        = 0;
-  private           Optional<Integer>    defaultSubscriptionId = Optional.absent();
-  private @NonNull  RegisteredState      registered            = RegisteredState.UNKNOWN;
 
-  private           boolean        seenInviteReminder;
-  private @Nullable byte[]         profileKey;
   private @Nullable String         profileName;
   private @Nullable String         profileAvatar;
 
@@ -106,21 +95,16 @@ public class Recipient implements RecipientModifiedListener {
     return dcContext.getRecipient(dcContext.getContact(0));
   }
 
-  public Recipient(@NonNull Address address, @NonNull RecipientDetails details) {
+  public Recipient(@NonNull Address address, @Nullable String name, @Nullable List<Recipient> participants) {
     this.address               = address;
-    this.contactUri            = details.contactUri;
-    this.name                  = details.name;
-    this.systemContactPhoto    = details.systemContactPhoto;
-    this.customLabel           = details.customLabel;
-    this.blocked               = details.blocked;
-    this.expireMessages        = details.expireMessages;
-    this.seenInviteReminder    = details.seenInviteReminder;
-    this.defaultSubscriptionId = details.defaultSubscriptionId;
-    this.registered            = details.registered;
-    this.profileKey            = details.profileKey;
-    this.profileName           = details.profileName;
-    this.profileAvatar         = details.profileAvatar;
-    this.participants.addAll(details.participants);
+    this.contactUri            = null;
+    this.name                  = name;
+    this.systemContactPhoto    = null;
+    this.customLabel           = null;
+    this.blocked               = false;
+    this.profileName           = null;
+    this.profileAvatar         = null;
+    this.participants.addAll(participants==null? new LinkedList<>() : participants);
     this.resolving    = false;
   }
 
@@ -177,10 +161,6 @@ public class Recipient implements RecipientModifiedListener {
 
   public boolean isMmsGroupRecipient() {
     return address.isMmsGroup();
-  }
-
-  public boolean isPushGroupRecipient() {
-    return address.isGroup() && !address.isMmsGroup();
   }
 
   public @NonNull synchronized List<Recipient> getParticipants() {
@@ -284,26 +264,6 @@ public class Recipient implements RecipientModifiedListener {
     notifyListeners();
   }
 
-  public synchronized RegisteredState getRegistered() {
-    if      (isPushGroupRecipient()) return RegisteredState.REGISTERED;
-    else if (isMmsGroupRecipient())  return RegisteredState.NOT_REGISTERED;
-
-    return registered;
-  }
-
-  public void setRegistered(@NonNull RegisteredState value) {
-    boolean notify = false;
-
-    synchronized (this) {
-      if (this.registered != value) {
-        this.registered = value;
-        notify = true;
-      }
-    }
-
-    if (notify) notifyListeners();
-  }
-
   public synchronized Recipient resolve() {
     while (resolving) Util.wait(this, 0);
     return this;
@@ -348,11 +308,6 @@ public class Recipient implements RecipientModifiedListener {
         ", systemContactPhoto=" + systemContactPhoto +
         ", contactUri=" + contactUri +
         ", blocked=" + blocked +
-        ", expireMessages=" + expireMessages +
-        ", defaultSubscriptionId=" + defaultSubscriptionId +
-        ", registered=" + registered +
-        ", seenInviteReminder=" + seenInviteReminder +
-        ", profileKey=" + Arrays.toString(profileKey) +
         ", profileName='" + profileName + '\'' +
         ", profileAvatar='" + profileAvatar + '\'' +
         '}';
