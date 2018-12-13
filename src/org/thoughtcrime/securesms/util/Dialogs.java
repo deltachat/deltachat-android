@@ -31,14 +31,6 @@ public class Dialogs {
     dialog.show();
   }
 
-  public static void showAlertDialog(Context context, String title, String message) {
-    AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-    dialog.setTitle(title);
-    dialog.setMessage(message);
-    dialog.setPositiveButton(R.string.ok, null);
-    dialog.show();
-  }
-
   public static void showInfoDialog(Context context, String message) {
     AlertDialog.Builder dialog = new AlertDialog.Builder(context);
     dialog.setMessage(message);

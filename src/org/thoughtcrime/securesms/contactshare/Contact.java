@@ -98,14 +98,6 @@ public class Contact implements Parcelable {
     return avatar;
   }
 
-  public String serialize() throws IOException {
-    return JsonUtils.toJson(this);
-  }
-
-  public static Contact deserialize(@NonNull String serialized) throws IOException {
-    return JsonUtils.fromJson(serialized, Contact.class);
-  }
-
   @Override
   public int describeContents() {
     return 0;
