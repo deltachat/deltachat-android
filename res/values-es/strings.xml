@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Delta Chat</string>
+    <!-- Translators: please enter the name of the language you're translating to here -->
+    <string name="language_name">Inglés</string>
+
+
+    <!-- common strings without special context -->
+    <string name="ok">OK</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="never">Nunca</string>
+    <string name="one_moment">Un momento...</string>
+    <string name="done">Listo</string>
+    <string name="error">Error</string>
+    <string name="error_x">Error: %1$s</string>
+    <string name="error_no_network">Red no disponible.</string>
+    <string name="contacts_headline">Contactos</string>
+    <string name="password">Contraseña</string>
+    <string name="now">Ahora</string>
+    <string name="n_min_ago">%d min</string>
+    <string name="today">Hoy</string>
+    <string name="yesterday">Ayer</string>
+    <string name="this_week">Esta semana</string>
+    <string name="this_month">Este mes</string>
+    <plurals name="n_minutes">
+        <item quantity="one">%d minuto</item>
+        <item quantity="other">%d minutos</item>
+    </plurals>
+    <plurals name="n_hours">
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d horas</item>
+    </plurals>
+    <string name="self">Yo</string>
+    <string name="draft">Borrador</string>
+    <string name="image">Imagen</string>
+    <string name="audio">Audio</string>
+    <string name="voice_message">Mensaje de voz</string>
+    <string name="video">Video</string>
+    <string name="contact">Contacto</string>
+    <string name="camera">Cámara</string>
+    <string name="location">Ubicación</string>
+    <string name="gallery">Galería</string>
+    <string name="file">Archivo</string>
+    <string name="message_read">Mensaje leído</string>
+
+
+    <string name="menu_leave_group">Salir grupo</string>
+    <string name="menu_delete_chat">Echar charla</string>
+    </resources>

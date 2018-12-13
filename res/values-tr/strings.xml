@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Delta Chat</string>
+    <!-- Translators: please enter the name of the language you're translating to here -->
+    <string name="language_name">Türkçe</string>
+
+
+    <!-- common strings without special context -->
+    <string name="ok">Tamam</string>
+    <string name="cancel">İptal</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="on">Açık</string>
+    <string name="off">Kapalı</string>
+    <string name="def">Varsayılan</string>
+    <string name="custom">Özel</string>
+    <string name="none">Hiçbiri</string>
+    <string name="open">Aç</string>
+    <string name="not_now">Şimdi değil</string>
+    <string name="never">Asla</string>
+    <string name="one_moment">Bir dakika…</string>
+    <string name="done">Bitti</string>
+    <string name="undo">Geri al</string>
+    <string name="error">Hata</string>
+    <string name="error_x">Hata: %1$s</string>
+    <string name="error_no_network">Ağ kullanım dışı.</string>
+    <string name="no_app_to_handle_data">Bu veri türünü işlemek için bir uygulama bulamıyoruz.</string>
+    <string name="no_browser_installed">Yüklü tarayıcı yok.</string>
+    <string name="file_not_found">%1$s öğesini bulamadık.</string>
+    <string name="copied_to_clipboard">Panoya kopyalandı.</string>
+    <string name="contacts_headline">Kişiler</string>
+    <string name="email_address">E-posta adresi</string>
+    <string name="bad_email_address">Kötü e-posta adresi.</string>
+    <string name="password">Parola</string>
+    <string name="now">Şimdi</string>
+    <string name="n_min_ago">%d dk</string>
+    <string name="today">Bugün</string>
+    <string name="yesterday">Dün</string>
+    <string name="this_week">Bu hafta</string>
+    <string name="this_month">Bu ay</string>
+    <plurals name="n_minutes">
+        <item quantity="one">%d dakika</item>
+        <item quantity="other">%d dakika</item>
+    </plurals>
+    <plurals name="n_hours">
+        <item quantity="one">%d saat</item>
+        <item quantity="other">%d saat</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">1 sohbet</item>
+        <item quantity="other">%1$d sohbet</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 kişi</item>
+        <item quantity="other">%1$d kişi</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">1 ileti</item>
+        <item quantity="other">%1$d ileti</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">1 üye</item>
+        <item quantity="other">%1$d üye</item>
+    </plurals>
+
+    <string name="self">Ben</string>
+    <string name="draft">Taslak</string>
+    </resources>

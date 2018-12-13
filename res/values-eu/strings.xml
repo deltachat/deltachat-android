@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Delta Chat</string>
+    <!-- Translators: please enter the name of the language you're translating to here -->
+    <string name="language_name">Euskara</string>
+
+
+    <!-- common strings without special context -->
+    <string name="ok">Ados</string>
+    <string name="cancel">Utzi</string>
+    <string name="yes">Bai</string>
+    <string name="no">Ez</string>
+    <string name="on">Bai</string>
+    <string name="off">Ez</string>
+    <string name="def">Lehenetsita</string>
+    <string name="custom">Pertsonalizatua</string>
+    <string name="none">Bat ere ez</string>
+    <string name="open">Ireki</string>
+    <string name="not_now">Orain ez</string>
+    <string name="never">Inoiz ez</string>
+    <string name="one_moment">Unetxo bat...</string>
+    <string name="done">Egina</string>
+    <string name="undo">Desegin</string>
+    <string name="error">Errorea</string>
+    <string name="error_no_network">Sarea ez dago eskuragarri.</string>
+    <string name="no_app_to_handle_data">Ezin izan da datu mota hau kudeatzeko aplikaziorik.</string>
+    <string name="no_browser_installed">Ez dago nabigatzailerik instalatuta.</string>
+    <string name="file_not_found">Ezin izan da %1$s aurkitu.</string>
+    <string name="copied_to_clipboard">Arbelera kopiatuta.</string>
+    <string name="contacts_headline">Kontaktuak</string>
+    <string name="email_address">E-mail helbidea</string>
+    <string name="bad_email_address">E-mail helbide okerra.</string>
+    <string name="password">Pasahitza</string>
+    <string name="now">Orain</string>
+    <string name="n_min_ago">%d min</string>
+    <string name="today">Gaur</string>
+    <string name="yesterday">Atzo</string>
+    <string name="this_week">Aste honetan</string>
+    <string name="this_month">Hilabete honetan</string>
+    <plurals name="n_minutes">
+        <item quantity="one">minutu %d</item>
+        <item quantity="other">%d minutu</item>
+    </plurals>
+    <plurals name="n_hours">
+        <item quantity="one">ordu %d</item>
+        <item quantity="other">%d ordu</item>
+    </plurals>
+    <string name="self">Ni</string>
+    <string name="draft">Zirriborroa</string>
+    <string name="image">Irudia</string>
+    <string name="gif">Gif-a</string>
+    <string name="audio">Audioa</string>
+    <string name="video">Bideoa</string>
+    <string name="contact">Kontaktua</string>
+    <string name="camera">Kamera</string>
+    <string name="location">Kokalekua</string>
+    <string name="gallery">Galeria</string>
+    <string name="file">Fitxategia</string>
+    <string name="unknown">Ezezaguna</string>
+
+    <string name="green">Berdea</string>
+    <string name="red">Gorria</string>
+    <string name="blue">Urdina</string>
+    <string name="orange">Laranja</string>
+    <string name="cyan">Ziana</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">Zuria</string>
+
+    <string name="small">Txikia</string>
+    <string name="normal">Arrunta</string>
+    <string name="large">Handia</string>
+    <string name="extra_large">Oso handia</string>
+
+    <string name="fast">Azkarra</string>
+    <string name="slow">Motela</string>
+
+    <string name="message_delivered">Mezua bidali da</string>
+    <string name="message_read">Mezua irakurri da</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Kontaktu berria</string>
+    <string name="menu_new_chat">Txat berria</string>
+    <string name="menu_new_group">Talde berria</string>
+    <string name="menu_new_verified_group">Egiaztatutako talde berria</string>
+    <string name="menu_send">Bidali</string>
+    <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
+    <string name="menu_edit_group">Editatu taldea</string>
+    <string name="menu_archive_chat">Artxibatu txata</string>
+    <string name="menu_unarchive_chat">Berreskuratu txata artxibotik</string>
+    <string name="menu_add_attachment">Gehitu eranskina</string>
+    <string name="menu_leave_group">Atera taldetik</string>
+    <string name="menu_delete_chat">Ezabatu txata</string>
+    <string name="menu_delete_messages">Ezabatu mezuak</string>
+    <string name="menu_delete_image">Ezabatu irudia</string>
+    <string name="menu_message_details">Mezuaren xehetasunak</string>
+    <string name="menu_copy_to_clipboard">Kopiatu arbelera</string>
+    <string name="menu_forward">Birbidali mezua</string>
+    <string name="menu_resend">Berriro bidali mezua</string>
+    <string name="menu_reply">Erantzun mezuari</string>
+    <string name="menu_mute">Mututu jakinarazpenak</string>
+    <string name="menu_unmute">Utzi mututzeari</string>
+    <string name="menu_export_attachment">Esportatu eranskina</string>
+    <string name="menu_all_media">Multimedia guztia</string>
+    <string name="menu_share">Partekatu</string>
+    <string name="menu_block_contact">Blokeatu kontaktuak</string>
+    <string name="menu_unblock_contact">Desblokeatu kontaktua</string>
+    <string name="menu_play">Erreproduzitu</string>
+    <string name="menu_pause">Pausatu</string>
+    <string name="menu_scroll_to_bottom">Korritu behealdera</string>
+    <string name="menu_invite">Gonbidatu lagunak</string>
+    <string name="menu_help">Laguntza</string>
+    <string name="menu_select_all">Hautatu guztiak</string>
+    <string name="menu_expand">Hedatu</string>
+    <string name="menu_edit_name">Editatu izena</string>
+    <string name="menu_settings">Ezarpenak</string>
+    <string name="menu_advanced">Aurreratua</string>
+    <string name="menu_deaddrop">Kontaktu-eskaerak</string>
+    <string name="menu_view_profile">Ikusi profila</string>
+
+    <string name="mute_for_one_hour">Mututu ordubete</string>
+    <string name="mute_for_two_hours">Mututu 2 ordu</string>
+    <string name="mute_for_one_day">Mututu egun bat</string>
+    <string name="mute_for_seven_days">Mututu 7 egun</string>
+    <string name="mute_for_one_year">Mututu urtebete</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Ziur talde honetatik atera nahi duzula?</string>
+    <!-- contact list -->
+    <string name="contacts_title">Kontaktuak</string>
+    <string name="contacts_empty_hint">Kontakturik ez</string>
+
+
+    <string name="chat_archived_chats_title">Artxibatutako txatak</string>
+    <string name="chat_record_slide_to_cancel">Irristatu ezeztatzeko</string>
+    <string name="chat_share_with_title">Partekatu honekin</string>
+    <string name="chat_input_placeholder">Mezua</string>
+    <string name="chat_archived_label">Artxibatuta</string>
+    <string name="chat_no_messages">Mezurik ez.</string>
+    <!-- search -->
+    <string name="search">Bilatu</string>
+    <string name="group_create_button">Sortu taldea</string>
+    <string name="profile_encryption">Zifratzea</string>
+
+
+    <string name="media_tab_documents">Dokumentuak</string>
+    <string name="media_no_documents_hint">Dokumenturik ez</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat dev</string>
+    <string name="welcome_intro3_headline">Azkarra</string>
+    <string name="welcome_intro4_headline">Ahaltsua</string>
+    <string name="welcome_intro5_headline">Librea</string>
+    <string name="welcome_intro6_headline">Zifratua</string>
+    <string name="welcome_intro7_headline">Fidagarria</string>
+    <string name="welcome_start_messaging">Ekin mezuak bidaltzeari</string>
+    <string name="login_inbox">Sarrera ontzia</string>
+    <string name="pref_summary_default">lehenetsia</string>
+    <string name="pref_summary_custom">pertsonalizatua</string>
+    <string name="pref_profile_photo">Profileko argazkia</string>
+    <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
+    <string name="pref_your_name">Zure izena</string>
+    <string name="pref_vibrate">Bibratu</string>
+    <string name="pref_notifications">Jakinarazpenak</string>
+    <string name="pref_notifications_show">Erakutsi</string>
+    <string name="pref_notifications_priority">Lehentasuna</string>
+    <string name="pref_sound">Soinua</string>
+    <string name="pref_silent">Isila</string>
+    <string name="pref_privacy">Pribatutasuna</string>
+    <string name="pref_light_theme">Argia</string>
+    <string name="pref_dark_theme">Iluna</string>
+    <string name="pref_appearance">Itxura</string>
+    <string name="pref_theme">Gaia</string>
+    <string name="pref_language">Hizkuntza</string>
+    <string name="pref_chats">Txatak</string>
+    <string name="pref_messages">Mezuak</string>
+    <string name="pref_backup">Babeskopia</string>
+    <string name="pref_managekeys_menu_title">Kudeatu gakoak</string>
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_continue_transfer_retry">Saiatu berriro</string>
+    <!-- screen lock -->
+    <string name="screenlock_title">Pantila-blokeoa</string>
+    <string name="qrscan_fingerprint_label">Hatz-marka</string>
+    <string name="notify_mark_all_read">Markatu denak irakurrita gisa</string>
+    <string name="notify_mark_read">Markatu irakurrita gisa</string>
+    <string name="notify_reply_button">Erantzun</string>
+    <string name="notify_new_message">Mezu berria</string>
+    <string name="notify_priority_high">Altua</string>
+    <string name="notify_priority_max">Maximoa</string>
+    <string name="notify_name_only">Izena besterik ez</string>
+    <string name="notify_repeat_one_time">Behin</string>
+    <string name="notify_repeat_two_times">Bi aldiz</string>
+    <string name="notify_repeat_three_times">Hiru aldiz</string>
+    <string name="notify_repeat_five_times">Bost aldiz</string>
+    <string name="notify_repeat_ten_times">Hamar aldiz</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Baimena behar da</string>
+    <string name="perm_continue">Jarraitu</string>
+    <string name="perm_not_now">Orain ez</string>
+    </resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Delta Chat</string>
+    <!-- common strings without special context -->
+    <string name="ok">OK</string>
+    <string name="cancel">Anuloje</string>
+    <string name="yes">Po</string>
+    <string name="no">Jo</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="def">Parazgjedhje</string>
+    <string name="custom">Vetjake</string>
+    <string name="none">Asnjë</string>
+    <string name="open">Hap</string>
+    <string name="not_now">Jo tani</string>
+    <string name="never">Kurrë</string>
+    <string name="one_moment">Një çast…</string>
+    <string name="done">U bë</string>
+    <string name="undo">Zhbëje</string>
+    <string name="error">Gabim</string>
+    <string name="error_no_network">Rrjet i pakapshëm.</string>
+    <string name="no_app_to_handle_data">S\’gjendet dot një aplikacion për trajtimin e këtij lloji të dhënash.</string>
+    <string name="no_browser_installed">S’ka shfletues të instaluar.</string>
+    <string name="file_not_found">S’u gjet dot %1$s.</string>
+    <string name="copied_to_clipboard">U kopjua në të papastër.</string>
+    <string name="contacts_headline">Kontakte</string>
+    <string name="email_address">Adresë email</string>
+    <string name="bad_email_address">Adresë email e keqe.</string>
+    <string name="password">Fjalëkalim</string>
+    <string name="now">Tani</string>
+    <string name="n_min_ago">%d min.</string>
+    <string name="today">Sot</string>
+    <string name="yesterday">Dje</string>
+    <string name="this_week">Këtë javë</string>
+    <string name="this_month">Këtë muaj</string>
+    <plurals name="n_minutes">
+        <item quantity="one">%d minutë</item>
+        <item quantity="other">%d minuta</item>
+    </plurals>
+    <plurals name="n_hours">
+        <item quantity="one">%d orë</item>
+        <item quantity="other">%d orë</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">1 fjalosje</item>
+        <item quantity="other">%1$d fjalosje</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 kontakt</item>
+        <item quantity="other">%1$d kontakte</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">1 mesazh</item>
+        <item quantity="other">%1$d mesazhe</item>
+    </plurals>
+    <string name="self">Unë</string>
+    <string name="draft">Skicë</string>
+    <string name="image">Figurë</string>
+    <string name="gif">Gif</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="contact">Kontakt</string>
+    <string name="camera">Kamerë</string>
+    <string name="location">Vendndodhje</string>
+    <string name="gallery">Galeri</string>
+    <string name="file">Kartelë</string>
+    <string name="unknown">E panjohur</string>
+
+    <string name="green">E gjelbër</string>
+    <string name="red">E kuqe</string>
+    <string name="blue">Blu</string>
+    <string name="orange">Portokalli</string>
+    <string name="white">E bardhë</string>
+
+    <string name="small">Të vogla</string>
+    <string name="normal">Normale</string>
+    <string name="large">Të mëdha</string>
+    <string name="extra_large">Ekstra të mëdha</string>
+
+    <string name="fast">Shpejt</string>
+    <string name="slow">Ngadalë</string>
+
+    <string name="message_delivered">Mesazhi u dorëzua</string>
+    <string name="message_read">Mesazhi u lexua</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Kontakt i ri</string>
+    <string name="menu_new_chat">Fjalosje e re</string>
+    <string name="menu_new_group">Grup i ri</string>
+    <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
+    <string name="menu_send">Dërgoje</string>
+    <string name="menu_edit_group">Përpunoni grup</string>
+    <string name="menu_archive_chat">Arkivoje fjalosjen</string>
+    <string name="menu_unarchive_chat">Çarkivoje fjalosjen</string>
+    <string name="menu_add_attachment">Shtoni bashkëngjitje</string>
+    <string name="menu_leave_group">Braktiseni grupin</string>
+    <string name="menu_delete_chat">Fshije fjalosjen</string>
+    <string name="menu_delete_messages">Fshiji mesazhet</string>
+    <string name="menu_delete_image">Fshije figurën</string>
+    <string name="menu_message_details">Hollësi mesazhi</string>
+    <string name="menu_copy_to_clipboard">Kopjoje në të papastër</string>
+    <string name="menu_forward">Përcille mesazhin</string>
+    <string name="menu_resend">Ridërgoje mesazhin</string>
+    <string name="menu_reply">Përgjigju mesazhit</string>
+    <string name="menu_mute">Heshto njoftimet</string>
+    <string name="menu_unmute">Çheshtoji</string>
+    <string name="menu_export_attachment">Eksporto bashkëngjitje</string>
+    <string name="menu_all_media">Krejt mediat</string>
+    <string name="menu_share">Ndajeni me të tjerë</string>
+    <string name="menu_block_contact">Bllokoje kontaktin</string>
+    <string name="menu_unblock_contact">Zhbllokoje kontaktin</string>
+    <string name="menu_play">Luaje</string>
+    <string name="menu_pause">Pushoje</string>
+    <string name="menu_scroll_to_bottom">Rrëshqit drejt fundit</string>
+    <string name="menu_invite">Ftoni shokë</string>
+    <string name="menu_help">Nidhmë</string>
+    <string name="menu_select_all">Përzgjidhi krejt</string>
+    <string name="menu_expand">Zgjeroje</string>
+    <string name="menu_edit_name">Përpunoni emrin</string>
+    <string name="menu_settings">Rregullime</string>
+    <string name="menu_advanced">Të mëtejshme</string>
+    <string name="menu_view_profile">Shihini profilin</string>
+
+    <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
+    <string name="mute_for_two_hours">Heshtoji për 2 orë</string>
+    <string name="mute_for_one_day">Heshtoji për 1 ditë</string>
+    <string name="mute_for_seven_days">Heshtoji për 7 ditë</string>
+    <string name="mute_for_one_year">Heshtoji për 1 vit</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
+    </resources>

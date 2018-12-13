@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Delta Chat</string>
+    <!-- Translators: please enter the name of the language you're translating to here -->
+    <string name="language_name">German</string>
+
+
+    <!-- common strings without special context -->
+    <string name="ok">OK</string>
+    <string name="cancel">Abbruch</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="on">An</string>
+    <string name="off">Aus</string>
+    <string name="def">Standard</string>
+    <string name="custom">Benutzerdefiniert</string>
+    <string name="none">Keine</string>
+    <string name="open">Öffnen</string>
+    <string name="not_now">Nicht jetzt</string>
+    <string name="never">Nie</string>
+    <string name="one_moment">Einen Moment…</string>
+    <string name="done">Fertig</string>
+    <string name="undo">Rückgängig</string>
+    <string name="error">Fehler</string>
+    <string name="error_no_network">Kein Netzwerk.</string>
+    <string name="copied_to_clipboard">Auf Zwischenablage kopieren</string>
+    <string name="contacts_headline">Kontakte</string>
+    <string name="email_address">E-Mail-Adresse</string>
+    <string name="bad_email_address">Ungültige E-Mail-Adresse</string>
+    <string name="password">Passwort</string>
+    <string name="now">Jetzt</string>
+    <string name="n_min_ago">%d Min.</string>
+    <string name="today">Heute</string>
+    <string name="yesterday">Gestern</string>
+    <string name="this_week">Diese Woche</string>
+    <string name="this_month">Dieser Monat</string>
+    <plurals name="n_minutes">
+        <item quantity="one">%d Minute</item>
+        <item quantity="other">%d Minuten</item>
+    </plurals>
+    <plurals name="n_hours">
+        <item quantity="one">%d Stunde</item>
+        <item quantity="other">%d Stunden</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">1 Chat</item>
+        <item quantity="other">%1$d Chats</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 Kontakt</item>
+        <item quantity="other">%1$d Kontakte</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">1 Nachricht</item>
+        <item quantity="other">%1$d Nachrichten</item>
+    </plurals>
+    <string name="self">Ich</string>
+    <string name="draft">Entwurf</string>
+    <string name="image">Bild</string>
+    <string name="gif">Gif</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="contact">Kontakt</string>
+    <string name="camera">Kamera</string>
+    <string name="location">Ort</string>
+    <string name="gallery">Galerie</string>
+    <string name="file">Datei</string>
+    <string name="unknown">Unbekannt</string>
+
+    <string name="green">Grün</string>
+    <string name="red">Rot</string>
+    <string name="blue">Blau</string>
+    <string name="orange">Orange</string>
+    <string name="cyan">Türkis</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">Weiss</string>
+
+    <string name="small">Klein</string>
+    <string name="normal">Normal</string>
+    <string name="large">Gross</string>
+    <string name="extra_large">Extragross</string>
+
+    <string name="fast">Schnell</string>
+    <string name="slow">Langsam</string>
+
+    <string name="message_delivered">Nachricht versandt</string>
+    <string name="message_read">Nachricht gelesen</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Neuer Kontakt</string>
+    <string name="menu_new_chat">Neuer Chat</string>
+    <string name="menu_new_group">Neue Gruppe</string>
+    <string name="menu_new_verified_group">Neue verifizierte Gruppe</string>
+    <string name="menu_send">Senden</string>
+    <string name="menu_toggle_keyboard">Emoji einblenden</string>
+    <string name="menu_edit_group">Gruppe bearbeiten</string>
+    <string name="menu_archive_chat">Chat archivieren</string>
+    </resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Delta Chat</string>
+    <!-- Translators: please enter the name of the language you're translating to here -->
+    <string name="language_name">Anglais</string>
+
+
+    <string name="cancel">Annuler</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="none">Aucun</string>
+    <string name="open">Ouvert</string>
+    <string name="not_now">Pas maintenant</string>
+    <string name="never">Jamais</string>
+    <string name="error">Erreur</string>
+    <string name="error_no_network">Réseau inaccessible.</string>
+    <string name="no_app_to_handle_data">Aucune application trouvée pour traiter ces données.</string>
+    <string name="no_browser_installed">Aucun navigateur installé.</string>
+    <string name="email_address">Adresse email</string>
+    <string name="bad_email_address">Mauvaise adresse email.</string>
+    <string name="password">Mot de passe</string>
+    <string name="now">Maintenant</string>
+    <string name="n_min_ago">%d min</string>
+    <string name="today">Aujourd\'hui</string>
+    <string name="yesterday">Hier</string>
+    <string name="this_week">Cette semaine</string>
+    <string name="this_month">Ce mois</string>
+    <string name="self">Moi</string>
+    <string name="draft">Brouillon</string>
+    <string name="image">Image</string>
+    <string name="audio">Son</string>
+    <string name="video">Vidéo</string>
+    <string name="contact">Contact</string>
+    <string name="camera">Caméra</string>
+    <string name="location">Position</string>
+    <string name="gallery">Galerie</string>
+    <string name="file">Fichier</string>
+    <string name="unknown">Inconnu</string>
+
+    <string name="green">Vert</string>
+    <string name="red">Rouge</string>
+    <string name="blue">Bleu</string>
+    <string name="orange">Orange</string>
+    <string name="cyan">Cyan</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">Blanc</string>
+
+    <string name="small">Petit</string>
+    <string name="normal">Normal</string>
+    <string name="large">Gros</string>
+    <string name="extra_large">Très gros</string>
+
+    <string name="fast">Rapide</string>
+    <string name="slow">Lent</string>
+
+    <string name="message_delivered">Message délivré</string>
+    <string name="message_read">Message lu</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Nouveau contact</string>
+    <string name="menu_new_group">Nouveau groupe</string>
+    <string name="menu_send">Envoyer</string>
+    <string name="menu_edit_group">Éditer le groupe</string>
+    <string name="menu_archive_chat">Archiver la discussion</string>
+    <string name="menu_leave_group">Quitter le groupe</string>
+    <string name="menu_delete_chat">Effacer la discussion</string>
+    <string name="menu_delete_messages">Effacer les messages</string>
+    <string name="menu_delete_image">Effacer l\'image</string>
+    <string name="menu_message_details">Détails du message</string>
+    <string name="menu_forward">Transmettre le message</string>
+    <string name="menu_resend">Renvoyer le message</string>
+    <string name="menu_reply">Répondre au message</string>
+    <string name="menu_help">Aide</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
+    <string name="chat_share_with_title">Partager avec</string>
+    <string name="chat_input_placeholder">Message</string>
+    <string name="chat_archived_label">Archivé</string>
+    <string name="chat_no_messages">Aucun message.</string>
+    <!-- search -->
+    <string name="search">Chercher</string>
+    </resources>
