@@ -26,7 +26,7 @@
             <TextView style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="@string/app_name"
+                      android:text="Delta Chat dev"
                       android:layout_alignParentStart="true"
                       android:layout_alignParentLeft="true"
                       android:layout_centerVertical="true"
