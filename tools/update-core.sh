@@ -1,5 +1,6 @@
 
 # this script updates the deltachat-core sub-repository from github.
+# must be executed from the repo root.
 #
 # - make sure, the deltachat-android directory is clean
 # - make sure, deltachat-core is committed successfull before calling this script
@@ -7,9 +8,6 @@
 #
 # to simplify core-development, files in the submodule folder are replaced by 
 # symbolic links to ../deltachat-core afterwards
-
-# get to main directory
-cd ..
 
 # remove links to the files
 rm -r jni/messenger-backend/*
@@ -37,5 +35,3 @@ ln --symbolic `pwd`/deltachat-core/src     deltachat-android-ii/jni/messenger-ba
 ln --symbolic `pwd`/deltachat-core/libs    deltachat-android-ii/jni/messenger-backend/libs
 cd deltachat-android-ii
 
-# back to tools directory
-cd tools
