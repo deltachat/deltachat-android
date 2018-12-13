@@ -47,4 +47,6 @@
 
     <color name="MediaOverview_Media_selected_overlay">#88000000</color>
 
+    <color name="dummy_avatar_color">#808080</color>
+
 </resources>

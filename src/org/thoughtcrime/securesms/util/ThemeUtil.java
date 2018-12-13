@@ -34,4 +34,8 @@ public class ThemeUtil {
       return defaultValue;
     }
   }
+
+  public static int getDummyContactColor(@NonNull Context context) {
+    return context.getResources().getColor(R.color.dummy_avatar_color);
+  }
 }
