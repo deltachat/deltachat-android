@@ -2,7 +2,7 @@
 
 LANG=$1
 
-mkdir res/values/$LANG/
+mkdir res/values-$LANG/
 
 cp res/values/strings.xml res/values-$LANG/strings.xml
 
