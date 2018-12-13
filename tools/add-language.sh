@@ -11,6 +11,7 @@ cp res/values/strings.xml res/values-$LANG/strings.xml
 touch -d "100 days ago" res/values-$LANG/strings.xml
 
 echo "res/values/$LANG/strings.xml added:"
-echo "- 'tx pull' to update"
-echo "- on problems, 'tx -d pull' gives verbose output"
-echo "- if needed, language mappings can be added to ./tx/config"
+echo "- add the name to res/values/arrays.xml"
+echo "- if needed, language mappings can be added to .tx/config"
+echo "- tx pull"
+echo "  (on problems, 'tx -d pull' gives verbose output)"
