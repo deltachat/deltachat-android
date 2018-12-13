@@ -600,6 +600,10 @@ public class ConversationItem extends LinearLayout
   private void setGroupMessageStatus() {
     if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
       this.groupSender.setText(dcContact.getDisplayName());
+
+      int rgb = dcContact.getColor();
+      int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
+      this.groupSender.setTextColor(argb);
     }
   }
 
