@@ -152,7 +152,7 @@
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete the message here and on the server?</item>
-        <item quantity="other">Delete %1$d messages here and one the server?</item>
+        <item quantity="other">Delete %1$d messages here and on the server?</item>
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_export_attachment">Export attachment? Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
