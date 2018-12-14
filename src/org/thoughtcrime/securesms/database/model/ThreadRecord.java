@@ -35,31 +35,53 @@ import org.thoughtcrime.securesms.recipients.Recipient;
  * @author Moxie Marlinspike
  *
  */
-public class ThreadRecord extends DisplayRecord {
+public class ThreadRecord {
 
-  private           final long    count;
+  protected final Context context;
+
+  private final Recipient  recipient;
+  private final long       dateReceived;
+  private final long       threadId;
+  private final String     body;
+
   private           final int     unreadCount;
   private           final boolean archived;
-  private           final long    lastSeen;
   private           final boolean verified;
   private @Nullable final DcLot   dcSummary;
 
-  public ThreadRecord(@NonNull Context context, @NonNull String body, @Nullable Uri snippetUri,
-                      @NonNull Recipient recipient, long date, long count, int unreadCount,
-                      long threadId, int deliveryReceiptCount, int status, long snippetType,
-                      int distributionType, boolean archived, long expiresIn, long lastSeen,
-                      int readReceiptCount, boolean verified, @Nullable DcLot dcSummary)
+  public ThreadRecord(@NonNull Context context, @NonNull String body,
+                      @NonNull Recipient recipient, long dateReceived, int unreadCount,
+                      long threadId,
+                      boolean archived,
+                      boolean verified, @Nullable DcLot dcSummary)
   {
-    super(context, body, recipient, date, date, threadId, status, deliveryReceiptCount, snippetType);
-    this.count            = count;
+    this.context              = context.getApplicationContext();
+    this.threadId             = threadId;
+    this.recipient            = recipient;
+    this.dateReceived         = dateReceived;
+    this.body                 = body;
     this.unreadCount      = unreadCount;
     this.archived         = archived;
-    this.lastSeen         = lastSeen;
     this.verified         = verified;
     this.dcSummary        = dcSummary;
   }
 
-  @Override
+  public @NonNull String getBody() {
+    return body == null ? "" : body;
+  }
+
+  public Recipient getRecipient() {
+    return recipient;
+  }
+
+  public long getDateReceived() {
+    return dateReceived;
+  }
+
+  public long getThreadId() {
+    return threadId;
+  }
+
   public SpannableString getDisplayBody() {
     if(dcSummary!=null && dcSummary.getText1Meaning()==DcLot.DC_TEXT1_DRAFT) {
       String draftText = dcSummary.getText1() + ":";
@@ -76,10 +98,6 @@ public class ThreadRecord extends DisplayRecord {
     return spannable;
   }
 
-  public long getCount() {
-    return count;
-  }
-
   public int getUnreadCount() {
     return unreadCount;
   }
@@ -92,18 +110,7 @@ public class ThreadRecord extends DisplayRecord {
     return archived;
   }
 
-  public long getLastSeen() {
-    return lastSeen;
-  }
-
   public boolean isVerified() {
     return verified;
-  }
-
-  public static class DistributionTypes {
-    public static final int DEFAULT      = 2;
-    public static final int CONVERSATION = 2;
-    public static final int ARCHIVE      = 3;
-    public static final int INBOX_ZERO   = 4;
   }
 }

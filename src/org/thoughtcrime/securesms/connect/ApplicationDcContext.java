@@ -232,7 +232,6 @@ public class ApplicationDcContext extends DcContext {
   @NonNull
   public ThreadRecord getThreadRecord(DcLot summary, DcChat chat) { // adapted from ThreadDatabase.getCurrent()
     int chatId = chat.getId();
-    int distributionType = chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK ? ThreadRecord.DistributionTypes.ARCHIVE : ThreadRecord.DistributionTypes.CONVERSATION;
 
     String body = summary.getText1();
     if (!body.isEmpty()) {
@@ -242,18 +241,13 @@ public class ApplicationDcContext extends DcContext {
 
     Recipient recipient = getRecipient(chat);
     long date = summary.getTimestamp();
-    long count = 1;
     int unreadCount = getFreshMsgCount(chatId);
-    long type = 0;//cursor.getLong(cursor.getColumnIndexOrThrow(ThreadDatabase.SNIPPET_TYPE));
     boolean archived = chat.getArchived() != 0;
-    int status = 0;
-    long expiresIn = 0;
-    long lastSeen = 0;
     boolean verified = chat.isVerified();
 
-    return new ThreadRecord(context, body, null, recipient, date, count,
-        unreadCount, chatId, 0, status, type,
-        distributionType, archived, expiresIn, lastSeen, 0, verified, summary);
+    return new ThreadRecord(context, body, recipient, date,
+        unreadCount, chatId,
+        archived, verified, summary);
   }
 
 

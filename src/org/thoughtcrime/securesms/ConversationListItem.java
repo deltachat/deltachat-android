@@ -81,7 +81,6 @@ public class ConversationListItem extends RelativeLayout
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
   private ImageView          groupIndicator;
-  private long               lastSeen;
 
   private int             unreadCount;
   private AvatarImageView contactPhotoImage;
@@ -138,7 +137,6 @@ public class ConversationListItem extends RelativeLayout
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
     this.unreadCount      = thread.getUnreadCount();
-    this.lastSeen         = thread.getLastSeen();
 
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
@@ -243,10 +241,6 @@ public class ConversationListItem extends RelativeLayout
   public int getContactId() {
     DcContext dcContext = DcHelper.getContext(getContext());
     return dcContext.getMsg(msgId).getFromId();
-  }
-
-  public long getLastSeen() {
-    return lastSeen;
   }
 
   private void setStatusIcons(ThreadRecord thread) {

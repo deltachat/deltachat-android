@@ -379,7 +379,7 @@ public class ConversationListFragment extends Fragment
         return;
       }
 
-      handleCreateConversation(threadId, item.getLastSeen());
+      handleCreateConversation(threadId, 0);
     } else {
       ConversationListAdapter adapter = (ConversationListAdapter)list.getAdapter();
       adapter.toggleThreadInBatchSet(item.getThreadId());
