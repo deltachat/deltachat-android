@@ -231,20 +231,21 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro1_message">The messenger with the <b>broadest audience</b> in the world. <b>Free</b> and <b>independent</b>.</string>
+    <string name="welcome_intro1_message">The messenger with the broadest audience in the world. Free and independent.</string>
     <string name="welcome_intro2_headline">Independent</string>
-    <string name="welcome_intro2_message"><b>There is no Delta Chat server.</b> The app only uses your mail server.</string>
+    <string name="welcome_intro2_message">There is no Delta Chat server. The app only uses your mail server.</string>
     <string name="welcome_intro3_headline">Fast</string>
-    <string name="welcome_intro3_message"><b>Push messages</b> in seconds.<br/>Rapid interface.</string>
+    <string name="welcome_intro3_message">Push messages in seconds.\nRapid interface.</string>
     <string name="welcome_intro4_headline">Powerful</string>
-    <string name="welcome_intro4_message"><b>Unlimited</b> chats, images, videos, audio messages and more. Multi-client capable.</string>
+    <string name="welcome_intro4_message">Unlimited chats, images, videos, audio messages and more. Multi-client capable.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Free</string>
-    <string name="welcome_intro5_message"><b>Delta Chat</b> is free forever.<br/>Open-source. No ads. No subscription. No vendor lock-in.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Delta Chat is free forever. Open-source. No ads. No subscription. No vendor lock-in.</string>
     <string name="welcome_intro6_headline">Encrypted</string>
-    <string name="welcome_intro6_message"><b>Encrypted</b> with all common algorithms. Messages stay on your servers.</string>
+    <string name="welcome_intro6_message">Encrypted with all common algorithms. Messages stay on your servers.</string>
     <string name="welcome_intro7_headline">Trustworthy</string>
-    <string name="welcome_intro7_message"><b>Delta Chat</b> is safe for business use, compatible and standards-based.</string>
+    <string name="welcome_intro7_message">Delta Chat is safe for business use, compatible and standards-based.</string>
     <string name="welcome_start_messaging">Start Messaging</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login to your server</string>
@@ -269,7 +270,7 @@
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to go with the normal setup process.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
-    <string name="login_error_cannot_login">Cannot login as <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Please check if the email-address and the password are correct.</string>
+    <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the email-address and the password are correct.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers place additional information in your inbox; you can check them it eg. in the web frontend. Consult your provider or friends if you run into problems.</string>
 
