@@ -186,7 +186,7 @@
         <item quantity="one">%d unread message</item>
         <item quantity="other">%d unread messages</item>
     </plurals>
-    <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use Delta Chat.\n\n• Delivering the first message may take a while.</string>
+    <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use Delta Chat.\n\n• Delivering the first message may take a while and may be unencrypted.</string>
     <string name="chat_new_group_hint">Compose the first message, allowing others to reply within this group.\n\n• It is okay if not all members use Delta Chat.\n\n• Delivering the first message may take a while.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
@@ -230,7 +230,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat dev</string>
+    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">The messenger with the <b>broadest audience</b> in the world. <b>Free</b> and <b>independent</b>.</string>
     <string name="welcome_intro2_headline">Independent</string>
     <string name="welcome_intro2_message"><b>There is no Delta Chat server.</b> The app only uses your mail server.</string>
@@ -238,15 +238,16 @@
     <string name="welcome_intro3_message"><b>Push messages</b> in seconds.<br/>Rapid interface.</string>
     <string name="welcome_intro4_headline">Powerful</string>
     <string name="welcome_intro4_message"><b>Unlimited</b> chats, images, videos, audio messages and more. Multi-client capable.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Free</string>
-    <string name="welcome_intro5_message"><b>Delta Chat dev</b> is free forever.<br/>Open-source. No ads. No subscription. No vendor lock-in.</string>
+    <string name="welcome_intro5_message"><b>Delta Chat</b> is free forever.<br/>Open-source. No ads. No subscription. No vendor lock-in.</string>
     <string name="welcome_intro6_headline">Encrypted</string>
     <string name="welcome_intro6_message"><b>Encrypted</b> with all common algorithms. Messages stay on your servers.</string>
     <string name="welcome_intro7_headline">Trustworthy</string>
-    <string name="welcome_intro7_message"><b>Delta Chat dev</b> is safe for business use, compatible and standards-based.</string>
+    <string name="welcome_intro7_message"><b>Delta Chat</b> is safe for business use, compatible and standards-based.</string>
     <string name="welcome_start_messaging">Start Messaging</string>
     <string name="login_title">Login</string>
-    <string name="login_header">Login to Delta Chat</string>
+    <string name="login_header">Login to your server</string>
     <string name="login_subheader">For known email providers additional settings are setup automatically. Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP login-name</string>
