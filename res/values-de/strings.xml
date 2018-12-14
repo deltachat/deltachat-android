@@ -148,7 +148,6 @@
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
     <string name="ask_forward">Nachricht weiterleiten zu %1$s?</string>
     <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.</string>
-    <string name="ask_block_contact">Den Kontakt blockieren? Sie erhalten keine weiteren Nachrichten und Anrufe von diesem Kontakt.</string>
     <string name="ask_unblock_contact">Diesen Kontakt freischalten? Sie werden wieder in der Lage sein, Nachrichten und Anrufe von diesem Kontakt zu empfangen.</string>
     <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\n\Kontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>

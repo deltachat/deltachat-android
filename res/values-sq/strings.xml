@@ -18,6 +18,7 @@
     <string name="done">U bë</string>
     <string name="undo">Zhbëje</string>
     <string name="error">Gabim</string>
+    <string name="error_x">Gabim: %1$s</string>
     <string name="error_no_network">Rrjet i pakapshëm.</string>
     <string name="no_app_to_handle_data">S\’gjendet dot një aplikacion për trajtimin e këtij lloji të dhënash.</string>
     <string name="no_browser_installed">S’ka shfletues të instaluar.</string>
@@ -53,11 +54,17 @@
         <item quantity="one">1 mesazh</item>
         <item quantity="other">%1$d mesazhe</item>
     </plurals>
+    <plurals name="n_members">
+        <item quantity="one">1 anëtar</item>
+        <item quantity="other">%1$d anëtarë</item>
+    </plurals>
+
     <string name="self">Unë</string>
     <string name="draft">Skicë</string>
     <string name="image">Figurë</string>
     <string name="gif">Gif</string>
     <string name="audio">Audio</string>
+    <string name="voice_message">Mesazh zanor</string>
     <string name="video">Video</string>
     <string name="contact">Kontakt</string>
     <string name="camera">Kamerë</string>
@@ -90,6 +97,7 @@
     <string name="menu_new_group">Grup i ri</string>
     <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
     <string name="menu_send">Dërgoje</string>
+    <string name="menu_toggle_keyboard">Shfaq/fshih tastierë <em>emoji</em></string>
     <string name="menu_edit_group">Përpunoni grup</string>
     <string name="menu_archive_chat">Arkivoje fjalosjen</string>
     <string name="menu_unarchive_chat">Çarkivoje fjalosjen</string>
@@ -120,6 +128,7 @@
     <string name="menu_edit_name">Përpunoni emrin</string>
     <string name="menu_settings">Rregullime</string>
     <string name="menu_advanced">Të mëtejshme</string>
+    <string name="menu_deaddrop">Kërkesa kontakti</string>
     <string name="menu_view_profile">Shihini profilin</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
@@ -131,4 +140,230 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Të fshihet kjo fjalosje? S’do të shfaqet më te lista e fjalosjeve, mesazhet e saj do të mbeten në shërbyes.</item>
+        <item quantity="other">Të fshihen %1%d fjalosje? Ato s’do të shfaqen më te lista e fjalosjeve, mesazhet e tyre do të mbeten në shërbyes.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Të fshihet mesazhi këtu dhe te shërbyesi?</item>
+        <item quantity="other">Të fshihen %1$d mesazhet këtu dhe te shërbyesi?</item>
+    </plurals>
+    <string name="ask_forward">Të përcillen mesazhet te %1$s?</string>
+    <string name="ask_export_attachment">Të eksportohet bashkëngjitja? Eksportimi i bashkëngjitjeve do t\’i lejojë çfarëdo aplikacioni tjetër në pajisjen tuaj t\’i përdorë ato.\n\nTë vazhdohet?</string>
+    <string name="ask_unblock_contact">Të zhbllokohet ky kontakt? Do të jeni sërish në gjendje të merrni mesazhe dhe thirrje prej këtij kontakti.</string>
+    <string name="ask_delete_contacts">Të fshihen kontaktet? Kjo do të bëjë të fshihen përgjithmonë kontaktet e përzgjedhur.\n\nKontaktet me fjalosje në zhvillim e sipër dhe kontaktet prej libri adresash të sistemit s’mund të fshihen përgjithmonë.</string>
+    <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Kontakte</string>
+    <string name="contacts_enter_name_or_email">Jepni emër ose adresë email</string>
+    <string name="contacts_type_email_above">Shtypni më sipër adresën email</string>
+    <string name="contacts_empty_hint">S’ka kontakte.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">Fjalosja u arkivua</item>
+        <item quantity="other">U arkivuan %d fjalosje</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">Fjalosja u çarkivua</item>
+        <item quantity="other">U çarkivuan %d fjalosje</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Fjalosje të arkivuara</string>
+    <string name="chat_please_enter_message">Ju lutemi, jepni një mesazh.</string>
+    <string name="chat_camera_unavailable">Kamerë jo gati.</string>
+    <string name="chat_unable_to_record_audio">S’arrihet të incizohet audio.</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%d mesazh i palexuar</item>
+        <item quantity="other">%d mesazhe të palexuar</item>
+    </plurals>
+    <string name="chat_no_messages_hint">Dërgoni mesazh te %1$s:\n\n• S’ka problem nëse %2$s s\’përdor Delta Chat.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca dhe mund të jetë i pafshehtëzuar.</string>
+    <string name="chat_new_group_hint">Hartoni mesazhin e parë, duke u lejuar të tjerëve të përgjigjen brenda këtij grupi.\n\n• S’ka problem nëse Delta Chat-in s’e përdorin  të tërë anëtarë.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca.</string>
+    <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
+    <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që të dërgohet</string>
+    <string name="chat_share_with_title">Ndajeni me </string>
+    <string name="chat_input_placeholder">Mesazh</string>
+    <string name="chat_archived_label">Arkivuar</string>
+    <string name="chat_no_messages">S’ka mesazhe.</string>
+    <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
+
+    <!-- search -->
+    <string name="search">Kërko</string>
+    <string name="search_explain">Kërkoni për fjalosje, kontakte dhe mesazhe.</string>
+    <string name="search_no_result_for_x">S’u gjetën përfundime për \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Emër grupi</string>
+    <string name="group_avatar">Avatar grupi</string>
+    <string name="group_create_button">Krijoni grup</string>
+    <string name="group_please_enter_group_name">Ju lutemi, jepni një emër për grupin.</string>
+    <string name="group_add_members">Shtoni anëtarë</string>
+    <string name="group_hello_draft">Tungjatjeta, Sapo krijova për ne grupin \"%1$s\".</string>
+    <string name="group_self_not_in_group">Duhet të jeni anëtar i grupit që të kryeni këtë veprim.</string>
+    <string name="profile_encryption">Fshehtëzim</string>
+
+
+    <!-- chat media view -->
+    <string name="media_preview">Paraparje media</string>
+    <string name="media_tab_media">Media</string>
+    <string name="media_tab_documents">Dokumente</string>
+    <string name="media_no_media_hint">S’ka media.</string>
+    <string name="media_no_documents_hint">S’ka dokumente</string>
+
+
+    <string name="invite_default_text">Le të hidhemi në Delta Chat - %1$s - mund të më dërgoni mesazhe tekst te %2$s</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me <b>publikun më të gjerë</b> në botë. <b>I lirë</b> dhe <b>i pavarur</b>.</string>
+    <string name="welcome_intro2_headline">I pavarur</string>
+    <string name="welcome_intro2_message"><b>S’ka shërbyes Delta Chat.</b> Aplikacioni përdor vetëm shërbyesin tuaj të email-eve.</string>
+    <string name="welcome_intro3_headline">I shpejtë</string>
+    <string name="welcome_intro3_message"><b>Dërgoni mesazhe</b> brenda sekondash.<br/>Ndërfaqe e shpejtë.</string>
+    <string name="welcome_intro4_headline">I fuqishëm</string>
+    <string name="welcome_intro4_message">Biseda, figura, video, mesazhe audio <b>të pakufizuara</b>, dhe më tepër. I aftë për multi-klient.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">I lirë</string>
+    <string name="welcome_intro5_message"><b>Delta Chat</b> është përgjithmonë i lirë.<br/>Me burim të hapur. Pa reklama. Pa pajtime. Pa kyçje nga tregtues.</string>
+    <string name="welcome_intro6_headline">I fshehtëzuar</string>
+    <string name="welcome_intro6_message"><b>Fshehtëzuar</b> me krejt algoritmet e zakonshëm. Mesazhet mbeten në shërbyesit tuaj.</string>
+    <string name="welcome_intro7_headline">I besueshëm</string>
+    <string name="welcome_intro7_message"><b>Delta Chat</b>-i është i parrezik për përdorim nga bizneset, i përputhshëm dhe i bazuar në standarde.</string>
+    <string name="welcome_start_messaging">Filloni të Shkëmbeni Mesazhe</string>
+    <string name="login_title">Hyrje</string>
+    <string name="login_header">Hyrje te shërbyesi juaj</string>
+    <string name="login_subheader">Për shërbime të njohura email-i, rregullimet shtesë caktohen automatikisht. Ndonjëherë shërbyesi IMAP lyp të aktivizohet te pjesa e dukshme web. Për ndihmë këshillohuni me shërbimin tuaj email ose shokë tuajt.</string>
+    <string name="login_inbox">Të marrë</string>
+    <string name="login_imap_login">Emër hyrjeje në IMAP</string>
+    <string name="login_imap_server">Shërbyes IMAP</string>
+    <string name="login_imap_port">Portë IMAP</string>
+    <string name="login_imap_security">Siguri IMAP</string>
+    <string name="login_outbox">Të dërguar</string>
+    <string name="login_smtp_login">Emër hyrjeje SMTP</string>
+    <string name="login_smtp_password">Fjalëkalim SMTP</string>
+    <string name="login_smtp_server">Shërbyes SMTP</string>
+    <string name="login_smtp_port">Portë SMTP</string>
+    <string name="login_smtp_security">Siguri SMTP</string>
+    <string name="login_info_gmail_text">Për llogari GMail lypset të krijoni një App-Password, nëse keni të aktivizuar mirëfilltësimin dyfaktorësh. Nëse ky rregullim s’gjendet, lypset të aktivizoni Aplikacione Më Pak të Sigurta.</string>
+    <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
+    <string name="login_error_server">Ju lutemi, jepni një shërbyes / adresë IP të vlefshme</string>
+    <string name="login_error_port">Ju lutemi, jepni një portë të vlefshme (1–65535)</string>
+    <string name="login_error_required_fields">Ju lutemi, jepni një adresë email dhe fjalëkalim të vlefshëm</string>
+    <string name="import_backup_title">Importo kopjeruajtje</string>
+    <string name="import_backup_ask">U gjet kopjeruajtje te \"%1$s\".\n\nDoni të importohen dhe përdoren krejt të dhënat dhe rregullimet prej atij?</string>
+    <string name="import_backup_no_backup_found">S’u gjetën kopjeruajtje.\n\nKopjojeni kopjeruajtjen te \"%1$s\" dhe riprovoni. Ndryshe, shtypni \"Filloni të shkëmbeni mesazhe\", që të vazhdoni me procesin normal të rregullimit.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">S’bëhet dot hyrja si <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>
+
+
+    <!-- preferences -->
+    <string name="pref_summary_privacy">Kyçje ekrani %1$s, Lexoni dëftesa %2$s</string>
+    <string name="pref_summary_appearance">Temë %1$s, Gjuhë %2$s, Sfond %3$s</string>
+    <string name="pref_summary_on">on</string>
+    <string name="pref_summary_off">off</string>
+    <string name="pref_summary_default">parazgjedhje</string>
+    <string name="pref_summary_custom">vetjake</string>
+    <string name="pref_using_custom">Po përdoret vetjak: %s</string>
+    <string name="pref_using_default">Po përdoret parazgjedhje: %s</string>
+    <string name="pref_profile_info_headline">Të dhëna tuajat të profilit</string>
+    <string name="pref_profile_photo">Foto profili</string>
+    <string name="pref_trim_headline">Qethje mesazhi</string>
+    <string name="pref_trim_option">Fshiji mesazhet e vjetër</string>
+    <string name="pref_trim_option_explain">Fshiji automatikisht mesazhet më të vjetër, pasi një bisedë tejkalon një gjatësi të caktuar</string>
+    <string name="pref_trim_length_limit">Kufi gjatësie fjalosjeje</string>
+    <string name="pref_trim_length_limit_summary">%d mesazhe për fjalosje</string>
+    <string name="pref_trim_now_button">Qethi krejt fjalosjet tani</string>
+    <string name="pref_trim_now_ask">Të fshihen krejt mesazhet e vjetër tani? Kjo do të sjellë qethjen e menjëhershme të %d mesazheve më të rinj.</string>
+    <string name="pref_blocked_contacts">Kontakte të bllokuar</string>
+    <string name="pref_profile_photo_remove_ask">Të hiqet fotoja e profilit?</string>
+    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_password_and_account_settings">Rregullime fjalëkalimi dhe llogarie</string>
+    <string name="pref_who_can_see_this_information">Kush mund ta shohë këtë informacion?</string>
+    <string name="pref_who_can_see_profile_explain">Fotoja dhe emri juaj i profilit do të shfaqen tok me mesazhet, kur komunikoni me përdorues të tjerë. Informacioni i dërguar tashmë s’mund të fshihet apo të hiqet.</string>
+    <string name="pref_your_name">Emri juaj</string>
+    <string name="pref_default_status_label">Tekst gjendjeje</string>
+    <string name="pref_default_status_text">Dërguar me Delta Chat Messenger: https://delta.chat</string>
+    <string name="pref_enter_sends">Tasti Enter dërgon</string>
+    <string name="pref_enter_sends_explain">Shtypja e tastit Enter do të dërgojë mesazhe tekst</string>
+    <string name="pref_vibrate">Dridhu</string>
+    <string name="pref_chat_settings">Rregullime fjalosjeje</string>
+    <string name="pref_change_secret">Ndryshoni të fshehtën</string>
+    <string name="pref_change_secret_explain">Ndryshojeni pin-in / rregullsinë / shenjat tuaja të gishtave përmes rregullimeve të sistemit</string>
+    <string name="pref_screen_security">Siguri ekrani</string>
+    <string name="pref_screen_security_explain">Bllokoji fotot e ekranit te lista e të freskëtëve dhe brenda aplikacionit</string>
+    <string name="pref_screen_security_please_restart_hint">QË të hyjnë në fuqi rregullimet mbi sigurinë e ekranit, ju lutemi, rinisni aplikacionin.</string>
+    <string name="pref_notifications">Njoftime</string>
+    <string name="pref_notifications_show">Shfaqi</string>
+    <string name="pref_notifications_priority">Përparësi</string>
+    <string name="pref_led_color">Ngjyrë LED-i</string>
+    <string name="pref_led_pattern">Rregullsi xixëllimi LED-i</string>
+    <string name="pref_sound">Tingull</string>
+    <string name="pref_silent">Heshtazi</string>
+    <string name="pref_repeat_notify">Përsëriti sinjalizimet</string>
+    <string name="pref_privacy">Privatësi</string>
+    <string name="pref_chats_and_media">Fjalosje dhe media</string>
+    <string name="pref_light_theme">E çelët</string>
+    <string name="pref_dark_theme">E errët</string>
+    <string name="pref_appearance">Dukje</string>
+    <string name="pref_theme">Temë</string>
+    <string name="pref_language">Gjuhë</string>
+    <string name="pref_incognito_keyboard_explain">Kërkoji tastierës të çaktivizojë nxënie të personalizuar</string>
+    <string name="pref_read_receipts">Lexoni dëftesa</string>
+    <string name="pref_read_receipts_explain">Nëse leximi i dëftesave është i çaktivizuar, s’do të jeni në gjendje të shihni mesazh "Lexoni dëftesa" prej të tjerësh</string>
+    <string name="pref_manage_keys">Administroni kyçe</string>
+    <string name="pref_use_system_emoji">Përdor <em>emoji</em> sistemi</string>
+    <string name="pref_use_system_emoji_explain">Çaktivizo mbulimin e brendshëm Delta Chat për emoji-t</string>
+    <string name="pref_communication">Komunikim</string>
+    <string name="pref_chats">Fjalosje</string>
+    <string name="pref_messages">Mesazhe</string>
+    <string name="pref_in_chat_sounds">Tinguj brenda bisede</string>
+    <string name="pref_message_text_size">Madhësi shkronjash mesazhi</string>
+    <string name="pref_view_log">Shihni regjistrin</string>
+    <string name="pref_other">Të tjera</string>
+    <string name="pref_backup">Kopjeruajtje</string>
+    <string name="pref_backup_explain">Kopjeruaji fjalosjet në depozitim të jashtëm</string>
+    <string name="pref_managekeys_menu_title">Administroni kyçe</string>
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_continue_transfer_title">Mesazh Rregullimi Autocrypt-i</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Ju lutemi, jepni kodin e rregullimit që është shfaqur te pajisja tjetër.</string>
+    <string name="autocrypt_continue_transfer_retry">Riprovo</string>
+    <!-- screen lock -->
+    <string name="screenlock_title">Kyçje ekrani</string>
+    <string name="screenlock_authentication_failed">Mirëfilltësimi dështoi.</string>
+    <string name="screenlock_unlock_title">Shkyçe Delta Chat-in</string>
+    <!-- qr code stuff -->
+    <string name="qrscan_title">Skanoni kod QR</string>
+    <string name="qrscan_hint">Vendoseni kamerën tuaj përmbi kodin QR</string>
+    <string name="qrscan_ask_join_verified_group">Doni të bëheni pjesë e grupit të verifikuar \"%1$s\"?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Të verifikohet kontakti dhe të fillohet të bisedohet me \"%1$s\"?</string>
+    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakti \"%1$s\" u verifikua. Të fillohet të bisedohet?</string>
+    <string name="qrscan_fingerprint_label">Shenja gishtash</string>
+    <string name="qrshow_title">Shfaq kod QR verifikimi</string>
+    <string name="qrshow_join_contact_title">Kod QR verifikimi</string>
+    <string name="notify_mark_all_read">Vëru shenjë të tërave si të lexuar</string>
+    <string name="notify_mark_read">Vëri shenjë si i lexuar</string>
+    <string name="notify_reply_button">Përgjigju</string>
+    <string name="notify_new_message">Mesazh i ri</string>
+    <string name="notify_name_and_message">Emër dhe mesazh</string>
+    <string name="notify_name_only">Vetëm emër</string>
+    <string name="notify_no_name_or_message">Pa emër apo mesazh</string>
+    <string name="notify_repeat_one_time">Një herë</string>
+    <string name="notify_repeat_two_times">Dy herë</string>
+    <string name="notify_repeat_three_times">Tri herë</string>
+    <string name="notify_repeat_five_times">Pesë herë</string>
+    <string name="notify_repeat_ten_times">Dhjetë herë</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Lypset leje</string>
+    <string name="perm_continue">Vazhdo</string>
+    <string name="perm_not_now">Jo tani</string>
     </resources>

@@ -10,13 +10,21 @@
     <string name="cancel">Cancelar</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
+    <string name="not_now">Ahora no</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Un momento...</string>
     <string name="done">Listo</string>
+    <string name="undo">Deshacer</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
     <string name="error_no_network">Red no disponible.</string>
+    <string name="no_app_to_handle_data">No se encontró una aplicación compatible con el tipo de dato</string>
+    <string name="no_browser_installed">No hay ningún navegador instalado.</string>
+    <string name="file_not_found">No se pudo encontrar %1$s.</string>
+    <string name="copied_to_clipboard">Copiado al portapapeles.</string>
     <string name="contacts_headline">Contactos</string>
+    <string name="email_address">Dirección de correo</string>
+    <string name="bad_email_address">Dirección de correo no válida.</string>
     <string name="password">Contraseña</string>
     <string name="now">Ahora</string>
     <string name="n_min_ago">%d min</string>
@@ -32,9 +40,27 @@
         <item quantity="one">%d hora</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">1 conversación</item>
+        <item quantity="other">%1$d conversaciones</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 contacto</item>
+        <item quantity="other">%1$d contactos</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">1 mensaje</item>
+        <item quantity="other">%1$d mensajes</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">1 miembro</item>
+        <item quantity="other">%1$d miembros</item>
+    </plurals>
+
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>
+    <string name="gif">Gif</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Mensaje de voz</string>
     <string name="video">Video</string>
@@ -43,9 +69,114 @@
     <string name="location">Ubicación</string>
     <string name="gallery">Galería</string>
     <string name="file">Archivo</string>
+    <string name="unknown">Desconocido</string>
+
+    <string name="green">Verde</string>
+    <string name="red">Rojo</string>
+    <string name="blue">Azul</string>
+    <string name="orange">Naranja</string>
+    <string name="white">Blanco</string>
+
+    <string name="small">Pequeño</string>
+    <string name="normal">Normal</string>
+    <string name="large">Grande</string>
+    <string name="extra_large">Muy grande</string>
+
+    <string name="fast">Rápido</string>
+    <string name="slow">Lento</string>
+
+    <string name="message_delivered">Mensaje enviado</string>
     <string name="message_read">Mensaje leído</string>
 
 
-    <string name="menu_leave_group">Salir grupo</string>
-    <string name="menu_delete_chat">Echar charla</string>
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Nuevo contacto</string>
+    <string name="menu_new_chat">Nueva conversación</string>
+    <string name="menu_new_group">Nuevo grupo</string>
+    <string name="menu_new_verified_group">Nuevo grupo verificado</string>
+    <string name="menu_send">Enviar</string>
+    <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
+    <string name="menu_edit_group">Editar grupo</string>
+    <string name="menu_archive_chat">Archivar conversación</string>
+    <string name="menu_unarchive_chat">Des-archivar conversación </string>
+    <string name="menu_add_attachment">Añadir adjunto</string>
+    <string name="menu_leave_group">Abandonar grupo</string>
+    <string name="menu_delete_chat">Eliminar conversación</string>
+    <string name="menu_delete_messages">Eliminar mensajes</string>
+    <string name="menu_delete_image">Eliminar imagen</string>
+    <string name="menu_message_details">Detalles del mensaje</string>
+    <string name="menu_copy_to_clipboard">Copiar al portapapeles</string>
+    <string name="menu_forward">Reenviar mensaje</string>
+    <string name="menu_resend">Reenviar mensaje</string>
+    <string name="menu_reply">Responder al mensaje</string>
+    <string name="menu_mute">Silenciar notificaciones</string>
+    <string name="menu_unmute">Des-silenciar </string>
+    <string name="menu_export_attachment">Exportar adjunto</string>
+    <string name="menu_share">Compartir</string>
+    <string name="menu_block_contact">Bloquear contacto</string>
+    <string name="menu_unblock_contact">Desbloquear contacto</string>
+    <string name="menu_play">Reproducir</string>
+    <string name="menu_pause">Pausar</string>
+    <string name="menu_scroll_to_bottom">Desplazarse al final</string>
+    <string name="menu_invite">Invitar a amigos</string>
+    <string name="menu_help">Ayuda</string>
+    <string name="menu_select_all">Seleccionar todo</string>
+    <string name="menu_expand">Expandir</string>
+    <string name="menu_edit_name">Editar nombre</string>
+    <string name="menu_settings">Ajustes</string>
+    <string name="menu_advanced">Avanzado</string>
+    <string name="menu_deaddrop">Solicitud de contacto</string>
+    <string name="menu_view_profile">Ver perfil</string>
+
+    <string name="mute_for_one_hour">Silenciar por 1 hora</string>
+    <string name="mute_for_two_hours">Silenciar por 2 horas</string>
+    <string name="mute_for_one_day">Silenciar por 1 día</string>
+    <string name="mute_for_seven_days">Silenciar por 7 días</string>
+    <string name="mute_for_one_year">Silenciar por 1 año</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">¿Seguro que deseas abandonar este grupo? </string>
+    <string name="ask_forward">¿Reenviar mensajes a %1$s?</string>
+    <string name="ask_export_attachment">¿Exportar adjuntos? Si exporta los adjuntos, serán accesibles desde cualquier otra aplicación en su dispositivo. ¿Desea continuar?</string>
+    <string name="ask_start_chat_with">¿Conversar con %1$s?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Contactos</string>
+    <string name="contacts_enter_name_or_email">Ingrese nombre o dirección de correo</string>
+    <string name="contacts_type_email_above">Escriba la dirección de correo arriba</string>
+    <string name="contacts_empty_hint">Sin contactos</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">conversación archivada</item>
+        <item quantity="other">%d conversaciones archivadas</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">conversación des-archivada</item>
+        <item quantity="other">%d conversaciones des-archivadas</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Conversaciones archivadas</string>
+    <string name="chat_please_enter_message">Por favor ingrese un mensaje.</string>
+    <string name="chat_camera_unavailable">Cámara no disponible.</string>
+    <string name="chat_unable_to_record_audio">No es posible grabar audio.</string>
+    <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
+    <string name="chat_share_with_title">Compartir con</string>
+    <string name="chat_input_placeholder">Mensaje</string>
+    <string name="chat_archived_label">Archivado</string>
+    <string name="chat_no_messages">No hay mensajes.</string>
+    <string name="chat_self_talk_subtitle">Mensajes que envié a mí mismo</string>
+
+    <!-- search -->
+    <string name="search">Buscar</string>
+    <string name="search_explain">Buscar conversaciones, contactos, y mensajes</string>
+    <string name="search_no_result_for_x">No se encontraron resultados para \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Nombre del grupo</string>
+    <string name="group_avatar">Avatar del grupo</string>
+    <string name="group_create_button">Crear grupo</string>
     </resources>

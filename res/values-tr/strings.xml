@@ -156,7 +156,6 @@
     </plurals>
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
     <string name="ask_export_attachment">Ek dışa aktarılsın mı? Ekleri dışa aktarma, aygıtınızdaki tüm diğer uygulamaların onlara erişmesine izin verecek.\n\nSürdürülsün mü?</string>
-    <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden iletiler ve aramalar almayacaksınız.</string>
     <string name="ask_unblock_contact">Bu kişinin engeli kaldırılsın mı? Bu kişiden bir kez daha iletiler ve aramalar alabileceksiniz.</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSüren sohbetler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
