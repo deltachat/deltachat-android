@@ -148,7 +148,7 @@
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Delete this chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
-        <item quantity="other">Delete %1%d chats? They will no longer be shown in the chat list, their messages will remain on the server.</item>
+        <item quantity="other">Delete %d chats? They will no longer be shown in the chat list, their messages will remain on the server.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete the message here and on the server?</item>
@@ -176,7 +176,7 @@
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">Chat unarchived</item>
-        <item quantity="other">%d chat unarchived</item>
+        <item quantity="other">%d chats unarchived</item>
     </plurals>
     <string name="chat_archived_chats_title">Archived chats</string>
     <string name="chat_please_enter_message">Please enter a message.</string>
