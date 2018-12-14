@@ -69,6 +69,9 @@ public class DcContext {
     public native void         performImapFetch     ();
     public native void         performImapIdle      ();
     public native void         interruptImapIdle    ();
+    public native void         performMvboxFetch    ();
+    public native void         performMvboxIdle     ();
+    public native void         interruptMvboxIdle   ();
     public native void         performSmtpJobs      ();
     public native void         performSmtpIdle      ();
     public native void         maybeNetwork         ();
