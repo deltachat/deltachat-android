@@ -112,7 +112,7 @@
     <string name="menu_delete_chat">Chat löschen</string>
     <string name="menu_delete_messages">Nachrichten löschen</string>
     <string name="menu_delete_image">Bild löschen</string>
-    <string name="menu_message_details">Nachrichten Details</string>
+    <string name="menu_message_details">Nachrichtendetails</string>
     <string name="menu_copy_to_clipboard">In Zwischenablage kopieren</string>
     <string name="menu_forward">Weiterleiten</string>
     <string name="menu_resend">Erneut versenden</string>
@@ -164,6 +164,10 @@
     <string name="chat_please_enter_message">Bitte geben Sie eine Nachricht ein.</string>
     <string name="chat_camera_unavailable">Kamera nicht verfügbar.</string>
     <string name="chat_unable_to_record_audio">Es ist nicht möglich, Audio aufzunehmen.</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%d ungelesene Nachricht</item>
+        <item quantity="other">%d ungelesene Nachrichten</item>
+    </plurals>
     <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
     <string name="chat_record_slide_to_cancel">Schieben um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten Sie diese Taste gedrückt, um eine Sprachnachricht aufzunehmen, und zum senden wieder loslassen.</string>

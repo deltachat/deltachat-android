@@ -147,8 +147,8 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Dit gesprek verwijderen? Het wordt niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
-        <item quantity="other">Wil je %1% gesprekken verwijderen? Ze worden niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
+        <item quantity="one">Wil je dit gesprek verwijderen? Het worden niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
+        <item quantity="other">Wil je %d gesprekken verwijderen? Ze worden niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Wil je het bericht verwijderen, zowel hier als op de server?</item>
@@ -156,6 +156,7 @@
     </plurals>
     <string name="ask_forward">Wil je de berichten doorsturen aan %1$s?</string>
     <string name="ask_export_attachment">Als je de bijlage exporteert, geef je andere apps op je apparaat toegang om hem uit te lezen.\n\nWil je doorgaan?</string>
+    <string name="ask_block_contact">Wil je deze contactpersoon blokkeren? Hij/zij kan je geen berichten meer sturen.</string>
     <string name="ask_unblock_contact">Wil je deze contactpersoon deblokkeren? Hij/zij kan je wederom berichten en oproepen sturen.</string>
     <string name="ask_delete_contacts">Wil je de geselecteerde contactpersonen verwijderen? Ze worden permanent verwijderd.\n\nPersonen met actieve gesprekken en personen afkomstig uit het adresboek van het systeem kunnen niet permanent worden verwijderd.</string>
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
@@ -174,7 +175,7 @@
         <item quantity="other">%d gesprekken gearchiveerd</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">Gesprek gede-archiveerd</item>
+        <item quantity="one">Gesprek ge-dearchiveerd</item>
         <item quantity="other">%d gesprekken gede-archiveerd</item>
     </plurals>
     <string name="chat_archived_chats_title">Gearchiveerde gesprekken</string>

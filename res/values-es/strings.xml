@@ -10,6 +10,8 @@
     <string name="cancel">Cancelar</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
+    <string name="def">Por defecto</string>
+    <string name="custom">Personalizado</string>
     <string name="not_now">Ahora no</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Un momento...</string>
@@ -75,6 +77,7 @@
     <string name="red">Rojo</string>
     <string name="blue">Azul</string>
     <string name="orange">Naranja</string>
+    <string name="magenta">Magenta</string>
     <string name="white">Blanco</string>
 
     <string name="small">Pequeño</string>
@@ -137,6 +140,10 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">¿Seguro que deseas abandonar este grupo? </string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">¿Eliminar esta conversación? No volverá a ser mostrada en la lista de conversaciones, pero sus mensajes permanecerán en el servidor.</item>
+        <item quantity="other">¿Eliminar %d conversaciones? No volverán a ser mostradas en la lista de conversaciones, pero sus mensajes permanecerán en el servidor.</item>
+    </plurals>
     <string name="ask_forward">¿Reenviar mensajes a %1$s?</string>
     <string name="ask_export_attachment">¿Exportar adjuntos? Si exporta los adjuntos, serán accesibles desde cualquier otra aplicación en su dispositivo. ¿Desea continuar?</string>
     <string name="ask_start_chat_with">¿Conversar con %1$s?</string>
@@ -155,13 +162,17 @@
         <item quantity="other">%d conversaciones archivadas</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">conversación des-archivada</item>
+        <item quantity="one">Conversación des-archivada</item>
         <item quantity="other">%d conversaciones des-archivadas</item>
     </plurals>
     <string name="chat_archived_chats_title">Conversaciones archivadas</string>
     <string name="chat_please_enter_message">Por favor ingrese un mensaje.</string>
     <string name="chat_camera_unavailable">Cámara no disponible.</string>
     <string name="chat_unable_to_record_audio">No es posible grabar audio.</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%d mensaje sin leer</item>
+        <item quantity="other">%dmensajes sin leer </item>
+    </plurals>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_share_with_title">Compartir con</string>
     <string name="chat_input_placeholder">Mensaje</string>

@@ -140,10 +140,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Të fshihet kjo fjalosje? S’do të shfaqet më te lista e fjalosjeve, mesazhet e saj do të mbeten në shërbyes.</item>
-        <item quantity="other">Të fshihen %1%d fjalosje? Ato s’do të shfaqen më te lista e fjalosjeve, mesazhet e tyre do të mbeten në shërbyes.</item>
-    </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Të fshihet mesazhi këtu dhe te shërbyesi?</item>
         <item quantity="other">Të fshihen %1$d mesazhet këtu dhe te shërbyesi?</item>
@@ -166,10 +162,6 @@
     <plurals name="chat_archived">
         <item quantity="one">Fjalosja u arkivua</item>
         <item quantity="other">U arkivuan %d fjalosje</item>
-    </plurals>
-    <plurals name="chat_unarchived">
-        <item quantity="one">Fjalosja u çarkivua</item>
-        <item quantity="other">U çarkivuan %d fjalosje</item>
     </plurals>
     <string name="chat_archived_chats_title">Fjalosje të arkivuara</string>
     <string name="chat_please_enter_message">Ju lutemi, jepni një mesazh.</string>
