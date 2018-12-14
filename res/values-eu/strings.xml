@@ -148,10 +148,9 @@
     <string name="media_no_documents_hint">Dokumenturik ez</string>
 
 
-    <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat dev</string>
     <string name="welcome_intro3_headline">Azkarra</string>
     <string name="welcome_intro4_headline">Ahaltsua</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Librea</string>
     <string name="welcome_intro6_headline">Zifratua</string>
     <string name="welcome_intro7_headline">Fidagarria</string>

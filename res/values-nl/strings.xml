@@ -22,6 +22,7 @@
     <string name="done">Klaar</string>
     <string name="undo">Ongedaan maken</string>
     <string name="error">Fout</string>
+    <string name="error_x">Fout: %1$s</string>
     <string name="error_no_network">Geen netwerk beschikbaar.</string>
     <string name="no_app_to_handle_data">Kan geen app vinden die deze gegevens kan behandelen.</string>
     <string name="no_browser_installed">Geen webbrowser geïnstalleerd.</string>
@@ -45,11 +46,29 @@
         <item quantity="one">%d uur</item>
         <item quantity="other">%d uur</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">1 gesprek</item>
+        <item quantity="other">%1$d gesprekken</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 contactpersoon</item>
+        <item quantity="other">%1$d contactpersonen</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">1 bericht</item>
+        <item quantity="other">%1$d berichten</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">1 lid</item>
+        <item quantity="other">%1$d leden</item>
+    </plurals>
+
     <string name="self">Mij</string>
     <string name="draft">Concept</string>
     <string name="image">Afbeelding</string>
     <string name="gif">GIF</string>
     <string name="audio">Audio</string>
+    <string name="voice_message">Spraakbericht</string>
     <string name="video">Video</string>
     <string name="contact">Contactpersoon</string>
     <string name="camera">Camera</string>
@@ -66,7 +85,7 @@
     <string name="magenta">Magenta</string>
     <string name="white">Wit</string>
 
-    <string name="small">Klei</string>
+    <string name="small">Klein</string>
     <string name="normal">Normaal</string>
     <string name="large">Groot</string>
     <string name="extra_large">Extra groot</string>
@@ -167,7 +186,6 @@
         <item quantity="one">%d ongelezen bericht</item>
         <item quantity="other">%d ongelezen berichten</item>
     </plurals>
-    <string name="chat_no_messages_hint">Bericht versturen aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
@@ -178,6 +196,153 @@
     <string name="chat_input_placeholder">Bericht</string>
     <string name="chat_archived_label">Gearchiveerd</string>
     <string name="chat_no_messages">Geen berichten.</string>
+    <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
+
     <!-- search -->
     <string name="search">Zoeken</string>
+    <string name="search_explain">Zoek naar gesprekken, contactpersonen en berichten</string>
+    <string name="search_no_result_for_x">Geen resultaten gevonden voor \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Groepsnaam</string>
+    <string name="group_avatar">Groepsafbeelding</string>
+    <string name="group_create_button">Groep creëren</string>
+    <string name="group_please_enter_group_name">Voer een naam in voor de groep.</string>
+    <string name="group_add_members">Deelnemers toevoegen</string>
+    <string name="group_hello_draft">Hallo, ik heb zojuist de groep \"%1$s\" voor ons gemaakt.</string>
+    <string name="group_self_not_in_group">Je moet lid zijn van de groep om deze actie uit te voeren.</string>
+    <string name="profile_encryption">Versleuteling</string>
+
+
+    <!-- chat media view -->
+    <string name="media_preview">Mediavoorbeeld</string>
+    <string name="media_tab_media">Media</string>
+    <string name="media_tab_documents">Documenten</string>
+    <string name="media_no_media_hint">Geen media.</string>
+    <string name="media_no_documents_hint">Geen documenten</string>
+
+
+    <!-- invite -->
+    <string name="invite_slogan">Vrienden houden vrienden niet opgesloten in berichtsilo\'s.</string>
+    <string name="invite_default_text">Laten we overgaan op Delta Chat - %1$s - je kunt me een bericht sturen op %2$s</string>
+
+
+    <string name="welcome_intro1_message">De berichtapp met het <b>breedste publiek</b> ter wereld. <b>Gratis</b> en <b>onafhankelijk</b>.</string>
+    <string name="welcome_intro2_headline">Onafhankelijk</string>
+    <string name="welcome_intro2_message"><b>Er is geen Delta Chat-server;</b> de app gebruikt alleen je mailserver.</string>
+    <string name="welcome_intro3_headline">Snel</string>
+    <string name="welcome_intro3_message"><b>Verstuur berichten</b> binnen een paar seconden.<br/>Snelle gebruikersomgeving.</string>
+    <string name="welcome_intro4_headline">Krachtig</string>
+    <string name="welcome_intro4_message"><b>Ongelimiteerd</b> aantal gesprekken, afbeeldingen, video\'s, spraakberichten en meer. Kan omgaan met meerdere clients.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">Gratis</string>
+    <string name="welcome_intro6_headline">Versleuteld</string>
+    <string name="welcome_intro6_message"><b>Versleuteld</b> met alle bekende algoritmen. Berichten blijven op jouw server.</string>
+    <string name="welcome_intro7_headline">Betrouwbaar</string>
+    <string name="welcome_start_messaging">Beginnen</string>
+    <string name="login_title">Inloggen</string>
+    <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je IMAP inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
+    <string name="login_inbox">Postvak IN</string>
+    <string name="login_imap_login">IMAP-inlognaam</string>
+    <string name="login_imap_server">IMAP-server</string>
+    <string name="login_imap_port">IMAP-poort</string>
+    <string name="login_imap_security">IMAP-beveiliging</string>
+    <string name="login_outbox">Postvak UIT</string>
+    <string name="login_smtp_login">SMTP-inlognaam</string>
+    <string name="login_smtp_password">SMTP-wachtwoord</string>
+    <string name="login_smtp_server">SMTP-server</string>
+    <string name="login_smtp_port">SMTP-poort</string>
+    <string name="login_smtp_security">SMTP-beveiliging</string>
+    <string name="login_info_gmail_text">Bij een Gmail-account moet je een app-wachtwoord creëren als je authenticatie in twee stappen hebt ingeschaked. Als dit niet beschikbaar is, schakel dan Minder veilige apps in.</string>
+    <string name="login_error_mail">Voer een geldig e-mailadres in</string>
+    <string name="login_error_server">Voer een geldig(e) IP-adres/server in</string>
+    <string name="login_error_port">Voer een geldige poort in (1-65535)</string>
+    <string name="login_error_required_fields">Voer een geldig e-mailadres en wachtwoord in</string>
+    <string name="import_backup_title">Back-up importeren</string>
+    <string name="import_backup_ask">Back-up aangetroffen in \"%1$s\".\n\nWil je de instellingen en gegevens daaruit importeren?</string>
+    <string name="import_backup_no_backup_found">Geen back-ups aangetroffen.\n\nKopieer de back-up naar \"%1$s\" en probeer het opnieuw of druk op \"Beginnen\" om het normale instelproces te doorlopen.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Kan niet inloggen als <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Controleer het e-mailadres en wachtwoord.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in bijv. de webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
+
+
+    <!-- preferences -->
+    <string name="pref_summary_privacy">Schermvergrendeling %1$s, Leesbevestigingen %2$s</string>
+    <string name="pref_summary_appearance">Thema %1$s, Taal %2$s, Achtergrond %3$s</string>
+    <string name="pref_summary_on">aan</string>
+    <string name="pref_summary_off">uit</string>
+    <string name="pref_summary_default">standaard</string>
+    <string name="pref_summary_custom">aangepast</string>
+    <string name="pref_using_custom">Aangepast wordt gebruikt: %s</string>
+    <string name="pref_using_default">Standaard wordt gebruikt: %s</string>
+    <string name="pref_profile_info_headline">Jouw profielinformatie</string>
+    <string name="pref_profile_photo">Profielfoto</string>
+    <string name="pref_trim_headline">Gespreksinkorting</string>
+    <string name="pref_trim_option">Oude berichten verwijderen</string>
+    <string name="pref_trim_option_explain">Oudere berichten automatisch verwijderen na het overschrijden van de opgegeven lengte</string>
+    <string name="pref_trim_length_limit">Lengtelimiet</string>
+    <string name="pref_trim_length_limit_summary">%d berichten per gesprek</string>
+    <string name="pref_trim_now_button">Alle gesprekken nu inkorten</string>
+    <string name="pref_trim_now_ask">Wil je alle oude berichten nu verwijderen? Alle gesprekken worden direct ingekort tot de %d recentste berichten.</string>
+    <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
+    <string name="pref_profile_photo_remove_ask">Profielfoto verwijderen?</string>
+    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_password_and_account_settings">Wachtwoord en accountinstellingen</string>
+    <string name="pref_who_can_see_this_information">Wie kan deze informatie bekijken?</string>
+    <string name="pref_who_can_see_profile_explain">Je profielfoto en -naam worden in gesprekken naast jouw berichten getoond. Reeds verstuurde informatie kan niet worden verwijderd of teruggehaald.</string>
+    <string name="pref_your_name">Je naam</string>
+    <string name="pref_default_status_label">Statustekst</string>
+    <string name="pref_default_status_text">Verstuurd met mijn Delta Chat Messenger: https://delta.chat</string>
+    <string name="pref_enter_sends">Versturen met Enter-toets</string>
+    <string name="pref_enter_sends_explain">De Enter-toets gebruiken om tekstberichten te versturen</string>
+    <string name="pref_vibrate">Trillen</string>
+    <string name="pref_chat_settings">Gespreksinstellingen</string>
+    <string name="pref_change_secret">Geheim wijzigen</string>
+    <string name="pref_change_secret_explain">Wijzig je pincode/patroon/vingerafdruk via de systeeminstellingen</string>
+    <string name="pref_screen_security">Schermbeveiliging</string>
+    <string name="pref_screen_security_explain">Geen schermafdrukken tonen in de \'recent\'-lijst en binnen de app</string>
+    <string name="pref_screen_security_please_restart_hint">Herstart de app om de wijzigingen toe te passen.</string>
+    <string name="pref_notifications">Meldingen</string>
+    <string name="pref_notifications_show">Tonen</string>
+    <string name="pref_notifications_priority">Prioriteit</string>
+    <string name="pref_led_color">LED-kleur</string>
+    <string name="pref_led_pattern">LED-knipperpatroon</string>
+    <string name="pref_sound">Geluid</string>
+    <string name="pref_silent">Stil</string>
+    <string name="pref_repeat_notify">Alarmeringen herhalen</string>
+    <string name="pref_privacy">Privacy</string>
+    <string name="pref_chats_and_media">Gesprekken en media</string>
+    <string name="pref_light_theme">Licht</string>
+    <string name="pref_dark_theme">Donker</string>
+    <string name="pref_appearance">Uiterlijk</string>
+    <string name="pref_theme">Thema</string>
+    <string name="pref_language">Taal</string>
+    <string name="pref_incognito_keyboard">Incognito-toetsenbord</string>
+    <string name="pref_incognito_keyboard_explain">Toetsenbord verzoeken om gepersonaliseerd leren uit te schakelen</string>
+    <string name="pref_read_receipts">Leesbevestigingen</string>
+    <string name="pref_read_receipts_explain">Als leesbevestigingen zijn uitgeschakeld, dan zie je geen leesbevestigingen van anderen.</string>
+    <string name="pref_manage_keys">Sleutels beheren</string>
+    <string name="pref_use_system_emoji">Systeememoji gebruiken</string>
+    <string name="pref_use_system_emoji_explain">Delta Chat\'s ingebouwde emoji-ondersteuning uitschakelen</string>
+    <string name="pref_app_access">App-toegang</string>
+    <string name="pref_communication">Communicatie</string>
+    <string name="pref_chats">Gesprekken</string>
+    <string name="pref_messages">Berichten</string>
+    <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
+    <string name="pref_message_text_size">Lettertypegrootte van berichten</string>
+    <string name="pref_view_log">Logboek bekijken</string>
+    <string name="pref_other">Overig</string>
+    <string name="pref_backup">Back-up</string>
+    <string name="pref_backup_explain">Gesprekken back-uppen naar externe opslag</string>
+    <string name="pref_backup_export_explain">Een back-up helpt je om een nieuwe installatie in te stellen op dit of een ander apparaat.\n\nDe back-up bevat alle berichten, contactpersonen en gesprekken en tevens je end-to-end Autocrypt-instellingen. Bewaar het back-upbestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
+    <string name="pref_backup_export_start_button">Back-up starten</string>
+    <string name="pref_backup_written_to_x">Back-up weggeschreven naar %1$s</string>
+    <string name="pref_managekeys_menu_title">Sleutels beheren</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat heeft toegang nodig tot je bestanden om sleutels te im- en exporteren.</string>
+    <string name="pref_managekeys_export_secret_keys">Geheime sleutels exporteren</string>
+    <string name="pref_managekeys_export_explain">Geheime sleutels exporteren naar \"%1$s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">Geheime sleutels importeren</string>
     </resources>

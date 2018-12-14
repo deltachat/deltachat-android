@@ -120,6 +120,16 @@
     <string name="menu_mute">Bildirimlerin sesini kıs</string>
     <string name="menu_unmute">Sesini aç</string>
     <string name="menu_export_attachment">Eki dışa aktar</string>
+    <string name="menu_all_media">Tüm ortamlar</string>
+    <string name="menu_share">Paylaş</string>
+    <string name="menu_block_contact">Kişiyi engelle</string>
+    <string name="menu_unblock_contact">Kişinin engelini kaldır</string>
+    <string name="menu_play">Oynat</string>
+    <string name="menu_pause">Duraklat</string>
+    <string name="menu_scroll_to_bottom">Alta kaydır</string>
+    <string name="menu_invite">Arkadaşları davet et</string>
+    <string name="menu_help">Yardım</string>
+    <string name="menu_select_all">Tümünü seç</string>
     <string name="menu_expand">Genişlet</string>
     <string name="menu_edit_name">Adı düzenle</string>
     <string name="menu_settings">Ayarlar</string>
@@ -136,4 +146,111 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Bu sohbet silinsin mi? O artık sohbet listesinde gösterilmeyecek, iletileri sunucuda kalacak.</item>
+        <item quantity="other">%1%d sohbet silinsin mi? Onlar artık sohbet listesinde gösterilmeyecek, iletileri sunucuda kalacak.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">İleti buradan ve sunucudan silinsin mi?</item>
+        <item quantity="other">%1$d ileti buradan ve sunucudan silinsin mi?</item>
+    </plurals>
+    <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
+    <string name="ask_export_attachment">Ek dışa aktarılsın mı? Ekleri dışa aktarma, aygıtınızdaki tüm diğer uygulamaların onlara erişmesine izin verecek.\n\nSürdürülsün mü?</string>
+    <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden iletiler ve aramalar almayacaksınız.</string>
+    <string name="ask_unblock_contact">Bu kişinin engeli kaldırılsın mı? Bu kişiden bir kez daha iletiler ve aramalar alabileceksiniz.</string>
+    <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSüren sohbetler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Kişiler</string>
+    <string name="contacts_enter_name_or_email">Ad ya da e-posta adresi girin</string>
+    <string name="contacts_type_email_above">Yukarıya e-posta adresi yazın</string>
+    <string name="contacts_empty_hint">Kişi yok.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">Sohbet arşivlendi</item>
+        <item quantity="other">%d sohbet arşivlendi</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">Sohbet arşivden çıkartıldı</item>
+        <item quantity="other">%d sohbet arşivden çıkartıldı</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Arşivlenen sohbetler</string>
+    <string name="chat_please_enter_message">Lütfen bir ileti girin.</string>
+    <string name="chat_camera_unavailable">Kamera kullanım dışı.</string>
+    <string name="chat_unable_to_record_audio">Ses kaydedilemiyor.</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%d okunmayan ileti</item>
+        <item quantity="other">%d okunmayan ileti</item>
+    </plurals>
+    <string name="chat_new_group_hint">İlk iletiyi oluşturun, diğerlerinin bu grupta yanıt vermesine izin verin.\n\n• Tüm üyeler Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin gönderilmesi biraz zaman alabilir.</string>
+    <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
+    <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve tutun, göndermek için bırakın</string>
+    <string name="chat_all_done_hint">Gelen kutusu sıfır</string>
+    <string name="chat_all_done_explain">Çok saçmaladıkları için çeviri takımımız bunu çeviremedi. İlgili saçmalığın kaldırılması istenecektir.</string>
+    <string name="chat_share_with_title">Paylaş</string>
+    <string name="chat_input_placeholder">İleti</string>
+    <string name="chat_archived_label">Arşivlendi</string>
+    <string name="chat_no_messages">İleti yok.</string>
+    <string name="chat_self_talk_subtitle">Kendime gönderdiğim iletiler</string>
+
+    <!-- search -->
+    <string name="search">Ara</string>
+    <string name="search_explain">Sohbetleri, kişileri ve iletileri arayın</string>
+    <string name="search_no_result_for_x">\"%s\" için bulunan sonuç yok</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Grup adı</string>
+    <string name="group_avatar">Grup avatarı</string>
+    <string name="group_create_button">Grup oluştur</string>
+    <string name="group_please_enter_group_name">Lütfen grup için bir ad girin.</string>
+    <string name="group_add_members">Üye ekle</string>
+    <string name="group_hello_draft">Merhaba, bizim için şimdi \"%1$s\" grubunu oluşturdum.</string>
+    <string name="group_self_not_in_group">Bu eylemi gerçekleştirmek için grubun bir üyesi olmalısınız.</string>
+    <string name="profile_encryption">Şifreleme</string>
+
+
+    <!-- chat media view -->
+    <string name="media_preview">Ortam önizlemesi</string>
+    <string name="media_tab_media">Ortamlar</string>
+    <string name="media_tab_documents">Belgeler</string>
+    <string name="media_no_media_hint">Ortam yok.</string>
+    <string name="media_no_documents_hint">Belge yok</string>
+
+
+    <!-- invite -->
+    <string name="invite_slogan">Arkadaşlar iletileşme silolarında arkadaşların kilitlenmesine izin vermez.</string>
+    <string name="invite_default_text">Haydi Delta Chat\'e geçin - %1$s - %2$s üzerinden bana yazabilirsiniz</string>
+
+
+    <string name="welcome_intro1_message">Dünyanın <b>en geniş kitleli</b> taşıyıcısı. <b>Özgür</b> ve <b>bağımsız</b>.</string>
+    <string name="welcome_intro2_headline">Bağımsız</string>
+    <string name="welcome_intro2_message"><b>Hiç Delta Chat sunucusu yoktur.</b> Uygulama, yalnızca posta sunucunuzu kullanır.</string>
+    <string name="welcome_intro3_headline">Hızlı</string>
+    <string name="welcome_intro3_message"><b>İletileri</b> saniyeler içinde gönderin.<br/>Hızlı arabirim.</string>
+    <string name="welcome_intro4_headline">Güçlü</string>
+    <string name="welcome_intro4_message"><b>Sınırsız</b> sohbetler, görüntüler, videolar, sesli iletiler ve daha fazlası. Çoklu istemci yetenekli.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">Özgür</string>
+    <string name="welcome_intro6_headline">Şifreli</string>
+    <string name="welcome_intro6_message">Tüm yaygın algoritmalarla <b>şifrelidir</b>. İletiler sunucularınızda kalır.</string>
+    <string name="welcome_intro7_headline">Güvenilir</string>
+    <string name="welcome_start_messaging">İletileşmeye Başlayın</string>
+    <string name="login_title">Oturum Aç</string>
+    <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen, IMAP\'ın web arka ucundan etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
+    <string name="login_inbox">Gelen Kutusu</string>
+    <string name="login_imap_login">IMAP oturum açma adı</string>
+    <string name="login_imap_server">IMAP sunucusu</string>
+    <string name="login_imap_port">IMAP bağlantı noktası</string>
+    <string name="login_imap_security">IMAP Güvenliği</string>
+    <string name="login_outbox">Giden Kutusu</string>
+    <string name="login_smtp_login">SMTP oturum açma adı</string>
+    <string name="login_smtp_password">SMTP Parolası</string>
+    <string name="login_smtp_server">SMTP sunucusu</string>
+    <string name="login_smtp_port">SMTP bağlantı noktası</string>
+    <string name="login_smtp_security">SMTP Güvenliği</string>
     </resources>

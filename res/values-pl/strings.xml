@@ -10,4 +10,79 @@
     <string name="cancel">Anuluj</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
+    <string name="not_now">Nie teraz</string>
+    <string name="error">Błąd</string>
+    <string name="error_x">Błąd: %1$s</string>
+    <string name="contacts_headline">Kontakty</string>
+    <string name="email_address">Adres e-mail</string>
+    <string name="bad_email_address">Zły adres e-mail</string>
+    <string name="password">Hasło</string>
+    <string name="now">Teraz</string>
+    <string name="today">Dzisiaj</string>
+    <string name="yesterday">Wczoraj</string>
+    <string name="draft">Szkic</string>
+    <string name="image">Obraz</string>
+    <string name="gif">Gif</string>
+    <string name="audio">Audio</string>
+    <string name="voice_message">Wiadomość głosowa</string>
+    <string name="video">Wideo</string>
+    <string name="contact">Kontakt</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeria</string>
+    <string name="file">Plik</string>
+    <string name="green">Zielony</string>
+    <string name="red">Czerwony</string>
+    <string name="blue">Niebieski</string>
+    <string name="orange">Pomarańczowy</string>
+    <string name="cyan">Cyan</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">Biały</string>
+
+    <string name="small">Mały</string>
+    <string name="normal">Normalny</string>
+    <string name="large">Duży</string>
+    <string name="extra_large">Bardzo duży</string>
+
+    <string name="fast">Szybki</string>
+    <string name="slow">Wolny</string>
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Nowy kontakt</string>
+    <string name="menu_new_chat">Nowy czat</string>
+    <string name="menu_new_group">Nowa grupa</string>
+    <string name="menu_send">Wyślij</string>
+    <string name="menu_edit_group">Edytuj grupę</string>
+    <string name="menu_add_attachment">Dodaj załącznik</string>
+    <string name="menu_leave_group">Opuść grupę</string>
+    <string name="menu_delete_chat">Usuń czat</string>
+    <string name="menu_delete_messages">Usuń wiadomości</string>
+    <string name="menu_delete_image">Usuń  obraz</string>
+    <string name="menu_message_details">Szczegóły wiadomości</string>
+    <string name="menu_copy_to_clipboard">Kopiuj do schowka</string>
+    <string name="menu_forward">Przekaż wiadomość</string>
+    <string name="menu_resend">Wyślij ponownie wiadomość</string>
+    <string name="menu_reply">Odpowiedz na wiadomość</string>
+    <string name="menu_mute">Wyłącz powiadomienia</string>
+    <string name="menu_unmute">Wyłącz powiadomienia</string>
+    <string name="menu_export_attachment">Eksportuj załącznik</string>
+    <string name="menu_all_media">Wszystkie multimedia</string>
+    <string name="menu_block_contact">Blokuj kontakt</string>
+    <string name="menu_unblock_contact">Odblokuj kontakt</string>
+    <string name="menu_scroll_to_bottom">Przewiń do góry</string>
+    <string name="menu_invite">Zaproś znajomych</string>
+    <string name="menu_help">Pomoc</string>
+    <string name="menu_edit_name">Edytuj nazwę</string>
+    <string name="menu_settings">Ustawienia</string>
+    <string name="menu_advanced">Zaawansowane</string>
+    <string name="menu_view_profile">Pokaż profil</string>
+
+    <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
+    <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
+    <string name="mute_for_one_day">Wyłącz na 1 dzień</string>
+    <string name="mute_for_seven_days">Wyłącz na 7 dni</string>
+    <string name="mute_for_one_year">Wyłącz na 1 rok</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Kontakty</string>
     </resources>

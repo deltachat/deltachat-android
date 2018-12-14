@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Delta Chat</string>
+    <!-- Translators: please enter the name of the language you're translating to here -->
+    <string name="language_name">English</string>
+
+
+    <!-- common strings without special context -->
+    <string name="ok">O.k.</string>
+    <string name="cancel">Annullere</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="on">Til</string>
+    <string name="off">Fra</string>
+    <string name="def">Standard</string>
+    <string name="none">Ingen</string>
+    <string name="open">Åbne</string>
+    <string name="not_now">Ikke nu</string>
+    <string name="never">Aldrig</string>
+    <string name="one_moment">Et øjeblik…</string>
+    <string name="done">Færdig</string>
+    <string name="contacts_headline">Kontakter</string>
+    <string name="email_address">E-post adresse</string>
+    <string name="password">Adgangskode</string>
+    <string name="now">Nu</string>
+    <string name="n_min_ago">%d min.</string>
+    <string name="today">I dag</string>
+    <string name="yesterday">I går</string>
+    <string name="this_week">Denne uge</string>
+    <string name="this_month">Denne uge</string>
+    <plurals name="n_minutes">
+        <item quantity="one">%d minut</item>
+        <item quantity="other">%d minuter</item>
+    </plurals>
+    <plurals name="n_hours">
+        <item quantity="one">%d time</item>
+        <item quantity="other">%d timer</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">1 samtale</item>
+        <item quantity="other">%1$d samtaler</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 kontakt</item>
+        <item quantity="other">%1$d kontakter</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">1 besked</item>
+        <item quantity="other">%1$d beskeder</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">1 medlem</item>
+        <item quantity="other">%1$d medlemmer</item>
+    </plurals>
+
+    <string name="self">Undertegnede</string>
+    <string name="draft">Kladde</string>
+    <string name="image">Billede</string>
+    <string name="gif">Gif</string>
+    <string name="audio">Lyd</string>
+    <string name="voice_message">Tale besked</string>
+    <string name="video">Video</string>
+    <string name="contact">Kontakt</string>
+    <string name="camera">Kamera</string>
+    <string name="location">Placering</string>
+    <string name="gallery">Galleri</string>
+    <string name="file">Fil</string>
+    <string name="unknown">Ukendt</string>
+
+    <string name="green">Grøn</string>
+    <string name="red">Rød</string>
+    <string name="blue">Blå</string>
+    <string name="orange">Orange</string>
+    <string name="white">Hvid</string>
+
+    <string name="small">Lille</string>
+    <string name="normal">Normal</string>
+    <string name="large">Stor</string>
+    <string name="extra_large">Ekstra stor</string>
+
+    <string name="fast">Hurtig</string>
+    <string name="slow">Langsom</string>
+
+    <string name="message_delivered">Besked leveret</string>
+    <string name="message_read">Besked læst</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Ny kontakt</string>
+    <string name="menu_new_chat">Ny samtale</string>
+    <string name="menu_new_group">Ny gruppe</string>
+    <string name="menu_send">Sende</string>
+    <string name="menu_edit_group">Redigere gruppe</string>
+    <string name="menu_archive_chat">Arkivere samtale</string>
+    <string name="menu_add_attachment">Tilføje vedhæftet</string>
+    <string name="menu_leave_group">Forlade gruppe</string>
+    <string name="menu_delete_chat">Slette samtale</string>
+    <string name="menu_delete_messages">Slette beskeder</string>
+    <string name="menu_delete_image">Slette billede</string>
+    <string name="menu_message_details">Besked detaljer</string>
+    <string name="menu_copy_to_clipboard">Kopiere til klippebord</string>
+    <string name="menu_forward">Videresende besked</string>
+    <string name="menu_resend">Gensende besked</string>
+    <string name="menu_reply">Svare besked</string>
+    <string name="menu_export_attachment">Eksportere vedhæftet</string>
+    <string name="menu_all_media">Alle medier</string>
+    <string name="menu_share">Dele</string>
+    <string name="menu_block_contact">Bolkere kontakt</string>
+    <string name="menu_play">Afspille</string>
+    <string name="menu_pause">Pause</string>
+    <string name="menu_scroll_to_bottom">Rulle til bunden</string>
+    <string name="menu_invite">Invitere venner</string>
+    <string name="menu_help">Hjælp</string>
+    <string name="menu_select_all">Vælge alle</string>
+    <string name="menu_expand">Udvide</string>
+    <string name="menu_edit_name">Redigere navn</string>
+    <string name="menu_settings">Opsætning</string>
+    <string name="menu_advanced">Avanceret</string>
+    <string name="menu_deaddrop">Kontakt forespørgseler</string>
+    <string name="menu_view_profile">Vise profil</string>
+
+    <!-- contact list -->
+    <string name="contacts_title">Kontakter</string>
+    <string name="contacts_enter_name_or_email">Indtaste navn eller e-post adresse</string>
+    <string name="contacts_type_email_above">Indtaste e-post adresse ovenover</string>
+    <string name="contacts_empty_hint">Ingen kontakter</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">Samtale arkiveret</item>
+        <item quantity="other">%d samtaler arkiveret</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Arkiverede samtaler</string>
+    <string name="chat_please_enter_message">Indtast besked</string>
+    <string name="chat_camera_unavailable">Kamera ikke tilgængelig</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%d ikke læst besked</item>
+        <item quantity="other">%d ikke læste beskeder</item>
+    </plurals>
+    <string name="chat_share_with_title">Dele med</string>
+    <string name="chat_input_placeholder">Besked</string>
+    <string name="chat_archived_label">Arkiveret</string>
+    <string name="chat_no_messages">Ingen beskeder</string>
+    <!-- search -->
+    <string name="search">Søge</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Gruppe navn</string>
+    <string name="group_create_button">Oprette gruppe</string>
+    <string name="group_add_members">Tilføje medlemmer</string>
+    <string name="profile_encryption">Kryptering</string>
+
+
+    <string name="media_tab_media">Medie</string>
+    <string name="media_tab_documents">Dokumenter</string>
+    <string name="media_no_media_hint">Ingen medie</string>
+    <string name="media_no_documents_hint">Ingen dokumenter</string>
+
+
+    <string name="welcome_intro2_headline">Uafhængig</string>
+    <string name="welcome_intro3_headline">Hurtig</string>
+    <string name="welcome_intro4_headline">Kraftfuld</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">Fri</string>
+    <string name="welcome_intro6_headline">Krypteret</string>
+    <string name="welcome_intro7_headline">Troværdig</string>
+    <string name="login_title">Logind</string>
+    <string name="login_inbox">Indbakke</string>
+    <string name="login_imap_login">IMAP logind navn</string>
+    <string name="login_imap_server">IMAP server</string>
+    <string name="login_imap_port">IMAP port</string>
+    <string name="login_imap_security">IMAP sikkerhed</string>
+    <string name="login_outbox">Udbakke</string>
+    <string name="login_smtp_login">SMTP login navn</string>
+    <string name="login_smtp_password">SMTP adgangskode</string>
+    <string name="login_smtp_server">SMTP server</string>
+    <string name="login_smtp_port">SMTP port</string>
+    <string name="login_smtp_security">SMTP sikkerhed</string>
+    <string name="import_backup_title">Importere sikkerhedskopi</string>
+    <string name="pref_summary_on">til</string>
+    <string name="pref_summary_off">fra</string>
+    <string name="pref_summary_default">standard</string>
+    </resources>

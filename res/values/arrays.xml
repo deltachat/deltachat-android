@@ -7,6 +7,7 @@
   <string-array name="language_entries">
       <!-- zz --><item>@string/def</item>
       <!-- en --><item>English</item>
+      <!-- da --><item>Dansk</item>
       <!-- de --><item>Deutsch</item>
       <!-- es --><item>Español</item>
       <!-- eu --><item>Euskara</item>
@@ -20,6 +21,7 @@
   <string-array name="language_values">
       <item>zz</item>
       <item>en</item>
+      <item>da</item>
       <item>de</item>
       <item>es</item>
       <item>eu</item>
