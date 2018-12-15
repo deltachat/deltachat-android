@@ -12,6 +12,7 @@
       <!-- es --><item>Español</item>
       <!-- eu --><item>Euskara</item>
       <!-- fr --><item>Français</item>
+      <!-- it --><item>Italiano</item>
       <!-- nl --><item>Nederlands</item>
       <!-- pl --><item>Polski</item>
       <!-- sq --><item>Shqip</item>
@@ -26,6 +27,7 @@
       <item>es</item>
       <item>eu</item>
       <item>fr</item>
+      <item>it</item>
       <item>nl</item>
       <item>pl</item>
       <item>sq</item>
