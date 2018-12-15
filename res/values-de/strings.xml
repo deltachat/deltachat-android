@@ -140,13 +140,13 @@
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
     <string name="mute_for_two_hours">Stumm für 2 Stunden</string>
     <string name="mute_for_one_day">Stumm für 1 Tag</string>
-    <string name="mute_for_seven_days">Stumm für 1 Woche</string>
+    <string name="mute_for_seven_days">Stumm für 7 Tage</string>
     <string name="mute_for_one_year">Stumm für 1 Jahr</string>
 
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
-    <string name="ask_forward">Nachricht weiterleiten zu %1$s?</string>
+    <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
     <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.</string>
     <string name="ask_unblock_contact">Diesen Kontakt freischalten? Sie werden wieder in der Lage sein, Nachrichten und Anrufe von diesem Kontakt zu empfangen.</string>
     <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\n\Kontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
@@ -208,19 +208,24 @@
     <string name="invite_default_text">Wechseln wir zu Delta Chat  - %1$s - Du kannst mir eine Nachricht schicken%2$s</string>
 
 
-    <string name="welcome_intro1_message">Der messenger mit dem<b>breitesten Publikum</b> in der Welt. <b>Frei</b> und <b>unabhängig</b>.</string>
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro1_message">Der Messenger mit der größten Reichweite der Welt. Frei und unabhängig.</string>
     <string name="welcome_intro2_headline">Unabhängig</string>
-    <string name="welcome_intro2_message"><b>Es gibt keinen Delta Chat Server.</b> Das App benutz nur deinen E-Mailserver.</string>
+    <string name="welcome_intro2_message">Es gibt keinen Delta-Chat-Server. Die App verwendet nur Ihren E-Mail-Server.</string>
     <string name="welcome_intro3_headline">Schnell</string>
-    <string name="welcome_intro3_message"><b>Push Meldungen</b> in Sekundenschnelle.<br/>Schnelle Schnittstelle.</string>
+    <string name="welcome_intro3_message">Push-Nachrichten in Sekunden.\nSchnelles Interface.</string>
     <string name="welcome_intro4_headline">Leistungsstark</string>
-    <string name="welcome_intro4_message"><b>Unbegrnezt</b> Unterhaltungen, Bilder, Videos, Audiodateien, Nachrichten und mehr. Multi-client fähig.</string>
+    <string name="welcome_intro4_message">Unbegrenzte Chats, Bilder, Videos, Sprachnachrichten und mehr. Multi-Client-fähig.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Frei</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Open Source. Keine Werbung. Kein Abo. Keine Bindung an die Mobilfunknummer.</string>
     <string name="welcome_intro6_headline">Verschlüsselt</string>
-    <string name="welcome_intro6_message"><b>Verschlüsselt</b> mit allen gängigen Algorithmen. Nachrichten bleiben auf Ihren Servern.</string>
+    <string name="welcome_intro6_message">Verschlüsselung mit allen gängigen Verfahren. Die Nachrichten bleiben auf Ihren Servern.</string>
     <string name="welcome_intro7_headline">Vertaulich</string>
-    <string name="welcome_start_messaging">Starten mit Nahcricht</string>
+    <string name="welcome_intro7_message">Delta Chat ist für die vertrauliche geschäftliche Kommunikation geeignet.</string>
+    <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
     <string name="login_subheader">Bei bekannten E-Mail-Anbietern werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Wenden Sie sich an Ihren E-Mail-Anbieter oder Ihre Freunde, um Hilfe zu erhalten.</string>
     <string name="login_inbox">E-Mail Eingang</string>
@@ -242,8 +247,6 @@
     <string name="import_backup_title">Sicherung einlesen</string>
     <string name="import_backup_ask">Sicherung gefunden \"%1$s\".\n\n Möchten Sie diese einlesen und alle Daten und Einstellungen davon verwenden?</string>
     <string name="import_backup_no_backup_found">Keine Sicherung gefunden.\n\nKopieren Sie Ihre Sicherung nach \"%1$s\" und versuchen Sie es erneut. Alternativ können Sie auch \"Messaging starten\" drücken, um den normalen Einrichtungsprozess fortzusetzen.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
-    <string name="login_error_cannot_login">Kann sich nicht als <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> anmelden. Bitte überprüfen Sie die E-Mailadresse und das Passwort.</string>
     <!-- preferences -->
     <string name="pref_summary_privacy">Bildschirmsperre %1$s, Lesebestätigung %2$s</string>
     <string name="pref_summary_appearance">Design %1$s, Sprache %2$s, Hintergrund %3$s</string>
@@ -314,7 +317,7 @@
     <string name="systemmsg_group_image_deleted">Gruppenbild gelöscht.</string>
     <string name="systemmsg_member_added">Benutzer %1$s hinzugefügt.</string>
     <string name="systemmsg_member_removed">Benutzer %1$s entfernt.</string>
-    <string name="systemmsg_group_left">Gruppe verlassen</string>
+    <string name="systemmsg_group_left">Gruppe verlassen.</string>
     <!-- screen lock -->
     <string name="screenlock_title">Bildschirmsperre</string>
     <string name="screenlock_explain">Sperren Sie den Delta Chat Zugang mit Android Bildschirmsperre oder Fingerabdruck.</string>
@@ -342,9 +345,9 @@
     <string name="notify_mark_all_read">Alle als gelesen markieren</string>
     <string name="notify_mark_read">Gelesen markieren</string>
     <string name="notify_media_message">Medienmitteilung</string>
-    <string name="notify_reply_button">Wiedergabe</string>
+    <string name="notify_reply_button">Wiederholen</string>
     <string name="notify_new_message">Neue Nachricht</string>
-    <string name="notify_background_connection_enabled">Verbindum im Hintergrund aktiviert</string>
+    <string name="notify_background_connection_enabled">Verbindung im Hintergrund aktiviert</string>
     <string name="notify_priority_high">Groß</string>
     <string name="notify_priority_max">Maximum</string>
     <string name="notify_name_and_message">Name und Nachricht</string>

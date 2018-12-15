@@ -218,18 +218,23 @@
     <string name="invite_default_text">Haydi Delta Chat\'e geçin - %1$s - %2$s üzerinden bana yazabilirsiniz</string>
 
 
-    <string name="welcome_intro1_message">Dünyanın <b>en geniş kitleli</b> taşıyıcısı. <b>Özgür</b> ve <b>bağımsız</b>.</string>
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro1_message">Dünyanın en geniş kitleli taşıyıcısı. Özgür ve bağımsız.</string>
     <string name="welcome_intro2_headline">Bağımsız</string>
-    <string name="welcome_intro2_message"><b>Hiç Delta Chat sunucusu yoktur.</b> Uygulama, yalnızca posta sunucunuzu kullanır.</string>
+    <string name="welcome_intro2_message">Hiç Delta Chat sunucusu yoktur. Uygulama, yalnızca posta sunucunuzu kullanır.</string>
     <string name="welcome_intro3_headline">Hızlı</string>
-    <string name="welcome_intro3_message"><b>İletileri</b> saniyeler içinde gönderin.<br/>Hızlı arabirim.</string>
+    <string name="welcome_intro3_message">İletileri saniyeler içinde gönderin.<br/>Hızlı arabirim.</string>
     <string name="welcome_intro4_headline">Güçlü</string>
-    <string name="welcome_intro4_message"><b>Sınırsız</b> sohbetler, görüntüler, videolar, sesli iletiler ve daha fazlası. Çoklu istemci yetenekli.</string>
+    <string name="welcome_intro4_message">Sınırsız sohbetler, görüntüler, videolar, sesli iletiler ve daha fazlası. Çoklu istemci yetenekli.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Özgür</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Delta Chat sonsuza dek özgürdür.<br/>Açık kaynaklı. Reklâm yok. Abonelik yok. Satıcı kilidi yok.</string>
     <string name="welcome_intro6_headline">Şifreli</string>
-    <string name="welcome_intro6_message">Tüm yaygın algoritmalarla <b>şifrelidir</b>. İletiler sunucularınızda kalır.</string>
+    <string name="welcome_intro6_message">Tüm yaygın algoritmalarla şifrelidir. İletiler sunucularınızda kalır.</string>
     <string name="welcome_intro7_headline">Güvenilir</string>
+    <string name="welcome_intro7_message">Delta Chat gelişimi, iş için güvenli, uyumlu ve standartlar tabanlıdır.</string>
     <string name="welcome_start_messaging">İletileşmeye Başlayın</string>
     <string name="login_title">Oturum Aç</string>
     <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen, IMAP\'ın web arka ucundan etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>

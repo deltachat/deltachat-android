@@ -231,20 +231,21 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro1_message">De berichtapp met het <b>breedste publiek</b> ter wereld. <b>Gratis</b> en <b>onafhankelijk</b>.</string>
+    <string name="welcome_intro1_message">De berichtapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
     <string name="welcome_intro2_headline">Onafhankelijk</string>
-    <string name="welcome_intro2_message"><b>Er is geen Delta Chat-server;</b> de app gebruikt alleen je mailserver.</string>
+    <string name="welcome_intro2_message">Er is geen Delta Chat-server; de app gebruikt alleen je mailserver.</string>
     <string name="welcome_intro3_headline">Snel</string>
-    <string name="welcome_intro3_message"><b>Verstuur berichten</b> binnen een paar seconden.<br/>Snelle gebruikersomgeving.</string>
+    <string name="welcome_intro3_message">Verstuur berichten binnen een paar seconden.\nSnelle gebruikersomgeving.</string>
     <string name="welcome_intro4_headline">Krachtig</string>
-    <string name="welcome_intro4_message"><b>Ongelimiteerd</b> aantal gesprekken, afbeeldingen, video\'s, spraakberichten en meer. Kan omgaan met meerdere clients.</string>
+    <string name="welcome_intro4_message">Ongelimiteerd aantal gesprekken, afbeeldingen, video\'s, spraakberichten en meer. Kan omgaan met meerdere clients.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Gratis</string>
-    <string name="welcome_intro5_message"><b>Delta Chat dev</b> zal altijd gratis blijven.<br/>Open source. Geen reclame. Geen abonnement. Onafhankelijk.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Delta Chat zal altijd gratis blijven. Open source. Geen reclame. Geen abonnement. Onafhankelijk.</string>
     <string name="welcome_intro6_headline">Versleuteld</string>
-    <string name="welcome_intro6_message"><b>Versleuteld</b> met alle bekende algoritmen. Berichten blijven op jouw server.</string>
+    <string name="welcome_intro6_message">Versleuteld met alle bekende algoritmen. Berichten blijven op jouw server.</string>
     <string name="welcome_intro7_headline">Betrouwbaar</string>
-    <string name="welcome_intro7_message"><b>Delta Chat dev</b> is veilig voor zakelijk gebruik, compatibel en gebaseerd op standaarden.</string>
+    <string name="welcome_intro7_message">Delta Chat is veilig voor zakelijk gebruik, compatibel en gebaseerd op standaarden.</string>
     <string name="welcome_start_messaging">Beginnen</string>
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>
@@ -269,7 +270,7 @@
     <string name="import_backup_ask">Back-up aangetroffen in \"%1$s\".\n\nWil je de instellingen en gegevens daaruit importeren?</string>
     <string name="import_backup_no_backup_found">Geen back-ups aangetroffen.\n\nKopieer de back-up naar \"%1$s\" en probeer het opnieuw of druk op \"Beginnen\" om het normale instelproces te doorlopen.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
-    <string name="login_error_cannot_login">Kan niet inloggen als <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Controleer het e-mailadres en wachtwoord.</string>
+    <string name="login_error_cannot_login">Kan niet inloggen als \"%1$s\". Controleer het e-mailadres en wachtwoord.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in bijv. de webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
 

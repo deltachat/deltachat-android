@@ -211,20 +211,21 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me <b>publikun më të gjerë</b> në botë. <b>I lirë</b> dhe <b>i pavarur</b>.</string>
+    <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
     <string name="welcome_intro2_headline">I pavarur</string>
-    <string name="welcome_intro2_message"><b>S’ka shërbyes Delta Chat.</b> Aplikacioni përdor vetëm shërbyesin tuaj të email-eve.</string>
+    <string name="welcome_intro2_message">S’ka shërbyes Delta Chat. Aplikacioni përdor vetëm shërbyesin tuaj të email-eve.</string>
     <string name="welcome_intro3_headline">I shpejtë</string>
-    <string name="welcome_intro3_message"><b>Dërgoni mesazhe</b> brenda sekondash.<br/>Ndërfaqe e shpejtë.</string>
+    <string name="welcome_intro3_message">Dërgoni mesazhe brenda sekondash.\nNdërfaqe e shpejtë.</string>
     <string name="welcome_intro4_headline">I fuqishëm</string>
-    <string name="welcome_intro4_message">Biseda, figura, video, mesazhe audio <b>të pakufizuara</b>, dhe më tepër. I aftë për multi-klient.</string>
+    <string name="welcome_intro4_message">Biseda, figura, video, mesazhe audio të pakufizuara, dhe më tepër. I aftë për multi-klient.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">I lirë</string>
-    <string name="welcome_intro5_message"><b>Delta Chat</b> është përgjithmonë i lirë.<br/>Me burim të hapur. Pa reklama. Pa pajtime. Pa kyçje nga tregtues.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Delta Chat është përgjithmonë i lirë.\nMe burim të hapur. Pa reklama. Pa pajtime. Pa kyçje nga tregtues.</string>
     <string name="welcome_intro6_headline">I fshehtëzuar</string>
-    <string name="welcome_intro6_message"><b>Fshehtëzuar</b> me krejt algoritmet e zakonshëm. Mesazhet mbeten në shërbyesit tuaj.</string>
+    <string name="welcome_intro6_message">Fshehtëzuar me krejt algoritmet e zakonshëm. Mesazhet mbeten në shërbyesit tuaj.</string>
     <string name="welcome_intro7_headline">I besueshëm</string>
-    <string name="welcome_intro7_message"><b>Delta Chat</b>-i është i parrezik për përdorim nga bizneset, i përputhshëm dhe i bazuar në standarde.</string>
+    <string name="welcome_intro7_message">Delta Chat-i është i parrezik për përdorim nga bizneset, i përputhshëm dhe i bazuar në standarde.</string>
     <string name="welcome_start_messaging">Filloni të Shkëmbeni Mesazhe</string>
     <string name="login_title">Hyrje</string>
     <string name="login_header">Hyrje te shërbyesi juaj</string>
@@ -248,8 +249,6 @@
     <string name="import_backup_title">Importo kopjeruajtje</string>
     <string name="import_backup_ask">U gjet kopjeruajtje te \"%1$s\".\n\nDoni të importohen dhe përdoren krejt të dhënat dhe rregullimet prej atij?</string>
     <string name="import_backup_no_backup_found">S’u gjetën kopjeruajtje.\n\nKopjojeni kopjeruajtjen te \"%1$s\" dhe riprovoni. Ndryshe, shtypni \"Filloni të shkëmbeni mesazhe\", që të vazhdoni me procesin normal të rregullimit.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
-    <string name="login_error_cannot_login">S’bëhet dot hyrja si <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>
 
