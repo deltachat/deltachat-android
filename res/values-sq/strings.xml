@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Delta Chat</string>
+    <!-- Translators: please enter the name of the language you're translating to here -->
+    <string name="language_name">Shqip</string>
+
+
     <!-- common strings without special context -->
     <string name="ok">OK</string>
     <string name="cancel">Anuloje</string>
@@ -140,12 +144,17 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Të fshihet kjo fjalosje? S’do të shfaqet më te lista e fjalosjeve, mesazhet e saj do të mbeten në shërbyes.</item>
+        <item quantity="other">Të fshihen %d fjalosje? Ato s’do të shfaqen më te lista e fjalosjeve, mesazhet e tyre do të mbeten në shërbyes.</item>
+    </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Të fshihet mesazhi këtu dhe te shërbyesi?</item>
         <item quantity="other">Të fshihen %1$d mesazhet këtu dhe te shërbyesi?</item>
     </plurals>
     <string name="ask_forward">Të përcillen mesazhet te %1$s?</string>
     <string name="ask_export_attachment">Të eksportohet bashkëngjitja? Eksportimi i bashkëngjitjeve do t\’i lejojë çfarëdo aplikacioni tjetër në pajisjen tuaj t\’i përdorë ato.\n\nTë vazhdohet?</string>
+    <string name="ask_block_contact">Të bllokohet ky kontakt? S’do të merrni më mesazhe kontakti.</string>
     <string name="ask_unblock_contact">Të zhbllokohet ky kontakt? Do të jeni sërish në gjendje të merrni mesazhe dhe thirrje prej këtij kontakti.</string>
     <string name="ask_delete_contacts">Të fshihen kontaktet? Kjo do të bëjë të fshihen përgjithmonë kontaktet e përzgjedhur.\n\nKontaktet me fjalosje në zhvillim e sipër dhe kontaktet prej libri adresash të sistemit s’mund të fshihen përgjithmonë.</string>
     <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
@@ -163,6 +172,10 @@
         <item quantity="one">Fjalosja u arkivua</item>
         <item quantity="other">U arkivuan %d fjalosje</item>
     </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">U çarkivua fjalosja</item>
+        <item quantity="other">U çarkivuan %d fjalosje</item>
+    </plurals>
     <string name="chat_archived_chats_title">Fjalosje të arkivuara</string>
     <string name="chat_please_enter_message">Ju lutemi, jepni një mesazh.</string>
     <string name="chat_camera_unavailable">Kamerë jo gati.</string>
@@ -175,6 +188,9 @@
     <string name="chat_new_group_hint">Hartoni mesazhin e parë, duke u lejuar të tjerëve të përgjigjen brenda këtij grupi.\n\n• S’ka problem nëse Delta Chat-in s’e përdorin  të tërë anëtarë.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
     <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që të dërgohet</string>
+    <string name="chat_no_chats_yet_hint">Jepini kutisë tuaj të email-eve diçka që ta shkruani në darkë. Fillojani duke i dërguar një mesazh një shoku.</string>
+    <string name="chat_all_done_hint">Zero të marrë</string>
+    <string name="chat_all_done_explain">Hiç. Fare. Zero.\nJanë qëruar!</string>
     <string name="chat_share_with_title">Ndajeni me </string>
     <string name="chat_input_placeholder">Mesazh</string>
     <string name="chat_archived_label">Arkivuar</string>
@@ -249,6 +265,8 @@
     <string name="import_backup_title">Importo kopjeruajtje</string>
     <string name="import_backup_ask">U gjet kopjeruajtje te \"%1$s\".\n\nDoni të importohen dhe përdoren krejt të dhënat dhe rregullimet prej atij?</string>
     <string name="import_backup_no_backup_found">S’u gjetën kopjeruajtje.\n\nKopjojeni kopjeruajtjen te \"%1$s\" dhe riprovoni. Ndryshe, shtypni \"Filloni të shkëmbeni mesazhe\", që të vazhdoni me procesin normal të rregullimit.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">S’bëhet dot hyrja si %1$s. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>
 
@@ -320,29 +338,92 @@
     <string name="pref_other">Të tjera</string>
     <string name="pref_backup">Kopjeruajtje</string>
     <string name="pref_backup_explain">Kopjeruaji fjalosjet në depozitim të jashtëm</string>
+    <string name="pref_backup_export_explain">Një kopjeruajtje ju lejon të rregulloni një instalim të ri në këtë apo në një tjetër pajisje.\n\nKopjeruajtja do të përmbajë krejt mesazhet, kontaktet dhe fjalosjet, si dhe rregullimin tuaj për Autocrypt skaj-më-skaj. Mbajeni kartelën e kopjeruajtjes diku të parrezikuar, përndryshe fshijeni as më shpejt që të jetë e mundur.</string>
+    <string name="pref_backup_export_start_button">Fillo kopjeruajtjen</string>
+    <string name="pref_backup_written_to_x">Kopjeruajtje e shkruar me sukses te %1$s</string>
     <string name="pref_managekeys_menu_title">Administroni kyçe</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat lyp hyrje në kartelat tuaja që të importojë/eksportojë kyçe.</string>
+    <string name="pref_managekeys_export_secret_keys">Eksportoni kyçe të fshehtë</string>
+    <string name="pref_managekeys_export_explain">Të eksportohen kyçet e fshehtë te \"%1$s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">Importoni kyçe të fshehtë</string>
+    <string name="pref_managekeys_import_explain">Të importohen kyçe të fshehtë prej \"%1$s\"?\n\n• Kyçet e fshehtë ekzistues s’do të fshihen\n\n• Kyçi i fundit i importuar do të përdoret si kyçi i ri parazgjedhje, hiq rastin ku përmban te emri i kartelës fjalën \"legacy\"</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Kyçe të fshehtë shkruar me sukses te \"%1$s\".</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">U importuan kyçe të fshehtë nga \"%1$s\".</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">Autocrypt-i është një protokoll i ri dhe i hapur për fshehtëzim automatik email-esh skaj-më-skaj.\n\nRregullimi skaj-më-skaj për ju krijohet vetvetiu kur duhet dhe mund ta shpërngulni nga një pajisje në tjetër përmes Mesazhesh Rregullimi Autocrypt-i.</string>
+    <string name="autocrypt_send_asm_title">Dërgo Mesazh Rregullimi Autocrypt-i</string>
+    <string name="autocrypt_send_asm_explain_before">Një \"Mesazh Rregullimi Autocrypt-i\" ua jep, në mënyrë të parrezikuar, rregullimin tuaj skaj-më-skaj pajisjeve të tjera që përdorin Autocrypt-in.\n\nRregullimi do të fshehtëzohet përmes një kodi rregullimi i cili shfaqet këtu dhe duhet dhënë te pajisja tjetër.</string>
+    <string name="autocrypt_send_asm_button">Dërgo Mesazh Rregullimi Autocrypt-i</string>
+    <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese:\n\n%1$s\n\nPasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
+    <string name="autocrypt_prefer_e2ee">Parapëlqe fshehtëzim skaj-më-skaj</string>
+    <string name="autocrypt_asm_subject">Mesazh Rregullimi Autocrypt-i</string>
+    <string name="autocrypt_asm_general_body">Ky është Mesazhi i Rregullimit të Autocrypt-it i përdorur për të shpërngulur rregullimin tuaj skaj-më-skaj në klientë të tjerë.\n\nQë ta shfshehtëzoni rregullimin tuaj, hapeni mesazhin te një klient që mund të përdorë Autocrypt-in dhe jepni kodin e rregullimit të treguar te pajisja që e prodhoi.</string>
+    <string name="autocrypt_asm_click_body">Ky është mesazhi i Rregullimit të Autocrypt-it i përdorur për të shpërngulur mes klientësh rregullimin tuaj skaj-më-skaj.\n\nPër ta fshehtëzuar dhe përdorur rregullimin tuaj, prekni ose klikoni mbi këtë mesazh.</string>
     <string name="autocrypt_continue_transfer_title">Mesazh Rregullimi Autocrypt-i</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Ju lutemi, jepni kodin e rregullimit që është shfaqur te pajisja tjetër.</string>
+    <string name="autocrypt_continue_transfer_succeeded">Rregullimi skaj-më-skaj u shpërngul. Kjo pajisje tani është gati të përdorë Autocrypt-in me të njëjtin rregullim si pajisja tjetër.</string>
     <string name="autocrypt_continue_transfer_retry">Riprovo</string>
+    <string name="autocrypt_bad_setup_code">Kod i gabuar rregullimi. Ju lutemi, riprovoni.\n\nNëse s’e mbani mend kodin e rregullimit, thjesht dërgoni një tjetër Mesazh Rregullimi Autocrypt-i prej pajisjes tjetër.</string>
+
+
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Emri i grupit u ndryshua nga \"%1$s\" në \"%2$s\".</string>
+    <string name="systemmsg_group_image_changed">Figura e grupit ndryshoi.</string>
+    <string name="systemmsg_group_image_deleted">Figura e grupit u fshi.</string>
+    <string name="systemmsg_member_added">U shtua anëtari %1$s.</string>
+    <string name="systemmsg_member_removed">U hoq anëtari %1$s.</string>
+    <string name="systemmsg_group_left">U braktis grupi.</string>
+    <string name="systemmsg_read_receipt_subject">Dëftesë leximi</string>
+    <string name="systemmsg_read_receipt_body">Kjo është dëftesë leximi për mesazhin \"%1$s\".\n\nDo të thotë që mesazhi u shfaq te pajisja e marrësit, jo domosdo që lënda u lexua.</string>
+    <string name="systemmsg_cannot_decrypt">Ky mesazh s’mund të shfshehtëzohet.\n\n• Mundet që të ndihmojë dërgimi thjesht i një përgjigjeje këtij mesazhi dhe t’i kërkohet dërguesit ta ridërgojë mesazhin.\n\n• Në rast se ri-instaluat Delta Chat-in apo një tjetër program email-esh në këtë apo në një tjetër pajisje, mund të donit të dërgonit një Mesazh Rregullimi Autocrypt-i që prej andej.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Kyçje ekrani</string>
+    <string name="screenlock_explain">Kyçe përdorimin e Delta Chat-it përmes kyçjesh ekrani apo shenja gishtash në Android</string>
     <string name="screenlock_authentication_failed">Mirëfilltësimi dështoi.</string>
     <string name="screenlock_unlock_title">Shkyçe Delta Chat-in</string>
+    <string name="screenlock_unlock_description">Që të shkyçet Delta Chat-i, ju lutemi, jepni të fshehtën e përcaktuar nga sistemi juaj.</string>
+    <string name="screenlock_inactivity_timeout">Kyçje pas afati mosveprimtarie</string>
+    <string name="screenlock_inactivity_timeout_explain">Vetëkyçje Delta Chat-i pas një intervali të caktuar kohe mosveprimtarie</string>
+    <string name="screenlock_inactivity_timeout_interval">Interval afati mosveprimtarie</string>
+
+
     <!-- qr code stuff -->
     <string name="qrscan_title">Skanoni kod QR</string>
     <string name="qrscan_hint">Vendoseni kamerën tuaj përmbi kodin QR</string>
     <string name="qrscan_ask_join_verified_group">Doni të bëheni pjesë e grupit të verifikuar \"%1$s\"?</string>
     <string name="qrscan_ask_fingerprint_ask_oob">Të verifikohet kontakti dhe të fillohet të bisedohet me \"%1$s\"?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Kontakti \"%1$s\" u verifikua. Të fillohet të bisedohet?</string>
+    <string name="qrscan_fingerprint_mismatch">Shenjat e gishtave të skanuar \"nuk përputhen\" me shenjat e gishtave parë së fundi për \"%1$s\".</string>
+    <string name="qrscan_no_addr_found">Ky kod QR përmban shenja gishtash, por jo adresë email.\n\nPër një verifikim <em>out-of-band</em>, ju lutemi, së pari vendosni me marrësin një lidhje të fshehtëzuar.</string>
+    <string name="qrscan_contains_text">Tekst kodi QR të skanuar:\n\n%1$s</string>
+    <string name="qrscan_contains_url">URL kodi QR të skanuar:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Shenja gishtash</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s u verifikua, po prezantoj veten…</string>
     <string name="qrshow_title">Shfaq kod QR verifikimi</string>
+    <string name="qrshow_x_joining">%1$s vjen.</string>
+    <string name="qrshow_x_verified">%1$s u verifikua.</string>
+    <string name="qrshow_x_has_joined_group">%1$s erdhi në grup në mënyrë të sigurt.</string>
+    <string name="qrshow_join_verified_group_hint">Skanojeni që të hyni te grupi i verifikuar \"%1$s\".</string>
+    <string name="qrshow_join_verified_group_title">Kod QR ftese</string>
     <string name="qrshow_join_contact_title">Kod QR verifikimi</string>
+    <string name="qrshow_join_contact_hint">\"%1$s\"Skanojeni këtë që të rregullohet një kontakt i verifikuar.</string>
+
+
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">%1$d mesazhe të rinj në %2$d fjalosje</string>
+    <string name="notify_most_recent_from">Më të rejat nga: %1$s</string>
+    <string name="notify_media_message_with_text">Mesazh media: %s</string>
     <string name="notify_mark_all_read">Vëru shenjë të tërave si të lexuar</string>
     <string name="notify_mark_read">Vëri shenjë si i lexuar</string>
+    <string name="notify_media_message">Mesazh media</string>
     <string name="notify_reply_button">Përgjigju</string>
     <string name="notify_new_message">Mesazh i ri</string>
+    <string name="notify_background_connection_enabled">U vendos lidhje në prapaskenë</string>
+    <string name="notify_priority_high">E lartë</string>
+    <string name="notify_priority_max">Maksimale</string>
     <string name="notify_name_and_message">Emër dhe mesazh</string>
     <string name="notify_name_only">Vetëm emër</string>
     <string name="notify_no_name_or_message">Pa emër apo mesazh</string>
@@ -357,4 +438,11 @@
     <string name="perm_required_title">Lypset leje</string>
     <string name="perm_continue">Vazhdo</string>
     <string name="perm_not_now">Jo tani</string>
-    </resources>
+    <string name="perm_explain_need_for_camera_access">Që të bëhen foto dhe video, lejojeni Delta Chat-in të përdorë kamerën.</string>
+    <string name="perm_explain_need_for_mic_access">Që të dërgoni mesazhe audio, lejojeni Delta Chat-in të përdorë mikrofonin tuaj.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat-i lyp hyrje në kartelat tuaja që të mund të eksportojë të tilla apo të krijojë kopjeruajtje.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat lyp leje mbi Kamerën që të mund të bëjë foto apo video, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Kamerën\".</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat lyp leje mbi Mikrofonin që të mund të dërgojë mesazhe audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Mikrofonin\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat lyp leje mbi Depozitimin që të mund të bashkëngjisë apo eksportojë foto, video ose audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Depozitimin\".</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat lyp leje mbi Vendndodhjen që të mund të bashkëngjisë një vendndodhje, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Vendndodhjen\".</string>
+</resources>

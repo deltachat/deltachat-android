@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Delta Chat</string>
     <!-- Translators: please enter the name of the language you're translating to here -->
-    <string name="language_name">German</string>
+    <string name="language_name">Deutsch</string>
 
 
     <!-- common strings without special context -->
@@ -27,7 +27,7 @@
     <string name="no_app_to_handle_data">Keine passende App zum öffnen der Datei gefunden</string>
     <string name="no_browser_installed">Kein Internetbrowser eingerichtet.</string>
     <string name="file_not_found">Kann %1$s nicht finden</string>
-    <string name="copied_to_clipboard">In Zwischenablage kopieren</string>
+    <string name="copied_to_clipboard">In Zwischenablage kopiert</string>
     <string name="contacts_headline">Kontakte</string>
     <string name="email_address">E-Mail-Adresse</string>
     <string name="bad_email_address">Ungültige E-Mail-Adresse</string>
@@ -146,8 +146,17 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Diesen Chat löschen? Ein gelöschter Chat wird nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
+        <item quantity="other">%d Chats löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Nachricht lokal und vom Server löschen?</item>
+        <item quantity="other">%1$d Nachrichten lokal und vom Server löschen?</item>
+    </plurals>
     <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
     <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.</string>
+    <string name="ask_block_contact">Diesen Kontakt blockieren? Sie erhalten keine weiteren Nachrichten und Anrufe von diesem Kontakt.</string>
     <string name="ask_unblock_contact">Diesen Kontakt freischalten? Sie werden wieder in der Lage sein, Nachrichten und Anrufe von diesem Kontakt zu empfangen.</string>
     <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\n\Kontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
@@ -160,6 +169,11 @@
     <string name="contacts_empty_hint">Keine Kontakte</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">Chat archiviert</item>
+        <item quantity="other">%d Chats archiviert</item>
+    </plurals>
     <string name="chat_archived_chats_title">Archivierte Chats</string>
     <string name="chat_please_enter_message">Bitte geben Sie eine Nachricht ein.</string>
     <string name="chat_camera_unavailable">Kamera nicht verfügbar.</string>
@@ -168,6 +182,7 @@
         <item quantity="one">%d ungelesene Nachricht</item>
         <item quantity="other">%d ungelesene Nachrichten</item>
     </plurals>
+    <string name="chat_no_messages_hint">Eine Nachricht an %1$s:\n\n• Es ist in Ordnung wenn %2$s kein DeltaChat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern.</string>
     <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
     <string name="chat_record_slide_to_cancel">Schieben um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten Sie diese Taste gedrückt, um eine Sprachnachricht aufzunehmen, und zum senden wieder loslassen.</string>
@@ -227,6 +242,7 @@
     <string name="welcome_intro7_message">Delta Chat ist für die vertrauliche geschäftliche Kommunikation geeignet.</string>
     <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
+    <string name="login_header">Beim Server anmelden</string>
     <string name="login_subheader">Bei bekannten E-Mail-Anbietern werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Wenden Sie sich an Ihren E-Mail-Anbieter oder Ihre Freunde, um Hilfe zu erhalten.</string>
     <string name="login_inbox">E-Mail Eingang</string>
     <string name="login_imap_login">IMAP Anmeldename</string>
@@ -247,6 +263,14 @@
     <string name="import_backup_title">Sicherung einlesen</string>
     <string name="import_backup_ask">Sicherung gefunden \"%1$s\".\n\n Möchten Sie diese einlesen und alle Daten und Einstellungen davon verwenden?</string>
     <string name="import_backup_no_backup_found">Keine Sicherung gefunden.\n\nKopieren Sie Ihre Sicherung nach \"%1$s\" und versuchen Sie es erneut. Alternativ können Sie auch \"Messaging starten\" drücken, um den normalen Einrichtungsprozess fortzusetzen.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Login als \"%1$s\" nicht möglich. Bitte E-Mail Adresse und Passwort auf Richtigkeit überprüfen.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Antwort von %1$s: %2$s
+
+Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hinzu. Sie können dies z.B. im Webinterface überprüfen. Bitte wenden Sie sich an Ihren Anbieter oder Freunde, wenn Probleme auftreten.</string>
+
+
     <!-- preferences -->
     <string name="pref_summary_privacy">Bildschirmsperre %1$s, Lesebestätigung %2$s</string>
     <string name="pref_summary_appearance">Design %1$s, Sprache %2$s, Hintergrund %3$s</string>
@@ -264,18 +288,25 @@
     <string name="pref_trim_length_limit">Chat-Länge begrenzen</string>
     <string name="pref_trim_length_limit_summary">%d Nachrichten pro Chat</string>
     <string name="pref_trim_now_button">Alle Chats kürzen</string>
+    <string name="pref_trim_now_ask">Alte Nachrichten jetzt löschen? Die wird in allen Chats die Nachrichten bis auf die%d neuesten entfernen.</string>
     <string name="pref_blocked_contacts">Blockierte Kontakte</string>
     <string name="pref_profile_photo_remove_ask">Profilbild entfernen?</string>
     <string name="pref_help_url">https://delta.chat/de/help</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Passwort- und Kontoeinstellungen</string>
     <string name="pref_who_can_see_this_information">Wer kann diese Informationen einsehen?</string>
+    <string name="pref_who_can_see_profile_explain">Ihr Profilbild und Name werden zusammen mit Ihren Nachrichten bei der Kommunikation mit anderen Benutzern angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
     <string name="pref_your_name">Dein Name</string>
     <string name="pref_default_status_label">Status Text</string>
+    <string name="pref_default_status_text">Mit meinem Delta Chat Messenger gesendet: https://delta.chat</string>
     <string name="pref_enter_sends">Enter-Taste sendet</string>
     <string name="pref_enter_sends_explain">Durch Drücken der Eingabetaste werden Textnachrichten gesendet.</string>
     <string name="pref_vibrate">Vibrieren</string>
     <string name="pref_chat_settings">Chat Einstellungen</string>
+    <string name="pref_change_secret_explain">Ändern Sie Ihren PIN / Muster / Fingerabdruck über die Systemeinstellungen</string>
+    <string name="pref_screen_security">Bildschirmsicherheit</string>
+    <string name="pref_screen_security_explain">Blockiere Screenshots in der Neuigkeiten-Liste und der App</string>
+    <string name="pref_screen_security_please_restart_hint">Um die Bildschirmsicherheitseinstellungen anzuwenden, starten Sie bitte die App neu.</string>
     <string name="pref_notifications">Benachrichtigung</string>
     <string name="pref_notifications_show">Anzeigen</string>
     <string name="pref_notifications_priority">Priorität</string>
@@ -307,9 +338,34 @@
     <string name="pref_other">Sonstiges</string>
     <string name="pref_backup">Sicherung</string>
     <string name="pref_backup_explain">Chats auf externem Speicher sichern</string>
+    <string name="pref_backup_export_explain">Ein Backup hilft Ihnen bei einer neuen Installation auf diesem oder einem anderen Gerät.\n\nDas Backup enthält alle Nachrichten, Kontakte und Chats, sowie die Ende-zu-Ende Autocrypt Einstellungen. Bewahren Sie das Backup an einem sicheren Ort auf oder löschen Sie es sobald wie möglich.</string>
     <string name="pref_backup_export_start_button">Starte Sicherung</string>
     <string name="pref_backup_written_to_x">Sicherung nach %1$s erfolgreich</string>
     <string name="pref_managekeys_menu_title">Schlüssel verwalten</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat benötigt Zugriff auf Ihre Datein um die Schlüssel zu importieren/exportieren.</string>
+    <string name="pref_managekeys_export_secret_keys">Exportiere geheime Schlüssel</string>
+    <string name="pref_managekeys_export_explain">Geheime Schlüssel nach \"%1$s\" exportieren?</string>
+    <string name="pref_managekeys_import_secret_keys">Importiere geheime Schlüssel</string>
+    <string name="pref_managekeys_import_explain">Geheime Schlüssel von \"%1$s\" importieren?\n\n\"• Bereits vorhandene Schlüssel werden nicht gelöscht\n\n• Der zuletzt importierte Schlüssel wird als neuer Standardschlüssel verwendet, außer der Dateiname beinhaltet das Wort \"legacy\"</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Geheime Schlüssel erfolgreich nach \"%1$s\" geschrieben.</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Geheime Schlüssel von \"%1$s\" importiert.</string>
+    <string name="pref_background">Chat-Hintergrund</string>
+
+
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur automatischen Ende-zu-Ende E-Mail Verschlüsselung.\n\n Ihre Ende-zu-Ende Einstellungen werden bei Bedarf automatisch erstellt und Sie können diese zwischen Ihren Geräten mittels Autocrypt Setup Messages übertragen.</string>
+    <string name="autocrypt_send_asm_title">Autocrypt Setup Message senden</string>
+    <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt Setup message\" tauscht Ende-zu-Ende Einstellungen sicher mit anderen Autocrypt kompatiblen Apps aus.\n\nDie Einstellungen werden mittels eines Übertragungscodes verschlüsselt, der hier angezeigt wird und beim Zielgerät eingegeben werden muss.</string>
+    <string name="autocrypt_send_asm_button">Autocrypt Setup Message senden</string>
+    <string name="autocrypt_send_asm_explain_after">Ihre Einstellungen wurden an Sie gesendet. Wechseln Sie zum anderen Gerät und öffnen Sie die Einstellungs-Nachricht. Sie sollten nach einem Übertragungscode gefragt werden. Tippen Sie die folgenden Zahlen in die Eingabemaske:\n\n %1$s\n\nAnschließend ist das andere Gerät bereit, Autocrypt zu verwenden.</string>
+    <string name="autocrypt_prefer_e2ee">Ende-zu-Ende Verschlüsselung bevorzugen</string>
+    <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
+    <string name="autocrypt_asm_general_body">Dies ist die Autocrypt Setup Message zur Übertragung Ihrer Ende-zu-Ende Einstellungen zwischen Anwendungen.\n\n Um Ihre Einstellungen zu entschlüsseln und verwenden, öffnen Sie die Nachricht in einer Autocrypt-fähigen Anwendung und geben Sie den auf dem Ursprungsgerät angezeigten Übertragungscode ein.</string>
+    <string name="autocrypt_asm_click_body">Dies ist eine Autocrypt Setup Message zur Übertragung Ihrer Ende-zu-Ende Einstellungen zwischen Anwendungeny.\n\n Um sie zu entschlüsseln und die Einstellungen zu verwenden, klicken Sie auf diese Nachricht.</string>
+    <string name="autocrypt_continue_transfer_title">Autocrypt Setup Message</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Bitte geben Sie den Übertragungscode, der auf dem anderen Gerät angezeigt wird ein.</string>
+    <string name="autocrypt_continue_transfer_succeeded">Ende-zu-Ende Einstellungen übertragen. Dieses Gerät ist nun bereit, Autocrypt mit den selben Einstellungen wie das Ursprungsgerät zu verwenden.</string>
     <string name="autocrypt_continue_transfer_retry">Wiederholen</string>
     <!-- system messages -->
     <string name="systemmsg_group_name_changed">Gruppenname von \"%1$s\" zu \"%2$s\" geändert.</string>
