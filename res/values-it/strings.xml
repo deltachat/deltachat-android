@@ -192,6 +192,7 @@
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>
     <string name="chat_no_chats_yet_hint">Dai alla tua inbox qualcosa da fare. inizia scrivendo un messaggio ad un amico.</string>
     <string name="chat_all_done_hint">Inbox vuooota</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nSiete tutti impegnati!</string>
     <string name="chat_share_with_title">Condividi con</string>
     <string name="chat_input_placeholder">Messaggio</string>
     <string name="chat_archived_label">Archiviato</string>
@@ -268,29 +269,49 @@
     <string name="import_backup_title">Importa backup</string>
     <string name="import_backup_ask">Backup trovato in \"%1$s\".\n\nVuoi importarlo e usare i dati e le impostazioni salvati?</string>
     <string name="import_backup_no_backup_found">Nessun backup trovato\n\nCopia il backup in \"%1$s\" e riprova. Altimenti premi \"Inizia a messaggiare\" per procedere con il setup normale.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Verifica che l\'indirizzo email e la password siano corretti.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni provider inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il provider o i tuoi amici se riscontri problemi.</string>
+
+
+    <!-- preferences -->
+    <string name="pref_summary_privacy">Blocco schermo %1$s, notifiche di lettura %2$s</string>
     <string name="pref_summary_appearance">Tema %1$s, Lingua %2$s, Sfondo %3$s</string>
     <string name="pref_summary_on">o</string>
     <string name="pref_summary_off">off</string>
     <string name="pref_summary_default">predefinito</string>
     <string name="pref_summary_custom">personalizzato</string>
+    <string name="pref_using_custom">Personalizzato in uso: %s</string>
+    <string name="pref_using_default">Predefinito in uso: %s</string>
     <string name="pref_profile_info_headline">Le tue info profilo</string>
     <string name="pref_profile_photo">Foto profilo</string>
+    <string name="pref_trim_headline">Pulizia messaggi</string>
     <string name="pref_trim_option">Elimina messaggi vecchi</string>
     <string name="pref_trim_option_explain">Elimina automaticamente i messaggi vecchi se la chat supera una certa lunghezza</string>
     <string name="pref_trim_length_limit">Limite lunghezza chat</string>
     <string name="pref_trim_length_limit_summary">%d messaggi per chat</string>
+    <string name="pref_trim_now_button">Pulisci tutte le chat ora</string>
+    <string name="pref_trim_now_ask">Eliminare tutti i messaggi vecchi? Questo troncherà le chat ai %d messaggi più recenti.</string>
     <string name="pref_blocked_contacts">Contatti bloccati</string>
     <string name="pref_profile_photo_remove_ask">Rimuvere la foto profilo?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Password e impostazioni account</string>
     <string name="pref_who_can_see_this_information">Chi può vedere queste informazioni?</string>
+    <string name="pref_who_can_see_profile_explain">L\'immagine del tuo profilo e il tuo nome saranno mostrati insieme ai tuoi messaggi quando comunichi con altri utenti. Le informazioni già inviate non possono essere cancellate o rimosse.</string>
     <string name="pref_your_name">Il tuo nome</string>
     <string name="pref_default_status_label">Il tuo Stato</string>
+    <string name="pref_default_status_text">Inviato con Delta Chat Messenger: https://delta.chat</string>
+    <string name="pref_enter_sends">Spedisci con Invio</string>
+    <string name="pref_enter_sends_explain">Premere il tasto Invio invierà i messaggi</string>
     <string name="pref_vibrate">Vibra</string>
     <string name="pref_chat_settings">Impostazioni chat</string>
+    <string name="pref_change_secret">Cambia codice</string>
+    <string name="pref_change_secret_explain">Cambia il pin / sequenza / impronta digitale dalle impostazioni di sistema.</string>
     <string name="pref_screen_security">Sicurezza schermo</string>
     <string name="pref_screen_security_explain">Blocca screenshot nella lista Recenti e all\'interno dell\'app</string>
+    <string name="pref_screen_security_please_restart_hint">Per attivare la sicurezza dello schermo riavvia l\'applicazione.</string>
     <string name="pref_notifications">Notifiche</string>
     <string name="pref_notifications_show">Mostra</string>
     <string name="pref_notifications_priority">Priorità</string>
@@ -306,12 +327,15 @@
     <string name="pref_appearance">Aspetto</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Lingua</string>
+    <string name="pref_incognito_keyboard">Tastiera incognito</string>
     <string name="pref_incognito_keyboard_explain">Richiedi alla tastiera di disattivare l\'apprendimento personalizzato</string>
     <string name="pref_read_receipts">Ricevute di lettura</string>
     <string name="pref_read_receipts_explain">Se le tue ricevute di lettura sono disabilitate non potrai vedere quelle degli altri.</string>
     <string name="pref_manage_keys">Gestisci chiavi</string>
     <string name="pref_use_system_emoji">Usa emoji di sistema</string>
     <string name="pref_use_system_emoji_explain">Disabilita supporto emoji integrato in Delta Chat</string>
+    <string name="pref_app_access">Accesso all\'app</string>
+    <string name="pref_communication">Comunicazione</string>
     <string name="pref_chats">Chat</string>
     <string name="pref_messages">Messaggi</string>
     <string name="pref_in_chat_sounds">Suoni in-chat</string>
@@ -328,6 +352,7 @@
     <string name="pref_managekeys_export_secret_keys">Esporta chiavi segrete</string>
     <string name="pref_managekeys_export_explain">Esportare chiavi segrete in \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importa chiavi segrete</string>
+    <string name="pref_managekeys_import_explain">Importare le chiavi segrete da \"%1$s\"?\n\n• Le chiavi esistenti non verranno cancellate\n\n• Le chiavi importate verrano usate come predefinite a meno che non abbiano la parola \"legacy\" nel nome del file.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Chiavi segrete salvate con successo in \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Chiavi segrete importate da \"%1$s\".</string>
     <string name="pref_background">Sfondo chat</string>
@@ -340,10 +365,12 @@
     <string name="autocrypt_send_asm_explain_before">Un \'Messaggio di configurazione Autocrypt\' condivide in sicurezza le tue impostazioni end-to-end con altre app compatibili. Le impostazioni sono criptate con un codice mostrato qui che deve essere inserito nell\'altro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Invia Messaggio di configurazione Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">La tua configurazione ti è stata inviata. Passa all\'altro dispositivo e apri il messaggio. Dovrebbe venirti richiesto un codice. Inserisci il seguente codice:\n\n%1$s\n\nUna volta fatto, il dispositivo sarà pronto per usare Autocrypt.</string>
+    <string name="autocrypt_prefer_e2ee">Preferisci cifratura end-to-end</string>
     <string name="autocrypt_asm_subject">Messaggio di configurazione Autocrypt</string>
     <string name="autocrypt_asm_general_body">Questo è un messaggio di configurazione Autocrypt per trasferire le impostazioni end-to-end tra dispositivi.\n\nPer decifrarlo e usare le impostazioni, apri questo messaggio con un client compatibile e inserisci il codice mostrato nel dispositivo di origine.</string>
     <string name="autocrypt_asm_click_body">Questo è un messaggio di configurazione Autocrypt per trasferire le impostazioni end-to-end tra dispositivi.\n\nPer decifrarlo e usare le impostazioni, clicca su questo messaggio.</string>
     <string name="autocrypt_continue_transfer_title">Messaggio di configurazione Autocrypt</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Inserisci il codice mostrato nell\'altro dispositivo</string>
     <string name="autocrypt_continue_transfer_succeeded">Configurazione end-to-end trasferita. Questo dispositivo può ora usare Autocrypt con la stessa configurazione dell\'altro.</string>
     <string name="autocrypt_continue_transfer_retry">Riprova</string>
     <string name="autocrypt_bad_setup_code">Codice configurazione non valido. Riprova.\n\nSe non ricordi il codice di configurazione invia un altro Messaggio di configurazione Autocrypt dall\'altro dispositivo.</string>
@@ -361,4 +388,70 @@
     <string name="systemmsg_cannot_decrypt">Questo messaggio non può essere decrittato.\n\n• Potrebbe essere sufficiente rispondere a questo messaggio e chiedere al mittente di rispedirlo.\n\n• Se hai reinstallato Delta Chat o usi un altro client email dovresti inviare un Messaggio di configurazione Autocrypt dal dispositivo originario.</string>
 
 
-    </resources>
+    <!-- screen lock -->
+    <string name="screenlock_title">Blocco schermo</string>
+    <string name="screenlock_explain">Blocca l\'accesso a Delta Chat con il blocco schermo di Android o l\'impronta digitale</string>
+    <string name="screenlock_authentication_failed">Autenticazione fallita.</string>
+    <string name="screenlock_unlock_title">Sblocca Delta Chat</string>
+    <string name="screenlock_unlock_description">Inserisci il codice di sistema per sbloccare Delta Chat</string>
+    <string name="screenlock_inactivity_timeout">Tempo di blocco per inattività</string>
+    <string name="screenlock_inactivity_timeout_explain">Blocca automaticamente Delta Chat dopo un tempo di inattività definito</string>
+    <string name="screenlock_inactivity_timeout_interval">Tempo di inattività</string>
+
+
+    <!-- qr code stuff -->
+    <string name="qrscan_title">Scansiona codice QR</string>
+    <string name="qrscan_hint">Posiziona la camera sopra il codice QR</string>
+    <string name="qrscan_ask_join_verified_group">Vuoi accedere al gruppo verificato \"%1$s\"?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Verificare il contatto e iniziare la chat con \"%1$s\"?</string>
+    <string name="qrscan_ask_chatting_fingerprint_ok">Contatto \"%1$s\" verificato. Avviare la chat?</string>
+    <string name="qrscan_fingerprint_mismatch">L\'impronta scansionata non corrisponde all\'ultima vista per \"%1$s\".</string>
+    <string name="qrscan_no_addr_found">Questo codice QR contiene un\'impronta, ma non un indirizzo email.\n\nPer una verifica a due fattori efficace, prima stabilisci una connessione cifrata col destinatario.</string>
+    <string name="qrscan_contains_text">Testo del codice QR scansionato::\n\n%1$s</string>
+    <string name="qrscan_contains_url">URL del codice QR scansionato:\n\n%1$s</string>
+    <string name="qrscan_fingerprint_label">Impronta</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s verificato, mi presento …</string>
+    <string name="qrshow_title">Mostra codice QR di verifica</string>
+    <string name="qrshow_x_joining">%1$s entra.</string>
+    <string name="qrshow_x_verified">%1$s verificato.</string>
+    <string name="qrshow_x_has_joined_group">%1$s è entrato nel gruppo in sicurezza.</string>
+    <string name="qrshow_join_verified_group_hint">Scansiona per entrare nel gruppo verificato \"%1$s\".</string>
+    <string name="qrshow_join_verified_group_title">Codice QR di invito</string>
+    <string name="qrshow_join_contact_title">Codice QR di verifica</string>
+    <string name="qrshow_join_contact_hint">\"%1$s\"Scansiona per impostare un contatto verificato.</string>
+
+
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">%1$d nuovi messaggi in %2$d chat</string>
+    <string name="notify_most_recent_from">Più recente da: %1$s</string>
+    <string name="notify_media_message_with_text">Messaggio multimediale: %s</string>
+    <string name="notify_mark_all_read">Segna tutti come letti</string>
+    <string name="notify_mark_read">Segna come letto</string>
+    <string name="notify_media_message">Messaggio multimediale</string>
+    <string name="notify_reply_button">Rispondi</string>
+    <string name="notify_new_message">Nuovo messaggio</string>
+    <string name="notify_background_connection_enabled">Connession in background abilitata</string>
+    <string name="notify_priority_high">Alta</string>
+    <string name="notify_priority_max">Massima</string>
+    <string name="notify_name_and_message">Nome e messaggio</string>
+    <string name="notify_name_only">Solo nome</string>
+    <string name="notify_no_name_or_message">Nessun nome nè messaggio</string>
+    <string name="notify_repeat_one_time">Una volta</string>
+    <string name="notify_repeat_two_times">Due volte</string>
+    <string name="notify_repeat_three_times">Tre volte</string>
+    <string name="notify_repeat_five_times">Cinque volte</string>
+    <string name="notify_repeat_ten_times">Dieci volte</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Autorizzazione richiesta</string>
+    <string name="perm_continue">Continua</string>
+    <string name="perm_not_now">Non ora</string>
+    <string name="perm_explain_need_for_camera_access">Per acquisire foto e video autorizza Delta Chat ad accedere alla fotocamera.</string>
+    <string name="perm_explain_need_for_mic_access">Per inviare messaggi audio autorizza Delta Chat ad accedere al microfono.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat richiede l\'accesso ai file per esportare i file o creare backup.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat richiede l\'autorizzazione per scattare foto e video, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Fotocamera\".</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat richiede l\'autorizzazione inviare messaggi audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat richiede l\'autorizzazione per creare allegati, esportare foto, video e audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat richiede l\'autorizzazione per allegare la posizione, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
+</resources>

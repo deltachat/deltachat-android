@@ -15,6 +15,7 @@
       <!-- it --><item>Italiano</item>
       <!-- nl --><item>Nederlands</item>
       <!-- pl --><item>Polski</item>
+      <!-- pt --><item>Português</item>
       <!-- sq --><item>Shqip</item>
       <!-- tr --><item>Türkçe</item>
   </string-array>
@@ -30,6 +31,7 @@
       <item>it</item>
       <item>nl</item>
       <item>pl</item>
+      <item>pt</item>
       <item>sq</item>
       <item>tr</item>
   </string-array>
