@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Delta Chat</string>
-    <!-- Translators: please enter the name of the language you're translating to here -->
-    <string name="language_name">Inglés</string>
-
-
     <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
     <string name="yes">Sí</string>
@@ -190,4 +186,8 @@
     <string name="group_name">Nombre del grupo</string>
     <string name="group_avatar">Avatar del grupo</string>
     <string name="group_create_button">Crear grupo</string>
+    <string name="group_please_enter_group_name">Por favor introduzca un nombre para el grupo.</string>
+    <string name="group_add_members">Añadir miembros</string>
+    <string name="group_hello_draft">Hola, acabo de crear el grupo \"%1$s\" para nosotros.</string>
+    <string name="group_self_not_in_group">Debes ser un miembro del grupo para realizar esta acción.</string>
     </resources>

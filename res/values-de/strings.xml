@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Delta Chat</string>
-    <!-- Translators: please enter the name of the language you're translating to here. the name will appear in the language selection popup and you should use the local name, not english. -->
-    <string name="language_name">Deutsch</string>
-
-
     <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Abbruch</string>
     <string name="yes">Ja</string>
@@ -156,8 +152,6 @@
     </plurals>
     <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
     <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
-    <string name="ask_block_contact">Diesen Kontakt blockieren? Sie erhalten keine weiteren Nachrichten von diesem Kontakt.</string>
-    <string name="ask_unblock_contact">Blockade des Kontakts aufheben? Sie werden wieder in der Lage sein, Nachrichten von diesem Kontakt zu empfangen.</string>
     <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\n\Kontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
 
@@ -174,6 +168,10 @@
         <item quantity="one">Chat archiviert</item>
         <item quantity="other">%d Chats archiviert</item>
     </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">Chat unarchived</item>
+        <item quantity="other">%d Chats dearchiviert </item>
+    </plurals>
     <string name="chat_archived_chats_title">Archivierte Chats</string>
     <string name="chat_please_enter_message">Bitte geben Sie eine Nachricht ein.</string>
     <string name="chat_camera_unavailable">Kamera nicht verfügbar.</string>
@@ -187,6 +185,8 @@
     <string name="chat_record_slide_to_cancel">Schieben um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>
     <string name="chat_no_chats_yet_hint">Geben Sie Ihrem Posteingang etwas, was sie empfangen können. Fangen Sie an, indem Sie einem Freund eine Nachricht schicken.</string>
+    <string name="chat_all_done_hint">Inbox zeeerrro</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nIhr seid alle aufgeholt!</string>
     <string name="chat_share_with_title">Teilen mit</string>
     <string name="chat_input_placeholder">Nachricht</string>
     <string name="chat_archived_label">Archiviert</string>
@@ -244,32 +244,31 @@
     <string name="login_title">Login</string>
     <string name="login_header">Beim Server anmelden</string>
     <string name="login_subheader">Bei bekannten E-Mail-Anbietern werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Wenden Sie sich an Ihren E-Mail-Anbieter oder Ihre Freunde, um Hilfe zu erhalten.</string>
-    <string name="login_inbox">E-Mail Eingang</string>
-    <string name="login_imap_login">IMAP Anmeldename</string>
-    <string name="login_imap_server">IMAP Server</string>
-    <string name="login_imap_port">IMAP Port</string>
+    <string name="login_inbox">E-Mail-Eingang</string>
+    <string name="login_imap_login">IMAP-Anmeldename</string>
+    <string name="login_imap_server">IMAP-Server</string>
+    <string name="login_imap_port">IMAP-Port</string>
     <string name="login_imap_security">IMAP Sicherheit</string>
-    <string name="login_outbox">E-Mail Ausgang</string>
-    <string name="login_smtp_login">SMTP Anmeldename</string>
-    <string name="login_smtp_password">SMTP Passwort</string>
-    <string name="login_smtp_server">SMTP Server</string>
-    <string name="login_smtp_port">SMTP Port</string>
-    <string name="login_smtp_security">SMTP Sicherheit</string>
+    <string name="login_outbox">E-Mail-Ausgang</string>
+    <string name="login_smtp_login">SMTP-Anmeldename</string>
+    <string name="login_smtp_password">SMTP-Passwort</string>
+    <string name="login_smtp_server">SMTP-Server</string>
+    <string name="login_smtp_port">SMTP-Port</string>
+    <string name="login_smtp_security">SMTP-Sicherheit</string>
     <string name="login_info_gmail_text">Für GMail-Konten müssen Sie ein App-Passwort erstellen, wenn Sie 2FA aktiviert haben. Wenn diese Einstellung nicht verfügbar ist, müssen Sie geringere Sicherheits Apps aktivieren.</string>
     <string name="login_error_mail">Bitte geben Sie eine gültige E-Mailadresse ein</string>
-    <string name="login_error_server">Bitte geben Sie eine(n) gültigen Server / IP Adresse ein</string>
+    <string name="login_error_server">Bitte geben Sie eine(n) gültigen Server/IP-Adresse ein</string>
     <string name="login_error_port">Bitte geben Sie einen gültigen Port  (1–65535) ein</string>
     <string name="login_error_required_fields">Bitte geben Sie eine gültige E-Mailadresse und ein gültiges Passwot ein</string>
-    <string name="import_backup_title">Sicherung einlesen</string>
-    <string name="import_backup_ask">Sicherung gefunden \"%1$s\".\n\n Möchten Sie diese einlesen und alle Daten und Einstellungen davon verwenden?</string>
-    <string name="import_backup_no_backup_found">Keine Sicherung gefunden.\n\nKopieren Sie Ihre Sicherung nach \"%1$s\" und versuchen Sie es erneut. Alternativ können Sie auch \"Messaging starten\" drücken, um den normalen Einrichtungsprozess fortzusetzen.</string>
+    <string name="import_backup_title">Backup einlesen</string>
+    <string name="import_backup_ask">Backup \"%1$s\" gefunden.\n\n Möchten Sie dieses einlesen und alle Daten und Einstellungen daraus verwenden?</string>
+    <string name="import_backup_no_backup_found">Kein Backup gefunden.\n\nKopieren Sie Ihre Sicherung nach \"%1$s\" und versuchen Sie es erneut. Alternativ können Sie auch \"Jetzt beginnen\" wählen, um den normalen Einrichtungsprozess fortzusetzen.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Login als \"%1$s\" nicht möglich. Bitte E-Mail Adresse und Passwort auf Richtigkeit überprüfen.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwort von %1$s: %2$s
 
 Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hinzu. Sie können dies z.B. im Webinterface überprüfen. Bitte wenden Sie sich an Ihren Anbieter oder Freunde, wenn Probleme auftreten.</string>
-
 
     <!-- preferences -->
     <string name="pref_summary_privacy">Bildschirmsperre %1$s, Lesebestätigung %2$s</string>
@@ -280,9 +279,9 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_summary_custom">benutzerdefiniert</string>
     <string name="pref_using_custom">Benutzerdefiniert verwenden: %s</string>
     <string name="pref_using_default">Standart verwenden: %s</string>
-    <string name="pref_profile_info_headline">Deine Profil Info</string>
-    <string name="pref_profile_photo">Profil Foto</string>
-    <string name="pref_trim_headline">Nachrichtenbeschneidung</string>
+    <string name="pref_profile_info_headline">Deine Profil</string>
+    <string name="pref_profile_photo">Profilfoto</string>
+    <string name="pref_trim_headline">Nachrichten begrenzen</string>
     <string name="pref_trim_option">Alte Nachrichten löschen</string>
     <string name="pref_trim_option_explain">Ältere Nachrichten automatisch löschen, sobald ein Chat eine bestimmte Länge überschreitet.</string>
     <string name="pref_trim_length_limit">Chat-Länge begrenzen</string>
@@ -294,15 +293,16 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_help_url">https://delta.chat/de/help</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Passwort- und Kontoeinstellungen</string>
-    <string name="pref_who_can_see_this_information">Wer kann diese Informationen einsehen?</string>
+    <string name="pref_who_can_see_this_information">Wer kann diese Informationen sehen?</string>
     <string name="pref_who_can_see_profile_explain">Ihr Profilbild und Name werden zusammen mit Ihren Nachrichten bei der Kommunikation mit anderen Benutzern angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
     <string name="pref_your_name">Dein Name</string>
-    <string name="pref_default_status_label">Status Text</string>
+    <string name="pref_default_status_label">Statustext</string>
     <string name="pref_default_status_text">Mit meinem Delta Chat Messenger gesendet: https://delta.chat</string>
     <string name="pref_enter_sends">Enter-Taste sendet</string>
     <string name="pref_enter_sends_explain">Durch Drücken der Eingabetaste werden Textnachrichten gesendet.</string>
     <string name="pref_vibrate">Vibrieren</string>
     <string name="pref_chat_settings">Chat Einstellungen</string>
+    <string name="pref_change_secret">Sicherheitsoptionen ändern</string>
     <string name="pref_change_secret_explain">Ändern Sie Ihren PIN / Muster / Fingerabdruck über die Systemeinstellungen</string>
     <string name="pref_screen_security">Bildschirmsicherheit</string>
     <string name="pref_screen_security_explain">Blockiere Screenshots in der Neuigkeiten-Liste und der App</string>
@@ -310,8 +310,8 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_notifications">Benachrichtigung</string>
     <string name="pref_notifications_show">Anzeigen</string>
     <string name="pref_notifications_priority">Priorität</string>
-    <string name="pref_led_color">LED Farbe</string>
-    <string name="pref_led_pattern">LED Blinkgeschwindigkeit</string>
+    <string name="pref_led_color">LED-Farbe</string>
+    <string name="pref_led_pattern">LED-Blinkgeschwindigkeit</string>
     <string name="pref_sound">Ton</string>
     <string name="pref_silent">Leise</string>
     <string name="pref_repeat_notify">Wiederholte Warnungen</string>
@@ -323,10 +323,11 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_theme">Design</string>
     <string name="pref_language">Sprache</string>
     <string name="pref_incognito_keyboard">Inkognito-Tastatur</string>
+    <string name="pref_incognito_keyboard_explain">Deaktivierung des persönlichen Lernenens der Tastatur</string>
     <string name="pref_read_receipts">Lesebestätigung</string>
     <string name="pref_read_receipts_explain">Wenn Lesebestätigungen deaktiviert sind, können Sie keine Lesebestätigungen von anderen sehen.</string>
     <string name="pref_manage_keys">Schlüssel verwalten</string>
-    <string name="pref_use_system_emoji">Benutze System Emoji</string>
+    <string name="pref_use_system_emoji">Benutze System-Emoji</string>
     <string name="pref_use_system_emoji_explain">Deaktivieren Sie die integrierte Emoji-Unterstützung von Delta Chat.</string>
     <string name="pref_app_access">App-Zugriff</string>
     <string name="pref_communication">Kommunikation</string>
@@ -336,11 +337,11 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_message_text_size">Schriftgröße der Nachricht</string>
     <string name="pref_view_log">Protokoll anzeigen</string>
     <string name="pref_other">Sonstiges</string>
-    <string name="pref_backup">Sicherung</string>
+    <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Chats auf externem Speicher sichern</string>
     <string name="pref_backup_export_explain">Ein Backup hilft Ihnen bei einer neuen Installation auf diesem oder einem anderen Gerät.\n\nDas Backup enthält alle Nachrichten, Kontakte und Chats, sowie die Ende-zu-Ende Autocrypt Einstellungen. Bewahren Sie das Backup an einem sicheren Ort auf oder löschen Sie es sobald wie möglich.</string>
-    <string name="pref_backup_export_start_button">Starte Sicherung</string>
-    <string name="pref_backup_written_to_x">Sicherung nach %1$s erfolgreich</string>
+    <string name="pref_backup_export_start_button">Backup starten</string>
+    <string name="pref_backup_written_to_x">Backup nach %1$s erfolgreich</string>
     <string name="pref_managekeys_menu_title">Schlüssel verwalten</string>
     <string name="pref_managekeys_ask_for_storage_permission">Delta Chat benötigt Zugriff auf Ihre Datein um die Schlüssel zu importieren/exportieren.</string>
     <string name="pref_managekeys_export_secret_keys">Exportiere geheime Schlüssel</string>
@@ -354,19 +355,22 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur automatischen Ende-zu-Ende E-Mail Verschlüsselung.\n\n Ihre Ende-zu-Ende Einstellungen werden bei Bedarf automatisch erstellt und Sie können diese zwischen Ihren Geräten mittels Autocrypt Setup Messages übertragen.</string>
-    <string name="autocrypt_send_asm_title">Autocrypt Setup Message senden</string>
-    <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt Setup message\" tauscht Ende-zu-Ende Einstellungen sicher mit anderen Autocrypt kompatiblen Apps aus.\n\nDie Einstellungen werden mittels eines Übertragungscodes verschlüsselt, der hier angezeigt wird und beim Zielgerät eingegeben werden muss.</string>
-    <string name="autocrypt_send_asm_button">Autocrypt Setup Message senden</string>
-    <string name="autocrypt_send_asm_explain_after">Ihre Einstellungen wurden an Sie gesendet. Wechseln Sie zum anderen Gerät und öffnen Sie die Einstellungs-Nachricht. Sie sollten nach einem Übertragungscode gefragt werden. Tippen Sie die folgenden Zahlen in die Eingabemaske:\n\n %1$s\n\nAnschließend ist das andere Gerät bereit, Autocrypt zu verwenden.</string>
-    <string name="autocrypt_prefer_e2ee">Ende-zu-Ende Verschlüsselung bevorzugen</string>
-    <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
-    <string name="autocrypt_asm_general_body">Dies ist die Autocrypt Setup Message zur Übertragung Ihrer Ende-zu-Ende Einstellungen zwischen Anwendungen.\n\n Um Ihre Einstellungen zu entschlüsseln und verwenden, öffnen Sie die Nachricht in einer Autocrypt-fähigen Anwendung und geben Sie den auf dem Ursprungsgerät angezeigten Übertragungscode ein.</string>
-    <string name="autocrypt_asm_click_body">Dies ist eine Autocrypt Setup Message zur Übertragung Ihrer Ende-zu-Ende Einstellungen zwischen Anwendungeny.\n\n Um sie zu entschlüsseln und die Einstellungen zu verwenden, klicken Sie auf diese Nachricht.</string>
-    <string name="autocrypt_continue_transfer_title">Autocrypt Setup Message</string>
+    <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nIhr Ende-zu-Ende-Setup wird dabei automatisch eingerichtet und Sie können es mit Autocrypt-Setup-Nachrichten zwischen Geräten übertragen.</string>
+    <string name="autocrypt_send_asm_title">Autocrypt-Setup-Message senden</string>
+    <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt-Setup-Nachricht\" überträgt ihre Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät.\n\nIhr Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
+    <string name="autocrypt_send_asm_button">Autocrypt-Setup-Nachricht senden</string>
+    <string name="autocrypt_send_asm_explain_after">Ihr Setup wurde an Sie selbst verschickt. Wechseln sie nun zum anderen Gerät und öffnen die Setup-Nachricht. Sie werden dann aufgefordert einen Setup-Code einzugeben. Tippen Sie dort die folgenden Zahlen ein:\n\n%1$s\n\nWenn Sie fertig sind, ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
+    <string name="autocrypt_prefer_e2ee">Ende-zu-Ende-Verschlüsselung bevorzugen</string>
+    <string name="autocrypt_asm_subject">Autocrypt-Setup-Nachricht</string>
+    <string name="autocrypt_asm_general_body">Dies ist die Autocrypt-Setup-Nachricht, um Ihr Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nUm Ihr Setup zu verwenden, öffnen Sie diese Nachricht in einer Autocrypt-kompatiblen App und geben Sie den Setup-Code ein, der Ihnen auf dem andern Gerät angezeigt wurde.</string>
+    <string name="autocrypt_asm_click_body">Dies ist die Autocrypt-Setup-Nachricht, um Ihr Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nTippen oder klicken Sie auf diese Nachricht, um Ihr Setup zu verwenden.</string>
+    <string name="autocrypt_continue_transfer_title">Autocrypt-Setup-Nachricht</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Bitte geben Sie den Übertragungscode, der auf dem anderen Gerät angezeigt wird ein.</string>
     <string name="autocrypt_continue_transfer_succeeded">Ende-zu-Ende Einstellungen übertragen. Dieses Gerät ist nun bereit, Autocrypt mit den selben Einstellungen wie das Ursprungsgerät zu verwenden.</string>
     <string name="autocrypt_continue_transfer_retry">Wiederholen</string>
+    <string name="autocrypt_bad_setup_code">Ungültiger Setup-Code. Bitte versuchen Sie es erneut.\n\nWenn Sie den Setup-Code nicht mehr haben, können Sie auf dem anderen Gerät jederzeit eine neue Autocrypt-Setup-Nachricht mit einem neuen Setup-Code erzeugen.</string>
+
+
     <!-- system messages -->
     <string name="systemmsg_group_name_changed">Gruppenname von \"%1$s\" zu \"%2$s\" geändert.</string>
     <string name="systemmsg_group_image_changed">Gruppenbild geändert.</string>
@@ -374,6 +378,11 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="systemmsg_member_added">Benutzer %1$s hinzugefügt.</string>
     <string name="systemmsg_member_removed">Benutzer %1$s entfernt.</string>
     <string name="systemmsg_group_left">Gruppe verlassen.</string>
+    <string name="systemmsg_read_receipt_subject">Empfangsbestätigung lesen</string>
+    <string name="systemmsg_read_receipt_body">Dies ist eine Empfangsbestätigung für die Nachricht \"%1$s\".\n\nEs bedeutet, dass die Nachricht auf dem Gerät des Empfängers angezeigt wurde, nicht unbedingt, dass der Inhalt gelesen wurde.</string>
+    <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es könnte bereits helfen, einfach auf diese Nachricht zu antworten und den Absender zu bitten, die Nachricht erneut zu senden.\n\n• Falls Sie Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu installiert haben, können Sie von dort aus eine Autocrypt Setup-Nachricht senden.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Bildschirmsperre</string>
     <string name="screenlock_explain">Sperren Sie den Delta Chat Zugang mit Android Bildschirmsperre oder Fingerabdruck.</string>
@@ -391,14 +400,25 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="qrscan_ask_join_verified_group">Möchten Sie der überprüften Gruppe \"%1$s\" beitreten?</string>
     <string name="qrscan_ask_fingerprint_ask_oob">Den Kontakt überprüfen und eine Unterhaltung mit \"%1$s\" beginnen?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt \"%1$s\" überprüft. Unterhaltung starten?</string>
+    <string name="qrscan_fingerprint_mismatch">Der gescannte Fingerabdruck stimmt nicht mit dem zuletzt gesehenen Fingerabdruck überein. \"%1$s\".</string>
+    <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine E-Mail-Adresse.\n\nFür eine Out-of-Band-Verifizierung stellen Sie bitte zuerst eine verschlüsselte Verbindung zum Empfänger her.</string>
     <string name="qrscan_contains_text">Gescannter QR-Code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Gescannter QR-Code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s verifiziert, mich vorgestellt....</string>
     <string name="qrshow_title">QR Verifizierungscode anzeigen</string>
+    <string name="qrshow_x_joining">%1$s beigefügt.</string>
+    <string name="qrshow_x_verified">%1$s verifiziert.</string>
+    <string name="qrshow_x_has_joined_group">%1$s sicher in die Gruppe aufgenommen.</string>
+    <string name="qrshow_join_verified_group_hint">Scannen Sie dies, um der verifizierten Gruppe beizutreten. \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">QR Einladungscode</string>
     <string name="qrshow_join_contact_title">QR Verifizierungscode</string>
+    <string name="qrshow_join_contact_hint">\"%1$s\"Scannen Sie dies, um einen verifizierten Kontakt einzurichten.</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d neue Nachrichten in %2$d Chats</string>
+    <string name="notify_most_recent_from">Letzter Stand von: %1$s</string>
     <string name="notify_media_message_with_text">Medienmitteilung: %s</string>
     <string name="notify_mark_all_read">Alle als gelesen markieren</string>
     <string name="notify_mark_read">Gelesen markieren</string>
@@ -424,4 +444,9 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="perm_not_now">Nicht jetzt</string>
     <string name="perm_explain_need_for_camera_access">Erlaube Delta Chat den Zugriff auf die Kamera, um Fotos und Videos aufzunehmen.</string>
     <string name="perm_explain_need_for_mic_access">Erlaube Delta Chat den Zugriff auf das Mikrofon, um Audionachrichten aufzunehmen.</string>
-    </resources>
+    <string name="perm_explain_need_for_storage_access">Delta Chat benötigt Zugriff auf Ihre Dateien, um Dateien zu exportieren oder Backups zu erstellen.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat benötigt die Erlaubnis der Kamera, um Fotos oder Videos aufzunehmen, aber es wurde dauerhaft abgelehnt. Bitte fahren Sie mit dem Menü App-Einstellungen fort, wählen Sie \"Berechtigungen\" und aktivieren Sie \"Kamera\".</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat benötigt die Erlaubnis des Mikrofons, um Audio-Nachrichten zu senden, aber es wurde dauerhaft abgelehnt. Bitte fahren Sie mit den App-Einstellungen fort, wählen Sie \"Permissions\" und aktivieren Sie \"Microphone\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat benötigt die Speichergenehmigung, um Fotos, Videos oder Audiodateien anzuhängen oder zu exportieren, aber es wurde dauerhaft abgelehnt. Bitte fahren Sie mit dem Menü App-Einstellungen fort, wählen Sie \"Berechtigungen\" und aktivieren Sie \"Speicher\".</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat benötigt eine Standortberechtigung, um einen Standort anzuhängen, aber er wurde dauerhaft abgelehnt. Bitte fahren Sie mit dem Menü App-Einstellungen fort, wählen Sie \"Berechtigungen\" und aktivieren Sie \"Standort\".</string>
+</resources>

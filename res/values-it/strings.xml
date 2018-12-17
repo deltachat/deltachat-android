@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Delta Chat</string>
-    <!-- Translators: please enter the name of the language you're translating to here. the name will appear in the language selection popup and you should use the local name, not english. -->
-    <string name="language_name">Inglese</string>
-
-
     <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Annulla</string>
     <string name="yes">Si</string>
@@ -156,8 +152,6 @@
     </plurals>
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
     <string name="ask_export_attachment">Esportare allegato? Questo permetterà ad ogni altra app sul tuo dispositivo di accedervi.\n\nContinuare?</string>
-    <string name="ask_block_contact">Bloccare questo contatto? Non riceverai più messaggi dal contatto.</string>
-    <string name="ask_unblock_contact">Sbloccare il contatto? Una volta sbloccato potrai ricevere messaggi e chiamate da questo contatto.</string>
     <string name="ask_delete_contacts">Eliminare il contatto? Questo eliminerà per sempre il contatto selezionato.\n\nI contatti con chat attive o presenti nella rubrica del sistema non possono essere eliminati permanentemente.</string>
     <string name="ask_start_chat_with">Chattare with %1$s?</string>
 
@@ -273,7 +267,6 @@
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Verifica che l\'indirizzo email e la password siano corretti.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni provider inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il provider o i tuoi amici se riscontri problemi.</string>
-
 
     <!-- preferences -->
     <string name="pref_summary_privacy">Blocco schermo %1$s, notifiche di lettura %2$s</string>

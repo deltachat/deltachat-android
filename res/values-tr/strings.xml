@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Delta Chat</string>
-    <!-- Translators: please enter the name of the language you're translating to here. the name will appear in the language selection popup and you should use the local name, not english. -->
-    <string name="language_name">Türkçe</string>
-
-
     <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
     <string name="ok">Tamam</string>
     <string name="cancel">İptal</string>
     <string name="yes">Evet</string>
@@ -156,8 +152,6 @@
     </plurals>
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
     <string name="ask_export_attachment">Ek dışa aktarılsın mı? Ekleri dışa aktarma, aygıtınızdaki tüm diğer uygulamaların onlara erişmesine izin verecek.\n\nSürdürülsün mü?</string>
-    <string name="ask_block_contact">Bu kişi engellensin mi? Artık ileti iletişimini almayacaksınız.</string>
-    <string name="ask_unblock_contact">Bu kişinin engeli kaldırılsın mı? Bu kişiden bir kez daha iletiler ve aramalar alabileceksiniz.</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSüren sohbetler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
 
@@ -271,7 +265,6 @@
     <string name="login_error_cannot_login">\"%1$s\" olarak oturum açılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">%1$s yanıtı: %2$s\n\nBazı sağlayıcılar, gelen kutunuza ek bilgiler yerleştirir; onları örneğin web ön ucunda denetleyebilirsiniz. Sorunlarla karşılaşırsanız sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
-
 
     <!-- preferences -->
     <string name="pref_summary_privacy">Ekran kilidi %1$s, Okundu bilgileri %2$s</string>
