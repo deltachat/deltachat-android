@@ -78,6 +78,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
 import static org.thoughtcrime.securesms.ShareActivity.EXTRA_FORWARD;
@@ -431,6 +432,7 @@ public class ConversationFragment extends Fragment
       }
     }*/
     startActivity(composeIntent);
+    Objects.requireNonNull(getActivity()).overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
 
   private void handleResendMessage(final DcMsg message) {

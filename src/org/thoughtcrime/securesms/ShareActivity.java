@@ -150,6 +150,12 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  @Override
+  public void finish() {
+    super.finish();
+    overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
+  }
+
   private void initializeToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
