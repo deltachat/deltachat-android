@@ -73,6 +73,9 @@ public class ApplicationDcContext extends DcContext {
       imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "imapWakeLock");
       imapWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
+      mvboxWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "mvboxWakeLock");
+      mvboxWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
+
       smtpWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "smtpWakeLock");
       smtpWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
@@ -262,6 +265,11 @@ public class ApplicationDcContext extends DcContext {
   public Thread imapThread = null;
   private PowerManager.WakeLock imapWakeLock = null;
 
+  private boolean mvboxThreadStartedVal;
+  private final Object mvboxThreadStartedCond = new Object();
+  public Thread mvboxThread = null;
+  private PowerManager.WakeLock mvboxWakeLock = null;
+
   private boolean smtpThreadStartedVal;
   private final Object smtpThreadStartedCond = new Object();
   public Thread smtpThread = null;
@@ -309,6 +317,39 @@ public class ApplicationDcContext extends DcContext {
         }
       }
 
+
+      if (mvboxThread == null || !mvboxThread.isAlive()) {
+
+        synchronized (mvboxThreadStartedCond) {
+          mvboxThreadStartedVal = false;
+        }
+
+        mvboxThread = new Thread(() -> {
+          mvboxWakeLock.acquire();
+          synchronized (mvboxThreadStartedCond) {
+            mvboxThreadStartedVal = true;
+            mvboxThreadStartedCond.notifyAll();
+          }
+
+          Log.i(TAG, "###################### MVBOX-Thread started. ######################");
+
+
+          while (true) {
+            mvboxWakeLock.acquire();
+            performMvboxFetch();
+            mvboxWakeLock.release();
+            performMvboxIdle();
+          }
+        }, "mvboxThread");
+        mvboxThread.setPriority(Thread.NORM_PRIORITY);
+        mvboxThread.start();
+      } else {
+        if ((flags & INTERRUPT_IDLE) != 0) {
+          interruptMvboxIdle();
+        }
+      }
+
+
       if (smtpThread == null || !smtpThread.isAlive()) {
 
         synchronized (smtpThreadStartedCond) {
@@ -343,6 +384,12 @@ public class ApplicationDcContext extends DcContext {
       synchronized (imapThreadStartedCond) {
         while (!imapThreadStartedVal) {
           imapThreadStartedCond.wait();
+        }
+      }
+
+      synchronized (mvboxThreadStartedCond) {
+        while (!mvboxThreadStartedVal) {
+          mvboxThreadStartedCond.wait();
         }
       }
 

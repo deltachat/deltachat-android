@@ -262,6 +262,24 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptImapIdle(JNIEnv *env, 
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxFetch(JNIEnv *env, jobject obj)
+{
+	dc_perform_mvbox_fetch(get_dc_context(env, obj));
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxIdle(JNIEnv *env, jobject obj)
+{
+	dc_perform_mvbox_idle(get_dc_context(env, obj));
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptMvboxIdle(JNIEnv *env, jobject obj)
+{
+	dc_interrupt_mvbox_idle(get_dc_context(env, obj));
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcContext_performSmtpJobs(JNIEnv *env, jobject obj)
 {
 	dc_perform_smtp_jobs(get_dc_context(env, obj));
