@@ -42,6 +42,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
@@ -87,6 +88,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   public static final String EXTRA_ADDRESS_MARSHALLED = "address_marshalled";
   public static final String EXTRA_DISTRIBUTION_TYPE  = "distribution_type";
   public static final String EXTRA_MSG_IDS  = "message_ids";
+  public static final String EXTRA_FORWARD  = "forward";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -97,6 +99,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   private String                       mimeType;
   private boolean                      isPassingAlongMedia;
   private ApplicationDcContext         dcContext;
+  private boolean                      isForward;
 
   @Override
   protected void onPreCreate() {
@@ -110,9 +113,14 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
     setContentView(R.layout.share_activity);
 
+    initializeActivityContext();
     initializeToolbar();
     initializeResources();
     initializeMedia();
+  }
+
+  private void initializeActivityContext() {
+    isForward = getIntent().getBooleanExtra(EXTRA_FORWARD, false);
   }
 
   @Override
@@ -145,6 +153,10 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   private void initializeToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+    if(isForward) {
+      TextView title = toolbar.findViewById(R.id.title);
+      title.setText(R.string.forward_messages);
+    }
 
     ActionBar actionBar = getSupportActionBar();
 
@@ -162,11 +174,19 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
   private void onConversationClick(int chatId) {
     String name = dcContext.getChat(chatId).getName();
-    Dialogs.showResponseDialog(this, getString(R.string.ask_forward, name), (dialogInterface, i) -> {
-      int[] value = getIntent().getIntArrayExtra(EXTRA_MSG_IDS);
-      dcContext.forwardMsgs(value, chatId);
-      createConversation(chatId);
-    });
+    if (isForward) {
+      Dialogs.showResponseDialog(this, getString(R.string.ask_forward, name), (dialogInterface, i) -> {
+        delegateMessage(chatId);
+      });
+    } else {
+      delegateMessage(chatId);;
+    }
+  }
+
+  private void delegateMessage(int chatId) {
+    int[] value = getIntent().getIntArrayExtra(EXTRA_MSG_IDS);
+    dcContext.forwardMsgs(value, chatId);
+    createConversation(chatId);
   }
 
   private void initializeMedia() {
