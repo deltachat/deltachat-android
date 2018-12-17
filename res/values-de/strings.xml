@@ -423,5 +423,5 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="perm_continue">fortsetzen</string>
     <string name="perm_not_now">Nicht jetzt</string>
     <string name="perm_explain_need_for_camera_access">Erlaube Delta Chat den Zugriff auf die Kamera, um Fotos und Videos aufzunehmen.</string>
-    <string name="perm_explain_need_for_mic_access"><br><div>Erlaube Delta Chat den Zugriff auf das Mikrofon, um Audionachrichten aufzunehmen.<br data-mce-bogus=\"1\"></div></string>
+    <string name="perm_explain_need_for_mic_access">Erlaube Delta Chat den Zugriff auf das Mikrofon, um Audionachrichten aufzunehmen.</string>
     </resources>
