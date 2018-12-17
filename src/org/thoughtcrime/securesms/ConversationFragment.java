@@ -78,8 +78,10 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
+import static org.thoughtcrime.securesms.ShareActivity.EXTRA_FORWARD;
 import static org.thoughtcrime.securesms.ShareActivity.EXTRA_MSG_IDS;
 
 @SuppressLint("StaticFieldLeak")
@@ -418,6 +420,7 @@ public class ConversationFragment extends Fragment
     Intent composeIntent = new Intent(getActivity(), ShareActivity.class);
     int[] msgIds = DcMsg.msgSetToIds(messageRecords);
     composeIntent.putExtra(EXTRA_MSG_IDS, msgIds);
+    composeIntent.putExtra(EXTRA_FORWARD, true);
 //    composeIntent.putExtra(Intent.EXTRA_TEXT, messageRecords.getDisplayBody().toString());
     /* TODO: handle fowarding media
     if (message.isMms()) {
@@ -429,6 +432,7 @@ public class ConversationFragment extends Fragment
       }
     }*/
     startActivity(composeIntent);
+    Objects.requireNonNull(getActivity()).overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
 
   private void handleResendMessage(final DcMsg message) {

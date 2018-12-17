@@ -274,6 +274,8 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers place additional information in your inbox; you can check them it eg. in the web frontend. Consult your provider or friends if you run into problems.</string>
 
+    <!-- share and forward messages -->
+    <string name="forward_messages">Forward messages</string>
 
     <!-- preferences -->
     <string name="pref_summary_privacy">Screen lock %1$s, Read receipts %2$s</string>

@@ -255,6 +255,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       composeIntent.putExtra(Intent.EXTRA_STREAM, mediaItem.uri);
       composeIntent.setType(mediaItem.type);
       startActivity(composeIntent);
+      overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
     }
   }
 

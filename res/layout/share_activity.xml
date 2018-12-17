@@ -24,6 +24,7 @@
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="@string/chat_share_with_title"
+                      android:id="@+id/title"
                       android:textColor="@color/white"
                       android:textSize="20sp"
                       android:layout_alignParentStart="true"
