@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Delta Chat</string>
-    <!-- Translators: please enter the name of the language you're translating to here. the name will appear in the language selection popup and you should use the local name, not english. -->
-    <string name="language_name">English</string>
-
-
     <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
