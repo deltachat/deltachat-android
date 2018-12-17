@@ -421,16 +421,6 @@ public class ConversationFragment extends Fragment
     int[] msgIds = DcMsg.msgSetToIds(messageRecords);
     composeIntent.putExtra(EXTRA_MSG_IDS, msgIds);
     composeIntent.putExtra(EXTRA_FORWARD, true);
-//    composeIntent.putExtra(Intent.EXTRA_TEXT, messageRecords.getDisplayBody().toString());
-    /* TODO: handle fowarding media
-    if (message.isMms()) {
-      MmsMessageRecord mediaMessage = (MmsMessageRecord) message;
-      if (mediaMessage.containsMediaSlide()) {
-        Slide slide = mediaMessage.getSlideDeck().getSlides().get(0);
-        composeIntent.putExtra(Intent.EXTRA_STREAM, slide.getUri());
-        composeIntent.setType(slide.getContentType());
-      }
-    }*/
     startActivity(composeIntent);
     Objects.requireNonNull(getActivity()).overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }

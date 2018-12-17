@@ -275,7 +275,8 @@
     <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers place additional information in your inbox; you can check them it eg. in the web frontend. Consult your provider or friends if you run into problems.</string>
 
     <!-- share and forward messages -->
-    <string name="forward_messages">Forward messages</string>
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Forward to …</string>
 
     <!-- preferences -->
     <string name="pref_summary_privacy">Screen lock %1$s, Read receipts %2$s</string>

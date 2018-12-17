@@ -161,7 +161,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     setSupportActionBar(toolbar);
     if(isForward) {
       TextView title = toolbar.findViewById(R.id.title);
-      title.setText(R.string.forward_messages);
+      title.setText(R.string.forward_to);
     }
 
     ActionBar actionBar = getSupportActionBar();
