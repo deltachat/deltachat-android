@@ -210,10 +210,6 @@ android {
         project.ext.set("archivesBaseName", "Deltachat");
 
         buildConfigField "long", "BUILD_TIMESTAMP", getLastCommitTimestamp() + "L"
-        buildConfigField "String", "SIGNAL_URL", "\"https://textsecure-service.whispersystems.org\""
-        buildConfigField "String", "SIGNAL_CDN_URL", "\"https://cdn.signal.org\""
-        buildConfigField "String", "SIGNAL_SERVICE_STATUS_URL", "\"uptime.signal.org\""
-        buildConfigField "String", "USER_AGENT", "\"OWA\""
         buildConfigField "boolean", "DEV_BUILD", "false"
 
         ndk {
