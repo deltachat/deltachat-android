@@ -402,9 +402,6 @@
     <string name="qrshow_join_verified_group_hint">Skanojeni që të hyni te grupi i verifikuar \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">Kod QR ftese</string>
     <string name="qrshow_join_contact_title">Kod QR verifikimi</string>
-    <string name="qrshow_join_contact_hint">\"%1$s\"Skanojeni këtë që të rregullohet një kontakt i verifikuar.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d mesazhe të rinj në %2$d fjalosje</string>
     <string name="notify_most_recent_from">Më të rejat nga: %1$s</string>

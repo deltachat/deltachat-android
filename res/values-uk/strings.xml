@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+    <string name="not_now">Не зараз</string>
+    <string name="never">Ніколи</string>
+    <string name="error">Помилка</string>
+    <string name="error_x">Помилка: %1$s</string>
+    <string name="error_no_network">Мережа недоступна.</string>
+    <string name="contacts_headline">Контакти</string>
+    <string name="email_address">Адреса електронної пошти</string>
+    <string name="bad_email_address">Невірна адреса електронної пошти.</string>
+    <string name="password">Пароль</string>
+    <string name="now">Зараз</string>
+    <string name="today">Сьогодні</string>
+    <string name="yesterday">Вчора</string>
+    <string name="this_week">Цього тижня</string>
+    <string name="this_month">Цього місяця</string>
+    <plurals name="n_minutes">
+        <item quantity="one">%dхвилина</item>
+        <item quantity="few">%dхвилини</item>
+        <item quantity="many">%dхвилин</item>
+        <item quantity="other">%dхвилини</item>
+    </plurals>
+    <plurals name="n_hours">
+        <item quantity="one">%dгодина</item>
+        <item quantity="few">%dгодини</item>
+        <item quantity="many">%dгодин</item>
+        <item quantity="other">%dгодин</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">1 чат</item>
+        <item quantity="few">%1$dчати</item>
+        <item quantity="many">%1$dчатів</item>
+        <item quantity="other">%1$dчатів</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 контакт</item>
+        <item quantity="few">%1$dконтакти</item>
+        <item quantity="many">%1$dконтактів</item>
+        <item quantity="other">%1$dконтактів</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">1 повідомлення</item>
+        <item quantity="few">%1$dповідомлення</item>
+        <item quantity="many">%1$dповідомлень</item>
+        <item quantity="other">%1$dповідомлень</item>
+    </plurals>
+    <string name="image">Зображення</string>
+    <string name="audio">Аудіо</string>
+    <string name="voice_message">Голосове повідомлення</string>
+    <string name="video">Відео</string>
+    <string name="contact">Контакт</string>
+    <string name="location">Розташування</string>
+    <string name="gallery">Галерея</string>
+    <string name="file">Файл</string>
+    <string name="message_delivered">Повідомлення доставлено</string>
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Новий контакт</string>
+    <string name="menu_new_chat">Новий чат</string>
+    <string name="menu_new_group">Нова група</string>
+    <string name="menu_send">Відправити</string>
+    <string name="menu_edit_group">Редагувати групу</string>
+    <string name="menu_archive_chat">Архівувати чат</string>
+    <string name="menu_unarchive_chat">Розархівувати чат</string>
+    <string name="menu_add_attachment">Додати вкладення</string>
+    <string name="menu_leave_group">Залишити групу</string>
+    <string name="menu_delete_chat">Видалити чат</string>
+    <string name="menu_delete_messages">Видалити повідомлення</string>
+    <string name="menu_delete_image">Видалити зображення</string>
+    <string name="menu_message_details">Деталі повідомлення</string>
+    <string name="menu_copy_to_clipboard">Копіювати в буфер обміну</string>
+    <string name="menu_forward">Переслати повідомлення</string>
+    <string name="menu_reply">Відповісти на повідомлення</string>
+    <string name="menu_invite">Запросити друзів</string>
+    <string name="menu_settings">Налаштування</string>
+    <string name="menu_view_profile">Перегляд профілю</string>
+
+    <!-- contact list -->
+    <string name="contacts_title">Контакти</string>
+    </resources>

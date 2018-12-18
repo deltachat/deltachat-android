@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Дельта Чат</string>
+    <string name="cancel">Отмена</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="on">Вкл</string>
+    <string name="off">Выкл</string>
+    <string name="def">По умолчанию</string>
+    <string name="none">Не задано</string>
+    <string name="open">Открыть</string>
+    <string name="not_now">Не сейчас</string>
+    <string name="never">Никогда</string>
+    <string name="one_moment">Ожидание ответа...</string>
+    <string name="done">Выполнено</string>
+    <string name="undo">Отмена</string>
+    <string name="error">Ошибка</string>
+    <string name="error_x">Ошибка: %1$s</string>
+    <string name="error_no_network">Сеть недоступна.</string>
+    <string name="no_app_to_handle_data">Приложение, позволяющее обрабатывать этот тип данных, не найдено.</string>
+    <string name="no_browser_installed">Не установлен браузер</string>
+    <string name="file_not_found">Невозможно найти %1$s</string>
+    <string name="copied_to_clipboard">Скопировано в буфер обмена.</string>
+    <string name="contacts_headline">Контакты</string>
+    <string name="email_address">Адрес email</string>
+    <string name="bad_email_address">Неправильный адрес email.</string>
+    <string name="password">Пароль</string>
+    <string name="now">Сейчас</string>
+    <string name="n_min_ago">%d минута</string>
+    <string name="today">Сегодня</string>
+    <string name="yesterday">Вчера</string>
+    <string name="this_week">На этой неделе</string>
+    <string name="this_month">В этом месяце</string>
+    <plurals name="n_hours">
+        <item quantity="one">%d час</item>
+        <item quantity="few">%d часа</item>
+        <item quantity="many">%d часов</item>
+        <item quantity="other">%d часов</item>
+    </plurals>
+    <string name="image">Изображение</string>
+    <string name="gif">Гиф</string>
+    <string name="audio">Аудио</string>
+    <string name="voice_message">Голосовое сообщение</string>
+    <string name="video">Видео</string>
+    <string name="contact">Контакт</string>
+    <string name="camera">Камера</string>
+    <string name="location">Местоположение</string>
+    <string name="gallery">Галерея</string>
+    <string name="file">Файл</string>
+    <string name="unknown">Неизвестно</string>
+
+    <string name="green">Зелёный</string>
+    <string name="red">Красный</string>
+    <string name="blue">Синий</string>
+    <string name="orange">Оранжевый</string>
+    <string name="cyan">Голубой</string>
+    <string name="magenta">Пурпурный</string>
+    <string name="white">Белый</string>
+
+    <string name="small">Маленький</string>
+    <string name="normal">Обычный</string>
+    <string name="large">Большой</string>
+    <string name="extra_large">Огромный</string>
+
+    <string name="fast">Быстро</string>
+    <string name="slow">Медленно</string>
+
+    <string name="message_delivered">Сообщение доставлено</string>
+    <string name="message_read">Сообщение прочитано</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Новый контакт</string>
+    <string name="menu_new_chat">Новый чат</string>
+    <string name="menu_new_group">Новая группа</string>
+    <string name="menu_new_verified_group">Новая подтвержденная группа</string>
+    <string name="menu_send">Отправить</string>
+    <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
+    <string name="menu_edit_group">Редактировать группу</string>
+    <string name="menu_archive_chat">Активный чат</string>
+    <string name="menu_unarchive_chat">Неактивный чат</string>
+    <string name="menu_add_attachment">Прикрепить вложение</string>
+    <string name="menu_leave_group">Покинуть группу</string>
+    <string name="menu_delete_chat">Удалить чат</string>
+    <string name="menu_delete_messages">Удалить сообщения</string>
+    <string name="menu_delete_image">Удалить изображение</string>
+    <string name="menu_message_details">Подробности сообщения</string>
+    <string name="menu_copy_to_clipboard">Скопировать в буфер обмена</string>
+    <string name="menu_forward">Переслать сообщение</string>
+    <string name="menu_resend">Продублировать сообщение</string>
+    <string name="menu_reply">Ответь на сообщение</string>
+    <string name="menu_mute">Отключить уведомления</string>
+    <string name="menu_unmute">Включить уведомления</string>
+    <string name="menu_export_attachment">Экспортировать вложение</string>
+    <string name="menu_all_media">Все материалы</string>
+    <string name="menu_share">Поделиться</string>
+    <string name="menu_block_contact">Заблокировать контакт</string>
+    <string name="menu_unblock_contact">Разблокировать контакт</string>
+    <string name="menu_play">Играть</string>
+    <string name="menu_pause">Пауза</string>
+    <string name="menu_scroll_to_bottom">Перейти к концу</string>
+    <string name="menu_invite">Пригласить друзей</string>
+    <string name="menu_help">Помощь</string>
+    <string name="menu_select_all">Выбрать все</string>
+    <string name="menu_expand">Расширить</string>
+    <string name="menu_edit_name">Изменить имя</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_advanced">Дополнительно</string>
+    <string name="menu_view_profile">Просмотреть профиль</string>
+
+    <string name="mute_for_one_hour">Отключить оповещения на 1 час</string>
+    <string name="mute_for_two_hours">Отключить оповещения на 2 часа</string>
+    <string name="mute_for_one_day">Отключить оповещения на 1 день</string>
+    <string name="mute_for_seven_days">Отключить оповещения на 7 дней</string>
+    <string name="mute_for_one_year">Отключить оповещения на 1 год</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Удалить этот чат?Он более не будет виден в списке чатов,его сообщения останутся на сервере.</item>
+        <item quantity="few">Удалить %d чатов?Они более не будут видны в списке чатов,их сообщения останутся на сервере.</item>
+        <item quantity="many">Удалить %d чатов?Они более не будут видны в списке чатов,их сообщения останутся на сервере.</item>
+        <item quantity="other">Удалить %d чатов?Они более не будут видны в списке чатов,их сообщения останутся на сервере.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Удалить сообщение отсюда и с сервера?</item>
+        <item quantity="few">Удалить %1$d сообщений отсюда и с сервера?</item>
+        <item quantity="many">Удалить %1$d сообщений отсюда и с сервера?</item>
+        <item quantity="other">Удалить %1$d сообщений отсюда и с сервера?</item>
+    </plurals>
+    <string name="ask_block_contact">Заблокировать контакт? Вы более не сможете получать от него сообщения.</string>
+    <string name="ask_unblock_contact">Разблокировать контакт? Вы вновь сможете получать от него сообщения.</string>
+    <string name="ask_delete_contacts">Удалить контакты?Это действие навсегда удалит выбранные контакты.
+Контакты из действующих чатов и из адресной книги системы нельзя удалить навсегда.</string>
+    <!-- contact list -->
+    <string name="contacts_title">Контакты</string>
+    <string name="contacts_enter_name_or_email">Введите имя или адрес электронной почты</string>
+    <string name="contacts_type_email_above">Введите e-mail адрес выше.</string>
+    <string name="contacts_empty_hint">Нет контактов.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">Чат заархивирован.</item>
+        <item quantity="few">%d чатов были заархивированы.</item>
+        <item quantity="many">%d чатов были заархивированы.</item>
+        <item quantity="other">%dчатов были заархивированы.</item>
+    </plurals>
+    <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
+    <string name="chat_share_with_title">Поделиться</string>
+    <string name="chat_input_placeholder">Сообщение</string>
+    <string name="chat_archived_label">Заархивировано</string>
+    <!-- search -->
+    <string name="search">Поиск</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Название группы</string>
+    <string name="group_avatar">Аватар группы</string>
+    <string name="group_create_button">Создать группу</string>
+    <string name="group_please_enter_group_name">Введите название группы</string>
+    <string name="group_add_members">Добавить участников</string>
+    <string name="group_self_not_in_group">Необходимо быть членом группы для данного действия</string>
+    <string name="profile_encryption">Шифрование</string>
+
+
+    <!-- chat media view -->
+    <string name="media_preview">Предпоказ медиа</string>
+    <string name="media_tab_documents">Документы</string>
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Дельта Чат</string>
+    <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и свободныйt.</string>
+    <string name="welcome_intro2_headline">Независимое</string>
+    <string name="welcome_intro2_message">Приложение не использует сервера. Используется только ваша почта.</string>
+    <string name="welcome_intro4_headline">Мощный</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">Бесплатный</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Дельта Чат всегда бесплатен. С открытым исходным кодом. Никакой рекламы. Никаких платных подписок. Независим от поставщика.</string>
+    <string name="welcome_intro6_headline">Зашифровано</string>
+    <string name="welcome_intro7_headline">Доверенный</string>
+    <string name="welcome_start_messaging">Начать общение</string>
+    <string name="login_inbox">Входящие</string>
+    <string name="login_outbox">Исходящие</string>
+    <string name="login_error_mail">Укажите действующий емейл адресс</string>
+    <string name="login_error_server">Укажите действующий сервер / АйПи адресс</string>
+    <string name="login_error_port">Укажите действующий порт (1-65535)</string>
+    <string name="login_error_required_fields">Пожалуйста укажите верные емайл и пароль</string>
+    <string name="import_backup_title">Импортировать бекап</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Не удалось войти как \"%1$s\". Пожалуйста проверьте правильность ввода email и пароля.</string>
+    <string name="pref_summary_default">по- умолчанию</string>
+    <string name="pref_profile_info_headline">Информация вашего профиля</string>
+    <string name="pref_profile_photo">Фото профиля</string>
+    <string name="pref_trim_option">Удалить старые сообщения</string>
+    <string name="pref_trim_option_explain">Автоматически удалять старые сообщения по достижении указанного лимита</string>
+    <string name="pref_trim_length_limit">Лимит длинны чата</string>
+    <string name="pref_blocked_contacts">Заблокированные контакты</string>
+    <string name="pref_profile_photo_remove_ask">Удалить фото профиля?</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_password_and_account_settings">Настройки пароля и аккаунта</string>
+    <string name="pref_who_can_see_this_information">Кто может видеть эту информацию?</string>
+    <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будет отображаться в чатах с другими пользователями. Отправленная информация не может быть удалена или отозвана.</string>
+    <string name="pref_your_name">Ваше имя</string>
+    <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
+    <string name="pref_chat_settings">Настройки чата</string>
+    <string name="pref_screen_security">Безопасность экрана</string>
+    <string name="pref_notifications">Уведомления</string>
+    <string name="pref_notifications_show">Показать</string>
+    <string name="pref_notifications_priority">Приоритет</string>
+    <string name="pref_led_color">Цвет светодиода </string>
+    <string name="pref_sound">Звук</string>
+    <string name="pref_privacy">Приватность</string>
+    <string name="pref_light_theme">Светлый</string>
+    <string name="pref_dark_theme">Темный</string>
+    <string name="pref_theme">Тема</string>
+    <string name="pref_language">Язык</string>
+    <string name="pref_manage_keys">Управление ключами</string>
+    <string name="pref_use_system_emoji">Использовать системные смайлы</string>
+    <string name="pref_app_access">Доступ приложения</string>
+    <string name="pref_chats">Чаты</string>
+    <string name="pref_messages">Сообщения</string>
+    <string name="pref_in_chat_sounds">Звук в чате</string>
+    <string name="pref_message_text_size">Размер шрифта сообщения</string>
+    <string name="pref_view_log">Посмотреть лог</string>
+    <string name="pref_other">Другое</string>
+    <string name="pref_backup_export_start_button">Начать бекап</string>
+    <string name="pref_managekeys_menu_title">Управление ключами</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Приложению необходим доступ к файлам для импорта/экспорта ключей</string>
+    <string name="pref_managekeys_export_secret_keys">Экспортировать секретные ключи</string>
+    <string name="pref_managekeys_import_secret_keys">Импортировать секретные ключи</string>
+    <string name="pref_managekeys_import_explain">Импортировать секретные ключи из \"%1$s\"?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию если он не содержит слова \"legacy\" в названии файла</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из \"%1$s\".</string>
+    <string name="autocrypt_continue_transfer_retry">Повторить</string>
+    <string name="systemmsg_group_image_changed">Название чата изменено.</string>
+    <string name="systemmsg_group_left">Группа покинута</string>
+    <string name="screenlock_authentication_failed">Не пройдена аутентификация</string>
+    <string name="screenlock_unlock_title">Разблокировать Дельта Чат</string>
+    <string name="screenlock_inactivity_timeout">Блокировка при бездействии</string>
+    <string name="screenlock_inactivity_timeout_explain">Заблокировать приложение через определенный период времени</string>
+    <!-- qr code stuff -->
+    <string name="qrscan_title">Сканировать QR код</string>
+    <string name="qrscan_hint">Наведите Вашу камеру на QR код</string>
+    <string name="qrscan_fingerprint_label">Отпечаток</string>
+    <string name="qrshow_join_verified_group_title">QR код приглашения</string>
+    <string name="qrshow_join_contact_title">QR код подтверждения</string>
+    <string name="notify_mark_all_read">Отметить всё как прочитанное</string>
+    <string name="notify_mark_read">Отметить как прочитанное</string>
+    <string name="notify_reply_button">Ответить</string>
+    <string name="notify_new_message">Новое сообщение</string>
+    <string name="notify_background_connection_enabled">Соединение в фоновом режиме включено</string>
+    <string name="notify_priority_max">Максимум</string>
+    <string name="notify_name_and_message">Имена и сообщения</string>
+    <string name="notify_name_only">Только имена</string>
+    <string name="notify_repeat_one_time">Один раз</string>
+    <string name="notify_repeat_two_times">Два раза</string>
+    <string name="notify_repeat_three_times">Три раза</string>
+    <string name="notify_repeat_five_times">Пять раз</string>
+    <string name="notify_repeat_ten_times">Десять раз</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Требуется разрешение</string>
+    <string name="perm_continue">Продолжить</string>
+    <string name="perm_not_now">Не сейчас</string>
+    <string name="perm_explain_need_for_camera_access">Для захвата фото и видео, разрешите доступ к камере</string>
+    <string name="perm_explain_need_for_mic_access">Для отправки аудио сообщений, разрешите доступ к микрофону</string>
+    <string name="perm_explain_need_for_storage_access">Приложению необходим доступ к файлам для экспорта и создания бэкапов</string>
+    <string name="perm_explain_access_to_camera_denied">Для съемки фотографий или видео приложению требуется разрешение использовать камеру, но сейчас камера заблокирована. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Камера\".</string>
+    <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Микрофон\".</string>
+    <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов приложению нужно разрешение на хранение, но сейчас хранение заблокировано. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите функцию \"Хранение\".</string>
+    <string name="perm_explain_access_to_location_denied">Чтобы прикреплить местоположение приложениею нужно разрешить доступ к вашему \"Расположению\", но сейчас местоположение заблокировано. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Расположение\".</string>
+</resources>
