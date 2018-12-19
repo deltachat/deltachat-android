@@ -2,12 +2,14 @@
 <resources>
     <!-- common strings without special context -->
     <string name="app_name">Дельта Чат</string>
+    <string name="ok">OK</string>
     <string name="cancel">Отмена</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="on">Вкл</string>
     <string name="off">Выкл</string>
     <string name="def">По умолчанию</string>
+    <string name="custom">Персональная настройка</string>
     <string name="none">Не задано</string>
     <string name="open">Открыть</string>
     <string name="not_now">Не сейчас</string>
@@ -32,12 +34,37 @@
     <string name="yesterday">Вчера</string>
     <string name="this_week">На этой неделе</string>
     <string name="this_month">В этом месяце</string>
+    <plurals name="n_minutes">
+        <item quantity="one">%d минута</item>
+        <item quantity="few">%d минуты</item>
+        <item quantity="many">%d минут</item>
+        <item quantity="other">%d минут</item>
+    </plurals>
     <plurals name="n_hours">
         <item quantity="one">%d час</item>
         <item quantity="few">%d часа</item>
         <item quantity="many">%d часов</item>
         <item quantity="other">%d часов</item>
     </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 контакт</item>
+        <item quantity="few">Контакты %1$d</item>
+        <item quantity="many">Контакты %1$d</item>
+        <item quantity="other">Контакты %1$d</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">1 сообщение</item>
+        <item quantity="few">Сообщения %1$d</item>
+        <item quantity="many">Сообщения %1$d</item>
+        <item quantity="other">Сообщения %1$d</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">1 участник</item>
+        <item quantity="few">Участники %1$d</item>
+        <item quantity="many">Участники %1$d</item>
+        <item quantity="other">Участники %1$d</item>
+    </plurals>
+
     <string name="image">Изображение</string>
     <string name="gif">Гиф</string>
     <string name="audio">Аудио</string>
@@ -148,44 +175,83 @@
         <item quantity="many">%d чатов были заархивированы.</item>
         <item quantity="other">%dчатов были заархивированы.</item>
     </plurals>
+    <string name="chat_archived_chats_title">Чаты в архиве</string>
+    <string name="chat_please_enter_message">Пожалуйста введите сообщение.</string>
     <string name="chat_camera_unavailable">Камера недоступна.</string>
     <string name="chat_unable_to_record_audio">Запись аудио невозможна.</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%dнепрочитанное сообщение</item>
+        <item quantity="few">%d непрочитанных сообщений</item>
+        <item quantity="many">%d непрочитанных сообщений</item>
+        <item quantity="other">%d непрочитанных сообщений</item>
+    </plurals>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
+    <string name="chat_all_done_hint">Входящих нееетт..</string>
     <string name="chat_share_with_title">Поделиться</string>
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Заархивировано</string>
     <string name="chat_no_messages">Нет сообщений.</string>
+    <string name="chat_self_talk_subtitle">Отправлено самому себе</string>
+
     <!-- search -->
     <string name="search">Поиск</string>
+    <string name="search_no_result_for_x">Не найдено \"%s\"</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Название группы</string>
     <string name="group_avatar">Аватар группы</string>
     <string name="group_create_button">Создать группу</string>
     <string name="group_please_enter_group_name">Введите название группы</string>
     <string name="group_add_members">Добавить участников</string>
+    <string name="group_hello_draft">Привет, я только что создал группу \"%1$s\"  для нас</string>
     <string name="group_self_not_in_group">Необходимо быть членом группы для данного действия</string>
     <string name="profile_encryption">Шифрование</string>
 
 
     <!-- chat media view -->
-    <string name="media_preview">Предпоказ медиа</string>
+    <string name="media_preview">Превью медиа</string>
+    <string name="media_tab_media">Медиа</string>
     <string name="media_tab_documents">Документы</string>
+    <string name="media_no_media_hint">Нет медиа</string>
+    <string name="media_no_documents_hint">Нет документов</string>
+
+
+    <string name="invite_default_text">Давайте перейдём на Delta Chat %1$s -  вы можете написать мне на %2$s</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Дельта Чат</string>
     <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и свободныйt.</string>
     <string name="welcome_intro2_headline">Независимое</string>
     <string name="welcome_intro2_message">Приложение не использует сервера. Используется только ваша почта.</string>
     <string name="welcome_intro3_headline">Быстрый</string>
+    <string name="welcome_intro3_message">Доставляет сообщения за считанные секунды. Быстрый интерфейс.</string>
     <string name="welcome_intro4_headline">Мощный</string>
+    <string name="welcome_intro4_message">Безлимитные чаты, отправка фотографий, видео, аудио сообщений и другое. Поддерживает множество клиентов.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Бесплатный</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Дельта Чат всегда бесплатен. С открытым исходным кодом. Никакой рекламы. Никаких платных подписок. Независим от поставщика.</string>
     <string name="welcome_intro6_headline">Зашифровано</string>
+    <string name="welcome_intro6_message">Зашифрован с использованием популярных алгоритмов. Сообщения остаются на ваших серверах.</string>
     <string name="welcome_intro7_headline">Доверенный</string>
+    <string name="welcome_intro7_message">Delta Chat безопасен для бизнеса, сочетаем с другими технологиями и основан на стандартах.</string>
     <string name="welcome_start_messaging">Начать общение</string>
+    <string name="login_title">Логин</string>
+    <string name="login_header">Логин на ваш сервер</string>
     <string name="login_inbox">Входящие</string>
+    <string name="login_imap_login">IMAP логин</string>
+    <string name="login_imap_server">IMAP сервер</string>
+    <string name="login_imap_port">IMAP порт</string>
+    <string name="login_imap_security">параметры безопасности IMAP</string>
     <string name="login_outbox">Исходящие</string>
+    <string name="login_smtp_login">SMTP логин</string>
+    <string name="login_smtp_password">SMTP пароль</string>
+    <string name="login_smtp_server">SMTP сервер</string>
+    <string name="login_smtp_port">SMTP порт</string>
+    <string name="login_smtp_security">настройки безопасности SMTP</string>
+    <string name="login_info_gmail_text">Если вы пользуетесь GMail и у вас включена 2х-факторная авторизация, вам необходимо создать специальный пароль для приложений - App-Password. Если эти настройки недоступны, вам надо активировать параметр Less Secure Apps.</string>
     <string name="login_error_mail">Укажите действующий емейл адресс</string>
     <string name="login_error_server">Укажите действующий сервер / АйПи адресс</string>
     <string name="login_error_port">Укажите действующий порт (1-65535)</string>

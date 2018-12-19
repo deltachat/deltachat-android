@@ -35,7 +35,9 @@
     <string name="self">Moi</string>
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>
+    <string name="gif">Gif</string>
     <string name="audio">Son</string>
+    <string name="voice_message">Message vocal</string>
     <string name="video">Vidéo</string>
     <string name="contact">Contact</string>
     <string name="camera">Caméra</string>
@@ -66,10 +68,15 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Nouveau contact</string>
+    <string name="menu_new_chat">Nouvelle discussion</string>
     <string name="menu_new_group">Nouveau groupe</string>
+    <string name="menu_new_verified_group">Nouveau groupe vérifié</string>
     <string name="menu_send">Envoyer</string>
+    <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
     <string name="menu_edit_group">Éditer le groupe</string>
     <string name="menu_archive_chat">Archiver la discussion</string>
+    <string name="menu_unarchive_chat">Désarchiver la discussion</string>
+    <string name="menu_add_attachment">Ajouter une pièce jointe</string>
     <string name="menu_leave_group">Quitter le groupe</string>
     <string name="menu_delete_chat">Effacer la discussion</string>
     <string name="menu_delete_messages">Effacer les messages</string>
@@ -78,8 +85,24 @@
     <string name="menu_forward">Transmettre le message</string>
     <string name="menu_resend">Renvoyer le message</string>
     <string name="menu_reply">Répondre au message</string>
+    <string name="menu_export_attachment">Exporter le fichier joint</string>
+    <string name="menu_all_media">Tous les médias</string>
+    <string name="menu_share">Partager</string>
+    <string name="menu_block_contact">Bloquer le contact</string>
+    <string name="menu_unblock_contact">Débloquer le contact</string>
+    <string name="menu_play">Jouer</string>
+    <string name="menu_pause">Pause</string>
+    <string name="menu_invite">Inviter des amis</string>
     <string name="menu_help">Aide</string>
+    <string name="menu_select_all">Tout sélectionner</string>
+    <string name="menu_expand">Étendre</string>
+    <string name="menu_edit_name">Éditer le nom</string>
     <string name="menu_settings">Paramètres</string>
+    <string name="menu_advanced">Avancé</string>
+    <string name="menu_view_profile">Voir le profil</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>

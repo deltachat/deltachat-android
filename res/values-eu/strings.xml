@@ -18,6 +18,7 @@
     <string name="done">Egina</string>
     <string name="undo">Desegin</string>
     <string name="error">Errorea</string>
+    <string name="error_x">Errorea: %1$s</string>
     <string name="error_no_network">Sarea ez dago eskuragarri.</string>
     <string name="no_app_to_handle_data">Ezin izan da datu mota hau kudeatzeko aplikaziorik.</string>
     <string name="no_browser_installed">Ez dago nabigatzailerik instalatuta.</string>
@@ -41,11 +42,29 @@
         <item quantity="one">ordu %d</item>
         <item quantity="other">%d ordu</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">txat 1</item>
+        <item quantity="other">%1$d txat</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">kontaktu 1</item>
+        <item quantity="other">%1$d kontaktu</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">mezu 1</item>
+        <item quantity="other">%1$d mezu</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">kide 1</item>
+        <item quantity="other">%1$d kide</item>
+    </plurals>
+
     <string name="self">Ni</string>
     <string name="draft">Zirriborroa</string>
     <string name="image">Irudia</string>
     <string name="gif">Gif-a</string>
     <string name="audio">Audioa</string>
+    <string name="voice_message">Ahots-mezua</string>
     <string name="video">Bideoa</string>
     <string name="contact">Kontaktua</string>
     <string name="camera">Kamera</string>

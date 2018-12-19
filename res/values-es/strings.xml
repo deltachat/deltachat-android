@@ -6,8 +6,12 @@
     <string name="cancel">Cancelar</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
+    <string name="on">Encendido</string>
+    <string name="off">Apagado</string>
     <string name="def">Por defecto</string>
     <string name="custom">Personalizado</string>
+    <string name="none">Ninguno</string>
+    <string name="open">Abrir</string>
     <string name="not_now">Ahora no</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Un momento...</string>
@@ -273,6 +277,7 @@
     <string name="pref_summary_default">por defecto</string>
     <string name="pref_summary_custom">personalizado</string>
     <string name="pref_profile_info_headline">Información de perfil </string>
+    <string name="pref_profile_photo">Foto de perfil</string>
     <string name="pref_trim_option">Eliminar mensajes antiguos </string>
     <string name="pref_trim_option_explain">Eliminar automáticamente los mensajes antiguos una vez que el chat supera una cantidad específica</string>
     <string name="pref_trim_length_limit">Límite de longitud de chat</string>
@@ -344,8 +349,11 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">Autocrypt es una nueva especificación abierta para encriptado automático de correo electrónico de extremo a extremo. Su configuración de extremo a extremo es creada automáticamente cuando se necesita y puede transferirla entre dispositivos con los Mensajes de Configuración de Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Enviar Mensaje de Configuración de Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_before">Un \"Mensaje de Configuración de Autocrypt\" comparte de forma segura su configuración de extremo a extremo con otras aplicaciones compatibles con Autocrypt.\n\nLa configuración se cifrará mediante un código de configuración que se muestra aquí y debe escribirse en el otro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar Mensaje de Configuración de Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_after">Se le ha enviado su configuración. Cambie al otro dispositivo y abra el mensaje de configuración. Se le debe solicitar un código de configuración. Escriba los siguientes dígitos:\n\n%1$s\n\nUna vez que haya terminado, su otro dispositivo estará listo para usar Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir el cifrado de extremo a extremo</string>
     <string name="autocrypt_asm_subject">Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_asm_general_body">Este es el Mensaje de Configuración de Autocrypt utilizado para transferir su configuración de extremo a extremo entre clientes.\n\nPara descifrar y usar su configuración, abra el mensaje en un cliente compatible con Autocrypt e ingrese el código de configuración presentado en el dispositivo que lo generó.</string>
