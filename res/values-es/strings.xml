@@ -270,8 +270,9 @@
     <!-- preferences -->
     <string name="pref_summary_privacy">Bloqueo de pantalla %1$s, Recibos de lectura %2$s</string>
     <string name="pref_summary_appearance">Tema %1$s, Idioma %2$s, Fondo %3$s</string>
+    <string name="pref_summary_default">por defecto</string>
+    <string name="pref_summary_custom">personalizado</string>
     <string name="pref_profile_info_headline">Información de perfil </string>
-    <string name="pref_profile_photo"><br><div><tx-placeholder class=\"editor-non-editable s-placeholder s-variable s-tag noSelect translatable-candidate js-tag-attribute-edit s-tag--unary tipsy_enable\" data-index=\"1\" data-position=\"1\" data-type=\"unary\" title=\"<br>\" data-tag=\"br\" data-translatable=\"false\" spellcheck=\"false\" contenteditable=\"false\">1</tx-placeholder><br data-mce-bogus=\"1\"></div></string>
     <string name="pref_trim_option">Eliminar mensajes antiguos </string>
     <string name="pref_trim_option_explain">Eliminar automáticamente los mensajes antiguos una vez que el chat supera una cantidad específica</string>
     <string name="pref_trim_length_limit">Límite de longitud de chat</string>
@@ -282,6 +283,7 @@
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Contraseña y ajustes de cuenta</string>
     <string name="pref_who_can_see_this_information">¿Quién puede ver esta información?</string>
+    <string name="pref_who_can_see_profile_explain">La imagen y el nombre de su perfil se mostrarán junto con sus mensajes cuando se comunique con otros usuarios. La información ya enviada no puede ser borrada o eliminada.</string>
     <string name="pref_your_name">Tu nombre</string>
     <string name="pref_default_status_label">Texto de estado</string>
     <string name="pref_default_status_text">Enviado con mi aplicación de mensajería Delta Chat: https://delta.chat</string>
@@ -300,6 +302,7 @@
     <string name="pref_led_color">Color de LED</string>
     <string name="pref_led_pattern">Patrón de parpadeo LED</string>
     <string name="pref_sound">Sonido</string>
+    <string name="pref_silent">Silencio</string>
     <string name="pref_repeat_notify">Repetir alertas</string>
     <string name="pref_privacy">Privacidad</string>
     <string name="pref_chats_and_media">Chats y multimedia</string>
@@ -322,6 +325,7 @@
     <string name="pref_in_chat_sounds">Sonidos en el chat</string>
     <string name="pref_message_text_size">Tamaño de fuente del mensaje</string>
     <string name="pref_view_log">Ver log</string>
+    <string name="pref_other">Otro</string>
     <string name="pref_backup">Copia de respaldo</string>
     <string name="pref_backup_explain">Hacer copias de respaldo de chats en almacenamiento externo</string>
     <string name="pref_backup_export_explain">Una copia de respaldo lo ayuda a configurar una nueva instalación en este u otro dispositivo.\n\nLa copia de respaldo contendrá todos los mensajes, contactos y chats, y su configuración Autocrypt de extremo a extremo. Guarde el archivo de respaldo en un lugar seguro o elimínelo lo antes posible.</string>
@@ -332,6 +336,9 @@
     <string name="pref_managekeys_export_secret_keys">Exportar claves secretas</string>
     <string name="pref_managekeys_export_explain">¿Exportar claves secretas a \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importar claves secretas</string>
+    <string name="pref_managekeys_import_explain">Importar claves secretas de \"%1$s\"?\n\n• Las claves secretas existentes no se eliminarán\n\n• La última clave importada se usará como la nueva clave predeterminada a menos que tenga la palabra \"legacy\" en su nombre de archivo.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Claves secretas escritas exitosamente a \"%1$s\".</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Claves secretas importadas de \"%1$s\".</string>
     <string name="pref_background">Fondo de chat</string>
 
 
@@ -341,9 +348,15 @@
     <string name="autocrypt_send_asm_button">Enviar Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_prefer_e2ee">Preferir el cifrado de extremo a extremo</string>
     <string name="autocrypt_asm_subject">Mensaje de Configuración de Autocrypt</string>
+    <string name="autocrypt_asm_general_body">Este es el Mensaje de Configuración de Autocrypt utilizado para transferir su configuración de extremo a extremo entre clientes.\n\nPara descifrar y usar su configuración, abra el mensaje en un cliente compatible con Autocrypt e ingrese el código de configuración presentado en el dispositivo que lo generó.</string>
+    <string name="autocrypt_asm_click_body">Este es el Mensaje de Configuración de Autocrypt utilizado para transferir su configuración de extremo a extremo entre clientes.\n\nPara descifrar y usar su configuración, toque o haga clic en este mensaje.</string>
     <string name="autocrypt_continue_transfer_title">Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Por favor, introduzca el código de configuración que se muestra en el otro dispositivo. </string>
+    <string name="autocrypt_continue_transfer_succeeded">Configuración de extremo a extremo transferida. Este dispositivo ahora está listo para usar Autocrypt con la misma configuración que el otro dispositivo.</string>
     <string name="autocrypt_continue_transfer_retry">Reintentar</string>
+    <string name="autocrypt_bad_setup_code">Código de configuración incorrecto. Inténtelo de nuevo.\n\nSi no recuerda el código de configuración, solo envíe otro Mensaje de Configuración de Autocrypt desde el otro dispositivo.</string>
+
+
     <!-- system messages -->
     <string name="systemmsg_group_name_changed">Nombre de grupo cambiado de \"%1$s\" a \"%2$s\"</string>
     <string name="systemmsg_group_image_changed">Imagen de grupo cambiada.</string>
@@ -352,16 +365,24 @@
     <string name="systemmsg_member_removed">Miembro %1$s eliminado.</string>
     <string name="systemmsg_group_left">Grupo abandonado.</string>
     <string name="systemmsg_read_receipt_subject">Recibo de lectura</string>
+    <string name="systemmsg_read_receipt_body">Este es un recibo de lectura para el mensaje \"%1$s\".\n\nSignifica que el mensaje se mostró en el dispositivo del destinatario, pero no necesariamente que se leyó el contenido.</string>
+    <string name="systemmsg_cannot_decrypt">Este mensaje no puede ser descifrado.\n\n• Es posible que sea útil simplemente responderlo y pedirle al remitente que lo envíe nuevamente.\n\n• En caso de que haya reinstalado Delta Chat u otro programa de correo en este u otro dispositivo, puede que quiera enviar un Mensaje de Configuración de Autocrypt desde allí.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueo de pantalla</string>
+    <string name="screenlock_explain">Bloquear el acceso a Delta Chat con el bloqueo de pantalla o de huella de Android</string>
     <string name="screenlock_authentication_failed">La autenticación falló.</string>
     <string name="screenlock_unlock_title">Desbloquear Delta Chat</string>
+    <string name="screenlock_unlock_description">Por favor, ingrese la clave definida en su sistema para desbloquear Delta Chat.</string>
     <!-- qr code stuff -->
     <string name="qrscan_title">Escanear código QR</string>
     <string name="qrscan_hint">Coloque su cámara sobre el código QR</string>
     <string name="qrscan_ask_join_verified_group">¿Quieres unirte al grupo verificado \"%1$s\"?</string>
     <string name="qrscan_ask_fingerprint_ask_oob">¿Verificar contacto y comenzar a chatear con \"%1$s\"?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Contacto \"%1$s\" verificado. ¿Empezar a chatear?</string>
+    <string name="qrscan_fingerprint_mismatch">La huella digital escaneada no coincide con la última huella vista para \"%1$s\".</string>
+    <string name="qrscan_no_addr_found">Este código QR contiene una huella digital pero no una dirección de correo electrónico.\n\nPara una verificación fuera de banda, establezca primero una conexión cifrada con el destinatario.</string>
     <string name="qrscan_contains_text">Texto del código QR escaneado:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del código QR escaneado:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Huella digital</string>
@@ -373,11 +394,16 @@
     <string name="qrshow_join_verified_group_hint">Escanea esto para unirte al grupo verificado \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">Código de invitación QR</string>
     <string name="qrshow_join_contact_title">Código de verificación QR</string>
+    <string name="qrshow_join_contact_hint">\"%1$s\" Escanee esto para configurar un contacto verificado.</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuevos mensajes en %2$d chats</string>
     <string name="notify_most_recent_from">Más reciente de: %1$s</string>
+    <string name="notify_media_message_with_text">Mensaje multimedia: %s</string>
     <string name="notify_mark_all_read">Marcar todo como leído</string>
     <string name="notify_mark_read">Marcar como leído</string>
+    <string name="notify_media_message">Mensaje multimedia</string>
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nuevo mensaje</string>
     <string name="notify_background_connection_enabled">Conexión en segundo plano habilitada</string>
@@ -395,4 +421,7 @@
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
     <string name="perm_not_now">Ahora no</string>
+    <string name="perm_explain_need_for_camera_access">Para capturar fotos y videos, permita que Delta Chat acceda a la cámara.</string>
+    <string name="perm_explain_need_for_mic_access">Para enviar mensajes de audio, permita que Delta Chat acceda a su micrófono.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat necesita acceso a sus archivos para exportar archivos o crear copias de respaldo.</string>
     </resources>

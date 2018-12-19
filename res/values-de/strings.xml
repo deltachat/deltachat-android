@@ -361,17 +361,17 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nIhr Ende-zu-Ende-Setup wird dabei automatisch eingerichtet und Sie können es mit Autocrypt-Setup-Nachrichten zwischen Geräten übertragen.</string>
+    <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nDas Ende-zu-Ende-Setup wird dabei automatisch eingerichtet und kann mit Autocrypt-Setup-Nachrichten zwischen Geräten übertragen werden.</string>
     <string name="autocrypt_send_asm_title">Autocrypt-Setup-Message senden</string>
-    <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt-Setup-Nachricht\" überträgt ihre Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät.\n\nIhr Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
+    <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt-Setup-Nachricht\" überträgt dein Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät.\n\nDas Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-Setup-Nachricht senden</string>
-    <string name="autocrypt_send_asm_explain_after">Ihr Setup wurde an Sie selbst verschickt. Wechseln sie nun zum anderen Gerät und öffnen die Setup-Nachricht. Sie werden dann aufgefordert einen Setup-Code einzugeben. Tippen Sie dort die folgenden Zahlen ein:\n\n%1$s\n\nWenn Sie fertig sind, ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
+    <string name="autocrypt_send_asm_explain_after">Das Setup wurde an dich geschickt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Nach Aufforderung, den Setup-Code einzugeben, die folgenden Zahlen eintippen:\n\n%1$s\n\nDanach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
     <string name="autocrypt_prefer_e2ee">Ende-zu-Ende-Verschlüsselung bevorzugen</string>
     <string name="autocrypt_asm_subject">Autocrypt-Setup-Nachricht</string>
-    <string name="autocrypt_asm_general_body">Dies ist die Autocrypt-Setup-Nachricht, um Ihr Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nUm Ihr Setup zu verwenden, öffnen Sie diese Nachricht in einer Autocrypt-kompatiblen App und geben Sie den Setup-Code ein, der Ihnen auf dem andern Gerät angezeigt wurde.</string>
-    <string name="autocrypt_asm_click_body">Dies ist die Autocrypt-Setup-Nachricht, um Ihr Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nTippen oder klicken Sie auf diese Nachricht, um Ihr Setup zu verwenden.</string>
+    <string name="autocrypt_asm_general_body">Dies ist die Autocrypt-Setup-Nachricht, um das Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nUm das Setup zu entschlüsseln und zu verwenden, diese Nachricht in einer Autocrypt-kompatiblen App öffnen und den Setup-Code eingeben, der  auf dem anderen Gerät angezeigt wurde.</string>
+    <string name="autocrypt_asm_click_body">Dies ist die Autocrypt-Setup-Nachricht, um das Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nAuf diese Nachricht klicken, um das Setup zu verwenden.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt-Setup-Nachricht</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Bitte geben Sie den Übertragungscode, der auf dem anderen Gerät angezeigt wird ein.</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Bitte den Übertragungscode eingeben, der auf dem anderen Gerät angezeigt wird.</string>
     <string name="autocrypt_continue_transfer_succeeded">Ende-zu-Ende Einstellungen übertragen. Dieses Gerät ist nun bereit, Autocrypt mit den selben Einstellungen wie das Ursprungsgerät zu verwenden.</string>
     <string name="autocrypt_continue_transfer_retry">Wiederholen</string>
     <string name="autocrypt_bad_setup_code">Ungültiger Setup-Code. Bitte versuchen Sie es erneut.\n\nWenn Sie den Setup-Code nicht mehr haben, können Sie auf dem anderen Gerät jederzeit eine neue Autocrypt-Setup-Nachricht mit einem neuen Setup-Code erzeugen.</string>

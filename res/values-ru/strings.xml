@@ -148,10 +148,13 @@
         <item quantity="many">%d чатов были заархивированы.</item>
         <item quantity="other">%dчатов были заархивированы.</item>
     </plurals>
+    <string name="chat_camera_unavailable">Камера недоступна.</string>
+    <string name="chat_unable_to_record_audio">Запись аудио невозможна.</string>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
     <string name="chat_share_with_title">Поделиться</string>
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Заархивировано</string>
+    <string name="chat_no_messages">Нет сообщений.</string>
     <!-- search -->
     <string name="search">Поиск</string>
     <!-- create/edit groups, contact/group profile -->
@@ -172,6 +175,7 @@
     <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и свободныйt.</string>
     <string name="welcome_intro2_headline">Независимое</string>
     <string name="welcome_intro2_message">Приложение не использует сервера. Используется только ваша почта.</string>
+    <string name="welcome_intro3_headline">Быстрый</string>
     <string name="welcome_intro4_headline">Мощный</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Бесплатный</string>
@@ -189,6 +193,10 @@
     <string name="import_backup_title">Импортировать бекап</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Не удалось войти как \"%1$s\". Пожалуйста проверьте правильность ввода email и пароля.</string>
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Переслать...</string>
+
     <string name="pref_summary_default">по- умолчанию</string>
     <string name="pref_profile_info_headline">Информация вашего профиля</string>
     <string name="pref_profile_photo">Фото профиля</string>
@@ -202,6 +210,7 @@
     <string name="pref_who_can_see_this_information">Кто может видеть эту информацию?</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будет отображаться в чатах с другими пользователями. Отправленная информация не может быть удалена или отозвана.</string>
     <string name="pref_your_name">Ваше имя</string>
+    <string name="pref_default_status_label">Статус</string>
     <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
     <string name="pref_chat_settings">Настройки чата</string>
     <string name="pref_screen_security">Безопасность экрана</string>
@@ -210,6 +219,7 @@
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_led_color">Цвет светодиода </string>
     <string name="pref_sound">Звук</string>
+    <string name="pref_silent">Беззвучный</string>
     <string name="pref_privacy">Приватность</string>
     <string name="pref_light_theme">Светлый</string>
     <string name="pref_dark_theme">Темный</string>
@@ -218,6 +228,7 @@
     <string name="pref_manage_keys">Управление ключами</string>
     <string name="pref_use_system_emoji">Использовать системные смайлы</string>
     <string name="pref_app_access">Доступ приложения</string>
+    <string name="pref_communication">Связь</string>
     <string name="pref_chats">Чаты</string>
     <string name="pref_messages">Сообщения</string>
     <string name="pref_in_chat_sounds">Звук в чате</string>
@@ -234,6 +245,8 @@
     <string name="autocrypt_continue_transfer_retry">Повторить</string>
     <string name="systemmsg_group_image_changed">Название чата изменено.</string>
     <string name="systemmsg_group_left">Группа покинута</string>
+    <!-- screen lock -->
+    <string name="screenlock_title">Блокировка экрана</string>
     <string name="screenlock_authentication_failed">Не пройдена аутентификация</string>
     <string name="screenlock_unlock_title">Разблокировать Дельта Чат</string>
     <string name="screenlock_inactivity_timeout">Блокировка при бездействии</string>
@@ -241,6 +254,7 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">Сканировать QR код</string>
     <string name="qrscan_hint">Наведите Вашу камеру на QR код</string>
+    <string name="qrscan_ask_chatting_fingerprint_ok">Контакт \"%1$s\" верифицирован. Начать чат?</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
     <string name="qrshow_join_verified_group_title">QR код приглашения</string>
     <string name="qrshow_join_contact_title">QR код подтверждения</string>
@@ -269,5 +283,5 @@
     <string name="perm_explain_access_to_camera_denied">Для съемки фотографий или видео приложению требуется разрешение использовать камеру, но сейчас камера заблокирована. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Камера\".</string>
     <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов приложению нужно разрешение на хранение, но сейчас хранение заблокировано. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите функцию \"Хранение\".</string>
-    <string name="perm_explain_access_to_location_denied">Чтобы прикреплить местоположение приложениею нужно разрешить доступ к вашему \"Расположению\", но сейчас местоположение заблокировано. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Расположение\".</string>
+    <string name="perm_explain_access_to_location_denied">Чтобы прикрепить местоположение, приложению нужно разрешить доступ к вашему \"Расположению\", но сейчас местоположение заблокировано. Пожалуйста, перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Расположение\".</string>
 </resources>
