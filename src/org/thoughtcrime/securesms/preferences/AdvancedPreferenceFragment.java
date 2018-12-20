@@ -64,7 +64,6 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
 
     Preference submitDebugLog = this.findPreference("pref_view_log");
     submitDebugLog.setOnPreferenceClickListener(new ViewLogListener());
-    submitDebugLog.setSummary(getVersion(getActivity()));
   }
 
   @Override
@@ -100,14 +99,14 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
       }
   }
 
-  private @NonNull String getVersion(@Nullable Context context) {
+  public static @NonNull String getVersion(@Nullable Context context) {
     try {
       if (context == null) return "";
 
       String app     = context.getString(R.string.app_name);
       String version = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
 
-      return String.format("%s %s", app, version);
+      return String.format("%s v%s", app, version);
     } catch (PackageManager.NameNotFoundException e) {
       Log.w(TAG, e);
       return context.getString(R.string.app_name);
