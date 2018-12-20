@@ -42,6 +42,8 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
   private ApplicationDcContext dcContext;
 
   CheckBoxPreference preferE2eeCheckbox;
+  CheckBoxPreference inboxWatchCheckbox;
+  CheckBoxPreference sentboxWatchCheckbox;
   CheckBoxPreference mvboxWatchCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
 
@@ -57,6 +59,24 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
 
     preferE2eeCheckbox = (CheckBoxPreference) this.findPreference("pref_prefer_e2ee");
     preferE2eeCheckbox.setOnPreferenceChangeListener(new PreferE2eeListener());
+
+    inboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_inbox_watch");
+    inboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+//      boolean enabled = (Boolean) newValue;
+//      dcContext.setConfigInt("inbox_watch", enabled? 1 : 0);
+//      return true;
+      Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show();
+      return false;
+    });
+
+    sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
+    sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+//      boolean enabled = (Boolean) newValue;
+//      dcContext.setConfigInt("sentbox_watch", enabled? 1 : 0);
+//      return true;
+      Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show();
+      return false;
+    });
 
     mvboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_watch");
     mvboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -99,6 +119,8 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_advanced);
 
     preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt("e2ee_enabled", DcContext.DC_PREF_DEFAULT_E2EE_ENABLED));
+    inboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("inbox_watch", 1));
+    sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("sentbox_watch", 1));
     mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch", 1));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move", 1));
   }

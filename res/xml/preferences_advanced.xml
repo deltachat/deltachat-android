@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:key="media_download" android:title="@string/autocrypt">
+    <PreferenceCategory android:title="@string/autocrypt">
 
         <Preference android:key="pref_send_autocrypt_setup_message"
                     android:title="@string/autocrypt_send_asm_title"/>
@@ -12,16 +12,20 @@
             android:title="@string/autocrypt_prefer_e2ee"/>
 
     </PreferenceCategory>
-
     <PreferenceCategory android:layout="@layout/preference_divider_explain_autocrypt"/>
 
-    <PreferenceCategory android:key="media_download" android:title="@string/pref_other">
-        <Preference android:key="pref_backup"
-                    android:title="@string/pref_backup"
-                    android:summary="@string/pref_backup_explain"/>
 
-        <Preference android:key="pref_manage_keys"
-                    android:title="@string/pref_manage_keys"/>
+    <PreferenceCategory android:title="Folder"> <!-- TRANSLATION_NEEDED -->
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="pref_inbox_watch"
+            android:title="Watch Inbox folder"/> <!-- TRANSLATION_NEEDED -->
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="pref_sentbox_watch"
+            android:title="Watch Sent folder"/> <!-- TRANSLATION_NEEDED -->
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
@@ -33,6 +37,18 @@
             android:key="pref_mvbox_move"
             android:summary="Currently, just all chat messages are moved, the heuristic part is under construction"
             android:title="Heuristic moves to DeltaChat folder"/> <!-- TRANSLATION_NEEDED -->
+
+    </PreferenceCategory>
+    <PreferenceCategory android:layout="@layout/preference_divider" />
+
+    <PreferenceCategory android:title="@string/pref_other">
+        <Preference android:key="pref_backup"
+                    android:title="@string/pref_backup"
+                    android:summary="@string/pref_backup_explain"/>
+
+        <Preference android:key="pref_manage_keys"
+                    android:title="@string/pref_manage_keys"/>
+
 
         <Preference android:key="pref_view_log"
                     android:title="@string/pref_view_log"/>
