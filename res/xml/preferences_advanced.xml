@@ -31,6 +31,7 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_mvbox_move"
+            android:summary="Currently, just all chat messages are moved, the heuristic part is under construction"
             android:title="Heuristic moves to DeltaChat folder"/> <!-- TRANSLATION_NEEDED -->
 
         <Preference android:key="pref_view_log"
