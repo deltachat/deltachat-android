@@ -2,12 +2,15 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:key="media_download" android:title="@string/autocrypt">
+
         <Preference android:key="pref_send_autocrypt_setup_message"
                     android:title="@string/autocrypt_send_asm_title"/>
+
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_prefer_e2ee"
             android:title="@string/autocrypt_prefer_e2ee"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:layout="@layout/preference_divider_explain_autocrypt"/>
@@ -19,6 +22,16 @@
 
         <Preference android:key="pref_manage_keys"
                     android:title="@string/pref_manage_keys"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="pref_mvbox_watch"
+            android:title="Watch DeltaChat folder"/> <!-- TRANSLATION_NEEDED -->
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="pref_mvbox_move"
+            android:title="Heuristic moves to DeltaChat folder"/> <!-- TRANSLATION_NEEDED -->
 
         <Preference android:key="pref_view_log"
                     android:title="@string/pref_view_log"/>

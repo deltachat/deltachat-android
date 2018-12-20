@@ -42,6 +42,8 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
   private ApplicationDcContext dcContext;
 
   CheckBoxPreference preferE2eeCheckbox;
+  CheckBoxPreference mvboxWatchCheckbox;
+  CheckBoxPreference mvboxMoveCheckbox;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -55,6 +57,20 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
 
     preferE2eeCheckbox = (CheckBoxPreference) this.findPreference("pref_prefer_e2ee");
     preferE2eeCheckbox.setOnPreferenceChangeListener(new PreferE2eeListener());
+
+    mvboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_watch");
+    mvboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+      boolean enabled = (Boolean) newValue;
+      dcContext.setConfigInt("mvbox_watch", enabled? 1 : 0);
+      return true;
+    });
+
+    mvboxMoveCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_move");
+    mvboxMoveCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+      boolean enabled = (Boolean) newValue;
+      dcContext.setConfigInt("mvbox_move", enabled? 1 : 0);
+      return true;
+    });
 
     Preference backup = this.findPreference("pref_backup");
     backup.setOnPreferenceClickListener(new BackupListener());
@@ -83,7 +99,8 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_advanced);
 
     preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt("e2ee_enabled", DcContext.DC_PREF_DEFAULT_E2EE_ENABLED));
-
+    mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch", 1));
+    mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move", 1));
   }
 
   @Override
