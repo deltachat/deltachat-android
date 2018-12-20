@@ -222,7 +222,7 @@
 
     <!-- invite -->
     <string name="invite_slogan">Freunde lassen Freunde nicht in Messenger-Silos zurück. </string>
-    <string name="invite_default_text">Wechseln wir zu Delta Chat  - %1$s - Du kannst mir eine Nachricht schicken%2$s</string>
+    <string name="invite_default_text">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
 
 
     <!-- welcome and login -->

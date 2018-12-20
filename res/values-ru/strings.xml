@@ -46,25 +46,32 @@
         <item quantity="many">%d часов</item>
         <item quantity="other">%d часов</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">1 чат</item>
+        <item quantity="few">%1$d чата</item>
+        <item quantity="many">%1$d чатов</item>
+        <item quantity="other">%1$d чатов</item>
+    </plurals>
     <plurals name="n_contacts">
         <item quantity="one">1 контакт</item>
-        <item quantity="few">Контакты %1$d</item>
-        <item quantity="many">Контакты %1$d</item>
-        <item quantity="other">Контакты %1$d</item>
+        <item quantity="few">%1$d контакта</item>
+        <item quantity="many">%1$d контактов</item>
+        <item quantity="other">%1$d контактов</item>
     </plurals>
     <plurals name="n_messages">
         <item quantity="one">1 сообщение</item>
-        <item quantity="few">Сообщения %1$d</item>
-        <item quantity="many">Сообщения %1$d</item>
-        <item quantity="other">Сообщения %1$d</item>
+        <item quantity="few">%1$d сообщения</item>
+        <item quantity="many">%1$d сообщений</item>
+        <item quantity="other">%1$d сообщений</item>
     </plurals>
     <plurals name="n_members">
         <item quantity="one">1 участник</item>
-        <item quantity="few">Участники %1$d</item>
-        <item quantity="many">Участники %1$d</item>
-        <item quantity="other">Участники %1$d</item>
+        <item quantity="few">%1$d участника</item>
+        <item quantity="many">%1$d участников</item>
+        <item quantity="other">%1$d участников</item>
     </plurals>
 
+    <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
     <string name="gif">Гиф</string>
     <string name="audio">Аудио</string>
@@ -124,7 +131,7 @@
     <string name="menu_share">Поделиться</string>
     <string name="menu_block_contact">Заблокировать контакт</string>
     <string name="menu_unblock_contact">Разблокировать контакт</string>
-    <string name="menu_play">Играть</string>
+    <string name="menu_play">Запустить</string>
     <string name="menu_pause">Пауза</string>
     <string name="menu_scroll_to_bottom">Перейти к концу</string>
     <string name="menu_invite">Пригласить друзей</string>
@@ -157,10 +164,17 @@
         <item quantity="many">Удалить %1$d сообщений отсюда и с сервера?</item>
         <item quantity="other">Удалить %1$d сообщений отсюда и с сервера?</item>
     </plurals>
+    <string name="ask_forward">Переслать сообщения для %1$s?</string>
+    <string name="ask_export_attachment">Экспортировать вложения? Экспорт вложений позволит любому приложению на вашем устройстве получить к ним доступ
+
+Продолжить?</string>
     <string name="ask_block_contact">Заблокировать контакт? Вы более не сможете получать от него сообщения.</string>
     <string name="ask_unblock_contact">Разблокировать контакт? Вы вновь сможете получать от него сообщения.</string>
     <string name="ask_delete_contacts">Удалить контакты?Это действие навсегда удалит выбранные контакты.
 Контакты из действующих чатов и из адресной книги системы нельзя удалить навсегда.</string>
+    <string name="ask_start_chat_with">Создать чат с %1$s?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Контакты</string>
     <string name="contacts_enter_name_or_email">Введите имя или адрес электронной почты</string>
@@ -175,6 +189,12 @@
         <item quantity="many">%d чатов были заархивированы.</item>
         <item quantity="other">%dчатов были заархивированы.</item>
     </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">Чат разархивирован</item>
+        <item quantity="few">%d чата разархивировано</item>
+        <item quantity="many">%d чатов разархивировано</item>
+        <item quantity="other">%d чатов разархивировано</item>
+    </plurals>
     <string name="chat_archived_chats_title">Чаты в архиве</string>
     <string name="chat_please_enter_message">Пожалуйста введите сообщение.</string>
     <string name="chat_camera_unavailable">Камера недоступна.</string>
@@ -187,14 +207,17 @@
     </plurals>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
     <string name="chat_all_done_hint">Входящих нееетт..</string>
+    <string name="chat_all_done_explain">Ни.Че.Го
+Вы все попались!</string>
     <string name="chat_share_with_title">Поделиться</string>
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Заархивировано</string>
     <string name="chat_no_messages">Нет сообщений.</string>
-    <string name="chat_self_talk_subtitle">Отправлено самому себе</string>
+    <string name="chat_self_talk_subtitle">Отправлено себе</string>
 
     <!-- search -->
     <string name="search">Поиск</string>
+    <string name="search_explain">Искать чаты, контакты и сообщения</string>
     <string name="search_no_result_for_x">Не найдено \"%s\"</string>
 
 
@@ -240,6 +263,7 @@
     <string name="welcome_start_messaging">Начать общение</string>
     <string name="login_title">Логин</string>
     <string name="login_header">Логин на ваш сервер</string>
+    <string name="login_subheader">Для известных почтовых операторов дополнительные настройки устанавливаются автоматически. Иногда IMAP требуется разрешение в веб-интерфейсе. Проконсультируйтесь с вашим почтовым оператором или друзьями для получения помощи.</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">IMAP логин</string>
     <string name="login_imap_server">IMAP сервер</string>
@@ -252,8 +276,8 @@
     <string name="login_smtp_port">SMTP порт</string>
     <string name="login_smtp_security">настройки безопасности SMTP</string>
     <string name="login_info_gmail_text">Если вы пользуетесь GMail и у вас включена 2х-факторная авторизация, вам необходимо создать специальный пароль для приложений - App-Password. Если эти настройки недоступны, вам надо активировать параметр Less Secure Apps.</string>
-    <string name="login_error_mail">Укажите действующий емейл адресс</string>
-    <string name="login_error_server">Укажите действующий сервер / АйПи адресс</string>
+    <string name="login_error_mail">Укажите действующий адрес электронной почты</string>
+    <string name="login_error_server">Укажите действующий сервер / IP адрес</string>
     <string name="login_error_port">Укажите действующий порт (1-65535)</string>
     <string name="login_error_required_fields">Пожалуйста укажите верные емайл и пароль</string>
     <string name="import_backup_title">Импортировать бекап</string>
@@ -263,36 +287,51 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
 
+    <string name="pref_summary_appearance">Тема %1$s, язык %2$s, заставка %3$s</string>
+    <string name="pref_summary_on">вкл</string>
+    <string name="pref_summary_off">выкл</string>
     <string name="pref_summary_default">по- умолчанию</string>
+    <string name="pref_using_custom">Использовать персонализованно: %s</string>
+    <string name="pref_using_default">Использовать по умолчанию: %s</string>
     <string name="pref_profile_info_headline">Информация вашего профиля</string>
     <string name="pref_profile_photo">Фото профиля</string>
+    <string name="pref_trim_headline">Очистка сообщений</string>
     <string name="pref_trim_option">Удалить старые сообщения</string>
     <string name="pref_trim_option_explain">Автоматически удалять старые сообщения по достижении указанного лимита</string>
-    <string name="pref_trim_length_limit">Лимит длинны чата</string>
+    <string name="pref_trim_length_limit">Лимит длины чата</string>
+    <string name="pref_trim_now_button">Очистить все чаты</string>
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
     <string name="pref_profile_photo_remove_ask">Удалить фото профиля?</string>
+    <string name="pref_help_url">https://delta.chat/ru/help</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Настройки пароля и аккаунта</string>
     <string name="pref_who_can_see_this_information">Кто может видеть эту информацию?</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будет отображаться в чатах с другими пользователями. Отправленная информация не может быть удалена или отозвана.</string>
     <string name="pref_your_name">Ваше имя</string>
     <string name="pref_default_status_label">Статус</string>
+    <string name="pref_default_status_text">Отправлено из моего Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
     <string name="pref_chat_settings">Настройки чата</string>
     <string name="pref_screen_security">Безопасность экрана</string>
+    <string name="pref_screen_security_please_restart_hint">Перезагрузите приложение для применения настроек безопасности экрана.</string>
     <string name="pref_notifications">Уведомления</string>
     <string name="pref_notifications_show">Показать</string>
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_led_color">Цвет светодиода </string>
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучный</string>
+    <string name="pref_repeat_notify">Повторять оповещения</string>
     <string name="pref_privacy">Приватность</string>
     <string name="pref_light_theme">Светлый</string>
     <string name="pref_dark_theme">Темный</string>
+    <string name="pref_appearance">Внешний вид</string>
     <string name="pref_theme">Тема</string>
     <string name="pref_language">Язык</string>
+    <string name="pref_incognito_keyboard">Клавиатура Инкогнито</string>
+    <string name="pref_incognito_keyboard_explain">Требовать отключения персонализации подсказок клавиатуры</string>
     <string name="pref_manage_keys">Управление ключами</string>
     <string name="pref_use_system_emoji">Использовать системные смайлы</string>
+    <string name="pref_use_system_emoji_explain">Отключить встроенную поддержку эмоджи</string>
     <string name="pref_app_access">Доступ приложения</string>
     <string name="pref_communication">Связь</string>
     <string name="pref_chats">Чаты</string>
@@ -308,8 +347,20 @@
     <string name="pref_managekeys_import_secret_keys">Импортировать секретные ключи</string>
     <string name="pref_managekeys_import_explain">Импортировать секретные ключи из \"%1$s\"?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию если он не содержит слова \"legacy\" в названии файла</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из \"%1$s\".</string>
+    <string name="autocrypt_prefer_e2ee">Предпочитать оконечное шифрование</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Пожалуйста введите установочный код, который отображается на другом устройстве.</string>
     <string name="autocrypt_continue_transfer_retry">Повторить</string>
-    <string name="systemmsg_group_image_changed">Название чата изменено.</string>
+    <string name="autocrypt_bad_setup_code">Неверный установочный код. Пожалуйста попробуйте снова
+
+Если вы забыли установочный код, просто отправьте еще одно сообщение Autocrypt Setup с другого устройства.</string>
+
+
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Название группы изменено с \"%1$s\" на \"%2$s\".</string>
+    <string name="systemmsg_group_image_changed">Изображение группы изменено.</string>
+    <string name="systemmsg_group_image_deleted">Изображение группы удалено.</string>
+    <string name="systemmsg_member_added">Участник %1$s добавлен.</string>
+    <string name="systemmsg_member_removed">Участник %1$s удален.</string>
     <string name="systemmsg_group_left">Группа покинута</string>
     <!-- screen lock -->
     <string name="screenlock_title">Блокировка экрана</string>
@@ -317,13 +368,22 @@
     <string name="screenlock_unlock_title">Разблокировать Дельта Чат</string>
     <string name="screenlock_inactivity_timeout">Блокировка при бездействии</string>
     <string name="screenlock_inactivity_timeout_explain">Заблокировать приложение через определенный период времени</string>
+    <string name="screenlock_inactivity_timeout_interval">Время неактивности</string>
+
+
     <!-- qr code stuff -->
     <string name="qrscan_title">Сканировать QR код</string>
     <string name="qrscan_hint">Наведите Вашу камеру на QR код</string>
+    <string name="qrscan_ask_join_verified_group">Вы хотите присоединиться к подтвержденной группе \"%1$s\"?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Подтвердить контакт и начать общение с \"%1$s\"?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Контакт \"%1$s\" верифицирован. Начать чат?</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
+    <string name="qrshow_x_joining">%1$s присоединился (-лась).</string>
+    <string name="qrshow_join_verified_group_hint">Отсканируйте это для присоединения к подтвержденной группе \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">QR код приглашения</string>
     <string name="qrshow_join_contact_title">QR код подтверждения</string>
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">%1$d новых сообщений из %2$d чатов.</string>
     <string name="notify_mark_all_read">Отметить всё как прочитанное</string>
     <string name="notify_mark_read">Отметить как прочитанное</string>
     <string name="notify_reply_button">Ответить</string>
@@ -332,6 +392,7 @@
     <string name="notify_priority_max">Максимум</string>
     <string name="notify_name_and_message">Имена и сообщения</string>
     <string name="notify_name_only">Только имена</string>
+    <string name="notify_no_name_or_message">Нет имени или сообщения</string>
     <string name="notify_repeat_one_time">Один раз</string>
     <string name="notify_repeat_two_times">Два раза</string>
     <string name="notify_repeat_three_times">Три раза</string>

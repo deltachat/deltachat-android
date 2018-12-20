@@ -6,8 +6,8 @@
     <string name="cancel">Cancelar</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
-    <string name="on">Encendido</string>
-    <string name="off">Apagado</string>
+    <string name="on">Activado</string>
+    <string name="off">Desactivado</string>
     <string name="def">Por defecto</string>
     <string name="custom">Personalizado</string>
     <string name="none">Ninguno</string>
@@ -187,6 +187,8 @@
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_record_explain">Mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
     <string name="chat_no_chats_yet_hint">Dale a tu bandeja de entrada algo sobre lo que escribir. Comience por enviar un mensaje a un amigo.</string>
+    <string name="chat_all_done_hint">Bandeja de entrada vacía</string>
+    <string name="chat_all_done_explain">No hay nada aquí!!!</string>
     <string name="chat_share_with_title">Compartir con</string>
     <string name="chat_input_placeholder">Mensaje</string>
     <string name="chat_archived_label">Archivado</string>
@@ -220,7 +222,7 @@
 
     <!-- invite -->
     <string name="invite_slogan">Los amigos no dejan a los amigos encerrados en silos de mensajería.</string>
-    <string name="invite_default_text">Cambiémonos a Delta Chat - %1$s - puedes enviarme un mensaje a %2$s</string>
+    <string name="invite_default_text">Cambiémonos a Delta Chat - %1$s - puedes enviarme un mensaje a %2$s</string>
 
 
     <!-- welcome and login -->
@@ -228,7 +230,7 @@
     <string name="welcome_intro1_message">La aplicación de mensajería instantánea con la audiencia más amplia del mundo. Libre e independiente. </string>
     <string name="welcome_intro2_headline">Independiente</string>
     <string name="welcome_intro2_message">No hay un servidor de Delta Chat. La aplicación solo utiliza su servidor de correo.</string>
-    <string name="welcome_intro3_headline">Rápido</string>
+    <string name="welcome_intro3_headline">Rápida</string>
     <string name="welcome_intro3_message">Envíe mensajes en segundos.\nInterfaz rápida.</string>
     <string name="welcome_intro4_headline">Poderosa</string>
     <string name="welcome_intro4_message">Chats ilimitados, imágenes, videos, mensajes de audio y más. Capacidad multi-cliente.</string>
@@ -240,7 +242,7 @@
     <string name="welcome_intro6_message">Encriptada con todos los algoritmos comunes. Los mensajes permanecen en sus servidores.</string>
     <string name="welcome_intro7_headline">Confiable</string>
     <string name="welcome_intro7_message">Delta Chat es seguro para uso comercial, compatible y basado en estándares.</string>
-    <string name="welcome_start_messaging">Empezar a enviar mensajes</string>
+    <string name="welcome_start_messaging">Iniciar mensajería</string>
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
@@ -262,6 +264,7 @@
     <string name="login_error_required_fields">Por favor, introduzca una dirección de correo válida y una contraseña</string>
     <string name="import_backup_title">Importar copia de respaldo</string>
     <string name="import_backup_ask">Copia de respaldo encontrada en \"%1$s\".\n\n¿Desea importar y utilizar todos los datos y configuraciones de ella?</string>
+    <string name="import_backup_no_backup_found">No se encontraron copias de seguridad.\n\nCopie el archivo de respaldo en \"%1$s\" e inténtelo de nuevo. Alternativamente, presione \"Iniciar mensajería\" para continuar con el proceso de configuración normal.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">No se puede iniciar sesión como \"%1$s\". Por favor, compruebe si la dirección de correo y la contraseña son correctas.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
@@ -274,14 +277,21 @@
     <!-- preferences -->
     <string name="pref_summary_privacy">Bloqueo de pantalla %1$s, Recibos de lectura %2$s</string>
     <string name="pref_summary_appearance">Tema %1$s, Idioma %2$s, Fondo %3$s</string>
+    <string name="pref_summary_on">activado</string>
+    <string name="pref_summary_off">desactivado</string>
     <string name="pref_summary_default">por defecto</string>
     <string name="pref_summary_custom">personalizado</string>
+    <string name="pref_using_custom">Usando valor personalizado: %s</string>
+    <string name="pref_using_default">Usando valor por defecto: %s</string>
     <string name="pref_profile_info_headline">Información de perfil </string>
     <string name="pref_profile_photo">Foto de perfil</string>
+    <string name="pref_trim_headline">Límite de mensajes</string>
     <string name="pref_trim_option">Eliminar mensajes antiguos </string>
     <string name="pref_trim_option_explain">Eliminar automáticamente los mensajes antiguos una vez que el chat supera una cantidad específica</string>
     <string name="pref_trim_length_limit">Límite de longitud de chat</string>
     <string name="pref_trim_length_limit_summary">%d mensajes por chat</string>
+    <string name="pref_trim_now_button">Recortar todos los chats ahora</string>
+    <string name="pref_trim_now_ask">¿Borrar todos los mensajes antiguos ahora? Esto recortará inmediatamente todos los chats a los %d mensajes más recientes.</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="pref_profile_photo_remove_ask">Eliminar foto de perfil? </string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
@@ -383,6 +393,11 @@
     <string name="screenlock_authentication_failed">La autenticación falló.</string>
     <string name="screenlock_unlock_title">Desbloquear Delta Chat</string>
     <string name="screenlock_unlock_description">Por favor, ingrese la clave definida en su sistema para desbloquear Delta Chat.</string>
+    <string name="screenlock_inactivity_timeout">Bloquear en inactividad</string>
+    <string name="screenlock_inactivity_timeout_explain">Bloquear Delta Chat automáticamente después de un intervalo de inactividad</string>
+    <string name="screenlock_inactivity_timeout_interval">Tiempo de espera antes de bloquear por inactividad</string>
+
+
     <!-- qr code stuff -->
     <string name="qrscan_title">Escanear código QR</string>
     <string name="qrscan_hint">Coloque su cámara sobre el código QR</string>
@@ -415,6 +430,8 @@
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nuevo mensaje</string>
     <string name="notify_background_connection_enabled">Conexión en segundo plano habilitada</string>
+    <string name="notify_priority_high">Alta</string>
+    <string name="notify_priority_max">Máxima</string>
     <string name="notify_name_and_message">Nombre y mensaje</string>
     <string name="notify_name_only">Solo nombre</string>
     <string name="notify_no_name_or_message">Sin nombre ni mensaje</string>
@@ -432,4 +449,8 @@
     <string name="perm_explain_need_for_camera_access">Para capturar fotos y videos, permita que Delta Chat acceda a la cámara.</string>
     <string name="perm_explain_need_for_mic_access">Para enviar mensajes de audio, permita que Delta Chat acceda a su micrófono.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat necesita acceso a sus archivos para exportar archivos o crear copias de respaldo.</string>
-    </resources>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat requiere el permiso de Cámara para tomar fotos o videos, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
+</resources>
