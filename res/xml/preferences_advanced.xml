@@ -15,7 +15,7 @@
     <PreferenceCategory android:layout="@layout/preference_divider_explain_autocrypt"/>
 
 
-    <PreferenceCategory android:title="Folder"> <!-- TRANSLATION_NEEDED -->
+    <PreferenceCategory android:title="IMAP folder handling"> <!-- TRANSLATION_NEEDED -->
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
@@ -35,8 +35,8 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_mvbox_move"
-            android:summary="Currently, just all chat messages are moved, the heuristic part is under construction"
-            android:title="Heuristic moves to DeltaChat folder"/> <!-- TRANSLATION_NEEDED -->
+            android:title="Automatic Moves to DeltaChat folder"
+            android:summary="Chat conversations are moved to avoid cluttering the Inbox folder"/> <!-- TRANSLATION_NEEDED -->
 
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/preference_divider" />
