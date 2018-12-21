@@ -82,7 +82,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
   @Override
   public void onStop(@NonNull LifecycleOwner owner) {
     isAppVisible = false;
-    ScreenLockUtil.shouldLockApp = true;
+    ScreenLockUtil.setShouldLockApp(true);
   }
 
   public JobManager getJobManager() {

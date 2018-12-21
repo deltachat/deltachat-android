@@ -14,13 +14,11 @@ import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 
 import java.lang.reflect.Field;
 import java.util.Timer;
-
-import static org.thoughtcrime.securesms.util.ScreenLockUtil.shouldLockApp;
 
 
 public abstract class BaseActionBarActivity extends AppCompatActivity {
@@ -28,6 +26,8 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   private static final String TAG = BaseActionBarActivity.class.getSimpleName();
 
   private Timer timer;
+
+  private boolean isWaitingForResult;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (ScreenLockUtil.isScreenLockEnabled(this) && shouldLockApp) {
+        if (ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult) {
             ScreenLockUtil.applyScreenLock(this);
         }
     }
@@ -48,11 +48,13 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       super.onActivityResult(requestCode, resultCode, data);
+      isWaitingForResult = false;
       if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
             if (resultCode == RESULT_OK) {
-                shouldLockApp = false;
+                ScreenLockUtil.setShouldLockApp(false);
             } else {
                 Toast.makeText(this, R.string.screenlock_authentication_failed, Toast.LENGTH_SHORT).show();
+                ScreenLockUtil.applyScreenLock(this);
             }
         }
     }
@@ -134,4 +136,9 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     ActivityCompat.startActivity(this, intent, bundle);
   }
 
+  @Override
+  public void startActivityForResult(Intent intent, int requestCode) {
+    super.startActivityForResult(intent, requestCode);
+    isWaitingForResult = true;
+  }
 }

@@ -15,7 +15,7 @@ public class ScreenLockUtil {
 
     public static final int REQUEST_CODE_CONFIRM_CREDENTIALS = 1001;
 
-    public static boolean shouldLockApp = true;
+    private static boolean shouldLockApp = true;
 
     public static void applyScreenLock(Activity activity) {
         applyScreenLock(activity, REQUEST_CODE_CONFIRM_CREDENTIALS);
@@ -63,6 +63,14 @@ public class ScreenLockUtil {
         if (timer != null) {
             timer.cancel();
         }
+    }
+
+    public static boolean getShouldLockApp() {
+        return shouldLockApp;
+    }
+
+    public static void setShouldLockApp(boolean newShouldLockApp) {
+        shouldLockApp = newShouldLockApp;
     }
 
 }
