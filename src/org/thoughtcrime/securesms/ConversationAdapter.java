@@ -133,7 +133,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return dcMsgList[dcMsgList.length-1-position];
   }
 
-  private @NonNull DcMsg getMsg(int position) {
+  public @NonNull DcMsg getMsg(int position) {
     if(position<0 || position>=dcMsgList.length) {
       return new DcMsg(0);
     }

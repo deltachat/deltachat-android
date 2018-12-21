@@ -19,6 +19,7 @@ public class DcMsg {
     public final static int DC_STATE_UNDEFINED =  0;
     public final static int DC_STATE_IN_FRESH = 10;
     public final static int DC_STATE_IN_NOTICED = 13;
+    public final static int DC_STATE_IN_SEEN = 16;
     public final static int DC_STATE_OUT_PENDING = 20;
     public final static int DC_STATE_OUT_ERROR = 24;
     public final static int DC_STATE_OUT_DELIVERED = 26;
@@ -142,6 +143,9 @@ public class DcMsg {
     }
     public boolean isRemoteRead() {
         return getState() == DC_STATE_OUT_MDN_RCVD;
+    }
+    public boolean isSeen() {
+        return getState() == DC_STATE_IN_SEEN;
     }
     public int getSubscriptionId() {
         return -1;

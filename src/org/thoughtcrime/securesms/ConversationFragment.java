@@ -81,6 +81,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
+import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
 import static org.thoughtcrime.securesms.ShareActivity.EXTRA_FORWARD;
 import static org.thoughtcrime.securesms.ShareActivity.EXTRA_MSG_IDS;
 
@@ -590,6 +591,7 @@ public class ConversationFragment extends Fragment
       boolean currentlyAtBottom           = isAtBottom();
       boolean currentlyAtZoomScrollHeight = isAtZoomScrollHeight();
       int     positionId                  = getHeaderPositionId();
+      int     firstItemPosition            = getFirstItemPosition();
 
       if (currentlyAtBottom && !wasAtBottom) {
         ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
@@ -606,6 +608,7 @@ public class ConversationFragment extends Fragment
       wasAtBottom           = currentlyAtBottom;
       wasAtZoomScrollHeight = currentlyAtZoomScrollHeight;
       lastPositionId        = positionId;
+      manageMessageSeenState(firstItemPosition);
     }
 
     @Override
@@ -635,10 +638,21 @@ public class ConversationFragment extends Fragment
       return ((LinearLayoutManager)list.getLayoutManager()).findLastVisibleItemPosition();
     }
 
+    private int getFirstItemPosition() {
+      return ((LinearLayoutManager)list.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+    }
+
     private void bindScrollHeader(HeaderViewHolder headerViewHolder, int positionId) {
       if (((ConversationAdapter)list.getAdapter()).getHeaderId(positionId) != -1) {
         ((ConversationAdapter) list.getAdapter()).onBindHeaderViewHolder(headerViewHolder, positionId);
       }
+    }
+  }
+
+  private void manageMessageSeenState(int firstItemPosition) {
+    DcMsg message = ((ConversationAdapter) list.getAdapter()).getMsg(firstItemPosition);
+    if (message.getFromId() != DC_CONTACT_ID_SELF && !message.isSeen()) {
+      dcContext.markseenMsgs(new int[]{message.getId()});
     }
   }
 
