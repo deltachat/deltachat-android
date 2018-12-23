@@ -419,6 +419,9 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="qrshow_join_verified_group_hint">Scannen Sie dies, um der verifizierten Gruppe beizutreten. \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">QR Einladungscode</string>
     <string name="qrshow_join_contact_title">QR Verifizierungscode</string>
+    <string name="qrshow_join_contact_hint">Scannen, um einen Kontakt mit \"%1$s\" herzustellen.</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d neue Nachrichten in %2$d Chats</string>
     <string name="notify_most_recent_from">Letzter Stand von: %1$s</string>
