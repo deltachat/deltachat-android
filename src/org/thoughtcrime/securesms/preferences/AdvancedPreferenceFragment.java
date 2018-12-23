@@ -62,20 +62,16 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
 
     inboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_inbox_watch");
     inboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
-//      boolean enabled = (Boolean) newValue;
-//      dcContext.setConfigInt("inbox_watch", enabled? 1 : 0);
-//      return true;
-      Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show();
-      return false;
+      boolean enabled = (Boolean) newValue;
+      dcContext.setConfigInt("inbox_watch", enabled? 1 : 0);
+      return true;
     });
 
     sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
     sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
-//      boolean enabled = (Boolean) newValue;
-//      dcContext.setConfigInt("sentbox_watch", enabled? 1 : 0);
-//      return true;
-      Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show();
-      return false;
+      boolean enabled = (Boolean) newValue;
+      dcContext.setConfigInt("sentbox_watch", enabled? 1 : 0);
+      return true;
     });
 
     mvboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_watch");

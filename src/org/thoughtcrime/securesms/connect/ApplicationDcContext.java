@@ -75,6 +75,9 @@ public class ApplicationDcContext extends DcContext {
       mvboxWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "mvboxWakeLock");
       mvboxWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
+      sentboxWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "sentboxWakeLock");
+      sentboxWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
+
       smtpWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "smtpWakeLock");
       smtpWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
@@ -269,6 +272,11 @@ public class ApplicationDcContext extends DcContext {
   public Thread mvboxThread = null;
   private PowerManager.WakeLock mvboxWakeLock = null;
 
+  private boolean sentboxThreadStartedVal;
+  private final Object sentboxThreadStartedCond = new Object();
+  public Thread sentboxThread = null;
+  private PowerManager.WakeLock sentboxWakeLock = null;
+
   private boolean smtpThreadStartedVal;
   private final Object smtpThreadStartedCond = new Object();
   public Thread smtpThread = null;
@@ -349,6 +357,38 @@ public class ApplicationDcContext extends DcContext {
       }
 
 
+      if (sentboxThread == null || !sentboxThread.isAlive()) {
+
+        synchronized (sentboxThreadStartedCond) {
+          sentboxThreadStartedVal = false;
+        }
+
+        sentboxThread = new Thread(() -> {
+          sentboxWakeLock.acquire();
+          synchronized (sentboxThreadStartedCond) {
+            sentboxThreadStartedVal = true;
+            sentboxThreadStartedCond.notifyAll();
+          }
+
+          Log.i(TAG, "###################### SENTBOX-Thread started. ######################");
+
+
+          while (true) {
+            sentboxWakeLock.acquire();
+            performSentboxFetch();
+            sentboxWakeLock.release();
+            performSentboxIdle();
+          }
+        }, "sentboxThread");
+        sentboxThread.setPriority(Thread.NORM_PRIORITY-1);
+        sentboxThread.start();
+      } else {
+        if ((flags & INTERRUPT_IDLE) != 0) {
+          interruptSentboxIdle();
+        }
+      }
+
+
       if (smtpThread == null || !smtpThread.isAlive()) {
 
         synchronized (smtpThreadStartedCond) {
@@ -389,6 +429,12 @@ public class ApplicationDcContext extends DcContext {
       synchronized (mvboxThreadStartedCond) {
         while (!mvboxThreadStartedVal) {
           mvboxThreadStartedCond.wait();
+        }
+      }
+
+      synchronized (sentboxThreadStartedCond) {
+        while (!sentboxThreadStartedVal) {
+          sentboxThreadStartedCond.wait();
         }
       }
 
