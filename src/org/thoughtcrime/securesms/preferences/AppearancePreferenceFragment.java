@@ -44,10 +44,10 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     String imagePath = Prefs.getBackgroundImagePath(getContext());
     String backgroundString;
     if(imagePath.isEmpty()){
-      backgroundString = this.getString(R.string.pref_summary_default);
+      backgroundString = this.getString(R.string.def);
     }
     else{
-      backgroundString = this.getString(R.string.pref_summary_custom);
+      backgroundString = this.getString(R.string.custom);
     }
     this.findPreference(Prefs.BACKGROUND_PREF).setSummary(backgroundString);
   }
@@ -73,10 +73,10 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     String imagePath = Prefs.getBackgroundImagePath(context);
     String backgroundString;
     if(imagePath.isEmpty()){
-      backgroundString = context.getString(R.string.pref_summary_default);
+      backgroundString = context.getString(R.string.def);
     }
     else{
-      backgroundString = context.getString(R.string.pref_summary_custom);
+      backgroundString = context.getString(R.string.custom);
     }
 
     return context.getString(R.string.pref_summary_appearance,

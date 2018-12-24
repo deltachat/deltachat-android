@@ -138,12 +138,16 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     }
 
     public static CharSequence getSummary(Context context) {
-        final int privacySummaryResId = R.string.pref_summary_privacy;
-        final String onRes = context.getString(R.string.pref_summary_on);
-        final String offRes = context.getString(R.string.pref_summary_off);
+        final String onRes = context.getString(R.string.on);
+        final String offRes = context.getString(R.string.off);
         String screenLockState = Prefs.isScreenLockEnabled(context) ? onRes : offRes;
         String readReceiptState = DcHelper.getContext(context).getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED)!=0? onRes : offRes;
-        return context.getString(privacySummaryResId, screenLockState, readReceiptState);
+
+        // adding combined strings as "Read receipt: %1$s, Screen lock: %1$s, "
+        // makes things inflexible on changes and/or adds lot of additional works to programmers.
+        // however, if needed, we can refine this later.
+        return context.getString(R.string.pref_read_receipts) + " " + readReceiptState + ", "
+            + context.getString(R.string.screenlock_title) + " " + screenLockState;
     }
 
     private class ChangePassphraseClickListener implements Preference.OnPreferenceClickListener {
