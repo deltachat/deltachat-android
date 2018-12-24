@@ -899,6 +899,7 @@ messenger-backend/src/dc_dehtml.c \
 messenger-backend/src/dc_hash.c \
 messenger-backend/src/dc_imap.c \
 messenger-backend/src/dc_job.c \
+messenger-backend/src/dc_jobthread.c \
 messenger-backend/src/dc_key.c \
 messenger-backend/src/dc_keyring.c \
 messenger-backend/src/dc_loginparam.c \

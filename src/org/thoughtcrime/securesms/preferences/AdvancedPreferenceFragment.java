@@ -61,29 +61,19 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     preferE2eeCheckbox.setOnPreferenceChangeListener(new PreferE2eeListener());
 
     inboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_inbox_watch");
-    inboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
-//      boolean enabled = (Boolean) newValue;
-//      dcContext.setConfigInt("inbox_watch", enabled? 1 : 0);
-//      return true;
-      Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show();
-      return false;
-    });
+    inboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
+      handleImapCheck(preference, newValue, "inbox_watch")
+    );
 
     sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
-    sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
-//      boolean enabled = (Boolean) newValue;
-//      dcContext.setConfigInt("sentbox_watch", enabled? 1 : 0);
-//      return true;
-      Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show();
-      return false;
-    });
+    sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
+      handleImapCheck(preference, newValue, "sentbox_watch")
+    );
 
     mvboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_watch");
-    mvboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
-      boolean enabled = (Boolean) newValue;
-      dcContext.setConfigInt("mvbox_watch", enabled? 1 : 0);
-      return true;
-    });
+    mvboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
+      handleImapCheck(preference, newValue, "mvbox_watch")
+    );
 
     mvboxMoveCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_move");
     mvboxMoveCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -100,6 +90,26 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
 
     Preference submitDebugLog = this.findPreference("pref_view_log");
     submitDebugLog.setOnPreferenceClickListener(new ViewLogListener());
+  }
+
+  private boolean handleImapCheck(Preference preference, Object newValue, String dc_config_name) {
+    final boolean newEnabled = (Boolean) newValue;
+    if(newEnabled) {
+      dcContext.setConfigInt(dc_config_name, 1);
+      return true;
+    }
+    else {
+      new AlertDialog.Builder(getContext())
+        .setMessage(R.string.pref_imap_folder_warn_disable_defaults)
+        .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+          dcContext.setConfigInt(dc_config_name, 0);
+          ((CheckBoxPreference)preference).setChecked(false);
+        })
+        .setNegativeButton(R.string.cancel, null)
+        .show();
+      return false;
+    }
+
   }
 
   @Override
