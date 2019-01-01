@@ -103,6 +103,13 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
+    <string name="ask_block_contact">Bloquer ce contact ? Vous ne recevrez plus ses messages.</string>
+    <string name="ask_unblock_contact">Débloquer ce contact ? Vous recevrez à nouveau ses messages.</string>
+    <string name="contacts_empty_hint">Pas de contacts.</string>
+
+
+    <string name="chat_archived_chats_title">Discussions archivées.</string>
+    <string name="chat_unable_to_record_audio">Impossible d\'enregistrer le son.</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>

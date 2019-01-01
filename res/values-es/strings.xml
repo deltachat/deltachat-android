@@ -2,7 +2,7 @@
 <resources>
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
-    <string name="ok">OK</string>
+    <string name="ok">Vale</string>
     <string name="cancel">Cancelar</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
@@ -130,7 +130,7 @@
     <string name="menu_edit_name">Editar nombre</string>
     <string name="menu_settings">Ajustes</string>
     <string name="menu_advanced">Avanzado</string>
-    <string name="menu_deaddrop">Solicitud de contacto</string>
+    <string name="menu_deaddrop">Solicitudes de contacto</string>
     <string name="menu_view_profile">Ver perfil</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
@@ -237,11 +237,11 @@
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Libre</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
-    <string name="welcome_intro5_message">Delta Chat es libre para siempre. De código abierto. Sin ads. Sin suscripción. Sin ser dependiente de algún proveedor.</string>
+    <string name="welcome_intro5_message">Delta Chat es gratis y libre para siempre. De código libre. Sin publicidad. Sin suscripción. Sin limitaciones de otras empresas.</string>
     <string name="welcome_intro6_headline">Encriptada</string>
-    <string name="welcome_intro6_message">Encriptada con todos los algoritmos comunes. Los mensajes permanecen en sus servidores.</string>
+    <string name="welcome_intro6_message">Encriptada con todos los algoritmos comunes. Los mensajes se guardan solo en tu servidor de correo.</string>
     <string name="welcome_intro7_headline">Confiable</string>
-    <string name="welcome_intro7_message">Delta Chat es seguro para uso comercial, compatible y basado en estándares.</string>
+    <string name="welcome_intro7_message">Delta Chat es seguro para usos comerciales y de negocio, compatible y basado en estándares abiertos.</string>
     <string name="welcome_start_messaging">Iniciar mensajería</string>
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>
@@ -338,7 +338,7 @@
     <string name="pref_chats">Chats</string>
     <string name="pref_messages">Mensajes</string>
     <string name="pref_in_chat_sounds">Sonidos en el chat</string>
-    <string name="pref_message_text_size">Tamaño de fuente del mensaje</string>
+    <string name="pref_message_text_size">Tamaño de texto del mensaje</string>
     <string name="pref_view_log">Ver log</string>
     <string name="pref_other">Otro</string>
     <string name="pref_backup">Copia de respaldo</string>
@@ -355,8 +355,6 @@
     <string name="pref_managekeys_secret_keys_exported_to_x">Claves secretas escritas exitosamente a \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Claves secretas importadas de \"%1$s\".</string>
     <string name="pref_background">Fondo de chat</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt es una nueva especificación abierta para encriptado automático de correo electrónico de extremo a extremo. Su configuración de extremo a extremo es creada automáticamente cuando se necesita y puede transferirla entre dispositivos con los Mensajes de Configuración de Autocrypt.</string>

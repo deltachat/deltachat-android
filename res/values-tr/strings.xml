@@ -152,6 +152,8 @@
     </plurals>
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
     <string name="ask_export_attachment">Ek dışa aktarılsın mı? Ekleri dışa aktarma, aygıtınızdaki tüm diğer uygulamaların onlara erişmesine izin verecek.\n\nSürdürülsün mü?</string>
+    <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden iletiler almayacaksınız.</string>
+    <string name="ask_unblock_contact">Bu kişinin engeli kaldırılsın mı? Bir kez daha bu kişiden iletiler alabileceksiniz.</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSüren sohbetler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
 
@@ -266,6 +268,10 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">%1$s yanıtı: %2$s\n\nBazı sağlayıcılar, gelen kutunuza ek bilgiler yerleştirir; onları örneğin web ön ucunda denetleyebilirsiniz. Sorunlarla karşılaşırsanız sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
 
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">İlet …</string>
+
     <!-- preferences -->
     <string name="pref_summary_privacy">Ekran kilidi %1$s, Okundu bilgileri %2$s</string>
     <string name="pref_summary_appearance">Tema %1$s, Dil %2$s, Artalan %3$s</string>
@@ -299,6 +305,7 @@
     <string name="pref_chat_settings">Sohbet ayarları</string>
     <string name="pref_change_secret">Sırrı değiştir</string>
     <string name="pref_screen_security">Ekran güvenliği</string>
+    <string name="pref_screen_security_explain">Son kullanılanlar listesinde ve uygulama içerisinde ekran görüntülerini engelle</string>
     <string name="pref_screen_security_please_restart_hint">Ekran güvenliği ayarını uygulamak için lütfen uygulamayı yeniden başlatın.</string>
     <string name="pref_notifications">Bildirimler</string>
     <string name="pref_notifications_show">Göster</string>
@@ -344,8 +351,10 @@
     <string name="pref_managekeys_secret_keys_exported_to_x">Gizli anahtarlar \"%1$s\" konumuna başarıyla yazıldı.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Gizli anahtarlar \"%1$s\" konumundan başarıyla içe aktarıldı.</string>
     <string name="pref_background">Sohbet Artalanı</string>
-
-
+    <string name="pref_imap_folder_handling">IMAP klasör işleme</string>
+    <string name="pref_watch_inbox_folder">Gelen Kutusu klasörünü izle</string>
+    <string name="pref_watch_sent_folder">Gönderilen klasörünü izle</string>
+    <string name="pref_watch_mvbox_folder">DeltaChat klasörünü izle</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt, otomatik uçtan uca e-posta şifrelemesi için yeni ve açık bir belirtimdir.\n\nGerektiğinde uçtan uca ayarlamanız otomatik olarak oluşturulur ve onu Autocrypt Ayarlama İletileri ile aygıtlar arasında aktarabilirsiniz.</string>

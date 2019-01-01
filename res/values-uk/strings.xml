@@ -60,6 +60,14 @@
         <item quantity="many">%1$dповідомлень</item>
         <item quantity="other">%1$dповідомлень</item>
     </plurals>
+    <plurals name="n_members">
+        <item quantity="one">1 учасник</item>
+        <item quantity="few">%1$d учасники</item>
+        <item quantity="many">%1$d учасників</item>
+        <item quantity="other">%1$d учасників</item>
+    </plurals>
+
+    <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>
     <string name="audio">Аудіо</string>
     <string name="voice_message">Голосове повідомлення</string>
@@ -96,6 +104,7 @@
     <string name="menu_new_group">Нова група</string>
     <string name="menu_new_verified_group">Нова підтверджена група</string>
     <string name="menu_send">Відправити</string>
+    <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
     <string name="menu_archive_chat">Архівувати чат</string>
     <string name="menu_unarchive_chat">Розархівувати чат</string>
@@ -118,12 +127,15 @@
     <string name="menu_unblock_contact">Розблокувати контакт</string>
     <string name="menu_play">Грати</string>
     <string name="menu_pause">Пауза</string>
+    <string name="menu_scroll_to_bottom">Перейти в кінець</string>
     <string name="menu_invite">Запросити друзів</string>
     <string name="menu_help">Допомога</string>
     <string name="menu_select_all">Вибрати все</string>
     <string name="menu_expand">Розширити</string>
     <string name="menu_edit_name">Редагувати ім\'я</string>
     <string name="menu_settings">Налаштування</string>
+    <string name="menu_advanced">Додатково</string>
+    <string name="menu_deaddrop">Запити на спілкування</string>
     <string name="menu_view_profile">Переглянути профіль</string>
 
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
@@ -135,6 +147,119 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ви впевнені, що хочете залишити цю групу?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Видалити цей чат? Він більше не буде виден у списку чатів, його повідомлення залишаться на сервері.</item>
+        <item quantity="few">Видалити %d чати? Вони більше не будуть видні в списку чатів, їх повідомлення залишаться на сервері.</item>
+        <item quantity="many">Видалити %d чатів? Вони більше не будуть видні в списку чатів, їх повідомлення залишаться на сервері.</item>
+        <item quantity="other">Видалити %d чатів? Вони більше не будуть видні в списку чатів, їх повідомлення залишаться на сервері.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Видалити повідомлення звідси і з сервера?</item>
+        <item quantity="few">Видалити %1$d повідомлення звідси і з сервера?</item>
+        <item quantity="many">Видалити %1$d повідомлень звідси і з сервера?</item>
+        <item quantity="other">Видалити %1$d повідомлень звідси і з сервера?</item>
+    </plurals>
+    <string name="ask_forward">Переслати повідомлення %1$s?</string>
+    <string name="ask_export_attachment">Експортувати вкладення? Експорт вкладень дозволить будь-якому іншому додатку на Вашому пристрої отримати до них доступ.\n\nПродовжити?</string>
+    <string name="ask_block_contact">Заблокувати цей контакт? Ви більше не будете отримувати від нього повідомлення.</string>
+    <string name="ask_unblock_contact">Розблокувати цей контакт? Ви знову зможете отримувати від нього повідомлення.</string>
+    <string name="ask_delete_contacts">Видалити контакти? Ця дія назавжди видалить вибрані контакти.\n\nКонтакти з діючих чатів та з адресної книги системи не можна видалити назавжди.</string>
+    <string name="ask_start_chat_with">Створити чат з %1$s?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
+    <string name="contacts_enter_name_or_email">Введіть ім\'я або адресу електронної пошти</string>
+    <string name="contacts_type_email_above">Введіть адресу електронної пошти вище</string>
+    <string name="contacts_empty_hint">Немає контактів.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">Чат заархівовано</item>
+        <item quantity="few">%dчати заархівовано</item>
+        <item quantity="many">%dчатів заархівовано</item>
+        <item quantity="other">%d чатів заархівовано</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">Чат розархівовано</item>
+        <item quantity="few">%d чати розархівовано</item>
+        <item quantity="many">%d чатів розархівовано</item>
+        <item quantity="other">%d чатів розархівовано</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Заархівовані чати</string>
+    <string name="chat_please_enter_message">Будь ласка, введіть повідомлення.</string>
+    <string name="chat_camera_unavailable">Камера недоступна.</string>
+    <string name="chat_unable_to_record_audio">Неможливо записати аудіо.</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%d непрочитане повідомлення</item>
+        <item quantity="few">%d непрочитані повідомлення</item>
+        <item quantity="many">%d непрочитаних повідомлень</item>
+        <item quantity="other">%d непрочитаних повідомлень</item>
+    </plurals>
+    <string name="chat_record_explain">Натисніть і утримуйте для запису голосового повідомлення, відпустіть для відправки</string>
+    <string name="chat_no_chats_yet_hint">Дайте Вашим \"Вхідним\" привід наповнитися. Почніть з листа другові або подрузі.</string>
+    <string name="chat_all_done_hint">Вхідних немає</string>
+    <string name="chat_share_with_title">Поділітися</string>
+    <string name="chat_input_placeholder">Повідомлення</string>
+    <string name="chat_archived_label">Заархівовано</string>
+    <string name="chat_no_messages">Немає повідомлень.</string>
+    <string name="chat_self_talk_subtitle">Повідомлення, відправлені самому собі</string>
+
+    <!-- search -->
+    <string name="search">Пошук</string>
+    <string name="search_explain">Пошук чатів, контактів і повідомлень</string>
+    <string name="search_no_result_for_x">Запит \"%s\" не дав результатів</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Назва групи</string>
+    <string name="group_avatar">Аватар групи</string>
+    <string name="group_create_button">Створити групу</string>
+    <string name="group_please_enter_group_name">Введіть назву групи.</string>
+    <string name="group_add_members">Додати учасників</string>
+    <string name="group_hello_draft">Привіт, я тільки що створив групу \"%1$s\" для нас</string>
+    <string name="group_self_not_in_group">Щоб виконати цю дію, Ви повинні бути учасником групи.</string>
+    <string name="profile_encryption">Шифрування</string>
+
+
+    <!-- chat media view -->
+    <string name="media_preview">Попередній перегляд медіа</string>
+    <string name="media_tab_media">Медіа</string>
+    <string name="media_tab_documents">Документи</string>
+    <string name="media_no_media_hint">Немає медіа</string>
+    <string name="media_no_documents_hint">Немає документів</string>
+
+
+    <string name="invite_default_text">Пропоную перейти на Delta Chat - %1$s- Ви можете написати мені на %2$s</string>
+
+
+    <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
+    <string name="welcome_intro2_headline">Незалежний</string>
+    <string name="welcome_intro2_message">Delta Chat не має централізованого сервера. Використовується ваш поштовий сервер.</string>
+    <string name="welcome_intro3_headline">Швидкий</string>
+    <string name="welcome_intro3_message">Доставляє повідомлення за лічені секунди.\nШвидкий інтерфейс.</string>
+    <string name="welcome_intro4_headline">Потужний</string>
+    <string name="welcome_intro4_message">Безлімітні чати, відправка фотографій, відео, голосових повідомлень і багато іншого. Підтримує безліч клієнтів.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">Безкоштовний</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Delta Chat безкоштовний і так буде завжди. Має відкритий початковий код. Ніякої реклами. Ніяких платних підписок. Немає прив\'язки до постачальника.</string>
+    <string name="welcome_intro6_headline">Зашифрований</string>
+    <string name="welcome_intro6_message">Зашифрований з використанням популярних алгоритмів. Повідомлення залишаються на ваших серверах.</string>
+    <string name="welcome_intro7_headline">Надійний</string>
+    <string name="welcome_intro7_message">Delta Chat безпечний для бізнесу, поєднується з іншими технологіями і грунтується на стандартах.</string>
+    <string name="welcome_start_messaging">Почати спілкування</string>
+    <string name="login_title">Увійти</string>
+    <string name="login_header">Увійти на Ваш сервер</string>
+    <string name="login_subheader">Для відомих провайдерів електронної пошти додаткові налаштування встановлюються автоматично. Іноді IMAP потрібен дозвіл в веб-інтерфейсі. Проконсультуйтеся з Вашим провайдером електронної пошти або друзями для отримання допомоги.</string>
+    <string name="login_inbox">Вхідні</string>
+    <string name="login_imap_login">IMAP-логін</string>
+    <string name="login_imap_server">IMAP-сервер</string>
+    <string name="login_imap_port">IMAP-порт</string>
+    <string name="login_imap_security">Параметри безпеки IMAP</string>
+    <string name="login_outbox">Вихідні</string>
+    <string name="login_smtp_login">SMTP-логін</string>
+    <string name="login_smtp_password">SMTP-пароль</string>
+    <string name="login_smtp_server">SMTP-сервер</string>
     </resources>
