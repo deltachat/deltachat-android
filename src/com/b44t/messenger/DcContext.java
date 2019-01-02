@@ -120,8 +120,8 @@ public class DcContext {
     public native int[]        getChatMsgs          (int chat_id, int flags, int marker1before);
     public native int[]        searchMsgs           (int chat_id, String query);
     public native int[]        getFreshMsgs         ();
-    public native int[]        getChatMedia         (int chat_id, int msg_type, int or_msg_type);
-    public native int          getNextMedia         (int msg_id, int dir);
+    public native int[]        getChatMedia         (int chat_id, int type1, int type2, int type3);
+    public native int          getNextMedia         (int msg_id, int dir, int type1, int type2, int type3);
     public native int[]        getChatContacts      (int chat_id);
     public native void         deleteChat           (int chat_id);
     public @NonNull DcMsg      getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }

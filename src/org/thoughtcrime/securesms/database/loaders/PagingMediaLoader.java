@@ -31,7 +31,7 @@ public class PagingMediaLoader extends AsyncLoader<DcMediaGalleryElement> {
   @Override
   public DcMediaGalleryElement loadInBackground() {
     DcContext context = DcHelper.getContext(getContext());
-    int[] mediaMessages = context.getChatMedia(msg.getChatId(), DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_VIDEO);
+    int[] mediaMessages = context.getChatMedia(msg.getChatId(), DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO);
     // first id is the oldest message.
     int currentIndex = -1;
     for(int ii = 0; ii < mediaMessages.length; ii++) {
