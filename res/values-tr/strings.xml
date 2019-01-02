@@ -186,6 +186,7 @@
     <string name="chat_new_group_hint">İlk iletiyi oluşturun, diğerlerinin bu grupta yanıt vermesine izin verin.\n\n• Tüm üyeler Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin gönderilmesi biraz zaman alabilir.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve tutun, göndermek için bırakın</string>
+    <string name="chat_no_chats_yet_hint">Gelen kutunuza, ev hakkında bir şeyler yazıp verin. Bir arkadaşınıza mesaj göndererek başlayın.</string>
     <string name="chat_all_done_hint">Gelen kutusu sıfır</string>
     <string name="chat_all_done_explain">Çok saçmaladıkları için çeviri takımımız bunu çeviremedi. İlgili saçmalığın kaldırılması istenecektir.</string>
     <string name="chat_share_with_title">Paylaş</string>
@@ -317,6 +318,7 @@
     <string name="pref_repeat_notify">Uyarıları yinele</string>
     <string name="pref_privacy">Gizlilik</string>
     <string name="pref_chats_and_media">Sohbetler ve ortamlar</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Işık</string>
     <string name="pref_dark_theme">Koyu</string>
     <string name="pref_appearance">Görünüm</string>

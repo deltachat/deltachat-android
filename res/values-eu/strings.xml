@@ -183,6 +183,7 @@
     <string name="pref_sound">Soinua</string>
     <string name="pref_silent">Isila</string>
     <string name="pref_privacy">Pribatutasuna</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Argia</string>
     <string name="pref_dark_theme">Iluna</string>
     <string name="pref_appearance">Itxura</string>

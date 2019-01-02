@@ -188,7 +188,7 @@
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>
     <string name="chat_no_chats_yet_hint">Geben Sie Ihrem Posteingang etwas, was sie empfangen können. Fangen Sie an, indem Sie einem Freund eine Nachricht schicken.</string>
     <string name="chat_all_done_hint">Inbox zeeerrro</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nIhr seid alle auf dem neuesten Stand!</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nAlle aufgeholt!</string>
     <string name="chat_share_with_title">Teilen mit</string>
     <string name="chat_input_placeholder">Nachricht</string>
     <string name="chat_archived_label">Archiviert</string>
@@ -323,7 +323,8 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_repeat_notify">Wiederholte Warnungen</string>
     <string name="pref_privacy">Datenschutz</string>
     <string name="pref_chats_and_media">Chats und Medien</string>
-    <string name="pref_light_theme">Licht</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Hell</string>
     <string name="pref_dark_theme">Dunkel</string>
     <string name="pref_appearance">Aussehen</string>
     <string name="pref_theme">Design</string>
@@ -357,6 +358,14 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_managekeys_secret_keys_exported_to_x">Geheime Schlüssel erfolgreich nach \"%1$s\" geschrieben.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime Schlüssel von \"%1$s\" importiert.</string>
     <string name="pref_background">Chat-Hintergrund</string>
+    <string name="pref_imap_folder_handling">IMAP-Ordnereinstellungen</string>
+    <string name="pref_watch_inbox_folder">Posteingang beobachten</string>
+    <string name="pref_watch_sent_folder">Gesendet-Ordner beobachten</string>
+    <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>
+    <string name="pref_auto_folder_moves">Autom. Verschieben in den DeltaChat-Ordner</string>
+    <string name="pref_auto_folder_moves_explain">Nachrichten verschieben, um einen unübersichtlichen Posteingang zu verhindern.</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nDas Ende-zu-Ende-Setup wird dabei automatisch eingerichtet und kann mit Autocrypt-Setup-Nachrichten zwischen Geräten übertragen werden.</string>

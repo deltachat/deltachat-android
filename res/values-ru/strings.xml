@@ -348,6 +348,7 @@
     <string name="pref_silent">Беззвучный</string>
     <string name="pref_repeat_notify">Повторять оповещения</string>
     <string name="pref_privacy">Приватность</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Светлый</string>
     <string name="pref_dark_theme">Темный</string>
     <string name="pref_appearance">Внешний вид</string>
