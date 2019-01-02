@@ -880,16 +880,16 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isVerified(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatMedia(JNIEnv *env, jobject obj, jint chat_id, jint msg_type, jint or_msg_type)
+JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatMedia(JNIEnv *env, jobject obj, jint chat_id, jint type1, jint type2, jint type3)
 {
-	dc_array_t* ca = dc_get_chat_media(get_dc_context(env, obj), chat_id, msg_type, or_msg_type);
+	dc_array_t* ca = dc_get_chat_media(get_dc_context(env, obj), chat_id, type1, type2, type3);
 	return dc_array2jintArray_n_unref(env, ca);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_getNextMedia(JNIEnv *env, jobject obj, jint msg_id, jint dir)
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_getNextMedia(JNIEnv *env, jobject obj, jint msg_id, jint dir, jint type1, jint type2, jint type3)
 {
-	return dc_get_next_media(get_dc_context(env, obj), msg_id, dir);
+	return dc_get_next_media(get_dc_context(env, obj), msg_id, dir, type1, type2, type3);
 }
 
 
