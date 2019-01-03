@@ -59,7 +59,7 @@ public class DateUtils extends android.text.format.DateUtils {
       return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
       int mins = convertDelta(timestamp, TimeUnit.MINUTES);
-      return c.getResources().getString(R.string.n_min_ago, mins);
+      return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
     } else if (isWithin(timestamp, 1, TimeUnit.DAYS)) {
       int hours = convertDelta(timestamp, TimeUnit.HOURS);
       return c.getResources().getQuantityString(R.plurals.n_hours, hours, hours);
@@ -77,7 +77,7 @@ public class DateUtils extends android.text.format.DateUtils {
       return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
       int mins = (int)TimeUnit.MINUTES.convert(System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
-      return c.getResources().getString(R.string.n_min_ago, mins);
+      return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
     } else {
       StringBuilder format = new StringBuilder();
       if      (isWithin(timestamp,   6, TimeUnit.DAYS)) format.append("EEE ");
@@ -96,7 +96,7 @@ public class DateUtils extends android.text.format.DateUtils {
       return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
       int mins = (int)TimeUnit.MINUTES.convert(System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
-      return c.getResources().getString(R.string.n_min_ago, mins);
+      return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
     } else {
       StringBuilder format = new StringBuilder();
       if (DateFormat.is24HourFormat(c)) format.append("HH:mm");
