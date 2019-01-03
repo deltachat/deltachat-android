@@ -110,7 +110,7 @@ public class ConversationItem extends LinearLayout
 
   private int incomingBubbleColor;
   private int outgoingBubbleColor;
-  private int measureCalls;
+  //private int measureCalls;
 
   private final PassthroughClickListener        passthroughClickListener   = new PassthroughClickListener();
 
@@ -194,6 +194,7 @@ public class ConversationItem extends LinearLayout
     setFooter(messageRecord, locale, groupThread);
   }
 
+
   @Override
   public void setEventListener(@Nullable EventListener eventListener) {
     this.eventListener = eventListener;
@@ -207,7 +208,7 @@ public class ConversationItem extends LinearLayout
       return;
     }
 
-    boolean needsMeasure = false;
+    //boolean needsMeasure = false;
 
     if (hasQuote(messageRecord)) {
       int quoteWidth     = quoteView.getMeasuredWidth();
@@ -215,10 +216,11 @@ public class ConversationItem extends LinearLayout
 
       if (quoteWidth != availableWidth) {
         quoteView.getLayoutParams().width = availableWidth;
-        needsMeasure = true;
+        //needsMeasure = true;
       }
     }
 
+    /*
     ConversationItemFooter activeFooter   = getActiveFooter(messageRecord);
     int                    availableWidth = getAvailableMessageBubbleWidth(footer);
 
@@ -237,6 +239,7 @@ public class ConversationItem extends LinearLayout
     } else {
       measureCalls = 0;
     }
+    */
   }
 
   private int getAvailableMessageBubbleWidth(@NonNull View forView) {

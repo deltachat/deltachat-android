@@ -24,12 +24,15 @@
 
     <org.thoughtcrime.securesms.components.ConversationItemFooter
         android:id="@+id/conversation_thumbnail_footer"
-        android:layout_width="match_parent"
+        android:background="@drawable/conversation_item_update_background"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|end"
         android:gravity="bottom|end"
-        android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-        android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+        android:paddingLeft="@dimen/message_bubble_horizontal_padding_half"
+        android:paddingRight="@dimen/message_bubble_horizontal_padding_half"
+        android:layout_marginLeft="@dimen/message_bubble_horizontal_padding_half"
+        android:layout_marginRight="@dimen/message_bubble_horizontal_padding_half"
         android:layout_marginBottom="@dimen/message_bubble_bottom_padding"
         app:footer_text_color="@color/core_white"
         app:footer_icon_color="@color/core_white"/>
