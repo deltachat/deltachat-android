@@ -96,7 +96,6 @@
                       android:layout_width="wrap_content"
                       style="@style/Signal.Text.Caption"
                       android:textColor="?attr/conversation_list_item_date_color"
-                      android:textAllCaps="true"
                       tools:text="30 mins"
                       android:singleLine="true"/>
 

@@ -26,7 +26,6 @@
         android:linksClickable="false"
         style="@style/Signal.Text.Caption.MessageSent"
         android:textColor="?conversation_item_outgoing_text_secondary_color"
-        android:textAllCaps="true"
         tools:text="30 mins"/>
 
     <org.thoughtcrime.securesms.components.DeliveryStatusView
