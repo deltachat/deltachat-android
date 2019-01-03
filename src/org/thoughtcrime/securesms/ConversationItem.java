@@ -461,17 +461,11 @@ public class ConversationItem extends LinearLayout
                                           boolean                  isGroupThread)
   {
     int defaultRadius  = readDimen(R.dimen.message_corner_radius);
-    int collapseRadius = readDimen(R.dimen.message_corner_collapse_radius);
 
     int topLeft     = defaultRadius;
     int topRight    = defaultRadius;
     int bottomLeft  = defaultRadius;
     int bottomRight = defaultRadius;
-
-    topLeft     = defaultRadius;
-    topRight    = defaultRadius;
-    bottomLeft  = defaultRadius;
-    bottomRight = defaultRadius;
 
     if (!TextUtils.isEmpty(current.getText())) {
       bottomLeft  = 0;

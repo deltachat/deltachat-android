@@ -16,7 +16,6 @@
     <dimen name="contact_photo_target_size">64dp</dimen>
 
     <dimen name="message_corner_radius">12dp</dimen>
-    <dimen name="message_corner_collapse_radius">0dp</dimen>
     <dimen name="message_bubble_corner_radius">2dp</dimen>
     <dimen name="message_bubble_shadow_distance">1.5dp</dimen>
     <dimen name="message_bubble_horizontal_padding">8dp</dimen>

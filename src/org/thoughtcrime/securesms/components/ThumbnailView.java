@@ -83,10 +83,10 @@ public class ThumbnailView extends FrameLayout {
       bounds[MAX_WIDTH]  = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxWidth, 0);
       bounds[MIN_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_minHeight, 0);
       bounds[MAX_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxHeight, 0);
-      radius             = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_thumbnail_radius, getResources().getDimensionPixelSize(R.dimen.message_corner_collapse_radius));
+      radius             = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_thumbnail_radius, getResources().getDimensionPixelSize(R.dimen.message_corner_radius));
       typedArray.recycle();
     } else {
-      radius = getResources().getDimensionPixelSize(R.dimen.message_corner_collapse_radius);
+      radius = getResources().getDimensionPixelSize(R.dimen.message_corner_radius);
     }
 
   }

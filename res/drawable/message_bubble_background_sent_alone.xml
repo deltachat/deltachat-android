@@ -6,7 +6,6 @@
             <corners
                 android:topLeftRadius="@dimen/message_corner_radius"
                 android:topRightRadius="@dimen/message_corner_radius"
-                android:bottomRightRadius="@dimen/message_corner_collapse_radius"
                 android:bottomLeftRadius="@dimen/message_corner_radius" />
             <solid android:color="?attr/conversation_item_outgoing_bubble_border_color" />
         </shape>
@@ -18,7 +17,6 @@
             <corners
                 android:topLeftRadius="@dimen/message_corner_radius"
                 android:topRightRadius="@dimen/message_corner_radius"
-                android:bottomRightRadius="@dimen/message_corner_collapse_radius"
                 android:bottomLeftRadius="@dimen/message_corner_radius" />
             <solid android:color="@color/white" />
         </shape>
