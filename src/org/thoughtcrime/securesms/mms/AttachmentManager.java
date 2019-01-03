@@ -462,6 +462,7 @@ public class AttachmentManager {
       intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
       intent.putExtra(MediaPreviewActivity.DC_MSG_ID, slide.getDcMsgId());
       intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, true);
+      intent.setDataAndType(slide.getUri(), slide.getContentType());
 
       context.startActivity(intent);
     }

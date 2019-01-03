@@ -220,6 +220,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       Log.w(TAG, "Unsupported media type sent to MediaPreviewActivity, finishing.");
       Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_LONG).show();
       finish();
+      return;
     }
 
     Log.w(TAG, "Loading Part URI: " + initialMedia);
