@@ -100,7 +100,14 @@ public class ConversationTitleView extends RelativeLayout {
 
   private void setRecipientTitle(DcChat dcChat) {
     this.title.setText(dcChat.getName());
-    this.subtitle.setText(dcChat.getSubtitle());
+
+    if(dcChat.getId()==DcChat.DC_CHAT_ID_DEADDROP) {
+      this.subtitle.setText("Press message to start chatting"/*needs translation*/);
+    }
+    else {
+      this.subtitle.setText(dcChat.getSubtitle());
+    }
+
     this.subtitle.setVisibility(View.VISIBLE);
   }
 }
