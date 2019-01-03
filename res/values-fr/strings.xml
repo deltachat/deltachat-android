@@ -27,6 +27,7 @@
     <string name="bad_email_address">Mauvaise adresse email.</string>
     <string name="password">Mot de passe</string>
     <string name="now">Maintenant</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Aujourd\'hui</string>
     <string name="yesterday">Hier</string>

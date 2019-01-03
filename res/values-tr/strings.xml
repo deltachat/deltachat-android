@@ -29,15 +29,13 @@
     <string name="bad_email_address">Kötü e-posta adresi.</string>
     <string name="password">Parola</string>
     <string name="now">Şimdi</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d dk</string>
     <string name="today">Bugün</string>
     <string name="yesterday">Dün</string>
     <string name="this_week">Bu hafta</string>
     <string name="this_month">Bu ay</string>
-    <plurals name="n_minutes">
-        <item quantity="one">%d dakika</item>
-        <item quantity="other">%d dakika</item>
-    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>

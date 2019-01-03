@@ -29,17 +29,13 @@
     <string name="bad_email_address">Неправильный адрес email.</string>
     <string name="password">Пароль</string>
     <string name="now">Сейчас</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d минута</string>
     <string name="today">Сегодня</string>
     <string name="yesterday">Вчера</string>
     <string name="this_week">На этой неделе</string>
     <string name="this_month">В этом месяце</string>
-    <plurals name="n_minutes">
-        <item quantity="one">%d минута</item>
-        <item quantity="few">%d минуты</item>
-        <item quantity="many">%d минут</item>
-        <item quantity="other">%d минут</item>
-    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d час</item>
         <item quantity="few">%d часа</item>

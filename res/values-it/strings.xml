@@ -29,15 +29,13 @@
     <string name="bad_email_address">Indirizzo non valido</string>
     <string name="password">Password</string>
     <string name="now">Ora</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Oggi</string>
     <string name="yesterday">Ieri</string>
     <string name="this_week">Questa settimana</string>
     <string name="this_month">Questo mese</string>
-    <plurals name="n_minutes">
-        <item quantity="one">%d minuto</item>
-        <item quantity="other">%d minuti</item>
-    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d ora</item>
         <item quantity="other">%d ore</item>

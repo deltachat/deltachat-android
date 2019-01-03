@@ -29,15 +29,13 @@
     <string name="bad_email_address">E-mail helbide okerra.</string>
     <string name="password">Pasahitza</string>
     <string name="now">Orain</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Gaur</string>
     <string name="yesterday">Atzo</string>
     <string name="this_week">Aste honetan</string>
     <string name="this_month">Hilabete honetan</string>
-    <plurals name="n_minutes">
-        <item quantity="one">minutu %d</item>
-        <item quantity="other">%d minutu</item>
-    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">ordu %d</item>
         <item quantity="other">%d ordu</item>

@@ -30,12 +30,7 @@
     <string name="yesterday">Вчора</string>
     <string name="this_week">Цього тижня</string>
     <string name="this_month">Цього місяця</string>
-    <plurals name="n_minutes">
-        <item quantity="one">%dхвилина</item>
-        <item quantity="few">%dхвилини</item>
-        <item quantity="many">%dхвилин</item>
-        <item quantity="other">%dхвилини</item>
-    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%dгодина</item>
         <item quantity="few">%dгодини</item>

@@ -29,18 +29,21 @@
     <string name="bad_email_address">Ungültige E-Mail-Adresse</string>
     <string name="password">Passwort</string>
     <string name="now">Jetzt</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d Min.</string>
     <string name="today">Heute</string>
     <string name="yesterday">Gestern</string>
     <string name="this_week">Diese Woche</string>
     <string name="this_month">Dieser Monat</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
-        <item quantity="one">%d Minute</item>
-        <item quantity="other">%d Minuten</item>
+        <item quantity="one">%d Min</item>
+        <item quantity="other">%d Min</item>
     </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
-        <item quantity="one">%d Stunde</item>
-        <item quantity="other">%d Stunden</item>
+        <item quantity="one">%d Std</item>
+        <item quantity="other">%d Std</item>
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">1 Chat</item>
