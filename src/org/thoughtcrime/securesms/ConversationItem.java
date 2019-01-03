@@ -660,7 +660,7 @@ public class ConversationItem extends LinearLayout
 
   private class ThumbnailClickListener implements SlideClickListener {
     public void onClick(final View v, final Slide slide) {
-      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {
+      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
         handleDeadDropClick();
       } else if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
@@ -704,7 +704,7 @@ public class ConversationItem extends LinearLayout
     }
 
     public void onClick(View v) {
-      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {
+      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
         handleDeadDropClick();
       } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
         parent.onClick(v);

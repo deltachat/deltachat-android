@@ -355,7 +355,6 @@ public class ConversationListFragment extends Fragment
   @Override
   public void onItemClick(ConversationListItem item) {
     if (actionMode == null) {
-      // the next line will fail for signal calls, DC uses int, though.
       int threadId = (int)item.getThreadId();
 
       if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
