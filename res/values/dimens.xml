@@ -15,7 +15,6 @@
     <dimen name="transport_selection_popup_yoff">2dp</dimen>
     <dimen name="contact_photo_target_size">64dp</dimen>
 
-    <!-- TODO: Consolidate these two message corner things -->
     <dimen name="message_corner_radius">12dp</dimen>
     <dimen name="message_corner_collapse_radius">1dp</dimen>
     <dimen name="message_bubble_corner_radius">2dp</dimen>
@@ -32,9 +31,10 @@
     <dimen name="media_bubble_max_width">240dp</dimen>
     <dimen name="media_bubble_min_height">100dp</dimen>
     <dimen name="media_bubble_max_height">320dp</dimen>
+    <dimen name="below_bubble">3dp</dimen>
 
-    <dimen name="conversation_individual_right_gutter">16dp</dimen>
-    <dimen name="conversation_individual_left_gutter">16dp</dimen>
+    <dimen name="conversation_individual_right_gutter">12dp</dimen>
+    <dimen name="conversation_individual_left_gutter">12dp</dimen>
     <dimen name="conversation_group_left_gutter">52dp</dimen>
     <dimen name="conversation_vertical_message_spacing_collapse">1dp</dimen>
 

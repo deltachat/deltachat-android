@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/conversation_individual_right_gutter"
         android:layout_marginEnd="@dimen/conversation_individual_right_gutter"
+        android:layout_marginBottom="@dimen/below_bubble"
         android:clipToPadding="false"
         android:clipChildren="false">
 

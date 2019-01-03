@@ -19,8 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/conversation_individual_right_gutter"
         android:layout_marginEnd="@dimen/conversation_individual_right_gutter"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
+        android:layout_marginBottom="@dimen/below_bubble"
+        android:paddingLeft="6dp"
+        android:paddingStart="6dp"
         android:clipToPadding="false"
         android:clipChildren="false">
 
@@ -37,7 +38,7 @@
                 android:foreground="@drawable/contact_photo_background"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginBottom="1dp"
                 android:cropToPadding="true"
                 android:contentDescription="@null" />
 
@@ -49,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/message_bubble_edge_margin"
             android:layout_marginEnd="@dimen/message_bubble_edge_margin"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
             android:layout_toRightOf="@id/contact_photo_container"
             android:layout_toEndOf="@id/contact_photo_container"
             android:orientation="vertical"
