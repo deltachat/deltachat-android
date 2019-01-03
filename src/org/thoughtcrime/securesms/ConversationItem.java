@@ -485,6 +485,15 @@ public class ConversationItem extends LinearLayout
       topRight = 0;
     }
 
+    if(bottomLeft != 0 && bottomRight !=0) {
+      if(current.isOutgoing()) {
+        bottomRight = 0;
+      }
+      else {
+        bottomLeft = 0;
+      }
+    }
+
     mediaThumbnailStub.get().setOutlineCorners(topLeft, topRight, bottomRight, bottomLeft);
   }
 
