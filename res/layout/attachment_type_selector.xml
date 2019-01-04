@@ -29,6 +29,32 @@
                       android:layout_marginTop="16dp"
                       android:weightSum="4">
 
+            <!-- first row -->
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:gravity="center"
+                          android:orientation="vertical">
+
+                <org.thoughtcrime.securesms.components.CircleColorImageView
+                    android:id="@+id/camera_button"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:src="@drawable/attach_camera"
+                    android:scaleType="center"
+                    android:contentDescription="@string/camera"
+                    app:circleColor="#00FFFFFF"/>
+
+                <TextView android:layout_marginTop="10dp"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:gravity="center"
+                          style="@style/AttachmentTypeLabel"
+                          android:text="@string/camera"/>
+
+            </LinearLayout>
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:layout_weight="1"
@@ -49,29 +75,6 @@
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:text="@string/gallery"/>
-
-            </LinearLayout>
-
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:gravity="center"
-                          android:layout_weight="1"
-                          android:orientation="vertical">
-
-                <org.thoughtcrime.securesms.components.CircleColorImageView
-                        android:id="@+id/audio_button"
-                        android:layout_width="53dp"
-                        android:layout_height="53dp"
-                        android:src="@drawable/ic_headset_white_24dp"
-                        android:scaleType="center"
-                        android:contentDescription="@string/audio"
-                        app:circleColor="@color/audio_icon"/>
-
-                <TextView android:layout_marginTop="10dp"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          style="@style/AttachmentTypeLabel"
-                          android:text="@string/audio"/>
 
             </LinearLayout>
 
@@ -134,27 +137,28 @@
                       android:layout_marginBottom="16dp"
                       android:weightSum="4">
 
+            <!-- second row -->
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:layout_weight="1"
                           android:gravity="center"
+                          android:layout_weight="1"
                           android:orientation="vertical">
 
                 <org.thoughtcrime.securesms.components.CircleColorImageView
-                        android:id="@+id/camera_button"
-                        android:layout_width="53dp"
-                        android:layout_height="53dp"
-                        android:src="@drawable/ic_camera_white_24dp"
-                        android:scaleType="center"
-                        android:contentDescription="@string/camera"
-                        app:circleColor="@color/camera_icon"/>
+                    android:id="@+id/audio_button"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:src="@drawable/ic_headset_white_24dp"
+                    android:scaleType="center"
+                    android:contentDescription="@string/audio"
+                    app:circleColor="@color/audio_icon"/>
 
                 <TextView android:layout_marginTop="10dp"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:gravity="center"
                           style="@style/AttachmentTypeLabel"
-                          android:text="@string/camera"/>
+                          android:text="@string/audio"/>
 
             </LinearLayout>
 
