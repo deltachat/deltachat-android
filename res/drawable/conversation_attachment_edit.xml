@@ -2,16 +2,16 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <size android:height="30dp" android:width="30dp"/>
+            <size android:height="42dp" android:width="42dp"/>
             <solid android:color="@color/grey_400_transparent"/>
             <corners android:bottomLeftRadius="0dp" android:topLeftRadius="0dp" android:topRightRadius="0dp" android:bottomRightRadius="@dimen/message_bubble_corner_radius"/>
         </shape>
     </item>
     <item android:drawable="@drawable/ic_create_white_24dp"
-          android:left="5dp"
-          android:right="5dp"
-          android:top="5dp"
-          android:bottom="5dp"
+          android:left="7dp"
+          android:right="7dp"
+          android:top="7dp"
+          android:bottom="7dp"
           android:scaleType="centerInside">
     </item>
 </layer-list>
