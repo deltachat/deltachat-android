@@ -111,7 +111,7 @@ public class MicrophoneRecorderView extends FrameLayout implements View.OnTouchL
     public FloatingRecordButton(Context context, ImageView recordButtonFab) {
       this.recordButtonFab = recordButtonFab;
       this.recordButtonFab.getBackground().setColorFilter(context.getResources()
-                                                                 .getColor(R.color.red_500),
+                                                                 .getColor(R.color.audio_icon),
                                                           PorterDuff.Mode.SRC_IN);
     }
 

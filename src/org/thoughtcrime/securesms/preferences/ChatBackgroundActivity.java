@@ -63,9 +63,11 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            actionBar.setTitle(R.string.pref_background);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         }
+
     }
 
     @Override

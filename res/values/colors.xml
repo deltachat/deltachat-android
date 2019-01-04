@@ -48,5 +48,6 @@
     <color name="MediaOverview_Media_selected_overlay">#88000000</color>
 
     <color name="dummy_avatar_color">#808080</color>
+    <color name="slidearrow_color">#999999</color>
 
 </resources>

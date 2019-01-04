@@ -4,6 +4,9 @@
     <color name="core_red">#f44336</color>
     <color name="core_red_highlight">#ef5350</color>
 
+    <color name="audio_icon">#f68751</color>
+    <color name="audio_text">#ed824e</color>
+
     <color name="core_white">#ffffff</color>
     <color name="core_light_02">#F9FAFA</color>
     <color name="core_light_10">#EEEFEF</color>
