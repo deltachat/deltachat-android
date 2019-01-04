@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape android:shape="rectangle">
+        <shape android:shape="oval">
             <size android:height="42dp" android:width="42dp"/>
-            <solid android:color="@color/grey_400_transparent"/>
-            <corners android:bottomLeftRadius="0dp" android:topLeftRadius="0dp" android:topRightRadius="0dp" android:bottomRightRadius="@dimen/message_bubble_corner_radius"/>
+            <solid android:color="@color/universal_overlay"/>
         </shape>
     </item>
     <item android:drawable="@drawable/ic_create_white_24dp"

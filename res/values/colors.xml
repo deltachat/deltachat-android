@@ -50,4 +50,6 @@
     <color name="dummy_avatar_color">#808080</color>
     <color name="slidearrow_color">#999999</color>
 
+    <color name="universal_overlay">#44000000</color>
+
 </resources>
