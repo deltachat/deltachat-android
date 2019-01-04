@@ -51,6 +51,55 @@
                 android:clipToPadding="false">
 
                 <LinearLayout
+                    android:id="@+id/recording_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    tools:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/record_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="none"
+                        style="@style/Signal.Text.Body"
+                        android:text="00:00.00"
+                        android:textColor="?conversation_item_outgoing_text_primary_color"
+                        android:singleLine="true"
+                        android:visibility="gone"
+                        tools:visibility="visible"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="true">
+
+                        <TextView
+                            android:id="@+id/slide_to_cancel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left|start|center_vertical"
+                            android:drawableLeft="@drawable/slidearrow"
+                            android:drawableStart="@drawable/slidearrow"
+                            style="@style/Signal.Text.Preview"
+                            android:singleLine="true"
+                            android:text="@string/chat_record_slide_to_cancel"
+                            android:textColor="@color/slidearrow_color"
+                            android:ellipsize="none"
+                            android:visibility="gone"
+                            android:paddingLeft="10dp"
+                            android:paddingStart="10dp"
+                            android:paddingRight="50dp"
+                            android:paddingEnd="50dp"
+                            tools:visibility="visible"/>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipChildren="false"
@@ -132,61 +181,13 @@
                                 android:src="@drawable/ic_mic_white_48dp"
                                 android:background="@drawable/circle_tintable"
                                 android:backgroundTint="@color/audio_icon"
+                                android:elevation="4dp"
                                 android:visibility="gone"
                                 android:scaleType="center"/>
 
                         </org.thoughtcrime.securesms.components.MicrophoneRecorderView>
 
                     </org.thoughtcrime.securesms.components.HidingLinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/recording_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    tools:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/record_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="none"
-                        style="@style/Signal.Text.Body"
-                        android:text="00:00.00"
-                        android:textColor="?conversation_item_outgoing_text_primary_color"
-                        android:singleLine="true"
-                        android:visibility="gone"
-                        tools:visibility="visible"/>
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clipChildren="true">
-
-                        <TextView
-                            android:id="@+id/slide_to_cancel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="left|start|center_vertical"
-                            android:drawableLeft="@drawable/slidearrow"
-                            android:drawableStart="@drawable/slidearrow"
-                            style="@style/Signal.Text.Preview"
-                            android:singleLine="true"
-                            android:text="@string/chat_record_slide_to_cancel"
-                            android:textColor="@color/slidearrow_color"
-                            android:ellipsize="none"
-                            android:visibility="gone"
-                            android:paddingLeft="10dp"
-                            android:paddingStart="10dp"
-                            android:paddingRight="50dp"
-                            android:paddingEnd="50dp"
-                            tools:visibility="visible"/>
-
-                    </FrameLayout>
 
                 </LinearLayout>
 
