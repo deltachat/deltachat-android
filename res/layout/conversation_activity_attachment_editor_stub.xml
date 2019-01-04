@@ -28,6 +28,7 @@
                 android:layout_gravity="center_horizontal"
                 android:visibility="gone"
                 android:contentDescription="@string/menu_add_attachment"
+                app:thumbnail_radius="@dimen/message_corner_radius"
                 app:minWidth="100dp"
                 app:maxWidth="300dp"
                 app:minHeight="100dp"

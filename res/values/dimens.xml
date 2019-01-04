@@ -33,6 +33,8 @@
     <dimen name="media_bubble_max_height">320dp</dimen>
     <dimen name="below_bubble">3dp</dimen>
 
+    <dimen name="gallery_thumbnail_radius">1dp</dimen>
+
     <dimen name="conversation_individual_right_gutter">12dp</dimen>
     <dimen name="conversation_individual_left_gutter">12dp</dimen>
     <dimen name="conversation_group_left_gutter">52dp</dimen>
