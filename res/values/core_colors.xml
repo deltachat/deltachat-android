@@ -5,7 +5,14 @@
     <color name="core_red_highlight">#ef5350</color>
 
     <color name="audio_icon">#f68751</color>
-    <color name="audio_text">#ed824e</color>
+    <color name="audio_icon_text">#ed824e</color>
+    <color name="document_icon">#34a0f4</color>
+    <color name="document_icon_text">#3093e0</color>
+    <color name="contact_icon">#608496</color>
+    <color name="gallery_icon">#a47ad9</color>
+    <color name="location_icon">#66BB6A</color>
+    <color name="camera_icon">#00BCD4</color>
+    <color name="close_icon">#A4A6A9</color>
 
     <color name="core_white">#ffffff</color>
     <color name="core_light_02">#F9FAFA</color>
