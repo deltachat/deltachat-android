@@ -121,9 +121,6 @@ public class MicrophoneRecorderView extends FrameLayout implements View.OnTouchL
 
       recordButtonFab.setVisibility(View.VISIBLE);
 
-      float translation = ViewCompat.getLayoutDirection(recordButtonFab) ==
-          ViewCompat.LAYOUT_DIRECTION_LTR ? -.25f : .25f;
-
       AnimationSet animation = new AnimationSet(true);
       animation.addAnimation(new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0,
                                                     Animation.RELATIVE_TO_SELF, 0,
@@ -192,12 +189,6 @@ public class MicrophoneRecorderView extends FrameLayout implements View.OnTouchL
       return ViewCompat.getLayoutDirection(recordButtonFab) == ViewCompat.LAYOUT_DIRECTION_LTR ?
           -Math.max(0, this.startPositionX - x) : Math.max(0, x - this.startPositionX);
     }
-
-    private int getWidthAdjustment() {
-      int width = recordButtonFab.getWidth() / 4;
-      return ViewCompat.getLayoutDirection(recordButtonFab) == ViewCompat.LAYOUT_DIRECTION_LTR ? -width : width;
-    }
-
   }
 
 }
