@@ -309,6 +309,7 @@ public class InputPanel extends LinearLayout
 
     private final TextView recordTimeView;
     private final AtomicLong startTime = new AtomicLong(0);
+    private final int UPDATE_EVERY_MS = 137;
 
     private RecordTime(TextView recordTimeView) {
       this.recordTimeView = recordTimeView;
@@ -316,9 +317,9 @@ public class InputPanel extends LinearLayout
 
     public void display() {
       this.startTime.set(System.currentTimeMillis());
-      this.recordTimeView.setText(DateUtils.formatElapsedTime(0));
+      this.recordTimeView.setText(formatElapsedTime(0));
       ViewUtil.fadeIn(this.recordTimeView, FADE_TIME);
-      Util.runOnMainDelayed(this, TimeUnit.SECONDS.toMillis(1));
+      Util.runOnMainDelayed(this, UPDATE_EVERY_MS);
     }
 
     public long hide() {
@@ -333,9 +334,16 @@ public class InputPanel extends LinearLayout
       long localStartTime = startTime.get();
       if (localStartTime > 0) {
         long elapsedTime = System.currentTimeMillis() - localStartTime;
-        recordTimeView.setText(DateUtils.formatElapsedTime(TimeUnit.MILLISECONDS.toSeconds(elapsedTime)));
-        Util.runOnMainDelayed(this, TimeUnit.SECONDS.toMillis(1));
+        recordTimeView.setText(formatElapsedTime(elapsedTime));
+        Util.runOnMainDelayed(this, UPDATE_EVERY_MS);
       }
+    }
+
+    private String formatElapsedTime(long ms)
+    {
+      return DateUtils.formatElapsedTime(TimeUnit.MILLISECONDS.toSeconds(ms))
+          + String.format(".%02d", ((ms/10)%100));
+
     }
   }
 
