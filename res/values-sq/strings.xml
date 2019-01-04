@@ -29,13 +29,11 @@
     <string name="bad_email_address">Adresë email e keqe.</string>
     <string name="password">Fjalëkalim</string>
     <string name="now">Tani</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min.</string>
     <string name="today">Sot</string>
     <string name="yesterday">Dje</string>
     <string name="this_week">Këtë javë</string>
     <string name="this_month">Këtë muaj</string>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d orë</item>
         <item quantity="other">%d orë</item>
@@ -309,7 +307,6 @@
     <string name="pref_repeat_notify">Përsëriti sinjalizimet</string>
     <string name="pref_privacy">Privatësi</string>
     <string name="pref_chats_and_media">Fjalosje dhe media</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">E çelët</string>
     <string name="pref_dark_theme">E errët</string>
     <string name="pref_appearance">Dukje</string>
@@ -434,4 +431,5 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat lyp leje mbi Mikrofonin që të mund të dërgojë mesazhe audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Mikrofonin\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat lyp leje mbi Depozitimin që të mund të bashkëngjisë apo eksportojë foto, video ose audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Depozitimin\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat lyp leje mbi Vendndodhjen që të mund të bashkëngjisë një vendndodhje, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Vendndodhjen\".</string>
-</resources>
+
+    </resources>

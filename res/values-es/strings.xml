@@ -29,13 +29,11 @@
     <string name="bad_email_address">Dirección de correo no válida.</string>
     <string name="password">Contraseña</string>
     <string name="now">Ahora</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Hoy</string>
     <string name="yesterday">Ayer</string>
     <string name="this_week">Esta semana</string>
     <string name="this_month">Este mes</string>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d hora</item>
         <item quantity="other">%d horas</item>
@@ -75,7 +73,7 @@
     <string name="red">Rojo</string>
     <string name="blue">Azul</string>
     <string name="orange">Naranja</string>
-    <string name="cyan">Azul</string>
+    <string name="cyan">Cian</string>
     <string name="magenta">Magenta</string>
     <string name="white">Blanco</string>
 
@@ -291,7 +289,7 @@
     <string name="pref_trim_now_button">Recortar todos los chats ahora</string>
     <string name="pref_trim_now_ask">¿Borrar todos los mensajes antiguos ahora? Esto recortará inmediatamente todos los chats a los %d mensajes más recientes.</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
-    <string name="pref_profile_photo_remove_ask">Eliminar foto de perfil? </string>
+    <string name="pref_profile_photo_remove_ask">¿Eliminar foto de perfil? </string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Contraseña y ajustes de cuenta</string>
@@ -301,7 +299,7 @@
     <string name="pref_default_status_label">Texto de estado</string>
     <string name="pref_default_status_text">Enviado con mi aplicación de mensajería Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Tecla Intro envía</string>
-    <string name="pref_enter_sends_explain">La tecla Enter enviará tu mensaje</string>
+    <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
     <string name="pref_vibrate">Vibrar</string>
     <string name="pref_chat_settings">Ajustes de chat</string>
     <string name="pref_change_secret">Cambiar secreto</string>
@@ -319,7 +317,6 @@
     <string name="pref_repeat_notify">Repetir alertas</string>
     <string name="pref_privacy">Privacidad</string>
     <string name="pref_chats_and_media">Chats y multimedia</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
     <string name="pref_dark_theme">Oscuro </string>
     <string name="pref_appearance">Apariencia</string>
@@ -354,6 +351,14 @@
     <string name="pref_managekeys_secret_keys_exported_to_x">Claves secretas escritas exitosamente a \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Claves secretas importadas de \"%1$s\".</string>
     <string name="pref_background">Fondo de chat</string>
+    <string name="pref_imap_folder_handling">Manejo de carpetas IMAP</string>
+    <string name="pref_watch_inbox_folder">Monitorear la Bandeja de Entrada</string>
+    <string name="pref_watch_sent_folder">Monitorear la carpeta de Enviados</string>
+    <string name="pref_watch_mvbox_folder">Monitorear la carpeta DeltaChat</string>
+    <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
+    <string name="pref_auto_folder_moves_explain">Las conversaciones son movidas para evitar saturar la Bandeja de entrada</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt es una nueva especificación abierta para encriptado automático de correo electrónico de extremo a extremo. Su configuración de extremo a extremo es creada automáticamente cuando se necesita y puede transferirla entre dispositivos con los Mensajes de Configuración de Autocrypt.</string>
@@ -450,4 +455,5 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
-</resources>
+
+    </resources>

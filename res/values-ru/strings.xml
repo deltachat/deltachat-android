@@ -29,13 +29,11 @@
     <string name="bad_email_address">Неправильный адрес email.</string>
     <string name="password">Пароль</string>
     <string name="now">Сейчас</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d минута</string>
     <string name="today">Сегодня</string>
     <string name="yesterday">Вчера</string>
     <string name="this_week">На этой неделе</string>
     <string name="this_month">В этом месяце</string>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d час</item>
         <item quantity="few">%d часа</item>
@@ -344,7 +342,6 @@
     <string name="pref_silent">Беззвучный</string>
     <string name="pref_repeat_notify">Повторять оповещения</string>
     <string name="pref_privacy">Приватность</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Светлый</string>
     <string name="pref_dark_theme">Темный</string>
     <string name="pref_appearance">Внешний вид</string>
@@ -458,4 +455,5 @@
     <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов приложению нужно разрешение на хранение, но сейчас хранение заблокировано. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите функцию \"Хранение\".</string>
     <string name="perm_explain_access_to_location_denied">Чтобы прикрепить местоположение, приложению нужно разрешить доступ к вашему \"Расположению\", но сейчас местоположение заблокировано. Пожалуйста, перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Расположение\".</string>
-</resources>
+
+    </resources>

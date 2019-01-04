@@ -29,13 +29,11 @@
     <string name="bad_email_address">Ongeldig e-mailadres.</string>
     <string name="password">Wachtwoord</string>
     <string name="now">Nu</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Vandaag</string>
     <string name="yesterday">Gisteren</string>
     <string name="this_week">Deze week</string>
     <string name="this_month">Deze maand</string>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d uur</item>
         <item quantity="other">%d uur</item>
@@ -319,7 +317,6 @@
     <string name="pref_repeat_notify">Alarmeringen herhalen</string>
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Gesprekken en media</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Licht</string>
     <string name="pref_dark_theme">Donker</string>
     <string name="pref_appearance">Uiterlijk</string>
@@ -355,7 +352,6 @@
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime sleutels geïmporteerd uit \"%1$s\".</string>
     <string name="pref_background">Gespreksachtergrond</string>
     <string name="pref_imap_folder_handling">Controleren in IMAP-mappen</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>
     <string name="pref_watch_sent_folder">Map Verzonden controleren op nieuwe berichten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
@@ -459,4 +455,5 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat vereist de microfoonmachtiging om audioberichten te kunnen versturen, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Microfoon\" in.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat vereist de opslagmachtiging om foto\'s, video\'s of audio te kunnen bijvoegen of exporteren, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Opslag\" in.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat vereist de locatiemachtiging om je locatie in te kunnen voegen, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel Locatie\" in.</string>
-</resources>
+
+    </resources>
