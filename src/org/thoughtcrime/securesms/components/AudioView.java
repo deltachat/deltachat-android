@@ -61,6 +61,8 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     this.seekBar          = (SeekBar) findViewById(R.id.seek);
     this.timestamp        = (TextView) findViewById(R.id.timestamp);
 
+    this.timestamp.setText("00:00");
+
     this.playButton.setOnClickListener(new PlayClickedListener());
     this.pauseButton.setOnClickListener(new PauseClickedListener());
     this.seekBar.setOnSeekBarChangeListener(new SeekBarModifiedListener());

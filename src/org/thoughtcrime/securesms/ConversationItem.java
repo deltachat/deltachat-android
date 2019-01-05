@@ -287,19 +287,15 @@ public class ConversationItem extends LinearLayout
     }
 
     if (audioViewStub.resolved()) {
-      setAudioViewTint(messageRecord, this.conversationRecipient);
+      setAudioViewTint(messageRecord);
     }
   }
 
-  private void setAudioViewTint(DcMsg messageRecord, Recipient recipient) {
+  private void setAudioViewTint(DcMsg messageRecord) {
     if (messageRecord.isOutgoing()) {
-      if (DynamicTheme.LIGHT.equals(Prefs.getTheme(context))) {
-        audioViewStub.get().setTint(getContext().getResources().getColor(R.color.core_light_60), outgoingBubbleColor);
-      } else {
-        audioViewStub.get().setTint(Color.WHITE, outgoingBubbleColor);
-      }
+      audioViewStub.get().setTint(getContext().getResources().getColor(R.color.audio_icon), outgoingBubbleColor);
     } else {
-      audioViewStub.get().setTint(Color.WHITE, incomingBubbleColor);
+      audioViewStub.get().setTint(getContext().getResources().getColor(R.color.audio_icon), incomingBubbleColor);
     }
   }
 

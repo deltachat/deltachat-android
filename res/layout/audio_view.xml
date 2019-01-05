@@ -49,7 +49,7 @@
 
             <SeekBar android:id="@+id/seek"
                      android:layout_width="fill_parent"
-                     android:layout_height="wrap_content"
+                     android:layout_height="fill_parent"
                      android:layout_gravity="center_vertical"/>
 
         </LinearLayout>
@@ -57,13 +57,15 @@
     <TextView android:id="@+id/timestamp"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_marginLeft="76dip"
+              android:layout_marginLeft="58dip"
+              android:layout_marginStart="58dip"
               android:textAppearance="?android:attr/textAppearanceSmall"
               android:textColor="?conversation_item_outgoing_text_secondary_color"
               android:textSize="@dimen/conversation_item_date_text_size"
-              android:fontFamily="sans-serif-light"
+              style="@style/Signal.Text.Preview"
+              android:fontFamily="sans-serif-medium"
               android:autoLink="none"
-              android:visibility="gone"
+              android:visibility="visible"
               tools:text="00:15"
               tools:visibility="visible"
             />
