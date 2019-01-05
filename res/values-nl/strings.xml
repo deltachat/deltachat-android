@@ -29,11 +29,18 @@
     <string name="bad_email_address">Ongeldig e-mailadres.</string>
     <string name="password">Wachtwoord</string>
     <string name="now">Nu</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Vandaag</string>
     <string name="yesterday">Gisteren</string>
     <string name="this_week">Deze week</string>
     <string name="this_month">Deze maand</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d minuut</item>
+        <item quantity="other">%d minuten</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d uur</item>
         <item quantity="other">%d uur</item>
@@ -317,6 +324,7 @@
     <string name="pref_repeat_notify">Alarmeringen herhalen</string>
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Gesprekken en media</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Licht</string>
     <string name="pref_dark_theme">Donker</string>
     <string name="pref_appearance">Uiterlijk</string>
@@ -352,6 +360,7 @@
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime sleutels geïmporteerd uit \"%1$s\".</string>
     <string name="pref_background">Gespreksachtergrond</string>
     <string name="pref_imap_folder_handling">Controleren in IMAP-mappen</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>
     <string name="pref_watch_sent_folder">Map Verzonden controleren op nieuwe berichten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
@@ -456,4 +465,106 @@
     <string name="perm_explain_access_to_storage_denied">Delta Chat vereist de opslagmachtiging om foto\'s, video\'s of audio te kunnen bijvoegen of exporteren, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Opslag\" in.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat vereist de locatiemachtiging om je locatie in te kunnen voegen, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel Locatie\" in.</string>
 
-    </resources>
+    <!-- languages -->
+    <string name="language_be">Belgisch</string>
+    <string name="language_ca">Catalaans</string>
+    <string name="language_da">Deens</string>
+    <string name="language_de">Duits</string>
+    <string name="language_en">Engels</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Spaans</string>
+    <string name="language_eu">Basks</string>
+    <string name="language_fr">Frans</string>
+    <string name="language_hr">Kroatisch</string>
+    <string name="language_hu">Hongaars</string>
+    <string name="language_it">Italiaans</string>
+    <string name="language_id">Indonesisch</string>
+    <string name="language_ja_JP">Japans</string>
+    <string name="language_ko">Koreaans</string>
+    <string name="language_nb_NO">Noors (Bokmål)</string>
+    <string name="language_nl">Nederlands</string>
+    <string name="language_nl_NL">Nederlands (Nederland)</string>
+    <string name="language_pl">Pools</string>
+    <string name="language_pt">Portugees</string>
+    <string name="language_ru">Russisch</string>
+    <string name="language_ru_RU">Russisch (Rusland)</string>
+    <string name="language_sq">Albanees</string>
+    <string name="language_sr">Servisch</string>
+    <string name="language_sv">Zweeds</string>
+    <string name="language_ta">Tamil</string>
+    <string name="language_te">Telegu</string>
+    <string name="language_tr">Turks</string>
+    <string name="language_uk">Oekraïens</string>
+    <string name="language_zh_CN">Chinees</string>
+
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Versleuteld bericht</string>
+
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Welkom bij DeltaChat</string>
+    <string name="login_known_accounts_title_desktop">Bekende accounts</string>
+    <string name="global_menu_preferences_desktop">Voorkeuren</string>
+    <string name="global_menu_preferences_language_desktop">Kies een taal...</string>
+    <string name="global_menu_file_desktop">Bestand</string>
+    <string name="global_menu_file_quit_desktop">Afsluiten</string>
+    <string name="global_menu_edit_desktop">Bewerken</string>
+    <string name="global_menu_edit_undo_desktop">Ongedaan maken</string>
+    <string name="global_menu_edit_redo_desktop">Opnieuw</string>
+    <string name="global_menu_edit_cut_desktop">Knippen</string>
+    <string name="global_menu_edit_copy_desktop">Kopiëren</string>
+    <string name="global_menu_edit_paste_desktop">Plakken</string>
+    <string name="global_menu_edit_delete_desktop">Verwijderen</string>
+    <string name="global_menu_edit_selectall_desktop">Alles selecteren</string>
+    <string name="global_menu_view_desktop">Bekijken</string>
+    <string name="global_menu_view_floatontop_desktop">Altijd bovenaan</string>
+    <string name="global_menu_view_developer_desktop">Ontwikkelaar</string>
+    <string name="global_menu_view_developer_tools_desktop">Ontwikkelaarshulpmiddelen</string>
+    <string name="global_menu_help_desktop">Hulp</string>
+    <string name="global_menu_help_learn_desktop">Meer informatie over DeltaChat</string>
+    <string name="global_menu_help_contribute_desktop">Draag bij op GitHub</string>
+    <string name="global_menu_help_report_desktop">Meld een probleem...</string>
+    <string name="global_menu_help_about_desktop">Over DeltaChat</string>
+    <string name="no_chat_selected_suggestion_desktop">Kies een gesprek of creëer een nieuw gesprek</string>
+    <string name="write_message_desktop">Schrijf een bericht</string>
+    <string name="about_deltachat_heading_desktop">Over DeltaChat</string>
+    <string name="encryption_info_title_desktop">Versleutelingsinformatie</string>
+    <string name="contact_detail_title_desktop">Contactpersoongegevens</string>
+    <string name="contact_request_title_desktop">Contactpersoonverzoek</string>
+    <string name="delete_message_desktop">Bericht verwijderen</string>
+    <string name="more_info_desktop">Meer informatie</string>
+    <string name="logout_desktop">Uitloggen</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
+    <string name="no_archived_chats_desktop">Geen gearchiveerde gesprekken</string>
+    <string name="no_chats_desktop">Geen gesprekken</string>
+    <string name="encryption_info_desktop">Versleutelingsinformatie tonen</string>
+    <string name="verified_desktop">goedgekeurd</string>
+    <string name="group_name_desktop">Groepsnaam</string>
+    <string name="remove_desktop">Verwijderen</string>
+    <string name="save_desktop">Opslaan</string>
+    <string name="show_qr_verify_code_desktop">QR-goedkeuringscode tonen</string>
+    <string name="show_qr_invite_code_desktop">QR-uitnodgingscode tonen</string>
+    <string name="add_contact_desktop">Contactpersoon toevoegen</string>
+    <string name="login_required_desktop">vereist</string>
+    <string name="name_desktop">Naam</string>
+    <string name="autocrypt_key_transfer_desktop">Autocrypt-sleuteloverdracht</string>
+    <string name="initiate_key_transfer_title_desktop">Sleuteloverdracht starten</string>
+    <string name="initiate_key_transfer_desktop">Een Autocrypt-instelbericht deelt je end-to-end-instellingen op een veilige manier met andere met Autocrypt compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
+    <string name="reply_to_message_desktop">Bericht beantwoorden</string>
+    <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
+    <string name="imex_progress_title_desktop">Voortgang van back-up</string>
+    <string name="download_attachment_desktop">Bijlage downloaden</string>
+    <string name="export_backup_desktop">Back-up exporteren</string>
+    <string name="transfer_key_desktop">Sleuteloverdracht</string>
+    <string name="show_key_transfer_message_desktop">Je sleutel is naar jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld. Zodra je klaar bent, is je andere apparaat klaar voor gebruik.</string>
+    <string name="new_message_from_desktop">Nieuw bericht van</string>
+    <string name="unblock_contacts_desktop">Contactpersonen deblokkeren</string>
+    <string name="none_blocked_desktop">Nog geen geblokkeerde contactpersonen</string>
+    <string name="autocrypt_correct_desktop">Autocrypt-instellingen overgedragen!</string>
+    <string name="autocrypt_incorrect_desktop">Onjuiste instelcode; probeer het opnieuw.</string>
+    <string name="create_chat_error_desktop">Kan gesprek niet creëren.</string>
+    <string name="ask_delete_chat_desktop">Weet je zeker dat je dit gesprek wilt verwijderen?</string>
+    <string name="email_validation_failed_desktop">E-mailadres vereist.</string>
+    <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd, inclusief je end-to-end-instellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
+    <string name="me_desktop">ik</string>
+
+</resources>

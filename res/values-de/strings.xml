@@ -29,11 +29,18 @@
     <string name="bad_email_address">Ungültige E-Mail-Adresse</string>
     <string name="password">Passwort</string>
     <string name="now">Jetzt</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d Min.</string>
     <string name="today">Heute</string>
     <string name="yesterday">Gestern</string>
     <string name="this_week">Diese Woche</string>
     <string name="this_month">Dieser Monat</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d Min</item>
+        <item quantity="other">%d Min</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d Std</item>
         <item quantity="other">%d Std</item>
@@ -303,7 +310,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_enter_sends">Enter-Taste sendet</string>
     <string name="pref_enter_sends_explain">Durch Drücken der Eingabetaste werden Textnachrichten gesendet.</string>
     <string name="pref_vibrate">Vibrieren</string>
-    <string name="pref_chat_settings">Chat Einstellungen</string>
+    <string name="pref_chat_settings">Chat-Einstellungen</string>
     <string name="pref_change_secret">Sicherheitsoptionen ändern</string>
     <string name="pref_change_secret_explain">Ändern von PIN / Muster / Fingerabdruck über die Systemeinstellungen</string>
     <string name="pref_screen_security">Bildschirmsicherheit</string>
@@ -319,6 +326,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_repeat_notify">Wiederholte Warnungen</string>
     <string name="pref_privacy">Datenschutz</string>
     <string name="pref_chats_and_media">Chats und Medien</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Hell</string>
     <string name="pref_dark_theme">Dunkel</string>
     <string name="pref_appearance">Darstellung</string>

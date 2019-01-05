@@ -29,11 +29,13 @@
     <string name="bad_email_address">E-mail helbide okerra.</string>
     <string name="password">Pasahitza</string>
     <string name="now">Orain</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Gaur</string>
     <string name="yesterday">Atzo</string>
     <string name="this_week">Aste honetan</string>
     <string name="this_month">Hilabete honetan</string>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">ordu %d</item>
         <item quantity="other">%d ordu</item>
@@ -301,6 +303,7 @@
     <string name="pref_repeat_notify">Errepikatu alertak</string>
     <string name="pref_privacy">Pribatutasuna</string>
     <string name="pref_chats_and_media">Txatak eta multimedia</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Argia</string>
     <string name="pref_dark_theme">Iluna</string>
     <string name="pref_appearance">Itxura</string>
