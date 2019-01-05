@@ -47,28 +47,35 @@
 
             </org.thoughtcrime.securesms.components.AnimatingToggle>
 
-            <SeekBar android:id="@+id/seek"
-                     android:layout_width="fill_parent"
-                     android:layout_height="fill_parent"
-                     android:layout_gravity="center_vertical"/>
+            <LinearLayout android:layout_width="fill_parent"
+                          android:layout_height="fill_parent"
+                          android:orientation="vertical">
+
+                <SeekBar android:id="@+id/seek"
+                         android:layout_width="fill_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_weight="2"
+                         android:layout_gravity="center_vertical"/>
+
+                <TextView android:id="@+id/timestamp"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp"
+                          android:layout_marginRight="10dp"
+                          android:textAppearance="?android:attr/textAppearanceSmall"
+                          android:textColor="?conversation_item_outgoing_text_secondary_color"
+                          android:textSize="@dimen/conversation_item_date_text_size"
+                          style="@style/Signal.Text.Preview"
+                          android:fontFamily="sans-serif-medium"
+                          android:autoLink="none"
+                          android:visibility="visible"
+                          tools:text="00:15"
+                          tools:visibility="visible"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    <TextView android:id="@+id/timestamp"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="58dip"
-              android:layout_marginStart="58dip"
-              android:textAppearance="?android:attr/textAppearanceSmall"
-              android:textColor="?conversation_item_outgoing_text_secondary_color"
-              android:textSize="@dimen/conversation_item_date_text_size"
-              style="@style/Signal.Text.Preview"
-              android:fontFamily="sans-serif-medium"
-              android:autoLink="none"
-              android:visibility="visible"
-              tools:text="00:15"
-              tools:visibility="visible"
-            />
 
     </LinearLayout>
 
