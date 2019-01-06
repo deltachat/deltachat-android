@@ -61,6 +61,7 @@ import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -83,6 +84,7 @@ public class ContactSelectionListFragment extends    Fragment
   public static final String RECENTS               = "recents";
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";
   public static final String FROM_SHARE_ACTIVITY_EXTRA = "from_share_activity";
+  public static final String PRESELECTED_CONTACTS = "preselected_contacts";
 
   private ApplicationDcContext dcContext;
 
@@ -243,6 +245,10 @@ public class ContactSelectionListFragment extends    Fragment
             isMulti(),
             true);
     selectedContacts = adapter.getSelectedContacts();
+    ArrayList<String> preselectedContacts = getActivity().getIntent().getStringArrayListExtra(PRESELECTED_CONTACTS);
+    if(preselectedContacts!=null) {
+      selectedContacts.addAll(preselectedContacts);
+    }
     recyclerView.setAdapter(adapter);
     recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, true, true));
   }

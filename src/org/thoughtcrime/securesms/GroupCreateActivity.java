@@ -62,6 +62,7 @@ import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -151,6 +152,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void addSelectedContacts(@NonNull Recipient... recipients) {
+    getAdapter().clear();
     new AddMembersTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, recipients);
   }
 
@@ -421,6 +423,17 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     public void onClick(View v) {
       Intent intent = new Intent(GroupCreateActivity.this, ContactMultiSelectionActivity.class);
       intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, verified);
+      if(editGroupChatId!=null) {
+        Recipient recipient = GroupCreateActivity.this.dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, editGroupChatId);
+        List<Recipient> participants = recipient.getParticipants();
+        ArrayList<String> preselectedContacts = new ArrayList<>();
+        for (Recipient p : participants) {
+          if(p.getAddress().isDcContact()) {
+            preselectedContacts.add(dcContext.getContact(p.getAddress().getDcContactId()).getAddr());
+          }
+        }
+        intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
+      }
       startActivityForResult(intent, PICK_CONTACT);
     }
   }
