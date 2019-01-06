@@ -38,6 +38,33 @@
             android:background="@color/white"
             tools:backgroundTint="@color/core_light_10">
 
+            <LinearLayout
+                android:id="@+id/group_sender_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/message_bubble_top_padding"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/group_message_sender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4sp"
+                    android:layout_marginEnd="4sp"
+                    style="@style/Signal.Text.Preview"
+                    android:fontFamily="sans-serif-medium"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:visibility="visible"
+                    tools:text="Bob"/>
+
+            </LinearLayout>
+
             <org.thoughtcrime.securesms.components.QuoteView
                 android:id="@+id/quote_view"
                 android:layout_width="wrap_content"
@@ -89,18 +116,6 @@
                 android:textColorLink="?conversation_item_outgoing_text_primary_color"
                 app:scaleEmojis="true"
                 tools:text="Mango pickle lorem ipsum"/>
-
-            <View
-                android:id="@+id/group_sender_holder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-
-            <TextView
-                android:id="@+id/group_message_sender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
 
             <TextView
                 android:layout_width="wrap_content"

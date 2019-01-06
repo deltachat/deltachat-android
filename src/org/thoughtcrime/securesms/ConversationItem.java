@@ -110,7 +110,7 @@ public class ConversationItem extends LinearLayout
 
   private int incomingBubbleColor;
   private int outgoingBubbleColor;
-  //private int measureCalls;
+  private int forwardedTitleColor;
 
   private final PassthroughClickListener        passthroughClickListener   = new PassthroughClickListener();
 
@@ -181,7 +181,7 @@ public class ConversationItem extends LinearLayout
     }
 
     setGutterSizes(messageRecord, groupThread);
-    setMessageShape(messageRecord, groupThread);
+    setMessageShape(messageRecord);
     setMediaAttributes(messageRecord, conversationRecipient, groupThread);
     setInteractionState(messageRecord, pulseHighlight);
     setBodyText(messageRecord);
@@ -260,12 +260,14 @@ public class ConversationItem extends LinearLayout
   private void initializeAttributes() {
     final int[]      attributes = new int[] {
         R.attr.conversation_item_incoming_bubble_color,
-        R.attr.conversation_item_outgoing_bubble_color
+        R.attr.conversation_item_outgoing_bubble_color,
+        R.attr.conversation_item_incoming_text_secondary_color
     };
     final TypedArray attrs      = context.obtainStyledAttributes(attributes);
 
     incomingBubbleColor = attrs.getColor(0, Color.WHITE);
     outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
+    forwardedTitleColor = attrs.getColor(2, Color.BLACK);
     attrs.recycle();
   }
 
@@ -600,7 +602,11 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setGroupMessageStatus() {
-    if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
+    if (messageRecord.isForwarded()) {
+      this.groupSender.setText(context.getString(R.string.forwarded_message));
+      this.groupSender.setTextColor(forwardedTitleColor);
+    }
+    else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
       this.groupSender.setText(dcContact.getDisplayName());
 
       int rgb = dcContact.getColor();
@@ -610,21 +616,27 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setAuthor(@NonNull DcMsg current, boolean isGroupThread) {
+    int groupSenderHolderVisibility = GONE;
     if (isGroupThread && !current.isOutgoing()) {
       if (contactPhotoHolder != null) {
         contactPhotoHolder.setVisibility(VISIBLE);
       }
-      groupSenderHolder.setVisibility(VISIBLE);
+      groupSenderHolderVisibility = VISIBLE;
       contactPhoto.setVisibility(VISIBLE);
     } else {
-      groupSenderHolder.setVisibility(GONE);
       if (contactPhotoHolder != null) {
         contactPhotoHolder.setVisibility(GONE);
       }
     }
+
+    if(current.isForwarded()) {
+      groupSenderHolderVisibility = VISIBLE;
+    }
+
+    groupSenderHolder.setVisibility(groupSenderHolderVisibility);
   }
 
-  private void setMessageShape(@NonNull DcMsg current, boolean isGroupThread) {
+  private void setMessageShape(@NonNull DcMsg current) {
     int background;
     background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
                                       : R.drawable.message_bubble_background_received_alone;

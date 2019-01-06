@@ -58,7 +58,7 @@
             android:clipToPadding="false"
             android:clipChildren="false"
             android:background="@color/white"
-            tools:backgroundTint="@color/conversation_blue">
+            tools:backgroundTint="@color/core_light_10">
 
             <LinearLayout
                 android:id="@+id/group_sender_holder"
@@ -80,11 +80,10 @@
                     android:layout_marginEnd="4sp"
                     style="@style/Signal.Text.Preview"
                     android:fontFamily="sans-serif-medium"
-                    android:textColor="?conversation_item_incoming_text_primary_color"
                     android:maxLines="1"
                     android:ellipsize="end"
                     tools:visibility="visible"
-                    tools:text="+14152222222"/>
+                    tools:text="Alice"/>
 
             </LinearLayout>
 

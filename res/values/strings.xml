@@ -68,6 +68,7 @@
     <string name="gif">Gif</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Voice message</string>
+    <string name="forwarded_message">Forwarded message</string>
     <string name="video">Video</string>
     <string name="contact">Contact</string>
     <string name="camera">Camera</string>
@@ -428,7 +429,7 @@
     <string name="qrshow_join_verified_group_hint">Scan this to join the verified group \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">QR invite code</string>
     <string name="qrshow_join_contact_title">QR verify code</string>
-    <string name="qrshow_join_contact_hint">\"%1$s\" Scan this to set up a verified contact.</string>
+    <string name="qrshow_join_contact_hint">\"%1$s\" Scan this to set up a vefrified contact.</string>
 
 
     <!-- notifications  -->
