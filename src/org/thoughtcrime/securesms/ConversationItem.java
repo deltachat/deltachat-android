@@ -634,6 +634,14 @@ public class ConversationItem extends LinearLayout
     }
 
     groupSenderHolder.setVisibility(groupSenderHolderVisibility);
+
+    boolean collapse = false;
+    if(groupSenderHolderVisibility==VISIBLE && current.getType()==DcMsg.DC_MSG_TEXT) {
+      collapse = true;
+    }
+
+    int spacingTop = collapse? 0 /*2dp border come from the senderHolder*/ : readDimen(context, R.dimen.message_bubble_top_padding);
+    ViewUtil.setPaddingTop(bodyText, spacingTop);
   }
 
   private void setMessageShape(@NonNull DcMsg current) {
