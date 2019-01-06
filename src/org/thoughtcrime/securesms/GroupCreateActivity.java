@@ -423,17 +423,14 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     public void onClick(View v) {
       Intent intent = new Intent(GroupCreateActivity.this, ContactMultiSelectionActivity.class);
       intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, verified);
-      if(editGroupChatId!=null) {
-        Recipient recipient = GroupCreateActivity.this.dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, editGroupChatId);
-        List<Recipient> participants = recipient.getParticipants();
-        ArrayList<String> preselectedContacts = new ArrayList<>();
-        for (Recipient p : participants) {
-          if(p.getAddress().isDcContact()) {
-            preselectedContacts.add(dcContext.getContact(p.getAddress().getDcContactId()).getAddr());
-          }
+      ArrayList<String> preselectedContacts = new ArrayList<>();
+      Set<Recipient> recipients = GroupCreateActivity.this.getAdapter().getRecipients();
+      for (Recipient r : recipients) {
+        if(r.getAddress().isDcContact()) {
+          preselectedContacts.add(dcContext.getContact(r.getAddress().getDcContactId()).getAddr());
         }
-        intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
       }
+      intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
       startActivityForResult(intent, PICK_CONTACT);
     }
   }
