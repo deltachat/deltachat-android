@@ -455,5 +455,4 @@
     <string name="create_chat_error_desktop">Kunne ikke oprette samtale</string>
     <string name="email_validation_failed_desktop">E-post adresse påkrævet</string>
     <string name="me_desktop">undertegnet</string>
-
-</resources>
+    </resources>

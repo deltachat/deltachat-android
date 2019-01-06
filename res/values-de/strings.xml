@@ -466,4 +466,80 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="perm_explain_access_to_storage_denied">Delta Chat benötigt die Speichergenehmigung, um Fotos, Videos oder Audiodateien anzuhängen oder zu exportieren, aber es wurde dauerhaft abgelehnt. Bitte fahren Sie mit dem Menü App-Einstellungen fort, wählen Sie \"Berechtigungen\" und aktivieren Sie \"Speicher\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat benötigt eine Standortberechtigung, um einen Standort anzuhängen, aber er wurde dauerhaft abgelehnt. Bitte fahren Sie mit dem Menü App-Einstellungen fort, wählen Sie \"Berechtigungen\" und aktivieren Sie \"Standort\".</string>
 
+    <!-- languages -->
+    <string name="language_be">Belgisch</string>
+    <string name="language_ca">Katalanisch</string>
+    <string name="language_da">Dänisch</string>
+    <string name="language_de">Deutsch</string>
+    <string name="language_en">Englisch</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Spanisch</string>
+    <string name="language_eu">Baskisch</string>
+    <string name="language_fr">Französisch</string>
+    <string name="language_hr">Kroatisch</string>
+    <string name="language_hu">Ungarisch</string>
+    <string name="language_it">Italienisch</string>
+    <string name="language_id">Indonesisch</string>
+    <string name="language_ja_JP">Japanisch</string>
+    <string name="language_ko">Koreanisch</string>
+    <string name="language_nl">Niederländisch</string>
+    <string name="language_nl_NL">Niederländisch (Niederlande)</string>
+    <string name="language_pl">Polisch</string>
+    <string name="language_pt">Portugiesisch</string>
+    <string name="language_ru">Russisch</string>
+    <string name="language_ru_RU">Russisch (Russland)</string>
+    <string name="language_sq">Albanisch</string>
+    <string name="language_sr">Serbisch</string>
+    <string name="language_sv">Schwedisch</string>
+    <string name="language_ta">Tamil</string>
+    <string name="language_tr">Türkisch</string>
+    <string name="language_uk">Ukrainisch</string>
+    <string name="language_zh_CN">Chinesisch</string>
+
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Verschlüsselte Nachricht</string>
+
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Willkommen zu DeltaChat</string>
+    <string name="global_menu_preferences_desktop">Einstellungen</string>
+    <string name="global_menu_preferences_language_desktop">Wähle Sprache...</string>
+    <string name="global_menu_file_desktop">Datei</string>
+    <string name="global_menu_file_quit_desktop">Beenden</string>
+    <string name="global_menu_edit_desktop">Bearbeiten</string>
+    <string name="global_menu_edit_undo_desktop">Rückgängig</string>
+    <string name="global_menu_edit_redo_desktop">Wiederholen</string>
+    <string name="global_menu_edit_cut_desktop">Ausschneiden</string>
+    <string name="global_menu_edit_copy_desktop">Kopieren</string>
+    <string name="global_menu_edit_paste_desktop">Einfügen</string>
+    <string name="global_menu_edit_delete_desktop">Löschen</string>
+    <string name="global_menu_edit_selectall_desktop">Alles auswählen</string>
+    <string name="global_menu_view_developer_desktop">Entwickler</string>
+    <string name="global_menu_help_desktop">Hilfe</string>
+    <string name="global_menu_help_learn_desktop">Lerne mehr über DeltaChat</string>
+    <string name="global_menu_help_report_desktop">Melde ein Problem...</string>
+    <string name="global_menu_help_about_desktop">Über DeltaChat</string>
+    <string name="write_message_desktop">Schreibe eine Nachricht</string>
+    <string name="about_deltachat_heading_desktop">Über DeltaChat</string>
+    <string name="contact_request_title_desktop">Kontaktanfrage</string>
+    <string name="delete_message_desktop">Nachricht löschen</string>
+    <string name="logout_desktop">Abmelden</string>
+    <string name="no_archived_chats_desktop">Keine archivierten Chats</string>
+    <string name="no_chats_desktop">Keine Chats</string>
+    <string name="encryption_info_desktop">Zeige Verschlüsselungsinfo</string>
+    <string name="verified_desktop">verifiziert</string>
+    <string name="group_name_desktop">Gruppenname</string>
+    <string name="remove_desktop">Entfernen</string>
+    <string name="save_desktop">Speichern</string>
+    <string name="add_contact_desktop">Füge Kontakt hinzu</string>
+    <string name="login_required_desktop">benötigt</string>
+    <string name="name_desktop">Name</string>
+    <string name="initiate_key_transfer_desktop">Eine \"Autocrypt-Setup-Nachricht\" überträgt dein Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät. Das Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
+    <string name="reply_to_message_desktop">Antworten</string>
+    <string name="imex_progress_title_desktop">Backup-Prozess</string>
+    <string name="export_backup_desktop">Backup exportieren</string>
+    <string name="show_key_transfer_message_desktop">Der Schlüssel wurde an dich geschickt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Nach Aufforderung, den Setup-Code einzugeben, die folgenden Zahlen eintippen: Danach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
+    <string name="new_message_from_desktop">Neue Nachricht von</string>
+    <string name="none_blocked_desktop">Noch keine blockierten Kontakte</string>
+    <string name="create_chat_error_desktop">Konnte Chat nicht erstellen.</string>
+    <string name="email_validation_failed_desktop">E-Mail-Adresse benötigt.</string>
     </resources>

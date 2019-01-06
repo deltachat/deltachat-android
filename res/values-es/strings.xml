@@ -552,5 +552,4 @@
     <string name="create_chat_error_desktop">No se pudo crear el chat.</string>
     <string name="ask_delete_chat_desktop">¿Estás seguro de que deseas eliminar este chat?</string>
     <string name="me_desktop">Yo</string>
-
-</resources>
+    </resources>

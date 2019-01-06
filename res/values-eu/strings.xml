@@ -35,6 +35,11 @@
     <string name="yesterday">Atzo</string>
     <string name="this_week">Aste honetan</string>
     <string name="this_month">Hilabete honetan</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">min %d</item>
+        <item quantity="other">%d min</item>
+    </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">ordu %d</item>
@@ -266,6 +271,7 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
 
+    <string name="pref_summary_appearance">Itxura %1$s, Hizkuntza %2$s, Atzealdea %3$s</string>
     <string name="pref_summary_on">bai</string>
     <string name="pref_summary_off">ez</string>
     <string name="pref_summary_default">lehenetsia</string>
@@ -322,6 +328,7 @@
     <string name="pref_view_log">Ikusi egunkaria</string>
     <string name="pref_other">Bestelakoa</string>
     <string name="pref_backup">Babeskopia</string>
+    <string name="pref_backup_explain">Egin txaten babes-kopia kanpo biltegian</string>
     <string name="pref_backup_export_start_button">Hasi babes-kopia</string>
     <string name="pref_backup_written_to_x">Babes-kopia ongi idatzi da hemen: %1$s</string>
     <string name="pref_managekeys_menu_title">Kudeatu gakoak</string>
@@ -341,28 +348,40 @@
     <string name="autocrypt_asm_subject">Autocrypt ezarpen mezua</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt ezarpen mezua</string>
     <string name="autocrypt_continue_transfer_retry">Saiatu berriro</string>
-    <string name="systemmsg_group_image_changed">Taldeko irudia aldatuta.</string>
+    <string name="systemmsg_group_image_changed">Taldearen irudia aldatuta.</string>
+    <string name="systemmsg_group_image_deleted">Taldearen irudia ezabatuta.</string>
     <string name="systemmsg_member_added">%1$s kidea gehituta.</string>
     <string name="systemmsg_member_removed">%1$s kidea kenduta.</string>
-    <string name="systemmsg_group_left">Talderik aterata.</string>
+    <string name="systemmsg_group_left">Taldetik aterata.</string>
     <string name="systemmsg_read_receipt_subject">Irakurragiria</string>
     <!-- screen lock -->
     <string name="screenlock_title">Pantila-blokeoa</string>
     <string name="screenlock_authentication_failed">Autentifikazioak huts egin du.</string>
     <string name="screenlock_unlock_title">Desblokeatu Delta Chat</string>
+    <string name="screenlock_inactivity_timeout">Jarduerarik gabeko denboraren blokeoa</string>
+    <string name="screenlock_inactivity_timeout_interval">Jarduerarik gabeko denbora tartea</string>
+
+
     <!-- qr code stuff -->
     <string name="qrscan_title">Eskaneatu QR kodea</string>
+    <string name="qrscan_hint">Kokatu zure kamera QR kodearen gainean</string>
+    <string name="qrscan_ask_chatting_fingerprint_ok">\"%1$s\" kontaktua egiaztatuta. Hasi txateatzen?</string>
     <string name="qrscan_fingerprint_label">Hatz-marka</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s egiaztatuta, nire burua aurkeztu ...</string>
     <string name="qrshow_title">Erakutsi QR egiaztaketa kodea</string>
     <string name="qrshow_x_joining">%1$s elkartu da.</string>
     <string name="qrshow_x_verified">%1$s egiaztatuta.</string>
+    <string name="qrshow_x_has_joined_group">%1$s taldera modu seguruan elkartu da.</string>
     <string name="qrshow_join_verified_group_title">QR gonbidapen kodea</string>
     <string name="qrshow_join_contact_title">QR egiaztaketa kodea</string>
+    <string name="notify_most_recent_from">%1$s(r)en azkena</string>
+    <string name="notify_media_message_with_text">Multimedia mezua: %s</string>
     <string name="notify_mark_all_read">Markatu denak irakurrita gisa</string>
     <string name="notify_mark_read">Markatu irakurrita gisa</string>
     <string name="notify_media_message">Multimedia mezua</string>
     <string name="notify_reply_button">Erantzun</string>
     <string name="notify_new_message">Mezu berria</string>
+    <string name="notify_background_connection_enabled">Bigarren planoko konexioa gaituta</string>
     <string name="notify_priority_high">Altua</string>
     <string name="notify_priority_max">Maximoa</string>
     <string name="notify_name_and_message">Izena eta mezua</string>
@@ -379,4 +398,92 @@
     <string name="perm_required_title">Baimena behar da</string>
     <string name="perm_continue">Jarraitu</string>
     <string name="perm_not_now">Orain ez</string>
+    <string name="language_ca">Katalana</string>
+    <string name="language_da">Daniera</string>
+    <string name="language_de">Alemana</string>
+    <string name="language_en">Ingelesa</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Gaztelania</string>
+    <string name="language_eu">Euskara</string>
+    <string name="language_fr">Frantzesa</string>
+    <string name="language_hr">Kroaziera</string>
+    <string name="language_hu">Hungariera</string>
+    <string name="language_it">Italiera</string>
+    <string name="language_id">Indonesiera</string>
+    <string name="language_ja_JP">Japoniera</string>
+    <string name="language_ko">Koreera</string>
+    <string name="language_nb_NO">Norvegiako Bokmål</string>
+    <string name="language_nl">Nederlandera</string>
+    <string name="language_pl">Poloniera</string>
+    <string name="language_pt">Portugesa</string>
+    <string name="language_ru">Errusiera</string>
+    <string name="language_sq">Albaniera</string>
+    <string name="language_sr">Serbiera</string>
+    <string name="language_sv">Suediera</string>
+    <string name="language_ta">Tamilera</string>
+    <string name="language_tr">Turkiera</string>
+    <string name="language_uk">Ukrainera</string>
+    <string name="language_zh_CN">Txinera</string>
+
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Zifratutako mezua</string>
+
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Ongi etorri Delta Chat-era</string>
+    <string name="login_known_accounts_title_desktop">Kontu ezagunak</string>
+    <string name="global_menu_preferences_desktop">Hobespenak</string>
+    <string name="global_menu_preferences_language_desktop">Hautatu hizkuntza...</string>
+    <string name="global_menu_file_desktop">Fitxategia</string>
+    <string name="global_menu_file_quit_desktop">Irten</string>
+    <string name="global_menu_edit_desktop">Editatu</string>
+    <string name="global_menu_edit_undo_desktop">Desegin</string>
+    <string name="global_menu_edit_redo_desktop">Berregin</string>
+    <string name="global_menu_edit_cut_desktop">Moztu</string>
+    <string name="global_menu_edit_copy_desktop">Kopiatu</string>
+    <string name="global_menu_edit_paste_desktop">Itsatsi</string>
+    <string name="global_menu_edit_delete_desktop">Ezabatu</string>
+    <string name="global_menu_edit_selectall_desktop">Hautatu guztiak</string>
+    <string name="global_menu_view_desktop">Ikusi</string>
+    <string name="global_menu_view_developer_desktop">Garatzailea</string>
+    <string name="global_menu_view_developer_tools_desktop">Garatzaile-tresnak</string>
+    <string name="global_menu_help_desktop">Laguntza</string>
+    <string name="global_menu_help_report_desktop">Eman arazo baten berri...</string>
+    <string name="write_message_desktop">Idatzi mezu bat</string>
+    <string name="encryption_info_title_desktop">Zifratzeari buruzko informazioa</string>
+    <string name="contact_detail_title_desktop">Kontaktuaren xehetasuna</string>
+    <string name="contact_request_title_desktop">Kontaktu izateko eskaria</string>
+    <string name="delete_message_desktop">Ezabatu mezua</string>
+    <string name="more_info_desktop">Informazio gehiago</string>
+    <string name="logout_desktop">Amaitu saioa</string>
+    <string name="no_archived_chats_desktop">Artxibatutako txatik ez</string>
+    <string name="no_chats_desktop">Txatik ez</string>
+    <string name="encryption_info_desktop">Erakutsi zifratzeari buruzko informazioa</string>
+    <string name="verified_desktop">egiaztatuta</string>
+    <string name="group_name_desktop">Taldearen izena</string>
+    <string name="remove_desktop">Kendu</string>
+    <string name="save_desktop">Gorde</string>
+    <string name="show_qr_verify_code_desktop">Erakutsi egiaztaketarako QR kodea</string>
+    <string name="show_qr_invite_code_desktop">Erakutsi gonbidapenerako QR kodea</string>
+    <string name="add_contact_desktop">Gehitu kontaktua</string>
+    <string name="login_required_desktop">derrigorrezkoa</string>
+    <string name="name_desktop">Izena</string>
+    <string name="autocrypt_key_transfer_desktop">Autocrypt gakoaren transferentzia</string>
+    <string name="initiate_key_transfer_title_desktop">Hasi gakoaren transferentzia</string>
+    <string name="reply_to_message_desktop">Erantzun mezuari</string>
+    <string name="select_group_image_desktop">Hautatu taldearen irudia</string>
+    <string name="imex_progress_title_desktop">Babes-kopia abian</string>
+    <string name="download_attachment_desktop">Deskargatu eranskina</string>
+    <string name="export_backup_desktop">Esportatu babes-kopia</string>
+    <string name="transfer_key_desktop">Igorri gakoa</string>
+    <string name="new_message_from_desktop">Honen mezu berria:</string>
+    <string name="unblock_contacts_desktop">Desblokeatu kontaktuak</string>
+    <string name="none_blocked_desktop">Ez dago blokeatutako kontakturik</string>
+    <string name="autocrypt_correct_desktop">Ongi igorri da Autocrypt ezarpena!</string>
+    <string name="autocrypt_incorrect_desktop">Ezarpen kode okerra. Saiatu berriro.</string>
+    <string name="create_chat_error_desktop">Ezin izan da txata sortu.</string>
+    <string name="ask_delete_chat_desktop">Ziur txat hau ezabatu nahi duzula?</string>
+    <string name="email_validation_failed_desktop">E-mail helbidea derrigorrezkoa.</string>
+    <string name="me_desktop">ni</string>
+    <string name="in_this_group_desktop">Taldeko kideak</string>
+    <string name="not_in_this_group_desktop">Taldeko kide potentzialak (ez daude taldean)</string>
     </resources>
