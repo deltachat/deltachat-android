@@ -67,6 +67,11 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
     }
   }
 
+  public void clear() {
+    recipients.clear();
+    notifyDataSetChanged();
+  }
+
   public Set<Recipient> getRecipients() {
     final Set<Recipient> recipientSet = new HashSet<>(recipients.size());
     for (RecipientWrapper wrapper : recipients) {
