@@ -149,7 +149,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
         String msg;
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:
-                msg = String.format(activity.getString(R.string.qrscan_ask_join_verified_group), qrParsed.getText1());
+                msg = String.format(activity.getString(R.string.qrscan_ask_join_group), qrParsed.getText1());
                 break;
             default:
                 msg = String.format(activity.getString(R.string.qrscan_ask_fingerprint_ask_oob), nameNAddr);

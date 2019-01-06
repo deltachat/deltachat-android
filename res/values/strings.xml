@@ -415,6 +415,7 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">Scan QR code</string>
     <string name="qrscan_hint">Place your camera over the QR code</string>
+    <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
     <string name="qrscan_ask_join_verified_group">Do you want to join the verified group \"%1$s\"?</string>
     <string name="qrscan_ask_fingerprint_ask_oob">Verify contact and start chatting with \"%1$s\"?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Contact \"%1$s\" verified. Start chatting?</string>
@@ -428,6 +429,7 @@
     <string name="qrshow_x_joining">%1$s joins.</string>
     <string name="qrshow_x_verified">%1$s verified.</string>
     <string name="qrshow_x_has_joined_group">%1$s securely joined the group.</string>
+    <string name="qrshow_join_group_hint">Scan this to join the group \"%1$s\".</string>
     <string name="qrshow_join_verified_group_hint">Scan this to join the verified group \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">QR invite code</string>
     <string name="qrshow_join_contact_title">QR verify code</string>
