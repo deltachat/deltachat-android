@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.util;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
@@ -21,11 +20,10 @@ public class ScreenLockUtil {
         applyScreenLock(activity, REQUEST_CODE_CONFIRM_CREDENTIALS);
     }
 
-    @TargetApi(21)
     public static boolean applyScreenLock(Activity activity, int requestCode) {
         KeyguardManager keyguardManager = (KeyguardManager) activity.getSystemService(Context.KEYGUARD_SERVICE);
         Intent intent;
-        if (keyguardManager != null) {
+        if (keyguardManager != null && isScreenLockAvailable()) {
             intent = keyguardManager.createConfirmDeviceCredentialIntent(activity.getString(R.string.screenlock_unlock_title), activity.getString(R.string.screenlock_unlock_description));
             if (intent != null) {
                 activity.startActivityForResult(intent, requestCode);
@@ -36,13 +34,15 @@ public class ScreenLockUtil {
     }
 
     public static boolean isScreenLockEnabled(Context context) {
-        return Prefs.isScreenLockEnabled(context)
-                && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
+        return isScreenLockAvailable() && Prefs.isScreenLockEnabled(context);
+    }
+
+    private static boolean isScreenLockAvailable() {
+        return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
     }
 
     public static boolean isScreenLockTimeoutEnabled(Context context) {
-        return Prefs.isScreenLockTimeoutEnabled(context)
-                && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
+        return isScreenLockAvailable() && Prefs.isScreenLockTimeoutEnabled(context);
     }
 
     public static Timer scheduleScreenLockTimer(Timer timer, Activity activity) {
