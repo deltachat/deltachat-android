@@ -190,8 +190,8 @@ public class ConversationItem extends LinearLayout
     setGroupMessageStatus();
     setAuthor(messageRecord, groupThread);
     setQuote(messageRecord, groupThread);
-    setMessageSpacing(context, messageRecord, groupThread);
-    setFooter(messageRecord, locale, groupThread);
+    setMessageSpacing(context);
+    setFooter(messageRecord, locale);
   }
 
 
@@ -473,12 +473,9 @@ public class ConversationItem extends LinearLayout
       bottomRight = 0;
     }
 
-    if (!current.isOutgoing() && isGroupThread) {
-      topLeft  = 0;
-      topRight = 0;
-    }
-
-    if (hasQuote(messageRecord)) {
+    if ((!current.isOutgoing() && isGroupThread)
+     || current.isForwarded()
+     || hasQuote(messageRecord)){
       topLeft  = 0;
       topRight = 0;
     }
@@ -574,7 +571,7 @@ public class ConversationItem extends LinearLayout
     }
   }
 
-  private void setFooter(@NonNull DcMsg current, @NonNull Locale locale, boolean isGroupThread) {
+  private void setFooter(@NonNull DcMsg current, @NonNull Locale locale) {
     ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
     footer.setVisibility(GONE);
@@ -651,7 +648,7 @@ public class ConversationItem extends LinearLayout
     bodyBubble.setBackgroundResource(background);
   }
 
-  private void setMessageSpacing(@NonNull Context context, @NonNull DcMsg current, boolean isGroupThread) {
+  private void setMessageSpacing(@NonNull Context context) {
     int spacingTop = readDimen(context, R.dimen.conversation_vertical_message_spacing_collapse);
     int spacingBottom = spacingTop;
 
