@@ -591,7 +591,6 @@ public class ConversationFragment extends Fragment
       boolean currentlyAtBottom           = isAtBottom();
       boolean currentlyAtZoomScrollHeight = isAtZoomScrollHeight();
       int     positionId                  = getHeaderPositionId();
-      int     firstItemPosition            = getFirstItemPosition();
 
       if (currentlyAtBottom && !wasAtBottom) {
         ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
@@ -608,7 +607,8 @@ public class ConversationFragment extends Fragment
       wasAtBottom           = currentlyAtBottom;
       wasAtZoomScrollHeight = currentlyAtZoomScrollHeight;
       lastPositionId        = positionId;
-      manageMessageSeenState(firstItemPosition);
+
+      manageMessageSeenState();
     }
 
     @Override
@@ -638,10 +638,6 @@ public class ConversationFragment extends Fragment
       return ((LinearLayoutManager)list.getLayoutManager()).findLastVisibleItemPosition();
     }
 
-    private int getFirstItemPosition() {
-      return ((LinearLayoutManager)list.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
-    }
-
     private void bindScrollHeader(HeaderViewHolder headerViewHolder, int positionId) {
       if (((ConversationAdapter)list.getAdapter()).getHeaderId(positionId) != -1) {
         ((ConversationAdapter) list.getAdapter()).onBindHeaderViewHolder(headerViewHolder, positionId);
@@ -649,10 +645,21 @@ public class ConversationFragment extends Fragment
     }
   }
 
-  private void manageMessageSeenState(int firstItemPosition) {
-    DcMsg message = ((ConversationAdapter) list.getAdapter()).getMsg(firstItemPosition);
-    if (message.getFromId() != DC_CONTACT_ID_SELF && !message.isSeen()) {
-      dcContext.markseenMsgs(new int[]{message.getId()});
+  private void manageMessageSeenState() {
+
+    LinearLayoutManager layoutManager = (LinearLayoutManager)list.getLayoutManager();
+
+    int firstPos = layoutManager.findFirstVisibleItemPosition();
+    if(firstPos==RecyclerView.NO_POSITION) {
+      return;
+    }
+    int lastPos = layoutManager.findLastVisibleItemPosition();
+
+    for(int pos = firstPos; pos <= lastPos; pos++) {
+      DcMsg message = ((ConversationAdapter) list.getAdapter()).getMsg(pos);
+      if (message.getFromId() != DC_CONTACT_ID_SELF && !message.isSeen()) {
+        dcContext.markseenMsgs(new int[]{message.getId()});
+      }
     }
   }
 
