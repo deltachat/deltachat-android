@@ -660,12 +660,16 @@ public class ConversationFragment extends Fragment
     }
     int lastPos = layoutManager.findLastVisibleItemPosition();
 
+    int[] ids = new int[lastPos - firstPos + 1];
+    int index = 0;
     for(int pos = firstPos; pos <= lastPos; pos++) {
       DcMsg message = ((ConversationAdapter) list.getAdapter()).getMsg(pos);
       if (message.getFromId() != DC_CONTACT_ID_SELF && !message.isSeen()) {
-        dcContext.markseenMsgs(new int[]{message.getId()});
+        ids[index] = message.getId();
+        index++;
       }
     }
+    dcContext.markseenMsgs(ids);
   }
 
 
