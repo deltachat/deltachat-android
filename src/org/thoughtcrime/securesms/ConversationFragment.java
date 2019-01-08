@@ -655,10 +655,10 @@ public class ConversationFragment extends Fragment
     LinearLayoutManager layoutManager = (LinearLayoutManager)list.getLayoutManager();
 
     int firstPos = layoutManager.findFirstVisibleItemPosition();
-    if(firstPos==RecyclerView.NO_POSITION) {
+    int lastPos = layoutManager.findLastVisibleItemPosition();
+    if(firstPos==RecyclerView.NO_POSITION || lastPos==RecyclerView.NO_POSITION) {
       return;
     }
-    int lastPos = layoutManager.findLastVisibleItemPosition();
 
     int[] ids = new int[lastPos - firstPos + 1];
     int index = 0;
