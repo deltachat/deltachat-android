@@ -69,6 +69,7 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -117,6 +118,8 @@ public class ConversationFragment extends Fragment
   private TextView                    noMessageTextView;
   private ApplicationDcContext        dcContext;
 
+  private Debouncer markseenDebouncer;
+
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
@@ -128,6 +131,8 @@ public class ConversationFragment extends Fragment
     dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
     dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
     dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
+
+    markseenDebouncer = new Debouncer(800);
   }
 
   @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -608,7 +613,7 @@ public class ConversationFragment extends Fragment
       wasAtZoomScrollHeight = currentlyAtZoomScrollHeight;
       lastPositionId        = positionId;
 
-      manageMessageSeenState();
+      markseenDebouncer.publish(() -> manageMessageSeenState());
     }
 
     @Override
