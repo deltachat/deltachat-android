@@ -147,9 +147,6 @@ public class DcMsg {
     public boolean isSeen() {
         return getState() == DC_STATE_IN_SEEN;
     }
-    public int getSubscriptionId() {
-        return -1;
-    }
     public boolean isMms() {
         return false;
     }
