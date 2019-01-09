@@ -66,9 +66,11 @@
     <string name="draft">Entwurf</string>
     <string name="image">Bild</string>
     <string name="gif">Gif</string>
+    <string name="images">Bilder</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Sprachnachricht</string>
     <string name="video">Video</string>
+    <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Ort</string>
@@ -157,7 +159,7 @@
     <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
     <string name="ask_block_contact">Diesen Kontakt blockieren? Du wirst keine Nachrichten mehr von diesem Kontakt erhalten.</string>
     <string name="ask_unblock_contact">Diesen Kontakt freischalten? Nachrichten von diesem Kontakt werden dann wieder angezeigt.</string>
-    <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\n\Kontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
+    <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
 
 
@@ -362,6 +364,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime Schlüssel von \"%1$s\" importiert.</string>
     <string name="pref_background">Chat-Hintergrund</string>
     <string name="pref_imap_folder_handling">IMAP-Ordnereinstellungen</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Wenn Sie diese Option deaktivieren, stellen Sie sicher, dass Ihr Server und Ihre anderen Clients entsprechend konfiguriert sind.\n\n\nAndere Dinge funktionieren möglicherweise überhaupt nicht.</string>
     <string name="pref_watch_inbox_folder">Posteingang beobachten</string>
     <string name="pref_watch_sent_folder">Gesendet-Ordner beobachten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>
@@ -482,6 +485,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="language_id">Indonesisch</string>
     <string name="language_ja_JP">Japanisch</string>
     <string name="language_ko">Koreanisch</string>
+    <string name="language_nb_NO">Norwegian Bokmål</string>
     <string name="language_nl">Niederländisch</string>
     <string name="language_nl_NL">Niederländisch (Niederlande)</string>
     <string name="language_pl">Polisch</string>
@@ -492,6 +496,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="language_sr">Serbisch</string>
     <string name="language_sv">Schwedisch</string>
     <string name="language_ta">Tamil</string>
+    <string name="language_te">Telegu</string>
     <string name="language_tr">Türkisch</string>
     <string name="language_uk">Ukrainisch</string>
     <string name="language_zh_CN">Chinesisch</string>
@@ -501,6 +506,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
 
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Willkommen zu DeltaChat</string>
+    <string name="login_known_accounts_title_desktop">Benaknnte Konten</string>
     <string name="global_menu_preferences_desktop">Einstellungen</string>
     <string name="global_menu_preferences_language_desktop">Wähle Sprache...</string>
     <string name="global_menu_file_desktop">Datei</string>
@@ -513,16 +519,25 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="global_menu_edit_paste_desktop">Einfügen</string>
     <string name="global_menu_edit_delete_desktop">Löschen</string>
     <string name="global_menu_edit_selectall_desktop">Alles auswählen</string>
+    <string name="global_menu_view_desktop">Ansicht</string>
+    <string name="global_menu_view_floatontop_desktop">Im Vordergrund halten</string>
     <string name="global_menu_view_developer_desktop">Entwickler</string>
+    <string name="global_menu_view_developer_tools_desktop">Entwicklungswerkzeug</string>
     <string name="global_menu_help_desktop">Hilfe</string>
     <string name="global_menu_help_learn_desktop">Lerne mehr über DeltaChat</string>
+    <string name="global_menu_help_contribute_desktop">Auf GitHub mitwirken</string>
     <string name="global_menu_help_report_desktop">Melde ein Problem...</string>
     <string name="global_menu_help_about_desktop">Über DeltaChat</string>
+    <string name="no_chat_selected_suggestion_desktop">Wählen Sie einen Chat aus oder erstellen Sie einen neuen Chat.</string>
     <string name="write_message_desktop">Schreibe eine Nachricht</string>
     <string name="about_deltachat_heading_desktop">Über DeltaChat</string>
+    <string name="encryption_info_title_desktop">Verschlüsselungsinformationen</string>
+    <string name="contact_detail_title_desktop">Kontaktdeteils</string>
     <string name="contact_request_title_desktop">Kontaktanfrage</string>
     <string name="delete_message_desktop">Nachricht löschen</string>
+    <string name="more_info_desktop">Mehr Informationen</string>
     <string name="logout_desktop">Abmelden</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="no_archived_chats_desktop">Keine archivierten Chats</string>
     <string name="no_chats_desktop">Keine Chats</string>
     <string name="encryption_info_desktop">Zeige Verschlüsselungsinfo</string>
@@ -530,16 +545,38 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="group_name_desktop">Gruppenname</string>
     <string name="remove_desktop">Entfernen</string>
     <string name="save_desktop">Speichern</string>
+    <string name="show_qr_verify_code_desktop">QR-Verifizierungscode anzeigen</string>
+    <string name="show_qr_invite_code_desktop">QR-Einladungscode anzeigen</string>
     <string name="add_contact_desktop">Füge Kontakt hinzu</string>
     <string name="login_required_desktop">benötigt</string>
     <string name="name_desktop">Name</string>
+    <string name="autocrypt_key_transfer_desktop">Autocrypt-Schlüsselübertragung</string>
+    <string name="initiate_key_transfer_title_desktop">Schlüsseltransfer einleiten</string>
     <string name="initiate_key_transfer_desktop">Eine \"Autocrypt-Setup-Nachricht\" überträgt dein Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät. Das Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
     <string name="reply_to_message_desktop">Antworten</string>
+    <string name="select_group_image_desktop">Gruppenbild auswählen</string>
     <string name="imex_progress_title_desktop">Backup-Prozess</string>
+    <string name="download_attachment_desktop">Download Anhang</string>
     <string name="export_backup_desktop">Backup exportieren</string>
+    <string name="transfer_key_desktop">Übertragungsschlüssel</string>
     <string name="show_key_transfer_message_desktop">Der Schlüssel wurde an dich geschickt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Nach Aufforderung, den Setup-Code einzugeben, die folgenden Zahlen eintippen: Danach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
     <string name="new_message_from_desktop">Neue Nachricht von</string>
+    <string name="unblock_contacts_desktop">Kontakte freischalten</string>
     <string name="none_blocked_desktop">Noch keine blockierten Kontakte</string>
+    <string name="autocrypt_correct_desktop">Erfolgreich übertragenes Autocrypt-Setup!</string>
+    <string name="autocrypt_incorrect_desktop">Falscher Setup-Code. Bitte versuchen Sie es erneut.</string>
     <string name="create_chat_error_desktop">Konnte Chat nicht erstellen.</string>
+    <string name="ask_delete_chat_desktop">Bist du sicher, dass du diesen Chat löschen willst?</string>
     <string name="email_validation_failed_desktop">E-Mail-Adresse benötigt.</string>
-    </resources>
+    <string name="forget_login_confirmation_desktop">Diesen Login löschen? Alles wird gelöscht, einschließlich Ihres End-to-End-Setups, Ihrer Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
+    <string name="me_desktop">mich</string>
+    <string name="in_this_group_desktop">Gruppenmitglieder</string>
+    <string name="not_in_this_group_desktop">Potentielle Gruppenmitglieder (nicht in der Gruppe)</string>
+    <string name="message_detail_sent_desktop">gesendet</string>
+    <string name="message_detail_received_desktop">empfangen</string>
+    <string name="message_detail_from_desktop">von</string>
+    <string name="message_detail_to_desktop">an</string>
+    <string name="menu.view.developer.open.log.folder">Logdatei öffnen</string>
+    <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
+
+</resources>

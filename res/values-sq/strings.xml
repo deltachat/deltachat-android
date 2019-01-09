@@ -95,7 +95,7 @@
     <string name="menu_new_group">Grup i ri</string>
     <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
     <string name="menu_send">Dërgoje</string>
-    <string name="menu_toggle_keyboard">Shfaq/fshih tastierë <em>emoji</em></string>
+    <string name="menu_toggle_keyboard">Shfaq/fshih tastierë emoji</string>
     <string name="menu_edit_group">Përpunoni grup</string>
     <string name="menu_archive_chat">Arkivoje fjalosjen</string>
     <string name="menu_unarchive_chat">Çarkivoje fjalosjen</string>
@@ -319,7 +319,7 @@
     <string name="pref_read_receipts">Lexoni dëftesa</string>
     <string name="pref_read_receipts_explain">Nëse leximi i dëftesave është i çaktivizuar, s’do të jeni në gjendje të shihni mesazh "Lexoni dëftesa" prej të tjerësh</string>
     <string name="pref_manage_keys">Administroni kyçe</string>
-    <string name="pref_use_system_emoji">Përdor <em>emoji</em> sistemi</string>
+    <string name="pref_use_system_emoji">Përdor emoji sistemi</string>
     <string name="pref_use_system_emoji_explain">Çaktivizo mbulimin e brendshëm Delta Chat për emoji-t</string>
     <string name="pref_communication">Komunikim</string>
     <string name="pref_chats">Fjalosje</string>
@@ -389,7 +389,7 @@
     <string name="qrscan_ask_fingerprint_ask_oob">Të verifikohet kontakti dhe të fillohet të bisedohet me \"%1$s\"?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Kontakti \"%1$s\" u verifikua. Të fillohet të bisedohet?</string>
     <string name="qrscan_fingerprint_mismatch">Shenjat e gishtave të skanuar \"nuk përputhen\" me shenjat e gishtave parë së fundi për \"%1$s\".</string>
-    <string name="qrscan_no_addr_found">Ky kod QR përmban shenja gishtash, por jo adresë email.\n\nPër një verifikim <em>out-of-band</em>, ju lutemi, së pari vendosni me marrësin një lidhje të fshehtëzuar.</string>
+    <string name="qrscan_no_addr_found">Ky kod QR përmban shenja gishtash, por jo adresë email.\n\nPër një verifikim out-of-band, ju lutemi, së pari vendosni me marrësin një lidhje të fshehtëzuar.</string>
     <string name="qrscan_contains_text">Tekst kodi QR të skanuar:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL kodi QR të skanuar:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Shenja gishtash</string>

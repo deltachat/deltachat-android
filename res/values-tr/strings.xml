@@ -35,6 +35,11 @@
     <string name="yesterday">Dün</string>
     <string name="this_week">Bu hafta</string>
     <string name="this_month">Bu ay</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d dk</item>
+        <item quantity="other">%d dk</item>
+    </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d saat</item>
@@ -61,9 +66,11 @@
     <string name="draft">Taslak</string>
     <string name="image">Görüntü</string>
     <string name="gif">Gif</string>
+    <string name="images">Görüntüler</string>
     <string name="audio">Ses</string>
     <string name="voice_message">Sesli ileti</string>
     <string name="video">Video</string>
+    <string name="documents">Belgeler</string>
     <string name="contact">Kişi</string>
     <string name="camera">Kamera</string>
     <string name="location">Konum</string>
@@ -229,13 +236,13 @@
     <string name="welcome_intro2_headline">Bağımsız</string>
     <string name="welcome_intro2_message">Hiç Delta Chat sunucusu yoktur. Uygulama, yalnızca posta sunucunuzu kullanır.</string>
     <string name="welcome_intro3_headline">Hızlı</string>
-    <string name="welcome_intro3_message">İletileri saniyeler içinde gönderin.<br/>Hızlı arabirim.</string>
+    <string name="welcome_intro3_message">İletileri saniyeler içinde gönderin.\nHızlı arabirim.</string>
     <string name="welcome_intro4_headline">Güçlü</string>
     <string name="welcome_intro4_message">Sınırsız sohbetler, görüntüler, videolar, sesli iletiler ve daha fazlası. Çoklu istemci yetenekli.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Özgür</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
-    <string name="welcome_intro5_message">Delta Chat sonsuza dek özgürdür.<br/>Açık kaynaklı. Reklâm yok. Abonelik yok. Satıcı kilidi yok.</string>
+    <string name="welcome_intro5_message">Delta Chat sonsuza dek özgürdür. Açık kaynaklı. Reklâm yok. Abonelik yok. Satıcı kilidi yok.</string>
     <string name="welcome_intro6_headline">Şifreli</string>
     <string name="welcome_intro6_message">Tüm yaygın algoritmalarla şifrelidir. İletiler sunucularınızda kalır.</string>
     <string name="welcome_intro7_headline">Güvenilir</string>
