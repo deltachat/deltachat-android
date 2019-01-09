@@ -12,6 +12,7 @@
     <string name="custom">Custom</string>
     <string name="none">None</string>
     <string name="open">Open</string>
+    <string name="delete">Delete</string>
     <string name="not_now">Not now</string>
     <string name="never">Never</string>
     <string name="one_moment">One moment…</string>
@@ -558,7 +559,7 @@
     <string name="download_attachment_desktop">Download attachment</string>
     <string name="export_backup_desktop">Export backup</string>
     <string name="transfer_key_desktop">Transfer key</string>
-    <string name="show_key_transfer_message_desktop">Your key has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt. Once you\'re done, your other device will be ready to use Autocrypt.</string>
+    <string name="show_key_transfer_message_desktop">Your key has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt. Once you're done, your other device will be ready to use Autocrypt.</string>
     <string name="new_message_from_desktop">New message from</string>
     <string name="unblock_contacts_desktop">Unblock contacts</string>
     <string name="none_blocked_desktop">No blocked contacts yet</string>
@@ -575,5 +576,7 @@
     <string name="message_detail_received_desktop">received</string>
     <string name="message_detail_from_desktop">from</string>
     <string name="message_detail_to_desktop">to</string>
+    <string name="menu.view.developer.open.log.folder">Open Log Folder</string>
+    <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
 
 </resources>
