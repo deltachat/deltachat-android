@@ -62,10 +62,27 @@ public class DcEventCenter {
             ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
             if (idObservers != null) {
                 for (DcEventDelegate observer : idObservers) {
+                    // using try/catch blocks as under some circumstances eg. getContext() may return NULL -
+                    // and as this function is used virtually everywhere, also in libs,
+                    // it's not feasible to check all single occurrences.
                     if(observer.runOnMain()) {
-                        Util.runOnMain(() -> observer.handleEvent(eventId, data1, data2));
+                        Util.runOnMain(() -> {
+                            try {
+                                observer.handleEvent(eventId, data1, data2);
+                            }
+                            catch(Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
                     } else {
-                        Util.runOnBackground(() -> observer.handleEvent(eventId, data1, data2));
+                        Util.runOnBackground(() -> {
+                            try {
+                                observer.handleEvent(eventId, data1, data2);
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
                     }
                 }
             }
