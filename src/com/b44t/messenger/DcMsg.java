@@ -57,6 +57,7 @@ public class DcMsg {
     public native int     getId              ();
     public native String  getText            ();
     public native long    getTimestamp       ();
+    public native long    getSortTimestamp   ();
     public native int     getType            ();
     public native int     getState           ();
     public native int     getChatId          ();

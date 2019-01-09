@@ -300,13 +300,13 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 
-  public long getReceivedTimestamp(int position) {
+  public long getSortTimestamp(int position) {
     if (!isActive())                return 0;
     if (position >= getItemCount()) return 0;
     if (position < 0)               return 0;
 
     DcMsg msg = getMsg(position);
-    return msg.getTimestamp();
+    return msg.getSortTimestamp();
   }
 
   @NonNull
@@ -343,8 +343,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
         return false;
       }
 
-      long currentRecordTimestamp  = adapter.getReceivedTimestamp(position);
-      long previousRecordTimestamp = adapter.getReceivedTimestamp(position + 1);
+      long currentRecordTimestamp  = adapter.getSortTimestamp(position);
+      long previousRecordTimestamp = adapter.getSortTimestamp(position + 1);
 
       return currentRecordTimestamp > lastSeenTimestamp && previousRecordTimestamp < lastSeenTimestamp;
     }
@@ -380,7 +380,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
     DcMsg dcMsg = getMsg(position);
 
-    calendar.setTime(new Date(dcMsg.getTimestamp()));
+    calendar.setTime(new Date(getSortTimestamp(position)));
     return Util.hashCode(calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_YEAR));
   }
 
@@ -392,7 +392,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
     DcMsg msg = getMsg(position);
-    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, msg.getTimestamp()));
+    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, getSortTimestamp(position)));
   }
 
 
