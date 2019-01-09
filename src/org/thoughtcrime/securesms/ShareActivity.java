@@ -34,6 +34,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -55,7 +56,6 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
-import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -181,11 +181,13 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   private void onConversationClick(int chatId) {
     String name = dcContext.getChat(chatId).getName();
     if (isForward) {
-      Dialogs.showResponseDialog(this, getString(R.string.ask_forward, name), (dialogInterface, i) -> {
-        delegateMessage(chatId);
-      });
+      new AlertDialog.Builder(this)
+        .setMessage(getString(R.string.ask_forward, name))
+        .setPositiveButton(R.string.ok, (dialogInterface, i) -> delegateMessage(chatId))
+        .setNegativeButton(R.string.cancel, null)
+        .show();
     } else {
-      delegateMessage(chatId);;
+      delegateMessage(chatId);
     }
   }
 

@@ -264,7 +264,7 @@ public class ConversationListFragment extends Fragment
                                                                     conversationsCount, conversationsCount));
     alert.setCancelable(true);
 
-    alert.setPositiveButton(R.string.menu_delete_chat, (dialog, which) -> {
+    alert.setPositiveButton(R.string.delete, (dialog, which) -> {
       final Set<Long> selectedConversations = (getListAdapter())
           .getBatchSelections();
 

@@ -319,7 +319,7 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       builder.setCancelable(true);
       final DcContext dcContext = DcHelper.getContext(getContext());
 
-      builder.setPositiveButton(R.string.menu_delete_messages, (dialogInterface, i) -> {
+      builder.setPositiveButton(R.string.delete, (dialogInterface, i) -> {
         new ProgressDialogAsyncTask<DcMsg, Void, Void>(getContext(),
                                                                            R.string.one_moment,
                                                                            R.string.one_moment)

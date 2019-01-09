@@ -531,12 +531,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleDeleteChat() {
     new AlertDialog.Builder(this)
         .setMessage(getResources().getQuantityString(R.plurals.ask_delete_chat, 1, 1))
-        .setPositiveButton(R.string.yes, (dialog, which) -> {
+        .setPositiveButton(R.string.delete, (dialog, which) -> {
           dcContext.deleteChat(threadId);
           Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
           finish();
         })
-        .setNegativeButton(R.string.no, null)
+        .setNegativeButton(R.string.cancel, null)
         .show();
   }
 

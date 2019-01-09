@@ -5,6 +5,7 @@ import android.Manifest;
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,7 +49,6 @@ import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
 import org.thoughtcrime.securesms.profiles.SystemProfileUtil;
 import org.thoughtcrime.securesms.util.BitmapDecodingException;
 import org.thoughtcrime.securesms.util.BitmapUtil;
-import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.FileProviderUtil;
@@ -263,7 +263,10 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     });
 
     informationLabel.setOnClickListener(view -> {
-      Dialogs.showInfoDialog(this, getString(R.string.pref_who_can_see_profile_explain));
+      new AlertDialog.Builder(this)
+          .setMessage(R.string.pref_who_can_see_profile_explain)
+          .setPositiveButton(R.string.ok, null)
+          .show();
     });
   }
 

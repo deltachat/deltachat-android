@@ -23,7 +23,6 @@ import com.dd.CircularProgressButton;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.Dialogs;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
@@ -147,7 +146,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
         if (!TextUtils.isEmpty(email) && isGmail(email) && !gmailDialogShown) {
             gmailDialogShown = true;
-            Dialogs.showInfoDialog(this, getString(R.string.login_info_gmail_text));
+            new AlertDialog.Builder(this)
+                .setMessage(R.string.login_info_gmail_text)
+                .setPositiveButton(R.string.ok, null)
+                .show();
         }
     }
 

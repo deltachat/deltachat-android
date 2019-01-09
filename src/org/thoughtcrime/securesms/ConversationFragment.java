@@ -402,7 +402,7 @@ public class ConversationFragment extends Fragment
     builder.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount));
     builder.setCancelable(true);
 
-    builder.setPositiveButton(R.string.menu_delete_messages, new DialogInterface.OnClickListener() {
+    builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         int[] ids = DcMsg.msgSetToIds(messageRecords);

@@ -293,7 +293,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     builder.setMessage(getResources().getQuantityString(R.plurals.ask_delete_messages, 1, 1));
     builder.setCancelable(true);
 
-    builder.setPositiveButton(R.string.menu_delete_messages, (dialogInterface, which) -> {
+    builder.setPositiveButton(R.string.delete, (dialogInterface, which) -> {
       new AsyncTask<Void, Void, Void>() {
         @Override
         protected Void doInBackground(Void... voids) {

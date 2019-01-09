@@ -29,6 +29,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
@@ -56,7 +57,6 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -187,25 +187,29 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   private void handleDeleteSelected() {
-    Dialogs.showResponseDialog(getActivity(), getString(R.string.ask_delete_contacts), (dialogInterface, i) -> {
-      ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
-      final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
-      new Thread(() -> {
-        boolean failed = false;
-        for (int index = 0; index < actionModeSelection.size(); index++) {
-          int contactId = actionModeSelection.valueAt(index);
-          boolean currentFailed = !dcContext.deleteContact(contactId);
-          failed = currentFailed || failed;
-        }
-        if (failed) {
-          Util.runOnMain(()-> {
-            Toast.makeText(getActivity(), R.string.error, Toast.LENGTH_LONG).show();
-          });
-        }
-      }).start();
-      adapter.resetActionModeSelection();
-      actionMode.finish();
-    });
+    new AlertDialog.Builder(getActivity())
+      .setMessage(R.string.ask_delete_contacts)
+      .setPositiveButton(R.string.delete, (dialogInterface, i) -> {
+          ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+          final SparseIntArray actionModeSelection = adapter.getActionModeSelection().clone();
+          new Thread(() -> {
+            boolean failed = false;
+            for (int index = 0; index < actionModeSelection.size(); index++) {
+              int contactId = actionModeSelection.valueAt(index);
+              boolean currentFailed = !dcContext.deleteContact(contactId);
+              failed = currentFailed || failed;
+            }
+            if (failed) {
+              Util.runOnMain(()-> {
+                Toast.makeText(getActivity(), R.string.error, Toast.LENGTH_LONG).show();
+              });
+            }
+          }).start();
+          adapter.resetActionModeSelection();
+          actionMode.finish();
+          })
+      .setNegativeButton(R.string.cancel, null)
+      .show();
   }
 
   private ContactSelectionListAdapter getContactSelectionListAdapter() {
