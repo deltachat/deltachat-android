@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="?attr/conversation_item_update_bg_color" />
+    <!-- read issue: https://github.com/deltachat/deltachat-android-ii/issues/219 before introducing an attr here. -->
+    <solid android:color="@color/universal_overlay" />
     <corners android:radius="8dp" />
 </shape>
