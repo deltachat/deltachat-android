@@ -370,10 +370,6 @@
         <item name="shared_contact_item_button_color">@color/core_dark_85</item>
     </style>
     
-    <style name="RationaleDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowBackground">@drawable/permission_rationale_dialog_corners</item>
-    </style>
-
     <style name="TextSecure.ScribbleTheme" parent="TextSecure.DarkNoActionBar">
     </style>
 
