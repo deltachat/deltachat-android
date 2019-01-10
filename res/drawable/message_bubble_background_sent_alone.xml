@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- <item>
-        <shape android:shape="rectangle">
-            <corners
-                android:topLeftRadius="@dimen/message_corner_radius"
-                android:topRightRadius="@dimen/message_corner_radius"
-                android:bottomLeftRadius="@dimen/message_corner_radius" />
-            <solid android:color="?attr/conversation_item_outgoing_bubble_border_color" />
-        </shape>
-    </item> -->
     <item
         android:top="2px"
         android:bottom="2px">
@@ -18,6 +9,7 @@
                 android:topLeftRadius="@dimen/message_corner_radius"
                 android:topRightRadius="@dimen/message_corner_radius"
                 android:bottomLeftRadius="@dimen/message_corner_radius" />
+            <!-- read issue: https://github.com/deltachat/deltachat-android-ii/issues/219 before introducing an attr here. -->
             <solid android:color="@color/white" />
         </shape>
     </item>
