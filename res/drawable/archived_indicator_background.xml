@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
-    <stroke android:width="2px" android:color="?attr/conversation_list_item_date_color"/>
+    <!-- read issue: https://github.com/deltachat/deltachat-android-ii/issues/219 before introducing an attr here. -->
+    <stroke android:width="2px" android:color="@color/core_light_35"/>
     <corners android:radius="1dp"/>
 </shape>
