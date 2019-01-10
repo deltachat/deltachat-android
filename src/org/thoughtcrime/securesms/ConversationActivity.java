@@ -911,6 +911,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     final SettableFuture<Integer> future  = new SettableFuture<>();
 
     DcMsg msg = null;
+    Boolean recompress = Boolean.FALSE;
 
     composeText.setText("");
 
@@ -925,6 +926,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           if (MediaUtil.isImageType(contentType)) {
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
             msg.setDimension(attachment.getWidth(), attachment.getHeight());
+
+            // recompress jpeg-files unless sent as documents
+            if (MediaUtil.isJpegType(contentType) && slideDeck.getDocumentSlide()==null) {
+              recompress = true;
+            }
           }
           else if (MediaUtil.isAudioType(contentType)) {
             msg = new DcMsg(dcContext,
@@ -951,17 +957,22 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     // msg may still be null to clear drafts
-    new AsyncTask<DcMsg, Void, Void>() {
+    new AsyncTask<Object, Void, Void>() {
       @Override
-      protected Void doInBackground(DcMsg... msgs) {
+      protected Void doInBackground(Object... param) {
+        DcMsg msg = (DcMsg)param[0];
+        Boolean recompress = (Boolean)param[1];
         if (action==ACTION_SEND_OUT) {
-          if(msgs[0]!=null) {
-            dcContext.sendMsg(dcChat.getId(), msgs[0]);
+          if(msg!=null) {
+            if(recompress) {
+              MediaUtil.recodeImageMsg(msg);
+            }
+            dcContext.sendMsg(dcChat.getId(), msg);
           }
           dcContext.setDraft(dcChat.getId(), null);
         }
         else {
-          dcContext.setDraft(dcChat.getId(), msgs[0]);
+          dcContext.setDraft(dcChat.getId(), msg);
         }
         return null;
       }
@@ -970,7 +981,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       protected void onPostExecute(Void result) {
         future.set(threadId);
       }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, msg);
+    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, msg, recompress);
 
     sendComplete(dcChat.getId());
     return future;

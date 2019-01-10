@@ -267,25 +267,9 @@ public class MediaUtil {
     return null;
   }
 
-  public static class ThumbnailData {
-    Bitmap bitmap;
-    float aspectRatio;
-
-    public ThumbnailData(Bitmap bitmap) {
-      this.bitmap      = bitmap;
-      this.aspectRatio = (float) bitmap.getWidth() / (float) bitmap.getHeight();
-    }
-
-    public Bitmap getBitmap() {
-      return bitmap;
-    }
-
-    public float getAspectRatio() {
-      return aspectRatio;
-    }
-
-    public InputStream toDataStream() {
-      return BitmapUtil.toCompressedJpeg(bitmap);
-    }
+  public static void recodeImageMsg(DcMsg msg)
+  {
+    // TODO
   }
+
 }
