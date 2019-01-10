@@ -24,7 +24,7 @@ public class AudioCodec {
   private static final int    SAMPLE_RATE       = 44100;
   private static final int    SAMPLE_RATE_INDEX = 4;
   private static final int    CHANNELS          = 1;
-  private static final int    BIT_RATE          = 32000;
+  private static final int    BIT_RATE          = 24000;
 
   private final int         bufferSize;
   private final MediaCodec  mediaCodec;
