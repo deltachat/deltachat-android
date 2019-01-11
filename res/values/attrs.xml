@@ -73,7 +73,6 @@
     <attr name="conversation_item_outgoing_text_primary_color" format="reference|color"/>
     <attr name="conversation_item_outgoing_text_secondary_color" format="reference|color"/>
     <attr name="conversation_item_sent_indicator_text_background" format="reference" />
-    <attr name="conversation_item_sent_icon_color" format="color" />
     <attr name="conversation_item_update_bg_color" format="reference|color"/>
     <attr name="conversation_item_update_text_color" format="reference|color"/>
     <attr name="conversation_item_last_seen_text_color" format="reference"/>
