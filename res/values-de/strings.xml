@@ -12,6 +12,7 @@
     <string name="custom">Benutzerdefiniert</string>
     <string name="none">Keine</string>
     <string name="open">Öffnen</string>
+    <string name="delete">Löschen</string>
     <string name="not_now">Nicht jetzt</string>
     <string name="never">Nie</string>
     <string name="one_moment">Einen Moment…</string>
@@ -69,6 +70,7 @@
     <string name="images">Bilder</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Sprachnachricht</string>
+    <string name="forwarded_message">Nachricht weiterleiten</string>
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
@@ -211,7 +213,7 @@
     <string name="group_avatar">Gruppen-Avatar</string>
     <string name="group_create_button">Gruppe erstellen</string>
     <string name="group_please_enter_group_name">Bitte vergeben Sie einen Gruppennamen</string>
-    <string name="group_add_members">Teilnehmer hinzufügen</string>
+    <string name="group_add_members">Mitglied hinzufügen</string>
     <string name="group_hello_draft">Hallo, Ich habe gerade die Gruppe \"%1$s\" für uns erstellt.</string>
     <string name="group_self_not_in_group">Du musst ein Mitglied der Gruppe sein, um diese Aktion durchführen zu können.</string>
     <string name="profile_encryption">Verschlüsselung</string>
