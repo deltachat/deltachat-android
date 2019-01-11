@@ -105,7 +105,6 @@
             app:cpb_colorProgress="@color/textsecure_primary"
             app:cpb_cornerRadius="20dp"
             app:cpb_selectorIdle="@drawable/progress_button_state"
-            android:visibility="gone"
             app:cpb_textIdle="@string/qrshow_title"/>
 
     </LinearLayout>

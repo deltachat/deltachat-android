@@ -62,7 +62,7 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         if (chatId != 0) {
             // verified-group
             String groupName = dcContext.getChat(chatId).getName();
-            hint = String.format(this.getString(R.string.qrshow_join_verified_group_hint), groupName);
+            hint = String.format(this.getString(R.string.qrshow_join_group_hint), groupName);
             supportActionBar.setTitle(groupName);
             supportActionBar.setSubtitle(R.string.qrshow_join_verified_group_title);
         } else {

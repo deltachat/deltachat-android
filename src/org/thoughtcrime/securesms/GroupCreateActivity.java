@@ -95,7 +95,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private ImageView    avatar;
   private TextView     creatingText;
   private Bitmap       avatarBmp;
-  private CircularProgressButton verifyButton;
   private Integer editGroupChatId = null;
 
   @Override
@@ -209,16 +208,12 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     avatar       = ViewUtil.findById(this, R.id.avatar);
     groupName    = ViewUtil.findById(this, R.id.group_name);
     creatingText = ViewUtil.findById(this, R.id.creating_group_text);
-    verifyButton = ViewUtil.findById(this, R.id.verify_button);
     SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);
 
     findViewById(R.id.add_member_button).setOnClickListener(new AddRecipientButtonListener());
-    if (verified) {
-      verifyButton.setOnClickListener(new ShowQrButtonListener());
-      verifyButton.setVisibility(View.VISIBLE);
-    }
+    ViewUtil.findById(this, R.id.verify_button).setOnClickListener(new ShowQrButtonListener());
     initializeAvatarView();
   }
 
