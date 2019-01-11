@@ -153,6 +153,10 @@ public class ConversationListItem extends RelativeLayout
       CharSequence date = DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, thread.getDate());
       dateView.setText(date);
     }
+    else {
+      dateView.setText("");
+    }
+
 
     setStatusIcons(thread);
     setBatchState(batchMode);
@@ -212,7 +216,14 @@ public class ConversationListItem extends RelativeLayout
 
     fromView.setText(recipient, true);
     subjectView.setText(getHighlightedSpan(locale, messageResult.getSummarytext(512), highlightSubstring));
-    dateView.setText(DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, messageResult.getTimestamp()));
+
+    long timestamp = messageResult.getTimestamp();
+    if(timestamp>0) {
+      dateView.setText(DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, messageResult.getTimestamp()));
+    }
+    else {
+      dateView.setText("");
+    }
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
