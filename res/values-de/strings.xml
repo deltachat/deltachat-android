@@ -70,7 +70,7 @@
     <string name="images">Bilder</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Sprachnachricht</string>
-    <string name="forwarded_message">Nachricht weiterleiten</string>
+    <string name="forwarded_message">Weitergeleitete Nachricht</string>
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
@@ -167,7 +167,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Kontakte</string>
-    <string name="contacts_enter_name_or_email">Geben Sie einen Namen oder eine E-Mail-Adresse ein</string>
+    <string name="contacts_enter_name_or_email">Namen oder E-Mail-Adresse eingeben</string>
     <string name="contacts_type_email_above">Geben Sie oben eine E-Mail-Adresse ein</string>
     <string name="contacts_empty_hint">Keine Kontakte.</string>
 
@@ -212,7 +212,7 @@
     <string name="group_name">Gruppen-Name</string>
     <string name="group_avatar">Gruppen-Avatar</string>
     <string name="group_create_button">Gruppe erstellen</string>
-    <string name="group_please_enter_group_name">Bitte vergeben Sie einen Gruppennamen</string>
+    <string name="group_please_enter_group_name">Bitte einen Gruppennamen eingeben.</string>
     <string name="group_add_members">Mitglied hinzufügen</string>
     <string name="group_hello_draft">Hallo, Ich habe gerade die Gruppe \"%1$s\" für uns erstellt.</string>
     <string name="group_self_not_in_group">Du musst ein Mitglied der Gruppe sein, um diese Aktion durchführen zu können.</string>
@@ -498,7 +498,6 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="language_sr">Serbisch</string>
     <string name="language_sv">Schwedisch</string>
     <string name="language_ta">Tamil</string>
-    <string name="language_te">Telegu</string>
     <string name="language_tr">Türkisch</string>
     <string name="language_uk">Ukrainisch</string>
     <string name="language_zh_CN">Chinesisch</string>

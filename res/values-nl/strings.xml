@@ -12,6 +12,7 @@
     <string name="custom">Aangepast</string>
     <string name="none">Geen</string>
     <string name="open">Openen</string>
+    <string name="delete">Verwijderen</string>
     <string name="not_now">Niet nu</string>
     <string name="never">Nooit</string>
     <string name="one_moment">Even geduld...</string>
@@ -66,9 +67,12 @@
     <string name="draft">Concept</string>
     <string name="image">Afbeelding</string>
     <string name="gif">GIF</string>
+    <string name="images">Afbeeldingen</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Spraakbericht</string>
+    <string name="forwarded_message">Bericht doorgestuurd</string>
     <string name="video">Video</string>
+    <string name="documents">Documenten</string>
     <string name="contact">Contactpersoon</string>
     <string name="camera">Camera</string>
     <string name="location">Locatie</string>
@@ -412,6 +416,7 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">QR-code scannen</string>
     <string name="qrscan_hint">Plaatst je camera boven de QR-code</string>
+    <string name="qrscan_ask_join_group">Wil je lid worden van de groep \"%1$s\"?</string>
     <string name="qrscan_ask_join_verified_group">Wil je lid worden van de goedgekeurde groep \"%1$s\"?</string>
     <string name="qrscan_ask_fingerprint_ask_oob">Wil je de contactpersoon \"%1$s\" goedkeuren en een gesprek beginnen?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Contactpersoon \"%1$s\" goedgekeurd. Wil je een gesprek beginnen?</string>
@@ -425,6 +430,7 @@
     <string name="qrshow_x_joining">%1$s is lid geworden.</string>
     <string name="qrshow_x_verified">%1$s is goedgekeurd.</string>
     <string name="qrshow_x_has_joined_group">%1$s is veilig lid geworden van de groep.</string>
+    <string name="qrshow_join_group_hint">Scan dit om lid te worden van de groep \"%1$s\".</string>
     <string name="qrshow_join_verified_group_hint">Scan dit om lid te worden van de goedgekeurde groep \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">QR-uitnodgingscode</string>
     <string name="qrshow_join_contact_title">QR-goedkeuringscode</string>
@@ -492,7 +498,7 @@
     <string name="language_sr">Servisch</string>
     <string name="language_sv">Zweeds</string>
     <string name="language_ta">Tamil</string>
-    <string name="language_te">Telegu</string>
+    <string name="language_te">Telugu</string>
     <string name="language_tr">Turks</string>
     <string name="language_uk">Oekraïens</string>
     <string name="language_zh_CN">Chinees</string>
@@ -568,4 +574,11 @@
     <string name="me_desktop">ik</string>
     <string name="in_this_group_desktop">Groepsleden</string>
     <string name="not_in_this_group_desktop">Potentiële groepsleden (niet in de groep)</string>
-    </resources>
+    <string name="message_detail_sent_desktop">verstuurd</string>
+    <string name="message_detail_received_desktop">ontvangen</string>
+    <string name="message_detail_from_desktop">van</string>
+    <string name="message_detail_to_desktop">aan</string>
+    <string name="menu.view.developer.open.log.folder">Map met logbestanden openen</string>
+    <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
+
+</resources>
