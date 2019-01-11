@@ -51,7 +51,13 @@ public class DateUtils extends android.text.format.DateUtils {
 
   private static String getFormattedDateTime(long time, String template, Locale locale) {
     final String localizedPattern = getLocalizedPattern(template, locale);
-    return new SimpleDateFormat(localizedPattern, locale).format(new Date(time));
+    String ret = new SimpleDateFormat(localizedPattern, locale).format(new Date(time));
+
+    // having ".," in very common and known abbreviates as weekdays or month names is not needed,
+    // looks ugly and makes the string longer than needed
+    ret = ret.replace(".,", ",");
+
+    return ret;
   }
 
   public static String getBriefRelativeTimeSpanString(final Context c, final Locale locale, final long timestamp) {
@@ -157,13 +163,10 @@ public class DateUtils extends android.text.format.DateUtils {
   }
 
   private static String getLocalizedPattern(String template, Locale locale) {
-    String ret;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-      ret = DateFormat.getBestDateTimePattern(locale, template);
+      return DateFormat.getBestDateTimePattern(locale, template);
     } else {
-      ret = new SimpleDateFormat(template, locale).toLocalizedPattern();
+      return new SimpleDateFormat(template, locale).toLocalizedPattern();
     }
-    ret.replace(".,", ",");
-    return ret;
   }
 }
