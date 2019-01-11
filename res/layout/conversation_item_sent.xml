@@ -134,8 +134,7 @@
                 android:gravity="end"
                 android:clipChildren="false"
                 android:clipToPadding="false"
-                app:footer_text_color="?attr/conversation_item_outgoing_text_secondary_color"
-                app:footer_icon_color="?attr/conversation_item_sent_icon_color"/>
+                app:footer_text_color="?attr/conversation_item_outgoing_text_secondary_color"/>
 
         </LinearLayout>
 

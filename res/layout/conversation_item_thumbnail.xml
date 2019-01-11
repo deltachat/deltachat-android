@@ -34,7 +34,6 @@
         android:layout_marginLeft="@dimen/message_bubble_horizontal_padding_half"
         android:layout_marginRight="@dimen/message_bubble_horizontal_padding_half"
         android:layout_marginBottom="@dimen/message_bubble_bottom_padding"
-        app:footer_text_color="@color/core_white"
-        app:footer_icon_color="@color/core_white"/>
+        app:footer_text_color="@color/core_white"/>
 
 </merge>
