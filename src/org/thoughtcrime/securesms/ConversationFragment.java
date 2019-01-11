@@ -605,9 +605,9 @@ public class ConversationFragment extends Fragment
         ViewUtil.animateIn(scrollToBottomButton, scrollButtonInAnimation);
       }
 
-      if (positionId != lastPositionId) {
-        bindScrollHeader(conversationDateHeader, positionId);
-      }
+//      if (positionId != lastPositionId) {
+//        bindScrollHeader(conversationDateHeader, positionId);
+//      }
 
       wasAtBottom           = currentlyAtBottom;
       wasAtZoomScrollHeight = currentlyAtZoomScrollHeight;
@@ -618,11 +618,11 @@ public class ConversationFragment extends Fragment
 
     @Override
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-      if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-        conversationDateHeader.show();
-      } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-        conversationDateHeader.hide();
-      }
+//      if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+//        conversationDateHeader.show();
+//      } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+//        conversationDateHeader.hide();
+//      }
     }
 
     private boolean isAtBottom() {
