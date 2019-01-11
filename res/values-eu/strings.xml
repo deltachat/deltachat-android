@@ -271,7 +271,7 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
 
-    <string name="pref_summary_appearance">Itxura %1$s, Hizkuntza %2$s, Atzealdea %3$s</string>
+    <!-- preferences -->
     <string name="pref_summary_on">bai</string>
     <string name="pref_summary_off">ez</string>
     <string name="pref_summary_default">lehenetsia</string>
@@ -335,7 +335,6 @@
     <string name="pref_managekeys_export_secret_keys">Esportatu gako sekretuak</string>
     <string name="pref_managekeys_export_explain">Esportatu gako sekretuak \"%1$s\"-ra?</string>
     <string name="pref_managekeys_import_secret_keys">Inportatu gako sekretuak</string>
-    <string name="pref_background">Txataren atzealdea</string>
     <string name="pref_imap_folder_handling">IMAP karpeten kudeaketa</string>
     <string name="pref_watch_inbox_folder">Begiztatu sarrera karpeta</string>
     <string name="pref_watch_sent_folder">Begiztatu bidalitakoak karpeta</string>

@@ -263,8 +263,6 @@
     <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>
 
     <!-- preferences -->
-    <string name="pref_summary_privacy">Kyçje ekrani %1$s, Lexoni dëftesa %2$s</string>
-    <string name="pref_summary_appearance">Temë %1$s, Gjuhë %2$s, Sfond %3$s</string>
     <string name="pref_summary_on">on</string>
     <string name="pref_summary_off">off</string>
     <string name="pref_summary_default">parazgjedhje</string>

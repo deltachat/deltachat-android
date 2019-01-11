@@ -66,9 +66,12 @@
     <string name="draft">Kladde</string>
     <string name="image">Billede</string>
     <string name="gif">Gif</string>
+    <string name="images">Billeder</string>
     <string name="audio">Lyd</string>
     <string name="voice_message">Tale besked</string>
+    <string name="forwarded_message">Videresendt besked</string>
     <string name="video">Video</string>
+    <string name="documents">Dokumenter</string>
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Placering</string>
@@ -133,7 +136,7 @@
     <string name="menu_edit_name">Redigere navn</string>
     <string name="menu_settings">Opsætning</string>
     <string name="menu_advanced">Avanceret</string>
-    <string name="menu_deaddrop">Kontakt forespørgseler</string>
+    <string name="menu_deaddrop">Kontakt anmodninger</string>
     <string name="menu_view_profile">Vise profil</string>
 
     <string name="mute_for_one_hour">Dæmpe i 1 time</string>
@@ -145,6 +148,10 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Forlade denne gruppe?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Slette besked her og på server?</item>
+        <item quantity="other">Slette %1$d beskeder her og på server?</item>
+    </plurals>
     <string name="ask_forward">Videresende beskeder til %1$s?</string>
     <string name="ask_start_chat_with">Samtale med %1$s?</string>
 
@@ -206,6 +213,8 @@
     <string name="media_no_documents_hint">Ingen dokumenter</string>
 
 
+    <!-- invite -->
+    <string name="invite_slogan">Venner lader ikke venner være låst i besked siloer.</string>
     <string name="invite_default_text">Skift til Delta Chat - %1$s - skriv til mig på %2$s</string>
 
 
@@ -221,6 +230,7 @@
     <string name="welcome_intro5_message">Delta Chat er fri for altid. Åben kildekode. Ingen reklamer. Intet abonnement. Ingen leverandør låsning.</string>
     <string name="welcome_intro6_headline">Krypteret</string>
     <string name="welcome_intro7_headline">Troværdig</string>
+    <string name="welcome_intro7_message">Delta Chat er sikker til erhvervsmæssig brug, kompatibel og standard baseret.</string>
     <string name="welcome_start_messaging">Start skrivning</string>
     <string name="login_title">Logind</string>
     <string name="login_header">Logind til server</string>
@@ -240,12 +250,14 @@
     <string name="login_error_port">Indtast gyldig port (1–65535)</string>
     <string name="login_error_required_fields">Indtast gyldig e-post adresse og adgangskode</string>
     <string name="import_backup_title">Importere sikkerhedskopi</string>
+    <string name="import_backup_ask">Sikkerhedskopi fundet hos \"%1$s\".\n\nImportere og bruge al data og opsætning fra den?</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontrollere om e-post adresse og adgangskode er korrekt.</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Videresende til …</string>
 
     <!-- preferences -->
-    <string name="pref_summary_privacy">Skærm lås %1$s, læs kvitteringer %2$s</string>
     <string name="pref_summary_on">til</string>
     <string name="pref_summary_off">fra</string>
     <string name="pref_summary_default">standard</string>
@@ -256,9 +268,11 @@
     <string name="pref_profile_photo">Profil billede</string>
     <string name="pref_trim_headline">Trimme besked</string>
     <string name="pref_trim_option">Slette gamle beskeder</string>
+    <string name="pref_trim_option_explain">Automatisk slette ældre beskeder når samtale overskrider en angivet længde. </string>
     <string name="pref_trim_length_limit">Samtale længde grænse</string>
     <string name="pref_trim_length_limit_summary">%d beskeder pr. samtale</string>
     <string name="pref_trim_now_button">Trimme alle samtaler</string>
+    <string name="pref_trim_now_ask">Slette alle ældre beskeder? Dette vil trimme alle samtaler til %d mest nylige beskeder.</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="pref_profile_photo_remove_ask">Fjerne profil billede?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
@@ -276,6 +290,7 @@
     <string name="pref_change_secret_explain">Ændre PIN / mønster / fingeraftryk via system opsætning</string>
     <string name="pref_screen_security">Skærm sikkerhed</string>
     <string name="pref_screen_security_explain">Blokere skærmaftryk i nylig liste og i programmet</string>
+    <string name="pref_screen_security_please_restart_hint">Genstart programmet for at anvende skærm sikkerhed.</string>
     <string name="pref_notifications">Påmindelser</string>
     <string name="pref_notifications_show">Vise</string>
     <string name="pref_notifications_priority">Prioritet</string>
@@ -293,7 +308,9 @@
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Sprog</string>
     <string name="pref_incognito_keyboard">Inkognito tastatur</string>
+    <string name="pref_incognito_keyboard_explain">Anmod tastatur om at deaktivere personlig indlæring</string>
     <string name="pref_read_receipts">Læse modtagelse</string>
+    <string name="pref_read_receipts_explain">Hvis læst kvittering er deaktiveret vil læst kvittering fra andre ikke blive vist.</string>
     <string name="pref_manage_keys">Håndtere nøgler</string>
     <string name="pref_use_system_emoji">Bruge system emoji</string>
     <string name="pref_use_system_emoji_explain">Deaktivere Delta Chat\'s indbygget emoji understøttelse</string>
@@ -316,7 +333,6 @@
     <string name="pref_managekeys_import_secret_keys">Importere hemmelige nøgler</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Hemmelige nøgler skrevet til \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Hemmelige nøgler importeret fra \"%1$s\".</string>
-    <string name="pref_background">Samtale baggrund</string>
     <string name="pref_imap_folder_handling">IMAP mappe håndtering</string>
     <string name="pref_watch_inbox_folder">Overvåge indbakke mappe</string>
     <string name="pref_watch_sent_folder">Overvåge sendt mappe</string>
@@ -403,7 +419,45 @@
     <string name="perm_explain_need_for_camera_access">For at fange billeder og video, tillad Delta Chat adgang til kamera.</string>
     <string name="perm_explain_need_for_mic_access">For at sende lyd beskeder, tillad Delta Chat mikrofon adgang.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat behøver fil adgang for at kunne eksportere filer eller oprette sikkerhedskopier.</string>
+    <!-- languages -->
+    <string name="language_be">Belgisk</string>
+    <string name="language_ca">Catalansk</string>
     <string name="language_da">Dansk</string>
+    <string name="language_de">Tysk</string>
+    <string name="language_en">Engelsk</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Spansk</string>
+    <string name="language_eu">Baskisk</string>
+    <string name="language_fr">Fransk</string>
+    <string name="language_hr">Kroatisk</string>
+    <string name="language_hu">Ungarsk</string>
+    <string name="language_it">Italiensk</string>
+    <string name="language_id">Indonesisk</string>
+    <string name="language_ja_JP">Japansk</string>
+    <string name="language_ko">Koreansk</string>
+    <string name="language_nb_NO">Norsk</string>
+    <string name="language_nl">Hollandsk</string>
+    <string name="language_nl_NL">Hollandsk (Holland)</string>
+    <string name="language_pl">Polsk</string>
+    <string name="language_pt">Portugisisk</string>
+    <string name="language_ru">Russisk</string>
+    <string name="language_ru_RU">Russisk (Rusland)</string>
+    <string name="language_sq">Albansk</string>
+    <string name="language_sr">Serbisk</string>
+    <string name="language_sv">Svensk</string>
+    <string name="language_ta">Tamilsk</string>
+    <string name="language_tr">Tyrkisk</string>
+    <string name="language_uk">Ukrainsk</string>
+    <string name="language_zh_CN">Kinesisk</string>
+
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Krypteret besked</string>
+
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Velkommen til DeltaChat</string>
+    <string name="login_known_accounts_title_desktop">Kendte konti</string>
+    <string name="global_menu_preferences_desktop">Indstillinger</string>
+    <string name="global_menu_preferences_language_desktop">Vælge sprog...</string>
     <string name="global_menu_file_desktop">Fil</string>
     <string name="global_menu_file_quit_desktop">Afslutte</string>
     <string name="global_menu_edit_desktop">Redigere</string>
@@ -415,6 +469,7 @@
     <string name="global_menu_edit_delete_desktop">Slette</string>
     <string name="global_menu_edit_selectall_desktop">Vælge alle</string>
     <string name="global_menu_view_desktop">Vise</string>
+    <string name="global_menu_view_floatontop_desktop">Flyde øverst</string>
     <string name="global_menu_view_developer_desktop">Udvikler</string>
     <string name="global_menu_view_developer_tools_desktop">Udvikler værktøj</string>
     <string name="global_menu_help_desktop">Hjælp</string>
@@ -422,11 +477,12 @@
     <string name="global_menu_help_contribute_desktop">Bidrage på GitHub</string>
     <string name="global_menu_help_report_desktop">Rapportere en sag...</string>
     <string name="global_menu_help_about_desktop">Om DeltaChat</string>
+    <string name="no_chat_selected_suggestion_desktop">Vælg samtale eller opret en ny samtale</string>
     <string name="write_message_desktop">Skrive en besked</string>
     <string name="about_deltachat_heading_desktop">Om DeltaChat</string>
     <string name="encryption_info_title_desktop">Kryptering information</string>
     <string name="contact_detail_title_desktop">Kontakt detaljer</string>
-    <string name="contact_request_title_desktop">Kontakt forespørgsel</string>
+    <string name="contact_request_title_desktop">Kontakt anmodning</string>
     <string name="delete_message_desktop">Slette besked</string>
     <string name="more_info_desktop">Mere information</string>
     <string name="logout_desktop">Logud</string>
@@ -443,6 +499,8 @@
     <string name="add_contact_desktop">Tilføje kontakt</string>
     <string name="login_required_desktop">påkrævet</string>
     <string name="name_desktop">Navn</string>
+    <string name="autocrypt_key_transfer_desktop">Autocrypt nøgle overførsel</string>
+    <string name="initiate_key_transfer_title_desktop">Starte nøgle overførsel</string>
     <string name="reply_to_message_desktop">Svare besked</string>
     <string name="select_group_image_desktop">Vælge gruppe billede</string>
     <string name="imex_progress_title_desktop">Sikkerhedskopiering fremgang</string>
@@ -452,7 +510,19 @@
     <string name="new_message_from_desktop">Ny besked fra</string>
     <string name="unblock_contacts_desktop">Fjerne blokering af kontakter</string>
     <string name="none_blocked_desktop">Ingen blokerede kontakter</string>
+    <string name="autocrypt_correct_desktop">Autocrypt opsætning overført!</string>
+    <string name="autocrypt_incorrect_desktop">Forkert opsætning kode. Prøv igen.</string>
     <string name="create_chat_error_desktop">Kunne ikke oprette samtale</string>
+    <string name="ask_delete_chat_desktop">Slette denne samtale?</string>
     <string name="email_validation_failed_desktop">E-post adresse påkrævet</string>
     <string name="me_desktop">undertegnet</string>
-    </resources>
+    <string name="in_this_group_desktop">Gruppe medlemmer</string>
+    <string name="not_in_this_group_desktop">Mulige gruppe medlemmer (ikke i gruppe)</string>
+    <string name="message_detail_sent_desktop">sendt</string>
+    <string name="message_detail_received_desktop">modtaget</string>
+    <string name="message_detail_from_desktop">fra</string>
+    <string name="message_detail_to_desktop">til</string>
+    <string name="menu.view.developer.open.log.folder">Åben log mappe</string>
+    <string name="menu.view.developer.open.current.log.file">Åben nuværende log fil</string>
+
+</resources>

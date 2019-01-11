@@ -282,8 +282,6 @@
     <string name="forward_to">Doorsturen naar...</string>
 
     <!-- preferences -->
-    <string name="pref_summary_privacy">Schermvergrendeling %1$s, Leesbevestigingen %2$s</string>
-    <string name="pref_summary_appearance">Thema %1$s, Taal %2$s, Achtergrond %3$s</string>
     <string name="pref_summary_on">aan</string>
     <string name="pref_summary_off">uit</string>
     <string name="pref_summary_default">standaard</string>
@@ -362,7 +360,6 @@
     <string name="pref_managekeys_import_explain">Wil je geheime sleutels importeren uit \"%1$s\"?\n\n• Bestaande geheime sleutels worden niet verwijderd.\n\n• De laatst geïmporteerde sleutel wordt als standaard gebruikt tenzij de bestandsnaam \"legacy\" bevat.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Geheime sleutels weggeschreven naar \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime sleutels geïmporteerd uit \"%1$s\".</string>
-    <string name="pref_background">Gespreksachtergrond</string>
     <string name="pref_imap_folder_handling">Controleren in IMAP-mappen</string>
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>

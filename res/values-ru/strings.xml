@@ -308,7 +308,7 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
 
-    <string name="pref_summary_appearance">Тема %1$s, язык %2$s, заставка %3$s</string>
+    <!-- preferences -->
     <string name="pref_summary_on">вкл</string>
     <string name="pref_summary_off">выкл</string>
     <string name="pref_summary_default">по умолчанию</string>
@@ -385,7 +385,6 @@
     <string name="pref_managekeys_import_explain">Импортировать секретные ключи из \"%1$s\"?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию если он не содержит слова \"legacy\" в названии файла</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Секретные ключи успешно записаны на \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из \"%1$s\".</string>
-    <string name="pref_background">Фон чата</string>
     <string name="pref_imap_folder_handling">Обработка папки IMAP</string>
     <string name="pref_watch_inbox_folder">Открыть папку \"Входящие\"</string>
     <string name="pref_watch_sent_folder">Открыть папку \"Отправленные\"</string>

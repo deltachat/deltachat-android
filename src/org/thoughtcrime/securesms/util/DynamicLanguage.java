@@ -65,7 +65,7 @@ public class DynamicLanguage {
     return activity.getResources().getConfiguration().locale;
   }
 
-  private static Locale getSelectedLocale(Context context) {
+  public static Locale getSelectedLocale(Context context) {
     String language[] = TextUtils.split(Prefs.getLanguage(context), "_");
 
     if (language[0].equals(DEFAULT)) {

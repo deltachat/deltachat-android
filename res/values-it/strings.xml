@@ -273,8 +273,6 @@
     <string name="forward_to">Inotra a...</string>
 
     <!-- preferences -->
-    <string name="pref_summary_privacy">Blocco schermo %1$s, notifiche di lettura %2$s</string>
-    <string name="pref_summary_appearance">Tema %1$s, Lingua %2$s, Sfondo %3$s</string>
     <string name="pref_summary_on">o</string>
     <string name="pref_summary_off">off</string>
     <string name="pref_summary_default">predefinito</string>
@@ -353,7 +351,6 @@
     <string name="pref_managekeys_import_explain">Importare le chiavi segrete da \"%1$s\"?\n\n• Le chiavi esistenti non verranno cancellate\n\n• Le chiavi importate verrano usate come predefinite a meno che non abbiano la parola \"legacy\" nel nome del file.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Chiavi segrete salvate con successo in \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Chiavi segrete importate da \"%1$s\".</string>
-    <string name="pref_background">Sfondo chat</string>
     <string name="pref_imap_folder_handling">Gestione cartella IMAP</string>
     <string name="pref_watch_inbox_folder">Vedi cartella In Arrivo</string>
     <string name="pref_watch_sent_folder">Vedi cartella Inviati</string>

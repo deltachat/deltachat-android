@@ -12,6 +12,7 @@
     <string name="custom">Własne</string>
     <string name="none">Brak</string>
     <string name="open">Otwórz</string>
+    <string name="delete">Usuń</string>
     <string name="not_now">Nie teraz</string>
     <string name="never">Nigdy</string>
     <string name="one_moment">Jedną chwilę…</string>
@@ -33,6 +34,13 @@
     <string name="n_min_ago">%d min.</string>
     <string name="today">Dzisiaj</string>
     <string name="yesterday">Wczoraj</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d min</item>
+        <item quantity="few">%d min</item>
+        <item quantity="many">%d min</item>
+        <item quantity="other">%d min</item>
+    </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d godzina</item>
@@ -69,9 +77,11 @@
     <string name="draft">Szkic</string>
     <string name="image">Obraz</string>
     <string name="gif">Gif</string>
+    <string name="images">Obrazy</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Wiadomość głosowa</string>
     <string name="video">Wideo</string>
+    <string name="documents">Dokumenty</string>
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Lokalizacja</string>
@@ -131,6 +141,7 @@
     <string name="menu_invite">Zaproś znajomych</string>
     <string name="menu_help">Pomoc</string>
     <string name="menu_select_all">Zaznacz wszystko</string>
+    <string name="menu_expand">Rozwiń</string>
     <string name="menu_edit_name">Edytuj nazwę</string>
     <string name="menu_settings">Ustawienia</string>
     <string name="menu_advanced">Zaawansowane</string>
@@ -286,9 +297,6 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Przekaż do…</string>
 
-    <!-- preferences -->
-    <string name="pref_summary_privacy">Blokada ekranu %1$s, Potwierdzenie odczytu %2$s</string>
-    <string name="pref_summary_appearance">Motyw %1$s, Język %2$s, Tło %3$s</string>
     <string name="pref_summary_off">Wyłączone</string>
     <string name="pref_profile_info_headline">Twój profil</string>
     <string name="pref_profile_photo">Zdjęcie profilowe</string>
@@ -361,7 +369,6 @@
     <string name="pref_managekeys_import_explain">Zaimportować prywatne klucze z „%1$s”?\n\n• Istniejące prywatne klucze nie są usuwane\n\n• Ostatni zaimportowany klucz zostanie użyty jako nowy klucz domyślny, chyba że w nazwie pliku znajduje się słowo legacy”.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Prywatne klucze zapisano pomyślnie do „%1$s”.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Prywatne klucze zaimportowano z „%1$s”.</string>
-    <string name="pref_background">Tło czatu</string>
     <string name="pref_imap_folder_handling">Obsługa folderów IMAP</string>
     <string name="pref_watch_inbox_folder">Oglądaj katalog Skrzynka odbiorcza</string>
     <string name="pref_watch_sent_folder">Oglądaj katalog Wysłane</string>
@@ -487,7 +494,6 @@
     <string name="language_sr">Serbski</string>
     <string name="language_sv">Szwedzki</string>
     <string name="language_ta">Tamil</string>
-    <string name="language_te">Telegu</string>
     <string name="language_tr">Turecki</string>
     <string name="language_uk">Ukraiński</string>
     <string name="language_zh_CN">Chiński</string>
@@ -498,6 +504,7 @@
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Witaj w DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Znane konta</string>
+    <string name="global_menu_preferences_desktop">Preferencje</string>
     <string name="global_menu_preferences_language_desktop">Wybierz język</string>
     <string name="global_menu_file_desktop">Plik</string>
     <string name="global_menu_file_quit_desktop">Wyjdź</string>
@@ -548,4 +555,8 @@
     <string name="ask_delete_chat_desktop">Czy na pewno chcesz usunąć ten czat?</string>
     <string name="email_validation_failed_desktop">Wymagany adres e-mail.</string>
     <string name="me_desktop">ja</string>
+    <string name="in_this_group_desktop">Członkowie grupy</string>
+    <string name="not_in_this_group_desktop">Potencjalni członkowie grupy (nie w grupie)</string>
+    <string name="message_detail_from_desktop">od</string>
+    <string name="message_detail_to_desktop">do</string>
     </resources>

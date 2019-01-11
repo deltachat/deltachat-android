@@ -279,8 +279,6 @@
     <string name="forward_to">İlet …</string>
 
     <!-- preferences -->
-    <string name="pref_summary_privacy">Ekran kilidi %1$s, Okundu bilgileri %2$s</string>
-    <string name="pref_summary_appearance">Tema %1$s, Dil %2$s, Artalan %3$s</string>
     <string name="pref_summary_on">açık</string>
     <string name="pref_summary_off">kapalı</string>
     <string name="pref_summary_default">varsayılan</string>
@@ -357,7 +355,6 @@
     <string name="pref_managekeys_import_explain">Gizli anahtarlar \"%1$s\" konumundan içe aktarılsın mı?\n\n• Varolan gizli anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosyasında \"eski\" sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Gizli anahtarlar \"%1$s\" konumuna başarıyla yazıldı.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Gizli anahtarlar \"%1$s\" konumundan başarıyla içe aktarıldı.</string>
-    <string name="pref_background">Sohbet Artalanı</string>
     <string name="pref_imap_folder_handling">IMAP klasör işleme</string>
     <string name="pref_watch_inbox_folder">Gelen Kutusu klasörünü izle</string>
     <string name="pref_watch_sent_folder">Gönderilen klasörünü izle</string>
