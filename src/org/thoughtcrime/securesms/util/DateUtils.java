@@ -80,7 +80,8 @@ public class DateUtils extends android.text.format.DateUtils {
       return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
     } else {
       StringBuilder format = new StringBuilder();
-      if      (isWithin(timestamp,   6, TimeUnit.DAYS)) format.append("EEE ");
+      if      (DateUtils.isToday(timestamp))                 {}
+      else if (isWithin(timestamp,   6, TimeUnit.DAYS)) format.append("EEE ");
       else if (isWithin(timestamp, 365, TimeUnit.DAYS)) format.append("MMM d, ");
       else                                              format.append("MMM d, yyyy, ");
 
@@ -143,7 +144,7 @@ public class DateUtils extends android.text.format.DateUtils {
     } else if (isYesterday(timestamp)) {
       return context.getString(R.string.yesterday);
     } else {
-      return getFormattedDateTime(timestamp, "EEE, MMM d, yyyy", locale);
+      return getFormattedDateTime(timestamp, "EEEE, MMMM d, yyyy", locale);
     }
   }
 
@@ -156,10 +157,13 @@ public class DateUtils extends android.text.format.DateUtils {
   }
 
   private static String getLocalizedPattern(String template, Locale locale) {
+    String ret;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-      return DateFormat.getBestDateTimePattern(locale, template);
+      ret = DateFormat.getBestDateTimePattern(locale, template);
     } else {
-      return new SimpleDateFormat(template, locale).toLocalizedPattern();
+      ret = new SimpleDateFormat(template, locale).toLocalizedPattern();
     }
+    ret.replace(".,", ",");
+    return ret;
   }
 }

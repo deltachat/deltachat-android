@@ -71,12 +71,12 @@ public class ConversationItemFooter extends LinearLayout {
 
   private void presentDate(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     dateView.forceLayout();
-    if(messageRecord.hasDeviatingTimestamp()) {
+//    if(messageRecord.hasDeviatingTimestamp()) {
       dateView.setText(DateUtils.getExtendedRelativeTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
-    }
-    else {
-      dateView.setText(DateUtils.getTimeOfDayTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
-    }
+//    }
+//    else {
+//      dateView.setText(DateUtils.getTimeOfDayTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
+//    }
   }
 
   private void presentSecureIndicator(@NonNull DcMsg messageRecord) {
