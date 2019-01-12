@@ -24,6 +24,7 @@ public class ContactFilterToolbar extends Toolbar {
   private AnimatingToggle toggle;
   private ImageView       clearToggle;
   private LinearLayout    toggleContainer;
+  private boolean         useClearButton;
 
   public ContactFilterToolbar(Context context) {
     this(context, null);
@@ -31,6 +32,7 @@ public class ContactFilterToolbar extends Toolbar {
 
   public ContactFilterToolbar(Context context, AttributeSet attrs) {
     this(context, attrs, R.attr.toolbarStyle);
+    useClearButton = true;
   }
 
   public ContactFilterToolbar(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -66,7 +68,9 @@ public class ContactFilterToolbar extends Toolbar {
       @Override
       public void afterTextChanged(Editable s) {
         if (!SearchUtil.isEmpty(searchText)) {
-          displayTogglingView(clearToggle);
+          if(useClearButton) {
+            displayTogglingView(clearToggle);
+          }
         }
         else {
           displayTogglingView(null);
@@ -88,6 +92,10 @@ public class ContactFilterToolbar extends Toolbar {
   public void clear() {
     searchText.setText("");
     notifyListener();
+  }
+
+  public void setUseClearButton(boolean useClearButton) {
+    this.useClearButton = useClearButton;
   }
 
   public void setOnFilterChangedListener(OnFilterChangedListener listener) {

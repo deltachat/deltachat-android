@@ -18,6 +18,9 @@ package org.thoughtcrime.securesms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,11 +40,34 @@ public class ContactMultiSelectionActivity extends ContactSelectionActivity {
   protected void onCreate(Bundle icicle, boolean ready) {
     getIntent().putExtra(ContactSelectionListFragment.MULTI_SELECT, true);
     super.onCreate(icicle, ready);
+    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
-    getToolbar().setNavigationOnClickListener(v -> {
-      saveSelection();
-      finish();
-    });
+    // it's a bit confusing having one "X" button on the left and one on the right -
+    // and the "clear search" button is not that important.
+    getToolbar().setUseClearButton(false);
+  }
+
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    MenuInflater inflater = this.getMenuInflater();
+    menu.clear();
+
+    inflater.inflate(R.menu.add_members, menu);
+    super.onPrepareOptionsMenu(menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    super.onOptionsItemSelected(item);
+    switch (item.getItemId()) {
+      case R.id.menu_add_members:
+        saveSelection();
+        finish();
+        return true;
+    }
+
+    return false;
   }
 
   @Override
