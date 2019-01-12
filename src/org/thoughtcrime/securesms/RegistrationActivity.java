@@ -49,12 +49,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         PORT,
     }
 
-    public static final String RE_REGISTRATION_EXTRA = "TO_BE_REMOVED"; // TODO remove
-
-    public static final String CHALLENGE_EVENT = "TO_BE_REMOVED"; // TODO remove
-
-    public static final String CHALLENGE_EXTRA = "TO_BE_REMOVED"; // TODO remove
-
     private TextInputEditText emailInput;
     private TextInputEditText passwordInput;
     private Group advancedGroup;
