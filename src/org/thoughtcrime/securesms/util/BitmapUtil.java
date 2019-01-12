@@ -6,6 +6,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.ImageFormat;
+import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.graphics.drawable.BitmapDrawable;
@@ -16,17 +17,22 @@ import android.support.media.ExifInterface;
 import android.util.Log;
 import android.util.Pair;
 
+import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy;
 
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.MediaConstraints;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -367,4 +373,78 @@ public class BitmapUtil {
       return height;
     }
   }
+
+  // recode jpeg
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  public static void recodeImageMsg(Context context, DcMsg msg)
+  {
+    final int desiredWH = 1280;
+
+    try {
+      String inPath = msg.getFile();
+      if(inPath==null || !new File(inPath).exists()) {
+        return;
+      }
+
+      Matrix matrix = new Matrix();
+
+      // find out scaling
+      BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+      bmOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(inPath, bmOptions);
+
+      if( bmOptions.outWidth<1 || bmOptions.outHeight<1
+       || (bmOptions.outWidth<desiredWH && bmOptions.outHeight<desiredWH)) {
+        Log.i(TAG, String.format("recoding of %s not needed, image is small enough", inPath));
+        return;
+      }
+
+      float scaleFactor = Math.min((float)desiredWH/(float)bmOptions.outWidth, (float)desiredWH/(float)bmOptions.outHeight);
+      matrix.postScale(scaleFactor, scaleFactor);
+
+      // find out rotating
+      {
+        android.media.ExifInterface exif;
+        try {
+          exif = new android.media.ExifInterface(inPath);
+          int orientation = exif.getAttributeInt(android.media.ExifInterface.TAG_ORIENTATION, 1);
+          switch (orientation) {
+            case android.media.ExifInterface.ORIENTATION_ROTATE_90:
+              matrix.postRotate(90);
+              break;
+            case android.media.ExifInterface.ORIENTATION_ROTATE_180:
+              matrix.postRotate(180);
+              break;
+            case android.media.ExifInterface.ORIENTATION_ROTATE_270:
+              matrix.postRotate(270);
+              break;
+          }
+        } catch (Throwable e) {
+          Log.i(TAG, String.format("cannot get exif information for %s", inPath));
+        }
+      }
+
+      // recode file
+      Bitmap inBitmap = BitmapFactory.decodeFile(inPath, null);
+      Bitmap outBitmap = Bitmap.createBitmap(inBitmap, 0, 0, inBitmap.getWidth(), inBitmap.getHeight(), matrix, false);
+      inBitmap.recycle();
+
+      String outPath = DcHelper.getContext(context).getBlobdirFile(inPath);
+      FileOutputStream outStream = new FileOutputStream(outPath);
+      if(!outBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream)) {
+        return;
+      }
+
+      msg.setDimension(outBitmap.getWidth(), outBitmap.getHeight());
+      msg.setFile(outPath, null);
+      outBitmap.recycle();
+
+      Log.i(TAG, String.format("recoding for %s dine", inPath));
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
 }

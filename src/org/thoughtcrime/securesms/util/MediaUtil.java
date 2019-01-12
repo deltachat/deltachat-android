@@ -30,6 +30,7 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -266,10 +267,4 @@ public class MediaUtil {
 
     return null;
   }
-
-  public static void recodeImageMsg(DcMsg msg)
-  {
-    // TODO
-  }
-
 }

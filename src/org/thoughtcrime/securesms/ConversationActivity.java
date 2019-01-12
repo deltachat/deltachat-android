@@ -97,6 +97,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
+import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -871,14 +872,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           filename = filename.substring(0, i);
         }
       }
-      String path = null;
-      for (int i=0; i<1000; i++) {
-        String test = dcContext.getBlobdir()+"/"+filename+(i==0? "" : i<100? "-"+i : "-"+(new Date().getTime()+i))+ext;
-        if (!new File(test).exists()) {
-          path = test;
-          break;
-        }
-      }
+      String path = dcContext.getBlobdirFile(filename, ext);
 
       // copy content to this file
       if(path!=null) {
@@ -965,7 +959,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         if (action==ACTION_SEND_OUT) {
           if(msg!=null) {
             if(recompress) {
-              MediaUtil.recodeImageMsg(msg);
+              BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
             }
             dcContext.sendMsg(dcChat.getId(), msg);
           }

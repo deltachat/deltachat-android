@@ -42,6 +42,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -174,6 +175,34 @@ public class ApplicationDcContext extends DcContext {
       if(newType != null) return newType;
     }
     return mimeType;
+  }
+
+  public String getBlobdirFile(String filename, String ext) {
+    String outPath = null;
+    for (int i = 0; i < 1000; i++) {
+      String test = getBlobdir() + "/" + filename + (i == 0 ? "" : i < 100 ? "-" + i : "-" + (new Date().getTime() + i)) + ext;
+      if (!new File(test).exists()) {
+        outPath = test;
+        break;
+      }
+    }
+    if(outPath==null) {
+      // should not happen
+      outPath = getBlobdir() + "/" + Math.random();
+    }
+    return outPath;
+  }
+
+  public String getBlobdirFile(String path) {
+    String filename = path.substring(path.lastIndexOf('/')+1); // is the whole path if '/' is not found (lastIndexOf() returns -1 then)
+    String ext = "";
+    int point = filename.indexOf('.');
+    if(point!=-1) {
+      ext = filename.substring(point);
+      filename = filename.substring(0, point);
+    }
+    return getBlobdirFile(filename, ext);
+
   }
 
   /***********************************************************************************************
