@@ -258,50 +258,20 @@ public class ConversationFragment extends Fragment
 
   private void setCorrectMenuVisibility(Menu menu) {
     Set<DcMsg>         messageRecords = getListAdapter().getSelectedItems();
-    boolean            actionMessage  = false;
-    boolean            hasText        = false;
 
     if (actionMode != null && messageRecords.size() == 0) {
       actionMode.finish();
       return;
     }
 
-    for (DcMsg messageRecord : messageRecords) {
-      if (messageRecord.isGroupAction() ||
-          messageRecord.isJoined() || messageRecord.isExpirationTimerUpdate() ||
-          messageRecord.isEndSession() || messageRecord.isIdentityUpdate() ||
-          messageRecord.isIdentityVerified() || messageRecord.isIdentityDefault())
-      {
-        actionMessage = true;
-      }
-      if (messageRecord.getBody().length() > 0) {
-        hasText = true;
-      }
-      if (actionMessage && hasText) {
-        break;
-      }
-    }
-
     if (messageRecords.size() > 1) {
-//      menu.findItem(R.id.menu_context_forward).setVisible(false);
-      menu.findItem(R.id.menu_context_reply).setVisible(false);
       menu.findItem(R.id.menu_context_details).setVisible(false);
       menu.findItem(R.id.menu_context_save_attachment).setVisible(false);
-      menu.findItem(R.id.menu_context_resend).setVisible(false);
     } else {
       DcMsg messageRecord = messageRecords.iterator().next();
-
-      menu.findItem(R.id.menu_context_resend).setVisible(false/*messageRecord.isFailed()*/);
+      menu.findItem(R.id.menu_context_details).setVisible(true);
       menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
-
-      menu.findItem(R.id.menu_context_forward).setVisible(!actionMessage);
-      menu.findItem(R.id.menu_context_details).setVisible(!actionMessage);
-      menu.findItem(R.id.menu_context_reply).setVisible(false/*!actionMessage             &&
-                                                        !messageRecord.isPending() &&
-                                                        !messageRecord.isFailed()  &&
-                                                        messageRecord.isSecure()*/);
     }
-    menu.findItem(R.id.menu_context_copy).setVisible(!actionMessage && hasText);
   }
 
   private ConversationAdapter getListAdapter() {
@@ -860,7 +830,6 @@ public class ConversationFragment extends Fragment
           actionMode.finish();
           return true;
         case R.id.menu_context_forward:
-//          handleForwardMessage(getSelectedMessageRecord());
           handleForwardMessage(getListAdapter().getSelectedItems());
           actionMode.finish();
           return true;
