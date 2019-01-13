@@ -141,6 +141,7 @@ public class ContactSelectionListFragment extends    Fragment
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
           getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
         }
+        actionMode.setTitle("1");
         return true;
       }
 
@@ -340,6 +341,7 @@ public class ContactSelectionListFragment extends    Fragment
     {
       if (handleActionMode) {
         if (actionMode != null) {
+          actionMode.setTitle(String.valueOf(getContactSelectionListAdapter().getActionModeSelection().size()));
           finishActionModeIfSelectionIsEmpty();
         }
         return;
