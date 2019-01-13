@@ -962,6 +962,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
             }
             dcContext.sendMsg(dcChat.getId(), msg);
+            Util.runOnMain(()-> sendComplete(dcChat.getId()));
           }
           dcContext.setDraft(dcChat.getId(), null);
         }
@@ -977,7 +978,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, msg, recompress);
 
-    sendComplete(dcChat.getId());
     return future;
   }
 
