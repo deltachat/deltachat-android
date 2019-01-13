@@ -152,7 +152,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int PICK_CONTACT        = 4;
   private static final int GROUP_EDIT          = 6;
   private static final int TAKE_PHOTO          = 7;
-  private static final int ADD_CONTACT         = 8;
   private static final int PICK_LOCATION       = 9;
   private static final int SMS_DEFAULT         = 11;
 
@@ -369,10 +368,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if (attachmentManager.getCaptureUri() != null) {
         setMedia(attachmentManager.getCaptureUri(), MediaType.IMAGE);
       }
-      break;
-    case ADD_CONTACT:
-      recipient = Recipient.from(this, recipient.getAddress());
-      fragment.reloadList();
       break;
     case PICK_LOCATION:
       SignalPlace place = new SignalPlace(PlacePicker.getPlace(data, this));
