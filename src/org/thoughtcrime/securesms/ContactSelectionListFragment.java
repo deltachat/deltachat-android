@@ -201,7 +201,7 @@ public class ContactSelectionListFragment extends    Fragment
             }
             if (failed) {
               Util.runOnMain(()-> {
-                Toast.makeText(getActivity(), R.string.error, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.cannot_delete_contacts_in_use, Toast.LENGTH_LONG).show();
               });
             }
           }).start();
