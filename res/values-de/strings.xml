@@ -162,6 +162,7 @@
     <string name="ask_block_contact">Diesen Kontakt blockieren? Du wirst keine Nachrichten mehr von diesem Kontakt erhalten.</string>
     <string name="ask_unblock_contact">Diesen Kontakt freischalten? Nachrichten von diesem Kontakt werden dann wieder angezeigt.</string>
     <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
+    <string name="cannot_delete_contacts_in_use">Kontakte mit laufenden Chats können nicht gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
 
 
@@ -416,6 +417,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <!-- qr code stuff -->
     <string name="qrscan_title">QR-Code scannen</string>
     <string name="qrscan_hint">Kamera über den QR-Code halten</string>
+    <string name="qrscan_ask_join_group">Wollen Sie der Gruppe \"%1$s\" beitreten?</string>
     <string name="qrscan_ask_join_verified_group">Möchten Sie der verifizierten Gruppe \"%1$s\" beitreten?</string>
     <string name="qrscan_ask_fingerprint_ask_oob">Den Kontakt verifizieren und eine Unterhaltung mit \"%1$s\" beginnen?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt \"%1$s\" verifiziert. Unterhaltung starten?</string>
@@ -429,6 +431,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="qrshow_x_joining">%1$s beigefügt.</string>
     <string name="qrshow_x_verified">%1$s verifiziert.</string>
     <string name="qrshow_x_has_joined_group">%1$s sicher in die Gruppe aufgenommen.</string>
+    <string name="qrshow_join_group_hint">Scannen Sie dies, um der Gruppe \"%1$s\" beizutreten.</string>
     <string name="qrshow_join_verified_group_hint">Scannen Sie dies, um der verifizierten Gruppe beizutreten. \"%1$s\".</string>
     <string name="qrshow_join_verified_group_title">QR Einladungscode</string>
     <string name="qrshow_join_contact_title">QR Verifizierungscode</string>
@@ -496,6 +499,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="language_sr">Serbisch</string>
     <string name="language_sv">Schwedisch</string>
     <string name="language_ta">Tamil</string>
+    <string name="language_te">Telugu</string>
     <string name="language_tr">Türkisch</string>
     <string name="language_uk">Ukrainisch</string>
     <string name="language_zh_CN">Chinesisch</string>
@@ -505,7 +509,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
 
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Willkommen zu DeltaChat</string>
-    <string name="login_known_accounts_title_desktop">Benaknnte Konten</string>
+    <string name="login_known_accounts_title_desktop">Bekannte Konten</string>
     <string name="global_menu_preferences_desktop">Einstellungen</string>
     <string name="global_menu_preferences_language_desktop">Wähle Sprache...</string>
     <string name="global_menu_file_desktop">Datei</string>

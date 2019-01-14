@@ -162,6 +162,7 @@
     <string name="ask_block_contact">Wil je deze contactpersoon blokkeren? Hij/zij kan je geen berichten meer sturen.</string>
     <string name="ask_unblock_contact">Wil je deze contactpersoon deblokkeren? Hij/zij kan je wederom berichten sturen.</string>
     <string name="ask_delete_contacts">Wil je de geselecteerde contactpersonen verwijderen? Ze worden permanent verwijderd.\n\nPersonen met actieve gesprekken en personen afkomstig uit het adresboek van het systeem kunnen niet permanent worden verwijderd.</string>
+    <string name="cannot_delete_contacts_in_use">Contactpersonen waarmee je nog gesprekken voert kunnen niet worden verwijderd.</string>
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
 
 
@@ -360,6 +361,7 @@
     <string name="pref_managekeys_import_explain">Wil je geheime sleutels importeren uit \"%1$s\"?\n\n• Bestaande geheime sleutels worden niet verwijderd.\n\n• De laatst geïmporteerde sleutel wordt als standaard gebruikt tenzij de bestandsnaam \"legacy\" bevat.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Geheime sleutels weggeschreven naar \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime sleutels geïmporteerd uit \"%1$s\".</string>
+    <string name="pref_background">Achtergrond</string>
     <string name="pref_imap_folder_handling">Controleren in IMAP-mappen</string>
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>

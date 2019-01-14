@@ -369,6 +369,7 @@
     <string name="pref_managekeys_import_explain">Zaimportować prywatne klucze z „%1$s”?\n\n• Istniejące prywatne klucze nie są usuwane\n\n• Ostatni zaimportowany klucz zostanie użyty jako nowy klucz domyślny, chyba że w nazwie pliku znajduje się słowo legacy”.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Prywatne klucze zapisano pomyślnie do „%1$s”.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Prywatne klucze zaimportowano z „%1$s”.</string>
+    <string name="pref_background">Tło</string>
     <string name="pref_imap_folder_handling">Obsługa folderów IMAP</string>
     <string name="pref_watch_inbox_folder">Oglądaj katalog Skrzynka odbiorcza</string>
     <string name="pref_watch_sent_folder">Oglądaj katalog Wysłane</string>
@@ -421,6 +422,7 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">Skanuj kod QR</string>
     <string name="qrscan_hint">Umieść aparat nad kodem QR</string>
+    <string name="qrscan_ask_join_group">Czy chcesz dołączyć do grupy „%1$s?</string>
     <string name="qrscan_ask_join_verified_group">Czy chcesz dołączyć do zweryfikowanej grupy „%1$s?</string>
     <string name="qrscan_ask_fingerprint_ask_oob">Zweryfikować kontakt i rozpocząć rozmowę z „%1$s?</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt „%1$s zweryfikowany. Rozpocząć rozmowę?</string>
@@ -434,6 +436,7 @@
     <string name="qrshow_x_joining">%1$s dołącza.</string>
     <string name="qrshow_x_verified">Zweryfikowano %1$s</string>
     <string name="qrshow_x_has_joined_group">Użytkownik %1$s bezpiecznie dołączył do grupy. </string>
+    <string name="qrshow_join_group_hint">Zeskanuj to, aby dołączyć do grupy „%1$s”.</string>
     <string name="qrshow_join_verified_group_hint">Zeskanuj to, aby dołączyć do zweryfikowanej grupy „%1$s”.</string>
     <string name="qrshow_join_verified_group_title">Kod QR zaproszenia</string>
     <string name="qrshow_join_contact_title">Weryfikacyjny kod QR</string>
@@ -494,6 +497,7 @@
     <string name="language_sr">Serbski</string>
     <string name="language_sv">Szwedzki</string>
     <string name="language_ta">Tamil</string>
+    <string name="language_te">Telugu</string>
     <string name="language_tr">Turecki</string>
     <string name="language_uk">Ukraiński</string>
     <string name="language_zh_CN">Chiński</string>
