@@ -1,15 +1,23 @@
 package org.thoughtcrime.securesms.util;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.ColorInt;
+import android.support.v7.app.AlertDialog;
 import android.text.TextPaint;
 import android.text.style.URLSpan;
 import android.view.View;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
+
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class LongClickCopySpan extends URLSpan {
   private static final String PREFIX_MAILTO = "mailto:";
@@ -21,6 +29,37 @@ public class LongClickCopySpan extends URLSpan {
 
   public LongClickCopySpan(String url) {
     super(url);
+  }
+
+  @Override
+  public void onClick(View widget) {
+    String url = getURL();
+    if (url.startsWith(PREFIX_MAILTO)) {
+      try {
+        String addr = prepareUrl(url);
+        Activity activity = (Activity) widget.getContext();
+        DcContext dcContext = DcHelper.getContext(activity);
+        DcContact contact = dcContext.getContact(dcContext.createContact(null, addr));
+        new AlertDialog.Builder(activity)
+            .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+            .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+              int chatId = dcContext.createChatByContactId(contact.getId());
+              if (chatId != 0) {
+                Intent intent = new Intent(activity, ConversationActivity.class);
+                intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+                activity.startActivity(intent);
+              }
+            })
+            .setNegativeButton(R.string.cancel, null)
+            .show();
+      }
+      catch(Exception e) {
+        e.printStackTrace();
+      }
+    }
+    else {
+      super.onClick(widget);
+    }
   }
 
   void onLongClick(View widget) {
