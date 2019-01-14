@@ -106,7 +106,7 @@ public class DocumentView extends FrameLayout {
 
     String suffix = parts[parts.length - 1];
 
-    if (suffix.length() <= 3) {
+    if (suffix.length() <= 4) {
       return suffix;
     }
 
