@@ -24,6 +24,7 @@
                 android:title="@string/pref_enter_sends"/>
     </PreferenceCategory>
 
+    <!--
     <PreferenceCategory android:layout="@layout/preference_divider"/>
 
     <PreferenceCategory android:key="message_trimming" android:title="@string/pref_trim_headline">
@@ -43,5 +44,6 @@
                     android:title="@string/pref_trim_now_button"
                     android:dependency="pref_trim_threads" />
     </PreferenceCategory>
+    -->
 
 </PreferenceScreen>
