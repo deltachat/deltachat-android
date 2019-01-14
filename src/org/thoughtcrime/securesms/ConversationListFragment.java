@@ -275,9 +275,9 @@ public class ConversationListFragment extends Fragment
           @Override
           protected void onPreExecute() {
             dialog = ProgressDialog.show(getActivity(),
-                                         getActivity().getString(R.string.one_moment),
-                                         getActivity().getString(R.string.one_moment),
-                                         true, false);
+                "",
+                getActivity().getString(R.string.one_moment),
+                true, false);
           }
 
           @Override

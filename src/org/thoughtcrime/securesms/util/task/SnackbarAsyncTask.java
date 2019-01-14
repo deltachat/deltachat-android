@@ -37,8 +37,13 @@ public abstract class SnackbarAsyncTask<Params>
 
   @Override
   protected void onPreExecute() {
-    if (this.showProgress) this.progressDialog = ProgressDialog.show(view.getContext(), "", "", true);
-    else                   this.progressDialog = null;
+    if (this.showProgress) {
+      this.progressDialog = ProgressDialog.show(view.getContext(),
+          "", view.getContext().getString(R.string.one_moment), true, false);
+    }
+    else {
+      this.progressDialog = null;
+    }
   }
 
   @SafeVarargs
