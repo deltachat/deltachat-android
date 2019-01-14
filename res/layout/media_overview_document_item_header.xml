@@ -13,6 +13,5 @@
               android:textColor="?attr/media_overview_header_foreground"
               android:textSize="14sp"
               android:textStyle="bold"
-              android:textAllCaps="true"
               tools:text="March 1, 2015" />
 </FrameLayout>

@@ -115,7 +115,6 @@
                           style="@style/Signal.Text.Caption"
                           android:text="@string/chat_archived_label"
                           android:textColor="?attr/conversation_list_item_date_color"
-                          android:textAllCaps="true"
                           android:background="@drawable/archived_indicator_background" />
 
                 <org.thoughtcrime.securesms.components.DeliveryStatusView

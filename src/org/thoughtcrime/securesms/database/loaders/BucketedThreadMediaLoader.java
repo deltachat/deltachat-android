@@ -211,7 +211,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       String getName(int section, Locale locale) {
         Date sectionDate = getSection(section);
 
-        return new SimpleDateFormat("MMMM, yyyy", locale).format(sectionDate);
+        return new SimpleDateFormat("MMMM yyyy", locale).format(sectionDate);
       }
     }
   }
