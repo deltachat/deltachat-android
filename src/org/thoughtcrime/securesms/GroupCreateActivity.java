@@ -42,7 +42,6 @@ import com.b44t.messenger.DcEventCenter;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.dd.CircularProgressButton;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -78,7 +77,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private final static String TAG = GroupCreateActivity.class.getSimpleName();
 
-  public static final String GROUP_ADDRESS_EXTRA = "group_recipient";
+  public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
   public static final String GROUP_CREATE_VERIFIED_EXTRA  = "group_create_verified";
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
@@ -95,7 +94,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private ImageView    avatar;
   private TextView     creatingText;
   private Bitmap       avatarBmp;
-  private Integer editGroupChatId = null;
+  private int          groupChatId;
+  private boolean      isEdit;
 
   @Override
   protected void onPreCreate() {
@@ -111,6 +111,15 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     verified = getIntent().getBooleanExtra(GROUP_CREATE_VERIFIED_EXTRA, false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+
+    groupChatId = getIntent().getIntExtra(EDIT_GROUP_CHAT_ID, 0);
+
+    // groupChatId may be set during creation,
+    // so always check isEdit()
+    if(groupChatId !=0) {
+      isEdit = true;
+    }
+
     initializeExistingGroup();
     initializeResources();
 
@@ -219,8 +228,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private void initializeAvatarView() {
     boolean imageLoaded = false;
-    if (editGroupChatId != null) {
-      String avatarPath = dcContext.getChat(editGroupChatId).getProfileImage();
+    if (groupChatId != 0) {
+      String avatarPath = dcContext.getChat(groupChatId).getProfileImage();
       File avatarFile = new File(avatarPath);
       if (avatarFile.exists()) {
         imageLoaded = true;
@@ -237,11 +246,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeExistingGroup() {
-    final Address groupAddress = getIntent().getParcelableExtra(GROUP_ADDRESS_EXTRA);
-    if (groupAddress != null) {
-      editGroupChatId = groupAddress.getDcChatId();
+    if (groupChatId != 0) {
       getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-      new FillExistingGroupInfoAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, editGroupChatId);
+      new FillExistingGroupInfoAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, groupChatId);
     }
   }
 
@@ -263,8 +270,20 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         finish();
         return true;
       case R.id.menu_create_group:
-        if (isEdit()) handleGroupUpdate();
-        else                           handleGroupCreate();
+        if (groupChatId!=0) {
+          groupUpdateInDb();
+        }
+        else {
+          groupCreateInDb();
+        }
+
+        if(isEdit()) {
+          groupUpdateDone();
+        }
+        else {
+          groupCreateDone();
+        }
+
         return true;
     }
 
@@ -277,24 +296,26 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     updateViewState();
   }
 
-  private void handleGroupCreate() {
+  private void groupCreateInDb() {
     String groupName = getGroupName();
     if (showGroupNameEmptyToast(groupName)) return;
 
-    int chatId = dcContext.createGroupChat(verified, groupName);
+    groupChatId = dcContext.createGroupChat(verified, groupName);
 
     Set<Recipient> recipients = getAdapter().getRecipients();
-    for(Recipient recipient : recipients) {
+    for (Recipient recipient : recipients) {
       Address address = recipient.getAddress();
-      if(address.isDcContact()) {
+      if (address.isDcContact()) {
         int contactId = address.getDcContactId();
-        dcContext.addContactToChat(chatId, contactId);
+        dcContext.addContactToChat(groupChatId, contactId);
       }
     }
-    AvatarHelper.setGroupAvatar(this, chatId, avatarBmp);
+    AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
+  }
 
+  private void groupCreateDone() {
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, groupChatId);
     startActivity(intent);
     finish();
   }
@@ -307,29 +328,30 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     return false;
   }
 
-  private void handleGroupUpdate() {
-    if(editGroupChatId == null) {
+  private void groupUpdateInDb() {
+    if (groupChatId == 0) {
       return;
     }
     String groupName = getGroupName();
     if (showGroupNameEmptyToast(groupName)) {
       return;
     }
-    dcContext.setChatName(editGroupChatId, groupName);
+    dcContext.setChatName(groupChatId, groupName);
     updateGroupParticipants();
 
-    AvatarHelper.setGroupAvatar(this, editGroupChatId, avatarBmp);
+    AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
+  }
 
+  private void groupUpdateDone() {
     Intent intent = new Intent();
-    Recipient recipient = dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, editGroupChatId);
-    intent.putExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA, recipient.getAddress());
+    intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, groupChatId);
     setResult(RESULT_OK, intent);
     finish();
   }
 
   private void updateGroupParticipants() {
     SparseBooleanArray currentChatContactIds = new SparseBooleanArray();
-    for(int chatContactId : dcContext.getChatContacts(editGroupChatId)) {
+    for(int chatContactId : dcContext.getChatContacts(groupChatId)) {
       currentChatContactIds.put(chatContactId, false);
     }
 
@@ -339,7 +361,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       if(address.isDcContact()) {
         int contactId = address.getDcContactId();
         if(currentChatContactIds.indexOfKey(contactId) < 0) {
-          dcContext.addContactToChat(editGroupChatId, contactId);
+          dcContext.addContactToChat(groupChatId, contactId);
         } else {
           currentChatContactIds.put(contactId, true);
         }
@@ -347,7 +369,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     }
     for(int index = 0; index < currentChatContactIds.size(); index++) {
       if (!currentChatContactIds.valueAt(index)) {
-        dcContext.removeContactFromChat(editGroupChatId, currentChatContactIds.keyAt(index));
+        dcContext.removeContactFromChat(groupChatId, currentChatContactIds.keyAt(index));
       }
     }
   }
@@ -434,10 +456,18 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public void onClick(View view) {
-        Intent qrIntent = new Intent(GroupCreateActivity.this, QrShowActivity.class);
-        if (isEdit()) {
-          qrIntent.putExtra(QrShowActivity.CHAT_ID, editGroupChatId);
+        if(groupChatId==0) {
+          groupCreateInDb();
         }
+        else {
+          groupUpdateInDb();
+        }
+
+        if(groupChatId==0) {
+          return;
+        }
+        Intent qrIntent = new Intent(GroupCreateActivity.this, QrShowActivity.class);
+        qrIntent.putExtra(QrShowActivity.CHAT_ID, groupChatId);
         startActivity(qrIntent);
     }
   }
@@ -491,7 +521,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private boolean isEdit() {
-    return editGroupChatId != null;
+    return isEdit;
   }
 
 }

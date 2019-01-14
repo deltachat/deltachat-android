@@ -359,7 +359,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       addAttachmentContactInfo(data);
       break;
     case GROUP_EDIT:
-      recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA));
       dcChat = dcContext.getChat(threadId);
       titleView.setTitle(glideRequests, dcChat);
       supportInvalidateOptionsMenu();
@@ -538,7 +537,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleEditPushGroup() {
     Intent intent = new Intent(ConversationActivity.this, GroupCreateActivity.class);
-    intent.putExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA, recipient.getAddress());
+    intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, threadId);
     if (dcChat.isVerified()) {
       intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
     }
