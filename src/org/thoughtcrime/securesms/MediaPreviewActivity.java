@@ -147,8 +147,10 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       }
 
       if      (mediaItem.outgoing)          getSupportActionBar().setTitle(getString(R.string.self));
-      else if (mediaItem.recipient != null) getSupportActionBar().setTitle(mediaItem.recipient.toShortString());
-      else                                  getSupportActionBar().setTitle("");
+      else  {
+        int fromId = dcContext.getMsg(mediaItem.msgId).getFromId();
+        getSupportActionBar().setTitle(dcContext.getContact(fromId).getDisplayName());
+      }
 
       getSupportActionBar().setSubtitle(relativeTimeSpan);
     }
