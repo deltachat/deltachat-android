@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -47,6 +48,7 @@ import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Prefs.VibrateState;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 @SuppressLint("StaticFieldLeak")
@@ -308,7 +310,13 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       }
       else {
         // contact view
-        addrPreference.setTitle(getProfileContact().getAddr());
+        String address = getProfileContact().getAddr();
+        addrPreference.setTitle(address);
+        addrPreference.setOnPreferenceClickListener(preference -> {
+          Util.writeTextToClipboard(getContext(), address);
+          Toast.makeText(getContext(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+          return false;
+        });
 
         if (contactToEditRecipient.isBlocked()) blockPreference.setTitle(R.string.menu_unblock_contact);
         else                                    blockPreference.setTitle(R.string.menu_block_contact);
