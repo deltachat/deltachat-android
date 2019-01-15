@@ -646,6 +646,8 @@ public class ApplicationDcContext extends DcContext {
           case 50: s = context.getString(R.string.chat_self_talk_subtitle); break;
           case 60: s = context.getString(R.string.login_error_cannot_login); break;
           case 61: s = context.getString(R.string.login_error_server_response); break;
+          case 62: s = context.getString(R.string.systemmsg_action_by_user); break;
+          case 63: s = context.getString(R.string.systemmsg_action_by_me); break;
           default: s = null; break;
         }
         return stringToData(s);
