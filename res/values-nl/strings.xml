@@ -104,7 +104,6 @@
     <string name="menu_new_contact">Nieuwe contactpersoon</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
-    <string name="menu_new_verified_group">Nieuwe goedgekeurde groep</string>
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep bewerken</string>
@@ -278,9 +277,11 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in bijv. de webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
 
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Doorsturen naar...</string>
+
 
     <!-- preferences -->
     <string name="pref_summary_on">aan</string>
@@ -416,24 +417,24 @@
     <string name="qrscan_title">QR-code scannen</string>
     <string name="qrscan_hint">Plaatst je camera boven de QR-code</string>
     <string name="qrscan_ask_join_group">Wil je lid worden van de groep \"%1$s\"?</string>
-    <string name="qrscan_ask_join_verified_group">Wil je lid worden van de goedgekeurde groep \"%1$s\"?</string>
-    <string name="qrscan_ask_fingerprint_ask_oob">Wil je de contactpersoon \"%1$s\" goedkeuren en een gesprek beginnen?</string>
-    <string name="qrscan_ask_chatting_fingerprint_ok">Contactpersoon \"%1$s\" goedgekeurd. Wil je een gesprek beginnen?</string>
-    <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor \"%1$s\".</string>
+    <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor %1$s</string>
     <string name="qrscan_no_addr_found">Deze QR-code bevat een vingerafdruk, maar geen e-mailadres.\n\nVoor out-of-band-goedkeuring, moet je eerst een beveiligde verbinding opzetten met de ontvanger.</string>
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
     <string name="qrscan_contains_url">Gescande QR-code-URL:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s goedgekeurd; vertel iets over mezelf...</string>
-    <string name="qrshow_title">QR-goedkeuringscode tonen</string>
+    <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s is lid geworden.</string>
     <string name="qrshow_x_verified">%1$s is goedgekeurd.</string>
-    <string name="qrshow_x_has_joined_group">%1$s is veilig lid geworden van de groep.</string>
+    <string name="qrshow_x_has_joined_group">%1$s is lid geworden van de groep.</string>
+    <string name="qrshow_join_group_title">QR-uitnodigingscode</string>
     <string name="qrshow_join_group_hint">Scan dit om lid te worden van de groep \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_hint">Scan dit om lid te worden van de goedgekeurde groep \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_title">QR-uitnodgingscode</string>
-    <string name="qrshow_join_contact_title">QR-goedkeuringscode</string>
-    <string name="qrshow_join_contact_hint">\"%1$s\" Scan dit om een goedgekeurde contactpersoon in te stellen.</string>
+    <string name="qrshow_join_contact_title">QR-uitnodigingscode</string>
+    <string name="qrshow_join_contact_hint">Scan dit om een contactpersoon in te stellen met %1$s</string>
+    <string name="contact_verified">%1$s is goedgekeurd.</string>
+    <string name="contact_not_verified">Kan %1$s niet goedkeuren</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
 
 
     <!-- notifications  -->
@@ -547,7 +548,7 @@
     <string name="remove_desktop">Verwijderen</string>
     <string name="save_desktop">Opslaan</string>
     <string name="show_qr_verify_code_desktop">QR-goedkeuringscode tonen</string>
-    <string name="show_qr_invite_code_desktop">QR-uitnodgingscode tonen</string>
+    <string name="show_qr_invite_code_desktop">QR-uitnodigingscode tonen</string>
     <string name="add_contact_desktop">Contactpersoon toevoegen</string>
     <string name="login_required_desktop">vereist</string>
     <string name="name_desktop">Naam</string>
@@ -579,5 +580,19 @@
     <string name="message_detail_to_desktop">aan</string>
     <string name="menu.view.developer.open.log.folder">Map met logbestanden openen</string>
     <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
+
+
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Wil je lid worden van de goedgekeurde groep \"%1$s\"?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_fingerprint_ask_oob">Wil je een gesprek beginnen met \"%1$s\"?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Contactpersoon \"%1$s\" goedgekeurd. Wil je een gesprek beginnen?</string>
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">QR-uitnodigingscode</string>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Scan dit om lid te worden van de goedgekeurde groep \"%1$s\".</string>
+
 
 </resources>

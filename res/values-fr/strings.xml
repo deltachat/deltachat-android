@@ -71,7 +71,6 @@
     <string name="menu_new_contact">Nouveau contact</string>
     <string name="menu_new_chat">Nouvelle discussion</string>
     <string name="menu_new_group">Nouveau groupe</string>
-    <string name="menu_new_verified_group">Nouveau groupe vérifié</string>
     <string name="menu_send">Envoyer</string>
     <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
     <string name="menu_edit_group">Éditer le groupe</string>

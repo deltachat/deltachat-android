@@ -104,7 +104,6 @@
     <string name="menu_new_contact">Nuevo contacto</string>
     <string name="menu_new_chat">Nuevo chat</string>
     <string name="menu_new_group">Nuevo grupo</string>
-    <string name="menu_new_verified_group">Nuevo grupo verificado</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
@@ -277,9 +276,11 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Respuesta de %1$s: %2$s\n\nAlgunos proveedores colocan información adicional en su bandeja de entrada; Puedes comprobarlo por ej. en la interfaz web. Consulte a su proveedor o amigos si tiene problemas.</string>
 
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenviar a ...</string>
+
 
     <!-- preferences -->
     <string name="pref_summary_on">activado</string>
@@ -413,25 +414,12 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">Escanear código QR</string>
     <string name="qrscan_hint">Coloque su cámara sobre el código QR</string>
-    <string name="qrscan_ask_join_verified_group">¿Quieres unirte al grupo verificado \"%1$s\"?</string>
-    <string name="qrscan_ask_fingerprint_ask_oob">¿Verificar contacto y comenzar a chatear con \"%1$s\"?</string>
-    <string name="qrscan_ask_chatting_fingerprint_ok">Contacto \"%1$s\" verificado. ¿Empezar a chatear?</string>
-    <string name="qrscan_fingerprint_mismatch">La huella digital escaneada no coincide con la última huella vista para \"%1$s\".</string>
-    <string name="qrscan_no_addr_found">Este código QR contiene una huella digital pero no una dirección de correo electrónico.\n\nPara una verificación fuera de banda, establezca primero una conexión cifrada con el destinatario.</string>
     <string name="qrscan_contains_text">Texto del código QR escaneado:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del código QR escaneado:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Huella digital</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verificado, presentarme ...</string>
-    <string name="qrshow_title">Mostrar código de verificación QR</string>
     <string name="qrshow_x_joining">%1$s se une.</string>
     <string name="qrshow_x_verified">%1$s verificado.</string>
-    <string name="qrshow_x_has_joined_group">%1$s se unió al grupo de forma segura.</string>
-    <string name="qrshow_join_verified_group_hint">Escanea esto para unirte al grupo verificado \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_title">Código de invitación QR</string>
-    <string name="qrshow_join_contact_title">Código de verificación QR</string>
-    <string name="qrshow_join_contact_hint">\"%1$s\" Escanee esto para configurar un contacto verificado.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuevos mensajes en %2$d chats</string>
     <string name="notify_most_recent_from">Más reciente de: %1$s</string>
@@ -574,5 +562,17 @@
     <string name="message_detail_to_desktop">para</string>
     <string name="menu.view.developer.open.log.folder">Abrir Carpeta de Logs</string>
     <string name="menu.view.developer.open.current.log.file">Abrir Archivo de Logs Actual</string>
+
+
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">¿Quieres unirte al grupo verificado \"%1$s\"?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Contacto \"%1$s\" verificado. ¿Empezar a chatear?</string>
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">Código de invitación QR</string>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Escanea esto para unirte al grupo verificado \"%1$s\".</string>
+
 
 </resources>

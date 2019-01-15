@@ -97,7 +97,6 @@
     <string name="menu_new_contact">Новий контакт</string>
     <string name="menu_new_chat">Новий чат</string>
     <string name="menu_new_group">Нова група</string>
-    <string name="menu_new_verified_group">Нова підтверджена група</string>
     <string name="menu_send">Відправити</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
@@ -270,6 +269,7 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслати...</string>
+
 
     <!-- preferences -->
     <string name="pref_summary_on">увімкн.</string>

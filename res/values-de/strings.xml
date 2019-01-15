@@ -104,7 +104,6 @@
     <string name="menu_new_contact">Neuer Kontakt</string>
     <string name="menu_new_chat">Neuer Chat</string>
     <string name="menu_new_group">Neue Gruppe</string>
-    <string name="menu_new_verified_group">Neue verifizierte Gruppe</string>
     <string name="menu_send">Senden</string>
     <string name="menu_toggle_keyboard">Emoji einblenden</string>
     <string name="menu_edit_group">Gruppe bearbeiten</string>
@@ -123,7 +122,7 @@
     <string name="menu_mute">Stummschalten</string>
     <string name="menu_unmute">Stumm aus</string>
     <string name="menu_export_attachment">Datei exportieren</string>
-    <string name="menu_all_media">Alle  Medien</string>
+    <string name="menu_all_media">Alle Medien</string>
     <string name="menu_share">Teilen</string>
     <string name="menu_block_contact">Kontakt blockieren</string>
     <string name="menu_unblock_contact">Kontakt nicht mehr blockieren</string>
@@ -280,9 +279,11 @@
 
 Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hinzu. Sie können dies z.B. im Webinterface überprüfen. Bitte wenden Sie sich an Ihren Anbieter oder Freunde, wenn Probleme auftreten.</string>
 
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Weiterleiten zu ...</string>
+
 
     <!-- preferences -->
     <string name="pref_summary_on">an</string>
@@ -306,7 +307,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Passwort und Kontoeinstellungen</string>
     <string name="pref_who_can_see_this_information">Wer kann diese Informationen sehen?</string>
-    <string name="pref_who_can_see_profile_explain">Profilbild und Name werden bei der Kommunikation mit anderen neben mit den Nachrichten  angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
+    <string name="pref_who_can_see_profile_explain">Profilbild und Name werden bei der Kommunikation mit anderen neben den Nachrichten angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
     <string name="pref_your_name">Dein Name</string>
     <string name="pref_default_status_label">Statustext</string>
     <string name="pref_default_status_text">Mit meinem Delta Chat Messenger gesendet: https://delta.chat</string>
@@ -418,26 +419,13 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="qrscan_title">QR-Code scannen</string>
     <string name="qrscan_hint">Kamera über den QR-Code halten</string>
     <string name="qrscan_ask_join_group">Wollen Sie der Gruppe \"%1$s\" beitreten?</string>
-    <string name="qrscan_ask_join_verified_group">Möchten Sie der verifizierten Gruppe \"%1$s\" beitreten?</string>
-    <string name="qrscan_ask_fingerprint_ask_oob">Den Kontakt verifizieren und eine Unterhaltung mit \"%1$s\" beginnen?</string>
-    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt \"%1$s\" verifiziert. Unterhaltung starten?</string>
-    <string name="qrscan_fingerprint_mismatch">Der gescannte Fingerabdruck stimmt nicht mit dem zuletzt gesehenen Fingerabdruck überein. \"%1$s\".</string>
-    <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine E-Mail-Adresse.\n\nFür eine Out-of-Band-Verifizierung stellen Sie bitte zuerst eine verschlüsselte Verbindung zum Empfänger her.</string>
     <string name="qrscan_contains_text">Gescannter QR-Code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Gescannter QR-Code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verifiziert, mich vorgestellt....</string>
-    <string name="qrshow_title">QR Verifizierungscode anzeigen</string>
     <string name="qrshow_x_joining">%1$s beigefügt.</string>
     <string name="qrshow_x_verified">%1$s verifiziert.</string>
-    <string name="qrshow_x_has_joined_group">%1$s sicher in die Gruppe aufgenommen.</string>
     <string name="qrshow_join_group_hint">Scannen Sie dies, um der Gruppe \"%1$s\" beizutreten.</string>
-    <string name="qrshow_join_verified_group_hint">Scannen Sie dies, um der verifizierten Gruppe beizutreten. \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_title">QR Einladungscode</string>
-    <string name="qrshow_join_contact_title">QR Verifizierungscode</string>
-    <string name="qrshow_join_contact_hint">Scannen, um einen Kontakt mit \"%1$s\" herzustellen.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d neue Nachrichten in %2$d Chats</string>
     <string name="notify_most_recent_from">Letzter Stand von: %1$s</string>
@@ -581,5 +569,17 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="message_detail_to_desktop">an</string>
     <string name="menu.view.developer.open.log.folder">Logdatei öffnen</string>
     <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
+
+
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Möchten Sie der verifizierten Gruppe \"%1$s\" beitreten?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt \"%1$s\" verifiziert. Unterhaltung starten?</string>
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">QR Einladungscode</string>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Scannen Sie dies, um der verifizierten Gruppe beizutreten. \"%1$s\".</string>
+
 
 </resources>

@@ -108,7 +108,6 @@
     <string name="menu_new_contact">Новый контакт</string>
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
-    <string name="menu_new_verified_group">Новая подтвержденная группа</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>
@@ -308,6 +307,7 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
 
+
     <!-- preferences -->
     <string name="pref_summary_on">вкл</string>
     <string name="pref_summary_off">выкл</string>
@@ -426,9 +426,6 @@
     <string name="qrscan_title">Сканировать QR код</string>
     <string name="qrscan_hint">Наведите Вашу камеру на QR код</string>
     <string name="qrscan_ask_join_group">Вы хотите присоединиться к \"%1$s\"?</string>
-    <string name="qrscan_ask_join_verified_group">Вы хотите присоединиться к подтвержденной группе \"%1$s\"?</string>
-    <string name="qrscan_ask_fingerprint_ask_oob">Подтвердить контакт и начать общение с \"%1$s\"?</string>
-    <string name="qrscan_ask_chatting_fingerprint_ok">Контакт \"%1$s\" верифицирован. Начать чат?</string>
     <string name="qrscan_contains_text">Текст с отсканированного QR:
 
 %1$s</string>
@@ -436,16 +433,8 @@
 
 %1$s</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
-    <string name="qrshow_title">Показать проверочный QR код</string>
     <string name="qrshow_x_joining">%1$s присоединился (-лась).</string>
     <string name="qrshow_x_verified">%1$s проверен.</string>
-    <string name="qrshow_x_has_joined_group">%1$s безопасно присоединился к группе.</string>
-    <string name="qrshow_join_verified_group_hint">Отсканируйте это для присоединения к подтвержденной группе \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_title">QR код приглашения</string>
-    <string name="qrshow_join_contact_title">QR код подтверждения</string>
-    <string name="qrshow_join_contact_hint">\"%1$s\" Отсканируйте это для настройки подтвержденного контакта.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d новых сообщений из %2$d чатов.</string>
     <string name="notify_media_message_with_text">Медиа сообщение: %s</string>
@@ -564,5 +553,17 @@
     <string name="message_detail_received_desktop">Принято</string>
     <string name="menu.view.developer.open.log.folder">Открыть папку логов</string>
     <string name="menu.view.developer.open.current.log.file">Открыть текущий лог</string>
+
+
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Вы хотите присоединиться к подтвержденной группе \"%1$s\"?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Контакт \"%1$s\" верифицирован. Начать чат?</string>
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">QR код приглашения</string>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Отсканируйте это для присоединения к подтвержденной группе \"%1$s\".</string>
+
 
 </resources>

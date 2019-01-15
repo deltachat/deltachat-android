@@ -12,6 +12,7 @@
     <string name="custom">Tilpasset</string>
     <string name="none">Ingen</string>
     <string name="open">Åbne</string>
+    <string name="delete">Slette</string>
     <string name="not_now">Ikke nu</string>
     <string name="never">Aldrig</string>
     <string name="one_moment">Et øjeblik…</string>
@@ -103,7 +104,6 @@
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_chat">Ny samtale</string>
     <string name="menu_new_group">Ny gruppe</string>
-    <string name="menu_new_verified_group">Ny efterprøvet gruppe</string>
     <string name="menu_send">Sende</string>
     <string name="menu_toggle_keyboard">Skifte emoji tastatur</string>
     <string name="menu_edit_group">Redigere gruppe</string>
@@ -148,11 +148,19 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Forlade denne gruppe?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Slette samtale? Den vil ikke længere blive vist i samtale listen, dens beskeder vil forblive på serveren.</item>
+        <item quantity="other">Slette %d samtaler? De vil ikke længere blive vist i samtale listen, deres beskeder vil forblive på serveren.</item>
+    </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Slette besked her og på server?</item>
         <item quantity="other">Slette %1$d beskeder her og på server?</item>
     </plurals>
     <string name="ask_forward">Videresende beskeder til %1$s?</string>
+    <string name="ask_export_attachment">Eksportere vedhæftninger? Eksport af vedhæftninger vil tillade alle programmer på din enhed adgang til dem.\n\nFortsætte?</string>
+    <string name="ask_block_contact">Blokere kontakt? Du vil ikke modtage beskeder fra denne kontakt mere.</string>
+    <string name="ask_unblock_contact">Fjerne blokering af kontakt? Du vil igen kunne modtage beskeder fra denne kontakt.</string>
+    <string name="cannot_delete_contacts_in_use">Kan ikke slette kontakter med igangværende samtaler.</string>
     <string name="ask_start_chat_with">Samtale med %1$s?</string>
 
 
@@ -181,6 +189,7 @@
         <item quantity="other">%d ikke læste beskeder</item>
     </plurals>
     <string name="chat_record_slide_to_cancel">Trække for at annullere</string>
+    <string name="chat_no_chats_yet_hint">Giv indbakken noget at skrive hjem om. Kom i gang ved at skrive til en ven.</string>
     <string name="chat_all_done_hint">Indbakke tom</string>
     <string name="chat_all_done_explain">Der er ikke mere!</string>
     <string name="chat_share_with_title">Dele med</string>
@@ -202,6 +211,7 @@
     <string name="group_please_enter_group_name">Indtast et navn til gruppen.</string>
     <string name="group_add_members">Tilføje medlemmer</string>
     <string name="group_hello_draft">Hej, har lige oprettet gruppen  \"%1$s\" til os.</string>
+    <string name="group_self_not_in_group">Man skal være medlem af gruppen fro at udføre denne handling.</string>
     <string name="profile_encryption">Kryptering</string>
 
 
@@ -220,15 +230,19 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro1_message">Budbringeren med verdens bredeste publikum. Fri og uafhængig.</string>
     <string name="welcome_intro2_headline">Uafhængig</string>
     <string name="welcome_intro2_message">Der er ingen Delta Chat server. Programmet bruger kun din e-post server.</string>
     <string name="welcome_intro3_headline">Hurtig</string>
+    <string name="welcome_intro3_message">Skubbe beskeder på sekunder.\nHurtig grænseflade.</string>
     <string name="welcome_intro4_headline">Kraftfuld</string>
+    <string name="welcome_intro4_message">Ubegrænsede samtaler, billeder, video, tale beskeder med mere. Multi klient stand.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Fri</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat er fri for altid. Åben kildekode. Ingen reklamer. Intet abonnement. Ingen leverandør låsning.</string>
     <string name="welcome_intro6_headline">Krypteret</string>
+    <string name="welcome_intro6_message">Krypteret med alle almindelige algoritmer. Beskeder bliver på  serveren.</string>
     <string name="welcome_intro7_headline">Troværdig</string>
     <string name="welcome_intro7_message">Delta Chat er sikker til erhvervsmæssig brug, kompatibel og standard baseret.</string>
     <string name="welcome_start_messaging">Start skrivning</string>
@@ -256,6 +270,7 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Videresende til …</string>
+
 
     <!-- preferences -->
     <string name="pref_summary_on">til</string>
@@ -333,6 +348,7 @@
     <string name="pref_managekeys_import_secret_keys">Importere hemmelige nøgler</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Hemmelige nøgler skrevet til \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Hemmelige nøgler importeret fra \"%1$s\".</string>
+    <string name="pref_background">Baggrund</string>
     <string name="pref_imap_folder_handling">IMAP mappe håndtering</string>
     <string name="pref_watch_inbox_folder">Overvåge indbakke mappe</string>
     <string name="pref_watch_sent_folder">Overvåge sendt mappe</string>
@@ -372,24 +388,14 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">Skanne QR kode</string>
     <string name="qrscan_hint">Placere kamera over QR kode</string>
-    <string name="qrscan_ask_join_verified_group">Tilslutte efterprøvet gruppe \"%1$s\"?</string>
-    <string name="qrscan_ask_fingerprint_ask_oob">Efterprøve kontakt og start samtale med \"%1$s\"?</string>
-    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt \"%1$s\" efterprøvet. Start samtale?</string>
-    <string name="qrscan_fingerprint_mismatch">Skannet fingeraftryk passer ikke sammen med seneste for \"%1$s\".</string>
+    <string name="qrscan_ask_join_group">Deltage i gruppen \"%1$s\"?</string>
     <string name="qrscan_contains_text">Skannet QR kode tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skannet QR kode URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingeraftryk</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s efterprøvet, introducere…</string>
-    <string name="qrshow_title">Vise QR efterprøv kode</string>
     <string name="qrshow_x_joining">%1$s tilslutter.</string>
     <string name="qrshow_x_verified">%1$s efterprøvet.</string>
-    <string name="qrshow_x_has_joined_group">%1$s sikkert tilsluttet gruppen.</string>
-    <string name="qrshow_join_verified_group_hint">Skanne for at tilslutte efterprøvet gruppe \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_title">QR inviteringskode </string>
-    <string name="qrshow_join_contact_title">QR efterprøve kode</string>
-    <string name="qrshow_join_contact_hint">\"%1$s\" skanne for at opsætte efterprøvet kontakt.</string>
-
-
+    <string name="qrshow_join_group_hint">Skanne dette for at deltage i gruppen \"%1$s\".</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nye beskeder i %2$d samtaler</string>
     <string name="notify_most_recent_from">Nylig fra: %1$s</string>
@@ -446,6 +452,7 @@
     <string name="language_sr">Serbisk</string>
     <string name="language_sv">Svensk</string>
     <string name="language_ta">Tamilsk</string>
+    <string name="language_te">Telugu</string>
     <string name="language_tr">Tyrkisk</string>
     <string name="language_uk">Ukrainsk</string>
     <string name="language_zh_CN">Kinesisk</string>
@@ -524,5 +531,17 @@
     <string name="message_detail_to_desktop">til</string>
     <string name="menu.view.developer.open.log.folder">Åben log mappe</string>
     <string name="menu.view.developer.open.current.log.file">Åben nuværende log fil</string>
+
+
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Tilslutte efterprøvet gruppe \"%1$s\"?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt \"%1$s\" efterprøvet. Start samtale?</string>
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">QR inviteringskode </string>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Skanne for at tilslutte efterprøvet gruppe \"%1$s\".</string>
+
 
 </resources>

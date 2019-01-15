@@ -95,7 +95,6 @@
     <string name="menu_new_contact">Nuovo contatto</string>
     <string name="menu_new_chat">Nuova chat</string>
     <string name="menu_new_group">Nuovo gruppo</string>
-    <string name="menu_new_verified_group">Nuovo gruppo verificato</string>
     <string name="menu_send">Inviato</string>
     <string name="menu_toggle_keyboard">Alterna tastiera emoji</string>
     <string name="menu_edit_group">Modifica grupp</string>
@@ -268,9 +267,11 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni provider inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il provider o i tuoi amici se riscontri problemi.</string>
 
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Inotra a...</string>
+
 
     <!-- preferences -->
     <string name="pref_summary_on">o</string>
@@ -403,25 +404,12 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">Scansiona codice QR</string>
     <string name="qrscan_hint">Posiziona la camera sopra il codice QR</string>
-    <string name="qrscan_ask_join_verified_group">Vuoi accedere al gruppo verificato \"%1$s\"?</string>
-    <string name="qrscan_ask_fingerprint_ask_oob">Verificare il contatto e iniziare la chat con \"%1$s\"?</string>
-    <string name="qrscan_ask_chatting_fingerprint_ok">Contatto \"%1$s\" verificato. Avviare la chat?</string>
-    <string name="qrscan_fingerprint_mismatch">L\'impronta scansionata non corrisponde all\'ultima vista per \"%1$s\".</string>
-    <string name="qrscan_no_addr_found">Questo codice QR contiene un\'impronta, ma non un indirizzo email.\n\nPer una verifica a due fattori efficace, prima stabilisci una connessione cifrata col destinatario.</string>
     <string name="qrscan_contains_text">Testo del codice QR scansionato::\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del codice QR scansionato:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Impronta</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verificato, mi presento …</string>
-    <string name="qrshow_title">Mostra codice QR di verifica</string>
     <string name="qrshow_x_joining">%1$s entra.</string>
     <string name="qrshow_x_verified">%1$s verificato.</string>
-    <string name="qrshow_x_has_joined_group">%1$s è entrato nel gruppo in sicurezza.</string>
-    <string name="qrshow_join_verified_group_hint">Scansiona per entrare nel gruppo verificato \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_title">Codice QR di invito</string>
-    <string name="qrshow_join_contact_title">Codice QR di verifica</string>
-    <string name="qrshow_join_contact_hint">\"%1$s\" Scansiona per creare un contatto verificato.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuovi messaggi in %2$d chat</string>
     <string name="notify_most_recent_from">Più recente da: %1$s</string>
@@ -456,4 +444,15 @@
     <string name="perm_explain_access_to_storage_denied">Delta Chat richiede l\'autorizzazione per creare allegati, esportare foto, video e audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat richiede l\'autorizzazione per allegare la posizione, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
 
-    </resources>
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Vuoi accedere al gruppo verificato \"%1$s\"?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Contatto \"%1$s\" verificato. Avviare la chat?</string>
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">Codice QR di invito</string>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Scansiona per entrare nel gruppo verificato \"%1$s\".</string>
+
+
+</resources>

@@ -113,7 +113,6 @@
     <string name="menu_new_contact">Nowy kontakt</string>
     <string name="menu_new_chat">Nowy czat</string>
     <string name="menu_new_group">Nowa grupa</string>
-    <string name="menu_new_verified_group">Nowa zweryfikowana grupa</string>
     <string name="menu_send">Wyślij</string>
     <string name="menu_edit_group">Edytuj grupę</string>
     <string name="menu_archive_chat">Archiwizuj czat</string>
@@ -293,9 +292,11 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Odpowiedź od %1$s: %2$s\n\nNiektórzy dostawcy umieszczają w skrzynce odbiorczej dodatkowe informacje, które można sprawdzić np. na stronie internetowej. W przypadku wystąpienia problemów należy skonsultować się z dostawcą lub znajomymi.</string>
 
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Przekaż do…</string>
+
 
     <string name="pref_summary_off">Wyłączone</string>
     <string name="pref_profile_info_headline">Twój profil</string>
@@ -423,26 +424,21 @@
     <string name="qrscan_title">Skanuj kod QR</string>
     <string name="qrscan_hint">Umieść aparat nad kodem QR</string>
     <string name="qrscan_ask_join_group">Czy chcesz dołączyć do grupy „%1$s?</string>
-    <string name="qrscan_ask_join_verified_group">Czy chcesz dołączyć do zweryfikowanej grupy „%1$s?</string>
-    <string name="qrscan_ask_fingerprint_ask_oob">Zweryfikować kontakt i rozpocząć rozmowę z „%1$s?</string>
-    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt „%1$s zweryfikowany. Rozpocząć rozmowę?</string>
-    <string name="qrscan_fingerprint_mismatch">Zeskanowany odcisk palca „nie pasuje” do odcisku palca ostatnio widzianego u „%1$s.</string>
+    <string name="qrscan_fingerprint_mismatch">Zeskanowany odcisk palca nie pasuje do odcisku palca ostatnio widzianego u %1$s</string>
     <string name="qrscan_no_addr_found">Ten kod QR zawiera odcisk palca, ale nie zawiera adresu e-mail.\n\nW celu weryfikacji poza zasadniczym pasmem należy najpierw nawiązać szyfrowane połączenie z odbiorcą.</string>
     <string name="qrscan_contains_text">Zeskanowany kod QR zawiera następujący tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Zeskanowany kod QR zawiera następujący adres:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Odciski palca</string>
     <string name="qrscan_x_verified_introduce_myself">Zweryfikowano %1$s, przedstaw się…</string>
-    <string name="qrshow_title">Pokaż weryfikacyjny kod QR</string>
+    <string name="qrshow_title">Kod QR zaproszenia</string>
     <string name="qrshow_x_joining">%1$s dołącza.</string>
     <string name="qrshow_x_verified">Zweryfikowano %1$s</string>
-    <string name="qrshow_x_has_joined_group">Użytkownik %1$s bezpiecznie dołączył do grupy. </string>
+    <string name="qrshow_x_has_joined_group">Użytkownik %1$s dołączył do grupy. </string>
+    <string name="qrshow_join_group_title">Kod QR zaproszenia</string>
     <string name="qrshow_join_group_hint">Zeskanuj to, aby dołączyć do grupy „%1$s”.</string>
-    <string name="qrshow_join_verified_group_hint">Zeskanuj to, aby dołączyć do zweryfikowanej grupy „%1$s”.</string>
-    <string name="qrshow_join_verified_group_title">Kod QR zaproszenia</string>
-    <string name="qrshow_join_contact_title">Weryfikacyjny kod QR</string>
-    <string name="qrshow_join_contact_hint">„%1$s” Zeskanuj to w celu skonfigurowania zweryfikowanego kontaktu.</string>
-
-
+    <string name="qrshow_join_contact_title">Kod QR zaproszenia</string>
+    <string name="qrshow_join_contact_hint">Zeskanuj to w celu skonfigurowania kontaktu z %1$s</string>
+    <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
     <string name="notify_most_recent_from">Najnowsze z: %1$s</string>
     <string name="notify_media_message_with_text">Wiadomość multimedialna: %s</string>
     <string name="notify_mark_all_read">Oznacz wszystkie jako przeczytane</string>
@@ -563,4 +559,17 @@
     <string name="not_in_this_group_desktop">Potencjalni członkowie grupy (nie w grupie)</string>
     <string name="message_detail_from_desktop">od</string>
     <string name="message_detail_to_desktop">do</string>
-    </resources>
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Czy chcesz dołączyć do zweryfikowanej grupy „%1$s?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_fingerprint_ask_oob">Rozpocząć rozmowę z „%1$s?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt „%1$s zweryfikowany. Rozpocząć rozmowę?</string>
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">Kod QR zaproszenia</string>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Zeskanuj to, aby dołączyć do zweryfikowanej grupy „%1$s”.</string>
+
+
+</resources>
