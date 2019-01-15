@@ -632,6 +632,9 @@ public class ApplicationDcContext extends DcContext {
           case 31: s = context.getString(R.string.systemmsg_read_receipt_subject); break;
           case 32: s = context.getString(R.string.systemmsg_read_receipt_body); break;
           case 33: s = context.getString(R.string.systemmsg_group_image_deleted); break;
+          case 35: s = context.getString(R.string.contact_verified); break;
+          case 36: s = context.getString(R.string.contact_not_verified); break;
+          case 37: s = context.getString(R.string.contact_setup_changed); break;
           case 40: s = context.getString(R.string.chat_archived_chats_title); break;
           case 42: s = context.getString(R.string.autocrypt_asm_subject); break;
           case 43: s = context.getString(R.string.autocrypt_asm_general_body); break;

@@ -152,7 +152,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
                 msg = String.format(activity.getString(R.string.qrscan_ask_join_group), qrParsed.getText1());
                 break;
             default:
-                msg = String.format(activity.getString(R.string.qrscan_ask_fingerprint_ask_oob), nameNAddr);
+                msg = String.format(activity.getString(R.string.ask_start_chat_with), nameNAddr);
                 break;
         }
         builder.setMessage(Html.fromHtml(msg));

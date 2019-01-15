@@ -7,11 +7,11 @@
           android:icon="@drawable/ic_ab_qr"
           app:showAsAction="always"/>
 
-    <item android:title="@string/qrshow_title"
-        android:id="@+id/menu_qr_show" />
-
     <item android:title="@string/menu_new_chat"
           android:id="@+id/menu_new_chat" />
+
+    <item android:title="@string/qrshow_title"
+        android:id="@+id/menu_qr_show" />
 
     <item android:title="@string/menu_deaddrop"
           android:id="@+id/menu_deaddrop" />

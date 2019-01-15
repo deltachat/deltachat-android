@@ -278,9 +278,11 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers place additional information in your inbox; you can check them it eg. in the web frontend. Consult your provider or friends if you run into problems.</string>
 
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Forward to …</string>
+
 
     <!-- preferences -->
     <string name="pref_summary_on">on</string>
@@ -416,24 +418,24 @@
     <string name="qrscan_title">Scan QR code</string>
     <string name="qrscan_hint">Place your camera over the QR code</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
-    <string name="qrscan_ask_join_verified_group">Do you want to join the verified group \"%1$s\"?</string>
-    <string name="qrscan_ask_fingerprint_ask_oob">Verify contact and start chatting with \"%1$s\"?</string>
-    <string name="qrscan_ask_chatting_fingerprint_ok">Contact \"%1$s\" verified. Start chatting?</string>
-    <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does \"not match\" the fingerprint last seen for \"%1$s\".</string>
-    <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no email address.\n\nFor an out-of-band-verification, please establish an encrpyted connection to the recipient first.</string>
+    <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the fingerprint last seen for %1$s</string>
+    <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no email address.\n\nFor an out-of-band-verification, please establish an encrypted connection to the recipient first.</string>
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself …</string>
-    <string name="qrshow_title">Show QR verify code</string>
+    <string name="qrshow_title">QR invite code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
     <string name="qrshow_x_verified">%1$s verified.</string>
-    <string name="qrshow_x_has_joined_group">%1$s securely joined the group.</string>
+    <string name="qrshow_x_has_joined_group">%1$s joined the group.</string>
+    <string name="qrshow_join_group_title">QR invite code</string>
     <string name="qrshow_join_group_hint">Scan this to join the group \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_hint">Scan this to join the verified group \"%1$s\".</string>
-    <string name="qrshow_join_verified_group_title">QR invite code</string>
-    <string name="qrshow_join_contact_title">QR verify code</string>
-    <string name="qrshow_join_contact_hint">\"%1$s\" Scan this to set up a verified contact.</string>
+    <string name="qrshow_join_contact_title">QR invite code</string>
+    <string name="qrshow_join_contact_hint">Scan this to set up a contact with %1$s</string>
+    <string name="contact_verified">%1$s verified.</string>
+    <string name="contact_not_verified">Cannot verify %1$s</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Changed setup for %1$s</string>
 
 
     <!-- notifications  -->
@@ -579,5 +581,19 @@
     <string name="message_detail_to_desktop">to</string>
     <string name="menu.view.developer.open.log.folder">Open Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
+
+
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Do you want to join the verified group \"%1$s\"?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_fingerprint_ask_oob">Start chatting with \"%1$s\"?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Contact \"%1$s\" verified. Start chatting?</string>
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">QR invite code</string>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Scan this to join the verified group \"%1$s\".</string>
+
 
 </resources>

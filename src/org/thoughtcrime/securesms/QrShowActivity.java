@@ -64,7 +64,7 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
             String groupName = dcContext.getChat(chatId).getName();
             hint = String.format(this.getString(R.string.qrshow_join_group_hint), groupName);
             supportActionBar.setTitle(groupName);
-            supportActionBar.setSubtitle(R.string.qrshow_join_verified_group_title);
+            supportActionBar.setSubtitle(R.string.qrshow_join_group_title);
         } else {
             // verify-contact
             String selfName = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
