@@ -412,7 +412,6 @@
     <string name="systemmsg_group_image_deleted">Изображение группы удалено.</string>
     <string name="systemmsg_member_added">Участник %1$s добавлен.</string>
     <string name="systemmsg_member_removed">Участник %1$s удален.</string>
-    <string name="systemmsg_group_left">Группа покинута</string>
     <!-- screen lock -->
     <string name="screenlock_title">Блокировка экрана</string>
     <string name="screenlock_authentication_failed">Не пройдена аутентификация</string>

@@ -104,6 +104,7 @@
     <string name="menu_new_contact">Nieuwe contactpersoon</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
+    <string name="menu_new_verified_group">Nieuwe goedgekeurde groep (experimenteel)</string>
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep bewerken</string>
@@ -396,12 +397,9 @@
     <string name="systemmsg_group_image_deleted">Groepsafbeelding verwijderd.</string>
     <string name="systemmsg_member_added">Deelnemer \"%1$s\" toegevoegd.</string>
     <string name="systemmsg_member_removed">Deelnemer \"%1$s\" verwijderd.</string>
-    <string name="systemmsg_group_left">Groep verlaten.</string>
     <string name="systemmsg_read_receipt_subject">Leesbevestiging</string>
     <string name="systemmsg_read_receipt_body">Dit is een leesbevestiging voor het bericht \"%1$s\".\n\nDit betekent dat het bericht getoond is op het apparaat van de ontvanger, maar niet dat het ook gelezen is.</string>
     <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen om dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd op dit of een ander apparaat, verstuur het instelbericht dan opnieuw.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Schermvergrendeling</string>
     <string name="screenlock_explain">Delta Chat-toegang vergrendelen met Android-schermvergrendeling of vingerafdruk</string>

@@ -102,6 +102,7 @@
     <string name="menu_new_contact">Kontakt i ri</string>
     <string name="menu_new_chat">Fjalosje e re</string>
     <string name="menu_new_group">Grup i ri</string>
+    <string name="menu_new_verified_group">Grup i ri i verifikuar (eksperimentale)</string>
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih tastierë emoji</string>
     <string name="menu_edit_group">Përpunoni grup</string>
@@ -390,12 +391,9 @@
     <string name="systemmsg_group_image_deleted">Figura e grupit u fshi.</string>
     <string name="systemmsg_member_added">U shtua anëtari %1$s.</string>
     <string name="systemmsg_member_removed">U hoq anëtari %1$s.</string>
-    <string name="systemmsg_group_left">U braktis grupi.</string>
     <string name="systemmsg_read_receipt_subject">Dëftesë leximi</string>
     <string name="systemmsg_read_receipt_body">Kjo është dëftesë leximi për mesazhin \"%1$s\".\n\nDo të thotë që mesazhi u shfaq te pajisja e marrësit, jo domosdo që lënda u lexua.</string>
     <string name="systemmsg_cannot_decrypt">Ky mesazh s’mund të shfshehtëzohet.\n\n• Mundet që të ndihmojë dërgimi thjesht i një përgjigjeje këtij mesazhi dhe t’i kërkohet dërguesit ta ridërgojë mesazhin.\n\n• Në rast se ri-instaluat Delta Chat-in apo një tjetër program email-esh në këtë apo në një tjetër pajisje, mund të donit të dërgonit një Mesazh Rregullimi Autocrypt-i që prej andej.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Kyçje ekrani</string>
     <string name="screenlock_explain">Kyçe përdorimin e Delta Chat-it përmes kyçjesh ekrani apo shenja gishtash në Android</string>

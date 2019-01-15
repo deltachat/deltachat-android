@@ -364,7 +364,6 @@
     <string name="systemmsg_group_image_deleted">Taldearen irudia ezabatuta.</string>
     <string name="systemmsg_member_added">%1$s kidea gehituta.</string>
     <string name="systemmsg_member_removed">%1$s kidea kenduta.</string>
-    <string name="systemmsg_group_left">Taldetik aterata.</string>
     <string name="systemmsg_read_receipt_subject">Irakurragiria</string>
     <!-- screen lock -->
     <string name="screenlock_title">Pantila-blokeoa</string>

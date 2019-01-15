@@ -384,12 +384,9 @@
     <string name="systemmsg_group_image_deleted">Immagine del gruppo eliminata.</string>
     <string name="systemmsg_member_added">Membro %1$s aggiunto.</string>
     <string name="systemmsg_member_removed">Membro %1$s rimosso.</string>
-    <string name="systemmsg_group_left">Gruppo abbandonato.</string>
     <string name="systemmsg_read_receipt_subject">Ricevuta di lettura</string>
     <string name="systemmsg_read_receipt_body">Questa è una ricevuta di lettura del messaggio \"%1$s\".\n\nCiò significa che il messaggio è stato mostrato nel dispositivo del destinatario, ma necessariamente che il contenuto è stato letto.</string>
     <string name="systemmsg_cannot_decrypt">Questo messaggio non può essere decrittato.\n\n• Potrebbe essere sufficiente rispondere a questo messaggio e chiedere al mittente di rispedirlo.\n\n• Se hai reinstallato Delta Chat o usi un altro client email dovresti inviare un Messaggio di configurazione Autocrypt dal dispositivo originario.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Blocco schermo</string>
     <string name="screenlock_explain">Blocca l\'accesso a Delta Chat con il blocco schermo di Android o l\'impronta digitale</string>

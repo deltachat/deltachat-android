@@ -372,7 +372,6 @@
     <string name="systemmsg_group_image_deleted">Gruppe billede slettet.</string>
     <string name="systemmsg_member_added">Medlem %1$s tilføjet.</string>
     <string name="systemmsg_member_removed">Medlem %1$s fjernet.</string>
-    <string name="systemmsg_group_left">Gruppe forladt</string>
     <string name="systemmsg_read_receipt_subject">Læse modtagelse</string>
     <!-- screen lock -->
     <string name="screenlock_title">Skærm lås</string>

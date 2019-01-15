@@ -380,7 +380,6 @@
     <string name="systemmsg_group_image_deleted">Grup görüntüsü silindi.</string>
     <string name="systemmsg_member_added">%1$s üyesi eklendi.</string>
     <string name="systemmsg_member_removed">%1$s üyesi kaldırıldı.</string>
-    <string name="systemmsg_group_left">Gruptan ayrılındı.</string>
     <string name="systemmsg_read_receipt_subject">Okundu bilgisi</string>
     <!-- screen lock -->
     <string name="screenlock_title">Ekran kilidi</string>
