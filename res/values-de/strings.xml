@@ -399,7 +399,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="systemmsg_group_image_deleted">Gruppenbild gelöscht.</string>
     <string name="systemmsg_member_added">%1$s hinzugefügt.</string>
     <string name="systemmsg_member_removed">%1$s entfernt.</string>
-    <string name="systemmsg_group_left">%1$s hat diese Gruppe verlassen.</string>
+    <string name="systemmsg_group_left">Gruppe verlassen.</string>
     <string name="systemmsg_read_receipt_subject">Empfangsbestätigung lesen</string>
     <string name="systemmsg_read_receipt_body">Dies ist eine Empfangsbestätigung für die Nachricht \"%1$s\".\n\nEs bedeutet, dass die Nachricht auf dem Gerät des Empfängers angezeigt wurde, nicht unbedingt, dass der Inhalt gelesen wurde.</string>
     <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es könnte bereits helfen, einfach auf diese Nachricht zu antworten und den Absender zu bitten, die Nachricht erneut zu senden.\n\n• Falls Sie Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu installiert haben, können Sie von dort aus eine Autocrypt Setup-Nachricht senden.</string>
