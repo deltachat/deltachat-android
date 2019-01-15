@@ -550,6 +550,9 @@ public class ApplicationDcContext extends DcContext {
             toastString = context.getString(R.string.error_no_network);
           }
         }
+        else if (event == DC_EVENT_ERROR_SELF_NOT_IN_GROUP) {
+          toastString = context.getString(R.string.group_self_not_in_group);
+        }
 
         if (ForegroundDetector.getInstance().isForeground()) {
           Toast.makeText(context, toastString, Toast.LENGTH_LONG).show();
@@ -575,6 +578,10 @@ public class ApplicationDcContext extends DcContext {
 
       case DC_EVENT_ERROR_NETWORK:
         handleError(event, data1 != 0, dataToString(data2));
+        break;
+
+      case DC_EVENT_ERROR_SELF_NOT_IN_GROUP:
+        handleError(event, true, dataToString(data2));
         break;
 
       case DC_EVENT_HTTP_GET:
@@ -625,8 +632,6 @@ public class ApplicationDcContext extends DcContext {
           case 18: s = context.getString(R.string.systemmsg_member_removed); break;
           case 19: s = context.getString(R.string.systemmsg_group_left); break;
           case 20: s = context.getString(R.string.error_x); break;
-          case 21: s = context.getString(R.string.group_self_not_in_group); break;
-          case 22: s = context.getString(R.string.error_no_network); break;
           case 23: s = context.getString(R.string.gif); break;
           case 29: s = context.getString(R.string.systemmsg_cannot_decrypt); break;
           case 31: s = context.getString(R.string.systemmsg_read_receipt_subject); break;
