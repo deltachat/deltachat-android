@@ -113,6 +113,7 @@
     <string name="menu_new_contact">Nowy kontakt</string>
     <string name="menu_new_chat">Nowy czat</string>
     <string name="menu_new_group">Nowa grupa</string>
+    <string name="menu_new_verified_group">Nowa zweryfikowana grupa (eksperymentalna)</string>
     <string name="menu_send">Wyślij</string>
     <string name="menu_edit_group">Edytuj grupę</string>
     <string name="menu_archive_chat">Archiwizuj czat</string>
@@ -403,9 +404,16 @@
     <string name="systemmsg_group_image_deleted">Usunięto obraz grupy.</string>
     <string name="systemmsg_member_added">Dodano członka %1$s</string>
     <string name="systemmsg_member_removed">Usunięto członka %1$s</string>
+    <string name="systemmsg_group_left">Grupa opuszczona.</string>
     <string name="systemmsg_read_receipt_subject">Potwierdzenie odczytu</string>
     <string name="systemmsg_read_receipt_body">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
     <string name="systemmsg_cannot_decrypt">Tej wiadomości nie można odszyfrować.\n\n• Możesz teraz pomóc odpowiadając po prostu na tą wiadomość i poprosić nadawcę o ponowne wysłanie wiadomości.\n\n• W przypadku ponownego zainstalowania Delta Chat lub innego programu mailowego na tym lub innym urządzeniu, może być konieczne wysłanie stąd klucza automatycznego szyfrowania.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_me">%1$s przeze mnie.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_user">%1$s przez %2$s.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Blokada ekranu</string>
     <string name="screenlock_explain">Zablokuj dostęp do Delta Chat za pomocą blokady ekranu Android lub odcisku palca</string>

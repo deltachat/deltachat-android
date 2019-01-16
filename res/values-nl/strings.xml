@@ -397,9 +397,16 @@
     <string name="systemmsg_group_image_deleted">Groepsafbeelding verwijderd.</string>
     <string name="systemmsg_member_added">Deelnemer \"%1$s\" toegevoegd.</string>
     <string name="systemmsg_member_removed">Deelnemer \"%1$s\" verwijderd.</string>
+    <string name="systemmsg_group_left">Groep verlaten.</string>
     <string name="systemmsg_read_receipt_subject">Leesbevestiging</string>
     <string name="systemmsg_read_receipt_body">Dit is een leesbevestiging voor het bericht \"%1$s\".\n\nDit betekent dat het bericht getoond is op het apparaat van de ontvanger, maar niet dat het ook gelezen is.</string>
     <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen om dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd op dit of een ander apparaat, verstuur het instelbericht dan opnieuw.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_me">%1$s door mij.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_user">%1$s door %2$s.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Schermvergrendeling</string>
     <string name="screenlock_explain">Delta Chat-toegang vergrendelen met Android-schermvergrendeling of vingerafdruk</string>

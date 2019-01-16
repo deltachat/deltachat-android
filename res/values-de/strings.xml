@@ -301,7 +301,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_trim_length_limit">Chat-Länge begrenzen</string>
     <string name="pref_trim_length_limit_summary">%d Nachrichten pro Chat</string>
     <string name="pref_trim_now_button">Alle Chats kürzen</string>
-    <string name="pref_trim_now_ask">Alte Nachrichten jetzt löschen? In allen Chats werden die Nachrichten bis auf die%d neuesten entfernen.</string>
+    <string name="pref_trim_now_ask">Alte Nachrichten jetzt löschen? In allen Chats werden die Nachrichten bis auf die %d neuesten entfernen.</string>
     <string name="pref_blocked_contacts">Blockierte Kontakte</string>
     <string name="pref_profile_photo_remove_ask">Profilbild entfernen?</string>
     <string name="pref_help_url">https://delta.chat/de/help</string>
