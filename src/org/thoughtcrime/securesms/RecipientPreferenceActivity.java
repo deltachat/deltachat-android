@@ -278,8 +278,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       ListPreference        vibrateMessagePreference  = (ListPreference) this.findPreference(PREFERENCE_MESSAGE_VIBRATE);
 
       // contact settings
-      PreferenceCategory    privacyCategory           = (PreferenceCategory) this.findPreference("privacy_settings");
-      PreferenceCategory    divider                   = (PreferenceCategory) this.findPreference("divider");
+      PreferenceCategory    contactInfoCategory       = (PreferenceCategory) this.findPreference("contact_info");
+      PreferenceCategory    contactInfoDivider        = (PreferenceCategory) this.findPreference("contact_divider");
       Preference            addrPreference            = this.findPreference("pref_key_recipient_addr");
       Preference            encryptionPreference      = this.findPreference(PREFERENCE_ENCRYPTION);
       Preference            editNamePreference        = this.findPreference("pref_key_recipient_edit_name");
@@ -310,7 +310,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       }
       else {
         // contact view
-        String address = getProfileContact().getAddr();
+        DcContact contact = getProfileContact();
+        String address = contact.getAddr();
         addrPreference.setTitle(address);
         addrPreference.setOnPreferenceClickListener(preference -> {
           new AlertDialog.Builder(getContext())
@@ -321,6 +322,23 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
               (dialogInterface, i) -> {
                 Util.writeTextToClipboard(getContext(), address);
                 Toast.makeText(getContext(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+              })
+              .setNegativeButton(R.string.cancel, null)
+              .show();
+          return false;
+        });
+
+        this.findPreference("pref_key_new_chat").setOnPreferenceClickListener(preference -> {
+          new AlertDialog.Builder(getActivity())
+              .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+              .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                int chatId = dcContext.createChatByContactId(contact.getId());
+                if (chatId != 0) {
+                  Intent intent = new Intent(getActivity(), ConversationActivity.class);
+                  intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+                  getActivity().startActivity(intent);
+                  getActivity().finish();
+                }
               })
               .setNegativeButton(R.string.cancel, null)
               .show();

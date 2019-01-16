@@ -2,38 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:key="notification_settings" android:title="@string/pref_chat_settings">
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                android:key="pref_key_recipient_mute"
-                android:title="@string/menu_mute"
-                android:defaultValue="false"
-                android:disableDependentsState="true"
-                android:persistent="false" />
-
-        <org.thoughtcrime.securesms.preferences.widgets.SignalPreference
-                            android:dependency="pref_key_recipient_mute"
-                            android:key="pref_key_recipient_ringtone"
-                            android:title="@string/pref_sound"
-                            android:persistent="false"/>
-
-        <org.thoughtcrime.securesms.preferences.widgets.SignalListPreference
-                android:dependency="pref_key_recipient_mute"
-                android:key="pref_key_recipient_vibrate"
-                android:title="@string/pref_vibrate"
-                android:entries="@array/recipient_vibrate_entries"
-                android:entryValues="@array/recipient_vibrate_values"
-                android:defaultValue="0"
-                android:persistent="false"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory android:layout="@layout/preference_divider"/>
-
-    <PreferenceCategory android:key="divider" android:layout="@layout/preference_divider"/>
-
-    <PreferenceCategory android:key="privacy_settings" android:title="@string/contact">
+    <PreferenceCategory android:key="contact_info" android:title="@string/contact">
 
         <Preference android:key="pref_key_recipient_addr"
                     android:title="user@example.org"
+                    android:persistent="false"/>
+
+        <Preference android:key="pref_key_new_chat"
+                    android:title="@string/menu_new_chat"
                     android:persistent="false"/>
 
         <Preference android:key="pref_key_recipient_edit_name"
@@ -48,6 +24,32 @@
                     android:title="@string/menu_block_contact"
                     android:persistent="false"/>
 
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="contact_divider" android:layout="@layout/preference_divider"/>
+
+    <PreferenceCategory android:key="notification_settings" android:title="@string/pref_chat_settings">
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:key="pref_key_recipient_mute"
+            android:title="@string/menu_mute"
+            android:defaultValue="false"
+            android:disableDependentsState="true"
+            android:persistent="false" />
+
+        <org.thoughtcrime.securesms.preferences.widgets.SignalPreference
+            android:dependency="pref_key_recipient_mute"
+            android:key="pref_key_recipient_ringtone"
+            android:title="@string/pref_sound"
+            android:persistent="false"/>
+
+        <org.thoughtcrime.securesms.preferences.widgets.SignalListPreference
+            android:dependency="pref_key_recipient_mute"
+            android:key="pref_key_recipient_vibrate"
+            android:title="@string/pref_vibrate"
+            android:entries="@array/recipient_vibrate_entries"
+            android:entryValues="@array/recipient_vibrate_values"
+            android:defaultValue="0"
+            android:persistent="false"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
