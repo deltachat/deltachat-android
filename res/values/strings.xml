@@ -552,7 +552,7 @@
     <string name="group_name_desktop">Group name</string>
     <string name="remove_desktop">Remove</string>
     <string name="save_desktop">Save</string>
-    <string name="show_qr_verify_code_desktop">Show QR verify code</string>
+    <string name="show_qr_verify_code_desktop">Show QR invite code</string>
     <string name="show_qr_invite_code_desktop">Show QR invite code</string>
     <string name="add_contact_desktop">Add contact</string>
     <string name="login_required_desktop">required</string>
@@ -589,15 +589,15 @@
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Do you want to join the verified group \"%1$s\"?</string>
+    <string name="qrscan_ask_join_verified_group">Do you want to join the group \"%1$s\"?</string>
     <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Start chatting with \"%1$s\"?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Chat with %1$s?</string>
     <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Contact \"%1$s\" verified. Start chatting?</string>
+    <string name="qrscan_ask_chatting_fingerprint_ok">Chat with %1$s?</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">QR invite code</string>
     <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Scan this to join the verified group \"%1$s\".</string>
+    <string name="qrshow_join_verified_group_hint">Scan this to join the group \"%1$s\".</string>
 
 
 </resources>
