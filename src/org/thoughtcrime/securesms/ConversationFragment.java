@@ -367,21 +367,17 @@ public class ConversationFragment extends Fragment
 
   private void handleDeleteMessages(final Set<DcMsg> messageRecords) {
     int                 messagesCount = messageRecords.size();
-    AlertDialog.Builder builder       = new AlertDialog.Builder(getActivity());
 
-    builder.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount));
-    builder.setCancelable(true);
-
-    builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialog, int which) {
+    new AlertDialog.Builder(getActivity())
+      .setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount))
+      .setCancelable(true)
+      .setPositiveButton(R.string.delete, (dialog, which) -> {
         int[] ids = DcMsg.msgSetToIds(messageRecords);
         dcContext.deleteMsgs(ids);
-      }
-    });
-
-    builder.setNegativeButton(android.R.string.cancel, null);
-    builder.show();
+        actionMode.finish();
+      })
+      .setNegativeButton(android.R.string.cancel, null)
+      .show();
   }
 
   private void handleDisplayDetails(DcMsg dcMsg) {
@@ -431,6 +427,7 @@ public class ConversationFragment extends Fragment
             SaveAttachmentTask.Attachment attachment = new SaveAttachmentTask.Attachment(
                 Uri.fromFile(message.getFileAsFile()), message.getFilemime(), message.getDateReceived(), message.getFilename());
             saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachment);
+            actionMode.finish();
           })
           .execute();
     });
@@ -823,7 +820,6 @@ public class ConversationFragment extends Fragment
           return true;
         case R.id.menu_context_delete_message:
           handleDeleteMessages(getListAdapter().getSelectedItems());
-          actionMode.finish();
           return true;
         case R.id.menu_context_details:
           handleDisplayDetails(getSelectedMessageRecord());
@@ -839,7 +835,6 @@ public class ConversationFragment extends Fragment
           return true;
         case R.id.menu_context_save_attachment:
           handleSaveAttachment(getSelectedMessageRecord());
-          actionMode.finish();
           return true;
         case R.id.menu_context_reply:
           handleReplyMessage(getSelectedMessageRecord());
