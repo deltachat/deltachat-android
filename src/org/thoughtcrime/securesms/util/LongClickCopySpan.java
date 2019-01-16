@@ -65,9 +65,18 @@ public class LongClickCopySpan extends URLSpan {
   void onLongClick(View widget) {
     Context context = widget.getContext();
     String preparedUrl = prepareUrl(getURL());
-    copyUrl(context, preparedUrl);
-    Toast.makeText(context,
-            context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+
+    new AlertDialog.Builder(context)
+        .setTitle(preparedUrl)
+        .setItems(new CharSequence[]{
+                context.getString(R.string.menu_copy_to_clipboard)
+            },
+            (dialogInterface, i) -> {
+              copyUrl(context, preparedUrl);
+              Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+            })
+        .setNegativeButton(R.string.cancel, null)
+        .show();
   }
 
   @Override
