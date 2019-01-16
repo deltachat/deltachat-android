@@ -137,7 +137,7 @@ public class ContactSelectionListFragment extends    Fragment
       @Override
       public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = getActivity().getMenuInflater();
-        inflater.inflate(R.menu.action_mode_delete, menu);
+        inflater.inflate(R.menu.contact_list, menu);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
           getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
         }
