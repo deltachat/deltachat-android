@@ -300,21 +300,30 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
       if (chatToEdit.getId()!=0 && chatToEdit.isGroup()) {
         // group
-        if (privacyCategory      != null) privacyCategory.setVisible(false);
+        if (contactInfoCategory != null) contactInfoCategory.setVisible(false);
         if (addrPreference       != null) addrPreference.setVisible(false);
         if (encryptionPreference != null) encryptionPreference.setVisible(false);
         if (editNamePreference   != null) editNamePreference.setVisible(false); // group name is currently somewhere else ...
         if (blockPreference      != null) blockPreference.setVisible(false);
 
-        if (divider              != null) divider.setVisible(false);
+        if (contactInfoDivider != null) contactInfoDivider.setVisible(false);
       }
       else {
         // contact view
         String address = getProfileContact().getAddr();
         addrPreference.setTitle(address);
         addrPreference.setOnPreferenceClickListener(preference -> {
-          Util.writeTextToClipboard(getContext(), address);
-          Toast.makeText(getContext(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+          new AlertDialog.Builder(getContext())
+              .setTitle(address)
+              .setItems(new CharSequence[]{
+                getContext().getString(R.string.menu_copy_to_clipboard)
+              },
+              (dialogInterface, i) -> {
+                Util.writeTextToClipboard(getContext(), address);
+                Toast.makeText(getContext(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+              })
+              .setNegativeButton(R.string.cancel, null)
+              .show();
           return false;
         });
 
