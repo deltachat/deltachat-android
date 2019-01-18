@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,6 +89,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         TextInputEditText imapPortInput = findViewById(R.id.imap_port_text);
         TextInputEditText smtpServerInput = findViewById(R.id.smtp_server_text);
         TextInputEditText smtpPortInput = findViewById(R.id.smtp_port_text);
+
+        Spinner imapSecurity = findViewById(R.id.smtp_security);
+        Spinner smtpSecurity = findViewById(R.id.smtp_security);
 
         emailInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.EMAIL));
         imapServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
@@ -218,15 +222,15 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void setupConfig() {
-        setConfig(R.id.email_text, "addr");
-        setConfig(R.id.password_text, "mail_pw");
-        setConfig(R.id.imap_server_text, "mail_server");
-        setConfig(R.id.imap_port_text, "mail_port");
-        setConfig(R.id.imap_login_text, "mail_user");
-        setConfig(R.id.smtp_server_text, "send_server");
-        setConfig(R.id.smtp_port_text, "send_port");
-        setConfig(R.id.smtp_login_text, "send_user");
-        setConfig(R.id.smtp_password_text, "send_pw");
+        setConfig(R.id.email_text, "addr", true);
+        setConfig(R.id.password_text, "mail_pw", false);
+        setConfig(R.id.imap_server_text, "mail_server", true);
+        setConfig(R.id.imap_port_text, "mail_port", true);
+        setConfig(R.id.imap_login_text, "mail_user", false);
+        setConfig(R.id.smtp_server_text, "send_server", true);
+        setConfig(R.id.smtp_port_text, "send_port", true);
+        setConfig(R.id.smtp_login_text, "send_user", false);
+        setConfig(R.id.smtp_password_text, "send_pw", false);
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
@@ -234,12 +238,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         DcHelper.getContext(this).configure();
     }
 
-    private void setConfig(@IdRes int viewId, String configTarget) {
+    private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {
         TextInputEditText view = findViewById(viewId);
-        String value = view.getText().toString().trim();
-        if (!value.isEmpty()) {
-            DcHelper.getContext(this).setConfig(configTarget, value);
+        String value = view.getText().toString();
+        if(doTrim) {
+            value = value.trim();
         }
+        DcHelper.getContext(this).setConfig(configTarget, value.isEmpty()? null : value);
     }
 
     private void stopLoginProcess() {
