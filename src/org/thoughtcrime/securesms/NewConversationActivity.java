@@ -19,7 +19,10 @@ package org.thoughtcrime.securesms;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.MailTo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,12 +43,41 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   @SuppressWarnings("unused")
   private static final String TAG = NewConversationActivity.class.getSimpleName();
+  private static final String MAILTO = "mailto";
 
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
     super.onCreate(bundle, ready);
     assert getSupportActionBar() != null;
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    handleIntent();
+  }
+
+  private void handleIntent() {
+    Intent intent = getIntent();
+    String action = intent.getAction();
+    if(Intent.ACTION_VIEW.equals(action) || Intent.ACTION_SENDTO.equals(action)) {
+      try {
+        Uri uri = intent.getData();
+        if(uri != null) {
+          String scheme = uri.getScheme();
+          if(scheme != null && scheme.equals(MAILTO) ) {
+            MailTo mailto = MailTo.parse(uri.toString());
+            String recipientsList = mailto.getTo();
+            if(recipientsList != null && !recipientsList.isEmpty()) {
+              String[] recipientsArray = recipientsList.split(",");
+              if (recipientsArray.length >= 1) {
+                String recipient = recipientsArray[0];
+                onContactSelected(DcContact.DC_CONTACT_ID_NEW_CONTACT, recipient);
+              }
+            }
+          }
+        }
+      }
+      catch(Exception e) {
+        Log.e(TAG, "start activity from external 'mailto:' link failed", e);
+      }
+    }
   }
 
   @Override
