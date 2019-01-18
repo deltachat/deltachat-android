@@ -57,6 +57,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private ProgressDialog progressDialog;
     private boolean gmailDialogShown;
 
+    Spinner imapSecurity;
+    Spinner smtpSecurity;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -90,8 +92,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         TextInputEditText smtpServerInput = findViewById(R.id.smtp_server_text);
         TextInputEditText smtpPortInput = findViewById(R.id.smtp_port_text);
 
-        Spinner imapSecurity = findViewById(R.id.smtp_security);
-        Spinner smtpSecurity = findViewById(R.id.smtp_security);
+        imapSecurity = findViewById(R.id.imap_security);
+        smtpSecurity = findViewById(R.id.smtp_security);
 
         emailInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.EMAIL));
         imapServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
@@ -116,6 +118,20 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             smtpPasswordInput.setText(DcHelper.get(this, CONFIG_SEND_PASSWORD));
             smtpServerInput.setText(DcHelper.get(this, CONFIG_SEND_SERVER));
             smtpPortInput.setText(DcHelper.get(this, CONFIG_SEND_PORT));
+
+            int server_flags = DcHelper.getInt(this, "server_flags", 0);
+
+            int sel = 0;
+            if((server_flags&DcContext.DC_LP_IMAP_SOCKET_SSL)!=0) sel = 1;
+            if((server_flags&DcContext.DC_LP_IMAP_SOCKET_STARTTLS)!=0) sel = 2;
+            if((server_flags&DcContext.DC_LP_IMAP_SOCKET_PLAIN)!=0) sel = 3;
+            imapSecurity.setSelection(sel);
+
+            sel = 0;
+            if((server_flags&DcContext.DC_LP_SMTP_SOCKET_SSL)!=0) sel = 1;
+            if((server_flags&DcContext.DC_LP_SMTP_SOCKET_STARTTLS)!=0) sel = 2;
+            if((server_flags&DcContext.DC_LP_SMTP_SOCKET_PLAIN)!=0) sel = 3;
+            smtpSecurity.setSelection(sel);
         }
     }
 
@@ -231,6 +247,15 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         setConfig(R.id.smtp_port_text, "send_port", true);
         setConfig(R.id.smtp_login_text, "send_user", false);
         setConfig(R.id.smtp_password_text, "send_pw", false);
+
+        int server_flags = 0;
+        if(imapSecurity.getSelectedItemPosition()==1) server_flags |= DcContext.DC_LP_IMAP_SOCKET_SSL;
+        if(imapSecurity.getSelectedItemPosition()==2) server_flags |= DcContext.DC_LP_IMAP_SOCKET_STARTTLS;
+        if(imapSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_IMAP_SOCKET_PLAIN;
+        if(smtpSecurity.getSelectedItemPosition()==1) server_flags |= DcContext.DC_LP_SMTP_SOCKET_SSL;
+        if(smtpSecurity.getSelectedItemPosition()==2) server_flags |= DcContext.DC_LP_SMTP_SOCKET_STARTTLS;
+        if(smtpSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_SMTP_SOCKET_PLAIN;
+        DcHelper.getContext(this).setConfigInt("server_flags", server_flags);
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events

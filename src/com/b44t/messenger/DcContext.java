@@ -55,6 +55,13 @@ public class DcContext {
     public final static int DC_QR_URL               = 332;
     public final static int DC_QR_ERROR             = 400;
 
+    public final static int DC_LP_IMAP_SOCKET_STARTTLS =   0x100;
+    public final static int DC_LP_IMAP_SOCKET_SSL      =   0x200;
+    public final static int DC_LP_IMAP_SOCKET_PLAIN    =   0x400;
+    public final static int DC_LP_SMTP_SOCKET_STARTTLS = 0x10000;
+    public final static int DC_LP_SMTP_SOCKET_SSL      = 0x20000;
+    public final static int DC_LP_SMTP_SOCKET_PLAIN    = 0x40000;
+
     public DcContext(String osName) {
         handleEvent(0,0,0); // call handleEvent() to make sure it is not optimized away and JNI won't find it
         contextCPtr = createContextCPtr(osName);
