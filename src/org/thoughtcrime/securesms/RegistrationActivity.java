@@ -107,7 +107,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             imapServerInput.setText(DcHelper.get(this, CONFIG_MAIL_SERVER));
             imapPortInput.setText(DcHelper.get(this, CONFIG_MAIL_PORT));
             TextInputEditText smtpLoginInput = findViewById(R.id.smtp_login_text);
-            TextInputEditText smtpPasswordInput = findViewById(R.id.smtp_port_text);
+            TextInputEditText smtpPasswordInput = findViewById(R.id.smtp_password_text);
             smtpLoginInput.setText(DcHelper.get(this, CONFIG_SEND_USER));
             smtpPasswordInput.setText(DcHelper.get(this, CONFIG_SEND_PASSWORD));
             smtpServerInput.setText(DcHelper.get(this, CONFIG_SEND_SERVER));
