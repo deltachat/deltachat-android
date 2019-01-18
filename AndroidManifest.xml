@@ -164,7 +164,6 @@
 
     <activity android:name=".RegistrationActivity"
               android:launchMode="singleTask"
-              android:theme="@style/TextSecure.LightNoActionBar"
               android:windowSoftInputMode="stateUnchanged"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 

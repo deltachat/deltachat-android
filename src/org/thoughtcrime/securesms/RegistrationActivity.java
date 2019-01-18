@@ -9,8 +9,12 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.constraint.Group;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -57,6 +61,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private ProgressDialog progressDialog;
     private boolean gmailDialogShown;
 
+    MenuItem loginMenuItem;
     Spinner imapSecurity;
     Spinner smtpSecurity;
 
@@ -67,6 +72,30 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         initializeResources();
         DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuInflater inflater = this.getMenuInflater();
+        menu.clear();
+        inflater.inflate(R.menu.group_create, menu);
+        loginMenuItem = menu.findItem(R.id.menu_create_group);
+        super.onPrepareOptionsMenu(menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.menu_create_group) {
+            onLogin();
+            return true;
+        } else if (id == android.R.id.home) {
+            // handle close button click here
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -85,7 +114,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         passwordInput = findViewById(R.id.password_text);
         advancedGroup = findViewById(R.id.advanced_group);
         advancedIcon = findViewById(R.id.advanced_icon);
-        CircularProgressButton loginButton = findViewById(R.id.register_button);
+//        CircularProgressButton loginButton = findViewById(R.id.register_button);
         TextView advancedTextView = findViewById(R.id.advanced_text);
         TextInputEditText imapServerInput = findViewById(R.id.imap_server_text);
         TextInputEditText imapPortInput = findViewById(R.id.imap_port_text);
@@ -95,12 +124,19 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         imapSecurity = findViewById(R.id.imap_security);
         smtpSecurity = findViewById(R.id.smtp_security);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.login_header);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+        }
+
         emailInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.EMAIL));
         imapServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
         imapPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
         smtpServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
         smtpPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
-        loginButton.setOnClickListener(l -> onLogin());
+//        loginButton.setOnClickListener(l -> onLogin());
         advancedTextView.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setRotation(45);

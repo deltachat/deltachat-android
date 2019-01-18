@@ -27,49 +27,37 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <TextView
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/signal_primary"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="@string/login_header"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/sub_header"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/signal_primary"
-            android:gravity="center"
-            android:paddingBottom="48dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="@string/login_subheader"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/header" />
+        <!--<TextView-->
+            <!--android:id="@+id/header"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/signal_primary"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingLeft="16dp"-->
+            <!--android:paddingRight="16dp"-->
+            <!--android:paddingTop="16dp"-->
+            <!--android:text="@string/login_header"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="20sp"-->
+            <!--android:textStyle="bold" />-->
 
         <android.support.v4.widget.Space
             android:id="@+id/fab_spacer"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            app:layout_constraintTop_toBottomOf="@id/sub_header" />
+            android:layout_height="28dp" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_forum_white_24dp"
-            android:tint="@color/grey_700"
-            app:backgroundTint="@color/white"
-            app:elevation="1dp"
-            app:fabSize="normal"
-            app:layout_constraintBottom_toBottomOf="@id/fab_spacer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/fab"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/ic_forum_white_24dp"-->
+            <!--android:tint="@color/grey_700"-->
+            <!--app:backgroundTint="@color/white"-->
+            <!--app:elevation="1dp"-->
+            <!--app:fabSize="normal"-->
+            <!--app:layout_constraintBottom_toBottomOf="@id/fab_spacer"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/email"
@@ -78,7 +66,7 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/fab">
+            app:layout_constraintTop_toBottomOf="@id/fab_spacer">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/email_text"
@@ -107,13 +95,26 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:id="@+id/sub_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/login_subheader"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+
         <android.support.constraint.Group
             android:id="@+id/advanced_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:constraint_referenced_ids="inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
-            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, register_button_spacer_top" />
+            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security" />
 
         <TextView
             android:id="@+id/advanced_text"
@@ -125,7 +126,7 @@
             app:layout_constraintEnd_toStartOf="@+id/advanced_icon"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/password" />
+            app:layout_constraintTop_toBottomOf="@id/sub_header" />
 
         <ImageView
             android:id="@+id/advanced_icon"
@@ -139,7 +140,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline_root_end"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@id/advanced_text"
-            app:layout_constraintTop_toBottomOf="@id/password" />
+            app:layout_constraintTop_toBottomOf="@id/sub_header" />
 
         <TextView
             android:id="@+id/inbox"
@@ -323,33 +324,33 @@
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/smtp_security_label" />
 
-        <android.support.v4.widget.Space
-            android:id="@+id/register_button_spacer_top"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            app:layout_constraintTop_toBottomOf="@id/smtp_security" />
+        <!--<android.support.v4.widget.Space-->
+            <!--android:id="@+id/register_button_spacer_top"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="16dp"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/smtp_security" />-->
 
-        <com.dd.CircularProgressButton
-            android:id="@+id/register_button"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:background="@color/signal_primary"
-            android:textColor="@color/white"
-            app:cpb_colorIndicator="@color/white"
-            app:cpb_colorProgress="@color/textsecure_primary"
-            app:cpb_cornerRadius="50dp"
-            app:cpb_selectorIdle="@drawable/progress_button_state"
-            app:cpb_textIdle="@string/login_title"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/register_button_spacer_top" />
+        <!--<com.dd.CircularProgressButton-->
+            <!--android:id="@+id/register_button"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginEnd="16dp"-->
+            <!--android:layout_marginStart="16dp"-->
+            <!--android:background="@color/signal_primary"-->
+            <!--android:textColor="@color/white"-->
+            <!--app:cpb_colorIndicator="@color/white"-->
+            <!--app:cpb_colorProgress="@color/textsecure_primary"-->
+            <!--app:cpb_cornerRadius="50dp"-->
+            <!--app:cpb_selectorIdle="@drawable/progress_button_state"-->
+            <!--app:cpb_textIdle="@string/login_title"-->
+            <!--app:layout_constraintEnd_toEndOf="@id/guideline_root_end"-->
+            <!--app:layout_constraintStart_toStartOf="@id/guideline_root_start"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/register_button_spacer_top" />-->
 
-        <android.support.v4.widget.Space
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            app:layout_constraintTop_toBottomOf="@id/register_button" />
+        <!--<android.support.v4.widget.Space-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="16dp"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/register_button" />-->
 
     </android.support.constraint.ConstraintLayout>
 
