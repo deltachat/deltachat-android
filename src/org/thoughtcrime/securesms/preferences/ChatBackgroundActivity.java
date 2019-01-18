@@ -74,8 +74,8 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         menu.clear();
-        inflater.inflate(R.menu.group_create, menu);
-        acceptMenuItem = menu.findItem(R.id.menu_create_group);
+        inflater.inflate(R.menu.chat_background, menu);
+        acceptMenuItem = menu.findItem(R.id.apply_background);
         acceptMenuItem.setEnabled(false);
         super.onPrepareOptionsMenu(menu);
         return true;
@@ -85,7 +85,7 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_create_group) {
+        if (id == R.id.apply_background) {
             // handle confirmation button click here
             Context context = getApplicationContext();
             if(imageUri != null){
