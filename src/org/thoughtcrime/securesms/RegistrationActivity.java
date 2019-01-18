@@ -78,8 +78,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         menu.clear();
-        inflater.inflate(R.menu.group_create, menu);
-        loginMenuItem = menu.findItem(R.id.menu_create_group);
+        inflater.inflate(R.menu.registration, menu);
+        loginMenuItem = menu.findItem(R.id.do_register);
         super.onPrepareOptionsMenu(menu);
         return true;
     }
@@ -87,7 +87,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_create_group) {
+        if (id == R.id.do_register) {
             onLogin();
             return true;
         } else if (id == android.R.id.home) {
