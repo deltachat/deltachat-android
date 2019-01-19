@@ -453,8 +453,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
         if (result) {
           if (captureFile != null) captureFile.delete();
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) handleFinishedLollipop();
-          else                                                       handleFinishedLegacy();
+          handleFinishedLegacy();
         } else        {
           Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_LONG).show();
         }
@@ -479,33 +478,5 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private void handleFinishedLegacy() {
     if (nextIntent != null) startActivity(nextIntent);
     finish();
-  }
-
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  private void handleFinishedLollipop() {
-    int[] revealLocation       = new int[2];
-
-    reveal.getLocationInWindow(revealLocation);
-
-    Animator animation = ViewAnimationUtils.createCircularReveal(reveal, reveal.getWidth(), 0, 0f, (float) Math.max(reveal.getWidth(), reveal.getHeight()));
-    animation.setDuration(500);
-    animation.addListener(new Animator.AnimatorListener() {
-      @Override
-      public void onAnimationStart(Animator animation) {}
-
-      @Override
-      public void onAnimationEnd(Animator animation) {
-        if (nextIntent != null)  startActivity(nextIntent);
-        finish();
-      }
-
-      @Override
-      public void onAnimationCancel(Animator animation) {}
-      @Override
-      public void onAnimationRepeat(Animator animation) {}
-    });
-
-    reveal.setVisibility(View.VISIBLE);
-    animation.start();
   }
 }

@@ -147,7 +147,17 @@
     <activity android:name=".NewConversationActivity"
               android:theme="@style/TextSecure.LightNoActionBar"
               android:windowSoftInputMode="stateAlwaysVisible"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+
+        <intent-filter>
+            <data android:scheme="mailto"/>
+            <action android:name="android.intent.action.VIEW"/>
+            <action android:name="android.intent.action.SENDTO"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+        </intent-filter>
+
+    </activity>
 
     <activity android:name=".ContactMultiSelectionActivity"
           android:label="@string/contacts_title"
@@ -164,7 +174,6 @@
 
     <activity android:name=".RegistrationActivity"
               android:launchMode="singleTask"
-              android:theme="@style/TextSecure.LightNoActionBar"
               android:windowSoftInputMode="stateUnchanged"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 

@@ -181,8 +181,13 @@ public class ConversationFragment extends Fragment
       }
     }else{
       String name = getListAdapter().getChatName();
-      String message = getString(R.string.chat_no_messages_hint, name, name);
-      noMessageTextView.setText(message);
+      if(dcContext.getChat((int)threadId).isSelfTalk()) {
+        noMessageTextView.setText(R.string.chat_no_messages);
+      }
+      else {
+        String message = getString(R.string.chat_no_messages_hint, name, name);
+        noMessageTextView.setText(message);
+      }
     }
   }
 
