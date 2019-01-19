@@ -41,6 +41,7 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
 
     String tempDestinationPath;
     Uri imageUri;
+    Boolean imageUpdate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,6 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
         menu.clear();
         inflater.inflate(R.menu.chat_background, menu);
         acceptMenuItem = menu.findItem(R.id.apply_background);
-        acceptMenuItem.setEnabled(false);
         super.onPrepareOptionsMenu(menu);
         return true;
     }
@@ -88,19 +88,20 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
         if (id == R.id.apply_background) {
             // handle confirmation button click here
             Context context = getApplicationContext();
-            if(imageUri != null){
-                Thread thread = new Thread(){
-                    @Override
-                    public void run() {
-                        String destination = context.getFilesDir().getAbsolutePath() + "/background";
-                        Prefs.setBackgroundImagePath(context, destination);
-                        scaleAndSaveImage(context, destination);
-                    }
-                };
-                thread.start();
-            }
-            else {
-                Prefs.setBackgroundImagePath(context, "");
+            if(imageUpdate) {
+                if (imageUri != null) {
+                    Thread thread = new Thread() {
+                        @Override
+                        public void run() {
+                            String destination = context.getFilesDir().getAbsolutePath() + "/background";
+                            Prefs.setBackgroundImagePath(context, destination);
+                            scaleAndSaveImage(context, destination);
+                        }
+                    };
+                    thread.start();
+                } else {
+                    Prefs.setBackgroundImagePath(context, "");
+                }
             }
             finish();
             return true;
@@ -173,6 +174,7 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
                 };
                 thread.start();
             }
+            imageUpdate=true;
         }
     }
 
@@ -180,16 +182,13 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
         Toast.makeText(this, R.string.error, Toast.LENGTH_LONG).show();
     }
 
-    private void enableMenuItem() {
-        acceptMenuItem.setEnabled(true);
-    }
     private class DefaultClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             imageUri = null;
             tempDestinationPath = "";
             setDefaultLayoutBackgroundImage();
-            enableMenuItem();
+            imageUpdate=true;
         }
 
     }
