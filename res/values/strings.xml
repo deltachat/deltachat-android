@@ -138,6 +138,7 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_advanced">Advanced</string>
     <string name="menu_deaddrop">Contact requests</string>
+    <string name="menu_deaddrop_subtitle">Press message to start chatting</string>
     <string name="menu_view_profile">View profile</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>

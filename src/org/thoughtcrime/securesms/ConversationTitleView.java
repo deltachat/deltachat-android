@@ -102,7 +102,7 @@ public class ConversationTitleView extends RelativeLayout {
     this.title.setText(dcChat.getName());
 
     if(dcChat.getId()==DcChat.DC_CHAT_ID_DEADDROP) {
-      this.subtitle.setText("Press message to start chatting"/*needs translation*/);
+      this.subtitle.setText(R.string.menu_deaddrop_subtitle);
     }
     else {
       this.subtitle.setText(dcChat.getSubtitle());
