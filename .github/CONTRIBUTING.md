@@ -9,7 +9,7 @@ If you intend to send a **bug report** for Delta Chat,
 search for existing bugs first:
 
 * [Core](https://github.com/deltachat/deltachat-core/issues?&q=is%3Aissue)
-* [Android](https://github.com/deltachat/deltachat-android-ii/issues?&q=is%3Aissue)
+* [Android](https://github.com/deltachat/deltachat-android/issues?&q=is%3Aissue)
 * [iOS](https://github.com/deltachat/deltachat-ios/issues?&q=is%3Aissue)
 * [Desktop](https://github.com/deltachat/deltachat-ios/issues?&q=is%3Aissue)
 * [Node](https://github.com/deltachat/deltachat-node/issues?&q=is%3Aissue)

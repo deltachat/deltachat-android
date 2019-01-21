@@ -9,7 +9,7 @@
                 android:topLeftRadius="@dimen/message_corner_radius"
                 android:topRightRadius="@dimen/message_corner_radius"
                 android:bottomRightRadius="@dimen/message_corner_radius" />
-            <!-- read issue: https://github.com/deltachat/deltachat-android-ii/issues/219 before introducing an attr here. -->
+            <!-- read issue: https://github.com/deltachat/deltachat-android/issues/480 before introducing an attr here. -->
             <solid android:color="@color/white" />
         </shape>
     </item>

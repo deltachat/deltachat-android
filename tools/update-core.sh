@@ -31,7 +31,7 @@ rm -r jni/messenger-backend/.??*
 
 # re-link all files (symbolic links may contain arbitrary text, so no relative paths, please)
 cd ..
-ln --symbolic `pwd`/deltachat-core/src     deltachat-android-ii/jni/messenger-backend/src
-ln --symbolic `pwd`/deltachat-core/libs    deltachat-android-ii/jni/messenger-backend/libs
-cd deltachat-android-ii
+ln --symbolic `pwd`/deltachat-core/src     deltachat-android/jni/messenger-backend/src
+ln --symbolic `pwd`/deltachat-core/libs    deltachat-android/jni/messenger-backend/libs
+cd deltachat-android
 
