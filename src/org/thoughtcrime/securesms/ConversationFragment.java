@@ -20,7 +20,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -657,7 +656,7 @@ public class ConversationFragment extends Fragment
         (EditText) gl.findViewById(R.id.setupCode3), (EditText) gl.findViewById(R.id.setupCode4), (EditText) gl.findViewById(R.id.setupCode5),
         (EditText) gl.findViewById(R.id.setupCode6), (EditText) gl.findViewById(R.id.setupCode7), (EditText) gl.findViewById(R.id.setupCode8)
     };
-    android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(getActivity());
+    AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
     builder1.setView(gl);
     editTexts[0].setText(dcMsg.getSetupCodeBegin());
     editTexts[0].setSelection(editTexts[0].getText().length());
@@ -703,7 +702,7 @@ public class ConversationFragment extends Fragment
       }
       boolean success = dcContext.continueKeyTransfer(dcMsg.getId(), setup_code);
 
-      android.app.AlertDialog.Builder builder2 = new android.app.AlertDialog.Builder(getActivity());
+      AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
       builder2.setTitle(getActivity().getString(R.string.autocrypt_continue_transfer_title));
       builder2.setMessage(getActivity().getString(success? R.string.autocrypt_continue_transfer_succeeded : R.string.autocrypt_bad_setup_code));
       if( success ) {

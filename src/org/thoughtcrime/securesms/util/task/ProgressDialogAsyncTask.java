@@ -1,6 +1,6 @@
 package org.thoughtcrime.securesms.util.task;
 
-import android.app.ProgressDialog;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 

@@ -1,12 +1,10 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.widget.Toast;
 
@@ -21,6 +19,7 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 public class QrScanHandler implements DcEventCenter.DcEventDelegate {
 

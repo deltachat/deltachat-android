@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.preferences;
 
 import android.Manifest;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +25,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -284,7 +284,7 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
         .ifNecessary()
         .withRationaleDialog(getActivity().getString(R.string.pref_managekeys_ask_for_storage_permission), R.drawable.ic_folder_white_48dp)
         .onAllGranted(() -> {
-          new android.app.AlertDialog.Builder(getActivity())
+          new AlertDialog.Builder(getActivity())
               .setTitle(R.string.pref_managekeys_menu_title)
               .setItems(new CharSequence[]{
                       getActivity().getString(R.string.pref_managekeys_export_secret_keys),
@@ -345,7 +345,7 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
         progressDialog.dismiss();
         progressDialog = null;
         if (dcContext.hasCapturedError()) {
-          new android.app.AlertDialog.Builder(getActivity())
+          new AlertDialog.Builder(getActivity())
               .setMessage(dcContext.getCapturedError())
               .setPositiveButton(android.R.string.ok, null)
               .show();
@@ -369,7 +369,7 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
         else if (progressWhat==DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
           msg = getActivity().getString(R.string.pref_managekeys_secret_keys_imported_from_x, imexDir);
         }
-        new android.app.AlertDialog.Builder(getActivity())
+        new AlertDialog.Builder(getActivity())
             .setMessage(msg)
             .setPositiveButton(android.R.string.ok, null)
             .show();
