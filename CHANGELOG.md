@@ -1,9 +1,4 @@
----
-title: Delta Chat Changelog
-layout: default-en
----
-
-# Delta Chat Changelog
+# Delta Chat Android Changelog
 
 ## v0.100.0
 2019-01-22
