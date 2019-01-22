@@ -15,9 +15,6 @@ public abstract class Attachment {
   private final String fileName;
 
   @Nullable
-  private final String  location;
-
-  @Nullable
   private final String fastPreflightId;
 
   private final boolean voiceNote;
@@ -35,7 +32,6 @@ public abstract class Attachment {
     this.transferState   = transferState;
     this.size            = size;
     this.fileName        = fileName;
-    this.location        = location;
     this.fastPreflightId = fastPreflightId;
     this.voiceNote       = voiceNote;
     this.width           = width;
@@ -69,11 +65,6 @@ public abstract class Attachment {
   @NonNull
   public String getContentType() {
     return contentType;
-  }
-
-  @Nullable
-  public String getLocation() {
-    return location;
   }
 
   @Nullable

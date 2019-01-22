@@ -49,8 +49,6 @@ import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
-import org.thoughtcrime.securesms.components.location.SignalMapView;
-import org.thoughtcrime.securesms.components.location.SignalPlace;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
@@ -84,7 +82,6 @@ public class AttachmentManager {
   private ThumbnailView              thumbnail;
   private AudioView                  audioView;
   private DocumentView               documentView;
-  private SignalMapView              mapView;
 
   private @NonNull  List<Uri>       garbage = new LinkedList<>();
   private @NonNull  Optional<Slide> slide   = Optional.absent();
@@ -103,7 +100,6 @@ public class AttachmentManager {
       this.thumbnail          = ViewUtil.findById(root, R.id.attachment_thumbnail);
       this.audioView          = ViewUtil.findById(root, R.id.attachment_audio);
       this.documentView       = ViewUtil.findById(root, R.id.attachment_document);
-      this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
       this.removableMediaView = ViewUtil.findById(root, R.id.removable_media_view);
 
       removableMediaView.setRemoveClickListener(new RemoveButtonListener());
@@ -178,34 +174,6 @@ public class AttachmentManager {
 
     this.captureUri = null;
     this.slide      = Optional.of(slide);
-  }
-
-  public ListenableFuture<Boolean> setLocation(@NonNull final SignalPlace place,
-                                               @NonNull final MediaConstraints constraints)
-  {
-    inflateStub();
-
-    SettableFuture<Boolean>  returnResult = new SettableFuture<>();
-    ListenableFuture<Bitmap> future       = mapView.display(place);
-
-    attachmentViewStub.get().setVisibility(View.VISIBLE);
-    removableMediaView.display(mapView, false);
-
-    future.addListener(new AssertedSuccessListener<Bitmap>() {
-      @Override
-      public void onSuccess(@NonNull Bitmap result) {
-        byte[]        blob          = BitmapUtil.toByteArray(result);
-        Uri           uri           = PersistentBlobProvider.getInstance(context)
-                                                            .create(context, blob, MediaUtil.IMAGE_PNG, null);
-        LocationSlide locationSlide = new LocationSlide(context, uri, blob.length, place);
-
-        setSlide(locationSlide);
-        attachmentListener.onAttachmentChanged();
-        returnResult.set(true);
-      }
-    });
-
-    return returnResult;
   }
 
   @SuppressLint("StaticFieldLeak")
@@ -370,21 +338,6 @@ public class AttachmentManager {
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "audio/*", null, requestCode))
-               .execute();
-  }
-
-  public static void selectLocation(Activity activity, int requestCode) {
-    Permissions.with(activity)
-               .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
-               .onAllGranted(() -> {
-                 try {
-                   activity.startActivityForResult(new PlacePicker.IntentBuilder().build(activity), requestCode);
-                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                   Log.w(TAG, e);
-                 }
-               })
                .execute();
   }
 
