@@ -65,12 +65,14 @@ Karissa McKelvey, Lars-Magnus Skog, Ole Carlsen
 * Give advices for Google users
 * Speed up by making database-locks unneccessary
 * Fix drafts appearing twice
-* Update Albanian, Basque, Catalan, Danish, Dutch, English, Italian, Polish, Russian, and Turkish translations
+* Update Albanian, Basque, Catalan, Danish, Dutch, English,
+  Italian, Polish, Russian, and Turkish translations
 * Update website
 
-The changes have been done by Allan Nordhøy, Angelo Fuchs, Besnik, Björn Petersen, Calbasi,
-Claudio Arseni, guland2000, Heimen Stoffels, Holger Krekel, Luis Fernando Stürmer da Rosa,
-Mahmut Özcan, Ole Carlsen, Osoitz, sebek, Thomas Oster
+The changes have been done by Allan Nordhøy, Angelo Fuchs, Besnik,
+Björn Petersen, Calbasi, Claudio Arseni, guland2000, Heimen Stoffels,
+Holger Krekel, Luis Fernando Stürmer da Rosa, Mahmut Özcan, Ole Carlsen,
+Osoitz, sebek, Thomas Oster
 
 
 ## v0.18.2
@@ -155,10 +157,14 @@ Mahmut Özcan, Ole Carlsen, Osoitz, sebek, Thomas Oster
 ## v0.16.0
 2018-03-19
 
-* Messages from normal clients to more than one recipient create an implicit "ad-hoc group"
+* Messages from normal clients to more than one recipient
+  create an implicit "ad-hoc group"
 * Allow group creation though contact requests
-* Always display the _sending_ time in the chat list; the list itself is sorted by _receiving_ time and "Message info" shows both times now
-* If parts but the footnote are cut from mails, this is indicated "..."; use "Message info" to get the full text
+* Always display the _sending_ time in the chat list;
+  the list itself is sorted by _receiving_ time
+  and "Message info" shows both times now
+* If parts but the footnote are cut from mails,
+  this is indicated "..."; use "Message info" to get the full text
 * Highlight the subject in the "Message info"
 * Autoconfigure prefers 'https' over 'http'
 * Bug fixes, eg. avoid freezes if the connection is lost
