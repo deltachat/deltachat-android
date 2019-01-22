@@ -25,12 +25,6 @@ repositories {
         url "https://repo1.maven.org/maven2/"
     }
     maven {
-        url "https://raw.github.com/signalapp/maven/master/preferencefragment/releases/"
-    }
-    maven {
-        url "https://raw.github.com/signalapp/maven/master/smil/releases/"
-    }
-    maven {
         url "https://raw.github.com/signalapp/maven/master/photoview/releases/"
     }
     maven {
