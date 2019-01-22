@@ -1,3 +1,4 @@
+*.keystore
 .classpath
 project.properties
 .project

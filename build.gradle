@@ -223,6 +223,20 @@ android {
     }
 
     signingConfigs {
+        signingConfigs {
+            debug {
+                def debugKeystore = file("tools/debug.keystore")
+                if (debugKeystore.exists()) {
+                    storeFile debugKeystore
+                }
+            }
+            release {
+                def debugKeystore = file("tools/debug.keystore")
+                if (debugKeystore.exists()) {
+                    storeFile debugKeystore
+                }
+            }
+        }
         release
     }
 
