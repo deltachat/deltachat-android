@@ -188,9 +188,9 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        versionCode 412
-        versionName "0.98.2"
-        applicationId "chat.delta.androidii"
+        versionCode 537
+        versionName "0.100.0"
+        applicationId "com.b44t.messenger.beta"
 
         minSdkVersion 14
         targetSdkVersion 25
