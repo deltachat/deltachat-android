@@ -162,6 +162,30 @@
 
             </LinearLayout>
 
+            <LinearLayout android:id="@+id/location_linear_layout"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:gravity="center"
+                          android:orientation="vertical">
+
+                <org.thoughtcrime.securesms.components.CircleColorImageView
+                        android:id="@+id/location_button"
+                        android:layout_width="53dp"
+                        android:layout_height="53dp"
+                        android:src="@drawable/ic_location_on_white_24dp"
+                        android:scaleType="center"
+                        android:contentDescription="@string/location"
+                        app:circleColor="@color/location_icon"/>
+
+                <TextView android:layout_marginTop="10dp"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          style="@style/AttachmentTypeLabel"
+                          android:text="@string/location"/>
+
+            </LinearLayout>
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:gravity="center"

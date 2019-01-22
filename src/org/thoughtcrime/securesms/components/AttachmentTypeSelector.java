@@ -37,6 +37,7 @@ public class AttachmentTypeSelector extends PopupWindow {
   public static final int ADD_SOUND         = 3;
   public static final int ADD_CONTACT_INFO  = 4;
   public static final int TAKE_PHOTO        = 5;
+  public static final int ADD_LOCATION      = 6;
 
   private static final int ANIMATION_DURATION = 300;
 
@@ -50,6 +51,7 @@ public class AttachmentTypeSelector extends PopupWindow {
   private final @NonNull ImageView           documentButton;
   private final @NonNull ImageView           contactButton;
   private final @NonNull ImageView           cameraButton;
+  private final @NonNull ImageView           locationButton;
   private final @NonNull ImageView           closeButton;
 
   private @Nullable View                      currentAnchor;
@@ -69,6 +71,7 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.documentButton = ViewUtil.findById(layout, R.id.document_button);
     this.contactButton  = ViewUtil.findById(layout, R.id.contact_button);
     this.cameraButton   = ViewUtil.findById(layout, R.id.camera_button);
+    this.locationButton = ViewUtil.findById(layout, R.id.location_button);
     this.closeButton    = ViewUtil.findById(layout, R.id.close_button);
 
     this.imageButton.setOnClickListener(new PropagatingClickListener(ADD_GALLERY));
@@ -76,8 +79,13 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.documentButton.setOnClickListener(new PropagatingClickListener(ADD_DOCUMENT));
     this.contactButton.setOnClickListener(new PropagatingClickListener(ADD_CONTACT_INFO));
     this.cameraButton.setOnClickListener(new PropagatingClickListener(TAKE_PHOTO));
+    this.locationButton.setOnClickListener(new PropagatingClickListener(ADD_LOCATION));
     this.closeButton.setOnClickListener(new CloseClickListener());
     this.recentRail.setListener(new RecentPhotoSelectedListener());
+
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+      ViewUtil.findById(layout, R.id.location_linear_layout).setVisibility(View.INVISIBLE);
+    }
 
     setContentView(layout);
     setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
@@ -121,6 +129,7 @@ public class AttachmentTypeSelector extends PopupWindow {
       animateButtonIn(cameraButton, ANIMATION_DURATION / 2);
 
       animateButtonIn(audioButton, ANIMATION_DURATION / 3);
+      animateButtonIn(locationButton, ANIMATION_DURATION / 3);
       animateButtonIn(documentButton, ANIMATION_DURATION / 4);
       animateButtonIn(contactButton, 0);
       animateButtonIn(closeButton, 0);
