@@ -80,6 +80,7 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.AttachmentDrawerListener;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
+import org.thoughtcrime.securesms.components.location.SignalPlace;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -151,6 +152,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int PICK_CONTACT        = 4;
   private static final int GROUP_EDIT          = 6;
   private static final int TAKE_PHOTO          = 7;
+  private static final int PICK_LOCATION       = 9;
   private static final int SMS_DEFAULT         = 11;
 
   private   GlideRequests               glideRequests;
@@ -365,6 +367,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if (attachmentManager.getCaptureUri() != null) {
         setMedia(attachmentManager.getCaptureUri(), MediaType.IMAGE);
       }
+      break;
+    case PICK_LOCATION:
+      SignalPlace place = new SignalPlace(PlacePicker.getPlace(data, this));
+      attachmentManager.setLocation(place, getCurrentMediaConstraints());
       break;
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
@@ -784,6 +790,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentManager.selectAudio(this, PICK_AUDIO); break;
     case AttachmentTypeSelector.ADD_CONTACT_INFO:
       startContactChooserActivity(); break;
+    case AttachmentTypeSelector.ADD_LOCATION:
+      AttachmentManager.selectLocation(this, PICK_LOCATION); break;
     case AttachmentTypeSelector.TAKE_PHOTO:
       attachmentManager.capturePhoto(this, TAKE_PHOTO); break;
     }
