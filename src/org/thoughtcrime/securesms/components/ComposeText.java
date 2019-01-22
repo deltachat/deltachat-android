@@ -138,7 +138,7 @@ public class ComposeText extends EmojiEditText {
 
   private void initialize() {
     if (Prefs.isIncognitoKeyboardEnabled(getContext())) {
-      setImeOptions(getImeOptions() | 16777216);
+      setImeOptions(getImeOptions() | EditorInfoCompat.IME_FLAG_NO_PERSONALIZED_LEARNING);
     }
   }
 
