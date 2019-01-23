@@ -194,17 +194,19 @@ android {
     signingConfigs {
         signingConfigs {
             debug {
-                def debugKeystore = file("tools/debug.keystore")
+                // add `DC_DEBUG_STORE_FILE=/path/to/debug.keystore` to `~/.gradle/gradle.properties`
+                def debugKeystore = file(DC_DEBUG_STORE_FILE)
                 if (debugKeystore.exists()) {
                     storeFile debugKeystore
                 }
             }
             release {
-                def debugKeystore = file("tools/debug.keystore")
-                if (debugKeystore.exists()) {
-                    storeFile debugKeystore
-                }
-            }
+                // TODO: add a key for release versions, needed esp. for Google Play
+                // see https://github.com/deltachat/deltachat-android/issues/651
+                storeFile file(DC_RELEASE_STORE_FILE)
+                storePassword DC_RELEASE_STORE_PASSWORD
+                keyAlias DC_RELEASE_KEY_ALIAS
+                keyPassword DC_RELEASE_KEY_PASSWORD            }
         }
         release
     }
@@ -326,29 +328,3 @@ def getLastCommitTimestamp() {
         return os.toString() + "000"
     }
 }
-
-def Properties props = new Properties()
-def propFile = new File('signing.properties')
-
-if (propFile.canRead()){
-    props.load(new FileInputStream(propFile))
-
-    if (props !=null &&
-        props.containsKey('STORE_FILE')     &&
-        props.containsKey('STORE_PASSWORD') &&
-        props.containsKey('KEY_ALIAS')      &&
-        props.containsKey('KEY_PASSWORD'))
-    {
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
-    } else {
-        println 'signing.properties found but some entries are missing'
-        android.buildTypes.release.signingConfig = null
-    }
-}else {
-    println 'signing.properties not found'
-    android.buildTypes.release.signingConfig = null
-}
-
