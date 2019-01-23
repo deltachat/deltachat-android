@@ -179,6 +179,9 @@ public class LogViewFragment extends Fragment {
       builder.append(pm.getApplicationLabel(pm.getApplicationInfo(context.getPackageName(), 0)))
              .append(" ")
              .append(pm.getPackageInfo(context.getPackageName(), 0).versionName)
+             .append("-")
+             .append(BuildConfig.FLAVOR)
+             .append(BuildConfig.DEBUG? "-debug" : "")
              .append("\n");
     } catch (PackageManager.NameNotFoundException nnfe) {
       builder.append("Unknown\n");

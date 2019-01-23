@@ -63,7 +63,6 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
-import com.google.android.gms.location.places.ui.PlacePicker;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
@@ -369,8 +368,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       break;
     case PICK_LOCATION:
+      /*
       SignalPlace place = new SignalPlace(PlacePicker.getPlace(data, this));
       attachmentManager.setLocation(place, getCurrentMediaConstraints());
+      */
       break;
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);

@@ -8,8 +8,8 @@ import android.util.Log;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.maps.model.LatLng;
+//import com.google.android.gms.location.places.Place;
+//import com.google.android.gms.maps.model.LatLng;
 
 import org.thoughtcrime.securesms.util.JsonUtils;
 
@@ -32,19 +32,23 @@ public class SignalPlace {
   @JsonProperty
   private double longitude;
 
-  public SignalPlace(Place place) {
+  public SignalPlace(Object place) {
+    /*
     this.name      = place.getName();
     this.address   = place.getAddress();
     this.latitude  = place.getLatLng().latitude;
     this.longitude = place.getLatLng().longitude;
+    */
   }
 
   public SignalPlace() {}
 
+  /*
   @JsonIgnore
   public LatLng getLatLong() {
     return new LatLng(latitude, longitude);
   }
+  */
 
   @JsonIgnore
   public String getDescription() {

@@ -324,34 +324,6 @@
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/smtp_security_label" />
 
-        <!--<android.support.v4.widget.Space-->
-            <!--android:id="@+id/register_button_spacer_top"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="16dp"-->
-            <!--app:layout_constraintTop_toBottomOf="@id/smtp_security" />-->
-
-        <!--<com.dd.CircularProgressButton-->
-            <!--android:id="@+id/register_button"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_marginEnd="16dp"-->
-            <!--android:layout_marginStart="16dp"-->
-            <!--android:background="@color/signal_primary"-->
-            <!--android:textColor="@color/white"-->
-            <!--app:cpb_colorIndicator="@color/white"-->
-            <!--app:cpb_colorProgress="@color/textsecure_primary"-->
-            <!--app:cpb_cornerRadius="50dp"-->
-            <!--app:cpb_selectorIdle="@drawable/progress_button_state"-->
-            <!--app:cpb_textIdle="@string/login_title"-->
-            <!--app:layout_constraintEnd_toEndOf="@id/guideline_root_end"-->
-            <!--app:layout_constraintStart_toStartOf="@id/guideline_root_start"-->
-            <!--app:layout_constraintTop_toBottomOf="@id/register_button_spacer_top" />-->
-
-        <!--<android.support.v4.widget.Space-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="16dp"-->
-            <!--app:layout_constraintTop_toBottomOf="@id/register_button" />-->
-
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

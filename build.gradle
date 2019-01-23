@@ -25,28 +25,12 @@ repositories {
         url "https://repo1.maven.org/maven2/"
     }
     maven {
-        url "https://raw.github.com/signalapp/maven/master/preferencefragment/releases/"
-    }
-    maven {
-        url "https://raw.github.com/signalapp/maven/master/smil/releases/"
-    }
-    maven {
-        url "https://raw.github.com/signalapp/maven/master/photoview/releases/"
-    }
-    maven {
-        url "https://raw.github.com/signalapp/maven/master/shortcutbadger/releases/"
-    }
-    maven {
-        url "https://raw.github.com/signalapp/maven/master/circular-progress-button/releases/"
+        url "https://jitpack.io"
     }
     maven {
         url "https://maven.google.com"
     }
-    maven { // textdrawable
-        url 'https://dl.bintray.com/amulyakhare/maven'
-    }
     jcenter()
-    mavenLocal()
     maven {
         url 'https://maven.google.com/'
         name 'Google'
@@ -66,10 +50,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.1.2'
     compile 'android.arch.lifecycle:extensions:1.1.1'
     compile 'android.arch.lifecycle:common-java8:1.1.1'
-
-    compile 'com.google.android.gms:play-services-gcm:9.6.1'
-    compile 'com.google.android.gms:play-services-maps:9.6.1'
-    compile 'com.google.android.gms:play-services-places:9.6.1'
 
     compile 'com.google.android.exoplayer:exoplayer:r2.3.1'
 
@@ -102,7 +82,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
     compile 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.4'
-    compile 'com.github.dmytrodanylyk.circular-progress-button:library:1.1.3-S2'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:1.7.1'
@@ -134,14 +113,9 @@ dependencyVerification {
         'com.android.support:exifinterface:0e7cd526c4468895cd8549def46b3d33c8bcfb1ae4830569898d8c7326b15bb2',
         'android.arch.lifecycle:extensions:429426b2feec2245ffc5e75b3b5309bedb36159cf06dc71843ae43526ac289b6',
         'android.arch.lifecycle:common-java8:7078b5c8ccb94203df9cc2a463c69cf0021596e6cf966d78fbfd697aaafe0630',
-        'com.google.android.gms:play-services-gcm:312e61253a236f2d9b750b9c04fc92fd190d23b0b2755c99de6ce4a28b259dae',
-        'com.google.android.gms:play-services-places:abf3a4a3b146ec7e6e753be62775e512868cf37d6f88ffe2d81167b33b57132b',
-        'com.google.android.gms:play-services-maps:45e8021e7ddac4a44a82a0e9698991389ded3023d35c58f38dbd86d54211ec0e',
         'com.google.android.exoplayer:exoplayer:955085aa611a8f7cf6c61b88ae03d1a392f4ad94c9bfbc153f3dedb9ffb14718',
-        'me.leolin:ShortcutBadger:e3cb3e7625892129b0c92dd5e4bc649faffdd526d5af26d9c45ee31ff8851774',
         'se.emilsjolander:stickylistheaders:a08ca948aa6b220f09d82f16bbbac395f6b78897e9eeac6a9f0b0ba755928eeb',
         'com.jpardogo.materialtabstrip:library:c6ef812fba4f74be7dc4a905faa4c2908cba261a94c13d4f96d5e67e4aad4aaa',
-        'com.github.chrisbanes:PhotoView:ed06775308da260e1fd86d1d3288988fcd3d80db24ce0d7c9fcfedc39e622292',
         'com.github.bumptech.glide:glide:997de7ac95be6c944d3b8cbe13de11307736ea45451c1b09a6cec7c328ead59f',
         'com.makeramen:roundedimageview:1f5a1865796b308c6cdd114acc6e78408b110f0a62fc63553278fbeacd489cd1',
         'com.soundcloud.android:android-crop:ffd4b973cf6e97f7d64118a0dc088df50e9066fd5634fe6911dd0c0c5d346177',
@@ -151,11 +125,6 @@ dependencyVerification {
         'cn.carbswang.android:NumberPickerView:18b3c316d62c7c277978a8d4ed57a5b8f4e943762264960f579a8a549c756729',
         'com.annimon:stream:5da6e2e3e0551d61a3ea7014f04312276549e3dd739cf637996e4cf43c5535b9',
         'com.takisoft.fix:colorpicker:f5d0dbabe406a1800498ca9c1faf34db36e021d8488bf10360f29961fe3ab0d1',
-        'com.github.dmytrodanylyk.circular-progress-button:library:8dc6a29a5a8db7b2ad5a9a7fda1dc9ae0893f4c8f0545732b2c63854ea693e8e',
-        'com.google.android.gms:play-services-iid:54e919f9957b8b7820da7ee9b83471d00d0cac1cf08ddea8b5b41aea80bb1a70',
-        'com.google.android.gms:play-services-base:0ca636a8fc9a5af45e607cdcd61783bf5d561cbbb0f862021ce69606eee5ad49',
-        'com.google.android.gms:play-services-tasks:69ec265168e601d0203d04cd42e34bb019b2f029aa1e16fabd38a5153eea2086',
-        'com.google.android.gms:play-services-basement:95dd882c5ffba15b9a99de3fefb05d3a01946623af67454ca00055d222f85a8d',
         'com.android.support:support-v4:1b2b37169fcccfef5e563d273749e3792decdce9818bc17932403a2363f537b4',
         'com.android.support:support-fragment:e4358388022a2205777575a7251fe357334658e4123d5d6e3b082f5899d9b011',
         'com.android.support:animated-vector-drawable:5b117a2c13a898c2a3c84c480d64edcfac2ef720aa9b742c29249fac774ffc48',
@@ -190,7 +159,7 @@ android {
     defaultConfig {
         versionCode 537
         versionName "0.100.0"
-        applicationId "com.b44t.messenger.beta"
+        applicationId "com.b44t.messenger"
 
         minSdkVersion 14
         targetSdkVersion 25
@@ -225,17 +194,19 @@ android {
     signingConfigs {
         signingConfigs {
             debug {
-                def debugKeystore = file("tools/debug.keystore")
+                // add `DC_DEBUG_STORE_FILE=/path/to/debug.keystore` to `~/.gradle/gradle.properties`
+                def debugKeystore = file(DC_DEBUG_STORE_FILE)
                 if (debugKeystore.exists()) {
                     storeFile debugKeystore
                 }
             }
             release {
-                def debugKeystore = file("tools/debug.keystore")
-                if (debugKeystore.exists()) {
-                    storeFile debugKeystore
-                }
-            }
+                // TODO: add a key for release versions, needed esp. for Google Play
+                // see https://github.com/deltachat/deltachat-android/issues/651
+                storeFile file(DC_RELEASE_STORE_FILE)
+                storePassword DC_RELEASE_STORE_PASSWORD
+                keyAlias DC_RELEASE_KEY_ALIAS
+                keyPassword DC_RELEASE_KEY_PASSWORD            }
         }
         release
     }
@@ -244,7 +215,6 @@ android {
         debug {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                          'proguard-google-play-services.pro',
                           'proguard-jackson.pro',
                           'proguard-appcompat-v7.pro',
                           'proguard-rounded-image-view.pro',
@@ -255,23 +225,19 @@ android {
                           'proguard.cfg'
             testProguardFiles 'proguard-automation.pro',
                           'proguard.cfg'
+            applicationIdSuffix ".beta"
         }
         release {
             minifyEnabled true
             proguardFiles = buildTypes.debug.proguardFiles
             signingConfig signingConfigs.release
+            applicationIdSuffix ".beta"
         }
     }
 
     productFlavors {
-        play {
+        fat {
             dimension "none"
-            buildConfigField "boolean", "PLAY_STORE_DISABLED", "false"
-        }
-
-        website {
-            dimension "none"
-            buildConfigField "boolean", "PLAY_STORE_DISABLED", "true"
         }
     }
 
@@ -362,29 +328,3 @@ def getLastCommitTimestamp() {
         return os.toString() + "000"
     }
 }
-
-def Properties props = new Properties()
-def propFile = new File('signing.properties')
-
-if (propFile.canRead()){
-    props.load(new FileInputStream(propFile))
-
-    if (props !=null &&
-        props.containsKey('STORE_FILE')     &&
-        props.containsKey('STORE_PASSWORD') &&
-        props.containsKey('KEY_ALIAS')      &&
-        props.containsKey('KEY_PASSWORD'))
-    {
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
-    } else {
-        println 'signing.properties found but some entries are missing'
-        android.buildTypes.release.signingConfig = null
-    }
-}else {
-    println 'signing.properties not found'
-    android.buildTypes.release.signingConfig = null
-}
-

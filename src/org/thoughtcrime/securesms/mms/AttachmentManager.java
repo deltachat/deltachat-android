@@ -38,10 +38,6 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.ui.PlacePicker;
-
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
@@ -374,6 +370,7 @@ public class AttachmentManager {
   }
 
   public static void selectLocation(Activity activity, int requestCode) {
+    /*
     Permissions.with(activity)
                .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
                .ifNecessary()
@@ -386,6 +383,7 @@ public class AttachmentManager {
                  }
                })
                .execute();
+               */
   }
 
   private @Nullable Uri getSlideUri() {

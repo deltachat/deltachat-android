@@ -12,12 +12,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/*
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.MarkerOptions;
+*/
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -26,7 +28,7 @@ import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 
 public class SignalMapView extends LinearLayout {
 
-  private MapView   mapView;
+  //private MapView   mapView;
   private ImageView imageView;
   private TextView  textView;
 
@@ -49,13 +51,14 @@ public class SignalMapView extends LinearLayout {
     setOrientation(LinearLayout.VERTICAL);
     LayoutInflater.from(context).inflate(R.layout.signal_map_view, this, true);
 
-    this.mapView   = ViewUtil.findById(this, R.id.map_view);
+    //this.mapView   = ViewUtil.findById(this, R.id.map_view);
     this.imageView = ViewUtil.findById(this, R.id.image_view);
     this.textView  = ViewUtil.findById(this, R.id.address_view);
   }
 
   public ListenableFuture<Bitmap> display(final SignalPlace place) {
     final SettableFuture<Bitmap> future = new SettableFuture<>();
+    /*
 
     this.mapView.onCreate(null);
     this.mapView.onResume();
@@ -91,6 +94,7 @@ public class SignalMapView extends LinearLayout {
     });
 
     this.textView.setText(place.getDescription());
+    */
 
     return future;
   }

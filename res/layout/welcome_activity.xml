@@ -29,7 +29,7 @@
         android:layout_height="32dp"
         app:layout_constraintBottom_toTopOf="@id/skip_button"/>
 
-    <com.dd.CircularProgressButton
+    <Button
         android:id="@+id/skip_button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -37,11 +37,7 @@
         android:paddingEnd="8dp"
         android:paddingStart="8dp"
         android:textColor="@color/white"
-        app:cpb_colorIndicator="@color/white"
-        app:cpb_colorProgress="@color/textsecure_primary"
-        app:cpb_cornerRadius="20dp"
-        app:cpb_selectorIdle="@drawable/progress_button_state"
-        app:cpb_textIdle="@string/welcome_start_messaging"
+        android:text="@string/welcome_start_messaging"
         app:layout_constraintBottom_toTopOf="@id/skip_button_bottom_spacer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
