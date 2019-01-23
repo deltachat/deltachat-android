@@ -69,7 +69,6 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     initializeRandomNumberFix();
     initializeLogging();
     initializeJobManager();
-    initializePeriodicTasks();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
   }
@@ -130,15 +129,5 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
                                 .withJobSerializer(new JavaJobSerializer())
                                 .withConsumerThreads(5)
                                 .build();
-  }
-
-  private void initializePeriodicTasks() {
-    //DirectoryRefreshListener.schedule(this); -- directory in this sense seems to be the address book
-    //LocalBackupListener.schedule(this); -- disabled for now, there is no automatic backup; maybe the implicit IMAP backup is sufficient
-
-    // disabled for now, Delta Chat has no update url; maybe f-droid is sufficient
-    //if (BuildConfig.PLAY_STORE_DISABLED) {
-    //  UpdateApkRefreshListener.schedule(this);
-    //}
   }
 }
