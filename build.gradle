@@ -232,14 +232,8 @@ android {
     }
 
     productFlavors {
-        play {
+        fat {
             dimension "none"
-            buildConfigField "boolean", "PLAY_STORE_DISABLED", "false"
-        }
-
-        website {
-            dimension "none"
-            buildConfigField "boolean", "PLAY_STORE_DISABLED", "true"
         }
     }
 
