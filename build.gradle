@@ -159,7 +159,7 @@ android {
     defaultConfig {
         versionCode 537
         versionName "0.100.0"
-        applicationId "com.b44t.messenger.beta"
+        applicationId "com.b44t.messenger"
 
         minSdkVersion 14
         targetSdkVersion 25
@@ -223,11 +223,13 @@ android {
                           'proguard.cfg'
             testProguardFiles 'proguard-automation.pro',
                           'proguard.cfg'
+            applicationIdSuffix ".beta"
         }
         release {
             minifyEnabled true
             proguardFiles = buildTypes.debug.proguardFiles
             signingConfig signingConfigs.release
+            applicationIdSuffix ".beta"
         }
     }
 
