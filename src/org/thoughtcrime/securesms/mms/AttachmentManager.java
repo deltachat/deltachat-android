@@ -80,7 +80,7 @@ public class AttachmentManager {
   private ThumbnailView              thumbnail;
   private AudioView                  audioView;
   private DocumentView               documentView;
-  private SignalMapView              mapView;
+  //private SignalMapView              mapView;
 
   private @NonNull  List<Uri>       garbage = new LinkedList<>();
   private @NonNull  Optional<Slide> slide   = Optional.absent();
@@ -99,7 +99,7 @@ public class AttachmentManager {
       this.thumbnail          = ViewUtil.findById(root, R.id.attachment_thumbnail);
       this.audioView          = ViewUtil.findById(root, R.id.attachment_audio);
       this.documentView       = ViewUtil.findById(root, R.id.attachment_document);
-      this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
+      //this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
       this.removableMediaView = ViewUtil.findById(root, R.id.removable_media_view);
 
       removableMediaView.setRemoveClickListener(new RemoveButtonListener());
@@ -176,6 +176,7 @@ public class AttachmentManager {
     this.slide      = Optional.of(slide);
   }
 
+  /*
   public ListenableFuture<Boolean> setLocation(@NonNull final SignalPlace place,
                                                @NonNull final MediaConstraints constraints)
   {
@@ -203,6 +204,7 @@ public class AttachmentManager {
 
     return returnResult;
   }
+  */
 
   @SuppressLint("StaticFieldLeak")
   public ListenableFuture<Boolean> setMedia(@NonNull final GlideRequests glideRequests,
