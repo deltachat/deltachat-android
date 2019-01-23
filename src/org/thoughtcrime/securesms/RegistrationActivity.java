@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
-import com.dd.CircularProgressButton;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -114,7 +113,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         passwordInput = findViewById(R.id.password_text);
         advancedGroup = findViewById(R.id.advanced_group);
         advancedIcon = findViewById(R.id.advanced_icon);
-//        CircularProgressButton loginButton = findViewById(R.id.register_button);
         TextView advancedTextView = findViewById(R.id.advanced_text);
         TextInputEditText imapServerInput = findViewById(R.id.imap_server_text);
         TextInputEditText imapPortInput = findViewById(R.id.imap_port_text);
