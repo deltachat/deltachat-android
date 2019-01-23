@@ -1,7 +1,7 @@
 # Delta Chat Android Changelog
 
 ## v0.100.0
-2019-01-22
+2019-01-23
 
 * Complete rework of the ui using pure material design
 * Images and other files can be sent together with a description
