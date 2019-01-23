@@ -25,7 +25,7 @@ repositories {
         url "https://repo1.maven.org/maven2/"
     }
     maven {
-        url "https://raw.github.com/signalapp/maven/master/photoview/releases/"
+        url "https://jitpack.io"
     }
     maven {
         url "https://raw.github.com/signalapp/maven/master/shortcutbadger/releases/"
@@ -135,7 +135,6 @@ dependencyVerification {
         'me.leolin:ShortcutBadger:e3cb3e7625892129b0c92dd5e4bc649faffdd526d5af26d9c45ee31ff8851774',
         'se.emilsjolander:stickylistheaders:a08ca948aa6b220f09d82f16bbbac395f6b78897e9eeac6a9f0b0ba755928eeb',
         'com.jpardogo.materialtabstrip:library:c6ef812fba4f74be7dc4a905faa4c2908cba261a94c13d4f96d5e67e4aad4aaa',
-        'com.github.chrisbanes:PhotoView:ed06775308da260e1fd86d1d3288988fcd3d80db24ce0d7c9fcfedc39e622292',
         'com.github.bumptech.glide:glide:997de7ac95be6c944d3b8cbe13de11307736ea45451c1b09a6cec7c328ead59f',
         'com.makeramen:roundedimageview:1f5a1865796b308c6cdd114acc6e78408b110f0a62fc63553278fbeacd489cd1',
         'com.soundcloud.android:android-crop:ffd4b973cf6e97f7d64118a0dc088df50e9066fd5634fe6911dd0c0c5d346177',
