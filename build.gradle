@@ -30,7 +30,7 @@ repositories {
     maven {
         url "https://maven.google.com"
     }
-    maven { // textdrawable
+    maven {
         url 'https://dl.bintray.com/amulyakhare/maven'
     }
     jcenter()
