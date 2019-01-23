@@ -159,6 +159,9 @@ android {
     defaultConfig {
         versionCode 537
         versionName "0.100.0"
+
+        // the full, used applicationId is `com.b44t.messenger.beta` for historical reasons.
+        // the following is mainly to satisfy f-droid that does not parse for the suffix on checks.
         applicationId "com.b44t.messenger"
 
         minSdkVersion 14
