@@ -198,18 +198,20 @@ android {
         signingConfigs {
             debug {
                 // add `DC_DEBUG_STORE_FILE=/path/to/debug.keystore` to `~/.gradle/gradle.properties`
-                def debugKeystore = file(DC_DEBUG_STORE_FILE)
-                if (debugKeystore.exists()) {
-                    storeFile debugKeystore
+                if(project.hasProperty("DC_DEBUG_STORE_FILE" )) {
+                    storeFile file(DC_DEBUG_STORE_FILE )
                 }
             }
             release {
                 // TODO: add a key for release versions, needed esp. for Google Play
                 // see https://github.com/deltachat/deltachat-android/issues/651
-                storeFile file(DC_RELEASE_STORE_FILE)
-                storePassword DC_RELEASE_STORE_PASSWORD
-                keyAlias DC_RELEASE_KEY_ALIAS
-                keyPassword DC_RELEASE_KEY_PASSWORD            }
+                if(project.hasProperty("DC_RELEASE_STORE_FILE")) {
+                    storeFile file(DC_RELEASE_STORE_FILE)
+                    storePassword DC_RELEASE_STORE_PASSWORD
+                    keyAlias DC_RELEASE_KEY_ALIAS
+                    keyPassword DC_RELEASE_KEY_PASSWORD
+                }
+            }
         }
         release
     }
