@@ -267,9 +267,8 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   }
 
   private void initializeProfileName(boolean excludeSystem) {
-    if (!TextUtils.isEmpty(Prefs.getProfileName(this))) {
-      String profileName = Prefs.getProfileName(this);
-
+    String profileName  = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME);
+    if (!TextUtils.isEmpty(profileName)) {
       name.setText(profileName);
       name.setSelection(profileName.length(), profileName.length());
     } else if (!excludeSystem) {
@@ -430,7 +429,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
         Context context    = CreateProfileActivity.this;
         DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
         setStatusText();
-        Prefs.setProfileName(context, name);
 
         try {
           AvatarHelper.setSelfAvatar(CreateProfileActivity.this, DcHelper.get(context, DcHelper.CONFIG_ADDRESS), avatarBytes);
