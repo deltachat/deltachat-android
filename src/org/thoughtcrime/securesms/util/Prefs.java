@@ -57,7 +57,6 @@ public class Prefs {
 
   public  static final String SYSTEM_EMOJI_PREF                = "pref_system_emoji";
   public  static final String DIRECT_CAPTURE_CAMERA_ID         = "pref_direct_capture_camera_id";
-  private static final String PROFILE_NAME_PREF                = "pref_profile_name";
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
   public  static final String INCOGNITO_KEYBORAD_PREF          = "pref_incognito_keyboard";
 
@@ -120,14 +119,6 @@ public class Prefs {
 
   public static boolean isIncognitoKeyboardEnabled(Context context) {
     return getBooleanPreference(context, INCOGNITO_KEYBORAD_PREF, false);
-  }
-
-  public static void setProfileName(Context context, String name) {
-    setStringPreference(context, PROFILE_NAME_PREF, name);
-  }
-
-  public static String getProfileName(Context context) {
-    return getStringPreference(context, PROFILE_NAME_PREF, null);
   }
 
   public static void setProfileAvatarId(Context context, int id) {
