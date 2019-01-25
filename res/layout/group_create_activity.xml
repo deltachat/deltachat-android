@@ -75,6 +75,8 @@
 
         <Button
             android:id="@+id/add_member_button"
+            android:layout_weight="1"
+            android:layout_gravity="fill_vertical"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:background="@color/signal_primary"
@@ -88,11 +90,13 @@
 
         <Button
             android:id="@+id/verify_button"
+            android:layout_weight="1"
+            android:layout_gravity="fill_vertical"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:background="@color/signal_primary"
-            android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
             android:paddingEnd="12dp"
             android:paddingStart="12dp"
