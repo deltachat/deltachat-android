@@ -25,6 +25,7 @@ repositories {
         url "https://repo1.maven.org/maven2/"
     }
     maven {
+        // Used only for PhotoView
         url "https://jitpack.io"
     }
     maven {
@@ -60,6 +61,7 @@ dependencies {
     compile "me.leolin:ShortcutBadger:1.1.16"
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
     compile 'com.jpardogo.materialtabstrip:library:1.0.9'
+    // PhotoView does the zooming on the photos / media.
     compile 'com.github.chrisbanes:PhotoView:2.1.3'
     compile 'com.github.bumptech.glide:glide:4.5.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
@@ -98,6 +100,7 @@ dependencies {
 
 dependencyVerification {
     verify = [
+        'com.github.chrisbanes:PhotoView:7f12b0a9f24b132fc743861ab8f045625faa95c8357887a5fac58fa34a3759e4',
         'com.android.support:design:fa5c27a705310e95a8f4099c98777132ed901a0d69178942306bb34cd76f0d57',
         'com.android.support:preference-v14:1fcf40bd560dc21ce55b6a292d1326d28f52dc5e4f2a64eef2f38dd95777b645',
         'com.android.support:preference-v7:d9f32ddc92f8d6a0bd86a18f4fcaff805fa021245e395b6e7dd382907443ee53',
