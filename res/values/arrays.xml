@@ -18,6 +18,7 @@
       <!-- pt --><item>Português</item>
       <!-- ru --><item>Russian Pусский</item>
       <!-- sq --><item>Shqip</item>
+      <!-- sv --><item>Svenska</item>
       <!-- tr --><item>Türkçe</item>
       <!-- uk --><item>Ukrainian Українська</item>
   </string-array>
@@ -36,6 +37,7 @@
       <item>pt</item>
       <item>ru</item>
       <item>sq</item>
+      <item>sv</item>
       <item>tr</item>
       <item>uk</item>
   </string-array>
