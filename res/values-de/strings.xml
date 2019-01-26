@@ -138,6 +138,7 @@
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_advanced">Erweitert</string>
     <string name="menu_deaddrop">Kontaktanfragen</string>
+    <string name="menu_deaddrop_subtitle">Drücken Sie die Nachricht, um mit dem Chatten zu beginnen.</string>
     <string name="menu_view_profile">Profil anzeigen</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
@@ -305,12 +306,13 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_blocked_contacts">Blockierte Kontakte</string>
     <string name="pref_profile_photo_remove_ask">Profilbild entfernen?</string>
     <string name="pref_help_url">https://delta.chat/de/help</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Passwort und Kontoeinstellungen</string>
     <string name="pref_who_can_see_this_information">Wer kann diese Informationen sehen?</string>
     <string name="pref_who_can_see_profile_explain">Profilbild und Name werden bei der Kommunikation mit anderen neben den Nachrichten angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
-    <string name="pref_your_name">Dein Name</string>
-    <string name="pref_default_status_label">Statustext</string>
+    <string name="pref_your_name">Mein Name</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Signatur</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Mit meinem Delta Chat Messenger gesendet: https://delta.chat</string>
     <string name="pref_enter_sends">Enter-Taste sendet</string>
     <string name="pref_enter_sends_explain">Durch Drücken der Eingabetaste werden Textnachrichten gesendet.</string>
@@ -319,7 +321,8 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_change_secret">Sicherheitsoptionen ändern</string>
     <string name="pref_change_secret_explain">Ändern von PIN / Muster / Fingerabdruck über die Systemeinstellungen</string>
     <string name="pref_screen_security">Bildschirmsicherheit</string>
-    <string name="pref_screen_security_explain">Blockiere Screenshots in der Neuigkeiten-Liste und der App</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Aufforderung zum Sperren von Screenshots in der Kürzlich erstellten Liste und in der App</string>
     <string name="pref_screen_security_please_restart_hint">Um die Bildschirmsicherheitseinstellungen anzuwenden, bitte App neu starten.</string>
     <string name="pref_notifications">Benachrichtigungen</string>
     <string name="pref_notifications_show">Anzeigen</string>
@@ -338,7 +341,8 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_theme">Design</string>
     <string name="pref_language">Sprache</string>
     <string name="pref_incognito_keyboard">Inkognito-Tastatur</string>
-    <string name="pref_incognito_keyboard_explain">Deaktivierung des persönlichen Lernenens der Tastatur</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Deaktivierung des persönlichen Lernens der Tastatur</string>
     <string name="pref_read_receipts">Lesebestätigungen</string>
     <string name="pref_read_receipts_explain">Wenn Lesebestätigungen deaktiviert sind, werden auch keine Lesebestätigungen von anderen angezeigt. </string>
     <string name="pref_manage_keys">Schlüssel verwalten</string>
@@ -358,7 +362,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_backup_export_start_button">Backup starten</string>
     <string name="pref_backup_written_to_x">Backup nach %1$s erfolgreich</string>
     <string name="pref_managekeys_menu_title">Schlüssel verwalten</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat benötigt Zugriff auf deine Dateien, um die Schlüssel zu importieren/exportieren.</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat benötigt Zugriff auf das Dateisystem, um die Schlüssel zu importieren/exportieren.</string>
     <string name="pref_managekeys_export_secret_keys">Exportiere geheime Schlüssel</string>
     <string name="pref_managekeys_export_explain">Geheime Schlüssel nach \"%1$s\" exportieren?</string>
     <string name="pref_managekeys_import_secret_keys">Importiere geheime Schlüssel</string>
@@ -367,7 +371,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime Schlüssel von \"%1$s\" importiert.</string>
     <string name="pref_background">Hintergrund</string>
     <string name="pref_imap_folder_handling">IMAP-Ordnereinstellungen</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Wenn Sie diese Option deaktivieren, stellen Sie sicher, dass Ihr Server und Ihre anderen Clients entsprechend konfiguriert sind.\n\n\nAndere Dinge funktionieren möglicherweise überhaupt nicht.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Wenn Sie diese Option deaktivieren, stellen Sie sicher, dass Ihr Server und Ihre anderen Geräte entsprechend konfiguriert sind\n\nAndernfalls funktionieren Dinge möglicherweise nicht wie erwartet.</string>
     <string name="pref_watch_inbox_folder">Posteingang beobachten</string>
     <string name="pref_watch_sent_folder">Gesendet-Ordner beobachten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>
@@ -379,7 +383,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nDas Ende-zu-Ende-Setup wird dabei automatisch eingerichtet und kann mit Autocrypt-Setup-Nachrichten zwischen Geräten übertragen werden.</string>
     <string name="autocrypt_send_asm_title">Autocrypt-Setup-Message senden</string>
-    <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt-Setup-Nachricht\" überträgt dein Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät.\n\nDas Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
+    <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt-Setup-Nachricht\" überträgt das Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät.\n\nDas Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-Setup-Nachricht senden</string>
     <string name="autocrypt_send_asm_explain_after">Das Setup wurde an dich geschickt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Nach Aufforderung, den Setup-Code einzugeben, die folgenden Zahlen eintippen:\n\n%1$s\n\nDanach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
     <string name="autocrypt_prefer_e2ee">Ende-zu-Ende-Verschlüsselung bevorzugen</string>
@@ -403,9 +407,9 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="systemmsg_read_receipt_subject">Empfangsbestätigung lesen</string>
     <string name="systemmsg_read_receipt_body">Dies ist eine Empfangsbestätigung für die Nachricht \"%1$s\".\n\nEs bedeutet, dass die Nachricht auf dem Gerät des Empfängers angezeigt wurde, nicht unbedingt, dass der Inhalt gelesen wurde.</string>
     <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es könnte bereits helfen, einfach auf diese Nachricht zu antworten und den Absender zu bitten, die Nachricht erneut zu senden.\n\n• Falls Sie Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu installiert haben, können Sie von dort aus eine Autocrypt Setup-Nachricht senden.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
-    <string name="systemmsg_action_by_me">%1$s von mir.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s von mir.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s von %2$s.</string>
 
 
@@ -424,20 +428,26 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="qrscan_title">QR-Code scannen</string>
     <string name="qrscan_hint">Kamera über den QR-Code halten</string>
     <string name="qrscan_ask_join_group">Wollen Sie der Gruppe \"%1$s\" beitreten?</string>
+    <string name="qrscan_fingerprint_mismatch">Der gescannte Fingerabdruck stimmt nicht mit dem zuletzt für %1$s gesehenen Fingerabdruck überein.</string>
+    <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine E-Mail-Adresse.\n\nFür eine Out-of-Band-Verifizierung stellen Sie bitte zuerst eine verschlüsselte Verbindung zum Empfänger her.</string>
     <string name="qrscan_contains_text">Gescannter QR-Code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Gescannter QR-Code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verifiziert, mich vorgestellt....</string>
-    <string name="qrshow_title">QR Einladungscode</string>
+    <string name="qrshow_title">QR-Einladungscode</string>
     <string name="qrshow_x_joining">%1$s beigefügt.</string>
     <string name="qrshow_x_verified">%1$s verifiziert.</string>
     <string name="qrshow_x_has_joined_group">%1$s ist der Gruppe beigetreten.</string>
-    <string name="qrshow_join_group_title">QR Einladungscode</string>
+    <string name="qrshow_join_group_title">QR-Einladungscode</string>
     <string name="qrshow_join_group_hint">Scannen Sie dies, um der Gruppe \"%1$s\" beizutreten.</string>
-    <string name="qrshow_join_contact_title">QR Einladungscode</string>
+    <string name="qrshow_join_contact_title">QR-Einladungscode</string>
     <string name="qrshow_join_contact_hint">Scannen, um einen Kontakt mit %1$s herzustellen.</string>
     <string name="contact_verified">%1$s verifiziert.</string>
     <string name="contact_not_verified">Kann %1$s nicht verifizieren</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d neue Nachrichten in %2$d Chats</string>
     <string name="notify_most_recent_from">Letzter Stand von: %1$s</string>
@@ -466,7 +476,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="perm_not_now">Nicht jetzt</string>
     <string name="perm_explain_need_for_camera_access">Delta Chat den Zugriff auf die Kamera erlauben, um Fotos und Videos aufzunehmen.</string>
     <string name="perm_explain_need_for_mic_access">Delta Chat den Zugriff auf das Mikrofon erlauben, um Audionachrichten aufzunehmen.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat benötigt Zugriff auf deine Dateien, um Dateien zu exportieren oder Backups zu erstellen.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat benötigt Zugriff auf das Dateisystem, um Dateien zu exportieren oder Backups zu erstellen.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat benötigt die Erlaubnis der Kamera, um Fotos oder Videos aufzunehmen, aber es wurde dauerhaft abgelehnt. Bitte fahren Sie mit dem Menü App-Einstellungen fort, wählen Sie \"Berechtigungen\" und aktivieren Sie \"Kamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat benötigt die Erlaubnis des Mikrofons, um Audio-Nachrichten zu senden, aber es wurde dauerhaft abgelehnt. Bitte fahren Sie mit den App-Einstellungen fort, wählen Sie \"Permissions\" und aktivieren Sie \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat benötigt die Speichergenehmigung, um Fotos, Videos oder Audiodateien anzuhängen oder zu exportieren, aber es wurde dauerhaft abgelehnt. Bitte fahren Sie mit dem Menü App-Einstellungen fort, wählen Sie \"Berechtigungen\" und aktivieren Sie \"Speicher\".</string>
@@ -548,14 +558,14 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="group_name_desktop">Gruppenname</string>
     <string name="remove_desktop">Entfernen</string>
     <string name="save_desktop">Speichern</string>
-    <string name="show_qr_verify_code_desktop">QR-Verifizierungscode anzeigen</string>
+    <string name="show_qr_verify_code_desktop">QR-Einladungscode</string>
     <string name="show_qr_invite_code_desktop">QR-Einladungscode anzeigen</string>
     <string name="add_contact_desktop">Füge Kontakt hinzu</string>
     <string name="login_required_desktop">benötigt</string>
     <string name="name_desktop">Name</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt-Schlüsselübertragung</string>
     <string name="initiate_key_transfer_title_desktop">Schlüsseltransfer einleiten</string>
-    <string name="initiate_key_transfer_desktop">Eine \"Autocrypt-Setup-Nachricht\" überträgt dein Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät. Das Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
+    <string name="initiate_key_transfer_desktop">Eine \"Autocrypt-Setup-Nachricht\" überträgt das Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät. Das Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
     <string name="reply_to_message_desktop">Antworten</string>
     <string name="select_group_image_desktop">Gruppenbild auswählen</string>
     <string name="imex_progress_title_desktop">Backup-Prozess</string>
@@ -585,13 +595,15 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Möchten Sie der verifizierten Gruppe \"%1$s\" beitreten?</string>
+    <string name="qrscan_ask_join_verified_group">Möchten Sie der Gruppe \"%1$s\" beitreten?</string>
     <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt \"%1$s\" verifiziert. Unterhaltung starten?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Chat mit %1$s starten?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Chat mit %1$s starten?</string>
     <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">QR Einladungscode</string>
+    <string name="qrshow_join_verified_group_title">QR-Einladungscode</string>
     <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Scannen Sie dies, um der verifizierten Gruppe beizutreten. \"%1$s\".</string>
+    <string name="qrshow_join_verified_group_hint">Dies scannen, um der Gruppe \"%1$s\" beizutreten.</string>
 
 
 </resources>

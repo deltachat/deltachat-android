@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Скасувати</string>
     <string name="yes">Так</string>
@@ -228,6 +230,8 @@
     <string name="invite_default_text">Пропоную перейти на Delta Chat - %1$s- Ви можете написати мені на %2$s</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
     <string name="welcome_intro2_headline">Незалежний</string>
     <string name="welcome_intro2_message">Delta Chat не має централізованого сервера. Використовується ваш поштовий сервер.</string>
@@ -287,4 +291,54 @@
     <string name="pref_trim_length_limit_summary">%d повідомлень у чаті</string>
     <string name="pref_trim_now_button">Очистити всі чати</string>
     <string name="pref_trim_now_ask">Видалити всі старі повідомлення? Ця дія негайно очистить всі чати до %d останніх повідомлень.</string>
+    <string name="pref_blocked_contacts">Заблоковані контакти</string>
+    <string name="pref_profile_photo_remove_ask">Видалити фото профілю?</string>
+    <string name="pref_help_url">https://delta.chat/uk/help</string>
+    <string name="pref_password_and_account_settings">Налаштування паролю і облікового запису</string>
+    <string name="pref_who_can_see_this_information">Хто може бачити цю інформацію?</string>
+    <string name="pref_who_can_see_profile_explain">Зображення профілю та ім\'я будуть відображатися в чатах з іншими користувачами. Відправлена інформація не може бути видалена або відкликана.</string>
+    <string name="pref_your_name">Ваше ім\'я</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">Відправлено з мого Delta Chat: https://delta.chat</string>
+    <string name="pref_enter_sends_explain">Натискання клавіші Enter відправить текстові повідомлення</string>
+    <string name="pref_chat_settings">Налаштування чату</string>
+    <string name="pref_change_secret_explain">Змініть Ваш PIN-код / графічний ключ / відбиток пальця за допомогою системних налаштувань</string>
+    <string name="pref_screen_security">Безпека екрану</string>
+    <string name="pref_screen_security_please_restart_hint">Для застосування налаштувань безпеки екрану перезавантажте додаток.</string>
+    <string name="pref_notifications">Сповіщення</string>
+    <string name="pref_notifications_show">Показати</string>
+    <string name="pref_notifications_priority">Пріоритет</string>
+    <string name="pref_led_color">Колір світлодіоду</string>
+    <string name="pref_led_pattern">Ритм мерехтіння світлодіоіду</string>
+    <string name="pref_sound">Звук</string>
+    <string name="pref_silent">Беззвучний</string>
+    <string name="pref_repeat_notify">Повторювати сповіщення</string>
+    <string name="pref_privacy">Конфіденційність</string>
+    <string name="pref_chats_and_media">Чати і медіа</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Світлий</string>
+    <string name="pref_dark_theme">Темний</string>
+    <string name="pref_appearance">Зовнішній вигляд</string>
+    <string name="pref_theme">Тема</string>
+    <string name="pref_language">Мова</string>
+    <string name="pref_incognito_keyboard">Клавіатура Інкогніто</string>
+    <string name="pref_read_receipts">Отримувати сповіщення про прочитання</string>
+    <string name="pref_read_receipts_explain">Якщо сповіщення про прочитання відключені, Ви не будете бачити підтвердження прочитання повідомлень іншими користувачами.</string>
+    <string name="pref_manage_keys">Управління ключами</string>
+    <string name="pref_use_system_emoji">Використовувати системні емодзі</string>
+    <string name="pref_use_system_emoji_explain">Вимкнути вбудовану підтримку емодзі</string>
+    <string name="pref_app_access">Доступ додатку</string>
+    <string name="pref_communication">Зв\'язок</string>
+    <string name="pref_chats">Чати</string>
+    <string name="pref_messages">Повідомлення</string>
+    <string name="pref_in_chat_sounds">Звуки у чаті</string>
+    <string name="pref_message_text_size">Розмір шрифту повідомлення</string>
+    <string name="pref_view_log">Переглянути журнал</string>
+    <string name="pref_backup">Резервне копіювання</string>
+    <string name="pref_backup_explain">Зберегти чати на зовнішній носій</string>
+    <string name="pref_backup_export_start_button">Почати резервне копіювання</string>
+    <string name="pref_backup_written_to_x">Резервна копія успішно записана на %1$s</string>
+    <string name="pref_managekeys_menu_title">Управління ключами</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Додатку необхідний доступ до файлів для імпорту/експорту ключів.</string>
+    <string name="pref_managekeys_export_secret_keys">Експорт секретних ключів</string>
     </resources>

@@ -6,4 +6,7 @@
     <string name="cancel">Cancelar</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
+    <string name="on">Ligado</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_fingerprint_ask_oob">Conversa com %1$s?</string>
     </resources>

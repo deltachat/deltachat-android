@@ -297,12 +297,11 @@
     <string name="pref_blocked_contacts">Engellenen kişiler</string>
     <string name="pref_profile_photo_remove_ask">Profil fotoğrafı kaldırılsın mı?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Parola ve hesap ayarları</string>
     <string name="pref_who_can_see_this_information">Bu bilgiyi kim görebilir?</string>
     <string name="pref_who_can_see_profile_explain">Profil resminiz ve adınız diğer kullanıcılarla iletişim kurduğunuzda iletilerinizin yanında gösterilecek. Zaten gönderilen bilgiler silinmez ya da kaldırılmaz.</string>
     <string name="pref_your_name">Adınız</string>
-    <string name="pref_default_status_label">Durum metni</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Delta Chat Messenger\'ımla gönderildi: https://delta.chat</string>
     <string name="pref_enter_sends">Anahtar gönderilerini girin</string>
     <string name="pref_enter_sends_explain">Enter tuşuna basınca metin iletilerini gönderir</string>
@@ -310,7 +309,6 @@
     <string name="pref_chat_settings">Sohbet ayarları</string>
     <string name="pref_change_secret">Sırrı değiştir</string>
     <string name="pref_screen_security">Ekran güvenliği</string>
-    <string name="pref_screen_security_explain">Son kullanılanlar listesinde ve uygulama içerisinde ekran görüntülerini engelle</string>
     <string name="pref_screen_security_please_restart_hint">Ekran güvenliği ayarını uygulamak için lütfen uygulamayı yeniden başlatın.</string>
     <string name="pref_notifications">Bildirimler</string>
     <string name="pref_notifications_show">Göster</string>
@@ -329,6 +327,7 @@
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Dil</string>
     <string name="pref_incognito_keyboard">Gizli klavye</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Kişiselleştirilen öğrenmeyi etkisizleştirmek için klavye iste</string>
     <string name="pref_read_receipts">Okundu bilgileri</string>
     <string name="pref_read_receipts_explain">Okundu bilgileri etkisizleştirilirse diğerlerinden gelen okundu bilgilerini göremeyeceksiniz.</string>

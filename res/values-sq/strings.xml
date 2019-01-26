@@ -84,6 +84,8 @@
     <string name="red">E kuqe</string>
     <string name="blue">Blu</string>
     <string name="orange">Portokalli</string>
+    <string name="cyan">Gurkali</string>
+    <string name="magenta">I purpurt</string>
     <string name="white">E bardhë</string>
 
     <string name="small">Të vogla</string>
@@ -136,6 +138,7 @@
     <string name="menu_settings">Rregullime</string>
     <string name="menu_advanced">Të mëtejshme</string>
     <string name="menu_deaddrop">Kërkesa kontakti</string>
+    <string name="menu_deaddrop_subtitle">Shtypni butonin Mesazh që të filloni të bisedoni</string>
     <string name="menu_view_profile">Shihini profilin</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
@@ -226,6 +229,8 @@
     <string name="media_no_documents_hint">S’ka dokumente</string>
 
 
+    <!-- invite -->
+    <string name="invite_slogan">Kush të ka shok, s’të lë kyçur në silos mesazhesh.</string>
     <string name="invite_default_text">Le të hidhemi në Delta Chat - %1$s - mund të më dërgoni mesazhe tekst te %2$s</string>
 
 
@@ -299,12 +304,13 @@
     <string name="pref_blocked_contacts">Kontakte të bllokuar</string>
     <string name="pref_profile_photo_remove_ask">Të hiqet fotoja e profilit?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Rregullime fjalëkalimi dhe llogarie</string>
     <string name="pref_who_can_see_this_information">Kush mund ta shohë këtë informacion?</string>
     <string name="pref_who_can_see_profile_explain">Fotoja dhe emri juaj i profilit do të shfaqen tok me mesazhet, kur komunikoni me përdorues të tjerë. Informacioni i dërguar tashmë s’mund të fshihet apo të hiqet.</string>
     <string name="pref_your_name">Emri juaj</string>
-    <string name="pref_default_status_label">Tekst gjendjeje</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Tekst nënshkrimi</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Dërguar me Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Tasti Enter dërgon</string>
     <string name="pref_enter_sends_explain">Shtypja e tastit Enter do të dërgojë mesazhe tekst</string>
@@ -313,7 +319,8 @@
     <string name="pref_change_secret">Ndryshoni të fshehtën</string>
     <string name="pref_change_secret_explain">Ndryshojeni pin-in / rregullsinë / shenjat tuaja të gishtave përmes rregullimeve të sistemit</string>
     <string name="pref_screen_security">Siguri ekrani</string>
-    <string name="pref_screen_security_explain">Bllokoji fotot e ekranit te lista e të freskëtëve dhe brenda aplikacionit</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Kërko të bllokohen foto ekrani në lista të freskëta dhe brenda aplikacionit</string>
     <string name="pref_screen_security_please_restart_hint">QË të hyjnë në fuqi rregullimet mbi sigurinë e ekranit, ju lutemi, rinisni aplikacionin.</string>
     <string name="pref_notifications">Njoftime</string>
     <string name="pref_notifications_show">Shfaqi</string>
@@ -331,6 +338,7 @@
     <string name="pref_appearance">Dukje</string>
     <string name="pref_theme">Temë</string>
     <string name="pref_language">Gjuhë</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Kërkoji tastierës të çaktivizojë nxënie të personalizuar</string>
     <string name="pref_read_receipts">Lexoni dëftesa</string>
     <string name="pref_read_receipts_explain">Nëse leximi i dëftesave është i çaktivizuar, s’do të jeni në gjendje të shihni mesazh "Lexoni dëftesa" prej të tjerësh</string>
@@ -395,9 +403,9 @@
     <string name="systemmsg_read_receipt_subject">Dëftesë leximi</string>
     <string name="systemmsg_read_receipt_body">Kjo është dëftesë leximi për mesazhin \"%1$s\".\n\nDo të thotë që mesazhi u shfaq te pajisja e marrësit, jo domosdo që lënda u lexua.</string>
     <string name="systemmsg_cannot_decrypt">Ky mesazh s’mund të shfshehtëzohet.\n\n• Mundet që të ndihmojë dërgimi thjesht i një përgjigjeje këtij mesazhi dhe t’i kërkohet dërguesit ta ridërgojë mesazhin.\n\n• Në rast se ri-instaluat Delta Chat-in apo një tjetër program email-esh në këtë apo në një tjetër pajisje, mund të donit të dërgonit një Mesazh Rregullimi Autocrypt-i që prej andej.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
-    <string name="systemmsg_action_by_me">%1$s nga unë.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s nga unë.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s nga %2$s.</string>
 
 
@@ -545,7 +553,7 @@
     <string name="group_name_desktop">Emër grupi</string>
     <string name="remove_desktop">Hiqe</string>
     <string name="save_desktop">Ruaje</string>
-    <string name="show_qr_verify_code_desktop">Shfaq kod QR verifikimi</string>
+    <string name="show_qr_verify_code_desktop">Shfaq kod QR ftese</string>
     <string name="show_qr_invite_code_desktop">Shfaq kod QR ftese</string>
     <string name="add_contact_desktop">Shtoni kontakt</string>
     <string name="login_required_desktop">e domosdoshme</string>
@@ -582,15 +590,15 @@
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Doni të bëheni pjesë e grupit të verifikuar \"%1$s\"?</string>
+    <string name="qrscan_ask_join_verified_group">Doni të bëheni pjesë e grupit \"%1$s\"?</string>
     <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Të fillohet të bisedohet me \"%1$s\"?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Të bisedohet me %1$s?</string>
     <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakti \"%1$s\" u verifikua. Të fillohet të bisedohet?</string>
+    <string name="qrscan_ask_chatting_fingerprint_ok">Të bisedohet me %1$s?</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">Kod QR ftese</string>
     <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Skanojeni që të hyni te grupi i verifikuar \"%1$s\".</string>
+    <string name="qrshow_join_verified_group_hint">Që të bëheni pjesë e grupit \"%1$s\", skanoni këtë.</string>
 
 
 </resources>

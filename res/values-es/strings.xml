@@ -47,7 +47,7 @@
         <item quantity="other">%d horas</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 conversación</item>
+        <item quantity="one">1 chat</item>
         <item quantity="other">%1$d chats</item>
     </plurals>
     <plurals name="n_contacts">
@@ -130,7 +130,7 @@
     <string name="menu_play">Reproducir</string>
     <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Desplazarse al final</string>
-    <string name="menu_invite">Invitar a amigos</string>
+    <string name="menu_invite">Invitar amigos</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_select_all">Seleccionar todo</string>
     <string name="menu_expand">Expandir</string>
@@ -138,6 +138,7 @@
     <string name="menu_settings">Ajustes</string>
     <string name="menu_advanced">Avanzado</string>
     <string name="menu_deaddrop">Solicitudes de contacto</string>
+    <string name="menu_deaddrop_subtitle">Presiona un mensaje para comenzar a chatear</string>
     <string name="menu_view_profile">Ver perfil</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
@@ -148,7 +149,7 @@
 
 
     <!-- get confirmations -->
-    <string name="ask_leave_group">¿Seguro que desea abandonar este grupo? </string>
+    <string name="ask_leave_group">¿Seguro que deseas abandonar este grupo? </string>
     <plurals name="ask_delete_chat">
         <item quantity="one">¿Eliminar este chat? No volverá a ser mostrado en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
         <item quantity="other">¿Eliminar %d chats? No volverán a ser mostrados en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
@@ -194,7 +195,7 @@
     <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_record_explain">Mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
-    <string name="chat_no_chats_yet_hint">Dale a tu bandeja de entrada algo sobre lo que escribir. Comience por enviar un mensaje a un amigo.</string>
+    <string name="chat_no_chats_yet_hint">Dale a tu bandeja de entrada algo interesante. Comienza por enviar un mensaje a un amigo.</string>
     <string name="chat_all_done_hint">Bandeja de entrada vacía</string>
     <string name="chat_all_done_explain">No hay nada aquí!!!</string>
     <string name="chat_share_with_title">Compartir con</string>
@@ -302,13 +303,14 @@
     <string name="pref_trim_now_ask">¿Borrar todos los mensajes antiguos ahora? Esto recortará inmediatamente todos los chats a los %d mensajes más recientes.</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="pref_profile_photo_remove_ask">¿Eliminar foto de perfil? </string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_help_url">https://delta.chat/es/help</string>
     <string name="pref_password_and_account_settings">Contraseña y ajustes de cuenta</string>
     <string name="pref_who_can_see_this_information">¿Quién puede ver esta información?</string>
     <string name="pref_who_can_see_profile_explain">La imagen y el nombre de su perfil se mostrarán junto con sus mensajes cuando se comunique con otros usuarios. La información ya enviada no puede ser borrada o eliminada.</string>
     <string name="pref_your_name">Tu nombre</string>
-    <string name="pref_default_status_label">Texto de estado</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Texto de firma</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Enviado con mi aplicación de mensajería Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
@@ -317,7 +319,8 @@
     <string name="pref_change_secret">Cambiar secreto</string>
     <string name="pref_change_secret_explain">Cambie su pin / patrón / huella a través de la configuración del sistema</string>
     <string name="pref_screen_security">Seguridad de la pantalla</string>
-    <string name="pref_screen_security_explain">Bloquear las capturas de pantalla en la lista de recientes y dentro de la aplicación</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Solicitar bloqueo de capturas de pantalla en la lista de recientes y dentro de la aplicación</string>
     <string name="pref_screen_security_please_restart_hint">Para aplicar la configuración de seguridad de la pantalla, reinicie la aplicación.</string>
     <string name="pref_notifications">Notificaciones </string>
     <string name="pref_notifications_show">Mostrar</string>
@@ -336,6 +339,7 @@
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_incognito_keyboard">Teclado incógnito</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Solicitar al teclado deshabilitar el aprendizaje personalizado</string>
     <string name="pref_read_receipts">Recibos de lectura</string>
     <string name="pref_read_receipts_explain">Si los recibos de lectura están deshabilitados, no podrá ver los recibos de lectura de otros.</string>
@@ -363,11 +367,12 @@
     <string name="pref_managekeys_import_explain">Importar claves secretas de \"%1$s\"?\n\n• Las claves secretas existentes no se eliminarán\n\n• La última clave importada se usará como la nueva clave predeterminada a menos que tenga la palabra \"legacy\" en su nombre de archivo.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Claves secretas escritas exitosamente a \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Claves secretas importadas de \"%1$s\".</string>
+    <string name="pref_background">Fondo</string>
     <string name="pref_imap_folder_handling">Manejo de carpetas IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si deshabilita esta opción, asegúrese de que su servidor y sus otros clientes estén configurados en consecuencia.\n\nDe lo contrario, las cosas pueden no funcionar en absoluto.</string>
-    <string name="pref_watch_inbox_folder">Monitorear la Bandeja de Entrada</string>
-    <string name="pref_watch_sent_folder">Monitorear la carpeta de Enviados</string>
-    <string name="pref_watch_mvbox_folder">Monitorear la carpeta DeltaChat</string>
+    <string name="pref_watch_inbox_folder">Monitorear Bandeja de Entrada</string>
+    <string name="pref_watch_sent_folder">Monitorear carpeta Enviados</string>
+    <string name="pref_watch_mvbox_folder">Monitorear carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Las conversaciones son movidas para evitar saturar la Bandeja de entrada</string>
 
@@ -396,9 +401,16 @@
     <string name="systemmsg_group_image_deleted">Imagen de grupo eliminada.</string>
     <string name="systemmsg_member_added">Miembro %1$s añadido.</string>
     <string name="systemmsg_member_removed">Miembro %1$s eliminado.</string>
+    <string name="systemmsg_group_left">Grupo abandonado.</string>
     <string name="systemmsg_read_receipt_subject">Recibo de lectura</string>
     <string name="systemmsg_read_receipt_body">Este es un recibo de lectura para el mensaje \"%1$s\".\n\nSignifica que el mensaje se mostró en el dispositivo del destinatario, pero no necesariamente que se leyó el contenido.</string>
     <string name="systemmsg_cannot_decrypt">Este mensaje no puede ser descifrado.\n\n• Es posible que sea útil simplemente responderlo y pedirle al remitente que lo envíe nuevamente.\n\n• En caso de que haya reinstalado Delta Chat u otro programa de correo en este u otro dispositivo, puede que quiera enviar un Mensaje de Configuración de Autocrypt desde allí.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s por mi.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueo de pantalla</string>
     <string name="screenlock_explain">Bloquear el acceso a Delta Chat con el bloqueo de pantalla o de huella de Android</string>
@@ -413,12 +425,27 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">Escanear código QR</string>
     <string name="qrscan_hint">Coloque su cámara sobre el código QR</string>
+    <string name="qrscan_ask_join_group">¿Quieres unirte al grupo \"%1$s\"?</string>
+    <string name="qrscan_fingerprint_mismatch">La huella digital escaneada no coincide con la última huella vista para \"%1$s\".</string>
+    <string name="qrscan_no_addr_found">Este código QR contiene una huella digital pero no una dirección de correo electrónico.\n\nPara una verificación fuera de banda, establezca primero una conexión cifrada con el destinatario.</string>
     <string name="qrscan_contains_text">Texto del código QR escaneado:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del código QR escaneado:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Huella digital</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verificado, presentarme ...</string>
+    <string name="qrshow_title">Código de invitación QR</string>
     <string name="qrshow_x_joining">%1$s se une.</string>
     <string name="qrshow_x_verified">%1$s verificado.</string>
+    <string name="qrshow_x_has_joined_group">%1$s se unió al grupo.</string>
+    <string name="qrshow_join_group_title">Código de invitación QR</string>
+    <string name="qrshow_join_group_hint">Escanea esto para unirte al grupo verificado \"%1$s\".</string>
+    <string name="qrshow_join_contact_title">Código de invitación QR</string>
+    <string name="qrshow_join_contact_hint">Escanea esto para configurar un contacto con %1$s</string>
+    <string name="contact_verified">%1$s verificado.</string>
+    <string name="contact_not_verified">No se pudo verificar %1$s</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Configuración cambiada para %1$s</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuevos mensajes en %2$d chats</string>
     <string name="notify_most_recent_from">Más reciente de: %1$s</string>
@@ -480,6 +507,7 @@
     <string name="language_sr">Serbio</string>
     <string name="language_sv">Sueco</string>
     <string name="language_ta">Tamil</string>
+    <string name="language_te">Telegu</string>
     <string name="language_tr">Turco</string>
     <string name="language_uk">Ucraniano</string>
     <string name="language_zh_CN">Chino</string>
@@ -528,7 +556,7 @@
     <string name="group_name_desktop">Nombre de grupo</string>
     <string name="remove_desktop">Eliminar</string>
     <string name="save_desktop">Guardar</string>
-    <string name="show_qr_verify_code_desktop">Mostrar código de verificación QR</string>
+    <string name="show_qr_verify_code_desktop">Mostrar código de invitación QR</string>
     <string name="show_qr_invite_code_desktop">Mostrar código de invitación QR</string>
     <string name="add_contact_desktop">Añadir contacto</string>
     <string name="login_required_desktop">requerido</string>
@@ -565,13 +593,15 @@
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">¿Quieres unirte al grupo verificado \"%1$s\"?</string>
+    <string name="qrscan_ask_join_verified_group">¿Quieres unirte al grupo \"%1$s\"?</string>
     <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Contacto \"%1$s\" verificado. ¿Empezar a chatear?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">¿Chatear con %1$s?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">¿Chatear con %1$s?</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">Código de invitación QR</string>
     <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Escanea esto para unirte al grupo verificado \"%1$s\".</string>
+    <string name="qrshow_join_verified_group_hint">Escanea esto para unirte al grupo \"%1$s\".</string>
 
 
 </resources>

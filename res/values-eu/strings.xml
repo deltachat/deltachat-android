@@ -104,6 +104,7 @@
     <string name="menu_new_contact">Kontaktu berria</string>
     <string name="menu_new_chat">Txat berria</string>
     <string name="menu_new_group">Talde berria</string>
+    <string name="menu_new_verified_group">Egiaztatutako talde berria (esperimentala)</string>
     <string name="menu_send">Bidali</string>
     <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
     <string name="menu_edit_group">Editatu taldea</string>
@@ -137,6 +138,7 @@
     <string name="menu_settings">Ezarpenak</string>
     <string name="menu_advanced">Aurreratua</string>
     <string name="menu_deaddrop">Kontaktu-eskaerak</string>
+    <string name="menu_deaddrop_subtitle">Sakatu mezua txateatzen hasteko</string>
     <string name="menu_view_profile">Ikusi profila</string>
 
     <string name="mute_for_one_hour">Mututu ordubete</string>
@@ -249,7 +251,7 @@
     <string name="welcome_intro6_message">Zifratuta ohiko algoritmoekin. Mezuak zure zerbitzarian gordetzen dira.</string>
     <string name="welcome_intro7_headline">Fidagarria</string>
     <string name="welcome_intro7_message">Delta Chat segurua da negozioetarako, bateragarria eta estandarretan oinarritua.</string>
-    <string name="welcome_start_messaging">Ekin mezuak bidaltzeari</string>
+    <string name="welcome_start_messaging">Hasi txateatzen</string>
     <string name="login_title">Hasi saioa</string>
     <string name="login_header">Hasi saioa zure zerbitzarian</string>
     <string name="login_subheader">E-mail hornitzaile ezagunentzat ezarpen gehigarriak automatikoki sortzen dira. Batzuetan IMAP gaitu behar da web interfazearen bidez. Kontsultatu zure e-mail hornitzaileari edo eskatu laguntza lagunei.</string>
@@ -271,6 +273,13 @@
     <string name="login_error_required_fields">Sartu baliozko e-mail helbidea eta pasahitza</string>
     <string name="import_backup_title">Inportatu babes-kopia</string>
     <string name="import_backup_ask">Babes-kopia aurkitu da:  \"%1$s\".\n\nInportatu nahi duzu eta bertako datu eta ezarpenak erabili?</string>
+    <string name="import_backup_no_backup_found">Ez da babes-kopiarik aurkitu.\n\nKopiatu babes-kopia \"%1$s\" karpetan eta saiatu berriro. Bestela, sakatu \"Hasi txateatzen\" ezarpen arruntarekin aurrera egiteko.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Ezin da \"%1$s\" bezala saioa hasi. Egiaztatu E-mail helbidea eta pasahitza zuzenak diren.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">%1$s(r)en erantzuna: %2$s\n\nHornitzaile batzuk informazio gehigarria uzten dute zure sarrera ontzian; adibidez bere web interfazearen bidez egiaztatu dezakezu. Galdetu zure hornitzaileari edo lagunei arazoak badituzu.</string>
+
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
@@ -295,22 +304,25 @@
     <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
     <string name="pref_profile_photo_remove_ask">Kendu profileko argazkia?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Pasahitza eta kontuaren ezarpenak</string>
     <string name="pref_who_can_see_this_information">Nork ikusi dezake informazio hau?</string>
+    <string name="pref_who_can_see_profile_explain">Zure profileko argazkia eta izena zure mezuekin batera erakutsiko dira beste erabiltzaileekin komunikatzen zarenean. Informazioa behin bidalita ezin da ezabatu edo kendu.</string>
     <string name="pref_your_name">Zure izena</string>
-    <string name="pref_default_status_label">Egoera mezua</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Delta Chat mezulariarekin bidalita: https://delta.chat</string>
     <string name="pref_enter_sends">Enter teklarekin bidali</string>
     <string name="pref_enter_sends_explain">Enter tekla sakatzeak mezua bidaliko du</string>
     <string name="pref_vibrate">Bibratu</string>
     <string name="pref_chat_settings">Txat ezarpenak</string>
     <string name="pref_change_secret">Aldatu sekretua</string>
+    <string name="pref_change_secret_explain">Aldatu zure pina / eredua / hatz-marka sistemako ezarpenetan.</string>
     <string name="pref_screen_security">Pantaila segurtasuna</string>
+    <string name="pref_screen_security_please_restart_hint">Pantailaren segurtasun ezarpenak aplikatzeko berrabiarazi aplikazioa.</string>
     <string name="pref_notifications">Jakinarazpenak</string>
     <string name="pref_notifications_show">Erakutsi</string>
     <string name="pref_notifications_priority">Lehentasuna</string>
     <string name="pref_led_color">LED kolorea</string>
+    <string name="pref_led_pattern">LEDaren kliskatze eredua</string>
     <string name="pref_sound">Soinua</string>
     <string name="pref_silent">Isila</string>
     <string name="pref_repeat_notify">Errepikatu alertak</string>
@@ -323,7 +335,10 @@
     <string name="pref_theme">Gaia</string>
     <string name="pref_language">Hizkuntza</string>
     <string name="pref_incognito_keyboard">Teklatu pribatua</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Eskatu teklatuari pertsonalizatutako ikasketa desgaitzea</string>
     <string name="pref_read_receipts">Irakurragiriak</string>
+    <string name="pref_read_receipts_explain">Irakurragiriak desgaituta badaude, ezin izango dituzu besteen irakurragiriak ikusi.</string>
     <string name="pref_manage_keys">Kudeatu gakoak</string>
     <string name="pref_use_system_emoji">Erabili sistemako emojiak</string>
     <string name="pref_use_system_emoji_explain">Desgaitu Delta Chat-en barne emoji euskarria</string>
@@ -344,6 +359,8 @@
     <string name="pref_managekeys_export_secret_keys">Esportatu gako sekretuak</string>
     <string name="pref_managekeys_export_explain">Esportatu gako sekretuak \"%1$s\"-ra?</string>
     <string name="pref_managekeys_import_secret_keys">Inportatu gako sekretuak</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Gako sekretuak ongi idatzi dira hemen: \"%1$s\".</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Gako sekretuak hemendik inportatu dira: \"%1$s\".</string>
     <string name="pref_background">Atzealdea</string>
     <string name="pref_imap_folder_handling">IMAP karpeten kudeaketa</string>
     <string name="pref_watch_inbox_folder">Begiztatu sarrera karpeta</string>
@@ -355,16 +372,27 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_send_asm_title">Bidali Autocrypt ezarpen mezua</string>
+    <string name="autocrypt_send_asm_explain_before">\"Autocrypt ezarpen mezua\" batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="autocrypt_send_asm_button">Bidali Autocrypt ezarpen mezua</string>
     <string name="autocrypt_prefer_e2ee">Hobetsi muturretik muturrerako zifratzea</string>
     <string name="autocrypt_asm_subject">Autocrypt ezarpen mezua</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt ezarpen mezua</string>
     <string name="autocrypt_continue_transfer_retry">Saiatu berriro</string>
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da.</string>
     <string name="systemmsg_group_image_changed">Taldearen irudia aldatuta.</string>
     <string name="systemmsg_group_image_deleted">Taldearen irudia ezabatuta.</string>
     <string name="systemmsg_member_added">%1$s kidea gehituta.</string>
     <string name="systemmsg_member_removed">%1$s kidea kenduta.</string>
+    <string name="systemmsg_group_left">Taldetik aterata.</string>
     <string name="systemmsg_read_receipt_subject">Irakurragiria</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">Nik: %1$s</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%2$s(e)k: %1$s</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Pantila-blokeoa</string>
     <string name="screenlock_explain">Blokeatu Delta Chat Android-en pantaila blokeoa edo hatz-markarekin</string>
@@ -378,10 +406,18 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">Eskaneatu QR kodea</string>
     <string name="qrscan_hint">Kokatu zure kamera QR kodearen gainean</string>
+    <string name="qrscan_ask_join_group">\"%1$s\" taldera elkartu nahi duzu?</string>
     <string name="qrscan_fingerprint_label">Hatz-marka</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s egiaztatuta, nire burua aurkeztu ...</string>
+    <string name="qrshow_title">QR gonbidapen-kodea</string>
     <string name="qrshow_x_joining">%1$s elkartu da.</string>
     <string name="qrshow_x_verified">%1$s egiaztatuta.</string>
+    <string name="qrshow_x_has_joined_group">%1$s taldera elkartu da.</string>
+    <string name="qrshow_join_group_title">QR gonbidapen-kodea</string>
+    <string name="qrshow_join_group_hint">Eskaneatu hau \"%1$s\" taldera elkartzeko.</string>
+    <string name="qrshow_join_contact_title">QR gonbidapen-kodea</string>
+    <string name="contact_verified">%1$s egiaztatuta.</string>
+    <string name="contact_not_verified">Ezin da %1$s egiaztatu</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d mezu berri %2$d txatetan</string>
     <string name="notify_most_recent_from">%1$s(r)en azkena</string>
@@ -432,6 +468,7 @@
     <string name="language_sr">Serbiera</string>
     <string name="language_sv">Suediera</string>
     <string name="language_ta">Tamilera</string>
+    <string name="language_te">Teluguera</string>
     <string name="language_tr">Turkiera</string>
     <string name="language_uk">Ukrainera</string>
     <string name="language_zh_CN">Txinera</string>
@@ -455,6 +492,7 @@
     <string name="global_menu_edit_delete_desktop">Ezabatu</string>
     <string name="global_menu_edit_selectall_desktop">Hautatu guztiak</string>
     <string name="global_menu_view_desktop">Ikusi</string>
+    <string name="global_menu_view_floatontop_desktop">Flotatu gainean</string>
     <string name="global_menu_view_developer_desktop">Garatzailea</string>
     <string name="global_menu_view_developer_tools_desktop">Garatzaile-tresnak</string>
     <string name="global_menu_help_desktop">Laguntza</string>
@@ -478,13 +516,13 @@
     <string name="group_name_desktop">Taldearen izena</string>
     <string name="remove_desktop">Kendu</string>
     <string name="save_desktop">Gorde</string>
-    <string name="show_qr_verify_code_desktop">Erakutsi egiaztaketarako QR kodea</string>
     <string name="show_qr_invite_code_desktop">Erakutsi gonbidapenerako QR kodea</string>
     <string name="add_contact_desktop">Gehitu kontaktua</string>
     <string name="login_required_desktop">derrigorrezkoa</string>
     <string name="name_desktop">Izena</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt gakoaren transferentzia</string>
     <string name="initiate_key_transfer_title_desktop">Hasi gakoaren transferentzia</string>
+    <string name="initiate_key_transfer_desktop">Autocrypt ezarpen mezu batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="reply_to_message_desktop">Erantzun mezuari</string>
     <string name="select_group_image_desktop">Hautatu taldearen irudia</string>
     <string name="imex_progress_title_desktop">Babes-kopia abian</string>
@@ -503,8 +541,18 @@
     <string name="me_desktop">ni</string>
     <string name="in_this_group_desktop">Taldeko kideak</string>
     <string name="not_in_this_group_desktop">Taldeko kide potentzialak (ez daude taldean)</string>
+    <string name="message_detail_sent_desktop">bidalita</string>
+    <string name="message_detail_received_desktop">jasota</string>
+    <string name="message_detail_from_desktop">nork</string>
+    <string name="message_detail_to_desktop">nori</string>
+    <string name="menu.view.developer.open.log.folder">Ireki egunkarien karpeta</string>
+    <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
+
+
     <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">\"%1$s\" kontaktua egiaztatuta. Hasi txateatzen?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Txateatu %1$s(r)ekin?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Txateatu %1$s(r)ekin?</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">QR gonbidapen kodea</string>
     </resources>

@@ -312,12 +312,11 @@
     <string name="pref_blocked_contacts">Zablokowane kontakty</string>
     <string name="pref_profile_photo_remove_ask">Usunąć zdjęcie profilowe?</string>
     <string name="pref_help_url">https://delta.chat/pl/help</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Hasło i ustawienia konta</string>
     <string name="pref_who_can_see_this_information">Kto może zobaczyć tę informację?</string>
     <string name="pref_who_can_see_profile_explain">Twoje zdjęcie profilowe i nazwa będą wyświetlane wraz z wiadomościami podczas komunikacji z innymi użytkownikami. Już wysłanych informacji nie można skasować ani usunąć.</string>
     <string name="pref_your_name">Twoja nazwa</string>
-    <string name="pref_default_status_label">Tekst statusu</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Wysłane z komunikatora Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Enter wysyła</string>
     <string name="pref_enter_sends_explain">Naciśnięcie Enter wysyła wiadomości tekstowe</string>
@@ -326,7 +325,6 @@
     <string name="pref_change_secret">Zmień zabezpieczenia</string>
     <string name="pref_change_secret_explain">Zmień swój pin / wzór / odcisk palca za pomocą ustawień systemowych</string>
     <string name="pref_screen_security">Zabezpieczenie ekranu</string>
-    <string name="pref_screen_security_explain">Zablokuj zrzuty ekranu na liście najnowszych i wewnątrz aplikacji</string>
     <string name="pref_screen_security_please_restart_hint">Aby zastosować ustawienia bezpieczeństwa ekranu, uruchom ponownie aplikację.</string>
     <string name="pref_notifications">Powiadomienia</string>
     <string name="pref_notifications_show">Pokaż</string>
@@ -344,6 +342,7 @@
     <string name="pref_theme">Motyw</string>
     <string name="pref_language">Język</string>
     <string name="pref_incognito_keyboard">Klawiatura incognito</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Poproś klawiaturę o wyłączenie spersonalizowanej nauki</string>
     <string name="pref_read_receipts">Potwierdzenie odczytu</string>
     <string name="pref_read_receipts_explain">Jeśli potwierdzenia odczytu zostaną wyłączone, nie będzie można zobaczyć potwierdzeń odczytu od innych osób.</string>
@@ -408,9 +407,9 @@
     <string name="systemmsg_read_receipt_subject">Potwierdzenie odczytu</string>
     <string name="systemmsg_read_receipt_body">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
     <string name="systemmsg_cannot_decrypt">Tej wiadomości nie można odszyfrować.\n\n• Możesz teraz pomóc odpowiadając po prostu na tą wiadomość i poprosić nadawcę o ponowne wysłanie wiadomości.\n\n• W przypadku ponownego zainstalowania Delta Chat lub innego programu mailowego na tym lub innym urządzeniu, może być konieczne wysłanie stąd klucza automatycznego szyfrowania.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
-    <string name="systemmsg_action_by_me">%1$s przeze mnie.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s przeze mnie.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s przez %2$s.</string>
 
 
@@ -543,7 +542,7 @@
     <string name="group_name_desktop">Nazwa grupy</string>
     <string name="remove_desktop">Usuń</string>
     <string name="save_desktop">Zapisz</string>
-    <string name="show_qr_verify_code_desktop">Pokaż weryfikacyjny kod QR</string>
+    <string name="show_qr_verify_code_desktop">Pokaż kod QR zaproszenia</string>
     <string name="show_qr_invite_code_desktop">Pokaż kod QR zaproszenia</string>
     <string name="add_contact_desktop">Dodaj kontakt</string>
     <string name="login_required_desktop">wymagany</string>
@@ -566,15 +565,11 @@
     <string name="message_detail_to_desktop">do</string>
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Czy chcesz dołączyć do zweryfikowanej grupy „%1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Rozpocząć rozmowę z „%1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt „%1$s zweryfikowany. Rozpocząć rozmowę?</string>
+    <string name="qrscan_ask_join_verified_group">Czy chcesz dołączyć do grupy „%1$s?</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">Kod QR zaproszenia</string>
     <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Zeskanuj to, aby dołączyć do zweryfikowanej grupy „%1$s”.</string>
+    <string name="qrshow_join_verified_group_hint">Zeskanuj to, aby dołączyć do grupy „%1$s”.</string>
 
 
 </resources>

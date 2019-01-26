@@ -104,6 +104,7 @@
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_chat">Ny samtale</string>
     <string name="menu_new_group">Ny gruppe</string>
+    <string name="menu_new_verified_group">Ny efterprøvet gruppe (eksperimentel)</string>
     <string name="menu_send">Sende</string>
     <string name="menu_toggle_keyboard">Skifte emoji tastatur</string>
     <string name="menu_edit_group">Redigere gruppe</string>
@@ -137,6 +138,7 @@
     <string name="menu_settings">Opsætning</string>
     <string name="menu_advanced">Avanceret</string>
     <string name="menu_deaddrop">Kontakt anmodninger</string>
+    <string name="menu_deaddrop_subtitle">Tryk på besked for at starte samtale</string>
     <string name="menu_view_profile">Vise profil</string>
 
     <string name="mute_for_one_hour">Dæmpe i 1 time</string>
@@ -189,6 +191,7 @@
         <item quantity="other">%d ikke læste beskeder</item>
     </plurals>
     <string name="chat_record_slide_to_cancel">Trække for at annullere</string>
+    <string name="chat_record_explain">Tryk og hold for at optage tale besked, slip for at sende.</string>
     <string name="chat_no_chats_yet_hint">Giv indbakken noget at skrive hjem om. Kom i gang ved at skrive til en ven.</string>
     <string name="chat_all_done_hint">Indbakke tom</string>
     <string name="chat_all_done_explain">Der er ikke mere!</string>
@@ -291,11 +294,10 @@
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="pref_profile_photo_remove_ask">Fjerne profil billede?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_password_and_account_settings">Adgangskode og konto opsætning</string>
     <string name="pref_who_can_see_this_information">Hvem kan se denne information?</string>
     <string name="pref_your_name">Nanv</string>
-    <string name="pref_default_status_label">Status tekst</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Sendt med Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Enter tast sender</string>
     <string name="pref_enter_sends_explain">Tryk på enter tast vil sende tekst beskeden</string>
@@ -304,7 +306,6 @@
     <string name="pref_change_secret">Ændre hemmelighed</string>
     <string name="pref_change_secret_explain">Ændre PIN / mønster / fingeraftryk via system opsætning</string>
     <string name="pref_screen_security">Skærm sikkerhed</string>
-    <string name="pref_screen_security_explain">Blokere skærmaftryk i nylig liste og i programmet</string>
     <string name="pref_screen_security_please_restart_hint">Genstart programmet for at anvende skærm sikkerhed.</string>
     <string name="pref_notifications">Påmindelser</string>
     <string name="pref_notifications_show">Vise</string>
@@ -323,6 +324,7 @@
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Sprog</string>
     <string name="pref_incognito_keyboard">Inkognito tastatur</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Anmod tastatur om at deaktivere personlig indlæring</string>
     <string name="pref_read_receipts">Læse modtagelse</string>
     <string name="pref_read_receipts_explain">Hvis læst kvittering er deaktiveret vil læst kvittering fra andre ikke blive vist.</string>
@@ -372,7 +374,14 @@
     <string name="systemmsg_group_image_deleted">Gruppe billede slettet.</string>
     <string name="systemmsg_member_added">Medlem %1$s tilføjet.</string>
     <string name="systemmsg_member_removed">Medlem %1$s fjernet.</string>
+    <string name="systemmsg_group_left">Gruppe forladt.</string>
     <string name="systemmsg_read_receipt_subject">Læse modtagelse</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s af undertegnet.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s af %2$s.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Skærm lås</string>
     <string name="screenlock_explain">Lås Delta Chat adgang med Android skærmlås eller fingeraftryk</string>
@@ -388,13 +397,25 @@
     <string name="qrscan_title">Skanne QR kode</string>
     <string name="qrscan_hint">Placere kamera over QR kode</string>
     <string name="qrscan_ask_join_group">Deltage i gruppen \"%1$s\"?</string>
+    <string name="qrscan_fingerprint_mismatch">Det aflæste fingeraftryk passer ikke til sidst set fingeraftryk for %1$s</string>
     <string name="qrscan_contains_text">Skannet QR kode tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skannet QR kode URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingeraftryk</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s efterprøvet, introducere…</string>
+    <string name="qrshow_title">QR invitere kode</string>
     <string name="qrshow_x_joining">%1$s tilslutter.</string>
     <string name="qrshow_x_verified">%1$s efterprøvet.</string>
+    <string name="qrshow_x_has_joined_group">%1$s tilsluttet gruppen.</string>
+    <string name="qrshow_join_group_title">QR invitere kode</string>
     <string name="qrshow_join_group_hint">Skanne dette for at deltage i gruppen \"%1$s\".</string>
+    <string name="qrshow_join_contact_title">QR invitere kode</string>
+    <string name="qrshow_join_contact_hint">Skanne dette for at indstille kontakt med %1$s</string>
+    <string name="contact_verified">%1$s efterprøvet.</string>
+    <string name="contact_not_verified">Kan ikke efterprøve %1$s</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nye beskeder i %2$d samtaler</string>
     <string name="notify_most_recent_from">Nylig fra: %1$s</string>
@@ -500,7 +521,7 @@
     <string name="group_name_desktop">Gruppe navn</string>
     <string name="remove_desktop">Fjerne</string>
     <string name="save_desktop">Gemme</string>
-    <string name="show_qr_verify_code_desktop">Vise QR efterprøv kode</string>
+    <string name="show_qr_verify_code_desktop">Vise QR invitere kode</string>
     <string name="show_qr_invite_code_desktop">Vise QR invitere kode</string>
     <string name="add_contact_desktop">Tilføje kontakt</string>
     <string name="login_required_desktop">påkrævet</string>
@@ -534,13 +555,15 @@
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Tilslutte efterprøvet gruppe \"%1$s\"?</string>
+    <string name="qrscan_ask_join_verified_group">Tilslutte gruppe \"%1$s\"?</string>
     <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Kontakt \"%1$s\" efterprøvet. Start samtale?</string>
+    <string name="qrscan_ask_fingerprint_ask_oob">Samtale med %1$s?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Samtale med %1$s?</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">QR inviteringskode </string>
     <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Skanne for at tilslutte efterprøvet gruppe \"%1$s\".</string>
+    <string name="qrshow_join_verified_group_hint">Skanne dette for at tilslutte gruppe \"%1$s\".</string>
 
 
 </resources>
