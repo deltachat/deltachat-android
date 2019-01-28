@@ -70,7 +70,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   public static final String NEXT_INTENT    = "next_intent";
   public static final String EXCLUDE_SYSTEM = "exclude_system";
-  public static final String STATUS_CHANGED = "status_changed";
 
   private static final int REQUEST_CODE_AVATAR = 1;
 
@@ -359,12 +358,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private void initializeStatusText() {
     String status = DcHelper.get(this, DcHelper.CONFIG_SELF_STATUS);
-    SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-    boolean hasStatusChanged = sharedPref.getBoolean(STATUS_CHANGED, false);
-
-    if (status.isEmpty() && !hasStatusChanged) {
-      status = getString(R.string.pref_default_status_text);
-    }
     statusView.setText(status);
   }
 
@@ -457,16 +450,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private void setStatusText() {
     String newStatus = statusView.getText().toString().trim();
-    String defaultStatus = getString(R.string.pref_default_status_text);
-    if (newStatus.equals(defaultStatus)) {
-      DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, null);
-    } else {
-      SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-      SharedPreferences.Editor editor = sharedPref.edit();
-      editor.putBoolean(STATUS_CHANGED, true);
-      editor.commit();
-      DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, newStatus);
-    }
+    DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, newStatus);
   }
 
   private void handleFinishedLegacy() {
