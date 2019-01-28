@@ -197,6 +197,7 @@ public class ConversationListItem extends RelativeLayout
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
+    groupIndicator.setVisibility(GONE);
 
     setBatchState(false);
     setBgColor();
@@ -227,6 +228,7 @@ public class ConversationListItem extends RelativeLayout
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
+    groupIndicator.setVisibility(GONE);
 
     setBatchState(false);
     setBgColor();
