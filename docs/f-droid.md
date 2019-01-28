@@ -9,6 +9,16 @@
   before creating a new version, please have a look at docs/release-checklist.md
 
 
+# F-Droid Build status
+
+- <https://f-droid.org/wiki/page/com.b44t.messenger/lastbuild>  
+  shows the last build attempt
+
+- <https://f-droid.org/repo/com.b44t.messenger_VERSIONCODE.apk>  
+  (with VERSIONCODE = 537 or so) links to successfully built apk
+  even if it is not yet in the index (which may take some more time).
+
+
 # Use F-Droid-tools locally
 
 $ git clone https://gitlab.com/fdroid/fdroiddata  
