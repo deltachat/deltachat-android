@@ -1,5 +1,7 @@
 <!--
-Please fill in as much as you can below (leaving out if not applicable is ok). This is a bug report and feature-tracking forum, if you like to discuss a new feature, please use the community forum at https://support.delta.chat. 
+This is a bug report tracker. New features are discussed in the forum: https://support.delta.chat
+
+Please fill out as much of this form as you can (leaving out stuff that is not applicable is ok).
 -->
 
 - Platform (android/blackberry/anbox):
