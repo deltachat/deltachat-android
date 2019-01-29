@@ -75,9 +75,6 @@ dependencies {
     compile ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile ('cn.carbswang.android:NumberPickerView:1.0.9') {
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-    }
     compile 'com.annimon:stream:1.1.8'
     compile ('com.takisoft.fix:colorpicker:0.9.1') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
@@ -125,7 +122,6 @@ dependencyVerification {
         'com.amulyakhare:com.amulyakhare.textdrawable:54c92b5fba38cfd316a07e5a30528068f45ce8515a6890f1297df4c401af5dcb',
         'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
         'com.davemorrissey.labs:subsampling-scale-image-view:550c5baa07e0bb4ff0a18b705e96d34436d22619248bd8c08c08c730b1f55cfe',
-        'cn.carbswang.android:NumberPickerView:18b3c316d62c7c277978a8d4ed57a5b8f4e943762264960f579a8a549c756729',
         'com.annimon:stream:5da6e2e3e0551d61a3ea7014f04312276549e3dd739cf637996e4cf43c5535b9',
         'com.takisoft.fix:colorpicker:f5d0dbabe406a1800498ca9c1faf34db36e021d8488bf10360f29961fe3ab0d1',
         'com.android.support:support-v4:1b2b37169fcccfef5e563d273749e3792decdce9818bc17932403a2363f537b4',
