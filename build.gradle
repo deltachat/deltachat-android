@@ -41,13 +41,13 @@ repositories {
 dependencies {
     compile 'com.android.support:appcompat-v7:27.0.2' // one use in SearchToolbar.
     compile 'com.android.support:design:27.0.2' // used in various locations for a lot of components
-    compile 'com.android.support:support-v13:27.0.2'
-    compile 'com.android.support:preference-v7:27.0.2'
-    compile 'com.android.support:preference-v14:27.0.2'
+    compile 'com.android.support:support-v13:27.0.2' // used to prevent a 25... version to be loaded (from where ever)
+    compile 'com.android.support:preference-v7:27.0.2' // actually a dependency of -v14
+    compile 'com.android.support:preference-v14:27.0.2' // used to manage the users preferences
     compile 'com.android.support:exifinterface:27.0.2' // Used to edit the Exif in BitmapUtil
-    compile 'com.android.support.constraint:constraint-layout:1.1.2'
-    compile 'android.arch.lifecycle:extensions:1.1.1'
-    compile 'android.arch.lifecycle:common-java8:1.1.1'
+    compile 'com.android.support.constraint:constraint-layout:1.1.2' // Used in several places
+    compile 'android.arch.lifecycle:extensions:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
+    compile 'android.arch.lifecycle:common-java8:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
 
     compile 'com.google.android.exoplayer:exoplayer:r2.3.1' // plays video.
 
