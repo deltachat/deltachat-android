@@ -152,15 +152,6 @@ public class MessageNotifier {
     updateNotification(context, true, 0);
   }
 
-  /**
-   * @deprecated use updateNotificatio(Context, int) instead.
-   */
-  @Deprecated
-  public static void updateNotification(@NonNull Context context, long threadId)
-  {
-    throw new IllegalStateException("old signal code called. thread -> chat, long -> int");
-  }
-
   public static void updateNotification(@NonNull Context context, int threadId)
   {
     if (System.currentTimeMillis() - lastDesktopActivityTimestamp < DESKTOP_ACTIVITY_PERIOD) {
@@ -169,16 +160,6 @@ public class MessageNotifier {
     } else {
       updateNotification(context, threadId, true);
     }
-  }
-
-  /**
-   * @deprecated used updateNotification(Context, int, boolean) instead.
-   */
-  @Deprecated
-  public static void updateNotification(@NonNull  Context context,
-                                        long      threadId,
-                                        boolean   signal) {
-    throw new IllegalStateException("Old signal code called. thread -> chat & long -> int");
   }
 
   public static void updateNotification(@NonNull  Context context,
