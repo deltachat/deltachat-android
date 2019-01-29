@@ -21,21 +21,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'witness'
 
 repositories {
-    maven {
-        url "https://repo1.maven.org/maven2/"
-    }
+    mavenCentral()
     maven {
         // Used only for PhotoView
         url "https://jitpack.io"
+        name 'JitPack Github wrapper'
     }
-    maven {
-        url "https://maven.google.com"
-    }
+    google()
     jcenter()
-    maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
 }
 
 dependencies {
