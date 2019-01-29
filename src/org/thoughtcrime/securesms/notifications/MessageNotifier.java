@@ -18,6 +18,7 @@ package org.thoughtcrime.securesms.notifications;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -33,6 +34,7 @@ import android.os.Build;
 import android.service.notification.StatusBarNotification;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -74,6 +76,7 @@ public class MessageNotifier {
 
   static final  String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
+  public  static final long   NO_VISIBLE_THREAD         = -1L;
   private static final  int   SUMMARY_NOTIFICATION_ID   = 1338;
   private static final int    PENDING_MESSAGES_ID       = 1111;
   private static final String NOTIFICATION_GROUP        = "messages";
@@ -186,6 +189,7 @@ public class MessageNotifier {
     }
   }
 
+  // @param signal: true to beep, false to stay silent.
   private static void updateNotification(@NonNull Context context,
                                          boolean signal,
                                          int     reminderCount)
@@ -243,6 +247,7 @@ public class MessageNotifier {
     Recipient                          recipient      = notifications.get(0).getRecipient();
     int                                notificationId = (SUMMARY_NOTIFICATION_ID + (bundled ? notifications.get(0).getChatId() : 0));
 
+    setPriority(builder);
 
     builder.setThread(notifications.get(0).getRecipient());
     builder.setMessageCount(notificationState.getMessageCount());
@@ -282,6 +287,14 @@ public class MessageNotifier {
     NotificationManagerCompat.from(context).notify(notificationId, builder.build());
   }
 
+  private static void setPriority(AbstractNotificationBuilder builder) {
+    if(visibleThread == NO_VISIBLE_THREAD) { // not currently showing any thread
+      builder.setPriority(NotificationManager.IMPORTANCE_DEFAULT);
+    } else { // currently showing a different thread.
+      builder.setPriority(NotificationManager.IMPORTANCE_LOW);
+    } // if we were to show the current thread, this function would not be called in the  first place.
+  }
+
   private static void sendMultipleThreadNotification(@NonNull  Context context,
                                                      @NonNull  NotificationState notificationState,
                                                      boolean signal)
@@ -289,6 +302,7 @@ public class MessageNotifier {
     MultipleRecipientNotificationBuilder builder       = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
     List<NotificationItem>               notifications = notificationState.getNotifications();
 
+    setPriority(builder);
     builder.setMessageCount(notificationState.getMessageCount(), notificationState.getThreadCount());
     builder.setMostRecentSender(notifications.get(0).getIndividualRecipient());
     builder.setGroup(NOTIFICATION_GROUP);

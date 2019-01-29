@@ -290,7 +290,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onPause() {
     super.onPause();
-    MessageNotifier.setVisibleThread(-1L);
+    MessageNotifier.setVisibleThread(MessageNotifier.NO_VISIBLE_THREAD);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
