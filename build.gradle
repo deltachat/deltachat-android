@@ -40,9 +40,8 @@ repositories {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:27.0.2' // one use in SearchToolbar.
-    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:design:27.0.2' // used in various locations for a lot of components
     compile 'com.android.support:support-v13:27.0.2'
-    compile 'com.android.support:cardview-v7:27.0.2'
     compile 'com.android.support:preference-v7:27.0.2'
     compile 'com.android.support:preference-v14:27.0.2'
     compile 'com.android.support:gridlayout-v7:27.0.2'
@@ -100,7 +99,6 @@ dependencyVerification {
         'com.codewaves.stickyheadergrid:stickyheadergrid:5b4aa6a52a957cfd55f60f4220c11c0c371385a3cb9786cae03c260dcdef5794',
         'com.android.support:appcompat-v7:b2825e8b47f665d3362d8481c8d147d1af9230d16f23a2b94f6ccbc53c68cec1',
         'com.android.support:support-v13:6f2848811ceef2e32cc98da02a045d65f7e7447a6bd7198b9ec10aa14d7ad55c',
-        'com.android.support:cardview-v7:57f867a3c8f33e2d4dc0a03e2dfa03cad6267a908179f04a725a68ea9f0b8ccf',
         'com.android.support:gridlayout-v7:227b5fdffa20f53bd562503aab6d2293d52cf64b5a6ab1116d2150f87bff9e88',
         'com.android.support:exifinterface:0e7cd526c4468895cd8549def46b3d33c8bcfb1ae4830569898d8c7326b15bb2',
         'android.arch.lifecycle:extensions:429426b2feec2245ffc5e75b3b5309bedb36159cf06dc71843ae43526ac289b6',
