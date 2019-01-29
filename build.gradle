@@ -67,13 +67,14 @@ dependencies {
     compile 'com.pnikosis:materialish-progress:1.5' // used only in the "Progress Wheel" in Share Activity.
     compile 'com.soundcloud.android:android-crop:0.9.10@aar' // used in Group Select Avatar, should be unified with profie
     compile 'com.nineoldandroids:library:2.4.0' // DEPRECATED! Used to slide in the half-camera.
-    compile 'mobi.upod:time-duration-picker:1.1.3'
-    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    compile 'com.google.zxing:core:3.2.1'
-    compile ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') {
+    compile 'mobi.upod:time-duration-picker:1.1.3' // Used to pick the time for inactivity.
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'  // number of unread messages,
+         // the one-letter circle for the contacts (when there is not avatar) and a white background.
+    compile 'com.google.zxing:core:3.2.1' // QR Code scanner
+    compile ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') { // for the zooming on photos / media
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile 'com.annimon:stream:1.1.8'
+    compile 'com.annimon:stream:1.1.8' // brings future java streams api to SDK Version < 24
     compile 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.4'
 
     testCompile 'junit:junit:4.12'
