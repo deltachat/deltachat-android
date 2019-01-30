@@ -138,6 +138,7 @@
     <string name="menu_settings">Impostazioni</string>
     <string name="menu_advanced">Avanzate</string>
     <string name="menu_deaddrop">Richieste di contatto</string>
+    <string name="menu_deaddrop_subtitle">Premi Messaggio per iniziare una chat</string>
     <string name="menu_view_profile">Vedi profilo</string>
 
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
@@ -229,7 +230,7 @@
 
 
     <!-- invite -->
-    <string name="invite_slogan">I veri amici non ti lasciano nelle prigioni di messaggistica.</string>
+    <string name="invite_slogan">Non lasciare i tuoi amici bloccati nelle app di messaggistica che li tengono prigionieri.</string>
     <string name="invite_default_text">Passiamo a Delta Chat - %1$s - puoi scrivermi a %2$s</string>
 
 
@@ -307,6 +308,8 @@
     <string name="pref_who_can_see_this_information">Chi può vedere queste informazioni?</string>
     <string name="pref_who_can_see_profile_explain">L\'immagine del tuo profilo e il tuo nome saranno mostrati insieme ai tuoi messaggi quando comunichi con altri utenti. Le informazioni già inviate non possono essere cancellate o rimosse.</string>
     <string name="pref_your_name">Il tuo nome</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Firma</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Inviato con Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Spedisci con Invio</string>
@@ -316,6 +319,8 @@
     <string name="pref_change_secret">Cambia codice</string>
     <string name="pref_change_secret_explain">Cambia il pin / sequenza / impronta digitale dalle impostazioni di sistema.</string>
     <string name="pref_screen_security">Sicurezza schermo</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Richiedi il blocco degli screenshot per la lista Recenti e all\'interno dell\'app</string>
     <string name="pref_screen_security_please_restart_hint">Per attivare la sicurezza dello schermo riavvia l\'applicazione.</string>
     <string name="pref_notifications">Notifiche</string>
     <string name="pref_notifications_show">Mostra</string>

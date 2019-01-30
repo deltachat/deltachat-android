@@ -293,7 +293,7 @@
     <string name="pref_trim_now_ask">Видалити всі старі повідомлення? Ця дія негайно очистить всі чати до %d останніх повідомлень.</string>
     <string name="pref_blocked_contacts">Заблоковані контакти</string>
     <string name="pref_profile_photo_remove_ask">Видалити фото профілю?</string>
-    <string name="pref_help_url">https://delta.chat/uk/help</string>
+    <string name="pref_help_url">https://delta.chat/en/help</string>
     <string name="pref_password_and_account_settings">Налаштування паролю і облікового запису</string>
     <string name="pref_who_can_see_this_information">Хто може бачити цю інформацію?</string>
     <string name="pref_who_can_see_profile_explain">Зображення профілю та ім\'я будуть відображатися в чатах з іншими користувачами. Відправлена інформація не може бути видалена або відкликана.</string>
@@ -341,4 +341,40 @@
     <string name="pref_managekeys_menu_title">Управління ключами</string>
     <string name="pref_managekeys_ask_for_storage_permission">Додатку необхідний доступ до файлів для імпорту/експорту ключів.</string>
     <string name="pref_managekeys_export_secret_keys">Експорт секретних ключів</string>
+    <string name="pref_managekeys_export_explain">Експортувати секретні ключі до \"%1$s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">Імпорт секретних ключів</string>
+    <string name="pref_managekeys_import_explain">Імпортувати секретні ключі з \"%1$s\"?\n\n• Існуючі секретні ключі не будуть видалені\n\n• Останній імпортований ключ буде використаний як новий ключ за замовчуванням, якщо він не містить слова «legacy» в назві файлу.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Секретні ключі успішно збережені в \"%1$s\".</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Секретні ключі імпортовані з \"%1$s\".</string>
+    <string name="pref_background">Фон</string>
+    <string name="pref_imap_folder_handling">Параметри IMAP-папок</string>
+    <string name="pref_imap_folder_warn_disable_defaults">У разі вимкнення цього параметру переконайтеся, що сервер і Ваші інші додатки для роботи з електронною поштою налаштовані таким же чином.\n\nУ випадку, якщо параметри відрізняються, все може перестати працювати.</string>
+    <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
+    <string name="pref_auto_folder_moves_explain">Чати були переміщені, щоб уникнути плутанини у папці «Вхідні».</string>
+
+
+    <!-- autocrypt -->
+    <string name="autocrypt">Автошифрування</string>
+    <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Введіть інсталяційний код, який показаний на іншому пристрої.</string>
+    <string name="autocrypt_continue_transfer_retry">Повторити</string>
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Назву групи змінено з «%1$s» на «%2$s».</string>
+    <string name="systemmsg_group_image_changed">Зображення групи змінено.</string>
+    <string name="systemmsg_group_image_deleted">Зображення групи видалено.</string>
+    <string name="systemmsg_member_added">Додано учасника %1$s.</string>
+    <string name="systemmsg_member_removed">Видалено учасника %1$s.</string>
+    <string name="systemmsg_group_left">Ви залишили групу.</string>
+    <string name="systemmsg_read_receipt_subject">Сповіщення про прочитання.</string>
+    <string name="systemmsg_read_receipt_body">Це підтвердження того, що повідомлення «%1$s» було відкрито на пристрої одержувача. Дане підтвердження не означає, що повідомлення було прочитано.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s мною.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s користувачем %2$s.</string>
+
+
+    <!-- screen lock -->
+    <string name="screenlock_title">Блокування екрану</string>
+    <string name="screenlock_explain">Блокування доступу до Delta Chat за допомогою блокування екрану Android або відбитку пальця</string>
+    <string name="screenlock_authentication_failed">Не вдалося здійснити аутентифікацію.</string>
     </resources>

@@ -382,9 +382,9 @@
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą Wiadomości konfiguracyjnej automatycznego szyfrowania.</string>
-    <string name="autocrypt_send_asm_title">Wyślij wiadomość konfiguracyjną automatycznego szyfrowania</string>
+    <string name="autocrypt_send_asm_title">Wyślij wiadomość konfiguracyjną Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Wiadomość konfiguracyjna automatycznego szyfrowania” bezpiecznie udostępnia twoją konfigurację end-to-end innym aplikacjom zgodnym z Autocrypt. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
-    <string name="autocrypt_send_asm_button">Wyślij wiadomość konfiguracyjną automatycznego szyfrowania</string>
+    <string name="autocrypt_send_asm_button">Wyślij wiadomość konfiguracyjną Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Klucz został wysłany do ciebie. Przejdź do innego urządzenia i otwórz wiadomość konfiguracyjną. Zostanie wyświetlona prośba o podanie kodu konfiguracyjnego. Wpisz następujące cyfry w podpowiedzi:\n\n%1$s\n\nGdy skończysz, drugie urządzenie będzie gotowe do użycia funkcji automatycznego szyfrowania.</string>
     <string name="autocrypt_prefer_e2ee">Preferuj pełne szyfrowanie</string>
     <string name="autocrypt_asm_subject">Wiadomość konfiguracyjna automatycznego szyfrowania</string>

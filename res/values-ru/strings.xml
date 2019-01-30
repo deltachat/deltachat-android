@@ -15,14 +15,14 @@
     <string name="delete">Удалить</string>
     <string name="not_now">Не сейчас</string>
     <string name="never">Никогда</string>
-    <string name="one_moment">Ожидание ответа...</string>
+    <string name="one_moment">Подождите немного…</string>
     <string name="done">Выполнено</string>
     <string name="undo">Отмена</string>
     <string name="error">Ошибка</string>
     <string name="error_x">Ошибка: %1$s</string>
     <string name="error_no_network">Сеть недоступна.</string>
     <string name="no_app_to_handle_data">Приложение, позволяющее обрабатывать этот тип данных, не найдено.</string>
-    <string name="no_browser_installed">Не установлен браузер</string>
+    <string name="no_browser_installed">Браузер не установлен.</string>
     <string name="file_not_found">Невозможно найти %1$s</string>
     <string name="copied_to_clipboard">Скопировано в буфер обмена.</string>
     <string name="contacts_headline">Контакты</string>
@@ -36,6 +36,13 @@
     <string name="yesterday">Вчера</string>
     <string name="this_week">На этой неделе</string>
     <string name="this_month">В этом месяце</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d минуту</item>
+        <item quantity="few">%d минуты</item>
+        <item quantity="many">%d минут </item>
+        <item quantity="other">%d минуты</item>
+    </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d час</item>
@@ -75,6 +82,7 @@
     <string name="images">Изображения</string>
     <string name="audio">Аудио</string>
     <string name="voice_message">Голосовое сообщение</string>
+    <string name="forwarded_message">Пересланное сообщение</string>
     <string name="video">Видео</string>
     <string name="documents">Документы</string>
     <string name="contact">Контакт</string>
@@ -108,6 +116,7 @@
     <string name="menu_new_contact">Новый контакт</string>
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
+    <string name="menu_new_verified_group">Новая проверенная группа (экспериментальная функция)</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>
@@ -126,7 +135,7 @@
     <string name="menu_mute">Отключить уведомления</string>
     <string name="menu_unmute">Включить уведомления</string>
     <string name="menu_export_attachment">Экспортировать вложение</string>
-    <string name="menu_all_media">Все материалы</string>
+    <string name="menu_all_media">Все медиафайлы</string>
     <string name="menu_share">Поделиться</string>
     <string name="menu_block_contact">Заблокировать контакт</string>
     <string name="menu_unblock_contact">Разблокировать контакт</string>
@@ -139,19 +148,20 @@
     <string name="menu_expand">Расширить</string>
     <string name="menu_edit_name">Изменить имя</string>
     <string name="menu_settings">Настройки</string>
-    <string name="menu_advanced">Дополнительно</string>
+    <string name="menu_advanced">Дополнительные параметры</string>
     <string name="menu_deaddrop">Запросы на общение</string>
+    <string name="menu_deaddrop_subtitle">Нажмите сообщение чтобы начать чат</string>
     <string name="menu_view_profile">Просмотреть профиль</string>
 
-    <string name="mute_for_one_hour">Отключить оповещения на 1 час</string>
-    <string name="mute_for_two_hours">Отключить оповещения на 2 часа</string>
-    <string name="mute_for_one_day">Отключить оповещения на 1 день</string>
-    <string name="mute_for_seven_days">Отключить оповещения на 7 дней</string>
-    <string name="mute_for_one_year">Отключить оповещения на 1 год</string>
+    <string name="mute_for_one_hour">Отключить на один час</string>
+    <string name="mute_for_two_hours">Отключить на два часа</string>
+    <string name="mute_for_one_day">Отключить на один день</string>
+    <string name="mute_for_seven_days">Отключить на одну неделю</string>
+    <string name="mute_for_one_year">Отключить на один год</string>
 
 
     <!-- get confirmations -->
-    <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
+    <string name="ask_leave_group">Действительно покинуть эту группу?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Удалить этот чат? Он более не будет виден в списке чатов, его сообщения останутся на сервере.</item>
         <item quantity="few">Удалить %d чатов? Они более не будут видны в списке чатов, их сообщения останутся на сервере.</item>
@@ -165,13 +175,11 @@
         <item quantity="other">Удалить %1$d сообщений отсюда и с сервера?</item>
     </plurals>
     <string name="ask_forward">Переслать сообщения для %1$s?</string>
-    <string name="ask_export_attachment">Экспортировать вложения? Экспорт вложений позволит любому приложению на вашем устройстве получить к ним доступ
-
-Продолжить?</string>
+    <string name="ask_export_attachment">Экспортировать вложения? Экспорт вложений позволит любому приложению на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
     <string name="ask_block_contact">Заблокировать контакт? Вы более не сможете получать от него сообщения.</string>
     <string name="ask_unblock_contact">Разблокировать контакт? Вы вновь сможете получать от него сообщения.</string>
-    <string name="ask_delete_contacts">Удалить контакты? Это действие навсегда удалит выбранные контакты.
-Контакты из действующих чатов и из адресной книги системы нельзя удалить навсегда.</string>
+    <string name="ask_delete_contacts">Удалить контакты? Это действие навсегда удалит выбранные контакты.\n\nКонтакты из действующих чатов и из адресной книги системы нельзя удалить навсегда.</string>
+    <string name="cannot_delete_contacts_in_use">Невозможно удалить контакты, с которыми имеется активный чат</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
 
 
@@ -196,7 +204,7 @@
         <item quantity="other">%d чатов разархивировано</item>
     </plurals>
     <string name="chat_archived_chats_title">Чаты в архиве</string>
-    <string name="chat_please_enter_message">Пожалуйста, введите сообщение.</string>
+    <string name="chat_please_enter_message">Введите сообщение.</string>
     <string name="chat_camera_unavailable">Камера недоступна.</string>
     <string name="chat_unable_to_record_audio">Запись аудио невозможна.</string>
     <plurals name="chat_n_unread_messages">
@@ -205,22 +213,13 @@
         <item quantity="many">%d непрочитанных сообщений</item>
         <item quantity="other">%d непрочитанных сообщений</item>
     </plurals>
-    <string name="chat_no_messages_hint">Отправить сообщение для %1$s:
-
-Это сработает, если %2$s не использует Дельта Чат.
-
-Первое сообщение может оказаться незашифрованным, его доставка может занять некоторое время.</string>
-    <string name="chat_new_group_hint">Составьте первое сообщение, разрешая другим участникам группы отвечать на него.
-
-Это сработает, если не все участники используют Дельта Чат.
-
-Доставка первого сообщения может занять некоторое время.</string>
+    <string name="chat_no_messages_hint">Отправить сообщение для %1$s:\n\n• Это сработает, если %2$s не использует Delta Chat.\n\n• Первое сообщение может оказаться незашифрованным, его доставка может занять некоторое время.</string>
+    <string name="chat_new_group_hint">Напишите первое сообщение, что даст возможность другим участникам группы ответить на него.\n\n• Это сработает, даже если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="chat_record_slide_to_cancel">Двигайте для отмены</string>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
-    <string name="chat_no_chats_yet_hint">Дайте Вашим \"Входящим\" повод наполниться. Начните с письма другу или подруге.</string>
+    <string name="chat_no_chats_yet_hint">В папке «Входящие» пока ничего нет. Напишите кому-нибудь первым и дождитесь ответа.</string>
     <string name="chat_all_done_hint">Входящих нееетт..</string>
-    <string name="chat_all_done_explain">Ни.Че.Го
-Вы все попались!</string>
+    <string name="chat_all_done_explain">Ни.Че.Го.\nВы все попались!</string>
     <string name="chat_share_with_title">Поделиться</string>
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Заархивировано</string>
@@ -230,7 +229,7 @@
     <!-- search -->
     <string name="search">Поиск</string>
     <string name="search_explain">Искать чаты, контакты и сообщения</string>
-    <string name="search_no_result_for_x">Не найдено \"%s\"</string>
+    <string name="search_no_result_for_x">Ничего не найдено по запросу «%s» </string>
 
 
     <!-- create/edit groups, contact/group profile -->
@@ -239,16 +238,16 @@
     <string name="group_create_button">Создать группу</string>
     <string name="group_please_enter_group_name">Введите название группы</string>
     <string name="group_add_members">Добавить участников</string>
-    <string name="group_hello_draft">Привет, я только что создал группу \"%1$s\"  для нас</string>
+    <string name="group_hello_draft">Привет, я только что создал для нас группу «%1$s».</string>
     <string name="group_self_not_in_group">Необходимо быть членом группы для данного действия</string>
     <string name="profile_encryption">Шифрование</string>
 
 
     <!-- chat media view -->
-    <string name="media_preview">Превью медиа</string>
-    <string name="media_tab_media">Медиа</string>
+    <string name="media_preview">Предварительный просмотр медиафайлов</string>
+    <string name="media_tab_media">Медиафайлы</string>
     <string name="media_tab_documents">Документы</string>
-    <string name="media_no_media_hint">Нет медиа</string>
+    <string name="media_no_media_hint">Медиафайлы отсуствуют</string>
     <string name="media_no_documents_hint">Нет документов</string>
 
 
@@ -258,7 +257,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Дельта Чат</string>
+    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и независимый.</string>
     <string name="welcome_intro2_headline">Независимый</string>
     <string name="welcome_intro2_message">Приложение не использует сервера. Используется только ваша почта.</string>
@@ -269,7 +268,7 @@
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Бесплатный</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
-    <string name="welcome_intro5_message">Дельта Чат бесплатен и так будет всегда. Имеет открытый исходный код. Никакой рекламы. Никаких платных подписок. Нет привязки к поставщику.</string>
+    <string name="welcome_intro5_message">Delta Chat бесплатен и так будет всегда. Приложение имеет открытый исходный код. Никакой рекламы. Никаких платных подписок. Без привязки к поставщику.</string>
     <string name="welcome_intro6_headline">Зашифрованный</string>
     <string name="welcome_intro6_message">Зашифрован с использованием популярных алгоритмов. Сообщения остаются на ваших серверах.</string>
     <string name="welcome_intro7_headline">Доверенный</string>
@@ -293,16 +292,16 @@
     <string name="login_error_mail">Укажите действительный адрес электронной почты</string>
     <string name="login_error_server">Укажите действительный сервер / IP адрес</string>
     <string name="login_error_port">Укажите действительный порт (1-65535)</string>
-    <string name="login_error_required_fields">Пожалуйста, укажите верные адрес электронной почты и пароль</string>
+    <string name="login_error_required_fields">Введите действительный адрес электронной почты и пароль</string>
     <string name="import_backup_title">Импортировать бекап</string>
-    <string name="import_backup_ask">Найдена резервная копия на \"%1$s\".
-
-Импортировать из нее все настройки и данные?</string>
-    <string name="import_backup_no_backup_found">Резервных копий не найдено.
-
-Поместите резервную копию в \"%1$s\" и попробуйте снова. Так же вы можете нажать \"Начать общение\" для продолжения обычной \"чистой\" установки</string>
+    <string name="import_backup_ask">Найдена резервная копия «%1$s».\n\nВосстановить из неё все данные и параметры?</string>
+    <string name="import_backup_no_backup_found">Резервных копий не найдено.\n\nПоместите резервную копию в папку «%1$s» и попробуйте снова запустить восстановление. Для установки без восстановления параметров, нажмите «Начать общение».</string>
     <!-- Translators: %1$s will be replaced by the email address -->
-    <string name="login_error_cannot_login">Не удалось войти как \"%1$s\". Пожалуйста, проверьте правильность ввода email и пароля.</string>
+    <string name="login_error_cannot_login">Не удалось выполнить вход под именем «%1$s». Убедитесь, что адрес эл. почты и пароль указаны верно.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Ответ сервера %1$s: %2$s\n\nНекоторые серверы электронной почты сохраняют дополнительную информацию в папке «Входящие». Проверьте эту папку, например, используя доступ через веб-интерфейс. Если вы столкнулись с проблемами, проконсультируйте с провайдером электронной почты или знакомыми специалистами.</string>
+
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
@@ -315,12 +314,12 @@
     <string name="pref_summary_custom">персонализованно</string>
     <string name="pref_using_custom">Использовать персонализованно: %s</string>
     <string name="pref_using_default">Использовать по умолчанию: %s</string>
-    <string name="pref_profile_info_headline">Информация вашего профиля</string>
+    <string name="pref_profile_info_headline">Личный профиль</string>
     <string name="pref_profile_photo">Фото профиля</string>
     <string name="pref_trim_headline">Очистка сообщений</string>
     <string name="pref_trim_option">Удалить старые сообщения</string>
     <string name="pref_trim_option_explain">Автоматически удалять старые сообщения по достижении указанного лимита</string>
-    <string name="pref_trim_length_limit">Лимит длины чата</string>
+    <string name="pref_trim_length_limit">Ограничение длины чата</string>
     <string name="pref_trim_length_limit_summary">%d сообщений в чате</string>
     <string name="pref_trim_now_button">Очистить все чаты</string>
     <string name="pref_trim_now_ask">Удалить все старые сообщения? Это действие немедленно очистит все чаты до %dпоследних сообщений</string>
@@ -331,24 +330,30 @@
     <string name="pref_who_can_see_this_information">Кто может видеть эту информацию?</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будут отображаться в чатах с другими пользователями. Отправленная информация не может быть удалена или отозвана.</string>
     <string name="pref_your_name">Ваше имя</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Текст подписи</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Отправлено из моего Delta Chat: https://delta.chat</string>
+    <string name="pref_enter_sends">Отправка кнопкой ввода</string>
     <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
+    <string name="pref_vibrate">Вибрация</string>
     <string name="pref_chat_settings">Настройки чата</string>
     <string name="pref_change_secret">Поменять секрет</string>
     <string name="pref_change_secret_explain">Смените Ваш ПИН-код / графический ключ / отпечаток пальца с помощью системных настроек</string>
     <string name="pref_screen_security">Безопасность экрана</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Запрос на блокировку скриншотов в списке последних и внутри приложения</string>
     <string name="pref_screen_security_please_restart_hint">Перезагрузите приложение для применения настроек безопасности экрана.</string>
     <string name="pref_notifications">Уведомления</string>
-    <string name="pref_notifications_show">Показать</string>
+    <string name="pref_notifications_show">Показывать</string>
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_led_color">Цвет светодиода </string>
     <string name="pref_led_pattern">Ритм мерцания светодиода</string>
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучный</string>
-    <string name="pref_repeat_notify">Повторять оповещения</string>
+    <string name="pref_repeat_notify">Повторять уведомления</string>
     <string name="pref_privacy">Конфиденциальность</string>
-    <string name="pref_chats_and_media">Чаты и медиа</string>
+    <string name="pref_chats_and_media">Чаты и медиафайлы</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Светлый</string>
     <string name="pref_dark_theme">Темный</string>
@@ -358,7 +363,7 @@
     <string name="pref_incognito_keyboard">Клавиатура Инкогнито</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Требовать отключения персонализации подсказок клавиатуры</string>
-    <string name="pref_read_receipts">Получать уведомления о прочтении</string>
+    <string name="pref_read_receipts">Уведомления о прочтении</string>
     <string name="pref_read_receipts_explain">Если уведомления о прочтении отключены, вы не будете видеть подтверждения прочтения сообщений другими пользователями</string>
     <string name="pref_manage_keys">Управление ключами</string>
     <string name="pref_use_system_emoji">Использовать системные смайлы</string>
@@ -369,52 +374,71 @@
     <string name="pref_messages">Сообщения</string>
     <string name="pref_in_chat_sounds">Звуки в чате</string>
     <string name="pref_message_text_size">Размер шрифта сообщения</string>
-    <string name="pref_view_log">Посмотреть журнал</string>
+    <string name="pref_view_log">Открыть журнал</string>
     <string name="pref_other">Другое</string>
     <string name="pref_backup">Резервное копирование</string>
     <string name="pref_backup_explain">Сохранить чаты на внешний носитель</string>
-    <string name="pref_backup_export_explain">Резервное копирование позволяет вам настроить заново установленный Дельта Чат на этом или другом устройстве</string>
+    <string name="pref_backup_export_explain">Резервное копирование позволяет восстанавливать параметры параметры приложения на этом или другом устройстве.\n\nРезервная копия содержит все сообщения, контакты и чаты, а также параметры шифрования Autocrypt.  После того, как резервная копия будет создана, как можно скорее перенесите её в надёжное место.</string>
     <string name="pref_backup_export_start_button">Начать резервное копирование</string>
     <string name="pref_backup_written_to_x">Резервная копия успешно записана на %1$s</string>
     <string name="pref_managekeys_menu_title">Управление ключами</string>
     <string name="pref_managekeys_ask_for_storage_permission">Приложению необходим доступ к файлам для импорта/экспорта ключей</string>
     <string name="pref_managekeys_export_secret_keys">Экспортировать секретные ключи</string>
-    <string name="pref_managekeys_export_explain">Экспортировать секретные ключи на \"%1$s\"?</string>
+    <string name="pref_managekeys_export_explain">Экспортировать секретные ключи в папку «%1$s»?</string>
     <string name="pref_managekeys_import_secret_keys">Импортировать секретные ключи</string>
-    <string name="pref_managekeys_import_explain">Импортировать секретные ключи из \"%1$s\"?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию если он не содержит слова \"legacy\" в названии файла</string>
-    <string name="pref_managekeys_secret_keys_exported_to_x">Секретные ключи успешно записаны на \"%1$s\".</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из \"%1$s\".</string>
-    <string name="pref_imap_folder_handling">Обработка папки IMAP</string>
-    <string name="pref_watch_inbox_folder">Открыть папку \"Входящие\"</string>
-    <string name="pref_watch_sent_folder">Открыть папку \"Отправленные\"</string>
-    <string name="pref_watch_mvbox_folder">Открыть папку Дельта-Чата</string>
-    <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
-    <string name="pref_auto_folder_moves_explain">Диалоги перемещены, чтобы избежать путаницы в папке \"Входящие\"</string>
+    <string name="pref_managekeys_import_explain">Импортировать секретные ключи из папки «%1$s»?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию, если он не содержит слова «legacy» в названии файла.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Секретные ключи успешно сохранены в папку «%1$s».</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из папки «%1$s».</string>
+    <string name="pref_background">Фон</string>
+    <string name="pref_imap_folder_handling">Параметры папок IMAP</string>
+    <string name="pref_imap_folder_warn_disable_defaults">При отключении этого параметра убедитесь, что сервер и ваши другие приложения для работы с электронной почтой настроены таким же образом.\n\nВ случае, если параметры отличаются, всё может перестать работать.</string>
+    <string name="pref_watch_inbox_folder">Следить за IMAP-папкой \"INBOX\"</string>
+    <string name="pref_watch_sent_folder">Следить за IMAP-папкой \"SENT\"</string>
+    <string name="pref_watch_mvbox_folder">Следить за IMAP-папкой \"DeltaChat\"</string>
+    <string name="pref_auto_folder_moves">Автоматически перемещать в папку DeltaChat</string>
+    <string name="pref_auto_folder_moves_explain">Чаты были перемещены, чтобы избежать путаницы в папке «Входящие»</string>
 
 
     <!-- autocrypt -->
     <string name="autocrypt">Автошифрование</string>
-    <string name="autocrypt_send_asm_title">Отправить Сообщение с Настройкой Автошифрования</string>
-    <string name="autocrypt_send_asm_button">Отправить Сообщение с Настройкой Автошифрования</string>
-    <string name="autocrypt_prefer_e2ee">Предпочитать оконечное шифрование</string>
-    <string name="autocrypt_asm_subject">Сообщение с Настройкой Автошифрования</string>
-    <string name="autocrypt_continue_transfer_please_enter_code">Пожалуйста введите установочный код, который отображается на другом устройстве.</string>
+    <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>
+    <string name="autocrypt_send_asm_title">Сообщение с параметрами Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_before">Сообщение с параметрами Autocrypt служит для безопасной передачи параметров шифрования между собственными приложениями для работы с электронной почтой, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием специального кода, который показан здесь и должен быть введён в настраиваемом приложении.  </string>
+    <string name="autocrypt_send_asm_button">Отправить сообщение с параметрами Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_after">Параметры шифрования были отправлены. Откройте сообщение с параметрами в настраиваемой программе, после чего программа запросит код подтверждения. Введите следующий код:\n\n%1$s\n\nПосле завершения настройки, программа сможет использовать Autocrypt.</string>
+    <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
+    <string name="autocrypt_asm_subject">Сообщение с параметрами Autocrypt</string>
+    <string name="autocrypt_asm_general_body">Это сообщение с параметрами Autocrypt служит для передачи параметров сквозного шифрования между устройствами.\n\nДля расшифровывания параметров откройте это сообщение в приложении, поддерживающем Autocrypt и введите код подтверждения, показанный на исходном устройстве.</string>
+    <string name="autocrypt_asm_click_body">Это сообщение с параметрами Autocrypt служит для передачи параметров сквозного шифрования между устройствами.\n\nДля расшифровывания и использования параметров откройте это сообщение.</string>
+    <string name="autocrypt_continue_transfer_title">Сообщение с параметрами Autocrypt</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Введите проверочный код, который показан на другом устройстве.</string>
+    <string name="autocrypt_continue_transfer_succeeded">Параметры сквозного шифрования успешно получены и данное устройство будет использовать такие же параметры Autocrypt.</string>
     <string name="autocrypt_continue_transfer_retry">Повторить</string>
-    <string name="autocrypt_bad_setup_code">Неверный установочный код. Пожалуйста попробуйте снова
-
-Если вы забыли установочный код, просто отправьте еще одно сообщение Autocrypt Setup с другого устройства.</string>
+    <string name="autocrypt_bad_setup_code">Неверный установочный код. Попробуйте ввести его ещё раз.\n\nЕсли установочный код утерян, отправьте с другого устройства ещё одно сообщение с параметрами Autocrypt.</string>
 
 
     <!-- system messages -->
-    <string name="systemmsg_group_name_changed">Название группы изменено с \"%1$s\" на \"%2$s\".</string>
+    <string name="systemmsg_group_name_changed">Название группы изменено с «%1$s» на «%2$s».</string>
     <string name="systemmsg_group_image_changed">Изображение группы изменено.</string>
     <string name="systemmsg_group_image_deleted">Изображение группы удалено.</string>
-    <string name="systemmsg_member_added">Участник %1$s добавлен.</string>
-    <string name="systemmsg_member_removed">Участник %1$s удален.</string>
+    <string name="systemmsg_member_added">Добавлен участник %1$s.</string>
+    <string name="systemmsg_member_removed">Участник %1$s удалён.</string>
+    <string name="systemmsg_group_left">Вы покинули группу.</string>
+    <string name="systemmsg_read_receipt_subject">Уведомление о прочтении</string>
+    <string name="systemmsg_read_receipt_body">Это подтверждение того, что сообщение «%1$s» было открыто на устройстве получателя. Данное подтверждение не означает, что сообщение было прочитано.</string>
+    <string name="systemmsg_cannot_decrypt">Это сообщение не может быть расшифровано. \n\n • Возможно, это уже поможет просто ответить на это сообщение и попросить отправителя отправить сообщение еще раз. \n\n • В случае, если вы переустановили Delta Chat или другую почтовую программу на этом или другое устройство, с которого вы, возможно, захотите отправить оттуда сообщение о настройке автокрипта.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s мной.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s пользователем %2$s.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Блокировка экрана</string>
-    <string name="screenlock_authentication_failed">Не пройдена аутентификация</string>
-    <string name="screenlock_unlock_title">Разблокировать Дельта Чат</string>
+    <string name="screenlock_explain">Блокирование доступа к Delta Chat с помощью блокировки экрана Android или отпечатка пальца</string>
+    <string name="screenlock_authentication_failed">Не удалось пройти аутентификацию</string>
+    <string name="screenlock_unlock_title">Разблокировать Delta Chat</string>
+    <string name="screenlock_unlock_description">Введите защитный код чтобы разблокировать Delta Chat.</string>
     <string name="screenlock_inactivity_timeout">Блокировка при бездействии</string>
     <string name="screenlock_inactivity_timeout_explain">Заблокировать приложение через определенный период времени</string>
     <string name="screenlock_inactivity_timeout_interval">Время неактивности</string>
@@ -422,19 +446,31 @@
 
     <!-- qr code stuff -->
     <string name="qrscan_title">Сканировать QR код</string>
-    <string name="qrscan_hint">Наведите Вашу камеру на QR код</string>
-    <string name="qrscan_ask_join_group">Вы хотите присоединиться к \"%1$s\"?</string>
-    <string name="qrscan_contains_text">Текст с отсканированного QR:
-
-%1$s</string>
-    <string name="qrscan_contains_url">URL с отсканированного QR:
-
-%1$s</string>
+    <string name="qrscan_hint">Наведите камеру на QR-код</string>
+    <string name="qrscan_ask_join_group">Присоединиться к группе «%1$s»?</string>
+    <string name="qrscan_fingerprint_mismatch">От сканированный отпечаток не совпадает с последним известным отпечатком %1$s</string>
+    <string name="qrscan_no_addr_found">QR-код содержит отпечаток ключа, но не содержит адрес электронной почты.\n\nДля проверки подлинности с использованием альтернативного канала связи следует сначала установить с получателем защищенное соединение.</string>
+    <string name="qrscan_contains_text">Текст из QR-кода:\n\n%1$s</string>
+    <string name="qrscan_contains_url">URL из QR-кода:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
+    <string name="qrscan_x_verified_introduce_myself">Подлинность %1$s проверена, передаются собственные данные…</string>
+    <string name="qrshow_title">QR-код приглашения</string>
     <string name="qrshow_x_joining">%1$s присоединился (-лась).</string>
     <string name="qrshow_x_verified">%1$s проверен.</string>
+    <string name="qrshow_x_has_joined_group">%1$s присоединился к группе.</string>
+    <string name="qrshow_join_group_title">QR-код приглашения</string>
+    <string name="qrshow_join_group_hint">Отсканируйте код чтобы присоединиться к группе «%1$s»</string>
+    <string name="qrshow_join_contact_title">QR-код приглашения</string>
+    <string name="qrshow_join_contact_hint">Отсканируйте, чтобы создать контакт с %1$s</string>
+    <string name="contact_verified">%1$s подтвержден.</string>
+    <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Изменённые параметры %1$s</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d новых сообщений из %2$d чатов.</string>
+    <string name="notify_most_recent_from">Последнее от: %1$s</string>
     <string name="notify_media_message_with_text">Медиа сообщение: %s</string>
     <string name="notify_mark_all_read">Отметить всё как прочитанное</string>
     <string name="notify_mark_read">Отметить как прочитанное</string>
@@ -442,10 +478,11 @@
     <string name="notify_reply_button">Ответить</string>
     <string name="notify_new_message">Новое сообщение</string>
     <string name="notify_background_connection_enabled">Соединение в фоновом режиме включено</string>
-    <string name="notify_priority_max">Максимум</string>
+    <string name="notify_priority_high">Высокий</string>
+    <string name="notify_priority_max">Максимальный</string>
     <string name="notify_name_and_message">Имена и сообщения</string>
     <string name="notify_name_only">Только имена</string>
-    <string name="notify_no_name_or_message">Нет имени или сообщения</string>
+    <string name="notify_no_name_or_message">Без имени или сообщения</string>
     <string name="notify_repeat_one_time">Один раз</string>
     <string name="notify_repeat_two_times">Два раза</string>
     <string name="notify_repeat_three_times">Три раза</string>
@@ -460,16 +497,18 @@
     <string name="perm_explain_need_for_camera_access">Для захвата фото и видео, разрешите доступ к камере</string>
     <string name="perm_explain_need_for_mic_access">Для отправки аудио сообщений, разрешите доступ к микрофону</string>
     <string name="perm_explain_need_for_storage_access">Приложению необходим доступ к файлам для экспорта и создания бэкапов</string>
-    <string name="perm_explain_access_to_camera_denied">Для съемки фотографий или видео приложению требуется разрешение использовать камеру, но сейчас камера заблокирована. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Камера\".</string>
-    <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Микрофон\".</string>
-    <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов приложению нужно разрешение на хранение, но сейчас хранение заблокировано. Перейдите в меню настроек приложения, выберите \"Права доступа\" и включите функцию \"Хранение\".</string>
-    <string name="perm_explain_access_to_location_denied">Чтобы прикрепить местоположение, приложению нужно разрешить доступ к вашему \"Расположению\", но сейчас местоположение заблокировано. Пожалуйста, перейдите в меню настроек приложения, выберите \"Права доступа\" и включите \"Расположение\".</string>
+    <string name="perm_explain_access_to_camera_denied">Для съемки фотографий или видео приложению требуется разрешение на использование камеры, но сейчас такое разрешение не предоставлено. Перейдите в системное меню настроек, в разделе «Приложения» найдите Delta Chat и разрешите доступ к камере.</string>
+    <string name="perm_explain_access_to_mic_denied">Для отправки голосовых сообщений приложению требуется разрешение на использование микрофона, но сейчас такое разрешение не предоставлено. Перейдите в системное меню настроек, в разделе «Приложения» найдите Delta Chat и разрешите доступ к микрофону.</string>
+    <string name="perm_explain_access_to_storage_denied">Для сохранения или передачи  фотографий или видео приложению требуется разрешение на использование хранилища, но сейчас такое разрешение не предоставлено. Перейдите в системное меню настроек, в разделе «Приложения» найдите Delta Chat и разрешите доступ к хранилищу.</string>
+    <string name="perm_explain_access_to_location_denied">Чтобы передать местоположение, приложению необходим  доступ к геоданным устройства. Для предоставления такого разрешения перейдите в системное меню настроек, в разделе «Приложения» откройте свойства приложения Delta Chat, выберите пункт «Разрешения» и разрешите доступ к местоположению устройства.</string>
 
     <!-- languages -->
     <string name="language_be">Бельгия</string>
+    <string name="language_ca">Каталонский</string>
     <string name="language_da">Дания</string>
     <string name="language_de">Германский</string>
     <string name="language_en">Английский</string>
+    <string name="language_eo">Эсператно</string>
     <string name="language_es">Испанский</string>
     <string name="language_eu">Баскский</string>
     <string name="language_fr">Французский</string>
@@ -479,15 +518,18 @@
     <string name="language_id">Индонезийский</string>
     <string name="language_ja_JP">Японский</string>
     <string name="language_ko">Корейский</string>
+    <string name="language_nb_NO">Норвежский литературный</string>
     <string name="language_nl">Нидерландский</string>
+    <string name="language_nl_NL">Голландский (Нидерланды)</string>
     <string name="language_pl">Польский</string>
     <string name="language_pt">Португальский</string>
     <string name="language_ru">Русский</string>
-    <string name="language_ru_RU">Русский</string>
+    <string name="language_ru_RU">Русский (Россия)</string>
     <string name="language_sq">Албанский</string>
     <string name="language_sr">Сербский</string>
     <string name="language_sv">Шведский</string>
     <string name="language_ta">Тамильский</string>
+    <string name="language_te">Телугу</string>
     <string name="language_tr">Турецкий</string>
     <string name="language_uk">Украинский</string>
     <string name="language_zh_CN">Китайский</string>
@@ -503,55 +545,85 @@
     <string name="global_menu_file_desktop">Файл</string>
     <string name="global_menu_file_quit_desktop">Уйти</string>
     <string name="global_menu_edit_desktop">Редактировать</string>
-    <string name="global_menu_edit_undo_desktop">Отмена</string>
+    <string name="global_menu_edit_undo_desktop">Отменить</string>
+    <string name="global_menu_edit_redo_desktop">Повторить</string>
     <string name="global_menu_edit_cut_desktop">Вырезать</string>
     <string name="global_menu_edit_copy_desktop">Копировать</string>
     <string name="global_menu_edit_paste_desktop">Вставить</string>
     <string name="global_menu_edit_delete_desktop">Удалить</string>
     <string name="global_menu_edit_selectall_desktop">Выбрать все</string>
     <string name="global_menu_view_desktop">Просмотреть</string>
+    <string name="global_menu_view_floatontop_desktop">Всплывать сверху</string>
     <string name="global_menu_view_developer_desktop">Разработчик</string>
     <string name="global_menu_view_developer_tools_desktop">Инструменты разработчика</string>
     <string name="global_menu_help_desktop">Помощь</string>
-    <string name="global_menu_help_learn_desktop">Узнать больше о DeltaChat</string>
-    <string name="global_menu_help_about_desktop">Больше о DeltaChat</string>
+    <string name="global_menu_help_learn_desktop">Узнать больше о Delta Chat</string>
+    <string name="global_menu_help_contribute_desktop">Присоединиться к разработке на GitHub</string>
+    <string name="global_menu_help_report_desktop">Сообщить о проблеме…</string>
+    <string name="global_menu_help_about_desktop">О Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Выберите чат или создайте новый</string>
     <string name="write_message_desktop">Напишите сообщение</string>
-    <string name="about_deltachat_heading_desktop">Больше о DeltaChat</string>
+    <string name="about_deltachat_heading_desktop">О Delta Chat</string>
     <string name="encryption_info_title_desktop">Информация о шифровании</string>
     <string name="contact_detail_title_desktop">Детали контакта</string>
     <string name="contact_request_title_desktop">Запрос на общение</string>
     <string name="delete_message_desktop">Удалить сообщение</string>
     <string name="more_info_desktop">Больше информации</string>
     <string name="logout_desktop">Отключиться</string>
+    <string name="timestamp_format_m_desktop">МММ Д</string>
+    <string name="no_archived_chats_desktop">Нет чатов в архиве</string>
     <string name="no_chats_desktop">Нет чатов</string>
     <string name="encryption_info_desktop">Показать информацию о шифровании</string>
     <string name="verified_desktop">Проверенный</string>
     <string name="group_name_desktop">Название группы</string>
     <string name="remove_desktop">Удалить</string>
     <string name="save_desktop">Сохранить</string>
-    <string name="show_qr_invite_code_desktop">Показать пригласительный QR код</string>
+    <string name="show_qr_verify_code_desktop">Показать QR-код приглашения</string>
+    <string name="show_qr_invite_code_desktop">Показать QR-код приглашения</string>
     <string name="add_contact_desktop">Добавить контакт</string>
     <string name="login_required_desktop">Требуется</string>
     <string name="name_desktop">Имя</string>
-    <string name="reply_to_message_desktop">Ответь на сообщение</string>
+    <string name="autocrypt_key_transfer_desktop">Автокрипт передачи ключей</string>
+    <string name="initiate_key_transfer_title_desktop">Инициировать передачу ключа</string>
+    <string name="initiate_key_transfer_desktop">Сообщение с параметрами Autocrypt служит для безопасной передачи параметров шифрования между собственными приложениями для работы с электронной почтой, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием специального кода, который показан здесь и должен быть введён в настраиваемом приложении.  </string>
+    <string name="reply_to_message_desktop">Ответить на сообщение</string>
     <string name="select_group_image_desktop">Выбрать изображение группы</string>
+    <string name="imex_progress_title_desktop">Прогресс резевного копирования</string>
+    <string name="download_attachment_desktop">Скачать вложение</string>
+    <string name="export_backup_desktop">Экспорт бэкапа</string>
+    <string name="transfer_key_desktop">Ключ передачи</string>
+    <string name="show_key_transfer_message_desktop">Ваш ключ был отправлен самому себе. Переключитесь на другое устройство и откройте сообщение настройки. Вам будет предложено ввести код установки. Введите следующие цифры в командной строке. Как только вы закончите, ваше другое устройство будет готово к использованию Autocrypt.</string>
     <string name="new_message_from_desktop">Новое сообщение от</string>
     <string name="unblock_contacts_desktop">Разблокировать контакт</string>
     <string name="none_blocked_desktop">Сейчас нет заблокированных контактов</string>
     <string name="autocrypt_correct_desktop">Настройка Автошифрования успешно переданы!</string>
-    <string name="autocrypt_incorrect_desktop">Не правильный код установки. Пожалуйста повторите снова.</string>
-    <string name="ask_delete_chat_desktop">Вы уверены, что хотите удалить эту группу? </string>
+    <string name="autocrypt_incorrect_desktop">Проверочный код указан неверно. Попробуйте ввести его повторно.</string>
+    <string name="create_chat_error_desktop">Не удалось создать чат.</string>
+    <string name="ask_delete_chat_desktop">Действительно удалить эту группу? </string>
     <string name="email_validation_failed_desktop">Требуется адрес эл.почты.</string>
+    <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? При продолжении будут удалены все данные, включая параметры сквозного шифрования, списки контактов, чаты, сообщения и медиафайлы. Удаление учётной записи является необратимым действием.</string>
     <string name="me_desktop">Я</string>
     <string name="in_this_group_desktop">Участники группы</string>
     <string name="not_in_this_group_desktop">Потенциальный участники группы (не в группе)</string>
     <string name="message_detail_sent_desktop">Отправлено</string>
     <string name="message_detail_received_desktop">Принято</string>
-    <string name="menu.view.developer.open.log.folder">Открыть папку логов</string>
-    <string name="menu.view.developer.open.current.log.file">Открыть текущий лог</string>
+    <string name="message_detail_from_desktop">от</string>
+    <string name="message_detail_to_desktop"> </string>
+    <string name="menu.view.developer.open.log.folder">Открыть папку журналов</string>
+    <string name="menu.view.developer.open.current.log.file">Открыть файл журнала</string>
 
 
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Присоединиться к группе «%1$s»?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_fingerprint_ask_oob">Начать чат с «%1$s» ?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Начать чат с «%1$s» ?</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">QR код приглашения</string>
-    </resources>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Чтобы присоединиться к группе «%1$s», отсканируйте этот код</string>
+
+
+</resources>
