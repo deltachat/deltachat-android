@@ -448,7 +448,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensagens em %2$d chats</string>
-    <string name="notify_most_recent_from">Mais recentes de: % 1$s</string>
+    <string name="notify_most_recent_from">Mais recentes de: %1$s</string>
     <string name="notify_media_message_with_text">Mensagem de mídia: %s</string>
     <string name="notify_mark_all_read">Marcar tudo como lido</string>
     <string name="notify_mark_read">Marcar lido</string>
