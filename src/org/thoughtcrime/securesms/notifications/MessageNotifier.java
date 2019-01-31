@@ -18,7 +18,6 @@ package org.thoughtcrime.securesms.notifications;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -34,7 +33,6 @@ import android.os.Build;
 import android.service.notification.StatusBarNotification;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -46,12 +44,14 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
@@ -88,8 +88,13 @@ public class MessageNotifier {
   private volatile static       long               lastAudibleNotification      = -1;
   private          static final CancelableExecutor executor                     = new CancelableExecutor();
 
-  public static void setVisibleThread(long threadId) {
+  private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
+
+  public static void updateVisibleThread(Context context, long threadId) {
     visibleThread = threadId;
+    if (visibleThread == NO_VISIBLE_THREAD && pendingNotifications.size() > 0) {
+      updatePendingNotifications(context);
+    }
   }
 
   public static void cancelDelayedNotifications() {
@@ -166,24 +171,26 @@ public class MessageNotifier {
   }
 
   public static void updateNotification(@NonNull  Context context,
-                                        int       chatId,
+                                        int       threadId,
                                         boolean   signal)
   {
-    boolean    isVisible  = visibleThread == chatId;
+    boolean    isVisible  = visibleThread == threadId;
     ApplicationDcContext dcContext = DcHelper.getContext(context);
 
     if (isVisible) {
-      dcContext.marknoticedChat(chatId);
+      dcContext.marknoticedChat(threadId);
     }
 
     if (!Prefs.isNotificationsEnabled(context) ||
-        Prefs.isChatMuted(context, chatId))
+        Prefs.isChatMuted(context, threadId))
     {
       return;
     }
 
     if (isVisible && signal) {
-      sendInThreadNotification(context, chatId);
+      sendInThreadNotification(context, threadId);
+    } else if (visibleThread != NO_VISIBLE_THREAD) {
+      pendingNotifications.push(new Pair<>(threadId, signal));
     } else {
       updateNotification(context, signal, 0);
     }
@@ -247,8 +254,6 @@ public class MessageNotifier {
     Recipient                          recipient      = notifications.get(0).getRecipient();
     int                                notificationId = (SUMMARY_NOTIFICATION_ID + (bundled ? notifications.get(0).getChatId() : 0));
 
-    setPriority(builder);
-
     builder.setThread(notifications.get(0).getRecipient());
     builder.setMessageCount(notificationState.getMessageCount());
     builder.setPrimaryMessageBody(recipient, notifications.get(0).getIndividualRecipient(),
@@ -287,12 +292,11 @@ public class MessageNotifier {
     NotificationManagerCompat.from(context).notify(notificationId, builder.build());
   }
 
-  private static void setPriority(AbstractNotificationBuilder builder) {
-    if(visibleThread == NO_VISIBLE_THREAD) { // not currently showing any thread
-      builder.setPriority(NotificationManager.IMPORTANCE_DEFAULT);
-    } else { // currently showing a different thread.
-      builder.setPriority(NotificationManager.IMPORTANCE_LOW);
-    } // if we were to show the current thread, this function would not be called in the  first place.
+  private static void updatePendingNotifications(Context context) {
+    while (pendingNotifications.size() > 0) {
+      Pair<Integer, Boolean> threadSignalPair = pendingNotifications.pop();
+      updateNotification(context, threadSignalPair.first(), threadSignalPair.second());
+    }
   }
 
   private static void sendMultipleThreadNotification(@NonNull  Context context,
@@ -302,7 +306,6 @@ public class MessageNotifier {
     MultipleRecipientNotificationBuilder builder       = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
     List<NotificationItem>               notifications = notificationState.getNotifications();
 
-    setPriority(builder);
     builder.setMessageCount(notificationState.getMessageCount(), notificationState.getThreadCount());
     builder.setMostRecentSender(notifications.get(0).getIndividualRecipient());
     builder.setGroup(NOTIFICATION_GROUP);
