@@ -180,7 +180,8 @@
                 android:id="@+id/imap_server_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_imap_server" />
+                android:hint="@string/login_imap_server"
+                android:inputType="text|textNoSuggestions" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -283,7 +284,8 @@
                 android:id="@+id/smtp_server_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_smtp_server" />
+                android:hint="@string/login_smtp_server"
+                android:inputType="text|textNoSuggestions" />
 
         </android.support.design.widget.TextInputLayout>
 
