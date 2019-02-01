@@ -24,7 +24,7 @@
 
         <org.thoughtcrime.securesms.preferences.widgets.LEDColorListPreference
             android:key="pref_led_color"
-            android:defaultValue="blue"
+            android:defaultValue="purple"
             android:title="@string/pref_led_color"
             android:dependency="pref_key_enable_notifications"
             android:entries="@array/pref_led_color_entries"

@@ -53,6 +53,7 @@
   </string-array>
 
   <string-array name="pref_led_color_entries">
+    <item>@string/purple</item>
     <item>@string/green</item>
     <item>@string/red</item>
     <item>@string/blue</item>
@@ -65,6 +66,7 @@
 
 
   <string-array name="pref_led_color_values" translatable="false">
+    <item>purple</item>
     <item>green</item>
     <item>red</item>
     <item>blue</item>
