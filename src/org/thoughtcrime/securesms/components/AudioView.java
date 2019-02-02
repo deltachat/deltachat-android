@@ -90,12 +90,20 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     controlToggle.displayQuick(playButton);
     seekBar.setEnabled(true);
     this.audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, this);
+    this.audioSlidePlayer.requestDuration();
   }
 
   public void cleanup() {
     if (this.audioSlidePlayer != null && pauseButton.getVisibility() == View.VISIBLE) {
       this.audioSlidePlayer.stop();
     }
+  }
+
+  @Override
+  public void onReceivedDuration(long millis) {
+    this.timestamp.setText(String.format("%02d:%02d",
+            TimeUnit.MILLISECONDS.toMinutes(millis),
+            TimeUnit.MILLISECONDS.toSeconds(millis)));
   }
 
   @Override
