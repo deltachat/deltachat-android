@@ -2,6 +2,7 @@
 <resources>
     <color name="signal_primary">#ff415e6b</color>
     <color name="signal_primary_dark">#ff364e59</color>
+    <color name="signal_primary_lite">#4c6e7d</color>
     <color name="signal_primary_alpha33">#552090ea</color>
     <color name="signal_primary_alpha_focus">#882090ea</color>
 

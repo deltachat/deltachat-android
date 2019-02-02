@@ -30,13 +30,10 @@
         app:layout_constraintBottom_toTopOf="@id/skip_button"/>
 
     <Button
+        style="@style/ButtonPrimary"
         android:id="@+id/skip_button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:background="@color/signal_primary"
-        android:paddingEnd="8dp"
-        android:paddingStart="8dp"
-        android:textColor="@color/white"
         android:text="@string/welcome_start_messaging"
         app:layout_constraintBottom_toTopOf="@id/skip_button_bottom_spacer"
         app:layout_constraintEnd_toEndOf="parent"

@@ -99,10 +99,11 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Button.Primary" parent="Base.Widget.AppCompat.Button.Colored">
-        <item name="colorAccent">@color/signal_primary</item>
-        <item name="colorButtonNormal">@color/signal_primary</item>
+    <style name="ButtonPrimary">
+        <item name="android:background">@color/signal_primary_lite</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
     </style>
 
     <style name="PreferenceThemeOverlay.Fix" parent="PreferenceThemeOverlay.v14.Material">
