@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            app:backgroundTint="@color/signal_primary_lite"
+            app:backgroundTint="@color/delta_primary_lite"
             android:src="@drawable/ic_add_white_24dp"
             android:focusable="true"
             android:contentDescription="@string/menu_new_chat"/>
