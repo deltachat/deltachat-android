@@ -18,19 +18,27 @@
         android:layout_gravity="bottom">
 
         <Button
+            style="@style/ButtonPrimary"
             android:id="@+id/set_default_button"
-            android:theme="@style/Button.Primary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
+            android:layout_gravity="fill_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
             android:text="Set default" />
 
         <Button
+            style="@style/ButtonPrimary"
             android:id="@+id/from_gallery_button"
-            android:theme="@style/Button.Primary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
+            android:layout_gravity="fill_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
             android:text="From gallery" />
     </LinearLayout>
 

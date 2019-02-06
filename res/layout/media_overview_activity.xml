@@ -25,8 +25,8 @@
                 android:layout_gravity="top"
                 android:background="?attr/media_overview_toolbar_background"
                 app:tabBackground="?attr/media_overview_toolbar_background"
-                app:tabIndicatorColor="@color/textsecure_primary"
-                app:tabSelectedTextColor="@color/textsecure_primary"/>
+                app:tabIndicatorColor="@color/delta_primary"
+                app:tabSelectedTextColor="@color/delta_primary"/>
 
     </android.support.design.widget.AppBarLayout>
 
