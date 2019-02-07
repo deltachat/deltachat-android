@@ -83,7 +83,7 @@ public class LEDColorListPreference extends ListPreference {
     int color;
 
     switch (value) {
-      case "purple":  color = getContext().getResources().getColor(R.color.purple);      break;
+      case "purple":  color = getContext().getResources().getColor(R.color.purple_led);  break;
       case "green":   color = getContext().getResources().getColor(R.color.green_500);   break;
       case "red":     color = getContext().getResources().getColor(R.color.red_500);     break;
       case "blue":    color = getContext().getResources().getColor(R.color.blue_500);    break;
