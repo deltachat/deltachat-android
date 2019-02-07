@@ -142,7 +142,7 @@ android {
         applicationId "com.b44t.messenger"
 
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 26
 
         vectorDrawables.useSupportLibrary = true
         project.ext.set("archivesBaseName", "Deltachat");
