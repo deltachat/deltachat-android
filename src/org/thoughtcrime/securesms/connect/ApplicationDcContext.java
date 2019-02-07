@@ -110,7 +110,7 @@ public class ApplicationDcContext extends DcContext {
     }
 
     if (!isScreenOn) {
-      context.startService(new Intent(context, KeepAliveService.class));
+      KeepAliveService.startSelf(context);
     }
   }
 

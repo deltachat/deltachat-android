@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.connect;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
@@ -15,6 +16,23 @@ import org.thoughtcrime.securesms.R;
 public class KeepAliveService extends Service {
 
     static KeepAliveService s_this = null;
+
+    public static void startSelf(Context context)
+    {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                // the started service has to call startForeground() within 5 seconds,
+                // see https://developer.android.com/about/versions/oreo/android-8.0-changes
+                context.startForegroundService(new Intent(context, KeepAliveService.class));
+            }
+            else {
+                context.startService(new Intent(context, KeepAliveService.class));
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void onCreate() {
@@ -46,7 +64,7 @@ public class KeepAliveService extends Service {
 
     private void setSelfAsForeground() {
         stopForeground(true);
-        startForeground(FG_NOTIFICATION_ID, createNotification()); // TODO: if we target Android O, we should use startServiceInForeground()
+        startForeground(FG_NOTIFICATION_ID, createNotification());
     }
 
     static public KeepAliveService getInstance()
@@ -62,8 +80,6 @@ public class KeepAliveService extends Service {
     public static final int FG_NOTIFICATION_ID = 4142;
     private Notification createNotification()
     {
-        ApplicationDcContext dcContext = DcHelper.getContext(this);
-
         Intent intent = new Intent(this, ConversationListActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         // a notification _must_ contain a small icon, a title and a text, see https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Required
