@@ -539,7 +539,10 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
             .setMessage(R.string.ask_block_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.menu_block_contact, (dialog, which) -> setBlocked(true)).show();
+            .setPositiveButton(R.string.menu_block_contact, (dialog, which) -> {
+              contactToEditRecipient.setBlocked(true);
+              setBlocked(true);
+            }).show();
       }
 
       private void handleUnblock() {
@@ -547,7 +550,10 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
             .setMessage(R.string.ask_unblock_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> setBlocked(false)).show();
+            .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> {
+              contactToEditRecipient.setBlocked(false);
+              setBlocked(false);
+            }).show();
       }
 
       private void setBlocked(final boolean blocked) {
