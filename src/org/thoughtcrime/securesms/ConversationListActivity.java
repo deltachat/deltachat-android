@@ -83,11 +83,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   @Override
-  public void onDestroy() {
-    super.onDestroy();
-  }
-
-  @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();

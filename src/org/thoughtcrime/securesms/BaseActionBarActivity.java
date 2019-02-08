@@ -39,13 +39,21 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        super.onStart();
         if (ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult) {
-            ScreenLockUtil.applyScreenLock(this);
+          ScreenLockUtil.applyScreenLock(this);
+        } else {
+          findViewById(android.R.id.content).setVisibility(View.VISIBLE);
         }
+        super.onStart();
     }
 
-    @Override
+  @Override
+  protected void onStop() {
+    findViewById(android.R.id.content).setVisibility(View.GONE);
+    super.onStop();
+  }
+
+  @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       super.onActivityResult(requestCode, resultCode, data);
       isWaitingForResult = false;
@@ -139,6 +147,8 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   @Override
   public void startActivityForResult(Intent intent, int requestCode) {
     super.startActivityForResult(intent, requestCode);
-    isWaitingForResult = true;
+    if (requestCode != -1) {
+      isWaitingForResult = true;
+    }
   }
 }
