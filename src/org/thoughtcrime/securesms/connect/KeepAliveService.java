@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -20,6 +21,18 @@ public class KeepAliveService extends Service {
     public static void startSelf(Context context)
     {
         try {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+                if(powerManager.isIgnoringBatteryOptimizations(context.getPackageName())) {
+                    return; // fine, the user has disabled the battery optimisations for us
+                }
+            }
+            else {
+                return; // android <= lollipop does not have a doze mode
+            }
+
+            // if we're here, we're on a system with doze mode and battery optimisations enabled.
+            // add foreground notification to stay alive.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // the started service has to call startForeground() within 5 seconds,
                 // see https://developer.android.com/about/versions/oreo/android-8.0-changes
