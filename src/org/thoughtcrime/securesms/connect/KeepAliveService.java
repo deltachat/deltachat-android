@@ -1,6 +1,9 @@
 package org.thoughtcrime.securesms.connect;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -107,6 +110,24 @@ public class KeepAliveService extends Service {
         builder.setWhen(0);
         builder.setContentIntent(contentIntent);
         builder.setSmallIcon(R.drawable.notification_permanent);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+            createFgNotificationChannel(this);
+            builder.setChannelId(FG_CHANNEL_ID);
+        }
         return builder.build();
+    }
+
+    private static boolean ch_created = false;
+    private static final String FG_CHANNEL_ID = "dc_foreground_notification_ch";
+    @TargetApi(Build.VERSION_CODES.O)
+    static private void createFgNotificationChannel(Context context) {
+        if(!ch_created) {
+            ch_created = true;
+            NotificationChannel channel = new NotificationChannel(FG_CHANNEL_ID,
+                "Receive messages in background.", NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("Ensure reliable message receiving.");
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

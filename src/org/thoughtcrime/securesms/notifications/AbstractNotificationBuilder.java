@@ -1,9 +1,13 @@
 package org.thoughtcrime.securesms.notifications;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -85,5 +89,19 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
       blinkPattern = blinkPatternCustom;
 
     return blinkPattern.split(",");
+  }
+
+  private static boolean ch_created = false;
+  protected static final String MSG_CHANNEL_ID = "dc_message_notification_ch";
+  @TargetApi(Build.VERSION_CODES.O)
+  protected void createMsgNotificationChannel(Context context) {
+    if(!ch_created) {
+      ch_created = true;
+      NotificationChannel channel = new NotificationChannel(MSG_CHANNEL_ID,
+          "Message notifications", NotificationManager.IMPORTANCE_DEFAULT);
+      channel.setDescription("Informs about new messages.");
+      NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+      notificationManager.createNotificationChannel(channel);
+    }
   }
 }
