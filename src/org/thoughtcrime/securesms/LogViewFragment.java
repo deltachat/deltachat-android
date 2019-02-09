@@ -26,6 +26,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -160,21 +161,24 @@ public class LogViewFragment extends Fragment {
   }
 
   private static String buildDescription(Context context) {
+
+    PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
     final PackageManager pm      = context.getPackageManager();
     final StringBuilder  builder = new StringBuilder();
 
 
-    builder.append("Device  : ")
+    builder.append("device=")
            .append(Build.MANUFACTURER).append(" ")
            .append(Build.MODEL).append(" (")
            .append(Build.PRODUCT).append(")\n");
-    builder.append("Android : ").append(VERSION.RELEASE).append(" (")
+    builder.append("android=").append(VERSION.RELEASE).append(" (")
                                .append(VERSION.INCREMENTAL).append(", ")
                                .append(Build.DISPLAY).append(")\n");
-    builder.append("Memory  : ").append(getMemoryUsage(context)).append("\n");
-    builder.append("Memclass: ").append(getMemoryClass(context)).append("\n");
-    builder.append("OS Host : ").append(Build.HOST).append("\n");
-    builder.append("App     : ");
+    builder.append("sdk=").append(Build.VERSION.SDK_INT).append("\n");
+    builder.append("memory=").append(getMemoryUsage(context)).append("\n");
+    builder.append("memoryClass=").append(getMemoryClass(context)).append("\n");
+    builder.append("host=").append(Build.HOST).append("\n");
+    builder.append("app=");
     try {
       builder.append(pm.getApplicationLabel(pm.getApplicationInfo(context.getPackageName(), 0)))
              .append(" ")
@@ -183,7 +187,11 @@ public class LogViewFragment extends Fragment {
              .append(BuildConfig.FLAVOR)
              .append(BuildConfig.DEBUG? "-debug" : "")
              .append("\n");
-    } catch (PackageManager.NameNotFoundException nnfe) {
+      if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        builder.append("ignoreBatteryOptimizations=").append(
+            powerManager.isIgnoringBatteryOptimizations(context.getPackageName())).append("\n");
+      }
+    } catch (Exception e) {
       builder.append("Unknown\n");
     }
 

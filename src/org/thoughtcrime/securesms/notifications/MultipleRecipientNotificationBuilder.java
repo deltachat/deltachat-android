@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -41,6 +42,10 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
 
     setColor(context.getResources().getColor(R.color.delta_primary));
     setSmallIcon(R.drawable.icon_notification);
+    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+      createMsgNotificationChannel(context);
+      setChannelId(MSG_CHANNEL_ID);
+    }
     setContentTitle(context.getString(R.string.app_name));
     setContentIntent(PendingIntent.getActivity(context, 0, new Intent(context, ConversationListActivity.class), 0));
     setCategory(NotificationCompat.CATEGORY_MESSAGE);

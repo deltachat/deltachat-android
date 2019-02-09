@@ -480,6 +480,8 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat requires the Microphone permission in order to send audio messages, but it has been permanently denied. Please continue to app settings, select \"Permissions\", and enable \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat requires the Storage permission in order to attach or export photos, videos, or audio, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Storage\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat requires Location permission in order to attach a location, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Location\".</string>
+    <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in background.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat uses minimal resources and takes care not to drain your battery.</string>
 
     <!-- languages -->
     <string name="language_be">Belgian</string>

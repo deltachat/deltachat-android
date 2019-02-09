@@ -1,12 +1,16 @@
 package org.thoughtcrime.securesms.connect;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -20,6 +24,18 @@ public class KeepAliveService extends Service {
     public static void startSelf(Context context)
     {
         try {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+                if(powerManager.isIgnoringBatteryOptimizations(context.getPackageName())) {
+                    return; // fine, the user has disabled the battery optimisations for us
+                }
+            }
+            else {
+                return; // android <= lollipop does not have a doze mode
+            }
+
+            // if we're here, we're on a system with doze mode and battery optimisations enabled.
+            // add foreground notification to stay alive.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // the started service has to call startForeground() within 5 seconds,
                 // see https://developer.android.com/about/versions/oreo/android-8.0-changes
@@ -93,7 +109,25 @@ public class KeepAliveService extends Service {
         }
         builder.setWhen(0);
         builder.setContentIntent(contentIntent);
-        builder.setSmallIcon(R.drawable.icon_notification);
+        builder.setSmallIcon(R.drawable.notification_permanent);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+            createFgNotificationChannel(this);
+            builder.setChannelId(FG_CHANNEL_ID);
+        }
         return builder.build();
+    }
+
+    private static boolean ch_created = false;
+    private static final String FG_CHANNEL_ID = "dc_foreground_notification_ch";
+    @TargetApi(Build.VERSION_CODES.O)
+    static private void createFgNotificationChannel(Context context) {
+        if(!ch_created) {
+            ch_created = true;
+            NotificationChannel channel = new NotificationChannel(FG_CHANNEL_ID,
+                "Receive messages in background.", NotificationManager.IMPORTANCE_MIN); // IMPORTANCE_DEFAULT will play a sound
+            channel.setDescription("Ensure reliable message receiving.");
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }
