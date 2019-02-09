@@ -106,7 +106,7 @@ public class KeepAliveService extends Service {
         }
         builder.setWhen(0);
         builder.setContentIntent(contentIntent);
-        builder.setSmallIcon(R.drawable.icon_notification);
+        builder.setSmallIcon(R.drawable.notification_permanent);
         return builder.build();
     }
 }
