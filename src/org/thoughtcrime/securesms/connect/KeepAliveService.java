@@ -124,7 +124,7 @@ public class KeepAliveService extends Service {
         if(!ch_created) {
             ch_created = true;
             NotificationChannel channel = new NotificationChannel(FG_CHANNEL_ID,
-                "Receive messages in background.", NotificationManager.IMPORTANCE_DEFAULT);
+                "Receive messages in background.", NotificationManager.IMPORTANCE_MIN); // IMPORTANCE_DEFAULT will play a sound
             channel.setDescription("Ensure reliable message receiving.");
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
