@@ -23,8 +23,8 @@ public class DozeReminder extends Reminder {
 
   @RequiresApi(api = Build.VERSION_CODES.M)
   public DozeReminder(@NonNull final Context context) {
-    super("Tap here to receive messages while Delta Chat is in background.",
-          "Delta Chat uses minimal resources and takes care not to drain your battery.");
+    super(context.getString(R.string.perm_enable_bg_reminder_title),
+          context.getString(R.string.perm_enable_bg_reminder_text));
 
     setOkListener(v -> {
       if(ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)==PackageManager.PERMISSION_GRANTED) {
