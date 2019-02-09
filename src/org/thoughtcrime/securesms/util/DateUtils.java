@@ -169,4 +169,10 @@ public class DateUtils extends android.text.format.DateUtils {
       return new SimpleDateFormat(template, locale).toLocalizedPattern();
     }
   }
+
+  public static String getFormatedDuration(int millis) {
+    return String.format("%02d:%02d",
+            TimeUnit.MILLISECONDS.toMinutes(millis),
+            TimeUnit.MILLISECONDS.toSeconds(millis-(TimeUnit.MILLISECONDS.toMinutes(millis)*60000)));
+  }
 }
