@@ -21,67 +21,51 @@ apply plugin: 'com.android.application'
 apply plugin: 'witness'
 
 repositories {
+    mavenCentral()
     maven {
-        url "https://repo1.maven.org/maven2/"
-    }
-    maven {
+        // Used only for PhotoView
         url "https://jitpack.io"
+        name 'JitPack Github wrapper'
     }
-    maven {
-        url "https://maven.google.com"
-    }
+    google()
     jcenter()
-    maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support:recyclerview-v7:27.0.2'
-    compile 'com.android.support:design:27.0.2'
-    compile 'com.android.support:support-v13:27.0.2'
-    compile 'com.android.support:cardview-v7:27.0.2'
-    compile 'com.android.support:preference-v7:27.0.2'
-    compile 'com.android.support:preference-v14:27.0.2'
-    compile 'com.android.support:gridlayout-v7:27.0.2'
-    compile 'com.android.support:exifinterface:27.0.2'
-    compile 'com.android.support.constraint:constraint-layout:1.1.2'
-    compile 'android.arch.lifecycle:extensions:1.1.1'
-    compile 'android.arch.lifecycle:common-java8:1.1.1'
+    compile 'com.android.support:appcompat-v7:27.0.2' // one use in SearchToolbar.
+    compile 'com.android.support:design:27.0.2' // used in various locations for a lot of components
+    compile 'com.android.support:support-v13:27.0.2' // used to prevent a 25... version to be loaded (from where ever)
+    compile 'com.android.support:preference-v7:27.0.2' // actually a dependency of -v14
+    compile 'com.android.support:preference-v14:27.0.2' // used to manage the users preferences
+    compile 'com.android.support:exifinterface:27.0.2' // Used to edit the Exif in BitmapUtil
+    compile 'com.android.support.constraint:constraint-layout:1.1.2' // Used in several places
+    compile 'android.arch.lifecycle:extensions:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
+    compile 'android.arch.lifecycle:common-java8:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
 
-    compile 'com.google.android.exoplayer:exoplayer:r2.3.1'
+    compile 'com.google.android.exoplayer:exoplayer:r2.3.1' // plays video.
 
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.5' // used as JSON library TODO: check if java builtin would work as well
 
-    compile 'com.journeyapps:zxing-android-embedded:3.4.0'
+    compile 'com.journeyapps:zxing-android-embedded:3.4.0' // QR Code scanner
 
-    compile "me.leolin:ShortcutBadger:1.1.16"
-    compile 'se.emilsjolander:stickylistheaders:2.7.0'
-    compile 'com.jpardogo.materialtabstrip:library:1.0.9'
-    compile 'com.github.chrisbanes:PhotoView:2.1.3'
+    compile "me.leolin:ShortcutBadger:1.1.16" // display messagecount on the home screen icon.
+    compile 'com.jpardogo.materialtabstrip:library:1.0.9' // used in the emoji selector for the tab selection.
+    compile 'com.github.chrisbanes:PhotoView:2.1.3' // does the zooming on photos / media
     compile 'com.github.bumptech.glide:glide:4.5.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
-    compile 'com.makeramen:roundedimageview:2.1.0'
-    compile 'com.pnikosis:materialish-progress:1.5'
-    compile 'com.soundcloud.android:android-crop:0.9.10@aar'
-    compile 'com.melnykov:floatingactionbutton:1.3.0'
-    compile 'mobi.upod:time-duration-picker:1.1.3'
-    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    compile 'com.google.zxing:core:3.2.1'
-    compile ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') {
+    compile 'com.makeramen:roundedimageview:2.1.0' // crops the avatars to circles
+    compile 'com.pnikosis:materialish-progress:1.5' // used only in the "Progress Wheel" in Share Activity.
+    compile 'com.soundcloud.android:android-crop:0.9.10@aar' // used in Group Select Avatar, should be unified with profie
+    compile 'com.nineoldandroids:library:2.4.0' // DEPRECATED! Used to slide in the half-camera.
+    compile 'mobi.upod:time-duration-picker:1.1.3' // Used to pick the time for inactivity.
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'  // number of unread messages,
+         // the one-letter circle for the contacts (when there is not avatar) and a white background.
+    compile 'com.google.zxing:core:3.2.1' // QR Code scanner
+    compile ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') { // for the zooming on photos / media
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile ('cn.carbswang.android:NumberPickerView:1.0.9') {
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-    }
-    compile 'com.annimon:stream:1.1.8'
-    compile ('com.takisoft.fix:colorpicker:0.9.1') {
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-        exclude group: 'com.android.support', module: 'recyclerview-v7'
-    }
-    compile 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.4'
+    compile 'com.annimon:stream:1.1.8' // brings future java streams api to SDK Version < 24
+    compile 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.4' // glues the current time segment text in the gallery to the top.
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:1.7.1'
@@ -98,6 +82,7 @@ dependencies {
 
 dependencyVerification {
     verify = [
+        'com.github.chrisbanes:PhotoView:7f12b0a9f24b132fc743861ab8f045625faa95c8357887a5fac58fa34a3759e4',
         'com.android.support:design:fa5c27a705310e95a8f4099c98777132ed901a0d69178942306bb34cd76f0d57',
         'com.android.support:preference-v14:1fcf40bd560dc21ce55b6a292d1326d28f52dc5e4f2a64eef2f38dd95777b645',
         'com.android.support:preference-v7:d9f32ddc92f8d6a0bd86a18f4fcaff805fa021245e395b6e7dd382907443ee53',
@@ -105,16 +90,11 @@ dependencyVerification {
         'mobi.upod:time-duration-picker:db469ce0f48dd96b892eac424ed76870e54bf00fe0a28cdcddfbe5f2a226a0e1',
         'com.codewaves.stickyheadergrid:stickyheadergrid:5b4aa6a52a957cfd55f60f4220c11c0c371385a3cb9786cae03c260dcdef5794',
         'com.android.support:appcompat-v7:b2825e8b47f665d3362d8481c8d147d1af9230d16f23a2b94f6ccbc53c68cec1',
-        'com.melnykov:floatingactionbutton:15d58d4fac0f7a288d0e5301bbaf501a146f5b3f5921277811bf99bd3b397263',
-        'com.android.support:recyclerview-v7:3eb953930f10941f2b0447ec123a9b03d2746a42a99c523e82c3ece3308ca70b',
         'com.android.support:support-v13:6f2848811ceef2e32cc98da02a045d65f7e7447a6bd7198b9ec10aa14d7ad55c',
-        'com.android.support:cardview-v7:57f867a3c8f33e2d4dc0a03e2dfa03cad6267a908179f04a725a68ea9f0b8ccf',
-        'com.android.support:gridlayout-v7:227b5fdffa20f53bd562503aab6d2293d52cf64b5a6ab1116d2150f87bff9e88',
         'com.android.support:exifinterface:0e7cd526c4468895cd8549def46b3d33c8bcfb1ae4830569898d8c7326b15bb2',
         'android.arch.lifecycle:extensions:429426b2feec2245ffc5e75b3b5309bedb36159cf06dc71843ae43526ac289b6',
         'android.arch.lifecycle:common-java8:7078b5c8ccb94203df9cc2a463c69cf0021596e6cf966d78fbfd697aaafe0630',
         'com.google.android.exoplayer:exoplayer:955085aa611a8f7cf6c61b88ae03d1a392f4ad94c9bfbc153f3dedb9ffb14718',
-        'se.emilsjolander:stickylistheaders:a08ca948aa6b220f09d82f16bbbac395f6b78897e9eeac6a9f0b0ba755928eeb',
         'com.jpardogo.materialtabstrip:library:c6ef812fba4f74be7dc4a905faa4c2908cba261a94c13d4f96d5e67e4aad4aaa',
         'com.github.bumptech.glide:glide:997de7ac95be6c944d3b8cbe13de11307736ea45451c1b09a6cec7c328ead59f',
         'com.makeramen:roundedimageview:1f5a1865796b308c6cdd114acc6e78408b110f0a62fc63553278fbeacd489cd1',
@@ -122,9 +102,7 @@ dependencyVerification {
         'com.amulyakhare:com.amulyakhare.textdrawable:54c92b5fba38cfd316a07e5a30528068f45ce8515a6890f1297df4c401af5dcb',
         'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
         'com.davemorrissey.labs:subsampling-scale-image-view:550c5baa07e0bb4ff0a18b705e96d34436d22619248bd8c08c08c730b1f55cfe',
-        'cn.carbswang.android:NumberPickerView:18b3c316d62c7c277978a8d4ed57a5b8f4e943762264960f579a8a549c756729',
         'com.annimon:stream:5da6e2e3e0551d61a3ea7014f04312276549e3dd739cf637996e4cf43c5535b9',
-        'com.takisoft.fix:colorpicker:f5d0dbabe406a1800498ca9c1faf34db36e021d8488bf10360f29961fe3ab0d1',
         'com.android.support:support-v4:1b2b37169fcccfef5e563d273749e3792decdce9818bc17932403a2363f537b4',
         'com.android.support:support-fragment:e4358388022a2205777575a7251fe357334658e4123d5d6e3b082f5899d9b011',
         'com.android.support:animated-vector-drawable:5b117a2c13a898c2a3c84c480d64edcfac2ef720aa9b742c29249fac774ffc48',
@@ -146,7 +124,6 @@ dependencyVerification {
         'com.github.bumptech.glide:disklrucache:c1b1b6f5bbd01e2fcdc9d7f60913c8d338bdb65ed4a93bfa02b56f19daaade4b',
         'com.github.bumptech.glide:annotations:bede99ef9f71517a4274bac18fd3e483e9f2b6108d7d6fe8f4949be4aa4d9512',
         'com.nineoldandroids:library:68025a14e3e7673d6ad2f95e4b46d78d7d068343aa99256b686fe59de1b3163a',
-        'com.google.android:flexbox:a9989fd13ae2ee42765dfc515fe362edf4f326e74925d02a10369df8092a4935',
     ]
 }
 
@@ -165,7 +142,7 @@ android {
         applicationId "com.b44t.messenger"
 
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 26
 
         vectorDrawables.useSupportLibrary = true
         project.ext.set("archivesBaseName", "Deltachat");

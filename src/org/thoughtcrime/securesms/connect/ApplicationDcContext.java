@@ -82,8 +82,8 @@ public class ApplicationDcContext extends DcContext {
       smtpWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "smtpWakeLock");
       smtpWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
-      afterForgroundWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "afterForegroundWakeLock");
-      afterForgroundWakeLock.setReferenceCounted(false);
+      afterForegroundWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "afterForegroundWakeLock");
+      afterForegroundWakeLock.setReferenceCounted(false);
 
     } catch (Exception e) {
       Log.e(TAG, "Cannot create wakeLocks");
@@ -110,7 +110,7 @@ public class ApplicationDcContext extends DcContext {
     }
 
     if (!isScreenOn) {
-      context.startService(new Intent(context, KeepAliveService.class));
+      KeepAliveService.startSelf(context);
     }
   }
 
@@ -311,7 +311,7 @@ public class ApplicationDcContext extends DcContext {
   public Thread smtpThread = null;
   private PowerManager.WakeLock smtpWakeLock = null;
 
-  public PowerManager.WakeLock afterForgroundWakeLock = null;
+  public PowerManager.WakeLock afterForegroundWakeLock = null;
 
   public final static int INTERRUPT_IDLE = 0x01; // interrupt idle if the thread is already running
 

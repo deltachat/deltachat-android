@@ -26,7 +26,7 @@
 
     <style name="TextSecure.LightActionBar"
            parent="@style/Widget.AppCompat.ActionBar">
-        <item name="background">@color/textsecure_primary</item>
+        <item name="background">@color/delta_primary</item>
         <item name="elevation">4dp</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
@@ -49,8 +49,8 @@
 
     <style name="TextSecure.LightActionBar.TabBar"
         parent="@style/Widget.AppCompat.ActionBar.TabBar">
-        <item name="android:background">@color/textsecure_primary</item>
-        <item name="background">@color/textsecure_primary</item>
+        <item name="android:background">@color/delta_primary</item>
+        <item name="background">@color/delta_primary</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">#BFffffff</item>
         <item name="elevation">4dp</item>
@@ -99,10 +99,11 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Button.Primary" parent="Base.Widget.AppCompat.Button.Colored">
-        <item name="colorAccent">@color/signal_primary</item>
-        <item name="colorButtonNormal">@color/signal_primary</item>
+    <style name="ButtonPrimary">
+        <item name="android:background">@color/delta_primary_lite</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
     </style>
 
     <style name="PreferenceThemeOverlay.Fix" parent="PreferenceThemeOverlay.v14.Material">

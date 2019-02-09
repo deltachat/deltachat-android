@@ -15,7 +15,7 @@ public class ScreenReceiver extends BroadcastReceiver {
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             Log.i("DeltaChat", "-------------------- Screen off --------------------");
             dcContext.isScreenOn = false;
-            context.startService(new Intent(context, KeepAliveService.class));
+            KeepAliveService.startSelf(context);
         }
         else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             Log.i("DeltaChat", "-------------------- Screen on --------------------");

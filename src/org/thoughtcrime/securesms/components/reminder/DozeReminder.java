@@ -1,15 +1,18 @@
 package org.thoughtcrime.securesms.components.reminder;
 
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import org.thoughtcrime.securesms.R;
@@ -20,32 +23,44 @@ public class DozeReminder extends Reminder {
 
   @RequiresApi(api = Build.VERSION_CODES.M)
   public DozeReminder(@NonNull final Context context) {
-    super("R.string.DozeReminder_optimize_for_missing_play_services",
-          "R.string.DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery");
+    super(context.getString(R.string.perm_enable_bg_reminder_title),
+          context.getString(R.string.perm_enable_bg_reminder_text));
 
     setOkListener(v -> {
-      Prefs.setPromptedOptimizeDoze(context, true);
-      Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                                 Uri.parse("package:" + context.getPackageName()));
-      context.startActivity(intent);
+      if(ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)==PackageManager.PERMISSION_GRANTED) {
+        Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+            Uri.parse("package:" + context.getPackageName()));
+        context.startActivity(intent);
+      }
+      else {
+        Intent intent = new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+        context.startActivity(intent);
+      }
     });
 
-    setDismissListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Prefs.setPromptedOptimizeDoze(context, true);
-      }
+    setDismissListener(v -> {
+      Prefs.  setPromptedOptimizeDoze(context, true);
     });
   }
 
   public static boolean isEligible(Context context) {
-    if(context!=null) { // condition is always true, disable reminder for now
+    if(context==null) {
       return false;
     }
 
-    return !Prefs.hasPromptedOptimizeDoze(context) &&
-           Build.VERSION.SDK_INT >= Build.VERSION_CODES.M          &&
-           !((PowerManager)context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName());
-  }
+    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+      return false;
+    }
 
+    if(Prefs.hasPromptedOptimizeDoze(context)) {
+      return false;
+    }
+
+    PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+    if(pm.isIgnoringBatteryOptimizations(context.getPackageName())) {
+      return false;
+    }
+
+    return true; // yip, asking for disabling battery optimisations makes sense
+  }
 }

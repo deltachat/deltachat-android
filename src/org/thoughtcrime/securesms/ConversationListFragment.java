@@ -58,6 +58,7 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
+import org.thoughtcrime.securesms.components.reminder.DozeReminder;
 import org.thoughtcrime.securesms.components.reminder.Reminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -186,11 +187,13 @@ public class ConversationListFragment extends Fragment
 //          return Optional.of(new ExpiredBuildReminder(context));
 //        } else if (OutdatedBuildReminder.isEligible()) {
 //          return Optional.of(new OutdatedBuildReminder(context));
-//        } else if (DozeReminder.isEligible(context)) {
-//          return Optional.of(new DozeReminder(context));
-//        } else {
-          return Optional.absent();
-//        }
+//        } else
+          if (DozeReminder.isEligible(context)) {
+            return Optional.of(new DozeReminder(context));
+          }
+          else {
+            return Optional.absent();
+          }
       }
 
       @Override
@@ -551,7 +554,7 @@ public class ConversationListFragment extends Fragment
           if (archive) icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_unarchive_white_36dp);
           else         icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_archive_white_36dp);
 
-          if (alpha > 0) p.setColor(getResources().getColor(R.color.signal_primary));
+          if (alpha > 0) p.setColor(getResources().getColor(R.color.delta_primary));
           else           p.setColor(Color.WHITE);
 
           c.drawRect((float) itemView.getLeft(), (float) itemView.getTop(), dX,

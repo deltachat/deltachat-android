@@ -137,11 +137,8 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
 
-        int configQrOverlayLogo = DcHelper.getInt(this, DcHelper.CONFIG_QR_OVERLAY_LOGO, 1);
-        if (configQrOverlayLogo != 0) {
-            Bitmap overlay = BitmapFactory.decodeResource(this.getResources(), R.drawable.qr_overlay);
-            putOverlay(bitmap, overlay);
-        }
+        Bitmap overlay = BitmapFactory.decodeResource(this.getResources(), R.drawable.qr_overlay);
+        putOverlay(bitmap, overlay);
 
         return bitmap;
     }
