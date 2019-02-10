@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.notifications;
 
-import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -9,7 +8,6 @@ import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -24,6 +22,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.List;
 
 public abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
 
@@ -137,29 +136,40 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
           Prefs.setStringPreference(context, "ch_curr_" + chBase, chId);
         }
 
+        // check if there is already a channel with the given name
+        List<NotificationChannel> channels = notificationManager.getNotificationChannels();
+        boolean channelExists = false;
+        for (int i = 0; i < channels.size(); i++) {
+          if (chId.equals(channels.get(i).getId())) {
+            channelExists = true;
+          }
+        }
+
         // create a channel with the given settings;
         // we cannot change the settings, however, this is handled by using different values for chId
-        NotificationChannel channel = new NotificationChannel(chId,
-            "New messages", NotificationManager.IMPORTANCE_DEFAULT);
-        channel.setDescription("Informs about new messages.");
+        if(!channelExists) {
+          NotificationChannel channel = new NotificationChannel(chId,
+              "New messages", NotificationManager.IMPORTANCE_DEFAULT);
+          channel.setDescription("Informs about new messages.");
 
-        if (!ledColor.equals("none")) {
-          channel.enableLights(true);
-          channel.setLightColor(Color.parseColor(ledColor));
-        } else {
-          channel.enableLights(false);
+          if (!ledColor.equals("none")) {
+            channel.enableLights(true);
+            channel.setLightColor(Color.parseColor(ledColor));
+          } else {
+            channel.enableLights(false);
+          }
+
+          channel.enableVibration(defaultVibrate);
+
+          if (!TextUtils.isEmpty(ringtone.toString())) {
+            channel.setSound(ringtone,
+                new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
+                    .build());
+          }
+
+          notificationManager.createNotificationChannel(channel);
         }
-
-        channel.enableVibration(defaultVibrate);
-
-        if (!TextUtils.isEmpty(ringtone.toString())) {
-          channel.setSound(ringtone,
-              new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
-                  .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
-                  .build());
-        }
-
-        notificationManager.createNotificationChannel(channel);
       }
       catch(Exception e) {
         e.printStackTrace();
