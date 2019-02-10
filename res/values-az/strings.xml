@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Imtina</string>
+    <string name="yes">Bəli</string>
+    <string name="no">Xeyir</string>
+    <string name="on">Açıq</string>
+    <string name="off">Bağlı</string>
+    <string name="def">Cari olan</string>
+    <string name="custom">Xüsusi</string>
+    <string name="none">Yoxdur</string>
+    <string name="open">
+Açıq</string>
+    <string name="delete">Sil</string>
+    <string name="not_now">İndi deyil</string>
+    <string name="never">Heç vaxt</string>
+    <string name="one_moment">Gözləyin...</string>
+    <string name="done">Hazır</string>
+    <string name="undo">Geri qaytar</string>
+    <string name="error">Xəta</string>
+    <string name="error_x">Xəta: %1$s</string>
+    <string name="error_no_network">Şəbəkə əlçatmazdır.</string>
+    <string name="no_app_to_handle_data">Bu tip məlumatları idarə etmək üçün bir tətbiq tapılmadı.</string>
+    <string name="no_browser_installed">Heç bir brauzer quraşdırılıb.</string>
+    <string name="copied_to_clipboard">Panoya kopyalandı.</string>
+    <string name="contacts_headline">Kontaktlar</string>
+    <string name="email_address">Email ünvanı</string>
+    <string name="bad_email_address">Səhv e-mail ünvanı.</string>
+    <string name="password">Parol</string>
+    <string name="now">Indi</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
+    <string name="n_min_ago">%ddəqiqə</string>
+    <string name="today">Bugün</string>
+    <string name="yesterday">Dünən</string>
+    <string name="this_week">Bu həftə</string>
+    <string name="this_month">Bu ay</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%ddəqiqə</item>
+        <item quantity="other">%ddəqiqə</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d saat</item>
+        <item quantity="other">%dsaat</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">çat</item>
+        <item quantity="other">%1$d çat</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">1 kontakt</item>
+        <item quantity="other">%1$dkontakt</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">mesaj</item>
+        <item quantity="other">%1$dmesaj</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">üzv</item>
+        <item quantity="other">%1$düzv</item>
+    </plurals>
+
+    <string name="self">Mənə</string>
+    <string name="draft">Laihə</string>
+    <string name="image">Şəkil</string>
+    <string name="gif">Gif</string>
+    <string name="images">Şəkillər</string>
+    <string name="audio">Audio</string>
+    <string name="voice_message">Səsli mesaj</string>
+    <string name="forwarded_message">Köçürülmüş mesaj</string>
+    <string name="video">Video</string>
+    <string name="documents">Sənədlər</string>
+    <string name="contact">Kontakt</string>
+    <string name="camera">Kamera</string>
+    <string name="location">Yer</string>
+    <string name="gallery">Qalereya</string>
+    <string name="file">Fayl</string>
+    <string name="unknown">Naməlum</string>
+
+    <string name="green">Yaşıl</string>
+    <string name="red">Qırmızı</string>
+    <string name="blue">Mavi</string>
+    <string name="orange">Narıncı</string>
+    <string name="cyan">Sian</string>
+    <string name="white">Ağ</string>
+
+    <string name="small">Kiçik</string>
+    <string name="normal">Normal</string>
+    <string name="large">Böyük</string>
+    <string name="extra_large">Çox böyük</string>
+
+    <string name="fast">Sürətli</string>
+    <string name="slow">Ləng</string>
+
+    <string name="message_delivered">Mesaj çatdı</string>
+    <string name="message_read">Mesaj oxundu</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Yeni kontakt</string>
+    <string name="menu_new_chat">Yeni çat</string>
+    <string name="menu_new_group">Yeni qrup</string>
+    <string name="menu_send">Göndər</string>
+    <string name="menu_toggle_keyboard">Emoji klaviatura keçidi</string>
+    <string name="menu_edit_group">Qrupu dəyiş</string>
+    <string name="menu_archive_chat">Çatın xəzinəsi</string>
+    <string name="menu_unarchive_chat">Çat xəzinəsini aç</string>
+    <string name="menu_add_attachment">Fayl əlavə et</string>
+    <string name="menu_leave_group">Qrupu tərk et</string>
+    <string name="menu_delete_chat">Çatı sil</string>
+    <string name="menu_delete_messages">Mesajları sil</string>
+    <string name="menu_delete_image">Şəkili sil</string>
+    <string name="menu_message_details">Mesaj məlumatları</string>
+    <string name="menu_copy_to_clipboard">Panoya kopyalamaq</string>
+    <string name="menu_forward">Növbəti mesaj</string>
+    <string name="menu_resend">Mesajı yenidən göndər</string>
+    <string name="menu_reply">Mesaja cavab</string>
+    <string name="menu_mute">Bildirişləri söndürmək</string>
+    <string name="menu_unmute">Səs vermək</string>
+    <string name="menu_export_attachment">Fayl exportu</string>
+    <string name="menu_all_media">Bütün fayllar</string>
+    <string name="menu_share">Göndər</string>
+    <string name="menu_block_contact">Kontaktı blokla</string>
+    <string name="menu_unblock_contact">Kontaktı blokdan aç</string>
+    <string name="menu_play">İşə sal</string>
+    <string name="menu_pause">Dayandır</string>
+    <string name="menu_scroll_to_bottom">Altına keçin</string>
+    <string name="menu_invite">Dost dəvət et</string>
+    <string name="menu_help">Kömək</string>
+    <string name="menu_select_all">Hamısını səç</string>
+    <string name="menu_expand">Genişləndirmək</string>
+    <string name="menu_edit_name">Adı dəyişdir</string>
+    <string name="menu_settings">Ayarlar</string>
+    <string name="menu_advanced">Ətraflı</string>
+    <string name="menu_deaddrop">Kontakta sorğu</string>
+    <string name="menu_deaddrop_subtitle">Sohbet etməyə başlamaq üçün mesaja toxun</string>
+    <string name="menu_view_profile">Profilə bax</string>
+
+    <string name="mute_for_one_hour">1 saatlıq söndür</string>
+    <string name="mute_for_two_hours">2 saatlıq söndür</string>
+    <string name="mute_for_one_day">1 günlük söndür</string>
+    <string name="mute_for_seven_days">7 günlük söndür</string>
+    <string name="mute_for_one_year">1 illik söndür</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Bu qrupu tərk etmək istədiyinizə əminsiniz?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">çat silmək? Artıq çat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
+        <item quantity="other">%dçat silmək? Artıq çat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">mesaj burada və serverdə silin?</item>
+        <item quantity="other">%1$dmesaj burada və serverdə silin?</item>
+    </plurals>
+    <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
+    <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
+    <string name="ask_block_contact">Bu kontaktı bloklamaq? Bu kontaktdan artıq mesaj qəbul etməyəcəksiniz.</string>
+    <!-- contact list -->
+    <string name="contacts_title">Kontaktlar</string>
+    <string name="contacts_empty_hint">Kontakt yoxdur.</string>
+
+
+    <string name="chat_archived_chats_title">Çatlar saxlanıldı</string>
+    <string name="chat_please_enter_message">Mesajı daxıl edin</string>
+    <string name="chat_camera_unavailable">Camera əlçatmazdır.</string>
+    <string name="chat_record_slide_to_cancel">Ləğv etmək üçün sürüşdürün</string>
+    <string name="chat_share_with_title">Göndər </string>
+    <string name="chat_input_placeholder">Mesaj</string>
+    <string name="chat_archived_label">Xəzinələndi</string>
+    <string name="chat_no_messages">Mesaj yoxdur</string>
+    <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
+
+    <!-- search -->
+    <string name="search">Axtarış</string>
+    <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
+    <string name="search_no_result_for_x">\"%s\" üçün heç bir nəticə tapılmadı</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Qrup adı</string>
+    <string name="group_avatar">Qrupun şəkili</string>
+    <string name="group_create_button">Qrup yarat</string>
+    <string name="group_please_enter_group_name">Xahiş edirik qrup üçün bir ad daxil et.</string>
+    <string name="group_add_members">Üzv elavə et</string>
+    <string name="group_self_not_in_group">Bunu etmək üçün qrupun üzvü olmalısan.</string>
+    <string name="profile_encryption">Şifrələmə</string>
+
+
+    <!-- chat media view -->
+    <string name="media_preview">Fayllara baxmaq</string>
+    <string name="media_tab_media">Fayllar</string>
+    <string name="media_tab_documents">Sənədlər</string>
+    <string name="media_no_media_hint">Fayl yoxdur</string>
+    <string name="media_no_documents_hint">Sənəd yoxdur</string>
+
+
+    <!-- invite -->
+    <string name="invite_slogan">Dostlar dostlar mesaj bunkerində kilidlənməyə imkan vermirlər.</string>
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro2_headline">Müstəqil</string>
+    <string name="welcome_intro3_headline">Sürətli</string>
+    <string name="welcome_intro4_headline">Güclü</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">Свободное</string>
+    <string name="welcome_intro6_headline">Şifrələndi</string>
+    <string name="welcome_intro7_headline">Etibarlı</string>
+    <string name="welcome_start_messaging">Mesajlaşmağa başla</string>
+    <string name="login_title">Daxil ol</string>
+    <string name="login_header">Serverinə daxil ol</string>
+    <string name="login_inbox">Gələn</string>
+    <string name="login_imap_login">IMAP logini</string>
+    <string name="login_imap_server">IMAP server</string>
+    <string name="login_imap_port">IMAP port</string>
+    <string name="login_imap_security">IMAP təhlükəsizliyi</string>
+    <string name="login_outbox">Çıxan</string>
+    <string name="login_smtp_login">SMTP login</string>
+    <string name="login_smtp_password">SMTP parolu</string>
+    <string name="login_smtp_server">SMTP server</string>
+    <string name="login_smtp_port">SMTP port</string>
+    <string name="login_smtp_security">SMTP təhlükəsizliyi</string>
+    <string name="login_error_mail">Xahiş edirik düzgün bir e-poçt ünvanı daxil et</string>
+    <string name="login_error_server">Xahiş edirik, düzgün bir server / IP ünvanı daxil et</string>
+    <string name="login_error_port">Xahiş edirik, düzgün bir port (1-65535) daxil et</string>
+    <string name="login_error_required_fields">Xahiş edirik düzgün bir e-poçt ünvanı və parol daxil et</string>
+    <string name="import_backup_title">Nüsxənin importu</string>
+    <!-- preferences -->
+    <string name="pref_summary_on">açıq</string>
+    <string name="pref_summary_off">bağlı</string>
+    <string name="pref_summary_default">Cari olan</string>
+    <string name="pref_summary_custom">Xüsusi</string>
+    <string name="pref_profile_photo">Profil şəkili</string>
+    <string name="pref_trim_option">Köhnə mesajları sil</string>
+    <string name="pref_trim_length_limit">Çat uzunluq limiti</string>
+    <string name="pref_trim_now_button">İndi bütün söhbətləri kəsin</string>
+    <string name="pref_blocked_contacts">Bloklanmış kontaktlar</string>
+    <string name="pref_profile_photo_remove_ask">Profil şəkilini silmək?</string>
+    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <string name="pref_password_and_account_settings">Parol və hesab ayarları</string>
+    <string name="pref_who_can_see_this_information">Bu məlumatları kim görə bilər?</string>
+    <string name="pref_your_name">Adın</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Yazını mətni</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">Delta Chat Messenger-lə göndərdim : https://delta.chat</string>
+    <string name="pref_enter_sends">Enter açarı ilə göndərmək</string>
+    <string name="pref_enter_sends_explain">Enter düyməsini basaraq mətn mesajları göndərəcək</string>
+    <string name="pref_vibrate">Vibrasiya</string>
+    <string name="pref_chat_settings">Çat ayarları</string>
+    <string name="pref_change_secret">Kodu dəyişdir</string>
+    <string name="pref_change_secret_explain">Sistem parametrləri ilə pin-kod / model / barmaq izinizi dəyişdir</string>
+    <string name="pref_screen_security">Ekran təhlükəsizliyi</string>
+    <string name="pref_notifications">Bildirişlər</string>
+    <string name="pref_sound">Səs</string>
+    <string name="pref_dark_theme">Dünd</string>
+    <string name="pref_theme">Mövzu</string>
+    <string name="pref_language">Dillər</string>
+    <string name="pref_chats">Çatlar</string>
+    <string name="pref_other">Başqa</string>
+    <string name="pref_backup">Nüsxə</string>
+    <string name="pref_backup_explain">Daxili yaddaşa mesaj nüsxəsi</string>
+    <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
+    <string name="message_detail_sent_desktop">Göndər</string>
+    </resources>
