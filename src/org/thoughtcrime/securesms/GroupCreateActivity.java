@@ -472,6 +472,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         Intent qrIntent = new Intent(GroupCreateActivity.this, QrShowActivity.class);
         qrIntent.putExtra(QrShowActivity.CHAT_ID, groupChatId);
         startActivity(qrIntent);
+        initializeExistingGroup(); // To reread the recipients from the newly created group.
     }
   }
 
