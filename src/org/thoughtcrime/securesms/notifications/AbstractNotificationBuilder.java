@@ -1,11 +1,11 @@
 package org.thoughtcrime.securesms.notifications;
 
-import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -19,6 +19,10 @@ import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPrefere
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.util.List;
 
 public abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
 
@@ -67,7 +71,6 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
 
     if (!ledColor.equals("none")) {
       String[] blinkPatternArray = parseBlinkPattern(ledBlinkPattern, ledBlinkPatternCustom);
-
       setLights(Color.parseColor(ledColor),
                 Integer.parseInt(blinkPatternArray[0]),
                 Integer.parseInt(blinkPatternArray[1]));
@@ -91,17 +94,92 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     return blinkPattern.split(",");
   }
 
-  private static boolean ch_created = false;
-  protected static final String MSG_CHANNEL_ID = "dc_message_notification_ch";
-  @TargetApi(Build.VERSION_CODES.O)
-  protected void createMsgNotificationChannel(Context context) {
-    if(!ch_created) {
-      ch_created = true;
-      NotificationChannel channel = new NotificationChannel(MSG_CHANNEL_ID,
-          "Message notifications", NotificationManager.IMPORTANCE_DEFAULT);
-      channel.setDescription("Informs about new messages.");
-      NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
-      notificationManager.createNotificationChannel(channel);
+  // handle NotificationChannels:
+  // - since oreo, a NotificationChannel is a MUST
+  // - NotificationChannels have default values that have a higher precedence as the Notification.Builder setting
+  // - once created, NotificationChannels cannot be modified programmatically
+  // - NotificationChannels can be deleted, however, on re-creation it becomes un-deleted with the old settings
+  // - the idea is that sound, led, vibrate is edited by the user
+  //   via the ACTION_CHANNEL_NOTIFICATION_SETTINGS intent that takes the channelId
+
+  protected String createMsgNotificationChannel(Context context) {
+    String chBase = "ch_msg2_";
+    String chId = chBase + "unsupported";
+
+    if(notificationChannelsSupported()) {
+      try {
+        NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+
+        // get all values we'll use as settings for the NotificationChannel
+        String ledColor = Prefs.getNotificationLedColor(context);
+        boolean defaultVibrate = Prefs.isNotificationVibrateEnabled(context);
+        Uri ringtone = Prefs.getNotificationRingtone(context);
+
+        // compute hash from these settings
+        String hash = "";
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(ledColor.getBytes());
+        md.update(defaultVibrate ? (byte) 1 : (byte) 0);
+        md.update(ringtone.toString().getBytes());
+        hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
+
+        // get channel name
+        chId = chBase + hash;
+        String oldChId = Prefs.getStringPreference(context, "ch_curr_" + chBase, "");
+        if (!oldChId.equals(chId)) {
+          try {
+            notificationManager.deleteNotificationChannel(oldChId);
+          }
+          catch (Exception e) {
+            ; // channel not created before
+          }
+          Prefs.setStringPreference(context, "ch_curr_" + chBase, chId);
+        }
+
+        // check if there is already a channel with the given name
+        List<NotificationChannel> channels = notificationManager.getNotificationChannels();
+        boolean channelExists = false;
+        for (int i = 0; i < channels.size(); i++) {
+          if (chId.equals(channels.get(i).getId())) {
+            channelExists = true;
+          }
+        }
+
+        // create a channel with the given settings;
+        // we cannot change the settings, however, this is handled by using different values for chId
+        if(!channelExists) {
+          NotificationChannel channel = new NotificationChannel(chId,
+              "New messages", NotificationManager.IMPORTANCE_DEFAULT);
+          channel.setDescription("Informs about new messages.");
+
+          if (!ledColor.equals("none")) {
+            channel.enableLights(true);
+            channel.setLightColor(Color.parseColor(ledColor));
+          } else {
+            channel.enableLights(false);
+          }
+
+          channel.enableVibration(defaultVibrate);
+
+          if (!TextUtils.isEmpty(ringtone.toString())) {
+            channel.setSound(ringtone,
+                new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
+                    .build());
+          }
+
+          notificationManager.createNotificationChannel(channel);
+        }
+      }
+      catch(Exception e) {
+        e.printStackTrace();
+      }
     }
+
+    return chId;
+  }
+
+  protected static boolean notificationChannelsSupported() {
+    return Build.VERSION.SDK_INT >= 26;
   }
 }
