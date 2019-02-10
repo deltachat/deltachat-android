@@ -277,6 +277,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
           groupCreateInDb();
         }
 
+        if (groupChatId==0) // Group still hasn't been created e.g. due to empty name
+          return true;
+
         if(isEdit()) {
           groupUpdateDone();
         }
