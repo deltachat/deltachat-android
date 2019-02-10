@@ -277,6 +277,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
           groupCreateInDb();
         }
 
+        if (groupChatId==0) // Group still hasn't been created e.g. due to empty name
+          return true;
+
         if(isEdit()) {
           groupUpdateDone();
         }
@@ -469,6 +472,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         Intent qrIntent = new Intent(GroupCreateActivity.this, QrShowActivity.class);
         qrIntent.putExtra(QrShowActivity.CHAT_ID, groupChatId);
         startActivity(qrIntent);
+        initializeExistingGroup(); // To reread the recipients from the newly created group.
     }
   }
 
