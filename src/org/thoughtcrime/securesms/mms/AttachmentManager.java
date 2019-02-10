@@ -23,7 +23,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -41,20 +40,17 @@ import android.widget.Toast;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
-import org.thoughtcrime.securesms.components.location.SignalMapView;
-import org.thoughtcrime.securesms.components.location.SignalPlace;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
-import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture.Listener;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
@@ -244,7 +240,7 @@ public class AttachmentManager {
 
       @Override
       protected void onPostExecute(@Nullable final Slide slide) {
-        if (slide == null) {
+         if (slide == null) {
           attachmentViewStub.get().setVisibility(View.GONE);
           result.set(false);
         } else if (!areConstraintsSatisfied(context, slide, constraints)) {
@@ -255,7 +251,25 @@ public class AttachmentManager {
           attachmentViewStub.get().setVisibility(View.VISIBLE);
 
           if (slide.hasAudio()) {
-            audioView.setAudio((AudioSlide) slide, false);
+            class SetDurationListener implements AudioSlidePlayer.Listener {
+              @Override
+              public void onStart() {}
+
+              @Override
+              public void onStop() {}
+
+              @Override
+              public void onProgress(double progress, int millis) {}
+
+              @Override
+              public void onReceivedDuration(int millis) {
+                ((AudioView) removableMediaView.getCurrent()).setDuration(millis);
+              }
+            }
+            AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(context, (AudioSlide) slide, new SetDurationListener());
+            audioSlidePlayer.requestDuration();
+
+            audioView.setAudio((AudioSlide) slide, false,0);
             removableMediaView.display(audioView, false);
             result.set(true);
           } else if (slide.hasDocument()) {

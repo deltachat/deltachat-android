@@ -23,9 +23,9 @@ import android.widget.TextView;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.mms.AudioSlide;
+import org.thoughtcrime.securesms.util.DateUtils;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 
 public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener {
@@ -84,18 +84,29 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   }
 
   public void setAudio(final @NonNull AudioSlide audio,
-                       final boolean showControls)
+                       final boolean showControls, int duration)
   {
 
     controlToggle.displayQuick(playButton);
     seekBar.setEnabled(true);
     this.audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, this);
+    this.timestamp.setText(DateUtils.getFormatedDuration(duration));
+  }
+
+  public void setDuration(int duration) {
+    if (getProgress()==0)
+      this.timestamp.setText(DateUtils.getFormatedDuration(duration));
   }
 
   public void cleanup() {
     if (this.audioSlidePlayer != null && pauseButton.getVisibility() == View.VISIBLE) {
       this.audioSlidePlayer.stop();
     }
+  }
+
+  @Override
+  public void onReceivedDuration(int millis) {
+    this.timestamp.setText(DateUtils.getFormatedDuration(millis));
   }
 
   @Override
@@ -144,15 +155,13 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   }
 
   @Override
-  public void onProgress(double progress, long millis) {
+  public void onProgress(double progress, int millis) {
     int seekProgress = (int)Math.floor(progress * this.seekBar.getMax());
 
     if (seekProgress > seekBar.getProgress() || backwardsCounter > 3) {
       backwardsCounter = 0;
       this.seekBar.setProgress(seekProgress);
-      this.timestamp.setText(String.format("%02d:%02d",
-                                           TimeUnit.MILLISECONDS.toMinutes(millis),
-                                           TimeUnit.MILLISECONDS.toSeconds(millis)));
+      this.timestamp.setText(DateUtils.getFormatedDuration(millis));
     } else {
       backwardsCounter++;
     }

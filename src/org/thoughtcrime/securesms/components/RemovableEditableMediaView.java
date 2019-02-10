@@ -69,6 +69,10 @@ public class RemovableEditableMediaView extends FrameLayout {
     current = view;
   }
 
+  public View getCurrent() {
+    return current;
+  }
+
   public void setRemoveClickListener(View.OnClickListener listener) {
     this.remove.setOnClickListener(listener);
   }

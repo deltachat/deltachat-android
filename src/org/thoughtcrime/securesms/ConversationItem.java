@@ -31,7 +31,6 @@ import android.text.TextUtils;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +41,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
@@ -57,7 +57,6 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -380,6 +379,22 @@ public class ConversationItem extends LinearLayout
   {
     boolean showControls = !messageRecord.isFailed() && !Util.isOwnNumber(context, conversationRecipient.getAddress());
 
+    class SetDurationListener implements AudioSlidePlayer.Listener {
+      @Override
+      public void onStart() {}
+
+      @Override
+      public void onStop() {}
+
+      @Override
+      public void onProgress(double progress, int millis) {}
+
+      @Override
+      public void onReceivedDuration(int millis) {
+        messageRecord.lateFilingMediaSize(0,0, millis);
+        audioViewStub.get().setDuration(millis);
+      }
+    }
     if (hasAudio(messageRecord)) {
       audioViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
@@ -392,8 +407,16 @@ public class ConversationItem extends LinearLayout
         // if he wants to start the chat on click.
         audioViewStub.get().setEnabled(false);
         audioViewStub.get().setOnClickListener(passthroughClickListener);
-      } else
-        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), showControls);
+      } else {
+        int duration = messageRecord.getDuration();
+        if (duration == 0) {
+          AudioSlide audio = new AudioSlide(context, messageRecord);
+          AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, new SetDurationListener());
+          audioSlidePlayer.requestDuration();
+        }
+
+        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), showControls, duration);
+      }
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

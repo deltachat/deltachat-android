@@ -78,6 +78,48 @@ public class AudioSlidePlayer implements SensorEventListener {
     }
   }
 
+  public void requestDuration() {
+    if(this.mediaPlayer == null) {
+      this.mediaPlayer           = new MediaPlayerWrapper();
+      try {
+        this.audioAttachmentServer = new AttachmentServer(context, slide.asAttachment());
+        this.startTime             = System.currentTimeMillis();
+
+        audioAttachmentServer.start();
+        this.mediaPlayer.setDataSource(context, audioAttachmentServer.getUri());
+
+        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+          @Override
+          public void onPrepared(MediaPlayer mp) {
+            Log.w(TAG, "onPrepared");
+            synchronized (AudioSlidePlayer.this) {
+              if (mediaPlayer == null) return;
+            }
+            getListener().onReceivedDuration(mediaPlayer.getDuration());
+            if (mediaPlayer != null) {
+              mediaPlayer.stop();
+              mediaPlayer.release();
+            }
+
+            if (audioAttachmentServer != null) {
+              audioAttachmentServer.stop();
+            }
+
+            mediaPlayer           = null;
+            audioAttachmentServer = null;
+          }
+        });
+        mediaPlayer.prepareAsync();
+
+      } catch (IOException e) {
+        Log.w(TAG, e);
+        getListener().onReceivedDuration(0);
+      }
+    } else {
+      getListener().onReceivedDuration(0);
+    }
+  }
+
   public void play(final double progress) throws IOException {
     play(progress, false);
   }
@@ -240,7 +282,7 @@ public class AudioSlidePlayer implements SensorEventListener {
     Util.runOnMain(new Runnable() {
       @Override
       public void run() {
-        getListener().onProgress(progress, millis);
+        getListener().onProgress(progress, (int) millis);
       }
     });
   }
@@ -255,7 +297,9 @@ public class AudioSlidePlayer implements SensorEventListener {
       @Override
       public void onStop() {}
       @Override
-      public void onProgress(double progress, long millis) {}
+      public void onProgress(double progress, int millis) {}
+      @Override
+      public void onReceivedDuration(int millis) {}
     };
   }
 
@@ -320,7 +364,8 @@ public class AudioSlidePlayer implements SensorEventListener {
   public interface Listener {
     public void onStart();
     public void onStop();
-    public void onProgress(double progress, long millis);
+    public void onProgress(double progress, int millis);
+    public void onReceivedDuration(int millis);
   }
 
   private static class ProgressEventHandler extends Handler {
