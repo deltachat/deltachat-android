@@ -121,7 +121,9 @@
     <string name="menu_resend">Skicka om meddelande</string>
     <string name="menu_reply">Svara på meddelandet</string>
     <string name="menu_mute">Stäng av aviseringar</string>
+    <string name="menu_unmute">Slå på ljud</string>
     <string name="menu_export_attachment">Exportera bilaga</string>
+    <string name="menu_all_media">All media</string>
     <string name="menu_share">Dela</string>
     <string name="menu_block_contact">Blockera kontakt</string>
     <string name="menu_unblock_contact">Avblockera kontakten</string>
@@ -228,7 +230,7 @@
 
 
     <!-- invite -->
-    <string name="invite_slogan">Vänner låt inte vänner låsa sig i meddelandesilo.</string>
+    <string name="invite_slogan">Vänner låter inte andra vänner vara inlåsta i meddelandesilo.</string>
     <string name="invite_default_text">Låt oss byta till Delta Chat - %1$s  - du kan skriva till mig på %2$s</string>
 
 
@@ -253,6 +255,24 @@
     <string name="login_title">Logga in</string>
     <string name="login_header">Logga in på din server</string>
     <string name="login_subheader">För kända e-postleverantörer installeras ytterligare inställningar automatiskt. Ibland måste IMAP aktiveras i webbfronten. Kontakta din e-postleverantör eller vänner för hjälp.</string>
+    <string name="login_inbox">Inkorg</string>
+    <string name="login_imap_login">Inloggningsnamn till IMAP</string>
+    <string name="login_imap_server">IMAP-server</string>
+    <string name="login_imap_port">IMAP-port</string>
+    <string name="login_imap_security">IMAP-säkerhet</string>
+    <string name="login_outbox">Utkorg</string>
+    <string name="login_smtp_login">Inloggningsnamn till SMTP</string>
+    <string name="login_smtp_password">Lösenord till SMTP</string>
+    <string name="login_smtp_server">SMTP-server</string>
+    <string name="login_smtp_port">SMTP-port</string>
+    <string name="login_smtp_security">SMTP-säkerhet</string>
+    <string name="login_info_gmail_text">För GMail-konton måste du skapa ett app-lösenord om du har 2FA aktiverat. Om denna inställning inte är tillgänglig måste du slå på \"Mindre säkra appar\".</string>
+    <string name="login_error_mail">Vänligen ange en giltig e-postadress</string>
+    <string name="login_error_server">Vänligen ange en giltig server/IP-adress</string>
+    <string name="login_error_port">Vänligen ange en giltig port (1–65535)</string>
+    <string name="login_error_required_fields">Vänligen ange en giltig e-postadress och ett giltigt lösenord</string>
+    <string name="import_backup_title">Importera säkerhetskopiering</string>
+    <string name="import_backup_ask">Säkerhetskopiering hittades på %1$s.\n\n Vill du importera eller använda all data och alla inställningar från den?</string>
     <string name="pref_summary_default">standard</string>
     <string name="pref_profile_info_headline">Din profilinformation</string>
     </resources>

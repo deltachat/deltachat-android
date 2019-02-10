@@ -10,6 +10,7 @@
     <string name="custom">Personalisé</string>
     <string name="none">Aucun</string>
     <string name="open">Ouvert</string>
+    <string name="delete">Effacer</string>
     <string name="not_now">Pas maintenant</string>
     <string name="never">Jamais</string>
     <string name="one_moment">Un instant ...</string>
@@ -37,9 +38,12 @@
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>
     <string name="gif">Gif</string>
+    <string name="images">Images</string>
     <string name="audio">Son</string>
     <string name="voice_message">Message vocal</string>
+    <string name="forwarded_message">Message transféré</string>
     <string name="video">Vidéo</string>
+    <string name="documents">Documents</string>
     <string name="contact">Contact</string>
     <string name="camera">Caméra</string>
     <string name="location">Position</string>
@@ -71,6 +75,7 @@
     <string name="menu_new_contact">Nouveau contact</string>
     <string name="menu_new_chat">Nouvelle discussion</string>
     <string name="menu_new_group">Nouveau groupe</string>
+    <string name="menu_new_verified_group">Nouveau groupe vérifié (expérimental)</string>
     <string name="menu_send">Envoyer</string>
     <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
     <string name="menu_edit_group">Éditer le groupe</string>
@@ -105,16 +110,105 @@
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
     <string name="ask_block_contact">Bloquer ce contact ? Vous ne recevrez plus ses messages.</string>
     <string name="ask_unblock_contact">Débloquer ce contact ? Vous recevrez à nouveau ses messages.</string>
+    <string name="cannot_delete_contacts_in_use">Impossible d\'effacer des contacts ayant une discussion active.</string>
+    <!-- contact list -->
+    <string name="contacts_title">Contacts</string>
+    <string name="contacts_enter_name_or_email">Entrez le nom ou l\'email</string>
+    <string name="contacts_type_email_above">Entrez l\'email au dessus</string>
     <string name="contacts_empty_hint">Pas de contacts.</string>
 
 
     <string name="chat_archived_chats_title">Discussions archivées.</string>
+    <string name="chat_please_enter_message">Entrez un message.</string>
+    <string name="chat_camera_unavailable">Caméra indisponible.</string>
     <string name="chat_unable_to_record_audio">Impossible d\'enregistrer le son.</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archivé</string>
     <string name="chat_no_messages">Aucun message.</string>
+    <string name="chat_self_talk_subtitle">Messages envoyés à moi-même</string>
+
     <!-- search -->
     <string name="search">Chercher</string>
+    <string name="search_explain">Rechercher des discussions, des contacts ou des messages</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Nom du groupe</string>
+    <string name="group_avatar">Avatar du groupe</string>
+    <string name="group_create_button">Créer un groupe</string>
+    <string name="group_please_enter_group_name">Entrez un nom pour le groupe.</string>
+    <string name="group_add_members">Ajouter des participants</string>
+    <string name="group_self_not_in_group">Vous devez être membre du groupe pour effectuer cette action.</string>
+    <string name="profile_encryption">Chiffrement</string>
+
+
+    <string name="media_tab_documents">Documents</string>
+    <string name="media_no_documents_hint">Pas de documents</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro2_headline">Indépendant</string>
+    <string name="welcome_intro2_message">Il n\'y a pas de serveur Delta Chat. L\'application utilise uniquement votre serveur de mails.</string>
+    <string name="welcome_intro3_headline">Rapide</string>
+    <string name="welcome_intro3_message">Envoi des messages en quelques secondes.\nInterface rapide.</string>
+    <string name="welcome_intro4_headline">Puissant</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">Libre</string>
+    <string name="welcome_intro6_headline">Chiffré</string>
+    <string name="welcome_intro7_headline">Digne de confiance</string>
+    <string name="login_inbox">Boîte de réception</string>
+    <string name="login_imap_login">Utilisateur IMAP</string>
+    <string name="login_imap_server">Serveur IMAP</string>
+    <string name="login_imap_port">Port IMAP</string>
+    <string name="login_imap_security">Sécurité IMAP</string>
+    <string name="login_outbox">Boîte d\'envoi</string>
+    <string name="login_smtp_login">Utilisateur SMTP</string>
+    <string name="login_smtp_password">Mot de passe SMTP</string>
+    <string name="login_smtp_server">Serveur SMTP</string>
+    <string name="login_smtp_port">Port SMTP</string>
+    <string name="login_smtp_security">Sécurité SMTP</string>
+    <string name="login_error_mail">Entrez une adresse email valide</string>
+    <string name="login_error_server">Entre un serveur / adresse IP valide</string>
+    <string name="login_error_port">Entrez un port valide (1-65535)</string>
+    <string name="login_error_required_fields">Entrez une adresse email et un mot de passe valides</string>
+    <string name="import_backup_title">Importer la sauvegarde</string>
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Transférer à ...</string>
+
+
+    <string name="pref_profile_photo">Photo du profile</string>
+    <string name="pref_trim_option">Effacer les anciens messages</string>
+    <string name="pref_blocked_contacts">Contacts bloqués</string>
+    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <string name="pref_password_and_account_settings">Configuration des comptes et mots de passe</string>
+    <string name="pref_your_name">Votre nom</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Signature</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">Envoyé depuis Delta Chat: https://delta.chat</string>
+    <string name="pref_screen_security">Écran de sécurité</string>
+    <string name="pref_sound">Son</string>
+    <string name="pref_silent">Silencieux</string>
+    <string name="pref_repeat_notify">Répéter les alertes</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Clair</string>
+    <string name="pref_dark_theme">Foncé</string>
+    <string name="pref_appearance">Apparence</string>
+    <string name="pref_theme">Thème</string>
+    <string name="pref_language">Langage</string>
+    <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
+    <string name="pref_managekeys_menu_title">Gérer les clés</string>
+    <string name="pref_managekeys_export_secret_keys">Exporter les clés secrètes</string>
+    <string name="pref_managekeys_import_secret_keys">Importer des clés secrètes</string>
+    <string name="pref_background">Fond</string>
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_send_asm_title">Envoyer le message de configuration Autocrypt</string>
+    <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
+    <string name="autocrypt_asm_subject">Message de configuration Autocrypt</string>
+    <string name="autocrypt_continue_transfer_title">Message de configuration Autocrypt</string>
+    <string name="systemmsg_group_left">Groupe quitté.</string>
+    <string name="systemmsg_read_receipt_subject">Reçu de lecture</string>
     </resources>

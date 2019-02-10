@@ -159,10 +159,10 @@
         <item quantity="other">Apagar %1$d mensagens aqui e no servidor?</item>
     </plurals>
     <string name="ask_forward">Reencaminhar mensages para %1$s?</string>
-    <string name="ask_export_attachment">Exportar anexo? A exportação de anexos permitirá o seu acesso a qualquer outra aplicação no seu dispositivo.\n\ nContinuar?</string>
+    <string name="ask_export_attachment">Exportar anexo? A exportação de anexos permitirá o seu acesso a qualquer outra aplicação no seu dispositivo.\n\nContinuar?</string>
     <string name="ask_block_contact">Bloquear este contacto? Não receberá mais mensagens deste contacto.</string>
     <string name="ask_unblock_contact">Desbloquear esse contacto? Poderá mais uma vez receber mensagens deste contacto.</string>
-    <string name="ask_delete_contacts">Remover contactos? Assim removerá permanentemente os contactos selecionados.\n\n Contactos com chats a decorrer e contactos com  endereços do sistema não podem ser removidos permanentemente.</string>
+    <string name="ask_delete_contacts">Remover contactos? Assim removerá permanentemente os contactos selecionados.\n\nContactos com chats a decorrer e contactos com  endereços do sistema não podem ser removidos permanentemente.</string>
     <string name="cannot_delete_contacts_in_use">Não é possível excluir contactos com chats a decorrer.</string>
     <string name="ask_start_chat_with">chatsr com %1$s?</string>
 
@@ -181,7 +181,7 @@
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">chat desarquivada</item>
-        <item quantity="other">% chats não desarquivadas</item>
+        <item quantity="other">%d chats não desarquivadas</item>
     </plurals>
     <string name="chat_archived_chats_title">chats arquivadas</string>
     <string name="chat_please_enter_message">Por favor introduza uma mensagem.</string>

@@ -85,6 +85,7 @@
     <string name="blue">Azul</string>
     <string name="orange">Naranja</string>
     <string name="cyan">Cian</string>
+    <string name="purple">Púrpura</string>
     <string name="magenta">Magenta</string>
     <string name="white">Blanco</string>
 
@@ -169,7 +170,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
-    <string name="contacts_enter_name_or_email">Ingrese nombre o dirección de correo</string>
+    <string name="contacts_enter_name_or_email">Nombre o correo electrónico</string>
     <string name="contacts_type_email_above">Escriba la dirección de correo arriba</string>
     <string name="contacts_empty_hint">Sin contactos.</string>
 

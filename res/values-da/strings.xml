@@ -265,6 +265,7 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP sikkerhed</string>
+    <string name="login_info_gmail_text">For GMail konti skal der oprettes en App-Password hvis 2FA er aktiveret. Hvis denne opsætning ikke er tilgængelig skal Less Secure Apps aktiveres.</string>
     <string name="login_error_mail">Indtast gyldig e-post adresse</string>
     <string name="login_error_server">Indtast gyldig server / IP adresse</string>
     <string name="login_error_port">Indtast gyldig port (1–65535)</string>
@@ -311,6 +312,8 @@
     <string name="pref_change_secret">Ændre hemmelighed</string>
     <string name="pref_change_secret_explain">Ændre PIN / mønster / fingeraftryk via system opsætning</string>
     <string name="pref_screen_security">Skærm sikkerhed</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Forespørgsel om at blokere skærmbilleder i seneste liste og i programmet</string>
     <string name="pref_screen_security_please_restart_hint">Genstart programmet for at anvende skærm sikkerhed.</string>
     <string name="pref_notifications">Påmindelser</string>
     <string name="pref_notifications_show">Vise</string>
