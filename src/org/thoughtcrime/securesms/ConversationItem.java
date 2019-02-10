@@ -527,7 +527,8 @@ public class ConversationItem extends LinearLayout
   }
 
   private SpannableString linkifyMessageBody(SpannableString messageBody, boolean shouldLinkifyAllLinks) {
-    boolean hasLinks = Linkify.addLinks(messageBody, shouldLinkifyAllLinks ? Linkify.ALL : 0);
+    boolean hasLinks = Linkify.addLinks(messageBody,
+        shouldLinkifyAllLinks ? Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS : 0);
 
     if (hasLinks) {
       URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
