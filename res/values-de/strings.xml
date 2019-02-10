@@ -139,7 +139,7 @@
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_advanced">Erweitert</string>
     <string name="menu_deaddrop">Kontaktanfragen</string>
-    <string name="menu_deaddrop_subtitle">Drücke auf die Nachricht, um mit dem Chatten zu beginnen.</string>
+    <string name="menu_deaddrop_subtitle">Nachricht drücken, um mit dem Chatten zu beginnen.</string>
     <string name="menu_view_profile">Profil anzeigen</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
@@ -255,7 +255,7 @@
     <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
     <string name="login_header">Beim Server anmelden</string>
-    <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Wende dich an deinen E-Mail-Anbieter oder Freunde, um Hilfe zu erhalten.</string>
+    <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
     <string name="login_inbox">Posteingang</string>
     <string name="login_imap_login">IMAP-Anmeldename</string>
     <string name="login_imap_server">IMAP-Server</string>
@@ -267,20 +267,20 @@
     <string name="login_smtp_server">SMTP-Server</string>
     <string name="login_smtp_port">SMTP-Port</string>
     <string name="login_smtp_security">SMTP-Sicherheit</string>
-    <string name="login_info_gmail_text">Für GMail-Konten musst du ein App-Passwort erstellen, wenn du 2FA (Zwei-Faktor-Authentifizierung) aktiviert hast. Wenn diese Einstellung nicht verfügbar ist, musst du \"Zugriff durch weniger sichere Anwendungen\" aktivieren.</string>
+    <string name="login_info_gmail_text">Für GMail-Konten muss ein App-Passwort erstellt werden, wenn die 2FA (Zwei-Faktor-Authentifizierung) aktiviert ist. Wenn diese Einstellung nicht verfügbar ist, muss \"Zugriff durch weniger sichere Anwendungen\" aktiviert werden.</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>
     <string name="login_error_server">Bitte eine gültige Server/IP-Adresse eingeben</string>
     <string name="login_error_port">Bitte einen gültigen Port  (1–65535) eingeben</string>
     <string name="login_error_required_fields">Bitte eine gültige E-Mail-Adresse und ein Passwort eingeben</string>
     <string name="import_backup_title">Backup importieren</string>
-    <string name="import_backup_ask">Backup \"%1$s\" gefunden.\n\n Möchtest du dieses einlesen und alle Daten und Einstellungen daraus verwenden?</string>
+    <string name="import_backup_ask">Backup \"%1$s\" gefunden.\n\nDieses einlesen und alle Daten und Einstellungen daraus verwenden?</string>
     <string name="import_backup_no_backup_found">Kein Backup gefunden.\n\nKopiere die Sicherung nach \"%1$s\" und versuche es erneut. Alternativ \"Jetzt beginnen\" wählen, um den normalen Einrichtungsprozess fortzusetzen.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Login als \"%1$s\" nicht möglich. Bitte E-Mail Adresse und Passwort auf Richtigkeit überprüfen.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwort von %1$s: %2$s
 
-Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hinzu. Du kannst dies z.B. im Webinterface überprüfen. Bitte wende dich an deinen Anbieter oder Freunde, falls Probleme auftreten.</string>
+Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.B. im Web-Frontend abrufen können. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
 
 
     <!-- share and forward messages -->
@@ -309,7 +309,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="pref_help_url">https://delta.chat/de/help</string>
     <string name="pref_password_and_account_settings">Passwort und Kontoeinstellungen</string>
     <string name="pref_who_can_see_this_information">Wer kann diese Informationen sehen?</string>
-    <string name="pref_who_can_see_profile_explain">Dein Profilbild und dein Name werden neben von dir gesendeten Nachrichten angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
+    <string name="pref_who_can_see_profile_explain">Das Profilbild und der Name werden neben gesendeten Nachrichten angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
     <string name="pref_your_name">Mein Name</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signatur</string>
@@ -395,7 +395,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="autocrypt_continue_transfer_please_enter_code">Bitte den Setup-Code eingeben, der auf dem anderen Gerät angezeigt wird.</string>
     <string name="autocrypt_continue_transfer_succeeded">Ende-zu-Ende Einstellungen übertragen. Dieses Gerät ist nun bereit, Autocrypt mit den selben Einstellungen wie das Ursprungsgerät zu verwenden.</string>
     <string name="autocrypt_continue_transfer_retry">Wiederholen</string>
-    <string name="autocrypt_bad_setup_code">Ungültiger Setup-Code. Bitte versuche es erneut.\n\nWenn du den Setup-Code nicht mehr hast, kannst du auf dem anderen Gerät jederzeit eine neue Autocrypt-Setup-Nachricht mit einem neuen Setup-Code erzeugen.</string>
+    <string name="autocrypt_bad_setup_code">Ungültiger Setup-Code. Bitte versuchen Sie es erneut.\n\nWenn Sie den Setup-Code nicht mehr haben, können Sie auf dem anderen Gerät jederzeit eine neue Autocrypt-Setup-Nachricht mit einem neuen Setup-Code erzeugen.</string>
 
 
     <!-- system messages -->
@@ -407,7 +407,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="systemmsg_group_left">Gruppe verlassen.</string>
     <string name="systemmsg_read_receipt_subject">Empfangsbestätigung lesen</string>
     <string name="systemmsg_read_receipt_body">Dies ist eine Empfangsbestätigung für die Nachricht \"%1$s\".\n\nEs bedeutet, dass die Nachricht auf dem Gerät des Empfängers angezeigt wurde, nicht unbedingt, dass der Inhalt gelesen wurde.</string>
-    <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es könnte bereits helfen, einfach auf diese Nachricht zu antworten und den Absender zu bitten, die Nachricht erneut zu senden.\n\n• Falls du Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu installiert hast, kannst du von dort aus eine Autocrypt Setup-Nachricht senden.</string>
+    <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es könnte bereits helfen, einfach auf diese Nachricht zu antworten und den Absender zu bitten, die Nachricht erneut zu senden.\n\n• Falls Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu installiert wurde, kann von dort aus eine Autocrypt Setup-Nachricht gesendet werden.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s von mir.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -428,7 +428,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <!-- qr code stuff -->
     <string name="qrscan_title">QR-Code scannen</string>
     <string name="qrscan_hint">Kamera über den QR-Code halten</string>
-    <string name="qrscan_ask_join_group">Willst du der Gruppe \"%1$s\" beitreten?</string>
+    <string name="qrscan_ask_join_group">Der Gruppe \"%1$s\" beitreten?</string>
     <string name="qrscan_fingerprint_mismatch">Der gescannte Fingerabdruck stimmt nicht mit dem zuletzt für %1$s gesehenen Fingerabdruck überein.</string>
     <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine E-Mail-Adresse.\n\nFür eine Out-of-Band-Verifizierung stelle bitte zuerst eine verschlüsselte Verbindung zum Empfänger her.</string>
     <string name="qrscan_contains_text">Gescannter QR-Code text:\n\n%1$s</string>
@@ -580,9 +580,9 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
     <string name="autocrypt_correct_desktop">Erfolgreich übertragenes Autocrypt-Setup!</string>
     <string name="autocrypt_incorrect_desktop">Falscher Setup-Code. Bitte versuche es erneut.</string>
     <string name="create_chat_error_desktop">Konnte Chat nicht erstellen.</string>
-    <string name="ask_delete_chat_desktop">Bist du sicher, dass dieser Chat gelöscht werden soll?</string>
+    <string name="ask_delete_chat_desktop">Sind Sie sicher, diesen Chat löschen zu wollen?</string>
     <string name="email_validation_failed_desktop">E-Mail-Adresse benötigt.</string>
-    <string name="forget_login_confirmation_desktop">Dieses Login löschen? Alles wird gelöscht, einschließlich deines Ende-zu-Ende-Setups, deiner Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
+    <string name="forget_login_confirmation_desktop">Dieses Login löschen? Alles wird gelöscht, einschließlich des Ende-zu-Ende-Setups, der Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
     <string name="me_desktop">mich</string>
     <string name="in_this_group_desktop">Gruppenmitglieder</string>
     <string name="not_in_this_group_desktop">Potentielle Gruppenmitglieder (nicht in der Gruppe)</string>
@@ -596,7 +596,7 @@ Einige Anbieter fügen zusätzliche Informationen beim Eingang der Nachricht hin
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Möchtest du der Gruppe \"%1$s\" beitreten?</string>
+    <string name="qrscan_ask_join_verified_group">Der Gruppe \"%1$s\" beitreten?</string>
     <!-- see ask_start_chat_with -->
     <string name="qrscan_ask_fingerprint_ask_oob">Chat mit %1$s starten?</string>
     <!-- see ask_start_chat_with -->
