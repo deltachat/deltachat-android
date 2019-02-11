@@ -1,6 +1,6 @@
 # F-Droid - Overview
 
-- https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.txt
+- https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml
   contains the descripion and all meta data shown for Delta Chat on F-Droid
 
 - when a new tag in the form `v1.2.3` is added to the deltachat-android repo,
