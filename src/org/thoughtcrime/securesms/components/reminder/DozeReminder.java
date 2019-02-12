@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
@@ -59,6 +60,18 @@ public class DozeReminder extends Reminder {
     PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
     if(pm.isIgnoringBatteryOptimizations(context.getPackageName())) {
       return false;
+    }
+
+    // if the chatlist is empty, just after installation,
+    // do not bother with battery, let the user check out other things first.
+    try {
+      int numberOfChats = DcHelper.getContext(context).getChatlist(0, null, 0).getCnt();
+      if (numberOfChats == 0) {
+        return false;
+      }
+    }
+    catch(Exception e) {
+      e.printStackTrace();
     }
 
     return true; // yip, asking for disabling battery optimisations makes sense
