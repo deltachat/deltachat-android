@@ -17,7 +17,8 @@ Release core, f-droid, then:
 
 1. In Android Studio, select "Build / Generate signed APK"
    (not: App Bundle as this would require uploading the signing key to Google)
-2. Select flavor `gplayRelease`
+2. Select flavor `gplayRelease` with V1 signature enabled
+   (needed for easy APK verificarion), V2 is optional
 3. Test the generated APK from `gplay/release`
 
 
