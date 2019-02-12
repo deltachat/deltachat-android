@@ -1,5 +1,17 @@
 # Delta Chat Android Changelog
 
+## v0.101.0
+2019-02-12
+
+* First Play Store release, optimisations for Android O
+* Ask to disable battery optimisations
+* Many bug fixes
+
+The changes have been done by Ampli-fier, Angelo Fuchs, Björn Petersen,
+Christian Klump, Daniel Böhrs, Florian Haar, Floris Bruynooghe, Holger Krekel
+and violoncelloCH.
+
+
 ## v0.100.0
 2019-01-23
 
