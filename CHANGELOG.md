@@ -5,11 +5,14 @@
 
 * First Play Store release, optimisations for Android O
 * Ask to disable battery optimisations
+* Start Azerbaijani and Swedish translations
+* Update several other translations
 * Many bug fixes
 
-The changes have been done by Ampli-fier, Angelo Fuchs, Björn Petersen,
-Christian Klump, Daniel Böhrs, Florian Haar, Floris Bruynooghe, Holger Krekel
-and violoncelloCH.
+The changes have been done by Ampli-fier, Angelo Fuchs, Asiel Díaz Benítez,
+Besnik, Björn Petersen, Christian Klump, Daniel Böhrs, Enrico B., ferhad.necef,
+Florian Haar, Floris Bruynooghe, Heimen Stoffels, Holger Krekel,
+Iskatel Istiny, Lech Rowerski, violoncelloCH and others.
 
 
 ## v0.100.0
