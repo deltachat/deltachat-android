@@ -11,6 +11,16 @@ Release core, if needed, then:
 ... some days later, F-Droid should be updated.
 
 
+# Release new Play Store version
+
+Release core, f-droid, then:
+
+1. In Android Studio, select "Build / Generate signed APK"
+   (not: App Bundle as this would require uploading the signing key to Google)
+2. Select flavor `gplayRelease`
+3. Test the generated APK from `gplay/release`
+
+
 # For an additional APK
 
 6. in Android Studio select "Build / Build APK"
