@@ -308,6 +308,8 @@
     <string name="pref_who_can_see_this_information">Nork ikusi dezake informazio hau?</string>
     <string name="pref_who_can_see_profile_explain">Zure profileko argazkia eta izena zure mezuekin batera erakutsiko dira beste erabiltzaileekin komunikatzen zarenean. Informazioa behin bidalita ezin da ezabatu edo kendu.</string>
     <string name="pref_your_name">Zure izena</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Sinaduraren testua</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Delta Chat mezulariarekin bidalita: https://delta.chat</string>
     <string name="pref_enter_sends">Enter teklarekin bidali</string>
@@ -516,6 +518,7 @@
     <string name="group_name_desktop">Taldearen izena</string>
     <string name="remove_desktop">Kendu</string>
     <string name="save_desktop">Gorde</string>
+    <string name="show_qr_verify_code_desktop">Erakutsi gonbidapenerako QR kodea</string>
     <string name="show_qr_invite_code_desktop">Erakutsi gonbidapenerako QR kodea</string>
     <string name="add_contact_desktop">Gehitu kontaktua</string>
     <string name="login_required_desktop">derrigorrezkoa</string>
@@ -549,10 +552,17 @@
     <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
 
 
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">\"%1$s\" taldera elkartu nahi duzu?</string>
     <!-- see ask_start_chat_with -->
     <string name="qrscan_ask_fingerprint_ask_oob">Txateatu %1$s(r)ekin?</string>
     <!-- see ask_start_chat_with -->
     <string name="qrscan_ask_chatting_fingerprint_ok">Txateatu %1$s(r)ekin?</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">QR gonbidapen kodea</string>
-    </resources>
+    <!-- see qrshow_join_group_hint -->
+    <string name="qrshow_join_verified_group_hint">Eskaneatu hau \"%1$s\" taldera elkartzeko.</string>
+
+
+</resources>

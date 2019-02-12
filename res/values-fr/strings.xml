@@ -15,7 +15,7 @@
     <string name="never">Jamais</string>
     <string name="one_moment">Un instant ...</string>
     <string name="done">Fait</string>
-    <string name="undo">Anuller</string>
+    <string name="undo">Annuler</string>
     <string name="error">Erreur</string>
     <string name="error_x">Erreur: %1$s</string>
     <string name="error_no_network">Réseau inaccessible.</string>
