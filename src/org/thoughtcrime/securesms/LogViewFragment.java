@@ -178,6 +178,7 @@ public class LogViewFragment extends Fragment {
     builder.append("memory=").append(getMemoryUsage(context)).append("\n");
     builder.append("memoryClass=").append(getMemoryClass(context)).append("\n");
     builder.append("host=").append(Build.HOST).append("\n");
+    builder.append("applicationId=").append(BuildConfig.APPLICATION_ID).append("\n");
     builder.append("app=");
     try {
       builder.append(pm.getApplicationLabel(pm.getApplicationInfo(context.getPackageName(), 0)))
