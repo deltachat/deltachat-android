@@ -29,8 +29,8 @@ chat participants already heart from each other before.
 On a two-people chat just send a "Hi!" message and already 
 receive an encrypted reply.  Your Chat is now end-to-end encrypted.
 End-to-End encryption not only happens between Delta Chat apps but also
-if messaging with other e-mail apps if they support the Autocrypt Level 1 
-encryption standard.  Moreover, Delta Chat offers an experimental
+with other e-mail apps supporting the Autocrypt Level 1 encryption standard.  
+Moreover, Delta Chat offers an experimental
 "verified group" chat that guarantees end-to-end encryption to be secure
 against active network or provider attacks.  This unique, experimental
 feature is based on recent usability and cryptographic research and is
