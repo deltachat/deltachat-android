@@ -44,12 +44,14 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
@@ -74,6 +76,7 @@ public class MessageNotifier {
 
   static final  String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
+  public  static final long   NO_VISIBLE_THREAD         = -1L;
   private static final  int   SUMMARY_NOTIFICATION_ID   = 1338;
   private static final int    PENDING_MESSAGES_ID       = 1111;
   private static final String NOTIFICATION_GROUP        = "messages";
@@ -85,8 +88,13 @@ public class MessageNotifier {
   private volatile static       long               lastAudibleNotification      = -1;
   private          static final CancelableExecutor executor                     = new CancelableExecutor();
 
-  public static void setVisibleThread(long threadId) {
+  private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
+
+  public static void updateVisibleThread(Context context, long threadId) {
     visibleThread = threadId;
+    if (visibleThread == NO_VISIBLE_THREAD && pendingNotifications.size() > 0) {
+      updatePendingNotifications(context);
+    }
   }
 
   public static void cancelDelayedNotifications() {
@@ -152,15 +160,6 @@ public class MessageNotifier {
     updateNotification(context, true, 0);
   }
 
-  /**
-   * @deprecated use updateNotificatio(Context, int) instead.
-   */
-  @Deprecated
-  public static void updateNotification(@NonNull Context context, long threadId)
-  {
-    throw new IllegalStateException("old signal code called. thread -> chat, long -> int");
-  }
-
   public static void updateNotification(@NonNull Context context, int threadId)
   {
     if (System.currentTimeMillis() - lastDesktopActivityTimestamp < DESKTOP_ACTIVITY_PERIOD) {
@@ -171,40 +170,33 @@ public class MessageNotifier {
     }
   }
 
-  /**
-   * @deprecated used updateNotification(Context, int, boolean) instead.
-   */
-  @Deprecated
   public static void updateNotification(@NonNull  Context context,
-                                        long      threadId,
-                                        boolean   signal) {
-    throw new IllegalStateException("Old signal code called. thread -> chat & long -> int");
-  }
-
-  public static void updateNotification(@NonNull  Context context,
-                                        int       chatId,
+                                        int       threadId,
                                         boolean   signal)
   {
-    boolean    isVisible  = visibleThread == chatId;
+    boolean    isVisible  = visibleThread == threadId;
     ApplicationDcContext dcContext = DcHelper.getContext(context);
 
     if (isVisible) {
-      dcContext.marknoticedChat(chatId);
+      dcContext.marknoticedChat(threadId);
     }
 
     if (!Prefs.isNotificationsEnabled(context) ||
-        Prefs.isChatMuted(context, chatId))
+        Prefs.isChatMuted(context, threadId))
     {
       return;
     }
 
     if (isVisible && signal) {
-      sendInThreadNotification(context, chatId);
+      sendInThreadNotification(context, threadId);
+    } else if (visibleThread != NO_VISIBLE_THREAD) {
+      pendingNotifications.push(new Pair<>(threadId, signal));
     } else {
       updateNotification(context, signal, 0);
     }
   }
 
+  // @param signal: true to beep, false to stay silent.
   private static void updateNotification(@NonNull Context context,
                                          boolean signal,
                                          int     reminderCount)
@@ -262,7 +254,6 @@ public class MessageNotifier {
     Recipient                          recipient      = notifications.get(0).getRecipient();
     int                                notificationId = (SUMMARY_NOTIFICATION_ID + (bundled ? notifications.get(0).getChatId() : 0));
 
-
     builder.setThread(notifications.get(0).getRecipient());
     builder.setMessageCount(notificationState.getMessageCount());
     builder.setPrimaryMessageBody(recipient, notifications.get(0).getIndividualRecipient(),
@@ -299,6 +290,13 @@ public class MessageNotifier {
     }
 
     NotificationManagerCompat.from(context).notify(notificationId, builder.build());
+  }
+
+  private static void updatePendingNotifications(Context context) {
+    while (pendingNotifications.size() > 0) {
+      Pair<Integer, Boolean> threadSignalPair = pendingNotifications.pop();
+      updateNotification(context, threadSignalPair.first(), threadSignalPair.second());
+    }
   }
 
   private static void sendMultipleThreadNotification(@NonNull  Context context,

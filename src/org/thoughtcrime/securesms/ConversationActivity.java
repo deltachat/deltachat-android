@@ -79,7 +79,6 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.AttachmentDrawerListener;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
-import org.thoughtcrime.securesms.components.location.SignalPlace;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -283,14 +282,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    MessageNotifier.setVisibleThread(threadId);
+    MessageNotifier.updateVisibleThread(this, threadId);
     markThreadAsRead();
   }
 
   @Override
   protected void onPause() {
     super.onPause();
-    MessageNotifier.setVisibleThread(-1L);
+    MessageNotifier.updateVisibleThread(this, MessageNotifier.NO_VISIBLE_THREAD);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
@@ -988,7 +987,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (refreshFragment) {
       fragment.reload(recipient, threadId);
-      MessageNotifier.setVisibleThread(threadId);
+      MessageNotifier.updateVisibleThread(this, threadId);
     }
 
     fragment.scrollToBottom();
