@@ -1,29 +1,45 @@
 # Short description (max. 80 characters)
 
-Communicate instantly via e-mail.
-
+Chat over e-mail. Simple and Elegant. No silos, no tracking: Privacy by Design.
 
 # Full description (max. 4000 characters)
 
-Delta Chat is a messaging app that is completely
-compatible with the existing e-mail infrastructure.
+Delta Chat feels like Whatsapp or Telegram but without centralized tracking 
+and selling of user data. Delta Chat is technically an e-mail application 
+but looks like a modern chat interface.  E-Mail in a new dress if you will. 
+All data is stored on your devices only.  No Addressbook or other personal data is going anywhere. 
+There simply are no Delta Chat servers where anything could go to. 
 
-So, with Delta Chat you get the ease of well-known messengers
-with the reach of e-mail.
-Moreover, you're independent from other companies or services --
-as your data are not related to Delta Chat,
-you won't even add new dependencies here.
+Chat with anyone out of billions of people: just use their e-mail address. 
+It's fine if your contacts answer with their own mail program. 
+They don't need to install Delta Chat or visit some website. 
+If you send a picture, audio message or document to a Chat group 
+your chat recipients will see a nice regular e-mail with an attachment. 
+If they send a picture or document back, you will see it in your Chat 
+for this contact.  It's that simple. 
 
-Some features at a glance:
+DeltaChat sends e-mails using your e-mail account and provider of choice. 
+Your mobile number does not matter. You don't need to have a mobile
+number in order to use DeltaChat and you can change mobile numbers without 
+causing any trouble for DeltaChat. 
 
-* Automatic end-to-end-encryption with Autocrypt
-* Fast by the use of Push-IMAP
-* Largest userbase -- receivers not using Delta Chat can be reached as well
-* Compatible -- not only to itself
-* Elegant and simple user interface
-* Distributed system
-* No Spam -- only messages of known users are shown by default
-* Reliable -- safe for professional use
-* Trustworthy -- can even be used for business messages
-* Fully OpenSource and Standards based
+DeltaChat offers instant chatting and synchronization across devices. 
+Messages sent on one device will quickly show up on other devices.  
+There is an early iPhone version and downloads for Linux and Mac OS Laptops. 
+Windows support is in the works.  All Desktop versions can be used standalone.
+There is no need to have an Android or iPhone setup. 
 
+Delta Chat is a relatively young project for what it offers already. 
+It employs a pragmatic and usability-driven approach to decentralized messaging. 
+No re-inventing of wheel technology unless it causes actual trouble or concern. 
+Most popular programming languages and many human languages are involved
+in the development of Delta Chat apps and the various activities around it. 
+We rather often think about removing technology than adding yet more of it. 
+Trying to keep things maintainable and understandable. 
+
+We are grateful for any help, be it contributing good bug reports, helping
+other users on the forum, participating in our open development with PRs and reviews, 
+translations to more languages, working on new bots ... or a donation if you can. 
+We currently use donations to enable contributors to join us at our repeated one-week 
+long gatherings -- where we develop and user-test with locals and evolve 
+new directions and plans. 
