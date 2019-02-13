@@ -4,7 +4,7 @@ Chat over e-mail. Simple and Secure. No silos, no tracking: Privacy by Design.
 
 # Full description (max. 4000 characters)
 
-Delta Chat feels like Whatsapp or Telegram but does not involve centralized control
+Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control
 or tracking. How does it achieve that? Delta Chat is technically an e-mail application 
 but looks like a modern chat interface.  E-Mail in a new dress if you will. 
 All data is stored on your devices only. No Addressbook or other personal data is going anywhere. 
