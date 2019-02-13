@@ -43,8 +43,13 @@
                  android:largeHeap="true"
                  tools:ignore="GoogleAppIndexingWarning">
 
+    <!-- android car support, see https://developer.android.com/training/auto/start/,
+         as this potentially blocks releases on gplay due to extra-checks,
+         we disable this during the first gplay releases -->
+    <!--
     <meta-data android:name="com.google.android.gms.car.application"
                android:resource="@xml/automotive_app_desc" />
+    -->
 
     <activity android:name=".InviteActivity"
               android:theme="@style/TextSecure.HighlightTheme"
