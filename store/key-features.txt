@@ -1,10 +1,10 @@
 
 Key features at a glance:
 
-* Automatic e-mail end-to-end-encryption with Autocrypt
-* Instant chatting and synchronization across devices
 * Reach anyone out of billions of people -- just use their e-mail address!
-* Open Source developments with many contributors and a diverse community
-* No Spam -- only messages of known users are shown by default
+* Instant chatting and synchronization across devices
+* Automatic e-mail end-to-end-encryption with Autocrypt
+* available for Android, iOS, Mac OS, Linux with Windows in the works.
+* Open Source development with many contributors and a diverse community
+* No Spam -- only messages of known or accepted users are displayed by default
 * Fully Standards based, collaborations ongoing with many other projects
-

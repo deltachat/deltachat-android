@@ -1,6 +1,6 @@
 # Short description (max. 80 characters)
 
-Chat over e-mail. Simple and Elegant. No silos, no tracking: Privacy by Design.
+Chat over e-mail. Simple and Secure. No silos, no tracking: Privacy by Design.
 
 # Full description (max. 4000 characters)
 
