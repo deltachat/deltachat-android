@@ -6,8 +6,8 @@ Chat over e-mail. Simple and Secure. No silos, no tracking: Privacy by Design.
 
 Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control
 or tracking. Technically, Delta Chat is an e-mail application with a modern chat interface.
-but looks like a modern chat interface.  E-Mail in a new dress if you will. 
-All data is stored on your devices only. No Addressbook or other personal data is going anywhere. 
+E-Mail in a new dress if you will. All data is stored on your devices only. 
+No Addressbook or other personal data is going anywhere. 
 There simply are no Delta Chat servers where anything could go to. 
 
 Use Delta Chat with anyone out of billions of people: just use their e-mail address. 
