@@ -14,6 +14,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -77,10 +78,10 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
     private final TimeBucket[] TIME_SECTIONS;
 
     public BucketedThreadMedia(@NonNull Context context) {
-      this.TODAY         = new TimeBucket(context.getString(R.string.today), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -1), TimeBucket.addToCalendar(Calendar.YEAR, 1000));
-      this.YESTERDAY     = new TimeBucket(context.getString(R.string.yesterday), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -2), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -1));
-      this.THIS_WEEK     = new TimeBucket(context.getString(R.string.this_week), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -7), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -2));
-      this.THIS_MONTH    = new TimeBucket(context.getString(R.string.this_month), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -30), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -7));
+      this.TODAY         = new TimeBucket(context.getString(R.string.today), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, 0), Long.MAX_VALUE);
+      this.YESTERDAY     = new TimeBucket(context.getString(R.string.yesterday), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -1), TODAY.startTime);
+      this.THIS_WEEK     = new TimeBucket(context.getString(R.string.this_week), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -6), YESTERDAY.startTime);
+      this.THIS_MONTH    = new TimeBucket(context.getString(R.string.this_month), TimeBucket.addToCalendar(Calendar.MONTH, -1), THIS_WEEK.startTime);
       this.TIME_SECTIONS = new TimeBucket[]{TODAY, YESTERDAY, THIS_WEEK, THIS_MONTH};
       this.OLDER         = new MonthBuckets();
     }
@@ -142,7 +143,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       }
 
       boolean inRange(long timestamp) {
-        return timestamp > startTime && timestamp <= endTime;
+        return timestamp >= startTime && timestamp < endTime;
       }
 
       boolean isEmpty() {
@@ -163,6 +164,10 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
       static long addToCalendar(int field, int amount) {
         Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
         calendar.add(field, amount);
         return calendar.getTimeInMillis();
       }
