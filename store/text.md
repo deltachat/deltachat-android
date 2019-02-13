@@ -25,13 +25,16 @@ causing any trouble for Delta Chat. You can export all your Chat data
 on one device, import it on a new device and happily continue chatting. 
 
 Delta Chat establishes end-to-end encryption automatically if
-all participants of a chat have send a message to each other recently. 
-End-to-End encryption happens by default between Delta Chat apps
-or other e-mail apps that support the Autocrypt Level 1 encryption standard. 
-Moreover, Delta Chat offers an experimental "verified group" chat that guarantees 
-end-to-end encryption to be secure against active network or provider attacks. 
-This experimental feature is based on recent usability and cryptographic
-research and is going to be refined and user-tested with at-risk users in 2019.
+chat participants already heart from each other before. 
+On a two-people chat just send a "Hi!" message and already 
+receive an encrypted reply.  Your Chat is now end-to-end encrypted.
+End-to-End encryption not only happens between Delta Chat apps but also
+if messaging with other e-mail apps if they support the Autocrypt Level 1 
+encryption standard.  Moreover, Delta Chat offers an experimental
+"verified group" chat that guarantees end-to-end encryption to be secure
+against active network or provider attacks.  This unique, experimental
+feature is based on recent usability and cryptographic research and is
+going to be refined after further user-testing with at-risk users in 2019.
 
 Delta Chat offers instant chatting and synchronization across devices. 
 Messages sent on one device will quickly show up on other devices.  
