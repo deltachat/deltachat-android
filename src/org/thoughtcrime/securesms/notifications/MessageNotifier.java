@@ -76,23 +76,23 @@ public class MessageNotifier {
 
   static final  String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
-  public  static final long   NO_VISIBLE_THREAD         = -1L;
+  public  static final long   NO_VISIBLE_CHAT_ID        = -1L;
   private static final  int   SUMMARY_NOTIFICATION_ID   = 1338;
   private static final int    PENDING_MESSAGES_ID       = 1111;
   private static final String NOTIFICATION_GROUP        = "messages";
   private static final long   MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(20);
   private static final long   DESKTOP_ACTIVITY_PERIOD   = TimeUnit.MINUTES.toMillis(1);
 
-  private volatile static       long               visibleThread                = -1;
+  private volatile static       long               visibleChatId                = NO_VISIBLE_CHAT_ID;
   private volatile static       long               lastDesktopActivityTimestamp = -1;
   private volatile static       long               lastAudibleNotification      = -1;
   private          static final CancelableExecutor executor                     = new CancelableExecutor();
 
   private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
 
-  public static void updateVisibleThread(Context context, long threadId) {
-    visibleThread = threadId;
-    if (visibleThread == NO_VISIBLE_THREAD && pendingNotifications.size() > 0) {
+  public static void updateVisibleChat(Context context, long chatId) {
+    visibleChatId = chatId;
+    if (visibleChatId == NO_VISIBLE_CHAT_ID && pendingNotifications.size() > 0) {
       updatePendingNotifications(context);
     }
   }
@@ -174,7 +174,7 @@ public class MessageNotifier {
                                         int       threadId,
                                         boolean   signal)
   {
-    boolean    isVisible  = visibleThread == threadId;
+    boolean    isVisible  = visibleChatId == threadId;
     ApplicationDcContext dcContext = DcHelper.getContext(context);
 
     if (isVisible) {
@@ -189,7 +189,7 @@ public class MessageNotifier {
 
     if (isVisible && signal) {
       sendInThreadNotification(context, threadId);
-    } else if (visibleThread != NO_VISIBLE_THREAD) {
+    } else if (visibleChatId != NO_VISIBLE_CHAT_ID) {
       pendingNotifications.push(new Pair<>(threadId, signal));
     } else {
       updateNotification(context, signal, 0);
@@ -254,7 +254,7 @@ public class MessageNotifier {
     Recipient                          recipient      = notifications.get(0).getRecipient();
     int                                notificationId = (SUMMARY_NOTIFICATION_ID + (bundled ? notifications.get(0).getChatId() : 0));
 
-    builder.setThread(notifications.get(0).getRecipient());
+    builder.setChat(notifications.get(0).getRecipient());
     builder.setMessageCount(notificationState.getMessageCount());
     builder.setPrimaryMessageBody(recipient, notifications.get(0).getIndividualRecipient(),
                                   notifications.get(0).getText(""), notifications.get(0).getSlideDeck());

@@ -282,14 +282,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    MessageNotifier.updateVisibleThread(this, threadId);
+    MessageNotifier.updateVisibleChat(this, threadId);
     markThreadAsRead();
   }
 
   @Override
   protected void onPause() {
     super.onPause();
-    MessageNotifier.updateVisibleThread(this, MessageNotifier.NO_VISIBLE_THREAD);
+    MessageNotifier.updateVisibleChat(this, MessageNotifier.NO_VISIBLE_CHAT_ID);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
@@ -987,7 +987,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (refreshFragment) {
       fragment.reload(recipient, threadId);
-      MessageNotifier.updateVisibleThread(this, threadId);
+      MessageNotifier.updateVisibleChat(this, threadId);
     }
 
     fragment.scrollToBottom();
