@@ -38,7 +38,7 @@ public class AndroidAutoReplyReceiver extends BroadcastReceiver {
   public static final String REPLY_ACTION    = "org.thoughtcrime.securesms.notifications.ANDROID_AUTO_REPLY";
   public static final String ADDRESS_EXTRA   = "car_address";
   public static final String VOICE_REPLY_KEY = "car_voice_reply_key";
-  public static final String THREAD_ID_EXTRA = "car_reply_thread_id";
+  public static final String CHAT_ID_EXTRA = "car_reply_thread_id";
 
   @SuppressLint("StaticFieldLeak")
   @Override
@@ -53,7 +53,7 @@ public class AndroidAutoReplyReceiver extends BroadcastReceiver {
     if (remoteInput == null) return;
 
     final Address      address      = intent.getParcelableExtra(ADDRESS_EXTRA);
-    final long         threadId     = intent.getLongExtra(THREAD_ID_EXTRA, -1);
+    final long         threadId     = intent.getLongExtra(CHAT_ID_EXTRA, -1);
     final CharSequence responseText = getMessageText(intent);
 
     if (responseText != null) {

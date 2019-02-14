@@ -59,7 +59,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     setCategory(NotificationCompat.CATEGORY_MESSAGE);
   }
 
-  public void setThread(@NonNull Recipient recipient) {
+  public void setChat(@NonNull Recipient recipient) {
     if (privacy.isDisplayContact()) {
       setContentTitle(recipient.toShortString());
 
@@ -98,14 +98,14 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     setNumber(messageCount);
   }
 
-  public void setPrimaryMessageBody(@NonNull  Recipient threadRecipients,
+  public void setPrimaryMessageBody(@NonNull  Recipient chatRecipients,
                                     @NonNull  Recipient individualRecipient,
                                     @NonNull  CharSequence message,
                                     @Nullable SlideDeck slideDeck)
   {
     SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
 
-    if (privacy.isDisplayContact() && threadRecipients.isGroupRecipient()) {
+    if (privacy.isDisplayContact() && chatRecipients.isGroupRecipient()) {
       stringBuilder.append(Util.getBoldedString(individualRecipient.toShortString() + ": "));
     }
 
@@ -173,13 +173,13 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
                                                     .addAction(wearableReplyAction));
   }
 
-  public void addMessageBody(@NonNull Recipient threadRecipient,
+  public void addMessageBody(@NonNull Recipient chatRecipient,
                              @NonNull Recipient individualRecipient,
                              @Nullable CharSequence messageBody)
   {
     SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
 
-    if (privacy.isDisplayContact() && threadRecipient.isGroupRecipient()) {
+    if (privacy.isDisplayContact() && chatRecipient.isGroupRecipient()) {
       stringBuilder.append(Util.getBoldedString(individualRecipient.toShortString() + ": "));
     }
 

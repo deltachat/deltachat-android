@@ -52,9 +52,9 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     setGroupSummary(true);
   }
 
-  public void setMessageCount(int messageCount, int threadCount) {
+  public void setMessageCount(int messageCount, int chatCount) {
     setSubText(context.getString(R.string.notify_n_messages_in_m_chats,
-                                 messageCount, threadCount));
+                                 messageCount, chatCount));
     setContentInfo(String.valueOf(messageCount));
     setNumber(messageCount);
   }

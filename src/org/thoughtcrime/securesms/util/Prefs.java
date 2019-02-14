@@ -159,7 +159,7 @@ public class Prefs {
     }
   }
 
-  public static boolean isInThreadNotifications(Context context) {
+  public static boolean isInChatNotifications(Context context) {
     return getBooleanPreference(context, IN_THREAD_NOTIFICATION_PREF, true);
   }
 
