@@ -93,7 +93,13 @@ public class MessageNotifier {
   public static void updateVisibleChat(Context context, long chatId) {
     visibleChatId = chatId;
     if (visibleChatId == NO_VISIBLE_CHAT_ID && pendingNotifications.size() > 0) {
-      updatePendingNotifications(context);
+      new AsyncTask<Void, Void, Void>() {
+        @Override
+        protected Void doInBackground(Void... params) {
+          updatePendingNotifications(context);
+          return null;
+        }
+      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
   }
 
