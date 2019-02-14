@@ -339,7 +339,7 @@ public class MessageNotifier {
   }
 
   private static void sendInThreadNotification(Context context, int chatId) {
-    if (!Prefs.isInThreadNotifications(context) ||
+    if (!Prefs.isInChatNotifications(context) ||
         ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
     {
       return;
