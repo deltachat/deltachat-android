@@ -290,6 +290,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onPause() {
     super.onPause();
+
+    // theoretically, saving the draft in ConversationActivity.onDestroy()
+    // should be sufficient, however, seems as if it RAM gets low, Activities/Apps are terminated
+    // before onDestroy() is called, see https://github.com/deltachat/deltachat-android/issues/420
+    if (!Util.isEmpty(composeText) || attachmentManager.isAttachmentPresent()) {
+      processComposeControls(ACTION_SAVE_DRAFT);
+    }
+
     MessageNotifier.updateVisibleChat(this, MessageNotifier.NO_VISIBLE_CHAT_ID);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
@@ -902,11 +910,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcMsg msg = null;
     Boolean recompress = Boolean.FALSE;
 
-    composeText.setText("");
+    if(action==ACTION_SEND_OUT) {
+      composeText.setText("");
+    }
 
     if(slideDeck!=null) {
-      inputPanel.clearQuote();
-      attachmentManager.clear(glideRequests, false);
+      if(action==ACTION_SEND_OUT) {
+        inputPanel.clearQuote();
+        attachmentManager.clear(glideRequests, false);
+      }
 
       try {
         List<Attachment> attachments = slideDeck.asAttachments();
