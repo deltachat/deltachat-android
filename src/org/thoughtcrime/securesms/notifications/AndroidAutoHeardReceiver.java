@@ -17,7 +17,6 @@
 
 package org.thoughtcrime.securesms.notifications;
 
-import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -34,7 +33,7 @@ public class AndroidAutoHeardReceiver extends BroadcastReceiver {
 
   public static final String TAG                   = AndroidAutoHeardReceiver.class.getSimpleName();
   public static final String HEARD_ACTION          = "org.thoughtcrime.securesms.notifications.ANDROID_AUTO_HEARD";
-  public static final String THREAD_IDS_EXTRA      = "car_heard_thread_ids";
+  public static final String CHAT_IDS_EXTRA = "car_heard_thread_ids";
   public static final String NOTIFICATION_ID_EXTRA = "car_notification_id";
 
   @Override
@@ -43,7 +42,7 @@ public class AndroidAutoHeardReceiver extends BroadcastReceiver {
     if (!HEARD_ACTION.equals(intent.getAction()))
       return;
 
-    final int[] threadIds = intent.getIntArrayExtra(THREAD_IDS_EXTRA);
+    final int[] threadIds = intent.getIntArrayExtra(CHAT_IDS_EXTRA);
 
     if (threadIds != null) {
       int notificationId = intent.getIntExtra(NOTIFICATION_ID_EXTRA, -1);

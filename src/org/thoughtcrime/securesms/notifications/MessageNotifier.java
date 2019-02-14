@@ -166,37 +166,37 @@ public class MessageNotifier {
     updateNotification(context, true, 0);
   }
 
-  public static void updateNotification(@NonNull Context context, int threadId)
+  public static void updateNotification(@NonNull Context context, int chatId)
   {
     if (System.currentTimeMillis() - lastDesktopActivityTimestamp < DESKTOP_ACTIVITY_PERIOD) {
       Log.w(TAG, "Scheduling delayed notification...");
-      executor.execute(new DelayedNotification(context, threadId));
+      executor.execute(new DelayedNotification(context, chatId));
     } else {
-      updateNotification(context, threadId, true);
+      updateNotification(context, chatId, true);
     }
   }
 
   public static void updateNotification(@NonNull  Context context,
-                                        int       threadId,
+                                        int       chatId,
                                         boolean   signal)
   {
-    boolean    isVisible  = visibleChatId == threadId;
+    boolean    isVisible  = visibleChatId == chatId;
     ApplicationDcContext dcContext = DcHelper.getContext(context);
 
     if (isVisible) {
-      dcContext.marknoticedChat(threadId);
+      dcContext.marknoticedChat(chatId);
     }
 
     if (!Prefs.isNotificationsEnabled(context) ||
-        Prefs.isChatMuted(context, threadId))
+        Prefs.isChatMuted(context, chatId))
     {
       return;
     }
 
     if (isVisible && signal) {
-      sendInThreadNotification(context, threadId);
+      sendInChatNotification(context, chatId);
     } else if (visibleChatId != NO_VISIBLE_CHAT_ID) {
-      pendingNotifications.push(new Pair<>(threadId, signal));
+      pendingNotifications.push(new Pair<>(chatId, signal));
     } else {
       updateNotification(context, signal, 0);
     }
@@ -226,16 +226,16 @@ public class MessageNotifier {
       lastAudibleNotification = System.currentTimeMillis();
     }
 
-    if (notificationState.hasMultipleThreads()) {
+    if (notificationState.hasMultipleChats()) {
       if (Build.VERSION.SDK_INT >= 23) {
-        for (int threadId : notificationState.getThreads()) {
-          sendSingleThreadNotification(context, new NotificationState(notificationState.getNotificationsForThread(threadId)), false, true);
+        for (int chatId : notificationState.getChats()) {
+          sendSingleChatNotification(context, new NotificationState(notificationState.getNotificationsForChat(chatId)), false, true);
         }
       }
 
-      sendMultipleThreadNotification(context, notificationState, signal);
+      sendMultipleChatNotification(context, notificationState, signal);
     } else {
-      sendSingleThreadNotification(context, notificationState, signal, false);
+      sendSingleChatNotification(context, notificationState, signal, false);
     }
 
     cancelOrphanedNotifications(context, notificationState);
@@ -246,9 +246,9 @@ public class MessageNotifier {
     }
   }
 
-  private static void sendSingleThreadNotification(@NonNull  Context context,
-                                                   @NonNull  NotificationState notificationState,
-                                                   boolean signal, boolean bundled)
+  private static void sendSingleChatNotification(@NonNull  Context context,
+                                                 @NonNull  NotificationState notificationState,
+                                                 boolean signal, boolean bundled)
   {
     if (notificationState.getNotifications().isEmpty()) {
       if (!bundled) cancelActiveNotifications(context);
@@ -300,19 +300,19 @@ public class MessageNotifier {
 
   private static void updatePendingNotifications(Context context) {
     while (pendingNotifications.size() > 0) {
-      Pair<Integer, Boolean> threadSignalPair = pendingNotifications.pop();
-      updateNotification(context, threadSignalPair.first(), threadSignalPair.second());
+      Pair<Integer, Boolean> chatSignalPair = pendingNotifications.pop();
+      updateNotification(context, chatSignalPair.first(), chatSignalPair.second());
     }
   }
 
-  private static void sendMultipleThreadNotification(@NonNull  Context context,
-                                                     @NonNull  NotificationState notificationState,
-                                                     boolean signal)
+  private static void sendMultipleChatNotification(@NonNull  Context context,
+                                                   @NonNull  NotificationState notificationState,
+                                                   boolean signal)
   {
     MultipleRecipientNotificationBuilder builder       = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
     List<NotificationItem>               notifications = notificationState.getNotifications();
 
-    builder.setMessageCount(notificationState.getMessageCount(), notificationState.getThreadCount());
+    builder.setMessageCount(notificationState.getMessageCount(), notificationState.getChatCount());
     builder.setMostRecentSender(notifications.get(0).getIndividualRecipient());
     builder.setGroup(NOTIFICATION_GROUP);
     builder.setDeleteIntent(notificationState.getDeleteIntent(context));
@@ -338,7 +338,7 @@ public class MessageNotifier {
     NotificationManagerCompat.from(context).notify(SUMMARY_NOTIFICATION_ID, builder.build());
   }
 
-  private static void sendInThreadNotification(Context context, int chatId) {
+  private static void sendInChatNotification(Context context, int chatId) {
     if (!Prefs.isInChatNotifications(context) ||
         ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
     {
@@ -390,7 +390,7 @@ public class MessageNotifier {
       boolean      mms                   = record.isMms() || record.isMediaPending();
       int          chatId                = record.getChatId();
       CharSequence body                  = record.getDisplayBody();
-      Recipient    threadRecipient       = Recipient.fromChat(dcContext, msgId);
+      Recipient    chatRecipient       = Recipient.fromChat(dcContext, msgId);
       Recipient    individualRecipient   = Recipient.fromMsg(dcContext, msgId);
       SlideDeck    slideDeck             = new SlideDeck(dcContext.context, record);
       long         timestamp             = record.getTimestamp();
@@ -408,7 +408,7 @@ public class MessageNotifier {
       }
 
       if (!Prefs.isChatMuted(context, chatId)) {
-        notificationState.addNotification(new NotificationItem(id, mms, threadRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
+        notificationState.addNotification(new NotificationItem(id, mms, chatRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
       }
     }
 
@@ -476,12 +476,12 @@ public class MessageNotifier {
     private final AtomicBoolean canceled = new AtomicBoolean(false);
 
     private final Context context;
-    private final int     threadId;
+    private final int     chatId;
     private final long    delayUntil;
 
-    private DelayedNotification(Context context, int threadId) {
+    private DelayedNotification(Context context, int chatId) {
       this.context    = context;
-      this.threadId   = threadId;
+      this.chatId   = chatId;
       this.delayUntil = System.currentTimeMillis() + DELAY;
     }
 
@@ -498,7 +498,7 @@ public class MessageNotifier {
 
       if (!canceled.get()) {
         Log.w(TAG, "Not canceled, notifying...");
-        MessageNotifier.updateNotification(context, threadId, true);
+        MessageNotifier.updateNotification(context, chatId, true);
         MessageNotifier.cancelDelayedNotifications();
       } else {
         Log.w(TAG, "Canceled, not notifying...");

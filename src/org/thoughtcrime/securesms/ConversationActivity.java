@@ -138,6 +138,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 {
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
+  // TODO: rename to CHAT_ID_EXTRA
   public static final String THREAD_ID_EXTRA         = "thread_id";
   public static final String IS_ARCHIVED_EXTRA       = "is_archived";
   public static final String TEXT_EXTRA              = "draft_text";

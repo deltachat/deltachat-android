@@ -15,7 +15,7 @@ public class MarkReadReceiver extends BroadcastReceiver {
 
   private static final String TAG                   = MarkReadReceiver.class.getSimpleName();
   public static final  String CLEAR_ACTION          = "org.thoughtcrime.securesms.notifications.CLEAR";
-  public static final  String THREAD_IDS_EXTRA      = "thread_ids";
+  public static final  String CHAT_IDS_EXTRA = "thread_ids";
   public static final  String NOTIFICATION_ID_EXTRA = "notification_id";
 
   @Override
@@ -23,7 +23,7 @@ public class MarkReadReceiver extends BroadcastReceiver {
     if (!CLEAR_ACTION.equals(intent.getAction()))
       return;
 
-    final int[] threadIds = intent.getIntArrayExtra(THREAD_IDS_EXTRA);
+    final int[] threadIds = intent.getIntArrayExtra(CHAT_IDS_EXTRA);
 
     if (threadIds != null) {
       NotificationManagerCompat.from(context).cancel(intent.getIntExtra(NOTIFICATION_ID_EXTRA, -1));
