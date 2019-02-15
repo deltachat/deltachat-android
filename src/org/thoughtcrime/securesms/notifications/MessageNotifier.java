@@ -36,8 +36,11 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -76,34 +79,31 @@ public class MessageNotifier {
 
   static final  String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
-  public  static final long   NO_VISIBLE_CHAT_ID        = -1L;
+  public  static final int    NO_VISIBLE_CHAT_ID        = -1;
   private static final  int   SUMMARY_NOTIFICATION_ID   = 1338;
   private static final int    PENDING_MESSAGES_ID       = 1111;
   private static final String NOTIFICATION_GROUP        = "messages";
   private static final long   MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(20);
   private static final long   DESKTOP_ACTIVITY_PERIOD   = TimeUnit.MINUTES.toMillis(1);
 
-  private volatile static       long               visibleChatId                = NO_VISIBLE_CHAT_ID;
+  private volatile static       int                visibleChatId                = NO_VISIBLE_CHAT_ID;
   private volatile static       long               lastDesktopActivityTimestamp = -1;
   private volatile static       long               lastAudibleNotification      = -1;
   private          static final CancelableExecutor executor                     = new CancelableExecutor();
 
   private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
 
-  public static void updateVisibleChat(Context context, long chatId) {
+  public static void updateVisibleChat(Context context, int chatId) {
     visibleChatId = chatId;
+    // when we leave a chat and go back to the conversation list, show any notifications that might have piled up.
     if (visibleChatId == NO_VISIBLE_CHAT_ID && pendingNotifications.size() > 0) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          updatePendingNotifications(context);
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      Util.runOnBackground(() -> updatePendingNotifications(context));
+    } else { // we are displaying a chat so we need to clear up notifications.
+      Util.runOnBackground(() -> updateNotification(context, chatId, false));
     }
   }
 
-  public static void cancelDelayedNotifications() {
+  private static void cancelDelayedNotifications() {
     executor.cancel();
   }
 
@@ -158,6 +158,9 @@ public class MessageNotifier {
     }
   }
 
+  // a remote device, e.G. car has done something and the notifications should be updated
+  // TODO: This is probably a terrible idea. If you reply to a message in your car, all notifications
+  // for all other chats are notified again?
   public static void updateNotification(@NonNull Context context) {
     if (!Prefs.isNotificationsEnabled(context)) {
       return;
@@ -166,7 +169,30 @@ public class MessageNotifier {
     updateNotification(context, true, 0);
   }
 
-  public static void updateNotification(@NonNull Context context, int chatId)
+  @SuppressLint("StaticFieldLeak")
+  public static void initializeIncomingMessageNotifier(ApplicationDcContext dcContext) {
+
+    DcEventCenter dcEventCenter = dcContext.eventCenter;
+    dcEventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
+      @Override
+      public void handleEvent(int eventId, Object data1, Object data2) {
+        MessageNotifier.updateNotification(dcContext.context, ((Long) data1).intValue());
+      }
+
+      @Override
+      public boolean runOnMain() {
+        return false;
+      }
+    });
+
+    // in five seconds, the system should be up and ready so we can start issuing notifications.
+
+    Util.runOnBackgroundDelayed(() -> {
+      MessageNotifier.updateNotification(dcContext.context);
+    }, 5000);
+  }
+
+  private static void updateNotification(@NonNull Context context, int chatId)
   {
     if (System.currentTimeMillis() - lastDesktopActivityTimestamp < DESKTOP_ACTIVITY_PERIOD) {
       Log.w(TAG, "Scheduling delayed notification...");
@@ -176,8 +202,9 @@ public class MessageNotifier {
     }
   }
 
-  public static void updateNotification(@NonNull  Context context,
-                                        int       chatId,
+  // this gets called when a chat is opened
+  private static void updateNotification(@NonNull  Context context,
+                                        int      chatId,
                                         boolean   signal)
   {
     boolean    isVisible  = visibleChatId == chatId;
@@ -195,7 +222,7 @@ public class MessageNotifier {
 
     if (isVisible && signal) {
       sendInChatNotification(context, chatId);
-    } else if (visibleChatId != NO_VISIBLE_CHAT_ID) {
+    } else if (!isVisible && visibleChatId != NO_VISIBLE_CHAT_ID) { // while chatting in a different chat, postpone display of notifications.
       pendingNotifications.push(new Pair<>(chatId, signal));
     } else {
       updateNotification(context, signal, 0);

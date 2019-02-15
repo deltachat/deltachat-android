@@ -284,7 +284,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     titleView.setTitle(glideRequests, dcChat);
 
     MessageNotifier.updateVisibleChat(this, threadId);
-    markThreadAsRead();
   }
 
   @Override
@@ -839,16 +838,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private MediaConstraints getCurrentMediaConstraints() {
     return MediaConstraints.getPushMediaConstraints();
-  }
-
-  private void markThreadAsRead() {
-    new AsyncTask<Integer, Void, Void>() {
-      @Override
-      protected Void doInBackground(Integer... params) {
-        MessageNotifier.updateNotification(ConversationActivity.this, threadId, false);
-        return null;
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
   }
 
   private String getRealPathFromAttachment(Attachment attachment) {

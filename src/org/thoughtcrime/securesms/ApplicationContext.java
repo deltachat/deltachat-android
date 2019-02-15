@@ -69,7 +69,7 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     initializeRandomNumberFix();
     initializeLogging();
     initializeJobManager();
-    initializeIncomingMessageNotifier();
+    MessageNotifier.initializeIncomingMessageNotifier(dcContext);
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
   }
 
@@ -98,29 +98,6 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
 
   private void initializeLogging() {
     SignalProtocolLoggerProvider.setProvider(new AndroidSignalProtocolLogger());
-  }
-
-  @SuppressLint("StaticFieldLeak")
-  private void initializeIncomingMessageNotifier() {
-
-    DcEventCenter dcEventCenter = dcContext.eventCenter;
-    dcEventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
-      @Override
-      public void handleEvent(int eventId, Object data1, Object data2) {
-        MessageNotifier.updateNotification(dcContext.context, ((Long) data1).intValue());
-      }
-
-      @Override
-      public boolean runOnMain() {
-        return false;
-      }
-    });
-
-    // in five seconds, the system should be up and ready so we can start issuing notifications.
-
-    Util.runOnBackgroundDelayed(() -> {
-      MessageNotifier.updateNotification(dcContext.context);
-      }, 5000);
   }
 
   private void initializeJobManager() {
