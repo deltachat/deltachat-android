@@ -16,12 +16,11 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.support.v7.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.MailTo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,6 +62,14 @@ public class NewConversationActivity extends ContactSelectionActivity {
           String scheme = uri.getScheme();
           if(scheme != null && scheme.equals(MAILTO) ) {
             MailTo mailto = MailTo.parse(uri.toString());
+            String textToShare = mailto.getSubject();
+            String body = mailto.getBody();
+            if (body != null && !body.isEmpty()) {
+              textToShare += "\n" + body;
+            }
+            if (textToShare != null && !textToShare.isEmpty()) {
+              getIntent().putExtra(ConversationActivity.TEXT_EXTRA, textToShare);
+            }
             String recipientsList = mailto.getTo();
             if(recipientsList != null && !recipientsList.isEmpty()) {
               String[] recipientsArray = recipientsList.split(",");
@@ -103,16 +110,13 @@ public class NewConversationActivity extends ContactSelectionActivity {
                 .setMessage(getString(R.string.ask_start_chat_with, nameNAddr))
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                  @Override
-                  public void onClick(DialogInterface dialog, int which) {
-                    int contactId = dcContext.createContact(null, addr);
-                    if(contactId==0) {
-                      Toast.makeText(NewConversationActivity.this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
-                      return;
-                    }
-                    openConversation(dcContext.createChatByContactId(contactId));
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                  int contactId1 = dcContext.createContact(null, addr);
+                  if(contactId1 ==0) {
+                    Toast.makeText(NewConversationActivity.this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
+                    return;
                   }
+                  openConversation(dcContext.createChatByContactId(contactId1));
                 }).show();
       } else {
         openConversation(chatId);
@@ -121,8 +125,6 @@ public class NewConversationActivity extends ContactSelectionActivity {
   }
 
   private void openConversation(int chatId) {
-    final DcContext dcContext = DcHelper.getContext(this);
-
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(ConversationActivity.TEXT_EXTRA, getIntent().getStringExtra(ConversationActivity.TEXT_EXTRA));
     intent.setDataAndType(getIntent().getData(), getIntent().getType());
