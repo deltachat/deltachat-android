@@ -40,7 +40,6 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -79,35 +78,97 @@ public class MessageNotifier {
 
   static final  String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
+  private static final MessageNotifier INSTANCE = new MessageNotifier();
+
   public  static final int    NO_VISIBLE_CHAT_ID        = -1;
   private static final  int   SUMMARY_NOTIFICATION_ID   = 1338;
   private static final int    PENDING_MESSAGES_ID       = 1111;
   private static final String NOTIFICATION_GROUP        = "messages";
   private static final long   MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(20);
   private static final long   DESKTOP_ACTIVITY_PERIOD   = TimeUnit.MINUTES.toMillis(1);
+  private static final CancelableExecutor EXECUTOR      = new CancelableExecutor();
 
-  private volatile static       int                visibleChatId                = NO_VISIBLE_CHAT_ID;
-  private volatile static       long               lastDesktopActivityTimestamp = -1;
-  private volatile static       long               lastAudibleNotification      = -1;
-  private          static final CancelableExecutor executor                     = new CancelableExecutor();
+  private int                visibleChatId                = NO_VISIBLE_CHAT_ID;
+  private long               lastDesktopActivityTimestamp = -1;
+  private long               lastAudibleNotification      = -1;
+  private LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
 
-  private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
+  /**
+   * User entered or left a chat view. Will update the notifications.
+   * @param context The view or context this was called in.
+   * @param chatId The chat that was entered or NO_VISIBLE_CHAT_ID if chat was left.
+   */
+  public static void updateVisibleChat(@NonNull Context context, int chatId) {
+    Util.runOnBackground(() -> // push do background and return.
+    INSTANCE.internalUpdateVisibleChat(context, chatId));
+  }
 
-  public static void updateVisibleChat(Context context, int chatId) {
+  /** a remote device, e.G. car has done something and the notifications should be updated
+   * @TODO: This is probably a terrible idea. If you reply to a message in your car, all notifications
+   * for all other chats are notified again?
+   */
+  public static void updateNotification(@NonNull Context context) {
+    if (!Prefs.isNotificationsEnabled(context)) {
+      return;
+    }
+    Util.runOnBackground(() -> INSTANCE.updateNotification(context, true, 0));
+  }
+
+  /**
+   * Setup the event listener for incoming messages.
+   * Expect this to be called at the start of the application.
+   * @param dcContext
+   */
+  public static void initializeIncomingMessageNotifier(ApplicationDcContext dcContext) {
+
+    DcEventCenter dcEventCenter = dcContext.eventCenter;
+    dcEventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
+      @Override
+      public void handleEvent(int eventId, Object data1, Object data2) {
+        // the runOnMain boolean shifts this task to background.
+        INSTANCE.updateNotification(dcContext.context, ((Long) data1).intValue());
+      }
+
+      @Override
+      public boolean runOnMain() {
+        return false;
+      }
+    });
+
+    // in five seconds, the system should be up and ready so we can start issuing notifications.
+    Util.runOnBackgroundDelayed(() ->
+      MessageNotifier.updateNotification(dcContext.context)
+    , 5000);
+  }
+
+  /**
+   * remove the remaining reminders for the chats (if any).
+   * @param context
+   */
+  static void clearReminder(Context context) {
+    Intent        alarmIntent   = new Intent(ReminderReceiver.REMINDER_ACTION);
+    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+    AlarmManager  alarmManager  = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    if(alarmManager == null) return;
+    alarmManager.cancel(pendingIntent);
+  }
+
+  private void internalUpdateVisibleChat(Context context, int chatId) {
+    lastDesktopActivityTimestamp = System.currentTimeMillis(); // user did something, was active.
     visibleChatId = chatId;
     // when we leave a chat and go back to the conversation list, show any notifications that might have piled up.
     if (visibleChatId == NO_VISIBLE_CHAT_ID && pendingNotifications.size() > 0) {
-      Util.runOnBackground(() -> updatePendingNotifications(context));
+      updatePendingNotifications(context);
     } else { // we are displaying a chat so we need to clear up notifications.
-      Util.runOnBackground(() -> updateNotification(context, chatId, false));
+      updateNotification(context, chatId, false);
     }
   }
 
-  private static void cancelDelayedNotifications() {
-    executor.cancel();
+  private void cancelDelayedNotifications() {
+    EXECUTOR.cancel();
   }
 
-  private static void cancelActiveNotifications(@NonNull Context context) {
+  private void cancelActiveNotifications(@NonNull Context context) {
     NotificationManager notifications = ServiceUtil.getNotificationManager(context);
     notifications.cancel(SUMMARY_NOTIFICATION_ID);
 
@@ -126,7 +187,7 @@ public class MessageNotifier {
     }
   }
 
-  private static void cancelOrphanedNotifications(@NonNull Context context, NotificationState notificationState) {
+  private void cancelOrphanedNotifications(@NonNull Context context, NotificationState notificationState) {
     if (Build.VERSION.SDK_INT >= 23) {
       try {
         NotificationManager     notifications       = ServiceUtil.getNotificationManager(context);
@@ -158,52 +219,18 @@ public class MessageNotifier {
     }
   }
 
-  // a remote device, e.G. car has done something and the notifications should be updated
-  // TODO: This is probably a terrible idea. If you reply to a message in your car, all notifications
-  // for all other chats are notified again?
-  public static void updateNotification(@NonNull Context context) {
-    if (!Prefs.isNotificationsEnabled(context)) {
-      return;
-    }
-
-    updateNotification(context, true, 0);
-  }
-
-  @SuppressLint("StaticFieldLeak")
-  public static void initializeIncomingMessageNotifier(ApplicationDcContext dcContext) {
-
-    DcEventCenter dcEventCenter = dcContext.eventCenter;
-    dcEventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
-      @Override
-      public void handleEvent(int eventId, Object data1, Object data2) {
-        MessageNotifier.updateNotification(dcContext.context, ((Long) data1).intValue());
-      }
-
-      @Override
-      public boolean runOnMain() {
-        return false;
-      }
-    });
-
-    // in five seconds, the system should be up and ready so we can start issuing notifications.
-
-    Util.runOnBackgroundDelayed(() -> {
-      MessageNotifier.updateNotification(dcContext.context);
-    }, 5000);
-  }
-
-  private static void updateNotification(@NonNull Context context, int chatId)
+  private void updateNotification(@NonNull Context context, int chatId)
   {
     if (System.currentTimeMillis() - lastDesktopActivityTimestamp < DESKTOP_ACTIVITY_PERIOD) {
       Log.w(TAG, "Scheduling delayed notification...");
-      executor.execute(new DelayedNotification(context, chatId));
+      EXECUTOR.execute(new DelayedNotification(context, chatId));
     } else {
       updateNotification(context, chatId, true);
     }
   }
 
   // this gets called when a chat is opened
-  private static void updateNotification(@NonNull  Context context,
+  private void updateNotification(@NonNull  Context context,
                                         int      chatId,
                                         boolean   signal)
   {
@@ -230,7 +257,7 @@ public class MessageNotifier {
   }
 
   // @param signal: true to beep, false to stay silent.
-  private static void updateNotification(@NonNull Context context,
+  private void updateNotification(@NonNull Context context,
                                          boolean signal,
                                          int     reminderCount)
   {
@@ -273,7 +300,7 @@ public class MessageNotifier {
     }
   }
 
-  private static void sendSingleChatNotification(@NonNull  Context context,
+  private void sendSingleChatNotification(@NonNull  Context context,
                                                  @NonNull  NotificationState notificationState,
                                                  boolean signal, boolean bundled)
   {
@@ -325,14 +352,14 @@ public class MessageNotifier {
     NotificationManagerCompat.from(context).notify(notificationId, builder.build());
   }
 
-  private static void updatePendingNotifications(Context context) {
+  private void updatePendingNotifications(Context context) {
     while (pendingNotifications.size() > 0) {
       Pair<Integer, Boolean> chatSignalPair = pendingNotifications.pop();
       updateNotification(context, chatSignalPair.first(), chatSignalPair.second());
     }
   }
 
-  private static void sendMultipleChatNotification(@NonNull  Context context,
+  private void sendMultipleChatNotification(@NonNull  Context context,
                                                    @NonNull  NotificationState notificationState,
                                                    boolean signal)
   {
@@ -365,7 +392,7 @@ public class MessageNotifier {
     NotificationManagerCompat.from(context).notify(SUMMARY_NOTIFICATION_ID, builder.build());
   }
 
-  private static void sendInChatNotification(Context context, int chatId) {
+  private void sendInChatNotification(Context context, int chatId) {
     if (!Prefs.isInChatNotifications(context) ||
         ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
     {
@@ -405,7 +432,7 @@ public class MessageNotifier {
     ringtone.play();
   }
 
-  private static NotificationState constructNotificationState(@NonNull ApplicationDcContext dcContext,
+  private NotificationState constructNotificationState(@NonNull ApplicationDcContext dcContext,
                                                               @NonNull  int[] freshMessages)
   {
     NotificationState     notificationState = new NotificationState();
@@ -442,7 +469,7 @@ public class MessageNotifier {
     return notificationState;
   }
 
-  private static void updateBadge(Context context, int count) {
+  private void updateBadge(Context context, int count) {
     try {
       if (count == 0) ShortcutBadger.removeCount(context);
       else            ShortcutBadger.applyCount(context, count);
@@ -453,7 +480,7 @@ public class MessageNotifier {
     }
   }
 
-  private static void scheduleReminder(Context context, int count) {
+  private void scheduleReminder(Context context, int count) {
     if (count >= Prefs.getRepeatAlertsCount(context)) {
       return;
     }
@@ -469,14 +496,6 @@ public class MessageNotifier {
     alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeout, pendingIntent);
   }
 
-  static void clearReminder(Context context) {
-    Intent        alarmIntent   = new Intent(ReminderReceiver.REMINDER_ACTION);
-    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-    AlarmManager  alarmManager  = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-    if(alarmManager == null) return;
-    alarmManager.cancel(pendingIntent);
-  }
-
   public static class ReminderReceiver extends BroadcastReceiver {
 
     public static final String REMINDER_ACTION = "org.thoughtcrime.securesms.MessageNotifier.REMINDER_ACTION";
@@ -488,7 +507,7 @@ public class MessageNotifier {
         @Override
         protected Void doInBackground(Void... params) {
           int reminderCount = intent.getIntExtra("reminder_count", 0);
-          MessageNotifier.updateNotification(context, true, reminderCount + 1);
+          INSTANCE.updateNotification(context, true, reminderCount + 1);
 
           return null;
         }
@@ -525,8 +544,8 @@ public class MessageNotifier {
 
       if (!canceled.get()) {
         Log.w(TAG, "Not canceled, notifying...");
-        MessageNotifier.updateNotification(context, chatId, true);
-        MessageNotifier.cancelDelayedNotifications();
+        INSTANCE.updateNotification(context, chatId, true);
+        INSTANCE.cancelDelayedNotifications();
       } else {
         Log.w(TAG, "Canceled, not notifying...");
       }
