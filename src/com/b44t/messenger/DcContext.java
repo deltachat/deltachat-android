@@ -31,6 +31,7 @@ public class DcContext {
     public final static int DC_EVENT_GET_STRING                  = 2091;
     public final static int DC_EVENT_GET_QUANTITIY_STRING        = 2092;
     public final static int DC_EVENT_HTTP_GET                    = 2100;
+    public final static int DC_EVENT_HTTP_POST                   = 2110;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;

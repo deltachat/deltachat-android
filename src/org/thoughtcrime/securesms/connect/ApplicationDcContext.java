@@ -36,9 +36,12 @@ import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -608,6 +611,52 @@ public class ApplicationDcContext extends DcContext {
           e.printStackTrace();
         }
         return stringToData(httpContent);
+
+      case DC_EVENT_HTTP_POST:
+        String postContent = null;
+        try {
+          String urlStr = dataToString(data1);
+          String paramStr = "";
+          if(urlStr.contains("?")) {
+              paramStr = urlStr.substring(urlStr.indexOf("?")+1);
+              urlStr = urlStr.substring(0, urlStr.indexOf("?"));
+          }
+
+          URL url = new URL(urlStr);
+          url.getQuery();
+          HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+          try {
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(15 * 1000);
+            conn.setReadTimeout(15 * 1000);
+
+            OutputStream os = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(os, "UTF-8"));
+            writer.write(paramStr);
+
+            writer.flush();
+            writer.close();
+            os.close();
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+              BufferedReader br = new BufferedReader(new InputStreamReader(new BufferedInputStream(conn.getInputStream())));
+              StringBuilder total = new StringBuilder();
+              String line;
+              while ((line = br.readLine()) != null) {
+                total.append(line).append('\n');
+              }
+              postContent = total.toString();
+            }
+          } finally {
+            conn.disconnect();
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+        return stringToData(postContent);
 
       case DC_EVENT_GET_STRING:
         String s;
