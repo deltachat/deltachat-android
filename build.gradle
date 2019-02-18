@@ -250,14 +250,6 @@ android {
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
         }
-        androidTest {
-            java.srcDirs = ['test/androidTest/java']
-        }
-        test {
-            java.srcDirs = ['test/unitTest/java']
-        }
-
-        website.manifest.srcFile 'website/AndroidManifest.xml'
     }
 
      lintOptions {
