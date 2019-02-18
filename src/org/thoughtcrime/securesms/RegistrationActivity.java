@@ -26,7 +26,12 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
+import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
+
+import java.util.concurrent.ExecutionException;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
@@ -87,7 +92,19 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         int id = item.getItemId();
 
         if (id == R.id.do_register) {
-            onLogin();
+            checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
+                @Override
+                public void onSuccess(Boolean oauth2started) {
+                    if(!oauth2started) {
+                        onLogin();
+                    }
+                }
+
+                @Override
+                public void onFailure(ExecutionException e) {
+                    onLogin();
+                }
+            });
             return true;
         } else if (id == android.R.id.home) {
             // handle close button click here
@@ -175,6 +192,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             switch (type) {
                 case EMAIL:
                     verifyEmail(inputEditText);
+                    checkOauth2start();
                     break;
                 case SERVER:
                     verifyServer(inputEditText);
@@ -192,13 +210,42 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if (!matchesEmailPattern(email)) {
             view.setError(error);
         }
-        if (!TextUtils.isEmpty(email) && isGmail(email) && !gmailDialogShown) {
-            gmailDialogShown = true;
-            new AlertDialog.Builder(this)
-                .setMessage(R.string.login_info_gmail_text)
-                .setPositiveButton(R.string.ok, null)
-                .show();
+    }
+
+    private ListenableFuture<Boolean> checkOauth2start() {
+        SettableFuture<Boolean> oauth2started = new SettableFuture<>();
+
+        String email = emailInput.getText().toString();
+        if (!TextUtils.isEmpty(email) ) {
+            String redirectUrl = "https://localhost/delta/auth";
+            String oauth2url = DcHelper.getContext(this).getOauth2Url(email, redirectUrl);
+            if (!TextUtils.isEmpty(oauth2url)) {
+                new AlertDialog.Builder(this)
+                    .setMessage("This E-Mail service provides OAuth2. Continue?") // TODO: wording, localisation
+                    .setNegativeButton(R.string.cancel, (dialog, which)->{
+                        if(isGmail(email)) {
+                            showGmailNoOauth2Hint();
+                        }
+                        oauth2started.set(false);
+                    })
+                    .setPositiveButton(R.string.ok, (dialog, which)-> {
+                        IntentUtils.showBrowserIntent(this, oauth2url);
+                        oauth2started.set(true);
+                    })
+                    .show();
+            } else if (isGmail(email)) {
+                showGmailNoOauth2Hint();
+                oauth2started.set(false);
+            }
+            else {
+                oauth2started.set(false);
+            }
         }
+        else {
+            oauth2started.set(false);
+        }
+
+        return oauth2started;
     }
 
     private boolean matchesEmailPattern(String email) {
@@ -207,6 +254,17 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private boolean isGmail(String email) {
         return email != null && (email.toLowerCase().contains("@gmail.") || email.toLowerCase().contains("@googlemail."));
+    }
+
+    private void showGmailNoOauth2Hint()
+    {
+        if(!gmailDialogShown) {
+            gmailDialogShown = true;
+            new AlertDialog.Builder(this)
+                .setMessage(R.string.login_info_gmail_text)
+                .setPositiveButton(R.string.ok, null)
+                .show();
+        }
     }
 
     private void verifyServer(TextInputEditText view) {
