@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -153,7 +154,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         imapPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
         smtpServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
         smtpPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
-//        loginButton.setOnClickListener(l -> onLogin());
         advancedTextView.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setRotation(45);
@@ -218,6 +218,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
     }
 
+    private long oauth2Requested = 0;
+
     private ListenableFuture<Boolean> checkOauth2start() {
         SettableFuture<Boolean> oauth2started = new SettableFuture<>();
 
@@ -239,6 +241,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                         oauth2started.set(false);
                     })
                     .setPositiveButton(R.string.ok, (dialog, which)-> {
+                        // pass control to browser, we'll be back in business at (**)
+                        oauth2Requested = System.currentTimeMillis();
                         IntentUtils.showBrowserIntent(this, oauth2url);
                         oauth2started.set(true);
                     })
@@ -256,6 +260,26 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
 
         return oauth2started;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        if(Intent.ACTION_VIEW.equals(intent.getAction())) {
+            Uri uri = intent.getData();
+            String path = uri.getPath();
+            if(!path.startsWith("/"+BuildConfig.APPLICATION_ID)
+             || System.currentTimeMillis()-oauth2Requested > 24*60*60*1000) {
+                return; // error, fail silently, nothing to do.
+            }
+
+            // back in business after we passed control to the browser in (**)
+            String code = uri.getQueryParameter("code");
+            passwordInput.setText(code);
+            authMethod.setSelection(1/*OAuth2*/);
+            onLogin();
+        }
     }
 
     private boolean matchesEmailPattern(String email) {
@@ -407,6 +431,4 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             }
         }
     }
-
-
 }
