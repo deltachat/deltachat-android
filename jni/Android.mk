@@ -898,6 +898,7 @@ messenger-backend/src/dc_contact.c \
 messenger-backend/src/dc_dehtml.c \
 messenger-backend/src/dc_hash.c \
 messenger-backend/src/dc_imap.c \
+messenger-backend/src/dc_oauth2.c \
 messenger-backend/src/dc_job.c \
 messenger-backend/src/dc_jobthread.c \
 messenger-backend/src/dc_key.c \
@@ -921,6 +922,7 @@ messenger-backend/src/dc_msg.c \
 messenger-backend/src/dc_param.c \
 messenger-backend/src/dc_pgp.c \
 messenger-backend/src/dc_saxparser.c \
+messenger-backend/src/dc_jsmn.c \
 messenger-backend/src/dc_simplify.c \
 messenger-backend/src/dc_smtp.c \
 messenger-backend/src/dc_sqlite3.c \

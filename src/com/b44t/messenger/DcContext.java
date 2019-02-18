@@ -92,6 +92,7 @@ public class DcContext {
     public native String       getConfig            (String key, String def);
     public int                 getConfigInt         (String key, int def) { try{return Integer.parseInt(getConfig(key, Integer.toString(def)));} catch(Exception e) {} return 0; }
     public native String       getInfo              ();
+    public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);
