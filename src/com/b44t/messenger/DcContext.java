@@ -56,6 +56,8 @@ public class DcContext {
     public final static int DC_QR_URL               = 332;
     public final static int DC_QR_ERROR             = 400;
 
+    public final static int DC_LP_AUTH_OAUTH2          =     0x2;
+    public final static int DC_LP_AUTH_NORMAL          =     0x4;
     public final static int DC_LP_IMAP_SOCKET_STARTTLS =   0x100;
     public final static int DC_LP_IMAP_SOCKET_SSL      =   0x200;
     public final static int DC_LP_IMAP_SOCKET_PLAIN    =   0x400;

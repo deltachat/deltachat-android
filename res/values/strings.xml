@@ -267,6 +267,7 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP Security</string>
+    <string name="login_auth_method">Authorization method</string>
     <string name="login_info_gmail_text">For GMail Accounts you need to create an App-Password if you have 2FA enabled. If this setting is not available, you need to enable Less Secure Apps.</string>
     <string name="login_error_mail">Please enter a valid email address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>

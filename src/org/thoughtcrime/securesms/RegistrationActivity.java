@@ -68,6 +68,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     MenuItem loginMenuItem;
     Spinner imapSecurity;
     Spinner smtpSecurity;
+    Spinner authMethod;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -138,6 +139,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         imapSecurity = findViewById(R.id.imap_security);
         smtpSecurity = findViewById(R.id.smtp_security);
+        authMethod = findViewById(R.id.auth_method);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -183,6 +185,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             if((server_flags&DcContext.DC_LP_SMTP_SOCKET_STARTTLS)!=0) sel = 2;
             if((server_flags&DcContext.DC_LP_SMTP_SOCKET_PLAIN)!=0) sel = 3;
             smtpSecurity.setSelection(sel);
+
+            sel = 0;
+            if((server_flags&DcContext.DC_LP_AUTH_OAUTH2)!=0) sel = 1;
+            authMethod.setSelection(sel);
         }
     }
 
@@ -351,6 +357,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if(smtpSecurity.getSelectedItemPosition()==1) server_flags |= DcContext.DC_LP_SMTP_SOCKET_SSL;
         if(smtpSecurity.getSelectedItemPosition()==2) server_flags |= DcContext.DC_LP_SMTP_SOCKET_STARTTLS;
         if(smtpSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_SMTP_SOCKET_PLAIN;
+        if(authMethod.getSelectedItemPosition()==1)   server_flags |= DcContext.DC_LP_AUTH_OAUTH2;
         DcHelper.getContext(this).setConfigInt("server_flags", server_flags);
 
         // calling configure() results in
