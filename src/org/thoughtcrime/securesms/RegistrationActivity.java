@@ -217,7 +217,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         String email = emailInput.getText().toString();
         if (!TextUtils.isEmpty(email) ) {
-            String redirectUrl = "https://localhost/delta/auth";
+
+            // the redirect-uri is also used as intent-filter in the manifest
+            // and should be whitelisted by the supported oauth2 services
+            String redirectUrl = "chat.delta:/"+BuildConfig.APPLICATION_ID+"/auth";
+
             String oauth2url = DcHelper.getContext(this).getOauth2Url(email, redirectUrl);
             if (!TextUtils.isEmpty(oauth2url)) {
                 new AlertDialog.Builder(this)
