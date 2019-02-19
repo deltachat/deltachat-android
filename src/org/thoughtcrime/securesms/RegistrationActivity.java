@@ -31,6 +31,7 @@ import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
+import org.w3c.dom.Text;
 
 import java.util.concurrent.ExecutionException;
 
@@ -44,13 +45,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 
-/**
- * The register account activity.  Prompts ths user for their registration information
- * and begins the account registration process.
- *
- * @author Moxie Marlinspike
- * @author Daniel Böhrs
- */
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
     private enum VerificationType {
@@ -76,58 +70,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         super.onCreate(bundle);
         setContentView(R.layout.registration_activity);
 
-        initializeResources();
-        DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuInflater inflater = this.getMenuInflater();
-        menu.clear();
-        inflater.inflate(R.menu.registration, menu);
-        loginMenuItem = menu.findItem(R.id.do_register);
-        super.onPrepareOptionsMenu(menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.do_register) {
-            checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
-                @Override
-                public void onSuccess(Boolean oauth2started) {
-                    if(!oauth2started) {
-                        onLogin();
-                    }
-                }
-
-                @Override
-                public void onFailure(ExecutionException e) {
-                    onLogin();
-                }
-            });
-            return true;
-        } else if (id == android.R.id.home) {
-            // handle close button click here
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        DcHelper.getContext(this).eventCenter.removeObservers(this);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-    }
-
-    private void initializeResources() {
         emailInput = findViewById(R.id.email_text);
         passwordInput = findViewById(R.id.password_text);
         advancedGroup = findViewById(R.id.advanced_group);
@@ -190,6 +132,55 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             if((server_flags&DcContext.DC_LP_AUTH_OAUTH2)!=0) sel = 1;
             authMethod.setSelection(sel);
         }
+
+        DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuInflater inflater = this.getMenuInflater();
+        menu.clear();
+        inflater.inflate(R.menu.registration, menu);
+        loginMenuItem = menu.findItem(R.id.do_register);
+        super.onPrepareOptionsMenu(menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.do_register) {
+            checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
+                @Override
+                public void onSuccess(Boolean oauth2started) {
+                    if(!oauth2started) {
+                        onLogin();
+                    }
+                }
+
+                @Override
+                public void onFailure(ExecutionException e) {
+                    onLogin();
+                }
+            });
+            return true;
+        } else if (id == android.R.id.home) {
+            // handle close button click here
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        DcHelper.getContext(this).eventCenter.removeObservers(this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
 
     private void focusListener(View view, boolean focused, VerificationType type) {
@@ -207,14 +198,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     verifyPort(inputEditText);
                     break;
             }
-        }
-    }
-
-    private void verifyEmail(TextInputEditText view) {
-        String error = getString(R.string.login_error_mail);
-        String email = view.getText().toString();
-        if (!matchesEmailPattern(email)) {
-            view.setError(error);
         }
     }
 
@@ -265,20 +248,21 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
         if(Intent.ACTION_VIEW.equals(intent.getAction())) {
             Uri uri = intent.getData();
             String path = uri.getPath();
             if(!path.startsWith("/"+BuildConfig.APPLICATION_ID)
-             || System.currentTimeMillis()-oauth2Requested > 24*60*60*1000) {
-                return; // error, fail silently, nothing to do.
+             || System.currentTimeMillis()-oauth2Requested > 3*60*60*1000) {
+                return; // timeout after some hours or a request belonging to a bad path.
             }
 
             // back in business after we passed control to the browser in (**)
             String code = uri.getQueryParameter("code");
-            passwordInput.setText(code);
-            authMethod.setSelection(1/*OAuth2*/);
-            onLogin();
+            if(!TextUtils.isEmpty(code)) {
+                passwordInput.setText(code);
+                authMethod.setSelection(1/*OAuth2*/);
+                onLogin();
+            }
         }
     }
 
@@ -298,6 +282,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 .setMessage(R.string.login_info_gmail_text)
                 .setPositiveButton(R.string.ok, null)
                 .show();
+        }
+    }
+
+    private void verifyEmail(TextInputEditText view) {
+        String error = getString(R.string.login_error_mail);
+        String email = view.getText().toString();
+        if (!matchesEmailPattern(email)) {
+            view.setError(error);
         }
     }
 

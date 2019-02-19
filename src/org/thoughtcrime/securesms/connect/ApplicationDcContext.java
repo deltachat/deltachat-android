@@ -623,34 +623,31 @@ public class ApplicationDcContext extends DcContext {
               paramStr = urlStr.substring(urlStr.indexOf("?")+1);
               urlStr = urlStr.substring(0, urlStr.indexOf("?"));
           }
+          byte[] bytes = paramStr.getBytes();
 
           URL url = new URL(urlStr);
-          url.getQuery();
           HttpURLConnection conn = (HttpURLConnection) url.openConnection();
           try {
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
             conn.setConnectTimeout(15 * 1000);
             conn.setReadTimeout(15 * 1000);
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("Content-Length", String.valueOf(bytes.length));
+            conn.getOutputStream().write(bytes);
 
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                new OutputStreamWriter(os, "UTF-8"));
-            writer.write(paramStr);
-
-            writer.flush();
-            writer.close();
-            os.close();
-
-            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-              BufferedReader br = new BufferedReader(new InputStreamReader(new BufferedInputStream(conn.getInputStream())));
-              StringBuilder total = new StringBuilder();
-              String line;
-              while ((line = br.readLine()) != null) {
-                total.append(line).append('\n');
-              }
+            int responseCode = conn.getResponseCode();
+            BufferedReader br = new BufferedReader(new InputStreamReader(new BufferedInputStream(conn.getInputStream())));
+            StringBuilder total = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+              total.append(line).append('\n');
+            }
+            if (responseCode == HttpURLConnection.HTTP_OK) {
               postContent = total.toString();
+            }
+            else {
+              Log.i("DeltaChat", String.format("DC_EVENT_HTTP_POST error: %s", total.toString()));
             }
           } finally {
             conn.disconnect();
