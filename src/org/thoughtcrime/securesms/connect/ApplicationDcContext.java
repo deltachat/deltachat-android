@@ -588,6 +588,7 @@ public class ApplicationDcContext extends DcContext {
         break;
 
       case DC_EVENT_HTTP_GET:
+        // calling this from the main thread may result in NetworkOnMainThreadException error
         String httpContent = null;
         try {
           URL url = new URL(dataToString(data1));
@@ -613,6 +614,7 @@ public class ApplicationDcContext extends DcContext {
         return stringToData(httpContent);
 
       case DC_EVENT_HTTP_POST:
+        // calling this from the main thread may result in NetworkOnMainThreadException error
         String postContent = null;
         try {
           String urlStr = dataToString(data1);
