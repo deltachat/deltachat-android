@@ -182,6 +182,7 @@
             <!-- this scheme is used as the redirect_url for getOauth2Url()
             and should be whitelisted by the supported oauth2 services -->
             <data android:scheme="chat.delta" android:path="/${applicationId}/auth" tools:ignore="AppLinkUrlError"/>
+            <data android:scheme="chat.delta" android:path="/auth" tools:ignore="AppLinkUrlError"/>
         </intent-filter>
     </activity>
 

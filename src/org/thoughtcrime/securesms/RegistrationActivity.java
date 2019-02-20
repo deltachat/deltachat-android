@@ -253,7 +253,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if(Intent.ACTION_VIEW.equals(intent.getAction())) {
             Uri uri = intent.getData();
             String path = uri.getPath();
-            if(!path.startsWith("/"+BuildConfig.APPLICATION_ID)
+            if(!(path.startsWith("/"+BuildConfig.APPLICATION_ID)||path.startsWith("/auth"))
              || System.currentTimeMillis()-oauth2Requested > 3*60*60*1000) {
                 return; // timeout after some hours or a request belonging to a bad path.
             }
