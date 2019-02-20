@@ -216,19 +216,21 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             String oauth2url = DcHelper.getContext(this).getOauth2Url(email, redirectUrl);
             if (!TextUtils.isEmpty(oauth2url)) {
                 new AlertDialog.Builder(this)
-                    .setMessage("This E-Mail service provides OAuth2. Continue?") // TODO: wording, localisation
+                    .setTitle("Continue with simplified setup?")
+                    .setMessage("This e-mail-address supports a simplified setup process (OAuth2).\n\nFor this purpose, the browser is opened in the next step. There you can grant access to Delta Chat.") // TODO: localisation
                     .setNegativeButton(R.string.cancel, (dialog, which)->{
                         if(isGmail(email)) {
                             showGmailNoOauth2Hint();
                         }
                         oauth2started.set(false);
                     })
-                    .setPositiveButton(R.string.ok, (dialog, which)-> {
+                    .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
                         // pass control to browser, we'll be back in business at (**)
                         oauth2Requested = System.currentTimeMillis();
                         IntentUtils.showBrowserIntent(this, oauth2url);
                         oauth2started.set(true);
                     })
+                    .setCancelable(false)
                     .show();
             } else if (isGmail(email)) {
                 showGmailNoOauth2Hint();
