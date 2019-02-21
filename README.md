@@ -1,8 +1,13 @@
 ## Delta Chat Android Client
 
-This is the android client for Delta Chat.  For the core library and other common
-information, please refer to [Delta Chat Core Library](https://github.com/deltachat/deltachat-core).
-For ready-to-use binaries, please go to https://delta.chat .
+This is the android client for [Delta Chat](https://delta.chat/).
+It is available on [F-Droid](https://f-droid.org/app/com.b44t.messenger) and
+the [Google Play Store](https://play.google.com/store/apps/details?id=chat.delta).
+The APK can also be downloaded from [github](https://github.com/deltachat/deltachat-android/releases)
+(for experienced users only). 
+
+For the core library and other common information, please refer to the
+[Delta Chat Core Library](https://github.com/deltachat/deltachat-core).
 
 <img alt="Screenshot Chat List" src="docs/images/2019-01-chatlist.png" width="298" /> <img alt="Screenshot Chat View" src="docs/images/2019-01-chat.png" width="298" />
 
