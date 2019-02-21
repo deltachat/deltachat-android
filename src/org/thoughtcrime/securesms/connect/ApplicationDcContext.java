@@ -36,9 +36,12 @@ import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -585,6 +588,7 @@ public class ApplicationDcContext extends DcContext {
         break;
 
       case DC_EVENT_HTTP_GET:
+        // calling this from the main thread may result in NetworkOnMainThreadException error
         String httpContent = null;
         try {
           URL url = new URL(dataToString(data1));
@@ -608,6 +612,50 @@ public class ApplicationDcContext extends DcContext {
           e.printStackTrace();
         }
         return stringToData(httpContent);
+
+      case DC_EVENT_HTTP_POST:
+        // calling this from the main thread may result in NetworkOnMainThreadException error
+        String postContent = null;
+        try {
+          String urlStr = dataToString(data1);
+          String paramStr = "";
+          if(urlStr.contains("?")) {
+              paramStr = urlStr.substring(urlStr.indexOf("?")+1);
+              urlStr = urlStr.substring(0, urlStr.indexOf("?"));
+          }
+          byte[] bytes = paramStr.getBytes();
+
+          URL url = new URL(urlStr);
+          HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+          try {
+            conn.setConnectTimeout(15 * 1000);
+            conn.setReadTimeout(15 * 1000);
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("Content-Length", String.valueOf(bytes.length));
+            conn.getOutputStream().write(bytes);
+
+            int responseCode = conn.getResponseCode();
+            BufferedReader br = new BufferedReader(new InputStreamReader(new BufferedInputStream(conn.getInputStream())));
+            StringBuilder total = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+              total.append(line).append('\n');
+            }
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+              postContent = total.toString();
+            }
+            else {
+              Log.i("DeltaChat", String.format("DC_EVENT_HTTP_POST error: %s", total.toString()));
+            }
+          } finally {
+            conn.disconnect();
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+        return stringToData(postContent);
 
       case DC_EVENT_GET_STRING:
         String s;

@@ -31,6 +31,7 @@ public class DcContext {
     public final static int DC_EVENT_GET_STRING                  = 2091;
     public final static int DC_EVENT_GET_QUANTITIY_STRING        = 2092;
     public final static int DC_EVENT_HTTP_GET                    = 2100;
+    public final static int DC_EVENT_HTTP_POST                   = 2110;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
@@ -55,6 +56,8 @@ public class DcContext {
     public final static int DC_QR_URL               = 332;
     public final static int DC_QR_ERROR             = 400;
 
+    public final static int DC_LP_AUTH_OAUTH2          =     0x2;
+    public final static int DC_LP_AUTH_NORMAL          =     0x4;
     public final static int DC_LP_IMAP_SOCKET_STARTTLS =   0x100;
     public final static int DC_LP_IMAP_SOCKET_SSL      =   0x200;
     public final static int DC_LP_IMAP_SOCKET_PLAIN    =   0x400;
@@ -91,6 +94,7 @@ public class DcContext {
     public native String       getConfig            (String key, String def);
     public int                 getConfigInt         (String key, int def) { try{return Integer.parseInt(getConfig(key, Integer.toString(def)));} catch(Exception e) {} return 0; }
     public native String       getInfo              ();
+    public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);

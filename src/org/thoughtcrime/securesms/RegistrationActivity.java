@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -26,7 +27,13 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
+import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
+import org.w3c.dom.Text;
+
+import java.util.concurrent.ExecutionException;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
@@ -38,13 +45,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 
-/**
- * The register account activity.  Prompts ths user for their registration information
- * and begins the account registration process.
- *
- * @author Moxie Marlinspike
- * @author Daniel Böhrs
- */
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
     private enum VerificationType {
@@ -63,52 +63,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     MenuItem loginMenuItem;
     Spinner imapSecurity;
     Spinner smtpSecurity;
+    Spinner authMethod;
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.registration_activity);
 
-        initializeResources();
-        DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuInflater inflater = this.getMenuInflater();
-        menu.clear();
-        inflater.inflate(R.menu.registration, menu);
-        loginMenuItem = menu.findItem(R.id.do_register);
-        super.onPrepareOptionsMenu(menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.do_register) {
-            onLogin();
-            return true;
-        } else if (id == android.R.id.home) {
-            // handle close button click here
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        DcHelper.getContext(this).eventCenter.removeObservers(this);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-    }
-
-    private void initializeResources() {
         emailInput = findViewById(R.id.email_text);
         passwordInput = findViewById(R.id.password_text);
         advancedGroup = findViewById(R.id.advanced_group);
@@ -121,6 +82,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         imapSecurity = findViewById(R.id.imap_security);
         smtpSecurity = findViewById(R.id.smtp_security);
+        authMethod = findViewById(R.id.auth_method);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -134,7 +96,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         imapPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
         smtpServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
         smtpPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
-//        loginButton.setOnClickListener(l -> onLogin());
         advancedTextView.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setRotation(45);
@@ -166,7 +127,60 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             if((server_flags&DcContext.DC_LP_SMTP_SOCKET_STARTTLS)!=0) sel = 2;
             if((server_flags&DcContext.DC_LP_SMTP_SOCKET_PLAIN)!=0) sel = 3;
             smtpSecurity.setSelection(sel);
+
+            sel = 0;
+            if((server_flags&DcContext.DC_LP_AUTH_OAUTH2)!=0) sel = 1;
+            authMethod.setSelection(sel);
         }
+
+        DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuInflater inflater = this.getMenuInflater();
+        menu.clear();
+        inflater.inflate(R.menu.registration, menu);
+        loginMenuItem = menu.findItem(R.id.do_register);
+        super.onPrepareOptionsMenu(menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.do_register) {
+            checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
+                @Override
+                public void onSuccess(Boolean oauth2started) {
+                    if(!oauth2started) {
+                        onLogin();
+                    }
+                }
+
+                @Override
+                public void onFailure(ExecutionException e) {
+                    onLogin();
+                }
+            });
+            return true;
+        } else if (id == android.R.id.home) {
+            // handle close button click here
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        DcHelper.getContext(this).eventCenter.removeObservers(this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
 
     private void focusListener(View view, boolean focused, VerificationType type) {
@@ -175,6 +189,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             switch (type) {
                 case EMAIL:
                     verifyEmail(inputEditText);
+                    checkOauth2start();
                     break;
                 case SERVER:
                     verifyServer(inputEditText);
@@ -186,18 +201,70 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
     }
 
-    private void verifyEmail(TextInputEditText view) {
-        String error = getString(R.string.login_error_mail);
-        String email = view.getText().toString();
-        if (!matchesEmailPattern(email)) {
-            view.setError(error);
+    private long oauth2Requested = 0;
+
+    private ListenableFuture<Boolean> checkOauth2start() {
+        SettableFuture<Boolean> oauth2started = new SettableFuture<>();
+
+        String email = emailInput.getText().toString();
+        if (!TextUtils.isEmpty(email) ) {
+
+            // the redirect-uri is also used as intent-filter in the manifest
+            // and should be whitelisted by the supported oauth2 services
+            String redirectUrl = "chat.delta:/"+BuildConfig.APPLICATION_ID+"/auth";
+
+            String oauth2url = DcHelper.getContext(this).getOauth2Url(email, redirectUrl);
+            if (!TextUtils.isEmpty(oauth2url)) {
+                new AlertDialog.Builder(this)
+                    .setTitle(R.string.login_info_oauth2_title)
+                    .setMessage(R.string.login_info_oauth2_text)
+                    .setNegativeButton(R.string.cancel, (dialog, which)->{
+                        if(isGmail(email)) {
+                            showGmailNoOauth2Hint();
+                        }
+                        oauth2started.set(false);
+                    })
+                    .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
+                        // pass control to browser, we'll be back in business at (**)
+                        oauth2Requested = System.currentTimeMillis();
+                        IntentUtils.showBrowserIntent(this, oauth2url);
+                        oauth2started.set(true);
+                    })
+                    .setCancelable(false)
+                    .show();
+            } else if (isGmail(email)) {
+                showGmailNoOauth2Hint();
+                oauth2started.set(false);
+            }
+            else {
+                oauth2started.set(false);
+            }
         }
-        if (!TextUtils.isEmpty(email) && isGmail(email) && !gmailDialogShown) {
-            gmailDialogShown = true;
-            new AlertDialog.Builder(this)
-                .setMessage(R.string.login_info_gmail_text)
-                .setPositiveButton(R.string.ok, null)
-                .show();
+        else {
+            oauth2started.set(false);
+        }
+
+        return oauth2started;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(Intent.ACTION_VIEW.equals(intent.getAction())) {
+            Uri uri = intent.getData();
+            String path = uri.getPath();
+            if(!(path.startsWith("/"+BuildConfig.APPLICATION_ID)||path.startsWith("/auth"))
+             || System.currentTimeMillis()-oauth2Requested > 3*60*60*1000) {
+                return; // timeout after some hours or a request belonging to a bad path.
+            }
+
+            // back in business after we passed control to the browser in (**)
+            String code = uri.getQueryParameter("code");
+            if(!TextUtils.isEmpty(code)) {
+                passwordInput.setText(code);
+                authMethod.setSelection(1/*OAuth2*/);
+                onLogin();
+            }
         }
     }
 
@@ -207,6 +274,25 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private boolean isGmail(String email) {
         return email != null && (email.toLowerCase().contains("@gmail.") || email.toLowerCase().contains("@googlemail."));
+    }
+
+    private void showGmailNoOauth2Hint()
+    {
+        if(!gmailDialogShown) {
+            gmailDialogShown = true;
+            new AlertDialog.Builder(this)
+                .setMessage(R.string.login_info_gmail_text)
+                .setPositiveButton(R.string.ok, null)
+                .show();
+        }
+    }
+
+    private void verifyEmail(TextInputEditText view) {
+        String error = getString(R.string.login_error_mail);
+        String email = view.getText().toString();
+        if (!matchesEmailPattern(email)) {
+            view.setError(error);
+        }
     }
 
     private void verifyServer(TextInputEditText view) {
@@ -289,6 +375,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if(smtpSecurity.getSelectedItemPosition()==1) server_flags |= DcContext.DC_LP_SMTP_SOCKET_SSL;
         if(smtpSecurity.getSelectedItemPosition()==2) server_flags |= DcContext.DC_LP_SMTP_SOCKET_STARTTLS;
         if(smtpSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_SMTP_SOCKET_PLAIN;
+        if(authMethod.getSelectedItemPosition()==1)   server_flags |= DcContext.DC_LP_AUTH_OAUTH2;
         DcHelper.getContext(this).setConfigInt("server_flags", server_flags);
 
         // calling configure() results in
@@ -338,6 +425,4 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             }
         }
     }
-
-
 }

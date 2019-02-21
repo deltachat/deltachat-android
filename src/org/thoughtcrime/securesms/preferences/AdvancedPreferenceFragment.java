@@ -155,7 +155,7 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
       String app     = context.getString(R.string.app_name);
       String version = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
 
-      return String.format("%s v%s", app, version);
+      return String.format("%s %s", app, version);
     } catch (PackageManager.NameNotFoundException e) {
       Log.w(TAG, e);
       return context.getString(R.string.app_name);
