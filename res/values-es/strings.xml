@@ -21,7 +21,7 @@
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
     <string name="error_no_network">Red no disponible.</string>
-    <string name="no_app_to_handle_data">No se encontró una aplicación compatible con el tipo de dato</string>
+    <string name="no_app_to_handle_data">No se encontró una aplicación compatible con el tipo de archivo</string>
     <string name="no_browser_installed">No hay ningún navegador instalado.</string>
     <string name="file_not_found">No se pudo encontrar %1$s.</string>
     <string name="copied_to_clipboard">Copiado al portapapeles.</string>
@@ -139,7 +139,7 @@
     <string name="menu_settings">Ajustes</string>
     <string name="menu_advanced">Avanzado</string>
     <string name="menu_deaddrop">Solicitudes de contacto</string>
-    <string name="menu_deaddrop_subtitle">Presiona un mensaje para comenzar a chatear</string>
+    <string name="menu_deaddrop_subtitle">Presiona un mensaje para empezar a chatear</string>
     <string name="menu_view_profile">Ver perfil</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
@@ -196,7 +196,7 @@
     <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_record_explain">Mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
-    <string name="chat_no_chats_yet_hint">Dale a tu bandeja de entrada algo interesante. Comienza por enviar un mensaje a un amigo.</string>
+    <string name="chat_no_chats_yet_hint">Dale a tu bandeja de entrada algo de vida. Comienza por enviar un mensaje a un amigo.</string>
     <string name="chat_all_done_hint">Bandeja de entrada vacía</string>
     <string name="chat_all_done_explain">No hay nada aquí!!!</string>
     <string name="chat_share_with_title">Compartir con</string>
@@ -252,7 +252,7 @@
     <string name="welcome_intro6_message">Encriptada con todos los algoritmos comunes. Los mensajes se guardan solo en tu servidor de correo.</string>
     <string name="welcome_intro7_headline">Confiable</string>
     <string name="welcome_intro7_message">Delta Chat es seguro para usos comerciales y de negocio, compatible y basado en estándares abiertos.</string>
-    <string name="welcome_start_messaging">Iniciar mensajería</string>
+    <string name="welcome_start_messaging">Empezar a Chatear</string>
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
@@ -274,7 +274,7 @@
     <string name="login_error_required_fields">Por favor, introduzca una dirección de correo válida y una contraseña</string>
     <string name="import_backup_title">Importar copia de respaldo</string>
     <string name="import_backup_ask">Copia de respaldo encontrada en \"%1$s\".\n\n¿Desea importar y utilizar todos los datos y configuraciones de ella?</string>
-    <string name="import_backup_no_backup_found">No se encontraron copias de seguridad.\n\nCopie el archivo de respaldo en \"%1$s\" e inténtelo de nuevo. Alternativamente, presione \"Iniciar mensajería\" para continuar con el proceso de configuración normal.</string>
+    <string name="import_backup_no_backup_found">No se encontraron copias de seguridad.\n\nCopie el archivo de respaldo en \"%1$s\" e inténtelo de nuevo. Alternativamente, presione \"Empezar a Chatear\" para continuar con el proceso de configuración normal.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">No se puede iniciar sesión como \"%1$s\". Por favor, compruebe si la dirección de correo y la contraseña son correctas.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
@@ -480,7 +480,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
-
     <!-- languages -->
     <string name="language_be">Belga</string>
     <string name="language_ca">Catalán</string>

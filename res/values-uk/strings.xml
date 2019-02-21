@@ -326,7 +326,7 @@
     <string name="pref_trim_now_ask">Видалити всі старі повідомлення? Ця дія негайно очистить всі чати до %d останніх повідомлень.</string>
     <string name="pref_blocked_contacts">Заблоковані контакти</string>
     <string name="pref_profile_photo_remove_ask">Видалити фото профілю?</string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <string name="pref_help_url">https://delta.chat/uk/help</string>
     <string name="pref_password_and_account_settings">Налаштування паролю і облікового запису</string>
     <string name="pref_who_can_see_this_information">Хто може бачити цю інформацію?</string>
     <string name="pref_who_can_see_profile_explain">Зображення профілю та ім\'я будуть відображатися в чатах з іншими користувачами. Відправлена інформація не може бути видалена або відкликана.</string>
@@ -502,7 +502,6 @@
     <string name="perm_explain_access_to_mic_denied">Для надсилання голосових повідомлень додатку потрібен дозвіл на використання мікрофону, але зараз його не надано. Для надання дозволу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до мікрофону.</string>
     <string name="perm_explain_access_to_storage_denied">Для збереження або передавання фотографій та відео додатку потрібен дозвіл на використання сховища, але зараз його не надано. Для надання дозволу перейдіть в системне меню налаштувань, в розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до сховища.</string>
     <string name="perm_explain_access_to_location_denied">Щоб передати місцезнаходження, додатку потрібен доступ до геоданих пристрою, але зараз його не надано. Для надання доступу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat, виберіть пункт «Права доступу» і дозвольте доступ до місцезнаходження пристрою.</string>
-
     <!-- languages -->
     <string name="language_be">Бельгійська</string>
     <string name="language_ca">Каталонська</string>

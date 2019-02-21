@@ -482,7 +482,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="perm_explain_access_to_mic_denied">Delta Chat benötigt die Erlaubnis des Mikrofons, um Audio-Nachrichten zu senden, aber es wurde dauerhaft abgelehnt. Bitte fahre mit den App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat benötigt die Speichergenehmigung, um Fotos, Videos oder Audiodateien anzuhängen oder zu exportieren, aber es wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Speicher\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat benötigt eine Standortberechtigung, um einen Standort anzuhängen, aber er wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Standort\".</string>
-
     <!-- languages -->
     <string name="language_be">Belgisch</string>
     <string name="language_ca">Katalanisch</string>

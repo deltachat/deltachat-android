@@ -126,7 +126,7 @@
     <string name="menu_export_attachment">Eksportere vedhæftet</string>
     <string name="menu_all_media">Alle medier</string>
     <string name="menu_share">Dele</string>
-    <string name="menu_block_contact">Bolkere kontakt</string>
+    <string name="menu_block_contact">Blokere kontakt</string>
     <string name="menu_unblock_contact">Fjerne kontakt blokering</string>
     <string name="menu_play">Afspille</string>
     <string name="menu_pause">Pause</string>
@@ -255,6 +255,7 @@
     <string name="welcome_start_messaging">Start skrivning</string>
     <string name="login_title">Logind</string>
     <string name="login_header">Logind til server</string>
+    <string name="login_subheader">For kendte e-post udbydere opsættes yderligere indstillinger automatisk. Nogle gange skal IMAP aktiveres i brugerfladen. Kontakt din e-post udbyder eller venner for at få hjælp.</string>
     <string name="login_inbox">Indbakke</string>
     <string name="login_imap_login">IMAP logind navn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -301,6 +302,7 @@
     <string name="pref_help_url">https://delta.chat/en/help</string>
     <string name="pref_password_and_account_settings">Adgangskode og konto opsætning</string>
     <string name="pref_who_can_see_this_information">Hvem kan se denne information?</string>
+    <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Nanv</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Underskrift tekst</string>
@@ -350,6 +352,7 @@
     <string name="pref_other">Andet</string>
     <string name="pref_backup">Sikkerhedskopi</string>
     <string name="pref_backup_explain">Sikkerhedskopiere samtaler til eksternt lager</string>
+    <string name="pref_backup_export_explain">En sikkerhedskopi hjælper til at opsætte en ny installation på denne eller en anden enhed.\n\nSikkerhedskopien indeholder alle beskeder, kontakter og samtaler og ende-til-ende kryptering opsætning. Gem sikkerhedskopien et sikkert sted eller slet den så hurtigt som muligt.</string>
     <string name="pref_backup_export_start_button">Starte sikkerhedskopiering</string>
     <string name="pref_backup_written_to_x">Sikkerhedskopi skrevet til %1$s</string>
     <string name="pref_managekeys_menu_title">Håndtere nøgler</string>
@@ -361,6 +364,7 @@
     <string name="pref_managekeys_secret_keys_imported_from_x">Hemmelige nøgler importeret fra \"%1$s\".</string>
     <string name="pref_background">Baggrund</string>
     <string name="pref_imap_folder_handling">IMAP mappe håndtering</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Ved deaktivering af denne indstiiling vær sikker på at server og andre klienter er indstillet tilsvarende.\n\nEllers fungerer det måske slet ikke.</string>
     <string name="pref_watch_inbox_folder">Overvåge indbakke mappe</string>
     <string name="pref_watch_sent_folder">Overvåge sendt mappe</string>
     <string name="pref_watch_mvbox_folder">Overvåge DeltaChat mappe</string>
@@ -374,9 +378,14 @@
     <string name="autocrypt_send_asm_button">Sende autocrypt  opsætning besked</string>
     <string name="autocrypt_prefer_e2ee">Foretrække ende-til-ende kryptering</string>
     <string name="autocrypt_asm_subject">Autocrypt opsætning besked</string>
+    <string name="autocrypt_asm_click_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at dekryptere og bruge opsætning, tryk eller klik på denne besked.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt opsætning besked</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Indtast opsætning kode vist på den anden enhed. </string>
+    <string name="autocrypt_continue_transfer_succeeded">Ende-til-ende opsætning overført. Enheden er nu klar til at bruge Autocrypt med samme opsætning som den anden enhed.</string>
     <string name="autocrypt_continue_transfer_retry">Prøv igen</string>
+    <string name="autocrypt_bad_setup_code">Ugyldig opsætning kode. Prøv igen.\n\nKan opsætning kode ikke huskes send blot en anden Autocrypt opsætning beskedfra den anden enhed.</string>
+
+
     <!-- system messages -->
     <string name="systemmsg_group_name_changed">Gruppe navn ændret fra \"%1$s\" til \"%2$s\".</string>
     <string name="systemmsg_group_image_changed">Gruppe billede ændret.</string>
@@ -385,6 +394,7 @@
     <string name="systemmsg_member_removed">Medlem %1$s fjernet.</string>
     <string name="systemmsg_group_left">Gruppe forladt.</string>
     <string name="systemmsg_read_receipt_subject">Læse modtagelse</string>
+    <string name="systemmsg_read_receipt_body">Dette er en læst kvittering for beskeden \"%1$s\".\n\nDet betyder beskeden blev vist på modtager enhed men ikke nødvendigvis at indholdet blev læst.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s af undertegnet.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -407,6 +417,7 @@
     <string name="qrscan_hint">Placere kamera over QR kode</string>
     <string name="qrscan_ask_join_group">Deltage i gruppen \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">Det aflæste fingeraftryk passer ikke til sidst set fingeraftryk for %1$s</string>
+    <string name="qrscan_no_addr_found">Denne QR kode indeholder et fingeraftryk men ingen e-post adresse.\n\nFor en uden for område efterprøvning opret først en krypteret forbindelse til modtager.</string>
     <string name="qrscan_contains_text">Skannet QR kode tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skannet QR kode URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingeraftryk</string>
@@ -454,6 +465,9 @@
     <string name="perm_explain_need_for_camera_access">For at fange billeder og video, tillad Delta Chat adgang til kamera.</string>
     <string name="perm_explain_need_for_mic_access">For at sende lyd beskeder, tillad Delta Chat mikrofon adgang.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat behøver fil adgang for at kunne eksportere filer eller oprette sikkerhedskopier.</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver \"Mikrofon\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat kræver lagring tilladelse for at vedhæfte eller eksportere billeder, video eller lyd, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Lagring\".</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat kræver placering tilladelse for at kunne vedhæfte placering, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Placering\".</string>
     <!-- languages -->
     <string name="language_be">Belgisk</string>
     <string name="language_ca">Catalansk</string>
@@ -537,6 +551,7 @@
     <string name="name_desktop">Navn</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt nøgle overførsel</string>
     <string name="initiate_key_transfer_title_desktop">Starte nøgle overførsel</string>
+    <string name="initiate_key_transfer_desktop">En Autocrypt opsætning beskeddeler sikkert ende-til-ende opsætning med andre Autocrypt kompatible programmer. Opsætninger er krypteret med en opsætning kode som er vist her og skal indtastes på de andre enheder.</string>
     <string name="reply_to_message_desktop">Svare besked</string>
     <string name="select_group_image_desktop">Vælge gruppe billede</string>
     <string name="imex_progress_title_desktop">Sikkerhedskopiering fremgang</string>
@@ -551,6 +566,7 @@
     <string name="create_chat_error_desktop">Kunne ikke oprette samtale</string>
     <string name="ask_delete_chat_desktop">Slette denne samtale?</string>
     <string name="email_validation_failed_desktop">E-post adresse påkrævet</string>
+    <string name="forget_login_confirmation_desktop">Slette logind? Alt vil blive slettet, din ende-til-ende opsætning, kontakter, samtaler, meddelelser og medier. Denne handling er endelig og kan ikke omgøres.</string>
     <string name="me_desktop">undertegnet</string>
     <string name="in_this_group_desktop">Gruppe medlemmer</string>
     <string name="not_in_this_group_desktop">Mulige gruppe medlemmer (ikke i gruppe)</string>

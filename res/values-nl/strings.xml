@@ -480,7 +480,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat vereist de microfoonmachtiging om audioberichten te kunnen versturen, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Microfoon\" in.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat vereist de opslagmachtiging om foto\'s, video\'s of audio te kunnen bijvoegen of exporteren, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Opslag\" in.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat vereist de locatiemachtiging om je locatie in te kunnen voegen, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel Locatie\" in.</string>
-
     <!-- languages -->
     <string name="language_be">Belgisch</string>
     <string name="language_ca">Catalaans</string>

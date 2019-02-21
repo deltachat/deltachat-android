@@ -480,7 +480,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat richiede l\'autorizzazione inviare messaggi audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat richiede l\'autorizzazione per creare allegati, esportare foto, video e audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat richiede l\'autorizzazione per allegare la posizione, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
-
     <!-- languages -->
     <string name="language_be">Belga</string>
     <string name="language_ca">Catalano</string>

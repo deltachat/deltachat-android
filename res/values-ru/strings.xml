@@ -75,7 +75,7 @@
         <item quantity="other">%1$d участников</item>
     </plurals>
 
-    <string name="self">Моя почта</string>
+    <string name="self">Мои сообщения</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
     <string name="gif">GIF</string>
@@ -97,6 +97,7 @@
     <string name="blue">Синий</string>
     <string name="orange">Оранжевый</string>
     <string name="cyan">Сине-зелёный</string>
+    <string name="purple">Пурпурный</string>
     <string name="magenta">Маджента</string>
     <string name="white">Белый</string>
 
@@ -120,8 +121,8 @@
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>
-    <string name="menu_archive_chat">Архивированный чат</string>
-    <string name="menu_unarchive_chat">Разархивированный чат</string>
+    <string name="menu_archive_chat">Архивировать чат</string>
+    <string name="menu_unarchive_chat">Разархивировать чат</string>
     <string name="menu_add_attachment">Прикрепить вложение</string>
     <string name="menu_leave_group">Покинуть группу</string>
     <string name="menu_delete_chat">Удалить чат</string>
@@ -501,7 +502,6 @@
     <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению Delta Chat нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов в Delta Chat требуется доступ к памяти устройства, однако в этом разрешении было отказано навсегда. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Память\".</string>
     <string name="perm_explain_access_to_location_denied">Чтобы передать местоположение приложению Delta Chat нужно разрешить доступ к нему, но сейчас он заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Местоположение\".</string>
-
     <!-- languages -->
     <string name="language_be">Фламандский</string>
     <string name="language_ca">Каталанский</string>
