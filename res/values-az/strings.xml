@@ -31,20 +31,20 @@
     <string name="password">Parol</string>
     <string name="now">Indi</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%ddəqiqə</string>
+    <string name="n_min_ago">%d dəqiqə</string>
     <string name="today">Bugün</string>
     <string name="yesterday">Dünən</string>
     <string name="this_week">Bu həftə</string>
     <string name="this_month">Bu ay</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
-        <item quantity="one">%ddəqiqə</item>
-        <item quantity="other">%ddəqiqə</item>
+        <item quantity="one">%d dəqiqə</item>
+        <item quantity="other">%d dəqiqə</item>
     </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d saat</item>
-        <item quantity="other">%dsaat</item>
+        <item quantity="other">%d saat</item>
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">çat</item>
@@ -153,11 +153,11 @@
     <string name="ask_leave_group">Bu qrupu tərk etmək istədiyinizə əminsiniz?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">çat silmək? Artıq çat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
-        <item quantity="other">%dçat silmək? Artıq çat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
+        <item quantity="other">%d çat silmək? Artıq çat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">mesaj burada və serverdə silin?</item>
-        <item quantity="other">%1$dmesaj burada və serverdə silin?</item>
+        <item quantity="other">%1$d mesaj burada və serverdə silin?</item>
     </plurals>
     <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
     <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
@@ -165,7 +165,7 @@
     <string name="ask_unblock_contact">Bu kontaktı blokdan çıxarmaq istəyirsiniz? Nəticədə kontaktdan mesajlar ala bilərsiniz.</string>
     <string name="ask_delete_contacts">Kontaktları silmək? Bu əməliyyat seçilmiş kontaktları daimi olaraq silməyəcək. \n\n Sistem kontakt kitabından davam edən söhbətlər və kontaktlar ilə əlaqə saxlanıla bilməz.</string>
     <string name="cannot_delete_contacts_in_use">Davam edən çatlarla kontakt silinmir.</string>
-    <string name="ask_start_chat_with">%1$silə çat? </string>
+    <string name="ask_start_chat_with">%1$s ilə çat? </string>
 
 
     <!-- contact list -->
@@ -182,7 +182,7 @@
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">arxivdən çıxarıldı</item>
-        <item quantity="other">%darxivdən çıxarıldı</item>
+        <item quantity="other">%d arxivdən çıxarıldı</item>
     </plurals>
     <string name="chat_archived_chats_title">Çatlar saxlanıldı</string>
     <string name="chat_please_enter_message">Mesajı daxıl edin</string>
@@ -330,7 +330,7 @@
     <string name="pref_other">Başqa</string>
     <string name="pref_backup">Nüsxə</string>
     <string name="pref_backup_explain">Daxili yaddaşa mesaj nüsxəsi</string>
-    <string name="pref_backup_export_explain"><br>Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
+    <string name="pref_backup_export_explain">Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_managekeys_menu_title">Açar idarəetməsi</string>
     <string name="pref_managekeys_ask_for_storage_permission">Delta Chat, faylları idxal / ixrac etmək üçün girişə ehtiyac duyur.</string>
@@ -382,7 +382,7 @@
     <string name="global_menu_file_quit_desktop">Çıxış</string>
     <string name="global_menu_edit_desktop">Düzəliş et</string>
     <string name="global_menu_edit_undo_desktop">Geri qaytar</string>
-    <string name="global_menu_edit_redo_desktop">Hazır <br></string>
+    <string name="global_menu_edit_redo_desktop">Hazır</string>
     <string name="global_menu_edit_cut_desktop">Kəs</string>
     <string name="global_menu_edit_copy_desktop">Kopyala</string>
     <string name="global_menu_edit_paste_desktop">Əlavə et</string>
