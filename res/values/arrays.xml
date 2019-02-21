@@ -14,6 +14,7 @@
       <!-- eu --><item>Euskara</item>
       <!-- fr --><item>Français</item>
       <!-- it --><item>Italiano</item>
+      <!-- lt --><item>Lietuvių kalba</item>
       <!-- nl --><item>Nederlands</item>
       <!-- pl --><item>Polski</item>
       <!-- pt --><item>Português</item>
@@ -34,6 +35,7 @@
       <item>eu</item>
       <item>fr</item>
       <item>it</item>
+      <item>lt</item>
       <item>nl</item>
       <item>pl</item>
       <item>pt</item>
