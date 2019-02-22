@@ -71,17 +71,33 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
     private final TimeBucket   TODAY;
     private final TimeBucket   YESTERDAY;
     private final TimeBucket   THIS_WEEK;
+    private final TimeBucket   LAST_WEEK;
     private final TimeBucket   THIS_MONTH;
+    private final TimeBucket   LAST_MONTH;
     private final MonthBuckets OLDER;
 
     private final TimeBucket[] TIME_SECTIONS;
 
     public BucketedThreadMedia(@NonNull Context context) {
-      this.TODAY         = new TimeBucket(context.getString(R.string.today), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -1), TimeBucket.addToCalendar(Calendar.YEAR, 1000));
-      this.YESTERDAY     = new TimeBucket(context.getString(R.string.yesterday), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -2), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -1));
-      this.THIS_WEEK     = new TimeBucket(context.getString(R.string.this_week), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -7), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -2));
-      this.THIS_MONTH    = new TimeBucket(context.getString(R.string.this_month), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -30), TimeBucket.addToCalendar(Calendar.DAY_OF_YEAR, -7));
-      this.TIME_SECTIONS = new TimeBucket[]{TODAY, YESTERDAY, THIS_WEEK, THIS_MONTH};
+      // from today midnight until the end of human time
+      this.TODAY         = new TimeBucket(context.getString(R.string.today),
+          addToCalendarFromTodayMidnight(Calendar.DAY_OF_YEAR, 0), Long.MAX_VALUE);
+      // from yesterday midnight until today midnight
+      this.YESTERDAY     = new TimeBucket(context.getString(R.string.yesterday),
+          addToCalendarFromTodayMidnight(Calendar.DAY_OF_YEAR, -1), TODAY.startTime);
+      // from the closest start of week until yesterday midnight (that can be a negative timespace and thus be empty)
+      this.THIS_WEEK     = new TimeBucket(context.getString(R.string.this_week),
+          setInCalendarFromTodayMidnight(Calendar.DAY_OF_WEEK, getCalendar().getFirstDayOfWeek()), YESTERDAY.startTime);
+      // from the closest start of week one week back until the closest start of week.
+      this.LAST_WEEK     = new TimeBucket(context.getString(R.string.last_week),
+          addToCalendarFrom(THIS_WEEK.startTime, Calendar.WEEK_OF_YEAR, -1), THIS_WEEK.startTime);
+      // from the closest 1st of a month until one week prior to the closest start of week (can be negative and thus empty)
+      this.THIS_MONTH    = new TimeBucket(context.getString(R.string.this_month),
+          setInCalendarFromTodayMidnight(Calendar.DAY_OF_MONTH, 1), LAST_WEEK.startTime);
+      // from the closest 1st of a month, one month back to the closest 1st of a month
+      this.LAST_MONTH    = new TimeBucket(context.getString(R.string.last_month),
+          addToCalendarFrom(THIS_MONTH.startTime, Calendar.MONTH, -1), LAST_WEEK.startTime);
+      this.TIME_SECTIONS = new TimeBucket[]{TODAY, YESTERDAY, THIS_WEEK, LAST_WEEK, THIS_MONTH, LAST_MONTH};
       this.OLDER         = new MonthBuckets();
     }
 
@@ -123,6 +139,39 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       else                                    return OLDER.getName(section - activeTimeBuckets.size(), locale);
     }
 
+    // tests should override this function to deliver a preset calendar.
+    Calendar getCalendar() {
+      return Calendar.getInstance();
+    }
+
+    long setInCalendarFromTodayMidnight(int field, int amount) {
+      Calendar calendar = getCalendar();
+      setCalendarToTodayMidnight(calendar);
+      calendar.set(field, amount);
+      return calendar.getTimeInMillis();
+    }
+
+    long addToCalendarFrom(long relativeTo, int field, int amount) {
+      Calendar calendar = getCalendar();
+      calendar.setTime(new Date(relativeTo));
+      calendar.add(field, amount);
+      return calendar.getTimeInMillis();
+    }
+
+    long addToCalendarFromTodayMidnight(int field, int amount) {
+      Calendar calendar = getCalendar();
+      setCalendarToTodayMidnight(calendar);
+      calendar.add(field, amount);
+      return calendar.getTimeInMillis();
+    }
+
+    void setCalendarToTodayMidnight(Calendar calendar) {
+      calendar.set(Calendar.HOUR_OF_DAY, 0);
+      calendar.set(Calendar.MINUTE, 0);
+      calendar.set(Calendar.SECOND, 0);
+      calendar.set(Calendar.MILLISECOND, 0);
+    }
+
     private static class TimeBucket {
 
       private final List<DcMsg> records = new LinkedList<>();
@@ -142,7 +191,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       }
 
       boolean inRange(long timestamp) {
-        return timestamp > startTime && timestamp <= endTime;
+        return timestamp >= startTime && timestamp < endTime;
       }
 
       boolean isEmpty() {
@@ -159,12 +208,6 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
       String getName() {
         return name;
-      }
-
-      static long addToCalendar(int field, int amount) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(field, amount);
-        return calendar.getTimeInMillis();
       }
     }
 
