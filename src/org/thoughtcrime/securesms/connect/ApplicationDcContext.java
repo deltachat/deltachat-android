@@ -64,7 +64,7 @@ public class ApplicationDcContext extends DcContext {
   public volatile boolean isScreenOn = false;
 
   public ApplicationDcContext(Context context) {
-    super("Android");
+    super("Android "+BuildConfig.VERSION_NAME);
     this.context = context;
 
     File dbfile = new File(context.getFilesDir(), "messenger.db");
