@@ -32,6 +32,9 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Activity container for starting a new conversation.
  *
@@ -43,6 +46,10 @@ public class NewConversationActivity extends ContactSelectionActivity {
   @SuppressWarnings("unused")
   private static final String TAG = NewConversationActivity.class.getSimpleName();
   private static final String MAILTO = "mailto";
+  private static final String SUBJECT = "subject";
+  private static final String BODY = "body";
+  private static final String QUERY_SEPARATOR = "&";
+  private static final String KEY_VALUE_SEPARATOR = "=";
 
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
@@ -61,22 +68,23 @@ public class NewConversationActivity extends ContactSelectionActivity {
         if(uri != null) {
           String scheme = uri.getScheme();
           if(scheme != null && scheme.equals(MAILTO) ) {
+            String textToShare = getTextToShare(uri);
             MailTo mailto = MailTo.parse(uri.toString());
-            String textToShare = mailto.getSubject();
-            String body = mailto.getBody();
-            if (body != null && !body.isEmpty()) {
-              textToShare += "\n" + body;
-            }
-            if (textToShare != null && !textToShare.isEmpty()) {
-              getIntent().putExtra(ConversationActivity.TEXT_EXTRA, textToShare);
-            }
             String recipientsList = mailto.getTo();
             if(recipientsList != null && !recipientsList.isEmpty()) {
               String[] recipientsArray = recipientsList.split(",");
               if (recipientsArray.length >= 1) {
                 String recipient = recipientsArray[0];
+                if (textToShare != null && !textToShare.isEmpty()) {
+                  getIntent().putExtra(ConversationActivity.TEXT_EXTRA, textToShare);
+                }
                 onContactSelected(DcContact.DC_CONTACT_ID_NEW_CONTACT, recipient);
               }
+            } else {
+              Intent shareIntent = new Intent(this, ShareActivity.class);
+              shareIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
+              startActivity(shareIntent);
+              finish();
             }
           }
         }
@@ -85,6 +93,29 @@ public class NewConversationActivity extends ContactSelectionActivity {
         Log.e(TAG, "start activity from external 'mailto:' link failed", e);
       }
     }
+  }
+
+  private String getTextToShare(Uri uri) {
+    Map<String, String> mailtoQueryMap = getMailtoQueryMap(uri);
+    String textToShare = mailtoQueryMap.get(SUBJECT);
+    String body = mailtoQueryMap.get(BODY);
+    if (body != null && !body.isEmpty()) {
+      textToShare += "\n" + body;
+    }
+    return textToShare;
+  }
+
+  private Map<String, String> getMailtoQueryMap(Uri uri) {
+    Map<String, String> mailtoQueryMap = new HashMap<>();
+    String query =  uri.getQuery();
+    if (query != null && !query.isEmpty()) {
+      String[] queryArray = query.split(QUERY_SEPARATOR);
+      for(String queryEntry : queryArray) {
+        String[] queryEntryArray = queryEntry.split(KEY_VALUE_SEPARATOR);
+        mailtoQueryMap.put(queryEntryArray[0], queryEntryArray[1]);
+      }
+    }
+    return mailtoQueryMap;
   }
 
   @Override
