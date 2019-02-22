@@ -49,7 +49,9 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   @Override
   protected void onStop() {
-    findViewById(android.R.id.content).setVisibility(View.GONE);
+    if (ScreenLockUtil.isScreenLockEnabled(this)) {
+      findViewById(android.R.id.content).setVisibility(View.GONE);
+    }
     super.onStop();
   }
 
