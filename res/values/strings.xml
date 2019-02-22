@@ -258,6 +258,7 @@
     <string name="login_title">Login</string>
     <string name="login_header">Login to your server</string>
     <string name="login_subheader">For known email providers additional settings are setup automatically. Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help.</string>
+    <string name="login_no_servers_hint">Delta Chat has no servers, your data stays on your device!</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP login-name</string>
     <string name="login_imap_server">IMAP server</string>
