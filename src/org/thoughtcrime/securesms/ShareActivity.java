@@ -17,6 +17,7 @@
 
 package org.thoughtcrime.securesms;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -44,10 +45,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
@@ -55,17 +58,24 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.PartAuthority;
+import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -95,8 +105,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
   private ShareFragment shareFragment;
   private View                         progressWheel;
-  private Uri                          resolvedExtra;
-  private String                       mimeType;
+  private List<Uri>                    resolvedExtras;
   private boolean                      isPassingAlongMedia;
   private ApplicationDcContext         dcContext;
   private boolean                      isForward;
@@ -142,8 +151,12 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onDestroy() {
     super.onDestroy();
-    if (!isPassingAlongMedia && resolvedExtra != null) {
-      PersistentBlobProvider.getInstance(this).delete(this, resolvedExtra);
+    if (!isPassingAlongMedia && resolvedExtras.size() != 0) {
+        for(Uri uri : resolvedExtras) {
+          if (uri != null) {
+            PersistentBlobProvider.getInstance(this).delete(this, uri);
+          }
+        }
     }
   }
 
@@ -195,20 +208,70 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeMedia() {
-    final Context context = this;
     isPassingAlongMedia = false;
+    resolvedExtras = new ArrayList<>();
 
-    Uri streamExtra = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
-    mimeType        = getMimeType(streamExtra);
-
-    if (streamExtra != null && PartAuthority.isLocalUri(streamExtra)) {
-      isPassingAlongMedia = true;
-      resolvedExtra       = streamExtra;
-      handleResolvedMedia(getIntent(), false);
+    List<Uri> streamExtras = new ArrayList<>();
+    if (Intent.ACTION_SEND.equals(getIntent().getAction())) {
+      streamExtras.add(getIntent().getParcelableExtra(Intent.EXTRA_STREAM));
     } else {
-      shareFragment.getView().setVisibility(View.GONE);
-      progressWheel.setVisibility(View.VISIBLE);
-      new ResolveMediaTask(context).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, streamExtra);
+      streamExtras = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+    }
+    if (streamExtras == null || streamExtras.isEmpty()) {
+      progressWheel.setVisibility(View.GONE);
+      return;
+    }
+    if (needsFilePermission(streamExtras)) {
+      if (Permissions.hasAll(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        resolveUris(streamExtras);
+      } else {
+        requestPermissionForFiles(streamExtras);
+      }
+    } else {
+      resolveUris(streamExtras);
+    }
+  }
+
+  private boolean needsFilePermission(List<Uri> uris) {
+    for(Uri uri : uris) {
+      if (hasFileScheme(uri)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private void requestPermissionForFiles(List<Uri> streamExtras) {
+    Permissions.with(this)
+            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+            .ifNecessary()
+            .withRationaleDialog(this.getString(R.string.perm_explain_need_for_storage_access_share), R.drawable.ic_folder_white_48dp)
+            .onAllGranted(() -> resolveUris(streamExtras))
+            .onAnyDenied(this::abortShare)
+            .execute();
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+  }
+
+  private void abortShare() {
+    Toast.makeText(this, R.string.share_abort, Toast.LENGTH_LONG).show();
+    finish();
+  }
+
+  private void resolveUris(List<Uri> streamExtras) {
+    for (Uri streamExtra : streamExtras) {
+      if (streamExtra != null && PartAuthority.isLocalUri(streamExtra)) {
+        isPassingAlongMedia = true;
+        resolvedExtras.add(streamExtra);
+        handleResolvedMedia(getIntent(), false);
+      } else {
+        shareFragment.getView().setVisibility(View.GONE);
+        progressWheel.setVisibility(View.VISIBLE);
+        new ResolveMediaTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, streamExtra);
+      }
     }
   }
 
@@ -249,19 +312,91 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void createConversation(int threadId) {
-    final Intent intent = getBaseShareIntent(ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-    isPassingAlongMedia = true;
-    startActivity(intent);
+    if (resolvedExtras.size() > 1) {
+      String message = String.format(getString(R.string.share_multiple_attachments), resolvedExtras.size());
+      new AlertDialog.Builder(this)
+              .setMessage(message)
+              .setCancelable(true)
+              .setNegativeButton(android.R.string.cancel, null)
+              .setPositiveButton(R.string.menu_send, (dialog, which) -> sendMultipleAttachmentsAndCreateConversation(threadId)).show();
+    } else {
+      openConversation(threadId);
+    }
+  }
+
+  private void sendMultipleAttachmentsAndCreateConversation(int threadId) {
+    for(Uri uri : resolvedExtras) {
+      DcMsg message = createMessage(uri);
+      dcContext.sendMsg(threadId, message);
+    }
+    openConversation(threadId);
+  }
+
+  private void openConversation(int threadId) {
+      final Intent intent = getBaseShareIntent(ConversationActivity.class);
+      intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
+      isPassingAlongMedia = true;
+      startActivity(intent);
+  }
+
+  private DcMsg createMessage(Uri uri) {
+    DcMsg message;
+    String mimeType = MediaUtil.getMimeType(this, uri);
+    if (MediaUtil.isImageType(mimeType)) {
+      message = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
+    }
+    else if (MediaUtil.isAudioType(mimeType)) {
+      message = new DcMsg(dcContext,DcMsg.DC_MSG_AUDIO);
+    }
+    else if (MediaUtil.isVideoType(mimeType)) {
+      message = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+    }
+    else {
+      message = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
+    }
+    message.setFile(getRealPathFromUri(uri), mimeType);
+    return message;
+  }
+
+  private String getRealPathFromUri(Uri uri) {
+    try {
+      String filename = uri.getPathSegments().get(2); // Get real file name from Uri
+      String ext = "";
+      int i = filename.lastIndexOf(".");
+      if(i>=0) {
+        ext = filename.substring(i);
+        filename = filename.substring(0, i);
+      }
+      String path = dcContext.getBlobdirFile(filename, ext);
+
+      // copy content to this file
+      if(path!=null) {
+        InputStream inputStream = PartAuthority.getAttachmentStream(this, uri);
+        OutputStream outputStream = new FileOutputStream(path);
+        Util.copy(inputStream, outputStream);
+      }
+
+      return path;
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {
-    final Intent intent      = new Intent(this, target);
-    final String textExtra   = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-    intent.putExtra(ConversationActivity.TEXT_EXTRA, textExtra);
-    if (resolvedExtra != null) intent.setDataAndType(resolvedExtra, mimeType);
-
-    return intent;
+    if (resolvedExtras.size() == 1) {
+      final Intent intent = new Intent(this, target);
+      final String textExtra = getIntent().getStringExtra(Intent.EXTRA_TEXT);
+      intent.putExtra(ConversationActivity.TEXT_EXTRA, textExtra);
+      Uri data = resolvedExtras.get(0);
+      if (data != null) {
+        String mimeType = getMimeType(data);
+        intent.setDataAndType(data, mimeType);
+      }
+      return intent;
+    }
+    return new Intent(this, target);
   }
 
   private String getMimeType(@Nullable Uri uri) {
@@ -283,25 +418,31 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected Uri doInBackground(Uri... uris) {
       try {
-        if (uris.length != 1 || uris[0] == null) {
+        Uri uri = uris[0];
+        if (uris.length != 1 || uri == null) {
           return null;
         }
 
         InputStream inputStream;
+        String fileName = null;
+        Long   fileSize = null;
 
-        if ("file".equals(uris[0].getScheme())) {
-          inputStream = openFileUri(uris[0]);
+        if (hasFileScheme(uri)) {
+          inputStream = openFileUri(uri);
+          if (uri.getPath() != null) {
+            File file = new File(uri.getPath());
+            fileName = file.getName();
+            fileSize = file.length();
+          }
         } else {
-          inputStream = context.getContentResolver().openInputStream(uris[0]);
+          inputStream = context.getContentResolver().openInputStream(uri);
         }
 
         if (inputStream == null) {
           return null;
         }
 
-        Cursor cursor   = getContentResolver().query(uris[0], new String[] {OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE}, null, null, null);
-        String fileName = null;
-        Long   fileSize = null;
+        Cursor cursor   = getContentResolver().query(uri, new String[] {OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE}, null, null, null);
 
         try {
           if (cursor != null && cursor.moveToFirst()) {
@@ -315,7 +456,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
         } finally {
           if (cursor != null) cursor.close();
         }
-
+        String mimeType = getMimeType(uri);
         return PersistentBlobProvider.getInstance(context).create(context, inputStream, mimeType, fileName, fileSize);
       } catch (IOException ioe) {
         Log.w(TAG, ioe);
@@ -325,14 +466,15 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     protected void onPostExecute(Uri uri) {
-      resolvedExtra = uri;
+      resolvedExtras.add(uri);
       handleResolvedMedia(getIntent(), true);
     }
 
     private InputStream openFileUri(Uri uri) throws IOException {
       FileInputStream fin   = new FileInputStream(uri.getPath());
       int             owner = FileUtils.getFileDescriptorOwner(fin.getFD());
-      
+
+
       if (owner == -1 || owner == Process.myUid()) {
         fin.close();
         throw new IOException("File owned by application");
@@ -341,6 +483,10 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       return fin;
     }
 
+  }
+
+  private boolean hasFileScheme(Uri uri) {
+    return "file".equals(uri.getScheme());
   }
 
   public static class ShareFragment

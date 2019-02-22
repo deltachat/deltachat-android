@@ -292,6 +292,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Forward to …</string>
+    <string name="share_multiple_attachments">Do you want to sent %1$d files to the selected chat?</string>
+    <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
 
     <!-- preferences -->
@@ -489,6 +491,7 @@
     <string name="perm_explain_need_for_camera_access">To capture photos and video, allow Delta Chat access to the camera.</string>
     <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat access to your microphone.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat needs access to your files in order to share the selected files.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat requires the Camera permission in order to take photos or videos, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Camera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat requires the Microphone permission in order to send audio messages, but it has been permanently denied. Please continue to app settings, select \"Permissions\", and enable \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat requires the Storage permission in order to attach or export photos, videos, or audio, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Storage\".</string>
