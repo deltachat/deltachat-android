@@ -28,6 +28,7 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   private Timer timer;
 
   private boolean isWaitingForResult;
+  private boolean isHiddenByScreenLock;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +40,25 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        super.onStart();
         if (ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult) {
-            ScreenLockUtil.applyScreenLock(this);
+          ScreenLockUtil.applyScreenLock(this);
+        } else if (isHiddenByScreenLock) {
+          findViewById(android.R.id.content).setVisibility(View.VISIBLE);
+          isHiddenByScreenLock = false;
         }
+        super.onStart();
     }
 
-    @Override
+  @Override
+  protected void onStop() {
+    if (ScreenLockUtil.isScreenLockEnabled(this)) {
+      findViewById(android.R.id.content).setVisibility(View.GONE);
+      isHiddenByScreenLock = true;
+    }
+    super.onStop();
+  }
+
+  @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       super.onActivityResult(requestCode, resultCode, data);
       isWaitingForResult = false;
@@ -139,6 +152,8 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   @Override
   public void startActivityForResult(Intent intent, int requestCode) {
     super.startActivityForResult(intent, requestCode);
-    isWaitingForResult = true;
+    if (requestCode != -1) {
+      isWaitingForResult = true;
+    }
   }
 }

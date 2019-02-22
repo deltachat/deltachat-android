@@ -156,6 +156,7 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         final Context context = getApplicationContext();
         if (data != null && context != null && resultCode == RESULT_OK && requestCode == ApplicationPreferencesActivity.REQUEST_CODE_SET_BACKGROUND) {
             imageUri = data.getData();

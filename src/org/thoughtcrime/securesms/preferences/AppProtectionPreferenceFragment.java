@@ -20,6 +20,7 @@ import org.thoughtcrime.securesms.components.SwitchPreferenceCompat;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -114,6 +115,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
             boolean enabled = (Boolean) newValue;
             manageScreenLockChildren(enabled);
             Prefs.setScreenLockEnabled(getContext(), enabled);
+            ScreenLockUtil.setShouldLockApp(false);
             return true;
         }
     }
