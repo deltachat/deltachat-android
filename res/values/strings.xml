@@ -417,7 +417,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Screen lock</string>
-    <string name="screenlock_explain">Lock Delta Chat access with Android screen lock or fingerprint</string>
+    <string name="screenlock_explain">Lock access with Android screen lock or fingerprint; to avoid appearing the previous content, please also enable \"Screen security\"</string>
     <string name="screenlock_authentication_failed">Authentication failed.</string>
     <string name="screenlock_unlock_title">Unlock Delta Chat</string>
     <string name="screenlock_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
