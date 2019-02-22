@@ -73,7 +73,7 @@
                        android:layout_gravity="center_vertical"
                        android:gravity="center_vertical"
                        android:src="@drawable/ic_info_white_18dp"
-                       android:tint="#73B7F0"/>
+                       android:tint="@color/blue_400"/>
 
             <TextView
                 android:id="@+id/information_label"
@@ -85,7 +85,7 @@
                 android:clickable="true"
                 android:gravity="center_vertical"
                 android:text="@string/pref_who_can_see_this_information"
-                android:textColor="#73B7F0" />
+                android:textColor="@color/blue_400" />
         </LinearLayout>
 
 
@@ -104,7 +104,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="0dp"
                 android:text="@string/pref_password_and_account_settings"
-                android:textColor="#73B7F0"
+                android:textColor="@color/blue_400"
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:typeface="sans" />
