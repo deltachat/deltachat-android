@@ -49,20 +49,20 @@
         <item quantity="other">%d hours</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 chat</item>
-        <item quantity="other">%1$d chats</item>
+        <item quantity="one">%d chat</item>
+        <item quantity="other">%d chats</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">1 contact</item>
-        <item quantity="other">%1$d contacts</item>
+        <item quantity="one">%d contact</item>
+        <item quantity="other">%d contacts</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">1 message</item>
-        <item quantity="other">%1$d messages</item>
+        <item quantity="one">%d message</item>
+        <item quantity="other">%d messages</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">1 member</item>
-        <item quantity="other">%1$d members</item>
+        <item quantity="one">%d member</item>
+        <item quantity="other">%d members</item>
     </plurals>
 
     <string name="self">Me</string>
@@ -154,12 +154,12 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Delete this chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
+        <item quantity="one">Delete %d chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
         <item quantity="other">Delete %d chats? They will no longer be shown in the chat list, their messages will remain on the server.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Delete the message here and on the server?</item>
-        <item quantity="other">Delete %1$d messages here and on the server?</item>
+        <item quantity="one">Delete %d message here and on the server?</item>
+        <item quantity="other">Delete %d messages here and on the server?</item>
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_export_attachment">Export attachment? Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
@@ -179,11 +179,11 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">Chat archived</item>
+        <item quantity="one">%d chat archived</item>
         <item quantity="other">%d chats archived</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">Chat unarchived</item>
+        <item quantity="one">%d chat unarchived</item>
         <item quantity="other">%d chats unarchived</item>
     </plurals>
     <string name="chat_archived_chats_title">Archived chats</string>
