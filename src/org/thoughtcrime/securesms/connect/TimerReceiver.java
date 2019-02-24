@@ -17,6 +17,11 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class TimerReceiver extends BroadcastReceiver {
 
+    // we trigger an interupt-idle or a start-threads every 5 minutes,
+    // normally, the core reconnects on its own, however, if for some reasons,
+    // the thread was killed, we recreate it here.
+    // also the IMAP NOOP is helpful on some servers, see above.
+    // (re-doing IMAP-IDLE should imply a NOOP call then, https://www.isode.com/whitepapers/imap-idle.html )
     public void onReceive(Context context, Intent intent) {
 
         Log.i("DeltaChat", "-------------------- on receive timer --------------------");
@@ -25,10 +30,7 @@ public class TimerReceiver extends BroadcastReceiver {
 
         ApplicationDcContext dcContext = DcHelper.getContext(context);
 
-        // start threads (if not up) and interrupt idle in case it is stalled for any reason
-        // (re-doing IMAP-IDLE should imply a NOOP call then, https://www.isode.com/whitepapers/imap-idle.html )
         dcContext.startThreads(ApplicationDcContext.INTERRUPT_IDLE);
-
         dcContext.waitForThreadsRunning();
     }
 
