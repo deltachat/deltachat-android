@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <org.thoughtcrime.securesms.preferences.widgets.SignalListPreference
+    <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
             android:key="pref_theme"
             android:title="@string/pref_theme"
             android:entries="@array/pref_theme_entries"
             android:entryValues="@array/pref_theme_values"
             android:defaultValue="light">
-    </org.thoughtcrime.securesms.preferences.widgets.SignalListPreference>
+    </org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary>
 
     <org.thoughtcrime.securesms.preferences.widgets.SignalPreference
         android:key="pref_chat_background"
         android:title="@string/pref_background"
         />
 
-    <org.thoughtcrime.securesms.preferences.widgets.SignalListPreference
+    <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
             android:key="pref_language"
             android:title="@string/pref_language"
             android:entries="@array/language_entries"

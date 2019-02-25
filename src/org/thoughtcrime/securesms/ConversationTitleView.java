@@ -99,12 +99,13 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   private void setRecipientTitle(DcChat dcChat) {
-    this.title.setText(dcChat.getName());
 
     if(dcChat.getId()==DcChat.DC_CHAT_ID_DEADDROP) {
+      this.title.setText(R.string.menu_deaddrop);
       this.subtitle.setText(R.string.menu_deaddrop_subtitle);
     }
     else {
+      this.title.setText(dcChat.getName());
       this.subtitle.setText(dcChat.getSubtitle());
     }
 

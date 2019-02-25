@@ -169,7 +169,12 @@ public class ConversationFragment extends Fragment
 
   private void setNoMessageText() {
     if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
-      noMessageTextView.setText(R.string.chat_no_messages);
+      if(DcHelper.getInt(getActivity(), "show_emails")!= DcContext.DC_SHOW_EMAILS_ALL) {
+        noMessageTextView.setText(R.string.chat_no_contact_requests);
+      }
+      else {
+        noMessageTextView.setText(R.string.chat_no_messages);
+      }
     }
     else if(getListAdapter().isGroupChat()){
       if( dcContext.getChat((int)threadId).isUnpromoted() ) {

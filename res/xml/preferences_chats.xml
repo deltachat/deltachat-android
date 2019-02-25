@@ -3,13 +3,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:tools="http://schemas.android.com/tools">
     <PreferenceCategory android:title="@string/pref_chats">
-        <org.thoughtcrime.securesms.preferences.widgets.SignalListPreference
+        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
                 android:key="pref_message_body_text_size"
                 android:title="@string/pref_message_text_size"
                 android:entries="@array/pref_message_font_size_entries"
                 android:entryValues="@array/pref_message_font_size_values"
                 android:defaultValue="16">
-        </org.thoughtcrime.securesms.preferences.widgets.SignalListPreference>
+        </org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                 android:defaultValue="false"

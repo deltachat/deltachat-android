@@ -14,29 +14,29 @@ import android.widget.TextView;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-public class SignalListPreference extends ListPreference {
+public class ListPreferenceWithSummary extends ListPreference {
 
   private TextView rightSummary;
   private CharSequence summary;
 
   @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  public SignalListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+  public ListPreferenceWithSummary(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     initialize();
   }
 
   @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  public SignalListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+  public ListPreferenceWithSummary(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     initialize();
   }
 
-  public SignalListPreference(Context context, AttributeSet attrs) {
+  public ListPreferenceWithSummary(Context context, AttributeSet attrs) {
     super(context, attrs);
     initialize();
   }
 
-  public SignalListPreference(Context context) {
+  public ListPreferenceWithSummary(Context context) {
     super(context);
     initialize();
   }

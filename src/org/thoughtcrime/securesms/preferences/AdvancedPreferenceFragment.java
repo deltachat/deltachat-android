@@ -23,6 +23,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
@@ -30,7 +31,7 @@ import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import static android.app.Activity.RESULT_OK;
 
 
-public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
+public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                                         implements DcEventCenter.DcEventDelegate
 {
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
@@ -46,6 +47,7 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
   CheckBoxPreference sentboxWatchCheckbox;
   CheckBoxPreference mvboxWatchCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
+  ListPreferenceWithSummary showEmails;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -79,6 +81,13 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     mvboxMoveCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
       boolean enabled = (Boolean) newValue;
       dcContext.setConfigInt("mvbox_move", enabled? 1 : 0);
+      return true;
+    });
+
+    showEmails = (ListPreferenceWithSummary) this.findPreference("pref_show_emails");
+    showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
+      updateListSummary(preference, newValue);
+      dcContext.setConfigInt("show_emails", Util.objectToInt(newValue));
       return true;
     });
 
@@ -128,11 +137,12 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_advanced);
 
-    preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt("e2ee_enabled", DcContext.DC_PREF_DEFAULT_E2EE_ENABLED));
-    inboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("inbox_watch", 1));
-    sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("sentbox_watch", 1));
-    mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch", 1));
-    mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move", 1));
+    preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt("e2ee_enabled"));
+    inboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("inbox_watch"));
+    sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("sentbox_watch"));
+    mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch"));
+    mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move"));
+    updateListSummary(showEmails, Integer.toString(dcContext.getConfigInt("show_emails")));
   }
 
   @Override

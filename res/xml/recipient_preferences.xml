@@ -42,7 +42,7 @@
             android:title="@string/pref_sound"
             android:persistent="false"/>
 
-        <org.thoughtcrime.securesms.preferences.widgets.SignalListPreference
+        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
             android:dependency="pref_key_recipient_mute"
             android:key="pref_key_recipient_vibrate"
             android:title="@string/pref_vibrate"

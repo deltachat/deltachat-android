@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 
 public class DcContext {
 
-    public final static int DC_PREF_DEFAULT_E2EE_ENABLED = 1;
     public final static int DC_PREF_DEFAULT_MDNS_ENABLED = 1;
     public final static int DC_PREF_DEFAULT_TRIM_ENABLED = 0;
     public final static int DC_PREF_DEFAULT_TRIM_LENGTH  = 500;
@@ -64,6 +63,10 @@ public class DcContext {
     public final static int DC_LP_SMTP_SOCKET_STARTTLS = 0x10000;
     public final static int DC_LP_SMTP_SOCKET_SSL      = 0x20000;
     public final static int DC_LP_SMTP_SOCKET_PLAIN    = 0x40000;
+
+    public final static int DC_SHOW_EMAILS_OFF               = 0;
+    public final static int DC_SHOW_EMAILS_ACCEPTED_CONTACTS = 1;
+    public final static int DC_SHOW_EMAILS_ALL               = 2;
 
     public DcContext(String osName) {
         handleEvent(0,0,0); // call handleEvent() to make sure it is not optimized away and JNI won't find it
