@@ -337,6 +337,8 @@ public class ConversationListFragment extends Fragment
     return new DcChatlistLoader(getActivity(), listflags, queryFilter.isEmpty()? null : queryFilter, 0);
   }
 
+
+  boolean forceListRedraw;
   @Override
   public void onLoadFinished(Loader<DcChatlist> arg0, DcChatlist chatlist) {
     if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter) && !archive) {
@@ -356,7 +358,18 @@ public class ConversationListFragment extends Fragment
       fab.stopPulse();
     }
 
+    // this hack is needed as otherwise, for whatever reason,
+    // swiped contact request show an empty item if there pops up a new contact request imediately.
+    // anyone who wants to invesigate to this is very welcome :)
+    if (forceListRedraw) {
+      list.setLayoutManager(null);
+      list.getRecycledViewPool().clear();
+      list.setLayoutManager(new LinearLayoutManager(getActivity()));
+      forceListRedraw = false;
+    }
+
     getListAdapter().changeData(chatlist);
+
   }
 
   @Override
@@ -525,6 +538,7 @@ public class ConversationListFragment extends Fragment
         if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
           int contactId = ((ConversationListItem)viewHolder.itemView).getContactId();
           dcContext.marknoticedContact(contactId);
+          forceListRedraw = true;
           return;
         }
 
