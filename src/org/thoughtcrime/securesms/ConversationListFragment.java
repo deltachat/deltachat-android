@@ -244,7 +244,12 @@ public class ConversationListFragment extends Fragment
       @Override
       protected void executeAction(@Nullable Void parameter) {
         for (long threadId : selectedConversations) {
-          dcContext.archiveChat((int)threadId, !archive? 1 : 0);
+          if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+            dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
+          }
+          else {
+            dcContext.archiveChat((int)threadId, !archive? 1 : 0);
+          }
         }
       }
 
@@ -285,7 +290,12 @@ public class ConversationListFragment extends Fragment
           @Override
           protected Void doInBackground(Void... params) {
             for (long threadId : selectedConversations) {
-              dcContext.deleteChat((int)threadId);
+              if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+                dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
+              }
+              else {
+                dcContext.deleteChat((int) threadId);
+              }
             }
             return null;
           }
