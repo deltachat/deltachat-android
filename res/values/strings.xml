@@ -258,6 +258,7 @@
     <string name="login_title">Login</string>
     <string name="login_header">Login to your server</string>
     <string name="login_subheader">For known email providers additional settings are setup automatically. Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help.</string>
+    <string name="login_no_servers_hint">There are no Delta Chat servers, your data stays on your device!</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP login-name</string>
     <string name="login_imap_server">IMAP server</string>
@@ -271,7 +272,7 @@
     <string name="login_smtp_security">SMTP Security</string>
     <string name="login_auth_method">Authorization method</string>
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
-    <string name="login_info_oauth2_text">The entered e-mail-address supports a simplified setup (OAuth2).\n\nIn the next step, please allow Delta Chat to act as your Chat with E-Mail app.\n\nDelta Chat has no servers, your data stays on your device!</string>
+    <string name="login_info_oauth2_text">The entered e-mail-address supports a simplified setup (OAuth2).\n\nIn the next step, please allow Delta Chat to act as your Chat with E-Mail app.\n\nThere are no Delta Chat servers, your data stays on your device!</string>
     <string name="login_info_gmail_text">For GMail Accounts you need to create an App-Password if you have 2FA enabled. If this setting is not available, you need to enable Less Secure Apps.</string>
     <string name="login_error_mail">Please enter a valid email address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>

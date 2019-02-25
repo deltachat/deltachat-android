@@ -14,6 +14,13 @@
         android:animateLayoutChanges="true">
 
         <android.support.constraint.Guideline
+            android:id="@+id/guideline_root_start_shifted"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="10dp" />
+
+        <android.support.constraint.Guideline
             android:id="@+id/guideline_root_start"
             android:layout_width="wrap_content"
             android:layout_height="16dp"
@@ -27,37 +34,10 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <!--<TextView-->
-            <!--android:id="@+id/header"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@color/signal_primary"-->
-            <!--android:gravity="center"-->
-            <!--android:paddingLeft="16dp"-->
-            <!--android:paddingRight="16dp"-->
-            <!--android:paddingTop="16dp"-->
-            <!--android:text="@string/login_header"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:textSize="20sp"-->
-            <!--android:textStyle="bold" />-->
-
         <android.support.v4.widget.Space
             android:id="@+id/fab_spacer"
             android:layout_width="wrap_content"
             android:layout_height="28dp" />
-
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/fab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/ic_forum_white_24dp"-->
-            <!--android:tint="@color/grey_700"-->
-            <!--app:backgroundTint="@color/white"-->
-            <!--app:elevation="1dp"-->
-            <!--app:fabSize="normal"-->
-            <!--app:layout_constraintBottom_toBottomOf="@id/fab_spacer"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent" />-->
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/email"
@@ -96,14 +76,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:id="@+id/sub_header"
+            android:id="@+id/no_servers_hint"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:text="@string/login_subheader"
+            android:gravity="left"
+            android:padding="16dp"
+            android:text="@string/login_no_servers_hint"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password" />
@@ -116,37 +94,38 @@
             app:constraint_referenced_ids="inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
             outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method" />
 
+        <ImageView
+            android:id="@+id/advanced_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:contentDescription="@null"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:src="@drawable/ic_menu_remove_holo_light"
+            android:tint="@color/blue_600"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@+id/guideline_root_start_shifted"
+            app:layout_constraintTop_toBottomOf="@id/no_servers_hint" />
+
         <TextView
             android:id="@+id/advanced_text"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:gravity="start|center_vertical"
             android:text="@string/menu_advanced"
             android:textColor="@color/blue_400"
-            app:layout_constraintEnd_toStartOf="@+id/advanced_icon"
+            android:textSize="16sp"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/sub_header" />
-
-        <ImageView
-            android:id="@+id/advanced_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:contentDescription="@null"
-            android:padding="8dp"
-            android:src="@drawable/ic_menu_remove_holo_light"
-            android:tint="@color/blue_400"
-            app:layout_constraintBottom_toTopOf="@+id/inbox"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_root_end"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@id/advanced_text"
-            app:layout_constraintTop_toBottomOf="@id/sub_header" />
+            app:layout_constraintStart_toEndOf="@id/advanced_icon"
+            app:layout_constraintTop_toBottomOf="@id/no_servers_hint" />
 
         <TextView
             android:id="@+id/inbox"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:gravity="center"
+            android:paddingTop="8dp"
             android:text="@string/login_inbox"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/advanced_text" />
@@ -345,6 +324,20 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/auth_method_label" />
+
+        <TextView
+            android:id="@+id/sub_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="16dp"
+            android:text="@string/login_subheader"
+            android:textColor="@color/gray50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/auth_method" />
 
     </android.support.constraint.ConstraintLayout>
 
