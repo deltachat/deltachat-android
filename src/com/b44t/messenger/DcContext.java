@@ -91,8 +91,10 @@ public class DcContext {
     public native void         maybeNetwork         ();
     public native void         setConfig            (String key, String value);
     public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
-    public native String       getConfig            (String key, String def);
-    public int                 getConfigInt         (String key, int def) { try{return Integer.parseInt(getConfig(key, Integer.toString(def)));} catch(Exception e) {} return 0; }
+    public native String       getConfig            (String key);
+    public int                 getConfigInt         (String key) { try{return Integer.parseInt(getConfig(key));} catch(Exception e) {} return 0; }
+    @Deprecated public String  getConfig            (String key, String def) { return getConfig(key); }
+    @Deprecated public int     getConfigInt         (String key, int def) { return getConfigInt(key); }
     public native String       getInfo              ();
     public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
