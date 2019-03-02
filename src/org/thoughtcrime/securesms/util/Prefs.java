@@ -229,6 +229,15 @@ public class Prefs {
     return getBooleanPreference(context, NOTIFICATION_PREF, true);
   }
 
+  public static boolean isHardCompressionEnabled(Context context) {
+    try {
+      return getStringPreference(context, "pref_compression", "0").equals("1");
+    }
+    catch(Exception e) {
+      return false;
+    }
+  }
+
   // ringtone
 
   public static @NonNull Uri getNotificationRingtone(Context context) {

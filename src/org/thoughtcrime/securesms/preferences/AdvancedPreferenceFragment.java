@@ -91,6 +91,9 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       return true;
     });
 
+    this.findPreference("pref_compression")
+      .setOnPreferenceChangeListener(new ListSummaryListener());
+
     Preference backup = this.findPreference("pref_backup");
     backup.setOnPreferenceClickListener(new BackupListener());
 
@@ -143,6 +146,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch"));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move"));
     updateListSummary(showEmails, Integer.toString(dcContext.getConfigInt("show_emails")));
+    initializeListSummary((ListPreferenceWithSummary) findPreference("pref_compression"));
   }
 
   @Override
