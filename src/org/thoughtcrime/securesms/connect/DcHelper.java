@@ -33,18 +33,22 @@ public class DcHelper {
         return dcContext.isConfigured() == 1;
     }
 
-    public static int getInt(Context context, String key, int defaultValue) {
+    public static int getInt(Context context, String key) {
         DcContext dcContext = getContext(context);
-        return dcContext.getConfigInt(key, defaultValue);
-    }
-
-    public static String get(Context context, String key, String defaultValue) {
-        DcContext dcContext = getContext(context);
-        return dcContext.getConfig(key, defaultValue);
+        return dcContext.getConfigInt(key);
     }
 
     public static String get(Context context, String key) {
-        return get(context, key, "");
+        DcContext dcContext = getContext(context);
+        return dcContext.getConfig(key);
+    }
+
+    @Deprecated public static int getInt(Context context, String key, int defaultValue) {
+        return getInt(context, key);
+    }
+
+    @Deprecated public static String get(Context context, String key, String defaultValue) {
+        return get(context, key);
     }
 
     public static void set(Context context, String key, String value) {

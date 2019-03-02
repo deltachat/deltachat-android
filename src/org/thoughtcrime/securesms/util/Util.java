@@ -349,6 +349,25 @@ public class Util {
     return (int)value;
   }
 
+  public static int objectToInt(Object value) {
+    try {
+      if(value instanceof String) {
+          return Integer.parseInt((String)value);
+      }
+      else if (value instanceof Boolean) {
+        return (Boolean)value? 1 : 0;
+      }
+      else if (value instanceof Integer) {
+        return (Integer)value;
+      }
+      else if (value instanceof Long) {
+        return toIntExact((Long)value);
+      }
+    } catch (Exception e) {
+    }
+    return 0;
+  }
+
   public static String getPrettyFileSize(long sizeBytes) {
     if (sizeBytes <= 0) return "0";
 

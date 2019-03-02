@@ -599,7 +599,7 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_setConfig(JNIEnv *env, jobject 
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getConfig(JNIEnv *env, jobject obj, jstring key, jstring def/*may be NULL*/)
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getConfig(JNIEnv *env, jobject obj, jstring key)
 {
 	CHAR_REF(key);
 		char* temp = dc_get_config(get_dc_context(env, obj), keyPtr);

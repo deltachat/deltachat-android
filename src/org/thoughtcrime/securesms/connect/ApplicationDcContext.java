@@ -675,7 +675,7 @@ public class ApplicationDcContext extends DcContext {
           case  4: s = context.getResources().getQuantityString(R.plurals.n_members, (int)data2, (int)data2); break;
           case  6: s = context.getResources().getQuantityString(R.plurals.n_contacts, (int)data2, (int)data2); break;
           case  7: s = context.getString(R.string.voice_message); break;
-          case  8: s = context.getString(R.string.menu_deaddrop); break;
+          case  8: s = context.getString(R.string.chat_contact_request); break;
           case  9: s = context.getString(R.string.image); break;
           case 10: s = context.getString(R.string.video); break;
           case 11: s = context.getString(R.string.audio); break;

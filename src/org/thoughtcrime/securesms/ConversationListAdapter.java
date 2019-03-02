@@ -183,6 +183,16 @@ class ConversationListAdapter extends RecyclerView.Adapter {
     this.notifyDataSetChanged();
   }
 
+  int getDeaddropContactId()
+  {
+    for (int i = 0; i < dcChatlist.getCnt(); i++) {
+      if (dcChatlist.getChatId(i) == DcChat.DC_CHAT_ID_DEADDROP) {
+       return dcContext.getMsg(dcChatlist.getMsgId(i)).getFromId();
+      }
+    }
+    return 0;
+  }
+
   interface ItemClickListener {
     void onItemClick(ConversationListItem item);
     void onItemLongClick(ConversationListItem item);

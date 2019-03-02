@@ -153,6 +153,18 @@
       <item>none</item>
   </string-array>
 
+  <string-array name="pref_show_emails_entries">
+    <item>@string/pref_show_emails_no</item>
+    <item>@string/pref_show_emails_accepted_contacts</item>
+    <item>@string/pref_show_emails_all</item>
+  </string-array>
+
+  <string-array name="pref_show_emails_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+
   <!-- discrete MIME type (the part before the "/") -->
 
 

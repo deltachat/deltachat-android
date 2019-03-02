@@ -13,14 +13,18 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   protected class ListSummaryListener implements Preference.OnPreferenceChangeListener {
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
-      ListPreference listPref   = (ListPreference) preference;
-      int            entryIndex = Arrays.asList(listPref.getEntryValues()).indexOf(value);
-
-      listPref.setSummary(entryIndex >= 0 && entryIndex < listPref.getEntries().length
-                          ? listPref.getEntries()[entryIndex]
-                          : getString(R.string.unknown));
+      updateListSummary(preference, value);
       return true;
     }
+  }
+
+  protected void updateListSummary(Preference preference, Object value) {
+    ListPreference listPref = (ListPreference) preference;
+    int entryIndex = Arrays.asList(listPref.getEntryValues()).indexOf(value);
+
+    listPref.setSummary(entryIndex >= 0 && entryIndex < listPref.getEntries().length
+        ? listPref.getEntries()[entryIndex]
+        : getString(R.string.unknown));
   }
 
   protected void initializeListSummary(ListPreference pref) {
