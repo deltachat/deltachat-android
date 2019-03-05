@@ -26,6 +26,7 @@ import android.support.annotation.NonNull;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
+import com.mapbox.mapboxsdk.Mapbox;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
@@ -71,6 +72,7 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     initializeJobManager();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
+    Mapbox.getInstance(getApplicationContext(), BuildConfig.MAP_ACCESS_TOKEN);
   }
 
   @Override
