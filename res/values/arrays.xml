@@ -129,6 +129,16 @@
       <item>@string/mute_for_one_year</item>
   </string-array>
 
+
+<string-array name="share_location_durations">
+    <item>@string/share_location_once</item>
+    <item>@string/share_location_for_5_minutes</item>
+    <item>@string/share_location_for_30_minutes</item>
+    <item>@string/share_location_for_one_hour</item>
+    <item>@string/share_location_for_two_hours</item>
+    <item>@string/share_location_for_six_hours</item>
+</string-array>
+
   <string-array name="recipient_vibrate_entries">
       <item>@string/def</item>
       <item>@string/on</item>

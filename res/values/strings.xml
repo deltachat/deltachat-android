@@ -144,6 +144,7 @@
     <string name="menu_deaddrop">Contact requests</string>
     <string name="menu_deaddrop_subtitle">Press message to start chatting</string>
     <string name="menu_view_profile">View profile</string>
+    <string name="title_share_location">Share location</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_two_hours">Mute for 2 hours</string>
@@ -151,6 +152,12 @@
     <string name="mute_for_seven_days">Mute for 7 days</string>
     <string name="mute_for_one_year">Mute for 1 year</string>
 
+    <string name="share_location_once">once</string>
+    <string name="share_location_for_5_minutes">for 5 minutes</string>
+    <string name="share_location_for_30_minutes">for 30 minutes</string>
+    <string name="share_location_for_one_hour">for 1 hour</string>
+    <string name="share_location_for_two_hours">for 2 hours</string>
+    <string name="share_location_for_six_hours">for 6 hours</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
