@@ -26,6 +26,7 @@ import android.support.annotation.NonNull;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
+import com.b44t.messenger.geolocation.DcLocationManager;
 import com.mapbox.mapboxsdk.Mapbox;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -50,11 +51,10 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
 
   private static final String TAG = ApplicationContext.class.getName();
 
-  private JobManager             jobManager;
-
-  private volatile boolean isAppVisible;
-
   public ApplicationDcContext dcContext;
+  public DcLocationManager dcLocationManager;
+  private JobManager jobManager;
+  private volatile boolean isAppVisible;
 
   public static ApplicationContext getInstance(Context context) {
     return (ApplicationContext)context.getApplicationContext();
@@ -73,6 +73,7 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
     Mapbox.getInstance(getApplicationContext(), BuildConfig.MAP_ACCESS_TOKEN);
+    dcLocationManager = new DcLocationManager(this);
   }
 
   @Override

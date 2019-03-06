@@ -111,6 +111,7 @@
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle emoji keyboard</string>
     <string name="menu_edit_group">Edit group</string>
+    <string name="menu_show_map">Show map</string>
     <string name="menu_archive_chat">Archive chat</string>
     <string name="menu_unarchive_chat">Unarchive chat</string>
     <string name="menu_add_attachment">Add attachment</string>
@@ -606,6 +607,7 @@
     <string name="menu.view.developer.open.log.folder">Open Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
 
+    <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
@@ -618,5 +620,6 @@
     <string name="qrshow_join_verified_group_title">QR invite code</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Scan this to join the group \"%1$s\".</string>
+
 
 </resources>
