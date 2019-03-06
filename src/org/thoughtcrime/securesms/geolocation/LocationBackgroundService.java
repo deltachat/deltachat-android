@@ -11,6 +11,7 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by cyberta on 06.03.19.
@@ -22,7 +23,7 @@ public class LocationBackgroundService extends Service {
     private static final String TAG = LocationBackgroundService.class.getSimpleName();
     private LocationManager locationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
-    private static final float LOCATION_DISTANCE = 20f;
+    private static final float LOCATION_DISTANCE = 25F;
     ServiceLocationListener locationListener;
 
     private final IBinder mBinder = new LocationBackgroundServiceBinder();
@@ -80,7 +81,7 @@ public class LocationBackgroundService extends Service {
             locationManager.requestLocationUpdates(
                     provider, LOCATION_INTERVAL, LOCATION_DISTANCE,
                     locationListener);
-        } catch (SecurityException | IllegalArgumentException ex) {
+        } catch (SecurityException | IllegalArgumentException  ex) {
             Log.e(TAG, String.format("Unable to request %s provider based location updates.", provider), ex);
         }
     }
@@ -109,10 +110,11 @@ public class LocationBackgroundService extends Service {
     }
 
     private class ServiceLocationListener implements LocationListener {
+        private static final int EARTH_RADIUS = 6371;
 
         @Override
         public void onLocationChanged(Location location) {
-            Log.e(TAG, "onLocationChanged: " + location);
+            Log.d(TAG, "onLocationChanged: " + location);
             if (isBetterLocation(location, DcLocation.getInstance().getLastLocation())) {
                 DcLocation.getInstance().updateLocation(location);
             }
@@ -147,38 +149,50 @@ public class LocationBackgroundService extends Service {
 
             // Check whether the new location fix is newer or older
             long timeDelta = location.getTime() - currentBestLocation.getTime();
-            boolean isSignificantlyNewer = timeDelta > TIMEOUT;
             boolean isSignificantlyOlder = timeDelta < -TIMEOUT;
-            boolean isNewer = timeDelta > 0;
 
-            // If it's been more than two minutes since the current location, use the new location
-            // because the user has likely moved
-            if (isSignificantlyNewer) {
-                return true;
-                // If the new location is more than two minutes older, it must be worse
-            } else if (isSignificantlyOlder) {
+            if (isSignificantlyOlder) {
                 return false;
             }
 
             // Check whether the new location fix is more or less accurate
             int accuracyDelta = (int) (location.getAccuracy() - currentBestLocation.getAccuracy());
-            boolean isLessAccurate = accuracyDelta > 0;
-            boolean isMoreAccurate = accuracyDelta < 0;
-            boolean isSignificantlyLessAccurate = accuracyDelta > 200;
+            boolean isSignificantlyMoreAccurate = accuracyDelta < -50;
+            boolean isSameProvider = isSameProvider(location.getProvider(), currentBestLocation.getProvider());
 
-            // Check if the old and new location are from the same provider
-            boolean isFromSameProvider = isSameProvider(location.getProvider(),
-                    currentBestLocation.getProvider());
-
-            // Determine location quality using a combination of timeliness and accuracy
-            if (isMoreAccurate) {
-                return true;
-            } else if (isNewer && !isLessAccurate) {
-                return true;
-            } else if (isNewer && !isSignificantlyLessAccurate && isFromSameProvider) {
+            if (isSignificantlyMoreAccurate && isSameProvider) {
                 return true;
             }
-            return false;
+
+            boolean isSignificantlyLessAccurate = accuracyDelta > 50;
+            boolean hasLocationChanged = hasLocationDistanceChanged(location, currentBestLocation);
+            return hasLocationChanged && !isSignificantlyLessAccurate;
+        }
+
+        private boolean hasLocationDistanceChanged(Location location, Location currentBestLocation) {
+            return  distance(location.getLatitude(), location.getLongitude(), currentBestLocation.getLatitude(), currentBestLocation.getLongitude()) > LOCATION_DISTANCE;
+        }
+
+        private double distance(double startLat, double startLong,
+                                      double endLat, double endLong) {
+
+            double dLat  = Math.toRadians(endLat - startLat);
+            double dLong = Math.toRadians(endLong - startLong);
+
+            startLat = Math.toRadians(startLat);
+            endLat   = Math.toRadians(endLat);
+
+            double a = haversin(dLat) + Math.cos(startLat) * Math.cos(endLat) * haversin(dLong);
+            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            double distance = EARTH_RADIUS * c * 1000;
+            Log.d(TAG, "Distance between location updates: " + distance);
+            Toast.makeText(LocationBackgroundService.this, "Distance in m between location updates: " + distance , Toast.LENGTH_LONG).show();
+            return distance;
+        }
+
+        private double haversin(double val) {
+            return Math.pow(Math.sin(val / 2), 2);
         }
 
         /** Checks whether two providers are the same */

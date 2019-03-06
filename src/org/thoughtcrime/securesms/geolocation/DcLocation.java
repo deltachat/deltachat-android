@@ -25,7 +25,7 @@ public class DcLocation extends Observable {
     }
 
     public Location getLastLocation() {
-        return instance.lastLocation;
+        return lastLocation;
     }
 
     void updateLocation(Location location) {

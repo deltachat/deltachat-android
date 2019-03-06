@@ -71,7 +71,7 @@ public class DirectShareService extends ChooserTargetService {
 //          parcel.writeParcelable(recipient.getAddress(), 0);
 //
 //          Bundle bundle = new Bundle();
-//          bundle.putLong(ShareActivity.EXTRA_THREAD_ID, record.getThreadId());
+//          bundle.putLong(ShareActivity.EXTRA_THREAD_ID, record.getChatId());
 //          bundle.putByteArray(ShareActivity.EXTRA_ADDRESS_MARSHALLED, parcel.marshall());
 //          bundle.putInt(ShareActivity.EXTRA_DISTRIBUTION_TYPE, record.getDistributionType());
 //          bundle.setClassLoader(getClassLoader());

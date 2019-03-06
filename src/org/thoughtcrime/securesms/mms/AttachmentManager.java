@@ -37,18 +37,23 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
+import org.thoughtcrime.securesms.MuteDialog;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.ShareLocationDialog;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
+import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
@@ -385,21 +390,27 @@ public class AttachmentManager {
                .execute();
   }
 
-  public static void selectLocation(Activity activity, int requestCode) {
-    /*
+  public static void selectLocation(Activity activity, int chatId) {
+
     Permissions.with(activity)
                .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
                .onAllGranted(() -> {
-                 try {
-                   activity.startActivityForResult(new PlacePicker.IntentBuilder().build(activity), requestCode);
-                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                   Log.w(TAG, e);
-                 }
+
+
+                 ShareLocationDialog.show(activity, durationInSeconds -> {
+                   DcLocationManager dcLocationManager = ApplicationContext.getInstance(activity).dcLocationManager;
+                   switch (durationInSeconds) {
+                     case 1: dcLocationManager.shareLastLocation(chatId); break;
+                     default:
+                       dcLocationManager.shareLocation(durationInSeconds, chatId);
+                     break;
+                   }
+                 });
                })
                .execute();
-               */
+
   }
 
   private @Nullable Uri getSlideUri() {

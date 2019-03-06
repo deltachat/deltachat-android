@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.IBinder;
 import android.util.Log;
 
+import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,11 +24,14 @@ public class DcLocationManager implements Observer {
     private LocationBackgroundService.LocationBackgroundServiceBinder serviceBinder;
     private Context context;
     private DcLocation dcLocation = DcLocation.getInstance();
+    private LinkedList<Integer> pendingShareLastLocation = new LinkedList<>();
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             serviceBinder = (LocationBackgroundService.LocationBackgroundServiceBinder) service;
-            startLocationEngine();
+            while (pendingShareLastLocation.size() > 0) {
+                shareLastLocation(pendingShareLastLocation.pop());
+            }
         }
 
         @Override
@@ -60,8 +64,14 @@ public class DcLocationManager implements Observer {
         serviceBinder.stop();
     }
 
-    public void shareLastLocation() {
+    public void shareLocation(int duration, int chatId) {
+        startLocationEngine();
+        Log.d(TAG, String.format("Share location in chat %d for %d seconds", chatId, duration));
+    }
+
+    public void shareLastLocation(int chatId) {
         if (serviceBinder == null) {
+            pendingShareLastLocation.push(chatId);
             initializeLocationEngine();
             return;
         }
@@ -81,5 +91,6 @@ public class DcLocationManager implements Observer {
 
     private void writeDcLocationUpdateMessage() {
         //TODO: implement me!
+        Log.d(TAG, "Share location: " + dcLocation.getLastLocation().getLatitude() + ", " + dcLocation.getLastLocation().getLongitude());
     }
 }
