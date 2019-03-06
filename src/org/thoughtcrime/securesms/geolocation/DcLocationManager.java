@@ -8,6 +8,8 @@ import android.location.Location;
 import android.os.IBinder;
 import android.util.Log;
 
+import org.thoughtcrime.securesms.ApplicationContext;
+
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
@@ -64,9 +66,14 @@ public class DcLocationManager implements Observer {
         serviceBinder.stop();
     }
 
+    public void stopSharingLocation(int chatId) {
+        ApplicationContext.getInstance(context).dcContext.sendLocationsToChat(chatId, 0);
+    }
+
     public void shareLocation(int duration, int chatId) {
         startLocationEngine();
         Log.d(TAG, String.format("Share location in chat %d for %d seconds", chatId, duration));
+        ApplicationContext.getInstance(context).dcContext.sendLocationsToChat(chatId, duration);
     }
 
     public void shareLastLocation(int chatId) {
@@ -78,7 +85,8 @@ public class DcLocationManager implements Observer {
 
         Location location = dcLocation.getLastLocation();
         Log.d(TAG, "share lastLocation: " + location.getLatitude() + ", " + location.getLongitude());
-        //TODO: implement me! write share location message
+        ApplicationContext.getInstance(context).dcContext.sendLocationsToChat(chatId, 1);
+        ApplicationContext.getInstance(context).dcContext.setLocation((float) location.getLatitude(), (float) location.getLongitude(), location.getAccuracy());
     }
 
     @Override
@@ -90,7 +98,12 @@ public class DcLocationManager implements Observer {
     }
 
     private void writeDcLocationUpdateMessage() {
-        //TODO: implement me!
         Log.d(TAG, "Share location: " + dcLocation.getLastLocation().getLatitude() + ", " + dcLocation.getLastLocation().getLongitude());
+        Location lastLocation = dcLocation.getLastLocation();
+
+        boolean continueLocationStreaming = ApplicationContext.getInstance(context).dcContext.setLocation((float) lastLocation.getLatitude(), (float) lastLocation.getLongitude(), lastLocation.getAccuracy());
+        if (!continueLocationStreaming) {
+            stopLocationEngine();
+        }
     }
 }

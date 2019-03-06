@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -56,8 +57,9 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   private @Nullable View                      currentAnchor;
   private @Nullable AttachmentClickedListener listener;
+  private int chatId;
 
-  public AttachmentTypeSelector(@NonNull Context context, @NonNull LoaderManager loaderManager, @Nullable AttachmentClickedListener listener) {
+  public AttachmentTypeSelector(@NonNull Context context, @NonNull LoaderManager loaderManager, @Nullable AttachmentClickedListener listener, int chatId) {
     super(context);
 
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -65,6 +67,7 @@ public class AttachmentTypeSelector extends PopupWindow {
 
     this.listener       = listener;
     this.loaderManager  = loaderManager;
+    this.chatId         = chatId;
     this.recentRail     = ViewUtil.findById(layout, R.id.recent_photos);
     this.imageButton    = ViewUtil.findById(layout, R.id.gallery_button);
     this.audioButton    = ViewUtil.findById(layout, R.id.audio_button);
@@ -82,6 +85,8 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.locationButton.setOnClickListener(new PropagatingClickListener(ADD_LOCATION));
     this.closeButton.setOnClickListener(new CloseClickListener());
     this.recentRail.setListener(new RecentPhotoSelectedListener());
+
+    setLocationButtonImage(context);
 
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
       ViewUtil.findById(layout, R.id.location_linear_layout).setVisibility(View.INVISIBLE);
@@ -108,6 +113,7 @@ public class AttachmentTypeSelector extends PopupWindow {
     }
 
     this.currentAnchor = anchor;
+    setLocationButtonImage(activity);
 
     showAtLocation(anchor, Gravity.BOTTOM, 0, 0);
 
@@ -147,6 +153,21 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   public void setListener(@Nullable AttachmentClickedListener listener) {
     this.listener = listener;
+  }
+
+  private void setLocationButtonImage(Context context) {
+    int resId;
+    if (ApplicationContext.getInstance(context).dcContext.isSendingLocationsToChat(chatId)) {
+      resId = R.drawable.ic_location_off_white_24;
+    } else {
+      resId = R.drawable.ic_location_on_white_24dp;
+    }
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      this.locationButton.setImageDrawable(context.getDrawable(resId));
+    } else {
+      this.locationButton.setImageDrawable(context.getResources().getDrawable(resId));
+    }
   }
 
   private void animateButtonIn(View button, int delay) {
