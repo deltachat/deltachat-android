@@ -906,6 +906,7 @@ messenger-backend/src/dc_keyring.c \
 messenger-backend/src/dc_loginparam.c \
 messenger-backend/src/dc_lot.c \
 messenger-backend/src/dc_move.c \
+messenger-backend/src/dc_location.c \
 messenger-backend/src/dc_context.c \
 messenger-backend/src/dc_configure.c \
 messenger-backend/src/dc_e2ee.c \

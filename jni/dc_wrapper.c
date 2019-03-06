@@ -734,6 +734,23 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_addAddressBook(JNIEnv *env, job
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_sendLocationsToChat(JNIEnv *env, jobject obj, jint chat_id, jint seconds)
+{
+	dc_send_locations_to_chat(get_dc_context(env, obj), chat_id, seconds);
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isSendingLocationsToChat(JNIEnv *env, jobject obj, jint chat_id)
+{
+	return (dc_is_sending_locations_to_chat(get_dc_context(env, obj), chat_id)!=0);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jobject obj, jfloat latitude, jfloat longitude, jfloat accuracy)
+{
+	dc_set_location(get_dc_context(env, obj), latitude, longitude, accuracy);
+}
+
 
 /*******************************************************************************
  * DcChatlist
