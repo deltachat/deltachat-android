@@ -1,18 +1,17 @@
-package com.b44t.messenger.map;
+package org.thoughtcrime.securesms.map;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.b44t.messenger.geolocation.DcLocation;
-import com.b44t.messenger.geolocation.DcLocationManager;
+import org.thoughtcrime.securesms.geolocation.DcLocation;
+import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
 
 import org.thoughtcrime.securesms.ApplicationContext;

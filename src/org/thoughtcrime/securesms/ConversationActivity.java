@@ -63,7 +63,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.map.MapActivity;
+import org.thoughtcrime.securesms.map.MapActivity;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;

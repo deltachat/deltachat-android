@@ -26,7 +26,7 @@ import android.support.annotation.NonNull;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
-import com.b44t.messenger.geolocation.DcLocationManager;
+import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import com.mapbox.mapboxsdk.Mapbox;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
