@@ -154,6 +154,10 @@ public class DcContext {
     public native int          joinSecurejoin       (String qr);
     public native void         sendLocationsToChat  (int chat_id, int seconds);
     public native boolean      isSendingLocationsToChat(int chat_id);
+
+    /**
+     * @return true if at least one chat has location streaming enabled
+     */
     public native boolean      setLocation          (float latitude, float longitude, float accuracy);
 
     // event handling - you should @Override this function in derived classes

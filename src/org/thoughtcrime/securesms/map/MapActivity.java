@@ -100,16 +100,6 @@ public class MapActivity extends BaseActivity implements PermissionsListener, Ob
         mapView.onSaveInstanceState(outState);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        //FIXME: only for testing --v
-        DcLocationManager locationManager = ApplicationContext.getInstance(this).dcLocationManager;
-        locationManager.stopLocationEngine();
-
-    }
-
     //Android SDK callback for the result from requesting permissions
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -132,8 +122,7 @@ public class MapActivity extends BaseActivity implements PermissionsListener, Ob
     }
 
     private void showDeviceLocation() {
-        DcLocationManager locationManager = ApplicationContext.getInstance(this).dcLocationManager;
-        locationManager.startLocationEngine();
+        // TODO: draw own position on map
 
     }
 

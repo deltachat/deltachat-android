@@ -554,7 +554,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleAddAttachment() {
     if (attachmentTypeSelector == null) {
-      attachmentTypeSelector = new AttachmentTypeSelector(this, getSupportLoaderManager(), new AttachmentTypeListener());
+      attachmentTypeSelector = new AttachmentTypeSelector(this, getSupportLoaderManager(), new AttachmentTypeListener(), chatId);
     }
     attachmentTypeSelector.show(this, attachButton);
   }
