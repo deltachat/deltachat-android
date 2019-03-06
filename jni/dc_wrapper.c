@@ -746,9 +746,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isSendingLocationsToChat(JN
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jobject obj, jfloat latitude, jfloat longitude, jfloat accuracy)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jobject obj, jfloat latitude, jfloat longitude, jfloat accuracy)
 {
-	dc_set_location(get_dc_context(env, obj), latitude, longitude, accuracy);
+	return (dc_set_location(get_dc_context(env, obj), latitude, longitude, accuracy)!=0);
 }
 
 
