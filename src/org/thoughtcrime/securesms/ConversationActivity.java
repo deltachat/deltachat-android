@@ -63,6 +63,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.map.MapActivity;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
@@ -446,6 +447,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
       case R.id.menu_unmute_notifications:  handleUnmuteNotifications();       return true;
       case R.id.menu_conversation_settings: handleConversationSettings();      return true;
+      case R.id.menu_show_map:              handleShowMap();                   return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
     }
 
@@ -470,6 +472,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   //////// Event Handlers
+
+  private void handleShowMap() {
+    Intent intent = new Intent(this, MapActivity.class);
+    startActivity(intent);
+  }
 
   private void handleReturnToConversationList() {
     Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));

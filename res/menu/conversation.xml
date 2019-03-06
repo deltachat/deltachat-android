@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <item android:title="@string/menu_view_profile"
           android:id="@+id/menu_conversation_settings"/>
@@ -9,5 +11,10 @@
 
     <item android:title="@string/menu_all_media"
           android:id="@+id/menu_view_media" />
+
+    <item android:id="@+id/menu_show_map"
+        android:title="@string/menu_show_map"
+        android:icon="?menu_map_icon"
+        app:showAsAction="ifRoom" />
 
 </menu>
