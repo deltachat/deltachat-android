@@ -152,6 +152,9 @@ public class DcContext {
     public @NonNull DcLot      checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }
     public native String       getSecurejoinQr      (int chat_id);
     public native int          joinSecurejoin       (String qr);
+    public native void         sendLocationsToChat  (int chat_id, int seconds);
+    public native boolean      isSendingLocationsToChat(int chat_id);
+    public native boolean      setLocation          (float latitude, float longitude, float accuracy);
 
     // event handling - you should @Override this function in derived classes
     public long handleEvent(int event, long data1, long data2) {
