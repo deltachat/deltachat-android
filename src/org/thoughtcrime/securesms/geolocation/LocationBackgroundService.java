@@ -11,7 +11,6 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by cyberta on 06.03.19.
@@ -19,7 +18,7 @@ import android.widget.Toast;
 
 public class LocationBackgroundService extends Service {
 
-    private static final int TIMEOUT = 1000 * 30;
+    private static final int TIMEOUT = 1000 * 15;
     private static final String TAG = LocationBackgroundService.class.getSimpleName();
     private LocationManager locationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
@@ -71,10 +70,7 @@ public class LocationBackgroundService extends Service {
         } catch (Exception ex) {
             Log.i(TAG, "fail to remove location listners, ignore", ex);
         }
-
-
     }
-
 
     private void requestLocationUpdate(String provider) {
         try {
@@ -132,7 +128,7 @@ public class LocationBackgroundService extends Service {
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
-            Log.e(TAG, "onStatusChanged: " + provider);
+            Log.e(TAG, "onStatusChanged: " + provider + " status: " + status);
         }
 
 
@@ -157,24 +153,35 @@ public class LocationBackgroundService extends Service {
 
             // Check whether the new location fix is more or less accurate
             int accuracyDelta = (int) (location.getAccuracy() - currentBestLocation.getAccuracy());
-            boolean isSignificantlyMoreAccurate = accuracyDelta < -50;
+            Log.d(TAG, "accuracyDelta: " + accuracyDelta);
+            boolean isSignificantlyMoreAccurate = accuracyDelta > 50;
             boolean isSameProvider = isSameProvider(location.getProvider(), currentBestLocation.getProvider());
 
             if (isSignificantlyMoreAccurate && isSameProvider) {
                 return true;
             }
 
-            boolean isSignificantlyLessAccurate = accuracyDelta > 50;
-            boolean hasLocationChanged = hasLocationDistanceChanged(location, currentBestLocation);
-            return hasLocationChanged && !isSignificantlyLessAccurate;
+            boolean isMoreAccurate = accuracyDelta > 0;
+            double distance = distance(location, currentBestLocation);
+            return hasLocationChanged(distance) && isMoreAccurate ||
+                    hasLocationSignificantlyChanged(distance);
+
         }
 
-        private boolean hasLocationDistanceChanged(Location location, Location currentBestLocation) {
-            return  distance(location.getLatitude(), location.getLongitude(), currentBestLocation.getLatitude(), currentBestLocation.getLongitude()) > LOCATION_DISTANCE;
+        private boolean hasLocationSignificantlyChanged(double distance) {
+            return distance > 30D;
         }
 
-        private double distance(double startLat, double startLong,
-                                      double endLat, double endLong) {
+        private boolean hasLocationChanged(double distance) {
+            return distance > 10D;
+        }
+
+        private double distance(Location location, Location currentBestLocation) {
+
+            double startLat = location.getLatitude();
+            double startLong = location.getLongitude();
+            double endLat = currentBestLocation.getLatitude();
+            double endLong = currentBestLocation.getLongitude();
 
             double dLat  = Math.toRadians(endLat - startLat);
             double dLong = Math.toRadians(endLong - startLong);
@@ -187,7 +194,6 @@ public class LocationBackgroundService extends Service {
 
             double distance = EARTH_RADIUS * c * 1000;
             Log.d(TAG, "Distance between location updates: " + distance);
-            Toast.makeText(LocationBackgroundService.this, "Distance in m between location updates: " + distance , Toast.LENGTH_LONG).show();
             return distance;
         }
 
