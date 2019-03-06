@@ -144,7 +144,7 @@
     <string name="menu_deaddrop">Contact requests</string>
     <string name="menu_deaddrop_subtitle">Press message to start chatting</string>
     <string name="menu_view_profile">View profile</string>
-    <string name="title_share_location">Share location</string>
+    <string name="title_share_location">Share location with all group members</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_two_hours">Mute for 2 hours</string>
