@@ -752,6 +752,73 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jo
 }
 
 
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getLocationsCPtr(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
+{
+	return (jlong)dc_get_locations(get_dc_context(env, obj), chat_id, contact_id);
+}
+
+
+/*******************************************************************************
+ * DcArray
+ ******************************************************************************/
+
+
+static dc_array_t* get_dc_array(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if (fid==0) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "arrayCPtr", "J" /*Signature, J=long*/);
+	}
+	if (fid) {
+		return (dc_array_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcArray_unrefArrayCPtr(JNIEnv *env, jobject obj)
+{
+	dc_array_unref(get_dc_array(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcArray_getCnt(JNIEnv *env, jobject obj)
+{
+	return dc_array_get_cnt(get_dc_array(env, obj));
+}
+
+
+JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getLatitude(JNIEnv *env, jobject obj, jint index)
+{
+	return (jfloat)dc_array_get_latitude(get_dc_array(env, obj), index);
+}
+
+
+JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getLongitude(JNIEnv *env, jobject obj, jint index)
+{
+	return (jfloat)dc_array_get_longitude(get_dc_array(env, obj), index);
+}
+
+
+JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getAccuracy(JNIEnv *env, jobject obj, jint index)
+{
+	return (jfloat)dc_array_get_accuracy(get_dc_array(env, obj), index);
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcArray_getTimestamp(JNIEnv *env, jobject obj, jint index)
+{
+	return JTIMESTAMP(dc_array_get_timestamp(get_dc_array(env, obj), index));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcArray_getMsgId(JNIEnv *env, jobject obj, jint index)
+{
+	return dc_array_get_msg_id(get_dc_array(env, obj), index);
+}
+
+
 /*******************************************************************************
  * DcChatlist
  ******************************************************************************/
