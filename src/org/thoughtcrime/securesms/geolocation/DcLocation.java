@@ -1,4 +1,4 @@
-package com.b44t.messenger.geolocation;
+package org.thoughtcrime.securesms.geolocation;
 
 import android.location.Location;
 
