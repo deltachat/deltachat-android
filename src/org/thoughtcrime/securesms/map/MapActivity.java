@@ -1,31 +1,45 @@
 package org.thoughtcrime.securesms.map;
 
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.thoughtcrime.securesms.geolocation.DcLocation;
-import org.thoughtcrime.securesms.geolocation.DcLocationManager;
-import com.mapbox.android.core.permissions.PermissionsListener;
+
 import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.geojson.Feature;
+import com.mapbox.geojson.FeatureCollection;
+import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.style.layers.LineLayer;
+import com.mapbox.mapboxsdk.style.layers.Property;
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BaseActivity;
 import org.thoughtcrime.securesms.R;
 
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class MapActivity extends BaseActivity implements PermissionsListener, Observer {
+public class MapActivity extends BaseActivity implements Observer {
+
+    public static final String LINE_LAYER = "line_layer";
+    public static final String LINE_SOURCE = "line_source";
+    public static final String MARKER_LAYER = "symbol_layer";
+    public static final String MARKER_ICON = "marker_icon_id";
+    public static final String MARKER_POSITION_SOURCE = "marker_position";
 
     private static final String TAG = MapActivity.class.getSimpleName();
     private MapView mapView;
+    private MapboxMap mapboxMap;
     private PermissionsManager permissionsManager;
     private DcLocation dcLocation;
 
@@ -38,27 +52,20 @@ public class MapActivity extends BaseActivity implements PermissionsListener, Ob
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
+            this.mapboxMap = mapboxMap;
 
             mapboxMap.setCameraPosition(new CameraPosition.Builder()
-                    .target(new LatLng(53.5505D, 10.001D))
+                    .target(new LatLng(dcLocation.getLastLocation().getLatitude(), dcLocation.getLastLocation().getLongitude()))
                     .zoom(12)
                     .build());
             mapboxMap.getUiSettings().setLogoEnabled(false);
             mapboxMap.getUiSettings().setAttributionEnabled(false);
 
-            permissionsManager = new PermissionsManager(this);
-
-            if (PermissionsManager.areLocationPermissionsGranted(this)) {
-                showDeviceLocation();
-            } else {
-                permissionsManager = new PermissionsManager(this);
-                permissionsManager.requestLocationPermissions(this);
-            }
-
+            initMapDrawings();
+            showDeviceLocation();
         }));
 
         dcLocation = DcLocation.getInstance();
-
     }
 
 
@@ -106,24 +113,73 @@ public class MapActivity extends BaseActivity implements PermissionsListener, Ob
         permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    //map sdk callbacks for the result from requesting permissions
-    @Override
-    public void onPermissionResult(boolean granted) {
-        if (granted) {
-            showDeviceLocation();
-        } else {
-            Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG).show();
+    private void initMapDrawings() {
+        if (mapboxMap == null || mapboxMap.getStyle() == null) {
+            return;
         }
+        Style style = mapboxMap.getStyle();
+        initGeoJsonSources(style);
+        initLayers(style);
     }
 
-    @Override
-    public void onExplanationNeeded(List<String> permissionsToExplain) {
-        // no explanation text before the permission pop up is shown
+    private void initGeoJsonSources(Style style) {
+        GeoJsonSource markerPositionSource = new GeoJsonSource(MARKER_POSITION_SOURCE);
+        GeoJsonSource linePositionSource = new GeoJsonSource(LINE_SOURCE);
+        style.addSource(markerPositionSource);
+        style.addSource(linePositionSource);
+    }
+
+    private void initLayers(Style style) {
+        style.addImage(MARKER_ICON,
+                BitmapFactory.decodeResource(
+                        MapActivity.this.getResources(), R.drawable.mapbox_marker_icon_default));
+        style.addLayer(new SymbolLayer(MARKER_LAYER, MARKER_POSITION_SOURCE)
+                .withProperties(PropertyFactory.iconImage(MARKER_ICON)));
+
+        style.addLayer(new LineLayer(LINE_LAYER, LINE_SOURCE)
+                .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
+                        PropertyFactory.lineJoin(Property.LINE_JOIN_MITER),
+                        PropertyFactory.lineOpacity(.7f),
+                        PropertyFactory.lineWidth(7f),
+                        PropertyFactory.lineColor(Color.parseColor("#3bb2d0"))));
     }
 
     private void showDeviceLocation() {
-        // TODO: draw own position on map
+        if (this.dcLocation.getLastLocation().getProvider().equals("?")) {
+            return;
+        }
 
+        FeatureCollection featureCollection = FeatureCollection.fromFeature(Feature.fromGeometry(
+                Point.fromLngLat(dcLocation.getLastLocation().getLongitude(),
+                        dcLocation.getLastLocation().getLatitude())));
+
+        drawPoints(featureCollection);
+    }
+
+    private void drawPoints(@NonNull FeatureCollection featureCollection) {
+        if (mapboxMap == null ||
+                mapboxMap.getStyle() == null ||
+                featureCollection.features() == null ||
+                featureCollection.features().size() == 0) {
+            return;
+        }
+
+        Style style = mapboxMap.getStyle();
+        GeoJsonSource source = (GeoJsonSource) style.getSource(MARKER_POSITION_SOURCE);
+        source.setGeoJson(featureCollection);
+    }
+
+    private void drawLines(@NonNull FeatureCollection featureCollection) {
+        if (mapboxMap == null ||
+                mapboxMap.getStyle() == null ||
+                featureCollection.features() == null ||
+                featureCollection.features().size() == 0) {
+            return;
+        }
+
+        Style style = mapboxMap.getStyle();
+        GeoJsonSource source = (GeoJsonSource) style.getSource(LINE_SOURCE);
+        source.setGeoJson(featureCollection);
     }
 
 
@@ -131,7 +187,10 @@ public class MapActivity extends BaseActivity implements PermissionsListener, Ob
     public void update(Observable o, Object arg) {
         if (o instanceof DcLocation) {
             this.dcLocation = (DcLocation) o;
-            Log.d(TAG, "show marker on map: " + dcLocation.getLastLocation().getLatitude() + ", " + dcLocation.getLastLocation().getLongitude());
+            Log.d(TAG, "show marker on map: " +
+                    dcLocation.getLastLocation().getLatitude() + ", " +
+                    dcLocation.getLastLocation().getLongitude());
+            showDeviceLocation();
 
         }
     }
