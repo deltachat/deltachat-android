@@ -52,6 +52,21 @@
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/preference_divider" />
 
+
+    <PreferenceCategory android:title="Experimental features">
+
+        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
+            android:key="pref_compression"
+            android:title="Outgoing image quality"
+            android:dependency="pref_compression"
+            android:entries="@array/pref_compression_entries"
+            android:entryValues="@array/pref_compression_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:layout="@layout/preference_divider" />
+
+
     <PreferenceCategory android:title="@string/pref_other">
         <Preference android:key="pref_backup"
                     android:title="@string/pref_backup"
