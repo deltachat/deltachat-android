@@ -379,7 +379,13 @@ public class BitmapUtil {
 
   public static void recodeImageMsg(Context context, DcMsg msg)
   {
-    final int desiredWH = 1280;
+    int desiredWH = 1280;
+    int desiredJpegQuality = 85;
+
+    if (Prefs.isHardCompressionEnabled(context)) {
+      desiredWH = 640;
+      desiredJpegQuality = 75;
+    }
 
     try {
       String inPath = msg.getFile();
@@ -432,7 +438,7 @@ public class BitmapUtil {
 
       String outPath = DcHelper.getContext(context).getBlobdirFile(inPath);
       FileOutputStream outStream = new FileOutputStream(outPath);
-      if(!outBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream)) {
+      if(!outBitmap.compress(Bitmap.CompressFormat.JPEG, desiredJpegQuality, outStream)) {
         return;
       }
 
