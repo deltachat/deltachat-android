@@ -238,6 +238,15 @@ public class Prefs {
     }
   }
 
+  public static boolean isLocationStreamingEnabled(Context context) {
+    try {
+      return getBooleanPreference(context, "pref_location_streaming_enabled", false);
+    }
+    catch(Exception e) {
+      return false;
+    }
+  }
+
   // ringtone
 
   public static @NonNull Uri getNotificationRingtone(Context context) {

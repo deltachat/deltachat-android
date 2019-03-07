@@ -415,6 +415,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     inflater.inflate(R.menu.conversation, menu);
 
+    if (!Prefs.isLocationStreamingEnabled(this)) {
+      menu.findItem(R.id.menu_show_map).setVisible(false);
+    }
+
     if (isGroupConversation()) {
       if (isActiveGroup()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);

@@ -29,6 +29,7 @@ import android.widget.PopupWindow;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AttachmentTypeSelector extends PopupWindow {
@@ -85,6 +86,11 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.locationButton.setOnClickListener(new PropagatingClickListener(ADD_LOCATION));
     this.closeButton.setOnClickListener(new CloseClickListener());
     this.recentRail.setListener(new RecentPhotoSelectedListener());
+
+    if (!Prefs.isLocationStreamingEnabled(context)) {
+      this.locationButton.setVisibility(View.GONE);
+      ViewUtil.findById(layout, R.id.location_button_label).setVisibility(View.GONE);
+    }
 
     setLocationButtonImage(context);
 
