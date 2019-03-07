@@ -15,4 +15,5 @@ Messenger functions              | [Email-chat](https://github.com/deltachat/spe
 Detect mailing list              | List-Id ([RFC 2919](https://tools.ietf.org/html/rfc2919)) and Precedence ([RFC 3834](https://tools.ietf.org/html/rfc3834))
 Send and receive system messages | Multipart/Report Media Type ([RFC 6522](https://tools.ietf.org/html/rfc6522))
 Return receipts                  | Message Disposition Notification (MDN, [RFC 8098](https://tools.ietf.org/html/rfc8098), [RFC 3503](https://tools.ietf.org/html/rfc3503)) using the Chat-Disposition-Notification-To header
+Locations                        | KML ([Open Geospatial Consortium](http://www.opengeospatial.org/standards/kml/), [Google Dev](https://developers.google.com/kml/))
 
