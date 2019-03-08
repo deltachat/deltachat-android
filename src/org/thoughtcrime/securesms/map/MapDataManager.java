@@ -41,6 +41,9 @@ import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ANCHOR_BOTTOM;
  */
 
 public class MapDataManager implements DcEventCenter.DcEventDelegate {
+    private static final String TIMESTAMP = "TIMESTAMP";
+    private static final String MESSAGE_ID = "MESSAGE_ID";
+    private static final String ACCURACY = "ACCURACY";
     private static final String TAG = MapDataManager.class.getSimpleName();
     private Style mapboxStyle;
     private HashMap<Integer, MapSource> contactMapSources;
@@ -125,6 +128,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
         for (int i = 0; i < count; i++) {
             Point p = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
             coordinateList.add(p);
+            Feature pointFeature = Feature.fromGeometry(p);
+            pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
+            pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
+            pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
             pointFeatureList.add(Feature.fromGeometry(p));
         }
 
