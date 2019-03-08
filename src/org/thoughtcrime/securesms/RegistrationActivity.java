@@ -79,6 +79,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         TextInputEditText imapPortInput = findViewById(R.id.imap_port_text);
         TextInputEditText smtpServerInput = findViewById(R.id.smtp_server_text);
         TextInputEditText smtpPortInput = findViewById(R.id.smtp_port_text);
+        TextView viewLogText = findViewById(R.id.view_log_button);
 
         imapSecurity = findViewById(R.id.imap_security);
         smtpSecurity = findViewById(R.id.smtp_security);
@@ -99,6 +100,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         advancedTextView.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setOnClickListener(l -> onAdvancedSettings());
         advancedIcon.setRotation(45);
+        viewLogText.setOnClickListener((view) -> showLog());
         boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
         if (isConfigured) {
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
@@ -134,6 +136,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
 
         DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+    }
+
+    private void showLog() {
+        Intent intent = new Intent(getApplicationContext(), LogViewActivity.class);
+        startActivity(intent);
     }
 
     @Override
