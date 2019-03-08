@@ -31,23 +31,30 @@ import java.util.Observer;
 
 public class MapActivity extends BaseActivity implements Observer {
 
+    public static final String TAG = MapActivity.class.getSimpleName();
+    public static final String CHAT_ID = "chat_id";
+
     public static final String LINE_LAYER = "line_layer";
     public static final String LINE_SOURCE = "line_source";
     public static final String MARKER_LAYER = "symbol_layer";
     public static final String MARKER_ICON = "marker_icon_id";
     public static final String MARKER_POSITION_SOURCE = "marker_position";
 
-    private static final String TAG = MapActivity.class.getSimpleName();
     private MapView mapView;
     private MapboxMap mapboxMap;
-    private PermissionsManager permissionsManager;
     private DcLocation dcLocation;
+    private MapDataManager mapDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_map);
+        int chatId = getIntent().getIntExtra(CHAT_ID, -1);
+        if (chatId == -1) {
+            finish();
+            return;
+        }
 
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
@@ -61,8 +68,12 @@ public class MapActivity extends BaseActivity implements Observer {
             mapboxMap.getUiSettings().setLogoEnabled(false);
             mapboxMap.getUiSettings().setAttributionEnabled(false);
 
-            initMapDrawings();
-            showDeviceLocation();
+            Style mapBoxStyle = mapboxMap.getStyle();
+            if (mapBoxStyle == null) {
+                return;
+            }
+
+            mapDataManager = new MapDataManager(this, mapBoxStyle, chatId);
         }));
 
         dcLocation = DcLocation.getInstance();
@@ -80,6 +91,9 @@ public class MapActivity extends BaseActivity implements Observer {
         super.onResume();
         mapView.onResume();
         DcLocation.getInstance().addObserver(this);
+        if (mapDataManager != null) {
+            mapDataManager.onResume();
+        }
     }
 
     @Override
@@ -87,6 +101,9 @@ public class MapActivity extends BaseActivity implements Observer {
         super.onPause();
         mapView.onPause();
         DcLocation.getInstance().deleteObserver(this);
+        if (mapDataManager != null) {
+            mapDataManager.onPause();
+        }
     }
 
     @Override
@@ -105,12 +122,6 @@ public class MapActivity extends BaseActivity implements Observer {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
-    }
-
-    //Android SDK callback for the result from requesting permissions
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void initMapDrawings() {
@@ -144,45 +155,6 @@ public class MapActivity extends BaseActivity implements Observer {
                         PropertyFactory.lineColor(Color.parseColor("#3bb2d0"))));
     }
 
-    private void showDeviceLocation() {
-        if (this.dcLocation.getLastLocation().getProvider().equals("?")) {
-            return;
-        }
-
-        FeatureCollection featureCollection = FeatureCollection.fromFeature(Feature.fromGeometry(
-                Point.fromLngLat(dcLocation.getLastLocation().getLongitude(),
-                        dcLocation.getLastLocation().getLatitude())));
-
-        drawPoints(featureCollection);
-    }
-
-    private void drawPoints(@NonNull FeatureCollection featureCollection) {
-        if (mapboxMap == null ||
-                mapboxMap.getStyle() == null ||
-                featureCollection.features() == null ||
-                featureCollection.features().size() == 0) {
-            return;
-        }
-
-        Style style = mapboxMap.getStyle();
-        GeoJsonSource source = (GeoJsonSource) style.getSource(MARKER_POSITION_SOURCE);
-        source.setGeoJson(featureCollection);
-    }
-
-    private void drawLines(@NonNull FeatureCollection featureCollection) {
-        if (mapboxMap == null ||
-                mapboxMap.getStyle() == null ||
-                featureCollection.features() == null ||
-                featureCollection.features().size() == 0) {
-            return;
-        }
-
-        Style style = mapboxMap.getStyle();
-        GeoJsonSource source = (GeoJsonSource) style.getSource(LINE_SOURCE);
-        source.setGeoJson(featureCollection);
-    }
-
-
     @Override
     public void update(Observable o, Object arg) {
         if (o instanceof DcLocation) {
@@ -190,8 +162,7 @@ public class MapActivity extends BaseActivity implements Observer {
             Log.d(TAG, "show marker on map: " +
                     dcLocation.getLastLocation().getLatitude() + ", " +
                     dcLocation.getLastLocation().getLongitude());
-            showDeviceLocation();
-
+            //TODO: consider implementing a button -> center map to current location
         }
     }
 }

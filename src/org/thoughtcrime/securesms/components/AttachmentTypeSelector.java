@@ -11,6 +11,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.ContextCompat;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -163,11 +164,7 @@ public class AttachmentTypeSelector extends PopupWindow {
       resId = R.drawable.ic_location_on_white_24dp;
     }
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      this.locationButton.setImageDrawable(context.getDrawable(resId));
-    } else {
-      this.locationButton.setImageDrawable(context.getResources().getDrawable(resId));
-    }
+    this.locationButton.setImageDrawable(ContextCompat.getDrawable(context, resId));
   }
 
   private void animateButtonIn(View button, int delay) {

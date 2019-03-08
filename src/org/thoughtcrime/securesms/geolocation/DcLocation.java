@@ -14,7 +14,7 @@ public class DcLocation extends Observable {
     private static DcLocation instance;
 
     private DcLocation() {
-        lastLocation = new Location("?");
+        lastLocation = getDefault();
     }
 
     public static DcLocation getInstance() {
@@ -36,8 +36,15 @@ public class DcLocation extends Observable {
     }
 
     void reset() {
-        updateLocation(new Location("?"));
+        updateLocation(getDefault());
+
     }
 
+    private Location getDefault() {
+        Location location = new Location("?");
+        location.setLatitude(52.52);
+        location.setLongitude(13.404);
+        return location;
+    }
 
 }

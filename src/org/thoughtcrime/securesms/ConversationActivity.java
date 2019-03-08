@@ -177,7 +177,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private Recipient  recipient;
   private ApplicationDcContext dcContext;
   private DcChat     dcChat                = new DcChat(0);
-  private int chatId;
+  private int        chatId;
   private boolean    archived;
   private final boolean isSecureText = true;
   private boolean    isDefaultSms          = true;
@@ -475,6 +475,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleShowMap() {
     Intent intent = new Intent(this, MapActivity.class);
+    intent.putExtra(MapActivity.CHAT_ID, chatId);
     startActivity(intent);
   }
 
