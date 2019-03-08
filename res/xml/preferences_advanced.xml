@@ -63,6 +63,11 @@
             android:entryValues="@array/pref_compression_values"
             android:defaultValue="0" />
 
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_location_streaming_enabled"
+            android:title="On-demand location streaming"/>
+
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/preference_divider" />
 
