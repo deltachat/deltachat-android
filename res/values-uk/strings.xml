@@ -36,6 +36,8 @@
     <string name="yesterday">Вчора</string>
     <string name="this_week">Цього тижня</string>
     <string name="this_month">Цього місяця</string>
+    <string name="last_week">Останнього тижня</string>
+    <string name="last_month">Останнього місяця</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d хвилину</item>
@@ -49,6 +51,12 @@
         <item quantity="few">%d години</item>
         <item quantity="many">%d годин</item>
         <item quantity="other">%d годин</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d чат</item>
+        <item quantity="few">%d чати</item>
+        <item quantity="many">%d чатів</item>
+        <item quantity="other">%d чатів</item>
     </plurals>
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
@@ -171,7 +179,7 @@
     <string name="chat_no_chats_yet_hint">Дайте Вашим «Вхідним» привід наповнитися. Почніть з листа другові або подрузі.</string>
     <string name="chat_all_done_hint">Вхідних немає</string>
     <string name="chat_all_done_explain">Нічого!\nНа цьому поки все</string>
-    <string name="chat_share_with_title">Поділітися</string>
+    <string name="chat_share_with_title">Поділитися</string>
     <string name="chat_input_placeholder">Повідомлення</string>
     <string name="chat_archived_label">Заархівовано</string>
     <string name="chat_no_messages">Немає повідомлень.</string>
@@ -225,7 +233,7 @@
     <string name="welcome_intro7_message">Delta Chat безпечний для бізнесу, поєднується з іншими технологіями і грунтується на стандартах.</string>
     <string name="welcome_start_messaging">Почати спілкування</string>
     <string name="login_title">Увійти</string>
-    <string name="login_header">Увійти на Ваш сервер</string>
+    <string name="login_header">Увійти на свій сервер</string>
     <string name="login_subheader">Для відомих провайдерів електронної пошти додаткові налаштування встановлюються автоматично. Іноді IMAP потрібен дозвіл в веб-інтерфейсі. Проконсультуйтеся з Вашим провайдером електронної пошти або друзями для отримання допомоги.</string>
     <string name="login_inbox">Вхідні</string>
     <string name="login_imap_login">IMAP-логін</string>
@@ -238,6 +246,7 @@
     <string name="login_smtp_server">SMTP-сервер</string>
     <string name="login_smtp_port">SMTP-порт</string>
     <string name="login_smtp_security">Налаштування безпеки SMTP</string>
+    <string name="login_auth_method">Метод авторизації</string>
     <string name="login_info_gmail_text">Якщо Ви користуєтеся GMail і у вас увімкнена двофакторна аутентифікація, Вам потрібно створити спеціальний пароль для додатків - App-Password. Якщо ці налаштування недоступні, Вам потрібно активувати параметр Less Secure Apps.</string>
     <string name="login_error_mail">Вкажіть дійсну адресу електронної пошти</string>
     <string name="login_error_server">Вкажіть дійсний сервер / IP-адресу</string>
