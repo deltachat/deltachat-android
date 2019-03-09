@@ -46,23 +46,6 @@
         <item quantity="one">%d hora</item>
         <item quantity="other">%d horas</item>
     </plurals>
-    <plurals name="n_chats">
-        <item quantity="one">1 chat</item>
-        <item quantity="other">%1$d chats</item>
-    </plurals>
-    <plurals name="n_contacts">
-        <item quantity="one">1 contacto</item>
-        <item quantity="other">%1$d contactos</item>
-    </plurals>
-    <plurals name="n_messages">
-        <item quantity="one">1 mensangem</item>
-        <item quantity="other">%1$d mensagens</item>
-    </plurals>
-    <plurals name="n_members">
-        <item quantity="one">1 membro</item>
-        <item quantity="other">%1$d membros</item>
-    </plurals>
-
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>
@@ -150,14 +133,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Apagar este chat? Ela não será mais mostrada na lista de converas, suas mensagens permanecerão no servidor</item>
-        <item quantity="other">Apagar %d chats? Elas não serão mais mostrados na lista de chats, suas mensagens permanecerão no servidor</item>
-    </plurals>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Apagar a mensagem aqui e no servidor?</item>
-        <item quantity="other">Apagar %1$d mensagens aqui e no servidor?</item>
-    </plurals>
     <string name="ask_forward">Reencaminhar mensages para %1$s?</string>
     <string name="ask_export_attachment">Exportar anexo? A exportação de anexos permitirá o seu acesso a qualquer outra aplicação no seu dispositivo.\n\nContinuar?</string>
     <string name="ask_block_contact">Bloquear este contacto? Não receberá mais mensagens deste contacto.</string>
@@ -174,15 +149,6 @@
     <string name="contacts_empty_hint">Sem contactos</string>
 
 
-    <!-- chatlist and chat view -->
-    <plurals name="chat_archived">
-        <item quantity="one">chat arquivada</item>
-        <item quantity="other">%d chats arquivadas</item>
-    </plurals>
-    <plurals name="chat_unarchived">
-        <item quantity="one">chat desarquivada</item>
-        <item quantity="other">%d chats não desarquivadas</item>
-    </plurals>
     <string name="chat_archived_chats_title">chats arquivadas</string>
     <string name="chat_please_enter_message">Por favor introduza uma mensagem.</string>
     <string name="chat_camera_unavailable">Camera indisponivel.</string>
@@ -203,7 +169,6 @@
     <string name="chat_archived_label">Arquivada</string>
     <string name="chat_no_messages">Sem mensagens</string>
     <string name="chat_self_talk_subtitle">Mensagens que enviei para mim</string>
-
     <!-- search -->
     <string name="search">Pesquisar</string>
     <string name="search_explain">Pesquisar chats, contactos, emensagens</string>
@@ -375,8 +340,6 @@
     <string name="pref_watch_mvbox_folder">Ver a pasta do Delta Chat</string>
     <string name="pref_auto_folder_moves">Mover pasta automaticamente para o Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">As chats de chat são movidas para evitar atravancar da pasta Inbox</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Encriptação automática</string>
     <string name="autocrypt_explain">A encriptação automática (autocrypt) é uma especificação nova e aberta para encriptação e-mail de ponta a ponta. \n\n A sua configuração de ponta a ponta é criada automaticamente conforme necessário e pode transferi-la entre dispositivos com mensagens de configuração de autocrypt.</string>
@@ -413,7 +376,6 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueio do ecrã</string>
-    <string name="screenlock_explain">Bloquear acesso ao Delta Chat com bloqueio de ecrã ou impressão digital do Android</string>
     <string name="screenlock_authentication_failed">Falhou autenticação.</string>
     <string name="screenlock_unlock_title">Desbloquear Delta Chat</string>
     <string name="screenlock_unlock_description">Por favor, entre o valor definido pelo sistema para desbloquear o Delta Chat.</string>
@@ -601,6 +563,5 @@
     <string name="qrshow_join_verified_group_title">Código de convite do QR</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Digitalizar para se juntar ao grupo \"%1$s\".</string>
-
 
 </resources>

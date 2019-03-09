@@ -206,7 +206,6 @@
     <string name="chat_archived_label">Archivado</string>
     <string name="chat_no_messages">No hay mensajes.</string>
     <string name="chat_self_talk_subtitle">Mensajes que envié a mí mismo</string>
-
     <!-- search -->
     <string name="search">Buscar</string>
     <string name="search_explain">Buscar chats, contactos, y mensajes</string>
@@ -271,7 +270,6 @@
     <string name="login_smtp_security">Seguridad SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
-    <string name="login_info_oauth2_text">La dirección de correo introducida admite una configuración simplificada (OAuth2).\n\nEn el próximo paso, permita que Delta Chat actúe como su aplicación de chat por correo electrónico.\n\nDelta Chat no tiene servidores, tus datos permanecen en tu dispositivo!</string>
     <string name="login_info_gmail_text">Para las cuentas de Gmail, debe crear una contraseña de aplicación si tiene habilitado la verificación en 2 pasos. Si esta opción no está disponible, debe habilitar la opción \"Acceso de aplicaciones poco seguras\".</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
     <string name="login_error_server">Por favor, introduzca un servidor / dirección IP válido</string>
@@ -381,8 +379,6 @@
     <string name="pref_watch_mvbox_folder">Monitorear carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Las conversaciones son movidas para evitar saturar la Bandeja de entrada</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt es una nueva especificación abierta para encriptado automático de correo electrónico de extremo a extremo. Su configuración de extremo a extremo es creada automáticamente cuando se necesita y puede transferirla entre dispositivos con los Mensajes de Configuración de Autocrypt.</string>
@@ -610,6 +606,5 @@
     <string name="qrshow_join_verified_group_title">Código de invitación QR</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Escanea esto para unirte al grupo \"%1$s\".</string>
-
 
 </resources>

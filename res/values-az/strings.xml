@@ -46,23 +46,6 @@
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
     </plurals>
-    <plurals name="n_chats">
-        <item quantity="one">çat</item>
-        <item quantity="other">%1$d çat</item>
-    </plurals>
-    <plurals name="n_contacts">
-        <item quantity="one">1 kontakt</item>
-        <item quantity="other">%1$dkontakt</item>
-    </plurals>
-    <plurals name="n_messages">
-        <item quantity="one">mesaj</item>
-        <item quantity="other">%1$dmesaj</item>
-    </plurals>
-    <plurals name="n_members">
-        <item quantity="one">üzv</item>
-        <item quantity="other">%1$düzv</item>
-    </plurals>
-
     <string name="self">Mənə</string>
     <string name="draft">Laihə</string>
     <string name="image">Şəkil</string>
@@ -151,14 +134,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu qrupu tərk etmək istədiyinizə əminsiniz?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">çat silmək? Artıq çat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
-        <item quantity="other">%d çat silmək? Artıq çat siyahısında göstərilməyəcək, mesajlar serverdə qalacaq.</item>
-    </plurals>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">mesaj burada və serverdə silin?</item>
-        <item quantity="other">%1$d mesaj burada və serverdə silin?</item>
-    </plurals>
     <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
     <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
     <string name="ask_block_contact">Bu kontaktı bloklamaq? Bu kontaktdan artıq mesaj qəbul etməyəcəksiniz.</string>
@@ -175,15 +150,6 @@
     <string name="contacts_empty_hint">Kontakt yoxdur.</string>
 
 
-    <!-- chatlist and chat view -->
-    <plurals name="chat_archived">
-        <item quantity="one"> çat arxivləndi</item>
-        <item quantity="other">%d çat arxivləndi</item>
-    </plurals>
-    <plurals name="chat_unarchived">
-        <item quantity="one">arxivdən çıxarıldı</item>
-        <item quantity="other">%d arxivdən çıxarıldı</item>
-    </plurals>
     <string name="chat_archived_chats_title">Çatlar saxlanıldı</string>
     <string name="chat_please_enter_message">Mesajı daxıl edin</string>
     <string name="chat_camera_unavailable">Camera əlçatmazdır.</string>
@@ -203,7 +169,6 @@
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>
     <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
-
     <!-- search -->
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>

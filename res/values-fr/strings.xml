@@ -6,6 +6,8 @@
     <string name="cancel">Annuler</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
+    <string name="on">Allumé</string>
+    <string name="off">Éteint</string>
     <string name="def">Par défaut</string>
     <string name="custom">Personalisé</string>
     <string name="none">Aucun</string>
@@ -22,7 +24,7 @@
     <string name="no_app_to_handle_data">Aucune application trouvée pour traiter ces données.</string>
     <string name="no_browser_installed">Aucun navigateur installé.</string>
     <string name="file_not_found">Impossible de trouver %1$s</string>
-    <string name="copied_to_clipboard">Copié dans le presse papier</string>
+    <string name="copied_to_clipboard">Copié dans le presse-papiers</string>
     <string name="contacts_headline">Contacts</string>
     <string name="email_address">Adresse email</string>
     <string name="bad_email_address">Mauvaise adresse email.</string>
@@ -33,7 +35,31 @@
     <string name="today">Aujourd\'hui</string>
     <string name="yesterday">Hier</string>
     <string name="this_week">Cette semaine</string>
-    <string name="this_month">Ce mois</string>
+    <string name="this_month">Ce mois-ci</string>
+    <string name="last_week">La semaine dernière</string>
+    <string name="last_month">Le mois dernier</string>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d heure</item>
+        <item quantity="other">%d heures</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d discussion</item>
+        <item quantity="other">%d discussions</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d contact</item>
+        <item quantity="other">%d contacts</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d message</item>
+        <item quantity="other">%d messages</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d membre</item>
+        <item quantity="other">%d membres</item>
+    </plurals>
+
     <string name="self">Moi</string>
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>
@@ -56,6 +82,7 @@
     <string name="blue">Bleu</string>
     <string name="orange">Orange</string>
     <string name="cyan">Cyan</string>
+    <string name="purple">Pourpre</string>
     <string name="magenta">Magenta</string>
     <string name="white">Blanc</string>
 
@@ -87,14 +114,17 @@
     <string name="menu_delete_messages">Effacer les messages</string>
     <string name="menu_delete_image">Effacer l\'image</string>
     <string name="menu_message_details">Détails du message</string>
+    <string name="menu_copy_to_clipboard">Copier vers presse-papiers</string>
     <string name="menu_forward">Transmettre le message</string>
     <string name="menu_resend">Renvoyer le message</string>
     <string name="menu_reply">Répondre au message</string>
+    <string name="menu_mute">Déactiver les notifications</string>
+    <string name="menu_unmute">Réactiver</string>
     <string name="menu_export_attachment">Exporter le fichier joint</string>
     <string name="menu_all_media">Tous les médias</string>
     <string name="menu_share">Partager</string>
-    <string name="menu_block_contact">Bloquer le contact</string>
-    <string name="menu_unblock_contact">Débloquer le contact</string>
+    <string name="menu_block_contact">Bloquer ce contact</string>
+    <string name="menu_unblock_contact">Débloquer ce contact</string>
     <string name="menu_play">Jouer</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_invite">Inviter des amis</string>
@@ -104,13 +134,26 @@
     <string name="menu_edit_name">Éditer le nom</string>
     <string name="menu_settings">Paramètres</string>
     <string name="menu_advanced">Avancé</string>
+    <string name="menu_deaddrop">Demande de contact</string>
+    <string name="menu_deaddrop_subtitle">Appuyez sur le message pour démarrer la conversation</string>
     <string name="menu_view_profile">Voir le profil</string>
+
+    <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
+    <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
+    <string name="mute_for_one_day">Déactiver pour 1 jour</string>
+    <string name="mute_for_seven_days">Déactiver pour 7 jours</string>
+    <string name="mute_for_one_year">Déactiver pour 1 an</string>
+
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
     <string name="ask_block_contact">Bloquer ce contact ? Vous ne recevrez plus ses messages.</string>
     <string name="ask_unblock_contact">Débloquer ce contact ? Vous recevrez à nouveau ses messages.</string>
+    <string name="ask_delete_contacts">Effacer ces contacts? Cela supprimera définitivement les contacts sélectionnés.\n\nLes contacts avec des conversations en cours et ceux venant du carnet d\'adresses du système ne peuvent pas être définitivement effacés.</string>
     <string name="cannot_delete_contacts_in_use">Impossible d\'effacer des contacts ayant une discussion active.</string>
+    <string name="ask_start_chat_with">Discuter avec %1$s ?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
     <string name="contacts_enter_name_or_email">Entrez le nom ou l\'email</string>
@@ -118,17 +161,26 @@
     <string name="contacts_empty_hint">Pas de contacts.</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one"> %d discussion archivée</item>
+        <item quantity="other">%d discussions archivées</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d discussion désarchivée</item>
+        <item quantity="other">%d  discussions désarchivées</item>
+    </plurals>
     <string name="chat_archived_chats_title">Discussions archivées.</string>
     <string name="chat_please_enter_message">Entrez un message.</string>
     <string name="chat_camera_unavailable">Caméra indisponible.</string>
     <string name="chat_unable_to_record_audio">Impossible d\'enregistrer le son.</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
+    <string name="chat_no_chats_yet_hint">Donnez de quoi lire à votre boîte de réception. Commencez à communiquer avec un ami.</string>
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archivé</string>
     <string name="chat_no_messages">Aucun message.</string>
     <string name="chat_self_talk_subtitle">Messages envoyés à moi-même</string>
-
     <!-- search -->
     <string name="search">Chercher</string>
     <string name="search_explain">Rechercher des discussions, des contacts ou des messages</string>
@@ -138,14 +190,21 @@
     <string name="group_create_button">Créer un groupe</string>
     <string name="group_please_enter_group_name">Entrez un nom pour le groupe.</string>
     <string name="group_add_members">Ajouter des participants</string>
+    <string name="group_hello_draft">Salut, je viens juste de nous créer le groupe \"%1$s\".</string>
     <string name="group_self_not_in_group">Vous devez être membre du groupe pour effectuer cette action.</string>
     <string name="profile_encryption">Chiffrement</string>
 
 
+    <!-- chat media view -->
+    <string name="media_preview">Prévisualiser le fichier multimédia</string>
+    <string name="media_tab_media">Fichier multimédia</string>
     <string name="media_tab_documents">Documents</string>
+    <string name="media_no_media_hint">Pas de fichier multimédia</string>
     <string name="media_no_documents_hint">Pas de documents</string>
 
 
+    <!-- invite -->
+    <string name="invite_slogan">Les amis ne laissent pas leurs amis enfermés dans des silos de communication.</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro2_headline">Indépendant</string>
@@ -157,6 +216,9 @@
     <string name="welcome_intro5_headline">Libre</string>
     <string name="welcome_intro6_headline">Chiffré</string>
     <string name="welcome_intro7_headline">Digne de confiance</string>
+    <string name="welcome_start_messaging">Démarrage communication</string>
+    <string name="login_title">Connexion</string>
+    <string name="login_header">Connexion vers votre serveur</string>
     <string name="login_inbox">Boîte de réception</string>
     <string name="login_imap_login">Utilisateur IMAP</string>
     <string name="login_imap_server">Serveur IMAP</string>
@@ -173,6 +235,9 @@
     <string name="login_error_port">Entrez un port valide (1-65535)</string>
     <string name="login_error_required_fields">Entrez une adresse email et un mot de passe valides</string>
     <string name="import_backup_title">Importer la sauvegarde</string>
+    <string name="import_backup_no_backup_found">Aucune sauvegarde trouvée.\n\nCopiez le fichier de sauvegarde vers \"%1$s\" et essayez à nouveau. Ou bien, appuyez sur \"Démarrage communication\" pour suivre le processus normal de configuration.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Connexion en tant que \"%1$s\" échouée. Vérifiez s.v.p. que votre adresse email et votre mot de passe sont corrects.</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Transférer à ...</string>
@@ -180,6 +245,7 @@
 
     <string name="pref_profile_photo">Photo du profile</string>
     <string name="pref_trim_option">Effacer les anciens messages</string>
+    <string name="pref_trim_now_ask">Effacer tous les messages anciens? Cela écrêtera immédiatement toutes les conversations jusqu\'aux %d messages les plus récents.</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
     <string name="pref_password_and_account_settings">Configuration des comptes et mots de passe</string>
@@ -189,15 +255,19 @@
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Envoyé depuis Delta Chat: https://delta.chat</string>
     <string name="pref_screen_security">Écran de sécurité</string>
+    <string name="pref_notifications">Notifications</string>
     <string name="pref_sound">Son</string>
     <string name="pref_silent">Silencieux</string>
     <string name="pref_repeat_notify">Répéter les alertes</string>
+    <string name="pref_chats_and_media">Discussions et fichiers multimédia</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Clair</string>
     <string name="pref_dark_theme">Foncé</string>
     <string name="pref_appearance">Apparence</string>
     <string name="pref_theme">Thème</string>
     <string name="pref_language">Langage</string>
+    <string name="pref_chats">Discussions</string>
+    <string name="pref_backup_export_explain">Une sauvegarde vous aide pour une nouvelle installation sur cet appareil ou un autre.\n\nLa sauvegarde contiendra tous les messages, contacts et discussions ainsi que vos réglages bout en bout d\'Autocrypt. Garder le fichier de sauvegarde dans un endroit sûr ou effacez le aussitôt utilisé.</string>
     <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
     <string name="pref_managekeys_menu_title">Gérer les clés</string>
     <string name="pref_managekeys_export_secret_keys">Exporter les clés secrètes</string>
@@ -209,6 +279,40 @@
     <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
     <string name="autocrypt_asm_subject">Message de configuration Autocrypt</string>
     <string name="autocrypt_continue_transfer_title">Message de configuration Autocrypt</string>
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Nom de groupe modifié de \"%1$s\" en \"%2$s\".</string>
+    <string name="systemmsg_group_image_changed">Image de groupe modifiée.</string>
+    <string name="systemmsg_group_image_deleted">Image de groupe effacée.</string>
     <string name="systemmsg_group_left">Groupe quitté.</string>
     <string name="systemmsg_read_receipt_subject">Reçu de lecture</string>
+    <string name="qrscan_ask_join_group">Voulez-vous joindre le groupe \"%1$s\" ?</string>
+    <string name="qrshow_x_has_joined_group">%1$s a joint le groupe.</string>
+    <string name="qrshow_join_group_hint">Scannez ceci pour joindre le groupe \"%1$s\".</string>
+    <string name="qrshow_join_contact_hint">Scanner ceci pour avoir un contact avec %1$s</string>
+    <string name="notify_media_message_with_text">Message multimédia: %s</string>
+    <string name="notify_media_message">Message multimédia</string>
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Bienvenue sur DeltaChat</string>
+    <string name="global_menu_edit_selectall_desktop">Tout sélectionner</string>
+    <string name="no_chat_selected_suggestion_desktop">Sélectionner une discussion ou en créer une nouvelle</string>
+    <string name="contact_detail_title_desktop">Demande de contact</string>
+    <string name="contact_request_title_desktop">Demande de contact</string>
+    <string name="no_archived_chats_desktop">Aucune discussion archivée</string>
+    <string name="no_chats_desktop">Aucune discussion</string>
+    <string name="group_name_desktop">Nom de groupe</string>
+    <string name="add_contact_desktop">Ajouter un contact</string>
+    <string name="select_group_image_desktop">Choisir l\'image de groupe</string>
+    <string name="unblock_contacts_desktop">Débloquer des contacts</string>
+    <string name="none_blocked_desktop">Aucun contact bloqué</string>
+    <string name="create_chat_error_desktop">La discussion n\'a pas pu être créée</string>
+    <string name="ask_delete_chat_desktop">Êtes-vous sûr(e) de vouloir effacer cette discussion?</string>
+    <string name="email_validation_failed_desktop">Adresse email requise.</string>
+    <string name="forget_login_confirmation_desktop">Effacer cette connexion? Tout sera supprimé, y compris vos réglages bout en bout, contacts, discussions, messages et les fichiers multimédia. Cette action est définitive et ne peut pas être inversée.</string>
+    <!-- deprecated on android, please remove if unused on desktop -->
+    <!-- see qrscan_ask_join_group -->
+    <string name="qrscan_ask_join_verified_group">Voulez-vous joindre le groupe  \"%1$s\" ?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_fingerprint_ask_oob">Discuter avec %1$s?</string>
+    <!-- see ask_start_chat_with -->
+    <string name="qrscan_ask_chatting_fingerprint_ok">Discuter avec %1$s?</string>
     </resources>

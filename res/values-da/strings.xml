@@ -206,7 +206,6 @@
     <string name="chat_archived_label">Arkiveret</string>
     <string name="chat_no_messages">Ingen beskeder</string>
     <string name="chat_self_talk_subtitle">Beskeder sendt til undertegnede</string>
-
     <!-- search -->
     <string name="search">Søge</string>
     <string name="search_explain">Søge efter samtaler, kontakter og beskeder</string>
@@ -374,8 +373,6 @@
     <string name="pref_watch_mvbox_folder">Overvåge DeltaChat mappe</string>
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>
     <string name="pref_auto_folder_moves_explain">Samtaler er flyttet for at undgå rodet indbakke mappe</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_send_asm_title">Sende Autocrypt opsætning besked</string>
@@ -596,6 +593,5 @@
     <string name="qrshow_join_verified_group_title">QR inviteringskode </string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Skanne dette for at tilslutte gruppe \"%1$s\".</string>
-
 
 </resources>

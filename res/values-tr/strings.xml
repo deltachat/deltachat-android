@@ -45,23 +45,6 @@
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
     </plurals>
-    <plurals name="n_chats">
-        <item quantity="one">1 sohbet</item>
-        <item quantity="other">%1$d sohbet</item>
-    </plurals>
-    <plurals name="n_contacts">
-        <item quantity="one">1 kişi</item>
-        <item quantity="other">%1$d kişi</item>
-    </plurals>
-    <plurals name="n_messages">
-        <item quantity="one">1 ileti</item>
-        <item quantity="other">%1$d ileti</item>
-    </plurals>
-    <plurals name="n_members">
-        <item quantity="one">1 üye</item>
-        <item quantity="other">%1$d üye</item>
-    </plurals>
-
     <string name="self">Ben</string>
     <string name="draft">Taslak</string>
     <string name="image">Görüntü</string>
@@ -146,14 +129,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Bu sohbet silinsin mi? O artık sohbet listesinde gösterilmeyecek, iletileri sunucuda kalacak.</item>
-        <item quantity="other">%d sohbet silinsin mi? Onlar artık sohbet listesinde gösterilmeyecek, iletileri sunucuda kalacak.</item>
-    </plurals>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">İleti buradan ve sunucudan silinsin mi?</item>
-        <item quantity="other">%1$d ileti buradan ve sunucudan silinsin mi?</item>
-    </plurals>
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
     <string name="ask_export_attachment">Ek dışa aktarılsın mı? Ekleri dışa aktarma, aygıtınızdaki tüm diğer uygulamaların onlara erişmesine izin verecek.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden iletiler almayacaksınız.</string>
@@ -169,15 +144,6 @@
     <string name="contacts_empty_hint">Kişi yok.</string>
 
 
-    <!-- chatlist and chat view -->
-    <plurals name="chat_archived">
-        <item quantity="one">Sohbet arşivlendi</item>
-        <item quantity="other">%d sohbet arşivlendi</item>
-    </plurals>
-    <plurals name="chat_unarchived">
-        <item quantity="one">Sohbet arşivden çıkartıldı</item>
-        <item quantity="other">%d sohbet arşivden çıkartıldı</item>
-    </plurals>
     <string name="chat_archived_chats_title">Arşivlenen sohbetler</string>
     <string name="chat_please_enter_message">Lütfen bir ileti girin.</string>
     <string name="chat_camera_unavailable">Kamera kullanım dışı.</string>
@@ -198,7 +164,6 @@
     <string name="chat_archived_label">Arşivlendi</string>
     <string name="chat_no_messages">İleti yok.</string>
     <string name="chat_self_talk_subtitle">Kendime gönderdiğim iletiler</string>
-
     <!-- search -->
     <string name="search">Ara</string>
     <string name="search_explain">Sohbetleri, kişileri ve iletileri arayın</string>

@@ -36,6 +36,8 @@
     <string name="yesterday">Atzo</string>
     <string name="this_week">Aste honetan</string>
     <string name="this_month">Hilabete honetan</string>
+    <string name="last_week">Azken astea</string>
+    <string name="last_month">Azken hilabetea</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">min %d</item>
@@ -47,20 +49,20 @@
         <item quantity="other">%d ordu</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">txat 1</item>
-        <item quantity="other">%1$d txat</item>
+        <item quantity="one">Txat %d</item>
+        <item quantity="other">%d txat </item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">kontaktu 1</item>
-        <item quantity="other">%1$d kontaktu</item>
+        <item quantity="one">Kontaktu %d</item>
+        <item quantity="other">%dkontaktu </item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">mezu 1</item>
-        <item quantity="other">%1$d mezu</item>
+        <item quantity="one">Mezu %d</item>
+        <item quantity="other">%d mezu</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">kide 1</item>
-        <item quantity="other">%1$d kide</item>
+        <item quantity="one">Kide %d</item>
+        <item quantity="other">%d kide</item>
     </plurals>
 
     <string name="self">Ni</string>
@@ -151,14 +153,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ziur talde honetatik atera nahi duzula?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Ezabatu txat hau? Ez da gehiago agertuko txaten zerrendan, mezuak zerbitzarian mantenduko dira.</item>
-        <item quantity="other">Ezabatu %d txat? Ez dira gehiago agertuko txaten zerrendan, mezuak zerbitzarian mantenduko dira.</item>
-    </plurals>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Ezabatu mezua hemen eta zerbitzarian?</item>
-        <item quantity="other">Ezabatu %1$d mezuak hemen eta zerbitzarian?</item>
-    </plurals>
     <string name="ask_forward">Birbidali mezuak %1$s erabiltzaileari?</string>
     <string name="ask_export_attachment">Esportatu eranskina? Eranskinak esportatzeak zure beste gailuko beste aplikazioek atzitzea ahalbidetuko du.\n\nJarraitu?</string>
     <string name="ask_block_contact">Blokeatu kontaktu hau? Ez dituzu kontaktu honen mezu gehiago jasoko.</string>
@@ -175,15 +169,6 @@
     <string name="contacts_empty_hint">Kontakturik ez</string>
 
 
-    <!-- chatlist and chat view -->
-    <plurals name="chat_archived">
-        <item quantity="one">Txata artxibatuta</item>
-        <item quantity="other">%d txat artxibatuta</item>
-    </plurals>
-    <plurals name="chat_unarchived">
-        <item quantity="one">Txata artxibotik atera da</item>
-        <item quantity="other">%d txat artxibotik atera dira</item>
-    </plurals>
     <string name="chat_archived_chats_title">Artxibatutako txatak</string>
     <string name="chat_please_enter_message">Idatzi mezu bat.</string>
     <string name="chat_camera_unavailable">Kamera ez dago eskuragarri.</string>
@@ -204,7 +189,6 @@
     <string name="chat_archived_label">Artxibatuta</string>
     <string name="chat_no_messages">Mezurik ez.</string>
     <string name="chat_self_talk_subtitle">Nire buruari bidalitako mezuak</string>
-
     <!-- search -->
     <string name="search">Bilatu</string>
     <string name="search_explain">Bilatu txatak, kontaktuak, eta mezuak.</string>
@@ -375,8 +359,6 @@
     <string name="pref_watch_mvbox_folder">Begiztatu DeltaChat karpeta</string>
     <string name="pref_auto_folder_moves">Automatikoki mugitzen du DeltaChat karpetara</string>
     <string name="pref_auto_folder_moves_explain">Txat elkarrizketak lekuz aldatzen dira sarrera ontzian enbarazu ez egiteko</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_send_asm_title">Bidali Autocrypt ezarpen mezua</string>
@@ -403,7 +385,6 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Pantila-blokeoa</string>
-    <string name="screenlock_explain">Blokeatu Delta Chat Android-en pantaila blokeoa edo hatz-markarekin</string>
     <string name="screenlock_authentication_failed">Autentifikazioak huts egin du.</string>
     <string name="screenlock_unlock_title">Desblokeatu Delta Chat</string>
     <string name="screenlock_unlock_description">Sartu sisteman zehaztutako sekretua Delta Chat desblokeatzeko.</string>
@@ -582,6 +563,5 @@
     <string name="qrshow_join_verified_group_title">QR gonbidapen kodea</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Eskaneatu hau \"%1$s\" taldera elkartzeko.</string>
-
 
 </resources>

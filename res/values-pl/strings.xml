@@ -48,31 +48,6 @@
         <item quantity="many">%d godzin</item>
         <item quantity="other">%d godziny</item>
     </plurals>
-    <plurals name="n_chats">
-        <item quantity="one">1 czat</item>
-        <item quantity="few">%1$d czaty</item>
-        <item quantity="many">%1$d czatów</item>
-        <item quantity="other">%1$d czatu</item>
-    </plurals>
-    <plurals name="n_contacts">
-        <item quantity="one">1 kontakt</item>
-        <item quantity="few">%1$d kontakty</item>
-        <item quantity="many">%1$d kontaktów</item>
-        <item quantity="other">%1$d kontaktu</item>
-    </plurals>
-    <plurals name="n_messages">
-        <item quantity="one">1 wiadomość</item>
-        <item quantity="few">%1$d wiadomości</item>
-        <item quantity="many">%1$d wiadomości</item>
-        <item quantity="other">%1$d wiadomości</item>
-    </plurals>
-    <plurals name="n_members">
-        <item quantity="one">1 członek</item>
-        <item quantity="few">%1$d członków</item>
-        <item quantity="many">%1$d członków</item>
-        <item quantity="other">%1$d członków</item>
-    </plurals>
-
     <string name="self">Ja</string>
     <string name="draft">Szkic</string>
     <string name="image">Obraz</string>
@@ -158,18 +133,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Czy na pewno chcesz opuścić tą grupę?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Usunąć ten czat? Nie będzie on już widoczny na liście czatów, jego wiadomości pozostaną na serwerze.</item>
-        <item quantity="few">Usunąć %d czaty? Nie będą one już widoczne na liście czatów, ich wiadomości pozostaną na serwerze.</item>
-        <item quantity="many">Usunąć %d czatów? Nie będą one już widoczne na liście czatów, ich wiadomości pozostaną na serwerze.</item>
-        <item quantity="other">Usunąć %d czatów? Nie będą one już widoczne na liście czatów, ich wiadomości pozostaną na serwerze.</item>
-    </plurals>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Usunąć wiadomość tutaj i na serwerze?</item>
-        <item quantity="few">Usunąć %1$d wiadomości tutaj i na serwerze?</item>
-        <item quantity="many">Usunąć %1$d wiadomości tutaj i na serwerze?</item>
-        <item quantity="other">Usunąć %1$d wiadomości tutaj i na serwerze?</item>
-    </plurals>
     <string name="ask_forward">Przekazać wiadomości do użytkownika %1$s?</string>
     <string name="ask_export_attachment">Eksportować załącznik? Eksportowanie załączników umożliwi dostęp do nich wszystkim aplikacjom na urządzeniu.\n\nKontynuować?</string>
     <string name="ask_block_contact">Zablokować ten kontakt? Nie będziesz już odbierać wiadomości od tego kontaktu.</string>
@@ -185,19 +148,6 @@
     <string name="contacts_empty_hint">Nie ma kontaktów.</string>
 
 
-    <!-- chatlist and chat view -->
-    <plurals name="chat_archived">
-        <item quantity="one">Czat zarchiwizowany</item>
-        <item quantity="few">%d czaty zarchiwizowane</item>
-        <item quantity="many">%d czatów zarchiwizowanych</item>
-        <item quantity="other">%d czatów zarchiwizowanych</item>
-    </plurals>
-    <plurals name="chat_unarchived">
-        <item quantity="one">Przywrócono czat z archiwum</item>
-        <item quantity="few">Przywrócono %d czaty z archiwum </item>
-        <item quantity="many">Przywrócono %d czatów z archiwum</item>
-        <item quantity="other">Przywrócono %d czatów z archiwum</item>
-    </plurals>
     <string name="chat_archived_chats_title">Zarchiwizowane czaty</string>
     <string name="chat_please_enter_message">Napisz wiadomość.</string>
     <string name="chat_camera_unavailable">Aparat niedostępny.</string>
@@ -218,7 +168,6 @@
     <string name="chat_archived_label">Zarchiwizowane</string>
     <string name="chat_no_messages">Brak wiadomości.</string>
     <string name="chat_self_talk_subtitle">Wiadomości wysłane do siebie</string>
-
     <!-- search -->
     <string name="search">Szukaj</string>
     <string name="search_explain">Wyszukaj czaty, kontakty i wiadomości</string>
@@ -378,8 +327,6 @@
     <string name="pref_watch_mvbox_folder">Oglądaj katalog DeltaChat</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Rozmowy na czacie są przenoszone, aby nie zaśmiecać folderu Skrzynka odbiorcza</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą Wiadomości konfiguracyjnej automatycznego szyfrowania.</string>
@@ -416,7 +363,6 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Blokada ekranu</string>
-    <string name="screenlock_explain">Zablokuj dostęp do Delta Chat za pomocą blokady ekranu Android lub odcisku palca</string>
     <string name="screenlock_authentication_failed">Uwierzytelnianie nie powiodło się.</string>
     <string name="screenlock_unlock_title">Odblokuj Delta Chat</string>
     <string name="screenlock_unlock_description">Aby odblokować Delta Chat, wpisz swój tajny kod systemu.</string>
@@ -577,6 +523,5 @@
     <string name="qrshow_join_verified_group_title">Kod QR zaproszenia</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Zeskanuj to, aby dołączyć do grupy „%1$s”.</string>
-
 
 </resources>

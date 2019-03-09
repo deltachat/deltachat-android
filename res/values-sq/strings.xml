@@ -36,6 +36,8 @@
     <string name="yesterday">Dje</string>
     <string name="this_week">Këtë javë</string>
     <string name="this_month">Këtë muaj</string>
+    <string name="last_week">Javën e shkuar</string>
+    <string name="last_month">Muajin e shkuar</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -47,20 +49,20 @@
         <item quantity="other">%d orë</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 fjalosje</item>
-        <item quantity="other">%1$d fjalosje</item>
+        <item quantity="one">%d fjalosje</item>
+        <item quantity="other">%d fjalosje</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">1 kontakt</item>
-        <item quantity="other">%1$d kontakte</item>
+        <item quantity="one">%d kontakt</item>
+        <item quantity="other">%d kontakte</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">1 mesazh</item>
-        <item quantity="other">%1$d mesazhe</item>
+        <item quantity="one">%d mesazh</item>
+        <item quantity="other">%d mesazhe</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">1 anëtar</item>
-        <item quantity="other">%1$d anëtarë</item>
+        <item quantity="one">%d anëtar</item>
+        <item quantity="other">%d anëtarë</item>
     </plurals>
 
     <string name="self">Unë</string>
@@ -152,12 +154,12 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Të fshihet kjo fjalosje? S’do të shfaqet më te lista e fjalosjeve, mesazhet e saj do të mbeten në shërbyes.</item>
-        <item quantity="other">Të fshihen %d fjalosje? Ato s’do të shfaqen më te lista e fjalosjeve, mesazhet e tyre do të mbeten në shërbyes.</item>
+        <item quantity="one">Të fshihet %d fjalosje? S’do të duket më te lista e bisedave, mesazhet e saj do të mbeten te shërbyesi.</item>
+        <item quantity="other">Të fshihen %d fjalosje? S’do të duken më te lista e bisedave, mesazhet e tyre do të mbeten te shërbyesi.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Të fshihet mesazhi këtu dhe te shërbyesi?</item>
-        <item quantity="other">Të fshihen %1$d mesazhet këtu dhe te shërbyesi?</item>
+        <item quantity="one">Të fshihet %d mesazh këtu dhe te shërbyesi?</item>
+        <item quantity="other">Të fshihen %d mesazhe këtu dhe te shërbyesi?</item>
     </plurals>
     <string name="ask_forward">Të përcillen mesazhet te %1$s?</string>
     <string name="ask_export_attachment">Të eksportohet bashkëngjitja? Eksportimi i bashkëngjitjeve do t\’i lejojë çfarëdo aplikacioni tjetër në pajisjen tuaj t\’i përdorë ato.\n\nTë vazhdohet?</string>
@@ -177,11 +179,11 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">Fjalosja u arkivua</item>
+        <item quantity="one">U arkivua %d fjalosje</item>
         <item quantity="other">U arkivuan %d fjalosje</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">U çarkivua fjalosja</item>
+        <item quantity="one">U çarkivua %d fjalosje</item>
         <item quantity="other">U çarkivuan %d fjalosje</item>
     </plurals>
     <string name="chat_archived_chats_title">Fjalosje të arkivuara</string>
@@ -204,7 +206,6 @@
     <string name="chat_archived_label">Arkivuar</string>
     <string name="chat_no_messages">S’ka mesazhe.</string>
     <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
-
     <!-- search -->
     <string name="search">Kërko</string>
     <string name="search_explain">Kërkoni për fjalosje, kontakte dhe mesazhe.</string>
@@ -267,6 +268,8 @@
     <string name="login_smtp_server">Shërbyes SMTP</string>
     <string name="login_smtp_port">Portë SMTP</string>
     <string name="login_smtp_security">Siguri SMTP</string>
+    <string name="login_auth_method">Metodë autorizimi</string>
+    <string name="login_info_oauth2_title">Të vazhdohet me rregullimin e thjeshtuar?</string>
     <string name="login_info_gmail_text">Për llogari GMail lypset të krijoni një App-Password, nëse keni të aktivizuar mirëfilltësimin dyfaktorësh. Nëse ky rregullim s’gjendet, lypset të aktivizoni Aplikacione Më Pak të Sigurta.</string>
     <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
     <string name="login_error_server">Ju lutemi, jepni një shërbyes / adresë IP të vlefshme</string>
@@ -339,6 +342,7 @@
     <string name="pref_appearance">Dukje</string>
     <string name="pref_theme">Temë</string>
     <string name="pref_language">Gjuhë</string>
+    <string name="pref_incognito_keyboard">Mos ruaj gjë</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Kërkoji tastierës të çaktivizojë nxënie të personalizuar</string>
     <string name="pref_read_receipts">Lexoni dëftesa</string>
@@ -346,6 +350,7 @@
     <string name="pref_manage_keys">Administroni kyçe</string>
     <string name="pref_use_system_emoji">Përdor emoji sistemi</string>
     <string name="pref_use_system_emoji_explain">Çaktivizo mbulimin e brendshëm Delta Chat për emoji-t</string>
+    <string name="pref_app_access">Hyrje aplikacioni</string>
     <string name="pref_communication">Komunikim</string>
     <string name="pref_chats">Fjalosje</string>
     <string name="pref_messages">Mesazhe</string>
@@ -374,8 +379,6 @@
     <string name="pref_watch_mvbox_folder">Vëzhgo dosje DeltaChat</string>
     <string name="pref_auto_folder_moves">Lëvizje të Vetvetishme te dosja DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Bisedat zhvendosen, që të shmanget rrëmuja te dosja Të marrë</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt-i është një protokoll i ri dhe i hapur për fshehtëzim automatik email-esh skaj-më-skaj.\n\nRregullimi skaj-më-skaj për ju krijohet vetvetiu kur duhet dhe mund ta shpërngulni nga një pajisje në tjetër përmes Mesazhesh Rregullimi Autocrypt-i.</string>
@@ -412,7 +415,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Kyçje ekrani</string>
-    <string name="screenlock_explain">Kyçe përdorimin e Delta Chat-it përmes kyçjesh ekrani apo shenja gishtash në Android</string>
+    <string name="screenlock_explain">Kyçni hyrjen me kyçje ekrani apo shenja gishtas Android; për të shmangur shfaqje të lëndës së mëparshme, ju lutemi, aktivizoni edhe \"Siguri ekrani\"</string>
     <string name="screenlock_authentication_failed">Mirëfilltësimi dështoi.</string>
     <string name="screenlock_unlock_title">Shkyçe Delta Chat-in</string>
     <string name="screenlock_unlock_description">Që të shkyçet Delta Chat-i, ju lutemi, jepni të fshehtën e përcaktuar nga sistemi juaj.</string>
@@ -478,6 +481,9 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat lyp leje mbi Mikrofonin që të mund të dërgojë mesazhe audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Mikrofonin\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat lyp leje mbi Depozitimin që të mund të bashkëngjisë apo eksportojë foto, video ose audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Depozitimin\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat lyp leje mbi Vendndodhjen që të mund të bashkëngjisë një vendndodhje, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Vendndodhjen\".</string>
+    <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat-i përdor burime minimale dhe kujdeset të mos thajë baterinë.</string>
+
     <!-- languages -->
     <string name="language_be">Belge</string>
     <string name="language_ca">Katalane</string>
@@ -529,6 +535,7 @@
     <string name="global_menu_edit_delete_desktop">Fshije</string>
     <string name="global_menu_edit_selectall_desktop">Përzgjidhi Krejt</string>
     <string name="global_menu_view_desktop">Shiheni</string>
+    <string name="global_menu_view_floatontop_desktop">Pezull Përsipër</string>
     <string name="global_menu_view_developer_desktop">Zhvillues</string>
     <string name="global_menu_view_developer_tools_desktop">Mjete Zhvilluesi</string>
     <string name="global_menu_help_desktop">Ndihmë</string>
@@ -599,6 +606,5 @@
     <string name="qrshow_join_verified_group_title">Kod QR ftese</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Që të bëheni pjesë e grupit \"%1$s\", skanoni këtë.</string>
-
 
 </resources>

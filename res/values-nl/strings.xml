@@ -20,7 +20,7 @@
     <string name="undo">Ongedaan maken</string>
     <string name="error">Fout</string>
     <string name="error_x">Fout: %1$s</string>
-    <string name="error_no_network">Geen netwerk beschikbaar.</string>
+    <string name="error_no_network">Geen internetverbinding.</string>
     <string name="no_app_to_handle_data">Kan geen app vinden die deze gegevens kan behandelen.</string>
     <string name="no_browser_installed">Geen webbrowser geïnstalleerd.</string>
     <string name="file_not_found">Kan %1$s niet vinden.</string>
@@ -36,6 +36,8 @@
     <string name="yesterday">Gisteren</string>
     <string name="this_week">Deze week</string>
     <string name="this_month">Deze maand</string>
+    <string name="last_week">Vorige week</string>
+    <string name="last_month">Vorige maand</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d minuut</item>
@@ -47,20 +49,20 @@
         <item quantity="other">%d uur</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 gesprek</item>
-        <item quantity="other">%1$d gesprekken</item>
+        <item quantity="one">%d gesprek</item>
+        <item quantity="other">%d gesprekken</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">1 contactpersoon</item>
-        <item quantity="other">%1$d contactpersonen</item>
+        <item quantity="one">%d contactpersoon</item>
+        <item quantity="other">%d contactpersonen</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">1 bericht</item>
-        <item quantity="other">%1$d berichten</item>
+        <item quantity="one">%d bericht</item>
+        <item quantity="other">%d berichten</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">1 lid</item>
-        <item quantity="other">%1$d leden</item>
+        <item quantity="one">%d deelnemer</item>
+        <item quantity="other">%d deelnemers</item>
     </plurals>
 
     <string name="self">Mij</string>
@@ -152,12 +154,12 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Wil je dit gesprek verwijderen? Het worden niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
+        <item quantity="one">Wil je %d gesprek verwijderen? Het gesprek wordt niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
         <item quantity="other">Wil je %d gesprekken verwijderen? Ze worden niet langer getoond in de gesprekslijst, maar de berichten blijven bewaard op de server.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Wil je het bericht verwijderen, zowel hier als op de server?</item>
-        <item quantity="other">Wil je %1$d berichten verwijderen, zowel hier als op de server?</item>
+        <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>
+        <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
     </plurals>
     <string name="ask_forward">Wil je de berichten doorsturen aan %1$s?</string>
     <string name="ask_export_attachment">Als je de bijlage exporteert, geef je andere apps op je apparaat toegang om hem uit te lezen.\n\nWil je doorgaan?</string>
@@ -171,17 +173,17 @@
     <!-- contact list -->
     <string name="contacts_title">Contactpersonen</string>
     <string name="contacts_enter_name_or_email">Voer een naam of e-mailadres in.</string>
-    <string name="contacts_type_email_above">Typ het e-mailadres hierboven</string>
+    <string name="contacts_type_email_above">Typ hierboven het e-mailadres</string>
     <string name="contacts_empty_hint">Geen contactpersonen.</string>
 
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">Gesprek gearchiveerd</item>
+        <item quantity="one">%d gesprek gearchiveerd</item>
         <item quantity="other">%d gesprekken gearchiveerd</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">Gesprek ge-dearchiveerd</item>
+        <item quantity="one">%d gesprek gede-archiveerd</item>
         <item quantity="other">%d gesprekken gede-archiveerd</item>
     </plurals>
     <string name="chat_archived_chats_title">Gearchiveerde gesprekken</string>
@@ -196,15 +198,14 @@
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
-    <string name="chat_no_chats_yet_hint">Geef je Postvak IN iets om over naar huis te schrijven. Begin door een bericht te sturen aan een vriend(in).</string>
+    <string name="chat_no_chats_yet_hint">Geef je Postvak IN iets om over naar huis te schrijven: begin een gesprek met een vriend(in).</string>
     <string name="chat_all_done_hint">Postvak nullllll</string>
-    <string name="chat_all_done_explain">Niks. Noppes. Nakkes. Nada. \nJe bent helemaal bij!</string>
+    <string name="chat_all_done_explain">Niks. Noppes. Nakkes. Nada.\nJe bent van alles op de hoogte!</string>
     <string name="chat_share_with_title">Delen met</string>
     <string name="chat_input_placeholder">Bericht</string>
     <string name="chat_archived_label">Gearchiveerd</string>
     <string name="chat_no_messages">Geen berichten.</string>
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
-
     <!-- search -->
     <string name="search">Zoeken</string>
     <string name="search_explain">Zoek naar gesprekken, contactpersonen en berichten</string>
@@ -218,7 +219,7 @@
     <string name="group_please_enter_group_name">Voer een naam in voor de groep.</string>
     <string name="group_add_members">Deelnemers toevoegen</string>
     <string name="group_hello_draft">Hallo, ik heb zojuist de groep \"%1$s\" voor ons gemaakt.</string>
-    <string name="group_self_not_in_group">Je moet lid zijn van de groep om deze actie uit te voeren.</string>
+    <string name="group_self_not_in_group">Om deze actie uit te kunnen voeren moet je deelnemen aan de groep.</string>
     <string name="profile_encryption">Versleuteling</string>
 
 
@@ -231,17 +232,17 @@
 
 
     <!-- invite -->
-    <string name="invite_slogan">Vrienden houden vrienden niet opgesloten in berichtsilo\'s.</string>
+    <string name="invite_slogan">Vrienden houden vrienden niet opgesloten in berichtkluizen.</string>
     <string name="invite_default_text">Laten we overgaan op Delta Chat - %1$s - je kunt me een bericht sturen op %2$s</string>
 
 
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro1_message">De berichtapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
+    <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
     <string name="welcome_intro2_headline">Onafhankelijk</string>
     <string name="welcome_intro2_message">Er is geen Delta Chat-server; de app gebruikt alleen je mailserver.</string>
     <string name="welcome_intro3_headline">Snel</string>
-    <string name="welcome_intro3_message">Verstuur berichten binnen een paar seconden.\nSnelle gebruikersomgeving.</string>
+    <string name="welcome_intro3_message">Verstuur berichten in een paar seconden.\nSnelle gebruikersomgeving.</string>
     <string name="welcome_intro4_headline">Krachtig</string>
     <string name="welcome_intro4_message">Ongelimiteerd aantal gesprekken, afbeeldingen, video\'s, spraakberichten en meer. Kan omgaan met meerdere clients.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
@@ -252,7 +253,7 @@
     <string name="welcome_intro6_message">Versleuteld met alle bekende algoritmen. Berichten blijven op jouw server.</string>
     <string name="welcome_intro7_headline">Betrouwbaar</string>
     <string name="welcome_intro7_message">Delta Chat is veilig voor zakelijk gebruik, compatibel en gebaseerd op standaarden.</string>
-    <string name="welcome_start_messaging">Beginnen</string>
+    <string name="welcome_start_messaging">Aan de slag</string>
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>
     <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je IMAP inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
@@ -267,18 +268,20 @@
     <string name="login_smtp_server">SMTP-server</string>
     <string name="login_smtp_port">SMTP-poort</string>
     <string name="login_smtp_security">SMTP-beveiliging</string>
-    <string name="login_info_gmail_text">Bij een Gmail-account moet je een app-wachtwoord creëren als je authenticatie in twee stappen hebt ingeschaked. Als dit niet beschikbaar is, schakel dan Minder veilige apps in.</string>
+    <string name="login_auth_method">Autorisatiemethode</string>
+    <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
+    <string name="login_info_gmail_text">Bij Gmail-accounts moet je een app-wachtwoord creëren als je authenticatie in twee stappen hebt ingeschakeld. Als dit niet beschikbaar is, schakel dan \'Minder veilige apps\' in.</string>
     <string name="login_error_mail">Voer een geldig e-mailadres in</string>
     <string name="login_error_server">Voer een geldig(e) IP-adres/server in</string>
     <string name="login_error_port">Voer een geldige poort in (1-65535)</string>
     <string name="login_error_required_fields">Voer een geldig e-mailadres en wachtwoord in</string>
     <string name="import_backup_title">Back-up importeren</string>
     <string name="import_backup_ask">Back-up aangetroffen in \"%1$s\".\n\nWil je de instellingen en gegevens daaruit importeren?</string>
-    <string name="import_backup_no_backup_found">Geen back-ups aangetroffen.\n\nKopieer de back-up naar \"%1$s\" en probeer het opnieuw of druk op \"Beginnen\" om het normale instelproces te doorlopen.</string>
+    <string name="import_backup_no_backup_found">Geen back-ups aangetroffen.\n\nKopieer de back-up naar \"%1$s\" en probeer het opnieuw of druk op \"Aan de slag\" om het normale instelproces te doorlopen.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Kan niet inloggen als \"%1$s\". Controleer het e-mailadres en wachtwoord.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in bijv. de webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
+    <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in, bijv., de webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
 
 
     <!-- share and forward messages -->
@@ -293,7 +296,7 @@
     <string name="pref_summary_custom">aangepast</string>
     <string name="pref_using_custom">Aangepast wordt gebruikt: %s</string>
     <string name="pref_using_default">Standaard wordt gebruikt: %s</string>
-    <string name="pref_profile_info_headline">Jouw profielinformatie</string>
+    <string name="pref_profile_info_headline">Je profielinformatie</string>
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_trim_headline">Gespreksinkorting</string>
     <string name="pref_trim_option">Oude berichten verwijderen</string>
@@ -307,14 +310,14 @@
     <string name="pref_help_url">https://delta.chat/en/help</string>
     <string name="pref_password_and_account_settings">Wachtwoord en accountinstellingen</string>
     <string name="pref_who_can_see_this_information">Wie kan deze informatie bekijken?</string>
-    <string name="pref_who_can_see_profile_explain">Je profielfoto en -naam worden in gesprekken naast jouw berichten getoond. Reeds verstuurde informatie kan niet worden verwijderd of teruggehaald.</string>
+    <string name="pref_who_can_see_profile_explain">Je profielfoto en -naam worden getoond in gesprekken, naast je berichten. Reeds verstuurde informatie kan niet worden verwijderd of teruggehaald.</string>
     <string name="pref_your_name">Je naam</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Handtekeningtekst</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
-    <string name="pref_default_status_text">Verstuurd met mijn Delta Chat Messenger: https://delta.chat</string>
+    <string name="pref_default_status_text">Verstuurd met mijn Delta Chat-berichtenapp: https://delta.chat</string>
     <string name="pref_enter_sends">Versturen met Enter-toets</string>
-    <string name="pref_enter_sends_explain">De Enter-toets gebruiken om tekstberichten te versturen</string>
+    <string name="pref_enter_sends_explain">Druk op de Enter-toets om tekstberichten te versturen</string>
     <string name="pref_vibrate">Trillen</string>
     <string name="pref_chat_settings">Gespreksinstellingen</string>
     <string name="pref_change_secret">Geheim wijzigen</string>
@@ -357,15 +360,15 @@
     <string name="pref_other">Overig</string>
     <string name="pref_backup">Back-up</string>
     <string name="pref_backup_explain">Gesprekken back-uppen naar externe opslag</string>
-    <string name="pref_backup_export_explain">Een back-up helpt je om een nieuwe installatie in te stellen op dit of een ander apparaat.\n\nDe back-up bevat alle berichten, contactpersonen en gesprekken en tevens je end-to-end Autocrypt-instellingen. Bewaar het back-upbestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
-    <string name="pref_backup_export_start_button">Back-up starten</string>
+    <string name="pref_backup_export_explain">Een back-up helpt je om een nieuwe installatie in te stellen op dit of een ander apparaat.\n\nDe back-up bevat alle berichten, contactpersonen, gesprekken en je end-to-end Autocrypt-instellingen. Bewaar het back-upbestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
+    <string name="pref_backup_export_start_button">Nu back-uppen</string>
     <string name="pref_backup_written_to_x">Back-up weggeschreven naar %1$s</string>
     <string name="pref_managekeys_menu_title">Sleutels beheren</string>
     <string name="pref_managekeys_ask_for_storage_permission">Delta Chat heeft toegang nodig tot je bestanden om sleutels te im- en exporteren.</string>
     <string name="pref_managekeys_export_secret_keys">Geheime sleutels exporteren</string>
     <string name="pref_managekeys_export_explain">Geheime sleutels exporteren naar \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Geheime sleutels importeren</string>
-    <string name="pref_managekeys_import_explain">Wil je geheime sleutels importeren uit \"%1$s\"?\n\n• Bestaande geheime sleutels worden niet verwijderd.\n\n• De laatst geïmporteerde sleutel wordt als standaard gebruikt tenzij de bestandsnaam \"legacy\" bevat.</string>
+    <string name="pref_managekeys_import_explain">Wil je geheime sleutels importeren uit \"%1$s\"?\n\n• Bestaande sleutels worden niet verwijderd.\n\n• De laatst geïmporteerde sleutel wordt als standaard gebruikt tenzij de bestandsnaam \"legacy\" bevat.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Geheime sleutels weggeschreven naar \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime sleutels geïmporteerd uit \"%1$s\".</string>
     <string name="pref_background">Achtergrond</string>
@@ -375,25 +378,23 @@
     <string name="pref_watch_sent_folder">Map Verzonden controleren op nieuwe berichten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
-    <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om Postvak IN geordend te houden</string>
-
-
+    <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je Postvak IN netjes te houden</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt is een nieuwe, open specificatie voor het automatisch instellen van end-to-end e-mailversleuteling.\n\nJe end-to-end-instellingen worden, indien nodig, automatisch gecreëerd en kunnen worden overgezet naar andere apparaten middels Autocrypt-instelberichten.</string>
+    <string name="autocrypt_explain">Autocrypt is een nieuwe, open specificatie voor het automatisch instellen van end-to-end e-mailversleuteling.\n\nJe instellingen worden, indien nodig, automatisch gecreëerd en kunnen worden overgezet naar andere apparaten middels instelberichten.</string>
     <string name="autocrypt_send_asm_title">Autocrypt-instelbericht versturen</string>
-    <string name="autocrypt_send_asm_explain_before">Een \"Autocrypt-instelbericht\" deelt je end-to-end-instellingen op een veilige manier met andere met Autocrypt compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
+    <string name="autocrypt_send_asm_explain_before">Een \"Autocrypt-instelbericht\" deelt je end-to-end-instellingen veilig met andere met Autocrypt compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
-    <string name="autocrypt_send_asm_explain_after">Je instellingen zijn naar jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:\n\n%1$s\n\nZodra je klaar bent, is je andere apparaat klaar voor gebruik.</string>
+    <string name="autocrypt_send_asm_explain_after">Je instellingen zijn naar jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:\n\n%1$s\n\nAls je klaar bent, is je andere apparaat klaar voor gebruik.</string>
     <string name="autocrypt_prefer_e2ee">Voorkeur voor end-to-end-versleuteling</string>
     <string name="autocrypt_asm_subject">Autocrypt-instelbericht</string>
-    <string name="autocrypt_asm_general_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je end-to-end-instellingen over te zetten naar andere clients.\n\nOm het te ontsleutelen en gebruiken, open je het bericht in een met Autocrypt compatibele app en voer je de code in die wordt getoond op het genererende apparaat.</string>
+    <string name="autocrypt_asm_general_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je instellingen over te zetten naar andere clients.\n\nOm te ontsleutelen en te gebruiken, open je het bericht in een met Autocrypt compatibele app en voer je de code in die wordt getoond op het genererende apparaat.</string>
     <string name="autocrypt_asm_click_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je end-to-end-instellingen over te zetten naar andere clients.\n\nOm het te ontsleutelen en gebruiken, druk je op dit bericht.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt-instelbericht</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Voer de code die wordt getoond op het andere apparaat.</string>
-    <string name="autocrypt_continue_transfer_succeeded">End-to-end-instellingen overgezet. Dit apparaat is nu klaar voor gebruik i.c.m. Autocrypt, met dezelfde instellingen als het andere apparaat.</string>
+    <string name="autocrypt_continue_transfer_succeeded">End-to-end-instellingen overgezet. Dit apparaat kan nu worden gebruikt i.c.m. Autocrypt, met dezelfde instellingen als het andere apparaat.</string>
     <string name="autocrypt_continue_transfer_retry">Opnieuw</string>
-    <string name="autocrypt_bad_setup_code">Onjuist code; probeer het opnieuw.\n\nAls je je code niet meer weet, verstuurd dan nog een Autocrypt-instelbericht vanaf het andere apparaat.</string>
+    <string name="autocrypt_bad_setup_code">Onjuist; probeer het opnieuw.\n\nAls je je code niet meer weet, verstuurd dan nóg een Autocrypt-instelbericht vanaf het andere apparaat.</string>
 
 
     <!-- system messages -->
@@ -405,7 +406,7 @@
     <string name="systemmsg_group_left">Groep verlaten.</string>
     <string name="systemmsg_read_receipt_subject">Leesbevestiging</string>
     <string name="systemmsg_read_receipt_body">Dit is een leesbevestiging voor het bericht \"%1$s\".\n\nDit betekent dat het bericht getoond is op het apparaat van de ontvanger, maar niet dat het ook gelezen is.</string>
-    <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen om dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd op dit of een ander apparaat, verstuur het instelbericht dan opnieuw.</string>
+    <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd op dit of een ander apparaat, verstuur het instelbericht dan opnieuw.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s door mij.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -414,11 +415,11 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Schermvergrendeling</string>
-    <string name="screenlock_explain">Delta Chat-toegang vergrendelen met Android-schermvergrendeling of vingerafdruk</string>
+    <string name="screenlock_explain">Vergendel de toegang middels het Android-vergrendelscherm of je vingerafdruk. Schakel daarnaast ook \"Schermbeveiliging\" in.</string>
     <string name="screenlock_authentication_failed">Authenticatie mislukt.</string>
     <string name="screenlock_unlock_title">Delta Chat ontgrendelen</string>
     <string name="screenlock_unlock_description">Voer je op het systeem opgegeven geheim in om Delta Chat te ontgrendelen.</string>
-    <string name="screenlock_inactivity_timeout">Vergrendling na inactiviteit</string>
+    <string name="screenlock_inactivity_timeout">Vergrendeling na inactiviteit</string>
     <string name="screenlock_inactivity_timeout_explain">Delta Chat automatisch vergrendelen na een opgegeven periode van inactiviteit</string>
     <string name="screenlock_inactivity_timeout_interval">Periode van inactiviteit</string>
 
@@ -426,19 +427,19 @@
     <!-- qr code stuff -->
     <string name="qrscan_title">QR-code scannen</string>
     <string name="qrscan_hint">Plaatst je camera boven de QR-code</string>
-    <string name="qrscan_ask_join_group">Wil je lid worden van de groep \"%1$s\"?</string>
+    <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor %1$s</string>
     <string name="qrscan_no_addr_found">Deze QR-code bevat een vingerafdruk, maar geen e-mailadres.\n\nVoor out-of-band-goedkeuring, moet je eerst een beveiligde verbinding opzetten met de ontvanger.</string>
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
     <string name="qrscan_contains_url">Gescande QR-code-URL:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s goedgekeurd; vertel iets over mezelf...</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s goedgekeurd; vertel iets over jezelf...</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
-    <string name="qrshow_x_joining">%1$s is lid geworden.</string>
+    <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>
     <string name="qrshow_x_verified">%1$s is goedgekeurd.</string>
-    <string name="qrshow_x_has_joined_group">%1$s is lid geworden van de groep.</string>
+    <string name="qrshow_x_has_joined_group">%1$s heeft deelgenomen aan de groep.</string>
     <string name="qrshow_join_group_title">QR-uitnodigingscode</string>
-    <string name="qrshow_join_group_hint">Scan dit om lid te worden van de groep \"%1$s\".</string>
+    <string name="qrshow_join_group_hint">Scan dit om deel te nemen aan de groep \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR-uitnodigingscode</string>
     <string name="qrshow_join_contact_hint">Scan dit om een contactpersoon in te stellen met %1$s</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
@@ -480,6 +481,9 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat vereist de microfoonmachtiging om audioberichten te kunnen versturen, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Microfoon\" in.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat vereist de opslagmachtiging om foto\'s, video\'s of audio te kunnen bijvoegen of exporteren, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Opslag\" in.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat vereist de locatiemachtiging om je locatie in te kunnen voegen, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel Locatie\" in.</string>
+    <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen terwijl Delta Cat geminimaliseerd is.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat gebruikt een minimaal aantal systeembronnen, waardoor het accuverbruik laag is.</string>
+
     <!-- languages -->
     <string name="language_be">Belgisch</string>
     <string name="language_ca">Catalaans</string>
@@ -518,7 +522,7 @@
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Welkom bij DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Bekende accounts</string>
-    <string name="global_menu_preferences_desktop">Voorkeuren</string>
+    <string name="global_menu_preferences_desktop">Instellingen</string>
     <string name="global_menu_preferences_language_desktop">Kies een taal...</string>
     <string name="global_menu_file_desktop">Bestand</string>
     <string name="global_menu_file_quit_desktop">Afsluiten</string>
@@ -563,14 +567,14 @@
     <string name="name_desktop">Naam</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt-sleuteloverdracht</string>
     <string name="initiate_key_transfer_title_desktop">Sleuteloverdracht starten</string>
-    <string name="initiate_key_transfer_desktop">Een Autocrypt-instelbericht deelt je end-to-end-instellingen op een veilige manier met andere met Autocrypt compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
+    <string name="initiate_key_transfer_desktop">Een Autocrypt-instelbericht deelt je end-to-end-instellingen veilig met andere met Autocrypt compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="reply_to_message_desktop">Bericht beantwoorden</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
     <string name="imex_progress_title_desktop">Voortgang van back-up</string>
     <string name="download_attachment_desktop">Bijlage downloaden</string>
     <string name="export_backup_desktop">Back-up exporteren</string>
     <string name="transfer_key_desktop">Sleuteloverdracht</string>
-    <string name="show_key_transfer_message_desktop">Je sleutel is naar jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld. Zodra je klaar bent, is je andere apparaat klaar voor gebruik.</string>
+    <string name="show_key_transfer_message_desktop">Je sleutel is naar jezelf verstuurd. Ga naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld. Als je klaar bent, is je andere apparaat klaar voor gebruik.</string>
     <string name="new_message_from_desktop">Nieuw bericht van</string>
     <string name="unblock_contacts_desktop">Contactpersonen deblokkeren</string>
     <string name="none_blocked_desktop">Nog geen geblokkeerde contactpersonen</string>
@@ -593,7 +597,7 @@
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Wil je lid worden van de groep \"%1$s\"?</string>
+    <string name="qrscan_ask_join_verified_group">Wil je deelnemen aan de groep \"%1$s\"?</string>
     <!-- see ask_start_chat_with -->
     <string name="qrscan_ask_fingerprint_ask_oob">Wil je een gesprek voeren met %1$s?</string>
     <!-- see ask_start_chat_with -->
@@ -601,7 +605,6 @@
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">QR-uitnodigingscode</string>
     <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Scan dit om lid te worden van de groep \"%1$s\".</string>
-
+    <string name="qrshow_join_verified_group_hint">Scan dit om deel te nemen aan de groep \"%1$s\".</string>
 
 </resources>
