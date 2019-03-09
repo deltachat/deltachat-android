@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -59,6 +60,11 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
   public void onStop() {
     super.onStop();
     getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener((ApplicationPreferencesActivity) getActivity());
+
+    // update the locale of the applicationContext so that the core gets the correct strings
+    // (for pending activities, the locale is updated by calling DynamicLanguage.onResume)
+    Context applicationContext = this.getActivity().getApplicationContext();
+    DynamicLanguage.setContextLocale(applicationContext, DynamicLanguage.getSelectedLocale(applicationContext));
   }
 
   public static CharSequence getSummary(Context context) {

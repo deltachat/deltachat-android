@@ -32,6 +32,7 @@ import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
@@ -71,6 +72,13 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     initializeJobManager();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
+
+    try {
+      DynamicLanguage.setContextLocale(this, DynamicLanguage.getSelectedLocale(this));
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
