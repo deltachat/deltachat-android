@@ -36,6 +36,8 @@
     <string name="yesterday">Вчера</string>
     <string name="this_week">На этой неделе</string>
     <string name="this_month">В этом месяце</string>
+    <string name="last_week">Прошлая неделя</string>
+    <string name="last_month">Прошлый месяц</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d минуту</item>
@@ -51,28 +53,28 @@
         <item quantity="other">%d часов</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 чат</item>
-        <item quantity="few">%1$d чата</item>
-        <item quantity="many">%1$d чатов</item>
-        <item quantity="other">%1$d чатов</item>
+        <item quantity="one">%d  чатов</item>
+        <item quantity="few">%d  чатов</item>
+        <item quantity="many">%d  чатов</item>
+        <item quantity="other">%d чатов</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">1 контакт</item>
-        <item quantity="few">%1$d контакта</item>
-        <item quantity="many">%1$d контактов</item>
-        <item quantity="other">%1$d контактов</item>
+        <item quantity="one">%d </item>
+        <item quantity="few">%d contact</item>
+        <item quantity="many">%d  контактов</item>
+        <item quantity="other">%d контактов</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">1 сообщение</item>
-        <item quantity="few">%1$d сообщения</item>
-        <item quantity="many">%1$d сообщений</item>
-        <item quantity="other">%1$d сообщений</item>
+        <item quantity="one">%d message</item>
+        <item quantity="few">%d messages</item>
+        <item quantity="many">%d messages</item>
+        <item quantity="other">%d сообщений</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">1 участник</item>
-        <item quantity="few">%1$d участника</item>
-        <item quantity="many">%1$d участников</item>
-        <item quantity="other">%1$d участников</item>
+        <item quantity="one">%d  участников</item>
+        <item quantity="few">%d member</item>
+        <item quantity="many">%d member</item>
+        <item quantity="other">%d участников</item>
     </plurals>
 
     <string name="self">Мои сообщения</string>
@@ -164,16 +166,16 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Удалить этот чат? Он более не будет виден в списке чатов, его сообщения останутся на сервере.</item>
-        <item quantity="few">Удалить %d чатов? Они более не будут видны в списке чатов, их сообщения останутся на сервере.</item>
-        <item quantity="many">Удалить %d чатов? Они более не будут видны в списке чатов, их сообщения останутся на сервере.</item>
-        <item quantity="other">Удалить %d чата? Они больше не будут видны в списке чатов, их сообщения останутся на сервере.</item>
+        <item quantity="one">Удалить %d чат? Он больше не будет отображаться в списке чатов, его сообщения останутся на сервере.</item>
+        <item quantity="few">Удалить %d чата? Они больше не будет отображаться в списке чатов, их сообщения останутся на сервере.</item>
+        <item quantity="many">Удалить %d чатов? Они больше не будет отображаться в списке чатов, их сообщения останутся на сервере.</item>
+        <item quantity="other">Удалить %d чатов? Они больше не будет отображаться в списке чатов, их сообщения останутся на сервере.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Удалить сообщение отсюда и с сервера?</item>
-        <item quantity="few">Удалить %1$d сообщений отсюда и с сервера?</item>
-        <item quantity="many">Удалить %1$d сообщений отсюда и с сервера?</item>
-        <item quantity="other">Удалить %1$d сообщения отсюда и с сервера?</item>
+        <item quantity="one">Delete %d message here and on the server?</item>
+        <item quantity="few">Удалить %d сообщений здесь и на сервере?</item>
+        <item quantity="many">Delete %d message here and on the server?</item>
+        <item quantity="other">Удалить %d сообщений здесь и на сервере?</item>
     </plurals>
     <string name="ask_forward">Переслать сообщения для %1$s?</string>
     <string name="ask_export_attachment">Экспортировать вложения? Экспорт вложений, позволит любому приложению на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
@@ -193,14 +195,14 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">Чат заархивирован.</item>
-        <item quantity="few">%d чатов были заархивированы.</item>
-        <item quantity="many">%d чатов были заархивированы.</item>
-        <item quantity="other">%dчатов архивировано</item>
+        <item quantity="one">%d chat archived</item>
+        <item quantity="few">%d chat archived</item>
+        <item quantity="many">%d чатов архивировано</item>
+        <item quantity="other">%d архивированных чатов</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">Чат разархивирован</item>
-        <item quantity="few">%d чата разархивировано</item>
+        <item quantity="one">%d chat unarchived</item>
+        <item quantity="few">%d chat unarchived</item>
         <item quantity="many">%d чатов разархивировано</item>
         <item quantity="other">%d чатов разархивировано</item>
     </plurals>
@@ -289,6 +291,9 @@
     <string name="login_smtp_server">SMTP сервер</string>
     <string name="login_smtp_port">SMTP порт</string>
     <string name="login_smtp_security">Настройки безопасности SMTP</string>
+    <string name="login_auth_method">Метод авторизации</string>
+    <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
+    <string name="login_info_oauth2_text">Введенный адрес электронной почты поддерживает упрощенную настройку (OAuth2). \n\nВ следующем шаге разрешите Delta Chat выступать в качестве приложения чата с электронной почтой. \n\nDelta Chat не имеет серверов, ваши данные остаются на вашем устройстве!</string>
     <string name="login_info_gmail_text">Для аккаунтов GMail необходимо задать пароль для приложений - App-Password , если включена 2FA двухфакторная аутентификация. Если эти настройки недоступны, вам нужно активировать параметр Less Secure Apps.</string>
     <string name="login_error_mail">Укажите действительный адрес эл. почты</string>
     <string name="login_error_server">Укажите действительный сервер / IP адрес</string>
@@ -436,7 +441,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Блокировка экрана</string>
-    <string name="screenlock_explain">Блокирование доступа к Delta Chat с помощью блокировки экрана Android или отпечатка пальца</string>
+    <string name="screenlock_explain">Блокировка доступа с помощью блокировки экрана Android или отпечатков пальцев; чтобы избежать появления предыдущего контента, пожалуйста, включите \"Безопасность экрана\"</string>
     <string name="screenlock_authentication_failed">Не удалось пройти аутентификацию</string>
     <string name="screenlock_unlock_title">Разблокировать Delta Chat</string>
     <string name="screenlock_unlock_description">Введите защитный код, чтобы разблокировать Delta Chat.</string>
@@ -502,6 +507,9 @@
     <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению Delta Chat нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов в Delta Chat требуется доступ к памяти устройства, однако в этом разрешении было отказано навсегда. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Память\".</string>
     <string name="perm_explain_access_to_location_denied">Чтобы передать местоположение приложению Delta Chat нужно разрешить доступ к нему, но сейчас он заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Местоположение\".</string>
+    <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat использует минимальные ресурсы и старается не разряжать батарею.</string>
+
     <!-- languages -->
     <string name="language_be">Фламандский</string>
     <string name="language_ca">Каталанский</string>
