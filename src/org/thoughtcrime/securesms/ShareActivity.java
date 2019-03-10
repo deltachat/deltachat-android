@@ -216,11 +216,12 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       streamExtras.add(getIntent().getParcelableExtra(Intent.EXTRA_STREAM));
     } else {
       streamExtras = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+      if (streamExtras == null || streamExtras.isEmpty()) {
+        streamExtras = new ArrayList<>();
+        streamExtras.add(null); // force checking at least EXTRA_TEXT & Co.
+      }
     }
-    if (streamExtras == null || streamExtras.isEmpty()) {
-      progressWheel.setVisibility(View.GONE);
-      return;
-    }
+
     if (needsFilePermission(streamExtras)) {
       if (Permissions.hasAll(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)) {
         resolveUris(streamExtras);
