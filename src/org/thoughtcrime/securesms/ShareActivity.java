@@ -234,6 +234,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
   private boolean needsFilePermission(List<Uri> uris) {
     for(Uri uri : uris) {
+      // uri may be null, however, hasFileScheme() just returns false in this case
       if (hasFileScheme(uri)) {
         return true;
       }
@@ -486,6 +487,9 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   }
 
   private boolean hasFileScheme(Uri uri) {
+    if (uri==null) {
+      return false;
+    }
     return "file".equals(uri.getScheme());
   }
 
