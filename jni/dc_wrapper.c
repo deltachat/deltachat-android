@@ -758,6 +758,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getLocationsCPtr(JNIEnv *env, 
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteAllLocations(JNIEnv *env, jobject obj)
+{
+	dc_delete_all_locations(get_dc_context(env, obj));
+}
+
+
 /*******************************************************************************
  * DcArray
  ******************************************************************************/

@@ -156,6 +156,7 @@ public class DcContext {
     public native void         sendLocationsToChat  (int chat_id, int seconds);
     public native boolean      isSendingLocationsToChat(int chat_id);
     public @NonNull DcArray    getLocations         (int chat_id, int contact_id) { return new DcArray(getLocationsCPtr(chat_id, contact_id)); }
+    public native void         deleteAllLocations   ();
 
     /**
      * @return true if at least one chat has location streaming enabled
