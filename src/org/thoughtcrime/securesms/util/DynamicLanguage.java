@@ -48,7 +48,7 @@ public class DynamicLanguage {
     return configuration.getLayoutDirection();
   }
 
-  private static void setContextLocale(Context context, Locale selectedLocale) {
+  public static void setContextLocale(Context context, Locale selectedLocale) {
     Configuration configuration = context.getResources().getConfiguration();
 
     if (!configuration.locale.equals(selectedLocale)) {
