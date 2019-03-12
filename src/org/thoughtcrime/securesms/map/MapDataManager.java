@@ -16,11 +16,13 @@ import android.util.Log;
 import com.b44t.messenger.DcArray;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcEventCenter;
+import com.google.gson.JsonObject;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.style.expressions.Expression;
 import com.mapbox.mapboxsdk.style.layers.LineLayer;
 import com.mapbox.mapboxsdk.style.layers.Property;
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
@@ -32,21 +34,33 @@ import org.thoughtcrime.securesms.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.switchCase;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.toBool;
 import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ANCHOR_BOTTOM;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAnchor;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconSize;
 
 /**
  * Created by cyberta on 07.03.19.
  */
 
 public class MapDataManager implements DcEventCenter.DcEventDelegate {
-    private static final String TIMESTAMP = "TIMESTAMP";
-    private static final String MESSAGE_ID = "MESSAGE_ID";
-    private static final String ACCURACY = "ACCURACY";
+    public static final String MARKER_SELECTED = "MARKER_SELECTED";
+    public static final String CONTACT_ID = "CONTACT_ID";
+    public static final String TIMESTAMP = "TIMESTAMP";
+    public static final String MESSAGE_ID = "MESSAGE_ID";
+    public static final String ACCURACY = "ACCURACY";
     private static final String TAG = MapDataManager.class.getSimpleName();
     private Style mapboxStyle;
     private HashMap<Integer, MapSource> contactMapSources;
+    private HashMap<String, ArrayList<Feature>> featureCollections;
+    private Feature selectedFeature;
     private int chatId;
     private Context context;
 
@@ -55,6 +69,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
         this.context = context;
         this.chatId = chatId;
         contactMapSources = new HashMap<>();
+        featureCollections = new HashMap<>();
         int[] contactIds = ApplicationContext.getInstance(context).dcContext.getChatContacts(chatId);
         for (int contactId : contactIds) {
             addContactMapSource(contactId);
@@ -115,6 +130,13 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
         }
     }
 
+    private void refreshSource(int contactId) {
+        MapSource source = contactMapSources.get(contactId);
+        ArrayList<Feature> collection = featureCollections.get(source.getMarkerFeatureCollection());
+        GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(source.getMarkerSource());
+        pointSource.setGeoJson(FeatureCollection.fromFeatures(collection));
+    }
+
     private void updateSource(int contactId) {
         DcArray locations = ApplicationContext.getInstance(context).dcContext.getLocations(chatId, contactId);
         int count = locations.getCnt();
@@ -124,15 +146,18 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
 
         ArrayList<Point>  coordinateList = new ArrayList<>();
         ArrayList<Feature> pointFeatureList = new ArrayList<>();
+        MapSource contactMapMetadata = contactMapSources.get(contactId);
 
         for (int i = 0; i < count; i++) {
             Point p = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
             coordinateList.add(p);
-            Feature pointFeature = Feature.fromGeometry(p);
+            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), contactId+"_"+i);
+            pointFeature.addBooleanProperty(MARKER_SELECTED, false);
+            pointFeature.addNumberProperty(CONTACT_ID, contactId);
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
-            pointFeatureList.add(Feature.fromGeometry(p));
+            pointFeatureList.add(pointFeature);
         }
 
         FeatureCollection pointFeatureCollection = FeatureCollection.fromFeatures(pointFeatureList);
@@ -140,13 +165,13 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
                 LineString.fromLngLats(coordinateList)
         )});
 
-        MapSource contactMapMetadata = contactMapSources.get(contactId);
         GeoJsonSource lineSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getLineSource());
         lineSource.setGeoJson(lineFeatureCollection);
         GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getMarkerSource());
         pointSource.setGeoJson(pointFeatureCollection);
         GeoJsonSource lastPostionSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getLastPositionSource());
         lastPostionSource.setGeoJson(pointFeatureList.get(0));
+        featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), pointFeatureList);
     }
 
     private void initGeoJsonSources(MapSource source) {
@@ -172,18 +197,24 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
                 generateColoredLocationIcon(source.getColorArgb()));
 
 
+        Expression markerSizeExpression = switchCase(toBool(get(MARKER_SELECTED)), literal(1.5f), literal(1.0f));
         mapboxStyle.addLayer(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
-                .withProperties(PropertyFactory.iconImage(source.getMarkerIcon())));
+                .withProperties(
+                        iconImage(source.getMarkerIcon()),
+                        iconSize(markerSizeExpression))
+                );
         mapboxStyle.addLayer(new SymbolLayer(source.getLastPositionLayer(), source.getLastPositionSource())
-                .withProperties(PropertyFactory.iconImage(source.getMarkerLastPositon()),
-                        PropertyFactory.iconAnchor(ICON_ANCHOR_BOTTOM)));
+                .withProperties(
+                        iconImage(source.getMarkerLastPositon()),
+                        iconAnchor(ICON_ANCHOR_BOTTOM),
+                        iconSize(markerSizeExpression))
+                );
         mapboxStyle.addLayer(new LineLayer(source.getLineLayer(), source.getLineSource())
                 .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
                         PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
                         PropertyFactory.lineWidth(3f),
                         PropertyFactory.lineColor(source.getColorArgb())));
     }
-
 
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
@@ -196,6 +227,79 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
     @Override
     public boolean runOnMain() {
         return false;
+    }
+
+
+    public String[] getMarkerLayers() {
+        String markerLayers[] = new String[contactMapSources.size()*2];
+        int i = 0;
+        for (Map.Entry<Integer, MapSource> entry : contactMapSources.entrySet()) {
+            markerLayers[i] = entry.getValue().getMarkerLayer();
+            markerLayers[i+1] = entry.getValue().getLastPositionLayer();
+            i += 2;
+        }
+
+        return markerLayers;
+    }
+
+    public void unselectMarker() {
+        if (selectedFeature != null) {
+            selectedFeature.addBooleanProperty(MARKER_SELECTED, false);
+            refreshSource(selectedFeature.getNumberProperty(CONTACT_ID).intValue());
+            selectedFeature = null;
+        }
+    }
+
+    public void setMarkerSelected(String featureId) {
+        if (selectedFeature == null) {
+            setNewMarkerSelected(featureId);
+        } else if (selectedFeature.id().equals(featureId)) {
+            updateSelectedMarker();
+        } else {
+            replaceSelectedMarker(featureId);
+        }
+    }
+
+    private void replaceSelectedMarker(String featureId) {
+        Feature feature = getFeatureWithId(featureId);
+        feature.addBooleanProperty(MARKER_SELECTED, true);
+        selectedFeature.addBooleanProperty(MARKER_SELECTED, false);
+
+        int lastContactId = selectedFeature.getNumberProperty(CONTACT_ID).intValue();
+        int currentContactId = feature.getNumberProperty(CONTACT_ID).intValue();
+
+        selectedFeature = feature;
+        refreshSource(currentContactId);
+        if (lastContactId != currentContactId) {
+            refreshSource(lastContactId);
+        }
+
+    }
+
+    private void updateSelectedMarker() {
+        boolean isSelected = selectedFeature.getBooleanProperty(MARKER_SELECTED);
+        selectedFeature.addBooleanProperty(MARKER_SELECTED, !isSelected);
+        refreshSource(selectedFeature.getNumberProperty(CONTACT_ID).intValue());
+    }
+
+    private void setNewMarkerSelected(String featureId) {
+        Feature feature = getFeatureWithId(featureId);
+        feature.addBooleanProperty(MARKER_SELECTED, true);
+        selectedFeature = feature;
+        refreshSource(selectedFeature.getNumberProperty(CONTACT_ID).intValue());
+    }
+
+
+    private Feature getFeatureWithId(String id) {
+        for (String key : featureCollections.keySet()) {
+            ArrayList<Feature> featureCollection  = featureCollections.get(key);
+            for (Feature f : featureCollection) {
+                if (f.id().equals(id)) {
+                    return f;
+                }
+            }
+        }
+        return null;
     }
 
 }

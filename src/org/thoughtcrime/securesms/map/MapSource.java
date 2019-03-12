@@ -15,6 +15,7 @@ public class MapSource {
     public static final String LAST_POSITION_SOURCE = "marker_last_position";
     public static final String MARKER_ICON = "marker_icon_id";
     public static final String MARKER_LAST_POSITON = "marker_last_position";
+    public static final String MARKER_FEATURE_LIST = "marker_feature_list";
 
     private final String markerSource;
     private final String lineSource;
@@ -26,6 +27,7 @@ public class MapSource {
 
     private final String markerIcon;
     private final String markerLastPositon;
+    private final String markerFeatureCollection;
 
     private int color;
     private int colorArgb;
@@ -39,6 +41,7 @@ public class MapSource {
         lastPositionLayer = LAST_POSITON_LAYER + "_" + chatId;
         markerIcon = MARKER_ICON + "_" + chatId;
         markerLastPositon = MARKER_LAST_POSITON + "_" + chatId;
+        markerFeatureCollection = MARKER_FEATURE_LIST + "_" + chatId;
     }
 
     public void setColor(int color) {
@@ -89,4 +92,6 @@ public class MapSource {
     public String getLastPositionSource() {
         return lastPositionSource;
     }
+
+    public String getMarkerFeatureCollection() { return markerFeatureCollection; }
 }

@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.map;
 
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -26,8 +27,11 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import org.thoughtcrime.securesms.BaseActivity;
 import org.thoughtcrime.securesms.R;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+
+import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 
 public class MapActivity extends BaseActivity implements Observer {
 
@@ -66,6 +70,29 @@ public class MapActivity extends BaseActivity implements Observer {
             }
 
             mapDataManager = new MapDataManager(this, mapBoxStyle, chatId);
+            mapboxMap.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
+                @Override
+                public boolean onMapClick(@NonNull LatLng point) {
+                    final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
+                    Log.d(TAG, "on item clicked.");
+
+                    List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
+                    for (Feature feature : features) {
+                        Log.d(TAG, "found feature: " + feature.toJson());
+                        if (feature.hasProperty(MapDataManager.TIMESTAMP)){
+                            //show first feature that has meta data infos
+                            if (feature.hasProperty(MARKER_SELECTED))  {
+                                mapDataManager.setMarkerSelected(feature.id());
+                            }
+                            Log.d(TAG, "on item clicked. timestamp : " + feature.getNumberProperty(MapDataManager.TIMESTAMP));
+
+                            return true;
+                        }
+                    }
+                    mapDataManager.unselectMarker();
+                    return false;
+                }
+            });
         }));
 
         dcLocation = DcLocation.getInstance();
