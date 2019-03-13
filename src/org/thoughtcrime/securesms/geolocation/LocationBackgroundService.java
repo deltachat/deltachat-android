@@ -111,6 +111,9 @@ public class LocationBackgroundService extends Service {
         @Override
         public void onLocationChanged(Location location) {
             Log.d(TAG, "onLocationChanged: " + location);
+            if (location == null) {
+                return;
+            }
             if (isBetterLocation(location, DcLocation.getInstance().getLastLocation())) {
                 DcLocation.getInstance().updateLocation(location);
             }
