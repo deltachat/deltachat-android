@@ -119,6 +119,7 @@
     <string name="menu_delete_chat">Delete chat</string>
     <string name="menu_delete_messages">Delete messages</string>
     <string name="menu_delete_image">Delete image</string>
+    <string name="menu_delete_locations">Delete all locations?</string>
     <string name="menu_message_details">Message details</string>
     <string name="menu_copy_to_clipboard">Copy to clipboard</string>
     <string name="menu_forward">Forward message</string>

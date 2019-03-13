@@ -91,6 +91,10 @@ public class DcLocationManager implements Observer {
         }
     }
 
+    public void deleteAllLocations() {
+        ApplicationContext.getInstance(context).dcContext.deleteAllLocations();
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         if (o instanceof DcLocation) {

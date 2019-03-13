@@ -1,31 +1,24 @@
 package org.thoughtcrime.securesms.map;
 
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.PointF;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.geolocation.DcLocation;
-
-import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.FeatureCollection;
-import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.style.layers.LineLayer;
-import com.mapbox.mapboxsdk.style.layers.Property;
-import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
-import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BaseActivity;
+import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.geolocation.DcLocation;
 
 import java.util.List;
 import java.util.Observable;
@@ -93,6 +86,19 @@ public class MapActivity extends BaseActivity implements Observer {
                     return false;
                 }
             });
+
+            if (BuildConfig.DEBUG) {
+                mapboxMap.addOnMapLongClickListener(point -> {
+                    new AlertDialog.Builder(MapActivity.this)
+                            .setMessage(getString(R.string.menu_delete_locations))
+                            .setPositiveButton(R.string.yes, (dialog, which) -> {
+                                ApplicationContext.getInstance(MapActivity.this).dcLocationManager.deleteAllLocations();
+                            })
+                            .setNegativeButton(R.string.no, null)
+                            .show();
+                    return true;
+                });
+            }
         }));
 
         dcLocation = DcLocation.getInstance();
