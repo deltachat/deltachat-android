@@ -9,6 +9,7 @@ import android.graphics.Color;
 public class MapSource {
     public static final String LINE_LAYER = "line_layer";
     public static final String MARKER_LAYER = "symbol_layer";
+    public static final String INFO_WINDOW_LAYER = "info_window_layer";
     public static final String LAST_POSITON_LAYER = "last_position_layer";
     public static final String LINE_SOURCE = "line_source";
     public static final String MARKER_POSITION_SOURCE = "marker_position";
@@ -16,6 +17,7 @@ public class MapSource {
     public static final String MARKER_ICON = "marker_icon_id";
     public static final String MARKER_LAST_POSITON = "marker_last_position";
     public static final String MARKER_FEATURE_LIST = "marker_feature_list";
+    public static final String MARKER_INFO_WINDOW = "marker_info_window";
 
     private final String markerSource;
     private final String lineSource;
@@ -24,10 +26,13 @@ public class MapSource {
     private final String markerLayer;
     private final String lineLayer;
     private final String lastPositionLayer;
+    private final String infoWindowLayer;
 
     private final String markerIcon;
     private final String markerLastPositon;
+    private final String markerInfoWindow;
     private final String markerFeatureCollection;
+
 
     private int color;
     private int colorArgb;
@@ -39,9 +44,11 @@ public class MapSource {
         markerLayer = MARKER_LAYER + "_" + chatId;
         lineLayer = LINE_LAYER + "_" + chatId;
         lastPositionLayer = LAST_POSITON_LAYER + "_" + chatId;
+        infoWindowLayer = INFO_WINDOW_LAYER + "_" + chatId;
         markerIcon = MARKER_ICON + "_" + chatId;
         markerLastPositon = MARKER_LAST_POSITON + "_" + chatId;
         markerFeatureCollection = MARKER_FEATURE_LIST + "_" + chatId;
+        markerInfoWindow = MARKER_INFO_WINDOW + "_" + chatId;
     }
 
     public void setColor(int color) {
@@ -81,6 +88,8 @@ public class MapSource {
         return lastPositionLayer;
     }
 
+    public String getInfoWindowLayer() { return infoWindowLayer; }
+
     public String getMarkerIcon() {
         return markerIcon;
     }
@@ -94,4 +103,6 @@ public class MapSource {
     }
 
     public String getMarkerFeatureCollection() { return markerFeatureCollection; }
+
+    public String getMarkerInfoWindow() { return markerInfoWindow; }
 }

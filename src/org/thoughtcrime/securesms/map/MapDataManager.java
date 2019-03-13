@@ -37,22 +37,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.switchCase;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.toBool;
 import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ANCHOR_BOTTOM;
+import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ANCHOR_BOTTOM_LEFT;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAnchor;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconSize;
 
 /**
  * Created by cyberta on 07.03.19.
  */
 
-public class MapDataManager implements DcEventCenter.DcEventDelegate {
+public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateInfoWindowCallback {
     public static final String MARKER_SELECTED = "MARKER_SELECTED";
     public static final String CONTACT_ID = "CONTACT_ID";
+    public static final String INFO_WINDOW_ID = "INFO_WINDOW_ID";
     public static final String TIMESTAMP = "TIMESTAMP";
     public static final String MESSAGE_ID = "MESSAGE_ID";
     public static final String ACCURACY = "ACCURACY";
@@ -74,6 +79,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
         for (int contactId : contactIds) {
             addContactMapSource(contactId);
             updateSource(contactId);
+            generateInfoWindows(contactId);
         }
     }
 
@@ -127,14 +133,33 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
     private void updateSources() {
         for (Integer contactId : contactMapSources.keySet()) {
             updateSource(contactId);
+            generateMissingInfoWindows(contactId);
         }
     }
 
-    private void refreshSource(int contactId) {
+    @Override
+    public Context getContext() {
+        return context;
+    }
+
+    /**
+     * Invoked when the bitmaps have been generated from a view.
+     */
+    @Override
+    public void setInfoWindowResults(HashMap<String, Bitmap> results) {
+        Log.d(TAG, "setInfoWindowResults start");
+        mapboxStyle.addImages(results);
+        Log.d(TAG, "setInfoWindowResults finished");
+    }
+
+    @Override
+    public void refreshSource(int contactId) {
+        Log.d(TAG, "refreshSource start");
         MapSource source = contactMapSources.get(contactId);
         ArrayList<Feature> collection = featureCollections.get(source.getMarkerFeatureCollection());
         GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(source.getMarkerSource());
         pointSource.setGeoJson(FeatureCollection.fromFeatures(collection));
+        Log.d(TAG, "refreshSource finished");
     }
 
     private void updateSource(int contactId) {
@@ -146,14 +171,17 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
 
         ArrayList<Point>  coordinateList = new ArrayList<>();
         ArrayList<Feature> pointFeatureList = new ArrayList<>();
+
         MapSource contactMapMetadata = contactMapSources.get(contactId);
 
         for (int i = 0; i < count; i++) {
             Point p = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
             coordinateList.add(p);
-            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), contactId+"_"+i);
+            String id = contactId+"_"+i;
+            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), id);
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
             pointFeature.addNumberProperty(CONTACT_ID, contactId);
+            pointFeature.addStringProperty(INFO_WINDOW_ID, id);
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
@@ -172,6 +200,32 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
         GeoJsonSource lastPostionSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getLastPositionSource());
         lastPostionSource.setGeoJson(pointFeatureList.get(0));
         featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), pointFeatureList);
+    }
+
+    private void generateMissingInfoWindows(int contactId) {
+        MapSource contactMapMetadata = contactMapSources.get(contactId);
+        ArrayList<Feature> featureList = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
+        ArrayList<Feature> missingWindows = new ArrayList<>();
+
+        for (Feature f : featureList) {
+            String infoWindowId = f.getStringProperty(INFO_WINDOW_ID);
+            if (mapboxStyle.getImage(infoWindowId) == null) {
+                Log.d(TAG, "create new infoWindow for " + infoWindowId);
+                missingWindows.add(f);
+            } else {
+                // the list is ordered and thus, all older features should already have an info window
+                break;
+            }
+        }
+
+        new GenerateInfoWindowTask(this, contactId).execute(missingWindows);
+    }
+
+
+    private void generateInfoWindows(int contactId) {
+        MapSource contactMapMetadata = contactMapSources.get(contactId);
+        ArrayList<Feature> featureList = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
+        new GenerateInfoWindowTask(this, contactId).execute(featureList);
     }
 
     private void initGeoJsonSources(MapSource source) {
@@ -196,7 +250,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
         mapboxStyle.addImage(source.getMarkerIcon(),
                 generateColoredLocationIcon(source.getColorArgb()));
 
-
         Expression markerSizeExpression = switchCase(toBool(get(MARKER_SELECTED)), literal(1.5f), literal(1.0f));
         mapboxStyle.addLayer(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
                 .withProperties(
@@ -209,6 +262,17 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
                         iconAnchor(ICON_ANCHOR_BOTTOM),
                         iconSize(markerSizeExpression))
                 );
+        Expression filterInfoWindowExpression = eq((get(MARKER_SELECTED)), literal(true));
+        mapboxStyle.addLayer(new SymbolLayer(source.getInfoWindowLayer(), source.getMarkerSource()).
+                withProperties(
+                        iconImage("{"+INFO_WINDOW_ID+"}"),
+                        iconAnchor(ICON_ANCHOR_BOTTOM_LEFT),
+                         /* all info window and marker image to appear at the same time*/
+                        iconAllowOverlap(true),
+                        /* offset the info window to be above the marker */
+                        iconOffset(new Float[] {-2f, -15f})
+                ).withFilter(filterInfoWindowExpression));
+
         mapboxStyle.addLayer(new LineLayer(source.getLineLayer(), source.getLineSource())
                 .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
                         PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
@@ -221,6 +285,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate {
         int contactId = (Integer) data1;
         if (contactMapSources.containsKey(contactId)) {
             updateSource(contactId);
+            generateMissingInfoWindows(contactId);
         }
     }
 
