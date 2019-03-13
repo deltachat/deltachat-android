@@ -167,9 +167,9 @@
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Удалить %d чат? Он больше не будет отображаться в списке чатов, его сообщения останутся на сервере.</item>
-        <item quantity="few">Удалить %d чата? Они больше не будет отображаться в списке чатов, их сообщения останутся на сервере.</item>
-        <item quantity="many">Удалить %d чатов? Они больше не будет отображаться в списке чатов, их сообщения останутся на сервере.</item>
-        <item quantity="other">Удалить %d чатов? Они больше не будет отображаться в списке чатов, их сообщения останутся на сервере.</item>
+        <item quantity="few">Удалить %d чата? Они больше не будут отображаться в списке чатов, их сообщения останутся на сервере.</item>
+        <item quantity="many">Удалить %d чатов? Они больше не будут отображаться в списке чатов, их сообщения останутся на сервере.</item>
+        <item quantity="other">Удалить %d чатов? Они больше не будут отображаться в списке чатов, их сообщения останутся на сервере.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message here and on the server?</item>
@@ -228,6 +228,9 @@
     <string name="chat_archived_label">Ахивировано</string>
     <string name="chat_no_messages">Нет сообщений.</string>
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
+    <string name="chat_contact_request">Запрос контакта</string>
+    <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, Вы можете изменить соответствующий параметр в настройках приложения.</string>
+
     <!-- search -->
     <string name="search">Поиск</string>
     <string name="search_explain">Поиск чатов, контактов и сообщений</string>
@@ -279,6 +282,7 @@
     <string name="login_title">Логин</string>
     <string name="login_header">Войдите на ваш сервер</string>
     <string name="login_subheader">Для известных почтовых систем, дополнительные настройки устанавливаются автоматически. Иногда для IMAP требуется разрешение в веб-интерфейсе. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
+    <string name="login_no_servers_hint">У Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">IMAP логин</string>
     <string name="login_imap_server">IMAP сервер</string>
@@ -292,6 +296,7 @@
     <string name="login_smtp_security">Настройки безопасности SMTP</string>
     <string name="login_auth_method">Метод авторизации</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
+    <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth2).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
     <string name="login_info_gmail_text">Для аккаунтов GMail необходимо задать пароль для приложений - App-Password , если включена 2FA двухфакторная аутентификация. Если эти настройки недоступны, вам нужно активировать параметр Less Secure Apps.</string>
     <string name="login_error_mail">Укажите действительный адрес эл. почты</string>
     <string name="login_error_server">Укажите действительный сервер / IP адрес</string>
@@ -401,6 +406,13 @@
     <string name="pref_watch_mvbox_folder">Следить за папкой DeltaChat</string>
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Чаты были перемещены, чтобы избежать путаницы в папке Входящие</string>
+    <string name="pref_email_interaction_title">Взаимодействие с электронной почтой</string>
+    <string name="pref_show_emails">Показывать обычную почту</string>
+    <string name="pref_show_emails_no">Нет, только чаты</string>
+    <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
+    <string name="pref_show_emails_all">Все</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>
