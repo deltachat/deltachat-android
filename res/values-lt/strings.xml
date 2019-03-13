@@ -34,6 +34,8 @@
     <string name="yesterday">Vakar</string>
     <string name="this_week">Šią savaitę</string>
     <string name="this_month">Šį mėnesį</string>
+    <string name="last_week">Praeitą savaitę</string>
+    <string name="last_month">Praeitą mėnesį</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min.</item>
@@ -49,28 +51,28 @@
         <item quantity="other">%d val.</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">%1$d pokalbis</item>
-        <item quantity="few">%1$d pokalbiai</item>
-        <item quantity="many">%1$d pokalbių</item>
-        <item quantity="other">%1$d pokalbis</item>
+        <item quantity="one">%d pokalbis</item>
+        <item quantity="few">%d pokalbiai</item>
+        <item quantity="many">%d pokalbių</item>
+        <item quantity="other">%d pokalbis</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">%1$d adresatas</item>
-        <item quantity="few">%1$d adresatai</item>
-        <item quantity="many">%1$d adresatų</item>
-        <item quantity="other">%1$d adresatas</item>
+        <item quantity="one">%d adresatas</item>
+        <item quantity="few">%d adresatai</item>
+        <item quantity="many">%d adresatų</item>
+        <item quantity="other">%d adresatas</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">%1$d žinutė</item>
-        <item quantity="few">%1$d žinutės</item>
-        <item quantity="many">%1$d žinučių</item>
-        <item quantity="other">%1$d žinutė</item>
+        <item quantity="one">%d žinutė</item>
+        <item quantity="few">%d žinutės</item>
+        <item quantity="many">%d žinučių</item>
+        <item quantity="other">%d žinutė</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">%1$d dalyvis</item>
-        <item quantity="few">%1$d dalyviai</item>
-        <item quantity="many">%1$d dalyvių</item>
-        <item quantity="other">%1$d dalyvis</item>
+        <item quantity="one">%d dalyvis</item>
+        <item quantity="few">%d dalyviai</item>
+        <item quantity="many">%d dalyvių</item>
+        <item quantity="other">%d dalyvis</item>
     </plurals>
 
     <string name="self">Aš</string>
@@ -162,16 +164,16 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Ištrinti šį pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
+        <item quantity="one">Ištrinti %d pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
         <item quantity="few">Ištrinti %d pokalbius? Jie daugiau nebebus rodomi pokalbių sąraše, jų žinutės liks serveryje.</item>
         <item quantity="many">Ištrinti %d pokalbių? Jie daugiau nebebus rodomi pokalbių sąraše, jų žinutės liks serveryje.</item>
-        <item quantity="other">Ištrinti %d pokalbį? Jie daugiau nebebus rodomi pokalbių sąraše, jų žinutės liks serveryje.</item>
+        <item quantity="other">Ištrinti %d pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Ištrinti žinutę čia ir serveryje?</item>
-        <item quantity="few">Ištrinti %1$d žinutes čia ir serveryje?</item>
-        <item quantity="many">Ištrinti %1$d žinučių čia ir serveryje?</item>
-        <item quantity="other">Ištrinti %1$d žinutę čia ir serveryje?</item>
+        <item quantity="one">Ištrinti %d žinutę čia ir serveryje?</item>
+        <item quantity="few">Ištrinti %d žinutes čia ir serveryje?</item>
+        <item quantity="many">Ištrinti %d žinučių čia ir serveryje?</item>
+        <item quantity="other">Ištrinti %d žinutę čia ir serveryje?</item>
     </plurals>
     <string name="ask_forward">Persiųsti žinutes %1$s?</string>
     <string name="ask_export_attachment">Eksportuoti priedą? Priedų eksportavimas leis bet kurioms kitoms programėlėms jūsų įrenginyje turėti prieigą prie šių priedų.\n\nTęsti?</string>
@@ -189,13 +191,13 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">Pokalbis archyvuotas</item>
+        <item quantity="one">Archyvuotas %d pokalbis</item>
         <item quantity="few">Archyvuoti %d pokalbiai</item>
         <item quantity="many">Archyvuota %d pokalbių</item>
         <item quantity="other">Archyvuotas %d pokalbis</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">Pokalbis išarchyvuotas</item>
+        <item quantity="one">Išarchyvuotas %d pokalbis</item>
         <item quantity="few">Išarchyvuoti %d pokalbiai</item>
         <item quantity="many">Išarchyvuota %d pokalbių</item>
         <item quantity="other">Išarchyvuotas %d pokalbis</item>
@@ -221,7 +223,6 @@
     <string name="chat_archived_label">Archyvuotas</string>
     <string name="chat_no_messages">Žinučių nėra.</string>
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
-
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>
@@ -284,6 +285,7 @@
     <string name="login_smtp_server">SMTP serveris</string>
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
+    <string name="login_info_oauth2_title">Tęsti, naudojant supaprastintą sąranką?</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
     <string name="login_error_server">Įveskite teisingą serverį / IP adresą</string>
     <string name="login_error_port">Įveskite teisingą prievadą (1–65535)</string>
@@ -313,6 +315,7 @@
     <string name="pref_trim_length_limit">Pokalbio ilgio riba</string>
     <string name="pref_trim_length_limit_summary">%d žinučių pokalbyje</string>
     <string name="pref_trim_now_button">Apkarpyti visus pokalbius dabar</string>
+    <string name="pref_trim_now_ask">Ištrinti visas senas žinutes dabar? Tai nedelsiant apkarpys visus pokalbius iki %d paskiausių žinučių.</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="pref_profile_photo_remove_ask">Šalinti profilio nuotrauką?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
@@ -381,9 +384,8 @@
     <string name="pref_watch_inbox_folder">Stebėti gautųjų aplanką</string>
     <string name="pref_watch_sent_folder">Stebėti išsiųstųjų aplanką</string>
     <string name="pref_watch_mvbox_folder">Stebėti DeltaChat aplanką</string>
+    <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
     <string name="pref_auto_folder_moves_explain">Pokalbiai yra perkeliami, kad nebūtų sujauktas Gautųjų aplankas</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt yra naujoji ir atviroji specifikacija automatiniam ištisiniam el. pašto šifravui.\n\nPrireikus, jūsų ištisinė sąranka yra sukuriama automatiškai ir gali būti perduodama tarp įrenginių, naudojant Autocrypt sąrankos žinutes.</string>
@@ -413,7 +415,6 @@
     <string name="systemmsg_cannot_decrypt">Nepavyksta iššifruoti šios žinutės.\n\n• Galima, tiesiog, atsakyti į šią žinutę ir paprašyti siuntėjo dar kartą išsiųsti šią žinutę.\n\n• Tuo atveju, jeigu iš naujo įdiegėte Delta Chat ar kitą el. pašto programą šiame ar kitame įrenginyje, jūs galite pageidauti išsiųsti Autocrypt sąrankos žinutę iš to įrenginio.</string>
     <!-- screen lock -->
     <string name="screenlock_title">Ekrano užraktas</string>
-    <string name="screenlock_explain">Užrakinti prieigą prie Delta Chat, naudojant Android ekrano užraktą ar piršto atspaudą</string>
     <string name="screenlock_authentication_failed">Tapatybės nustatymas nepavyko.</string>
     <string name="screenlock_unlock_title">Atrakinti Delta Chat</string>
     <string name="screenlock_unlock_description">Norėdami atrakinti Delta Chat, įveskite savo sistemos apibrėžtą paslaptį.</string>
@@ -434,6 +435,7 @@
     <string name="qrshow_join_group_title">QR pakvietimo kodas</string>
     <string name="qrshow_join_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
     <string name="qrshow_join_contact_title">QR pakvietimo kodas</string>
+    <string name="qrshow_join_contact_hint">Nuskenuokite tai, norėdami užmegzti kontaktą su %1$s</string>
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
     <string name="notify_most_recent_from">Naujausia nuo: %1$s</string>
     <string name="notify_media_message_with_text">Medijos žinutė: %s</string>
@@ -462,6 +464,9 @@
     <string name="perm_explain_need_for_camera_access">Norėdami fotografuoti ir filmuoti, suteikite Delta Chat prieigą prie kameros.</string>
     <string name="perm_explain_need_for_mic_access">Norėdami siųsti garso žinutes, suteikite Delta Chat prieigą prie mikrofono.</string>
     <string name="perm_explain_need_for_storage_access">Norint eksportuoti failus ar daryti atsargines kopijas, Delta Chat reikia prieigos prie jūsų failų.</string>
+    <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat naudoja mažai išteklių ir rūpinasi, kad neiškrautų jūsų baterijos.</string>
+
     <string name="language_ca">Katalonų</string>
     <string name="language_da">Danų</string>
     <string name="language_de">Vokiečių</string>
@@ -539,6 +544,7 @@
     <string name="show_qr_invite_code_desktop">Rodyti QR pakvietimo kodą</string>
     <string name="add_contact_desktop">Pridėti adresatą</string>
     <string name="login_required_desktop">būtina</string>
+    <string name="name_desktop">Vardas</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt rakto perdavimas</string>
     <string name="initiate_key_transfer_title_desktop">Inicijuoti rakto perdavimą</string>
     <string name="initiate_key_transfer_desktop">Autocrypt sąrankos žinutė saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis. Sąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
@@ -580,6 +586,5 @@
     <string name="qrshow_join_verified_group_title">QR pakvietimo kodas</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
-
 
 </resources>

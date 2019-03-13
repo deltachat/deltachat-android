@@ -36,6 +36,8 @@
     <string name="yesterday">Ieri</string>
     <string name="this_week">Questa settimana</string>
     <string name="this_month">Questo mese</string>
+    <string name="last_week">Ultima settimana</string>
+    <string name="last_month">Ultimo mese</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -47,20 +49,20 @@
         <item quantity="other">%d ore</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 chat</item>
-        <item quantity="other">%1$d chat</item>
+        <item quantity="one">%d chat</item>
+        <item quantity="other">%d chat</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">1 contatto</item>
-        <item quantity="other">%1$d contatti</item>
+        <item quantity="one">%d contatto</item>
+        <item quantity="other">%d contatti</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">1 messaggio</item>
-        <item quantity="other">%1$d messaggi</item>
+        <item quantity="one">%d messaggio</item>
+        <item quantity="other">%d messaggi</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">1 membro</item>
-        <item quantity="other">%1$d membri</item>
+        <item quantity="one">%d membri</item>
+        <item quantity="other">%d membri</item>
     </plurals>
 
     <string name="self">Io</string>
@@ -152,12 +154,12 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare il gruppo?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Eliminare questa chat? Non sarà più visibile nella lista, ma i suoi messaggi rimarranno sul server.</item>
-        <item quantity="other">Elimiare %d chat? Non saranno più visualizzate nella lista, ma i messaggi rimarranno sul server.</item>
+        <item quantity="one">Eliminare %d chat? Non verrà più mostrata nella lista delle chat, ma i messaggi rimarranno sul server.</item>
+        <item quantity="other">Eliminare %d chat? Non verranno più mostrate nella lista delle chat, ma i messaggi rimarranno sul server.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Eliminare il messaggio sia qui che sul server?</item>
-        <item quantity="other">Eliminare %1$d messaggi sia qui che dal server?</item>
+        <item quantity="one">Eliminare %d messaggio qui e sul sever?</item>
+        <item quantity="other">Eliminare %d messaggi qui e sul sever?</item>
     </plurals>
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
     <string name="ask_export_attachment">Esportare allegato? Questo permetterà ad ogni altra app sul tuo dispositivo di accedervi.\n\nContinuare?</string>
@@ -177,11 +179,11 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">Chat archiviata</item>
+        <item quantity="one">%d chat archiviata</item>
         <item quantity="other">%d chat archiviate</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">Chat ripristinata</item>
+        <item quantity="one">%d chat ripristinata</item>
         <item quantity="other">%d chat ripristinate</item>
     </plurals>
     <string name="chat_archived_chats_title">Chat archiviate</string>
@@ -204,7 +206,6 @@
     <string name="chat_archived_label">Archiviato</string>
     <string name="chat_no_messages">Nessun messaggio.</string>
     <string name="chat_self_talk_subtitle">Messaggi inviati a me stesso</string>
-
     <!-- search -->
     <string name="search">Cerca</string>
     <string name="search_explain">Cerca in chat, contatti e messaggi</string>
@@ -267,6 +268,8 @@
     <string name="login_smtp_server">Server SMTP</string>
     <string name="login_smtp_port">Porta SMTP</string>
     <string name="login_smtp_security">Sicurezza SMTP</string>
+    <string name="login_auth_method">Metodo di autorizzazione</string>
+    <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
     <string name="login_info_gmail_text">Per gli account GMail è necessario creare una password per le app se è attiva la verifica in 2 passaggi. Se queste impostazioni non sono disponibili, è necessario abilitare le app meno sicure.</string>
     <string name="login_error_mail">Inserisci un indirizzo email valido</string>
     <string name="login_error_server">Inserisci un server / indirizzo IP valido</string>
@@ -376,8 +379,6 @@
     <string name="pref_watch_mvbox_folder">Vedi cartella DeltaChat</string>
     <string name="pref_auto_folder_moves">Sposta automaticamente nella cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Le chat vengono spostate per evitare di riempire la cartella In Arrivo</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt è una nuova specifica aperta per la cifratura end-to-end delle email.\n\nLa tua configurazione end-to-end viene creata automaticamente quando necessario e puoi trasferirla tra dispositivi tramite i Messaggi di configurazione.</string>
@@ -414,7 +415,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Blocco schermo</string>
-    <string name="screenlock_explain">Blocca l\'accesso a Delta Chat con il blocco schermo di Android o l\'impronta digitale</string>
+    <string name="screenlock_explain">Impedisci l\'accesso grazie al blocco schermo di Android o all\'impronta digitale; per non mostrare i contenuti precedenti, abilita \"Sicurezza Schermo\"</string>
     <string name="screenlock_authentication_failed">Autenticazione fallita.</string>
     <string name="screenlock_unlock_title">Sblocca Delta Chat</string>
     <string name="screenlock_unlock_description">Inserisci il codice di sistema per sbloccare Delta Chat</string>
@@ -480,6 +481,9 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat richiede l\'autorizzazione inviare messaggi audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat richiede l\'autorizzazione per creare allegati, esportare foto, video e audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat richiede l\'autorizzazione per allegare la posizione, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
+    <string name="perm_enable_bg_reminder_title">Premi qui per ricevere messaggi quando Delta Chat è in background.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat usa poche risorse ed è progettata per consumare meno batteria possibile.</string>
+
     <!-- languages -->
     <string name="language_be">Belga</string>
     <string name="language_ca">Catalano</string>
@@ -602,6 +606,5 @@
     <string name="qrshow_join_verified_group_title">Codice QR di invito</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Scansionalo per entrare nel gruppo \"%1$s\".</string>
-
 
 </resources>

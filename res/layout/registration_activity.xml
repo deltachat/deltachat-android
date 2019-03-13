@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:constraint_referenced_ids="inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
-            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method" />
+            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method, view_log_button" />
 
         <ImageView
             android:id="@+id/advanced_icon"
@@ -310,8 +310,8 @@
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/login_auth_method"
             android:paddingTop="16dp"
+            android:text="@string/login_auth_method"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/smtp_security" />
@@ -326,6 +326,20 @@
             app:layout_constraintTop_toBottomOf="@id/auth_method_label" />
 
         <TextView
+            android:id="@+id/view_log_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pref_view_log"
+            android:textColor="@color/blue_400"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:typeface="sans"
+            android:paddingBottom="32dp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/auth_method" />
+
+        <TextView
             android:id="@+id/sub_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -337,7 +351,7 @@
             android:text="@string/login_subheader"
             android:textColor="@color/gray50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/auth_method" />
+            app:layout_constraintTop_toBottomOf="@id/view_log_button" />
 
     </android.support.constraint.ConstraintLayout>
 

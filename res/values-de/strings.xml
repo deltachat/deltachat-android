@@ -36,6 +36,8 @@
     <string name="yesterday">Gestern</string>
     <string name="this_week">Diese Woche</string>
     <string name="this_month">Dieser Monat</string>
+    <string name="last_week">Letzte Woche</string>
+    <string name="last_month">Letzter Monat</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d Min</item>
@@ -47,20 +49,20 @@
         <item quantity="other">%d Std</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 Chat</item>
-        <item quantity="other">%1$d Chats</item>
+        <item quantity="one">%d Chat</item>
+        <item quantity="other">%d Chats</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">1 Kontakt</item>
-        <item quantity="other">%1$d Kontakte</item>
+        <item quantity="one">%d Kontakt</item>
+        <item quantity="other">%d Kontakte</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">1 Nachricht</item>
-        <item quantity="other">%1$d Nachrichten</item>
+        <item quantity="one">%d Nachricht</item>
+        <item quantity="other">%d Nachrichten</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">1 Mitglied</item>
-        <item quantity="other">%1$d Mitglieder</item>
+        <item quantity="one">%d Mitglied</item>
+        <item quantity="other">%d Mitglieder</item>
     </plurals>
 
     <string name="self">Ich</string>
@@ -152,12 +154,12 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Diesen Chat löschen? Ein gelöschter Chat wird nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
+        <item quantity="one">%d Chat löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
         <item quantity="other">%d Chats löschen? Gelöschte Chats werden nicht länger in der Chat-Liste angezeigt, die Nachrichten verbleiben auf dem Server.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Nachricht lokal und vom Server löschen?</item>
-        <item quantity="other">%1$d Nachrichten lokal und vom Server löschen?</item>
+        <item quantity="one">%d Nachricht lokal und vom Server löschen?</item>
+        <item quantity="other">%d Nachrichten lokal und vom Server löschen?</item>
     </plurals>
     <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
     <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
@@ -177,11 +179,11 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">Chat archiviert</item>
+        <item quantity="one">%d Chat archiviert</item>
         <item quantity="other">%d Chats archiviert</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">Chat unarchived</item>
+        <item quantity="one">%d Chat dearchiviert </item>
         <item quantity="other">%d Chats dearchiviert </item>
     </plurals>
     <string name="chat_archived_chats_title">Archivierte Chats</string>
@@ -204,6 +206,8 @@
     <string name="chat_archived_label">Archiviert</string>
     <string name="chat_no_messages">Keine Nachrichten.</string>
     <string name="chat_self_talk_subtitle">Nachrichten, die ich mir selber geschickt habe</string>
+    <string name="chat_contact_request">Kontaktanfrage</string>
+    <string name="chat_no_contact_requests">Keine Kontaktanfragen.\n\nWenn normale E-Mails hier erscheinen sollen, müssen Sie die entsprechende erweiterte Einstellung ändern.</string>
 
     <!-- search -->
     <string name="search">Suchen</string>
@@ -256,6 +260,7 @@
     <string name="login_title">Login</string>
     <string name="login_header">Beim Server anmelden</string>
     <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
+    <string name="login_no_servers_hint">Es gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_inbox">Posteingang</string>
     <string name="login_imap_login">IMAP-Anmeldename</string>
     <string name="login_imap_server">IMAP-Server</string>
@@ -267,6 +272,9 @@
     <string name="login_smtp_server">SMTP-Server</string>
     <string name="login_smtp_port">SMTP-Port</string>
     <string name="login_smtp_security">SMTP-Sicherheit</string>
+    <string name="login_auth_method">Berechtigungsmethode </string>
+    <string name="login_info_oauth2_title">Mit vereinfachter Einrichtung fortfahren?</string>
+    <string name="login_info_oauth2_text">Die eingegebene E-Mail-Addresse unterstützt eine vereinfachte Einrichtung (OAuth2).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt als Chat-Über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_info_gmail_text">Für GMail-Konten muss ein App-Passwort erstellt werden, wenn die 2FA (Zwei-Faktor-Authentifizierung) aktiviert ist. Wenn diese Einstellung nicht verfügbar ist, muss \"Zugriff durch weniger sichere Anwendungen\" aktiviert werden.</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>
     <string name="login_error_server">Bitte eine gültige Server/IP-Adresse eingeben</string>
@@ -378,6 +386,11 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>
     <string name="pref_auto_folder_moves">Autom. Verschieben in den DeltaChat-Ordner</string>
     <string name="pref_auto_folder_moves_explain">Nachrichten verschieben, um einen unübersichtlichen Posteingang zu verhindern.</string>
+    <string name="pref_email_interaction_title">E-Mail-Zusammenspiel</string>
+    <string name="pref_show_emails">Normale E-Mails anzeigen</string>
+    <string name="pref_show_emails_no">Nein, nur Chats</string>
+    <string name="pref_show_emails_accepted_contacts">Akzeptierte Kontakte</string>
+    <string name="pref_show_emails_all">Alle</string>
 
 
     <!-- autocrypt -->
@@ -405,7 +418,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="systemmsg_member_added">%1$s hinzugefügt.</string>
     <string name="systemmsg_member_removed">%1$s entfernt.</string>
     <string name="systemmsg_group_left">Gruppe verlassen.</string>
-    <string name="systemmsg_read_receipt_subject">Empfangsbestätigung lesen</string>
+    <string name="systemmsg_read_receipt_subject">Empfangsbestätigung</string>
     <string name="systemmsg_read_receipt_body">Dies ist eine Empfangsbestätigung für die Nachricht \"%1$s\".\n\nEs bedeutet, dass die Nachricht auf dem Gerät des Empfängers angezeigt wurde, nicht unbedingt, dass der Inhalt gelesen wurde.</string>
     <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es könnte bereits helfen, einfach auf diese Nachricht zu antworten und den Absender zu bitten, die Nachricht erneut zu senden.\n\n• Falls Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu installiert wurde, kann von dort aus eine Autocrypt Setup-Nachricht gesendet werden.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
@@ -416,7 +429,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
 
     <!-- screen lock -->
     <string name="screenlock_title">Bildschirmsperre</string>
-    <string name="screenlock_explain">Sperre den Delta Chat Zugang mit der Android Bildschirmsperre oder Fingerabdruck.</string>
+    <string name="screenlock_explain">Sperren Sie den Zugriff mit der Android-Bildschirmsperre oder Ihrem Fingerabdruck; um nicht die vorherigen Inhalte zu sehen, aktivieren Sie bitte auch \"Bildschirmsicherheit\".</string>
     <string name="screenlock_authentication_failed">Die Authentifizierung ist fehlgeschlagen.</string>
     <string name="screenlock_unlock_title">Delta Chat entsperren</string>
     <string name="screenlock_unlock_description">Den System-Entsperrcode eingeben, um Delta Chat freizuschalten.</string>
@@ -482,6 +495,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="perm_explain_access_to_mic_denied">Delta Chat benötigt die Erlaubnis des Mikrofons, um Audio-Nachrichten zu senden, aber es wurde dauerhaft abgelehnt. Bitte fahre mit den App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat benötigt die Speichergenehmigung, um Fotos, Videos oder Audiodateien anzuhängen oder zu exportieren, aber es wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Speicher\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat benötigt eine Standortberechtigung, um einen Standort anzuhängen, aber er wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Standort\".</string>
+    <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat verbraucht nur minimale Ressourcen und achtet darauf, den Akku zu schonen.</string>
+
     <!-- languages -->
     <string name="language_be">Belgisch</string>
     <string name="language_ca">Katalanisch</string>
@@ -604,6 +620,5 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrshow_join_verified_group_title">QR-Einladungscode</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Dies scannen, um der Gruppe \"%1$s\" beizutreten.</string>
-
 
 </resources>

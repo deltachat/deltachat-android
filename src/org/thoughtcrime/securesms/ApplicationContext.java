@@ -34,6 +34,7 @@ import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
@@ -51,10 +52,10 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
 
   private static final String TAG = ApplicationContext.class.getName();
 
-  public ApplicationDcContext dcContext;
-  public DcLocationManager dcLocationManager;
-  private JobManager jobManager;
-  private volatile boolean isAppVisible;
+  public ApplicationDcContext   dcContext;
+  public DcLocationManager      dcLocationManager;
+  private JobManager            jobManager;
+  private volatile boolean      isAppVisible;
 
   public static ApplicationContext getInstance(Context context) {
     return (ApplicationContext)context.getApplicationContext();
@@ -74,6 +75,12 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
     Mapbox.getInstance(getApplicationContext(), BuildConfig.MAP_ACCESS_TOKEN);
     dcLocationManager = new DcLocationManager(this);
+    try {
+      DynamicLanguage.setContextLocale(this, DynamicLanguage.getSelectedLocale(this));
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Override

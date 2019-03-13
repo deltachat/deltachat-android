@@ -11,7 +11,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
 
-public class LogViewActivity extends PassphraseRequiredActionBarActivity {
+public class LogViewActivity extends BaseActionBarActivity {
 
   private static final String TAG = LogViewActivity.class.getSimpleName();
 
@@ -21,18 +21,15 @@ public class LogViewActivity extends PassphraseRequiredActionBarActivity {
   LogViewFragment logViewFragment;
 
   @Override
-  protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
-  }
-
-  @Override
-  protected void onCreate(Bundle icicle, boolean ready) {
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
     setContentView(R.layout.log_view_activity);
     logViewFragment = LogViewFragment.newInstance();
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     transaction.replace(R.id.fragment_container, logViewFragment);
     transaction.commit();
+    dynamicTheme.onCreate(this);
+    dynamicLanguage.onCreate(this);
 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }

@@ -36,6 +36,8 @@
     <string name="yesterday">I går</string>
     <string name="this_week">Denne uge</string>
     <string name="this_month">Denne uge</string>
+    <string name="last_week">Sidste uge</string>
+    <string name="last_month">Sidste måned</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min.</item>
@@ -47,20 +49,20 @@
         <item quantity="other">%d timer</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 samtale</item>
-        <item quantity="other">%1$d samtaler</item>
+        <item quantity="one">%d samtale</item>
+        <item quantity="other">%d samtaler</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="one">1 kontakt</item>
-        <item quantity="other">%1$d kontakter</item>
+        <item quantity="one">%d kontakt</item>
+        <item quantity="other">%d kontakter</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="one">1 besked</item>
-        <item quantity="other">%1$d beskeder</item>
+        <item quantity="one">%d besked</item>
+        <item quantity="other">%d beskeder</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="one">1 medlem</item>
-        <item quantity="other">%1$d medlemmer</item>
+        <item quantity="one">%d medlem</item>
+        <item quantity="other">%d medlemmer</item>
     </plurals>
 
     <string name="self">Undertegnede</string>
@@ -152,12 +154,12 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Forlade denne gruppe?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Slette samtale? Den vil ikke længere blive vist i samtale listen, dens beskeder vil forblive på serveren.</item>
+        <item quantity="one">Slette %d samtale? Den vil ikke længere blive vist i samtale listen, dens beskeder vil forblive på serveren.</item>
         <item quantity="other">Slette %d samtaler? De vil ikke længere blive vist i samtale listen, deres beskeder vil forblive på serveren.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Slette besked her og på server?</item>
-        <item quantity="other">Slette %1$d beskeder her og på server?</item>
+        <item quantity="one">Slette %d besked her og på serveren?</item>
+        <item quantity="other">Slette %d beskeder her og på serveren?</item>
     </plurals>
     <string name="ask_forward">Videresende beskeder til %1$s?</string>
     <string name="ask_export_attachment">Eksportere vedhæftninger? Eksport af vedhæftninger vil tillade alle programmer på din enhed adgang til dem.\n\nFortsætte?</string>
@@ -177,12 +179,12 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">Samtale arkiveret</item>
+        <item quantity="one">%d samtale arkiveret</item>
         <item quantity="other">%d samtaler arkiveret</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">Samtale fjernet fra arkiv</item>
-        <item quantity="other">%d samtaler fjernet fra arkiv</item>
+        <item quantity="one">%d samtale frigjort fra arkiv</item>
+        <item quantity="other">%d samtaler frigjort fra arkiv</item>
     </plurals>
     <string name="chat_archived_chats_title">Arkiverede samtaler</string>
     <string name="chat_please_enter_message">Indtast besked</string>
@@ -204,7 +206,6 @@
     <string name="chat_archived_label">Arkiveret</string>
     <string name="chat_no_messages">Ingen beskeder</string>
     <string name="chat_self_talk_subtitle">Beskeder sendt til undertegnede</string>
-
     <!-- search -->
     <string name="search">Søge</string>
     <string name="search_explain">Søge efter samtaler, kontakter og beskeder</string>
@@ -267,6 +268,8 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP sikkerhed</string>
+    <string name="login_auth_method">Tilladelse metode</string>
+    <string name="login_info_oauth2_title">Fortsætte med forenklet opsætning?</string>
     <string name="login_info_gmail_text">For GMail konti skal der oprettes en App-Password hvis 2FA er aktiveret. Hvis denne opsætning ikke er tilgængelig skal Less Secure Apps aktiveres.</string>
     <string name="login_error_mail">Indtast gyldig e-post adresse</string>
     <string name="login_error_server">Indtast gyldig server / IP adresse</string>
@@ -370,8 +373,6 @@
     <string name="pref_watch_mvbox_folder">Overvåge DeltaChat mappe</string>
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>
     <string name="pref_auto_folder_moves_explain">Samtaler er flyttet for at undgå rodet indbakke mappe</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_send_asm_title">Sende Autocrypt opsætning besked</string>
@@ -403,7 +404,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Skærm lås</string>
-    <string name="screenlock_explain">Lås Delta Chat adgang med Android skærmlås eller fingeraftryk</string>
+    <string name="screenlock_explain">Låse adgang med Android skærmlås eller fingeraftryk; for at undgå at vise det forrige indhold, skal \"Skærm sikkerhed\" også aktiveres.</string>
     <string name="screenlock_authentication_failed">Godkendelse mislykket.</string>
     <string name="screenlock_unlock_title">Lås Delta Chat op</string>
     <string name="screenlock_unlock_description">Indtast system bestemt hemmelighed for at låse Delta Chat op.</string>
@@ -468,6 +469,9 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat kræver lagring tilladelse for at vedhæfte eller eksportere billeder, video eller lyd, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Lagring\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat kræver placering tilladelse for at kunne vedhæfte placering, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Placering\".</string>
+    <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat bruger minimal resurse og passer på ikke at dræne batteriet.</string>
+
     <!-- languages -->
     <string name="language_be">Belgisk</string>
     <string name="language_ca">Catalansk</string>
@@ -589,6 +593,5 @@
     <string name="qrshow_join_verified_group_title">QR inviteringskode </string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Skanne dette for at tilslutte gruppe \"%1$s\".</string>
-
 
 </resources>

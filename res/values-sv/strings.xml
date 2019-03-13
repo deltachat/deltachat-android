@@ -46,23 +46,6 @@
         <item quantity="one">%d timme</item>
         <item quantity="other">%d timmar</item>
     </plurals>
-    <plurals name="n_chats">
-        <item quantity="one">1 chatt</item>
-        <item quantity="other">%1$d chatt</item>
-    </plurals>
-    <plurals name="n_contacts">
-        <item quantity="one">1 kontakt</item>
-        <item quantity="other">%1$d kontakter</item>
-    </plurals>
-    <plurals name="n_messages">
-        <item quantity="one">1 meddelande</item>
-        <item quantity="other">%1$d meddelanden</item>
-    </plurals>
-    <plurals name="n_members">
-        <item quantity="one">1 medlem</item>
-        <item quantity="other">%1$d medlemmar</item>
-    </plurals>
-
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>
@@ -150,14 +133,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Radera denna chatt? Den kommer inte längre visas i chattlistan, meddelanden finns kvar på servern.</item>
-        <item quantity="other">Radera %d chatt? De kommer inte längre visas i chattlistan, meddelanden finns kvar på servern.</item>
-    </plurals>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Ta bort meddelandet här och på servern?</item>
-        <item quantity="other">Ta bort %1$d meddelandem här och på servern?</item>
-    </plurals>
     <string name="ask_forward">Vidarebefordra meddelanden till %1$s?</string>
     <string name="ask_export_attachment">Exportera bifogad fil? Exportera bilagor tillåter andra appar på din enhet att komma åt dem.\n\nFortsätt?</string>
     <string name="ask_block_contact">Blockera den här kontakten? Du kommer inte längre att få meddelanden från den här kontakten.</string>
@@ -174,15 +149,6 @@
     <string name="contacts_empty_hint">Inga kontakter.</string>
 
 
-    <!-- chatlist and chat view -->
-    <plurals name="chat_archived">
-        <item quantity="one">Chat arkiverad</item>
-        <item quantity="other">%dchattar arkiverade </item>
-    </plurals>
-    <plurals name="chat_unarchived">
-        <item quantity="one">Chatt avarkiverats</item>
-        <item quantity="other">%dchatt avarkiverats</item>
-    </plurals>
     <string name="chat_archived_chats_title">Arkiverade chattar</string>
     <string name="chat_please_enter_message">Skriv in ett meddelande.</string>
     <string name="chat_camera_unavailable">Kamera otillgänglig.</string>
@@ -203,7 +169,6 @@
     <string name="chat_archived_label">Arkiverat</string>
     <string name="chat_no_messages">Inga meddelanden.</string>
     <string name="chat_self_talk_subtitle">Meddelanden jag skickade till mig själv</string>
-
     <!-- search -->
     <string name="search">Sök</string>
     <string name="search_explain">Sök efter chattar, kontakter och meddelanden</string>

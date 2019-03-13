@@ -36,6 +36,8 @@
     <string name="yesterday">Вчора</string>
     <string name="this_week">Цього тижня</string>
     <string name="this_month">Цього місяця</string>
+    <string name="last_week">Останнього тижня</string>
+    <string name="last_month">Останнього місяця</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d хвилину</item>
@@ -51,30 +53,11 @@
         <item quantity="other">%d годин</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="one">1 чат</item>
-        <item quantity="few">%1$d чати</item>
-        <item quantity="many">%1$d чатів</item>
-        <item quantity="other">%1$d чатів</item>
+        <item quantity="one">%d чат</item>
+        <item quantity="few">%d чати</item>
+        <item quantity="many">%d чатів</item>
+        <item quantity="other">%d чатів</item>
     </plurals>
-    <plurals name="n_contacts">
-        <item quantity="one">1 контакт</item>
-        <item quantity="few">%1$d контакти</item>
-        <item quantity="many">%1$d контактів</item>
-        <item quantity="other">%1$d контактів</item>
-    </plurals>
-    <plurals name="n_messages">
-        <item quantity="one">1 повідомлення</item>
-        <item quantity="few">%1$d повідомлення</item>
-        <item quantity="many">%1$d повідомлень</item>
-        <item quantity="other">%1$d повідомлень</item>
-    </plurals>
-    <plurals name="n_members">
-        <item quantity="one">1 учасник</item>
-        <item quantity="few">%1$d учасники</item>
-        <item quantity="many">%1$d учасників</item>
-        <item quantity="other">%1$d учасників</item>
-    </plurals>
-
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>
@@ -163,18 +146,6 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ви впевнені, що хочете залишити цю групу?</string>
-    <plurals name="ask_delete_chat">
-        <item quantity="one">Видалити цей чат? Він більше не буде виден у списку чатів, його повідомлення залишаться на сервері.</item>
-        <item quantity="few">Видалити %d чати? Вони більше не будуть видні в списку чатів, їх повідомлення залишаться на сервері.</item>
-        <item quantity="many">Видалити %d чатів? Вони більше не будуть видні в списку чатів, їх повідомлення залишаться на сервері.</item>
-        <item quantity="other">Видалити %d чатів? Вони більше не будуть видні в списку чатів, їх повідомлення залишаться на сервері.</item>
-    </plurals>
-    <plurals name="ask_delete_messages">
-        <item quantity="one">Видалити повідомлення звідси і з сервера?</item>
-        <item quantity="few">Видалити %1$d повідомлення звідси і з сервера?</item>
-        <item quantity="many">Видалити %1$d повідомлень звідси і з сервера?</item>
-        <item quantity="other">Видалити %1$d повідомлень звідси і з сервера?</item>
-    </plurals>
     <string name="ask_forward">Переслати повідомлення %1$s?</string>
     <string name="ask_export_attachment">Експортувати вкладення? Експорт вкладень дозволить будь-якому іншому додатку на Вашому пристрої отримати до них доступ.\n\nПродовжити?</string>
     <string name="ask_block_contact">Заблокувати цей контакт? Ви більше не будете отримувати від нього повідомлення.</string>
@@ -191,19 +162,6 @@
     <string name="contacts_empty_hint">Немає контактів.</string>
 
 
-    <!-- chatlist and chat view -->
-    <plurals name="chat_archived">
-        <item quantity="one">Чат заархівовано</item>
-        <item quantity="few">%dчати заархівовано</item>
-        <item quantity="many">%dчатів заархівовано</item>
-        <item quantity="other">%d чатів заархівовано</item>
-    </plurals>
-    <plurals name="chat_unarchived">
-        <item quantity="one">Чат розархівовано</item>
-        <item quantity="few">%d чати розархівовано</item>
-        <item quantity="many">%d чатів розархівовано</item>
-        <item quantity="other">%d чатів розархівовано</item>
-    </plurals>
     <string name="chat_archived_chats_title">Заархівовані чати</string>
     <string name="chat_please_enter_message">Будь ласка, введіть повідомлення.</string>
     <string name="chat_camera_unavailable">Камера недоступна.</string>
@@ -221,12 +179,11 @@
     <string name="chat_no_chats_yet_hint">Дайте Вашим «Вхідним» привід наповнитися. Почніть з листа другові або подрузі.</string>
     <string name="chat_all_done_hint">Вхідних немає</string>
     <string name="chat_all_done_explain">Нічого!\nНа цьому поки все</string>
-    <string name="chat_share_with_title">Поділітися</string>
+    <string name="chat_share_with_title">Поділитися</string>
     <string name="chat_input_placeholder">Повідомлення</string>
     <string name="chat_archived_label">Заархівовано</string>
     <string name="chat_no_messages">Немає повідомлень.</string>
     <string name="chat_self_talk_subtitle">Повідомлення, відправлені самому собі</string>
-
     <!-- search -->
     <string name="search">Пошук</string>
     <string name="search_explain">Пошук чатів, контактів і повідомлень</string>
@@ -276,7 +233,7 @@
     <string name="welcome_intro7_message">Delta Chat безпечний для бізнесу, поєднується з іншими технологіями і грунтується на стандартах.</string>
     <string name="welcome_start_messaging">Почати спілкування</string>
     <string name="login_title">Увійти</string>
-    <string name="login_header">Увійти на Ваш сервер</string>
+    <string name="login_header">Увійти на свій сервер</string>
     <string name="login_subheader">Для відомих провайдерів електронної пошти додаткові налаштування встановлюються автоматично. Іноді IMAP потрібен дозвіл в веб-інтерфейсі. Проконсультуйтеся з Вашим провайдером електронної пошти або друзями для отримання допомоги.</string>
     <string name="login_inbox">Вхідні</string>
     <string name="login_imap_login">IMAP-логін</string>
@@ -289,6 +246,7 @@
     <string name="login_smtp_server">SMTP-сервер</string>
     <string name="login_smtp_port">SMTP-порт</string>
     <string name="login_smtp_security">Налаштування безпеки SMTP</string>
+    <string name="login_auth_method">Метод авторизації</string>
     <string name="login_info_gmail_text">Якщо Ви користуєтеся GMail і у вас увімкнена двофакторна аутентифікація, Вам потрібно створити спеціальний пароль для додатків - App-Password. Якщо ці налаштування недоступні, Вам потрібно активувати параметр Less Secure Apps.</string>
     <string name="login_error_mail">Вкажіть дійсну адресу електронної пошти</string>
     <string name="login_error_server">Вкажіть дійсний сервер / IP-адресу</string>
@@ -398,8 +356,6 @@
     <string name="pref_watch_mvbox_folder">Стежити за папкою DeltaChat</string>
     <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Чати були переміщені, щоб уникнути плутанини у папці «Вхідні».</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Автошифрування</string>
     <string name="autocrypt_explain">Autocrypt – новий і відкритий протокол встановлення наскрізного шифрування для електронної пошти.\n\nНеобхідні параметри шифрування призначаються автоматично і їх можна передавати між своїми пристроями, використовуючи повідомлення з параметрами Autocrypt.</string>
@@ -436,7 +392,6 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Блокування екрану</string>
-    <string name="screenlock_explain">Блокування доступу до Delta Chat за допомогою блокування екрану Android або відбитку пальця</string>
     <string name="screenlock_authentication_failed">Не вдалося здійснити аутентифікацію.</string>
     <string name="screenlock_unlock_title">Розблокувати Delta Chat</string>
     <string name="screenlock_unlock_description">Введіть захисний код, щоб розблокувати Delta Chat.</string>
@@ -624,6 +579,5 @@
     <string name="qrshow_join_verified_group_title">QR-код запрошення</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Відскануйте цей код, щоб приєднатися до групи «%1$s».</string>
-
 
 </resources>
