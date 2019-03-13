@@ -28,6 +28,11 @@ public class DcLocation extends Observable {
         return lastLocation;
     }
 
+
+    public boolean isValid() {
+        return !lastLocation.getProvider().equals("?");
+    }
+
     void updateLocation(Location location) {
         lastLocation = location;
 
@@ -42,8 +47,6 @@ public class DcLocation extends Observable {
 
     private Location getDefault() {
         Location location = new Location("?");
-        location.setLatitude(52.52);
-        location.setLongitude(13.404);
         return location;
     }
 

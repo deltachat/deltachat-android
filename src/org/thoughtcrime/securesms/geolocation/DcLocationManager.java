@@ -83,17 +83,21 @@ public class DcLocationManager implements Observer {
             return;
         }
 
-        Location location = dcLocation.getLastLocation();
-        Log.d(TAG, "share lastLocation: " + location.getLatitude() + ", " + location.getLongitude());
-        ApplicationContext.getInstance(context).dcContext.sendLocationsToChat(chatId, 1);
-        ApplicationContext.getInstance(context).dcContext.setLocation((float) location.getLatitude(), (float) location.getLongitude(), location.getAccuracy());
+        if (dcLocation.isValid()) {
+            Location location = dcLocation.getLastLocation();
+            Log.d(TAG, "share lastLocation: " + location.getLatitude() + ", " + location.getLongitude());
+            ApplicationContext.getInstance(context).dcContext.sendLocationsToChat(chatId, 1);
+            ApplicationContext.getInstance(context).dcContext.setLocation((float) location.getLatitude(), (float) location.getLongitude(), location.getAccuracy());
+        }
     }
 
     @Override
     public void update(Observable o, Object arg) {
         if (o instanceof DcLocation) {
             dcLocation = (DcLocation) o;
-            writeDcLocationUpdateMessage();
+            if (dcLocation.isValid()) {
+                writeDcLocationUpdateMessage();
+            }
         }
     }
 
