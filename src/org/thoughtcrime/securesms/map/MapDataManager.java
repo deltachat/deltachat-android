@@ -177,11 +177,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         for (int i = 0; i < count; i++) {
             Point p = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
             coordinateList.add(p);
-            String id = contactId+"_"+i;
-            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), id);
+            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), contactId + "_" + i);
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
             pointFeature.addNumberProperty(CONTACT_ID, contactId);
-            pointFeature.addStringProperty(INFO_WINDOW_ID, id);
+            pointFeature.addStringProperty(INFO_WINDOW_ID, contactId + "_info_" + (count-i));
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
@@ -218,7 +217,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             }
         }
 
-        new GenerateInfoWindowTask(this, contactId).execute(missingWindows);
+        if (missingWindows.size() > 0) {
+            new GenerateInfoWindowTask(this, contactId).execute(missingWindows);
+        }
     }
 
 
