@@ -263,6 +263,13 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                         iconAnchor(ICON_ANCHOR_BOTTOM),
                         iconSize(markerSizeExpression))
                 );
+
+        mapboxStyle.addLayer(new LineLayer(source.getLineLayer(), source.getLineSource())
+                .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
+                        PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
+                        PropertyFactory.lineWidth(3f),
+                        PropertyFactory.lineColor(source.getColorArgb())));
+
         Expression filterInfoWindowExpression = eq((get(MARKER_SELECTED)), literal(true));
         mapboxStyle.addLayer(new SymbolLayer(source.getInfoWindowLayer(), source.getMarkerSource()).
                 withProperties(
@@ -273,12 +280,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                         /* offset the info window to be above the marker */
                         iconOffset(new Float[] {-2f, -15f})
                 ).withFilter(filterInfoWindowExpression));
-
-        mapboxStyle.addLayer(new LineLayer(source.getLineLayer(), source.getLineSource())
-                .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
-                        PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
-                        PropertyFactory.lineWidth(3f),
-                        PropertyFactory.lineColor(source.getColorArgb())));
     }
 
     @Override
