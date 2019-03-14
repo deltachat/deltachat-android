@@ -86,17 +86,26 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
 
     @Override
     protected void onProgressUpdate(HashMap<String, Bitmap>... imagesMap) {
-        callbackRef.get().setInfoWindowResults(imagesMap[0]);
-        callbackRef.get().refreshSource(contactId);
-        Log.d(TAG, "updating progress for contact: " + contactId);
+        try {
+            callbackRef.get().setInfoWindowResults(imagesMap[0]);
+            callbackRef.get().refreshSource(contactId);
+            Log.d(TAG, "updating progress for contact: " + contactId);
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();
+            Log.e(TAG, "Callback was GC'ed before task finished.");
+        }
     }
 
     @Override
     protected void onPostExecute(HashMap<String, Bitmap> bitmapHashMap) {
-        GenerateInfoWindowCallback callback = callbackRef.get();
-        if (callback != null && bitmapHashMap != null && bitmapHashMap.size() > 0) {
-            callback.setInfoWindowResults(bitmapHashMap);
-            callback.refreshSource(contactId);
+        try {
+            if (bitmapHashMap.size() > 0) {
+                callbackRef.get().setInfoWindowResults(bitmapHashMap);
+                callbackRef.get().refreshSource(contactId);
+            }
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();
+            Log.e(TAG, "Callback was GC'ed before task finished.");
         }
     }
 }
