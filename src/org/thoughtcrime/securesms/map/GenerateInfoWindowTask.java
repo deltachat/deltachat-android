@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
+import static android.view.View.GONE;
 import static org.thoughtcrime.securesms.map.MapDataManager.INFO_WINDOW_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
@@ -96,7 +97,12 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
                     msgText = "Reported: " + DateUtils.getExtendedRelativeTimeSpanString(callbackRef.get().getContext(), locale, (long) feature.getNumberProperty(TIMESTAMP));
                 }
 
-                conversationItemBody.setText(msgText);
+                if (msgText.length() == 0) {
+                    conversationItemBody.setVisibility(GONE);
+                } else {
+                    conversationItemBody.setText(msgText);
+                }
+
                 Bitmap bitmap = BitmapUtil.generate(bubbleLayout);
 
                 String id = feature.getStringProperty(INFO_WINDOW_ID);
