@@ -4,7 +4,7 @@ Release core, if needed, then:
 
 1. $ ./tools/update-core.sh
 2. $ tx pull # test and commit changes
-3. bump version, adapt changelog, ommit
+3. bump version, adapt changelog, commit
 4. deltachat-android on Github: "Draft a new release" with the version form `v1.2.3`
 
 ... some days later, F-Droid should be updated.
@@ -28,4 +28,18 @@ Release core, f-droid, then:
     and select "Build / Build APK"
     (TODO: or also use the release signing key)
 10. upload the generated APK to the created Github release
+
+
+# Testing checklist
+
+only some rough ideas, ideally, this should result into a simple checklist
+that can be checke before releasing.
+however, although it would be nice to test "everything", we should keep in mind
+that the test should be doable in, say, 10~15 minutes.
+- create new account with (one of?): gmail, yandex, other
+  or (?) test an exiting account
+- send and receive a message
+- create a group
+- do a contact verification
+- join a group via a qr scan
 
