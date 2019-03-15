@@ -8,19 +8,27 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.util.BitmapUtil;
+import org.thoughtcrime.securesms.util.DateUtils;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 import static org.thoughtcrime.securesms.map.MapDataManager.INFO_WINDOW_ID;
+import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
 
 /**
@@ -61,9 +69,19 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
 
                 LinearLayout bubbleLayout = (LinearLayout)
                         inflater.inflate(R.layout.map_bubble_layout, null);
-                TextView titleTextView = bubbleLayout.findViewById(R.id.conversation_item_body);
-                titleTextView.setText("TIMESTAMP: " + feature.getNumberProperty(TIMESTAMP));
                 bubbleLayout.setBackgroundResource(R.drawable.message_bubble_background_received_alone);
+                TextView conversationItemBody = bubbleLayout.findViewById(R.id.conversation_item_body);
+                Locale locale = DynamicLanguage.getSelectedLocale(callbackRef.get().getContext());
+                int messageId = (int) feature.getNumberProperty(MESSAGE_ID);
+                if (messageId != 0) {
+                    DcMsg msg = ApplicationContext.getInstance(callbackRef.get().getContext()).dcContext.getMsg(messageId);
+                    conversationItemBody.setText(msg.getSummarytext(75));
+                    ConversationItemFooter footer = bubbleLayout.findViewById(R.id.conversation_item_footer);
+                    footer.setVisibility(View.VISIBLE);
+                    footer.setMessageRecord(msg, locale);
+                } else {
+                    conversationItemBody.setText("Reported: " + DateUtils.getExtendedRelativeTimeSpanString(callbackRef.get().getContext(), locale, (long) feature.getNumberProperty(TIMESTAMP)));
+                }
 
                 Bitmap bitmap = BitmapUtil.generate(bubbleLayout);
 
