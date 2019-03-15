@@ -44,65 +44,40 @@
 
     </LinearLayout>
 
-    <org.thoughtcrime.securesms.components.QuoteView
-        android:id="@+id/quote_view"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/message_bubble_top_padding"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        android:visibility="gone"
-        app:message_type="outgoing"
-        app:quote_colorPrimary="?attr/conversation_item_quote_text_color"
-        app:quote_colorSecondary="?attr/conversation_item_quote_text_color"
-        tools:visibility="visible"/>
+        android:orientation="horizontal"
+        >
 
-    <ViewStub
-        android:id="@+id/image_view_stub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout="@layout/conversation_item_sent_thumbnail" />
+        <ImageView
+            android:id="@+id/map_bubble_img_thumbnail"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:padding="10dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
 
-    <ViewStub
-        android:id="@+id/audio_view_stub"
-        android:layout="@layout/conversation_item_sent_audio"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/message_bubble_top_padding"
-        android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-        android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
-
-    <ViewStub
-        android:id="@+id/document_view_stub"
-        android:layout="@layout/conversation_item_sent_document"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/message_bubble_top_padding"
-        android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
-        android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-        android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
-
-    <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-        android:id="@+id/conversation_item_body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxWidth="150dp"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-        android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
-        android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
-        style="@style/Signal.Text.Body"
-        android:paddingTop="@dimen/message_bubble_top_padding"
-        android:textColor="?conversation_item_outgoing_text_primary_color"
-        android:textColorLink="?conversation_item_outgoing_text_primary_color"
-        app:scaleEmojis="true"
-        tools:text="Mango pickle lorem ipsum"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/conversation_item_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="150dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+            android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+            android:layout_marginBottom="@dimen/message_bubble_collapsed_footer_padding"
+            style="@style/Signal.Text.Body"
+            android:paddingTop="@dimen/message_bubble_top_padding"
+            android:textColor="?conversation_item_outgoing_text_primary_color"
+            android:textColorLink="?conversation_item_outgoing_text_primary_color"
+            app:scaleEmojis="true"
+            tools:text="Mango pickle lorem ipsum"/>
+    </LinearLayout>
 
     <org.thoughtcrime.securesms.components.ConversationItemFooter
         android:id="@+id/conversation_item_footer"

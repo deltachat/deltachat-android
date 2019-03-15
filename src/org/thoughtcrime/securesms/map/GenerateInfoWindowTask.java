@@ -5,13 +5,16 @@ package org.thoughtcrime.securesms.map;
  */
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
 
@@ -22,6 +25,7 @@ import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -73,16 +77,26 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
                 TextView conversationItemBody = bubbleLayout.findViewById(R.id.conversation_item_body);
                 Locale locale = DynamicLanguage.getSelectedLocale(callbackRef.get().getContext());
                 int messageId = (int) feature.getNumberProperty(MESSAGE_ID);
+                String msgText;
                 if (messageId != 0) {
-                    DcMsg msg = ApplicationContext.getInstance(callbackRef.get().getContext()).dcContext.getMsg(messageId);
-                    conversationItemBody.setText(msg.getSummarytext(75));
+                    DcContext dcContext =  ApplicationContext.getInstance(callbackRef.get().getContext()).dcContext;
+                    DcMsg msg = dcContext.getMsg(messageId);
+                    if (hasImgThumbnail(msg)) {
+                        ImageView thumbnailView = bubbleLayout.findViewById(R.id.map_bubble_img_thumbnail);
+                        thumbnailView.setImageURI(getThumbnailUri(msg));
+                        thumbnailView.setVisibility(View.VISIBLE);
+                        msgText = msg.getText();
+                    } else {
+                        msgText = msg.getSummarytext(75);
+                    }
                     ConversationItemFooter footer = bubbleLayout.findViewById(R.id.conversation_item_footer);
                     footer.setVisibility(View.VISIBLE);
                     footer.setMessageRecord(msg, locale);
                 } else {
-                    conversationItemBody.setText("Reported: " + DateUtils.getExtendedRelativeTimeSpanString(callbackRef.get().getContext(), locale, (long) feature.getNumberProperty(TIMESTAMP)));
+                    msgText = "Reported: " + DateUtils.getExtendedRelativeTimeSpanString(callbackRef.get().getContext(), locale, (long) feature.getNumberProperty(TIMESTAMP));
                 }
 
+                conversationItemBody.setText(msgText);
                 Bitmap bitmap = BitmapUtil.generate(bubbleLayout);
 
                 String id = feature.getStringProperty(INFO_WINDOW_ID);
@@ -125,5 +139,14 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
             npe.printStackTrace();
             Log.e(TAG, "Callback was GC'ed before task finished.");
         }
+    }
+
+    private boolean hasImgThumbnail(DcMsg messageRecord) {
+        int type = messageRecord.getType();
+        return type==DcMsg.DC_MSG_IMAGE;
+    }
+
+    public Uri getThumbnailUri(DcMsg dcMsg) {
+        return Uri.fromFile(new File(dcMsg.getFile()));
     }
 }
