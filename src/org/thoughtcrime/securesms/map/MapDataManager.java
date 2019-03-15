@@ -10,6 +10,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
@@ -21,6 +22,9 @@ import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
+import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.style.expressions.Expression;
 import com.mapbox.mapboxsdk.style.layers.LineLayer;
@@ -69,17 +73,38 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private int chatId;
     private Context context;
 
-    public MapDataManager(Context context, @NonNull Style mapboxMapStyle, int chatId) {
+    public interface MapDataState {
+        void onDataInitialized(LatLngBounds bounds);
+    }
+
+    public MapDataManager(Context context, @NonNull Style mapboxMapStyle, int chatId, MapDataState updateCallback) {
         this.mapboxStyle = mapboxMapStyle;
         this.context = context;
         this.chatId = chatId;
         contactMapSources = new HashMap<>();
         featureCollections = new HashMap<>();
+        LatLngBounds.Builder boundingBuilder = new LatLngBounds.Builder();
         int[] contactIds = ApplicationContext.getInstance(context).dcContext.getChatContacts(chatId);
+
         for (int contactId : contactIds) {
+            if (contactId == 1) {
+                //skip self, it is explicitely added as 1:1 don't include self whereas groups and selftalk do
+                continue;
+            }
             addContactMapSource(contactId);
-            updateSource(contactId);
+            updateSource(contactId, boundingBuilder);
             generateInfoWindows(contactId);
+        }
+
+        addContactMapSource(1);
+        updateSource(1, boundingBuilder);
+        generateMissingInfoWindows(1);
+
+
+        try {
+            updateCallback.onDataInitialized(boundingBuilder.build());
+        } catch (InvalidLatLngBoundsException e) {
+            e.printStackTrace();
         }
     }
 
@@ -163,6 +188,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private void updateSource(int contactId) {
+        updateSource(contactId, null);
+    }
+
+    private void updateSource(int contactId, @Nullable LatLngBounds.Builder boundingBuilder) {
         DcArray locations = ApplicationContext.getInstance(context).dcContext.getLocations(chatId, contactId);
         int count = locations.getCnt();
         if (count == 0) {
@@ -185,6 +214,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
             pointFeatureList.add(pointFeature);
+            if (boundingBuilder != null) {
+                boundingBuilder.include(new LatLng(locations.getLatitude(i), locations.getLongitude(i)));
+            }
         }
 
         FeatureCollection pointFeatureCollection = FeatureCollection.fromFeatures(pointFeatureList);
@@ -284,6 +316,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
+        Log.d(TAG, "updateEvent in MapDataManager called. eventId: " + eventId);
         int contactId = (Integer) data1;
         if (contactMapSources.containsKey(contactId)) {
             updateSource(contactId);

@@ -1,17 +1,15 @@
 package org.thoughtcrime.securesms.map;
 
 import android.graphics.PointF;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
 
 import org.thoughtcrime.securesms.ApplicationContext;
@@ -49,10 +47,9 @@ public class MapActivity extends BaseActivity implements Observer {
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
-
             mapboxMap.setCameraPosition(new CameraPosition.Builder()
                     .target(new LatLng(dcLocation.getLastLocation().getLatitude(), dcLocation.getLastLocation().getLongitude()))
-                    .zoom(12)
+                    .zoom(9)
                     .build());
             mapboxMap.getUiSettings().setLogoEnabled(false);
             mapboxMap.getUiSettings().setAttributionEnabled(false);
@@ -62,29 +59,29 @@ public class MapActivity extends BaseActivity implements Observer {
                 return;
             }
 
-            mapDataManager = new MapDataManager(this, mapBoxStyle, chatId);
-            mapboxMap.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
-                @Override
-                public boolean onMapClick(@NonNull LatLng point) {
-                    final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
-                    Log.d(TAG, "on item clicked.");
+            mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
+                mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
+            });
 
-                    List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
-                    for (Feature feature : features) {
-                        Log.d(TAG, "found feature: " + feature.toJson());
-                        if (feature.hasProperty(MapDataManager.TIMESTAMP)){
-                            //show first feature that has meta data infos
-                            if (feature.hasProperty(MARKER_SELECTED))  {
-                                mapDataManager.setMarkerSelected(feature.id());
-                            }
-                            Log.d(TAG, "on item clicked. timestamp : " + feature.getNumberProperty(MapDataManager.TIMESTAMP));
+            mapboxMap.addOnMapClickListener(point -> {
+                final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
+                Log.d(TAG, "on item clicked.");
 
-                            return true;
+                List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
+                for (Feature feature : features) {
+                    Log.d(TAG, "found feature: " + feature.toJson());
+                    if (feature.hasProperty(MapDataManager.TIMESTAMP)){
+                        //show first feature that has meta data infos
+                        if (feature.hasProperty(MARKER_SELECTED))  {
+                            mapDataManager.setMarkerSelected(feature.id());
                         }
+                        Log.d(TAG, "on item clicked. timestamp : " + feature.getNumberProperty(MapDataManager.TIMESTAMP));
+
+                        return true;
                     }
-                    mapDataManager.unselectMarker();
-                    return false;
                 }
+                mapDataManager.unselectMarker();
+                return false;
             });
 
             if (BuildConfig.DEBUG) {
