@@ -194,15 +194,15 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private void updateSource(int contactId, @Nullable LatLngBounds.Builder boundingBuilder) {
         DcArray locations = ApplicationContext.getInstance(context).dcContext.getLocations(chatId, contactId);
         int count = locations.getCnt();
+        ArrayList<Feature> pointFeatureList = new ArrayList<>();
+        MapSource contactMapMetadata = contactMapSources.get(contactId);
+
         if (count == 0) {
+            featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), pointFeatureList);
             return;
         }
 
         ArrayList<Point>  coordinateList = new ArrayList<>();
-        ArrayList<Feature> pointFeatureList = new ArrayList<>();
-
-        MapSource contactMapMetadata = contactMapSources.get(contactId);
-
         for (int i = 0; i < count; i++) {
             Point p = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
             coordinateList.add(p);
