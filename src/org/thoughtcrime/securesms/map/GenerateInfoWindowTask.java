@@ -147,9 +147,9 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
         }
     }
 
-    private boolean hasImgThumbnail(DcMsg messageRecord) {
-        int type = messageRecord.getType();
-        return type==DcMsg.DC_MSG_IMAGE;
+    private boolean hasImgThumbnail(DcMsg dcMsg) {
+        int type = dcMsg.getType();
+        return type == DcMsg.DC_MSG_IMAGE && dcMsg.hasFile();
     }
 
     public Uri getThumbnailUri(DcMsg dcMsg) {
