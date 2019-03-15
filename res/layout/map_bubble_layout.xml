@@ -113,6 +113,7 @@
         android:gravity="end"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:visibility="gone"
         app:footer_text_color="?attr/conversation_item_outgoing_text_secondary_color"/>
 
 </LinearLayout>
