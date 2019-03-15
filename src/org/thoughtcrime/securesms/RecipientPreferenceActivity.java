@@ -285,6 +285,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       Preference            encryptionPreference      = this.findPreference(PREFERENCE_ENCRYPTION);
       Preference            editNamePreference        = this.findPreference("pref_key_recipient_edit_name");
       Preference            blockPreference           = this.findPreference(PREFERENCE_BLOCK);
+      Preference            newChatPreference        = this.findPreference("pref_key_new_chat");
+
 
       editNamePreference.setOnPreferenceClickListener(new EditContactNameListener());
       encryptionPreference.setOnPreferenceClickListener(new ShowEncrInfoListener());
@@ -306,6 +308,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         if (encryptionPreference != null) encryptionPreference.setVisible(false);
         if (editNamePreference   != null) editNamePreference.setVisible(false); // group name is currently somewhere else ...
         if (blockPreference      != null) blockPreference.setVisible(false);
+        if (newChatPreference != null) newChatPreference.setVisible(false);
 
         if (contactInfoDivider != null) contactInfoDivider.setVisible(false);
       }
@@ -329,7 +332,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
           return false;
         });
 
-        this.findPreference("pref_key_new_chat").setOnPreferenceClickListener(preference -> {
+        newChatPreference.setOnPreferenceClickListener(preference -> {
           new AlertDialog.Builder(getActivity())
               .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
               .setPositiveButton(android.R.string.ok, (dialog, which) -> {
