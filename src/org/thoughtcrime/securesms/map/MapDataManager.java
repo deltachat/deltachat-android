@@ -342,6 +342,17 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         return markerLayers;
     }
 
+    public String[] getInfoWindowLayers() {
+        String markerLayers[] = new String[contactMapSources.size()];
+        int i = 0;
+        for (Map.Entry<Integer, MapSource> entry : contactMapSources.entrySet()) {
+            markerLayers[i] = entry.getValue().getInfoWindowLayer();
+            i += 1;
+        }
+
+        return markerLayers;
+    }
+
     public void unselectMarker() {
         if (selectedFeature != null) {
             selectedFeature.addBooleanProperty(MARKER_SELECTED, false);

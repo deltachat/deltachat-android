@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.map;
 
+import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -10,11 +11,13 @@ import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BaseActivity;
 import org.thoughtcrime.securesms.BuildConfig;
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.geolocation.DcLocation;
 
@@ -23,6 +26,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
+import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 
 public class MapActivity extends BaseActivity implements Observer {
 
@@ -70,17 +74,43 @@ public class MapActivity extends BaseActivity implements Observer {
                 List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
                 for (Feature feature : features) {
                     Log.d(TAG, "found feature: " + feature.toJson());
-                    if (feature.hasProperty(MapDataManager.TIMESTAMP)){
-                        //show first feature that has meta data infos
-                        if (feature.hasProperty(MARKER_SELECTED))  {
-                            mapDataManager.setMarkerSelected(feature.id());
-                        }
-                        Log.d(TAG, "on item clicked. timestamp : " + feature.getNumberProperty(MapDataManager.TIMESTAMP));
-
+                    //show first feature that has meta data infos
+                    if (feature.hasProperty(MARKER_SELECTED))  {
+                        mapDataManager.setMarkerSelected(feature.id());
                         return true;
                     }
                 }
                 mapDataManager.unselectMarker();
+                return false;
+            });
+
+            mapboxMap.addOnMapClickListener(point -> {
+                final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
+                Log.d(TAG, "on info window clicked.");
+
+                List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getInfoWindowLayers());
+                for (Feature feature : features) {
+                    Log.d(TAG, "found feature: " + feature.toJson());
+                    if (feature.hasProperty(MARKER_SELECTED) && feature.getBooleanProperty(MARKER_SELECTED))  {
+                        int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
+
+                        int msgs[] = ApplicationContext.getInstance(this).dcContext.getChatMsgs(chatId, 0, 0);
+                        int startingPosition = -1;
+                        for(int i=0; i< msgs.length; i++ ) {
+                            if(msgs[i] == messageId) {
+                                startingPosition = msgs.length-1-i;
+                                break;
+                            }
+                        }
+
+                        Intent intent = new Intent(this, ConversationActivity.class);
+                        intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+                        intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
+                        intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
+                        startActivity(intent);
+                    }
+                    return true;
+                }
                 return false;
             });
 
