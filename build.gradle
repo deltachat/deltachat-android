@@ -1,241 +1,178 @@
 buildscript {
     repositories {
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
-        maven {
-            url "https://repo1.maven.org/maven2"
-            jcenter()
-        }
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.3.2'
         classpath files('libs/gradle-witness.jar')
     }
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'witness' // for dependencyVerification
-
 repositories {
     google()
-    mavenCentral()
-    maven {
-        // Used only for PhotoView
-        url "https://jitpack.io"
-        name 'JitPack Github wrapper'
-    }
     jcenter()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'witness' // for dependencyVerification
+// Consider getting rid of witness altogether
+// https://forum.f-droid.org/t/is-the-gradle-witness-plugin-allowed/2247/3
+
 dependencies {
-    compile 'com.android.support:appcompat-v7:27.0.2' // one use in SearchToolbar.
-    compile 'com.android.support:design:27.0.2' // used in various locations for a lot of components
-    compile 'com.android.support:support-v13:27.0.2' // used to prevent a 25... version to be loaded (from where ever)
-    compile 'com.android.support:preference-v7:27.0.2' // actually a dependency of -v14
-    compile 'com.android.support:preference-v14:27.0.2' // used to manage the users preferences
-    compile 'com.android.support:exifinterface:27.0.2' // Used to edit the Exif in BitmapUtil
-    compile 'com.android.support.constraint:constraint-layout:1.1.2' // Used in several places
-    compile 'android.arch.lifecycle:extensions:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
-    compile 'android.arch.lifecycle:common-java8:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
+    /** Support libraries */
+    // used in various locations for a lot of components
+    implementation 'com.android.support:design:27.1.1'
+    // Used to edit the Exif in BitmapUtil
+    implementation 'com.android.support:exifinterface:27.1.1'
+    // Have this here just in case
+    implementation 'com.android.support:support-v4:27.1.1'
+    // one use in SearchToolbar
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    // actually a dependency of -v14
+    implementation 'com.android.support:preference-v7:27.1.1'
+    // used to prevent a 25... version to be loaded (from where ever)
+    implementation 'com.android.support:support-v13:27.1.1'
+    // used to manage the users preferences
+    implementation 'com.android.support:preference-v14:27.1.1'
+    // Vector drawable support
+    implementation 'com.android.support:support-vector-drawable:27.1.1'
+    // Used in several places
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    // Used in situations where data changes should be displayed directly (e.G. Search)
+    implementation 'android.arch.lifecycle:common-java8:1.1.1'
+    // Used in situations where data changes should be displayed directly (e.G. Search)
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
 
-    compile 'com.google.android.exoplayer:exoplayer:r2.3.1' // plays video.
+    // plays video
+    implementation 'com.google.android.exoplayer:exoplayer:r2.3.1' //2.9.6
 
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.5' // used as JSON library TODO: check if java builtin would work as well
+    // used as JSON library TODO: check if java builtin would work as well
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
 
-    compile 'com.journeyapps:zxing-android-embedded:3.4.0' // QR Code scanner
+    // QR Code scanner
+    implementation 'com.google.zxing:core:3.2.1' //3.3.3
+    implementation 'com.journeyapps:zxing-android-embedded:3.4.0' //3.6.0
 
-    compile "me.leolin:ShortcutBadger:1.1.16" // display messagecount on the home screen icon.
-    compile 'com.jpardogo.materialtabstrip:library:1.0.9' // used in the emoji selector for the tab selection.
-    compile 'com.github.chrisbanes:PhotoView:2.1.3' // does the zooming on photos / media
-    compile 'com.github.bumptech.glide:glide:4.5.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
-    compile 'com.makeramen:roundedimageview:2.1.0' // crops the avatars to circles
-    compile 'com.pnikosis:materialish-progress:1.5' // used only in the "Progress Wheel" in Share Activity.
-    compile 'com.soundcloud.android:android-crop:0.9.10@aar' // used in Group Select Avatar, should be unified with profie
-    compile 'com.nineoldandroids:library:2.4.0' // DEPRECATED! Used to slide in the half-camera.
-    compile 'mobi.upod:time-duration-picker:1.1.3' // Used to pick the time for inactivity.
-    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'  // number of unread messages,
-         // the one-letter circle for the contacts (when there is not avatar) and a white background.
-    compile 'com.google.zxing:core:3.2.1' // QR Code scanner
-    compile ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') { // for the zooming on photos / media
+    // display message count on the home screen icon
+    implementation 'me.leolin:ShortcutBadger:1.1.19' //1.1.22@aar
+
+    // used in the emoji selector for the tab selection
+    implementation 'com.jpardogo.materialtabstrip:library:1.0.9'
+
+    // does the zooming on photos / media
+    implementation 'com.github.chrisbanes:PhotoView:2.1.4' //2.3.0
+
+    // image loading and caching library
+    implementation 'com.github.bumptech.glide:glide:4.5.0' //4.9.0
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0' //4.9.0
+
+    // crops the avatars to circles
+    implementation 'com.makeramen:roundedimageview:2.1.2' //2.3.0
+
+    // used only in the "Progress Wheel" in Share Activity
+    implementation 'com.pnikosis:materialish-progress:1.7'
+
+    // used in Group Select Avatar, should be unified with profile
+    implementation 'com.soundcloud.android:android-crop:0.9.10@aar' //1.0.1
+
+    // DEPRECATED! Used to slide in the half-camera
+    implementation 'com.nineoldandroids:library:2.4.0'
+
+    // Used to pick the time for inactivity
+    implementation 'mobi.upod:time-duration-picker:1.1.3'
+
+    // number of unread messages,
+    // the one-letter circle for the contacts (when there is no avatar) and a white background
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    // brings future java streams api to SDK Version < 24
+    implementation 'com.annimon:stream:1.1.8' //1.2.1
+
+    // glues the current time segment text in the gallery to the top
+    implementation 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6' //0.9.7
+
+    // for the zooming on photos / media
+    implementation('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0', { //3.10.0
         exclude group: 'com.android.support', module: 'support-annotations'
-    }
-    compile 'com.annimon:stream:1.1.8' // brings future java streams api to SDK Version < 24
-    compile 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.4' // glues the current time segment text in the gallery to the top.
+    })
 
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:1.7.1'
-    testCompile 'org.mockito:mockito-core:1.9.5'
-    testCompile 'org.powermock:powermock-api-mockito:1.6.1'
-    testCompile 'org.powermock:powermock-module-junit4:1.6.1'
-    testCompile 'org.powermock:powermock-module-junit4-rule:1.6.1'
-    testCompile 'org.powermock:powermock-classloading-xstream:1.6.1'
-
-    androidTestCompile ('org.assertj:assertj-core:1.7.1') {
+    /** Testing libraries */
+    testImplementation 'junit:junit:4.13-beta-2'
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+    testImplementation 'org.mockito:mockito-core:2.25.1'
+    testImplementation 'org.powermock:powermock-api-mockito2:2.0.0'
+    testImplementation 'org.powermock:powermock-classloading-xstream:2.0.0'
+    testImplementation 'org.powermock:powermock-module-junit4:2.0.0'
+    testImplementation 'org.powermock:powermock-module-junit4-rule:2.0.0'
+    androidTestImplementation('org.assertj:assertj-core:3.12.2', {
         exclude group: 'org.hamcrest', module: 'hamcrest-core'
-    }
+    })
 }
 
 dependencyVerification {
-    // used by the witness plugin to verifiy dependencies.
+    // used by the witness plugin to verify dependencies.
     // to update the list, call `./gradlew -q calculateChecksums` and paste the result here.
     verify = [
-        'com.android.support:design:fa5c27a705310e95a8f4099c98777132ed901a0d69178942306bb34cd76f0d57',
-        'com.android.support:preference-v14:1fcf40bd560dc21ce55b6a292d1326d28f52dc5e4f2a64eef2f38dd95777b645',
-        'com.android.support:preference-v7:d9f32ddc92f8d6a0bd86a18f4fcaff805fa021245e395b6e7dd382907443ee53',
-        'com.pnikosis:materialish-progress:d71d80e00717a096784482aee21001a9d299fec3833e4ebd87739ed36cf77c54',
-        'mobi.upod:time-duration-picker:db469ce0f48dd96b892eac424ed76870e54bf00fe0a28cdcddfbe5f2a226a0e1',
-        'com.codewaves.stickyheadergrid:stickyheadergrid:5b4aa6a52a957cfd55f60f4220c11c0c371385a3cb9786cae03c260dcdef5794',
-        'com.android.support:appcompat-v7:b2825e8b47f665d3362d8481c8d147d1af9230d16f23a2b94f6ccbc53c68cec1',
-        'com.android.support:support-v13:6f2848811ceef2e32cc98da02a045d65f7e7447a6bd7198b9ec10aa14d7ad55c',
-        'com.android.support:exifinterface:0e7cd526c4468895cd8549def46b3d33c8bcfb1ae4830569898d8c7326b15bb2',
-        'com.android.support.constraint:constraint-layout:839a7e16fc50adfabaa8cb753e675ed63f94e1e91ba9115ce43b0d6a37fe8aa6',
-        'android.arch.lifecycle:extensions:429426b2feec2245ffc5e75b3b5309bedb36159cf06dc71843ae43526ac289b6',
-        'android.arch.lifecycle:common-java8:7078b5c8ccb94203df9cc2a463c69cf0021596e6cf966d78fbfd697aaafe0630',
-        'com.google.android.exoplayer:exoplayer:955085aa611a8f7cf6c61b88ae03d1a392f4ad94c9bfbc153f3dedb9ffb14718',
-        'com.fasterxml.jackson.core:jackson-databind:0fb4e079c118e752cc94c15ad22e6782b0dfc5dc09145f4813fb39d82e686047',
-        'com.journeyapps:zxing-android-embedded:2422d83c2c09a7b645f516c8458ececba6a7da47b94e40778d876facf495c660',
-        'me.leolin:ShortcutBadger:e3cb3e7625892129b0c92dd5e4bc649faffdd526d5af26d9c45ee31ff8851774',
-        'com.jpardogo.materialtabstrip:library:c6ef812fba4f74be7dc4a905faa4c2908cba261a94c13d4f96d5e67e4aad4aaa',
-        'com.github.chrisbanes:PhotoView:7f12b0a9f24b132fc743861ab8f045625faa95c8357887a5fac58fa34a3759e4',
-        'com.github.bumptech.glide:glide:997de7ac95be6c944d3b8cbe13de11307736ea45451c1b09a6cec7c328ead59f',
-        'com.makeramen:roundedimageview:1f5a1865796b308c6cdd114acc6e78408b110f0a62fc63553278fbeacd489cd1',
-        'com.soundcloud.android:android-crop:ffd4b973cf6e97f7d64118a0dc088df50e9066fd5634fe6911dd0c0c5d346177',
-        'com.nineoldandroids:library:68025a14e3e7673d6ad2f95e4b46d78d7d068343aa99256b686fe59de1b3163a',
-        'com.amulyakhare:com.amulyakhare.textdrawable:54c92b5fba38cfd316a07e5a30528068f45ce8515a6890f1297df4c401af5dcb',
-        'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
-        'com.davemorrissey.labs:subsampling-scale-image-view:550c5baa07e0bb4ff0a18b705e96d34436d22619248bd8c08c08c730b1f55cfe',
-        'com.annimon:stream:5da6e2e3e0551d61a3ea7014f04312276549e3dd739cf637996e4cf43c5535b9',
-        'com.android.support:transition:1a7db0453c1467fc8fd815e6d50ca6bb475a7a9ba6b5f3b307329688a7c62a68',
-        'android.arch.lifecycle:livedata:50ab0490c1ff1a7cfb4e554032998b080888946d0dd424f39900efc4a1bcd750',
-        'android.arch.lifecycle:livedata-core:d6fdd8b985d6178d7ea2f16986a24e83f1bee936b74d43167c69e08d3cc12c50',
-        'android.arch.core:runtime:c3215aa5873311b3f88a6f4e4a3c25ad89971bc127de8c3e1291c57f93a05c39',
-        'com.android.support:support-v4:1b2b37169fcccfef5e563d273749e3792decdce9818bc17932403a2363f537b4',
-        'com.android.support:support-fragment:e4358388022a2205777575a7251fe357334658e4123d5d6e3b082f5899d9b011',
-        'com.android.support:animated-vector-drawable:5b117a2c13a898c2a3c84c480d64edcfac2ef720aa9b742c29249fac774ffc48',
-        'com.android.support:recyclerview-v7:3eb953930f10941f2b0447ec123a9b03d2746a42a99c523e82c3ece3308ca70b',
-        'com.android.support:support-core-ui:2284072511a95d504c074de80c82cd33724c6d2754117833b98ba3a09994163e',
-        'com.android.support:support-media-compat:6dd9327ee9aa467cab479aad97df375072b2b6ba61eadffdaa5a88de3843c457',
-        'com.android.support:support-core-utils:b69c6e1e7731b876b910fc7100bcadf40a57f27b32ca26b91400995542112c96',
-        'com.android.support:support-vector-drawable:bf4f4fcbf58b1380616581224e6487c230bfdb3434ec353d4adaa4b1f4865cfa',
-        'com.android.support:support-compat:ed4d25d91a0b13d8b9def1c0de69ed03d7fb89d50fb37eb0e9b63b0cf7a42357',
-        'android.arch.lifecycle:runtime:c4e4be66c1b2f0abec593571454e1de14013f7e0f96bf2a9f212931a48cae550',
-        'android.arch.core:common:3a616a32f433e9e23f556b38575c31b013613d3ae85206263b7625fe1f4c151a',
-        'android.arch.lifecycle:common:8d378e88ebd5189e09eef623414812c868fd90aa519d6160e2311fb8b81cff56',
-        'android.arch.lifecycle:viewmodel:7de29cfaba77d6b5d5be234c57f6812d0150d087e63941af22ba1d1f8e2bc96a',
-        'com.github.bumptech.glide:gifdecoder:59ccf3bb0cec11dab4b857382cbe0b171111b6fc62bf141adce4e1180889af15',
-        'com.android.support:support-annotations:af05330d997eb92a066534dbe0a3ea24347d26d7001221092113ae02a8f233da',
-        'com.android.support.constraint:constraint-layout-solver:55f82d93e188b5183b71f4f3bace5725c900b737c3514c841114e225627ff88f',
-        'com.fasterxml.jackson.core:jackson-annotations:45d32ac61ef8a744b464c54c2b3414be571016dd46bfc2bec226761cf7ae457a',
-        'com.fasterxml.jackson.core:jackson-core:a2bebaa325ad25455b02149c67e6052367a7d7fc1ce77de000eed284a5214eac',
-        'com.github.bumptech.glide:disklrucache:c1b1b6f5bbd01e2fcdc9d7f60913c8d338bdb65ed4a93bfa02b56f19daaade4b',
-        'com.github.bumptech.glide:annotations:bede99ef9f71517a4274bac18fd3e483e9f2b6108d7d6fe8f4949be4aa4d9512',
+            'com.android.support:design:7225973f7ee03765008a9c2f17a40b154c6885169fef022276e811c926a2202c',
+            'com.android.support:exifinterface:50fd0852cd075f9d3c35081cbc2525a9c9a152acb4b0e52d38f3f8597d8bdf50',
+            'com.android.support:support-v4:4f41dfc3e89f2738e45c86264a85c0934d055ee8ebe2020e23c97f303b80a48b',
+            'com.android.support:appcompat-v7:0c7808fbbc5838d831e32e3c0a6f84e1f2c981deb8f11e010650f2b57923a335',
+            'com.android.support:preference-v7:a1798a826b4097d00e49280f412b21af08f9bf1179c2e3838dc339d9f843416d',
+            'com.android.support:support-v13:ff403b1098e689e2cfb1d2e213feb0a735f14522adf36d28dccb840f09fbdcd8',
+            'com.android.support:preference-v14:dc058932e6fd93bf57d23fcc2f22351c21e5125e513721e4b0b03374341ad400',
+            'com.android.support:support-vector-drawable:1c0f421114cf4627cf208776d6eb4f76340c78b7e96fe6e12b3e6eb950caf1b9',
+            'com.android.support.constraint:constraint-layout:27b4e5c0b80d3ff8b92f4c93b3b4d3ecf16c01589f4cdf70ca7cf64cb42d8122',
+            'android.arch.lifecycle:common-java8:7078b5c8ccb94203df9cc2a463c69cf0021596e6cf966d78fbfd697aaafe0630',
+            'android.arch.lifecycle:extensions:429426b2feec2245ffc5e75b3b5309bedb36159cf06dc71843ae43526ac289b6',
+            'com.google.android.exoplayer:exoplayer:955085aa611a8f7cf6c61b88ae03d1a392f4ad94c9bfbc153f3dedb9ffb14718',
+            'com.fasterxml.jackson.core:jackson-databind:2351c3eba73a545db9079f5d6d768347ad72666537362c8220fe3e950a55a864',
+            'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
+            'com.journeyapps:zxing-android-embedded:2422d83c2c09a7b645f516c8458ececba6a7da47b94e40778d876facf495c660',
+            'me.leolin:ShortcutBadger:c6e58a7c0460e48f24627ea089a77f645f863f0aa12515d7c4057b9b6ee86118',
+            'com.jpardogo.materialtabstrip:library:c6ef812fba4f74be7dc4a905faa4c2908cba261a94c13d4f96d5e67e4aad4aaa',
+            'com.github.chrisbanes:PhotoView:04cb397fcb3df0757c8aed6927ebdd247930b5c78ee9acc59cd07dccdaaf3460',
+            'com.github.bumptech.glide:glide:997de7ac95be6c944d3b8cbe13de11307736ea45451c1b09a6cec7c328ead59f',
+            'com.github.bumptech.glide:compiler:5ba6d2cbd0bba1abf0d31b941afdd5269dcc80d0b8f0fc1c7d7b183beeecaaa8',
+            'com.makeramen:roundedimageview:02a1c43d51dd600775f5e0f43f698355183fba1626c0d8728c4a5e82fba7bf8d',
+            'com.pnikosis:materialish-progress:da089a90d1dab61e9b50038c09081019398f81190d12b0b567ce94b83ef8cf93',
+            'com.soundcloud.android:android-crop:ffd4b973cf6e97f7d64118a0dc088df50e9066fd5634fe6911dd0c0c5d346177',
+            'com.nineoldandroids:library:68025a14e3e7673d6ad2f95e4b46d78d7d068343aa99256b686fe59de1b3163a',
+            'mobi.upod:time-duration-picker:db469ce0f48dd96b892eac424ed76870e54bf00fe0a28cdcddfbe5f2a226a0e1',
+            'com.amulyakhare:com.amulyakhare.textdrawable:54c92b5fba38cfd316a07e5a30528068f45ce8515a6890f1297df4c401af5dcb',
+            'com.annimon:stream:5da6e2e3e0551d61a3ea7014f04312276549e3dd739cf637996e4cf43c5535b9',
+            'com.codewaves.stickyheadergrid:stickyheadergrid:f91a3d814cb1915ae03ea0b5bd3bd059158313ff38b89b9abd88ef2367ba1c67',
+            'com.davemorrissey.labs:subsampling-scale-image-view:550c5baa07e0bb4ff0a18b705e96d34436d22619248bd8c08c08c730b1f55cfe',
     ]
 }
 
 
 android {
-    flavorDimensions "none"
     compileSdkVersion 27
-    buildToolsVersion '27.0.1'
-    useLibrary 'org.apache.http.legacy'
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        versionCode 540
-        versionName "0.200.0"
-
         applicationId "com.b44t.messenger"
-
         minSdkVersion 14
         targetSdkVersion 26
+
+        versionCode 540
+        versionName "0.200.0"
 
         vectorDrawables.useSupportLibrary = true
 
         // base name of the generated apk
-        project.ext.set("archivesBaseName", "deltachat");
+        project.ext.set("archivesBaseName", "deltachat")
 
         buildConfigField "boolean", "DEV_BUILD", "false"
 
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86"
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    packagingOptions {
-        exclude 'LICENSE.txt'
-        exclude 'LICENSE'
-        exclude 'NOTICE'
-        exclude 'asm-license.txt'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
-        doNotStrip '*/mips/*.so'
-        doNotStrip '*/mips64/*.so'
-    }
-
-    signingConfigs {
-        signingConfigs {
-            debug {
-                // add `DC_DEBUG_STORE_FILE=/path/to/debug.keystore` to `~/.gradle/gradle.properties`
-                if(project.hasProperty("DC_DEBUG_STORE_FILE" )) {
-                    storeFile file(DC_DEBUG_STORE_FILE )
-                }
-            }
-            release {
-                // can be defined at `~/.gradle/gradle.properties` or at "Build/Generate signed APK"
-                if(project.hasProperty("DC_RELEASE_STORE_FILE")) {
-                    storeFile file(DC_RELEASE_STORE_FILE)
-                    storePassword DC_RELEASE_STORE_PASSWORD
-                    keyAlias DC_RELEASE_KEY_ALIAS
-                    keyPassword DC_RELEASE_KEY_PASSWORD
-                }
-            }
-        }
-        release
-    }
-
-    buildTypes {
-        debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                          'proguard-jackson.pro',
-                          'proguard-appcompat-v7.pro',
-                          'proguard-rounded-image-view.pro',
-                          'proguard-glide.pro',
-                          'proguard-shortcutbadger.pro',
-                          'proguard-retrofit.pro',
-                          'proguard-retrolambda.pro',
-                          'proguard.cfg'
-            testProguardFiles 'proguard-automation.pro',
-                          'proguard.cfg'
-            applicationIdSuffix ".beta"
-        }
-        release {
-            minifyEnabled true
-            proguardFiles = buildTypes.debug.proguardFiles
-            signingConfig signingConfigs.release
-        }
-    }
-
-    productFlavors {
-        fat {
-            dimension "none"
-        }
-        gplay {
-            dimension "none"
-            applicationId "chat.delta"
-        }
-    }
-
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = outputFileName.replace(".apk", "-${variant.versionName}.apk")
         }
     }
 
@@ -252,7 +189,87 @@ android {
         }
     }
 
-     lintOptions {
+    signingConfigs {
+        signingConfigs {
+            debug {
+                // add `DC_DEBUG_STORE_FILE=/path/to/debug.keystore` to `~/.gradle/gradle.properties`
+                if (project.hasProperty("DC_DEBUG_STORE_FILE")) {
+                    storeFile file(DC_DEBUG_STORE_FILE)
+                }
+            }
+            release {
+                // can be defined at `~/.gradle/gradle.properties` or at "Build/Generate signed APK"
+                if (project.hasProperty("DC_RELEASE_STORE_FILE")) {
+                    storeFile file(DC_RELEASE_STORE_FILE)
+                    storePassword DC_RELEASE_STORE_PASSWORD
+                    keyAlias DC_RELEASE_KEY_ALIAS
+                    keyPassword DC_RELEASE_KEY_PASSWORD
+                }
+            }
+        }
+        release
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard/proguard-appcompat-v7.pro',
+                    'proguard/proguard-glide.pro',
+                    'proguard/proguard-jackson.pro',
+                    'proguard/proguard-retrofit.pro',
+                    'proguard/proguard-retrolambda.pro',
+                    'proguard/proguard-rounded-image-view.pro',
+                    'proguard/proguard-shortcutbadger.pro',
+                    'proguard/proguard.cfg'
+            testProguardFiles 'proguard/proguard-automation.pro',
+                    'proguard/proguard.cfg'
+            applicationIdSuffix ".debug"
+        }
+        release {
+            minifyEnabled true
+            proguardFiles = buildTypes.debug.proguardFiles
+            signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions "none"
+    productFlavors {
+        fat {
+            dimension "none"
+        }
+        gplay {
+            dimension "none"
+            applicationId "chat.delta"
+        }
+    }
+
+    applicationVariants.all { variant ->
+        outputs.all {
+            outputFileName = outputFileName.replace(".apk", "-${variant.versionName}.apk")
+        }
+    }
+
+    compileOptions {
+        encoding = 'UTF-8'
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning', 'MissingTranslation'
         abortOnError false
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'LICENSE'
+        exclude 'NOTICE'
+        exclude 'asm-license.txt'
+        exclude 'META-INF/*'
+        doNotStrip '*/mips/*.so'
+        doNotStrip '*/mips64/*.so'
+    }
+
+    useLibrary 'org.apache.http.legacy'
 }
