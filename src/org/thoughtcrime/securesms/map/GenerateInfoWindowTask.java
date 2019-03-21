@@ -18,9 +18,9 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -80,7 +80,7 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
                 int messageId = (int) feature.getNumberProperty(MESSAGE_ID);
                 String msgText;
                 if (messageId != 0) {
-                    DcContext dcContext =  ApplicationContext.getInstance(callbackRef.get().getContext()).dcContext;
+                    DcContext dcContext =  DcHelper.getContext(callbackRef.get().getContext());
                     DcMsg msg = dcContext.getMsg(messageId);
                     if (hasImgThumbnail(msg)) {
                         ImageView thumbnailView = bubbleLayout.findViewById(R.id.map_bubble_img_thumbnail);

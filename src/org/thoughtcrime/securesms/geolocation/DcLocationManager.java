@@ -8,7 +8,9 @@ import android.location.Location;
 import android.os.IBinder;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.ApplicationContext;
+import com.b44t.messenger.DcChatlist;
+
+import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.util.LinkedList;
 import java.util.Observable;
@@ -45,6 +47,13 @@ public class DcLocationManager implements Observer {
     public DcLocationManager(Context context) {
         this.context = context.getApplicationContext();
         DcLocation.getInstance().addObserver(this);
+        DcChatlist chats = DcHelper.getContext(context).getChatlist(0, null, 0);
+        for (int i = 0; i < chats.getCnt(); i++) {
+            if (DcHelper.getContext(context).isSendingLocationsToChat(chats.getChat(0).getId())) {
+                initializeLocationEngine();
+                return;
+            }
+        }
     }
 
 
@@ -67,13 +76,13 @@ public class DcLocationManager implements Observer {
     }
 
     public void stopSharingLocation(int chatId) {
-        ApplicationContext.getInstance(context).dcContext.sendLocationsToChat(chatId, 0);
+        DcHelper.getContext(context).sendLocationsToChat(chatId, 0);
     }
 
     public void shareLocation(int duration, int chatId) {
         startLocationEngine();
         Log.d(TAG, String.format("Share location in chat %d for %d seconds", chatId, duration));
-        ApplicationContext.getInstance(context).dcContext.sendLocationsToChat(chatId, duration);
+        DcHelper.getContext(context).sendLocationsToChat(chatId, duration);
     }
 
     public void shareLastLocation(int chatId) {
@@ -84,15 +93,13 @@ public class DcLocationManager implements Observer {
         }
 
         if (dcLocation.isValid()) {
-            Location location = dcLocation.getLastLocation();
-            Log.d(TAG, "share lastLocation: " + location.getLatitude() + ", " + location.getLongitude());
-            ApplicationContext.getInstance(context).dcContext.sendLocationsToChat(chatId, 1);
-            ApplicationContext.getInstance(context).dcContext.setLocation((float) location.getLatitude(), (float) location.getLongitude(), location.getAccuracy());
+            DcHelper.getContext(context).sendLocationsToChat(chatId, 1);
+            writeDcLocationUpdateMessage();
         }
     }
 
     public void deleteAllLocations() {
-        ApplicationContext.getInstance(context).dcContext.deleteAllLocations();
+        DcHelper.getContext(context).deleteAllLocations();
     }
 
     @Override
@@ -109,7 +116,7 @@ public class DcLocationManager implements Observer {
         Log.d(TAG, "Share location: " + dcLocation.getLastLocation().getLatitude() + ", " + dcLocation.getLastLocation().getLongitude());
         Location lastLocation = dcLocation.getLastLocation();
 
-        boolean continueLocationStreaming = ApplicationContext.getInstance(context).dcContext.setLocation((float) lastLocation.getLatitude(), (float) lastLocation.getLongitude(), lastLocation.getAccuracy());
+        boolean continueLocationStreaming = DcHelper.getContext(context).setLocation((float) lastLocation.getLatitude(), (float) lastLocation.getLongitude(), lastLocation.getAccuracy());
         if (!continueLocationStreaming) {
             stopLocationEngine();
         }
