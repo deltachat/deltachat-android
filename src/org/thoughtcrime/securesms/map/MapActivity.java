@@ -3,22 +3,24 @@ package org.thoughtcrime.securesms.map;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.maps.MapView;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BaseActivity;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.geolocation.DcLocation;
 
 import java.util.List;
@@ -32,8 +34,8 @@ public class MapActivity extends BaseActivity implements Observer {
 
     public static final String TAG = MapActivity.class.getSimpleName();
     public static final String CHAT_ID = "chat_id";
+    public static final String MAP_TAG = "org.thoughtcrime.securesms.map";
 
-    private MapView mapView;
     private DcLocation dcLocation;
     private MapDataManager mapDataManager;
 
@@ -48,9 +50,20 @@ public class MapActivity extends BaseActivity implements Observer {
             return;
         }
 
-        mapView = findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
+        dcLocation = DcLocation.getInstance();
+
+        SupportMapFragment mapFragment;
+        if (savedInstanceState == null) {
+            final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            mapFragment = SupportMapFragment.newInstance();
+            transaction.add(R.id.container, mapFragment, MAP_TAG);
+            transaction.commit();
+        } else {
+            mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
+        }
+
+        mapFragment.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
+
             mapboxMap.setCameraPosition(new CameraPosition.Builder()
                     .target(new LatLng(dcLocation.getLastLocation().getLatitude(), dcLocation.getLastLocation().getLongitude()))
                     .zoom(9)
@@ -94,7 +107,7 @@ public class MapActivity extends BaseActivity implements Observer {
                     if (feature.hasProperty(MARKER_SELECTED) && feature.getBooleanProperty(MARKER_SELECTED))  {
                         int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
 
-                        int msgs[] = ApplicationContext.getInstance(this).dcContext.getChatMsgs(chatId, 0, 0);
+                        int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(chatId, 0, 0);
                         int startingPosition = -1;
                         for(int i=0; i< msgs.length; i++ ) {
                             if(msgs[i] == messageId) {
@@ -103,13 +116,13 @@ public class MapActivity extends BaseActivity implements Observer {
                             }
                         }
 
-                        Intent intent = new Intent(this, ConversationActivity.class);
+                        Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
                         intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
                         intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
                         intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
                         startActivity(intent);
+                        return true;
                     }
-                    return true;
                 }
                 return false;
             });
@@ -128,19 +141,11 @@ public class MapActivity extends BaseActivity implements Observer {
             }
         }));
 
-        dcLocation = DcLocation.getInstance();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mapView.onStart();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mapView.onResume();
         DcLocation.getInstance().addObserver(this);
         if (mapDataManager != null) {
             mapDataManager.onResume();
@@ -150,29 +155,10 @@ public class MapActivity extends BaseActivity implements Observer {
     @Override
     protected void onPause() {
         super.onPause();
-        mapView.onPause();
         DcLocation.getInstance().deleteObserver(this);
         if (mapDataManager != null) {
             mapDataManager.onPause();
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapView.onSaveInstanceState(outState);
     }
 
     @Override
