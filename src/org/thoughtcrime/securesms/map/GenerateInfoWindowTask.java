@@ -109,7 +109,7 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
                 imagesMap.put(id, bitmap);
 
                 if (i % 10 == 0) {
-                    publishProgress(imagesMap);
+                    publishProgress(new HashMap<>(imagesMap));
                     imagesMap.clear();
                 }
             }

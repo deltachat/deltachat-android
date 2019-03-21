@@ -46,7 +46,6 @@ import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.switchCase;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.toBool;
-import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ANCHOR_BOTTOM;
 import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ANCHOR_BOTTOM_LEFT;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAnchor;
@@ -60,6 +59,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconSize;
 
 public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateInfoWindowCallback {
     public static final String MARKER_SELECTED = "MARKER_SELECTED";
+    public static final String LAST_LOCATION = "LAST_LOCATION";
     public static final String CONTACT_ID = "CONTACT_ID";
     public static final String INFO_WINDOW_ID = "INFO_WINDOW_ID";
     public static final String TIMESTAMP = "TIMESTAMP";
@@ -208,8 +208,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             coordinateList.add(p);
             Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), contactId + "_" + i);
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
+            pointFeature.addBooleanProperty(LAST_LOCATION, false);
             pointFeature.addNumberProperty(CONTACT_ID, contactId);
-            pointFeature.addStringProperty(INFO_WINDOW_ID, contactId + "_info_" + (count-i));
+            pointFeature.addStringProperty(INFO_WINDOW_ID, contactId + "_info_" + (count - 1 - i));
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
@@ -217,6 +218,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             if (boundingBuilder != null) {
                 boundingBuilder.include(new LatLng(locations.getLatitude(i), locations.getLongitude(i)));
             }
+        }
+
+        if (pointFeatureList.size() > 0) {
+            pointFeatureList.get(0).addBooleanProperty(LAST_LOCATION, true);
         }
 
         FeatureCollection pointFeatureCollection = FeatureCollection.fromFeatures(pointFeatureList);
@@ -228,8 +233,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         lineSource.setGeoJson(lineFeatureCollection);
         GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getMarkerSource());
         pointSource.setGeoJson(pointFeatureCollection);
-        GeoJsonSource lastPostionSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getLastPositionSource());
-        lastPostionSource.setGeoJson(pointFeatureList.get(0));
         featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), pointFeatureList);
     }
 
@@ -262,12 +265,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private void initGeoJsonSources(MapSource source) {
-        GeoJsonSource lastPositionSource = new GeoJsonSource(source.getLastPositionSource());
         GeoJsonSource markerPositionSource = new GeoJsonSource(source.getMarkerSource());
         GeoJsonSource linePositionSource = new GeoJsonSource(source.getLineSource());
 
         try {
-            mapboxStyle.addSource(lastPositionSource);
             mapboxStyle.addSource(markerPositionSource);
             mapboxStyle.addSource(linePositionSource);
         } catch (RuntimeException e) {
@@ -283,17 +284,14 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         mapboxStyle.addImage(source.getMarkerIcon(),
                 generateColoredLocationIcon(source.getColorArgb()));
 
-        Expression markerSizeExpression = switchCase(toBool(get(MARKER_SELECTED)), literal(1.5f), literal(1.0f));
+        Expression markerSize = switchCase(toBool(get(MARKER_SELECTED)), literal(1.5f), literal(1.0f));
+        Expression markerIcon = switchCase(toBool(get(LAST_LOCATION)), literal(source.getMarkerLastPositon()), literal(source.getMarkerIcon()));
+        Expression allowOverlap = eq(get(LAST_LOCATION), literal(true));
         mapboxStyle.addLayer(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
                 .withProperties(
-                        iconImage(source.getMarkerIcon()),
-                        iconSize(markerSizeExpression))
-                );
-        mapboxStyle.addLayer(new SymbolLayer(source.getLastPositionLayer(), source.getLastPositionSource())
-                .withProperties(
-                        iconImage(source.getMarkerLastPositon()),
-                        iconAnchor(ICON_ANCHOR_BOTTOM),
-                        iconSize(markerSizeExpression))
+                        iconImage(markerIcon),
+                        iconSize(markerSize),
+                        iconAllowOverlap(allowOverlap))
                 );
 
         mapboxStyle.addLayer(new LineLayer(source.getLineLayer(), source.getLineSource())
@@ -302,7 +300,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                         PropertyFactory.lineWidth(3f),
                         PropertyFactory.lineColor(source.getColorArgb())));
 
-        Expression filterInfoWindowExpression = eq((get(MARKER_SELECTED)), literal(true));
+        Expression filterInfoWindow = eq((get(MARKER_SELECTED)), literal(true));
+        Expression iconOffset = switchCase(toBool(get(LAST_LOCATION)), literal(new Float[] {-2f, -25f}), literal(new Float[] {-2f, -15f}));
         mapboxStyle.addLayer(new SymbolLayer(source.getInfoWindowLayer(), source.getMarkerSource()).
                 withProperties(
                         iconImage("{"+INFO_WINDOW_ID+"}"),
@@ -310,8 +309,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                          /* all info window and marker image to appear at the same time*/
                         iconAllowOverlap(true),
                         /* offset the info window to be above the marker */
-                        iconOffset(new Float[] {-2f, -15f})
-                ).withFilter(filterInfoWindowExpression));
+                        iconOffset(iconOffset)
+                ).withFilter(filterInfoWindow));
     }
 
     @Override
@@ -331,12 +330,11 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
 
     public String[] getMarkerLayers() {
-        String markerLayers[] = new String[contactMapSources.size()*2];
+        String markerLayers[] = new String[contactMapSources.size()];
         int i = 0;
         for (Map.Entry<Integer, MapSource> entry : contactMapSources.entrySet()) {
             markerLayers[i] = entry.getValue().getMarkerLayer();
-            markerLayers[i+1] = entry.getValue().getLastPositionLayer();
-            i += 2;
+            i += 1;
         }
 
         return markerLayers;
