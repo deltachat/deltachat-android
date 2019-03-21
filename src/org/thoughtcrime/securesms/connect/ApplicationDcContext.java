@@ -565,7 +565,8 @@ public class ApplicationDcContext extends DcContext {
           toastString = context.getString(R.string.group_self_not_in_group);
         }
 
-        if (ForegroundDetector.getInstance().isForeground()) {
+        ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
+        if (foregroundDetector==null || foregroundDetector.isForeground()) {
           Toast.makeText(context, toastString, Toast.LENGTH_LONG).show();
         }
       }
