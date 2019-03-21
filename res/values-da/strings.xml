@@ -206,6 +206,7 @@
     <string name="chat_archived_label">Arkiveret</string>
     <string name="chat_no_messages">Ingen beskeder</string>
     <string name="chat_self_talk_subtitle">Beskeder sendt til undertegnede</string>
+    <string name="chat_contact_request">Kontakt anmodning</string>
     <!-- search -->
     <string name="search">Søge</string>
     <string name="search_explain">Søge efter samtaler, kontakter og beskeder</string>
@@ -257,6 +258,7 @@
     <string name="login_title">Logind</string>
     <string name="login_header">Logind til server</string>
     <string name="login_subheader">For kendte e-post udbydere opsættes yderligere indstillinger automatisk. Nogle gange skal IMAP aktiveres i brugerfladen. Kontakt din e-post udbyder eller venner for at få hjælp.</string>
+    <string name="login_no_servers_hint">Der er ingen Delta Chat server, data forbliver på enhed!</string>
     <string name="login_inbox">Indbakke</string>
     <string name="login_imap_login">IMAP logind navn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -373,6 +375,13 @@
     <string name="pref_watch_mvbox_folder">Overvåge DeltaChat mappe</string>
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>
     <string name="pref_auto_folder_moves_explain">Samtaler er flyttet for at undgå rodet indbakke mappe</string>
+    <string name="pref_email_interaction_title">E-post interaktion</string>
+    <string name="pref_show_emails">Vis klassisk e-post</string>
+    <string name="pref_show_emails_no">Nej, kun samtaler</string>
+    <string name="pref_show_emails_accepted_contacts">For godkendte kontakter</string>
+    <string name="pref_show_emails_all">Alle</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_send_asm_title">Sende Autocrypt opsætning besked</string>

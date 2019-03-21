@@ -185,6 +185,11 @@ public class ContactSelectionListFragment extends    Fragment
 
   private void handleSelectAll() {
     getContactSelectionListAdapter().selectAll();
+    updateActionModeTitle();
+  }
+
+  private void updateActionModeTitle() {
+    actionMode.setTitle(String.valueOf(getContactSelectionListAdapter().getActionModeSelection().size()));
   }
 
   private void handleDeleteSelected() {
@@ -341,7 +346,7 @@ public class ContactSelectionListFragment extends    Fragment
     {
       if (handleActionMode) {
         if (actionMode != null) {
-          actionMode.setTitle(String.valueOf(getContactSelectionListAdapter().getActionModeSelection().size()));
+          updateActionModeTitle();
           finishActionModeIfSelectionIsEmpty();
         }
         return;

@@ -58,6 +58,25 @@
         <item quantity="many">%d чатів</item>
         <item quantity="other">%d чатів</item>
     </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d контакт</item>
+        <item quantity="few">%d контакти</item>
+        <item quantity="many">%d контактів</item>
+        <item quantity="other">%d контактів</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d повідомлення</item>
+        <item quantity="few">%d повідомлення</item>
+        <item quantity="many">%d повідомлень</item>
+        <item quantity="other">%d повідомлень</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d учасник</item>
+        <item quantity="few">%d учасники</item>
+        <item quantity="many">%d учасників</item>
+        <item quantity="other">%d учасників</item>
+    </plurals>
+
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>
@@ -146,6 +165,18 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ви впевнені, що хочете залишити цю групу?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Видалити %d чат? Він більше не буде відображатися у списку чатів, його повідомлення залишаться на сервері.</item>
+        <item quantity="few">Видалити %d чати? Вони більше не будуть відображатися у списку чатів, їх повідомлення залишаться на сервері.</item>
+        <item quantity="many">Видалити %d чатів? Вони більше не будуть відображатися у списку чатів, їх повідомлення залишаться на сервері.</item>
+        <item quantity="other">Видалити %d чатів? Вони більше не будуть відображатися у списку чатів, їх повідомлення залишаться на сервері.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Видалити %d повідомлення тут і на сервері?</item>
+        <item quantity="few">Видалити %d повідомлення тут і на сервері?</item>
+        <item quantity="many">Видалити %d повідомлень тут і на сервері?</item>
+        <item quantity="other">Видалити %d повідомлень тут і на сервері?</item>
+    </plurals>
     <string name="ask_forward">Переслати повідомлення %1$s?</string>
     <string name="ask_export_attachment">Експортувати вкладення? Експорт вкладень дозволить будь-якому іншому додатку на Вашому пристрої отримати до них доступ.\n\nПродовжити?</string>
     <string name="ask_block_contact">Заблокувати цей контакт? Ви більше не будете отримувати від нього повідомлення.</string>
@@ -162,6 +193,19 @@
     <string name="contacts_empty_hint">Немає контактів.</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d чат заархівовано</item>
+        <item quantity="few">%d чати заархівовано</item>
+        <item quantity="many">%d чатів заархівовано</item>
+        <item quantity="other">%d чатів заархівовано</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d чат розпаковано</item>
+        <item quantity="few">%d чати розпаковано</item>
+        <item quantity="many">%d чатів розпаковано</item>
+        <item quantity="other">%d чатів розпаковано</item>
+    </plurals>
     <string name="chat_archived_chats_title">Заархівовані чати</string>
     <string name="chat_please_enter_message">Будь ласка, введіть повідомлення.</string>
     <string name="chat_camera_unavailable">Камера недоступна.</string>
@@ -184,6 +228,9 @@
     <string name="chat_archived_label">Заархівовано</string>
     <string name="chat_no_messages">Немає повідомлень.</string>
     <string name="chat_self_talk_subtitle">Повідомлення, відправлені самому собі</string>
+    <string name="chat_contact_request">Запит контакту</string>
+    <string name="chat_no_contact_requests">Немає запитів контактів.\n\nЯкщо Ви бажаєте, щоб звичайна пошта з\'являлася тут як запити контактів, Ви можете змінити відповідний параметр у налаштуваннях додатку.</string>
+
     <!-- search -->
     <string name="search">Пошук</string>
     <string name="search_explain">Пошук чатів, контактів і повідомлень</string>
@@ -235,6 +282,7 @@
     <string name="login_title">Увійти</string>
     <string name="login_header">Увійти на свій сервер</string>
     <string name="login_subheader">Для відомих провайдерів електронної пошти додаткові налаштування встановлюються автоматично. Іноді IMAP потрібен дозвіл в веб-інтерфейсі. Проконсультуйтеся з Вашим провайдером електронної пошти або друзями для отримання допомоги.</string>
+    <string name="login_no_servers_hint">У Delta Chat немає серверів, Ваші дані залишаються на Вашому пристрої!</string>
     <string name="login_inbox">Вхідні</string>
     <string name="login_imap_login">IMAP-логін</string>
     <string name="login_imap_server">IMAP-сервер</string>
@@ -247,6 +295,8 @@
     <string name="login_smtp_port">SMTP-порт</string>
     <string name="login_smtp_security">Налаштування безпеки SMTP</string>
     <string name="login_auth_method">Метод авторизації</string>
+    <string name="login_info_oauth2_title">Продовжити спрощене налаштування?</string>
+    <string name="login_info_oauth2_text">Введена адреса електронної пошти підтримує спрощене налаштування (OAuth2).\n\nНа наступному кроці дозвольте, будь ласка, Delta Chat виступати у якості Вашого додатку для чату за допомогою електронної пошти.\n\nУ Delta Chat немає серверів, Ваші дані залишаються на Вашому пристрої!</string>
     <string name="login_info_gmail_text">Якщо Ви користуєтеся GMail і у вас увімкнена двофакторна аутентифікація, Вам потрібно створити спеціальний пароль для додатків - App-Password. Якщо ці налаштування недоступні, Вам потрібно активувати параметр Less Secure Apps.</string>
     <string name="login_error_mail">Вкажіть дійсну адресу електронної пошти</string>
     <string name="login_error_server">Вкажіть дійсний сервер / IP-адресу</string>
@@ -273,7 +323,7 @@
     <string name="pref_summary_custom">персоналізовано</string>
     <string name="pref_using_custom">Використовувати персоналізовано: %s</string>
     <string name="pref_using_default">Використовувати за замовчуванням: %s</string>
-    <string name="pref_profile_info_headline">Інформація Вашого профілю</string>
+    <string name="pref_profile_info_headline">Ваш профіль</string>
     <string name="pref_profile_photo">Фото профілю</string>
     <string name="pref_trim_headline">Очищення повідомлень</string>
     <string name="pref_trim_option">Видалити старі повідомлення</string>
@@ -314,8 +364,8 @@
     <string name="pref_privacy">Конфіденційність</string>
     <string name="pref_chats_and_media">Чати і медіа</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
-    <string name="pref_light_theme">Світлий</string>
-    <string name="pref_dark_theme">Темний</string>
+    <string name="pref_light_theme">Світла</string>
+    <string name="pref_dark_theme">Темна</string>
     <string name="pref_appearance">Зовнішній вигляд</string>
     <string name="pref_theme">Тема</string>
     <string name="pref_language">Мова</string>
@@ -356,6 +406,13 @@
     <string name="pref_watch_mvbox_folder">Стежити за папкою DeltaChat</string>
     <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Чати були переміщені, щоб уникнути плутанини у папці «Вхідні».</string>
+    <string name="pref_email_interaction_title">Взаємодія з електронною поштою</string>
+    <string name="pref_show_emails">Показувати звичайну пошту</string>
+    <string name="pref_show_emails_no">Ні, лише чати</string>
+    <string name="pref_show_emails_accepted_contacts">Для прийнятих контактів</string>
+    <string name="pref_show_emails_all">Всі</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Автошифрування</string>
     <string name="autocrypt_explain">Autocrypt – новий і відкритий протокол встановлення наскрізного шифрування для електронної пошти.\n\nНеобхідні параметри шифрування призначаються автоматично і їх можна передавати між своїми пристроями, використовуючи повідомлення з параметрами Autocrypt.</string>
@@ -392,6 +449,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Блокування екрану</string>
+    <string name="screenlock_explain">Блокування доступу за допомогою блокування екрану Android або відбитків пальців; щоб уникнути появи попереднього вмісту, будь ласка, увімкнить «Безпека екрану».</string>
     <string name="screenlock_authentication_failed">Не вдалося здійснити аутентифікацію.</string>
     <string name="screenlock_unlock_title">Розблокувати Delta Chat</string>
     <string name="screenlock_unlock_description">Введіть захисний код, щоб розблокувати Delta Chat.</string>
@@ -457,6 +515,9 @@
     <string name="perm_explain_access_to_mic_denied">Для надсилання голосових повідомлень додатку потрібен дозвіл на використання мікрофону, але зараз його не надано. Для надання дозволу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до мікрофону.</string>
     <string name="perm_explain_access_to_storage_denied">Для збереження або передавання фотографій та відео додатку потрібен дозвіл на використання сховища, але зараз його не надано. Для надання дозволу перейдіть в системне меню налаштувань, в розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до сховища.</string>
     <string name="perm_explain_access_to_location_denied">Щоб передати місцезнаходження, додатку потрібен доступ до геоданих пристрою, але зараз його не надано. Для надання доступу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat, виберіть пункт «Права доступу» і дозвольте доступ до місцезнаходження пристрою.</string>
+    <string name="perm_enable_bg_reminder_title">Натисніть тут, щоб отримувати повідомлення, коли Delta Chat знаходиться у фоновому режимі.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat використовує мінімальні ресурси і дбає про те, щоб не розрядити батарею.</string>
+
     <!-- languages -->
     <string name="language_be">Бельгійська</string>
     <string name="language_ca">Каталонська</string>

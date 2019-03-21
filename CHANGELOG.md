@@ -1,5 +1,28 @@
 # Delta Chat Android Changelog
 
+## v0.200.0
+2019-03-14
+
+* Simplified setup (OAuth2) for google.com and yandex.com
+* Improved setup for many other providers
+* Decide, which e-mails should appear - "Chats only", "Accepted contacts" or "All"
+* Improve moving chat messages to the DeltaChat folder
+* Optional a stronger image compression
+* Smaller message sizes in groups
+* Share files from other apps to Delta Chat
+* Share texts from mailto:-links
+* Log can be opened from setup screen
+* Add Lithuanian translation
+* Update several other translations
+* Bug fixes
+
+The changes have been done by Alexandex, Angelo Fuchs, Asiel Díaz Benítez,
+Björn Petersen, Besnik, Christian Klump, cyBerta, Daniel Böhrs, Enrico B.,
+ferhad.necef, Florian Haar, Floris Bruynooghe, Friedel Ziegelmayer,
+Heimen Stoffels, Holger Krekel, Iskatel Istiny, Lech Rowerski, Moo,
+Ole Carlsen, violoncelloCH and others
+
+
 ## v0.101.0
 2019-02-12
 

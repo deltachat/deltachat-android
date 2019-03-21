@@ -206,6 +206,9 @@
     <string name="chat_archived_label">Gearchiveerd</string>
     <string name="chat_no_messages">Geen berichten.</string>
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
+    <string name="chat_contact_request">Contactpersoonverzoek</string>
+    <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnen in de vorm van contactpersoonverzoeken, wijzig dit dan in de app-instellingen.</string>
+
     <!-- search -->
     <string name="search">Zoeken</string>
     <string name="search_explain">Zoek naar gesprekken, contactpersonen en berichten</string>
@@ -257,6 +260,7 @@
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>
     <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je IMAP inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
+    <string name="login_no_servers_hint">Er is geen Delta Chat-server; jouw gegevens blijven op jouw apparaat.</string>
     <string name="login_inbox">Postvak IN</string>
     <string name="login_imap_login">IMAP-inlognaam</string>
     <string name="login_imap_server">IMAP-server</string>
@@ -270,6 +274,7 @@
     <string name="login_smtp_security">SMTP-beveiliging</string>
     <string name="login_auth_method">Autorisatiemethode</string>
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
+    <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen servers; jouw gegevens blijven op jouw apparaat!</string>
     <string name="login_info_gmail_text">Bij Gmail-accounts moet je een app-wachtwoord creëren als je authenticatie in twee stappen hebt ingeschakeld. Als dit niet beschikbaar is, schakel dan \'Minder veilige apps\' in.</string>
     <string name="login_error_mail">Voer een geldig e-mailadres in</string>
     <string name="login_error_server">Voer een geldig(e) IP-adres/server in</string>
@@ -379,6 +384,13 @@
     <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je Postvak IN netjes te houden</string>
+    <string name="pref_email_interaction_title">E-mailinteractie</string>
+    <string name="pref_show_emails">Klassie e-mails tonen</string>
+    <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
+    <string name="pref_show_emails_accepted_contacts">Voor geaccepteerde contactpersonen</string>
+    <string name="pref_show_emails_all">Alles</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt is een nieuwe, open specificatie voor het automatisch instellen van end-to-end e-mailversleuteling.\n\nJe instellingen worden, indien nodig, automatisch gecreëerd en kunnen worden overgezet naar andere apparaten middels instelberichten.</string>
