@@ -734,6 +734,96 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_addAddressBook(JNIEnv *env, job
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_sendLocationsToChat(JNIEnv *env, jobject obj, jint chat_id, jint seconds)
+{
+	dc_send_locations_to_chat(get_dc_context(env, obj), chat_id, seconds);
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isSendingLocationsToChat(JNIEnv *env, jobject obj, jint chat_id)
+{
+	return (dc_is_sending_locations_to_chat(get_dc_context(env, obj), chat_id)!=0);
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jobject obj, jfloat latitude, jfloat longitude, jfloat accuracy)
+{
+	return (dc_set_location(get_dc_context(env, obj), latitude, longitude, accuracy)!=0);
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getLocationsCPtr(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
+{
+	return (jlong)dc_get_locations(get_dc_context(env, obj), chat_id, contact_id);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteAllLocations(JNIEnv *env, jobject obj)
+{
+	dc_delete_all_locations(get_dc_context(env, obj));
+}
+
+
+/*******************************************************************************
+ * DcArray
+ ******************************************************************************/
+
+
+static dc_array_t* get_dc_array(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if (fid==0) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "arrayCPtr", "J" /*Signature, J=long*/);
+	}
+	if (fid) {
+		return (dc_array_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcArray_unrefArrayCPtr(JNIEnv *env, jobject obj)
+{
+	dc_array_unref(get_dc_array(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcArray_getCnt(JNIEnv *env, jobject obj)
+{
+	return dc_array_get_cnt(get_dc_array(env, obj));
+}
+
+
+JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getLatitude(JNIEnv *env, jobject obj, jint index)
+{
+	return (jfloat)dc_array_get_latitude(get_dc_array(env, obj), index);
+}
+
+
+JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getLongitude(JNIEnv *env, jobject obj, jint index)
+{
+	return (jfloat)dc_array_get_longitude(get_dc_array(env, obj), index);
+}
+
+
+JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getAccuracy(JNIEnv *env, jobject obj, jint index)
+{
+	return (jfloat)dc_array_get_accuracy(get_dc_array(env, obj), index);
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcArray_getTimestamp(JNIEnv *env, jobject obj, jint index)
+{
+	return JTIMESTAMP(dc_array_get_timestamp(get_dc_array(env, obj), index));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcArray_getMsgId(JNIEnv *env, jobject obj, jint index)
+{
+	return dc_array_get_msg_id(get_dc_array(env, obj), index);
+}
+
 
 /*******************************************************************************
  * DcChatlist

@@ -37,14 +37,17 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.ShareLocationDialog;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
+import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
@@ -54,8 +57,8 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture.Listener;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
-import org.thoughtcrime.securesms.util.views.Stub;
 import org.thoughtcrime.securesms.util.guava.Optional;
+import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -385,21 +388,30 @@ public class AttachmentManager {
                .execute();
   }
 
-  public static void selectLocation(Activity activity, int requestCode) {
-    /*
+  public static void selectLocation(Activity activity, int chatId) {
+    ApplicationContext applicationContext = ApplicationContext.getInstance(activity);
+    DcLocationManager dcLocationManager = applicationContext.dcLocationManager;
+
+    if (applicationContext.dcContext.isSendingLocationsToChat(chatId)) {
+      dcLocationManager.stopSharingLocation(chatId);
+      return;
+    }
+
     Permissions.with(activity)
-               .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
-               .onAllGranted(() -> {
-                 try {
-                   activity.startActivityForResult(new PlacePicker.IntentBuilder().build(activity), requestCode);
-                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                   Log.w(TAG, e);
-                 }
-               })
-               .execute();
-               */
+            .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+            .ifNecessary()
+            .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
+            .onAllGranted(() -> {
+              ShareLocationDialog.show(activity, durationInSeconds -> {
+                switch (durationInSeconds) {
+                  case 1: dcLocationManager.shareLastLocation(chatId); break;
+                  default:
+                    dcLocationManager.shareLocation(durationInSeconds, chatId);
+                    break;
+                }
+              });
+            })
+            .execute();
   }
 
   private @Nullable Uri getSlideUri() {

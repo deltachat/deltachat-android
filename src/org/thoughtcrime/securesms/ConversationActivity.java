@@ -63,6 +63,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
+import org.thoughtcrime.securesms.map.MapActivity;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
@@ -176,7 +177,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private Recipient  recipient;
   private ApplicationDcContext dcContext;
   private DcChat     dcChat                = new DcChat(0);
-  private int       threadId;
+  private int        chatId;
   private boolean    archived;
   private final boolean isSecureText = true;
   private boolean    isDefaultSms          = true;
@@ -283,7 +284,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    MessageNotifier.updateVisibleChat(this, threadId);
+    MessageNotifier.updateVisibleChat(this, chatId);
     markThreadAsRead();
   }
 
@@ -358,7 +359,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       addAttachmentContactInfo(data);
       break;
     case GROUP_EDIT:
-      dcChat = dcContext.getChat(threadId);
+      dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       supportInvalidateOptionsMenu();
       break;
@@ -401,11 +402,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId ==DcChat.DC_CHAT_ID_DEADDROP) {
       return true;
     }
 
-    if (recipient != null && Prefs.isChatMuted(this, threadId)) {
+    if (recipient != null && Prefs.isChatMuted(this, chatId)) {
       inflater.inflate(R.menu.conversation_muted, menu);
     }
     else {
@@ -413,6 +414,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     inflater.inflate(R.menu.conversation, menu);
+
+    if (!Prefs.isLocationStreamingEnabled(this)) {
+      menu.findItem(R.id.menu_show_map).setVisible(false);
+    }
 
     if (isGroupConversation()) {
       if (isActiveGroup()) {
@@ -446,6 +451,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
       case R.id.menu_unmute_notifications:  handleUnmuteNotifications();       return true;
       case R.id.menu_conversation_settings: handleConversationSettings();      return true;
+      case R.id.menu_show_map:              handleShowMap();                   return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
     }
 
@@ -471,6 +477,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   //////// Event Handlers
 
+  private void handleShowMap() {
+    Intent intent = new Intent(this, MapActivity.class);
+    intent.putExtra(MapActivity.CHAT_ID, chatId);
+    startActivity(intent);
+  }
+
   private void handleReturnToConversationList() {
     Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -480,13 +492,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleMuteNotifications() {
     MuteDialog.show(this, until -> {
-      Prefs.setChatMutedUntil(this, threadId, until);
+      Prefs.setChatMutedUntil(this, chatId, until);
       titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
     });
   }
 
   private void handleConversationSettings() {
-    if(threadId!=DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId !=DcChat.DC_CHAT_ID_DEADDROP) {
       Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
       intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
       startActivitySceneTransition(intent, titleView.findViewById(R.id.contact_photo_image), "avatar");
@@ -494,7 +506,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleUnmuteNotifications() {
-    Prefs.setChatMutedUntil(this, threadId, 0);
+    Prefs.setChatMutedUntil(this, chatId, 0);
     titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
   }
 
@@ -508,7 +520,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     new AlertDialog.Builder(this)
       .setMessage(getString(R.string.ask_leave_group))
       .setPositiveButton(R.string.yes, (dialog, which) -> {
-        dcContext.removeContactFromChat(threadId, DcContact.DC_CONTACT_ID_SELF);
+        dcContext.removeContactFromChat(chatId, DcContact.DC_CONTACT_ID_SELF);
         Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
       })
       .setNegativeButton(R.string.no, null)
@@ -516,8 +528,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleArchiveChat() {
-    int doArchive = dcContext.getChat(threadId).getArchived()==0? 1: 0;
-    dcContext.archiveChat(threadId, doArchive);
+    int doArchive = dcContext.getChat(chatId).getArchived()==0? 1: 0;
+    dcContext.archiveChat(chatId, doArchive);
     Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
     if( doArchive == 1 ) {
       finish();
@@ -528,7 +540,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     new AlertDialog.Builder(this)
         .setMessage(getResources().getQuantityString(R.plurals.ask_delete_chat, 1, 1))
         .setPositiveButton(R.string.delete, (dialog, which) -> {
-          dcContext.deleteChat(threadId);
+          dcContext.deleteChat(chatId);
           Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
           finish();
         })
@@ -538,7 +550,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleEditPushGroup() {
     Intent intent = new Intent(ConversationActivity.this, GroupCreateActivity.class);
-    intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, threadId);
+    intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
     if (dcChat.isVerified()) {
       intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
     }
@@ -547,7 +559,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleAddAttachment() {
     if (attachmentTypeSelector == null) {
-      attachmentTypeSelector = new AttachmentTypeSelector(this, getSupportLoaderManager(), new AttachmentTypeListener());
+      attachmentTypeSelector = new AttachmentTypeSelector(this, getSupportLoaderManager(), new AttachmentTypeListener(), chatId);
     }
     attachmentTypeSelector.show(this, attachButton);
   }
@@ -607,7 +619,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     new AsyncTask<Void, Void, DcMsg>() {
       @Override
       protected DcMsg doInBackground(Void... params) {
-        return dcContext.getDraft(threadId);
+        return dcContext.getDraft(chatId);
       }
 
       @Override
@@ -757,10 +769,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    threadId         = getIntent().getIntExtra(THREAD_ID_EXTRA, -1);
-    if(threadId == DcChat.DC_CHAT_NO_CHAT)
+    chatId = getIntent().getIntExtra(THREAD_ID_EXTRA, -1);
+    if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
-    dcChat           = dcContext.getChat(threadId);
+    dcChat           = dcContext.getChat(chatId);
     recipient        = dcContext.getRecipient(dcChat);
     archived         = getIntent().getBooleanExtra(IS_ARCHIVED_EXTRA, false);
     glideRequests    = GlideApp.with(this);
@@ -772,7 +784,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       conversationContainer.setClipToPadding(true);
     }
 
-    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId ==DcChat.DC_CHAT_ID_DEADDROP) {
       composePanel.setVisibility(View.GONE);
       titleView.hideAvatar();
     }
@@ -792,7 +804,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case AttachmentTypeSelector.ADD_CONTACT_INFO:
       startContactChooserActivity(); break;
     case AttachmentTypeSelector.ADD_LOCATION:
-      AttachmentManager.selectLocation(this, PICK_LOCATION); break;
+      AttachmentManager.selectLocation(this, chatId); break;
     case AttachmentTypeSelector.TAKE_PHOTO:
       attachmentManager.capturePhoto(this, TAKE_PHOTO); break;
     }
@@ -833,8 +845,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return this.recipient;
   }
 
-  protected long getThreadId() {
-    return this.threadId;
+  protected long getChatId() {
+    return this.chatId;
   }
 
   private MediaConstraints getCurrentMediaConstraints() {
@@ -845,10 +857,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     new AsyncTask<Integer, Void, Void>() {
       @Override
       protected Void doInBackground(Integer... params) {
-        MessageNotifier.updateNotification(ConversationActivity.this, threadId, false);
+        MessageNotifier.updateNotification(ConversationActivity.this, chatId, false);
         return null;
       }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
+    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
   }
 
   private String getRealPathFromAttachment(Attachment attachment) {
@@ -969,7 +981,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
       @Override
       protected void onPostExecute(Void result) {
-        future.set(threadId);
+        future.set(chatId);
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, msg, recompress);
 
@@ -977,8 +989,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   protected void sendComplete(int threadId) {
-    boolean refreshFragment = (threadId != this.threadId);
-    this.threadId = threadId;
+    boolean refreshFragment = (threadId != this.chatId);
+    this.chatId = threadId;
 
     if (fragment == null || !fragment.isVisible() || isFinishing()) {
       return;
@@ -1272,8 +1284,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void setThreadId(int threadId) {
-    this.threadId = threadId;
+  public void setChatId(int chatId) {
+    this.chatId = chatId;
   }
 
   @Override
