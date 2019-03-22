@@ -27,7 +27,7 @@ public class SystemContactPhoto implements ContactPhoto {
 
   @Override
   public InputStream openInputStream(Context context)  {
-    return ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), contactPhotoUri, false);
+    return ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), contactPhotoUri, true);
   }
 
   @Nullable
