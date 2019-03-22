@@ -18,6 +18,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -717,4 +718,21 @@ public class ApplicationDcContext extends DcContext {
     }
     return 0;
   }
+
+
+  /***********************************************************************************************
+   * core related helper methods
+   **********************************************************************************************/
+
+  public int[] getChatIds() {
+    DcChatlist chats = getChatlist(0, null, 0);
+    int count = chats.getCnt();
+    int[] chatIds = new int[count];
+    for (int i = 0; i < count; i++) {
+      DcChat dcChat = chats.getChat(i);
+      chatIds[i] = dcChat.getId();
+    }
+    return chatIds;
+  }
+
 }

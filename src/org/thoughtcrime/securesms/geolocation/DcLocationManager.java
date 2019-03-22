@@ -8,9 +8,7 @@ import android.location.Location;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
-import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 
@@ -106,18 +104,6 @@ public class DcLocationManager implements Observer {
         DcHelper.getContext(context).deleteAllLocations();
     }
 
-
-    public int[] getLocationStreamingChatIds () {
-        DcContext dcContext = DcHelper.getContext(context);
-        DcChatlist chats = dcContext.getChatlist(0, null, 0);
-        int count = chats.getCnt();
-        int[] chatIds = new int[count];
-        for (int i = 0; i < count; i++) {
-            DcChat dcChat = chats.getChat(i);
-            chatIds[i] = dcChat.getId();
-        }
-        return chatIds;
-    }
 
     @Override
     public void update(Observable o, Object arg) {

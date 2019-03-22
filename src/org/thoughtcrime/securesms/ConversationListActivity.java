@@ -31,14 +31,13 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrScanHandler;
 import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-
-import java.util.ArrayList;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -153,7 +152,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void handleShowMap() {
       Intent intent = new Intent(this, MapActivity.class);
-      int[] chatIds = ApplicationContext.getInstance(this).dcLocationManager.getLocationStreamingChatIds();
+      int[] chatIds = DcHelper.getContext(this).getChatIds();
       intent.putExtra(MapActivity.CHAT_IDS, chatIds);
       startActivity(intent);
   }
