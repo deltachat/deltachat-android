@@ -10,11 +10,11 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.b44t.messenger.DcArray;
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcEventCenter;
 import com.google.gson.JsonObject;
@@ -35,6 +35,10 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.map.model.FeatureTreeSet;
+import org.thoughtcrime.securesms.map.model.MapSource;
+import org.thoughtcrime.securesms.map.model.TimeComparableFeature;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,49 +72,54 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private static final String TAG = MapDataManager.class.getSimpleName();
     private Style mapboxStyle;
     private HashMap<Integer, MapSource> contactMapSources;
-    private HashMap<String, ArrayList<Feature>> featureCollections;
+    private HashMap<String, FeatureTreeSet> featureCollections;
     private Feature selectedFeature;
-    private int chatId;
+    private int[] chatIds = new int[1];
     private Context context;
+    private boolean isInitial = true;
 
     public interface MapDataState {
         void onDataInitialized(LatLngBounds bounds);
     }
 
-    public MapDataManager(Context context, @NonNull Style mapboxMapStyle, int chatId, MapDataState updateCallback) {
+    public MapDataManager(Context context, @NonNull Style mapboxMapStyle, int[] chatIds, MapDataState updateCallback) {
         this.mapboxStyle = mapboxMapStyle;
         this.context = context;
-        this.chatId = chatId;
+        this.chatIds = chatIds;
         contactMapSources = new HashMap<>();
         featureCollections = new HashMap<>();
         LatLngBounds.Builder boundingBuilder = new LatLngBounds.Builder();
-        int[] contactIds = ApplicationContext.getInstance(context).dcContext.getChatContacts(chatId);
+        for (int chatId : chatIds) {
+            int[] contactIds = ApplicationContext.getInstance(context).dcContext.getChatContacts(chatId);
 
-        for (int contactId : contactIds) {
-            if (contactId == 1) {
-                //skip self, it is explicitely added as 1:1 don't include self whereas groups and selftalk do
-                continue;
+            for (int contactId : contactIds) {
+                if (contactId == 1) {
+                    //skip self, it is explicitely added as 1:1 don't include self whereas groups and selftalk do
+                    continue;
+                }
+                addContactMapSource(contactId);
+                updateSource(chatId, contactId, boundingBuilder);
+                generateInfoWindows(contactId);
             }
-            addContactMapSource(contactId);
-            updateSource(contactId, boundingBuilder);
-            generateInfoWindows(contactId);
-        }
 
-        addContactMapSource(1);
-        updateSource(1, boundingBuilder);
-        generateMissingInfoWindows(1);
+            addContactMapSource(1);
+            updateSource(chatId, 1, boundingBuilder);
+            generateInfoWindows(1);
 
-
-        try {
-            updateCallback.onDataInitialized(boundingBuilder.build());
-        } catch (InvalidLatLngBoundsException e) {
-            e.printStackTrace();
+            try {
+                updateCallback.onDataInitialized(boundingBuilder.build());
+            } catch (InvalidLatLngBoundsException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void onResume() {
         ApplicationContext.getInstance(context).dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
-        updateSources();
+        if (!isInitial) {
+            updateSources();
+        }
+        isInitial = false;
     }
 
     public void onPause() {
@@ -118,6 +127,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     public void addContactMapSource(int contactId) {
+        if (contactMapSources.get(contactId) != null) {
+            return;
+        }
+
         DcContact contact = ApplicationContext.getInstance(context).dcContext.getContact(contactId);
         MapSource contactMapSource = new MapSource(contactId);
         contactMapSource.setColor(contact.getColor());
@@ -154,11 +167,16 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         return bitmap;
     }
 
-
     private void updateSources() {
-        for (Integer contactId : contactMapSources.keySet()) {
-            updateSource(contactId);
-            generateMissingInfoWindows(contactId);
+        for (int chatId : chatIds) {
+            int[] contacts = DcHelper.getContext(context).getChatContacts(chatId);
+            for (int contactId : contacts) {
+                if (!contactMapSources.containsKey(contactId)) {
+                    addContactMapSource(contactId);
+                }
+                updateSource(chatId, contactId);
+                generateMissingInfoWindows(contactId);
+            }
         }
     }
 
@@ -181,71 +199,71 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public void refreshSource(int contactId) {
         Log.d(TAG, "refreshSource start");
         MapSource source = contactMapSources.get(contactId);
-        ArrayList<Feature> collection = featureCollections.get(source.getMarkerFeatureCollection());
+        FeatureTreeSet collection = featureCollections.get(source.getMarkerFeatureCollection());
         GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(source.getMarkerSource());
-        pointSource.setGeoJson(FeatureCollection.fromFeatures(collection));
+        pointSource.setGeoJson(FeatureCollection.fromFeatures(collection.getFeatureList()));
         Log.d(TAG, "refreshSource finished");
     }
 
-    private void updateSource(int contactId) {
-        updateSource(contactId, null);
+
+    private void updateSource(int chatId, int contactId) {
+        updateSource(chatId, contactId, null);
     }
 
-    private void updateSource(int contactId, @Nullable LatLngBounds.Builder boundingBuilder) {
+    private void updateSource(int chatId, int contactId, LatLngBounds.Builder boundingBuilder) {
         DcArray locations = ApplicationContext.getInstance(context).dcContext.getLocations(chatId, contactId);
-        int count = locations.getCnt();
-        ArrayList<Feature> pointFeatureList = new ArrayList<>();
         MapSource contactMapMetadata = contactMapSources.get(contactId);
 
-        if (count == 0) {
-            featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), pointFeatureList);
-            return;
+        FeatureTreeSet sortedPointFeatures = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
+        if (sortedPointFeatures == null) {
+            sortedPointFeatures = new FeatureTreeSet();
         }
 
-        ArrayList<Point>  coordinateList = new ArrayList<>();
+        int count = locations.getCnt();
         for (int i = 0; i < count; i++) {
             Point p = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
-            coordinateList.add(p);
-            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), contactId + "_" + i);
+            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), chatId + "_" + contactId + "_" + i);
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
             pointFeature.addBooleanProperty(LAST_LOCATION, false);
             pointFeature.addNumberProperty(CONTACT_ID, contactId);
-            pointFeature.addStringProperty(INFO_WINDOW_ID, contactId + "_info_" + (count - 1 - i));
+            pointFeature.addStringProperty(INFO_WINDOW_ID, chatId + "_" + contactId + "_info_" + (count - 1 - i));
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
-            pointFeatureList.add(pointFeature);
+            sortedPointFeatures.replace(new TimeComparableFeature(pointFeature));
+
             if (boundingBuilder != null) {
                 boundingBuilder.include(new LatLng(locations.getLatitude(i), locations.getLongitude(i)));
             }
         }
 
-        if (pointFeatureList.size() > 0) {
-            pointFeatureList.get(0).addBooleanProperty(LAST_LOCATION, true);
+        if (sortedPointFeatures.size() > 0) {
+            sortedPointFeatures.first().getFeature().addBooleanProperty(LAST_LOCATION, true);
         }
 
-        FeatureCollection pointFeatureCollection = FeatureCollection.fromFeatures(pointFeatureList);
+        FeatureCollection pointFeatureCollection = FeatureCollection.fromFeatures(sortedPointFeatures.getFeatureList());
         FeatureCollection lineFeatureCollection = FeatureCollection.fromFeatures(new Feature[] {Feature.fromGeometry(
-                LineString.fromLngLats(coordinateList)
+                LineString.fromLngLats(sortedPointFeatures.getPointList())
         )});
 
         GeoJsonSource lineSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getLineSource());
         lineSource.setGeoJson(lineFeatureCollection);
         GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getMarkerSource());
         pointSource.setGeoJson(pointFeatureCollection);
-        featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), pointFeatureList);
+        featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), sortedPointFeatures);
     }
 
     private void generateMissingInfoWindows(int contactId) {
         MapSource contactMapMetadata = contactMapSources.get(contactId);
-        ArrayList<Feature> featureList = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
+        FeatureTreeSet featureList = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
+
         ArrayList<Feature> missingWindows = new ArrayList<>();
 
-        for (Feature f : featureList) {
-            String infoWindowId = f.getStringProperty(INFO_WINDOW_ID);
+        for (TimeComparableFeature tcf : featureList) {
+            String infoWindowId = tcf.getFeature().getStringProperty(INFO_WINDOW_ID);
             if (mapboxStyle.getImage(infoWindowId) == null) {
                 Log.d(TAG, "create new infoWindow for " + infoWindowId);
-                missingWindows.add(f);
+                missingWindows.add(tcf.getFeature());
             } else {
                 // the list is ordered and thus, all older features should already have an info window
                 break;
@@ -260,8 +278,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void generateInfoWindows(int contactId) {
         MapSource contactMapMetadata = contactMapSources.get(contactId);
-        ArrayList<Feature> featureList = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
-        new GenerateInfoWindowTask(this, contactId).execute(featureList);
+        FeatureTreeSet collection = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
+        new GenerateInfoWindowTask(this, contactId).execute(collection.getFeatureList());
     }
 
     private void initGeoJsonSources(MapSource source) {
@@ -313,12 +331,14 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 ).withFilter(filterInfoWindow));
     }
 
+    //FIXME: consider to use data2 parameter to send chatID from core to Android
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
         Log.d(TAG, "updateEvent in MapDataManager called. eventId: " + eventId);
         int contactId = (Integer) data1;
         if (contactMapSources.containsKey(contactId)) {
-            updateSource(contactId);
+            //FIXME: ---------v this is wrong, but there's no other opportunity for now
+            updateSource(chatIds[0], contactId);
             generateMissingInfoWindows(contactId);
         }
     }
@@ -401,7 +421,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private Feature getFeatureWithId(String id) {
         for (String key : featureCollections.keySet()) {
-            ArrayList<Feature> featureCollection  = featureCollections.get(key);
+            ArrayList<Feature> featureCollection = featureCollections.get(key).getFeatureList();
             for (Feature f : featureCollection) {
                 if (f.id().equals(id)) {
                     return f;

@@ -8,10 +8,17 @@ import android.location.Location;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.b44t.messenger.DcArray;
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
@@ -32,6 +39,7 @@ public class DcLocationManager implements Observer {
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.d(TAG, "background service connected");
             serviceBinder = (LocationBackgroundService.LocationBackgroundServiceBinder) service;
             while (pendingShareLastLocation.size() > 0) {
                 shareLastLocation(pendingShareLastLocation.pop());
@@ -40,6 +48,7 @@ public class DcLocationManager implements Observer {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            Log.d(TAG, "background service disconnected");
             serviceBinder = null;
         }
     };
@@ -49,7 +58,7 @@ public class DcLocationManager implements Observer {
         DcLocation.getInstance().addObserver(this);
         DcChatlist chats = DcHelper.getContext(context).getChatlist(0, null, 0);
         for (int i = 0; i < chats.getCnt(); i++) {
-            if (DcHelper.getContext(context).isSendingLocationsToChat(chats.getChat(0).getId())) {
+            if (DcHelper.getContext(context).isSendingLocationsToChat(chats.getChat(i).getId())) {
                 initializeLocationEngine();
                 return;
             }
@@ -100,6 +109,19 @@ public class DcLocationManager implements Observer {
 
     public void deleteAllLocations() {
         DcHelper.getContext(context).deleteAllLocations();
+    }
+
+
+    public int[] getLocationStreamingChatIds () {
+        DcContext dcContext = DcHelper.getContext(context);
+        DcChatlist chats = dcContext.getChatlist(0, null, 0);
+        int count = chats.getCnt();
+        int[] chatIds = new int[count];
+        for (int i = 0; i < count; i++) {
+            DcChat dcChat = chats.getChat(i);
+            chatIds[i] = dcChat.getId();
+        }
+        return chatIds;
     }
 
     @Override

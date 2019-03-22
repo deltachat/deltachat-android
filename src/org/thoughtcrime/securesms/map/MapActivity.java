@@ -7,9 +7,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
-import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.Style;
@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 
@@ -34,6 +35,7 @@ public class MapActivity extends BaseActivity implements Observer {
 
     public static final String TAG = MapActivity.class.getSimpleName();
     public static final String CHAT_ID = "chat_id";
+    public static final String CHAT_IDS = "chat_id";
     public static final String MAP_TAG = "org.thoughtcrime.securesms.map";
 
     private DcLocation dcLocation;
@@ -44,8 +46,9 @@ public class MapActivity extends BaseActivity implements Observer {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_map);
-        int chatId = getIntent().getIntExtra(CHAT_ID, -1);
-        if (chatId == -1) {
+        final int[] chatIds = getChatIds(getIntent());
+
+        if (chatIds[0] == -1) {
             finish();
             return;
         }
@@ -76,7 +79,7 @@ public class MapActivity extends BaseActivity implements Observer {
                 return;
             }
 
-            mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
+            mapDataManager = new MapDataManager(this, mapBoxStyle, chatIds, (latLngBounds) -> {
                 mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
             });
 
@@ -99,13 +102,19 @@ public class MapActivity extends BaseActivity implements Observer {
 
             mapboxMap.addOnMapClickListener(point -> {
                 final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
-                Log.d(TAG, "on info window clicked.");
 
                 List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getInfoWindowLayers());
+                Log.d(TAG, "on info window clicked." + features.size());
+
                 for (Feature feature : features) {
                     Log.d(TAG, "found feature: " + feature.toJson());
                     if (feature.hasProperty(MARKER_SELECTED) && feature.getBooleanProperty(MARKER_SELECTED))  {
                         int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
+                        DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
+                        int chatId = dcMsg.getChatId();
+                        if (chatId == DC_CHAT_NO_CHAT) {
+                            continue;
+                        }
 
                         int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(chatId, 0, 0);
                         int startingPosition = -1;
@@ -170,5 +179,18 @@ public class MapActivity extends BaseActivity implements Observer {
                     dcLocation.getLastLocation().getLongitude());
             //TODO: consider implementing a button -> center map to current location
         }
+    }
+
+    private int[] getChatIds(Intent intent) {
+        if (intent == null) {
+            return new int[]{-1};
+        }
+
+        int[] chatIds = intent.getIntArrayExtra(CHAT_IDS);
+        if (chatIds == null || chatIds.length == 0) {
+            chatIds = new int[1];
+            chatIds[0] = getIntent().getIntExtra(CHAT_ID, -1);
+        }
+        return chatIds;
     }
 }

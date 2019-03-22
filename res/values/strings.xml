@@ -112,6 +112,7 @@
     <string name="menu_toggle_keyboard">Toggle emoji keyboard</string>
     <string name="menu_edit_group">Edit group</string>
     <string name="menu_show_map">Show map</string>
+    <string name="menu_show_global_map">Show all locations</string>
     <string name="menu_archive_chat">Archive chat</string>
     <string name="menu_unarchive_chat">Unarchive chat</string>
     <string name="menu_add_attachment">Add attachment</string>
