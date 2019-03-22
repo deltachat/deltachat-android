@@ -303,7 +303,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         mapboxStyle.addImage(source.getMarkerIcon(),
                 generateColoredLocationIcon(source.getColorArgb()));
 
-        Expression markerSize = switchCase(toBool(get(MARKER_SELECTED)), literal(1.5f), literal(1.0f));
+        Expression markerSize =
+                switchCase(toBool(get(MARKER_SELECTED)), literal(1.5f),
+                        switchCase(toBool(get(LAST_LOCATION)), literal(1.0f),
+                            switchCase(eq(get(MESSAGE_ID), literal(0)), literal(0.7f), literal(1.1f))));
         Expression markerIcon = switchCase(toBool(get(LAST_LOCATION)), literal(source.getMarkerLastPositon()), literal(source.getMarkerIcon()));
         Expression allowOverlap = eq(get(LAST_LOCATION), literal(true));
         mapboxStyle.addLayer(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
@@ -317,6 +320,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
                         PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
                         PropertyFactory.lineWidth(3f),
+                        PropertyFactory.lineOpacity(0.5f),
                         PropertyFactory.lineColor(source.getColorArgb())));
 
         Expression filterInfoWindow = eq((get(MARKER_SELECTED)), literal(true));
