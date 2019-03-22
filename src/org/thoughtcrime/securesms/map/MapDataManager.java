@@ -14,7 +14,6 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.b44t.messenger.DcArray;
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcEventCenter;
 import com.google.gson.JsonObject;
@@ -33,8 +32,8 @@ import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.model.FeatureTreeSet;
 import org.thoughtcrime.securesms.map.model.MapSource;
@@ -76,6 +75,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private Feature selectedFeature;
     private int[] chatIds = new int[1];
     private Context context;
+    private ApplicationDcContext dcContext;
     private boolean isInitial = true;
 
     public interface MapDataState {
@@ -85,12 +85,13 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public MapDataManager(Context context, @NonNull Style mapboxMapStyle, int[] chatIds, MapDataState updateCallback) {
         this.mapboxStyle = mapboxMapStyle;
         this.context = context;
+        this.dcContext = DcHelper.getContext(context);
         this.chatIds = chatIds;
         contactMapSources = new HashMap<>();
         featureCollections = new HashMap<>();
         LatLngBounds.Builder boundingBuilder = new LatLngBounds.Builder();
         for (int chatId : chatIds) {
-            int[] contactIds = ApplicationContext.getInstance(context).dcContext.getChatContacts(chatId);
+            int[] contactIds = dcContext.getChatContacts(chatId);
 
             for (int contactId : contactIds) {
                 if (contactId == 1) {
@@ -115,7 +116,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     public void onResume() {
-        ApplicationContext.getInstance(context).dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
+        dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
         if (!isInitial) {
             updateSources();
         }
@@ -123,7 +124,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     public void onPause() {
-        ApplicationContext.getInstance(context).dcContext.eventCenter.removeObserver(DC_EVENT_LOCATION_CHANGED, this);
+        dcContext.eventCenter.removeObserver(DC_EVENT_LOCATION_CHANGED, this);
     }
 
     public void addContactMapSource(int contactId) {
@@ -131,7 +132,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             return;
         }
 
-        DcContact contact = ApplicationContext.getInstance(context).dcContext.getContact(contactId);
+        DcContact contact = dcContext.getContact(contactId);
         MapSource contactMapSource = new MapSource(contactId);
         contactMapSource.setColor(contact.getColor());
         contactMapSources.put(contactId, contactMapSource);
@@ -169,7 +170,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void updateSources() {
         for (int chatId : chatIds) {
-            int[] contacts = DcHelper.getContext(context).getChatContacts(chatId);
+            int[] contacts = dcContext.getChatContacts(chatId);
             for (int contactId : contacts) {
                 if (!contactMapSources.containsKey(contactId)) {
                     addContactMapSource(contactId);
@@ -211,7 +212,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private void updateSource(int chatId, int contactId, LatLngBounds.Builder boundingBuilder) {
-        DcArray locations = ApplicationContext.getInstance(context).dcContext.getLocations(chatId, contactId);
+        DcArray locations = dcContext.getLocations(chatId, contactId);
         MapSource contactMapMetadata = contactMapSources.get(contactId);
 
         FeatureTreeSet sortedPointFeatures = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
@@ -230,7 +231,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
-            sortedPointFeatures.replace(new TimeComparableFeature(pointFeature));
+            sortedPointFeatures.add(new TimeComparableFeature(pointFeature));
 
             if (boundingBuilder != null) {
                 boundingBuilder.include(new LatLng(locations.getLatitude(i), locations.getLongitude(i)));

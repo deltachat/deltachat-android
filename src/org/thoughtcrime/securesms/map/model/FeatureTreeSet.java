@@ -17,11 +17,16 @@ import java.util.TreeSet;
 
 public class FeatureTreeSet extends TreeSet<TimeComparableFeature> {
 
-
-    public boolean replace(@NonNull TimeComparableFeature obj) {
+    /**
+     *
+     * @param obj
+     * @return true if element was added newly, false if element was replaced
+     */
+    @Override
+    public boolean add(@NonNull TimeComparableFeature obj) {
         boolean existed = remove(obj);
-        add(obj);
-        return existed;
+        super.add(obj);
+        return !existed;
     }
 
     public ArrayList<Feature> getFeatureList() {
@@ -34,7 +39,7 @@ public class FeatureTreeSet extends TreeSet<TimeComparableFeature> {
         return featureList;
     }
 
-    public List<Point> getPointList() {
+    public ArrayList<Point> getPointList() {
         ArrayList<Point> points = new ArrayList<>();
         Iterator<TimeComparableFeature> iterator = this.iterator();
         while (iterator.hasNext()) {

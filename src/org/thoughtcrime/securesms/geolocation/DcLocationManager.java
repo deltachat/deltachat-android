@@ -8,17 +8,12 @@ import android.location.Location;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.b44t.messenger.DcArray;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
