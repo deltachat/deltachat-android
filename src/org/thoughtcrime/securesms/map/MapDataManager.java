@@ -224,11 +224,11 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         int count = locations.getCnt();
         for (int i = 0; i < count; i++) {
             Point p = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
-            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), chatId + "_" + contactId + "_" + i);
+            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), String.valueOf(locations.getLocationId(i)));
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
             pointFeature.addBooleanProperty(LAST_LOCATION, false);
             pointFeature.addNumberProperty(CONTACT_ID, contactId);
-            pointFeature.addStringProperty(INFO_WINDOW_ID, chatId + "_" + contactId + "_info_" + (count - 1 - i));
+            pointFeature.addStringProperty(INFO_WINDOW_ID, locations.getLocationId(i) + "_info_" + locations.getMsgId(i));
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
