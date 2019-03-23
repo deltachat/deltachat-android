@@ -92,6 +92,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     menu.clear();
 
     inflater.inflate(R.menu.text_secure_normal, menu);
+    MenuItem item = menu.findItem(R.id.menu_global_map);
+    if (Prefs.isLocationStreamingEnabled(this)) {
+      item.setVisible(true);
+    }
 
     if (!Prefs.isLocationStreamingEnabled(this)) {
       menu.findItem(R.id.menu_global_map).setVisible(false);
