@@ -12,12 +12,13 @@ public class DcArray {
         arrayCPtr = 0;
     }
 
-    public native int       getCnt      ();
-    public native float     getLatitude (int index);
-    public native float     getLongitude(int index);
-    public native float     getAccuracy (int index);
-    public native long      getTimestamp(int index);
-    public native int       getMsgId    (int index);
+    public native int       getCnt       ();
+    public native float     getLatitude  (int index);
+    public native float     getLongitude (int index);
+    public native float     getAccuracy  (int index);
+    public native long      getTimestamp (int index);
+    public native int       getMsgId     (int index);
+    public native int       getLocationId(int index);
 
     // working with raw c-data
     private long        arrayCPtr;    // CAVE: the name is referenced in the JNI

@@ -32,6 +32,7 @@ import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -206,13 +207,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         Log.d(TAG, "refreshSource finished");
     }
 
-
     private void updateSource(int chatId, int contactId) {
         updateSource(chatId, contactId, null);
     }
 
     private void updateSource(int chatId, int contactId, LatLngBounds.Builder boundingBuilder) {
-        DcArray locations = dcContext.getLocations(chatId, contactId);
+        DcArray locations = ApplicationContext.getInstance(context).dcContext.getLocations(chatId, contactId, System.currentTimeMillis()-3*60*60*1000, 0);
         MapSource contactMapMetadata = contactMapSources.get(contactId);
 
         FeatureTreeSet sortedPointFeatures = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
