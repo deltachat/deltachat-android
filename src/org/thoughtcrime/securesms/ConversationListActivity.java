@@ -37,6 +37,7 @@ import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
 
@@ -91,6 +92,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     menu.clear();
 
     inflater.inflate(R.menu.text_secure_normal, menu);
+    MenuItem item = menu.findItem(R.id.menu_global_map);
+    if (Prefs.isLocationStreamingEnabled(this)) {
+      item.setVisible(true);
+    }
 
     super.onPrepareOptionsMenu(menu);
     return true;

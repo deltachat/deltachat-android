@@ -20,6 +20,8 @@
           android:id="@+id/menu_settings" />
 
     <item android:title="@string/menu_show_global_map"
-        android:id="@+id/menu_global_map" />
+        android:id="@+id/menu_global_map"
+        android:visible="false"
+        />
 
 </menu>
