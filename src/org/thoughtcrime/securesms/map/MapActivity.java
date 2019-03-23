@@ -46,9 +46,9 @@ public class MapActivity extends BaseActivity implements Observer {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_map);
-        final int[] chatIds = getChatIds(getIntent());
+        final int chatId =  getIntent().getIntExtra(CHAT_ID, -1);
 
-        if (chatIds[0] == -1) {
+        if (chatId == -1) {
             finish();
             return;
         }
@@ -79,7 +79,7 @@ public class MapActivity extends BaseActivity implements Observer {
                 return;
             }
 
-            mapDataManager = new MapDataManager(this, mapBoxStyle, chatIds, (latLngBounds) -> {
+            mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
                 mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
             });
 
@@ -112,12 +112,12 @@ public class MapActivity extends BaseActivity implements Observer {
                     if (feature.hasProperty(MARKER_SELECTED) && feature.getBooleanProperty(MARKER_SELECTED))  {
                         int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
                         DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
-                        int chatId = dcMsg.getChatId();
-                        if (chatId == DC_CHAT_NO_CHAT) {
+                        int dcMsgChatId = dcMsg.getChatId();
+                        if (dcMsgChatId == DC_CHAT_NO_CHAT) {
                             continue;
                         }
 
-                        int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(chatId, 0, 0);
+                        int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
                         int startingPosition = -1;
                         for(int i=0; i< msgs.length; i++ ) {
                             if(msgs[i] == messageId) {
