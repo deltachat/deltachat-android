@@ -84,7 +84,7 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
 
                 DcContact contact = DcHelper.getContext(callbackRef.get().getContext()).getContact(contactId);
                 TextView contactTextView = bubbleLayout.findViewById(R.id.message_sender);
-                contactTextView.setText(contact.getDisplayName());
+                contactTextView.setText(contact.getFirstName());
 
                 String msgText;
                 if (messageId != 0) {
