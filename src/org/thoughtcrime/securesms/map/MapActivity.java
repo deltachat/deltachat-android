@@ -83,6 +83,7 @@ public class MapActivity extends BaseActivity implements Observer {
                 mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
             });
 
+
             mapboxMap.addOnMapClickListener(point -> {
                 final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
                 Log.d(TAG, "on item clicked.");

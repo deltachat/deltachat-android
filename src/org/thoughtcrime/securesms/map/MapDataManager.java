@@ -114,6 +114,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 e.printStackTrace();
             }
         }
+        dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
     }
 
     public void onResume() {
@@ -340,17 +341,18 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
         Log.d(TAG, "updateEvent in MapDataManager called. eventId: " + eventId);
-        int contactId = (Integer) data1;
+        int contactId = ((Long) data1).intValue();
         if (contactMapSources.containsKey(contactId)) {
             //FIXME: ---------v this is wrong, but there's no other opportunity for now
             updateSource(chatIds[0], contactId);
             generateMissingInfoWindows(contactId);
+            refreshSource(contactId);
         }
     }
 
     @Override
     public boolean runOnMain() {
-        return false;
+        return true;
     }
 
 
