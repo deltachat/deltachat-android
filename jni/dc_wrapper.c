@@ -64,7 +64,14 @@ static jstring jstring_new__(JNIEnv* env, const char* a)
 	return ret;
 }
 
+
+// convert c-timestamp to java-timestamp
 #define JTIMESTAMP(a) (((jlong)a)*((jlong)1000))
+
+
+// convert java-timestamp to c-timestamp
+#define CTIMESTAMP(a) (((jlong)a)/((jlong)1000))
+
 
 static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
 {
@@ -752,9 +759,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jo
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getLocationsCPtr(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getLocationsCPtr(JNIEnv *env, jobject obj, jint chat_id, jint contact_id, jlong timestamp_start, jlong timestamp_end)
 {
-	return (jlong)dc_get_locations(get_dc_context(env, obj), chat_id, contact_id);
+	return (jlong)dc_get_locations(get_dc_context(env, obj), chat_id, contact_id, CTIMESTAMP(timestamp_start), CTIMESTAMP(timestamp_end));
 }
 
 
@@ -822,6 +829,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcArray_getTimestamp(JNIEnv *env, jobjec
 JNIEXPORT jint Java_com_b44t_messenger_DcArray_getMsgId(JNIEnv *env, jobject obj, jint index)
 {
 	return dc_array_get_msg_id(get_dc_array(env, obj), index);
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcArray_getLocationId(JNIEnv *env, jobject obj, jint index)
+{
+	return dc_array_get_id(get_dc_array(env, obj), index);
 }
 
 

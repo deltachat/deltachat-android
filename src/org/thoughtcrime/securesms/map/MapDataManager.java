@@ -192,7 +192,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private void updateSource(int contactId, @Nullable LatLngBounds.Builder boundingBuilder) {
-        DcArray locations = ApplicationContext.getInstance(context).dcContext.getLocations(chatId, contactId);
+        DcArray locations = ApplicationContext.getInstance(context).dcContext.getLocations(chatId, contactId, System.currentTimeMillis()-3*60*60*1000, 0);
         int count = locations.getCnt();
         ArrayList<Feature> pointFeatureList = new ArrayList<>();
         MapSource contactMapMetadata = contactMapSources.get(contactId);
