@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
@@ -32,6 +33,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import static android.view.View.GONE;
+import static org.thoughtcrime.securesms.map.MapDataManager.CONTACT_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.INFO_WINDOW_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
@@ -78,6 +80,12 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
                 TextView conversationItemBody = bubbleLayout.findViewById(R.id.conversation_item_body);
                 Locale locale = DynamicLanguage.getSelectedLocale(callbackRef.get().getContext());
                 int messageId = (int) feature.getNumberProperty(MESSAGE_ID);
+                int contactId = (int) feature.getNumberProperty(CONTACT_ID);
+
+                DcContact contact = DcHelper.getContext(callbackRef.get().getContext()).getContact(contactId);
+                TextView contactTextView = bubbleLayout.findViewById(R.id.message_sender);
+                contactTextView.setText(contact.getFirstName());
+
                 String msgText;
                 if (messageId != 0) {
                     DcContext dcContext =  DcHelper.getContext(callbackRef.get().getContext());

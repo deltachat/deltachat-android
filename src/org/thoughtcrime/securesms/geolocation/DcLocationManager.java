@@ -32,6 +32,7 @@ public class DcLocationManager implements Observer {
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.d(TAG, "background service connected");
             serviceBinder = (LocationBackgroundService.LocationBackgroundServiceBinder) service;
             while (pendingShareLastLocation.size() > 0) {
                 shareLastLocation(pendingShareLastLocation.pop());
@@ -40,6 +41,7 @@ public class DcLocationManager implements Observer {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            Log.d(TAG, "background service disconnected");
             serviceBinder = null;
         }
     };
@@ -49,7 +51,7 @@ public class DcLocationManager implements Observer {
         DcLocation.getInstance().addObserver(this);
         DcChatlist chats = DcHelper.getContext(context).getChatlist(0, null, 0);
         for (int i = 0; i < chats.getCnt(); i++) {
-            if (DcHelper.getContext(context).isSendingLocationsToChat(chats.getChat(0).getId())) {
+            if (DcHelper.getContext(context).isSendingLocationsToChat(chats.getChat(i).getId())) {
                 initializeLocationEngine();
                 return;
             }
@@ -101,6 +103,7 @@ public class DcLocationManager implements Observer {
     public void deleteAllLocations() {
         DcHelper.getContext(context).deleteAllLocations();
     }
+
 
     @Override
     public void update(Observable o, Object arg) {

@@ -1,4 +1,4 @@
-package org.thoughtcrime.securesms.map;
+package org.thoughtcrime.securesms.map.model;
 
 import android.graphics.Color;
 
