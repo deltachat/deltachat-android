@@ -162,8 +162,8 @@ public class ConversationListItem extends RelativeLayout
     setBatchState(batchMode);
     setBgColor();
 
+    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
     if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
-      ApplicationDcContext dcContext = DcHelper.getContext(getContext());
       DcContact dcContact = dcContext.getContact(dcContext.getMsg(msgId).getFromId());
       this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), false);
     }
@@ -177,7 +177,8 @@ public class ConversationListItem extends RelativeLayout
         thread.isVerified()? R.drawable.ic_verified : 0,
         0);
 
-    groupIndicator.setVisibility(recipient.isGroupRecipient() ? VISIBLE : GONE);
+    boolean isGroup = dcContext.getChat((int) threadId).isGroup();
+    groupIndicator.setVisibility(isGroup ? VISIBLE : GONE);
     int color = ResUtil.getColor(getContext(), R.attr.conversation_list_item_contact_color);
     groupIndicator.setColorFilter(color);
   }
