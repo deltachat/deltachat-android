@@ -18,6 +18,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -36,12 +37,9 @@ import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -565,7 +563,8 @@ public class ApplicationDcContext extends DcContext {
           toastString = context.getString(R.string.group_self_not_in_group);
         }
 
-        if (ForegroundDetector.getInstance().isForeground()) {
+        ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
+        if (foregroundDetector==null || foregroundDetector.isForeground()) {
           Toast.makeText(context, toastString, Toast.LENGTH_LONG).show();
         }
       }
@@ -719,4 +718,21 @@ public class ApplicationDcContext extends DcContext {
     }
     return 0;
   }
+
+
+  /***********************************************************************************************
+   * core related helper methods
+   **********************************************************************************************/
+
+  public int[] getChatIds() {
+    DcChatlist chats = getChatlist(0, null, 0);
+    int count = chats.getCnt();
+    int[] chatIds = new int[count];
+    for (int i = 0; i < count; i++) {
+      DcChat dcChat = chats.getChat(i);
+      chatIds[i] = dcChat.getId();
+    }
+    return chatIds;
+  }
+
 }

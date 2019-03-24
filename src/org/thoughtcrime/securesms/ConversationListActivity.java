@@ -27,17 +27,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContext;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
-import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrScanHandler;
 import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Prefs;
+
+import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -90,6 +92,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     menu.clear();
 
     inflater.inflate(R.menu.text_secure_normal, menu);
+
+    if (!Prefs.isLocationStreamingEnabled(this)) {
+      menu.findItem(R.id.menu_global_map).setVisible(false);
+    }
 
     super.onPrepareOptionsMenu(menu);
     return true;
@@ -144,9 +150,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_qr_scan:           handleQrScan();          return true;
       case R.id.menu_qr_show:           handleQrShow();          return true;
       case R.id.menu_deaddrop:          handleDeaddrop();        return true;
+      case R.id.menu_global_map:        handleShowMap();         return true;
     }
 
     return false;
+  }
+
+  private void handleShowMap() {
+      Intent intent = new Intent(this, MapActivity.class);
+      intent.putExtra(MapActivity.CHAT_IDS, ALL_CHATS_GLOBAL_MAP);
+      startActivity(intent);
   }
 
   private void handleQrScan() {

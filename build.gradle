@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     // actually a dependency of -v14
     implementation 'com.android.support:preference-v7:27.1.1'
-    // used to prevent a 25... version to be loaded (from where ever)
+    // used to prevent a 25... version to be loaded (from wherever)
     implementation 'com.android.support:support-v13:27.1.1'
     // used to manage the users preferences
     implementation 'com.android.support:preference-v14:27.1.1'
@@ -102,8 +102,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:7.2.0'
+
     /** Testing libraries */
-    testImplementation 'junit:junit:4.13-beta-2'
+    implementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.12.2'
     testImplementation 'org.mockito:mockito-core:2.25.1'
     testImplementation 'org.powermock:powermock-api-mockito2:2.0.0'
@@ -148,9 +151,9 @@ dependencyVerification {
             'com.annimon:stream:5da6e2e3e0551d61a3ea7014f04312276549e3dd739cf637996e4cf43c5535b9',
             'com.codewaves.stickyheadergrid:stickyheadergrid:f91a3d814cb1915ae03ea0b5bd3bd059158313ff38b89b9abd88ef2367ba1c67',
             'com.davemorrissey.labs:subsampling-scale-image-view:550c5baa07e0bb4ff0a18b705e96d34436d22619248bd8c08c08c730b1f55cfe',
+            'com.mapbox.mapboxsdk:mapbox-android-sdk:8dac5a0fbded898d2b458f5122ebfe1485a0d68f1f594fb9aa9b38ffef35539b',
     ]
 }
-
 
 android {
     compileSdkVersion 27
@@ -170,6 +173,7 @@ android {
         project.ext.set("archivesBaseName", "deltachat")
 
         buildConfigField "boolean", "DEV_BUILD", "false"
+        buildConfigField "String", "MAP_ACCESS_TOKEN", '"pk.eyJ1IjoiZGVsdGFjaGF0IiwiYSI6ImNqc3c1aWczMzBjejY0M28wZmU0a3cwMzMifQ.ZPTH9dFJaav06RAu4rTYHw"'
 
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86"
@@ -224,7 +228,7 @@ android {
                     'proguard/proguard.cfg'
             testProguardFiles 'proguard/proguard-automation.pro',
                     'proguard/proguard.cfg'
-            applicationIdSuffix ".debug"
+            applicationIdSuffix ".beta"
         }
         release {
             minifyEnabled true

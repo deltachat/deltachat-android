@@ -16,6 +16,9 @@
     <item android:title="@string/menu_deaddrop"
           android:id="@+id/menu_deaddrop" />
 
+    <item android:title="@string/menu_show_global_map"
+          android:id="@+id/menu_global_map" />
+
     <item android:title="@string/menu_settings"
           android:id="@+id/menu_settings" />
 

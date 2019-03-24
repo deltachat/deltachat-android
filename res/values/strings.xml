@@ -111,6 +111,8 @@
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle emoji keyboard</string>
     <string name="menu_edit_group">Edit group</string>
+    <string name="menu_show_map">Show map</string>
+    <string name="menu_show_global_map">Show all locations</string>
     <string name="menu_archive_chat">Archive chat</string>
     <string name="menu_unarchive_chat">Unarchive chat</string>
     <string name="menu_add_attachment">Add attachment</string>
@@ -118,6 +120,7 @@
     <string name="menu_delete_chat">Delete chat</string>
     <string name="menu_delete_messages">Delete messages</string>
     <string name="menu_delete_image">Delete image</string>
+    <string name="menu_delete_locations">Delete all locations?</string>
     <string name="menu_message_details">Message details</string>
     <string name="menu_copy_to_clipboard">Copy to clipboard</string>
     <string name="menu_forward">Forward message</string>
@@ -143,6 +146,7 @@
     <string name="menu_deaddrop">Contact requests</string>
     <string name="menu_deaddrop_subtitle">Press message to start chatting</string>
     <string name="menu_view_profile">View profile</string>
+    <string name="title_share_location">Share location with all group members</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_two_hours">Mute for 2 hours</string>
@@ -150,6 +154,12 @@
     <string name="mute_for_seven_days">Mute for 7 days</string>
     <string name="mute_for_one_year">Mute for 1 year</string>
 
+    <string name="share_location_once">once</string>
+    <string name="share_location_for_5_minutes">for 5 minutes</string>
+    <string name="share_location_for_30_minutes">for 30 minutes</string>
+    <string name="share_location_for_one_hour">for 1 hour</string>
+    <string name="share_location_for_two_hours">for 2 hours</string>
+    <string name="share_location_for_six_hours">for 6 hours</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
@@ -609,6 +619,7 @@
     <string name="menu.view.developer.open.log.folder">Open Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
 
+    <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
@@ -621,5 +632,6 @@
     <string name="qrshow_join_verified_group_title">QR invite code</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Scan this to join the group \"%1$s\".</string>
+
 
 </resources>
