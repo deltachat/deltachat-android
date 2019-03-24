@@ -182,16 +182,4 @@ public class MapActivity extends BaseActivity implements Observer {
         }
     }
 
-    private int[] getChatIds(Intent intent) {
-        if (intent == null) {
-            return new int[]{-1};
-        }
-
-        int[] chatIds = intent.getIntArrayExtra(CHAT_IDS);
-        if (chatIds == null || chatIds.length == 0) {
-            chatIds = new int[1];
-            chatIds[0] = getIntent().getIntExtra(CHAT_ID, -1);
-        }
-        return chatIds;
-    }
 }
