@@ -175,4 +175,9 @@ public class DateUtils extends android.text.format.DateUtils {
             TimeUnit.MILLISECONDS.toMinutes(millis),
             TimeUnit.MILLISECONDS.toSeconds(millis-(TimeUnit.MILLISECONDS.toMinutes(millis)*60000)));
   }
+
+  public static String getFormattedTimespan(Context c, int timestamp) {
+    int mins = timestamp / (1000 * 60);
+    return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
+  }
 }

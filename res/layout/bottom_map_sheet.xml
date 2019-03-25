@@ -60,8 +60,7 @@
 
 
         <org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider
-
-            android:layout_marginTop="10dp"
+            android:id="@+id/timeRangeSlider"
             android:layout_marginBottom="10dp"
 
             android:paddingStart="32dp"
