@@ -141,6 +141,11 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                             }
                         }
 
+                        if (chatId == 0) {
+                            Log.e(TAG, "Chat id is 0. Cannot open chat");
+                            return true;
+                        }
+                        
                         Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
                         intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
                         intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
