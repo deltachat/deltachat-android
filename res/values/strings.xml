@@ -219,6 +219,10 @@
     <string name="chat_contact_request">Contact request</string>
     <string name="chat_no_contact_requests">No contact requests.\n\nIf you want classic emails to appear here as contact requests, you can change the corresponding setting in the app settings.</string>
 
+    <!-- map -->
+    <string name="filter_map_on_time">Show location traces in time frame</string>
+
+
     <!-- search -->
     <string name="search">Search</string>
     <string name="search_explain">Search for chats, contacts, and messages</string>

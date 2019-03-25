@@ -34,16 +34,12 @@
             />
     </RelativeLayout>
 
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="135dp"
         android:orientation="vertical"
         android:clickable="true"
-        android:focusable="false"
+        android:focusable="true"
         android:background="@android:color/white"
         android:layout_marginTop="-35dp"
         >
@@ -52,12 +48,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Show location traces in time frame"
+            android:text="@string/filter_map_on_time"
             android:paddingTop="8dp"
             android:background="@color/white"
             android:textColor="@android:color/black" />
-
-
 
         <org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider
             android:id="@+id/timeRangeSlider"
@@ -72,7 +66,4 @@
             />
 
     </LinearLayout>
-
-
-
 </LinearLayout>
