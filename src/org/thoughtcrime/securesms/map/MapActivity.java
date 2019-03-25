@@ -3,15 +3,19 @@ package org.thoughtcrime.securesms.map;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
@@ -20,6 +24,7 @@ import org.thoughtcrime.securesms.BaseActivity;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.geolocation.DcLocation;
 
@@ -27,6 +32,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
+import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
@@ -40,6 +47,7 @@ public class MapActivity extends BaseActivity implements Observer {
 
     private DcLocation dcLocation;
     private MapDataManager mapDataManager;
+    private MapboxMap mapboxMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +75,7 @@ public class MapActivity extends BaseActivity implements Observer {
 
         mapFragment.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
 
+            this.mapboxMap = mapboxMap;
             mapboxMap.setCameraPosition(new CameraPosition.Builder()
                     .target(new LatLng(dcLocation.getLastLocation().getLatitude(), dcLocation.getLastLocation().getLongitude()))
                     .zoom(9)
@@ -151,6 +160,25 @@ public class MapActivity extends BaseActivity implements Observer {
             }
         }));
 
+        TimeRangeSlider timeRangeSlider = this.findViewById(R.id.timeRangeSlider);
+        timeRangeSlider.setOnTimestampChangedListener(this);
+
+        View bottomSheet = this.findViewById(R.id.bottom_sheet);
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+
+
+        RelativeLayout bottomSheetSlider = this.findViewById(R.id.bottomSheetSlider);
+        bottomSheetSlider.setOnClickListener(v -> {
+            switch (behavior.getState()) {
+                case STATE_EXPANDED:
+                    behavior.setState(STATE_COLLAPSED);
+                    break;
+                default:
+                    behavior.setState(STATE_EXPANDED);
+                    break;
+            }
+        });
+
     }
 
     @Override
@@ -181,5 +209,4 @@ public class MapActivity extends BaseActivity implements Observer {
             //TODO: consider implementing a button -> center map to current location
         }
     }
-
 }

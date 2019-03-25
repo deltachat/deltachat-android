@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:id="@+id/bottom_sheet"
-    app:behavior_hideable="false"
+    app:behavior_hideable="true"
     app:behavior_peekHeight="35dp"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
     android:background="@color/transparent"
