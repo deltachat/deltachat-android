@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -43,8 +44,11 @@ public class RangeSliderView extends View {
     protected float delta;
 
     private float beginTrackOffsetX;
+    private boolean isThumbViewLocked;
 
     private OnValueChangedListener onValueChangedListener;
+    GestureDetector longPressDetector;
+
 
     public interface OnValueChangedListener {
         void onValueChanged(int minValue, int maxValue);
@@ -125,6 +129,17 @@ public class RangeSliderView extends View {
             values.add(index);
         }
         delta = 0;
+
+        longPressDetector = new GestureDetector(new GestureDetector.SimpleOnGestureListener() {
+            public void onLongPress(MotionEvent e) {
+                if (minValue == maxValue && (minValueThumb.isHighlight || maxValueThumb.isHighlight)) {
+                    isThumbViewLocked = true;
+                    minValueThumb.isHighlight = true;
+                    maxValueThumb.isHighlight = true;
+                    invalidate();
+                }
+            }
+        });
     }
 
     void setOnValueChangedListener(OnValueChangedListener onValueChangedListener) {
@@ -183,21 +198,28 @@ public class RangeSliderView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        longPressDetector.onTouchEvent(event);
+
         if (event.getAction() == MotionEvent.ACTION_CANCEL) {
             minValueThumb.isHighlight = false;
             maxValueThumb.isHighlight = false;
+            isThumbViewLocked = false;
             invalidate();
             return true;
         }
 
-        if (event.getAction() == MotionEvent.ACTION_UP && (minValueThumb.isHighlight || maxValueThumb.isHighlight)) {
-            if (onValueChangedListener != null) {
-                onValueChangedListener.onValueChanged(minValue, maxValue);
+
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            isThumbViewLocked = false;
+            if (minValueThumb.isHighlight || maxValueThumb.isHighlight) {
+                if (onValueChangedListener != null) {
+                    onValueChangedListener.onValueChanged(minValue, maxValue);
+                }
+                minValueThumb.isHighlight = false;
+                maxValueThumb.isHighlight = false;
+                invalidate();
+                return true;
             }
-            minValueThumb.isHighlight = false;
-            maxValueThumb.isHighlight = false;
-            invalidate();
-            return true;
         }
 
         int offsetX = (int) event.getX();
@@ -232,6 +254,7 @@ public class RangeSliderView extends View {
                     minValueThumb.isHighlight = false;
                     maxValueThumb.isHighlight = true;
                 }
+
                 int count = values.size();
                 int index = getIndexFromPosition(offsetX);
                 Log.d(TAG, "move - index: " + index + ", offsetX: " + offsetX);
@@ -241,7 +264,10 @@ public class RangeSliderView extends View {
                     index = count - 1;
                 }
 
-                if (minValueThumb.isHighlight) {
+                if (isThumbViewLocked) {
+                    minValue = values.get(index);
+                    maxValue = values.get(index);
+                } else if (minValueThumb.isHighlight) {
                     if (index > values.indexOf(maxValue)) {
                         minValue = maxValue;
                     } else {

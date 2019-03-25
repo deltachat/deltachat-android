@@ -204,12 +204,24 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         }
     }
 
+    public void filter(long startTimestamp, long endTimestamp, LatLngBounds.Builder builder) {
+        int[] contactIds = getContactIds(chatId);
+        for (int contactId : contactIds) {
+            resetSource(chatId);
+            updateSource(chatId, contactId, startTimestamp, endTimestamp, builder);
+        }
+    }
+
     private void updateSource(int chatId, int contactId) {
         updateSource(chatId, contactId, null);
     }
 
     private void updateSource(int chatId, int contactId, LatLngBounds.Builder boundingBuilder) {
-        DcArray locations = dcContext.getLocations(chatId, contactId, System.currentTimeMillis() - TIMEOUT, TIMESTAMP_NOW);
+        updateSource(chatId, contactId, System.currentTimeMillis() - TIMEOUT, TIMESTAMP_NOW, boundingBuilder );
+    }
+
+    private void updateSource(int chatId, int contactId, long startTimestamp, long endTimestamp, LatLngBounds.Builder boundingBuilder) {
+        DcArray locations = dcContext.getLocations(chatId, contactId, startTimestamp, endTimestamp);
         MapSource contactMapMetadata = contactMapSources.get(contactId);
         if (contactMapMetadata == null) {
             contactMapMetadata = addContactMapSource(contactId);
@@ -405,6 +417,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         }
     }
 
+    private void resetSource(int contactId) {
+        MapSource contactMapMetadata = contactMapSources.get(contactId);
+        if (contactMapMetadata != null) {
+            featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), new FeatureTreeSet());
+        }
+    }
 
     private void replaceSelectedMarker(String featureId) {
         Feature feature = getFeatureWithId(featureId);
