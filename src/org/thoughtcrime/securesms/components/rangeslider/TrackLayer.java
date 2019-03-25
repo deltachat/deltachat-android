@@ -32,9 +32,26 @@ class TrackLayer {
         this.paddingRight = paddingRight;
     }
 
-    void draw(Canvas canvas, int width, float offsetLeft, float offsetRight, float offsetY) {
+    void draw(Canvas canvas, int width, float offsetLeft, float offsetRight, float offsetY, float delta) {
         draw(canvas, backgoundPaint, paddingLeft,  width - paddingRight,  offsetY);
-        draw(canvas, centerPaint, offsetLeft, offsetRight, offsetY);
+        if (offsetLeft == offsetRight) {
+            float maxEndX = width - paddingRight;
+            float minStartX = paddingLeft;
+            float offsetDeltaLeft = offsetLeft - delta;
+            float offsetDeltaRight = offsetRight + delta;
+
+            if (offsetLeft - delta < minStartX) {
+                offsetDeltaLeft = minStartX;
+            } else if (offsetRight + delta > maxEndX) {
+                offsetDeltaRight = maxEndX;
+            }
+
+            draw(canvas, centerPaint, offsetDeltaLeft, offsetDeltaRight, offsetY);
+        }
+        else {
+            draw(canvas, centerPaint, offsetLeft, offsetRight, offsetY);
+        }
+
     }
 
     void draw(Canvas canvas, Paint paint, float startX, float endX, float offsetY) {

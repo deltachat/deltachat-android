@@ -17,15 +17,16 @@ import java.util.ArrayList;
 public class RangeSliderView extends View {
 
     private static final String TAG = RangeSliderView.class.getName();
-    private int trackTintColor;
-    private int trackHighlightTintColor;
-    private float trackHeight;
-    private float thumbRadius;
-    private float thumbOutlineSize;
-    private float displayTextFontSize;
-    private float displayTextBasicOffsetY;
-    private int sliderPaddingLeft;
-    private int sliderPaddingRight;
+
+    protected int trackTintColor;
+    protected int trackHighlightTintColor;
+    protected float trackHeight;
+    protected float thumbRadius;
+    protected float thumbOutlineSize;
+    protected float displayTextFontSize;
+    protected float displayTextBasicOffsetY;
+    protected int sliderPaddingLeft;
+    protected int sliderPaddingRight;
 
     private ThumbLayer minValueThumb;
     private TextLayer minValueDisplayLabel;
@@ -39,7 +40,7 @@ public class RangeSliderView extends View {
 
     protected int minValue;
     protected int maxValue;
-    protected int steps;
+    protected float delta;
 
     private float beginTrackOffsetX;
 
@@ -123,9 +124,10 @@ public class RangeSliderView extends View {
         for (int index = 1; index <= 100; index++) {
             values.add(index);
         }
+        delta = 0;
     }
 
-    public void setOnValueChangedListener(OnValueChangedListener onValueChangedListener) {
+    void setOnValueChangedListener(OnValueChangedListener onValueChangedListener) {
         this.onValueChangedListener = onValueChangedListener;
         invalidate();
     }
@@ -149,39 +151,49 @@ public class RangeSliderView extends View {
         float offsetY = getHeight() / 2;
         float minValueOffsetX = getPositionFromIndex(minValue);
         float maxValueOffsetX = getPositionFromIndex(maxValue);
-        float displayLabelOffsetY = offsetY - thumbRadius - displayTextBasicOffsetY;
+        float displayLabelOffsetAbove = offsetY - thumbRadius - displayTextBasicOffsetY;
+        float displayLabelOffsetBelow = offsetY + thumbRadius + thumbOutlineSize + displayTextFontSize;
 
         Log.d(TAG, "onDraw minValueOffsetX: " + minValueOffsetX + ", maxValueOffsetX: " + maxValueOffsetX);
-        track.draw(canvas, getWidth(), minValueOffsetX, maxValueOffsetX, offsetY - trackHeight / 2);
+        track.draw(canvas, getWidth(), minValueOffsetX, maxValueOffsetX, offsetY - trackHeight / 2, getDeltaInPixel());
 
         minValueThumb.draw(canvas, minValueOffsetX, offsetY);
+        maxValueThumb.draw(canvas, maxValueOffsetX, offsetY);
+
         if (onValueChangedListener != null) {
             minValueDisplayLabel.draw(
                     canvas,
                     onValueChangedListener.parseMinValueDisplayText(minValue),
                     minValueOffsetX,
-                    displayLabelOffsetY
+                    displayLabelOffsetBelow
             );
-        } else {
-            minValueDisplayLabel.draw(canvas, String.valueOf(minValue), minValueOffsetX, displayLabelOffsetY);
-        }
-
-        maxValueThumb.draw(canvas, maxValueOffsetX, offsetY);
-        if (onValueChangedListener != null) {
             maxValueDisplayLabel.draw(
                     canvas,
                     onValueChangedListener.parseMaxValueDisplayText(maxValue),
                     maxValueOffsetX,
-                    displayLabelOffsetY
+                    displayLabelOffsetAbove
             );
+
+
         } else {
-            maxValueDisplayLabel.draw(canvas, String.valueOf(maxValue), maxValueOffsetX, displayLabelOffsetY);
+            minValueDisplayLabel.draw(canvas, String.valueOf(minValue), minValueOffsetX, displayLabelOffsetBelow);
+            maxValueDisplayLabel.draw(canvas, String.valueOf(maxValue), maxValueOffsetX, displayLabelOffsetAbove);
         }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_CANCEL || event.getAction() == MotionEvent.ACTION_UP) {
+        if (event.getAction() == MotionEvent.ACTION_CANCEL) {
+            minValueThumb.isHighlight = false;
+            maxValueThumb.isHighlight = false;
+            invalidate();
+            return true;
+        }
+
+        if (event.getAction() == MotionEvent.ACTION_UP && (minValueThumb.isHighlight || maxValueThumb.isHighlight)) {
+            if (onValueChangedListener != null) {
+                onValueChangedListener.onValueChanged(minValue, maxValue);
+            }
             minValueThumb.isHighlight = false;
             maxValueThumb.isHighlight = false;
             invalidate();
@@ -244,9 +256,6 @@ public class RangeSliderView extends View {
                 }
 
                 if (minValueThumb.isHighlight || maxValueThumb.isHighlight) {
-                    if (onValueChangedListener != null) {
-                        onValueChangedListener.onValueChanged(minValue, maxValue);
-                    }
                     invalidate();
                 }
                 break;
@@ -256,13 +265,24 @@ public class RangeSliderView extends View {
     }
 
     protected int getIndexFromPosition(int offsetX) {
-        int count = values.size();
-        return ((offsetX - sliderPaddingLeft) * count / getSliderWidth());
+        return ((offsetX - sliderPaddingLeft) * getCount() / getSliderWidth());
     }
     protected float getPositionFromIndex(int value) {
-        int count = values.size();
-        Log.d(TAG, "value: " + value +", position: " + (getSliderWidth() / count) * value + sliderPaddingLeft);
-        return (getSliderWidth() / count) * value + sliderPaddingLeft;
+        Log.d(TAG, "value: " + value +", position: " + (getSliderWidth() / getCount()) * value + sliderPaddingLeft);
+        return (getSliderWidth() / getCount()) * value + sliderPaddingLeft;
+    }
+
+    public float getDeltaInPixel() {
+        // '* 2' is just an offset factor to increase the visibility
+        return (getSliderWidth() / getCount()) * delta + (2 * thumbRadius + thumbOutlineSize);
+    }
+
+    public float getDeltaInValues() {
+        return delta;
+    }
+
+    public int getCount() {
+        return values.size();
     }
 
     public int getSliderWidth() {

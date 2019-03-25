@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.components.rangeslider;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 
 import org.thoughtcrime.securesms.R;
@@ -15,12 +16,14 @@ import java.util.Locale;
  */
 
 public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.OnValueChangedListener {
-    // timeframe in seconds
-    private static final int DEFAULT_TIMEFRAME_2D = 60 * 60 * 24 * 2;
-    private static final int DEFAULT_STEPS = 60 * 10;
-    int timeFrame;
+    private static final int DEFAULT_TIMEFRAME_2D = 60 * 60 * 24 * 2; // 2d
+    private static final float DEFAULT_DELTA = 1000*60*30; // 30 min
+    int timeFrame; // timeframe in seconds
+
     Locale locale;
     OnTimestampChangedListener listener;
+    private TextLayer minRangeDisplayLabel;
+    private TextLayer maxRangeDisplayLabel;
 
 
     public TimeRangeSlider(Context context) {
@@ -42,6 +45,41 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
 
         locale = DynamicLanguage.getSelectedLocale(context);
         super.setOnValueChangedListener(this);
+        minRangeDisplayLabel = new TextLayer(displayTextFontSize, trackHighlightTintColor);
+        maxRangeDisplayLabel = new TextLayer(displayTextFontSize, trackHighlightTintColor);
+        delta = DEFAULT_DELTA / (timeFrame * 1000) * getCount();
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        float offsetY = getHeight() / 2;
+        float minValueOffsetX = getPositionFromIndex(minValue);
+        float maxValueOffsetX = getPositionFromIndex(maxValue);
+        float displayLabelOffsetBelow = offsetY + thumbRadius + thumbOutlineSize + displayTextFontSize;
+
+        if (minValue == maxValue) {
+            if (minValueOffsetX - getDeltaInPixel() >= sliderPaddingLeft
+                    ) {
+                minRangeDisplayLabel.draw(
+                        canvas,
+                        getDeltaInTime(getContext()),
+                        minValueOffsetX - getDeltaInPixel(),
+                        displayLabelOffsetBelow
+                );
+            }
+
+            if (maxValueOffsetX + getDeltaInPixel() <= (getWidth() - sliderPaddingRight)) {
+                maxRangeDisplayLabel.draw(
+                        canvas,
+                        getDeltaInTime(getContext()),
+                        maxValueOffsetX + getDeltaInPixel(),
+                        displayLabelOffsetBelow
+                );
+            }
+
+        }
     }
 
     public interface OnTimestampChangedListener {
@@ -62,6 +100,9 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
 
     @Override
     public String parseMinValueDisplayText(int minValue) {
+        if (minValue == maxValue) {
+            return "";
+        }
         return getStringForValue(minValue);
     }
 
@@ -76,7 +117,11 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     }
 
     private long getTimestampForValue(int value) {
-        return  System.currentTimeMillis() - ((timeFrame / 100) * (100 - value) * 1000);
+        return  System.currentTimeMillis() - ((timeFrame / getCount()) * (getCount() - value) * 1000);
+    }
+
+    public String getDeltaInTime(Context context) {
+        return DateUtils.getFormattedTimespan(context, (int) (timeFrame * 1000 / getCount() * getDeltaInValues()));
     }
 
 
