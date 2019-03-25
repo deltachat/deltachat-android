@@ -3,6 +3,8 @@ package org.thoughtcrime.securesms.map;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -13,8 +15,11 @@ import android.widget.RelativeLayout;
 import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
@@ -34,11 +39,12 @@ import java.util.Observer;
 
 import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
 import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
+import static android.support.design.widget.BottomSheetBehavior.STATE_HIDDEN;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 
-public class MapActivity extends BaseActivity implements Observer {
+public class MapActivity extends BaseActivity implements Observer, TimeRangeSlider.OnTimestampChangedListener {
 
     public static final String TAG = MapActivity.class.getSimpleName();
     public static final String CHAT_ID = "chat_id";
@@ -207,6 +213,22 @@ public class MapActivity extends BaseActivity implements Observer {
                     dcLocation.getLastLocation().getLatitude() + ", " +
                     dcLocation.getLastLocation().getLongitude());
             //TODO: consider implementing a button -> center map to current location
+        }
+    }
+
+    @Override
+    public void onValueChanged(long startTimestamp, long stopTimestamp) {
+        if (this.mapboxMap == null) {
+            return;
+        }
+        LatLngBounds.Builder boundingBuilder = new LatLngBounds.Builder();
+        mapDataManager.filter(startTimestamp, stopTimestamp, boundingBuilder);
+        try {
+            mapboxMap.easeCamera(
+                    CameraUpdateFactory.newLatLngBounds(boundingBuilder.build(), 50, 50, 50, 200),
+                    500);
+        } catch (InvalidLatLngBoundsException e) {
+            e.printStackTrace();
         }
     }
 }

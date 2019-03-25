@@ -221,6 +221,7 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Show location traces in time frame</string>
+    <string name="filter_last_position">Last position</string>
 
 
     <!-- search -->

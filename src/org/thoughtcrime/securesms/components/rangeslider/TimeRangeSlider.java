@@ -108,6 +108,9 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
 
     @Override
     public String parseMaxValueDisplayText(int maxValue) {
+        if (minValue == maxValue && maxValue == getCount()) {
+            return getContext().getResources().getString(R.string.filter_last_position);
+        }
         return getStringForValue(maxValue);
     }
 
