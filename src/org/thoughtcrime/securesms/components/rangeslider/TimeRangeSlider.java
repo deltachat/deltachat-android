@@ -25,6 +25,8 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     private TextLayer minRangeDisplayLabel;
     private TextLayer maxRangeDisplayLabel;
 
+    float displayLabelOffsetBelow;
+
 
     public TimeRangeSlider(Context context) {
         this(context, null, 0);
@@ -51,13 +53,17 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     }
 
     @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        displayLabelOffsetBelow = offsetY + thumbRadius + thumbOutlineSize + trackHeight / 2 + displayTextBasicOffsetY;
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        float offsetY = getHeight() / 2;
         float minValueOffsetX = getPositionFromIndex(minValue);
         float maxValueOffsetX = getPositionFromIndex(maxValue);
-        float displayLabelOffsetBelow = offsetY + thumbRadius + thumbOutlineSize + displayTextFontSize;
 
         if (minValue == maxValue) {
             if (minValueOffsetX - getDeltaInPixel() >= sliderPaddingLeft
@@ -83,7 +89,13 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     }
 
     public interface OnTimestampChangedListener {
-        void onValueChanged(long startTimestamp, long stopTimestamp);
+        void onTimestampChanged(long startTimestamp, long stopTimestamp);
+
+        /**
+         * filter for lastPosition beginning from startTimestamp to now
+         * @param startTimestamp begin of time frame
+         */
+        void onFilterLastPosition(long startTimestamp);
     }
 
 
@@ -94,7 +106,19 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     @Override
     public void onValueChanged(int minValue, int maxValue) {
         if (listener != null) {
-            listener.onValueChanged(getTimestampForValue(minValue), getTimestampForValue(maxValue));
+            long minTimeStamp = getTimestampForValue(minValue);
+            if (minValue == maxValue) {
+                if (minValue == getCount()) {
+                    // filter last location
+                    listener.onFilterLastPosition(System.currentTimeMillis() - (long) DEFAULT_DELTA);
+                } else {
+                    // filter for time of event with delta before and after
+                    listener.onTimestampChanged(minTimeStamp - (long) DEFAULT_DELTA, minTimeStamp + (long) DEFAULT_DELTA);
+                }
+            } else {
+                //filter for time span
+                listener.onTimestampChanged(minTimeStamp, getTimestampForValue(maxValue));
+            }
         }
     }
 

@@ -57,7 +57,7 @@
     <dimen name="slider_thumbRadius">14dp</dimen>
     <dimen name="slider_thumbOutlineSize">4dp</dimen>
     <dimen name="slider_displayTextFontSize">12sp</dimen>
-    <dimen name="slider_displayTextBasicOffsetY">6dp</dimen>
+    <dimen name="slider_displayTextBasicOffsetY">8dp</dimen>
     <integer name="slider_minValue">100</integer>
     <integer name="slider_maxValue">100</integer>
 
