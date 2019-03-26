@@ -232,7 +232,7 @@ public class RangeSliderView extends View {
         }
 
         int offsetX = (int) event.getX();
-        if (offsetX < (sliderPaddingLeft - (thumbRadius / 2)) || offsetX > getWidth() - sliderPaddingRight + (thumbRadius / 2)) {
+        if (offsetX < (sliderPaddingLeft - thumbRadius) || offsetX > getWidth() - sliderPaddingRight + thumbRadius) {
             //Log.d(TAG, "ignore touch in padding");
             return true;
         }
