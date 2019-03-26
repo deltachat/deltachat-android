@@ -764,10 +764,6 @@ public class ConversationFragment extends Fragment
     @Override
     public void onInviteSharedContactClicked(@NonNull List<Recipient> choices) {
       if (getContext() == null) return;
-
-//      ContactUtil.selectRecipientThroughDialog(getContext(), choices, locale, recipient -> {
-//        CommunicationActions.composeSmsThroughDefaultApp(getContext(), recipient.getAddress(), getString(R.string.InviteActivity_lets_switch_to_signal, "https://sgnl.link/1KpeYmF"));
-//      });
     }
   }
 
