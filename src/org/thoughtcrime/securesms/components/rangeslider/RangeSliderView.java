@@ -43,6 +43,11 @@ public class RangeSliderView extends View {
     protected int maxValue;
     protected float delta;
 
+    protected float offsetY;
+    protected float maxValueDisplayLabelOffsetY;
+    protected float minValueDisplayLabelOffsetY;
+    protected float trackOffsetY;
+
     private float beginTrackOffsetX;
     private boolean isThumbViewLocked;
 
@@ -160,18 +165,21 @@ public class RangeSliderView extends View {
     }
 
     @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        this.offsetY = getHeight() / 5 * 3;
+        maxValueDisplayLabelOffsetY = offsetY - thumbRadius - thumbOutlineSize - trackHeight / 2 - displayTextBasicOffsetY - displayTextFontSize;
+        minValueDisplayLabelOffsetY = maxValueDisplayLabelOffsetY + displayTextFontSize + displayTextFontSize / 2;
+        trackOffsetY = offsetY - trackHeight / 2;
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        float offsetY = getHeight() / 2;
         float minValueOffsetX = getPositionFromIndex(minValue);
         float maxValueOffsetX = getPositionFromIndex(maxValue);
-        float displayLabelOffsetAbove = offsetY - thumbRadius - displayTextBasicOffsetY;
-        float displayLabelOffsetBelow = offsetY + thumbRadius + thumbOutlineSize + displayTextFontSize;
-
-        Log.d(TAG, "onDraw minValueOffsetX: " + minValueOffsetX + ", maxValueOffsetX: " + maxValueOffsetX);
-        track.draw(canvas, getWidth(), minValueOffsetX, maxValueOffsetX, offsetY - trackHeight / 2, getDeltaInPixel());
-
+        track.draw(canvas, getWidth(), minValueOffsetX, maxValueOffsetX, trackOffsetY, getDeltaInPixel());
         minValueThumb.draw(canvas, minValueOffsetX, offsetY);
         maxValueThumb.draw(canvas, maxValueOffsetX, offsetY);
 
@@ -180,19 +188,17 @@ public class RangeSliderView extends View {
                     canvas,
                     onValueChangedListener.parseMinValueDisplayText(minValue),
                     minValueOffsetX,
-                    displayLabelOffsetBelow
+                    minValueDisplayLabelOffsetY
             );
             maxValueDisplayLabel.draw(
                     canvas,
                     onValueChangedListener.parseMaxValueDisplayText(maxValue),
                     maxValueOffsetX,
-                    displayLabelOffsetAbove
+                    maxValueDisplayLabelOffsetY
             );
-
-
         } else {
-            minValueDisplayLabel.draw(canvas, String.valueOf(minValue), minValueOffsetX, displayLabelOffsetBelow);
-            maxValueDisplayLabel.draw(canvas, String.valueOf(maxValue), maxValueOffsetX, displayLabelOffsetAbove);
+            minValueDisplayLabel.draw(canvas, String.valueOf(minValue), minValueOffsetX, minValueDisplayLabelOffsetY);
+            maxValueDisplayLabel.draw(canvas, String.valueOf(maxValue), maxValueOffsetX, maxValueDisplayLabelOffsetY);
         }
     }
 
@@ -207,7 +213,6 @@ public class RangeSliderView extends View {
             invalidate();
             return true;
         }
-
 
         if (event.getAction() == MotionEvent.ACTION_UP) {
             isThumbViewLocked = false;

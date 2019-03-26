@@ -3,8 +3,6 @@ package org.thoughtcrime.securesms.map;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -15,11 +13,8 @@ import android.widget.RelativeLayout;
 import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
-import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
-import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
@@ -39,7 +34,6 @@ import java.util.Observer;
 
 import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
 import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
-import static android.support.design.widget.BottomSheetBehavior.STATE_HIDDEN;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
@@ -95,6 +89,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
             }
 
             mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
+                Log.d(TAG, "on Data initialized");
                 mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
             });
 
@@ -145,7 +140,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                             Log.e(TAG, "Chat id is 0. Cannot open chat");
                             return true;
                         }
-                        
+
                         Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
                         intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
                         intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
@@ -222,18 +217,16 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     }
 
     @Override
-    public void onValueChanged(long startTimestamp, long stopTimestamp) {
+    public void onTimestampChanged(long startTimestamp, long stopTimestamp) {
         if (this.mapboxMap == null) {
             return;
         }
-        LatLngBounds.Builder boundingBuilder = new LatLngBounds.Builder();
-        mapDataManager.filter(startTimestamp, stopTimestamp, boundingBuilder);
-        try {
-            mapboxMap.easeCamera(
-                    CameraUpdateFactory.newLatLngBounds(boundingBuilder.build(), 50, 50, 50, 200),
-                    500);
-        } catch (InvalidLatLngBoundsException e) {
-            e.printStackTrace();
-        }
+        mapDataManager.filter(startTimestamp, stopTimestamp);
+
+    }
+
+    @Override
+    public void onFilterLastPosition(long startTimestamp) {
+        mapDataManager.filterLastPositions(startTimestamp);
     }
 }

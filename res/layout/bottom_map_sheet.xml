@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="165dp"
     android:id="@+id/bottom_sheet"
     app:behavior_hideable="true"
     app:behavior_peekHeight="35dp"
@@ -50,12 +50,13 @@
             android:gravity="center"
             android:text="@string/filter_map_on_time"
             android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:background="@color/white"
             android:textColor="@android:color/black" />
 
         <org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider
             android:id="@+id/timeRangeSlider"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
 
             android:paddingStart="32dp"
             android:paddingEnd="32dp"

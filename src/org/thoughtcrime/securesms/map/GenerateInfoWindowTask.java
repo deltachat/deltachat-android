@@ -116,7 +116,7 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
                 String id = feature.getStringProperty(INFO_WINDOW_ID);
                 imagesMap.put(id, bitmap);
 
-                if (i % 10 == 0) {
+                if (i % 20 == 0) {
                     publishProgress(new HashMap<>(imagesMap));
                     imagesMap.clear();
                 }
