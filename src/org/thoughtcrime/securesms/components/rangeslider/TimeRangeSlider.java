@@ -55,7 +55,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        displayLabelOffsetBelow = offsetY + thumbRadius + thumbOutlineSize + trackHeight / 2 + displayTextBasicOffsetY;
+        displayLabelOffsetBelow = offsetY + thumbInnerRadius + thumbOutlineSize + trackHeight / 2 + displayTextBasicOffsetY;
     }
 
     @Override
@@ -66,8 +66,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
         float maxValueOffsetX = getPositionFromIndex(maxValue);
 
         if (minValue == maxValue) {
-            if (minValueOffsetX - getDeltaInPixel() >= sliderPaddingLeft
-                    ) {
+            if (minValueOffsetX - getDeltaInPixel() >= sliderPaddingLeft) {
                 minRangeDisplayLabel.draw(
                         canvas,
                         getDeltaInTime(getContext()),
