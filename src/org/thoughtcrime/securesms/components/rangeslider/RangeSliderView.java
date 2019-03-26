@@ -22,7 +22,7 @@ public class RangeSliderView extends View {
     protected int trackTintColor;
     protected int trackHighlightTintColor;
     protected float trackHeight;
-    protected float thumbRadius;
+    protected float thumbInnerRadius;
     protected float thumbOutlineSize;
     protected float displayTextFontSize;
     protected float displayTextBasicOffsetY;
@@ -47,6 +47,8 @@ public class RangeSliderView extends View {
     protected float maxValueDisplayLabelOffsetY;
     protected float minValueDisplayLabelOffsetY;
     protected float trackOffsetY;
+    protected float thumbRadius;
+    protected float sliderWidth;
 
     private float beginTrackOffsetX;
     private boolean isThumbViewLocked;
@@ -99,7 +101,7 @@ public class RangeSliderView extends View {
                 R.styleable.RangeSliderView_trackHeight,
                 resources.getDimension(R.dimen.slider_trackHeight)
         );
-        thumbRadius = typedArray.getDimension(
+        thumbInnerRadius = typedArray.getDimension(
                 R.styleable.RangeSliderView_thumbRadius,
                 resources.getDimension(R.dimen.slider_thumbRadius)
         );
@@ -121,10 +123,10 @@ public class RangeSliderView extends View {
                 100
         );
 
-        minValueThumb = new ThumbLayer(thumbRadius, thumbOutlineSize, trackHighlightTintColor, trackTintColor);
+        minValueThumb = new ThumbLayer(thumbInnerRadius, thumbOutlineSize, trackHighlightTintColor, trackTintColor);
         minValueDisplayLabel = new TextLayer(displayTextFontSize, trackHighlightTintColor);
 
-        maxValueThumb = new ThumbLayer(thumbRadius, thumbOutlineSize, trackHighlightTintColor, trackTintColor);
+        maxValueThumb = new ThumbLayer(thumbInnerRadius, thumbOutlineSize, trackHighlightTintColor, trackTintColor);
         maxValueDisplayLabel = new TextLayer(displayTextFontSize, trackHighlightTintColor);
 
         track = new TrackLayer(sliderPaddingLeft, sliderPaddingRight, trackHeight, trackTintColor, trackHighlightTintColor);
@@ -168,9 +170,11 @@ public class RangeSliderView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         this.offsetY = getHeight() / 5 * 3;
-        maxValueDisplayLabelOffsetY = offsetY - thumbRadius - thumbOutlineSize - trackHeight / 2 - displayTextBasicOffsetY - displayTextFontSize;
+        maxValueDisplayLabelOffsetY = offsetY - thumbInnerRadius - thumbOutlineSize - trackHeight / 2 - displayTextBasicOffsetY - displayTextFontSize;
         minValueDisplayLabelOffsetY = maxValueDisplayLabelOffsetY + displayTextFontSize + displayTextFontSize / 2;
         trackOffsetY = offsetY - trackHeight / 2;
+        sliderWidth = getWidth() - sliderPaddingLeft - sliderPaddingRight;
+        thumbRadius = thumbInnerRadius + thumbOutlineSize / 2;
     }
 
     @Override
@@ -228,21 +232,20 @@ public class RangeSliderView extends View {
         }
 
         int offsetX = (int) event.getX();
-        if (offsetX < sliderPaddingLeft || offsetX > getWidth() - sliderPaddingRight) {
-            Log.d(TAG, "ignore touch in padding");
+        if (offsetX < (sliderPaddingLeft - (thumbRadius / 2)) || offsetX > getWidth() - sliderPaddingRight + (thumbRadius / 2)) {
+            //Log.d(TAG, "ignore touch in padding");
             return true;
         }
 
-        float radius = getThumbRadius();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 float minValuePosition = getPositionFromIndex(minValue);
                 Log.d(TAG, "action_down minVal: " + minValue + ", " + minValuePosition );
-                if (offsetX >= minValuePosition - radius && offsetX <= minValuePosition + radius) {
+                if (offsetX >= minValuePosition - thumbRadius && offsetX <= minValuePosition + thumbRadius) {
                     minValueThumb.isHighlight = true;
                 } else {
                     float maxValuePosition = getPositionFromIndex(maxValue);
-                    if (offsetX >= maxValuePosition - radius && offsetX <= maxValuePosition + radius) {
+                    if (offsetX >= maxValuePosition - thumbRadius && offsetX <= maxValuePosition + thumbRadius) {
                         maxValueThumb.isHighlight = true;
                     }
                 }
@@ -296,16 +299,16 @@ public class RangeSliderView extends View {
     }
 
     protected int getIndexFromPosition(int offsetX) {
-        return ((offsetX - sliderPaddingLeft) * getCount() / getSliderWidth());
+        return  (int) (((offsetX - sliderPaddingLeft) * getCount()) / sliderWidth);
     }
+
     protected float getPositionFromIndex(int value) {
-        Log.d(TAG, "value: " + value +", position: " + (getSliderWidth() / getCount()) * value + sliderPaddingLeft);
-        return (getSliderWidth() / getCount()) * value + sliderPaddingLeft;
+        return ((sliderWidth / (float) getCount()) * value) + sliderPaddingLeft;
     }
 
     public float getDeltaInPixel() {
         // '* 2' is just an offset factor to increase the visibility
-        return (getSliderWidth() / getCount()) * delta + (2 * thumbRadius + thumbOutlineSize);
+        return (sliderWidth / getCount()) * delta + (2 * thumbInnerRadius + thumbOutlineSize);
     }
 
     public float getDeltaInValues() {
@@ -316,11 +319,4 @@ public class RangeSliderView extends View {
         return values.size();
     }
 
-    public int getSliderWidth() {
-        return getWidth() - sliderPaddingLeft - sliderPaddingRight;
-    }
-
-    private int getThumbRadius() {
-       return (int) (thumbRadius + thumbOutlineSize / 2);
-    }
 }

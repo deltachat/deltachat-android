@@ -60,8 +60,8 @@
 
             android:paddingStart="32dp"
             android:paddingEnd="32dp"
-            android:paddingLeft="32dp"
-            android:paddingRight="32dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
