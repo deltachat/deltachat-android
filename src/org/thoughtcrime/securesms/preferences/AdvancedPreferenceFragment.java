@@ -145,7 +145,11 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("sentbox_watch"));
     mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch"));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move"));
-    updateListSummary(showEmails, Integer.toString(dcContext.getConfigInt("show_emails")));
+
+    String value = Integer.toString(dcContext.getConfigInt("show_emails"));
+    showEmails.setValue(value);
+    updateListSummary(showEmails, value);
+
     initializeListSummary((ListPreferenceWithSummary) findPreference("pref_compression"));
   }
 
