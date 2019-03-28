@@ -98,7 +98,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
     setContentView(R.layout.profile_create_activity);
 
-    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     getSupportActionBar().setTitle(R.string.pref_profile_info_headline);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
@@ -219,7 +218,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private void initializeResources() {
     TextView passwordAccountSettings       = ViewUtil.findById(this, R.id.password_account_settings_button);
-    TextView informationLabel = ViewUtil.findById(this, R.id.information_label);
 
     this.avatar       = ViewUtil.findById(this, R.id.avatar);
     this.name         = ViewUtil.findById(this, R.id.name_text);
@@ -255,13 +253,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     passwordAccountSettings.setOnClickListener(view -> {
       Intent intent = new Intent(this, RegistrationActivity.class);
       startActivity(intent);
-    });
-
-    informationLabel.setOnClickListener(view -> {
-      new AlertDialog.Builder(this)
-          .setMessage(R.string.pref_who_can_see_profile_explain)
-          .setPositiveButton(R.string.ok, null)
-          .show();
     });
   }
 

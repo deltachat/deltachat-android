@@ -51,72 +51,42 @@
             android:id="@+id/status_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="top|left"
+            android:gravity="top|start"
             android:hint="@string/pref_default_status_label"
             android:inputType="textMultiLine"
             android:maxLines="3" />
     </android.support.design.widget.TextInputLayout>
 
-        <LinearLayout
-            android:clickable="true"
-                      android:orientation="horizontal"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="16dp"
-                      android:layout_marginRight="16dp"
-                      android:layout_marginTop="16dip"
-                      android:gravity="center_horizontal|center_vertical">
-
-            <ImageView android:layout_width="wrap_content"
-                       android:layout_height="match_parent"
-                       android:clickable="false"
-                       android:layout_gravity="center_vertical"
-                       android:gravity="center_vertical"
-                       android:src="@drawable/ic_info_white_18dp"
-                       android:tint="@color/blue_400"/>
-
-            <TextView
-                android:id="@+id/information_label"
-                style="@style/Registration.Description"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="3dp"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:text="@string/pref_who_can_see_this_information"
-                android:textColor="@color/blue_400" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/information_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="start"
+        android:text="@string/pref_who_can_see_profile_explain"
+        android:textColor="@color/gray50" />
 
 
-        <LinearLayout android:orientation="vertical"
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:gravity="bottom"
-                      android:clipChildren="false"
-                      android:clipToPadding="false">
+    <TextView
+        android:id="@+id/password_account_settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/pref_password_and_account_settings"
+        android:textColor="@color/blue_400"
+        android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/password_account_settings_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="0dp"
-                android:text="@string/pref_password_and_account_settings"
-                android:textColor="@color/blue_400"
-                android:textSize="16sp"
-                android:textStyle="normal"
-                android:typeface="sans" />
-
-            <org.thoughtcrime.securesms.components.emoji.EmojiDrawer
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/emoji_drawer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone" />
-
-        </LinearLayout>
+    <org.thoughtcrime.securesms.components.emoji.EmojiDrawer
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/emoji_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
 </org.thoughtcrime.securesms.components.InputAwareLayout>
 
