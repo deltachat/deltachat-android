@@ -212,16 +212,6 @@
         <attr name="summaryHasRingtone" format="string|reference" />
     </declare-styleable>
 
-    <declare-styleable name="QuoteView">
-        <attr name="message_type" format="enum">
-            <enum name="preview" value="0" />
-            <enum name="outgoing" value="1" />
-            <enum name="incoming" value="2" />
-        </attr>
-        <attr name="quote_colorPrimary" format="color" />
-        <attr name="quote_colorSecondary" format="color" />
-    </declare-styleable>
-
     <declare-styleable name="DocumentView">
         <attr name="doc_titleColor" format="color" />
         <attr name="doc_captionColor" format="color" />

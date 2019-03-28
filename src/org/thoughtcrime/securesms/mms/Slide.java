@@ -140,8 +140,7 @@ public abstract class Slide {
                                                                    int      height,
                                                                    boolean  hasThumbnail,
                                                          @Nullable String   fileName,
-                                                                   boolean  voiceNote,
-                                                                   boolean quote)
+                                                                   boolean  voiceNote)
   {
     try {
       String                 resolvedType    = Optional.fromNullable(MediaUtil.getMimeType(context, uri)).or(defaultMime);
@@ -155,8 +154,7 @@ public abstract class Slide {
                                height,
                                fileName,
                                fastPreflightId,
-                               voiceNote,
-                               quote);
+                               voiceNote);
     } catch (NoSuchAlgorithmException e) {
       throw new AssertionError(e);
     }

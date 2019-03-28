@@ -23,17 +23,12 @@ import android.widget.Toast;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
 import org.thoughtcrime.securesms.components.emoji.EmojiToggle;
-import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.mms.QuoteModel;
-import org.thoughtcrime.securesms.mms.SlideDeck;
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
-import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -48,7 +43,6 @@ public class InputPanel extends LinearLayout
 
   private static final int FADE_TIME = 150;
 
-  private QuoteView   quoteView;
   private EmojiToggle emojiToggle;
   private ComposeText composeText;
   private View        quickCameraToggle;
@@ -80,9 +74,6 @@ public class InputPanel extends LinearLayout
   public void onFinishInflate() {
     super.onFinishInflate();
 
-    View quoteDismiss = findViewById(R.id.quote_dismiss);
-
-    this.quoteView              = findViewById(R.id.quote_view);
     this.emojiToggle            = findViewById(R.id.emoji_toggle);
     this.composeText            = findViewById(R.id.embedded_text_editor);
     this.quickCameraToggle      = findViewById(R.id.quick_camera_toggle);
@@ -106,8 +97,6 @@ public class InputPanel extends LinearLayout
       emojiToggle.setVisibility(View.VISIBLE);
       emojiVisible = true;
     }
-
-    quoteDismiss.setOnClickListener(v -> clearQuote());
   }
 
   public void setListener(final @NonNull Listener listener) {
@@ -118,23 +107,6 @@ public class InputPanel extends LinearLayout
 
   public void setMediaListener(@NonNull MediaListener listener) {
     composeText.setMediaListener(listener);
-  }
-
-  public void setQuote(@NonNull GlideRequests glideRequests, long id, @NonNull Recipient author, @NonNull String body, @NonNull SlideDeck attachments) {
-    this.quoteView.setQuote(glideRequests, id, author, body, attachments);
-    this.quoteView.setVisibility(View.VISIBLE);
-  }
-
-  public void clearQuote() {
-    this.quoteView.dismiss();
-  }
-
-  public Optional<QuoteModel> getQuote() {
-    if (quoteView.getQuoteId() > 0 && quoteView.getVisibility() == View.VISIBLE) {
-      return Optional.of(new QuoteModel(quoteView.getQuoteId(), quoteView.getAuthor().getAddress(), quoteView.getBody(), quoteView.getAttachments()));
-    } else {
-      return Optional.absent();
-    }
   }
 
   public void setEmojiDrawer(@NonNull EmojiDrawer emojiDrawer) {

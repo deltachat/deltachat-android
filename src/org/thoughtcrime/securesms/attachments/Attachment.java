@@ -24,12 +24,10 @@ public abstract class Attachment {
   private final int width;
   private final int height;
 
-  private final boolean quote;
-
   public Attachment(@NonNull String contentType, int transferState, long size, @Nullable String fileName,
                     @Nullable String location, @Nullable String key, @Nullable String relay,
                     @Nullable byte[] digest, @Nullable String fastPreflightId, boolean voiceNote,
-                    int width, int height, boolean quote)
+                    int width, int height)
   {
     this.contentType     = contentType;
     this.transferState   = transferState;
@@ -40,7 +38,6 @@ public abstract class Attachment {
     this.voiceNote       = voiceNote;
     this.width           = width;
     this.height          = height;
-    this.quote           = quote;
   }
 
   @Nullable
@@ -91,9 +88,5 @@ public abstract class Attachment {
 
   public int getHeight() {
     return height;
-  }
-
-  public boolean isQuote() {
-    return quote;
   }
 }

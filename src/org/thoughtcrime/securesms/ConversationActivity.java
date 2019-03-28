@@ -903,7 +903,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   protected ListenableFuture<Integer> processComposeControls(int action) {
     return processComposeControls(action, composeText.getTextTrimmed(),
-      attachmentManager.isAttachmentPresent() || inputPanel.getQuote().isPresent()?
+      attachmentManager.isAttachmentPresent()?
         attachmentManager.buildSlideDeck() : null);
   }
 
@@ -917,7 +917,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setText("");
 
     if(slideDeck!=null) {
-      inputPanel.clearQuote();
       attachmentManager.clear(glideRequests, false);
 
       try {
@@ -1290,36 +1289,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleReplyMessage(DcMsg messageRecord) {
-//    Recipient author;
-//
-//    if (messageRecord.isOutgoing()) {
-//      author = Recipient.from(this, Address.fromSerialized(Prefs.getLocalNumber(this)), true);
-//    } else {
-//      author = messageRecord.getIndividualRecipient();
-//    }
-//
-//    if (messageRecord.isMms() && !((MmsMessageRecord) messageRecord).getSharedContacts().isEmpty()) {
-//      Contact   contact     = ((MmsMessageRecord) messageRecord).getSharedContacts().get(0);
-//      String    displayName = ContactUtil.getDisplayName(contact);
-//      String    body        = getString(R.string.ConversationActivity_quoted_contact_message, EmojiStrings.BUST_IN_SILHOUETTE, displayName);
-//      SlideDeck slideDeck   = new SlideDeck();
-//
-//      if (contact.getAvatarAttachment() != null) {
-//        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, contact.getAvatarAttachment()));
-//      }
-//
-//      inputPanel.setQuote(GlideApp.with(this),
-//                          messageRecord.getDateSent(),
-//                          author,
-//                          body,
-//                          slideDeck);
-//    } else {
-//      inputPanel.setQuote(GlideApp.with(this),
-//                          messageRecord.getDateSent(),
-//                          author,
-//                          messageRecord.getBody(),
-//                          messageRecord.isMms() ? ((MmsMessageRecord) messageRecord).getSlideDeck() : new SlideDeck());
-//    }
   }
 
   @Override

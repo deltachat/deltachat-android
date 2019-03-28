@@ -13,12 +13,11 @@ public class DcAttachment extends Attachment {
   private final DcMsg dcMsg;
 
   public DcAttachment(DcMsg dcMsg) {
-    // todo: width, height, quote
     super(dcMsg.getFilemime(), AttachmentDatabase.TRANSFER_PROGRESS_DONE, dcMsg.getFilebytes(),
         dcMsg.getFilename(),
         Uri.fromFile(new File(dcMsg.getFile())).toString(), String.valueOf(dcMsg.getId()), null, null,
         null, dcMsg.getType() == DcMsg.DC_MSG_VOICE,
-        0, 0, false);
+        0, 0);
     this.dcMsg = dcMsg;
   }
 
