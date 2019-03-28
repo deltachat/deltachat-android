@@ -65,19 +65,7 @@
         <item name="android:textColor">#BFffffff</item>
     </style>
 
-    <style name="Registration.Description" parent="@android:style/TextAppearance">
-        <item name="android:textSize">16.0sp</item>
-        <item name="android:typeface">sans</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:gravity">left</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:shadowColor">#ffffff</item>
-        <item name="android:shadowDx">1.0</item>
-        <item name="android:shadowDy">1.0</item>
-        <item name="android:shadowRadius">0.0</item>
-        <item name="android:lineSpacingMultiplier">1.25</item>
-    </style>
-    
+
     <!-- For Holo Light Dialog Activity Styling Emulation -->
 
     <style name="ComposeEditText" parent="@style/Signal.Text.Body">
