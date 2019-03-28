@@ -50,4 +50,8 @@
 
     <color name="universal_overlay">#44000000</color>
 
+    <color name="trackTintColor">#552090ea</color>
+    <color name="trackHighlightTintColor">#ff2090ea</color>
+
+
 </resources>

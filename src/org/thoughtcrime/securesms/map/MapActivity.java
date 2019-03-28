@@ -3,15 +3,19 @@ package org.thoughtcrime.securesms.map;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.b44t.messenger.DcMsg;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
@@ -20,6 +24,7 @@ import org.thoughtcrime.securesms.BaseActivity;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.geolocation.DcLocation;
 
@@ -27,11 +32,13 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
+import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 
-public class MapActivity extends BaseActivity implements Observer {
+public class MapActivity extends BaseActivity implements Observer, TimeRangeSlider.OnTimestampChangedListener {
 
     public static final String TAG = MapActivity.class.getSimpleName();
     public static final String CHAT_ID = "chat_id";
@@ -40,6 +47,7 @@ public class MapActivity extends BaseActivity implements Observer {
 
     private DcLocation dcLocation;
     private MapDataManager mapDataManager;
+    private MapboxMap mapboxMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +75,7 @@ public class MapActivity extends BaseActivity implements Observer {
 
         mapFragment.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
 
+            this.mapboxMap = mapboxMap;
             mapboxMap.setCameraPosition(new CameraPosition.Builder()
                     .target(new LatLng(dcLocation.getLastLocation().getLatitude(), dcLocation.getLastLocation().getLongitude()))
                     .zoom(9)
@@ -80,6 +89,7 @@ public class MapActivity extends BaseActivity implements Observer {
             }
 
             mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
+                Log.d(TAG, "on Data initialized");
                 mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
             });
 
@@ -126,6 +136,11 @@ public class MapActivity extends BaseActivity implements Observer {
                             }
                         }
 
+                        if (chatId == 0) {
+                            Log.e(TAG, "Chat id is 0. Cannot open chat");
+                            return true;
+                        }
+
                         Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
                         intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
                         intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
@@ -150,6 +165,25 @@ public class MapActivity extends BaseActivity implements Observer {
                 });
             }
         }));
+
+        TimeRangeSlider timeRangeSlider = this.findViewById(R.id.timeRangeSlider);
+        timeRangeSlider.setOnTimestampChangedListener(this);
+
+        View bottomSheet = this.findViewById(R.id.bottom_sheet);
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+
+
+        RelativeLayout bottomSheetSlider = this.findViewById(R.id.bottomSheetSlider);
+        bottomSheetSlider.setOnClickListener(v -> {
+            switch (behavior.getState()) {
+                case STATE_EXPANDED:
+                    behavior.setState(STATE_COLLAPSED);
+                    break;
+                default:
+                    behavior.setState(STATE_EXPANDED);
+                    break;
+            }
+        });
 
     }
 
@@ -182,16 +216,17 @@ public class MapActivity extends BaseActivity implements Observer {
         }
     }
 
-    private int[] getChatIds(Intent intent) {
-        if (intent == null) {
-            return new int[]{-1};
+    @Override
+    public void onTimestampChanged(long startTimestamp, long stopTimestamp) {
+        if (this.mapboxMap == null) {
+            return;
         }
+        mapDataManager.filter(startTimestamp, stopTimestamp);
 
-        int[] chatIds = intent.getIntArrayExtra(CHAT_IDS);
-        if (chatIds == null || chatIds.length == 0) {
-            chatIds = new int[1];
-            chatIds[0] = getIntent().getIntExtra(CHAT_ID, -1);
-        }
-        return chatIds;
+    }
+
+    @Override
+    public void onFilterLastPosition(long startTimestamp) {
+        mapDataManager.filterLastPositions(startTimestamp);
     }
 }

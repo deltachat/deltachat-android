@@ -46,9 +46,13 @@ import java.util.Map;
 
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
 import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.all;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.gt;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.gte;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.lte;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.switchCase;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.toBool;
 import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ANCHOR_BOTTOM_LEFT;
@@ -73,6 +77,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public static final int ALL_CHATS_GLOBAL_MAP = 0;
     public static final long TIMESTAMP_NOW = 0L;
     public static final long TIMEOUT = 3 * 60 * 60 * 1000;
+    private static final long DEFAULT_LAST_POSITION_DELTA = 1000*60*30; // 30 min
+
     private static final String TAG = MapDataManager.class.getSimpleName();
     private Style mapboxStyle;
     private HashMap<Integer, MapSource> contactMapSources;
@@ -98,9 +104,11 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
         int[] contactIds = getContactIds(chatId);
 
+        long now = System.currentTimeMillis();
         for (int contactId : contactIds) {
             updateSource(chatId, contactId, boundingBuilder);
             generateInfoWindows(contactId);
+            filterLastPosition(contactId, now - DEFAULT_LAST_POSITION_DELTA);
         }
 
         dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
@@ -204,12 +212,50 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         }
     }
 
+
+    public void filter(long startTimestamp, long endTimestamp) {
+        int[] contactIds = getContactIds(chatId);
+        for (int contactId : contactIds) {
+            MapSource contactMapMetadata =  contactMapSources.get(contactId);
+            SymbolLayer markerLayer = (SymbolLayer) mapboxStyle.getLayer(contactMapMetadata.getMarkerLayer());
+            Expression filter = all(
+                    lte(get(TIMESTAMP), endTimestamp),
+                    gte(get(TIMESTAMP), startTimestamp));
+            markerLayer.withFilter(filter);
+            LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(contactMapMetadata.getLineLayer());
+            lineLayer.withFilter(filter);
+        }
+    }
+
+    public void filterLastPositions(long startTimestamp) {
+        int[] contactIds = getContactIds(chatId);
+        for (int contactId : contactIds) {
+          filterLastPosition(contactId, startTimestamp);
+        }
+    }
+
+    private void filterLastPosition(int contactId, long startTimestamp) {
+        MapSource contactMapMetadata =  contactMapSources.get(contactId);
+        SymbolLayer markerLayer = (SymbolLayer) mapboxStyle.getLayer(contactMapMetadata.getMarkerLayer());
+        Expression filter = all(
+                eq((get(LAST_LOCATION)), literal(true)),
+                gte(get(TIMESTAMP), startTimestamp));
+        markerLayer.withFilter(filter);
+        LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(contactMapMetadata.getLineLayer());
+        lineLayer.withFilter(filter);
+    }
+
     private void updateSource(int chatId, int contactId) {
         updateSource(chatId, contactId, null);
     }
 
     private void updateSource(int chatId, int contactId, LatLngBounds.Builder boundingBuilder) {
-        DcArray locations = dcContext.getLocations(chatId, contactId, System.currentTimeMillis() - TIMEOUT, TIMESTAMP_NOW);
+        updateSource(chatId, contactId, System.currentTimeMillis() - TIMEOUT, TIMESTAMP_NOW, boundingBuilder );
+    }
+
+    private void updateSource(int chatId, int contactId, long startTimestamp, long endTimestamp, LatLngBounds.Builder boundingBuilder) {
+        //long start = System.currentTimeMillis();
+        DcArray locations = dcContext.getLocations(chatId, contactId, startTimestamp, endTimestamp);
         MapSource contactMapMetadata = contactMapSources.get(contactId);
         if (contactMapMetadata == null) {
             contactMapMetadata = addContactMapSource(contactId);
@@ -242,10 +288,21 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             sortedPointFeatures.first().getFeature().addBooleanProperty(LAST_LOCATION, true);
         }
 
-        FeatureCollection pointFeatureCollection = FeatureCollection.fromFeatures(sortedPointFeatures.getFeatureList());
-        FeatureCollection lineFeatureCollection = FeatureCollection.fromFeatures(new Feature[] {Feature.fromGeometry(
-                LineString.fromLngLats(sortedPointFeatures.getPointList())
-        )});
+        ArrayList<Point> sortedPointList = sortedPointFeatures.getPointList();
+        ArrayList<Feature> sortedFeatureList = sortedPointFeatures.getFeatureList();
+        FeatureCollection pointFeatureCollection = FeatureCollection.fromFeatures(sortedFeatureList);
+        ArrayList<Feature> lineFeatures = new ArrayList<>();
+
+        for (int i = 0; i < sortedPointFeatures.size() - 1; i++) {
+            Feature f = sortedFeatureList.get(i);
+            Number numberProperty = f.getNumberProperty(TIMESTAMP);
+            LineString l = LineString.fromLngLats(sortedPointList.subList(i, i+2));
+            Feature lineFeature = Feature.fromGeometry(l, new JsonObject(), "l_" + f.id());
+            lineFeature.addNumberProperty(TIMESTAMP, numberProperty);
+            lineFeatures.add(lineFeature);
+        }
+
+        FeatureCollection lineFeatureCollection = FeatureCollection.fromFeatures(lineFeatures);
 
         GeoJsonSource lineSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getLineSource());
         lineSource.setGeoJson(lineFeatureCollection);
@@ -254,6 +311,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), sortedPointFeatures);
 
         generateMissingInfoWindows(contactId);
+
+        //Log.d(TAG, "update Source took " + (System.currentTimeMillis() - start) + " ms");
     }
 
     private void generateMissingInfoWindows(int contactId) {
@@ -281,7 +340,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private void generateInfoWindows(int contactId) {
         MapSource contactMapMetadata = contactMapSources.get(contactId);
         FeatureTreeSet collection = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
-        new GenerateInfoWindowTask(this, contactId).execute(collection.getFeatureList());
+        if (collection.size() > 0) {
+            new GenerateInfoWindowTask(this, contactId).execute(collection.getFeatureList());
+        }
     }
 
     private void initGeoJsonSources(MapSource source) {
@@ -328,12 +389,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                         switchCase(toBool(get(LAST_LOCATION)), literal(1.0f),
                                 switchCase(eq(get(MESSAGE_ID), literal(0)), literal(0.7f), literal(1.1f))));
         Expression markerIcon = switchCase(toBool(get(LAST_LOCATION)), literal(source.getMarkerLastPositon()), literal(source.getMarkerIcon()));
-        Expression allowOverlap = eq(get(LAST_LOCATION), literal(true));
         mapboxStyle.addLayer(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
                 .withProperties(
                         iconImage(markerIcon),
-                        iconSize(markerSize),
-                        iconAllowOverlap(allowOverlap))
+                        iconSize(markerSize))
         );
 
         mapboxStyle.addLayer(new LineLayer(source.getLineLayer(), source.getLineSource())
@@ -405,6 +464,14 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         }
     }
 
+    private void resetSource(int contactId) {
+        MapSource contactMapMetadata = contactMapSources.get(contactId);
+        if (contactMapMetadata != null) {
+            featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), new FeatureTreeSet());
+            GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getMarkerSource());
+            pointSource.setGeoJson(FeatureCollection.fromFeatures(new ArrayList<>()));
+        }
+    }
 
     private void replaceSelectedMarker(String featureId) {
         Feature feature = getFeatureWithId(featureId);
