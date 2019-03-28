@@ -156,7 +156,7 @@
 
     <activity android:name=".NewConversationActivity"
               android:theme="@style/TextSecure.LightNoActionBar"
-              android:windowSoftInputMode="stateAlwaysVisible"
+              android:windowSoftInputMode="stateHidden"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
 
         <intent-filter>
@@ -247,7 +247,7 @@
 
     <activity android:name=".CreateProfileActivity"
               android:theme="@style/TextSecure.LightTheme"
-              android:windowSoftInputMode="stateVisible"
+              android:windowSoftInputMode="stateHidden|adjustResize"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".QrScanActivity"

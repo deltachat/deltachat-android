@@ -98,7 +98,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
     setContentView(R.layout.profile_create_activity);
 
-    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     getSupportActionBar().setTitle(R.string.pref_profile_info_headline);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
