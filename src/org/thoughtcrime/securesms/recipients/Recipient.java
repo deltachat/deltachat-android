@@ -202,10 +202,10 @@ public class Recipient implements RecipientModifiedListener {
 
   public synchronized @Nullable ContactPhoto getContactPhoto(Context context) {
     LocalFileContactPhoto contactPhoto = null;
-    if (address.isDcChat()) {
+    if (dcChat!=null) {
       contactPhoto = new GroupRecordContactPhoto(context, address);
     }
-    else if (address.isDcContact()) {
+    else if (dcContact!=null) {
        contactPhoto = new ProfileContactPhoto(context, address);
     }
 
