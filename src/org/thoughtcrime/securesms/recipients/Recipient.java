@@ -47,7 +47,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-public class Recipient implements RecipientModifiedListener {
+public class Recipient {
 
   private final Set<RecipientModifiedListener> listeners = Collections.newSetFromMap(new WeakHashMap<RecipientModifiedListener, Boolean>());
 
@@ -166,11 +166,11 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   public synchronized void addListener(RecipientModifiedListener listener) {
-    // TODO: better use DC_EVENT_*
+    listeners.add(listener);
   }
 
   public synchronized void removeListener(RecipientModifiedListener listener) {
-    // TODO: better use DC_EVENT_*
+    listeners.remove(listener);
   }
 
   public synchronized String toShortString() {
@@ -293,10 +293,5 @@ public class Recipient implements RecipientModifiedListener {
         ", profileName='" + profileName + '\'' +
         ", profileAvatar='" + profileAvatar + '\'' +
         '}';
-  }
-
-  @Override
-  public void onModified(Recipient recipient) {
-    notifyListeners();
   }
 }
