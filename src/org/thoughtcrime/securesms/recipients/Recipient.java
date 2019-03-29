@@ -25,6 +25,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
+
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
@@ -38,6 +41,7 @@ import org.thoughtcrime.securesms.contacts.avatars.TransparentContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -50,11 +54,10 @@ public class Recipient implements RecipientModifiedListener {
   private final Set<RecipientModifiedListener> listeners = Collections.newSetFromMap(new WeakHashMap<RecipientModifiedListener, Boolean>());
 
   private final @NonNull Address address;
-  private final @NonNull List<Recipient> participants = new LinkedList<>();
 
   private @Nullable String  name;
   private @Nullable String  customLabel;
-  private           boolean resolving;
+  private final     boolean resolving;
 
   private @Nullable Uri                  systemContactPhoto;
   private           Uri                  contactUri;
@@ -63,6 +66,10 @@ public class Recipient implements RecipientModifiedListener {
 
   private @Nullable String         profileName;
   private @Nullable String         profileAvatar;
+
+  // either dcChat or dcContact are set
+  private @Nullable DcChat dcChat;
+  private @Nullable DcContact dcContact;
 
   public static @NonNull Recipient fromChat(@NonNull Context context, int dcMsgId) {
     ApplicationDcContext dcContext = DcHelper.getContext(context);
@@ -95,7 +102,9 @@ public class Recipient implements RecipientModifiedListener {
     return dcContext.getRecipient(dcContext.getContact(0));
   }
 
-  public Recipient(@NonNull Address address, @Nullable String name, @Nullable List<Recipient> participants) {
+  public Recipient(@NonNull Address address, @Nullable String name, @Nullable DcChat dcChat, @Nullable DcContact dcContact) {
+    this.dcChat                = dcChat;
+    this.dcContact             = dcContact;
     this.address               = address;
     this.contactUri            = null;
     this.name                  = name;
@@ -104,7 +113,6 @@ public class Recipient implements RecipientModifiedListener {
     this.blocked               = false;
     this.profileName           = null;
     this.profileAvatar         = null;
-    this.participants.addAll(participants==null? new LinkedList<>() : participants);
     this.resolving    = false;
   }
 
@@ -113,16 +121,6 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   public synchronized @Nullable String getName() {
-    if (this.name == null && isMmsGroupRecipient()) {
-      List<String> names = new LinkedList<>();
-
-      for (Recipient recipient : participants) {
-        names.add(recipient.toShortString());
-      }
-
-      return Util.join(names, ", ");
-    }
-
     return this.name;
   }
 
@@ -156,30 +154,27 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   public boolean isGroupRecipient() {
-    return participants.size() > 1;
+    return dcChat!=null && dcChat.isGroup();
   }
 
-  public boolean isMmsGroupRecipient() {
-    return address.isMmsGroup();
-  }
-
-  public @NonNull synchronized List<Recipient> getParticipants() {
-    return new LinkedList<>(participants);
+  public @NonNull synchronized List<Recipient> loadParticipants(Context context) {
+    List<Recipient> participants = new ArrayList<>();
+    if (dcChat!=null) {
+      ApplicationDcContext dcContext = DcHelper.getContext(context);
+      int[] contactIds = dcContext.getChatContacts(dcChat.getId());
+      for (int contactId : contactIds) {
+        participants.add(dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CONTACT, contactId));
+      }
+    }
+    return participants;
   }
 
   public synchronized void addListener(RecipientModifiedListener listener) {
-    if (listeners.isEmpty()) {
-      for (Recipient recipient : participants) recipient.addListener(this);
-    }
-    listeners.add(listener);
+    // TODO: better use DC_EVENT_*
   }
 
   public synchronized void removeListener(RecipientModifiedListener listener) {
-    listeners.remove(listener);
-
-    if (listeners.isEmpty()) {
-      for (Recipient recipient : participants) recipient.removeListener(this);
-    }
+    // TODO: better use DC_EVENT_*
   }
 
   public synchronized String toShortString() {
@@ -188,11 +183,11 @@ public class Recipient implements RecipientModifiedListener {
 
   public int getFallbackAvatarColor(Context context) {
     int rgb = 0x00808080;
-    if(address.isDcContact()) {
-      rgb = DcHelper.getContext(context).getContact(address.getDcContactId()).getColor();
+    if(dcContact!=null) {
+      rgb = dcContact.getColor();
     }
-    else if(address.isDcChat()){
-      rgb = DcHelper.getContext(context).getChat(address.getDcChatId()).getColor();
+    else if(dcChat!=null){
+      rgb = dcChat.getColor();
     }
     int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
     return argb;
@@ -301,7 +296,6 @@ public class Recipient implements RecipientModifiedListener {
     return "Recipient{" +
         "listeners=" + listeners +
         ", address=" + address +
-        ", participants=" + participants +
         ", name='" + name + '\'' +
         ", customLabel='" + customLabel + '\'' +
         ", resolving=" + resolving +

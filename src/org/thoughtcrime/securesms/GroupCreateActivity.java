@@ -501,7 +501,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void fillExistingGroup(Recipient recipient) {
-    List<Recipient> participants = recipient.getParticipants();
+    List<Recipient> participants = recipient.loadParticipants(this);
     Recipient[] participantsArray = new Recipient[participants.size()];
     participantsArray = participants.toArray(participantsArray);
     if (!isFinishing()) {

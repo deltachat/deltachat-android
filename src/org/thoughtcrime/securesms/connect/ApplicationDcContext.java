@@ -232,12 +232,7 @@ public class ApplicationDcContext extends DcContext {
 
   @NonNull
   public Recipient getRecipient(DcChat chat) {
-    int[] contactIds = getChatContacts(chat.getId());
-    List<Recipient> participants = new ArrayList<>();
-    for (int contactId : contactIds) {
-      participants.add(getRecipient(RECIPIENT_TYPE_CONTACT, contactId));
-    }
-    Recipient recipient = new Recipient(Address.fromChat(chat.getId()), chat.getName(), participants);
+    Recipient recipient = new Recipient(Address.fromChat(chat.getId()), chat.getName(), chat, null);
     if (!chat.isGroup()) {
       String identifier = Hash.sha256(chat.getName() + chat.getSubtitle());
       Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
@@ -251,7 +246,7 @@ public class ApplicationDcContext extends DcContext {
   @NonNull
 
   public Recipient getRecipient(DcContact contact) {
-    Recipient recipient = new Recipient(Address.fromContact(contact.getId()), contact.getDisplayName(), null);
+    Recipient recipient = new Recipient(Address.fromContact(contact.getId()), contact.getDisplayName(), null, contact);
     String identifier = Hash.sha256(contact.getName() + contact.getAddr());
     Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
     if (systemContactPhoto != null) {

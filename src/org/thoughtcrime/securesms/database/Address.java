@@ -52,10 +52,6 @@ public class Address implements Parcelable, Comparable<Address> {
     return GroupUtil.isEncodedGroup(address);
   }
 
-  public boolean isMmsGroup() {
-    return GroupUtil.isMmsGroup(address);
-  }
-
   public boolean isEmail() {
     return NumberUtil.isValidEmail(address);
   }
