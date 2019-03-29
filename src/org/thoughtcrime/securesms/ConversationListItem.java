@@ -99,7 +99,7 @@ public class ConversationListItem extends RelativeLayout
     this.subjectView             = findViewById(R.id.subject);
     this.fromView                = findViewById(R.id.from_text);
     this.dateView                = findViewById(R.id.date);
-    this.deliveryStatusIndicator = findViewById(R.id.delivery_status);
+    this.deliveryStatusIndicator = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
     this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
     this.archivedView            = findViewById(R.id.archived);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);

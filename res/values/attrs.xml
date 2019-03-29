@@ -170,10 +170,6 @@
         <attr name="thumbnail_radius" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="DeliveryStatusView">
-        <attr name="iconColor" format="color" />
-    </declare-styleable>
-
     <declare-styleable name="AudioView">
         <attr name="widgetBackground" format="color"/>
         <attr name="foregroundTintColor" format="color" />
