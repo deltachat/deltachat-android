@@ -57,7 +57,6 @@ public class Recipient implements RecipientModifiedListener {
 
   private @Nullable String  name;
   private @Nullable String  customLabel;
-  private final     boolean resolving;
 
   private @Nullable Uri                  systemContactPhoto;
   private           Uri                  contactUri;
@@ -113,7 +112,6 @@ public class Recipient implements RecipientModifiedListener {
     this.blocked               = false;
     this.profileName           = null;
     this.profileAvatar         = null;
-    this.resolving    = false;
   }
 
   public synchronized @Nullable Uri getContactUri() {
@@ -198,8 +196,7 @@ public class Recipient implements RecipientModifiedListener {
   }
 
   public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {
-    if      (isResolving())            return new TransparentContactPhoto();
-    else if (!TextUtils.isEmpty(name)) return new GeneratedContactPhoto(name);
+         if (!TextUtils.isEmpty(name)) return new GeneratedContactPhoto(name);
     else                               return new GeneratedContactPhoto("#");
   }
 
@@ -259,12 +256,6 @@ public class Recipient implements RecipientModifiedListener {
     notifyListeners();
   }
 
-  public synchronized Recipient resolve() {
-    while (resolving) Util.wait(this, 0);
-    return this;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -298,7 +289,6 @@ public class Recipient implements RecipientModifiedListener {
         ", address=" + address +
         ", name='" + name + '\'' +
         ", customLabel='" + customLabel + '\'' +
-        ", resolving=" + resolving +
         ", systemContactPhoto=" + systemContactPhoto +
         ", contactUri=" + contactUri +
         ", blocked=" + blocked +
@@ -311,10 +301,4 @@ public class Recipient implements RecipientModifiedListener {
   public void onModified(Recipient recipient) {
     notifyListeners();
   }
-
-  public synchronized boolean isResolving() {
-    return resolving;
-  }
-
-
 }
