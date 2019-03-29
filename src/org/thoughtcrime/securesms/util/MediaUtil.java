@@ -30,7 +30,6 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -219,6 +218,10 @@ public class MediaUtil {
 
   public static boolean isGif(String contentType) {
     return !TextUtils.isEmpty(contentType) && contentType.trim().equals("image/gif");
+  }
+
+  public static boolean isWebp(String contentType) {
+    return !TextUtils.isEmpty(contentType) && contentType.trim().equals("image/webp");
   }
 
   public static boolean isJpegType(String contentType) {

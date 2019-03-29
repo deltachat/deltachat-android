@@ -944,7 +944,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
           }
           String path = getRealPathFromAttachment(attachment);
-          msg.setFile(path, null);
+          String fileMime = null;
+          if (MediaUtil.isWebp(contentType)) {
+            fileMime = "image/webp";
+          }
+          msg.setFile(path, fileMime);
           msg.setText(body);
         }
       }
