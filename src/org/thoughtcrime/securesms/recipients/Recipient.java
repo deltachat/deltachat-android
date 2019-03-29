@@ -27,6 +27,7 @@ import android.text.TextUtils;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -38,6 +39,8 @@ import org.thoughtcrime.securesms.contacts.avatars.LocalFileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.SystemContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
+import org.thoughtcrime.securesms.util.Hash;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.ArrayList;
@@ -53,13 +56,11 @@ public class Recipient {
 
   private final @NonNull Address address;
 
-  private @Nullable String  name;
   private @Nullable String  customLabel;
 
   private @Nullable Uri                  systemContactPhoto;
   private           Uri                  contactUri;
   private @Nullable Uri                  messageRingtone       = null;
-  private           boolean              blocked               = false;
 
   private @Nullable String         profileName;
   private @Nullable String         profileAvatar;
@@ -75,10 +76,6 @@ public class Recipient {
 
   public static @NonNull Recipient fromChat (@NonNull ApplicationDcContext dcContext, int dcMsgId) {
     return dcContext.getRecipient(dcContext.getChat(dcContext.getMsg(dcMsgId).getChatId()));
-  }
-
-  public static @NonNull Recipient fromMsg (@NonNull ApplicationDcContext dcContext, int dcMsgId) {
-    return dcContext.getRecipient(dcContext.getContact(dcContext.getMsg(dcMsgId).getFromId()));
   }
 
   @SuppressWarnings("ConstantConditions")
@@ -99,45 +96,61 @@ public class Recipient {
     return dcContext.getRecipient(dcContext.getContact(0));
   }
 
-  public Recipient(@NonNull Address address, @Nullable String name, @Nullable DcChat dcChat, @Nullable DcContact dcContact) {
+  public Recipient(@NonNull Context context, @Nullable DcChat dcChat, @Nullable DcContact dcContact) {
     this.dcChat                = dcChat;
     this.dcContact             = dcContact;
-    this.address               = address;
     this.contactUri            = null;
-    this.name                  = name;
     this.systemContactPhoto    = null;
     this.customLabel           = null;
-    this.blocked               = false;
     this.profileName           = null;
     this.profileAvatar         = null;
+
+    if(dcContact!=null) {
+      this.address = Address.fromContact(dcContact.getId());
+      String identifier = Hash.sha256(dcContact.getDisplayName() + dcContact.getAddr());
+      Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
+      if (systemContactPhoto != null) {
+        setSystemContactPhoto(systemContactPhoto);
+      }
+      if (dcContact.getId() == DcContact.DC_CONTACT_ID_SELF) {
+        setProfileAvatar("SELF");
+      }
+    }
+    else if(dcChat!=null) {
+      this.address = Address.fromChat(dcChat.getId());
+      if (!dcChat.isGroup()) {
+        String identifier = Hash.sha256(dcChat.getName() + dcChat.getSubtitle());
+        Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
+        if (systemContactPhoto != null) {
+          setSystemContactPhoto(systemContactPhoto);
+        }
+      }
+
+    }
+    else {
+      this.address = Address.UNKNOWN;
+    }
   }
 
-  public synchronized @Nullable Uri getContactUri() {
+  public @Nullable Uri getContactUri() {
     return this.contactUri;
   }
 
-  public synchronized @Nullable String getName() {
-    return this.name;
-  }
-
-  public void setName(@Nullable String name) {
-    boolean notify = false;
-
-    synchronized (this) {
-      if (!Util.equals(this.name, name)) {
-        this.name = name;
-        notify = true;
-      }
+  public @Nullable String getName() {
+    if(dcChat!=null) {
+      return dcChat.getName();
     }
-
-    if (notify) notifyListeners();
+    else if(dcContact!=null) {
+      return dcContact.getDisplayName();
+    }
+    return "";
   }
 
   public @NonNull Address getAddress() {
     return address;
   }
 
-  public synchronized @Nullable String getProfileName() {
+  public @Nullable String getProfileName() {
     return profileName;
   }
 
@@ -153,7 +166,7 @@ public class Recipient {
     return dcChat!=null && dcChat.isGroup();
   }
 
-  public @NonNull synchronized List<Recipient> loadParticipants(Context context) {
+  public @NonNull List<Recipient> loadParticipants(Context context) {
     List<Recipient> participants = new ArrayList<>();
     if (dcChat!=null) {
       ApplicationDcContext dcContext = DcHelper.getContext(context);
@@ -174,7 +187,7 @@ public class Recipient {
   }
 
   public synchronized String toShortString() {
-    return (getName() == null ? address.serialize() : getName());
+    return getName();
   }
 
   public int getFallbackAvatarColor(Context context) {
@@ -194,6 +207,7 @@ public class Recipient {
   }
 
   public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {
+    String name = getName();
          if (!TextUtils.isEmpty(name)) return new GeneratedContactPhoto(name);
     else                               return new GeneratedContactPhoto("#");
   }
@@ -242,16 +256,11 @@ public class Recipient {
     return messageRingtone;
   }
 
-  public synchronized boolean isBlocked() {
-    return blocked;
-  }
-
-  public void setBlocked(boolean blocked) {
-    synchronized (this) {
-      this.blocked = blocked;
+  public boolean isBlocked() {
+    if (dcContact!=null) {
+      return dcContact.isBlocked();
     }
-
-    notifyListeners();
+    return false;
   }
 
   @Override
@@ -280,16 +289,25 @@ public class Recipient {
       listener.onModified(this);
   }
 
+  public void reload(Context context)
+  {
+    DcContext dcContext = DcHelper.getContext(context);
+    if(dcContact!=null) {
+      dcContact = dcContext.getContact(dcContact.getId());
+    }
+    else if(dcChat!=null) {
+      dcChat = dcContext.getChat(dcChat.getId());
+    }
+  }
+
   @Override
   public String toString() {
     return "Recipient{" +
         "listeners=" + listeners +
         ", address=" + address +
-        ", name='" + name + '\'' +
         ", customLabel='" + customLabel + '\'' +
         ", systemContactPhoto=" + systemContactPhoto +
         ", contactUri=" + contactUri +
-        ", blocked=" + blocked +
         ", profileName='" + profileName + '\'' +
         ", profileAvatar='" + profileAvatar + '\'' +
         '}';
