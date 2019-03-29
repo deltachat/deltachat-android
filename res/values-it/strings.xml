@@ -206,6 +206,9 @@
     <string name="chat_archived_label">Archiviato</string>
     <string name="chat_no_messages">Nessun messaggio.</string>
     <string name="chat_self_talk_subtitle">Messaggi inviati a me stesso</string>
+    <string name="chat_contact_request">Richiesta di contatto</string>
+    <string name="chat_no_contact_requests">Nessuna richiesta di contatto.\n\nSe vuoi che le email tradizionali appaiano qui come richieste di contatto puoi selezionare la relativa opzione nelle impostazioni.</string>
+
     <!-- search -->
     <string name="search">Cerca</string>
     <string name="search_explain">Cerca in chat, contatti e messaggi</string>
@@ -257,6 +260,7 @@
     <string name="login_title">Login</string>
     <string name="login_header">Login al tuo server</string>
     <string name="login_subheader">Per i provider email conosciuti, le impostazioni aggiuntive vengono configurate automaticamente. A volte, IMAP deve essere abilitato dall\'interfaccia web dell\'email. Se riscontri problemi contatta il tuo provider email o i tuoi amici.</string>
+    <string name="login_no_servers_hint">Non esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
     <string name="login_inbox">In Arrivo</string>
     <string name="login_imap_login">Nome utente IMAP</string>
     <string name="login_imap_server">Server IMAP</string>
@@ -270,6 +274,7 @@
     <string name="login_smtp_security">Sicurezza SMTP</string>
     <string name="login_auth_method">Metodo di autorizzazione</string>
     <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
+    <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2).\n\nNel possimi passaggi, permetti a Delta Chat di operare come app di Chat via E-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
     <string name="login_info_gmail_text">Per gli account GMail è necessario creare una password per le app se è attiva la verifica in 2 passaggi. Se queste impostazioni non sono disponibili, è necessario abilitare le app meno sicure.</string>
     <string name="login_error_mail">Inserisci un indirizzo email valido</string>
     <string name="login_error_server">Inserisci un server / indirizzo IP valido</string>
@@ -379,6 +384,13 @@
     <string name="pref_watch_mvbox_folder">Vedi cartella DeltaChat</string>
     <string name="pref_auto_folder_moves">Sposta automaticamente nella cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Le chat vengono spostate per evitare di riempire la cartella In Arrivo</string>
+    <string name="pref_email_interaction_title">Interazione email</string>
+    <string name="pref_show_emails">Mostra email tradizionali</string>
+    <string name="pref_show_emails_no">No, solo chat</string>
+    <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
+    <string name="pref_show_emails_all">Tutte</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt è una nuova specifica aperta per la cifratura end-to-end delle email.\n\nLa tua configurazione end-to-end viene creata automaticamente quando necessario e puoi trasferirla tra dispositivi tramite i Messaggi di configurazione.</string>

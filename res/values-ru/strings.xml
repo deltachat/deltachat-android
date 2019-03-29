@@ -282,7 +282,7 @@
     <string name="login_title">Логин</string>
     <string name="login_header">Войдите на ваш сервер</string>
     <string name="login_subheader">Для известных почтовых систем, дополнительные настройки устанавливаются автоматически. Иногда для IMAP требуется разрешение в веб-интерфейсе. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
-    <string name="login_no_servers_hint">У Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
+    <string name="login_no_servers_hint">У Delta Chat нет собственных серверов, ваши данные остаются только на вашем устройстве.</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">IMAP логин</string>
     <string name="login_imap_server">IMAP сервер</string>

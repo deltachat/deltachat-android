@@ -207,6 +207,8 @@
     <string name="chat_no_messages">Ingen beskeder</string>
     <string name="chat_self_talk_subtitle">Beskeder sendt til undertegnede</string>
     <string name="chat_contact_request">Kontakt anmodning</string>
+    <string name="chat_no_contact_requests">Ingen kontakt anmodninger.\n\nØnskes klassisk e-post vist her som kontakt anmodninger,, kan den tilsvarende indstilling i program opsætning ændres.</string>
+
     <!-- search -->
     <string name="search">Søge</string>
     <string name="search_explain">Søge efter samtaler, kontakter og beskeder</string>
@@ -272,6 +274,7 @@
     <string name="login_smtp_security">SMTP sikkerhed</string>
     <string name="login_auth_method">Tilladelse metode</string>
     <string name="login_info_oauth2_title">Fortsætte med forenklet opsætning?</string>
+    <string name="login_info_oauth2_text">Indtastet e-post adresse understøtter simple opsætning (OAuth2).\n\nI næste trin tillad at Delta Chat agerer som samtale med e-post program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed!</string>
     <string name="login_info_gmail_text">For GMail konti skal der oprettes en App-Password hvis 2FA er aktiveret. Hvis denne opsætning ikke er tilgængelig skal Less Secure Apps aktiveres.</string>
     <string name="login_error_mail">Indtast gyldig e-post adresse</string>
     <string name="login_error_server">Indtast gyldig server / IP adresse</string>
@@ -279,8 +282,13 @@
     <string name="login_error_required_fields">Indtast gyldig e-post adresse og adgangskode</string>
     <string name="import_backup_title">Importere sikkerhedskopi</string>
     <string name="import_backup_ask">Sikkerhedskopi fundet hos \"%1$s\".\n\nImportere og bruge al data og opsætning fra den?</string>
+    <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopiere sikkerhedskopi til \"%1$s\" og prøv igen. Alternativt, klik \"Start samtale\" for at følge normal opsætning proces.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontrollere om e-post adresse og adgangskode er korrekt.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Svar fra %1$s: %2$s\n\nNogle udbydere placerer ekstra information i indbakken; det kan kontrolleres f.eks. i net grænsefladen. Kontakt udbyder eller venner hvis disse problemer opstår.</string>
+
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Videresende til …</string>
@@ -365,6 +373,7 @@
     <string name="pref_managekeys_export_secret_keys">Eksportere hemmelige nøgler</string>
     <string name="pref_managekeys_export_explain">Eksportere hemmelige nøgler til \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importere hemmelige nøgler</string>
+    <string name="pref_managekeys_import_explain">Importere hemmelige nøgler fra \"%1$s\"?\n\n• Eksisterende hemmelige nøgler bliver ikke slettet\n\n• Den seneste importerede nøgle bliver brugt som ny standard nøgle medmindre den har ordet \"legacy\" i dens filnavn</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Hemmelige nøgler skrevet til \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Hemmelige nøgler importeret fra \"%1$s\".</string>
     <string name="pref_background">Baggrund</string>
@@ -384,10 +393,13 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">Autocrypt er en ny åben specifikation for automatisk ende-til-ende e-post kryptering.\n\nEnde-til-ende opsætning bliver oprettet automatisk efter behov og kan overføres mellem enheder med Autocrypt opsætning beskeder.</string>
     <string name="autocrypt_send_asm_title">Sende Autocrypt opsætning besked</string>
+    <string name="autocrypt_send_asm_explain_before">En \"Autocrypt opsætning besked\" deler sikkert ende-til-ende opsætning med andre Autocrypt kompatible programmer.\n\nOpsætning er krypteret med en kode som er vist her og skal indtastes på den anden enhed.</string>
     <string name="autocrypt_send_asm_button">Sende autocrypt  opsætning besked</string>
     <string name="autocrypt_prefer_e2ee">Foretrække ende-til-ende kryptering</string>
     <string name="autocrypt_asm_subject">Autocrypt opsætning besked</string>
+    <string name="autocrypt_asm_general_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at af kryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsæt koden vist på den genererende enhed.</string>
     <string name="autocrypt_asm_click_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at dekryptere og bruge opsætning, tryk eller klik på denne besked.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt opsætning besked</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Indtast opsætning kode vist på den anden enhed. </string>
@@ -475,6 +487,7 @@
     <string name="perm_explain_need_for_camera_access">For at fange billeder og video, tillad Delta Chat adgang til kamera.</string>
     <string name="perm_explain_need_for_mic_access">For at sende lyd beskeder, tillad Delta Chat mikrofon adgang.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat behøver fil adgang for at kunne eksportere filer eller oprette sikkerhedskopier.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat kræver kamera tilladelse for at tage billeder eller video men det er blevet afvist permanent. Fortsæt til program opsætning menu og vælg \"Tilladelser\" og aktivere \"Kamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat kræver lagring tilladelse for at vedhæfte eller eksportere billeder, video eller lyd, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Lagring\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat kræver placering tilladelse for at kunne vedhæfte placering, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Placering\".</string>
@@ -571,6 +584,7 @@
     <string name="download_attachment_desktop">Hente vedhæftning</string>
     <string name="export_backup_desktop">Eksportere sikkerhedskopi</string>
     <string name="transfer_key_desktop">Overføre nøgle</string>
+    <string name="show_key_transfer_message_desktop">Nøgle er sendt til undertegnede. Skift til den anden enhed, og åben opsætning beskeden. Der bliver bedt om en opsætning kode. Indtast følgende cifre i prompt. Når det er færdig, er den anden enhed klar til at bruge Autocrypt.</string>
     <string name="new_message_from_desktop">Ny besked fra</string>
     <string name="unblock_contacts_desktop">Fjerne blokering af kontakter</string>
     <string name="none_blocked_desktop">Ingen blokerede kontakter</string>

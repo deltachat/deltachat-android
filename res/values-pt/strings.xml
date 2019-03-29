@@ -36,6 +36,8 @@
     <string name="yesterday">Ontem</string>
     <string name="this_week">Esta semana</string>
     <string name="this_month">Este mês</string>
+    <string name="last_week">Semana passada</string>
+    <string name="last_month">Mês passado</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -46,18 +48,31 @@
         <item quantity="one">%d hora</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d conversas</item>
+        <item quantity="other">%d conversas</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d mensagens</item>
+        <item quantity="other">%d mensagens</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d membro</item>
+        <item quantity="other">%d membros</item>
+    </plurals>
+
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>
     <string name="gif">Gif</string>
     <string name="images">Imagens</string>
-    <string name="audio">Audio</string>
+    <string name="audio">Áudio</string>
     <string name="voice_message">Mensagem de voz</string>
     <string name="forwarded_message">Reencaminhar</string>
-    <string name="video">Video</string>
+    <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
     <string name="contact">Contacto</string>
-    <string name="camera">Camera</string>
+    <string name="camera">Câmera</string>
     <string name="location">Local</string>
     <string name="gallery">Galeria</string>
     <string name="file">Ficheiro</string>
@@ -68,6 +83,7 @@
     <string name="blue">Azul</string>
     <string name="orange">Laranja</string>
     <string name="cyan">Azul turquesa</string>
+    <string name="purple">Roxo</string>
     <string name="magenta">Magenta</string>
     <string name="white">Branco</string>
 
@@ -106,12 +122,12 @@
     <string name="menu_mute">Calar</string>
     <string name="menu_unmute">Falar</string>
     <string name="menu_export_attachment">Exportar anexo</string>
-    <string name="menu_all_media">Todos os midia</string>
+    <string name="menu_all_media">Todos os arquivos de mídia</string>
     <string name="menu_share">Partilhar</string>
     <string name="menu_block_contact">Bloquear contacto</string>
     <string name="menu_unblock_contact">Desbloquear contacto</string>
     <string name="menu_play">Tocar</string>
-    <string name="menu_pause">Pausa</string>
+    <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Ir para o fim</string>
     <string name="menu_invite">Convidar amigos</string>
     <string name="menu_help">Ajuda</string>
@@ -133,6 +149,14 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
+        <item quantity="other">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Apagar %d mensagens aqui e no servidor?</item>
+        <item quantity="other">Apagar %d mensagens aqui e no servidor?</item>
+    </plurals>
     <string name="ask_forward">Reencaminhar mensages para %1$s?</string>
     <string name="ask_export_attachment">Exportar anexo? A exportação de anexos permitirá o seu acesso a qualquer outra aplicação no seu dispositivo.\n\nContinuar?</string>
     <string name="ask_block_contact">Bloquear este contacto? Não receberá mais mensagens deste contacto.</string>
@@ -149,6 +173,15 @@
     <string name="contacts_empty_hint">Sem contactos</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d conversas arquivadas</item>
+        <item quantity="other">%d conversas arquivadas</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d conversas desarquivadas</item>
+        <item quantity="other">%d conversas desarquivadas</item>
+    </plurals>
     <string name="chat_archived_chats_title">chats arquivadas</string>
     <string name="chat_please_enter_message">Por favor introduza uma mensagem.</string>
     <string name="chat_camera_unavailable">Camera indisponivel.</string>
@@ -231,6 +264,9 @@
     <string name="login_smtp_server">SMTP servidor</string>
     <string name="login_smtp_port">SMTP porto</string>
     <string name="login_smtp_security">SMTP segurança</string>
+    <string name="login_auth_method">Método de autorização</string>
+    <string name="login_info_oauth2_title">Usar configuração simplificada?</string>
+    <string name="login_info_oauth2_text">Seu servidor de e-mail aceita o método de configuração simplificada (OAuth2).\n\n No próximo passo, por favor, permita que o Delta Chat seja seu aplicativo de e-mail.\n\nNão há servidor do Delta Chat. Seus dados ficam no seu aparelho!</string>
     <string name="login_info_gmail_text">Para contas do GMail, precisa criar uma senha do aplicativo se tiver 2FA activado. Se essa configuração não estiver disponível, precisará de activar os aplicativos menos seguros.</string>
     <string name="login_error_mail">Por favor insira um endereço de e-mail válido</string>
     <string name="login_error_server">Por favor insira um servidor ou endereço IP válido</string>
@@ -340,6 +376,12 @@
     <string name="pref_watch_mvbox_folder">Ver a pasta do Delta Chat</string>
     <string name="pref_auto_folder_moves">Mover pasta automaticamente para o Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">As chats de chat são movidas para evitar atravancar da pasta Inbox</string>
+    <string name="pref_email_interaction_title">Interação com e-mails</string>
+    <string name="pref_show_emails">Exibir e-mails comuns</string>
+    <string name="pref_show_emails_no">Não, apenas conversas</string>
+    <string name="pref_show_emails_all">Tudo</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Encriptação automática</string>
     <string name="autocrypt_explain">A encriptação automática (autocrypt) é uma especificação nova e aberta para encriptação e-mail de ponta a ponta. \n\n A sua configuração de ponta a ponta é criada automaticamente conforme necessário e pode transferi-la entre dispositivos com mensagens de configuração de autocrypt.</string>
@@ -441,6 +483,9 @@
     <string name="perm_explain_access_to_mic_denied">O Delta Chat necessita de permissão de  acesso ao microfone para enviar mensagens de áudio, mas foi negado. Por favor, continue com as configurações do aplicativo, selecione \"Permissões\" e active \"Microfone\".</string>
     <string name="perm_explain_access_to_storage_denied">O Delta Chat necessita da permissão de armazenamento para anexar ou exportar fotos, vídeos ou áudio, mas foi negado. Por favor, continue no menu de configurações do aplicativo, seleccione \"Permissões\" e active \"Armazenamento\".</string>
     <string name="perm_explain_access_to_location_denied">O Delta Chat necessita permissão de acesso à localização para anexar um local, mas ele negado. Por favor, continue no menu de configurações do aplicativo, selecione \"Permissões \"e ative \"Localização\".</string>
+    <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens mesmo que o Delta Chat esteja em segundo plano.</string>
+    <string name="perm_enable_bg_reminder_text">O Delta Chat usa pouquíssimos recursos e busca não consumir muito a bateria.</string>
+
     <!-- languages -->
     <string name="language_be">Belga</string>
     <string name="language_ca">Catalão</string>

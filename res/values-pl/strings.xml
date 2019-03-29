@@ -121,7 +121,7 @@
     <string name="menu_edit_name">Edytuj nazwę</string>
     <string name="menu_settings">Ustawienia</string>
     <string name="menu_advanced">Zaawansowane</string>
-    <string name="menu_deaddrop">Skrzynka pocztowa</string>
+    <string name="menu_deaddrop">Prośba o kontakt</string>
     <string name="menu_view_profile">Pokaż profil</string>
 
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
@@ -168,6 +168,7 @@
     <string name="chat_archived_label">Zarchiwizowane</string>
     <string name="chat_no_messages">Brak wiadomości.</string>
     <string name="chat_self_talk_subtitle">Wiadomości wysłane do siebie</string>
+    <string name="chat_contact_request">Prośba o kontakt</string>
     <!-- search -->
     <string name="search">Szukaj</string>
     <string name="search_explain">Wyszukaj czaty, kontakty i wiadomości</string>

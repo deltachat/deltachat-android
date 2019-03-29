@@ -206,6 +206,9 @@
     <string name="chat_archived_label">Archivado</string>
     <string name="chat_no_messages">No hay mensajes.</string>
     <string name="chat_self_talk_subtitle">Mensajes que envié a mí mismo</string>
+    <string name="chat_contact_request">Solicitud de contacto</string>
+    <string name="chat_no_contact_requests">No hay solicitudes de contacto.\n\nSi desea que los correos electrónicos clásicos aparezcan aquí como solicitudes de contacto, puede cambiar la configuración correspondiente en la configuración de la aplicación.</string>
+
     <!-- search -->
     <string name="search">Buscar</string>
     <string name="search_explain">Buscar chats, contactos, y mensajes</string>
@@ -240,7 +243,7 @@
     <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">La aplicación de mensajería instantánea con la audiencia más amplia del mundo. Libre e independiente. </string>
     <string name="welcome_intro2_headline">Independiente</string>
-    <string name="welcome_intro2_message">No hay un servidor de Delta Chat. La aplicación solo utiliza su servidor de correo.</string>
+    <string name="welcome_intro2_message">No hay un servidor de Delta Chat. La aplicación solo utiliza tu servidor de correo.</string>
     <string name="welcome_intro3_headline">Rápida</string>
     <string name="welcome_intro3_message">Envíe mensajes en segundos.\nInterfaz rápida.</string>
     <string name="welcome_intro4_headline">Poderosa</string>
@@ -257,6 +260,7 @@
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
+    <string name="login_no_servers_hint">No hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
     <string name="login_inbox">Bandeja de entrada</string>
     <string name="login_imap_login">Nombre de usuario IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
@@ -270,6 +274,7 @@
     <string name="login_smtp_security">Seguridad SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
+    <string name="login_info_oauth2_text">La dirección de correo electrónico introducida admite una configuración simplificada (OAuth2).\n\nEn el próximo paso, permita que Delta Chat actúe como su aplicación de chat con correo electrónico.\n\nNo hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
     <string name="login_info_gmail_text">Para las cuentas de Gmail, debe crear una contraseña de aplicación si tiene habilitado la verificación en 2 pasos. Si esta opción no está disponible, debe habilitar la opción \"Acceso de aplicaciones poco seguras\".</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
     <string name="login_error_server">Por favor, introduzca un servidor / dirección IP válido</string>
@@ -345,8 +350,8 @@
     <string name="pref_incognito_keyboard">Teclado incógnito</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Solicitar al teclado deshabilitar el aprendizaje personalizado</string>
-    <string name="pref_read_receipts">Acuse de recibo</string>
-    <string name="pref_read_receipts_explain">Si los acuse de recibo están deshabilitados, no podrá ver los acuse de recibo de otros.</string>
+    <string name="pref_read_receipts">Acuses de recibo</string>
+    <string name="pref_read_receipts_explain">Si los acuses de recibo están deshabilitados, no podrá ver los acuses de recibo de otros.</string>
     <string name="pref_manage_keys">Administrar claves</string>
     <string name="pref_use_system_emoji">Usar emoji del sistema</string>
     <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
@@ -379,6 +384,13 @@
     <string name="pref_watch_mvbox_folder">Monitorear carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Las conversaciones son movidas para evitar saturar la Bandeja de entrada</string>
+    <string name="pref_email_interaction_title">Interacción con correo electrónico</string>
+    <string name="pref_show_emails">Mostrar correos clásicos</string>
+    <string name="pref_show_emails_no">No, sólo chats</string>
+    <string name="pref_show_emails_accepted_contacts">Para contactos aceptados</string>
+    <string name="pref_show_emails_all">Todos</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt es una nueva especificación abierta para encriptado automático de correo electrónico de extremo a extremo. Su configuración de extremo a extremo es creada automáticamente cuando se necesita y puede transferirla entre dispositivos con los Mensajes de Configuración de Autocrypt.</string>

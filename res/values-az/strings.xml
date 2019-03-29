@@ -36,6 +36,8 @@
     <string name="yesterday">Dünən</string>
     <string name="this_week">Bu həftə</string>
     <string name="this_month">Bu ay</string>
+    <string name="last_week">Keçən həftə</string>
+    <string name="last_month">Keçən ay</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d dəqiqə</item>
@@ -46,6 +48,23 @@
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d çat</item>
+        <item quantity="other">%d çat</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d kontakt</item>
+        <item quantity="other">%d kontakt</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d mesaj</item>
+        <item quantity="other">%d mesaj</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d üzv</item>
+        <item quantity="other">%d üzv</item>
+    </plurals>
+
     <string name="self">Mənə</string>
     <string name="draft">Laihə</string>
     <string name="image">Şəkil</string>
@@ -150,6 +169,15 @@
     <string name="contacts_empty_hint">Kontakt yoxdur.</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d çat arxiv olundu</item>
+        <item quantity="other">%d chats archived</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d çat arxivdən çıxarıldı</item>
+        <item quantity="other">%d chats unarchived</item>
+    </plurals>
     <string name="chat_archived_chats_title">Çatlar saxlanıldı</string>
     <string name="chat_please_enter_message">Mesajı daxıl edin</string>
     <string name="chat_camera_unavailable">Camera əlçatmazdır.</string>
@@ -169,6 +197,7 @@
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>
     <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
+    <string name="chat_contact_request">Kontakt sorğusu</string>
     <!-- search -->
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
@@ -216,6 +245,7 @@
     <string name="login_title">Daxil ol</string>
     <string name="login_header">Serverinə daxil ol</string>
     <string name="login_subheader">Məlum elektron poçt provayderləri üçün əlavə parametrlər avtomatik olaraq quraşdırılır. Bəzən IMAP-ın web məkanında aktiv olması lazımdır. Yardım üçün e-poçt provayderinizə və ya dostlarınıza müraciət edin.</string>
+    <string name="login_no_servers_hint">Delta Chat serverləri yoxdur, məlumatlarınız cihazınızda qalır!</string>
     <string name="login_inbox">Gələn</string>
     <string name="login_imap_login">IMAP logini</string>
     <string name="login_imap_server">IMAP server</string>
@@ -227,6 +257,8 @@
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP təhlükəsizliyi</string>
+    <string name="login_auth_method">Yetkiləndirmə metodu</string>
+    <string name="login_info_oauth2_title">Sadələşdirilmiş tənzimləmə ilə davam edirsiniz?</string>
     <string name="login_info_gmail_text">2FA aktiv olduqda, GMail hesabları üçün proqramşifrəsi yaratmalısınız. Bu tənzimləmə mövcud deyilsə daha az təhlükəsiz tətbiqləri işə salmalısınız. </string>
     <string name="login_error_mail">Xahiş edirik düzgün bir e-poçt ünvanı daxil et</string>
     <string name="login_error_server">Xahiş edirik, düzgün bir server / IP ünvanı daxil et</string>
@@ -275,6 +307,8 @@
     <string name="pref_notifications_show">Göstərmək</string>
     <string name="pref_led_color">LED rəng</string>
     <string name="pref_sound">Səs</string>
+    <string name="pref_silent">Səssiz</string>
+    <string name="pref_repeat_notify">Siqnalları təkrarlayın</string>
     <string name="pref_privacy">Gizlilik</string>
     <string name="pref_chats_and_media">Çatlar və faillar</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -283,6 +317,9 @@
     <string name="pref_appearance">Görünüş</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Dillər</string>
+    <string name="pref_incognito_keyboard">Məxfi klaviatura</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Klaviaturanın personal öyrənməyini söndürmək</string>
     <string name="pref_read_receipts">Qəbul olunanları oxuyun</string>
     <string name="pref_manage_keys">Açar edarəetməsi</string>
     <string name="pref_use_system_emoji">Sistem emojisini istifadə edin</string>
@@ -303,13 +340,29 @@
     <string name="pref_managekeys_import_secret_keys">Gizli açar idxalı</string>
     <string name="pref_background">Fon</string>
     <string name="pref_imap_folder_handling">IMAP qovluqunun idarə edilməsi</string>
+    <string name="pref_watch_mvbox_folder">DeltaChat qovluğunu izləyin</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
+    <string name="pref_email_interaction_title">Email qarşılıqlı əlaqə</string>
+    <string name="pref_show_emails">Klassik e-poçtları göstər</string>
+    <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
+    <string name="pref_show_emails_accepted_contacts">Qəbul edilən kontaktlar üçün</string>
+    <string name="pref_show_emails_all">Hamısı</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Avtomatik şifrələmə</string>
     <string name="autocrypt_explain">Avtoşifrələmə, avtomatik ucdan uca e-poçt şifrələməsi üçün yeni və açıq bir spesifikasiyadır. \n\nTədbirdən sonrakı qurulum avtomatik olaraq yaradılıb və Autocrypt Setup Messages ilə cihazlar arasında köçürə bilərsiniz.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
+    <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Digər cihazda göstərilən quraşdırma kodunu daxil edin.</string>
     <string name="autocrypt_continue_transfer_retry">Təkrar cəhd et</string>
     <string name="systemmsg_group_left">Qrup buraxdı.</string>
+    <!-- screen lock -->
+    <string name="screenlock_title">Ekran kilidi</string>
+    <string name="screenlock_authentication_failed">Daxilolma uğursuz oldu.</string>
+    <string name="screenlock_unlock_title">Delta Chat-ın kilidini aç</string>
+    <!-- qr code stuff -->
+    <string name="qrscan_title">Qr kodu skan edin</string>
     <string name="qrscan_fingerprint_label">İz</string>
     <string name="qrshow_join_group_title">Dəvət QR-kodu</string>
     <string name="qrshow_join_contact_title">Dəvət QR-kodu</string>
