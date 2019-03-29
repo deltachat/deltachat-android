@@ -177,7 +177,7 @@ public class ConversationListItem extends RelativeLayout
         thread.isVerified()? R.drawable.ic_verified : 0,
         0);
 
-    boolean isGroup = dcContext.getChat((int) threadId).isGroup();
+    boolean isGroup = recipient.isGroupRecipient();
     groupIndicator.setVisibility(isGroup ? VISIBLE : GONE);
     int color = ResUtil.getColor(getContext(), R.attr.conversation_list_item_contact_color);
     groupIndicator.setColorFilter(color);
