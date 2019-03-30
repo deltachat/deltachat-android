@@ -201,6 +201,7 @@
 
     <declare-styleable name="EmojiTextView">
         <attr name="scaleEmojis" format="boolean" />
+        <attr name="createInBackground" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="RingtonePreference">

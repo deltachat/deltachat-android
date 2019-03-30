@@ -22,6 +22,7 @@ import org.thoughtcrime.securesms.util.Util;
 public class EmojiTextView extends AppCompatTextView {
 
   private final boolean scaleEmojis;
+  private final boolean createInBackground;
 
   private CharSequence previousText;
   private BufferType   previousBufferType;
@@ -42,6 +43,7 @@ public class EmojiTextView extends AppCompatTextView {
 
     TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.EmojiTextView, 0, 0);
     scaleEmojis = a.getBoolean(R.styleable.EmojiTextView_scaleEmojis, false);
+    createInBackground = a.getBoolean(R.styleable.EmojiTextView_createInBackground, false);
     a.recycle();
 
     a = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.textSize});
@@ -80,7 +82,7 @@ public class EmojiTextView extends AppCompatTextView {
       return;
     }
 
-    CharSequence emojified = provider.emojify(candidates, text, this);
+    CharSequence emojified = provider.emojify(candidates, text, this, createInBackground);
     super.setText(emojified, BufferType.SPANNABLE);
 
     // Android fails to ellipsize spannable strings. (https://issuetracker.google.com/issues/36991688)
@@ -113,7 +115,7 @@ public class EmojiTextView extends AppCompatTextView {
             .append(ellipsized.subSequence(0, ellipsized.length()));
 
         EmojiParser.CandidateList newCandidates = EmojiProvider.getInstance(getContext()).getCandidates(newContent);
-        CharSequence              emojified     = EmojiProvider.getInstance(getContext()).emojify(newCandidates, newContent, this);
+        CharSequence              emojified     = EmojiProvider.getInstance(getContext()).emojify(newCandidates, newContent, this, createInBackground);
 
         super.setText(emojified, BufferType.SPANNABLE);
       }
