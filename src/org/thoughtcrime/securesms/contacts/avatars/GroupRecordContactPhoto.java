@@ -2,13 +2,15 @@ package org.thoughtcrime.securesms.contacts.avatars;
 
 import android.content.Context;
 
+import com.b44t.messenger.DcChat;
+
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 
 public class GroupRecordContactPhoto extends LocalFileContactPhoto {
 
-    public GroupRecordContactPhoto(Context context, Address address) {
-        super(context, address);
+    public GroupRecordContactPhoto(Context context, Address address, DcChat dcChat) {
+        super(context, address, dcChat, null);
     }
 
     @Override
@@ -23,7 +25,7 @@ public class GroupRecordContactPhoto extends LocalFileContactPhoto {
 
     @Override
     public String getPath(Context context) {
-        String profileImage = DcHelper.getContext(context).getChat(getId()).getProfileImage();
+        String profileImage = dcChat.getProfileImage();
         return profileImage != null ? profileImage : "";
     }
 
