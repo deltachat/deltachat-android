@@ -300,6 +300,11 @@ public class Recipient {
     }
   }
 
+  public DcChat getChat()
+  {
+    return dcChat!=null? dcChat : new DcChat(0);
+  }
+
   @Override
   public String toString() {
     return "Recipient{" +
