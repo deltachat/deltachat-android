@@ -118,11 +118,10 @@
                           android:background="@drawable/archived_indicator_background" />
 
                 <ImageView android:id="@+id/delivery_indicator"
-                           android:layout_marginTop="6dp"
+                           android:layout_marginTop="4dp"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:layout_gravity="center_vertical|end"
-                           android:paddingLeft="2dp"
                            android:tint="?attr/conversation_item_outgoing_text_secondary_color"
                            android:visibility="gone" />
 

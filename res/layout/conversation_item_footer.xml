@@ -29,11 +29,11 @@
         tools:text="30 mins"/>
 
     <ImageView android:id="@+id/delivery_indicator"
-               android:layout_width="20dp"
+               android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_gravity="center_vertical|end"
+               android:layout_marginLeft="6dp"
                android:tint="?attr/conversation_item_outgoing_text_secondary_color"
-               android:paddingLeft="2dp"
                android:visibility="gone" />
 
 </merge>
