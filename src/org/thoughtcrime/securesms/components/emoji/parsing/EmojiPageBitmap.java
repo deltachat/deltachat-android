@@ -67,7 +67,7 @@ public class EmojiPageBitmap {
     return task;
   }
 
-  private Bitmap loadPage() throws IOException {
+  public Bitmap loadPage() throws IOException {
     if (bitmapReference != null && bitmapReference.get() != null) return bitmapReference.get();
 
     try {

@@ -21,6 +21,7 @@ import com.mapbox.geojson.Feature;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
+import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DateUtils;
@@ -77,7 +78,7 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
                 LinearLayout bubbleLayout = (LinearLayout)
                         inflater.inflate(R.layout.map_bubble_layout, null);
                 bubbleLayout.setBackgroundResource(R.drawable.message_bubble_background_received_alone);
-                TextView conversationItemBody = bubbleLayout.findViewById(R.id.conversation_item_body);
+                EmojiTextView conversationItemBody = bubbleLayout.findViewById(R.id.conversation_item_body);
                 Locale locale = DynamicLanguage.getSelectedLocale(callbackRef.get().getContext());
                 int messageId = (int) feature.getNumberProperty(MESSAGE_ID);
                 int contactId = (int) feature.getNumberProperty(CONTACT_ID);

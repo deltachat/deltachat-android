@@ -24,15 +24,16 @@ import org.thoughtcrime.securesms.components.emoji.parsing.EmojiPageBitmap;
 import org.thoughtcrime.securesms.components.emoji.parsing.EmojiParser;
 import org.thoughtcrime.securesms.components.emoji.parsing.EmojiTree;
 import org.thoughtcrime.securesms.util.FutureTaskListener;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.Pair;
+import org.thoughtcrime.securesms.util.Util;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 class EmojiProvider {
 
   private static final    String        TAG      = EmojiProvider.class.getSimpleName();
-  private static volatile EmojiProvider instance = null;
+  protected static volatile EmojiProvider instance = null;
   private static final    Paint         paint    = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG);
 
   private final EmojiTree emojiTree = new EmojiTree();
@@ -56,7 +57,7 @@ class EmojiProvider {
     return instance;
   }
 
-  private EmojiProvider(Context context) {
+  protected EmojiProvider(Context context) {
     this.decodeScale = Math.min(1f, context.getResources().getDimension(R.dimen.emoji_drawer_size) / EMOJI_RAW_HEIGHT);
     this.verticalPad = EMOJI_VERT_PAD * this.decodeScale;
 
@@ -81,17 +82,18 @@ class EmojiProvider {
   }
 
   @Nullable Spannable emojify(@Nullable CharSequence text, @NonNull TextView tv) {
-    return emojify(getCandidates(text), text, tv);
+    return emojify(getCandidates(text), text, tv, false);
   }
 
   @Nullable Spannable emojify(@Nullable EmojiParser.CandidateList matches,
                               @Nullable CharSequence text,
-                              @NonNull TextView tv) {
+                              @NonNull TextView tv,
+                              boolean background) {
     if (matches == null || text == null) return null;
     SpannableStringBuilder      builder = new SpannableStringBuilder(text);
 
     for (EmojiParser.Candidate candidate : matches) {
-      Drawable drawable = getEmojiDrawable(candidate.getDrawInfo());
+      Drawable drawable = getEmojiDrawable(candidate.getDrawInfo(), background);
 
       if (drawable != null) {
         builder.setSpan(new EmojiSpan(drawable, tv), candidate.getStartIndex(), candidate.getEndIndex(),
@@ -104,24 +106,32 @@ class EmojiProvider {
 
   @Nullable Drawable getEmojiDrawable(CharSequence emoji) {
     EmojiDrawInfo drawInfo = emojiTree.getEmoji(emoji, 0, emoji.length());
-    return getEmojiDrawable(drawInfo);
+    return getEmojiDrawable(drawInfo, false);
   }
 
-  private @Nullable Drawable getEmojiDrawable(@Nullable EmojiDrawInfo drawInfo) {
+  protected @Nullable Drawable getEmojiDrawable(@Nullable EmojiDrawInfo drawInfo, boolean background) {
     if (drawInfo == null)  {
       return null;
     }
 
     final EmojiDrawable drawable = new EmojiDrawable(drawInfo, decodeScale);
-    drawInfo.getPage().get().addListener(new FutureTaskListener<Bitmap>() {
-      @Override public void onSuccess(final Bitmap result) {
-        Util.runOnMain(() -> drawable.setBitmap(result));
+    if (background) {
+      try {
+        drawable.setBitmap(drawInfo.getPage().loadPage(), background);
+      } catch (IOException e) {
+        e.printStackTrace();
       }
+    } else {
+      drawInfo.getPage().get().addListener(new FutureTaskListener<Bitmap>() {
+        @Override public void onSuccess(final Bitmap result) {
+          Util.runOnMain(() -> drawable.setBitmap(result));
+        }
 
-      @Override public void onFailure(ExecutionException error) {
-        Log.w(TAG, error);
-      }
-    });
+        @Override public void onFailure(ExecutionException error) {
+          Log.w(TAG, error);
+        }
+      });
+    }
     return drawable;
   }
 
@@ -167,7 +177,14 @@ class EmojiProvider {
 
     @TargetApi(VERSION_CODES.HONEYCOMB_MR1)
     public void setBitmap(Bitmap bitmap) {
-      Util.assertMainThread();
+      setBitmap(bitmap, false);
+    }
+
+    @TargetApi(VERSION_CODES.HONEYCOMB_MR1)
+    public void setBitmap(Bitmap bitmap, boolean background) {
+      if (!background) {
+        Util.assertMainThread();
+      }
       if (VERSION.SDK_INT < VERSION_CODES.HONEYCOMB_MR1 || bmp == null || !bmp.sameAs(bitmap)) {
         bmp = bitmap;
         invalidateSelf();
