@@ -47,7 +47,6 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
-import org.thoughtcrime.securesms.components.QuoteView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -91,7 +90,6 @@ public class ConversationItem extends LinearLayout
   private GlideRequests glideRequests;
 
   protected ViewGroup              bodyBubble;
-  private   QuoteView              quoteView;
   private   TextView               bodyText;
   private   ConversationItemFooter footer;
   private   TextView               groupSender;
@@ -147,7 +145,6 @@ public class ConversationItem extends LinearLayout
     this.audioViewStub           = new Stub<>(findViewById(R.id.audio_view_stub));
     this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
-    this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
 
     setOnClickListener(new ClickListener(null));
@@ -188,7 +185,6 @@ public class ConversationItem extends LinearLayout
     setContactPhoto();
     setGroupMessageStatus();
     setAuthor(messageRecord, groupThread);
-    setQuote(messageRecord, groupThread);
     setMessageSpacing(context);
     setFooter(messageRecord, locale);
   }
@@ -208,16 +204,6 @@ public class ConversationItem extends LinearLayout
     }
 
     //boolean needsMeasure = false;
-
-    if (hasQuote(messageRecord)) {
-      int quoteWidth     = quoteView.getMeasuredWidth();
-      int availableWidth = getAvailableMessageBubbleWidth(quoteView);
-
-      if (quoteWidth != availableWidth) {
-        quoteView.getLayoutParams().width = availableWidth;
-        //needsMeasure = true;
-      }
-    }
 
     /*
     ConversationItemFooter activeFooter   = getActiveFooter(messageRecord);
@@ -348,10 +334,6 @@ public class ConversationItem extends LinearLayout
     return dcMsg.getType()==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
   }
 
-  private boolean hasQuote(DcMsg messageRecord) {
-    return false;
-  }
-
   private void setBodyText(DcMsg messageRecord) {
     bodyText.setClickable(false);
     bodyText.setFocusable(false);
@@ -377,7 +359,7 @@ public class ConversationItem extends LinearLayout
                                   @NonNull Recipient       conversationRecipient,
                                            boolean         isGroupThread)
   {
-    boolean showControls = !messageRecord.isFailed() && !Util.isOwnNumber(context, conversationRecipient.getAddress());
+    boolean showControls = !messageRecord.isFailed();
 
     class SetDurationListener implements AudioSlidePlayer.Listener {
       @Override
@@ -497,8 +479,7 @@ public class ConversationItem extends LinearLayout
     }
 
     if ((!current.isOutgoing() && isGroupThread)
-     || current.isForwarded()
-     || hasQuote(messageRecord)){
+     || current.isForwarded()){
       topLeft  = 0;
       topRight = 0;
     }
@@ -539,52 +520,6 @@ public class ConversationItem extends LinearLayout
       }
     }
     return messageBody;
-  }
-
-  private void setQuote(@NonNull DcMsg current, boolean isGroupThread) {
-//    if (current.isMms() && !current.isMmsNotification() && ((MediaMmsDcMsg)current).getQuote() != null) {
-//      Quote quote = ((MediaMmsDcMsg)current).getQuote();
-//      assert quote != null;
-//      quoteView.setQuote(glideRequests, quote.getId(), Recipient.from(context, quote.getAuthor(), true), quote.getText(), quote.getAttachment());
-//      quoteView.setVisibility(View.VISIBLE);
-//      quoteView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-//
-//      quoteView.setOnClickListener(view -> {
-//        if (eventListener != null && batchIsEmpty()) {
-//          eventListener.onQuoteClicked((MmsDcMsg) current);
-//        } else {
-//          passthroughClickListener.onClick(view);
-//        }
-//      });
-//
-//      quoteView.setOnLongClickListener(passthroughClickListener);
-//
-//      if (isStartOfMessageCluster(current, previous, isGroupThread)) {
-//        if (current.isOutgoing()) {
-//          quoteView.setTopCornerSizes(true, true);
-//        } else if (isGroupThread) {
-//          quoteView.setTopCornerSizes(false, false);
-//        } else {
-//          quoteView.setTopCornerSizes(true, true);
-//        }
-//      } else if (!isSingularMessage(current, previous, next, isGroupThread)) {
-//        if (current.isOutgoing()) {
-//          quoteView.setTopCornerSizes(true, false);
-//        } else {
-//          quoteView.setTopCornerSizes(false, true);
-//        }
-//      }
-//
-//      if (mediaThumbnailStub.resolved()) {
-//        ViewUtil.setTopMargin(mediaThumbnailStub.get(), readDimen(R.dimen.message_bubble_top_padding));
-//      }
-//    } else {
-//      quoteView.dismiss();
-//
-//      if (mediaThumbnailStub.resolved()) {
-//        ViewUtil.setTopMargin(mediaThumbnailStub.get(), 0);
-//      }
-//    }
   }
 
   private void setGutterSizes(@NonNull DcMsg current, boolean isGroupThread) {

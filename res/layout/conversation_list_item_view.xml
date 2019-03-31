@@ -101,7 +101,7 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:minHeight="20dp"
+                android:minHeight="21dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -117,12 +117,13 @@
                           android:textColor="?attr/conversation_list_item_date_color"
                           android:background="@drawable/archived_indicator_background" />
 
-                <org.thoughtcrime.securesms.components.DeliveryStatusView
-                          android:id="@+id/delivery_status"
-                          android:layout_marginTop="6dp"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          app:iconColor="?attr/conversation_list_item_delivery_icon_color"/>
+                <ImageView android:id="@+id/delivery_indicator"
+                           android:layout_marginTop="4dp"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center_vertical|end"
+                           android:tint="?attr/conversation_item_outgoing_text_secondary_color"
+                           android:visibility="gone" />
 
                 <ImageView android:id="@+id/unread_indicator"
                           android:layout_width="24dp"

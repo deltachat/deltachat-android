@@ -49,12 +49,8 @@ public class DcLocationManager implements Observer {
     public DcLocationManager(Context context) {
         this.context = context.getApplicationContext();
         DcLocation.getInstance().addObserver(this);
-        DcChatlist chats = DcHelper.getContext(context).getChatlist(0, null, 0);
-        for (int i = 0; i < chats.getCnt(); i++) {
-            if (DcHelper.getContext(context).isSendingLocationsToChat(chats.getChat(i).getId())) {
-                initializeLocationEngine();
-                return;
-            }
+        if (DcHelper.getContext(context).isSendingLocationsToChat(0)) {
+            initializeLocationEngine();
         }
     }
 

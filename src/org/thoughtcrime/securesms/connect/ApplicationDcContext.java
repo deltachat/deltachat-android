@@ -232,44 +232,13 @@ public class ApplicationDcContext extends DcContext {
 
   @NonNull
   public Recipient getRecipient(DcChat chat) {
-    int[] contactIds = getChatContacts(chat.getId());
-    List<Recipient> participants = new ArrayList<>();
-    for (int contactId : contactIds) {
-      participants.add(getRecipient(RECIPIENT_TYPE_CONTACT, contactId));
-    }
-    Recipient recipient = new Recipient(Address.fromChat(chat.getId()), chat.getName(), participants);
-    if (!chat.isGroup()) {
-      String identifier = Hash.sha256(chat.getName() + chat.getSubtitle());
-      Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
-      if (systemContactPhoto != null) {
-        recipient.setSystemContactPhoto(systemContactPhoto);
-      }
-    }
-    return recipient;
+    return new Recipient(context, chat, null);
   }
 
   @NonNull
 
   public Recipient getRecipient(DcContact contact) {
-    Recipient recipient = new Recipient(Address.fromContact(contact.getId()), contact.getDisplayName(), null);
-    String identifier = Hash.sha256(contact.getName() + contact.getAddr());
-    Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
-    if (systemContactPhoto != null) {
-      recipient.setSystemContactPhoto(systemContactPhoto);
-    }
-    if (contact.getId() == DcContact.DC_CONTACT_ID_SELF) {
-      recipient.setProfileAvatar("SELF");
-    }
-    int[] blockedContacts = getBlockedContacts();
-    boolean blocked = false;
-    for (int blockedContact : blockedContacts) {
-      if (contact.getId() == blockedContact) {
-        blocked = true;
-        break;
-      }
-    }
-    recipient.setBlocked(blocked);
-    return recipient;
+    return new Recipient(context, null, contact);
   }
 
   @NonNull

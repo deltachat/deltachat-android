@@ -43,7 +43,7 @@ public class ConversationItemFooter extends LinearLayout {
 
     dateView              = findViewById(R.id.footer_date);
     secureIndicatorView   = findViewById(R.id.footer_secure_indicator);
-    deliveryStatusView    = findViewById(R.id.footer_delivery_status);
+    deliveryStatusView    = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
 
     if (attrs != null) {
       TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0);

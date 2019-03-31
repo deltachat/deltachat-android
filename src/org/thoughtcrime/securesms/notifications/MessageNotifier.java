@@ -42,6 +42,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
+import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Pair;
@@ -390,8 +391,9 @@ public class MessageNotifier {
       boolean      mms                   = record.isMms() || record.isMediaPending();
       int          chatId                = record.getChatId();
       CharSequence body                  = record.getDisplayBody();
-      Recipient    chatRecipient       = Recipient.fromChat(dcContext, msgId);
-      Recipient    individualRecipient   = Recipient.fromMsg(dcContext, msgId);
+      DcMsg        dcMsg                 = dcContext.getMsg(msgId);
+      Recipient    chatRecipient         = new Recipient(context, dcContext.getChat(dcMsg.getChatId()), null);
+      Recipient    individualRecipient   = new Recipient(context, null, dcContext.getContact(dcMsg.getFromId()));
       SlideDeck    slideDeck             = new SlideDeck(dcContext.context, record);
       long         timestamp             = record.getTimestamp();
 

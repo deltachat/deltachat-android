@@ -170,10 +170,6 @@
         <attr name="thumbnail_radius" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="DeliveryStatusView">
-        <attr name="iconColor" format="color" />
-    </declare-styleable>
-
     <declare-styleable name="AudioView">
         <attr name="widgetBackground" format="color"/>
         <attr name="foregroundTintColor" format="color" />
@@ -210,16 +206,6 @@
     <declare-styleable name="RingtonePreference">
         <attr name="showAdd" format="boolean" />
         <attr name="summaryHasRingtone" format="string|reference" />
-    </declare-styleable>
-
-    <declare-styleable name="QuoteView">
-        <attr name="message_type" format="enum">
-            <enum name="preview" value="0" />
-            <enum name="outgoing" value="1" />
-            <enum name="incoming" value="2" />
-        </attr>
-        <attr name="quote_colorPrimary" format="color" />
-        <attr name="quote_colorSecondary" format="color" />
     </declare-styleable>
 
     <declare-styleable name="DocumentView">

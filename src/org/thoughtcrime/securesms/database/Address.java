@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
-import org.thoughtcrime.securesms.util.GroupUtil;
 import org.thoughtcrime.securesms.util.NumberUtil;
 
 public class Address implements Parcelable, Comparable<Address> {
@@ -48,30 +47,13 @@ public class Address implements Parcelable, Comparable<Address> {
     return new Address(serialized);
   }
 
-  public boolean isGroup() {
-    return GroupUtil.isEncodedGroup(address);
-  }
-
-  public boolean isMmsGroup() {
-    return GroupUtil.isMmsGroup(address);
-  }
-
   public boolean isEmail() {
     return NumberUtil.isValidEmail(address);
-  }
-
-  public boolean isPhone() {
-    return !isGroup() && !isEmail();
   }
 
   public boolean isDcChat() { return address.startsWith(DC_CHAT_PREFIX); };
 
   public boolean isDcContact() { return address.startsWith(DC_CONTACT_PREFIX); };
-
-  public @NonNull String toPhoneString() {
-    if (!isPhone()) throw new AssertionError("Not e164: " + address);
-    return address;
-  }
 
   public @NonNull String toEmailString() {
     if (!isEmail()) throw new AssertionError("Not email: " + address);
