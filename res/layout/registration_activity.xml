@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="16dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="10dp" />
+            app:layout_constraintGuide_begin="14dp" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline_root_start"
@@ -99,7 +99,7 @@
             android:contentDescription="@null"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:src="@drawable/ic_menu_remove_holo_light"
+            android:src="@drawable/ic_close_white_24dp"
             android:tint="@color/blue_600"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@+id/guideline_root_start_shifted"
