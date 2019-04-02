@@ -23,13 +23,14 @@ public class LogViewActivity extends BaseActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    dynamicTheme.onCreate(this);
+    dynamicLanguage.onCreate(this);
+
     setContentView(R.layout.log_view_activity);
     logViewFragment = LogViewFragment.newInstance();
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     transaction.replace(R.id.fragment_container, logViewFragment);
     transaction.commit();
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
