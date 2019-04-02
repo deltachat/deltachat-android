@@ -109,7 +109,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
         if (isConfigured) {
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
-            emailInput.setText(DcHelper.get(this, CONFIG_ADDRESS));
+
+            String email = DcHelper.get(this, CONFIG_ADDRESS);
+            emailInput.setText(email);
+            if(!TextUtils.isEmpty(email)) {
+                emailInput.setSelection(email.length(), email.length());
+            }
+
             passwordInput.setText(DcHelper.get(this, CONFIG_MAIL_PASSWORD));
             imapLoginInput.setText(DcHelper.get(this, CONFIG_MAIL_USER));
             imapServerInput.setText(DcHelper.get(this, CONFIG_MAIL_SERVER));
