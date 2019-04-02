@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:fillViewport="true"
     tools:context=".RegistrationActivity">
 
@@ -82,7 +81,6 @@
             android:gravity="left"
             android:padding="16dp"
             android:text="@string/login_no_servers_hint"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password" />
 

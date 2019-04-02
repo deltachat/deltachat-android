@@ -27,6 +27,7 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
@@ -53,6 +54,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         PORT,
     }
 
+    private final DynamicTheme dynamicTheme    = new DynamicTheme();
+
     private TextInputEditText emailInput;
     private TextInputEditText passwordInput;
     private Group advancedGroup;
@@ -68,6 +71,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        dynamicTheme.onCreate(this);
+
         setContentView(R.layout.registration_activity);
 
         emailInput = findViewById(R.id.email_text);
@@ -136,6 +141,12 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
 
         DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dynamicTheme.onResume(this);
     }
 
     private void showLog() {
