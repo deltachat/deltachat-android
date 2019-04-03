@@ -76,7 +76,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   private final boolean                       multiSelect;
   private final boolean                       longPressSelect;
   private final LayoutInflater                li;
-  private final TypedArray                    drawables;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
   private final Set<String>                   selectedContacts = new HashSet<>(); // TODO: maybe better use contact-id here
@@ -131,7 +130,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect, boolean enabled);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     public abstract void setChecked(boolean checked);
     public abstract void setSelected(boolean enabled);
@@ -188,8 +187,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       return (ContactSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String addr, String label, int color, boolean multiSelect, boolean enabled) {
-      getView().set(glideRequests, type, contact, name, addr, label, color, multiSelect, enabled);
+    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String addr, String label, boolean multiSelect, boolean enabled) {
+      getView().set(glideRequests, type, contact, name, addr, label, multiSelect, enabled);
     }
 
     @Override
@@ -223,7 +222,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     }
 
     @Override
-    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, int color, boolean multiSelect, boolean enabled) {
+    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled) {
       this.label.setText(name);
     }
 
@@ -260,7 +259,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     this.dcContext     = DcHelper.getContext(context);
     this.li            = LayoutInflater.from(context);
     this.glideRequests = glideRequests;
-    this.drawables     = context.obtainStyledAttributes(STYLE_ATTRIBUTES);
     this.multiSelect   = multiSelect;
     this.clickListener = clickListener;
     this.longPressSelect = longPressSelect;
@@ -279,7 +277,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
 
     int id = dcContactList[i];
-    int color = drawables.getColor(0, 0xff000000);
     DcContact dcContact = null;
     String label = null;
     String name;
@@ -318,7 +315,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       boolean selected = actionModeSelection.indexOfValue(id) > -1;
       holder.setSelected(selected);
     }
-    holder.bind(glideRequests, id, dcContact, name, addr, label, color, itemMultiSelect, enabled);
+    holder.bind(glideRequests, id, dcContact, name, addr, label, itemMultiSelect, enabled);
     holder.setChecked(selectedContacts.contains(addr));
   }
 

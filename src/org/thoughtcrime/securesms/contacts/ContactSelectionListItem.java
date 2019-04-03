@@ -59,7 +59,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void set(@NonNull GlideRequests glideRequests, int specialId, DcContact contact, String name, String number, String label, int color, boolean multiSelect, boolean enabled) {
+  public void set(@NonNull GlideRequests glideRequests, int specialId, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled) {
     this.glideRequests = glideRequests;
     this.specialId     = specialId;
     this.name        = name;
@@ -76,8 +76,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
         name = this.recipient.getName();
       }
     }
-    this.nameView.setTextColor(color);
-    this.numberView.setTextColor(color);
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
     setText(name, number, label, contact);
