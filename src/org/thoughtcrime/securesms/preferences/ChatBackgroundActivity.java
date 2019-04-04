@@ -4,6 +4,7 @@ package org.thoughtcrime.securesms.preferences;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -22,9 +23,11 @@ import android.widget.Toast;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
-import org.thoughtcrime.securesms.BaseActionBarActivity;
+import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -32,7 +35,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.concurrent.ExecutionException;
 
-public class ChatBackgroundActivity extends BaseActionBarActivity {
+public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity {
+
+    private final DynamicTheme dynamicTheme = new DynamicTheme();
+    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     Button galleryButton;
     Button defaultButton;
@@ -44,8 +50,13 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
     Boolean imageUpdate = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onPreCreate() {
+        dynamicTheme.onCreate(this);
+        dynamicLanguage.onCreate(this);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState, boolean ready) {
         setContentView(R.layout.activity_select_chat_background);
 
         defaultButton = findViewById(R.id.set_default_button);
@@ -69,6 +80,13 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dynamicTheme.onResume(this);
+        dynamicLanguage.onResume(this);
     }
 
     @Override
@@ -150,8 +168,14 @@ public class ChatBackgroundActivity extends BaseActionBarActivity {
     }
 
     private void setDefaultLayoutBackgroundImage() {
-        Drawable image = getResources().getDrawable(R.drawable.background_hd);
-        preview.setImageDrawable(image);
+        if(dynamicTheme.isDarkTheme(this)) {
+            preview.setImageDrawable(null);
+            preview.setBackgroundColor(Color.BLACK);
+        }
+        else {
+            Drawable image = getResources().getDrawable(R.drawable.background_hd);
+            preview.setImageDrawable(image);
+        }
     }
 
     @Override
