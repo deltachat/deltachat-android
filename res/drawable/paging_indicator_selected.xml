@@ -7,7 +7,7 @@
             android:thickness="8dp"
             android:useLevel="false">
 
-            <solid android:color="@color/blue_400"/>
+            <solid android:color="@color/delta_accent"/>
         </shape>
     </item>
 </layer-list>

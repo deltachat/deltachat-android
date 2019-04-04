@@ -24,7 +24,6 @@
                 android:hint="@string/contacts_enter_name_or_email"
                 android:ellipsize="end"
                 android:inputType="textPersonName"
-                android:textCursorDrawable="@null"
                 android:textSize="18sp" />
 
             <org.thoughtcrime.securesms.components.AnimatingToggle
