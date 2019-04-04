@@ -182,6 +182,7 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
+    <string name="contacts_enter_email">Enter email address</string>
     <string name="contacts_enter_name_or_email">Enter name or email address</string>
     <string name="contacts_type_email_above">Type email address above</string>
     <string name="contacts_empty_hint">No contacts.</string>
