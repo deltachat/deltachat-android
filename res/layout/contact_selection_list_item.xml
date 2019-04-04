@@ -39,7 +39,7 @@
             android:drawablePadding="5dp"
             android:ellipsize="marquee"
             android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:fontFamily="sans-serif"
             android:textSize="16sp"
             tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
 
