@@ -35,8 +35,8 @@ public class DynamicTheme {
     return R.style.TextSecure_LightTheme;
   }
 
-  public boolean isDarkTheme(Activity activity) {
-    return getSelectedTheme(activity)==R.style.TextSecure_DarkTheme;
+  public static boolean isDarkTheme(Activity activity) {
+    return Prefs.getTheme(activity).equals(DARK);
   }
 
   private static final class OverridePendingTransition {
