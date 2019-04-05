@@ -4,14 +4,7 @@
     <item>
         <shape>
             <padding android:top="1dp" android:right="0dp" android:bottom="0dp" android:left="0dp" />
-            <solid android:color="#101010" />
-        </shape>
-    </item>
-
-    <item>
-        <shape>
-            <padding android:top="1dp" android:right="0dp" android:bottom="0dp" android:left="0dp" />
-            <solid android:color="#222222" />
+            <solid android:color="#000000" />
             <size android:height="20dp"/>
         </shape>
     </item>

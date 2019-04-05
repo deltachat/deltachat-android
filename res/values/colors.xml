@@ -3,7 +3,8 @@
     <color name="delta_primary">#ff415e6b</color>
     <color name="delta_primary_dark">#ff364e59</color>
     <color name="delta_primary_lite">#4c6e7d</color>
-    <color name="delta_accent">#ff2090ea</color>
+
+    <color name="delta_accent">#42A5F5</color>
 
     <color name="primary_alpha_focus">#882090ea</color>
     <color name="primary_alpha33">#552090ea</color>

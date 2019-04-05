@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 import org.thoughtcrime.securesms.R;
@@ -33,6 +34,10 @@ public class DynamicTheme {
     if (theme.equals(DARK)) return R.style.TextSecure_DarkTheme;
 
     return R.style.TextSecure_LightTheme;
+  }
+
+  public static boolean isDarkTheme(Context context) {
+    return Prefs.getTheme(context).equals(DARK);
   }
 
   private static final class OverridePendingTransition {

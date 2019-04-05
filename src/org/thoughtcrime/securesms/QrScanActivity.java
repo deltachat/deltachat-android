@@ -13,8 +13,13 @@ import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 
 public class QrScanActivity extends AppCompatActivity {
+
+    private final DynamicTheme dynamicTheme    = new DynamicTheme();
+    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     private CaptureManager capture;
 
@@ -23,6 +28,8 @@ public class QrScanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dynamicTheme.onCreate(this);
+        dynamicLanguage.onCreate(this);
 
         setContentView(R.layout.activity_qr_scan);
 
@@ -81,6 +88,8 @@ public class QrScanActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        dynamicTheme.onResume(this);
+        dynamicLanguage.onResume(this);
         if (capture != null) {
             capture.onResume();
         }

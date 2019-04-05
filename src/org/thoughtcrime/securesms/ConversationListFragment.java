@@ -65,6 +65,7 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
@@ -578,8 +579,8 @@ public class ConversationListFragment extends Fragment
           if (archive) icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_unarchive_white_36dp);
           else         icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_archive_white_36dp);
 
-          if (alpha > 0) p.setColor(getResources().getColor(R.color.delta_primary));
-          else           p.setColor(Color.WHITE);
+          if (alpha > 0) p.setColor(getResources().getColor(DynamicTheme.isDarkTheme(getActivity())? R.color.gray95 : R.color.delta_primary));
+          else           p.setColor(DynamicTheme.isDarkTheme(getActivity())? Color.BLACK : Color.WHITE);
 
           c.drawRect((float) itemView.getLeft(), (float) itemView.getTop(), dX,
                      (float) itemView.getBottom(), p);

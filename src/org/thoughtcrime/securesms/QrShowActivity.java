@@ -24,8 +24,13 @@ import com.google.zxing.common.BitMatrix;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 
 public class QrShowActivity extends AppCompatActivity implements DcEventCenter.DcEventDelegate {
+
+    private final DynamicTheme dynamicTheme    = new DynamicTheme();
+    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     public final static int WHITE = 0xFFFFFFFF;
     public final static int BLACK = 0xFF000000;
@@ -42,6 +47,9 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dynamicTheme.onCreate(this);
+        dynamicLanguage.onCreate(this);
+
         setContentView(R.layout.activity_qr_show);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
 
@@ -93,6 +101,13 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         }
 
         dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dynamicTheme.onResume(this);
+        dynamicLanguage.onResume(this);
     }
 
     @Override

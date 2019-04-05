@@ -27,6 +27,7 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
@@ -53,6 +54,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         PORT,
     }
 
+    private final DynamicTheme dynamicTheme    = new DynamicTheme();
+
     private TextInputEditText emailInput;
     private TextInputEditText passwordInput;
     private Group advancedGroup;
@@ -68,6 +71,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        dynamicTheme.onCreate(this);
+
         setContentView(R.layout.registration_activity);
 
         emailInput = findViewById(R.id.email_text);
@@ -104,7 +109,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
         if (isConfigured) {
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
-            emailInput.setText(DcHelper.get(this, CONFIG_ADDRESS));
+
+            String email = DcHelper.get(this, CONFIG_ADDRESS);
+            emailInput.setText(email);
+            if(!TextUtils.isEmpty(email)) {
+                emailInput.setSelection(email.length(), email.length());
+            }
+
             passwordInput.setText(DcHelper.get(this, CONFIG_MAIL_PASSWORD));
             imapLoginInput.setText(DcHelper.get(this, CONFIG_MAIL_USER));
             imapServerInput.setText(DcHelper.get(this, CONFIG_MAIL_SERVER));
@@ -136,6 +147,12 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
 
         DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dynamicTheme.onResume(this);
     }
 
     private void showLog() {
