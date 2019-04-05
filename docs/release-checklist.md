@@ -19,25 +19,25 @@ Release core, f-droid, then:
 6. Select flavor `gplayRelease` with V1 signature enabled
    (needed for easy APK verificarion), V2 is optional
 7. Test the generated APK from `gplay/release`
-8. upload the APK to https://play.google.com/apps/publish/
+8. Upload the APK to https://play.google.com/apps/publish/
 
 
 # For an additional APK
 
-9.  in Android Studio make sure, the target is fatDebug
+9.  In Android Studio make sure, the target is fatDebug
     and select "Build / Build APK"
     (TODO: or also use the release signing key)
-10. upload the generated APK to the created Github release
+10. Upload the generated APK to the created Github release
 
 
 # Testing checklist
 
-only some rough ideas, ideally, this should result into a simple checklist
-that can be checke before releasing.
-however, although it would be nice to test "everything", we should keep in mind
+Only some rough ideas, ideally, this should result into a simple checklist
+that can be checked before releasing.
+However, although it would be nice to test "everything", we should keep in mind
 that the test should be doable in, say, 10~15 minutes.
 - create new account with (one of?): gmail, yandex, other
-  or (?) test an exiting account
+  or (?) test an existing account
 - send and receive a message
 - create a group
 - do a contact verification
