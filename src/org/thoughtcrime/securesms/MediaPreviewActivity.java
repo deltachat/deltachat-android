@@ -68,6 +68,9 @@ import org.thoughtcrime.securesms.util.Util;
 import java.io.IOException;
 import java.util.WeakHashMap;
 
+import static org.thoughtcrime.securesms.ShareActivity.EXTRA_FORWARD;
+import static org.thoughtcrime.securesms.ShareActivity.EXTRA_MSG_IDS;
+
 /**
  * Activity for displaying media attachments in-app
  */
@@ -255,8 +258,9 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     if (mediaItem != null) {
       Intent composeIntent = new Intent(this, ShareActivity.class);
-      composeIntent.putExtra(Intent.EXTRA_STREAM, mediaItem.uri);
-      composeIntent.setType(mediaItem.type);
+      int[] msgIds = new int[]{mediaItem.msgId};
+      composeIntent.putExtra(EXTRA_MSG_IDS, msgIds);
+      composeIntent.putExtra(EXTRA_FORWARD, true);
       startActivity(composeIntent);
       overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
     }
