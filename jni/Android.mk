@@ -883,7 +883,6 @@ LOCAL_MODULE     := native-utils
 LOCAL_C_INCLUDES := $(JNI_DIR)/utils/ \
 $(JNI_DIR)/messenger-backend/libs/openssl/include \
 $(JNI_DIR)/messenger-backend/libs/libetpan/include \
-$(JNI_DIR)/messenger-backend/libs/netpgp/include \
 $(JNI_DIR)/messenger-backend/libs/sqlite
 
 LOCAL_LDLIBS 	:= -ljnigraphics -llog -lz -latomic
@@ -899,19 +898,6 @@ LOCAL_C_INCLUDES += $(JNI_DIR)/../../rpgp/pgp-ffi/
 
 LOCAL_SRC_FILES := \
 utils/org_thoughtcrime_securesms_util_FileUtils.cpp \
-messenger-backend/libs/netpgp/src/compress.c \
-messenger-backend/libs/netpgp/src/create.c \
-messenger-backend/libs/netpgp/src/crypto.c \
-messenger-backend/libs/netpgp/src/keyring.c \
-messenger-backend/libs/netpgp/src/misc.c \
-messenger-backend/libs/netpgp/src/openssl_crypto.c \
-messenger-backend/libs/netpgp/src/packet-parse.c \
-messenger-backend/libs/netpgp/src/packet-show.c \
-messenger-backend/libs/netpgp/src/reader.c \
-messenger-backend/libs/netpgp/src/signature.c \
-messenger-backend/libs/netpgp/src/symmetric.c \
-messenger-backend/libs/netpgp/src/validate.c \
-messenger-backend/libs/netpgp/src/writer.c \
 messenger-backend/src/dc_aheader.c \
 messenger-backend/src/dc_apeerstate.c \
 messenger-backend/src/dc_array.c \
