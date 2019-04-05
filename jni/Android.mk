@@ -867,7 +867,13 @@ include $(BUILD_STATIC_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE    := librpgp
-LOCAL_SRC_FILES := ../../rpgp/target/armv7-linux-androideabi/release/libpgp_ffi.a
+
+ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
+	LOCAL_SRC_FILES := ../../rpgp/target/armv7-linux-androideabi/release/libpgp_ffi.a
+endif
+ifeq ($(TARGET_ARCH_ABI),x86)
+	LOCAL_SRC_FILES := ../../rpgp/target/i686-linux-android/release/libpgp_ffi.a
+endif
 
 include $(PREBUILT_STATIC_LIBRARY)
 
