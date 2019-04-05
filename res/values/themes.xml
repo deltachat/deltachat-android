@@ -102,6 +102,7 @@
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape</item>
 
         <item name="fab_color">@color/delta_primary_lite</item>
+        <item name="input_panel_bg_color">@color/white</item>
         <item name="lower_right_divet">@drawable/divet_lower_right_dark</item>
 
         <item name="conversation_group_member_name">#99000000</item>
@@ -289,6 +290,7 @@
         <item name="import_export_item_card_background">@drawable/clickable_card_dark</item>
 
         <item name="fab_color">@color/gray95</item>
+        <item name="input_panel_bg_color">@color/gray95</item>
         <item name="lower_right_divet">@drawable/divet_lower_right_light</item>
 
         <!-- dark theme -->
