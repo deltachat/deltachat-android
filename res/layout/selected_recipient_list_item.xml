@@ -29,6 +29,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:background="#00ffffff"
-        android:src="@drawable/ic_menu_remove_holo_light" />
+        android:src="@drawable/ic_close_white_24dp" />
 
 </RelativeLayout>
