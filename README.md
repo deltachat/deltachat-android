@@ -15,14 +15,13 @@ For the core library and other common information, please refer to the
 # Build
 
 When checking out _deltachat-android_, make sure also to check out the
-subproject _deltachat-core_:
+subprojects [deltachat-core](https://github.com/deltachat/deltachat-core)
+and [rpgp](https://github.com/rpgp/rpgp):
 
 - When using Git, you can do this initially by
   `$ git clone --recursive https://github.com/deltachat/deltachat-android`
   or later by `git submodule update --init --recursive`. If you do this in your
   home directory, this results in the folder `~/deltachat-android` which is just fine.
-
-- Alternatively, you can download the [deltachat-android zip-file](https://github.com/deltachat/deltachat-android/archive/master.zip); in this case, also download the [deltachat-core zip-file](https://github.com/deltachat/deltachat-core/archive/master.zip) and place its contents to `jni/messenger-backend`
 
 Then, call `ndk-build` in the root directory to build the C-part; 
 this also builds deltachat-core.  Afterwards run the project in Android Studio.

@@ -1,3 +1,6 @@
 [submodule "jni/messenger-backend"]
 	path = jni/messenger-backend
 	url = https://github.com/deltachat/deltachat-core
+[submodule "jni/rpgp"]
+	path = jni/rpgp
+	url = https://github.com/rpgp/rpgp
