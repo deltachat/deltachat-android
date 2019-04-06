@@ -8,13 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.b44t.messenger.DcLot;
 
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Locale;
 import java.util.Set;
@@ -44,9 +42,6 @@ public class ConversationListItemInboxZero extends LinearLayout implements Binda
 
   @Override
   public void bind(@NonNull ThreadRecord thread, int msgId, @NonNull DcLot dcSummary, @NonNull GlideRequests glideRequests, @NonNull Locale locale, @NonNull Set<Long> selectedThreads, boolean batchMode) {
-    TextView t = ViewUtil.findById(this, R.id.all_archived_text);
-    if(t!=null) {
-      t.setText(getContext().getString(R.string.chat_all_archived, "+"));
-    }
+
   }
 }
