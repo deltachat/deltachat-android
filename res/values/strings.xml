@@ -209,8 +209,7 @@
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
     <string name="chat_no_chats_yet_hint">Give your inbox something to write home about. Get started by messaging a friend.</string>
-    <string name="chat_all_done_hint">Inbox zeeerrro</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nYou\'re all caught up!</string>
+    <string name="chat_all_archived">All chats archived.\nPress %1$s to start a new chat.</string>
     <string name="chat_share_with_title">Share with</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
@@ -637,6 +636,9 @@
     <string name="qrshow_join_verified_group_title">QR invite code</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Scan this to join the group \"%1$s\".</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Inbox zeeerrro</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nYou\'re all caught up!</string>
 
 
 </resources>

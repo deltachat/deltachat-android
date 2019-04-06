@@ -6,26 +6,15 @@
         android:layout_height="wrap_content"
         android:paddingTop="30dp">
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:textSize="25sp"
-              android:gravity="center"
-              android:padding="16dp"
-              android:text="@string/chat_all_done_hint"/>
-
-    <ImageView
-            android:layout_gravity="center"
-            android:src="@drawable/inbox_zero"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-    <TextView android:id="@+id/description"
+    <TextView android:id="@+id/all_archived_text"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="center"
+              android:layout_marginTop="16dp"
+              android:layout_marginBottom="16dp"
               android:textSize="20sp"
+              android:lineSpacingMultiplier="1.3"
+              android:gravity="center"
               android:padding="16dp"
-              android:text="@string/chat_all_done_explain"/>
+              android:text="@string/chat_all_archived"/>
 
 </org.thoughtcrime.securesms.ConversationListItemInboxZero>
