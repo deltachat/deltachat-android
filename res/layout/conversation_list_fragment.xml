@@ -26,10 +26,18 @@
                   android:visibility="gone"
                   tools:visibility="visible">
 
+        <TextView android:text="@string/chat_no_chats_yet_title"
+                  android:textSize="20sp"
+                  android:padding="16dp"
+                  android:gravity="center"
+                  android:lineSpacingMultiplier="1.3"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"/>
 
         <ImageView
             android:src="@drawable/conversation_list_empty_state"
                    android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
                    android:layout_gravity="center_horizontal"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
@@ -37,7 +45,10 @@
 
         <TextView android:text="@string/chat_no_chats_yet_hint"
                   android:textSize="20sp"
-                  android:padding="16dp"
+                  android:paddingLeft="16dp"
+                  android:paddingTop="16dp"
+                  android:paddingRight="16dp"
+                  android:paddingBottom="64dp"
                   android:gravity="center"
                   android:lineSpacingMultiplier="1.3"
                   android:layout_width="match_parent"
