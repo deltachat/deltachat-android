@@ -17,7 +17,8 @@ import java.util.Locale;
 
 public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.OnValueChangedListener {
     private static final int DEFAULT_TIMEFRAME_2D = 60 * 60 * 24 * 2; // 2d
-    private static final float DEFAULT_DELTA = 1000*60*30; // 30 min
+    private static final float DEFAULT_DELTA = 1000 * 60 * 30; // 30 min
+    private static final float LAST_POSITON_DELTA = 1000 * 60 * 60 * 24; //1d
     int timeFrame; // timeframe in seconds
 
     Locale locale;
@@ -49,7 +50,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
         super.setOnValueChangedListener(this);
         minRangeDisplayLabel = new TextLayer(displayTextFontSize, trackHighlightTintColor);
         maxRangeDisplayLabel = new TextLayer(displayTextFontSize, trackHighlightTintColor);
-        delta = DEFAULT_DELTA / (timeFrame * 1000) * getCount();
+        deltaValue = getDelta();
     }
 
     @Override
@@ -65,6 +66,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
         float minValueOffsetX = getPositionFromIndex(minValue);
         float maxValueOffsetX = getPositionFromIndex(maxValue);
 
+        deltaValue = getDelta();
         if (minValue == maxValue) {
             if (minValueOffsetX - getDeltaInPixel() >= sliderPaddingLeft) {
                 minRangeDisplayLabel.draw(
@@ -109,7 +111,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
             if (minValue == maxValue) {
                 if (minValue == getCount()) {
                     // filter last location
-                    listener.onFilterLastPosition(System.currentTimeMillis() - (long) DEFAULT_DELTA);
+                    listener.onFilterLastPosition(System.currentTimeMillis() - (long) LAST_POSITON_DELTA);
                 } else {
                     // filter for time of event with delta before and after
                     listener.onTimestampChanged(minTimeStamp - (long) DEFAULT_DELTA, minTimeStamp + (long) DEFAULT_DELTA);
@@ -147,7 +149,27 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     }
 
     public String getDeltaInTime(Context context) {
-        return DateUtils.getFormattedTimespan(context, (int) (timeFrame * 1000 / getCount() * getDeltaInValues()));
+        return DateUtils.getFormattedTimespan(context, (int) (timeFrame * 1000 / getCount() * getDelta()));
+    }
+
+    /**
+     * When filtering for a point in time a delta time span is added to improve the search results.
+     * @return normalized delta
+     */
+    private float getDelta() {
+        if (minValue == getCount()) {
+            return getLastPositionDelta();
+        } else {
+            return getDefaultDelta();
+        }
+    }
+
+    private float getDefaultDelta() {
+        return DEFAULT_DELTA / (timeFrame * 1000) * getCount();
+    }
+
+    private float getLastPositionDelta() {
+        return LAST_POSITON_DELTA / (timeFrame * 1000) * getCount();
     }
 
 

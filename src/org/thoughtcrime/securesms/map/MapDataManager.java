@@ -76,8 +76,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public static final String ACCURACY = "ACCURACY";
     public static final int ALL_CHATS_GLOBAL_MAP = 0;
     public static final long TIMESTAMP_NOW = 0L;
-    public static final long TIMEOUT = 3 * 60 * 60 * 1000;
-    private static final long DEFAULT_LAST_POSITION_DELTA = 1000*60*30; // 30 min
+    public static final long TIME_FRAME = 1000 * 60 * 60 * 24 * 2; // 2d
+    private static final long DEFAULT_LAST_POSITION_DELTA = 1000 * 60 * 60 * 24; // 1d
 
     private static final String TAG = MapDataManager.class.getSimpleName();
     private Style mapboxStyle;
@@ -250,7 +250,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private void updateSource(int chatId, int contactId, LatLngBounds.Builder boundingBuilder) {
-        updateSource(chatId, contactId, System.currentTimeMillis() - TIMEOUT, TIMESTAMP_NOW, boundingBuilder );
+        updateSource(chatId, contactId, System.currentTimeMillis() - TIME_FRAME, TIMESTAMP_NOW, boundingBuilder );
     }
 
     private void updateSource(int chatId, int contactId, long startTimestamp, long endTimestamp, LatLngBounds.Builder boundingBuilder) {
