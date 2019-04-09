@@ -58,8 +58,8 @@
             android:id="@+id/timeRangeSlider"
             android:layout_marginBottom="15dp"
 
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
             android:layout_width="match_parent"
