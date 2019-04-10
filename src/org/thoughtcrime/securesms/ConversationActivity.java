@@ -753,6 +753,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       Drawable image = Drawable.createFromPath(backgroundImagePath);
       getWindow().setBackgroundDrawable(image);
     }
+    else if(dynamicTheme.isDarkTheme(this)) {
+      getWindow().setBackgroundDrawableResource(R.drawable.background_hd_dark);
+    }
     else if(!dynamicTheme.isDarkTheme(this)) {
       getWindow().setBackgroundDrawableResource(R.drawable.background_hd);
     }
