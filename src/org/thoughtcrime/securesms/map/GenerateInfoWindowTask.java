@@ -31,7 +31,9 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static android.view.View.GONE;
 import static org.thoughtcrime.securesms.map.MapDataManager.CONTACT_ID;
@@ -48,15 +50,26 @@ import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
  * Generating Views on background thread since we are not going to be adding them to the view hierarchy.
  * </p>
  */
-public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMap<String, Bitmap>, HashMap<String, Bitmap>> {
+class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMap<String, Bitmap>, HashMap<String, Bitmap>> {
 
     private static final String TAG = GenerateInfoWindowCallback.class.getName();
     private final WeakReference<GenerateInfoWindowCallback> callbackRef;
     private final int contactId;
+    private static HashSet<GenerateInfoWindowTask> instances;
 
     GenerateInfoWindowTask(GenerateInfoWindowCallback callback, int contactId) {
         this.callbackRef = new WeakReference<>(callback);
         this.contactId = contactId;
+        if (instances == null) {
+            instances = new HashSet<>();
+        }
+        instances.add(this);
+    }
+
+    public static void cancelRunningTasks() {
+        for (GenerateInfoWindowTask task : instances) {
+            task.cancel(true);
+        }
     }
 
     @SuppressWarnings("WrongThread")
@@ -117,6 +130,10 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
                 String id = feature.getStringProperty(INFO_WINDOW_ID);
                 imagesMap.put(id, bitmap);
 
+                if (isCancelled()) {
+                    break;
+                }
+
                 if (i % 20 == 0) {
                     publishProgress(new HashMap<>(imagesMap));
                     imagesMap.clear();
@@ -133,27 +150,38 @@ public class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMa
 
     @Override
     protected void onProgressUpdate(HashMap<String, Bitmap>... imagesMap) {
-        try {
-            callbackRef.get().setInfoWindowResults(imagesMap[0]);
-            callbackRef.get().refreshSource(contactId);
-            Log.d(TAG, "updating progress for contact: " + contactId);
-        } catch (NullPointerException npe) {
-            npe.printStackTrace();
-            Log.e(TAG, "Callback was GC'ed before task finished.");
+        if (!isCancelled()) {
+            try {
+                callbackRef.get().setInfoWindowResults(imagesMap[0]);
+                callbackRef.get().refreshSource(contactId);
+                Log.d(TAG, "updating progress for contact: " + contactId);
+            } catch (NullPointerException npe) {
+                npe.printStackTrace();
+                Log.e(TAG, "Callback was GC'ed before task finished.");
+            }
         }
     }
 
     @Override
     protected void onPostExecute(HashMap<String, Bitmap> bitmapHashMap) {
-        try {
-            if (bitmapHashMap.size() > 0) {
-                callbackRef.get().setInfoWindowResults(bitmapHashMap);
-                callbackRef.get().refreshSource(contactId);
+        if (!isCancelled()) {
+            try {
+                if (bitmapHashMap.size() > 0) {
+                    callbackRef.get().setInfoWindowResults(bitmapHashMap);
+                    callbackRef.get().refreshSource(contactId);
+                }
+            } catch (NullPointerException npe) {
+                npe.printStackTrace();
+                Log.e(TAG, "Callback was GC'ed before task finished.");
             }
-        } catch (NullPointerException npe) {
-            npe.printStackTrace();
-            Log.e(TAG, "Callback was GC'ed before task finished.");
         }
+        instances.remove(this);
+    }
+
+    @Override
+    protected void onCancelled() {
+        super.onCancelled();
+        instances.remove(this);
     }
 
     private boolean hasImgThumbnail(DcMsg dcMsg) {

@@ -206,6 +206,14 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mapDataManager != null) {
+            mapDataManager.onDestroy();
+        }
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
         if (o instanceof DcLocation) {
             this.dcLocation = (DcLocation) o;
@@ -227,6 +235,9 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
     @Override
     public void onFilterLastPosition(long startTimestamp) {
+        if (this.mapboxMap == null) {
+            return;
+        }
         mapDataManager.filterLastPositions(startTimestamp);
     }
 }

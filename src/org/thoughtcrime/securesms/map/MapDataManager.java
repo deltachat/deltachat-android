@@ -49,7 +49,6 @@ import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.all;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.gt;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.gte;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.lte;
@@ -130,6 +129,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     public void onPause() {
         dcContext.eventCenter.removeObserver(DC_EVENT_LOCATION_CHANGED, this);
+    }
+
+    public void onDestroy() {
+        GenerateInfoWindowTask.cancelRunningTasks();
     }
 
     @Override
