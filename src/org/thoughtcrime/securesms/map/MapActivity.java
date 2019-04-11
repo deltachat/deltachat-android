@@ -121,35 +121,30 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
                 for (Feature feature : features) {
                     Log.d(TAG, "found feature: " + feature.toJson());
-                    if (feature.hasProperty(MARKER_SELECTED) && feature.getBooleanProperty(MARKER_SELECTED))  {
-                        int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
-                        DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
-                        int dcMsgChatId = dcMsg.getChatId();
-                        if (dcMsgChatId == DC_CHAT_NO_CHAT) {
-                            continue;
-                        }
 
-                        int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
-                        int startingPosition = -1;
-                        for(int i=0; i< msgs.length; i++ ) {
-                            if(msgs[i] == messageId) {
-                                startingPosition = msgs.length-1-i;
-                                break;
-                            }
-                        }
-
-                        if (chatId == 0) {
-                            Log.e(TAG, "Chat id is 0. Cannot open chat");
-                            return true;
-                        }
-
-                        Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
-                        intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
-                        intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
-                        intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
-                        startActivity(intent);
-                        return true;
+                    int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
+                    DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
+                    int dcMsgChatId = dcMsg.getChatId();
+                    if (dcMsgChatId == DC_CHAT_NO_CHAT) {
+                        continue;
                     }
+
+                    int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
+                    int startingPosition = -1;
+                    for(int i=0; i< msgs.length; i++ ) {
+                        if(msgs[i] == messageId) {
+                            startingPosition = msgs.length-1-i;
+                            break;
+                        }
+                    }
+
+                    Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
+                    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, dcMsgChatId);
+                    intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
+                    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
+                    startActivity(intent);
+                    return true;
+
                 }
                 return false;
             });
