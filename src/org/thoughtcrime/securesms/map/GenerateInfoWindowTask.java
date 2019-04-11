@@ -50,19 +50,14 @@ import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
  * Generating Views on background thread since we are not going to be adding them to the view hierarchy.
  * </p>
  */
-class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMap<String, Bitmap>, HashMap<String, Bitmap>> {
+class GenerateInfoWindowTask extends AsyncTask<Feature, Bitmap, Bitmap> {
 
     private static final String TAG = GenerateInfoWindowCallback.class.getName();
     private final WeakReference<GenerateInfoWindowCallback> callbackRef;
-    private final int contactId;
-    private static HashSet<GenerateInfoWindowTask> instances;
+    private final static HashSet<GenerateInfoWindowTask> instances = new HashSet<>();
 
-    GenerateInfoWindowTask(GenerateInfoWindowCallback callback, int contactId) {
+    GenerateInfoWindowTask(GenerateInfoWindowCallback callback) {
         this.callbackRef = new WeakReference<>(callback);
-        this.contactId = contactId;
-        if (instances == null) {
-            instances = new HashSet<>();
-        }
         instances.add(this);
     }
 
@@ -74,102 +69,69 @@ class GenerateInfoWindowTask extends AsyncTask<ArrayList<Feature>, HashMap<Strin
 
     @SuppressWarnings("WrongThread")
     @Override
-    protected HashMap<String, Bitmap> doInBackground(ArrayList<Feature>... params) {
+    protected Bitmap doInBackground(Feature... params) {
         Log.d(TAG, "GenerateInfoWindowTask start");
         Thread.currentThread().setName(GenerateInfoWindowTask.class.getName());
-        HashMap<String, Bitmap> imagesMap = new HashMap<>();
+        Bitmap bitmap = null;
 
         try {
             LayoutInflater inflater = LayoutInflater.from(callbackRef.get().getContext());
 
-            ArrayList<Feature> featureList = params[0];
-            for (int i = 0; i < featureList.size(); i++) {
-                Feature feature = featureList.get(i);
+            Feature feature = params[0];
+            Log.d(TAG, "GenerateInfoWindowTask: feature " + feature.id());
 
-                Log.d(TAG, "GenerateInfoWindowTask: feature " + i+ ": " + feature.id());
+            LinearLayout bubbleLayout = (LinearLayout)
+                    inflater.inflate(R.layout.map_bubble_layout, null);
+            bubbleLayout.setBackgroundResource(R.drawable.message_bubble_background_received_alone);
+            EmojiTextView conversationItemBody = bubbleLayout.findViewById(R.id.conversation_item_body);
+            Locale locale = DynamicLanguage.getSelectedLocale(callbackRef.get().getContext());
+            int messageId = (int) feature.getNumberProperty(MESSAGE_ID);
+            int contactId = (int) feature.getNumberProperty(CONTACT_ID);
 
-                LinearLayout bubbleLayout = (LinearLayout)
-                        inflater.inflate(R.layout.map_bubble_layout, null);
-                bubbleLayout.setBackgroundResource(R.drawable.message_bubble_background_received_alone);
-                EmojiTextView conversationItemBody = bubbleLayout.findViewById(R.id.conversation_item_body);
-                Locale locale = DynamicLanguage.getSelectedLocale(callbackRef.get().getContext());
-                int messageId = (int) feature.getNumberProperty(MESSAGE_ID);
-                int contactId = (int) feature.getNumberProperty(CONTACT_ID);
+            DcContact contact = DcHelper.getContext(callbackRef.get().getContext()).getContact(contactId);
+            TextView contactTextView = bubbleLayout.findViewById(R.id.message_sender);
+            contactTextView.setText(contact.getFirstName());
 
-                DcContact contact = DcHelper.getContext(callbackRef.get().getContext()).getContact(contactId);
-                TextView contactTextView = bubbleLayout.findViewById(R.id.message_sender);
-                contactTextView.setText(contact.getFirstName());
-
-                String msgText;
-                if (messageId != 0) {
-                    DcContext dcContext =  DcHelper.getContext(callbackRef.get().getContext());
-                    DcMsg msg = dcContext.getMsg(messageId);
-                    if (hasImgThumbnail(msg)) {
-                        ImageView thumbnailView = bubbleLayout.findViewById(R.id.map_bubble_img_thumbnail);
-                        thumbnailView.setImageURI(getThumbnailUri(msg));
-                        thumbnailView.setVisibility(View.VISIBLE);
-                        msgText = msg.getText();
-                    } else {
-                        msgText = msg.getSummarytext(75);
-                    }
-                    ConversationItemFooter footer = bubbleLayout.findViewById(R.id.conversation_item_footer);
-                    footer.setVisibility(View.VISIBLE);
-                    footer.setMessageRecord(msg, locale);
+            String msgText;
+            if (messageId != 0) {
+                DcContext dcContext =  DcHelper.getContext(callbackRef.get().getContext());
+                DcMsg msg = dcContext.getMsg(messageId);
+                if (hasImgThumbnail(msg)) {
+                    ImageView thumbnailView = bubbleLayout.findViewById(R.id.map_bubble_img_thumbnail);
+                    thumbnailView.setImageURI(getThumbnailUri(msg));
+                    thumbnailView.setVisibility(View.VISIBLE);
+                    msgText = msg.getText();
                 } else {
-                    msgText = "Reported: " + DateUtils.getExtendedRelativeTimeSpanString(callbackRef.get().getContext(), locale, (long) feature.getNumberProperty(TIMESTAMP));
+                    msgText = msg.getSummarytext(75);
                 }
-
-                if (msgText.length() == 0) {
-                    conversationItemBody.setVisibility(GONE);
-                } else {
-                    conversationItemBody.setText(msgText);
-                }
-
-                Bitmap bitmap = BitmapUtil.generate(bubbleLayout);
-
-                String id = feature.getStringProperty(INFO_WINDOW_ID);
-                imagesMap.put(id, bitmap);
-
-                if (isCancelled()) {
-                    break;
-                }
-
-                if (i % 20 == 0) {
-                    publishProgress(new HashMap<>(imagesMap));
-                    imagesMap.clear();
-                }
+                ConversationItemFooter footer = bubbleLayout.findViewById(R.id.conversation_item_footer);
+                footer.setVisibility(View.VISIBLE);
+                footer.setMessageRecord(msg, locale);
+            } else {
+                msgText = "Reported: " + DateUtils.getExtendedRelativeTimeSpanString(callbackRef.get().getContext(), locale, (long) feature.getNumberProperty(TIMESTAMP));
             }
+
+            if (msgText.length() == 0) {
+                conversationItemBody.setVisibility(GONE);
+            } else {
+                conversationItemBody.setText(msgText);
+            }
+
+            bitmap = BitmapUtil.generate(bubbleLayout);
         } catch (NullPointerException npe) {
             npe.printStackTrace();
             Log.e(TAG, "Callback was GC'ed before task finished.");
         }
 
         Log.d(TAG, "GenerateInfoWindowTask finished");
-        return imagesMap;
+        return bitmap;
     }
 
     @Override
-    protected void onProgressUpdate(HashMap<String, Bitmap>... imagesMap) {
-        if (!isCancelled()) {
+    protected void onPostExecute(Bitmap bitmap) {
+        if (!isCancelled() && bitmap != null) {
             try {
-                callbackRef.get().setInfoWindowResults(imagesMap[0]);
-                callbackRef.get().refreshSource(contactId);
-                Log.d(TAG, "updating progress for contact: " + contactId);
-            } catch (NullPointerException npe) {
-                npe.printStackTrace();
-                Log.e(TAG, "Callback was GC'ed before task finished.");
-            }
-        }
-    }
-
-    @Override
-    protected void onPostExecute(HashMap<String, Bitmap> bitmapHashMap) {
-        if (!isCancelled()) {
-            try {
-                if (bitmapHashMap.size() > 0) {
-                    callbackRef.get().setInfoWindowResults(bitmapHashMap);
-                    callbackRef.get().refreshSource(contactId);
-                }
+                callbackRef.get().setInfoWindowResults(bitmap);
             } catch (NullPointerException npe) {
                 npe.printStackTrace();
                 Log.e(TAG, "Callback was GC'ed before task finished.");

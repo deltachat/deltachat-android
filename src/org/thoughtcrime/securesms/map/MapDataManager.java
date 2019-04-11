@@ -60,6 +60,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAnchor;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconSize;
+import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 
 /**
  * Created by cyberta on 07.03.19.
@@ -73,6 +74,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public static final String TIMESTAMP = "TIMESTAMP";
     public static final String MESSAGE_ID = "MESSAGE_ID";
     public static final String ACCURACY = "ACCURACY";
+    private static final String INFO_WINDOW_SRC = "INFO_WINDOW_SRC";
+
     public static final int ALL_CHATS_GLOBAL_MAP = 0;
     public static final long TIMESTAMP_NOW = 0L;
     public static final long TIME_FRAME = 1000 * 60 * 60 * 24 * 2; // 2d
@@ -102,11 +105,11 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         LatLngBounds.Builder boundingBuilder = new LatLngBounds.Builder();
 
         int[] contactIds = getContactIds(chatId);
+        initInfoWindowLayer();
 
         long now = System.currentTimeMillis();
         for (int contactId : contactIds) {
             updateSource(chatId, contactId, boundingBuilder);
-            generateInfoWindows(contactId);
             filterLastPosition(contactId, now - DEFAULT_LAST_POSITION_DELTA);
         }
 
@@ -140,24 +143,11 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         return context;
     }
 
-    /**
-     * Invoked when the bitmaps have been generated from a view.
-     */
-    @Override
-    public void setInfoWindowResults(HashMap<String, Bitmap> results) {
-        Log.d(TAG, "setInfoWindowResults start");
-        mapboxStyle.addImages(results);
-        Log.d(TAG, "setInfoWindowResults finished");
-    }
-
-    @Override
     public void refreshSource(int contactId) {
-        Log.d(TAG, "refreshSource start");
         MapSource source = contactMapSources.get(contactId);
         FeatureTreeSet collection = featureCollections.get(source.getMarkerFeatureCollection());
         GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(source.getMarkerSource());
         pointSource.setGeoJson(FeatureCollection.fromFeatures(collection.getFeatureList()));
-        Log.d(TAG, "refreshSource finished");
     }
 
     @Override
@@ -186,22 +176,13 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         return markerLayers;
     }
 
-    public String[] getInfoWindowLayers() {
-        String markerLayers[] = new String[contactMapSources.size()];
-        int i = 0;
-        for (Map.Entry<Integer, MapSource> entry : contactMapSources.entrySet()) {
-            markerLayers[i] = entry.getValue().getInfoWindowLayer();
-            i += 1;
-        }
-
-        return markerLayers;
-    }
-
     public void unselectMarker() {
         if (selectedFeature != null) {
             selectedFeature.addBooleanProperty(MARKER_SELECTED, false);
             refreshSource(selectedFeature.getNumberProperty(CONTACT_ID).intValue());
             selectedFeature = null;
+            GeoJsonSource source = (GeoJsonSource) mapboxStyle.getSource(INFO_WINDOW_SRC);
+            source.setGeoJson(FeatureCollection.fromFeatures(new ArrayList<>()));
         }
     }
 
@@ -213,8 +194,19 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         } else {
             replaceSelectedMarker(featureId);
         }
+
+        new GenerateInfoWindowTask(this).execute(selectedFeature);
     }
 
+    /**
+     * Invoked when the bitmaps have been generated from a view.
+     */
+    @Override
+    public void setInfoWindowResults(Bitmap result) {
+        mapboxStyle.addImage(INFO_WINDOW_ID, result);
+        GeoJsonSource infoWindowSource = (GeoJsonSource) mapboxStyle.getSource(INFO_WINDOW_SRC);
+        infoWindowSource.setGeoJson(selectedFeature);
+    }
 
     public void filter(long startTimestamp, long endTimestamp) {
         int[] contactIds = getContactIds(chatId);
@@ -276,7 +268,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
             pointFeature.addBooleanProperty(LAST_LOCATION, false);
             pointFeature.addNumberProperty(CONTACT_ID, contactId);
-            pointFeature.addStringProperty(INFO_WINDOW_ID, locations.getLocationId(i) + "_info_" + locations.getMsgId(i));
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
@@ -313,39 +304,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         pointSource.setGeoJson(pointFeatureCollection);
         featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), sortedPointFeatures);
 
-        generateMissingInfoWindows(contactId);
-
         //Log.d(TAG, "update Source took " + (System.currentTimeMillis() - start) + " ms");
-    }
-
-    private void generateMissingInfoWindows(int contactId) {
-        MapSource contactMapMetadata = contactMapSources.get(contactId);
-        FeatureTreeSet featureList = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
-
-        ArrayList<Feature> missingWindows = new ArrayList<>();
-        for (TimeComparableFeature tcf : featureList) {
-            String infoWindowId = tcf.getFeature().getStringProperty(INFO_WINDOW_ID);
-            if (mapboxStyle.getImage(infoWindowId) == null) {
-                Log.d(TAG, "create new infoWindow for " + infoWindowId);
-                missingWindows.add(tcf.getFeature());
-            } else {
-                // the list is ordered and thus, all older features should already have an info window
-                break;
-            }
-        }
-
-        if (missingWindows.size() > 0) {
-            new GenerateInfoWindowTask(this, contactId).execute(missingWindows);
-        }
-    }
-
-
-    private void generateInfoWindows(int contactId) {
-        MapSource contactMapMetadata = contactMapSources.get(contactId);
-        FeatureTreeSet collection = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
-        if (collection.size() > 0) {
-            new GenerateInfoWindowTask(this, contactId).execute(collection.getFeatureList());
-        }
     }
 
     private void initGeoJsonSources(MapSource source) {
@@ -381,7 +340,22 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         }
     }
 
-    private void initLayers(MapSource source) {
+    private void initInfoWindowLayer() {
+        Expression iconOffset = switchCase(toBool(get(LAST_LOCATION)),
+                literal(new Float[] {-2f, -25f}), literal(new Float[] {-2f, -15f}));
+        GeoJsonSource infoWindowSource = new GeoJsonSource(INFO_WINDOW_SRC);
+        mapboxStyle.addSource(infoWindowSource);
+        mapboxStyle.addLayer(new SymbolLayer(INFO_WINDOW_LAYER, INFO_WINDOW_SRC).withProperties(
+                iconImage(INFO_WINDOW_ID),
+                iconAnchor(ICON_ANCHOR_BOTTOM_LEFT),
+                     /* all info window and marker image to appear at the same time*/
+                iconAllowOverlap(true),
+                    /* offset the info window to be above the marker */
+                iconOffset(iconOffset)
+        ));
+    }
+
+    private void initContactBasedLayers(MapSource source) {
         mapboxStyle.addImage(source.getMarkerLastPositon(),
                 generateColoredLastPositionIcon(source.getColorArgb()));
         mapboxStyle.addImage(source.getMarkerIcon(),
@@ -392,30 +366,19 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                         switchCase(toBool(get(LAST_LOCATION)), literal(1.0f),
                                 switchCase(eq(get(MESSAGE_ID), literal(0)), literal(0.7f), literal(1.1f))));
         Expression markerIcon = switchCase(toBool(get(LAST_LOCATION)), literal(source.getMarkerLastPositon()), literal(source.getMarkerIcon()));
-        mapboxStyle.addLayer(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
+        mapboxStyle.addLayerBelow(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
                 .withProperties(
                         iconImage(markerIcon),
-                        iconSize(markerSize))
-        );
+                        iconSize(markerSize)),
+                INFO_WINDOW_LAYER);
 
-        mapboxStyle.addLayer(new LineLayer(source.getLineLayer(), source.getLineSource())
+        mapboxStyle.addLayerBelow(new LineLayer(source.getLineLayer(), source.getLineSource())
                 .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
                         PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
                         PropertyFactory.lineWidth(3f),
                         PropertyFactory.lineOpacity(0.5f),
-                        PropertyFactory.lineColor(source.getColorArgb())));
-
-        Expression filterInfoWindow = eq((get(MARKER_SELECTED)), literal(true));
-        Expression iconOffset = switchCase(toBool(get(LAST_LOCATION)), literal(new Float[] {-2f, -25f}), literal(new Float[] {-2f, -15f}));
-        mapboxStyle.addLayer(new SymbolLayer(source.getInfoWindowLayer(), source.getMarkerSource()).
-                withProperties(
-                        iconImage("{"+INFO_WINDOW_ID+"}"),
-                        iconAnchor(ICON_ANCHOR_BOTTOM_LEFT),
-                         /* all info window and marker image to appear at the same time*/
-                        iconAllowOverlap(true),
-                        /* offset the info window to be above the marker */
-                        iconOffset(iconOffset)
-                ).withFilter(filterInfoWindow));
+                        PropertyFactory.lineColor(source.getColorArgb())),
+                INFO_WINDOW_LAYER);
     }
 
     private MapSource addContactMapSource(int contactId) {
@@ -428,7 +391,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         contactMapSource.setColor(contact.getColor());
         contactMapSources.put(contactId, contactMapSource);
         initGeoJsonSources(contactMapSource);
-        initLayers(contactMapSource);
+        initContactBasedLayers(contactMapSource);
         return contactMapSource;
     }
 

@@ -13,12 +13,7 @@ public interface GenerateInfoWindowCallback {
         Context getContext();
 
         /**
-         * Invoked when the marker resources of contact with contactId should be updated
-         * @param contactId
-         */
-        void refreshSource(int contactId);
-        /**
          * Invoked when the bitmaps have been generated from a view.
          */
-        void setInfoWindowResults(HashMap<String, Bitmap> results);
+        void setInfoWindowResults(Bitmap result);
 }

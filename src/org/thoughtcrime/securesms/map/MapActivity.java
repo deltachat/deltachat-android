@@ -37,6 +37,7 @@ import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
+import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 
 public class MapActivity extends BaseActivity implements Observer, TimeRangeSlider.OnTimestampChangedListener {
 
@@ -114,7 +115,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
             mapboxMap.addOnMapClickListener(point -> {
                 final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
 
-                List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getInfoWindowLayers());
+                List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, INFO_WINDOW_LAYER);
                 Log.d(TAG, "on info window clicked." + features.size());
 
                 for (Feature feature : features) {

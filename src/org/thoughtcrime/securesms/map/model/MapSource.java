@@ -15,20 +15,16 @@ public class MapSource {
     public static final String MARKER_ICON = "marker_icon_id";
     public static final String MARKER_LAST_POSITON = "marker_last_position";
     public static final String MARKER_FEATURE_LIST = "marker_feature_list";
-    public static final String MARKER_INFO_WINDOW = "marker_info_window";
 
     private final String markerSource;
     private final String lineSource;
 
     private final String markerLayer;
     private final String lineLayer;
-    private final String infoWindowLayer;
 
     private final String markerIcon;
     private final String markerLastPositon;
-    private final String markerInfoWindow;
     private final String markerFeatureCollection;
-
 
     private int color;
     private int colorArgb;
@@ -38,11 +34,10 @@ public class MapSource {
         lineSource = LINE_SOURCE + "_" + chatId;
         markerLayer = MARKER_LAYER + "_" + chatId;
         lineLayer = LINE_LAYER + "_" + chatId;
-        infoWindowLayer = INFO_WINDOW_LAYER + "_" + chatId;
         markerIcon = MARKER_ICON + "_" + chatId;
         markerLastPositon = MARKER_LAST_POSITON + "_" + chatId;
         markerFeatureCollection = MARKER_FEATURE_LIST + "_" + chatId;
-        markerInfoWindow = MARKER_INFO_WINDOW + "_" + chatId;
+
     }
 
     public void setColor(int color) {
@@ -74,8 +69,6 @@ public class MapSource {
         return lineLayer;
     }
 
-    public String getInfoWindowLayer() { return infoWindowLayer; }
-
     public String getMarkerIcon() {
         return markerIcon;
     }
@@ -86,5 +79,4 @@ public class MapSource {
 
     public String getMarkerFeatureCollection() { return markerFeatureCollection; }
 
-    public String getMarkerInfoWindow() { return markerInfoWindow; }
 }
