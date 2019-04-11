@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -49,6 +50,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     private DcLocation dcLocation;
     private MapDataManager mapDataManager;
     private MapboxMap mapboxMap;
+    SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,6 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
         dcLocation = DcLocation.getInstance();
 
-        SupportMapFragment mapFragment;
         if (savedInstanceState == null) {
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             mapFragment = SupportMapFragment.newInstance();
@@ -165,6 +166,11 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                     return true;
                 });
             }
+
+            SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
+            switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                mapDataManager.showTraces(isChecked);
+            });
         }));
 
         TimeRangeSlider timeRangeSlider = this.findViewById(R.id.timeRangeSlider);
@@ -230,7 +236,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         if (this.mapboxMap == null) {
             return;
         }
-        mapDataManager.filter(startTimestamp, stopTimestamp);
+        mapDataManager.filterRange(startTimestamp, stopTimestamp);
 
     }
 
