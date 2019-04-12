@@ -29,15 +29,11 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import static android.view.View.GONE;
 import static org.thoughtcrime.securesms.map.MapDataManager.CONTACT_ID;
-import static org.thoughtcrime.securesms.map.MapDataManager.INFO_WINDOW_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
 
