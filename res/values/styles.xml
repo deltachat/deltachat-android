@@ -106,4 +106,8 @@
         <item name="android:padding">12dp</item>
     </style>
 
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#ff2090ea</item>
+    </style>
+
 </resources>

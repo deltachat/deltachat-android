@@ -41,7 +41,7 @@ public class RangeSliderView extends View {
 
     protected int minValue;
     protected int maxValue;
-    protected float delta;
+    protected float deltaValue;
 
     protected float offsetY;
     protected float maxValueDisplayLabelOffsetY;
@@ -135,7 +135,7 @@ public class RangeSliderView extends View {
         for (int index = 1; index <= 100; index++) {
             values.add(index);
         }
-        delta = 0;
+        deltaValue = 0;
 
         longPressDetector = new GestureDetector(new GestureDetector.SimpleOnGestureListener() {
             public void onLongPress(MotionEvent e) {
@@ -306,13 +306,18 @@ public class RangeSliderView extends View {
         return ((sliderWidth / (float) getCount()) * value) + sliderPaddingLeft;
     }
 
+    /**
+     * When filtering for a point (in time) a delta (time) span is added to improve the search results.
+     * This method converts the delta to pixel related to the slider width.
+     * @return
+     */
     public float getDeltaInPixel() {
-        // '* 2' is just an offset factor to increase the visibility
-        return (sliderWidth / getCount()) * delta + (2 * thumbInnerRadius + thumbOutlineSize);
-    }
-
-    public float getDeltaInValues() {
-        return delta;
+        float deltaInPixel = (sliderWidth / getCount()) * deltaValue;
+        if (deltaInPixel >= 2 * (thumbInnerRadius + thumbOutlineSize)) {
+            return deltaInPixel;
+        }
+        // for better visibility return a minimum limit of the diameter of the thumb element
+        return 2 * thumbInnerRadius + thumbOutlineSize;
     }
 
     public int getCount() {

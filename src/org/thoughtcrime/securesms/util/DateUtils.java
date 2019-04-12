@@ -178,6 +178,10 @@ public class DateUtils extends android.text.format.DateUtils {
 
   public static String getFormattedTimespan(Context c, int timestamp) {
     int mins = timestamp / (1000 * 60);
-    return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
+    if (mins / 60 == 0) {
+      return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
+    }
+    int hours = mins / 60;
+    return c.getResources().getQuantityString(R.plurals.n_hours, hours, hours);
   }
 }

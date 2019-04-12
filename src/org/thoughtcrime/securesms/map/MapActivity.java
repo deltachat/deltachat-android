@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -37,6 +38,7 @@ import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
+import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 
 public class MapActivity extends BaseActivity implements Observer, TimeRangeSlider.OnTimestampChangedListener {
 
@@ -48,6 +50,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     private DcLocation dcLocation;
     private MapDataManager mapDataManager;
     private MapboxMap mapboxMap;
+    SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,6 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
         dcLocation = DcLocation.getInstance();
 
-        SupportMapFragment mapFragment;
         if (savedInstanceState == null) {
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             mapFragment = SupportMapFragment.newInstance();
@@ -114,40 +116,35 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
             mapboxMap.addOnMapClickListener(point -> {
                 final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
 
-                List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getInfoWindowLayers());
+                List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, INFO_WINDOW_LAYER);
                 Log.d(TAG, "on info window clicked." + features.size());
 
                 for (Feature feature : features) {
                     Log.d(TAG, "found feature: " + feature.toJson());
-                    if (feature.hasProperty(MARKER_SELECTED) && feature.getBooleanProperty(MARKER_SELECTED))  {
-                        int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
-                        DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
-                        int dcMsgChatId = dcMsg.getChatId();
-                        if (dcMsgChatId == DC_CHAT_NO_CHAT) {
-                            continue;
-                        }
 
-                        int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
-                        int startingPosition = -1;
-                        for(int i=0; i< msgs.length; i++ ) {
-                            if(msgs[i] == messageId) {
-                                startingPosition = msgs.length-1-i;
-                                break;
-                            }
-                        }
-
-                        if (chatId == 0) {
-                            Log.e(TAG, "Chat id is 0. Cannot open chat");
-                            return true;
-                        }
-
-                        Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
-                        intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
-                        intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
-                        intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
-                        startActivity(intent);
-                        return true;
+                    int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
+                    DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
+                    int dcMsgChatId = dcMsg.getChatId();
+                    if (dcMsgChatId == DC_CHAT_NO_CHAT) {
+                        continue;
                     }
+
+                    int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
+                    int startingPosition = -1;
+                    for(int i=0; i< msgs.length; i++ ) {
+                        if(msgs[i] == messageId) {
+                            startingPosition = msgs.length-1-i;
+                            break;
+                        }
+                    }
+
+                    Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
+                    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, dcMsgChatId);
+                    intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
+                    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
+                    startActivity(intent);
+                    return true;
+
                 }
                 return false;
             });
@@ -164,6 +161,11 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                     return true;
                 });
             }
+
+            SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
+            switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                mapDataManager.showTraces(isChecked);
+            });
         }));
 
         TimeRangeSlider timeRangeSlider = this.findViewById(R.id.timeRangeSlider);
@@ -206,6 +208,14 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mapDataManager != null) {
+            mapDataManager.onDestroy();
+        }
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
         if (o instanceof DcLocation) {
             this.dcLocation = (DcLocation) o;
@@ -221,12 +231,15 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         if (this.mapboxMap == null) {
             return;
         }
-        mapDataManager.filter(startTimestamp, stopTimestamp);
+        mapDataManager.filterRange(startTimestamp, stopTimestamp);
 
     }
 
     @Override
     public void onFilterLastPosition(long startTimestamp) {
+        if (this.mapboxMap == null) {
+            return;
+        }
         mapDataManager.filterLastPositions(startTimestamp);
     }
 }
