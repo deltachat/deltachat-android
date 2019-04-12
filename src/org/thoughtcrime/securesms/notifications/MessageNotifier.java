@@ -42,13 +42,12 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Pair;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashSet;
@@ -401,9 +400,14 @@ public class MessageNotifier {
         slideDeck = null;
 
       // TODO: if message content should be hidden on screen lock, do it here.
-      if (record.isMms() && TextUtils.isEmpty(body)) {
-        body = SpanUtil.italic(context.getString(R.string.notify_media_message));
-      } else if (record.isMms() && !record.isMediaPending()) {
+      if (record.hasFile() && TextUtils.isEmpty(body)) {
+        String summaryText = record.getSummarytext(100);
+        if (summaryText.isEmpty()) {
+          body = SpanUtil.italic(context.getString(R.string.notify_media_message));
+        } else {
+          body = SpanUtil.italic(summaryText);
+        }
+      } else if (record.hasFile() && !record.isMediaPending()) {
         String message      = context.getString(R.string.notify_media_message_with_text, body);
         int    italicLength = message.length() - body.length();
         body = SpanUtil.italic(message, italicLength);
