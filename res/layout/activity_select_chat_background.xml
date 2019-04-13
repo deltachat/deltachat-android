@@ -18,26 +18,29 @@
         android:layout_gravity="center">
 
         <Button
-            style="@style/ButtonPrimary"
-            android:background="@color/universal_overlay"
             android:id="@+id/set_default_button"
-            android:layout_gravity="fill_vertical"
+            style="@style/ButtonPrimary"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="15dp"
+            android:background="@color/universal_overlay"
             android:minWidth="200dp"
-            android:text="Set default" />
+            android:text="@string/pref_background_btn_default"
+            android:textAllCaps="false" />
 
         <Button
-            style="@style/ButtonPrimary"
-            android:background="@color/universal_overlay"
             android:id="@+id/from_gallery_button"
-            android:layout_gravity="fill_vertical"
+            style="@style/ButtonPrimary"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="15dp"
+            android:background="@color/universal_overlay"
             android:minWidth="200dp"
-            android:text="From gallery" />
+            android:text="@string/pref_background_btn_gallery"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </FrameLayout>
