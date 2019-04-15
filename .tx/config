@@ -1,6 +1,6 @@
 [main]
 host = https://www.transifex.com
-lang_map = nl_NL:nl
+lang_map = nl_NL:nl, ja_JP:ja
 
 [delta-chat-app.stringsxml]
 file_filter = res/values-<lang>/strings.xml
