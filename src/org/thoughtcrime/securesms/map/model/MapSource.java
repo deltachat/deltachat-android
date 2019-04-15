@@ -15,6 +15,7 @@ public class MapSource {
     public static final String MARKER_ICON = "marker_icon_id";
     public static final String MARKER_LAST_POSITON = "marker_last_position";
     public static final String MARKER_FEATURE_LIST = "marker_feature_list";
+    public static final String LINE_FEATURE_LIST = "line_feature_list";
 
     private final String markerSource;
     private final String lineSource;
@@ -25,6 +26,7 @@ public class MapSource {
     private final String markerIcon;
     private final String markerLastPositon;
     private final String markerFeatureCollection;
+    private final String lineFeatureCollection;
 
     private int color;
     private int colorArgb;
@@ -37,7 +39,7 @@ public class MapSource {
         markerIcon = MARKER_ICON + "_" + chatId;
         markerLastPositon = MARKER_LAST_POSITON + "_" + chatId;
         markerFeatureCollection = MARKER_FEATURE_LIST + "_" + chatId;
-
+        lineFeatureCollection = LINE_FEATURE_LIST + "_" + chatId;
     }
 
     public void setColor(int color) {
@@ -78,5 +80,7 @@ public class MapSource {
     }
 
     public String getMarkerFeatureCollection() { return markerFeatureCollection; }
+
+    public String getLineFeatureCollection() { return lineFeatureCollection; }
 
 }
