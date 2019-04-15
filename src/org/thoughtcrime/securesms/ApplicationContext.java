@@ -23,7 +23,7 @@ import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
-import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends Application implements DefaultLifecycleObserver {
 
@@ -40,12 +40,13 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
   public void onCreate() {
     super.onCreate();
 
-    if (LeakCanary.isInAnalyzerProcess(this)) {
-      // This process is dedicated to LeakCanary for heap analysis.
-      // You should not init your app in this process.
-      return;
-    }
-    LeakCanary.install(this);
+    // if (LeakCanary.isInAnalyzerProcess(this)) {
+    //   // This process is dedicated to LeakCanary for heap analysis.
+    //   // You should not init your app in this process.
+    //   return;
+    // }
+    // LeakCanary.install(this);
+
     System.loadLibrary("native-utils");
     dcContext = new ApplicationDcContext(this);
 
