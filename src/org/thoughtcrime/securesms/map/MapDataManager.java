@@ -35,14 +35,13 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.map.model.FeatureTreeSet;
 import org.thoughtcrime.securesms.map.model.FilterProvider;
 import org.thoughtcrime.securesms.map.model.MapSource;
-import org.thoughtcrime.securesms.map.model.TimeComparableFeature;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
@@ -62,6 +61,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconSize;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
+import static org.thoughtcrime.securesms.map.model.MapSource.LINE_FEATURE_LIST;
 
 
 /**
@@ -86,7 +86,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private static final String TAG = MapDataManager.class.getSimpleName();
     private Style mapboxStyle;
     private HashMap<Integer, MapSource> contactMapSources = new HashMap<>();
-    private HashMap<String, FeatureTreeSet> featureCollections = new HashMap<>();
+    private HashMap<String, LinkedList<Feature>> featureCollections = new HashMap<>();
     private FilterProvider filterProvider = new FilterProvider();
     private Feature selectedFeature;
     private int chatId;
@@ -114,8 +114,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         for (int contactId : contactIds) {
             updateSource(chatId, contactId, boundingBuilder);
             MapSource source = contactMapSources.get(contactId);
-            applyMarkerFilter(source);
-            applyLineFilter(source);
+            if (source != null) {
+                applyMarkerFilter(source);
+                applyLineFilter(source);
+            }
         }
 
         dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
@@ -150,9 +152,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     public void refreshSource(int contactId) {
         MapSource source = contactMapSources.get(contactId);
-        FeatureTreeSet collection = featureCollections.get(source.getMarkerFeatureCollection());
+        LinkedList<Feature> collection = featureCollections.get(source.getMarkerFeatureCollection());
         GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(source.getMarkerSource());
-        pointSource.setGeoJson(FeatureCollection.fromFeatures(collection.getFeatureList()));
+        pointSource.setGeoJson(FeatureCollection.fromFeatures(collection));
+        LinkedList<Feature> lineFeatures = featureCollections.get(source.getLineFeatureCollection());
+        GeoJsonSource lineSource = (GeoJsonSource) mapboxStyle.getSource(source.getLineSource());
+        lineSource.setGeoJson(FeatureCollection.fromFeatures(lineFeatures));
     }
 
     @Override
@@ -240,6 +245,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private void applyFilters(int[] contactIds) {
         for (int contactId : contactIds) {
             MapSource contactMapMetadata = contactMapSources.get(contactId);
+            if (contactMapMetadata == null) {
+                continue;
+            }
             showLineLayer(contactMapMetadata);
             applyMarkerFilter(contactMapMetadata);
             applyLineFilter(contactMapMetadata);
@@ -267,27 +275,41 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private void updateSource(int chatId, int contactId, long startTimestamp, long endTimestamp, LatLngBounds.Builder boundingBuilder) {
         //long start = System.currentTimeMillis();
         DcArray locations = dcContext.getLocations(chatId, contactId, startTimestamp, endTimestamp);
+        int count = locations.getCnt();
+        if (count == 0) {
+            return;
+        }
+
         MapSource contactMapMetadata = contactMapSources.get(contactId);
         if (contactMapMetadata == null) {
             contactMapMetadata = addContactMapSource(contactId);
         }
 
-        FeatureTreeSet sortedPointFeatures = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
-        if (sortedPointFeatures == null) {
-            sortedPointFeatures = new FeatureTreeSet();
-        }
+        LinkedList<Feature> sortedPointFeatures = new LinkedList<>();
+        LinkedList<Feature> sortedLineFeatures = new LinkedList<>();
 
-        int count = locations.getCnt();
-        for (int i = 0; i < count; i++) {
-            Point p = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
-            Feature pointFeature = Feature.fromGeometry(p, new JsonObject(), String.valueOf(locations.getLocationId(i)));
+        for (int i = count - 1; i >= 0; i--) {
+            Point point = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
+
+            Feature pointFeature = Feature.fromGeometry(point, new JsonObject(), String.valueOf(locations.getLocationId(i)));
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
             pointFeature.addBooleanProperty(LAST_LOCATION, false);
             pointFeature.addNumberProperty(CONTACT_ID, contactId);
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
-            sortedPointFeatures.add(new TimeComparableFeature(pointFeature));
+            sortedPointFeatures.addFirst(pointFeature);
+
+            if (sortedPointFeatures.size() > 1) {
+                Point lastPoint = (Point) sortedPointFeatures.get(1).geometry();
+                ArrayList<Point> lineSegmentPoints = new ArrayList<>(3);
+                lineSegmentPoints.add(lastPoint);
+                lineSegmentPoints.add(point);
+                LineString l = LineString.fromLngLats(lineSegmentPoints);
+                Feature lineFeature = Feature.fromGeometry(l, new JsonObject(), "l_" + pointFeature.id());
+                lineFeature.addNumberProperty(TIMESTAMP, pointFeature.getNumberProperty(TIMESTAMP));
+                sortedLineFeatures.addFirst(lineFeature);
+            }
 
             if (boundingBuilder != null) {
                 boundingBuilder.include(new LatLng(locations.getLatitude(i), locations.getLongitude(i)));
@@ -295,30 +317,13 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         }
 
         if (sortedPointFeatures.size() > 0) {
-            sortedPointFeatures.first().getFeature().addBooleanProperty(LAST_LOCATION, true);
+            sortedPointFeatures.get(0).addBooleanProperty(LAST_LOCATION, true);
         }
 
-        ArrayList<Point> sortedPointList = sortedPointFeatures.getPointList();
-        ArrayList<Feature> sortedFeatureList = sortedPointFeatures.getFeatureList();
-        FeatureCollection pointFeatureCollection = FeatureCollection.fromFeatures(sortedFeatureList);
-        ArrayList<Feature> lineFeatures = new ArrayList<>();
-
-        for (int i = 0; i < sortedPointFeatures.size() - 1; i++) {
-            Feature f = sortedFeatureList.get(i);
-            Number numberProperty = f.getNumberProperty(TIMESTAMP);
-            LineString l = LineString.fromLngLats(sortedPointList.subList(i, i+2));
-            Feature lineFeature = Feature.fromGeometry(l, new JsonObject(), "l_" + f.id());
-            lineFeature.addNumberProperty(TIMESTAMP, numberProperty);
-            lineFeatures.add(lineFeature);
-        }
-
-        FeatureCollection lineFeatureCollection = FeatureCollection.fromFeatures(lineFeatures);
-
-        GeoJsonSource lineSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getLineSource());
-        lineSource.setGeoJson(lineFeatureCollection);
-        GeoJsonSource pointSource = (GeoJsonSource) mapboxStyle.getSource(contactMapMetadata.getMarkerSource());
-        pointSource.setGeoJson(pointFeatureCollection);
         featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), sortedPointFeatures);
+        featureCollections.put(contactMapMetadata.getLineFeatureCollection(), sortedLineFeatures);
+
+        refreshSource(contactId);
 
         //Log.d(TAG, "update Source took " + (System.currentTimeMillis() - start) + " ms");
     }
@@ -382,11 +387,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                         switchCase(toBool(get(LAST_LOCATION)), literal(1.0f),
                                 switchCase(eq(get(MESSAGE_ID), literal(0)), literal(0.7f), literal(1.1f))));
         Expression markerIcon = switchCase(toBool(get(LAST_LOCATION)), literal(source.getMarkerLastPositon()), literal(source.getMarkerIcon()));
-
+        Expression markerAllowOverlap =  toBool(get(LAST_LOCATION));
         mapboxStyle.addLayerBelow(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
                 .withProperties(
                         iconImage(markerIcon),
-                        iconSize(markerSize))
+                        iconSize(markerSize),
+                        iconAllowOverlap(markerAllowOverlap))
                 .withFilter(filterProvider.getMarkerFilter()),
                 INFO_WINDOW_LAYER);
 
@@ -480,7 +486,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private Feature getFeatureWithId(String id) {
         for (String key : featureCollections.keySet()) {
-            ArrayList<Feature> featureCollection = featureCollections.get(key).getFeatureList();
+            if (key.startsWith(LINE_FEATURE_LIST)) {
+                continue;
+            }
+            LinkedList<Feature> featureCollection = featureCollections.get(key);
             for (Feature f : featureCollection) {
                 if (f.id().equals(id)) {
                     return f;
