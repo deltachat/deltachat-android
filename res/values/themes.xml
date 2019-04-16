@@ -105,6 +105,7 @@
         <item name="input_panel_bg_color">@color/white</item>
         <item name="send_button_color">@color/delta_primary</item>
         <item name="lower_right_divet">@drawable/divet_lower_right_dark</item>
+        <item name="close_icon_color">#A4A6A9</item>
 
         <item name="conversation_group_member_name">#99000000</item>
 
@@ -294,6 +295,7 @@
         <item name="input_panel_bg_color">@color/gray95</item>
         <item name="send_button_color">@color/gray70</item>
         <item name="lower_right_divet">@drawable/divet_lower_right_light</item>
+        <item name="close_icon_color">@color/gray70</item>
 
         <!-- dark theme -->
         <item name="conversation_background">@color/black</item>
