@@ -289,7 +289,7 @@
         <item name="import_export_item_background_shadow_color">@color/import_export_item_background_shadow_dark</item>
         <item name="import_export_item_card_background">@drawable/clickable_card_dark</item>
 
-        <item name="fab_color">@color/gray95</item>
+        <item name="fab_color">@color/gray78</item>
         <item name="input_panel_bg_color">@color/gray95</item>
         <item name="lower_right_divet">@drawable/divet_lower_right_light</item>
 

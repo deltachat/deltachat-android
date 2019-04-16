@@ -10,7 +10,7 @@ cp res/values/strings.xml res/values-$LANG/strings.xml
 # and does not overwrite old file)
 touch -d "100 days ago" res/values-$LANG/strings.xml
 
-echo "res/values/$LANG/strings.xml added:"
+echo "res/values-$LANG/strings.xml added:"
 echo "- add the name to res/values/arrays.xml"
 echo "- if needed, language mappings can be added to .tx/config"
 echo "- tx pull"
