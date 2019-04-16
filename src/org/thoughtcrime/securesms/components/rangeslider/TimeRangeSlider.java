@@ -18,7 +18,6 @@ import java.util.Locale;
 public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.OnValueChangedListener {
     private static final int DEFAULT_TIMEFRAME_2D = 60 * 60 * 24 * 2; // 2d
     private static final float DEFAULT_DELTA = 1000 * 60 * 30; // 30 min
-    private static final float LAST_POSITON_DELTA = 1000 * 60 * 60 * 24; //1d
     int timeFrame; // timeframe in seconds
 
     Locale locale;
@@ -91,12 +90,6 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
 
     public interface OnTimestampChangedListener {
         void onTimestampChanged(long startTimestamp, long stopTimestamp);
-
-        /**
-         * filter for lastPosition beginning from startTimestamp to now
-         * @param startTimestamp begin of time frame
-         */
-        void onFilterLastPosition(long startTimestamp);
     }
 
 
@@ -109,13 +102,8 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
         if (listener != null) {
             long minTimeStamp = getTimestampForValue(minValue);
             if (minValue == maxValue) {
-                if (minValue == getCount()) {
-                    // filter last location
-                    listener.onFilterLastPosition(System.currentTimeMillis() - (long) LAST_POSITON_DELTA);
-                } else {
-                    // filter for time of event with delta before and after
-                    listener.onTimestampChanged(minTimeStamp - (long) DEFAULT_DELTA, minTimeStamp + (long) DEFAULT_DELTA);
-                }
+                // filter for time of event with delta before and after
+                listener.onTimestampChanged(minTimeStamp - (long) DEFAULT_DELTA, minTimeStamp + (long) DEFAULT_DELTA);
             } else {
                 //filter for time span
                 listener.onTimestampChanged(minTimeStamp, getTimestampForValue(maxValue));
@@ -133,9 +121,6 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
 
     @Override
     public String parseMaxValueDisplayText(int maxValue) {
-        if (minValue == maxValue && maxValue == getCount()) {
-            return getContext().getResources().getString(R.string.filter_last_position);
-        }
         return getStringForValue(maxValue);
     }
 
@@ -157,19 +142,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
      * @return normalized delta
      */
     private float getDelta() {
-        if (minValue == getCount()) {
-            return getLastPositionDelta();
-        } else {
-            return getDefaultDelta();
-        }
-    }
-
-    private float getDefaultDelta() {
         return DEFAULT_DELTA / (timeFrame * 1000) * getCount();
-    }
-
-    private float getLastPositionDelta() {
-        return LAST_POSITON_DELTA / (timeFrame * 1000) * getCount();
     }
 
 
