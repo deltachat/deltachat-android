@@ -111,6 +111,8 @@
     <string name="menu_send">Senden</string>
     <string name="menu_toggle_keyboard">Emojis einblenden</string>
     <string name="menu_edit_group">Gruppe bearbeiten</string>
+    <string name="menu_show_map">Karte anzeigen</string>
+    <string name="menu_show_global_map">Alle Standorte anzeigen</string>
     <string name="menu_archive_chat">Chat archivieren</string>
     <string name="menu_unarchive_chat">Archivieren rückgängig</string>
     <string name="menu_add_attachment">Dateien anhängen</string>
@@ -118,6 +120,7 @@
     <string name="menu_delete_chat">Chat löschen</string>
     <string name="menu_delete_messages">Nachrichten löschen</string>
     <string name="menu_delete_image">Bild löschen</string>
+    <string name="menu_delete_locations">Alle Standorte löschen?</string>
     <string name="menu_message_details">Nachrichtendetails</string>
     <string name="menu_copy_to_clipboard">In Zwischenablage kopieren</string>
     <string name="menu_forward">Nachricht weiterleiten</string>
@@ -143,6 +146,7 @@
     <string name="menu_deaddrop">Kontaktanfragen</string>
     <string name="menu_deaddrop_subtitle">Nachricht drücken, um mit dem Chatten zu beginnen.</string>
     <string name="menu_view_profile">Profil anzeigen</string>
+    <string name="title_share_location">Standort mit allen Gruppenmitgliedern teilen</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
     <string name="mute_for_two_hours">Stumm für 2 Stunden</string>
@@ -150,6 +154,12 @@
     <string name="mute_for_seven_days">Stumm für 7 Tage</string>
     <string name="mute_for_one_year">Stumm für 1 Jahr</string>
 
+    <string name="share_location_once">einmalig</string>
+    <string name="share_location_for_5_minutes">für 5 Minuten</string>
+    <string name="share_location_for_30_minutes">für 30 Minuten</string>
+    <string name="share_location_for_one_hour">für 1 Stunde</string>
+    <string name="share_location_for_two_hours">für 2 Stunden</string>
+    <string name="share_location_for_six_hours">für 6 Stunden</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
@@ -198,9 +208,9 @@
     <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
     <string name="chat_record_slide_to_cancel">Schieben um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>
-    <string name="chat_no_chats_yet_hint">Geben Sie Ihrem Posteingang etwas zu tun. Fangen Sie an, indem Sie einem Freund eine Nachricht schicken.</string>
-    <string name="chat_all_done_hint">Posteingang leeeeer</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nAlle aufgeholt!</string>
+    <string name="chat_no_chats_yet_title">Posteingang ist leer.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
+    <string name="chat_no_chats_yet_hint">Es kann mit anderen Delta Chat Benutzern und mit jeder E-Mail-Adresse gechattet werden,</string>
+    <string name="chat_all_archived">Alle Chats archiviert.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
     <string name="chat_share_with_title">Teilen mit</string>
     <string name="chat_input_placeholder">Nachricht</string>
     <string name="chat_archived_label">Archiviert</string>
@@ -209,6 +219,7 @@
     <string name="chat_contact_request">Kontaktanfrage</string>
     <string name="chat_no_contact_requests">Keine Kontaktanfragen.\n\nWenn normale E-Mails hier erscheinen sollen, müssen Sie die entsprechende erweiterte Einstellung ändern.</string>
 
+    <string name="filter_last_position">Letzter Standort</string>
     <!-- search -->
     <string name="search">Suchen</string>
     <string name="search_explain">Suche nach Chats, Kontakten und Nachrichten</string>
@@ -272,9 +283,9 @@
     <string name="login_smtp_server">SMTP-Server</string>
     <string name="login_smtp_port">SMTP-Port</string>
     <string name="login_smtp_security">SMTP-Sicherheit</string>
-    <string name="login_auth_method">Berechtigungsmethode </string>
+    <string name="login_auth_method">Autorisierungsmethode</string>
     <string name="login_info_oauth2_title">Mit vereinfachter Einrichtung fortfahren?</string>
-    <string name="login_info_oauth2_text">Die eingegebene E-Mail-Addresse unterstützt eine vereinfachte Einrichtung (OAuth2).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt als Chat-Über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
+    <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth2).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt als Chat-Über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_info_gmail_text">Für GMail-Konten muss ein App-Passwort erstellt werden, wenn die 2FA (Zwei-Faktor-Authentifizierung) aktiviert ist. Wenn diese Einstellung nicht verfügbar ist, muss \"Zugriff durch weniger sichere Anwendungen\" aktiviert werden.</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>
     <string name="login_error_server">Bitte eine gültige Server/IP-Adresse eingeben</string>
@@ -294,6 +305,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Weiterleiten an ...</string>
+    <string name="share_multiple_attachments">Möchten Sie %1$d Dateien an den ausgewählten Chat senden?\n\nDie Dateien werden unverändert in ihrer Originalgröße gesendet, z.B. werden Bilder und Videos nicht neu codiert.</string>
+    <string name="share_abort">Teilen aufgrund fehlender Berechtigungen abgebrochen.</string>
 
 
     <!-- preferences -->
@@ -367,7 +380,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_other">Sonstiges</string>
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Chats auf externem Speicher sichern</string>
-    <string name="pref_backup_export_explain">Ein Backup hilft bei einer Neuinstallation auf diesem oder einem anderen Gerät.\n\nDas Backup enthält alle Nachrichten, Kontakte und Chats sowie die Ende-zu-Ende Autocrypt-Einstellungen. Das Backup bitte an einem sicheren Ort aufbewahren oder es sobald wie möglich löschen.</string>
+    <string name="pref_backup_export_explain">Ein Backup hilft bei einer Neuinstallation auf diesem oder einem anderen Gerät.\n\nDas Backup enthält alle Nachrichten, Kontakte und Chats sowie die Ende-zu-Ende Autocrypt-Einstellungen. Das Backup bitte an einem sicheren Ort aufbewahren oder es so bald wie möglich löschen.</string>
     <string name="pref_backup_export_start_button">Backup starten</string>
     <string name="pref_backup_written_to_x">Backup nach %1$s erfolgreich</string>
     <string name="pref_managekeys_menu_title">Schlüssel verwalten</string>
@@ -406,7 +419,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="autocrypt_asm_click_body">Dies ist die Autocrypt-Setup-Nachricht, um das Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nAuf diese Nachricht klicken, um das Setup zu verwenden.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt-Setup-Nachricht</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Bitte den Setup-Code eingeben, der auf dem anderen Gerät angezeigt wird.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Ende-zu-Ende Einstellungen übertragen. Dieses Gerät ist nun bereit, Autocrypt mit den selben Einstellungen wie das Ursprungsgerät zu verwenden.</string>
+    <string name="autocrypt_continue_transfer_succeeded">Ende-zu-Ende Einstellungen übertragen. Dieses Gerät ist nun bereit, Autocrypt mit denselben Einstellungen wie das Ursprungsgerät zu verwenden.</string>
     <string name="autocrypt_continue_transfer_retry">Wiederholen</string>
     <string name="autocrypt_bad_setup_code">Ungültiger Setup-Code. Bitte versuchen Sie es erneut.\n\nWenn Sie den Setup-Code nicht mehr haben, können Sie auf dem anderen Gerät jederzeit eine neue Autocrypt-Setup-Nachricht mit einem neuen Setup-Code erzeugen.</string>
 
@@ -429,7 +442,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
 
     <!-- screen lock -->
     <string name="screenlock_title">Bildschirmsperre</string>
-    <string name="screenlock_explain">Sperren Sie den Zugriff mit der Android-Bildschirmsperre oder Ihrem Fingerabdruck; um nicht die vorherigen Inhalte zu sehen, aktivieren Sie bitte auch \"Bildschirmsicherheit\".</string>
+    <string name="screenlock_explain">Zugriff sichern mittels Android-Bildschirmsperre oder Fingerabdruck. Um vorherige Inhalte zu verbergen bitte außerdem \"Bildschirmsicherheit\" aktivieren.</string>
     <string name="screenlock_authentication_failed">Die Authentifizierung ist fehlgeschlagen.</string>
     <string name="screenlock_unlock_title">Delta Chat entsperren</string>
     <string name="screenlock_unlock_description">Den System-Entsperrcode eingeben, um Delta Chat freizuschalten.</string>
@@ -491,6 +504,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="perm_explain_need_for_camera_access">Delta Chat den Zugriff auf die Kamera erlauben, um Fotos und Videos aufzunehmen.</string>
     <string name="perm_explain_need_for_mic_access">Delta Chat den Zugriff auf das Mikrofon erlauben, um Audionachrichten aufzunehmen.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat benötigt Zugriff auf das Dateisystem, um Dateien zu exportieren oder Backups zu erstellen.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat benötigt Zugriff auf Ihre Dateien, um die ausgewählten Dateien zu teilen.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat benötigt die Erlaubnis der Kamera, um Fotos oder Videos aufzunehmen, aber es wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Kamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat benötigt die Erlaubnis des Mikrofons, um Audio-Nachrichten zu senden, aber es wurde dauerhaft abgelehnt. Bitte fahre mit den App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat benötigt die Speichergenehmigung, um Fotos, Videos oder Audiodateien anzuhängen oder zu exportieren, aber es wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Speicher\".</string>
@@ -608,6 +622,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="menu.view.developer.open.log.folder">Logdatei öffnen</string>
     <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
 
+    <string name="user_location_permission_explanation">Delta Chat benötigt die Standortberechtigung, um Ihren Standort anzuzeigen und zu teilen.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
@@ -620,5 +635,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrshow_join_verified_group_title">QR-Einladungscode</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Dies scannen, um der Gruppe \"%1$s\" beizutreten.</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Posteingang leeeeer</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nAlle aufgeholt!</string>
+
 
 </resources>

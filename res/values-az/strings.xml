@@ -111,6 +111,8 @@
     <string name="menu_send">Göndər</string>
     <string name="menu_toggle_keyboard">Emoji klaviatura keçidi</string>
     <string name="menu_edit_group">Qrupu dəyiş</string>
+    <string name="menu_show_map">Xəritəni göstər</string>
+    <string name="menu_show_global_map">Bütün yerləşmə yerləri göstər</string>
     <string name="menu_archive_chat">Çatın xəzinəsi</string>
     <string name="menu_unarchive_chat">Çat xəzinəsini aç</string>
     <string name="menu_add_attachment">Fayl əlavə et</string>
@@ -118,6 +120,7 @@
     <string name="menu_delete_chat">Çatı sil</string>
     <string name="menu_delete_messages">Mesajları sil</string>
     <string name="menu_delete_image">Şəkili sil</string>
+    <string name="menu_delete_locations">Yerləşmə yerlərinin hamısını silmək? </string>
     <string name="menu_message_details">Mesaj məlumatları</string>
     <string name="menu_copy_to_clipboard">Panoya kopyalamaq</string>
     <string name="menu_forward">Növbəti mesaj</string>
@@ -143,6 +146,7 @@
     <string name="menu_deaddrop">Kontakta sorğu</string>
     <string name="menu_deaddrop_subtitle">Sohbet etməyə başlamaq üçün mesaja toxun</string>
     <string name="menu_view_profile">Profilə bax</string>
+    <string name="title_share_location">Qrup üzvlərinə yerləşdiyin yerini göndər</string>
 
     <string name="mute_for_one_hour">1 saatlıq söndür</string>
     <string name="mute_for_two_hours">2 saatlıq söndür</string>
@@ -150,6 +154,12 @@
     <string name="mute_for_seven_days">7 günlük söndür</string>
     <string name="mute_for_one_year">1 illik söndür</string>
 
+    <string name="share_location_once">bir dəfə</string>
+    <string name="share_location_for_5_minutes">5 dəqiqə üçün</string>
+    <string name="share_location_for_30_minutes">30 qəqiqə üçün</string>
+    <string name="share_location_for_one_hour">1 saat üçün</string>
+    <string name="share_location_for_two_hours">2 saat üçün </string>
+    <string name="share_location_for_six_hours">6 saat üçün</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu qrupu tərk etmək istədiyinizə əminsiniz?</string>
@@ -189,15 +199,13 @@
     <string name="chat_new_group_hint">Başqalarının bu qrup daxilində cavab verməsinə imkan verən ilk mesajı yaradın. \n\n• Bütün üzvlər Delta Chat istifadə etsələr daha yaxşıdır. \n\n• İlk mesajı çatdırmaq bir müddət ala bilər.</string>
     <string name="chat_record_slide_to_cancel">Ləğv etmək üçün sürüşdürün</string>
     <string name="chat_record_explain">Bir səsli mesajı yazmaq üçün toxunun və saxlayın, göndərmək üçün buraxın</string>
-    <string name="chat_no_chats_yet_hint">Daxil olan qutusuna bir şey verin. Bir dostla mesajlaşmağa başlayın.</string>
-    <string name="chat_all_done_hint">Gələnlər qutusu zeeerrro</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nHamınız tutuldunuz!</string>
     <string name="chat_share_with_title">Göndər </string>
     <string name="chat_input_placeholder">Mesaj</string>
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>
     <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
     <string name="chat_contact_request">Kontakt sorğusu</string>
+    <string name="filter_last_position">Son yerləşmə</string>
     <!-- search -->
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
@@ -268,6 +276,7 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İrəli ...</string>
+    <string name="share_abort">İcazə olmadığına görə göndərmə kəsildi</string>
 
 
     <!-- preferences -->
@@ -424,6 +433,7 @@
     <string name="delete_message_desktop">Mesajı sil</string>
     <string name="more_info_desktop">Daha çox məlumat</string>
     <string name="logout_desktop">Çıxış</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="no_archived_chats_desktop">Arxivləşmiş çat yoxdur</string>
     <string name="no_chats_desktop">Çat yoxdur</string>
     <string name="encryption_info_desktop">Şifrələmə məlumatını göstər</string>
@@ -451,4 +461,9 @@
     <string name="message_detail_sent_desktop">Göndər</string>
     <string name="message_detail_from_desktop">kimdən</string>
     <string name="message_detail_to_desktop">kimə</string>
-    </resources>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Gələnlər qutusu zeeerrro</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nHamınız tutuldunuz!</string>
+
+
+</resources>

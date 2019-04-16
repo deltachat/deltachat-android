@@ -123,6 +123,7 @@
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>
+    <string name="menu_show_map">Показать карту</string>
     <string name="menu_archive_chat">Архивировать чат</string>
     <string name="menu_unarchive_chat">Разархивировать чат</string>
     <string name="menu_add_attachment">Прикрепить вложение</string>
@@ -155,13 +156,18 @@
     <string name="menu_deaddrop">Запросы на общение</string>
     <string name="menu_deaddrop_subtitle">Нажмите на сообщение, чтобы начать чат</string>
     <string name="menu_view_profile">Просмотреть профиль</string>
-
     <string name="mute_for_one_hour">На 1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
     <string name="mute_for_seven_days">На 7 дней</string>
     <string name="mute_for_one_year">На 1 год</string>
 
+    <string name="share_location_once">один раз</string>
+    <string name="share_location_for_5_minutes">на 5 минут</string>
+    <string name="share_location_for_30_minutes">на 30 минут</string>
+    <string name="share_location_for_one_hour">на 1 час</string>
+    <string name="share_location_for_two_hours">на 2 часа</string>
+    <string name="share_location_for_six_hours">на 6 часов</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
@@ -220,16 +226,13 @@
     <string name="chat_new_group_hint">Напишите первое сообщение, оно позволит другим участникам группы ответить на него.\n\n• Это сработает, даже если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="chat_record_slide_to_cancel">Сдвиньте для отмены</string>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
-    <string name="chat_no_chats_yet_hint">Дайте входящим сообщениям наполниться чем-нибудь. Начните обмен сообщениями с другом.</string>
-    <string name="chat_all_done_hint">Нооольь.. входящих</string>
-    <string name="chat_all_done_explain">Ничего. Шиш. Нуль. Нада.\nВы все попались!</string>
     <string name="chat_share_with_title">Поделиться с</string>
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Ахивировано</string>
     <string name="chat_no_messages">Нет сообщений.</string>
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
     <string name="chat_contact_request">Запрос контакта</string>
-    <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, Вы можете изменить соответствующий параметр в настройках приложения.</string>
+    <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, вы можете изменить соответствующий параметр в настройках приложения.</string>
 
     <!-- search -->
     <string name="search">Поиск</string>
@@ -282,7 +285,7 @@
     <string name="login_title">Логин</string>
     <string name="login_header">Войдите на ваш сервер</string>
     <string name="login_subheader">Для известных почтовых систем, дополнительные настройки устанавливаются автоматически. Иногда для IMAP требуется разрешение в веб-интерфейсе. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
-    <string name="login_no_servers_hint">У Delta Chat нет собственных серверов, ваши данные остаются только на вашем устройстве.</string>
+    <string name="login_no_servers_hint">У Delta Chat нет собственных серверов, ваши данные остаются только на вашем устройстве!</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">IMAP логин</string>
     <string name="login_imap_server">IMAP сервер</string>
@@ -314,8 +317,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
-
-
     <!-- preferences -->
     <string name="pref_summary_on">вкл.</string>
     <string name="pref_summary_off">выкл.</string>
@@ -608,7 +609,6 @@
     <string name="download_attachment_desktop">Скачать вложение</string>
     <string name="export_backup_desktop">Экспорт резервной копии</string>
     <string name="transfer_key_desktop">Ключ передачи</string>
-    <string name="show_key_transfer_message_desktop">Ваш ключ был отправлен самому себе. Переключитесь на другое устройство и откройте сообщение настройки. Вам будет предложено ввести код установки. Введите следующие цифры в командной строке. Как только вы закончите, ваше другое устройство будет готово к использованию Autocrypt.</string>
     <string name="new_message_from_desktop">Новое сообщение от</string>
     <string name="unblock_contacts_desktop">Разблокировать контакты</string>
     <string name="none_blocked_desktop">Пока нет заблокированных контактов</string>
@@ -628,7 +628,6 @@
     <string name="menu.view.developer.open.log.folder">Открыть Папку Log</string>
     <string name="menu.view.developer.open.current.log.file">Открыть Текущий Файл Журнала Log</string>
 
-
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
     <string name="qrscan_ask_join_verified_group">Присоединиться к группе \"%1$s\"?</string>
@@ -640,5 +639,9 @@
     <string name="qrshow_join_verified_group_title">QR код приглашения</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Чтобы присоединиться к группе \"%1$s\", отсканируйте этот код</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Нооольь.. входящих</string>
+    <string name="chat_all_done_explain">Ничего. Шиш. Нуль. Нада.\nВы все попались!</string>
+
 
 </resources>

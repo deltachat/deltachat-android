@@ -111,6 +111,8 @@
     <string name="menu_send">Sende</string>
     <string name="menu_toggle_keyboard">Skifte emoji tastatur</string>
     <string name="menu_edit_group">Redigere gruppe</string>
+    <string name="menu_show_map">Vis kort</string>
+    <string name="menu_show_global_map">Vis alle placeringer</string>
     <string name="menu_archive_chat">Arkivere samtale</string>
     <string name="menu_unarchive_chat">Fjerne samtale fra arkiv</string>
     <string name="menu_add_attachment">Tilføje vedhæftet</string>
@@ -118,6 +120,7 @@
     <string name="menu_delete_chat">Slette samtale</string>
     <string name="menu_delete_messages">Slette beskeder</string>
     <string name="menu_delete_image">Slette billede</string>
+    <string name="menu_delete_locations">Slet alle placeringer?</string>
     <string name="menu_message_details">Besked detaljer</string>
     <string name="menu_copy_to_clipboard">Kopiere til klippebord</string>
     <string name="menu_forward">Videresende besked</string>
@@ -143,6 +146,7 @@
     <string name="menu_deaddrop">Kontakt anmodninger</string>
     <string name="menu_deaddrop_subtitle">Tryk på besked for at starte samtale</string>
     <string name="menu_view_profile">Vise profil</string>
+    <string name="title_share_location">Del placering med alle gruppe medlemmer</string>
 
     <string name="mute_for_one_hour">Dæmpe i 1 time</string>
     <string name="mute_for_two_hours">Dæmpe i 2 timer</string>
@@ -150,6 +154,12 @@
     <string name="mute_for_seven_days">Dæmpe i 7 dage</string>
     <string name="mute_for_one_year">Dæmpe i 1 år</string>
 
+    <string name="share_location_once">en gang</string>
+    <string name="share_location_for_5_minutes">for 5 minutter</string>
+    <string name="share_location_for_30_minutes">for 30 minutter</string>
+    <string name="share_location_for_one_hour">for 1 time</string>
+    <string name="share_location_for_two_hours">for 2 timer</string>
+    <string name="share_location_for_six_hours">for 6 timer</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Forlade denne gruppe?</string>
@@ -198,9 +208,9 @@
     <string name="chat_new_group_hint">Skriv første besked, tillader andre at svare i denne gruppe.\n\n• Det er o.k hvis ikke alle medlemmer bruger Delta Chat.\n\n• Levering af første besked kan tage nogen tid.</string>
     <string name="chat_record_slide_to_cancel">Trække for at annullere</string>
     <string name="chat_record_explain">Tryk og hold for at optage tale besked, slip for at sende.</string>
-    <string name="chat_no_chats_yet_hint">Giv indbakken noget at skrive hjem om. Kom i gang ved at skrive til en ven.</string>
-    <string name="chat_all_done_hint">Indbakke tom</string>
-    <string name="chat_all_done_explain">Der er ikke mere!</string>
+    <string name="chat_no_chats_yet_title">Tom indbakke.\nTryk \"+\" for at starte ny samtale.</string>
+    <string name="chat_no_chats_yet_hint">Man kan have samtale med andre Delta Chat brugere og med enhver e-post adresse.</string>
+    <string name="chat_all_archived">Alle samtaler er arkiveret.\nTryk \"+\" for at starte ny samtale.</string>
     <string name="chat_share_with_title">Dele med</string>
     <string name="chat_input_placeholder">Besked</string>
     <string name="chat_archived_label">Arkiveret</string>
@@ -208,6 +218,12 @@
     <string name="chat_self_talk_subtitle">Beskeder sendt til undertegnede</string>
     <string name="chat_contact_request">Kontakt anmodning</string>
     <string name="chat_no_contact_requests">Ingen kontakt anmodninger.\n\nØnskes klassisk e-post vist her som kontakt anmodninger,, kan den tilsvarende indstilling i program opsætning ændres.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Vise placeringer i tidsramme</string>
+    <string name="filter_last_position">Sidste position</string>
+    <string name="show_location_traces">Vise spor</string>
+
 
     <!-- search -->
     <string name="search">Søge</string>
@@ -292,6 +308,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Videresende til …</string>
+    <string name="share_multiple_attachments">Sende %1$d filer til udvalgt samtale?\n\nFilerne sendes uden ændringer i original størrelse, f.eks er billeder og video ikke omkodet.</string>
+    <string name="share_abort">Deling afbrudt på grund af manglende tilladelser.</string>
 
 
     <!-- preferences -->
@@ -397,6 +415,7 @@
     <string name="autocrypt_send_asm_title">Sende Autocrypt opsætning besked</string>
     <string name="autocrypt_send_asm_explain_before">En \"Autocrypt opsætning besked\" deler sikkert ende-til-ende opsætning med andre Autocrypt kompatible programmer.\n\nOpsætning er krypteret med en kode som er vist her og skal indtastes på den anden enhed.</string>
     <string name="autocrypt_send_asm_button">Sende autocrypt  opsætning besked</string>
+    <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til undertegnet. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt:\n\n%1$s\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Foretrække ende-til-ende kryptering</string>
     <string name="autocrypt_asm_subject">Autocrypt opsætning besked</string>
     <string name="autocrypt_asm_general_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at af kryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsæt koden vist på den genererende enhed.</string>
@@ -417,6 +436,7 @@
     <string name="systemmsg_group_left">Gruppe forladt.</string>
     <string name="systemmsg_read_receipt_subject">Læse modtagelse</string>
     <string name="systemmsg_read_receipt_body">Dette er en læst kvittering for beskeden \"%1$s\".\n\nDet betyder beskeden blev vist på modtager enhed men ikke nødvendigvis at indholdet blev læst.</string>
+    <string name="systemmsg_cannot_decrypt">Denne besked kan ikke dekrypteres.\n\n• Det kan måske hjælpe at svare på beskeden og bede afsender sende beskeden igen.\n\n• I tilfælde at Delta Chat eller andet e-post program på denne enhed eller en anden er blevet gen-installeret bør der sendes en Autocrypt opsætning besked derfra.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s af undertegnet.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -487,6 +507,7 @@
     <string name="perm_explain_need_for_camera_access">For at fange billeder og video, tillad Delta Chat adgang til kamera.</string>
     <string name="perm_explain_need_for_mic_access">For at sende lyd beskeder, tillad Delta Chat mikrofon adgang.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat behøver fil adgang for at kunne eksportere filer eller oprette sikkerhedskopier.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat behøver adgang til filer for at dele de udvalgte filer.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat kræver kamera tilladelse for at tage billeder eller video men det er blevet afvist permanent. Fortsæt til program opsætning menu og vælg \"Tilladelser\" og aktivere \"Kamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat kræver lagring tilladelse for at vedhæfte eller eksportere billeder, video eller lyd, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Lagring\".</string>
@@ -584,7 +605,7 @@
     <string name="download_attachment_desktop">Hente vedhæftning</string>
     <string name="export_backup_desktop">Eksportere sikkerhedskopi</string>
     <string name="transfer_key_desktop">Overføre nøgle</string>
-    <string name="show_key_transfer_message_desktop">Nøgle er sendt til undertegnede. Skift til den anden enhed, og åben opsætning beskeden. Der bliver bedt om en opsætning kode. Indtast følgende cifre i prompt. Når det er færdig, er den anden enhed klar til at bruge Autocrypt.</string>
+    <string name="show_key_transfer_message_desktop">Nøgle er sendt til undertegnet. Skift til den anden enhed og åben opsætning beskeden. Der bliver promptet for en opsætning kode.. Indtast følgende cifre i prompten. Når det er afsluttet vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="new_message_from_desktop">Ny besked fra</string>
     <string name="unblock_contacts_desktop">Fjerne blokering af kontakter</string>
     <string name="none_blocked_desktop">Ingen blokerede kontakter</string>
@@ -604,6 +625,7 @@
     <string name="menu.view.developer.open.log.folder">Åbne log mappe</string>
     <string name="menu.view.developer.open.current.log.file">Åbne nuværende log fil</string>
 
+    <string name="user_location_permission_explanation">Delta Chat behøver placering tilladelse for at vise og dele placering.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
@@ -616,5 +638,9 @@
     <string name="qrshow_join_verified_group_title">QR inviteringskode </string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Skanne dette for at tilslutte gruppe \"%1$s\".</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Indbakke tom</string>
+    <string name="chat_all_done_explain">Der er ikke mere!</string>
+
 
 </resources>

@@ -111,6 +111,8 @@
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep bewerken</string>
+    <string name="menu_show_map">Kaart tonen</string>
+    <string name="menu_show_global_map">Alle locaties tonen</string>
     <string name="menu_archive_chat">Gesprek archiveren</string>
     <string name="menu_unarchive_chat">Gesprek de-archiveren</string>
     <string name="menu_add_attachment">Bijlage toevoegen</string>
@@ -118,6 +120,7 @@
     <string name="menu_delete_chat">Gesprek verwijderen</string>
     <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="menu_delete_image">Afbeelding verwijderen</string>
+    <string name="menu_delete_locations">Alle locaties verwijderen?</string>
     <string name="menu_message_details">Berichtgegevens</string>
     <string name="menu_copy_to_clipboard">Kopiëren naar klembord</string>
     <string name="menu_forward">Bericht doorsturen</string>
@@ -143,6 +146,7 @@
     <string name="menu_deaddrop">Contactpersoonverzoeken</string>
     <string name="menu_deaddrop_subtitle">Druk op bericht om gesprek te starten</string>
     <string name="menu_view_profile">Profiel bekijken</string>
+    <string name="title_share_location">Locatie delen met alle groepsleden</string>
 
     <string name="mute_for_one_hour">1 uur lang dempen</string>
     <string name="mute_for_two_hours">2 uur lang dempen</string>
@@ -150,6 +154,12 @@
     <string name="mute_for_seven_days">7 dagen dempen</string>
     <string name="mute_for_one_year">1 jaar dempen</string>
 
+    <string name="share_location_once">eenmalig</string>
+    <string name="share_location_for_5_minutes">5 minuten lang</string>
+    <string name="share_location_for_30_minutes">30 minuten lang</string>
+    <string name="share_location_for_one_hour">1 uur lang</string>
+    <string name="share_location_for_two_hours">2 uur lang</string>
+    <string name="share_location_for_six_hours">6 uur lang</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
@@ -198,9 +208,9 @@
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
-    <string name="chat_no_chats_yet_hint">Geef je Postvak IN iets om over naar huis te schrijven: begin een gesprek met een vriend(in).</string>
-    <string name="chat_all_done_hint">Postvak nullllll</string>
-    <string name="chat_all_done_explain">Niks. Noppes. Nakkes. Nada.\nJe bent van alles op de hoogte!</string>
+    <string name="chat_no_chats_yet_title">Je Postvak IN is leeg.\nDruk op \"+\" om een gesprek te beginnen.</string>
+    <string name="chat_no_chats_yet_hint">Je kunt een gesprek voeren met andere Delta Chat-gebruikers en via alle soorten e-mailadressen.</string>
+    <string name="chat_all_archived">Alle gesprekken zijn gearchiveerd.\nDruk op \"+\" om een gesprek te beginnen.</string>
     <string name="chat_share_with_title">Delen met</string>
     <string name="chat_input_placeholder">Bericht</string>
     <string name="chat_archived_label">Gearchiveerd</string>
@@ -208,6 +218,12 @@
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
     <string name="chat_contact_request">Contactpersoonverzoek</string>
     <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnen in de vorm van contactpersoonverzoeken, wijzig dit dan in de app-instellingen.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
+    <string name="filter_last_position">Vorige positie</string>
+    <string name="show_location_traces">Sporen tonen</string>
+
 
     <!-- search -->
     <string name="search">Zoeken</string>
@@ -292,6 +308,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Doorsturen naar...</string>
+    <string name="share_multiple_attachments">Wil je %1$d bestanden delen in het gekozen gesprek?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
+    <string name="share_abort">Kan niet delen wegens ontbrekende machtigingen.</string>
 
 
     <!-- preferences -->
@@ -489,6 +507,7 @@
     <string name="perm_explain_need_for_camera_access">Delta Chat heeft toegang nodig tot de camera om foto\'s en video\'s te kunnen vastleggen.</string>
     <string name="perm_explain_need_for_mic_access">Delta Chat heeft toegang nodig tot je microfoon om audioberichten te kunnen versturen.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat heeft toegang nodig tot je bestanden om bestanden te kunnen exporteren of back-ups te kunnen maken.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat heeft toegang nodig tot je bestanden om de geselecteerde bestanden te kunnen delen.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat vereist de cameramachtiging om foto\'s en video\'s te kunnen maken, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Camera\" in.</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat vereist de microfoonmachtiging om audioberichten te kunnen versturen, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Microfoon\" in.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat vereist de opslagmachtiging om foto\'s, video\'s of audio te kunnen bijvoegen of exporteren, maar je hebt dit permanent geweigerd. Ga naar de appinstellingen, kies \"Machtigingen\" en schakel \"Opslag\" in.</string>
@@ -606,6 +625,7 @@
     <string name="menu.view.developer.open.log.folder">Map met logbestanden openen</string>
     <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
 
+    <string name="user_location_permission_explanation">Delta Chat heeft de locatiemachtiging nodig om je locatie te kunnen tonen en delen.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
@@ -618,5 +638,9 @@
     <string name="qrshow_join_verified_group_title">QR-uitnodigingscode</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Scan dit om deel te nemen aan de groep \"%1$s\".</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Postvak nullllll</string>
+    <string name="chat_all_done_explain">Niks. Noppes. Nakkes. Nada.\nJe bent van alles op de hoogte!</string>
+
 
 </resources>

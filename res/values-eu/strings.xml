@@ -111,6 +111,8 @@
     <string name="menu_send">Bidali</string>
     <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
     <string name="menu_edit_group">Editatu taldea</string>
+    <string name="menu_show_map">Erakutsi mapa</string>
+    <string name="menu_show_global_map">Erakutsi kokaleku guztiak</string>
     <string name="menu_archive_chat">Artxibatu txata</string>
     <string name="menu_unarchive_chat">Berreskuratu txata artxibotik</string>
     <string name="menu_add_attachment">Gehitu eranskina</string>
@@ -118,6 +120,7 @@
     <string name="menu_delete_chat">Ezabatu txata</string>
     <string name="menu_delete_messages">Ezabatu mezuak</string>
     <string name="menu_delete_image">Ezabatu irudia</string>
+    <string name="menu_delete_locations">Ezabatu kokaleku guztiak?</string>
     <string name="menu_message_details">Mezuaren xehetasunak</string>
     <string name="menu_copy_to_clipboard">Kopiatu arbelera</string>
     <string name="menu_forward">Birbidali mezua</string>
@@ -143,6 +146,7 @@
     <string name="menu_deaddrop">Kontaktu-eskaerak</string>
     <string name="menu_deaddrop_subtitle">Sakatu mezua txateatzen hasteko</string>
     <string name="menu_view_profile">Ikusi profila</string>
+    <string name="title_share_location">Partekatu kokalekua taldeko kide guztiak</string>
 
     <string name="mute_for_one_hour">Mututu ordubete</string>
     <string name="mute_for_two_hours">Mututu 2 ordu</string>
@@ -150,6 +154,12 @@
     <string name="mute_for_seven_days">Mututu 7 egun</string>
     <string name="mute_for_one_year">Mututu urtebete</string>
 
+    <string name="share_location_once">behin</string>
+    <string name="share_location_for_5_minutes">5 minutuz</string>
+    <string name="share_location_for_30_minutes">30 minutuz</string>
+    <string name="share_location_for_one_hour">Ordu 1</string>
+    <string name="share_location_for_two_hours">2 orduz</string>
+    <string name="share_location_for_six_hours">6 orduz</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ziur talde honetatik atera nahi duzula?</string>
@@ -198,9 +208,9 @@
     <string name="chat_new_group_hint">Idatzi lehen mezua, besteek taldera erantzutea baimenduz\n\n• Ez du axola denek ez badute Delta Chat erabiltzen.\n\n• Lehen mezua bidaltzeko denbora bat behar daiteke.</string>
     <string name="chat_record_slide_to_cancel">Irristatu ezeztatzeko</string>
     <string name="chat_record_explain">Sakatu eta mantendu ahots-mezu bat grabatzeko, askatu bidaltzeko.</string>
-    <string name="chat_no_chats_yet_hint">Girotu zure sarrera ontzia. Hasi lagun bati idatziz.</string>
-    <string name="chat_all_done_hint">Sarrera ontzi hutsa</string>
-    <string name="chat_all_done_explain">Ezer ere ez.\n Egunean zaude!</string>
+    <string name="chat_no_chats_yet_title">Sarrera-ontzi hutsa.\nSakatu \"+\" txat berria hasteko.</string>
+    <string name="chat_no_chats_yet_hint">Beste Delta Chat erabiltzaileekin txateatu dezakezu, edo edozein e-mail helbiderekin</string>
+    <string name="chat_all_archived">Txat guztiak artxibatuta.\nSakatu \"+\" txat berri bat hasteko.</string>
     <string name="chat_share_with_title">Partekatu honekin</string>
     <string name="chat_input_placeholder">Mezua</string>
     <string name="chat_archived_label">Artxibatuta</string>
@@ -209,6 +219,7 @@
     <string name="chat_contact_request">Kontaktua eskatuta</string>
     <string name="chat_no_contact_requests">Kontaktu eskaerarik ez.\n\nE-mail klasikoak hemen kontaktu eskari gisa agertzea nahi baduzu, aplikazioaren ezarpenetan aldatu dezakezu.</string>
 
+    <string name="filter_last_position">Azken kokalekua</string>
     <!-- search -->
     <string name="search">Bilatu</string>
     <string name="search_explain">Bilatu txatak, kontaktuak, eta mezuak.</string>
@@ -292,6 +303,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
+    <string name="share_multiple_attachments">%1$d fitxategi bidali nahi dituzu hautatutako txatera?\n\nFitxategiak  jatorrizko tamainan eta aldatu gabe bidaltzen dira, adibidez irudiei eta bideoei ez zaie kodeketa aldatzen.</string>
+    <string name="share_abort">Partekatzea eten da baimenak falta direlako.</string>
 
 
     <!-- preferences -->
@@ -427,6 +440,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Pantila-blokeoa</string>
+    <string name="screenlock_explain">Blokeatu sarbidea Androideko blokeo-pantailarekin edo hatz-markarekin aurreko edukia agertzea ekiditeko, gaitu ere \"Pantaila-segurtasuna\"</string>
     <string name="screenlock_authentication_failed">Autentifikazioak huts egin du.</string>
     <string name="screenlock_unlock_title">Desblokeatu Delta Chat</string>
     <string name="screenlock_unlock_description">Sartu sisteman zehaztutako sekretua Delta Chat desblokeatzeko.</string>
@@ -487,6 +501,14 @@
     <string name="perm_explain_need_for_camera_access">Argazkiak eta bideoa hartzeko, baimendu DeltaChat-ek kamera atzitzea.</string>
     <string name="perm_explain_need_for_mic_access">Audio-mezuak bidaltzeko, baimendu DeltaChat-ek mikrofonoa atzitzea.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat-ek zure fitxategiak atzitzeko baimena behar du fitxategiak esportatu ahal izateko edo babes-kopiak sortzeko.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat-ek zure fitxategietara sarbidea behar du hautatutako fitxategiak partekatu ahal izateko.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat-ek kamerara sarbidea behar du argazkiak edo bideoak ateratzeko, baina behin betiko ukatu zaio. Joan aplikazioaren ezarpen menura, hautatu \"Baimenak\" eta gaitu \"Kamera\".</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat-ek mikrofonoa erabiltzeko baimena behar du ahots-mezuak bidali ahal izateko, baina behin betiko ukatu zaio. Joan aplikazioaren ezarpenetara, hautatu \"Baimenak\" eta gaitu \"Mikrofonoa\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat-ek biltegiratze baimena behar du argazkiak, bideoak edo audioa erantsi edo esportatzeko, baina behin betiko ukatu zaio. Joan aplikazioaren ezarpen menura, hautatu \"baimenak\", eta gaitu \"Biltegiratzea\"</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat-ek kokaleku aatzitzeko baimena behar du kokalekua eransteko, baina behin betiko ukatu zaio. Joan aplikazioaren ezarpen menura, hautatu \"baimenak\", eta gaitu \"Kokalekua\".</string>
+    <string name="perm_enable_bg_reminder_title">Sakatu hemen mezuak jasotzeko Delta Chat bigarren planoan dagoenean.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat-ek baliabide gutxi erabiltzen ditu eta zure bateria ez agortzeaz arduratzen da.</string>
+
     <string name="language_ca">Katalana</string>
     <string name="language_da">Daniera</string>
     <string name="language_de">Alemana</string>
@@ -574,7 +596,6 @@
     <string name="download_attachment_desktop">Deskargatu eranskina</string>
     <string name="export_backup_desktop">Esportatu babes-kopia</string>
     <string name="transfer_key_desktop">Igorri gakoa</string>
-    <string name="show_key_transfer_message_desktop">Gako zure buruari bidali diozu. Joan beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu. Idatzi honako zenbaki hauek han. Behin eginda, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
     <string name="new_message_from_desktop">Honen mezu berria:</string>
     <string name="unblock_contacts_desktop">Desblokeatu kontaktuak</string>
     <string name="none_blocked_desktop">Ez dago blokeatutako kontakturik</string>
@@ -594,6 +615,7 @@
     <string name="menu.view.developer.open.log.folder">Ireki egunkarien karpeta</string>
     <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
 
+    <string name="user_location_permission_explanation">Delta Chat-ek kokalekua atzitzeko baimena behar du zure kokalekua erakutsi eta partekatu ahal izateko.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
@@ -606,5 +628,9 @@
     <string name="qrshow_join_verified_group_title">QR gonbidapen kodea</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Eskaneatu hau \"%1$s\" taldera elkartzeko.</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Sarrera ontzi hutsa</string>
+    <string name="chat_all_done_explain">Ezer ere ez.\n Egunean zaude!</string>
+
 
 </resources>

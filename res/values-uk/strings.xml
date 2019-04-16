@@ -155,13 +155,11 @@
     <string name="menu_deaddrop">Запити на спілкування</string>
     <string name="menu_deaddrop_subtitle">Натисніть на повідомлення, щоб почати чат</string>
     <string name="menu_view_profile">Переглянути профіль</string>
-
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
     <string name="mute_for_seven_days">Відключити сповіщення на 7 днів</string>
     <string name="mute_for_one_year">Відключити сповіщення на 1 рік</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ви впевнені, що хочете залишити цю групу?</string>
@@ -220,9 +218,6 @@
     <string name="chat_new_group_hint">Напишіть перше повідомлення, що дасть можливість іншим учасникам групи відповісти на нього.\n\n• Це спрацює, навіть якщо не всі учасники використовують Delta Chat.\n\n• Доставка першого повідомлення може зайняти деякий час.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
     <string name="chat_record_explain">Натисніть і утримуйте для запису голосового повідомлення, відпустіть для відправки</string>
-    <string name="chat_no_chats_yet_hint">Дайте Вашим «Вхідним» привід наповнитися. Почніть з листа другові або подрузі.</string>
-    <string name="chat_all_done_hint">Вхідних немає</string>
-    <string name="chat_all_done_explain">Нічого!\nНа цьому поки все</string>
     <string name="chat_share_with_title">Поділитися</string>
     <string name="chat_input_placeholder">Повідомлення</string>
     <string name="chat_archived_label">Заархівовано</string>
@@ -314,8 +309,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслати...</string>
-
-
     <!-- preferences -->
     <string name="pref_summary_on">увімкн.</string>
     <string name="pref_summary_off">вимкн.</string>
@@ -608,7 +601,6 @@
     <string name="download_attachment_desktop">Завантажити вкладення</string>
     <string name="export_backup_desktop">Експорт резервної копії</string>
     <string name="transfer_key_desktop">Ключ передачі</string>
-    <string name="show_key_transfer_message_desktop">Ключ був Вам надісланий. Перейдіть на інший пристрій і відкрийте інсталяційне повідомлення. Вам буде запропоновано ввести інсталяційний код. Введіть наступні цифри у командному рядку. Як тільки Ви завершите, Ваш інший пристрій буде готовий до використання Autocrypt.</string>
     <string name="new_message_from_desktop">Нове повідомлення від</string>
     <string name="unblock_contacts_desktop">Розблокувати контакти</string>
     <string name="none_blocked_desktop">Немає заблокованих контактів</string>
@@ -628,7 +620,6 @@
     <string name="menu.view.developer.open.log.folder">Відкрити папку журналів</string>
     <string name="menu.view.developer.open.current.log.file">Відкрити поточний файл журналу</string>
 
-
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
     <string name="qrscan_ask_join_verified_group">Приєднатися до групи «%1$s»?</string>
@@ -640,5 +631,9 @@
     <string name="qrshow_join_verified_group_title">QR-код запрошення</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Відскануйте цей код, щоб приєднатися до групи «%1$s».</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Вхідних немає</string>
+    <string name="chat_all_done_explain">Нічого!\nНа цьому поки все</string>
+
 
 </resources>

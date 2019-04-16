@@ -121,6 +121,8 @@
     <string name="menu_send">Siųsti</string>
     <string name="menu_toggle_keyboard">Perjungti šypsniukų klaviatūrą</string>
     <string name="menu_edit_group">Taisyti grupę</string>
+    <string name="menu_show_map">Rodyti žemėlapį</string>
+    <string name="menu_show_global_map">Rodyti visas vietas</string>
     <string name="menu_archive_chat">Archyvuoti pokalbį</string>
     <string name="menu_unarchive_chat">Išarchyvuoti pokalbį</string>
     <string name="menu_add_attachment">Pridėti priedą</string>
@@ -128,6 +130,7 @@
     <string name="menu_delete_chat">Ištrinti pokalbį</string>
     <string name="menu_delete_messages">Ištrinti žinutes</string>
     <string name="menu_delete_image">Ištrinti paveikslą</string>
+    <string name="menu_delete_locations">Ištrinti visas vietas?</string>
     <string name="menu_message_details">Išsamesnė žinutės informacija</string>
     <string name="menu_copy_to_clipboard">Kopijuoti į iškarpinę</string>
     <string name="menu_forward">Persiųsti žinutę</string>
@@ -153,13 +156,13 @@
     <string name="menu_deaddrop">Adresatų užklausos</string>
     <string name="menu_deaddrop_subtitle">Norėdami pradėti pokalbį, paspauskite ant žinutės</string>
     <string name="menu_view_profile">Rodyti profilį</string>
+    <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
 
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
     <string name="mute_for_one_year">Išjungti 1 metams</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
@@ -216,8 +219,6 @@
     <string name="chat_new_group_hint">Rašykite pirmąją žinutę, taip leisdami kitiems atsakyti šioje grupėje..\n\n• Nieko tokio, jei ne visi dalyviai naudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti.</string>
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
-    <string name="chat_all_done_hint">Gautųjų aplanke tuščia</string>
-    <string name="chat_all_done_explain">Tuščia.\nNieko nepraleidote!</string>
     <string name="chat_share_with_title">Bendrinti su</string>
     <string name="chat_input_placeholder">Žinutė</string>
     <string name="chat_archived_label">Archyvuotas</string>
@@ -302,8 +303,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Kam persiųsti …</string>
-
-
     <!-- preferences -->
     <string name="pref_summary_on">įjungta</string>
     <string name="pref_summary_off">išjungta</string>
@@ -335,7 +334,7 @@
     <string name="pref_change_secret_explain">Pakeisti savo pin / šabloną / piršto atspaudą per sistemos nustatymus</string>
     <string name="pref_screen_security">Ekrano saugumas</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
-    <string name="pref_screen_security_explain">Užklausti blokuoti ekrano kopijas paskiausiųjų sąraše ir programėlės viduje</string>
+    <string name="pref_screen_security_explain">Prašyti blokuoti ekrano kopijas paskiausiųjų sąraše ir programėlės viduje</string>
     <string name="pref_screen_security_please_restart_hint">Norėdami pritaikyti ekrano saugumo nustatymą, paleiskite programėlę iš naujo.</string>
     <string name="pref_notifications">Pranešimai</string>
     <string name="pref_notifications_show">Rodyti</string>
@@ -554,7 +553,6 @@
     <string name="download_attachment_desktop">Atsisiųsti priedą</string>
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
     <string name="transfer_key_desktop">Perduoti raktą</string>
-    <string name="show_key_transfer_message_desktop">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis. Jums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
     <string name="new_message_from_desktop">Nauja žinutė nuo</string>
     <string name="unblock_contacts_desktop">Atblokuoti adresatus</string>
     <string name="none_blocked_desktop">Kol kas nėra užblokuotų adresatų</string>
@@ -574,7 +572,6 @@
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
 
-
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
     <string name="qrscan_ask_join_verified_group">Ar norite prisijungti prie grupės \"%1$s\"?</string>
@@ -586,5 +583,9 @@
     <string name="qrshow_join_verified_group_title">QR pakvietimo kodas</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Gautųjų aplanke tuščia</string>
+    <string name="chat_all_done_explain">Tuščia.\nNieko nepraleidote!</string>
+
 
 </resources>

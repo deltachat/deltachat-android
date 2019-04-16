@@ -15,16 +15,16 @@
     <string name="delete">Apagar</string>
     <string name="not_now">Agora não</string>
     <string name="never">Nunca</string>
-    <string name="one_moment">Um momento</string>
+    <string name="one_moment">Um momento...</string>
     <string name="done">Feito</string>
-    <string name="undo">Defazer</string>
+    <string name="undo">Desfazer</string>
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
-    <string name="error_no_network">Rede indisponível</string>
+    <string name="error_no_network">Rede indisponível.</string>
     <string name="no_app_to_handle_data">Não é possível encontrar uma aplicação para lidar com esse tipo de dados.</string>
-    <string name="no_browser_installed">Navegador da internet não instalado</string>
+    <string name="no_browser_installed">Navegador da internet não instalado.</string>
     <string name="file_not_found">Não consegui localizar %1$s</string>
-    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+    <string name="copied_to_clipboard">Copiado para a área de transferência.</string>
     <string name="contacts_headline">Contactos</string>
     <string name="email_address">Endereço de email</string>
     <string name="bad_email_address">Endereço de errado de email</string>
@@ -50,7 +50,7 @@
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d conversas</item>
-        <item quantity="other">%d conversas</item>
+        <item quantity="other">%d chats</item>
     </plurals>
     <plurals name="n_messages">
         <item quantity="one">%d mensagens</item>
@@ -139,13 +139,11 @@
     <string name="menu_deaddrop">Pedidos de contacto</string>
     <string name="menu_deaddrop_subtitle">Prima uma tecla para iniciar a conversa</string>
     <string name="menu_view_profile">Ver perfil</string>
-
     <string name="mute_for_one_hour">Calado por 1 hora</string>
     <string name="mute_for_two_hours">Calado por 2 horas</string>
     <string name="mute_for_one_day">Calado por 1 dia</string>
     <string name="mute_for_seven_days">Calado por 7 dias</string>
     <string name="mute_for_one_year">Calado por  1 ano</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
@@ -194,9 +192,6 @@
     <string name="chat_new_group_hint">Componha a primeira mensagem, permitindo que outras pessoas respondam dentro deste grupo.\n\n• Tudo bem se nem todos os membros usarem o Delta Chat.\n\n• A entrega da primeira mensagem pode demorar um pouco.</string>
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz, solte para enviar</string>
-    <string name="chat_no_chats_yet_hint">Dê a sua caixa de entrada algo para escrever. Comece por enviar mensagens a um amigo.</string>
-    <string name="chat_all_done_hint">Caixa de entrada a zerrrooooo</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\n Está pronto para começar</string>
     <string name="chat_share_with_title">Partilhar com</string>
     <string name="chat_input_placeholder">Mensagem</string>
     <string name="chat_archived_label">Arquivada</string>
@@ -284,8 +279,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reencaminhar ...</string>
-
-
     <!-- preferences -->
     <string name="pref_summary_on">ligado</string>
     <string name="pref_summary_off">desligado</string>
@@ -341,7 +334,7 @@
     <string name="pref_language">Língua</string>
     <string name="pref_incognito_keyboard">Teclado incognito</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
-    <string name="pref_incognito_keyboard_explain">Desligar aprendizagem automatica no teclado</string>
+    <string name="pref_incognito_keyboard_explain">Desligar aprendizagem automática no teclado</string>
     <string name="pref_read_receipts">Ler recibos</string>
     <string name="pref_read_receipts_explain">Se as confirmações de leitura estiverem desactivadas, não poderá ver os recibos de leitura de outras pessoas.</string>
     <string name="pref_manage_keys">Gerir teclas</string>
@@ -576,7 +569,6 @@
     <string name="download_attachment_desktop">Baixar anexo</string>
     <string name="export_backup_desktop">Exportar o backup</string>
     <string name="transfer_key_desktop">Chave de transferência</string>
-    <string name="show_key_transfer_message_desktop">Sua chave foi lhe enviada . Mude para o outro dispositivo e abra a mensagem de configuração. Será solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt. Quando estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
     <string name="new_message_from_desktop">Nova mensagem de</string>
     <string name="unblock_contacts_desktop">Desbloquear contactos</string>
     <string name="none_blocked_desktop">Sem contactos bloqueados</string>
@@ -596,7 +588,6 @@
     <string name="menu.view.developer.open.log.folder">Abrir pasta de Log</string>
     <string name="menu.view.developer.open.current.log.file">Abrir o aqrquio do log actual</string>
 
-
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
     <string name="qrscan_ask_join_verified_group">Quer juntar-se ao grupo \"%1$s\"?</string>
@@ -608,5 +599,9 @@
     <string name="qrshow_join_verified_group_title">Código de convite do QR</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Digitalizar para se juntar ao grupo \"%1$s\".</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Caixa de entrada a zerrrooooo</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\n Está pronto para começar</string>
+
 
 </resources>

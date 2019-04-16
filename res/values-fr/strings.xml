@@ -137,13 +137,11 @@
     <string name="menu_deaddrop">Demande de contact</string>
     <string name="menu_deaddrop_subtitle">Appuyez sur le message pour démarrer la conversation</string>
     <string name="menu_view_profile">Voir le profil</string>
-
     <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>
     <string name="mute_for_seven_days">Déactiver pour 7 jours</string>
     <string name="mute_for_one_year">Déactiver pour 1 an</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
@@ -175,7 +173,6 @@
     <string name="chat_camera_unavailable">Caméra indisponible.</string>
     <string name="chat_unable_to_record_audio">Impossible d\'enregistrer le son.</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
-    <string name="chat_no_chats_yet_hint">Donnez de quoi lire à votre boîte de réception. Commencez à communiquer avec un ami.</string>
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archivé</string>
@@ -241,8 +238,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Transférer à ...</string>
-
-
     <string name="pref_profile_photo">Photo du profile</string>
     <string name="pref_trim_option">Effacer les anciens messages</string>
     <string name="pref_trim_now_ask">Effacer tous les messages anciens? Cela écrêtera immédiatement toutes les conversations jusqu\'aux %d messages les plus récents.</string>

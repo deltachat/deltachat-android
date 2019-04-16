@@ -111,6 +111,8 @@
     <string name="menu_send">Inviato</string>
     <string name="menu_toggle_keyboard">Alterna tastiera emoji</string>
     <string name="menu_edit_group">Modifica grupp</string>
+    <string name="menu_show_map">Mostra mappa</string>
+    <string name="menu_show_global_map">Mostra tutte le posizioni</string>
     <string name="menu_archive_chat">Archivia chat</string>
     <string name="menu_unarchive_chat">Ripristina chat</string>
     <string name="menu_add_attachment">Aggiungi allegato</string>
@@ -118,6 +120,7 @@
     <string name="menu_delete_chat">Elimina chat</string>
     <string name="menu_delete_messages">Elimina messaggi</string>
     <string name="menu_delete_image">Elimina immagine</string>
+    <string name="menu_delete_locations">Eliminare tutte le posizioni?</string>
     <string name="menu_message_details">Dettagli messaggio</string>
     <string name="menu_copy_to_clipboard">Copia negli appunti</string>
     <string name="menu_forward">Inoltra messaggio</string>
@@ -143,6 +146,7 @@
     <string name="menu_deaddrop">Richieste di contatto</string>
     <string name="menu_deaddrop_subtitle">Premi Messaggio per iniziare una chat</string>
     <string name="menu_view_profile">Vedi profilo</string>
+    <string name="title_share_location">Condividi posizione con tutti i membri</string>
 
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_two_hours">Silenzia per 2 ore</string>
@@ -150,6 +154,12 @@
     <string name="mute_for_seven_days">Silenzia per 7 giorni</string>
     <string name="mute_for_one_year">Silenzia per 1 anno</string>
 
+    <string name="share_location_once">una volta</string>
+    <string name="share_location_for_5_minutes">per 5 minuti</string>
+    <string name="share_location_for_30_minutes">per 30 minuti</string>
+    <string name="share_location_for_one_hour">per 1 ora</string>
+    <string name="share_location_for_two_hours">per 2 ore</string>
+    <string name="share_location_for_six_hours">per 6 ore</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare il gruppo?</string>
@@ -198,9 +208,9 @@
     <string name="chat_new_group_hint">Invia il primo messaggio per permettere agli altri di rispondere nel gruppo\n\n• Non è necessario che tutti i membri usino Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>
-    <string name="chat_no_chats_yet_hint">Dai alla tua inbox qualcosa da fare. inizia scrivendo un messaggio ad un amico.</string>
-    <string name="chat_all_done_hint">Inbox vuooota</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nSiete tutti impegnati!</string>
+    <string name="chat_no_chats_yet_title">Casella vuota.\nPremi \"+\" per iniziare una chat.</string>
+    <string name="chat_no_chats_yet_hint">Puoi chattare con altri utenti Delta Chat o qualsiasi altro indirizzo email.</string>
+    <string name="chat_all_archived">Chat archiviate.\nPremi \"+\" per iniziare una nuova chat.</string>
     <string name="chat_share_with_title">Condividi con</string>
     <string name="chat_input_placeholder">Messaggio</string>
     <string name="chat_archived_label">Archiviato</string>
@@ -208,6 +218,12 @@
     <string name="chat_self_talk_subtitle">Messaggi inviati a me stesso</string>
     <string name="chat_contact_request">Richiesta di contatto</string>
     <string name="chat_no_contact_requests">Nessuna richiesta di contatto.\n\nSe vuoi che le email tradizionali appaiano qui come richieste di contatto puoi selezionare la relativa opzione nelle impostazioni.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Mostra le posizioni nel tempo</string>
+    <string name="filter_last_position">Ultima posizione</string>
+    <string name="show_location_traces">Mostra tracce</string>
+
 
     <!-- search -->
     <string name="search">Cerca</string>
@@ -292,6 +308,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Inotra a...</string>
+    <string name="share_multiple_attachments">Vuoi inviare %1$d file alla chat selezionata?\n\nI file vengono inviati senza modifiche e della dimensione originale. Immagini e video non vengono ricodificati.</string>
+    <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
 
 
     <!-- preferences -->
@@ -489,6 +507,7 @@
     <string name="perm_explain_need_for_camera_access">Per acquisire foto e video autorizza Delta Chat ad accedere alla fotocamera.</string>
     <string name="perm_explain_need_for_mic_access">Per inviare messaggi audio autorizza Delta Chat ad accedere al microfono.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat richiede l\'accesso ai file per esportare i file o creare backup.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat richiede l\'accesso ai file per condividere i file selezionati.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat richiede l\'autorizzazione per scattare foto e video, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Fotocamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat richiede l\'autorizzazione inviare messaggi audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat richiede l\'autorizzazione per creare allegati, esportare foto, video e audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
@@ -586,7 +605,7 @@
     <string name="download_attachment_desktop">Scarica allegato</string>
     <string name="export_backup_desktop">Esporta backup</string>
     <string name="transfer_key_desktop">Trasferisci chiave</string>
-    <string name="show_key_transfer_message_desktop">La tua chiave ti è stata inviata. Passa all\'altro dispositivo e apri il messaggio. Inserisci il seguente codice quando richiesto. Una volta fatto, il dispositivo sarà pronto per usare Autocrypt.</string>
+    <string name="show_key_transfer_message_desktop">La tua chiave ti è stata inviata. Passa all\'altro dispositivo, apri il messaggio di configurazione e inserisci il seguente codice quando richiesto. Una volta fatto, il dispositivo sarà pronto per usare Autocrypt.</string>
     <string name="new_message_from_desktop">Nuovo messaggio da</string>
     <string name="unblock_contacts_desktop">Sblocca contatti</string>
     <string name="none_blocked_desktop">Nessun contatto bloccato</string>
@@ -606,6 +625,7 @@
     <string name="menu.view.developer.open.log.folder">Apri cartella dei Log</string>
     <string name="menu.view.developer.open.current.log.file">Apri il Logfile corrente</string>
 
+    <string name="user_location_permission_explanation">Delta Chat richiede i permessi di localizzazione per mostrare e condividere la posizione.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
@@ -618,5 +638,9 @@
     <string name="qrshow_join_verified_group_title">Codice QR di invito</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Scansionalo per entrare nel gruppo \"%1$s\".</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Inbox vuooota</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nSiete tutti impegnati!</string>
+
 
 </resources>

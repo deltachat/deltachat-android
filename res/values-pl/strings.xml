@@ -34,6 +34,10 @@
     <string name="n_min_ago">%d min.</string>
     <string name="today">Dzisiaj</string>
     <string name="yesterday">Wczoraj</string>
+    <string name="this_week">Ten tydzień</string>
+    <string name="this_month">Ten miesiąc</string>
+    <string name="last_week">Ostatni tydzień</string>
+    <string name="last_month">Ostatni miesiąc</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -48,6 +52,31 @@
         <item quantity="many">%d godzin</item>
         <item quantity="other">%d godziny</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d czat</item>
+        <item quantity="few">%d czaty</item>
+        <item quantity="many">%d czatów</item>
+        <item quantity="other">%d czatu</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d kontakt</item>
+        <item quantity="few">%d kontakty</item>
+        <item quantity="many">%d kontaktów</item>
+        <item quantity="other">%d kontaktu</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d wiadomość</item>
+        <item quantity="few">%d wiadomości</item>
+        <item quantity="many">%d wiadomości</item>
+        <item quantity="other">%dwiadomości </item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d członek</item>
+        <item quantity="few">%dczłonków </item>
+        <item quantity="many">%dczłonków</item>
+        <item quantity="other">%dczłonka</item>
+    </plurals>
+
     <string name="self">Ja</string>
     <string name="draft">Szkic</string>
     <string name="image">Obraz</string>
@@ -92,6 +121,8 @@
     <string name="menu_new_verified_group">Nowa zweryfikowana grupa (eksperymentalna)</string>
     <string name="menu_send">Wyślij</string>
     <string name="menu_edit_group">Edytuj grupę</string>
+    <string name="menu_show_map">Pokaż mapę</string>
+    <string name="menu_show_global_map">Pokaż wszystkie lokalizacje</string>
     <string name="menu_archive_chat">Archiwizuj czat</string>
     <string name="menu_unarchive_chat">Przywróć czat z archiwum</string>
     <string name="menu_add_attachment">Dodaj załącznik</string>
@@ -99,6 +130,7 @@
     <string name="menu_delete_chat">Usuń czat</string>
     <string name="menu_delete_messages">Usuń wiadomości</string>
     <string name="menu_delete_image">Usuń  obraz</string>
+    <string name="menu_delete_locations">Usunąć wszystkie lokalizacje?</string>
     <string name="menu_message_details">Szczegóły wiadomości</string>
     <string name="menu_copy_to_clipboard">Kopiuj do schowka</string>
     <string name="menu_forward">Przekaż wiadomość</string>
@@ -123,6 +155,7 @@
     <string name="menu_advanced">Zaawansowane</string>
     <string name="menu_deaddrop">Prośba o kontakt</string>
     <string name="menu_view_profile">Pokaż profil</string>
+    <string name="title_share_location">Udostępnij lokalizację dla wszystki czlonków grup</string>
 
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
@@ -130,6 +163,12 @@
     <string name="mute_for_seven_days">Wyłącz na 7 dni</string>
     <string name="mute_for_one_year">Wyłącz na 1 rok</string>
 
+    <string name="share_location_once">raz</string>
+    <string name="share_location_for_5_minutes">na 5 minut</string>
+    <string name="share_location_for_30_minutes">na 30 mninut</string>
+    <string name="share_location_for_one_hour">na 1 godzinę</string>
+    <string name="share_location_for_two_hours">na 2 godziny</string>
+    <string name="share_location_for_six_hours">na 6 godzin</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Czy na pewno chcesz opuścić tą grupę?</string>
@@ -148,6 +187,19 @@
     <string name="contacts_empty_hint">Nie ma kontaktów.</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d czat zarchiwizowany</item>
+        <item quantity="few">%dczaty zarchiwizowane</item>
+        <item quantity="many">%dczatów zarchiwizowanych</item>
+        <item quantity="other">%d czatu zarchiwizowanego</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">Przywrócono %dczat z archiwum</item>
+        <item quantity="few">Przywrócono %d czaty z archiwum</item>
+        <item quantity="many">Przywrócono %d czatów z archiwum</item>
+        <item quantity="other">Przywrócono %d czatu z archiwum</item>
+    </plurals>
     <string name="chat_archived_chats_title">Zarchiwizowane czaty</string>
     <string name="chat_please_enter_message">Napisz wiadomość.</string>
     <string name="chat_camera_unavailable">Aparat niedostępny.</string>
@@ -162,13 +214,12 @@
     <string name="chat_new_group_hint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="chat_record_slide_to_cancel">PRZESUŃ, BY ANULOWAĆ</string>
     <string name="chat_record_explain">Dotknij i przytrzymaj, aby nagrać wiadomość głosową, zwolnij, aby wysłać</string>
-    <string name="chat_all_done_hint">Skrzynka odbiorcza zeeerrro</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nWszyscy jesteście złapani!</string>
     <string name="chat_input_placeholder">Wiadomość</string>
     <string name="chat_archived_label">Zarchiwizowane</string>
     <string name="chat_no_messages">Brak wiadomości.</string>
     <string name="chat_self_talk_subtitle">Wiadomości wysłane do siebie</string>
     <string name="chat_contact_request">Prośba o kontakt</string>
+    <string name="filter_last_position">Ostatnia pozycja</string>
     <!-- search -->
     <string name="search">Szukaj</string>
     <string name="search_explain">Wyszukaj czaty, kontakty i wiadomości</string>
@@ -231,6 +282,7 @@
     <string name="login_smtp_server">serwer SMTP</string>
     <string name="login_smtp_port">port SMTP</string>
     <string name="login_smtp_security">Bezpieczeństwo SMTP</string>
+    <string name="login_auth_method">Metoda autoryzacji</string>
     <string name="login_info_gmail_text">W przypadku kont GMail, jeśli masz włączone 2FA, musisz utworzyć hasło aplikacji. Jeśli to ustawienie nie jest dostępne, musisz włączyć mniej bezpieczne aplikacje.</string>
     <string name="login_error_mail">Podaj ważny adres e-mail</string>
     <string name="login_error_server">Wprowadź poprawny adres serwera / IP</string>
@@ -248,8 +300,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Przekaż do…</string>
-
-
     <string name="pref_summary_off">Wyłączone</string>
     <string name="pref_profile_info_headline">Twój profil</string>
     <string name="pref_profile_photo">Zdjęcie profilowe</string>
@@ -267,6 +317,8 @@
     <string name="pref_who_can_see_this_information">Kto może zobaczyć tę informację?</string>
     <string name="pref_who_can_see_profile_explain">Twoje zdjęcie profilowe i nazwa będą wyświetlane wraz z wiadomościami podczas komunikacji z innymi użytkownikami. Już wysłanych informacji nie można skasować ani usunąć.</string>
     <string name="pref_your_name">Twoja nazwa</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Tekst podpisu</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Wysłane z komunikatora Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Enter wysyła</string>
@@ -328,6 +380,12 @@
     <string name="pref_watch_mvbox_folder">Oglądaj katalog DeltaChat</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Rozmowy na czacie są przenoszone, aby nie zaśmiecać folderu Skrzynka odbiorcza</string>
+    <string name="pref_show_emails">Pokaż klasyczne e-maile</string>
+    <string name="pref_show_emails_no">Nie, tylko czaty</string>
+    <string name="pref_show_emails_accepted_contacts">Dla zaakceptowanych kontaktów</string>
+    <string name="pref_show_emails_all">Wszystkie</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą Wiadomości konfiguracyjnej automatycznego szyfrowania.</string>
@@ -504,7 +562,6 @@
     <string name="download_attachment_desktop">Pobierz załącznik</string>
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
     <string name="transfer_key_desktop">Transferuj klucz</string>
-    <string name="show_key_transfer_message_desktop">Klucz został wysłany do ciebie. Przejdź do innego urządzenia i otwórz wiadomość konfiguracyjną. Zostanie wyświetlona prośba o podanie kodu konfiguracyjnego. Wpisz następujące cyfry w podpowiedzi. Gdy skończysz, drugie urządzenie będzie gotowe do użycia funkcji automatycznego szyfrowania.</string>
     <string name="new_message_from_desktop">Nowa wiadomość od</string>
     <string name="unblock_contacts_desktop">Odblokuj kontakt</string>
     <string name="none_blocked_desktop">Tutaj nie ma zablokowanych kontaktów</string>
@@ -524,5 +581,9 @@
     <string name="qrshow_join_verified_group_title">Kod QR zaproszenia</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Zeskanuj to, aby dołączyć do grupy „%1$s”.</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Skrzynka odbiorcza zeeerrro</string>
+    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nWszyscy jesteście złapani!</string>
+
 
 </resources>

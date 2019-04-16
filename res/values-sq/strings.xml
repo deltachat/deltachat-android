@@ -111,6 +111,8 @@
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih tastierë emoji</string>
     <string name="menu_edit_group">Përpunoni grup</string>
+    <string name="menu_show_map">Shfaq hartë</string>
+    <string name="menu_show_global_map">Shfaqi krejt vendndodhjet</string>
     <string name="menu_archive_chat">Arkivoje fjalosjen</string>
     <string name="menu_unarchive_chat">Çarkivoje fjalosjen</string>
     <string name="menu_add_attachment">Shtoni bashkëngjitje</string>
@@ -118,6 +120,7 @@
     <string name="menu_delete_chat">Fshije fjalosjen</string>
     <string name="menu_delete_messages">Fshiji mesazhet</string>
     <string name="menu_delete_image">Fshije figurën</string>
+    <string name="menu_delete_locations">Të fshihen krejt vendndodhjet?</string>
     <string name="menu_message_details">Hollësi mesazhi</string>
     <string name="menu_copy_to_clipboard">Kopjoje në të papastër</string>
     <string name="menu_forward">Përcille mesazhin</string>
@@ -143,6 +146,7 @@
     <string name="menu_deaddrop">Kërkesa kontakti</string>
     <string name="menu_deaddrop_subtitle">Shtypni butonin Mesazh që të filloni të bisedoni</string>
     <string name="menu_view_profile">Shihini profilin</string>
+    <string name="title_share_location">Jepua vendndodhjen krejt anëtarëve të grupit</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
     <string name="mute_for_two_hours">Heshtoji për 2 orë</string>
@@ -150,6 +154,12 @@
     <string name="mute_for_seven_days">Heshtoji për 7 ditë</string>
     <string name="mute_for_one_year">Heshtoji për 1 vit</string>
 
+    <string name="share_location_once">një herë</string>
+    <string name="share_location_for_5_minutes">për 5 minuta</string>
+    <string name="share_location_for_30_minutes">për 30 minuta</string>
+    <string name="share_location_for_one_hour">për 1 orë</string>
+    <string name="share_location_for_two_hours">për 2 orë</string>
+    <string name="share_location_for_six_hours">për 6 orë</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
@@ -198,9 +208,9 @@
     <string name="chat_new_group_hint">Hartoni mesazhin e parë, duke u lejuar të tjerëve të përgjigjen brenda këtij grupi.\n\n• S’ka problem nëse Delta Chat-in s’e përdorin  të tërë anëtarë.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
     <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që të dërgohet</string>
-    <string name="chat_no_chats_yet_hint">Jepini kutisë tuaj të email-eve diçka që ta shkruani në darkë. Fillojani duke i dërguar një mesazh një shoku.</string>
-    <string name="chat_all_done_hint">Zero të marrë</string>
-    <string name="chat_all_done_explain">Hiç. Fare. Zero.\nJanë qëruar!</string>
+    <string name="chat_no_chats_yet_title">Kuti mesazhesh e zbrazët.\nShtypni \"+\" që të nisni një bisedë të re.</string>
+    <string name="chat_no_chats_yet_hint">Mund të bisedoni me përdorues të tjerë të Delta Chat-it dhe me çfarëdo adrese email.</string>
+    <string name="chat_all_archived">Krejt bisedat janë të arkivuara.\nShtypni \"+\" që të nisni një bisedë të re.</string>
     <string name="chat_share_with_title">Ndajeni me </string>
     <string name="chat_input_placeholder">Mesazh</string>
     <string name="chat_archived_label">Arkivuar</string>
@@ -208,6 +218,12 @@
     <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
     <string name="chat_contact_request">Kërkesë kontakti</string>
     <string name="chat_no_contact_requests">S\’ka kërkesa kontakti.\n\nNëse doni që email-e klasikë të shfaqen këtu si kërkesa kontakti, mund të ndryshoni rregullimin përkatës te rregullimet e aplikacionit.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
+    <string name="filter_last_position">Pozicioni i fundit</string>
+    <string name="show_location_traces">Shfaq gjurmë</string>
+
 
     <!-- search -->
     <string name="search">Kërko</string>
@@ -292,6 +308,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Përcilljani …</string>
+    <string name="share_multiple_attachments">Doni të dërgohen %1$d kartela te biseda e përzgjedhur?\n\nKartelat dërgohen të pandryshuara, në madhësinë e tyre origjinale, p.sh., figura dhe video nuk rikodohen.</string>
+    <string name="share_abort">Ndarja me të tjerë dështoi ngaqë mungojnë leje.</string>
 
 
     <!-- preferences -->
@@ -489,6 +507,7 @@
     <string name="perm_explain_need_for_camera_access">Që të bëhen foto dhe video, lejojeni Delta Chat-in të përdorë kamerën.</string>
     <string name="perm_explain_need_for_mic_access">Që të dërgoni mesazhe audio, lejojeni Delta Chat-in të përdorë mikrofonin tuaj.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat-i lyp hyrje në kartelat tuaja që të mund të eksportojë të tilla apo të krijojë kopjeruajtje.</string>
+    <string name="perm_explain_need_for_storage_access_share">Që të mund të ndajë me të tjerët kartelat e përzgjedhura, Delta Chat lyp hyrje në kartelat tuaja.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat lyp leje mbi Kamerën që të mund të bëjë foto apo video, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Kamerën\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat lyp leje mbi Mikrofonin që të mund të dërgojë mesazhe audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Mikrofonin\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat lyp leje mbi Depozitimin që të mund të bashkëngjisë apo eksportojë foto, video ose audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Depozitimin\".</string>
@@ -586,7 +605,7 @@
     <string name="download_attachment_desktop">Shkarkoni bashkëngjitje</string>
     <string name="export_backup_desktop">Eksportoni kopjeruajtje</string>
     <string name="transfer_key_desktop">Shpërngulni kyç</string>
-    <string name="show_key_transfer_message_desktop">Kyçi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese. Pasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
+    <string name="show_key_transfer_message_desktop">Kyçi juaj ju është dërguar. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do të duhej t’ju kërkonte një kod rregullimi. Shtypi shifrat vijuese. Pasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
     <string name="new_message_from_desktop">Mesazh i ri prej</string>
     <string name="unblock_contacts_desktop">Zhblloko kontakte</string>
     <string name="none_blocked_desktop">Ende pa kontakte të bllokuar</string>
@@ -606,6 +625,7 @@
     <string name="menu.view.developer.open.log.folder">Hap Dosje Regjistrash</string>
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
 
+    <string name="user_location_permission_explanation">Që të mund të shfaqë dhe ndajë me të tjerët vendndodhjen tuaj, Delta Chat lyp lejen vendore.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->
@@ -618,5 +638,9 @@
     <string name="qrshow_join_verified_group_title">Kod QR ftese</string>
     <!-- see qrshow_join_group_hint -->
     <string name="qrshow_join_verified_group_hint">Që të bëheni pjesë e grupit \"%1$s\", skanoni këtë.</string>
+    <!-- see chat_all_archived -->
+    <string name="chat_all_done_hint">Zero të marrë</string>
+    <string name="chat_all_done_explain">Hiç. Fare. Zero.\nJanë qëruar!</string>
+
 
 </resources>
