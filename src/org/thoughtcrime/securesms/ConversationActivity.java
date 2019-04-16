@@ -727,7 +727,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     sendButton.setEnabled(true);
     sendButton.addOnTransportChangedListener((newTransport, manuallySelected) -> {
       composeText.setTransport(newTransport);
-      buttonToggle.getBackground().setColorFilter(newTransport.getBackgroundColor(), Mode.MULTIPLY);
       buttonToggle.getBackground().invalidateSelf();
     });
 

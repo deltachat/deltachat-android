@@ -13,10 +13,9 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="7dp"
-               android:background="@drawable/circle_tintable"
+               android:background="@drawable/circle_send_button"
                android:contentDescription="@string/menu_send"
-               tools:src="@drawable/ic_send_push_white_24dp"
-               tools:backgroundTint="@color/delta_primary" />
+               tools:src="@drawable/ic_send_push_white_24dp" />
 
     <LinearLayout android:orientation="vertical"
                   android:layout_width="match_parent"

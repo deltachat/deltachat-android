@@ -20,6 +20,7 @@
     <attr name="conversation_received_card_background" format="reference|color"/>
 
     <attr name="fab_color" format="reference|color" />
+    <attr name="send_button_color" format="reference|color" />
     <attr name="input_panel_bg_color" format="reference|color" />
     <attr name="lower_right_divet" format="reference" />
 
