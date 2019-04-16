@@ -285,7 +285,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             contactMapMetadata = addContactMapSource(contactId);
         }
 
-        LinkedList<Feature> sortedPointFeatures = new LinkedList<>();
+        LinkedList<Feature> sortedPointFeatures = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
+        if (sortedPointFeatures != null && sortedPointFeatures.size() == count) {
+            return;
+        } else {
+            sortedPointFeatures = new LinkedList<>();
+        }
         LinkedList<Feature> sortedLineFeatures = new LinkedList<>();
 
         for (int i = count - 1; i >= 0; i--) {
