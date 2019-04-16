@@ -211,6 +211,9 @@ public class RangeSliderView extends View {
         longPressDetector.onTouchEvent(event);
 
         if (event.getAction() == MotionEvent.ACTION_CANCEL) {
+            if (onValueChangedListener != null) {
+                onValueChangedListener.onValueChanged(minValue, maxValue);
+            }
             minValueThumb.isHighlight = false;
             maxValueThumb.isHighlight = false;
             isThumbViewLocked = false;
