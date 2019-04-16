@@ -31,15 +31,15 @@ public class MapSource {
     private int color;
     private int colorArgb;
 
-    public MapSource(int chatId) {
-        markerSource = MARKER_POSITION_SOURCE + "_" + chatId;
-        lineSource = LINE_SOURCE + "_" + chatId;
-        markerLayer = MARKER_LAYER + "_" + chatId;
-        lineLayer = LINE_LAYER + "_" + chatId;
-        markerIcon = MARKER_ICON + "_" + chatId;
-        markerLastPositon = MARKER_LAST_POSITON + "_" + chatId;
-        markerFeatureCollection = MARKER_FEATURE_LIST + "_" + chatId;
-        lineFeatureCollection = LINE_FEATURE_LIST + "_" + chatId;
+    public MapSource(int contactId) {
+        markerSource = MARKER_POSITION_SOURCE + "_" + contactId;
+        lineSource = LINE_SOURCE + "_" + contactId;
+        markerLayer = MARKER_LAYER + "_" + contactId;
+        lineLayer = LINE_LAYER + "_" + contactId;
+        markerIcon = MARKER_ICON + "_" + contactId;
+        markerLastPositon = MARKER_LAST_POSITON + "_" + contactId;
+        markerFeatureCollection = MARKER_FEATURE_LIST + "_" + contactId;
+        lineFeatureCollection = LINE_FEATURE_LIST + "_" + contactId;
     }
 
     public void setColor(int color) {
