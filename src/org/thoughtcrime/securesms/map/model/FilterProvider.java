@@ -56,7 +56,7 @@ public class FilterProvider {
         return all(expressions.values().toArray(new Expression[expressions.values().size()]));
     }
 
-    public Expression getLineFilter() {
+    public Expression getRangeFilter() {
         if (expressions.get(RANGE) != null) {
             return expressions.get(RANGE);
         }

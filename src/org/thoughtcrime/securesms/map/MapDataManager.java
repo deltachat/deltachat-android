@@ -56,9 +56,14 @@ import static com.mapbox.mapboxsdk.style.layers.Property.NONE;
 import static com.mapbox.mapboxsdk.style.layers.Property.VISIBLE;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAnchor;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacement;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconSize;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineColor;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineJoin;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineOpacity;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineWidth;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 import static org.thoughtcrime.securesms.map.model.MapSource.LINE_FEATURE_LIST;
@@ -77,6 +82,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public static final String MESSAGE_ID = "MESSAGE_ID";
     public static final String ACCURACY = "ACCURACY";
     private static final String INFO_WINDOW_SRC = "INFO_WINDOW_SRC";
+    private static final String LAST_POSITION_LAYER = "LAST_POSITION_LAYER";
+    private static final String LAST_POSITION_SOURCE = "LAST_POSITION_SRC";
+    private static final String LAST_POSITION_ICON_ID = "LAST_POSITION_ICN_ID";
 
     public static final int ALL_CHATS_GLOBAL_MAP = 0;
     public static final long TIMESTAMP_NOW = 0L;
@@ -87,6 +95,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private Style mapboxStyle;
     private HashMap<Integer, MapSource> contactMapSources = new HashMap<>();
     private HashMap<String, LinkedList<Feature>> featureCollections = new HashMap<>();
+    private HashMap<Integer, Feature> lastPositions = new HashMap<>();
     private FilterProvider filterProvider = new FilterProvider();
     private Feature selectedFeature;
     private int chatId;
@@ -108,10 +117,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
         int[] contactIds = getContactIds(chatId);
         initInfoWindowLayer();
+        initLastPositionLayer();
 
         filterProvider.setMessageFilter(true);
         long now = System.currentTimeMillis();
         filterProvider.setRangeFilter(now - DEFAULT_LAST_POSITION_DELTA, now);
+        applyLastPositionFilter();
         for (int contactId : contactIds) {
             updateSource(chatId, contactId, boundingBuilder);
             MapSource source = contactMapSources.get(contactId);
@@ -159,6 +170,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         LinkedList<Feature> lineFeatures = featureCollections.get(source.getLineFeatureCollection());
         GeoJsonSource lineSource = (GeoJsonSource) mapboxStyle.getSource(source.getLineSource());
         lineSource.setGeoJson(FeatureCollection.fromFeatures(lineFeatures));
+        GeoJsonSource lastPostionSource = (GeoJsonSource) mapboxStyle.getSource(LAST_POSITION_SOURCE);
+        lastPostionSource.setGeoJson(FeatureCollection.fromFeatures(new LinkedList<>(lastPositions.values())));
     }
 
     @Override
@@ -177,13 +190,14 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
 
     public String[] getMarkerLayers() {
-        String markerLayers[] = new String[contactMapSources.size()];
+        String markerLayers[] = new String[contactMapSources.size() + 1];
         int i = 0;
         for (Map.Entry<Integer, MapSource> entry : contactMapSources.entrySet()) {
             markerLayers[i] = entry.getValue().getMarkerLayer();
             i += 1;
         }
 
+        markerLayers[contactMapSources.size()] = LAST_POSITION_LAYER;
         return markerLayers;
     }
 
@@ -247,6 +261,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             applyMarkerFilter(contactMapMetadata);
             applyLineFilter(contactMapMetadata);
         }
+        applyLastPositionFilter();
+    }
+
+    private void applyLastPositionFilter() {
+        SymbolLayer markerLayer = (SymbolLayer) mapboxStyle.getLayer(LAST_POSITION_LAYER);
+        markerLayer.setFilter(filterProvider.getRangeFilter());
     }
 
     private void applyMarkerFilter(MapSource source) {
@@ -256,7 +276,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void applyLineFilter(MapSource source) {
         LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(source.getLineLayer());
-        lineLayer.setFilter(filterProvider.getLineFilter());
+        lineLayer.setFilter(filterProvider.getRangeFilter());
     }
 
     private void updateSource(int chatId, int contactId) {
@@ -317,7 +337,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         }
 
         if (sortedPointFeatures.size() > 0) {
+            sortedPointFeatures.get(0).addStringProperty(LAST_POSITION_ICON_ID, contactMapMetadata.getMarkerLastPositon());
             sortedPointFeatures.get(0).addBooleanProperty(LAST_LOCATION, true);
+            lastPositions.remove(contactId);
+            lastPositions.put(contactId, sortedPointFeatures.get(0));
         }
 
         featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), sortedPointFeatures);
@@ -376,6 +399,20 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         ));
     }
 
+    private void initLastPositionLayer() {
+        GeoJsonSource lastPositionSource = new GeoJsonSource(LAST_POSITION_SOURCE);
+        mapboxStyle.addSource(lastPositionSource);
+        Expression markerSize =
+                switchCase(toBool(get(MARKER_SELECTED)), literal(1.5f), literal(1.0f));
+        mapboxStyle.addLayer(new SymbolLayer(LAST_POSITION_LAYER, LAST_POSITION_SOURCE).withProperties(
+                iconImage("{" + LAST_POSITION_ICON_ID + "}"),
+                     /* all info window and marker image to appear at the same time*/
+                iconAllowOverlap(true),
+                iconIgnorePlacement(true),
+                iconSize(markerSize)
+        ).withFilter(filterProvider.getRangeFilter()));
+    }
+
     private void initContactBasedLayers(MapSource source) {
         mapboxStyle.addImage(source.getMarkerLastPositon(),
                 generateColoredLastPositionIcon(source.getColorArgb()));
@@ -384,25 +421,29 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
         Expression markerSize =
                 switchCase(toBool(get(MARKER_SELECTED)), literal(1.5f),
-                        switchCase(toBool(get(LAST_LOCATION)), literal(1.0f),
+                        switchCase(toBool(get(LAST_LOCATION)), literal(0f),
                                 switchCase(eq(get(MESSAGE_ID), literal(0)), literal(0.7f), literal(1.1f))));
-        Expression markerIcon = switchCase(toBool(get(LAST_LOCATION)), literal(source.getMarkerLastPositon()), literal(source.getMarkerIcon()));
-        Expression markerAllowOverlap =  toBool(get(LAST_LOCATION));
-        mapboxStyle.addLayerBelow(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
-                .withProperties(
-                        iconImage(markerIcon),
-                        iconSize(markerSize),
-                        iconAllowOverlap(markerAllowOverlap))
-                .withFilter(filterProvider.getMarkerFilter()),
-                INFO_WINDOW_LAYER);
+        Expression markerIcon = switchCase(toBool(get(LAST_LOCATION)), literal(""), literal(source.getMarkerIcon()));
 
         mapboxStyle.addLayerBelow(new LineLayer(source.getLineLayer(), source.getLineSource())
                 .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
-                        PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
-                        PropertyFactory.lineWidth(3f),
-                        PropertyFactory.lineOpacity(0.5f),
-                        PropertyFactory.lineColor(source.getColorArgb()),
-                        PropertyFactory.visibility(NONE)),
+                        lineJoin(Property.LINE_JOIN_ROUND),
+                        lineWidth(3f),
+                        lineOpacity(0.5f),
+                        lineColor(source.getColorArgb()),
+                        visibility(NONE),
+                        iconAllowOverlap(true),
+                        iconIgnorePlacement(true)
+                )
+                .withFilter(filterProvider.getRangeFilter()),
+                INFO_WINDOW_LAYER);
+
+
+        mapboxStyle.addLayerBelow(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
+                        .withProperties(
+                                iconImage(markerIcon),
+                                iconSize(markerSize))
+                        .withFilter(filterProvider.getMarkerFilter()),
                 INFO_WINDOW_LAYER);
     }
 
