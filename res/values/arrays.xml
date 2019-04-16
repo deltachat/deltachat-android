@@ -5,25 +5,25 @@
        ... some one has to clean up this mess some day ... -->
 
   <string-array name="language_entries">
-      <!-- zz --><item>@string/def</item>
-      <!-- az --><item>Azeri</item>
-      <!-- en --><item>English</item>
-      <!-- da --><item>Dansk</item>
-      <!-- de --><item>Deutsch</item>
-      <!-- es --><item>Español</item>
-      <!-- eu --><item>Euskara</item>
-      <!-- fr --><item>Français</item>
-      <!-- it --><item>Italiano</item>
-      <!-- ja --><item>Japanese 日本語</item>
-      <!-- lt --><item>Lietuvių kalba</item>
-      <!-- nl --><item>Nederlands</item>
-      <!-- pl --><item>Polski</item>
-      <!-- pt --><item>Português</item>
-      <!-- ru --><item>Russian Pусский</item>
-      <!-- sq --><item>Shqip</item>
-      <!-- sv --><item>Svenska</item>
-      <!-- tr --><item>Türkçe</item>
-      <!-- uk --><item>Ukrainian Українська</item>
+      <!-- zz -->    <item>@string/def</item>
+      <!-- az -->    <item>Azeri</item>
+      <!-- en -->    <item>English</item>
+      <!-- da -->    <item>Dansk</item>
+      <!-- de -->    <item>Deutsch</item>
+      <!-- es -->    <item>Español</item>
+      <!-- eu -->    <item>Euskara</item>
+      <!-- fr -->    <item>Français</item>
+      <!-- it -->    <item>Italiano</item>
+      <!-- ja -->    <item>日本語</item>
+      <!-- lt -->    <item>Lietuvių kalba</item>
+      <!-- nl -->    <item>Nederlands</item>
+      <!-- pl -->    <item>Polski</item>
+      <!-- pt -->    <item>Português</item>
+      <!-- ru -->    <item>Pусский</item>
+      <!-- sq -->    <item>Shqip</item>
+      <!-- sv -->    <item>Svenska</item>
+      <!-- tr -->    <item>Türkçe</item>
+      <!-- uk -->    <item>Українська</item>
   </string-array>
 
   <string-array name="language_values">
