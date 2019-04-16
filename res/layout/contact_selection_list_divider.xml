@@ -14,7 +14,7 @@
               android:paddingTop="10dp"
               android:paddingBottom="10dp"
               android:textSize="14sp"
-              android:textColor="@color/delta_primary_dark"
+              android:textColor="?attr/contact_list_divider_color"
               tools:text="Recent chats"/>
 
 </LinearLayout>
