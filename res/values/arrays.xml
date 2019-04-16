@@ -19,6 +19,7 @@
       <!-- nl -->    <item>Nederlands</item>
       <!-- pl -->    <item>Polski</item>
       <!-- pt -->    <item>Português</item>
+      <!-- pt_BR --> <item>Português do Brasil</item>
       <!-- ru -->    <item>Pусский</item>
       <!-- sq -->    <item>Shqip</item>
       <!-- sv -->    <item>Svenska</item>
@@ -41,6 +42,7 @@
       <item>nl</item>
       <item>pl</item>
       <item>pt</item>
+      <item>pt_BR</item>
       <item>ru</item>
       <item>sq</item>
       <item>sv</item>
