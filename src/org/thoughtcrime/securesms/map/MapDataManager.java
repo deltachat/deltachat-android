@@ -110,7 +110,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         initInfoWindowLayer();
 
         filterProvider.setMessageFilter(true);
-        filterProvider.setLastPositionFilter(System.currentTimeMillis() - DEFAULT_LAST_POSITION_DELTA);
+        long now = System.currentTimeMillis();
+        filterProvider.setRangeFilter(now - DEFAULT_LAST_POSITION_DELTA, now);
         for (int contactId : contactIds) {
             updateSource(chatId, contactId, boundingBuilder);
             MapSource source = contactMapSources.get(contactId);
@@ -221,12 +222,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public void filterRange(long startTimestamp, long endTimestamp) {
         int[] contactIds = getContactIds(chatId);
         filterProvider.setRangeFilter(startTimestamp, endTimestamp);
-        applyFilters(contactIds);
-    }
-
-    public void filterLastPositions(long startTimestamp) {
-        int[] contactIds = getContactIds(chatId);
-        filterProvider.setLastPositionFilter(startTimestamp);
         applyFilters(contactIds);
     }
 

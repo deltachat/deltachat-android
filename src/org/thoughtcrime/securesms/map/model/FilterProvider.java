@@ -7,16 +7,13 @@ import com.mapbox.mapboxsdk.style.expressions.Expression;
 import java.util.HashMap;
 
 import static com.mapbox.mapboxsdk.style.expressions.Expression.all;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.gte;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.lte;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.neq;
-import static org.thoughtcrime.securesms.map.MapDataManager.LAST_LOCATION;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
-import static org.thoughtcrime.securesms.map.model.FilterProvider.FilterType.LAST_POSITION;
 import static org.thoughtcrime.securesms.map.model.FilterProvider.FilterType.MESSAGES;
 import static org.thoughtcrime.securesms.map.model.FilterProvider.FilterType.RANGE;
 
@@ -27,7 +24,6 @@ import static org.thoughtcrime.securesms.map.model.FilterProvider.FilterType.RAN
 public class FilterProvider {
     public enum FilterType {
         RANGE,
-        LAST_POSITION,
         MESSAGES
     }
 
@@ -35,16 +31,8 @@ public class FilterProvider {
 
 
     public void setRangeFilter(long startTimestamp, long endTimestamp) {
-        expressions.remove(LAST_POSITION);
         addFilter(RANGE, all(
                 lte(get(TIMESTAMP), endTimestamp),
-                gte(get(TIMESTAMP), startTimestamp)));
-
-    }
-    public void setLastPositionFilter(long startTimestamp) {
-        expressions.remove(RANGE);
-        addFilter(LAST_POSITION, all(
-                eq((get(LAST_LOCATION)), literal(true)),
                 gte(get(TIMESTAMP), startTimestamp)));
     }
 
@@ -69,12 +57,9 @@ public class FilterProvider {
     }
 
     public Expression getLineFilter() {
-        if (expressions.get(LAST_POSITION) != null) {
-            return expressions.get(LAST_POSITION);
-        } else if (expressions.get(RANGE) != null) {
+        if (expressions.get(RANGE) != null) {
             return expressions.get(RANGE);
         }
-
         return all();
     }
 
