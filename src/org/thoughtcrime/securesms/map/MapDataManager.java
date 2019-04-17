@@ -49,6 +49,7 @@ import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
 import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.all;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.neq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.length;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
@@ -323,8 +324,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             Point point = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
 
             String codepointChar =
-                    locations.getMarker(i) != null && locations.getMarker(i).length() > 0 ?
-                    new StringBuilder().appendCodePoint(locations.getMarker(i).codePointAt(0)).toString() :
+                    locations.getMarker(i) != null ?
+                    locations.getMarker(i) :
                     "";
             Log.d(TAG, "codepointChar: " + codepointChar);
 
@@ -441,7 +442,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
         Expression markerSize =
                 switchCase(
-                        eq(length(get(MARKER_CHAR)), literal(1)),
+                        neq(length(get(MARKER_CHAR)), literal(0)),
                             switchCase(toBool(get(MARKER_SELECTED)), literal(2.25f), literal(2.0f)),
                         eq(get(MESSAGE_ID), literal(0)),
                             switchCase(toBool(get(MARKER_SELECTED)), literal(1.1f), literal(1.0f)),
