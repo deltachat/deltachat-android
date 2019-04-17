@@ -48,16 +48,16 @@ public class SignalGlideModule extends AppGlideModule {
 
   @Override
   public void registerComponents(@NonNull Context context, @NonNull Glide glide, @NonNull Registry registry) {
-    //AttachmentSecret attachmentSecret = AttachmentSecretProvider.getInstance(context).getOrCreateAttachmentSecret();
-    //byte[]           secret           = attachmentSecret.getModernKey();
+    AttachmentSecret attachmentSecret = AttachmentSecretProvider.getInstance(context).getOrCreateAttachmentSecret();
+    byte[]           secret           = attachmentSecret.getModernKey();
 
     registry.prepend(File.class, File.class, UnitModelLoader.Factory.getInstance());
-    //registry.prepend(InputStream.class, new EncryptedCacheEncoder(secret, glide.getArrayPool()));
-    //registry.prepend(File.class, Bitmap.class, new EncryptedBitmapCacheDecoder(secret, new StreamBitmapDecoder(new Downsampler(registry.getImageHeaderParsers(), context.getResources().getDisplayMetrics(), glide.getBitmapPool(), glide.getArrayPool()), glide.getArrayPool())));
-    //registry.prepend(File.class, GifDrawable.class, new EncryptedGifCacheDecoder(secret, new StreamGifDecoder(registry.getImageHeaderParsers(), new ByteBufferGifDecoder(context, registry.getImageHeaderParsers(), glide.getBitmapPool(), glide.getArrayPool()), glide.getArrayPool())));
+    registry.prepend(InputStream.class, new EncryptedCacheEncoder(secret, glide.getArrayPool()));
+    registry.prepend(File.class, Bitmap.class, new EncryptedBitmapCacheDecoder(secret, new StreamBitmapDecoder(new Downsampler(registry.getImageHeaderParsers(), context.getResources().getDisplayMetrics(), glide.getBitmapPool(), glide.getArrayPool()), glide.getArrayPool())));
+    registry.prepend(File.class, GifDrawable.class, new EncryptedGifCacheDecoder(secret, new StreamGifDecoder(registry.getImageHeaderParsers(), new ByteBufferGifDecoder(context, registry.getImageHeaderParsers(), glide.getBitmapPool(), glide.getArrayPool()), glide.getArrayPool())));
 
-    //registry.prepend(Bitmap.class, new EncryptedBitmapResourceEncoder(secret));
-    //registry.prepend(GifDrawable.class, new EncryptedGifDrawableResourceEncoder(secret));
+    registry.prepend(Bitmap.class, new EncryptedBitmapResourceEncoder(secret));
+    registry.prepend(GifDrawable.class, new EncryptedGifDrawableResourceEncoder(secret));
 
     registry.append(ContactPhoto.class, InputStream.class, new ContactPhotoLoader.Factory(context));
     registry.append(DecryptableUri.class, InputStream.class, new DecryptableStreamUriLoader.Factory(context));

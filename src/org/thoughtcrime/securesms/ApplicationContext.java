@@ -7,7 +7,6 @@ import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ProcessLifecycleOwner;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -37,17 +36,10 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     return (ApplicationContext)context.getApplicationContext();
   }
 
-  public static long startMillis;
-
   @Override
   public void onCreate() {
-
-    startMillis = System.currentTimeMillis();
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 1");
-
     super.onCreate();
 
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 2");
     // if (LeakCanary.isInAnalyzerProcess(this)) {
     //   // This process is dedicated to LeakCanary for heap analysis.
     //   // You should not init your app in this process.
@@ -58,32 +50,12 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     System.loadLibrary("native-utils");
     dcContext = new ApplicationDcContext(this);
 
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 3");
-
     initializeRandomNumberFix();
-
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 4");
-
     initializeLogging();
-
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 5");
-
     initializeJobManager();
-
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 6");
-
     initializeIncomingMessageNotifier();
-
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 7");
-
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
-
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 8");
-
     Mapbox.getInstance(getApplicationContext(), BuildConfig.MAP_ACCESS_TOKEN);
-
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 9");
-
     dcLocationManager = new DcLocationManager(this);
     try {
       DynamicLanguage.setContextLocale(this, DynamicLanguage.getSelectedLocale(this));
@@ -91,8 +63,6 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     catch (Exception e) {
       e.printStackTrace();
     }
-
-    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 10 - " + (System.currentTimeMillis() - startMillis) + "ms");
   }
 
   @Override

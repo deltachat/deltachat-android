@@ -22,7 +22,7 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
 
   @Override
   protected final void onCreate(Bundle savedInstanceState) {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/onCreate");
+    Log.w(TAG, "onCreate(" + savedInstanceState + ")");
     onPreCreate();
 
     routeApplicationState();
@@ -34,37 +34,30 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     }
   }
 
-  protected void onPreCreate() {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/onPreCreate");
-
-  }
-  protected void onCreate(Bundle savedInstanceState, boolean ready) {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/onCreate");
-
-  }
+  protected void onPreCreate() {}
+  protected void onCreate(Bundle savedInstanceState, boolean ready) {}
 
   @Override
   protected void onResume() {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/onResume");
+    Log.w(TAG, "onResume()");
     super.onResume();
   }
 
   @Override
   protected void onPause() {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/onPause");
+    Log.w(TAG, "onPause()");
     super.onPause();
   }
 
   @Override
   protected void onDestroy() {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/onDestroy");
+    Log.w(TAG, "onDestroy()");
     super.onDestroy();
   }
 
   protected <T extends Fragment> T initFragment(@IdRes int target,
                                                 @NonNull T fragment)
   {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/initFragment");
     return initFragment(target, fragment, null);
   }
 
@@ -72,7 +65,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
                                                 @NonNull T fragment,
                                                 @Nullable Locale locale)
   {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/initFragment");
     return initFragment(target, fragment, locale, null);
   }
 
@@ -81,7 +73,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
                                                 @Nullable Locale locale,
                                                 @Nullable Bundle extras)
   {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/initFragment");
     Bundle args = new Bundle();
     args.putSerializable(LOCALE_EXTRA, locale);
 
@@ -97,7 +88,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   }
 
   private void routeApplicationState() {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/routeApplicationState");
     Intent intent = getIntentForState(getApplicationState());
     if (intent != null) {
       startActivity(intent);
@@ -106,7 +96,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   }
 
   private Intent getIntentForState(int state) {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/getIntentForState");
     switch (state) {
       case STATE_NEEDS_CONFIGURE: return getWelcomeIntent();
       default:                    return null;
@@ -114,7 +103,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   }
 
   private int getApplicationState() {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/getApplicationState");
     boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
     if (!isConfigured) {
       return STATE_NEEDS_CONFIGURE;
@@ -124,12 +112,10 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   }
 
   private Intent getWelcomeIntent() {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/getWelcomeIntent");
     return getRoutedIntent(WelcomeActivity.class, null);
   }
 
   private Intent getRoutedIntent(Class<?> destination, @Nullable Intent nextIntent) {
-    Log.i("DeltaChat", "PassphraseRequiredActionBarActivity/getRoutedIntent");
     final Intent intent = new Intent(this, destination);
     if (nextIntent != null)   intent.putExtra("next_intent", nextIntent);
     return intent;

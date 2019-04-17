@@ -32,7 +32,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    Log.i("DeltaChat", "BaseActionBarActivity/onCreate");
     if (BaseActivity.isMenuWorkaroundRequired()) {
       forceOverflowMenu();
     }
@@ -41,22 +40,17 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-      Log.i("DeltaChat", "BaseActionBarActivity/onStart");
-      if (ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult) {
+        if (ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult) {
           ScreenLockUtil.applyScreenLock(this);
         } else if (isHiddenByScreenLock) {
           findViewById(android.R.id.content).setVisibility(View.VISIBLE);
           isHiddenByScreenLock = false;
         }
-      Log.i("DeltaChat", "BaseActionBarActivity/onStart/2");
         super.onStart();
-      Log.i("DeltaChat", "BaseActionBarActivity/onStart/3");
     }
 
   @Override
   protected void onStop() {
-    Log.i("DeltaChat", "BaseActionBarActivity/onStop");
-
     if (ScreenLockUtil.isScreenLockEnabled(this)) {
       findViewById(android.R.id.content).setVisibility(View.GONE);
       isHiddenByScreenLock = true;
@@ -66,8 +60,7 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    Log.i("DeltaChat", "BaseActionBarActivity/onActivityResult");
-    super.onActivityResult(requestCode, resultCode, data);
+      super.onActivityResult(requestCode, resultCode, data);
       isWaitingForResult = false;
       if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
             if (resultCode == RESULT_OK) {
@@ -81,15 +74,12 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   @Override
   protected void onResume() {
-    Log.i("DeltaChat", "BaseActionBarActivity/onResume");
     super.onResume();
     initializeScreenshotSecurity();
     initializeScreenLockTimeout();
   }
 
   private void initializeScreenLockTimeout() {
-    Log.i("DeltaChat", "BaseActionBarActivity/initializeScreenLockTimeout");
-
     if (ScreenLockUtil.isScreenLockTimeoutEnabled(this)) {
         timer = ScreenLockUtil.scheduleScreenLockTimer(timer, this);
     }
@@ -97,37 +87,27 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   @Override
     protected void onPause() {
-    Log.i("DeltaChat", "BaseActionBarActivity/onPause");
-
-    super.onPause();
+      super.onPause();
       tearDownScreenLockTimeout();
   }
 
   private void tearDownScreenLockTimeout() {
-    Log.i("DeltaChat", "BaseActionBarActivity/tearDown...");
-
     ScreenLockUtil.cancelScreenLockTimer(timer);
   }
 
   @Override
   public void onUserInteraction() {
-    Log.i("DeltaChat", "BaseActionBarActivity/onUserInteraction");
-
     super.onUserInteraction();
     initializeScreenLockTimeout();
   }
 
   @Override
   public boolean onKeyDown(int keyCode, KeyEvent event) {
-    Log.i("DeltaChat", "BaseActionBarActivity/onKeyDown");
-
     return (keyCode == KeyEvent.KEYCODE_MENU && BaseActivity.isMenuWorkaroundRequired()) || super.onKeyDown(keyCode, event);
   }
 
   @Override
   public boolean onKeyUp(int keyCode, @NonNull KeyEvent event) {
-    Log.i("DeltaChat", "BaseActionBarActivity/onKeyUp");
-
     if (keyCode == KeyEvent.KEYCODE_MENU && BaseActivity.isMenuWorkaroundRequired()) {
       openOptionsMenu();
       return true;
@@ -136,8 +116,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   }
 
   private void initializeScreenshotSecurity() {
-    Log.i("DeltaChat", "BaseActionBarActivity/initializeScreenshotSecurity");
-
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH &&
             Prefs.isScreenSecurityEnabled(this))
     {
@@ -151,8 +129,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
    * Modified from: http://stackoverflow.com/a/13098824
    */
   private void forceOverflowMenu() {
-    Log.i("DeltaChat", "BaseActionBarActivity/forceOverflowMenu");
-
     try {
       ViewConfiguration config       = ViewConfiguration.get(this);
       Field             menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
@@ -168,8 +144,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   }
 
   protected void startActivitySceneTransition(Intent intent, View sharedView, String transitionName) {
-    Log.i("DeltaChat", "BaseActionBarActivity/startActivitySceneTransition");
-
     Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedView, transitionName)
                                          .toBundle();
     ActivityCompat.startActivity(this, intent, bundle);
@@ -177,8 +151,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   @Override
   public void startActivityForResult(Intent intent, int requestCode) {
-    Log.i("DeltaChat", "BaseActionBarActivity/startActivityForResult");
-
     super.startActivityForResult(intent, requestCode);
     if (requestCode != -1) {
       isWaitingForResult = true;
