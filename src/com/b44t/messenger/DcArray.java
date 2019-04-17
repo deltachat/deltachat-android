@@ -19,6 +19,7 @@ public class DcArray {
     public native long      getTimestamp (int index);
     public native int       getMsgId     (int index);
     public native int       getLocationId(int index);
+    public native String    getMarker    (int index);
 
     // working with raw c-data
     private long        arrayCPtr;    // CAVE: the name is referenced in the JNI

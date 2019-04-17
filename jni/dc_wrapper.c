@@ -838,6 +838,18 @@ JNIEXPORT jint Java_com_b44t_messenger_DcArray_getLocationId(JNIEnv *env, jobjec
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcArray_getMarker(JNIEnv *env, jobject obj, jint index)
+{
+	char* temp = dc_array_get_marker(get_dc_array(env, obj), index);
+		jstring ret = NULL;
+		if (temp) {
+			ret = JSTRING_NEW(temp);
+		}
+	free(temp);
+	return ret;
+}
+
+
 /*******************************************************************************
  * DcChatlist
  ******************************************************************************/
