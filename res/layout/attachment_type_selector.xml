@@ -225,7 +225,7 @@
                         android:src="@drawable/ic_keyboard_arrow_down_white_24dp"
                         android:scaleType="center"
                         android:contentDescription="@string/menu_add_attachment"
-                        app:circleColor="@color/close_icon"/>
+                        app:circleColor="?attr/close_icon_color"/>
 
                 <TextView android:layout_marginTop="10dp"
                           android:layout_width="wrap_content"

@@ -58,7 +58,6 @@ public class TransportOptionsAdapter extends BaseAdapter {
     TextView        textView    = ViewUtil.findById(convertView, R.id.text);
     TextView        subtextView = ViewUtil.findById(convertView, R.id.subtext);
 
-    imageView.getBackground().setColorFilter(transport.getBackgroundColor(), Mode.MULTIPLY);
     imageView.setImageResource(transport.getDrawable());
     textView.setText(transport.getDescription());
     subtextView.setVisibility(View.GONE);
