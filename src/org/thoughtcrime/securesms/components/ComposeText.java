@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.TransportOption;
 import org.thoughtcrime.securesms.components.emoji.EmojiEditText;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -104,7 +105,7 @@ public class ComposeText extends EmojiEditText {
     int imeOptions = (getImeOptions() & ~EditorInfo.IME_MASK_ACTION) | EditorInfo.IME_ACTION_SEND;
     int inputType  = getInputType();
 
-    if (isLandscape()) setImeActionLabel(transport.getComposeHint(), EditorInfo.IME_ACTION_SEND);
+    if (isLandscape()) setImeActionLabel(getContext().getString(R.string.menu_send), EditorInfo.IME_ACTION_SEND);
     else               setImeActionLabel(null, 0);
 
     if (useSystemEmoji) {
