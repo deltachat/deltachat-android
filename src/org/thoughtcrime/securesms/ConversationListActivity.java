@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.TooltipCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -58,29 +59,51 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onPreCreate() {
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 11 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
+
+
     dynamicTheme.onCreate(this);
     dynamicLanguage.onCreate(this);
+
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 12");
   }
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 13 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
+
     setContentView(R.layout.conversation_list_activity);
+
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 14 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
 
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 15 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
+
     searchToolbar            = findViewById(R.id.search_toolbar);
     searchAction             = findViewById(R.id.search_action);
     fragmentContainer        = findViewById(R.id.fragment_container);
+
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 16 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
+
     conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), dynamicLanguage.getCurrentLocale());
+
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 17 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
 
     initializeSearchListener();
 
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 18 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
+
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
+
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 19 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
   }
 
   @Override
   public void onResume() {
+    Log.i("DeltaChat", "////////////////////////////// STARTUPPPPP 20 - " + (System.currentTimeMillis() - ApplicationContext.startMillis) + "ms");
+
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
