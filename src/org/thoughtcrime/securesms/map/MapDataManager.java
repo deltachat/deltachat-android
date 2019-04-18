@@ -473,8 +473,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                                 textIgnorePlacement(true),
                                 iconIgnorePlacement(false),
                                 iconAllowOverlap(false),
-                                textField(get(MARKER_CHAR))
-                                )
+                                textField(get(MARKER_CHAR)),
+                                textColor("#FFFFFF"))
                         .withFilter(all(filterProvider.getMarkerFilter(),
                                 not(get(LAST_LOCATION)))),
                 LAST_POSITION_LAYER);
