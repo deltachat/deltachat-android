@@ -21,7 +21,6 @@ import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
-import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.geometry.LatLngBounds;
@@ -49,10 +48,10 @@ import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
 import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.all;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.neq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.length;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.neq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.not;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.switchCase;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.toBool;
@@ -70,6 +69,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineJoin;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineOpacity;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineWidth;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textAllowOverlap;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textColor;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textField;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textIgnorePlacement;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
@@ -131,8 +131,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         initLastPositionLayer();
 
         filterProvider.setMessageFilter(true);
-        long now = System.currentTimeMillis();
-        filterProvider.setRangeFilter(now - DEFAULT_LAST_POSITION_DELTA, now);
+        filterProvider.setLastPositionFilter(System.currentTimeMillis() - DEFAULT_LAST_POSITION_DELTA);
         applyLastPositionFilter();
         for (int contactId : contactIds) {
             updateSource(chatId, contactId, boundingBuilder);
@@ -251,6 +250,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         applyFilters(contactIds);
     }
 
+    public void filterLastPositions(long timestamp) {
+        int[] contactIds = getContactIds(chatId);
+        filterProvider.setLastPositionFilter(timestamp);
+        applyFilters(contactIds);
+    }
+
     public void showTraces(boolean show) {
         int[] contactIds = getContactIds(chatId);
         this.showTraces = show;
@@ -278,7 +283,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void applyLastPositionFilter() {
         SymbolLayer markerLayer = (SymbolLayer) mapboxStyle.getLayer(LAST_POSITION_LAYER);
-        markerLayer.setFilter(filterProvider.getRangeFilter());
+        markerLayer.setFilter(filterProvider.getTimeFilter());
     }
 
     private void applyMarkerFilter(MapSource source) {
@@ -288,7 +293,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void applyLineFilter(MapSource source) {
         LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(source.getLineLayer());
-        lineLayer.setFilter(filterProvider.getRangeFilter());
+        lineLayer.setFilter(filterProvider.getTimeFilter());
     }
 
     private void updateSource(int chatId, int contactId) {
@@ -327,7 +332,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                     locations.getMarker(i) != null ?
                     locations.getMarker(i) :
                     "";
-            Log.d(TAG, "codepointChar: " + codepointChar);
 
             Feature pointFeature = Feature.fromGeometry(point, new JsonObject(), String.valueOf(locations.getLocationId(i)));
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
@@ -431,7 +435,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 iconAllowOverlap(true),
                 iconIgnorePlacement(true),
                 iconSize(markerSize)
-        ).withFilter(filterProvider.getRangeFilter()), INFO_WINDOW_LAYER);
+        ).withFilter(filterProvider.getTimeFilter()), INFO_WINDOW_LAYER);
     }
 
     private void initContactBasedLayers(MapSource source) {
@@ -457,7 +461,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                         lineColor(source.getColorArgb()),
                         visibility(NONE)
                 )
-                .withFilter(filterProvider.getRangeFilter()),
+                .withFilter(filterProvider.getTimeFilter()),
                 LAST_POSITION_LAYER);
 
 

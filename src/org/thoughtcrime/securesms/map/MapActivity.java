@@ -235,4 +235,11 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
     }
 
+    @Override
+    public void onFilterLastPosition(long startTimestamp) {
+        if (this.mapboxMap == null) {
+            return;
+        }
+        mapDataManager.filterLastPositions(startTimestamp);
+    }
 }

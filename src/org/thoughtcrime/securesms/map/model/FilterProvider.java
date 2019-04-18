@@ -14,6 +14,7 @@ import static com.mapbox.mapboxsdk.style.expressions.Expression.lte;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.neq;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
+import static org.thoughtcrime.securesms.map.model.FilterProvider.FilterType.LAST_POSITION;
 import static org.thoughtcrime.securesms.map.model.FilterProvider.FilterType.MESSAGES;
 import static org.thoughtcrime.securesms.map.model.FilterProvider.FilterType.RANGE;
 
@@ -23,6 +24,7 @@ import static org.thoughtcrime.securesms.map.model.FilterProvider.FilterType.RAN
 
 public class FilterProvider {
     public enum FilterType {
+        LAST_POSITION,
         RANGE,
         MESSAGES
     }
@@ -31,9 +33,15 @@ public class FilterProvider {
 
 
     public void setRangeFilter(long startTimestamp, long endTimestamp) {
+        removeFilter(LAST_POSITION);
         addFilter(RANGE, all(
                 lte(get(TIMESTAMP), endTimestamp),
                 gte(get(TIMESTAMP), startTimestamp)));
+    }
+
+    public void setLastPositionFilter(long startTimestamp) {
+        removeFilter(RANGE);
+        addFilter(LAST_POSITION, gte(get(TIMESTAMP), startTimestamp));
     }
 
     public void setMessageFilter(boolean filter) {
@@ -48,7 +56,7 @@ public class FilterProvider {
         expressions.put(type, expression);
     }
 
-    public void removeFilter(FilterType type) {
+    private void removeFilter(FilterType type) {
         expressions.remove(type);
     }
 
@@ -56,10 +64,13 @@ public class FilterProvider {
         return all(expressions.values().toArray(new Expression[expressions.values().size()]));
     }
 
-    public Expression getRangeFilter() {
-        if (expressions.get(RANGE) != null) {
+    public Expression getTimeFilter() {
+        if (expressions.get(LAST_POSITION) != null) {
+            return expressions.get(LAST_POSITION);
+        } else if (expressions.get(RANGE) != null) {
             return expressions.get(RANGE);
         }
+
         return all();
     }
 
