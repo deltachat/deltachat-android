@@ -90,6 +90,12 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
 
     public interface OnTimestampChangedListener {
         void onTimestampChanged(long startTimestamp, long stopTimestamp);
+
+        /**
+         * filter for lastPosition beginning from startTimestamp to now
+         * @param startTimestamp begin of time frame
+         */
+        void onFilterLastPosition(long startTimestamp);
     }
 
 
@@ -101,9 +107,15 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     public void onValueChanged(int minValue, int maxValue) {
         if (listener != null) {
             long minTimeStamp = getTimestampForValue(minValue);
-            if (minValue == maxValue) {
-                // filter for time of event with delta before and after
-                listener.onTimestampChanged(minTimeStamp - (long) DEFAULT_DELTA, minTimeStamp + (long) DEFAULT_DELTA);
+            if (maxValue == getCount()) {
+                if (minValue == maxValue) {
+                    listener.onFilterLastPosition(System.currentTimeMillis() - (long) DEFAULT_DELTA);
+                } else {
+                    listener.onFilterLastPosition(minTimeStamp);
+                }
+            } else if (minValue == maxValue) {
+                    // filter for time of event with delta before and after
+                    listener.onTimestampChanged(minTimeStamp - (long) DEFAULT_DELTA, minTimeStamp + (long) DEFAULT_DELTA);
             } else {
                 //filter for time span
                 listener.onTimestampChanged(minTimeStamp, getTimestampForValue(maxValue));
