@@ -308,7 +308,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenviar a ...</string>
-    <string name="share_multiple_attachments">¿Desea enviar %1$d archivos al chat seleccionado?\n\nLos archivos se envían sin modificar en su tamaño original, por ejemplo, las imágenes y videos no son recodificados.</string>
     <string name="share_abort">Intercambio abortado debido a la falta de permisos.</string>
 
 

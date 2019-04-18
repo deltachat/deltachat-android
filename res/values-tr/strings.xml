@@ -308,7 +308,7 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İlet …</string>
-    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, değiştirilmeden özgün boyutlarıyla gönderilir, örn. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, özgün boyutta değiştirilmeden gönderilir, örn. görseller ve videolar yeniden kodlanmaz.</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
 
@@ -395,6 +395,8 @@
     <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar \"%1$s\" üzerine başarıyla yazıldı.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Sır anahtarlar \"%1$s\" üzerinden içe aktarıldı.</string>
     <string name="pref_background">Artalan</string>
+    <string name="pref_background_btn_default">Varsayılan görseli kullan</string>
+    <string name="pref_background_btn_gallery">Galeriden seç</string>
     <string name="pref_imap_folder_handling">IMAP klasör işleme</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği etkisizleştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun şekilde yapılandırıldığından emin olun.\n\nYoksa hiçbir şekilde çalışmayabilir.</string>
     <string name="pref_watch_inbox_folder">Gelen Kutusu klasörünü izle</string>

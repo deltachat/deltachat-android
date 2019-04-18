@@ -208,6 +208,9 @@
     <string name="chat_new_group_hint">Compor a primeira mensagem habilitará os participantes a ingressar no grupo.\n\n• Não tem problema se nem todos usarem o Delta Chat.\n\n• O envio da primeira mensagem pode demorar.</string>
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz e, depois, solte para enviar</string>
+    <string name="chat_no_chats_yet_title">Caixa vazia.\nPressione \"+\" para conversar com alguém.</string>
+    <string name="chat_no_chats_yet_hint">Você pode conversar com usuários do Delta Chat e com qualquer e-mail.</string>
+    <string name="chat_all_archived">Apenas conversas arquivadas.\nPressione \"+\" para uma nova conversa.</string>
     <string name="chat_share_with_title">Compartilhar com</string>
     <string name="chat_input_placeholder">Mensagem</string>
     <string name="chat_archived_label">Arquivado</string>
@@ -216,7 +219,12 @@
     <string name="chat_contact_request">Pedido de contato</string>
     <string name="chat_no_contact_requests">Sem pedidos de contato.\n\nSe você quiser, e-mails normais podem ser exibidos como pedidos de contato. Basta habilitar nas configurações.</string>
 
+    <!-- map -->
+    <string name="filter_map_on_time">Exibir localização no tempo.</string>
     <string name="filter_last_position">Última localização</string>
+    <string name="show_location_traces">Exibir pegadas</string>
+
+
     <!-- search -->
     <string name="search">Procurar</string>
     <string name="search_explain">Procurar conversas, contatos e mensagens</string>
@@ -387,6 +395,8 @@
     <string name="pref_managekeys_secret_keys_exported_to_x">Chaves secretas exportadas para \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Chaves secretas importadas de \"%1$s\".</string>
     <string name="pref_background">Papel de parede</string>
+    <string name="pref_background_btn_default">Usar imagem padrão</string>
+    <string name="pref_background_btn_gallery">Selecionar da galeria</string>
     <string name="pref_imap_folder_handling">Gerenciar pastas IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se você desabilitar esta opção, certifique-se que seu servidor e demais aplicativos estejam configurados de acordo.\n\nDo contrário não vai funcionar.</string>
     <string name="pref_watch_inbox_folder">Verificar a caixa de entrada</string>
@@ -597,6 +607,7 @@
     <string name="download_attachment_desktop">Baixar anexo</string>
     <string name="export_backup_desktop">Exportar becape</string>
     <string name="transfer_key_desktop">Transferir chaves</string>
+    <string name="show_key_transfer_message_desktop">Sua chave foi enviada para você mesmo. Abra a mensagem de configuração no seu outro dispositivo. Lá será exibido uma solicitação de código. Digite-o lá. Depois disso, seu dispositivo estará pronto para usar o Autocrypt.</string>
     <string name="new_message_from_desktop">Nova mensagem de</string>
     <string name="unblock_contacts_desktop">Desbloquear contatos</string>
     <string name="none_blocked_desktop">Ainda nenhum contato bloqueado</string>

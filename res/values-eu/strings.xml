@@ -303,7 +303,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
-    <string name="share_multiple_attachments">%1$d fitxategi bidali nahi dituzu hautatutako txatera?\n\nFitxategiak  jatorrizko tamainan eta aldatu gabe bidaltzen dira, adibidez irudiei eta bideoei ez zaie kodeketa aldatzen.</string>
     <string name="share_abort">Partekatzea eten da baimenak falta direlako.</string>
 
 

@@ -308,7 +308,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Videresende til …</string>
-    <string name="share_multiple_attachments">Sende %1$d filer til udvalgt samtale?\n\nFilerne sendes uden ændringer i original størrelse, f.eks er billeder og video ikke omkodet.</string>
     <string name="share_abort">Deling afbrudt på grund af manglende tilladelser.</string>
 
 

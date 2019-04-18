@@ -145,6 +145,12 @@
     <string name="mute_for_seven_days">Calado por 7 dias</string>
     <string name="mute_for_one_year">Calado por  1 ano</string>
 
+    <string name="share_location_for_5_minutes">por 5 min</string>
+    <string name="share_location_for_30_minutes">por 30 min</string>
+    <string name="share_location_for_one_hour">por 1 hora</string>
+    <string name="share_location_for_two_hours">por 2 horas</string>
+    <string name="share_location_for_six_hours">por 6 horas</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
     <plurals name="ask_delete_chat">
@@ -197,6 +203,7 @@
     <string name="chat_archived_label">Arquivada</string>
     <string name="chat_no_messages">Sem mensagens</string>
     <string name="chat_self_talk_subtitle">Mensagens que enviei para mim</string>
+    <string name="chat_contact_request">Pedido de contacto</string>
     <!-- search -->
     <string name="search">Pesquisar</string>
     <string name="search_explain">Pesquisar chats, contactos, emensagens</string>
@@ -380,7 +387,7 @@
     <string name="autocrypt_explain">A encriptação automática (autocrypt) é uma especificação nova e aberta para encriptação e-mail de ponta a ponta. \n\n A sua configuração de ponta a ponta é criada automaticamente conforme necessário e pode transferi-la entre dispositivos com mensagens de configuração de autocrypt.</string>
     <string name="autocrypt_send_asm_title">Enviar mensagem com a definição da encriptação automática</string>
     <string name="autocrypt_send_asm_explain_before">A \"Mensagem de Configuração Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis com Autocrypt. \n\nA configuração será encriptada por um código de configuração que é exibido aqui e deve ser digitado no outro dispositivo.</string>
-    <string name="autocrypt_send_asm_button">Prefirir criptografia de ponta a ponta</string>
+    <string name="autocrypt_send_asm_button">Enviar mensagem com a definição da encriptação automática</string>
     <string name="autocrypt_send_asm_explain_after">A sua configuração foi-lhe enviada. Entre no outro dispositivo e abra a mensagem de configuração. Deve ser solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt: \n\n%1$s\n\n Assim que estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir encriptação ponta a ponta</string>
     <string name="autocrypt_asm_subject">Mensagem de configuração do Autocrypt</string>

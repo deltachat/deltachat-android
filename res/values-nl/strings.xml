@@ -395,6 +395,8 @@
     <string name="pref_managekeys_secret_keys_exported_to_x">Geheime sleutels weggeschreven naar \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Geheime sleutels geïmporteerd uit \"%1$s\".</string>
     <string name="pref_background">Achtergrond</string>
+    <string name="pref_background_btn_default">Standaardafbeelding gebruiken</string>
+    <string name="pref_background_btn_gallery">Kiezen uit galerij</string>
     <string name="pref_imap_folder_handling">Controleren in IMAP-mappen</string>
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>

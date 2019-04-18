@@ -308,7 +308,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Inotra a...</string>
-    <string name="share_multiple_attachments">Vuoi inviare %1$d file alla chat selezionata?\n\nI file vengono inviati senza modifiche e della dimensione originale. Immagini e video non vengono ricodificati.</string>
     <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
 
 
