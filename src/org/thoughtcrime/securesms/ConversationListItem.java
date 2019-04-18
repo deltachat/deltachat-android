@@ -157,6 +157,8 @@ public class ConversationListItem extends RelativeLayout
       dateView.setText("");
     }
 
+    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0,
+        thread.isSendingLocations()? R.drawable.ic_location_state : 0, 0);
 
     setStatusIcons(thread);
     setBatchState(batchMode);
@@ -193,8 +195,10 @@ public class ConversationListItem extends RelativeLayout
     this.glideRequests   = glideRequests;
 
     fromView.setText(getHighlightedSpan(locale, contact.getDisplayName(), highlightSubstring));
+    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     subjectView.setText(getHighlightedSpan(locale, contact.getAddr(), highlightSubstring));
     dateView.setText("");
+    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
@@ -217,6 +221,7 @@ public class ConversationListItem extends RelativeLayout
     this.glideRequests   = glideRequests;
 
     fromView.setText(recipient, true);
+    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     subjectView.setText(getHighlightedSpan(locale, messageResult.getSummarytext(512), highlightSubstring));
 
     long timestamp = messageResult.getTimestamp();
@@ -226,6 +231,7 @@ public class ConversationListItem extends RelativeLayout
     else {
       dateView.setText("");
     }
+    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
