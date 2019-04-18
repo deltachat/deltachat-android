@@ -410,8 +410,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private void initInfoWindowLayer() {
-        Expression iconOffset = switchCase(toBool(get(LAST_LOCATION)),
-                literal(new Float[] {-2f, -25f}), literal(new Float[] {-2f, -15f}));
+        Expression iconOffset = switchCase(
+                toBool(get(LAST_LOCATION)), literal(new Float[] {-2f, -25f}),
+                neq(length(get(MARKER_CHAR)), literal(0)), literal(new Float[] {-2f, -20f}),
+                literal(new Float[] {-2f, -15f}));
         GeoJsonSource infoWindowSource = new GeoJsonSource(INFO_WINDOW_SRC);
         mapboxStyle.addSource(infoWindowSource);
         mapboxStyle.addLayer(new SymbolLayer(INFO_WINDOW_LAYER, INFO_WINDOW_SRC).withProperties(
