@@ -71,7 +71,14 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
 
     if (!ledColor.equals("none")) {
       String[] blinkPatternArray = parseBlinkPattern(ledBlinkPattern, ledBlinkPatternCustom);
-      setLights(Color.parseColor(ledColor),
+      int argb;
+      try {
+        argb = Color.parseColor(ledColor);
+      }
+      catch (Exception e) {
+        argb = Color.rgb(0xFF, 0xFF, 0xFF);
+      }
+      setLights(argb,
                 Integer.parseInt(blinkPatternArray[0]),
                 Integer.parseInt(blinkPatternArray[1]));
     }
@@ -154,7 +161,14 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
 
           if (!ledColor.equals("none")) {
             channel.enableLights(true);
-            channel.setLightColor(Color.parseColor(ledColor));
+            int argb;
+            try {
+              argb = Color.parseColor(ledColor);
+            }
+            catch (Exception e) {
+              argb = Color.rgb(0xFF, 0xFF, 0xFF);
+            }
+            channel.setLightColor(argb);
           } else {
             channel.enableLights(false);
           }
