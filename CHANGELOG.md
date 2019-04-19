@@ -1,5 +1,27 @@
 # Delta Chat Android Changelog
 
+## v0.301.0
+2019-04-20
+
+* Experimental location-streaming can be enabled in the advanced settings;
+  when enabled, you can optionally stream your location to a group
+  and view a map with the members that are also streaming their location
+* Tweaked dark-mode
+* Improved account setup and profile dialogs
+* Show and hide the virtual keyboard more gracefully
+* Speed up program start
+* Speed up message sending
+* Handle Webp-Images and Vcard-files
+* Add Japanese and Brazilian Portuguese translations
+* Update several other translations
+* Bug fixes
+
+The changes have been done by Alexander, Ampli-fier, Angelo Fuchs,
+Asiel Díaz Benítez, Besnik, Björn Petersen, cyBerta, Daniel Böhrs, Enrico B.,
+ferhad.necef, Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels,
+Holger Krekel, Janka, Jikstra, Luis, Moo, Nico de Haen, Ole Carlsen, Osoitz,
+Ozancan Karataş, Racer1, sebek, Viktor Pracht, Webratte and others
+
 ## v0.200.0
 2019-03-14
 
