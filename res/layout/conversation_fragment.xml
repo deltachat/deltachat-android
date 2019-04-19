@@ -33,41 +33,38 @@
           android:background="@drawable/compose_divider_background"
           android:alpha="1" />
 
-    <LinearLayout android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginEnd="16dp"
-                  android:layout_marginRight="16dp"
-                  android:layout_marginBottom="20dp"
-                  android:layout_gravity="bottom|end"
-                  android:orientation="vertical">
+    <ImageButton
+        android:id="@+id/floating_location_button"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="top|end"
+        android:padding="5dp"
+        android:background="@drawable/circle_floating_mini_button"
+        android:elevation="1dp"
+        android:alpha="0.9"
+        android:contentDescription="Location streaming enabled"
+        android:src="@drawable/ic_location_on_white_24dp"
+        android:tint="@color/location_icon"/>
 
-        <ImageButton
-                android:id="@+id/scroll_to_bottom_button"
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:background="@drawable/circle_floating_mini_button"
-                android:tint="@color/gray50"
-                android:elevation="1dp"
-                android:alpha="0.9"
-                android:contentDescription="@string/menu_scroll_to_bottom"
-                android:src="@drawable/ic_scroll_down"/>
-
-        <ImageButton
-            android:id="@+id/floating_location_button"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="15dp"
-            android:padding="5dp"
-            android:background="@drawable/circle_floating_mini_button"
-            android:elevation="1dp"
-            android:alpha="0.9"
-            android:contentDescription="Location streaming enabled"
-            android:src="@drawable/ic_location_chat"/>
-
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/scroll_to_bottom_button"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom|end"
+        android:padding="5dp"
+        android:background="@drawable/circle_floating_mini_button"
+        android:tint="@color/gray50"
+        android:elevation="1dp"
+        android:alpha="0.9"
+        android:contentDescription="@string/menu_scroll_to_bottom"
+        android:src="@drawable/ic_scroll_down"/>
 
 </FrameLayout>
