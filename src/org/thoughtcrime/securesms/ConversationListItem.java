@@ -158,7 +158,7 @@ public class ConversationListItem extends RelativeLayout
     }
 
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-        thread.isSendingLocations()? R.drawable.ic_location_state : 0, 0);
+        thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0);
 
     setStatusIcons(thread);
     setBatchState(batchMode);

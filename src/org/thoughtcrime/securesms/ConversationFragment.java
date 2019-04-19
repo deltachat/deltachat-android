@@ -113,7 +113,7 @@ public class ConversationFragment extends Fragment
   private RecyclerView                list;
   private RecyclerView.ItemDecoration lastSeenDecoration;
   private View                        scrollToBottomButton;
-  private TextView                    scrollDateHeader;
+  private View                        floatingLocationButton;
   private TextView                    noMessageTextView;
   private ApplicationDcContext        dcContext;
 
@@ -125,11 +125,12 @@ public class ConversationFragment extends Fragment
     this.locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     this.dcContext = DcHelper.getContext(getContext());
 
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_INCOMING_MSG);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSGS_CHANGED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
 
     markseenDebouncer = new Debouncer(800);
   }
@@ -138,10 +139,10 @@ public class ConversationFragment extends Fragment
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
     final View view = inflater.inflate(R.layout.conversation_fragment, container, false);
-    list                 = ViewUtil.findById(view, android.R.id.list);
-    scrollToBottomButton = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
-    scrollDateHeader     = ViewUtil.findById(view, R.id.scroll_date_header);
-    noMessageTextView    = ViewUtil.findById(view, R.id.no_messages_text_view);
+    list                   = ViewUtil.findById(view, android.R.id.list);
+    scrollToBottomButton   = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
+    floatingLocationButton = ViewUtil.findById(view, R.id.floating_location_button);
+    noMessageTextView      = ViewUtil.findById(view, R.id.no_messages_text_view);
 
     scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
 
@@ -226,6 +227,7 @@ public class ConversationFragment extends Fragment
 
     if (threadId == -1) {
       reloadList();
+      updateLocationButton();
     }
   }
 
@@ -262,6 +264,7 @@ public class ConversationFragment extends Fragment
 
       setLastSeen(lastSeen);
       reloadList();
+      updateLocationButton();
     }
   }
 
@@ -442,7 +445,7 @@ public class ConversationFragment extends Fragment
     });
   }
 
-  public void reloadList() {
+  private void reloadList() {
     ConversationAdapter adapter = getListAdapter();
     if (adapter == null) {
       return;
@@ -463,6 +466,10 @@ public class ConversationFragment extends Fragment
         loaderManager.restartLoader(0, Bundle.EMPTY, this);
       }
     }
+  }
+
+  private void updateLocationButton() {
+    floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int)threadId)? View.VISIBLE : View.GONE);
   }
 
   @Override
@@ -552,7 +559,6 @@ public class ConversationFragment extends Fragment
 
     private final Animation              scrollButtonInAnimation;
     private final Animation              scrollButtonOutAnimation;
-    private final ConversationDateHeader conversationDateHeader;
 
     private boolean wasAtBottom           = true;
     private boolean wasAtZoomScrollHeight = false;
@@ -561,7 +567,6 @@ public class ConversationFragment extends Fragment
     ConversationScrollListener(@NonNull Context context) {
       this.scrollButtonInAnimation  = AnimationUtils.loadAnimation(context, R.anim.fade_scale_in);
       this.scrollButtonOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_scale_out);
-      this.conversationDateHeader   = new ConversationDateHeader(context, scrollDateHeader);
 
       this.scrollButtonInAnimation.setDuration(100);
       this.scrollButtonOutAnimation.setDuration(50);
@@ -851,50 +856,12 @@ public class ConversationFragment extends Fragment
     }
   }
 
-  private static class ConversationDateHeader extends HeaderViewHolder {
-
-    private final Animation animateIn;
-    private final Animation animateOut;
-
-    private boolean pendingHide = false;
-
-    private ConversationDateHeader(Context context, TextView textView) {
-      super(textView);
-      this.animateIn  = AnimationUtils.loadAnimation(context, R.anim.slide_from_top);
-      this.animateOut = AnimationUtils.loadAnimation(context, R.anim.slide_to_top);
-
-      this.animateIn.setDuration(100);
-      this.animateOut.setDuration(100);
-    }
-
-    public void show() {
-      if (pendingHide) {
-        pendingHide = false;
-      } else {
-        ViewUtil.animateIn(textView, animateIn);
-      }
-    }
-
-    public void hide() {
-      pendingHide = true;
-
-      textView.postDelayed(new Runnable() {
-        @Override
-        public void run() {
-          if (pendingHide) {
-            pendingHide = false;
-            ViewUtil.animateOut(textView, animateOut, View.GONE);
-          }
-        }
-      }, 400);
-    }
-  }
-
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
-    if(eventId== DcContext.DC_EVENT_MSG_DELIVERED) {
-      Log.w(TAG, "DC_EVENT_MSG_DELIVERED reveived for msg#"+(Long)data1);
+    if (eventId==DcContext.DC_EVENT_CHAT_MODIFIED) {
+      updateLocationButton();
     }
+
     reloadList();
   }
 }
