@@ -55,6 +55,7 @@ public class ConversationTitleView extends RelativeLayout {
 
     int imgLeft = 0;
     int imgRight = 0;
+    //int imgSubtitleRight = 0;
 
     if (dcChat == null) {
       setComposeTitle();
@@ -67,9 +68,14 @@ public class ConversationTitleView extends RelativeLayout {
         imgRight = R.drawable.ic_verified;
       }
       this.avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
+
+      //if (dcChat.isSendingLocations()) {
+      //  imgSubtitleRight = R.drawable.ic_location_chatlist;
+      //}
     }
 
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
+    //subtitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, imgSubtitleRight, 0);
   }
 
   public void hideAvatar() {

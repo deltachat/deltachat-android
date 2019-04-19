@@ -29,6 +29,7 @@ public class DcChat {
     public native boolean isUnpromoted      ();
     public native boolean isSelfTalk        ();
     public native boolean isVerified        ();
+    public native boolean isSendingLocations();
 
     // working with raw c-data
     private long        chatCPtr;    // CAVE: the name is referenced in the JNI

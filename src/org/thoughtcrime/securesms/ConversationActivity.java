@@ -1302,6 +1302,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
     if (eventId==DcContext.DC_EVENT_CHAT_MODIFIED || eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+      dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       updateReminders();
       initializeSecurity(isSecureText, isDefaultSms);

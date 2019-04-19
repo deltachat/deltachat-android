@@ -33,12 +33,11 @@ public class ShareLocationDialog extends AlertDialog {
 
       switch (which) {
         default:
-        case 0:  shareLocationUnit = 1;  break;
-        case 1:  shareLocationUnit = 5 * 60; break;
-        case 2:  shareLocationUnit = 30 * 60; break;
-        case 3:  shareLocationUnit = 60 * 60;  break;
-        case 4:  shareLocationUnit = 60 * 60 * 2;   break;
-        case 5:  shareLocationUnit = 60 * 60 * 6;   break;
+        case 0:  shareLocationUnit =      5 * 60; break;
+        case 1:  shareLocationUnit =     30 * 60; break;
+        case 2:  shareLocationUnit =     60 * 60; break;
+        case 3:  shareLocationUnit = 2 * 60 * 60; break;
+        case 4:  shareLocationUnit = 6 * 60 * 60; break;
       }
 
       listener.onSelected(shareLocationUnit);

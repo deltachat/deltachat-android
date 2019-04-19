@@ -259,7 +259,7 @@ public class ApplicationDcContext extends DcContext {
 
     return new ThreadRecord(context, body, recipient, date,
         unreadCount, chatId,
-        archived, verified, summary);
+        archived, verified, chat.isSendingLocations(), summary);
   }
 
 
