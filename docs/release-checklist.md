@@ -24,10 +24,7 @@ Release core, f-droid, then:
 
 # For an additional APK
 
-9.  In Android Studio make sure, the target is fatDebug
-    and select "Build / Build APK"
-    (TODO: or also use the release signing key)
-10. Upload the generated APK to the created Github release
+9.  Upload the APK from 8. to the Github release created at 4.
 
 
 # Testing checklist
