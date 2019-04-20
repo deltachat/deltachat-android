@@ -158,8 +158,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int PICK_CONTACT        = 4;
   private static final int GROUP_EDIT          = 6;
   private static final int TAKE_PHOTO          = 7;
-  private static final int PICK_LOCATION       = 9;
-  private static final int SMS_DEFAULT         = 11;
+  private static final int RECORD_VIDEO        = 8;
+  private static final int PICK_LOCATION       = 9;  // TODO: i think, this can be deleted
+  private static final int SMS_DEFAULT         = 11; // TODO: i think, this can be deleted
 
   private   GlideRequests               glideRequests;
   protected ComposeText                 composeText;
@@ -378,6 +379,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case TAKE_PHOTO:
       if (attachmentManager.getCaptureUri() != null) {
         setMedia(attachmentManager.getCaptureUri(), MediaType.IMAGE);
+      }
+      break;
+    case RECORD_VIDEO:
+      Uri uri = data.getData();
+      if(uri!=null) {
+        Toast.makeText(this, String.format("%s recorded", uri), Toast.LENGTH_LONG).show();
       }
       break;
     case PICK_LOCATION:
@@ -845,6 +852,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentManager.selectLocation(this, chatId); break;
     case AttachmentTypeSelector.TAKE_PHOTO:
       attachmentManager.capturePhoto(this, TAKE_PHOTO); break;
+    case AttachmentTypeSelector.RECORD_VIDEO:
+      attachmentManager.captureVideo(this, RECORD_VIDEO); break;
     }
   }
 

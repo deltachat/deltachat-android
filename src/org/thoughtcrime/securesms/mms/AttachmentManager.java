@@ -445,6 +445,29 @@ public class AttachmentManager {
                .execute();
   }
 
+  public void captureVideo(Activity activity, int requestCode) {
+    Permissions.with(activity)
+        .request(Manifest.permission.CAMERA)
+        .ifNecessary()
+        .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
+        .onAllGranted(() -> {
+          try {
+            Intent captureIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+            if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
+              Uri videoCaptureUri = PersistentBlobProvider.getInstance(context).createForExternal(context, "video/mp4");
+              Log.w(TAG, "videoCaptureUri path is " + videoCaptureUri.getPath());
+              captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoCaptureUri);
+              captureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+              captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+              activity.startActivityForResult(captureIntent, requestCode);
+            }
+          } catch (IOException ioe) {
+            Log.w(TAG, ioe);
+          }
+        })
+        .execute();
+  }
+
   private static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
     final Intent intent = new Intent();
     intent.setType(type);
