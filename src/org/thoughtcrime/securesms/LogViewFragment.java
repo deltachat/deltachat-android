@@ -86,7 +86,7 @@ public class LogViewFragment extends Fragment {
 
   private static String grabLogcat() {
     try {
-      final Process         process        = Runtime.getRuntime().exec("logcat -d");
+      final Process         process        = Runtime.getRuntime().exec("logcat -v threadtime -d");
       final BufferedReader  bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
       final StringBuilder   log            = new StringBuilder();
       final String          separator      = System.getProperty("line.separator");
