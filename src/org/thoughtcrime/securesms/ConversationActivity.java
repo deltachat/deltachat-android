@@ -384,7 +384,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case RECORD_VIDEO:
       Uri uri = data.getData();
       if(uri!=null) {
-        Toast.makeText(this, String.format("%s recorded", uri), Toast.LENGTH_LONG).show();
+        setMedia(uri, MediaType.VIDEO);
       }
       break;
     case PICK_LOCATION:
