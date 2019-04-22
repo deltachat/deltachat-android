@@ -93,83 +93,84 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
             mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
                 Log.d(TAG, "on Data initialized");
                 mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
-            });
 
 
-            mapboxMap.addOnMapClickListener(point -> {
-                final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
-                Log.d(TAG, "on item clicked.");
+                mapboxMap.addOnMapClickListener(point -> {
+                    final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
+                    Log.d(TAG, "on item clicked.");
 
-                List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
-                for (Feature feature : features) {
-                    Log.d(TAG, "found feature: " + feature.toJson());
-                    //show first feature that has meta data infos
-                    if (feature.hasProperty(MARKER_SELECTED))  {
-                        mapDataManager.setMarkerSelected(feature.id());
-                        return true;
-                    }
-                }
-                mapDataManager.unselectMarker();
-                return false;
-            });
-
-            mapboxMap.addOnMapClickListener(point -> {
-                final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
-
-                List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, INFO_WINDOW_LAYER);
-                Log.d(TAG, "on info window clicked." + features.size());
-
-                for (Feature feature : features) {
-                    Log.d(TAG, "found feature: " + feature.toJson());
-
-                    int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
-                    DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
-                    int dcMsgChatId = dcMsg.getChatId();
-                    if (dcMsgChatId == DC_CHAT_NO_CHAT) {
-                        continue;
-                    }
-
-                    int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
-                    int startingPosition = -1;
-                    for(int i=0; i< msgs.length; i++ ) {
-                        if(msgs[i] == messageId) {
-                            startingPosition = msgs.length-1-i;
-                            break;
+                    List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
+                    for (Feature feature : features) {
+                        Log.d(TAG, "found feature: " + feature.toJson());
+                        //show first feature that has meta data infos
+                        if (feature.hasProperty(MARKER_SELECTED))  {
+                            mapDataManager.setMarkerSelected(feature.id());
+                            return true;
                         }
                     }
-
-                    Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
-                    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, dcMsgChatId);
-                    intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
-                    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
-                    startActivity(intent);
-                    return true;
-
-                }
-                return false;
-            });
-
-            if (BuildConfig.DEBUG) {
-                mapboxMap.addOnMapLongClickListener(point -> {
-                    new AlertDialog.Builder(MapActivity.this)
-                            .setMessage(getString(R.string.menu_delete_locations))
-                            .setPositiveButton(R.string.yes, (dialog, which) -> {
-                                ApplicationContext.getInstance(MapActivity.this).dcLocationManager.deleteAllLocations();
-                            })
-                            .setNegativeButton(R.string.no, null)
-                            .show();
-                    return true;
+                    mapDataManager.unselectMarker();
+                    return false;
                 });
-            }
 
-            SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
-            switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                mapDataManager.showTraces(isChecked);
+                mapboxMap.addOnMapClickListener(point -> {
+                    final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
+
+                    List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, INFO_WINDOW_LAYER);
+                    Log.d(TAG, "on info window clicked." + features.size());
+
+                    for (Feature feature : features) {
+                        Log.d(TAG, "found feature: " + feature.toJson());
+
+                        int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
+                        DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
+                        int dcMsgChatId = dcMsg.getChatId();
+                        if (dcMsgChatId == DC_CHAT_NO_CHAT) {
+                            continue;
+                        }
+
+                        int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
+                        int startingPosition = -1;
+                        for(int i=0; i< msgs.length; i++ ) {
+                            if(msgs[i] == messageId) {
+                                startingPosition = msgs.length-1-i;
+                                break;
+                            }
+                        }
+
+                        Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
+                        intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, dcMsgChatId);
+                        intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
+                        intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
+                        startActivity(intent);
+                        return true;
+
+                    }
+                    return false;
+                });
+
+                if (BuildConfig.DEBUG) {
+                    mapboxMap.addOnMapLongClickListener(point -> {
+                        new AlertDialog.Builder(MapActivity.this)
+                                .setMessage(getString(R.string.menu_delete_locations))
+                                .setPositiveButton(R.string.yes, (dialog, which) -> {
+                                    ApplicationContext.getInstance(MapActivity.this).dcLocationManager.deleteAllLocations();
+                                })
+                                .setNegativeButton(R.string.no, null)
+                                .show();
+                        return true;
+                    });
+                }
+
+                SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
+                switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    mapDataManager.showTraces(isChecked);
+                });
             });
-        }));
 
-        TimeRangeSlider timeRangeSlider = this.findViewById(R.id.timeRangeSlider);
-        timeRangeSlider.setOnTimestampChangedListener(this);
+            TimeRangeSlider timeRangeSlider = this.findViewById(R.id.timeRangeSlider);
+            timeRangeSlider.setOnTimestampChangedListener(this);
+
+        }));
 
         View bottomSheet = this.findViewById(R.id.bottom_sheet);
         BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);

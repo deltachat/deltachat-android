@@ -13,16 +13,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
-import com.b44t.messenger.DcArray;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcEventCenter;
-import com.google.gson.JsonObject;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
-import com.mapbox.geojson.LineString;
-import com.mapbox.geojson.Point;
-import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
-import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.style.expressions.Expression;
@@ -43,6 +37,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
 import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
@@ -81,7 +76,7 @@ import static org.thoughtcrime.securesms.map.model.MapSource.LINE_FEATURE_LIST;
  * Created by cyberta on 07.03.19.
  */
 
-public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateInfoWindowCallback {
+public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateInfoWindowCallback, DataCollectionCallback {
     public static final String MARKER_SELECTED = "MARKER_SELECTED";
     public static final String LAST_LOCATION = "LAST_LOCATION";
     public static final String CONTACT_ID = "CONTACT_ID";
@@ -104,14 +99,16 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private static final String TAG = MapDataManager.class.getSimpleName();
     private Style mapboxStyle;
-    private HashMap<Integer, MapSource> contactMapSources = new HashMap<>();
-    private HashMap<String, LinkedList<Feature>> featureCollections = new HashMap<>();
-    private HashMap<Integer, Feature> lastPositions = new HashMap<>();
+    private ConcurrentHashMap<Integer, MapSource> contactMapSources = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, LinkedList<Feature>> featureCollections = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Integer, Feature> lastPositions = new ConcurrentHashMap<>();
     private FilterProvider filterProvider = new FilterProvider();
     private Feature selectedFeature;
     private int chatId;
+    private LatLngBounds.Builder boundingBuilder;
     private Context context;
     private ApplicationDcContext dcContext;
+    private MapDataState callback;
     private boolean isInitial = true;
     private boolean showTraces = false;
 
@@ -120,35 +117,25 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     public MapDataManager(Context context, @NonNull Style mapboxMapStyle, int chatId, MapDataState updateCallback) {
+        Log.d(TAG, "performance test - create map manager");
         this.mapboxStyle = mapboxMapStyle;
         this.context = context;
         this.dcContext = DcHelper.getContext(context);
         this.chatId = chatId;
-        LatLngBounds.Builder boundingBuilder = new LatLngBounds.Builder();
+        boundingBuilder = new LatLngBounds.Builder();
+        this.callback = updateCallback;
 
-        int[] contactIds = getContactIds(chatId);
         initInfoWindowLayer();
         initLastPositionLayer();
 
         filterProvider.setMessageFilter(true);
         filterProvider.setLastPositionFilter(System.currentTimeMillis() - DEFAULT_LAST_POSITION_DELTA);
         applyLastPositionFilter();
-        for (int contactId : contactIds) {
-            updateSource(chatId, contactId, boundingBuilder);
-            MapSource source = contactMapSources.get(contactId);
-            if (source != null) {
-                applyMarkerFilter(source);
-                applyLineFilter(source);
-            }
-        }
 
+        updateSources();
         dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
 
-        try {
-            updateCallback.onDataInitialized(boundingBuilder.build());
-        } catch (InvalidLatLngBoundsException e) {
-            e.printStackTrace();
-        }
+        Log.d(TAG, "performance test - create map manager finished");
     }
 
     public void onResume() {
@@ -165,6 +152,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     public void onDestroy() {
         GenerateInfoWindowTask.cancelRunningTasks();
+        DataCollectionTask.cancelRunningTasks();
+        Log.d(TAG, "performance test - Map manager destroyed");
     }
 
     @Override
@@ -189,7 +178,16 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         Log.d(TAG, "updateEvent in MapDataManager called. eventId: " + eventId);
         int contactId = ((Long) data1).intValue();
         if (contactMapSources.containsKey(contactId)) {
-            updateSource(chatId, contactId);
+            DataCollector collector = new DataCollector(dcContext,
+                    contactMapSources,
+                    featureCollections,
+                    lastPositions, null);
+            collector.updateSource(chatId,
+                    contactId,
+                    System.currentTimeMillis() - TIME_FRAME,
+                    TIMESTAMP_NOW);
+
+            refreshSource(contactId);
         }
         Log.d(TAG, "updateEvent in MapDataManager called. finished: " + eventId);
     }
@@ -244,6 +242,20 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         infoWindowSource.setGeoJson(selectedFeature);
     }
 
+    @Override
+    public void onDataCollectionFinished() {
+        for (MapSource source : contactMapSources.values()) {
+            initContactBasedLayers(source);
+            refreshSource(source.getContactId());
+            applyMarkerFilter(source);
+            applyLineFilter(source);
+        }
+
+        if (boundingBuilder != null && callback != null) {
+            callback.onDataInitialized(boundingBuilder.build());
+        }
+    }
+
     public void filterRange(long startTimestamp, long endTimestamp) {
         int[] contactIds = getContactIds(chatId);
         filterProvider.setRangeFilter(startTimestamp, endTimestamp);
@@ -294,99 +306,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private void applyLineFilter(MapSource source) {
         LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(source.getLineLayer());
         lineLayer.setFilter(filterProvider.getTimeFilter());
-    }
-
-    private void updateSource(int chatId, int contactId) {
-        updateSource(chatId, contactId, null);
-    }
-
-    private void updateSource(int chatId, int contactId, LatLngBounds.Builder boundingBuilder) {
-        updateSource(chatId, contactId, System.currentTimeMillis() - TIME_FRAME, TIMESTAMP_NOW, boundingBuilder );
-    }
-
-    private void updateSource(int chatId, int contactId, long startTimestamp, long endTimestamp, LatLngBounds.Builder boundingBuilder) {
-        //long start = System.currentTimeMillis();
-        DcArray locations = dcContext.getLocations(chatId, contactId, startTimestamp, endTimestamp);
-        int count = locations.getCnt();
-        if (count == 0) {
-            return;
-        }
-
-        MapSource contactMapMetadata = contactMapSources.get(contactId);
-        if (contactMapMetadata == null) {
-            contactMapMetadata = addContactMapSource(contactId);
-        }
-
-        LinkedList<Feature> sortedPointFeatures = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
-        if (sortedPointFeatures != null && sortedPointFeatures.size() == count) {
-            return;
-        } else {
-            sortedPointFeatures = new LinkedList<>();
-        }
-        LinkedList<Feature> sortedLineFeatures = new LinkedList<>();
-
-        for (int i = count - 1; i >= 0; i--) {
-            Point point = Point.fromLngLat(locations.getLongitude(i), locations.getLatitude(i));
-
-            String codepointChar =
-                    locations.getMarker(i) != null ?
-                    locations.getMarker(i) :
-                    "";
-
-            Feature pointFeature = Feature.fromGeometry(point, new JsonObject(), String.valueOf(locations.getLocationId(i)));
-            pointFeature.addBooleanProperty(MARKER_SELECTED, false);
-            pointFeature.addBooleanProperty(LAST_LOCATION, false);
-            pointFeature.addNumberProperty(CONTACT_ID, contactId);
-            pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
-            pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
-            pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
-            pointFeature.addStringProperty(MARKER_CHAR, codepointChar);
-            pointFeature.addStringProperty(MARKER_ICON, contactMapMetadata.getMarkerIcon());
-            sortedPointFeatures.addFirst(pointFeature);
-
-            if (sortedPointFeatures.size() > 1) {
-                Point lastPoint = (Point) sortedPointFeatures.get(1).geometry();
-                ArrayList<Point> lineSegmentPoints = new ArrayList<>(3);
-                lineSegmentPoints.add(lastPoint);
-                lineSegmentPoints.add(point);
-                LineString l = LineString.fromLngLats(lineSegmentPoints);
-                Feature lineFeature = Feature.fromGeometry(l, new JsonObject(), "l_" + pointFeature.id());
-                lineFeature.addNumberProperty(TIMESTAMP, pointFeature.getNumberProperty(TIMESTAMP));
-                sortedLineFeatures.addFirst(lineFeature);
-            }
-
-            if (boundingBuilder != null) {
-                boundingBuilder.include(new LatLng(locations.getLatitude(i), locations.getLongitude(i)));
-            }
-        }
-
-        if (sortedPointFeatures.size() > 0) {
-            Feature lastPostion = sortedPointFeatures.getFirst();
-            lastPostion.addStringProperty(LAST_POSITION_ICON, contactMapMetadata.getMarkerLastPositon());
-            lastPostion.removeProperty(MARKER_ICON);
-            lastPostion.addBooleanProperty(LAST_LOCATION, true);
-            lastPositions.put(contactId, lastPostion);
-        }
-
-        featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), sortedPointFeatures);
-        featureCollections.put(contactMapMetadata.getLineFeatureCollection(), sortedLineFeatures);
-
-        refreshSource(contactId);
-
-        //Log.d(TAG, "update Source took " + (System.currentTimeMillis() - start) + " ms");
-    }
-
-    private void initGeoJsonSources(MapSource source) {
-        GeoJsonSource markerPositionSource = new GeoJsonSource(source.getMarkerSource());
-        GeoJsonSource linePositionSource = new GeoJsonSource(source.getLineSource());
-
-        try {
-            mapboxStyle.addSource(markerPositionSource);
-            mapboxStyle.addSource(linePositionSource);
-        } catch (RuntimeException e) {
-            //TODO: specify exception more
-            Log.e(TAG, "Unable to init GeoJsonSources. Already added to mapBoxMap? " + e.getMessage());
-        }
     }
 
     private int[] getContactIds(int chatId) {
@@ -441,6 +360,21 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private void initContactBasedLayers(MapSource source) {
+        if (mapboxStyle.getLayer(source.getMarkerLayer()) != null) {
+            return;
+        }
+
+        GeoJsonSource markerPositionSource = new GeoJsonSource(source.getMarkerSource());
+        GeoJsonSource linePositionSource = new GeoJsonSource(source.getLineSource());
+
+        try {
+            mapboxStyle.addSource(markerPositionSource);
+            mapboxStyle.addSource(linePositionSource);
+        } catch (RuntimeException e) {
+            //TODO: specify exception more
+            Log.e(TAG, "Unable to init GeoJsonSources. Already added to mapBoxMap? " + e.getMessage());
+        }
+
         mapboxStyle.addImage(source.getMarkerLastPositon(),
                 generateColoredLastPositionIcon(source.getColorArgb()));
         mapboxStyle.addImage(source.getMarkerIcon(),
@@ -482,20 +416,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 LAST_POSITION_LAYER);
     }
 
-    private MapSource addContactMapSource(int contactId) {
-        if (contactMapSources.get(contactId) != null) {
-            return contactMapSources.get(contactId);
-        }
-
-        DcContact contact = dcContext.getContact(contactId);
-        MapSource contactMapSource = new MapSource(contactId);
-        contactMapSource.setColor(contact.getColor());
-        contactMapSources.put(contactId, contactMapSource);
-        initGeoJsonSources(contactMapSource);
-        initContactBasedLayers(contactMapSource);
-        return contactMapSource;
-    }
-
     private Bitmap generateColoredLastPositionIcon(int colorFilter) {
         return generateColoredBitmap(colorFilter, R.drawable.ic_location_on_white_48dp);
     }
@@ -525,10 +445,14 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private void updateSources() {
-        int[] contactIds = getContactIds(chatId);
-        for (int contactId : contactIds) {
-            updateSource(chatId, contactId);
-        }
+        new DataCollectionTask(dcContext,
+                chatId,
+                getContactIds(chatId),
+                contactMapSources,
+                featureCollections,
+                lastPositions,
+                boundingBuilder,
+                this).execute();
     }
 
     private void replaceSelectedMarker(String featureId) {
