@@ -483,11 +483,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private Feature getFeatureWithId(String id) {
-        for (String key : featureCollections.keySet()) {
+        for (Map.Entry<String, LinkedList<Feature>> e : featureCollections.entrySet()) {
+            String key = e.getKey();
             if (key.startsWith(LINE_FEATURE_LIST)) {
                 continue;
             }
-            LinkedList<Feature> featureCollection = featureCollections.get(key);
+            LinkedList<Feature> featureCollection = e.getValue();
             for (Feature f : featureCollection) {
                 if (f.id().equals(id)) {
                     return f;
