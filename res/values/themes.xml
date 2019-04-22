@@ -101,12 +101,13 @@
         <item name="conversation_list_item_unread_color">@color/core_black</item>
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape</item>
 
+        <item name="send_button_bg">@drawable/send_button_bg_light</item>
+        <item name="floating_mini_bg">@drawable/floating_mini_bg_light</item>
+
         <item name="fab_color">@color/delta_primary_lite</item>
         <item name="input_panel_bg_color">@color/white</item>
-        <item name="send_button_color">@color/delta_primary</item>
         <item name="lower_right_divet">@drawable/divet_lower_right_dark</item>
         <item name="close_icon_color">#A4A6A9</item>
-        <item name="floating_mini_button_bg_color">@color/white</item>
 
         <item name="conversation_group_member_name">#99000000</item>
 
@@ -255,6 +256,9 @@
         <item name="conversation_list_item_unread_color">@color/core_white</item>
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape_dark</item>
 
+        <item name="send_button_bg">@drawable/send_button_bg_dark</item>
+        <item name="floating_mini_bg">@drawable/floating_mini_bg_dark</item>
+
         <item name="conversation_group_member_name">@color/sticker_selected_color</item>
 
         <!-- dark theme -->
@@ -296,10 +300,8 @@
 
         <item name="fab_color">@color/gray78</item>
         <item name="input_panel_bg_color">@color/gray95</item>
-        <item name="send_button_color">@color/gray70</item>
         <item name="lower_right_divet">@drawable/divet_lower_right_light</item>
         <item name="close_icon_color">@color/gray70</item>
-        <item name="floating_mini_button_bg_color">@color/gray78</item>
 
         <!-- dark theme -->
         <item name="conversation_background">@color/black</item>

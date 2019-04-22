@@ -190,7 +190,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
-        android:background="@drawable/circle_send_button"
+        android:background="?attr/send_button_bg"
         android:layout_gravity="center_vertical">
 
         <ImageButton

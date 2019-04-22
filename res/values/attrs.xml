@@ -19,12 +19,13 @@
     <attr name="conversation_group_member_name" format="reference|color"/>
     <attr name="conversation_received_card_background" format="reference|color"/>
 
+    <attr name="send_button_bg" format="reference"/>
+    <attr name="floating_mini_bg" format="reference"/>
+
     <attr name="fab_color" format="reference|color" />
-    <attr name="send_button_color" format="reference|color" />
     <attr name="input_panel_bg_color" format="reference|color" />
     <attr name="lower_right_divet" format="reference" />
     <attr name="close_icon_color" format="reference|color" />
-    <attr name="floating_mini_button_bg_color" format="reference|color" />
 
     <attr name="centered_app_title_color" format="reference|color" />
     <attr name="ic_arrow_forward" format="reference" />

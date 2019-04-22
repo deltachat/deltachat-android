@@ -13,7 +13,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="7dp"
-               android:background="@drawable/circle_send_button"
+               android:background="?attr/send_button_bg"
                android:contentDescription="@string/menu_send"
                tools:src="@drawable/ic_send_push_white_24dp" />
 
