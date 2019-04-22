@@ -80,13 +80,6 @@ public class DataCollectionTask extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
-    protected void onProgressUpdate(Void... values) {
-        if (!this.isCancelled()) {
-            callback.onDataCollectionFinished();
-        }
-    }
-
-    @Override
     protected void onPostExecute(Void value) {
         if (!this.isCancelled()) {
             callback.onDataCollectionFinished();
