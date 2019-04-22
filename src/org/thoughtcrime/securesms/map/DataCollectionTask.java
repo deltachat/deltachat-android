@@ -67,10 +67,8 @@ public class DataCollectionTask extends AsyncTask<Void, Void, Void> {
                 featureCollections,
                 lastPositions,
                 boundingBuilder);
-        int markerCounter = 0;
         for (int contactId : contactIds) {
-
-           markerCounter = markerCounter + dataCollector.updateSource(chatId,
+           dataCollector.updateSource(chatId,
                     contactId,
                     System.currentTimeMillis() - TIME_FRAME,
                     TIMESTAMP_NOW);

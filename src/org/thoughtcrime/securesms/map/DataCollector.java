@@ -13,7 +13,6 @@ import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import org.thoughtcrime.securesms.map.model.MapSource;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -53,14 +52,14 @@ public class DataCollector {
     }
 
 
-    public int updateSource(int chatId,
+    public void updateSource(int chatId,
                               int contactId,
                               long startTimestamp,
                               long endTimestamp) {
         DcArray locations = dcContext.getLocations(chatId, contactId, startTimestamp, endTimestamp);
         int count = locations.getCnt();
         if (count == 0) {
-            return 0;
+            return;
         }
 
         MapSource contactMapMetadata = contactMapSources.get(contactId);
@@ -70,7 +69,7 @@ public class DataCollector {
 
         LinkedList<Feature> sortedPointFeatures = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
         if (sortedPointFeatures != null && sortedPointFeatures.size() == count) {
-            return -1;
+            return;
         } else {
             sortedPointFeatures = new LinkedList<>();
         }
@@ -121,8 +120,6 @@ public class DataCollector {
 
         featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), sortedPointFeatures);
         featureCollections.put(contactMapMetadata.getLineFeatureCollection(), sortedLineFeatures);
-
-        return count;
     }
 
     private MapSource addContactMapSource(ConcurrentHashMap<Integer, MapSource> contactMapSources, int contactId) {
