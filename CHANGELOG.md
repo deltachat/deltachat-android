@@ -1,5 +1,10 @@
 # Delta Chat Android Changelog
 
+## v0.301.1
+2019-04-22
+
+* Fix chat view and log for Android 4.4 (Kitkat)
+
 ## v0.301.0
 2019-04-20
 
