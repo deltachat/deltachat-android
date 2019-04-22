@@ -16,6 +16,7 @@ import android.util.Log;
 import com.b44t.messenger.DcEventCenter;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
+import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
 import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.style.expressions.Expression;
@@ -88,7 +89,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private static final String INFO_WINDOW_SRC = "INFO_WINDOW_SRC";
     private static final String LAST_POSITION_LAYER = "LAST_POSITION_LAYER";
     private static final String LAST_POSITION_SOURCE = "LAST_POSITION_SRC";
-    private static final String LAST_POSITION_ICON_ID = "LAST_POSITION_ICN_ID";
 
     public static final int ALL_CHATS_GLOBAL_MAP = 0;
     public static final long TIMESTAMP_NOW = 0L;
@@ -249,8 +249,15 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             applyLineFilter(source);
         }
 
+
         if (boundingBuilder != null && callback != null) {
-            callback.onDataInitialized(boundingBuilder.build());
+            LatLngBounds bound = null;
+            try {
+                bound = boundingBuilder.build();
+            } catch (InvalidLatLngBoundsException e) {
+                Log.w(TAG, e.getLocalizedMessage());
+            }
+            callback.onDataInitialized(bound);
         }
     }
 
