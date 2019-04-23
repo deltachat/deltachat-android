@@ -29,6 +29,8 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.map.DataCollectionTask.DataCollectionCallback;
+import org.thoughtcrime.securesms.map.GenerateInfoWindowTask.GenerateInfoWindowCallback;
 import org.thoughtcrime.securesms.map.model.FilterProvider;
 import org.thoughtcrime.securesms.map.model.MapSource;
 

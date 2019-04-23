@@ -22,6 +22,10 @@ import static org.thoughtcrime.securesms.map.MapDataManager.TIME_FRAME;
 
 public class DataCollectionTask extends AsyncTask<Void, Void, Void> {
 
+    public interface DataCollectionCallback {
+        void onDataCollectionFinished();
+    }
+
     private static final String TAG = DataCollectionTask.class.getSimpleName();
     private static final HashSet<DataCollectionTask> instances = new HashSet<>();
 
