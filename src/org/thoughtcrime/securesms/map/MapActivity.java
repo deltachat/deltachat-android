@@ -32,10 +32,12 @@ import org.thoughtcrime.securesms.geolocation.DcLocation;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
 import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
+import static com.mapbox.mapboxsdk.constants.MapboxConstants.MINIMUM_ZOOM;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
@@ -78,10 +80,19 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         mapFragment.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
 
             this.mapboxMap = mapboxMap;
-            mapboxMap.setCameraPosition(new CameraPosition.Builder()
-                    .target(new LatLng(dcLocation.getLastLocation().getLatitude(), dcLocation.getLastLocation().getLongitude()))
-                    .zoom(9)
-                    .build());
+            if (dcLocation.getLastLocation().getProvider().equals("?")) {
+                double randomLongitude = getRandomLongitude();
+                mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                        .target(new LatLng(0d, randomLongitude))
+                        .zoom(MINIMUM_ZOOM)
+                        .build());
+            } else {
+                mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                        .target(new LatLng(dcLocation.getLastLocation().getLatitude(), dcLocation.getLastLocation().getLongitude()))
+                        .zoom(9)
+                        .build());
+            }
+
             mapboxMap.getUiSettings().setLogoEnabled(false);
             mapboxMap.getUiSettings().setAttributionEnabled(false);
 
@@ -92,8 +103,9 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
             mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
                 Log.d(TAG, "on Data initialized");
-                mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
-
+                if (latLngBounds != null) {
+                    mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
+                }
 
                 mapboxMap.addOnMapClickListener(point -> {
                     final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
@@ -243,4 +255,12 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         }
         mapDataManager.filterLastPositions(startTimestamp);
     }
+
+    double getRandomLongitude() {
+        double start = -180;
+        double end = 180;
+        double random = new Random().nextDouble();
+        return start + (random * (end - start));
+    }
+
 }
