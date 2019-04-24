@@ -28,6 +28,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.geolocation.DcLocation;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.List;
 import java.util.Observable;
@@ -80,7 +81,14 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         mapFragment.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
 
             this.mapboxMap = mapboxMap;
-            if (dcLocation.getLastLocation().getProvider().equals("?")) {
+            final LatLng lastMapCenter = Prefs.getMapCenter(this.getApplicationContext(), chatId);
+            if (lastMapCenter != null) {
+                double lastZoom = Prefs.getMapZoom(this.getApplicationContext(), chatId);
+                mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                        .target(lastMapCenter)
+                        .zoom(lastZoom)
+                        .build());
+            } else if (dcLocation.getLastLocation().getProvider().equals("?")) {
                 double randomLongitude = getRandomLongitude();
                 mapboxMap.setCameraPosition(new CameraPosition.Builder()
                         .target(new LatLng(0d, randomLongitude))
@@ -103,7 +111,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
             mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
                 Log.d(TAG, "on Data initialized");
-                if (latLngBounds != null) {
+                if (latLngBounds != null && lastMapCenter == null) {
                     mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
                 }
 
@@ -224,6 +232,8 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     protected void onDestroy() {
         super.onDestroy();
         if (mapDataManager != null) {
+            Prefs.setMapCenter(this.getApplicationContext(), mapDataManager.getChatId(), mapboxMap.getCameraPosition().target);
+            Prefs.setMapZoom(this.getApplicationContext(), mapDataManager.getChatId(), mapboxMap.getCameraPosition().zoom);
             mapDataManager.onDestroy();
         }
     }

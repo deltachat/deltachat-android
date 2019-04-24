@@ -33,6 +33,7 @@ import org.thoughtcrime.securesms.map.DataCollectionTask.DataCollectionCallback;
 import org.thoughtcrime.securesms.map.GenerateInfoWindowTask.GenerateInfoWindowCallback;
 import org.thoughtcrime.securesms.map.model.FilterProvider;
 import org.thoughtcrime.securesms.map.model.MapSource;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -282,6 +283,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         applyFilters(contactIds);
     }
 
+    public int getChatId() {
+        return chatId;
+    }
+    
     private void showLineLayer(MapSource source) {
         LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(source.getLineLayer());
         lineLayer.setProperties(visibility(showTraces ? VISIBLE : NONE));
