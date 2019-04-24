@@ -18,14 +18,13 @@
             <EditText android:id="@+id/log_preview"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      style="?android:attr/textViewStyle"
-                      android:padding="10dp"
+                      android:padding="4dp"
                       android:background="@null"
-                      android:fontFamily="monospace"
+                      android:fontFamily="sans-serif"
                       android:hint=""
                       android:scrollHorizontally="true"
                       android:inputType="textImeMultiLine|textNoSuggestions|textMultiLine"
-                      android:textSize="10sp"
+                      android:textSize="12sp"
                       tools:ignore="UnusedAttribute,SmallSp"/>
         </LinearLayout>
     </ScrollView>
