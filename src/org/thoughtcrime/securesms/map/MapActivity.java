@@ -117,8 +117,8 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                 }
 
                 mapboxMap.addOnMapClickListener(point ->
-                        handleMarkerClick(point) ||
                         handleInfoWindowClick(point) ||
+                        handleMarkerClick(point) ||
                         handleAddPoiClick(point));
 
                 /*if (BuildConfig.DEBUG) {
