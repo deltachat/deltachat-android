@@ -390,8 +390,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 switchCase(
                         neq(length(get(MARKER_CHAR)), literal(0)),
                             switchCase(toBool(get(MARKER_SELECTED)), literal(2.25f), literal(2.0f)),
-                        eq(get(MESSAGE_ID), literal(0)),
-                            switchCase(toBool(get(MARKER_SELECTED)), literal(1.1f), literal(1.0f)),
+                        neq(get(MESSAGE_ID), literal(0)),
+                            switchCase(toBool(get(MARKER_SELECTED)), literal(2.25f), literal(2.0f)),
                         switchCase(toBool(get(MARKER_SELECTED)), literal(1.1f), literal(0.7f)));
         Expression markerIcon = get(MARKER_ICON);
 
