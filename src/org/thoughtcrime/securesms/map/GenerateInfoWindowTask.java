@@ -4,6 +4,7 @@ package org.thoughtcrime.securesms.map;
  * Created by cyberta on 13.03.19.
  */
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -47,6 +48,15 @@ import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
  * </p>
  */
 class GenerateInfoWindowTask extends AsyncTask<Feature, Bitmap, Bitmap> {
+
+    public interface GenerateInfoWindowCallback {
+        Context getContext();
+
+        /**
+         * Invoked when the bitmaps have been generated from a view.
+         */
+        void setInfoWindowResults(Bitmap result);
+    }
 
     private static final String TAG = GenerateInfoWindowCallback.class.getName();
     private final WeakReference<GenerateInfoWindowCallback> callbackRef;

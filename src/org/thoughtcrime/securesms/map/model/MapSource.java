@@ -30,6 +30,7 @@ public class MapSource {
 
     private int color;
     private int colorArgb;
+    private int contactId;
 
     public MapSource(int contactId) {
         markerSource = MARKER_POSITION_SOURCE + "_" + contactId;
@@ -40,6 +41,7 @@ public class MapSource {
         markerLastPositon = MARKER_LAST_POSITON + "_" + contactId;
         markerFeatureCollection = MARKER_FEATURE_LIST + "_" + contactId;
         lineFeatureCollection = LINE_FEATURE_LIST + "_" + contactId;
+        this.contactId = contactId;
     }
 
     public void setColor(int color) {
@@ -82,5 +84,7 @@ public class MapSource {
     public String getMarkerFeatureCollection() { return markerFeatureCollection; }
 
     public String getLineFeatureCollection() { return lineFeatureCollection; }
+
+    public int getContactId() { return contactId; }
 
 }
