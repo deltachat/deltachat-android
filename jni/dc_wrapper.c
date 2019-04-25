@@ -1117,6 +1117,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_hasDeviatingTimestamp(JNIEnv *e
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_hasLocation(JNIEnv *env, jobject obj)
+{
+	return dc_msg_has_location(get_dc_msg(env, obj))!=0;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getType(JNIEnv *env, jobject obj)
 {
 	return dc_msg_get_viewtype(get_dc_msg(env, obj));

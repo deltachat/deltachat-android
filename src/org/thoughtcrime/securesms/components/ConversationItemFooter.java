@@ -21,6 +21,7 @@ public class ConversationItemFooter extends LinearLayout {
 
   private TextView            dateView;
   private ImageView           secureIndicatorView;
+  private ImageView           locationIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
 
   public ConversationItemFooter(Context context) {
@@ -43,6 +44,7 @@ public class ConversationItemFooter extends LinearLayout {
 
     dateView              = findViewById(R.id.footer_date);
     secureIndicatorView   = findViewById(R.id.footer_secure_indicator);
+    locationIndicatorView = findViewById(R.id.footer_location_indicator);
     deliveryStatusView    = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
 
     if (attrs != null) {
@@ -59,13 +61,15 @@ public class ConversationItemFooter extends LinearLayout {
 
   public void setMessageRecord(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     presentDate(messageRecord, locale);
-    presentSecureIndicator(messageRecord);
+    secureIndicatorView.setVisibility(messageRecord.isSecure() ? View.VISIBLE : View.GONE);
+    locationIndicatorView.setVisibility(messageRecord.hasLocation() ? View.VISIBLE : View.GONE);
     presentDeliveryStatus(messageRecord);
   }
 
   public void setTextColor(int color) {
     dateView.setTextColor(color);
     secureIndicatorView.setColorFilter(color);
+    locationIndicatorView.setColorFilter(color);
     deliveryStatusView.setTint(color);
   }
 
@@ -77,10 +81,6 @@ public class ConversationItemFooter extends LinearLayout {
 //    else {
 //      dateView.setText(DateUtils.getTimeOfDayTimeSpanString(getContext(), locale, messageRecord.getTimestamp()));
 //    }
-  }
-
-  private void presentSecureIndicator(@NonNull DcMsg messageRecord) {
-    secureIndicatorView.setVisibility(messageRecord.isSecure() ? View.VISIBLE : View.GONE);
   }
 
   private void presentDeliveryStatus(@NonNull DcMsg messageRecord) {

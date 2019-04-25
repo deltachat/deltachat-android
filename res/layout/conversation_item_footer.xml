@@ -28,6 +28,16 @@
         android:textColor="?conversation_item_outgoing_text_secondary_color"
         tools:text="30 mins"/>
 
+    <ImageView
+        android:id="@+id/footer_location_indicator"
+        android:layout_width="12dp"
+        android:layout_height="11dp"
+        android:src="@drawable/ic_location_msg"
+        android:visibility="gone"
+        android:layout_gravity="center_vertical|end"
+        android:contentDescription="@string/location"
+        tools:visibility="gone"/>
+
     <ImageView android:id="@+id/delivery_indicator"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
