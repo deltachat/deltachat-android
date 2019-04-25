@@ -5,7 +5,6 @@ import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
@@ -18,11 +17,9 @@ import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BaseActivity;
-import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider;
@@ -53,7 +50,8 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     private DcLocation dcLocation;
     private MapDataManager mapDataManager;
     private MapboxMap mapboxMap;
-    SupportMapFragment mapFragment;
+    DCMapFragment mapFragment;
+    MarkerViewManager markerViewManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,16 +69,19 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
         if (savedInstanceState == null) {
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            mapFragment = SupportMapFragment.newInstance();
+            mapFragment = DCMapFragment.newInstance();
             transaction.add(R.id.container, mapFragment, MAP_TAG);
             transaction.commit();
         } else {
-            mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
+            mapFragment = (DCMapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
         }
 
         mapFragment.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
 
             this.mapboxMap = mapboxMap;
+            this.markerViewManager = new MarkerViewManager(mapFragment.getMapView(), mapboxMap);
+
+
             final LatLng lastMapCenter = Prefs.getMapCenter(this.getApplicationContext(), chatId);
             if (lastMapCenter != null) {
                 double lastZoom = Prefs.getMapZoom(this.getApplicationContext(), chatId);
@@ -115,60 +116,12 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                     mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
                 }
 
-                mapboxMap.addOnMapClickListener(point -> {
-                    final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
-                    Log.d(TAG, "on item clicked.");
+                mapboxMap.addOnMapClickListener(point ->
+                        handleMarkerClick(point) ||
+                        handleInfoWindowClick(point) ||
+                        handleAddPoiClick(point));
 
-                    List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
-                    for (Feature feature : features) {
-                        Log.d(TAG, "found feature: " + feature.toJson());
-                        //show first feature that has meta data infos
-                        if (feature.hasProperty(MARKER_SELECTED))  {
-                            mapDataManager.setMarkerSelected(feature.id());
-                            return true;
-                        }
-                    }
-                    mapDataManager.unselectMarker();
-                    return false;
-                });
-
-                mapboxMap.addOnMapClickListener(point -> {
-                    final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
-
-                    List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, INFO_WINDOW_LAYER);
-                    Log.d(TAG, "on info window clicked." + features.size());
-
-                    for (Feature feature : features) {
-                        Log.d(TAG, "found feature: " + feature.toJson());
-
-                        int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
-                        DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
-                        int dcMsgChatId = dcMsg.getChatId();
-                        if (dcMsgChatId == DC_CHAT_NO_CHAT) {
-                            continue;
-                        }
-
-                        int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
-                        int startingPosition = -1;
-                        for(int i=0; i< msgs.length; i++ ) {
-                            if(msgs[i] == messageId) {
-                                startingPosition = msgs.length-1-i;
-                                break;
-                            }
-                        }
-
-                        Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
-                        intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, dcMsgChatId);
-                        intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
-                        intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
-                        startActivity(intent);
-                        return true;
-
-                    }
-                    return false;
-                });
-
-                if (BuildConfig.DEBUG) {
+                /*if (BuildConfig.DEBUG) {
                     mapboxMap.addOnMapLongClickListener(point -> {
                         new AlertDialog.Builder(MapActivity.this)
                                 .setMessage(getString(R.string.menu_delete_locations))
@@ -179,7 +132,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                                 .show();
                         return true;
                     });
-                }
+                }*/
 
                 SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
                 switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -195,7 +148,6 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         View bottomSheet = this.findViewById(R.id.bottom_sheet);
         BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
 
-
         RelativeLayout bottomSheetSlider = this.findViewById(R.id.bottomSheetSlider);
         bottomSheetSlider.setOnClickListener(v -> {
             switch (behavior.getState()) {
@@ -207,7 +159,6 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                     break;
             }
         });
-
     }
 
     @Override
@@ -266,11 +217,77 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         mapDataManager.filterLastPositions(startTimestamp);
     }
 
-    double getRandomLongitude() {
+    private double getRandomLongitude() {
         double start = -180;
         double end = 180;
         double random = new Random().nextDouble();
         return start + (random * (end - start));
+    }
+
+    private boolean handleMarkerClick(LatLng point) {
+        final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
+        Log.d(TAG, "on item clicked.");
+
+        List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
+        for (Feature feature : features) {
+            Log.d(TAG, "found feature: " + feature.toJson());
+            //show first feature that has meta data infos
+            if (feature.hasProperty(MARKER_SELECTED))  {
+                mapDataManager.setMarkerSelected(feature.id());
+                if (markerViewManager.hasMarkers()) {
+                    markerViewManager.removeMarkers();
+                }
+                return true;
+            }
+        }
+        return mapDataManager.unselectMarker();
+    }
+
+    private boolean handleInfoWindowClick(LatLng point) {
+        final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
+
+        List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, INFO_WINDOW_LAYER);
+        Log.d(TAG, "on info window clicked." + features.size());
+
+        for (Feature feature : features) {
+            Log.d(TAG, "found feature: " + feature.toJson());
+
+            int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
+            DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
+            int dcMsgChatId = dcMsg.getChatId();
+            if (dcMsgChatId == DC_CHAT_NO_CHAT) {
+                continue;
+            }
+
+            int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
+            int startingPosition = -1;
+            for(int i=0; i< msgs.length; i++ ) {
+                if(msgs[i] == messageId) {
+                    startingPosition = msgs.length-1-i;
+                    break;
+                }
+            }
+
+            Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
+            intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, dcMsgChatId);
+            intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
+            intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
+            startActivity(intent);
+            return true;
+
+        }
+        return false;
+    }
+
+    private boolean handleAddPoiClick(LatLng point) {
+        if (markerViewManager.hasMarkers()) {
+            markerViewManager.removeMarkers();
+        } else {
+            AddPoiView addPoiView = new AddPoiView(this);
+            addPoiView.setLatLng(point);
+            markerViewManager.addMarker(new MarkerView(point, addPoiView));
+        }
+        return true;
     }
 
 }

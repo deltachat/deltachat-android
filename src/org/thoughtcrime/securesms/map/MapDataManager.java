@@ -2,15 +2,8 @@ package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.b44t.messenger.DcEventCenter;
@@ -33,7 +26,6 @@ import org.thoughtcrime.securesms.map.DataCollectionTask.DataCollectionCallback;
 import org.thoughtcrime.securesms.map.GenerateInfoWindowTask.GenerateInfoWindowCallback;
 import org.thoughtcrime.securesms.map.model.FilterProvider;
 import org.thoughtcrime.securesms.map.model.MapSource;
-import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,6 +64,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textIgnorePlacem
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 import static org.thoughtcrime.securesms.map.model.MapSource.LINE_FEATURE_LIST;
+import static org.thoughtcrime.securesms.util.BitmapUtil.generateColoredBitmap;
 
 
 /**
@@ -211,14 +204,16 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         return markerLayers;
     }
 
-    public void unselectMarker() {
+    public boolean unselectMarker() {
         if (selectedFeature != null) {
             selectedFeature.addBooleanProperty(MARKER_SELECTED, false);
             refreshSource(selectedFeature.getNumberProperty(CONTACT_ID).intValue());
             selectedFeature = null;
             GeoJsonSource source = (GeoJsonSource) mapboxStyle.getSource(INFO_WINDOW_SRC);
             source.setGeoJson(FeatureCollection.fromFeatures(new ArrayList<>()));
+            return true;
         }
+        return false;
     }
 
     public void setMarkerSelected(String featureId) {
@@ -251,7 +246,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             applyMarkerFilter(source);
             applyLineFilter(source);
         }
-
 
         if (boundingBuilder != null && callback != null) {
             LatLngBounds bound = null;
@@ -286,7 +280,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public int getChatId() {
         return chatId;
     }
-    
+
     private void showLineLayer(MapSource source) {
         LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(source.getLineLayer());
         lineLayer.setProperties(visibility(showTraces ? VISIBLE : NONE));
@@ -429,31 +423,11 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     private Bitmap generateColoredLastPositionIcon(int colorFilter) {
-        return generateColoredBitmap(colorFilter, R.drawable.ic_location_on_white_48dp);
+        return generateColoredBitmap(context, colorFilter, R.drawable.ic_location_on_white_48dp);
     }
 
     private Bitmap generateColoredLocationIcon(int colorFilter) {
-        return generateColoredBitmap(colorFilter, R.drawable.ic_location_dot);
-    }
-
-    private Bitmap generateColoredBitmap(int colorFilter, @DrawableRes int res) {
-        Bitmap icon = getBitmap(res);
-        Paint paint = new Paint();
-        ColorFilter filter = new PorterDuffColorFilter(colorFilter, PorterDuff.Mode.SRC_IN);
-        paint.setColorFilter(filter);
-        Canvas canvas = new Canvas(icon);
-        canvas.drawBitmap(icon, 0, 0, paint);
-        return icon;
-    }
-
-    private Bitmap getBitmap(@DrawableRes int res) {
-        Drawable drawable = ContextCompat.getDrawable(context, res);
-        Canvas canvas = new Canvas();
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        canvas.setBitmap(bitmap);
-        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-        drawable.draw(canvas);
-        return bitmap;
+        return generateColoredBitmap(context, colorFilter, R.drawable.ic_location_dot);
     }
 
     private void updateSources() {
