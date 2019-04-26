@@ -1,5 +1,17 @@
 # Delta Chat Android Changelog
 
+
+## v0.302.0
+2019-04-27
+
+* add POIs on maps
+* Tweak Log UI
+* add location indicator in chat messages
+* bugfixes
+
+The changes have been done by Björn Petersen, cyBerta, Daniel Boehrsi.
+
+
 ## v0.301.1
 2019-04-22
 

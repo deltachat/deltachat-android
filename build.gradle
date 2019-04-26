@@ -90,8 +90,8 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        versionCode 543
-        versionName "0.301.1"
+        versionCode 544
+        versionName "0.302.0"
 
         applicationId "com.b44t.messenger"
 
