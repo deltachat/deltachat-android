@@ -10,7 +10,7 @@ Release core, if needed, then:
 ... some days later, F-Droid should be updated.
 
 
-# Release new Play Store version
+# Release new APK and Play Store version
 
 Release core, f-droid, then:
 
@@ -18,13 +18,9 @@ Release core, f-droid, then:
    (not: App Bundle as this would require uploading the signing key to Google)
 6. Select flavor `gplayRelease` with V1 signature enabled
    (needed for easy APK verificarion), V2 is optional
-7. Test the generated APK from `gplay/release`
-8. Upload the APK to https://play.google.com/apps/publish/
-
-
-# For an additional APK
-
-9.  Upload the APK from 8. to the Github release created at 4.
+7. Upload the generated APK from `gplay/release` to the Github release created at 4
+8. Test the APK
+9. Upload the APK to https://play.google.com/apps/publish/
 
 
 # Testing checklist
