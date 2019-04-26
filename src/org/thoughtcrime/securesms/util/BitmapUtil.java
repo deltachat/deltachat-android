@@ -6,8 +6,12 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,6 +19,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.*;
 import android.support.annotation.WorkerThread;
 import android.support.media.ExifInterface;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -474,6 +479,26 @@ public class BitmapUtil {
     bitmap.eraseColor(Color.TRANSPARENT);
     Canvas canvas = new Canvas(bitmap);
     view.draw(canvas);
+    return bitmap;
+  }
+
+  public static Bitmap generateColoredBitmap(Context context, int colorFilter, @DrawableRes int res) {
+    Bitmap icon = getBitmap(context, res);
+    Paint paint = new Paint();
+    ColorFilter filter = new PorterDuffColorFilter(colorFilter, PorterDuff.Mode.SRC_IN);
+    paint.setColorFilter(filter);
+    Canvas canvas = new Canvas(icon);
+    canvas.drawBitmap(icon, 0, 0, paint);
+    return icon;
+  }
+
+  private static Bitmap getBitmap(Context context, @DrawableRes int res) {
+    Drawable drawable = ContextCompat.getDrawable(context, res);
+    Canvas canvas = new Canvas();
+    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+    canvas.setBitmap(bitmap);
+    drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+    drawable.draw(canvas);
     return bitmap;
   }
 }
