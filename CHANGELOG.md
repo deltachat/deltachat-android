@@ -1,7 +1,7 @@
 # Delta Chat Android Changelog
 
 
-## v0.302.0
+## v0.302.1
 2019-04-27
 
 * add POIs on maps
