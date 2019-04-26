@@ -46,7 +46,7 @@ public class LocationBackgroundService extends Service {
         }
 
         locationListener = new ServiceLocationListener();
-        requestLocationUpdate(LocationManager.NETWORK_PROVIDER);
+        //requestLocationUpdate(LocationManager.NETWORK_PROVIDER);
         requestLocationUpdate(LocationManager.GPS_PROVIDER);
         initialLocationUpdate();
     }
