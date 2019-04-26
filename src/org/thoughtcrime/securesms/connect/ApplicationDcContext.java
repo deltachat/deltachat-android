@@ -179,6 +179,7 @@ public class ApplicationDcContext extends DcContext {
 
   private String checkMime(String path, String mimeType) {
     if(mimeType == null || mimeType.equals("application/octet-stream")) {
+      path = path.replaceAll(" ", "");
       String extension = MimeTypeMap.getFileExtensionFromUrl(path);
       String newType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
       if(newType != null) return newType;
