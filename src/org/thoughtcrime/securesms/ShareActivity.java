@@ -339,6 +339,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
       isPassingAlongMedia = true;
       startActivity(intent);
+      finish();
   }
 
   private DcMsg createMessage(Uri uri) {
