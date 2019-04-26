@@ -2,10 +2,10 @@
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="250dp"
     android:layout_height="70dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@drawable/map_bubble_add_poi"
-    android:paddingTop="8dp"
-    >
+    android:paddingTop="8dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,10 +32,12 @@
             android:layout_marginEnd="4dp"
             android:maxLines="1"
             android:maxLength="16"
-            android:textAlignment="center"
             android:layout_gravity="center"
             />
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
             <ImageButton
                 android:id="@+id/sendView"
                 android:layout_gravity="center_vertical"
@@ -49,6 +51,15 @@
                 android:contentDescription="@string/menu_send"
                 android:scaleType="fitCenter"
                 />
+            <ProgressBar
+                android:id="@+id/sending_progress"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+        </RelativeLayout>
+
 
     </LinearLayout>
 

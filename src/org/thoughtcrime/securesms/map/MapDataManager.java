@@ -81,6 +81,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public static final String ACCURACY = "ACCURACY";
     public static final String MARKER_CHAR = "MARKER_CHAR";
     public static final String MARKER_ICON = "MARKER_ICON";
+    public static final String IS_POI = "IS_POI";
     public static final String LAST_POSITION_ICON = "LAST_POSITION_ICON";
     private static final String INFO_WINDOW_SRC = "INFO_WINDOW_SRC";
     private static final String LAST_POSITION_LAYER = "LAST_POSITION_LAYER";

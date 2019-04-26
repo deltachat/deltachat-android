@@ -24,6 +24,7 @@ import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_CHAR;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_ICON;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
+import static org.thoughtcrime.securesms.map.MapDataManager.IS_POI;
 import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
 
 /**
@@ -91,10 +92,11 @@ public class DataCollector {
             pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
             pointFeature.addStringProperty(MARKER_CHAR, codepointChar);
+            pointFeature.addBooleanProperty(IS_POI,locations.isIndependent(i));
             pointFeature.addStringProperty(MARKER_ICON, contactMapMetadata.getMarkerIcon());
             sortedPointFeatures.addFirst(pointFeature);
 
-            if (sortedPointFeatures.size() > 1) {
+            if (!locations.isIndependent(i) && sortedPointFeatures.size() > 1) {
                 Point lastPoint = (Point) sortedPointFeatures.get(1).geometry();
                 ArrayList<Point> lineSegmentPoints = new ArrayList<>(3);
                 lineSegmentPoints.add(lastPoint);
@@ -111,11 +113,15 @@ public class DataCollector {
         }
 
         if (sortedPointFeatures.size() > 0) {
-            Feature lastPostion = sortedPointFeatures.getFirst();
-            lastPostion.addStringProperty(LAST_POSITION_ICON, contactMapMetadata.getMarkerLastPositon());
-            lastPostion.removeProperty(MARKER_ICON);
-            lastPostion.addBooleanProperty(LAST_LOCATION, true);
-            lastPositions.put(contactId, lastPostion);
+            for (Feature position : sortedPointFeatures) {
+                if (!position.getBooleanProperty(IS_POI)) {
+                    position.addStringProperty(LAST_POSITION_ICON, contactMapMetadata.getMarkerLastPositon());
+                    position.removeProperty(MARKER_ICON);
+                    position.addBooleanProperty(LAST_LOCATION, true);
+                    lastPositions.put(contactId, position);
+                    break;
+                }
+            }
         }
 
         featureCollections.put(contactMapMetadata.getMarkerFeatureCollection(), sortedPointFeatures);

@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Class responsible for synchronising views at a LatLng on top of a Map.
  */
-public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListener {
+public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListener, SendingTask.OnMessageSentListener {
 
     private final MapView mapView;
     private final MapboxMap mapboxMap;
@@ -100,5 +100,10 @@ public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListe
         for (MarkerView marker : markers) {
             marker.update();
         }
+    }
+
+    @Override
+    public void onMessageSent() {
+        removeMarkers();
     }
 }

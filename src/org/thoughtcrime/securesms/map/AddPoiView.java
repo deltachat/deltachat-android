@@ -1,22 +1,18 @@
 package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-
-import static org.thoughtcrime.securesms.util.BitmapUtil.generateColoredBitmap;
 
 /**
  * Created by cyberta on 24.04.19.
@@ -24,7 +20,11 @@ import static org.thoughtcrime.securesms.util.BitmapUtil.generateColoredBitmap;
 
 public class AddPoiView extends LinearLayoutCompat {
     private ImageButton sendView;
+    private EditText messageView;
+    private ProgressBar progressBar;
     private LatLng latLng;
+    private SendingTask.OnMessageSentListener listener;
+    private int chatId;
 
     public AddPoiView(Context context) {
         this(context, null);
@@ -39,17 +39,36 @@ public class AddPoiView extends LinearLayoutCompat {
 
         inflate(context, R.layout.add_poi_view, this);
         sendView = this.findViewById(R.id.sendView);
+        messageView = this.findViewById(R.id.message_view);
+        progressBar = this.findViewById(R.id.sending_progress);
 
-        sendView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO: submit change
-                // DcHelper.getContext(AddPoiView.this.getContext()).
+        messageView.requestFocus();
+        sendView.setOnClickListener(v -> {
+            if (messageView.getText().toString().length() == 0) {
+                return;
             }
+
+            progressBar.setVisibility(VISIBLE);
+            sendView.setVisibility(INVISIBLE);
+            DcContext dcContext = DcHelper.getContext(AddPoiView.this.getContext());
+            DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+            msg.setLocation((float) latLng.getLatitude(), (float) latLng.getLongitude());
+            msg.setText(messageView.getText().toString());
+
+            SendingTask.Model model = new SendingTask.Model(msg, chatId, listener);
+            new SendingTask(AddPoiView.this.getContext()).execute(model);
         });
     }
 
     public void setLatLng(LatLng latLng) {
         this.latLng = latLng;
+    }
+
+    public void setChatId(int chatId) {
+        this.chatId = chatId;
+    }
+
+    public void setOnMessageSentListener(SendingTask.OnMessageSentListener listener) {
+        this.listener = listener;
     }
 }

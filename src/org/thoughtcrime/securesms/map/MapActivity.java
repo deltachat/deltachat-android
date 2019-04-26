@@ -52,13 +52,14 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     private MapboxMap mapboxMap;
     DCMapFragment mapFragment;
     MarkerViewManager markerViewManager;
+    private int chatId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_map);
-        final int chatId =  getIntent().getIntExtra(CHAT_ID, -1);
+        chatId =  getIntent().getIntExtra(CHAT_ID, -1);
 
         if (chatId == -1) {
             finish();
@@ -187,6 +188,9 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
             Prefs.setMapZoom(this.getApplicationContext(), mapDataManager.getChatId(), mapboxMap.getCameraPosition().zoom);
             mapDataManager.onDestroy();
         }
+        if (markerViewManager != null) {
+            markerViewManager.onDestroy();
+        }
     }
 
     @Override
@@ -285,6 +289,8 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         } else {
             AddPoiView addPoiView = new AddPoiView(this);
             addPoiView.setLatLng(point);
+            addPoiView.setChatId(chatId);
+            addPoiView.setOnMessageSentListener(markerViewManager);
             markerViewManager.addMarker(new MarkerView(point, addPoiView));
         }
         return true;
