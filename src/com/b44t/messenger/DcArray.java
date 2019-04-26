@@ -20,6 +20,7 @@ public class DcArray {
     public native int       getMsgId     (int index);
     public native int       getLocationId(int index);
     public native String    getMarker    (int index);
+    public native boolean   isIndependent(int index);
 
     // working with raw c-data
     private long        arrayCPtr;    // CAVE: the name is referenced in the JNI

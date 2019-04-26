@@ -850,6 +850,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcArray_getMarker(JNIEnv *env, jobject
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcArray_isIndependent(JNIEnv *env, jobject obj, jint index)
+{
+	return (dc_array_is_independent(get_dc_array(env, obj), index)!=0);
+}
+
+
 /*******************************************************************************
  * DcChatlist
  ******************************************************************************/
@@ -1288,6 +1294,13 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setDuration(JNIEnv *env, jobject ob
 {
     dc_msg_set_duration(get_dc_msg(env, obj), duration);
 }
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setLocation(JNIEnv *env, jobject obj, jfloat latitude, jfloat longitude)
+{
+    dc_msg_set_location(get_dc_msg(env, obj), latitude, longitude);
+}
+
 
 
 /*******************************************************************************

@@ -85,6 +85,7 @@ public class DcMsg {
     public native void    setFile            (String file, String filemime);
     public native void    setDimension       (int width, int height);
     public native void    setDuration        (int duration);
+    public native void    setLocation        (float latitude, float longitude);
 
     public File getFileAsFile() {
         if(getFile()==null)
