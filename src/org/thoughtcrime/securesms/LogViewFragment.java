@@ -30,6 +30,7 @@ import android.os.PowerManager;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +84,16 @@ public class LogViewFragment extends Fragment {
   public String getLogText() {
     return logPreview==null? "null" : logPreview.getText().toString();
   }
+
+  public Float getLogTextSize() { return logPreview.getTextSize(); }
+
+  public void setLogTextSize(Float Textsize) {
+    logPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, Textsize);
+  }
+
+  public void scrollDownLog() { logPreview.setSelection(logPreview.getText().length()); }
+
+  public void scrollUpLog() { logPreview.setSelection(0); }
 
   private static String grabLogcat() {
     try {

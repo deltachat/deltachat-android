@@ -199,7 +199,7 @@
     </activity>
 
     <activity android:name=".LogViewActivity"
-              android:label="@string/pref_view_log"
+              android:label="@string/pref_log_header"
               android:windowSoftInputMode="stateHidden"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 

@@ -56,15 +56,29 @@ public class LogViewActivity extends BaseActionBarActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
+    Float newSize;
     switch (item.getItemId()) {
       case android.R.id.home:
         finish();
         return true;
-
       case R.id.copy_log_to_clipboard:
         Util.writeTextToClipboard(this, logViewFragment.getLogText());
         Toast.makeText(getApplicationContext(), R.string.done, Toast.LENGTH_SHORT).show();
         return true;
+      case R.id.log_zoom_in:
+        newSize = logViewFragment.getLogTextSize() + 2.0f;
+        logViewFragment.setLogTextSize(newSize);
+        return false;
+      case R.id.log_zoom_out:
+        newSize = logViewFragment.getLogTextSize() - 2.0f;
+        logViewFragment.setLogTextSize(newSize);
+        return false;
+      case R.id.log_scroll_down:
+        logViewFragment.scrollDownLog();
+        return false;
+      case R.id.log_scroll_up:
+        logViewFragment.scrollUpLog();
+        return false;
     }
 
     return false;
