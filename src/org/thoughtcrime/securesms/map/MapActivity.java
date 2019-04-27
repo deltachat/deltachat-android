@@ -284,6 +284,10 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     }
 
     private boolean handleAddPoiClick(LatLng point) {
+        if (chatId == 0) {
+            return false;
+        }
+
         if (markerViewManager.hasMarkers()) {
             markerViewManager.removeMarkers();
         } else {
