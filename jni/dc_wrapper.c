@@ -24,7 +24,7 @@
 
 
 #include <jni.h>
-#include "messenger-backend/src/deltachat.h"
+#include "deltachat-core-sys/deltachat-ffi/deltachat.h"
 
 
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
@@ -1517,6 +1517,3 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_stringToData(JNIEnv *env, jcla
     }
     return (jlong)cstring; // the return value of stringToData() will be passed to c-land and free()'d there
 }
-
-
-

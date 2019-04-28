@@ -35,3 +35,7 @@ jni/libspeex/.deps/
 
 # no vi tmp files
 *.swp
+
+jni/x86
+jni/armeabi
+jni/armeabi-v7a
