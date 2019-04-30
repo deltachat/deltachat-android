@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms.map.model;
 
 import android.graphics.Color;
 
+import com.b44t.messenger.DcContact;
+
 /**
  * Created by cyberta on 07.03.19.
  */
@@ -27,12 +29,14 @@ public class MapSource {
     private final String markerLastPositon;
     private final String markerFeatureCollection;
     private final String lineFeatureCollection;
+    private final String displayName;
 
     private int color;
     private int colorArgb;
     private int contactId;
 
-    public MapSource(int contactId) {
+    public MapSource(DcContact contact) {
+        int contactId = contact.getId();
         markerSource = MARKER_POSITION_SOURCE + "_" + contactId;
         lineSource = LINE_SOURCE + "_" + contactId;
         markerLayer = MARKER_LAYER + "_" + contactId;
@@ -42,10 +46,8 @@ public class MapSource {
         markerFeatureCollection = MARKER_FEATURE_LIST + "_" + contactId;
         lineFeatureCollection = LINE_FEATURE_LIST + "_" + contactId;
         this.contactId = contactId;
-    }
-
-    public void setColor(int color) {
-        this.color = color;
+        displayName = contact.getDisplayName();
+        color = contact.getColor();
         colorArgb = Color.argb(0xFF, Color.red(color), Color.green(color), Color.blue(color));
     }
 
@@ -86,5 +88,9 @@ public class MapSource {
     public String getLineFeatureCollection() { return lineFeatureCollection; }
 
     public int getContactId() { return contactId; }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 
 }

@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.map;
 import com.b44t.messenger.DcArray;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 import com.google.gson.JsonObject;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.LineString;
@@ -18,13 +19,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static org.thoughtcrime.securesms.map.MapDataManager.ACCURACY;
 import static org.thoughtcrime.securesms.map.MapDataManager.CONTACT_ID;
+import static org.thoughtcrime.securesms.map.MapDataManager.IS_POI;
 import static org.thoughtcrime.securesms.map.MapDataManager.LAST_LOCATION;
 import static org.thoughtcrime.securesms.map.MapDataManager.LAST_POSITION_ICON;
+import static org.thoughtcrime.securesms.map.MapDataManager.LAST_POSITION_LABEL;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_CHAR;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_ICON;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
-import static org.thoughtcrime.securesms.map.MapDataManager.IS_POI;
+import static org.thoughtcrime.securesms.map.MapDataManager.POI_LONG_DESCRIPTION;
 import static org.thoughtcrime.securesms.map.MapDataManager.TIMESTAMP;
 
 /**
@@ -83,17 +86,26 @@ public class DataCollector {
                     locations.getMarker(i) != null ?
                             locations.getMarker(i) :
                             "";
+            boolean isPoi = locations.isIndependent(i);
+            int messageId = locations.getMsgId(i);
 
             Feature pointFeature = Feature.fromGeometry(point, new JsonObject(), String.valueOf(locations.getLocationId(i)));
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
             pointFeature.addBooleanProperty(LAST_LOCATION, false);
             pointFeature.addNumberProperty(CONTACT_ID, contactId);
             pointFeature.addNumberProperty(TIMESTAMP, locations.getTimestamp(i));
-            pointFeature.addNumberProperty(MESSAGE_ID, locations.getMsgId(i));
+            pointFeature.addNumberProperty(MESSAGE_ID, messageId);
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
             pointFeature.addStringProperty(MARKER_CHAR, codepointChar);
-            pointFeature.addBooleanProperty(IS_POI,locations.isIndependent(i));
             pointFeature.addStringProperty(MARKER_ICON, contactMapMetadata.getMarkerIcon());
+            pointFeature.addBooleanProperty(IS_POI, isPoi);
+            if (isPoi && codepointChar.length() == 0 && messageId != 0) {
+                //has a long poi label
+                DcMsg poiMsg = dcContext.getMsg(messageId);
+                String poiLongDescription = poiMsg.getText();
+                pointFeature.addStringProperty(POI_LONG_DESCRIPTION, poiLongDescription);
+            }
+
             sortedPointFeatures.addFirst(pointFeature);
 
             if (!locations.isIndependent(i) && sortedPointFeatures.size() > 1) {
@@ -116,6 +128,7 @@ public class DataCollector {
             for (Feature position : sortedPointFeatures) {
                 if (!position.getBooleanProperty(IS_POI)) {
                     position.addStringProperty(LAST_POSITION_ICON, contactMapMetadata.getMarkerLastPositon());
+                    position.addStringProperty(LAST_POSITION_LABEL, contactMapMetadata.getDisplayName());
                     position.removeProperty(MARKER_ICON);
                     position.addBooleanProperty(LAST_LOCATION, true);
                     lastPositions.put(contactId, position);
@@ -134,8 +147,7 @@ public class DataCollector {
         }
 
         DcContact contact = dcContext.getContact(contactId);
-        MapSource contactMapSource = new MapSource(contactId);
-        contactMapSource.setColor(contact.getColor());
+        MapSource contactMapSource = new MapSource(contact);
         contactMapSources.put(contactId, contactMapSource);
         return contactMapSource;
     }
