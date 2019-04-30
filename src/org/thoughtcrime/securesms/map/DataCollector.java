@@ -97,7 +97,9 @@ public class DataCollector {
             pointFeature.addNumberProperty(MESSAGE_ID, messageId);
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
             pointFeature.addStringProperty(MARKER_CHAR, codepointChar);
-            pointFeature.addStringProperty(MARKER_ICON, contactMapMetadata.getMarkerIcon());
+            pointFeature.addStringProperty(MARKER_ICON, isPoi ?
+                    contactMapMetadata.getMarkerPoi() :
+                    contactMapMetadata.getMarkerIcon());
             pointFeature.addBooleanProperty(IS_POI, isPoi);
             if (isPoi && codepointChar.length() == 0 && messageId != 0) {
                 //has a long poi label

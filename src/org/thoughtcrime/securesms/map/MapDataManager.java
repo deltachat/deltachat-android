@@ -397,6 +397,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 generateColoredLastPositionIcon(source.getColorArgb()));
         mapboxStyle.addImage(source.getMarkerIcon(),
                 generateColoredLocationIcon(source.getColorArgb()));
+        mapboxStyle.addImage(source.getMarkerPoi(),
+                generateColoredPoiIcon(source.getColorArgb()));
 
         Expression markerSize =
                 switchCase(
@@ -461,6 +463,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private Bitmap generateColoredLocationIcon(int colorFilter) {
         return generateColoredBitmap(context, colorFilter, R.drawable.ic_location_dot);
+    }
+
+    private Bitmap generateColoredPoiIcon(int colorFilter) {
+        return generateColoredBitmap(context, colorFilter, R.drawable.ic_location_poi_dot);
     }
 
     private void updateSources() {

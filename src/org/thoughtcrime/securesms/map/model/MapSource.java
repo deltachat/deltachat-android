@@ -15,6 +15,7 @@ public class MapSource {
     public static final String LINE_SOURCE = "line_source";
     public static final String MARKER_POSITION_SOURCE = "marker_position";
     public static final String MARKER_ICON = "marker_icon_id";
+    public static final String MARKER_POI = "marker_poi";
     public static final String MARKER_LAST_POSITON = "marker_last_position";
     public static final String MARKER_FEATURE_LIST = "marker_feature_list";
     public static final String LINE_FEATURE_LIST = "line_feature_list";
@@ -27,6 +28,7 @@ public class MapSource {
 
     private final String markerIcon;
     private final String markerLastPositon;
+    private final String markerPoi;
     private final String markerFeatureCollection;
     private final String lineFeatureCollection;
     private final String displayName;
@@ -43,6 +45,7 @@ public class MapSource {
         lineLayer = LINE_LAYER + "_" + contactId;
         markerIcon = MARKER_ICON + "_" + contactId;
         markerLastPositon = MARKER_LAST_POSITON + "_" + contactId;
+        markerPoi = MARKER_POI + "_" + contactId;
         markerFeatureCollection = MARKER_FEATURE_LIST + "_" + contactId;
         lineFeatureCollection = LINE_FEATURE_LIST + "_" + contactId;
         this.contactId = contactId;
@@ -81,6 +84,10 @@ public class MapSource {
 
     public String getMarkerLastPositon() {
         return markerLastPositon;
+    }
+
+    public String getMarkerPoi() {
+        return markerPoi;
     }
 
     public String getMarkerFeatureCollection() { return markerFeatureCollection; }
