@@ -4,6 +4,7 @@
 2019-05-01
 
 * Add labels to map markers
+* Always show self-position on map
 * Tweak Log UI
 * Bugfixes
 
