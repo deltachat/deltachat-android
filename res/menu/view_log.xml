@@ -7,9 +7,9 @@
         android:id="@+id/log_zoom_in" />
     <item android:title="@string/menu_zoom_out"
         android:id="@+id/log_zoom_out" />
+    <item android:title="@string/menu_scroll_to_top"
+          android:id="@+id/log_scroll_up" />
     <item android:title="@string/menu_scroll_to_bottom"
         android:id="@+id/log_scroll_down" />
-    <item android:title="@string/menu_scroll_to_top"
-        android:id="@+id/log_scroll_up" />
 
 </menu>
