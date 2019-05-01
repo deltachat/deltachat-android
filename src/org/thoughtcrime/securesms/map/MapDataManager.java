@@ -2,15 +2,17 @@ package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.b44t.messenger.DcEventCenter;
+import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
 import com.mapbox.mapboxsdk.geometry.LatLngBounds;
+import com.mapbox.mapboxsdk.location.LocationComponent;
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.style.expressions.Expression;
 import com.mapbox.mapboxsdk.style.layers.LineLayer;
@@ -35,8 +37,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
 import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
+import static com.mapbox.mapboxsdk.location.modes.RenderMode.COMPASS;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.all;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.length;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
@@ -106,12 +108,13 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private MapDataState callback;
     private boolean isInitial = true;
     private boolean showTraces = false;
+    private LocationComponent locationComponent;
 
     public interface MapDataState {
         void onDataInitialized(LatLngBounds bounds);
     }
 
-    public MapDataManager(Context context, @NonNull Style mapboxMapStyle, int chatId, MapDataState updateCallback) {
+    public MapDataManager(Context context, @NonNull Style mapboxMapStyle, LocationComponent locationComponent, int chatId, MapDataState updateCallback) {
         Log.d(TAG, "performance test - create map manager");
         this.mapboxStyle = mapboxMapStyle;
         this.context = context;
@@ -119,9 +122,11 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         this.chatId = chatId;
         boundingBuilder = new LatLngBounds.Builder();
         this.callback = updateCallback;
+        this.locationComponent = locationComponent;
 
         initInfoWindowLayer();
         initLastPositionLayer();
+        initLocationComponent();
 
         filterProvider.setMessageFilter(true);
         filterProvider.setLastPositionFilter(System.currentTimeMillis() - DEFAULT_LAST_POSITION_DELTA);
@@ -364,6 +369,20 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 iconIgnorePlacement(true),
                 iconSize(markerSize)
         ).withFilter(filterProvider.getTimeFilter()), INFO_WINDOW_LAYER);
+    }
+
+    @SuppressWarnings( {"MissingPermission"})
+    private void initLocationComponent() {
+        if (! PermissionsManager.areLocationPermissionsGranted(context)) {
+            return;
+        }
+
+        LocationComponentActivationOptions locationComponentActivationOptions = LocationComponentActivationOptions
+                .builder(context, mapboxStyle)
+                .build();
+        locationComponent.activateLocationComponent(locationComponentActivationOptions);
+        locationComponent.setRenderMode(COMPASS);
+        locationComponent.setLocationComponentEnabled(true);
     }
 
     private void initContactBasedLayers(MapSource source) {

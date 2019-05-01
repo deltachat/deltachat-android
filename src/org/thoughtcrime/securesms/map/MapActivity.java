@@ -15,6 +15,8 @@ import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.location.LocationComponent;
+import com.mapbox.mapboxsdk.location.LocationComponentOptions;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
 
@@ -111,7 +113,11 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                 return;
             }
 
-            mapDataManager = new MapDataManager(this, mapBoxStyle, chatId, (latLngBounds) -> {
+            mapDataManager = new MapDataManager(this,
+                    mapBoxStyle,
+                    mapboxMap.getLocationComponent(),
+                    chatId,
+                    (latLngBounds) -> {
                 Log.d(TAG, "on Data initialized");
                 if (latLngBounds != null && lastMapCenter == null) {
                     mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
