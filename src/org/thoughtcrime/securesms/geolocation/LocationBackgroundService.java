@@ -84,9 +84,9 @@ public class LocationBackgroundService extends Service {
 
     private void initialLocationUpdate() {
         try {
-            Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            //Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             Location gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            locationListener.onLocationChanged(networkLocation);
+            //locationListener.onLocationChanged(networkLocation);
             locationListener.onLocationChanged(gpsLocation);
 
         } catch (NullPointerException | SecurityException e) {
