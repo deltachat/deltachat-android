@@ -40,6 +40,7 @@ import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
 import static com.mapbox.mapboxsdk.location.modes.RenderMode.COMPASS;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.all;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.has;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.length;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.neq;
@@ -48,6 +49,8 @@ import static com.mapbox.mapboxsdk.style.expressions.Expression.switchCase;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.toBool;
 import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ANCHOR_BOTTOM_LEFT;
 import static com.mapbox.mapboxsdk.style.layers.Property.NONE;
+import static com.mapbox.mapboxsdk.style.layers.Property.TEXT_ANCHOR_CENTER;
+import static com.mapbox.mapboxsdk.style.layers.Property.TEXT_ANCHOR_TOP;
 import static com.mapbox.mapboxsdk.style.layers.Property.VISIBLE;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAnchor;
@@ -60,9 +63,12 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineJoin;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineOpacity;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineWidth;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textAllowOverlap;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textAnchor;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textColor;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textField;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textIgnorePlacement;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textOffset;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.textSize;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 import static org.thoughtcrime.securesms.map.model.MapSource.LINE_FEATURE_LIST;
@@ -82,9 +88,11 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public static final String MESSAGE_ID = "MESSAGE_ID";
     public static final String ACCURACY = "ACCURACY";
     public static final String MARKER_CHAR = "MARKER_CHAR";
+    public static final String POI_LONG_DESCRIPTION = "POI_LONG_DESCRIPTION";
     public static final String MARKER_ICON = "MARKER_ICON";
     public static final String IS_POI = "IS_POI";
     public static final String LAST_POSITION_ICON = "LAST_POSITION_ICON";
+    public static final String LAST_POSITION_LABEL = "LAST_POSITION_LABEL";
     private static final String INFO_WINDOW_SRC = "INFO_WINDOW_SRC";
     private static final String LAST_POSITION_LAYER = "LAST_POSITION_LAYER";
     private static final String LAST_POSITION_SOURCE = "LAST_POSITION_SRC";
@@ -343,8 +351,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private void initInfoWindowLayer() {
         Expression iconOffset = switchCase(
                 toBool(get(LAST_LOCATION)), literal(new Float[] {-2f, -25f}),
-                neq(length(get(MARKER_CHAR)), literal(0)), literal(new Float[] {-2f, -20f}),
-                literal(new Float[] {-2f, -15f}));
+                literal(new Float[] {-2f, -20f}));
         GeoJsonSource infoWindowSource = new GeoJsonSource(INFO_WINDOW_SRC);
         mapboxStyle.addSource(infoWindowSource);
         mapboxStyle.addLayer(new SymbolLayer(INFO_WINDOW_LAYER, INFO_WINDOW_SRC).withProperties(
@@ -367,7 +374,12 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                      /* all info window and marker image to appear at the same time*/
                 iconAllowOverlap(true),
                 iconIgnorePlacement(true),
-                iconSize(markerSize)
+                iconSize(markerSize),
+                textField(get(LAST_POSITION_LABEL)),
+                textAnchor(TEXT_ANCHOR_TOP),
+                textOffset(new Float[]{0.0f, 1.0f}),
+                textAllowOverlap(true),
+                textIgnorePlacement(true)
         ).withFilter(filterProvider.getTimeFilter()), INFO_WINDOW_LAYER);
     }
 
@@ -405,6 +417,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 generateColoredLastPositionIcon(source.getColorArgb()));
         mapboxStyle.addImage(source.getMarkerIcon(),
                 generateColoredLocationIcon(source.getColorArgb()));
+        mapboxStyle.addImage(source.getMarkerPoi(),
+                generateColoredPoiIcon(source.getColorArgb()));
 
         Expression markerSize =
                 switchCase(
@@ -427,16 +441,37 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 LAST_POSITION_LAYER);
 
 
+        Expression textField = switchCase(eq(length(get(MARKER_CHAR)), 1), get(MARKER_CHAR),
+                get(POI_LONG_DESCRIPTION));
+        Float[] offset = new Float[] {0.0f, 1.25f};
+        Float[] zeroOffset = new Float[] {0.0f, 0.0f};
+        Expression textOffset = switchCase(
+                has(POI_LONG_DESCRIPTION), literal(offset),
+                literal(zeroOffset));
+        Expression textColor = switchCase(
+                has(POI_LONG_DESCRIPTION), literal("#000000"),
+                literal("#FFFFFF")
+        );
+        Expression textAnchor = switchCase(
+                has(POI_LONG_DESCRIPTION), literal(TEXT_ANCHOR_TOP),
+                literal(TEXT_ANCHOR_CENTER)
+        );
+        Expression textSize = switchCase(
+                has(POI_LONG_DESCRIPTION), literal(12.0f),
+                literal(15.0f)
+        );
+
         mapboxStyle.addLayerBelow(new SymbolLayer(source.getMarkerLayer(), source.getMarkerSource())
                         .withProperties(
                                 iconImage(markerIcon),
                                 iconSize(markerSize),
-                                textAllowOverlap(true),
-                                textIgnorePlacement(true),
                                 iconIgnorePlacement(false),
                                 iconAllowOverlap(false),
-                                textField(get(MARKER_CHAR)),
-                                textColor("#FFFFFF"))
+                                textField(textField),
+                                textOffset(textOffset),
+                                textAnchor(textAnchor),
+                                textSize(textSize),
+                                textColor(textColor))
                         .withFilter(all(filterProvider.getMarkerFilter(),
                                 not(get(LAST_LOCATION)))),
                 LAST_POSITION_LAYER);
@@ -448,6 +483,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private Bitmap generateColoredLocationIcon(int colorFilter) {
         return generateColoredBitmap(context, colorFilter, R.drawable.ic_location_dot);
+    }
+
+    private Bitmap generateColoredPoiIcon(int colorFilter) {
+        return generateColoredBitmap(context, colorFilter, R.drawable.ic_location_poi_dot);
     }
 
     private void updateSources() {

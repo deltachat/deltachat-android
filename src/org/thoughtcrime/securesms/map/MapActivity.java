@@ -5,6 +5,7 @@ import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,7 @@ import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
 import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static com.mapbox.mapboxsdk.constants.MapboxConstants.MINIMUM_ZOOM;
+import static org.thoughtcrime.securesms.map.MapDataManager.IS_POI;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
@@ -128,18 +130,9 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                         handleMarkerClick(point) ||
                         handleAddPoiClick(point));
 
-                /*if (BuildConfig.DEBUG) {
-                    mapboxMap.addOnMapLongClickListener(point -> {
-                        new AlertDialog.Builder(MapActivity.this)
-                                .setMessage(getString(R.string.menu_delete_locations))
-                                .setPositiveButton(R.string.yes, (dialog, which) -> {
-                                    ApplicationContext.getInstance(MapActivity.this).dcLocationManager.deleteAllLocations();
-                                })
-                                .setNegativeButton(R.string.no, null)
-                                .show();
-                        return true;
-                    });
-                }*/
+
+                mapboxMap.addOnMapLongClickListener(point ->
+                    handlePoiLongClick(point));
 
                 SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
                 switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -290,6 +283,10 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     }
 
     private boolean handleAddPoiClick(LatLng point) {
+        if (chatId == 0) {
+            return false;
+        }
+
         if (markerViewManager.hasMarkers()) {
             markerViewManager.removeMarkers();
         } else {
@@ -300,6 +297,27 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
             markerViewManager.addMarker(new MarkerView(point, addPoiView));
         }
         return true;
+    }
+
+    private boolean handlePoiLongClick(LatLng point) {
+        final PointF pixel = mapboxMap.getProjection().toScreenLocation(point);
+        List<Feature> features = mapboxMap.queryRenderedFeatures(pixel, mapDataManager.getMarkerLayers());
+        for (Feature feature : features) {
+            if (feature.getBooleanProperty(IS_POI)) {
+                new AlertDialog.Builder(MapActivity.this)
+                        .setMessage(getString(R.string.menu_delete_location))
+                        .setPositiveButton(R.string.yes, (dialog, which) -> {
+                            int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
+                            int[] messages = new int[1];
+                            messages[0] = messageId;
+                            ApplicationContext.getInstance(MapActivity.this).dcContext.deleteMsgs(messages);
+                        })
+                        .setNegativeButton(R.string.no, null)
+                        .show();
+                return true;
+            }
+        }
+        return false;
     }
 
 }

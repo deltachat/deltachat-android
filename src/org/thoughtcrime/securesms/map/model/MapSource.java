@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms.map.model;
 
 import android.graphics.Color;
 
+import com.b44t.messenger.DcContact;
+
 /**
  * Created by cyberta on 07.03.19.
  */
@@ -13,6 +15,7 @@ public class MapSource {
     public static final String LINE_SOURCE = "line_source";
     public static final String MARKER_POSITION_SOURCE = "marker_position";
     public static final String MARKER_ICON = "marker_icon_id";
+    public static final String MARKER_POI = "marker_poi";
     public static final String MARKER_LAST_POSITON = "marker_last_position";
     public static final String MARKER_FEATURE_LIST = "marker_feature_list";
     public static final String LINE_FEATURE_LIST = "line_feature_list";
@@ -25,27 +28,29 @@ public class MapSource {
 
     private final String markerIcon;
     private final String markerLastPositon;
+    private final String markerPoi;
     private final String markerFeatureCollection;
     private final String lineFeatureCollection;
+    private final String displayName;
 
     private int color;
     private int colorArgb;
     private int contactId;
 
-    public MapSource(int contactId) {
+    public MapSource(DcContact contact) {
+        int contactId = contact.getId();
         markerSource = MARKER_POSITION_SOURCE + "_" + contactId;
         lineSource = LINE_SOURCE + "_" + contactId;
         markerLayer = MARKER_LAYER + "_" + contactId;
         lineLayer = LINE_LAYER + "_" + contactId;
         markerIcon = MARKER_ICON + "_" + contactId;
         markerLastPositon = MARKER_LAST_POSITON + "_" + contactId;
+        markerPoi = MARKER_POI + "_" + contactId;
         markerFeatureCollection = MARKER_FEATURE_LIST + "_" + contactId;
         lineFeatureCollection = LINE_FEATURE_LIST + "_" + contactId;
         this.contactId = contactId;
-    }
-
-    public void setColor(int color) {
-        this.color = color;
+        displayName = contact.getDisplayName();
+        color = contact.getColor();
         colorArgb = Color.argb(0xFF, Color.red(color), Color.green(color), Color.blue(color));
     }
 
@@ -81,10 +86,18 @@ public class MapSource {
         return markerLastPositon;
     }
 
+    public String getMarkerPoi() {
+        return markerPoi;
+    }
+
     public String getMarkerFeatureCollection() { return markerFeatureCollection; }
 
     public String getLineFeatureCollection() { return lineFeatureCollection; }
 
     public int getContactId() { return contactId; }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 
 }
