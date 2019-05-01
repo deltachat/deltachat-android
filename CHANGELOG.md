@@ -1,7 +1,16 @@
 # Delta Chat Android Changelog
 
+## v0.303.0
+2019-05-01
+
+* Add labels to map markers
+* Tweak Log UI
+* Bugfixes
+
+The changes have been done by Ampli-fier, Björn Petersen, cyBerta
 
 ## v0.302.1
+
 2019-04-27
 
 * add POIs on maps
@@ -10,7 +19,6 @@
 * bugfixes
 
 The changes have been done by Björn Petersen, cyBerta, Daniel Boehrsi.
-
 
 ## v0.301.1
 2019-04-22
