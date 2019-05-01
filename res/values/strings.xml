@@ -137,6 +137,7 @@
     <string name="menu_play">Play</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Scroll to the bottom</string>
+    <string name="menu_scroll_to_top">Scroll to the top</string>
     <string name="menu_invite">Invite friends</string>
     <string name="menu_help">Help</string>
     <string name="menu_select_all">Select all</string>
@@ -147,6 +148,8 @@
     <string name="menu_deaddrop">Contact requests</string>
     <string name="menu_deaddrop_subtitle">Press message to start chatting</string>
     <string name="menu_view_profile">View profile</string>
+    <string name="menu_zoom_in">Zoom in</string>
+    <string name="menu_zoom_out">Zoom out</string>
     <string name="title_share_location">Share location with all group members</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
@@ -381,6 +384,7 @@
     <string name="pref_in_chat_sounds">In-chat sounds</string>
     <string name="pref_message_text_size">Message font size</string>
     <string name="pref_view_log">View log</string>
+    <string name="pref_log_header">Log</string>
     <string name="pref_other">Other</string>
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Backup chats to external storage</string>

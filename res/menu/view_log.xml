@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="@string/menu_copy_to_clipboard"
         android:id="@+id/copy_log_to_clipboard" />
+    <item android:title="@string/menu_zoom_in"
+        android:id="@+id/log_zoom_in" />
+    <item android:title="@string/menu_zoom_out"
+        android:id="@+id/log_zoom_out" />
+    <item android:title="@string/menu_scroll_to_bottom"
+        android:id="@+id/log_scroll_down" />
+    <item android:title="@string/menu_scroll_to_top"
+        android:id="@+id/log_scroll_up" />
 
 </menu>
