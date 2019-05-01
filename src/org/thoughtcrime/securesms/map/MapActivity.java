@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.map;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
@@ -12,17 +13,19 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.b44t.messenger.DcMsg;
+import com.mapbox.android.telemetry.TelemetryEnabler;
 import com.mapbox.geojson.Feature;
+import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.location.LocationComponent;
-import com.mapbox.mapboxsdk.location.LocationComponentOptions;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.maps.TelemetryDefinition;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BaseActivity;
+import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider;
@@ -58,9 +61,30 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     MarkerViewManager markerViewManager;
     private int chatId;
 
+    public static void lazyMapboxInit(Context context) {
+        try {
+            Mapbox.getInstance(context, BuildConfig.MAP_ACCESS_TOKEN);
+
+            // disable telemetry. these functions are currently partly redundant,
+            // however, implementations may change
+            // and the two explicit calls seems to have worked in the past,
+            // see https://github.com/mapbox/mapbox-gl-native/issues/13304
+            TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.DISABLED);
+            TelemetryDefinition telemetry = Mapbox.getTelemetry();
+            if (telemetry != null) {
+                telemetry.setUserTelemetryRequestState(false);
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        lazyMapboxInit(this);
 
         setContentView(R.layout.activity_map);
         chatId =  getIntent().getIntExtra(CHAT_ID, -1);

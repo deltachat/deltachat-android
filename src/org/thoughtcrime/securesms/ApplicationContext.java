@@ -11,7 +11,6 @@ import android.support.annotation.NonNull;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
-import com.mapbox.mapboxsdk.Mapbox;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
@@ -55,7 +54,7 @@ public class ApplicationContext extends Application implements DefaultLifecycleO
     initializeJobManager();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
-    Mapbox.getInstance(getApplicationContext(), BuildConfig.MAP_ACCESS_TOKEN);
+
     dcLocationManager = new DcLocationManager(this);
     try {
       DynamicLanguage.setContextLocale(this, DynamicLanguage.getSelectedLocale(this));
