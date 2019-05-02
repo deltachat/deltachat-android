@@ -199,13 +199,21 @@
     <string name="chat_new_group_hint">Başqalarının bu qrup daxilində cavab verməsinə imkan verən ilk mesajı yaradın. \n\n• Bütün üzvlər Delta Chat istifadə etsələr daha yaxşıdır. \n\n• İlk mesajı çatdırmaq bir müddət ala bilər.</string>
     <string name="chat_record_slide_to_cancel">Ləğv etmək üçün sürüşdürün</string>
     <string name="chat_record_explain">Bir səsli mesajı yazmaq üçün toxunun və saxlayın, göndərmək üçün buraxın</string>
+    <string name="chat_no_chats_yet_title">Qutu boşdur.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
+    <string name="chat_no_chats_yet_hint">Digər Delta Chat istifadəçiləri ilə və hər hansı bir e-poçt ünvanı ilə söhbət edə bilərsiniz.</string>
+    <string name="chat_all_archived">Bütün çatlar saxlanıldı.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
     <string name="chat_share_with_title">Göndər </string>
     <string name="chat_input_placeholder">Mesaj</string>
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>
     <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
     <string name="chat_contact_request">Kontakt sorğusu</string>
+    <!-- map -->
+    <string name="filter_map_on_time">Vaxt məhdudiyyəti ilə yerləşmə yerləri göstərin</string>
     <string name="filter_last_position">Son yerləşmə</string>
+    <string name="show_location_traces">İzləri göstərmək</string>
+
+
     <!-- search -->
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
@@ -284,6 +292,7 @@
     <string name="pref_summary_off">bağlı</string>
     <string name="pref_summary_default">Cari olan</string>
     <string name="pref_summary_custom">Xüsusi</string>
+    <string name="pref_using_custom">:Xüsusi istifadə %s</string>
     <string name="pref_profile_info_headline">Profil məlumatınız</string>
     <string name="pref_profile_photo">Profil şəkili</string>
     <string name="pref_trim_headline">Mesajın düzəldilməsi</string>
@@ -314,7 +323,9 @@
     <string name="pref_screen_security_please_restart_hint">Ekranın təhlükəsizlik tənzimləmələrini tətbiq etmək üçün proqramı yenidən başladın.</string>
     <string name="pref_notifications">Bildirişlər</string>
     <string name="pref_notifications_show">Göstərmək</string>
+    <string name="pref_notifications_priority">Öndəmdə olan</string>
     <string name="pref_led_color">LED rəng</string>
+    <string name="pref_led_pattern">İşiq diodu qırpınır</string>
     <string name="pref_sound">Səs</string>
     <string name="pref_silent">Səssiz</string>
     <string name="pref_repeat_notify">Siqnalları təkrarlayın</string>
@@ -330,12 +341,14 @@
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Klaviaturanın personal öyrənməyini söndürmək</string>
     <string name="pref_read_receipts">Qəbul olunanları oxuyun</string>
+    <string name="pref_read_receipts_explain">Bildirişlər aradan qaldırılırsa, başqalarının oxuduğu bildirişləri görə bilməyəcəksiniz.</string>
     <string name="pref_manage_keys">Açar edarəetməsi</string>
     <string name="pref_use_system_emoji">Sistem emojisini istifadə edin</string>
     <string name="pref_app_access">Daxil oldu</string>
     <string name="pref_communication">Əlaqə</string>
     <string name="pref_chats">Çatlar</string>
     <string name="pref_messages">Mesajlar</string>
+    <string name="pref_in_chat_sounds">Çatda olan səslər</string>
     <string name="pref_message_text_size">Mətnin ölçüsü</string>
     <string name="pref_view_log">Log-a bax</string>
     <string name="pref_other">Başqa</string>
@@ -348,7 +361,11 @@
     <string name="pref_managekeys_export_secret_keys">Gizli açar ixracı</string>
     <string name="pref_managekeys_import_secret_keys">Gizli açar idxalı</string>
     <string name="pref_background">Fon</string>
+    <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
+    <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
     <string name="pref_imap_folder_handling">IMAP qovluqunun idarə edilməsi</string>
+    <string name="pref_watch_inbox_folder">Daxil olanla qovluğunu izləyin</string>
+    <string name="pref_watch_sent_folder">Göndərilmişlərin qovluğunu izləyin</string>
     <string name="pref_watch_mvbox_folder">DeltaChat qovluğunu izləyin</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
     <string name="pref_email_interaction_title">Email qarşılıqlı əlaqə</string>
@@ -363,34 +380,87 @@
     <string name="autocrypt_explain">Avtoşifrələmə, avtomatik ucdan uca e-poçt şifrələməsi üçün yeni və açıq bir spesifikasiyadır. \n\nTədbirdən sonrakı qurulum avtomatik olaraq yaradılıb və Autocrypt Setup Messages ilə cihazlar arasında köçürə bilərsiniz.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
     <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
+    <string name="autocrypt_asm_subject">Autocrypt mesaj ayarı</string>
+    <string name="autocrypt_continue_transfer_title">Autocrypt mesaj ayarı</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Digər cihazda göstərilən quraşdırma kodunu daxil edin.</string>
     <string name="autocrypt_continue_transfer_retry">Təkrar cəhd et</string>
+    <string name="autocrypt_bad_setup_code">Yanlış quraşdırma kodu. Yenidən cəhd edin.\n\nƏgər quraşdırma kodunu xatırlamırsınız, başqa bir cihazdan başqa bir Autocrypt quraşdırma mesajı göndərin.</string>
+
+
+    <string name="systemmsg_group_image_changed">Qrup şəkili dəyişildi. </string>
+    <string name="systemmsg_group_image_deleted">Qrupun şəkili silindi. </string>
     <string name="systemmsg_group_left">Qrup buraxdı.</string>
+    <string name="systemmsg_read_receipt_subject">Qəbul olunanları oxuyun</string>
     <!-- screen lock -->
     <string name="screenlock_title">Ekran kilidi</string>
     <string name="screenlock_authentication_failed">Daxilolma uğursuz oldu.</string>
     <string name="screenlock_unlock_title">Delta Chat-ın kilidini aç</string>
+    <string name="screenlock_unlock_description">Delta Chat-ı blokdan açmaq üçün sistem parolunu daxil edin. </string>
+    <string name="screenlock_inactivity_timeout_interval">Ğeyri aktiv gözləmə intervalı. </string>
+
+
     <!-- qr code stuff -->
     <string name="qrscan_title">Qr kodu skan edin</string>
+    <string name="qrscan_hint">QR kodu kamera ilə izləyin</string>
+    <string name="qrscan_no_addr_found">QR kodu iz ehtiva edir, lakin heç bir e-poçt ünvanı yoxdur.\n\nƏlaqə qurmaq üçün əvvəlcə abonentlə şifrəli bir əlaqə qurun.</string>
     <string name="qrscan_fingerprint_label">İz</string>
+    <string name="qrshow_title">QR dəvət kodu</string>
+    <string name="qrshow_x_joining">%1$s qoşulur.</string>
+    <string name="qrshow_x_verified">%1$s yoxlanıldı.</string>
+    <string name="qrshow_x_has_joined_group">%1$s qrupa qoşuldu.</string>
     <string name="qrshow_join_group_title">Dəvət QR-kodu</string>
     <string name="qrshow_join_contact_title">Dəvət QR-kodu</string>
+    <string name="contact_verified">%1$s yoxlanıldı.</string>
     <string name="notify_mark_all_read">Hamısını oxunmuş olaraq işarələ</string>
     <string name="notify_mark_read">Oxuma işarəsi</string>
     <string name="notify_media_message">Media mesaj</string>
     <string name="notify_reply_button">Cavab ver</string>
     <string name="notify_new_message">Yeni mesaj</string>
     <string name="notify_background_connection_enabled">Arxa fon əlaqəsi aktivdir</string>
+    <string name="notify_priority_high">Yüksək</string>
+    <string name="notify_priority_max">Maksimal</string>
     <string name="notify_name_and_message">Ad və mesaj</string>
     <string name="notify_name_only">Ancaq ad</string>
     <string name="notify_no_name_or_message">Adı və ya mesaj yoxdur</string>
+    <string name="notify_repeat_one_time">Bir dəfə</string>
     <!-- permissions -->
     <string name="perm_required_title">İzin tələb olunur</string>
+    <string name="perm_continue">Davam edin</string>
+    <string name="perm_not_now">İndi yox</string>
+    <string name="perm_explain_need_for_camera_access">Foto və video çəkmək üçün Delta Chat-ə kameraya giriş imkanı verin.</string>
+    <string name="perm_explain_need_for_mic_access">Səsli mesajları göndərmək üçün mikrofona izn verin. </string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat, faylları idxal / ixrac etmək üçün iznə ehtiyacı var.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat şəkillər və ya video çəkmək üçün kamera icazə tələb edir, lakin bu, əbədi imtina edilmişdir. Proqramın sistem ayarlarına gedib \"İcazələr\"-i seçin və \"kamera\" izni verin.</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
+    <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat minimum resurslardan istifadə edir və batareyanı boşaltmamaq üçün qayğı göstərir.</string>
+
+    <!-- languages -->
+    <string name="language_be">Belçika</string>
+    <string name="language_ca">Katalan</string>
+    <string name="language_da">Daniya</string>
+    <string name="language_de">Alman</string>
+    <string name="language_en">İnglis</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">İspaniya</string>
+    <string name="language_eu">Bask</string>
+    <string name="language_fr">Fransız</string>
+    <string name="language_hr">Xorvat</string>
+    <string name="language_hu">Macarıstan</string>
+    <string name="language_it">İtaliyan</string>
+    <string name="language_id">İndonesiya</string>
+    <string name="language_ja_JP">Yapon</string>
+    <string name="language_ko">Koreya</string>
+    <string name="language_nb_NO">Norveç</string>
+    <string name="language_nl">Holland</string>
+    <string name="language_nl_NL">Holland (Niderland)</string>
+    <string name="language_pl">Polşa</string>
     <string name="language_pt">Portuqal</string>
     <string name="language_ru">Rus</string>
     <string name="language_ru_RU">Rus (Rusiya)</string>
     <string name="language_sq">Alban</string>
     <string name="language_sr">Serb</string>
+    <string name="language_sv">İsveç</string>
     <string name="language_ta">Tamil</string>
     <string name="language_te">Teluqu</string>
     <string name="language_tr">Türk</string>
@@ -448,19 +518,37 @@
     <string name="name_desktop">Ad</string>
     <string name="autocrypt_key_transfer_desktop">Avtoşifrələmə açarın ötürülməsi</string>
     <string name="initiate_key_transfer_title_desktop">Açar ötürülməsinin təşəbbüsü</string>
+    <string name="initiate_key_transfer_desktop">Autocrypt konfiqurasiya mesajı təhlükəsiz olaraq \"sondan sona\" parametrinizi Autocrypt ilə uyğun olan digər tətbiqlərlə bölüşür. Quraşdırma burada göstərilir və başqa bir cihazda yığılmış olmalıdır. Bir quraşdırma kodu ilə şifrələ olunacaq.</string>
     <string name="reply_to_message_desktop">Mesaja cavab ver</string>
     <string name="select_group_image_desktop">Qrup şəklini seç</string>
     <string name="imex_progress_title_desktop">Ehtiyat nüsxəsinin yaradılması</string>
     <string name="download_attachment_desktop">Əlavə edin</string>
+    <string name="export_backup_desktop">Ehtiyat nüsxəsinin ixracı</string>
     <string name="transfer_key_desktop">Ötürmə açarı</string>
+    <string name="show_key_transfer_message_desktop">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
     <string name="new_message_from_desktop">Yeni mesaj</string>
     <string name="unblock_contacts_desktop">Kontaktları blokdan çıxart</string>
     <string name="none_blocked_desktop">Hal hazırda bloklanmış kontakt yoxdur</string>
+    <string name="autocrypt_correct_desktop">Autocrypt ayarı müvəffəqiyyətlə köçürüldü!</string>
+    <string name="autocrypt_incorrect_desktop">Yanlış kod. Yenidən cəhd edin. </string>
+    <string name="create_chat_error_desktop">Yeni çat yaratmaq alınmadı</string>
+    <string name="ask_delete_chat_desktop">Bu çatı silmək istədiyinizə əminsinizmi? </string>
     <string name="email_validation_failed_desktop">E-poçt ünvanı tələb olunur.</string>
+    <string name="forget_login_confirmation_desktop">Bu giriş silmək istəyirsiniz? Hər şey, sizin \"sondan sona\" quraşdırma, kontaktlar, söhbətlər, mesajlar və daşıyıcıları daxil olmaqla silinəcəkdir. Bu hərəkət son və ləğv edilə bilməz.</string>
     <string name="me_desktop">Mənə</string>
+    <string name="in_this_group_desktop">Qrupun üzvləri</string>
+    <string name="not_in_this_group_desktop">Qrupun potensial üzvləri (qrupda deyil)</string>
     <string name="message_detail_sent_desktop">Göndər</string>
+    <string name="message_detail_received_desktop">qəbul olundu</string>
     <string name="message_detail_from_desktop">kimdən</string>
     <string name="message_detail_to_desktop">kimə</string>
+    <string name="menu.view.developer.open.log.folder">Loq mələfini açın</string>
+    <string name="menu.view.developer.open.current.log.file">Loq-faylı açın</string>
+
+    <string name="user_location_permission_explanation">Delta Chat yerinizi göstərmək və bölüşmək üçün yer icazəsinə ehtiyac duyur.</string>
+
+    <!-- see qrshow_join_group_title -->
+    <string name="qrshow_join_verified_group_title">Dəvət QR-kodu</string>
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Gələnlər qutusu zeeerrro</string>
     <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nHamınız tutuldunuz!</string>

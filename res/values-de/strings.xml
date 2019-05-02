@@ -219,7 +219,12 @@
     <string name="chat_contact_request">Kontaktanfrage</string>
     <string name="chat_no_contact_requests">Keine Kontaktanfragen.\n\nWenn normale E-Mails hier erscheinen sollen, müssen Sie die entsprechende erweiterte Einstellung ändern.</string>
 
+    <!-- map -->
+    <string name="filter_map_on_time">Standorte im Zeitrahmen anzeigen</string>
     <string name="filter_last_position">Letzter Standort</string>
+    <string name="show_location_traces">Spuren anzeigen</string>
+
+
     <!-- search -->
     <string name="search">Suchen</string>
     <string name="search_explain">Suche nach Chats, Kontakten und Nachrichten</string>

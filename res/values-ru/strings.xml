@@ -124,6 +124,7 @@
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>
     <string name="menu_show_map">Показать карту</string>
+    <string name="menu_show_global_map">Показать все местоположения</string>
     <string name="menu_archive_chat">Архивировать чат</string>
     <string name="menu_unarchive_chat">Разархивировать чат</string>
     <string name="menu_add_attachment">Прикрепить вложение</string>
@@ -131,6 +132,7 @@
     <string name="menu_delete_chat">Удалить чат</string>
     <string name="menu_delete_messages">Удалить сообщения</string>
     <string name="menu_delete_image">Удалить изображение</string>
+    <string name="menu_delete_locations">Удалить все местоположения?</string>
     <string name="menu_message_details">Подробности сообщения</string>
     <string name="menu_copy_to_clipboard">Скопировать в буфер обмена</string>
     <string name="menu_forward">Переслать сообщение</string>
@@ -156,18 +158,20 @@
     <string name="menu_deaddrop">Запросы на общение</string>
     <string name="menu_deaddrop_subtitle">Нажмите на сообщение, чтобы начать чат</string>
     <string name="menu_view_profile">Просмотреть профиль</string>
-    <string name="mute_for_one_hour">На 1 час</string>
+    <string name="title_share_location">Делиться местоположением со всеми участниками группы</string>
+
+    <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
     <string name="mute_for_seven_days">На 7 дней</string>
     <string name="mute_for_one_year">На 1 год</string>
 
     <string name="share_location_once">один раз</string>
-    <string name="share_location_for_5_minutes">на 5 минут</string>
-    <string name="share_location_for_30_minutes">на 30 минут</string>
-    <string name="share_location_for_one_hour">на 1 час</string>
-    <string name="share_location_for_two_hours">на 2 часа</string>
-    <string name="share_location_for_six_hours">на 6 часов</string>
+    <string name="share_location_for_5_minutes">5 минут</string>
+    <string name="share_location_for_30_minutes">30 минут</string>
+    <string name="share_location_for_one_hour">1 час</string>
+    <string name="share_location_for_two_hours">2 часа</string>
+    <string name="share_location_for_six_hours">6 часов</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
@@ -226,6 +230,9 @@
     <string name="chat_new_group_hint">Напишите первое сообщение, оно позволит другим участникам группы ответить на него.\n\n• Это сработает, даже если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="chat_record_slide_to_cancel">Сдвиньте для отмены</string>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
+    <string name="chat_no_chats_yet_title">Пустой ящик.\nНажмите на \"+\" для начала нового чата.</string>
+    <string name="chat_no_chats_yet_hint">Вы можете общаться с другими пользователями Delta Chat и с любым адресом электронной почты</string>
+    <string name="chat_all_archived">Все чаты заархивированы.\nНажмите на \"+\" для начала нового чата.</string>
     <string name="chat_share_with_title">Поделиться с</string>
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Ахивировано</string>
@@ -233,6 +240,12 @@
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
     <string name="chat_contact_request">Запрос контакта</string>
     <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, вы можете изменить соответствующий параметр в настройках приложения.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
+    <string name="filter_last_position">Последняя позиция</string>
+    <string name="show_location_traces">Показывать маршруты</string>
+
 
     <!-- search -->
     <string name="search">Поиск</string>
@@ -317,6 +330,10 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
+    <string name="share_multiple_attachments">Вы хотите отправить %1$d файлов в выбранный чат?\n\nФайлы отправляются без изменений в их исходном размере, например. изображения и видео не перекодируются.</string>
+    <string name="share_abort">Общий доступ прерван из-за отсутствия разрешений.</string>
+
+
     <!-- preferences -->
     <string name="pref_summary_on">вкл.</string>
     <string name="pref_summary_off">выкл.</string>
@@ -400,6 +417,8 @@
     <string name="pref_managekeys_secret_keys_exported_to_x">Секретные ключи успешно сохранены в папку «%1$s».</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из папки «%1$s».</string>
     <string name="pref_background">Фон</string>
+    <string name="pref_background_btn_default">Использовать изображение по умолчанию</string>
+    <string name="pref_background_btn_gallery">Выбрать из галлереи</string>
     <string name="pref_imap_folder_handling">Параметры папок IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">При отключении этого параметра убедитесь, что сервер и ваши другие приложения для работы с электронной почтой настроены таким же образом.\n\nВ противном случае, всё может перестать работать.</string>
     <string name="pref_watch_inbox_folder">Следить за папкой Входящие</string>
@@ -512,6 +531,7 @@
     <string name="perm_explain_need_for_camera_access">Для захвата фото и видео разрешите Delta Chat доступ к камере.</string>
     <string name="perm_explain_need_for_mic_access">Для отправки звуковых сообщений разрешите Delta Chat доступ к микрофону</string>
     <string name="perm_explain_need_for_storage_access">Приложению Delta Chat необходим доступ к файлам для экспорта или резервного копирования.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat необходим доступ к вашим файлам, чтобы поделиться выбранными файлами.</string>
     <string name="perm_explain_access_to_camera_denied">Для съемки фотографий или видео приложению Delta Chat требуется разрешение использовать Камеру, но сейчас она заблокирована. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Камера\".</string>
     <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению Delta Chat нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов в Delta Chat требуется доступ к памяти устройства, однако в этом разрешении было отказано навсегда. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Память\".</string>
@@ -609,6 +629,7 @@
     <string name="download_attachment_desktop">Скачать вложение</string>
     <string name="export_backup_desktop">Экспорт резервной копии</string>
     <string name="transfer_key_desktop">Ключ передачи</string>
+    <string name="show_key_transfer_message_desktop">Ваш ключ был отправлен самому себе. Переключитесь на другое устройство и откройте настройки сообщения. Вам будет предложено ввести код установки. Введите следующие цифры в командной строке. Как только вы закончите, ваше другое устройство будет готово к использованию Autocrypt.</string>
     <string name="new_message_from_desktop">Новое сообщение от</string>
     <string name="unblock_contacts_desktop">Разблокировать контакты</string>
     <string name="none_blocked_desktop">Пока нет заблокированных контактов</string>
@@ -617,7 +638,7 @@
     <string name="create_chat_error_desktop">Не удалось создать чат.</string>
     <string name="ask_delete_chat_desktop">Действительно удалить этот чат?</string>
     <string name="email_validation_failed_desktop">Требуется адрес электронной почты.</string>
-    <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? При этом будут удалены все данные, включая параметры сквозного шифрования, списки контактов, чаты, сообщения и медиафайлы. Это действие нельзя будет отменить.</string>
+    <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? Все данные будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиа файлы. Это действие нельзя будет отменить.</string>
     <string name="me_desktop">мне</string>
     <string name="in_this_group_desktop">Участники группы</string>
     <string name="not_in_this_group_desktop">Потенциальные участники (не в группе)</string>
@@ -625,8 +646,10 @@
     <string name="message_detail_received_desktop">получено</string>
     <string name="message_detail_from_desktop">от</string>
     <string name="message_detail_to_desktop">в</string>
-    <string name="menu.view.developer.open.log.folder">Открыть Папку Log</string>
+    <string name="menu.view.developer.open.log.folder">Открыть Папку Логов</string>
     <string name="menu.view.developer.open.current.log.file">Открыть Текущий Файл Журнала Log</string>
+
+    <string name="user_location_permission_explanation">Для отображения и публикации вашего местоположения Delta Chat необходимо разрешение на местоположение.</string>
 
     <!-- deprecated on android, please remove if unused on desktop -->
     <!-- see qrscan_ask_join_group -->

@@ -219,7 +219,12 @@
     <string name="chat_contact_request">Kontaktua eskatuta</string>
     <string name="chat_no_contact_requests">Kontaktu eskaerarik ez.\n\nE-mail klasikoak hemen kontaktu eskari gisa agertzea nahi baduzu, aplikazioaren ezarpenetan aldatu dezakezu.</string>
 
+    <!-- map -->
+    <string name="filter_map_on_time">Erakutsi kokalekuak denbora markoan</string>
     <string name="filter_last_position">Azken kokalekua</string>
+    <string name="show_location_traces">Erakutsi lorratzak</string>
+
+
     <!-- search -->
     <string name="search">Bilatu</string>
     <string name="search_explain">Bilatu txatak, kontaktuak, eta mezuak.</string>
@@ -303,6 +308,7 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
+    <string name="share_multiple_attachments">%1$d fitxategi bidali nahi dituzu hautatutako txatera?\n\nFitxategiak   aldatu gabe eta jatorrizko tamainan bidaltzen dira, adibidez irudiei eta bideoei ez zaie kodeketa aldatzen.</string>
     <string name="share_abort">Partekatzea eten da baimenak falta direlako.</string>
 
 
@@ -389,6 +395,8 @@
     <string name="pref_managekeys_secret_keys_exported_to_x">Gako sekretuak ongi idatzi dira hemen: \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Gako sekretuak hemendik inportatu dira: \"%1$s\".</string>
     <string name="pref_background">Atzealdea</string>
+    <string name="pref_background_btn_default">Erabili lehenetsitako irudia</string>
+    <string name="pref_background_btn_gallery">Hautatu galeriatik</string>
     <string name="pref_imap_folder_handling">IMAP karpeten kudeaketa</string>
     <string name="pref_imap_folder_warn_disable_defaults">Aukera hau desaktibatuz gero, egiaztatu zure zerbitzaria eta beste bezeroen konfigurazioa bat datorrela.\n\nBestela agian gauzak ez dabiltza.</string>
     <string name="pref_watch_inbox_folder">Begiztatu sarrera karpeta</string>
@@ -453,6 +461,7 @@
     <string name="qrscan_hint">Kokatu zure kamera QR kodearen gainean</string>
     <string name="qrscan_ask_join_group">\"%1$s\" taldera elkartu nahi duzu?</string>
     <string name="qrscan_fingerprint_mismatch">Eskaneatutako hatz-marka eta %1$s erabiltzaileari ikusitako azken hatz-marka ez datoz bat.</string>
+    <string name="qrscan_no_addr_found">QR kode honek hatz-marka bat du baina ez e-mail helbidea.\n\nBandaz kanpoko egiaztaketa baterako, ezarri zifratutako konexio bat hartzailearekin aurretik.</string>
     <string name="qrscan_contains_text">Eskaneatutako QR kodearen testua:\n\n%1$s</string>
     <string name="qrscan_contains_url">Eskaneatutako QR kodearen URL-a:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Hatz-marka</string>
@@ -508,6 +517,8 @@
     <string name="perm_enable_bg_reminder_title">Sakatu hemen mezuak jasotzeko Delta Chat bigarren planoan dagoenean.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat-ek baliabide gutxi erabiltzen ditu eta zure bateria ez agortzeaz arduratzen da.</string>
 
+    <!-- languages -->
+    <string name="language_be">Belgiera</string>
     <string name="language_ca">Katalana</string>
     <string name="language_da">Daniera</string>
     <string name="language_de">Alemana</string>
@@ -574,6 +585,7 @@
     <string name="delete_message_desktop">Ezabatu mezua</string>
     <string name="more_info_desktop">Informazio gehiago</string>
     <string name="logout_desktop">Amaitu saioa</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="no_archived_chats_desktop">Artxibatutako txatik ez</string>
     <string name="no_chats_desktop">Txatik ez</string>
     <string name="encryption_info_desktop">Erakutsi zifratzeari buruzko informazioa</string>
@@ -595,6 +607,7 @@
     <string name="download_attachment_desktop">Deskargatu eranskina</string>
     <string name="export_backup_desktop">Esportatu babes-kopia</string>
     <string name="transfer_key_desktop">Igorri gakoa</string>
+    <string name="show_key_transfer_message_desktop">Zure gakoa  bidali zaizu. Joan beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu. Idatzi honako zenbaki hauek han. Behin eginda, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
     <string name="new_message_from_desktop">Honen mezu berria:</string>
     <string name="unblock_contacts_desktop">Desblokeatu kontaktuak</string>
     <string name="none_blocked_desktop">Ez dago blokeatutako kontakturik</string>

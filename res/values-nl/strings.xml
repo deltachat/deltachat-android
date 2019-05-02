@@ -65,7 +65,7 @@
         <item quantity="other">%d deelnemers</item>
     </plurals>
 
-    <string name="self">Mij</string>
+    <string name="self">Ik</string>
     <string name="draft">Concept</string>
     <string name="image">Afbeelding</string>
     <string name="gif">GIF</string>
@@ -144,7 +144,7 @@
     <string name="menu_settings">Instellingen</string>
     <string name="menu_advanced">Geavanceerd</string>
     <string name="menu_deaddrop">Contactpersoonverzoeken</string>
-    <string name="menu_deaddrop_subtitle">Druk op bericht om gesprek te starten</string>
+    <string name="menu_deaddrop_subtitle">Druk op een bericht om een gesprek te beginnen</string>
     <string name="menu_view_profile">Profiel bekijken</string>
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
 
@@ -204,7 +204,7 @@
         <item quantity="one">%d ongelezen bericht</item>
         <item quantity="other">%d ongelezen berichten</item>
     </plurals>
-    <string name="chat_no_messages_hint">Bericht versturen aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
+    <string name="chat_no_messages_hint">Verstuur een bericht aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
@@ -217,7 +217,7 @@
     <string name="chat_no_messages">Geen berichten.</string>
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
     <string name="chat_contact_request">Contactpersoonverzoek</string>
-    <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnen in de vorm van contactpersoonverzoeken, wijzig dit dan in de app-instellingen.</string>
+    <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnt in de vorm van contactpersoonverzoeken, wijzig dit dan in de app-instellingen.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
@@ -261,7 +261,7 @@
     <string name="welcome_intro2_headline">Onafhankelijk</string>
     <string name="welcome_intro2_message">Er is geen Delta Chat-server; de app gebruikt alleen je mailserver.</string>
     <string name="welcome_intro3_headline">Snel</string>
-    <string name="welcome_intro3_message">Verstuur berichten in een paar seconden.\nSnelle gebruikersomgeving.</string>
+    <string name="welcome_intro3_message">Verstuur berichten binnen een paar seconden.\nSnelle gebruikersomgeving.</string>
     <string name="welcome_intro4_headline">Krachtig</string>
     <string name="welcome_intro4_message">Ongelimiteerd aantal gesprekken, afbeeldingen, video\'s, spraakberichten en meer. Kan omgaan met meerdere clients.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
@@ -276,7 +276,7 @@
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>
     <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je IMAP inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
-    <string name="login_no_servers_hint">Er is geen Delta Chat-server; jouw gegevens blijven op jouw apparaat.</string>
+    <string name="login_no_servers_hint">Er is geen Delta Chat-server; jóuw gegevens blijven op jóuw apparaat.</string>
     <string name="login_inbox">Postvak IN</string>
     <string name="login_imap_login">IMAP-inlognaam</string>
     <string name="login_imap_server">IMAP-server</string>
@@ -290,7 +290,7 @@
     <string name="login_smtp_security">SMTP-beveiliging</string>
     <string name="login_auth_method">Autorisatiemethode</string>
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
-    <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen servers; jouw gegevens blijven op jouw apparaat!</string>
+    <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
     <string name="login_info_gmail_text">Bij Gmail-accounts moet je een app-wachtwoord creëren als je authenticatie in twee stappen hebt ingeschakeld. Als dit niet beschikbaar is, schakel dan \'Minder veilige apps\' in.</string>
     <string name="login_error_mail">Voer een geldig e-mailadres in</string>
     <string name="login_error_server">Voer een geldig(e) IP-adres/server in</string>
@@ -319,7 +319,7 @@
     <string name="pref_summary_custom">aangepast</string>
     <string name="pref_using_custom">Aangepast wordt gebruikt: %s</string>
     <string name="pref_using_default">Standaard wordt gebruikt: %s</string>
-    <string name="pref_profile_info_headline">Je profielinformatie</string>
+    <string name="pref_profile_info_headline">Mijn profiel</string>
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_trim_headline">Gespreksinkorting</string>
     <string name="pref_trim_option">Oude berichten verwijderen</string>
@@ -327,7 +327,7 @@
     <string name="pref_trim_length_limit">Lengtelimiet</string>
     <string name="pref_trim_length_limit_summary">%d berichten per gesprek</string>
     <string name="pref_trim_now_button">Alle gesprekken nu inkorten</string>
-    <string name="pref_trim_now_ask">Wil je alle oude berichten nu verwijderen? Alle gesprekken worden direct ingekort tot de %d recentste berichten.</string>
+    <string name="pref_trim_now_ask">Wil je alle oude berichten nú verwijderen? Alle gesprekken worden direct ingekort tot de %d recentste berichten.</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="pref_profile_photo_remove_ask">Profielfoto verwijderen?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
@@ -343,7 +343,7 @@
     <string name="pref_enter_sends_explain">Druk op de Enter-toets om tekstberichten te versturen</string>
     <string name="pref_vibrate">Trillen</string>
     <string name="pref_chat_settings">Gespreksinstellingen</string>
-    <string name="pref_change_secret">Geheim wijzigen</string>
+    <string name="pref_change_secret">Toegangsmethode beheren</string>
     <string name="pref_change_secret_explain">Wijzig je pincode/patroon/vingerafdruk via de systeeminstellingen</string>
     <string name="pref_screen_security">Schermbeveiliging</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
@@ -369,7 +369,7 @@
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Toetsenbord verzoeken om gepersonaliseerd leren uit te schakelen</string>
     <string name="pref_read_receipts">Leesbevestigingen</string>
-    <string name="pref_read_receipts_explain">Als leesbevestigingen zijn uitgeschakeld, dan zie je geen leesbevestigingen van anderen.</string>
+    <string name="pref_read_receipts_explain">Als je leesbevestigingen uitschakelt, dan zie je geen leesbevestigingen van anderen.</string>
     <string name="pref_manage_keys">Sleutels beheren</string>
     <string name="pref_use_system_emoji">Systeememoji gebruiken</string>
     <string name="pref_use_system_emoji_explain">Delta Chat\'s ingebouwde emoji-ondersteuning uitschakelen</string>
@@ -378,7 +378,7 @@
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_messages">Berichten</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
-    <string name="pref_message_text_size">Lettertypegrootte van berichten</string>
+    <string name="pref_message_text_size">Tekstgrootte van berichten</string>
     <string name="pref_view_log">Logboek bekijken</string>
     <string name="pref_other">Overig</string>
     <string name="pref_backup">Back-up</string>
@@ -400,14 +400,14 @@
     <string name="pref_imap_folder_handling">Controleren in IMAP-mappen</string>
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>
-    <string name="pref_watch_sent_folder">Map Verzonden controleren op nieuwe berichten</string>
+    <string name="pref_watch_sent_folder">Map \'Verzonden\' controleren op nieuwe berichten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je Postvak IN netjes te houden</string>
     <string name="pref_email_interaction_title">E-mailinteractie</string>
-    <string name="pref_show_emails">Klassie e-mails tonen</string>
+    <string name="pref_show_emails">Klassieke e-mails tonen</string>
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
-    <string name="pref_show_emails_accepted_contacts">Voor geaccepteerde contactpersonen</string>
+    <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
     <string name="pref_show_emails_all">Alles</string>
 
 
@@ -426,7 +426,7 @@
     <string name="autocrypt_continue_transfer_please_enter_code">Voer de code die wordt getoond op het andere apparaat.</string>
     <string name="autocrypt_continue_transfer_succeeded">End-to-end-instellingen overgezet. Dit apparaat kan nu worden gebruikt i.c.m. Autocrypt, met dezelfde instellingen als het andere apparaat.</string>
     <string name="autocrypt_continue_transfer_retry">Opnieuw</string>
-    <string name="autocrypt_bad_setup_code">Onjuist; probeer het opnieuw.\n\nAls je je code niet meer weet, verstuurd dan nóg een Autocrypt-instelbericht vanaf het andere apparaat.</string>
+    <string name="autocrypt_bad_setup_code">Onjuist; probeer het opnieuw.\n\nAls je je code niet meer weet, verstuur dan nóg een Autocrypt-instelbericht vanaf het andere apparaat.</string>
 
 
     <!-- system messages -->
@@ -450,7 +450,7 @@
     <string name="screenlock_explain">Vergendel de toegang middels het Android-vergrendelscherm of je vingerafdruk. Schakel daarnaast ook \"Schermbeveiliging\" in.</string>
     <string name="screenlock_authentication_failed">Authenticatie mislukt.</string>
     <string name="screenlock_unlock_title">Delta Chat ontgrendelen</string>
-    <string name="screenlock_unlock_description">Voer je op het systeem opgegeven geheim in om Delta Chat te ontgrendelen.</string>
+    <string name="screenlock_unlock_description">Voer je op het systeem opgegeven toegangscode in om Delta Chat te ontgrendelen.</string>
     <string name="screenlock_inactivity_timeout">Vergrendeling na inactiviteit</string>
     <string name="screenlock_inactivity_timeout_explain">Delta Chat automatisch vergrendelen na een opgegeven periode van inactiviteit</string>
     <string name="screenlock_inactivity_timeout_interval">Periode van inactiviteit</string>
