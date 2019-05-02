@@ -20,10 +20,11 @@ git submodule update --init --recursive
 cd jni/messenger-backend
 git checkout master
 git pull
+cd ../..
 
 # commit changes
-cd ../..
-git commit -am "Update messenger-backend submodule."
+git add jni/messenger-backend/
+git commit -m "Update messenger-backend submodule."
 
 # remove files downloaded just  for committing
 rm -r jni/messenger-backend/*
