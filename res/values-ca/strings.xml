@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel·la</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="on">Activat</string>
+    <string name="off">Desactivat</string>
+    <string name="def">Per defecte</string>
+    <string name="custom">Personalitzat</string>
+    <string name="none">Cap</string>
+    <string name="open">Obre</string>
+    <string name="delete">Esborra</string>
+    <string name="not_now">Encara no</string>
+    <string name="never">Mai</string>
+    <string name="one_moment">Espereu...</string>
+    <string name="done">Fet</string>
+    <string name="undo">Desfès</string>
+    <string name="error">Error</string>
+    <string name="error_x">Error: %1$s</string>
+    <string name="error_no_network">Xarxa inabastable.</string>
+    <string name="no_app_to_handle_data">No hi ha cap app per manipular aquesta mena de dades.</string>
+    <string name="no_browser_installed">No hi ha cap navegador instal·lat.</string>
+    <string name="file_not_found">No hem pogut trobar %1$s.</string>
+    <string name="copied_to_clipboard">Copiat al porta-retalls.</string>
+    <string name="contacts_headline">Contactes</string>
+    <string name="email_address">Adreça de correu electrònic</string>
+    <string name="bad_email_address">Adreça de correu electrònic errònia.</string>
+    <string name="password">Contrasenya</string>
+    <string name="now">Ara</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
+    <string name="n_min_ago">%d min</string>
+    <string name="today">Avui</string>
+    <string name="yesterday">Ahir</string>
+    <string name="this_week">Aquesta setmana</string>
+    <string name="this_month">Aquest mes</string>
+    <string name="last_week">La setmana passada</string>
+    <string name="last_month">El mes passat</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d min</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d hores</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d xat</item>
+        <item quantity="other">%d xats</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d contacte</item>
+        <item quantity="other">%d contactes</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d missatge</item>
+        <item quantity="other">%d missatges</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d membre</item>
+        <item quantity="other">%d membres</item>
+    </plurals>
+
+    <string name="self">Jo</string>
+    <string name="draft">Esborrany</string>
+    <string name="image">Imatge</string>
+    <string name="gif">Gif</string>
+    <string name="images">Imatges</string>
+    <string name="audio">Audio</string>
+    <string name="voice_message">Missatge de veu</string>
+    <string name="forwarded_message">Missatge reenviat</string>
+    <string name="video">Vídeo</string>
+    <string name="documents">Documents</string>
+    <string name="contact">Contacte</string>
+    <string name="camera">Càmera</string>
+    <string name="location">Ubicació</string>
+    <string name="gallery">Galeria</string>
+    <string name="file">Fitxer</string>
+    <string name="unknown">Desconegut</string>
+
+    <string name="green">Verd</string>
+    <string name="red">Vermell</string>
+    <string name="blue">Blau</string>
+    <string name="orange">Taronja</string>
+    <string name="cyan">Cian</string>
+    <string name="purple">Morat</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">Blanc</string>
+
+    <string name="small">Petit</string>
+    <string name="normal">Normal</string>
+    <string name="large">Gran</string>
+    <string name="extra_large">Molt gran</string>
+
+    <string name="fast">Ràpid</string>
+    <string name="slow">Lent</string>
+
+    <string name="message_delivered">Missatge lliurat</string>
+    <string name="message_read">Missatge llegit</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Contacte nou</string>
+    <string name="menu_new_chat">Nova conversa</string>
+    <string name="menu_new_group">Grup nou</string>
+    <string name="menu_new_verified_group">Nou grup verificat (experimental)</string>
+    <string name="menu_send">Envia</string>
+    <string name="menu_toggle_keyboard">Commuta al teclat d\'emoticones</string>
+    <string name="menu_edit_group">Edita el grup</string>
+    <string name="menu_show_map">Montra el mapa</string>
+    <string name="menu_show_global_map">Mostra totes les ubicacions</string>
+    <string name="menu_archive_chat">Arxiva el xat</string>
+    <string name="menu_unarchive_chat">Desarxiva el xat</string>
+    <string name="menu_add_attachment">Afegeix un adjunt</string>
+    <string name="menu_leave_group">Deixa el grup</string>
+    <string name="menu_delete_chat">Esborra el xat</string>
+    <string name="menu_delete_messages">Esborra els missatges</string>
+    <string name="menu_delete_image">Esborra la imatge</string>
+    <string name="menu_delete_locations">Vols esborrar totes les ubicacions?</string>
+    <string name="menu_message_details">Detalls del missatge</string>
+    <string name="menu_copy_to_clipboard">Copia al porta-retalls</string>
+    <string name="menu_forward">Redirigeix el missatge</string>
+    <string name="menu_resend">Reenvia el missatge</string>
+    <string name="menu_reply">Respon el missatge</string>
+    <string name="menu_mute">Silencia les notificacions</string>
+    <string name="menu_unmute">Activa el so</string>
+    <string name="menu_export_attachment">Exporta l\'adjunt</string>
+    <string name="menu_all_media">Tots els multimèdia</string>
+    <string name="menu_share">Comparteix</string>
+    <string name="menu_block_contact">Bloca el contacte</string>
+    <string name="menu_unblock_contact">Desbloca el contacte</string>
+    <string name="menu_play">Reprodueix</string>
+    <string name="menu_pause">Pausa</string>
+    <string name="menu_scroll_to_bottom">Desplaça fins al final</string>
+    <string name="menu_invite">Convida als amics</string>
+    <string name="menu_help">Ajuda</string>
+    <string name="menu_select_all">Selecciona-ho tot</string>
+    <string name="menu_expand">Desplega</string>
+    <string name="menu_edit_name">Edita el nom</string>
+    <string name="menu_settings">Preferències</string>
+    <string name="menu_advanced">Avançat</string>
+    <string name="menu_deaddrop">Sol·licituds de contacte</string>
+    <string name="menu_deaddrop_subtitle">Prem a missatge per començar a xatejar</string>
+    <string name="menu_view_profile">Visualitza el perfil</string>
+    <string name="title_share_location">Comparteix la ubicació amb tots els membres del grup</string>
+
+    <string name="mute_for_one_hour">Silencia 1 hora</string>
+    <string name="mute_for_two_hours">Silencia 2 hores</string>
+    <string name="mute_for_one_day">Silencia 1 dia</string>
+    <string name="mute_for_seven_days">Silencia 7 dies</string>
+    <string name="mute_for_one_year">Silencia 1 any</string>
+
+    <string name="share_location_once">Un cop</string>
+    <string name="share_location_for_5_minutes">per 5 minuts</string>
+    <string name="share_location_for_30_minutes">per 30 minuts</string>
+    <string name="share_location_for_one_hour">per 1 hora</string>
+    <string name="share_location_for_two_hours">per 2 hores</string>
+    <string name="share_location_for_six_hours">per 6 hores</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Esteu segur de deixar aquest grup?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Esborra %d xat? Ja no es mostrarà al llistat de xats, i els seus missatges no romandran al servidor.</item>
+        <item quantity="other">Esborra %d xats? Ja no es mostraran al llistat de xats, i els seus missatges no romandran al servidor.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Esborra %d missatge aquí i al servidor?</item>
+        <item quantity="other">Esborra %d missatges aquí i al servidor?</item>
+    </plurals>
+    <string name="ask_forward">Reenvia missatges a %1$s?</string>
+    <string name="ask_export_attachment">Exporto l\'adjunt? Exportant els adjunts permetreu que altres apps al vostre dispositiu puguin accedir a ells.\n
+\nVoleu continuar endavant?</string>
+    <string name="ask_block_contact">Voleu blocar aquest contacte? En aquest cas ja no rebreu més missatges d\'ell.</string>
+    <string name="ask_unblock_contact">Voleu desblocar aquest contacte? Llavors podreu tornar a rebre missatges d\'ell.</string>
+    <string name="ask_delete_contacts">Voleu esborrar els contactes? Això esborrarà definitivament els contactes seleccionats.\n
+\nEls contactes amb xats oberts i els que estiguin al vostre llibre d\'adreces no es poden esborrar definitivament. </string>
+    <string name="cannot_delete_contacts_in_use">No es poden esborrar amb xats oberts.</string>
+    <string name="ask_start_chat_with">Voleu xatejar amb %1$s?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Contactes</string>
+    <string name="contacts_enter_name_or_email">Introduïu el vostre nom o la vostra adreça de mail</string>
+    <string name="contacts_type_email_above">Escriviu l\'adreça de correu electrònic d\'a sobre</string>
+    <string name="contacts_empty_hint">Sense contactes.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d xat arxivat</item>
+        <item quantity="other">%d xats arxivats</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d xat arxivat</item>
+        <item quantity="other">%d xats desarxivats</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Xats arxivats</string>
+    <string name="chat_please_enter_message">Si us plau, escriviu un missatge</string>
+    <string name="chat_camera_unavailable">La càmera no està disponible.</string>
+    <string name="chat_unable_to_record_audio">No es pot gravar so.</string>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%d missatge sense llegir</item>
+        <item quantity="other">%d missatges sense llegir</item>
+    </plurals>
+    <string name="chat_no_messages_hint">Envia el missatge a %1$s:\n\n• No cal amoïnar-se si %2$s no usa Delta Chat.\n\n• L\'entrega del primer missatge por trigar una estona i podria fer-se sense encriptar.</string>
+    <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
+    <string name="chat_record_explain">Mantingues premut per gravar un missatge de veu, i deixa anar per enviar</string>
+    <string name="chat_no_chats_yet_title">Safata d\'entrada buida.\nPrem \"+\" per començar un xat nou.</string>
+    <string name="chat_no_chats_yet_hint">Pots xatejar amb altres usuaris de Delta Chat i amb qualsevol adreça de correu electrònic.</string>
+    <string name="chat_all_archived">Tots els xats han sigut arxivats.\nPrem \"+\" per iniciar un xat nou.</string>
+    <string name="chat_share_with_title">Comparteix amb</string>
+    <string name="chat_input_placeholder">Missatge</string>
+    <string name="chat_archived_label">Arxivat</string>
+    <string name="chat_no_messages">Cap missatge.</string>
+    <string name="chat_self_talk_subtitle">Missatges que m\'he enviat a mi mateix</string>
+    <string name="chat_contact_request">Sol·licitud de contacte</string>
+    <string name="chat_no_contact_requests">No hi ha sol·licituds de contacte.\n\nSi voleu que el correu electrònic clàssic surti aquí, podeu canviar el paràmetre corresponent a les preferències de l\'app.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Mostra les ubicacions al llarg del temps</string>
+    <string name="filter_last_position">Última posició</string>
+    <string name="show_location_traces">Mostra les traces</string>
+
+
+    <!-- search -->
+    <string name="search">Busca</string>
+    <string name="search_explain">Busca als xats, contactes i missatges</string>
+    <string name="search_no_result_for_x">No s\'han trobat resultats per \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Nom del grup</string>
+    <string name="group_avatar">Avatar del grup</string>
+    <string name="group_create_button">Crea el grup</string>
+    <string name="group_please_enter_group_name">Si us plau, introduïu un nom pel grup.</string>
+    <string name="group_add_members">Afegiu membres</string>
+    <string name="group_hello_draft">Hola, acabo de crear el grup \"%1$s\" per naltros.</string>
+    <string name="group_self_not_in_group">Has de ser membre del grup per realitzar aquesta acció.</string>
+    <string name="profile_encryption">Encriptació</string>
+
+
+    <!-- chat media view -->
+    <string name="media_preview">Previsualització multimèdia</string>
+    <string name="media_tab_media">Multimèdia</string>
+    <string name="media_tab_documents">Documents</string>
+    <string name="media_no_media_hint">No hi ha multimèdia.</string>
+    <string name="media_no_documents_hint">No hi ha cap document</string>
+
+
+    <!-- invite -->
+    <string name="invite_slogan">Els amics no deixen els amics tancats en sitges de missatgeria.</string>
+    <string name="invite_default_text">Canviem a Delta Chat - %1$s - pots escriure\'m a %2$s</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro1_message">El programa de missatgeria amb més audiència del Món. Gratuït i independent.</string>
+    <string name="welcome_intro2_headline">Independent</string>
+    <string name="welcome_intro2_message">No hi ha cap servidor de Delta Chat. L\'app només usa el teu servidor de correu electrònic.</string>
+    <string name="welcome_intro3_headline">Ràpid</string>
+    <string name="welcome_intro3_message">Envia missatges en segons.\nInterfície ràpida.</string>
+    <string name="welcome_intro4_headline">Potent</string>
+    <string name="welcome_intro4_message">Xats il·limitats, imatges, vídeos, missatges de so i més coses. Capacitat de multi-client.</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">Gratuït</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Delta Chat serà de franc per sempre. De codi lliure. Sense anuncis. Sense subscripció. Sense bloqueig de proveïdor.</string>
+    <string name="welcome_intro6_headline">Encriptat</string>
+    <string name="welcome_intro6_message">Encriptat amb els algoritmes habituals. Els missatges només es guarden al vostres servidors.</string>
+    <string name="welcome_intro7_headline">Fiable</string>
+    <string name="welcome_intro7_message">Delta Chat és segur per l\'ús empresarial, compatible i basat en estàndards.</string>
+    <string name="welcome_start_messaging">Comenceu a comunicar-vos</string>
+    <string name="login_title">Identifiqueu-vos</string>
+    <string name="login_header">Identifiqueu-vos al vostre servidor</string>
+    <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>
+    <string name="login_no_servers_hint">No hi ha servidors de Delta Chat, les teves dades romanen al teu dispositiu!</string>
+    <string name="login_inbox">Safata d\'entrada</string>
+    <string name="login_imap_login">Nom d\'identificació IMAP</string>
+    <string name="login_imap_server">Servidor IMAP</string>
+    <string name="login_imap_port">Port IMAP</string>
+    <string name="login_imap_security">Seguretat IMAP</string>
+    <string name="login_outbox">Safata de sortida</string>
+    <string name="login_smtp_login">Nom d\'identificació SMTP</string>
+    <string name="login_smtp_password">Contrasenya SMTP</string>
+    <string name="login_smtp_server">Servidor SMTP</string>
+    <string name="login_smtp_port">Port SMTP</string>
+    <string name="login_smtp_security">Seguretat SMTP</string>
+    <string name="login_auth_method">Mètode d\'autorització</string>
+    <string name="login_info_oauth2_title">Continua amb la configuració simplificada</string>
+    <string name="login_info_oauth2_text">L\'adreça de mail que heu introduït suporta la configuració simplificada (OAuth2).\n\nAl proper pas, si us plau permeteu al Delta Chat actuar com la vostra app de Xat amb correu electrònic.\n\nNo hi ha servidors de Delta Chat, les vostres dades romanen al vostre dispositiu!</string>
+    <string name="login_info_gmail_text">Pels comptes de GMail necessiteu crear una Contrasenya-App si teniu l\'opció 2FA activada. Si aquesta opció no està disponible, us caldrà activar l\'opció Less Secure Apps.</string>
+    <string name="login_error_mail">Si us plau poseu una adreça de mail vàlida</string>
+    <string name="login_error_server">Si us plau poseu un servidor / adreça IP vàlida</string>
+    <string name="login_error_port">Si us plau poseu un  port vàlid (1-65535)</string>
+    <string name="login_error_required_fields">Si us plau poseu una adreça i contrasenya vàlids</string>
+    <string name="import_backup_title">Importa una còpia de seguretat</string>
+    <string name="perm_explain_access_to_location_denied">Al Delta Chat li cal el permís d\'ubicació per poder adjuntar-la, però aquest ha estat denegat de forma permanent. Si us plau continua amb el menú de preferències de l\'app, tria \"Permisos\" i activa \"Ubicació\".</string>
+    <string name="user_location_permission_explanation">El Delta Chat necessita el permís d\'ubicació per poder mostrar i compartir la teva ubicació.</string>
+
+    </resources>
