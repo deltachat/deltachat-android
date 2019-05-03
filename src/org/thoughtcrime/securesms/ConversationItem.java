@@ -424,20 +424,16 @@ public class ConversationItem extends LinearLayout
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
 
       Slide slide;
-      boolean isPreview;
       if (messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
         slide = new VideoSlide(context, messageRecord);
-        isPreview = true;
       }
       else {
         slide = new DocumentSlide(context, messageRecord);
-        isPreview = false;
       }
 
       mediaThumbnailStub.get().setImageResource(glideRequests,
                                                 slide,
                                                 showControls,
-                                                isPreview,
                                                 messageRecord.getWidth(100),
                                                 messageRecord.getHeight(100));
       mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());

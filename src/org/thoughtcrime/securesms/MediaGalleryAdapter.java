@@ -111,7 +111,7 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
     Slide         slide             = MediaUtil.getSlideForMsg(context, mediaRecord);
 
     if (slide != null) {
-      thumbnailView.setImageResource(glideRequests, slide, false, false);
+      thumbnailView.setImageResource(glideRequests, slide, false);
     }
 
     thumbnailView.setOnClickListener(view -> itemClickListener.onMediaClicked(mediaRecord));

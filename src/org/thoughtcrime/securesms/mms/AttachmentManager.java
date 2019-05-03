@@ -281,7 +281,7 @@ public class AttachmentManager {
             result.set(true);
           } else {
             Attachment attachment = slide.asAttachment();
-            result.deferTo(thumbnail.setImageResource(glideRequests, slide, false, true, attachment.getWidth(), attachment.getHeight()));
+            result.deferTo(thumbnail.setImageResource(glideRequests, slide, false, attachment.getWidth(), attachment.getHeight()));
             removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE);
           }
 

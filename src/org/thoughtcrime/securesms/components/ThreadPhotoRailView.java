@@ -92,7 +92,7 @@ public class ThreadPhotoRailView extends FrameLayout {
       Slide                     slide       = MediaUtil.getSlideForAttachment(getContext(), mediaRecord.getAttachment());
 
       if (slide != null) {
-        imageView.setImageResource(glideRequests, slide, false, false);
+        imageView.setImageResource(glideRequests, slide, false);
       }
 
       imageView.setOnClickListener(v -> {
