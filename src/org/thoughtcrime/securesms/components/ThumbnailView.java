@@ -291,8 +291,7 @@ public class ThumbnailView extends FrameLayout {
                                           .diskCacheStrategy(DiskCacheStrategy.NONE)
                                           .transition(withCrossFade()), new CenterCrop());
 
-    if (slide.isInProgress()) return request;
-    else                      return request.apply(RequestOptions.errorOf(R.drawable.ic_image_dark));
+    return request.apply(RequestOptions.errorOf(R.drawable.ic_image_dark));
   }
 
   private RequestBuilder buildPlaceholderGlideRequest(@NonNull GlideRequests glideRequests, @NonNull Slide slide) {

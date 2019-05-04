@@ -218,7 +218,6 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
 
     return thumbnailSlide != null         &&
            thumbnailSlide.hasImage()      &&
-           !thumbnailSlide.isInProgress() &&
            thumbnailSlide.getThumbnailUri() != null;
   }
 

@@ -108,14 +108,6 @@ public abstract class Slide {
     return attachment;
   }
 
-  public boolean isInProgress() {
-    return false;
-  }
-
-  public boolean isPendingDownload() {
-    return false;
-  }
-
   public long getTransferState() {
     return attachment.getTransferState();
   }
