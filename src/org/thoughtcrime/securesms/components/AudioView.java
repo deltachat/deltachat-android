@@ -83,8 +83,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     }
   }
 
-  public void setAudio(final @NonNull AudioSlide audio,
-                       final boolean showControls, int duration)
+  public void setAudio(final @NonNull AudioSlide audio, int duration)
   {
 
     controlToggle.displayQuick(playButton);

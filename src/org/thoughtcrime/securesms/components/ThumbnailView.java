@@ -211,16 +211,14 @@ public class ThumbnailView extends FrameLayout {
   }
 
   @UiThread
-  public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                                                    boolean showControls)
+  public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide)
   {
-    return setImageResource(glideRequests, slide, showControls, 0, 0);
+    return setImageResource(glideRequests, slide, 0, 0);
   }
 
   @UiThread
   public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                                                    boolean showControls, int naturalWidth,
-                                                    int naturalHeight)
+                                                    int naturalWidth, int naturalHeight)
   {
     if (slide.getThumbnailUri() != null && slide.hasPlayOverlay())
     {

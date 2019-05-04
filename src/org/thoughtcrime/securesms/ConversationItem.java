@@ -358,8 +358,6 @@ public class ConversationItem extends LinearLayout
                                   @NonNull Recipient       conversationRecipient,
                                            boolean         isGroupThread)
   {
-    boolean showControls = !messageRecord.isFailed();
-
     class SetDurationListener implements AudioSlidePlayer.Listener {
       @Override
       public void onStart() {}
@@ -396,7 +394,7 @@ public class ConversationItem extends LinearLayout
           audioSlidePlayer.requestDuration();
         }
 
-        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), showControls, duration);
+        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
       }
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
 
@@ -410,7 +408,7 @@ public class ConversationItem extends LinearLayout
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
-      documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord), showControls);
+      documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
       documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
       documentViewStub.get().setOnLongClickListener(passthroughClickListener);
 
@@ -433,7 +431,6 @@ public class ConversationItem extends LinearLayout
 
       mediaThumbnailStub.get().setImageResource(glideRequests,
                                                 slide,
-                                                showControls,
                                                 messageRecord.getWidth(100),
                                                 messageRecord.getHeight(100));
       mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());

@@ -272,16 +272,16 @@ public class AttachmentManager {
             AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(context, (AudioSlide) slide, new SetDurationListener());
             audioSlidePlayer.requestDuration();
 
-            audioView.setAudio((AudioSlide) slide, false,0);
+            audioView.setAudio((AudioSlide) slide, 0);
             removableMediaView.display(audioView, false);
             result.set(true);
           } else if (slide.hasDocument()) {
-            documentView.setDocument((DocumentSlide) slide, false);
+            documentView.setDocument((DocumentSlide) slide);
             removableMediaView.display(documentView, false);
             result.set(true);
           } else {
             Attachment attachment = slide.asAttachment();
-            result.deferTo(thumbnail.setImageResource(glideRequests, slide, false, attachment.getWidth(), attachment.getHeight()));
+            result.deferTo(thumbnail.setImageResource(glideRequests, slide, attachment.getWidth(), attachment.getHeight()));
             removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE);
           }
 
