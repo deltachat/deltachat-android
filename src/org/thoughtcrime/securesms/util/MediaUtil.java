@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.util;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -32,6 +33,7 @@ import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
@@ -266,5 +268,30 @@ public class MediaUtil {
     }
 
     return null;
+  }
+
+  public static boolean createVideoThumbnailIfNeeded(Context context, Uri dataUri, Uri thumbnailUri) {
+    boolean success = false;
+    try {
+      File thumbnailFile = new File(thumbnailUri.getPath());
+      if (!thumbnailFile.exists()) {
+        Bitmap bitmap = null;
+
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        retriever.setDataSource(context, dataUri);
+        bitmap = retriever.getFrameAtTime(-1);
+        retriever.release();
+
+        if (bitmap != null) {
+          FileOutputStream out = new FileOutputStream(thumbnailFile);
+          bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+          success = true;
+        }
+      }
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+    return success;
   }
 }

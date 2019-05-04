@@ -30,6 +30,9 @@ public class DcAttachment extends Attachment {
   @Nullable
   @Override
   public Uri getThumbnailUri() {
-    return Uri.fromFile(new File(dcMsg.getFile()));
+    if(dcMsg.getType()==DcMsg.DC_MSG_VIDEO) {
+      return Uri.fromFile(new File(dcMsg.getFile()+"-preview.jpg"));
+    }
+    return getDataUri();
   }
 }
