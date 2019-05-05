@@ -274,7 +274,8 @@ public class MediaUtil {
     boolean success = false;
     try {
       File thumbnailFile = new File(thumbnailUri.getPath());
-      if (!thumbnailFile.exists()) {
+      File dataFile = new File(dataUri.getPath());
+      if (!thumbnailFile.exists() || dataFile.lastModified()>thumbnailFile.lastModified()) {
         Bitmap bitmap = null;
 
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
