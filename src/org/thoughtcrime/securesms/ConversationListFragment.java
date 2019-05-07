@@ -75,6 +75,11 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
+import static org.thoughtcrime.securesms.util.ForwardingUtil.FORWARDED_MESSAGE_IDS;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.REQUEST_FORWARD;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
+
 
 public class ConversationListFragment extends Fragment
   implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate
@@ -101,12 +106,12 @@ public class ConversationListFragment extends Fragment
     archive = getArguments().getBoolean(ARCHIVE, false);
 
     ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CHAT_MODIFIED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_INCOMING_MSG);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSGS_CHANGED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
   }
 
   @Override
@@ -128,7 +133,7 @@ public class ConversationListFragment extends Fragment
     if (archive) fab.setVisibility(View.GONE);
     else         fab.setVisibility(View.VISIBLE);
 
-    reminderView.setOnDismissListener(() -> updateReminders(true));
+    reminderView.setOnDismissListener(this::updateReminders);
 
     list.setHasFixedSize(true);
     list.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -152,15 +157,24 @@ public class ConversationListFragment extends Fragment
   public void onResume() {
     super.onResume();
 
-    updateReminders(true);
+    updateReminders();
     list.getAdapter().notifyDataSetChanged();
   }
 
   @Override
   public void onPause() {
     super.onPause();
-
     fab.stopPulse();
+  }
+
+  public void onNewIntent() {
+    Intent intent = new Intent(getActivity(), NewConversationActivity.class);
+    if (isForwarding(getActivity())) {
+      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(getActivity()));
+      fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_FORWARD));
+    } else {
+      fab.setOnClickListener(v -> startActivity(intent));
+    }
   }
 
   public ConversationListAdapter getListAdapter() {
@@ -178,8 +192,8 @@ public class ConversationListFragment extends Fragment
     }
   }
 
-  @SuppressLint("StaticFieldLeak")
-  private void updateReminders(boolean hide) {
+  @SuppressLint({"StaticFieldLeak", "NewApi"})
+  private void updateReminders() {
     new AsyncTask<Context, Void, Optional<? extends Reminder>>() {
       @Override
       protected Optional<? extends Reminder> doInBackground(Context... params) {
@@ -244,12 +258,12 @@ public class ConversationListFragment extends Fragment
 
       @Override
       protected void executeAction(@Nullable Void parameter) {
-        for (long threadId : selectedConversations) {
-          if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+        for (long chatId : selectedConversations) {
+          if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
             dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
           }
           else {
-            dcContext.archiveChat((int)threadId, !archive? 1 : 0);
+            dcContext.archiveChat((int)chatId, !archive? 1 : 0);
           }
         }
       }
@@ -290,12 +304,12 @@ public class ConversationListFragment extends Fragment
 
           @Override
           protected Void doInBackground(Void... params) {
-            for (long threadId : selectedConversations) {
-              if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+            for (long chatId : selectedConversations) {
+              if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
                 dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
               }
               else {
-                dcContext.deleteChat((int) threadId);
+                dcContext.deleteChat((int) chatId);
               }
             }
             return null;
@@ -381,13 +395,14 @@ public class ConversationListFragment extends Fragment
   @Override
   public void onItemClick(ConversationListItem item) {
     if (actionMode == null) {
-      int threadId = (int)item.getThreadId();
+      int chatId = (int)item.getChatId();
 
-      if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+      if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
         DcContext dcContext = DcHelper.getContext(getActivity());
         int msgId = item.getMsgId();
         int contactId = item.getContactId();
         DcContact contact = dcContext.getContact(contactId);
+        //TODO: check if forward messages
         new AlertDialog.Builder(getActivity())
           .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
           .setPositiveButton(android.R.string.ok, (dialog, which) ->  {
@@ -404,10 +419,10 @@ public class ConversationListFragment extends Fragment
         return;
       }
 
-      handleCreateConversation(threadId, 0);
+      handleCreateConversation(chatId, 0);
     } else {
       ConversationListAdapter adapter = (ConversationListAdapter)list.getAdapter();
-      adapter.toggleThreadInBatchSet(item.getThreadId());
+      adapter.toggleThreadInBatchSet(item.getChatId());
 
       if (adapter.getBatchSelections().size() == 0) {
         actionMode.finish();
@@ -424,7 +439,7 @@ public class ConversationListFragment extends Fragment
     actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(ConversationListFragment.this);
 
     getListAdapter().initializeBatchMode(true);
-    getListAdapter().toggleThreadInBatchSet(item.getThreadId());
+    getListAdapter().toggleThreadInBatchSet(item.getChatId());
     getListAdapter().notifyDataSetChanged();
   }
 
@@ -440,6 +455,10 @@ public class ConversationListFragment extends Fragment
 
   @Override
   public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+    if (isForwarding(getActivity())) {
+      return false;
+    }
+
     MenuInflater inflater = getActivity().getMenuInflater();
 
     if (archive) inflater.inflate(R.menu.conversation_list_batch_unarchive, menu);
@@ -516,7 +535,7 @@ public class ConversationListFragment extends Fragment
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
       if (viewHolder.itemView instanceof ConversationListItemInboxZero) return;
-      final long threadId    = ((ConversationListItem)viewHolder.itemView).getThreadId();
+      final long chatId         = ((ConversationListItem)viewHolder.itemView).getChatId();
       final DcContext dcContext = DcHelper.getContext(getActivity());
 
       if (archive) {
@@ -527,16 +546,16 @@ public class ConversationListFragment extends Fragment
         {
           @Override
           protected void executeAction(@Nullable Long parameter) {
-            dcContext.archiveChat((int)threadId, 0);
+            dcContext.archiveChat((int) chatId, 0);
           }
 
           @Override
           protected void reverseAction(@Nullable Long parameter) {
-            dcContext.archiveChat((int)threadId, 1);
+            dcContext.archiveChat((int) chatId, 1);
           }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
       } else {
-        if (threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+        if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
           int contactId = ((ConversationListItem)viewHolder.itemView).getContactId();
           dcContext.marknoticedContact(contactId);
           forceListRedraw = true;
@@ -550,14 +569,14 @@ public class ConversationListFragment extends Fragment
         {
           @Override
           protected void executeAction(@Nullable Long parameter) {
-            dcContext.archiveChat((int)threadId, 1);
+            dcContext.archiveChat((int) chatId, 1);
           }
 
           @Override
           protected void reverseAction(@Nullable Long parameter) {
-            dcContext.archiveChat((int)threadId, 0);
+            dcContext.archiveChat((int) chatId, 0);
           }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
       }
     }
 

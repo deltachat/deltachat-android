@@ -82,7 +82,7 @@ public class ConversationPopupActivity extends ConversationActivity {
           public void onSuccess(Integer result) {
             ActivityOptionsCompat transition = ActivityOptionsCompat.makeScaleUpAnimation(getWindow().getDecorView(), 0, 0, getWindow().getAttributes().width, getWindow().getAttributes().height);
             Intent intent = new Intent(ConversationPopupActivity.this, ConversationActivity.class);
-            intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, result);
+            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, result);
 
             if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
               startActivity(intent, transition.toBundle());

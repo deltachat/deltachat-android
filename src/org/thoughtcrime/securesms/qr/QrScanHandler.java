@@ -119,7 +119,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
             int chatId = dcContext.createChatByContactId(qrParsed.getId());
             Intent intent = new Intent(activity, ConversationActivity.class);
-            intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
             activity.startActivity(intent);
         });
         builder.setNegativeButton(android.R.string.cancel, null);
@@ -181,7 +181,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
                         dcContext.endCaptureNextError();
                         if (newChatId != 0) {
                             Intent intent = new Intent(activity, ConversationActivity.class);
-                            intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, newChatId);
+                            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
                             activity.startActivity(intent);
                         } else if (!errorString.isEmpty()) {
                             AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);

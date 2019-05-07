@@ -75,7 +75,7 @@ public class NotificationItem {
   public @NonNull PendingIntent getPendingIntent(Context context) {
     Intent     intent           = new Intent(context, ConversationActivity.class);
 
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
     intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
 
     return TaskStackBuilder.create(context)

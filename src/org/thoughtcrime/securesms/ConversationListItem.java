@@ -71,7 +71,7 @@ public class ConversationListItem extends RelativeLayout
 
   private DcLot              dcSummary;
   private Set<Long>          selectedThreads;
-  private long               threadId;
+  private long               chatId;
   private int                msgId;
   private GlideRequests      glideRequests;
   private TextView           subjectView;
@@ -133,7 +133,7 @@ public class ConversationListItem extends RelativeLayout
     this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
     Recipient recipient   = thread.getRecipient();
-    this.threadId         = thread.getThreadId();
+    this.chatId           = thread.getThreadId();
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
     this.unreadCount      = thread.getUnreadCount();
@@ -165,7 +165,7 @@ public class ConversationListItem extends RelativeLayout
     setBgColor();
 
     ApplicationDcContext dcContext = DcHelper.getContext(getContext());
-    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       DcContact dcContact = dcContext.getContact(dcContext.getMsg(msgId).getFromId());
       this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), false);
     }
@@ -174,7 +174,7 @@ public class ConversationListItem extends RelativeLayout
     }
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
-        Prefs.isChatMuted(getContext(), (int)threadId)? R.drawable.ic_volume_off_grey600_18dp : 0,
+        Prefs.isChatMuted(getContext(), (int) chatId)? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
         thread.isVerified()? R.drawable.ic_verified : 0,
         0);
@@ -247,11 +247,11 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setBatchState(boolean batch) {
-    setSelected(batch && selectedThreads.contains(threadId));
+    setSelected(batch && selectedThreads.contains(chatId));
   }
 
-  public long getThreadId() {
-    return threadId;
+  public long getChatId() {
+    return chatId;
   }
 
   public int getMsgId() {
@@ -315,7 +315,7 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setBgColor() {
-    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
       setBackgroundColor(ta.getColor(0, 0xffffffff));
       ta.recycle();

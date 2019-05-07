@@ -59,7 +59,6 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
 
@@ -627,7 +626,7 @@ public class ConversationItem extends LinearLayout
         int chatId = dcContext.createChatByMsgId(messageRecord.getId());
         if( chatId != 0 ) {
           Intent intent = new Intent(context, ConversationActivity.class);
-          intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
           context.startActivity(intent);
         }
       })

@@ -18,13 +18,13 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -113,12 +113,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -139,8 +142,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 {
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
-  // TODO: rename to CHAT_ID_EXTRA
-  public static final String THREAD_ID_EXTRA         = "thread_id";
+  public static final String CHAT_ID_EXTRA           = "chat_id";
   public static final String IS_ARCHIVED_EXTRA       = "is_archived";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String LAST_SEEN_EXTRA         = "last_seen";
@@ -179,7 +181,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private DcChat     dcChat                = new DcChat(0);
   private int        chatId;
   private boolean    archived;
-  private final boolean isSecureText = true;
+  private final boolean isSecureText       = true;
   private boolean    isDefaultSms          = true;
   private boolean    isSecurityInitialized = false;
 
@@ -236,6 +238,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+
+    if (isForwarding(this)) {
+      new ForwardingTask(this, chatId).execute();
+    }
   }
 
   @Override
@@ -402,7 +408,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    if(chatId ==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       return true;
     }
 
@@ -498,7 +504,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleConversationSettings() {
-    if(chatId !=DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
       Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
       intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
       startActivitySceneTransition(intent, titleView.findViewById(R.id.contact_photo_image), "avatar");
@@ -528,7 +534,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleArchiveChat() {
-    int doArchive = dcContext.getChat(chatId).getArchived()==0? 1: 0;
+    int doArchive = dcContext.getChat(chatId).getArchived() == 0 ? 1: 0;
     dcContext.archiveChat(chatId, doArchive);
     Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
     if( doArchive == 1 ) {
@@ -771,7 +777,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    chatId = getIntent().getIntExtra(THREAD_ID_EXTRA, -1);
+    chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = dcContext.getChat(chatId);
@@ -786,7 +792,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       conversationContainer.setClipToPadding(true);
     }
 
-    if(chatId ==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       composePanel.setVisibility(View.GONE);
       titleView.hideAvatar();
     }
@@ -988,6 +994,38 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     return future;
   }
+
+  private static class ForwardingTask extends AsyncTask<Void, Void, Void> {
+
+    WeakReference<Activity> activityRef;
+    int chatId;
+
+    ForwardingTask(Activity activity, int chatId) {
+      activityRef = new WeakReference<Activity>(activity);
+      this.chatId = chatId;
+    }
+
+    @Override
+    protected Void doInBackground(Void... voids) {
+      Activity activity = activityRef.get();
+      if (activity != null) {
+        DcContext dcContext = DcHelper.getContext(activity);
+        dcContext.forwardMsgs(getForwardedMessageIDs(activity), chatId);
+      }
+      return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+      super.onPostExecute(aVoid);
+      Activity activity = activityRef.get();
+      if (activity != null) {
+        activity.setResult(RESULT_OK);
+      }
+    }
+
+  }
+
 
   protected void sendComplete(int threadId) {
     boolean refreshFragment = (threadId != this.chatId);

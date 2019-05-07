@@ -25,6 +25,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -39,7 +40,15 @@ import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 
+import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.LAST_SEEN_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.FORWARDED_MESSAGE_IDS;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.REQUEST_FORWARD;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.resetForwarding;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -51,6 +60,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
   private ConversationListFragment conversationListFragment;
+  private TextView                 title;
   private SearchFragment           searchFragment;
   private SearchToolbar            searchToolbar;
   private ImageView                searchAction;
@@ -69,6 +79,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
+    title                    = findViewById(R.id.toolbar_title);
     searchToolbar            = findViewById(R.id.search_toolbar);
     searchAction             = findViewById(R.id.search_action);
     fragmentContainer        = findViewById(R.id.fragment_container);
@@ -77,6 +88,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     initializeSearchListener();
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
+  }
+
+  @Override
+  protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    setIntent(intent);
+    if (isForwarding(this)) {
+      title.setText(R.string.forward_to);
+      conversationListFragment.onNewIntent();
+    }
+    invalidateOptionsMenu();
   }
 
   @Override
@@ -92,13 +114,23 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     menu.clear();
 
     inflater.inflate(R.menu.text_secure_normal, menu);
-    MenuItem item = menu.findItem(R.id.menu_global_map);
-    if (Prefs.isLocationStreamingEnabled(this)) {
-      item.setVisible(true);
-    }
-
-    if (!Prefs.isLocationStreamingEnabled(this)) {
+    if (isForwarding(this)) {
+      menu.findItem(R.id.menu_cancel_forwarding).setVisible(true);
+      menu.findItem(R.id.menu_qr_scan).setVisible(false);
+      menu.findItem(R.id.menu_qr_show).setVisible(false);
+      menu.findItem(R.id.menu_deaddrop).setVisible(false);
       menu.findItem(R.id.menu_global_map).setVisible(false);
+      menu.findItem(R.id.menu_settings).setVisible(false);
+    } else {
+      MenuItem item = menu.findItem(R.id.menu_global_map);
+      if (Prefs.isLocationStreamingEnabled(this)) {
+        item.setVisible(true);
+      }
+
+      if (!Prefs.isLocationStreamingEnabled(this)) {
+        menu.findItem(R.id.menu_global_map).setVisible(false);
+      }
+
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -155,9 +187,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_qr_show:           handleQrShow();          return true;
       case R.id.menu_deaddrop:          handleDeaddrop();        return true;
       case R.id.menu_global_map:        handleShowMap();         return true;
+      case R.id.menu_cancel_forwarding: handleResetForwarding(); return true;
     }
 
     return false;
+  }
+
+  private void handleResetForwarding() {
+    resetForwarding(this);
+    title.setText(R.string.dc_app_name);
+    conversationListFragment.onNewIntent();
+    invalidateOptionsMenu();
   }
 
   private void handleShowMap() {
@@ -176,26 +216,36 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   @Override
-  public void onCreateConversation(int threadId, long lastSeen) {
-    openConversation(threadId, lastSeen, -1);
+  public void onCreateConversation(int chatId, long lastSeen) {
+    openConversation(chatId, lastSeen, -1);
   }
 
-  public void openConversation(int threadId, long lastSeen, int startingPosition) {
+  public void openConversation(int chatId, long lastSeen, int startingPosition) {
     searchToolbar.clearFocus();
 
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-    intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, lastSeen);
-    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
+    intent.putExtra(CHAT_ID_EXTRA, chatId);
+    intent.putExtra(LAST_SEEN_EXTRA, lastSeen);
+    intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
+    if (isForwarding(this)) {
+      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
+      startActivityForResult(intent, REQUEST_FORWARD);
+    } else {
+      startActivity(intent);
+    }
 
-    startActivity(intent);
     overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
 
   @Override
   public void onSwitchToArchive() {
     Intent intent = new Intent(this, ConversationListArchiveActivity.class);
-    startActivity(intent);
+    if (isForwarding(this)) {
+      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
+      startActivityForResult(intent, REQUEST_FORWARD);
+    } else {
+      startActivity(intent);
+    }
   }
 
   @Override
@@ -206,13 +256,24 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void createChat() {
     Intent intent = new Intent(this, NewConversationActivity.class);
-    startActivity(intent);
+    if (isForwarding(this)) {
+      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
+      startActivityForResult(intent, REQUEST_FORWARD);
+    } else {
+      startActivity(intent);
+    }
   }
 
   private void handleDeaddrop() {
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
-    startActivity(intent);
+    intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
+    if (isForwarding(this)) {
+      //FIXME: DEAD CODE RIGHT NOW, Fix deaddrop forwarding bug in ConversationActivity
+      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
+      startActivityForResult(intent, REQUEST_FORWARD);
+    } else {
+      startActivity(intent);
+    }
   }
 
   private void handleDisplaySettings() {
@@ -223,10 +284,19 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == IntentIntegrator.REQUEST_CODE) {
-      IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-      QrScanHandler qrScanHandler = new QrScanHandler(this);
-      qrScanHandler.onScanPerformed(scanResult);
+    switch (requestCode) {
+      case IntentIntegrator.REQUEST_CODE:
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        QrScanHandler qrScanHandler = new QrScanHandler(this);
+        qrScanHandler.onScanPerformed(scanResult);
+        break;
+      case REQUEST_FORWARD:
+        if (resultCode == RESULT_OK) {
+          handleResetForwarding();
+        }
+        break;
+      default:
+        break;
     }
   }
 }

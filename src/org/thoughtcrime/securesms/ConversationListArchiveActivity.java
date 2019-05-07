@@ -7,6 +7,14 @@ import android.view.MenuItem;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
+import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.IS_ARCHIVED_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.LAST_SEEN_EXTRA;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.FORWARDED_MESSAGE_IDS;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.REQUEST_FORWARD;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
+
 public class ConversationListArchiveActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
 {
@@ -23,7 +31,12 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setTitle(R.string.chat_archived_chats_title);
+    if (isForwarding(this)) {
+      getSupportActionBar().setTitle(R.string.forward_to);
+      getSupportActionBar().setSubtitle(R.string.chat_archived_chats_title);
+    } else {
+      getSupportActionBar().setTitle(R.string.chat_archived_chats_title);
+    }
 
     Bundle bundle = new Bundle();
     bundle.putBoolean(ConversationListFragment.ARCHIVE, true);
@@ -50,13 +63,18 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   }
 
   @Override
-  public void onCreateConversation(int threadId, long lastSeenTime) {
+  public void onCreateConversation(int chatId, long lastSeenTime) {
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-    intent.putExtra(ConversationActivity.IS_ARCHIVED_EXTRA, true);
-    intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, lastSeenTime);
+    intent.putExtra(CHAT_ID_EXTRA, chatId);
+    intent.putExtra(IS_ARCHIVED_EXTRA, true);
+    intent.putExtra(LAST_SEEN_EXTRA, lastSeenTime);
+    if (isForwarding(this)) {
+      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
+      startActivityForResult(intent, REQUEST_FORWARD);
+    } else {
+      startActivity(intent);
+    }
 
-    startActivity(intent);
     overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
 
@@ -65,4 +83,12 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     throw new AssertionError();
   }
 
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_FORWARD && resultCode == RESULT_OK) {
+      setResult(RESULT_OK);
+      finish();
+    }
+  }
 }

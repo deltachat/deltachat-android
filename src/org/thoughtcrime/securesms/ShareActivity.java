@@ -313,16 +313,16 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private void createConversation(int threadId) {
+  private void createConversation(int chatId) {
     if (resolvedExtras.size() > 1) {
       String message = String.format(getString(R.string.share_multiple_attachments), resolvedExtras.size());
       new AlertDialog.Builder(this)
               .setMessage(message)
               .setCancelable(true)
               .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(R.string.menu_send, (dialog, which) -> sendMultipleAttachmentsAndCreateConversation(threadId)).show();
+              .setPositiveButton(R.string.menu_send, (dialog, which) -> sendMultipleAttachmentsAndCreateConversation(chatId)).show();
     } else {
-      openConversation(threadId);
+      openConversation(chatId);
     }
   }
 
@@ -336,7 +336,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
 
   private void openConversation(int threadId) {
       final Intent intent = getBaseShareIntent(ConversationActivity.class);
-      intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
+      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, threadId);
       isPassingAlongMedia = true;
       startActivity(intent);
       finish();
@@ -571,7 +571,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onItemClick(ConversationListItem item) {
       if (conversationClickedListener != null) {
-        conversationClickedListener.onConversationClicked((int) item.getThreadId());
+        conversationClickedListener.onConversationClicked((int) item.getChatId());
       }
     }
 
