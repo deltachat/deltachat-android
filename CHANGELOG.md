@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v0.304.0
+2019-05-07
+
+* Add Catalan translation
+* Update several other translations
+* Bugfixes
+
+The changes have been done by Ampli-fier, Andrei Guliaikin, Asiel Díaz Benítez,
+Björn Petersen, Calbasi, Enrico B., ferhad.necef, Heimen Stoffels, link2xt,
+Maverick2k, Ole Carlsen, Osoitz, Ozancan Karataş, Racer1, Webratte
+
 ## v0.303.0
 2019-05-01
 
