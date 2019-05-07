@@ -109,6 +109,7 @@ import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.Stub;
+import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -853,7 +854,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case AttachmentTypeSelector.TAKE_PHOTO:
       attachmentManager.capturePhoto(this, TAKE_PHOTO); break;
     case AttachmentTypeSelector.RECORD_VIDEO:
-      attachmentManager.captureVideo(this, RECORD_VIDEO); break;
+      if(VideoRecoder.canRecode()) {
+        attachmentManager.captureVideo(this, RECORD_VIDEO);
+      }
+      else {
+        Toast.makeText(this, "This device does not support video-compression (requires Android 4.4 KitKat)", Toast.LENGTH_LONG).show();
+      }
+      break;
     }
   }
 
@@ -959,7 +966,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     final SettableFuture<Integer> future  = new SettableFuture<>();
 
     DcMsg msg = null;
-    Boolean recompress = Boolean.FALSE;
+    Integer recompress = 0;
 
     composeText.setText("");
 
@@ -976,7 +983,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
             // recompress jpeg-files unless sent as documents
             if (MediaUtil.isJpegType(contentType) && slideDeck.getDocumentSlide()==null) {
-              recompress = true;
+              recompress = DcMsg.DC_MSG_IMAGE;
             }
           }
           else if (MediaUtil.isAudioType(contentType)) {
@@ -985,6 +992,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           }
           else if (MediaUtil.isVideoType(contentType)) {
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+            recompress = DcMsg.DC_MSG_VIDEO;
           }
           else {
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
@@ -1008,11 +1016,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       @Override
       protected Void doInBackground(Object... param) {
         DcMsg msg = (DcMsg)param[0];
-        Boolean recompress = (Boolean)param[1];
+        Integer recompress = (Integer)param[1];
         if (action==ACTION_SEND_OUT) {
           if(msg!=null) {
-            if(recompress) {
-              BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
+            if(recompress!=0) {
+              if(recompress==DcMsg.DC_MSG_IMAGE) {
+                BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
+              }
+              else if(recompress==DcMsg.DC_MSG_VIDEO) {
+                VideoRecoder.recodeVideo(ConversationActivity.this, msg);
+              }
             }
             dcContext.sendMsg(dcChat.getId(), msg);
             Util.runOnMain(()-> sendComplete(dcChat.getId()));

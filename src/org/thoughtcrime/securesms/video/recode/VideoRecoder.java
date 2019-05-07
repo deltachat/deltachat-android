@@ -2,12 +2,15 @@ package org.thoughtcrime.securesms.video.recode;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.os.Build;
+
+import com.b44t.messenger.DcMsg;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -618,7 +621,7 @@ public class VideoRecoder {
     return true;
   }
 
-  public class VideoEditedInfo {
+  public static class VideoEditedInfo {
     public long startTime;
     public long endTime;
     public int rotationValue;
@@ -631,4 +634,55 @@ public class VideoRecoder {
     public String originalPath;
   }
 
+  public static boolean canRecode()
+  {
+    boolean canRecode = true;
+    if (Build.VERSION.SDK_INT < 16 /*= Jelly Bean 4.1 (before that codecInfo.getName() was not there) */) {
+      canRecode = false;
+    }
+    else if (Build.VERSION.SDK_INT < 18 /*= Jelly Bean 4.3*/) {
+      try {
+        MediaCodecInfo codecInfo = VideoRecoder.selectCodec(VideoRecoder.MIME_TYPE);
+        if (codecInfo == null) {
+          canRecode = false;
+        } else {
+          String name = codecInfo.getName();
+          if (name.equals("OMX.google.h264.encoder") ||
+              name.equals("OMX.ST.VFM.H264Enc") ||
+              name.equals("OMX.Exynos.avc.enc") ||
+              name.equals("OMX.MARVELL.VIDEO.HW.CODA7542ENCODER") ||
+              name.equals("OMX.MARVELL.VIDEO.H264ENCODER") ||
+              name.equals("OMX.k3.video.encoder.avc") ||
+              name.equals("OMX.TI.DUCATI1.VIDEO.H264E")) {
+            canRecode = false;
+          } else {
+            if (VideoRecoder.selectColorFormat(codecInfo, VideoRecoder.MIME_TYPE) == 0) {
+              canRecode = false;
+            }
+          }
+        }
+      } catch (Exception e) {
+        canRecode = false;
+      }
+    }
+    return canRecode;
+  }
+
+  public static void recodeVideo(Context context, DcMsg msg) {
+
+    if (!canRecode()) {
+      return;
+    }
+
+    String source = msg.getFile();
+
+    VideoEditedInfo vei = new VideoEditedInfo();
+    vei.startTime = 0;
+    vei.endTime = 0;
+    vei.rotationValue = 0;
+
+    VideoRecoder videoRecoder = new VideoRecoder();
+
+    // TODO: call videoRecoder.convertVideo(source, vei);
+  }
 }
