@@ -207,6 +207,7 @@
         <item quantity="other">%d missatges sense llegir</item>
     </plurals>
     <string name="chat_no_messages_hint">Envia el missatge a %1$s:\n\n• No cal amoïnar-se si %2$s no usa Delta Chat.\n\n• L\'entrega del primer missatge por trigar una estona i podria fer-se sense encriptar.</string>
+    <string name="chat_new_group_hint">Escriviu el primer missatge, i així permetreu que els altres el responguin al grup.\n\n• No cal patir si hi ha membres que no facin servir el Delta Chat.\n\n• L\'entrega del primer missatge pot trigar una estona.</string>
     <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
     <string name="chat_record_explain">Mantingues premut per gravar un missatge de veu, i deixa anar per enviar</string>
     <string name="chat_no_chats_yet_title">Safata d\'entrada buida.\nPrem \"+\" per començar un xat nou.</string>
@@ -298,6 +299,36 @@
     <string name="login_error_port">Si us plau poseu un  port vàlid (1-65535)</string>
     <string name="login_error_required_fields">Si us plau poseu una adreça i contrasenya vàlids</string>
     <string name="import_backup_title">Importa una còpia de seguretat</string>
+    <string name="import_backup_ask">S\'ha trobat una còpia de seguretat a \"%1$s\".\n\nVoleu importar i fer servir totes les seves dades i paràmetres de configuració?</string>
+    <string name="import_backup_no_backup_found">No s\'han trobat còpies de seguretat.\n\nCopieu la còpia de seguretat a \"%1$s\" i torneu-ho a provar. Com a alternativa, premeu \"Comença a escriure\" per encetar el procés de configuració habitual.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">No es possible autentificar-se com a \"%1$s\". Si us plau, comproveu que l\'adreça electrònica i la contrasenya son correctes.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">La resposta de%1$s ha sigut: %2$s\n\nHi ha proveïdors que posen informació addicional a la vostra safata d\'entrada; podeu trobar-la allà p. ex. usant la interfície de correu web. Consulteu el vostre proveïdor o els vostres amics si teniu problemes.</string>
+
+
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Reenvia a ...</string>
+    <string name="share_multiple_attachments">Voleu enviar %1$d fitxers al xat que heu triat?\n\nEls fitxers s\'envien sense variar la seva mida original, p. ex. les imatges i els vídeos no son recodificats.</string>
+    <string name="share_abort">Compartició avortada per manca de permisos.</string>
+
+
+    <!-- preferences -->
+    <string name="pref_summary_on">on</string>
+    <string name="pref_summary_off">off</string>
+    <string name="pref_summary_default">per defecte</string>
+    <string name="pref_summary_custom">personalitzat</string>
+    <string name="pref_using_custom">Usant personalitzat: %s</string>
+    <string name="pref_using_default">Usant per defecte: %s</string>
+    <string name="pref_profile_info_headline">Informació del vostre perfil</string>
+    <string name="pref_profile_photo">Fotografia de perfil</string>
+    <string name="pref_trim_headline">Retallada de missatges</string>
+    <string name="pref_trim_option">Esborra missatges antics</string>
+    <string name="pref_trim_option_explain">Esborra els missatges més antics un cop el xat sobrepassi una mida donada</string>
+    <string name="pref_trim_length_limit">Límit de mida del xat</string>
+    <string name="pref_trim_length_limit_summary">%d missatges per xat</string>
+    <string name="pref_trim_now_button">Retalla tots els xats ara</string>
     <string name="perm_explain_access_to_location_denied">Al Delta Chat li cal el permís d\'ubicació per poder adjuntar-la, però aquest ha estat denegat de forma permanent. Si us plau continua amb el menú de preferències de l\'app, tria \"Permisos\" i activa \"Ubicació\".</string>
     <string name="user_location_permission_explanation">El Delta Chat necessita el permís d\'ubicació per poder mostrar i compartir la teva ubicació.</string>
 

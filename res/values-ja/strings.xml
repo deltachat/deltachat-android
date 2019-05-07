@@ -12,6 +12,8 @@
     <string name="none">無し</string>
     <string name="open">開く</string>
     <string name="delete">削除</string>
+    <string name="not_now">今はしない</string>
+    <string name="never">しない</string>
     <string name="done">完了</string>
     <string name="undo">元に戻す</string>
     <string name="error">ｴﾗｰ</string>
@@ -122,7 +124,7 @@
     <string name="menu_view_profile">詳細を確認</string>
     <string name="ask_block_contact">この連絡先を拒否しますか</string>
     <string name="ask_unblock_contact">この連絡先の拒否設定を解除しますか</string>
-    <string name="ask_start_chat_with">Chat with %1$sとﾁｬｯﾄしますか</string>
+    <string name="ask_start_chat_with">%1$sとﾁｬｯﾄしますか</string>
 
 
     <!-- contact list -->
@@ -131,6 +133,7 @@
     <string name="contacts_empty_hint">連絡先無し</string>
 
 
+    <string name="chat_no_chats_yet_hint">あなたはDelta Chatを使う人や普通のﾒｰﾙｱﾄﾞﾚｽとﾁｬｯﾄを出来ます｡</string>
     <string name="chat_input_placeholder">ﾒｯｾｰｼﾞ</string>
     <string name="chat_no_messages">ﾒｯｾｰｼﾞ無し</string>
     <!-- search -->

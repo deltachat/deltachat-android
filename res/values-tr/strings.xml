@@ -236,7 +236,7 @@
     <string name="group_avatar">Grup avatarı</string>
     <string name="group_create_button">Grup oluştur</string>
     <string name="group_please_enter_group_name">Lütfen grup için bir ad girin.</string>
-    <string name="group_add_members">Üye ekle</string>
+    <string name="group_add_members">Üyeler ekle</string>
     <string name="group_hello_draft">Merhaba, bizim için az önce \"%1$s\" grubunu oluşturdum.</string>
     <string name="group_self_not_in_group">Bu eylemi gerçekleştirmek için grubun bir üyesi olmalısınız.</string>
     <string name="profile_encryption">Şifreleme</string>
@@ -308,7 +308,7 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İlet …</string>
-    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, özgün boyutta değiştirilmeden gönderilir, örn. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, değiştirilmeden özgün boyutta gönderilir, örn. görseller ve videolar yeniden kodlanmaz.</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
 
@@ -402,7 +402,7 @@
     <string name="pref_watch_inbox_folder">Gelen Kutusu klasörünü izle</string>
     <string name="pref_watch_sent_folder">Gönderilen klasörünü izle</string>
     <string name="pref_watch_mvbox_folder">DeltaChat klasörünü izle</string>
-    <string name="pref_auto_folder_moves">DeltaChat klasörüne Otomatik Taşınır</string>
+    <string name="pref_auto_folder_moves">DeltaChat klasörüne Otomatik Taşır</string>
     <string name="pref_auto_folder_moves_explain">Sohbetler, Gelen Kutusu klasöründeki dağınıklığı önlemek için taşınır</string>
     <string name="pref_email_interaction_title">E-posta etkileşimi</string>
     <string name="pref_show_emails">Klasik e-postaları göster</string>
@@ -508,7 +508,7 @@
     <string name="perm_not_now">Şimdi değil</string>
     <string name="perm_explain_need_for_camera_access">Fotoğraflar ve video yakalamak için Delta Chat\'in kameraya erişmesine izin verin.</string>
     <string name="perm_explain_need_for_mic_access">Sesli iletiler göndermek için Delta Chat\'in mikrofonunuza erişmesine izin verin.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat\'in dosyaları dışa aktarmak ya da yedek oluşturmak için dosyalarınıza erişmesi gerekir.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat\'in dosyaları dışa aktarmak ya da yedekler oluşturmak için dosyalarınıza erişmesi gerekir.</string>
     <string name="perm_explain_need_for_storage_access_share">Delta Chat\'in seçilen dosyaları paylaşmak için dosyalarınıza erişmesi gerekir.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat, fotoğraflar ya da videolar çekmek için kamera izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Kamera\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat, sesli iletiler göndermek için Mikrofon izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
@@ -568,7 +568,7 @@
     <string name="global_menu_edit_delete_desktop">Sil</string>
     <string name="global_menu_edit_selectall_desktop">Tümünü Seç</string>
     <string name="global_menu_view_desktop">Görünüm</string>
-    <string name="global_menu_view_floatontop_desktop">Üste Kaydır</string>
+    <string name="global_menu_view_floatontop_desktop">Üstte Yüzdür</string>
     <string name="global_menu_view_developer_desktop">Geliştirici</string>
     <string name="global_menu_view_developer_tools_desktop">Geliştirici Araçları</string>
     <string name="global_menu_help_desktop">Yardım</string>
