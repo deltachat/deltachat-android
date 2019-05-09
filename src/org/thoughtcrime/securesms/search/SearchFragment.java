@@ -31,6 +31,8 @@ import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import java.util.Locale;
 import java.util.concurrent.Executors;
 
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+
 /**
  * A fragment that is displayed to do full-text search of messages, groups, and contacts.
  */
@@ -96,6 +98,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
   @Override
   public void onStart() {
     super.onStart();
+    viewModel.includeMessageQueries(!isRelayingMessageContent(getActivity()));
     viewModel.getSearchResult().observe(this, result -> {
       result = result != null ? result : SearchResult.EMPTY;
 

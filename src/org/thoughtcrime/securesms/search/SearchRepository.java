@@ -42,6 +42,7 @@ class SearchRepository {
   private final Context              context;
   private final ApplicationDcContext dcContext;
   private final Executor             executor;
+  private boolean                    queryMessages = true;
 
   SearchRepository(@NonNull Context          context,
                    @NonNull Executor         executor)
@@ -62,10 +63,17 @@ class SearchRepository {
 
       int[]      contacts      = dcContext.getContacts(DcContext.DC_GCL_ADD_SELF, cleanQuery);
       DcChatlist conversations = dcContext.getChatlist(DcContext.DC_GCL_NO_SPECIALS, cleanQuery, 0);
-      int[]      messages      = dcContext.searchMsgs(0, cleanQuery);
+      int[]      messages      = new int[0];
+      if (queryMessages) {
+        messages = dcContext.searchMsgs(0, cleanQuery);
+      }
 
       callback.onResult(new SearchResult(cleanQuery, contacts, conversations, messages));
     });
+  }
+
+  public void setQueryMessages(boolean includeMessageQueries) {
+    this.queryMessages = includeMessageQueries;
   }
 
   /**
