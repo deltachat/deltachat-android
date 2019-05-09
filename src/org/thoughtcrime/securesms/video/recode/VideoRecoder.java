@@ -771,6 +771,8 @@ public class VideoRecoder {
     }
 
     vei.rotationValue = vei.originalRotationValue;
+    vei.startTime = 0;
+    vei.endTime = -1;
 
     // calculate video bitrate
     int MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
