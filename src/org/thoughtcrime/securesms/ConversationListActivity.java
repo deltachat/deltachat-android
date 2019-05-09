@@ -44,11 +44,11 @@ import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.LAST_SEEN_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.FORWARDED_MESSAGE_IDS;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.REQUEST_FORWARD;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.getForwardedMessageIDs;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.resetForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
+import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -88,15 +88,22 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     initializeSearchListener();
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
+    if (isRelayingMessageContent(this)) {
+      title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
   }
 
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
     setIntent(intent);
-    if (isForwarding(this)) {
-      title.setText(R.string.forward_to);
+    if (isRelayingMessageContent(this)) {
+      title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       conversationListFragment.onNewIntent();
+    } else {
+      getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
     invalidateOptionsMenu();
   }
@@ -113,15 +120,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    inflater.inflate(R.menu.text_secure_normal, menu);
-    if (isForwarding(this)) {
-      menu.findItem(R.id.menu_cancel_forwarding).setVisible(true);
-      menu.findItem(R.id.menu_qr_scan).setVisible(false);
-      menu.findItem(R.id.menu_qr_show).setVisible(false);
-      menu.findItem(R.id.menu_deaddrop).setVisible(false);
-      menu.findItem(R.id.menu_global_map).setVisible(false);
-      menu.findItem(R.id.menu_settings).setVisible(false);
-    } else {
+    if (!isRelayingMessageContent(this)) {
+      inflater.inflate(R.menu.text_secure_normal, menu);
       MenuItem item = menu.findItem(R.id.menu_global_map);
       if (Prefs.isLocationStreamingEnabled(this)) {
         item.setVisible(true);
@@ -130,7 +130,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       if (!Prefs.isLocationStreamingEnabled(this)) {
         menu.findItem(R.id.menu_global_map).setVisible(false);
       }
-
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -187,15 +186,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_qr_show:           handleQrShow();          return true;
       case R.id.menu_deaddrop:          handleDeaddrop();        return true;
       case R.id.menu_global_map:        handleShowMap();         return true;
-      case R.id.menu_cancel_forwarding: handleResetForwarding(); return true;
+      case android.R.id.home:           handleResetRelaying();   return true;
     }
 
     return false;
   }
 
-  private void handleResetForwarding() {
-    resetForwarding(this);
+  private void handleResetRelaying() {
+    resetRelayingMessageContent(this);
     title.setText(R.string.dc_app_name);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
   }
@@ -227,9 +227,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     intent.putExtra(CHAT_ID_EXTRA, chatId);
     intent.putExtra(LAST_SEEN_EXTRA, lastSeen);
     intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
-    if (isForwarding(this)) {
-      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
-      startActivityForResult(intent, REQUEST_FORWARD);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+      startActivityForResult(intent, REQUEST_RELAY);
     } else {
       startActivity(intent);
     }
@@ -240,9 +240,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   public void onSwitchToArchive() {
     Intent intent = new Intent(this, ConversationListArchiveActivity.class);
-    if (isForwarding(this)) {
-      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
-      startActivityForResult(intent, REQUEST_FORWARD);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+      startActivityForResult(intent, REQUEST_RELAY);
     } else {
       startActivity(intent);
     }
@@ -256,9 +256,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void createChat() {
     Intent intent = new Intent(this, NewConversationActivity.class);
-    if (isForwarding(this)) {
-      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
-      startActivityForResult(intent, REQUEST_FORWARD);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+      startActivityForResult(intent, REQUEST_RELAY);
     } else {
       startActivity(intent);
     }
@@ -267,13 +267,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private void handleDeaddrop() {
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
-    if (isForwarding(this)) {
-      //FIXME: DEAD CODE RIGHT NOW, Fix deaddrop forwarding bug in ConversationActivity
-      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
-      startActivityForResult(intent, REQUEST_FORWARD);
-    } else {
-      startActivity(intent);
-    }
+    startActivity(intent);
   }
 
   private void handleDisplaySettings() {
@@ -290,9 +284,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         QrScanHandler qrScanHandler = new QrScanHandler(this);
         qrScanHandler.onScanPerformed(scanResult);
         break;
-      case REQUEST_FORWARD:
+      case REQUEST_RELAY:
         if (resultCode == RESULT_OK) {
-          handleResetForwarding();
+          handleResetRelaying();
         }
         break;
       default:

@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/menu_cancel_forwarding"
-        android:visible="false"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
-        app:showAsAction="always"
-        />
     <item android:title="@string/qrscan_title"
           android:id="@+id/menu_qr_scan"
           android:icon="@drawable/ic_ab_qr"

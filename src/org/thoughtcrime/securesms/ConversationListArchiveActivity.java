@@ -10,10 +10,9 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.IS_ARCHIVED_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.LAST_SEEN_EXTRA;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.FORWARDED_MESSAGE_IDS;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.REQUEST_FORWARD;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.getForwardedMessageIDs;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
+import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 public class ConversationListArchiveActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -31,7 +30,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    if (isForwarding(this)) {
+    if (isRelayingMessageContent(this)) {
       getSupportActionBar().setTitle(R.string.forward_to);
       getSupportActionBar().setSubtitle(R.string.chat_archived_chats_title);
     } else {
@@ -68,9 +67,9 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     intent.putExtra(CHAT_ID_EXTRA, chatId);
     intent.putExtra(IS_ARCHIVED_EXTRA, true);
     intent.putExtra(LAST_SEEN_EXTRA, lastSeenTime);
-    if (isForwarding(this)) {
-      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(this));
-      startActivityForResult(intent, REQUEST_FORWARD);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+      startActivityForResult(intent, REQUEST_RELAY);
     } else {
       startActivity(intent);
     }
@@ -86,7 +85,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == REQUEST_FORWARD && resultCode == RESULT_OK) {
+    if (requestCode == REQUEST_RELAY && resultCode == RESULT_OK) {
       setResult(RESULT_OK);
       finish();
     }

@@ -66,7 +66,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 /**
  * Fragment for selecting a one or more contacts from a list.
@@ -289,7 +289,7 @@ public class ContactSelectionListFragment extends    Fragment
 
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
-    boolean addCreateGroupLinks = isFromShareActivity() || isForwarding(getActivity()) ? false : !isMulti();
+    boolean addCreateGroupLinks = isFromShareActivity() || isRelayingMessageContent(getActivity()) ? false : !isMulti();
     int listflags = DcContext.DC_GCL_ADD_SELF;
     if(isSelectVerfied()) {
       listflags = DcContext.DC_GCL_VERIFIED_ONLY;

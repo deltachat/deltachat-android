@@ -62,7 +62,7 @@
     </activity>
 
     <activity android:name=".ShareActivity"
-              android:theme="@style/TextSecure.LightNoActionBar"
+              android:theme="@android:style/Theme.Translucent.NoTitleBar"
               android:excludeFromRecents="true"
               android:launchMode="singleTask"
               android:taskAffinity=""

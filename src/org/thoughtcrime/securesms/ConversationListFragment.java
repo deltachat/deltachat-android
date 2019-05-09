@@ -75,10 +75,9 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-import static org.thoughtcrime.securesms.util.ForwardingUtil.FORWARDED_MESSAGE_IDS;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.REQUEST_FORWARD;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.getForwardedMessageIDs;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
+import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 
 public class ConversationListFragment extends Fragment
@@ -149,7 +148,7 @@ public class ConversationListFragment extends Fragment
     super.onActivityCreated(bundle);
 
     setHasOptionsMenu(true);
-    fab.setOnClickListener(v -> startActivity(new Intent(getActivity(), NewConversationActivity.class)));
+    initializeFabClickListener();
     initializeListAdapter();
   }
 
@@ -168,13 +167,7 @@ public class ConversationListFragment extends Fragment
   }
 
   public void onNewIntent() {
-    Intent intent = new Intent(getActivity(), NewConversationActivity.class);
-    if (isForwarding(getActivity())) {
-      intent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(getActivity()));
-      fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_FORWARD));
-    } else {
-      fab.setOnClickListener(v -> startActivity(intent));
-    }
+    initializeFabClickListener();
   }
 
   public ConversationListAdapter getListAdapter() {
@@ -189,6 +182,16 @@ public class ConversationListFragment extends Fragment
   public void resetQueryFilter() {
     if (!TextUtils.isEmpty(this.queryFilter)) {
       setQueryFilter("");
+    }
+  }
+
+  private void initializeFabClickListener() {
+    Intent intent = new Intent(getActivity(), NewConversationActivity.class);
+    if (isRelayingMessageContent(getActivity())) {
+      acquireRelayMessageContent(getActivity(), intent);
+      fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_RELAY));
+    } else {
+      fab.setOnClickListener(v -> startActivity(intent));
     }
   }
 
@@ -455,7 +458,7 @@ public class ConversationListFragment extends Fragment
 
   @Override
   public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-    if (isForwarding(getActivity())) {
+    if (isRelayingMessageContent(getActivity())) {
       return false;
     }
 

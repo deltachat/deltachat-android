@@ -69,6 +69,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Debouncer;
+import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -82,8 +83,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.FORWARDED_MESSAGE_IDS;
-import static org.thoughtcrime.securesms.util.ForwardingUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends Fragment
@@ -401,7 +401,7 @@ public class ConversationFragment extends Fragment
   private void handleForwardMessage(final Set<DcMsg> messageRecords) {
     Intent composeIntent = new Intent(getActivity(), ConversationListActivity.class);
     int[] msgIds = DcMsg.msgSetToIds(messageRecords);
-    composeIntent.putExtra(FORWARDED_MESSAGE_IDS, msgIds);
+    setForwardingMessageIds(composeIntent, msgIds);
     startActivity(composeIntent);
     Objects.requireNonNull(getActivity()).overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
