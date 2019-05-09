@@ -453,7 +453,7 @@ public class BitmapUtil {
       msg.setFile(outPath, null);
       outBitmap.recycle();
 
-      Log.i(TAG, String.format("recoding for %s dine", inPath));
+      Log.i(TAG, String.format("recoding for %s done", inPath));
     }
     catch(Exception e) {
       e.printStackTrace();

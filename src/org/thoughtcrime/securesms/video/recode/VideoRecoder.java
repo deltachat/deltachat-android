@@ -9,13 +9,28 @@ import android.media.MediaCodecList;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.os.Build;
+import android.util.Log;
 
 import com.b44t.messenger.DcMsg;
+import com.coremedia.iso.IsoFile;
+import com.coremedia.iso.boxes.Box;
+import com.coremedia.iso.boxes.MediaBox;
+import com.coremedia.iso.boxes.MediaHeaderBox;
+import com.coremedia.iso.boxes.SampleSizeBox;
+import com.coremedia.iso.boxes.TrackBox;
+import com.coremedia.iso.boxes.TrackHeaderBox;
+import com.googlecode.mp4parser.util.Matrix;
+import com.googlecode.mp4parser.util.Path;
+
+import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.io.File;
 import java.nio.ByteBuffer;
+import java.util.List;
 
 public class VideoRecoder {
+
+  private static final String TAG = VideoRecoder.class.getSimpleName();
 
   private boolean videoConvertFirstWrite = true;
   public final static String MIME_TYPE = "video/avc";
@@ -181,9 +196,8 @@ public class VideoRecoder {
   }
 
   @TargetApi(16)
-  private boolean convertVideo(String sourcePath, final VideoEditedInfo videoEditedInfo) {
+  private boolean convertVideo(final VideoEditedInfo videoEditedInfo, String destPath) {
 
-    String videoPath = videoEditedInfo.originalPath;
     long startTime = videoEditedInfo.startTime;
     long endTime = videoEditedInfo.endTime;
     int resultWidth = videoEditedInfo.resultWidth;
@@ -194,7 +208,7 @@ public class VideoRecoder {
     int originalBitrate = videoEditedInfo.originalBitrate;
     int resultBitrate = videoEditedInfo.resultBitrate;
     int rotateRender = 0;
-    File cacheFile = new File(sourcePath);
+    File cacheFile = new File(destPath);
 
     if (Build.VERSION.SDK_INT < 18 && resultHeight > resultWidth && resultWidth != originalWidth && resultHeight != originalHeight) {
       int temp = resultHeight;
@@ -221,7 +235,7 @@ public class VideoRecoder {
       }
     }
 
-    File inputFile = new File(videoPath);
+    File inputFile = new File(videoEditedInfo.originalPath);
     if (!inputFile.canRead()) {
       //didWriteData(messageObject, cacheFile, true, true);
       return false;
@@ -622,16 +636,23 @@ public class VideoRecoder {
   }
 
   public static class VideoEditedInfo {
-    public long startTime;
-    public long endTime;
-    public int rotationValue;
-    public int originalWidth;
-    public int originalHeight;
-    public int originalBitrate;
-    public int resultWidth;
-    public int resultHeight;
-    public int resultBitrate;
-    public String originalPath;
+    String originalPath;
+    float  originalDurationMs;
+    long   originalAudioBytes;
+    int    originalRotationValue;
+    int    originalWidth;
+    int    originalHeight;
+    int    originalBitrate;
+
+    long   startTime;
+    long   endTime;
+    int    rotationValue;
+
+    int    resultWidth;
+    int    resultHeight;
+    int    resultBitrate;
+
+    int    estimatedBytes;
   }
 
   public static boolean canRecode()
@@ -668,21 +689,144 @@ public class VideoRecoder {
     return canRecode;
   }
 
-  public static void recodeVideo(Context context, DcMsg msg) {
+  public static VideoEditedInfo getVideoEditInfoFromFile(String videoPath) {
+    // load information for the given video
+    VideoEditedInfo vei = new VideoEditedInfo();
+    vei.originalPath = videoPath;
 
-    if (!canRecode()) {
-      return;
+    try {
+      IsoFile isoFile = new IsoFile(videoPath);
+      List<Box> boxes = Path.getPaths(isoFile, "/moov/trak/");
+      TrackHeaderBox trackHeaderBox = null;
+
+      Box boxTest = Path.getPath(isoFile, "/moov/trak/mdia/minf/stbl/stsd/mp4a/");
+      if (boxTest == null) {
+        return null; // non-mp4
+      }
+
+      for (Box box : boxes) {
+        TrackBox trackBox = (TrackBox) box;
+        long sampleSizes = 0;
+        long trackBitrate = 0;
+        try {
+          MediaBox mediaBox = trackBox.getMediaBox();
+          MediaHeaderBox mediaHeaderBox = mediaBox.getMediaHeaderBox();
+          SampleSizeBox sampleSizeBox = mediaBox.getMediaInformationBox().getSampleTableBox().getSampleSizeBox();
+          for (long size : sampleSizeBox.getSampleSizes()) {
+            sampleSizes += size;
+          }
+          float originalVideoSeconds = (float) mediaHeaderBox.getDuration() / (float) mediaHeaderBox.getTimescale();
+          trackBitrate = (int) (sampleSizes * 8 / originalVideoSeconds);
+          vei.originalDurationMs = originalVideoSeconds * 1000;
+        } catch (Exception e) {
+
+        }
+        TrackHeaderBox headerBox = trackBox.getTrackHeaderBox();
+        if (headerBox.getWidth() != 0 && headerBox.getHeight() != 0) {
+          trackHeaderBox = headerBox;
+          vei.originalBitrate = (int) (trackBitrate / 100000 * 100000);
+        } else {
+          vei.originalAudioBytes += sampleSizes;
+        }
+      }
+      if (trackHeaderBox == null) {
+        return null;
+      }
+
+      Matrix matrix = trackHeaderBox.getMatrix();
+      if (matrix.equals(Matrix.ROTATE_90)) {
+        vei.originalRotationValue = 90;
+      } else if (matrix.equals(Matrix.ROTATE_180)) {
+        vei.originalRotationValue = 180;
+      } else if (matrix.equals(Matrix.ROTATE_270)) {
+        vei.originalRotationValue = 270;
+      }
+      vei.originalWidth = (int) trackHeaderBox.getWidth();
+      vei.originalHeight = (int) trackHeaderBox.getHeight();
+
+    } catch (Exception e) {
+      return null;
     }
 
-    String source = msg.getFile();
+    return vei;
+  }
 
-    VideoEditedInfo vei = new VideoEditedInfo();
-    vei.startTime = 0;
-    vei.endTime = 0;
-    vei.rotationValue = 0;
+  private static int calculateEstimatedSize(float timeDelta, int resultBitrate, float originalDurationMs, long originalAudioBytes) {
+    long videoFramesSize = (long) (resultBitrate / 8 * (originalDurationMs /1000));
+    int size = (int) ((originalAudioBytes + videoFramesSize) * timeDelta);
+    return size;
+  }
 
+  public static boolean recodeVideo(Context context, DcMsg msg) {
+
+    if (!canRecode()) {
+      return false;
+    }
+
+    String inPath = msg.getFile();
+
+    VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
+    if(vei==null) {
+      return false;
+    }
+
+    vei.rotationValue = vei.originalRotationValue;
+
+    // calculate video bitrate
+    int MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
+    long resultDurationMs = (long)vei.originalDurationMs;
+    long maxVideoBytes = MAX_BYTES  -  vei.originalAudioBytes  -  resultDurationMs /*10 kbps codec overhead*/;
+    vei.resultBitrate = (int)(maxVideoBytes/(resultDurationMs/1000)*8);
+
+    if( vei.resultBitrate < 200000) {
+      vei.resultBitrate = 200000;
+    }
+    else if (vei.resultBitrate > 500000) {
+      if( resultDurationMs<30*1000 ) {
+        vei.resultBitrate = 1500000; // ~ 12 MB/minute, plus Audio
+      }
+      else if( resultDurationMs<60*1000 ) {
+        vei.resultBitrate = 1000000; // ~ 8 MB/minute, plus Audio
+      }
+      else {
+        vei.resultBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
+      }
+    }
+
+    // get video dimensions
+    int maxSide = vei.resultBitrate>400000? 640 : 480;
+    vei.resultWidth = vei.originalWidth;
+    vei.resultHeight = vei.originalHeight;
+    if (vei.resultWidth > maxSide || vei.resultHeight > maxSide) {
+      float scale = vei.resultWidth>vei.resultHeight? (float)maxSide/vei.resultWidth : (float)maxSide/vei.resultHeight;
+      vei.resultWidth *= scale;
+      vei.resultHeight *= scale;
+    }
+
+    // calulate bytes
+    vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
+        vei.resultBitrate, vei.originalDurationMs, vei.originalAudioBytes);
+
+    if(vei.estimatedBytes>MAX_BYTES) {
+      return false;
+    }
+
+    String outPath = DcHelper.getContext(context).getBlobdirFile(inPath);
     VideoRecoder videoRecoder = new VideoRecoder();
+    if (!videoRecoder.convertVideo(vei, outPath)) {
+      return false;
+    }
 
-    // TODO: call videoRecoder.convertVideo(source, vei);
+    msg.setFile(outPath, null);
+    if(vei.originalRotationValue==90||vei.originalRotationValue==270) {
+      msg.setDimension(vei.resultHeight, vei.resultWidth);
+    }
+    else {
+      msg.setDimension(vei.resultWidth, vei.resultHeight);
+    }
+    msg.setDuration((int)resultDurationMs);
+
+    Log.i(TAG, String.format("recoding for %s done", inPath));
+    return true;
   }
 }
