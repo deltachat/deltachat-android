@@ -28,6 +28,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.support:appcompat-v7:27.1.1' // one use in SearchToolbar.
     implementation 'com.android.support:design:27.1.1' // used in various locations for a lot of components
     implementation 'com.android.support:support-v13:27.1.1' // used to prevent a 25... version to be loaded (from where ever)
@@ -90,11 +91,16 @@ android {
     buildToolsVersion '27.0.3'
     useLibrary 'org.apache.http.legacy'
 
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     defaultConfig {
         versionCode 547
         versionName "0.304.0"
 
         applicationId "com.b44t.messenger"
+        multiDexEnabled true
 
         minSdkVersion 14
         targetSdkVersion 26

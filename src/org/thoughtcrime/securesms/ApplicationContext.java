@@ -1,12 +1,12 @@
 package org.thoughtcrime.securesms;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.arch.lifecycle.DefaultLifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ProcessLifecycleOwner;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.multidex.MultiDexApplication;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -24,7 +24,7 @@ import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 //import com.squareup.leakcanary.LeakCanary;
 
-public class ApplicationContext extends Application implements DefaultLifecycleObserver {
+public class ApplicationContext extends MultiDexApplication implements DefaultLifecycleObserver {
 
   public ApplicationDcContext   dcContext;
   public DcLocationManager      dcLocationManager;
