@@ -251,7 +251,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   public void onBackPressed() {
     if (searchToolbar.isVisible()) searchToolbar.collapse();
-    else                           super.onBackPressed();
+    else if (isRelayingMessageContent(this)) {
+      handleResetRelaying();
+    } else super.onBackPressed();
   }
 
   private void createChat() {
