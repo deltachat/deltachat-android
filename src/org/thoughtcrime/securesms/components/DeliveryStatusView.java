@@ -11,25 +11,41 @@ import org.thoughtcrime.securesms.R;
 public class DeliveryStatusView {
 
   private final ImageView deliveryIndicator;
-  private static RotateAnimation animation;
+  private static RotateAnimation prepareAnimation;
+  private static RotateAnimation sendingAnimation;
   private boolean animated;
 
   public DeliveryStatusView(ImageView deliveryIndicator) {
     this.deliveryIndicator = deliveryIndicator;
   }
 
-  private void animate()
+  private void animatePrepare()
   {
-    if(animation==null) {
-      animation = new RotateAnimation(0, 360f,
+    if(prepareAnimation ==null) {
+      prepareAnimation = new RotateAnimation(360f, 0f,
           Animation.RELATIVE_TO_SELF, 0.5f,
           Animation.RELATIVE_TO_SELF, 0.5f);
-      animation.setInterpolator(new LinearInterpolator());
-      animation.setDuration(1500);
-      animation.setRepeatCount(Animation.INFINITE);
+      prepareAnimation.setInterpolator(new LinearInterpolator());
+      prepareAnimation.setDuration(2500);
+      prepareAnimation.setRepeatCount(Animation.INFINITE);
     }
 
-    deliveryIndicator.startAnimation(animation);
+    deliveryIndicator.startAnimation(prepareAnimation);
+    animated = true;
+  }
+
+  private void animateSending()
+  {
+    if(sendingAnimation ==null) {
+      sendingAnimation = new RotateAnimation(0, 360f,
+          Animation.RELATIVE_TO_SELF, 0.5f,
+          Animation.RELATIVE_TO_SELF, 0.5f);
+      sendingAnimation.setInterpolator(new LinearInterpolator());
+      sendingAnimation.setDuration(1500);
+      sendingAnimation.setRepeatCount(Animation.INFINITE);
+    }
+
+    deliveryIndicator.startAnimation(sendingAnimation);
     animated = true;
   }
 
@@ -46,10 +62,16 @@ public class DeliveryStatusView {
     deliveryIndicator.clearAnimation();
   }
 
+  public void setPreparing() {
+    deliveryIndicator.setVisibility(View.VISIBLE);
+    deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
+    animatePrepare();
+  }
+
   public void setPending() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
-    animate();
+    animateSending();
   }
 
   public void setSent() {
