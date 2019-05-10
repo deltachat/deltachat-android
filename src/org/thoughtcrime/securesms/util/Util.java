@@ -43,6 +43,9 @@ import org.thoughtcrime.securesms.components.ComposeText;
 import org.thoughtcrime.securesms.database.Address;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -178,6 +181,39 @@ public class Util {
     out.close();
 
     return total;
+  }
+
+  public static boolean moveFile(String fromPath, String toPath) {
+    boolean success = false;
+
+    // 1st try: a simple rename
+    try {
+      File fromFile = new File(fromPath);
+      File toFile = new File(toPath);
+      toFile.delete();
+      if(fromFile.renameTo(toFile)) {
+        success = true;
+      }
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    // 2nd try: copy file
+    if (!success) {
+      try {
+        InputStream fromStream = new FileInputStream(fromPath);
+        OutputStream toStream = new FileOutputStream(toPath);
+        if(Util.copy(fromStream, toStream)>0) {
+          success = true;
+        }
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+
+    return success;
   }
 
   public static List<String> split(String source, String delimiter) {

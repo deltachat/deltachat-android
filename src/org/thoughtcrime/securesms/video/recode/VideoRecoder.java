@@ -23,6 +23,7 @@ import com.googlecode.mp4parser.util.Matrix;
 import com.googlecode.mp4parser.util.Path;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -757,17 +758,22 @@ public class VideoRecoder {
     return size;
   }
 
-  public static boolean recodeVideo(Context context, DcMsg msg) {
-
-    if (!canRecode()) {
-      return false;
-    }
+  // prepareVideo() assumes the msg object is set up properly to being sent;
+  // the function fills out missing information and also recodes the video as needed;
+  // to get a responsive ui, DcChat.prepareMsg() may be called.
+  public static void prepareVideo(Context context, int chatId, DcMsg msg) {
 
     String inPath = msg.getFile();
 
+    if (!canRecode()) {
+      Log.w(TAG, String.format("recoding for %s failed: this system cannot recode videos", inPath));
+      return;
+    }
+
     VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
     if(vei==null) {
-      return false;
+      Log.w(TAG, String.format("recoding for %s failed: cannot get info", inPath));
+      return;
     }
 
     vei.rotationValue = vei.originalRotationValue;
@@ -795,7 +801,7 @@ public class VideoRecoder {
       }
     }
 
-    // get video dimensions
+    // calculate video dimensions
     int maxSide = vei.resultBitrate>400000? 640 : 480;
     vei.resultWidth = vei.originalWidth;
     vei.resultHeight = vei.originalHeight;
@@ -805,21 +811,7 @@ public class VideoRecoder {
       vei.resultHeight *= scale;
     }
 
-    // calulate bytes
-    vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
-        vei.resultBitrate, vei.originalDurationMs, vei.originalAudioBytes);
-
-    if(vei.estimatedBytes>MAX_BYTES) {
-      return false;
-    }
-
-    String outPath = DcHelper.getContext(context).getBlobdirFile(inPath);
-    VideoRecoder videoRecoder = new VideoRecoder();
-    if (!videoRecoder.convertVideo(vei, outPath)) {
-      return false;
-    }
-
-    msg.setFile(outPath, null);
+    // we know the most important things now, prepare the message to get a resposive ui
     if(vei.originalRotationValue==90||vei.originalRotationValue==270) {
       msg.setDimension(vei.resultHeight, vei.resultWidth);
     }
@@ -827,8 +819,30 @@ public class VideoRecoder {
       msg.setDimension(vei.resultWidth, vei.resultHeight);
     }
     msg.setDuration((int)resultDurationMs);
+    DcHelper.getContext(context).prepareMsg(chatId, msg);
+
+    // calulate bytes
+    vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
+        vei.resultBitrate, vei.originalDurationMs, vei.originalAudioBytes);
+
+    if(vei.estimatedBytes>MAX_BYTES) {
+      Log.w(TAG, String.format("recoding for %s: resulting file may too large", inPath));
+      // continue anyway
+    }
+
+    // recode
+    String tempPath = DcHelper.getContext(context).getBlobdirFile(inPath);
+    VideoRecoder videoRecoder = new VideoRecoder();
+    if (!videoRecoder.convertVideo(vei, tempPath)) {
+      Log.w(TAG, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));
+      return;
+    }
+
+    if(!Util.moveFile(tempPath, inPath)) {
+      Log.w(TAG, String.format("recoding for %s failed: cannot move temporary file %s", inPath, tempPath));
+      return;
+    }
 
     Log.i(TAG, String.format("recoding for %s done", inPath));
-    return true;
   }
 }

@@ -1018,19 +1018,22 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         DcMsg msg = (DcMsg)param[0];
         Integer recompress = (Integer)param[1];
         if (action==ACTION_SEND_OUT) {
+          dcContext.setDraft(dcChat.getId(), null);
+
           if(msg!=null) {
             if(recompress!=0) {
+
               if(recompress==DcMsg.DC_MSG_IMAGE) {
                 BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
               }
               else if(recompress==DcMsg.DC_MSG_VIDEO) {
-                VideoRecoder.recodeVideo(ConversationActivity.this, msg);
+                VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
               }
             }
+
             dcContext.sendMsg(dcChat.getId(), msg);
             Util.runOnMain(()-> sendComplete(dcChat.getId()));
           }
-          dcContext.setDraft(dcChat.getId(), null);
         }
         else {
           dcContext.setDraft(dcChat.getId(), msg);
