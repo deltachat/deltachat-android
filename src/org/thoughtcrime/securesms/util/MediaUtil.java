@@ -270,7 +270,16 @@ public class MediaUtil {
     return null;
   }
 
-  public static boolean createVideoThumbnailIfNeeded(Context context, Uri dataUri, Uri thumbnailUri) {
+  public static class ThumbnailSize {
+    public ThumbnailSize(int width, int height) {
+      this.width = width;
+      this.height = height;
+    }
+    public int width;
+    public int height;
+  }
+
+  public static boolean createVideoThumbnailIfNeeded(Context context, Uri dataUri, Uri thumbnailUri, ThumbnailSize retWh) {
     boolean success = false;
     try {
       File thumbnailFile = new File(thumbnailUri.getPath());
@@ -281,6 +290,10 @@ public class MediaUtil {
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         retriever.setDataSource(context, dataUri);
         bitmap = retriever.getFrameAtTime(-1);
+        if (retWh!=null) {
+          retWh.width = bitmap.getWidth();
+          retWh.height = bitmap.getHeight();
+        }
         retriever.release();
 
         if (bitmap != null) {

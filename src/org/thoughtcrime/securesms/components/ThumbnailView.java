@@ -270,7 +270,7 @@ public class ThumbnailView extends FrameLayout {
         new AsyncTask<Void, Void, Boolean>() {
           @Override
           protected Boolean doInBackground(Void... params) {
-            return MediaUtil.createVideoThumbnailIfNeeded(context, dataUri, thumbnailUri);
+            return MediaUtil.createVideoThumbnailIfNeeded(context, dataUri, thumbnailUri, null);
           }
           @Override
           protected void onPostExecute(Boolean success) {

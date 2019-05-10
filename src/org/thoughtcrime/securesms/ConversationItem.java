@@ -58,6 +58,7 @@ import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
+import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
@@ -429,10 +430,22 @@ public class ConversationItem extends LinearLayout
         slide = new DocumentSlide(context, messageRecord);
       }
 
+      MediaUtil.ThumbnailSize thumbnailSize = new MediaUtil.ThumbnailSize(messageRecord.getWidth(0), messageRecord.getHeight(0));
+      if ((thumbnailSize.width<=0||thumbnailSize.height<=0)) {
+        if(messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
+          MediaUtil.createVideoThumbnailIfNeeded(context, slide.getUri(), slide.getThumbnailUri(), thumbnailSize);
+        }
+        if (thumbnailSize.width<=0||thumbnailSize.height<=0) {
+          thumbnailSize.width = 180;
+          thumbnailSize.height = 180;
+        }
+        messageRecord.lateFilingMediaSize(thumbnailSize.width, thumbnailSize.height, 0);
+      }
+
       mediaThumbnailStub.get().setImageResource(glideRequests,
                                                 slide,
-                                                messageRecord.getWidth(100),
-                                                messageRecord.getHeight(100));
+                                                thumbnailSize.width,
+                                                thumbnailSize.height);
       mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
       mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
       mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
