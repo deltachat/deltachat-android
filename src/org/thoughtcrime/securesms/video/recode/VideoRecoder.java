@@ -784,7 +784,7 @@ public class VideoRecoder {
     int MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
     long resultDurationMs = (long)vei.originalDurationMs;
     long maxVideoBytes = MAX_BYTES  -  vei.originalAudioBytes  -  resultDurationMs /*10 kbps codec overhead*/;
-    vei.resultBitrate = (int)(maxVideoBytes/(resultDurationMs/1000)*8);
+    vei.resultBitrate = (int)(maxVideoBytes / Math.max(1, resultDurationMs/1000) * 8);
 
     if( vei.resultBitrate < 200000) {
       vei.resultBitrate = 200000;
