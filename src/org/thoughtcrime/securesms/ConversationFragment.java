@@ -69,6 +69,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Debouncer;
+import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -82,8 +83,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
-import static org.thoughtcrime.securesms.ShareActivity.EXTRA_FORWARD;
-import static org.thoughtcrime.securesms.ShareActivity.EXTRA_MSG_IDS;
+import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends Fragment
@@ -102,7 +102,7 @@ public class ConversationFragment extends Fragment
   private ConversationFragmentListener listener;
 
   private Recipient                   recipient;
-  private long                        threadId;
+  private long                        chatId;
   private long                        lastSeen;
   private int                         startingPosition;
   private int                         previousOffset;
@@ -153,10 +153,8 @@ public class ConversationFragment extends Fragment
 
     // setLayerType() is needed to allow larger items (long texts in our case)
     // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be rendered into a texture"
-    if (android.os.Build.VERSION.SDK_INT >= 11)
-    {
-      list.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-    }
+    list.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+
     return view;
   }
 
@@ -169,7 +167,7 @@ public class ConversationFragment extends Fragment
   }
 
   private void setNoMessageText() {
-    if(threadId==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       if(DcHelper.getInt(getActivity(), "show_emails")!= DcContext.DC_SHOW_EMAILS_ALL) {
         noMessageTextView.setText(R.string.chat_no_contact_requests);
       }
@@ -178,7 +176,7 @@ public class ConversationFragment extends Fragment
       }
     }
     else if(getListAdapter().isGroupChat()){
-      if( dcContext.getChat((int)threadId).isUnpromoted() ) {
+      if(dcContext.getChat((int) chatId).isUnpromoted()) {
         noMessageTextView.setText(R.string.chat_new_group_hint);
       }
       else {
@@ -186,7 +184,7 @@ public class ConversationFragment extends Fragment
       }
     }else{
       String name = getListAdapter().getChatName();
-      if(dcContext.getChat((int)threadId).isSelfTalk()) {
+      if(dcContext.getChat((int) chatId).isSelfTalk()) {
         noMessageTextView.setText(R.string.chat_no_messages);
       }
       else {
@@ -225,7 +223,7 @@ public class ConversationFragment extends Fragment
     initializeResources();
     initializeListAdapter();
 
-    if (threadId == -1) {
+    if (chatId == -1) {
       reloadList();
       updateLocationButton();
     }
@@ -246,8 +244,8 @@ public class ConversationFragment extends Fragment
   }
 
   private void initializeResources() {
-    this.threadId          = this.getActivity().getIntent().getIntExtra(ConversationActivity.THREAD_ID_EXTRA, -1);
-    this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.threadId));
+    this.chatId            = this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
+    this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.chatId));
     this.lastSeen          = this.getActivity().getIntent().getLongExtra(ConversationActivity.LAST_SEEN_EXTRA, -1);
     this.startingPosition  = this.getActivity().getIntent().getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
     this.firstLoad         = true;
@@ -257,7 +255,7 @@ public class ConversationFragment extends Fragment
   }
 
   private void initializeListAdapter() {
-    if (this.recipient != null && this.threadId != -1) {
+    if (this.recipient != null && this.chatId != -1) {
       ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
       list.setAdapter(adapter);
       list.addItemDecoration(new StickyHeaderDecoration(adapter, false, false));
@@ -297,11 +295,11 @@ public class ConversationFragment extends Fragment
     else                            throw new AssertionError();
   }
 
-  public void reload(Recipient recipient, long threadId) {
+  public void reload(Recipient recipient, long chatId) {
     this.recipient = recipient;
 
-    if (this.threadId != threadId) {
-      this.threadId = threadId;
+    if (this.chatId != chatId) {
+      this.chatId = chatId;
       initializeListAdapter();
     }
   }
@@ -333,7 +331,7 @@ public class ConversationFragment extends Fragment
       ret += contact.getDisplayName() + ":\n";
     }
 
-    if( msg.getType()==DcMsg.DC_MSG_TEXT ) {
+    if(msg.getType() == DcMsg.DC_MSG_TEXT) {
       ret += msg.getText();
     }
     else {
@@ -401,10 +399,9 @@ public class ConversationFragment extends Fragment
   }
 
   private void handleForwardMessage(final Set<DcMsg> messageRecords) {
-    Intent composeIntent = new Intent(getActivity(), ShareActivity.class);
+    Intent composeIntent = new Intent(getActivity(), ConversationListActivity.class);
     int[] msgIds = DcMsg.msgSetToIds(messageRecords);
-    composeIntent.putExtra(EXTRA_MSG_IDS, msgIds);
-    composeIntent.putExtra(EXTRA_FORWARD, true);
+    setForwardingMessageIds(composeIntent, msgIds);
     startActivity(composeIntent);
     Objects.requireNonNull(getActivity()).overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
@@ -456,9 +453,10 @@ public class ConversationFragment extends Fragment
     if (loadSynchronous) {
       // this typically takes <1 ms ...
       loaderStartTime = System.currentTimeMillis();
-      int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int)threadId, 0, 0);
+      int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int) chatId, 0, 0);
       onLoadFinished(null, msgs);
     }
+    //FIXME: remove dead code
     else {
       // ... while this takes >100 ms
       LoaderManager loaderManager = getLoaderManager();
@@ -469,7 +467,7 @@ public class ConversationFragment extends Fragment
   }
 
   private void updateLocationButton() {
-    floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int)threadId)? View.VISIBLE : View.GONE);
+    floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int) chatId)? View.VISIBLE : View.GONE);
   }
 
   @Override
@@ -477,7 +475,7 @@ public class ConversationFragment extends Fragment
     Log.w(TAG, "onCreateLoader");
     loaderStartTime = System.currentTimeMillis();
 
-    return new DcMsgListLoader(getActivity(), (int)threadId, 0, 0);
+    return new DcMsgListLoader(getActivity(), (int) chatId, 0, 0);
   }
 
   @Override
@@ -858,7 +856,7 @@ public class ConversationFragment extends Fragment
 
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId==DcContext.DC_EVENT_CHAT_MODIFIED) {
+    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED) {
       updateLocationButton();
     }
 

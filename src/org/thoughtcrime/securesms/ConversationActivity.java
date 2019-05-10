@@ -18,13 +18,13 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -101,6 +101,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -113,12 +114,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
+import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -139,8 +146,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 {
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
-  // TODO: rename to CHAT_ID_EXTRA
-  public static final String THREAD_ID_EXTRA         = "thread_id";
+  public static final String CHAT_ID_EXTRA           = "chat_id";
   public static final String IS_ARCHIVED_EXTRA       = "is_archived";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String LAST_SEEN_EXTRA         = "last_seen";
@@ -179,7 +185,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private DcChat     dcChat                = new DcChat(0);
   private int        chatId;
   private boolean    archived;
-  private final boolean isSecureText = true;
+  private final boolean isSecureText       = true;
   private boolean    isDefaultSms          = true;
   private boolean    isSecurityInitialized = false;
 
@@ -236,6 +242,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+
+    if (isForwarding(this)) {
+      handleForwarding();
+    } else if (isSharing(this)) {
+      handleSharing();
+    }
   }
 
   @Override
@@ -402,7 +414,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    if(chatId ==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       return true;
     }
 
@@ -498,7 +510,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleConversationSettings() {
-    if(chatId !=DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
       Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
       intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
       startActivitySceneTransition(intent, titleView.findViewById(R.id.contact_photo_image), "avatar");
@@ -528,7 +540,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleArchiveChat() {
-    int doArchive = dcContext.getChat(chatId).getArchived()==0? 1: 0;
+    int doArchive = dcContext.getChat(chatId).getArchived() == 0 ? 1: 0;
     dcContext.archiveChat(chatId, doArchive);
     Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
     if( doArchive == 1 ) {
@@ -577,6 +589,30 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     sendButton.setDefaultTransport(Type.NORMAL_MAIL);
 
     supportInvalidateOptionsMenu();
+  }
+
+  private void handleForwarding() {
+    String name = dcContext.getChat(chatId).getName();
+    new AlertDialog.Builder(this)
+            .setMessage(getString(R.string.ask_forward, name))
+            .setPositiveButton(R.string.ok, (dialogInterface, i) -> new RelayingTask(this, chatId).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR))
+            .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
+            .show();
+  }
+
+  private void handleSharing() {
+    ArrayList uriList =  RelayUtil.getSharedUris(this);
+    if (uriList != null && uriList.size() > 0) {
+      String message = String.format(getString(R.string.share_multiple_attachments), uriList.size());
+      new AlertDialog.Builder(this)
+              .setMessage(message)
+              .setCancelable(false)
+              .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {
+                finish();
+              }))
+              .setPositiveButton(R.string.menu_send, (dialog, which) -> new RelayingTask(this, chatId).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR))
+              .show();
+    }
   }
 
   ///// Initializers
@@ -771,7 +807,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    chatId = getIntent().getIntExtra(THREAD_ID_EXTRA, -1);
+    chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = dcContext.getChat(chatId);
@@ -786,7 +822,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       conversationContainer.setClipToPadding(true);
     }
 
-    if(chatId ==DcChat.DC_CHAT_ID_DEADDROP) {
+    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       composePanel.setVisibility(View.GONE);
       titleView.hideAvatar();
     }
@@ -988,6 +1024,119 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     return future;
   }
+
+  private static class RelayingTask extends AsyncTask<Void, Void, Void> {
+
+    WeakReference<Activity> activityRef;
+    int chatId;
+
+    RelayingTask(Activity activity, int chatId) {
+      activityRef = new WeakReference<>(activity);
+      this.chatId = chatId;
+    }
+
+    @Override
+    protected Void doInBackground(Void... voids) {
+      Activity activity = activityRef.get();
+      if (isForwarding(activity)) {
+        handleForwarding(activity);
+      } else if (isSharing(activity)) {
+        handleSharing(activity);
+      }
+      return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+      super.onPostExecute(aVoid);
+      Activity activity = activityRef.get();
+      if (activity != null) {
+        activity.setResult(RESULT_OK);
+      }
+    }
+
+    private void handleForwarding(Activity activity) {
+      DcContext dcContext = DcHelper.getContext(activity);
+      dcContext.forwardMsgs(getForwardedMessageIDs(activity), chatId);
+    }
+
+    private void handleSharing(Activity activity) {
+      DcContext dcContext = DcHelper.getContext(activity);
+      ArrayList<Uri> uris = getSharedUris(activity);
+      try {
+        for(Uri uri : uris) {
+          DcMsg message = createMessage(uri);
+          dcContext.sendMsg(chatId, message);
+        }
+
+        for(Uri uri : uris) {
+          cleanup(activity, uri);
+        }
+      } catch (NullPointerException npe) {
+        Log.w(TAG, "Activity destroyed before background task finished. " +
+                "Cancelling message relaying. " +
+                npe.getMessage());
+      }
+    }
+
+    private void cleanup(Context context, final @Nullable Uri uri) {
+      if (uri != null && PersistentBlobProvider.isAuthority(context, uri)) {
+        Log.w(TAG, "cleaning up " + uri);
+        PersistentBlobProvider.getInstance(context).delete(context, uri);
+      }
+    }
+
+    private DcMsg createMessage(Uri uri) throws NullPointerException {
+      Context context = activityRef.get();
+      DcContext dcContext = DcHelper.getContext(context);
+      DcMsg message;
+      String mimeType = MediaUtil.getMimeType(context, uri);
+      if (MediaUtil.isImageType(mimeType)) {
+        message = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
+      }
+      else if (MediaUtil.isAudioType(mimeType)) {
+        message = new DcMsg(dcContext,DcMsg.DC_MSG_AUDIO);
+      }
+      else if (MediaUtil.isVideoType(mimeType)) {
+        message = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+      }
+      else {
+        message = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
+      }
+      message.setFile(getRealPathFromUri(uri), mimeType);
+      return message;
+    }
+
+    private String getRealPathFromUri(Uri uri) throws NullPointerException {
+      Context context = activityRef.get();
+      ApplicationDcContext dcContext = DcHelper.getContext(context);
+      try {
+        String filename = uri.getPathSegments().get(2); // Get real file name from Uri
+        String ext = "";
+        int i = filename.lastIndexOf(".");
+        if(i>=0) {
+          ext = filename.substring(i);
+          filename = filename.substring(0, i);
+        }
+        String path = dcContext.getBlobdirFile(filename, ext);
+
+        // copy content to this file
+        if(path != null) {
+          InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
+          OutputStream outputStream = new FileOutputStream(path);
+          Util.copy(inputStream, outputStream);
+        }
+
+        return path;
+      }
+      catch(Exception e) {
+        e.printStackTrace();
+        return null;
+      }
+    }
+
+  }
+
 
   protected void sendComplete(int threadId) {
     boolean refreshFragment = (threadId != this.chatId);

@@ -35,6 +35,12 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
+import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
+import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+
 /**
  * Activity container for starting a new conversation.
  *
@@ -76,7 +82,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
               if (recipientsArray.length >= 1) {
                 String recipient = recipientsArray[0];
                 if (textToShare != null && !textToShare.isEmpty()) {
-                  getIntent().putExtra(ConversationActivity.TEXT_EXTRA, textToShare);
+                  getIntent().putExtra(TEXT_EXTRA, textToShare);
                 }
                 onContactSelected(DcContact.DC_CONTACT_ID_NEW_CONTACT, recipient);
               }
@@ -121,9 +127,9 @@ public class NewConversationActivity extends ContactSelectionActivity {
   @Override
   public void onContactSelected(int specialId, String addr) {
     final DcContext dcContext = DcHelper.getContext(this);
-    if(specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
+    if(specialId == DcContact.DC_CONTACT_ID_NEW_GROUP || specialId == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
-      intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP);
+      intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, specialId == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP);
       startActivity(intent);
       finish();
     }
@@ -136,14 +142,14 @@ public class NewConversationActivity extends ContactSelectionActivity {
       int contactId = dcContext.lookupContactIdByAddr(addr);
       int chatId = dcContext.getChatIdByContactId(contactId);
       if (chatId == 0) {
-        String nameNAddr = contactId==0? addr : dcContext.getContact(contactId).getNameNAddr();
+        String nameNAddr = contactId == 0 ? addr : dcContext.getContact(contactId).getNameNAddr();
         new AlertDialog.Builder(this)
                 .setMessage(getString(R.string.ask_start_chat_with, nameNAddr))
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                   int contactId1 = dcContext.createContact(null, addr);
-                  if(contactId1 ==0) {
+                  if(contactId1 == 0) {
                     Toast.makeText(NewConversationActivity.this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
                     return;
                   }
@@ -157,12 +163,17 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   private void openConversation(int chatId) {
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.TEXT_EXTRA, getIntent().getStringExtra(ConversationActivity.TEXT_EXTRA));
+    intent.putExtra(TEXT_EXTRA, getIntent().getStringExtra(TEXT_EXTRA));
     intent.setDataAndType(getIntent().getData(), getIntent().getType());
 
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
-    startActivity(intent);
-    finish();
+    intent.putExtra(CHAT_ID_EXTRA, chatId);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+      startActivityForResult(intent, REQUEST_RELAY);
+    } else {
+      startActivity(intent);
+      finish();
+    }
   }
 
   @Override
@@ -186,4 +197,14 @@ public class NewConversationActivity extends ContactSelectionActivity {
     super.onPrepareOptionsMenu(menu);
     return true;
   }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_RELAY && resultCode == RESULT_OK) {
+      setResult(RESULT_OK);
+      finish();
+    }
+  }
+
 }

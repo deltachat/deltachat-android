@@ -165,7 +165,7 @@ public class NotificationState {
     if (chats.size() != 1) throw new AssertionError("We only support replies to single chat notifications! " + chats.size());
 
     Intent     intent           = new Intent(context, ConversationPopupActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (chats.toArray(new Integer[chats.size()]))[0]);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, (chats.toArray(new Integer[chats.size()]))[0]);
     intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
 
     return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);

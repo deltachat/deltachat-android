@@ -44,6 +44,10 @@ class SearchViewModel extends ViewModel {
     return searchResult;
   }
 
+  public void includeMessageQueries(boolean include) {
+    this.searchRepository.setQueryMessages(include);
+  }
+
   void updateQuery(String query) {
     lastQuery = query;
     debouncer.publish(() -> searchRepository.query(query, searchResult::postValue));

@@ -25,6 +25,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -39,7 +40,15 @@ import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 
+import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.LAST_SEEN_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
+import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
+import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -51,6 +60,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
   private ConversationListFragment conversationListFragment;
+  private TextView                 title;
   private SearchFragment           searchFragment;
   private SearchToolbar            searchToolbar;
   private ImageView                searchAction;
@@ -69,6 +79,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
+    title                    = findViewById(R.id.toolbar_title);
     searchToolbar            = findViewById(R.id.search_toolbar);
     searchAction             = findViewById(R.id.search_action);
     fragmentContainer        = findViewById(R.id.fragment_container);
@@ -77,6 +88,24 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     initializeSearchListener();
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
+    if (isRelayingMessageContent(this)) {
+      title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+  }
+
+  @Override
+  protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    setIntent(intent);
+    if (isRelayingMessageContent(this)) {
+      title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      conversationListFragment.onNewIntent();
+    } else {
+      getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
+    invalidateOptionsMenu();
   }
 
   @Override
@@ -91,14 +120,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    inflater.inflate(R.menu.text_secure_normal, menu);
-    MenuItem item = menu.findItem(R.id.menu_global_map);
-    if (Prefs.isLocationStreamingEnabled(this)) {
-      item.setVisible(true);
-    }
+    if (!isRelayingMessageContent(this)) {
+      inflater.inflate(R.menu.text_secure_normal, menu);
+      MenuItem item = menu.findItem(R.id.menu_global_map);
+      if (Prefs.isLocationStreamingEnabled(this)) {
+        item.setVisible(true);
+      }
 
-    if (!Prefs.isLocationStreamingEnabled(this)) {
-      menu.findItem(R.id.menu_global_map).setVisible(false);
+      if (!Prefs.isLocationStreamingEnabled(this)) {
+        menu.findItem(R.id.menu_global_map).setVisible(false);
+      }
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -155,9 +186,18 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_qr_show:           handleQrShow();          return true;
       case R.id.menu_deaddrop:          handleDeaddrop();        return true;
       case R.id.menu_global_map:        handleShowMap();         return true;
+      case android.R.id.home:           handleResetRelaying();   return true;
     }
 
     return false;
+  }
+
+  private void handleResetRelaying() {
+    resetRelayingMessageContent(this);
+    title.setText(R.string.dc_app_name);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    conversationListFragment.onNewIntent();
+    invalidateOptionsMenu();
   }
 
   private void handleShowMap() {
@@ -176,42 +216,59 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   @Override
-  public void onCreateConversation(int threadId, long lastSeen) {
-    openConversation(threadId, lastSeen, -1);
+  public void onCreateConversation(int chatId, long lastSeen) {
+    openConversation(chatId, lastSeen, -1);
   }
 
-  public void openConversation(int threadId, long lastSeen, int startingPosition) {
+  public void openConversation(int chatId, long lastSeen, int startingPosition) {
     searchToolbar.clearFocus();
 
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, threadId);
-    intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, lastSeen);
-    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
+    intent.putExtra(CHAT_ID_EXTRA, chatId);
+    intent.putExtra(LAST_SEEN_EXTRA, lastSeen);
+    intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+      startActivityForResult(intent, REQUEST_RELAY);
+    } else {
+      startActivity(intent);
+    }
 
-    startActivity(intent);
     overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
 
   @Override
   public void onSwitchToArchive() {
     Intent intent = new Intent(this, ConversationListArchiveActivity.class);
-    startActivity(intent);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+      startActivityForResult(intent, REQUEST_RELAY);
+    } else {
+      startActivity(intent);
+    }
   }
 
   @Override
   public void onBackPressed() {
     if (searchToolbar.isVisible()) searchToolbar.collapse();
-    else                           super.onBackPressed();
+    else if (isRelayingMessageContent(this)) {
+      handleResetRelaying();
+    } else super.onBackPressed();
   }
 
   private void createChat() {
     Intent intent = new Intent(this, NewConversationActivity.class);
-    startActivity(intent);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+      startActivityForResult(intent, REQUEST_RELAY);
+    } else {
+      startActivity(intent);
+    }
   }
 
   private void handleDeaddrop() {
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
+    intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
     startActivity(intent);
   }
 
@@ -223,10 +280,19 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == IntentIntegrator.REQUEST_CODE) {
-      IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-      QrScanHandler qrScanHandler = new QrScanHandler(this);
-      qrScanHandler.onScanPerformed(scanResult);
+    switch (requestCode) {
+      case IntentIntegrator.REQUEST_CODE:
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        QrScanHandler qrScanHandler = new QrScanHandler(this);
+        qrScanHandler.onScanPerformed(scanResult);
+        break;
+      case REQUEST_RELAY:
+        if (resultCode == RESULT_OK) {
+          handleResetRelaying();
+        }
+        break;
+      default:
+        break;
     }
   }
 }

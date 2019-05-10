@@ -46,7 +46,7 @@ public class LongClickCopySpan extends URLSpan {
               int chatId = dcContext.createChatByContactId(contact.getId());
               if (chatId != 0) {
                 Intent intent = new Intent(activity, ConversationActivity.class);
-                intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+                intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
                 activity.startActivity(intent);
               }
             })

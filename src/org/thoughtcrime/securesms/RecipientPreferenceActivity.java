@@ -339,7 +339,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
                 int chatId = dcContext.createChatByContactId(contact.getId());
                 if (chatId != 0) {
                   Intent intent = new Intent(getActivity(), ConversationActivity.class);
-                  intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, chatId);
+                  intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
                   getActivity().startActivity(intent);
                   getActivity().finish();
                 }
