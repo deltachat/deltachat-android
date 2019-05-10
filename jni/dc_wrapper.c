@@ -579,6 +579,12 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_forwardMsgs(JNIEnv *env, jobjec
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_prepareMsg(JNIEnv *env, jobject obj, jint chat_id, jobject msg)
+{
+	return dc_prepare_msg(get_dc_context(env, obj), chat_id, get_dc_msg(env, msg));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendMsg(JNIEnv *env, jobject obj, jint chat_id, jobject msg)
 {
 	return dc_send_msg(get_dc_context(env, obj), chat_id, get_dc_msg(env, msg));
