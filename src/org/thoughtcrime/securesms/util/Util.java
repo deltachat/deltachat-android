@@ -178,6 +178,7 @@ public class Util {
     }
 
     in.close();
+    out.flush();
     out.close();
 
     return total;
