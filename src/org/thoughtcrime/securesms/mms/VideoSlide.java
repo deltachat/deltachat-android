@@ -27,13 +27,24 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.DcAttachment;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ResUtil;
 
+import java.io.File;
+
 public class VideoSlide extends Slide {
 
+  private static Attachment constructVideoAttachment(Context context, Uri uri, long dataSize)
+  {
+    Uri thumbnailUri = Uri.fromFile(new File(DcHelper.getContext(context).getBlobdirFile("temp-preview.jpg")));
+    MediaUtil.ThumbnailSize retWh = new MediaUtil.ThumbnailSize(0, 0);
+    MediaUtil.createVideoThumbnailIfNeeded(context, uri, thumbnailUri, retWh);
+    return constructAttachmentFromUri(context, uri, MediaUtil.VIDEO_UNSPECIFIED, dataSize, retWh.width, retWh.height, thumbnailUri, null, false);
+  }
+
   public VideoSlide(Context context, Uri uri, long dataSize) {
-    super(context, constructAttachmentFromUri(context, uri, MediaUtil.VIDEO_UNSPECIFIED, dataSize, 0, 0, MediaUtil.hasVideoThumbnail(uri), null, false));
+    super(context, constructVideoAttachment(context, uri, dataSize));
   }
 
   public VideoSlide(Context context, DcMsg dcMsg) {

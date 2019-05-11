@@ -243,33 +243,6 @@ public class MediaUtil {
     return (null != contentType) && contentType.startsWith("video/");
   }
 
-  public static boolean hasVideoThumbnail(Uri uri) {
-    Log.w(TAG, "Checking: " + uri);
-
-    if (uri == null || !ContentResolver.SCHEME_CONTENT.equals(uri.getScheme())) {
-      return false;
-    }
-
-    if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
-      return uri.getLastPathSegment().contains("video");
-    }
-
-    return false;
-  }
-
-  public static @Nullable Bitmap getVideoThumbnail(Context context, Uri uri) {
-    if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
-      long videoId = Long.parseLong(uri.getLastPathSegment().split(":")[1]);
-
-      return MediaStore.Video.Thumbnails.getThumbnail(context.getContentResolver(),
-                                                      videoId,
-                                                      MediaStore.Images.Thumbnails.MINI_KIND,
-                                                      null);
-    }
-
-    return null;
-  }
-
   public static class ThumbnailSize {
     public ThumbnailSize(int width, int height) {
       this.width = width;

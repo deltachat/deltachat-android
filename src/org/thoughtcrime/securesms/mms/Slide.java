@@ -130,7 +130,7 @@ public abstract class Slide {
                                                                    long     size,
                                                                    int      width,
                                                                    int      height,
-                                                                   boolean  hasThumbnail,
+                                                         @Nullable Uri      thumbnailUri,
                                                          @Nullable String   fileName,
                                                                    boolean  voiceNote)
   {
@@ -138,7 +138,7 @@ public abstract class Slide {
       String                 resolvedType    = Optional.fromNullable(MediaUtil.getMimeType(context, uri)).or(defaultMime);
       String                 fastPreflightId = String.valueOf(SecureRandom.getInstance("SHA1PRNG").nextLong());
       return new UriAttachment(uri,
-                               hasThumbnail ? uri : null,
+                               thumbnailUri,
                                resolvedType,
                                AttachmentDatabase.TRANSFER_PROGRESS_STARTED,
                                size,
