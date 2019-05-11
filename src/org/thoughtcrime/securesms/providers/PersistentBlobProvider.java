@@ -201,8 +201,13 @@ public class PersistentBlobProvider {
   }
 
   private static @NonNull File getExternalDir(Context context) throws IOException {
-    final File externalDir = context.getExternalCacheDir();
-    if (externalDir == null) throw new IOException("no external files directory");
+    File externalDir = context.getExternalCacheDir();
+    if (externalDir==null) {
+      externalDir = context.getCacheDir();
+    }
+    if (externalDir == null) {
+      throw new IOException("no external files directory");
+    }
     return externalDir;
   }
 
