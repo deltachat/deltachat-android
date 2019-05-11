@@ -344,7 +344,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Log.w(TAG, "onActivityResult called: " + reqCode + ", " + resultCode + " , " + data);
     super.onActivityResult(reqCode, resultCode, data);
 
-    if ((data == null && reqCode != TAKE_PHOTO && reqCode != SMS_DEFAULT) ||
+    if ((data == null && reqCode != TAKE_PHOTO && reqCode != RECORD_VIDEO && reqCode != SMS_DEFAULT) ||
         (resultCode != RESULT_OK && reqCode != SMS_DEFAULT))
     {
       return;
@@ -378,14 +378,19 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       supportInvalidateOptionsMenu();
       break;
     case TAKE_PHOTO:
-      if (attachmentManager.getCaptureUri() != null) {
-        setMedia(attachmentManager.getCaptureUri(), MediaType.IMAGE);
+      if (attachmentManager.getImageCaptureUri() != null) {
+        setMedia(attachmentManager.getImageCaptureUri(), MediaType.IMAGE);
       }
       break;
     case RECORD_VIDEO:
-      Uri uri = data.getData();
-      if(uri!=null) {
+      Uri uri = null;
+      if (data!=null) { uri = data.getData(); }
+      if (uri==null) { uri = attachmentManager.getVideoCaptureUri(); }
+      if (uri!=null) {
         setMedia(uri, MediaType.VIDEO);
+      }
+      else {
+        Toast.makeText(this, "No video returned from system", Toast.LENGTH_LONG).show();
       }
       break;
     case PICK_LOCATION:
