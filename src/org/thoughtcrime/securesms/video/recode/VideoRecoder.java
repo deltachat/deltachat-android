@@ -766,20 +766,29 @@ public class VideoRecoder {
     try {
       String inPath = msg.getFile();
 
-      if (!canRecode()) {
-        Log.w(TAG, String.format("recoding for %s failed: this system cannot recode videos", inPath));
-        return;
-      }
-
+      // try to get information from video file
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
       if (vei == null) {
         Log.w(TAG, String.format("recoding for %s failed: cannot get info", inPath));
         return;
       }
-
       vei.rotationValue = vei.originalRotationValue;
       vei.startTime = 0;
       vei.endTime = -1;
+
+      // set these information to the message object (not yet in database);
+      // if we can recdode, this will be overwritten below
+      if (vei.originalRotationValue == 90 || vei.originalRotationValue == 270) {
+        msg.setDimension(vei.originalHeight, vei.originalWidth);
+      } else {
+        msg.setDimension(vei.originalWidth, vei.originalHeight);
+      }
+      msg.setDuration((int)vei.originalDurationMs);
+
+      if (!canRecode()) {
+        Log.w(TAG, String.format("recoding for %s failed: this system cannot recode videos", inPath));
+        return;
+      }
 
       // calculate video bitrate
       int MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
