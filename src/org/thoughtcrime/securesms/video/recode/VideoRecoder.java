@@ -34,7 +34,7 @@ public class VideoRecoder {
   private static final String TAG = VideoRecoder.class.getSimpleName();
 
   private boolean videoConvertFirstWrite = true;
-  public final static String MIME_TYPE = "video/avc";
+  private final static String MIME_TYPE = "video/avc";
   private final static int PROCESSOR_TYPE_OTHER = 0;
   private final static int PROCESSOR_TYPE_QCOM = 1;
   private final static int PROCESSOR_TYPE_INTEL = 2;
@@ -74,7 +74,7 @@ public class VideoRecoder {
   }
 
   @SuppressLint("NewApi")
-  public static MediaCodecInfo selectCodec(String mimeType) {
+  private static MediaCodecInfo selectCodec(String mimeType) {
     int numCodecs = MediaCodecList.getCodecCount();
     MediaCodecInfo lastCodecInfo = null;
     for (int i = 0; i < numCodecs; i++) {
@@ -206,8 +206,8 @@ public class VideoRecoder {
     int rotationValue = videoEditedInfo.rotationValue;
     int originalWidth = videoEditedInfo.originalWidth;
     int originalHeight = videoEditedInfo.originalHeight;
-    int originalBitrate = videoEditedInfo.originalBitrate;
-    int resultBitrate = videoEditedInfo.resultBitrate;
+    int originalVideoBitrate = videoEditedInfo.originalVideoBitrate;
+    int resultVideoBitrate = videoEditedInfo.resultVideoBitrate;
     int rotateRender = 0;
     File cacheFile = new File(destPath);
 
@@ -264,7 +264,7 @@ public class VideoRecoder {
 
         checkConversionCanceled();
 
-        if (resultBitrate<originalBitrate || resultWidth != originalWidth || resultHeight != originalHeight || rotateRender != 0) {
+        if (resultVideoBitrate<originalVideoBitrate || resultWidth != originalWidth || resultHeight != originalHeight || rotateRender != 0) {
           int videoIndex;
           videoIndex = selectTrack(extractor, false);
           if (videoIndex >= 0) {
@@ -353,7 +353,7 @@ public class VideoRecoder {
 
               MediaFormat outputFormat = MediaFormat.createVideoFormat(MIME_TYPE, resultWidth, resultHeight);
               outputFormat.setInteger(MediaFormat.KEY_COLOR_FORMAT, colorFormat);
-              outputFormat.setInteger(MediaFormat.KEY_BIT_RATE, resultBitrate != 0 ? resultBitrate : 921600);
+              outputFormat.setInteger(MediaFormat.KEY_BIT_RATE, resultVideoBitrate != 0 ? resultVideoBitrate : 921600);
               outputFormat.setInteger(MediaFormat.KEY_FRAME_RATE, 25);
               outputFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 10);
               if (Build.VERSION.SDK_INT < 18) {
@@ -636,14 +636,14 @@ public class VideoRecoder {
     return true;
   }
 
-  public static class VideoEditedInfo {
+  private static class VideoEditedInfo {
     String originalPath;
     float  originalDurationMs;
     long   originalAudioBytes;
     int    originalRotationValue;
     int    originalWidth;
     int    originalHeight;
-    int    originalBitrate;
+    int    originalVideoBitrate;
 
     long   startTime;
     long   endTime;
@@ -651,7 +651,7 @@ public class VideoRecoder {
 
     int    resultWidth;
     int    resultHeight;
-    int    resultBitrate;
+    int    resultVideoBitrate;
 
     int    estimatedBytes;
   }
@@ -690,7 +690,7 @@ public class VideoRecoder {
     return canRecode;
   }
 
-  public static VideoEditedInfo getVideoEditInfoFromFile(String videoPath) {
+  private static VideoEditedInfo getVideoEditInfoFromFile(String videoPath) {
     // load information for the given video
     VideoEditedInfo vei = new VideoEditedInfo();
     vei.originalPath = videoPath;
@@ -725,7 +725,7 @@ public class VideoRecoder {
         TrackHeaderBox headerBox = trackBox.getTrackHeaderBox();
         if (headerBox.getWidth() != 0 && headerBox.getHeight() != 0) {
           trackHeaderBox = headerBox;
-          vei.originalBitrate = (int) (trackBitrate / 100000 * 100000);
+          vei.originalVideoBitrate = (int) (trackBitrate / 100000 * 100000);
         } else {
           vei.originalAudioBytes += sampleSizes;
         }
@@ -763,86 +763,87 @@ public class VideoRecoder {
   // to get a responsive ui, DcChat.prepareMsg() may be called.
   public static void prepareVideo(Context context, int chatId, DcMsg msg) {
 
-    String inPath = msg.getFile();
+    try {
+      String inPath = msg.getFile();
 
-    if (!canRecode()) {
-      Log.w(TAG, String.format("recoding for %s failed: this system cannot recode videos", inPath));
-      return;
-    }
-
-    VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
-    if(vei==null) {
-      Log.w(TAG, String.format("recoding for %s failed: cannot get info", inPath));
-      return;
-    }
-
-    vei.rotationValue = vei.originalRotationValue;
-    vei.startTime = 0;
-    vei.endTime = -1;
-
-    // calculate video bitrate
-    int MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
-    long resultDurationMs = (long)vei.originalDurationMs;
-    long maxVideoBytes = MAX_BYTES  -  vei.originalAudioBytes  -  resultDurationMs /*10 kbps codec overhead*/;
-    vei.resultBitrate = (int)(maxVideoBytes / Math.max(1, resultDurationMs/1000) * 8);
-
-    if( vei.resultBitrate < 200000) {
-      vei.resultBitrate = 200000;
-    }
-    else if (vei.resultBitrate > 500000) {
-      if( resultDurationMs<30*1000 ) {
-        vei.resultBitrate = 1500000; // ~ 12 MB/minute, plus Audio
+      if (!canRecode()) {
+        Log.w(TAG, String.format("recoding for %s failed: this system cannot recode videos", inPath));
+        return;
       }
-      else if( resultDurationMs<60*1000 ) {
-        vei.resultBitrate = 1000000; // ~ 8 MB/minute, plus Audio
+
+      VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
+      if (vei == null) {
+        Log.w(TAG, String.format("recoding for %s failed: cannot get info", inPath));
+        return;
       }
-      else {
-        vei.resultBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
+
+      vei.rotationValue = vei.originalRotationValue;
+      vei.startTime = 0;
+      vei.endTime = -1;
+
+      // calculate video bitrate
+      int MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
+      long resultDurationMs = (long) vei.originalDurationMs;
+      long maxVideoBytes = MAX_BYTES - vei.originalAudioBytes - resultDurationMs /*10 kbps codec overhead*/;
+      vei.resultVideoBitrate = (int) (maxVideoBytes / Math.max(1, resultDurationMs / 1000) * 8);
+
+      if (vei.resultVideoBitrate < 200000) {
+        vei.resultVideoBitrate = 200000;
+      } else if (vei.resultVideoBitrate > 500000) {
+        if (resultDurationMs < 30 * 1000) {
+          vei.resultVideoBitrate = 1500000; // ~ 12 MB/minute, plus Audio
+        } else if (resultDurationMs < 60 * 1000) {
+          vei.resultVideoBitrate = 1000000; // ~ 8 MB/minute, plus Audio
+        } else {
+          vei.resultVideoBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
+        }
       }
-    }
 
-    // calculate video dimensions
-    int maxSide = vei.resultBitrate>400000? 640 : 480;
-    vei.resultWidth = vei.originalWidth;
-    vei.resultHeight = vei.originalHeight;
-    if (vei.resultWidth > maxSide || vei.resultHeight > maxSide) {
-      float scale = vei.resultWidth>vei.resultHeight? (float)maxSide/vei.resultWidth : (float)maxSide/vei.resultHeight;
-      vei.resultWidth *= scale;
-      vei.resultHeight *= scale;
-    }
+      // calculate video dimensions
+      int maxSide = vei.resultVideoBitrate > 400000 ? 640 : 480;
+      vei.resultWidth = vei.originalWidth;
+      vei.resultHeight = vei.originalHeight;
+      if (vei.resultWidth > maxSide || vei.resultHeight > maxSide) {
+        float scale = vei.resultWidth > vei.resultHeight ? (float) maxSide / vei.resultWidth : (float) maxSide / vei.resultHeight;
+        vei.resultWidth *= scale;
+        vei.resultHeight *= scale;
+      }
 
-    // we know the most important things now, prepare the message to get a resposive ui
-    if(vei.originalRotationValue==90||vei.originalRotationValue==270) {
-      msg.setDimension(vei.resultHeight, vei.resultWidth);
-    }
-    else {
-      msg.setDimension(vei.resultWidth, vei.resultHeight);
-    }
-    msg.setDuration((int)resultDurationMs);
-    DcHelper.getContext(context).prepareMsg(chatId, msg);
+      // we know the most important things now, prepare the message to get a resposive ui
+      if (vei.originalRotationValue == 90 || vei.originalRotationValue == 270) {
+        msg.setDimension(vei.resultHeight, vei.resultWidth);
+      } else {
+        msg.setDimension(vei.resultWidth, vei.resultHeight);
+      }
+      msg.setDuration((int) resultDurationMs);
+      DcHelper.getContext(context).prepareMsg(chatId, msg);
 
-    // calulate bytes
-    vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
-        vei.resultBitrate, vei.originalDurationMs, vei.originalAudioBytes);
+      // calulate bytes
+      vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
+          vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
 
-    if(vei.estimatedBytes>MAX_BYTES) {
-      Log.w(TAG, String.format("recoding for %s: resulting file may too large", inPath));
-      // continue anyway
+      if (vei.estimatedBytes > MAX_BYTES) {
+        Log.w(TAG, String.format("recoding for %s: resulting file may too large", inPath));
+        // continue anyway
+      }
+
+      // recode
+      String tempPath = DcHelper.getContext(context).getBlobdirFile(inPath);
+      VideoRecoder videoRecoder = new VideoRecoder();
+      if (!videoRecoder.convertVideo(vei, tempPath)) {
+        Log.w(TAG, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));
+        return;
+      }
+
+      if (!Util.moveFile(tempPath, inPath)) {
+        Log.w(TAG, String.format("recoding for %s failed: cannot move temporary file %s", inPath, tempPath));
+        return;
+      }
+
+      Log.i(TAG, String.format("recoding for %s done", inPath));
     }
-
-    // recode
-    String tempPath = DcHelper.getContext(context).getBlobdirFile(inPath);
-    VideoRecoder videoRecoder = new VideoRecoder();
-    if (!videoRecoder.convertVideo(vei, tempPath)) {
-      Log.w(TAG, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));
-      return;
+    catch(Exception e) {
+      e.printStackTrace();
     }
-
-    if(!Util.moveFile(tempPath, inPath)) {
-      Log.w(TAG, String.format("recoding for %s failed: cannot move temporary file %s", inPath, tempPath));
-      return;
-    }
-
-    Log.i(TAG, String.format("recoding for %s done", inPath));
   }
 }
