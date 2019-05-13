@@ -48,11 +48,6 @@ public class ImageSlide extends Slide {
   }
 
   @Override
-  public @DrawableRes int getPlaceholderRes(Theme theme) {
-    return 0;
-  }
-
-  @Override
   public @Nullable Uri getThumbnailUri() {
     return getUri();
   }
@@ -60,11 +55,5 @@ public class ImageSlide extends Slide {
   @Override
   public boolean hasImage() {
     return true;
-  }
-
-  @NonNull
-  @Override
-  public String getContentDescription() {
-    return context.getString(R.string.image);
   }
 }

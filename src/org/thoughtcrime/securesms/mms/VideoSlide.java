@@ -62,18 +62,6 @@ public class VideoSlide extends Slide {
   }
 
   @Override
-  public boolean hasPlaceholder() {
-    return true;
-  }
-
-  @Override
-  public @DrawableRes int getPlaceholderRes(Theme theme) {
-    // the placeholder is shown when a video is staged before sending.
-    // TODO: VIDEO: not needed, we should show the normal thumbnail plus transparent play or edit buttons
-    return ResUtil.getDrawableRes(theme, R.attr.conversation_icon_attach_video);
-  }
-
-  @Override
   public boolean hasImage() {
     return true;
   }
@@ -81,10 +69,5 @@ public class VideoSlide extends Slide {
   @Override
   public boolean hasVideo() {
     return true;
-  }
-
-  @NonNull @Override
-  public String getContentDescription() {
-    return context.getString(R.string.video);
   }
 }

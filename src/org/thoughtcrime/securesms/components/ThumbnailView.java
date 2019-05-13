@@ -227,10 +227,10 @@ public class ThumbnailView extends FrameLayout {
   public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
                                                     int naturalWidth, int naturalHeight)
   {
-    if (slide.getThumbnailUri() != null && slide.hasPlayOverlay())
-    {
+    if (slide.hasPlayOverlay()) {
       this.playOverlay.setVisibility(View.VISIBLE);
-    } else {
+    }
+    else {
       this.playOverlay.setVisibility(View.GONE);
     }
 
@@ -289,10 +289,6 @@ public class ThumbnailView extends FrameLayout {
         request.into(new GlideDrawableListeningTarget(image, result));
       }
     }
-    else if (slide.hasPlaceholder())
-    {
-      buildPlaceholderGlideRequest(glideRequests, slide).into(new GlideBitmapListeningTarget(image, result));
-    }
     else
     {
       glideRequests.clear(image);
@@ -322,12 +318,6 @@ public class ThumbnailView extends FrameLayout {
     glideRequests.clear(image);
 
     slide = null;
-  }
-
-  private RequestBuilder buildPlaceholderGlideRequest(@NonNull GlideRequests glideRequests, @NonNull Slide slide) {
-    return applySizing(glideRequests.asBitmap()
-                        .load(slide.getPlaceholderRes(getContext().getTheme()))
-                        .diskCacheStrategy(DiskCacheStrategy.NONE), new FitCenter());
   }
 
   private GlideRequest applySizing(@NonNull GlideRequest request, @NonNull BitmapTransformation fitting) {

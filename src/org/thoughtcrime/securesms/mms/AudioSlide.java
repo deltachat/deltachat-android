@@ -60,11 +60,6 @@ public class AudioSlide extends Slide {
   }
 
   @Override
-  public boolean hasPlaceholder() {
-    return true;
-  }
-
-  @Override
   public boolean hasImage() {
     return true;
   }
@@ -72,16 +67,5 @@ public class AudioSlide extends Slide {
   @Override
   public boolean hasAudio() {
     return true;
-  }
-
-  @NonNull
-  @Override
-  public String getContentDescription() {
-    return context.getString(R.string.audio);
-  }
-
-  @Override
-  public @DrawableRes int getPlaceholderRes(Theme theme) {
-    return ResUtil.getDrawableRes(theme, R.attr.conversation_icon_attach_audio);
   }
 }

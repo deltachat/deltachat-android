@@ -102,22 +102,12 @@ public abstract class Slide {
     return false;
   }
 
-  public @NonNull String getContentDescription() { return ""; }
-
   public Attachment asAttachment() {
     return attachment;
   }
 
   public long getTransferState() {
     return attachment.getTransferState();
-  }
-
-  public @DrawableRes int getPlaceholderRes(Theme theme) {
-    throw new AssertionError("getPlaceholderRes() called for non-drawable slide");
-  }
-
-  public boolean hasPlaceholder() {
-    return false;
   }
 
   public boolean hasPlayOverlay() {
