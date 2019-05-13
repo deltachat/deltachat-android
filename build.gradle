@@ -150,23 +150,20 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                          'proguard-jackson.pro',
-                          'proguard-appcompat-v7.pro',
-                          'proguard-rounded-image-view.pro',
-                          'proguard-glide.pro',
-                          'proguard-shortcutbadger.pro',
-                          'proguard-retrofit.pro',
-                          'proguard-retrolambda.pro',
-                          'proguard.cfg'
-            testProguardFiles 'proguard-automation.pro',
-                          'proguard.cfg'
+            minifyEnabled false
             applicationIdSuffix ".beta"
         }
         release {
-            minifyEnabled true
-            proguardFiles = buildTypes.debug.proguardFiles
+            // minification and proguard disabled for now.
+            //
+            // when enabled, it can cut down apk size about 6%,
+            // however this also has the potential to break things.
+            // so exceptions are needed and have to be maintained.
+            // (see git-history and https://github.com/deltachat/deltachat-android/issues/905 )
+            //
+            // nb: it is highly recommended to use the same settings in debug+release -
+            // otherwise problems might be noticed delayed only
+            minifyEnabled false
             signingConfig signingConfigs.release
         }
     }
