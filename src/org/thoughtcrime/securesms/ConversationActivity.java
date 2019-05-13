@@ -1025,18 +1025,22 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         if (action==ACTION_SEND_OUT) {
           dcContext.setDraft(dcChat.getId(), null);
 
-          if(msg!=null) {
+          if(msg!=null)
+          {
+            boolean doSend = true;
             if(recompress!=0) {
-
               if(recompress==DcMsg.DC_MSG_IMAGE) {
                 BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
               }
               else if(recompress==DcMsg.DC_MSG_VIDEO) {
-                VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
+                doSend = VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
               }
             }
 
-            dcContext.sendMsg(dcChat.getId(), msg);
+            if (doSend) {
+              dcContext.sendMsg(dcChat.getId(), msg);
+            }
+
             Util.runOnMain(()-> sendComplete(dcChat.getId()));
           }
         }

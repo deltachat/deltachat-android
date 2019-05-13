@@ -10,6 +10,7 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.b44t.messenger.DcMsg;
 import com.coremedia.iso.IsoFile;
@@ -758,10 +759,17 @@ public class VideoRecoder {
     return size;
   }
 
+  private static void logNtoast(Context context, String str)
+  {
+    Log.w(TAG, str);
+    Util.runOnMain(()->Toast.makeText(context, str, Toast.LENGTH_LONG).show());
+  }
+
   // prepareVideo() assumes the msg object is set up properly to being sent;
   // the function fills out missing information and also recodes the video as needed;
   // to get a responsive ui, DcChat.prepareMsg() may be called.
-  public static void prepareVideo(Context context, int chatId, DcMsg msg) {
+  // return: true=video might be prepared, can be sent, false=error
+  public static boolean prepareVideo(Context context, int chatId, DcMsg msg) {
 
     try {
       String inPath = msg.getFile();
@@ -769,8 +777,8 @@ public class VideoRecoder {
       // try to get information from video file
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
       if (vei == null) {
-        Log.w(TAG, String.format("recoding for %s failed: cannot get info", inPath));
-        return;
+        logNtoast(context, String.format("recoding for %s failed: cannot get info", inPath));
+        return false;
       }
       vei.rotationValue = vei.originalRotationValue;
       vei.startTime = 0;
@@ -786,8 +794,8 @@ public class VideoRecoder {
       msg.setDuration((int)vei.originalDurationMs);
 
       if (!canRecode()) {
-        Log.w(TAG, String.format("recoding for %s failed: this system cannot recode videos", inPath));
-        return;
+        logNtoast(context, String.format("recoding for %s failed: this system cannot recode videos", inPath));
+        return false;
       }
 
       // check if video bitrate is already reasonable
@@ -796,7 +804,7 @@ public class VideoRecoder {
       long inBytes = new File(inPath).length();
       if (inBytes > 0 && inBytes <= MAX_BYTES && vei.originalVideoBitrate <= MAX_KBPS*2 /*be tolerant as long the file size matches*/) {
         Log.i(TAG, String.format("recoding for %s is not needed, %d bytes and %d kbps are ok", inPath, inBytes, vei.originalVideoBitrate));
-        return;
+        return true;
       }
 
       // calculate new video bitrate, sth. between 200 kbps and 1500 kbps
@@ -839,22 +847,22 @@ public class VideoRecoder {
       vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
           vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
 
-      if (vei.estimatedBytes > MAX_BYTES) {
-        Log.w(TAG, String.format("recoding for %s: resulting file may too large", inPath));
-        // continue anyway
+      if (vei.estimatedBytes > MAX_BYTES+MAX_BYTES/4) {
+        logNtoast(context, String.format("recoding for %s failed: resulting file probably too large", inPath));
+        return false;
       }
 
       // recode
       String tempPath = DcHelper.getContext(context).getBlobdirFile(inPath);
       VideoRecoder videoRecoder = new VideoRecoder();
       if (!videoRecoder.convertVideo(vei, tempPath)) {
-        Log.w(TAG, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));
-        return;
+        logNtoast(context, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));
+        return false;
       }
 
       if (!Util.moveFile(tempPath, inPath)) {
-        Log.w(TAG, String.format("recoding for %s failed: cannot move temporary file %s", inPath, tempPath));
-        return;
+        logNtoast(context, String.format("recoding for %s failed: cannot move temporary file %s", inPath, tempPath));
+        return false;
       }
 
       Log.i(TAG, String.format("recoding for %s done", inPath));
@@ -862,5 +870,7 @@ public class VideoRecoder {
     catch(Exception e) {
       e.printStackTrace();
     }
+
+    return true;
   }
 }
