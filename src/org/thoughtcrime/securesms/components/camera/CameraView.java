@@ -26,6 +26,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
+import android.media.MediaRecorder;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -35,9 +36,11 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.OrientationEventListener;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.jobmanager.Job;
 import org.thoughtcrime.securesms.jobmanager.JobParameters;
 import org.thoughtcrime.securesms.util.BitmapUtil;
@@ -45,6 +48,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -65,6 +69,9 @@ public class CameraView extends ViewGroup {
   private @Nullable Size                     previewSize;
   private @NonNull  List<CameraViewListener> listeners = Collections.synchronizedList(new LinkedList<CameraViewListener>());
   private           int                      outputOrientation  = -1;
+
+  private MediaRecorder mediaRecorder;
+  private String        mediaRecorderFile;
 
   public CameraView(Context context) {
     this(context, null);
@@ -227,30 +234,6 @@ public class CameraView extends ViewGroup {
 
   public void addListener(@NonNull CameraViewListener listener) {
     listeners.add(listener);
-  }
-
-  public void setPreviewCallback(final @NonNull PreviewCallback previewCallback) {
-    enqueueTask(new PostInitializationTask<Void>() {
-      @Override
-      protected void onPostMain(Void avoid) {
-        if (camera.isPresent()) {
-          camera.get().setPreviewCallback(new Camera.PreviewCallback() {
-            @Override
-            public void onPreviewFrame(byte[] data, Camera camera) {
-              if (!CameraView.this.camera.isPresent()) {
-                return;
-              }
-
-              final int  rotation    = getCameraPictureOrientation();
-              final Size previewSize = camera.getParameters().getPreviewSize();
-              if (data != null) {
-                previewCallback.onPreviewFrame(new PreviewFrame(data, previewSize.width, previewSize.height, rotation));
-              }
-            }
-          });
-        }
-      }
-    });
   }
 
   public boolean isMultiCamera() {
@@ -433,26 +416,104 @@ public class CameraView extends ViewGroup {
   }
 
   public void takePicture(final Rect previewRect) {
-    if (!camera.isPresent() || camera.get().getParameters() == null) {
-      Log.w(TAG, "camera not in capture-ready state");
-      return;
+    try {
+      if (!camera.isPresent() || camera.get().getParameters() == null) {
+        Log.w(TAG, "camera not in capture-ready state");
+        return;
+      }
+
+      camera.get().setOneShotPreviewCallback(new Camera.PreviewCallback() {
+        @Override
+        public void onPreviewFrame(byte[] data, final Camera camera) {
+          final int  rotation     = getCameraPictureOrientation();
+          final Size previewSize  = camera.getParameters().getPreviewSize();
+          final Rect croppingRect = getCroppedRect(previewSize, previewRect, rotation);
+
+          Log.w(TAG, "previewSize: " + previewSize.width + "x" + previewSize.height);
+          Log.w(TAG, "data bytes: " + data.length);
+          Log.w(TAG, "previewFormat: " + camera.getParameters().getPreviewFormat());
+          Log.w(TAG, "croppingRect: " + croppingRect.toString());
+          Log.w(TAG, "rotation: " + rotation);
+          new CaptureTask(previewSize, rotation, croppingRect).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data);
+        }
+      });
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public boolean recordVideo(final Rect previewRect) {
+    boolean started = false;
+    boolean unlocked = false;
+
+    try {
+      Toast.makeText(getContext(), "start record video", Toast.LENGTH_SHORT).show();
+
+      if (!camera.isPresent() || camera.get().getParameters() == null) {
+        Log.w(TAG, "camera not in capture-ready state");
+        return false;
+      }
+
+      int  rotation     = getCameraPictureOrientation();
+      Size previewSize  = camera.get().getParameters().getPreviewSize();
+      Rect croppingRect = getCroppedRect(previewSize, previewRect, rotation);
+
+      camera.get().lock();
+      camera.get().unlock();
+      unlocked = true;
+
+      mediaRecorderFile = DcHelper.getContext(getContext()).getBlobdirFile("quick.mp4");
+
+      mediaRecorder = new MediaRecorder(); // MediaRecorder is very sensitive about the set*() order ...
+      mediaRecorder.setCamera(camera.get());
+      mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+      mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+      mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+      mediaRecorder.setVideoSize(640, 480);
+//      mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+//      mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+//      mediaRecorder.setAudioChannels(1);
+//      mediaRecorder.setAudioEncodingBitRate(48000);
+      mediaRecorder.setOutputFile(mediaRecorderFile);
+      mediaRecorder.prepare();
+      mediaRecorder.start();
+
+      started = true;
+    }
+    catch (Exception e) {
+      e.printStackTrace();
     }
 
-    camera.get().setOneShotPreviewCallback(new Camera.PreviewCallback() {
-      @Override
-      public void onPreviewFrame(byte[] data, final Camera camera) {
-        final int  rotation     = getCameraPictureOrientation();
-        final Size previewSize  = camera.getParameters().getPreviewSize();
-        final Rect croppingRect = getCroppedRect(previewSize, previewRect, rotation);
-
-        Log.w(TAG, "previewSize: " + previewSize.width + "x" + previewSize.height);
-        Log.w(TAG, "data bytes: " + data.length);
-        Log.w(TAG, "previewFormat: " + camera.getParameters().getPreviewFormat());
-        Log.w(TAG, "croppingRect: " + croppingRect.toString());
-        Log.w(TAG, "rotation: " + rotation);
-        new CaptureTask(previewSize, rotation, croppingRect).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, data);
+    if (!started && unlocked) {
+      // some error occured, reconnect camera
+      try {
+        camera.get().reconnect();
       }
-    });
+      catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+
+    return started;
+  }
+
+  public void endRecordVideo() {
+    try {
+      Toast.makeText(getContext(), "end record video", Toast.LENGTH_SHORT).show();
+
+      mediaRecorder.stop();
+
+      Log.i(TAG, String.format("recorded %s with %d bytes", mediaRecorderFile, new File(mediaRecorderFile).length()));
+
+      mediaRecorder.release();
+      mediaRecorder = null;
+
+      camera.get().reconnect();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private Rect getCroppedRect(Size cameraPreviewSize, Rect visibleRect, int rotation) {

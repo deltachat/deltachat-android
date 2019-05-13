@@ -55,6 +55,7 @@ public class QuickAttachmentDrawer extends ViewGroup implements InputView, Camer
   private DrawerState drawerState      = DrawerState.COLLAPSED;
   private Rect        drawChildrenRect = new Rect();
   private boolean     paused           = false;
+  private boolean     takingVideo      = false;
 
   public QuickAttachmentDrawer(Context context) {
     this(context, null);
@@ -131,6 +132,7 @@ public class QuickAttachmentDrawer extends ViewGroup implements InputView, Camer
       swapCameraButton.setOnClickListener(new CameraFlipClickListener());
     }
     shutterButton.setOnClickListener(new ShutterClickListener());
+    shutterButton.setOnLongClickListener(new ShutterLongClickListener());
     fullScreenButton.setOnClickListener(new FullscreenClickListener());
     ViewUtil.swapChildInPlace(this, this.controls, controls, indexOfChild(cameraView) + 1);
     this.controls = controls;
@@ -542,13 +544,34 @@ public class QuickAttachmentDrawer extends ViewGroup implements InputView, Camer
     }
   }
 
-  private class ShutterClickListener implements OnClickListener {
+  private class ShutterLongClickListener implements OnLongClickListener {
     @Override
-    public void onClick(View v) {
+    public boolean onLongClick(View v) {
+      // start record video
       boolean crop        = drawerState != DrawerState.FULL_EXPANDED;
       int     imageHeight = crop ? getContainer().getKeyboardHeight() : cameraView.getMeasuredHeight();
       Rect    previewRect = new Rect(0, 0, cameraView.getMeasuredWidth(), imageHeight);
-      cameraView.takePicture(previewRect);
+      cameraView.recordVideo(previewRect);
+      takingVideo = true;
+      return false; // this forces the OnClickListener to be called when the button is released
+    }
+  }
+
+  private class ShutterClickListener implements OnClickListener {
+    @Override
+    public void onClick(View v) {
+      if (takingVideo) {
+        // end record video
+        takingVideo = false;
+        cameraView.endRecordVideo();
+      }
+      else {
+        // take picture
+        boolean crop        = drawerState != DrawerState.FULL_EXPANDED;
+        int     imageHeight = crop ? getContainer().getKeyboardHeight() : cameraView.getMeasuredHeight();
+        Rect    previewRect = new Rect(0, 0, cameraView.getMeasuredWidth(), imageHeight);
+        cameraView.takePicture(previewRect);
+      }
     }
   }
 
