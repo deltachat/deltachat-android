@@ -44,14 +44,6 @@
 
     <PreferenceCategory android:title="Experimental features">
 
-        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
-            android:key="pref_compression"
-            android:title="Outgoing image quality"
-            android:dependency="pref_compression"
-            android:entries="@array/pref_compression_entries"
-            android:entryValues="@array/pref_compression_values"
-            android:defaultValue="0" />
-
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_location_streaming_enabled"

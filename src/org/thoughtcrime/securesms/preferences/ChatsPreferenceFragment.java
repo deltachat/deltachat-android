@@ -40,6 +40,9 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
 
+    findPreference("pref_compression")
+        .setOnPreferenceChangeListener(new ListSummaryListener());
+
     showEmails = (ListPreferenceWithSummary) this.findPreference("pref_show_emails");
     showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
       updateListSummary(preference, newValue);
@@ -67,6 +70,8 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   public void onResume() {
     super.onResume();
     ((ApplicationPreferencesActivity)getActivity()).getSupportActionBar().setTitle(R.string.pref_chats_and_media);
+
+    initializeListSummary((ListPreferenceWithSummary) findPreference("pref_compression"));
 
     String value = Integer.toString(dcContext.getConfigInt("show_emails"));
     showEmails.setValue(value);

@@ -83,9 +83,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       return true;
     });
 
-    this.findPreference("pref_compression")
-      .setOnPreferenceChangeListener(new ListSummaryListener());
-
     Preference backup = this.findPreference("pref_backup");
     backup.setOnPreferenceClickListener(new BackupListener());
 
@@ -137,8 +134,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("sentbox_watch"));
     mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch"));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move"));
-
-    initializeListSummary((ListPreferenceWithSummary) findPreference("pref_compression"));
   }
 
   @Override

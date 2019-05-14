@@ -22,6 +22,15 @@
                 android:key="pref_enter_sends"
                 android:summary="@string/pref_enter_sends_explain"
                 android:title="@string/pref_enter_sends"/>
+
+        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
+            android:key="pref_compression"
+            android:title="@string/pref_outgoing_media_quality"
+            android:dependency="pref_compression"
+            android:entries="@array/pref_compression_entries"
+            android:entryValues="@array/pref_compression_values"
+            android:defaultValue="0" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_email_interaction_title">
