@@ -1,5 +1,9 @@
 package org.thoughtcrime.securesms;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -44,6 +48,12 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
 
     ApplicationDcContext dcContext;
 
+    private String hint;
+
+    private String errorHint;
+
+    private TextView hintBelowQr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +75,8 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         ActionBar supportActionBar = getSupportActionBar();
         assert supportActionBar != null;
         supportActionBar.setDisplayHomeAsUpEnabled(true);
+        errorHint = getString(R.string.qrshow_join_contact_no_connection_hint);
 
-        String hint;
         if (chatId != 0) {
             // verified-group
             String groupName = dcContext.getChat(chatId).getName();
@@ -87,8 +97,8 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
             supportActionBar.setTitle(selfName);
             supportActionBar.setSubtitle(R.string.qrshow_join_contact_title);
         }
-        TextView hintBelowQr = findViewById(R.id.qrShowHint);
-        hintBelowQr.setText(Html.fromHtml(hint));
+        hintBelowQr = findViewById(R.id.qrShowHint);
+        setHintText();
 
         numJoiners = 0;
 
@@ -101,6 +111,20 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         }
 
         dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
+        this.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                setHintText();
+            }
+        }, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+    private void setHintText() {
+        if (!dcContext.isNetworkConnected()) {
+            hintBelowQr.setText(Html.fromHtml(errorHint));
+        } else {
+            hintBelowQr.setText(Html.fromHtml(hint));
+        }
     }
 
     @Override
@@ -108,6 +132,9 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         super.onResume();
         dynamicTheme.onResume(this);
         dynamicLanguage.onResume(this);
+        if (!dcContext.isNetworkConnected()) {
+            Toast.makeText(this, R.string.qrshow_join_contact_no_connection_toast, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
