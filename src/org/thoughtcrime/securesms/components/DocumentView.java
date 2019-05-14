@@ -67,8 +67,7 @@ public class DocumentView extends FrameLayout {
     this.viewListener = listener;
   }
 
-  public void setDocument(final @NonNull DocumentSlide documentSlide,
-                          final boolean showControls)
+  public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
     controlToggle.displayQuick(iconContainer);
 

@@ -58,6 +58,7 @@ import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
+import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
@@ -358,8 +359,6 @@ public class ConversationItem extends LinearLayout
                                   @NonNull Recipient       conversationRecipient,
                                            boolean         isGroupThread)
   {
-    boolean showControls = !messageRecord.isFailed();
-
     class SetDurationListener implements AudioSlidePlayer.Listener {
       @Override
       public void onStart() {}
@@ -396,7 +395,7 @@ public class ConversationItem extends LinearLayout
           audioSlidePlayer.requestDuration();
         }
 
-        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), showControls, duration);
+        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
       }
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
 
@@ -410,7 +409,7 @@ public class ConversationItem extends LinearLayout
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
-      documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord), showControls);
+      documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
       documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
       documentViewStub.get().setOnLongClickListener(passthroughClickListener);
 
@@ -424,22 +423,29 @@ public class ConversationItem extends LinearLayout
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
 
       Slide slide;
-      boolean isPreview;
       if (messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
         slide = new VideoSlide(context, messageRecord);
-        isPreview = true;
       }
       else {
         slide = new DocumentSlide(context, messageRecord);
-        isPreview = false;
+      }
+
+      MediaUtil.ThumbnailSize thumbnailSize = new MediaUtil.ThumbnailSize(messageRecord.getWidth(0), messageRecord.getHeight(0));
+      if ((thumbnailSize.width<=0||thumbnailSize.height<=0)) {
+        if(messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
+          MediaUtil.createVideoThumbnailIfNeeded(context, slide.getUri(), slide.getThumbnailUri(), thumbnailSize);
+        }
+        if (thumbnailSize.width<=0||thumbnailSize.height<=0) {
+          thumbnailSize.width = 180;
+          thumbnailSize.height = 180;
+        }
+        messageRecord.lateFilingMediaSize(thumbnailSize.width, thumbnailSize.height, 0);
       }
 
       mediaThumbnailStub.get().setImageResource(glideRequests,
                                                 slide,
-                                                showControls,
-                                                isPreview,
-                                                messageRecord.getWidth(100),
-                                                messageRecord.getHeight(100));
+                                                thumbnailSize.width,
+                                                thumbnailSize.height);
       mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
       mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
       mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);

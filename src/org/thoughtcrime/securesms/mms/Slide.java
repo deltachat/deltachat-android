@@ -102,30 +102,12 @@ public abstract class Slide {
     return false;
   }
 
-  public @NonNull String getContentDescription() { return ""; }
-
   public Attachment asAttachment() {
     return attachment;
   }
 
-  public boolean isInProgress() {
-    return false;
-  }
-
-  public boolean isPendingDownload() {
-    return false;
-  }
-
   public long getTransferState() {
     return attachment.getTransferState();
-  }
-
-  public @DrawableRes int getPlaceholderRes(Theme theme) {
-    throw new AssertionError("getPlaceholderRes() called for non-drawable slide");
-  }
-
-  public boolean hasPlaceholder() {
-    return false;
   }
 
   public boolean hasPlayOverlay() {
@@ -138,7 +120,7 @@ public abstract class Slide {
                                                                    long     size,
                                                                    int      width,
                                                                    int      height,
-                                                                   boolean  hasThumbnail,
+                                                         @Nullable Uri      thumbnailUri,
                                                          @Nullable String   fileName,
                                                                    boolean  voiceNote)
   {
@@ -146,7 +128,7 @@ public abstract class Slide {
       String                 resolvedType    = Optional.fromNullable(MediaUtil.getMimeType(context, uri)).or(defaultMime);
       String                 fastPreflightId = String.valueOf(SecureRandom.getInstance("SHA1PRNG").nextLong());
       return new UriAttachment(uri,
-                               hasThumbnail ? uri : null,
+                               thumbnailUri,
                                resolvedType,
                                AttachmentDatabase.TRANSFER_PROGRESS_STARTED,
                                size,

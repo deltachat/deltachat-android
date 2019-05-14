@@ -44,12 +44,7 @@ public class ImageSlide extends Slide {
   }
 
   public ImageSlide(Context context, Uri uri, long size, int width, int height) {
-    super(context, constructAttachmentFromUri(context, uri, MediaUtil.IMAGE_JPEG, size, width, height, true, null, false));
-  }
-
-  @Override
-  public @DrawableRes int getPlaceholderRes(Theme theme) {
-    return 0;
+    super(context, constructAttachmentFromUri(context, uri, MediaUtil.IMAGE_JPEG, size, width, height, uri, null, false));
   }
 
   @Override
@@ -60,11 +55,5 @@ public class ImageSlide extends Slide {
   @Override
   public boolean hasImage() {
     return true;
-  }
-
-  @NonNull
-  @Override
-  public String getContentDescription() {
-    return context.getString(R.string.image);
   }
 }

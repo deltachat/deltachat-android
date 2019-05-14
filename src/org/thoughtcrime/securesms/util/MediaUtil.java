@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.util;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -32,6 +33,7 @@ import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
@@ -241,30 +243,42 @@ public class MediaUtil {
     return (null != contentType) && contentType.startsWith("video/");
   }
 
-  public static boolean hasVideoThumbnail(Uri uri) {
-    Log.w(TAG, "Checking: " + uri);
-
-    if (uri == null || !ContentResolver.SCHEME_CONTENT.equals(uri.getScheme())) {
-      return false;
+  public static class ThumbnailSize {
+    public ThumbnailSize(int width, int height) {
+      this.width = width;
+      this.height = height;
     }
-
-    if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
-      return uri.getLastPathSegment().contains("video");
-    }
-
-    return false;
+    public int width;
+    public int height;
   }
 
-  public static @Nullable Bitmap getVideoThumbnail(Context context, Uri uri) {
-    if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
-      long videoId = Long.parseLong(uri.getLastPathSegment().split(":")[1]);
+  public static boolean createVideoThumbnailIfNeeded(Context context, Uri dataUri, Uri thumbnailUri, ThumbnailSize retWh) {
+    boolean success = false;
+    try {
+      File thumbnailFile = new File(thumbnailUri.getPath());
+      File dataFile = new File(dataUri.getPath());
+      if (!thumbnailFile.exists() || dataFile.lastModified()>thumbnailFile.lastModified()) {
+        Bitmap bitmap = null;
 
-      return MediaStore.Video.Thumbnails.getThumbnail(context.getContentResolver(),
-                                                      videoId,
-                                                      MediaStore.Images.Thumbnails.MINI_KIND,
-                                                      null);
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        retriever.setDataSource(context, dataUri);
+        bitmap = retriever.getFrameAtTime(-1);
+        if (retWh!=null) {
+          retWh.width = bitmap.getWidth();
+          retWh.height = bitmap.getHeight();
+        }
+        retriever.release();
+
+        if (bitmap != null) {
+          FileOutputStream out = new FileOutputStream(thumbnailFile);
+          bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+          success = true;
+        }
+      }
     }
-
-    return null;
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+    return success;
   }
 }

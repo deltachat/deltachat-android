@@ -1,8 +1,13 @@
 package org.thoughtcrime.securesms.components;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.UiThread;
 import android.util.AttributeSet;
@@ -18,8 +23,8 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
@@ -27,12 +32,13 @@ import org.thoughtcrime.securesms.mms.GlideRequest;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
+import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
+import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
-import org.thoughtcrime.securesms.util.guava.Optional;
 
+import java.io.FileOutputStream;
 import java.util.Locale;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -211,22 +217,20 @@ public class ThumbnailView extends FrameLayout {
   }
 
   @UiThread
-  public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                                                    boolean showControls, boolean isPreview)
+  public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide)
   {
-    return setImageResource(glideRequests, slide, showControls, isPreview, 0, 0);
+    return setImageResource(glideRequests, slide, 0, 0);
   }
 
+  @SuppressLint("StaticFieldLeak")
   @UiThread
   public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                                                    boolean showControls, boolean isPreview, int naturalWidth,
-                                                    int naturalHeight)
+                                                    int naturalWidth, int naturalHeight)
   {
-    if (slide.getThumbnailUri() != null && slide.hasPlayOverlay() &&
-        (slide.getTransferState() == AttachmentDatabase.TRANSFER_PROGRESS_DONE || isPreview))
-    {
+    if (slide.hasPlayOverlay()) {
       this.playOverlay.setVisibility(View.VISIBLE);
-    } else {
+    }
+    else {
       this.playOverlay.setVisibility(View.GONE);
     }
 
@@ -255,11 +259,38 @@ public class ThumbnailView extends FrameLayout {
 
     SettableFuture<Boolean> result = new SettableFuture<>();
 
-    if (slide.getThumbnailUri() != null) {
-      buildThumbnailGlideRequest(glideRequests, slide).into(new GlideDrawableListeningTarget(image, result));
-    } else if (slide.hasPlaceholder()) {
-      buildPlaceholderGlideRequest(glideRequests, slide).into(new GlideBitmapListeningTarget(image, result));
-    } else {
+    if (slide.getThumbnailUri() != null)
+    {
+      if(slide.hasVideo())
+      {
+        Uri dataUri = slide.getUri();
+        Uri thumbnailUri = slide.getThumbnailUri();
+        ImageView img = findViewById(R.id.thumbnail_image);
+        Context context = getContext();
+        new AsyncTask<Void, Void, Boolean>() {
+          @Override
+          protected Boolean doInBackground(Void... params) {
+            return MediaUtil.createVideoThumbnailIfNeeded(context, dataUri, thumbnailUri, null);
+          }
+          @Override
+          protected void onPostExecute(Boolean success) {
+            GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(thumbnailUri))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .transition(withCrossFade()), new CenterCrop());
+            request.into(new GlideDrawableListeningTarget(img, result));
+          }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      }
+      else
+      {
+        GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .transition(withCrossFade()), new CenterCrop());
+        request.into(new GlideDrawableListeningTarget(image, result));
+      }
+    }
+    else
+    {
       glideRequests.clear(image);
       result.set(false);
     }
@@ -287,21 +318,6 @@ public class ThumbnailView extends FrameLayout {
     glideRequests.clear(image);
 
     slide = null;
-  }
-
-  private GlideRequest buildThumbnailGlideRequest(@NonNull GlideRequests glideRequests, @NonNull Slide slide) {
-    GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
-                                          .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                          .transition(withCrossFade()), new CenterCrop());
-
-    if (slide.isInProgress()) return request;
-    else                      return request.apply(RequestOptions.errorOf(R.drawable.ic_image_dark));
-  }
-
-  private RequestBuilder buildPlaceholderGlideRequest(@NonNull GlideRequests glideRequests, @NonNull Slide slide) {
-    return applySizing(glideRequests.asBitmap()
-                        .load(slide.getPlaceholderRes(getContext().getTheme()))
-                        .diskCacheStrategy(DiskCacheStrategy.NONE), new FitCenter());
   }
 
   private GlideRequest applySizing(@NonNull GlideRequest request, @NonNull BitmapTransformation fitting) {

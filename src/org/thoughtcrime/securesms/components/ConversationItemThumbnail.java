@@ -164,18 +164,16 @@ public class ConversationItemThumbnail extends FrameLayout {
   }
 
   @UiThread
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                               boolean showControls, boolean isPreview)
+  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide)
   {
-    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, showControls, isPreview), slide);
+    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
   }
 
   @UiThread
   public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                               boolean showControls, boolean isPreview, int naturalWidth,
-                               int naturalHeight)
+                               int naturalWidth, int naturalHeight)
   {
-    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, showControls, isPreview, naturalWidth, naturalHeight), slide);
+    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, naturalWidth, naturalHeight), slide);
 
   }
 

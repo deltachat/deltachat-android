@@ -147,6 +147,7 @@ public class DcContext {
     public native int          getFreshMsgCount     (int chat_id);
     public native void         deleteMsgs           (int msg_ids[]);
     public native void         forwardMsgs          (int msg_ids[], int chat_id);
+    public native int          prepareMsg           (int chat_id, DcMsg msg);
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);
     public native int          checkQrCPtr          (String qr);

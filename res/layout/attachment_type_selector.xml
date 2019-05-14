@@ -62,6 +62,30 @@
                           android:orientation="vertical">
 
                 <org.thoughtcrime.securesms.components.CircleColorImageView
+                    android:id="@+id/record_video_button"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:src="@drawable/attach_record_video"
+                    android:scaleType="center"
+                    android:contentDescription="@string/video"
+                    app:circleColor="#00FFFFFF"/>
+
+                <TextView android:layout_marginTop="10dp"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:gravity="center"
+                          style="@style/AttachmentTypeLabel"
+                          android:text="@string/video"/>
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:gravity="center"
+                          android:orientation="vertical">
+
+                <org.thoughtcrime.securesms.components.CircleColorImageView
                         android:id="@+id/gallery_button"
                         android:layout_width="53dp"
                         android:layout_height="53dp"
@@ -102,31 +126,6 @@
                           android:visibility="visible"
                           style="@style/AttachmentTypeLabel"
                           android:text="@string/location"/>
-
-            </LinearLayout>
-
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_weight="1"
-                          android:visibility="invisible"
-                          android:gravity="center"
-                          android:orientation="vertical">
-
-                <org.thoughtcrime.securesms.components.CircleColorImageView
-                    android:layout_width="53dp"
-                        android:layout_height="53dp"
-                        android:src="@drawable/ic_keyboard_arrow_down_white_24dp"
-                        android:visibility="gone"
-                        android:scaleType="center"
-                        android:contentDescription="unused"
-                        app:circleColor="@color/cyan_400"/>
-
-                <TextView android:layout_marginTop="10dp"
-                          android:visibility="gone"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          style="@style/AttachmentTypeLabel"
-                          android:text="@string/gif"/>
 
             </LinearLayout>
 

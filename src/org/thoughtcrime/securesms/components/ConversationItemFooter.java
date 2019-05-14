@@ -88,6 +88,7 @@ public class ConversationItemFooter extends LinearLayout {
     else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
     else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
     else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
+    else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
     else                                   deliveryStatusView.setPending();
   }
 }

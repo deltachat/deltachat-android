@@ -109,6 +109,7 @@ import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.Stub;
+import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -158,8 +159,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int PICK_CONTACT        = 4;
   private static final int GROUP_EDIT          = 6;
   private static final int TAKE_PHOTO          = 7;
-  private static final int PICK_LOCATION       = 9;
-  private static final int SMS_DEFAULT         = 11;
+  private static final int RECORD_VIDEO        = 8;
+  private static final int PICK_LOCATION       = 9;  // TODO: i think, this can be deleted
+  private static final int SMS_DEFAULT         = 11; // TODO: i think, this can be deleted
 
   private   GlideRequests               glideRequests;
   protected ComposeText                 composeText;
@@ -342,7 +344,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Log.w(TAG, "onActivityResult called: " + reqCode + ", " + resultCode + " , " + data);
     super.onActivityResult(reqCode, resultCode, data);
 
-    if ((data == null && reqCode != TAKE_PHOTO && reqCode != SMS_DEFAULT) ||
+    if ((data == null && reqCode != TAKE_PHOTO && reqCode != RECORD_VIDEO && reqCode != SMS_DEFAULT) ||
         (resultCode != RESULT_OK && reqCode != SMS_DEFAULT))
     {
       return;
@@ -376,8 +378,19 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       supportInvalidateOptionsMenu();
       break;
     case TAKE_PHOTO:
-      if (attachmentManager.getCaptureUri() != null) {
-        setMedia(attachmentManager.getCaptureUri(), MediaType.IMAGE);
+      if (attachmentManager.getImageCaptureUri() != null) {
+        setMedia(attachmentManager.getImageCaptureUri(), MediaType.IMAGE);
+      }
+      break;
+    case RECORD_VIDEO:
+      Uri uri = null;
+      if (data!=null) { uri = data.getData(); }
+      if (uri==null) { uri = attachmentManager.getVideoCaptureUri(); }
+      if (uri!=null) {
+        setMedia(uri, MediaType.VIDEO);
+      }
+      else {
+        Toast.makeText(this, "No video returned from system", Toast.LENGTH_LONG).show();
       }
       break;
     case PICK_LOCATION:
@@ -845,6 +858,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentManager.selectLocation(this, chatId); break;
     case AttachmentTypeSelector.TAKE_PHOTO:
       attachmentManager.capturePhoto(this, TAKE_PHOTO); break;
+    case AttachmentTypeSelector.RECORD_VIDEO:
+      if(VideoRecoder.canRecode()) {
+        attachmentManager.captureVideo(this, RECORD_VIDEO);
+      }
+      else {
+        Toast.makeText(this, "This device does not support video-compression (requires Android 4.4 KitKat)", Toast.LENGTH_LONG).show();
+      }
+      break;
     }
   }
 
@@ -950,7 +971,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     final SettableFuture<Integer> future  = new SettableFuture<>();
 
     DcMsg msg = null;
-    Boolean recompress = Boolean.FALSE;
+    Integer recompress = 0;
 
     composeText.setText("");
 
@@ -967,7 +988,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
             // recompress jpeg-files unless sent as documents
             if (MediaUtil.isJpegType(contentType) && slideDeck.getDocumentSlide()==null) {
-              recompress = true;
+              recompress = DcMsg.DC_MSG_IMAGE;
             }
           }
           else if (MediaUtil.isAudioType(contentType)) {
@@ -976,6 +997,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           }
           else if (MediaUtil.isVideoType(contentType)) {
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+            recompress = DcMsg.DC_MSG_VIDEO;
           }
           else {
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
@@ -999,16 +1021,28 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       @Override
       protected Void doInBackground(Object... param) {
         DcMsg msg = (DcMsg)param[0];
-        Boolean recompress = (Boolean)param[1];
+        Integer recompress = (Integer)param[1];
         if (action==ACTION_SEND_OUT) {
-          if(msg!=null) {
-            if(recompress) {
-              BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
+          dcContext.setDraft(dcChat.getId(), null);
+
+          if(msg!=null)
+          {
+            boolean doSend = true;
+            if(recompress!=0) {
+              if(recompress==DcMsg.DC_MSG_IMAGE) {
+                BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
+              }
+              else if(recompress==DcMsg.DC_MSG_VIDEO) {
+                doSend = VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
+              }
             }
-            dcContext.sendMsg(dcChat.getId(), msg);
+
+            if (doSend) {
+              dcContext.sendMsg(dcChat.getId(), msg);
+            }
+
             Util.runOnMain(()-> sendComplete(dcChat.getId()));
           }
-          dcContext.setDraft(dcChat.getId(), null);
         }
         else {
           dcContext.setDraft(dcChat.getId(), msg);

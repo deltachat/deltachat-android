@@ -42,7 +42,7 @@ public class AudioSlide extends Slide {
   }
 
   public AudioSlide(Context context, Uri uri, long dataSize, boolean voiceNote) {
-    super(context, constructAttachmentFromUri(context, uri, MediaUtil.AUDIO_UNSPECIFIED, dataSize, 0, 0, false, null, voiceNote));
+    super(context, constructAttachmentFromUri(context, uri, MediaUtil.AUDIO_UNSPECIFIED, dataSize, 0, 0, null, null, voiceNote));
   }
 
   public AudioSlide(Context context, Uri uri, long dataSize, String contentType, boolean voiceNote) {
@@ -60,11 +60,6 @@ public class AudioSlide extends Slide {
   }
 
   @Override
-  public boolean hasPlaceholder() {
-    return true;
-  }
-
-  @Override
   public boolean hasImage() {
     return true;
   }
@@ -72,16 +67,5 @@ public class AudioSlide extends Slide {
   @Override
   public boolean hasAudio() {
     return true;
-  }
-
-  @NonNull
-  @Override
-  public String getContentDescription() {
-    return context.getString(R.string.audio);
-  }
-
-  @Override
-  public @DrawableRes int getPlaceholderRes(Theme theme) {
-    return ResUtil.getDrawableRes(theme, R.attr.conversation_icon_attach_audio);
   }
 }

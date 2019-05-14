@@ -83,7 +83,8 @@ public class AttachmentManager {
 
   private @NonNull  List<Uri>       garbage = new LinkedList<>();
   private @NonNull  Optional<Slide> slide   = Optional.absent();
-  private @Nullable Uri             captureUri;
+  private @Nullable Uri             imageCaptureUri;
+  private @Nullable Uri             videoCaptureUri;
 
   public AttachmentManager(@NonNull Activity activity, @NonNull AttachmentListener listener) {
     this.context            = activity;
@@ -139,11 +140,13 @@ public class AttachmentManager {
   }
 
   public void cleanup() {
-    cleanup(captureUri);
+    cleanup(imageCaptureUri);
+    cleanup(videoCaptureUri);
     cleanup(getSlideUri());
 
-    captureUri = null;
-    slide      = Optional.absent();
+    imageCaptureUri = null;
+    videoCaptureUri = null;
+    slide           = Optional.absent();
 
     Iterator<Uri> iterator = garbage.listIterator();
 
@@ -168,11 +171,13 @@ public class AttachmentManager {
   }
 
   private void setSlide(@NonNull Slide slide) {
-    if (getSlideUri() != null)                                    cleanup(getSlideUri());
-    if (captureUri != null && !captureUri.equals(slide.getUri())) cleanup(captureUri);
+    if (getSlideUri() != null)                                              cleanup(getSlideUri());
+    if (imageCaptureUri != null && !imageCaptureUri.equals(slide.getUri())) cleanup(imageCaptureUri);
+    if (videoCaptureUri != null && !videoCaptureUri.equals(slide.getUri())) cleanup(videoCaptureUri);
 
-    this.captureUri = null;
-    this.slide      = Optional.of(slide);
+    this.imageCaptureUri = null;
+    this.videoCaptureUri = null;
+    this.slide           = Optional.of(slide);
   }
 
   /*
@@ -272,16 +277,16 @@ public class AttachmentManager {
             AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(context, (AudioSlide) slide, new SetDurationListener());
             audioSlidePlayer.requestDuration();
 
-            audioView.setAudio((AudioSlide) slide, false,0);
+            audioView.setAudio((AudioSlide) slide, 0);
             removableMediaView.display(audioView, false);
             result.set(true);
           } else if (slide.hasDocument()) {
-            documentView.setDocument((DocumentSlide) slide, false);
+            documentView.setDocument((DocumentSlide) slide);
             removableMediaView.display(documentView, false);
             result.set(true);
           } else {
             Attachment attachment = slide.asAttachment();
-            result.deferTo(thumbnail.setImageResource(glideRequests, slide, false, true, attachment.getWidth(), attachment.getHeight()));
+            result.deferTo(thumbnail.setImageResource(glideRequests, slide, attachment.getWidth(), attachment.getHeight()));
             removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE);
           }
 
@@ -418,8 +423,12 @@ public class AttachmentManager {
     return slide.isPresent() ? slide.get().getUri() : null;
   }
 
-  public @Nullable Uri getCaptureUri() {
-    return captureUri;
+  public @Nullable Uri getImageCaptureUri() {
+    return imageCaptureUri;
+  }
+
+  public @Nullable Uri getVideoCaptureUri() {
+    return videoCaptureUri;
   }
 
   public void capturePhoto(Activity activity, int requestCode) {
@@ -431,11 +440,11 @@ public class AttachmentManager {
                  try {
                    Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                    if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
-                     if (captureUri == null) {
-                       captureUri = PersistentBlobProvider.getInstance(context).createForExternal(context, MediaUtil.IMAGE_JPEG);
+                     if (imageCaptureUri == null) {
+                       imageCaptureUri = PersistentBlobProvider.getInstance(context).createForExternal(context, MediaUtil.IMAGE_JPEG);
                      }
-                     Log.w(TAG, "captureUri path is " + captureUri.getPath());
-                     captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, captureUri);
+                     Log.w(TAG, "imageCaptureUri path is " + imageCaptureUri.getPath());
+                     captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageCaptureUri);
                      activity.startActivityForResult(captureIntent, requestCode);
                    }
                  } catch (IOException ioe) {
@@ -443,6 +452,31 @@ public class AttachmentManager {
                  }
                })
                .execute();
+  }
+
+  public void captureVideo(Activity activity, int requestCode) {
+    Permissions.with(activity)
+        .request(Manifest.permission.CAMERA)
+        .ifNecessary()
+        .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_camera_denied))
+        .onAllGranted(() -> {
+          try {
+            Intent captureIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+            if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
+              if (videoCaptureUri==null) {
+                videoCaptureUri = PersistentBlobProvider.getInstance(context).createForExternal(context, "video/mp4");
+              }
+              Log.w(TAG, "videoCaptureUri path is " + videoCaptureUri.getPath());
+              captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoCaptureUri);
+              captureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+              captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+              activity.startActivityForResult(captureIntent, requestCode);
+            }
+          } catch (IOException ioe) {
+            Log.w(TAG, ioe);
+          }
+        })
+        .execute();
   }
 
   private static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
