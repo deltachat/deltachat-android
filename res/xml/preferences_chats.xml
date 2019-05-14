@@ -24,6 +24,17 @@
                 android:title="@string/pref_enter_sends"/>
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/pref_email_interaction_title">
+
+        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
+            android:key="pref_show_emails"
+            android:title="@string/pref_show_emails"
+            android:dependency="pref_show_emails"
+            android:entries="@array/pref_show_emails_entries"
+            android:entryValues="@array/pref_show_emails_values" />
+
+    </PreferenceCategory>
+
     <!--
     <PreferenceCategory android:layout="@layout/preference_divider"/>
 

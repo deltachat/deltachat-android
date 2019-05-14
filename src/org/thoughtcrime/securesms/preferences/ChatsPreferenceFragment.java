@@ -19,12 +19,16 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 
 public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private static final String TAG = ChatsPreferenceFragment.class.getSimpleName();
 
   private ApplicationDcContext dcContext;
+
+  ListPreferenceWithSummary showEmails;
 
 //  CheckBoxPreference trimEnabledCheckbox;
 
@@ -35,6 +39,13 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
     findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
+
+    showEmails = (ListPreferenceWithSummary) this.findPreference("pref_show_emails");
+    showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
+      updateListSummary(preference, newValue);
+      dcContext.setConfigInt("show_emails", Util.objectToInt(newValue));
+      return true;
+    });
 
 //    trimEnabledCheckbox = (CheckBoxPreference) findPreference("pref_trim_threads");
 //    trimEnabledCheckbox.setOnPreferenceChangeListener(new TrimEnabledListener());
@@ -56,6 +67,10 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   public void onResume() {
     super.onResume();
     ((ApplicationPreferencesActivity)getActivity()).getSupportActionBar().setTitle(R.string.pref_chats_and_media);
+
+    String value = Integer.toString(dcContext.getConfigInt("show_emails"));
+    showEmails.setValue(value);
+    updateListSummary(showEmails, value);
 
 //    trimEnabledCheckbox.setChecked(0!=dcContext.getConfigInt("trim_enabled", DcContext.DC_PREF_DEFAULT_TRIM_ENABLED));
   }

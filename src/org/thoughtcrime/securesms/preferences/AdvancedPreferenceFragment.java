@@ -47,7 +47,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   CheckBoxPreference sentboxWatchCheckbox;
   CheckBoxPreference mvboxWatchCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
-  ListPreferenceWithSummary showEmails;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -81,13 +80,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     mvboxMoveCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
       boolean enabled = (Boolean) newValue;
       dcContext.setConfigInt("mvbox_move", enabled? 1 : 0);
-      return true;
-    });
-
-    showEmails = (ListPreferenceWithSummary) this.findPreference("pref_show_emails");
-    showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
-      updateListSummary(preference, newValue);
-      dcContext.setConfigInt("show_emails", Util.objectToInt(newValue));
       return true;
     });
 
@@ -145,10 +137,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("sentbox_watch"));
     mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch"));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move"));
-
-    String value = Integer.toString(dcContext.getConfigInt("show_emails"));
-    showEmails.setValue(value);
-    updateListSummary(showEmails, value);
 
     initializeListSummary((ListPreferenceWithSummary) findPreference("pref_compression"));
   }
