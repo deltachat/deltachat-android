@@ -126,6 +126,7 @@ import static org.thoughtcrime.securesms.TransportOption.Type;
 import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 
 /**
@@ -187,9 +188,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private DcChat     dcChat                = new DcChat(0);
   private int        chatId;
   private boolean    archived;
-  private final boolean isSecureText       = true;
-  private boolean    isDefaultSms          = true;
-  private boolean    isSecurityInitialized = false;
+  private final boolean isSecureText          = true;
+  private boolean    isDefaultSms             = true;
+  private boolean    isSecurityInitialized    = false;
+  private boolean    isShareDraftInitialized  = false;
 
 
   private final DynamicTheme       dynamicTheme    = new DynamicTheme();
@@ -486,8 +488,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onBackPressed() {
     Log.w(TAG, "onBackPressed()");
-    if (container.isInputOpen()) container.hideCurrentInput(composeText);
-    else                         super.onBackPressed();
+    if (container.isInputOpen()){
+      container.hideCurrentInput(composeText);
+    } else {
+      handleReturnToConversationList();
+    }
   }
 
   @Override
@@ -509,6 +514,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleReturnToConversationList() {
+
+    if (isRelayingMessageContent(this)) {
+      if (isSharing(this)) {
+        dcContext.setDraft(dcChat.getId(), null);
+        attachmentManager.cleanup();
+        composeText.setText("");
+      }
+      finish();
+      return;
+    }
+
     Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     startActivity(intent);
@@ -615,7 +631,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleSharing() {
     ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
-    if (uriList == null || uriList.size() == 0) return;
+    if (uriList == null) return;
     if (uriList.size() > 1) {
       String message = String.format(getString(R.string.share_multiple_attachments), uriList.size());
       new AlertDialog.Builder(this)
@@ -627,9 +643,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               .setPositiveButton(R.string.menu_send, (dialog, which) -> new RelayingTask(this, chatId).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR))
               .show();
     } else {
-        DcMsg message = createMessage(this, uriList.get(0));
-        dcContext.setDraft(chatId, message);
-        initializeDraft();
+        if (uriList.size() == 1) {
+          DcMsg message = createMessage(this, uriList.get(0));
+          dcContext.setDraft(chatId, message);
+        }
+        initializeDraft().addListener(new AssertedSuccessListener<Boolean>() {
+          @Override
+          public void onSuccess(Boolean result) {
+            isShareDraftInitialized = true;
+          }
+        });
     }
   }
 
@@ -785,7 +808,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
 
     titleView.setOnClickListener(v -> handleConversationSettings());
-    titleView.setOnBackClickedListener(view -> super.onBackPressed());
+    titleView.setOnBackClickedListener(view -> onBackPressed());
 
     composeText.setOnKeyListener(composeKeyPressedListener);
     composeText.addTextChangedListener(composeKeyPressedListener);
@@ -967,7 +990,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   protected ListenableFuture<Integer> processComposeControls(int action) {
     return processComposeControls(action, composeText.getTextTrimmed(),
-      attachmentManager.isAttachmentPresent()?
+      attachmentManager.isAttachmentPresent() ?
         attachmentManager.buildSlideDeck() : null);
   }
 
@@ -1192,6 +1215,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     fragment.scrollToBottom();
     attachmentManager.cleanup();
+
+    if (isShareDraftInitialized) {
+      isShareDraftInitialized = false;
+      setResult(RESULT_OK);
+    }
   }
 
 
@@ -1487,7 +1515,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId==DcContext.DC_EVENT_CHAT_MODIFIED || eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED || eventId == DcContext.DC_EVENT_CONTACTS_CHANGED) {
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       updateReminders();

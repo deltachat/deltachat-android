@@ -101,10 +101,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (isRelayingMessageContent(this)) {
       title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      conversationListFragment.onNewIntent();
     } else {
+      title.setText(R.string.dc_app_name);
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
+    conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
   }
 
@@ -186,7 +187,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_qr_show:           handleQrShow();          return true;
       case R.id.menu_deaddrop:          handleDeaddrop();        return true;
       case R.id.menu_global_map:        handleShowMap();         return true;
-      case android.R.id.home:           handleResetRelaying();   return true;
+      case android.R.id.home:           onBackPressed();         return true;
     }
 
     return false;
@@ -253,6 +254,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (searchToolbar.isVisible()) searchToolbar.collapse();
     else if (isRelayingMessageContent(this)) {
       handleResetRelaying();
+      finish();
     } else super.onBackPressed();
   }
 
@@ -289,6 +291,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case REQUEST_RELAY:
         if (resultCode == RESULT_OK) {
           handleResetRelaying();
+          setResult(RESULT_OK);
+          finish();
         }
         break;
       default:
