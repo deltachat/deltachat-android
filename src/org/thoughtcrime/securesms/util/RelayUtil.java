@@ -5,20 +5,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import org.thoughtcrime.securesms.ConversationActivity;
+
 import java.util.ArrayList;
+
+import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
 
 public class RelayUtil {
     private static final String FORWARDED_MESSAGE_IDS   = "forwarded_message_ids";
     private static final String SHARED_URIS             = "shared_uris";
+    private static final String IS_SHARING              = "is_sharing";
     public static final int REQUEST_RELAY = 100;
 
     public static boolean isRelayingMessageContent(Activity activity) {
-        try {
-            return activity.getIntent().getIntArrayExtra(FORWARDED_MESSAGE_IDS) != null ||
-                    activity.getIntent().getParcelableArrayListExtra(SHARED_URIS) != null;
-        } catch (NullPointerException npe) {
-            return false;
-        }
+        return isForwarding(activity) || isSharing(activity);
     }
 
     public static boolean isForwarding(Activity activity) {
@@ -31,7 +31,7 @@ public class RelayUtil {
 
     public static boolean isSharing(Activity activity) {
         try {
-            return activity.getIntent().getParcelableArrayListExtra(SHARED_URIS) != null;
+            return activity.getIntent().getBooleanExtra(IS_SHARING, false);
         } catch (NullPointerException npe) {
             return false;
         }
@@ -53,10 +53,20 @@ public class RelayUtil {
         }
     }
 
+    public static String getSharedText(Activity activity) {
+        try {
+            return activity.getIntent().getStringExtra(TEXT_EXTRA);
+        } catch (NullPointerException npe) {
+            return null;
+        }
+    }
+
     public static void resetRelayingMessageContent(Activity activity) {
         try {
             activity.getIntent().removeExtra(FORWARDED_MESSAGE_IDS);
             activity.getIntent().removeExtra(SHARED_URIS);
+            activity.getIntent().removeExtra(IS_SHARING);
+            activity.getIntent().removeExtra(TEXT_EXTRA);
         } catch (NullPointerException npe) {
             npe.printStackTrace();
         }
@@ -66,7 +76,13 @@ public class RelayUtil {
         if (isForwarding(currentActivity)) {
             newActivityIntent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(currentActivity));
         } else if (isSharing(currentActivity)) {
-            newActivityIntent.putParcelableArrayListExtra(SHARED_URIS, getSharedUris(currentActivity));
+            newActivityIntent.putExtra(IS_SHARING, true);
+            if (getSharedUris(currentActivity) != null) {
+                newActivityIntent.putParcelableArrayListExtra(SHARED_URIS, getSharedUris(currentActivity));
+            }
+            if (getSharedText(currentActivity) != null) {
+                newActivityIntent.putExtra(TEXT_EXTRA, getSharedText(currentActivity));
+            }
         }
     }
 
@@ -76,6 +92,12 @@ public class RelayUtil {
 
     public static void setSharedUris(Intent composeIntent, ArrayList<Uri> uris) {
         composeIntent.putParcelableArrayListExtra(SHARED_URIS, uris);
+        composeIntent.putExtra(IS_SHARING, true);
+    }
+
+    public static void setSharedText(Intent composeIntent, String text) {
+        composeIntent.putExtra(TEXT_EXTRA, text);
+        composeIntent.putExtra(IS_SHARING, true);
     }
 
 

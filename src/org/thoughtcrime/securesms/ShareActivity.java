@@ -54,6 +54,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.thoughtcrime.securesms.util.RelayUtil.setSharedText;
+
 /**
  * An activity to quickly share content with chats
  *
@@ -126,14 +128,12 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     resolvedExtras = new ArrayList<>();
 
     List<Uri> streamExtras = new ArrayList<>();
-    if (Intent.ACTION_SEND.equals(getIntent().getAction())) {
-      streamExtras.add(getIntent().getParcelableExtra(Intent.EXTRA_STREAM));
-    } else {
+    if (Intent.ACTION_SEND.equals(getIntent().getAction()) &&
+            getIntent().getParcelableExtra(Intent.EXTRA_STREAM) != null) {
+        Uri uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
+        streamExtras.add(uri);
+    } else if (getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM) != null) {
       streamExtras = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);
-      if (streamExtras == null || streamExtras.isEmpty()) {
-        streamExtras = new ArrayList<>();
-        streamExtras.add(null); // force checking at least EXTRA_TEXT & Co.
-      }
     }
 
     if (needsFilePermission(streamExtras)) {
@@ -232,7 +232,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     if (hasResolvedDestination) {
       createConversation(chatId);
     } else {
-      Intent composeIntent = new Intent(this, ConversationListActivity.class);
+      Intent composeIntent = getBaseShareIntent(ConversationListActivity.class);
       RelayUtil.setSharedUris(composeIntent, resolvedExtras);
       startActivity(composeIntent);
       finish();
@@ -316,18 +316,16 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   }
 
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {
-    if (resolvedExtras.size() == 1) {
-      final Intent intent = new Intent(this, target);
-      final String textExtra = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-      intent.putExtra(ConversationActivity.TEXT_EXTRA, textExtra);
+    final Intent intent = new Intent(this, target);
+    setSharedText(intent, getIntent().getStringExtra(Intent.EXTRA_TEXT));
+    if (resolvedExtras.size() > 0) {
       Uri data = resolvedExtras.get(0);
       if (data != null) {
         String mimeType = getMimeType(data);
         intent.setDataAndType(data, mimeType);
       }
-      return intent;
     }
-    return new Intent(this, target);
+    return intent;
   }
 
   private String getMimeType(@Nullable Uri uri) {

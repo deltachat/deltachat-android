@@ -8,6 +8,7 @@ import android.os.Process;
 import android.provider.OpenableColumns;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.FileUtils;
@@ -19,6 +20,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
+
+import static org.thoughtcrime.securesms.util.MediaUtil.getMimeType;
 
 public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
 
@@ -133,14 +136,6 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
             return false;
         }
         return "file".equals(uri.getScheme());
-    }
-
-    private String getMimeType(Activity activityContext, @Nullable Uri uri) {
-        if (uri != null) {
-            final String mimeType = MediaUtil.getMimeType(activityContext.getApplicationContext(), uri);
-            if (mimeType != null) return mimeType;
-        }
-        return MediaUtil.getCorrectedMimeType(activityContext.getIntent().getType());
     }
 
 }

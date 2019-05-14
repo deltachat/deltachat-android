@@ -614,8 +614,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleSharing() {
-    ArrayList uriList =  RelayUtil.getSharedUris(this);
-    if (uriList != null && uriList.size() > 0) {
+    ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
+    if (uriList == null || uriList.size() == 0) return;
+    if (uriList.size() > 1) {
       String message = String.format(getString(R.string.share_multiple_attachments), uriList.size());
       new AlertDialog.Builder(this)
               .setMessage(message)
@@ -625,6 +626,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               }))
               .setPositiveButton(R.string.menu_send, (dialog, which) -> new RelayingTask(this, chatId).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR))
               .show();
+    } else {
+        DcMsg message = createMessage(this, uriList.get(0));
+        dcContext.setDraft(chatId, message);
+        initializeDraft();
     }
   }
 
@@ -1099,7 +1104,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       ArrayList<Uri> uris = getSharedUris(activity);
       try {
         for(Uri uri : uris) {
-          DcMsg message = createMessage(uri);
+          DcMsg message = createMessage(activityRef.get(), uri);
           dcContext.sendMsg(chatId, message);
         }
 
@@ -1120,55 +1125,53 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    private DcMsg createMessage(Uri uri) throws NullPointerException {
-      Context context = activityRef.get();
-      DcContext dcContext = DcHelper.getContext(context);
-      DcMsg message;
-      String mimeType = MediaUtil.getMimeType(context, uri);
-      if (MediaUtil.isImageType(mimeType)) {
-        message = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
-      }
-      else if (MediaUtil.isAudioType(mimeType)) {
-        message = new DcMsg(dcContext,DcMsg.DC_MSG_AUDIO);
-      }
-      else if (MediaUtil.isVideoType(mimeType)) {
-        message = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
-      }
-      else {
-        message = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
-      }
-      message.setFile(getRealPathFromUri(uri), mimeType);
-      return message;
+  }
+
+  private static DcMsg createMessage(Context context, Uri uri) throws NullPointerException {
+    DcContext dcContext = DcHelper.getContext(context);
+    DcMsg message;
+    String mimeType = MediaUtil.getMimeType(context, uri);
+    if (MediaUtil.isImageType(mimeType)) {
+      message = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
     }
-
-    private String getRealPathFromUri(Uri uri) throws NullPointerException {
-      Context context = activityRef.get();
-      ApplicationDcContext dcContext = DcHelper.getContext(context);
-      try {
-        String filename = uri.getPathSegments().get(2); // Get real file name from Uri
-        String ext = "";
-        int i = filename.lastIndexOf(".");
-        if(i>=0) {
-          ext = filename.substring(i);
-          filename = filename.substring(0, i);
-        }
-        String path = dcContext.getBlobdirFile(filename, ext);
-
-        // copy content to this file
-        if(path != null) {
-          InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
-          OutputStream outputStream = new FileOutputStream(path);
-          Util.copy(inputStream, outputStream);
-        }
-
-        return path;
-      }
-      catch(Exception e) {
-        e.printStackTrace();
-        return null;
-      }
+    else if (MediaUtil.isAudioType(mimeType)) {
+      message = new DcMsg(dcContext,DcMsg.DC_MSG_AUDIO);
     }
+    else if (MediaUtil.isVideoType(mimeType)) {
+      message = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+    }
+    else {
+      message = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
+    }
+    message.setFile(getRealPathFromUri(context, uri), mimeType);
+    return message;
+  }
 
+  private static String getRealPathFromUri(Context context, Uri uri) throws NullPointerException {
+    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    try {
+      String filename = uri.getPathSegments().get(2); // Get real file name from Uri
+      String ext = "";
+      int i = filename.lastIndexOf(".");
+      if(i>=0) {
+        ext = filename.substring(i);
+        filename = filename.substring(0, i);
+      }
+      String path = dcContext.getBlobdirFile(filename, ext);
+
+      // copy content to this file
+      if(path != null) {
+        InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
+        OutputStream outputStream = new FileOutputStream(path);
+        Util.copy(inputStream, outputStream);
+      }
+
+      return path;
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
 
