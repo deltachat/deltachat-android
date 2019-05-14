@@ -701,10 +701,11 @@ public class VideoRecoder {
       List<Box> boxes = Path.getPaths(isoFile, "/moov/trak/");
       TrackHeaderBox trackHeaderBox = null;
 
-      Box boxTest = Path.getPath(isoFile, "/moov/trak/mdia/minf/stbl/stsd/mp4a/");
-      if (boxTest == null) {
-        return null; // non-mp4
-      }
+      // if we find a video-track, we're just optimistic that the following recoding also works -
+      // if it fails, we know this then.
+      // older versions check before for paths as "/moov/trak/mdia/minf/stbl/stsd/mp4a/"
+      // (using Path.getPath()), however this is not sufficient, other paths as "moov/mvhd"
+      // are also valid and it is hard to maintain a list here.
 
       for (Box box : boxes) {
         TrackBox trackBox = (TrackBox) box;
