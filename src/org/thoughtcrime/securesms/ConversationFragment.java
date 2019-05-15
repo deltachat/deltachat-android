@@ -69,7 +69,6 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Debouncer;
-import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -79,10 +78,10 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Set;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
+import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
 
 @SuppressLint("StaticFieldLeak")
@@ -402,8 +401,8 @@ public class ConversationFragment extends Fragment
     Intent composeIntent = new Intent(getActivity(), ConversationListActivity.class);
     int[] msgIds = DcMsg.msgSetToIds(messageRecords);
     setForwardingMessageIds(composeIntent, msgIds);
-    startActivity(composeIntent);
-    Objects.requireNonNull(getActivity()).overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+    startActivityForResult(composeIntent, REQUEST_RELAY);
+    getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
 
   private void handleResendMessage(final DcMsg message) {

@@ -13,6 +13,7 @@ import static org.thoughtcrime.securesms.ConversationActivity.LAST_SEEN_EXTRA;
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 
 public class ConversationListArchiveActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -31,7 +32,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   protected void onCreate(Bundle icicle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     if (isRelayingMessageContent(this)) {
-      getSupportActionBar().setTitle(R.string.forward_to);
+      getSupportActionBar().setTitle(isSharing(this) ? R.string.chat_share_with_title : R.string.forward_to);
       getSupportActionBar().setSubtitle(R.string.chat_archived_chats_title);
     } else {
       getSupportActionBar().setTitle(R.string.chat_archived_chats_title);
@@ -55,7 +56,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     super.onOptionsItemSelected(item);
 
     switch (item.getItemId()) {
-      case R.id.home: super.onBackPressed(); return true;
+      case android.R.id.home: super.onBackPressed(); return true;
     }
 
     return false;
