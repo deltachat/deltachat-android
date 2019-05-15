@@ -156,7 +156,7 @@
     <string name="mute_for_two_hours">Mute for 2 hours</string>
     <string name="mute_for_one_day">Mute for 1 day</string>
     <string name="mute_for_seven_days">Mute for 7 days</string>
-    <string name="mute_for_one_year">Mute for 1 year</string>
+    <string name="mute_forever">Mute forever</string>
 
     <string name="share_location_once">once</string>
     <string name="share_location_for_5_minutes">for 5 minutes</string>

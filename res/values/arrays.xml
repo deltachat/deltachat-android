@@ -132,7 +132,7 @@
       <item>@string/mute_for_two_hours</item>
       <item>@string/mute_for_one_day</item>
       <item>@string/mute_for_seven_days</item>
-      <item>@string/mute_for_one_year</item>
+      <item>@string/mute_forever</item>
   </string-array>
 
 
