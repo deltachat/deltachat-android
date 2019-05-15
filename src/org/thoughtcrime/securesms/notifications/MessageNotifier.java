@@ -41,6 +41,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -196,6 +197,8 @@ public class MessageNotifier {
     removePendingNotifications(chatId);
     if (isVisible && signal) {
       sendInChatNotification(context, chatId);
+    } else if (ForegroundDetector.getInstance().isBackground()) {
+      updateNotification(context, signal, 0);
     } else if (isVisible || visibleChatId == NO_VISIBLE_CHAT_ID) {
       updateNotification(context, false, 0);
     } else {
@@ -250,7 +253,8 @@ public class MessageNotifier {
 
   private static void sendSingleChatNotification(@NonNull  Context context,
                                                  @NonNull  NotificationState notificationState,
-                                                 boolean signal, boolean bundled)
+                                                 boolean signal,
+                                                 boolean bundled)
   {
     if (notificationState.getNotifications().isEmpty()) {
       if (!bundled) cancelActiveNotifications(context);
@@ -280,10 +284,10 @@ public class MessageNotifier {
     builder.addAndroidAutoAction(notificationState.getAndroidAutoReplyIntent(context, notifications.get(0).getRecipient()),
                                  notificationState.getAndroidAutoHeardIntent(context, notificationId), notifications.get(0).getTimestamp());
 
-    ListIterator<NotificationItem> iterator = notifications.listIterator(notifications.size());
+    ListIterator<NotificationItem> iterator = notifications.listIterator();
 
-    while(iterator.hasPrevious()) {
-      NotificationItem item = iterator.previous();
+    while(iterator.hasNext()) {
+      NotificationItem item = iterator.next();
       builder.addMessageBody(item.getRecipient(), item.getIndividualRecipient(), item.getText());
     }
 
