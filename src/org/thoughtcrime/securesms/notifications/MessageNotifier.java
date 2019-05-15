@@ -193,12 +193,14 @@ public class MessageNotifier {
       return;
     }
 
+    removePendingNotifications(chatId);
     if (isVisible && signal) {
       sendInChatNotification(context, chatId);
-    } else if (visibleChatId != NO_VISIBLE_CHAT_ID) {
-      pendingNotifications.push(new Pair<>(chatId, signal));
+    } else if (isVisible || visibleChatId == NO_VISIBLE_CHAT_ID) {
+      updateNotification(context, false, 0);
     } else {
-      updateNotification(context, signal, 0);
+      //different chat is visible
+      pendingNotifications.push(new Pair<>(chatId, signal));
     }
   }
 
@@ -338,6 +340,15 @@ public class MessageNotifier {
     NotificationManagerCompat.from(context).notify(SUMMARY_NOTIFICATION_ID, builder.build());
   }
 
+  private static void removePendingNotifications(int chatId) {
+    for (Pair<Integer, Boolean> pendingNotification : pendingNotifications) {
+      if (pendingNotification.first() == chatId) {
+        pendingNotifications.remove(pendingNotification);
+        break;
+      }
+    }
+  }
+
   private static void sendInChatNotification(Context context, int chatId) {
     if (!Prefs.isInChatNotifications(context) ||
         ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
@@ -345,7 +356,7 @@ public class MessageNotifier {
       return;
     }
 
-    if( Prefs.isChatMuted(context, chatId) ) {
+    if(Prefs.isChatMuted(context, chatId)) {
       Log.d(TAG, "chat muted");
       return;
     }
