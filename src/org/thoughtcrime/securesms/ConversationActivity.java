@@ -640,7 +640,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {
                 finish();
               }))
-              .setPositiveButton(R.string.menu_send, (dialog, which) -> new RelayingTask(this, chatId).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR))
+              .setPositiveButton(R.string.menu_send, (dialog, which) -> new RelayingTask(this, chatId).execute())
               .show();
     } else {
         if (uriList.size() == 1) {
@@ -1129,9 +1129,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         for(Uri uri : uris) {
           DcMsg message = createMessage(activityRef.get(), uri);
           dcContext.sendMsg(chatId, message);
-        }
-
-        for(Uri uri : uris) {
           cleanup(activity, uri);
         }
       } catch (NullPointerException npe) {

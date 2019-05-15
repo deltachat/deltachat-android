@@ -122,7 +122,6 @@ public class PersistentBlobProvider {
     switch (MATCHER.match(uri)) {
     case MATCH_OLD:
     case MATCH_NEW:
-      long id = ContentUris.parseId(uri);
       return getFile(context, ContentUris.parseId(uri)).delete();
     }
 

@@ -40,7 +40,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -183,7 +182,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
       if (streamExtra != null && PartAuthority.isLocalUri(streamExtra)) {
         resolvedExtras.add(streamExtra);
       } else {
-        new ResolveMediaTask(this, this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, streamExtra);
+        new ResolveMediaTask(this, this).execute(streamExtra);
       }
     }
 
