@@ -181,8 +181,8 @@
   </string-array>
 
   <string-array name="pref_compression_entries">
-    <item>Balanced</item>
-    <item>Worse quality, small size</item>
+    <item>@string/pref_outgoing_balanced</item>
+    <item>@string/pref_outgoing_worse</item>
   </string-array>
 
   <string-array name="pref_compression_values">

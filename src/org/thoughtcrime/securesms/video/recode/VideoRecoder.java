@@ -24,6 +24,7 @@ import com.googlecode.mp4parser.util.Matrix;
 import com.googlecode.mp4parser.util.Path;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
@@ -816,9 +817,10 @@ public class VideoRecoder {
       if (vei.resultVideoBitrate < 200000) {
         vei.resultVideoBitrate = 200000;
       } else if (vei.resultVideoBitrate > 500000) {
-        if (resultDurationMs < 30 * 1000) {
+        boolean hardCompression = Prefs.isHardCompressionEnabled(context);
+        if (resultDurationMs < 30 * 1000 && !hardCompression) {
           vei.resultVideoBitrate = MAX_KBPS; // ~ 12 MB/minute, plus Audio
-        } else if (resultDurationMs < 60 * 1000) {
+        } else if (resultDurationMs < 60 * 1000 && !hardCompression) {
           vei.resultVideoBitrate = 1000000; // ~ 8 MB/minute, plus Audio
         } else {
           vei.resultVideoBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
