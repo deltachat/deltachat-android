@@ -401,6 +401,9 @@ public class MessageNotifier {
 
     for(int msgId : freshMessages) {
       DcMsg record = dcContext.getMsg(msgId);
+      if (record.isInfo()) {
+        continue;
+      }
       int          id                    = record.getId();
       boolean      mms                   = record.isMms() || record.isMediaPending();
       int          chatId                = record.getChatId();
