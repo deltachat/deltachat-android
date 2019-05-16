@@ -49,17 +49,11 @@ import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
-import org.thoughtcrime.securesms.util.Util;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import me.leolin.shortcutbadger.ShortcutBadger;
 
@@ -82,12 +76,9 @@ public class MessageNotifier {
   private static final int    PENDING_MESSAGES_ID       = 1111;
   private static final String NOTIFICATION_GROUP        = "messages";
   private static final long   MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(20);
-  private static final long   DESKTOP_ACTIVITY_PERIOD   = TimeUnit.MINUTES.toMillis(1);
 
   private volatile static       long               visibleChatId                = NO_VISIBLE_CHAT_ID;
-  private volatile static       long               lastDesktopActivityTimestamp = -1;
   private volatile static       long               lastAudibleNotification      = -1;
-  private          static final CancelableExecutor executor                     = new CancelableExecutor();
 
   private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
 
@@ -102,10 +93,6 @@ public class MessageNotifier {
         }
       }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
-  }
-
-  public static void cancelDelayedNotifications() {
-    executor.cancel();
   }
 
   private static void cancelActiveNotifications(@NonNull Context context) {
@@ -169,12 +156,7 @@ public class MessageNotifier {
 
   public static void updateNotification(@NonNull Context context, int chatId)
   {
-    if (System.currentTimeMillis() - lastDesktopActivityTimestamp < DESKTOP_ACTIVITY_PERIOD) {
-      Log.w(TAG, "Scheduling delayed notification...");
-      executor.execute(new DelayedNotification(context, chatId));
-    } else {
-      updateNotification(context, chatId, true);
-    }
+    updateNotification(context, chatId, true);
   }
 
   public static void updateNotification(@NonNull  Context context,
@@ -490,77 +472,6 @@ public class MessageNotifier {
           return null;
         }
       }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-  }
-
-  private static class DelayedNotification implements Runnable {
-
-    private static final long DELAY = TimeUnit.SECONDS.toMillis(5);
-
-    private final AtomicBoolean canceled = new AtomicBoolean(false);
-
-    private final Context context;
-    private final int     chatId;
-    private final long    delayUntil;
-
-    private DelayedNotification(Context context, int chatId) {
-      this.context    = context;
-      this.chatId   = chatId;
-      this.delayUntil = System.currentTimeMillis() + DELAY;
-    }
-
-    @Override
-    public void run() {
-      MessageNotifier.updateNotification(context);
-
-      long delayMillis = delayUntil - System.currentTimeMillis();
-      Log.w(TAG, "Waiting to notify: " + delayMillis);
-
-      if (delayMillis > 0) {
-        Util.sleep(delayMillis);
-      }
-
-      if (!canceled.get()) {
-        Log.w(TAG, "Not canceled, notifying...");
-        MessageNotifier.updateNotification(context, chatId, true);
-        MessageNotifier.cancelDelayedNotifications();
-      } else {
-        Log.w(TAG, "Canceled, not notifying...");
-      }
-    }
-
-    public void cancel() {
-      canceled.set(true);
-    }
-  }
-
-  private static class CancelableExecutor {
-
-    private final Executor                 executor = Executors.newSingleThreadExecutor();
-    private final Set<DelayedNotification> tasks    = new HashSet<>();
-
-    public void execute(final DelayedNotification runnable) {
-      synchronized (tasks) {
-        tasks.add(runnable);
-      }
-
-      Runnable wrapper = () -> {
-        runnable.run();
-
-        synchronized (tasks) {
-          tasks.remove(runnable);
-        }
-      };
-
-      executor.execute(wrapper);
-    }
-
-    public void cancel() {
-      synchronized (tasks) {
-        for (DelayedNotification task : tasks) {
-          task.cancel();
-        }
-      }
     }
   }
 }
