@@ -76,6 +76,8 @@ public class MessageNotifier {
   private static final int    PENDING_MESSAGES_ID       = 1111;
   private static final String NOTIFICATION_GROUP        = "messages";
   private static final long   MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(20);
+  private static final long   STARTUP_SILENCE_DELTA     = TimeUnit.MINUTES.toMillis(1);
+  private static final long   INITIAL_STARTUP           = System.currentTimeMillis();
 
   private volatile static       long               visibleChatId                = NO_VISIBLE_CHAT_ID;
   private volatile static       long               lastAudibleNotification      = -1;
@@ -207,10 +209,13 @@ public class MessageNotifier {
 
     NotificationState notificationState = constructNotificationState(dcContext, freshMessages);
 
-    if (signal && (System.currentTimeMillis() - lastAudibleNotification) < MIN_AUDIBLE_PERIOD_MILLIS) {
+    long now = System.currentTimeMillis();
+    if (signal && (
+            (now - INITIAL_STARTUP) < STARTUP_SILENCE_DELTA ||
+                    (now - lastAudibleNotification) < MIN_AUDIBLE_PERIOD_MILLIS)) {
       signal = false;
     } else if (signal) {
-      lastAudibleNotification = System.currentTimeMillis();
+      lastAudibleNotification = now;
     }
 
     if (notificationState.hasMultipleChats()) {
