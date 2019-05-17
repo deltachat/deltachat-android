@@ -539,8 +539,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleProfile() {
     if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
-      Intent intent = new Intent(this, MediaOverviewActivity.class);
-      intent.putExtra(MediaOverviewActivity.ADDRESS_EXTRA, recipient.getAddress());
+      Intent intent = new Intent(this, ProfileActivity.class);
+      intent.putExtra(ProfileActivity.ADDRESS_EXTRA, recipient.getAddress());
       startActivity(intent);
     }
   }

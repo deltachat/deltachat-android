@@ -247,8 +247,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void showOverview() {
-    Intent intent = new Intent(this, MediaOverviewActivity.class);
-    intent.putExtra(MediaOverviewActivity.ADDRESS_EXTRA, conversationRecipient.getAddress());
+    Intent intent = new Intent(this, ProfileActivity.class);
+    intent.putExtra(ProfileActivity.ADDRESS_EXTRA, conversationRecipient.getAddress());
     startActivity(intent);
   }
 

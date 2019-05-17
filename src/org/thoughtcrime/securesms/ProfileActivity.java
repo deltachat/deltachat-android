@@ -53,10 +53,10 @@ import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import java.util.Collection;
 import java.util.Locale;
 
-public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  {
+public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
   @SuppressWarnings("unused")
-  private final static String TAG = MediaOverviewActivity.class.getSimpleName();
+  private final static String TAG = ProfileActivity.class.getSimpleName();
 
   public static final String ADDRESS_EXTRA   = "address";
 
