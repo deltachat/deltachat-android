@@ -103,7 +103,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     initializeToolbar();
 
     this.tabLayout.setupWithViewPager(viewPager);
-    this.viewPager.setAdapter(new MediaOverviewPagerAdapter(getSupportFragmentManager()));
+    this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
   }
 
   @Override
@@ -178,9 +178,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     else if (dcChat != null) {
       getSupportActionBar().setTitle(dcChat.getName());
     }
-    else {
-      getSupportActionBar().setTitle("ErrName");
-    }
   }
 
   private boolean isGlobalProfile() {
@@ -188,6 +185,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   }
 
   private boolean isContactProfile() {
+    // there may still be a single-chat lined to the contact profile
     return dcContact!=null && (dcChat==null || !dcChat.isGroup());
   }
 
@@ -203,9 +201,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     }
   }
 
-  private class MediaOverviewPagerAdapter extends FragmentStatePagerAdapter {
+  private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
 
-    MediaOverviewPagerAdapter(FragmentManager fragmentManager) {
+    ProfilePagerAdapter(FragmentManager fragmentManager) {
       super(fragmentManager);
     }
 
@@ -214,16 +212,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       int tabId = tabs.get(position);
       Fragment fragment;
 
-           if (tabId == TAB_SETTINGS) fragment = new MediaOverviewDocumentsFragment();
-      else if (tabId == TAB_GALLERY)  fragment = new MediaOverviewGalleryFragment();
-      else if (tabId == TAB_DOCS)     fragment = new MediaOverviewDocumentsFragment();
-      else if (tabId == TAB_LINKS)    fragment = new MediaOverviewDocumentsFragment();
-      else if (tabId == TAB_MAP)      fragment = new MediaOverviewDocumentsFragment();
+           if (tabId == TAB_SETTINGS) fragment = new ProfileDocumentsFragment();
+      else if (tabId == TAB_GALLERY)  fragment = new ProfileGalleryFragment();
+      else if (tabId == TAB_DOCS)     fragment = new ProfileDocumentsFragment();
+      else if (tabId == TAB_LINKS)    fragment = new ProfileDocumentsFragment();
+      else if (tabId == TAB_MAP)      fragment = new ProfileDocumentsFragment();
       else                            throw new AssertionError();
 
       Bundle args = new Bundle();
-      args.putString(MediaOverviewGalleryFragment.ADDRESS_EXTRA, getRecipient().getAddress().serialize());
-      args.putSerializable(MediaOverviewGalleryFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
+      args.putString(ProfileGalleryFragment.ADDRESS_EXTRA, getRecipient().getAddress().serialize());
+      args.putSerializable(ProfileGalleryFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
 
       fragment.setArguments(args);
 
@@ -268,7 +266,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   // overview fragment base
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  public static abstract class MediaOverviewFragment<T> extends Fragment implements LoaderManager.LoaderCallbacks<T> {
+  public static abstract class ProfileFragment<T> extends Fragment implements LoaderManager.LoaderCallbacks<T> {
 
     public static final String ADDRESS_EXTRA = "address";
     public static final String LOCALE_EXTRA  = "locale_extra";
@@ -295,11 +293,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     }
   }
 
-  // media/images/videos fragment
+
+  // gallery fragment
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  public static class MediaOverviewGalleryFragment
-      extends MediaOverviewFragment<BucketedThreadMedia>
+  public static class ProfileGalleryFragment
+      extends ProfileFragment<BucketedThreadMedia>
       implements MediaGalleryAdapter.ItemClickListener
   {
 
@@ -491,7 +490,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   // documents fragment
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  public static class MediaOverviewDocumentsFragment extends MediaOverviewFragment<Cursor> {
+  public static class ProfileDocumentsFragment extends ProfileFragment<Cursor> {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -520,7 +519,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       getActivity().invalidateOptionsMenu();
 
       // TODO: onLoadFinished() should no take a cursor but forward the loaded messages in a way
-      this.noMedia.setVisibility(/*data.getCount() > 0 ?*/ View.GONE /*: View.VISIBLE*/);
+      this.noMedia.setVisibility(/*data.getCount() > 0 ? View.GONE :*/ View.VISIBLE);
     }
 
     @Override

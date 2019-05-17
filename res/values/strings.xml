@@ -250,13 +250,11 @@
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Links</string>
     <string name="tab_map">Map</string>
-
-    <!-- chat media view -->
     <string name="media_preview">Media preview</string>
     <string name="media_tab_media">Media</string>
     <string name="media_tab_documents">Documents</string>
     <string name="media_no_media_hint">No media.</string>
-    <string name="media_no_documents_hint">No documents</string>
+    <string name="media_no_documents_hint">No documents.</string>
 
 
     <!-- invite -->
