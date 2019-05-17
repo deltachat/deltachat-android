@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -57,11 +58,22 @@ public class SearchToolbar extends LinearLayout {
     this.searchItem = toolbar.getMenu().findItem(R.id.action_filter_search);
     SearchView searchView = (SearchView) searchItem.getActionView();
     EditText   searchText = searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+    searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
     searchView.setSubmitButtonEnabled(false);
 
-    if (searchText != null) searchText.setHint(R.string.search);
-    else                    searchView.setQueryHint(getResources().getString(R.string.search));
+    if (searchText != null) {
+      searchText.setHint(R.string.search);
+      searchText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+        if (EditorInfo.IME_ACTION_DONE == actionId) {
+          searchView.clearFocus();
+          return true;
+        }
+        return false;
+      });
+    } else {
+      searchView.setQueryHint(getResources().getString(R.string.search));
+    }
 
     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
       @Override
