@@ -9,12 +9,7 @@
     <item android:title="@string/menu_add_attachment"
           android:id="@+id/menu_add_attachment" />
 
-    <item android:title="@string/menu_all_media"
-          android:id="@+id/menu_view_media" />
-
     <item android:id="@+id/menu_show_map"
-        android:title="@string/menu_show_map"
-        android:icon="?menu_map_icon"
-        app:showAsAction="ifRoom" />
+        android:title="@string/menu_show_map" />
 
 </menu>

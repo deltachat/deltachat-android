@@ -244,7 +244,12 @@
     <string name="group_hello_draft">Hello, I\'ve just created the group \"%1$s\" for us.</string>
     <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
     <string name="profile_encryption">Encryption</string>
-
+    <string name="tab_contact">Contact</string>
+    <string name="tab_group">Group</string>
+    <string name="tab_gallery">Gallery</string>
+    <string name="tab_docs">Docs</string>
+    <string name="tab_links">Links</string>
+    <string name="tab_map">Map</string>
 
     <!-- chat media view -->
     <string name="media_preview">Media preview</string>

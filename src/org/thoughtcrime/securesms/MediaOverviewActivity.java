@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2015 Open Whisper Systems
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package org.thoughtcrime.securesms;
 
 import android.annotation.SuppressLint;
@@ -69,9 +53,6 @@ import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import java.util.Collection;
 import java.util.Locale;
 
-/**
- * Activity for displaying media attachments in-app
- */
 public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  {
 
   @SuppressWarnings("unused")
@@ -148,8 +129,11 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
     public Fragment getItem(int position) {
       Fragment fragment;
 
-      if      (position == 0) fragment = new MediaOverviewGalleryFragment();
-      else if (position == 1) fragment = new MediaOverviewDocumentsFragment();
+           if (position == 0) fragment = new MediaOverviewDocumentsFragment();
+      else if (position == 1) fragment = new MediaOverviewGalleryFragment();
+      else if (position == 2) fragment = new MediaOverviewDocumentsFragment();
+      else if (position == 3) fragment = new MediaOverviewDocumentsFragment();
+      else if (position == 4) fragment = new MediaOverviewDocumentsFragment();
       else                    throw new AssertionError();
 
       Bundle args = new Bundle();
@@ -163,16 +147,22 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
 
     @Override
     public int getCount() {
-      return 2;
+      return 5;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-      if      (position == 0) return getString(R.string.media_tab_media);
-      else if (position == 1) return getString(R.string.media_tab_documents);
+           if (position == 0) return getString(R.string.tab_contact);
+      else if (position == 1) return getString(R.string.tab_gallery);
+      else if (position == 2) return getString(R.string.tab_docs);
+      else if (position == 3) return getString(R.string.tab_links);
+      else if (position == 4) return getString(R.string.tab_map);
       else                    throw new AssertionError();
     }
   }
+
+  // overview fragment base
+  //////////////////////////////////////////////////////////////////////////////////////////////////
 
   public static abstract class MediaOverviewFragment<T> extends Fragment implements LoaderManager.LoaderCallbacks<T> {
 
@@ -200,6 +190,9 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       getLoaderManager().initLoader(0, null, this);
     }
   }
+
+  // media/images/videos fragment
+  //////////////////////////////////////////////////////////////////////////////////////////////////
 
   public static class MediaOverviewGalleryFragment
       extends MediaOverviewFragment<BucketedThreadMedia>
@@ -390,6 +383,9 @@ public class MediaOverviewActivity extends PassphraseRequiredActionBarActivity  
       }
     }
   }
+
+  // documents fragment
+  //////////////////////////////////////////////////////////////////////////////////////////////////
 
   public static class MediaOverviewDocumentsFragment extends MediaOverviewFragment<Cursor> {
 
