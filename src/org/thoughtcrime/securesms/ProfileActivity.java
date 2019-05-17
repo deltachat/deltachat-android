@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -31,10 +32,13 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.CursorRecyclerViewAdapter;
@@ -58,20 +62,34 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   @SuppressWarnings("unused")
   private final static String TAG = ProfileActivity.class.getSimpleName();
 
-  public static final String ADDRESS_EXTRA   = "address";
+  public static final String CHAT_ID_EXTRA    = "chat_id";
+  public static final String CONTACT_ID_EXTRA = "contact_id";
+  public static final String FORCE_TAB_EXTRA  = "force_tab";
+
+  public static final int TAB_SETTINGS = 0;
+  public static final int TAB_GALLERY  = 1;
+  public static final int TAB_DOCS     = 2;
+  public static final int TAB_LINKS    = 3;
+  public static final int TAB_MAP      = 4;
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
+  private ApplicationDcContext dcContext;
+  private int                  chatId;
+  private @Nullable DcChat     dcChat;
+  private int                  contactId;
+  private @Nullable DcContact  dcContact;
+
   private Toolbar      toolbar;
   private TabLayout    tabLayout;
   private ViewPager    viewPager;
-  private Recipient    recipient;
 
   @Override
   protected void onPreCreate() {
     dynamicTheme.onCreate(this);
     dynamicLanguage.onCreate(this);
+    dcContext = DcHelper.getContext(this);
   }
 
   @Override
@@ -104,19 +122,65 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   }
 
   private void initializeResources() {
-    Address address = getIntent().getParcelableExtra(ADDRESS_EXTRA);
+    chatId    = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
+    contactId = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+
+    if (contactId!=0) {
+      dcContact = dcContext.getContact(contactId);
+      chatId = dcContext.getChatIdByContactId(contactId);
+      if (chatId!=0) {
+        dcChat = dcContext.getChat(chatId);
+      }
+    }
+    else if(chatId!=0) {
+      dcChat = dcContext.getChat(chatId);
+      if(!dcChat.isGroup()) {
+        final int[] members = dcContext.getChatContacts(chatId);
+        contactId = members.length>=1? members[0] : 0;
+        if (contactId!=0) {
+          dcContact = dcContext.getContact(contactId);
+        }
+      }
+    }
 
     this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
-    this.recipient = Recipient.from(this, address);
   }
 
-  private void initializeToolbar() {
+  private void initializeToolbar()
+  {
     setSupportActionBar(this.toolbar);
-    getSupportActionBar().setTitle(recipient.toShortString());
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    this.recipient.addListener(recipient -> getSupportActionBar().setTitle(recipient.toShortString()));
+    updateToolbar();
+  }
+
+  private void updateToolbar() {
+    if (isContactProfile()){
+      getSupportActionBar().setTitle(dcContact.getName());
+    }
+    else if (dcChat != null) {
+      getSupportActionBar().setTitle(dcChat.getName());
+    }
+    else {
+      getSupportActionBar().setTitle(R.string.menu_view_profile);
+    }
+  }
+
+  private boolean isContactProfile() {
+    return dcContact!=null && (dcChat==null || !dcChat.isGroup());
+  }
+
+  private Recipient getRecipient() {
+    if(dcChat!=null) {
+      return dcContext.getRecipient(dcChat);
+    }
+    else if(dcContact!=null) {
+      return dcContext.getRecipient(dcContact);
+    }
+    else {
+      return dcContext.getRecipient(dcContext.getContact(0));
+    }
   }
 
   private class MediaOverviewPagerAdapter extends FragmentStatePagerAdapter {
@@ -129,15 +193,15 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     public Fragment getItem(int position) {
       Fragment fragment;
 
-           if (position == 0) fragment = new MediaOverviewDocumentsFragment();
-      else if (position == 1) fragment = new MediaOverviewGalleryFragment();
-      else if (position == 2) fragment = new MediaOverviewDocumentsFragment();
-      else if (position == 3) fragment = new MediaOverviewDocumentsFragment();
-      else if (position == 4) fragment = new MediaOverviewDocumentsFragment();
-      else                    throw new AssertionError();
+           if (position == TAB_SETTINGS) fragment = new MediaOverviewDocumentsFragment();
+      else if (position == TAB_GALLERY)  fragment = new MediaOverviewGalleryFragment();
+      else if (position == TAB_DOCS)     fragment = new MediaOverviewDocumentsFragment();
+      else if (position == TAB_LINKS)    fragment = new MediaOverviewDocumentsFragment();
+      else if (position == TAB_MAP)      fragment = new MediaOverviewDocumentsFragment();
+      else                               throw new AssertionError();
 
       Bundle args = new Bundle();
-      args.putString(MediaOverviewGalleryFragment.ADDRESS_EXTRA, recipient.getAddress().serialize());
+      args.putString(MediaOverviewGalleryFragment.ADDRESS_EXTRA, getRecipient().getAddress().serialize());
       args.putSerializable(MediaOverviewGalleryFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
 
       fragment.setArguments(args);
@@ -152,12 +216,19 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     @Override
     public CharSequence getPageTitle(int position) {
-           if (position == 0) return getString(R.string.tab_contact);
-      else if (position == 1) return getString(R.string.tab_gallery);
-      else if (position == 2) return getString(R.string.tab_docs);
-      else if (position == 3) return getString(R.string.tab_links);
-      else if (position == 4) return getString(R.string.tab_map);
-      else                    throw new AssertionError();
+      if (position == TAB_SETTINGS) {
+        if(isContactProfile()) {
+          return getString(contactId==DcContact.DC_CONTACT_ID_SELF? R.string.self : R.string.tab_contact);
+        }
+        else {
+          return getString(R.string.tab_group);
+        }
+      }
+      else if (position == TAB_GALLERY)  return getString(R.string.tab_gallery);
+      else if (position == TAB_DOCS)     return getString(R.string.tab_docs);
+      else if (position == TAB_LINKS)    return getString(R.string.tab_links);
+      else if (position == TAB_MAP)      return getString(R.string.tab_map);
+      else                               throw new AssertionError();
     }
   }
 

@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import org.thoughtcrime.securesms.ProfileActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.RecipientPreferenceActivity;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
@@ -70,23 +71,11 @@ public class AvatarImageView extends AppCompatImageView {
   private void setAvatarClickHandler(final Recipient recipient, boolean quickContactEnabled) {
     if (!recipient.isGroupRecipient() && quickContactEnabled) {
       super.setOnClickListener(v -> {
-        Intent intent = new Intent(getContext(), RecipientPreferenceActivity.class);
-        intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
-        getContext().startActivity(intent);
-        /*
-        if (recipient.getContactUri() != null) {
-          ContactsContract.QuickContact.showQuickContact(getContext(), AvatarImageView.this, recipient.getContactUri(), ContactsContract.QuickContact.MODE_LARGE, null);
-        } else {
-          final Intent intent = new Intent(Intent.ACTION_INSERT_OR_EDIT);
-          if (recipient.getAddress().isEmail()) {
-            intent.putExtra(ContactsContract.Intents.Insert.EMAIL, recipient.getAddress().toEmailString());
-          } else {
-            intent.putExtra(ContactsContract.Intents.Insert.PHONE, recipient.getAddress().toPhoneString());
-          }
-          intent.setType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+        if(recipient.getAddress().isDcContact()) {
+          Intent intent = new Intent(getContext(), ProfileActivity.class);
+          intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, recipient.getAddress().getDcContactId());
           getContext().startActivity(intent);
         }
-        */
       });
     } else {
       super.setOnClickListener(listener);
