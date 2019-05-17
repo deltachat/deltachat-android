@@ -50,10 +50,12 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
 
@@ -66,11 +68,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   public static final String CONTACT_ID_EXTRA = "contact_id";
   public static final String FORCE_TAB_EXTRA  = "force_tab";
 
-  public static final int TAB_SETTINGS = 0;
-  public static final int TAB_GALLERY  = 1;
-  public static final int TAB_DOCS     = 2;
-  public static final int TAB_LINKS    = 3;
-  public static final int TAB_MAP      = 4;
+  public static final int TAB_SETTINGS = 10;
+  public static final int TAB_GALLERY  = 20;
+  public static final int TAB_DOCS     = 30;
+  public static final int TAB_LINKS    = 40;
+  public static final int TAB_MAP      = 50;
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -81,9 +83,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   private int                  contactId;
   private @Nullable DcContact  dcContact;
 
-  private Toolbar      toolbar;
-  private TabLayout    tabLayout;
-  private ViewPager    viewPager;
+  private ArrayList<Integer> tabs = new ArrayList<>();
+  private Toolbar            toolbar;
+  private TabLayout          tabLayout;
+  private ViewPager          viewPager;
 
   @Override
   protected void onPreCreate() {
@@ -143,6 +146,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       }
     }
 
+    if(!isGlobalProfile()) {
+      tabs.add(TAB_SETTINGS);
+    }
+    tabs.add(TAB_GALLERY);
+    tabs.add(TAB_DOCS);
+    tabs.add(TAB_LINKS);
+    if(Prefs.isLocationStreamingEnabled(this)) {
+      tabs.add(TAB_MAP);
+    }
+
     this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
@@ -156,15 +169,22 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   }
 
   private void updateToolbar() {
-    if (isContactProfile()){
+    if (isGlobalProfile()){
+      getSupportActionBar().setTitle(R.string.menu_all_media);
+    }
+    else if (isContactProfile()){
       getSupportActionBar().setTitle(dcContact.getName());
     }
     else if (dcChat != null) {
       getSupportActionBar().setTitle(dcChat.getName());
     }
     else {
-      getSupportActionBar().setTitle(R.string.menu_view_profile);
+      getSupportActionBar().setTitle("ErrName");
     }
+  }
+
+  private boolean isGlobalProfile() {
+    return contactId==0 && chatId==0;
   }
 
   private boolean isContactProfile() {
@@ -191,14 +211,15 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     @Override
     public Fragment getItem(int position) {
+      int tabId = tabs.get(position);
       Fragment fragment;
 
-           if (position == TAB_SETTINGS) fragment = new MediaOverviewDocumentsFragment();
-      else if (position == TAB_GALLERY)  fragment = new MediaOverviewGalleryFragment();
-      else if (position == TAB_DOCS)     fragment = new MediaOverviewDocumentsFragment();
-      else if (position == TAB_LINKS)    fragment = new MediaOverviewDocumentsFragment();
-      else if (position == TAB_MAP)      fragment = new MediaOverviewDocumentsFragment();
-      else                               throw new AssertionError();
+           if (tabId == TAB_SETTINGS) fragment = new MediaOverviewDocumentsFragment();
+      else if (tabId == TAB_GALLERY)  fragment = new MediaOverviewGalleryFragment();
+      else if (tabId == TAB_DOCS)     fragment = new MediaOverviewDocumentsFragment();
+      else if (tabId == TAB_LINKS)    fragment = new MediaOverviewDocumentsFragment();
+      else if (tabId == TAB_MAP)      fragment = new MediaOverviewDocumentsFragment();
+      else                            throw new AssertionError();
 
       Bundle args = new Bundle();
       args.putString(MediaOverviewGalleryFragment.ADDRESS_EXTRA, getRecipient().getAddress().serialize());
@@ -211,24 +232,36 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     @Override
     public int getCount() {
-      return 5;
+      return tabs.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-      if (position == TAB_SETTINGS) {
-        if(isContactProfile()) {
-          return getString(contactId==DcContact.DC_CONTACT_ID_SELF? R.string.self : R.string.tab_contact);
-        }
-        else {
-          return getString(R.string.tab_group);
-        }
+      int tabId = tabs.get(position);
+      switch(tabId) {
+        case TAB_SETTINGS:
+          if(isContactProfile()) {
+            return getString(contactId==DcContact.DC_CONTACT_ID_SELF? R.string.self : R.string.tab_contact);
+          }
+          else {
+            return getString(R.string.tab_group);
+          }
+
+        case TAB_GALLERY:
+          return getString(R.string.tab_gallery);
+
+        case TAB_DOCS:
+          return getString(R.string.tab_docs);
+
+        case TAB_LINKS:
+          return getString(R.string.tab_links);
+
+        case TAB_MAP:
+          return getString(R.string.tab_map);
+
+        default:
+          throw new AssertionError();
       }
-      else if (position == TAB_GALLERY)  return getString(R.string.tab_gallery);
-      else if (position == TAB_DOCS)     return getString(R.string.tab_docs);
-      else if (position == TAB_LINKS)    return getString(R.string.tab_links);
-      else if (position == TAB_MAP)      return getString(R.string.tab_map);
-      else                               throw new AssertionError();
     }
   }
 
