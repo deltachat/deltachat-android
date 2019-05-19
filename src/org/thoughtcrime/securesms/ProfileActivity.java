@@ -68,6 +68,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   public static final String CONTACT_ID_EXTRA = "contact_id";
   public static final String FORCE_TAB_EXTRA  = "force_tab";
 
+  private static final String FRAGMENT_LOCALE_EXTRA  = "locale_extra";
+  private static final String FRAGMENT_ADDRESS_EXTRA = "address";
+
   public static final int TAB_SETTINGS = 10;
   public static final int TAB_GALLERY  = 20;
   public static final int TAB_DOCS     = 30;
@@ -215,20 +218,29 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     public Fragment getItem(int position) {
       int tabId = tabs.get(position);
       Fragment fragment;
-
-           if (tabId == TAB_SETTINGS) fragment = new ProfileSettingsFragment();
-      else if (tabId == TAB_GALLERY)  fragment = new ProfileGalleryFragment();
-      else if (tabId == TAB_DOCS)     fragment = new ProfileDocumentsFragment();
-      else if (tabId == TAB_LINKS)    fragment = new ProfileDocumentsFragment();
-      else if (tabId == TAB_MAP)      fragment = new ProfileDocumentsFragment();
-      else                            throw new AssertionError();
-
       Bundle args = new Bundle();
-      args.putString(ProfileGalleryFragment.ADDRESS_EXTRA, getRecipient().getAddress().serialize());
-      args.putSerializable(ProfileGalleryFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
+
+      switch(tabId) {
+        case TAB_SETTINGS:
+          fragment = new ProfileSettingsFragment();
+          args.putString(FRAGMENT_ADDRESS_EXTRA, getRecipient().getAddress().serialize());
+          args.putSerializable(FRAGMENT_LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
+          break;
+
+        case TAB_GALLERY:
+          fragment = new ProfileGalleryFragment();
+          args.putString(FRAGMENT_ADDRESS_EXTRA, getRecipient().getAddress().serialize());
+          args.putSerializable(FRAGMENT_LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
+          break;
+
+        default:
+          fragment = new ProfileDocumentsFragment();
+          args.putString(FRAGMENT_ADDRESS_EXTRA, getRecipient().getAddress().serialize());
+          args.putSerializable(FRAGMENT_LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
+          break;
+      }
 
       fragment.setArguments(args);
-
       return fragment;
     }
 
@@ -274,8 +286,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   public static class ProfileSettingsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     protected RecyclerView recyclerView;
-    public static final String ADDRESS_EXTRA = "address";
-    public static final String LOCALE_EXTRA  = "locale_extra";
 
     protected Recipient    recipient;
     protected Locale       locale;
@@ -284,11 +294,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     public void onCreate(Bundle bundle) {
       super.onCreate(bundle);
 
-      Locale       locale       = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
+      Locale       locale       = (Locale)getArguments().getSerializable(FRAGMENT_LOCALE_EXTRA);
       if (locale == null)       throw new AssertionError();
       this.locale       = locale;
 
-      String       address      = getArguments().getString(ADDRESS_EXTRA);
+      String       address      = getArguments().getString(FRAGMENT_ADDRESS_EXTRA);
       if (address == null)      throw new AssertionError();
       this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
 
@@ -340,8 +350,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     private StickyHeaderGridLayoutManager gridManager;
     private ActionMode                    actionMode;
     private ActionModeCallback            actionModeCallback = new ActionModeCallback();
-    public static final String ADDRESS_EXTRA = "address";
-    public static final String LOCALE_EXTRA  = "locale_extra";
 
     protected Recipient    recipient;
     protected Locale       locale;
@@ -350,11 +358,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     public void onCreate(Bundle bundle) {
       super.onCreate(bundle);
 
-      Locale       locale       = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
+      Locale       locale       = (Locale)getArguments().getSerializable(FRAGMENT_LOCALE_EXTRA);
       if (locale == null)       throw new AssertionError();
       this.locale       = locale;
 
-      String       address      = getArguments().getString(ADDRESS_EXTRA);
+      String       address      = getArguments().getString(FRAGMENT_ADDRESS_EXTRA);
       if (address == null)      throw new AssertionError();
       this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
 
@@ -542,6 +550,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     }
   }
 
+
   // documents fragment
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -549,8 +558,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     protected RecyclerView recyclerView;
     protected TextView     noMedia;
-    public static final String ADDRESS_EXTRA = "address";
-    public static final String LOCALE_EXTRA  = "locale_extra";
 
     protected Recipient    recipient;
     protected Locale       locale;
@@ -559,11 +566,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     public void onCreate(Bundle bundle) {
       super.onCreate(bundle);
 
-      Locale       locale       = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
+      Locale       locale       = (Locale)getArguments().getSerializable(FRAGMENT_LOCALE_EXTRA);
       if (locale == null)       throw new AssertionError();
       this.locale       = locale;
 
-      String       address      = getArguments().getString(ADDRESS_EXTRA);
+      String       address      = getArguments().getString(FRAGMENT_ADDRESS_EXTRA);
       if (address == null)      throw new AssertionError();
       this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
 
