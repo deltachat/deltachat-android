@@ -50,7 +50,6 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
@@ -308,7 +307,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
       View                  view    = inflater.inflate(R.layout.profile_settings_fragment, container, false);
-      MediaDocumentsAdapter adapter = new MediaDocumentsAdapter(getContext(), null, locale);
+      ProfileDocumentsAdapter adapter = new ProfileDocumentsAdapter(getContext(), null, locale);
 
       this.recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
 
@@ -343,7 +342,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
   public static class ProfileGalleryFragment
-      extends Fragment implements LoaderManager.LoaderCallbacks<BucketedThreadMedia>, MediaGalleryAdapter.ItemClickListener
+      extends Fragment implements LoaderManager.LoaderCallbacks<BucketedThreadMedia>, ProfileGalleryAdapter.ItemClickListener
   {
     protected TextView                    noMedia;
     protected RecyclerView                recyclerView;
@@ -377,7 +376,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       this.noMedia      = ViewUtil.findById(view, R.id.no_images);
       this.gridManager  = new StickyHeaderGridLayoutManager(getResources().getInteger(R.integer.profile_cols));
 
-      this.recyclerView.setAdapter(new MediaGalleryAdapter(getContext(),
+      this.recyclerView.setAdapter(new ProfileGalleryAdapter(getContext(),
                                                            GlideApp.with(this),
                                                            new BucketedThreadMedia(getContext()),
                                                            locale,
@@ -404,8 +403,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     @Override
     public void onLoadFinished(Loader<BucketedThreadMedia> loader, BucketedThreadMedia bucketedThreadMedia) {
-      ((MediaGalleryAdapter) recyclerView.getAdapter()).setMedia(bucketedThreadMedia);
-      ((MediaGalleryAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
+      ((ProfileGalleryAdapter) recyclerView.getAdapter()).setMedia(bucketedThreadMedia);
+      ((ProfileGalleryAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
       noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
       getActivity().invalidateOptionsMenu();
@@ -413,7 +412,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     @Override
     public void onLoaderReset(Loader<BucketedThreadMedia> cursorLoader) {
-      ((MediaGalleryAdapter) recyclerView.getAdapter()).setMedia(new BucketedThreadMedia(getContext()));
+      ((ProfileGalleryAdapter) recyclerView.getAdapter()).setMedia(new BucketedThreadMedia(getContext()));
     }
 
     @Override
@@ -426,7 +425,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     }
 
     private void handleMediaMultiSelectClick(@NonNull DcMsg mediaRecord) {
-      MediaGalleryAdapter adapter = getListAdapter();
+      ProfileGalleryAdapter adapter = getListAdapter();
 
       adapter.toggleSelection(mediaRecord);
       if (adapter.getSelectedMediaCount() == 0) {
@@ -458,7 +457,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     @Override
     public void onMediaLongClicked(DcMsg mediaRecord) {
       if (actionMode == null) {
-        ((MediaGalleryAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
+        ((ProfileGalleryAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
         recyclerView.getAdapter().notifyDataSetChanged();
 
         actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
@@ -501,8 +500,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       builder.show();
     }
 
-    private MediaGalleryAdapter getListAdapter() {
-      return (MediaGalleryAdapter) recyclerView.getAdapter();
+    private ProfileGalleryAdapter getListAdapter() {
+      return (ProfileGalleryAdapter) recyclerView.getAdapter();
     }
 
     private class ActionModeCallback implements ActionMode.Callback {
@@ -580,7 +579,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
       View                  view    = inflater.inflate(R.layout.profile_documents_fragment, container, false);
-      MediaDocumentsAdapter adapter = new MediaDocumentsAdapter(getContext(), null, locale);
+      ProfileDocumentsAdapter adapter = new ProfileDocumentsAdapter(getContext(), null, locale);
 
       this.recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
       this.noMedia       = ViewUtil.findById(view, R.id.no_documents);

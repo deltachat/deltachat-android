@@ -37,10 +37,10 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-class MediaGalleryAdapter extends StickyHeaderGridAdapter {
+class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
 
   @SuppressWarnings("unused")
-  private static final String TAG = MediaGalleryAdapter.class.getSimpleName();
+  private static final String TAG = ProfileGalleryAdapter.class.getSimpleName();
 
   private final Context             context;
   private final GlideRequests       glideRequests;
@@ -70,11 +70,11 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
     }
   }
 
-  MediaGalleryAdapter(@NonNull Context context,
-                      @NonNull GlideRequests glideRequests,
-                      BucketedThreadMedia media,
-                      Locale locale,
-                      ItemClickListener clickListener)
+  ProfileGalleryAdapter(@NonNull Context context,
+                        @NonNull GlideRequests glideRequests,
+                        BucketedThreadMedia media,
+                        Locale locale,
+                        ItemClickListener clickListener)
   {
     this.context           = context;
     this.glideRequests     = glideRequests;

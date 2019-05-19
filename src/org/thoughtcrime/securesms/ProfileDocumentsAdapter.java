@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.thoughtcrime.securesms.MediaDocumentsAdapter.HeaderViewHolder;
-import org.thoughtcrime.securesms.MediaDocumentsAdapter.ViewHolder;
+import org.thoughtcrime.securesms.ProfileDocumentsAdapter.HeaderViewHolder;
+import org.thoughtcrime.securesms.ProfileDocumentsAdapter.ViewHolder;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -29,12 +29,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class MediaDocumentsAdapter extends CursorRecyclerViewAdapter<ViewHolder> implements StickyHeaderDecoration.StickyHeaderAdapter<HeaderViewHolder> {
+public class ProfileDocumentsAdapter extends CursorRecyclerViewAdapter<ViewHolder> implements StickyHeaderDecoration.StickyHeaderAdapter<HeaderViewHolder> {
 
   private final Calendar     calendar;
   private final Locale       locale;
 
-  MediaDocumentsAdapter(Context context, Cursor cursor, Locale locale) {
+  ProfileDocumentsAdapter(Context context, Cursor cursor, Locale locale) {
     super(context, cursor);
 
     this.calendar     = Calendar.getInstance();
