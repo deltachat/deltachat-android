@@ -146,15 +146,15 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       }
     }
 
-    if(!isGlobalProfile()) {
+    if(!isGlobalProfile() && !isSelfProfile()) {
       tabs.add(TAB_SETTINGS);
     }
     tabs.add(TAB_GALLERY);
     tabs.add(TAB_DOCS);
-    tabs.add(TAB_LINKS);
-    if(Prefs.isLocationStreamingEnabled(this)) {
-      tabs.add(TAB_MAP);
-    }
+    //tabs.add(TAB_LINKS);
+    //if(Prefs.isLocationStreamingEnabled(this)) {
+    //  tabs.add(TAB_MAP);
+    //}
 
     this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
@@ -187,6 +187,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   private boolean isContactProfile() {
     // there may still be a single-chat lined to the contact profile
     return dcContact!=null && (dcChat==null || !dcChat.isGroup());
+  }
+
+  private boolean isSelfProfile() {
+    return isContactProfile() && contactId==DcContact.DC_CONTACT_ID_SELF;
   }
 
   private Recipient getRecipient() {
