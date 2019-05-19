@@ -196,7 +196,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
         default:
           fragment = new ProfileDocumentsFragment();
-          args.putString(ProfileDocumentsFragment.ADDRESS_EXTRA, getRecipient().getAddress().serialize());
+          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, dcChat==null? -1 : chatId);
           args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
       }

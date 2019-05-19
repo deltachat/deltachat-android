@@ -50,13 +50,13 @@ public class ProfileSettingsFragment extends Fragment implements LoaderManager.L
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View                  view    = inflater.inflate(R.layout.profile_settings_fragment, container, false);
-    ProfileDocumentsAdapter adapter = new ProfileDocumentsAdapter(getContext(), null, locale);
+    //ProfileDocumentsAdapter adapter = new ProfileDocumentsAdapter(getContext(), null, locale);
 
     this.recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
 
-    this.recyclerView.setAdapter(adapter);
+    //this.recyclerView.setAdapter(adapter);
     this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-    this.recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, false, true));
+    //this.recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, false, true));
     this.recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
     return view;
