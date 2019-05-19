@@ -12,52 +12,17 @@
                       android:gravity="center_vertical"
                       android:orientation="horizontal">
 
-            <org.thoughtcrime.securesms.components.AnimatingToggle
-                    android:id="@+id/control_toggle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:gravity="center">
-
-                <FrameLayout
-                        android:id="@+id/icon_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="-4dp"
-                        android:layout_marginStart="-4dp"
-                        android:gravity="center"
-                        android:visibility="visible"
-                        android:clickable="false"
-                        android:focusable="false">
-
-                    <ImageView
-                        android:id="@+id/icon"
-                        android:layout_width="38dp"
-                        android:layout_height="50dp"
-                        android:src="?attachment_document_icon_large"/>
-
-                    <TextView android:id="@+id/document"
-                              android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:layout_gravity="center"
-                              android:gravity="center"
-                              android:clickable="false"
-                              android:visibility="visible"
-                              android:textAlignment="center"
-                              android:scaleType="centerInside"
-                              style="@style/Signal.Text.Caption"
-                              android:textAllCaps="true"
-                              android:textSize="10sp"
-                              android:textColor="@color/core_black"
-                              tools:visibility="visible"
-                              tools:text="PDF" />
-
-                </FrameLayout>
-
-            </org.thoughtcrime.securesms.components.AnimatingToggle>
+            <org.thoughtcrime.securesms.components.CircleColorImageView
+                android:id="@+id/document_button"
+                android:padding="4dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_insert_drive_file_white_24dp"
+                android:scaleType="center"
+                android:contentDescription="@string/file"
+                app:circleColor="@color/document_icon"/>
 
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
@@ -75,6 +40,7 @@
                           android:maxLines="1"
                           android:clickable="false"
                           android:ellipsize="end"
+                          android:textColor="@color/document_icon_text"
                           tools:text="The-Anarchist-Tension-by-Alfredo-Bonanno.pdf"/>
 
                 <TextView android:id="@+id/file_size"
@@ -82,6 +48,7 @@
                           android:layout_height="wrap_content"
                           style="@style/Signal.Text.Caption"
                           android:clickable="false"
+                          android:textColor="@color/document_icon_text"
                           tools:text="24kb"/>
             </LinearLayout>
         </LinearLayout>

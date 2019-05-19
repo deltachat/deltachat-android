@@ -3,8 +3,6 @@
     <attr name="theme_type" format="string"/>
 
     <attr name="attachment_type_selector_background" format="color"/>
-    <attr name="attachment_document_icon_small" format="reference" />
-    <attr name="attachment_document_icon_large" format="reference" />
 
     <attr name="conversation_list_item_background" format="reference"/>
     <attr name="conversation_list_deaddrop_bg_color" format="reference|color"/>
@@ -209,11 +207,6 @@
     <declare-styleable name="RingtonePreference">
         <attr name="showAdd" format="boolean" />
         <attr name="summaryHasRingtone" format="string|reference" />
-    </declare-styleable>
-
-    <declare-styleable name="DocumentView">
-        <attr name="doc_titleColor" format="color" />
-        <attr name="doc_captionColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="ConversationItemFooter">
