@@ -46,6 +46,7 @@ public class ProfileDocumentsFragment
 
   protected TextView noMedia;
   protected RecyclerView recyclerView;
+  private StickyHeaderGridLayoutManager gridManager;
   private ActionMode actionMode;
   private ActionModeCallback actionModeCallback = new ActionModeCallback();
 
@@ -69,16 +70,26 @@ public class ProfileDocumentsFragment
 
     this.recyclerView = ViewUtil.findById(view, R.id.recycler_view);
     this.noMedia      = ViewUtil.findById(view, R.id.no_documents);
+    this.gridManager  = new StickyHeaderGridLayoutManager(1);
 
     this.recyclerView.setAdapter(new ProfileDocumentsAdapter(getContext(),
         GlideApp.with(this),
         new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
         locale,
         this));
-    this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);
 
     return view;
+  }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    if (gridManager != null) {
+      this.gridManager = new StickyHeaderGridLayoutManager(1);
+      this.recyclerView.setLayoutManager(gridManager);
+    }
   }
 
   @Override
