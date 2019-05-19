@@ -43,7 +43,7 @@ public class MediaDocumentsAdapter extends CursorRecyclerViewAdapter<ViewHolder>
 
   @Override
   public ViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-    return new ViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.media_overview_document_item, parent, false));
+    return new ViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.profile_document_item, parent, false));
   }
 
   @Override
@@ -84,7 +84,7 @@ public class MediaDocumentsAdapter extends CursorRecyclerViewAdapter<ViewHolder>
 
   @Override
   public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.media_overview_document_item_header, parent, false));
+    return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.profile_document_item_header, parent, false));
   }
 
   @Override

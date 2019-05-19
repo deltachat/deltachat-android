@@ -97,7 +97,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
   @Override
   protected void onCreate(Bundle bundle, boolean ready) {
-    setContentView(R.layout.media_overview_activity);
+    setContentView(R.layout.profile_activity);
 
     initializeResources();
     initializeToolbar();
@@ -312,11 +312,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-      View view = inflater.inflate(R.layout.media_overview_gallery_fragment, container, false);
+      View view = inflater.inflate(R.layout.profile_gallery_fragment, container, false);
 
       this.recyclerView = ViewUtil.findById(view, R.id.media_grid);
       this.noMedia      = ViewUtil.findById(view, R.id.no_images);
-      this.gridManager  = new StickyHeaderGridLayoutManager(getResources().getInteger(R.integer.media_overview_cols));
+      this.gridManager  = new StickyHeaderGridLayoutManager(getResources().getInteger(R.integer.profile_cols));
 
       this.recyclerView.setAdapter(new MediaGalleryAdapter(getContext(),
                                                            GlideApp.with(this),
@@ -333,7 +333,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     public void onConfigurationChanged(Configuration newConfig) {
       super.onConfigurationChanged(newConfig);
       if (gridManager != null) {
-        this.gridManager = new StickyHeaderGridLayoutManager(getResources().getInteger(R.integer.media_overview_cols));
+        this.gridManager = new StickyHeaderGridLayoutManager(getResources().getInteger(R.integer.profile_cols));
         this.recyclerView.setLayoutManager(gridManager);
       }
     }
@@ -452,7 +452,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
       @Override
       public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        mode.getMenuInflater().inflate(R.menu.media_overview_context, menu);
+        mode.getMenuInflater().inflate(R.menu.profile_context, menu);
         mode.setTitle("1");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -498,7 +498,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-      View                  view    = inflater.inflate(R.layout.media_overview_documents_fragment, container, false);
+      View                  view    = inflater.inflate(R.layout.profile_documents_fragment, container, false);
       MediaDocumentsAdapter adapter = new MediaDocumentsAdapter(getContext(), null, locale);
 
       this.recyclerView  = ViewUtil.findById(view, R.id.recycler_view);

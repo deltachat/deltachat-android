@@ -90,12 +90,12 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
 
   @Override
   public StickyHeaderGridAdapter.HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent, int headerType) {
-    return new HeaderHolder(LayoutInflater.from(context).inflate(R.layout.media_overview_gallery_item_header, parent, false));
+    return new HeaderHolder(LayoutInflater.from(context).inflate(R.layout.profile_gallery_item_header, parent, false));
   }
 
   @Override
   public ItemViewHolder onCreateItemViewHolder(ViewGroup parent, int itemType) {
-    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.media_overview_gallery_item, parent, false));
+    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.profile_gallery_item, parent, false));
   }
 
   @Override

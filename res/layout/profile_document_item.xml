@@ -23,7 +23,7 @@
               android:layout_height="wrap_content"
               android:layout_gravity="center_vertical"
               android:textSize="12sp"
-              android:textColor="?attr/media_overview_document_foreground"
+              android:textColor="?attr/profile_document_foreground"
               android:paddingTop="20dp"
               tools:text="Jun 1"/>
 
