@@ -216,7 +216,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       int tabId = tabs.get(position);
       Fragment fragment;
 
-           if (tabId == TAB_SETTINGS) fragment = new ProfileDocumentsFragment();
+           if (tabId == TAB_SETTINGS) fragment = new ProfileSettingsFragment();
       else if (tabId == TAB_GALLERY)  fragment = new ProfileGalleryFragment();
       else if (tabId == TAB_DOCS)     fragment = new ProfileDocumentsFragment();
       else if (tabId == TAB_LINKS)    fragment = new ProfileDocumentsFragment();
@@ -267,33 +267,64 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     }
   }
 
-  // overview fragment base
+
+  // settings fragment
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  public static abstract class ProfileFragment<T> extends Fragment implements LoaderManager.LoaderCallbacks<T> {
+  public static class ProfileSettingsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    protected RecyclerView recyclerView;
     public static final String ADDRESS_EXTRA = "address";
     public static final String LOCALE_EXTRA  = "locale_extra";
 
-    protected TextView     noMedia;
     protected Recipient    recipient;
-    protected RecyclerView recyclerView;
     protected Locale       locale;
 
     @Override
     public void onCreate(Bundle bundle) {
       super.onCreate(bundle);
 
-      String       address      = getArguments().getString(ADDRESS_EXTRA);
       Locale       locale       = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
-
-      if (address == null)      throw new AssertionError();
       if (locale == null)       throw new AssertionError();
-
-      this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
       this.locale       = locale;
 
+      String       address      = getArguments().getString(ADDRESS_EXTRA);
+      if (address == null)      throw new AssertionError();
+      this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
+
       getLoaderManager().initLoader(0, null, this);
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+      View                  view    = inflater.inflate(R.layout.profile_settings_fragment, container, false);
+      MediaDocumentsAdapter adapter = new MediaDocumentsAdapter(getContext(), null, locale);
+
+      this.recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
+
+      this.recyclerView.setAdapter(adapter);
+      this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+      this.recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, false, true));
+      this.recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+
+      return view;
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+      return new ThreadMediaLoader(getContext(), recipient.getAddress(), false);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+      //((CursorRecyclerViewAdapter)this.recyclerView.getAdapter()).changeCursor(data);
+      getActivity().invalidateOptionsMenu();
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+      ((CursorRecyclerViewAdapter)this.recyclerView.getAdapter()).changeCursor(null);
+      getActivity().invalidateOptionsMenu();
     }
   }
 
@@ -302,13 +333,33 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
   public static class ProfileGalleryFragment
-      extends ProfileFragment<BucketedThreadMedia>
-      implements MediaGalleryAdapter.ItemClickListener
+      extends Fragment implements LoaderManager.LoaderCallbacks<BucketedThreadMedia>, MediaGalleryAdapter.ItemClickListener
   {
-
+    protected TextView                    noMedia;
+    protected RecyclerView                recyclerView;
     private StickyHeaderGridLayoutManager gridManager;
     private ActionMode                    actionMode;
     private ActionModeCallback            actionModeCallback = new ActionModeCallback();
+    public static final String ADDRESS_EXTRA = "address";
+    public static final String LOCALE_EXTRA  = "locale_extra";
+
+    protected Recipient    recipient;
+    protected Locale       locale;
+
+    @Override
+    public void onCreate(Bundle bundle) {
+      super.onCreate(bundle);
+
+      Locale       locale       = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
+      if (locale == null)       throw new AssertionError();
+      this.locale       = locale;
+
+      String       address      = getArguments().getString(ADDRESS_EXTRA);
+      if (address == null)      throw new AssertionError();
+      this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
+
+      getLoaderManager().initLoader(0, null, this);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -494,7 +545,30 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
   // documents fragment
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  public static class ProfileDocumentsFragment extends ProfileFragment<Cursor> {
+  public static class ProfileDocumentsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    protected RecyclerView recyclerView;
+    protected TextView     noMedia;
+    public static final String ADDRESS_EXTRA = "address";
+    public static final String LOCALE_EXTRA  = "locale_extra";
+
+    protected Recipient    recipient;
+    protected Locale       locale;
+
+    @Override
+    public void onCreate(Bundle bundle) {
+      super.onCreate(bundle);
+
+      Locale       locale       = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
+      if (locale == null)       throw new AssertionError();
+      this.locale       = locale;
+
+      String       address      = getArguments().getString(ADDRESS_EXTRA);
+      if (address == null)      throw new AssertionError();
+      this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
+
+      getLoaderManager().initLoader(0, null, this);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -532,4 +606,5 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       getActivity().invalidateOptionsMenu();
     }
   }
+
 }
