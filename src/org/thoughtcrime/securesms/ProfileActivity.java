@@ -228,7 +228,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
         case TAB_GALLERY:
           fragment = new ProfileGalleryFragment();
-          args.putString(FRAGMENT_ADDRESS_EXTRA, getRecipient().getAddress().serialize());
+          args.putInt(CHAT_ID_EXTRA, dcChat==null? -1 : chatId);
           args.putSerializable(FRAGMENT_LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
@@ -350,20 +350,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     private ActionMode                    actionMode;
     private ActionModeCallback            actionModeCallback = new ActionModeCallback();
 
-    protected Recipient    recipient;
+    protected int          chatId;
     protected Locale       locale;
 
     @Override
     public void onCreate(Bundle bundle) {
       super.onCreate(bundle);
 
-      Locale       locale       = (Locale)getArguments().getSerializable(FRAGMENT_LOCALE_EXTRA);
-      if (locale == null)       throw new AssertionError();
-      this.locale       = locale;
-
-      String       address      = getArguments().getString(FRAGMENT_ADDRESS_EXTRA);
-      if (address == null)      throw new AssertionError();
-      this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
+      chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
+      locale = (Locale)getArguments().getSerializable(FRAGMENT_LOCALE_EXTRA);
+      if (locale == null) throw new AssertionError();
 
       getLoaderManager().initLoader(0, null, this);
     }
@@ -398,7 +394,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     @Override
     public Loader<BucketedThreadMedia> onCreateLoader(int i, Bundle bundle) {
-      return new BucketedThreadMediaLoader(getContext(), recipient.getAddress());
+      return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO);
     }
 
     @Override
@@ -448,7 +444,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
       Intent intent = new Intent(context, MediaPreviewActivity.class);
       intent.putExtra(MediaPreviewActivity.DC_MSG_ID, mediaRecord.getId());
-      intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, recipient.getAddress());
+      intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, Address.fromChat(chatId));
       intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, mediaRecord.isOutgoing());
       intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, false);
       context.startActivity(intent);

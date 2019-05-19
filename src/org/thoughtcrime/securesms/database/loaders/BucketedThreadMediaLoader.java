@@ -29,11 +29,17 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
   @SuppressWarnings("unused")
   private static final String TAG = BucketedThreadMediaLoader.class.getSimpleName();
 
-  private final Address         address;
+  private final int chatId;
+  private final int msgType1;
+  private final int msgType2;
+  private final int msgType3;
 
-  public BucketedThreadMediaLoader(@NonNull Context context, @NonNull Address address) {
+  public BucketedThreadMediaLoader(@NonNull Context context, int chatId, int msgType1, int msgType2, int msgType3) {
     super(context);
-    this.address  = address;
+    this.chatId = chatId;
+    this.msgType1 = msgType1;
+    this.msgType2 = msgType2;
+    this.msgType3 = msgType3;
 
     onContentChanged();
   }
@@ -58,9 +64,11 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
   public BucketedThreadMedia loadInBackground() {
     BucketedThreadMedia result   = new BucketedThreadMedia(getContext());
     DcContext context = DcHelper.getContext(getContext());
-    int[] messages = context.getChatMedia(address.getDcChatId(), DcMsg.DC_MSG_IMAGE, DcMsg.DC_MSG_GIF, DcMsg.DC_MSG_VIDEO);
-    for(int nextId : messages) {
-      result.add(context.getMsg(nextId));
+    if(chatId!=-1 /*0=all, -1=none*/) {
+      int[] messages = context.getChatMedia(chatId, msgType1, msgType2, msgType3);
+      for(int nextId : messages) {
+        result.add(context.getMsg(nextId));
+      }
     }
 
     return result;
