@@ -44,8 +44,6 @@
     <dimen name="quote_corner_radius_bottom">4dp</dimen>
     <dimen name="quote_corner_radius_preview">18dp</dimen>
 
-    <integer name="profile_cols">3</integer>
-
     <dimen name="quick_camera_shutter_ring_size">52dp</dimen>
 
     <dimen name="conversation_list_fragment_archive_padding">16dp</dimen>

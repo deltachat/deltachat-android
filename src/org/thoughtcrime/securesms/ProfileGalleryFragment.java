@@ -69,7 +69,7 @@ public class ProfileGalleryFragment
 
     this.recyclerView = ViewUtil.findById(view, R.id.media_grid);
     this.noMedia      = ViewUtil.findById(view, R.id.no_images);
-    this.gridManager  = new StickyHeaderGridLayoutManager(getResources().getInteger(R.integer.profile_cols));
+    this.gridManager  = new StickyHeaderGridLayoutManager(getCols());
 
     this.recyclerView.setAdapter(new ProfileGalleryAdapter(getContext(),
                                                          GlideApp.with(this),
@@ -82,11 +82,15 @@ public class ProfileGalleryFragment
     return view;
   }
 
+  private int getCols() {
+    return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE? 5 : 3;
+  }
+
   @Override
   public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
     if (gridManager != null) {
-      this.gridManager = new StickyHeaderGridLayoutManager(getResources().getInteger(R.integer.profile_cols));
+      this.gridManager = new StickyHeaderGridLayoutManager(getCols());
       this.recyclerView.setLayoutManager(gridManager);
     }
   }
