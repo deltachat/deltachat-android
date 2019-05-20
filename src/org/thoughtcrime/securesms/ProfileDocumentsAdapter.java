@@ -40,12 +40,14 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
   private  BucketedThreadMedia media;
 
   private static class ViewHolder extends StickyHeaderGridAdapter.ItemViewHolder {
+    private final View         rowView;
     private final DocumentView documentView;
     private final AudioView    audioView;
     private final TextView     date;
 
     public ViewHolder(View v) {
       super(v);
+      rowView           = v;
       documentView      = v.findViewById(R.id.document_view);
       audioView         = v.findViewById(R.id.audio_view);
       date              = v.findViewById(R.id.date);
@@ -103,14 +105,14 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
 
       viewHolder.audioView.setVisibility(View.VISIBLE);
       viewHolder.audioView.setAudio((AudioSlide)slide, dcMsg.getDuration());
+      viewHolder.audioView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
     }
     else if (slide != null && slide.hasDocument()) {
       viewHolder.documentView.setVisibility(View.VISIBLE);
       viewHolder.documentView.setDocument((DocumentSlide)slide);
-      viewHolder.documentView.setOnClickListener(view -> {
-        ApplicationDcContext dcContext = DcHelper.getContext(context);
-        dcContext.openForViewOrShare(dcMsg.getId(), Intent.ACTION_VIEW);
-      });
+      viewHolder.documentView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
+      viewHolder.documentView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
+      viewHolder.rowView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
 
       viewHolder.audioView.setVisibility(View.GONE);
     }
@@ -118,6 +120,9 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.documentView.setVisibility(View.GONE);
       viewHolder.audioView.setVisibility(View.GONE);
     }
+
+    viewHolder.rowView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
+    viewHolder.rowView.setSelected(selected.contains(dcMsg));
 
     viewHolder.date.setText(DateUtils.getBriefRelativeTimeSpanString(context, locale, dcMsg.getTimestamp()));
   }
@@ -158,94 +163,3 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
     void onMediaLongClicked(DcMsg mediaRecord);
   }
 }
-
-/*
-public class ProfileDocumentsAdapter extends CursorRecyclerViewAdapter<ViewHolder> implements StickyHeaderDecoration.StickyHeaderAdapter<HeaderViewHolder> {
-
-  private final Calendar     calendar;
-  private final Locale       locale;
-
-  ProfileDocumentsAdapter(Context context, Cursor cursor, Locale locale) {
-    super(context, cursor);
-
-    this.calendar     = Calendar.getInstance();
-    this.locale       = locale;
-  }
-
-  @Override
-  public ViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-    return new ViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.profile_document_item, parent, false));
-  }
-
-  @Override
-  public void onBindItemViewHolder(ViewHolder viewHolder, @NonNull Cursor cursor) {
-    MediaDatabase.MediaRecord mediaRecord = MediaDatabase.MediaRecord.from(getContext(), cursor);
-    Slide                     slide       = MediaUtil.getSlideForAttachment(getContext(), mediaRecord.getAttachment());
-
-    if (slide != null && slide.hasDocument()) {
-      viewHolder.documentView.setDocument((DocumentSlide)slide);
-      viewHolder.date.setText(DateUtils.getRelativeDate(getContext(), locale, mediaRecord.getDate()));
-      viewHolder.documentView.setVisibility(View.VISIBLE);
-      viewHolder.date.setVisibility(View.VISIBLE);
-      viewHolder.documentView.setOnClickListener(view -> {
-        int msgId = slide.getDcMsgId();
-        ApplicationDcContext dcContext = DcHelper.getContext(getContext());
-        dcContext.openForViewOrShare(msgId, Intent.ACTION_VIEW);
-      });
-    } else {
-      viewHolder.documentView.setVisibility(View.GONE);
-      viewHolder.date.setVisibility(View.GONE);
-    }
-  }
-
-  @Override
-  public long getHeaderId(int position) {
-    if (!isActiveCursor())          return -1;
-    if (isHeaderPosition(position)) return -1;
-    if (isFooterPosition(position)) return -1;
-    if (position >= getItemCount()) return -1;
-    if (position < 0)               return -1;
-
-    Cursor                    cursor      = getCursorAtPositionOrThrow(position);
-    MediaDatabase.MediaRecord mediaRecord = MediaDatabase.MediaRecord.from(getContext(), cursor);
-
-    calendar.setTime(new Date(mediaRecord.getDate()));
-    return Util.hashCode(calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_YEAR));
-  }
-
-  @Override
-  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.profile_document_item_header, parent, false));
-  }
-
-  @Override
-  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    Cursor                    cursor      = getCursorAtPositionOrThrow(position);
-    MediaDatabase.MediaRecord mediaRecord = MediaDatabase.MediaRecord.from(getContext(), cursor);
-    viewHolder.textView.setText(DateUtils.getRelativeDate(getContext(), locale, mediaRecord.getDate()));
-  }
-
-  public static class ViewHolder extends RecyclerView.ViewHolder {
-
-    private final DocumentView documentView;
-    private final TextView date;
-
-    public ViewHolder(View itemView) {
-      super(itemView);
-      this.documentView = itemView.findViewById(R.id.document_view);
-      this.date         = itemView.findViewById(R.id.date);
-    }
-  }
-
-  static class HeaderViewHolder extends RecyclerView.ViewHolder {
-
-    private final TextView textView;
-
-    HeaderViewHolder(View itemView) {
-      super(itemView);
-      this.textView = itemView.findViewById(R.id.text);
-    }
-  }
-
-}
-*/

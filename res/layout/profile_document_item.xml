@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
+              android:background="?attr/conversation_list_item_background"
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -31,9 +32,9 @@
               android:layout_height="wrap_content"
               android:layout_gravity="center_vertical"
               android:paddingLeft="8dp"
-              android:paddingStart="8dp"
+              android:paddingRight="8dp"
               android:textSize="12sp"
-              android:textColor="?attr/profile_document_foreground"
+              android:textColor="?attr/conversation_list_item_date_color"
               android:paddingTop="20dp"
               tools:text="Jun 1"/>
 

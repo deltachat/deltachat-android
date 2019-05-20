@@ -14,7 +14,6 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,10 +27,9 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
-import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
@@ -131,8 +129,9 @@ public class ProfileDocumentsFragment
     }
   }
 
-  private void handleMediaPreviewClick(@NonNull DcMsg mediaRecord) {
-    if (mediaRecord.getFile() == null) {
+  private void handleMediaPreviewClick(@NonNull DcMsg dcMsg) {
+    // audio is stated by the play-button
+    if (dcMsg.getType()==DcMsg.DC_MSG_AUDIO || dcMsg.getType()==DcMsg.DC_MSG_VOICE) {
       return;
     }
 
@@ -141,12 +140,8 @@ public class ProfileDocumentsFragment
       return;
     }
 
-    Intent intent = new Intent(context, MediaPreviewActivity.class);
-    intent.putExtra(MediaPreviewActivity.DC_MSG_ID, mediaRecord.getId());
-    intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, Address.fromChat(chatId));
-    intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, mediaRecord.isOutgoing());
-    intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, false);
-    context.startActivity(intent);
+    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    dcContext.openForViewOrShare(dcMsg.getId(), Intent.ACTION_VIEW);
   }
 
   @Override
@@ -243,69 +238,3 @@ public class ProfileDocumentsFragment
     }
   }
 }
-
-
-/*
-public class ProfileDocumentsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
-
-  public static final String LOCALE_EXTRA  = "locale_extra";
-  public static final String ADDRESS_EXTRA = "address";
-
-  protected RecyclerView recyclerView;
-  protected TextView noMedia;
-
-  protected Recipient recipient;
-  protected Locale locale;
-
-  @Override
-  public void onCreate(Bundle bundle) {
-    super.onCreate(bundle);
-
-    Locale       locale       = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
-    if (locale == null)       throw new AssertionError();
-    this.locale       = locale;
-
-    String       address      = getArguments().getString(ADDRESS_EXTRA);
-    if (address == null)      throw new AssertionError();
-    this.recipient    = Recipient.from(getContext(), Address.fromSerialized(address));
-
-    getLoaderManager().initLoader(0, null, this);
-  }
-
-  @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    View                  view    = inflater.inflate(R.layout.profile_documents_fragment, container, false);
-    ProfileDocumentsAdapter adapter = new ProfileDocumentsAdapter(getContext(), null, locale);
-
-    this.recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
-    this.noMedia       = ViewUtil.findById(view, R.id.no_documents);
-
-    this.recyclerView.setAdapter(adapter);
-    this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-    this.recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, false, true));
-    this.recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-
-    return view;
-  }
-
-  @Override
-  public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-    return new ThreadMediaLoader(getContext(), recipient.getAddress(), false);
-  }
-
-  @Override
-  public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-    //((CursorRecyclerViewAdapter)this.recyclerView.getAdapter()).changeCursor(data);
-    getActivity().invalidateOptionsMenu();
-
-    // TODO: onLoadFinished() should no take a cursor but forward the loaded messages in a way
-    this.noMedia.setVisibility(data.getCount() > 0 ? View.GONE : View.VISIBLE);
-  }
-
-  @Override
-  public void onLoaderReset(Loader<Cursor> loader) {
-    ((CursorRecyclerViewAdapter)this.recyclerView.getAdapter()).changeCursor(null);
-    getActivity().invalidateOptionsMenu();
-  }
-}
-*/
