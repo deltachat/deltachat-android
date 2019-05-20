@@ -119,7 +119,7 @@ public class MessageNotifier {
     }
 
     if (Prefs.isInChatNotifications(instance.context) && instance.soundOutLoaded) {
-      instance.soundPool.play(instance.soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
+      instance.soundPool.play(instance.soundOut, 1.0f, 1.0f, 1, 0, 1.0f);
     }
   }
 
