@@ -23,11 +23,8 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.media.AudioAttributes;
 import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
+import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.service.notification.StatusBarNotification;
@@ -41,6 +38,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -48,17 +46,11 @@ import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
-import org.thoughtcrime.securesms.util.Util;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import me.leolin.shortcutbadger.ShortcutBadger;
 
@@ -81,12 +73,55 @@ public class MessageNotifier {
   private static final int    PENDING_MESSAGES_ID       = 1111;
   private static final String NOTIFICATION_GROUP        = "messages";
   private static final long   MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(20);
-  private static final long   DESKTOP_ACTIVITY_PERIOD   = TimeUnit.MINUTES.toMillis(1);
+  private static final long   STARTUP_SILENCE_DELTA     = TimeUnit.MINUTES.toMillis(1);
+  private static final long   INITIAL_STARTUP           = System.currentTimeMillis();
 
-  private volatile static       long               visibleChatId                = NO_VISIBLE_CHAT_ID;
-  private volatile static       long               lastDesktopActivityTimestamp = -1;
-  private volatile static       long               lastAudibleNotification      = -1;
-  private          static final CancelableExecutor executor                     = new CancelableExecutor();
+  private volatile static long               visibleChatId                = NO_VISIBLE_CHAT_ID;
+  private volatile static long               lastAudibleNotification      = -1;
+
+  private final           SoundPool          soundPool;
+  private final           int                soundIn;
+  private final           int                soundOut;
+  private                 boolean            soundInLoaded;
+  private                 boolean            soundOutLoaded;
+  private                 Context            context;
+
+  private static MessageNotifier instance;
+
+  private MessageNotifier(Context context) {
+    this.context = context.getApplicationContext();
+    soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
+    soundIn = soundPool.load(context, R.raw.sound_in, 1);
+    soundOut = soundPool.load(context, R.raw.sound_out, 1);
+
+    soundPool.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
+      if (status == 0) {
+        if (sampleId == soundIn) {
+          soundInLoaded = true;
+        } else if (sampleId == soundOut) {
+          soundOutLoaded = true;
+        }
+      }
+    });
+  }
+
+  public static MessageNotifier init(Context context) {
+    if (instance == null) {
+      instance = new MessageNotifier(context);
+    }
+    return instance;
+  }
+
+  public static void playSendSound() {
+    if (instance == null) {
+      Log.w(TAG, "Message notifier not initialized. Cannot play sounds");
+      return;
+    }
+
+    if (Prefs.isInChatNotifications(instance.context) && instance.soundOutLoaded) {
+      instance.soundPool.play(instance.soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
+    }
+  }
 
   private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
 
@@ -101,10 +136,6 @@ public class MessageNotifier {
         }
       }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
-  }
-
-  public static void cancelDelayedNotifications() {
-    executor.cancel();
   }
 
   private static void cancelActiveNotifications(@NonNull Context context) {
@@ -168,12 +199,7 @@ public class MessageNotifier {
 
   public static void updateNotification(@NonNull Context context, int chatId)
   {
-    if (System.currentTimeMillis() - lastDesktopActivityTimestamp < DESKTOP_ACTIVITY_PERIOD) {
-      Log.w(TAG, "Scheduling delayed notification...");
-      executor.execute(new DelayedNotification(context, chatId));
-    } else {
-      updateNotification(context, chatId, true);
-    }
+    updateNotification(context, chatId, true);
   }
 
   public static void updateNotification(@NonNull  Context context,
@@ -193,12 +219,16 @@ public class MessageNotifier {
       return;
     }
 
+    removePendingNotifications(chatId);
     if (isVisible && signal) {
       sendInChatNotification(context, chatId);
-    } else if (visibleChatId != NO_VISIBLE_CHAT_ID) {
-      pendingNotifications.push(new Pair<>(chatId, signal));
-    } else {
+    } else if (ForegroundDetector.getInstance().isBackground()) {
       updateNotification(context, signal, 0);
+    } else if (isVisible || visibleChatId == NO_VISIBLE_CHAT_ID) {
+      updateNotification(context, false, 0);
+    } else {
+      //different chat is visible
+      pendingNotifications.push(new Pair<>(chatId, signal));
     }
   }
 
@@ -220,10 +250,13 @@ public class MessageNotifier {
 
     NotificationState notificationState = constructNotificationState(dcContext, freshMessages);
 
-    if (signal && (System.currentTimeMillis() - lastAudibleNotification) < MIN_AUDIBLE_PERIOD_MILLIS) {
+    long now = System.currentTimeMillis();
+    if (signal && (
+            (now - INITIAL_STARTUP) < STARTUP_SILENCE_DELTA ||
+                    (now - lastAudibleNotification) < MIN_AUDIBLE_PERIOD_MILLIS)) {
       signal = false;
     } else if (signal) {
-      lastAudibleNotification = System.currentTimeMillis();
+      lastAudibleNotification = now;
     }
 
     if (notificationState.hasMultipleChats()) {
@@ -248,7 +281,8 @@ public class MessageNotifier {
 
   private static void sendSingleChatNotification(@NonNull  Context context,
                                                  @NonNull  NotificationState notificationState,
-                                                 boolean signal, boolean bundled)
+                                                 boolean signal,
+                                                 boolean bundled)
   {
     if (notificationState.getNotifications().isEmpty()) {
       if (!bundled) cancelActiveNotifications(context);
@@ -278,10 +312,10 @@ public class MessageNotifier {
     builder.addAndroidAutoAction(notificationState.getAndroidAutoReplyIntent(context, notifications.get(0).getRecipient()),
                                  notificationState.getAndroidAutoHeardIntent(context, notificationId), notifications.get(0).getTimestamp());
 
-    ListIterator<NotificationItem> iterator = notifications.listIterator(notifications.size());
+    ListIterator<NotificationItem> iterator = notifications.listIterator();
 
-    while(iterator.hasPrevious()) {
-      NotificationItem item = iterator.previous();
+    while(iterator.hasNext()) {
+      NotificationItem item = iterator.next();
       builder.addMessageBody(item.getRecipient(), item.getIndividualRecipient(), item.getText());
     }
 
@@ -338,44 +372,35 @@ public class MessageNotifier {
     NotificationManagerCompat.from(context).notify(SUMMARY_NOTIFICATION_ID, builder.build());
   }
 
+  private static void removePendingNotifications(int chatId) {
+    for (Pair<Integer, Boolean> pendingNotification : pendingNotifications) {
+      if (pendingNotification.first() == chatId) {
+        pendingNotifications.remove(pendingNotification);
+        break;
+      }
+    }
+  }
+
   private static void sendInChatNotification(Context context, int chatId) {
+    if (instance == null) {
+      Log.w(TAG, "Message notifier not initialized. Cannot play sounds");
+      return;
+    }
+
     if (!Prefs.isInChatNotifications(context) ||
         ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
     {
       return;
     }
 
-    if( Prefs.isChatMuted(context, chatId) ) {
+    if(Prefs.isChatMuted(context, chatId)) {
       Log.d(TAG, "chat muted");
       return;
     }
 
-    Uri uri = Prefs.getChatRingtone(context, chatId);
-    if (uri == null) {
-      uri = Prefs.getNotificationRingtone(context);
+    if (instance.soundInLoaded) {
+      instance.soundPool.play(instance.soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
     }
-
-    if (uri.toString().isEmpty()) {
-      Log.d(TAG, "ringtone uri is empty");
-      return;
-    }
-
-    Ringtone ringtone = RingtoneManager.getRingtone(context, uri);
-
-    if (ringtone == null) {
-      Log.w(TAG, "ringtone is null");
-      return;
-    }
-
-    if (Build.VERSION.SDK_INT >= 21) {
-      ringtone.setAudioAttributes(new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
-                                                               .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
-                                                               .build());
-    } else {
-      ringtone.setStreamType(AudioManager.STREAM_NOTIFICATION);
-    }
-
-    ringtone.play();
   }
 
   private static NotificationState constructNotificationState(@NonNull ApplicationDcContext dcContext,
@@ -386,6 +411,9 @@ public class MessageNotifier {
 
     for(int msgId : freshMessages) {
       DcMsg record = dcContext.getMsg(msgId);
+      if (record.isInfo()) {
+        continue;
+      }
       int          id                    = record.getId();
       boolean      mms                   = record.isMms() || record.isMediaPending();
       int          chatId                = record.getChatId();
@@ -472,77 +500,6 @@ public class MessageNotifier {
           return null;
         }
       }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-  }
-
-  private static class DelayedNotification implements Runnable {
-
-    private static final long DELAY = TimeUnit.SECONDS.toMillis(5);
-
-    private final AtomicBoolean canceled = new AtomicBoolean(false);
-
-    private final Context context;
-    private final int     chatId;
-    private final long    delayUntil;
-
-    private DelayedNotification(Context context, int chatId) {
-      this.context    = context;
-      this.chatId   = chatId;
-      this.delayUntil = System.currentTimeMillis() + DELAY;
-    }
-
-    @Override
-    public void run() {
-      MessageNotifier.updateNotification(context);
-
-      long delayMillis = delayUntil - System.currentTimeMillis();
-      Log.w(TAG, "Waiting to notify: " + delayMillis);
-
-      if (delayMillis > 0) {
-        Util.sleep(delayMillis);
-      }
-
-      if (!canceled.get()) {
-        Log.w(TAG, "Not canceled, notifying...");
-        MessageNotifier.updateNotification(context, chatId, true);
-        MessageNotifier.cancelDelayedNotifications();
-      } else {
-        Log.w(TAG, "Canceled, not notifying...");
-      }
-    }
-
-    public void cancel() {
-      canceled.set(true);
-    }
-  }
-
-  private static class CancelableExecutor {
-
-    private final Executor                 executor = Executors.newSingleThreadExecutor();
-    private final Set<DelayedNotification> tasks    = new HashSet<>();
-
-    public void execute(final DelayedNotification runnable) {
-      synchronized (tasks) {
-        tasks.add(runnable);
-      }
-
-      Runnable wrapper = () -> {
-        runnable.run();
-
-        synchronized (tasks) {
-          tasks.remove(runnable);
-        }
-      };
-
-      executor.execute(wrapper);
-    }
-
-    public void cancel() {
-      synchronized (tasks) {
-        for (DelayedNotification task : tasks) {
-          task.cancel();
-        }
-      }
     }
   }
 }

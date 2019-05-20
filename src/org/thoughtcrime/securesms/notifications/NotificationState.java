@@ -34,7 +34,7 @@ public class NotificationState {
   }
 
   public void addNotification(NotificationItem item) {
-    notifications.addFirst(item);
+    notifications.add(item);
 
     if (chats.contains(item.getChatId())) {
       chats.remove(item.getChatId());

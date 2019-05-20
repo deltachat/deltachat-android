@@ -10,18 +10,17 @@ import android.support.multidex.MultiDexApplication;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
-import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
+import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
+import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
-import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 //import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication implements DefaultLifecycleObserver {
@@ -54,6 +53,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeJobManager();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
+    MessageNotifier.init(this);
 
     dcLocationManager = new DcLocationManager(this);
     try {
@@ -106,12 +106,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
         return false;
       }
     });
-
-    // in five seconds, the system should be up and ready so we can start issuing notifications.
-
-    Util.runOnBackgroundDelayed(() -> {
-      MessageNotifier.updateNotification(dcContext.context);
-      }, 5000);
   }
 
   private void initializeJobManager() {
