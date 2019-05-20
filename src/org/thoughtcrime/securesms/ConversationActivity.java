@@ -1426,6 +1426,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       else {
         processComposeControls(ACTION_SEND_OUT);
+        MessageNotifier.playSendSound();
       }
     }
 
