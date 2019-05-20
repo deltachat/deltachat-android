@@ -2,8 +2,6 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/pref_messages">
-
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                             android:key="pref_key_enable_notifications"
                             android:title="@string/pref_notifications"
@@ -67,6 +65,5 @@
                 android:defaultValue="1"
                 android:entries="@array/pref_notification_priority_entries"
                 android:entryValues="@array/pref_notification_priority_values"/>
-    </PreferenceCategory>
 
 </PreferenceScreen>
