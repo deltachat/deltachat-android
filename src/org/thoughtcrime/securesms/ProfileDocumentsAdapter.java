@@ -16,6 +16,7 @@ import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader.BucketedThreadMedia;
+import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.util.DateUtils;
@@ -101,7 +102,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.documentView.setVisibility(View.GONE);
 
       viewHolder.audioView.setVisibility(View.VISIBLE);
-
+      viewHolder.audioView.setAudio((AudioSlide)slide, dcMsg.getDuration());
     }
     else if (slide != null && slide.hasDocument()) {
       viewHolder.documentView.setVisibility(View.VISIBLE);

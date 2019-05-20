@@ -3,8 +3,6 @@ package org.thoughtcrime.securesms.components;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
@@ -33,11 +31,11 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   private static final String TAG = AudioView.class.getSimpleName();
 
   private final @NonNull AnimatingToggle controlToggle;
-  private final @NonNull ViewGroup       container;
   private final @NonNull ImageView       playButton;
   private final @NonNull ImageView       pauseButton;
   private final @NonNull SeekBar         seekBar;
   private final @NonNull TextView        timestamp;
+  private final @NonNull TextView        title;
 
   private @Nullable AudioSlidePlayer   audioSlidePlayer;
   private int backwardsCounter;
@@ -54,12 +52,12 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     super(context, attrs, defStyleAttr);
     inflate(context, R.layout.audio_view, this);
 
-    this.container        = (ViewGroup) findViewById(R.id.audio_widget_container);
     this.controlToggle    = (AnimatingToggle) findViewById(R.id.control_toggle);
     this.playButton       = (ImageView) findViewById(R.id.play);
     this.pauseButton      = (ImageView) findViewById(R.id.pause);
     this.seekBar          = (SeekBar) findViewById(R.id.seek);
     this.timestamp        = (TextView) findViewById(R.id.timestamp);
+    this.title            = (TextView) findViewById(R.id.title);
 
     this.timestamp.setText("00:00");
 
@@ -79,11 +77,18 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
 
   public void setAudio(final @NonNull AudioSlide audio, int duration)
   {
-
     controlToggle.displayQuick(playButton);
     seekBar.setEnabled(true);
-    this.audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, this);
-    this.timestamp.setText(DateUtils.getFormatedDuration(duration));
+    audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, this);
+    timestamp.setText(DateUtils.getFormatedDuration(duration));
+
+    if(audio.asAttachment().isVoiceNote()) {
+      title.setVisibility(View.GONE);
+    }
+    else {
+      title.setText(audio.getFileName().get());
+      title.setVisibility(View.VISIBLE);
+    }
   }
 
   public void setDuration(int duration) {
