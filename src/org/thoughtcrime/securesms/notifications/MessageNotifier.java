@@ -23,11 +23,8 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.media.AudioAttributes;
 import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
+import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.service.notification.StatusBarNotification;
@@ -79,8 +76,52 @@ public class MessageNotifier {
   private static final long   STARTUP_SILENCE_DELTA     = TimeUnit.MINUTES.toMillis(1);
   private static final long   INITIAL_STARTUP           = System.currentTimeMillis();
 
-  private volatile static       long               visibleChatId                = NO_VISIBLE_CHAT_ID;
-  private volatile static       long               lastAudibleNotification      = -1;
+  private volatile static long               visibleChatId                = NO_VISIBLE_CHAT_ID;
+  private volatile static long               lastAudibleNotification      = -1;
+
+  private final           SoundPool          soundPool;
+  private final           int                soundIn;
+  private final           int                soundOut;
+  private                 boolean            soundInLoaded;
+  private                 boolean            soundOutLoaded;
+  private                 Context            context;
+
+  private static MessageNotifier instance;
+
+  private MessageNotifier(Context context) {
+    this.context = context.getApplicationContext();
+    soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
+    soundIn = soundPool.load(context, R.raw.sound_in, 1);
+    soundOut = soundPool.load(context, R.raw.sound_out, 1);
+
+    soundPool.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
+      if (status == 0) {
+        if (sampleId == soundIn) {
+          soundInLoaded = true;
+        } else if (sampleId == soundOut) {
+          soundOutLoaded = true;
+        }
+      }
+    });
+  }
+
+  public static MessageNotifier init(Context context) {
+    if (instance == null) {
+      instance = new MessageNotifier(context);
+    }
+    return instance;
+  }
+
+  public static void playSendSound() {
+    if (instance == null) {
+      Log.w(TAG, "Message notifier not initialized. Cannot play sounds");
+      return;
+    }
+
+    if (Prefs.isInChatNotifications(instance.context)) {
+      instance.soundPool.play(instance.soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
+    }
+  }
 
   private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
 
@@ -341,6 +382,11 @@ public class MessageNotifier {
   }
 
   private static void sendInChatNotification(Context context, int chatId) {
+    if (instance == null) {
+      Log.w(TAG, "Message notifier not initialized. Cannot play sounds");
+      return;
+    }
+
     if (!Prefs.isInChatNotifications(context) ||
         ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
     {
@@ -352,32 +398,9 @@ public class MessageNotifier {
       return;
     }
 
-    Uri uri = Prefs.getChatRingtone(context, chatId);
-    if (uri == null) {
-      uri = Prefs.getNotificationRingtone(context);
+    if (instance.soundInLoaded) {
+      instance.soundPool.play(instance.soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
     }
-
-    if (uri.toString().isEmpty()) {
-      Log.d(TAG, "ringtone uri is empty");
-      return;
-    }
-
-    Ringtone ringtone = RingtoneManager.getRingtone(context, uri);
-
-    if (ringtone == null) {
-      Log.w(TAG, "ringtone is null");
-      return;
-    }
-
-    if (Build.VERSION.SDK_INT >= 21) {
-      ringtone.setAudioAttributes(new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
-                                                               .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
-                                                               .build());
-    } else {
-      ringtone.setStreamType(AudioManager.STREAM_NOTIFICATION);
-    }
-
-    ringtone.play();
   }
 
   private static NotificationState constructNotificationState(@NonNull ApplicationDcContext dcContext,

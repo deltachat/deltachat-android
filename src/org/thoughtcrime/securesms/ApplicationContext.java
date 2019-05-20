@@ -53,6 +53,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeJobManager();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
+    MessageNotifier.init(this);
 
     dcLocationManager = new DcLocationManager(this);
     try {
