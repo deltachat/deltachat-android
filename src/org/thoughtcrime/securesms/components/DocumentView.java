@@ -53,7 +53,6 @@ public class DocumentView extends FrameLayout {
 
   public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
-
     this.documentSlide = documentSlide;
 
     this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));

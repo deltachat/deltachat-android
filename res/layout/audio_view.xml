@@ -63,7 +63,7 @@
                           android:layout_marginLeft="10dp"
                           android:layout_marginRight="10dp"
                           android:textAppearance="?android:attr/textAppearanceSmall"
-                          android:textColor="?conversation_item_outgoing_text_secondary_color"
+                          android:textColor="@color/audio_icon"
                           android:textSize="@dimen/conversation_item_date_text_size"
                           style="@style/Signal.Text.Preview"
                           android:fontFamily="sans-serif-medium"

@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,14 @@ import android.widget.TextView;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter;
 
+import org.thoughtcrime.securesms.components.AudioView;
+import org.thoughtcrime.securesms.components.DocumentView;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader.BucketedThreadMedia;
-import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.Slide;
+import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.util.Collection;
@@ -26,19 +32,22 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
   private static final String TAG = ProfileDocumentsAdapter.class.getSimpleName();
 
   private final Context             context;
-  private final GlideRequests       glideRequests;
   private final Locale              locale;
   private final ItemClickListener   itemClickListener;
-  private final Set<DcMsg>    selected;
+  private final Set<DcMsg>          selected;
 
   private  BucketedThreadMedia media;
 
   private static class ViewHolder extends StickyHeaderGridAdapter.ItemViewHolder {
-    View          selectedIndicator;
+    private final DocumentView documentView;
+    private final AudioView    audioView;
+    private final TextView     date;
 
-    ViewHolder(View v) {
+    public ViewHolder(View v) {
       super(v);
-      selectedIndicator = v.findViewById(R.id.selected_indicator);
+      documentView      = v.findViewById(R.id.document_view);
+      audioView         = v.findViewById(R.id.audio_view);
+      date              = v.findViewById(R.id.date);
     }
   }
 
@@ -52,13 +61,11 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
   }
 
   ProfileDocumentsAdapter(@NonNull Context context,
-                        @NonNull GlideRequests glideRequests,
                         BucketedThreadMedia media,
                         Locale locale,
                         ItemClickListener clickListener)
   {
     this.context           = context;
-    this.glideRequests     = glideRequests;
     this.locale            = locale;
     this.media             = media;
     this.itemClickListener = clickListener;
@@ -85,13 +92,33 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
   }
 
   @Override
-  public void onBindItemViewHolder(ItemViewHolder viewHolder, int section, int offset) {
-    DcMsg         mediaRecord       = media.get(section, offset);
-    View          selectedIndicator = ((ViewHolder)viewHolder).selectedIndicator;
-    Slide         slide             = MediaUtil.getSlideForMsg(context, mediaRecord);
+  public void onBindItemViewHolder(ItemViewHolder itemViewHolder, int section, int offset) {
+    ViewHolder    viewHolder        = ((ViewHolder)itemViewHolder);
+    DcMsg         dcMsg             = media.get(section, offset);
+    Slide         slide             = MediaUtil.getSlideForMsg(context, dcMsg);
 
+    if (slide != null && slide.hasAudio()) {
+      viewHolder.documentView.setVisibility(View.GONE);
 
-    selectedIndicator.setVisibility(selected.contains(mediaRecord) ? View.VISIBLE : View.GONE);
+      viewHolder.audioView.setVisibility(View.VISIBLE);
+
+    }
+    else if (slide != null && slide.hasDocument()) {
+      viewHolder.documentView.setVisibility(View.VISIBLE);
+      viewHolder.documentView.setDocument((DocumentSlide)slide);
+      viewHolder.documentView.setOnClickListener(view -> {
+        ApplicationDcContext dcContext = DcHelper.getContext(context);
+        dcContext.openForViewOrShare(dcMsg.getId(), Intent.ACTION_VIEW);
+      });
+
+      viewHolder.audioView.setVisibility(View.GONE);
+    }
+    else {
+      viewHolder.documentView.setVisibility(View.GONE);
+      viewHolder.audioView.setVisibility(View.GONE);
+    }
+
+    viewHolder.date.setText(DateUtils.getBriefRelativeTimeSpanString(context, locale, dcMsg.getTimestamp()));
   }
 
   @Override

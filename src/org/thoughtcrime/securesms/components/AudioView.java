@@ -74,13 +74,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
       this.pauseButton.setBackground(context.getDrawable(R.drawable.ic_circle_fill_white_48dp));
     }
 
-    if (attrs != null) {
-      TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.AudioView, 0, 0);
-      setTint(typedArray.getColor(R.styleable.AudioView_foregroundTintColor, Color.WHITE),
-              typedArray.getColor(R.styleable.AudioView_backgroundTintColor, Color.WHITE));
-      container.setBackgroundColor(typedArray.getColor(R.styleable.AudioView_widgetBackground, Color.TRANSPARENT));
-      typedArray.recycle();
-    }
+    setTint(getContext().getResources().getColor(R.color.audio_icon));
   }
 
   public void setAudio(final @NonNull AudioSlide audio, int duration)
@@ -166,18 +160,15 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     }
   }
 
-  public void setTint(int foregroundTint, int backgroundTint) {
+  public void setTint(int foregroundTint) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       this.playButton.setBackgroundTintList(ColorStateList.valueOf(foregroundTint));
-      this.playButton.setImageTintList(ColorStateList.valueOf(backgroundTint));
       this.pauseButton.setBackgroundTintList(ColorStateList.valueOf(foregroundTint));
-      this.pauseButton.setImageTintList(ColorStateList.valueOf(backgroundTint));
     } else {
       this.playButton.setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
       this.pauseButton.setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
     }
 
-    this.timestamp.setTextColor(foregroundTint);
     this.seekBar.getProgressDrawable().setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

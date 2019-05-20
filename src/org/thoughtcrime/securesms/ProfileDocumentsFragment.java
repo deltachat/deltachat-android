@@ -73,7 +73,6 @@ public class ProfileDocumentsFragment
     this.gridManager  = new StickyHeaderGridLayoutManager(1);
 
     this.recyclerView.setAdapter(new ProfileDocumentsAdapter(getContext(),
-        GlideApp.with(this),
         new BucketedThreadMediaLoader.BucketedThreadMedia(getContext()),
         locale,
         this));
