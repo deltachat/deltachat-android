@@ -38,25 +38,27 @@
 
         <org.thoughtcrime.securesms.components.AudioView
                 android:id="@+id/attachment_audio"
-                android:layout_width="210dp"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                app:widgetBackground="?conversation_item_incoming_bubble_color"
-                app:foregroundTintColor="@color/grey_500"
-                app:backgroundTintColor="?conversation_item_incoming_bubble_color"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="8dp"
+                app:foregroundTintColor="@color/audio_icon"
+                app:backgroundTintColor="?conversation_item_incoming_bubble_color"
+                android:background="@drawable/message_bubble_background_sent_alone"/>
 
         <org.thoughtcrime.securesms.components.DocumentView
-            android:id="@+id/attachment_document"
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingLeft="@dimen/message_bubble_horizontal_padding"
-            android:paddingRight="@dimen/message_bubble_horizontal_padding"
-            android:background="@drawable/message_bubble_background_sent_alone"/>
+                android:id="@+id/attachment_document"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="8dp"
+                android:background="@drawable/message_bubble_background_sent_alone"/>
 
     </org.thoughtcrime.securesms.components.RemovableEditableMediaView>
 
