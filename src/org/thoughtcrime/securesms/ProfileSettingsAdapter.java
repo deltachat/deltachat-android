@@ -106,7 +106,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   @Override
   public ProfileSettingsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == ItemData.TYPE_MEMBER) {
-      return new ViewHolder(li.inflate(R.layout.contact_selection_list_item, parent, false));
+      ContactSelectionListItem item = (ContactSelectionListItem)li.inflate(R.layout.contact_selection_list_item, parent, false);
+      item.setNoHeaderPadding();
+      return new ViewHolder(item);
     }
     return null;
   }

@@ -14,6 +14,7 @@
     <dimen name="transport_selection_popup_xoff">2dp</dimen>
     <dimen name="transport_selection_popup_yoff">2dp</dimen>
     <dimen name="contact_photo_target_size">64dp</dimen>
+    <dimen name="contact_list_normal_padding">16dp</dimen>
 
     <dimen name="message_corner_radius">12dp</dimen>
     <dimen name="message_bubble_corner_radius">2dp</dimen>
