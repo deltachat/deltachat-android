@@ -56,7 +56,7 @@ public class ProfileSettingsFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.profile_settings_fragment, container, false);
-    adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), null, false, false);
+    adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), null, false);
 
     recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
     recyclerView.setAdapter(adapter);

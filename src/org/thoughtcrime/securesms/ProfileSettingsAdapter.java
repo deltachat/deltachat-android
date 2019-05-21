@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -23,43 +21,45 @@ import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapte
 import org.thoughtcrime.securesms.util.Util;
 
 import java.lang.ref.SoftReference;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
 {
-  private final static String TAG = ProfileSettingsAdapter.class.getSimpleName();
-
-  private static final int VIEW_TYPE_CONTACT = 0;
-  private static final int VIEW_TYPE_DIVIDER = 1;
-
-  private final static int STYLE_ATTRIBUTES[] = new int[]{R.attr.contact_selection_push_user,
-                                                          R.attr.contact_selection_lay_user};
-
   private static final int MAX_CACHE_SIZE = 100;
-
   private final Map<Integer,SoftReference<DcContact>> recordCache =
-          Collections.synchronizedMap(new LRUCache<Integer,SoftReference<DcContact>>(MAX_CACHE_SIZE));
+          Collections.synchronizedMap(new LRUCache<>(MAX_CACHE_SIZE));
 
   private final @NonNull Context              context;
   private final @NonNull ApplicationDcContext dcContext;
-  private @NonNull int[]                      dcContactList = new int[0];
+  private @NonNull ArrayList<ItemData>        itemData = new ArrayList<>();
   private final boolean                       multiSelect;
-  private final boolean                       longPressSelect;
   private final LayoutInflater                li;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
-  private final Set<String>                   selectedContacts = new HashSet<>(); // TODO: maybe better use contact-id here
-  private final SparseIntArray                actionModeSelection = new SparseIntArray();
+
+  static class ItemData {
+    static final int TYPE_MEMBER = 0;
+    static final int TYPE_SHARED_CHAT = 1;
+    int type;
+    int contactId;
+    int chatId;
+    int settingsId;
+
+    ItemData(int type, int contactId, int chatId, int settingsId) {
+      this.type = type;
+      this.contactId = contactId;
+      this.chatId = chatId;
+      this.settingsId = settingsId;
+    }
+  };
 
   public ProfileSettingsAdapter(@NonNull  Context context,
                                 @NonNull  GlideRequests glideRequests,
                                 @Nullable ItemClickListener clickListener,
-                                boolean multiSelect,
-                                boolean longPressSelect)
+                                boolean multiSelect)
   {
     super();
     this.context       = context;
@@ -68,16 +68,15 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     this.glideRequests = glideRequests;
     this.multiSelect   = multiSelect;
     this.clickListener = clickListener;
-    this.longPressSelect = longPressSelect;
   }
 
   @Override
   public int getItemCount() {
-    return dcContactList.length;
+    return itemData.size();
   }
 
   private @NonNull DcContact getContact(int position) {
-    if(position<0 || position>=dcContactList.length) {
+    if(position<0 || position>=itemData.size() || itemData.get(position).type!=ItemData.TYPE_MEMBER) {
       return new DcContact(0);
     }
 
@@ -89,29 +88,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       }
     }
 
-    final DcContact fromDb = dcContext.getContact(dcContactList[position]);
+    final DcContact fromDb = dcContext.getContact(itemData.get(position).contactId);
     recordCache.put(position, new SoftReference<>(fromDb));
     return fromDb;
-  }
-
-    public void resetActionModeSelection() {
-      actionModeSelection.clear();
-      notifyDataSetChanged();
-    }
-
-    public void selectAll() {
-        actionModeSelection.clear();
-        for(int index = 0; index < dcContactList.length; index++) {
-          int value = dcContactList[index];
-          if (value > 0) {
-            actionModeSelection.put(index, value);
-          }
-        }
-      notifyDataSetChanged();
-    }
-
-  private boolean isActionModeEnabled() {
-    return actionModeSelection.size() != 0;
   }
 
   public abstract static class ViewHolder extends RecyclerView.ViewHolder {
@@ -123,7 +102,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     public abstract void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     public abstract void setChecked(boolean checked);
-    public abstract void setSelected(boolean enabled);
     public abstract void setEnabled(boolean enabled);
   }
 
@@ -134,19 +112,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       super(itemView);
       itemView.setOnClickListener(view -> {
         if (clickListener != null) {
-          if (isActionModeEnabled()) {
-            toggleSelection();
-            clickListener.onItemClick(getView(), true);
-          } else {
             clickListener.onItemClick(getView(), false);
-          }
         }
       });
       itemView.setOnLongClickListener(view -> {
           if (clickListener != null) {
             int contactId = getContactId(getAdapterPosition());
             if (contactId > 0) {
-              toggleSelection();
               clickListener.onItemLongClick(getView());
             }
           }
@@ -155,22 +127,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
 
     private int getContactId(int adapterPosition) {
-      return ProfileSettingsAdapter.this.dcContactList[adapterPosition];
-    }
-
-    private void toggleSelection() {
-      if (!longPressSelect) {
-        return;
-      }
-      int adapterPosition = getAdapterPosition();
-      int contactId = getContactId(adapterPosition);
-      boolean enabled = actionModeSelection.indexOfKey(adapterPosition) > -1;
-      if (enabled) {
-        ProfileSettingsAdapter.this.actionModeSelection.delete(adapterPosition);
-        } else {
-        ProfileSettingsAdapter.this.actionModeSelection.put(adapterPosition, contactId);
-      }
-      notifyDataSetChanged();
+      return itemData.get(adapterPosition).contactId;
     }
 
     public ContactSelectionListItem getView() {
@@ -192,43 +149,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
 
     @Override
-    public void setSelected(boolean enabled) {
-      getView().setSelected(enabled);
-    }
-
-    @Override
     public void setEnabled(boolean enabled) {
       getView().setEnabled(enabled);
-    }
-  }
-
-  public static class DividerViewHolder extends ViewHolder {
-
-    private final TextView label;
-
-    DividerViewHolder(View itemView) {
-      super(itemView);
-      this.label = itemView.findViewById(R.id.label);
-    }
-
-    @Override
-    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled) {
-      this.label.setText(name);
-    }
-
-    @Override
-    public void unbind(@NonNull GlideRequests glideRequests) {}
-
-    @Override
-    public void setChecked(boolean checked) {}
-
-    @Override
-    public void setSelected(boolean enabled) {
-    }
-
-    @Override
-    public void setEnabled(boolean enabled) {
-
     }
   }
 
@@ -240,17 +162,16 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   @Override
   public ProfileSettingsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    if (viewType == VIEW_TYPE_CONTACT) {
+    if (viewType == ItemData.TYPE_MEMBER) {
       return new ContactViewHolder(li.inflate(R.layout.contact_selection_list_item, parent, false), clickListener);
-    } else {
-      return new DividerViewHolder(li.inflate(R.layout.contact_selection_list_divider, parent, false));
     }
+    return null;
   }
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
 
-    int id = dcContactList[i];
+    int id = itemData.get(i).contactId;
     DcContact dcContact = null;
     String label = null;
     String name;
@@ -272,32 +193,12 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
     ViewHolder holder = (ViewHolder) viewHolder;
     holder.unbind(glideRequests);
-    boolean enabled = true;
-    if (dcContact == null) {
-      holder.setSelected(false);
-      holder.setEnabled(!isActionModeEnabled());
-      if (isActionModeEnabled()) {
-        enabled = false;
-      }
-    } else {
-      boolean selected = actionModeSelection.indexOfValue(id) > -1;
-      holder.setSelected(selected);
-    }
-    holder.bind(glideRequests, id, dcContact, name, addr, label, itemMultiSelect, enabled);
-    holder.setChecked(selectedContacts.contains(addr));
+    holder.bind(glideRequests, id, dcContact, name, addr, label, itemMultiSelect, true);
   }
 
   @Override
   public int getItemViewType(int i) {
-    return VIEW_TYPE_CONTACT;
-  }
-
-  public Set<String> getSelectedContacts() {
-    return selectedContacts;
-  }
-
-  public SparseIntArray getActionModeSelection() {
-    return actionModeSelection;
+    return itemData.get(i).type;
   }
 
   public interface ItemClickListener {
@@ -339,16 +240,12 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
 
   public void changeData(@Nullable int[] contactList) {
+    itemData.clear();
     if(contactList!=null) {
-      final int additionalItems = 1;
-      dcContactList = new int[contactList.length + additionalItems];
-      dcContactList[0] = DcContact.DC_CONTACT_ID_NEW_CONTACT;
+      itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_NEW_CONTACT, 0, 0));
       for (int i = 0; i < contactList.length; i++) {
-        dcContactList[i + additionalItems] = contactList[i];
+        itemData.add(new ItemData(ItemData.TYPE_MEMBER, contactList[i], 0, 0));
       }
-    }
-    else {
-      dcContactList = new int[0];
     }
 
     recordCache.clear();
