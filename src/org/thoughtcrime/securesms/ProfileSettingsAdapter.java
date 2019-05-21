@@ -93,64 +93,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     return fromDb;
   }
 
-  public abstract static class ViewHolder extends RecyclerView.ViewHolder {
-
+  public static class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(View itemView) {
       super(itemView);
-    }
-
-    public abstract void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled);
-    public abstract void unbind(@NonNull GlideRequests glideRequests);
-    public abstract void setChecked(boolean checked);
-    public abstract void setEnabled(boolean enabled);
-  }
-
-  public class ContactViewHolder extends ViewHolder {
-
-    ContactViewHolder(@NonNull  final View itemView,
-                      @Nullable final ItemClickListener clickListener) {
-      super(itemView);
-      itemView.setOnClickListener(view -> {
-        if (clickListener != null) {
-            clickListener.onItemClick(getView(), false);
-        }
-      });
-      itemView.setOnLongClickListener(view -> {
-          if (clickListener != null) {
-            int contactId = getContactId(getAdapterPosition());
-            if (contactId > 0) {
-              clickListener.onItemLongClick(getView());
-            }
-          }
-          return true;
-      });
-    }
-
-    private int getContactId(int adapterPosition) {
-      return itemData.get(adapterPosition).contactId;
-    }
-
-    public ContactSelectionListItem getView() {
-      return (ContactSelectionListItem) itemView;
-    }
-
-    public void bind(@NonNull GlideRequests glideRequests, int type, DcContact contact, String name, String addr, String label, boolean multiSelect, boolean enabled) {
-      getView().set(glideRequests, type, contact, name, addr, label, multiSelect, enabled);
-    }
-
-    @Override
-    public void unbind(@NonNull GlideRequests glideRequests) {
-      getView().unbind(glideRequests);
-    }
-
-    @Override
-    public void setChecked(boolean checked) {
-      getView().setChecked(checked);
-    }
-
-    @Override
-    public void setEnabled(boolean enabled) {
-      getView().setEnabled(enabled);
     }
   }
 
@@ -163,37 +108,39 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   @Override
   public ProfileSettingsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == ItemData.TYPE_MEMBER) {
-      return new ContactViewHolder(li.inflate(R.layout.contact_selection_list_item, parent, false), clickListener);
+      return new ViewHolder(li.inflate(R.layout.contact_selection_list_item, parent, false));
     }
     return null;
   }
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
-
-    int id = itemData.get(i).contactId;
-    DcContact dcContact = null;
-    String label = null;
-    String name;
-    String addr = null;
-    boolean itemMultiSelect = multiSelect;
-
-    if (id == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
-      name = context.getString(R.string.group_add_members);
-      itemMultiSelect = false;
-    } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
-      name = context.getString(R.string.menu_new_group);
-    } else if (id == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
-      name = context.getString(R.string.qrshow_title);
-    } else {
-      dcContact = getContact(i);
-      name = dcContact.getDisplayName();
-      addr = dcContact.getAddr();
-    }
-
     ViewHolder holder = (ViewHolder) viewHolder;
-    holder.unbind(glideRequests);
-    holder.bind(glideRequests, id, dcContact, name, addr, label, itemMultiSelect, true);
+    if (holder.itemView instanceof ContactSelectionListItem) {
+      ContactSelectionListItem contactItem = (ContactSelectionListItem) holder.itemView;
+
+      int id = itemData.get(i).contactId;
+      DcContact dcContact = null;
+      String label = null;
+      String name;
+      String addr = null;
+      boolean itemMultiSelect = multiSelect;
+
+      if (id == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
+        name = context.getString(R.string.group_add_members);
+        itemMultiSelect = false;
+      } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
+        name = context.getString(R.string.menu_new_group);
+      } else if (id == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
+        name = context.getString(R.string.qrshow_title);
+      } else {
+        dcContact = getContact(i);
+        name = dcContact.getDisplayName();
+        addr = dcContact.getAddr();
+      }
+
+      contactItem.set(glideRequests, id, dcContact, name, addr, label, itemMultiSelect, true);
+    }
   }
 
   @Override
@@ -203,7 +150,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   public interface ItemClickListener {
     void onItemClick(ContactSelectionListItem item, boolean handleActionMode);
-
     void onItemLongClick(ContactSelectionListItem view);
   }
 

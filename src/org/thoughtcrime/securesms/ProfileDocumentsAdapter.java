@@ -40,14 +40,12 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
   private  BucketedThreadMedia media;
 
   private static class ViewHolder extends StickyHeaderGridAdapter.ItemViewHolder {
-    private final View         rowView;
     private final DocumentView documentView;
     private final AudioView    audioView;
     private final TextView     date;
 
     public ViewHolder(View v) {
       super(v);
-      rowView           = v;
       documentView      = v.findViewById(R.id.document_view);
       audioView         = v.findViewById(R.id.audio_view);
       date              = v.findViewById(R.id.date);
@@ -112,7 +110,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.documentView.setDocument((DocumentSlide)slide);
       viewHolder.documentView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.documentView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
-      viewHolder.rowView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
+      viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
 
       viewHolder.audioView.setVisibility(View.GONE);
     }
@@ -121,8 +119,8 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.audioView.setVisibility(View.GONE);
     }
 
-    viewHolder.rowView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
-    viewHolder.rowView.setSelected(selected.contains(dcMsg));
+    viewHolder.itemView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
+    viewHolder.itemView.setSelected(selected.contains(dcMsg));
 
     viewHolder.date.setText(DateUtils.getBriefRelativeTimeSpanString(context, locale, dcMsg.getTimestamp()));
   }
