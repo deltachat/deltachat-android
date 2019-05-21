@@ -184,7 +184,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       switch(tabId) {
         case TAB_SETTINGS:
           fragment = new ProfileSettingsFragment();
-          args.putString(ProfileSettingsFragment.ADDRESS_EXTRA, getRecipient().getAddress().serialize());
+          args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, dcChat==null? -1 : chatId);
+          args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, dcContact==null? -1 : contactId);
           args.putSerializable(ProfileSettingsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
