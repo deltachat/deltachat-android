@@ -14,9 +14,11 @@
     <TextView android:id="@+id/no_images"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:textSize="24sp"
+              android:textSize="20sp"
               android:gravity="center"
               android:visibility="gone"
-              android:text="@string/media_no_media_hint" />
+              android:padding="16dp"
+              android:lineSpacingMultiplier="1.3"
+              android:text="@string/tab_gallery_empty_hint" />
 
 </RelativeLayout>

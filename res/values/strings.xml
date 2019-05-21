@@ -250,11 +250,9 @@
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Links</string>
     <string name="tab_map">Map</string>
+    <string name="tab_gallery_empty_hint">Images and videos shared in this chat will be displayed here.</string>
+    <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
     <string name="media_preview">Media preview</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Documents</string>
-    <string name="media_no_media_hint">No media.</string>
-    <string name="media_no_documents_hint">No documents.</string>
 
 
     <!-- invite -->
@@ -656,6 +654,10 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Inbox zeeerrro</string>
     <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nYou\'re all caught up!</string>
+    <string name="media_tab_media">Media</string>
+    <string name="media_tab_documents">Documents</string>
+    <string name="media_no_media_hint">No media.</string>
+    <string name="media_no_documents_hint">No documents.</string>
 
 
 </resources>
