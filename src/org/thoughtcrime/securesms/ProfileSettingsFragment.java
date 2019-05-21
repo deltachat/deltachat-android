@@ -18,6 +18,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Locale;
@@ -56,18 +57,26 @@ public class ProfileSettingsFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.profile_settings_fragment, container, false);
-    adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), null, false);
+    adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), null);
 
     recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-    //this.recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, false, true));
-    //recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+    recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, false, true));
 
-    if (chatId>0) {
-      adapter.changeData(dcContext.getChatContacts(chatId));
-    }
+    update();
 
     return view;
+  }
+
+  private void update()
+  {
+    int[] memberlist = null;
+
+    if(dcChat.isGroup()) {
+      memberlist = dcContext.getChatContacts(chatId);
+    }
+
+    adapter.changeData(memberlist);
   }
 }

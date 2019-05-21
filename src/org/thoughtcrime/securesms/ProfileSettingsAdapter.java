@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
-import org.thoughtcrime.securesms.util.Util;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -35,7 +33,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private final @NonNull Context              context;
   private final @NonNull ApplicationDcContext dcContext;
   private @NonNull ArrayList<ItemData>        itemData = new ArrayList<>();
-  private final boolean                       multiSelect;
+  private int itemDataMemberCount;
   private final LayoutInflater                li;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
@@ -58,15 +56,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   public ProfileSettingsAdapter(@NonNull  Context context,
                                 @NonNull  GlideRequests glideRequests,
-                                @Nullable ItemClickListener clickListener,
-                                boolean multiSelect)
+                                @Nullable ItemClickListener clickListener)
   {
     super();
     this.context       = context;
     this.dcContext     = DcHelper.getContext(context);
     this.li            = LayoutInflater.from(context);
     this.glideRequests = glideRequests;
-    this.multiSelect   = multiSelect;
     this.clickListener = clickListener;
   }
 
@@ -100,8 +96,10 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   }
 
   static class HeaderViewHolder extends RecyclerView.ViewHolder {
+    TextView textView;
     HeaderViewHolder(View itemView) {
       super(itemView);
+      textView = itemView.findViewById(R.id.text);
     }
   }
 
@@ -124,22 +122,20 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       String label = null;
       String name;
       String addr = null;
-      boolean itemMultiSelect = multiSelect;
 
-      if (id == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
+      if (id == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
         name = context.getString(R.string.group_add_members);
-        itemMultiSelect = false;
-      } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
-        name = context.getString(R.string.menu_new_group);
-      } else if (id == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
+      }
+      else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
         name = context.getString(R.string.qrshow_title);
-      } else {
+      }
+      else {
         dcContact = getContact(i);
         name = dcContact.getDisplayName();
         addr = dcContact.getAddr();
       }
 
-      contactItem.set(glideRequests, id, dcContact, name, addr, label, itemMultiSelect, true);
+      contactItem.set(glideRequests, id, dcContact, name, addr, label, false, true);
     }
   }
 
@@ -155,42 +151,38 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   @Override
   public long getHeaderId(int position) {
-    if (position < 0 || position >= getItemCount()) {
-      return -1;
-    }
-
-    return Util.hashCode(getHeaderString(position));
-  }
-
-  private @NonNull String getHeaderString(int position) {
-    DcContact dcContact = getContact(position);
-    String name = dcContact.getDisplayName();
-    if (!TextUtils.isEmpty(name)) {
-      String firstChar = name.trim().substring(0, 1).toUpperCase();
-      if (Character.isLetterOrDigit(firstChar.codePointAt(0))) {
-        return firstChar;
-      }
-    }
-    return "";
+    return getItemViewType(position);
   }
 
   @Override
   public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_recyclerview_header, parent, false));
+    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.profile_item_header, parent, false));
   }
 
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    ((TextView)viewHolder.itemView).setText(getHeaderString(position));
+    String txt = "";
+    switch(getItemViewType(position)) {
+      case ItemData.TYPE_MEMBER:
+        txt = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
+        break;
+      default:
+        txt = "";
+        break;
+    }
+    viewHolder.textView.setText(txt);
   }
 
 
-  public void changeData(@Nullable int[] contactList) {
+  public void changeData(@Nullable int[] memberList) {
     itemData.clear();
-    if(contactList!=null) {
-      itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_NEW_CONTACT, 0, 0));
-      for (int i = 0; i < contactList.length; i++) {
-        itemData.add(new ItemData(ItemData.TYPE_MEMBER, contactList[i], 0, 0));
+    itemDataMemberCount = 0;
+    if(memberList !=null) {
+      itemDataMemberCount = memberList.length;
+      itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0, 0));
+      itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_QR_INVITE, 0, 0));
+      for (int i = 0; i < memberList.length; i++) {
+        itemData.add(new ItemData(ItemData.TYPE_MEMBER, memberList[i], 0, 0));
       }
     }
 
