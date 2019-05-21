@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcLot;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -21,6 +24,7 @@ import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapte
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.Map;
 
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
@@ -31,10 +35,14 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           Collections.synchronizedMap(new LRUCache<>(MAX_CACHE_SIZE));
 
   private final @NonNull Context              context;
+  private final @NonNull Locale               locale;
   private final @NonNull ApplicationDcContext dcContext;
+
   private @NonNull ArrayList<ItemData>        itemData = new ArrayList<>();
-  private int itemDataMemberCount;
-  private final LayoutInflater                li;
+  private int                                 itemDataMemberCount;
+  private DcChatlist                          itemDataSharedChats;
+
+  private final LayoutInflater                layoutInflater;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
 
@@ -43,27 +51,29 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     static final int TYPE_SHARED_CHAT = 1;
     int type;
     int contactId;
-    int chatId;
+    int chatlistIndex;
     int settingsId;
 
-    ItemData(int type, int contactId, int chatId, int settingsId) {
-      this.type = type;
-      this.contactId = contactId;
-      this.chatId = chatId;
-      this.settingsId = settingsId;
+    ItemData(int type, int contactId, int chatlistIndex, int settingsId) {
+      this.type          = type;
+      this.contactId     = contactId;
+      this.chatlistIndex = chatlistIndex;
+      this.settingsId    = settingsId;
     }
   };
 
   public ProfileSettingsAdapter(@NonNull  Context context,
                                 @NonNull  GlideRequests glideRequests,
+                                @NonNull  Locale locale,
                                 @Nullable ItemClickListener clickListener)
   {
     super();
-    this.context       = context;
-    this.dcContext     = DcHelper.getContext(context);
-    this.li            = LayoutInflater.from(context);
-    this.glideRequests = glideRequests;
-    this.clickListener = clickListener;
+    this.context        = context;
+    this.glideRequests  = glideRequests;
+    this.locale         = locale;
+    this.clickListener  = clickListener;
+    this.dcContext      = DcHelper.getContext(context);
+    this.layoutInflater = LayoutInflater.from(context);
   }
 
   @Override
@@ -106,11 +116,15 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   @Override
   public ProfileSettingsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == ItemData.TYPE_MEMBER) {
-      ContactSelectionListItem item = (ContactSelectionListItem)li.inflate(R.layout.contact_selection_list_item, parent, false);
+      final ContactSelectionListItem item = (ContactSelectionListItem)layoutInflater.inflate(R.layout.contact_selection_list_item, parent, false);
       item.setNoHeaderPadding();
       return new ViewHolder(item);
     }
-    return null;
+    else {
+      final ConversationListItem item = (ConversationListItem)layoutInflater.inflate(R.layout.conversation_list_item_view, parent, false);
+      item.hideItemDivider();
+      return new ViewHolder(item);
+    }
   }
 
   @Override
@@ -138,6 +152,18 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       }
 
       contactItem.set(glideRequests, id, dcContact, name, addr, label, false, true);
+    }
+    else if (holder.itemView instanceof ConversationListItem) {
+      ConversationListItem conversationListItem = (ConversationListItem) holder.itemView;
+      int chatlistIndex = itemData.get(i).chatlistIndex;
+
+      DcChat chat = dcContext.getChat(itemDataSharedChats.getChatId(chatlistIndex));
+      DcLot summary = itemDataSharedChats.getSummary(chatlistIndex, chat);
+
+      conversationListItem.bind(dcContext.getThreadRecord(summary, chat),
+          itemDataSharedChats.getMsgId(chatlistIndex), summary, glideRequests,
+          locale, Collections.emptySet(), false);
+
     }
   }
 
@@ -168,6 +194,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       case ItemData.TYPE_MEMBER:
         txt = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
         break;
+      case ItemData.TYPE_SHARED_CHAT:
+        txt = context.getString(R.string.profile_shared_chats);
+        break;
       default:
         txt = "";
         break;
@@ -176,15 +205,24 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   }
 
 
-  public void changeData(@Nullable int[] memberList) {
+  public void changeData(@Nullable int[] memberList, @Nullable DcChatlist sharedChats) {
     itemData.clear();
     itemDataMemberCount = 0;
-    if(memberList !=null) {
+    itemDataSharedChats = null;
+
+    if (memberList!=null) {
       itemDataMemberCount = memberList.length;
       itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0, 0));
       itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_QR_INVITE, 0, 0));
       for (int i = 0; i < memberList.length; i++) {
         itemData.add(new ItemData(ItemData.TYPE_MEMBER, memberList[i], 0, 0));
+      }
+    }
+    else if (sharedChats!=null) {
+      itemDataSharedChats = sharedChats;
+      int sharedChatsCnt = sharedChats.getCnt();
+      for (int i = 0; i < sharedChatsCnt; i++) {
+        itemData.add(new ItemData(ItemData.TYPE_SHARED_CHAT, 0, i, 0));
       }
     }
 
