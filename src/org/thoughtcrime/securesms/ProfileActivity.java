@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,10 +11,11 @@ import android.view.MenuItem;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -23,7 +23,9 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
 
-public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
+public class ProfileActivity extends PassphraseRequiredActionBarActivity
+                             implements DcEventCenter.DcEventDelegate
+{
 
   @SuppressWarnings("unused")
   private final static String TAG = ProfileActivity.class.getSimpleName();
@@ -43,9 +45,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
   private ApplicationDcContext dcContext;
   private int                  chatId;
-  private @Nullable DcChat     dcChat;
+  private boolean              chatIsGroup;
   private int                  contactId;
-  private @Nullable DcContact  dcContact;
 
   private ArrayList<Integer> tabs = new ArrayList<>();
   private Toolbar            toolbar;
@@ -68,6 +69,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
     this.tabLayout.setupWithViewPager(viewPager);
     this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
   }
 
   @Override
@@ -75,6 +78,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
+  }
+
+  @Override
+  public void onDestroy() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroy();
   }
 
   @Override
@@ -88,25 +97,25 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
     return false;
   }
 
+  @Override
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    updateToolbar();
+  }
+
   private void initializeResources() {
-    chatId    = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
-    contactId = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    chatId      = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
+    contactId   = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    chatIsGroup = false;
 
     if (contactId!=0) {
-      dcContact = dcContext.getContact(contactId);
       chatId = dcContext.getChatIdByContactId(contactId);
-      if (chatId!=0) {
-        dcChat = dcContext.getChat(chatId);
-      }
     }
     else if(chatId!=0) {
-      dcChat = dcContext.getChat(chatId);
-      if(!dcChat.isGroup()) {
+      DcChat dcChat = dcContext.getChat(chatId);
+      chatIsGroup = dcChat.isGroup();
+      if(!chatIsGroup) {
         final int[] members = dcContext.getChatContacts(chatId);
         contactId = members.length>=1? members[0] : 0;
-        if (contactId!=0) {
-          dcContact = dcContext.getContact(contactId);
-        }
       }
     }
 
@@ -137,10 +146,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       getSupportActionBar().setTitle(R.string.menu_all_media);
     }
     else if (isContactProfile()){
-      getSupportActionBar().setTitle(dcContact.getName());
+      getSupportActionBar().setTitle(dcContext.getContact(contactId).getName());
     }
-    else if (dcChat != null) {
-      getSupportActionBar().setTitle(dcChat.getName());
+    else if (chatId >= 0) {
+      getSupportActionBar().setTitle(dcContext.getChat(chatId).getName());
     }
   }
 
@@ -150,23 +159,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
 
   private boolean isContactProfile() {
     // there may still be a single-chat lined to the contact profile
-    return dcContact!=null && (dcChat==null || !dcChat.isGroup());
+    return contactId!=0 && (chatId==0 || !chatIsGroup);
   }
 
   private boolean isSelfProfile() {
     return isContactProfile() && contactId==DcContact.DC_CONTACT_ID_SELF;
-  }
-
-  private Recipient getRecipient() {
-    if(dcChat!=null) {
-      return dcContext.getRecipient(dcChat);
-    }
-    else if(dcContact!=null) {
-      return dcContext.getRecipient(dcContact);
-    }
-    else {
-      return dcContext.getRecipient(dcContext.getContact(0));
-    }
   }
 
   private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
@@ -184,20 +181,20 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity  {
       switch(tabId) {
         case TAB_SETTINGS:
           fragment = new ProfileSettingsFragment();
-          args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, dcChat==null? -1 : chatId);
-          args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, dcContact==null? -1 : contactId);
+          args.putInt(ProfileSettingsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
+          args.putInt(ProfileSettingsFragment.CONTACT_ID_EXTRA, (contactId==0&&!isGlobalProfile())? -1 : contactId);
           args.putSerializable(ProfileSettingsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         case TAB_GALLERY:
           fragment = new ProfileGalleryFragment();
-          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, dcChat==null? -1 : chatId);
+          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
           args.putSerializable(ProfileGalleryFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
         default:
           fragment = new ProfileDocumentsFragment();
-          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, dcChat==null? -1 : chatId);
+          args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
           args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
       }

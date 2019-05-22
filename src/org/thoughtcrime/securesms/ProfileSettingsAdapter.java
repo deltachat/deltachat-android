@@ -18,14 +18,11 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
 
-import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
-import java.util.Map;
 
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
@@ -41,10 +38,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   public static final int SETTING_NOTIFY = 310;
   public static final int SETTING_SOUND = 320;
   public static final int SETTING_VIBRATE = 330;
-
-  private static final int MAX_CACHE_SIZE = 100;
-  private final Map<Integer,SoftReference<DcContact>> recordCache =
-          Collections.synchronizedMap(new LRUCache<>(MAX_CACHE_SIZE));
 
   private final @NonNull Context              context;
   private final @NonNull Locale               locale;
@@ -106,24 +99,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     return itemData.size();
   }
 
-  private @NonNull DcContact getContact(int position) {
-    if(position<0 || position>=itemData.size() || itemData.get(position).type!=ItemData.TYPE_MEMBER) {
-      return new DcContact(0);
-    }
-
-    final SoftReference<DcContact> reference = recordCache.get(position);
-    if (reference != null) {
-      final DcContact fromCache = reference.get();
-      if (fromCache != null) {
-        return fromCache;
-      }
-    }
-
-    final DcContact fromDb = dcContext.getContact(itemData.get(position).contactId);
-    recordCache.put(position, new SoftReference<>(fromDb));
-    return fromDb;
-  }
-
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(View itemView) {
       super(itemView);
@@ -175,7 +150,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         name = context.getString(R.string.qrshow_title);
       }
       else {
-        dcContact = getContact(i);
+        dcContact = dcContext.getContact(itemData.get(i).contactId);
         name = dcContact.getDisplayName();
         addr = dcContact.getAddr();
       }
@@ -285,7 +260,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT, context.getString(R.string.menu_block_contact)));
     }
 
-    recordCache.clear();
     notifyDataSetChanged();
   }
 }

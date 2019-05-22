@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -25,7 +27,8 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Locale;
 
-public class ProfileSettingsFragment extends Fragment implements ProfileSettingsAdapter.ItemClickListener {
+public class ProfileSettingsFragment extends Fragment
+             implements ProfileSettingsAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
   public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
@@ -37,9 +40,7 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
   private Locale               locale;
   private ApplicationDcContext dcContext;
   protected int                chatId;
-  private DcChat               dcChat;
   private int                  contactId;
-  private DcContact            dcContact;
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -50,10 +51,6 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
     contactId = getArguments().getInt(CONTACT_ID_EXTRA, -1);
     dcContext = DcHelper.getContext(getContext());
-
-    // if given, the ids really belong together, this is checked in ProfileActivity
-    if (contactId>0) { dcContact = dcContext.getContact(contactId); }
-    if (chatId>0)    { dcChat    = dcContext.getChat(chatId); }
   }
 
   @Override
@@ -68,13 +65,33 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
 
     update();
 
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     return view;
+  }
+
+  @Override
+  public void onDestroyView() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroyView();
+  }
+
+  @Override
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    update();
   }
 
   private void update()
   {
     int[]      memberList = null;
     DcChatlist sharedChats = null;
+
+    DcChat dcChat = null;
+    DcContact dcContact = null;
+    if (contactId>0) { dcContact = dcContext.getContact(contactId); }
+    if (chatId>0)    { dcChat    = dcContext.getChat(chatId); }
 
     if(dcChat!=null && dcChat.isGroup()) {
       memberList = dcContext.getChatContacts(chatId);
@@ -102,7 +119,7 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
   }
 
   private void onContactAddrClicked() {
-    String address = dcContact.getAddr();
+    String address = dcContext.getContact(contactId).getAddr();
     new AlertDialog.Builder(getContext())
         .setTitle(address)
         .setItems(new CharSequence[]{
@@ -125,6 +142,7 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
   }
 
   private void onEditContactName() {
+    DcContact dcContact = dcContext.getContact(contactId);
     final EditText txt = new EditText(getActivity());
     txt.setText(dcContact.getName());
     new AlertDialog.Builder(getActivity())
