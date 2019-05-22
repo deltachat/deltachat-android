@@ -80,6 +80,6 @@ public class ProfileSettingsFragment extends Fragment {
     }
 
 
-    adapter.changeData(memberList, sharedChats);
+    adapter.changeData(memberList, dcContact, sharedChats, dcChat);
   }
 }
