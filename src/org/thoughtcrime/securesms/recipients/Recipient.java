@@ -203,7 +203,7 @@ public class Recipient {
   }
 
   public synchronized @NonNull Drawable getFallbackAvatarDrawable(Context context) {
-    return getFallbackContactPhoto().asDrawable(context, getFallbackAvatarColor(context), false);
+    return getFallbackContactPhoto().asDrawable(context, getFallbackAvatarColor(context));
   }
 
   public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {

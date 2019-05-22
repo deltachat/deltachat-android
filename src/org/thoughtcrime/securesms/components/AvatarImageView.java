@@ -59,7 +59,7 @@ public class AvatarImageView extends AppCompatImageView {
         setAvatarClickHandler(recipient, quickContactEnabled);
       }
     } else {
-      setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext()), false));
+      setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
       super.setOnClickListener(listener);
     }
   }
