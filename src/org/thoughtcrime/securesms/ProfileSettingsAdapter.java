@@ -194,7 +194,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           locale, Collections.emptySet(), false);
     }
     else if(holder.itemView instanceof ProfileSettingsItem) {
+      int settingsId = itemData.get(i).settingsId;
       ProfileSettingsItem profileSettingsItem = (ProfileSettingsItem) holder.itemView;
+      profileSettingsItem.setOnClickListener(view -> clickListener.onSettingsClicked(settingsId));
       profileSettingsItem.set(itemData.get(i).label);
     }
   }
@@ -205,8 +207,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   }
 
   public interface ItemClickListener {
-    void onItemClick(ContactSelectionListItem item, boolean handleActionMode);
-    void onItemLongClick(ContactSelectionListItem view);
+    void onSettingsClicked(int settingsId);
   }
 
   @Override
@@ -264,6 +265,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       itemDataContact = dcContact;
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_ADDR,dcContact.getAddr()));
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_NAME, context.getString(R.string.menu_edit_name)));
+      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_ENCRYPTION, context.getString(R.string.profile_encryption)));
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.menu_new_chat)));
       itemDataSharedChats = sharedChats;
       int sharedChatsCnt = sharedChats.getCnt();
@@ -279,7 +281,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
 
     if (dcContact!=null) {
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_ENCRYPTION, context.getString(R.string.profile_encryption)));
       itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT, context.getString(R.string.menu_block_contact)));
     }
 
