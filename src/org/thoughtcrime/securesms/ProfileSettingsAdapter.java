@@ -180,6 +180,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         addr = dcContact.getAddr();
       }
 
+      contactItem.unbind(glideRequests);
       contactItem.set(glideRequests, id, dcContact, name, addr, label, false, true);
     }
     else if (holder.itemView instanceof ConversationListItem) {
