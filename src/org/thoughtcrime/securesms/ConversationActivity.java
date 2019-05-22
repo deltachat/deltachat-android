@@ -470,7 +470,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
       case R.id.menu_add_attachment:        handleAddAttachment();             return true;
-      case R.id.menu_view_media:            handleViewMedia();                 return true;
       case R.id.menu_edit_group:            handleEditPushGroup();             return true;
       case R.id.menu_leave:                 handleLeaveGroup();                return true;
       case R.id.menu_archive_chat:          handleArchiveChat();               return true;
@@ -538,6 +537,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
   }
 
+  private void handleProfile() {
+    if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
+      Intent intent = new Intent(this, ProfileActivity.class);
+      intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
+      startActivity(intent);
+    }
+  }
+
   private void handleConversationSettings() {
     if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
       Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
@@ -549,12 +556,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleUnmuteNotifications() {
     Prefs.setChatMutedUntil(this, chatId, 0);
     titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
-  }
-
-  private void handleViewMedia() {
-    Intent intent = new Intent(this, MediaOverviewActivity.class);
-    intent.putExtra(MediaOverviewActivity.ADDRESS_EXTRA, recipient.getAddress());
-    startActivity(intent);
   }
 
   private void handleLeaveGroup() {
@@ -807,7 +808,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       buttonToggle.getBackground().invalidateSelf();
     });
 
-    titleView.setOnClickListener(v -> handleConversationSettings());
+    titleView.setOnClickListener(v -> handleProfile());
     titleView.setOnBackClickedListener(view -> onBackPressed());
 
     composeText.setOnKeyListener(composeKeyPressedListener);

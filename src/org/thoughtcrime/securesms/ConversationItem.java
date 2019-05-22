@@ -272,18 +272,6 @@ public class ConversationItem extends LinearLayout
     } else {
       bodyBubble.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
     }
-
-    if (audioViewStub.resolved()) {
-      setAudioViewTint(messageRecord);
-    }
-  }
-
-  private void setAudioViewTint(DcMsg messageRecord) {
-    if (messageRecord.isOutgoing()) {
-      audioViewStub.get().setTint(getContext().getResources().getColor(R.color.audio_icon), outgoingBubbleColor);
-    } else {
-      audioViewStub.get().setTint(getContext().getResources().getColor(R.color.audio_icon), incomingBubbleColor);
-    }
   }
 
   private void setInteractionState(DcMsg messageRecord, boolean pulseHighlight) {

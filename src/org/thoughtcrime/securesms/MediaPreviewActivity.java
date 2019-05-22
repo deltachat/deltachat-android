@@ -247,9 +247,18 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void showOverview() {
-    Intent intent = new Intent(this, MediaOverviewActivity.class);
-    intent.putExtra(MediaOverviewActivity.ADDRESS_EXTRA, conversationRecipient.getAddress());
-    startActivity(intent);
+    if(conversationRecipient.getAddress().isDcChat()) {
+      Intent intent = new Intent(this, ProfileActivity.class);
+      intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, conversationRecipient.getAddress().getDcChatId());
+      intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_GALLERY);
+      startActivity(intent);
+    }
+    else if(conversationRecipient.getAddress().isDcContact()) {
+      Intent intent = new Intent(this, ProfileActivity.class);
+      intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, conversationRecipient.getAddress().getDcContactId());
+      intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_GALLERY);
+      startActivity(intent);
+    }
   }
 
   private void forward() {

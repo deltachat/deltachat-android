@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2015 Open Whisper Systems
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
@@ -37,10 +21,10 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-class MediaGalleryAdapter extends StickyHeaderGridAdapter {
+class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
 
   @SuppressWarnings("unused")
-  private static final String TAG = MediaGalleryAdapter.class.getSimpleName();
+  private static final String TAG = ProfileGalleryAdapter.class.getSimpleName();
 
   private final Context             context;
   private final GlideRequests       glideRequests;
@@ -66,15 +50,15 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
 
     HeaderHolder(View itemView) {
       super(itemView);
-      textView = itemView.findViewById(R.id.text);
+      textView = itemView.findViewById(R.id.label);
     }
   }
 
-  MediaGalleryAdapter(@NonNull Context context,
-                      @NonNull GlideRequests glideRequests,
-                      BucketedThreadMedia media,
-                      Locale locale,
-                      ItemClickListener clickListener)
+  ProfileGalleryAdapter(@NonNull Context context,
+                        @NonNull GlideRequests glideRequests,
+                        BucketedThreadMedia media,
+                        Locale locale,
+                        ItemClickListener clickListener)
   {
     this.context           = context;
     this.glideRequests     = glideRequests;
@@ -90,12 +74,12 @@ class MediaGalleryAdapter extends StickyHeaderGridAdapter {
 
   @Override
   public StickyHeaderGridAdapter.HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent, int headerType) {
-    return new HeaderHolder(LayoutInflater.from(context).inflate(R.layout.media_overview_gallery_item_header, parent, false));
+    return new HeaderHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_list_divider, parent, false));
   }
 
   @Override
   public ItemViewHolder onCreateItemViewHolder(ViewGroup parent, int itemType) {
-    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.media_overview_gallery_item, parent, false));
+    return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.profile_gallery_item, parent, false));
   }
 
   @Override

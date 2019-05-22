@@ -280,10 +280,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       @Override
       public boolean onPreferenceClick(Preference preference) {
         Intent intent = new Intent(preference.getContext(), CreateProfileActivity.class);
-        intent.putExtra(CreateProfileActivity.EXCLUDE_SYSTEM, true);
-
         getActivity().startActivity(intent);
-//        ((BaseActionBarActivity)getActivity()).startActivitySceneTransition(intent, getActivity().findViewById(R.id.avatar), "avatar");
         return true;
       }
     }

@@ -6,6 +6,4 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:foregroundTintColor="@color/white"
-        app:backgroundTintColor="@color/blue_500"
         tools:visibility="visible"/>

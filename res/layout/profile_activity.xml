@@ -13,20 +13,28 @@
         <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                android:background="?attr/media_overview_toolbar_background"
-                android:titleTextColor="?attr/media_overview_toolbar_foreground"
-                app:layout_scrollFlags="scroll|enterAlways"/>
+                android:layout_height="?attr/actionBarSize"
+                android:minHeight="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:contentInsetStart="14dp"
+                app:contentInsetLeft="14dp"
+                android:elevation="4dp"
+                android:theme="?attr/actionBarStyle"/>
 
         <android.support.design.widget.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:elevation="4dp"
                 android:layout_gravity="top"
-                android:background="?attr/media_overview_toolbar_background"
-                app:tabBackground="?attr/media_overview_toolbar_background"
-                app:tabIndicatorColor="@color/delta_primary"
-                app:tabSelectedTextColor="@color/delta_primary"/>
+                android:background="?attr/colorPrimary"
+                app:tabMode="fixed"
+                app:tabPaddingStart="3dp"
+                app:tabPaddingEnd="3dp"
+                app:tabBackground="?attr/colorPrimary"
+                app:tabIndicatorColor="@color/white"
+                app:tabTextColor="@color/gray10"
+                app:tabSelectedTextColor="@color/white"/>
 
     </android.support.design.widget.AppBarLayout>
 

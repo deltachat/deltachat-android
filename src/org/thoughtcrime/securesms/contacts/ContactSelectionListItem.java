@@ -65,7 +65,8 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.name        = name;
     this.number        = number;
 
-    if(specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
+    if (specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP
+     || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.recipient = null;
       this.contactPhotoImage.setAvatar(glideRequests, Recipient.from(getContext(), Address.UNKNOWN), false);
     }
@@ -144,5 +145,10 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
         nameView.setText(recipient.toShortString());
       });
     }
+  }
+
+  public void setNoHeaderPadding() {
+    int paddinglr = getContext().getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
+    setPadding(paddinglr, 0, paddinglr, 0);
   }
 }

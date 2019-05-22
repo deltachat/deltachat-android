@@ -76,6 +76,7 @@
     <string name="video">Video</string>
     <string name="documents">Documents</string>
     <string name="contact">Contact</string>
+    <string name="verified_contact">Verified contact</string>
     <string name="camera">Camera</string>
     <string name="location">Location</string>
     <string name="gallery">Gallery</string>
@@ -111,6 +112,7 @@
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle emoji keyboard</string>
     <string name="menu_edit_group">Edit group</string>
+    <string name="menu_group_name_and_image">Group name and image</string>
     <string name="menu_show_map">Show map</string>
     <string name="menu_show_global_map">Show all locations</string>
     <string name="menu_archive_chat">Archive chat</string>
@@ -244,14 +246,16 @@
     <string name="group_hello_draft">Hello, I\'ve just created the group \"%1$s\" for us.</string>
     <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
     <string name="profile_encryption">Encryption</string>
-
-
-    <!-- chat media view -->
+    <string name="profile_shared_chats">Shared chats</string>
+    <string name="tab_contact">Contact</string>
+    <string name="tab_group">Group</string>
+    <string name="tab_gallery">Gallery</string>
+    <string name="tab_docs">Docs</string>
+    <string name="tab_links">Links</string>
+    <string name="tab_map">Map</string>
+    <string name="tab_gallery_empty_hint">Images and videos shared in this chat will be displayed here.</string>
+    <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
     <string name="media_preview">Media preview</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Documents</string>
-    <string name="media_no_media_hint">No media.</string>
-    <string name="media_no_documents_hint">No documents</string>
 
 
     <!-- invite -->
@@ -653,6 +657,10 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Inbox zeeerrro</string>
     <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nYou\'re all caught up!</string>
+    <string name="media_tab_media">Media</string>
+    <string name="media_tab_documents">Documents</string>
+    <string name="media_no_media_hint">No media.</string>
+    <string name="media_no_documents_hint">No documents.</string>
 
 
 </resources>

@@ -7,6 +7,4 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:doc_titleColor="?conversation_item_outgoing_text_primary_color"
-        app:doc_captionColor="?conversation_item_outgoing_text_secondary_color"
         tools:visibility="visible"/>

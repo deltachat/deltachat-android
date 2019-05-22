@@ -23,12 +23,9 @@ public class DocumentView extends FrameLayout {
 
   private static final String TAG = DocumentView.class.getSimpleName();
 
-  private final @NonNull AnimatingToggle controlToggle;
   private final @NonNull View            container;
-  private final @NonNull ViewGroup       iconContainer;
   private final @NonNull TextView        fileName;
   private final @NonNull TextView        fileSize;
-  private final @NonNull TextView        document;
 
   private @Nullable SlideClickListener viewListener;
   private @Nullable DocumentSlide      documentSlide;
@@ -46,21 +43,8 @@ public class DocumentView extends FrameLayout {
     inflate(context, R.layout.document_view, this);
 
     this.container        = findViewById(R.id.document_container);
-    this.iconContainer    = findViewById(R.id.icon_container);
-    this.controlToggle    = findViewById(R.id.control_toggle);
     this.fileName         = findViewById(R.id.file_name);
     this.fileSize         = findViewById(R.id.file_size);
-    this.document         = findViewById(R.id.document);
-
-    if (attrs != null) {
-      TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.DocumentView, 0, 0);
-      int        titleColor   = typedArray.getInt(R.styleable.DocumentView_doc_titleColor, Color.BLACK);
-      int        captionColor = typedArray.getInt(R.styleable.DocumentView_doc_captionColor, Color.BLACK);
-      typedArray.recycle();
-
-      fileName.setTextColor(titleColor);
-      fileSize.setTextColor(captionColor);
-    }
   }
 
   public void setDocumentClickListener(@Nullable SlideClickListener listener) {
@@ -69,13 +53,14 @@ public class DocumentView extends FrameLayout {
 
   public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
-    controlToggle.displayQuick(iconContainer);
-
     this.documentSlide = documentSlide;
 
     this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
-    this.fileSize.setText(Util.getPrettyFileSize(documentSlide.getFileSize()));
-    this.document.setText(getFileType(documentSlide.getFileName()));
+
+    String fileSize = Util.getPrettyFileSize(documentSlide.getFileSize())
+        + " " + getFileType(documentSlide.getFileName()).toUpperCase();
+    this.fileSize.setText(fileSize);
+
     this.setOnClickListener(new OpenClickedListener(documentSlide));
   }
 

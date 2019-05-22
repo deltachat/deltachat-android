@@ -42,7 +42,6 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
-import org.thoughtcrime.securesms.profiles.SystemProfileUtil;
 import org.thoughtcrime.securesms.util.BitmapDecodingException;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -69,7 +68,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private static final String TAG = CreateProfileActivity.class.getSimpleName();
 
   public static final String NEXT_INTENT    = "next_intent";
-  public static final String EXCLUDE_SYSTEM = "exclude_system";
 
   private static final int REQUEST_CODE_AVATAR = 1;
 
@@ -104,8 +102,8 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
     initializeResources();
     initializeEmojiInput();
-    initializeProfileName(getIntent().getBooleanExtra(EXCLUDE_SYSTEM, false));
-    initializeProfileAvatar(getIntent().getBooleanExtra(EXCLUDE_SYSTEM, false));
+    initializeProfileName();
+    initializeProfileAvatar();
     initializeStatusText();
   }
 
@@ -256,30 +254,15 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     });
   }
 
-  private void initializeProfileName(boolean excludeSystem) {
+  private void initializeProfileName() {
     String profileName  = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME);
     if (!TextUtils.isEmpty(profileName)) {
       name.setText(profileName);
       name.setSelection(profileName.length(), profileName.length());
-    } else if (!excludeSystem) {
-      SystemProfileUtil.getSystemProfileName(this).addListener(new ListenableFuture.Listener<String>() {
-        @Override
-        public void onSuccess(String result) {
-          if (!TextUtils.isEmpty(result)) {
-            name.setText(result);
-            name.setSelection(result.length(), result.length());
-          }
-        }
-
-        @Override
-        public void onFailure(ExecutionException e) {
-          Log.w(TAG, e);
-        }
-      });
     }
   }
 
-  private void initializeProfileAvatar(boolean excludeSystem) {
+  private void initializeProfileAvatar() {
     String address = DcHelper.get(this, DcHelper.CONFIG_ADDRESS);
 
     if (AvatarHelper.getSelfAvatarFile(this, address).exists() && AvatarHelper.getSelfAvatarFile(this, address).length() > 0) {
@@ -305,24 +288,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
           }
         }
       }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    } else if (!excludeSystem) {
-      SystemProfileUtil.getSystemProfileAvatar(this, new ProfileMediaConstraints()).addListener(new ListenableFuture.Listener<byte[]>() {
-        @Override
-        public void onSuccess(byte[] result) {
-          if (result != null) {
-            avatarBytes = result;
-            GlideApp.with(CreateProfileActivity.this)
-                    .load(result)
-                    .circleCrop()
-                    .into(avatar);
-          }
-        }
-
-        @Override
-        public void onFailure(ExecutionException e) {
-          Log.w(TAG, e);
-        }
-      });
     }
   }
 
