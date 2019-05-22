@@ -72,7 +72,7 @@ public class ProfileSettingsFragment extends Fragment {
     int[]      memberList = null;
     DcChatlist sharedChats = null;
 
-    if(dcChat.isGroup()) {
+    if(dcChat!=null && dcChat.isGroup()) {
       memberList = dcContext.getChatContacts(chatId);
     }
     else if(contactId>0) {
