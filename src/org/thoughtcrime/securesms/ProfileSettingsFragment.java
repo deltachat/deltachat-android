@@ -1,7 +1,11 @@
 package org.thoughtcrime.securesms;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -22,6 +26,7 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -34,6 +39,8 @@ public class ProfileSettingsFragment extends Fragment
   public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
+
+  private static final int REQUEST_CODE_PICK_RINGTONE = 1;
 
   private RecyclerView           recyclerView;
   private ProfileSettingsAdapter adapter;
@@ -122,6 +129,15 @@ public class ProfileSettingsFragment extends Fragment
       case ProfileSettingsAdapter.SETTING_BLOCK_CONTACT:
         onBlockContact();
         break;
+      case ProfileSettingsAdapter.SETTING_NOTIFY:
+        onNotifyOnOff();
+        break;
+      case ProfileSettingsAdapter.SETTING_SOUND:
+        onSoundSettings();
+        break;
+      case ProfileSettingsAdapter.SETTING_VIBRATE:
+        onVibrateSettings();
+        break;
     }
   }
 
@@ -200,5 +216,58 @@ public class ProfileSettingsFragment extends Fragment
             dcContext.blockContact(contactId, 1);
           }).show();
     }
+  }
+
+  private void onNotifyOnOff() {
+    if (Prefs.isChatMuted(getContext(), chatId)) {
+      setMuted(0);
+    }
+    else {
+      MuteDialog.show(getActivity(), until -> setMuted(until));
+    }
+  }
+
+  private void setMuted(final long until) {
+    if(chatId!=0) {
+      Prefs.setChatMutedUntil(getActivity(), chatId, until);
+      update(); // in contrast to most other settings, muting is handled in the ui and does not result in an DC_EVENT
+    }
+  }
+
+  private void onSoundSettings() {
+    Uri current = dcContext.getRecipient(dcContext.getChat(chatId)).getMessageRingtone();
+    Uri defaultUri = Prefs.getNotificationRingtone(getContext());
+
+    if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
+    else if (current.toString().isEmpty()) current = null;
+
+    Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, defaultUri);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
+    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
+
+    startActivityForResult(intent, REQUEST_CODE_PICK_RINGTONE);
+
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_CODE_PICK_RINGTONE && resultCode == Activity.RESULT_OK && data != null) {
+      Uri value = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+
+      Uri defaultValue = Prefs.getNotificationRingtone(getContext());
+
+      if (defaultValue.equals(value)) value = null;
+      else if (value == null)         value = Uri.EMPTY;
+
+      Prefs.setChatRingtone(getContext(), chatId, value);
+    }
+  }
+
+  private void onVibrateSettings() {
+
   }
 }
