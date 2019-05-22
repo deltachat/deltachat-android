@@ -257,7 +257,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     }
 
     if (dcContact!=null) {
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT, context.getString(R.string.menu_block_contact)));
+      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT,
+          context.getString(dcContact.isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact)));
     }
 
     notifyDataSetChanged();

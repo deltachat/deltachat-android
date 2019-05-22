@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -115,6 +116,12 @@ public class ProfileSettingsFragment extends Fragment
       case ProfileSettingsAdapter.SETTING_ENCRYPTION:
         onEncrInfo();
         break;
+      case ProfileSettingsAdapter.SETTING_NEW_CHAT:
+        onNewChat();
+        break;
+      case ProfileSettingsAdapter.SETTING_BLOCK_CONTACT:
+        onBlockContact();
+        break;
     }
   }
 
@@ -154,5 +161,44 @@ public class ProfileSettingsFragment extends Fragment
         })
         .setNegativeButton(android.R.string.cancel, null)
         .show();
+  }
+
+  private void onNewChat() {
+    DcContact dcContact = dcContext.getContact(contactId);
+    new AlertDialog.Builder(getActivity())
+        .setMessage(getActivity().getString(R.string.ask_start_chat_with, dcContact.getNameNAddr()))
+        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+          int chatId = dcContext.createChatByContactId(dcContact.getId());
+          if (chatId != 0) {
+            Intent intent = new Intent(getActivity(), ConversationActivity.class);
+            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+            getActivity().startActivity(intent);
+            getActivity().finish();
+          }
+        })
+        .setNegativeButton(R.string.cancel, null)
+        .show();
+  }
+
+  private void onBlockContact() {
+    DcContact dcContact = dcContext.getContact(contactId);
+    if(dcContact.isBlocked()) {
+      new AlertDialog.Builder(getActivity())
+          .setMessage(R.string.ask_unblock_contact)
+          .setCancelable(true)
+          .setNegativeButton(android.R.string.cancel, null)
+          .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> {
+            dcContext.blockContact(contactId, 0);
+          }).show();
+    }
+    else {
+      new AlertDialog.Builder(getActivity())
+          .setMessage(R.string.ask_block_contact)
+          .setCancelable(true)
+          .setNegativeButton(android.R.string.cancel, null)
+          .setPositiveButton(R.string.menu_block_contact, (dialog, which) -> {
+            dcContext.blockContact(contactId, 1);
+          }).show();
+    }
   }
 }
