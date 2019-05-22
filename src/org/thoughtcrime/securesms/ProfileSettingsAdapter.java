@@ -109,7 +109,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     TextView textView;
     HeaderViewHolder(View itemView) {
       super(itemView);
-      textView = itemView.findViewById(R.id.text);
+      textView = itemView.findViewById(R.id.label);
     }
   }
 
@@ -184,7 +184,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   @Override
   public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.profile_item_header, parent, false));
+    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_list_divider, parent, false));
   }
 
   @Override

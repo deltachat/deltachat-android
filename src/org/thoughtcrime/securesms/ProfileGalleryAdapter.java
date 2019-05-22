@@ -50,7 +50,7 @@ class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
 
     HeaderHolder(View itemView) {
       super(itemView);
-      textView = itemView.findViewById(R.id.text);
+      textView = itemView.findViewById(R.id.label);
     }
   }
 
@@ -74,7 +74,7 @@ class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
 
   @Override
   public StickyHeaderGridAdapter.HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent, int headerType) {
-    return new HeaderHolder(LayoutInflater.from(context).inflate(R.layout.profile_item_header, parent, false));
+    return new HeaderHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_list_divider, parent, false));
   }
 
   @Override
