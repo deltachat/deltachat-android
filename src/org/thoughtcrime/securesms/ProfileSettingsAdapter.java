@@ -22,8 +22,11 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
@@ -48,6 +51,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private int                                 itemDataMemberCount;
   private DcChatlist                          itemDataSharedChats;
   private DcContact                           itemDataContact;
+  private final Set<Integer>                  selectedMembers;
 
   private final LayoutInflater                layoutInflater;
   private final ItemClickListener             clickListener;
@@ -93,6 +97,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     this.clickListener  = clickListener;
     this.dcContext      = DcHelper.getContext(context);
     this.layoutInflater = LayoutInflater.from(context);
+    this.selectedMembers= new HashSet<>();
   }
 
   @Override
@@ -158,7 +163,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
       contactItem.unbind(glideRequests);
       contactItem.set(glideRequests, contactId, dcContact, name, addr, label, false, true);
+      contactItem.setSelected(selectedMembers.contains(contactId));
       contactItem.setOnClickListener(view -> clickListener.onMemberClicked(contactId));
+      contactItem.setOnLongClickListener(view -> {clickListener.onMemberLongClicked(contactId); return true;});
     }
     else if (holder.itemView instanceof ConversationListItem) {
       ConversationListItem conversationListItem = (ConversationListItem) holder.itemView;
@@ -190,6 +197,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     void onSettingsClicked(int settingsId);
     void onSharedChatClicked(int chatId);
     void onMemberClicked(int contactId);
+    void onMemberLongClicked(int contactId);
   }
 
   @Override
@@ -227,6 +235,26 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     viewHolder.textView.setText(txt);
   }
 
+  public void toggleMemberSelection(int contactId) {
+    if (!selectedMembers.remove(contactId)) {
+      selectedMembers.add(contactId);
+    }
+    notifyDataSetChanged();
+  }
+
+  @NonNull
+  public Collection<Integer> getSelectedMembers() {
+    return new HashSet<>(selectedMembers);
+  }
+
+  public int getSelectedMembersCount() {
+    return selectedMembers.size();
+  }
+
+  public void clearSelection() {
+    selectedMembers.clear();
+    notifyDataSetChanged();
+  }
 
   public void changeData(@Nullable int[] memberList, @Nullable DcContact dcContact, @Nullable DcChatlist sharedChats, @Nullable DcChat dcChat) {
     itemData.clear();

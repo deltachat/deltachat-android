@@ -4,16 +4,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,6 +38,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
@@ -48,6 +55,9 @@ public class ProfileSettingsFragment extends Fragment
   private RecyclerView           list;
   private StickyHeaderDecoration listDecoration;
   private ProfileSettingsAdapter adapter;
+  private ActionMode             actionMode;
+  private ActionModeCallback     actionModeCallback = new ActionModeCallback();
+
 
   private Locale               locale;
   private ApplicationDcContext dcContext;
@@ -152,11 +162,34 @@ public class ProfileSettingsFragment extends Fragment
   }
 
   @Override
+  public void onMemberLongClicked(int contactId) {
+    if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
+      if (actionMode==null) {
+        adapter.toggleMemberSelection(contactId);
+        actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+      } else {
+        onMemberClicked(contactId);
+      }
+    }
+  }
+
+  @Override
   public void onMemberClicked(int contactId) {
-    if(contactId==DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+    if (actionMode!=null) {
+      if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
+        adapter.toggleMemberSelection(contactId);
+        if (adapter.getSelectedMembersCount() == 0) {
+          actionMode.finish();
+          actionMode = null;
+        } else {
+          actionMode.setTitle(String.valueOf(adapter.getSelectedMembersCount()));
+        }
+      }
+    }
+    else if(contactId==DcContact.DC_CONTACT_ID_ADD_MEMBER) {
       onAddMember();
     }
-    if(contactId==DcContact.DC_CONTACT_ID_QR_INVITE) {
+    else if(contactId==DcContact.DC_CONTACT_ID_QR_INVITE) {
       onQrInvite();
     }
     else if(contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
@@ -320,6 +353,65 @@ public class ProfileSettingsFragment extends Fragment
         Prefs.setChatVibrate(getContext(), chatId, Prefs.VibrateState.fromId(which));
       })
       .show();
+  }
+
+  private class ActionModeCallback implements ActionMode.Callback {
+
+    private int originalStatusBarColor;
+
+    @Override
+    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+      mode.getMenuInflater().inflate(R.menu.profile_context, menu);
+      mode.setTitle("1");
+
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        Window window = getActivity().getWindow();
+        originalStatusBarColor = window.getStatusBarColor();
+        window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
+      }
+      return true;
+    }
+
+    @Override
+    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+      return false;
+    }
+
+    @Override
+    public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
+      switch (menuItem.getItemId()) {
+        case R.id.delete:
+          final Collection<Integer> toDelIds = adapter.getSelectedMembers();
+          StringBuilder readableToDelList = new StringBuilder();
+          for (Integer toDelId : toDelIds) {
+            if(readableToDelList.length()>0) {
+              readableToDelList.append(", ");
+            }
+            readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
+          }
+          new AlertDialog.Builder(getContext())
+              .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                for (Integer toDelId : toDelIds) {
+                  dcContext.removeContactFromChat(chatId, toDelId);
+                }
+                mode.finish();
+              })
+              .setNegativeButton(android.R.string.cancel, null)
+              .setMessage(getString(R.string.ask_remove_members, readableToDelList))
+              .show();
+          return true;
+      }
+      return false;
+    }
+
+    @Override
+    public void onDestroyActionMode(ActionMode mode) {
+      actionMode = null;
+      adapter.clearSelection();
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        getActivity().getWindow().setStatusBarColor(originalStatusBarColor);
+      }
+    }
   }
 
   @Override
