@@ -144,6 +144,25 @@ public class ProfileSettingsFragment extends Fragment
         break;
     }
   }
+
+  @Override
+  public void onMemberClicked(int contactId) {
+    if(contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
+      new AlertDialog.Builder(getContext())
+          .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+            int chatId = dcContext.createChatByContactId(contactId);
+            if( chatId != 0 ) {
+              Intent intent = new Intent(getContext(), ConversationActivity.class);
+              intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+              getContext().startActivity(intent);
+            }
+          })
+          .setNegativeButton(android.R.string.cancel, null)
+          .setMessage(getString(R.string.ask_start_chat_with, dcContext.getContact(contactId).getDisplayName()))
+          .show();
+    }
+  }
+
   @Override
   public void onSharedChatClicked(int chatId) {
     Intent intent = new Intent(getContext(), ConversationActivity.class);

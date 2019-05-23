@@ -138,26 +138,27 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     if (holder.itemView instanceof ContactSelectionListItem) {
       ContactSelectionListItem contactItem = (ContactSelectionListItem) holder.itemView;
 
-      int id = itemData.get(i).contactId;
+      int contactId = itemData.get(i).contactId;
       DcContact dcContact = null;
       String label = null;
       String name;
       String addr = null;
 
-      if (id == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+      if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
         name = context.getString(R.string.group_add_members);
       }
-      else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
+      else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
         name = context.getString(R.string.qrshow_title);
       }
       else {
-        dcContact = dcContext.getContact(itemData.get(i).contactId);
+        dcContact = dcContext.getContact(contactId);
         name = dcContact.getDisplayName();
         addr = dcContact.getAddr();
       }
 
       contactItem.unbind(glideRequests);
-      contactItem.set(glideRequests, id, dcContact, name, addr, label, false, true);
+      contactItem.set(glideRequests, contactId, dcContact, name, addr, label, false, true);
+      contactItem.setOnClickListener(view -> clickListener.onMemberClicked(contactId));
     }
     else if (holder.itemView instanceof ConversationListItem) {
       ConversationListItem conversationListItem = (ConversationListItem) holder.itemView;
@@ -188,6 +189,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   public interface ItemClickListener {
     void onSettingsClicked(int settingsId);
     void onSharedChatClicked(int chatId);
+    void onMemberClicked(int contactId);
   }
 
   @Override
