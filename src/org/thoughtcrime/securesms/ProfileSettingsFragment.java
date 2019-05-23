@@ -31,6 +31,8 @@ import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class ProfileSettingsFragment extends Fragment
@@ -41,8 +43,10 @@ public class ProfileSettingsFragment extends Fragment
   public static final String CONTACT_ID_EXTRA = "contact_id";
 
   private static final int REQUEST_CODE_PICK_RINGTONE = 1;
+  private static final int REQUEST_CODE_PICK_CONTACT = 2;
 
-  private RecyclerView           recyclerView;
+  private RecyclerView           list;
+  private StickyHeaderDecoration listDecoration;
   private ProfileSettingsAdapter adapter;
 
   private Locale               locale;
@@ -66,10 +70,11 @@ public class ProfileSettingsFragment extends Fragment
     View view = inflater.inflate(R.layout.profile_settings_fragment, container, false);
     adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), locale,this);
 
-    recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
-    recyclerView.setAdapter(adapter);
-    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-    recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, false, true));
+    list  = ViewUtil.findById(view, R.id.recycler_view);
+    list.setAdapter(adapter);
+    list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    listDecoration = new StickyHeaderDecoration(adapter, false, true);
+    list.addItemDecoration(listDecoration);
 
     update();
 
@@ -109,6 +114,7 @@ public class ProfileSettingsFragment extends Fragment
     }
 
     adapter.changeData(memberList, dcContact, sharedChats, dcChat);
+    listDecoration.invalidateLayouts();
   }
 
 
@@ -147,7 +153,13 @@ public class ProfileSettingsFragment extends Fragment
 
   @Override
   public void onMemberClicked(int contactId) {
-    if(contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
+    if(contactId==DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+      onAddMember();
+    }
+    if(contactId==DcContact.DC_CONTACT_ID_QR_INVITE) {
+      onQrInvite();
+    }
+    else if(contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
       new AlertDialog.Builder(getContext())
           .setPositiveButton(android.R.string.ok, (dialog, which) -> {
             int chatId = dcContext.createChatByContactId(contactId);
@@ -155,6 +167,7 @@ public class ProfileSettingsFragment extends Fragment
               Intent intent = new Intent(getContext(), ConversationActivity.class);
               intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
               getContext().startActivity(intent);
+              getActivity().finish();
             }
           })
           .setNegativeButton(android.R.string.cancel, null)
@@ -163,11 +176,31 @@ public class ProfileSettingsFragment extends Fragment
     }
   }
 
+  public void onAddMember() {
+    DcChat dcChat = dcContext.getChat(chatId);
+    Intent intent = new Intent(getContext(), ContactMultiSelectionActivity.class);
+    intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, dcChat.isVerified());
+    ArrayList<String> preselectedContacts = new ArrayList<>();
+    int[] memberIds = dcContext.getChatContacts(chatId);
+    for (int memberId : memberIds) {
+      preselectedContacts.add(dcContext.getContact(memberId).getAddr());
+    }
+    intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
+    startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT);
+  }
+
+  public void onQrInvite() {
+    Intent qrIntent = new Intent(getContext(), QrShowActivity.class);
+    qrIntent.putExtra(QrShowActivity.CHAT_ID, chatId);
+    startActivity(qrIntent);
+  }
+
   @Override
   public void onSharedChatClicked(int chatId) {
     Intent intent = new Intent(getContext(), ConversationActivity.class);
     intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
     getContext().startActivity(intent);
+    getActivity().finish();
   }
 
   private void onContactAddrClicked() {
@@ -278,22 +311,6 @@ public class ProfileSettingsFragment extends Fragment
     intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
 
     startActivityForResult(intent, REQUEST_CODE_PICK_RINGTONE);
-
-  }
-
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == REQUEST_CODE_PICK_RINGTONE && resultCode == Activity.RESULT_OK && data != null) {
-      Uri value = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-
-      Uri defaultValue = Prefs.getNotificationRingtone(getContext());
-
-      if (defaultValue.equals(value)) value = null;
-      else if (value == null)         value = Uri.EMPTY;
-
-      Prefs.setChatRingtone(getContext(), chatId, value);
-    }
   }
 
   private void onVibrateSettings() {
@@ -303,5 +320,28 @@ public class ProfileSettingsFragment extends Fragment
         Prefs.setChatVibrate(getContext(), chatId, Prefs.VibrateState.fromId(which));
       })
       .show();
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode==REQUEST_CODE_PICK_RINGTONE && resultCode==Activity.RESULT_OK && data!=null) {
+      Uri value = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+      Uri defaultValue = Prefs.getNotificationRingtone(getContext());
+
+      if (defaultValue.equals(value)) value = null;
+      else if (value == null)         value = Uri.EMPTY;
+
+      Prefs.setChatRingtone(getContext(), chatId, value);
+    }
+    else if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
+      List<String> selected = data.getStringArrayListExtra("contacts");
+      for (String addr : selected) {
+        if (addr!=null) {
+          int toAddId = dcContext.createContact(null, addr);
+          dcContext.addContactToChat(chatId, toAddId);
+        }
+      }
+    }
   }
 }
