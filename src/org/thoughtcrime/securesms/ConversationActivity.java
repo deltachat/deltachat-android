@@ -542,6 +542,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       Intent intent = new Intent(this, ProfileActivity.class);
       intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
       startActivity(intent);
+      overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
   }
 
