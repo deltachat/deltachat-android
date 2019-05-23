@@ -25,20 +25,15 @@ public class GeneratedContactPhoto implements FallbackContactPhoto {
 
   @Override
   public Drawable asDrawable(Context context, int color) {
-    return asDrawable(context, color, false);
-  }
-
-  @Override
-  public Drawable asDrawable(Context context, int color, boolean inverted) {
     int targetSize = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
 
     return TextDrawable.builder()
                        .beginConfig()
                        .width(targetSize)
                        .height(targetSize)
-                       .textColor(inverted ? color : Color.WHITE)
+                       .textColor(Color.WHITE)
                        .endConfig()
-                       .buildRound(getCharacter(name), inverted ? Color.WHITE : color);
+                       .buildRound(getCharacter(name), color);
   }
 
   private String getCharacter(String name) {

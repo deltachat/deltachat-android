@@ -18,14 +18,15 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.util.LRUCache;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
 
-import java.lang.ref.SoftReference;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Locale;
-import java.util.Map;
+import java.util.Set;
 
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
@@ -42,10 +43,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   public static final int SETTING_SOUND = 320;
   public static final int SETTING_VIBRATE = 330;
 
-  private static final int MAX_CACHE_SIZE = 100;
-  private final Map<Integer,SoftReference<DcContact>> recordCache =
-          Collections.synchronizedMap(new LRUCache<>(MAX_CACHE_SIZE));
-
   private final @NonNull Context              context;
   private final @NonNull Locale               locale;
   private final @NonNull ApplicationDcContext dcContext;
@@ -54,6 +51,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private int                                 itemDataMemberCount;
   private DcChatlist                          itemDataSharedChats;
   private DcContact                           itemDataContact;
+  private final Set<Integer>                  selectedMembers;
 
   private final LayoutInflater                layoutInflater;
   private final ItemClickListener             clickListener;
@@ -99,29 +97,12 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     this.clickListener  = clickListener;
     this.dcContext      = DcHelper.getContext(context);
     this.layoutInflater = LayoutInflater.from(context);
+    this.selectedMembers= new HashSet<>();
   }
 
   @Override
   public int getItemCount() {
     return itemData.size();
-  }
-
-  private @NonNull DcContact getContact(int position) {
-    if(position<0 || position>=itemData.size() || itemData.get(position).type!=ItemData.TYPE_MEMBER) {
-      return new DcContact(0);
-    }
-
-    final SoftReference<DcContact> reference = recordCache.get(position);
-    if (reference != null) {
-      final DcContact fromCache = reference.get();
-      if (fromCache != null) {
-        return fromCache;
-      }
-    }
-
-    final DcContact fromDb = dcContext.getContact(itemData.get(position).contactId);
-    recordCache.put(position, new SoftReference<>(fromDb));
-    return fromDb;
   }
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -162,36 +143,42 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     if (holder.itemView instanceof ContactSelectionListItem) {
       ContactSelectionListItem contactItem = (ContactSelectionListItem) holder.itemView;
 
-      int id = itemData.get(i).contactId;
+      int contactId = itemData.get(i).contactId;
       DcContact dcContact = null;
       String label = null;
       String name;
       String addr = null;
 
-      if (id == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+      if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
         name = context.getString(R.string.group_add_members);
       }
-      else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
+      else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
         name = context.getString(R.string.qrshow_title);
       }
       else {
-        dcContact = getContact(i);
+        dcContact = dcContext.getContact(contactId);
         name = dcContact.getDisplayName();
         addr = dcContact.getAddr();
       }
 
-      contactItem.set(glideRequests, id, dcContact, name, addr, label, false, true);
+      contactItem.unbind(glideRequests);
+      contactItem.set(glideRequests, contactId, dcContact, name, addr, label, false, true);
+      contactItem.setSelected(selectedMembers.contains(contactId));
+      contactItem.setOnClickListener(view -> clickListener.onMemberClicked(contactId));
+      contactItem.setOnLongClickListener(view -> {clickListener.onMemberLongClicked(contactId); return true;});
     }
     else if (holder.itemView instanceof ConversationListItem) {
       ConversationListItem conversationListItem = (ConversationListItem) holder.itemView;
       int chatlistIndex = itemData.get(i).chatlistIndex;
 
-      DcChat chat = dcContext.getChat(itemDataSharedChats.getChatId(chatlistIndex));
+      int chatId = itemDataSharedChats.getChatId(chatlistIndex);
+      DcChat chat = dcContext.getChat(chatId);
       DcLot summary = itemDataSharedChats.getSummary(chatlistIndex, chat);
 
       conversationListItem.bind(dcContext.getThreadRecord(summary, chat),
           itemDataSharedChats.getMsgId(chatlistIndex), summary, glideRequests,
           locale, Collections.emptySet(), false);
+      conversationListItem.setOnClickListener(view -> clickListener.onSharedChatClicked(chatId));
     }
     else if(holder.itemView instanceof ProfileSettingsItem) {
       int settingsId = itemData.get(i).settingsId;
@@ -208,6 +195,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   public interface ItemClickListener {
     void onSettingsClicked(int settingsId);
+    void onSharedChatClicked(int chatId);
+    void onMemberClicked(int contactId);
+    void onMemberLongClicked(int contactId);
   }
 
   @Override
@@ -245,6 +235,26 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     viewHolder.textView.setText(txt);
   }
 
+  public void toggleMemberSelection(int contactId) {
+    if (!selectedMembers.remove(contactId)) {
+      selectedMembers.add(contactId);
+    }
+    notifyDataSetChanged();
+  }
+
+  @NonNull
+  public Collection<Integer> getSelectedMembers() {
+    return new HashSet<>(selectedMembers);
+  }
+
+  public int getSelectedMembersCount() {
+    return selectedMembers.size();
+  }
+
+  public void clearSelection() {
+    selectedMembers.clear();
+    notifyDataSetChanged();
+  }
 
   public void changeData(@Nullable int[] memberList, @Nullable DcContact dcContact, @Nullable DcChatlist sharedChats, @Nullable DcChat dcChat) {
     itemData.clear();
@@ -259,13 +269,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       for (int i = 0; i < memberList.length; i++) {
         itemData.add(new ItemData(ItemData.TYPE_MEMBER, memberList[i], 0));
       }
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_GROUP_NAME_N_IMAGE, context.getString(R.string.menu_group_name_and_image)));
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_GROUP_NAME_N_IMAGE, context.getString(R.string.menu_group_name_and_image)));
     }
     else if (sharedChats!=null && dcContact!=null) {
       itemDataContact = dcContact;
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_ADDR,dcContact.getAddr()));
-      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_NAME, context.getString(R.string.menu_edit_name)));
-      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_ENCRYPTION, context.getString(R.string.profile_encryption)));
+//      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_NAME, context.getString(R.string.menu_edit_name)));
+//      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_ENCRYPTION, context.getString(R.string.profile_encryption)));
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.menu_new_chat)));
       itemDataSharedChats = sharedChats;
       int sharedChatsCnt = sharedChats.getCnt();
@@ -274,17 +284,18 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       }
     }
 
-    if(dcChat!=null) {
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_NOTIFY, context.getString(R.string.pref_notifications)));
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_SOUND, context.getString(R.string.pref_sound)));
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_VIBRATE, context.getString(R.string.pref_vibrate)));
-    }
+//    if(dcChat!=null) {
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_NOTIFY,
+//          context.getString(Prefs.isChatMuted(context, dcChat.getId())? R.string.menu_unmute : R.string.menu_mute)));
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_SOUND, context.getString(R.string.pref_sound)));
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_VIBRATE, context.getString(R.string.pref_vibrate)));
+//    }
 
-    if (dcContact!=null) {
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT, context.getString(R.string.menu_block_contact)));
-    }
+//    if (dcContact!=null) {
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT,
+//          context.getString(dcContact.isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact)));
+//    }
 
-    recordCache.clear();
     notifyDataSetChanged();
   }
 }

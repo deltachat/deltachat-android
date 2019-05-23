@@ -24,6 +24,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
@@ -37,7 +38,9 @@ import java.util.Collection;
 import java.util.Locale;
 
 public class ProfileDocumentsFragment
-    extends Fragment implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>, ProfileDocumentsAdapter.ItemClickListener
+    extends Fragment
+    implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
+               ProfileDocumentsAdapter.ItemClickListener, DcEventCenter.DcEventDelegate
 {
   public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
@@ -48,13 +51,15 @@ public class ProfileDocumentsFragment
   private ActionMode actionMode;
   private ActionModeCallback actionModeCallback = new ActionModeCallback();
 
-  protected int          chatId;
-  protected Locale locale;
+  private ApplicationDcContext dcContext;
+  protected int                chatId;
+  protected Locale             locale;
 
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
 
+    dcContext = DcHelper.getContext(getContext());
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
     locale = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
     if (locale == null) throw new AssertionError();
@@ -77,7 +82,20 @@ public class ProfileDocumentsFragment
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);
 
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     return view;
+  }
+
+  @Override
+  public void onDestroyView() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroyView();
+  }
+
+  @Override
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    getLoaderManager().restartLoader(0, null, this);
   }
 
   @Override
@@ -130,7 +148,7 @@ public class ProfileDocumentsFragment
   }
 
   private void handleMediaPreviewClick(@NonNull DcMsg dcMsg) {
-    // audio is stated by the play-button
+    // audio is started by the play-button
     if (dcMsg.getType()==DcMsg.DC_MSG_AUDIO || dcMsg.getType()==DcMsg.DC_MSG_VOICE) {
       return;
     }
@@ -140,7 +158,6 @@ public class ProfileDocumentsFragment
       return;
     }
 
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
     dcContext.openForViewOrShare(dcMsg.getId(), Intent.ACTION_VIEW);
   }
 
@@ -165,7 +182,6 @@ public class ProfileDocumentsFragment
     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
     builder.setMessage(confirmMessage);
     builder.setCancelable(true);
-    final DcContext dcContext = DcHelper.getContext(getContext());
 
     builder.setPositiveButton(R.string.delete, (dialogInterface, i) -> {
       new ProgressDialogAsyncTask<DcMsg, Void, Void>(getContext(),

@@ -1,45 +1,66 @@
 package org.thoughtcrime.securesms;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
-public class ProfileSettingsFragment extends Fragment implements ProfileSettingsAdapter.ItemClickListener {
+public class ProfileSettingsFragment extends Fragment
+             implements ProfileSettingsAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
   public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
 
-  private RecyclerView           recyclerView;
+  private static final int REQUEST_CODE_PICK_CONTACT = 2;
+
+  private RecyclerView           list;
+  private StickyHeaderDecoration listDecoration;
   private ProfileSettingsAdapter adapter;
+  private ActionMode             actionMode;
+  private ActionModeCallback     actionModeCallback = new ActionModeCallback();
+
 
   private Locale               locale;
   private ApplicationDcContext dcContext;
   protected int                chatId;
-  private DcChat               dcChat;
   private int                  contactId;
-  private DcContact            dcContact;
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -50,10 +71,6 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
     contactId = getArguments().getInt(CONTACT_ID_EXTRA, -1);
     dcContext = DcHelper.getContext(getContext());
-
-    // if given, the ids really belong together, this is checked in ProfileActivity
-    if (contactId>0) { dcContact = dcContext.getContact(contactId); }
-    if (chatId>0)    { dcChat    = dcContext.getChat(chatId); }
   }
 
   @Override
@@ -61,20 +78,41 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
     View view = inflater.inflate(R.layout.profile_settings_fragment, container, false);
     adapter = new ProfileSettingsAdapter(getContext(), GlideApp.with(this), locale,this);
 
-    recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
-    recyclerView.setAdapter(adapter);
-    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-    recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, false, true));
+    list  = ViewUtil.findById(view, R.id.recycler_view);
+    list.setAdapter(adapter);
+    list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    listDecoration = new StickyHeaderDecoration(adapter, false, true);
+    list.addItemDecoration(listDecoration);
 
     update();
 
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     return view;
+  }
+
+  @Override
+  public void onDestroyView() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroyView();
+  }
+
+  @Override
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    update();
   }
 
   private void update()
   {
     int[]      memberList = null;
     DcChatlist sharedChats = null;
+
+    DcChat dcChat = null;
+    DcContact dcContact = null;
+    if (contactId>0) { dcContact = dcContext.getContact(contactId); }
+    if (chatId>0)    { dcChat    = dcContext.getChat(chatId); }
 
     if(dcChat!=null && dcChat.isGroup()) {
       memberList = dcContext.getChatContacts(chatId);
@@ -84,7 +122,12 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
     }
 
     adapter.changeData(memberList, dcContact, sharedChats, dcChat);
+    listDecoration.invalidateLayouts();
   }
+
+
+  // handle events
+  // =========================================================================
 
   @Override
   public void onSettingsClicked(int settingsId) {
@@ -92,17 +135,107 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
       case ProfileSettingsAdapter.SETTING_CONTACT_ADDR:
         onContactAddrClicked();
         break;
+      case ProfileSettingsAdapter.SETTING_NEW_CHAT:
+        onNewChat();
+        break;
       case ProfileSettingsAdapter.SETTING_CONTACT_NAME:
-        onEditContactName();
+        ((ProfileActivity)getActivity()).onEditContactName();
         break;
       case ProfileSettingsAdapter.SETTING_ENCRYPTION:
-        onEncrInfo();
+        ((ProfileActivity)getActivity()).onEncrInfo();
+        break;
+      case ProfileSettingsAdapter.SETTING_BLOCK_CONTACT:
+        ((ProfileActivity)getActivity()).onBlockContact();
+        break;
+      case ProfileSettingsAdapter.SETTING_NOTIFY:
+        ((ProfileActivity)getActivity()).onNotifyOnOff();
+        break;
+      case ProfileSettingsAdapter.SETTING_SOUND:
+        ((ProfileActivity)getActivity()).onSoundSettings();
+        break;
+      case ProfileSettingsAdapter.SETTING_VIBRATE:
+        ((ProfileActivity)getActivity()).onVibrateSettings();
         break;
     }
   }
 
+  @Override
+  public void onMemberLongClicked(int contactId) {
+    if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
+      if (actionMode==null) {
+        adapter.toggleMemberSelection(contactId);
+        actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+      } else {
+        onMemberClicked(contactId);
+      }
+    }
+  }
+
+  @Override
+  public void onMemberClicked(int contactId) {
+    if (actionMode!=null) {
+      if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
+        adapter.toggleMemberSelection(contactId);
+        if (adapter.getSelectedMembersCount() == 0) {
+          actionMode.finish();
+          actionMode = null;
+        } else {
+          actionMode.setTitle(String.valueOf(adapter.getSelectedMembersCount()));
+        }
+      }
+    }
+    else if(contactId==DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+      onAddMember();
+    }
+    else if(contactId==DcContact.DC_CONTACT_ID_QR_INVITE) {
+      onQrInvite();
+    }
+    else if(contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
+      new AlertDialog.Builder(getContext())
+          .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+            int chatId = dcContext.createChatByContactId(contactId);
+            if( chatId != 0 ) {
+              Intent intent = new Intent(getContext(), ConversationActivity.class);
+              intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+              getContext().startActivity(intent);
+              getActivity().finish();
+            }
+          })
+          .setNegativeButton(android.R.string.cancel, null)
+          .setMessage(getString(R.string.ask_start_chat_with, dcContext.getContact(contactId).getDisplayName()))
+          .show();
+    }
+  }
+
+  public void onAddMember() {
+    DcChat dcChat = dcContext.getChat(chatId);
+    Intent intent = new Intent(getContext(), ContactMultiSelectionActivity.class);
+    intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, dcChat.isVerified());
+    ArrayList<String> preselectedContacts = new ArrayList<>();
+    int[] memberIds = dcContext.getChatContacts(chatId);
+    for (int memberId : memberIds) {
+      preselectedContacts.add(dcContext.getContact(memberId).getAddr());
+    }
+    intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
+    startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT);
+  }
+
+  public void onQrInvite() {
+    Intent qrIntent = new Intent(getContext(), QrShowActivity.class);
+    qrIntent.putExtra(QrShowActivity.CHAT_ID, chatId);
+    startActivity(qrIntent);
+  }
+
+  @Override
+  public void onSharedChatClicked(int chatId) {
+    Intent intent = new Intent(getContext(), ConversationActivity.class);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+    getContext().startActivity(intent);
+    getActivity().finish();
+  }
+
   private void onContactAddrClicked() {
-    String address = dcContact.getAddr();
+    String address = dcContext.getContact(contactId).getAddr();
     new AlertDialog.Builder(getContext())
         .setTitle(address)
         .setItems(new CharSequence[]{
@@ -116,25 +249,93 @@ public class ProfileSettingsFragment extends Fragment implements ProfileSettings
         .show();
   }
 
-  private void onEncrInfo() {
-    String info_str = dcContext.getContactEncrInfo(contactId);
+  private void onNewChat() {
+    DcContact dcContact = dcContext.getContact(contactId);
     new AlertDialog.Builder(getActivity())
-        .setMessage(info_str)
-        .setPositiveButton(android.R.string.ok, null)
+        .setMessage(getActivity().getString(R.string.ask_start_chat_with, dcContact.getNameNAddr()))
+        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+          int chatId = dcContext.createChatByContactId(dcContact.getId());
+          if (chatId != 0) {
+            Intent intent = new Intent(getActivity(), ConversationActivity.class);
+            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+            getActivity().startActivity(intent);
+            getActivity().finish();
+          }
+        })
+        .setNegativeButton(R.string.cancel, null)
         .show();
   }
 
-  private void onEditContactName() {
-    final EditText txt = new EditText(getActivity());
-    txt.setText(dcContact.getName());
-    new AlertDialog.Builder(getActivity())
-        .setTitle(R.string.menu_edit_name)
-        .setView(txt)
-        .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
-          String newName = txt.getText().toString();
-          dcContext.createContact(newName, dcContact.getAddr());
-        })
-        .setNegativeButton(android.R.string.cancel, null)
-        .show();
+  private class ActionModeCallback implements ActionMode.Callback {
+
+    private int originalStatusBarColor;
+
+    @Override
+    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+      mode.getMenuInflater().inflate(R.menu.profile_context, menu);
+      mode.setTitle("1");
+
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        Window window = getActivity().getWindow();
+        originalStatusBarColor = window.getStatusBarColor();
+        window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
+      }
+      return true;
+    }
+
+    @Override
+    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+      return false;
+    }
+
+    @Override
+    public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
+      switch (menuItem.getItemId()) {
+        case R.id.delete:
+          final Collection<Integer> toDelIds = adapter.getSelectedMembers();
+          StringBuilder readableToDelList = new StringBuilder();
+          for (Integer toDelId : toDelIds) {
+            if(readableToDelList.length()>0) {
+              readableToDelList.append(", ");
+            }
+            readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
+          }
+          new AlertDialog.Builder(getContext())
+              .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                for (Integer toDelId : toDelIds) {
+                  dcContext.removeContactFromChat(chatId, toDelId);
+                }
+                mode.finish();
+              })
+              .setNegativeButton(android.R.string.cancel, null)
+              .setMessage(getString(R.string.ask_remove_members, readableToDelList))
+              .show();
+          return true;
+      }
+      return false;
+    }
+
+    @Override
+    public void onDestroyActionMode(ActionMode mode) {
+      actionMode = null;
+      adapter.clearSelection();
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        getActivity().getWindow().setStatusBarColor(originalStatusBarColor);
+      }
+    }
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
+      List<String> selected = data.getStringArrayListExtra("contacts");
+      for (String addr : selected) {
+        if (addr!=null) {
+          int toAddId = dcContext.createContact(null, addr);
+          dcContext.addContactToChat(chatId, toAddId);
+        }
+      }
+    }
   }
 }
