@@ -6,7 +6,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -49,7 +48,6 @@ public class ProfileSettingsFragment extends Fragment
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
 
-  private static final int REQUEST_CODE_PICK_RINGTONE = 1;
   private static final int REQUEST_CODE_PICK_CONTACT = 2;
 
   private RecyclerView           list;
@@ -128,7 +126,7 @@ public class ProfileSettingsFragment extends Fragment
   }
 
 
-  // handle the various events
+  // handle events
   // =========================================================================
 
   @Override
@@ -137,26 +135,26 @@ public class ProfileSettingsFragment extends Fragment
       case ProfileSettingsAdapter.SETTING_CONTACT_ADDR:
         onContactAddrClicked();
         break;
-      case ProfileSettingsAdapter.SETTING_CONTACT_NAME:
-        onEditContactName();
-        break;
-      case ProfileSettingsAdapter.SETTING_ENCRYPTION:
-        onEncrInfo();
-        break;
       case ProfileSettingsAdapter.SETTING_NEW_CHAT:
         onNewChat();
         break;
+      case ProfileSettingsAdapter.SETTING_CONTACT_NAME:
+        ((ProfileActivity)getActivity()).onEditContactName();
+        break;
+      case ProfileSettingsAdapter.SETTING_ENCRYPTION:
+        ((ProfileActivity)getActivity()).onEncrInfo();
+        break;
       case ProfileSettingsAdapter.SETTING_BLOCK_CONTACT:
-        onBlockContact();
+        ((ProfileActivity)getActivity()).onBlockContact();
         break;
       case ProfileSettingsAdapter.SETTING_NOTIFY:
-        onNotifyOnOff();
+        ((ProfileActivity)getActivity()).onNotifyOnOff();
         break;
       case ProfileSettingsAdapter.SETTING_SOUND:
-        onSoundSettings();
+        ((ProfileActivity)getActivity()).onSoundSettings();
         break;
       case ProfileSettingsAdapter.SETTING_VIBRATE:
-        onVibrateSettings();
+        ((ProfileActivity)getActivity()).onVibrateSettings();
         break;
     }
   }
@@ -251,29 +249,6 @@ public class ProfileSettingsFragment extends Fragment
         .show();
   }
 
-  private void onEncrInfo() {
-    String info_str = dcContext.getContactEncrInfo(contactId);
-    new AlertDialog.Builder(getActivity())
-        .setMessage(info_str)
-        .setPositiveButton(android.R.string.ok, null)
-        .show();
-  }
-
-  private void onEditContactName() {
-    DcContact dcContact = dcContext.getContact(contactId);
-    final EditText txt = new EditText(getActivity());
-    txt.setText(dcContact.getName());
-    new AlertDialog.Builder(getActivity())
-        .setTitle(R.string.menu_edit_name)
-        .setView(txt)
-        .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
-          String newName = txt.getText().toString();
-          dcContext.createContact(newName, dcContact.getAddr());
-        })
-        .setNegativeButton(android.R.string.cancel, null)
-        .show();
-  }
-
   private void onNewChat() {
     DcContact dcContact = dcContext.getContact(contactId);
     new AlertDialog.Builder(getActivity())
@@ -289,70 +264,6 @@ public class ProfileSettingsFragment extends Fragment
         })
         .setNegativeButton(R.string.cancel, null)
         .show();
-  }
-
-  private void onBlockContact() {
-    DcContact dcContact = dcContext.getContact(contactId);
-    if(dcContact.isBlocked()) {
-      new AlertDialog.Builder(getActivity())
-          .setMessage(R.string.ask_unblock_contact)
-          .setCancelable(true)
-          .setNegativeButton(android.R.string.cancel, null)
-          .setPositiveButton(R.string.menu_unblock_contact, (dialog, which) -> {
-            dcContext.blockContact(contactId, 0);
-          }).show();
-    }
-    else {
-      new AlertDialog.Builder(getActivity())
-          .setMessage(R.string.ask_block_contact)
-          .setCancelable(true)
-          .setNegativeButton(android.R.string.cancel, null)
-          .setPositiveButton(R.string.menu_block_contact, (dialog, which) -> {
-            dcContext.blockContact(contactId, 1);
-          }).show();
-    }
-  }
-
-  private void onNotifyOnOff() {
-    if (Prefs.isChatMuted(getContext(), chatId)) {
-      setMuted(0);
-    }
-    else {
-      MuteDialog.show(getActivity(), until -> setMuted(until));
-    }
-  }
-
-  private void setMuted(final long until) {
-    if(chatId!=0) {
-      Prefs.setChatMutedUntil(getActivity(), chatId, until);
-      update(); // in contrast to most other settings, muting is handled in the ui and does not result in an DC_EVENT
-    }
-  }
-
-  private void onSoundSettings() {
-    Uri current = dcContext.getRecipient(dcContext.getChat(chatId)).getMessageRingtone();
-    Uri defaultUri = Prefs.getNotificationRingtone(getContext());
-
-    if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
-    else if (current.toString().isEmpty()) current = null;
-
-    Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
-    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
-    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true);
-    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, defaultUri);
-    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
-    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
-
-    startActivityForResult(intent, REQUEST_CODE_PICK_RINGTONE);
-  }
-
-  private void onVibrateSettings() {
-    new AlertDialog.Builder(getContext())
-      .setTitle(R.string.pref_vibrate)
-      .setItems(R.array.recipient_vibrate_entries, (dialog, which) -> {
-        Prefs.setChatVibrate(getContext(), chatId, Prefs.VibrateState.fromId(which));
-      })
-      .show();
   }
 
   private class ActionModeCallback implements ActionMode.Callback {
@@ -417,16 +328,7 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode==REQUEST_CODE_PICK_RINGTONE && resultCode==Activity.RESULT_OK && data!=null) {
-      Uri value = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-      Uri defaultValue = Prefs.getNotificationRingtone(getContext());
-
-      if (defaultValue.equals(value)) value = null;
-      else if (value == null)         value = Uri.EMPTY;
-
-      Prefs.setChatRingtone(getContext(), chatId, value);
-    }
-    else if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
+    if (requestCode==REQUEST_CODE_PICK_CONTACT && resultCode==Activity.RESULT_OK && data!=null) {
       List<String> selected = data.getStringArrayListExtra("contacts");
       for (String addr : selected) {
         if (addr!=null) {

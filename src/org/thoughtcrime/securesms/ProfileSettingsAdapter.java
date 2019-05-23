@@ -269,13 +269,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       for (int i = 0; i < memberList.length; i++) {
         itemData.add(new ItemData(ItemData.TYPE_MEMBER, memberList[i], 0));
       }
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_GROUP_NAME_N_IMAGE, context.getString(R.string.menu_group_name_and_image)));
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_GROUP_NAME_N_IMAGE, context.getString(R.string.menu_group_name_and_image)));
     }
     else if (sharedChats!=null && dcContact!=null) {
       itemDataContact = dcContact;
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_ADDR,dcContact.getAddr()));
-      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_NAME, context.getString(R.string.menu_edit_name)));
-      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_ENCRYPTION, context.getString(R.string.profile_encryption)));
+//      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_NAME, context.getString(R.string.menu_edit_name)));
+//      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_ENCRYPTION, context.getString(R.string.profile_encryption)));
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.menu_new_chat)));
       itemDataSharedChats = sharedChats;
       int sharedChatsCnt = sharedChats.getCnt();
@@ -284,17 +284,17 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       }
     }
 
-    if(dcChat!=null) {
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_NOTIFY,
-          context.getString(Prefs.isChatMuted(context, dcChat.getId())? R.string.menu_unmute : R.string.menu_mute)));
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_SOUND, context.getString(R.string.pref_sound)));
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_VIBRATE, context.getString(R.string.pref_vibrate)));
-    }
+//    if(dcChat!=null) {
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_NOTIFY,
+//          context.getString(Prefs.isChatMuted(context, dcChat.getId())? R.string.menu_unmute : R.string.menu_mute)));
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_SOUND, context.getString(R.string.pref_sound)));
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_VIBRATE, context.getString(R.string.pref_vibrate)));
+//    }
 
-    if (dcContact!=null) {
-      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT,
-          context.getString(dcContact.isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact)));
-    }
+//    if (dcContact!=null) {
+//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT,
+//          context.getString(dcContact.isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact)));
+//    }
 
     notifyDataSetChanged();
   }

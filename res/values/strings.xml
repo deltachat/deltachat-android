@@ -251,6 +251,7 @@
     <string name="profile_shared_chats">Shared chats</string>
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Group</string>
+    <string name="tab_members">Members</string>
     <string name="tab_gallery">Gallery</string>
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Links</string>
