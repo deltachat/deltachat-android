@@ -344,6 +344,7 @@
     <string name="pref_read_receipts_explain">Bildirişlər aradan qaldırılırsa, başqalarının oxuduğu bildirişləri görə bilməyəcəksiniz.</string>
     <string name="pref_manage_keys">Açar edarəetməsi</string>
     <string name="pref_use_system_emoji">Sistem emojisini istifadə edin</string>
+    <string name="pref_use_system_emoji_explain">Emoji Delta chat üçün daxili dəstəyi bağlayın. </string>
     <string name="pref_app_access">Daxil oldu</string>
     <string name="pref_communication">Əlaqə</string>
     <string name="pref_chats">Çatlar</string>
@@ -378,6 +379,7 @@
     <!-- autocrypt -->
     <string name="autocrypt">Avtomatik şifrələmə</string>
     <string name="autocrypt_explain">Avtoşifrələmə, avtomatik ucdan uca e-poçt şifrələməsi üçün yeni və açıq bir spesifikasiyadır. \n\nTədbirdən sonrakı qurulum avtomatik olaraq yaradılıb və Autocrypt Setup Messages ilə cihazlar arasında köçürə bilərsiniz.</string>
+    <string name="autocrypt_send_asm_title">Autocrypt mesaj ayarı göndər</string>
     <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
     <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
     <string name="autocrypt_asm_subject">Autocrypt mesaj ayarı</string>
@@ -389,13 +391,17 @@
 
     <string name="systemmsg_group_image_changed">Qrup şəkili dəyişildi. </string>
     <string name="systemmsg_group_image_deleted">Qrupun şəkili silindi. </string>
+    <string name="systemmsg_member_removed">%1$s üzv silindi. </string>
     <string name="systemmsg_group_left">Qrup buraxdı.</string>
     <string name="systemmsg_read_receipt_subject">Qəbul olunanları oxuyun</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s məndən. </string>
     <!-- screen lock -->
     <string name="screenlock_title">Ekran kilidi</string>
     <string name="screenlock_authentication_failed">Daxilolma uğursuz oldu.</string>
     <string name="screenlock_unlock_title">Delta Chat-ın kilidini aç</string>
     <string name="screenlock_unlock_description">Delta Chat-ı blokdan açmaq üçün sistem parolunu daxil edin. </string>
+    <string name="screenlock_inactivity_timeout">Ğeyri aktiv olan zaman blok vaxtı</string>
     <string name="screenlock_inactivity_timeout_interval">Ğeyri aktiv gözləmə intervalı. </string>
 
 
@@ -423,6 +429,12 @@
     <string name="notify_name_only">Ancaq ad</string>
     <string name="notify_no_name_or_message">Adı və ya mesaj yoxdur</string>
     <string name="notify_repeat_one_time">Bir dəfə</string>
+    <string name="notify_repeat_two_times">İki dəfə</string>
+    <string name="notify_repeat_three_times">3 dəfə</string>
+    <string name="notify_repeat_five_times">5 dəfə</string>
+    <string name="notify_repeat_ten_times">10 dəfə</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">İzin tələb olunur</string>
     <string name="perm_continue">Davam edin</string>
@@ -430,6 +442,7 @@
     <string name="perm_explain_need_for_camera_access">Foto və video çəkmək üçün Delta Chat-ə kameraya giriş imkanı verin.</string>
     <string name="perm_explain_need_for_mic_access">Səsli mesajları göndərmək üçün mikrofona izn verin. </string>
     <string name="perm_explain_need_for_storage_access">Delta Chat, faylları idxal / ixrac etmək üçün iznə ehtiyacı var.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat-la seçilmiş faylları bölüşmək üçün icazə vermək lazımdır. </string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat şəkillər və ya video çəkmək üçün kamera icazə tələb edir, lakin bu, əbədi imtina edilmişdir. Proqramın sistem ayarlarına gedib \"İcazələr\"-i seçin və \"kamera\" izni verin.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
     <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>

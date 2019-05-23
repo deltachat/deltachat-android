@@ -398,7 +398,7 @@
     <string name="pref_background_btn_default">Varsayılan görseli kullan</string>
     <string name="pref_background_btn_gallery">Galeriden seç</string>
     <string name="pref_imap_folder_handling">IMAP klasör işleme</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği etkisizleştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun şekilde yapılandırıldığından emin olun.\n\nYoksa hiçbir şekilde çalışmayabilir.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği etkisizleştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nYoksa hiç çalışmayabilir.</string>
     <string name="pref_watch_inbox_folder">Gelen Kutusu klasörünü izle</string>
     <string name="pref_watch_sent_folder">Gönderilen klasörünü izle</string>
     <string name="pref_watch_mvbox_folder">DeltaChat klasörünü izle</string>
@@ -515,7 +515,7 @@
     <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoğrafları, videoları ya da sesleri eklemek ya da dışa aktarmak için depolama izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat, bir konum eklemek için Konum izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat artalandayken iletileri almak için buraya dokunun.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat, en az şekilde kaynak kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
 
     <!-- languages -->
     <string name="language_be">Belçika</string>
