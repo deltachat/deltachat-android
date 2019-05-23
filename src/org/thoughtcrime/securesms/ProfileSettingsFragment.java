@@ -111,6 +111,10 @@ public class ProfileSettingsFragment extends Fragment
     adapter.changeData(memberList, dcContact, sharedChats, dcChat);
   }
 
+
+  // handle the various events
+  // =========================================================================
+
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
@@ -139,6 +143,12 @@ public class ProfileSettingsFragment extends Fragment
         onVibrateSettings();
         break;
     }
+  }
+  @Override
+  public void onSharedChatClicked(int chatId) {
+    Intent intent = new Intent(getContext(), ConversationActivity.class);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+    getContext().startActivity(intent);
   }
 
   private void onContactAddrClicked() {
@@ -268,6 +278,11 @@ public class ProfileSettingsFragment extends Fragment
   }
 
   private void onVibrateSettings() {
-
+    new AlertDialog.Builder(getContext())
+      .setTitle(R.string.pref_vibrate)
+      .setItems(R.array.recipient_vibrate_entries, (dialog, which) -> {
+        Prefs.setChatVibrate(getContext(), chatId, Prefs.VibrateState.fromId(which));
+      })
+      .show();
   }
 }

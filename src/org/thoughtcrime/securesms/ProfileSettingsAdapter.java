@@ -163,12 +163,14 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       ConversationListItem conversationListItem = (ConversationListItem) holder.itemView;
       int chatlistIndex = itemData.get(i).chatlistIndex;
 
-      DcChat chat = dcContext.getChat(itemDataSharedChats.getChatId(chatlistIndex));
+      int chatId = itemDataSharedChats.getChatId(chatlistIndex);
+      DcChat chat = dcContext.getChat(chatId);
       DcLot summary = itemDataSharedChats.getSummary(chatlistIndex, chat);
 
       conversationListItem.bind(dcContext.getThreadRecord(summary, chat),
           itemDataSharedChats.getMsgId(chatlistIndex), summary, glideRequests,
           locale, Collections.emptySet(), false);
+      conversationListItem.setOnClickListener(view -> clickListener.onSharedChatClicked(chatId));
     }
     else if(holder.itemView instanceof ProfileSettingsItem) {
       int settingsId = itemData.get(i).settingsId;
@@ -185,6 +187,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   public interface ItemClickListener {
     void onSettingsClicked(int settingsId);
+    void onSharedChatClicked(int chatId);
   }
 
   @Override
