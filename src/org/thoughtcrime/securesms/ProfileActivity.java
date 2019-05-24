@@ -17,14 +17,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -65,6 +70,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private Toolbar            toolbar;
   private TabLayout          tabLayout;
   private ViewPager          viewPager;
+  private ImageView          avatar;
+  private GlideRequests      glideRequests;
 
   @Override
   protected void onPreCreate() {
@@ -76,6 +83,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onCreate(Bundle bundle, boolean ready) {
     setContentView(R.layout.profile_activity);
+    glideRequests = GlideApp.with(this);
 
     initializeResources();
     initializeToolbar();
@@ -173,6 +181,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar   = ViewUtil.findById(this, R.id.toolbar);
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
+    this.avatar    = ViewUtil.findById(this, R.id.avatar);
   }
 
   private void initializeToolbar()
@@ -183,6 +192,21 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void updateToolbar() {
+    Recipient recipient = new Recipient(this, chatId!=0? dcContext.getChat(chatId) : null, (chatId==0&&contactId!=0)? dcContext.getContact(contactId) : null);;
+    glideRequests.load(recipient.getContactPhoto(this))
+        .fallback(recipient.getFallbackContactPhoto().asCallCard(this))
+        .error(recipient.getFallbackContactPhoto().asCallCard(this))
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .into(this.avatar);
+
+    if (recipient.getContactPhoto(this) == null) this.avatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+    else                                     this.avatar.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+//    this.avatar.setBackgroundColor(recipient.getFallbackAvatarColor(this));
+//    this.toolbarLayout.setTitle(recipient.toShortString());
+//    this.toolbarLayout.setContentScrimColor(recipient.getFallbackAvatarColor(this));
+
+
     if (isGlobalProfile()){
       getSupportActionBar().setTitle(R.string.menu_all_media);
     }
