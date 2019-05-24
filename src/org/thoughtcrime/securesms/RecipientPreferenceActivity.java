@@ -170,7 +170,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     glideRequests.load(recipient.getContactPhoto(this))
                  .fallback(recipient.getFallbackContactPhoto().asCallCard(this))
                  .error(recipient.getFallbackContactPhoto().asCallCard(this))
-                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                  .into(this.avatar);
 
     if (recipient.getContactPhoto(this) == null) this.avatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);

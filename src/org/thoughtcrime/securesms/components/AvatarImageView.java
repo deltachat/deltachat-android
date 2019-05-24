@@ -12,7 +12,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ProfileActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.RecipientPreferenceActivity;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -52,7 +51,7 @@ public class AvatarImageView extends AppCompatImageView {
       requestManager.load(contactPhoto)
                     .fallback(recipient.getFallbackAvatarDrawable(getContext()))
                     .error(recipient.getFallbackAvatarDrawable(getContext()))
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .circleCrop()
                     .into(this);
       if(quickContactEnabled) {
