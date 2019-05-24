@@ -15,8 +15,8 @@
                android:clickable="true"
                android:paddingRight="12dp"
                android:paddingEnd="12dp"
-               android:layout_marginRight="12dp"
-               android:layout_marginEnd="12dp"
+               android:layout_marginRight="4dp"
+               android:layout_marginEnd="4dp"
                android:layout_alignParentLeft="true"
                android:layout_alignParentStart="true"
                android:layout_centerVertical="true"
@@ -25,13 +25,11 @@
     <org.thoughtcrime.securesms.components.AvatarImageView
             android:id="@+id/contact_photo_image"
             android:foreground="@drawable/contact_photo_background"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
             android:layout_toRightOf="@id/up_button"
             android:layout_toEndOf="@id/up_button"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
             android:cropToPadding="true"
             android:transitionName="contact_photo"
             android:clickable="true"
@@ -44,6 +42,8 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/contact_photo_image"
         android:layout_toRightOf="@id/contact_photo_image">
@@ -56,12 +56,13 @@
             android:drawablePadding="5dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:transitionName="recipient_name"
             tools:text="Jules Bonnot" />
 
-        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+        <TextView
             android:id="@+id/subtitle"
+            android:layout_marginTop="-3dp"
             style="@style/TextSecure.SubtitleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,8 +70,8 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textDirection="ltr"
-            android:textSize="13dp"
-            tools:text="(123) 123-1234" />
+            android:textSize="12dp"
+            tools:text="jules@example.org" />
 
     </LinearLayout>
 
