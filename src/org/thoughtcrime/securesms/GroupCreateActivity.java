@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Open Whisper Systems
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.thoughtcrime.securesms;
 
 import android.app.Activity;
@@ -34,7 +17,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
@@ -66,16 +48,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Activity to create and update groups
- *
- * @author Jake McGinty
- */
 public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
                                  implements OnRecipientDeletedListener, DcEventCenter.DcEventDelegate
 {
-
-  private final static String TAG = GroupCreateActivity.class.getSimpleName();
 
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
   public static final String GROUP_CREATE_VERIFIED_EXTRA  = "group_create_verified";
@@ -92,7 +67,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private EditText     groupName;
   private ListView     lv;
   private ImageView    avatar;
-  private TextView     creatingText;
   private Bitmap       avatarBmp;
   private int          groupChatId;
   private boolean      isEdit;
@@ -123,8 +97,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     initializeExistingGroup();
     initializeResources();
 
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CHAT_MODIFIED);
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONTACTS_CHANGED);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
   }
 
   @Override
@@ -216,7 +190,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     lv           = ViewUtil.findById(this, R.id.selected_contacts_list);
     avatar       = ViewUtil.findById(this, R.id.avatar);
     groupName    = ViewUtil.findById(this, R.id.group_name);
-    creatingText = ViewUtil.findById(this, R.id.creating_group_text);
     SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);

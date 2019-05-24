@@ -546,14 +546,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-//  private void handleConversationSettings() {
-//    if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
-//      Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
-//      intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
-//      startActivitySceneTransition(intent, titleView.findViewById(R.id.contact_photo_image), "avatar");
-//    }
-//  }
-
   private void handleUnmuteNotifications() {
     Prefs.setChatMutedUntil(this, chatId, 0);
     titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
