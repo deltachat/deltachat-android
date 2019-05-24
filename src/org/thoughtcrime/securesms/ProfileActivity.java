@@ -90,6 +90,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     titleView = (ConversationTitleView) supportActionBar.getCustomView();
     titleView.setOnBackClickedListener(view -> onBackPressed());
+    titleView.setOnAvatarClickListener(view -> onEdit());
 
     updateToolbar();
 
@@ -316,12 +317,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         onVibrateSettings();
         break;
       case R.id.edit_name_etc:
-        if (chatIsGroup) {
-          onEditGroupNameAndImage();
-        }
-        else {
-          onEditContactName();
-        }
+        onEdit();
         break;
       case R.id.show_encr_info:
         onEncrInfo();
@@ -378,6 +374,15 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           Prefs.setChatVibrate(this, chatId, Prefs.VibrateState.fromId(which));
         })
         .show();
+  }
+
+  public void onEdit() {
+    if (chatIsGroup) {
+      onEditGroupNameAndImage();
+    }
+    else {
+      onEditContactName();
+    }
   }
 
   public void onEditGroupNameAndImage() {
