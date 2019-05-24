@@ -45,6 +45,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public static final String CHAT_ID_EXTRA    = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
   public static final String FORCE_TAB_EXTRA  = "force_tab";
+  public static final String FROM_CHAT        = "from_chat";
 
   public static final int TAB_SETTINGS = 10;
   public static final int TAB_GALLERY  = 20;
@@ -61,6 +62,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private int                  chatId;
   private boolean              chatIsGroup;
   private int                  contactId;
+  private boolean              fromChat;
 
   private ArrayList<Integer> tabs = new ArrayList<>();
   private Toolbar            toolbar;
@@ -146,11 +148,18 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     dynamicLanguage.onResume(this);
   }
 
+  boolean backPressed = false;
+  @Override
+  public void onBackPressed() {
+    backPressed = true;
+    super.onBackPressed();
+  }
+
   @Override
   protected void onPause() {
     super.onPause();
-    if (isFinishing()) {
-      overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    if (backPressed && fromChat) {
+      overridePendingTransition(0, 0);
     }
   }
 
@@ -169,6 +178,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     chatId      = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
     contactId   = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
     chatIsGroup = false;
+    fromChat    = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
       chatId = dcContext.getChatIdByContactId(contactId);
@@ -305,6 +315,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     switch (item.getItemId()) {
       case android.R.id.home:
+        backPressed = true;
         finish();
         return true;
       case R.id.menu_mute_notifications:
