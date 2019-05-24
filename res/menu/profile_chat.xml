@@ -2,11 +2,6 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/menu_group_name_and_image"
-          android:id="@+id/edit_group_name_and_image"
-          android:icon="@drawable/ic_create_white_24dp"
-          app:showAsAction="always"/>
-
     <item android:title="@string/menu_mute"
           android:id="@+id/menu_mute_notifications"
           app:showAsAction="never"/>

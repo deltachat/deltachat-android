@@ -90,12 +90,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
 
+    inflater.inflate(R.menu.profile_common, menu);
+    if (!chatIsGroup) {
+      menu.findItem(R.id.edit_name_etc).setTitle(R.string.menu_edit_name);
+    }
+
     if (!isSelfProfile()) {
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
-        if (!chatIsGroup) {
-          menu.findItem(R.id.edit_group_name_and_image).setVisible(false);
-        }
       }
 
       if (isContactProfile()) {
@@ -298,11 +300,13 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_vibrate:
         onVibrateSettings();
         break;
-      case R.id.edit_group_name_and_image:
-        onEditGroupNameAndImage();
-        break;
-      case R.id.edit_contact_name:
-        onEditContactName();
+      case R.id.edit_name_etc:
+        if (chatIsGroup) {
+          onEditGroupNameAndImage();
+        }
+        else {
+          onEditContactName();
+        }
         break;
       case R.id.show_encr_info:
         onEncrInfo();
