@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -32,7 +34,6 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
                              implements DcEventCenter.DcEventDelegate
@@ -63,6 +64,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private ArrayList<Integer> tabs = new ArrayList<>();
   private Toolbar            toolbar;
+  private ConversationTitleView titleView;
   private TabLayout          tabLayout;
   private ViewPager          viewPager;
 
@@ -78,7 +80,18 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.profile_activity);
 
     initializeResources();
-    initializeToolbar();
+
+    setSupportActionBar(this.toolbar);
+    ActionBar supportActionBar = getSupportActionBar();
+    supportActionBar.setDisplayHomeAsUpEnabled(false);
+    supportActionBar.setCustomView(R.layout.conversation_title_view);
+    supportActionBar.setDisplayShowCustomEnabled(true);
+    supportActionBar.setDisplayShowTitleEnabled(false);
+
+    titleView = (ConversationTitleView) supportActionBar.getCustomView();
+    titleView.setOnBackClickedListener(view -> onBackPressed());
+
+    updateToolbar();
 
     this.tabLayout.setupWithViewPager(viewPager);
     this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
@@ -133,6 +146,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
+  protected void onPause() {
+    super.onPause();
+    if (isFinishing()) {
+      overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+  }
+
+  @Override
   public void onDestroy() {
     dcContext.eventCenter.removeObservers(this);
     super.onDestroy();
@@ -175,22 +196,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
   }
 
-  private void initializeToolbar()
-  {
-    setSupportActionBar(this.toolbar);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    updateToolbar();
-  }
-
   private void updateToolbar() {
     if (isGlobalProfile()){
       getSupportActionBar().setTitle(R.string.menu_all_media);
     }
-    else if (isContactProfile()){
-      getSupportActionBar().setTitle(dcContext.getContact(contactId).getName());
+    else if (chatId > 0) {
+      DcChat dcChat  = dcContext.getChat(chatId);
+      titleView.setTitle(GlideApp.with(this), dcChat, false);
     }
-    else if (chatId >= 0) {
-      getSupportActionBar().setTitle(dcContext.getChat(chatId).getName());
+    else if (isContactProfile()){
+      titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
     }
   }
 
@@ -258,7 +273,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             return getString(contactId==DcContact.DC_CONTACT_ID_SELF? R.string.self : R.string.tab_contact);
           }
           else {
-            return getString(R.string.tab_members);
+            return getString(R.string.tab_group);
           }
 
         case TAB_GALLERY:
