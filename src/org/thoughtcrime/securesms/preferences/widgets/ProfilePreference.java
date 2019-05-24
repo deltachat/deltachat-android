@@ -77,7 +77,7 @@ public class ProfilePreference extends Preference {
             .load(profileImage)
             .error(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(getContext(), getContext().getResources().getColor(R.color.grey_400)))
             .circleCrop()
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(avatarView);
 
     if (!TextUtils.isEmpty(profileName)) {
