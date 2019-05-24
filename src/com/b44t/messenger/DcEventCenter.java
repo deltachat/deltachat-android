@@ -1,10 +1,7 @@
 package com.b44t.messenger;
 
-import android.os.AsyncTask;
-
 import org.thoughtcrime.securesms.util.Util;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Hashtable;
 

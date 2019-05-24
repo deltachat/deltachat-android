@@ -90,18 +90,38 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
 
-    if (chatId!=0) {
-      inflater.inflate(R.menu.profile_chat, menu);
-      if(!chatIsGroup) {
-        menu.findItem(R.id.edit_group_name_and_image).setVisible(false);
+    inflater.inflate(R.menu.profile_common, menu);
+    if (!chatIsGroup) {
+      menu.findItem(R.id.edit_name_etc).setTitle(R.string.menu_edit_name);
+    }
+
+    if (!isSelfProfile()) {
+      if (chatId != 0) {
+        inflater.inflate(R.menu.profile_chat, menu);
+      }
+
+      if (isContactProfile()) {
+        inflater.inflate(R.menu.profile_contact, menu);
       }
     }
 
-    if (isContactProfile()) {
-      inflater.inflate(R.menu.profile_contact, menu);
+    super.onCreateOptionsMenu(menu);
+    return true;
+  }
+
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    MenuItem item = menu.findItem(R.id.block_contact);
+    if(item!=null) {
+      item.setTitle(dcContext.getContact(contactId).isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact);
     }
 
-    super.onCreateOptionsMenu(menu);
+    item = menu.findItem(R.id.menu_mute_notifications);
+    if(item!=null) {
+      item.setTitle(Prefs.isChatMuted(this, chatId)? R.string.menu_unmute : R.string.menu_mute);
+    }
+
+    super.onPrepareOptionsMenu(menu);
     return true;
   }
 
@@ -280,11 +300,13 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_vibrate:
         onVibrateSettings();
         break;
-      case R.id.edit_group_name_and_image:
-        onEditGroupNameAndImage();
-        break;
-      case R.id.edit_contact_name:
-        onEditContactName();
+      case R.id.edit_name_etc:
+        if (chatIsGroup) {
+          onEditGroupNameAndImage();
+        }
+        else {
+          onEditContactName();
+        }
         break;
       case R.id.show_encr_info:
         onEncrInfo();
@@ -309,6 +331,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private void setMuted(final long until) {
     if(chatId!=0) {
       Prefs.setChatMutedUntil(this, chatId, until);
+
+      // normally, sendToObservers() is only used to forward events from the core to the ui.
+      // we do an exception here, as "mute" is not handled by the core,
+      // but various elements listen to similar changes with the DC_EVENT_CHAT_MODIFIED event.
+      dcContext.eventCenter.sendToObservers(DcContext.DC_EVENT_CHAT_MODIFIED, new Integer(chatId), 0);
     }
   }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- android:icon="@drawable/ic_create_white_24dp" app:showAsAction="always" is not needed as the image is already shown
+     and editing group images and names is not an action that is used every time the profile is opened -->
+    <item android:title="@string/menu_group_name_and_image"
+          android:id="@+id/edit_name_etc"
+          app:showAsAction="never"/>
+
+</menu>
