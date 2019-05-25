@@ -197,6 +197,12 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     findViewById(R.id.add_member_button).setOnClickListener(new AddRecipientButtonListener());
     ViewUtil.findById(this, R.id.verify_button).setOnClickListener(new ShowQrButtonListener());
     initializeAvatarView();
+
+    if(isEdit()) {
+      lv.setVisibility(View.GONE);
+      findViewById(R.id.add_member_button).setVisibility(View.GONE);
+      findViewById( R.id.verify_button).setVisibility(View.GONE);
+    }
   }
 
   private void initializeAvatarView() {
@@ -480,6 +486,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (!isFinishing()) {
       addSelectedContacts(participantsArray);
       groupName.setText(recipient.getName());
+      if (isEdit() && recipient.getName()!=null) {
+        groupName.setSelection(recipient.getName().length(), recipient.getName().length());
+      }
       SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, participants);
       adapter.setOnRecipientDeletedListener(this);
       lv.setAdapter(adapter);
