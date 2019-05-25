@@ -1,25 +1,8 @@
-/**
- * Copyright (C) 2014 Open Whisper Systems
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package org.thoughtcrime.securesms.jobmanager;
 
 import android.content.Context;
 import android.os.PowerManager;
 
-import org.thoughtcrime.securesms.jobmanager.persistence.JobSerializer;
 import org.thoughtcrime.securesms.jobmanager.requirements.RequirementListener;
 import org.thoughtcrime.securesms.jobmanager.requirements.RequirementProvider;
 
@@ -43,7 +26,7 @@ public class JobManager implements RequirementListener {
 
   private JobManager(Context context, String name,
                      List<RequirementProvider> requirementProviders,
-                     JobSerializer jobSerializer, int consumers)
+                     int consumers)
   {
     this.context              = context;
     this.requirementProviders = requirementProviders;
@@ -110,7 +93,6 @@ public class JobManager implements RequirementListener {
     private final Context                   context;
     private       String                    name;
     private       List<RequirementProvider> requirementProviders;
-    private       JobSerializer             jobSerializer;
     private       int                       consumerThreads;
 
     Builder(Context context) {
@@ -127,18 +109,6 @@ public class JobManager implements RequirementListener {
      */
     public Builder withName(String name) {
       this.name = name;
-      return this;
-    }
-
-    /**
-     * The {@link org.thoughtcrime.securesms.jobmanager.persistence.JobSerializer} to use for persistent Jobs.
-     * Required if persistent Jobs are used.
-     *
-     * @param jobSerializer The serializer to use.
-     * @return The builder.
-     */
-    public Builder withJobSerializer(JobSerializer jobSerializer) {
-      this.jobSerializer = jobSerializer;
       return this;
     }
 
@@ -166,7 +136,6 @@ public class JobManager implements RequirementListener {
       }
 
       return new JobManager(context, name, requirementProviders,
-                            jobSerializer,
                             consumerThreads);
     }
   }
