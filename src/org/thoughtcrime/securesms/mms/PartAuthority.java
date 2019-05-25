@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import org.thoughtcrime.securesms.attachments.AttachmentId;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.providers.SingleUseBlobProvider;
 
@@ -82,16 +81,6 @@ public class PartAuthority {
       default:
         return null;
     }
-  }
-
-  public static Uri getAttachmentDataUri(AttachmentId attachmentId) {
-    Uri uri = Uri.withAppendedPath(PART_CONTENT_URI, String.valueOf(attachmentId.getUniqueId()));
-    return ContentUris.withAppendedId(uri, attachmentId.getRowId());
-  }
-
-  public static Uri getAttachmentThumbnailUri(AttachmentId attachmentId) {
-    Uri uri = Uri.withAppendedPath(THUMB_CONTENT_URI, String.valueOf(attachmentId.getUniqueId()));
-    return ContentUris.withAppendedId(uri, attachmentId.getRowId());
   }
 
   public static boolean isLocalUri(final @NonNull Uri uri) {

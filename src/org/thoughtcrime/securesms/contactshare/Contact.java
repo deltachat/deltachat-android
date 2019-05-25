@@ -11,13 +11,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
-import org.thoughtcrime.securesms.attachments.AttachmentId;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -548,14 +545,14 @@ public class Contact implements Parcelable {
     @JsonIgnore
     private boolean selected;
 
-    public Avatar(@Nullable AttachmentId attachmentId, @Nullable Attachment attachment, boolean isProfile) {
+    public Avatar(@Nullable Attachment attachment, boolean isProfile) {
       this.attachment   = attachment;
       this.isProfile    = isProfile;
       this.selected     = true;
     }
 
     Avatar(@Nullable Uri attachmentUri, boolean isProfile) {
-      this(null, attachmentFromUri(attachmentUri), isProfile);
+      this(attachmentFromUri(attachmentUri), isProfile);
     }
 
     private Avatar(Parcel in) {
