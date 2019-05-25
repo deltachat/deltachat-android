@@ -25,6 +25,7 @@ public class MuteDialog extends AlertDialog {
   public static void show(final Context context, final @NonNull MuteSelectionListener listener) {
     AlertDialog.Builder builder = new AlertDialog.Builder(context);
     builder.setTitle(R.string.menu_mute);
+    builder.setNegativeButton(R.string.cancel, null);
     builder.setItems(R.array.mute_durations, (dialog, which) -> {
       final long muteUntil;
 

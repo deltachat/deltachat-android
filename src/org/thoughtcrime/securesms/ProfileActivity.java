@@ -390,6 +390,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         .setItems(R.array.recipient_vibrate_entries, (dialog, which) -> {
           Prefs.setChatVibrate(this, chatId, Prefs.VibrateState.fromId(which));
         })
+        .setNegativeButton(R.string.cancel, null)
         .show();
   }
 
