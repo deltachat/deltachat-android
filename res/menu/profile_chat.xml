@@ -2,6 +2,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="@string/menu_edit_group_image"
+          android:id="@+id/edit_group_image"
+          app:showAsAction="never"/>
+
     <item android:title="@string/menu_mute"
           android:id="@+id/menu_mute_notifications"
           app:showAsAction="never"/>

@@ -92,7 +92,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     titleView = (ConversationTitleView) supportActionBar.getCustomView();
     titleView.setOnBackClickedListener(view -> onBackPressed());
-    titleView.setOnAvatarClickListener(view -> onEdit());
+    titleView.setOnAvatarClickListener(view -> onShowAndEditImage());
 
     updateToolbar();
 
@@ -107,13 +107,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     MenuInflater inflater = getMenuInflater();
 
     inflater.inflate(R.menu.profile_common, menu);
-    if (!chatIsGroup) {
-      menu.findItem(R.id.edit_name_etc).setTitle(R.string.menu_edit_name);
-    }
 
     if (!isSelfProfile()) {
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
+        if (chatIsGroup) {
+          menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_group_name);
+        }
+        else {
+          menu.findItem(R.id.edit_group_image).setVisible(false);
+        }
       }
 
       if (isContactProfile()) {
@@ -327,8 +330,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_vibrate:
         onVibrateSettings();
         break;
-      case R.id.edit_name_etc:
-        onEdit();
+      case R.id.edit_name:
+        onEditName();
+        break;
+      case R.id.edit_group_image:
+        onShowAndEditImage();
         break;
       case R.id.show_encr_info:
         onEncrInfo();
@@ -387,37 +393,35 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         .show();
   }
 
-  public void onEdit() {
+  public void onShowAndEditImage() {
     if (chatIsGroup) {
-      onEditGroupNameAndImage();
+      Intent intent = new Intent(this, GroupCreateActivity.class);
+      intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
+      if (dcContext.getChat(chatId).isVerified()) {
+        intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
+      }
+      startActivity(intent);
+    }
+  }
+
+  public void onEditName() {
+    if (chatIsGroup) {
+      onShowAndEditImage();
     }
     else {
-      onEditContactName();
+      DcContact dcContact = dcContext.getContact(contactId);
+      final EditText txt = new EditText(this);
+      txt.setText(dcContact.getName());
+      new AlertDialog.Builder(this)
+          .setTitle(R.string.menu_edit_name)
+          .setView(txt)
+          .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
+            String newName = txt.getText().toString();
+            dcContext.createContact(newName, dcContact.getAddr());
+          })
+          .setNegativeButton(android.R.string.cancel, null)
+          .show();
     }
-  }
-
-  public void onEditGroupNameAndImage() {
-    Intent intent = new Intent(this, GroupCreateActivity.class);
-    intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
-    if (dcContext.getChat(chatId).isVerified()) {
-      intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
-    }
-    startActivity(intent);
-  }
-
-  public void onEditContactName() {
-    DcContact dcContact = dcContext.getContact(contactId);
-    final EditText txt = new EditText(this);
-    txt.setText(dcContact.getName());
-    new AlertDialog.Builder(this)
-        .setTitle(R.string.menu_edit_name)
-        .setView(txt)
-        .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
-          String newName = txt.getText().toString();
-          dcContext.createContact(newName, dcContact.getAddr());
-        })
-        .setNegativeButton(android.R.string.cancel, null)
-        .show();
   }
 
   public void onEncrInfo() {
