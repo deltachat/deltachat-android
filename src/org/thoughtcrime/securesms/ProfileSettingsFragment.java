@@ -2,8 +2,6 @@ package org.thoughtcrime.securesms;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
@@ -31,7 +28,6 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -139,7 +135,7 @@ public class ProfileSettingsFragment extends Fragment
         onNewChat();
         break;
       case ProfileSettingsAdapter.SETTING_CONTACT_NAME:
-        ((ProfileActivity)getActivity()).onEditContactName();
+        ((ProfileActivity)getActivity()).onEditName();
         break;
       case ProfileSettingsAdapter.SETTING_ENCRYPTION:
         ((ProfileActivity)getActivity()).onEncrInfo();

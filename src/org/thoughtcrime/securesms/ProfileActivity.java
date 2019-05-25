@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -32,7 +34,6 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
                              implements DcEventCenter.DcEventDelegate
@@ -44,6 +45,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public static final String CHAT_ID_EXTRA    = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
   public static final String FORCE_TAB_EXTRA  = "force_tab";
+  public static final String FROM_CHAT        = "from_chat";
 
   public static final int TAB_SETTINGS = 10;
   public static final int TAB_GALLERY  = 20;
@@ -60,9 +62,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private int                  chatId;
   private boolean              chatIsGroup;
   private int                  contactId;
+  private boolean              fromChat;
 
   private ArrayList<Integer> tabs = new ArrayList<>();
   private Toolbar            toolbar;
+  private ConversationTitleView titleView;
   private TabLayout          tabLayout;
   private ViewPager          viewPager;
 
@@ -78,7 +82,19 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.profile_activity);
 
     initializeResources();
-    initializeToolbar();
+
+    setSupportActionBar(this.toolbar);
+    ActionBar supportActionBar = getSupportActionBar();
+    supportActionBar.setDisplayHomeAsUpEnabled(false);
+    supportActionBar.setCustomView(R.layout.conversation_title_view);
+    supportActionBar.setDisplayShowCustomEnabled(true);
+    supportActionBar.setDisplayShowTitleEnabled(false);
+
+    titleView = (ConversationTitleView) supportActionBar.getCustomView();
+    titleView.setOnBackClickedListener(view -> onBackPressed());
+    titleView.setOnAvatarClickListener(view -> onShowAndEditImage());
+
+    updateToolbar();
 
     this.tabLayout.setupWithViewPager(viewPager);
     this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
@@ -91,13 +107,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     MenuInflater inflater = getMenuInflater();
 
     inflater.inflate(R.menu.profile_common, menu);
-    if (!chatIsGroup) {
-      menu.findItem(R.id.edit_name_etc).setTitle(R.string.menu_edit_name);
-    }
 
     if (!isSelfProfile()) {
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
+        if (chatIsGroup) {
+          menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_group_name);
+        }
+        else {
+          menu.findItem(R.id.edit_group_image).setVisible(false);
+        }
       }
 
       if (isContactProfile()) {
@@ -132,6 +151,21 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     dynamicLanguage.onResume(this);
   }
 
+  boolean backPressed = false;
+  @Override
+  public void onBackPressed() {
+    backPressed = true;
+    super.onBackPressed();
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+    if (backPressed && fromChat) {
+      overridePendingTransition(0, 0);
+    }
+  }
+
   @Override
   public void onDestroy() {
     dcContext.eventCenter.removeObservers(this);
@@ -147,6 +181,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     chatId      = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
     contactId   = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
     chatIsGroup = false;
+    fromChat    = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
       chatId = dcContext.getChatIdByContactId(contactId);
@@ -175,22 +210,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
   }
 
-  private void initializeToolbar()
-  {
-    setSupportActionBar(this.toolbar);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    updateToolbar();
-  }
-
   private void updateToolbar() {
     if (isGlobalProfile()){
       getSupportActionBar().setTitle(R.string.menu_all_media);
     }
-    else if (isContactProfile()){
-      getSupportActionBar().setTitle(dcContext.getContact(contactId).getName());
+    else if (chatId > 0) {
+      DcChat dcChat  = dcContext.getChat(chatId);
+      titleView.setTitle(GlideApp.with(this), dcChat, false);
     }
-    else if (chatId >= 0) {
-      getSupportActionBar().setTitle(dcContext.getChat(chatId).getName());
+    else if (isContactProfile()){
+      titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
     }
   }
 
@@ -258,7 +287,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             return getString(contactId==DcContact.DC_CONTACT_ID_SELF? R.string.self : R.string.tab_contact);
           }
           else {
-            return getString(R.string.tab_members);
+            return getString(R.string.tab_group);
           }
 
         case TAB_GALLERY:
@@ -289,6 +318,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     switch (item.getItemId()) {
       case android.R.id.home:
+        backPressed = true;
         finish();
         return true;
       case R.id.menu_mute_notifications:
@@ -300,13 +330,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_vibrate:
         onVibrateSettings();
         break;
-      case R.id.edit_name_etc:
-        if (chatIsGroup) {
-          onEditGroupNameAndImage();
-        }
-        else {
-          onEditContactName();
-        }
+      case R.id.edit_name:
+        onEditName();
+        break;
+      case R.id.edit_group_image:
+        onShowAndEditImage();
         break;
       case R.id.show_encr_info:
         onEncrInfo();
@@ -365,28 +393,35 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         .show();
   }
 
-  public void onEditGroupNameAndImage() {
-    Intent intent = new Intent(this, GroupCreateActivity.class);
-    intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
-    if (dcContext.getChat(chatId).isVerified()) {
-      intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
+  public void onShowAndEditImage() {
+    if (chatIsGroup) {
+      Intent intent = new Intent(this, GroupCreateActivity.class);
+      intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
+      if (dcContext.getChat(chatId).isVerified()) {
+        intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
+      }
+      startActivity(intent);
     }
-    startActivity(intent);
   }
 
-  public void onEditContactName() {
-    DcContact dcContact = dcContext.getContact(contactId);
-    final EditText txt = new EditText(this);
-    txt.setText(dcContact.getName());
-    new AlertDialog.Builder(this)
-        .setTitle(R.string.menu_edit_name)
-        .setView(txt)
-        .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
-          String newName = txt.getText().toString();
-          dcContext.createContact(newName, dcContact.getAddr());
-        })
-        .setNegativeButton(android.R.string.cancel, null)
-        .show();
+  public void onEditName() {
+    if (chatIsGroup) {
+      onShowAndEditImage();
+    }
+    else {
+      DcContact dcContact = dcContext.getContact(contactId);
+      final EditText txt = new EditText(this);
+      txt.setText(dcContact.getName());
+      new AlertDialog.Builder(this)
+          .setTitle(R.string.menu_edit_name)
+          .setView(txt)
+          .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
+            String newName = txt.getText().toString();
+            dcContext.createContact(newName, dcContact.getAddr());
+          })
+          .setNegativeButton(android.R.string.cancel, null)
+          .show();
+    }
   }
 
   public void onEncrInfo() {

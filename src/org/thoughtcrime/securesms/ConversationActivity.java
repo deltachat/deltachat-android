@@ -470,13 +470,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
       case R.id.menu_add_attachment:        handleAddAttachment();             return true;
-      case R.id.menu_edit_group:            handleEditPushGroup();             return true;
       case R.id.menu_leave:                 handleLeaveGroup();                return true;
       case R.id.menu_archive_chat:          handleArchiveChat();               return true;
       case R.id.menu_delete_chat:           handleDeleteChat();                return true;
       case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
       case R.id.menu_unmute_notifications:  handleUnmuteNotifications();       return true;
-      case R.id.menu_conversation_settings: handleConversationSettings();      return true;
+      case R.id.menu_profile:               handleProfile();                   return true;
       case R.id.menu_show_map:              handleShowMap();                   return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
     }
@@ -541,16 +540,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
       Intent intent = new Intent(this, ProfileActivity.class);
       intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
+      intent.putExtra(ProfileActivity.FROM_CHAT, true);
       startActivity(intent);
-      overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
-  }
-
-  private void handleConversationSettings() {
-    if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
-      Intent intent = new Intent(ConversationActivity.this, RecipientPreferenceActivity.class);
-      intent.putExtra(RecipientPreferenceActivity.ADDRESS_EXTRA, recipient.getAddress());
-      startActivitySceneTransition(intent, titleView.findViewById(R.id.contact_photo_image), "avatar");
+      overridePendingTransition(0, 0);
     }
   }
 
@@ -589,15 +581,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         })
         .setNegativeButton(R.string.cancel, null)
         .show();
-  }
-
-  private void handleEditPushGroup() {
-    Intent intent = new Intent(ConversationActivity.this, GroupCreateActivity.class);
-    intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
-    if (dcChat.isVerified()) {
-      intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
-    }
-    startActivityForResult(intent, GROUP_EDIT);
   }
 
   private void handleAddAttachment() {

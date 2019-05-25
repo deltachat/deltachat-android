@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -52,15 +53,18 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat) {
+    setTitle(glideRequests, dcChat, true);
+  }
+
+  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat, boolean showSubtitle) {
 
     int imgLeft = 0;
     int imgRight = 0;
-    //int imgSubtitleRight = 0;
 
     if (dcChat == null) {
       setComposeTitle();
     } else {
-      setRecipientTitle(dcChat);
+      setRecipientTitle(dcChat, showSubtitle);
       if (Prefs.isChatMuted(getContext(), dcChat.getId())) {
         imgLeft = R.drawable.ic_volume_off_white_18dp;
       }
@@ -68,14 +72,18 @@ public class ConversationTitleView extends RelativeLayout {
         imgRight = R.drawable.ic_verified;
       }
       this.avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
-
-      //if (dcChat.isSendingLocations()) {
-      //  imgSubtitleRight = R.drawable.ic_location_chatlist;
-      //}
     }
 
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
-    //subtitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, imgSubtitleRight, 0);
+  }
+
+  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcContact contact) {
+    // the verified state is _not_ shown in the title. this will be confusing as in the one-to-one-ChatViews, the verified
+    // icon is also not shown as these chats are always opportunistic chats
+    avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(contact), false);
+    title.setText(contact.getDisplayName());
+    title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    subtitle.setVisibility(View.GONE);
   }
 
   public void hideAvatar() {
@@ -85,6 +93,10 @@ public class ConversationTitleView extends RelativeLayout {
   @Override
   public void setOnClickListener(@Nullable OnClickListener listener) {
     this.content.setOnClickListener(listener);
+    this.avatar.setOnClickListener(listener);
+  }
+
+  public void setOnAvatarClickListener(@Nullable OnClickListener listener) {
     this.avatar.setOnClickListener(listener);
   }
 
@@ -104,7 +116,7 @@ public class ConversationTitleView extends RelativeLayout {
     this.subtitle.setVisibility(View.GONE);
   }
 
-  private void setRecipientTitle(DcChat dcChat) {
+  private void setRecipientTitle(DcChat dcChat, boolean showSubtitle) {
 
     if(dcChat.getId()==DcChat.DC_CHAT_ID_DEADDROP) {
       this.title.setText(R.string.menu_deaddrop);
@@ -115,6 +127,6 @@ public class ConversationTitleView extends RelativeLayout {
       this.subtitle.setText(dcChat.getSubtitle());
     }
 
-    this.subtitle.setVisibility(View.VISIBLE);
+    this.subtitle.setVisibility(showSubtitle? View.VISIBLE : View.GONE);
   }
 }
