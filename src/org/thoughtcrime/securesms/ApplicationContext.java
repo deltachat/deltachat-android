@@ -15,7 +15,6 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
-import org.thoughtcrime.securesms.jobmanager.persistence.JavaJobSerializer;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -111,7 +110,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
   private void initializeJobManager() {
     this.jobManager = JobManager.newBuilder(this)
                                 .withName("TextSecureJobs")
-                                .withJobSerializer(new JavaJobSerializer())
                                 .withConsumerThreads(5)
                                 .build();
   }

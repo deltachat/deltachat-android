@@ -4,29 +4,10 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 
-import java.util.concurrent.TimeUnit;
-
-/**
- * Created by cyberta on 06.03.19.
- */
-
-public class ShareLocationDialog extends AlertDialog {
-
-
-  protected ShareLocationDialog(Context context) {
-    super(context);
-  }
-
-  protected ShareLocationDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
-    super(context, cancelable, cancelListener);
-  }
-
-  protected ShareLocationDialog(Context context, int theme) {
-    super(context, theme);
-  }
+public class ShareLocationDialog {
 
   public static void show(final Context context, final @NonNull ShareLocationDurationSelectionListener listener) {
-    Builder builder = new Builder(context);
+    AlertDialog.Builder builder = new AlertDialog.Builder(context);
     builder.setTitle(R.string.title_share_location);
     builder.setItems(R.array.share_location_durations, (dialog, which) -> {
       final int shareLocationUnit;
@@ -44,11 +25,9 @@ public class ShareLocationDialog extends AlertDialog {
     });
 
     builder.show();
-
   }
 
   public interface ShareLocationDurationSelectionListener {
     void onSelected(int durationInSeconds);
   }
-
 }
