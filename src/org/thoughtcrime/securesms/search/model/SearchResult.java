@@ -1,16 +1,8 @@
 package org.thoughtcrime.securesms.search.model;
 
-import android.database.ContentObserver;
-import android.database.DataSetObserver;
 import android.support.annotation.NonNull;
 
 import com.b44t.messenger.DcChatlist;
-
-import org.thoughtcrime.securesms.database.CursorList;
-import org.thoughtcrime.securesms.database.model.ThreadRecord;
-import org.thoughtcrime.securesms.recipients.Recipient;
-
-import java.util.List;
 
 /**
  * Represents an all-encompassing search result that can contain various result for different
