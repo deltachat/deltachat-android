@@ -50,19 +50,14 @@ public class DcLocationManager implements Observer {
         this.context = context.getApplicationContext();
         DcLocation.getInstance().addObserver(this);
         if (DcHelper.getContext(context).isSendingLocationsToChat(0)) {
-            initializeLocationEngine();
+            startLocationEngine();
         }
-    }
-
-
-    private void initializeLocationEngine() {
-        Intent intent = new Intent(context.getApplicationContext(), LocationBackgroundService.class);
-        context.bindService(intent, serviceConnection, BIND_AUTO_CREATE);
     }
 
     public void startLocationEngine() {
         if (serviceBinder == null) {
-            initializeLocationEngine();
+            Intent intent = new Intent(context.getApplicationContext(), LocationBackgroundService.class);
+            context.bindService(intent, serviceConnection, BIND_AUTO_CREATE);
         }
     }
 
@@ -89,7 +84,7 @@ public class DcLocationManager implements Observer {
     public void shareLastLocation(int chatId) {
         if (serviceBinder == null) {
             pendingShareLastLocation.push(chatId);
-            initializeLocationEngine();
+            startLocationEngine();
             return;
         }
 
