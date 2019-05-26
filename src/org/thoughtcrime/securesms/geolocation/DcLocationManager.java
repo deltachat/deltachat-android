@@ -75,6 +75,9 @@ public class DcLocationManager implements Observer {
 
     public void stopSharingLocation(int chatId) {
         DcHelper.getContext(context).sendLocationsToChat(chatId, 0);
+        if(!DcHelper.getContext(context).isSendingLocationsToChat(0)) {
+            stopLocationEngine();
+        }
     }
 
     public void shareLocation(int duration, int chatId) {
