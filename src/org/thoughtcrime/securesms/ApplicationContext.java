@@ -15,7 +15,7 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
-import org.thoughtcrime.securesms.notifications.MessageNotifier;
+import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
@@ -52,7 +52,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeJobManager();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
-    MessageNotifier.init(this);
+    MessageNotifierCompat.init(this);
 
     dcLocationManager = new DcLocationManager(this);
     try {
@@ -97,7 +97,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     dcEventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
       @Override
       public void handleEvent(int eventId, Object data1, Object data2) {
-        MessageNotifier.updateNotification(dcContext.context, ((Long) data1).intValue());
+        MessageNotifierCompat.updateNotification(((Long) data1).intValue(), ((Long) data2).intValue());
       }
 
       @Override

@@ -17,13 +17,15 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class MultipleRecipientNotificationBuilder extends AbstractNotificationBuilder {
 
-  private final List<MessageBody> messageBodies = new LinkedList<>();
+  private final LinkedList<MessageBody> messageBodies = new LinkedList<>();
 
   private static class MessageBody {
     final @Nullable Recipient group;
@@ -88,11 +90,13 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
   public Notification build() {
     if (privacy.isDisplayMessage() || privacy.isDisplayContact()) {
       NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
-      Map<Recipient, List<MessageBody>> byGroup = new HashMap<>();
+      Map<Recipient, List<MessageBody>> byGroup = new LinkedHashMap<>();
       for (MessageBody body : messageBodies) {
         Recipient key = body.group == null ? body.sender : body.group;
         if(byGroup.containsKey(key)) {
-          byGroup.get(key).add(body);
+          List<MessageBody> messagebodies = byGroup.remove(key);
+          messagebodies.add(body);
+          byGroup.put(key, messagebodies);
         } else {
           byGroup.put(key, new LinkedList<>());
           byGroup.get(key).add(body);
@@ -100,11 +104,14 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
       }
 
       if (privacy.isDisplayMessage()) {
-        for (Recipient nextGroup : byGroup.keySet()) {
+        LinkedList<Recipient> list = new LinkedList<>(byGroup.keySet());
+        Iterator<Recipient> iterator = list.descendingIterator();
+        while(iterator.hasNext()) {
+          Recipient nextGroup = iterator.next();
           String groupName = nextGroup.getName();
           List<MessageBody> messages = byGroup.get(nextGroup);
           String firstMessageSender = messages.get(0).sender.getName();
-          if(groupName.equals(firstMessageSender)) { // individual
+          if(groupName != null && groupName.equals(firstMessageSender)) { // individual
             for (MessageBody body : messages) {
               style.addLine(getStyledMessage(body.sender, body.message));
             }
@@ -116,11 +123,14 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
           }
         }
       } else if (privacy.isDisplayContact()) {
-        for (Recipient nextGroup : byGroup.keySet()) {
+        LinkedList<Recipient> list = new LinkedList<>(byGroup.keySet());
+        Iterator<Recipient> iterator = list.descendingIterator();
+        while(iterator.hasNext()) {
+          Recipient nextGroup = iterator.next();
           String groupName = nextGroup.getName();
           List<MessageBody> messages = byGroup.get(nextGroup);
           String firstMessageSender = messages.get(0).sender.getName();
-          if(groupName.equals(firstMessageSender)) { // individual
+          if(groupName != null && groupName.equals(firstMessageSender)) { // individual
             for (MessageBody body : messages) {
               style.addLine(body.sender.getName());
             }

@@ -372,7 +372,6 @@
     <string name="pref_led_pattern">LED blink pattern</string>
     <string name="pref_sound">Sound</string>
     <string name="pref_silent">Silent</string>
-    <string name="pref_repeat_notify">Repeat alerts</string>
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Chats and media</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -514,11 +513,6 @@
     <string name="notify_name_and_message">Name and message</string>
     <string name="notify_name_only">Name only</string>
     <string name="notify_no_name_or_message">No name or message</string>
-    <string name="notify_repeat_one_time">One time</string>
-    <string name="notify_repeat_two_times">Two times</string>
-    <string name="notify_repeat_three_times">Three times</string>
-    <string name="notify_repeat_five_times">Five times</string>
-    <string name="notify_repeat_ten_times">Ten times</string>
 
 
     <!-- permissions -->

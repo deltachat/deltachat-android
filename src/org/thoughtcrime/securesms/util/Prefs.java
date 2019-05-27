@@ -55,7 +55,6 @@ public class Prefs {
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
   public  static final String MESSAGE_BODY_TEXT_SIZE_PREF      = "pref_message_body_text_size";
 
-  public  static final String REPEAT_ALERTS_PREF               = "pref_repeat_alerts";
   public  static final String NOTIFICATION_PRIVACY_PREF        = "pref_notification_privacy";
   public  static final String NOTIFICATION_PRIORITY_PREF       = "pref_notification_priority";
 
@@ -156,15 +155,6 @@ public class Prefs {
 
   public static NotificationPrivacyPreference getNotificationPrivacy(Context context) {
     return new NotificationPrivacyPreference(getStringPreference(context, NOTIFICATION_PRIVACY_PREF, "all"));
-  }
-
-  public static int getRepeatAlertsCount(Context context) {
-    try {
-      return Integer.parseInt(getStringPreference(context, REPEAT_ALERTS_PREF, "0"));
-    } catch (NumberFormatException e) {
-      Log.w(TAG, e);
-      return 0;
-    }
   }
 
   public static boolean isInChatNotifications(Context context) {

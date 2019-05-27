@@ -15,7 +15,6 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 public class NotificationItem {
 
   private final int                         id;
-  private final boolean                     mms;
   private final @NonNull Recipient          threadRecipient;
   private final @Nullable Recipient         individualRecipient;
   private final int                         chatId;
@@ -23,14 +22,13 @@ public class NotificationItem {
   private final long                        timestamp;
   private final @Nullable SlideDeck         slideDeck;
 
-  public NotificationItem(int id, boolean mms,
+  public NotificationItem(int id,
                           @NonNull  Recipient threadRecipient,
                           @Nullable  Recipient individualRecipient,
                           int chatId, @Nullable CharSequence text, long timestamp,
                           @Nullable SlideDeck slideDeck)
   {
     this.id                    = id;
-    this.mms                   = mms;
     this.threadRecipient       = threadRecipient;
     this.individualRecipient   = individualRecipient;
     this.text                  = text;
@@ -85,9 +83,5 @@ public class NotificationItem {
 
   public int getId() {
     return id;
-  }
-
-  public boolean isMms() {
-    return mms;
   }
 }

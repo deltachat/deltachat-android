@@ -117,52 +117,32 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     }
   }
 
-  public void addAndroidAutoAction(@NonNull PendingIntent androidAutoReplyIntent,
-                                   @NonNull PendingIntent androidAutoHeardIntent, long timestamp)
-  {
-
-    if (contentTitle == null || contentText == null)
-      return;
-
-    RemoteInput remoteInput = new RemoteInput.Builder(AndroidAutoReplyReceiver.VOICE_REPLY_KEY)
-                                  .setLabel(context.getString(R.string.notify_reply_button))
-                                  .build();
-
-    NotificationCompat.CarExtender.UnreadConversation.Builder unreadConversationBuilder =
-            new NotificationCompat.CarExtender.UnreadConversation.Builder(contentTitle.toString())
-                .addMessage(contentText.toString())
-                .setLatestTimestamp(timestamp)
-                .setReadPendingIntent(androidAutoHeardIntent)
-                .setReplyAction(androidAutoReplyIntent, remoteInput);
-
-    extend(new NotificationCompat.CarExtender().setUnreadConversation(unreadConversationBuilder.build()));
-  }
-
   public void addActions(@NonNull PendingIntent markReadIntent,
-                         @NonNull PendingIntent quickReplyIntent,
-                         @NonNull PendingIntent wearableReplyIntent)
+                         @NonNull PendingIntent compatInNotificationReplyIntent,
+                         @NonNull PendingIntent inNotificationReplyIntent)
   {
     Action markAsReadAction = new Action(R.drawable.check,
                                          context.getString(R.string.notify_mark_read),
                                          markReadIntent);
 
-    Action replyAction = new Action(R.drawable.ic_reply_white_36dp,
-                                    context.getString(R.string.notify_reply_button),
-                                    quickReplyIntent);
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+    Action replyAction;
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+      replyAction = new Action(R.drawable.ic_reply_white_36dp,
+              context.getString(R.string.notify_reply_button),
+              compatInNotificationReplyIntent);
+    } else {
       replyAction = new Action.Builder(R.drawable.ic_reply_white_36dp,
-                                       context.getString(R.string.notify_reply_button),
-                                       wearableReplyIntent)
-          .addRemoteInput(new RemoteInput.Builder(MessageNotifier.EXTRA_REMOTE_REPLY)
-                              .setLabel(context.getString(R.string.notify_reply_button)).build())
-          .build();
+              context.getString(R.string.notify_reply_button),
+              inNotificationReplyIntent)
+              .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
+                      .setLabel(context.getString(R.string.notify_reply_button)).build())
+              .build();
     }
 
     Action wearableReplyAction = new Action.Builder(R.drawable.ic_reply,
                                                     context.getString(R.string.notify_reply_button),
-                                                    wearableReplyIntent)
-        .addRemoteInput(new RemoteInput.Builder(MessageNotifier.EXTRA_REMOTE_REPLY)
+                                                    inNotificationReplyIntent)
+        .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
                             .setLabel(context.getString(R.string.notify_reply_button)).build())
         .build();
 
@@ -194,7 +174,11 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   public Notification build() {
     // the filtering whether or not to display messages and contacts is done in addMessageBody
     // and setPrimaryMessageBody, no need to do it here again.
-    setStyle(new NotificationCompat.BigTextStyle().bigText(getBigText(messageBodies)));
+      NotificationCompat.Style style = new NotificationCompat.InboxStyle();
+          for (CharSequence messageBody : messageBodies) {
+              ((NotificationCompat.InboxStyle) style).addLine(messageBody);
+      }
+    setStyle(style);
     return super.build();
   }
 
@@ -248,17 +232,6 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   public NotificationCompat.Builder setContentText(CharSequence contentText) {
     this.contentText = contentText;
     return super.setContentText(contentText);
-  }
-
-  private CharSequence getBigText(List<CharSequence> messageBodies) {
-    SpannableStringBuilder content = new SpannableStringBuilder();
-
-    for (CharSequence message : messageBodies) {
-      content.append(message);
-      content.append('\n');
-    }
-
-    return content;
   }
 
 }

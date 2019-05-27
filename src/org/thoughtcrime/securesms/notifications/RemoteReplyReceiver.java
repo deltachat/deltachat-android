@@ -48,7 +48,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
     if (remoteInput == null) return;
 
     final Address      address      = intent.getParcelableExtra(ADDRESS_EXTRA);
-    final CharSequence responseText = remoteInput.getCharSequence(MessageNotifier.EXTRA_REMOTE_REPLY);
+    final CharSequence responseText = remoteInput.getCharSequence(MessageNotifierCompat.EXTRA_REMOTE_REPLY);
 
     if (responseText != null) {
       new AsyncTask<Void, Void, Void>() {
@@ -58,8 +58,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
           if(address.isDcChat()) {
             ApplicationDcContext dcContext = DcHelper.getContext(context);
             dcContext.sendTextMsg(address.getDcChatId(), responseText.toString());
-
-            MessageNotifier.updateNotification(context);
+            MessageNotifierCompat.removeNotifications(address.getDcChatId());
           }
 
           return null;
