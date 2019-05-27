@@ -39,3 +39,4 @@ jni/libspeex/.deps/
 jni/x86
 jni/armeabi
 jni/armeabi-v7a
+jni/arm64-v8a
