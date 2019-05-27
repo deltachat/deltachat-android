@@ -30,7 +30,7 @@ LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -ffast-math -D__STDC_CONSTANT_MACROS
 
 LOCAL_SRC_FILES := \
-utils/org_thoughtcrime_securesms_util_FileUtils.cpp #\
-#dc_wrapper.c
+utils/org_thoughtcrime_securesms_util_FileUtils.cpp \
+dc_wrapper.c
 
 include $(BUILD_SHARED_LIBRARY)

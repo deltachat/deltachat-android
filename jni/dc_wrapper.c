@@ -24,7 +24,7 @@
 
 
 #include <jni.h>
-#include "deltachat-core-sys/deltachat-ffi/deltachat.h"
+#include "deltachat-core-rust/deltachat-ffi/deltachat.h"
 
 
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
@@ -712,15 +712,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_imex(JNIEnv *env, jobject obj, 
 	CHAR_REF(dir);
 		dc_imex(get_dc_context(env, obj), what, dirPtr, "");
 	CHAR_UNREF(dir);
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_checkPassword(JNIEnv *env, jobject obj, jstring pw)
-{
-	CHAR_REF(pw);
-		jint r = dc_check_password(get_dc_context(env, obj),  pwPtr);
-	CHAR_UNREF(pw);
-	return r;
 }
 
 
