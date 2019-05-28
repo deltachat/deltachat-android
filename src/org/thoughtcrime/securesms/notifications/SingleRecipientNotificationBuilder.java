@@ -171,10 +171,20 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   public Notification build() {
     // the filtering whether or not to display messages and contacts is done in addMessageBody
     // and setPrimaryMessageBody, no need to do it here again.
-      NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
-          for (CharSequence messageBody : messageBodies) {
-              style.addLine(messageBody);
+    NotificationCompat.Style style;
+    if (Build.VERSION.SDK_INT < 23) {
+      style = new NotificationCompat.InboxStyle();
+      for (CharSequence messageBody : messageBodies) {
+        ((NotificationCompat.InboxStyle) style).addLine(messageBody);
       }
+    } else if (messageBodies.size() == 1 && hasBigPictureSlide(slideDeck)) {
+      style = new NotificationCompat.BigPictureStyle()
+                .bigPicture(getBigPicture(slideDeck))
+                .setSummaryText(getBigText(messageBodies));
+    } else {
+      style = new NotificationCompat.BigTextStyle().bigText(getBigText(messageBodies));
+    }
+
     setStyle(style);
     return super.build();
   }
@@ -230,5 +240,17 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     this.contentText = contentText;
     return super.setContentText(contentText);
   }
+
+  private CharSequence getBigText(List<CharSequence> messageBodies) {
+    SpannableStringBuilder content = new SpannableStringBuilder();
+
+    for (CharSequence message : messageBodies) {
+      content.append(message);
+      content.append('\n');
+    }
+
+    return content;
+  }
+
 
 }
