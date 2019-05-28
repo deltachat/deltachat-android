@@ -32,8 +32,8 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
   protected Context                       context;
   protected NotificationPrivacyPreference privacy;
 
-  public AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
-    super(context);
+  AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
+    super(context, createMsgNotificationChannel(context));
 
     this.context = context;
     this.privacy = privacy;
@@ -41,7 +41,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     setLed();
   }
 
-  protected CharSequence getStyledMessage(@NonNull Recipient recipient, @Nullable CharSequence message) {
+  CharSequence getStyledMessage(@NonNull Recipient recipient, @Nullable CharSequence message) {
     SpannableStringBuilder builder = new SpannableStringBuilder();
     builder.append(Util.getBoldedString(recipient.toShortString()));
     builder.append(": ");
@@ -50,7 +50,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     return builder;
   }
 
-  public void setAlarms(@Nullable Uri ringtone, Prefs.VibrateState vibrate) {
+  void setAlarms(@Nullable Uri ringtone, Prefs.VibrateState vibrate) {
     Uri     defaultRingtone = Prefs.getNotificationRingtone(context);
     boolean defaultVibrate  = Prefs.isNotificationVibrateEnabled(context);
 
@@ -84,7 +84,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     }
   }
 
-  public void setTicker(@NonNull Recipient recipient, @Nullable CharSequence message) {
+  void setTicker(@NonNull Recipient recipient, @Nullable CharSequence message) {
     if (privacy.isDisplayMessage()) {
       setTicker(getStyledMessage(recipient, message));
     } else if (privacy.isDisplayContact()) {
@@ -109,7 +109,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
   // - the idea is that sound, led, vibrate is edited by the user
   //   via the ACTION_CHANNEL_NOTIFICATION_SETTINGS intent that takes the channelId
 
-  protected String createMsgNotificationChannel(Context context) {
+  static String createMsgNotificationChannel(Context context) {
     String chBase = "ch_msg2_";
     String chId = chBase + "unsupported";
 
@@ -193,7 +193,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     return chId;
   }
 
-  protected static boolean notificationChannelsSupported() {
+  private static boolean notificationChannelsSupported() {
     return Build.VERSION.SDK_INT >= 26;
   }
 }

@@ -74,7 +74,7 @@ class MessageNotifier implements IMessageNotifier {
   private                 boolean            soundInLoaded;
   private                 boolean            soundOutLoaded;
 
-  protected MessageNotifier(Context context) {
+  MessageNotifier(Context context) {
     appContext = context.getApplicationContext();
     soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
     soundIn = soundPool.load(context, R.raw.sound_in, 1);

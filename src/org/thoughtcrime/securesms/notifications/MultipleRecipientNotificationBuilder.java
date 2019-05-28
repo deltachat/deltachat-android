@@ -32,14 +32,14 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     final @NonNull Recipient sender;
     final @NonNull CharSequence message;
 
-    public MessageBody(@Nullable Recipient group, @NonNull Recipient sender, @NonNull CharSequence message) {
+    MessageBody(@Nullable Recipient group, @NonNull Recipient sender, @NonNull CharSequence message) {
       this.group = group;
       this.sender = sender;
       this.message = message;
     }
   }
 
-  public MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
+  MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
     super(context, privacy);
 
     setColor(context.getResources().getColor(R.color.delta_primary));
@@ -54,21 +54,21 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     setGroupSummary(true);
   }
 
-  public void setMessageCount(int messageCount, int chatCount) {
+  void setMessageCount(int messageCount, int chatCount) {
     setSubText(context.getString(R.string.notify_n_messages_in_m_chats,
                                  messageCount, chatCount));
     setContentInfo(String.valueOf(messageCount));
     setNumber(messageCount);
   }
 
-  public void setMostRecentSender(Recipient recipient) {
+  void setMostRecentSender(Recipient recipient) {
     if (privacy.isDisplayContact()) {
       setContentText(context.getString(R.string.notify_most_recent_from,
                                        recipient.toShortString()));
     }
   }
 
-  public void addActions(PendingIntent markAsReadIntent) {
+  void addActions(PendingIntent markAsReadIntent) {
     NotificationCompat.Action markAllAsReadAction = new NotificationCompat.Action(R.drawable.check,
                                             context.getString(R.string.notify_mark_all_read),
                                             markAsReadIntent);
@@ -76,7 +76,7 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     extend(new NotificationCompat.WearableExtender().addAction(markAllAsReadAction));
   }
 
-  public void addMessageBody(@Nullable Recipient group, @NonNull Recipient sender, @Nullable CharSequence body) {
+  void addMessageBody(@Nullable Recipient group, @NonNull Recipient sender, @Nullable CharSequence body) {
     messageBodies.add(new MessageBody(group, sender, body));
 
     if (privacy.isDisplayContact() && sender.getContactUri() != null) {

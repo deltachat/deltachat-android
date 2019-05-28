@@ -46,7 +46,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   private CharSequence contentTitle;
   private CharSequence contentText;
 
-  public SingleRecipientNotificationBuilder(@NonNull Context context, @NonNull NotificationPrivacyPreference privacy)
+  SingleRecipientNotificationBuilder(@NonNull Context context, @NonNull NotificationPrivacyPreference privacy)
   {
     super(context, privacy);
 
@@ -117,7 +117,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     }
   }
 
-  public void addActions(@NonNull PendingIntent markReadIntent,
+  void addActions(@NonNull PendingIntent markReadIntent,
                          @NonNull PendingIntent compatInNotificationReplyIntent,
                          @NonNull PendingIntent inNotificationReplyIntent)
   {
@@ -153,7 +153,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
                                                     .addAction(wearableReplyAction));
   }
 
-  public void addMessageBody(@NonNull Recipient chatRecipient,
+  void addMessageBody(@NonNull Recipient chatRecipient,
                              @NonNull Recipient individualRecipient,
                              @Nullable CharSequence messageBody)
   {
@@ -174,9 +174,9 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   public Notification build() {
     // the filtering whether or not to display messages and contacts is done in addMessageBody
     // and setPrimaryMessageBody, no need to do it here again.
-      NotificationCompat.Style style = new NotificationCompat.InboxStyle();
+      NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
           for (CharSequence messageBody : messageBodies) {
-              ((NotificationCompat.InboxStyle) style).addLine(messageBody);
+              style.addLine(messageBody);
       }
     setStyle(style);
     return super.build();

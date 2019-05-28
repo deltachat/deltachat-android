@@ -16,15 +16,15 @@ public class NotificationItem {
 
   private final int                         id;
   private final @NonNull Recipient          threadRecipient;
-  private final @Nullable Recipient         individualRecipient;
+  private final @NonNull Recipient          individualRecipient;
   private final int                         chatId;
   private final @Nullable CharSequence      text;
   private final long                        timestamp;
   private final @Nullable SlideDeck         slideDeck;
 
-  public NotificationItem(int id,
+  NotificationItem(int id,
                           @NonNull  Recipient threadRecipient,
-                          @Nullable  Recipient individualRecipient,
+                          @NonNull  Recipient individualRecipient,
                           int chatId, @Nullable CharSequence text, long timestamp,
                           @Nullable SlideDeck slideDeck)
   {
@@ -57,7 +57,7 @@ public class NotificationItem {
     return chatId;
   }
 
-  public @NonNull Recipient getIndividualRecipient() {
+  @NonNull Recipient getIndividualRecipient() {
     return individualRecipient;
   }
 
@@ -66,11 +66,11 @@ public class NotificationItem {
     return chatId;
   }
 
-  public @Nullable SlideDeck getSlideDeck() {
+  @Nullable SlideDeck getSlideDeck() {
     return slideDeck;
   }
 
-  public @NonNull PendingIntent getPendingIntent(Context context) {
+  @NonNull PendingIntent getPendingIntent(Context context) {
     Intent     intent           = new Intent(context, ConversationActivity.class);
 
     intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
