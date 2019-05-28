@@ -39,14 +39,11 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     }
   }
 
-  MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
-    super(context, privacy);
+  MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy, boolean signal) {
+    super(context, privacy, signal);
 
     setColor(context.getResources().getColor(R.color.delta_primary));
     setSmallIcon(R.drawable.icon_notification);
-    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
-      setChannelId(createMsgNotificationChannel(context));
-    }
     setContentTitle(context.getString(R.string.app_name));
     setContentIntent(PendingIntent.getActivity(context, 0, new Intent(context, ConversationListActivity.class), 0));
     setCategory(NotificationCompat.CATEGORY_MESSAGE);

@@ -32,8 +32,8 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
   protected Context                       context;
   protected NotificationPrivacyPreference privacy;
 
-  AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
-    super(context, createMsgNotificationChannel(context));
+  AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy, boolean signal) {
+    super(context, createMsgNotificationChannel(context, signal));
 
     this.context = context;
     this.privacy = privacy;
@@ -109,7 +109,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
   // - the idea is that sound, led, vibrate is edited by the user
   //   via the ACTION_CHANNEL_NOTIFICATION_SETTINGS intent that takes the channelId
 
-  static String createMsgNotificationChannel(Context context) {
+  private static String createMsgNotificationChannel(Context context, boolean signal) {
     String chBase = "ch_msg2_";
     String chId = chBase + "unsupported";
 
@@ -128,6 +128,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
         md.update(ledColor.getBytes());
         md.update(defaultVibrate ? (byte) 1 : (byte) 0);
         md.update(ringtone.toString().getBytes());
+        md.update(signal ? (byte) 1 : (byte) 0);
         hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
         // get channel name
@@ -173,13 +174,18 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
             channel.enableLights(false);
           }
 
-          channel.enableVibration(defaultVibrate);
+          if (signal) {
+            channel.enableVibration(defaultVibrate);
 
-          if (!TextUtils.isEmpty(ringtone.toString())) {
-            channel.setSound(ringtone,
-                new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
-                    .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
-                    .build());
+            if (!TextUtils.isEmpty(ringtone.toString())) {
+              channel.setSound(ringtone,
+                  new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
+                      .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
+                      .build());
+            }
+          } else {
+            channel.setSound(null, null);
+            channel.enableVibration(false);
           }
 
           notificationManager.createNotificationChannel(channel);

@@ -209,7 +209,7 @@ class MessageNotifier implements IMessageNotifier {
   void sendNotifications(int chatId, int messageId, boolean signal) {
     ApplicationDcContext dcContext = DcHelper.getContext(appContext);
     if (signal = isSignalAllowed(signal)) {
-      lastAudibleNotification = System.currentTimeMillis();;
+      lastAudibleNotification = System.currentTimeMillis();
     }
 
     addMessageToNotificationState(dcContext, chatId, messageId);
@@ -245,7 +245,7 @@ class MessageNotifier implements IMessageNotifier {
       return;
     }
 
-    SingleRecipientNotificationBuilder builder               = new SingleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
+    SingleRecipientNotificationBuilder builder               = new SingleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context), signal);
     List<NotificationItem>             notifications         = notificationState.getNotifications();
     NotificationItem                   firstItem             = notifications.get(0);
     Recipient                          recipient             = firstItem.getRecipient();
@@ -291,7 +291,7 @@ class MessageNotifier implements IMessageNotifier {
                                                    @NonNull  NotificationState notificationState,
                                                    boolean signal)
   {
-    MultipleRecipientNotificationBuilder builder               = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
+    MultipleRecipientNotificationBuilder builder               = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context), signal);
     List<NotificationItem>               notifications         = notificationState.getNotifications();
     NotificationItem                     firstItem             = notifications.get(0);
 

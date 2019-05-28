@@ -46,14 +46,11 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   private CharSequence contentTitle;
   private CharSequence contentText;
 
-  SingleRecipientNotificationBuilder(@NonNull Context context, @NonNull NotificationPrivacyPreference privacy)
+  SingleRecipientNotificationBuilder(@NonNull Context context, @NonNull NotificationPrivacyPreference privacy, boolean signal)
   {
-    super(context, privacy);
+    super(context, privacy, signal);
 
     setSmallIcon(R.drawable.icon_notification);
-    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
-      setChannelId(createMsgNotificationChannel(context));
-    }
     setColor(context.getResources().getColor(R.color.delta_primary));
     setPriority(Prefs.getNotificationPriority(context));
     setCategory(NotificationCompat.CATEGORY_MESSAGE);
