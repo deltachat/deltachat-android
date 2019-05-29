@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.thoughtcrime.securesms.notifications.MessageNotifierCompat.SUMMARY_NOTIFICATION_ID;
 
-public class MessageNotifierPreApi23 extends MessageNotifier {
+class MessageNotifierPreApi23 extends MessageNotifier {
 
     MessageNotifierPreApi23(Context context) {
         super(context);
@@ -39,7 +39,7 @@ public class MessageNotifierPreApi23 extends MessageNotifier {
     void sendNotifications(int chatId, int messageId, boolean signal) {
         ApplicationDcContext dcContext = DcHelper.getContext(appContext);
         if (signal = isSignalAllowed(signal)) {
-            lastAudibleNotification = System.currentTimeMillis();;
+            lastAudibleNotification = System.currentTimeMillis();
         }
 
         addMessageToNotificationState(dcContext, chatId, messageId);

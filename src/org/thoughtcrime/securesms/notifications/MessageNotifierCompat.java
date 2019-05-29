@@ -20,7 +20,7 @@ public class MessageNotifierCompat {
         if (Build.VERSION.SDK_INT < 23) {
             instance = new MessageNotifierPreApi23(context);
         } else {
-            instance = new MessageNotifier(context);
+            instance = new MessageNotifierApi23(context);
         }
     }
 
