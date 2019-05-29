@@ -368,7 +368,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void onSoundSettings() {
-    Uri current = dcContext.getRecipient(dcContext.getChat(chatId)).getMessageRingtone();
+    Uri current = Prefs.getChatRingtone(this, chatId);
     Uri defaultUri = Prefs.getNotificationRingtone(this);
 
     if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
@@ -385,13 +385,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void onVibrateSettings() {
+    int checkedItem = Prefs.getChatVibrate(this, chatId).getId();
+    int[] selectedChoice = new int[]{checkedItem};
     new AlertDialog.Builder(this)
-        .setTitle(R.string.pref_vibrate)
-        .setItems(R.array.recipient_vibrate_entries, (dialog, which) -> {
-          Prefs.setChatVibrate(this, chatId, Prefs.VibrateState.fromId(which));
-        })
-        .setNegativeButton(R.string.cancel, null)
-        .show();
+            .setTitle(R.string.pref_vibrate)
+            .setSingleChoiceItems(R.array.recipient_vibrate_entries, checkedItem,
+                    (dialog, which) -> selectedChoice[0] = which)
+            .setPositiveButton(R.string.ok,
+                    (dialog, which) -> Prefs.setChatVibrate(this, chatId, Prefs.VibrateState.fromId(selectedChoice[0])))
+            .setNegativeButton(R.string.cancel, null)
+            .show();
   }
 
   public void onShowAndEditImage() {
