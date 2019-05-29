@@ -10,7 +10,7 @@ public class MessageNotifierCompat {
     static final  String        EXTRA_REMOTE_REPLY        = "extra_remote_reply";
 
 
-    private static IMessageNotifier instance;
+    private static MessageNotifier instance;
 
     public static void init(Context context) {
         if (instance != null) {

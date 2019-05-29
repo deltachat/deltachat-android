@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 import static org.thoughtcrime.securesms.notifications.MessageNotifierCompat.NO_VISIBLE_CHAT_ID;
 import static org.thoughtcrime.securesms.notifications.MessageNotifierCompat.SUMMARY_NOTIFICATION_ID;
 
-abstract class MessageNotifier implements IMessageNotifier {
+abstract class MessageNotifier {
 
     static final String TAG = org.thoughtcrime.securesms.notifications.MessageNotifierApi23.class.getSimpleName();
 
@@ -68,14 +68,12 @@ abstract class MessageNotifier implements IMessageNotifier {
         });
     }
 
-    @Override
     public void playSendSound() {
         if (Prefs.isInChatNotifications(appContext) && soundOutLoaded) {
             soundPool.play(soundOut, 1.0f, 1.0f, 1, 0, 1.0f);
         }
     }
 
-    @Override
     public void updateVisibleChat(int chatId) {
         visibleChatId = chatId;
         if (visibleChatId != NO_VISIBLE_CHAT_ID) {
@@ -83,7 +81,6 @@ abstract class MessageNotifier implements IMessageNotifier {
         }
     }
 
-    @Override
     public void updateNotification(int chatId, int messageId) {
         boolean isVisible = visibleChatId == chatId;
         ApplicationDcContext dcContext = DcHelper.getContext(appContext);
@@ -113,7 +110,6 @@ abstract class MessageNotifier implements IMessageNotifier {
      * On notification privacy preference changed,
      * the notification state needs to be updated.
      */
-    @Override
     public void onNotificationPrivacyChanged() {
         if (!Prefs.isNotificationsEnabled(appContext)) {
             return;
@@ -128,7 +124,6 @@ abstract class MessageNotifier implements IMessageNotifier {
         }
     }
 
-    @Override
     public void removeNotifications(int[] chatIds) {
         List<NotificationItem> removedItems = new LinkedList<>();
         for (int id : chatIds) {
@@ -138,7 +133,6 @@ abstract class MessageNotifier implements IMessageNotifier {
         recreateSummaryNotification();
     }
 
-    @Override
     public void removeNotifications(int chatId) {
         List<NotificationItem> removedItems = notificationState.removeNotificationsForChat(chatId);
         cancelNotifications(removedItems);
