@@ -76,7 +76,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
                                .submit(context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
                                        context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height))
                                .get());
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (Exception e) {
           Log.w(TAG, e);
           setLargeIcon(fallbackContactPhoto.asDrawable(context, recipient.getFallbackAvatarColor(context)));
         }
