@@ -11,7 +11,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
 
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
@@ -112,15 +111,8 @@ public class ConversationPopupActivity extends ConversationActivity {
   }
 
   @Override
-  protected void sendComplete(int threadId) {
-    super.sendComplete(threadId);
+  protected void sendComplete(int chatId) {
+    super.sendComplete(chatId);
     finish();
-  }
-
-  @Override
-  protected void updateReminders() {
-    if (reminderView.resolved()) {
-      reminderView.get().setVisibility(View.GONE);
-    }
   }
 }

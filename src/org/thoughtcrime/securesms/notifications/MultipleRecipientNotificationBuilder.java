@@ -17,34 +17,33 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class MultipleRecipientNotificationBuilder extends AbstractNotificationBuilder {
 
-  private final List<MessageBody> messageBodies = new LinkedList<>();
+  private final LinkedList<MessageBody> messageBodies = new LinkedList<>();
 
   private static class MessageBody {
     final @Nullable Recipient group;
     final @NonNull Recipient sender;
     final @NonNull CharSequence message;
 
-    public MessageBody(@Nullable Recipient group, @NonNull Recipient sender, @NonNull CharSequence message) {
+    MessageBody(@Nullable Recipient group, @NonNull Recipient sender, @NonNull CharSequence message) {
       this.group = group;
       this.sender = sender;
       this.message = message;
     }
   }
 
-  public MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
-    super(context, privacy);
+  MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy, boolean signal) {
+    super(context, privacy, signal);
 
     setColor(context.getResources().getColor(R.color.delta_primary));
     setSmallIcon(R.drawable.icon_notification);
-    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
-      setChannelId(createMsgNotificationChannel(context));
-    }
     setContentTitle(context.getString(R.string.app_name));
     setContentIntent(PendingIntent.getActivity(context, 0, new Intent(context, ConversationListActivity.class), 0));
     setCategory(NotificationCompat.CATEGORY_MESSAGE);
@@ -52,21 +51,21 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     setGroupSummary(true);
   }
 
-  public void setMessageCount(int messageCount, int chatCount) {
+  void setMessageCount(int messageCount, int chatCount) {
     setSubText(context.getString(R.string.notify_n_messages_in_m_chats,
                                  messageCount, chatCount));
     setContentInfo(String.valueOf(messageCount));
     setNumber(messageCount);
   }
 
-  public void setMostRecentSender(Recipient recipient) {
+  void setMostRecentSender(Recipient recipient) {
     if (privacy.isDisplayContact()) {
       setContentText(context.getString(R.string.notify_most_recent_from,
                                        recipient.toShortString()));
     }
   }
 
-  public void addActions(PendingIntent markAsReadIntent) {
+  void addActions(PendingIntent markAsReadIntent) {
     NotificationCompat.Action markAllAsReadAction = new NotificationCompat.Action(R.drawable.check,
                                             context.getString(R.string.notify_mark_all_read),
                                             markAsReadIntent);
@@ -74,7 +73,7 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     extend(new NotificationCompat.WearableExtender().addAction(markAllAsReadAction));
   }
 
-  public void addMessageBody(@Nullable Recipient group, @NonNull Recipient sender, @Nullable CharSequence body) {
+  void addMessageBody(@Nullable Recipient group, @NonNull Recipient sender, @Nullable CharSequence body) {
     messageBodies.add(new MessageBody(group, sender, body));
 
     if (privacy.isDisplayContact() && sender.getContactUri() != null) {
@@ -88,11 +87,13 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
   public Notification build() {
     if (privacy.isDisplayMessage() || privacy.isDisplayContact()) {
       NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
-      Map<Recipient, List<MessageBody>> byGroup = new HashMap<>();
+      Map<Recipient, List<MessageBody>> byGroup = new LinkedHashMap<>();
       for (MessageBody body : messageBodies) {
         Recipient key = body.group == null ? body.sender : body.group;
         if(byGroup.containsKey(key)) {
-          byGroup.get(key).add(body);
+          List<MessageBody> messagebodies = byGroup.remove(key);
+          messagebodies.add(body);
+          byGroup.put(key, messagebodies);
         } else {
           byGroup.put(key, new LinkedList<>());
           byGroup.get(key).add(body);
@@ -100,11 +101,14 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
       }
 
       if (privacy.isDisplayMessage()) {
-        for (Recipient nextGroup : byGroup.keySet()) {
+        LinkedList<Recipient> list = new LinkedList<>(byGroup.keySet());
+        Iterator<Recipient> iterator = list.descendingIterator();
+        while(iterator.hasNext()) {
+          Recipient nextGroup = iterator.next();
           String groupName = nextGroup.getName();
           List<MessageBody> messages = byGroup.get(nextGroup);
           String firstMessageSender = messages.get(0).sender.getName();
-          if(groupName.equals(firstMessageSender)) { // individual
+          if(groupName != null && groupName.equals(firstMessageSender)) { // individual
             for (MessageBody body : messages) {
               style.addLine(getStyledMessage(body.sender, body.message));
             }
@@ -116,11 +120,14 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
           }
         }
       } else if (privacy.isDisplayContact()) {
-        for (Recipient nextGroup : byGroup.keySet()) {
+        LinkedList<Recipient> list = new LinkedList<>(byGroup.keySet());
+        Iterator<Recipient> iterator = list.descendingIterator();
+        while(iterator.hasNext()) {
+          Recipient nextGroup = iterator.next();
           String groupName = nextGroup.getName();
           List<MessageBody> messages = byGroup.get(nextGroup);
           String firstMessageSender = messages.get(0).sender.getName();
-          if(groupName.equals(firstMessageSender)) { // individual
+          if(groupName != null && groupName.equals(firstMessageSender)) { // individual
             for (MessageBody body : messages) {
               style.addLine(body.sender.getName());
             }

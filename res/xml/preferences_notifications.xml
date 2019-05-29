@@ -43,14 +43,6 @@
                             android:defaultValue="true" />
 
         <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
-                android:key="pref_repeat_alerts"
-                android:defaultValue="0"
-                android:title="@string/pref_repeat_notify"
-                android:dependency="pref_key_enable_notifications"
-                android:entries="@array/pref_repeat_alerts_entries"
-                android:entryValues="@array/pref_repeat_alerts_values" />
-
-        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
                 android:key="pref_notification_privacy"
                 android:title="@string/pref_notifications_show"
                 android:dependency="pref_key_enable_notifications"

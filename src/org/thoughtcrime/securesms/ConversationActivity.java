@@ -91,7 +91,7 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.MediaConstraints;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.SlideDeck;
-import org.thoughtcrime.securesms.notifications.MessageNotifier;
+import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -300,14 +300,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    MessageNotifier.updateVisibleChat(this, chatId);
-    markThreadAsRead();
+    MessageNotifierCompat.updateVisibleChat(chatId);
   }
 
   @Override
   protected void onPause() {
     super.onPause();
-    MessageNotifier.updateVisibleChat(this, MessageNotifier.NO_VISIBLE_CHAT_ID);
+    MessageNotifierCompat.updateVisibleChat(MessageNotifierCompat.NO_VISIBLE_CHAT_ID);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
@@ -735,21 +734,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     handleSecurityChange(currentSecureText || isPushGroupConversation(), currentIsDefaultSms);
 
     future.set(true);
-    onSecurityUpdated();
     return future;
-  }
-
-  private void onSecurityUpdated() {
-    Log.w(TAG, "onSecurityUpdated()");
-    updateReminders();
-  }
-
-  protected void updateReminders() {
-//    if (ExpiredBuildReminder.isEligible()) {
-//      reminderView.get().showReminder(new ExpiredBuildReminder(this));
-//    } else if (reminderView.resolved()) {
-//      reminderView.get().hide();
-//    }
   }
 
   private void initializeViews() {
@@ -923,16 +908,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private MediaConstraints getCurrentMediaConstraints() {
     return MediaConstraints.getPushMediaConstraints();
-  }
-
-  private void markThreadAsRead() {
-    new AsyncTask<Integer, Void, Void>() {
-      @Override
-      protected Void doInBackground(Integer... params) {
-        MessageNotifier.updateNotification(ConversationActivity.this, chatId, false);
-        return null;
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
   }
 
   private String getRealPathFromAttachment(Attachment attachment) {
@@ -1180,9 +1155,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
 
-  protected void sendComplete(int threadId) {
-    boolean refreshFragment = (threadId != this.chatId);
-    this.chatId = threadId;
+  protected void sendComplete(int chatId) {
+    boolean refreshFragment = (chatId != this.chatId);
+    this.chatId = chatId;
 
     if (fragment == null || !fragment.isVisible() || isFinishing()) {
       return;
@@ -1191,8 +1166,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     fragment.setLastSeen(0);
 
     if (refreshFragment) {
-      fragment.reload(recipient, threadId);
-      MessageNotifier.updateVisibleChat(this, threadId);
+      fragment.reload(recipient, chatId);
+      MessageNotifierCompat.updateVisibleChat(chatId);
     }
 
     fragment.scrollToBottom();
@@ -1411,7 +1386,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       else {
         processComposeControls(ACTION_SEND_OUT);
-        MessageNotifier.playSendSound();
+        MessageNotifierCompat.playSendSound();
       }
     }
 
@@ -1501,7 +1476,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED || eventId == DcContext.DC_EVENT_CONTACTS_CHANGED) {
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
-      updateReminders();
       initializeSecurity(isSecureText, isDefaultSms);
       invalidateOptionsMenu();
     }

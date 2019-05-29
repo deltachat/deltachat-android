@@ -46,14 +46,11 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   private CharSequence contentTitle;
   private CharSequence contentText;
 
-  public SingleRecipientNotificationBuilder(@NonNull Context context, @NonNull NotificationPrivacyPreference privacy)
+  SingleRecipientNotificationBuilder(@NonNull Context context, @NonNull NotificationPrivacyPreference privacy, boolean signal)
   {
-    super(context, privacy);
+    super(context, privacy, signal);
 
     setSmallIcon(R.drawable.icon_notification);
-    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
-      setChannelId(createMsgNotificationChannel(context));
-    }
     setColor(context.getResources().getColor(R.color.delta_primary));
     setPriority(Prefs.getNotificationPriority(context));
     setCategory(NotificationCompat.CATEGORY_MESSAGE);
@@ -117,52 +114,32 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     }
   }
 
-  public void addAndroidAutoAction(@NonNull PendingIntent androidAutoReplyIntent,
-                                   @NonNull PendingIntent androidAutoHeardIntent, long timestamp)
-  {
-
-    if (contentTitle == null || contentText == null)
-      return;
-
-    RemoteInput remoteInput = new RemoteInput.Builder(AndroidAutoReplyReceiver.VOICE_REPLY_KEY)
-                                  .setLabel(context.getString(R.string.notify_reply_button))
-                                  .build();
-
-    NotificationCompat.CarExtender.UnreadConversation.Builder unreadConversationBuilder =
-            new NotificationCompat.CarExtender.UnreadConversation.Builder(contentTitle.toString())
-                .addMessage(contentText.toString())
-                .setLatestTimestamp(timestamp)
-                .setReadPendingIntent(androidAutoHeardIntent)
-                .setReplyAction(androidAutoReplyIntent, remoteInput);
-
-    extend(new NotificationCompat.CarExtender().setUnreadConversation(unreadConversationBuilder.build()));
-  }
-
-  public void addActions(@NonNull PendingIntent markReadIntent,
-                         @NonNull PendingIntent quickReplyIntent,
-                         @NonNull PendingIntent wearableReplyIntent)
+  void addActions(@NonNull PendingIntent markReadIntent,
+                         @NonNull PendingIntent compatInNotificationReplyIntent,
+                         @NonNull PendingIntent inNotificationReplyIntent)
   {
     Action markAsReadAction = new Action(R.drawable.check,
                                          context.getString(R.string.notify_mark_read),
                                          markReadIntent);
 
-    Action replyAction = new Action(R.drawable.ic_reply_white_36dp,
-                                    context.getString(R.string.notify_reply_button),
-                                    quickReplyIntent);
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+    Action replyAction;
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+      replyAction = new Action(R.drawable.ic_reply_white_36dp,
+              context.getString(R.string.notify_reply_button),
+              compatInNotificationReplyIntent);
+    } else {
       replyAction = new Action.Builder(R.drawable.ic_reply_white_36dp,
-                                       context.getString(R.string.notify_reply_button),
-                                       wearableReplyIntent)
-          .addRemoteInput(new RemoteInput.Builder(MessageNotifier.EXTRA_REMOTE_REPLY)
-                              .setLabel(context.getString(R.string.notify_reply_button)).build())
-          .build();
+              context.getString(R.string.notify_reply_button),
+              inNotificationReplyIntent)
+              .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
+                      .setLabel(context.getString(R.string.notify_reply_button)).build())
+              .build();
     }
 
     Action wearableReplyAction = new Action.Builder(R.drawable.ic_reply,
                                                     context.getString(R.string.notify_reply_button),
-                                                    wearableReplyIntent)
-        .addRemoteInput(new RemoteInput.Builder(MessageNotifier.EXTRA_REMOTE_REPLY)
+                                                    inNotificationReplyIntent)
+        .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
                             .setLabel(context.getString(R.string.notify_reply_button)).build())
         .build();
 
@@ -173,7 +150,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
                                                     .addAction(wearableReplyAction));
   }
 
-  public void addMessageBody(@NonNull Recipient chatRecipient,
+  void addMessageBody(@NonNull Recipient chatRecipient,
                              @NonNull Recipient individualRecipient,
                              @Nullable CharSequence messageBody)
   {
@@ -194,7 +171,21 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   public Notification build() {
     // the filtering whether or not to display messages and contacts is done in addMessageBody
     // and setPrimaryMessageBody, no need to do it here again.
-    setStyle(new NotificationCompat.BigTextStyle().bigText(getBigText(messageBodies)));
+    NotificationCompat.Style style;
+    if (Build.VERSION.SDK_INT < 23) {
+      style = new NotificationCompat.InboxStyle();
+      for (CharSequence messageBody : messageBodies) {
+        ((NotificationCompat.InboxStyle) style).addLine(messageBody);
+      }
+    } else if (messageBodies.size() == 1 && hasBigPictureSlide(slideDeck)) {
+      style = new NotificationCompat.BigPictureStyle()
+                .bigPicture(getBigPicture(slideDeck))
+                .setSummaryText(getBigText(messageBodies));
+    } else {
+      style = new NotificationCompat.BigTextStyle().bigText(getBigText(messageBodies));
+    }
+
+    setStyle(style);
     return super.build();
   }
 
@@ -260,5 +251,6 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
 
     return content;
   }
+
 
 }

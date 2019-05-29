@@ -99,24 +99,6 @@
     <item>3000,3000</item>
   </string-array>
 
-  <string-array name="pref_repeat_alerts_entries">
-      <item>@string/never</item>
-      <item>@string/notify_repeat_one_time</item>
-      <item>@string/notify_repeat_two_times</item>
-      <item>@string/notify_repeat_three_times</item>
-      <item>@string/notify_repeat_five_times</item>
-      <item>@string/notify_repeat_ten_times</item>
-  </string-array>
-
-  <string-array name="pref_repeat_alerts_values" translatable="false">
-      <item>0</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>5</item>
-      <item>10</item>
-  </string-array>
-
   <string-array name="default_or_custom_values" translatable="false">
       <item>default</item>
       <item>custom</item>

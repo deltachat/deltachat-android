@@ -24,16 +24,19 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.List;
 
-public abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
+abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
 
   @SuppressWarnings("unused")
   private static final String TAG = AbstractNotificationBuilder.class.getSimpleName();
 
   protected Context                       context;
   protected NotificationPrivacyPreference privacy;
+  private int notificationId;
+  private Uri ringtone;
+  private boolean vibrate;
 
-  public AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
-    super(context);
+  AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy, boolean signal) {
+    super(context, createMsgNotificationChannel(context));
 
     this.context = context;
     this.privacy = privacy;
@@ -41,7 +44,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     setLed();
   }
 
-  protected CharSequence getStyledMessage(@NonNull Recipient recipient, @Nullable CharSequence message) {
+  CharSequence getStyledMessage(@NonNull Recipient recipient, @Nullable CharSequence message) {
     SpannableStringBuilder builder = new SpannableStringBuilder();
     builder.append(Util.getBoldedString(recipient.toShortString()));
     builder.append(": ");
@@ -50,18 +53,17 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     return builder;
   }
 
-  public void setAlarms(@Nullable Uri ringtone, Prefs.VibrateState vibrate) {
+  // Alarms are not set in the notification or the notification channel but handled separately
+  // by the MessageNotifier. It allows us to dynamically turn on and off the sounds and as well as
+  // to change vibration and sounds during runtime
+  void setAlarms(@Nullable Uri ringtone, Prefs.VibrateState vibrate) {
     Uri     defaultRingtone = Prefs.getNotificationRingtone(context);
     boolean defaultVibrate  = Prefs.isNotificationVibrateEnabled(context);
+    if (ringtone == null && !TextUtils.isEmpty(defaultRingtone.toString())) this.ringtone = defaultRingtone;
+    else if (ringtone != null && !ringtone.toString().isEmpty()) this.ringtone = ringtone;
 
-    if      (ringtone == null && !TextUtils.isEmpty(defaultRingtone.toString())) setSound(defaultRingtone);
-    else if (ringtone != null && !ringtone.toString().isEmpty())                 setSound(ringtone);
-
-    if (vibrate == Prefs.VibrateState.ENABLED ||
-        (vibrate == Prefs.VibrateState.DEFAULT && defaultVibrate))
-    {
-      setDefaults(Notification.DEFAULT_VIBRATE);
-    }
+    this.vibrate = (vibrate == Prefs.VibrateState.ENABLED ||
+            (vibrate == Prefs.VibrateState.DEFAULT && defaultVibrate));
   }
 
   private void setLed() {
@@ -79,12 +81,12 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
         argb = Color.rgb(0xFF, 0xFF, 0xFF);
       }
       setLights(argb,
-                Integer.parseInt(blinkPatternArray[0]),
-                Integer.parseInt(blinkPatternArray[1]));
+              Integer.parseInt(blinkPatternArray[0]),
+              Integer.parseInt(blinkPatternArray[1]));
     }
   }
 
-  public void setTicker(@NonNull Recipient recipient, @Nullable CharSequence message) {
+  void setTicker(@NonNull Recipient recipient, @Nullable CharSequence message) {
     if (privacy.isDisplayMessage()) {
       setTicker(getStyledMessage(recipient, message));
     } else if (privacy.isDisplayContact()) {
@@ -106,10 +108,9 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
   // - NotificationChannels have default values that have a higher precedence as the Notification.Builder setting
   // - once created, NotificationChannels cannot be modified programmatically
   // - NotificationChannels can be deleted, however, on re-creation it becomes un-deleted with the old settings
-  // - the idea is that sound, led, vibrate is edited by the user
-  //   via the ACTION_CHANNEL_NOTIFICATION_SETTINGS intent that takes the channelId
+  // - the idea is that sound and vibrate are handled outside of the scope of the notification channel
 
-  protected String createMsgNotificationChannel(Context context) {
+  private static String createMsgNotificationChannel(Context context) {
     String chBase = "ch_msg2_";
     String chId = chBase + "unsupported";
 
@@ -119,15 +120,11 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
 
         // get all values we'll use as settings for the NotificationChannel
         String ledColor = Prefs.getNotificationLedColor(context);
-        boolean defaultVibrate = Prefs.isNotificationVibrateEnabled(context);
-        Uri ringtone = Prefs.getNotificationRingtone(context);
 
         // compute hash from these settings
         String hash = "";
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(ledColor.getBytes());
-        md.update(defaultVibrate ? (byte) 1 : (byte) 0);
-        md.update(ringtone.toString().getBytes());
         hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
         // get channel name
@@ -138,7 +135,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
             notificationManager.deleteNotificationChannel(oldChId);
           }
           catch (Exception e) {
-            ; // channel not created before
+            // channel not created before
           }
           Prefs.setStringPreference(context, "ch_curr_" + chBase, chId);
         }
@@ -156,7 +153,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
         // we cannot change the settings, however, this is handled by using different values for chId
         if(!channelExists) {
           NotificationChannel channel = new NotificationChannel(chId,
-              "New messages", NotificationManager.IMPORTANCE_DEFAULT);
+                  "New messages", NotificationManager.IMPORTANCE_DEFAULT);
           channel.setDescription("Informs about new messages.");
 
           if (!ledColor.equals("none")) {
@@ -173,14 +170,8 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
             channel.enableLights(false);
           }
 
-          channel.enableVibration(defaultVibrate);
-
-          if (!TextUtils.isEmpty(ringtone.toString())) {
-            channel.setSound(ringtone,
-                new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
-                    .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
-                    .build());
-          }
+          channel.setSound(null, null);
+          channel.enableVibration(false);
 
           notificationManager.createNotificationChannel(channel);
         }
@@ -193,7 +184,24 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     return chId;
   }
 
-  protected static boolean notificationChannelsSupported() {
+  private static boolean notificationChannelsSupported() {
     return Build.VERSION.SDK_INT >= 26;
+  }
+
+
+  public void setNotificationId(int notificationId) {
+    this.notificationId = notificationId;
+  }
+
+  public int getNotificationId() {
+    return this.notificationId;
+  }
+
+  public Uri getRingtone() {
+    return this.ringtone;
+  }
+
+  public boolean getVibrate() {
+    return this.vibrate;
   }
 }

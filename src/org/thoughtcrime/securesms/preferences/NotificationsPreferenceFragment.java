@@ -16,7 +16,7 @@ import android.text.TextUtils;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.notifications.MessageNotifier;
+import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static android.app.Activity.RESULT_OK;
@@ -37,8 +37,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         .setOnPreferenceChangeListener(new ListSummaryListener());
     this.findPreference(Prefs.RINGTONE_PREF)
         .setOnPreferenceChangeListener(new RingtoneSummaryListener());
-    this.findPreference(Prefs.REPEAT_ALERTS_PREF)
-        .setOnPreferenceChangeListener(new ListSummaryListener());
     this.findPreference(Prefs.NOTIFICATION_PRIVACY_PREF)
         .setOnPreferenceChangeListener(new NotificationPrivacyListener());
     this.findPreference(Prefs.NOTIFICATION_PRIORITY_PREF)
@@ -62,7 +60,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     initializeListSummary((ListPreference) findPreference(Prefs.LED_COLOR_PREF));
     initializeListSummary((ListPreference) findPreference(Prefs.LED_BLINK_PREF));
-    initializeListSummary((ListPreference) findPreference(Prefs.REPEAT_ALERTS_PREF));
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIVACY_PREF));
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIORITY_PREF));
 
@@ -136,7 +133,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       new AsyncTask<Void, Void, Void>() {
         @Override
         protected Void doInBackground(Void... params) {
-          MessageNotifier.updateNotification(getActivity());
+          MessageNotifierCompat.onNotificationPrivacyChanged();
           return null;
         }
       }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);

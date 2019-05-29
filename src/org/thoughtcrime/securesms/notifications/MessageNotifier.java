@@ -1,33 +1,12 @@
-/*
- * Copyright (C) 2011 Whisper Systems
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package org.thoughtcrime.securesms.notifications;
 
-import android.annotation.SuppressLint;
-import android.app.AlarmManager;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.media.AudioManager;
+import android.media.RingtoneManager;
 import android.media.SoundPool;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.service.notification.StatusBarNotification;
+import android.net.Uri;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
@@ -38,11 +17,8 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.connect.ForegroundDetector;
-import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.Pair;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.SpanUtil;
@@ -52,454 +28,350 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.concurrent.TimeUnit;
 
-import me.leolin.shortcutbadger.ShortcutBadger;
+import static org.thoughtcrime.securesms.notifications.MessageNotifierCompat.NO_VISIBLE_CHAT_ID;
+import static org.thoughtcrime.securesms.notifications.MessageNotifierCompat.SUMMARY_NOTIFICATION_ID;
 
+abstract class MessageNotifier {
 
-/**
- * Handles posting system notifications for new messages.
- *
- *
- * @author Moxie Marlinspike
- */
+    static final String TAG = org.thoughtcrime.securesms.notifications.MessageNotifierApi23.class.getSimpleName();
 
-public class MessageNotifier {
+    private static final String NOTIFICATION_GROUP        = "messages";
+    private static final long   MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(20);
+    private static final long   STARTUP_SILENCE_DELTA     = TimeUnit.MINUTES.toMillis(1);
+    private static final long   INITIAL_STARTUP           = System.currentTimeMillis();
 
-  private static final String TAG = MessageNotifier.class.getSimpleName();
+            static volatile int                visibleChatId                = NO_VISIBLE_CHAT_ID;
+            static volatile long               lastAudibleNotification      = -1;
+                    final   NotificationState  notificationState;
+                    final   Context            appContext;
+    private         final   SoundPool          soundPool;
+    private         final   int                soundIn;
+    private         final   int                soundOut;
+    private                 boolean            soundInLoaded;
+    private                 boolean            soundOutLoaded;
 
-  static final  String EXTRA_REMOTE_REPLY = "extra_remote_reply";
+    MessageNotifier(Context context) {
+        appContext = context.getApplicationContext();
+        soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
+        soundIn = soundPool.load(context, R.raw.sound_in, 1);
+        soundOut = soundPool.load(context, R.raw.sound_out, 1);
+        notificationState = new NotificationState();
 
-  public  static final long   NO_VISIBLE_CHAT_ID        = -1L;
-  private static final  int   SUMMARY_NOTIFICATION_ID   = 1338;
-  private static final int    PENDING_MESSAGES_ID       = 1111;
-  private static final String NOTIFICATION_GROUP        = "messages";
-  private static final long   MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(20);
-  private static final long   STARTUP_SILENCE_DELTA     = TimeUnit.MINUTES.toMillis(1);
-  private static final long   INITIAL_STARTUP           = System.currentTimeMillis();
-
-  private volatile static long               visibleChatId                = NO_VISIBLE_CHAT_ID;
-  private volatile static long               lastAudibleNotification      = -1;
-
-  private final           SoundPool          soundPool;
-  private final           int                soundIn;
-  private final           int                soundOut;
-  private                 boolean            soundInLoaded;
-  private                 boolean            soundOutLoaded;
-  private                 Context            context;
-
-  private static MessageNotifier instance;
-
-  private MessageNotifier(Context context) {
-    this.context = context.getApplicationContext();
-    soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
-    soundIn = soundPool.load(context, R.raw.sound_in, 1);
-    soundOut = soundPool.load(context, R.raw.sound_out, 1);
-
-    soundPool.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
-      if (status == 0) {
-        if (sampleId == soundIn) {
-          soundInLoaded = true;
-        } else if (sampleId == soundOut) {
-          soundOutLoaded = true;
-        }
-      }
-    });
-  }
-
-  public static MessageNotifier init(Context context) {
-    if (instance == null) {
-      instance = new MessageNotifier(context);
-    }
-    return instance;
-  }
-
-  public static void playSendSound() {
-    if (instance == null) {
-      Log.w(TAG, "Message notifier not initialized. Cannot play sounds");
-      return;
-    }
-
-    if (Prefs.isInChatNotifications(instance.context) && instance.soundOutLoaded) {
-      instance.soundPool.play(instance.soundOut, 1.0f, 1.0f, 1, 0, 1.0f);
-    }
-  }
-
-  private static LinkedList<Pair<Integer, Boolean>> pendingNotifications = new LinkedList<>();
-
-  public static void updateVisibleChat(Context context, long chatId) {
-    visibleChatId = chatId;
-    if (visibleChatId == NO_VISIBLE_CHAT_ID && pendingNotifications.size() > 0) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          updatePendingNotifications(context);
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-  }
-
-  private static void cancelActiveNotifications(@NonNull Context context) {
-    NotificationManager notifications = ServiceUtil.getNotificationManager(context);
-    notifications.cancel(SUMMARY_NOTIFICATION_ID);
-
-    if (Build.VERSION.SDK_INT >= 23) {
-      try {
-        StatusBarNotification[] activeNotifications = notifications.getActiveNotifications();
-
-        for (StatusBarNotification activeNotification : activeNotifications) {
-          notifications.cancel(activeNotification.getId());
-        }
-      } catch (Throwable e) {
-        // XXX Appears to be a ROM bug, see #6043
-        Log.w(TAG, e);
-        notifications.cancelAll();
-      }
-    }
-  }
-
-  private static void cancelOrphanedNotifications(@NonNull Context context, NotificationState notificationState) {
-    if (Build.VERSION.SDK_INT >= 23) {
-      try {
-        NotificationManager     notifications       = ServiceUtil.getNotificationManager(context);
-        StatusBarNotification[] activeNotifications = notifications.getActiveNotifications();
-
-        for (StatusBarNotification notification : activeNotifications) {
-          boolean validNotification = false;
-
-          if (notification.getId() != SUMMARY_NOTIFICATION_ID &&
-              notification.getId() != KeepAliveService.FG_NOTIFICATION_ID           &&
-              notification.getId() != PENDING_MESSAGES_ID)
-          {
-            for (NotificationItem item : notificationState.getNotifications()) {
-              if (notification.getId() == (SUMMARY_NOTIFICATION_ID + item.getChatId())) {
-                validNotification = true;
-                break;
-              }
+        soundPool.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
+            if (status == 0) {
+                if (sampleId == soundIn) {
+                    soundInLoaded = true;
+                } else if (sampleId == soundOut) {
+                    soundOutLoaded = true;
+                }
             }
+        });
+    }
 
-            if (!validNotification) {
-              notifications.cancel(notification.getId());
-            }
-          }
+    public void playSendSound() {
+        if (Prefs.isInChatNotifications(appContext) && soundOutLoaded) {
+            soundPool.play(soundOut, 1.0f, 1.0f, 1, 0, 1.0f);
         }
-      } catch (Throwable e) {
-        // XXX Android ROM Bug, see #6043
-        Log.w(TAG, e);
-      }
-    }
-  }
-
-  public static void updateNotification(@NonNull Context context) {
-    if (!Prefs.isNotificationsEnabled(context)) {
-      return;
     }
 
-    updateNotification(context, true, 0);
-  }
-
-  public static void updateNotification(@NonNull Context context, int chatId)
-  {
-    updateNotification(context, chatId, true);
-  }
-
-  public static void updateNotification(@NonNull  Context context,
-                                        int       chatId,
-                                        boolean   signal)
-  {
-    boolean    isVisible  = visibleChatId == chatId;
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
-
-    if (isVisible) {
-      dcContext.marknoticedChat(chatId);
-    }
-
-    if (!Prefs.isNotificationsEnabled(context) ||
-        Prefs.isChatMuted(context, chatId))
-    {
-      return;
-    }
-
-    removePendingNotifications(chatId);
-    if (isVisible && signal) {
-      sendInChatNotification(context, chatId);
-    } else if (ForegroundDetector.getInstance().isBackground()) {
-      updateNotification(context, signal, 0);
-    } else if (isVisible || visibleChatId == NO_VISIBLE_CHAT_ID) {
-      updateNotification(context, false, 0);
-    } else {
-      //different chat is visible
-      pendingNotifications.push(new Pair<>(chatId, signal));
-    }
-  }
-
-  // @param signal: true to beep, false to stay silent.
-  private static void updateNotification(@NonNull Context context,
-                                         boolean signal,
-                                         int     reminderCount)
-  {
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
-    int[] freshMessages = dcContext.getFreshMsgs();
-
-    if (freshMessages.length == 0)
-    {
-      cancelActiveNotifications(context);
-      updateBadge(context, 0);
-      clearReminder(context);
-      return;
-    }
-
-    NotificationState notificationState = constructNotificationState(dcContext, freshMessages);
-
-    long now = System.currentTimeMillis();
-    if (signal && (
-            (now - INITIAL_STARTUP) < STARTUP_SILENCE_DELTA ||
-                    (now - lastAudibleNotification) < MIN_AUDIBLE_PERIOD_MILLIS)) {
-      signal = false;
-    } else if (signal) {
-      lastAudibleNotification = now;
-    }
-
-    if (notificationState.hasMultipleChats()) {
-      if (Build.VERSION.SDK_INT >= 23) {
-        for (int chatId : notificationState.getChats()) {
-          sendSingleChatNotification(context, new NotificationState(notificationState.getNotificationsForChat(chatId)), false, true);
+    public void updateVisibleChat(int chatId) {
+        visibleChatId = chatId;
+        if (visibleChatId != NO_VISIBLE_CHAT_ID) {
+            removeNotifications(visibleChatId);
         }
-      }
-
-      sendMultipleChatNotification(context, notificationState, signal);
-    } else {
-      sendSingleChatNotification(context, notificationState, signal, false);
     }
 
-    cancelOrphanedNotifications(context, notificationState);
-    updateBadge(context, notificationState.getMessageCount());
+    public void updateNotification(int chatId, int messageId) {
+        boolean isVisible = visibleChatId == chatId;
+        ApplicationDcContext dcContext = DcHelper.getContext(appContext);
 
-    if (signal) {
-      scheduleReminder(context, reminderCount);
-    }
-  }
+        if (isVisible) {
+            dcContext.marknoticedChat(chatId);
+        }
 
-  private static void sendSingleChatNotification(@NonNull  Context context,
-                                                 @NonNull  NotificationState notificationState,
-                                                 boolean signal,
-                                                 boolean bundled)
-  {
-    if (notificationState.getNotifications().isEmpty()) {
-      if (!bundled) cancelActiveNotifications(context);
-      return;
-    }
+        if (!Prefs.isNotificationsEnabled(appContext) ||
+                Prefs.isChatMuted(appContext, chatId))
+        {
+            return;
+        }
 
-    SingleRecipientNotificationBuilder builder        = new SingleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
-    List<NotificationItem>             notifications  = notificationState.getNotifications();
-    Recipient                          recipient      = notifications.get(0).getRecipient();
-    int                                notificationId = (SUMMARY_NOTIFICATION_ID + (bundled ? notifications.get(0).getChatId() : 0));
-
-    builder.setChat(notifications.get(0).getRecipient());
-    builder.setMessageCount(notificationState.getMessageCount());
-    builder.setPrimaryMessageBody(recipient, notifications.get(0).getIndividualRecipient(),
-                                  notifications.get(0).getText(""), notifications.get(0).getSlideDeck());
-    builder.setContentIntent(notifications.get(0).getPendingIntent(context));
-    builder.setGroup(NOTIFICATION_GROUP);
-    builder.setDeleteIntent(notificationState.getDeleteIntent(context));
-
-    long timestamp = notifications.get(0).getTimestamp();
-    if (timestamp != 0) builder.setWhen(timestamp);
-
-    builder.addActions(notificationState.getMarkAsReadIntent(context, notificationId),
-                       notificationState.getQuickReplyIntent(context, notifications.get(0).getRecipient()),
-                       notificationState.getRemoteReplyIntent(context, notifications.get(0).getRecipient()));
-
-    builder.addAndroidAutoAction(notificationState.getAndroidAutoReplyIntent(context, notifications.get(0).getRecipient()),
-                                 notificationState.getAndroidAutoHeardIntent(context, notificationId), notifications.get(0).getTimestamp());
-
-    ListIterator<NotificationItem> iterator = notifications.listIterator();
-
-    while(iterator.hasNext()) {
-      NotificationItem item = iterator.next();
-      builder.addMessageBody(item.getRecipient(), item.getIndividualRecipient(), item.getText());
-    }
-
-    if (signal) {
-      builder.setAlarms(notificationState.getRingtone(context), notificationState.getVibrate(context));
-      builder.setTicker(notifications.get(0).getIndividualRecipient(),
-                        notifications.get(0).getText());
-    }
-
-    if (!bundled) {
-      builder.setGroupSummary(true);
-    }
-
-    NotificationManagerCompat.from(context).notify(notificationId, builder.build());
-  }
-
-  private static void updatePendingNotifications(Context context) {
-    while (pendingNotifications.size() > 0) {
-      Pair<Integer, Boolean> chatSignalPair = pendingNotifications.pop();
-      updateNotification(context, chatSignalPair.first(), chatSignalPair.second());
-    }
-  }
-
-  private static void sendMultipleChatNotification(@NonNull  Context context,
-                                                   @NonNull  NotificationState notificationState,
-                                                   boolean signal)
-  {
-    MultipleRecipientNotificationBuilder builder       = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
-    List<NotificationItem>               notifications = notificationState.getNotifications();
-
-    builder.setMessageCount(notificationState.getMessageCount(), notificationState.getChatCount());
-    builder.setMostRecentSender(notifications.get(0).getIndividualRecipient());
-    builder.setGroup(NOTIFICATION_GROUP);
-    builder.setDeleteIntent(notificationState.getDeleteIntent(context));
-
-    long timestamp = notifications.get(0).getTimestamp();
-    if (timestamp != 0) builder.setWhen(timestamp);
-
-    builder.addActions(notificationState.getMarkAsReadIntent(context, SUMMARY_NOTIFICATION_ID));
-
-    ListIterator<NotificationItem> iterator = notifications.listIterator(notifications.size());
-
-    while(iterator.hasPrevious()) {
-      NotificationItem item = iterator.previous();
-      builder.addMessageBody(item.getRecipient(), item.getIndividualRecipient(), item.getText());
-    }
-
-    if (signal) {
-      builder.setAlarms(notificationState.getRingtone(context), notificationState.getVibrate(context));
-      builder.setTicker(notifications.get(0).getIndividualRecipient(),
-                        notifications.get(0).getText());
-    }
-
-    NotificationManagerCompat.from(context).notify(SUMMARY_NOTIFICATION_ID, builder.build());
-  }
-
-  private static void removePendingNotifications(int chatId) {
-    for (Pair<Integer, Boolean> pendingNotification : pendingNotifications) {
-      if (pendingNotification.first() == chatId) {
-        pendingNotifications.remove(pendingNotification);
-        break;
-      }
-    }
-  }
-
-  private static void sendInChatNotification(Context context, int chatId) {
-    if (instance == null) {
-      Log.w(TAG, "Message notifier not initialized. Cannot play sounds");
-      return;
-    }
-
-    if (!Prefs.isInChatNotifications(context) ||
-        ServiceUtil.getAudioManager(context).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
-    {
-      return;
-    }
-
-    if(Prefs.isChatMuted(context, chatId)) {
-      Log.d(TAG, "chat muted");
-      return;
-    }
-
-    if (instance.soundInLoaded) {
-      instance.soundPool.play(instance.soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
-    }
-  }
-
-  private static NotificationState constructNotificationState(@NonNull ApplicationDcContext dcContext,
-                                                              @NonNull  int[] freshMessages)
-  {
-    NotificationState     notificationState = new NotificationState();
-    Context context = dcContext.context;
-
-    for(int msgId : freshMessages) {
-      DcMsg record = dcContext.getMsg(msgId);
-      if (record.isInfo()) {
-        continue;
-      }
-      int          id                    = record.getId();
-      boolean      mms                   = record.isMms() || record.isMediaPending();
-      int          chatId                = record.getChatId();
-      CharSequence body                  = record.getDisplayBody();
-      DcMsg        dcMsg                 = dcContext.getMsg(msgId);
-      Recipient    chatRecipient         = new Recipient(context, dcContext.getChat(dcMsg.getChatId()), null);
-      Recipient    individualRecipient   = new Recipient(context, null, dcContext.getContact(dcMsg.getFromId()));
-      SlideDeck    slideDeck             = new SlideDeck(dcContext.context, record);
-      long         timestamp             = record.getTimestamp();
-
-      if(slideDeck.getSlides().isEmpty())
-        slideDeck = null;
-
-      // TODO: if message content should be hidden on screen lock, do it here.
-      if (record.hasFile() && TextUtils.isEmpty(body)) {
-        String summaryText = record.getSummarytext(100);
-        if (summaryText.isEmpty()) {
-          body = SpanUtil.italic(context.getString(R.string.notify_media_message));
+        if (isVisible) {
+            sendInChatNotification(chatId);
+        } else if (visibleChatId != NO_VISIBLE_CHAT_ID) {
+            //different chat
+            sendNotifications(chatId, messageId, false);
         } else {
-          body = SpanUtil.italic(summaryText);
+            //app is in background or different Activity is on top
+            sendNotifications(chatId, messageId, true);
         }
-      } else if (record.hasFile() && !record.isMediaPending()) {
-        String message      = context.getString(R.string.notify_media_message_with_text, body);
-        int    italicLength = message.length() - body.length();
-        body = SpanUtil.italic(message, italicLength);
-      }
-
-      if (!Prefs.isChatMuted(context, chatId)) {
-        notificationState.addNotification(new NotificationItem(id, mms, chatRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
-      }
     }
 
-    return notificationState;
-  }
+    /**
+     * On notification privacy preference changed,
+     * the notification state needs to be updated.
+     */
+    public void onNotificationPrivacyChanged() {
+        if (!Prefs.isNotificationsEnabled(appContext)) {
+            return;
+        }
 
-  private static void updateBadge(Context context, int count) {
-    try {
-      if (count == 0) ShortcutBadger.removeCount(context);
-      else            ShortcutBadger.applyCount(context, count);
-    } catch (RuntimeException t) {
-      // NOTE :: I don't totally trust this thing, so I'm catching
-      // everything.
-      Log.w("MessageNotifier", t);
+        clearNotifications();
+        ApplicationDcContext dcContext = DcHelper.getContext(appContext);
+        int[] freshMessages = dcContext.getFreshMsgs();
+        for (int message : freshMessages) {
+            DcMsg record = dcContext.getMsg(message);
+            updateNotification(record.getChatId(), record.getId());
+        }
     }
-  }
 
-  private static void scheduleReminder(Context context, int count) {
-    if (count >= Prefs.getRepeatAlertsCount(context)) {
-      return;
+    public void removeNotifications(int[] chatIds) {
+        List<NotificationItem> removedItems = new LinkedList<>();
+        for (int id : chatIds) {
+            removedItems.addAll(notificationState.removeNotificationsForChat(id));
+        }
+        cancelNotifications(removedItems);
+        recreateSummaryNotification();
     }
 
-    AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-    if(alarmManager == null) return;
-    Intent       alarmIntent  = new Intent(ReminderReceiver.REMINDER_ACTION);
-    alarmIntent.putExtra("reminder_count", count);
+    public void removeNotifications(int chatId) {
+        List<NotificationItem> removedItems = notificationState.removeNotificationsForChat(chatId);
+        cancelNotifications(removedItems);
+        recreateSummaryNotification();
+    }
 
-    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-    long          timeout       = TimeUnit.MINUTES.toMillis(2);
+    void cancelNotifications(List<NotificationItem> removedItems) {
+        NotificationManager notifications = ServiceUtil.getNotificationManager(appContext);
+        for (NotificationItem item : removedItems) {
+            notifications.cancel(item.getId());
+        }
+    }
 
-    alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeout, pendingIntent);
-  }
+    private void recreateSummaryNotification() {
+        NotificationManager notifications = ServiceUtil.getNotificationManager(appContext);
+        notifications.cancel(SUMMARY_NOTIFICATION_ID);
 
-  static void clearReminder(Context context) {
-    Intent        alarmIntent   = new Intent(ReminderReceiver.REMINDER_ACTION);
-    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-    AlarmManager  alarmManager  = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-    if(alarmManager == null) return;
-    alarmManager.cancel(pendingIntent);
-  }
+        if (notificationState.hasMultipleChats()) {
+            for (Integer id : notificationState.getChats()) {
+                sendSingleChatNotification(appContext, new NotificationState(notificationState.getNotificationsForChat(id)), false, true);
+            }
+            sendMultipleChatNotification(appContext, notificationState, false);
+        } else {
+            sendSingleChatNotification(appContext, notificationState, false, false);
+        }
+    }
 
-  public static class ReminderReceiver extends BroadcastReceiver {
+    void cancelActiveNotifications() {
+        NotificationManager notifications = ServiceUtil.getNotificationManager(appContext);
+        notifications.cancel(SUMMARY_NOTIFICATION_ID);
+    }
 
-    public static final String REMINDER_ACTION = "org.thoughtcrime.securesms.MessageNotifier.REMINDER_ACTION";
+    void sendNotifications(int chatId, int messageId, boolean signal) {
+        ApplicationDcContext dcContext = DcHelper.getContext(appContext);
+        if (signal = isSignalAllowed(signal)) {
+            lastAudibleNotification = System.currentTimeMillis();
+        }
 
-    @SuppressLint("StaticFieldLeak")
-    @Override
-    public void onReceive(final Context context, final Intent intent) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          int reminderCount = intent.getIntExtra("reminder_count", 0);
-          MessageNotifier.updateNotification(context, true, reminderCount + 1);
+        addMessageToNotificationState(dcContext, chatId, messageId);
+        if (notificationState.hasMultipleChats()) {
+            for (int id : notificationState.getChats()) {
+                sendSingleChatNotification(appContext, new NotificationState(notificationState.getNotificationsForChat(id)), false, true);
+            }
+            sendMultipleChatNotification(appContext, notificationState, signal);
+        } else {
+            sendSingleChatNotification(appContext, notificationState, signal, false);
+        }
+    }
 
+    boolean isSignalAllowed(boolean signalRequested) {
+        long now = System.currentTimeMillis();
+        return signalRequested && (
+                now - INITIAL_STARTUP) > STARTUP_SILENCE_DELTA &&
+                (now - lastAudibleNotification) > MIN_AUDIBLE_PERIOD_MILLIS;
+    }
+
+    private void clearNotifications() {
+        notificationState.reset();
+        cancelActiveNotifications();
+    }
+
+    void sendSingleChatNotification(@NonNull Context context,
+                                    @NonNull  NotificationState notificationState,
+                                    boolean signal,
+                                    boolean bundled)
+    {
+        AbstractNotificationBuilder notificationBuilder = createSingleChatNotification(context, notificationState, signal, bundled);
+        if (notificationBuilder != null)
+            notify(context, notificationBuilder.getNotificationId(), notificationBuilder, signal);
+    }
+
+    void sendMultipleChatNotification(@NonNull  Context context,
+                                      @NonNull  NotificationState notificationState,
+                                      boolean signal)
+    {
+        AbstractNotificationBuilder notificationBuilder = createMultipleChatNotification(context, notificationState, signal);
+        if (notificationBuilder != null)
+            notify(context, SUMMARY_NOTIFICATION_ID, notificationBuilder, signal);
+    }
+
+    protected AbstractNotificationBuilder createSingleChatNotification(@NonNull  Context context,
+                                                                       @NonNull  NotificationState notificationState,
+                                                                       boolean signal,
+                                                                       boolean bundled) {
+        if (notificationState.getNotifications().isEmpty()) {
+             if (!bundled) cancelActiveNotifications();
           return null;
         }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+        SingleRecipientNotificationBuilder builder               = new SingleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context), signal);
+        List<NotificationItem>             notifications         = notificationState.getNotifications();
+        NotificationItem                   firstItem             = notifications.get(0);
+                                           Recipient recipient   = firstItem.getRecipient();
+        int                                chatId                = firstItem.getChatId();
+        int                                notificationId        = (SUMMARY_NOTIFICATION_ID + (bundled ? chatId : 0));
+
+        builder.setNotificationId(notificationId);
+        builder.setChat(firstItem.getRecipient());
+        builder.setMessageCount(notificationState.getMessageCount());
+        builder.setPrimaryMessageBody(recipient, firstItem.getIndividualRecipient(),
+                firstItem.getText(""), firstItem.getSlideDeck());
+        builder.setContentIntent(firstItem.getPendingIntent(context));
+        builder.setGroup(NOTIFICATION_GROUP);
+        builder.setDeleteIntent(notificationState.getMarkAsReadIntent(context, chatId, notificationId));
+
+        long timestamp = firstItem.getTimestamp();
+        if (timestamp != 0) builder.setWhen(timestamp);
+
+        builder.addActions(notificationState.getMarkAsReadIntent(context, chatId, notificationId),
+                notificationState.getQuickReplyIntent(context, recipient),
+                notificationState.getRemoteReplyIntent(context, recipient));
+
+        ListIterator<NotificationItem> iterator = notifications.listIterator(notifications.size());
+
+        while(iterator.hasPrevious()) {
+            NotificationItem item = iterator.previous();
+            builder.addMessageBody(item.getRecipient(), item.getIndividualRecipient(), item.getText());
+        }
+
+        if (signal) {
+            builder.setAlarms(notificationState.getRingtone(context), notificationState.getVibrate(context));
+            builder.setTicker(firstItem.getIndividualRecipient(),
+                    firstItem.getText());
+        }
+
+        if (!bundled) {
+            builder.setGroupSummary(true);
+        }
+
+        return builder;
+
+
     }
-  }
+
+    void playNotificationSound(Uri ringtone, boolean vibrate) {
+        RingtoneManager.getRingtone(appContext, ringtone).play();
+        if (vibrate) {
+
+            Vibrator v = (Vibrator) appContext.getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(100);
+            v.vibrate(200);
+        }
+    }
+
+
+    protected AbstractNotificationBuilder createMultipleChatNotification(@NonNull Context context,
+                                                                         @NonNull NotificationState notificationState,
+                                                                         boolean signal) {
+        MultipleRecipientNotificationBuilder builder               = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context), signal);
+        List<NotificationItem>               notifications         = notificationState.getNotifications();
+        NotificationItem                     firstItem             = notifications.get(0);
+
+        builder.setMessageCount(notificationState.getMessageCount(), notificationState.getChatCount());
+        builder.setMostRecentSender(firstItem.getIndividualRecipient());
+        builder.setGroup(NOTIFICATION_GROUP);
+        builder.setDeleteIntent(notificationState.getMarkAsReadIntent(context, 0, SUMMARY_NOTIFICATION_ID));
+
+        long timestamp = firstItem.getTimestamp();
+        if (timestamp != 0) builder.setWhen(timestamp);
+
+        builder.addActions(notificationState.getMarkAsReadIntent(context, 0, SUMMARY_NOTIFICATION_ID));
+
+        ListIterator<NotificationItem> iterator = notifications.listIterator(notifications.size());
+
+        while(iterator.hasPrevious()) {
+            NotificationItem item = iterator.previous();
+            builder.addMessageBody(item.getRecipient(), item.getIndividualRecipient(), item.getText());
+        }
+
+        if (signal) {
+            builder.setAlarms(notificationState.getRingtone(context), notificationState.getVibrate(context));
+            builder.setTicker(firstItem.getIndividualRecipient(),
+                    firstItem.getText());
+        }
+
+        return builder;
+    }
+
+    private void notify(Context context, int notificationId, AbstractNotificationBuilder notificationBuilder, boolean signal) {
+        if (signal) {
+            playNotificationSound(notificationBuilder.getRingtone(), notificationBuilder.getVibrate());
+        }
+        NotificationManagerCompat.from(context).notify(notificationId, notificationBuilder.build());
+    }
+
+    private void sendInChatNotification(int chatId) {
+        if (!Prefs.isInChatNotifications(appContext) ||
+                ServiceUtil.getAudioManager(appContext).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
+        {
+            return;
+        }
+
+        if(Prefs.isChatMuted(appContext, chatId)) {
+            Log.d(TAG, "chat muted");
+            return;
+        }
+
+        if (soundInLoaded) {
+            soundPool.play(soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
+        }
+    }
+
+    void addMessageToNotificationState(ApplicationDcContext dcContext, int chatId, int msgId) {
+        if (Prefs.isChatMuted(appContext, chatId)) {
+            return;
+        }
+
+        DcMsg record = dcContext.getMsg(msgId);
+        if (record.isInfo()) {
+            return;
+        }
+
+        int          id                    = record.getId();
+        CharSequence body                  = record.getDisplayBody();
+        DcMsg        dcMsg                 = dcContext.getMsg(msgId);
+        Recipient    chatRecipient         = new Recipient(appContext, dcContext.getChat(dcMsg.getChatId()), null);
+        Recipient    individualRecipient   = new Recipient(appContext, null, dcContext.getContact(dcMsg.getFromId()));
+        SlideDeck slideDeck             = new SlideDeck(dcContext.context, record);
+        long         timestamp             = record.getTimestamp();
+
+
+        if(slideDeck.getSlides().isEmpty())
+            slideDeck = null;
+
+        // TODO: if message content should be hidden on screen lock, do it here.
+        if (record.hasFile() && TextUtils.isEmpty(body)) {
+            String summaryText = record.getSummarytext(100);
+            if (summaryText.isEmpty()) {
+                body = SpanUtil.italic(appContext.getString(R.string.notify_media_message));
+            } else {
+                body = SpanUtil.italic(summaryText);
+            }
+        } else if (record.hasFile() && !record.isMediaPending()) {
+            String message      = appContext.getString(R.string.notify_media_message_with_text, body);
+            int    italicLength = message.length() - body.length();
+            body = SpanUtil.italic(message, italicLength);
+        }
+
+        notificationState.addNotification(new NotificationItem(id, chatRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
+    }
 }
+

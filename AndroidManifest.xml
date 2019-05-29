@@ -300,20 +300,6 @@
         </intent-filter>
     </receiver>
 
-    <receiver android:name=".notifications.AndroidAutoHeardReceiver"
-              android:exported="false">
-        <intent-filter>
-          <action android:name="org.thoughtcrime.securesms.notifications.ANDROID_AUTO_HEARD"/>
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.AndroidAutoReplyReceiver"
-              android:exported="false">
-        <intent-filter>
-          <action android:name="org.thoughtcrime.securesms.notifications.ANDROID_AUTO_REPLY"/>
-        </intent-filter>
-    </receiver>
-
     <provider android:name="android.support.v4.content.FileProvider"
               android:authorities="${applicationId}.fileprovider"
               android:exported="false"
@@ -334,18 +320,6 @@
         <intent-filter>
             <action android:name="android.intent.action.BOOT_COMPLETED"/>
             <action android:name="org.thoughtcrime.securesms.RESTART"/>
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.MessageNotifier$ReminderReceiver">
-        <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.MessageNotifier.REMINDER_ACTION"/>
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.DeleteNotificationReceiver">
-        <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.DELETE_NOTIFICATION"/>
         </intent-filter>
     </receiver>
 
