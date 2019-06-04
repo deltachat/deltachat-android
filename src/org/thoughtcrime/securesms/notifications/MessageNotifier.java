@@ -45,6 +45,7 @@ abstract class MessageNotifier {
                     final   NotificationState  notificationState;
                     final   Context            appContext;
     private         final   SoundPool          soundPool;
+    private         final   AudioManager       audioManager;
     private         final   int                soundIn;
     private         final   int                soundOut;
     private                 boolean            soundInLoaded;
@@ -53,6 +54,7 @@ abstract class MessageNotifier {
     MessageNotifier(Context context) {
         appContext = context.getApplicationContext();
         soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
+        audioManager = ServiceUtil.getAudioManager(appContext);
         soundIn = soundPool.load(context, R.raw.sound_in, 1);
         soundOut = soundPool.load(context, R.raw.sound_out, 1);
         notificationState = new NotificationState();
@@ -83,11 +85,6 @@ abstract class MessageNotifier {
 
     public void updateNotification(int chatId, int messageId) {
         boolean isVisible = visibleChatId == chatId;
-        ApplicationDcContext dcContext = DcHelper.getContext(appContext);
-
-        if (isVisible) {
-            dcContext.marknoticedChat(chatId);
-        }
 
         if (!Prefs.isNotificationsEnabled(appContext) ||
                 Prefs.isChatMuted(appContext, chatId))
@@ -98,7 +95,7 @@ abstract class MessageNotifier {
         if (isVisible) {
             sendInChatNotification(chatId);
         } else if (visibleChatId != NO_VISIBLE_CHAT_ID) {
-            //different chat
+            //different chat is on top
             sendNotifications(chatId, messageId, false);
         } else {
             //app is in background or different Activity is on top
@@ -184,8 +181,8 @@ abstract class MessageNotifier {
 
     boolean isSignalAllowed(boolean signalRequested) {
         long now = System.currentTimeMillis();
-        return signalRequested && (
-                now - INITIAL_STARTUP) > STARTUP_SILENCE_DELTA &&
+        return signalRequested &&
+                (now - INITIAL_STARTUP) > STARTUP_SILENCE_DELTA &&
                 (now - lastAudibleNotification) > MIN_AUDIBLE_PERIOD_MILLIS;
     }
 
@@ -253,7 +250,9 @@ abstract class MessageNotifier {
         }
 
         if (signal) {
-            builder.setAlarms(notificationState.getRingtone(context), notificationState.getVibrate(context));
+            builder.setAlarms(audioManager.getRingerMode(),
+                    notificationState.getRingtone(context),
+                    notificationState.getVibrate(context));
             builder.setTicker(firstItem.getIndividualRecipient(),
                     firstItem.getText());
         }
@@ -303,7 +302,9 @@ abstract class MessageNotifier {
         }
 
         if (signal) {
-            builder.setAlarms(notificationState.getRingtone(context), notificationState.getVibrate(context));
+            builder.setAlarms(audioManager.getRingerMode(),
+                    notificationState.getRingtone(context),
+                    notificationState.getVibrate(context));
             builder.setTicker(firstItem.getIndividualRecipient(),
                     firstItem.getText());
         }

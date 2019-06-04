@@ -1,11 +1,10 @@
 package org.thoughtcrime.securesms.notifications;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
-import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -56,14 +55,20 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
   // Alarms are not set in the notification or the notification channel but handled separately
   // by the MessageNotifier. It allows us to dynamically turn on and off the sounds and as well as
   // to change vibration and sounds during runtime
-  void setAlarms(@Nullable Uri ringtone, Prefs.VibrateState vibrate) {
-    Uri     defaultRingtone = Prefs.getNotificationRingtone(context);
-    boolean defaultVibrate  = Prefs.isNotificationVibrateEnabled(context);
-    if (ringtone == null && !TextUtils.isEmpty(defaultRingtone.toString())) this.ringtone = defaultRingtone;
-    else if (ringtone != null && !ringtone.toString().isEmpty()) this.ringtone = ringtone;
+  void setAlarms(int systemRingerMode, @Nullable Uri ringtone, Prefs.VibrateState vibrate) {
+    Uri     appDefaultRingtone = Prefs.getNotificationRingtone(context);
+    boolean appDefaultVibrate  = Prefs.isNotificationVibrateEnabled(context);
+    if (systemRingerMode == AudioManager.RINGER_MODE_NORMAL) {
+      if (ringtone == null && !TextUtils.isEmpty(appDefaultRingtone.toString())) {
+        this.ringtone = appDefaultRingtone;
+      } else if (ringtone != null && !ringtone.toString().isEmpty()) {
+        this.ringtone = ringtone;
+      }
+    }
 
-    this.vibrate = (vibrate == Prefs.VibrateState.ENABLED ||
-            (vibrate == Prefs.VibrateState.DEFAULT && defaultVibrate));
+    this.vibrate = (systemRingerMode != AudioManager.RINGER_MODE_SILENT) &&
+            (vibrate == Prefs.VibrateState.ENABLED ||
+            (vibrate == Prefs.VibrateState.DEFAULT && appDefaultVibrate));
   }
 
   private void setLed() {
