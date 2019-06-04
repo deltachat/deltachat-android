@@ -18,14 +18,18 @@ class MessageNotifierPreApi23 extends MessageNotifier {
 
     @Override
     public void removeNotifications(int chatId) {
-        notificationState.removeNotificationsForChat(chatId);
+        synchronized (lock) {
+            notificationState.removeNotificationsForChat(chatId);
+        }
         recreateSummaryNotification();
     }
 
     @Override
     public void removeNotifications(int[] chatIds) {
-        for (int id : chatIds) {
-            notificationState.removeNotificationsForChat(id);
+        synchronized (lock) {
+            for (int id : chatIds) {
+                notificationState.removeNotificationsForChat(id);
+            }
         }
         recreateSummaryNotification();
     }
@@ -43,10 +47,12 @@ class MessageNotifierPreApi23 extends MessageNotifier {
         }
 
         addMessageToNotificationState(dcContext, chatId, messageId);
-        if (notificationState.hasMultipleChats()) {
-            sendMultipleChatNotification(appContext, notificationState, signal);
-        } else {
-            sendSingleChatNotification(appContext, notificationState, signal, false);
+        synchronized (lock) {
+            if (notificationState.hasMultipleChats()) {
+                sendMultipleChatNotification(appContext, notificationState, signal);
+            } else {
+                sendSingleChatNotification(appContext, notificationState, signal, false);
+            }
         }
     }
 
@@ -57,11 +63,12 @@ class MessageNotifierPreApi23 extends MessageNotifier {
 
     private void recreateSummaryNotification() {
         cancelNotifications();
-
-        if (notificationState.hasMultipleChats()) {
-            sendMultipleChatNotification(appContext, notificationState, false);
-        } else {
-            sendSingleChatNotification(appContext, notificationState, false, false);
+        synchronized (lock) {
+            if (notificationState.hasMultipleChats()) {
+                sendMultipleChatNotification(appContext, notificationState, false);
+            } else {
+                sendSingleChatNotification(appContext, notificationState, false, false);
+            }
         }
     }
 }

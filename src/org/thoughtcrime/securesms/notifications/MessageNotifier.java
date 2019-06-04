@@ -44,6 +44,7 @@ abstract class MessageNotifier {
             static volatile long               lastAudibleNotification      = -1;
                     final   NotificationState  notificationState;
                     final   Context            appContext;
+                    final   Object             lock;
     private         final   SoundPool          soundPool;
     private         final   AudioManager       audioManager;
     private         final   int                soundIn;
@@ -58,6 +59,7 @@ abstract class MessageNotifier {
         soundIn = soundPool.load(context, R.raw.sound_in, 1);
         soundOut = soundPool.load(context, R.raw.sound_out, 1);
         notificationState = new NotificationState();
+        lock = new Object();
 
         soundPool.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
             if (status == 0) {
@@ -123,15 +125,20 @@ abstract class MessageNotifier {
 
     public void removeNotifications(int[] chatIds) {
         List<NotificationItem> removedItems = new LinkedList<>();
-        for (int id : chatIds) {
-            removedItems.addAll(notificationState.removeNotificationsForChat(id));
+        synchronized (lock) {
+            for (int id : chatIds) {
+                removedItems.addAll(notificationState.removeNotificationsForChat(id));
+            }
         }
         cancelNotifications(removedItems);
         recreateSummaryNotification();
     }
 
     public void removeNotifications(int chatId) {
-        List<NotificationItem> removedItems = notificationState.removeNotificationsForChat(chatId);
+        List<NotificationItem> removedItems;
+        synchronized (lock) {
+            removedItems = notificationState.removeNotificationsForChat(chatId);
+        }
         cancelNotifications(removedItems);
         recreateSummaryNotification();
     }
@@ -147,13 +154,15 @@ abstract class MessageNotifier {
         NotificationManager notifications = ServiceUtil.getNotificationManager(appContext);
         notifications.cancel(SUMMARY_NOTIFICATION_ID);
 
-        if (notificationState.hasMultipleChats()) {
-            for (Integer id : notificationState.getChats()) {
-                sendSingleChatNotification(appContext, new NotificationState(notificationState.getNotificationsForChat(id)), false, true);
+        synchronized (lock) {
+            if (notificationState.hasMultipleChats()) {
+                for (Integer id : notificationState.getChats()) {
+                    sendSingleChatNotification(appContext, new NotificationState(notificationState.getNotificationsForChat(id)), false, true);
+                }
+                sendMultipleChatNotification(appContext, notificationState, false);
+            } else {
+                sendSingleChatNotification(appContext, notificationState, false, false);
             }
-            sendMultipleChatNotification(appContext, notificationState, false);
-        } else {
-            sendSingleChatNotification(appContext, notificationState, false, false);
         }
     }
 
@@ -168,14 +177,16 @@ abstract class MessageNotifier {
             lastAudibleNotification = System.currentTimeMillis();
         }
 
-        addMessageToNotificationState(dcContext, chatId, messageId);
-        if (notificationState.hasMultipleChats()) {
-            for (int id : notificationState.getChats()) {
-                sendSingleChatNotification(appContext, new NotificationState(notificationState.getNotificationsForChat(id)), false, true);
+        synchronized (lock) {
+            addMessageToNotificationState(dcContext, chatId, messageId);
+            if (notificationState.hasMultipleChats()) {
+                for (int id : notificationState.getChats()) {
+                    sendSingleChatNotification(appContext, new NotificationState(notificationState.getNotificationsForChat(id)), false, true);
+                }
+                sendMultipleChatNotification(appContext, notificationState, signal);
+            } else {
+                sendSingleChatNotification(appContext, notificationState, signal, false);
             }
-            sendMultipleChatNotification(appContext, notificationState, signal);
-        } else {
-            sendSingleChatNotification(appContext, notificationState, signal, false);
         }
     }
 
@@ -187,7 +198,9 @@ abstract class MessageNotifier {
     }
 
     private void clearNotifications() {
-        notificationState.reset();
+        synchronized (lock) {
+            notificationState.reset();
+        }
         cancelActiveNotifications();
     }
 
@@ -372,7 +385,9 @@ abstract class MessageNotifier {
             body = SpanUtil.italic(message, italicLength);
         }
 
-        notificationState.addNotification(new NotificationItem(id, chatRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
+        synchronized (lock) {
+            notificationState.addNotification(new NotificationItem(id, chatRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
+        }
     }
 }
 

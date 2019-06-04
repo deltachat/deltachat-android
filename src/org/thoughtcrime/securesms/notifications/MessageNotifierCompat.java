@@ -44,7 +44,7 @@ public class MessageNotifierCompat {
         instance.removeNotifications(chatIds);
 
     }
-    static void removeNotifications(int chatId) {
+    public static void removeNotifications(int chatId) {
         instance.removeNotifications(chatId);
     }
 

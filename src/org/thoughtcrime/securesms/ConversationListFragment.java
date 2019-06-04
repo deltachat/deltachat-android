@@ -65,6 +65,7 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
@@ -312,6 +313,7 @@ public class ConversationListFragment extends Fragment
                 dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
               }
               else {
+                MessageNotifierCompat.removeNotifications((int) chatId);
                 dcContext.deleteChat((int) chatId);
               }
             }
