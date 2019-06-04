@@ -341,8 +341,8 @@ public class ConversationListFragment extends Fragment
     actionMode.setTitle(String.valueOf(getListAdapter().getBatchSelections().size()));
   }
 
-  private void handleCreateConversation(int threadId, long lastSeen) {
-    ((ConversationSelectedListener)getActivity()).onCreateConversation(threadId, lastSeen);
+  private void handleCreateConversation(int chatId) {
+    ((ConversationSelectedListener)getActivity()).onCreateConversation(chatId);
   }
 
   @Override
@@ -413,7 +413,7 @@ public class ConversationListFragment extends Fragment
           .setPositiveButton(android.R.string.ok, (dialog, which) ->  {
               int belongingChatId = dcContext.createChatByMsgId(msgId);
               if( belongingChatId != 0 ) {
-                handleCreateConversation(belongingChatId, 0);
+                handleCreateConversation(belongingChatId);
               }
           })
           .setNegativeButton(R.string.not_now, null)
@@ -424,7 +424,7 @@ public class ConversationListFragment extends Fragment
         return;
       }
 
-      handleCreateConversation(chatId, 0);
+      handleCreateConversation(chatId);
     } else {
       ConversationListAdapter adapter = (ConversationListAdapter)list.getAdapter();
       adapter.toggleThreadInBatchSet(item.getChatId());
@@ -454,7 +454,7 @@ public class ConversationListFragment extends Fragment
   }
 
   public interface ConversationSelectedListener {
-    void onCreateConversation(int threadId, long lastSeen);
+    void onCreateConversation(int chatId);
     void onSwitchToArchive();
 }
 

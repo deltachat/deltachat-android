@@ -151,7 +151,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public static final String CHAT_ID_EXTRA           = "chat_id";
   public static final String IS_ARCHIVED_EXTRA       = "is_archived";
   public static final String TEXT_EXTRA              = "draft_text";
-  public static final String LAST_SEEN_EXTRA         = "last_seen";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
 
   private static final int PICK_GALLERY        = 1;
@@ -310,9 +309,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
-
-    fragment.setLastSeen(System.currentTimeMillis());
-
     AudioSlidePlayer.stopAll();
   }
 
@@ -1163,7 +1159,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
-    fragment.setLastSeen(0);
+    fragment.setLastSeen(-1);
 
     if (refreshFragment) {
       fragment.reload(recipient, chatId);
