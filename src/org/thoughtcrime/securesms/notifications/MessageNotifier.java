@@ -232,7 +232,7 @@ abstract class MessageNotifier {
           return null;
         }
 
-        SingleRecipientNotificationBuilder builder               = new SingleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context), signal);
+        SingleRecipientNotificationBuilder builder               = new SingleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
         List<NotificationItem>             notifications         = notificationState.getNotifications();
         NotificationItem                   firstItem             = notifications.get(0);
                                            Recipient recipient   = firstItem.getRecipient();
@@ -289,11 +289,10 @@ abstract class MessageNotifier {
         }
     }
 
-
     protected AbstractNotificationBuilder createMultipleChatNotification(@NonNull Context context,
                                                                          @NonNull NotificationState notificationState,
                                                                          boolean signal) {
-        MultipleRecipientNotificationBuilder builder               = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context), signal);
+        MultipleRecipientNotificationBuilder builder               = new MultipleRecipientNotificationBuilder(context, Prefs.getNotificationPrivacy(context));
         List<NotificationItem>               notifications         = notificationState.getNotifications();
         NotificationItem                     firstItem             = notifications.get(0);
 
@@ -334,7 +333,7 @@ abstract class MessageNotifier {
 
     private void sendInChatNotification(int chatId) {
         if (!Prefs.isInChatNotifications(appContext) ||
-                ServiceUtil.getAudioManager(appContext).getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
+                audioManager.getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
         {
             return;
         }

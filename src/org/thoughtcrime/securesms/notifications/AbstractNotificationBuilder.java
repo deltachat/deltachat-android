@@ -34,7 +34,7 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
   private Uri ringtone;
   private boolean vibrate;
 
-  AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy, boolean signal) {
+  AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
     super(context, createMsgNotificationChannel(context));
 
     this.context = context;

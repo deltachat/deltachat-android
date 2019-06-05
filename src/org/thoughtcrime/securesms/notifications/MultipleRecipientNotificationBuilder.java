@@ -39,8 +39,8 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     }
   }
 
-  MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy, boolean signal) {
-    super(context, privacy, signal);
+  MultipleRecipientNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
+    super(context, privacy);
 
     setColor(context.getResources().getColor(R.color.delta_primary));
     setSmallIcon(R.drawable.icon_notification);
