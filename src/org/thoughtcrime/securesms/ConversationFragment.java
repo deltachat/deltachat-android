@@ -808,9 +808,12 @@ public class ConversationFragment extends Fragment
             updateLocationButton();
         }
 
-        if (eventId == DcContext.DC_EVENT_INCOMING_MSG && isResumed()) {
+        // removing the "new message" marker on incoming messages may be a bit unexpected,
+        // esp. when a series of message is coming in and after the first, the screen is turned on,
+        // the "new message" marker will flash for a short moment and disappear.
+        /*if (eventId == DcContext.DC_EVENT_INCOMING_MSG && isResumed()) {
             setLastSeen(-1);
-        }
+        }*/
 
         reloadList();
     }
