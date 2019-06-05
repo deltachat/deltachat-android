@@ -209,6 +209,7 @@ public class ConversationFragment extends Fragment
   public void onResume() {
     super.onResume();
 
+    dcContext.marknoticedChat(Long.valueOf(chatId).intValue());
     if (list.getAdapter() != null) {
       list.getAdapter().notifyDataSetChanged();
     }

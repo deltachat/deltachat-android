@@ -46,9 +46,9 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   private CharSequence contentTitle;
   private CharSequence contentText;
 
-  SingleRecipientNotificationBuilder(@NonNull Context context, @NonNull NotificationPrivacyPreference privacy, boolean signal)
+  SingleRecipientNotificationBuilder(@NonNull Context context, @NonNull NotificationPrivacyPreference privacy)
   {
-    super(context, privacy, signal);
+    super(context, privacy);
 
     setSmallIcon(R.drawable.icon_notification);
     setColor(context.getResources().getColor(R.color.delta_primary));
