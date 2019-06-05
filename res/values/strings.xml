@@ -210,9 +210,9 @@
     <string name="chat_please_enter_message">Please enter a message.</string>
     <string name="chat_camera_unavailable">Camera unavailable.</string>
     <string name="chat_unable_to_record_audio">Unable to record audio.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d unread message</item>
-        <item quantity="other">%d unread messages</item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d new message</item>
+        <item quantity="other">%d new messages</item>
     </plurals>
     <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use Delta Chat.\n\n• Delivering the first message may take a while and may be unencrypted.</string>
     <string name="chat_new_group_hint">Compose the first message, allowing others to reply within this group.\n\n• It is okay if not all members use Delta Chat.\n\n• Delivering the first message may take a while.</string>
