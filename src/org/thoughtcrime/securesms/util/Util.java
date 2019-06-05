@@ -324,6 +324,14 @@ public class Util {
     AsyncTask.THREAD_POOL_EXECUTOR.execute(runnable);
   }
 
+  public static void runOnAnyBackgroundThread(final @NonNull Runnable runnable) {
+    if (Util.isMainThread()) {
+      Util.runOnBackground(runnable);
+    } else {
+      runnable.run();
+    }
+  }
+
   public static void runOnBackgroundDelayed(final @NonNull Runnable runnable, long delayMillis) {
     handler.postDelayed(() -> {
       AsyncTask.THREAD_POOL_EXECUTOR.execute(runnable);

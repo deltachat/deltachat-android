@@ -3,6 +3,8 @@ package org.thoughtcrime.securesms.notifications;
 import android.content.Context;
 import android.os.Build;
 
+import org.thoughtcrime.securesms.util.Util;
+
 public class MessageNotifierCompat {
 
     public static final int     NO_VISIBLE_CHAT_ID        = -1;
@@ -29,23 +31,23 @@ public class MessageNotifierCompat {
     }
 
     public static void updateNotification(int chatId, int messageId) {
-        instance.updateNotification(chatId, messageId);
+        Util.runOnAnyBackgroundThread(() -> instance.updateNotification(chatId, messageId));
     }
 
     public static void updateVisibleChat(int chatId) {
-        instance.updateVisibleChat(chatId);
+        Util.runOnAnyBackgroundThread(() -> instance.updateVisibleChat(chatId));
     }
 
     public static void onNotificationPrivacyChanged() {
-        instance.onNotificationPrivacyChanged();
+        Util.runOnAnyBackgroundThread(() -> instance.onNotificationPrivacyChanged());
     }
 
     static void removeNotifications(int[] chatIds) {
-        instance.removeNotifications(chatIds);
-
+        Util.runOnAnyBackgroundThread(() -> instance.removeNotifications(chatIds));
     }
+
     public static void removeNotifications(int chatId) {
-        instance.removeNotifications(chatId);
+        Util.runOnAnyBackgroundThread(() -> instance.removeNotifications(chatId));
     }
 
 
