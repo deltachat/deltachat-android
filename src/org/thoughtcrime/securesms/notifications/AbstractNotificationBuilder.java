@@ -116,7 +116,7 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
   // - the idea is that sound and vibrate are handled outside of the scope of the notification channel
 
   private static String createMsgNotificationChannel(Context context) {
-    String chBase = "ch_msg2_";
+    String chBase = "ch_msg3_";
     String chId = chBase + "unsupported";
 
     if(notificationChannelsSupported()) {
