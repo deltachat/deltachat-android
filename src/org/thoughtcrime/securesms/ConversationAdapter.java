@@ -91,6 +91,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private @NonNull DcChat      dcChat;
   private @NonNull int[]       dcMsgList = new int[0];
   private int                  positionToPulseHighlight = -1;
+  private int                  lastSeenPosition = -1;
+  private long                 lastSeen = -1;
 
   protected static class ViewHolder extends RecyclerView.ViewHolder {
     public <V extends View & BindableConversationItem> ViewHolder(final @NonNull V itemView) {
@@ -118,6 +120,19 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   public String getChatName(){
     return dcChat.getName();
+  }
+
+  public void setLastSeen(long timestamp) {
+    lastSeen = timestamp;
+  }
+
+  public void updateLastSeenPosition() {
+    this.lastSeenPosition = findLastSeenPosition(lastSeen);
+
+  }
+
+  public int getLastSeenPosition() {
+    return lastSeenPosition;
   }
 
   @Override
@@ -261,24 +276,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 
-  public int findLastSeenPosition(long lastSeen) {
-    /* TODO -- we shoud do this without loading all messages in the chat
-    if (lastSeen <= 0)     return -1;
-    if (!isActive())       return -1;
-
-    int count = getItemCount();
-
-    for (int i = 0;i<count;i++) {
-      DcMsg msg = getMsg(i);
-      if (msg.isOutgoing() || msg.getTimestamp() <= lastSeen) {
-        return i;
-      }
-    }
-    */
-
-    return -1;
-  }
-
   public void toggleSelection(DcMsg messageRecord) {
     if (!batchSelected.remove(messageRecord)) {
       batchSelected.add(messageRecord);
@@ -314,39 +311,78 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return context;
   }
 
+  @Override
+  public long getHeaderId(int position) {
+    if (position >= getItemCount()) return -1;
+    if (position < 0)               return -1;
+
+    calendar.setTime(new Date(getSortTimestamp(position)));
+    return Util.hashCode(calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_YEAR));
+  }
+
+  @Override
+  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
+    return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.conversation_item_header, parent, false));
+  }
+
+  /**
+   * date header view
+   */
+  @Override
+  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
+    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, getSortTimestamp(position)));
+  }
+
+
+  public void changeData(@Nullable int[] dcMsgList) {
+    // should be called when there are new messages
+    this.dcMsgList = dcMsgList == null ? new int[0] : dcMsgList;
+    reloadData();
+  }
+
+  private void reloadData() {
+    // should be called when some items in a message are changed, eg. seen-state
+    recordCache.clear();
+    updateLastSeenPosition();
+    notifyDataSetChanged();
+  }
+
+  private int findLastSeenPosition(long lastSeen) {
+    if (lastSeen <= 0)     return -1;
+    if (!isActive())       return -1;
+
+    int count = getItemCount();
+
+
+    for (int i = 0; i < count; i++) {
+      DcMsg msg = getMsg(i);
+      if (msg.isOutgoing() || msg.getTimestamp() <= lastSeen) {
+        return i - 1;
+      }
+    }
+
+    return -1;
+  }
+
   public HeaderViewHolder onCreateLastSeenViewHolder(ViewGroup parent) {
     return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.conversation_item_last_seen, parent, false));
   }
 
   public void onBindLastSeenViewHolder(HeaderViewHolder viewHolder, int position) {
-    viewHolder.setText(getContext().getResources().getQuantityString(R.plurals.chat_n_unread_messages, (position + 1), (position + 1)));
+    viewHolder.setText(getContext().getResources().getQuantityString(R.plurals.chat_n_new_messages, (position + 1), (position + 1)));
   }
 
   static class LastSeenHeader extends StickyHeaderDecoration {
-
     private final ConversationAdapter adapter;
-    private final long                lastSeenTimestamp;
 
-    LastSeenHeader(ConversationAdapter adapter, long lastSeenTimestamp) {
+    LastSeenHeader(ConversationAdapter adapter) {
       super(adapter, false, false);
       this.adapter           = adapter;
-      this.lastSeenTimestamp = lastSeenTimestamp;
     }
 
     @Override
     protected boolean hasHeader(RecyclerView parent, StickyHeaderAdapter stickyAdapter, int position) {
-      if (!adapter.isActive()) {
-        return false;
-      }
-
-      if (lastSeenTimestamp <= 0) {
-        return false;
-      }
-
-      long currentRecordTimestamp  = adapter.getSortTimestamp(position);
-      long previousRecordTimestamp = adapter.getSortTimestamp(position + 1);
-
-      return currentRecordTimestamp > lastSeenTimestamp && previousRecordTimestamp < lastSeenTimestamp;
+      return  adapter.isActive() && position == adapter.getLastSeenPosition();
     }
 
     @Override
@@ -370,42 +406,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
       return viewHolder;
     }
-  }
-
-
-  @Override
-  public long getHeaderId(int position) {
-    if (position >= getItemCount()) return -1;
-    if (position < 0)               return -1;
-
-    DcMsg dcMsg = getMsg(position);
-
-    calendar.setTime(new Date(getSortTimestamp(position)));
-    return Util.hashCode(calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_YEAR));
-  }
-
-  @Override
-  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.conversation_item_header, parent, false));
-  }
-
-  @Override
-  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    DcMsg msg = getMsg(position);
-    viewHolder.setText(DateUtils.getRelativeDate(getContext(), locale, getSortTimestamp(position)));
-  }
-
-
-  public void changeData(@Nullable int[] dcMsgList) {
-    // should be called when there are new messages
-    this.dcMsgList = dcMsgList==null? new int[0] : dcMsgList;
-    reloadData();
-  }
-
-  public void reloadData() {
-    // should be called when some items in a message are changed, eg. seen-state
-    recordCache.clear();
-    notifyDataSetChanged();
   }
 }
 

@@ -297,7 +297,6 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
             Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
             intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, dcMsgChatId);
-            intent.putExtra(ConversationActivity.LAST_SEEN_EXTRA, 0);
             intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, startingPosition);
             startActivity(intent);
             return true;

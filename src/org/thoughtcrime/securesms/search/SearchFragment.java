@@ -133,7 +133,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
   public void onConversationClicked(@NonNull DcChatlist.Item chatlistItem) {
     ConversationListActivity conversationList = (ConversationListActivity) getActivity();
     if (conversationList != null) {
-      conversationList.onCreateConversation(chatlistItem.chatId,0);
+      conversationList.onCreateConversation(chatlistItem.chatId);
     }
   }
 
@@ -150,11 +150,11 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {
               int chatId1 = dcContext.createChatByContactId(contact.getId());
-              conversationList.onCreateConversation(chatId1,0);
+              conversationList.onCreateConversation(chatId1);
             }).show();
       }
       else {
-        conversationList.onCreateConversation(chatId,0);
+        conversationList.onCreateConversation(chatId);
       }
     }
   }
@@ -174,7 +174,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
           break;
         }
       }
-      conversationList.openConversation(chatId, 0, startingPosition);
+      conversationList.openConversation(chatId, startingPosition);
     }
   }
 

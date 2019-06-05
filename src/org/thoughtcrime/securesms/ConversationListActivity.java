@@ -41,7 +41,6 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
-import static org.thoughtcrime.securesms.ConversationActivity.LAST_SEEN_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
 import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
@@ -217,16 +216,15 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   @Override
-  public void onCreateConversation(int chatId, long lastSeen) {
-    openConversation(chatId, lastSeen, -1);
+  public void onCreateConversation(int chatId) {
+    openConversation(chatId, -1);
   }
 
-  public void openConversation(int chatId, long lastSeen, int startingPosition) {
+  public void openConversation(int chatId, int startingPosition) {
     searchToolbar.clearFocus();
 
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(CHAT_ID_EXTRA, chatId);
-    intent.putExtra(LAST_SEEN_EXTRA, lastSeen);
     intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
     if (isRelayingMessageContent(this)) {
       acquireRelayMessageContent(this, intent);
