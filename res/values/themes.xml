@@ -163,8 +163,6 @@
         <item name="conversation_item_update_bg_color">@color/universal_overlay</item>
         <item name="conversation_item_update_text_color">@color/white</item>
 
-        <item name="conversation_item_last_seen_text_color">@color/core_light_90</item>
-        <item name="conversation_item_last_seen_line_color">@color/core_light_60</item>
         <item name="conversation_item_date_line_color">@color/core_light_45</item>
         <item name="conversation_item_quote_text_color">@color/core_light_90</item>
         <item name="conversation_item_sticky_date_background">@drawable/sticky_date_header_background_light</item>
@@ -267,8 +265,6 @@
         <item name="conversation_item_update_text_color">@color/core_light_35</item>
 
         <item name="conversation_item_sent_indicator_text_background">@drawable/conversation_item_sent_indicator_text_shape_dark</item>
-        <item name="conversation_item_last_seen_text_color">@color/core_dark_30</item>
-        <item name="conversation_item_last_seen_line_color">@color/core_dark_30</item>
         <item name="conversation_item_date_line_color">@color/core_dark_55</item>
         <item name="conversation_item_quote_text_color">@color/core_dark_05</item>
         <item name="conversation_item_sticky_date_background">@drawable/sticky_date_header_background_dark</item>
