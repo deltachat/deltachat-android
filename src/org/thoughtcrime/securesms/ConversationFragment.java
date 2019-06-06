@@ -99,7 +99,6 @@ public class ConversationFragment extends Fragment
     private Recipient                   recipient;
     private long                        chatId;
     private int                         startingPosition;
-    private int                         previousOffset;
     private boolean                     firstLoad;
     private ActionMode                  actionMode;
     private Locale                      locale;
@@ -440,12 +439,23 @@ public class ConversationFragment extends Fragment
         });
     }
 
-    //TODO: clarify scroll behavior
     private void reloadList() {
         ConversationAdapter adapter = getListAdapter();
         if (adapter == null) {
             return;
         }
+
+        int oldCount = 0;
+        int oldIndex = 0;
+        int pixelOffset = 0;
+        if (!firstLoad) {
+            oldCount = adapter.getItemCount();
+            oldIndex = ((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition();
+            View firstView = list.getLayoutManager().getChildAt(oldIndex);
+            pixelOffset = (firstView == null) ? 0 : (firstView.getBottom() - list.getPaddingBottom());
+            Log.i(TAG, String.format("---------> %d %d %d", firstView!=null?1:0, firstView!=null?firstView.getBottom():0, list.getPaddingBottom()));
+        }
+
         int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int) chatId, 0, 0);
         adapter.changeData(msgs);
         int lastSeenPosition = adapter.getLastSeenPosition();
@@ -457,16 +467,15 @@ public class ConversationFragment extends Fragment
                 scrollToLastSeenPosition(lastSeenPosition);
             }
             firstLoad = false;
-        } else if (previousOffset > 0) {
-            int  count    = msgs.length;
-            int scrollPosition = previousOffset + ((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition();
-            scrollPosition = Math.min(scrollPosition, count - 1);
+        } else if(oldIndex>0) {
+            int newIndex = oldIndex + msgs.length-oldCount;
 
-            View firstView = list.getLayoutManager().getChildAt(scrollPosition);
-            int pixelOffset = (firstView == null) ? 0 : (firstView.getBottom() - list.getPaddingBottom());
+            if (newIndex < 0)            { newIndex = 0; pixelOffset = 0; }
+            if (newIndex >= msgs.length) { newIndex = msgs.length-1; pixelOffset = 0; }
 
-            ((LinearLayoutManager) list.getLayoutManager()).scrollToPositionWithOffset(scrollPosition, pixelOffset);
-            previousOffset = 0;
+            ((LinearLayoutManager) list.getLayoutManager()).scrollToPositionWithOffset(newIndex, pixelOffset);
+
+            Log.i(TAG, String.format(" ---------> oldIndex=%d/%d, newIndex=%d/%d, pixelOffset=%d", oldIndex, oldCount, newIndex, msgs.length, pixelOffset));
         }
 
         if(!adapter.isActive()){
@@ -490,10 +499,9 @@ public class ConversationFragment extends Fragment
     }
 
     private void scrollToLastSeenPosition(final int lastSeenPosition) {
-        //TODO: consider if we want that or not
-        // if (lastSeenPosition > 0) {
-        //   list.post(() -> ((LinearLayoutManager)list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
-        // }
+        if (lastSeenPosition > 0) {
+            list.post(() -> ((LinearLayoutManager)list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
+        }
     }
 
     public interface ConversationFragmentListener {
