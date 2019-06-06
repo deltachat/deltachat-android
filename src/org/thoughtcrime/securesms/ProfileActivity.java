@@ -89,6 +89,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     supportActionBar.setCustomView(R.layout.conversation_title_view);
     supportActionBar.setDisplayShowCustomEnabled(true);
     supportActionBar.setDisplayShowTitleEnabled(false);
+    Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
+    parent.setPadding(0,0,0,0);
+    parent.setContentInsetsAbsolute(0,0);
 
     titleView = (ConversationTitleView) supportActionBar.getCustomView();
     titleView.setOnBackClickedListener(view -> onBackPressed());
