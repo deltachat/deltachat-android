@@ -450,10 +450,9 @@ public class ConversationFragment extends Fragment
         int pixelOffset = 0;
         if (!firstLoad) {
             oldCount = adapter.getItemCount();
-            oldIndex = ((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition();
-            View firstView = list.getLayoutManager().getChildAt(oldIndex);
-            pixelOffset = (firstView == null) ? 0 : (firstView.getBottom() - list.getPaddingBottom());
-            Log.i(TAG, String.format("---------> %d %d %d", firstView!=null?1:0, firstView!=null?firstView.getBottom():0, list.getPaddingBottom()));
+            oldIndex = ((LinearLayoutManager) list.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+            View firstView = list.getLayoutManager().findViewByPosition(oldIndex);
+            pixelOffset = (firstView == null) ? 0 : list.getBottom() - firstView.getBottom() - list.getPaddingBottom();
         }
 
         int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int) chatId, 0, 0);
@@ -467,15 +466,13 @@ public class ConversationFragment extends Fragment
                 scrollToLastSeenPosition(lastSeenPosition);
             }
             firstLoad = false;
-        } else if(oldIndex>0) {
-            int newIndex = oldIndex + msgs.length-oldCount;
+        } else if(oldIndex  > 0) {
+            int newIndex = oldIndex + msgs.length - oldCount;
 
-            if (newIndex < 0)            { newIndex = 0; pixelOffset = 0; }
-            if (newIndex >= msgs.length) { newIndex = msgs.length-1; pixelOffset = 0; }
+            if (newIndex < 0)                 { newIndex = 0; pixelOffset = 0; }
+            else if (newIndex >= msgs.length) { newIndex = msgs.length - 1; pixelOffset = 0; }
 
             ((LinearLayoutManager) list.getLayoutManager()).scrollToPositionWithOffset(newIndex, pixelOffset);
-
-            Log.i(TAG, String.format(" ---------> oldIndex=%d/%d, newIndex=%d/%d, pixelOffset=%d", oldIndex, oldCount, newIndex, msgs.length, pixelOffset));
         }
 
         if(!adapter.isActive()){
@@ -516,7 +513,7 @@ public class ConversationFragment extends Fragment
 
         private boolean wasAtBottom           = true;
         private boolean wasAtZoomScrollHeight = false;
-        private long    lastPositionId        = -1;
+        //private long    lastPositionId        = -1;
 
         ConversationScrollListener(@NonNull Context context) {
             this.scrollButtonInAnimation  = AnimationUtils.loadAnimation(context, R.anim.fade_scale_in);
@@ -530,7 +527,7 @@ public class ConversationFragment extends Fragment
         public void onScrolled(final RecyclerView rv, final int dx, final int dy) {
             boolean currentlyAtBottom           = isAtBottom();
             boolean currentlyAtZoomScrollHeight = isAtZoomScrollHeight();
-            int     positionId                  = getHeaderPositionId();
+//            int     positionId                  = getHeaderPositionId();
 
             if (currentlyAtBottom && !wasAtBottom) {
                 ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
@@ -546,7 +543,7 @@ public class ConversationFragment extends Fragment
 
             wasAtBottom           = currentlyAtBottom;
             wasAtZoomScrollHeight = currentlyAtZoomScrollHeight;
-            lastPositionId        = positionId;
+//            lastPositionId        = positionId;
 
             markseenDebouncer.publish(() -> manageMessageSeenState());
         }
@@ -574,15 +571,15 @@ public class ConversationFragment extends Fragment
             return ((LinearLayoutManager) list.getLayoutManager()).findFirstCompletelyVisibleItemPosition() > 4;
         }
 
-        private int getHeaderPositionId() {
-            return ((LinearLayoutManager)list.getLayoutManager()).findLastVisibleItemPosition();
-        }
+ //       private int getHeaderPositionId() {
+ //           return ((LinearLayoutManager)list.getLayoutManager()).findLastVisibleItemPosition();
+ //       }
 
-        private void bindScrollHeader(HeaderViewHolder headerViewHolder, int positionId) {
-            if (((ConversationAdapter)list.getAdapter()).getHeaderId(positionId) != -1) {
-                ((ConversationAdapter) list.getAdapter()).onBindHeaderViewHolder(headerViewHolder, positionId);
-            }
-        }
+ //       private void bindScrollHeader(HeaderViewHolder headerViewHolder, int positionId) {
+ //           if (((ConversationAdapter)list.getAdapter()).getHeaderId(positionId) != -1) {
+ //               ((ConversationAdapter) list.getAdapter()).onBindHeaderViewHolder(headerViewHolder, positionId);
+ //           }
+ //       }
     }
 
     private void manageMessageSeenState() {
