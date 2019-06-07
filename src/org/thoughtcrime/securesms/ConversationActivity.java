@@ -37,6 +37,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -811,6 +812,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     supportActionBar.setCustomView(R.layout.conversation_title_view);
     supportActionBar.setDisplayShowCustomEnabled(true);
     supportActionBar.setDisplayShowTitleEnabled(false);
+
+    Toolbar parent = (Toolbar) supportActionBar.getCustomView().getParent();
+    parent.setPadding(0,0,0,0);
+    parent.setContentInsetsAbsolute(0,0);
   }
 
   private void initializeResources() {

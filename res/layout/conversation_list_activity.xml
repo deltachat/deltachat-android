@@ -38,10 +38,14 @@
 
             <ImageView android:id="@+id/search_action"
                        android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
+                       android:layout_height="match_parent"
                        android:src="@drawable/ic_search_white_24dp"
-                       android:paddingRight="16dp"
-                       android:paddingEnd="16dp"
+                       android:paddingRight="12dp"
+                       android:paddingEnd="12dp"
+                       android:paddingLeft="12dp"
+                       android:paddingStart="12dp"
+                       android:layout_marginTop="4dp"
+                       android:layout_marginBottom="4dp"
                        android:layout_alignParentRight="true"
                        android:layout_alignParentEnd="true"
                        android:layout_centerVertical="true"/>
