@@ -59,6 +59,7 @@ import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
+import org.thoughtcrime.securesms.components.reminder.OutdatedReminder;
 import org.thoughtcrime.securesms.components.reminder.Reminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -209,6 +210,8 @@ public class ConversationListFragment extends Fragment
 //        } else
           if (DozeReminder.isEligible(context)) {
             return Optional.of(new DozeReminder(context));
+          } else if (OutdatedReminder.isEligible(context)) {
+            return Optional.of(new OutdatedReminder(context));
           }
           else {
             return Optional.absent();

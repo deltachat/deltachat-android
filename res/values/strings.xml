@@ -103,6 +103,11 @@
     <string name="message_delivered">Message delivered</string>
     <string name="message_read">Message read</string>
 
+    <string name="information_outdated_app_title">Your app version is outdated.</string>
+    <string name="information_outdated_app_text">It seems that you installed Delta Chat from a source without auto updates (e.g. GitHub). Please switch to a store version to receive the latest features and bug fixes.</string>
+    <string name="information_outdated_app_dialog_title">Update sources</string>
+    <string name="information_outdated_app_dialog_text">Delta Chat is available on:\nF-Droid: https://f-droid.org/packages/com.b44t.messenger \nGoogle Play: https://play.google.com/store/apps/details?id=chat.delta\</string>
+
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">New contact</string>
