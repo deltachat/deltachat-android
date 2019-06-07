@@ -17,7 +17,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         style="@style/Delta.Text.UpdateHeader"
-        android:textStyle="bold"
         android:textColor="?conversation_item_update_text_color"
         android:background="@drawable/conversation_item_update_background"
         android:paddingLeft="10dp"
