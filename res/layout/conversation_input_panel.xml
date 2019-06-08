@@ -100,8 +100,8 @@
                         android:minHeight="40dp"
                         android:paddingLeft="12dp"
                         android:paddingStart="12dp"
-                        android:paddingRight="2dp"
-                        android:paddingEnd="2dp"
+                        android:paddingRight="6dp"
+                        android:paddingEnd="6dp"
                         android:background="@drawable/touch_highlight_background"
                         android:contentDescription="@string/menu_toggle_keyboard" />
 
@@ -110,8 +110,8 @@
                         android:id="@+id/embedded_text_editor"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="6dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:nextFocusForward="@+id/send_button"
