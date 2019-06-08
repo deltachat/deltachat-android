@@ -199,6 +199,9 @@ public class LogViewFragment extends Fragment {
              .append(BuildConfig.FLAVOR)
              .append(BuildConfig.DEBUG? "-debug" : "")
              .append("\n");
+      builder.append("installer=")
+             .append(pm.getInstallerPackageName(context.getPackageName()))
+             .append("\n");
       if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         builder.append("ignoreBatteryOptimizations=").append(
             powerManager.isIgnoringBatteryOptimizations(context.getPackageName())).append("\n");
