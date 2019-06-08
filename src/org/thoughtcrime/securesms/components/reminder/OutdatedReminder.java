@@ -18,13 +18,13 @@ public class OutdatedReminder extends Reminder {
     private static final long OUTDATED_THRESHOLD_IN_DAYS = 90;
 
     public OutdatedReminder(@NonNull final Context context) {
-        super(context.getString(R.string.information_outdated_app_title),
-                context.getString(R.string.information_outdated_app_text));
+        super(context.getString(R.string.info_outdated_app_title),
+                context.getString(R.string.info_outdated_app_text));
 
         setOkListener(v -> {
             AlertDialog sourceDialog = new AlertDialog.Builder(context)
-                    .setTitle(R.string.information_outdated_app_dialog_title)
-                    .setMessage(context.getString(R.string.information_outdated_app_dialog_text)
+                    .setTitle(R.string.info_outdated_app_dialog_title)
+                    .setMessage(context.getString(R.string.info_outdated_app_dialog_text)
                         +"\n\nF-Droid: https://f-droid.org/packages/com.b44t.messenger"
                         +"\n\nGoogle Play: https://play.google.com/store/apps/details?id=chat.delta")
                     .setPositiveButton(R.string.ok, (dialog, which) -> dialog.cancel())

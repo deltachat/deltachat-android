@@ -103,11 +103,6 @@
     <string name="message_delivered">Message delivered</string>
     <string name="message_read">Message read</string>
 
-    <string name="information_outdated_app_title">Your app version is outdated.</string>
-    <string name="information_outdated_app_text">It seems that you installed Delta Chat from a source without auto updates (e.g. GitHub). Please switch to a store version to receive the latest features and bug fixes.</string>
-    <string name="information_outdated_app_dialog_title">Update sources</string>
-    <string name="information_outdated_app_dialog_text">Delta Chat is available on:</string>
-
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">New contact</string>
@@ -174,6 +169,7 @@
     <string name="share_location_for_two_hours">for 2 hours</string>
     <string name="share_location_for_six_hours">for 6 hours</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
     <plurals name="ask_delete_chat">
@@ -193,6 +189,10 @@
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
+    <string name="info_outdated_app_title">Your app version is outdated.</string>
+    <string name="info_outdated_app_text">It seems that you installed Delta Chat from a source without auto updates (e.g. GitHub). Please switch to a store version to receive the latest features and bug fixes.</string>
+    <string name="info_outdated_app_dialog_title">Update sources</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat is available on:</string>
 
 
     <!-- contact list -->
@@ -535,38 +535,6 @@
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in background.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat uses minimal resources and takes care not to drain your battery.</string>
 
-    <!-- languages -->
-    <string name="language_be">Belgian</string>
-    <string name="language_ca">Catalan</string>
-    <string name="language_da">Danish</string>
-    <string name="language_de">German</string>
-    <string name="language_en">English</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spanish</string>
-    <string name="language_eu">Basque</string>
-    <string name="language_fr">French</string>
-    <string name="language_hr">Croatian</string>
-    <string name="language_hu">Hungarian</string>
-    <string name="language_it">Italian</string>
-    <string name="language_id">Indonesian</string>
-    <string name="language_ja_JP">Japanese</string>
-    <string name="language_ko">Korean</string>
-    <string name="language_nb_NO">Norwegian Bokmål</string>
-    <string name="language_nl">Dutch</string>
-    <string name="language_nl_NL">Dutch (Netherlands)</string>
-    <string name="language_pl">Polish</string>
-    <string name="language_pt">Portuguese</string>
-    <string name="language_ru">Russian</string>
-    <string name="language_ru_RU">Russian (Russia)</string>
-    <string name="language_sq">Albanian</string>
-    <string name="language_sr">Serbian</string>
-    <string name="language_sv">Swedish</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turkish</string>
-    <string name="language_uk">Ukrainian</string>
-    <string name="language_zh_CN">Chinese</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Encrypted message</string>
 
@@ -665,6 +633,35 @@
     <string name="media_tab_documents">Documents</string>
     <string name="media_no_media_hint">No media.</string>
     <string name="media_no_documents_hint">No documents.</string>
-
+    <string name="language_be">Belgian</string>
+    <string name="language_ca">Catalan</string>
+    <string name="language_da">Danish</string>
+    <string name="language_de">German</string>
+    <string name="language_en">English</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Spanish</string>
+    <string name="language_eu">Basque</string>
+    <string name="language_fr">French</string>
+    <string name="language_hr">Croatian</string>
+    <string name="language_hu">Hungarian</string>
+    <string name="language_it">Italian</string>
+    <string name="language_id">Indonesian</string>
+    <string name="language_ja_JP">Japanese</string>
+    <string name="language_ko">Korean</string>
+    <string name="language_nb_NO">Norwegian Bokmål</string>
+    <string name="language_nl">Dutch</string>
+    <string name="language_nl_NL">Dutch (Netherlands)</string>
+    <string name="language_pl">Polish</string>
+    <string name="language_pt">Portuguese</string>
+    <string name="language_ru">Russian</string>
+    <string name="language_ru_RU">Russian (Russia)</string>
+    <string name="language_sq">Albanian</string>
+    <string name="language_sr">Serbian</string>
+    <string name="language_sv">Swedish</string>
+    <string name="language_ta">Tamil</string>
+    <string name="language_te">Telugu</string>
+    <string name="language_tr">Turkish</string>
+    <string name="language_uk">Ukrainian</string>
+    <string name="language_zh_CN">Chinese</string>
 
 </resources>
