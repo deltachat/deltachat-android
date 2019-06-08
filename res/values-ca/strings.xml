@@ -152,8 +152,6 @@
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
     <string name="mute_for_seven_days">Silencia 7 dies</string>
-    <string name="mute_for_one_year">Silencia 1 any</string>
-
     <string name="share_location_once">Un cop</string>
     <string name="share_location_for_5_minutes">durant 5 minuts</string>
     <string name="share_location_for_30_minutes">durant 30 minuts</string>
@@ -178,8 +176,6 @@
     <string name="ask_delete_contacts">Voleu esborrar els contactes? Això eliminarà definitivament els contactes seleccionats.\n\nEls contactes amb xats oberts i els que estiguin al vostre directori d\'adreces no es poden eliminar definitivament. </string>
     <string name="cannot_delete_contacts_in_use">No es poden esborrar els contactes amb xats actius.</string>
     <string name="ask_start_chat_with">Voleu xatejar amb %1$s?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Llista de contactes</string>
     <string name="contacts_enter_name_or_email">Introduïu el vostre nom o la vostra adreça d\'e-mail</string>
@@ -221,10 +217,7 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Mostra les ubicacions al llarg del temps</string>
-    <string name="filter_last_position">Última posició</string>
     <string name="show_location_traces">Mostra el rastre</string>
-
-
     <!-- search -->
     <string name="search">Busca</string>
     <string name="search_explain">Busca als xats, contactes i missatges</string>
@@ -240,14 +233,7 @@
     <string name="group_hello_draft">Hola, acabo de crear el grup \"%1$s\" per naltros.</string>
     <string name="group_self_not_in_group">Has de ser membre del grup per poder fer això.</string>
     <string name="profile_encryption">Encriptació</string>
-
-
-    <!-- chat media view -->
     <string name="media_preview">Previsualització multimèdia</string>
-    <string name="media_tab_media">Multimèdia</string>
-    <string name="media_tab_documents">Documents</string>
-    <string name="media_no_media_hint">Cap arxiu multimèdia.</string>
-    <string name="media_no_documents_hint">Cap document</string>
 
 
     <!-- invite -->
@@ -643,6 +629,7 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Zeeeeeroo missatges a la safata d\'entrada</string>
     <string name="chat_all_done_explain">Res, niente, ezer, nihil, rien de rien\nJa heu acabat!</string>
-
-
-</resources>
+    <string name="media_tab_media">Multimèdia</string>
+    <string name="media_tab_documents">Documents</string>
+    <string name="media_no_media_hint">Cap arxiu multimèdia.</string>
+    </resources>

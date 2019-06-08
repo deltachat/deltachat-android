@@ -76,6 +76,7 @@
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
     <string name="contact">Kontakt</string>
+    <string name="verified_contact">Efterprøvet kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Placering</string>
     <string name="gallery">Galleri</string>
@@ -111,6 +112,7 @@
     <string name="menu_send">Sende</string>
     <string name="menu_toggle_keyboard">Skifte emoji tastatur</string>
     <string name="menu_edit_group">Redigere gruppe</string>
+    <string name="menu_group_name_and_image">Gruppe navn og billede</string>
     <string name="menu_show_map">Vis kort</string>
     <string name="menu_show_global_map">Vis alle placeringer</string>
     <string name="menu_archive_chat">Arkivere samtale</string>
@@ -121,6 +123,7 @@
     <string name="menu_delete_messages">Slette beskeder</string>
     <string name="menu_delete_image">Slette billede</string>
     <string name="menu_delete_locations">Slet alle placeringer?</string>
+    <string name="menu_delete_location">Slette placering?</string>
     <string name="menu_message_details">Besked detaljer</string>
     <string name="menu_copy_to_clipboard">Kopiere til klippebord</string>
     <string name="menu_forward">Videresende besked</string>
@@ -136,6 +139,7 @@
     <string name="menu_play">Afspille</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Rulle til bunden</string>
+    <string name="menu_scroll_to_top">Rulle til toppen</string>
     <string name="menu_invite">Invitere venner</string>
     <string name="menu_help">Hjælp</string>
     <string name="menu_select_all">Vælge alle</string>
@@ -146,13 +150,15 @@
     <string name="menu_deaddrop">Kontakt anmodninger</string>
     <string name="menu_deaddrop_subtitle">Tryk på besked for at starte samtale</string>
     <string name="menu_view_profile">Vise profil</string>
+    <string name="menu_zoom_in">Forstørre</string>
+    <string name="menu_zoom_out">Formindske</string>
     <string name="title_share_location">Del placering med alle gruppe medlemmer</string>
 
     <string name="mute_for_one_hour">Dæmpe i 1 time</string>
     <string name="mute_for_two_hours">Dæmpe i 2 timer</string>
     <string name="mute_for_one_day">Dæmpe i 1 dag</string>
     <string name="mute_for_seven_days">Dæmpe i 7 dage</string>
-    <string name="mute_for_one_year">Dæmpe i 1 år</string>
+    <string name="mute_forever">Stille for altid</string>
 
     <string name="share_location_once">en gang</string>
     <string name="share_location_for_5_minutes">for 5 minutter</string>
@@ -178,6 +184,8 @@
     <string name="ask_delete_contacts">Slette kontakter? Dette vil slette valgte kontakter permanent.\n\nKontakter med igangværende samtaler og kontakter fra systemets adressebog kan ikke slette permanent.</string>
     <string name="cannot_delete_contacts_in_use">Kan ikke slette kontakter med igangværende samtaler.</string>
     <string name="ask_start_chat_with">Samtale med %1$s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Fjerne %1$s fra gruppe?</string>
 
 
     <!-- contact list -->
@@ -221,8 +229,8 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Vise placeringer i tidsramme</string>
-    <string name="filter_last_position">Sidste position</string>
     <string name="show_location_traces">Vise spor</string>
+    <string name="add_poi">Sende interessepunkt</string>
 
 
     <!-- search -->
@@ -240,14 +248,17 @@
     <string name="group_hello_draft">Hej, har lige oprettet gruppen  \"%1$s\" til os.</string>
     <string name="group_self_not_in_group">Man skal være medlem af gruppen fro at udføre denne handling.</string>
     <string name="profile_encryption">Kryptering</string>
-
-
-    <!-- chat media view -->
+    <string name="profile_shared_chats">Delte samtaler</string>
+    <string name="tab_contact">Kontakt</string>
+    <string name="tab_group">Gruppe</string>
+    <string name="tab_members">Medlemmer</string>
+    <string name="tab_gallery">Galleri</string>
+    <string name="tab_docs">Dokumenter</string>
+    <string name="tab_links">Henvisninger</string>
+    <string name="tab_map">Kort</string>
+    <string name="tab_gallery_empty_hint">Billder og video delt i denne samtale vises her.</string>
+    <string name="tab_docs_empty_hint">Dokumenter, musik og andre filer delt i denne samtale vises her.</string>
     <string name="media_preview">Medie forhåndvisning</string>
-    <string name="media_tab_media">Medie</string>
-    <string name="media_tab_documents">Dokumenter</string>
-    <string name="media_no_media_hint">Ingen medie</string>
-    <string name="media_no_documents_hint">Ingen dokumenter</string>
 
 
     <!-- invite -->
@@ -341,6 +352,9 @@
     <string name="pref_default_status_text">Sendt med Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Enter tast sender</string>
     <string name="pref_enter_sends_explain">Tryk på enter tast vil sende tekst beskeden</string>
+    <string name="pref_outgoing_media_quality">Udgående medie kvalitet</string>
+    <string name="pref_outgoing_balanced">Balanceret</string>
+    <string name="pref_outgoing_worse">Dårligere kvalitet mindre størrelse</string>
     <string name="pref_vibrate">Vibrere</string>
     <string name="pref_chat_settings">Samtale opsætning</string>
     <string name="pref_change_secret">Ændre hemmelighed</string>
@@ -380,6 +394,7 @@
     <string name="pref_in_chat_sounds">I samtale lyde</string>
     <string name="pref_message_text_size">Besked tekststørrelse</string>
     <string name="pref_view_log">Vise log</string>
+    <string name="pref_log_header">Log</string>
     <string name="pref_other">Andet</string>
     <string name="pref_backup">Sikkerhedskopi</string>
     <string name="pref_backup_explain">Sikkerhedskopiere samtaler til eksternt lager</string>
@@ -474,6 +489,8 @@
     <string name="qrshow_join_group_hint">Skanne dette for at deltage i gruppen \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR invitere kode</string>
     <string name="qrshow_join_contact_hint">Skanne dette for at indstille kontakt med %1$s</string>
+    <string name="qrshow_join_contact_no_connection_hint">QR kode opsætning kræver en internet forbindelse. Forbind til et netværk inden der fortsættes.</string>
+    <string name="qrshow_join_contact_no_connection_toast">Ingen internet forbindelse, kan ikke udføre QR kode opsætning.</string>
     <string name="contact_verified">%1$s efterprøvet.</string>
     <string name="contact_not_verified">Kan ikke efterprøve %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -643,6 +660,10 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Indbakke tom</string>
     <string name="chat_all_done_explain">Der er ikke mere!</string>
+    <string name="media_tab_media">Medie</string>
+    <string name="media_tab_documents">Dokumenter</string>
+    <string name="media_no_media_hint">Ingen medie</string>
+    <string name="media_no_documents_hint">Ingen dokumenter</string>
 
 
 </resources>

@@ -152,8 +152,6 @@
     <string name="mute_for_two_hours">2 saatlıq söndür</string>
     <string name="mute_for_one_day">1 günlük söndür</string>
     <string name="mute_for_seven_days">7 günlük söndür</string>
-    <string name="mute_for_one_year">1 illik söndür</string>
-
     <string name="share_location_once">bir dəfə</string>
     <string name="share_location_for_5_minutes">5 dəqiqə üçün</string>
     <string name="share_location_for_30_minutes">30 qəqiqə üçün</string>
@@ -170,8 +168,6 @@
     <string name="ask_delete_contacts">Kontaktları silmək? Bu əməliyyat seçilmiş kontaktları daimi olaraq silməyəcək. \n\n Sistem kontakt kitabından davam edən söhbətlər və kontaktlar ilə əlaqə saxlanıla bilməz.</string>
     <string name="cannot_delete_contacts_in_use">Davam edən çatlarla kontakt silinmir.</string>
     <string name="ask_start_chat_with">%1$s ilə çat? </string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontaktlar</string>
     <string name="contacts_enter_name_or_email">Ad ya e-poçt daxil et</string>
@@ -210,10 +206,7 @@
     <string name="chat_contact_request">Kontakt sorğusu</string>
     <!-- map -->
     <string name="filter_map_on_time">Vaxt məhdudiyyəti ilə yerləşmə yerləri göstərin</string>
-    <string name="filter_last_position">Son yerləşmə</string>
     <string name="show_location_traces">İzləri göstərmək</string>
-
-
     <!-- search -->
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
@@ -228,14 +221,7 @@
     <string name="group_add_members">Üzv elavə et</string>
     <string name="group_self_not_in_group">Bunu etmək üçün qrupun üzvü olmalısan.</string>
     <string name="profile_encryption">Şifrələmə</string>
-
-
-    <!-- chat media view -->
     <string name="media_preview">Fayllara baxmaq</string>
-    <string name="media_tab_media">Fayllar</string>
-    <string name="media_tab_documents">Sənədlər</string>
-    <string name="media_no_media_hint">Fayl yoxdur</string>
-    <string name="media_no_documents_hint">Sənəd yoxdur</string>
 
 
     <!-- invite -->
@@ -565,6 +551,7 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Gələnlər qutusu zeeerrro</string>
     <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nHamınız tutuldunuz!</string>
-
-
-</resources>
+    <string name="media_tab_media">Fayllar</string>
+    <string name="media_tab_documents">Sənədlər</string>
+    <string name="media_no_media_hint">Fayl yoxdur</string>
+    </resources>

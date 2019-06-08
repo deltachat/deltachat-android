@@ -127,8 +127,6 @@
     <string name="mute_for_two_hours">Ljud av 2 timma</string>
     <string name="mute_for_one_day">Ljud av 1 dag</string>
     <string name="mute_for_seven_days">Ljud av 7 dagar</string>
-    <string name="mute_for_one_year">Ljud av 1 år</string>
-
     <!-- get confirmations -->
     <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
     <string name="ask_forward">Vidarebefordra meddelanden till %1$s?</string>
@@ -138,8 +136,6 @@
     <string name="ask_delete_contacts">Ta bort kontakter? Detta kommer permanent radera de valda kontakterna.\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte raderas permanent.</string>
     <string name="cannot_delete_contacts_in_use">Det går inte att radera kontakter med pågående chattar.</string>
     <string name="ask_start_chat_with">Chatta med%1$s ?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Ange namn eller e-postadress</string>
@@ -179,14 +175,7 @@
     <string name="group_hello_draft">Hej, jag har precis skapat gruppen \" %1$s \" för oss.</string>
     <string name="group_self_not_in_group">Du måste vara medlem i gruppen för att utföra denna åtgärd.</string>
     <string name="profile_encryption">Kryptering</string>
-
-
-    <!-- chat media view -->
     <string name="media_preview">Media förhandsvisning</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Dokument</string>
-    <string name="media_no_media_hint">Ingen media.</string>
-    <string name="media_no_documents_hint">Inga dokument</string>
 
 
     <!-- invite -->
@@ -238,6 +227,7 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Inkorgen zeeerrro</string>
     <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nDu är allt upptagen!</string>
-
-
-</resources>
+    <string name="media_tab_media">Media</string>
+    <string name="media_tab_documents">Dokument</string>
+    <string name="media_no_media_hint">Ingen media.</string>
+    </resources>

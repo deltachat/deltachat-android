@@ -76,6 +76,7 @@
     <string name="video">Bideoa</string>
     <string name="documents">Dokumentuak</string>
     <string name="contact">Kontaktua</string>
+    <string name="verified_contact">Egiaztatutako kontaktua</string>
     <string name="camera">Kamera</string>
     <string name="location">Kokalekua</string>
     <string name="gallery">Galeria</string>
@@ -111,6 +112,7 @@
     <string name="menu_send">Bidali</string>
     <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
     <string name="menu_edit_group">Editatu taldea</string>
+    <string name="menu_group_name_and_image">Taldearen izena eta irudia</string>
     <string name="menu_show_map">Erakutsi mapa</string>
     <string name="menu_show_global_map">Erakutsi kokaleku guztiak</string>
     <string name="menu_archive_chat">Artxibatu txata</string>
@@ -121,6 +123,7 @@
     <string name="menu_delete_messages">Ezabatu mezuak</string>
     <string name="menu_delete_image">Ezabatu irudia</string>
     <string name="menu_delete_locations">Ezabatu kokaleku guztiak?</string>
+    <string name="menu_delete_location">Ezabatu kokaleku hau?</string>
     <string name="menu_message_details">Mezuaren xehetasunak</string>
     <string name="menu_copy_to_clipboard">Kopiatu arbelera</string>
     <string name="menu_forward">Birbidali mezua</string>
@@ -136,6 +139,7 @@
     <string name="menu_play">Erreproduzitu</string>
     <string name="menu_pause">Pausatu</string>
     <string name="menu_scroll_to_bottom">Korritu behealdera</string>
+    <string name="menu_scroll_to_top">Korritu goialdera</string>
     <string name="menu_invite">Gonbidatu lagunak</string>
     <string name="menu_help">Laguntza</string>
     <string name="menu_select_all">Hautatu guztiak</string>
@@ -146,13 +150,15 @@
     <string name="menu_deaddrop">Kontaktu-eskaerak</string>
     <string name="menu_deaddrop_subtitle">Sakatu mezua txateatzen hasteko</string>
     <string name="menu_view_profile">Ikusi profila</string>
+    <string name="menu_zoom_in">Hurbildu zooma</string>
+    <string name="menu_zoom_out">Urrundu zooma</string>
     <string name="title_share_location">Partekatu kokalekua taldeko kide guztiak</string>
 
     <string name="mute_for_one_hour">Mututu ordubete</string>
     <string name="mute_for_two_hours">Mututu 2 ordu</string>
     <string name="mute_for_one_day">Mututu egun bat</string>
     <string name="mute_for_seven_days">Mututu 7 egun</string>
-    <string name="mute_for_one_year">Mututu urtebete</string>
+    <string name="mute_forever">Mututu betirako</string>
 
     <string name="share_location_once">behin</string>
     <string name="share_location_for_5_minutes">5 minutuz</string>
@@ -178,6 +184,8 @@
     <string name="ask_delete_contacts">Ezabatu kontaktuak? Honek behin betiko ezabatuko ditu hautatutako kontaktuak.\n\nTxaten bat abian duten eta sistemako helbide liburuan dauden kontaktuak ezin dira behin betiko ezabatu.</string>
     <string name="cannot_delete_contacts_in_use">Ezin dira txatak abian dituzten kontaktuak ezabatu</string>
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Kendu %1$s taldetik?</string>
 
 
     <!-- contact list -->
@@ -221,8 +229,8 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Erakutsi kokalekuak denbora markoan</string>
-    <string name="filter_last_position">Azken kokalekua</string>
     <string name="show_location_traces">Erakutsi lorratzak</string>
+    <string name="add_poi">Bidali interesezko puntua</string>
 
 
     <!-- search -->
@@ -240,14 +248,17 @@
     <string name="group_hello_draft">Kaixo, \"%1$s\" taldea sortu berri dut guretzat. </string>
     <string name="group_self_not_in_group">Taldeko kidea izan behar zara ekintza hau burutzeko.</string>
     <string name="profile_encryption">Zifratzea</string>
-
-
-    <!-- chat media view -->
+    <string name="profile_shared_chats">Partekatutako txatak</string>
+    <string name="tab_contact">Kontaktua</string>
+    <string name="tab_group">Taldea</string>
+    <string name="tab_members">Kideak</string>
+    <string name="tab_gallery">Galeria</string>
+    <string name="tab_docs">Dokumentuak</string>
+    <string name="tab_links">Estekak</string>
+    <string name="tab_map">Mapa</string>
+    <string name="tab_gallery_empty_hint">Txat honetan partekatutako irudi eta bideoak agertuko dira hemen</string>
+    <string name="tab_docs_empty_hint">Txat honetan partekatutako dokumentuak, musika, eta bestelako fitxategiak agertuko dira hemen</string>
     <string name="media_preview">Multimediaren aurrebista</string>
-    <string name="media_tab_media">Multimedia</string>
-    <string name="media_tab_documents">Dokumentuak</string>
-    <string name="media_no_media_hint">Multimediarik ez.</string>
-    <string name="media_no_documents_hint">Dokumenturik ez</string>
 
 
     <!-- invite -->
@@ -341,6 +352,9 @@
     <string name="pref_default_status_text">Delta Chat mezulariarekin bidalita: https://delta.chat</string>
     <string name="pref_enter_sends">Enter teklarekin bidali</string>
     <string name="pref_enter_sends_explain">Enter tekla sakatzeak mezua bidaliko du</string>
+    <string name="pref_outgoing_media_quality">Bidalitako multimediaren kalitatea</string>
+    <string name="pref_outgoing_balanced">Orekatua</string>
+    <string name="pref_outgoing_worse">Kalitate txarragoa, tamaina txikia</string>
     <string name="pref_vibrate">Bibratu</string>
     <string name="pref_chat_settings">Txat ezarpenak</string>
     <string name="pref_change_secret">Aldatu sekretua</string>
@@ -380,6 +394,7 @@
     <string name="pref_in_chat_sounds">Txat bitarteko soinuak</string>
     <string name="pref_message_text_size">Mezuen letra tamaina</string>
     <string name="pref_view_log">Ikusi egunkaria</string>
+    <string name="pref_log_header">Egunkaria</string>
     <string name="pref_other">Bestelakoa</string>
     <string name="pref_backup">Babeskopia</string>
     <string name="pref_backup_explain">Egin txaten babes-kopia kanpo biltegian</string>
@@ -474,6 +489,8 @@
     <string name="qrshow_join_group_hint">Eskaneatu hau \"%1$s\" taldera elkartzeko.</string>
     <string name="qrshow_join_contact_title">QR gonbidapen-kodea</string>
     <string name="qrshow_join_contact_hint">Eskaneatu hau %1$s erabiltzailearen kontaktua ezartzeko</string>
+    <string name="qrshow_join_contact_no_connection_hint">Ezarpen QR kodeak Internet konexioa behar du. Konektatu sarera jarraitu aurretik</string>
+    <string name="qrshow_join_contact_no_connection_toast">Ez dago Internet konexiorik, ezin da QR kode bidezko ezarpena aplikatu</string>
     <string name="contact_verified">%1$s egiaztatuta.</string>
     <string name="contact_not_verified">Ezin da %1$s egiaztatu</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -643,6 +660,10 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Sarrera ontzi hutsa</string>
     <string name="chat_all_done_explain">Ezer ere ez.\n Egunean zaude!</string>
+    <string name="media_tab_media">Multimedia</string>
+    <string name="media_tab_documents">Dokumentuak</string>
+    <string name="media_no_media_hint">Multimediarik ez.</string>
+    <string name="media_no_documents_hint">Dokumenturik ez.</string>
 
 
 </resources>

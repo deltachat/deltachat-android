@@ -164,8 +164,6 @@
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
     <string name="mute_for_seven_days">На 7 дней</string>
-    <string name="mute_for_one_year">На 1 год</string>
-
     <string name="share_location_once">один раз</string>
     <string name="share_location_for_5_minutes">5 минут</string>
     <string name="share_location_for_30_minutes">30 минут</string>
@@ -194,8 +192,6 @@
     <string name="ask_delete_contacts">Удалить контакты? Это действие навсегда удалит выбранные контакты.\n\nКонтакты из действующих чатов и из адресной книги системы нельзя удалить навсегда.</string>
     <string name="cannot_delete_contacts_in_use">Невозможно удалить контакты, с которыми имеются активные чаты.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Контакты</string>
     <string name="contacts_enter_name_or_email">Введите имя или адрес эл. почты</string>
@@ -243,10 +239,7 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
-    <string name="filter_last_position">Последняя позиция</string>
     <string name="show_location_traces">Показывать маршруты</string>
-
-
     <!-- search -->
     <string name="search">Поиск</string>
     <string name="search_explain">Поиск чатов, контактов и сообщений</string>
@@ -262,14 +255,7 @@
     <string name="group_hello_draft">Привет, я только что создал для нас группу «%1$s».</string>
     <string name="group_self_not_in_group">Необходимо быть участником группы для данного действия.</string>
     <string name="profile_encryption">Шифрование</string>
-
-
-    <!-- chat media view -->
     <string name="media_preview">Предварительный просмотр медиафайлов</string>
-    <string name="media_tab_media">Медиафайлы</string>
-    <string name="media_tab_documents">Документы</string>
-    <string name="media_no_media_hint">Медиафайлы отсуствуют</string>
-    <string name="media_no_documents_hint">Нет документов</string>
 
 
     <!-- invite -->
@@ -665,6 +651,7 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Нооольь.. входящих</string>
     <string name="chat_all_done_explain">Ничего. Шиш. Нуль. Нада.\nВы все попались!</string>
-
-
-</resources>
+    <string name="media_tab_media">Медиафайлы</string>
+    <string name="media_tab_documents">Документы</string>
+    <string name="media_no_media_hint">Медиафайлы отсуствуют</string>
+    </resources>

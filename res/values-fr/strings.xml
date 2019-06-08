@@ -141,8 +141,6 @@
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>
     <string name="mute_for_seven_days">Déactiver pour 7 jours</string>
-    <string name="mute_for_one_year">Déactiver pour 1 an</string>
-
     <!-- get confirmations -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
     <string name="ask_block_contact">Bloquer ce contact ? Vous ne recevrez plus ses messages.</string>
@@ -150,8 +148,6 @@
     <string name="ask_delete_contacts">Effacer ces contacts? Cela supprimera définitivement les contacts sélectionnés.\n\nLes contacts avec des conversations en cours et ceux venant du carnet d\'adresses du système ne peuvent pas être définitivement effacés.</string>
     <string name="cannot_delete_contacts_in_use">Impossible d\'effacer des contacts ayant une discussion active.</string>
     <string name="ask_start_chat_with">Discuter avec %1$s ?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
     <string name="contacts_enter_name_or_email">Entrez le nom ou l\'email</string>
@@ -190,14 +186,7 @@
     <string name="group_hello_draft">Salut, je viens juste de nous créer le groupe \"%1$s\".</string>
     <string name="group_self_not_in_group">Vous devez être membre du groupe pour effectuer cette action.</string>
     <string name="profile_encryption">Chiffrement</string>
-
-
-    <!-- chat media view -->
     <string name="media_preview">Prévisualiser le fichier multimédia</string>
-    <string name="media_tab_media">Fichier multimédia</string>
-    <string name="media_tab_documents">Documents</string>
-    <string name="media_no_media_hint">Pas de fichier multimédia</string>
-    <string name="media_no_documents_hint">Pas de documents</string>
 
 
     <!-- invite -->
@@ -310,4 +299,7 @@
     <string name="qrscan_ask_fingerprint_ask_oob">Discuter avec %1$s?</string>
     <!-- see ask_start_chat_with -->
     <string name="qrscan_ask_chatting_fingerprint_ok">Discuter avec %1$s?</string>
+    <string name="media_tab_media">Fichier multimédia</string>
+    <string name="media_tab_documents">Documents</string>
+    <string name="media_no_media_hint">Pas de fichier multimédia</string>
     </resources>

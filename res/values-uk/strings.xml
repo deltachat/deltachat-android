@@ -159,8 +159,6 @@
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
     <string name="mute_for_seven_days">Відключити сповіщення на 7 днів</string>
-    <string name="mute_for_one_year">Відключити сповіщення на 1 рік</string>
-
     <!-- get confirmations -->
     <string name="ask_leave_group">Ви впевнені, що хочете залишити цю групу?</string>
     <plurals name="ask_delete_chat">
@@ -182,8 +180,6 @@
     <string name="ask_delete_contacts">Видалити контакти? Ця дія назавжди видалить вибрані контакти.\n\nКонтакти з діючих чатів та з адресної книги системи не можна видалити назавжди.</string>
     <string name="cannot_delete_contacts_in_use">Неможливо видалити контакти, з якими є активні чати.</string>
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
     <string name="contacts_enter_name_or_email">Введіть ім\'я або адресу електронної пошти</string>
@@ -241,14 +237,7 @@
     <string name="group_hello_draft">Привіт! Я щойно створив групу для нас групу «%1$s».</string>
     <string name="group_self_not_in_group">Щоб виконати цю дію, Ви повинні бути учасником групи.</string>
     <string name="profile_encryption">Шифрування</string>
-
-
-    <!-- chat media view -->
     <string name="media_preview">Попередній перегляд медіа</string>
-    <string name="media_tab_media">Медіа</string>
-    <string name="media_tab_documents">Документи</string>
-    <string name="media_no_media_hint">Немає медіа</string>
-    <string name="media_no_documents_hint">Немає документів</string>
 
 
     <!-- invite -->
@@ -634,6 +623,7 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Вхідних немає</string>
     <string name="chat_all_done_explain">Нічого!\nНа цьому поки все</string>
-
-
-</resources>
+    <string name="media_tab_media">Медіа</string>
+    <string name="media_tab_documents">Документи</string>
+    <string name="media_no_media_hint">Немає медіа</string>
+    </resources>

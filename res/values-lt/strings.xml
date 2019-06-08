@@ -8,6 +8,8 @@
     <string name="no">Ne</string>
     <string name="on">Įjungta</string>
     <string name="off">Išjungta</string>
+    <string name="def">Pagal numatymą</string>
+    <string name="custom">Tinkintas</string>
     <string name="none">Nėra</string>
     <string name="open">Atverti</string>
     <string name="delete">Ištrinti</string>
@@ -86,6 +88,7 @@
     <string name="video">Vaizdas</string>
     <string name="documents">Dokumentai</string>
     <string name="contact">Adresatas</string>
+    <string name="verified_contact">Patvirtintas adresatas</string>
     <string name="camera">Kamera</string>
     <string name="location">Vieta</string>
     <string name="gallery">Galerija</string>
@@ -121,6 +124,7 @@
     <string name="menu_send">Siųsti</string>
     <string name="menu_toggle_keyboard">Perjungti šypsniukų klaviatūrą</string>
     <string name="menu_edit_group">Taisyti grupę</string>
+    <string name="menu_group_name_and_image">Grupės pavadinimas ir paveikslas</string>
     <string name="menu_show_map">Rodyti žemėlapį</string>
     <string name="menu_show_global_map">Rodyti visas vietas</string>
     <string name="menu_archive_chat">Archyvuoti pokalbį</string>
@@ -131,6 +135,7 @@
     <string name="menu_delete_messages">Ištrinti žinutes</string>
     <string name="menu_delete_image">Ištrinti paveikslą</string>
     <string name="menu_delete_locations">Ištrinti visas vietas?</string>
+    <string name="menu_delete_location">Ištrinti šią vietą?</string>
     <string name="menu_message_details">Išsamesnė žinutės informacija</string>
     <string name="menu_copy_to_clipboard">Kopijuoti į iškarpinę</string>
     <string name="menu_forward">Persiųsti žinutę</string>
@@ -146,6 +151,7 @@
     <string name="menu_play">Groti</string>
     <string name="menu_pause">Pristabdyti</string>
     <string name="menu_scroll_to_bottom">Slinkti į apačią</string>
+    <string name="menu_scroll_to_top">Slinkti į viršų</string>
     <string name="menu_invite">Pakviesti draugus</string>
     <string name="menu_help">Žinynas</string>
     <string name="menu_select_all">Žymėti viską</string>
@@ -156,13 +162,15 @@
     <string name="menu_deaddrop">Adresatų užklausos</string>
     <string name="menu_deaddrop_subtitle">Norėdami pradėti pokalbį, paspauskite ant žinutės</string>
     <string name="menu_view_profile">Rodyti profilį</string>
+    <string name="menu_zoom_in">Didinti</string>
+    <string name="menu_zoom_out">Mažinti</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
 
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
-    <string name="mute_for_one_year">Išjungti 1 metams</string>
+    <string name="mute_forever">Išjungti visam laikui</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
@@ -183,6 +191,8 @@
     <string name="ask_block_contact">Užblokuoti šį adresatą? Jūs daugiau nebegausite žinučių nuo šio adresato.</string>
     <string name="ask_unblock_contact">Atblokuoti šį adresatą? Jūs ir vėl galėsite gauti žinutes nuo šio adresato.</string>
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
 
 
     <!-- contact list -->
@@ -224,6 +234,7 @@
     <string name="chat_archived_label">Archyvuotas</string>
     <string name="chat_no_messages">Žinučių nėra.</string>
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
+    <string name="chat_contact_request">Adresato užklausa</string>
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>
@@ -239,14 +250,13 @@
     <string name="group_hello_draft">Sveiki, aš ką tik sukūriau mums grupę \"%1$s\".</string>
     <string name="group_self_not_in_group">Norėdami atlikti šį veiksmą, privalote būti grupės dalyviu.</string>
     <string name="profile_encryption">Šifravimas</string>
-
-
-    <!-- chat media view -->
+    <string name="tab_gallery">Galerija</string>
+    <string name="tab_docs">Dokumentai</string>
+    <string name="tab_links">Nuorodos</string>
+    <string name="tab_map">Žemėlapis</string>
+    <string name="tab_gallery_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami paveikslai ir vaizdo įrašai.</string>
+    <string name="tab_docs_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami dokumentai, muzika ir kiti failai.</string>
     <string name="media_preview">Medijos peržiūra</string>
-    <string name="media_tab_media">Medija</string>
-    <string name="media_tab_documents">Dokumentai</string>
-    <string name="media_no_media_hint">Medijos nėra.</string>
-    <string name="media_no_documents_hint">Dokumentų nėra</string>
 
 
     <!-- invite -->
@@ -275,6 +285,7 @@
     <string name="login_title">Prisijungti</string>
     <string name="login_header">Prisijunkite prie savo serverio</string>
     <string name="login_subheader">Žinomiems el. pašto teikėjams papildomi nustatymai yra nustatomi automatiškai. Kartais, IMAP turi būti įjungtas prisijungus per naršyklę. Išsamesnės pagalbos teiraukitės savo el. pašto teikėjo ar draugų.</string>
+    <string name="login_no_servers_hint">Nėra jokių Delta Chat serverių, jūsų duomenys išlieka jūsų įrenginyje!</string>
     <string name="login_inbox">Gauta</string>
     <string name="login_imap_login">IMAP prisijungimo vardas</string>
     <string name="login_imap_server">IMAP serveris</string>
@@ -303,6 +314,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Kam persiųsti …</string>
+    <string name="share_abort">Bendrinimas nutrauktas dėl trūkstamų leidimų.</string>
+
+
     <!-- preferences -->
     <string name="pref_summary_on">įjungta</string>
     <string name="pref_summary_off">išjungta</string>
@@ -328,6 +342,9 @@
     <string name="pref_default_status_text">Išsiųsta iš mano Delta Chat pokalbių programos: https://delta.chat</string>
     <string name="pref_enter_sends">Įvedimo (Enter) klavišas išsiunčia</string>
     <string name="pref_enter_sends_explain">Paspaudus įvedimo (Enter) klavišą, bus išsiunčiamos tekstinės žinutės</string>
+    <string name="pref_outgoing_media_quality">Išsiunčiamos medijos kokybė</string>
+    <string name="pref_outgoing_balanced">Subalansuota</string>
+    <string name="pref_outgoing_worse">Blogesnė kokybė, mažas dydis</string>
     <string name="pref_vibrate">Vibruoti</string>
     <string name="pref_chat_settings">Pokalbio nustatymai</string>
     <string name="pref_change_secret">Pakeisti paslaptį</string>
@@ -378,6 +395,9 @@
     <string name="pref_managekeys_import_explain">Importuoti slaptus raktus iš \"%1$s\"?\n\n• Esami raktai nebus ištrinti\n\n• Paskutinis importuotas raktas bus naudojamas kaip naujas numatytasis raktas, nebent jo failo pavadinime bus žodis \"legacy\"</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Slapti raktai sėkmingai įrašyti į \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Slapti raktai importuoti iš \"%1$s\".</string>
+    <string name="pref_background">Fonas</string>
+    <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
+    <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>
     <string name="pref_imap_folder_handling">IMAP aplanko apdorojimas</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
     <string name="pref_watch_inbox_folder">Stebėti gautųjų aplanką</string>
@@ -385,6 +405,7 @@
     <string name="pref_watch_mvbox_folder">Stebėti DeltaChat aplanką</string>
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
     <string name="pref_auto_folder_moves_explain">Pokalbiai yra perkeliami, kad nebūtų sujauktas Gautųjų aplankas</string>
+    <string name="pref_email_interaction_title">Sąveika su el. paštu</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt yra naujoji ir atviroji specifikacija automatiniam ištisiniam el. pašto šifravui.\n\nPrireikus, jūsų ištisinė sąranka yra sukuriama automatiškai ir gali būti perduodama tarp įrenginių, naudojant Autocrypt sąrankos žinutes.</string>
@@ -435,6 +456,8 @@
     <string name="qrshow_join_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
     <string name="qrshow_join_contact_title">QR pakvietimo kodas</string>
     <string name="qrshow_join_contact_hint">Nuskenuokite tai, norėdami užmegzti kontaktą su %1$s</string>
+    <string name="qrshow_join_contact_no_connection_hint">QR kodo sąranka reikalauja interneto ryšio. Prieš tęsdami, prisijunkite prie tinklo.</string>
+    <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
     <string name="notify_most_recent_from">Naujausia nuo: %1$s</string>
     <string name="notify_media_message_with_text">Medijos žinutė: %s</string>
@@ -463,6 +486,7 @@
     <string name="perm_explain_need_for_camera_access">Norėdami fotografuoti ir filmuoti, suteikite Delta Chat prieigą prie kameros.</string>
     <string name="perm_explain_need_for_mic_access">Norėdami siųsti garso žinutes, suteikite Delta Chat prieigą prie mikrofono.</string>
     <string name="perm_explain_need_for_storage_access">Norint eksportuoti failus ar daryti atsargines kopijas, Delta Chat reikia prieigos prie jūsų failų.</string>
+    <string name="perm_explain_need_for_storage_access_share">Norint bendrinti pasirinktus failus, Delta Chat reikia prieigos prie jūsų failų.</string>
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat naudoja mažai išteklių ir rūpinasi, kad neiškrautų jūsų baterijos.</string>
 
@@ -586,6 +610,10 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Gautųjų aplanke tuščia</string>
     <string name="chat_all_done_explain">Tuščia.\nNieko nepraleidote!</string>
+    <string name="media_tab_media">Medija</string>
+    <string name="media_tab_documents">Dokumentai</string>
+    <string name="media_no_media_hint">Medijos nėra.</string>
+    <string name="media_no_documents_hint">Dokumentų nėra.</string>
 
 
 </resources>

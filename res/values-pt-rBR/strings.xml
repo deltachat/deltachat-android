@@ -152,8 +152,6 @@
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 dia</string>
     <string name="mute_for_seven_days">Silenciar por 7 dias</string>
-    <string name="mute_for_one_year">Silenciar por 1 ano</string>
-
     <string name="share_location_once">uma vez</string>
     <string name="share_location_for_5_minutes">por 5 minutos</string>
     <string name="share_location_for_30_minutes">por 30 minutos</string>
@@ -178,8 +176,6 @@
     <string name="ask_delete_contacts">Apagar contatos? Eles serão permanentemente apagados.\n\nContatos com conversas ativas e contatos do livro de endereços do sistema não podem ser permanentemente apagados.</string>
     <string name="cannot_delete_contacts_in_use">Impossível apagar contatos com conversas em curso.</string>
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Contatos</string>
     <string name="contacts_enter_name_or_email">Insira um nome ou e-mail</string>
@@ -221,10 +217,7 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Exibir localização no tempo.</string>
-    <string name="filter_last_position">Última localização</string>
     <string name="show_location_traces">Exibir pegadas</string>
-
-
     <!-- search -->
     <string name="search">Procurar</string>
     <string name="search_explain">Procurar conversas, contatos e mensagens</string>
@@ -240,14 +233,7 @@
     <string name="group_hello_draft">Oi! Acabei de criar o grupo \"%1$s\" para conversarmos.</string>
     <string name="group_self_not_in_group">É preciso ser um participante do grupo para fazer isso.</string>
     <string name="profile_encryption">Criptografia</string>
-
-
-    <!-- chat media view -->
     <string name="media_preview">Pré-visualização.</string>
-    <string name="media_tab_media">Mídia</string>
-    <string name="media_tab_documents">Documentos</string>
-    <string name="media_no_media_hint">Sem mídia.</string>
-    <string name="media_no_documents_hint">Sem documentos</string>
 
 
     <!-- invite -->
@@ -643,6 +629,7 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Caixa vazzziaaa</string>
     <string name="chat_all_done_explain">Nichts. Niente. Rien. Nada.\nAgora é só começar!</string>
-
-
-</resources>
+    <string name="media_tab_media">Mídia</string>
+    <string name="media_tab_documents">Documentos</string>
+    <string name="media_no_media_hint">Sem mídia.</string>
+    </resources>

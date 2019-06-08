@@ -76,6 +76,7 @@
     <string name="video">Video</string>
     <string name="documents">Documentos</string>
     <string name="contact">Contacto</string>
+    <string name="verified_contact">Contacto verificado</string>
     <string name="camera">Cámara</string>
     <string name="location">Ubicación</string>
     <string name="gallery">Galería</string>
@@ -111,6 +112,7 @@
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
+    <string name="menu_group_name_and_image">Nombre e imagen de grupo</string>
     <string name="menu_show_map">Mostrar mapa</string>
     <string name="menu_show_global_map">Mostrar todas las ubicaciones</string>
     <string name="menu_archive_chat">Archivar chat</string>
@@ -121,6 +123,7 @@
     <string name="menu_delete_messages">Eliminar mensajes</string>
     <string name="menu_delete_image">Eliminar imagen</string>
     <string name="menu_delete_locations">¿Eliminar todas las ubicaciones?</string>
+    <string name="menu_delete_location">¿Eliminar esta ubicación?</string>
     <string name="menu_message_details">Detalles del mensaje</string>
     <string name="menu_copy_to_clipboard">Copiar al portapapeles</string>
     <string name="menu_forward">Reenviar mensaje</string>
@@ -136,6 +139,7 @@
     <string name="menu_play">Reproducir</string>
     <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Desplazarse al final</string>
+    <string name="menu_scroll_to_top">Desplazarse al inicio</string>
     <string name="menu_invite">Invitar amigos</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_select_all">Seleccionar todo</string>
@@ -146,13 +150,15 @@
     <string name="menu_deaddrop">Solicitudes de contacto</string>
     <string name="menu_deaddrop_subtitle">Presiona un mensaje para empezar a chatear</string>
     <string name="menu_view_profile">Ver perfil</string>
+    <string name="menu_zoom_in">Acercar</string>
+    <string name="menu_zoom_out">Alejar</string>
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
     <string name="mute_for_seven_days">Silenciar por 7 días</string>
-    <string name="mute_for_one_year">Silenciar por 1 año</string>
+    <string name="mute_forever">Silenciar para siempre</string>
 
     <string name="share_location_once">una vez</string>
     <string name="share_location_for_5_minutes">por 5 minutos </string>
@@ -178,6 +184,8 @@
     <string name="ask_delete_contacts">¿Eliminar contactos? Esto eliminará de forma permanente los contactos seleccionados.\n\nContactos con un chat en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados de forma permanente.</string>
     <string name="cannot_delete_contacts_in_use">No se puede eliminar contactos con chats en curso.</string>
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
 
 
     <!-- contact list -->
@@ -221,8 +229,8 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
-    <string name="filter_last_position">Última posición</string>
     <string name="show_location_traces">Mostrar trazas</string>
+    <string name="add_poi">Enviar punto de interés</string>
 
 
     <!-- search -->
@@ -240,14 +248,17 @@
     <string name="group_hello_draft">Hola, acabo de crear el grupo \"%1$s\" para nosotros.</string>
     <string name="group_self_not_in_group">Debes ser un miembro del grupo para realizar esta acción.</string>
     <string name="profile_encryption">Cifrado</string>
-
-
-    <!-- chat media view -->
+    <string name="profile_shared_chats">Chats compartidos</string>
+    <string name="tab_contact">Contacto</string>
+    <string name="tab_group">Grupo</string>
+    <string name="tab_members">Miembros</string>
+    <string name="tab_gallery">Galería</string>
+    <string name="tab_docs">Documentos</string>
+    <string name="tab_links">Enlaces</string>
+    <string name="tab_map">Mapa</string>
+    <string name="tab_gallery_empty_hint">Las imágenes y videos compartidos en este chat se mostrarán aquí.</string>
+    <string name="tab_docs_empty_hint">Documentos, música y otros archivos compartidos en este chat se mostrarán aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
-    <string name="media_tab_media">Multimedia</string>
-    <string name="media_tab_documents">Documentos</string>
-    <string name="media_no_media_hint">Sin multimedia.</string>
-    <string name="media_no_documents_hint">Sin documentos</string>
 
 
     <!-- invite -->
@@ -341,6 +352,9 @@
     <string name="pref_default_status_text">Enviado con mi aplicación de mensajería Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
+    <string name="pref_outgoing_media_quality">Calidad multimedia saliente</string>
+    <string name="pref_outgoing_balanced">Balanceada</string>
+    <string name="pref_outgoing_worse">Peor calidad, tamaño pequeño</string>
     <string name="pref_vibrate">Vibrar</string>
     <string name="pref_chat_settings">Ajustes de chat</string>
     <string name="pref_change_secret">Cambiar secreto</string>
@@ -380,6 +394,7 @@
     <string name="pref_in_chat_sounds">Sonidos en el chat</string>
     <string name="pref_message_text_size">Tamaño de texto del mensaje</string>
     <string name="pref_view_log">Ver log</string>
+    <string name="pref_log_header">Log</string>
     <string name="pref_other">Otro</string>
     <string name="pref_backup">Copia de respaldo</string>
     <string name="pref_backup_explain">Hacer copias de respaldo de chats en almacenamiento externo</string>
@@ -474,6 +489,8 @@
     <string name="qrshow_join_group_hint">Escanea esto para unirte al grupo verificado \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Código de invitación QR</string>
     <string name="qrshow_join_contact_hint">Escanea esto para configurar un contacto con %1$s</string>
+    <string name="qrshow_join_contact_no_connection_hint">La configuración con código QR requiere conexión a Internet. Por favor, conéctese a una red antes de continuar.</string>
+    <string name="qrshow_join_contact_no_connection_toast">No hay conexión a Internet, no se puede configurar con código QR.</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">No se pudo verificar %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -643,6 +660,10 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Bandeja de entrada vacía</string>
     <string name="chat_all_done_explain">No hay nada aquí!!!</string>
+    <string name="media_tab_media">Multimedia</string>
+    <string name="media_tab_documents">Documentos</string>
+    <string name="media_no_media_hint">Sin multimedia.</string>
+    <string name="media_no_documents_hint">Sin documentos.</string>
 
 
 </resources>

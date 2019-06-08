@@ -76,6 +76,7 @@
     <string name="video">Video</string>
     <string name="documents">Belgeler</string>
     <string name="contact">Kişi</string>
+    <string name="verified_contact">Doğrulanan kişi</string>
     <string name="camera">Kamera</string>
     <string name="location">Konum</string>
     <string name="gallery">Galeri</string>
@@ -111,6 +112,7 @@
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji klavyesine geç</string>
     <string name="menu_edit_group">Grubu düzenle</string>
+    <string name="menu_group_name_and_image">Grup adı ve görseli</string>
     <string name="menu_show_map">Haritayı göster</string>
     <string name="menu_show_global_map">Tüm konumları göster</string>
     <string name="menu_archive_chat">Sohbeti arşivle</string>
@@ -121,6 +123,7 @@
     <string name="menu_delete_messages">İletileri sil</string>
     <string name="menu_delete_image">Görseli sil</string>
     <string name="menu_delete_locations">Tüm konumlar silinsin mi?</string>
+    <string name="menu_delete_location">Bu konum silinsin mi?</string>
     <string name="menu_message_details">İleti ayrıntıları</string>
     <string name="menu_copy_to_clipboard">Panoya kopyala</string>
     <string name="menu_forward">İletiyi ilet</string>
@@ -136,6 +139,7 @@
     <string name="menu_play">Oynat</string>
     <string name="menu_pause">Duraklat</string>
     <string name="menu_scroll_to_bottom">Aşağıya kaydır</string>
+    <string name="menu_scroll_to_top">Yukarıya kaydır</string>
     <string name="menu_invite">Arkadaşları davet et</string>
     <string name="menu_help">Yardım</string>
     <string name="menu_select_all">Tümünü seç</string>
@@ -146,13 +150,15 @@
     <string name="menu_deaddrop">İletişim istekleri</string>
     <string name="menu_deaddrop_subtitle">Sohbete başlamak için iletiye basın</string>
     <string name="menu_view_profile">Profili gör</string>
+    <string name="menu_zoom_in">Yakınlaştır</string>
+    <string name="menu_zoom_out">Uzaklaştır</string>
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
 
     <string name="mute_for_one_hour">1 saatliğine sesini kıs</string>
     <string name="mute_for_two_hours">2 saatliğine sesini kıs</string>
     <string name="mute_for_one_day">1 günlüğüne sesini kıs</string>
     <string name="mute_for_seven_days">7 günlüğüne sesini kıs</string>
-    <string name="mute_for_one_year">1 yıllığına sesini kıs</string>
+    <string name="mute_forever">Sonsuza dek sesini kıs</string>
 
     <string name="share_location_once">bir kez</string>
     <string name="share_location_for_5_minutes">5 dakikalığına</string>
@@ -178,6 +184,8 @@
     <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSohbetleri süren kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="cannot_delete_contacts_in_use">Sohbetleri süren kişiler silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
 
 
     <!-- contact list -->
@@ -221,8 +229,8 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Konumları zaman çerçevesinde göster</string>
-    <string name="filter_last_position">Son konum</string>
     <string name="show_location_traces">İzleri göster</string>
+    <string name="add_poi">İlgi çekici noktayı gönder</string>
 
 
     <!-- search -->
@@ -240,14 +248,17 @@
     <string name="group_hello_draft">Merhaba, bizim için az önce \"%1$s\" grubunu oluşturdum.</string>
     <string name="group_self_not_in_group">Bu eylemi gerçekleştirmek için grubun bir üyesi olmalısınız.</string>
     <string name="profile_encryption">Şifreleme</string>
-
-
-    <!-- chat media view -->
+    <string name="profile_shared_chats">Paylaşılan sohbetler</string>
+    <string name="tab_contact">Kişi</string>
+    <string name="tab_group">Grup</string>
+    <string name="tab_members">Üyeler</string>
+    <string name="tab_gallery">Galeri</string>
+    <string name="tab_docs">Belgeler</string>
+    <string name="tab_links">Bağlantılar</string>
+    <string name="tab_map">Harita</string>
+    <string name="tab_gallery_empty_hint">Bu sohbette paylaşılan görseller ve videolar burada görüntülenecek.</string>
+    <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler, müzik ve diğer dosyalar burada görüntülenecek.</string>
     <string name="media_preview">Ortam önizlemesi</string>
-    <string name="media_tab_media">Ortam</string>
-    <string name="media_tab_documents">Belgeler</string>
-    <string name="media_no_media_hint">Ortam yok.</string>
-    <string name="media_no_documents_hint">Belge yok</string>
 
 
     <!-- invite -->
@@ -263,7 +274,7 @@
     <string name="welcome_intro3_headline">Hızlı</string>
     <string name="welcome_intro3_message">İletileri saniyeler içinde gönderin.\nHızlı arabirim.</string>
     <string name="welcome_intro4_headline">Güçlü</string>
-    <string name="welcome_intro4_message">Sınırsız sohbetler, görseller, videolar, sesli iletiler ve dahası. Çoklu istemci yetenekli.</string>
+    <string name="welcome_intro4_message">Sınırsız sohbetler, görseller, videolar, sesli iletiler ve daha fazlası. Çoklu istemci yetenekli.</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Özgür</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
@@ -308,7 +319,7 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İlet …</string>
-    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, değiştirilmeden özgün boyutta gönderilir, örn. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir, örn. görseller ve videolar yeniden kodlanmaz.</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
 
@@ -341,6 +352,9 @@
     <string name="pref_default_status_text">Delta Chat Messenger\'ımla gönderildi: https://delta.chat</string>
     <string name="pref_enter_sends">Anahtar gir gönderir</string>
     <string name="pref_enter_sends_explain">Anahtar gir\'e basmak metin iletileri gönderecek</string>
+    <string name="pref_outgoing_media_quality">Giden ortam kalitesi</string>
+    <string name="pref_outgoing_balanced">Dengeli</string>
+    <string name="pref_outgoing_worse">Daha kötü kalite, küçük boyut</string>
     <string name="pref_vibrate">Titret</string>
     <string name="pref_chat_settings">Sohbet ayarları</string>
     <string name="pref_change_secret">Sırrı değiştir</string>
@@ -380,6 +394,7 @@
     <string name="pref_in_chat_sounds">Sohbet içi sesler</string>
     <string name="pref_message_text_size">İleti yazı tipi boyutu</string>
     <string name="pref_view_log">Günlüğü gör</string>
+    <string name="pref_log_header">Günlük</string>
     <string name="pref_other">Diğer</string>
     <string name="pref_backup">Yedekleme</string>
     <string name="pref_backup_explain">Sohbetleri dış depolamaya yedekle</string>
@@ -402,7 +417,7 @@
     <string name="pref_watch_inbox_folder">Gelen Kutusu klasörünü izle</string>
     <string name="pref_watch_sent_folder">Gönderilen klasörünü izle</string>
     <string name="pref_watch_mvbox_folder">DeltaChat klasörünü izle</string>
-    <string name="pref_auto_folder_moves">DeltaChat klasörüne Otomatik Taşır</string>
+    <string name="pref_auto_folder_moves">DeltaChat klasörüne Otomatik Taşınsın</string>
     <string name="pref_auto_folder_moves_explain">Sohbetler, Gelen Kutusu klasöründeki dağınıklığı önlemek için taşınır</string>
     <string name="pref_email_interaction_title">E-posta etkileşimi</string>
     <string name="pref_show_emails">Klasik e-postaları göster</string>
@@ -417,7 +432,7 @@
     <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi gönder</string>
     <string name="autocrypt_send_asm_explain_before">Bir \"Autocrypt Ayarlama İletisi\", uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi gönder</string>
-    <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Bir ayarlama kodu girmeniz istenmeli. İsteme şu sayıları yazın:\n\n%1$s\n\nBitirdiğinizde, diğer aygıtınız Autocrypt kullanmaya hazır olacak.</string>
+    <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Bir ayarlama kodu girmeniz istenmeli. İsteme aşağıdaki sayıları yazın:\n\n%1$s\n\nBitirdiğinizde, diğer aygıtınız Autocrypt kullanmaya hazır olacak.</string>
     <string name="autocrypt_prefer_e2ee">Uçtan uca şifrelemeyi yeğle</string>
     <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
     <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi bir Autocrypt uyumlu istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
@@ -474,6 +489,8 @@
     <string name="qrshow_join_group_hint">\"%1$s\" grubuna katılmak için bunu tarayın.</string>
     <string name="qrshow_join_contact_title">QR davet kodu</string>
     <string name="qrshow_join_contact_hint">%1$s ile bir iletişim ayarlamak için bunu tarayın</string>
+    <string name="qrshow_join_contact_no_connection_hint">QR kodu ayarlaması bir internet bağlantısı gerektirir. İşlemden önce lütfen bir ağa bağlanın.</string>
+    <string name="qrshow_join_contact_no_connection_toast">İnternet bağlantısı yok, QR kodu ayarlaması gerçekleştirilemiyor.</string>
     <string name="contact_verified">%1$s doğrulandı.</string>
     <string name="contact_not_verified">%1$s doğrulanamıyor</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -607,7 +624,7 @@
     <string name="download_attachment_desktop">Eki indir</string>
     <string name="export_backup_desktop">Yedeği dışa aktar</string>
     <string name="transfer_key_desktop">Anahtarı aktar</string>
-    <string name="show_key_transfer_message_desktop">Anahtarınız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Bir ayarlama kodu girmeniz istenmeli. İsteme şu sayıları yazın. Bitirdiğinizde, diğer aygıtınız Autocrypt kullanmaya hazır olacak.</string>
+    <string name="show_key_transfer_message_desktop">Anahtarınız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Bir ayarlama kodu girmeniz istenmeli. İsteme aşağıdaki sayıları yazın. Bitirdiğinizde, diğer aygıtınız Autocrypt kullanmaya hazır olacak.</string>
     <string name="new_message_from_desktop">Yeni iletiyi gönderen</string>
     <string name="unblock_contacts_desktop">Kişilerin engellemesini kaldır</string>
     <string name="none_blocked_desktop">Henüz engellenen kişi yok</string>
@@ -643,6 +660,10 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Gelen kutusu boş</string>
     <string name="chat_all_done_explain">Sıfır öğe.\nBurada hiçbir şey yok!</string>
+    <string name="media_tab_media">Ortam</string>
+    <string name="media_tab_documents">Belgeler</string>
+    <string name="media_no_media_hint">Ortam yok.</string>
+    <string name="media_no_documents_hint">Belge yok.</string>
 
 
 </resources>

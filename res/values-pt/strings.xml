@@ -143,8 +143,6 @@
     <string name="mute_for_two_hours">Calado por 2 horas</string>
     <string name="mute_for_one_day">Calado por 1 dia</string>
     <string name="mute_for_seven_days">Calado por 7 dias</string>
-    <string name="mute_for_one_year">Calado por  1 ano</string>
-
     <string name="share_location_for_5_minutes">por 5 min</string>
     <string name="share_location_for_30_minutes">por 30 min</string>
     <string name="share_location_for_one_hour">por 1 hora</string>
@@ -168,8 +166,6 @@
     <string name="ask_delete_contacts">Remover contactos? Assim removerá permanentemente os contactos selecionados.\n\nContactos com chats a decorrer e contactos com  endereços do sistema não podem ser removidos permanentemente.</string>
     <string name="cannot_delete_contacts_in_use">Não é possível excluir contactos com chats a decorrer.</string>
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
     <string name="contacts_enter_name_or_email">Digite o nome ou endereço de e-mail</string>
@@ -219,14 +215,7 @@
     <string name="group_hello_draft">Olá, Acabei de criar o grupo \"%1$s\" para nós.</string>
     <string name="group_self_not_in_group">Você deve ser um membro do grupo para executar essa ação.</string>
     <string name="profile_encryption">Encriptação</string>
-
-
-    <!-- chat media view -->
     <string name="media_preview">Visualização de mídia</string>
-    <string name="media_tab_media">Mídia</string>
-    <string name="media_tab_documents">Documentos</string>
-    <string name="media_no_media_hint">Sem mídia</string>
-    <string name="media_no_documents_hint">Sem documentos</string>
 
 
     <!-- invite -->
@@ -609,6 +598,7 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Caixa de entrada a zerrrooooo</string>
     <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\n Está pronto para começar</string>
-
-
-</resources>
+    <string name="media_tab_media">Mídia</string>
+    <string name="media_tab_documents">Documentos</string>
+    <string name="media_no_media_hint">Sem mídia</string>
+    </resources>

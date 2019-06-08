@@ -125,8 +125,6 @@
     <string name="ask_block_contact">この連絡先を拒否しますか</string>
     <string name="ask_unblock_contact">この連絡先の拒否設定を解除しますか</string>
     <string name="ask_start_chat_with">%1$sとﾁｬｯﾄしますか</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">連絡先一覧</string>
     <string name="contacts_enter_name_or_email">名前かﾒｰﾙｱﾄﾞﾚｽを入力</string>
@@ -140,11 +138,6 @@
     <string name="search">検索</string>
     <string name="search_explain">ﾁｬｯﾄ･ﾒｯｾｰｼﾞ･連絡先を検索</string>
     <string name="search_no_result_for_x">｢%s｣は見付かりませんでした｡</string>
-
-
-    <string name="media_tab_media">写真･動画･音楽</string>
-    <string name="media_no_media_hint">写真･動画･音楽等無し</string>
-    <string name="media_no_documents_hint">文章無し</string>
 
 
     <!-- welcome and login -->
@@ -310,4 +303,6 @@ https://delta.chat</string>
     <string name="qrscan_ask_chatting_fingerprint_ok">%1$sとﾁｬｯﾄしますか</string>
     <!-- see qrshow_join_group_title -->
     <string name="qrshow_join_verified_group_title">自分のQRｺｰﾄﾞを見る</string>
+    <string name="media_tab_media">写真･動画･音楽</string>
+    <string name="media_no_media_hint">写真･動画･音楽等無し</string>
     </resources>

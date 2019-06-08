@@ -76,6 +76,7 @@
     <string name="video">Video</string>
     <string name="documents">Documenten</string>
     <string name="contact">Contactpersoon</string>
+    <string name="verified_contact">Goedgekeurd contactpersoon</string>
     <string name="camera">Camera</string>
     <string name="location">Locatie</string>
     <string name="gallery">Galerij</string>
@@ -111,6 +112,7 @@
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep bewerken</string>
+    <string name="menu_group_name_and_image">Groepsnaam en -afbeelding</string>
     <string name="menu_show_map">Kaart tonen</string>
     <string name="menu_show_global_map">Alle locaties tonen</string>
     <string name="menu_archive_chat">Gesprek archiveren</string>
@@ -121,6 +123,7 @@
     <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="menu_delete_image">Afbeelding verwijderen</string>
     <string name="menu_delete_locations">Alle locaties verwijderen?</string>
+    <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
     <string name="menu_message_details">Berichtgegevens</string>
     <string name="menu_copy_to_clipboard">Kopiëren naar klembord</string>
     <string name="menu_forward">Bericht doorsturen</string>
@@ -135,7 +138,8 @@
     <string name="menu_unblock_contact">Contactpersoon deblokkeren</string>
     <string name="menu_play">Afspelen</string>
     <string name="menu_pause">Pauzeren</string>
-    <string name="menu_scroll_to_bottom">Naar onderkant schuiven</string>
+    <string name="menu_scroll_to_bottom">Ga naar het einde</string>
+    <string name="menu_scroll_to_top">Ga naar het begin</string>
     <string name="menu_invite">Vrienden uitnodigen</string>
     <string name="menu_help">Hulp</string>
     <string name="menu_select_all">Alles selecteren</string>
@@ -146,13 +150,15 @@
     <string name="menu_deaddrop">Contactpersoonverzoeken</string>
     <string name="menu_deaddrop_subtitle">Druk op een bericht om een gesprek te beginnen</string>
     <string name="menu_view_profile">Profiel bekijken</string>
+    <string name="menu_zoom_in">Inzoomen</string>
+    <string name="menu_zoom_out">Uitzoomen</string>
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
 
     <string name="mute_for_one_hour">1 uur lang dempen</string>
     <string name="mute_for_two_hours">2 uur lang dempen</string>
     <string name="mute_for_one_day">1 dag dempen</string>
     <string name="mute_for_seven_days">7 dagen dempen</string>
-    <string name="mute_for_one_year">1 jaar dempen</string>
+    <string name="mute_forever">Permanent dempen</string>
 
     <string name="share_location_once">eenmalig</string>
     <string name="share_location_for_5_minutes">5 minuten lang</string>
@@ -178,6 +184,8 @@
     <string name="ask_delete_contacts">Wil je de geselecteerde contactpersonen verwijderen? Ze worden permanent verwijderd.\n\nPersonen met actieve gesprekken en personen afkomstig uit het adresboek van het systeem kunnen niet permanent worden verwijderd.</string>
     <string name="cannot_delete_contacts_in_use">Contactpersonen waarmee je nog gesprekken voert kunnen niet worden verwijderd.</string>
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
 
 
     <!-- contact list -->
@@ -221,8 +229,8 @@
 
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
-    <string name="filter_last_position">Vorige positie</string>
     <string name="show_location_traces">Sporen tonen</string>
+    <string name="add_poi">Afspraaklocatie versturen</string>
 
 
     <!-- search -->
@@ -240,14 +248,17 @@
     <string name="group_hello_draft">Hallo, ik heb zojuist de groep \"%1$s\" voor ons gemaakt.</string>
     <string name="group_self_not_in_group">Om deze actie uit te kunnen voeren moet je deelnemen aan de groep.</string>
     <string name="profile_encryption">Versleuteling</string>
-
-
-    <!-- chat media view -->
+    <string name="profile_shared_chats">Gedeelde gesprekken</string>
+    <string name="tab_contact">Contactpersoon</string>
+    <string name="tab_group">Groep</string>
+    <string name="tab_members">Deelnemers</string>
+    <string name="tab_gallery">Galerij</string>
+    <string name="tab_docs">Documenten</string>
+    <string name="tab_links">Links</string>
+    <string name="tab_map">Kaart</string>
+    <string name="tab_gallery_empty_hint">De in dit gesprek gedeelde afbeeldingen en video\'s verschijnen hier.</string>
+    <string name="tab_docs_empty_hint">De in dit gesprek gedeelde documenten, muziekbestanden en overige bestanden verschijnen hier.</string>
     <string name="media_preview">Mediavoorbeeld</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Documenten</string>
-    <string name="media_no_media_hint">Geen media.</string>
-    <string name="media_no_documents_hint">Geen documenten</string>
 
 
     <!-- invite -->
@@ -341,6 +352,9 @@
     <string name="pref_default_status_text">Verstuurd met mijn Delta Chat-berichtenapp: https://delta.chat</string>
     <string name="pref_enter_sends">Versturen met Enter-toets</string>
     <string name="pref_enter_sends_explain">Druk op de Enter-toets om tekstberichten te versturen</string>
+    <string name="pref_outgoing_media_quality">Kwaliteit van verstuurde media</string>
+    <string name="pref_outgoing_balanced">Normaal</string>
+    <string name="pref_outgoing_worse">Lagere kwaliteit, kleinere bestanden</string>
     <string name="pref_vibrate">Trillen</string>
     <string name="pref_chat_settings">Gespreksinstellingen</string>
     <string name="pref_change_secret">Toegangsmethode beheren</string>
@@ -380,6 +394,7 @@
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
     <string name="pref_message_text_size">Tekstgrootte van berichten</string>
     <string name="pref_view_log">Logboek bekijken</string>
+    <string name="pref_log_header">Logboek</string>
     <string name="pref_other">Overig</string>
     <string name="pref_backup">Back-up</string>
     <string name="pref_backup_explain">Gesprekken back-uppen naar externe opslag</string>
@@ -474,6 +489,8 @@
     <string name="qrshow_join_group_hint">Scan dit om deel te nemen aan de groep \'%1$s\'.</string>
     <string name="qrshow_join_contact_title">QR-uitnodigingscode</string>
     <string name="qrshow_join_contact_hint">Scan dit om een contactpersoon in te stellen met %1$s</string>
+    <string name="qrshow_join_contact_no_connection_hint">Voor het instellen van QR-codes is een internetverbinding vereist. Maak verbinding en probeer het opnieuw.</string>
+    <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
     <string name="contact_not_verified">Kan %1$s niet goedkeuren</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -643,6 +660,10 @@
     <!-- see chat_all_archived -->
     <string name="chat_all_done_hint">Postvak nullllll</string>
     <string name="chat_all_done_explain">Niks. Noppes. Nakkes. Nada.\nJe bent volledig op de hoogte!</string>
+    <string name="media_tab_media">Media</string>
+    <string name="media_tab_documents">Documenten</string>
+    <string name="media_no_media_hint">Geen media.</string>
+    <string name="media_no_documents_hint">Geen documenten.</string>
 
 
 </resources>
