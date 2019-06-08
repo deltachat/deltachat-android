@@ -47,8 +47,8 @@ public class OutdatedReminder extends Reminder {
         if (context == null) {
             return false;
         }
-        final PackageManager packageManager = context.getPackageManager();
         try {
+            final PackageManager packageManager = context.getPackageManager();
             String packageName = context.getPackageName();
             if (packageManager.getInstallerPackageName(packageName) == null) {
                 long lastUpdateTime = packageManager
@@ -59,7 +59,7 @@ public class OutdatedReminder extends Reminder {
                 long diffInDays = TimeUnit.MILLISECONDS.toDays(diff);
                 return diffInDays >= OUTDATED_THRESHOLD_IN_DAYS;
             }
-        } catch (final PackageManager.NameNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
