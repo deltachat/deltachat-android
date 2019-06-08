@@ -24,7 +24,9 @@ public class OutdatedReminder extends Reminder {
         setOkListener(v -> {
             AlertDialog sourceDialog = new AlertDialog.Builder(context)
                     .setTitle(R.string.information_outdated_app_dialog_title)
-                    .setMessage(R.string.information_outdated_app_dialog_text)
+                    .setMessage(context.getString(R.string.information_outdated_app_dialog_text)
+                        +"\n\nF-Droid: https://f-droid.org/packages/com.b44t.messenger"
+                        +"\n\nGoogle Play: https://play.google.com/store/apps/details?id=chat.delta")
                     .setPositiveButton(R.string.ok, (dialog, which) -> dialog.cancel())
                     .create();
             sourceDialog.show();
