@@ -287,7 +287,7 @@ public class AttachmentManager {
           } else {
             Attachment attachment = slide.asAttachment();
             result.deferTo(thumbnail.setImageResource(glideRequests, slide, attachment.getWidth(), attachment.getHeight()));
-            removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE);
+            removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE || mediaType == MediaType.VIDEO);
           }
 
           attachmentListener.onAttachmentChanged();
