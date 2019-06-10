@@ -82,7 +82,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, this);
     timestamp.setText(DateUtils.getFormatedDuration(duration));
 
-    if(audio.asAttachment().isVoiceNote()) {
+    if(audio.asAttachment().isVoiceNote() || !audio.getFileName().isPresent()) {
       title.setVisibility(View.GONE);
     }
     else {
