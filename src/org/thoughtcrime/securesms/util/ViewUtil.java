@@ -195,6 +195,9 @@ public class ViewUtil {
   }
 
   public static int dpToPx(Context context, int dp) {
+    if (context==null) {
+      return dp;
+    }
     return (int)((dp * context.getResources().getDisplayMetrics().density) + 0.5);
   }
 
