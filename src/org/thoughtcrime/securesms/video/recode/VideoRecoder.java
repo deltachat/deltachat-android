@@ -26,6 +26,7 @@ import com.googlecode.mp4parser.util.Path;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.video.editor.VideoEditedInfo;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -636,26 +637,6 @@ public class VideoRecoder {
     }
     //didWriteData(messageObject, cacheFile, true, error);
     return true;
-  }
-
-  private static class VideoEditedInfo {
-    String originalPath;
-    float  originalDurationMs;
-    long   originalAudioBytes;
-    int    originalRotationValue;
-    int    originalWidth;
-    int    originalHeight;
-    int    originalVideoBitrate;
-
-    long   startTime;
-    long   endTime;
-    int    rotationValue;
-
-    int    resultWidth;
-    int    resultHeight;
-    int    resultVideoBitrate;
-
-    int    estimatedBytes;
   }
 
   public static boolean canRecode()
