@@ -103,7 +103,6 @@ public class AttachmentManager {
       this.removableMediaView = ViewUtil.findById(root, R.id.removable_media_view);
 
       removableMediaView.setRemoveClickListener(new RemoveButtonListener());
-      removableMediaView.setEditClickListener(new EditButtonListener());
       thumbnail.setOnClickListener(new ThumbnailClickListener());
       documentView.getBackground().setColorFilter(ThemeUtil.getThemedColor(context, R.attr.conversation_item_incoming_bubble_color), PorterDuff.Mode.MULTIPLY);
     }
@@ -287,7 +286,13 @@ public class AttachmentManager {
           } else {
             Attachment attachment = slide.asAttachment();
             result.deferTo(thumbnail.setImageResource(glideRequests, slide, attachment.getWidth(), attachment.getHeight()));
-            removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE || mediaType == MediaType.VIDEO);
+
+            boolean editable = mediaType == MediaType.IMAGE || mediaType == MediaType.VIDEO;
+            removableMediaView.display(thumbnail, editable);
+            if (editable) {
+              removableMediaView.setEditClickListener(
+                  mediaType == MediaType.IMAGE? new EditImageListener() : new EditVideoListener());
+            }
           }
 
           attachmentListener.onAttachmentChanged();
@@ -543,12 +548,20 @@ public class AttachmentManager {
     }
   }
 
-  private class EditButtonListener implements View.OnClickListener {
+  private class EditImageListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
       Intent intent = new Intent(context, ScribbleActivity.class);
       intent.setData(getSlideUri());
       ((Activity)context).startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
+    }
+  }
+
+  private class EditVideoListener implements View.OnClickListener {
+    @Override
+
+    public void onClick(View v) {
+      Toast.makeText(context, "not yet implemented", Toast.LENGTH_LONG).show();
     }
   }
 
