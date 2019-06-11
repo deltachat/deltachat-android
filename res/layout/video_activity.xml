@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="center"
-            android:src="@drawable/video_play"
+            android:src="@drawable/ic_play_circle_fill_white_48dp"
             android:layout_gravity="center"
             android:id="@+id/play_button"/>
 

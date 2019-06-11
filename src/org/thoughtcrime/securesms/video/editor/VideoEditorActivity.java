@@ -3,20 +3,23 @@ package org.thoughtcrime.securesms.video.editor;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Point;
 import android.graphics.SurfaceTexture;
 import android.media.MediaCodecInfo;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.b44t.messenger.DcEventCenter;
 import com.coremedia.iso.IsoFile;
 import com.coremedia.iso.boxes.Box;
 import com.coremedia.iso.boxes.MediaBox;
@@ -29,13 +32,14 @@ import com.googlecode.mp4parser.util.Path;
 
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.util.List;
 
 @TargetApi(16)
-public class VideoEditorActivity extends PassphraseRequiredActionBarActivity implements TextureView.SurfaceTextureListener, DcEventCenter.DcEventDelegate {
+public class VideoEditorActivity extends PassphraseRequiredActionBarActivity implements TextureView.SurfaceTextureListener {
 
-    private boolean created = false;
     private MediaPlayer videoPlayer = null;
     private VideoTimelineView videoTimelineView = null;
     private View videoContainerView = null;
@@ -44,6 +48,7 @@ public class VideoEditorActivity extends PassphraseRequiredActionBarActivity imp
     private TextureView textureView = null;
     private View controlView = null;
     private boolean playerPrepared = false;
+    public static Point displaySize = new Point();
 
     private String videoPath = null;
     private float lastProgress = 0;
@@ -75,86 +80,85 @@ public class VideoEditorActivity extends PassphraseRequiredActionBarActivity imp
         void didFinishEditVideo(VideoEditedInfo vei, long estimatedSize, long estimatedDuration);
     }
 
-    private Runnable progressRunnable = new Runnable() {
-        @Override
-        public void run() {
-            boolean playerCheck;
+    private Runnable progressRunnable = () -> {
+        boolean playerCheck;
 
-            while (true) {
-                synchronized (sync) {
-                    try {
-                        playerCheck = videoPlayer != null && videoPlayer.isPlaying();
-                    } catch (Exception e) {
-                        playerCheck = false;
+        while (true) {
+            synchronized (sync) {
+                try {
+                    playerCheck = videoPlayer != null && videoPlayer.isPlaying();
+                } catch (Exception e) {
+                    playerCheck = false;
 
+                }
+            }
+            if (!playerCheck) {
+                break;
+            }
+            Util.runOnMain(() -> {
+                if (videoPlayer != null && videoPlayer.isPlaying()) {
+                    float startTime = videoTimelineView.getLeftProgress() * originalDurationMs;
+                    float endTime = videoTimelineView.getRightProgress() * originalDurationMs;
+                    if (startTime == endTime) {
+                        startTime = endTime - 0.01f;
                     }
-                }
-                if (!playerCheck) {
-                    break;
-                }
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (videoPlayer != null && videoPlayer.isPlaying()) {
-                            float startTime = videoTimelineView.getLeftProgress() * originalDurationMs;
-                            float endTime = videoTimelineView.getRightProgress() * originalDurationMs;
-                            if (startTime == endTime) {
-                                startTime = endTime - 0.01f;
-                            }
-                            float progress = (videoPlayer.getCurrentPosition() - startTime) / (endTime - startTime);
-                            float lrdiff = videoTimelineView.getRightProgress() - videoTimelineView.getLeftProgress();
-                            progress = videoTimelineView.getLeftProgress() + lrdiff * progress;
-                            if (progress > lastProgress) {
-                                videoSeekBarView.setProgress(progress);
-                                lastProgress = progress;
-                            }
-                            if (videoPlayer.getCurrentPosition() >= endTime) {
-                                try {
-                                    videoPlayer.pause();
-                                    onPlayComplete();
-                                } catch (Exception e) {
+                    float progress = (videoPlayer.getCurrentPosition() - startTime) / (endTime - startTime);
+                    float lrdiff = videoTimelineView.getRightProgress() - videoTimelineView.getLeftProgress();
+                    progress = videoTimelineView.getLeftProgress() + lrdiff * progress;
+                    if (progress > lastProgress) {
+                        videoSeekBarView.setProgress(progress);
+                        lastProgress = progress;
+                    }
+                    if (videoPlayer.getCurrentPosition() >= endTime) {
+                        try {
+                            videoPlayer.pause();
+                            onPlayComplete();
+                        } catch (Exception e) {
 
-                                }
-                            }
                         }
                     }
-                });
-                try {
-                    Thread.sleep(50);
-                } catch (Exception e) {
-
                 }
+            });
+            try {
+                Thread.sleep(50);
+            } catch (Exception e) {
+
             }
-            synchronized (sync) {
-                thread = null;
-            }
+        }
+        synchronized (sync) {
+            thread = null;
         }
     };
 
-    public VideoEditorActivity(Bundle args) {
-        super(args);
-        videoPath = args.getString("videoPath");
-        MAX_BYTES = MrMailbox.getConfigInt("sys.msgsize_max_recommended", 10*1024*1024);
+    public static void checkDisplaySize() {
+        try {
+            Configuration configuration = ApplicationLoader.applicationContext.getResources().getConfiguration();
+            usingHardwareInput = configuration.keyboard != Configuration.KEYBOARD_NOKEYS && configuration.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO;
+            WindowManager manager = (WindowManager) ApplicationLoader.applicationContext.getSystemService(Context.WINDOW_SERVICE);
+            if (manager != null) {
+                Display display = manager.getDefaultDisplay();
+                if (display != null) {
+                    display.getMetrics(displayMetrics);
+                    display.getSize(displaySize);
+                    Log.i("DeltaChat", "Display size: " + displaySize.x + " x " + displaySize.y + ", DPI: " + displayMetrics.xdpi + " x " + displayMetrics.ydpi);
+                }
+            }
+        } catch (Exception e) {
+        }
     }
 
     @Override
-    public boolean onFragmentCreate() {
-        if (created) {
-            return true;
-        }
+    protected void onCreate(Bundle bundle, boolean ready) {
+        videoPath = bundle.getString("videoPath");
+        MAX_BYTES = DcHelper.getContext(this).getConfigInt("sys.msgsize_max_recommended");
         if (videoPath == null || !processOpenVideo()) {
-            return false;
+            return;
         }
         videoPlayer = new MediaPlayer();
         videoPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        onPlayComplete();
-                    }
-                });
+                Util.runOnMain(() -> onPlayComplete());
             }
         });
         videoPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -171,87 +175,61 @@ public class VideoEditorActivity extends PassphraseRequiredActionBarActivity imp
             videoPlayer.prepareAsync();
         } catch (Exception e) {
 
-            return false;
+            return;
         }
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeChats);
-        created = true;
-
-        return super.onFragmentCreate();
-    }
-
-    @Override
-    public void onFragmentDestroy() {
-        if (videoTimelineView != null) {
-            videoTimelineView.destroy();
-        }
-        if (videoPlayer != null) {
-            try {
-                videoPlayer.stop();
-                videoPlayer.release();
-                videoPlayer = null;
-            } catch (Exception e) {
-
-            }
-        }
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
-        super.onFragmentDestroy();
-    }
-
-    @Override
-    public View createView(final Context context) {
-        actionBar.setBackButtonImage(R.drawable.ic_close_white);
-        actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.SendVideo));
-        actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
-            @Override
-            public void onItemClick(int id) {
-                if (id == -1) {
-                    finishFragment();
-                } else if (id == 1) {
-                    synchronized (sync) {
-                        if (videoPlayer != null) {
-                            try {
-                                videoPlayer.stop();
-                                videoPlayer.release();
-                                videoPlayer = null;
-                            } catch (Exception e) {
-
-                            }
-                        }
-                    }
-
-                    if(estimatedBytes>MAX_BYTES) {
-                        AndroidUtilities.showHint(getParentActivity(), String.format(context.getString(R.string.PleaseCutVideoToMaxSize), AndroidUtilities.formatFileSize(MAX_BYTES)));
-                        return;
-                    }
-
-                    if (delegate != null) {
-                        VideoEditedInfo vei = new VideoEditedInfo();
-                        vei.originalPath    = videoPath;
-                        vei.startTime       = startTimeMs;
-                        vei.endTime         = endTimeMs;
-                        vei.rotationValue   = originalRotationValue;
-                        vei.originalWidth   = originalWidth;
-                        vei.originalHeight  = originalHeight;
-                        vei.originalBitrate = originalVideoBitrate;
-                        vei.resultWidth     = resultWidth;
-                        vei.resultHeight    = resultHeight;
-                        vei.resultBitrate   = resultBitrate;
-                        delegate.didFinishEditVideo(vei, estimatedBytes, resultDurationMs);
-                    }
-                    finishFragment();
-                }
-            }
-        });
-
+//        actionBar.setBackButtonImage(R.drawable.ic_close_white);
+//        actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.SendVideo));
+//        actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
+//            @Override
+//            public void onItemClick(int id) {
+//                if (id == -1) {
+//                    finishFragment();
+//                } else if (id == 1) {
+//                    synchronized (sync) {
+//                        if (videoPlayer != null) {
+//                            try {
+//                                videoPlayer.stop();
+//                                videoPlayer.release();
+//                                videoPlayer = null;
+//                            } catch (Exception e) {
+//
+//                            }
+//                        }
+//                    }
+//
+//                    if(estimatedBytes>MAX_BYTES) {
+//                        AndroidUtilities.showHint(getParentActivity(), String.format(context.getString(R.string.PleaseCutVideoToMaxSize), AndroidUtilities.formatFileSize(MAX_BYTES)));
+//                        return;
+//                    }
+//
+//                    if (delegate != null) {
+//                        VideoEditedInfo vei = new VideoEditedInfo();
+//                        vei.originalPath    = videoPath;
+//                        vei.startTime       = startTimeMs;
+//                        vei.endTime         = endTimeMs;
+//                        vei.rotationValue   = originalRotationValue;
+//                        vei.originalWidth   = originalWidth;
+//                        vei.originalHeight  = originalHeight;
+//                        vei.originalBitrate = originalVideoBitrate;
+//                        vei.resultWidth     = resultWidth;
+//                        vei.resultHeight    = resultHeight;
+//                        vei.resultBitrate   = resultBitrate;
+//                        delegate.didFinishEditVideo(vei, estimatedBytes, resultDurationMs);
+//                    }
+//                    finishFragment();
+//                }
+//            }
+//        });
+//
 //        ActionBarMenu menu = actionBar.createMenu();
 //        menu.addItemWithWidth(1, R.drawable.ic_done, AndroidUtilities.dp(56));
 
-        fragmentView = getParentActivity().getLayoutInflater().inflate(R.layout.video_activity, null, false);
-        videoContainerView = fragmentView.findViewById(R.id.video_container);
-        controlView = fragmentView.findViewById(R.id.control_layout);
+        setContentView(R.layout.video_activity);
+        videoContainerView = findViewById(R.id.video_container);
+        controlView = findViewById(R.id.control_layout);
 
-        videoTimelineView = (VideoTimelineView) fragmentView.findViewById(R.id.video_timeline_view);
+        videoTimelineView = (VideoTimelineView) findViewById(R.id.video_timeline_view);
         videoTimelineView.setVideoPath(videoPath);
         videoTimelineView.setDelegate(new VideoTimelineView.VideoTimelineViewDelegate() {
             @Override
@@ -295,7 +273,7 @@ public class VideoEditorActivity extends PassphraseRequiredActionBarActivity imp
             }
         });
 
-        videoSeekBarView = (VideoSeekBarView) fragmentView.findViewById(R.id.video_seekbar);
+        videoSeekBarView = (VideoSeekBarView) findViewById(R.id.video_seekbar);
         videoSeekBarView.delegate = new VideoSeekBarView.SeekBarDelegate() {
             @Override
             public void onSeekBarDrag(float progress) {
@@ -323,7 +301,7 @@ public class VideoEditorActivity extends PassphraseRequiredActionBarActivity imp
             }
         };
 
-        playButton = (ImageView) fragmentView.findViewById(R.id.play_button);
+        playButton = (ImageView) findViewById(R.id.play_button);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -331,19 +309,27 @@ public class VideoEditorActivity extends PassphraseRequiredActionBarActivity imp
             }
         });
 
-        textureView = (TextureView) fragmentView.findViewById(R.id.video_view);
+        textureView = (TextureView) findViewById(R.id.video_view);
         textureView.setSurfaceTextureListener(this);
 
         updateVideoEditedInfo();
-
-        return fragmentView;
     }
 
     @Override
-    public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.closeChats) {
-            removeSelfFromStack();
+    public void onDestroy() {
+        if (videoTimelineView != null) {
+            videoTimelineView.destroy();
         }
+        if (videoPlayer != null) {
+            try {
+                videoPlayer.stop();
+                videoPlayer.release();
+                videoPlayer = null;
+            } catch (Exception e) {
+
+            }
+        }
+        super.onDestroy();
     }
 
     private void setPlayerSurface() {
@@ -399,7 +385,7 @@ public class VideoEditorActivity extends PassphraseRequiredActionBarActivity imp
 
     private void onPlayComplete() {
         if (playButton != null) {
-            playButton.setImageResource(R.drawable.video_play);
+            playButton.setImageResource(R.drawable.ic_play_circle_fill_white_48dp);
         }
         if (videoSeekBarView != null && videoTimelineView != null) {
             videoSeekBarView.setProgress(videoTimelineView.getLeftProgress());
@@ -416,15 +402,12 @@ public class VideoEditorActivity extends PassphraseRequiredActionBarActivity imp
     }
 
     private void fixVideoSize() {
-        if (fragmentView == null || getParentActivity() == null) {
-            return;
-        }
         int viewHeight;
         viewHeight = AndroidUtilities.displaySize.y - AndroidUtilities.statusBarHeight - ActionBar.getCurrentActionBarHeight();
 
         int width;
         int height;
-        if (getParentActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             width = AndroidUtilities.displaySize.x / 3 - AndroidUtilities.dp(24);
             height = viewHeight - AndroidUtilities.dp(32);
         } else {
