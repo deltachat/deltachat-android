@@ -145,6 +145,8 @@
     <string name="menu_select_all">Tümünü seç</string>
     <string name="menu_expand">Genişlet</string>
     <string name="menu_edit_name">Adı düzenle</string>
+    <string name="menu_edit_group_name">Grup adını düzenle</string>
+    <string name="menu_edit_group_image">Grup görselini düzenle</string>
     <string name="menu_settings">Ayarlar</string>
     <string name="menu_advanced">Gelişmiş</string>
     <string name="menu_deaddrop">İletişim istekleri</string>
@@ -167,6 +169,7 @@
     <string name="share_location_for_two_hours">2 saatliğine</string>
     <string name="share_location_for_six_hours">6 saatliğine</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
@@ -186,6 +189,10 @@
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
+    <string name="info_outdated_app_title">Uygulama sürümünüz eski.</string>
+    <string name="info_outdated_app_text">Delta Chat\'i otomatik güncelleştirmeler olmadan bir kaynaktan (örn. GitHub) kurdunuz. En son özellikleri ve hata düzeltmelerini almak için lütfen bir mağaza sürümüne geçin.</string>
+    <string name="info_outdated_app_dialog_title">Güncelleştirme kaynakları</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat şurada kullanılabilir:</string>
 
 
     <!-- contact list -->
@@ -208,9 +215,9 @@
     <string name="chat_please_enter_message">Lütfen bir ileti girin.</string>
     <string name="chat_camera_unavailable">Kamera kullanım dışı.</string>
     <string name="chat_unable_to_record_audio">Ses kaydedilemedi.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d okunmayan ileti</item>
-        <item quantity="other">%d okunmayan ileti</item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d yeni ileti</item>
+        <item quantity="other">%d yeni ileti</item>
     </plurals>
     <string name="chat_no_messages_hint">%1$s alıcısına ileti gönder:\n\n• %2$s Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir ve şifrelenmeyebilir.</string>
     <string name="chat_new_group_hint">İlk iletiyi oluşturun, diğerlerinin bu grupta yanıtlamasına izin verin.\n\n• Tüm üyeler Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir.</string>
@@ -370,7 +377,6 @@
     <string name="pref_led_pattern">LED yanıp sönme deseni</string>
     <string name="pref_sound">Ses</string>
     <string name="pref_silent">Sessiz</string>
-    <string name="pref_repeat_notify">Uyarıları yinele</string>
     <string name="pref_privacy">Gizlilik</string>
     <string name="pref_chats_and_media">Sohbetler ve ortamlar</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -441,7 +447,7 @@
     <string name="autocrypt_continue_transfer_please_enter_code">Lütfen diğer aygıtta görüntülenen ayarlama kodunu girin.</string>
     <string name="autocrypt_continue_transfer_succeeded">Uçtan uca ayarlaması aktarıldı. Bu aygıt artık aynı ayarlamayla diğer aygıt gibi Autocrypt kullanmaya hazır.</string>
     <string name="autocrypt_continue_transfer_retry">Yeniden dene</string>
-    <string name="autocrypt_bad_setup_code">Yanlış ayarlama kodu. Lütfen yeniden deneyin.\n\nAyarlama kodunu anımsamıyorsanız, yalnızca diğer aygıttan başka bir Autocrypt Ayarlama İletisi gönderin.</string>
+    <string name="autocrypt_bad_setup_code">Yanlış ayarlama kodu. Lütfen yeniden deneyin.\n\nAyarlama kodunu anımsamıyorsanız, diğer aygıttan başka bir Autocrypt Ayarlama İletisi göndermeniz yeterli.</string>
 
 
     <!-- system messages -->
@@ -512,11 +518,6 @@
     <string name="notify_name_and_message">Ad ve ileti</string>
     <string name="notify_name_only">Yalnızca ad</string>
     <string name="notify_no_name_or_message">Ad ya da ileti yok</string>
-    <string name="notify_repeat_one_time">Bir kez</string>
-    <string name="notify_repeat_two_times">İki kez</string>
-    <string name="notify_repeat_three_times">Üç kez</string>
-    <string name="notify_repeat_five_times">Beş kez</string>
-    <string name="notify_repeat_ten_times">On kez</string>
 
 
     <!-- permissions -->
@@ -533,38 +534,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat, bir konum eklemek için Konum izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat artalandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belçika</string>
-    <string name="language_ca">Katalanca</string>
-    <string name="language_da">Danca</string>
-    <string name="language_de">Almanca</string>
-    <string name="language_en">İngilizce</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">İspanyolca</string>
-    <string name="language_eu">Baskça</string>
-    <string name="language_fr">Fransızca</string>
-    <string name="language_hr">Hırvatça</string>
-    <string name="language_hu">Macarca</string>
-    <string name="language_it">İtalyanca</string>
-    <string name="language_id">Endonezce</string>
-    <string name="language_ja_JP">Japonca</string>
-    <string name="language_ko">Korece</string>
-    <string name="language_nb_NO">Norveççe Bokmål</string>
-    <string name="language_nl">Felemenkçe</string>
-    <string name="language_nl_NL">Felemenkçe (Hollanda)</string>
-    <string name="language_pl">Lehçe</string>
-    <string name="language_pt">Portekizce</string>
-    <string name="language_ru">Rusça</string>
-    <string name="language_ru_RU">Rusça (Rusya)</string>
-    <string name="language_sq">Arnavutça</string>
-    <string name="language_sr">Sırpça</string>
-    <string name="language_sv">İsveççe</string>
-    <string name="language_ta">Tamilce</string>
-    <string name="language_te">Teluguca</string>
-    <string name="language_tr">Türkçe</string>
-    <string name="language_uk">Ukraynaca</string>
-    <string name="language_zh_CN">Çince</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrelenen ileti</string>
@@ -664,6 +633,35 @@
     <string name="media_tab_documents">Belgeler</string>
     <string name="media_no_media_hint">Ortam yok.</string>
     <string name="media_no_documents_hint">Belge yok.</string>
-
+    <string name="language_be">Belçika</string>
+    <string name="language_ca">Katalanca</string>
+    <string name="language_da">Danca</string>
+    <string name="language_de">Almanca</string>
+    <string name="language_en">İngilizce</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">İspanyolca</string>
+    <string name="language_eu">Baskça</string>
+    <string name="language_fr">Fransızca</string>
+    <string name="language_hr">Hırvatça</string>
+    <string name="language_hu">Macarca</string>
+    <string name="language_it">İtalyanca</string>
+    <string name="language_id">Endonezce</string>
+    <string name="language_ja_JP">Japonca</string>
+    <string name="language_ko">Korece</string>
+    <string name="language_nb_NO">Norveççe Bokmål</string>
+    <string name="language_nl">Felemenkçe</string>
+    <string name="language_nl_NL">Felemenkçe (Hollanda)</string>
+    <string name="language_pl">Lehçe</string>
+    <string name="language_pt">Portekizce</string>
+    <string name="language_ru">Rusça</string>
+    <string name="language_ru_RU">Rusça (Rusya)</string>
+    <string name="language_sq">Arnavutça</string>
+    <string name="language_sr">Sırpça</string>
+    <string name="language_sv">İsveççe</string>
+    <string name="language_ta">Tamilce</string>
+    <string name="language_te">Teluguca</string>
+    <string name="language_tr">Türkçe</string>
+    <string name="language_uk">Ukraynaca</string>
+    <string name="language_zh_CN">Çince</string>
 
 </resources>

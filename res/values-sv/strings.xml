@@ -147,10 +147,6 @@
     <string name="chat_please_enter_message">Skriv in ett meddelande.</string>
     <string name="chat_camera_unavailable">Kamera otillgänglig.</string>
     <string name="chat_unable_to_record_audio">Det går inte att spela in ljud.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%doläst meddelande</item>
-        <item quantity="other">%dolästa meddelanden</item>
-    </plurals>
     <string name="chat_no_messages_hint">Skicka meddelande till %1$s:\n\n• Det är okej om %2$sinte använder Delta Chat.\n\n• Leverans av det första meddelandet kan ta ett tag och kan vara okrypterad.</string>
     <string name="chat_new_group_hint">Komponera det första meddelandet, så att andra kan svara inom denna grupp.\n\n• Det är okej om inte alla medlemmar använder Delta Chat.\n\n• Det kan ta en stund innan det första meddelandet levereras.</string>
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>

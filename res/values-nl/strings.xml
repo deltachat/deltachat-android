@@ -145,6 +145,8 @@
     <string name="menu_select_all">Alles selecteren</string>
     <string name="menu_expand">Uitvouwen</string>
     <string name="menu_edit_name">Naam bewerken</string>
+    <string name="menu_edit_group_name">Groepsnaam bewerken</string>
+    <string name="menu_edit_group_image">Groepsafbeelding bewerken</string>
     <string name="menu_settings">Instellingen</string>
     <string name="menu_advanced">Geavanceerd</string>
     <string name="menu_deaddrop">Contactpersoonverzoeken</string>
@@ -167,6 +169,7 @@
     <string name="share_location_for_two_hours">2 uur lang</string>
     <string name="share_location_for_six_hours">6 uur lang</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
     <plurals name="ask_delete_chat">
@@ -186,6 +189,10 @@
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
+    <string name="info_outdated_app_title">Je gebruikt een verouderde versie.</string>
+    <string name="info_outdated_app_text">Het lijkt erop dat je Delta Chat hebt geïnstalleerd uit een bron zonder automatische updates (bijv. GitHub). Installeer Delta Chat via een appwinkel om updates te ontvangen.</string>
+    <string name="info_outdated_app_dialog_title">Bronnen bijwerken</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat is beschikbaar in:</string>
 
 
     <!-- contact list -->
@@ -208,9 +215,9 @@
     <string name="chat_please_enter_message">Voer een bericht in.</string>
     <string name="chat_camera_unavailable">Camera niet beschikbaar.</string>
     <string name="chat_unable_to_record_audio">Kan geen audio opnemen.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d ongelezen bericht</item>
-        <item quantity="other">%d ongelezen berichten</item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nieuw bericht</item>
+        <item quantity="other">%d nieuwe berichten</item>
     </plurals>
     <string name="chat_no_messages_hint">Verstuur een bericht aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
@@ -370,7 +377,6 @@
     <string name="pref_led_pattern">LED-knipperpatroon</string>
     <string name="pref_sound">Geluid</string>
     <string name="pref_silent">Stil</string>
-    <string name="pref_repeat_notify">Alarmeringen herhalen</string>
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Gesprekken en media</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -512,11 +518,6 @@
     <string name="notify_name_and_message">Naam en bericht</string>
     <string name="notify_name_only">Alleen naam</string>
     <string name="notify_no_name_or_message">Geen naam of bericht</string>
-    <string name="notify_repeat_one_time">Eénmalig</string>
-    <string name="notify_repeat_two_times">Tweemaal</string>
-    <string name="notify_repeat_three_times">Driemaal</string>
-    <string name="notify_repeat_five_times">Vijfmaal</string>
-    <string name="notify_repeat_ten_times">Tienmaal</string>
 
 
     <!-- permissions -->
@@ -533,38 +534,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat vereist de locatiemachtiging om je locatie te kunnen delen, maar je hebt dit permanent geweigerd. Ga naar de app-instellingen, kies \"Machtigingen\" en schakel \"Locatie\" in.</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat\'s accugebruik is laag omdat het slechts een minimaal aantal systeembronnen gebruikt.</string>
-
-    <!-- languages -->
-    <string name="language_be">Vlaams</string>
-    <string name="language_ca">Catalaans</string>
-    <string name="language_da">Deens</string>
-    <string name="language_de">Duits</string>
-    <string name="language_en">Engels</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spaans</string>
-    <string name="language_eu">Basks</string>
-    <string name="language_fr">Frans</string>
-    <string name="language_hr">Kroatisch</string>
-    <string name="language_hu">Hongaars</string>
-    <string name="language_it">Italiaans</string>
-    <string name="language_id">Indonesisch</string>
-    <string name="language_ja_JP">Japans</string>
-    <string name="language_ko">Koreaans</string>
-    <string name="language_nb_NO">Noors (Bokmål)</string>
-    <string name="language_nl">Nederlands</string>
-    <string name="language_nl_NL">Nederlands (Nederland)</string>
-    <string name="language_pl">Pools</string>
-    <string name="language_pt">Portugees</string>
-    <string name="language_ru">Russisch</string>
-    <string name="language_ru_RU">Russisch (Rusland)</string>
-    <string name="language_sq">Albanees</string>
-    <string name="language_sr">Servisch</string>
-    <string name="language_sv">Zweeds</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turks</string>
-    <string name="language_uk">Oekraïens</string>
-    <string name="language_zh_CN">Chinees</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Versleuteld bericht</string>
@@ -664,6 +633,35 @@
     <string name="media_tab_documents">Documenten</string>
     <string name="media_no_media_hint">Geen media.</string>
     <string name="media_no_documents_hint">Geen documenten.</string>
-
+    <string name="language_be">Vlaams</string>
+    <string name="language_ca">Catalaans</string>
+    <string name="language_da">Deens</string>
+    <string name="language_de">Duits</string>
+    <string name="language_en">Engels</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Spaans</string>
+    <string name="language_eu">Basks</string>
+    <string name="language_fr">Frans</string>
+    <string name="language_hr">Kroatisch</string>
+    <string name="language_hu">Hongaars</string>
+    <string name="language_it">Italiaans</string>
+    <string name="language_id">Indonesisch</string>
+    <string name="language_ja_JP">Japans</string>
+    <string name="language_ko">Koreaans</string>
+    <string name="language_nb_NO">Noors (Bokmål)</string>
+    <string name="language_nl">Nederlands</string>
+    <string name="language_nl_NL">Nederlands (Nederland)</string>
+    <string name="language_pl">Pools</string>
+    <string name="language_pt">Portugees</string>
+    <string name="language_ru">Russisch</string>
+    <string name="language_ru_RU">Russisch (Rusland)</string>
+    <string name="language_sq">Albanees</string>
+    <string name="language_sr">Servisch</string>
+    <string name="language_sv">Zweeds</string>
+    <string name="language_ta">Tamil</string>
+    <string name="language_te">Telugu</string>
+    <string name="language_tr">Turks</string>
+    <string name="language_uk">Oekraïens</string>
+    <string name="language_zh_CN">Chinees</string>
 
 </resources>

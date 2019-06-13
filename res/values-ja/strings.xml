@@ -220,45 +220,6 @@ https://delta.chat</string>
     <string name="notify_new_message">新規ﾒｯｾｰｼﾞ</string>
     <string name="notify_name_and_message">名前とﾒｯｾｰｼﾞ</string>
     <string name="notify_name_only">名前のみ</string>
-    <string name="notify_repeat_one_time">一回</string>
-    <string name="notify_repeat_two_times">二回</string>
-    <string name="notify_repeat_three_times">三回</string>
-    <string name="notify_repeat_five_times">五回</string>
-    <string name="notify_repeat_ten_times">十回</string>
-
-
-    <!-- languages -->
-    <string name="language_be">ﾍﾞﾙｷﾞｰ語</string>
-    <string name="language_ca">ｶﾀﾙｰﾆｬ語</string>
-    <string name="language_da">ﾃﾞﾝﾏｰｸ語</string>
-    <string name="language_de">ﾄﾞｲﾂ語</string>
-    <string name="language_en">英語</string>
-    <string name="language_eo">ｴｽﾍﾟﾗﾝﾄ語</string>
-    <string name="language_es">ｽﾍﾟｲﾝ(ｶｽﾃｰﾘｬ)語</string>
-    <string name="language_eu">ﾊﾞｽｸ語</string>
-    <string name="language_fr">ﾌﾗﾝｽ語</string>
-    <string name="language_hr">ｸﾛｱﾁｱ語</string>
-    <string name="language_hu">ﾊﾝｶﾞﾘｰ語</string>
-    <string name="language_it">ｲﾀﾘｱ語</string>
-    <string name="language_id">ｲﾝﾄﾞﾈｼｱ語</string>
-    <string name="language_ja_JP">日本語</string>
-    <string name="language_ko">ﾄﾝｽﾙ語</string>
-    <string name="language_nb_NO">ﾉﾙｳｪｰ語ﾌﾞｰｹﾓｰﾙ</string>
-    <string name="language_nl">ｵﾗﾝﾀﾞ語</string>
-    <string name="language_nl_NL">ｵﾗﾝﾀﾞ語</string>
-    <string name="language_pl">ﾎﾟｰﾗﾝﾄﾞ語</string>
-    <string name="language_pt">ﾎﾟﾙﾄｶﾞﾙ語</string>
-    <string name="language_ru">ﾛｼｱ語</string>
-    <string name="language_ru_RU">ﾛｼｱ語</string>
-    <string name="language_sq">ｱﾙﾊﾞﾆｱ語</string>
-    <string name="language_sr">ｾﾙﾋﾞｱ語</string>
-    <string name="language_sv">ｽｳｪｰﾃﾞﾝ語</string>
-    <string name="language_ta">ﾀﾐﾙ語</string>
-    <string name="language_te">ﾃﾙｸﾞ語</string>
-    <string name="language_tr">ﾄﾙｺ語</string>
-    <string name="language_uk">ｳｸﾗｲﾅ語</string>
-    <string name="language_zh_CN">中国語</string>
-
     <!-- desktop specific strings -->
     <string name="welcome_desktop">DeltaChatへようこそ</string>
     <string name="login_known_accounts_title_desktop">不明なｱｶｳﾝﾄ</string>
@@ -305,4 +266,35 @@ https://delta.chat</string>
     <string name="qrshow_join_verified_group_title">自分のQRｺｰﾄﾞを見る</string>
     <string name="media_tab_media">写真･動画･音楽</string>
     <string name="media_no_media_hint">写真･動画･音楽等無し</string>
-    </resources>
+    <string name="language_be">ﾍﾞﾙｷﾞｰ語</string>
+    <string name="language_ca">ｶﾀﾙｰﾆｬ語</string>
+    <string name="language_da">ﾃﾞﾝﾏｰｸ語</string>
+    <string name="language_de">ﾄﾞｲﾂ語</string>
+    <string name="language_en">英語</string>
+    <string name="language_eo">ｴｽﾍﾟﾗﾝﾄ語</string>
+    <string name="language_es">ｽﾍﾟｲﾝ(ｶｽﾃｰﾘｬ)語</string>
+    <string name="language_eu">ﾊﾞｽｸ語</string>
+    <string name="language_fr">ﾌﾗﾝｽ語</string>
+    <string name="language_hr">ｸﾛｱﾁｱ語</string>
+    <string name="language_hu">ﾊﾝｶﾞﾘｰ語</string>
+    <string name="language_it">ｲﾀﾘｱ語</string>
+    <string name="language_id">ｲﾝﾄﾞﾈｼｱ語</string>
+    <string name="language_ja_JP">日本語</string>
+    <string name="language_ko">ﾄﾝｽﾙ語</string>
+    <string name="language_nb_NO">ﾉﾙｳｪｰ語ﾌﾞｰｹﾓｰﾙ</string>
+    <string name="language_nl">ｵﾗﾝﾀﾞ語</string>
+    <string name="language_nl_NL">ｵﾗﾝﾀﾞ語</string>
+    <string name="language_pl">ﾎﾟｰﾗﾝﾄﾞ語</string>
+    <string name="language_pt">ﾎﾟﾙﾄｶﾞﾙ語</string>
+    <string name="language_ru">ﾛｼｱ語</string>
+    <string name="language_ru_RU">ﾛｼｱ語</string>
+    <string name="language_sq">ｱﾙﾊﾞﾆｱ語</string>
+    <string name="language_sr">ｾﾙﾋﾞｱ語</string>
+    <string name="language_sv">ｽｳｪｰﾃﾞﾝ語</string>
+    <string name="language_ta">ﾀﾐﾙ語</string>
+    <string name="language_te">ﾃﾙｸﾞ語</string>
+    <string name="language_tr">ﾄﾙｺ語</string>
+    <string name="language_uk">ｳｸﾗｲﾅ語</string>
+    <string name="language_zh_CN">中国語</string>
+
+</resources>

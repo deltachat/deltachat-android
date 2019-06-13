@@ -204,12 +204,6 @@
     <string name="chat_please_enter_message">Будь ласка, введіть повідомлення.</string>
     <string name="chat_camera_unavailable">Камера недоступна.</string>
     <string name="chat_unable_to_record_audio">Неможливо записати аудіо.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d непрочитане повідомлення</item>
-        <item quantity="few">%d непрочитані повідомлення</item>
-        <item quantity="many">%d непрочитаних повідомлень</item>
-        <item quantity="other">%d непрочитаних повідомлень</item>
-    </plurals>
     <string name="chat_no_messages_hint">Надіслати повідомлення %1$s:\n\n• Це спрацює, якщо %2$s не використовує Delta Chat.\n\n• Перше повідомлення може виявитися незашифрованим, його доставка може зайняти деякий час.</string>
     <string name="chat_new_group_hint">Напишіть перше повідомлення, що дасть можливість іншим учасникам групи відповісти на нього.\n\n• Це спрацює, навіть якщо не всі учасники використовують Delta Chat.\n\n• Доставка першого повідомлення може зайняти деякий час.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
@@ -342,7 +336,6 @@
     <string name="pref_led_pattern">Ритм мерехтіння світлодіоіду</string>
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучний</string>
-    <string name="pref_repeat_notify">Повторювати сповіщення</string>
     <string name="pref_privacy">Конфіденційність</string>
     <string name="pref_chats_and_media">Чати і медіа</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -479,11 +472,6 @@
     <string name="notify_name_and_message">Ім\'я та повідомлення</string>
     <string name="notify_name_only">Тільки ім\'я</string>
     <string name="notify_no_name_or_message">Без імені або повідомлення</string>
-    <string name="notify_repeat_one_time">Один раз</string>
-    <string name="notify_repeat_two_times">Два рази</string>
-    <string name="notify_repeat_three_times">Три рази</string>
-    <string name="notify_repeat_five_times">П\'ять разів</string>
-    <string name="notify_repeat_ten_times">Десять разів</string>
 
 
     <!-- permissions -->
@@ -499,38 +487,6 @@
     <string name="perm_explain_access_to_location_denied">Щоб передати місцезнаходження, додатку потрібен доступ до геоданих пристрою, але зараз його не надано. Для надання доступу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat, виберіть пункт «Права доступу» і дозвольте доступ до місцезнаходження пристрою.</string>
     <string name="perm_enable_bg_reminder_title">Натисніть тут, щоб отримувати повідомлення, коли Delta Chat знаходиться у фоновому режимі.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat використовує мінімальні ресурси і дбає про те, щоб не розрядити батарею.</string>
-
-    <!-- languages -->
-    <string name="language_be">Бельгійська</string>
-    <string name="language_ca">Каталонська</string>
-    <string name="language_da">Данська</string>
-    <string name="language_de">Німецька</string>
-    <string name="language_en">Англійська</string>
-    <string name="language_eo">Есперанто</string>
-    <string name="language_es">Іспанська</string>
-    <string name="language_eu">Баскійська</string>
-    <string name="language_fr">Французька</string>
-    <string name="language_hr">Хорватська</string>
-    <string name="language_hu">Угорська</string>
-    <string name="language_it">Італійська</string>
-    <string name="language_id">Індонезійська</string>
-    <string name="language_ja_JP">Японська</string>
-    <string name="language_ko">Корейська</string>
-    <string name="language_nb_NO">Норвезька: букмол</string>
-    <string name="language_nl">Нідерландська</string>
-    <string name="language_nl_NL">Голландська (Нідерланди)</string>
-    <string name="language_pl">Польська</string>
-    <string name="language_pt">Португальська</string>
-    <string name="language_ru">Російська</string>
-    <string name="language_ru_RU">Російська (Росія)</string>
-    <string name="language_sq">Албанська</string>
-    <string name="language_sr">Сербська</string>
-    <string name="language_sv">Шведська</string>
-    <string name="language_ta">Тамільська</string>
-    <string name="language_te">Телугу</string>
-    <string name="language_tr">Турецька</string>
-    <string name="language_uk">Українська</string>
-    <string name="language_zh_CN">Китайська</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифроване повідомлення</string>
@@ -626,4 +582,35 @@
     <string name="media_tab_media">Медіа</string>
     <string name="media_tab_documents">Документи</string>
     <string name="media_no_media_hint">Немає медіа</string>
-    </resources>
+    <string name="language_be">Бельгійська</string>
+    <string name="language_ca">Каталонська</string>
+    <string name="language_da">Данська</string>
+    <string name="language_de">Німецька</string>
+    <string name="language_en">Англійська</string>
+    <string name="language_eo">Есперанто</string>
+    <string name="language_es">Іспанська</string>
+    <string name="language_eu">Баскійська</string>
+    <string name="language_fr">Французька</string>
+    <string name="language_hr">Хорватська</string>
+    <string name="language_hu">Угорська</string>
+    <string name="language_it">Італійська</string>
+    <string name="language_id">Індонезійська</string>
+    <string name="language_ja_JP">Японська</string>
+    <string name="language_ko">Корейська</string>
+    <string name="language_nb_NO">Норвезька: букмол</string>
+    <string name="language_nl">Нідерландська</string>
+    <string name="language_nl_NL">Голландська (Нідерланди)</string>
+    <string name="language_pl">Польська</string>
+    <string name="language_pt">Португальська</string>
+    <string name="language_ru">Російська</string>
+    <string name="language_ru_RU">Російська (Росія)</string>
+    <string name="language_sq">Албанська</string>
+    <string name="language_sr">Сербська</string>
+    <string name="language_sv">Шведська</string>
+    <string name="language_ta">Тамільська</string>
+    <string name="language_te">Телугу</string>
+    <string name="language_tr">Турецька</string>
+    <string name="language_uk">Українська</string>
+    <string name="language_zh_CN">Китайська</string>
+
+</resources>

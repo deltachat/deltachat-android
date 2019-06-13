@@ -168,6 +168,7 @@
     <string name="share_location_for_two_hours">na 2 godziny</string>
     <string name="share_location_for_six_hours">na 6 godzin</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Czy na pewno chcesz opuścić tą grupę?</string>
     <string name="ask_forward">Przekazać wiadomości do użytkownika %1$s?</string>
@@ -200,12 +201,6 @@
     <string name="chat_please_enter_message">Napisz wiadomość.</string>
     <string name="chat_camera_unavailable">Aparat niedostępny.</string>
     <string name="chat_unable_to_record_audio">Nie można nagrać dźwięku.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d nieprzeczytana wiadomość</item>
-        <item quantity="few">%d nieprzeczytane wiadomości</item>
-        <item quantity="many">%d nieprzeczytanych wiadomości</item>
-        <item quantity="other">%d nieprzeczytanej wiadomości</item>
-    </plurals>
     <string name="chat_no_messages_hint">Wyślij wiadomość do %1$s:\n\n• Nie ma problemu, jeśli %2$s nie używa Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać i może być niezaszyfrowane.</string>
     <string name="chat_new_group_hint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="chat_record_slide_to_cancel">PRZESUŃ, BY ANULOWAĆ</string>
@@ -323,7 +318,6 @@
     <string name="pref_led_color">Kolor LED-a</string>
     <string name="pref_led_pattern">Miganie diody LED</string>
     <string name="pref_sound">Dźwięki</string>
-    <string name="pref_repeat_notify">Powtarzaj powiadomienia</string>
     <string name="pref_privacy">Prywatność</string>
     <string name="pref_chats_and_media">Czaty i media</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -450,11 +444,6 @@
     <string name="notify_name_and_message">Nazwa i wiadomość</string>
     <string name="notify_name_only">Tylko nazwa</string>
     <string name="notify_no_name_or_message">Brak nazwy lub wiadomości</string>
-    <string name="notify_repeat_one_time">Jeden raz</string>
-    <string name="notify_repeat_two_times">Dwa razy</string>
-    <string name="notify_repeat_three_times">Trzy razy</string>
-    <string name="notify_repeat_five_times">Pięć razy</string>
-    <string name="notify_repeat_ten_times">Dziesięć razy</string>
 
 
     <!-- permissions -->
@@ -464,38 +453,6 @@
     <string name="perm_explain_need_for_camera_access">Aby robić zdjęcia i nagrywać wideo, zezwól Delta Chat na dostęp do aparatu.</string>
     <string name="perm_explain_need_for_mic_access">Aby wysyłać wiadomości audio, zezwól Delta Chat na dostęp do mikrofonu.</string>
     <string name="perm_explain_need_for_storage_access">Aby eksportować pliki lub tworzyć kopie zapasowe Delta Chat potrzebuje dostępu do twoich plików.</string>
-    <!-- languages -->
-    <string name="language_be">Belgijski</string>
-    <string name="language_ca">Kataloński</string>
-    <string name="language_da">Duński</string>
-    <string name="language_de">Niemiecki</string>
-    <string name="language_en">Angielski</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Hiszpański</string>
-    <string name="language_eu">Baskijski</string>
-    <string name="language_fr">Francuski</string>
-    <string name="language_hr">Chorwacki</string>
-    <string name="language_hu">Węgierski</string>
-    <string name="language_it">Włoski</string>
-    <string name="language_id">Indonezyjski</string>
-    <string name="language_ja_JP">Japoński</string>
-    <string name="language_ko">Koreański</string>
-    <string name="language_nb_NO">Norweski Bokmål</string>
-    <string name="language_nl">Holenderski</string>
-    <string name="language_nl_NL">Holenderski (Holandia)</string>
-    <string name="language_pl">Polski</string>
-    <string name="language_pt">Portugalski</string>
-    <string name="language_ru">Rosyjski</string>
-    <string name="language_ru_RU">Rosyjski (Rosja)</string>
-    <string name="language_sq">Albański</string>
-    <string name="language_sr">Serbski</string>
-    <string name="language_sv">Szwedzki</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turecki</string>
-    <string name="language_uk">Ukraiński</string>
-    <string name="language_zh_CN">Chiński</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
@@ -575,4 +532,35 @@
     <string name="media_tab_media">Multimedia</string>
     <string name="media_tab_documents">Dokumenty</string>
     <string name="media_no_media_hint">Nie ma multimediów</string>
-    </resources>
+    <string name="language_be">Belgijski</string>
+    <string name="language_ca">Kataloński</string>
+    <string name="language_da">Duński</string>
+    <string name="language_de">Niemiecki</string>
+    <string name="language_en">Angielski</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Hiszpański</string>
+    <string name="language_eu">Baskijski</string>
+    <string name="language_fr">Francuski</string>
+    <string name="language_hr">Chorwacki</string>
+    <string name="language_hu">Węgierski</string>
+    <string name="language_it">Włoski</string>
+    <string name="language_id">Indonezyjski</string>
+    <string name="language_ja_JP">Japoński</string>
+    <string name="language_ko">Koreański</string>
+    <string name="language_nb_NO">Norweski Bokmål</string>
+    <string name="language_nl">Holenderski</string>
+    <string name="language_nl_NL">Holenderski (Holandia)</string>
+    <string name="language_pl">Polski</string>
+    <string name="language_pt">Portugalski</string>
+    <string name="language_ru">Rosyjski</string>
+    <string name="language_ru_RU">Rosyjski (Rosja)</string>
+    <string name="language_sq">Albański</string>
+    <string name="language_sr">Serbski</string>
+    <string name="language_sv">Szwedzki</string>
+    <string name="language_ta">Tamil</string>
+    <string name="language_te">Telugu</string>
+    <string name="language_tr">Turecki</string>
+    <string name="language_uk">Ukraiński</string>
+    <string name="language_zh_CN">Chiński</string>
+
+</resources>

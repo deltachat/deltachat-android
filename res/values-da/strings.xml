@@ -145,6 +145,8 @@
     <string name="menu_select_all">Vælge alle</string>
     <string name="menu_expand">Udvide</string>
     <string name="menu_edit_name">Redigere navn</string>
+    <string name="menu_edit_group_name">Redigere gruppe navn</string>
+    <string name="menu_edit_group_image">Redigere gruppe billede</string>
     <string name="menu_settings">Opsætning</string>
     <string name="menu_advanced">Avanceret</string>
     <string name="menu_deaddrop">Kontakt anmodninger</string>
@@ -167,6 +169,7 @@
     <string name="share_location_for_two_hours">for 2 timer</string>
     <string name="share_location_for_six_hours">for 6 timer</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Forlade denne gruppe?</string>
     <plurals name="ask_delete_chat">
@@ -186,6 +189,10 @@
     <string name="ask_start_chat_with">Samtale med %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Fjerne %1$s fra gruppe?</string>
+    <string name="info_outdated_app_title">Program version er forældet.</string>
+    <string name="info_outdated_app_text">Det ser ud til at Delta Chat er installeret fra en kilde uden auto-opdatering (eks. GitHub). Skift til en butik version for at modtage seneste funktioner og fejlrettelser.</string>
+    <string name="info_outdated_app_dialog_title">Opdatere kilder</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat er tilgængelig på:</string>
 
 
     <!-- contact list -->
@@ -208,9 +215,9 @@
     <string name="chat_please_enter_message">Indtast besked</string>
     <string name="chat_camera_unavailable">Kamera ikke tilgængelig</string>
     <string name="chat_unable_to_record_audio">Kan ikke optage lyd.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d ikke læst besked</item>
-        <item quantity="other">%d ikke læste beskeder</item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d ny besked</item>
+        <item quantity="other">%d nye beskeder</item>
     </plurals>
     <string name="chat_no_messages_hint">Send besked til %1$s:\n\n• Det er o.k. hvis %2$s ikke bruger Delta Chat.\n\n• Levering af første besked kan tage nogen tid og kan være ukrypteret.</string>
     <string name="chat_new_group_hint">Skriv første besked, tillader andre at svare i denne gruppe.\n\n• Det er o.k hvis ikke alle medlemmer bruger Delta Chat.\n\n• Levering af første besked kan tage nogen tid.</string>
@@ -370,7 +377,6 @@
     <string name="pref_led_pattern">LED blinke mønster</string>
     <string name="pref_sound">Lyd</string>
     <string name="pref_silent">Stille</string>
-    <string name="pref_repeat_notify">Gentage alarmer</string>
     <string name="pref_privacy">Privatliv</string>
     <string name="pref_chats_and_media">Samtaler og medie</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -512,11 +518,6 @@
     <string name="notify_name_and_message">Navn og besked</string>
     <string name="notify_name_only">Kun navn</string>
     <string name="notify_no_name_or_message">Ingen navn eller besked</string>
-    <string name="notify_repeat_one_time">Én gang</string>
-    <string name="notify_repeat_two_times">To gange</string>
-    <string name="notify_repeat_three_times">Tre gange</string>
-    <string name="notify_repeat_five_times">Fem gange</string>
-    <string name="notify_repeat_ten_times">10 gange</string>
 
 
     <!-- permissions -->
@@ -533,38 +534,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat kræver placering tilladelse for at kunne vedhæfte placering, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Placering\".</string>
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat bruger minimal resurse og passer på ikke at dræne batteriet.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belgisk</string>
-    <string name="language_ca">Catalansk</string>
-    <string name="language_da">Dansk</string>
-    <string name="language_de">Tysk</string>
-    <string name="language_en">Engelsk</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spansk</string>
-    <string name="language_eu">Baskisk</string>
-    <string name="language_fr">Fransk</string>
-    <string name="language_hr">Kroatisk</string>
-    <string name="language_hu">Ungarsk</string>
-    <string name="language_it">Italiensk</string>
-    <string name="language_id">Indonesisk</string>
-    <string name="language_ja_JP">Japansk</string>
-    <string name="language_ko">Koreansk</string>
-    <string name="language_nb_NO">Norsk</string>
-    <string name="language_nl">Hollandsk</string>
-    <string name="language_nl_NL">Hollandsk (Holland)</string>
-    <string name="language_pl">Polsk</string>
-    <string name="language_pt">Portugisisk</string>
-    <string name="language_ru">Russisk</string>
-    <string name="language_ru_RU">Russisk (Rusland)</string>
-    <string name="language_sq">Albansk</string>
-    <string name="language_sr">Serbisk</string>
-    <string name="language_sv">Svensk</string>
-    <string name="language_ta">Tamilsk</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Tyrkisk</string>
-    <string name="language_uk">Ukrainsk</string>
-    <string name="language_zh_CN">Kinesisk</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypteret besked</string>
@@ -664,6 +633,35 @@
     <string name="media_tab_documents">Dokumenter</string>
     <string name="media_no_media_hint">Ingen medie</string>
     <string name="media_no_documents_hint">Ingen dokumenter</string>
-
+    <string name="language_be">Belgisk</string>
+    <string name="language_ca">Catalansk</string>
+    <string name="language_da">Dansk</string>
+    <string name="language_de">Tysk</string>
+    <string name="language_en">Engelsk</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Spansk</string>
+    <string name="language_eu">Baskisk</string>
+    <string name="language_fr">Fransk</string>
+    <string name="language_hr">Kroatisk</string>
+    <string name="language_hu">Ungarsk</string>
+    <string name="language_it">Italiensk</string>
+    <string name="language_id">Indonesisk</string>
+    <string name="language_ja_JP">Japansk</string>
+    <string name="language_ko">Koreansk</string>
+    <string name="language_nb_NO">Norsk</string>
+    <string name="language_nl">Hollandsk</string>
+    <string name="language_nl_NL">Hollandsk (Holland)</string>
+    <string name="language_pl">Polsk</string>
+    <string name="language_pt">Portugisisk</string>
+    <string name="language_ru">Russisk</string>
+    <string name="language_ru_RU">Russisk (Rusland)</string>
+    <string name="language_sq">Albansk</string>
+    <string name="language_sr">Serbisk</string>
+    <string name="language_sv">Svensk</string>
+    <string name="language_ta">Tamilsk</string>
+    <string name="language_te">Telugu</string>
+    <string name="language_tr">Tyrkisk</string>
+    <string name="language_uk">Ukrainsk</string>
+    <string name="language_zh_CN">Kinesisk</string>
 
 </resources>

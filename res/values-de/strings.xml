@@ -167,6 +167,7 @@
     <string name="share_location_for_two_hours">für 2 Stunden</string>
     <string name="share_location_for_six_hours">für 6 Stunden</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
     <plurals name="ask_delete_chat">
@@ -186,8 +187,6 @@
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s aus der Gruppe löschen?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontakte</string>
     <string name="contacts_enter_name_or_email">Namen oder E-Mail-Adresse eingeben</string>
@@ -208,10 +207,6 @@
     <string name="chat_please_enter_message">Bitte eine Nachricht eingeben.</string>
     <string name="chat_camera_unavailable">Kamera nicht verfügbar.</string>
     <string name="chat_unable_to_record_audio">Es ist nicht möglich, Audio aufzunehmen.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d ungelesene Nachricht</item>
-        <item quantity="other">%d ungelesene Nachrichten</item>
-    </plurals>
     <string name="chat_no_messages_hint">Eine Nachricht an %1$s:\n\n• Es ist in Ordnung wenn %2$s kein Delta Chat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern und erfolgt unverschlüsselt. </string>
     <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
     <string name="chat_record_slide_to_cancel">Schieben um abzubrechen</string>
@@ -281,7 +276,7 @@
     <string name="welcome_intro7_message">Delta Chat ist für die geschäftliche Kommunikation geeignet, kompatibel und auf Standards basierend.</string>
     <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
-    <string name="login_header">Beim Server anmelden</string>
+    <string name="login_header">Bei deinem Server anmelden</string>
     <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
     <string name="login_no_servers_hint">Es gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_inbox">Posteingang</string>
@@ -368,7 +363,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_led_pattern">LED-Blinkgeschwindigkeit</string>
     <string name="pref_sound">Ton</string>
     <string name="pref_silent">Leise</string>
-    <string name="pref_repeat_notify">Wiederholte Warnungen</string>
     <string name="pref_privacy">Datenschutz</string>
     <string name="pref_chats_and_media">Chats und Medien</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -510,11 +504,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="notify_name_and_message">Name und Nachricht</string>
     <string name="notify_name_only">Nur der Name</string>
     <string name="notify_no_name_or_message">Kein Name oder Nachricht</string>
-    <string name="notify_repeat_one_time">Einmal</string>
-    <string name="notify_repeat_two_times">Zweimal</string>
-    <string name="notify_repeat_three_times">Dreimal</string>
-    <string name="notify_repeat_five_times">Fünfmal</string>
-    <string name="notify_repeat_ten_times">Zehnmal</string>
 
 
     <!-- permissions -->
@@ -531,38 +520,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="perm_explain_access_to_location_denied">Delta Chat benötigt eine Standortberechtigung, um einen Standort anzuhängen, aber er wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Standort\".</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat verbraucht nur minimale Ressourcen und achtet darauf, den Akku zu schonen.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belgisch</string>
-    <string name="language_ca">Katalanisch</string>
-    <string name="language_da">Dänisch</string>
-    <string name="language_de">Deutsch</string>
-    <string name="language_en">Englisch</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spanisch</string>
-    <string name="language_eu">Baskisch</string>
-    <string name="language_fr">Französisch</string>
-    <string name="language_hr">Kroatisch</string>
-    <string name="language_hu">Ungarisch</string>
-    <string name="language_it">Italienisch</string>
-    <string name="language_id">Indonesisch</string>
-    <string name="language_ja_JP">Japanisch</string>
-    <string name="language_ko">Koreanisch</string>
-    <string name="language_nb_NO">Norwegian Bokmål</string>
-    <string name="language_nl">Niederländisch</string>
-    <string name="language_nl_NL">Niederländisch (Niederlande)</string>
-    <string name="language_pl">Polisch</string>
-    <string name="language_pt">Portugiesisch</string>
-    <string name="language_ru">Russisch</string>
-    <string name="language_ru_RU">Russisch (Russland)</string>
-    <string name="language_sq">Albanisch</string>
-    <string name="language_sr">Serbisch</string>
-    <string name="language_sv">Schwedisch</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Türkisch</string>
-    <string name="language_uk">Ukrainisch</string>
-    <string name="language_zh_CN">Chinesisch</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Verschlüsselte Nachricht</string>
@@ -662,6 +619,35 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="media_tab_documents">Dokumente</string>
     <string name="media_no_media_hint">Keine Mediadateien</string>
     <string name="media_no_documents_hint">Keine Dokumente.</string>
-
+    <string name="language_be">Belgisch</string>
+    <string name="language_ca">Katalanisch</string>
+    <string name="language_da">Dänisch</string>
+    <string name="language_de">Deutsch</string>
+    <string name="language_en">Englisch</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Spanisch</string>
+    <string name="language_eu">Baskisch</string>
+    <string name="language_fr">Französisch</string>
+    <string name="language_hr">Kroatisch</string>
+    <string name="language_hu">Ungarisch</string>
+    <string name="language_it">Italienisch</string>
+    <string name="language_id">Indonesisch</string>
+    <string name="language_ja_JP">Japanisch</string>
+    <string name="language_ko">Koreanisch</string>
+    <string name="language_nb_NO">Norwegian Bokmål</string>
+    <string name="language_nl">Niederländisch</string>
+    <string name="language_nl_NL">Niederländisch (Niederlande)</string>
+    <string name="language_pl">Polisch</string>
+    <string name="language_pt">Portugiesisch</string>
+    <string name="language_ru">Russisch</string>
+    <string name="language_ru_RU">Russisch (Russland)</string>
+    <string name="language_sq">Albanisch</string>
+    <string name="language_sr">Serbisch</string>
+    <string name="language_sv">Schwedisch</string>
+    <string name="language_ta">Tamil</string>
+    <string name="language_te">Telugu</string>
+    <string name="language_tr">Türkisch</string>
+    <string name="language_uk">Ukrainisch</string>
+    <string name="language_zh_CN">Chinesisch</string>
 
 </resources>

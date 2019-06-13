@@ -159,6 +159,7 @@
     <string name="share_location_for_two_hours">2 saat üçün </string>
     <string name="share_location_for_six_hours">6 saat üçün</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu qrupu tərk etmək istədiyinizə əminsiniz?</string>
     <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
@@ -188,10 +189,6 @@
     <string name="chat_please_enter_message">Mesajı daxıl edin</string>
     <string name="chat_camera_unavailable">Camera əlçatmazdır.</string>
     <string name="chat_unable_to_record_audio">Səs yaza bilmir.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d oxunmamış mesaj</item>
-        <item quantity="other">%d oxunmamış mesaj</item>
-    </plurals>
     <string name="chat_new_group_hint">Başqalarının bu qrup daxilində cavab verməsinə imkan verən ilk mesajı yaradın. \n\n• Bütün üzvlər Delta Chat istifadə etsələr daha yaxşıdır. \n\n• İlk mesajı çatdırmaq bir müddət ala bilər.</string>
     <string name="chat_record_slide_to_cancel">Ləğv etmək üçün sürüşdürün</string>
     <string name="chat_record_explain">Bir səsli mesajı yazmaq üçün toxunun və saxlayın, göndərmək üçün buraxın</string>
@@ -314,7 +311,6 @@
     <string name="pref_led_pattern">İşiq diodu qırpınır</string>
     <string name="pref_sound">Səs</string>
     <string name="pref_silent">Səssiz</string>
-    <string name="pref_repeat_notify">Siqnalları təkrarlayın</string>
     <string name="pref_privacy">Gizlilik</string>
     <string name="pref_chats_and_media">Çatlar və faillar</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -414,11 +410,6 @@
     <string name="notify_name_and_message">Ad və mesaj</string>
     <string name="notify_name_only">Ancaq ad</string>
     <string name="notify_no_name_or_message">Adı və ya mesaj yoxdur</string>
-    <string name="notify_repeat_one_time">Bir dəfə</string>
-    <string name="notify_repeat_two_times">İki dəfə</string>
-    <string name="notify_repeat_three_times">3 dəfə</string>
-    <string name="notify_repeat_five_times">5 dəfə</string>
-    <string name="notify_repeat_ten_times">10 dəfə</string>
 
 
     <!-- permissions -->
@@ -433,38 +424,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
     <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat minimum resurslardan istifadə edir və batareyanı boşaltmamaq üçün qayğı göstərir.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belçika</string>
-    <string name="language_ca">Katalan</string>
-    <string name="language_da">Daniya</string>
-    <string name="language_de">Alman</string>
-    <string name="language_en">İnglis</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">İspaniya</string>
-    <string name="language_eu">Bask</string>
-    <string name="language_fr">Fransız</string>
-    <string name="language_hr">Xorvat</string>
-    <string name="language_hu">Macarıstan</string>
-    <string name="language_it">İtaliyan</string>
-    <string name="language_id">İndonesiya</string>
-    <string name="language_ja_JP">Yapon</string>
-    <string name="language_ko">Koreya</string>
-    <string name="language_nb_NO">Norveç</string>
-    <string name="language_nl">Holland</string>
-    <string name="language_nl_NL">Holland (Niderland)</string>
-    <string name="language_pl">Polşa</string>
-    <string name="language_pt">Portuqal</string>
-    <string name="language_ru">Rus</string>
-    <string name="language_ru_RU">Rus (Rusiya)</string>
-    <string name="language_sq">Alban</string>
-    <string name="language_sr">Serb</string>
-    <string name="language_sv">İsveç</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Teluqu</string>
-    <string name="language_tr">Türk</string>
-    <string name="language_uk">Ukrayna</string>
-    <string name="language_zh_CN">Çin</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrələnmiş mesaj</string>
@@ -554,4 +513,35 @@
     <string name="media_tab_media">Fayllar</string>
     <string name="media_tab_documents">Sənədlər</string>
     <string name="media_no_media_hint">Fayl yoxdur</string>
-    </resources>
+    <string name="language_be">Belçika</string>
+    <string name="language_ca">Katalan</string>
+    <string name="language_da">Daniya</string>
+    <string name="language_de">Alman</string>
+    <string name="language_en">İnglis</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">İspaniya</string>
+    <string name="language_eu">Bask</string>
+    <string name="language_fr">Fransız</string>
+    <string name="language_hr">Xorvat</string>
+    <string name="language_hu">Macarıstan</string>
+    <string name="language_it">İtaliyan</string>
+    <string name="language_id">İndonesiya</string>
+    <string name="language_ja_JP">Yapon</string>
+    <string name="language_ko">Koreya</string>
+    <string name="language_nb_NO">Norveç</string>
+    <string name="language_nl">Holland</string>
+    <string name="language_nl_NL">Holland (Niderland)</string>
+    <string name="language_pl">Polşa</string>
+    <string name="language_pt">Portuqal</string>
+    <string name="language_ru">Rus</string>
+    <string name="language_ru_RU">Rus (Rusiya)</string>
+    <string name="language_sq">Alban</string>
+    <string name="language_sr">Serb</string>
+    <string name="language_sv">İsveç</string>
+    <string name="language_ta">Tamil</string>
+    <string name="language_te">Teluqu</string>
+    <string name="language_tr">Türk</string>
+    <string name="language_uk">Ukrayna</string>
+    <string name="language_zh_CN">Çin</string>
+
+</resources>

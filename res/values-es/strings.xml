@@ -145,6 +145,8 @@
     <string name="menu_select_all">Seleccionar todo</string>
     <string name="menu_expand">Expandir</string>
     <string name="menu_edit_name">Editar nombre</string>
+    <string name="menu_edit_group_name">Editar nombre de grupo</string>
+    <string name="menu_edit_group_image">Editar imagen de grupo</string>
     <string name="menu_settings">Ajustes</string>
     <string name="menu_advanced">Avanzado</string>
     <string name="menu_deaddrop">Solicitudes de contacto</string>
@@ -167,6 +169,7 @@
     <string name="share_location_for_two_hours">por 2 horas</string>
     <string name="share_location_for_six_hours">por 6 horas</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">¿Seguro que deseas abandonar este grupo? </string>
     <plurals name="ask_delete_chat">
@@ -186,6 +189,10 @@
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
+    <string name="info_outdated_app_title">Tu versión de la aplicación está desactualizada.</string>
+    <string name="info_outdated_app_text">Parece que instaló Delta Chat desde una fuente sin actualizaciones automáticas (por ejemplo, GitHub). Cambie a una versión de tienda para recibir las últimas funciones y correcciones de errores.</string>
+    <string name="info_outdated_app_dialog_title">Actualizar las fuentes</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat está disponible en:</string>
 
 
     <!-- contact list -->
@@ -208,9 +215,9 @@
     <string name="chat_please_enter_message">Por favor ingrese un mensaje.</string>
     <string name="chat_camera_unavailable">Cámara no disponible.</string>
     <string name="chat_unable_to_record_audio">No es posible grabar audio.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d mensaje sin leer</item>
-        <item quantity="other">%d mensajes sin leer </item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nuevo mensaje</item>
+        <item quantity="other">%d nuevos mensajes</item>
     </plurals>
     <string name="chat_no_messages_hint">Enviar mensaje a %1$s:\n\n• No hay problema si %2$s no usa Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
     <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
@@ -370,7 +377,6 @@
     <string name="pref_led_pattern">Patrón de parpadeo LED</string>
     <string name="pref_sound">Sonido</string>
     <string name="pref_silent">Silencio</string>
-    <string name="pref_repeat_notify">Repetir alertas</string>
     <string name="pref_privacy">Privacidad</string>
     <string name="pref_chats_and_media">Chats y multimedia</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -512,11 +518,6 @@
     <string name="notify_name_and_message">Nombre y mensaje</string>
     <string name="notify_name_only">Solo nombre</string>
     <string name="notify_no_name_or_message">Sin nombre ni mensaje</string>
-    <string name="notify_repeat_one_time">Una vez</string>
-    <string name="notify_repeat_two_times">Dos veces</string>
-    <string name="notify_repeat_three_times">Tres veces</string>
-    <string name="notify_repeat_five_times">Cinco veces</string>
-    <string name="notify_repeat_ten_times">Diez veces</string>
 
 
     <!-- permissions -->
@@ -533,38 +534,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat utiliza los recursos al mínimo y tiene cuidado de no drenar tu batería.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belga</string>
-    <string name="language_ca">Catalán</string>
-    <string name="language_da">Danés</string>
-    <string name="language_de">Alemán</string>
-    <string name="language_en">Inglés</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Español</string>
-    <string name="language_eu">Vasco</string>
-    <string name="language_fr">Francés</string>
-    <string name="language_hr">Croata</string>
-    <string name="language_hu">Húngaro</string>
-    <string name="language_it">Italiano</string>
-    <string name="language_id">Indonesio</string>
-    <string name="language_ja_JP">Japonés</string>
-    <string name="language_ko">Coreano</string>
-    <string name="language_nb_NO">Bokmål noruego</string>
-    <string name="language_nl">Holandés</string>
-    <string name="language_nl_NL">Holandés (Países Bajos)</string>
-    <string name="language_pl">Polaco</string>
-    <string name="language_pt">Portugués</string>
-    <string name="language_ru">Ruso</string>
-    <string name="language_ru_RU">Ruso (Rusia)</string>
-    <string name="language_sq">Albanés</string>
-    <string name="language_sr">Serbio</string>
-    <string name="language_sv">Sueco</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telegu</string>
-    <string name="language_tr">Turco</string>
-    <string name="language_uk">Ucraniano</string>
-    <string name="language_zh_CN">Chino</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensaje encriptado</string>
@@ -664,6 +633,35 @@
     <string name="media_tab_documents">Documentos</string>
     <string name="media_no_media_hint">Sin multimedia.</string>
     <string name="media_no_documents_hint">Sin documentos.</string>
-
+    <string name="language_be">Belga</string>
+    <string name="language_ca">Catalán</string>
+    <string name="language_da">Danés</string>
+    <string name="language_de">Alemán</string>
+    <string name="language_en">Inglés</string>
+    <string name="language_eo">Esperanto</string>
+    <string name="language_es">Español</string>
+    <string name="language_eu">Vasco</string>
+    <string name="language_fr">Francés</string>
+    <string name="language_hr">Croata</string>
+    <string name="language_hu">Húngaro</string>
+    <string name="language_it">Italiano</string>
+    <string name="language_id">Indonesio</string>
+    <string name="language_ja_JP">Japonés</string>
+    <string name="language_ko">Coreano</string>
+    <string name="language_nb_NO">Bokmål noruego</string>
+    <string name="language_nl">Holandés</string>
+    <string name="language_nl_NL">Holandés (Países Bajos)</string>
+    <string name="language_pl">Polaco</string>
+    <string name="language_pt">Portugués</string>
+    <string name="language_ru">Ruso</string>
+    <string name="language_ru_RU">Ruso (Rusia)</string>
+    <string name="language_sq">Albanés</string>
+    <string name="language_sr">Serbio</string>
+    <string name="language_sv">Sueco</string>
+    <string name="language_ta">Tamil</string>
+    <string name="language_te">Telegu</string>
+    <string name="language_tr">Turco</string>
+    <string name="language_uk">Ucraniano</string>
+    <string name="language_zh_CN">Chino</string>
 
 </resources>

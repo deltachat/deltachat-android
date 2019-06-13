@@ -242,7 +242,6 @@
     <string name="pref_notifications">Notifications</string>
     <string name="pref_sound">Son</string>
     <string name="pref_silent">Silencieux</string>
-    <string name="pref_repeat_notify">Répéter les alertes</string>
     <string name="pref_chats_and_media">Discussions et fichiers multimédia</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Clair</string>
