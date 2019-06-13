@@ -26,6 +26,7 @@
       <!-- sv -->    <item>Svenska</item>
       <!-- tr -->    <item>Türkçe</item>
       <!-- uk -->    <item>Українська</item>
+      <!-- zh_CN --> <item>官話</item>
   </string-array>
 
   <string-array name="language_values">
@@ -50,6 +51,7 @@
       <item>sv</item>
       <item>tr</item>
       <item>uk</item>
+      <item>zh_CN</item>
   </string-array>
 
     <string-array name="pref_theme_entries">
