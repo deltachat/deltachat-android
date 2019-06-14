@@ -106,7 +106,11 @@ public class NewConversationActivity extends ContactSelectionActivity {
     String textToShare = mailtoQueryMap.get(SUBJECT);
     String body = mailtoQueryMap.get(BODY);
     if (body != null && !body.isEmpty()) {
-      textToShare += "\n" + body;
+      if (textToShare != null && !textToShare.isEmpty()) {
+        textToShare += "\n" + body;
+      } else {
+        textToShare = body;
+      }
     }
     return textToShare;
   }
