@@ -251,8 +251,12 @@ public class AttachmentManager {
          if (slide == null) {
           attachmentViewStub.get().setVisibility(View.GONE);
           result.set(false);
-        } else if (!areConstraintsSatisfied(context, slide, constraints)) {
+        } else if (slide.getFileSize()>1*1024*1024*1024) {
+          // this is only a rough check, videos and images may be recoded
+          // and the core checks more carefully later.
           attachmentViewStub.get().setVisibility(View.GONE);
+          Log.w(TAG, "File too large.");
+          Toast.makeText(slide.context, "File too large.", Toast.LENGTH_LONG).show();
           result.set(false);
         } else {
           setSlide(slide);
@@ -505,15 +509,6 @@ public class AttachmentManager {
       Log.w(TAG, "couldn't complete ACTION_GET_CONTENT intent, no activity found. falling back.");
       Toast.makeText(activity, R.string.no_app_to_handle_data, Toast.LENGTH_LONG).show();
     }
-  }
-
-  private boolean areConstraintsSatisfied(final @NonNull  Context context,
-                                          final @Nullable Slide slide,
-                                          final @NonNull  MediaConstraints constraints)
-  {
-   return slide == null                                          ||
-          constraints.isSatisfied(context, slide.asAttachment()) ||
-          constraints.canResize(slide.asAttachment());
   }
 
   private void previewImageDraft(final @NonNull Slide slide) {
