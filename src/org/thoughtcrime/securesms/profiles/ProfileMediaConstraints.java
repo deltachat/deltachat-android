@@ -20,24 +20,4 @@ public class ProfileMediaConstraints extends MediaConstraints {
   public int getImageMaxSize(Context context) {
     return 5 * 1024 * 1024;
   }
-
-  @Override
-  public int getGifMaxSize(Context context) {
-    return 0;
-  }
-
-  @Override
-  public int getVideoMaxSize(Context context) {
-    return 0;
-  }
-
-  @Override
-  public int getAudioMaxSize(Context context) {
-    return 0;
-  }
-
-  @Override
-  public int getDocumentMaxSize(Context context) {
-    return 0;
-  }
 }
