@@ -32,6 +32,7 @@ import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ResUtil;
+import org.thoughtcrime.securesms.util.StorageUtil;
 
 
 public class AudioSlide extends Slide {
@@ -41,8 +42,8 @@ public class AudioSlide extends Slide {
     dcMsgId = dcMsg.getId();
   }
 
-  public AudioSlide(Context context, Uri uri, long dataSize, boolean voiceNote) {
-    super(context, constructAttachmentFromUri(context, uri, MediaUtil.AUDIO_UNSPECIFIED, dataSize, 0, 0, null, null, voiceNote));
+  public AudioSlide(Context context, Uri uri, long dataSize, boolean voiceNote, String fileName) {
+    super(context, constructAttachmentFromUri(context, uri, MediaUtil.AUDIO_UNSPECIFIED, dataSize, 0, 0, null, StorageUtil.getCleanFileName(fileName), voiceNote));
   }
 
   public AudioSlide(Context context, Uri uri, long dataSize, String contentType, boolean voiceNote) {
