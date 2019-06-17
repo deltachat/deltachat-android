@@ -1,11 +1,9 @@
 package org.thoughtcrime.securesms.util;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.WorkerThread;
@@ -281,4 +279,20 @@ public class MediaUtil {
     }
     return success;
   }
+
+  public static String getExtensionFromMimeType(String contentType) {
+    String extension =  MimeTypeMap.getSingleton().getExtensionFromMimeType(contentType);
+    if (extension != null) {
+      return extension;
+    }
+
+    //custom handling needed for unsupported extensions on Android 4.X
+    switch (contentType) {
+      case AUDIO_AAC:
+        return "aac";
+      // TODO: add webp and other unsupported extensions here
+    }
+    return null;
+  }
+
 }
