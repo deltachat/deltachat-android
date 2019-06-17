@@ -40,6 +40,7 @@ public class MediaUtil {
 
   private static final String TAG = MediaUtil.class.getSimpleName();
 
+  public static final String IMAGE_WEBP        = "image/webp";
   public static final String IMAGE_PNG         = "image/png";
   public static final String IMAGE_JPEG        = "image/jpeg";
   public static final String IMAGE_GIF         = "image/gif";
@@ -290,7 +291,8 @@ public class MediaUtil {
     switch (contentType) {
       case AUDIO_AAC:
         return "aac";
-      // TODO: add webp and other unsupported extensions here
+      case IMAGE_WEBP:
+        return "webp";
     }
     return null;
   }
