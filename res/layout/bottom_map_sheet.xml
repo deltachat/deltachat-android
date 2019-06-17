@@ -56,15 +56,12 @@
 
         <org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider
             android:id="@+id/timeRangeSlider"
-            android:paddingStart="40dp"
-            android:paddingEnd="40dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             app:minValue="50"
             app:maxValue="100"
-
+            app:paddingLeft="40dp"
+            app:paddingRight="40dp"
             />
 
         <android.support.v7.widget.SwitchCompat
