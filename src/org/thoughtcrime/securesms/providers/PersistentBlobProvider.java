@@ -11,6 +11,7 @@ import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import org.thoughtcrime.securesms.util.FileProviderUtil;
+import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
@@ -189,7 +190,7 @@ public class PersistentBlobProvider {
   }
 
   private static @NonNull String getExtensionFromMimeType(String mimeType) {
-    final String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType);
+    final String extension = MediaUtil.getExtensionFromMimeType(mimeType);
     return extension != null ? extension : BLOB_EXTENSION;
   }
 

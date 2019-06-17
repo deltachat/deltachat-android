@@ -298,7 +298,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void showLineLayer(MapSource source) {
         LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(source.getLineLayer());
-        lineLayer.setProperties(visibility(showTraces ? VISIBLE : NONE));
+        if (lineLayer != null) {
+            lineLayer.setProperties(visibility(showTraces ? VISIBLE : NONE));
+        }
     }
 
     private void applyFilters(int[] contactIds) {
@@ -316,17 +318,23 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void applyLastPositionFilter() {
         SymbolLayer markerLayer = (SymbolLayer) mapboxStyle.getLayer(LAST_POSITION_LAYER);
-        markerLayer.setFilter(filterProvider.getTimeFilter());
+        if (markerLayer != null) {
+            markerLayer.setFilter(filterProvider.getTimeFilter());
+        }
     }
 
     private void applyMarkerFilter(MapSource source) {
         SymbolLayer markerLayer = (SymbolLayer) mapboxStyle.getLayer(source.getMarkerLayer());
-        markerLayer.setFilter(filterProvider.getMarkerFilter());
+        if (markerLayer != null) {
+            markerLayer.setFilter(filterProvider.getMarkerFilter());
+        }
     }
 
     private void applyLineFilter(MapSource source) {
         LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(source.getLineLayer());
-        lineLayer.setFilter(filterProvider.getTimeFilter());
+        if (lineLayer != null) {
+            lineLayer.setFilter(filterProvider.getTimeFilter());
+        }
     }
 
     private int[] getContactIds(int chatId) {

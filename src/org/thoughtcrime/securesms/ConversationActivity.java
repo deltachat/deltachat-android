@@ -918,7 +918,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       String ext = "";
       if(filename==null) {
         filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
-        ext = "."+MimeTypeMap.getSingleton().getExtensionFromMimeType(attachment.getContentType());
+        ext = "." + MediaUtil.getExtensionFromMimeType(attachment.getContentType());
       }
       else {
         int i = filename.lastIndexOf(".");

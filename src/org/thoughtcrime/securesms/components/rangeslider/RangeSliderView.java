@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -12,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
 
@@ -69,22 +72,12 @@ public class RangeSliderView extends View {
 
     public RangeSliderView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+
+
     }
 
     public RangeSliderView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-        int [] attributes = new int [] {android.R.attr.paddingLeft,
-                android.R.attr.paddingStart,
-                android.R.attr.paddingRight,
-                android.R.attr.paddingEnd};
-
-        TypedArray arr = context.obtainStyledAttributes(attrs, attributes);
-
-        sliderPaddingLeft = arr.getDimensionPixelOffset(0,
-                arr.getDimensionPixelOffset(1, -1));
-        sliderPaddingRight = arr.getDimensionPixelOffset(2,
-                arr.getDimensionPixelOffset(3, -1));
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RangeSliderView);
         trackTintColor = typedArray.getColor(
@@ -122,6 +115,11 @@ public class RangeSliderView extends View {
                 R.styleable.RangeSliderView_maxValue,
                 100
         );
+
+        sliderPaddingRight = typedArray.getDimensionPixelOffset(R.styleable.RangeSliderView_paddingRight, 20);
+        sliderPaddingLeft = typedArray.getDimensionPixelOffset(R.styleable.RangeSliderView_paddingLeft, 20);
+
+        typedArray.recycle();
 
         minValueThumb = new ThumbLayer(thumbInnerRadius, thumbOutlineSize, trackHighlightTintColor, trackTintColor);
         minValueDisplayLabel = new TextLayer(displayTextFontSize, trackHighlightTintColor);
