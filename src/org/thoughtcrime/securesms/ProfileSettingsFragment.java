@@ -187,19 +187,9 @@ public class ProfileSettingsFragment extends Fragment
       onQrInvite();
     }
     else if(contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
-      new AlertDialog.Builder(getContext())
-          .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-            int chatId = dcContext.createChatByContactId(contactId);
-            if( chatId != 0 ) {
-              Intent intent = new Intent(getContext(), ConversationActivity.class);
-              intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-              getContext().startActivity(intent);
-              getActivity().finish();
-            }
-          })
-          .setNegativeButton(android.R.string.cancel, null)
-          .setMessage(getString(R.string.ask_start_chat_with, dcContext.getContact(contactId).getDisplayName()))
-          .show();
+      Intent intent = new Intent(getContext(), ProfileActivity.class);
+      intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, contactId);
+      startActivity(intent);
     }
   }
 
