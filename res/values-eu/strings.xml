@@ -145,6 +145,8 @@
     <string name="menu_select_all">Hautatu guztiak</string>
     <string name="menu_expand">Hedatu</string>
     <string name="menu_edit_name">Editatu izena</string>
+    <string name="menu_edit_group_name">Editatu taldearen izena</string>
+    <string name="menu_edit_group_image">Editatu taldearen irudia</string>
     <string name="menu_settings">Ezarpenak</string>
     <string name="menu_advanced">Aurreratua</string>
     <string name="menu_deaddrop">Kontaktu-eskaerak</string>
@@ -187,6 +189,12 @@
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Kendu %1$s taldetik?</string>
+    <string name="info_outdated_app_title">Zure aplikazioaren bertsioa zaharkituta dago</string>
+    <string name="info_outdated_app_text">Badirudi eguneraketak automatikoki kudeatzen ez dituen iturri batetik instalatu duzula Delta Chat (esaterako GitHub). Aldatu aplikazio dendaren bateko bertsiora azken eguneraketak eta arazoen konponketak jasotzeko.</string>
+    <string name="info_outdated_app_dialog_title">Eguneratu iturriak</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat hemen ago eskuragarri:</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontaktuak</string>
     <string name="contacts_enter_name_or_email">Sartu izena edo e-mail helbidea</string>
@@ -207,6 +215,10 @@
     <string name="chat_please_enter_message">Idatzi mezu bat.</string>
     <string name="chat_camera_unavailable">Kamera ez dago eskuragarri.</string>
     <string name="chat_unable_to_record_audio">Ezin izan da audioa grabatu.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">Mezu berri %d</item>
+        <item quantity="other">%d mezu berri</item>
+    </plurals>
     <string name="chat_no_messages_hint">Bidali mezuak %1$s erabiltzaileari:\n\n• Ez du axola %2$s(e)k ez badu Delta Chat erabiltzen.\n\n• Lehen mezua bidaltzeko denbora bat behar daiteke, eta agian ez da zifratuta egongo.</string>
     <string name="chat_new_group_hint">Idatzi lehen mezua, besteek taldera erantzutea baimenduz\n\n• Ez du axola denek ez badute Delta Chat erabiltzen.\n\n• Lehen mezua bidaltzeko denbora bat behar daiteke.</string>
     <string name="chat_record_slide_to_cancel">Irristatu ezeztatzeko</string>

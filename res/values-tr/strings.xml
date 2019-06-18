@@ -380,8 +380,8 @@
     <string name="pref_privacy">Gizlilik</string>
     <string name="pref_chats_and_media">Sohbetler ve ortamlar</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
-    <string name="pref_light_theme">Aydınlık</string>
-    <string name="pref_dark_theme">Karanlık</string>
+    <string name="pref_light_theme">Açık</string>
+    <string name="pref_dark_theme">Koyu</string>
     <string name="pref_appearance">Görünüm</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Dil</string>
@@ -602,7 +602,7 @@
     <string name="create_chat_error_desktop">Sohbet oluşturulamadı.</string>
     <string name="ask_delete_chat_desktop">Bu sohbeti silmek istediğinizden emin misiniz?</string>
     <string name="email_validation_failed_desktop">E-posta adresi gerekli.</string>
-    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanız, kişileriniz, sohbetleriniz, iletileriniz ve ortamlarınız da katılarak her şey silinecek. Bu eylem sondur ve ters çevrilemez.</string>
+    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem kesin ve ters çevrilemez.</string>
     <string name="me_desktop">ben</string>
     <string name="in_this_group_desktop">Grup üyeleri</string>
     <string name="not_in_this_group_desktop">Olası grup üyeleri (grupta değil)</string>
