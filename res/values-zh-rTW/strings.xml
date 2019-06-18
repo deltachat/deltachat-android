@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">確定</string>
+    <string name="cancel">取消</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="on">開</string>
+    <string name="off">關</string>
+    <string name="def">預設</string>
+    <string name="custom">自訂</string>
+    <string name="none">無</string>
+    <string name="open">開啟</string>
+    <string name="delete">刪除</string>
+    <string name="not_now">不要</string>
+    <string name="never">永遠不要</string>
+    <string name="one_moment">請稍候…</string>
+    <string name="done">完成</string>
+    <string name="undo">復原</string>
+    <string name="error">錯誤</string>
+    <string name="error_x">錯誤: %1$s</string>
+    <string name="error_no_network">網路無法連線</string>
+    <string name="no_app_to_handle_data">沒有可以處理這種資料的應用程式</string>
+    <string name="no_browser_installed">沒有安裝瀏覽器</string>
+    <string name="file_not_found">找不到 %1$s</string>
+    <string name="copied_to_clipboard">已複製至剪貼簿</string>
+    <string name="contacts_headline">聯絡人</string>
+    <string name="email_address">電子郵件信箱</string>
+    <string name="bad_email_address">錯誤的電子郵件信箱</string>
+    <string name="password">密碼</string>
+    <string name="now">現在</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
+    <string name="n_min_ago">%d分鐘</string>
+    <string name="today">今天</string>
+    <string name="yesterday">昨天</string>
+    <string name="this_week">本週</string>
+    <string name="this_month">本月</string>
+    <string name="last_week">上週</string>
+    <string name="last_month">上個月</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="other">%d分前</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="other">%d小時前</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="other">%d個對話</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="other">%d位聯絡人</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="other">%d個訊息</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="other">%d位成員</item>
+    </plurals>
+
+    <string name="self">我</string>
+    <string name="draft">草稿</string>
+    <string name="image">圖片</string>
+    <string name="gif">Gif</string>
+    <string name="images">圖片</string>
+    <string name="audio">音訊</string>
+    <string name="voice_message">語音訊息</string>
+    <string name="forwarded_message">轉發的訊息</string>
+    <string name="video">視訊</string>
+    <string name="documents">文件</string>
+    <string name="contact">聯絡人</string>
+    <string name="verified_contact">驗證過的聯絡人</string>
+    <string name="camera">相機</string>
+    <string name="location">所在地</string>
+    <string name="gallery">相簿</string>
+    <string name="file">檔案</string>
+    <string name="unknown">未知</string>
+
+    <string name="green">綠色</string>
+    <string name="red">紅色</string>
+    <string name="blue">藍色</string>
+    <string name="orange">橘色</string>
+    <string name="cyan">靛色</string>
+    <string name="purple">紫色</string>
+    <string name="magenta">洋紅色</string>
+    <string name="white">白色</string>
+
+    <string name="small">小</string>
+    <string name="normal">正常</string>
+    <string name="large">大</string>
+    <string name="extra_large">特大</string>
+
+    <string name="fast">快</string>
+    <string name="slow">慢</string>
+
+    <string name="message_delivered">訊息已抵達</string>
+    <string name="message_read">訊息已讀</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">新增聯絡人</string>
+    <string name="menu_new_chat">新增對話</string>
+    <string name="menu_new_group">新增群組</string>
+    <string name="menu_new_verified_group">新增驗證專用群組(實驗性)</string>
+    <string name="menu_send">送出</string>
+    <string name="menu_toggle_keyboard">切換表情符號鍵盤</string>
+    <string name="menu_edit_group">編輯群組</string>
+    <string name="menu_group_name_and_image">群組名稱及圖像</string>
+    <string name="menu_show_map">顯示地圖</string>
+    <string name="menu_show_global_map">顯示所有地點</string>
+    <string name="menu_archive_chat">封存對話</string>
+    <string name="menu_unarchive_chat">對話解除封存</string>
+    <string name="menu_add_attachment">新增附件</string>
+    <string name="menu_leave_group">退出群組</string>
+    <string name="menu_delete_chat">刪除對話</string>
+    <string name="menu_delete_messages">刪除訊息</string>
+    <string name="menu_delete_image">刪除圖片</string>
+    <string name="menu_delete_locations">刪除所有地點？</string>
+    <string name="menu_delete_location">刪除本地點？</string>
+    <string name="menu_message_details">訊息詳細內容</string>
+    <string name="menu_copy_to_clipboard">複製到剪貼簿</string>
+    <string name="menu_forward">轉發訊息</string>
+    <string name="menu_resend">重發訊息</string>
+    <string name="menu_reply">回覆訊息</string>
+    <string name="menu_mute">關閉通知</string>
+    <string name="menu_unmute">開啟通知</string>
+    <string name="menu_export_attachment">另存附件</string>
+    <string name="menu_all_media">全部的媒體</string>
+    <string name="menu_share">分享</string>
+    <string name="menu_block_contact">封鎖聯絡人</string>
+    <string name="menu_unblock_contact">解除封鎖聯絡人</string>
+    <string name="menu_play">播放</string>
+    <string name="menu_pause">暫停</string>
+    <string name="menu_scroll_to_bottom">捲動到底端</string>
+    <string name="menu_scroll_to_top">捲動到頂端</string>
+    <string name="menu_invite">邀請朋友</string>
+    <string name="menu_help">求助</string>
+    <string name="menu_select_all">全選</string>
+    <string name="menu_expand">展開</string>
+    <string name="menu_edit_name">編輯名稱</string>
+    <string name="menu_edit_group_name">編輯群組名稱</string>
+    <string name="menu_edit_group_image">編輯群組圖片</string>
+    <string name="menu_settings">設定</string>
+    <string name="menu_advanced">進階</string>
+    <string name="menu_deaddrop">聯絡請求</string>
+    <string name="menu_deaddrop_subtitle">按訊息鍵開始交談</string>
+    <string name="menu_view_profile">查看個人檔案</string>
+    <string name="menu_zoom_in">放大</string>
+    <string name="menu_zoom_out">縮小</string>
+    <string name="title_share_location">分享所在地給所有群組成員</string>
+
+    <string name="mute_for_one_hour">靜音1小時</string>
+    <string name="mute_for_two_hours">靜音2小時</string>
+    <string name="mute_for_one_day">靜音1天</string>
+    <string name="mute_for_seven_days">靜音7天</string>
+    <string name="mute_forever">永遠靜音</string>
+
+    <string name="share_location_once">單次</string>
+    <string name="share_location_for_5_minutes">5分鐘</string>
+    <string name="share_location_for_30_minutes">30分鐘</string>
+    <string name="share_location_for_one_hour">1小時</string>
+    <string name="share_location_for_two_hours">2小時</string>
+    <string name="share_location_for_six_hours">6小時</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">確定要離開本群組？</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="other">確定刪除%d個對話嗎？將會從對話紀錄中刪除，然而伺服器中仍會保留對話。</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="other">刪除本地及伺服器上的%d個訊息？</item>
+    </plurals>
+    <string name="ask_forward">轉發訊息給%1$s？</string>
+    <string name="ask_export_attachment">要匯出附件嗎？匯出的附件可以用裝置上的其它 App 打開。\n\n繼續？</string>
+    <string name="ask_block_contact">要封鎖這個人嗎？你之後不會再收到這個人的訊息。</string>
+    <string name="ask_unblock_contact">要解除封鎖嗎？你之後可以繼續收到這個人的訊息。</string>
+    <string name="ask_delete_contacts">要刪除聯絡人嗎？選定的聯絡人將被永久刪除。\n\n正在進行對話的聯絡人、以及系統通訊錄中的聯絡人，無法被永久刪除。</string>
+    <string name="cannot_delete_contacts_in_use">正在對話的聯絡人不能刪除。</string>
+    <string name="ask_start_chat_with">要和%1$s開始對話嗎？</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">要把%1$s移出群組嗎？</string>
+    <string name="info_outdated_app_title">你的app太舊了。</string>
+    <string name="info_outdated_app_text">你似乎從原始碼(如 GitHub)安裝了 Delta Chat。建議使用各種商店的版本，以獲得最新功能、錯誤修正、以及自動更新。</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat 可以在以下地方下載:</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">聯絡人清單</string>
+    <string name="contacts_enter_name_or_email">請輸入姓名或email地址</string>
+    <string name="contacts_type_email_above">請在上面輸入email地址</string>
+    <string name="contacts_empty_hint">找不到聯絡人。</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="other">已封存%d個對話</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="other">已解封%d個對話</item>
+    </plurals>
+    <string name="chat_archived_chats_title">封存的對話</string>
+    <string name="chat_please_enter_message">請輸入訊息</string>
+    <string name="chat_camera_unavailable">無法開啟鏡頭</string>
+    <string name="chat_unable_to_record_audio">無法錄音</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="other">%d個新訊息</item>
+    </plurals>
+    <string name="chat_no_messages_hint">傳送訊息給%1$s:\n\n• 即使%2$s沒有使用 Delta Chat 也沒關係\n\n• 傳送的第一個訊息可能要一點時間，而且可能沒有加密</string>
+    <string name="chat_new_group_hint">請傳送第一條訊息，以便其它人在群組內回覆\n\n• 即使群組內有些人沒使用 Delta Chat 也沒關係(請注意在他們那端可能沒加密)\n\n• 傳送第一條訊息需要花一點時間。</string>
+    <string name="chat_record_slide_to_cancel">滑動以取消</string>
+    <string name="chat_record_explain">按住不放錄音，放開後傳送</string>
+    <string name="chat_no_chats_yet_title">目前沒有對話\n請按 + 開始新的對話</string>
+    <string name="chat_no_chats_yet_hint">你可以和其它 Delta Chat 的使用者對話，也可以和任何 email 信箱對話。</string>
+    <string name="chat_all_archived">已封存所有的對話\n請按 + 開始新的對話</string>
+    <string name="chat_share_with_title">分享給...</string>
+    <string name="chat_input_placeholder">訊息</string>
+    <string name="chat_archived_label">封存</string>
+    <string name="chat_no_messages">沒有訊息</string>
+    <string name="chat_self_talk_subtitle">傳送給自己的訊息</string>
+    <string name="chat_contact_request">聯絡人要求</string>
+    <string name="chat_no_contact_requests">沒有聯絡人要求。\n\n如果你希望傳統的email看起來也像是聯絡人要求，請在「設定」中更改設定。</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">顯示指定時間內的所在地</string>
+    <string name="show_location_traces">顯示移動足跡</string>
+    <string name="add_poi">傳送興趣點</string>
+
+
+    <!-- search -->
+    <string name="search">搜尋</string>
+    <string name="search_explain">搜尋對話紀錄、聯絡人以及訊息</string>
+    <string name="search_no_result_for_x">找不到 %s</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">群組名稱</string>
+    <string name="group_avatar">群組頭像</string>
+    <string name="group_create_button">建立群組</string>
+    <string name="group_please_enter_group_name">請輸入群組的名稱</string>
+    <string name="group_add_members">新增成員</string>
+    <string name="group_hello_draft">嗨! 我剛建立了 %1$s 群組</string>
+    <string name="group_self_not_in_group">你必須先加入群組，才能執行本功能。</string>
+    <string name="profile_encryption">加密</string>
+    <string name="profile_shared_chats">共享的對話</string>
+    <string name="tab_contact">聯絡人</string>
+    <string name="tab_group">群組</string>
+    <string name="tab_members">成員</string>
+    <string name="tab_gallery">相簿</string>
+    <string name="tab_docs">文件</string>
+    <string name="tab_links">連結</string>
+    <string name="tab_map">地圖</string>
+    <string name="tab_gallery_empty_hint">本對話中共享的圖片和視訊會顯示在這裡。</string>
+    <string name="tab_docs_empty_hint">本對話中共享的文件、音樂和其它檔案會顯示在這裡。</string>
+    <string name="media_preview">媒體預覽</string>
+
+
+    <!-- invite -->
+    <string name="invite_slogan">友情不應該被訊息的孤島分隔。</string>
+    <string name="invite_default_text">一起來用 Delta Chat 吧! %1$s -- 你可以傳訊息到 %2$s 給我</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro1_message">免費、獨立的通訊軟體，我們有全世界最廣的受眾。</string>
+    <string name="welcome_intro2_headline">獨立!</string>
+    <string name="welcome_intro2_message">Delta Chat 沒有中心化伺服器，我們只使用你的郵件伺服器。</string>
+    <string name="welcome_intro3_headline">快速!</string>
+    <string name="welcome_intro3_message">快速反應的介面\n傳送訊息只要幾秒鐘</string>
+    <string name="welcome_intro4_headline">強大!</string>
+    <string name="welcome_intro4_message">無限的對話、圖片、視訊、語音訊息。不受限於本通訊軟體。</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_headline">免費!</string>
+    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
+    <string name="welcome_intro5_message">Delta Chat 永遠都免費。開放原始碼，沒有廣告，無需訂閱，不綁電信商。</string>
+    <string name="welcome_intro6_headline">保密!</string>
+    <string name="welcome_intro6_message">使用常見的演算法加密訊息，而且密文存在你自己的伺服器上。</string>
+    <string name="welcome_intro7_headline">值得信賴!</string>
+    <string name="welcome_intro7_message">Delta Chat 可以安心在商業環境使用，基於業界標準，相容度高。</string>
+    <string name="welcome_start_messaging">開始傳送訊息</string>
+    <string name="login_title">登入</string>
+    <string name="login_header">登入你的伺服器</string>
+    <string name="login_subheader">我們能自動處理大多數常見的郵件伺服器設定。有時候你需要在 web 界面上手動打開 IMAP 服務，請詢問郵件服務商或請朋友幫忙。</string>
+    <string name="login_no_servers_hint">Delta Chat 沒有伺服器，你的資料只會存在你自己的裝置上!</string>
+    <string name="login_inbox">收件匣</string>
+    <string name="login_imap_login">IMAP 帳號</string>
+    <string name="login_imap_server">IMAP 伺服器</string>
+    <string name="login_imap_port">IMAP 埠</string>
+    <string name="login_imap_security">IMAP 安全</string>
+    <string name="login_outbox">送件匣</string>
+    <string name="login_smtp_login">SMTP 帳號</string>
+    <string name="login_smtp_password">SMTP 密碼</string>
+    <string name="login_smtp_server">SMTP 伺服器</string>
+    <string name="login_smtp_port">SMTP 埠</string>
+    <string name="login_smtp_security">SMTP 安全</string>
+    <string name="login_auth_method">授權方式</string>
+    <string name="login_info_oauth2_title">繼續使用簡易設定?</string>
+    <string name="login_info_oauth2_text">你輸入的 email 支援簡單設定 (OAuth2)\n\n下一步請允許 Delta Chat 成為你的 email 聊天軟體\n\nDelta Chat 沒有伺服器，所有的資料都留在你的裝置上面!</string>
+    <string name="login_info_gmail_text">GMail 的使用者如果有啟動二階段認證的話，請新增「應用程式密碼」。如果找不到這個選項，請試著打開「較不安全的應用程式」設定。</string>
+    <string name="login_error_mail">請輸入合法的 email 地址</string>
+    <string name="login_error_server">請輸入合法的伺服器名稱 / IP位址</string>
+    <string name="login_error_port">請輸入合法的埠號 (1-65535)</string>
+    <string name="login_error_required_fields">請輸入合法的 email 地址和密碼</string>
+    <string name="import_backup_title">匯入備份</string>
+    <string name="import_backup_ask">在 %1$s 找到備份\n\n你要匯入備份，並使用原來的資料和設定嗎?</string>
+    <string name="import_backup_no_backup_found">找不到備份\n\n請把備份複製到 %1$s 然後再試一次，或是按「開始傳送訊息」進行標準設定。</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">無法登入 %1$s。請確定 email 帳號和密碼是否正確。 </string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">伺服器 %1$s 的回應: %2$s\n\n有些郵件服務商會在你的收件匣提供進一步的資訊，請檢查一下，並看看 web 介面上有沒有相關設定。還是不行的話，請洽詢郵件服務商，或是請朋友幫忙。</string>
+
+
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">轉發給...</string>
+    <string name="share_multiple_attachments">確定要傳送%1$d個檔案到指定的對話嗎?\n\n檔案會用原始大小傳送，亦即不會被修改，圖片和視訊也不會被重新壓縮編碼。</string>
+    <string name="share_abort">共享失敗。權限不足。</string>
+
+
+    <!-- preferences -->
+    <string name="pref_summary_on">開</string>
+    <string name="pref_summary_off">關</string>
+    <string name="pref_summary_default">預設</string>
+    <string name="pref_summary_custom">自訂</string>
+    <string name="pref_using_custom">使用自訂值: %s</string>
+    <string name="pref_using_default">使用預設值: %s</string>
+    <string name="pref_profile_info_headline">你的個人資料</string>
+    <string name="pref_profile_photo">大頭照</string>
+    <string name="pref_trim_headline">刪除訊息</string>
+    <string name="pref_trim_option">刪除舊訊息</string>
+    <string name="pref_trim_option_explain">對話超過指定長度後，自動刪除舊訊息</string>
+    <string name="pref_trim_length_limit">對話長度限制</string>
+    <string name="pref_trim_length_limit_summary">每組對話最多%d筆訊息</string>
+    <string name="pref_trim_now_button">立刻套用設定</string>
+    <string name="pref_trim_now_ask">立刻刪除所有的舊訊息嗎? 確定的話，所有的對話中超過%d筆的舊訊息都會被刪除。</string>
+    <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
+    <string name="pref_profile_photo_remove_ask">移除大頭照?</string>
+    <string name="pref_help_url">https://delta.chat/tw/help</string>
+    <string name="pref_password_and_account_settings">帳號密碼設定</string>
+    <string name="pref_who_can_see_this_information">隱私權設定</string>
+    <string name="pref_who_can_see_profile_explain">你的名字和大頭照在通訊的過程中，會提供給對方看到。已傳送的資訊無法被刪除或移除。</string>
+    <string name="pref_your_name">你的名字</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">簽名檔</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">使用 Delta Chat 傳送: https://delta.chat</string>
+    <string name="pref_enter_sends">換行鍵送出訊息</string>
+    <string name="pref_enter_sends_explain">按下換行鍵就送出訊息</string>
+    <string name="pref_outgoing_media_quality">傳送的媒體品質</string>
+    <string name="pref_outgoing_balanced">普通</string>
+    <string name="pref_outgoing_worse">低品質</string>
+    <string name="pref_vibrate">振動</string>
+    <string name="pref_chat_settings">對話設定</string>
+    <string name="pref_change_secret">更改密碼</string>
+    <string name="pref_change_secret_explain">使用系統設定更改數字、圖型、指紋密碼</string>
+    <string name="pref_screen_security">螢幕安全性</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">要求系統在本通訊軟體中及應用程式列表中禁止擷圖</string>
+    <string name="pref_screen_security_please_restart_hint">請重新啟動本 app 以啟用螢幕安全設定。</string>
+    <string name="pref_notifications">通知設定</string>
+    <string name="pref_notifications_show">顯示通知</string>
+    <string name="pref_notifications_priority">通知優先權</string>
+    <string name="pref_led_color">LED顏色</string>
+    <string name="pref_led_pattern">LED閃爍模式</string>
+    <string name="pref_sound">音效</string>
+    <string name="pref_silent">靜音</string>
+    <string name="pref_privacy">隱私權設定</string>
+    <string name="pref_chats_and_media">對話和媒體設定</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">亮</string>
+    <string name="pref_dark_theme">暗</string>
+    <string name="pref_appearance">外觀</string>
+    <string name="pref_theme">顯示主題</string>
+    <string name="pref_language">語言</string>
+    <string name="pref_incognito_keyboard">保密鍵盤</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">要求系統關閉鍵盤的個人化學習設定</string>
+    <string name="pref_read_receipts">收執回條設定</string>
+    <string name="pref_read_receipts_explain">關掉收執回條的話，就無法知道對方是否已讀訊息。</string>
+    <string name="pref_manage_keys">管理金鑰</string>
+    <string name="pref_use_system_emoji">使用系統的表情符號</string>
+    <string name="pref_use_system_emoji_explain">停用 Delta Chat 內建的表情符號</string>
+    <string name="pref_app_access">App 存取</string>
+    <string name="pref_communication">通訊</string>
+    <string name="pref_chats">對話</string>
+    <string name="pref_messages">訊息</string>
+    <string name="pref_in_chat_sounds">對話內的音效</string>
+    <string name="pref_message_text_size">訊息的字型大小</string>
+    <string name="pref_view_log">觀看系統紀錄</string>
+    <string name="pref_log_header">系統紀錄</string>
+    <string name="pref_other">其它</string>
+    <string name="pref_backup">備份</string>
+    <string name="pref_backup_explain">將備份另存至外部儲存媒體</string>
+    <string name="pref_backup_export_explain">備份可以讓你把設定及對話紀錄轉移到這台或其它裝置上。\n\n備份內容包括所有的訊息、聯絡人、對話、端對端自動加密設定。請務必將備份檔存放在安全的地方，並在轉移後儘快刪除。</string>
+    <string name="pref_backup_export_start_button">開始備份</string>
+    <string name="pref_backup_written_to_x">成功備份至 %1$s</string>
+    <string name="pref_managekeys_menu_title">管理金鑰</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat 需要存取檔案權限，以便匯入/匯出金鑰。</string>
+    <string name="pref_managekeys_export_secret_keys">匯出金鑰</string>
+    <string name="pref_managekeys_export_explain">將金鑰匯出至 %1$s ?</string>
+    <string name="pref_managekeys_import_secret_keys">匯入金鑰</string>
+    <string name="pref_managekeys_import_explain">從 %1$s 匯入金鑰?\n\n• 現存的金鑰不會被刪除\n\n• 最後一筆匯入的金鑰將被設為預設的加密金鑰，除非它的檔名內包含 legacy 字樣</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">成功匯出金鑰至 %1$s。</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">成功自 %1$s 匯入金鑰。</string>
+    <string name="pref_background">背景</string>
+    <string name="pref_background_btn_default">使用預設圖案</string>
+    <string name="pref_background_btn_gallery">從相簿中挑選</string>
+    <string name="pref_imap_folder_handling">處理 IMAP 資料夾</string>
+    <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
+    <string name="pref_watch_inbox_folder">監看收件匣</string>
+    <string name="pref_watch_sent_folder">監看送件匣</string>
+    <string name="pref_watch_mvbox_folder">監看 DeltaChat 資料夾</string>
+    <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
+    <string name="pref_auto_folder_moves_explain">搬移對話以避免塞爆收件匣</string>
+    <string name="pref_email_interaction_title">Email 互動</string>
+    <string name="pref_show_emails">顯示傳統email</string>
+    <string name="pref_show_emails_no">只顯示對話</string>
+    <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>
+    <string name="pref_show_emails_all">所有郵件</string>
+
+
+    <!-- autocrypt -->
+    <string name="autocrypt">自動加密</string>
+    <string name="autocrypt_explain">自動加密是一種新的 email 端到端自動加密的開放規格。\n\n你的端到端設定會按需求自動新增，並且可以轉移到其它可開啟自動加密設定訊息(ASM)的設備。</string>
+    <string name="autocrypt_send_asm_title">傳送自動加密設定訊息</string>
+    <string name="autocrypt_send_asm_explain_before">「自動加密設定訊息」可以安全地和你使用的其它支援自動加密的 app 共享端到端加密設定。\n\n本訊息含一組設定碼，請在其它支援的設備中輸入這組設定碼。</string>
+    <string name="autocrypt_send_asm_button">傳送自動加密設定訊息</string>
+    <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼:\n\n%1$s\n\n輸入完之後，你的其它裝置就可以使用自動加密了。</string>
+    <string name="autocrypt_prefer_e2ee">偏好端到端加密</string>
+    <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
+    <string name="autocrypt_asm_general_body">本信件包含自動加密設定訊息。\n\n請使用其它裝置上支援自動加密設定的應用程式開啟本訊息，並輸入設定碼，以便匯入自動加密設定。</string>
+    <string name="autocrypt_asm_click_body">本訊息是自動加密設定訊息。\n\n要解密並套用自動加密設定，請點一下本訊息。</string>
+    <string name="autocrypt_continue_transfer_title">自動加密設定訊息</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">請輸入另一台裝置上顯示的設定碼。</string>
+    <string name="autocrypt_continue_transfer_succeeded">已傳送端到端加密設定，本裝置已套用和其它裝置相同的自動加密設定。</string>
+    <string name="autocrypt_continue_transfer_retry">重試一次</string>
+    <string name="autocrypt_bad_setup_code">錯誤的設定碼，請再試一次。\n\n如果你忘記設定碼的話，只要在另一台裝置重新發送一次自動加密設定訊息即可。</string>
+
+
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">群組名稱已從 %1$s 更改為 %2$s</string>
+    <string name="systemmsg_group_image_changed">已更改群組圖片。</string>
+    <string name="systemmsg_group_image_deleted">已刪除群組圖片。</string>
+    <string name="systemmsg_member_added">已新增成員 %1$s</string>
+    <string name="systemmsg_member_removed">已移除成員 %1$s</string>
+    <string name="systemmsg_group_left">已退出群組。</string>
+    <string name="systemmsg_read_receipt_subject">收執回條</string>
+    <string name="systemmsg_read_receipt_body">這是訊息 %1$s 的收執回條，表示本訊息已經顯示在收件人的裝置上了，但不代表收件人已讀。</string>
+    <string name="systemmsg_cannot_decrypt">本訊息無法解密。\n\n請試著回覆本訊息，並請發送者重發一遍。\n\n如果你曾經在本裝置或其它裝置重新安裝 Delta Chat 或其它郵件軟體的話，請重新發送自動加密設定訊息。</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">我%1$s</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%2$s%1$s</string>
+
+
+    <!-- screen lock -->
+    <string name="screenlock_title">螢幕鎖</string>
+    <string name="screenlock_explain">使用 Android 螢幕鎖或指紋鎖定，為防止訊息顯示在螢幕上，請一併開啟「螢幕安全」。</string>
+    <string name="screenlock_authentication_failed">認證失敗</string>
+    <string name="screenlock_unlock_title">解鎖 Delta Chat</string>
+    <string name="screenlock_unlock_description">請輸入系統密碼以解鎖 Delta Chat</string>
+    <string name="screenlock_inactivity_timeout">閒置逾時鎖定</string>
+    <string name="screenlock_inactivity_timeout_explain">在指定的時間間隔內沒有動作的話，自動鎖定 Delta Chat。</string>
+    <string name="screenlock_inactivity_timeout_interval">閒置逾時時間</string>
+
+
+    <!-- qr code stuff -->
+    <string name="qrscan_title">掃描QR Code</string>
+    <string name="qrscan_hint">請將相機對準 QR Code</string>
+    <string name="qrscan_ask_join_group">你要參加群組 %1$s 嗎?</string>
+    <string name="no_archived_chats_desktop">沒有封存的對話</string>
+    </resources>

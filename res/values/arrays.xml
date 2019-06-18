@@ -27,6 +27,7 @@
       <!-- uk -->    <item>Українська</item>
       <!-- ja -->    <item>日本語</item>
       <!-- zh_CN --> <item>简体中文</item>
+      <!-- zh_TW --> <item>繁體中文</item>
   </string-array>
 
   <string-array name="language_values">
@@ -52,6 +53,7 @@
       <item>uk</item>
       <item>ja</item>
       <item>zh_CN</item>
+      <item>zh_TW</item>
   </string-array>
 
     <string-array name="pref_theme_entries">
