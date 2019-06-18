@@ -1,32 +1,31 @@
 package org.thoughtcrime.securesms.preferences;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
+
+import static android.app.Activity.RESULT_OK;
 
 public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private static final String TAG = ChatsPreferenceFragment.class.getSimpleName();
 
-  private ApplicationDcContext dcContext;
 
   ListPreferenceWithSummary showEmails;
 
@@ -35,20 +34,22 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   @Override
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
-    dcContext = DcHelper.getContext(getContext());
 
     findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF)
-        .setOnPreferenceChangeListener(new ListSummaryListener());
+            .setOnPreferenceChangeListener(new ListSummaryListener());
 
-    findPreference("pref_compression")
-        .setOnPreferenceChangeListener(new ListSummaryListener());
+    findPreference(Prefs.COMPRESSION)
+            .setOnPreferenceChangeListener(new ListSummaryListener());
 
-    showEmails = (ListPreferenceWithSummary) this.findPreference("pref_show_emails");
+    showEmails = (ListPreferenceWithSummary) this.findPreference(Prefs.SHOW_EMAILS);
     showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
       updateListSummary(preference, newValue);
       dcContext.setConfigInt("show_emails", Util.objectToInt(newValue));
       return true;
     });
+
+    Preference backup = this.findPreference(Prefs.BACKUP);
+    backup.setOnPreferenceClickListener(new BackupListener());
 
 //    trimEnabledCheckbox = (CheckBoxPreference) findPreference("pref_trim_threads");
 //    trimEnabledCheckbox.setOnPreferenceChangeListener(new TrimEnabledListener());
@@ -59,6 +60,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 //        .setOnPreferenceClickListener(new TrimNowClickListener());
 
     initializeListSummary((ListPreference) findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF));
+
   }
 
   @Override
@@ -71,9 +73,9 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     super.onResume();
     ((ApplicationPreferencesActivity)getActivity()).getSupportActionBar().setTitle(R.string.pref_chats_and_media);
 
-    initializeListSummary((ListPreferenceWithSummary) findPreference("pref_compression"));
+    initializeListSummary((ListPreferenceWithSummary) findPreference(Prefs.COMPRESSION));
 
-    String value = Integer.toString(dcContext.getConfigInt("show_emails"));
+    String value = Integer.toString(dcContext.getConfigInt(Prefs.SHOW_EMAILS));
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
 
@@ -90,7 +92,17 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
-//  private class TrimEnabledListener implements Preference.OnPreferenceChangeListener {
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP) {
+      performBackup();
+    } else {
+      Toast.makeText(getActivity(), R.string.screenlock_authentication_failed, Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  //  private class TrimEnabledListener implements Preference.OnPreferenceChangeListener {
 //    @Override
 //    public boolean onPreferenceChange(final Preference preference, Object newValue) {
 //      boolean enabled = (Boolean) newValue;
@@ -150,5 +162,36 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
   public static CharSequence getSummary(Context context) {
     return null;
+  }
+
+  /***********************************************************************************************
+   * Backup
+   **********************************************************************************************/
+
+  private class BackupListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
+      if (!result) {
+        performBackup();
+      }
+      return true;
+    }
+  }
+
+  private void performBackup() {
+    Permissions.with(getActivity())
+            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+            .ifNecessary()
+            .withRationaleDialog(getActivity().getString(R.string.perm_explain_need_for_storage_access), R.drawable.ic_folder_white_48dp)
+            .onAllGranted(() -> {
+              new AlertDialog.Builder(getActivity())
+                      .setTitle(R.string.pref_backup)
+                      .setMessage(R.string.pref_backup_export_explain)
+                      .setNegativeButton(android.R.string.cancel, null)
+                      .setPositiveButton(R.string.pref_backup_export_start_button, (dialogInterface, i) -> startImex(DcContext.DC_IMEX_EXPORT_BACKUP))
+                      .show();
+            })
+            .execute();
   }
 }
