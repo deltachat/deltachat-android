@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -96,6 +97,7 @@ public class ContactSelectionListFragment extends    Fragment
   private SwipeRefreshLayout        swipeRefresh;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
+  private StickyHeaderDecoration    listDecoration;
   private RecyclerViewFastScroller  fastScroller;
   private ActionMode                actionMode;
   private ActionMode.Callback       actionModeCallback;
@@ -185,6 +187,12 @@ public class ContactSelectionListFragment extends    Fragment
     return view;
   }
 
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    listDecoration.invalidateLayouts();
+  }
+
   private void handleSelectAll() {
     getContactSelectionListAdapter().selectAll();
     updateActionModeTitle();
@@ -262,7 +270,8 @@ public class ContactSelectionListFragment extends    Fragment
       selectedContacts.addAll(preselectedContacts);
     }
     recyclerView.setAdapter(adapter);
-    recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, true, true));
+    listDecoration = new StickyHeaderDecoration(adapter, true, true);
+    recyclerView.addItemDecoration(listDecoration);
   }
 
   public void setQueryFilter(String filter) {

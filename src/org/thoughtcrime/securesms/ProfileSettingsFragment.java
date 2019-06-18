@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -93,6 +94,12 @@ public class ProfileSettingsFragment extends Fragment
   public void onDestroyView() {
     dcContext.eventCenter.removeObservers(this);
     super.onDestroyView();
+  }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    listDecoration.invalidateLayouts();
   }
 
   @Override
