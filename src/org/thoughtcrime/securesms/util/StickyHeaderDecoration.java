@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.util;
 
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
@@ -28,6 +29,7 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
   private final StickyHeaderAdapter   adapter;
   private final boolean               renderInline;
   private       boolean               sticky;
+  private       int                   screenOrientation;
 
   /**
    * @param adapter the sticky header adapter to use
@@ -163,13 +165,7 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
   }
 
   private int getChildY(RecyclerView parent, View child) {
-    if (VERSION.SDK_INT < 11) {
-      Rect rect = new Rect();
-      parent.getChildVisibleRect(child, rect, null);
-      return rect.top;
-    } else {
-      return (int)ViewCompat.getY(child);
-    }
+      return (int) child.getY();
   }
 
   protected int getHeaderHeightForLayout(View header) {
@@ -179,6 +175,13 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
   private boolean isReverseLayout(final RecyclerView parent) {
     return (parent.getLayoutManager() instanceof LinearLayoutManager) &&
         ((LinearLayoutManager)parent.getLayoutManager()).getReverseLayout();
+  }
+
+  public void onConfigurationChanged(Configuration configuration) {
+    if (this.screenOrientation != configuration.orientation) {
+      this.screenOrientation = configuration.orientation;
+      invalidateLayouts();
+    }
   }
 
   public void invalidateLayouts() {

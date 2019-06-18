@@ -219,7 +219,7 @@ public class ConversationFragment extends Fragment
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        dateDecoration.invalidateLayouts();
+        dateDecoration.onConfigurationChanged(newConfig);
     }
 
     public void onNewIntent() {

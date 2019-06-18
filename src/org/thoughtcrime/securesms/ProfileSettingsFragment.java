@@ -99,7 +99,7 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
-    listDecoration.invalidateLayouts();
+    listDecoration.onConfigurationChanged(newConfig);
   }
 
   @Override
