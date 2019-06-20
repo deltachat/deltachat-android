@@ -22,6 +22,7 @@ import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import static android.app.Activity.RESULT_OK;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 
 public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private static final String TAG = ChatsPreferenceFragment.class.getSimpleName();
@@ -44,11 +45,11 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     showEmails = (ListPreferenceWithSummary) this.findPreference(Prefs.SHOW_EMAILS);
     showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
       updateListSummary(preference, newValue);
-      dcContext.setConfigInt("show_emails", Util.objectToInt(newValue));
+      dcContext.setConfigInt(CONFIG_SHOW_EMAILS, Util.objectToInt(newValue));
       return true;
     });
 
-    Preference backup = this.findPreference(Prefs.BACKUP);
+    Preference backup = this.findPreference("pref_backup");
     backup.setOnPreferenceClickListener(new BackupListener());
 
 //    trimEnabledCheckbox = (CheckBoxPreference) findPreference("pref_trim_threads");

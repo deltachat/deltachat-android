@@ -21,7 +21,6 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
@@ -52,38 +51,38 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
 
-    Preference sendAsm = this.findPreference(Prefs.AUTOCRYPT_SETUP_MESSAGE);
+    Preference sendAsm = this.findPreference("pref_send_autocrypt_setup_message");
     sendAsm.setOnPreferenceClickListener(new SendAsmListener());
 
-    preferE2eeCheckbox = (CheckBoxPreference) this.findPreference(Prefs.PREFER_E2EE);
+    preferE2eeCheckbox = (CheckBoxPreference) this.findPreference("pref_prefer_e2ee");
     preferE2eeCheckbox.setOnPreferenceChangeListener(new PreferE2eeListener());
 
-    inboxWatchCheckbox = (CheckBoxPreference) this.findPreference(Prefs.INBOX_WATCH);
+    inboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_inbox_watch");
     inboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
       handleImapCheck(preference, newValue, CONFIG_INBOX_WATCH)
     );
 
-    sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference(Prefs.SENTBOX_WATCH);
+    sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
     sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
       handleImapCheck(preference, newValue, CONFIG_SENTBOX_WATCH)
     );
 
-    mvboxWatchCheckbox = (CheckBoxPreference) this.findPreference(Prefs.MVBOX_WATCH);
+    mvboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_watch");
     mvboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
       handleImapCheck(preference, newValue, CONFIG_MVBOX_WATCH)
     );
 
-    mvboxMoveCheckbox = (CheckBoxPreference) this.findPreference(Prefs.MVBOX_MOVE);
+    mvboxMoveCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_move");
     mvboxMoveCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
       boolean enabled = (Boolean) newValue;
       dcContext.setConfigInt(CONFIG_MVBOX_MOVE, enabled? 1 : 0);
       return true;
     });
 
-    Preference manageKeys = this.findPreference(Prefs.MANAGE_KEYS);
+    Preference manageKeys = this.findPreference("pref_manage_keys");
     manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
 
-    Preference submitDebugLog = this.findPreference(Prefs.VIEW_LOG);
+    Preference submitDebugLog = this.findPreference("pref_view_log");
     submitDebugLog.setOnPreferenceClickListener(new ViewLogListener());
   }
 

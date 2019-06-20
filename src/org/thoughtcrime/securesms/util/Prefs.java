@@ -56,15 +56,6 @@ public class Prefs {
 
   public static final String SHOW_EMAILS                       = "pref_show_emails";
   public static final String COMPRESSION                       = "pref_compression";
-  public static final String BACKUP                            = "pref_backup";
-  public static final String AUTOCRYPT_SETUP_MESSAGE           = "pref_send_autocrypt_setup_message";
-  public static final String PREFER_E2EE                       = "pref_prefer_e2ee";
-  public static final String INBOX_WATCH                       = "pref_inbox_watch";
-  public static final String SENTBOX_WATCH                     = "pref_sentbox_watch";
-  public static final String MVBOX_WATCH                       = "pref_mvbox_watch";
-  public static final String MVBOX_MOVE                        = "pref_mvbox_move";
-  public static final String MANAGE_KEYS                       = "pref_manage_keys";
-  public static final String VIEW_LOG                          = "pref_view_log";
 
   public  static final String NOTIFICATION_PRIVACY_PREF        = "pref_notification_privacy";
   public  static final String NOTIFICATION_PRIORITY_PREF       = "pref_notification_priority";
