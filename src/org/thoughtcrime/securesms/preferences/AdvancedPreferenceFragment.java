@@ -107,12 +107,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   }
 
   @Override
-  public void onDestroy() {
-    dcContext.eventCenter.removeObservers(this);
-    super.onDestroy();
-  }
-
-  @Override
   public void onCreatePreferences(@Nullable Bundle savedInstanceState, String rootKey) {
     addPreferencesFromResource(R.xml.preferences_advanced);
   }

@@ -84,11 +84,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   @Override
-  public void onDestroy() {
-    super.onDestroy();
-  }
-
-  @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }

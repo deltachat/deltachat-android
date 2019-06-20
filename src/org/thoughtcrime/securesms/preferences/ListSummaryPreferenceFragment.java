@@ -31,6 +31,12 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
 
   }
 
+  @Override
+  public void onDestroy() {
+    dcContext.eventCenter.removeObservers(this);
+    super.onDestroy();
+  }
+
   protected class ListSummaryListener implements Preference.OnPreferenceChangeListener {
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
