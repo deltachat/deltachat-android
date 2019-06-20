@@ -39,9 +39,14 @@ import android.widget.EditText;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.database.NoExternalStorageException;
 import org.thoughtcrime.securesms.util.Scrubber;
+import org.thoughtcrime.securesms.util.StorageUtil;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
@@ -94,6 +99,38 @@ public class LogViewFragment extends Fragment {
   public void scrollDownLog() { logPreview.setSelection(logPreview.getText().length()); }
 
   public void scrollUpLog() { logPreview.setSelection(0); }
+
+  public boolean saveLogFile() throws NoExternalStorageException {
+
+    File outputDirectory = null;
+
+    try {
+      outputDirectory = StorageUtil.getDownloadDir();
+      try {
+        String logText =  logPreview.getText().toString();
+        if(!logText.trim().equals("")){
+          File logFile =new File(outputDirectory + "/DeltaChat.txt");
+
+          if(!logFile.exists()){
+            logFile.createNewFile();
+          }
+
+          FileWriter logFileWriter = new FileWriter(logFile, false);
+          BufferedWriter logFileBufferWriter = new BufferedWriter(logFileWriter);
+          logFileBufferWriter.write(logText);
+          logFileBufferWriter.close();
+        }
+      }
+      catch (IOException e) {
+        e.printStackTrace();
+        return false;
+      }
+    } catch (NoExternalStorageException e) {
+      e.printStackTrace();
+      return false;
+    }
+    return true;
+  }
 
   private static String grabLogcat() {
     try {

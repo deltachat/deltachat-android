@@ -154,6 +154,7 @@
     <string name="menu_view_profile">View profile</string>
     <string name="menu_zoom_in">Zoom in</string>
     <string name="menu_zoom_out">Zoom out</string>
+    <string name="menu_save_log">Save log</string>
     <string name="title_share_location">Share location with all group members</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
@@ -400,6 +401,8 @@
     <string name="pref_in_chat_sounds">In-chat sounds</string>
     <string name="pref_message_text_size">Message font size</string>
     <string name="pref_view_log">View log</string>
+    <string name="pref_saved_log">Saved \"DeltaChat.txt\" to Download folder</string>
+    <string name="pref_save_log_failed">Failed to save the log</string>
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Other</string>
     <string name="pref_backup">Backup</string>
