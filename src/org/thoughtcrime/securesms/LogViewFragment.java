@@ -87,8 +87,8 @@ public class LogViewFragment extends Fragment {
 
   public Float getLogTextSize() { return logPreview.getTextSize(); }
 
-  public void setLogTextSize(Float Textsize) {
-    logPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, Textsize);
+  public void setLogTextSize(Float textSize) {
+    logPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
   }
 
   public void scrollDownLog() { logPreview.setSelection(logPreview.getText().length()); }
