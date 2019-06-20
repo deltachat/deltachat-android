@@ -54,13 +54,9 @@
 
 
     <PreferenceCategory android:title="@string/pref_other">
-        <Preference android:key="pref_backup"
-                    android:title="@string/pref_backup"
-                    android:summary="@string/pref_backup_explain"/>
 
         <Preference android:key="pref_manage_keys"
                     android:title="@string/pref_manage_keys"/>
-
 
         <Preference android:key="pref_view_log"
                     android:title="@string/pref_view_log"/>
