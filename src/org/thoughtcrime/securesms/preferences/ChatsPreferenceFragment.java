@@ -98,7 +98,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     }
   }
 
-  //  private class TrimEnabledListener implements Preference.OnPreferenceChangeListener {
+//  private class TrimEnabledListener implements Preference.OnPreferenceChangeListener {
 //    @Override
 //    public boolean onPreferenceChange(final Preference preference, Object newValue) {
 //      boolean enabled = (Boolean) newValue;

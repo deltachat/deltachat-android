@@ -28,7 +28,6 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     super.onCreate(icicle);
     dcContext = DcHelper.getContext(getContext());
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
-
   }
 
   @Override
