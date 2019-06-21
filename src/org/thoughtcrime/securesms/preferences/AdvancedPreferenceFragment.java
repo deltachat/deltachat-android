@@ -12,6 +12,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
@@ -78,6 +80,11 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       dcContext.setConfigInt(CONFIG_MVBOX_MOVE, enabled? 1 : 0);
       return true;
     });
+
+    Preference emptyServerFolders = this.findPreference("pref_empty_server_folders");
+    if(emptyServerFolders!=null) {
+      emptyServerFolders.setOnPreferenceClickListener(new EmptyServerFoldersListener());
+    }
 
     Preference manageKeys = this.findPreference("pref_manage_keys");
     manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
@@ -270,4 +277,35 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
         })
         .execute();
   }
+
+
+  /***********************************************************************************************
+   * Empty server folder
+   **********************************************************************************************/
+
+  private class EmptyServerFoldersListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      View gl = View.inflate(getActivity(), R.layout.empty_folder_options, null);
+      new AlertDialog.Builder(getActivity())
+          .setTitle("Empty folders on server")
+          .setMessage("This will delete all messages in the given folders on the server.")
+          .setView(gl)
+          .setNegativeButton(R.string.cancel, null)
+          .setPositiveButton(R.string.ok, (dialog, which) -> {
+            int flags = 0;
+            CheckBox cb = gl.findViewById(R.id.empty_inbox_chat_folder);
+            if (cb!=null && cb.isChecked()) {
+              flags |= DC_EMPTY_INBOX;
+            }
+            if (cb!=null && cb.isChecked()) {
+              flags |= DC_EMPTY_MVBOX;
+            }
+
+          })
+          .show();
+      return true;
+    }
+  }
+
 }
