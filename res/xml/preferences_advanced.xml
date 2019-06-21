@@ -42,15 +42,15 @@
     <PreferenceCategory android:layout="@layout/preference_divider" />
 
 
-    <PreferenceCategory android:title="Experimental features">
+    <PreferenceCategory android:title="Experimenta  l features">
+
+        <Preference android:key="pref_empty_server_folders"
+                    android:title="Empty server folders" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_location_streaming_enabled"
             android:title="On-demand location streaming"/>
-
-        <Preference android:key="pref_empty_server_folders"
-                    android:title="Empty server folders" />
 
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/preference_divider" />

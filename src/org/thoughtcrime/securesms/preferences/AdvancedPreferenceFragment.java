@@ -288,20 +288,23 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     public boolean onPreferenceClick(Preference preference) {
       View gl = View.inflate(getActivity(), R.layout.empty_folder_options, null);
       new AlertDialog.Builder(getActivity())
-          .setTitle("Empty folders on server")
-          .setMessage("This will delete all messages in the given folders on the server.")
+          .setTitle("Empty server folders")
+          .setMessage("This function helps to free space on your server by deleting messages in the given folders. Messages on this device will not be deleted.")
           .setView(gl)
           .setNegativeButton(R.string.cancel, null)
-          .setPositiveButton(R.string.ok, (dialog, which) -> {
+          .setPositiveButton("Delete messages", (dialog, which) -> {
             int flags = 0;
-            CheckBox cb = gl.findViewById(R.id.empty_inbox_chat_folder);
+            CheckBox cb = gl.findViewById(R.id.empty_inbox_folder);
             if (cb!=null && cb.isChecked()) {
-              flags |= DC_EMPTY_INBOX;
+              flags |= DcContext.DC_EMPTY_INBOX;
             }
+            cb = gl.findViewById(R.id.empty_deltachat_folder);
             if (cb!=null && cb.isChecked()) {
-              flags |= DC_EMPTY_MVBOX;
+              flags |= DcContext.DC_EMPTY_MVBOX;
             }
-
+            if (flags!=0) {
+              dcContext.emptyServer(flags);
+            }
           })
           .show();
       return true;
