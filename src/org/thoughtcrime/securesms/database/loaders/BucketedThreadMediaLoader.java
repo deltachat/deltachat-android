@@ -182,7 +182,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
 
     private static class TimeBucket {
 
-      private final List<DcMsg> records = new LinkedList<>();
+      private final LinkedList<DcMsg> records = new LinkedList<>();
 
       private final long   startTime;
       private final long endTime;
@@ -195,7 +195,7 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       }
 
       void add(DcMsg record) {
-        this.records.add(record);
+        this.records.addFirst(record);
       }
 
       boolean inRange(long timestamp) {
