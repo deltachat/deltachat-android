@@ -289,7 +289,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       View gl = View.inflate(getActivity(), R.layout.empty_folder_options, null);
       new AlertDialog.Builder(getActivity())
           .setTitle("Empty server folders")
-          .setMessage("This function helps to free space on your server by deleting messages in the given folders. Messages on this device will not be deleted.")
+          .setMessage("This function helps to free space on your server by deleting ALL e-mails and chat-messages in the given folders. Messages on this device will not be deleted.")
           .setView(gl)
           .setNegativeButton(R.string.cancel, null)
           .setPositiveButton("Delete messages", (dialog, which) -> {
