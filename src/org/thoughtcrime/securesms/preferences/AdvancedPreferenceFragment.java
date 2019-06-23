@@ -287,19 +287,19 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     @Override
     public boolean onPreferenceClick(Preference preference) {
       View gl = View.inflate(getActivity(), R.layout.empty_folder_options, null);
+      CheckBox inboxCb = gl.findViewById(R.id.empty_inbox_folder);
+      CheckBox mvboxCb = gl.findViewById(R.id.empty_deltachat_folder);
       new AlertDialog.Builder(getActivity())
           .setTitle("Empty server folders")
-          .setMessage("This function helps to free space on your server by deleting ALL e-mails and chat-messages in the given folders. Messages on this device will not be deleted.")
+          .setMessage("This function helps to free space on your IMAP server by deleting ALL e-mails and chat-messages in the given folders. Messages on this device will not be deleted.\n\nThe deletion cannot be undone!")
           .setView(gl)
           .setNegativeButton(R.string.cancel, null)
           .setPositiveButton("Delete messages", (dialog, which) -> {
             int flags = 0;
-            CheckBox cb = gl.findViewById(R.id.empty_inbox_folder);
-            if (cb!=null && cb.isChecked()) {
+            if (inboxCb!=null && inboxCb.isChecked()) {
               flags |= DcContext.DC_EMPTY_INBOX;
             }
-            cb = gl.findViewById(R.id.empty_deltachat_folder);
-            if (cb!=null && cb.isChecked()) {
+            if (mvboxCb!=null && mvboxCb.isChecked()) {
               flags |= DcContext.DC_EMPTY_MVBOX;
             }
             if (flags!=0) {

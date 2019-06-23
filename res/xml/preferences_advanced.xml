@@ -42,7 +42,7 @@
     <PreferenceCategory android:layout="@layout/preference_divider" />
 
 
-    <PreferenceCategory android:title="Experimenta  l features">
+    <PreferenceCategory android:title="Experimental features">
 
         <Preference android:key="pref_empty_server_folders"
                     android:title="Empty server folders" />
