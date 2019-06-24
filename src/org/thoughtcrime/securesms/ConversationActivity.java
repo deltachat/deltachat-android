@@ -482,6 +482,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onBackPressed() {
     Log.w(TAG, "onBackPressed()");
+    //FIXME: the line below is just a quick fix. Instead KeyboardAwareLinearLayout should update
+    // it's state on its own and represent always the real keyboard state
+    container.updateKeyboardState();
     if (container.isInputOpen()){
       container.hideCurrentInput(composeText);
     } else {

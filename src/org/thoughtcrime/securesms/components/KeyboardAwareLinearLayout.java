@@ -91,7 +91,7 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
     }
   }
 
-  private void updateKeyboardState() {
+  public void updateKeyboardState() {
     if (isLandscape()) {
       if (keyboardOpen) onKeyboardClose();
       return;
