@@ -401,7 +401,7 @@
     <string name="pref_in_chat_sounds">In-chat sounds</string>
     <string name="pref_message_text_size">Message font size</string>
     <string name="pref_view_log">View log</string>
-    <string name="pref_saved_log">Saved \"DeltaChat.txt\" to Download folder</string>
+    <string name="pref_saved_log">Saved the log to Downloads folder</string>
     <string name="pref_save_log_failed">Failed to save the log</string>
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Other</string>

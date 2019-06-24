@@ -50,6 +50,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class LogViewFragment extends Fragment {
@@ -102,14 +104,17 @@ public class LogViewFragment extends Fragment {
 
   public boolean saveLogFile() throws NoExternalStorageException {
 
-    File outputDirectory = null;
+    File             outputDir   = null;
+    SimpleDateFormat dateFormat  = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    Date             now         = new Date();
+    String           logFileName = "deltachat-log-" + dateFormat.format(now) + ".txt";
 
     try {
-      outputDirectory = StorageUtil.getDownloadDir();
+      outputDir = StorageUtil.getDownloadDir();
       try {
         String logText =  logPreview.getText().toString();
         if(!logText.trim().equals("")){
-          File logFile =new File(outputDirectory + "/DeltaChat.txt");
+          File logFile = new File(outputDir + "/" + logFileName);
 
           if(!logFile.exists()){
             logFile.createNewFile();
