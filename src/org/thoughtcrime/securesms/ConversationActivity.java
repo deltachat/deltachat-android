@@ -1060,6 +1060,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected Void doInBackground(Void... voids) {
       Activity activity = activityRef.get();
+      if (activity == null) {
+        return null;
+      }
+
+      activity.setResult(RESULT_OK);
       if (isForwarding(activity)) {
         handleForwarding(activity);
       } else if (isSharing(activity)) {
@@ -1068,14 +1073,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return null;
     }
 
-    @Override
-    protected void onPostExecute(Void aVoid) {
-      super.onPostExecute(aVoid);
-      Activity activity = activityRef.get();
-      if (activity != null) {
-        activity.setResult(RESULT_OK);
-      }
-    }
 
     private void handleForwarding(Activity activity) {
       DcContext dcContext = DcHelper.getContext(activity);
