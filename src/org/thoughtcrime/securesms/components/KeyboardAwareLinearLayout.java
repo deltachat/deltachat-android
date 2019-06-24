@@ -79,18 +79,18 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat implements Vie
   @Override
   protected void onAttachedToWindow() {
     super.onAttachedToWindow();
-    ViewTreeObserver vto = this.getViewTreeObserver();
-    vto.addOnGlobalLayoutListener(this);
+    ViewTreeObserver observer = this.getViewTreeObserver();
+    observer.addOnGlobalLayoutListener(this);
   }
 
   @Override
   protected void onDetachedFromWindow() {
     super.onDetachedFromWindow();
-    ViewTreeObserver freshVto = this.getViewTreeObserver();
+    ViewTreeObserver observer = this.getViewTreeObserver();
     if (Build.VERSION.SDK_INT < 16) {
-      freshVto.removeGlobalOnLayoutListener(this);
+      observer.removeGlobalOnLayoutListener(this);
     } else {
-      freshVto.removeOnGlobalLayoutListener(this);
+      observer.removeOnGlobalLayoutListener(this);
     }
   }
 
