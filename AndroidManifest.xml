@@ -92,10 +92,9 @@
             <data android:mimeType="text/*"/>
             <data android:mimeType="*/*"/>
         </intent-filter>
-
         <meta-data
                 android:name="android.service.chooser.chooser_target_service"
-                android:value=".service.DirectShareService" />
+                android:value="org.thoughtcrime.securesms.service.DirectShareService" />
 
     </activity>
 

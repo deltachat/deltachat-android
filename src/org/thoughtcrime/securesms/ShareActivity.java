@@ -18,26 +18,19 @@
 package org.thoughtcrime.securesms;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.b44t.messenger.DcMsg;
-
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -45,11 +38,7 @@ import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.RelayUtil;
-import org.thoughtcrime.securesms.util.Util;
 
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,8 +54,6 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   private static final String TAG = ShareActivity.class.getSimpleName();
 
   public static final String EXTRA_CHAT_ID = "chat_id";
-  public static final String EXTRA_ADDRESS_MARSHALLED = "address_marshalled";
-  public static final String EXTRA_DISTRIBUTION_TYPE  = "distribution_type";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -214,104 +201,14 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
   private void handleResolvedMedia(Intent intent) {
     int       chatId           = intent.getIntExtra(EXTRA_CHAT_ID, -1);
-    int       distributionType = intent.getIntExtra(EXTRA_DISTRIBUTION_TYPE, -1);
-    Address   address          = null;
-
-    if (intent.hasExtra(EXTRA_ADDRESS_MARSHALLED)) {
-      Parcel parcel = Parcel.obtain();
-      byte[] marshalled = intent.getByteArrayExtra(EXTRA_ADDRESS_MARSHALLED);
-      parcel.unmarshall(marshalled, 0, marshalled.length);
-      parcel.setDataPosition(0);
-      address = parcel.readParcelable(getClassLoader());
-      parcel.recycle();
+    Intent composeIntent = getBaseShareIntent(ConversationListActivity.class);
+    RelayUtil.setSharedUris(composeIntent, resolvedExtras);
+    if (chatId != -1) {
+      RelayUtil.setDirectSharing(composeIntent, chatId);
     }
+    startActivity(composeIntent);
+    finish();
 
-    boolean hasResolvedDestination = chatId != -1 && address != null && distributionType != -1;
-
-    if (hasResolvedDestination) {
-      createConversation(chatId);
-    } else {
-      Intent composeIntent = getBaseShareIntent(ConversationListActivity.class);
-      RelayUtil.setSharedUris(composeIntent, resolvedExtras);
-      startActivity(composeIntent);
-      finish();
-    }
-  }
-
-  private void createConversation(int chatId) {
-    if (resolvedExtras.size() > 1) {
-      String message = String.format(getString(R.string.share_multiple_attachments), resolvedExtras.size());
-      new AlertDialog.Builder(this)
-              .setMessage(message)
-              .setCancelable(false)
-              .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {
-                finish();
-              }))
-              .setPositiveButton(R.string.menu_send, (dialog, which) -> sendMultipleAttachmentsAndCreateConversation(chatId))
-              .show();
-    } else {
-      openConversation(chatId);
-    }
-  }
-
-  private void sendMultipleAttachmentsAndCreateConversation(int chatId) {
-    for(Uri uri : resolvedExtras) {
-      DcMsg message = createMessage(uri);
-      dcContext.sendMsg(chatId, message);
-    }
-    openConversation(chatId);
-  }
-
-  private void openConversation(int chatId) {
-      final Intent intent = getBaseShareIntent(ConversationActivity.class);
-      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-      startActivity(intent);
-      finish();
-  }
-
-  private DcMsg createMessage(Uri uri) {
-    DcMsg message;
-    String mimeType = MediaUtil.getMimeType(this, uri);
-    if (MediaUtil.isImageType(mimeType)) {
-      message = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
-    }
-    else if (MediaUtil.isAudioType(mimeType)) {
-      message = new DcMsg(dcContext,DcMsg.DC_MSG_AUDIO);
-    }
-    else if (MediaUtil.isVideoType(mimeType)) {
-      message = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
-    }
-    else {
-      message = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
-    }
-    message.setFile(getRealPathFromUri(uri), mimeType);
-    return message;
-  }
-
-  private String getRealPathFromUri(Uri uri) {
-    try {
-      String filename = uri.getPathSegments().get(2); // Get real file name from Uri
-      String ext = "";
-      int i = filename.lastIndexOf(".");
-      if(i>=0) {
-        ext = filename.substring(i);
-        filename = filename.substring(0, i);
-      }
-      String path = dcContext.getBlobdirFile(filename, ext);
-
-      // copy content to this file
-      if(path!=null) {
-        InputStream inputStream = PartAuthority.getAttachmentStream(this, uri);
-        OutputStream outputStream = new FileOutputStream(path);
-        Util.copy(inputStream, outputStream);
-      }
-
-      return path;
-    }
-    catch(Exception e) {
-      e.printStackTrace();
-      return null;
-    }
   }
 
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {
