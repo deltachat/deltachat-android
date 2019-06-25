@@ -26,6 +26,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
+
 public class SelectedRecipientsAdapter extends BaseAdapter {
   @NonNull  private Context                    context;
   @Nullable private OnRecipientDeletedListener onRecipientDeletedListener;
@@ -46,7 +48,11 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
 
   public void add(@NonNull Recipient recipient, boolean isPush) {
     if (!find(recipient).isPresent()) {
-      RecipientWrapper wrapper = new RecipientWrapper(recipient, true, isPush);
+      boolean isModifiable = true;
+      if (recipient.getAddress().getDcContactId() == DC_CONTACT_ID_SELF) {
+        isModifiable = false;
+      }
+      RecipientWrapper wrapper = new RecipientWrapper(recipient, isModifiable, isPush);
       this.recipients.add(0, wrapper);
       notifyDataSetChanged();
     }
@@ -111,20 +117,17 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
       dcContact = dcContext.getContact(p.getAddress().getDcContactId());
     }
 
-    TextView    name   = (TextView)    v.findViewById(R.id.name);
-    TextView    phone  = (TextView)    v.findViewById(R.id.phone);
-    ImageButton delete = (ImageButton) v.findViewById(R.id.delete);
+    TextView    name   = v.findViewById(R.id.name);
+    TextView    phone  = v.findViewById(R.id.phone);
+    ImageButton delete = v.findViewById(R.id.delete);
 
     name.setText(dcContact.getDisplayName());
     phone.setText(dcContact.getAddr());
     delete.setVisibility(modifiable ? View.VISIBLE : View.GONE);
     delete.setColorFilter(DynamicTheme.isDarkTheme(context)? Color.WHITE : Color.BLACK);
-    delete.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        if (onRecipientDeletedListener != null) {
-          onRecipientDeletedListener.onRecipientDeleted(recipients.get(position).getRecipient());
-        }
+    delete.setOnClickListener(view -> {
+      if (onRecipientDeletedListener != null) {
+        onRecipientDeletedListener.onRecipientDeleted(recipients.get(position).getRecipient());
       }
     });
 
@@ -134,7 +137,11 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
   private static List<RecipientWrapper> wrapExistingMembers(Collection<Recipient> recipients) {
     final LinkedList<RecipientWrapper> wrapperList = new LinkedList<>();
     for (Recipient recipient : recipients) {
-      wrapperList.add(new RecipientWrapper(recipient, true, true));
+      boolean isModifiable = true;
+      if (recipient.getAddress().getDcContactId() == DC_CONTACT_ID_SELF) {
+        isModifiable = false;
+      }
+      wrapperList.add(new RecipientWrapper(recipient, isModifiable, true));
     }
     return wrapperList;
   }

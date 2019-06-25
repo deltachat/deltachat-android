@@ -314,6 +314,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     } else {
       boolean selected = actionModeSelection.indexOfValue(id) > -1;
       holder.setSelected(selected);
+      enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
     }
     holder.bind(glideRequests, id, dcContact, name, addr, label, itemMultiSelect, enabled);
     holder.setChecked(selectedContacts.contains(addr));
