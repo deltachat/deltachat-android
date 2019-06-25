@@ -419,8 +419,6 @@
     <string name="pref_show_emails_no">不，仅聊天</string>
     <string name="pref_show_emails_accepted_contacts">为接受的联系人</string>
     <string name="pref_show_emails_all">全部</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt是一种用于自动端到端电子邮件加密的全新开放规范。\n\n您的端到端设置会根据需要自动创建并且您可以使用Autocrypt设置消息在设备之间传输它。</string>

@@ -386,8 +386,6 @@
     <string name="pref_show_emails_no">Ні, лише чати</string>
     <string name="pref_show_emails_accepted_contacts">Для прийнятих контактів</string>
     <string name="pref_show_emails_all">Всі</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Автошифрування</string>
     <string name="autocrypt_explain">Autocrypt – новий і відкритий протокол встановлення наскрізного шифрування для електронної пошти.\n\nНеобхідні параметри шифрування призначаються автоматично і їх можна передавати між своїми пристроями, використовуючи повідомлення з параметрами Autocrypt.</string>

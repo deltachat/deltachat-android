@@ -365,8 +365,6 @@
     <string name="pref_show_emails">Exibir e-mails comuns</string>
     <string name="pref_show_emails_no">Não, apenas conversas</string>
     <string name="pref_show_emails_all">Tudo</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Encriptação automática</string>
     <string name="autocrypt_explain">A encriptação automática (autocrypt) é uma especificação nova e aberta para encriptação e-mail de ponta a ponta. \n\n A sua configuração de ponta a ponta é criada automaticamente conforme necessário e pode transferi-la entre dispositivos com mensagens de configuração de autocrypt.</string>

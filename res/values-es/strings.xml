@@ -154,6 +154,7 @@
     <string name="menu_view_profile">Ver perfil</string>
     <string name="menu_zoom_in">Acercar</string>
     <string name="menu_zoom_out">Alejar</string>
+    <string name="menu_save_log">Salvar log</string>
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
@@ -400,6 +401,8 @@
     <string name="pref_in_chat_sounds">Sonidos en el chat</string>
     <string name="pref_message_text_size">Tamaño de texto del mensaje</string>
     <string name="pref_view_log">Ver log</string>
+    <string name="pref_saved_log">El log fue guardado en la carpeta de Descargas</string>
+    <string name="pref_save_log_failed">No se pudo guardar el log</string>
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Otro</string>
     <string name="pref_backup">Copia de respaldo</string>
@@ -430,6 +433,11 @@
     <string name="pref_show_emails_no">No, sólo chats</string>
     <string name="pref_show_emails_accepted_contacts">Para contactos aceptados</string>
     <string name="pref_show_emails_all">Todos</string>
+    <string name="pref_empty_server_title">ZONA DE PELIGRO: Eliminar correos del servidor</string>
+    <string name="pref_empty_server_msg">Esta función ayuda a liberar espacio en su servidor IMAP al eliminar TODOS los correos, incluidos los mensajes de chat, en las carpetas indicadas. Los mensajes en este dispositivo no serán eliminados. La eliminación no se puede deshacer!</string>
+    <string name="pref_empty_server_inbox">Eliminar TODOS los correos en la carpeta INBOX</string>
+    <string name="pref_empty_server_mvbox">Eliminar TODOS los correos en la carpeta DeltaChat</string>
+    <string name="pref_empty_server_do_button">Eliminar correos</string>
 
 
     <!-- autocrypt -->

@@ -366,8 +366,6 @@
     <string name="pref_show_emails_no">Nie, tylko czaty</string>
     <string name="pref_show_emails_accepted_contacts">Dla zaakceptowanych kontaktów</string>
     <string name="pref_show_emails_all">Wszystkie</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą Wiadomości konfiguracyjnej automatycznego szyfrowania.</string>

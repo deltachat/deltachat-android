@@ -430,8 +430,6 @@
     <string name="pref_show_emails_no">Nej, kun samtaler</string>
     <string name="pref_show_emails_accepted_contacts">For godkendte kontakter</string>
     <string name="pref_show_emails_all">Alle</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt er en ny åben specifikation for automatisk ende-til-ende e-post kryptering.\n\nEnde-til-ende opsætning bliver oprettet automatisk efter behov og kan overføres mellem enheder med Autocrypt opsætning beskeder.</string>

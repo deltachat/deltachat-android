@@ -418,8 +418,6 @@
     <string name="pref_show_emails_no">只顯示對話</string>
     <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>
     <string name="pref_show_emails_all">所有郵件</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">自動加密</string>
     <string name="autocrypt_explain">自動加密是一種新的 email 端到端自動加密的開放規格。\n\n你的端到端設定會按需求自動新增，並且可以轉移到其它可開啟自動加密設定訊息(ASM)的設備。</string>
