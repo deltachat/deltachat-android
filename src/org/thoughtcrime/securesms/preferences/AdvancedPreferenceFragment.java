@@ -290,11 +290,11 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       CheckBox inboxCb = gl.findViewById(R.id.empty_inbox_folder);
       CheckBox mvboxCb = gl.findViewById(R.id.empty_deltachat_folder);
       new AlertDialog.Builder(getActivity())
-          .setTitle("DANGER ZONE: Delete e-mails from server")
-          .setMessage("This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted.\n\nThe deletion cannot be undone!")
+          .setTitle(R.string.pref_empty_server_title)
+          .setMessage(R.string.pref_empty_server_msg)
           .setView(gl)
           .setNegativeButton(R.string.cancel, null)
-          .setPositiveButton("Delete e-mails", (dialog, which) -> {
+          .setPositiveButton(R.string.pref_empty_server_do_button, (dialog, which) -> {
             int flags = 0;
             if (inboxCb!=null && inboxCb.isChecked()) {
               flags |= DcContext.DC_EMPTY_INBOX;

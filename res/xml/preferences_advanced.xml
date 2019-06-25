@@ -44,13 +44,13 @@
 
     <PreferenceCategory android:title="Experimental features">
 
-        <Preference android:key="pref_empty_server_folders"
-                    android:title="Delete e-mails from server" />
-
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_location_streaming_enabled"
             android:title="On-demand location streaming"/>
+
+        <Preference android:key="pref_empty_server_folders"
+                    android:title="Delete e-mails from server" />
 
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/preference_divider" />
