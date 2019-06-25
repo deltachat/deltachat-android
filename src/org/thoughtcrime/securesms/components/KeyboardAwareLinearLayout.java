@@ -27,6 +27,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Surface;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ServiceUtil;
@@ -40,7 +41,7 @@ import java.util.Set;
  * LinearLayout that, when a view container, will report back when it thinks a soft keyboard
  * has been opened and what its height would be.
  */
-public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
+public class KeyboardAwareLinearLayout extends LinearLayoutCompat implements ViewTreeObserver.OnGlobalLayoutListener {
   private static final String TAG = KeyboardAwareLinearLayout.class.getSimpleName();
 
   private final Rect                          rect                       = new Rect();
@@ -55,7 +56,6 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
   private int viewInset;
 
   private boolean keyboardOpen = false;
-  private int     rotation     = -1;
 
   public KeyboardAwareLinearLayout(Context context) {
     this(context, null);
@@ -76,22 +76,30 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
     viewInset                  = getViewInset();
   }
 
-  @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-    updateRotation();
-    updateKeyboardState();
-    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+  @Override
+  protected void onAttachedToWindow() {
+    super.onAttachedToWindow();
+    ViewTreeObserver observer = this.getViewTreeObserver();
+    observer.addOnGlobalLayoutListener(this);
   }
 
-  private void updateRotation() {
-    int oldRotation = rotation;
-    rotation = getDeviceRotation();
-    if (oldRotation != rotation) {
-      Log.w(TAG, "rotation changed");
-      onKeyboardClose();
+  @Override
+  protected void onDetachedFromWindow() {
+    super.onDetachedFromWindow();
+    ViewTreeObserver observer = this.getViewTreeObserver();
+    if (Build.VERSION.SDK_INT < 16) {
+      observer.removeGlobalOnLayoutListener(this);
+    } else {
+      observer.removeOnGlobalLayoutListener(this);
     }
   }
 
-  private void updateKeyboardState() {
+  @Override
+  public void onGlobalLayout() {
+    updateKeyboardState();
+  }
+
+  public void updateKeyboardState() {
     if (isLandscape()) {
       if (keyboardOpen) onKeyboardClose();
       return;
