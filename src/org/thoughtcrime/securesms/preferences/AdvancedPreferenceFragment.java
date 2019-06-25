@@ -12,6 +12,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
@@ -78,6 +80,11 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       dcContext.setConfigInt(CONFIG_MVBOX_MOVE, enabled? 1 : 0);
       return true;
     });
+
+    Preference emptyServerFolders = this.findPreference("pref_empty_server_folders");
+    if(emptyServerFolders!=null) {
+      emptyServerFolders.setOnPreferenceClickListener(new EmptyServerFoldersListener());
+    }
 
     Preference manageKeys = this.findPreference("pref_manage_keys");
     manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
@@ -270,4 +277,38 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
         })
         .execute();
   }
+
+
+  /***********************************************************************************************
+   * Empty server folder
+   **********************************************************************************************/
+
+  private class EmptyServerFoldersListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      View gl = View.inflate(getActivity(), R.layout.empty_folder_options, null);
+      CheckBox inboxCb = gl.findViewById(R.id.empty_inbox_folder);
+      CheckBox mvboxCb = gl.findViewById(R.id.empty_deltachat_folder);
+      new AlertDialog.Builder(getActivity())
+          .setTitle(R.string.pref_empty_server_title)
+          .setMessage(R.string.pref_empty_server_msg)
+          .setView(gl)
+          .setNegativeButton(R.string.cancel, null)
+          .setPositiveButton(R.string.pref_empty_server_do_button, (dialog, which) -> {
+            int flags = 0;
+            if (inboxCb!=null && inboxCb.isChecked()) {
+              flags |= DcContext.DC_EMPTY_INBOX;
+            }
+            if (mvboxCb!=null && mvboxCb.isChecked()) {
+              flags |= DcContext.DC_EMPTY_MVBOX;
+            }
+            if (flags!=0) {
+              dcContext.emptyServer(flags);
+            }
+          })
+          .show();
+      return true;
+    }
+  }
+
 }
