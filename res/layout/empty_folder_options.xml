@@ -13,7 +13,8 @@
 
         <CheckBox
             android:id="@+id/empty_inbox_folder"
-            android:text="Delete ALL messages in Inbox folder"
+            android:text="Delete ALL e-mails in Inbox folder"
+            android:textColor="@color/red_500"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -21,7 +22,8 @@
 
         <CheckBox
             android:id="@+id/empty_deltachat_folder"
-            android:text="Delete ALL messages in DeltaChat folder"
+            android:text="Delete ALL e-mails in DeltaChat folder"
+            android:textColor="@color/red_500"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

@@ -45,7 +45,7 @@
     <PreferenceCategory android:title="Experimental features">
 
         <Preference android:key="pref_empty_server_folders"
-                    android:title="Empty server folders" />
+                    android:title="Delete e-mails from server" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
