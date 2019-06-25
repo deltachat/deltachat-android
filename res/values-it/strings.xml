@@ -145,6 +145,8 @@
     <string name="menu_select_all">Seleziona tutto</string>
     <string name="menu_expand">Espandi</string>
     <string name="menu_edit_name">Modifica nome</string>
+    <string name="menu_edit_group_name">Modifica nome gruppo</string>
+    <string name="menu_edit_group_image">Modifica immagine gruppo</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="menu_advanced">Avanzate</string>
     <string name="menu_deaddrop">Richieste di contatto</string>
@@ -187,6 +189,12 @@
     <string name="ask_start_chat_with">Chattare with %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
+    <string name="info_outdated_app_title">La applicazione non è aggiornata.</string>
+    <string name="info_outdated_app_text">Sembra che tu abbia installato Delta Chat da una sorgente che non fornisce aggiornamenti automatici (es. GitHub). Scaricala da uno store per riceve nuove funzionalità e bug fix.</string>
+    <string name="info_outdated_app_dialog_title">Aggiorna sorgenti</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat è disponibile su:</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Contatti</string>
     <string name="contacts_enter_name_or_email">Inserisci nome o indirizzo email</string>
@@ -207,6 +215,10 @@
     <string name="chat_please_enter_message">Scrivere un messaggio.</string>
     <string name="chat_camera_unavailable">Camera non disponibile.</string>
     <string name="chat_unable_to_record_audio">Impossibile registrare audio.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nuovo messaggio</item>
+        <item quantity="other">%d nuovi messaggi</item>
+    </plurals>
     <string name="chat_no_messages_hint">Invia un messaggio a %1$s:\n\n• Non è necessario che anche %2$s usi Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante ed non essere crittografato. </string>
     <string name="chat_new_group_hint">Invia il primo messaggio per permettere agli altri di rispondere nel gruppo\n\n• Non è necessario che tutti i membri usino Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>

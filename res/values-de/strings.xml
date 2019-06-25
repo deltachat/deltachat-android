@@ -145,6 +145,8 @@
     <string name="menu_select_all">Alles auswählen</string>
     <string name="menu_expand">Erweitern</string>
     <string name="menu_edit_name">Name bearbeiten</string>
+    <string name="menu_edit_group_name">Gruppenname</string>
+    <string name="menu_edit_group_image">Gruppenbild</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_advanced">Erweitert</string>
     <string name="menu_deaddrop">Kontaktanfragen</string>
@@ -207,6 +209,10 @@
     <string name="chat_please_enter_message">Bitte eine Nachricht eingeben.</string>
     <string name="chat_camera_unavailable">Kamera nicht verfügbar.</string>
     <string name="chat_unable_to_record_audio">Es ist nicht möglich, Audio aufzunehmen.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d neue Nachricht</item>
+        <item quantity="other">%d neue Nachrichten</item>
+    </plurals>
     <string name="chat_no_messages_hint">Eine Nachricht an %1$s:\n\n• Es ist in Ordnung wenn %2$s kein Delta Chat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern und erfolgt unverschlüsselt. </string>
     <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
     <string name="chat_record_slide_to_cancel">Schieben um abzubrechen</string>
@@ -240,6 +246,7 @@
     <string name="group_hello_draft">Hallo, Ich habe gerade die Gruppe \"%1$s\" für uns erstellt.</string>
     <string name="group_self_not_in_group">Sie müssen ein Mitglied der Gruppe sein, um diese Aktion durchführen zu können.</string>
     <string name="profile_encryption">Verschlüsselung</string>
+    <string name="profile_shared_chats">Gemeinsame Chats</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_members">Mitglieder</string>
@@ -276,7 +283,7 @@
     <string name="welcome_intro7_message">Delta Chat ist für die geschäftliche Kommunikation geeignet, kompatibel und auf Standards basierend.</string>
     <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
-    <string name="login_header">Bei deinem Server anmelden</string>
+    <string name="login_header">Bei ihrem Server anmelden</string>
     <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
     <string name="login_no_servers_hint">Es gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_inbox">Posteingang</string>

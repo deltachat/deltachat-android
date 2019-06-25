@@ -160,7 +160,7 @@
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
     <string name="mute_for_seven_days">Silenciar por 7 días</string>
-    <string name="mute_forever">Silenciar para siempre</string>
+    <string name="mute_forever">Silenciar por siempre</string>
 
     <string name="share_location_once">una vez</string>
     <string name="share_location_for_5_minutes">por 5 minutos </string>
@@ -212,7 +212,7 @@
         <item quantity="other">%d chats des-archivados</item>
     </plurals>
     <string name="chat_archived_chats_title">Chats archivados</string>
-    <string name="chat_please_enter_message">Por favor ingrese un mensaje.</string>
+    <string name="chat_please_enter_message">Por favor, introduzca un mensaje.</string>
     <string name="chat_camera_unavailable">Cámara no disponible.</string>
     <string name="chat_unable_to_record_audio">No es posible grabar audio.</string>
     <plurals name="chat_n_new_messages">
