@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/save_log"
+        android:title="@string/menu_save_log"
+        android:icon="@drawable/ic_save_white_24dp"
+        app:showAsAction="always"/>
     <item android:title="@string/menu_copy_to_clipboard"
         android:id="@+id/copy_log_to_clipboard" />
     <item android:title="@string/menu_zoom_in"
