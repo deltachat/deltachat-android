@@ -13,7 +13,6 @@ import com.b44t.messenger.DcContact;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
@@ -62,7 +61,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   public void set(@NonNull GlideRequests glideRequests, int specialId, DcContact contact, String name, String number, String label, boolean multiSelect, boolean enabled) {
     this.glideRequests = glideRequests;
     this.specialId     = specialId;
-    this.name        = name;
+    this.name          = name;
     this.number        = number;
 
     if (specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP
@@ -79,6 +78,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
     setText(name, number, label, contact);
+    setEnabled(enabled);
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
     else             this.checkBox.setVisibility(View.GONE);
