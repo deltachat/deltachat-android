@@ -154,6 +154,7 @@
     <string name="menu_view_profile">Profili gör</string>
     <string name="menu_zoom_in">Yakınlaştır</string>
     <string name="menu_zoom_out">Uzaklaştır</string>
+    <string name="menu_save_log">Günlüğü kaydet</string>
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
 
     <string name="mute_for_one_hour">1 saatliğine sesini kıs</string>
@@ -400,6 +401,8 @@
     <string name="pref_in_chat_sounds">Sohbet içi sesler</string>
     <string name="pref_message_text_size">İleti yazı tipi boyutu</string>
     <string name="pref_view_log">Günlüğü gör</string>
+    <string name="pref_saved_log">Günlüğü İndirilenler klasörüne kaydet</string>
+    <string name="pref_save_log_failed">Günlüğü kaydetme başarısız</string>
     <string name="pref_log_header">Günlük</string>
     <string name="pref_other">Diğer</string>
     <string name="pref_backup">Yedekleme</string>
@@ -430,6 +433,13 @@
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
     <string name="pref_show_emails_accepted_contacts">Onaylanan kişiler için</string>
     <string name="pref_show_emails_all">Tümü</string>
+    <string name="pref_empty_server_title">TEHLİKELİ BÖLGE: E-postaları sunucudan sil</string>
+    <string name="pref_empty_server_msg">Bu işlev, verilen klasörlerdeki sohbet iletilerini kapsayıp TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
+    <string name="pref_empty_server_inbox">Gelen Kutusu klasöründeki TÜM e-postaları sil</string>
+    <string name="pref_empty_server_mvbox">DeltaChat klasöründeki TÜM e-postaları sil</string>
+    <string name="pref_empty_server_do_button">E-postaları sil</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt, otomatik uçtan uca e-posta şifrelemesi için yeni ve açık bir belirtim.\n\nUçtan uca ayarlamanız, gerektiğinde otomatik olarak oluşturulur ve Autocrypt Ayarlama İletileri ile aygıtlar arasında aktarabilirsiniz.</string>

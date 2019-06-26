@@ -154,6 +154,7 @@
     <string name="menu_view_profile">Ikusi profila</string>
     <string name="menu_zoom_in">Hurbildu zooma</string>
     <string name="menu_zoom_out">Urrundu zooma</string>
+    <string name="menu_save_log">Gorde egunkaria</string>
     <string name="title_share_location">Partekatu kokalekua taldeko kide guztiak</string>
 
     <string name="mute_for_one_hour">Mututu ordubete</string>
@@ -400,6 +401,8 @@
     <string name="pref_in_chat_sounds">Txat bitarteko soinuak</string>
     <string name="pref_message_text_size">Mezuen letra tamaina</string>
     <string name="pref_view_log">Ikusi egunkaria</string>
+    <string name="pref_saved_log">Egunkaria deskargen karpetan gorde da</string>
+    <string name="pref_save_log_failed">Huts egin du egunkaria gordetzean</string>
     <string name="pref_log_header">Egunkaria</string>
     <string name="pref_other">Bestelakoa</string>
     <string name="pref_backup">Babeskopia</string>
@@ -430,6 +433,13 @@
     <string name="pref_show_emails_no">Ez, txatak besterik ez</string>
     <string name="pref_show_emails_accepted_contacts">Onartutako kontaktuena</string>
     <string name="pref_show_emails_all">Denak</string>
+    <string name="pref_empty_server_title">ARRISKUTSUA: Ezabatu e-mailak zerbitzaritik</string>
+    <string name="pref_empty_server_msg">Funtzio honek IMAP zerbitzarian espazioa aurreztea ahalbidetzen dizu karpeta zehatzetako e-mail GUZTIAK ezabatuz, txatetako mezuak barne. Gailu honetako mezuak ez dira ezabatuko. Behin ezabatuta ezin dira berreskuratu!</string>
+    <string name="pref_empty_server_inbox">Ezabatu sarrera ontziko e-mail GUZTIAK</string>
+    <string name="pref_empty_server_mvbox">Ezabatu DeltaChat karpetako e-mail GUZTIAK</string>
+    <string name="pref_empty_server_do_button">Ezabatu e-mailak</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt e-maila muturretik muturrera zifratzeko espezifikazio berri eta ireki bat da.\n\nZure muturretik muturrerako ezarpena automatikoki sortzend a behar denean eta gailutik gailura eraman dezakezu Autocrypt ezarpen mezuekin.</string>

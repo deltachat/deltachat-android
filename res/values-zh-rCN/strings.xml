@@ -148,6 +148,7 @@
     <string name="menu_view_profile"> 查看个人资料</string>
     <string name="menu_zoom_in">放大</string>
     <string name="menu_zoom_out">缩小</string>
+    <string name="menu_save_log">保存日志</string>
     <string name="title_share_location">与群组所有成员分享位置</string>
 
     <string name="mute_for_one_hour">静音1小时</string>
@@ -389,6 +390,8 @@
     <string name="pref_in_chat_sounds">接收消息提示音</string>
     <string name="pref_message_text_size">消息字体大小</string>
     <string name="pref_view_log">查看日志</string>
+    <string name="pref_saved_log">已将日志保存至下载文件夹</string>
+    <string name="pref_save_log_failed">保存日志失败</string>
     <string name="pref_log_header">日志</string>
     <string name="pref_other">其他</string>
     <string name="pref_backup">备份</string>
@@ -419,6 +422,13 @@
     <string name="pref_show_emails_no">不，仅聊天</string>
     <string name="pref_show_emails_accepted_contacts">为接受的联系人</string>
     <string name="pref_show_emails_all">全部</string>
+    <string name="pref_empty_server_title">危险区：删除服务器上的电子邮件</string>
+    <string name="pref_empty_server_msg">此功能通过删除给定文件夹中的所有电子邮件（包括聊天消息）以释放您IMAP服务器上的空间。 此设备上的消息不会被删除。 此删除无法撤消！</string>
+    <string name="pref_empty_server_inbox">删除收件箱中所有电子邮件</string>
+    <string name="pref_empty_server_mvbox">删除DeltaChat文件夹中所有电子邮件</string>
+    <string name="pref_empty_server_do_button">删除电子邮件</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt是一种用于自动端到端电子邮件加密的全新开放规范。\n\n您的端到端设置会根据需要自动创建并且您可以使用Autocrypt设置消息在设备之间传输它。</string>

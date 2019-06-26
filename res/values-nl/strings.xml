@@ -154,6 +154,7 @@
     <string name="menu_view_profile">Profiel bekijken</string>
     <string name="menu_zoom_in">Inzoomen</string>
     <string name="menu_zoom_out">Uitzoomen</string>
+    <string name="menu_save_log">Logboek opslaan</string>
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
 
     <string name="mute_for_one_hour">1 uur lang dempen</string>
@@ -400,6 +401,8 @@
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
     <string name="pref_message_text_size">Tekstgrootte van berichten</string>
     <string name="pref_view_log">Logboek bekijken</string>
+    <string name="pref_saved_log">Logboek opslaan in downloads-map</string>
+    <string name="pref_save_log_failed">Kan logboek niet opslaan</string>
     <string name="pref_log_header">Logboek</string>
     <string name="pref_other">Overig</string>
     <string name="pref_backup">Back-up</string>
@@ -430,6 +433,13 @@
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
     <string name="pref_show_emails_all">Alles</string>
+    <string name="pref_empty_server_title">GEVARENZONE: e-mails verwijderen van server</string>
+    <string name="pref_empty_server_msg">Deze optie helpt je ruimte vrij te maken op je IMAP-server door ALLE e-mails, inclusief gesprekken, te verwijderen uit de opgegeven mappen. Berichten op dit apparaat worden niet verwijderd. Deze actie kan niet ongedaan worden gemaakt!</string>
+    <string name="pref_empty_server_inbox">ALLE e-mails uit Postvak IN verwijderen</string>
+    <string name="pref_empty_server_mvbox">ALLE e-mails uit DeltaChat-map verwijderen</string>
+    <string name="pref_empty_server_do_button">E-mails verwijderen</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt is een nieuwe, open specificatie voor het automatisch instellen van end-to-end e-mailversleuteling.\n\nJe instellingen worden, indien nodig, automatisch gecreëerd en kunnen worden overgezet naar andere apparaten middels instelberichten.</string>

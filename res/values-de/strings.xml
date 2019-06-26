@@ -154,6 +154,7 @@
     <string name="menu_view_profile">Profil anzeigen</string>
     <string name="menu_zoom_in">Ansicht vergrößern</string>
     <string name="menu_zoom_out">Ansicht verkleinern</string>
+    <string name="menu_save_log">Logdatei sichern</string>
     <string name="title_share_location">Standort mit allen Gruppenmitgliedern teilen</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
@@ -189,6 +190,12 @@
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s aus der Gruppe löschen?</string>
+    <string name="info_outdated_app_title">Ihre App-version ist veraltet. </string>
+    <string name="info_outdated_app_text">Anscheinend haben Sie Delta Chat von einer Quelle ohne automatische Updates (z. B. GitHub) installiert. Bitte wechseln Sie zu einer Store-Version, um die neuesten Funktionen und Fehlerbehebungen zu erhalten.</string>
+    <string name="info_outdated_app_dialog_title">Quellen updaten</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat ist verfügbar bei:</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontakte</string>
     <string name="contacts_enter_name_or_email">Namen oder E-Mail-Adresse eingeben</string>
@@ -231,6 +238,9 @@
     <!-- map -->
     <string name="filter_map_on_time">Standorte im Zeitrahmen anzeigen</string>
     <string name="show_location_traces">Spuren anzeigen</string>
+    <string name="add_poi">Sende eine Ortsmarkierung. </string>
+
+
     <!-- search -->
     <string name="search">Suchen</string>
     <string name="search_explain">Suche nach Chats, Kontakten und Nachrichten</string>
@@ -393,6 +403,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_in_chat_sounds">In-Chat Klänge</string>
     <string name="pref_message_text_size">Schriftgröße</string>
     <string name="pref_view_log">Protokoll anzeigen</string>
+    <string name="pref_saved_log">Die Logdatei wurde im Downloads Ordner gesichert. </string>
+    <string name="pref_save_log_failed">Logdatei konnte nicht gesichert werden. </string>
     <string name="pref_log_header">Protokoll</string>
     <string name="pref_other">Sonstiges</string>
     <string name="pref_backup">Backup</string>
@@ -423,6 +435,13 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_show_emails_no">Nein, nur Chats</string>
     <string name="pref_show_emails_accepted_contacts">Akzeptierte Kontakte</string>
     <string name="pref_show_emails_all">Alle</string>
+    <string name="pref_empty_server_title">ACHTUNG: E-Mails vom Server löschen!</string>
+    <string name="pref_empty_server_msg">Mit dieser Funktion können Sie Speicherplatz auf Ihrem IMAP-Server freigeben, indem Sie ALLE E-Mails, einschließlich Chat-Nachrichten, in den angegebenen Ordnern löschen. Nachrichten auf diesem Gerät werden nicht gelöscht. Die Löschung kann nicht rückgängig gemacht werden!</string>
+    <string name="pref_empty_server_inbox">Löschen ALLER e-mails im Nachrichteneingangsordner (INBOX)</string>
+    <string name="pref_empty_server_mvbox">Löschen ALLER e-mails im DeltaChat Ordner.</string>
+    <string name="pref_empty_server_do_button">E-mails löschen. </string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nDas Ende-zu-Ende-Setup wird dabei automatisch eingerichtet und kann mit Autocrypt-Setup-Nachrichten zwischen Geräten übertragen werden.</string>

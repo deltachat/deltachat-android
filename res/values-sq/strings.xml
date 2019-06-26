@@ -154,6 +154,7 @@
     <string name="menu_view_profile">Shihini profilin</string>
     <string name="menu_zoom_in">Zmadhim</string>
     <string name="menu_zoom_out">Zvogëlim</string>
+    <string name="menu_save_log">Ruaje regjistrin</string>
     <string name="title_share_location">Jepua vendndodhjen krejt anëtarëve të grupit</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
@@ -400,6 +401,8 @@
     <string name="pref_in_chat_sounds">Tinguj brenda fjalosjeje</string>
     <string name="pref_message_text_size">Madhësi shkronjash mesazhi</string>
     <string name="pref_view_log">Shihni regjistrin</string>
+    <string name="pref_saved_log">Regjistri u ruajt te dosja Shkarkime</string>
+    <string name="pref_save_log_failed">Dështoi ruajtja e regjistrit</string>
     <string name="pref_log_header">Regjistër</string>
     <string name="pref_other">Të tjera</string>
     <string name="pref_backup">Kopjeruajtje</string>
@@ -430,6 +433,13 @@
     <string name="pref_show_emails_no">Jo, vetëm fjalosje</string>
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>
     <string name="pref_show_emails_all">Krejt</string>
+    <string name="pref_empty_server_title">ZONË ME RREZIK: Fshini email-e që nga shërbyesi</string>
+    <string name="pref_empty_server_msg">Ky funksion ndihmon të lironi hapësirë te shërbyesi juaj IMAP përmes fshirjes së KREJT email-eve, përfshi mesazhe bisedash, te dosjet e dhëna. Mesazhet në këtë pajisje s’do të fshihen.  Fshirja s’mund të zhbëhet!</string>
+    <string name="pref_empty_server_inbox">Fshiji KREJT email-et te dosja e të Marrëve</string>
+    <string name="pref_empty_server_mvbox">Fshiji KREJT email-et te dosja DeltaChat</string>
+    <string name="pref_empty_server_do_button">Fshiji email-et</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt-i është një protokoll i ri dhe i hapur për fshehtëzim automatik email-esh skaj-më-skaj.\n\nRregullimi skaj-më-skaj për ju krijohet vetvetiu kur duhet dhe mund ta shpërngulni nga një pajisje në tjetër përmes Mesazhesh Rregullimi Autocrypt-i.</string>
