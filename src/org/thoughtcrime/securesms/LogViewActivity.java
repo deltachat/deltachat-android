@@ -64,15 +64,10 @@ public class LogViewActivity extends BaseActionBarActivity {
         finish();
         return true;
       case R.id.save_log:
-        try {
-          if (logViewFragment.saveLogFile())
-            Toast.makeText(getApplicationContext(), R.string.pref_saved_log, Toast.LENGTH_LONG).show();
-          else
-            Toast.makeText(getApplicationContext(), R.string.pref_save_log_failed, Toast.LENGTH_LONG).show();
-        } catch (NoExternalStorageException e) {
-          e.printStackTrace();
+        if (logViewFragment.saveLogFile())
+          Toast.makeText(getApplicationContext(), R.string.pref_saved_log, Toast.LENGTH_LONG).show();
+        else
           Toast.makeText(getApplicationContext(), R.string.pref_save_log_failed, Toast.LENGTH_LONG).show();
-        }
         return true;
       case R.id.copy_log_to_clipboard:
         Util.writeTextToClipboard(this, logViewFragment.getLogText());

@@ -102,7 +102,7 @@ public class LogViewFragment extends Fragment {
 
   public void scrollUpLog() { logPreview.setSelection(0); }
 
-  public boolean saveLogFile() throws NoExternalStorageException {
+  public boolean saveLogFile() {
 
     File             outputDir   = null;
     SimpleDateFormat dateFormat  = new SimpleDateFormat("yyyyMMdd-HHmmss");
@@ -111,26 +111,18 @@ public class LogViewFragment extends Fragment {
 
     try {
       outputDir = StorageUtil.getDownloadDir();
-      try {
-        String logText =  logPreview.getText().toString();
-        if(!logText.trim().equals("")){
-          File logFile = new File(outputDir + "/" + logFileName);
+      String logText =  logPreview.getText().toString();
+      if(!logText.trim().equals("")){
+        File logFile = new File(outputDir + "/" + logFileName);
 
-          if(!logFile.exists()){
-            logFile.createNewFile();
-          }
+        if(!logFile.exists()) logFile.createNewFile();
 
-          FileWriter logFileWriter = new FileWriter(logFile, false);
-          BufferedWriter logFileBufferWriter = new BufferedWriter(logFileWriter);
-          logFileBufferWriter.write(logText);
-          logFileBufferWriter.close();
-        }
+        FileWriter logFileWriter = new FileWriter(logFile, false);
+        BufferedWriter logFileBufferWriter = new BufferedWriter(logFileWriter);
+        logFileBufferWriter.write(logText);
+        logFileBufferWriter.close();
       }
-      catch (IOException e) {
-        e.printStackTrace();
-        return false;
-      }
-    } catch (NoExternalStorageException e) {
+    } catch (IOException | NoExternalStorageException e) {
       e.printStackTrace();
       return false;
     }
