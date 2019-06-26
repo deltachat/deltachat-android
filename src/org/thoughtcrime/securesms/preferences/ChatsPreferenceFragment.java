@@ -76,7 +76,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
     initializeListSummary((ListPreferenceWithSummary) findPreference("pref_compression"));
 
-    String value = Integer.toString(dcContext.getConfigInt("pref_show_emails"));
+    String value = Integer.toString(dcContext.getConfigInt("show_emails"));
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
 
