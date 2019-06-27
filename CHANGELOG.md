@@ -32,8 +32,9 @@
 The changes have been done by Allan Nordhøy, Ampli-fier, Andrei Guliaikin,
 Anna Ayala, Asiel Díaz Benítez, Besnik, Björn Petersen, Boehrsi, Calbasi,
 Christian Schneider, cyBerta, Enrico B., Eric Lavarde, Ferhad Necef,
-Heimen Stoffels, Holger Krekel, Iskatel Istiny, Lars-Magnus Skog, Lin Miaoski,
-Luis, Moo, Ole Carlsen, Osoitz, Ozancan Karataş, Racer, Sebek, Yuriy, Zkdc
+Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels, Holger Krekel,
+Iskatel Istiny, Jikstra, Lars-Magnus Skog, Lin Miaoski, Luis, Moo, Ole Carlsen,
+Osoitz, Ozancan Karataş, Racer, Sebek, Yuriy, Zkdc
 
 ## v0.304.0
 2019-05-07
