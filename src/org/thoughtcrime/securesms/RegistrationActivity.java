@@ -259,6 +259,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             } else if (isGmail(email)) {
                 showGmailNoOauth2Hint();
                 oauth2started.set(false);
+            } else if (isOutlook(email)) {
+                showOutlookHint();
+                oauth2started.set(false);
             }
             else {
                 oauth2started.set(false);
@@ -306,6 +309,30 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             gmailDialogShown = true;
             new AlertDialog.Builder(this)
                 .setMessage(R.string.login_info_gmail_text)
+                .setPositiveButton(R.string.ok, null)
+                .show();
+        }
+    }
+
+    private boolean isOutlook(String email) {
+        return email != null
+           && (email.toLowerCase().contains("@outlook.") || email.toLowerCase().contains("@hotmail."));
+    }
+
+    private boolean outlookDialogShown;
+    private void showOutlookHint()
+    {
+        if(!outlookDialogShown) {
+            outlookDialogShown = true;
+            new AlertDialog.Builder(this)
+                .setMessage(
+                      "Outlook- and Hotmail-e-mail-addresses "
+                    + "may currently not work as expected "
+                    + "as these servers may remove some important transport information."
+                    + "\n\n"
+                    + "Hopefully sooner or later there will be a fix; "
+                    + "for now, we suggest to use another e-mail-address "
+                    + "or try Delta Chat again when the issue is fixed.")
                 .setPositiveButton(R.string.ok, null)
                 .show();
         }
