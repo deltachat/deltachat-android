@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.imageeditor.ColorableRenderer;
+import org.thoughtcrime.securesms.imageeditor.ImageEditorMediaConstraints;
 import org.thoughtcrime.securesms.imageeditor.ImageEditorView;
 import org.thoughtcrime.securesms.imageeditor.Renderer;
 import org.thoughtcrime.securesms.imageeditor.model.EditorElement;
@@ -97,7 +98,7 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
       throw new AssertionError("No KEY_IMAGE_URI supplied");
     }
 
-    MediaConstraints mediaConstraints = new PushMediaConstraints();
+    MediaConstraints mediaConstraints = new ImageEditorMediaConstraints();
 
     imageMaxWidth  = mediaConstraints.getImageMaxWidth(requireContext());
     imageMaxHeight = mediaConstraints.getImageMaxHeight(requireContext());
