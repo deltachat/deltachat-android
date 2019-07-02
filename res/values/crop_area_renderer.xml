@@ -2,7 +2,7 @@
 <resources>
 
     <dimen name="crop_area_renderer_edge_size">32dp</dimen>
-    <dimen name="crop_area_renderer_edge_thickness">2dp</dimen>
+    <dimen name="crop_area_renderer_edge_thickness">4dp</dimen>
 
     <color name="crop_area_renderer_edge_color">#ffffffff</color>
     <color name="crop_area_renderer_outer_color">#7f000000</color>
