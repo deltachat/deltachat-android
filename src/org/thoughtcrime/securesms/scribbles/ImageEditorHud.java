@@ -173,6 +173,14 @@ public final class ImageEditorHud extends LinearLayout {
     this.eventListener = eventListener != null ? eventListener : NULL_EVENT_LISTENER;
   }
 
+  public boolean onBackPressed() {
+    if (ImageEditorHud.Mode.NONE != currentMode) {
+      setMode(ImageEditorHud.Mode.NONE);
+      return true;
+    }
+    return false;
+  }
+
   public void enterMode(@NonNull Mode mode) {
     setMode(mode, false);
   }

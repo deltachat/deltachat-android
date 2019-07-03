@@ -22,7 +22,6 @@ import org.thoughtcrime.securesms.imageeditor.model.EditorElement;
 import org.thoughtcrime.securesms.imageeditor.model.EditorModel;
 import org.thoughtcrime.securesms.imageeditor.renderers.MultiLineTextRenderer;
 import org.thoughtcrime.securesms.mms.MediaConstraints;
-import org.thoughtcrime.securesms.mms.PushMediaConstraints;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.widget.VerticalSlideColorPicker;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -300,6 +299,10 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
 
   @Override
   public void onRequestFullScreen(boolean fullScreen) {
+  }
+
+  public boolean onBackPressed() {
+    return imageEditorHud.onBackPressed();
   }
 
   private void refreshUniqueColors() {
