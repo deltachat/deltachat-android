@@ -20,11 +20,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -385,7 +381,6 @@ public class ConversationListFragment extends Fragment
         int msgId = item.getMsgId();
         int contactId = item.getContactId();
         DcContact contact = dcContext.getContact(contactId);
-        //TODO: check if forward messages
         new AlertDialog.Builder(getActivity())
           .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
           .setPositiveButton(android.R.string.ok, (dialog, which) ->  {
@@ -394,8 +389,10 @@ public class ConversationListFragment extends Fragment
                 handleCreateConversation(belongingChatId);
               }
           })
-          .setNegativeButton(R.string.not_now, null)
-          .setNeutralButton(R.string.never, (dialog, which) -> {
+          .setNegativeButton(R.string.not_now, (dialog, which) -> {
+            dcContext.marknoticedContact(contactId);
+          })
+          .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
             dcContext.blockContact(contactId, 1);
           })
           .show();
