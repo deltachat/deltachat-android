@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.notifications;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.media.AudioManager;
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.media.SoundPool;
 import android.net.Uri;
@@ -279,13 +280,18 @@ abstract class MessageNotifier {
 
     }
 
-    void playNotificationSound(Uri ringtone, boolean vibrate) {
-        RingtoneManager.getRingtone(appContext, ringtone).play();
-        if (vibrate) {
+    private void playNotificationSound(Uri uri, boolean vibrate) {
+        Ringtone ringtone = RingtoneManager.getRingtone(appContext, uri);
+        if (ringtone!=null) {
+            ringtone.play();
+        }
 
+        if (vibrate) {
             Vibrator v = (Vibrator) appContext.getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(100);
-            v.vibrate(200);
+            if (v!=null) {
+                v.vibrate(100);
+                v.vibrate(200);
+            }
         }
     }
 
