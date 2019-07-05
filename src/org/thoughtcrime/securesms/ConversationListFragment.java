@@ -39,7 +39,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -140,8 +139,6 @@ public class ConversationListFragment extends Fragment
     list.setLayoutManager(new LinearLayoutManager(getActivity()));
     list.setItemAnimator(new DeleteItemAnimator());
 
-    new ItemTouchHelper(new ArchiveListenerCallback()).attachToRecyclerView(list);
-
     return view;
   }
 
@@ -174,17 +171,6 @@ public class ConversationListFragment extends Fragment
 
   public ConversationListAdapter getListAdapter() {
     return (ConversationListAdapter) list.getAdapter();
-  }
-
-  public void setQueryFilter(String query) {
-    this.queryFilter = query;
-    getLoaderManager().restartLoader(0, null, this);
-  }
-
-  public void resetQueryFilter() {
-    if (!TextUtils.isEmpty(this.queryFilter)) {
-      setQueryFilter("");
-    }
   }
 
   private void initializeFabClickListener() {
@@ -361,7 +347,6 @@ public class ConversationListFragment extends Fragment
   }
 
 
-  boolean forceListRedraw;
   @Override
   public void onLoadFinished(Loader<DcChatlist> arg0, DcChatlist chatlist) {
     if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter) && !archive) {
@@ -379,16 +364,6 @@ public class ConversationListFragment extends Fragment
       emptyState.setVisibility(View.GONE);
       emptySearch.setVisibility(View.INVISIBLE);
       fab.stopPulse();
-    }
-
-    // this hack is needed as otherwise, for whatever reason,
-    // swiped contact request show an empty item if there pops up a new contact request imediately.
-    // anyone who wants to invesigate to this is very welcome :)
-    if (forceListRedraw) {
-      list.setLayoutManager(null);
-      list.getRecycledViewPool().clear();
-      list.setLayoutManager(new LinearLayoutManager(getActivity()));
-      forceListRedraw = false;
     }
 
     getListAdapter().changeData(chatlist);
@@ -510,120 +485,6 @@ public class ConversationListFragment extends Fragment
     }
 
     actionMode = null;
-  }
-
-  private class ArchiveListenerCallback extends ItemTouchHelper.SimpleCallback {
-
-    ArchiveListenerCallback() {
-      super(0, ItemTouchHelper.RIGHT);
-    }
-
-    @Override
-    public boolean onMove(RecyclerView recyclerView,
-                          RecyclerView.ViewHolder viewHolder,
-                          RecyclerView.ViewHolder target)
-    {
-      return false;
-    }
-
-    @Override
-    public int getSwipeDirs(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-      if (viewHolder.itemView instanceof ConversationListItemAction) {
-        return 0;
-      }
-
-      if (actionMode != null) {
-        return 0;
-      }
-
-      return super.getSwipeDirs(recyclerView, viewHolder);
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    @Override
-    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-      if (viewHolder.itemView instanceof ConversationListItemInboxZero) return;
-      final long chatId         = ((ConversationListItem)viewHolder.itemView).getChatId();
-      final DcContext dcContext = DcHelper.getContext(getActivity());
-
-      if (archive) {
-        new SnackbarAsyncTask<Long>(getView(),
-                                    getResources().getQuantityString(R.plurals.chat_unarchived, 1, 1),
-                                    getString(R.string.undo),
-                                    Snackbar.LENGTH_LONG, false)
-        {
-          @Override
-          protected void executeAction(@Nullable Long parameter) {
-            dcContext.archiveChat((int) chatId, 0);
-          }
-
-          @Override
-          protected void reverseAction(@Nullable Long parameter) {
-            dcContext.archiveChat((int) chatId, 1);
-          }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
-      } else {
-        if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-          int contactId = ((ConversationListItem)viewHolder.itemView).getContactId();
-          dcContext.marknoticedContact(contactId);
-          forceListRedraw = true;
-          return;
-        }
-
-        new SnackbarAsyncTask<Long>(getView(),
-                                    getResources().getQuantityString(R.plurals.chat_archived, 1, 1),
-                                    getString(R.string.undo),
-                                    Snackbar.LENGTH_LONG, false)
-        {
-          @Override
-          protected void executeAction(@Nullable Long parameter) {
-            dcContext.archiveChat((int) chatId, 1);
-          }
-
-          @Override
-          protected void reverseAction(@Nullable Long parameter) {
-            dcContext.archiveChat((int) chatId, 0);
-          }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, chatId);
-      }
-    }
-
-    @Override
-    public void onChildDraw(Canvas c, RecyclerView recyclerView,
-                            RecyclerView.ViewHolder viewHolder,
-                            float dX, float dY, int actionState,
-                            boolean isCurrentlyActive)
-    {
-      if (viewHolder.itemView instanceof ConversationListItemInboxZero) return;
-      if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
-        View  itemView = viewHolder.itemView;
-        Paint p        = new Paint();
-        float alpha    = 1.0f - Math.abs(dX) / (float) viewHolder.itemView.getWidth();
-
-        if (dX > 0) {
-          Bitmap icon;
-
-          if (archive) icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_unarchive_white_36dp);
-          else         icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_archive_white_36dp);
-
-          if (alpha > 0) p.setColor(getResources().getColor(DynamicTheme.isDarkTheme(getActivity())? R.color.gray95 : R.color.delta_primary));
-          else           p.setColor(DynamicTheme.isDarkTheme(getActivity())? Color.BLACK : Color.WHITE);
-
-          c.drawRect((float) itemView.getLeft(), (float) itemView.getTop(), dX,
-                     (float) itemView.getBottom(), p);
-
-          c.drawBitmap(icon,
-                       (float) itemView.getLeft() + getResources().getDimension(R.dimen.conversation_list_fragment_archive_padding),
-                       (float) itemView.getTop() + ((float) itemView.getBottom() - (float) itemView.getTop() - icon.getHeight())/2,
-                       p);
-        }
-
-        viewHolder.itemView.setAlpha(alpha);
-        viewHolder.itemView.setTranslationX(dX);
-      } else {
-        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-      }
-    }
   }
 
   @Override
