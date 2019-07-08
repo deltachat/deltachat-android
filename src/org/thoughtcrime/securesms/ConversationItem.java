@@ -625,6 +625,9 @@ public class ConversationItem extends LinearLayout
         }
       })
       .setNegativeButton(android.R.string.cancel, null)
+      .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
+        dcContext.blockContact(messageRecord.getFromId(), 1);
+      })
       .setMessage(context.getString(R.string.ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
       .show();
   }
