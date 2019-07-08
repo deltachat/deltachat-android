@@ -17,22 +17,13 @@
 
         <LinearLayout
             android:id="@+id/scribble_toolbar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/scribble_delete_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="6dp"
-                android:src="@drawable/ic_trash_filled_32" />
 
             <ImageView
                 android:id="@+id/scribble_undo_button"
@@ -41,6 +32,14 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="6dp"
                 android:src="@drawable/ic_undo_32" />
+
+            <ImageView
+                android:id="@+id/scribble_delete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="6dp"
+                android:src="@drawable/ic_trash_filled_32" />
 
             <ImageView
                 android:id="@+id/scribble_text_button"
@@ -97,6 +96,12 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="6dp"
                 android:src="@drawable/ic_rotate_32" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
 
             <ImageView
                 android:id="@+id/scribble_confirm_button"
