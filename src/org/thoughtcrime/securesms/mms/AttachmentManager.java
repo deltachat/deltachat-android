@@ -544,6 +544,7 @@ public class AttachmentManager {
       Intent intent = new Intent(context, ScribbleActivity.class);
       intent.setData(getSlideUri());
       ((Activity)context).startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
+      ((Activity)context).overridePendingTransition(R.anim.fade_slide_from_bottom, R.anim.fade_scale_out);
     }
   }
 
