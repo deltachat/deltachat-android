@@ -8,8 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.ConversationActivity;
-import org.thoughtcrime.securesms.ConversationPopupActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Prefs.VibrateState;
@@ -152,16 +150,6 @@ public class NotificationState {
     intent.setPackage(context.getPackageName());
 
     return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-  }
-
-  PendingIntent getQuickReplyIntent(Context context, Recipient recipient) {
-    if (chats.size() != 1) throw new AssertionError("We only support replies to single chat notifications! " + chats.size());
-
-    Intent     intent           = new Intent(context, ConversationPopupActivity.class);
-    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, (chats.toArray(new Integer[chats.size()]))[0]);
-    intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
-
-    return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
   }
 
 
