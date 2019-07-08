@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import org.thoughtcrime.securesms.R;
@@ -30,7 +29,6 @@ public final class ImageEditorHud extends LinearLayout {
   private View                     cropButton;
   private View                     cropFlipButton;
   private View                     cropRotateButton;
-  private ImageView                cropAspectLock;
   private View                     drawButton;
   private View                     highlightButton;
   private View                     textButton;
@@ -75,7 +73,6 @@ public final class ImageEditorHud extends LinearLayout {
     cropButton       = findViewById(R.id.scribble_crop_button);
     cropFlipButton   = findViewById(R.id.scribble_crop_flip);
     cropRotateButton = findViewById(R.id.scribble_crop_rotate);
-    cropAspectLock   = findViewById(R.id.scribble_crop_aspect_lock);
     colorPalette     = findViewById(R.id.scribble_color_palette);
     drawButton       = findViewById(R.id.scribble_draw_button);
     highlightButton  = findViewById(R.id.scribble_highlight_button);
@@ -87,18 +84,9 @@ public final class ImageEditorHud extends LinearLayout {
     confirmButton    = findViewById(R.id.scribble_confirm_button);
     colorPicker      = findViewById(R.id.scribble_color_picker);
 
-    cropAspectLock.setOnClickListener(v -> {
-      eventListener.onCropAspectLock(!eventListener.isCropAspectLocked());
-      updateCropAspectLockImage(eventListener.isCropAspectLocked());
-    });
-
     initializeViews();
     initializeVisibilityMap();
     setMode(Mode.NONE);
-  }
-
-  private void updateCropAspectLockImage(boolean cropAspectLocked) {
-    cropAspectLock.setImageDrawable(getResources().getDrawable(cropAspectLocked ? R.drawable.ic_crop_lock_32 : R.drawable.ic_crop_unlock_32));
   }
 
   private void initializeVisibilityMap() {
@@ -112,7 +100,7 @@ public final class ImageEditorHud extends LinearLayout {
 
     setVisibleViewsWhenInMode(Mode.MOVE_DELETE, confirmButton, deleteButton);
 
-    setVisibleViewsWhenInMode(Mode.CROP, confirmButton, cropFlipButton, cropRotateButton, cropAspectLock, undoButton);
+    setVisibleViewsWhenInMode(Mode.CROP, confirmButton, cropFlipButton, cropRotateButton, undoButton);
 
     for (Set<View> views : visibilityModeMap.values()) {
       allViews.addAll(views);
@@ -197,7 +185,6 @@ public final class ImageEditorHud extends LinearLayout {
     }
 
     switch (mode) {
-      case CROP:      presentModeCrop();      break;
       case DRAW:      presentModeDraw();      break;
       case HIGHLIGHT: presentModeHighlight(); break;
       case TEXT:      presentModeText();      break;
@@ -213,10 +200,6 @@ public final class ImageEditorHud extends LinearLayout {
     return visibleButtons != null &&
            visibleButtons.contains(button) &&
            (button != undoButton || undoAvailable);
-  }
-
-  private void presentModeCrop() {
-    updateCropAspectLockImage(eventListener.isCropAspectLocked());
   }
 
   private void presentModeDraw() {
@@ -259,8 +242,6 @@ public final class ImageEditorHud extends LinearLayout {
     void onDelete();
     void onFlipHorizontal();
     void onRotate90AntiClockwise();
-    void onCropAspectLock(boolean locked);
-    boolean isCropAspectLocked();
     void onRequestFullScreen(boolean fullScreen);
     void onSave();
   }
@@ -291,14 +272,6 @@ public final class ImageEditorHud extends LinearLayout {
     public void onRotate90AntiClockwise() {
     }
 
-    @Override
-    public void onCropAspectLock(boolean locked) {
-    }
-
-    @Override
-    public boolean isCropAspectLocked() {
-      return false;
-    }
 
     @Override
     public void onRequestFullScreen(boolean fullScreen) {

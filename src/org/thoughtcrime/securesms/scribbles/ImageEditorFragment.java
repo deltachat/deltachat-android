@@ -288,16 +288,6 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
   }
 
   @Override
-  public void onCropAspectLock(boolean locked) {
-    imageEditorView.getModel().setCropAspectLock(locked);
-  }
-
-  @Override
-  public boolean isCropAspectLocked() {
-    return imageEditorView.getModel().isCropAspectLocked();
-  }
-
-  @Override
   public void onRequestFullScreen(boolean fullScreen) {
   }
 

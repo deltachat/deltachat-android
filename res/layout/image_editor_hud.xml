@@ -90,7 +90,6 @@
                 android:padding="6dp"
                 android:src="@drawable/ic_flip_32" />
 
-
             <ImageView
                 android:id="@+id/scribble_crop_rotate"
                 android:layout_width="wrap_content"
@@ -98,14 +97,6 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="6dp"
                 android:src="@drawable/ic_rotate_32" />
-
-            <ImageView
-                android:id="@+id/scribble_crop_aspect_lock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="6dp"
-                android:src="@drawable/ic_crop_lock_32" />
 
             <ImageView
                 android:id="@+id/scribble_confirm_button"

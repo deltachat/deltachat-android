@@ -98,7 +98,7 @@ final class EditorElementHierarchy {
 
     cropEditorElement.getFlags()
                      .setRotateLocked(true)
-                     .setAspectLocked(true)
+                     .setAspectLocked(false)
                      .setSelectable(false)
                      .setVisible(false)
                      .persist();

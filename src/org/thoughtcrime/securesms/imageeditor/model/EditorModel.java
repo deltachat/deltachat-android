@@ -247,20 +247,6 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
     updateUndoRedoAvailableState(undoRedoStacks);
   }
 
-  public void setCropAspectLock(boolean locked) {
-    EditorFlags flags = editorElementHierarchy.getCropEditorElement().getFlags();
-    int currentState  = flags.setAspectLocked(locked).getCurrentState();
-
-    flags.reset();
-    flags.setAspectLocked(locked)
-         .persist();
-    flags.restoreState(currentState);
-  }
-
-  public boolean isCropAspectLocked() {
-    return editorElementHierarchy.getCropEditorElement().getFlags().isAspectLocked();
-  }
-
   public void postEdit(boolean allowScaleToRepairCrop) {
     boolean cropping = isCropping();
     if (cropping) {
