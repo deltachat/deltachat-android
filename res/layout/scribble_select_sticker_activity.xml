@@ -9,7 +9,14 @@
             android:id="@+id/camera_sticker_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabBackground="@color/delta_primary"
+            android:elevation="4dp"
+            android:background="?attr/colorPrimary"
+            app:tabPaddingStart="3dp"
+            app:tabPaddingEnd="3dp"
+            app:tabBackground="?attr/colorPrimary"
+            app:tabIndicatorColor="@color/white"
+            app:tabTextColor="@color/gray10"
+            app:tabSelectedTextColor="@color/white"
             app:tabMode="fixed"/>
 
     <android.support.v4.view.ViewPager
@@ -17,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
-            android:background="@android:color/white" />
+            android:background="@color/gray20" />
 
 </LinearLayout>
 
