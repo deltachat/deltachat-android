@@ -115,25 +115,20 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
   }
 
   void addActions(@NonNull PendingIntent markReadIntent,
-                         @NonNull PendingIntent compatInNotificationReplyIntent,
                          @NonNull PendingIntent inNotificationReplyIntent)
   {
     Action markAsReadAction = new Action(R.drawable.check,
                                          context.getString(R.string.notify_mark_read),
                                          markReadIntent);
 
-    Action replyAction;
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-      replyAction = new Action(R.drawable.ic_reply_white_36dp,
-              context.getString(R.string.notify_reply_button),
-              compatInNotificationReplyIntent);
-    } else {
-      replyAction = new Action.Builder(R.drawable.ic_reply_white_36dp,
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+      Action replyAction = new Action.Builder(R.drawable.ic_reply_white_36dp,
               context.getString(R.string.notify_reply_button),
               inNotificationReplyIntent)
               .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
                       .setLabel(context.getString(R.string.notify_reply_button)).build())
               .build();
+      addAction(replyAction);
     }
 
     Action wearableReplyAction = new Action.Builder(R.drawable.ic_reply,
@@ -144,7 +139,6 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
         .build();
 
     addAction(markAsReadAction);
-    addAction(replyAction);
 
     extend(new NotificationCompat.WearableExtender().addAction(markAsReadAction)
                                                     .addAction(wearableReplyAction));
