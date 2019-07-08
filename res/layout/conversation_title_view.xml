@@ -33,7 +33,6 @@
             android:layout_toEndOf="@id/up_button"
             android:layout_centerVertical="true"
             android:cropToPadding="true"
-            android:transitionName="contact_photo"
             android:clickable="true"
             app:inverted="true"
             tools:src="@drawable/ic_contact_picture"
