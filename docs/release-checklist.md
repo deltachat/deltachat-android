@@ -7,7 +7,7 @@ Release core, if needed, then:
    $ cd jni/messenger-backend/; git checkout master; git pull; cd ../..
    $ git add jni/messenger-backend/
    $ git commit -m "update messenger-backend submodule"
-3. $ tx pull # test and commit changes
+3. $ ./tools/tx-pull-translations.sh  # test and commit changes
 4. bump version, adapt changelog, commit, push
 5. deltachat-android on Github: "Draft a new release" with the version form `v1.2.3`
 
