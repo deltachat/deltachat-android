@@ -1,7 +1,7 @@
 # Delta Chat Android Changelog
 
 
-## v0.510.0
+## v0.510.1
 2019-07-09
 
 * new image cropping feature: crop images before sending them
