@@ -541,9 +541,14 @@ public class AttachmentManager {
   private class EditButtonListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
-      Intent intent = new Intent(context, ScribbleActivity.class);
-      intent.setData(getSlideUri());
-      ((Activity)context).startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
+      if (Build.VERSION.SDK_INT >= 19) {
+        Intent intent = new Intent(context, ScribbleActivity.class);
+        intent.setData(getSlideUri());
+        ((Activity) context).startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
+      }
+      else {
+        Toast.makeText(context, "Image editing requires Android 4.4 KitKat or newer.", Toast.LENGTH_LONG).show();
+      }
     }
   }
 
