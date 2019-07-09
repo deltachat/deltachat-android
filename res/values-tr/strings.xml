@@ -358,8 +358,8 @@
     <string name="pref_default_status_label">İmza metni</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Delta Chat Messenger\'ımla gönderildi: https://delta.chat</string>
-    <string name="pref_enter_sends">Anahtar gir gönderir</string>
-    <string name="pref_enter_sends_explain">Anahtar gir\'e basmak metin iletileri gönderecek</string>
+    <string name="pref_enter_sends">Enter tuşu göndersin</string>
+    <string name="pref_enter_sends_explain">Enter tuşuna basmak metin iletileri gönderecek</string>
     <string name="pref_outgoing_media_quality">Giden ortam kalitesi</string>
     <string name="pref_outgoing_balanced">Dengeli</string>
     <string name="pref_outgoing_worse">Daha kötü kalite, küçük boyut</string>

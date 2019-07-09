@@ -154,6 +154,7 @@
     <string name="menu_view_profile">Vedi profilo</string>
     <string name="menu_zoom_in">Zoom in</string>
     <string name="menu_zoom_out">Zoom out</string>
+    <string name="menu_save_log">Salva log</string>
     <string name="title_share_location">Condividi posizione con tutti i membri</string>
 
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
@@ -400,6 +401,8 @@
     <string name="pref_in_chat_sounds">Suoni in-chat</string>
     <string name="pref_message_text_size">Dimensione font messaggi</string>
     <string name="pref_view_log">Vedi registro</string>
+    <string name="pref_saved_log">Log salvato nella cartella Download</string>
+    <string name="pref_save_log_failed">Salvataggio log non riuscito</string>
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Altro</string>
     <string name="pref_backup">Backup</string>
@@ -430,6 +433,13 @@
     <string name="pref_show_emails_no">No, solo chat</string>
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
     <string name="pref_show_emails_all">Tutte</string>
+    <string name="pref_empty_server_title">PERICOLOSO: Elimina email dal server</string>
+    <string name="pref_empty_server_msg">Questa funzione permette di liberare spazio sul server IMAP eliminando TUTTE le email, inclusi i messaggi di chat, nelle cartelle selezionate. I messaggi su questo dispositivo non saranno eliminati. L\'eliminazione non è annullabile!</string>
+    <string name="pref_empty_server_inbox">Elimina TUTTE le email nella cartella In Arrivo</string>
+    <string name="pref_empty_server_mvbox">Elimina TUTTE le email nella cartella DeltaChat</string>
+    <string name="pref_empty_server_do_button">Elimina email</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt è una nuova specifica aperta per la cifratura end-to-end delle email.\n\nLa tua configurazione end-to-end viene creata automaticamente quando necessario e puoi trasferirla tra dispositivi tramite i Messaggi di configurazione.</string>

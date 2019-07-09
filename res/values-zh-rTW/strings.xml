@@ -392,7 +392,7 @@
     <string name="pref_other">其它</string>
     <string name="pref_backup">備份</string>
     <string name="pref_backup_explain">將備份另存至外部儲存媒體</string>
-    <string name="pref_backup_export_explain">備份可以讓你把設定及對話紀錄轉移到這台或其它裝置上。\n\n備份內容包括所有的訊息、聯絡人、對話、端對端自動加密設定。請務必將備份檔存放在安全的地方，並在轉移後儘快刪除。</string>
+    <string name="pref_backup_export_explain">備份可以讓你把設定及對話紀錄轉移到這台或其它裝置上。\n\n備份內容包括所有的訊息、聯絡人、對話、端到端AutoCrypt設定。請務必將備份檔存放在安全的地方，並在轉移後儘快刪除。</string>
     <string name="pref_backup_export_start_button">開始備份</string>
     <string name="pref_backup_written_to_x">成功備份至 %1$s</string>
     <string name="pref_managekeys_menu_title">管理金鑰</string>
@@ -419,21 +419,21 @@
     <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>
     <string name="pref_show_emails_all">所有郵件</string>
     <!-- autocrypt -->
-    <string name="autocrypt">自動加密</string>
-    <string name="autocrypt_explain">自動加密是一種新的 email 端到端自動加密的開放規格。\n\n你的端到端設定會按需求自動新增，並且可以轉移到其它可開啟自動加密設定訊息(ASM)的設備。</string>
-    <string name="autocrypt_send_asm_title">傳送自動加密設定訊息</string>
-    <string name="autocrypt_send_asm_explain_before">「自動加密設定訊息」可以安全地和你使用的其它支援自動加密的 app 共享端到端加密設定。\n\n本訊息含一組設定碼，請在其它支援的設備中輸入這組設定碼。</string>
-    <string name="autocrypt_send_asm_button">傳送自動加密設定訊息</string>
-    <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼:\n\n%1$s\n\n輸入完之後，你的其它裝置就可以使用自動加密了。</string>
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">AutoCrypt是一種新的 email 端到端自動加密的開放規格。\n\n你的端到端設定會按需求自動新增，並且可以轉移到其它可開啟AutoCrypt設定訊息(ASM)的設備。</string>
+    <string name="autocrypt_send_asm_title">傳送AutoCrypt設定訊息</string>
+    <string name="autocrypt_send_asm_explain_before">「AutoCrypt設定訊息」可以安全地和你使用的其它支援AutoCrypt的 app 共享端到端加密設定。\n\n本訊息含一組設定碼，請在其它支援的設備中輸入這組設定碼。</string>
+    <string name="autocrypt_send_asm_button">傳送AutoCrypt設定訊息</string>
+    <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼:\n\n%1$s\n\n輸入完之後，你的其它裝置就可以使用AutoCrypt了。</string>
     <string name="autocrypt_prefer_e2ee">偏好端到端加密</string>
     <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
-    <string name="autocrypt_asm_general_body">本信件包含自動加密設定訊息。\n\n請使用其它裝置上支援自動加密設定的應用程式開啟本訊息，並輸入設定碼，以便匯入自動加密設定。</string>
-    <string name="autocrypt_asm_click_body">本訊息是自動加密設定訊息。\n\n要解密並套用自動加密設定，請點一下本訊息。</string>
-    <string name="autocrypt_continue_transfer_title">自動加密設定訊息</string>
+    <string name="autocrypt_asm_general_body">本信件包含AutoCrypt設定訊息。\n\n請使用其它裝置上支援AutoCrypt設定的應用程式開啟本訊息，並輸入設定碼，以便匯入自動加密設定。</string>
+    <string name="autocrypt_asm_click_body">本訊息是AutoCrypt設定訊息。\n\n要解密並套用自動加密設定，請點一下本訊息。</string>
+    <string name="autocrypt_continue_transfer_title">AutoCrypt設定訊息</string>
     <string name="autocrypt_continue_transfer_please_enter_code">請輸入另一台裝置上顯示的設定碼。</string>
-    <string name="autocrypt_continue_transfer_succeeded">已傳送端到端加密設定，本裝置已套用和其它裝置相同的自動加密設定。</string>
+    <string name="autocrypt_continue_transfer_succeeded">已傳送端到端加密設定，本裝置已套用和其它裝置相同的AutoCrypt設定。</string>
     <string name="autocrypt_continue_transfer_retry">重試一次</string>
-    <string name="autocrypt_bad_setup_code">錯誤的設定碼，請再試一次。\n\n如果你忘記設定碼的話，只要在另一台裝置重新發送一次自動加密設定訊息即可。</string>
+    <string name="autocrypt_bad_setup_code">錯誤的設定碼，請再試一次。\n\n如果你忘記設定碼的話，只要在另一台裝置重新發送一次AutoCrypt設定訊息即可。</string>
 
 
     <!-- system messages -->
@@ -445,7 +445,7 @@
     <string name="systemmsg_group_left">已退出群組。</string>
     <string name="systemmsg_read_receipt_subject">收執回條</string>
     <string name="systemmsg_read_receipt_body">這是訊息 %1$s 的收執回條，表示本訊息已經顯示在收件人的裝置上了，但不代表收件人已讀。</string>
-    <string name="systemmsg_cannot_decrypt">本訊息無法解密。\n\n請試著回覆本訊息，並請發送者重發一遍。\n\n如果你曾經在本裝置或其它裝置重新安裝 Delta Chat 或其它郵件軟體的話，請重新發送自動加密設定訊息。</string>
+    <string name="systemmsg_cannot_decrypt">本訊息無法解密。\n\n請試著回覆本訊息，並請發送者重發一遍。\n\n如果你曾經在本裝置或其它裝置重新安裝 Delta Chat 或其它郵件軟體的話，請重新發送AutoCrypt設定訊息。</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">我%1$s</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->

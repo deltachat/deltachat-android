@@ -129,8 +129,8 @@
     <string name="menu_forward">Bericht doorsturen</string>
     <string name="menu_resend">Bericht opnieuw versturen</string>
     <string name="menu_reply">Bericht beantwoorden</string>
-    <string name="menu_mute">Meldingen dempen</string>
-    <string name="menu_unmute">Ontdempen</string>
+    <string name="menu_mute">Meldingen uitschakelen</string>
+    <string name="menu_unmute">Meldingen inschakelen</string>
     <string name="menu_export_attachment">Bijlage exporteren</string>
     <string name="menu_all_media">Alle media</string>
     <string name="menu_share">Delen</string>
@@ -157,11 +157,11 @@
     <string name="menu_save_log">Logboek opslaan</string>
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
 
-    <string name="mute_for_one_hour">1 uur lang dempen</string>
-    <string name="mute_for_two_hours">2 uur lang dempen</string>
-    <string name="mute_for_one_day">1 dag dempen</string>
-    <string name="mute_for_seven_days">7 dagen dempen</string>
-    <string name="mute_forever">Permanent dempen</string>
+    <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
+    <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
+    <string name="mute_for_one_day">1 dag uitschakelen</string>
+    <string name="mute_for_seven_days">7 dagen uitschakelen</string>
+    <string name="mute_forever">Permanent uitschakelen</string>
 
     <string name="share_location_once">eenmalig</string>
     <string name="share_location_for_5_minutes">5 minuten lang</string>
