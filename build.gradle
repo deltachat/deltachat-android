@@ -10,7 +10,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.4.1'
     }
 }
 
@@ -88,7 +88,6 @@ dependencies {
 android {
     flavorDimensions "none"
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
     useLibrary 'org.apache.http.legacy'
 
     dexOptions {
