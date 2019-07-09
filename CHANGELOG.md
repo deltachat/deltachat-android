@@ -1,5 +1,20 @@
 # Delta Chat Android Changelog
 
+
+## v0.510.0
+2019-07-09
+
+* new image cropping feature: crop images before sending them
+* updated image editing user interface
+* update Chinese (zh-cn and zh-tw), Italian, Dutch, Turkish translations
+* remove swipe to archive and swipe to unarchive chats
+* improve UX to discard contact requests
+* improve UX to block contacts
+* bugfixes
+
+The changes have been done by Björn Petersen, cyBerta, Enrico B., Heimen Stoffels, Lin Miaoski,
+Ozancan Karataş, Zkdc
+
 ## v0.500.0
 2019-06-27
 
