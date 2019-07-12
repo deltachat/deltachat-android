@@ -213,7 +213,17 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {
     final Intent intent = new Intent(this, target);
-    setSharedText(intent, getIntent().getStringExtra(Intent.EXTRA_TEXT));
+    String text = getIntent().getStringExtra(Intent.EXTRA_TEXT);
+    if (text==null) {
+      CharSequence cs = getIntent().getCharSequenceExtra(Intent.EXTRA_TEXT);
+      if (cs!=null) {
+        text = cs.toString();
+      }
+    }
+
+    if (text != null) {
+      setSharedText(intent, text.toString());
+    }
     if (resolvedExtras.size() > 0) {
       Uri data = resolvedExtras.get(0);
       if (data != null) {
