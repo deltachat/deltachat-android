@@ -29,6 +29,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
   public DcLocationManager      dcLocationManager;
   private JobManager            jobManager;
   private volatile boolean      isAppVisible;
+  private MessageNotifierCompat messageNotifier;
 
   public static ApplicationContext getInstance(Context context) {
     return (ApplicationContext)context.getApplicationContext();
@@ -53,7 +54,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeJobManager();
     initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
-    MessageNotifierCompat.init(this);
+    messageNotifier = new MessageNotifierCompat(this);
 
     dcLocationManager = new DcLocationManager(this);
     try {

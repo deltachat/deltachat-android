@@ -14,11 +14,7 @@ public class MessageNotifierCompat {
 
     private static MessageNotifier instance;
 
-    public static void init(Context context) {
-        if (instance != null) {
-            return;
-        }
-
+    public MessageNotifierCompat(Context context) {
         if (Build.VERSION.SDK_INT < 23) {
             instance = new MessageNotifierPreApi23(context);
         } else {
@@ -49,6 +45,5 @@ public class MessageNotifierCompat {
     public static void removeNotifications(int chatId) {
         Util.runOnAnyBackgroundThread(() -> instance.removeNotifications(chatId));
     }
-
 
 }
