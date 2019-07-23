@@ -17,6 +17,7 @@ import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
+import org.thoughtcrime.securesms.util.BadgeUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
@@ -98,6 +99,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
       @Override
       public void handleEvent(int eventId, Object data1, Object data2) {
         MessageNotifierCompat.updateNotification(((Long) data1).intValue(), ((Long) data2).intValue());
+        BadgeUtil.update(ApplicationContext.this, dcContext.getFreshMsgs().length);
       }
 
       @Override

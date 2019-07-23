@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.notifications;
 import android.os.AsyncTask;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.util.BadgeUtil;
 
 /**
  * This marks the messages the user has acknowledged as noticed.
@@ -33,6 +34,7 @@ public  class MarkAsNoticedAsyncTask extends AsyncTask<Void, Void, Void> {
       else
         dcContext.marknoticedChat(dcContext.getMsg(id).getChatId());
     }
+    BadgeUtil.update(dcContext.context, dcContext.getFreshMsgs().length);
 
     return null;
   }

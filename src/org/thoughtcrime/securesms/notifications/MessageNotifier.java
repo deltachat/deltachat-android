@@ -90,8 +90,7 @@ abstract class MessageNotifier {
         boolean isVisible = visibleChatId == chatId;
 
         if (!Prefs.isNotificationsEnabled(appContext) ||
-                Prefs.isChatMuted(appContext, chatId))
-        {
+                Prefs.isChatMuted(appContext, chatId)) {
             return;
         }
 

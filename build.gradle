@@ -45,7 +45,7 @@ dependencies {
 
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0' // QR Code scanner
 
-    implementation "me.leolin:ShortcutBadger:1.1.16" // display messagecount on the home screen icon.
+    implementation "me.leolin:ShortcutBadger:1.1.22@aar" // display messagecount on the home screen icon.
     implementation 'com.jpardogo.materialtabstrip:library:1.0.9' // used in the emoji selector for the tab selection.
     implementation 'com.github.chrisbanes:PhotoView:2.1.3' // does the zooming on photos / media
     implementation 'com.github.bumptech.glide:glide:4.5.0'

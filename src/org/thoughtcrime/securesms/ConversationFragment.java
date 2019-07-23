@@ -66,6 +66,7 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.BadgeUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -77,6 +78,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
+import me.leolin.shortcutbadger.ShortcutBadger;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
@@ -204,6 +207,7 @@ public class ConversationFragment extends Fragment
         super.onResume();
 
         dcContext.marknoticedChat((int) chatId);
+        BadgeUtil.update(this.getContext(), dcContext.getFreshMsgs().length);
         if (list.getAdapter() != null) {
             list.getAdapter().notifyDataSetChanged();
         }
@@ -611,6 +615,7 @@ public class ConversationFragment extends Fragment
             }
         }
         dcContext.markseenMsgs(ids);
+        BadgeUtil.update(this.getContext(), dcContext.getFreshMsgs().length);
     }
 
 
