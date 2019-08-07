@@ -100,17 +100,14 @@ public class ComposeText extends EmojiEditText {
   }
 
   public void setTransport(TransportOption transport) {
-    final boolean useSystemEmoji = Prefs.isSystemEmojiPreferred(getContext());
+    // do not add InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE
+    // as this removes the ability to compose multi-line messages.
 
     int imeOptions = (getImeOptions() & ~EditorInfo.IME_MASK_ACTION) | EditorInfo.IME_ACTION_SEND;
     int inputType  = getInputType();
 
     if (isLandscape()) setImeActionLabel(getContext().getString(R.string.menu_send), EditorInfo.IME_ACTION_SEND);
     else               setImeActionLabel(null, 0);
-
-    if (useSystemEmoji) {
-      inputType = (inputType & ~InputType.TYPE_MASK_VARIATION) | InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE;
-    }
 
     setInputType(inputType);
     setImeOptions(imeOptions);
