@@ -8,6 +8,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.constraint.Group;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -32,7 +33,6 @@ import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
-import org.w3c.dom.Text;
 
 import java.util.concurrent.ExecutionException;
 
@@ -108,6 +108,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         viewLogText.setOnClickListener((view) -> showLog());
         boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
         if (isConfigured) {
+            TextInputLayout passwordLayout = findViewById(R.id.password);
+            passwordLayout.setPasswordVisibilityToggleEnabled(false);
+            TextInputLayout smtpPasswordLayout = findViewById(R.id.smtp_password);
+            smtpPasswordLayout.setPasswordVisibilityToggleEnabled(false);
+
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
 
             String email = DcHelper.get(this, CONFIG_ADDRESS);
