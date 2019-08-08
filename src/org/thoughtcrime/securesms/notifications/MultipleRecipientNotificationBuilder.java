@@ -91,8 +91,8 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
       for (MessageBody body : messageBodies) {
         Recipient key = body.group == null ? body.sender : body.group;
         if(byGroup.containsKey(key)) {
-          List<MessageBody> messagebodies = byGroup.remove(key);
-          messagebodies.add(body);
+          LinkedList<MessageBody> messagebodies = (LinkedList<MessageBody>) byGroup.remove(key);
+          messagebodies.addFirst(body);
           byGroup.put(key, messagebodies);
         } else {
           byGroup.put(key, new LinkedList<>());

@@ -40,7 +40,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
 
   private static final String TAG = SingleRecipientNotificationBuilder.class.getSimpleName();
 
-  private final List<CharSequence> messageBodies = new LinkedList<>();
+  private final LinkedList<CharSequence> messageBodies = new LinkedList<>();
 
   private SlideDeck    slideDeck;
   private CharSequence contentTitle;
@@ -155,9 +155,9 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     }
 
     if (privacy.isDisplayMessage()) {
-      messageBodies.add(stringBuilder.append(messageBody == null ? "" : messageBody));
+      messageBodies.addFirst(stringBuilder.append(messageBody == null ? "" : messageBody));
     } else {
-      messageBodies.add(stringBuilder.append(context.getString(R.string.notify_new_message)));
+      messageBodies.addFirst(stringBuilder.append(context.getString(R.string.notify_new_message)));
     }
   }
 
