@@ -579,6 +579,11 @@ LOCAL_CFLAGS += $(local_c_flags) -DPURIFY
 LOCAL_C_INCLUDES += $(local_c_includes)
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libcrypto
+
+ifeq ($(TARGET_ARCH_ABI),x86_64)
+    LOCAL_CFLAGS += -DOPENSSL_NO_ASM
+endif
+
 include $(BUILD_STATIC_LIBRARY)
 
 #include $(CLEAR_VARS)
