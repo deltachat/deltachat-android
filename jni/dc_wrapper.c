@@ -82,8 +82,8 @@ static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
 
 	if (ca) {
 		if (icnt) {
-			uintptr_t* ca_data = dc_array_get_raw(ca);
-			if (sizeof(uintptr_t)==sizeof(jint)) {
+			uint32_t* ca_data = dc_array_get_raw(ca);
+			if (sizeof(uint32_t)==sizeof(jint)) {
 				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
 			}
 			else {
