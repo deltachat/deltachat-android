@@ -16,6 +16,7 @@
       <!-- fr -->    <item>Français</item>
       <!-- it -->    <item>Italiano</item>
       <!-- lt -->    <item>Lietuvių kalba</item>
+      <!-- hu -->    <item>Magyar nyelv</item>
       <!-- nl -->    <item>Nederlands</item>
       <!-- pl -->    <item>Polski</item>
       <!-- pt -->    <item>Português</item>
@@ -42,6 +43,7 @@
       <item>fr</item>
       <item>it</item>
       <item>lt</item>
+      <item>hu</item>
       <item>nl</item>
       <item>pl</item>
       <item>pt</item>
