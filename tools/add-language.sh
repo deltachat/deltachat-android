@@ -6,9 +6,10 @@ mkdir res/values-$LANG/
 
 cp res/values/strings.xml res/values-$LANG/strings.xml
 
-# (needed because transifex may have different file times
-# and does not overwrite old file)
-touch -d "100 days ago" res/values-$LANG/strings.xml
+# set time to old date because transifex may have different file times
+# and does not overwrite old file
+# (using -t as sth. as -d "100 days ago" does not work on mac)
+touch -t 201901010000 res/values-$LANG/strings.xml
 
 echo "res/values-$LANG/strings.xml added:"
 echo "- add the name to res/values/arrays.xml"
