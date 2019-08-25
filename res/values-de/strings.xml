@@ -300,7 +300,7 @@
     <string name="login_imap_login">IMAP-Anmeldename</string>
     <string name="login_imap_server">IMAP-Server</string>
     <string name="login_imap_port">IMAP-Port</string>
-    <string name="login_imap_security">IMAP Sicherheit</string>
+    <string name="login_imap_security">IMAP-Sicherheit</string>
     <string name="login_outbox">Postausgang</string>
     <string name="login_smtp_login">SMTP-Anmeldename</string>
     <string name="login_smtp_password">SMTP-Passwort</string>

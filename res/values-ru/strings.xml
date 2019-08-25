@@ -166,6 +166,7 @@
     <string name="menu_view_profile">Просмотреть профиль</string>
     <string name="menu_zoom_in">Увеличить масштаб</string>
     <string name="menu_zoom_out">Уменьшить масштаб</string>
+    <string name="menu_save_log">Сохранить журнал</string>
     <string name="title_share_location">Делиться местоположением со всеми участниками группы</string>
 
     <string name="mute_for_one_hour">1 час</string>
@@ -235,6 +236,12 @@
     <string name="chat_please_enter_message">Введите сообщение.</string>
     <string name="chat_camera_unavailable">Камера недоступна.</string>
     <string name="chat_unable_to_record_audio">Невозможно записать аудио.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d новое сообщение</item>
+        <item quantity="few">%d новых сообщения</item>
+        <item quantity="many">%d новых сообщений</item>
+        <item quantity="other">%d новых сообщений</item>
+    </plurals>
     <string name="chat_no_messages_hint">Отправьте сообщение %1$s:\n\n• Это сработает, даже если %2$s не использует Delta Chat.\n\n• Доставка первого сообщения займёт некоторое время и может быть незашифрованным.</string>
     <string name="chat_new_group_hint">Напишите первое сообщение, оно позволит другим участникам группы ответить на него.\n\n• Это сработает, даже если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="chat_record_slide_to_cancel">Сдвиньте для отмены</string>
@@ -416,6 +423,8 @@
     <string name="pref_in_chat_sounds">Звуки в чате</string>
     <string name="pref_message_text_size">Размер шрифта сообщения</string>
     <string name="pref_view_log">Открыть журнал</string>
+    <string name="pref_saved_log">Журнал сохранён в папку «Загрузки»</string>
+    <string name="pref_save_log_failed">Ошибка при сохранении журнала</string>
     <string name="pref_log_header">Журнал</string>
     <string name="pref_other">Другое</string>
     <string name="pref_backup">Резервное копирование</string>
@@ -446,6 +455,13 @@
     <string name="pref_show_emails_no">Нет, только чаты</string>
     <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
     <string name="pref_show_emails_all">Все</string>
+    <string name="pref_empty_server_title">Опасная зона: удаление электронной почты с сервера</string>
+    <string name="pref_empty_server_msg">Эта функция позволяет освободить место на сервере IMAP, удалив все сообщения электронной почты, включая чат-сообщения, в указанных папках. Сообщения на этом устройстве не удаляются. Удаление не может быть отменено!</string>
+    <string name="pref_empty_server_inbox">Удалить все сообщения электронной почты в папке «Входящие»</string>
+    <string name="pref_empty_server_mvbox">Удалить все сообщения электронной почты в папке «DeltaChat»</string>
+    <string name="pref_empty_server_do_button">Удаление электронной почты</string>
+
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>

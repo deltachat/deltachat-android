@@ -117,7 +117,7 @@
     <string name="menu_show_global_map">Tüm konumları göster</string>
     <string name="menu_archive_chat">Sohbeti arşivle</string>
     <string name="menu_unarchive_chat">Sohbeti arşivden çıkart</string>
-    <string name="menu_add_attachment">Ek ekle</string>
+    <string name="menu_add_attachment">İlişik ekle</string>
     <string name="menu_leave_group">Gruptan ayrıl</string>
     <string name="menu_delete_chat">Sohbeti sil</string>
     <string name="menu_delete_messages">İletileri sil</string>
@@ -129,9 +129,9 @@
     <string name="menu_forward">İletiyi ilet</string>
     <string name="menu_resend">İletiyi yeniden gönder</string>
     <string name="menu_reply">İletiye yanıt ver</string>
-    <string name="menu_mute">Bildirimlerin sesini kıs</string>
+    <string name="menu_mute">Bildirimleri sessize al</string>
     <string name="menu_unmute">Sesini aç</string>
-    <string name="menu_export_attachment">Eki dışa aktar</string>
+    <string name="menu_export_attachment">İlişiği dışa aktar</string>
     <string name="menu_all_media">Tüm ortamlar</string>
     <string name="menu_share">Paylaş</string>
     <string name="menu_block_contact">Kişiyi engelle</string>
@@ -151,17 +151,17 @@
     <string name="menu_advanced">Gelişmiş</string>
     <string name="menu_deaddrop">İletişim istekleri</string>
     <string name="menu_deaddrop_subtitle">Sohbete başlamak için iletiye basın</string>
-    <string name="menu_view_profile">Profili gör</string>
+    <string name="menu_view_profile">Profili görüntüle</string>
     <string name="menu_zoom_in">Yakınlaştır</string>
     <string name="menu_zoom_out">Uzaklaştır</string>
     <string name="menu_save_log">Günlüğü kaydet</string>
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
 
-    <string name="mute_for_one_hour">1 saatliğine sesini kıs</string>
-    <string name="mute_for_two_hours">2 saatliğine sesini kıs</string>
-    <string name="mute_for_one_day">1 günlüğüne sesini kıs</string>
-    <string name="mute_for_seven_days">7 günlüğüne sesini kıs</string>
-    <string name="mute_forever">Sonsuza dek sesini kıs</string>
+    <string name="mute_for_one_hour">1 saatliğine sessize al</string>
+    <string name="mute_for_two_hours">2 saatliğine sessize al</string>
+    <string name="mute_for_one_day">1 günlüğüne sessize al</string>
+    <string name="mute_for_seven_days">7 günlüğüne sessize al</string>
+    <string name="mute_forever">Sonsuza dek sessize al</string>
 
     <string name="share_location_once">bir kez</string>
     <string name="share_location_for_5_minutes">5 dakikalığına</string>
@@ -182,7 +182,7 @@
         <item quantity="other">%d ileti buradan ve sunucudan silinsin mi?</item>
     </plurals>
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
-    <string name="ask_export_attachment">Ek dışa aktarılsın mı? Ekleri dışa aktarmak, aygıtınızdaki tüm diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
+    <string name="ask_export_attachment">İlişik dışa aktarılsın mı? İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden gelen iletileri almayacaksınız.</string>
     <string name="ask_unblock_contact">Bu kişinin engellemesi kaldırılsın mı? Bir kez daha bu kişiden gelen iletileri alabileceksiniz.</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSohbetleri süren kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
@@ -227,7 +227,7 @@
     <string name="chat_no_chats_yet_title">Boş gelen kutusu.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
     <string name="chat_no_chats_yet_hint">Diğer Delta Chat kullanıcılarıyla ve herhangi bir e-posta adresiyle sohbet edebilirsiniz.</string>
     <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
-    <string name="chat_share_with_title">Paylaş</string>
+    <string name="chat_share_with_title">Paylaş:</string>
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlendi</string>
     <string name="chat_no_messages">İleti yok.</string>
@@ -400,7 +400,7 @@
     <string name="pref_messages">İletiler</string>
     <string name="pref_in_chat_sounds">Sohbet içi sesler</string>
     <string name="pref_message_text_size">İleti yazı tipi boyutu</string>
-    <string name="pref_view_log">Günlüğü gör</string>
+    <string name="pref_view_log">Günlüğü görüntüle</string>
     <string name="pref_saved_log">Günlüğü İndirilenler klasörüne kaydet</string>
     <string name="pref_save_log_failed">Günlüğü kaydetme başarısız</string>
     <string name="pref_log_header">Günlük</string>
@@ -415,7 +415,7 @@
     <string name="pref_managekeys_export_secret_keys">Sır anahtarları dışa aktar</string>
     <string name="pref_managekeys_export_explain">Sır anahtarlar \"%1$s\" üzerine dışa aktarılsın mı?</string>
     <string name="pref_managekeys_import_secret_keys">Sır anahtarları içe aktar</string>
-    <string name="pref_managekeys_import_explain">Sır anahtarlar \"%1$s\" üzerinden içe aktarılsın mı?\n\n• Varolan gizli anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosya adında \"legacy\" sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak</string>
+    <string name="pref_managekeys_import_explain">Sır anahtarlar \"%1$s\" üzerinden içe aktarılsın mı?\n\n• Varolan sır anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosya adında \"legacy\" sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar \"%1$s\" üzerine başarıyla yazıldı.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Sır anahtarlar \"%1$s\" üzerinden içe aktarıldı.</string>
     <string name="pref_background">Artalan</string>
@@ -538,8 +538,8 @@
     <string name="perm_explain_need_for_storage_access_share">Delta Chat\'in seçilen dosyaları paylaşmak için dosyalarınıza erişmesi gerekir.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat, fotoğraflar ya da videolar çekmek için kamera izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Kamera\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat, sesli iletiler göndermek için Mikrofon izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoğrafları, videoları ya da sesleri eklemek ya da dışa aktarmak için depolama izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
-    <string name="perm_explain_access_to_location_denied">Delta Chat, bir konum eklemek için Konum izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoğrafları, videoları ya da sesleri iliştirmek ya da dışa aktarmak için depolama izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat, bir konum iliştirmek için Konum izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat artalandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
 
@@ -598,7 +598,7 @@
     <string name="reply_to_message_desktop">İletiye yanıt ver</string>
     <string name="select_group_image_desktop">Grup görseli seç</string>
     <string name="imex_progress_title_desktop">Yedekleme ilerlemesi</string>
-    <string name="download_attachment_desktop">Eki indir</string>
+    <string name="download_attachment_desktop">İlişiği indir</string>
     <string name="export_backup_desktop">Yedeği dışa aktar</string>
     <string name="transfer_key_desktop">Anahtarı aktar</string>
     <string name="show_key_transfer_message_desktop">Anahtarınız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Bir ayarlama kodu girmeniz istenmeli. İsteme aşağıdaki sayıları yazın. Bitirdiğinizde, diğer aygıtınız Autocrypt kullanmaya hazır olacak.</string>
@@ -641,7 +641,7 @@
     <string name="media_tab_documents">Belgeler</string>
     <string name="media_no_media_hint">Ortam yok.</string>
     <string name="media_no_documents_hint">Belge yok.</string>
-    <string name="language_be">Belçika</string>
+    <string name="language_be">Belarusça</string>
     <string name="language_ca">Katalanca</string>
     <string name="language_da">Danca</string>
     <string name="language_de">Almanca</string>
@@ -657,8 +657,8 @@
     <string name="language_ja_JP">Japonca</string>
     <string name="language_ko">Korece</string>
     <string name="language_nb_NO">Norveççe Bokmål</string>
-    <string name="language_nl">Felemenkçe</string>
-    <string name="language_nl_NL">Felemenkçe (Hollanda)</string>
+    <string name="language_nl">Flemenkçe</string>
+    <string name="language_nl_NL">Flemenkçe (Hollanda)</string>
     <string name="language_pl">Lehçe</string>
     <string name="language_pt">Portekizce</string>
     <string name="language_ru">Rusça</string>

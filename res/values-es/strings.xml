@@ -287,8 +287,8 @@
     <string name="welcome_intro5_headline">Libre</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat es gratis y libre para siempre. De código libre. Sin publicidad. Sin suscripción. Sin limitaciones de otras empresas.</string>
-    <string name="welcome_intro6_headline">Encriptada</string>
-    <string name="welcome_intro6_message">Encriptada con todos los algoritmos comunes. Los mensajes se guardan solo en tu servidor de correo.</string>
+    <string name="welcome_intro6_headline">Cifrada</string>
+    <string name="welcome_intro6_message">Cifrada con todos los algoritmos comunes. Los mensajes se guardan solo en tu servidor de correo.</string>
     <string name="welcome_intro7_headline">Confiable</string>
     <string name="welcome_intro7_message">Delta Chat es seguro para usos comerciales y de negocio, compatible y basado en estándares abiertos.</string>
     <string name="welcome_start_messaging">Empezar a Chatear</string>
@@ -442,7 +442,7 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt es una nueva especificación abierta para encriptado automático de correo electrónico de extremo a extremo. Su configuración de extremo a extremo es creada automáticamente cuando se necesita y puede transferirla entre dispositivos con los Mensajes de Configuración de Autocrypt.</string>
+    <string name="autocrypt_explain">Autocrypt es una nueva especificación abierta para cifrado automático de correo electrónico de extremo a extremo. Su configuración de extremo a extremo es creada automáticamente cuando se necesita y puede transferirla entre dispositivos con los Mensajes de Configuración de Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Enviar Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"Mensaje de Configuración de Autocrypt\" comparte de forma segura su configuración de extremo a extremo con otras aplicaciones compatibles con Autocrypt.\n\nLa configuración se cifrará mediante un código de configuración que se muestra aquí y debe escribirse en el otro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar Mensaje de Configuración de Autocrypt</string>
@@ -544,7 +544,7 @@
     <string name="perm_enable_bg_reminder_text">Delta Chat utiliza los recursos al mínimo y tiene cuidado de no drenar tu batería.</string>
 
     <!-- dc_str_* resources -->
-    <string name="encrypted_message">Mensaje encriptado</string>
+    <string name="encrypted_message">Mensaje cifrado</string>
 
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Bienvenido a DeltaChat</string>
