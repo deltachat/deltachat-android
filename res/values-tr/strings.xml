@@ -227,7 +227,7 @@
     <string name="chat_no_chats_yet_title">Boş gelen kutusu.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
     <string name="chat_no_chats_yet_hint">Diğer Delta Chat kullanıcılarıyla ve herhangi bir e-posta adresiyle sohbet edebilirsiniz.</string>
     <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
-    <string name="chat_share_with_title">Paylaş:</string>
+    <string name="chat_share_with_title">Paylaş</string>
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlendi</string>
     <string name="chat_no_messages">İleti yok.</string>
@@ -346,7 +346,7 @@
     <string name="pref_trim_length_limit">Sohbet uzunluk sınırı</string>
     <string name="pref_trim_length_limit_summary">Sohbet başına %d ileti</string>
     <string name="pref_trim_now_button">Tüm sohbetleri şimdi kırp</string>
-    <string name="pref_trim_now_ask">Tüm eski iletiler şimdi silinsin mi? Bu, tüm sohbetleri hemen en son %d iletiye kırpacak.</string>
+    <string name="pref_trim_now_ask">Tüm eski iletiler şimdi silinsin mi? Bu, tüm sohbetleri hemen en son %d en yeni iletiye kırpacak.</string>
     <string name="pref_blocked_contacts">Engellenen kişiler</string>
     <string name="pref_profile_photo_remove_ask">Profil fotoğrafı kaldırılsın mı?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
@@ -369,7 +369,7 @@
     <string name="pref_change_secret_explain">PIN / desen / parmak izinizi sistem ayarları üzerinden değiştirin</string>
     <string name="pref_screen_security">Ekran güvenliği</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
-    <string name="pref_screen_security_explain">Son listesinde ve uygulamanın içinde ekran görüntülerinin engellenmesini iste</string>
+    <string name="pref_screen_security_explain">Yeni listesinde ve uygulamanın içinde ekran görüntülerinin engellenmesini iste</string>
     <string name="pref_screen_security_please_restart_hint">Ekran güvenliği ayarını uygulamak için lütfen uygulamayı yeniden başlatın.</string>
     <string name="pref_notifications">Bildirimler</string>
     <string name="pref_notifications_show">Göster</string>
@@ -434,7 +434,7 @@
     <string name="pref_show_emails_accepted_contacts">Onaylanan kişiler için</string>
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_empty_server_title">TEHLİKELİ BÖLGE: E-postaları sunucudan sil</string>
-    <string name="pref_empty_server_msg">Bu işlev, verilen klasörlerdeki sohbet iletilerini kapsayıp TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
+    <string name="pref_empty_server_msg">Bu işlev, sohbet iletilerini de kapsayıp verilen klasörlerdeki TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
     <string name="pref_empty_server_inbox">Gelen Kutusu klasöründeki TÜM e-postaları sil</string>
     <string name="pref_empty_server_mvbox">DeltaChat klasöründeki TÜM e-postaları sil</string>
     <string name="pref_empty_server_do_button">E-postaları sil</string>
@@ -513,7 +513,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%2$d sohbette %1$d yeni ileti</string>
-    <string name="notify_most_recent_from">En son gönderen: %1$s</string>
+    <string name="notify_most_recent_from">En yeni: %1$s</string>
     <string name="notify_media_message_with_text">Ortam iletisi: %s</string>
     <string name="notify_mark_all_read">Tümünü okundu olarak imle</string>
     <string name="notify_mark_read">Okundu imi</string>
@@ -610,7 +610,7 @@
     <string name="create_chat_error_desktop">Sohbet oluşturulamadı.</string>
     <string name="ask_delete_chat_desktop">Bu sohbeti silmek istediğinizden emin misiniz?</string>
     <string name="email_validation_failed_desktop">E-posta adresi gerekli.</string>
-    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem kesin ve ters çevrilemez.</string>
+    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı da kapsayarak her şey silinecek. Bu eylem kesin ve ters çevrilemez.</string>
     <string name="me_desktop">ben</string>
     <string name="in_this_group_desktop">Grup üyeleri</string>
     <string name="not_in_this_group_desktop">Olası grup üyeleri (grupta değil)</string>

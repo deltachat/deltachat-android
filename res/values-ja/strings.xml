@@ -97,6 +97,7 @@
     <string name="menu_new_group">新規ｸﾞﾙｰﾌﾟ</string>
     <string name="menu_send">送信</string>
     <string name="menu_edit_group">ｸﾞﾙｰﾌﾟを編集</string>
+    <string name="menu_group_name_and_image">ｸﾞﾙｰﾌﾟ名と画像</string>
     <string name="menu_show_map">地図を見る</string>
     <string name="menu_archive_chat">ﾁｬｯﾄを保管</string>
     <string name="menu_unarchive_chat">ﾁｬｯﾄを取り出す</string>
@@ -118,10 +119,33 @@
     <string name="menu_pause">一時停止</string>
     <string name="menu_help">ﾍﾙﾌﾟ</string>
     <string name="menu_select_all">全選択</string>
+    <string name="menu_edit_name">名前の編集</string>
+    <string name="menu_edit_group_name">ｸﾞﾙｰﾌﾟ名の編集</string>
+    <string name="menu_edit_group_image">ｸﾞﾙｰﾌﾟ画像の編集</string>
     <string name="menu_settings">設定</string>
     <string name="menu_advanced">追加設定</string>
     <string name="menu_deaddrop">連絡先追加</string>
     <string name="menu_view_profile">詳細を確認</string>
+    <string name="menu_zoom_in">拡大</string>
+    <string name="menu_zoom_out">縮小</string>
+    <string name="title_share_location">現在地を全員に公開する</string>
+
+    <string name="mute_for_one_hour">1時間停止する</string>
+    <string name="mute_for_two_hours">2時間停止する</string>
+    <string name="mute_for_one_day">24時間停止する</string>
+    <string name="mute_for_seven_days">7日間停止する</string>
+    <string name="mute_forever">無効</string>
+
+    <string name="share_location_once">一度</string>
+    <string name="share_location_for_5_minutes">5分間</string>
+    <string name="share_location_for_30_minutes">30分間</string>
+    <string name="share_location_for_one_hour">1時間</string>
+    <string name="share_location_for_two_hours">2時間</string>
+    <string name="share_location_for_six_hours">6時間</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">本当に退室しますか</string>
     <string name="ask_block_contact">この連絡先を拒否しますか</string>
     <string name="ask_unblock_contact">この連絡先の拒否設定を解除しますか</string>
     <string name="ask_start_chat_with">%1$sとﾁｬｯﾄしますか</string>
@@ -131,7 +155,7 @@
     <string name="contacts_empty_hint">連絡先無し</string>
 
 
-    <string name="chat_no_chats_yet_hint">あなたはDelta Chatを使う人や普通のﾒｰﾙｱﾄﾞﾚｽとﾁｬｯﾄを出来ます｡</string>
+    <string name="chat_no_chats_yet_hint">あなたはDelta Chat利用者や普通のﾒｰﾙｱﾄﾞﾚｽとﾁｬｯﾄを出来ます｡</string>
     <string name="chat_input_placeholder">ﾒｯｾｰｼﾞ</string>
     <string name="chat_no_messages">ﾒｯｾｰｼﾞ無し</string>
     <!-- search -->
@@ -183,6 +207,7 @@ https://delta.chat</string>
     <string name="pref_vibrate">振動</string>
     <string name="pref_chat_settings">ﾁｬｯﾄ設定</string>
     <string name="pref_notifications">通知</string>
+    <string name="pref_notifications_show">表示</string>
     <string name="pref_notifications_priority">優先度</string>
     <string name="pref_led_color">LED色</string>
     <string name="pref_sound">通知音</string>
@@ -200,6 +225,7 @@ https://delta.chat</string>
     <string name="pref_in_chat_sounds">着信音</string>
     <string name="pref_message_text_size">文字の大きさ</string>
     <string name="pref_other">その他</string>
+    <string name="pref_background">背景</string>
     <!-- autocrypt -->
     <string name="autocrypt">自動暗号化</string>
     <string name="autocrypt_explain">自動暗号化機能は新しくて開けた仕様での一対一のﾒｰﾙ暗号化を行います｡\n \n この一対一暗号化は自動暗号化設定用ﾒｯｾｰｼﾞを転送して設定します｡</string>
@@ -217,7 +243,12 @@ https://delta.chat</string>
     <string name="qrshow_x_joining">%1$sが参加しました</string>
     <string name="qrshow_join_group_title">自分のQRｺｰﾄﾞ</string>
     <string name="qrshow_join_contact_title">自分のQRｺｰﾄﾞ</string>
+    <string name="notify_mark_all_read">全て閲覧済</string>
+    <string name="notify_mark_read">閲覧済</string>
+    <string name="notify_reply_button">返信</string>
     <string name="notify_new_message">新規ﾒｯｾｰｼﾞ</string>
+    <string name="notify_priority_high">高</string>
+    <string name="notify_priority_max">最大</string>
     <string name="notify_name_and_message">名前とﾒｯｾｰｼﾞ</string>
     <string name="notify_name_only">名前のみ</string>
     <!-- desktop specific strings -->
@@ -245,6 +276,7 @@ https://delta.chat</string>
     <string name="contact_detail_title_desktop">連絡先の詳細</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="no_chats_desktop">ﾁｬｯﾄ無し</string>
+    <string name="group_name_desktop">ｸﾞﾙｰﾌﾟ名</string>
     <string name="show_qr_verify_code_desktop">自分のQRｺｰﾄﾞを見る</string>
     <string name="show_qr_invite_code_desktop">自分のQRｺｰﾄﾞを見る</string>
     <string name="add_contact_desktop">連絡先を追加</string>
