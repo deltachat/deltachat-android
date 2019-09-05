@@ -1,5 +1,11 @@
 # add a language, must be executed from the repo root
 
+if [ $# -eq 0 ]
+then
+  echo "Please specify the language to add as the first argument (dk, ru etc.)"
+  exit
+fi
+
 LANG=$1
 
 mkdir res/values-$LANG/
