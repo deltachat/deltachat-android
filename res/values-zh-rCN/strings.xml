@@ -178,6 +178,7 @@
     <string name="ask_block_contact">屏蔽此联系人？您将不再收到此联系人的消息。</string>
     <string name="ask_unblock_contact">取消屏蔽此联系人？您将再次能收到此联系人的消息。</string>
     <string name="ask_delete_contacts">删除联系人？这将永久删除选中的联系人。\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
+    <string name="ask_delete_contact">永久删除联系人%1$s?\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
     <string name="cannot_delete_contacts_in_use">无法删除仍有在进行中的聊天的联系人。</string>
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
