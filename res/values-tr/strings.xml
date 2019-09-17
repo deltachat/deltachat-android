@@ -546,9 +546,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrelenen ileti</string>
 
-    <!-- iOS specific strings -->
-    <string name="delete_contact">%1$s kişisi kalıcı olarak silinsin mi?\n\nSohbetleri süren kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
-
     <!-- desktop specific strings -->
     <string name="welcome_desktop">DeltaChat\'e hoş geldiniz</string>
     <string name="login_known_accounts_title_desktop">Bilinen hesaplar</string>
@@ -625,54 +622,5 @@
     <string name="menu.view.developer.open.current.log.file">Geçerli Günlük Dosyasını Aç</string>
 
     <string name="user_location_permission_explanation">Delta Chat\'in konumunuzu göstermesi ya da paylaşması için konum izni gerekir.</string>
-
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">\"%1$s\" grubuna katılmak istiyor musunuz?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">%1$s ile sohbet edilsin mi?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">%1$s ile sohbet edilsin mi?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">QR davet kodu</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">\"%1$s\" grubuna katılmak için bunu tarayın.</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Gelen kutusu boş</string>
-    <string name="chat_all_done_explain">Sıfır öğe.\nBurada hiçbir şey yok!</string>
-    <string name="media_tab_media">Ortam</string>
-    <string name="media_tab_documents">Belgeler</string>
-    <string name="media_no_media_hint">Ortam yok.</string>
-    <string name="media_no_documents_hint">Belge yok.</string>
-    <string name="language_be">Belarusça</string>
-    <string name="language_ca">Katalanca</string>
-    <string name="language_da">Danca</string>
-    <string name="language_de">Almanca</string>
-    <string name="language_en">İngilizce</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">İspanyolca</string>
-    <string name="language_eu">Baskça</string>
-    <string name="language_fr">Fransızca</string>
-    <string name="language_hr">Hırvatça</string>
-    <string name="language_hu">Macarca</string>
-    <string name="language_it">İtalyanca</string>
-    <string name="language_id">Endonezce</string>
-    <string name="language_ja_JP">Japonca</string>
-    <string name="language_ko">Korece</string>
-    <string name="language_nb_NO">Norveççe Bokmål</string>
-    <string name="language_nl">Flemenkçe</string>
-    <string name="language_nl_NL">Flemenkçe (Hollanda)</string>
-    <string name="language_pl">Lehçe</string>
-    <string name="language_pt">Portekizce</string>
-    <string name="language_ru">Rusça</string>
-    <string name="language_ru_RU">Rusça (Rusya)</string>
-    <string name="language_sq">Arnavutça</string>
-    <string name="language_sr">Sırpça</string>
-    <string name="language_sv">İsveççe</string>
-    <string name="language_ta">Tamilce</string>
-    <string name="language_te">Teluguca</string>
-    <string name="language_tr">Türkçe</string>
-    <string name="language_uk">Ukraynaca</string>
-    <string name="language_zh_CN">Çince</string>
 
 </resources>

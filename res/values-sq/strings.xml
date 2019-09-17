@@ -546,9 +546,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mesazh i fshehtëzuar</string>
 
-    <!-- iOS specific strings -->
-    <string name="delete_contact">Të fshihet përgjithmonë kontakti %1$s? \n\nKontaktet me fjalosje në zhvillim e sipër dhe kontaktet prej libri adresash të sistemit s\’mund të fshihen përgjithmonë.</string>
-
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Mirë se vini te DeltaChat-i</string>
     <string name="login_known_accounts_title_desktop">Llogari të njohura</string>
@@ -625,54 +622,5 @@
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
 
     <string name="user_location_permission_explanation">Që të mund të shfaqë dhe ndajë me të tjerët vendndodhjen tuaj, Delta Chat lyp lejen vendore.</string>
-
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Doni të bëheni pjesë e grupit \"%1$s\"?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Të bisedohet me %1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Të bisedohet me %1$s?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">Kod QR ftese</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Që të bëheni pjesë e grupit \"%1$s\", skanoni këtë.</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Zero të marrë</string>
-    <string name="chat_all_done_explain">Hiç. Fare. Zero.\nJanë qëruar!</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Dokumente</string>
-    <string name="media_no_media_hint">S\’ka media.</string>
-    <string name="media_no_documents_hint">S\’ka dokumente.</string>
-    <string name="language_be">Belge</string>
-    <string name="language_ca">Katalane</string>
-    <string name="language_da">Danisht</string>
-    <string name="language_de">Gjermanisht</string>
-    <string name="language_en">Anglisht</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spanjisht</string>
-    <string name="language_eu">Baske</string>
-    <string name="language_fr">Frëngjisht</string>
-    <string name="language_hr">Kroatisht</string>
-    <string name="language_hu">Hungarisht</string>
-    <string name="language_it">Italisht</string>
-    <string name="language_id">Indonezisht</string>
-    <string name="language_ja_JP">Japonisht</string>
-    <string name="language_ko">Koreançe</string>
-    <string name="language_nb_NO">Norvegjishte Bokmal</string>
-    <string name="language_nl">Holandisht</string>
-    <string name="language_nl_NL">Holandisht(Holandë)</string>
-    <string name="language_pl">Polonisht</string>
-    <string name="language_pt">Portugalisht</string>
-    <string name="language_ru">Rusisht</string>
-    <string name="language_ru_RU">Rusisht (Rusi)</string>
-    <string name="language_sq">Shqip</string>
-    <string name="language_sr">Serbisht</string>
-    <string name="language_sv">Suedisht</string>
-    <string name="language_ta">Tamile</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turqisht</string>
-    <string name="language_uk">Ukrainase</string>
-    <string name="language_zh_CN">Kineze</string>
 
 </resources>
