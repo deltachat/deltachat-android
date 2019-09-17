@@ -568,6 +568,9 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
+    <!-- iOS specific strings -->
+    <string name="delete_contact">Usunąć trwale kontakt %1$s?\n\nKontaktów z trwającymi czatami i kontaktów z książki adresowej systemu nie można trwale usunąć.</string>
+
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Witaj w DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Znane konta</string>

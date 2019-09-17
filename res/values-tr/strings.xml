@@ -185,8 +185,8 @@
     <string name="ask_export_attachment">İlişik dışa aktarılsın mı? İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden gelen iletileri almayacaksınız.</string>
     <string name="ask_unblock_contact">Bu kişinin engellemesi kaldırılsın mı? Bir kez daha bu kişiden gelen iletileri alabileceksiniz.</string>
-    <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSohbetleri süren kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
-    <string name="cannot_delete_contacts_in_use">Sohbetleri süren kişiler silinemez.</string>
+    <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
+    <string name="cannot_delete_contacts_in_use">Sohbetlerin sürdüğü kişiler silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
@@ -407,7 +407,7 @@
     <string name="pref_other">Diğer</string>
     <string name="pref_backup">Yedekleme</string>
     <string name="pref_backup_explain">Sohbetleri dış depolamaya yedekle</string>
-    <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamak için size yardım eder.\n\nYedek, tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
+    <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardım eder.\n\nYedek, tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
     <string name="pref_backup_export_start_button">Yedeklemeye başla</string>
     <string name="pref_backup_written_to_x">Yedek %1$s üzerine başarıyla yazıldı</string>
     <string name="pref_managekeys_menu_title">Anahtarları yönet</string>
@@ -434,7 +434,7 @@
     <string name="pref_show_emails_accepted_contacts">Onaylanan kişiler için</string>
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_empty_server_title">TEHLİKELİ BÖLGE: E-postaları sunucudan sil</string>
-    <string name="pref_empty_server_msg">Bu işlev, sohbet iletilerini de kapsayıp verilen klasörlerdeki TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
+    <string name="pref_empty_server_msg">Bu işlev, sohbet iletilerini kapsayıp verilen klasörlerdeki TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
     <string name="pref_empty_server_inbox">Gelen Kutusu klasöründeki TÜM e-postaları sil</string>
     <string name="pref_empty_server_mvbox">DeltaChat klasöründeki TÜM e-postaları sil</string>
     <string name="pref_empty_server_do_button">E-postaları sil</string>
@@ -503,8 +503,8 @@
     <string name="qrshow_join_group_hint">\"%1$s\" grubuna katılmak için bunu tarayın.</string>
     <string name="qrshow_join_contact_title">QR davet kodu</string>
     <string name="qrshow_join_contact_hint">%1$s ile bir iletişim ayarlamak için bunu tarayın</string>
-    <string name="qrshow_join_contact_no_connection_hint">QR kodu ayarlaması bir internet bağlantısı gerektirir. İşlemden önce lütfen bir ağa bağlanın.</string>
-    <string name="qrshow_join_contact_no_connection_toast">İnternet bağlantısı yok, QR kodu ayarlaması gerçekleştirilemiyor.</string>
+    <string name="qrshow_join_contact_no_connection_hint">QR kodu ayarlaması bir Internet bağlantısı gerektirir. İşlemden önce lütfen bir ağa bağlanın.</string>
+    <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok, QR kodu ayarlaması gerçekleştirilemiyor.</string>
     <string name="contact_verified">%1$s doğrulandı.</string>
     <string name="contact_not_verified">%1$s doğrulanamıyor</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -545,6 +545,9 @@
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrelenen ileti</string>
+
+    <!-- iOS specific strings -->
+    <string name="delete_contact">%1$s kişisi kalıcı olarak silinsin mi?\n\nSohbetleri süren kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
 
     <!-- desktop specific strings -->
     <string name="welcome_desktop">DeltaChat\'e hoş geldiniz</string>
@@ -610,7 +613,7 @@
     <string name="create_chat_error_desktop">Sohbet oluşturulamadı.</string>
     <string name="ask_delete_chat_desktop">Bu sohbeti silmek istediğinizden emin misiniz?</string>
     <string name="email_validation_failed_desktop">E-posta adresi gerekli.</string>
-    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı da kapsayarak her şey silinecek. Bu eylem kesin ve ters çevrilemez.</string>
+    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem kesin ve ters çevrilemez.</string>
     <string name="me_desktop">ben</string>
     <string name="in_this_group_desktop">Grup üyeleri</string>
     <string name="not_in_this_group_desktop">Olası grup üyeleri (grupta değil)</string>

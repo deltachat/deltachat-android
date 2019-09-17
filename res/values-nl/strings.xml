@@ -546,6 +546,9 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Versleuteld bericht</string>
 
+    <!-- iOS specific strings -->
+    <string name="delete_contact">Wil je de contactpersoon \'%1$s\' permanent verwijderen?\n\nPersonen met actieve gesprekken en personen afkomstig uit je adresboek kunnen niet permanent worden verwijderd.</string>
+
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Welkom bij Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Bekende accounts</string>

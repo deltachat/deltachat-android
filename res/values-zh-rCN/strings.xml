@@ -535,6 +535,9 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密消息</string>
 
+    <!-- iOS specific strings -->
+    <string name="delete_contact">永久删除联系人%1$s?\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。 </string>
+
     <!-- desktop specific strings -->
     <string name="welcome_desktop">欢迎使用DeltaChat</string>
     <string name="login_known_accounts_title_desktop">已知账户</string>
