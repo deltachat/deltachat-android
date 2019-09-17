@@ -11,7 +11,7 @@ Push                             | IMAP IDLE ([RFC 2177](https://tools.ietf.org/
 Authorization                    | OAuth2 ([RFC 6749](https://tools.ietf.org/html/rfc6749))
 End-to-end encryption            | [Autocrypt Level 1](https://autocrypt.org/level1.html), OpenPGP ([RFC 4880](https://tools.ietf.org/html/rfc4880)) and Security Multiparts for MIME ([RFC 1847](https://tools.ietf.org/html/rfc1847))
 Configuration assistance         | [Autoconfigure](https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration) and [Autodiscover](https://technet.microsoft.com/library/bb124251(v=exchg.150).aspx)
-Messenger functions              | [Email-chat](https://github.com/deltachat/spec/blob/master/spec.md#email-chat-specification)
+Messenger functions              | [Chat-over-Email](https://github.com/deltachat/deltachat-core-rust/blob/master/spec.md#chat-over-email-specification)
 Detect mailing list              | List-Id ([RFC 2919](https://tools.ietf.org/html/rfc2919)) and Precedence ([RFC 3834](https://tools.ietf.org/html/rfc3834))
 Send and receive system messages | Multipart/Report Media Type ([RFC 6522](https://tools.ietf.org/html/rfc6522))
 Return receipts                  | Message Disposition Notification (MDN, [RFC 8098](https://tools.ietf.org/html/rfc8098), [RFC 3503](https://tools.ietf.org/html/rfc3503)) using the Chat-Disposition-Notification-To header
