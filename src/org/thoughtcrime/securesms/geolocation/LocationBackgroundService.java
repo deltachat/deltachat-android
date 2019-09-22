@@ -39,6 +39,15 @@ public class LocationBackgroundService extends Service {
 
     @Override
     public void onCreate() {
+
+        // XXX so gibt's network on main thread Exception
+        //        new LocalLocation(getApplicationContext()).readLocations();
+        // disable background service if GPS Logger exists
+        if(Location__DRAFT.isGpsLoggerInstalled(getApplicationContext())) {
+            Log.i(TAG, "Found GPS Logger, disable Delta Chat location service");
+            return;
+        }
+
         locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         if (locationManager == null) {
             Log.e(TAG, "Unable to initialize location service");
@@ -83,6 +92,9 @@ public class LocationBackgroundService extends Service {
     }
 
     private void initialLocationUpdate() {
+        if (Location__DRAFT.isGpsLoggerInstalled(getApplicationContext())) {
+            return;
+        }
         try {
             //Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             Location gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -151,6 +163,7 @@ public class LocationBackgroundService extends Service {
             boolean isSignificantlyOlder = timeDelta < -TIMEOUT;
 
             if (isSignificantlyOlder) {
+                Log.d(TAG, String.format("isSignificantlyOlder: currentBestLocation=%s, location=%s, timeDelta=%s", currentBestLocation, location, timeDelta));
                 return false;
             }
 
@@ -161,11 +174,13 @@ public class LocationBackgroundService extends Service {
             boolean isSameProvider = isSameProvider(location.getProvider(), currentBestLocation.getProvider());
 
             if (isSignificantlyMoreAccurate && isSameProvider) {
+                Log.d(TAG, String.format("isSignificantlyMoreAccurate: currentBestLocation=%s, location=%s, accuracyDelta=%s", currentBestLocation, location, accuracyDelta));
                 return true;
             }
 
             boolean isMoreAccurate = accuracyDelta > 0;
             double distance = distance(location, currentBestLocation);
+            Log.d(TAG, String.format("else: currentBestLocation=%s, location=%s, accuracyDelta=%s, distance=%s", currentBestLocation, location, accuracyDelta, distance));
             return hasLocationChanged(distance) && isMoreAccurate ||
                     hasLocationSignificantlyChanged(distance);
 

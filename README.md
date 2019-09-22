@@ -1,3 +1,22 @@
+## Location DRAFT
+
+This branch plugs into and partly replaces the experimental Location Streaming in Delta Chat. It proposes features I love to use, fully compatible to regular Delta Chat clients.
+
+Gratefully Delta Chat allows to share positions without using Google services. I'm traveling a lot and my person of interest would like to see where I am if I'm temporary not available or if she is in doubt about I'm doing well. Since this isn't predictable I would like to share my **location permanently** with here.
+
+Therefore contacts with name ending with ' *' will enable location streaming any time if disabled. TODO: A regular feature should implement a contact property instead of a name extension of course.
+
+While I'm not using Google Play Services on my device `NetworkLocationProvider`s aren't available. Permanently using GPS Sensor is draining the battery very fast. **GPSLogger for Android** is a battery efficient GPS logging application. It's better to use its data than resolving it in Delta Chat.
+
+GPSLogger can be started and stopped with an Intent triggered by Delta Chat. The LocationBackgroundService in Delta Chat is disabled if GPSLogger is installed on the device.
+
+It makes no sense to monitor GPS and send a bunch of mails if you're connected with an **well known WiFi** access point so it's stopped at home for example. A Point Of Interest (POI) sent to yourself with the name of the router and suffix ' *' is used to define its location. On using such POI it will be recreated if it is older than a day to be shown on the map.
+
+Additionally if the device is laying on your desktop or the night table in a hotel room GPSLogger is disabled too by **detecting missing movements** of compass heading and location distances.
+
+A lot of hours and distances I'm sitting in a German railway express called ICE. Its mirrored window surface filters GPS signals but the train provides free WiFi and a REST API with very precisely location. Connected with **"WIFIonICE"** the locations will be taken from there. TODO: This should be generic with settings to use other providers.
+
+
 ## Delta Chat Android Client
 
 This is the Android client for [Delta Chat](https://delta.chat/).

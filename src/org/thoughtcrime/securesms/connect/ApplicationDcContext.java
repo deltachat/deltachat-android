@@ -30,6 +30,7 @@ import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
+import org.thoughtcrime.securesms.geolocation.Location__DRAFT;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Hash;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -64,6 +65,7 @@ public class ApplicationDcContext extends DcContext {
   public ApplicationDcContext(Context context) {
     super("Android "+BuildConfig.VERSION_NAME);
     this.context = context;
+    this.localLocation = new Location__DRAFT(context);
 
     File dbfile = new File(context.getFilesDir(), "messenger.db");
     open(dbfile.getAbsolutePath());
@@ -292,6 +294,8 @@ public class ApplicationDcContext extends DcContext {
 
   public PowerManager.WakeLock afterForegroundWakeLock = null;
 
+  private Location__DRAFT localLocation;
+
   public final static int INTERRUPT_IDLE = 0x01; // interrupt idle if the thread is already running
 
   public void startThreads(int flags) {
@@ -317,6 +321,7 @@ public class ApplicationDcContext extends DcContext {
 
 
           while (true) {
+            localLocation.updateLocation();
             imapWakeLock.acquire();
             performImapJobs();
             performImapFetch();
