@@ -248,8 +248,6 @@
     <string name="chat_no_contact_requests">No contact requests.\n\nIf you want classic emails to appear here as contact requests, you can change the corresponding setting in the app settings.</string>
     <string name="retry_send">Retry to send message</string>
     <string name="send_failed">Sending message failed</string>
-    <string name="messaging_disabled_not_in_group">Messaging disabled (you are not in this group)</string>
-    <string name="message_not_verified">The message was sent with non-verified encryption.. See \"Info\" for details.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
@@ -569,9 +567,8 @@
     <string name="encrypted_message">Encrypted message</string>
 
     <!-- desktop specific strings -->
-    <string name="welcome_desktop">Welcome to DeltaChat</string>
+    <string name="welcome_desktop">Welcome to Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Known accounts</string>
-    <string name="global_menu_preferences_desktop">Preferences</string>
     <string name="global_menu_preferences_language_desktop">Choose Language...</string>
     <string name="global_menu_file_desktop">File</string>
     <string name="global_menu_file_quit_desktop">Quit</string>
@@ -581,20 +578,17 @@
     <string name="global_menu_edit_cut_desktop">Cut</string>
     <string name="global_menu_edit_copy_desktop">Copy</string>
     <string name="global_menu_edit_paste_desktop">Paste</string>
-    <string name="global_menu_edit_delete_desktop">Delete</string>
-    <string name="global_menu_edit_selectall_desktop">Select All</string>
     <string name="global_menu_view_desktop">View</string>
     <string name="global_menu_view_floatontop_desktop">Float on Top</string>
     <string name="global_menu_view_developer_desktop">Developer</string>
     <string name="global_menu_view_developer_tools_desktop">Developer Tools</string>
     <string name="global_menu_help_desktop">Help</string>
-    <string name="global_menu_help_learn_desktop">Learn more about DeltaChat</string>
+    <string name="global_menu_help_learn_desktop">Learn more about Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Contribute on GitHub</string>
     <string name="global_menu_help_report_desktop">Report an Issue...</string>
-    <string name="global_menu_help_about_desktop">About DeltaChat</string>
+    <string name="global_menu_help_about_desktop">About Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Select a chat or create a new chat</string>
     <string name="write_message_desktop">Write a message</string>
-    <string name="about_deltachat_heading_desktop">About DeltaChat</string>
     <string name="encryption_info_title_desktop">Encryption information</string>
     <string name="contact_detail_title_desktop">Contact detail</string>
     <string name="contact_request_title_desktop">Contact request</string>
@@ -606,7 +600,6 @@
     <string name="no_chats_desktop">No chats</string>
     <string name="encryption_info_desktop">Show encryption info</string>
     <string name="verified_desktop">verified</string>
-    <string name="group_name_desktop">Group name</string>
     <string name="remove_desktop">Remove</string>
     <string name="save_desktop">Save</string>
     <string name="show_qr_verify_code_desktop">Show QR invite code</string>
