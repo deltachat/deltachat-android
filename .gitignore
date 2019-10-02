@@ -37,6 +37,7 @@ jni/libspeex/.deps/
 *.swp
 
 jni/x86
+jni/x86_64
 jni/armeabi
 jni/armeabi-v7a
 jni/arm64-v8a
