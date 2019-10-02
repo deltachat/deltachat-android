@@ -251,8 +251,12 @@ public class AttachmentManager {
          if (slide == null) {
           attachmentViewStub.get().setVisibility(View.GONE);
           result.set(false);
-        } else if (!areConstraintsSatisfied(context, slide, constraints)) {
+        } else if (slide.getFileSize()>1*1024*1024*1024) {
+          // this is only a rough check, videos and images may be recoded
+          // and the core checks more carefully later.
           attachmentViewStub.get().setVisibility(View.GONE);
+          Log.w(TAG, "File too large.");
+          Toast.makeText(slide.context, "File too large.", Toast.LENGTH_LONG).show();
           result.set(false);
         } else {
           setSlide(slide);
@@ -507,15 +511,6 @@ public class AttachmentManager {
     }
   }
 
-  private boolean areConstraintsSatisfied(final @NonNull  Context context,
-                                          final @Nullable Slide slide,
-                                          final @NonNull  MediaConstraints constraints)
-  {
-   return slide == null                                          ||
-          constraints.isSatisfied(context, slide.asAttachment()) ||
-          constraints.canResize(slide.asAttachment());
-  }
-
   private void previewImageDraft(final @NonNull Slide slide) {
     if (MediaPreviewActivity.isContentTypeSupported(slide.getContentType()) && slide.getUri() != null) {
       Intent intent = new Intent(context, MediaPreviewActivity.class);
@@ -546,9 +541,14 @@ public class AttachmentManager {
   private class EditButtonListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
-      Intent intent = new Intent(context, ScribbleActivity.class);
-      intent.setData(getSlideUri());
-      ((Activity)context).startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
+      if (Build.VERSION.SDK_INT >= 19) {
+        Intent intent = new Intent(context, ScribbleActivity.class);
+        intent.setData(getSlideUri());
+        ((Activity) context).startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
+      }
+      else {
+        Toast.makeText(context, "Image editing requires Android 4.4 KitKat or newer.", Toast.LENGTH_LONG).show();
+      }
     }
   }
 
@@ -574,7 +574,7 @@ public class AttachmentManager {
       switch (this) {
       case IMAGE:    return new ImageSlide(context, uri, dataSize, width, height);
       case GIF:      return new GifSlide(context, uri, dataSize, width, height);
-      case AUDIO:    return new AudioSlide(context, uri, dataSize, false);
+      case AUDIO:    return new AudioSlide(context, uri, dataSize, false, fileName);
       case VIDEO:    return new VideoSlide(context, uri, dataSize);
       case DOCUMENT: return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
       default:       throw  new AssertionError("unrecognized enum");

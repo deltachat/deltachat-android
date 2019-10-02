@@ -145,6 +145,8 @@
     <string name="menu_select_all">Hautatu guztiak</string>
     <string name="menu_expand">Hedatu</string>
     <string name="menu_edit_name">Editatu izena</string>
+    <string name="menu_edit_group_name">Editatu taldearen izena</string>
+    <string name="menu_edit_group_image">Editatu taldearen irudia</string>
     <string name="menu_settings">Ezarpenak</string>
     <string name="menu_advanced">Aurreratua</string>
     <string name="menu_deaddrop">Kontaktu-eskaerak</string>
@@ -152,6 +154,7 @@
     <string name="menu_view_profile">Ikusi profila</string>
     <string name="menu_zoom_in">Hurbildu zooma</string>
     <string name="menu_zoom_out">Urrundu zooma</string>
+    <string name="menu_save_log">Gorde egunkaria</string>
     <string name="title_share_location">Partekatu kokalekua taldeko kide guztiak</string>
 
     <string name="mute_for_one_hour">Mututu ordubete</string>
@@ -166,6 +169,7 @@
     <string name="share_location_for_one_hour">Ordu 1</string>
     <string name="share_location_for_two_hours">2 orduz</string>
     <string name="share_location_for_six_hours">6 orduz</string>
+
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ziur talde honetatik atera nahi duzula?</string>
@@ -186,6 +190,10 @@
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Kendu %1$s taldetik?</string>
+    <string name="info_outdated_app_title">Zure aplikazioaren bertsioa zaharkituta dago</string>
+    <string name="info_outdated_app_text">Badirudi eguneraketak automatikoki kudeatzen ez dituen iturri batetik instalatu duzula Delta Chat (esaterako GitHub). Aldatu aplikazio dendaren bateko bertsiora azken eguneraketak eta arazoen konponketak jasotzeko.</string>
+    <string name="info_outdated_app_dialog_title">Eguneratu iturriak</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat hemen ago eskuragarri:</string>
 
 
     <!-- contact list -->
@@ -208,9 +216,9 @@
     <string name="chat_please_enter_message">Idatzi mezu bat.</string>
     <string name="chat_camera_unavailable">Kamera ez dago eskuragarri.</string>
     <string name="chat_unable_to_record_audio">Ezin izan da audioa grabatu.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">Irakurri gabeko mezu %d</item>
-        <item quantity="other">Irakurri gabeko %d mezu </item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">Mezu berri %d</item>
+        <item quantity="other">%d mezu berri</item>
     </plurals>
     <string name="chat_no_messages_hint">Bidali mezuak %1$s erabiltzaileari:\n\n• Ez du axola %2$s(e)k ez badu Delta Chat erabiltzen.\n\n• Lehen mezua bidaltzeko denbora bat behar daiteke, eta agian ez da zifratuta egongo.</string>
     <string name="chat_new_group_hint">Idatzi lehen mezua, besteek taldera erantzutea baimenduz\n\n• Ez du axola denek ez badute Delta Chat erabiltzen.\n\n• Lehen mezua bidaltzeko denbora bat behar daiteke.</string>
@@ -370,7 +378,6 @@
     <string name="pref_led_pattern">LEDaren kliskatze eredua</string>
     <string name="pref_sound">Soinua</string>
     <string name="pref_silent">Isila</string>
-    <string name="pref_repeat_notify">Errepikatu alertak</string>
     <string name="pref_privacy">Pribatutasuna</string>
     <string name="pref_chats_and_media">Txatak eta multimedia</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -394,6 +401,8 @@
     <string name="pref_in_chat_sounds">Txat bitarteko soinuak</string>
     <string name="pref_message_text_size">Mezuen letra tamaina</string>
     <string name="pref_view_log">Ikusi egunkaria</string>
+    <string name="pref_saved_log">Egunkaria deskargen karpetan gorde da</string>
+    <string name="pref_save_log_failed">Huts egin du egunkaria gordetzean</string>
     <string name="pref_log_header">Egunkaria</string>
     <string name="pref_other">Bestelakoa</string>
     <string name="pref_backup">Babeskopia</string>
@@ -424,6 +433,11 @@
     <string name="pref_show_emails_no">Ez, txatak besterik ez</string>
     <string name="pref_show_emails_accepted_contacts">Onartutako kontaktuena</string>
     <string name="pref_show_emails_all">Denak</string>
+    <string name="pref_empty_server_title">ARRISKUTSUA: Ezabatu e-mailak zerbitzaritik</string>
+    <string name="pref_empty_server_msg">Funtzio honek IMAP zerbitzarian espazioa aurreztea ahalbidetzen dizu karpeta zehatzetako e-mail GUZTIAK ezabatuz, txatetako mezuak barne. Gailu honetako mezuak ez dira ezabatuko. Behin ezabatuta ezin dira berreskuratu!</string>
+    <string name="pref_empty_server_inbox">Ezabatu sarrera ontziko e-mail GUZTIAK</string>
+    <string name="pref_empty_server_mvbox">Ezabatu DeltaChat karpetako e-mail GUZTIAK</string>
+    <string name="pref_empty_server_do_button">Ezabatu e-mailak</string>
 
 
     <!-- autocrypt -->
@@ -512,11 +526,6 @@
     <string name="notify_name_and_message">Izena eta mezua</string>
     <string name="notify_name_only">Izena besterik ez</string>
     <string name="notify_no_name_or_message">Izenik edo mezurik ez</string>
-    <string name="notify_repeat_one_time">Behin</string>
-    <string name="notify_repeat_two_times">Bi aldiz</string>
-    <string name="notify_repeat_three_times">Hiru aldiz</string>
-    <string name="notify_repeat_five_times">Bost aldiz</string>
-    <string name="notify_repeat_ten_times">Hamar aldiz</string>
 
 
     <!-- permissions -->
@@ -533,38 +542,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat-ek kokaleku aatzitzeko baimena behar du kokalekua eransteko, baina behin betiko ukatu zaio. Joan aplikazioaren ezarpen menura, hautatu \"baimenak\", eta gaitu \"Kokalekua\".</string>
     <string name="perm_enable_bg_reminder_title">Sakatu hemen mezuak jasotzeko Delta Chat bigarren planoan dagoenean.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat-ek baliabide gutxi erabiltzen ditu eta zure bateria ez agortzeaz arduratzen da.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belgiera</string>
-    <string name="language_ca">Katalana</string>
-    <string name="language_da">Daniera</string>
-    <string name="language_de">Alemana</string>
-    <string name="language_en">Ingelesa</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Gaztelania</string>
-    <string name="language_eu">Euskara</string>
-    <string name="language_fr">Frantzesa</string>
-    <string name="language_hr">Kroaziera</string>
-    <string name="language_hu">Hungariera</string>
-    <string name="language_it">Italiera</string>
-    <string name="language_id">Indonesiera</string>
-    <string name="language_ja_JP">Japoniera</string>
-    <string name="language_ko">Koreera</string>
-    <string name="language_nb_NO">Norvegiako Bokmål</string>
-    <string name="language_nl">Nederlandera</string>
-    <string name="language_nl_NL">Nederlandera (Holanda)</string>
-    <string name="language_pl">Poloniera</string>
-    <string name="language_pt">Portugesa</string>
-    <string name="language_ru">Errusiera</string>
-    <string name="language_ru_RU">Errusiera (Errusia)</string>
-    <string name="language_sq">Albaniera</string>
-    <string name="language_sr">Serbiera</string>
-    <string name="language_sv">Suediera</string>
-    <string name="language_ta">Tamilera</string>
-    <string name="language_te">Teluguera</string>
-    <string name="language_tr">Turkiera</string>
-    <string name="language_uk">Ukrainera</string>
-    <string name="language_zh_CN">Txinera</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zifratutako mezua</string>
@@ -645,25 +622,5 @@
     <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
 
     <string name="user_location_permission_explanation">Delta Chat-ek kokalekua atzitzeko baimena behar du zure kokalekua erakutsi eta partekatu ahal izateko.</string>
-
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">\"%1$s\" taldera elkartu nahi duzu?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Txateatu %1$s(r)ekin?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Txateatu %1$s(r)ekin?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">QR gonbidapen kodea</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Eskaneatu hau \"%1$s\" taldera elkartzeko.</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Sarrera ontzi hutsa</string>
-    <string name="chat_all_done_explain">Ezer ere ez.\n Egunean zaude!</string>
-    <string name="media_tab_media">Multimedia</string>
-    <string name="media_tab_documents">Dokumentuak</string>
-    <string name="media_no_media_hint">Multimediarik ez.</string>
-    <string name="media_no_documents_hint">Dokumenturik ez.</string>
-
 
 </resources>

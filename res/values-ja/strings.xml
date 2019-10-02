@@ -97,13 +97,17 @@
     <string name="menu_new_group">新規ｸﾞﾙｰﾌﾟ</string>
     <string name="menu_send">送信</string>
     <string name="menu_edit_group">ｸﾞﾙｰﾌﾟを編集</string>
+    <string name="menu_group_name_and_image">ｸﾞﾙｰﾌﾟ名と画像</string>
     <string name="menu_show_map">地図を見る</string>
+    <string name="menu_show_global_map">全ての位置情報を表示する</string>
     <string name="menu_archive_chat">ﾁｬｯﾄを保管</string>
     <string name="menu_unarchive_chat">ﾁｬｯﾄを取り出す</string>
     <string name="menu_leave_group">退室する</string>
     <string name="menu_delete_chat">ﾁｬｯﾄを削除</string>
     <string name="menu_delete_messages">ﾒｯｾｰｼﾞを削除</string>
     <string name="menu_delete_image">画像を削除する</string>
+    <string name="menu_delete_locations">全ての位置情報を削除しますか</string>
+    <string name="menu_delete_location">この位置情報を削除しますか</string>
     <string name="menu_message_details">ﾒｯｾｰｼﾞの詳細</string>
     <string name="menu_copy_to_clipboard">ｸﾘｯﾌﾟﾎﾞｰﾄﾞに複製</string>
     <string name="menu_forward">ﾒｯｾｰｼﾞを転送</string>
@@ -118,20 +122,45 @@
     <string name="menu_pause">一時停止</string>
     <string name="menu_help">ﾍﾙﾌﾟ</string>
     <string name="menu_select_all">全選択</string>
+    <string name="menu_edit_name">名前の編集</string>
+    <string name="menu_edit_group_name">ｸﾞﾙｰﾌﾟ名の編集</string>
+    <string name="menu_edit_group_image">ｸﾞﾙｰﾌﾟ画像の編集</string>
     <string name="menu_settings">設定</string>
     <string name="menu_advanced">追加設定</string>
     <string name="menu_deaddrop">連絡先追加</string>
     <string name="menu_view_profile">詳細を確認</string>
+    <string name="menu_zoom_in">拡大</string>
+    <string name="menu_zoom_out">縮小</string>
+    <string name="title_share_location">現在地を全員に公開する</string>
+
+    <string name="mute_for_one_hour">1時間停止する</string>
+    <string name="mute_for_two_hours">2時間停止する</string>
+    <string name="mute_for_one_day">24時間停止する</string>
+    <string name="mute_for_seven_days">7日間停止する</string>
+    <string name="mute_forever">無効</string>
+
+    <string name="share_location_once">一度</string>
+    <string name="share_location_for_5_minutes">5分間</string>
+    <string name="share_location_for_30_minutes">30分間</string>
+    <string name="share_location_for_one_hour">1時間</string>
+    <string name="share_location_for_two_hours">2時間</string>
+    <string name="share_location_for_six_hours">6時間</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">本当に退室しますか</string>
     <string name="ask_block_contact">この連絡先を拒否しますか</string>
     <string name="ask_unblock_contact">この連絡先の拒否設定を解除しますか</string>
     <string name="ask_start_chat_with">%1$sとﾁｬｯﾄしますか</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">%1$sをｸﾞﾙｰﾌﾟから排除しますか</string>
     <!-- contact list -->
     <string name="contacts_title">連絡先一覧</string>
     <string name="contacts_enter_name_or_email">名前かﾒｰﾙｱﾄﾞﾚｽを入力</string>
     <string name="contacts_empty_hint">連絡先無し</string>
 
 
-    <string name="chat_no_chats_yet_hint">あなたはDelta Chatを使う人や普通のﾒｰﾙｱﾄﾞﾚｽとﾁｬｯﾄを出来ます｡</string>
+    <string name="chat_no_chats_yet_hint">あなたはDelta Chat利用者や普通のﾒｰﾙｱﾄﾞﾚｽとﾁｬｯﾄを出来ます｡</string>
     <string name="chat_input_placeholder">ﾒｯｾｰｼﾞ</string>
     <string name="chat_no_messages">ﾒｯｾｰｼﾞ無し</string>
     <!-- search -->
@@ -140,6 +169,17 @@
     <string name="search_no_result_for_x">｢%s｣は見付かりませんでした｡</string>
 
 
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">ｸﾞﾙｰﾌﾟ名</string>
+    <string name="group_create_button">ｸﾞﾙｰﾌﾟ作成</string>
+    <string name="group_please_enter_group_name">ｸﾞﾙｰﾌﾟ名を入力して下さい</string>
+    <string name="group_hello_draft">只今､グループ｢%1$s｣を作成しました｡ご利用下さい｡</string>
+    <string name="tab_contact">連絡先</string>
+    <string name="tab_group">ｸﾞﾙｰﾌﾟ</string>
+    <string name="tab_gallery">画像</string>
+    <string name="tab_docs">文章</string>
+    <string name="tab_links">ﾘﾝｸ</string>
+    <string name="tab_map">地図</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro2_headline">独立</string>
@@ -183,6 +223,7 @@ https://delta.chat</string>
     <string name="pref_vibrate">振動</string>
     <string name="pref_chat_settings">ﾁｬｯﾄ設定</string>
     <string name="pref_notifications">通知</string>
+    <string name="pref_notifications_show">表示</string>
     <string name="pref_notifications_priority">優先度</string>
     <string name="pref_led_color">LED色</string>
     <string name="pref_sound">通知音</string>
@@ -200,6 +241,8 @@ https://delta.chat</string>
     <string name="pref_in_chat_sounds">着信音</string>
     <string name="pref_message_text_size">文字の大きさ</string>
     <string name="pref_other">その他</string>
+    <string name="pref_background">背景</string>
+    <string name="pref_show_emails">一般的なﾒｰﾙを表示する</string>
     <!-- autocrypt -->
     <string name="autocrypt">自動暗号化</string>
     <string name="autocrypt_explain">自動暗号化機能は新しくて開けた仕様での一対一のﾒｰﾙ暗号化を行います｡\n \n この一対一暗号化は自動暗号化設定用ﾒｯｾｰｼﾞを転送して設定します｡</string>
@@ -217,48 +260,14 @@ https://delta.chat</string>
     <string name="qrshow_x_joining">%1$sが参加しました</string>
     <string name="qrshow_join_group_title">自分のQRｺｰﾄﾞ</string>
     <string name="qrshow_join_contact_title">自分のQRｺｰﾄﾞ</string>
+    <string name="notify_mark_all_read">全て閲覧済</string>
+    <string name="notify_mark_read">閲覧済</string>
+    <string name="notify_reply_button">返信</string>
     <string name="notify_new_message">新規ﾒｯｾｰｼﾞ</string>
+    <string name="notify_priority_high">高</string>
+    <string name="notify_priority_max">最大</string>
     <string name="notify_name_and_message">名前とﾒｯｾｰｼﾞ</string>
     <string name="notify_name_only">名前のみ</string>
-    <string name="notify_repeat_one_time">一回</string>
-    <string name="notify_repeat_two_times">二回</string>
-    <string name="notify_repeat_three_times">三回</string>
-    <string name="notify_repeat_five_times">五回</string>
-    <string name="notify_repeat_ten_times">十回</string>
-
-
-    <!-- languages -->
-    <string name="language_be">ﾍﾞﾙｷﾞｰ語</string>
-    <string name="language_ca">ｶﾀﾙｰﾆｬ語</string>
-    <string name="language_da">ﾃﾞﾝﾏｰｸ語</string>
-    <string name="language_de">ﾄﾞｲﾂ語</string>
-    <string name="language_en">英語</string>
-    <string name="language_eo">ｴｽﾍﾟﾗﾝﾄ語</string>
-    <string name="language_es">ｽﾍﾟｲﾝ(ｶｽﾃｰﾘｬ)語</string>
-    <string name="language_eu">ﾊﾞｽｸ語</string>
-    <string name="language_fr">ﾌﾗﾝｽ語</string>
-    <string name="language_hr">ｸﾛｱﾁｱ語</string>
-    <string name="language_hu">ﾊﾝｶﾞﾘｰ語</string>
-    <string name="language_it">ｲﾀﾘｱ語</string>
-    <string name="language_id">ｲﾝﾄﾞﾈｼｱ語</string>
-    <string name="language_ja_JP">日本語</string>
-    <string name="language_ko">ﾄﾝｽﾙ語</string>
-    <string name="language_nb_NO">ﾉﾙｳｪｰ語ﾌﾞｰｹﾓｰﾙ</string>
-    <string name="language_nl">ｵﾗﾝﾀﾞ語</string>
-    <string name="language_nl_NL">ｵﾗﾝﾀﾞ語</string>
-    <string name="language_pl">ﾎﾟｰﾗﾝﾄﾞ語</string>
-    <string name="language_pt">ﾎﾟﾙﾄｶﾞﾙ語</string>
-    <string name="language_ru">ﾛｼｱ語</string>
-    <string name="language_ru_RU">ﾛｼｱ語</string>
-    <string name="language_sq">ｱﾙﾊﾞﾆｱ語</string>
-    <string name="language_sr">ｾﾙﾋﾞｱ語</string>
-    <string name="language_sv">ｽｳｪｰﾃﾞﾝ語</string>
-    <string name="language_ta">ﾀﾐﾙ語</string>
-    <string name="language_te">ﾃﾙｸﾞ語</string>
-    <string name="language_tr">ﾄﾙｺ語</string>
-    <string name="language_uk">ｳｸﾗｲﾅ語</string>
-    <string name="language_zh_CN">中国語</string>
-
     <!-- desktop specific strings -->
     <string name="welcome_desktop">DeltaChatへようこそ</string>
     <string name="login_known_accounts_title_desktop">不明なｱｶｳﾝﾄ</string>
@@ -284,6 +293,8 @@ https://delta.chat</string>
     <string name="contact_detail_title_desktop">連絡先の詳細</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="no_chats_desktop">ﾁｬｯﾄ無し</string>
+    <string name="group_name_desktop">ｸﾞﾙｰﾌﾟ名</string>
+    <string name="remove_desktop">削除</string>
     <string name="show_qr_verify_code_desktop">自分のQRｺｰﾄﾞを見る</string>
     <string name="show_qr_invite_code_desktop">自分のQRｺｰﾄﾞを見る</string>
     <string name="add_contact_desktop">連絡先を追加</string>
@@ -294,15 +305,4 @@ https://delta.chat</string>
     <string name="message_detail_sent_desktop">送信済み</string>
     <string name="user_location_permission_explanation">Delta Chatは位置情報を共有出来る様にする為権限が必要です</string>
 
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">%1$sに参加しますか</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">%1$sとﾁｬｯﾄしますか</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">%1$sとﾁｬｯﾄしますか</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">自分のQRｺｰﾄﾞを見る</string>
-    <string name="media_tab_media">写真･動画･音楽</string>
-    <string name="media_no_media_hint">写真･動画･音楽等無し</string>
-    </resources>
+</resources>

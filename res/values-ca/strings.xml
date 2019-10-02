@@ -159,6 +159,7 @@
     <string name="share_location_for_two_hours">durant 2 hores</string>
     <string name="share_location_for_six_hours">durant 6 hores</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Segur que voleu deixar aquest grup?</string>
     <plurals name="ask_delete_chat">
@@ -196,10 +197,6 @@
     <string name="chat_please_enter_message">Si us plau, escriviu un missatge</string>
     <string name="chat_camera_unavailable">Càmera no disponible.</string>
     <string name="chat_unable_to_record_audio">No es pot gravar so.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d missatge sense llegir</item>
-        <item quantity="other">%d missatges sense llegir</item>
-    </plurals>
     <string name="chat_no_messages_hint">Envia el missatge a %1$s:\n\n• No cal amoïnar-se si %2$s no usa Delta Chat.\n\n• El lliurament del primer missatge por trigar una estona i potser arriba sense encriptar.</string>
     <string name="chat_new_group_hint">Escriviu el primer missatge i així els altres podran respondre a tot el grup.\n\n• No patiu si hi ha membres que no fan servir Delta Chat.\n\n• El lliurament del primer missatge pot trigar una estona.</string>
     <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
@@ -342,7 +339,6 @@
     <string name="pref_led_pattern">Patró de pampallugues del LED</string>
     <string name="pref_sound">So</string>
     <string name="pref_silent">Silenci</string>
-    <string name="pref_repeat_notify">Repeteix les alertes</string>
     <string name="pref_privacy">Privacitat</string>
     <string name="pref_chats_and_media">Xats i multimèdia</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -395,8 +391,6 @@
     <string name="pref_show_emails_no">No, només xats</string>
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
     <string name="pref_show_emails_all">Tot</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt és una especificació nova i oberta per al xifratge automàtic de correu electrònic d\'extrem a extrem.\n\nLa vostra configuració d\'extrem a extrem es crea automàticament segons calgui i es pot transferir entre dispositius amb els missatges de configuració Autocrypt.</string>
@@ -481,11 +475,6 @@
     <string name="notify_name_and_message">Nom i missatge</string>
     <string name="notify_name_only">Només nom</string>
     <string name="notify_no_name_or_message">Ni nom ni missatge</string>
-    <string name="notify_repeat_one_time">Un cop</string>
-    <string name="notify_repeat_two_times">Dos cops</string>
-    <string name="notify_repeat_three_times">Tres cops</string>
-    <string name="notify_repeat_five_times">Cinc cops</string>
-    <string name="notify_repeat_ten_times">Deu cops</string>
 
 
     <!-- permissions -->
@@ -502,38 +491,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat necessita accedir a la ubicació per poder-la adjuntar, però li ha estat denegada de forma permanent. Vés a les preferències del menú de l\'aplicació, tria \"Permisos i activa-hi la \"Ubicació\".</string>
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat fa servir els recursos mínims i procura no gastar gaire bateria.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belga</string>
-    <string name="language_ca">Català</string>
-    <string name="language_da">Danès</string>
-    <string name="language_de">Alemany</string>
-    <string name="language_en">Anglès</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Espanyol</string>
-    <string name="language_eu">Basc</string>
-    <string name="language_fr">Francès</string>
-    <string name="language_hr">Croat</string>
-    <string name="language_hu">Hongarès</string>
-    <string name="language_it">Italià</string>
-    <string name="language_id">Indonesi</string>
-    <string name="language_ja_JP">Japonès</string>
-    <string name="language_ko">Coreà</string>
-    <string name="language_nb_NO">Noruec bokmål</string>
-    <string name="language_nl">Neerlandès</string>
-    <string name="language_nl_NL">Neerlandès (Països Baixos)</string>
-    <string name="language_pl">Polonès</string>
-    <string name="language_pt">Portuguès</string>
-    <string name="language_ru">Rus</string>
-    <string name="language_ru_RU">Rus (Rússia)</string>
-    <string name="language_sq">Albanès</string>
-    <string name="language_sr">Serbi</string>
-    <string name="language_sv">Suec</string>
-    <string name="language_ta">Tàmil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turc</string>
-    <string name="language_uk">Ucraïnès</string>
-    <string name="language_zh_CN">Xinès</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Missatge encriptat</string>
@@ -615,21 +572,4 @@
 
     <string name="user_location_permission_explanation">Delta Chat necessita permís per accedir a la ubicació per poder-la mostrar i compartir.</string>
 
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Voleu unir-vos al grup \"%1$s\"?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Xatejar amb %1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Xatejar amb %1$s?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">Codi QR d\'invitació</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Escanegeu això per unir-vos al grup \"%1$s\".</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Zeeeeeroo missatges a la safata d\'entrada</string>
-    <string name="chat_all_done_explain">Res, niente, ezer, nihil, rien de rien\nJa heu acabat!</string>
-    <string name="media_tab_media">Multimèdia</string>
-    <string name="media_tab_documents">Documents</string>
-    <string name="media_no_media_hint">Cap arxiu multimèdia.</string>
-    </resources>
+</resources>

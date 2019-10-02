@@ -145,6 +145,8 @@
     <string name="menu_select_all">Seleziona tutto</string>
     <string name="menu_expand">Espandi</string>
     <string name="menu_edit_name">Modifica nome</string>
+    <string name="menu_edit_group_name">Modifica nome gruppo</string>
+    <string name="menu_edit_group_image">Modifica immagine gruppo</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="menu_advanced">Avanzate</string>
     <string name="menu_deaddrop">Richieste di contatto</string>
@@ -152,6 +154,7 @@
     <string name="menu_view_profile">Vedi profilo</string>
     <string name="menu_zoom_in">Zoom in</string>
     <string name="menu_zoom_out">Zoom out</string>
+    <string name="menu_save_log">Salva log</string>
     <string name="title_share_location">Condividi posizione con tutti i membri</string>
 
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
@@ -166,6 +169,7 @@
     <string name="share_location_for_one_hour">per 1 ora</string>
     <string name="share_location_for_two_hours">per 2 ore</string>
     <string name="share_location_for_six_hours">per 6 ore</string>
+
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare il gruppo?</string>
@@ -186,6 +190,10 @@
     <string name="ask_start_chat_with">Chattare with %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
+    <string name="info_outdated_app_title">La applicazione non è aggiornata.</string>
+    <string name="info_outdated_app_text">Sembra che tu abbia installato Delta Chat da una sorgente che non fornisce aggiornamenti automatici (es. GitHub). Scaricala da uno store per riceve nuove funzionalità e bug fix.</string>
+    <string name="info_outdated_app_dialog_title">Aggiorna sorgenti</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat è disponibile su:</string>
 
 
     <!-- contact list -->
@@ -208,9 +216,9 @@
     <string name="chat_please_enter_message">Scrivere un messaggio.</string>
     <string name="chat_camera_unavailable">Camera non disponibile.</string>
     <string name="chat_unable_to_record_audio">Impossibile registrare audio.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d messaggio non letto</item>
-        <item quantity="other">%d messaggi non letti</item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nuovo messaggio</item>
+        <item quantity="other">%d nuovi messaggi</item>
     </plurals>
     <string name="chat_no_messages_hint">Invia un messaggio a %1$s:\n\n• Non è necessario che anche %2$s usi Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante ed non essere crittografato. </string>
     <string name="chat_new_group_hint">Invia il primo messaggio per permettere agli altri di rispondere nel gruppo\n\n• Non è necessario che tutti i membri usino Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante.</string>
@@ -370,7 +378,6 @@
     <string name="pref_led_pattern">Stile lampeggio LED</string>
     <string name="pref_sound">Suono</string>
     <string name="pref_silent">Silenzia</string>
-    <string name="pref_repeat_notify">Ripeti avvisi</string>
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Chat e media</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -394,6 +401,8 @@
     <string name="pref_in_chat_sounds">Suoni in-chat</string>
     <string name="pref_message_text_size">Dimensione font messaggi</string>
     <string name="pref_view_log">Vedi registro</string>
+    <string name="pref_saved_log">Log salvato nella cartella Download</string>
+    <string name="pref_save_log_failed">Salvataggio log non riuscito</string>
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Altro</string>
     <string name="pref_backup">Backup</string>
@@ -424,6 +433,11 @@
     <string name="pref_show_emails_no">No, solo chat</string>
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
     <string name="pref_show_emails_all">Tutte</string>
+    <string name="pref_empty_server_title">PERICOLOSO: Elimina email dal server</string>
+    <string name="pref_empty_server_msg">Questa funzione permette di liberare spazio sul server IMAP eliminando TUTTE le email, inclusi i messaggi di chat, nelle cartelle selezionate. I messaggi su questo dispositivo non saranno eliminati. L\'eliminazione non è annullabile!</string>
+    <string name="pref_empty_server_inbox">Elimina TUTTE le email nella cartella In Arrivo</string>
+    <string name="pref_empty_server_mvbox">Elimina TUTTE le email nella cartella DeltaChat</string>
+    <string name="pref_empty_server_do_button">Elimina email</string>
 
 
     <!-- autocrypt -->
@@ -512,11 +526,6 @@
     <string name="notify_name_and_message">Nome e messaggio</string>
     <string name="notify_name_only">Solo nome</string>
     <string name="notify_no_name_or_message">Nessun nome nè messaggio</string>
-    <string name="notify_repeat_one_time">Una volta</string>
-    <string name="notify_repeat_two_times">Due volte</string>
-    <string name="notify_repeat_three_times">Tre volte</string>
-    <string name="notify_repeat_five_times">Cinque volte</string>
-    <string name="notify_repeat_ten_times">Dieci volte</string>
 
 
     <!-- permissions -->
@@ -533,38 +542,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat richiede l\'autorizzazione per allegare la posizione, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
     <string name="perm_enable_bg_reminder_title">Premi qui per ricevere messaggi quando Delta Chat è in background.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat usa poche risorse ed è progettata per consumare meno batteria possibile.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belga</string>
-    <string name="language_ca">Catalano</string>
-    <string name="language_da">Danese</string>
-    <string name="language_de">Tedesco</string>
-    <string name="language_en">Inglese</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spagnolo</string>
-    <string name="language_eu">Basco</string>
-    <string name="language_fr">Francese</string>
-    <string name="language_hr">Croato</string>
-    <string name="language_hu">Ungherese</string>
-    <string name="language_it">Italiano</string>
-    <string name="language_id">Indonesiano</string>
-    <string name="language_ja_JP">Giapponese</string>
-    <string name="language_ko">Coreano</string>
-    <string name="language_nb_NO">Bokmål norvegese</string>
-    <string name="language_nl">Olandese</string>
-    <string name="language_nl_NL">Dutch (Paesi Bassi)</string>
-    <string name="language_pl">Polacco</string>
-    <string name="language_pt">Portoghese</string>
-    <string name="language_ru">Russo</string>
-    <string name="language_ru_RU">Russo (Russia)</string>
-    <string name="language_sq">Albanese</string>
-    <string name="language_sr">Serbo</string>
-    <string name="language_sv">Svedese</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turco</string>
-    <string name="language_uk">Ucraino</string>
-    <string name="language_zh_CN">Cinese</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Messaggio cifrato</string>
@@ -645,25 +622,5 @@
     <string name="menu.view.developer.open.current.log.file">Apri il Logfile corrente</string>
 
     <string name="user_location_permission_explanation">Delta Chat richiede i permessi di localizzazione per mostrare e condividere la posizione.</string>
-
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Vuoi entrare nel gruppo \"%1$s\"?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Chattare with %1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Chattare with %1$s?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">Codice QR di invito</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Scansionalo per entrare nel gruppo \"%1$s\".</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Inbox vuooota</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nSiete tutti impegnati!</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Documenti</string>
-    <string name="media_no_media_hint">Nessun media.</string>
-    <string name="media_no_documents_hint">Nessun documento.</string>
-
 
 </resources>

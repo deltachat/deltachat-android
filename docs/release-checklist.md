@@ -7,7 +7,7 @@ Release core, if needed, then:
    $ cd jni/messenger-backend/; git checkout master; git pull; cd ../..
    $ git add jni/messenger-backend/
    $ git commit -m "update messenger-backend submodule"
-3. $ tx pull # test and commit changes
+3. $ ./tools/tx-pull-translations.sh  # test and commit changes
 4. bump version, adapt changelog, commit, push
 5. deltachat-android on Github: "Draft a new release" with the version form `v1.2.3`
 
@@ -25,8 +25,9 @@ Release core, f-droid, then:
    (needed for easy APK verificarion), V2 is optional
 4. Upload the generated APK from `gplay/release` to the Github release created at 4
 5. Test the APK
-6. Upload the APK to https://play.google.com/apps/publish/
-
+6. Upload the APK as _Beta_ (_not:_ Production) to https://play.google.com/apps/publish/
+   (Release management/App releases/Open track/Manage/Create Release/Browse files ->
+   select APK from above, add changelog -> Review button, then "ok" or so)
 
 # Testing checklist
 

@@ -21,6 +21,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -104,6 +105,7 @@ public class ConversationFragment extends Fragment
     private Locale                      locale;
     private RecyclerView                list;
     private RecyclerView.ItemDecoration lastSeenDecoration;
+    private StickyHeaderDecoration      dateDecoration;
     private View                        scrollToBottomButton;
     private View                        floatingLocationButton;
     private TextView                    noMessageTextView;
@@ -214,6 +216,12 @@ public class ConversationFragment extends Fragment
         setLastSeen(System.currentTimeMillis());
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        dateDecoration.onConfigurationChanged(newConfig);
+    }
+
     public void onNewIntent() {
         if (actionMode != null) {
             actionMode.finish();
@@ -254,7 +262,8 @@ public class ConversationFragment extends Fragment
         if (this.recipient != null && this.chatId != -1) {
             ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
             list.setAdapter(adapter);
-            list.addItemDecoration(new StickyHeaderDecoration(adapter, false, false));
+            dateDecoration = new StickyHeaderDecoration(adapter, false, false);
+            list.addItemDecoration(dateDecoration);
 
             reloadList();
             updateLocationButton();

@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -47,6 +48,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+
+import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
 
 public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
                                  implements OnRecipientDeletedListener, DcEventCenter.DcEventDelegate
@@ -190,7 +193,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     lv           = ViewUtil.findById(this, R.id.selected_contacts_list);
     avatar       = ViewUtil.findById(this, R.id.avatar);
     groupName    = ViewUtil.findById(this, R.id.group_name);
-    SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this);
+    List<Recipient> initList = new LinkedList<>();
+    DcContact self = dcContext.getContact(DC_CONTACT_ID_SELF);
+    initList.add(dcContext.getRecipient(self));
+    SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, initList);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);
 

@@ -1,5 +1,56 @@
 # Delta Chat Android Changelog
 
+
+## v0.510.1
+2019-07-09
+
+* new image cropping feature: crop images before sending them
+* updated image editing user interface
+* update Chinese (zh-cn and zh-tw), Italian, Dutch, Turkish translations
+* remove swipe to archive and swipe to unarchive chats
+* improve UX to discard contact requests
+* improve UX to block contacts
+* bugfixes
+
+The changes have been done by Björn Petersen, cyBerta, Enrico B., Heimen Stoffels, Lin Miaoski,
+Ozancan Karataş, Zkdc
+
+## v0.500.0
+2019-06-27
+
+* New chat-profile: Gallery, documents, shared chats and members at a glance
+* Add video recording and recoding
+* Show video thumbnails
+* Forward/Share: Add searching and forward/share to new contact/chat
+* Share: Support direct sharing to a recently used chats
+* New notification handling, including a mute-forever option :)
+* Optional plipp-plop sounds in chats
+* Better document- and music-files view
+* Add new-messages marker
+* Keep chat-scroll-postion on incoming messages
+* Clean up settings dialog
+* More general "outgoing media quality" option (replaces image-quality option)
+* Improve quality of voice messages
+* More touch-friendly layout
+* Add an experimental option to delete e-mails from server
+* Improve compatibility with older phones
+* Show a warning if the app is too old and won't be updated automatically
+  (done just by date comparision, no data is sent anywhere)
+* New option to save the log to a file
+* Make input text field a bit larger
+* Add Traditional Chinese and Simplified Chinese translations
+* Update Albanian, Azerbaijani, Basque, Brazilian Portuguese, Catalan, Danish,
+  Dutch, French, German, Italien, Japanese, Lithuanian, Polish, Portuguese,
+  Russian, Spanish, Swedish, Turkish and Ukrainian translations
+* Bugfixes
+
+The changes have been done by Allan Nordhøy, Ampli-fier, Andrei Guliaikin,
+Anna Ayala, Asiel Díaz Benítez, Besnik, Björn Petersen, Boehrsi, Calbasi,
+Christian Schneider, cyBerta, Enrico B., Eric Lavarde, Ferhad Necef,
+Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels, Holger Krekel,
+Iskatel Istiny, Jikstra, Lars-Magnus Skog, Lin Miaoski, Luis, Moo, Ole Carlsen,
+Osoitz, Ozancan Karataş, Racer, Sebek, Yuriy, Zkdc
+
 ## v0.304.0
 2019-05-07
 

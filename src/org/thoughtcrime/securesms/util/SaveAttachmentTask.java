@@ -126,8 +126,7 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
   }
 
   private String generateOutputFileName(@NonNull String contentType, long timestamp) {
-    MimeTypeMap      mimeTypeMap   = MimeTypeMap.getSingleton();
-    String           extension     = mimeTypeMap.getExtensionFromMimeType(contentType);
+    String           extension     = MediaUtil.getExtensionFromMimeType(contentType);
     SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd-HHmmss");
     String           base          = "deltachat-" + dateFormatter.format(timestamp);
 

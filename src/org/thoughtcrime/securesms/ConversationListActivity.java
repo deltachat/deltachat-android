@@ -45,6 +45,8 @@ import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_
 import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
+import static org.thoughtcrime.securesms.util.RelayUtil.isDirectSharing;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
@@ -90,6 +92,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (isRelayingMessageContent(this)) {
       title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      if (isDirectSharing(this)) {
+        openConversation(getDirectSharingChatId(this), -1);
+      }
     }
   }
 

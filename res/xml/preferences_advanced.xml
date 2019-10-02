@@ -49,18 +49,17 @@
             android:key="pref_location_streaming_enabled"
             android:title="On-demand location streaming"/>
 
+        <Preference android:key="pref_empty_server_folders"
+                    android:title="Delete e-mails from server" />
+
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/preference_divider" />
 
 
     <PreferenceCategory android:title="@string/pref_other">
-        <Preference android:key="pref_backup"
-                    android:title="@string/pref_backup"
-                    android:summary="@string/pref_backup_explain"/>
 
         <Preference android:key="pref_manage_keys"
                     android:title="@string/pref_manage_keys"/>
-
 
         <Preference android:key="pref_view_log"
                     android:title="@string/pref_view_log"/>

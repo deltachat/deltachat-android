@@ -149,6 +149,7 @@
     <string name="share_location_for_two_hours">por 2 horas</string>
     <string name="share_location_for_six_hours">por 6 horas</string>
 
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
     <plurals name="ask_delete_chat">
@@ -186,10 +187,6 @@
     <string name="chat_please_enter_message">Por favor introduza uma mensagem.</string>
     <string name="chat_camera_unavailable">Camera indisponivel.</string>
     <string name="chat_unable_to_record_audio">Não é possível gravar áudio.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d mensagem não lida</item>
-        <item quantity="other">%d mensagens não lida</item>
-    </plurals>
     <string name="chat_no_messages_hint">Enviar mensagem para %1$s:\n\n• Não há problema se %2$s não usar o Delta Chat. \n\n• A entrega da primeira mensagem pode demorar um pouco e pode não ser encriptada.</string>
     <string name="chat_new_group_hint">Componha a primeira mensagem, permitindo que outras pessoas respondam dentro deste grupo.\n\n• Tudo bem se nem todos os membros usarem o Delta Chat.\n\n• A entrega da primeira mensagem pode demorar um pouco.</string>
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
@@ -319,7 +316,6 @@
     <string name="pref_led_pattern">Padrão de piscar do LED</string>
     <string name="pref_sound">Som</string>
     <string name="pref_silent">Silêncio</string>
-    <string name="pref_repeat_notify">Repetir alertas</string>
     <string name="pref_privacy">Privacidade</string>
     <string name="pref_chats_and_media">chats e mídia</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -369,8 +365,6 @@
     <string name="pref_show_emails">Exibir e-mails comuns</string>
     <string name="pref_show_emails_no">Não, apenas conversas</string>
     <string name="pref_show_emails_all">Tudo</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Encriptação automática</string>
     <string name="autocrypt_explain">A encriptação automática (autocrypt) é uma especificação nova e aberta para encriptação e-mail de ponta a ponta. \n\n A sua configuração de ponta a ponta é criada automaticamente conforme necessário e pode transferi-la entre dispositivos com mensagens de configuração de autocrypt.</string>
@@ -454,11 +448,6 @@
     <string name="notify_name_and_message">Nome e mensagem</string>
     <string name="notify_name_only">Apenas nome</string>
     <string name="notify_no_name_or_message">Sem nome ou mensagem</string>
-    <string name="notify_repeat_one_time">Um só vez</string>
-    <string name="notify_repeat_two_times">Duas vezes</string>
-    <string name="notify_repeat_three_times">Três vezes</string>
-    <string name="notify_repeat_five_times">Cinco vezes</string>
-    <string name="notify_repeat_ten_times">Dez vezes</string>
 
 
     <!-- permissions -->
@@ -474,38 +463,6 @@
     <string name="perm_explain_access_to_location_denied">O Delta Chat necessita permissão de acesso à localização para anexar um local, mas ele negado. Por favor, continue no menu de configurações do aplicativo, selecione \"Permissões \"e ative \"Localização\".</string>
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens mesmo que o Delta Chat esteja em segundo plano.</string>
     <string name="perm_enable_bg_reminder_text">O Delta Chat usa pouquíssimos recursos e busca não consumir muito a bateria.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belga</string>
-    <string name="language_ca">Catalão</string>
-    <string name="language_da">Dinamarquês</string>
-    <string name="language_de">Alemão</string>
-    <string name="language_en">Inglês</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Espanhol</string>
-    <string name="language_eu">Basco</string>
-    <string name="language_fr">Francês</string>
-    <string name="language_hr">Croata</string>
-    <string name="language_hu">Hungaro</string>
-    <string name="language_it">Italiano</string>
-    <string name="language_id">Indonésio</string>
-    <string name="language_ja_JP">Japonés</string>
-    <string name="language_ko">Coreano</string>
-    <string name="language_nb_NO">Norueguês</string>
-    <string name="language_nl">Holandês</string>
-    <string name="language_nl_NL">Holandês (Holanda)</string>
-    <string name="language_pl">Polónia</string>
-    <string name="language_pt">Português</string>
-    <string name="language_ru">Russo</string>
-    <string name="language_ru_RU">Russo (Rússia)</string>
-    <string name="language_sq">Albanês</string>
-    <string name="language_sr">Servio</string>
-    <string name="language_sv">Sueco</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telegu</string>
-    <string name="language_tr">Turco</string>
-    <string name="language_uk">Ucraniano</string>
-    <string name="language_zh_CN">Chinês</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensagem encriptada</string>
@@ -584,21 +541,4 @@
     <string name="menu.view.developer.open.log.folder">Abrir pasta de Log</string>
     <string name="menu.view.developer.open.current.log.file">Abrir o aqrquio do log actual</string>
 
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Quer juntar-se ao grupo \"%1$s\"?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Conversa com %1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Conversar com %1$s?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">Código de convite do QR</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Digitalizar para se juntar ao grupo \"%1$s\".</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Caixa de entrada a zerrrooooo</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\n Está pronto para começar</string>
-    <string name="media_tab_media">Mídia</string>
-    <string name="media_tab_documents">Documentos</string>
-    <string name="media_no_media_hint">Sem mídia</string>
     </resources>

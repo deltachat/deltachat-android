@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -96,6 +97,12 @@ public class ProfileSettingsFragment extends Fragment
   }
 
   @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    listDecoration.onConfigurationChanged(newConfig);
+  }
+
+  @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
     update();
   }
@@ -187,19 +194,9 @@ public class ProfileSettingsFragment extends Fragment
       onQrInvite();
     }
     else if(contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
-      new AlertDialog.Builder(getContext())
-          .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-            int chatId = dcContext.createChatByContactId(contactId);
-            if( chatId != 0 ) {
-              Intent intent = new Intent(getContext(), ConversationActivity.class);
-              intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-              getContext().startActivity(intent);
-              getActivity().finish();
-            }
-          })
-          .setNegativeButton(android.R.string.cancel, null)
-          .setMessage(getString(R.string.ask_start_chat_with, dcContext.getContact(contactId).getDisplayName()))
-          .show();
+      Intent intent = new Intent(getContext(), ProfileActivity.class);
+      intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, contactId);
+      startActivity(intent);
     }
   }
 

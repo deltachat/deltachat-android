@@ -23,6 +23,11 @@ public class DcHelper {
     public static final String CONFIG_SELF_AVATAR = "selfavatar";
     public static final String CONFIG_E2EE_ENABLED = "e2ee_enabled";
     public static final String CONFIG_QR_OVERLAY_LOGO = "qr_overlay_logo";
+    public static final String CONFIG_INBOX_WATCH = "inbox_watch";
+    public static final String CONFIG_SENTBOX_WATCH = "sentbox_watch";
+    public static final String CONFIG_MVBOX_WATCH = "mvbox_watch";
+    public static final String CONFIG_MVBOX_MOVE = "mvbox_move";
+    public static final String CONFIG_SHOW_EMAILS = "show_emails";
 
     public static ApplicationDcContext getContext(Context context) {
         return ApplicationContext.getInstance(context).dcContext;

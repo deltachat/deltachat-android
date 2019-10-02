@@ -39,12 +39,19 @@ import android.widget.EditText;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.database.NoExternalStorageException;
 import org.thoughtcrime.securesms.util.Scrubber;
+import org.thoughtcrime.securesms.util.StorageUtil;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class LogViewFragment extends Fragment {
@@ -87,13 +94,40 @@ public class LogViewFragment extends Fragment {
 
   public Float getLogTextSize() { return logPreview.getTextSize(); }
 
-  public void setLogTextSize(Float Textsize) {
-    logPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, Textsize);
+  public void setLogTextSize(Float textSize) {
+    logPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
   }
 
   public void scrollDownLog() { logPreview.setSelection(logPreview.getText().length()); }
 
   public void scrollUpLog() { logPreview.setSelection(0); }
+
+  public boolean saveLogFile() {
+
+    File             outputDir   = null;
+    SimpleDateFormat dateFormat  = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    Date             now         = new Date();
+    String           logFileName = "deltachat-log-" + dateFormat.format(now) + ".txt";
+
+    try {
+      outputDir = StorageUtil.getDownloadDir();
+      String logText =  logPreview.getText().toString();
+      if(!logText.trim().equals("")){
+        File logFile = new File(outputDir + "/" + logFileName);
+
+        if(!logFile.exists()) logFile.createNewFile();
+
+        FileWriter logFileWriter = new FileWriter(logFile, false);
+        BufferedWriter logFileBufferWriter = new BufferedWriter(logFileWriter);
+        logFileBufferWriter.write(logText);
+        logFileBufferWriter.close();
+      }
+    } catch (IOException | NoExternalStorageException e) {
+      e.printStackTrace();
+      return false;
+    }
+    return true;
+  }
 
   private static String grabLogcat() {
     try {

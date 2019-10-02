@@ -154,6 +154,7 @@
     <string name="menu_view_profile">View profile</string>
     <string name="menu_zoom_in">Zoom in</string>
     <string name="menu_zoom_out">Zoom out</string>
+    <string name="menu_save_log">Save log</string>
     <string name="title_share_location">Share location with all group members</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
@@ -185,6 +186,7 @@
     <string name="ask_block_contact">Block this contact? You will no longer receive messages from this contact.</string>
     <string name="ask_unblock_contact">Unblock this contact? You will once again be able to receive messages from this contact.</string>
     <string name="ask_delete_contacts">Delete contacts? This will permanently delete the selected contacts.\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
+    <string name="ask_delete_contact">Permanently delete contact %1$s?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
@@ -400,6 +402,8 @@
     <string name="pref_in_chat_sounds">In-chat sounds</string>
     <string name="pref_message_text_size">Message font size</string>
     <string name="pref_view_log">View log</string>
+    <string name="pref_saved_log">Saved the log to Downloads folder</string>
+    <string name="pref_save_log_failed">Failed to save the log</string>
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Other</string>
     <string name="pref_backup">Backup</string>
@@ -430,6 +434,11 @@
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
     <string name="pref_show_emails_all">All</string>
+    <string name="pref_empty_server_title">DANGER ZONE: Delete e-mails from server</string>
+    <string name="pref_empty_server_msg">This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted.  The deletion cannot be undone!</string>
+    <string name="pref_empty_server_inbox">Delete ALL e-mails in Inbox folder</string>
+    <string name="pref_empty_server_mvbox">Delete ALL e-mails in DeltaChat folder</string>
+    <string name="pref_empty_server_do_button">Delete e-mails</string>
 
 
     <!-- autocrypt -->
@@ -614,54 +623,5 @@
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
 
     <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
-
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Do you want to join the group \"%1$s\"?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Chat with %1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Chat with %1$s?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">QR invite code</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Scan this to join the group \"%1$s\".</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Inbox zeeerrro</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nYou\'re all caught up!</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Documents</string>
-    <string name="media_no_media_hint">No media.</string>
-    <string name="media_no_documents_hint">No documents.</string>
-    <string name="language_be">Belgian</string>
-    <string name="language_ca">Catalan</string>
-    <string name="language_da">Danish</string>
-    <string name="language_de">German</string>
-    <string name="language_en">English</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spanish</string>
-    <string name="language_eu">Basque</string>
-    <string name="language_fr">French</string>
-    <string name="language_hr">Croatian</string>
-    <string name="language_hu">Hungarian</string>
-    <string name="language_it">Italian</string>
-    <string name="language_id">Indonesian</string>
-    <string name="language_ja_JP">Japanese</string>
-    <string name="language_ko">Korean</string>
-    <string name="language_nb_NO">Norwegian Bokmål</string>
-    <string name="language_nl">Dutch</string>
-    <string name="language_nl_NL">Dutch (Netherlands)</string>
-    <string name="language_pl">Polish</string>
-    <string name="language_pt">Portuguese</string>
-    <string name="language_ru">Russian</string>
-    <string name="language_ru_RU">Russian (Russia)</string>
-    <string name="language_sq">Albanian</string>
-    <string name="language_sr">Serbian</string>
-    <string name="language_sv">Swedish</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turkish</string>
-    <string name="language_uk">Ukrainian</string>
-    <string name="language_zh_CN">Chinese</string>
 
 </resources>

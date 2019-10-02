@@ -69,6 +69,9 @@ public class DcContext {
     public final static int DC_SHOW_EMAILS_ACCEPTED_CONTACTS = 1;
     public final static int DC_SHOW_EMAILS_ALL               = 2;
 
+    public final static int DC_EMPTY_MVBOX           = 0x01;
+    public final static int DC_EMPTY_INBOX           = 0x02;
+
     public DcContext(String osName) {
         handleEvent(0,0,0); // call handleEvent() to make sure it is not optimized away and JNI won't find it
         contextCPtr = createContextCPtr(osName);

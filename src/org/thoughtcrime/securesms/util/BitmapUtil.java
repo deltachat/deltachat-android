@@ -408,7 +408,7 @@ public class BitmapUtil {
       BitmapFactory.decodeFile(inPath, bmOptions);
 
       if( bmOptions.outWidth<1 || bmOptions.outHeight<1
-       || (bmOptions.outWidth<desiredWH && bmOptions.outHeight<desiredWH)) {
+       || (bmOptions.outWidth <= desiredWH && bmOptions.outHeight <= desiredWH)) {
         Log.i(TAG, String.format("recoding of %s not needed, image is small enough", inPath));
         return;
       }

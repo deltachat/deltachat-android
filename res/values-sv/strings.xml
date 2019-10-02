@@ -147,10 +147,6 @@
     <string name="chat_please_enter_message">Skriv in ett meddelande.</string>
     <string name="chat_camera_unavailable">Kamera otillgänglig.</string>
     <string name="chat_unable_to_record_audio">Det går inte att spela in ljud.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%doläst meddelande</item>
-        <item quantity="other">%dolästa meddelanden</item>
-    </plurals>
     <string name="chat_no_messages_hint">Skicka meddelande till %1$s:\n\n• Det är okej om %2$sinte använder Delta Chat.\n\n• Leverans av det första meddelandet kan ta ett tag och kan vara okrypterad.</string>
     <string name="chat_new_group_hint">Komponera det första meddelandet, så att andra kan svara inom denna grupp.\n\n• Det är okej om inte alla medlemmar använder Delta Chat.\n\n• Det kan ta en stund innan det första meddelandet levereras.</string>
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>
@@ -224,10 +220,4 @@
     <string name="import_backup_ask">Säkerhetskopiering hittades på %1$s.\n\n Vill du importera eller använda all data och alla inställningar från den?</string>
     <string name="pref_summary_default">standard</string>
     <string name="pref_profile_info_headline">Din profilinformation</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Inkorgen zeeerrro</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nDu är allt upptagen!</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Dokument</string>
-    <string name="media_no_media_hint">Ingen media.</string>
     </resources>

@@ -25,24 +25,4 @@ public class PushMediaConstraints extends MediaConstraints {
   public int getImageMaxSize(Context context) {
     return 6 * MB;
   }
-
-  @Override
-  public int getGifMaxSize(Context context) {
-    return 25 * MB;
-  }
-
-  @Override
-  public int getVideoMaxSize(Context context) {
-    return 100 * MB;
-  }
-
-  @Override
-  public int getAudioMaxSize(Context context) {
-    return 100 * MB;
-  }
-
-  @Override
-  public int getDocumentMaxSize(Context context) {
-    return 100 * MB;
-  }
 }

@@ -31,12 +31,10 @@ public class InputAwareLayout extends KeyboardAwareLinearLayout implements OnKey
 
   public void show(@NonNull final EditText imeTarget, @NonNull final InputView input) {
     if (isKeyboardOpen()) {
-      hideSoftkey(imeTarget, new Runnable() {
-        @Override public void run() {
-          hideAttachedInput(true);
-          input.show(getKeyboardHeight(), true);
-          current = input;
-        }
+      hideSoftkey(imeTarget, () -> {
+        hideAttachedInput(true);
+        input.show(getKeyboardHeight(), true);
+        current = input;
       });
     } else {
       if (current != null) current.hide(true);
@@ -64,16 +62,10 @@ public class InputAwareLayout extends KeyboardAwareLinearLayout implements OnKey
   }
 
   public void showSoftkey(final EditText inputTarget) {
-    postOnKeyboardOpen(new Runnable() {
-      @Override public void run() {
-        hideAttachedInput(true);
-      }
-    });
-    inputTarget.post(new Runnable() {
-      @Override public void run() {
-        inputTarget.requestFocus();
-        ServiceUtil.getInputMethodManager(inputTarget.getContext()).showSoftInput(inputTarget, 0);
-      }
+    postOnKeyboardOpen(() -> hideAttachedInput(true));
+    inputTarget.post(() -> {
+      inputTarget.requestFocus();
+      ServiceUtil.getInputMethodManager(inputTarget.getContext()).showSoftInput(inputTarget, 0);
     });
   }
 

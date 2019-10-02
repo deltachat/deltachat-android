@@ -11,13 +11,11 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -36,7 +34,6 @@ public class Prefs {
   public  static final String LANGUAGE_PREF                    = "pref_language";
   public  static final String BACKGROUND_PREF                  = "pref_chat_background";
 
-  private static final String LAST_VERSION_CODE_PREF           = "last_version_code";
   public  static final String RINGTONE_PREF                    = "pref_key_ringtone";
   private static final String VIBRATE_PREF                     = "pref_key_vibrate";
   private static final String CHAT_VIBRATE                     = "pref_chat_vibrate_"; // followed by chat-id
@@ -50,7 +47,6 @@ public class Prefs {
   public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
-  private static final String LOCAL_NUMBER_PREF                = "pref_local_number";
   private static final String PROMPTED_OPTIMIZE_DOZE_PREF      = "pref_prompted_optimize_doze";
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
   public  static final String MESSAGE_BODY_TEXT_SIZE_PREF      = "pref_message_body_text_size";
@@ -62,11 +58,6 @@ public class Prefs {
   public  static final String DIRECT_CAPTURE_CAMERA_ID         = "pref_direct_capture_camera_id";
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
   public  static final String INCOGNITO_KEYBORAD_PREF          = "pref_incognito_keyboard";
-
-  private static final String DATABASE_ENCRYPTED_SECRET     = "pref_database_encrypted_secret";
-  private static final String DATABASE_UNENCRYPTED_SECRET   = "pref_database_unencrypted_secret";
-  private static final String ATTACHMENT_ENCRYPTED_SECRET   = "pref_attachment_encrypted_secret";
-  private static final String ATTACHMENT_UNENCRYPTED_SECRET = "pref_attachment_unencrypted_secret";
 
   public static final String SCREEN_LOCK         = "pref_android_screen_lock";
 
@@ -90,38 +81,6 @@ public class Prefs {
 
   public static void setScreenLockEnabled(@NonNull Context context, boolean value) {
     setBooleanPreference(context, SCREEN_LOCK, value);
-  }
-
-  public static void setAttachmentEncryptedSecret(@NonNull Context context, @NonNull String secret) {
-    setStringPreference(context, ATTACHMENT_ENCRYPTED_SECRET, secret);
-  }
-
-  public static void setAttachmentUnencryptedSecret(@NonNull Context context, @Nullable String secret) {
-    setStringPreference(context, ATTACHMENT_UNENCRYPTED_SECRET, secret);
-  }
-
-  public static @Nullable String getAttachmentEncryptedSecret(@NonNull Context context) {
-    return getStringPreference(context, ATTACHMENT_ENCRYPTED_SECRET, null);
-  }
-
-  public static @Nullable String getAttachmentUnencryptedSecret(@NonNull Context context) {
-    return getStringPreference(context, ATTACHMENT_UNENCRYPTED_SECRET, null);
-  }
-
-  public static void setDatabaseEncryptedSecret(@NonNull Context context, @NonNull String secret) {
-    setStringPreference(context, DATABASE_ENCRYPTED_SECRET, secret);
-  }
-
-  public static void setDatabaseUnencryptedSecret(@NonNull Context context, @Nullable String secret) {
-    setStringPreference(context, DATABASE_UNENCRYPTED_SECRET, secret);
-  }
-
-  public static @Nullable String getDatabaseUnencryptedSecret(@NonNull Context context) {
-    return getStringPreference(context, DATABASE_UNENCRYPTED_SECRET, null);
-  }
-
-  public static @Nullable String getDatabaseEncryptedSecret(@NonNull Context context) {
-    return getStringPreference(context, DATABASE_ENCRYPTED_SECRET, null);
   }
 
   public static boolean isIncognitoKeyboardEnabled(Context context) {
@@ -161,10 +120,6 @@ public class Prefs {
     return getBooleanPreference(context, IN_THREAD_NOTIFICATION_PREF, true);
   }
 
-  public static String getLocalNumber(Context context) {
-    return getStringPreference(context, LOCAL_NUMBER_PREF, null);
-  }
-
   public static boolean isEnterSendsEnabled(Context context) {
     return getBooleanPreference(context, ENTER_SENDS_PREF, false);
   }
@@ -179,16 +134,6 @@ public class Prefs {
 
   public static boolean isScreenSecurityEnabled(Context context) {
     return getBooleanPreference(context, SCREEN_SECURITY_PREF, false);
-  }
-
-  public static int getLastVersionCode(Context context) {
-    return getIntegerPreference(context, LAST_VERSION_CODE_PREF, 0);
-  }
-
-  public static void setLastVersionCode(Context context, int versionCode) throws IOException {
-    if (!setIntegerPrefrenceBlocking(context, LAST_VERSION_CODE_PREF, versionCode)) {
-      throw new IOException("couldn't write version code to sharedpreferences");
-    }
   }
 
   public static String getTheme(Context context) {
@@ -389,10 +334,6 @@ public class Prefs {
 
   private static void setIntegerPrefrence(Context context, String key, int value) {
     PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(key, value).apply();
-  }
-
-  private static boolean setIntegerPrefrenceBlocking(Context context, String key, int value) {
-    return PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(key, value).commit();
   }
 
   private static long getLongPreference(Context context, String key, long defaultValue) {

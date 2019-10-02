@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
-import org.thoughtcrime.securesms.ConversationActivity;
-
 import java.util.ArrayList;
 
 import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
@@ -16,6 +14,7 @@ public class RelayUtil {
     private static final String SHARED_URIS             = "shared_uris";
     private static final String IS_SHARING              = "is_sharing";
     public static final int REQUEST_RELAY = 100;
+    private static final String DIRECT_SHARING_CHAT_ID = "direct_sharing_chat_id";
 
     public static boolean isRelayingMessageContent(Activity activity) {
         return isForwarding(activity) || isSharing(activity);
@@ -34,6 +33,22 @@ public class RelayUtil {
             return activity.getIntent().getBooleanExtra(IS_SHARING, false);
         } catch (NullPointerException npe) {
             return false;
+        }
+    }
+
+    public static boolean isDirectSharing(Activity activity) {
+        try {
+            return activity.getIntent().getIntExtra(DIRECT_SHARING_CHAT_ID, -1) != -1;
+        } catch (NullPointerException npe) {
+            return false;
+        }
+    }
+
+    public static int getDirectSharingChatId(Activity activity) {
+        try {
+            return activity.getIntent().getIntExtra(DIRECT_SHARING_CHAT_ID, -1);
+        } catch (NullPointerException npe) {
+            return -1;
         }
     }
 
@@ -66,6 +81,7 @@ public class RelayUtil {
             activity.getIntent().removeExtra(FORWARDED_MESSAGE_IDS);
             activity.getIntent().removeExtra(SHARED_URIS);
             activity.getIntent().removeExtra(IS_SHARING);
+            activity.getIntent().removeExtra(DIRECT_SHARING_CHAT_ID);
             activity.getIntent().removeExtra(TEXT_EXTRA);
         } catch (NullPointerException npe) {
             npe.printStackTrace();
@@ -77,6 +93,9 @@ public class RelayUtil {
             newActivityIntent.putExtra(FORWARDED_MESSAGE_IDS, getForwardedMessageIDs(currentActivity));
         } else if (isSharing(currentActivity)) {
             newActivityIntent.putExtra(IS_SHARING, true);
+            if (isDirectSharing(currentActivity)) {
+                newActivityIntent.putExtra(DIRECT_SHARING_CHAT_ID, getDirectSharingChatId(currentActivity));
+            }
             if (getSharedUris(currentActivity) != null) {
                 newActivityIntent.putParcelableArrayListExtra(SHARED_URIS, getSharedUris(currentActivity));
             }
@@ -98,6 +117,10 @@ public class RelayUtil {
     public static void setSharedText(Intent composeIntent, String text) {
         composeIntent.putExtra(TEXT_EXTRA, text);
         composeIntent.putExtra(IS_SHARING, true);
+    }
+
+    public static void setDirectSharing(Intent composeIntent, int chatId) {
+        composeIntent.putExtra(DIRECT_SHARING_CHAT_ID, chatId);
     }
 
 

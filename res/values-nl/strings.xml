@@ -21,7 +21,7 @@
     <string name="error">Fout</string>
     <string name="error_x">Fout: %1$s</string>
     <string name="error_no_network">Geen internetverbinding.</string>
-    <string name="no_app_to_handle_data">Kan geen app vinden die deze gegevens kan behandelen.</string>
+    <string name="no_app_to_handle_data">Je hebt geen app die deze inhoud kan openen.</string>
     <string name="no_browser_installed">Geen webbrowser geïnstalleerd.</string>
     <string name="file_not_found">Kan %1$s niet vinden.</string>
     <string name="copied_to_clipboard">Gekopieerd naar klembord.</string>
@@ -105,13 +105,13 @@
 
 
     <!-- menu labels (or icon, buttons...) -->
-    <string name="menu_new_contact">Nieuwe contactpersoon</string>
+    <string name="menu_new_contact">Nieuw contactpersoon</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
     <string name="menu_new_verified_group">Nieuwe goedgekeurde groep (experimenteel)</string>
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
-    <string name="menu_edit_group">Groep bewerken</string>
+    <string name="menu_edit_group">Groep aanpassen</string>
     <string name="menu_group_name_and_image">Groepsnaam en -afbeelding</string>
     <string name="menu_show_map">Kaart tonen</string>
     <string name="menu_show_global_map">Alle locaties tonen</string>
@@ -122,15 +122,15 @@
     <string name="menu_delete_chat">Gesprek verwijderen</string>
     <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="menu_delete_image">Afbeelding verwijderen</string>
-    <string name="menu_delete_locations">Alle locaties verwijderen?</string>
+    <string name="menu_delete_locations">Wil je alle locaties verwijderen?</string>
     <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
-    <string name="menu_message_details">Berichtgegevens</string>
+    <string name="menu_message_details">Berichtinformatie</string>
     <string name="menu_copy_to_clipboard">Kopiëren naar klembord</string>
     <string name="menu_forward">Bericht doorsturen</string>
     <string name="menu_resend">Bericht opnieuw versturen</string>
     <string name="menu_reply">Bericht beantwoorden</string>
-    <string name="menu_mute">Meldingen dempen</string>
-    <string name="menu_unmute">Ontdempen</string>
+    <string name="menu_mute">Meldingen uitschakelen</string>
+    <string name="menu_unmute">Meldingen inschakelen</string>
     <string name="menu_export_attachment">Bijlage exporteren</string>
     <string name="menu_all_media">Alle media</string>
     <string name="menu_share">Delen</string>
@@ -144,7 +144,9 @@
     <string name="menu_help">Hulp</string>
     <string name="menu_select_all">Alles selecteren</string>
     <string name="menu_expand">Uitvouwen</string>
-    <string name="menu_edit_name">Naam bewerken</string>
+    <string name="menu_edit_name">Naam wijzigen</string>
+    <string name="menu_edit_group_name">Groepsnaam wijzigen</string>
+    <string name="menu_edit_group_image">Groepsafbeelding wijzigen</string>
     <string name="menu_settings">Instellingen</string>
     <string name="menu_advanced">Geavanceerd</string>
     <string name="menu_deaddrop">Contactpersoonverzoeken</string>
@@ -152,13 +154,14 @@
     <string name="menu_view_profile">Profiel bekijken</string>
     <string name="menu_zoom_in">Inzoomen</string>
     <string name="menu_zoom_out">Uitzoomen</string>
+    <string name="menu_save_log">Logboek opslaan</string>
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
 
-    <string name="mute_for_one_hour">1 uur lang dempen</string>
-    <string name="mute_for_two_hours">2 uur lang dempen</string>
-    <string name="mute_for_one_day">1 dag dempen</string>
-    <string name="mute_for_seven_days">7 dagen dempen</string>
-    <string name="mute_forever">Permanent dempen</string>
+    <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
+    <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
+    <string name="mute_for_one_day">1 dag lang uitschakelen</string>
+    <string name="mute_for_seven_days">7 dagen lang uitschakelen</string>
+    <string name="mute_forever">Permanent uitschakelen</string>
 
     <string name="share_location_once">eenmalig</string>
     <string name="share_location_for_5_minutes">5 minuten lang</string>
@@ -166,6 +169,7 @@
     <string name="share_location_for_one_hour">1 uur lang</string>
     <string name="share_location_for_two_hours">2 uur lang</string>
     <string name="share_location_for_six_hours">6 uur lang</string>
+
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
@@ -181,11 +185,16 @@
     <string name="ask_export_attachment">Als je de bijlage exporteert, geef je andere apps op je apparaat toegang om hem uit te lezen.\n\nWil je doorgaan?</string>
     <string name="ask_block_contact">Wil je deze contactpersoon blokkeren? Hij/zij kan je geen berichten meer sturen.</string>
     <string name="ask_unblock_contact">Wil je deze contactpersoon deblokkeren? Hij/zij kan je wederom berichten sturen.</string>
-    <string name="ask_delete_contacts">Wil je de geselecteerde contactpersonen verwijderen? Ze worden permanent verwijderd.\n\nPersonen met actieve gesprekken en personen afkomstig uit het adresboek van het systeem kunnen niet permanent worden verwijderd.</string>
+    <string name="ask_delete_contacts">Wil je de geselecteerde contactpersonen permanent verwijderen?\n\nPersonen met actieve gesprekken en personen afkomstig uit je adresboek kunnen niet permanent worden verwijderd.</string>
+    <string name="ask_delete_contact">Wil je de contactpersoon %1$s permanent verwijderen?\n\nPersonen met actieve gesprekken en personen afkomstig uit je adresboek kunnen niet permanent worden verwijderd.</string>
     <string name="cannot_delete_contacts_in_use">Contactpersonen waarmee je nog gesprekken voert kunnen niet worden verwijderd.</string>
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
+    <string name="info_outdated_app_title">Je gebruikt een verouderde versie.</string>
+    <string name="info_outdated_app_text">Het lijkt erop dat je Delta Chat hebt geïnstalleerd uit een bron zonder automatische updates (bijv. GitHub). Installeer Delta Chat via een appwinkel om updates te ontvangen.</string>
+    <string name="info_outdated_app_dialog_title">Bronnen bijwerken</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat is beschikbaar in:</string>
 
 
     <!-- contact list -->
@@ -205,12 +214,12 @@
         <item quantity="other">%d gesprekken gede-archiveerd</item>
     </plurals>
     <string name="chat_archived_chats_title">Gearchiveerde gesprekken</string>
-    <string name="chat_please_enter_message">Voer een bericht in.</string>
-    <string name="chat_camera_unavailable">Camera niet beschikbaar.</string>
+    <string name="chat_please_enter_message">Typ een bericht.</string>
+    <string name="chat_camera_unavailable">De camera is niet beschikbaar.</string>
     <string name="chat_unable_to_record_audio">Kan geen audio opnemen.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d ongelezen bericht</item>
-        <item quantity="other">%d ongelezen berichten</item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nieuw bericht</item>
+        <item quantity="other">%d nieuwe berichten</item>
     </plurals>
     <string name="chat_no_messages_hint">Verstuur een bericht aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
@@ -225,7 +234,7 @@
     <string name="chat_no_messages">Geen berichten.</string>
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
     <string name="chat_contact_request">Contactpersoonverzoek</string>
-    <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnt in de vorm van contactpersoonverzoeken, wijzig dit dan in de app-instellingen.</string>
+    <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnt in de vorm van contactpersoonverzoeken, dan kun je dat aangeven in de app-instellingen.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
@@ -257,7 +266,7 @@
     <string name="tab_links">Links</string>
     <string name="tab_map">Kaart</string>
     <string name="tab_gallery_empty_hint">De in dit gesprek gedeelde afbeeldingen en video\'s verschijnen hier.</string>
-    <string name="tab_docs_empty_hint">De in dit gesprek gedeelde documenten, muziekbestanden en overige bestanden verschijnen hier.</string>
+    <string name="tab_docs_empty_hint">De in dit gesprek gedeelde documenten, muziek en overige bestanden verschijnen hier.</string>
     <string name="media_preview">Mediavoorbeeld</string>
 
 
@@ -370,7 +379,6 @@
     <string name="pref_led_pattern">LED-knipperpatroon</string>
     <string name="pref_sound">Geluid</string>
     <string name="pref_silent">Stil</string>
-    <string name="pref_repeat_notify">Alarmeringen herhalen</string>
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Gesprekken en media</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -381,7 +389,7 @@
     <string name="pref_language">Taal</string>
     <string name="pref_incognito_keyboard">Incognito-toetsenbord</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
-    <string name="pref_incognito_keyboard_explain">Verzoek het toetsenbord om gepersonaliseerd leren uit te schakelen</string>
+    <string name="pref_incognito_keyboard_explain">Verzoek het toetsenbord om geen persoonlijke woorden op te nemen</string>
     <string name="pref_read_receipts">Leesbevestigingen</string>
     <string name="pref_read_receipts_explain">Als je leesbevestigingen uitschakelt, dan zie je geen leesbevestigingen van anderen.</string>
     <string name="pref_manage_keys">Sleutels beheren</string>
@@ -394,6 +402,8 @@
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
     <string name="pref_message_text_size">Tekstgrootte van berichten</string>
     <string name="pref_view_log">Logboek bekijken</string>
+    <string name="pref_saved_log">Logboek opslaan in downloads-map</string>
+    <string name="pref_save_log_failed">Kan logboek niet opslaan</string>
     <string name="pref_log_header">Logboek</string>
     <string name="pref_other">Overig</string>
     <string name="pref_backup">Back-up</string>
@@ -424,6 +434,11 @@
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
     <string name="pref_show_emails_all">Alles</string>
+    <string name="pref_empty_server_title">GEVARENZONE: e-mails verwijderen van server</string>
+    <string name="pref_empty_server_msg">Deze optie helpt je ruimte vrij te maken op je IMAP-server door ALLE e-mails, inclusief gesprekken, te verwijderen uit de opgegeven mappen. Berichten op dit apparaat worden niet verwijderd. Deze actie kan niet ongedaan worden gemaakt!</string>
+    <string name="pref_empty_server_inbox">ALLE e-mails uit Postvak IN verwijderen</string>
+    <string name="pref_empty_server_mvbox">ALLE e-mails uit DeltaChat-map verwijderen</string>
+    <string name="pref_empty_server_do_button">E-mails verwijderen</string>
 
 
     <!-- autocrypt -->
@@ -504,7 +519,7 @@
     <string name="notify_mark_all_read">Alles markeren als gelezen</string>
     <string name="notify_mark_read">Markeren als gelezen</string>
     <string name="notify_media_message">Mediabericht</string>
-    <string name="notify_reply_button">Antwoord</string>
+    <string name="notify_reply_button">Beantwoorden</string>
     <string name="notify_new_message">Nieuw bericht</string>
     <string name="notify_background_connection_enabled">Achtergrondverbinding ingeschakeld</string>
     <string name="notify_priority_high">Hoog</string>
@@ -512,11 +527,6 @@
     <string name="notify_name_and_message">Naam en bericht</string>
     <string name="notify_name_only">Alleen naam</string>
     <string name="notify_no_name_or_message">Geen naam of bericht</string>
-    <string name="notify_repeat_one_time">Eénmalig</string>
-    <string name="notify_repeat_two_times">Tweemaal</string>
-    <string name="notify_repeat_three_times">Driemaal</string>
-    <string name="notify_repeat_five_times">Vijfmaal</string>
-    <string name="notify_repeat_ten_times">Tienmaal</string>
 
 
     <!-- permissions -->
@@ -533,38 +543,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat vereist de locatiemachtiging om je locatie te kunnen delen, maar je hebt dit permanent geweigerd. Ga naar de app-instellingen, kies \"Machtigingen\" en schakel \"Locatie\" in.</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat\'s accugebruik is laag omdat het slechts een minimaal aantal systeembronnen gebruikt.</string>
-
-    <!-- languages -->
-    <string name="language_be">Vlaams</string>
-    <string name="language_ca">Catalaans</string>
-    <string name="language_da">Deens</string>
-    <string name="language_de">Duits</string>
-    <string name="language_en">Engels</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spaans</string>
-    <string name="language_eu">Basks</string>
-    <string name="language_fr">Frans</string>
-    <string name="language_hr">Kroatisch</string>
-    <string name="language_hu">Hongaars</string>
-    <string name="language_it">Italiaans</string>
-    <string name="language_id">Indonesisch</string>
-    <string name="language_ja_JP">Japans</string>
-    <string name="language_ko">Koreaans</string>
-    <string name="language_nb_NO">Noors (Bokmål)</string>
-    <string name="language_nl">Nederlands</string>
-    <string name="language_nl_NL">Nederlands (Nederland)</string>
-    <string name="language_pl">Pools</string>
-    <string name="language_pt">Portugees</string>
-    <string name="language_ru">Russisch</string>
-    <string name="language_ru_RU">Russisch (Rusland)</string>
-    <string name="language_sq">Albanees</string>
-    <string name="language_sr">Servisch</string>
-    <string name="language_sv">Zweeds</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turks</string>
-    <string name="language_uk">Oekraïens</string>
-    <string name="language_zh_CN">Chinees</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Versleuteld bericht</string>
@@ -645,25 +623,5 @@
     <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
 
     <string name="user_location_permission_explanation">Delta Chat heeft de locatiemachtiging nodig om je locatie te kunnen tonen en delen.</string>
-
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Wil je deelnemen aan de groep \'%1$s\'?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Wil je een gesprek voeren met %1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Wil je een gesprek voeren met %1$s?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">QR-uitnodigingscode</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Scan dit om deel te nemen aan de groep \'%1$s\'.</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Postvak nullllll</string>
-    <string name="chat_all_done_explain">Niks. Noppes. Nakkes. Nada.\nJe bent volledig op de hoogte!</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Documenten</string>
-    <string name="media_no_media_hint">Geen media.</string>
-    <string name="media_no_documents_hint">Geen documenten.</string>
-
 
 </resources>

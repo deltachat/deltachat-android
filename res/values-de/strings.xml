@@ -145,6 +145,8 @@
     <string name="menu_select_all">Alles auswählen</string>
     <string name="menu_expand">Erweitern</string>
     <string name="menu_edit_name">Name bearbeiten</string>
+    <string name="menu_edit_group_name">Gruppenname</string>
+    <string name="menu_edit_group_image">Gruppenbild</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_advanced">Erweitert</string>
     <string name="menu_deaddrop">Kontaktanfragen</string>
@@ -152,6 +154,7 @@
     <string name="menu_view_profile">Profil anzeigen</string>
     <string name="menu_zoom_in">Ansicht vergrößern</string>
     <string name="menu_zoom_out">Ansicht verkleinern</string>
+    <string name="menu_save_log">Logdatei sichern</string>
     <string name="title_share_location">Standort mit allen Gruppenmitgliedern teilen</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
@@ -166,6 +169,7 @@
     <string name="share_location_for_one_hour">für 1 Stunde</string>
     <string name="share_location_for_two_hours">für 2 Stunden</string>
     <string name="share_location_for_six_hours">für 6 Stunden</string>
+
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
@@ -182,10 +186,15 @@
     <string name="ask_block_contact">Diesen Kontakt blockieren? Sie werden keine Nachrichten mehr von diesem Kontakt erhalten.</string>
     <string name="ask_unblock_contact">Diesen Kontakt nicht mehr blockieren? Nachrichten von diesem Kontakt werden dann wieder angezeigt.</string>
     <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
+    <string name="ask_delete_contact">Kontakt %1$s dauerhaft löschen?\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="cannot_delete_contacts_in_use">Kontakte mit laufenden Chats können nicht gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s aus der Gruppe löschen?</string>
+    <string name="info_outdated_app_title">Ihre App-version ist veraltet. </string>
+    <string name="info_outdated_app_text">Anscheinend haben Sie Delta Chat von einer Quelle ohne automatische Updates (z. B. GitHub) installiert. Bitte wechseln Sie zu einer Store-Version, um die neuesten Funktionen und Fehlerbehebungen zu erhalten.</string>
+    <string name="info_outdated_app_dialog_title">Quellen updaten</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat ist verfügbar bei:</string>
 
 
     <!-- contact list -->
@@ -208,9 +217,9 @@
     <string name="chat_please_enter_message">Bitte eine Nachricht eingeben.</string>
     <string name="chat_camera_unavailable">Kamera nicht verfügbar.</string>
     <string name="chat_unable_to_record_audio">Es ist nicht möglich, Audio aufzunehmen.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d ungelesene Nachricht</item>
-        <item quantity="other">%d ungelesene Nachrichten</item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d neue Nachricht</item>
+        <item quantity="other">%d neue Nachrichten</item>
     </plurals>
     <string name="chat_no_messages_hint">Eine Nachricht an %1$s:\n\n• Es ist in Ordnung wenn %2$s kein Delta Chat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern und erfolgt unverschlüsselt. </string>
     <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
@@ -230,6 +239,9 @@
     <!-- map -->
     <string name="filter_map_on_time">Standorte im Zeitrahmen anzeigen</string>
     <string name="show_location_traces">Spuren anzeigen</string>
+    <string name="add_poi">Sende eine Ortsmarkierung. </string>
+
+
     <!-- search -->
     <string name="search">Suchen</string>
     <string name="search_explain">Suche nach Chats, Kontakten und Nachrichten</string>
@@ -245,6 +257,7 @@
     <string name="group_hello_draft">Hallo, Ich habe gerade die Gruppe \"%1$s\" für uns erstellt.</string>
     <string name="group_self_not_in_group">Sie müssen ein Mitglied der Gruppe sein, um diese Aktion durchführen zu können.</string>
     <string name="profile_encryption">Verschlüsselung</string>
+    <string name="profile_shared_chats">Gemeinsame Chats</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_members">Mitglieder</string>
@@ -281,14 +294,14 @@
     <string name="welcome_intro7_message">Delta Chat ist für die geschäftliche Kommunikation geeignet, kompatibel und auf Standards basierend.</string>
     <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
-    <string name="login_header">Beim Server anmelden</string>
+    <string name="login_header">Bei ihrem Server anmelden</string>
     <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
     <string name="login_no_servers_hint">Es gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_inbox">Posteingang</string>
     <string name="login_imap_login">IMAP-Anmeldename</string>
     <string name="login_imap_server">IMAP-Server</string>
     <string name="login_imap_port">IMAP-Port</string>
-    <string name="login_imap_security">IMAP Sicherheit</string>
+    <string name="login_imap_security">IMAP-Sicherheit</string>
     <string name="login_outbox">Postausgang</string>
     <string name="login_smtp_login">SMTP-Anmeldename</string>
     <string name="login_smtp_password">SMTP-Passwort</string>
@@ -368,7 +381,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_led_pattern">LED-Blinkgeschwindigkeit</string>
     <string name="pref_sound">Ton</string>
     <string name="pref_silent">Leise</string>
-    <string name="pref_repeat_notify">Wiederholte Warnungen</string>
     <string name="pref_privacy">Datenschutz</string>
     <string name="pref_chats_and_media">Chats und Medien</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -392,6 +404,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_in_chat_sounds">In-Chat Klänge</string>
     <string name="pref_message_text_size">Schriftgröße</string>
     <string name="pref_view_log">Protokoll anzeigen</string>
+    <string name="pref_saved_log">Die Logdatei wurde im Downloads Ordner gesichert. </string>
+    <string name="pref_save_log_failed">Logdatei konnte nicht gesichert werden. </string>
     <string name="pref_log_header">Protokoll</string>
     <string name="pref_other">Sonstiges</string>
     <string name="pref_backup">Backup</string>
@@ -422,6 +436,11 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_show_emails_no">Nein, nur Chats</string>
     <string name="pref_show_emails_accepted_contacts">Akzeptierte Kontakte</string>
     <string name="pref_show_emails_all">Alle</string>
+    <string name="pref_empty_server_title">ACHTUNG: E-Mails vom Server löschen!</string>
+    <string name="pref_empty_server_msg">Mit dieser Funktion können Sie Speicherplatz auf Ihrem IMAP-Server freigeben, indem Sie ALLE E-Mails, einschließlich Chat-Nachrichten, in den angegebenen Ordnern löschen. Nachrichten auf diesem Gerät werden nicht gelöscht. Die Löschung kann nicht rückgängig gemacht werden!</string>
+    <string name="pref_empty_server_inbox">Löschen ALLER e-mails im Nachrichteneingangsordner (INBOX)</string>
+    <string name="pref_empty_server_mvbox">Löschen ALLER e-mails im DeltaChat Ordner.</string>
+    <string name="pref_empty_server_do_button">E-mails löschen. </string>
 
 
     <!-- autocrypt -->
@@ -510,11 +529,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="notify_name_and_message">Name und Nachricht</string>
     <string name="notify_name_only">Nur der Name</string>
     <string name="notify_no_name_or_message">Kein Name oder Nachricht</string>
-    <string name="notify_repeat_one_time">Einmal</string>
-    <string name="notify_repeat_two_times">Zweimal</string>
-    <string name="notify_repeat_three_times">Dreimal</string>
-    <string name="notify_repeat_five_times">Fünfmal</string>
-    <string name="notify_repeat_ten_times">Zehnmal</string>
 
 
     <!-- permissions -->
@@ -531,38 +545,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="perm_explain_access_to_location_denied">Delta Chat benötigt eine Standortberechtigung, um einen Standort anzuhängen, aber er wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Standort\".</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat verbraucht nur minimale Ressourcen und achtet darauf, den Akku zu schonen.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belgisch</string>
-    <string name="language_ca">Katalanisch</string>
-    <string name="language_da">Dänisch</string>
-    <string name="language_de">Deutsch</string>
-    <string name="language_en">Englisch</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spanisch</string>
-    <string name="language_eu">Baskisch</string>
-    <string name="language_fr">Französisch</string>
-    <string name="language_hr">Kroatisch</string>
-    <string name="language_hu">Ungarisch</string>
-    <string name="language_it">Italienisch</string>
-    <string name="language_id">Indonesisch</string>
-    <string name="language_ja_JP">Japanisch</string>
-    <string name="language_ko">Koreanisch</string>
-    <string name="language_nb_NO">Norwegian Bokmål</string>
-    <string name="language_nl">Niederländisch</string>
-    <string name="language_nl_NL">Niederländisch (Niederlande)</string>
-    <string name="language_pl">Polisch</string>
-    <string name="language_pt">Portugiesisch</string>
-    <string name="language_ru">Russisch</string>
-    <string name="language_ru_RU">Russisch (Russland)</string>
-    <string name="language_sq">Albanisch</string>
-    <string name="language_sr">Serbisch</string>
-    <string name="language_sv">Schwedisch</string>
-    <string name="language_ta">Tamil</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Türkisch</string>
-    <string name="language_uk">Ukrainisch</string>
-    <string name="language_zh_CN">Chinesisch</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Verschlüsselte Nachricht</string>
@@ -643,25 +625,5 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
 
     <string name="user_location_permission_explanation">Delta Chat benötigt die Standortberechtigung, um Ihren Standort anzuzeigen und zu teilen.</string>
-
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Der Gruppe \"%1$s\" beitreten?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Chat mit %1$s starten?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Chat mit %1$s starten?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">QR-Einladungscode</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Dies scannen, um der Gruppe \"%1$s\" beizutreten.</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Posteingang leeeeer</string>
-    <string name="chat_all_done_explain">Zip. Zilch. Zero. Nada.\nAlle aufgeholt!</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Dokumente</string>
-    <string name="media_no_media_hint">Keine Mediadateien</string>
-    <string name="media_no_documents_hint">Keine Dokumente.</string>
-
 
 </resources>

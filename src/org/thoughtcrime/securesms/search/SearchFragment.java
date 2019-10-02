@@ -124,7 +124,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     super.onConfigurationChanged(newConfig);
 
     if (listDecoration != null) {
-      listDecoration.invalidateLayouts();
+      listDecoration.onConfigurationChanged(newConfig);
     }
   }
 

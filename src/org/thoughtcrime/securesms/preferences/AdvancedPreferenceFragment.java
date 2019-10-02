@@ -12,6 +12,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
@@ -20,15 +22,17 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import static android.app.Activity.RESULT_OK;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_E2EE_ENABLED;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_INBOX_WATCH;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_WATCH;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
 
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
@@ -36,11 +40,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 {
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
 
-  private static final int REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP = ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS + 1;
 
-  private static final int REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS = REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP + 1;
 
-  private ApplicationDcContext dcContext;
 
   CheckBoxPreference preferE2eeCheckbox;
   CheckBoxPreference inboxWatchCheckbox;
@@ -52,9 +53,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
 
-    dcContext = DcHelper.getContext(getContext());
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_IMEX_PROGRESS);
-
     Preference sendAsm = this.findPreference("pref_send_autocrypt_setup_message");
     sendAsm.setOnPreferenceClickListener(new SendAsmListener());
 
@@ -63,28 +61,30 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
     inboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_inbox_watch");
     inboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
-      handleImapCheck(preference, newValue, "inbox_watch")
+      handleImapCheck(preference, newValue, CONFIG_INBOX_WATCH)
     );
 
     sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
     sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
-      handleImapCheck(preference, newValue, "sentbox_watch")
+      handleImapCheck(preference, newValue, CONFIG_SENTBOX_WATCH)
     );
 
     mvboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_watch");
     mvboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
-      handleImapCheck(preference, newValue, "mvbox_watch")
+      handleImapCheck(preference, newValue, CONFIG_MVBOX_WATCH)
     );
 
     mvboxMoveCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_move");
     mvboxMoveCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
       boolean enabled = (Boolean) newValue;
-      dcContext.setConfigInt("mvbox_move", enabled? 1 : 0);
+      dcContext.setConfigInt(CONFIG_MVBOX_MOVE, enabled? 1 : 0);
       return true;
     });
 
-    Preference backup = this.findPreference("pref_backup");
-    backup.setOnPreferenceClickListener(new BackupListener());
+    Preference emptyServerFolders = this.findPreference("pref_empty_server_folders");
+    if(emptyServerFolders!=null) {
+      emptyServerFolders.setOnPreferenceClickListener(new EmptyServerFoldersListener());
+    }
 
     Preference manageKeys = this.findPreference("pref_manage_keys");
     manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
@@ -114,12 +114,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   }
 
   @Override
-  public void onDestroy() {
-    dcContext.eventCenter.removeObservers(this);
-    super.onDestroy();
-  }
-
-  @Override
   public void onCreatePreferences(@Nullable Bundle savedInstanceState, String rootKey) {
     addPreferencesFromResource(R.xml.preferences_advanced);
   }
@@ -129,22 +123,18 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_advanced);
 
-    preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt("e2ee_enabled"));
-    inboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("inbox_watch"));
-    sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("sentbox_watch"));
-    mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_watch"));
-    mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt("mvbox_move"));
+    preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_E2EE_ENABLED));
+    inboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_INBOX_WATCH));
+    sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
+    mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_WATCH));
+    mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
   }
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-      if (resultCode == RESULT_OK) {
-        if (requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP) {
-          performBackup();
-        } else if (requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS) {
+      if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS) {
           exportKeys();
-        }
       } else {
         Toast.makeText(getActivity(), R.string.screenlock_authentication_failed, Toast.LENGTH_SHORT).show();
       }
@@ -233,42 +223,14 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     @Override
     public boolean onPreferenceChange(final Preference preference, Object newValue) {
       boolean enabled = (Boolean) newValue;
-      dcContext.setConfigInt("e2ee_enabled", enabled? 1 : 0);
+      dcContext.setConfigInt(CONFIG_E2EE_ENABLED, enabled? 1 : 0);
       return true;
     }
   }
 
   /***********************************************************************************************
-   * Import/Export
+   * Key Import/Export
    **********************************************************************************************/
-
-  private class BackupListener implements Preference.OnPreferenceClickListener {
-    @Override
-    public boolean onPreferenceClick(Preference preference) {
-      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
-      if (!result) {
-        performBackup();
-      }
-      return true;
-    }
-  }
-
-  private void performBackup() {
-    Permissions.with(getActivity())
-        .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-        .ifNecessary()
-        .withRationaleDialog(getActivity().getString(R.string.perm_explain_need_for_storage_access), R.drawable.ic_folder_white_48dp)
-        .onAllGranted(() -> {
-          new AlertDialog.Builder(getActivity())
-              .setTitle(R.string.pref_backup)
-              .setMessage(R.string.pref_backup_export_explain)
-              .setNegativeButton(android.R.string.cancel, null)
-              .setPositiveButton(R.string.pref_backup_export_start_button, (dialogInterface, i) -> startImex(DcContext.DC_IMEX_EXPORT_BACKUP))
-              .show();
-        })
-        .execute();
-  }
-
   private class ManageKeysListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
@@ -316,66 +278,37 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
         .execute();
   }
 
-  private ProgressDialog progressDialog = null;
-  private int            progressWhat = 0;
-  private String         imexDir = "";
-  private void startImex(int what)
-  {
-    if( progressDialog!=null ) {
-      progressDialog.dismiss();
-      progressDialog = null;
-    }
-    progressWhat = what;
-    progressDialog = new ProgressDialog(getActivity());
-    progressDialog.setMessage(getActivity().getString(R.string.one_moment));
-    progressDialog.setCanceledOnTouchOutside(false);
-    progressDialog.setCancelable(false);
-    progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog, which) -> dcContext.stopOngoingProcess());
-    progressDialog.show();
 
-    imexDir = dcContext.getImexDir().getAbsolutePath();
-    dcContext.captureNextError();
-    dcContext.imex(progressWhat, imexDir);
-  }
+  /***********************************************************************************************
+   * Empty server folder
+   **********************************************************************************************/
 
-  @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS) {
-      long progress = (Long)data1;
-      if (progress==0/*error/aborted*/) {
-        dcContext.endCaptureNextError();
-        progressDialog.dismiss();
-        progressDialog = null;
-        if (dcContext.hasCapturedError()) {
-          new AlertDialog.Builder(getActivity())
-              .setMessage(dcContext.getCapturedError())
-              .setPositiveButton(android.R.string.ok, null)
-              .show();
-        }
-      }
-      else if (progress<1000/*progress in permille*/) {
-        int percent = (int)progress / 10;
-        progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
-      }
-      else if (progress==1000/*done*/) {
-        dcContext.endCaptureNextError();
-        progressDialog.dismiss();
-        progressDialog = null;
-        String msg = "";
-        if (progressWhat==DcContext.DC_IMEX_EXPORT_BACKUP) {
-          msg = getActivity().getString(R.string.pref_backup_written_to_x, imexDir);
-        }
-        else if (progressWhat==DcContext.DC_IMEX_EXPORT_SELF_KEYS) {
-          msg = getActivity().getString(R.string.pref_managekeys_secret_keys_exported_to_x, imexDir);
-        }
-        else if (progressWhat==DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
-          msg = getActivity().getString(R.string.pref_managekeys_secret_keys_imported_from_x, imexDir);
-        }
-        new AlertDialog.Builder(getActivity())
-            .setMessage(msg)
-            .setPositiveButton(android.R.string.ok, null)
-            .show();
-      }
+  private class EmptyServerFoldersListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      View gl = View.inflate(getActivity(), R.layout.empty_folder_options, null);
+      CheckBox inboxCb = gl.findViewById(R.id.empty_inbox_folder);
+      CheckBox mvboxCb = gl.findViewById(R.id.empty_deltachat_folder);
+      new AlertDialog.Builder(getActivity())
+          .setTitle(R.string.pref_empty_server_title)
+          .setMessage(R.string.pref_empty_server_msg)
+          .setView(gl)
+          .setNegativeButton(R.string.cancel, null)
+          .setPositiveButton(R.string.pref_empty_server_do_button, (dialog, which) -> {
+            int flags = 0;
+            if (inboxCb!=null && inboxCb.isChecked()) {
+              flags |= DcContext.DC_EMPTY_INBOX;
+            }
+            if (mvboxCb!=null && mvboxCb.isChecked()) {
+              flags |= DcContext.DC_EMPTY_MVBOX;
+            }
+            if (flags!=0) {
+              dcContext.emptyServer(flags);
+            }
+          })
+          .show();
+      return true;
     }
   }
+
 }

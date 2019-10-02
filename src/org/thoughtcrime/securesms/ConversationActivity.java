@@ -53,7 +53,6 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.webkit.MimeTypeMap;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -918,7 +917,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       String ext = "";
       if(filename==null) {
         filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
-        ext = "."+MimeTypeMap.getSingleton().getExtensionFromMimeType(attachment.getContentType());
+        ext = "." + MediaUtil.getExtensionFromMimeType(attachment.getContentType());
       }
       else {
         int i = filename.lastIndexOf(".");
@@ -1061,6 +1060,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected Void doInBackground(Void... voids) {
       Activity activity = activityRef.get();
+      if (activity == null) {
+        return null;
+      }
+
+      activity.setResult(RESULT_OK);
       if (isForwarding(activity)) {
         handleForwarding(activity);
       } else if (isSharing(activity)) {
@@ -1069,14 +1073,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return null;
     }
 
-    @Override
-    protected void onPostExecute(Void aVoid) {
-      super.onPostExecute(aVoid);
-      Activity activity = activityRef.get();
-      if (activity != null) {
-        activity.setResult(RESULT_OK);
-      }
-    }
 
     private void handleForwarding(Activity activity) {
       DcContext dcContext = DcHelper.getContext(activity);

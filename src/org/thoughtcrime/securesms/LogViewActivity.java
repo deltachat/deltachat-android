@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.thoughtcrime.securesms.database.NoExternalStorageException;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
@@ -57,9 +58,16 @@ public class LogViewActivity extends BaseActionBarActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     Float newSize;
+
     switch (item.getItemId()) {
       case android.R.id.home:
         finish();
+        return true;
+      case R.id.save_log:
+        if (logViewFragment.saveLogFile())
+          Toast.makeText(getApplicationContext(), R.string.pref_saved_log, Toast.LENGTH_LONG).show();
+        else
+          Toast.makeText(getApplicationContext(), R.string.pref_save_log_failed, Toast.LENGTH_LONG).show();
         return true;
       case R.id.copy_log_to_clipboard:
         Util.writeTextToClipboard(this, logViewFragment.getLogText());

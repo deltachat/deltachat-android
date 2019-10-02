@@ -145,11 +145,16 @@
     <string name="menu_select_all">Përzgjidhi krejt</string>
     <string name="menu_expand">Zgjeroje</string>
     <string name="menu_edit_name">Përpunoni emrin</string>
+    <string name="menu_edit_group_name">Përpunoni emër grupi</string>
+    <string name="menu_edit_group_image">Përpunoni figurë grupi</string>
     <string name="menu_settings">Rregullime</string>
     <string name="menu_advanced">Të mëtejshme</string>
     <string name="menu_deaddrop">Kërkesa kontakti</string>
     <string name="menu_deaddrop_subtitle">Shtypni butonin Mesazh që të filloni të bisedoni</string>
     <string name="menu_view_profile">Shihini profilin</string>
+    <string name="menu_zoom_in">Zmadhim</string>
+    <string name="menu_zoom_out">Zvogëlim</string>
+    <string name="menu_save_log">Ruaje regjistrin</string>
     <string name="title_share_location">Jepua vendndodhjen krejt anëtarëve të grupit</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
@@ -164,6 +169,7 @@
     <string name="share_location_for_one_hour">për 1 orë</string>
     <string name="share_location_for_two_hours">për 2 orë</string>
     <string name="share_location_for_six_hours">për 6 orë</string>
+
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
@@ -180,10 +186,15 @@
     <string name="ask_block_contact">Të bllokohet ky kontakt? S\’do të merrni më mesazhe prej këtij kontakti.</string>
     <string name="ask_unblock_contact">Të zhbllokohet ky kontakt? Do të jeni sërish në gjendje të merrni mesazhe prej këtij kontakti.</string>
     <string name="ask_delete_contacts">Të fshihen kontaktet? Kjo do të bëjë të fshihen përgjithmonë kontaktet e përzgjedhur.\n\nKontaktet me fjalosje në zhvillim e sipër dhe kontaktet prej libri adresash të sistemit s\’mund të fshihen përgjithmonë.</string>
+    <string name="ask_delete_contact">Të fshihet përgjithmonë kontakti %1$s? \n\nKontaktet me fjalosje në zhvillim e sipër dhe kontaktet prej libri adresash të sistemit s\’mund të fshihen përgjithmonë.</string>
     <string name="cannot_delete_contacts_in_use">S\’mund të fshihen kontakte me fjalosje në zhvillim e sipër.</string>
     <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Të hiqet %1$s nga grupi?</string>
+    <string name="info_outdated_app_title">Versioni juaj i aplikacionit është i vjetruar.</string>
+    <string name="info_outdated_app_text">Duket se e instaluat Delta Chat-in prej një burimi pa vetëpërditësim (p.sh. GitHub). Ju lutemi, që të merrni veçoritë më të reja dhe ndreqje të metash, hidhuni te një version shitoreje.</string>
+    <string name="info_outdated_app_dialog_title">Përditëso burime</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat është i gatshëm për:</string>
 
 
     <!-- contact list -->
@@ -206,9 +217,9 @@
     <string name="chat_please_enter_message">Ju lutemi, jepni një mesazh.</string>
     <string name="chat_camera_unavailable">Kamerë jo gati.</string>
     <string name="chat_unable_to_record_audio">S\’arrihet të incizohet audio.</string>
-    <plurals name="chat_n_unread_messages">
-        <item quantity="one">%d mesazh i palexuar</item>
-        <item quantity="other">%d mesazhe të palexuar</item>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d mesazh i ri</item>
+        <item quantity="other">%d mesazhe të rinj</item>
     </plurals>
     <string name="chat_no_messages_hint">Dërgoni mesazh te %1$s:\n\n• S\’ka problem nëse %2$s s\’përdor Delta Chat.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca dhe mund të jetë i pafshehtëzuar.</string>
     <string name="chat_new_group_hint">Hartoni mesazhin e parë, duke u lejuar të tjerëve të përgjigjen brenda këtij grupi.\n\n• S\’ka problem nëse Delta Chat-in s\’e përdorin  të tërë anëtarë.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca.</string>
@@ -368,7 +379,6 @@
     <string name="pref_led_pattern">Rregullsi xixëllimi LED-i</string>
     <string name="pref_sound">Tingull</string>
     <string name="pref_silent">Heshtazi</string>
-    <string name="pref_repeat_notify">Përsëriti sinjalizimet</string>
     <string name="pref_privacy">Privatësi</string>
     <string name="pref_chats_and_media">Fjalosje dhe media</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -381,7 +391,7 @@
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Kërkoji tastierës të çaktivizojë nxënie të personalizuar</string>
     <string name="pref_read_receipts">Lexoni dëftesa</string>
-    <string name="pref_read_receipts_explain">Nëse leximi i dëftesave është i çaktivizuar, s\’do të jeni në gjendje të shihni mesazh "Lexoni dëftesa" prej të tjerësh</string>
+    <string name="pref_read_receipts_explain">Nëse leximi i dëftesave është i çaktivizuar, s\’do të jeni në gjendje të shihni mesazh \"Lexoni dëftesa\" prej të tjerësh</string>
     <string name="pref_manage_keys">Administroni kyçe</string>
     <string name="pref_use_system_emoji">Përdor emoji sistemi</string>
     <string name="pref_use_system_emoji_explain">Çaktivizo mbulimin e brendshëm Delta Chat për emoji-t</string>
@@ -392,6 +402,8 @@
     <string name="pref_in_chat_sounds">Tinguj brenda fjalosjeje</string>
     <string name="pref_message_text_size">Madhësi shkronjash mesazhi</string>
     <string name="pref_view_log">Shihni regjistrin</string>
+    <string name="pref_saved_log">Regjistri u ruajt te dosja Shkarkime</string>
+    <string name="pref_save_log_failed">Dështoi ruajtja e regjistrit</string>
     <string name="pref_log_header">Regjistër</string>
     <string name="pref_other">Të tjera</string>
     <string name="pref_backup">Kopjeruajtje</string>
@@ -422,6 +434,11 @@
     <string name="pref_show_emails_no">Jo, vetëm fjalosje</string>
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>
     <string name="pref_show_emails_all">Krejt</string>
+    <string name="pref_empty_server_title">ZONË ME RREZIK: Fshini email-e që nga shërbyesi</string>
+    <string name="pref_empty_server_msg">Ky funksion ndihmon të lironi hapësirë te shërbyesi juaj IMAP përmes fshirjes së KREJT email-eve, përfshi mesazhe bisedash, te dosjet e dhëna. Mesazhet në këtë pajisje s’do të fshihen.  Fshirja s’mund të zhbëhet!</string>
+    <string name="pref_empty_server_inbox">Fshiji KREJT email-et te dosja e të Marrëve</string>
+    <string name="pref_empty_server_mvbox">Fshiji KREJT email-et te dosja DeltaChat</string>
+    <string name="pref_empty_server_do_button">Fshiji email-et</string>
 
 
     <!-- autocrypt -->
@@ -510,11 +527,6 @@
     <string name="notify_name_and_message">Emër dhe mesazh</string>
     <string name="notify_name_only">Vetëm emër</string>
     <string name="notify_no_name_or_message">Pa emër apo mesazh</string>
-    <string name="notify_repeat_one_time">Një herë</string>
-    <string name="notify_repeat_two_times">Dy herë</string>
-    <string name="notify_repeat_three_times">Tri herë</string>
-    <string name="notify_repeat_five_times">Pesë herë</string>
-    <string name="notify_repeat_ten_times">Dhjetë herë</string>
 
 
     <!-- permissions -->
@@ -531,38 +543,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat lyp leje mbi Vendndodhjen që të mund të bashkëngjisë një vendndodhje, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Vendndodhjen\".</string>
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat-i përdor burime minimale dhe kujdeset të mos thajë baterinë.</string>
-
-    <!-- languages -->
-    <string name="language_be">Belge</string>
-    <string name="language_ca">Katalane</string>
-    <string name="language_da">Danisht</string>
-    <string name="language_de">Gjermanisht</string>
-    <string name="language_en">Anglisht</string>
-    <string name="language_eo">Esperanto</string>
-    <string name="language_es">Spanjisht</string>
-    <string name="language_eu">Baske</string>
-    <string name="language_fr">Frëngjisht</string>
-    <string name="language_hr">Kroatisht</string>
-    <string name="language_hu">Hungarisht</string>
-    <string name="language_it">Italisht</string>
-    <string name="language_id">Indonezisht</string>
-    <string name="language_ja_JP">Japonisht</string>
-    <string name="language_ko">Koreançe</string>
-    <string name="language_nb_NO">Norvegjishte Bokmal</string>
-    <string name="language_nl">Holandisht</string>
-    <string name="language_nl_NL">Holandisht(Holandë)</string>
-    <string name="language_pl">Polonisht</string>
-    <string name="language_pt">Portugalisht</string>
-    <string name="language_ru">Rusisht</string>
-    <string name="language_ru_RU">Rusisht (Rusi)</string>
-    <string name="language_sq">Shqip</string>
-    <string name="language_sr">Serbisht</string>
-    <string name="language_sv">Suedisht</string>
-    <string name="language_ta">Tamile</string>
-    <string name="language_te">Telugu</string>
-    <string name="language_tr">Turqisht</string>
-    <string name="language_uk">Ukrainase</string>
-    <string name="language_zh_CN">Kineze</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mesazh i fshehtëzuar</string>
@@ -643,25 +623,5 @@
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
 
     <string name="user_location_permission_explanation">Që të mund të shfaqë dhe ndajë me të tjerët vendndodhjen tuaj, Delta Chat lyp lejen vendore.</string>
-
-    <!-- deprecated on android, please remove if unused on desktop -->
-    <!-- see qrscan_ask_join_group -->
-    <string name="qrscan_ask_join_verified_group">Doni të bëheni pjesë e grupit \"%1$s\"?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_fingerprint_ask_oob">Të bisedohet me %1$s?</string>
-    <!-- see ask_start_chat_with -->
-    <string name="qrscan_ask_chatting_fingerprint_ok">Të bisedohet me %1$s?</string>
-    <!-- see qrshow_join_group_title -->
-    <string name="qrshow_join_verified_group_title">Kod QR ftese</string>
-    <!-- see qrshow_join_group_hint -->
-    <string name="qrshow_join_verified_group_hint">Që të bëheni pjesë e grupit \"%1$s\", skanoni këtë.</string>
-    <!-- see chat_all_archived -->
-    <string name="chat_all_done_hint">Zero të marrë</string>
-    <string name="chat_all_done_explain">Hiç. Fare. Zero.\nJanë qëruar!</string>
-    <string name="media_tab_media">Media</string>
-    <string name="media_tab_documents">Dokumente</string>
-    <string name="media_no_media_hint">S\’ka media.</string>
-    <string name="media_no_documents_hint">S\’ka dokumente.</string>
-
 
 </resources>

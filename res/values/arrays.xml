@@ -15,17 +15,20 @@
       <!-- eu -->    <item>Euskara</item>
       <!-- fr -->    <item>Français</item>
       <!-- it -->    <item>Italiano</item>
-      <!-- ja -->    <item>日本語</item>
       <!-- lt -->    <item>Lietuvių kalba</item>
+      <!-- hu -->    <item>Magyar nyelv</item>
       <!-- nl -->    <item>Nederlands</item>
       <!-- pl -->    <item>Polski</item>
       <!-- pt -->    <item>Português</item>
       <!-- pt_BR --> <item>Português do Brasil</item>
-      <!-- ru -->    <item>Pусский</item>
       <!-- sq -->    <item>Shqip</item>
       <!-- sv -->    <item>Svenska</item>
       <!-- tr -->    <item>Türkçe</item>
+      <!-- ru -->    <item>Pусский</item>
       <!-- uk -->    <item>Українська</item>
+      <!-- ja -->    <item>日本語</item>
+      <!-- zh_CN --> <item>简体中文</item>
+      <!-- zh_TW --> <item>繁體中文</item>
   </string-array>
 
   <string-array name="language_values">
@@ -39,17 +42,20 @@
       <item>eu</item>
       <item>fr</item>
       <item>it</item>
-      <item>ja</item>
       <item>lt</item>
+      <item>hu</item>
       <item>nl</item>
       <item>pl</item>
       <item>pt</item>
       <item>pt_BR</item>
-      <item>ru</item>
       <item>sq</item>
       <item>sv</item>
       <item>tr</item>
+      <item>ru</item>
       <item>uk</item>
+      <item>ja</item>
+      <item>zh_CN</item>
+      <item>zh_TW</item>
   </string-array>
 
     <string-array name="pref_theme_entries">

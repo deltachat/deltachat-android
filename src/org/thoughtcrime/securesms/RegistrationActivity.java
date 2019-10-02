@@ -8,6 +8,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.constraint.Group;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -32,7 +33,6 @@ import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
-import org.w3c.dom.Text;
 
 import java.util.concurrent.ExecutionException;
 
@@ -108,6 +108,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         viewLogText.setOnClickListener((view) -> showLog());
         boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
         if (isConfigured) {
+            TextInputLayout passwordLayout = findViewById(R.id.password);
+            passwordLayout.setPasswordVisibilityToggleEnabled(false);
+            TextInputLayout smtpPasswordLayout = findViewById(R.id.smtp_password);
+            smtpPasswordLayout.setPasswordVisibilityToggleEnabled(false);
+
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
 
             String email = DcHelper.get(this, CONFIG_ADDRESS);
@@ -259,6 +264,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             } else if (isGmail(email)) {
                 showGmailNoOauth2Hint();
                 oauth2started.set(false);
+            } else if (isOutlook(email)) {
+                showOutlookHint();
+                oauth2started.set(false);
             }
             else {
                 oauth2started.set(false);
@@ -306,6 +314,30 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             gmailDialogShown = true;
             new AlertDialog.Builder(this)
                 .setMessage(R.string.login_info_gmail_text)
+                .setPositiveButton(R.string.ok, null)
+                .show();
+        }
+    }
+
+    private boolean isOutlook(String email) {
+        return email != null
+           && (email.toLowerCase().contains("@outlook.") || email.toLowerCase().contains("@hotmail."));
+    }
+
+    private boolean outlookDialogShown;
+    private void showOutlookHint()
+    {
+        if(!outlookDialogShown) {
+            outlookDialogShown = true;
+            new AlertDialog.Builder(this)
+                .setMessage(
+                      "Outlook- and Hotmail-e-mail-addresses "
+                    + "may currently not work as expected "
+                    + "as these servers may remove some important transport information."
+                    + "\n\n"
+                    + "Hopefully sooner or later there will be a fix; "
+                    + "for now, we suggest to use another e-mail-address "
+                    + "or try Delta Chat again when the issue is fixed.")
                 .setPositiveButton(R.string.ok, null)
                 .show();
         }

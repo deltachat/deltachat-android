@@ -32,6 +32,7 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -106,19 +107,23 @@ public class NewConversationActivity extends ContactSelectionActivity {
     String textToShare = mailtoQueryMap.get(SUBJECT);
     String body = mailtoQueryMap.get(BODY);
     if (body != null && !body.isEmpty()) {
-      textToShare += "\n" + body;
+      if (textToShare != null && !textToShare.isEmpty()) {
+        textToShare += "\n" + body;
+      } else {
+        textToShare = body;
+      }
     }
     return textToShare;
   }
 
   private Map<String, String> getMailtoQueryMap(Uri uri) {
     Map<String, String> mailtoQueryMap = new HashMap<>();
-    String query =  uri.getQuery();
+    String query =  uri.getEncodedQuery();
     if (query != null && !query.isEmpty()) {
       String[] queryArray = query.split(QUERY_SEPARATOR);
       for(String queryEntry : queryArray) {
         String[] queryEntryArray = queryEntry.split(KEY_VALUE_SEPARATOR);
-        mailtoQueryMap.put(queryEntryArray[0], queryEntryArray[1]);
+        mailtoQueryMap.put(queryEntryArray[0], URLDecoder.decode(queryEntryArray[1]));
       }
     }
     return mailtoQueryMap;

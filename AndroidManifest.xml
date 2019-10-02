@@ -92,10 +92,9 @@
             <data android:mimeType="text/*"/>
             <data android:mimeType="*/*"/>
         </intent-filter>
-
         <meta-data
                 android:name="android.service.chooser.chooser_target_service"
-                android:value=".service.DirectShareService" />
+                android:value="org.thoughtcrime.securesms.service.DirectShareService" />
 
     </activity>
 
@@ -141,14 +140,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.thoughtcrime.securesms.ConversationListActivity" />
     </activity>
-
-    <activity android:name=".ConversationPopupActivity"
-              android:windowSoftInputMode="stateVisible"
-              android:launchMode="singleTask"
-              android:taskAffinity=""
-              android:excludeFromRecents="true"
-              android:theme="@style/TextSecure.LightTheme.Popup"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
 
     <activity android:name=".GroupCreateActivity"
           android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
@@ -211,7 +202,6 @@
     <activity android:name=".ProfileActivity"
               android:theme="@style/TextSecure.LightNoActionBar"
               android:windowSoftInputMode="stateHidden"
-              android:launchMode="singleTask"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".DummyActivity"
@@ -235,7 +225,7 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".scribbles.StickerSelectActivity"
-              android:theme="@style/TextSecure.LightTheme"
+              android:theme="@style/TextSecure.ScribbleTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
