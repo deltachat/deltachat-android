@@ -24,7 +24,7 @@
 
 
 #include <jni.h>
-#include "messenger-backend/src/deltachat.h"
+#include "deltachat-core-rust/deltachat-ffi/deltachat.h"
 
 
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
@@ -82,8 +82,8 @@ static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
 
 	if (ca) {
 		if (icnt) {
-			uintptr_t* ca_data = dc_array_get_raw(ca);
-			if (sizeof(uintptr_t)==sizeof(jint)) {
+			uint32_t* ca_data = dc_array_get_raw(ca);
+			if (sizeof(uint32_t)==sizeof(jint)) {
 				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
 			}
 			else {
@@ -712,15 +712,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_imex(JNIEnv *env, jobject obj, 
 	CHAR_REF(dir);
 		dc_imex(get_dc_context(env, obj), what, dirPtr, "");
 	CHAR_UNREF(dir);
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_checkPassword(JNIEnv *env, jobject obj, jstring pw)
-{
-	CHAR_REF(pw);
-		jint r = dc_check_password(get_dc_context(env, obj),  pwPtr);
-	CHAR_UNREF(pw);
-	return r;
 }
 
 
@@ -1523,6 +1514,3 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_stringToData(JNIEnv *env, jcla
     }
     return (jlong)cstring; // the return value of stringToData() will be passed to c-land and free()'d there
 }
-
-
-

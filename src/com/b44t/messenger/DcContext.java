@@ -108,8 +108,6 @@ public class DcContext {
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
-    public native void         emptyServer          (int flags);
-    public native int          checkPassword        (String pw);
     public native boolean      mayBeValidAddr       (String addr);
     public native int          lookupContactIdByAddr(String addr);
     public native int[]        getContacts          (int flags, String query);
