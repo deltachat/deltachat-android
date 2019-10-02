@@ -186,6 +186,7 @@
     <string name="ask_block_contact">Bloccare il contatto? Non riceverai più messaggi da questo contatto.</string>
     <string name="ask_unblock_contact">Sbloccare il contatto? Potrai nuovamente ricevere messaggi da questo contatto.</string>
     <string name="ask_delete_contacts">Eliminare il contatto? Questo eliminerà per sempre il contatto selezionato.\n\nI contatti con chat attive o presenti nella rubrica del sistema non possono essere eliminati permanentemente.</string>
+    <string name="ask_delete_contact">Vuoi eliminare per sempre %1$s?\n\nI contatti con chat attive e quelli in rubrica non possono essere eliminati permanentemente.</string>
     <string name="cannot_delete_contacts_in_use">Impossibile eliminare contatti con chat in corso.</string>
     <string name="ask_start_chat_with">Chattare with %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->

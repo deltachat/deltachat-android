@@ -202,6 +202,7 @@
     <string name="ask_block_contact">Заблокировать контакт? Вы больше не сможете получать от него сообщения.</string>
     <string name="ask_unblock_contact">Разблокировать контакт? Вы сможете получать от него сообщения снова.</string>
     <string name="ask_delete_contacts">Удалить контакты? Это действие навсегда удалит выбранные контакты.\n\nКонтакты из действующих чатов и из адресной книги системы нельзя удалить навсегда.</string>
+    <string name="ask_delete_contact">Удалить контакт навсегда  %1$s?\n\nКонтакты с исходящими чатами и контакты из системной адресной книги не будут удалены .</string>
     <string name="cannot_delete_contacts_in_use">Невозможно удалить контакты, с которыми имеются активные чаты.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
@@ -437,7 +438,7 @@
     <string name="pref_managekeys_export_secret_keys">Экспортировать секретные ключи</string>
     <string name="pref_managekeys_export_explain">Экспортировать секретные ключи в папку «%1$s»?</string>
     <string name="pref_managekeys_import_secret_keys">Импортировать секретные ключи</string>
-    <string name="pref_managekeys_import_explain">Импортировать секретные ключи из папки «%1$s»?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию, если он не содержит слова «legacy» в названии файла.</string>
+    <string name="pref_managekeys_import_explain">Импортировать секретные ключи из папки \"%1$s\"?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию, если он не содержит слова \"legacy\" в названии файла.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Секретные ключи успешно сохранены в папку «%1$s».</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из папки «%1$s».</string>
     <string name="pref_background">Фон</string>
@@ -455,10 +456,10 @@
     <string name="pref_show_emails_no">Нет, только чаты</string>
     <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
     <string name="pref_show_emails_all">Все</string>
-    <string name="pref_empty_server_title">Опасная зона: удаление электронной почты с сервера</string>
-    <string name="pref_empty_server_msg">Эта функция позволяет освободить место на сервере IMAP, удалив все сообщения электронной почты, включая чат-сообщения, в указанных папках. Сообщения на этом устройстве не удаляются. Удаление не может быть отменено!</string>
-    <string name="pref_empty_server_inbox">Удалить все сообщения электронной почты в папке «Входящие»</string>
-    <string name="pref_empty_server_mvbox">Удалить все сообщения электронной почты в папке «DeltaChat»</string>
+    <string name="pref_empty_server_title">ОПАСНАЯ ЗОНА: Удалить электронную почту с сервера</string>
+    <string name="pref_empty_server_msg">Эта функция помогает освободить место на сервере IMAP, удаляя ВСЕ сообщения электронной почты, включая чат-сообщения, в указанных папках. Сообщения на этом устройстве не удалятся. Удаление не может быть отменено!</string>
+    <string name="pref_empty_server_inbox">Удалить ВСЕ сообщения электронной почты в папке «Входящие»</string>
+    <string name="pref_empty_server_mvbox">Удалить ВСЕ сообщения электронной почты в папке DeltaChat</string>
     <string name="pref_empty_server_do_button">Удаление электронной почты</string>
 
 

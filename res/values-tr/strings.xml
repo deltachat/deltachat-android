@@ -3,7 +3,7 @@
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Tamam</string>
-    <string name="cancel">İptal</string>
+    <string name="cancel">Vazgeç</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="on">Açık</string>
@@ -150,7 +150,7 @@
     <string name="menu_settings">Ayarlar</string>
     <string name="menu_advanced">Gelişmiş</string>
     <string name="menu_deaddrop">İletişim istekleri</string>
-    <string name="menu_deaddrop_subtitle">Sohbete başlamak için iletiye basın</string>
+    <string name="menu_deaddrop_subtitle">Sohbet başlatmak için iletiye basın</string>
     <string name="menu_view_profile">Profili görüntüle</string>
     <string name="menu_zoom_in">Yakınlaştır</string>
     <string name="menu_zoom_out">Uzaklaştır</string>
@@ -174,8 +174,8 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">%d sohbet silinsin mi? Artık sohbet listesinde gösterilmeyecek, iletileri sunucuda kalacak.</item>
-        <item quantity="other">%d sohbet silinsin mi? Artık sohbet listesinde gösterilmeyecek, iletileri sunucuda kalacak.</item>
+        <item quantity="one">%d sohbet silinsin mi? Artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
+        <item quantity="other">%d sohbet silinsin mi? Artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
@@ -186,7 +186,7 @@
     <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden gelen iletileri almayacaksınız.</string>
     <string name="ask_unblock_contact">Bu kişinin engellemesi kaldırılsın mı? Bir kez daha bu kişiden gelen iletileri alabileceksiniz.</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi? Bu, seçilen kişileri kalıcı olarak silecek.\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
-    <string name="ask_delete_contact">%1$s kişisi kalıcı olarak silinsin mi?\n\nSohbetleri süren kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_delete_contact">%1$s kişisi kalıcı olarak silinsin mi?\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="cannot_delete_contacts_in_use">Sohbetlerin sürdüğü kişiler silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
@@ -223,7 +223,7 @@
     </plurals>
     <string name="chat_no_messages_hint">%1$s alıcısına ileti gönder:\n\n• %2$s Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir ve şifrelenmeyebilir.</string>
     <string name="chat_new_group_hint">İlk iletiyi oluşturun, diğerlerinin bu grupta yanıtlamasına izin verin.\n\n• Tüm üyeler Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir.</string>
-    <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
+    <string name="chat_record_slide_to_cancel">Vazgeçmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
     <string name="chat_no_chats_yet_title">Boş gelen kutusu.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
     <string name="chat_no_chats_yet_hint">Diğer Delta Chat kullanıcılarıyla ve herhangi bir e-posta adresiyle sohbet edebilirsiniz.</string>
@@ -277,9 +277,9 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro1_message">Dünyanın en geniş kitleli ulağı. Özgür ve bağımsız.</string>
+    <string name="welcome_intro1_message">Dünyanın en geniş kitleli ulağı. Özgür ve bağımsızdır.</string>
     <string name="welcome_intro2_headline">Bağımsız</string>
-    <string name="welcome_intro2_message">Delta Chat sunucusu yok. Uygulama, yalnızca posta sunucunuzu kullanır.</string>
+    <string name="welcome_intro2_message">Delta Chat sunucusu yoktur. Uygulama, yalnızca posta sunucunuzu kullanır.</string>
     <string name="welcome_intro3_headline">Hızlı</string>
     <string name="welcome_intro3_message">İletileri saniyeler içinde gönderin.\nHızlı arabirim.</string>
     <string name="welcome_intro4_headline">Güçlü</string>
@@ -287,16 +287,16 @@
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Özgür</string>
     <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
-    <string name="welcome_intro5_message">Delta Chat sonsuza dek özgür. Açık kaynaklı. Reklam yok. Abonelik yok. Satıcı kilidi yok.</string>
+    <string name="welcome_intro5_message">Delta Chat sonsuza dek özgürdür. Açık kaynaklıdır. Reklam yoktur. Abonelik yoktur. Satıcı kilidi yoktur.</string>
     <string name="welcome_intro6_headline">Şifreli</string>
     <string name="welcome_intro6_message">Tüm yaygın algoritmalarla şifrelenir. İletiler sunucularınızda kalır.</string>
     <string name="welcome_intro7_headline">Güvenilir</string>
-    <string name="welcome_intro7_message">Delta Chat, iş kullanımı için güvenli, uyumlu ve standartlar tabanlı.</string>
-    <string name="welcome_start_messaging">İletileşmeye Başla</string>
+    <string name="welcome_intro7_message">Delta Chat, iş kullanımı için güvenli, uyumlu ve standartlar tabanlıdır.</string>
+    <string name="welcome_start_messaging">İletileşmeyi Başlat</string>
     <string name="login_title">Oturum aç</string>
     <string name="login_header">Sunucunuzda oturum açın</string>
-    <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'ın web ön ucundan etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
-    <string name="login_no_servers_hint">Delta Chat sunucusu yok, verileriniz aygıtınızda kalır!</string>
+    <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'nin web ön ucundan etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
+    <string name="login_no_servers_hint">Delta Chat sunucusu yoktur; verileriniz aygıtınızda kalır!</string>
     <string name="login_inbox">Gelen Kutusu</string>
     <string name="login_imap_login">IMAP oturum açma adı</string>
     <string name="login_imap_server">IMAP sunucusu</string>
@@ -310,7 +310,7 @@
     <string name="login_smtp_security">SMTP Güvenliği</string>
     <string name="login_auth_method">Yetkilendirme yöntemi</string>
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
-    <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth2) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta ile Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucusu yok, verileriniz aygıtınızda kalır!</string>
+    <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth2) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta ile Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucusu yoktur; verileriniz aygıtınızda kalır!</string>
     <string name="login_info_gmail_text">Gmail hesapları için 2FA\'yı etkinleştirdiyseniz, bir uygulama parolası oluşturmanız gerekir. Bu ayar kullanılabilir değilse, Güvenliği Düşük Uygulamalar\'ı etkinleştirmeniz gerekir.</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
@@ -318,7 +318,7 @@
     <string name="login_error_required_fields">Lütfen geçerli bir e-posta adresi ve bir parola girin</string>
     <string name="import_backup_title">Yedeği içe aktar</string>
     <string name="import_backup_ask">\"%1$s\" üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
-    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemine gitmek için \"İletileşmeye başla\"ya basın.</string>
+    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemine gitmek için \"İletileşmeyi başlat\"a basın.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">\"%1$s\" olarak oturum açılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
@@ -328,7 +328,7 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İlet …</string>
-    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir, örn. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; örn. görseller ve videolar yeniden kodlanmaz.</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
 
@@ -409,12 +409,12 @@
     <string name="pref_backup">Yedekleme</string>
     <string name="pref_backup_explain">Sohbetleri dış depolamaya yedekle</string>
     <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardım eder.\n\nYedek, tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
-    <string name="pref_backup_export_start_button">Yedeklemeye başla</string>
+    <string name="pref_backup_export_start_button">Yedeklemeyi başlat</string>
     <string name="pref_backup_written_to_x">Yedek %1$s üzerine başarıyla yazıldı</string>
     <string name="pref_managekeys_menu_title">Anahtarları yönet</string>
     <string name="pref_managekeys_ask_for_storage_permission">Delta Chat\'in anahtarları içe/dışa aktarmak için dosyalarınıza erişmesi gerekir.</string>
     <string name="pref_managekeys_export_secret_keys">Sır anahtarları dışa aktar</string>
-    <string name="pref_managekeys_export_explain">Sır anahtarlar \"%1$s\" üzerine dışa aktarılsın mı?</string>
+    <string name="pref_managekeys_export_explain">Sır anahtarlar \"%1$s\" üzerinde dışa aktarılsın mı?</string>
     <string name="pref_managekeys_import_secret_keys">Sır anahtarları içe aktar</string>
     <string name="pref_managekeys_import_explain">Sır anahtarlar \"%1$s\" üzerinden içe aktarılsın mı?\n\n• Varolan sır anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosya adında \"legacy\" sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar \"%1$s\" üzerine başarıyla yazıldı.</string>
@@ -435,7 +435,7 @@
     <string name="pref_show_emails_accepted_contacts">Onaylanan kişiler için</string>
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_empty_server_title">TEHLİKELİ BÖLGE: E-postaları sunucudan sil</string>
-    <string name="pref_empty_server_msg">Bu işlev, sohbet iletilerini kapsayıp verilen klasörlerdeki TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
+    <string name="pref_empty_server_msg">Bu işlev, verilen klasörlerdeki sohbet iletilerini kapsayıp TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
     <string name="pref_empty_server_inbox">Gelen Kutusu klasöründeki TÜM e-postaları sil</string>
     <string name="pref_empty_server_mvbox">DeltaChat klasöründeki TÜM e-postaları sil</string>
     <string name="pref_empty_server_do_button">E-postaları sil</string>
@@ -443,15 +443,15 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt, otomatik uçtan uca e-posta şifrelemesi için yeni ve açık bir belirtim.\n\nUçtan uca ayarlamanız, gerektiğinde otomatik olarak oluşturulur ve Autocrypt Ayarlama İletileri ile aygıtlar arasında aktarabilirsiniz.</string>
+    <string name="autocrypt_explain">Autocrypt, otomatik uçtan uca e-posta şifrelemesi için yeni ve açık bir belirtimdir.\n\nUçtan uca ayarlamanız, gerektiğinde otomatik olarak oluşturulur ve Autocrypt Ayarlama İletileri ile aygıtlar arasında aktarabilirsiniz.</string>
     <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi gönder</string>
     <string name="autocrypt_send_asm_explain_before">Bir \"Autocrypt Ayarlama İletisi\", uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi gönder</string>
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Bir ayarlama kodu girmeniz istenmeli. İsteme aşağıdaki sayıları yazın:\n\n%1$s\n\nBitirdiğinizde, diğer aygıtınız Autocrypt kullanmaya hazır olacak.</string>
     <string name="autocrypt_prefer_e2ee">Uçtan uca şifrelemeyi yeğle</string>
     <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
-    <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi bir Autocrypt uyumlu istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
-    <string name="autocrypt_asm_click_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için bu iletiye dokunun ya da tıklayın.</string>
+    <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi bir Autocrypt uyumlu istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
+    <string name="autocrypt_asm_click_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için bu iletiye dokunun ya da tıklayın.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt Ayarlama İletisi</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Lütfen diğer aygıtta görüntülenen ayarlama kodunu girin.</string>
     <string name="autocrypt_continue_transfer_succeeded">Uçtan uca ayarlaması aktarıldı. Bu aygıt artık aynı ayarlamayla diğer aygıt gibi Autocrypt kullanmaya hazır.</string>
@@ -467,7 +467,7 @@
     <string name="systemmsg_member_removed">%1$s üyesi kaldırıldı.</string>
     <string name="systemmsg_group_left">Gruptan ayrılındı.</string>
     <string name="systemmsg_read_receipt_subject">Okundu bilgisi</string>
-    <string name="systemmsg_read_receipt_body">Bu, \"%1$s\" iletisi için bir okundu bilgisi.\n\nBu, iletinin alıcının aygıtında görüntülendiği anlamına gelir, içeriğin okunması gerekmez.</string>
+    <string name="systemmsg_read_receipt_body">Bu, \"%1$s\" iletisi için bir okundu bilgisidir.\n\nBu, iletinin alıcının aygıtında görüntülendiği anlamına gelir; içeriğin okunması gerekli değildir.</string>
     <string name="systemmsg_cannot_decrypt">Bu ileti şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderene iletiyi yeniden gönderip gönderemeyeceğini sormak zaten yardım edebilir.\n\n• Delta Chat\'i ya da başka bir e-posta programını bu ya da başka bir aygıta yeniden kurduysanız, oradan bir Autocrypt Ayarlama İletisi göndermek isteyebilirsiniz.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">Benim tarafımdan %1$s.</string>
@@ -495,7 +495,7 @@
     <string name="qrscan_contains_text">Taranan QR kodu metni:\n\n%1$s</string>
     <string name="qrscan_contains_url">Taranan QR kodu URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s doğrulandı, kendimi tanıtıyorum …</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s doğrulandı; kendimi tanıtıyorum …</string>
     <string name="qrshow_title">QR davet kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>
     <string name="qrshow_x_verified">%1$s doğrulandı.</string>
@@ -505,7 +505,7 @@
     <string name="qrshow_join_contact_title">QR davet kodu</string>
     <string name="qrshow_join_contact_hint">%1$s ile bir iletişim ayarlamak için bunu tarayın</string>
     <string name="qrshow_join_contact_no_connection_hint">QR kodu ayarlaması bir Internet bağlantısı gerektirir. İşlemden önce lütfen bir ağa bağlanın.</string>
-    <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok, QR kodu ayarlaması gerçekleştirilemiyor.</string>
+    <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kodu ayarlaması gerçekleştirilemiyor.</string>
     <string name="contact_verified">%1$s doğrulandı.</string>
     <string name="contact_not_verified">%1$s doğrulanamıyor</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -539,7 +539,7 @@
     <string name="perm_explain_need_for_storage_access_share">Delta Chat\'in seçilen dosyaları paylaşmak için dosyalarınıza erişmesi gerekir.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat, fotoğraflar ya da videolar çekmek için kamera izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Kamera\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat, sesli iletiler göndermek için Mikrofon izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoğrafları, videoları ya da sesleri iliştirmek ya da dışa aktarmak için depolama izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat; fotoğrafları, videoları ya da sesleri iliştirmek ya da dışa aktarmak için depolama izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat, bir konum iliştirmek için Konum izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat artalandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
@@ -611,7 +611,7 @@
     <string name="create_chat_error_desktop">Sohbet oluşturulamadı.</string>
     <string name="ask_delete_chat_desktop">Bu sohbeti silmek istediğinizden emin misiniz?</string>
     <string name="email_validation_failed_desktop">E-posta adresi gerekli.</string>
-    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem kesin ve ters çevrilemez.</string>
+    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem sondur ve ters çevrilemez.</string>
     <string name="me_desktop">ben</string>
     <string name="in_this_group_desktop">Grup üyeleri</string>
     <string name="not_in_this_group_desktop">Olası grup üyeleri (grupta değil)</string>
