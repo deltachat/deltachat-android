@@ -114,7 +114,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
     }
 
     private void showFingerprintOrQrSuccess(AlertDialog.Builder builder, DcLot qrParsed, String nameAndAddress) {
-        @StringRes int resId = qrParsed.getState() == DcContext.DC_QR_ADDR ? R.string.ask_start_chat_with : R.string.qrscan_ask_chatting_fingerprint_ok;
+        @StringRes int resId = qrParsed.getState() == DcContext.DC_QR_ADDR ? R.string.ask_start_chat_with : R.string.qrscan_ask_join_group;
         builder.setMessage(Html.fromHtml(String.format(activity.getString(resId, nameAndAddress))));
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
             int chatId = dcContext.createChatByContactId(qrParsed.getId());
