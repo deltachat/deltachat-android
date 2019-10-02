@@ -621,7 +621,38 @@
     <string name="message_detail_to_desktop">to</string>
     <string name="menu.view.developer.open.log.folder">Open Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
-
     <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
 
+    <string name="login_explain">Login with an existing e-mail account.</string>
+    <string name="update">Update</string>
+    <string name="show_password">Show password</string>
+    <string name="hide_password">Hide password</string>
+    <string name="pref_experimental_features">Experimental features</string>
+    <string name="pref_on_demand_location_streaming">On-demand location streaming</string>
+    <string name="pref_background_default">Default background</string>
+    <string name="pref_background_default_color">Default color</string>
+    <string name="pref_background_custom_image">Custom image</string>
+    <string name="pref_background_custom_color">Custom color</string>
+    <string name="retry_send">Retry to send message</string>
+    <string name="send_failed">Sending message failed</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Attachment</string>
+    <string name="a11y_delivery_status_error">Delivery status: Error</string>
+    <string name="a11y_encryption_padlock">Encryption padlock</string>
+    <string name="a11y_delivery_status_sending">Delivery status: Sending</string>
+    <string name="a11y_delivery_status_draft">Delivery status: Draft</string>
+    <string name="a11y_delivery_status_delivered">Delivery status: Delivered</string>
+    <string name="a11y_delivery_status_read">Delivery status: Read</string>
+    <string name="a11y_delivery_status_invalid">Invalid delivery status</string>
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+    <string name="save">Save</string>
+    <string name="chat">Chat</string>
+    <string name="media">Media</string>
+    <string name="a11y_remove_account_btn_label">Remove account</string>
+    <string name="main_menu">Main menu</string>
+    <string name="a11y_message_context_menu_btn_label">Message actions</string>
+    <string name="a11y_background_preview_label">Background preview</string>
+    <string name="messaging_disabled_not_in_group">Messaging disabled (you are not in this group)</string>
+    <string name="message_not_verified">The message was sent with non-verified encryption.. See \"Info\" for details.</string>
 </resources>
