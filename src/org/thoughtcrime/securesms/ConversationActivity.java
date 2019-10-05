@@ -601,7 +601,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleForwarding() {
-    String name = dcContext.getChat(chatId).getName();
+    DcChat dcChat = dcContext.getChat(chatId);
+    String name = dcChat.getName();
+    if( !dcChat.isGroup() ) {
+      int[] contactIds = dcContext.getChatContacts(chatId);
+      if( contactIds.length==1 || contactIds.length==2 ) {
+        name = dcContext.getContact(contactIds[0]).getNameNAddr();
+      }
+    }
     new AlertDialog.Builder(this)
             .setMessage(getString(R.string.ask_forward, name))
             .setPositiveButton(R.string.ok, (dialogInterface, i) -> new RelayingTask(this, chatId).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR))
