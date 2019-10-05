@@ -38,36 +38,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginBottom="2dp"
+            <org.thoughtcrime.securesms.components.FromTextView
+                android:id="@+id/from_text"
+                style="@style/Signal.Text.Body"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/group_indicator"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_group_white_24dp"
-                    android:visibility="gone"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginEnd="5dp" />
-
-                <org.thoughtcrime.securesms.components.FromTextView
-                    android:id="@+id/from_text"
-                    style="@style/Signal.Text.Body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="5dp"
-                    android:ellipsize="end"
-                    android:fontFamily="sans-serif-medium"
-                    android:maxLines="1"
-                    android:textColor="?attr/conversation_list_item_contact_color"
-                    tools:text="Jules Bonnot" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:drawablePadding="5dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:textColor="?attr/conversation_list_item_contact_color"
+                tools:text="Jules Bonnot" />
 
             <org.thoughtcrime.securesms.components.emoji.EmojiTextView
                 android:id="@+id/subject"
