@@ -16,6 +16,7 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
@@ -124,9 +125,19 @@ public class ConversationTitleView extends RelativeLayout {
     }
     else {
       this.title.setText(dcChat.getName());
-      this.subtitle.setText(dcChat.getSubtitle());
+      this.subtitle.setText(hackPluralsString(dcChat.getSubtitle()));
     }
 
     this.subtitle.setVisibility(showSubtitle? View.VISIBLE : View.GONE);
+  }
+
+  private String hackPluralsString(String string) {
+    // the rust-core does not care about plural forms (there is just once case that was not worth the effort up to now)
+    // therefore, we check if the returned string has the form "N member(s)" and localized the corrently to one/few/many/other
+    if( string.endsWith(" member(s)") ) {
+      int cnt = Util.objectToInt(string.substring(0, string.indexOf(" ")));
+      string = getContext().getResources().getQuantityString(R.plurals.n_members, cnt, cnt);
+    }
+    return string;
   }
 }

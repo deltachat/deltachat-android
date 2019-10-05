@@ -643,6 +643,7 @@ public class ApplicationDcContext extends DcContext {
           case  1: s = context.getString(R.string.chat_no_messages); break;
           case  2: s = context.getString(R.string.self); break;
           case  3: s = context.getString(R.string.draft); break;
+          case  4: s = null; break; // we create DC_STR_MEMBER in hackPluralsString()
           case  7: s = context.getString(R.string.voice_message); break;
           case  8: s = context.getString(R.string.chat_contact_request); break;
           case  9: s = context.getString(R.string.image); break;
