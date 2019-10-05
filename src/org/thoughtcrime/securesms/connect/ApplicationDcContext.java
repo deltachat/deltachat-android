@@ -351,6 +351,7 @@ public class ApplicationDcContext extends DcContext {
 
           while (true) {
             mvboxWakeLock.acquire();
+            performMvboxJobs();
             performMvboxFetch();
             mvboxWakeLock.release();
             performMvboxIdle();
@@ -383,6 +384,7 @@ public class ApplicationDcContext extends DcContext {
 
           while (true) {
             sentboxWakeLock.acquire();
+            performSentboxJobs();
             performSentboxFetch();
             sentboxWakeLock.release();
             performSentboxIdle();
