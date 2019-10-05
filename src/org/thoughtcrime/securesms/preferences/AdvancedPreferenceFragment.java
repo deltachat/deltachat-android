@@ -303,7 +303,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
               flags |= DcContext.DC_EMPTY_MVBOX;
             }
             if (flags!=0) {
-              dcContext.emptyServer(flags);
+              //dcContext.emptyServer(flags); -- when re-enabling, make sure, dc_empty_server() in dc_wrapper.c is enabled as well
+              Toast.makeText(getActivity(), "Not yet re-implemented. The data on your server are NOT deleted.", Toast.LENGTH_LONG).show();
             }
           })
           .show();
