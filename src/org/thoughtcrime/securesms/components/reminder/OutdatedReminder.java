@@ -39,12 +39,6 @@ public class OutdatedReminder extends Reminder {
         return false;
     }
 
-    @NonNull
-    @Override
-    public Importance getImportance() {
-        return Importance.ERROR;
-    }
-
     public static boolean isEligible(Context context) {
         if (context == null) {
             return false;
