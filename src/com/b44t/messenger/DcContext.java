@@ -83,18 +83,25 @@ public class DcContext {
     public native void         configure            ();
     public native void         stopOngoingProcess   ();
     public native int          isConfigured         ();
+
     public native void         performImapJobs      ();
     public native void         performImapFetch     ();
     public native void         performImapIdle      ();
     public native void         interruptImapIdle    ();
+
+    public native void         performMvboxJobs     ();
     public native void         performMvboxFetch    ();
     public native void         performMvboxIdle     ();
     public native void         interruptMvboxIdle   ();
-    public native void         performSentboxFetch    ();
-    public native void         performSentboxIdle     ();
-    public native void         interruptSentboxIdle   ();
+
+    public native void         performSentboxJobs   ();
+    public native void         performSentboxFetch  ();
+    public native void         performSentboxIdle   ();
+    public native void         interruptSentboxIdle ();
+
     public native void         performSmtpJobs      ();
     public native void         performSmtpIdle      ();
+
     public native void         maybeNetwork         ();
     public native void         setConfig            (String key, String value);
     public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
