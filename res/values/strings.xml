@@ -26,7 +26,7 @@
     <string name="hide_password">Hide password</string>
     <string name="not_now">Not now</string>
     <string name="never">Never</string>
-    <string name="one_moment">One moment…</string>
+    <string name="one_moment">One moment...</string>
     <string name="done">Done</string>
     <string name="undo">Undo</string>
     <string name="error">Error</string>
@@ -341,7 +341,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
-    <string name="forward_to">Forward to …</string>
+    <string name="forward_to">Forward to...</string>
     <string name="share_multiple_attachments">Do you want to send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
@@ -441,7 +441,7 @@
     <string name="pref_watch_inbox_folder">Watch Inbox folder</string>
     <string name="pref_watch_sent_folder">Watch Sent folder</string>
     <string name="pref_watch_mvbox_folder">Watch DeltaChat folder</string>
-    <string name="pref_auto_folder_moves">Automatic Moves to DeltaChat folder</string>
+    <string name="pref_auto_folder_moves">Automatic moves to DeltaChat folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox folder</string>
     <string name="pref_email_interaction_title">Email interaction</string>
     <string name="pref_show_emails">Show classic emails</string>
@@ -449,9 +449,9 @@
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
     <string name="pref_show_emails_all">All</string>
     <string name="pref_empty_server_title">DANGER ZONE: Delete e-mails from server</string>
-    <string name="pref_empty_server_msg">This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted.  The deletion cannot be undone!</string>
-    <string name="pref_empty_server_inbox">Delete ALL e-mails in Inbox folder</string>
-    <string name="pref_empty_server_mvbox">Delete ALL e-mails in DeltaChat folder</string>
+    <string name="pref_empty_server_msg">This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted. The deletion cannot be undone!</string>
+    <string name="pref_empty_server_inbox">Delete all e-mails in Inbox folder</string>
+    <string name="pref_empty_server_mvbox">Delete all e-mails in DeltaChat folder</string>
     <string name="pref_empty_server_do_button">Delete e-mails</string>
     <string name="pref_experimental_features">Experimental features</string>
     <string name="pref_on_demand_location_streaming">On-demand location streaming</string>
@@ -514,7 +514,7 @@
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself …</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself...</string>
     <string name="qrshow_title">QR invite code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
     <string name="qrshow_x_verified">%1$s verified.</string>
@@ -556,10 +556,10 @@
     <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat access to your microphone.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>
     <string name="perm_explain_need_for_storage_access_share">Delta Chat needs access to your files in order to share the selected files.</string>
-    <string name="perm_explain_access_to_camera_denied">Delta Chat requires the Camera permission in order to take photos or videos, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Camera\".</string>
-    <string name="perm_explain_access_to_mic_denied">Delta Chat requires the Microphone permission in order to send audio messages, but it has been permanently denied. Please continue to app settings, select \"Permissions\", and enable \"Microphone\".</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat requires the Storage permission in order to attach or export photos, videos, or audio, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Storage\".</string>
-    <string name="perm_explain_access_to_location_denied">Delta Chat requires Location permission in order to attach a location, but it has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Location\".</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat requires the Camera permission in order to take photos or videos, but it has been permanently denied. Please go to the app settings menu, select \"Permissions\", and enable \"Camera\".</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat requires the Microphone permission in order to send audio messages, but it has been permanently denied. Please go to app settings menu, select \"Permissions\", and enable \"Microphone\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat requires the Storage permission in order to attach or export photos, videos, or audio, but it has been permanently denied. Please go to the app settings menu, select \"Permissions\", and enable \"Storage\".</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat requires Location permission in order to attach a location, but it has been permanently denied. Please go to the app settings menu, select \"Permissions\", and enable \"Location\".</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in background.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat uses minimal resources and takes care not to drain your battery.</string>
 
