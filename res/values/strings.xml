@@ -24,6 +24,7 @@
     <string name="main_menu">Main menu</string>
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
+    <string name="continue">Continue</string>
     <string name="not_now">Not now</string>
     <string name="never">Never</string>
     <string name="one_moment">One moment...</string>
@@ -550,8 +551,6 @@
 
     <!-- permissions -->
     <string name="perm_required_title">Permission required</string>
-    <string name="perm_continue">Continue</string>
-    <string name="perm_not_now">Not now</string>
     <string name="perm_explain_need_for_camera_access">To capture photos and video, allow Delta Chat access to the camera.</string>
     <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat access to your microphone.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>
