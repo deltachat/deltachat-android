@@ -441,7 +441,7 @@
     <string name="pref_watch_inbox_folder">Watch Inbox folder</string>
     <string name="pref_watch_sent_folder">Watch Sent folder</string>
     <string name="pref_watch_mvbox_folder">Watch DeltaChat folder</string>
-    <string name="pref_auto_folder_moves">Automatic Moves to DeltaChat folder</string>
+    <string name="pref_auto_folder_moves">Automatic moves to DeltaChat folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox folder</string>
     <string name="pref_email_interaction_title">Email interaction</string>
     <string name="pref_show_emails">Show classic emails</string>
@@ -450,8 +450,8 @@
     <string name="pref_show_emails_all">All</string>
     <string name="pref_empty_server_title">DANGER ZONE: Delete e-mails from server</string>
     <string name="pref_empty_server_msg">This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted.  The deletion cannot be undone!</string>
-    <string name="pref_empty_server_inbox">Delete ALL e-mails in Inbox folder</string>
-    <string name="pref_empty_server_mvbox">Delete ALL e-mails in DeltaChat folder</string>
+    <string name="pref_empty_server_inbox">Delete all e-mails in Inbox folder</string>
+    <string name="pref_empty_server_mvbox">Delete all e-mails in DeltaChat folder</string>
     <string name="pref_empty_server_do_button">Delete e-mails</string>
     <string name="pref_experimental_features">Experimental features</string>
     <string name="pref_on_demand_location_streaming">On-demand location streaming</string>
