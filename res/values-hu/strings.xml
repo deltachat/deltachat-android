@@ -236,8 +236,6 @@
     <string name="global_menu_edit_cut_desktop">Kivágás</string>
     <string name="global_menu_edit_copy_desktop">Másolás</string>
     <string name="global_menu_edit_paste_desktop">Beillesztés</string>
-    <string name="global_menu_edit_delete_desktop">Törlés</string>
-    <string name="global_menu_edit_selectall_desktop">Minden kijelölése</string>
     <string name="global_menu_view_desktop">Nézet</string>
     <string name="global_menu_help_desktop">Súgó</string>
     <string name="no_chat_selected_suggestion_desktop">Válassz ki egy beszélgetést vagy indíts egy újat</string>
@@ -245,5 +243,4 @@
     <string name="download_attachment_desktop">Csatolmány letöltése</string>
     <string name="menu.view.developer.open.log.folder">Naplófájlok könyvtárának megnyitása</string>
     <string name="menu.view.developer.open.current.log.file">Jelenlegi naplófájl megnyitása</string>
-
     </resources>

@@ -215,7 +215,6 @@
     <string name="chat_self_talk_subtitle">Повідомлення, відправлені самому собі</string>
     <string name="chat_contact_request">Запит контакту</string>
     <string name="chat_no_contact_requests">Немає запитів контактів.\n\nЯкщо Ви бажаєте, щоб звичайна пошта з\'являлася тут як запити контактів, Ви можете змінити відповідний параметр у налаштуваннях додатку.</string>
-
     <!-- search -->
     <string name="search">Пошук</string>
     <string name="search_explain">Пошук чатів, контактів і повідомлень</string>
@@ -489,10 +488,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифроване повідомлення</string>
 
-    <!-- desktop specific strings -->
-    <string name="welcome_desktop">Ласкаво просимо до Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Відомі облікові записи</string>
-    <string name="global_menu_preferences_desktop">Уподобання</string>
     <string name="global_menu_preferences_language_desktop">Вибір мови</string>
     <string name="global_menu_file_desktop">Файл</string>
     <string name="global_menu_file_quit_desktop">Вийти</string>
@@ -502,20 +498,15 @@
     <string name="global_menu_edit_cut_desktop">Вирізати</string>
     <string name="global_menu_edit_copy_desktop">Копіювати</string>
     <string name="global_menu_edit_paste_desktop">Вставити</string>
-    <string name="global_menu_edit_delete_desktop">Видалити</string>
-    <string name="global_menu_edit_selectall_desktop">Вибрати все</string>
     <string name="global_menu_view_desktop">Переглянути</string>
     <string name="global_menu_view_floatontop_desktop">Поплавок зверху</string>
     <string name="global_menu_view_developer_desktop">Розробник</string>
     <string name="global_menu_view_developer_tools_desktop">Інструменти розробника</string>
     <string name="global_menu_help_desktop">Допомога</string>
-    <string name="global_menu_help_learn_desktop">Дізнатися більше про Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Приєднатися до розробки на GitHub</string>
     <string name="global_menu_help_report_desktop">Повідомити про проблему...</string>
-    <string name="global_menu_help_about_desktop">Про Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Виберіть чат або створіть новий</string>
     <string name="write_message_desktop">Напишіть повідомлення</string>
-    <string name="about_deltachat_heading_desktop">Про Delta Chat</string>
     <string name="encryption_info_title_desktop">Інформація про шифрування</string>
     <string name="contact_detail_title_desktop">Деталі контакту</string>
     <string name="contact_request_title_desktop">Запит на спілкування</string>
@@ -527,7 +518,6 @@
     <string name="no_chats_desktop">Немає чатів</string>
     <string name="encryption_info_desktop">Показати інформацію про шифрування</string>
     <string name="verified_desktop">Перевірено</string>
-    <string name="group_name_desktop">Назва групи</string>
     <string name="remove_desktop">Видалити</string>
     <string name="save_desktop">Зберегти</string>
     <string name="show_qr_verify_code_desktop">Показати QR-код запрошення</string>
@@ -562,5 +552,4 @@
     <string name="message_detail_to_desktop"> </string>
     <string name="menu.view.developer.open.log.folder">Відкрити папку журналів</string>
     <string name="menu.view.developer.open.current.log.file">Відкрити поточний файл журналу</string>
-
     </resources>

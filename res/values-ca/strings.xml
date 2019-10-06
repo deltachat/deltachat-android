@@ -211,7 +211,6 @@
     <string name="chat_self_talk_subtitle">Missatges enviats a mi mateix/a</string>
     <string name="chat_contact_request">Sol·licitud de contacte</string>
     <string name="chat_no_contact_requests">No hi ha sol·licituds de contacte.\n\nSi voleu veure aquí els e-mails clàssics com a sol·licitud de contacte, podeu canviar-ho a les preferències de l\'app.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Mostra les ubicacions al llarg del temps</string>
     <string name="show_location_traces">Mostra el rastre</string>
@@ -495,10 +494,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Missatge encriptat</string>
 
-    <!-- desktop specific strings -->
-    <string name="welcome_desktop">Benvinguts a DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Comptes coneguts</string>
-    <string name="global_menu_preferences_desktop">Preferències</string>
     <string name="global_menu_preferences_language_desktop">Trieu l\'idioma...</string>
     <string name="global_menu_file_desktop">Arxiva</string>
     <string name="global_menu_file_quit_desktop">Surt</string>
@@ -508,20 +504,15 @@
     <string name="global_menu_edit_cut_desktop">Talla</string>
     <string name="global_menu_edit_copy_desktop">Copia</string>
     <string name="global_menu_edit_paste_desktop">Enganxa</string>
-    <string name="global_menu_edit_delete_desktop">Esborra</string>
-    <string name="global_menu_edit_selectall_desktop">Selecciona-ho tot</string>
     <string name="global_menu_view_desktop">Mostra</string>
     <string name="global_menu_view_floatontop_desktop">Flota a dalt</string>
     <string name="global_menu_view_developer_desktop">Desenvolupador</string>
     <string name="global_menu_view_developer_tools_desktop">Eines de desenvolupador</string>
     <string name="global_menu_help_desktop">Ajuda</string>
-    <string name="global_menu_help_learn_desktop">Aprèn més de Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Col·labora a GitHub</string>
     <string name="global_menu_help_report_desktop">Informa d\'un problema...</string>
-    <string name="global_menu_help_about_desktop">Sobre DeltaChat</string>
     <string name="no_chat_selected_suggestion_desktop">Tria un xat o crea\'n un de nou</string>
     <string name="write_message_desktop">Escriu un missatge</string>
-    <string name="about_deltachat_heading_desktop">Sobre DeltaChat</string>
     <string name="encryption_info_title_desktop">Informació de xifratge</string>
     <string name="contact_detail_title_desktop">Detalls del contacte</string>
     <string name="contact_request_title_desktop">Sol·licitud de contacte</string>
@@ -533,7 +524,6 @@
     <string name="no_chats_desktop">Cap xat</string>
     <string name="encryption_info_desktop">Mostra la informació de xifratge</string>
     <string name="verified_desktop">Verificat</string>
-    <string name="group_name_desktop">Nom del grup</string>
     <string name="remove_desktop">Elimina</string>
     <string name="save_desktop">Desa</string>
     <string name="show_qr_verify_code_desktop">Mostra el codi QR d\'invitació</string>
@@ -569,7 +559,7 @@
     <string name="message_detail_to_desktop">a</string>
     <string name="menu.view.developer.open.log.folder">Obre la carpeta de registre</string>
     <string name="menu.view.developer.open.current.log.file">Obre el fitxer de registre actual</string>
-
     <string name="user_location_permission_explanation">Delta Chat necessita permís per accedir a la ubicació per poder-la mostrar i compartir.</string>
 
-</resources>
+
+    </resources>

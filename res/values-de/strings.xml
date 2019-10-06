@@ -13,6 +13,17 @@
     <string name="none">Keine</string>
     <string name="open">Öffnen</string>
     <string name="delete">Löschen</string>
+    <string name="update">Aktualisieren</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Anhang</string>
+    <string name="back">Zurück</string>
+    <string name="close">Schließen</string>
+    <string name="save">Speichern</string>
+    <string name="chat">Chat</string>
+    <string name="media">Medien</string>
+    <string name="main_menu">Hauptmenü</string>
+    <string name="show_password">Passwort anzeigen</string>
+    <string name="hide_password">Passwort verstecken</string>
     <string name="not_now">Nicht jetzt</string>
     <string name="never">Nie</string>
     <string name="one_moment">Einen Moment…</string>
@@ -235,6 +246,8 @@
     <string name="chat_self_talk_subtitle">Nachrichten, die ich mir selber geschickt habe</string>
     <string name="chat_contact_request">Kontaktanfrage</string>
     <string name="chat_no_contact_requests">Keine Kontaktanfragen.\n\nWenn normale E-Mails hier erscheinen sollen, müssen Sie die entsprechende erweiterte Einstellung ändern.</string>
+    <string name="retry_send">Nachricht erneut senden</string>
+    <string name="send_failed">Nachricht senden fehlgeschlagen</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Standorte im Zeitrahmen anzeigen</string>
@@ -295,6 +308,7 @@
     <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
     <string name="login_header">Bei ihrem Server anmelden</string>
+    <string name="login_explain">Mit existierendem E-Mail Konto einloggen</string>
     <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
     <string name="login_no_servers_hint">Es gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_inbox">Posteingang</string>
@@ -441,7 +455,12 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_empty_server_inbox">Löschen ALLER e-mails im Nachrichteneingangsordner (INBOX)</string>
     <string name="pref_empty_server_mvbox">Löschen ALLER e-mails im DeltaChat Ordner.</string>
     <string name="pref_empty_server_do_button">E-mails löschen. </string>
-
+    <string name="pref_experimental_features">Experimentelle Features</string>
+    <string name="pref_on_demand_location_streaming">On-demand Standortübertragung</string>
+    <string name="pref_background_default">Voreingestellter Hintergrund</string>
+    <string name="pref_background_default_color">Voreingestellte Farbe</string>
+    <string name="pref_background_custom_image">Benutzerdefiniertes Hintergrundbild</string>
+    <string name="pref_background_custom_color">Benutzerdefinierte Farbe</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
@@ -550,9 +569,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="encrypted_message">Verschlüsselte Nachricht</string>
 
     <!-- desktop specific strings -->
-    <string name="welcome_desktop">Willkommen zu Delta Chat</string>
+    <string name="welcome_desktop">Willkommen bei Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Bekannte Konten</string>
-    <string name="global_menu_preferences_desktop">Einstellungen</string>
     <string name="global_menu_preferences_language_desktop">Wähle Sprache...</string>
     <string name="global_menu_file_desktop">Datei</string>
     <string name="global_menu_file_quit_desktop">Beenden</string>
@@ -562,8 +580,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="global_menu_edit_cut_desktop">Ausschneiden</string>
     <string name="global_menu_edit_copy_desktop">Kopieren</string>
     <string name="global_menu_edit_paste_desktop">Einfügen</string>
-    <string name="global_menu_edit_delete_desktop">Löschen</string>
-    <string name="global_menu_edit_selectall_desktop">Alles auswählen</string>
     <string name="global_menu_view_desktop">Ansicht</string>
     <string name="global_menu_view_floatontop_desktop">Im Vordergrund halten</string>
     <string name="global_menu_view_developer_desktop">Entwickler</string>
@@ -575,7 +591,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="global_menu_help_about_desktop">Über Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Wähle einen Chat aus oder erstelle einen neuen Chat.</string>
     <string name="write_message_desktop">Schreibe eine Nachricht</string>
-    <string name="about_deltachat_heading_desktop">Über Delta Chat</string>
     <string name="encryption_info_title_desktop">Verschlüsselungsinformationen</string>
     <string name="contact_detail_title_desktop">Kontaktdetails</string>
     <string name="contact_request_title_desktop">Kontaktanfrage</string>
@@ -587,7 +602,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="no_chats_desktop">Keine Chats</string>
     <string name="encryption_info_desktop">Zeige Verschlüsselungsinfo</string>
     <string name="verified_desktop">Verifiziert</string>
-    <string name="group_name_desktop">Gruppenname</string>
     <string name="remove_desktop">Entfernen</string>
     <string name="save_desktop">Speichern</string>
     <string name="show_qr_verify_code_desktop">QR-Einladungscode</string>
@@ -623,7 +637,18 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="message_detail_to_desktop">an</string>
     <string name="menu.view.developer.open.log.folder">Logdatei öffnen</string>
     <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
-
     <string name="user_location_permission_explanation">Delta Chat benötigt die Standortberechtigung, um Ihren Standort anzuzeigen und zu teilen.</string>
 
+
+    <!-- accessibility -->
+    <string name="a11y_delivery_status_error">Übertragungsstatus: Fehler</string>
+    <string name="a11y_encryption_padlock">Verschlüsselungsschloss</string>
+    <string name="a11y_delivery_status_sending">Übertragungsstatus: Versenden</string>
+    <string name="a11y_delivery_status_draft">Übertragungsstatus: Entwurf</string>
+    <string name="a11y_delivery_status_delivered">Übertragungsstatus: Versendet</string>
+    <string name="a11y_delivery_status_read">Übertragungsstatus: Gelesen</string>
+    <string name="a11y_delivery_status_invalid">Übertragungsstatus: Unzulässig</string>
+    <string name="a11y_remove_account_btn_label">Konto löschen</string>
+    <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
+    <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
 </resources>

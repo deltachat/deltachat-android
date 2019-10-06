@@ -467,10 +467,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensagem encriptada</string>
 
-    <!-- desktop specific strings -->
-    <string name="welcome_desktop">Bem vindo ao DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Contas Conhecidas</string>
-    <string name="global_menu_preferences_desktop">Preferências</string>
     <string name="global_menu_preferences_language_desktop">Escolha o seu idioma...</string>
     <string name="global_menu_file_desktop">Arquivo</string>
     <string name="global_menu_file_quit_desktop">Sair</string>
@@ -480,20 +477,15 @@
     <string name="global_menu_edit_cut_desktop">Cortar</string>
     <string name="global_menu_edit_copy_desktop">Copiar</string>
     <string name="global_menu_edit_paste_desktop">Colar</string>
-    <string name="global_menu_edit_delete_desktop">Apagar</string>
-    <string name="global_menu_edit_selectall_desktop">Seleccionar tudo</string>
     <string name="global_menu_view_desktop">Ver</string>
     <string name="global_menu_view_floatontop_desktop">Flutuar no topo</string>
     <string name="global_menu_view_developer_desktop">Programador</string>
     <string name="global_menu_view_developer_tools_desktop">Ferramentas do programador</string>
     <string name="global_menu_help_desktop">Ajuda</string>
-    <string name="global_menu_help_learn_desktop">Saiba mais sobre o DeltaChat</string>
     <string name="global_menu_help_contribute_desktop">Contribuir no GitHub</string>
     <string name="global_menu_help_report_desktop">Comunicar um problema ...</string>
-    <string name="global_menu_help_about_desktop">Sobre o DeltaChat</string>
     <string name="no_chat_selected_suggestion_desktop">Selecione um CHAT ou crie um novo</string>
     <string name="write_message_desktop">Escreva uma mensagem</string>
-    <string name="about_deltachat_heading_desktop">Sobre o DeltaChat</string>
     <string name="encryption_info_title_desktop">Informação sobre encriptação</string>
     <string name="contact_detail_title_desktop">Detalhes do contacto</string>
     <string name="contact_request_title_desktop">Pedido de contacto</string>
@@ -505,7 +497,6 @@
     <string name="no_chats_desktop">Não existem CHATS</string>
     <string name="encryption_info_desktop">Mostrar a informação de encriptação</string>
     <string name="verified_desktop">verificado</string>
-    <string name="group_name_desktop">Nome do grupo</string>
     <string name="remove_desktop">Apagar</string>
     <string name="save_desktop">Guardar</string>
     <string name="show_qr_verify_code_desktop">Mostrar código de convite do QR</string>
@@ -540,5 +531,4 @@
     <string name="message_detail_to_desktop">para</string>
     <string name="menu.view.developer.open.log.folder">Abrir pasta de Log</string>
     <string name="menu.view.developer.open.current.log.file">Abrir o aqrquio do log actual</string>
-
     </resources>

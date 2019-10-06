@@ -257,7 +257,6 @@
     <string name="chat_self_talk_subtitle">Wiadomości wysłane do siebie</string>
     <string name="chat_contact_request">Prośba o kontakt</string>
     <string name="chat_no_contact_requests">Brak zaproszenia do kontaktów.\n\nJeśli chcesz, aby klasyczne wiadomości e-mail pojawiały się tutaj jako prośby o kontakt, możesz zmienić odpowiednie ustawienia w ustawieniach aplikacji.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Pokaż lokalizacje w ramach czasowych</string>
     <string name="show_location_traces">Pokaż ślady</string>
@@ -461,8 +460,6 @@
     <string name="pref_empty_server_inbox">Usuń WSZYSTKIE wiadomości e-mail w folderze Skrzynka odbiorcza</string>
     <string name="pref_empty_server_mvbox"> Usuń WSZYSTKIE wiadomości e-mail w folderze DeltaChat</string>
     <string name="pref_empty_server_do_button">Usuń e-maile</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą Wiadomości konfiguracyjnej automatycznego szyfrowania.</string>
@@ -569,10 +566,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
-    <!-- desktop specific strings -->
-    <string name="welcome_desktop">Witaj w DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Znane konta</string>
-    <string name="global_menu_preferences_desktop">Preferencje</string>
     <string name="global_menu_preferences_language_desktop">Wybierz język</string>
     <string name="global_menu_file_desktop">Plik</string>
     <string name="global_menu_file_quit_desktop">Wyjdź</string>
@@ -582,20 +576,15 @@
     <string name="global_menu_edit_cut_desktop">Wytnij</string>
     <string name="global_menu_edit_copy_desktop">Kopiuj</string>
     <string name="global_menu_edit_paste_desktop">Wklej</string>
-    <string name="global_menu_edit_delete_desktop">Usuń</string>
-    <string name="global_menu_edit_selectall_desktop">Zaznacz wszystko</string>
     <string name="global_menu_view_desktop">Wyświetl</string>
     <string name="global_menu_view_floatontop_desktop">Przenieś do góry</string>
     <string name="global_menu_view_developer_desktop">Programista</string>
     <string name="global_menu_view_developer_tools_desktop">Narzędzia Programisty</string>
     <string name="global_menu_help_desktop">Pomoc</string>
-    <string name="global_menu_help_learn_desktop">Dowiedz się więcej o DeltaChat</string>
     <string name="global_menu_help_contribute_desktop">Przyczyń się do rozwoju na GitHub</string>
     <string name="global_menu_help_report_desktop">Zgłoś problem…</string>
-    <string name="global_menu_help_about_desktop">O DeltaChat</string>
     <string name="no_chat_selected_suggestion_desktop">Wybierz czat lub utwórz nowy czat</string>
     <string name="write_message_desktop">Napisz wiadomość</string>
-    <string name="about_deltachat_heading_desktop">O DeltaChat</string>
     <string name="encryption_info_title_desktop">Informacje o szyfrowaniu</string>
     <string name="contact_detail_title_desktop">Szczegóły kontaktu</string>
     <string name="contact_request_title_desktop">Prośba o kontakt</string>
@@ -607,7 +596,6 @@
     <string name="no_chats_desktop">Nie ma czatów</string>
     <string name="encryption_info_desktop">Pokaż informacje o szyfrowaniu</string>
     <string name="verified_desktop">zweryfikowano</string>
-    <string name="group_name_desktop">Nazwa grupy</string>
     <string name="remove_desktop">Usuń</string>
     <string name="save_desktop">Zapisz</string>
     <string name="show_qr_verify_code_desktop">Pokaż kod QR zaproszenia</string>
@@ -643,7 +631,7 @@
     <string name="message_detail_to_desktop">do</string>
     <string name="menu.view.developer.open.log.folder">Otwórz folder dziennika</string>
     <string name="menu.view.developer.open.current.log.file">Otwórz bieżący plik dziennika</string>
-
     <string name="user_location_permission_explanation">Delta Chat wymaga uprawnienia lokalizacji, aby pokazać i udostępniać swoją lokalizację.</string>
 
-</resources>
+
+    </resources>

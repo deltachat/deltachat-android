@@ -234,7 +234,6 @@
     <string name="chat_self_talk_subtitle">Messages envoyés à moi-même</string>
     <string name="chat_contact_request">Demande de contact</string>
     <string name="chat_no_contact_requests">Aucune demande de contact. Si vous voulez que les courriels classiques apparaissent ici comme demandes de contact, vous pouvez changer le paramètre correspondant dans les paramètres de l\'application.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Afficher les positions dans le temps</string>
     <string name="show_location_traces">Afficher les traces</string>
@@ -439,8 +438,6 @@
     <string name="pref_empty_server_inbox">Effacer TOUS les courriels du dossier boîte de réception</string>
     <string name="pref_empty_server_mvbox">Effacer TOUS les courriels du dossier DeltaChat</string>
     <string name="pref_empty_server_do_button">Effacer les courriels</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt est une nouvelle spécification ouverte pour le chiffrement automatique de bout en bout des courriels.\n\nVotre configuration de bout en bout est créée automatiquement si nécessaire et vous pouvez la transférer entre les périphériques avec les messages de configuration Autocrypt.</string>
@@ -547,10 +544,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Message chiffré</string>
 
-    <!-- desktop specific strings -->
-    <string name="welcome_desktop">Bienvenue sur DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Comptes connus</string>
-    <string name="global_menu_preferences_desktop">Préférences</string>
     <string name="global_menu_preferences_language_desktop">Choisissez la langue...</string>
     <string name="global_menu_file_desktop">Fichier</string>
     <string name="global_menu_file_quit_desktop">Quittez</string>
@@ -560,20 +554,15 @@
     <string name="global_menu_edit_cut_desktop">Couper</string>
     <string name="global_menu_edit_copy_desktop">Copier</string>
     <string name="global_menu_edit_paste_desktop">Coller</string>
-    <string name="global_menu_edit_delete_desktop">Effacer</string>
-    <string name="global_menu_edit_selectall_desktop">Tout sélectionner</string>
     <string name="global_menu_view_desktop">Voir</string>
     <string name="global_menu_view_floatontop_desktop">Flotter au dessus</string>
     <string name="global_menu_view_developer_desktop">Développeur</string>
     <string name="global_menu_view_developer_tools_desktop">Outils de développement</string>
     <string name="global_menu_help_desktop">Aide</string>
-    <string name="global_menu_help_learn_desktop">En savoir plus sur DeltaChat</string>
     <string name="global_menu_help_contribute_desktop">Contribuer sur Github</string>
     <string name="global_menu_help_report_desktop">Signaler un problème....</string>
-    <string name="global_menu_help_about_desktop">A propos de DeltaChat</string>
     <string name="no_chat_selected_suggestion_desktop">Sélectionner une discussion ou en créer une nouvelle</string>
     <string name="write_message_desktop">Écrire un message</string>
-    <string name="about_deltachat_heading_desktop">A propos de DeltaChat</string>
     <string name="encryption_info_title_desktop">Information de chiffrement</string>
     <string name="contact_detail_title_desktop">Détail du contact</string>
     <string name="contact_request_title_desktop">Demande de contact</string>
@@ -585,7 +574,6 @@
     <string name="no_chats_desktop">Aucune discussion</string>
     <string name="encryption_info_desktop">Afficher les informations de chiffrement</string>
     <string name="verified_desktop">vérifié</string>
-    <string name="group_name_desktop">Nom de groupe</string>
     <string name="remove_desktop">Retirer</string>
     <string name="save_desktop">Sauvegardez</string>
     <string name="show_qr_verify_code_desktop">Afficher le QR code d\'invitation</string>
@@ -621,7 +609,7 @@
     <string name="message_detail_to_desktop">à</string>
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>
     <string name="menu.view.developer.open.current.log.file">Ouvrir le fichier Journal courant</string>
-
     <string name="user_location_permission_explanation">DeltaChat a besoin de l\'autorisation de votre position pour l\'afficher et la partager.</string>
 
-</resources>
+
+    </resources>

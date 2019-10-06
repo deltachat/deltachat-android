@@ -221,7 +221,6 @@
     <string name="chat_self_talk_subtitle">傳送給自己的訊息</string>
     <string name="chat_contact_request">聯絡請求</string>
     <string name="chat_no_contact_requests">沒有聯絡請求。\n\n如果你希望在這裡看到一般的 email 信件的話，請在「設定」中開啟相關設定。</string>
-
     <!-- map -->
     <string name="filter_map_on_time">顯示指定時間內的所在地</string>
     <string name="show_location_traces">顯示移動足跡</string>

@@ -234,7 +234,6 @@
     <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
     <string name="chat_contact_request">Kontakt sorğusu</string>
     <string name="chat_no_contact_requests">Əlaqə sorğuları yoxdur. \n\nƏgər klassik e-poçtların burada əlaqə istəkləri kimi görünməsini istəyirsinizsə, tətbiq parametrlərindəki müvafiq parametrləri dəyişə bilərsiniz.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Vaxt məhdudiyyəti ilə yerləşmə yerləri göstərin</string>
     <string name="show_location_traces">İzləri göstərmək</string>
@@ -432,8 +431,6 @@
     <string name="pref_empty_server_inbox">Daxil olan qutusunda bütün elektron poçtları sil</string>
     <string name="pref_empty_server_mvbox">DeltaChat qutusunda bütün elektron poçtları sil</string>
     <string name="pref_empty_server_do_button">Elektron poçtunu sil</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Avtomatik şifrələmə</string>
     <string name="autocrypt_explain">Avtoşifrələmə, avtomatik ucdan uca e-poçt şifrələməsi üçün yeni və açıq bir spesifikasiyadır. \n\nTədbirdən sonrakı qurulum avtomatik olaraq yaradılıb və Autocrypt Setup Messages ilə cihazlar arasında köçürə bilərsiniz.</string>
@@ -538,10 +535,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrələnmiş mesaj</string>
 
-    <!-- desktop specific strings -->
-    <string name="welcome_desktop">DeltaChat-a xoş gəlmisən </string>
     <string name="login_known_accounts_title_desktop">Bilinən hesablar</string>
-    <string name="global_menu_preferences_desktop">Tərcihlər</string>
     <string name="global_menu_preferences_language_desktop">Dil səç</string>
     <string name="global_menu_file_desktop">Fayl</string>
     <string name="global_menu_file_quit_desktop">Çıxış</string>
@@ -551,20 +545,15 @@
     <string name="global_menu_edit_cut_desktop">Kəs</string>
     <string name="global_menu_edit_copy_desktop">Kopyala</string>
     <string name="global_menu_edit_paste_desktop">Əlavə et</string>
-    <string name="global_menu_edit_delete_desktop">Sil</string>
-    <string name="global_menu_edit_selectall_desktop">Hamısını səç</string>
     <string name="global_menu_view_desktop">Baxmaq</string>
     <string name="global_menu_view_floatontop_desktop">Üstə çıxın</string>
     <string name="global_menu_view_developer_desktop">İnkişaf etdirici</string>
     <string name="global_menu_view_developer_tools_desktop">İnkişaf etdirici alətləri</string>
     <string name="global_menu_help_desktop">Kömək</string>
-    <string name="global_menu_help_learn_desktop">DeltaChat haqqında daha çox məlumat əldə edin</string>
     <string name="global_menu_help_contribute_desktop">GitHub-da kömək et</string>
     <string name="global_menu_help_report_desktop">Problemi bildirin ...</string>
-    <string name="global_menu_help_about_desktop">DeltaChat haqqında</string>
     <string name="no_chat_selected_suggestion_desktop">Bir çat seçin və ya yeni bir çat yaradın</string>
     <string name="write_message_desktop">Bir mesaj yazın</string>
-    <string name="about_deltachat_heading_desktop">DeltaChat haqqında</string>
     <string name="encryption_info_title_desktop">Şifrələmə məlumatları</string>
     <string name="contact_detail_title_desktop">Kontakt məlumatı</string>
     <string name="contact_request_title_desktop">Kontakt tələbi</string>
@@ -576,7 +565,6 @@
     <string name="no_chats_desktop">Çat yoxdur</string>
     <string name="encryption_info_desktop">Şifrələmə məlumatını göstər</string>
     <string name="verified_desktop">təsdiqləndi</string>
-    <string name="group_name_desktop">Qrup adı</string>
     <string name="remove_desktop">Sil</string>
     <string name="save_desktop">Saxla</string>
     <string name="show_qr_verify_code_desktop">Dəvət QR-kodu göstər</string>
@@ -612,7 +600,7 @@
     <string name="message_detail_to_desktop">kimə</string>
     <string name="menu.view.developer.open.log.folder">Loq mələfini açın</string>
     <string name="menu.view.developer.open.current.log.file">Loq-faylı açın</string>
-
     <string name="user_location_permission_explanation">Delta Chat yerinizi göstərmək və bölüşmək üçün yer icazəsinə ehtiyac duyur.</string>
 
-</resources>
+
+    </resources>

@@ -235,7 +235,6 @@
     <string name="chat_self_talk_subtitle">Nire buruari bidalitako mezuak</string>
     <string name="chat_contact_request">Kontaktua eskatuta</string>
     <string name="chat_no_contact_requests">Kontaktu eskaerarik ez.\n\nE-mail klasikoak hemen kontaktu eskari gisa agertzea nahi baduzu, aplikazioaren ezarpenetan aldatu dezakezu.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Erakutsi kokalekuak denbora markoan</string>
     <string name="show_location_traces">Erakutsi lorratzak</string>
@@ -439,8 +438,6 @@
     <string name="pref_empty_server_inbox">Ezabatu sarrera ontziko e-mail GUZTIAK</string>
     <string name="pref_empty_server_mvbox">Ezabatu DeltaChat karpetako e-mail GUZTIAK</string>
     <string name="pref_empty_server_do_button">Ezabatu e-mailak</string>
-
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt e-maila muturretik muturrera zifratzeko espezifikazio berri eta ireki bat da.\n\nZure muturretik muturrerako ezarpena automatikoki sortzend a behar denean eta gailutik gailura eraman dezakezu Autocrypt ezarpen mezuekin.</string>
@@ -547,10 +544,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zifratutako mezua</string>
 
-    <!-- desktop specific strings -->
-    <string name="welcome_desktop">Ongi etorri DeltaChat-era</string>
     <string name="login_known_accounts_title_desktop">Kontu ezagunak</string>
-    <string name="global_menu_preferences_desktop">Hobespenak</string>
     <string name="global_menu_preferences_language_desktop">Hautatu hizkuntza...</string>
     <string name="global_menu_file_desktop">Fitxategia</string>
     <string name="global_menu_file_quit_desktop">Irten</string>
@@ -560,20 +554,15 @@
     <string name="global_menu_edit_cut_desktop">Moztu</string>
     <string name="global_menu_edit_copy_desktop">Kopiatu</string>
     <string name="global_menu_edit_paste_desktop">Itsatsi</string>
-    <string name="global_menu_edit_delete_desktop">Ezabatu</string>
-    <string name="global_menu_edit_selectall_desktop">Hautatu guztiak</string>
     <string name="global_menu_view_desktop">Ikusi</string>
     <string name="global_menu_view_floatontop_desktop">Flotatu gainean</string>
     <string name="global_menu_view_developer_desktop">Garatzailea</string>
     <string name="global_menu_view_developer_tools_desktop">Garatzaile-tresnak</string>
     <string name="global_menu_help_desktop">Laguntza</string>
-    <string name="global_menu_help_learn_desktop">Ikasi gehiago DeltaChat aplikazioari buruz</string>
     <string name="global_menu_help_contribute_desktop">Hartu parte GitHub-en</string>
     <string name="global_menu_help_report_desktop">Eman arazo baten berri...</string>
-    <string name="global_menu_help_about_desktop">DeltaChat-i buruz</string>
     <string name="no_chat_selected_suggestion_desktop">Hautatu txat bat edo sortu txat berri bat</string>
     <string name="write_message_desktop">Idatzi mezu bat</string>
-    <string name="about_deltachat_heading_desktop">DeltaChat-i buruz</string>
     <string name="encryption_info_title_desktop">Zifratzeari buruzko informazioa</string>
     <string name="contact_detail_title_desktop">Kontaktuaren xehetasuna</string>
     <string name="contact_request_title_desktop">Kontaktu izateko eskaria</string>
@@ -585,7 +574,6 @@
     <string name="no_chats_desktop">Txatik ez</string>
     <string name="encryption_info_desktop">Erakutsi zifratzeari buruzko informazioa</string>
     <string name="verified_desktop">egiaztatuta</string>
-    <string name="group_name_desktop">Taldearen izena</string>
     <string name="remove_desktop">Kendu</string>
     <string name="save_desktop">Gorde</string>
     <string name="show_qr_verify_code_desktop">Erakutsi gonbidapenerako QR kodea</string>
@@ -621,7 +609,7 @@
     <string name="message_detail_to_desktop">nori</string>
     <string name="menu.view.developer.open.log.folder">Ireki egunkarien karpeta</string>
     <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
-
     <string name="user_location_permission_explanation">Delta Chat-ek kokalekua atzitzeko baimena behar du zure kokalekua erakutsi eta partekatu ahal izateko.</string>
 
-</resources>
+
+    </resources>

@@ -13,6 +13,17 @@
     <string name="none">无</string>
     <string name="open">打开</string>
     <string name="delete">删除</string>
+    <string name="update">更新</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">附件</string>
+    <string name="back">返回</string>
+    <string name="close">关闭</string>
+    <string name="save">保存</string>
+    <string name="chat">聊天</string>
+    <string name="media">媒体</string>
+    <string name="main_menu">主菜单</string>
+    <string name="show_password">显示密码</string>
+    <string name="hide_password">隐藏密码</string>
     <string name="not_now">现在不</string>
     <string name="never">永不</string>
     <string name="one_moment">稍等片刻…</string>
@@ -224,6 +235,8 @@
     <string name="chat_self_talk_subtitle">发给自己的消息</string>
     <string name="chat_contact_request">联系人请求</string>
     <string name="chat_no_contact_requests">没有联系人请求。\n\n如果您希望传统的电子邮件作为联系人请求出现在这里，请更改本应用相关设置。</string>
+    <string name="retry_send">重试发送消息</string>
+    <string name="send_failed">发送消息失败</string>
 
     <!-- map -->
     <string name="filter_map_on_time">显示在时间范围内的位置</string>
@@ -284,6 +297,7 @@
     <string name="welcome_start_messaging">开始发送消息</string>
     <string name="login_title">登录</string>
     <string name="login_header">登录您的服务器</string>
+    <string name="login_explain">使用现有电子邮件帐户登录。</string>
     <string name="login_subheader">对于已知的电子邮件提供商，附加设置会被自动设置。有时IMAP需要在Web端启用。 请咨询您的电子邮件提供商或朋友来寻求帮助。</string>
     <string name="login_no_servers_hint">不存在Delta Chat服务器，您的数据保留于您的设备！</string>
     <string name="login_inbox">收件箱</string>
@@ -428,7 +442,12 @@
     <string name="pref_empty_server_inbox">删除收件箱中所有电子邮件</string>
     <string name="pref_empty_server_mvbox">删除DeltaChat文件夹中所有电子邮件</string>
     <string name="pref_empty_server_do_button">删除电子邮件</string>
-
+    <string name="pref_experimental_features">实验性功能</string>
+    <string name="pref_on_demand_location_streaming">按需位置流</string>
+    <string name="pref_background_default">默认背景</string>
+    <string name="pref_background_default_color">默认颜色</string>
+    <string name="pref_background_custom_image">自定义图像</string>
+    <string name="pref_background_custom_color">自定义颜色</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
@@ -539,7 +558,6 @@
     <!-- desktop specific strings -->
     <string name="welcome_desktop">欢迎使用DeltaChat</string>
     <string name="login_known_accounts_title_desktop">已知账户</string>
-    <string name="global_menu_preferences_desktop">首选项</string>
     <string name="global_menu_preferences_language_desktop">选择语言…</string>
     <string name="global_menu_file_desktop">文件</string>
     <string name="global_menu_file_quit_desktop">退出</string>
@@ -549,8 +567,6 @@
     <string name="global_menu_edit_cut_desktop">剪切</string>
     <string name="global_menu_edit_copy_desktop">复制</string>
     <string name="global_menu_edit_paste_desktop">粘贴</string>
-    <string name="global_menu_edit_delete_desktop">删除</string>
-    <string name="global_menu_edit_selectall_desktop">全选</string>
     <string name="global_menu_view_desktop">查看</string>
     <string name="global_menu_view_floatontop_desktop">浮于顶层</string>
     <string name="global_menu_view_developer_desktop">开发者</string>
@@ -559,10 +575,9 @@
     <string name="global_menu_help_learn_desktop">了解有关DeltaChat的更多信息</string>
     <string name="global_menu_help_contribute_desktop">在GitHub上贡献</string>
     <string name="global_menu_help_report_desktop">报告一个问题…</string>
-    <string name="global_menu_help_about_desktop">关于 DeltaChat</string>
+    <string name="global_menu_help_about_desktop">关于Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">选择一个聊天或创建新聊天</string>
     <string name="write_message_desktop">写消息</string>
-    <string name="about_deltachat_heading_desktop">关于 DeltaChat</string>
     <string name="encryption_info_title_desktop">加密信息</string>
     <string name="contact_detail_title_desktop">联系人详情</string>
     <string name="contact_request_title_desktop">联系人请求</string>
@@ -574,7 +589,6 @@
     <string name="no_chats_desktop">没有聊天</string>
     <string name="encryption_info_desktop">显示加密信息</string>
     <string name="verified_desktop">已验证</string>
-    <string name="group_name_desktop">群组名称</string>
     <string name="remove_desktop">移除</string>
     <string name="save_desktop">保存</string>
     <string name="show_qr_verify_code_desktop">显示二维邀请码</string>
@@ -610,7 +624,18 @@
     <string name="message_detail_to_desktop">到</string>
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>
     <string name="menu.view.developer.open.current.log.file">打开当前日志文件</string>
-
     <string name="user_location_permission_explanation">为了显示和分享您的位置，Delta Chat需要位置权限。</string>
 
+
+    <!-- accessibility -->
+    <string name="a11y_delivery_status_error">发送状态：错误</string>
+    <string name="a11y_encryption_padlock">加密挂锁</string>
+    <string name="a11y_delivery_status_sending">发送状态：发送中</string>
+    <string name="a11y_delivery_status_draft">发送状态：草稿</string>
+    <string name="a11y_delivery_status_delivered">发送状态：已投递</string>
+    <string name="a11y_delivery_status_read">发送状态：已读</string>
+    <string name="a11y_delivery_status_invalid">无效的发送状态</string>
+    <string name="a11y_remove_account_btn_label">移除账户</string>
+    <string name="a11y_message_context_menu_btn_label">消息操作</string>
+    <string name="a11y_background_preview_label">背景预览</string>
 </resources>
