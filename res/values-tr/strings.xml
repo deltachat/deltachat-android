@@ -441,7 +441,7 @@
     <string name="pref_watch_inbox_folder">Gelen Kutusu klasörünü izle</string>
     <string name="pref_watch_sent_folder">Gönderilen klasörünü izle</string>
     <string name="pref_watch_mvbox_folder">DeltaChat klasörünü izle</string>
-    <string name="pref_auto_folder_moves">DeltaChat klasörüne Otomatik Taşınsın</string>
+    <string name="pref_auto_folder_moves">DeltaChat klasörüne otomatik taşınsın</string>
     <string name="pref_auto_folder_moves_explain">Sohbetler, Gelen Kutusu klasöründeki dağınıklığı önlemek için taşınır</string>
     <string name="pref_email_interaction_title">E-posta etkileşimi</string>
     <string name="pref_show_emails">Klasik e-postaları göster</string>
@@ -450,8 +450,8 @@
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_empty_server_title">TEHLİKELİ BÖLGE: E-postaları sunucudan sil</string>
     <string name="pref_empty_server_msg">Bu işlev, verilen klasörlerdeki sohbet iletilerini kapsayıp TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
-    <string name="pref_empty_server_inbox">Gelen Kutusu klasöründeki TÜM e-postaları sil</string>
-    <string name="pref_empty_server_mvbox">DeltaChat klasöründeki TÜM e-postaları sil</string>
+    <string name="pref_empty_server_inbox">Gelen Kutusu klasöründeki tüm e-postaları sil</string>
+    <string name="pref_empty_server_mvbox">DeltaChat klasöründeki tüm e-postaları sil</string>
     <string name="pref_empty_server_do_button">E-postaları sil</string>
     <string name="pref_experimental_features">Deneysel özellikler</string>
     <string name="pref_on_demand_location_streaming">İsteğe bağlı konum akışı</string>
