@@ -13,6 +13,17 @@
     <string name="none">Bat ere ez</string>
     <string name="open">Ireki</string>
     <string name="delete">Ezabatu</string>
+    <string name="update">Eguneratu</string>
+    <string name="emoji">Emojia</string>
+    <string name="attachment">Eranskina</string>
+    <string name="back">Atzera</string>
+    <string name="close">Itxi</string>
+    <string name="save">Gorde</string>
+    <string name="chat">Txata</string>
+    <string name="media">Multimedia</string>
+    <string name="main_menu">Menu nagusia</string>
+    <string name="show_password">Erakutsi pasahitza</string>
+    <string name="hide_password">Ezkutatu pasahitza</string>
     <string name="not_now">Orain ez</string>
     <string name="never">Inoiz ez</string>
     <string name="one_moment">Unetxo bat...</string>
@@ -235,6 +246,9 @@
     <string name="chat_self_talk_subtitle">Nire buruari bidalitako mezuak</string>
     <string name="chat_contact_request">Kontaktua eskatuta</string>
     <string name="chat_no_contact_requests">Kontaktu eskaerarik ez.\n\nE-mail klasikoak hemen kontaktu eskari gisa agertzea nahi baduzu, aplikazioaren ezarpenetan aldatu dezakezu.</string>
+    <string name="retry_send">Saiatu berriro mezua bidaltzen</string>
+    <string name="send_failed">Huts egin du mezua bidaltzean</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Erakutsi kokalekuak denbora markoan</string>
     <string name="show_location_traces">Erakutsi lorratzak</string>
@@ -294,6 +308,7 @@
     <string name="welcome_start_messaging">Hasi txateatzen</string>
     <string name="login_title">Hasi saioa</string>
     <string name="login_header">Hasi saioa zure zerbitzarian</string>
+    <string name="login_explain">Badagoen e-mail kontu batekin saioa hasten</string>
     <string name="login_subheader">E-mail hornitzaile ezagunentzat ezarpen gehigarriak automatikoki sortzen dira. Batzuetan IMAP gaitu behar da web interfazearen bidez. Kontsultatu zure e-mail hornitzaileari edo eskatu laguntza lagunei.</string>
     <string name="login_no_servers_hint">Ez dago Delta Chat zerbitzaririk, zure datuak zure gailuan mantentzen dira!</string>
     <string name="login_inbox">Sarrera ontzia</string>
@@ -350,7 +365,7 @@
     <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
     <string name="pref_profile_photo_remove_ask">Kendu profileko argazkia?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">Pasahitza eta kontuaren ezarpenak</string>
+    <string name="pref_password_and_account_settings">Pasahitza eta kontua</string>
     <string name="pref_who_can_see_this_information">Nork ikusi dezake informazio hau?</string>
     <string name="pref_who_can_see_profile_explain">Zure profileko argazkia eta izena zure mezuekin batera erakutsiko dira beste erabiltzaileekin komunikatzen zarenean. Informazioa behin bidalita ezin da ezabatu edo kendu.</string>
     <string name="pref_your_name">Zure izena</string>
@@ -438,6 +453,13 @@
     <string name="pref_empty_server_inbox">Ezabatu sarrera ontziko e-mail GUZTIAK</string>
     <string name="pref_empty_server_mvbox">Ezabatu DeltaChat karpetako e-mail GUZTIAK</string>
     <string name="pref_empty_server_do_button">Ezabatu e-mailak</string>
+    <string name="pref_experimental_features">Ezaugarri esperimentalak</string>
+    <string name="pref_on_demand_location_streaming">Eskaera bidezko kokalekuaren hedapena</string>
+    <string name="pref_background_default">Lehenetsitako atzealdea</string>
+    <string name="pref_background_default_color">Lehenetsitako kolorea</string>
+    <string name="pref_background_custom_image">Irudi pertsonalizatua</string>
+    <string name="pref_background_custom_color">Kolore pertsonalizatua</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt e-maila muturretik muturrera zifratzeko espezifikazio berri eta ireki bat da.\n\nZure muturretik muturrerako ezarpena automatikoki sortzend a behar denean eta gailutik gailura eraman dezakezu Autocrypt ezarpen mezuekin.</string>
@@ -544,6 +566,8 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zifratutako mezua</string>
 
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Ongi etorri Delta Chat-era</string>
     <string name="login_known_accounts_title_desktop">Kontu ezagunak</string>
     <string name="global_menu_preferences_language_desktop">Hautatu hizkuntza...</string>
     <string name="global_menu_file_desktop">Fitxategia</string>
@@ -559,8 +583,10 @@
     <string name="global_menu_view_developer_desktop">Garatzailea</string>
     <string name="global_menu_view_developer_tools_desktop">Garatzaile-tresnak</string>
     <string name="global_menu_help_desktop">Laguntza</string>
+    <string name="global_menu_help_learn_desktop">Ikasi gehiago Delta Chat-i buruz</string>
     <string name="global_menu_help_contribute_desktop">Hartu parte GitHub-en</string>
     <string name="global_menu_help_report_desktop">Eman arazo baten berri...</string>
+    <string name="global_menu_help_about_desktop">Delta Chat-i buruz</string>
     <string name="no_chat_selected_suggestion_desktop">Hautatu txat bat edo sortu txat berri bat</string>
     <string name="write_message_desktop">Idatzi mezu bat</string>
     <string name="encryption_info_title_desktop">Zifratzeari buruzko informazioa</string>
@@ -612,4 +638,15 @@
     <string name="user_location_permission_explanation">Delta Chat-ek kokalekua atzitzeko baimena behar du zure kokalekua erakutsi eta partekatu ahal izateko.</string>
 
 
-    </resources>
+    <!-- accessibility -->
+    <string name="a11y_delivery_status_error">Bidalketa-egoera: Errorea</string>
+    <string name="a11y_encryption_padlock">Zifratze giltzarrapoa</string>
+    <string name="a11y_delivery_status_sending">Bidalketa-egoera: Bidaltzen</string>
+    <string name="a11y_delivery_status_draft">Bidalketa-egoera: Zirriborroa</string>
+    <string name="a11y_delivery_status_delivered">Bidalketa-egoera: Bidalita</string>
+    <string name="a11y_delivery_status_read">Bidalketa-egoera: Irakurrita</string>
+    <string name="a11y_delivery_status_invalid">Bidalketa-egoera baliogabea</string>
+    <string name="a11y_remove_account_btn_label">Kendu kontua</string>
+    <string name="a11y_message_context_menu_btn_label">Mezu-ekintzak</string>
+    <string name="a11y_background_preview_label">Atzealdearen aurrebista</string>
+</resources>

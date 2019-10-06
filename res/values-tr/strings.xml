@@ -365,7 +365,7 @@
     <string name="pref_blocked_contacts">Engellenen kişiler</string>
     <string name="pref_profile_photo_remove_ask">Profil fotoğrafı kaldırılsın mı?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">Parola ve hesap ayarları</string>
+    <string name="pref_password_and_account_settings">Parola ve hesap</string>
     <string name="pref_who_can_see_this_information">Bu bilgileri kimler görebilir?</string>
     <string name="pref_who_can_see_profile_explain">Profil resminiz ve adınız, diğer kullanıcılarla iletişim kurarken iletilerinizin yanında gösterilir. Zaten gönderilen bilgiler silinemeyebilir ya da kaldırılamayabilir.</string>
     <string name="pref_your_name">Adınız</string>

@@ -13,6 +13,16 @@
     <string name="none">Не задано</string>
     <string name="open">Открыть</string>
     <string name="delete">Удалить</string>
+    <string name="update">Обновить</string>
+    <string name="attachment">Вложение</string>
+    <string name="back">Назад</string>
+    <string name="close">Закрыть</string>
+    <string name="save">Сохранить</string>
+    <string name="chat">Чат</string>
+    <string name="media">Медиафайлы</string>
+    <string name="main_menu">Главное меню</string>
+    <string name="show_password">Показать пароль</string>
+    <string name="hide_password">Скрыть пароль</string>
     <string name="not_now">Не сейчас</string>
     <string name="never">Никогда</string>
     <string name="one_moment">Один момент…</string>
@@ -372,7 +382,7 @@
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
     <string name="pref_profile_photo_remove_ask">Удалить фото профиля?</string>
     <string name="pref_help_url">https://delta.chat/ru/help</string>
-    <string name="pref_password_and_account_settings">Настройки пароля и аккаунта</string>
+    <string name="pref_password_and_account_settings">Пароль и аккаунт</string>
     <string name="pref_who_can_see_this_information">Кто может видеть эту информацию?</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будут отображаться при общении с другими пользователями. Уже отправленная информация не может быть удалена или отозвана.</string>
     <string name="pref_your_name">Ваше имя</string>
@@ -460,6 +470,7 @@
     <string name="pref_empty_server_inbox">Удалить ВСЕ сообщения электронной почты в папке «Входящие»</string>
     <string name="pref_empty_server_mvbox">Удалить ВСЕ сообщения электронной почты в папке DeltaChat</string>
     <string name="pref_empty_server_do_button">Удаление электронной почты</string>
+    <string name="pref_background_default_color">Цвет по умолчанию</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>
@@ -566,6 +577,8 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифрованное сообщение</string>
 
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Добро пожаловать в DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Известные аккаунты</string>
     <string name="global_menu_preferences_language_desktop">Выбор языка</string>
     <string name="global_menu_file_desktop">Файл</string>
@@ -583,6 +596,7 @@
     <string name="global_menu_help_desktop">Помощь</string>
     <string name="global_menu_help_contribute_desktop">Присоединиться к разработке на GitHub</string>
     <string name="global_menu_help_report_desktop">Сообщить о проблеме…</string>
+    <string name="global_menu_help_about_desktop">О Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Выберите чат или создайте новый</string>
     <string name="write_message_desktop">Напишите сообщение</string>
     <string name="encryption_info_title_desktop">Информация о шифровании</string>
@@ -634,4 +648,5 @@
     <string name="user_location_permission_explanation">Для отображения и публикации вашего местоположения Delta Chat необходимо разрешение на местоположение.</string>
 
 
+    <string name="a11y_remove_account_btn_label">Удалить аккаунт</string>
     </resources>

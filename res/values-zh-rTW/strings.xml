@@ -336,7 +336,6 @@
     <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
     <string name="pref_profile_photo_remove_ask">移除大頭照?</string>
     <string name="pref_help_url">https://delta.chat/tw/help</string>
-    <string name="pref_password_and_account_settings">帳號密碼設定</string>
     <string name="pref_who_can_see_this_information">隱私權設定</string>
     <string name="pref_who_can_see_profile_explain">你的名字和大頭照在通訊的過程中，會提供給對方看到。已傳送的資訊無法被刪除或移除。</string>
     <string name="pref_your_name">你的名字</string>

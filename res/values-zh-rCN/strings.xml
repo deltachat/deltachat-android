@@ -354,7 +354,7 @@
     <string name="pref_blocked_contacts">已屏蔽联系人</string>
     <string name="pref_profile_photo_remove_ask">移除个人资料照片？</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">密码和账户设置</string>
+    <string name="pref_password_and_account_settings">密码和账户</string>
     <string name="pref_who_can_see_this_information">谁能看见此信息？</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起显示。 已发送的信息无法删除或移除。</string>
     <string name="pref_your_name">您的名称</string>

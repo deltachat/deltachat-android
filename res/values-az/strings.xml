@@ -344,7 +344,6 @@
     <string name="pref_blocked_contacts">Bloklanmış kontaktlar</string>
     <string name="pref_profile_photo_remove_ask">Profil şəkilini silmək?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">Parol və hesab tənzimləməsi</string>
     <string name="pref_who_can_see_this_information">Bu məlumatları kim görə bilər?</string>
     <string name="pref_who_can_see_profile_explain">Digər istifadəçilərlə ünsiyyət qurarkən profil şəkliniz və adınız mesajlarınızla birlikdə göstərilir. Zatən göndərilən məlumat silinməyəcək. </string>
     <string name="pref_your_name">Adın</string>

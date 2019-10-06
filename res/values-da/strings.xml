@@ -348,7 +348,6 @@
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="pref_profile_photo_remove_ask">Fjerne profil billede?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">Adgangskode og konto opsætning</string>
     <string name="pref_who_can_see_this_information">Hvem kan se denne information?</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Nanv</string>

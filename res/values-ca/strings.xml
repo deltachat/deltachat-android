@@ -313,7 +313,6 @@
     <string name="pref_blocked_contacts">Contactes bloquejats</string>
     <string name="pref_profile_photo_remove_ask">Esborrar la foto de perfil?</string>
     <string name="pref_help_url">https://delta.chat/ca/help</string>
-    <string name="pref_password_and_account_settings">Contrasenya i preferències del compte</string>
     <string name="pref_who_can_see_this_information">Qui pot veure aquesta informació?</string>
     <string name="pref_who_can_see_profile_explain">La vostra imatge de perfil i el vostre nom es mostraran en els missatges que envieu als altres usuaris. La informació que ja s\'hagi enviat no es pot eliminar ni esborrar.</string>
     <string name="pref_your_name">El vostre nom</string>

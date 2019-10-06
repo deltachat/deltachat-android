@@ -308,7 +308,7 @@
     <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
     <string name="login_header">Bei ihrem Server anmelden</string>
-    <string name="login_explain">Mit existierendem E-Mail Konto einloggen</string>
+    <string name="login_explain">Mit existierendem E-Mail-Konto einloggen</string>
     <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
     <string name="login_no_servers_hint">Es gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_inbox">Posteingang</string>
@@ -367,7 +367,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_blocked_contacts">Blockierte Kontakte</string>
     <string name="pref_profile_photo_remove_ask">Profilbild entfernen?</string>
     <string name="pref_help_url">https://delta.chat/de/help</string>
-    <string name="pref_password_and_account_settings">Passwort und Kontoeinstellungen</string>
+    <string name="pref_password_and_account_settings">Passwort und E-Mail-Konto</string>
     <string name="pref_who_can_see_this_information">Wer kann diese Informationen sehen?</string>
     <string name="pref_who_can_see_profile_explain">Das Profilbild und der Name werden neben gesendeten Nachrichten angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
     <string name="pref_your_name">Mein Name</string>
@@ -648,7 +648,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="a11y_delivery_status_delivered">Übertragungsstatus: Versendet</string>
     <string name="a11y_delivery_status_read">Übertragungsstatus: Gelesen</string>
     <string name="a11y_delivery_status_invalid">Übertragungsstatus: Unzulässig</string>
-    <string name="a11y_remove_account_btn_label">Konto löschen</string>
+    <string name="a11y_remove_account_btn_label">E-Mail-Konto löschen</string>
     <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
 </resources>

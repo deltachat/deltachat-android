@@ -350,7 +350,6 @@
     <string name="pref_blocked_contacts">Contatos bloqueados</string>
     <string name="pref_profile_photo_remove_ask">Remover foto de perfil?</string>
     <string name="pref_help_url">https://delta.chat/pt/help</string>
-    <string name="pref_password_and_account_settings">Senha e configurações da conta</string>
     <string name="pref_who_can_see_this_information">Quem pode ver essa informação?</string>
     <string name="pref_who_can_see_profile_explain">Sua foto de perfil e nome serão exibidos com suas mensagens a outros usuários. Informações já enviadas não podem ser apagas ou removidas.</string>
     <string name="pref_your_name">Seu nome</string>

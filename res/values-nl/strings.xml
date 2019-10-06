@@ -365,7 +365,7 @@
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="pref_profile_photo_remove_ask">Profielfoto verwijderen?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">Wachtwoord en accountinstellingen</string>
+    <string name="pref_password_and_account_settings">Wachtwoord en account</string>
     <string name="pref_who_can_see_this_information">Wie kan deze informatie bekijken?</string>
     <string name="pref_who_can_see_profile_explain">Je profielfoto en -naam worden getoond in gesprekken, naast je berichten. Reeds verstuurde informatie kan niet worden verwijderd of teruggehaald.</string>
     <string name="pref_your_name">Je naam</string>
