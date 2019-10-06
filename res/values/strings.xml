@@ -305,7 +305,7 @@
     <string name="welcome_intro6_message">Encrypted with all common algorithms. Messages stay on your servers.</string>
     <string name="welcome_intro7_headline">Trustworthy</string>
     <string name="welcome_intro7_message">Delta Chat is safe for business use, compatible and standards-based.</string>
-    <string name="welcome_start_messaging">Start Messaging</string>
+    <string name="welcome_start_messaging">Start messaging</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login to your server</string>
     <string name="login_explain">Login with an existing e-mail account.</string>
@@ -551,7 +551,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Permission required</string>
     <string name="perm_continue">Continue</string>
-    <string name="perm_not_now">Not now</string>
     <string name="perm_explain_need_for_camera_access">To capture photos and video, allow Delta Chat access to the camera.</string>
     <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat access to your microphone.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>

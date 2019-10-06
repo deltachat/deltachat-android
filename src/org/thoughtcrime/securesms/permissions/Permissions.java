@@ -157,7 +157,7 @@ public class Permissions {
     private void executePermissionsRequestWithRationale(PermissionsRequest request) {
       RationaleDialog.createFor(permissionObject.getContext(), rationaleDialogMessage, rationalDialogHeader)
                      .setPositiveButton(R.string.perm_continue, (dialog, which) -> executePermissionsRequest(request))
-                     .setNegativeButton(R.string.perm_not_now, (dialog, which) -> executeNoPermissionsRequest(request))
+                     .setNegativeButton(R.string.not_now, (dialog, which) -> executeNoPermissionsRequest(request))
                      .show()
                      .getWindow()
                      .setLayout((int)(permissionObject.getWindowWidth() * .75), ViewGroup.LayoutParams.WRAP_CONTENT);
