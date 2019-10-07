@@ -19,7 +19,7 @@ Release core, f-droid, then:
 2. In Android Studio, select "Build / Generate signed APK"
    (not: App Bundle as this would require uploading the signing key to Google)
 3. Select flavor `gplayRelease` with V1 signature enabled
-   (needed for easy APK verificarion), V2 is optional
+   (needed for easy APK verification), V2 is optional
 4. Upload the generated APK from `gplay/release` to the Github release created at 4
 5. Test the APK
 6. Upload the APK as _Beta_ (_not:_ Production) to https://play.google.com/apps/publish/
