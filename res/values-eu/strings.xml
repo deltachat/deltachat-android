@@ -551,7 +551,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Baimena behar da</string>
     <string name="perm_continue">Jarraitu</string>
-    <string name="perm_not_now">Orain ez</string>
     <string name="perm_explain_need_for_camera_access">Argazkiak eta bideoa hartzeko, baimendu DeltaChat-ek kamera atzitzea.</string>
     <string name="perm_explain_need_for_mic_access">Audio-mezuak bidaltzeko, baimendu DeltaChat-ek mikrofonoa atzitzea.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat-ek zure fitxategiak atzitzeko baimena behar du fitxategiak esportatu ahal izateko edo babes-kopiak sortzeko.</string>

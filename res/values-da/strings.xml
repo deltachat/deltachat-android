@@ -519,7 +519,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Tilladelse påkrævet</string>
     <string name="perm_continue">Fortsætte</string>
-    <string name="perm_not_now">Ikke nu</string>
     <string name="perm_explain_need_for_camera_access">For at fange billeder og video, tillad Delta Chat adgang til kamera.</string>
     <string name="perm_explain_need_for_mic_access">For at sende lyd beskeder, tillad Delta Chat mikrofon adgang.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat behøver fil adgang for at kunne eksportere filer eller oprette sikkerhedskopier.</string>

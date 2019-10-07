@@ -450,8 +450,8 @@
     <string name="pref_show_emails_all">Alles</string>
     <string name="pref_empty_server_title">GEVARENZONE: e-mails verwijderen van server</string>
     <string name="pref_empty_server_msg">Deze optie helpt je ruimte vrij te maken op je IMAP-server door ALLE e-mails, inclusief gesprekken, te verwijderen uit de opgegeven mappen. Berichten op dit apparaat worden niet verwijderd. Deze actie kan niet ongedaan worden gemaakt!</string>
-    <string name="pref_empty_server_inbox">ALLE e-mails uit Postvak IN verwijderen</string>
-    <string name="pref_empty_server_mvbox">ALLE e-mails uit DeltaChat-map verwijderen</string>
+    <string name="pref_empty_server_inbox">Alle e-mails verwijderen uit Postvak IN</string>
+    <string name="pref_empty_server_mvbox">Alle e-mails verwijderen uit DeltaChat-map</string>
     <string name="pref_empty_server_do_button">E-mails verwijderen</string>
     <string name="pref_experimental_features">Experimentele functies</string>
     <string name="pref_on_demand_location_streaming">Locatie continue doorgeven (op verzoek)</string>
@@ -551,7 +551,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Machtiging vereist</string>
     <string name="perm_continue">Doorgaan</string>
-    <string name="perm_not_now">Niet nu</string>
     <string name="perm_explain_need_for_camera_access">Delta Chat heeft toegang nodig tot de camera om foto\'s en video\'s te kunnen vastleggen.</string>
     <string name="perm_explain_need_for_mic_access">Delta Chat heeft toegang nodig tot je microfoon om audioberichten te kunnen versturen.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat heeft toegang nodig tot je bestanden om bestanden te kunnen exporteren of back-ups te kunnen maken.</string>

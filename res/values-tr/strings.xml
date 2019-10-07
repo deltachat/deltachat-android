@@ -305,7 +305,7 @@
     <string name="welcome_intro6_message">Tüm yaygın algoritmalarla şifrelenir. İletiler sunucularınızda kalır.</string>
     <string name="welcome_intro7_headline">Güvenilir</string>
     <string name="welcome_intro7_message">Delta Chat, iş kullanımı için güvenli, uyumlu ve standartlar tabanlıdır.</string>
-    <string name="welcome_start_messaging">İletileşme Başlat</string>
+    <string name="welcome_start_messaging">İletileşme başlat</string>
     <string name="login_title">Oturum aç</string>
     <string name="login_header">Sunucunuzda oturum açın</string>
     <string name="login_explain">Varolan bir e-posta hesabıyla oturum açın.</string>
@@ -332,7 +332,7 @@
     <string name="login_error_required_fields">Lütfen geçerli bir e-posta adresi ve bir parola girin</string>
     <string name="import_backup_title">Yedeği içe aktar</string>
     <string name="import_backup_ask">\"%1$s\" üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
-    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için \"İletileşme Başlat\"a basın.</string>
+    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için \"İletileşme başlat\"a basın.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">\"%1$s\" olarak oturum açılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
@@ -551,7 +551,6 @@
     <!-- permissions -->
     <string name="perm_required_title">İzin gerekli</string>
     <string name="perm_continue">Sürdür</string>
-    <string name="perm_not_now">Şimdi değil</string>
     <string name="perm_explain_need_for_camera_access">Fotoğraflar ve video yakalamak için Delta Chat\'in kameraya erişmesine izin verin.</string>
     <string name="perm_explain_need_for_mic_access">Sesli iletiler göndermek için Delta Chat\'in mikrofonunuza erişmesine izin verin.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat\'in dosyaları dışa aktarmak ya da yedekler oluşturmak için dosyalarınıza erişmesi gerekir.</string>

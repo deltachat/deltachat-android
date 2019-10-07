@@ -478,7 +478,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Es requereix permís</string>
     <string name="perm_continue">Continua</string>
-    <string name="perm_not_now">Ara no</string>
     <string name="perm_explain_need_for_camera_access">Permet que Delta Chat accedeixi a la càmera per fer fotos i vídeo</string>
     <string name="perm_explain_need_for_mic_access">Permet que Delta Chat accedeixi al micròfon per enviar missatges d\'àudio</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat necessita accedir als vostres arxius per exportar documents o per fer-ne còpies de seguretat.</string>

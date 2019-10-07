@@ -550,7 +550,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Wymagane zezwolenie</string>
     <string name="perm_continue">Kontynuuj</string>
-    <string name="perm_not_now">Nie teraz</string>
     <string name="perm_explain_need_for_camera_access">Aby robić zdjęcia i nagrywać wideo, zezwól Delta Chat na dostęp do aparatu.</string>
     <string name="perm_explain_need_for_mic_access">Aby wysyłać wiadomości audio, zezwól Delta Chat na dostęp do mikrofonu.</string>
     <string name="perm_explain_need_for_storage_access">Aby eksportować pliki lub tworzyć kopie zapasowe Delta Chat potrzebuje dostępu do twoich plików.</string>

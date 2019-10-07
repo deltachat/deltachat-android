@@ -473,7 +473,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Потрібен дозвіл</string>
     <string name="perm_continue">Продовжити</string>
-    <string name="perm_not_now">Не зараз</string>
     <string name="perm_explain_need_for_camera_access">Для захоплення фото і відео дозвольте доступ до камери.</string>
     <string name="perm_explain_need_for_mic_access">Для відправки звукових повідомлень дозвольте доступ до мікрофону.</string>
     <string name="perm_explain_need_for_storage_access">Додатку необхідний доступ до файлів для експорту та резервного копіювання.</string>

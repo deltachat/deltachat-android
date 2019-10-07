@@ -226,7 +226,6 @@
     <string name="notify_media_message">Médiaüzenet</string>
     <string name="notify_reply_button">Válasz</string>
     <string name="notify_new_message">Új üzenet</string>
-    <string name="perm_not_now">Most nem</string>
     <string name="global_menu_preferences_language_desktop">Válassz nyelvet...</string>
     <string name="global_menu_file_desktop">Fájl</string>
     <string name="global_menu_file_quit_desktop">Kilépés</string>

@@ -365,6 +365,7 @@
     <string name="pref_blocked_contacts">Kontakte të bllokuar</string>
     <string name="pref_profile_photo_remove_ask">Të hiqet fotoja e profilit?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
+    <string name="pref_password_and_account_settings">Fjalëkalim dhe llogari</string>
     <string name="pref_who_can_see_this_information">Kush mund ta shohë këtë informacion?</string>
     <string name="pref_who_can_see_profile_explain">Fotoja dhe emri juaj i profilit do të shfaqen tok me mesazhet, kur komunikoni me përdorues të tjerë. Informacioni i dërguar tashmë s\’mund të fshihet apo të hiqet.</string>
     <string name="pref_your_name">Emri juaj</string>
@@ -549,7 +550,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Lypset leje</string>
     <string name="perm_continue">Vazhdo</string>
-    <string name="perm_not_now">Jo tani</string>
     <string name="perm_explain_need_for_camera_access">Që të bëhen foto dhe video, lejojeni Delta Chat-in të përdorë kamerën.</string>
     <string name="perm_explain_need_for_mic_access">Që të dërgoni mesazhe audio, lejojeni Delta Chat-in të përdorë mikrofonin tuaj.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat-i lyp hyrje në kartelat tuaja që të mund të eksportojë të tilla apo të krijojë kopjeruajtje.</string>

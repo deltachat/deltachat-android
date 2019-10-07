@@ -562,7 +562,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Требуется разрешение</string>
     <string name="perm_continue">Продолжить</string>
-    <string name="perm_not_now">Не сейчас</string>
     <string name="perm_explain_need_for_camera_access">Для захвата фото и видео разрешите Delta Chat доступ к камере.</string>
     <string name="perm_explain_need_for_mic_access">Для отправки звуковых сообщений разрешите Delta Chat доступ к микрофону</string>
     <string name="perm_explain_need_for_storage_access">Приложению Delta Chat необходим доступ к файлам для экспорта или резервного копирования.</string>

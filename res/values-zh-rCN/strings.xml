@@ -540,7 +540,6 @@
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
-    <string name="perm_not_now">现在不</string>
     <string name="perm_explain_need_for_camera_access">为了拍照和录像，请允许Delta Chat访问相机。</string>
     <string name="perm_explain_need_for_mic_access">为了发送音频消息，请允许Delta Chat访问您的麦克风。</string>
     <string name="perm_explain_need_for_storage_access">为了导出文件或创建备份，Delta Chat需要访问您的文件。</string>

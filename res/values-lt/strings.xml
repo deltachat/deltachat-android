@@ -490,7 +490,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Reikalingas leidimas</string>
     <string name="perm_continue">Tęsti</string>
-    <string name="perm_not_now">Ne dabar</string>
     <string name="perm_explain_need_for_camera_access">Norėdami fotografuoti ir filmuoti, suteikite Delta Chat prieigą prie kameros.</string>
     <string name="perm_explain_need_for_mic_access">Norėdami siųsti garso žinutes, suteikite Delta Chat prieigą prie mikrofono.</string>
     <string name="perm_explain_need_for_storage_access">Norint eksportuoti failus ar daryti atsargines kopijas, Delta Chat reikia prieigos prie jūsų failų.</string>

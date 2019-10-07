@@ -519,7 +519,6 @@
     <!-- permissions -->
     <string name="perm_required_title">İzin tələb olunur</string>
     <string name="perm_continue">Davam edin</string>
-    <string name="perm_not_now">İndi yox</string>
     <string name="perm_explain_need_for_camera_access">Foto və video çəkmək üçün Delta Chat-ə kameraya giriş imkanı verin.</string>
     <string name="perm_explain_need_for_mic_access">Səsli mesajları göndərmək üçün mikrofona izn verin. </string>
     <string name="perm_explain_need_for_storage_access">Delta Chat, faylları idxal / ixrac etmək üçün iznə ehtiyacı var.</string>

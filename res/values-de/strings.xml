@@ -553,7 +553,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- permissions -->
     <string name="perm_required_title">Berechtigung erforderlich</string>
     <string name="perm_continue">Fortsetzen</string>
-    <string name="perm_not_now">Nicht jetzt</string>
     <string name="perm_explain_need_for_camera_access">Delta Chat den Zugriff auf die Kamera erlauben, um Fotos und Videos aufzunehmen.</string>
     <string name="perm_explain_need_for_mic_access">Delta Chat den Zugriff auf das Mikrofon erlauben, um Audionachrichten aufzunehmen.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat benötigt Zugriff auf das Dateisystem, um Dateien zu exportieren oder Backups zu erstellen.</string>
