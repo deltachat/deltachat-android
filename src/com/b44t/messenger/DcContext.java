@@ -27,11 +27,7 @@ public class DcContext {
     public final static int DC_EVENT_IMEX_FILE_WRITTEN           = 2052;
     public final static int DC_EVENT_SECUREJOIN_INVITER_PROGRESS = 2060;
     public final static int DC_EVENT_SECUREJOIN_JOINER_PROGRESS  = 2061;
-    public final static int DC_EVENT_IS_OFFLINE                  = 2081;
     public final static int DC_EVENT_GET_STRING                  = 2091;
-    public final static int DC_EVENT_GET_QUANTITIY_STRING        = 2092;
-    public final static int DC_EVENT_HTTP_GET                    = 2100;
-    public final static int DC_EVENT_HTTP_POST                   = 2110;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
