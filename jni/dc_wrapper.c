@@ -1521,7 +1521,7 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_stringToData(JNIEnv *env, jcla
     char* cstring = NULL;
     if (javaString) {
         CHAR_REF(javaString);
-            cstring = strdup(javaStringPtr);
+            cstring = javaStringPtr? strdup(javaStringPtr) : NULL;
         CHAR_UNREF(javaString);
     }
     return (jlong)cstring; // the return value of stringToData() will be passed to c-land and free()'d there
