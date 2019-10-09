@@ -65,6 +65,7 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     // (for pending activities, the locale is updated by calling DynamicLanguage.onResume)
     Context applicationContext = this.getActivity().getApplicationContext();
     DynamicLanguage.setContextLocale(applicationContext, DynamicLanguage.getSelectedLocale(applicationContext));
+    dcContext.setStockTranslations();
   }
 
   public static CharSequence getSummary(Context context) {
