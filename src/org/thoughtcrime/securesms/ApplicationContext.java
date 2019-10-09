@@ -61,6 +61,8 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     catch (Exception e) {
       e.printStackTrace();
     }
+
+    dcContext.setStockTranslations();
   }
 
   @Override

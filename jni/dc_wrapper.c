@@ -203,6 +203,7 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createContextCPtr(JNIEnv *env,
 
 /* DcContext - open/configure/connect/fetch */
 
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_open(JNIEnv *env, jobject obj, jstring dbfile)
 {
 	CHAR_REF(dbfile);
@@ -215,6 +216,14 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_open(JNIEnv *env, jobject obj, 
 JNIEXPORT void Java_com_b44t_messenger_DcContext_close(JNIEnv *env, jobject obj)
 {
 	dc_close(get_dc_context(env, obj));
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_setStockTranslation(JNIEnv *env, jobject obj, jint stock_id, jstring translation)
+{
+	CHAR_REF(translation);
+		dc_set_stock_translation(get_dc_context(env, obj), stock_id, translationPtr);
+	CHAR_UNREF(translation)
 }
 
 
@@ -1515,14 +1524,3 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_dataToString(JNIEnv *env, jc
 	return JSTRING_NEW(cstring);
 }
 
-
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_stringToData(JNIEnv *env, jclass cls, jstring javaString)
-{
-    char* cstring = NULL;
-    if (javaString) {
-        CHAR_REF(javaString);
-            cstring = strdup(javaStringPtr);
-        CHAR_UNREF(javaString);
-    }
-    return (jlong)cstring; // the return value of stringToData() will be passed to c-land and free()'d there
-}

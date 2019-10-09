@@ -115,6 +115,43 @@ public class ApplicationDcContext extends DcContext {
     }
   }
 
+  public void setStockTranslations() {
+    // the integers are defined in the core and used only here, an enum or sth. like that won't have a big benefit
+    setStockTranslation(1, context.getString(R.string.chat_no_messages));
+    setStockTranslation(2, context.getString(R.string.self));
+    setStockTranslation(3, context.getString(R.string.draft));
+    setStockTranslation(7, context.getString(R.string.voice_message));
+    setStockTranslation(8, context.getString(R.string.chat_contact_request));
+    setStockTranslation(9, context.getString(R.string.image));
+    setStockTranslation(10, context.getString(R.string.video));
+    setStockTranslation(11, context.getString(R.string.audio));
+    setStockTranslation(12, context.getString(R.string.file));
+    setStockTranslation(13, context.getString(R.string.pref_default_status_text));
+    setStockTranslation(14, context.getString(R.string.group_hello_draft));
+    setStockTranslation(15, context.getString(R.string.systemmsg_group_name_changed));
+    setStockTranslation(16, context.getString(R.string.systemmsg_group_image_changed));
+    setStockTranslation(17, context.getString(R.string.systemmsg_member_added));
+    setStockTranslation(18, context.getString(R.string.systemmsg_member_removed));
+    setStockTranslation(19, context.getString(R.string.systemmsg_group_left));
+    setStockTranslation(20, context.getString(R.string.error_x));
+    setStockTranslation(23, context.getString(R.string.gif));
+    setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
+    setStockTranslation(31, context.getString(R.string.systemmsg_read_receipt_subject));
+    setStockTranslation(32, context.getString(R.string.systemmsg_read_receipt_body));
+    setStockTranslation(33, context.getString(R.string.systemmsg_group_image_deleted));
+    setStockTranslation(35, context.getString(R.string.contact_verified));
+    setStockTranslation(36, context.getString(R.string.contact_not_verified));
+    setStockTranslation(37, context.getString(R.string.contact_setup_changed));
+    setStockTranslation(40, context.getString(R.string.chat_archived_chats_title));
+    setStockTranslation(42, context.getString(R.string.autocrypt_asm_subject));
+    setStockTranslation(43, context.getString(R.string.autocrypt_asm_general_body));
+    setStockTranslation(50, context.getString(R.string.chat_self_talk_subtitle));
+    setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
+    setStockTranslation(61, context.getString(R.string.login_error_server_response));
+    setStockTranslation(62, context.getString(R.string.systemmsg_action_by_user));
+    setStockTranslation(63, context.getString(R.string.systemmsg_action_by_me));
+  }
+
   public File getImexDir() {
     // DIRECTORY_DOCUMENTS is only available since KitKat;
     // as we also support Ice Cream Sandwich and Jellybean (2017: 11% in total), this is no option.
@@ -565,48 +602,6 @@ public class ApplicationDcContext extends DcContext {
       case DC_EVENT_ERROR_SELF_NOT_IN_GROUP:
         handleError(event, true, dataToString(data2));
         break;
-
-      case DC_EVENT_GET_STRING:
-        String s;
-        switch ((int) data1) {
-          // the integers are defined in the core and used only here, an enum or sth. like that won't have a big benefit
-          case  1: s = context.getString(R.string.chat_no_messages); break;
-          case  2: s = context.getString(R.string.self); break;
-          case  3: s = context.getString(R.string.draft); break;
-          case  4: s = null; break; // we create DC_STR_MEMBER in hackPluralsString()
-          case  7: s = context.getString(R.string.voice_message); break;
-          case  8: s = context.getString(R.string.chat_contact_request); break;
-          case  9: s = context.getString(R.string.image); break;
-          case 10: s = context.getString(R.string.video); break;
-          case 11: s = context.getString(R.string.audio); break;
-          case 12: s = context.getString(R.string.file); break;
-          case 13: s = context.getString(R.string.pref_default_status_text); break;
-          case 14: s = context.getString(R.string.group_hello_draft); break;
-          case 15: s = context.getString(R.string.systemmsg_group_name_changed); break;
-          case 16: s = context.getString(R.string.systemmsg_group_image_changed); break;
-          case 17: s = context.getString(R.string.systemmsg_member_added); break;
-          case 18: s = context.getString(R.string.systemmsg_member_removed); break;
-          case 19: s = context.getString(R.string.systemmsg_group_left); break;
-          case 20: s = context.getString(R.string.error_x); break;
-          case 23: s = context.getString(R.string.gif); break;
-          case 29: s = context.getString(R.string.systemmsg_cannot_decrypt); break;
-          case 31: s = context.getString(R.string.systemmsg_read_receipt_subject); break;
-          case 32: s = context.getString(R.string.systemmsg_read_receipt_body); break;
-          case 33: s = context.getString(R.string.systemmsg_group_image_deleted); break;
-          case 35: s = context.getString(R.string.contact_verified); break;
-          case 36: s = context.getString(R.string.contact_not_verified); break;
-          case 37: s = context.getString(R.string.contact_setup_changed); break;
-          case 40: s = context.getString(R.string.chat_archived_chats_title); break;
-          case 42: s = context.getString(R.string.autocrypt_asm_subject); break;
-          case 43: s = context.getString(R.string.autocrypt_asm_general_body); break;
-          case 50: s = context.getString(R.string.chat_self_talk_subtitle); break;
-          case 60: s = context.getString(R.string.login_error_cannot_login); break;
-          case 61: s = context.getString(R.string.login_error_server_response); break;
-          case 62: s = context.getString(R.string.systemmsg_action_by_user); break;
-          case 63: s = context.getString(R.string.systemmsg_action_by_me); break;
-          default: s = null; break;
-        }
-        return stringToData(s);
 
       default: {
         final Object data1obj = data1IsString(event) ? dataToString(data1) : data1;

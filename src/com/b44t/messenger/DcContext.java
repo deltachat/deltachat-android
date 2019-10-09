@@ -27,7 +27,6 @@ public class DcContext {
     public final static int DC_EVENT_IMEX_FILE_WRITTEN           = 2052;
     public final static int DC_EVENT_SECUREJOIN_INVITER_PROGRESS = 2060;
     public final static int DC_EVENT_SECUREJOIN_JOINER_PROGRESS  = 2061;
-    public final static int DC_EVENT_GET_STRING                  = 2091;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
@@ -75,6 +74,7 @@ public class DcContext {
 
     public native int          open                 (String dbfile);
     public native void         close                ();
+    public native void         setStockTranslation  (int stockId, String translation);
     public native String       getBlobdir           ();
     public native void         configure            ();
     public native void         stopOngoingProcess   ();
@@ -179,7 +179,6 @@ public class DcContext {
     public native static boolean data1IsString(int event);
     public native static boolean data2IsString(int event);
     public native static String  dataToString (long data);
-    public native static long    stringToData (String str);
 
     // working with raw c-data
     private long        contextCPtr;     // CAVE: the name is referenced in the JNI
