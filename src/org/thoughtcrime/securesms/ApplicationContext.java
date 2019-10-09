@@ -4,7 +4,10 @@ import android.annotation.SuppressLint;
 import android.arch.lifecycle.DefaultLifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ProcessLifecycleOwner;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 
@@ -63,6 +66,14 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     }
 
     dcContext.setStockTranslations();
+
+    IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
+    registerReceiver(new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            dcContext.setStockTranslations();
+        }
+    }, filter);
   }
 
   @Override
