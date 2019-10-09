@@ -1,5 +1,11 @@
 # Delta Chat Android Changelog
 
+## v0.920.0
+2019-10-10
+
+* improve onboarding error messages
+* various bug fixes
+
 ## v0.910.0
 2019-10-07
 
