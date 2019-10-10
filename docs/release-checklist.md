@@ -15,7 +15,7 @@ Release core, if needed, then:
 
 Release core, f-droid, then:
 
-1. make sure latest core is used: ndk-build
+1. make sure latest core is used: ./ndk-make
 2. In Android Studio, select "Build / Generate signed APK"
    (not: App Bundle as this would require uploading the signing key to Google)
 3. Select flavor `gplayRelease` with V1 signature enabled
