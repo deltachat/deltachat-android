@@ -4,6 +4,7 @@
 2019-10-10
 
 * improve onboarding error messages
+* update translations
 * various bug fixes
 
 ## v0.910.0
