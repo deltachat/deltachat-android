@@ -441,6 +441,7 @@
     <string name="pref_watch_inbox_folder">Watch Inbox folder</string>
     <string name="pref_watch_sent_folder">Watch Sent folder</string>
     <string name="pref_watch_mvbox_folder">Watch DeltaChat folder</string>
+    <string name="pref_send_copy_to_self">Send copy to self</string>
     <string name="pref_auto_folder_moves">Automatic moves to DeltaChat folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox folder</string>
     <string name="pref_email_interaction_title">Email interaction</string>
