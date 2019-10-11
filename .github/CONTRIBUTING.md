@@ -8,11 +8,10 @@ please use the community forum:
 If you intend to send a **bug report** for Delta Chat, 
 search for existing bugs first:
 
-* [Core](https://github.com/deltachat/deltachat-core/issues?&q=is%3Aissue)
+* [Core](https://github.com/deltachat/deltachat-core-rust/issues?&q=is%3Aissue)
 * [Android](https://github.com/deltachat/deltachat-android/issues?&q=is%3Aissue)
 * [iOS](https://github.com/deltachat/deltachat-ios/issues?&q=is%3Aissue)
 * [Desktop](https://github.com/deltachat/deltachat-ios/issues?&q=is%3Aissue)
-* [Node](https://github.com/deltachat/deltachat-node/issues?&q=is%3Aissue)
 
 In short, the Android/iOS/Desktop parts are about the User Interface.
 The Core part is about handling the connection to the mail server and the chat 
