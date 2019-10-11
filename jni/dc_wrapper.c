@@ -996,15 +996,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getName(JNIEnv *env, jobject ob
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getSubtitle(JNIEnv *env, jobject obj)
-{
-	const char* temp = dc_chat_get_subtitle(get_dc_chat(env, obj));
-		jstring ret = JSTRING_NEW(temp);
-	dc_str_unref(temp);
-	return ret;
-}
-
-
 JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getProfileImage(JNIEnv *env, jobject obj)
 {
 	const char* temp = dc_chat_get_profile_image(get_dc_chat(env, obj));
