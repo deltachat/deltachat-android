@@ -87,7 +87,7 @@ dependencies {
 
 android {
     flavorDimensions "none"
-    compileSdkVersion 27
+    compileSdkVersion 28
     useLibrary 'org.apache.http.legacy'
 
     dexOptions {
@@ -102,7 +102,7 @@ android {
         multiDexEnabled true
 
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 28
 
         vectorDrawables.useSupportLibrary = true
 
