@@ -158,7 +158,7 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
         // we cannot change the settings, however, this is handled by using different values for chId
         if(!channelExists) {
           NotificationChannel channel = new NotificationChannel(chId,
-                  "New messages", NotificationManager.IMPORTANCE_DEFAULT);
+                  "New messages", NotificationManager.IMPORTANCE_HIGH);
           channel.setDescription("Informs about new messages.");
 
           if (!ledColor.equals("none")) {
