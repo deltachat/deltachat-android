@@ -441,6 +441,7 @@
     <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>
     <string name="pref_watch_sent_folder">Map \'Verzonden\' controleren op nieuwe berichten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
+    <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je Postvak IN netjes te houden</string>
     <string name="pref_email_interaction_title">E-mailinteractie</string>

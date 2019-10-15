@@ -443,6 +443,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_watch_inbox_folder">Posteingang beobachten</string>
     <string name="pref_watch_sent_folder">Gesendet-Ordner beobachten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>
+    <string name="pref_send_copy_to_self">Kopie an mich selbst senden</string>
     <string name="pref_auto_folder_moves">Autom. Verschieben in den DeltaChat-Ordner</string>
     <string name="pref_auto_folder_moves_explain">Nachrichten verschieben, um einen unübersichtlichen Posteingang zu verhindern.</string>
     <string name="pref_email_interaction_title">E-Mail-Zusammenspiel</string>

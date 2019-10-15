@@ -430,6 +430,7 @@
     <string name="pref_watch_inbox_folder">监视收件箱文件夹</string>
     <string name="pref_watch_sent_folder">监视发送文件夹</string>
     <string name="pref_watch_mvbox_folder">监视DeltaChat文件夹</string>
+    <string name="pref_send_copy_to_self">给自己发送副本</string>
     <string name="pref_auto_folder_moves">自动移动至DeltaChat文件夹</string>
     <string name="pref_auto_folder_moves_explain">移动聊天对话以免塞满收件箱文件夹</string>
     <string name="pref_email_interaction_title">电子邮件交互</string>

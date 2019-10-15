@@ -441,6 +441,7 @@
     <string name="pref_watch_inbox_folder">Vëzhgo dosje Të marrësh</string>
     <string name="pref_watch_sent_folder">Vëzhgo dosje Të dërguarish</string>
     <string name="pref_watch_mvbox_folder">Vëzhgo dosje DeltaChat</string>
+    <string name="pref_send_copy_to_self">Dërgojini kopje vetes</string>
     <string name="pref_auto_folder_moves">Lëvizje të Vetvetishme te dosja DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Bisedat zhvendosen, që të shmanget rrëmuja te dosja Të marrë</string>
     <string name="pref_email_interaction_title">Ndërveprim me email</string>

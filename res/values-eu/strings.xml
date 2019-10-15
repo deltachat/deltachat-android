@@ -441,6 +441,7 @@
     <string name="pref_watch_inbox_folder">Begiztatu sarrera karpeta</string>
     <string name="pref_watch_sent_folder">Begiztatu bidalitakoak karpeta</string>
     <string name="pref_watch_mvbox_folder">Begiztatu DeltaChat karpeta</string>
+    <string name="pref_send_copy_to_self">Bidali kopia norberari</string>
     <string name="pref_auto_folder_moves">Automatikoki mugitzen du DeltaChat karpetara</string>
     <string name="pref_auto_folder_moves_explain">Txat elkarrizketak lekuz aldatzen dira sarrera ontzian enbarazu ez egiteko</string>
     <string name="pref_email_interaction_title">E-mail interakzioa</string>

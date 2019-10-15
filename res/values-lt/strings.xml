@@ -520,6 +520,7 @@
     <string name="global_menu_help_learn_desktop">Sužinokite daugiau apie Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Talkinti Github svetainėje</string>
     <string name="global_menu_help_report_desktop">Pranešti apie klaidą...</string>
+    <string name="global_menu_help_about_desktop">Apie Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Pasirinkite arba sukurkite naują pokalbį</string>
     <string name="write_message_desktop">Rašykite žinutę</string>
     <string name="encryption_info_title_desktop">Šifravimo informacija</string>
@@ -567,4 +568,5 @@
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
     <string name="a11y_remove_account_btn_label">Šalinti paskyrą</string>
-    </resources>
+    <string name="a11y_background_preview_label">Fono peržiūra</string>
+</resources>

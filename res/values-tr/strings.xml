@@ -203,7 +203,7 @@
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
     <string name="info_outdated_app_title">Uygulama sürümünüz eski.</string>
-    <string name="info_outdated_app_text">Delta Chat\'i otomatik güncelleştirmeler olmadan bir kaynaktan (örn. GitHub) kurdunuz. En son özellikleri ve hata düzeltmelerini almak için lütfen bir mağaza sürümüne geçin.</string>
+    <string name="info_outdated_app_text">Delta Chat\'i otomatik güncelleştirmeler olmayan bir kaynaktan (örn. GitHub) kurdunuz. En son özellikleri ve hata düzeltmelerini almak için lütfen bir mağaza sürümüne geçin.</string>
     <string name="info_outdated_app_dialog_title">Güncelleştirme kaynakları</string>
     <string name="info_outdated_app_dialog_text">Delta Chat şurada kullanılabilir:</string>
 
@@ -441,6 +441,7 @@
     <string name="pref_watch_inbox_folder">Gelen Kutusu klasörünü izle</string>
     <string name="pref_watch_sent_folder">Gönderilen klasörünü izle</string>
     <string name="pref_watch_mvbox_folder">DeltaChat klasörünü izle</string>
+    <string name="pref_send_copy_to_self">Kendime kopya gönder</string>
     <string name="pref_auto_folder_moves">DeltaChat klasörüne otomatik taşınsın</string>
     <string name="pref_auto_folder_moves_explain">Sohbetler, Gelen Kutusu klasöründeki dağınıklığı önlemek için taşınır</string>
     <string name="pref_email_interaction_title">E-posta etkileşimi</string>
@@ -506,7 +507,7 @@
 
 
     <!-- qr code stuff -->
-    <string name="qrscan_title">QR kodu tara</string>
+    <string name="qrscan_title">QR kod tara</string>
     <string name="qrscan_hint">Kameranızı QR kodun üzerine yerleştirin</string>
     <string name="qrscan_ask_join_group">\"%1$s\" grubuna katılmak istiyor musunuz?</string>
     <string name="qrscan_fingerprint_mismatch">Taranan parmak izi %1$s için son görülen parmak iziyle eşleşmiyor</string>
