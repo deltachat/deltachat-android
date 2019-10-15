@@ -21,7 +21,7 @@ repositories {
     mavenCentral()
     maven {
         // Used only for PhotoView
-        url "https://jitpack.io"
+        url "https://www.jitpack.io"
         name 'JitPack Github wrapper'
     }
     jcenter()
