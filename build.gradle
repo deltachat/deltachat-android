@@ -21,7 +21,7 @@ repositories {
     mavenCentral()
     maven {
         // Used only for PhotoView
-        url "https://jitpack.io"
+        url "https://www.jitpack.io"
         name 'JitPack Github wrapper'
     }
     jcenter()
@@ -29,12 +29,12 @@ repositories {
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.android.support:appcompat-v7:27.1.1' // one use in SearchToolbar.
-    implementation 'com.android.support:design:27.1.1' // used in various locations for a lot of components
-    implementation 'com.android.support:support-v13:27.1.1' // used to prevent a 25... version to be loaded (from where ever)
-    implementation 'com.android.support:preference-v7:27.1.1' // actually a dependency of -v14
-    implementation 'com.android.support:preference-v14:27.1.1' // used to manage the users preferences
-    implementation 'com.android.support:exifinterface:27.1.1' // Used to edit the Exif in BitmapUtil
+    implementation 'com.android.support:appcompat-v7:28.0.0' // one use in SearchToolbar.
+    implementation 'com.android.support:design:28.0.0' // used in various locations for a lot of components
+    implementation 'com.android.support:support-v13:28.0.0' // used to prevent a 25... version to be loaded (from where ever)
+    implementation 'com.android.support:preference-v7:28.0.0' // actually a dependency of -v14
+    implementation 'com.android.support:preference-v14:28.0.0' // used to manage the users preferences
+    implementation 'com.android.support:exifinterface:28.0.0' // Used to edit the Exif in BitmapUtil
     implementation 'com.android.support.constraint:constraint-layout:1.1.2' // Used in several places
     implementation 'android.arch.lifecycle:extensions:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
     implementation 'android.arch.lifecycle:common-java8:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
