@@ -26,7 +26,7 @@ The APK can also be downloaded from [GitHub](https://github.com/deltachat/deltac
 (only for experienced users).
 
 For the core library and other common info, please refer to the
-[Delta Chat Core Library](https://github.com/deltachat/deltachat-core).
+[Delta Chat Core Library](https://github.com/deltachat/deltachat-core-rust).
 
 <img alt="Screenshot Chat List" src="docs/images/2019-01-chatlist.png" width="298" /> <img alt="Screenshot Chat View" src="docs/images/2019-01-chat.png" width="298" />
 
@@ -34,18 +34,18 @@ For the core library and other common info, please refer to the
 # Build
 
 When checking out _deltachat-android_, make sure also to check out the
-subproject _deltachat-core_:
+subproject _deltachat-core-rust_:
 
 - When using Git, you can do this initially by
   `$ git clone --recursive https://github.com/deltachat/deltachat-android`
   or later by `git submodule update --init --recursive`. If you do this in your
   home directory, this results in the folder `~/deltachat-android` which is just fine.
 
-- Alternatively, you can download the [deltachat-android zip-file](https://github.com/deltachat/deltachat-android/archive/master.zip); in this case, also download the [deltachat-core zip-file](https://github.com/deltachat/deltachat-core/archive/master.zip) and place its contents to `jni/messenger-backend`.
+Then, open `ndk-make.sh` in an editor and follow the instructions
+to set up a rust build environment.  This is needed only once.
 
-Then, call `ndk-build` in the root directory to build the C-part;
-this also builds deltachat-core. Afterwards run the project in Android Studio.
-The project requires API 25.
+After that, call `./ndk-make.sh` in the root directory to build core-rust.
+Afterwards run the project in Android Studio. The project requires API 25.
 
 With chance, that's it :) - if not, read on how to set up a proper development
 environment.

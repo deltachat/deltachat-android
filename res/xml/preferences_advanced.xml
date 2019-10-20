@@ -34,6 +34,11 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
+            android:key="pref_bcc_self"
+            android:title="@string/pref_send_copy_to_self"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="true"
             android:key="pref_mvbox_move"
             android:title="@string/pref_auto_folder_moves"
             android:summary="@string/pref_auto_folder_moves_explain"/>

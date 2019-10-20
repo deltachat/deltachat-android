@@ -13,6 +13,17 @@
     <string name="none">Asnjë</string>
     <string name="open">Hap</string>
     <string name="delete">Fshije</string>
+    <string name="update">Përditësoje</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Bashkëngjitje</string>
+    <string name="back">Mbrapsht</string>
+    <string name="close">Mbylle</string>
+    <string name="save">Ruaje</string>
+    <string name="chat">Fjalosje</string>
+    <string name="media">Media</string>
+    <string name="main_menu">Menuja kryesore</string>
+    <string name="show_password">Shfaqe fjalëkalimin</string>
+    <string name="hide_password">Fshihe fjalëkalimin</string>
     <string name="not_now">Jo tani</string>
     <string name="never">Kurrë</string>
     <string name="one_moment">Një çast…</string>
@@ -235,6 +246,8 @@
     <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
     <string name="chat_contact_request">Kërkesë kontakti</string>
     <string name="chat_no_contact_requests">S\’ka kërkesa kontakti.\n\nNëse doni që email-e klasikë të shfaqen këtu si kërkesa kontakti, mund të ndryshoni rregullimin përkatës te rregullimet e aplikacionit.</string>
+    <string name="retry_send">Riprovo të dërgosh mesazhin</string>
+    <string name="send_failed">Dërgimi i mesazhit dështoi</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
@@ -295,6 +308,7 @@
     <string name="welcome_start_messaging">Filloni të Shkëmbeni Mesazhe</string>
     <string name="login_title">Hyrje</string>
     <string name="login_header">Hyrje te shërbyesi juaj</string>
+    <string name="login_explain">Hyrje me një llogari email ekzistuese.</string>
     <string name="login_subheader">Për shërbime të njohura email-i, rregullimet shtesë caktohen automatikisht. Ndonjëherë shërbyesi IMAP lyp të aktivizohet te pjesa e dukshme web. Për ndihmë këshillohuni me shërbimin tuaj email ose shokë tuajt.</string>
     <string name="login_no_servers_hint">S\’ka shërbyes Delta Chat, të dhënat tuaja rrinë në pajisjen tuaj!</string>
     <string name="login_inbox">Të marrë</string>
@@ -351,7 +365,7 @@
     <string name="pref_blocked_contacts">Kontakte të bllokuar</string>
     <string name="pref_profile_photo_remove_ask">Të hiqet fotoja e profilit?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">Rregullime fjalëkalimi dhe llogarie</string>
+    <string name="pref_password_and_account_settings">Fjalëkalim dhe llogari</string>
     <string name="pref_who_can_see_this_information">Kush mund ta shohë këtë informacion?</string>
     <string name="pref_who_can_see_profile_explain">Fotoja dhe emri juaj i profilit do të shfaqen tok me mesazhet, kur komunikoni me përdorues të tjerë. Informacioni i dërguar tashmë s\’mund të fshihet apo të hiqet.</string>
     <string name="pref_your_name">Emri juaj</string>
@@ -427,6 +441,7 @@
     <string name="pref_watch_inbox_folder">Vëzhgo dosje Të marrësh</string>
     <string name="pref_watch_sent_folder">Vëzhgo dosje Të dërguarish</string>
     <string name="pref_watch_mvbox_folder">Vëzhgo dosje DeltaChat</string>
+    <string name="pref_send_copy_to_self">Dërgojini kopje vetes</string>
     <string name="pref_auto_folder_moves">Lëvizje të Vetvetishme te dosja DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Bisedat zhvendosen, që të shmanget rrëmuja te dosja Të marrë</string>
     <string name="pref_email_interaction_title">Ndërveprim me email</string>
@@ -439,7 +454,11 @@
     <string name="pref_empty_server_inbox">Fshiji KREJT email-et te dosja e të Marrëve</string>
     <string name="pref_empty_server_mvbox">Fshiji KREJT email-et te dosja DeltaChat</string>
     <string name="pref_empty_server_do_button">Fshiji email-et</string>
-
+    <string name="pref_experimental_features">Veçori eksperimentale</string>
+    <string name="pref_background_default">Sfond parazgjedhje</string>
+    <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
+    <string name="pref_background_custom_image">Figurë vetjake</string>
+    <string name="pref_background_custom_color">Ngjyrë vetjake</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
@@ -532,7 +551,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Lypset leje</string>
     <string name="perm_continue">Vazhdo</string>
-    <string name="perm_not_now">Jo tani</string>
     <string name="perm_explain_need_for_camera_access">Që të bëhen foto dhe video, lejojeni Delta Chat-in të përdorë kamerën.</string>
     <string name="perm_explain_need_for_mic_access">Që të dërgoni mesazhe audio, lejojeni Delta Chat-in të përdorë mikrofonin tuaj.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat-i lyp hyrje në kartelat tuaja që të mund të eksportojë të tilla apo të krijojë kopjeruajtje.</string>
@@ -548,9 +566,8 @@
     <string name="encrypted_message">Mesazh i fshehtëzuar</string>
 
     <!-- desktop specific strings -->
-    <string name="welcome_desktop">Mirë se vini te DeltaChat-i</string>
+    <string name="welcome_desktop">Mirë se vini në Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Llogari të njohura</string>
-    <string name="global_menu_preferences_desktop">Parapëlqime</string>
     <string name="global_menu_preferences_language_desktop">Zgjidhni Gjuhë…</string>
     <string name="global_menu_file_desktop">Kartelë</string>
     <string name="global_menu_file_quit_desktop">Dilni</string>
@@ -560,20 +577,17 @@
     <string name="global_menu_edit_cut_desktop">Prije</string>
     <string name="global_menu_edit_copy_desktop">Kopjoje</string>
     <string name="global_menu_edit_paste_desktop">Ngjite</string>
-    <string name="global_menu_edit_delete_desktop">Fshije</string>
-    <string name="global_menu_edit_selectall_desktop">Përzgjidhi Krejt</string>
     <string name="global_menu_view_desktop">Shiheni</string>
     <string name="global_menu_view_floatontop_desktop">Pezull Përsipër</string>
     <string name="global_menu_view_developer_desktop">Zhvillues</string>
     <string name="global_menu_view_developer_tools_desktop">Mjete Zhvilluesi</string>
     <string name="global_menu_help_desktop">Ndihmë</string>
-    <string name="global_menu_help_learn_desktop">Mësoni më tepër rreth DeltaChat-it</string>
+    <string name="global_menu_help_learn_desktop">Mësoni më tepër rreth Delta Chat-it</string>
     <string name="global_menu_help_contribute_desktop">Jepni ndihmesë në GitHub</string>
     <string name="global_menu_help_report_desktop">Njoftoni një Problem…</string>
-    <string name="global_menu_help_about_desktop">Mbi DeltaChat-in</string>
+    <string name="global_menu_help_about_desktop">Rreth Delta Chat-it</string>
     <string name="no_chat_selected_suggestion_desktop">Përzgjidhni një fjalosje ose krijoni një të tillë të re</string>
     <string name="write_message_desktop">Shkruani një mesazh</string>
-    <string name="about_deltachat_heading_desktop">Mbi DeltaChat-in</string>
     <string name="encryption_info_title_desktop">Të dhëna fshehtëzimi</string>
     <string name="contact_detail_title_desktop">Hollësi kontakti</string>
     <string name="contact_request_title_desktop">Kërkesë kontakti</string>
@@ -585,7 +599,6 @@
     <string name="no_chats_desktop">S\’ka fjalosje</string>
     <string name="encryption_info_desktop">Shfaq të dhëna fshehtëzimi</string>
     <string name="verified_desktop">e verifikuar</string>
-    <string name="group_name_desktop">Emër grupi</string>
     <string name="remove_desktop">Hiqe</string>
     <string name="save_desktop">Ruaje</string>
     <string name="show_qr_verify_code_desktop">Shfaq kod QR ftese</string>
@@ -621,7 +634,18 @@
     <string name="message_detail_to_desktop">për</string>
     <string name="menu.view.developer.open.log.folder">Hap Dosje Regjistrash</string>
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
-
     <string name="user_location_permission_explanation">Që të mund të shfaqë dhe ndajë me të tjerët vendndodhjen tuaj, Delta Chat lyp lejen vendore.</string>
 
+
+    <!-- accessibility -->
+    <string name="a11y_delivery_status_error">Gjendje dërgimi: Gabim</string>
+    <string name="a11y_encryption_padlock">Dry fshehtëzimi</string>
+    <string name="a11y_delivery_status_sending">Gjendje dërgimi: Po dërgohet</string>
+    <string name="a11y_delivery_status_draft">Gjendje dërgimi: Skicë</string>
+    <string name="a11y_delivery_status_delivered">Gjendje dërgimi: I dërguar</string>
+    <string name="a11y_delivery_status_read">Gjendje dërgimi: I lexuar</string>
+    <string name="a11y_delivery_status_invalid">Gjendje dërgimi e pavlefshme</string>
+    <string name="a11y_remove_account_btn_label">Hiqe llogarinë</string>
+    <string name="a11y_message_context_menu_btn_label">Veprime mesazhesh</string>
+    <string name="a11y_background_preview_label">Paraparje sfondi</string>
 </resources>

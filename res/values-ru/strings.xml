@@ -13,6 +13,17 @@
     <string name="none">Не задано</string>
     <string name="open">Открыть</string>
     <string name="delete">Удалить</string>
+    <string name="update">Обновить</string>
+    <string name="emoji">Эмодзи</string>
+    <string name="attachment">Вложение</string>
+    <string name="back">Назад</string>
+    <string name="close">Закрыть</string>
+    <string name="save">Сохранить</string>
+    <string name="chat">Чат</string>
+    <string name="media">Медиафайлы</string>
+    <string name="main_menu">Главное меню</string>
+    <string name="show_password">Показать пароль</string>
+    <string name="hide_password">Скрыть пароль</string>
     <string name="not_now">Не сейчас</string>
     <string name="never">Никогда</string>
     <string name="one_moment">Один момент…</string>
@@ -202,6 +213,7 @@
     <string name="ask_block_contact">Заблокировать контакт? Вы больше не сможете получать от него сообщения.</string>
     <string name="ask_unblock_contact">Разблокировать контакт? Вы сможете получать от него сообщения снова.</string>
     <string name="ask_delete_contacts">Удалить контакты? Это действие навсегда удалит выбранные контакты.\n\nКонтакты из действующих чатов и из адресной книги системы нельзя удалить навсегда.</string>
+    <string name="ask_delete_contact">Удалить контакт навсегда  %1$s?\n\nКонтакты с исходящими чатами и контакты из системной адресной книги не будут удалены .</string>
     <string name="cannot_delete_contacts_in_use">Невозможно удалить контакты, с которыми имеются активные чаты.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
@@ -256,6 +268,8 @@
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
     <string name="chat_contact_request">Запрос контакта</string>
     <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, вы можете изменить соответствующий параметр в настройках приложения.</string>
+    <string name="retry_send">Попробовать послать сообщение заново</string>
+    <string name="send_failed">Отправка сообщения завершилась неуспешно</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
@@ -372,7 +386,7 @@
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
     <string name="pref_profile_photo_remove_ask">Удалить фото профиля?</string>
     <string name="pref_help_url">https://delta.chat/ru/help</string>
-    <string name="pref_password_and_account_settings">Настройки пароля и аккаунта</string>
+    <string name="pref_password_and_account_settings">Пароль и аккаунт</string>
     <string name="pref_who_can_see_this_information">Кто может видеть эту информацию?</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будут отображаться при общении с другими пользователями. Уже отправленная информация не может быть удалена или отозвана.</string>
     <string name="pref_your_name">Ваше имя</string>
@@ -437,7 +451,7 @@
     <string name="pref_managekeys_export_secret_keys">Экспортировать секретные ключи</string>
     <string name="pref_managekeys_export_explain">Экспортировать секретные ключи в папку «%1$s»?</string>
     <string name="pref_managekeys_import_secret_keys">Импортировать секретные ключи</string>
-    <string name="pref_managekeys_import_explain">Импортировать секретные ключи из папки «%1$s»?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию, если он не содержит слова «legacy» в названии файла.</string>
+    <string name="pref_managekeys_import_explain">Импортировать секретные ключи из папки \"%1$s\"?\n\n• Существующие секретные ключи не будут удалены\n\n• Последний импортированный ключ будет использован как новый ключ по умолчанию, если он не содержит слова \"legacy\" в названии файла.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Секретные ключи успешно сохранены в папку «%1$s».</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из папки «%1$s».</string>
     <string name="pref_background">Фон</string>
@@ -455,13 +469,14 @@
     <string name="pref_show_emails_no">Нет, только чаты</string>
     <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
     <string name="pref_show_emails_all">Все</string>
-    <string name="pref_empty_server_title">Опасная зона: удаление электронной почты с сервера</string>
-    <string name="pref_empty_server_msg">Эта функция позволяет освободить место на сервере IMAP, удалив все сообщения электронной почты, включая чат-сообщения, в указанных папках. Сообщения на этом устройстве не удаляются. Удаление не может быть отменено!</string>
-    <string name="pref_empty_server_inbox">Удалить все сообщения электронной почты в папке «Входящие»</string>
-    <string name="pref_empty_server_mvbox">Удалить все сообщения электронной почты в папке «DeltaChat»</string>
+    <string name="pref_empty_server_title">ОПАСНАЯ ЗОНА: Удалить электронную почту с сервера</string>
+    <string name="pref_empty_server_msg">Эта функция помогает освободить место на сервере IMAP, удаляя ВСЕ сообщения электронной почты, включая чат-сообщения, в указанных папках. Сообщения на этом устройстве не удалятся. Удаление не может быть отменено!</string>
+    <string name="pref_empty_server_inbox">Удалить ВСЕ сообщения электронной почты в папке «Входящие»</string>
+    <string name="pref_empty_server_mvbox">Удалить ВСЕ сообщения электронной почты в папке DeltaChat</string>
     <string name="pref_empty_server_do_button">Удаление электронной почты</string>
-
-
+    <string name="pref_experimental_features">Экспериментальные функции</string>
+    <string name="pref_background_default">Фон по умолчанию</string>
+    <string name="pref_background_default_color">Цвет по умолчанию</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>
@@ -553,7 +568,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Требуется разрешение</string>
     <string name="perm_continue">Продолжить</string>
-    <string name="perm_not_now">Не сейчас</string>
     <string name="perm_explain_need_for_camera_access">Для захвата фото и видео разрешите Delta Chat доступ к камере.</string>
     <string name="perm_explain_need_for_mic_access">Для отправки звуковых сообщений разрешите Delta Chat доступ к микрофону</string>
     <string name="perm_explain_need_for_storage_access">Приложению Delta Chat необходим доступ к файлам для экспорта или резервного копирования.</string>
@@ -571,7 +585,6 @@
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Добро пожаловать в DeltaChat</string>
     <string name="login_known_accounts_title_desktop">Известные аккаунты</string>
-    <string name="global_menu_preferences_desktop">Предпочтения</string>
     <string name="global_menu_preferences_language_desktop">Выбор языка</string>
     <string name="global_menu_file_desktop">Файл</string>
     <string name="global_menu_file_quit_desktop">Выйти</string>
@@ -581,8 +594,6 @@
     <string name="global_menu_edit_cut_desktop">Вырезать</string>
     <string name="global_menu_edit_copy_desktop">Копировать</string>
     <string name="global_menu_edit_paste_desktop">Вставить</string>
-    <string name="global_menu_edit_delete_desktop">Удалить</string>
-    <string name="global_menu_edit_selectall_desktop">Выбрать все</string>
     <string name="global_menu_view_desktop">Просмотреть</string>
     <string name="global_menu_view_floatontop_desktop">Показывать сверху</string>
     <string name="global_menu_view_developer_desktop">Разработчик</string>
@@ -594,7 +605,6 @@
     <string name="global_menu_help_about_desktop">О Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Выберите чат или создайте новый</string>
     <string name="write_message_desktop">Напишите сообщение</string>
-    <string name="about_deltachat_heading_desktop">О Delta Chat</string>
     <string name="encryption_info_title_desktop">Информация о шифровании</string>
     <string name="contact_detail_title_desktop">Детали контакта</string>
     <string name="contact_request_title_desktop">Запрос на общение</string>
@@ -606,7 +616,6 @@
     <string name="no_chats_desktop">Нет чатов</string>
     <string name="encryption_info_desktop">Показать информацию о шифровании</string>
     <string name="verified_desktop">Проверенный</string>
-    <string name="group_name_desktop">Название группы</string>
     <string name="remove_desktop">Удалить</string>
     <string name="save_desktop">Сохранить</string>
     <string name="show_qr_verify_code_desktop">Показать QR код приглашения</string>
@@ -642,7 +651,8 @@
     <string name="message_detail_to_desktop">в</string>
     <string name="menu.view.developer.open.log.folder">Открыть Папку Логов</string>
     <string name="menu.view.developer.open.current.log.file">Открыть Текущий Файл Журнала Log</string>
-
     <string name="user_location_permission_explanation">Для отображения и публикации вашего местоположения Delta Chat необходимо разрешение на местоположение.</string>
 
-</resources>
+
+    <string name="a11y_remove_account_btn_label">Удалить аккаунт</string>
+    </resources>

@@ -13,6 +13,17 @@
     <string name="none">Bat ere ez</string>
     <string name="open">Ireki</string>
     <string name="delete">Ezabatu</string>
+    <string name="update">Eguneratu</string>
+    <string name="emoji">Emojia</string>
+    <string name="attachment">Eranskina</string>
+    <string name="back">Atzera</string>
+    <string name="close">Itxi</string>
+    <string name="save">Gorde</string>
+    <string name="chat">Txata</string>
+    <string name="media">Multimedia</string>
+    <string name="main_menu">Menu nagusia</string>
+    <string name="show_password">Erakutsi pasahitza</string>
+    <string name="hide_password">Ezkutatu pasahitza</string>
     <string name="not_now">Orain ez</string>
     <string name="never">Inoiz ez</string>
     <string name="one_moment">Unetxo bat...</string>
@@ -186,6 +197,7 @@
     <string name="ask_block_contact">Blokeatu kontaktu hau? Ez dituzu kontaktu honen mezu gehiago jasoko.</string>
     <string name="ask_unblock_contact">Desblokeatu kontaktu hau? Berriro jaso ahal izango dituzu kontaktu honen mezuak.</string>
     <string name="ask_delete_contacts">Ezabatu kontaktuak? Honek behin betiko ezabatuko ditu hautatutako kontaktuak.\n\nTxaten bat abian duten eta sistemako helbide liburuan dauden kontaktuak ezin dira behin betiko ezabatu.</string>
+    <string name="ask_delete_contact">Ezabatu %1$s kontaktua behin betiko?\n\nAbian dauden txatak dituzten kontaktuak eta sistemaren helbide liburuan dauden kontaktuak ezin dira behin betiko ezabatu.</string>
     <string name="cannot_delete_contacts_in_use">Ezin dira txatak abian dituzten kontaktuak ezabatu</string>
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
@@ -234,6 +246,8 @@
     <string name="chat_self_talk_subtitle">Nire buruari bidalitako mezuak</string>
     <string name="chat_contact_request">Kontaktua eskatuta</string>
     <string name="chat_no_contact_requests">Kontaktu eskaerarik ez.\n\nE-mail klasikoak hemen kontaktu eskari gisa agertzea nahi baduzu, aplikazioaren ezarpenetan aldatu dezakezu.</string>
+    <string name="retry_send">Saiatu berriro mezua bidaltzen</string>
+    <string name="send_failed">Huts egin du mezua bidaltzean</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Erakutsi kokalekuak denbora markoan</string>
@@ -294,6 +308,7 @@
     <string name="welcome_start_messaging">Hasi txateatzen</string>
     <string name="login_title">Hasi saioa</string>
     <string name="login_header">Hasi saioa zure zerbitzarian</string>
+    <string name="login_explain">Badagoen e-mail kontu batekin saioa hasten</string>
     <string name="login_subheader">E-mail hornitzaile ezagunentzat ezarpen gehigarriak automatikoki sortzen dira. Batzuetan IMAP gaitu behar da web interfazearen bidez. Kontsultatu zure e-mail hornitzaileari edo eskatu laguntza lagunei.</string>
     <string name="login_no_servers_hint">Ez dago Delta Chat zerbitzaririk, zure datuak zure gailuan mantentzen dira!</string>
     <string name="login_inbox">Sarrera ontzia</string>
@@ -350,7 +365,7 @@
     <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
     <string name="pref_profile_photo_remove_ask">Kendu profileko argazkia?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">Pasahitza eta kontuaren ezarpenak</string>
+    <string name="pref_password_and_account_settings">Pasahitza eta kontua</string>
     <string name="pref_who_can_see_this_information">Nork ikusi dezake informazio hau?</string>
     <string name="pref_who_can_see_profile_explain">Zure profileko argazkia eta izena zure mezuekin batera erakutsiko dira beste erabiltzaileekin komunikatzen zarenean. Informazioa behin bidalita ezin da ezabatu edo kendu.</string>
     <string name="pref_your_name">Zure izena</string>
@@ -426,6 +441,7 @@
     <string name="pref_watch_inbox_folder">Begiztatu sarrera karpeta</string>
     <string name="pref_watch_sent_folder">Begiztatu bidalitakoak karpeta</string>
     <string name="pref_watch_mvbox_folder">Begiztatu DeltaChat karpeta</string>
+    <string name="pref_send_copy_to_self">Bidali kopia norberari</string>
     <string name="pref_auto_folder_moves">Automatikoki mugitzen du DeltaChat karpetara</string>
     <string name="pref_auto_folder_moves_explain">Txat elkarrizketak lekuz aldatzen dira sarrera ontzian enbarazu ez egiteko</string>
     <string name="pref_email_interaction_title">E-mail interakzioa</string>
@@ -438,7 +454,12 @@
     <string name="pref_empty_server_inbox">Ezabatu sarrera ontziko e-mail GUZTIAK</string>
     <string name="pref_empty_server_mvbox">Ezabatu DeltaChat karpetako e-mail GUZTIAK</string>
     <string name="pref_empty_server_do_button">Ezabatu e-mailak</string>
-
+    <string name="pref_experimental_features">Ezaugarri esperimentalak</string>
+    <string name="pref_on_demand_location_streaming">Eskaera bidezko kokalekuaren hedapena</string>
+    <string name="pref_background_default">Lehenetsitako atzealdea</string>
+    <string name="pref_background_default_color">Lehenetsitako kolorea</string>
+    <string name="pref_background_custom_image">Irudi pertsonalizatua</string>
+    <string name="pref_background_custom_color">Kolore pertsonalizatua</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
@@ -531,7 +552,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Baimena behar da</string>
     <string name="perm_continue">Jarraitu</string>
-    <string name="perm_not_now">Orain ez</string>
     <string name="perm_explain_need_for_camera_access">Argazkiak eta bideoa hartzeko, baimendu DeltaChat-ek kamera atzitzea.</string>
     <string name="perm_explain_need_for_mic_access">Audio-mezuak bidaltzeko, baimendu DeltaChat-ek mikrofonoa atzitzea.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat-ek zure fitxategiak atzitzeko baimena behar du fitxategiak esportatu ahal izateko edo babes-kopiak sortzeko.</string>
@@ -547,9 +567,8 @@
     <string name="encrypted_message">Zifratutako mezua</string>
 
     <!-- desktop specific strings -->
-    <string name="welcome_desktop">Ongi etorri DeltaChat-era</string>
+    <string name="welcome_desktop">Ongi etorri Delta Chat-era</string>
     <string name="login_known_accounts_title_desktop">Kontu ezagunak</string>
-    <string name="global_menu_preferences_desktop">Hobespenak</string>
     <string name="global_menu_preferences_language_desktop">Hautatu hizkuntza...</string>
     <string name="global_menu_file_desktop">Fitxategia</string>
     <string name="global_menu_file_quit_desktop">Irten</string>
@@ -559,20 +578,17 @@
     <string name="global_menu_edit_cut_desktop">Moztu</string>
     <string name="global_menu_edit_copy_desktop">Kopiatu</string>
     <string name="global_menu_edit_paste_desktop">Itsatsi</string>
-    <string name="global_menu_edit_delete_desktop">Ezabatu</string>
-    <string name="global_menu_edit_selectall_desktop">Hautatu guztiak</string>
     <string name="global_menu_view_desktop">Ikusi</string>
     <string name="global_menu_view_floatontop_desktop">Flotatu gainean</string>
     <string name="global_menu_view_developer_desktop">Garatzailea</string>
     <string name="global_menu_view_developer_tools_desktop">Garatzaile-tresnak</string>
     <string name="global_menu_help_desktop">Laguntza</string>
-    <string name="global_menu_help_learn_desktop">Ikasi gehiago DeltaChat aplikazioari buruz</string>
+    <string name="global_menu_help_learn_desktop">Ikasi gehiago Delta Chat-i buruz</string>
     <string name="global_menu_help_contribute_desktop">Hartu parte GitHub-en</string>
     <string name="global_menu_help_report_desktop">Eman arazo baten berri...</string>
-    <string name="global_menu_help_about_desktop">DeltaChat-i buruz</string>
+    <string name="global_menu_help_about_desktop">Delta Chat-i buruz</string>
     <string name="no_chat_selected_suggestion_desktop">Hautatu txat bat edo sortu txat berri bat</string>
     <string name="write_message_desktop">Idatzi mezu bat</string>
-    <string name="about_deltachat_heading_desktop">DeltaChat-i buruz</string>
     <string name="encryption_info_title_desktop">Zifratzeari buruzko informazioa</string>
     <string name="contact_detail_title_desktop">Kontaktuaren xehetasuna</string>
     <string name="contact_request_title_desktop">Kontaktu izateko eskaria</string>
@@ -584,7 +600,6 @@
     <string name="no_chats_desktop">Txatik ez</string>
     <string name="encryption_info_desktop">Erakutsi zifratzeari buruzko informazioa</string>
     <string name="verified_desktop">egiaztatuta</string>
-    <string name="group_name_desktop">Taldearen izena</string>
     <string name="remove_desktop">Kendu</string>
     <string name="save_desktop">Gorde</string>
     <string name="show_qr_verify_code_desktop">Erakutsi gonbidapenerako QR kodea</string>
@@ -620,7 +635,18 @@
     <string name="message_detail_to_desktop">nori</string>
     <string name="menu.view.developer.open.log.folder">Ireki egunkarien karpeta</string>
     <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
-
     <string name="user_location_permission_explanation">Delta Chat-ek kokalekua atzitzeko baimena behar du zure kokalekua erakutsi eta partekatu ahal izateko.</string>
 
+
+    <!-- accessibility -->
+    <string name="a11y_delivery_status_error">Bidalketa-egoera: Errorea</string>
+    <string name="a11y_encryption_padlock">Zifratze giltzarrapoa</string>
+    <string name="a11y_delivery_status_sending">Bidalketa-egoera: Bidaltzen</string>
+    <string name="a11y_delivery_status_draft">Bidalketa-egoera: Zirriborroa</string>
+    <string name="a11y_delivery_status_delivered">Bidalketa-egoera: Bidalita</string>
+    <string name="a11y_delivery_status_read">Bidalketa-egoera: Irakurrita</string>
+    <string name="a11y_delivery_status_invalid">Bidalketa-egoera baliogabea</string>
+    <string name="a11y_remove_account_btn_label">Kendu kontua</string>
+    <string name="a11y_message_context_menu_btn_label">Mezu-ekintzak</string>
+    <string name="a11y_background_preview_label">Atzealdearen aurrebista</string>
 </resources>

@@ -11,11 +11,13 @@ import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
@@ -117,14 +119,29 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   private void setRecipientTitle(DcChat dcChat, boolean showSubtitle) {
-
-    if(dcChat.getId()==DcChat.DC_CHAT_ID_DEADDROP) {
+    int chatId = dcChat.getId();
+    if( chatId == DcChat.DC_CHAT_ID_DEADDROP ) {
       this.title.setText(R.string.menu_deaddrop);
       this.subtitle.setText(R.string.menu_deaddrop_subtitle);
-    }
-    else {
+    } else {
       this.title.setText(dcChat.getName());
-      this.subtitle.setText(dcChat.getSubtitle());
+      String subtitle = "ErrSubtitle";
+
+      Context context = getContext();
+      DcContext dcContext = DcHelper.getContext(context);
+      int[] chatContacts = dcContext.getChatContacts(chatId);
+      if( dcChat.isGroup() ) {
+        subtitle = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
+      } else if( chatContacts.length>=1 ) {
+        if( dcChat.isSelfTalk() ) {
+          subtitle = context.getString(R.string.chat_self_talk_subtitle);
+        }
+        else {
+          subtitle = dcContext.getContact(chatContacts[0]).getAddr();
+        }
+      }
+
+      this.subtitle.setText(subtitle);
     }
 
     this.subtitle.setVisibility(showSubtitle? View.VISIBLE : View.GONE);

@@ -107,25 +107,21 @@ public class Recipient {
 
     if(dcContact!=null) {
       this.address = Address.fromContact(dcContact.getId());
-      String identifier = Hash.sha256(dcContact.getDisplayName() + dcContact.getAddr());
-      Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
-      if (systemContactPhoto != null) {
-        setSystemContactPhoto(systemContactPhoto);
-      }
+      maybeSetSystemContactPhoto(context, dcContact);
       if (dcContact.getId() == DcContact.DC_CONTACT_ID_SELF) {
         setProfileAvatar("SELF");
       }
     }
     else if(dcChat!=null) {
-      this.address = Address.fromChat(dcChat.getId());
+      int chatId = dcChat.getId();
+      this.address = Address.fromChat(chatId);
       if (!dcChat.isGroup()) {
-        String identifier = Hash.sha256(dcChat.getName() + dcChat.getSubtitle());
-        Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
-        if (systemContactPhoto != null) {
-          setSystemContactPhoto(systemContactPhoto);
+        DcContext dcContext = DcHelper.getContext(context);
+        int[] contacts = dcContext.getChatContacts(chatId);
+        if( contacts.length>=1 ) {
+          maybeSetSystemContactPhoto(context, dcContext.getContact(contacts[0]));
         }
       }
-
     }
     else {
       this.address = Address.UNKNOWN;
@@ -235,7 +231,15 @@ public class Recipient {
     return null;
   }
 
-  public void setSystemContactPhoto(@Nullable Uri systemContactPhoto) {
+  private void maybeSetSystemContactPhoto(@NonNull Context context, DcContact contact) {
+    String identifier = Hash.sha256(contact.getDisplayName() + contact.getAddr());
+    Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
+    if (systemContactPhoto != null) {
+      setSystemContactPhoto(systemContactPhoto);
+    }
+  }
+
+  private void setSystemContactPhoto(@Nullable Uri systemContactPhoto) {
     boolean notify = false;
 
     synchronized (this) {

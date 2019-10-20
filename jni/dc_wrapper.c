@@ -24,7 +24,7 @@
 
 
 #include <jni.h>
-#include "messenger-backend/src/deltachat.h"
+#include "deltachat-core-rust/deltachat-ffi/deltachat.h"
 
 
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
@@ -82,8 +82,8 @@ static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
 
 	if (ca) {
 		if (icnt) {
-			uintptr_t* ca_data = dc_array_get_raw(ca);
-			if (sizeof(uintptr_t)==sizeof(jint)) {
+			uint32_t* ca_data = dc_array_get_raw(ca);
+			if (sizeof(uint32_t)==sizeof(jint)) {
 				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
 			}
 			else {
@@ -203,6 +203,7 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createContextCPtr(JNIEnv *env,
 
 /* DcContext - open/configure/connect/fetch */
 
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_open(JNIEnv *env, jobject obj, jstring dbfile)
 {
 	CHAR_REF(dbfile);
@@ -218,11 +219,19 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_close(JNIEnv *env, jobject obj)
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_setStockTranslation(JNIEnv *env, jobject obj, jint stock_id, jstring translation)
+{
+	CHAR_REF(translation);
+		dc_set_stock_translation(get_dc_context(env, obj), stock_id, translationPtr);
+	CHAR_UNREF(translation)
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getBlobdir(JNIEnv *env, jobject obj)
 {
 	char* temp = dc_get_blobdir(get_dc_context(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -269,6 +278,12 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptImapIdle(JNIEnv *env, 
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxJobs(JNIEnv *env, jobject obj)
+{
+	dc_perform_sentbox_jobs(get_dc_context(env, obj));
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxFetch(JNIEnv *env, jobject obj)
 {
 	dc_perform_sentbox_fetch(get_dc_context(env, obj));
@@ -284,6 +299,12 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxIdle(JNIEnv *env,
 JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptSentboxIdle(JNIEnv *env, jobject obj)
 {
 	dc_interrupt_sentbox_idle(get_dc_context(env, obj));
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxJobs(JNIEnv *env, jobject obj)
+{
+	dc_perform_mvbox_jobs(get_dc_context(env, obj));
 }
 
 
@@ -556,7 +577,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgInfo(JNIEnv *env, jobj
 {
 	char* temp = dc_get_msg_info(get_dc_context(env, obj), msg_id);
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -620,7 +641,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getConfig(JNIEnv *env, jobje
 			if (temp) {
 				ret = JSTRING_NEW(temp);
 			}
-		free(temp);
+		dc_str_unref(temp);
 	CHAR_UNREF(key);
 	return ret; /* returns NULL only if key is unset and "def" is NULL */
 }
@@ -640,7 +661,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getSecurejoinQr(JNIEnv *env,
 {
 	char* temp = dc_get_securejoin_qr(get_dc_context(env, obj), chat_id);
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -659,7 +680,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getInfo(JNIEnv *env, jobject
 {
 	char* temp = dc_get_info(get_dc_context(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -670,7 +691,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getOauth2Url(JNIEnv *env, jo
     CHAR_REF(redirectUrl);
 	char* temp = dc_get_oauth2_url(get_dc_context(env, obj), addrPtr, redirectUrlPtr);
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	CHAR_UNREF(redirectUrl);
 	CHAR_UNREF(addr);
 	return ret;
@@ -681,7 +702,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getContactEncrInfo(JNIEnv *e
 {
 	char* temp = dc_get_contact_encrinfo(get_dc_context(env, obj), contact_id);
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -692,7 +713,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_initiateKeyTransfer(JNIEnv *
 	char* temp = dc_initiate_key_transfer(get_dc_context(env, obj));
 	if (temp) {
 		setup_code = JSTRING_NEW(temp);
-		free(temp);
+		dc_str_unref(temp);
 	}
 	return setup_code;
 }
@@ -715,15 +736,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_imex(JNIEnv *env, jobject obj, 
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_checkPassword(JNIEnv *env, jobject obj, jstring pw)
-{
-	CHAR_REF(pw);
-		jint r = dc_check_password(get_dc_context(env, obj),  pwPtr);
-	CHAR_UNREF(pw);
-	return r;
-}
-
-
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_imexHasBackup(JNIEnv *env, jobject obj, jstring dir)
 {
 	CHAR_REF(dir);
@@ -731,7 +743,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_imexHasBackup(JNIEnv *env, j
 		char* temp = dc_imex_has_backup(get_dc_context(env, obj),  dirPtr);
 		if (temp) {
 			ret = JSTRING_NEW(temp);
-			free(temp);
+			dc_str_unref(temp);
 		}
 	CHAR_UNREF(dir);
 	return ret; /* may be NULL! */
@@ -740,7 +752,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_imexHasBackup(JNIEnv *env, j
 
 JNIEXPORT void Java_com_b44t_messenger_DcContext_emptyServer(JNIEnv *env, jobject obj, jint flags)
 {
-	dc_empty_server(get_dc_context(env, obj), flags);
+	//dc_empty_server(get_dc_context(env, obj), flags);
 }
 
 
@@ -857,7 +869,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcArray_getMarker(JNIEnv *env, jobject
 		if (temp) {
 			ret = JSTRING_NEW(temp);
 		}
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -979,16 +991,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getName(JNIEnv *env, jobject ob
 {
 	const char* temp = dc_chat_get_name(get_dc_chat(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
-	return ret;
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getSubtitle(JNIEnv *env, jobject obj)
-{
-	const char* temp = dc_chat_get_subtitle(get_dc_chat(env, obj));
-		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -997,7 +1000,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getProfileImage(JNIEnv *env, jo
 {
 	const char* temp = dc_chat_get_profile_image(get_dc_chat(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1112,7 +1115,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getText(JNIEnv *env, jobject obj
 {
 	char* temp = dc_msg_get_text(get_dc_msg(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1207,7 +1210,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSummarytext(JNIEnv *env, jobj
 {
 	char* temp = dc_msg_get_summarytext(get_dc_msg(env, obj), approx_characters);
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1222,7 +1225,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getFile(JNIEnv *env, jobject obj
 {
 	char* temp = dc_msg_get_file(get_dc_msg(env, obj));
 		jstring ret =  JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1231,7 +1234,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getFilemime(JNIEnv *env, jobject
 {
 	char* temp = dc_msg_get_filemime(get_dc_msg(env, obj));
 		jstring ret =  JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1240,7 +1243,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getFilename(JNIEnv *env, jobject
 {
 	char* temp = dc_msg_get_filename(get_dc_msg(env, obj));
 		jstring ret =  JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1273,7 +1276,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSetupCodeBegin(JNIEnv *env, j
 {
 	char* temp = dc_msg_get_setupcodebegin(get_dc_msg(env, obj));
 		jstring ret =  JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1350,7 +1353,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getName(JNIEnv *env, jobject
 {
 	const char* temp = dc_contact_get_name(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1359,7 +1362,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getDisplayName(JNIEnv *env, 
 {
 	const char* temp = dc_contact_get_display_name(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1368,7 +1371,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getFirstName(JNIEnv *env, jo
 {
 	const char* temp = dc_contact_get_first_name(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1377,7 +1380,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getAddr(JNIEnv *env, jobject
 {
 	const char* temp = dc_contact_get_addr(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1386,7 +1389,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getNameNAddr(JNIEnv *env, jo
 {
 	const char* temp = dc_contact_get_name_n_addr(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1395,7 +1398,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getProfileImage(JNIEnv *env,
 {
 	const char* temp = dc_contact_get_profile_image(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1441,7 +1444,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcLot_getText1(JNIEnv *env, jobject ob
 {
 	char* temp = dc_lot_get_text1(get_dc_lot(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1456,7 +1459,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcLot_getText2(JNIEnv *env, jobject ob
 {
 	char* temp = dc_lot_get_text2(get_dc_lot(env, obj));
 		jstring ret = JSTRING_NEW(temp);
-	free(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1511,18 +1514,4 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_dataToString(JNIEnv *env, jc
 	const char* cstring = (const char*)data;
 	return JSTRING_NEW(cstring);
 }
-
-
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_stringToData(JNIEnv *env, jclass cls, jstring javaString)
-{
-    char* cstring = NULL;
-    if (javaString) {
-        CHAR_REF(javaString);
-            cstring = strdup(javaStringPtr);
-        CHAR_UNREF(javaString);
-    }
-    return (jlong)cstring; // the return value of stringToData() will be passed to c-land and free()'d there
-}
-
-
 

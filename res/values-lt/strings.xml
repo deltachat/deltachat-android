@@ -13,6 +13,14 @@
     <string name="none">Nėra</string>
     <string name="open">Atverti</string>
     <string name="delete">Ištrinti</string>
+    <string name="attachment">Priedas</string>
+    <string name="back">Atgal</string>
+    <string name="close">Užverti</string>
+    <string name="save">Įrašyti</string>
+    <string name="media">Medija</string>
+    <string name="main_menu">Pagrindinis meniu</string>
+    <string name="show_password">Rodyti slaptažodį</string>
+    <string name="hide_password">Slėpti slaptažodį</string>
     <string name="not_now">Ne dabar</string>
     <string name="never">Niekada</string>
     <string name="one_moment">Minutėlę…</string>
@@ -166,6 +174,7 @@
     <string name="menu_view_profile">Rodyti profilį</string>
     <string name="menu_zoom_in">Didinti</string>
     <string name="menu_zoom_out">Mažinti</string>
+    <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
 
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
@@ -195,6 +204,10 @@
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
+    <string name="info_outdated_app_title">Atrodo, kad jūsų programėlės versija yra pasenusi.</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat yra prieinama:</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Adresatai</string>
     <string name="contacts_enter_name_or_email">Įveskite vardą ar el. pašto adresą</string>
@@ -326,7 +339,6 @@
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="pref_profile_photo_remove_ask">Šalinti profilio nuotrauką?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_password_and_account_settings">Slaptažodis ir paskyros nustatymai</string>
     <string name="pref_who_can_see_this_information">Kas gali matyti šią informaciją?</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
     <string name="pref_your_name">Jūsų vardas</string>
@@ -374,6 +386,7 @@
     <string name="pref_in_chat_sounds">Garsai pokalbiuose</string>
     <string name="pref_message_text_size">Žinučių šrifto dydis</string>
     <string name="pref_view_log">Rodyti žurnalą</string>
+    <string name="pref_save_log_failed">Nepavyko įrašyti žurnalo</string>
     <string name="pref_other">Kita</string>
     <string name="pref_backup">Atsarginė kopija</string>
     <string name="pref_backup_explain">Padaro atsarginę pokalbių kopiją į išorinę saugyklą</string>
@@ -399,6 +412,13 @@
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
     <string name="pref_auto_folder_moves_explain">Pokalbiai yra perkeliami, kad nebūtų sujauktas Gautųjų aplankas</string>
     <string name="pref_email_interaction_title">Sąveika su el. paštu</string>
+    <string name="pref_empty_server_title">PAVOJINGA ZONA: Ištrinti el. laiškus iš serverio</string>
+    <string name="pref_experimental_features">Eksperimentinės ypatybės</string>
+    <string name="pref_background_default">Numatytasis fonas</string>
+    <string name="pref_background_default_color">Numatytoji spalva</string>
+    <string name="pref_background_custom_image">Tinkintas paveikslas</string>
+    <string name="pref_background_custom_color">Tinkinta spalva</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt yra naujoji ir atviroji specifikacija automatiniam ištisiniam el. pašto šifravui.\n\nPrireikus, jūsų ištisinė sąranka yra sukuriama automatiškai ir gali būti perduodama tarp įrenginių, naudojant Autocrypt sąrankos žinutes.</string>
@@ -470,7 +490,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Reikalingas leidimas</string>
     <string name="perm_continue">Tęsti</string>
-    <string name="perm_not_now">Ne dabar</string>
     <string name="perm_explain_need_for_camera_access">Norėdami fotografuoti ir filmuoti, suteikite Delta Chat prieigą prie kameros.</string>
     <string name="perm_explain_need_for_mic_access">Norėdami siųsti garso žinutes, suteikite Delta Chat prieigą prie mikrofono.</string>
     <string name="perm_explain_need_for_storage_access">Norint eksportuoti failus ar daryti atsargines kopijas, Delta Chat reikia prieigos prie jūsų failų.</string>
@@ -482,9 +501,8 @@
     <string name="encrypted_message">Šifruota žinutė</string>
 
     <!-- desktop specific strings -->
-    <string name="welcome_desktop">Sveiki atvykę į DeltaChat</string>
+    <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Žinomos paskyros</string>
-    <string name="global_menu_preferences_desktop">Nuostatos</string>
     <string name="global_menu_preferences_language_desktop">Pasirinkti kalbą...</string>
     <string name="global_menu_file_desktop">Failas</string>
     <string name="global_menu_file_quit_desktop">Išeiti</string>
@@ -494,20 +512,17 @@
     <string name="global_menu_edit_cut_desktop">Iškirpti</string>
     <string name="global_menu_edit_copy_desktop">Kopijuoti</string>
     <string name="global_menu_edit_paste_desktop">Įdėti</string>
-    <string name="global_menu_edit_delete_desktop">Ištrinti</string>
-    <string name="global_menu_edit_selectall_desktop">Žymėti viską</string>
     <string name="global_menu_view_desktop">Rodinys</string>
     <string name="global_menu_view_floatontop_desktop">Plaukioti viršuje</string>
     <string name="global_menu_view_developer_desktop">Plėtotojas</string>
     <string name="global_menu_view_developer_tools_desktop">Plėtotojo įrankiai</string>
     <string name="global_menu_help_desktop">Žinynas</string>
-    <string name="global_menu_help_learn_desktop">Sužinoti daugiau apie DeltaChat</string>
+    <string name="global_menu_help_learn_desktop">Sužinokite daugiau apie Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Talkinti Github svetainėje</string>
     <string name="global_menu_help_report_desktop">Pranešti apie klaidą...</string>
-    <string name="global_menu_help_about_desktop">Apie DeltaChat</string>
+    <string name="global_menu_help_about_desktop">Apie Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Pasirinkite arba sukurkite naują pokalbį</string>
     <string name="write_message_desktop">Rašykite žinutę</string>
-    <string name="about_deltachat_heading_desktop">Apie DeltaChat</string>
     <string name="encryption_info_title_desktop">Šifravimo informacija</string>
     <string name="contact_detail_title_desktop">Išsamesnė adresato informacija</string>
     <string name="contact_request_title_desktop">Adresato užklausa</string>
@@ -518,7 +533,6 @@
     <string name="no_archived_chats_desktop">Archyvuotų pokalbių nėra</string>
     <string name="no_chats_desktop">Pokalbių nėra</string>
     <string name="encryption_info_desktop">Rodyti šifravimo informaciją</string>
-    <string name="group_name_desktop">Grupės pavadinimas</string>
     <string name="remove_desktop">Šalinti</string>
     <string name="save_desktop">Išsaugoti</string>
     <string name="show_qr_verify_code_desktop">Rodyti QR pakvietimo kodą</string>
@@ -553,5 +567,6 @@
     <string name="message_detail_to_desktop">kam</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
-
-    </resources>
+    <string name="a11y_remove_account_btn_label">Šalinti paskyrą</string>
+    <string name="a11y_background_preview_label">Fono peržiūra</string>
+</resources>

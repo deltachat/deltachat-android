@@ -56,7 +56,15 @@ public class KeepAliveService extends Service {
         // there's nothing more to do here as all initialisation stuff is already done in
         // ApplicationLoader.onCreate() which is called before this broadcast is sended.
         s_this = this;
-        setSelfAsForeground();
+
+        // set self as foreground
+        try {
+            stopForeground(true);
+            startForeground(FG_NOTIFICATION_ID, createNotification());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -76,11 +84,6 @@ public class KeepAliveService extends Service {
     public void onDestroy() {
         Log.i("DeltaChat", "*** KeepAliveService.onDestroy()");
         // the service will be restarted due to START_STICKY automatically, there's nothing more to do.
-    }
-
-    private void setSelfAsForeground() {
-        stopForeground(true);
-        startForeground(FG_NOTIFICATION_ID, createNotification());
     }
 
     static public KeepAliveService getInstance()

@@ -28,6 +28,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import static android.app.Activity.RESULT_OK;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_E2EE_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_INBOX_WATCH;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
@@ -47,6 +48,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   CheckBoxPreference inboxWatchCheckbox;
   CheckBoxPreference sentboxWatchCheckbox;
   CheckBoxPreference mvboxWatchCheckbox;
+  CheckBoxPreference bccSelfCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
 
   @Override
@@ -73,6 +75,13 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     mvboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
       handleImapCheck(preference, newValue, CONFIG_MVBOX_WATCH)
     );
+
+    bccSelfCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
+    bccSelfCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+      boolean enabled = (Boolean) newValue;
+      dcContext.setConfigInt(CONFIG_BCC_SELF, enabled? 1 : 0);
+      return true;
+    });
 
     mvboxMoveCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_move");
     mvboxMoveCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -127,6 +136,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     inboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_INBOX_WATCH));
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
     mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_WATCH));
+    bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
   }
 
@@ -303,7 +313,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
               flags |= DcContext.DC_EMPTY_MVBOX;
             }
             if (flags!=0) {
-              dcContext.emptyServer(flags);
+              //dcContext.emptyServer(flags); -- when re-enabling, make sure, dc_empty_server() in dc_wrapper.c is enabled as well
+              Toast.makeText(getActivity(), "Not yet re-implemented. The data on your server are NOT deleted.", Toast.LENGTH_LONG).show();
             }
           })
           .show();

@@ -23,7 +23,6 @@ public class DcChat {
     public native boolean isGroup           ();
     public native int     getArchived       ();
     public native String  getName           ();
-    public native String  getSubtitle       ();
     public native String  getProfileImage   ();
     public native int     getColor          ();
     public native boolean isUnpromoted      ();

@@ -3,10 +3,7 @@
 Release core, if needed, then:
 
 1. $ git checkout master
-2. $ ./tools/update-core.sh if you're using symbolic links  OR
-   $ cd jni/messenger-backend/; git checkout master; git pull; cd ../..
-   $ git add jni/messenger-backend/
-   $ git commit -m "update messenger-backend submodule"
+2. $ ./tools/update-core.sh
 3. $ ./tools/tx-pull-translations.sh  # test and commit changes
 4. bump version, adapt changelog, commit, push
 5. deltachat-android on Github: "Draft a new release" with the version form `v1.2.3`
@@ -18,11 +15,11 @@ Release core, if needed, then:
 
 Release core, f-droid, then:
 
-1. make sure latest core is used: ndk-build
+1. make sure latest core is used: ./ndk-make
 2. In Android Studio, select "Build / Generate signed APK"
    (not: App Bundle as this would require uploading the signing key to Google)
 3. Select flavor `gplayRelease` with V1 signature enabled
-   (needed for easy APK verificarion), V2 is optional
+   (needed for easy APK verification), V2 is optional
 4. Upload the generated APK from `gplay/release` to the Github release created at 4
 5. Test the APK
 6. Upload the APK as _Beta_ (_not:_ Production) to https://play.google.com/apps/publish/

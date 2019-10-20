@@ -268,8 +268,6 @@ https://delta.chat</string>
     <string name="notify_priority_max">最大</string>
     <string name="notify_name_and_message">名前とﾒｯｾｰｼﾞ</string>
     <string name="notify_name_only">名前のみ</string>
-    <!-- desktop specific strings -->
-    <string name="welcome_desktop">DeltaChatへようこそ</string>
     <string name="login_known_accounts_title_desktop">不明なｱｶｳﾝﾄ</string>
     <string name="global_menu_preferences_language_desktop">言語を選択して下さい</string>
     <string name="global_menu_file_desktop">ﾌｧｲﾙを</string>
@@ -280,20 +278,14 @@ https://delta.chat</string>
     <string name="global_menu_edit_cut_desktop">切り取り</string>
     <string name="global_menu_edit_copy_desktop">複製</string>
     <string name="global_menu_edit_paste_desktop">貼り付け</string>
-    <string name="global_menu_edit_delete_desktop">削除</string>
-    <string name="global_menu_edit_selectall_desktop">全選択</string>
     <string name="global_menu_view_developer_desktop">開発者</string>
     <string name="global_menu_view_developer_tools_desktop">開発者ﾂｰﾙ</string>
     <string name="global_menu_help_desktop">ﾍﾙﾌﾟ</string>
-    <string name="global_menu_help_learn_desktop">DeltaChatについて詳しく知る</string>
     <string name="global_menu_help_contribute_desktop">GitHubで貢献する</string>
     <string name="global_menu_help_report_desktop">問題を報告する</string>
-    <string name="global_menu_help_about_desktop">概要</string>
-    <string name="about_deltachat_heading_desktop">概要</string>
     <string name="contact_detail_title_desktop">連絡先の詳細</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="no_chats_desktop">ﾁｬｯﾄ無し</string>
-    <string name="group_name_desktop">ｸﾞﾙｰﾌﾟ名</string>
     <string name="remove_desktop">削除</string>
     <string name="show_qr_verify_code_desktop">自分のQRｺｰﾄﾞを見る</string>
     <string name="show_qr_invite_code_desktop">自分のQRｺｰﾄﾞを見る</string>
@@ -305,4 +297,5 @@ https://delta.chat</string>
     <string name="message_detail_sent_desktop">送信済み</string>
     <string name="user_location_permission_explanation">Delta Chatは位置情報を共有出来る様にする為権限が必要です</string>
 
-</resources>
+
+    </resources>

@@ -27,11 +27,6 @@ public class DcContext {
     public final static int DC_EVENT_IMEX_FILE_WRITTEN           = 2052;
     public final static int DC_EVENT_SECUREJOIN_INVITER_PROGRESS = 2060;
     public final static int DC_EVENT_SECUREJOIN_JOINER_PROGRESS  = 2061;
-    public final static int DC_EVENT_IS_OFFLINE                  = 2081;
-    public final static int DC_EVENT_GET_STRING                  = 2091;
-    public final static int DC_EVENT_GET_QUANTITIY_STRING        = 2092;
-    public final static int DC_EVENT_HTTP_GET                    = 2100;
-    public final static int DC_EVENT_HTTP_POST                   = 2110;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
@@ -79,22 +74,30 @@ public class DcContext {
 
     public native int          open                 (String dbfile);
     public native void         close                ();
+    public native void         setStockTranslation  (int stockId, String translation);
     public native String       getBlobdir           ();
     public native void         configure            ();
     public native void         stopOngoingProcess   ();
     public native int          isConfigured         ();
+
     public native void         performImapJobs      ();
     public native void         performImapFetch     ();
     public native void         performImapIdle      ();
     public native void         interruptImapIdle    ();
+
+    public native void         performMvboxJobs     ();
     public native void         performMvboxFetch    ();
     public native void         performMvboxIdle     ();
     public native void         interruptMvboxIdle   ();
-    public native void         performSentboxFetch    ();
-    public native void         performSentboxIdle     ();
-    public native void         interruptSentboxIdle   ();
+
+    public native void         performSentboxJobs   ();
+    public native void         performSentboxFetch  ();
+    public native void         performSentboxIdle   ();
+    public native void         interruptSentboxIdle ();
+
     public native void         performSmtpJobs      ();
     public native void         performSmtpIdle      ();
+
     public native void         maybeNetwork         ();
     public native void         setConfig            (String key, String value);
     public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
@@ -109,7 +112,6 @@ public class DcContext {
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
     public native void         emptyServer          (int flags);
-    public native int          checkPassword        (String pw);
     public native boolean      mayBeValidAddr       (String addr);
     public native int          lookupContactIdByAddr(String addr);
     public native int[]        getContacts          (int flags, String query);
@@ -177,7 +179,6 @@ public class DcContext {
     public native static boolean data1IsString(int event);
     public native static boolean data2IsString(int event);
     public native static String  dataToString (long data);
-    public native static long    stringToData (String str);
 
     // working with raw c-data
     private long        contextCPtr;     // CAVE: the name is referenced in the JNI

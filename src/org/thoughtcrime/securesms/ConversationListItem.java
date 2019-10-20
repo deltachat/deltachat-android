@@ -80,7 +80,6 @@ public class ConversationListItem extends RelativeLayout
   private TextView           archivedView;
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
-  private ImageView          groupIndicator;
 
   private int             unreadCount;
   private AvatarImageView contactPhotoImage;
@@ -103,7 +102,6 @@ public class ConversationListItem extends RelativeLayout
     this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
     this.archivedView            = findViewById(R.id.archived);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
-    this.groupIndicator          = findViewById(R.id.group_indicator);
 
     ViewUtil.setTextViewGravityStart(this.fromView, getContext());
     ViewUtil.setTextViewGravityStart(this.subjectView, getContext());
@@ -178,11 +176,6 @@ public class ConversationListItem extends RelativeLayout
         0,
         thread.isVerified()? R.drawable.ic_verified : 0,
         0);
-
-    boolean isGroup = recipient.isGroupRecipient();
-    groupIndicator.setVisibility(isGroup ? VISIBLE : GONE);
-    int color = ResUtil.getColor(getContext(), R.attr.conversation_list_item_contact_color);
-    groupIndicator.setColorFilter(color);
   }
 
   public void bind(@NonNull  DcContact     contact,
@@ -202,7 +195,6 @@ public class ConversationListItem extends RelativeLayout
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
-    groupIndicator.setVisibility(GONE);
 
     setBatchState(false);
     setBgColor();
@@ -235,7 +227,6 @@ public class ConversationListItem extends RelativeLayout
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
-    groupIndicator.setVisibility(GONE);
 
     setBatchState(false);
     setBgColor();

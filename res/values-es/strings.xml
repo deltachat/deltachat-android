@@ -13,6 +13,15 @@
     <string name="none">Ninguno</string>
     <string name="open">Abrir</string>
     <string name="delete">Eliminar</string>
+    <string name="update">Actualización</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Adjunto</string>
+    <string name="back">Atrás</string>
+    <string name="close">Cerrar</string>
+    <string name="save">Guardar</string>
+    <string name="main_menu">Menú principal</string>
+    <string name="show_password">Mostrar contraseña</string>
+    <string name="hide_password">Ocultar contraseña</string>
     <string name="not_now">Ahora no</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Un momento...</string>
@@ -234,6 +243,8 @@
     <string name="chat_self_talk_subtitle">Mensajes que envié a mí mismo</string>
     <string name="chat_contact_request">Solicitud de contacto</string>
     <string name="chat_no_contact_requests">No hay solicitudes de contacto.\n\nSi desea que los correos electrónicos clásicos aparezcan aquí como solicitudes de contacto, puede cambiar la configuración correspondiente en la configuración de la aplicación.</string>
+    <string name="retry_send">Reintentar enviar mensaje</string>
+    <string name="send_failed">Falló enviar el mensaje</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
@@ -294,6 +305,7 @@
     <string name="welcome_start_messaging">Empezar a Chatear</string>
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>
+    <string name="login_explain">Iniciar sesión con una cuenta de e-mail existente</string>
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
     <string name="login_no_servers_hint">No hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
     <string name="login_inbox">Bandeja de entrada</string>
@@ -350,7 +362,7 @@
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="pref_profile_photo_remove_ask">¿Eliminar foto de perfil? </string>
     <string name="pref_help_url">https://delta.chat/es/help</string>
-    <string name="pref_password_and_account_settings">Contraseña y ajustes de cuenta</string>
+    <string name="pref_password_and_account_settings">Contraseña y cuenta</string>
     <string name="pref_who_can_see_this_information">¿Quién puede ver esta información?</string>
     <string name="pref_who_can_see_profile_explain">La imagen y el nombre de su perfil se mostrarán junto con sus mensajes cuando se comunique con otros usuarios. La información ya enviada no puede ser borrada o eliminada.</string>
     <string name="pref_your_name">Tu nombre</string>
@@ -426,6 +438,7 @@
     <string name="pref_watch_inbox_folder">Monitorear Bandeja de Entrada</string>
     <string name="pref_watch_sent_folder">Monitorear carpeta Enviados</string>
     <string name="pref_watch_mvbox_folder">Monitorear carpeta DeltaChat</string>
+    <string name="pref_send_copy_to_self">Enviar autocopia</string>
     <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Las conversaciones son movidas para evitar saturar la Bandeja de entrada</string>
     <string name="pref_email_interaction_title">Interacción con correo electrónico</string>
@@ -438,7 +451,12 @@
     <string name="pref_empty_server_inbox">Eliminar TODOS los correos en la carpeta INBOX</string>
     <string name="pref_empty_server_mvbox">Eliminar TODOS los correos en la carpeta DeltaChat</string>
     <string name="pref_empty_server_do_button">Eliminar correos</string>
-
+    <string name="pref_experimental_features">Características experimentales</string>
+    <string name="pref_on_demand_location_streaming">Transmisión de ubicación bajo demanda</string>
+    <string name="pref_background_default">Fondo por defecto</string>
+    <string name="pref_background_default_color">Color por defecto</string>
+    <string name="pref_background_custom_image">Imagen personalizada</string>
+    <string name="pref_background_custom_color">Color personalizado</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
@@ -531,7 +549,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
-    <string name="perm_not_now">Ahora no</string>
     <string name="perm_explain_need_for_camera_access">Para capturar fotos y videos, permita que Delta Chat acceda a la cámara.</string>
     <string name="perm_explain_need_for_mic_access">Para enviar mensajes de audio, permita que Delta Chat acceda a su micrófono.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat necesita acceso a sus archivos para exportar archivos o crear copias de respaldo.</string>
@@ -547,9 +564,8 @@
     <string name="encrypted_message">Mensaje cifrado</string>
 
     <!-- desktop specific strings -->
-    <string name="welcome_desktop">Bienvenido a DeltaChat</string>
+    <string name="welcome_desktop">Bienvenido a Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Cuentas conocidas</string>
-    <string name="global_menu_preferences_desktop">Preferencias</string>
     <string name="global_menu_preferences_language_desktop">Seleccione Idioma...</string>
     <string name="global_menu_file_desktop">Archivo</string>
     <string name="global_menu_file_quit_desktop">Salir</string>
@@ -559,20 +575,17 @@
     <string name="global_menu_edit_cut_desktop">Cortar</string>
     <string name="global_menu_edit_copy_desktop">Copiar</string>
     <string name="global_menu_edit_paste_desktop">Pegar</string>
-    <string name="global_menu_edit_delete_desktop">Eliminar</string>
-    <string name="global_menu_edit_selectall_desktop">Seleccionar Todo</string>
     <string name="global_menu_view_desktop">Ver</string>
     <string name="global_menu_view_floatontop_desktop">Flotar en la parte superior</string>
     <string name="global_menu_view_developer_desktop">Programador</string>
     <string name="global_menu_view_developer_tools_desktop">Herramientas del Programador</string>
     <string name="global_menu_help_desktop">Ayuda</string>
-    <string name="global_menu_help_learn_desktop">Saber más sobre DeltaChat</string>
+    <string name="global_menu_help_learn_desktop">Aprender más sobre Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Contribuir en GitHub</string>
     <string name="global_menu_help_report_desktop">Reportar un Problema...</string>
-    <string name="global_menu_help_about_desktop">Acerca de DeltaChat</string>
+    <string name="global_menu_help_about_desktop">Sobre Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Selecciona un chat o crea uno nuevo</string>
     <string name="write_message_desktop">Escribe un mensaje</string>
-    <string name="about_deltachat_heading_desktop">Acerca de DeltaChat</string>
     <string name="encryption_info_title_desktop">Información de cifrado</string>
     <string name="contact_detail_title_desktop">Detalles del contacto</string>
     <string name="contact_request_title_desktop">Solicitud de contacto</string>
@@ -584,7 +597,6 @@
     <string name="no_chats_desktop">No hay chats</string>
     <string name="encryption_info_desktop">Mostrar información de cifrado</string>
     <string name="verified_desktop">verificado</string>
-    <string name="group_name_desktop">Nombre de grupo</string>
     <string name="remove_desktop">Eliminar</string>
     <string name="save_desktop">Guardar</string>
     <string name="show_qr_verify_code_desktop">Mostrar código de invitación QR</string>
@@ -620,7 +632,18 @@
     <string name="message_detail_to_desktop">para</string>
     <string name="menu.view.developer.open.log.folder">Abrir Carpeta de Logs</string>
     <string name="menu.view.developer.open.current.log.file">Abrir Archivo de Logs Actual</string>
-
     <string name="user_location_permission_explanation">Delta Chat necesita el permiso de ubicación para mostrar y compartir tu ubicación.</string>
 
+
+    <!-- accessibility -->
+    <string name="a11y_delivery_status_error">Estado de envío: Error</string>
+    <string name="a11y_encryption_padlock">Candado de cifrado</string>
+    <string name="a11y_delivery_status_sending">Estado de envío: Enviando</string>
+    <string name="a11y_delivery_status_draft">Estado de envío: Borrador</string>
+    <string name="a11y_delivery_status_delivered">Estado de envío: Enviado</string>
+    <string name="a11y_delivery_status_read">Estado de envío: Leído</string>
+    <string name="a11y_delivery_status_invalid">Estado de envío no válido</string>
+    <string name="a11y_remove_account_btn_label">Eliminar cuenta</string>
+    <string name="a11y_message_context_menu_btn_label">Acciones del mensaje</string>
+    <string name="a11y_background_preview_label">Previsualización del fondo</string>
 </resources>

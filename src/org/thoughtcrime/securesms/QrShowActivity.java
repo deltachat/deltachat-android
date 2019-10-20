@@ -54,6 +54,8 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
 
     private TextView hintBelowQr;
 
+    private BroadcastReceiver broadcastReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,12 +113,13 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         }
 
         dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
-        this.registerReceiver(new BroadcastReceiver() {
+        broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 setHintText();
             }
-        }, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+        };
+        this.registerReceiver(broadcastReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
     private void setHintText() {
@@ -141,6 +144,7 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
     protected void onDestroy() {
         super.onDestroy();
         dcEventCenter.removeObservers(this);
+        this.unregisterReceiver(broadcastReceiver);
     }
 
     @Override

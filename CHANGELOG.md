@@ -1,5 +1,32 @@
 # Delta Chat Android Changelog
 
+## v0.920.0
+2019-10-10
+
+* improve onboarding error messages
+* update translations
+* various bug fixes
+
+## v0.910.0
+2019-10-07
+
+* after months of hard work, this release is finally
+  based on the new rust-core that brings improved security and speed,
+  solves build-problems and also makes future developments much easier.
+  there is much more to tell on that than fitting reasonably in a changelog :)
+* this is also the first release including native code for 64bit systems
+* minor ui improvements
+* add Hungarian translation
+* update translations
+
+The changes have been done Alexander Krotov, Ampli-fier, Andrei Guliaikin,
+Asiel Díaz Benítez, Besnik, Björn Petersen, Calbasi, cyBerta, Daniel Boehrsi,
+Dmitry Bogatov, dorheim, Enrico B., Ferhad Necef, Florian Bruhin,
+Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels, Hocuri,
+Holger Krekel, Jikstra, Lars-Magnus Skog, Lin Miaoski, Moo, Ole Carlsen,
+Osoitz, Ozancan Karataş, Pedro Portela, polo lancien, Racer1, Simon Laux,
+solokot, Waldemar Stoczkowski, Zkdc
+
 
 ## v0.510.1
 2019-07-09
@@ -12,8 +39,9 @@
 * improve UX to block contacts
 * bugfixes
 
-The changes have been done by Björn Petersen, cyBerta, Enrico B., Heimen Stoffels, Lin Miaoski,
-Ozancan Karataş, Zkdc
+The changes have been done by Björn Petersen, cyBerta, Enrico B.,
+Heimen Stoffels, Lin Miaoski, Ozancan Karataş, Zkdc
+
 
 ## v0.500.0
 2019-06-27
@@ -51,6 +79,7 @@ Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels, Holger Krekel,
 Iskatel Istiny, Jikstra, Lars-Magnus Skog, Lin Miaoski, Luis, Moo, Ole Carlsen,
 Osoitz, Ozancan Karataş, Racer, Sebek, Yuriy, Zkdc
 
+
 ## v0.304.0
 2019-05-07
 
@@ -62,6 +91,7 @@ The changes have been done by Ampli-fier, Andrei Guliaikin, Asiel Díaz Benítez
 Björn Petersen, Calbasi, Enrico B., ferhad.necef, Heimen Stoffels, link2xt,
 Maverick2k, Ole Carlsen, Osoitz, Ozancan Karataş, Racer1, Webratte
 
+
 ## v0.303.0
 2019-05-01
 
@@ -71,6 +101,7 @@ Maverick2k, Ole Carlsen, Osoitz, Ozancan Karataş, Racer1, Webratte
 * Bugfixes
 
 The changes have been done by Ampli-fier, Björn Petersen, cyBerta
+
 
 ## v0.302.1
 
@@ -83,10 +114,12 @@ The changes have been done by Ampli-fier, Björn Petersen, cyBerta
 
 The changes have been done by Björn Petersen, cyBerta, Daniel Boehrsi.
 
+
 ## v0.301.1
 2019-04-22
 
 * Fix chat view and log for Android 4.4 (Kitkat)
+
 
 ## v0.301.0
 2019-04-20
@@ -109,6 +142,7 @@ Asiel Díaz Benítez, Besnik, Björn Petersen, cyBerta, Daniel Böhrs, Enrico B.
 ferhad.necef, Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels,
 Holger Krekel, Janka, Jikstra, Luis, Moo, Nico de Haen, Ole Carlsen, Osoitz,
 Ozancan Karataş, Racer1, sebek, Viktor Pracht, Webratte and others
+
 
 ## v0.200.0
 2019-03-14
