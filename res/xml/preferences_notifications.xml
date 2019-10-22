@@ -20,7 +20,7 @@
                             android:defaultValue="true"
                             android:title="@string/pref_vibrate"/>
 
-        <org.thoughtcrime.securesms.preferences.widgets.LEDColorListPreference
+        <ListPreference
             android:key="pref_led_color"
             android:defaultValue="purple"
             android:title="@string/pref_led_color"
