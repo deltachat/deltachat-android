@@ -149,8 +149,8 @@
     <string name="menu_unblock_contact">Kişinin engellemesini kaldır</string>
     <string name="menu_play">Oynat</string>
     <string name="menu_pause">Duraklat</string>
-    <string name="menu_scroll_to_bottom">Aşağıya kaydır</string>
-    <string name="menu_scroll_to_top">Yukarıya kaydır</string>
+    <string name="menu_scroll_to_bottom">Alta kaydır</string>
+    <string name="menu_scroll_to_top">Üste kaydır</string>
     <string name="menu_invite">Arkadaşları davet et</string>
     <string name="menu_help">Yardım</string>
     <string name="menu_select_all">Tümünü seç</string>

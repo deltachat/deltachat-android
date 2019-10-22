@@ -19,6 +19,7 @@
     <string name="back">Atrás</string>
     <string name="close">Cerrar</string>
     <string name="save">Guardar</string>
+    <string name="chat">Chat</string>
     <string name="main_menu">Menú principal</string>
     <string name="show_password">Mostrar contraseña</string>
     <string name="hide_password">Ocultar contraseña</string>
@@ -195,6 +196,7 @@
     <string name="ask_block_contact">¿Bloquear este contacto? Ya no recibirás mensajes de este contacto.</string>
     <string name="ask_unblock_contact">¿Desbloquear este contacto? Una vez más podrá recibir mensajes de este contacto.</string>
     <string name="ask_delete_contacts">¿Eliminar contactos? Esto eliminará de forma permanente los contactos seleccionados.\n\nContactos con un chat en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados de forma permanente.</string>
+    <string name="ask_delete_contact">¿Eliminar de forma permanente a %1$s?\n\nContactos con chats en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados.</string>
     <string name="cannot_delete_contacts_in_use">No se puede eliminar contactos con chats en curso.</string>
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->

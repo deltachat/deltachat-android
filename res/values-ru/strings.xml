@@ -330,6 +330,7 @@
     <string name="welcome_start_messaging">Начать общение</string>
     <string name="login_title">Логин</string>
     <string name="login_header">Войдите на ваш сервер</string>
+    <string name="login_explain">Войти с существующим email-аккаунтом</string>
     <string name="login_subheader">Для известных почтовых систем, дополнительные настройки устанавливаются автоматически. Иногда для IMAP требуется разрешение в веб-интерфейсе. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
     <string name="login_no_servers_hint">У Delta Chat нет собственных серверов, ваши данные остаются только на вашем устройстве!</string>
     <string name="login_inbox">Входящие</string>
@@ -462,6 +463,7 @@
     <string name="pref_watch_inbox_folder">Следить за папкой Входящие</string>
     <string name="pref_watch_sent_folder">Следить за папкой Исходящие</string>
     <string name="pref_watch_mvbox_folder">Следить за папкой DeltaChat</string>
+    <string name="pref_send_copy_to_self">Отправить копию себе</string>
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Чаты были перемещены, чтобы избежать путаницы в папке Входящие</string>
     <string name="pref_email_interaction_title">Взаимодействие с электронной почтой</string>
@@ -475,8 +477,12 @@
     <string name="pref_empty_server_mvbox">Удалить ВСЕ сообщения электронной почты в папке DeltaChat</string>
     <string name="pref_empty_server_do_button">Удаление электронной почты</string>
     <string name="pref_experimental_features">Экспериментальные функции</string>
+    <string name="pref_on_demand_location_streaming">Трансляция местоположения</string>
     <string name="pref_background_default">Фон по умолчанию</string>
     <string name="pref_background_default_color">Цвет по умолчанию</string>
+    <string name="pref_background_custom_image">Пользовательское изображение</string>
+    <string name="pref_background_custom_color">Пользовательский цвет</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>
@@ -654,5 +660,15 @@
     <string name="user_location_permission_explanation">Для отображения и публикации вашего местоположения Delta Chat необходимо разрешение на местоположение.</string>
 
 
+    <!-- accessibility -->
+    <string name="a11y_delivery_status_error">Статус доставки: ошибка</string>
+    <string name="a11y_encryption_padlock">Значок шифрования</string>
+    <string name="a11y_delivery_status_sending">Статус доставки: отправляется</string>
+    <string name="a11y_delivery_status_draft">Статус доставки: черновик</string>
+    <string name="a11y_delivery_status_delivered">Статус доставки: доставлено</string>
+    <string name="a11y_delivery_status_read">Статус доставки: прочитано</string>
+    <string name="a11y_delivery_status_invalid">Недопустимый статус доставки</string>
     <string name="a11y_remove_account_btn_label">Удалить аккаунт</string>
-    </resources>
+    <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>
+    <string name="a11y_background_preview_label">Предпросмотр фона</string>
+</resources>
