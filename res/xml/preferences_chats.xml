@@ -33,8 +33,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:layout="@layout/preference_divider"/>
-
     <PreferenceCategory android:title="@string/pref_email_interaction_title">
 
         <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
@@ -46,7 +44,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:layout="@layout/preference_divider"/>
 
     <PreferenceCategory android:title="@string/pref_other">
         <Preference android:key="pref_backup"
@@ -54,8 +51,6 @@
             android:summary="@string/pref_backup_explain"/>
     </PreferenceCategory>
     <!--
-    <PreferenceCategory android:layout="@layout/preference_divider"/>
-
     <PreferenceCategory android:key="message_trimming" android:title="@string/pref_trim_headline">
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"

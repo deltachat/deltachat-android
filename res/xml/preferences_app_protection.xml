@@ -15,7 +15,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:layout="@layout/preference_divider" />
 
     <PreferenceCategory android:title="@string/pref_app_access">
 
@@ -33,7 +32,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:layout="@layout/preference_divider" />
 
     <PreferenceCategory android:title="@string/screenlock_title">
 

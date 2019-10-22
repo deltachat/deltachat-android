@@ -13,7 +13,6 @@
             android:summary="@string/autocrypt_explain"/>
 
     </PreferenceCategory>
-    <PreferenceCategory android:layout="@layout/preference_divider"/>
 
 
     <PreferenceCategory android:title="@string/pref_imap_folder_handling">
@@ -45,7 +44,6 @@
             android:summary="@string/pref_auto_folder_moves_explain"/>
 
     </PreferenceCategory>
-    <PreferenceCategory android:layout="@layout/preference_divider" />
 
 
     <PreferenceCategory android:title="Experimental features">
@@ -59,7 +57,6 @@
                     android:title="Delete e-mails from server" />
 
     </PreferenceCategory>
-    <PreferenceCategory android:layout="@layout/preference_divider" />
 
 
     <PreferenceCategory android:title="@string/pref_other">
