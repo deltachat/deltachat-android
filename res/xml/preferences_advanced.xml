@@ -3,16 +3,16 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/autocrypt">
 
-        <Preference android:key="pref_send_autocrypt_setup_message"
-                    android:title="@string/autocrypt_send_asm_title"/>
-
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_prefer_e2ee"
             android:title="@string/autocrypt_prefer_e2ee"/>
 
+        <Preference android:key="pref_send_autocrypt_setup_message"
+            android:title="@string/autocrypt_send_asm_title"
+            android:summary="@string/autocrypt_explain"/>
+
     </PreferenceCategory>
-    <PreferenceCategory android:layout="@layout/preference_divider_explain_autocrypt"/>
 
 
     <PreferenceCategory android:title="@string/pref_imap_folder_handling">
@@ -44,7 +44,6 @@
             android:summary="@string/pref_auto_folder_moves_explain"/>
 
     </PreferenceCategory>
-    <PreferenceCategory android:layout="@layout/preference_divider" />
 
 
     <PreferenceCategory android:title="Experimental features">
@@ -58,7 +57,6 @@
                     android:title="Delete e-mails from server" />
 
     </PreferenceCategory>
-    <PreferenceCategory android:layout="@layout/preference_divider" />
 
 
     <PreferenceCategory android:title="@string/pref_other">
