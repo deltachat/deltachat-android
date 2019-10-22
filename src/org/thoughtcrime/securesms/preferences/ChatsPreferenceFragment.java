@@ -16,7 +16,6 @@ import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -28,7 +27,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private static final String TAG = ChatsPreferenceFragment.class.getSimpleName();
 
 
-  ListPreferenceWithSummary showEmails;
+  ListPreference showEmails;
 
 //  CheckBoxPreference trimEnabledCheckbox;
 
@@ -42,7 +41,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     findPreference("pref_compression")
             .setOnPreferenceChangeListener(new ListSummaryListener());
 
-    showEmails = (ListPreferenceWithSummary) this.findPreference("pref_show_emails");
+    showEmails = (ListPreference) this.findPreference("pref_show_emails");
     showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
       updateListSummary(preference, newValue);
       dcContext.setConfigInt(CONFIG_SHOW_EMAILS, Util.objectToInt(newValue));
@@ -74,7 +73,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     super.onResume();
     ((ApplicationPreferencesActivity)getActivity()).getSupportActionBar().setTitle(R.string.pref_chats_and_media);
 
-    initializeListSummary((ListPreferenceWithSummary) findPreference("pref_compression"));
+    initializeListSummary((ListPreference) findPreference("pref_compression"));
 
     String value = Integer.toString(dcContext.getConfigInt("show_emails"));
     showEmails.setValue(value);
