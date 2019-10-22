@@ -29,16 +29,8 @@
 
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
 
-
-// passing a NULL-jstring results in a NULL-ptr - this is needed by functions using eg. NULL for "delete"
 #define CHAR_REF(a) \
-	const char* a##Ptr = char_ref__(env, (a));
-static const char* char_ref__(JNIEnv* env, jstring a) {
-    if (a==NULL) {
-        return NULL;
-    }
-    return (*env)->GetStringUTFChars(env, a, 0);
-}
+	const char* a##Ptr = (a)? (*env)->GetStringUTFChars(env, (a), 0) : NULL; // passing a NULL-jstring results in a NULL-ptr - this is needed by functions using eg. NULL for "delete"
 
 #define CHAR_UNREF(a) \
 	if(a) { (*env)->ReleaseStringUTFChars(env, (a), a##Ptr); }
