@@ -1,11 +1,25 @@
 # Delta Chat Android Changelog
 
+## v0.930.0
+2019-10-22
+
+* add "send copy to self" switch
+* rework android4 emoji-sending
+* rework android9 background-fetch
+* fix 64bit issues
+* fix oauth2 issues
+* target api level 28 (android9, pie)
+* update translations
+* various bug fixes
+
+
 ## v0.920.0
 2019-10-10
 
 * improve onboarding error messages
 * update translations
 * various bug fixes
+
 
 ## v0.910.0
 2019-10-07
