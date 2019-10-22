@@ -7,7 +7,7 @@
                             android:title="@string/pref_notifications"
                             android:defaultValue="true" />
 
-        <org.thoughtcrime.securesms.preferences.widgets.SignalPreference
+        <Preference
                 android:dependency="pref_key_enable_notifications"
                 android:key="pref_key_ringtone"
                 android:title="@string/pref_sound"

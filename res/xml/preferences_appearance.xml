@@ -8,7 +8,7 @@
             android:entryValues="@array/pref_theme_values"
             android:defaultValue="light"/>
 
-    <org.thoughtcrime.securesms.preferences.widgets.SignalPreference
+    <Preference
         android:key="pref_chat_background"
         android:title="@string/pref_background"/>
 
