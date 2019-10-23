@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v0.930.0
+## v0.930.2
 2019-10-22
 
 * add "send copy to self" switch
