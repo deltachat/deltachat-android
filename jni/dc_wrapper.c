@@ -189,7 +189,7 @@ static dc_context_t* get_dc_context(JNIEnv *env, jobject obj)
 		fid = (*env)->GetFieldID(env, cls, "contextCPtr", "J" /*Signature, J=long*/);
 	}
 	if (fid) {
-		return (dc_chat_t*)(*env)->GetLongField(env, obj, fid);
+		return (dc_context_t*)(*env)->GetLongField(env, obj, fid);
 	}
 	return NULL;
 }
@@ -205,7 +205,7 @@ static uintptr_t s_context_callback_(dc_context_t* context, int event, uintptr_t
 		return 0; /* may happen on startup */
 	}
 
-	(*jnicontext->jvm)->GetEnv(jnicontext->jvm, &env, JNI_VERSION_1_6); // as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv
+	(*jnicontext->jvm)->GetEnv(jnicontext->jvm, (void**)&env, JNI_VERSION_1_6); // as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv
 	if (env==NULL) {
 		return 0; /* may happen on startup */
 	}
