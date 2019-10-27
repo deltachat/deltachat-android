@@ -135,9 +135,14 @@ public class Location__DRAFT implements CompassListener {
     }
 
     public void updateLocation() {
+        if (!enablePermanentLocationStreaming()) {
+            if (GPS_START.equals(actionGpsLogger)) {
+                sendIntentToGpsLogger(GPS_STOP);
+            }
+            return;
+        }
         if (isGpsLoggerInstalled(context)) {
             fileObserver.startWatching();
-            enablePermanentLocationStreaming();
             if (readWifiLocation() || detectStationary()) {
                 sendIntentToGpsLogger(GPS_STOP);
             } else {
@@ -208,12 +213,12 @@ public class Location__DRAFT implements CompassListener {
             Log.d(TAG, String.format("Contacts with permanent location streaming, query: '%s': %s",
                     PERMANENT_LOCATION_STREAMING_CONTACT_NAME_QUERY, Arrays.toString(homeMates)));
             for (int i = 0; i < homeMates.length; i++) {
+                result = true;
                 int contactId = homeMates[i];
                 int chatId = ac.getChatIdByContactId(contactId);
                 if (!ac.isSendingLocationsToChat(chatId)) {
                     Log.d(TAG, String.format("Locations to Chat ID: %s for Contact ID: %s", chatId, contactId));
                     ac.sendLocationsToChat(chatId, ONE_DAY_SECONDS);
-                    result = true;
                 }
             }
         }
