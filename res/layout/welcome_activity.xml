@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:gravity="center"
-        android:text="Import backup"
+        android:text="@string/import_backup_title"
         android:textColor="@color/delta_accent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/backup_icon"
