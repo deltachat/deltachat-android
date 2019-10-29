@@ -355,7 +355,7 @@ public class ConversationItem extends LinearLayout
       public void onStop() {}
 
       @Override
-      public void onProgress(double progress, int millis) {}
+      public void onProgress(double progress, long millis) {}
 
       @Override
       public void onReceivedDuration(int millis) {

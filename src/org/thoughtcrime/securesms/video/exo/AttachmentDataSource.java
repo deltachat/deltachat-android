@@ -6,10 +6,12 @@ import android.net.Uri;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
 import com.google.android.exoplayer2.upstream.DefaultDataSource;
-
-import org.thoughtcrime.securesms.mms.PartAuthority;
+import com.google.android.exoplayer2.upstream.TransferListener;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class AttachmentDataSource implements DataSource {
 
@@ -19,6 +21,10 @@ public class AttachmentDataSource implements DataSource {
 
   public AttachmentDataSource(DefaultDataSource defaultDataSource) {
     this.defaultDataSource = defaultDataSource;
+  }
+
+  @Override
+  public void addTransferListener(TransferListener transferListener) {
   }
 
   @Override
@@ -35,6 +41,11 @@ public class AttachmentDataSource implements DataSource {
   @Override
   public Uri getUri() {
     return dataSource.getUri();
+  }
+
+  @Override
+  public Map<String, List<String>> getResponseHeaders() {
+    return Collections.emptyMap();
   }
 
   @Override
