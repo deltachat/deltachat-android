@@ -122,7 +122,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
 
     if (seekBar.getProgress() + 5 >= seekBar.getMax()) {
       backwardsCounter = 4;
-      onProgress(0.0, 0);
+      onProgress(0.0, -1);
     }
   }
 
@@ -153,13 +153,15 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   }
 
   @Override
-  public void onProgress(double progress, int millis) {
+  public void onProgress(double progress, long millis) {
     int seekProgress = (int)Math.floor(progress * this.seekBar.getMax());
 
     if (seekProgress > seekBar.getProgress() || backwardsCounter > 3) {
       backwardsCounter = 0;
       this.seekBar.setProgress(seekProgress);
-      this.timestamp.setText(DateUtils.getFormatedDuration(millis));
+      if (millis != -1) {
+        this.timestamp.setText(DateUtils.getFormatedDuration(millis));
+      }
     } else {
       backwardsCounter++;
     }

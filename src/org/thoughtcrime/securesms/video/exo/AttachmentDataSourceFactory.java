@@ -11,11 +11,11 @@ import com.google.android.exoplayer2.upstream.TransferListener;
 
 public class AttachmentDataSourceFactory implements DataSource.Factory {
 
-  private final DefaultDataSourceFactory             defaultDataSourceFactory;
+  private final DefaultDataSourceFactory defaultDataSourceFactory;
 
   public AttachmentDataSourceFactory(@NonNull Context context,
                                      @NonNull DefaultDataSourceFactory defaultDataSourceFactory,
-                                     @Nullable TransferListener<? super DataSource> listener)
+                                     @Nullable TransferListener listener)
   {
     this.defaultDataSourceFactory = defaultDataSourceFactory;
   }

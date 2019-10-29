@@ -39,7 +39,8 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
     implementation 'android.arch.lifecycle:common-java8:1.1.1' // Used in situations where data changes should be displayed directly (e.G. Search)
 
-    implementation 'com.google.android.exoplayer:exoplayer:r2.3.1' // plays video.
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.1' // plays video and audio
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.1'
 
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.5' // used as JSON library TODO: check if java builtin would work as well
 

@@ -170,7 +170,7 @@ public class DateUtils extends android.text.format.DateUtils {
     }
   }
 
-  public static String getFormatedDuration(int millis) {
+  public static String getFormatedDuration(long millis) {
     return String.format("%02d:%02d",
             TimeUnit.MILLISECONDS.toMinutes(millis),
             TimeUnit.MILLISECONDS.toSeconds(millis-(TimeUnit.MILLISECONDS.toMinutes(millis)*60000)));
