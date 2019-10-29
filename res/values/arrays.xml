@@ -222,14 +222,14 @@
     </string-array>
 
     <string-array name="server_security">
-        <item>Automatic</item>
+        <item>@string/automatic</item>
         <item>SSL/TLS</item>
         <item>StartTLS</item>
-        <item>Off</item>
+        <item>@string/off</item>
     </string-array>
 
     <string-array name="auth_methods">
-        <item>Automatic</item>
+        <item>@string/automatic</item>
         <item>OAuth2</item>
     </string-array>
 
