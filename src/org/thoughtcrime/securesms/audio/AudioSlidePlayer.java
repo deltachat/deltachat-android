@@ -1,17 +1,9 @@
 package org.thoughtcrime.securesms.audio;
 
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.media.AudioManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -36,7 +28,6 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.AudioSlide;
-import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.video.exo.AttachmentDataSourceFactory;
@@ -44,9 +35,7 @@ import org.thoughtcrime.securesms.video.exo.AttachmentDataSourceFactory;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
-import static com.google.android.exoplayer2.util.Util.getStreamTypeForAudioUsage;
-
-public class AudioSlidePlayer implements SensorEventListener {
+public class AudioSlidePlayer {
 
   private static final String TAG = AudioSlidePlayer.class.getSimpleName();
 
@@ -55,10 +44,6 @@ public class AudioSlidePlayer implements SensorEventListener {
   private final @NonNull  Context           context;
   private final @NonNull  AudioSlide        slide;
   private final @NonNull  Handler           progressEventHandler;
-  private final @NonNull  AudioManager      audioManager;
-  private final @NonNull  SensorManager     sensorManager;
-  private final @NonNull  Sensor            proximitySensor;
-  private final @Nullable WakeLock          wakeLock;
 
   private @NonNull  WeakReference<Listener> listener;
   private @Nullable SimpleExoPlayer         mediaPlayer;
@@ -85,15 +70,6 @@ public class AudioSlidePlayer implements SensorEventListener {
     this.slide                = slide;
     this.listener             = new WeakReference<>(listener);
     this.progressEventHandler = new ProgressEventHandler(this);
-    this.audioManager         = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
-    this.sensorManager        = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
-    this.proximitySensor      = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-
-    if (Build.VERSION.SDK_INT >= 21) {
-      this.wakeLock = ServiceUtil.getPowerManager(context).newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, TAG);
-    } else {
-      this.wakeLock = null;
-    }
   }
 
   public void requestDuration() {
@@ -171,8 +147,6 @@ public class AudioSlidePlayer implements SensorEventListener {
                 mediaPlayer.seekTo((long) (mediaPlayer.getDuration() * progress));
               }
 
-              sensorManager.registerListener(AudioSlidePlayer.this, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
-
               setPlaying(AudioSlidePlayer.this);
             }
 
@@ -185,14 +159,6 @@ public class AudioSlidePlayer implements SensorEventListener {
             synchronized (AudioSlidePlayer.this) {
               getListener().onReceivedDuration(Long.valueOf(mediaPlayer.getDuration()).intValue());
               mediaPlayer = null;
-
-              sensorManager.unregisterListener(AudioSlidePlayer.this);
-
-              if (wakeLock != null && wakeLock.isHeld()) {
-                if (Build.VERSION.SDK_INT >= 21) {
-                  wakeLock.release(PowerManager.RELEASE_FLAG_WAIT_FOR_NO_PROXIMITY);
-                }
-              }
             }
 
             notifyOnStop();
@@ -208,14 +174,6 @@ public class AudioSlidePlayer implements SensorEventListener {
 
         synchronized (AudioSlidePlayer.this) {
           mediaPlayer = null;
-
-          sensorManager.unregisterListener(AudioSlidePlayer.this);
-
-          if (wakeLock != null && wakeLock.isHeld()) {
-            if (Build.VERSION.SDK_INT >= 21) {
-              wakeLock.release(PowerManager.RELEASE_FLAG_WAIT_FOR_NO_PROXIMITY);
-            }
-          }
         }
 
         notifyOnStop();
@@ -243,8 +201,6 @@ public class AudioSlidePlayer implements SensorEventListener {
       this.mediaPlayer.stop();
       this.mediaPlayer.release();
     }
-
-    sensorManager.unregisterListener(AudioSlidePlayer.this);
 
     this.mediaPlayer = null;
   }
@@ -333,49 +289,6 @@ public class AudioSlidePlayer implements SensorEventListener {
     if (playing.isPresent() && playing.get() == player) {
       playing = Optional.absent();
     }
-  }
-
-  @Override
-  public void onSensorChanged(SensorEvent event) {
-    if (event.sensor.getType() != Sensor.TYPE_PROXIMITY) return;
-    if (mediaPlayer == null || mediaPlayer.getPlaybackState() != Player.STATE_READY) return;
-
-    int streamType;
-
-    if (event.values[0] < 5f && event.values[0] != proximitySensor.getMaximumRange()) {
-      streamType = AudioManager.STREAM_VOICE_CALL;
-    } else {
-      streamType = AudioManager.STREAM_MUSIC;
-    }
-
-    if (streamType == AudioManager.STREAM_VOICE_CALL &&
-            getStreamTypeForAudioUsage(mediaPlayer.getAudioAttributes().usage) != streamType &&
-            !audioManager.isWiredHeadsetOn())
-    {
-      double position = mediaPlayer.getCurrentPosition();
-      double duration = mediaPlayer.getDuration();
-      double progress = position / duration;
-
-      if (wakeLock != null) wakeLock.acquire();
-      stop();
-      try {
-        play(progress, true);
-      } catch (IOException e) {
-        Log.w(TAG, e);
-      }
-    } else if (streamType == AudioManager.STREAM_MUSIC &&
-            getStreamTypeForAudioUsage(mediaPlayer.getAudioAttributes().usage) != streamType &&
-            System.currentTimeMillis() - startTime > 500)
-    {
-      if (wakeLock != null) wakeLock.release();
-      stop();
-      notifyOnStop();
-    }
-  }
-
-  @Override
-  public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
   }
 
   public interface Listener {
