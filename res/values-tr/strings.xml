@@ -11,6 +11,8 @@
     <string name="def">Varsayılan</string>
     <string name="custom">Özel</string>
     <string name="none">Hiçbiri</string>
+    <string name="automatic">Otomatik</string>
+    <string name="strict">Katı</string>
     <string name="open">Aç</string>
     <string name="delete">Sil</string>
     <string name="update">Güncelleştir</string>
@@ -161,7 +163,7 @@
     <string name="menu_settings">Ayarlar</string>
     <string name="menu_advanced">Gelişmiş</string>
     <string name="menu_deaddrop">İletişim istekleri</string>
-    <string name="menu_deaddrop_subtitle">Sohbet başlatmak için iletiye basın</string>
+    <string name="menu_deaddrop_subtitle">Sohbete başlamak için iletiye basın</string>
     <string name="menu_view_profile">Profili görüntüle</string>
     <string name="menu_zoom_in">Yakınlaştır</string>
     <string name="menu_zoom_out">Uzaklaştır</string>
@@ -236,9 +238,9 @@
     <string name="chat_new_group_hint">İlk iletiyi oluşturun, diğerlerinin bu grupta yanıtlamasına izin verin.\n\n• Tüm üyeler Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir.</string>
     <string name="chat_record_slide_to_cancel">Vazgeçmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
-    <string name="chat_no_chats_yet_title">Boş gelen kutusu.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
+    <string name="chat_no_chats_yet_title">Boş gelen kutusu.\nYeni bir sohbete başlamak için \"+\" simgesine basın.</string>
     <string name="chat_no_chats_yet_hint">Diğer Delta Chat kullanıcılarıyla ve herhangi bir e-posta adresiyle sohbet edebilirsiniz.</string>
-    <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
+    <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbete başlamak için \"+\" simgesine basın.</string>
     <string name="chat_share_with_title">Paylaş</string>
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlendi</string>
@@ -305,7 +307,7 @@
     <string name="welcome_intro6_message">Tüm yaygın algoritmalarla şifrelenir. İletiler sunucularınızda kalır.</string>
     <string name="welcome_intro7_headline">Güvenilir</string>
     <string name="welcome_intro7_message">Delta Chat, iş kullanımı için güvenli, uyumlu ve standartlar tabanlıdır.</string>
-    <string name="welcome_start_messaging">İletileşme başlat</string>
+    <string name="welcome_start_messaging">İletileşmeye başla</string>
     <string name="login_title">Oturum aç</string>
     <string name="login_header">Sunucunuzda oturum açın</string>
     <string name="login_explain">Varolan bir e-posta hesabıyla oturum açın.</string>
@@ -332,11 +334,15 @@
     <string name="login_error_required_fields">Lütfen geçerli bir e-posta adresi ve bir parola girin</string>
     <string name="import_backup_title">Yedeği içe aktar</string>
     <string name="import_backup_ask">\"%1$s\" üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
-    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için \"İletileşme başlat\"a basın.</string>
+    <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için \"İletileşmeye başla\"ya basın.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">\"%1$s\" olarak oturum açılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">%1$s yanıtı: %2$s\n\nBazı sağlayıcılar gelen kutunuza ek bilgiler yerleştirir; onları örn. web ön ucundan denetleyebilirsiniz. Sorun yaşarsanız sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Geçersiz ana bilgisayar adlarını kabul et</string>
+    <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
 
 
     <!-- share and forward messages -->
@@ -423,7 +429,7 @@
     <string name="pref_backup">Yedekleme</string>
     <string name="pref_backup_explain">Sohbetleri dış depolamaya yedekle</string>
     <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardım eder.\n\nYedek, tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
-    <string name="pref_backup_export_start_button">Yedekleme başlat</string>
+    <string name="pref_backup_export_start_button">Yedeklemeye başla</string>
     <string name="pref_backup_written_to_x">Yedek %1$s üzerine başarıyla yazıldı</string>
     <string name="pref_managekeys_menu_title">Anahtarları yönet</string>
     <string name="pref_managekeys_ask_for_storage_permission">Delta Chat\'in anahtarları içe/dışa aktarmak için dosyalarınıza erişmesi gerekir.</string>
@@ -443,13 +449,13 @@
     <string name="pref_watch_mvbox_folder">DeltaChat klasörünü izle</string>
     <string name="pref_send_copy_to_self">Kendime kopya gönder</string>
     <string name="pref_auto_folder_moves">DeltaChat klasörüne otomatik taşınsın</string>
-    <string name="pref_auto_folder_moves_explain">Sohbetler, Gelen Kutusu klasöründeki dağınıklığı önlemek için taşınır</string>
+    <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu klasöründeki dağınıklığı önlemek için taşınır</string>
     <string name="pref_email_interaction_title">E-posta etkileşimi</string>
     <string name="pref_show_emails">Klasik e-postaları göster</string>
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
-    <string name="pref_show_emails_accepted_contacts">Onaylanan kişiler için</string>
+    <string name="pref_show_emails_accepted_contacts">Kabul edilen kişiler için</string>
     <string name="pref_show_emails_all">Tümü</string>
-    <string name="pref_empty_server_title">TEHLİKELİ BÖLGE: E-postaları sunucudan sil</string>
+    <string name="pref_empty_server_title">E-postaları sunucudan sil</string>
     <string name="pref_empty_server_msg">Bu işlev, verilen klasörlerdeki sohbet iletilerini kapsayıp TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
     <string name="pref_empty_server_inbox">Gelen Kutusu klasöründeki tüm e-postaları sil</string>
     <string name="pref_empty_server_mvbox">DeltaChat klasöründeki tüm e-postaları sil</string>
@@ -556,10 +562,10 @@
     <string name="perm_explain_need_for_mic_access">Sesli iletiler göndermek için Delta Chat\'in mikrofonunuza erişmesine izin verin.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat\'in dosyaları dışa aktarmak ya da yedekler oluşturmak için dosyalarınıza erişmesi gerekir.</string>
     <string name="perm_explain_need_for_storage_access_share">Delta Chat\'in seçilen dosyaları paylaşmak için dosyalarınıza erişmesi gerekir.</string>
-    <string name="perm_explain_access_to_camera_denied">Delta Chat, fotoğraflar ya da videolar çekmek için kamera izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Kamera\"yı etkinleştirin.</string>
-    <string name="perm_explain_access_to_mic_denied">Delta Chat, sesli iletiler göndermek için Mikrofon izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat; fotoğrafları, videoları ya da sesleri iliştirmek ya da dışa aktarmak için depolama izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
-    <string name="perm_explain_access_to_location_denied">Delta Chat, bir konum iliştirmek için Konum izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat, fotoğraflar ya da videolar çekmek için kamera izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne sürdürün, \"İzinler\"i seçin ve \"Kamera\"yı etkinleştirin.</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat, sesli iletiler göndermek için Mikrofon izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarlarına sürdürün, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat; fotoğrafları, videoları ya da sesleri iliştirmek ya da dışa aktarmak için depolama izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne sürdürün, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat, bir konum iliştirmek için Konum izni gerektirir ama kalıcı olarak reddedildi. Lütfen uygulama ayarları menüsüne sürdürün, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat artalandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
 

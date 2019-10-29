@@ -54,7 +54,7 @@
             android:title="On-demand location streaming"/>
 
         <Preference android:key="pref_empty_server_folders"
-                    android:title="Delete e-mails from server" />
+                    android:title="@string/pref_empty_server_title" />
 
     </PreferenceCategory>
 

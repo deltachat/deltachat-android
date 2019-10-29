@@ -286,7 +286,6 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">La resposta de%1$s ha sigut: %2$s\n\nHi ha proveïdors que posen informació addicional a la vostra safata d\'entrada; podeu trobar-la allà p. ex. usant la interfície de correu web. Consulteu el vostre proveïdor o els vostres amics si teniu problemes.</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenvia a ...</string>

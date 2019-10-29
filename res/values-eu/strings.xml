@@ -338,7 +338,6 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">%1$s(r)en erantzuna: %2$s\n\nHornitzaile batzuk informazio gehigarria uzten dute zure sarrera ontzian; adibidez bere web interfazearen bidez egiaztatu dezakezu. Galdetu zure hornitzaileari edo lagunei arazoak badituzu.</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
@@ -449,7 +448,7 @@
     <string name="pref_show_emails_no">Ez, txatak besterik ez</string>
     <string name="pref_show_emails_accepted_contacts">Onartutako kontaktuena</string>
     <string name="pref_show_emails_all">Denak</string>
-    <string name="pref_empty_server_title">ARRISKUTSUA: Ezabatu e-mailak zerbitzaritik</string>
+    <string name="pref_empty_server_title">Ezabatu e-mailak zerbitzaritik</string>
     <string name="pref_empty_server_msg">Funtzio honek IMAP zerbitzarian espazioa aurreztea ahalbidetzen dizu karpeta zehatzetako e-mail GUZTIAK ezabatuz, txatetako mezuak barne. Gailu honetako mezuak ez dira ezabatuko. Behin ezabatuta ezin dira berreskuratu!</string>
     <string name="pref_empty_server_inbox">Ezabatu sarrera ontziko e-mail GUZTIAK</string>
     <string name="pref_empty_server_mvbox">Ezabatu DeltaChat karpetako e-mail GUZTIAK</string>

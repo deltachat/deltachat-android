@@ -11,6 +11,8 @@
     <string name="def">Standard</string>
     <string name="custom">Benutzerdefiniert</string>
     <string name="none">Keine</string>
+    <string name="automatic">Automatisch</string>
+    <string name="strict">Strikt</string>
     <string name="open">Öffnen</string>
     <string name="delete">Löschen</string>
     <string name="update">Aktualisieren</string>
@@ -340,6 +342,10 @@
 
 Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.B. im Web-Frontend abrufen können. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
 
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Ungültige Hostnamen akzeptieren</string>
+    <string name="accept_invalid_certificates">Ungültige Zertifikate akzeptieren</string>
+
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -451,7 +457,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_show_emails_no">Nein, nur Chats</string>
     <string name="pref_show_emails_accepted_contacts">Akzeptierte Kontakte</string>
     <string name="pref_show_emails_all">Alle</string>
-    <string name="pref_empty_server_title">ACHTUNG: E-Mails vom Server löschen!</string>
+    <string name="pref_empty_server_title">E-Mails vom Server löschen!</string>
     <string name="pref_empty_server_msg">Mit dieser Funktion können Sie Speicherplatz auf Ihrem IMAP-Server freigeben, indem Sie ALLE E-Mails, einschließlich Chat-Nachrichten, in den angegebenen Ordnern löschen. Nachrichten auf diesem Gerät werden nicht gelöscht. Die Löschung kann nicht rückgängig gemacht werden!</string>
     <string name="pref_empty_server_inbox">Löschen ALLER e-mails im Nachrichteneingangsordner (INBOX)</string>
     <string name="pref_empty_server_mvbox">Löschen ALLER e-mails im DeltaChat Ordner.</string>
@@ -647,7 +653,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="a11y_delivery_status_draft">Übertragungsstatus: Entwurf</string>
     <string name="a11y_delivery_status_delivered">Übertragungsstatus: Versendet</string>
     <string name="a11y_delivery_status_read">Übertragungsstatus: Gelesen</string>
-    <string name="a11y_delivery_status_invalid">Übertragungsstatus: Unzulässig</string>
+    <string name="a11y_delivery_status_invalid">Übertragungsstatus: Ungültig</string>
     <string name="a11y_remove_account_btn_label">E-Mail-Konto löschen</string>
     <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>

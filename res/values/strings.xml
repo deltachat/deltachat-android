@@ -455,7 +455,7 @@
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
     <string name="pref_show_emails_all">All</string>
-    <string name="pref_empty_server_title">DANGER ZONE: Delete e-mails from server</string>
+    <string name="pref_empty_server_title">Delete e-mails from server</string>
     <string name="pref_empty_server_msg">This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted.  The deletion cannot be undone!</string>
     <string name="pref_empty_server_inbox">Delete all e-mails in Inbox folder</string>
     <string name="pref_empty_server_mvbox">Delete all e-mails in DeltaChat folder</string>

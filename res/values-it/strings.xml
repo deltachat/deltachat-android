@@ -338,7 +338,6 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni provider inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il provider o i tuoi amici se riscontri problemi.</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Inotra a...</string>
@@ -365,6 +364,7 @@
     <string name="pref_blocked_contacts">Contatti bloccati</string>
     <string name="pref_profile_photo_remove_ask">Rimuvere la foto profilo?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
+    <string name="pref_password_and_account_settings">Password e account</string>
     <string name="pref_who_can_see_this_information">Chi può vedere queste informazioni?</string>
     <string name="pref_who_can_see_profile_explain">L\'immagine del tuo profilo e il tuo nome saranno mostrati insieme ai tuoi messaggi quando comunichi con altri utenti. Le informazioni già inviate non possono essere cancellate o rimosse.</string>
     <string name="pref_your_name">Il tuo nome</string>
@@ -447,7 +447,7 @@
     <string name="pref_show_emails_no">No, solo chat</string>
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
     <string name="pref_show_emails_all">Tutte</string>
-    <string name="pref_empty_server_title">ATTENZIONE: Elimina email dal server</string>
+    <string name="pref_empty_server_title">Elimina email dal server</string>
     <string name="pref_empty_server_msg">Questa funzione permette di liberare spazio sul server IMAP eliminando TUTTE le email, inclusi i messaggi di chat, nelle cartelle selezionate. I messaggi su questo dispositivo non saranno eliminati. L\'eliminazione non è annullabile!</string>
     <string name="pref_empty_server_inbox">Elimina TUTTE le email nella cartella In Arrivo</string>
     <string name="pref_empty_server_mvbox">Elimina TUTTE le email nella cartella DeltaChat</string>

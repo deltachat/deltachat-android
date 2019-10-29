@@ -11,6 +11,8 @@
     <string name="def">По умолчанию</string>
     <string name="custom">Персональная настройка</string>
     <string name="none">Не задано</string>
+    <string name="automatic">Автоматически</string>
+    <string name="strict">Строго</string>
     <string name="open">Открыть</string>
     <string name="delete">Удалить</string>
     <string name="update">Обновить</string>
@@ -360,6 +362,10 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Ответ сервера %1$s: %2$s\n\nНекоторые серверы электронной почты сохраняют дополнительную информацию в папке «Входящие». Вы можете проверить эту папку, например, используя доступ через веб-интерфейс. Если Вы столкнулись с проблемами, проконсультируйте с провайдером электронной почты или знакомым специалистом.</string>
 
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Принимать сертификаты с неверным именем хоста</string>
+    <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
+
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -471,7 +477,7 @@
     <string name="pref_show_emails_no">Нет, только чаты</string>
     <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
     <string name="pref_show_emails_all">Все</string>
-    <string name="pref_empty_server_title">ОПАСНАЯ ЗОНА: Удалить электронную почту с сервера</string>
+    <string name="pref_empty_server_title">Удалить электронную почту с сервера</string>
     <string name="pref_empty_server_msg">Эта функция помогает освободить место на сервере IMAP, удаляя ВСЕ сообщения электронной почты, включая чат-сообщения, в указанных папках. Сообщения на этом устройстве не удалятся. Удаление не может быть отменено!</string>
     <string name="pref_empty_server_inbox">Удалить ВСЕ сообщения электронной почты в папке «Входящие»</string>
     <string name="pref_empty_server_mvbox">Удалить ВСЕ сообщения электронной почты в папке DeltaChat</string>

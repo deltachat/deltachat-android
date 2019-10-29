@@ -338,7 +338,6 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t\’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Përcilljani …</string>
@@ -449,7 +448,7 @@
     <string name="pref_show_emails_no">Jo, vetëm fjalosje</string>
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>
     <string name="pref_show_emails_all">Krejt</string>
-    <string name="pref_empty_server_title">ZONË ME RREZIK: Fshini email-e që nga shërbyesi</string>
+    <string name="pref_empty_server_title">Fshini email-e që nga shërbyesi</string>
     <string name="pref_empty_server_msg">Ky funksion ndihmon të lironi hapësirë te shërbyesi juaj IMAP përmes fshirjes së KREJT email-eve, përfshi mesazhe bisedash, te dosjet e dhëna. Mesazhet në këtë pajisje s’do të fshihen.  Fshirja s’mund të zhbëhet!</string>
     <string name="pref_empty_server_inbox">Fshiji KREJT email-et te dosja e të Marrëve</string>
     <string name="pref_empty_server_mvbox">Fshiji KREJT email-et te dosja DeltaChat</string>

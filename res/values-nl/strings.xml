@@ -11,6 +11,8 @@
     <string name="def">Standaard</string>
     <string name="custom">Aangepast</string>
     <string name="none">Geen</string>
+    <string name="automatic">Automatisch</string>
+    <string name="strict">Strikt</string>
     <string name="open">Openen</string>
     <string name="delete">Verwijderen</string>
     <string name="update">Bijwerken</string>
@@ -338,6 +340,10 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in, bijv., de webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
 
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Ongeldige hostnamen accepteren</string>
+    <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
+
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -449,7 +455,7 @@
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
     <string name="pref_show_emails_all">Alles</string>
-    <string name="pref_empty_server_title">GEVARENZONE: e-mails verwijderen van server</string>
+    <string name="pref_empty_server_title">e-mails verwijderen van server</string>
     <string name="pref_empty_server_msg">Deze optie helpt je ruimte vrij te maken op je IMAP-server door ALLE e-mails, inclusief gesprekken, te verwijderen uit de opgegeven mappen. Berichten op dit apparaat worden niet verwijderd. Deze actie kan niet ongedaan worden gemaakt!</string>
     <string name="pref_empty_server_inbox">Alle e-mails verwijderen uit Postvak IN</string>
     <string name="pref_empty_server_mvbox">Alle e-mails verwijderen uit DeltaChat-map</string>

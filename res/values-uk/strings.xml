@@ -287,7 +287,6 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Відповідь сервера %1$s: %2$s\n\nДеякі сервери електронної пошти зберігають додаткову інформацію у папці «Вхідні». Ви можете перевірити цю папку, наприклад, використовуючи доступ через веб-інтерфейс. Якщо Ви зіткнулися з проблемами, проконсультуйтеся з провайдером електронної пошти або знайомими фахівцями.</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслати...</string>
