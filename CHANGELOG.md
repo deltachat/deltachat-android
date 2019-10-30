@@ -4,7 +4,7 @@
 2019-10-30
 
 * re-implement "delete mails from server"
-* if "Show class emails" is set to "All",
+* if "Show classic emails" is set to "All",
   emails pop up as contact requests directly in the chatlist
 * fix android9 voice-recording issues
 * update translations
