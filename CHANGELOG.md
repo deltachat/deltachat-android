@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v0.940.0
+## v0.940.1
 2019-10-30
 
 * re-implement "delete mails from server"
