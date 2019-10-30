@@ -156,7 +156,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             certCheck.setSelection(certCheckFlags);
         }
 
-        DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+        DcHelper.getContext(this).eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
     }
 
     @Override
