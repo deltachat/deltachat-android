@@ -1,3 +1,4 @@
+echo "starting time: `date`"
 cd jni/deltachat-core-rust
 
 # to setup the toolchains (from https://medium.com/visly/rust-on-android-19f34a2fb43 )
@@ -52,3 +53,4 @@ cp deltachat-core-rust/target/x86_64-linux-android/release/libdeltachat.a x86_64
 echo -- ndk-build --
 cd ..
 ndk-build
+echo "ending time: `date`"
