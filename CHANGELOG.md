@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v0.940.0
+2019-10-30
+
+* re-implement "delete mails from server"
+* if "Show class emails" is set to "All",
+  emails pop up as contact requests directly in the chatlist
+* fix android9 voice-recording issues
+* update translations
+* various bug fixes
+
+
 ## v0.930.2
 2019-10-22
 
