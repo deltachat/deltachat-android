@@ -1,7 +1,7 @@
 # Delta Chat Android Changelog
 
-## v0.940.1
-2019-10-30
+## v0.940.2
+2019-10-31
 
 * re-implement "delete mails from server"
 * if "Show classic emails" is set to "All",
