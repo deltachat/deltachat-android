@@ -26,33 +26,6 @@ public class TimerReceiver extends BroadcastReceiver {
 
         Log.i("DeltaChat", "-------------------- on receive timer --------------------");
 
-        scheduleNextAlarm(context);
-
-        ApplicationDcContext dcContext = DcHelper.getContext(context);
-
-        dcContext.startThreads(ApplicationDcContext.INTERRUPT_IDLE);
-        dcContext.waitForThreadsRunning();
-    }
-
-    public static void scheduleNextAlarm(Context context)
-    {
-        try {
-            Intent intent = new Intent(context, TimerReceiver.class);
-            PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-
-            long triggerAtMillis = System.currentTimeMillis() + 5 * 60 * 1000;
-
-            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Activity.ALARM_SERVICE);
-            if( Build.VERSION.SDK_INT >= 23 ) {
-                // a simple AlarmManager.set() is no longer send in the new DOZE mode
-                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis, alarmIntent);
-            }
-            else {
-                alarmManager.set(AlarmManager.RTC_WAKEUP, triggerAtMillis, alarmIntent);
-            }
-        }
-        catch(Exception e) {
-            Log.e("DeltaChat", "Cannot create alarm.", e);
-        }
+        TimerIntentService.enqueueWork(context.getApplicationContext(), intent);
     }
 }

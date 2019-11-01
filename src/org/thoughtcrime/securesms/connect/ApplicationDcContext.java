@@ -93,7 +93,7 @@ public class ApplicationDcContext extends DcContext {
     new ForegroundDetector(ApplicationContext.getInstance(context));
     startThreads(0);
 
-    TimerReceiver.scheduleNextAlarm(context);
+    TimerIntentService.scheduleNextAlarm(context);
 
     BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
     context.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
