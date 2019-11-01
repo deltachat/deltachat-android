@@ -32,7 +32,7 @@ public class TimerIntentService extends JobIntentService {
             Intent intent = new Intent(context, TimerReceiver.class);
             PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
-            long triggerAtMillis = System.currentTimeMillis() + 10000;//5 * 60 * 1000;
+            long triggerAtMillis = System.currentTimeMillis() + 5 * 60 * 1000;
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Activity.ALARM_SERVICE);
             if( Build.VERSION.SDK_INT >= 23 ) {
                 // a simple AlarmManager.set() is no longer send in the new DOZE mode
