@@ -351,6 +351,7 @@
             android:textSize="16sp"
             android:textStyle="normal"
             android:typeface="sans"
+            android:paddingTop="16dp"
             android:paddingBottom="32dp"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
