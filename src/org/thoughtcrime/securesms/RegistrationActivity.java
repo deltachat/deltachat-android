@@ -67,6 +67,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     Spinner imapSecurity;
     Spinner smtpSecurity;
     Spinner authMethod;
+    Spinner certCheck;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -89,6 +90,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         imapSecurity = findViewById(R.id.imap_security);
         smtpSecurity = findViewById(R.id.smtp_security);
         authMethod = findViewById(R.id.auth_method);
+        certCheck = findViewById(R.id.cert_check);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -132,26 +134,29 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             smtpServerInput.setText(DcHelper.get(this, CONFIG_SEND_SERVER));
             smtpPortInput.setText(DcHelper.get(this, CONFIG_SEND_PORT));
 
-            int server_flags = DcHelper.getInt(this, "server_flags", 0);
+            int serverFlags = DcHelper.getInt(this, "server_flags", 0);
 
             int sel = 0;
-            if((server_flags&DcContext.DC_LP_IMAP_SOCKET_SSL)!=0) sel = 1;
-            if((server_flags&DcContext.DC_LP_IMAP_SOCKET_STARTTLS)!=0) sel = 2;
-            if((server_flags&DcContext.DC_LP_IMAP_SOCKET_PLAIN)!=0) sel = 3;
+            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_SSL)!=0) sel = 1;
+            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_STARTTLS)!=0) sel = 2;
+            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_PLAIN)!=0) sel = 3;
             imapSecurity.setSelection(sel);
 
             sel = 0;
-            if((server_flags&DcContext.DC_LP_SMTP_SOCKET_SSL)!=0) sel = 1;
-            if((server_flags&DcContext.DC_LP_SMTP_SOCKET_STARTTLS)!=0) sel = 2;
-            if((server_flags&DcContext.DC_LP_SMTP_SOCKET_PLAIN)!=0) sel = 3;
+            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_SSL)!=0) sel = 1;
+            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_STARTTLS)!=0) sel = 2;
+            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_PLAIN)!=0) sel = 3;
             smtpSecurity.setSelection(sel);
 
             sel = 0;
-            if((server_flags&DcContext.DC_LP_AUTH_OAUTH2)!=0) sel = 1;
+            if((serverFlags&DcContext.DC_LP_AUTH_OAUTH2)!=0) sel = 1;
             authMethod.setSelection(sel);
+
+            int certCheckFlags = DcHelper.getInt(this, "imap_certificate_checks");
+            certCheck.setSelection(certCheckFlags);
         }
 
-        DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+        DcHelper.getContext(this).eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
     }
 
     @Override
@@ -433,6 +438,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         if(smtpSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_SMTP_SOCKET_PLAIN;
         if(authMethod.getSelectedItemPosition()==1)   server_flags |= DcContext.DC_LP_AUTH_OAUTH2;
         DcHelper.getContext(this).setConfigInt("server_flags", server_flags);
+
+        DcHelper.getContext(this).setConfigInt("smtp_certificate_checks", certCheck.getSelectedItemPosition());
+        DcHelper.getContext(this).setConfigInt("imap_certificate_checks", certCheck.getSelectedItemPosition());
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
