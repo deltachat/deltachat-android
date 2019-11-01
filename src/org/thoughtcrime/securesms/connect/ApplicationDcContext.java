@@ -133,7 +133,6 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(17, context.getString(R.string.systemmsg_member_added));
     setStockTranslation(18, context.getString(R.string.systemmsg_member_removed));
     setStockTranslation(19, context.getString(R.string.systemmsg_group_left));
-    setStockTranslation(20, context.getString(R.string.error_x));
     setStockTranslation(23, context.getString(R.string.gif));
     setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
     setStockTranslation(31, context.getString(R.string.systemmsg_read_receipt_subject));
