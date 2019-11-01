@@ -338,6 +338,11 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t\’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>
 
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Prano strehëemra të pavlefshëm</string>
+    <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
+
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Përcilljani …</string>
