@@ -11,6 +11,8 @@
     <string name="def">Parazgjedhje</string>
     <string name="custom">Vetjake</string>
     <string name="none">Asnjë</string>
+    <string name="automatic">Automatike</string>
+    <string name="strict">Strikt</string>
     <string name="open">Hap</string>
     <string name="delete">Fshije</string>
     <string name="update">Përditësoje</string>
@@ -326,6 +328,7 @@
     <string name="login_info_oauth2_title">Të vazhdohet me rregullimin e thjeshtuar?</string>
     <string name="login_info_oauth2_text">Adresa email e dhënë mbulon një ujdisje të thjeshtuar (OAuth2).\n\nNë hapin pasues, ju lutemi, lejojeni Delta Chat-in të veprojë si aplikacioni juaj për Fjalosje Përmes Email-i.\n\nS\’ka shërbyes Delta Chat, të dhënat tuaja rrinë në pajisjen tuaj!</string>
     <string name="login_info_gmail_text">Për llogari GMail lypset të krijoni një App-Password, nëse keni të aktivizuar mirëfilltësimin dyfaktorësh. Nëse ky rregullim s\’gjendet, lypset të aktivizoni Aplikacione Më Pak të Sigurta.</string>
+    <string name="login_certificate_checks">Kontrolle dëshmish</string>
     <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
     <string name="login_error_server">Ju lutemi, jepni një shërbyes / adresë IP të vlefshme</string>
     <string name="login_error_port">Ju lutemi, jepni një portë të vlefshme (1–65535)</string>

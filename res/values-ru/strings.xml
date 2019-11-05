@@ -174,7 +174,7 @@
     <string name="menu_edit_group_image">Редактировать изображение группы</string>
     <string name="menu_settings">Настройки</string>
     <string name="menu_advanced">Дополнительные параметры</string>
-    <string name="menu_deaddrop">Запросы на общение</string>
+    <string name="menu_deaddrop">Запросы контактов</string>
     <string name="menu_deaddrop_subtitle">Нажмите на сообщение, чтобы начать чат</string>
     <string name="menu_view_profile">Просмотреть профиль</string>
     <string name="menu_zoom_in">Увеличить масштаб</string>
@@ -345,11 +345,12 @@
     <string name="login_smtp_password">SMTP пароль</string>
     <string name="login_smtp_server">SMTP сервер</string>
     <string name="login_smtp_port">SMTP порт</string>
-    <string name="login_smtp_security">Настройки безопасности SMTP</string>
+    <string name="login_smtp_security">Параметры безопасности SMTP</string>
     <string name="login_auth_method">Метод авторизации</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth2).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
     <string name="login_info_gmail_text">Для аккаунтов GMail необходимо задать пароль для приложений - App-Password , если включена 2FA двухфакторная аутентификация. Если эти настройки недоступны, вам нужно активировать параметр Less Secure Apps.</string>
+    <string name="login_certificate_checks">Проверки сертификатов</string>
     <string name="login_error_mail">Укажите действительный адрес эл. почты</string>
     <string name="login_error_server">Укажите действительный сервер / IP адрес</string>
     <string name="login_error_port">Укажите действительный порт (1-65535)</string>
@@ -513,7 +514,7 @@
     <string name="systemmsg_group_image_deleted">Изображение группы удалено.</string>
     <string name="systemmsg_member_added">Добавлен участник %1$s.</string>
     <string name="systemmsg_member_removed">Участник %1$s удалён.</string>
-    <string name="systemmsg_group_left">Вы покинули группу.</string>
+    <string name="systemmsg_group_left">Группа покинута.</string>
     <string name="systemmsg_read_receipt_subject">Уведомление о прочтении</string>
     <string name="systemmsg_read_receipt_body">Это подтверждение того, что сообщение \"%1$s\" было открыто на устройстве получателя. Данное подтверждение не означает, что сообщение было прочитано.</string>
     <string name="systemmsg_cannot_decrypt">Это сообщение не может быть расшифровано.\n\n• Возможно, это уже поможет просто ответить на это сообщение и попросить отправителя отправить сообщение еще раз.\n\n • В случае, если вы переустановили Delta Chat или другую почтовую программу на этом или другом устройство, с которого вы, возможно, захотите отправить оттуда Сообщение с параметрами Autocrypt.</string>
@@ -619,7 +620,7 @@
     <string name="write_message_desktop">Напишите сообщение</string>
     <string name="encryption_info_title_desktop">Информация о шифровании</string>
     <string name="contact_detail_title_desktop">Детали контакта</string>
-    <string name="contact_request_title_desktop">Запрос на общение</string>
+    <string name="contact_request_title_desktop">Запрос контакта</string>
     <string name="delete_message_desktop">Удалить сообщение</string>
     <string name="more_info_desktop">Больше информации</string>
     <string name="logout_desktop">Выйти</string>

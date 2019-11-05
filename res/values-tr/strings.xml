@@ -328,6 +328,7 @@
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
     <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth2) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta ile Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucusu yoktur; verileriniz aygıtınızda kalır!</string>
     <string name="login_info_gmail_text">Gmail hesapları için 2FA\'yı etkinleştirdiyseniz, bir uygulama parolası oluşturmanız gerekir. Bu ayar kullanılabilir değilse, Güvenliği Düşük Uygulamalar\'ı etkinleştirmeniz gerekir.</string>
+    <string name="login_certificate_checks">Sertifika denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
     <string name="login_error_port">Lütfen geçerli bir bağlantı noktası (1–65535) girin</string>

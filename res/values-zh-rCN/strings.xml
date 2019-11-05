@@ -317,6 +317,7 @@
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth2）。\n\n在下一个步骤中，请允许Delta Chat作为您的电子邮件聊天应用。\n\n不存在Delta Chat服务器，您的数据保留于您的设备！</string>
     <string name="login_info_gmail_text">对于GMail帐户，如果您启用了2FA，则需要创建App-Password。 如果此设置不可用，您需要启用Less Secure Apps。</string>
+    <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
     <string name="login_error_server">请输入有效的服务器/IP地址</string>
     <string name="login_error_port">请输入有效的端口（1-65535）</string>

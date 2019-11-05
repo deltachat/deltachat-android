@@ -11,6 +11,8 @@
     <string name="def">Lehenetsita</string>
     <string name="custom">Pertsonalizatua</string>
     <string name="none">Bat ere ez</string>
+    <string name="automatic">Automatikoa</string>
+    <string name="strict">Zorrotza</string>
     <string name="open">Ireki</string>
     <string name="delete">Ezabatu</string>
     <string name="update">Eguneratu</string>
@@ -326,6 +328,7 @@
     <string name="login_info_oauth2_title">Jarraitu ezarpen sinplifikatuarekin</string>
     <string name="login_info_oauth2_text">Sartu duzun e-mail helbideak ezarpen sinplifikatua onartzen du (OAuth2).\n\nHurrengo urratsean, baimendu Detla Chat zure e-mail bidezko txat aplikazio gisa erabili ahal izateko.\n\nEz dago Delta Chat zerbitzaririk, zure datuak zure gailuan mantentzen dira!</string>
     <string name="login_info_gmail_text">GMail kontu bat erabiltzeko Aplikazio-pasahitza sortu behar duzu 2FA aktibatuta baduzu. Ezarpen hau eskuragarri ez baduzu, aplikazio ez hain seguruak gaitu behar dituzu.</string>
+    <string name="login_certificate_checks">Ziurtagiri-egiaztaketak</string>
     <string name="login_error_mail">Sartu baliozko e-mail helbide bat</string>
     <string name="login_error_server">Sartu baliozko zerbitzari / IP helbide bat</string>
     <string name="login_error_port">Sartu baliozko ataka bat  (1–65535)</string>
@@ -337,6 +340,11 @@
     <string name="login_error_cannot_login">Ezin da \"%1$s\" bezala saioa hasi. Egiaztatu E-mail helbidea eta pasahitza zuzenak diren.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">%1$s(r)en erantzuna: %2$s\n\nHornitzaile batzuk informazio gehigarria uzten dute zure sarrera ontzian; adibidez bere web interfazearen bidez egiaztatu dezakezu. Galdetu zure hornitzaileari edo lagunei arazoak badituzu.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Onartu ostalari izen baliogabeak</string>
+    <string name="accept_invalid_certificates">Onartu ziurtagiri baliogabeak</string>
+
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
