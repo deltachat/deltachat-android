@@ -656,6 +656,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendTextMsg(JNIEnv *env, jobjec
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_addDeviceMsg(JNIEnv *env, jobject obj, jobject msg)
+{
+	return dc_add_device_msg(get_dc_context(env, obj), get_dc_msg(env, msg));
+}
+
+
 /* DcContext - handle config */
 
 JNIEXPORT void Java_com_b44t_messenger_DcContext_setConfig(JNIEnv *env, jobject obj, jstring key, jstring value /*may be NULL*/)
@@ -1055,6 +1061,18 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isUnpromoted(JNIEnv *env, jobj
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isSelfTalk(JNIEnv *env, jobject obj)
 {
 	return dc_chat_is_self_talk(get_dc_chat(env, obj))!=0;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isDeviceTalk(JNIEnv *env, jobject obj)
+{
+	return dc_chat_is_device_talk(get_dc_chat(env, obj))!=0;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_canSend(JNIEnv *env, jobject obj)
+{
+	return dc_chat_can_send(get_dc_chat(env, obj))!=0;
 }
 
 

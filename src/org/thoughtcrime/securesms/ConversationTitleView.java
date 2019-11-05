@@ -136,6 +136,9 @@ public class ConversationTitleView extends RelativeLayout {
         if( dcChat.isSelfTalk() ) {
           subtitle = context.getString(R.string.chat_self_talk_subtitle);
         }
+        else if( dcChat.isDeviceTalk() ) {
+          subtitle = context.getString(R.string.device_talk_subtitle);
+        }
         else {
           subtitle = dcContext.getContact(chatContacts[0]).getAddr();
         }
