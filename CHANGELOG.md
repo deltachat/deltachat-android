@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v0.950.0
+2019-11-05
+
+* add "Certificate checks" options to "Login / Advanced"
+* update translations
+* bug fixes
+
 ## v0.940.2
 2019-10-31
 
