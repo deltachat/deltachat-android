@@ -840,8 +840,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       conversationContainer.setClipToPadding(true);
     }
 
-    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
+    if (!dcChat.canSend()) {
       composePanel.setVisibility(View.GONE);
+    }
+
+    if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       titleView.hideAvatar();
     }
   }
