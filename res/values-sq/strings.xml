@@ -11,6 +11,8 @@
     <string name="def">Parazgjedhje</string>
     <string name="custom">Vetjake</string>
     <string name="none">Asnjë</string>
+    <string name="automatic">Automatike</string>
+    <string name="strict">Strikt</string>
     <string name="open">Hap</string>
     <string name="delete">Fshije</string>
     <string name="update">Përditësoje</string>
@@ -326,6 +328,7 @@
     <string name="login_info_oauth2_title">Të vazhdohet me rregullimin e thjeshtuar?</string>
     <string name="login_info_oauth2_text">Adresa email e dhënë mbulon një ujdisje të thjeshtuar (OAuth2).\n\nNë hapin pasues, ju lutemi, lejojeni Delta Chat-in të veprojë si aplikacioni juaj për Fjalosje Përmes Email-i.\n\nS\’ka shërbyes Delta Chat, të dhënat tuaja rrinë në pajisjen tuaj!</string>
     <string name="login_info_gmail_text">Për llogari GMail lypset të krijoni një App-Password, nëse keni të aktivizuar mirëfilltësimin dyfaktorësh. Nëse ky rregullim s\’gjendet, lypset të aktivizoni Aplikacione Më Pak të Sigurta.</string>
+    <string name="login_certificate_checks">Kontrolle dëshmish</string>
     <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
     <string name="login_error_server">Ju lutemi, jepni një shërbyes / adresë IP të vlefshme</string>
     <string name="login_error_port">Ju lutemi, jepni një portë të vlefshme (1–65535)</string>
@@ -337,6 +340,10 @@
     <string name="login_error_cannot_login">S\’bëhet dot hyrja si %1$s. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t\’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Prano strehëemra të pavlefshëm</string>
+    <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
 
 
     <!-- share and forward messages -->
@@ -449,7 +456,7 @@
     <string name="pref_show_emails_no">Jo, vetëm fjalosje</string>
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>
     <string name="pref_show_emails_all">Krejt</string>
-    <string name="pref_empty_server_title">ZONË ME RREZIK: Fshini email-e që nga shërbyesi</string>
+    <string name="pref_empty_server_title">Fshini email-e që nga shërbyesi</string>
     <string name="pref_empty_server_msg">Ky funksion ndihmon të lironi hapësirë te shërbyesi juaj IMAP përmes fshirjes së KREJT email-eve, përfshi mesazhe bisedash, te dosjet e dhëna. Mesazhet në këtë pajisje s’do të fshihen.  Fshirja s’mund të zhbëhet!</string>
     <string name="pref_empty_server_inbox">Fshiji KREJT email-et te dosja e të Marrëve</string>
     <string name="pref_empty_server_mvbox">Fshiji KREJT email-et te dosja DeltaChat</string>

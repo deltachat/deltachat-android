@@ -202,8 +202,6 @@
 
         <item name="pref_icon_tint">@color/delta_primary_dark</item>
 
-        <item name="pref_divider">@drawable/preference_divider_light</item>
-
         <item name="group_members_dialog_icon">@drawable/ic_group_grey600_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.Fix</item>
 
@@ -347,8 +345,6 @@
         <item name="reminder_header_background">@color/delta_primary_dark</item>
 
         <item name="pref_icon_tint">@color/core_white</item>
-
-        <item name="pref_divider">@drawable/preference_divider_dark</item>
 
         <item name="group_members_dialog_icon">@drawable/ic_group_white_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.Fix</item>

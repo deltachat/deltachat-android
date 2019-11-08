@@ -7,7 +7,7 @@
                             android:title="@string/pref_notifications"
                             android:defaultValue="true" />
 
-        <org.thoughtcrime.securesms.preferences.widgets.SignalPreference
+        <Preference
                 android:dependency="pref_key_enable_notifications"
                 android:key="pref_key_ringtone"
                 android:title="@string/pref_sound"
@@ -20,7 +20,7 @@
                             android:defaultValue="true"
                             android:title="@string/pref_vibrate"/>
 
-        <org.thoughtcrime.securesms.preferences.widgets.LEDColorListPreference
+        <ListPreference
             android:key="pref_led_color"
             android:defaultValue="purple"
             android:title="@string/pref_led_color"
@@ -28,7 +28,7 @@
             android:entries="@array/pref_led_color_entries"
             android:entryValues="@array/pref_led_color_values" />
 
-        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
+        <ListPreference
             android:key="pref_led_blink"
             android:defaultValue="500,2000"
             android:title="@string/pref_led_pattern"
@@ -42,7 +42,7 @@
                             android:dependency="pref_key_enable_notifications"
                             android:defaultValue="true" />
 
-        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
+        <ListPreference
                 android:key="pref_notification_privacy"
                 android:title="@string/pref_notifications_show"
                 android:dependency="pref_key_enable_notifications"
@@ -50,7 +50,7 @@
                 android:entries="@array/pref_notification_privacy_entries"
                 android:entryValues="@array/pref_notification_privacy_values"/>
 
-        <org.thoughtcrime.securesms.preferences.widgets.ListPreferenceWithSummary
+        <ListPreference
                 android:key="pref_notification_priority"
                 android:title="@string/pref_notifications_priority"
                 android:dependency="pref_key_enable_notifications"

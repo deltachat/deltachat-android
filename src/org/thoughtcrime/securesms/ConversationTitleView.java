@@ -1,8 +1,8 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,7 +17,6 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
@@ -135,6 +134,9 @@ public class ConversationTitleView extends RelativeLayout {
       } else if( chatContacts.length>=1 ) {
         if( dcChat.isSelfTalk() ) {
           subtitle = context.getString(R.string.chat_self_talk_subtitle);
+        }
+        else if( dcChat.isDeviceTalk() ) {
+          subtitle = context.getString(R.string.device_talk_subtitle);
         }
         else {
           subtitle = dcContext.getContact(chatContacts[0]).getAddr();

@@ -1,11 +1,43 @@
 # Delta Chat Android Changelog
 
+## v0.950.0
+2019-11-05
+
+* add "Certificate checks" options to "Login / Advanced"
+* update translations
+* bug fixes
+
+## v0.940.2
+2019-10-31
+
+* re-implement "delete mails from server"
+* if "Show classic emails" is set to "All",
+  emails pop up as contact requests directly in the chatlist
+* fix android9 voice-recording issues
+* update translations
+* various bug fixes
+
+
+## v0.930.2
+2019-10-22
+
+* add "send copy to self" switch
+* rework android4 emoji-sending
+* rework android9 background-fetch
+* fix 64bit issues
+* fix oauth2 issues
+* target api level 28 (android9, pie)
+* update translations
+* various bug fixes
+
+
 ## v0.920.0
 2019-10-10
 
 * improve onboarding error messages
 * update translations
 * various bug fixes
+
 
 ## v0.910.0
 2019-10-07

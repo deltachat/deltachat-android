@@ -9,7 +9,7 @@
     tools:parentTag="android.widget.LinearLayout"
     tools:background="@color/grey_800">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -136,7 +136,7 @@
             app:pickerBorderWidth="3dp"
             app:pickerColors="@array/scribble_colors" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/scribble_color_palette"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -150,6 +150,6 @@
             app:layout_constraintTop_toBottomOf="@+id/scribble_color_picker"
             app:layout_constraintVertical_bias="0.0" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </merge>

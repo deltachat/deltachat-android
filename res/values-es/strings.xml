@@ -19,6 +19,7 @@
     <string name="back">Atrás</string>
     <string name="close">Cerrar</string>
     <string name="save">Guardar</string>
+    <string name="chat">Chat</string>
     <string name="main_menu">Menú principal</string>
     <string name="show_password">Mostrar contraseña</string>
     <string name="hide_password">Ocultar contraseña</string>
@@ -195,6 +196,7 @@
     <string name="ask_block_contact">¿Bloquear este contacto? Ya no recibirás mensajes de este contacto.</string>
     <string name="ask_unblock_contact">¿Desbloquear este contacto? Una vez más podrá recibir mensajes de este contacto.</string>
     <string name="ask_delete_contacts">¿Eliminar contactos? Esto eliminará de forma permanente los contactos seleccionados.\n\nContactos con un chat en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados de forma permanente.</string>
+    <string name="ask_delete_contact">¿Eliminar de forma permanente a %1$s?\n\nContactos con chats en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados.</string>
     <string name="cannot_delete_contacts_in_use">No se puede eliminar contactos con chats en curso.</string>
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
@@ -335,7 +337,6 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Respuesta de %1$s: %2$s\n\nAlgunos proveedores colocan información adicional en su bandeja de entrada; Puedes comprobarlo por ej. en la interfaz web. Consulte a su proveedor o amigos si tiene problemas.</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenviar a ...</string>
@@ -446,7 +447,7 @@
     <string name="pref_show_emails_no">No, sólo chats</string>
     <string name="pref_show_emails_accepted_contacts">Para contactos aceptados</string>
     <string name="pref_show_emails_all">Todos</string>
-    <string name="pref_empty_server_title">ZONA DE PELIGRO: Eliminar correos del servidor</string>
+    <string name="pref_empty_server_title">Eliminar correos del servidor</string>
     <string name="pref_empty_server_msg">Esta función ayuda a liberar espacio en su servidor IMAP al eliminar TODOS los correos, incluidos los mensajes de chat, en las carpetas indicadas. Los mensajes en este dispositivo no serán eliminados. La eliminación no se puede deshacer!</string>
     <string name="pref_empty_server_inbox">Eliminar TODOS los correos en la carpeta INBOX</string>
     <string name="pref_empty_server_mvbox">Eliminar TODOS los correos en la carpeta DeltaChat</string>

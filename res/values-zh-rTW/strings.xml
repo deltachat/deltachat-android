@@ -309,7 +309,6 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">伺服器 %1$s 的回應: %2$s\n\n有些郵件服務商會在你的收件匣提供進一步的資訊，請檢查一下，並看看 web 介面上有沒有相關設定。還是不行的話，請洽詢郵件服務商，或是請朋友幫忙。</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">轉發給...</string>

@@ -1,6 +1,6 @@
 package org.thoughtcrime.securesms;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcLot;
 

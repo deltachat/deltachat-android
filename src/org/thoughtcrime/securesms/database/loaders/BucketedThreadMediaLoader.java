@@ -2,8 +2,8 @@ package org.thoughtcrime.securesms.database.loaders;
 
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.content.AsyncTaskLoader;
+import androidx.annotation.NonNull;
+import androidx.loader.content.AsyncTaskLoader;
 
 import com.annimon.stream.Stream;
 import com.b44t.messenger.DcContext;
@@ -11,7 +11,6 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.Address;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         >
-        <android.support.v7.internal.widget.PreferenceImageView
+        <androidx.preference.internal.PreferenceImageView
             android:id="@android:id/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

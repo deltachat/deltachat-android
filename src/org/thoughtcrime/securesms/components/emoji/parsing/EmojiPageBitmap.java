@@ -3,7 +3,7 @@ package org.thoughtcrime.securesms.components.emoji.parsing;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;

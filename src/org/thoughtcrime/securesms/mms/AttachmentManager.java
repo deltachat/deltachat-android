@@ -29,8 +29,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
@@ -271,7 +271,7 @@ public class AttachmentManager {
               public void onStop() {}
 
               @Override
-              public void onProgress(double progress, int millis) {}
+              public void onProgress(double progress, long millis) {}
 
               @Override
               public void onReceivedDuration(int millis) {

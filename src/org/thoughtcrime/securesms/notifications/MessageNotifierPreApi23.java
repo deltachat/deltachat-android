@@ -1,7 +1,7 @@
 package org.thoughtcrime.securesms.notifications;
 
 import android.content.Context;
-import android.support.v4.app.NotificationManagerCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;

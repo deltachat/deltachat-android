@@ -425,7 +425,7 @@
     <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
     <string name="pref_show_emails_accepted_contacts">Qəbul edilən kontaktlar üçün</string>
     <string name="pref_show_emails_all">Hamısı</string>
-    <string name="pref_empty_server_title">Təhlükə zonası: serverdən e-poçtları silin</string>
+    <string name="pref_empty_server_title">Serverdən e-poçtları silin</string>
     <string name="pref_empty_server_msg">Bu funksiya, verilmiş qovluqlarda, söhbət mesajları da daxil olmaqla, bütün elektron poçtları silməklə IMAP serverinizdə olan yaddaşı boşaltmağa  kömək edir. Bu cihazdakı mesajlar silinməyəcək. Silinmə geri qaytarıla bilməz!</string>
     <string name="pref_empty_server_inbox">Daxil olan qutusunda bütün elektron poçtları sil</string>
     <string name="pref_empty_server_mvbox">DeltaChat qutusunda bütün elektron poçtları sil</string>

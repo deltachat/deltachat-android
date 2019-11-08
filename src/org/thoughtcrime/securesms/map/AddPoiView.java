@@ -1,7 +1,7 @@
 package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutCompat;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.ImageButton;

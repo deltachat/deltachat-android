@@ -6,11 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.Preference;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.Preference;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -313,8 +313,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
               flags |= DcContext.DC_EMPTY_MVBOX;
             }
             if (flags!=0) {
-              //dcContext.emptyServer(flags); -- when re-enabling, make sure, dc_empty_server() in dc_wrapper.c is enabled as well
-              Toast.makeText(getActivity(), "Not yet re-implemented. The data on your server are NOT deleted.", Toast.LENGTH_LONG).show();
+              dcContext.emptyServer(flags);
             }
           })
           .show();

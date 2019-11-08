@@ -323,7 +323,6 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Resposta de %1$s: %2$s\n\nAlguns provedores colocam informações adicionais na sua caixa de entrada; verifique-as, por exemplo, na interface web. Consulte o seu provedor ou amigos se você tiver problemas.</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Encaminhar para...</string>
@@ -432,7 +431,7 @@
     <string name="pref_show_emails_no">Não, somente conversas</string>
     <string name="pref_show_emails_accepted_contacts">Para contatos aceitos</string>
     <string name="pref_show_emails_all">Todos</string>
-    <string name="pref_empty_server_title">ZONA DE PERIGO: Apagar e-mails do servidor</string>
+    <string name="pref_empty_server_title">Apagar e-mails do servidor</string>
     <string name="pref_empty_server_msg">Esta função ajuda a liberar espaço em seu servidor IMAP ao apagar TODOS os e-mails, incluindo conversas, em suas respectivas pastas. Mensagens neste dispositivo não serão apagadas. A remoção não pode ser desfeita!</string>
     <string name="pref_empty_server_inbox">Deletar TODOS os e-mais na Caixa de Entrada.</string>
     <string name="pref_empty_server_mvbox">Deletar TODOS os e-mails na pasta DeltaChat.</string>

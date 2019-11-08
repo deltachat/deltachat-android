@@ -11,6 +11,8 @@
     <string name="def">默认</string>
     <string name="custom">自定义</string>
     <string name="none">无</string>
+    <string name="automatic">自动</string>
+    <string name="strict">严格</string>
     <string name="open">打开</string>
     <string name="delete">删除</string>
     <string name="update">更新</string>
@@ -315,6 +317,7 @@
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth2）。\n\n在下一个步骤中，请允许Delta Chat作为您的电子邮件聊天应用。\n\n不存在Delta Chat服务器，您的数据保留于您的设备！</string>
     <string name="login_info_gmail_text">对于GMail帐户，如果您启用了2FA，则需要创建App-Password。 如果此设置不可用，您需要启用Less Secure Apps。</string>
+    <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
     <string name="login_error_server">请输入有效的服务器/IP地址</string>
     <string name="login_error_port">请输入有效的端口（1-65535）</string>
@@ -326,6 +329,10 @@
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">来自%1$s的回应：%2$s\n\n某些提供商会在您的收件箱中放置额外信息; 您可以在Web端等处等查看它。 如遇到问题，请咨询您的提供商或朋友。</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">接受无效的主机名</string>
+    <string name="accept_invalid_certificates">接受无效的证书</string>
 
 
     <!-- share and forward messages -->
@@ -438,7 +445,7 @@
     <string name="pref_show_emails_no">不显示，仅聊天</string>
     <string name="pref_show_emails_accepted_contacts">已接受的联系人</string>
     <string name="pref_show_emails_all">全部</string>
-    <string name="pref_empty_server_title">危险区：删除服务器上的电子邮件</string>
+    <string name="pref_empty_server_title">删除服务器上的电子邮件</string>
     <string name="pref_empty_server_msg">此功能通过删除给定文件夹中包括聊天消息在内的所有电子邮件来释放您IMAP服务器上的空间。 此设备上的消息不会被删除。 此删除无法撤消！</string>
     <string name="pref_empty_server_inbox">删除收件箱中所有电子邮件</string>
     <string name="pref_empty_server_mvbox">删除DeltaChat文件夹中所有电子邮件</string>

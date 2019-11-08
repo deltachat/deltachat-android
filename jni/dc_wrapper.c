@@ -24,6 +24,8 @@
 
 
 #include <jni.h>
+#include <stdlib.h>
+#include <string.h>
 #include "deltachat-core-rust/deltachat-ffi/deltachat.h"
 
 
@@ -32,7 +34,7 @@ static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
 
 // passing a NULL-jstring results in a NULL-ptr - this is needed by functions using eg. NULL for "delete"
 #define CHAR_REF(a) \
-	const char* a##Ptr = char_ref__(env, (a));
+	char* a##Ptr = char_ref__(env, (a));
 static char* char_ref__(JNIEnv* env, jstring a) {
     if (a==NULL) {
         return NULL;
@@ -52,12 +54,12 @@ static char* char_ref__(JNIEnv* env, jstring a) {
 
     const jbyteArray stringJbytes = (jbyteArray)(*env)->CallObjectMethod(env, a, s_getBytes, s_strEncode);
     const jsize length = (*env)->GetArrayLength(env, stringJbytes);
-    const jbyte* pBytes = (*env)->GetByteArrayElements(env, stringJbytes, NULL);
+    jbyte* pBytes = (*env)->GetByteArrayElements(env, stringJbytes, NULL);
     if (pBytes==NULL) {
         return NULL;
     }
 
-    const char* cstr = strndup(pBytes, length);
+    char* cstr = strndup(pBytes, length);
 
     (*env)->ReleaseByteArrayElements(env, stringJbytes, pBytes, JNI_ABORT);
     (*env)->DeleteLocalRef(env, stringJbytes);
@@ -115,7 +117,7 @@ static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
 
 	if (ca) {
 		if (icnt) {
-			uint32_t* ca_data = dc_array_get_raw(ca);
+			const uint32_t* ca_data = dc_array_get_raw(ca);
 			if (sizeof(uint32_t)==sizeof(jint)) {
 				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
 			}
@@ -146,7 +148,7 @@ static uint32_t* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* ret_icn
 		int i, icnt  = (*env)->GetArrayLength(env, ja);
 		if (icnt > 0)
 		{
-			const jint* temp = (*env)->GetIntArrayElements(env, ja, NULL);
+			jint* temp = (*env)->GetIntArrayElements(env, ja, NULL);
 			if (temp)
 			{
 				ret = calloc(icnt, sizeof(uint32_t));
@@ -187,7 +189,7 @@ static dc_context_t* get_dc_context(JNIEnv *env, jobject obj)
 		fid = (*env)->GetFieldID(env, cls, "contextCPtr", "J" /*Signature, J=long*/);
 	}
 	if (fid) {
-		return (dc_chat_t*)(*env)->GetLongField(env, obj, fid);
+		return (dc_context_t*)(*env)->GetLongField(env, obj, fid);
 	}
 	return NULL;
 }
@@ -203,7 +205,7 @@ static uintptr_t s_context_callback_(dc_context_t* context, int event, uintptr_t
 		return 0; /* may happen on startup */
 	}
 
-	(*jnicontext->jvm)->GetEnv(jnicontext->jvm, &env, JNI_VERSION_1_6); // as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv
+	(*jnicontext->jvm)->GetEnv(jnicontext->jvm, (void**)&env, JNI_VERSION_1_6); // as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv
 	if (env==NULL) {
 		return 0; /* may happen on startup */
 	}
@@ -480,7 +482,7 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_getChatIdByContactId(JNIEnv *en
 JNIEXPORT void Java_com_b44t_messenger_DcContext_markseenMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
 {
 	int msg_ids_cnt = 0;
-	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+	uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
 		dc_markseen_msgs(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt);
 	free(msg_ids_ptr);
 }
@@ -618,7 +620,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgInfo(JNIEnv *env, jobj
 JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
 {
 	int msg_ids_cnt = 0;
-	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+	uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
 		dc_delete_msgs(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt);
 	free(msg_ids_ptr);
 }
@@ -627,7 +629,7 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteMsgs(JNIEnv *env, jobject
 JNIEXPORT void Java_com_b44t_messenger_DcContext_forwardMsgs(JNIEnv *env, jobject obj, jintArray msg_ids, jint chat_id)
 {
 	int msg_ids_cnt = 0;
-	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+	uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
 		dc_forward_msgs(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt, chat_id);
 	free(msg_ids_ptr);
 }
@@ -651,6 +653,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendTextMsg(JNIEnv *env, jobjec
 		jint msg_id = dc_send_text_msg(get_dc_context(env, obj), chat_id, textPtr);
 	CHAR_UNREF(text);
 	return msg_id;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_addDeviceMsg(JNIEnv *env, jobject obj, jobject msg)
+{
+	return dc_add_device_msg(get_dc_context(env, obj), get_dc_msg(env, msg));
 }
 
 
@@ -785,7 +793,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_imexHasBackup(JNIEnv *env, j
 
 JNIEXPORT void Java_com_b44t_messenger_DcContext_emptyServer(JNIEnv *env, jobject obj, jint flags)
 {
-	//dc_empty_server(get_dc_context(env, obj), flags);
+	dc_empty_server(get_dc_context(env, obj), flags);
 }
 
 
@@ -1022,7 +1030,7 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChat_getArchived(JNIEnv *env, jobject o
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getName(JNIEnv *env, jobject obj)
 {
-	const char* temp = dc_chat_get_name(get_dc_chat(env, obj));
+	char* temp = dc_chat_get_name(get_dc_chat(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	dc_str_unref(temp);
 	return ret;
@@ -1031,7 +1039,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getName(JNIEnv *env, jobject ob
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcChat_getProfileImage(JNIEnv *env, jobject obj)
 {
-	const char* temp = dc_chat_get_profile_image(get_dc_chat(env, obj));
+	char* temp = dc_chat_get_profile_image(get_dc_chat(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	dc_str_unref(temp);
 	return ret;
@@ -1053,6 +1061,18 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isUnpromoted(JNIEnv *env, jobj
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isSelfTalk(JNIEnv *env, jobject obj)
 {
 	return dc_chat_is_self_talk(get_dc_chat(env, obj))!=0;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isDeviceTalk(JNIEnv *env, jobject obj)
+{
+	return dc_chat_is_device_talk(get_dc_chat(env, obj))!=0;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_canSend(JNIEnv *env, jobject obj)
+{
+	return dc_chat_can_send(get_dc_chat(env, obj))!=0;
 }
 
 
@@ -1384,7 +1404,7 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContact_getId(JNIEnv *env, jobject obj)
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getName(JNIEnv *env, jobject obj)
 {
-	const char* temp = dc_contact_get_name(get_dc_contact(env, obj));
+	char* temp = dc_contact_get_name(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	dc_str_unref(temp);
 	return ret;
@@ -1393,7 +1413,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getName(JNIEnv *env, jobject
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getDisplayName(JNIEnv *env, jobject obj)
 {
-	const char* temp = dc_contact_get_display_name(get_dc_contact(env, obj));
+	char* temp = dc_contact_get_display_name(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	dc_str_unref(temp);
 	return ret;
@@ -1402,7 +1422,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getDisplayName(JNIEnv *env, 
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getFirstName(JNIEnv *env, jobject obj)
 {
-	const char* temp = dc_contact_get_first_name(get_dc_contact(env, obj));
+	char* temp = dc_contact_get_first_name(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	dc_str_unref(temp);
 	return ret;
@@ -1411,7 +1431,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getFirstName(JNIEnv *env, jo
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getAddr(JNIEnv *env, jobject obj)
 {
-	const char* temp = dc_contact_get_addr(get_dc_contact(env, obj));
+	char* temp = dc_contact_get_addr(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	dc_str_unref(temp);
 	return ret;
@@ -1420,7 +1440,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getAddr(JNIEnv *env, jobject
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getNameNAddr(JNIEnv *env, jobject obj)
 {
-	const char* temp = dc_contact_get_name_n_addr(get_dc_contact(env, obj));
+	char* temp = dc_contact_get_name_n_addr(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	dc_str_unref(temp);
 	return ret;
@@ -1429,7 +1449,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getNameNAddr(JNIEnv *env, jo
 
 JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getProfileImage(JNIEnv *env, jobject obj)
 {
-	const char* temp = dc_contact_get_profile_image(get_dc_contact(env, obj));
+	char* temp = dc_contact_get_profile_image(get_dc_contact(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	dc_str_unref(temp);
 	return ret;

@@ -27,6 +27,8 @@ public class DcChat {
     public native int     getColor          ();
     public native boolean isUnpromoted      ();
     public native boolean isSelfTalk        ();
+    public native boolean isDeviceTalk      ();
+    public native boolean canSend           ();
     public native boolean isVerified        ();
     public native boolean isSendingLocations();
 

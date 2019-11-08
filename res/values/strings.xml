@@ -11,6 +11,8 @@
     <string name="def">Default</string>
     <string name="custom">Custom</string>
     <string name="none">None</string>
+    <string name="automatic">Automatic</string>
+    <string name="strict">Strict</string>
     <string name="open">Open</string>
     <string name="delete">Delete</string>
     <string name="update">Update</string>
@@ -167,6 +169,8 @@
     <string name="menu_zoom_out">Zoom out</string>
     <string name="menu_save_log">Save log</string>
     <string name="title_share_location">Share location with all group members</string>
+    <string name="device_talk">Device Messages</string>
+    <string name="device_talk_subtitle">Locally generated messages</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_two_hours">Mute for 2 hours</string>
@@ -326,6 +330,7 @@
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
     <string name="login_info_oauth2_text">The entered e-mail-address supports a simplified setup (OAuth2).\n\nIn the next step, please allow Delta Chat to act as your Chat with E-Mail app.\n\nThere are no Delta Chat servers, your data stays on your device!</string>
     <string name="login_info_gmail_text">For GMail Accounts you need to create an App-Password if you have 2FA enabled. If this setting is not available, you need to enable Less Secure Apps.</string>
+    <string name="login_certificate_checks">Certificate checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>
     <string name="login_error_port">Please enter a valid port (1–65535)</string>
@@ -337,6 +342,10 @@
     <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the email-address and the password are correct.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers place additional information in your inbox; you can check them it eg. in the web frontend. Consult your provider or friends if you run into problems.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Accept invalid hostnames</string>
+    <string name="accept_invalid_certificates">Accept invalid certificates</string>
 
 
     <!-- share and forward messages -->
@@ -449,7 +458,7 @@
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
     <string name="pref_show_emails_all">All</string>
-    <string name="pref_empty_server_title">DANGER ZONE: Delete e-mails from server</string>
+    <string name="pref_empty_server_title">Delete e-mails from server</string>
     <string name="pref_empty_server_msg">This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted.  The deletion cannot be undone!</string>
     <string name="pref_empty_server_inbox">Delete all e-mails in Inbox folder</string>
     <string name="pref_empty_server_mvbox">Delete all e-mails in DeltaChat folder</string>

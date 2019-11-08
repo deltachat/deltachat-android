@@ -6,13 +6,12 @@ import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -122,7 +121,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
 
     if (seekBar.getProgress() + 5 >= seekBar.getMax()) {
       backwardsCounter = 4;
-      onProgress(0.0, 0);
+      onProgress(0.0, -1);
     }
   }
 
@@ -153,13 +152,15 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   }
 
   @Override
-  public void onProgress(double progress, int millis) {
+  public void onProgress(double progress, long millis) {
     int seekProgress = (int)Math.floor(progress * this.seekBar.getMax());
 
     if (seekProgress > seekBar.getProgress() || backwardsCounter > 3) {
       backwardsCounter = 0;
       this.seekBar.setProgress(seekProgress);
-      this.timestamp.setText(DateUtils.getFormatedDuration(millis));
+      if (millis != -1) {
+        this.timestamp.setText(DateUtils.getFormatedDuration(millis));
+      }
     } else {
       backwardsCounter++;
     }

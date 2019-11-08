@@ -10,15 +10,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.PowerManager;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.v4.content.FileProvider;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -28,25 +27,14 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.geolocation.Location__DRAFT;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.Hash;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 public class ApplicationDcContext extends DcContext {
 
@@ -135,7 +123,6 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(17, context.getString(R.string.systemmsg_member_added));
     setStockTranslation(18, context.getString(R.string.systemmsg_member_removed));
     setStockTranslation(19, context.getString(R.string.systemmsg_group_left));
-    setStockTranslation(20, context.getString(R.string.error_x));
     setStockTranslation(23, context.getString(R.string.gif));
     setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
     setStockTranslation(31, context.getString(R.string.systemmsg_read_receipt_subject));
@@ -151,6 +138,7 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(61, context.getString(R.string.login_error_server_response));
     setStockTranslation(62, context.getString(R.string.systemmsg_action_by_user));
     setStockTranslation(63, context.getString(R.string.systemmsg_action_by_me));
+    setStockTranslation(68, context.getString(R.string.device_talk));
   }
 
   public File getImexDir() {

@@ -11,6 +11,8 @@
     <string name="def">Standaard</string>
     <string name="custom">Aangepast</string>
     <string name="none">Geen</string>
+    <string name="automatic">Automatisch</string>
+    <string name="strict">Strikt</string>
     <string name="open">Openen</string>
     <string name="delete">Verwijderen</string>
     <string name="update">Bijwerken</string>
@@ -326,6 +328,7 @@
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
     <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
     <string name="login_info_gmail_text">Bij Gmail-accounts moet je een app-wachtwoord creëren als je authenticatie in twee stappen hebt ingeschakeld. Als dit niet beschikbaar is, schakel dan \'Minder veilige apps\' in.</string>
+    <string name="login_certificate_checks">Certificaatcontrole</string>
     <string name="login_error_mail">Voer een geldig e-mailadres in</string>
     <string name="login_error_server">Voer een geldig(e) IP-adres/server in</string>
     <string name="login_error_port">Voer een geldige poort in (1-65535)</string>
@@ -337,6 +340,10 @@
     <string name="login_error_cannot_login">Kan niet inloggen als \"%1$s\". Controleer het e-mailadres en wachtwoord.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in, bijv., de webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Ongeldige hostnamen accepteren</string>
+    <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
 
 
     <!-- share and forward messages -->
@@ -449,7 +456,7 @@
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
     <string name="pref_show_emails_all">Alles</string>
-    <string name="pref_empty_server_title">GEVARENZONE: e-mails verwijderen van server</string>
+    <string name="pref_empty_server_title">E-mails verwijderen van server</string>
     <string name="pref_empty_server_msg">Deze optie helpt je ruimte vrij te maken op je IMAP-server door ALLE e-mails, inclusief gesprekken, te verwijderen uit de opgegeven mappen. Berichten op dit apparaat worden niet verwijderd. Deze actie kan niet ongedaan worden gemaakt!</string>
     <string name="pref_empty_server_inbox">Alle e-mails verwijderen uit Postvak IN</string>
     <string name="pref_empty_server_mvbox">Alle e-mails verwijderen uit DeltaChat-map</string>

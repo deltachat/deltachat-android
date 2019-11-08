@@ -178,6 +178,13 @@
     <item>1</item>
   </string-array>
 
+    <string-array name="pref_dc_certck_entries">
+        <item>@string/automatic</item>
+        <item>@string/strict</item>
+        <item>@string/accept_invalid_hostnames</item>
+        <item>@string/accept_invalid_certificates</item>
+    </string-array>
+
   <!-- discrete MIME type (the part before the "/") -->
 
 
@@ -222,14 +229,14 @@
     </string-array>
 
     <string-array name="server_security">
-        <item>Automatic</item>
+        <item>@string/automatic</item>
         <item>SSL/TLS</item>
         <item>StartTLS</item>
-        <item>Off</item>
+        <item>@string/off</item>
     </string-array>
 
     <string-array name="auth_methods">
-        <item>Automatic</item>
+        <item>@string/automatic</item>
         <item>OAuth2</item>
     </string-array>
 
