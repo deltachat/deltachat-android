@@ -50,9 +50,6 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
         }
 
         refs--;
-        if (refs == 0) {
-            application.dcContext.afterForegroundWakeLock.acquire(60*1000);
-        }
     }
 
     @Override
