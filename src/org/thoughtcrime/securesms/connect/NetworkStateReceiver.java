@@ -7,9 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcHelper;
-
 public class NetworkStateReceiver extends BroadcastReceiver {
 
     @Override
@@ -22,8 +19,6 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             if (ni != null && ni.getState() == NetworkInfo.State.CONNECTED) {
                 Log.i("DeltaChat", "++++++++++++++++++ Connected ++++++++++++++++++");
                 ApplicationDcContext dcContext = DcHelper.getContext(context);
-                dcContext.startThreads(0); // no need to interrupt idle as maybeNetwork() is called below
-                dcContext.waitForThreadsRunning();
                 dcContext.maybeNetwork();
             }
         }
