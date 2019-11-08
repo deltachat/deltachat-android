@@ -3,9 +3,9 @@ package org.thoughtcrime.securesms.preferences;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.preference.ListPreference;
-import android.support.v7.preference.Preference;
+import androidx.appcompat.app.AlertDialog;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;

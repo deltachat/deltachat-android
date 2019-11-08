@@ -3,8 +3,8 @@ package org.thoughtcrime.securesms;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import android.view.KeyEvent;
 
 public abstract class BaseActivity extends FragmentActivity {

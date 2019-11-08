@@ -1,13 +1,10 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 

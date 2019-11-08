@@ -6,13 +6,11 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Process;
 import android.provider.OpenableColumns;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
-import android.webkit.MimeTypeMap;
 
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.FileUtils;
-import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.io.File;
 import java.io.FileInputStream;

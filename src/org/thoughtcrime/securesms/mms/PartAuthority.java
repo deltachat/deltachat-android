@@ -4,8 +4,8 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.providers.SingleUseBlobProvider;

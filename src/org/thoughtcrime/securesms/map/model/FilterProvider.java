@@ -1,6 +1,6 @@
 package org.thoughtcrime.securesms.map.model;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.mapbox.mapboxsdk.style.expressions.Expression;
 

@@ -18,8 +18,8 @@ package org.thoughtcrime.securesms;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.TooltipCompat;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.TooltipCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;

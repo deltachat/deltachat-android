@@ -1,15 +1,15 @@
 package org.thoughtcrime.securesms;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.DefaultLifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.ProcessLifecycleOwner;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ProcessLifecycleOwner;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.annotation.NonNull;
-import android.support.multidex.MultiDexApplication;
+import androidx.annotation.NonNull;
+import androidx.multidex.MultiDexApplication;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;

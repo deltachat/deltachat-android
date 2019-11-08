@@ -2,9 +2,9 @@ package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +15,6 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 import com.mapbox.mapboxsdk.utils.MapFragmentUtils;
 
 import java.util.ArrayList;

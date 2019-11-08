@@ -2,7 +2,7 @@ package org.thoughtcrime.securesms.attachments;
 
 import java.io.File;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcMsg;
 

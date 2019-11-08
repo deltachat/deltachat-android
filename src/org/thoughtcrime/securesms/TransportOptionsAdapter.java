@@ -1,8 +1,8 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.graphics.PorterDuff.Mode;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

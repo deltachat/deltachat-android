@@ -2,10 +2,10 @@ package org.thoughtcrime.securesms;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.connect.DcHelper;

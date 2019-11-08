@@ -16,10 +16,13 @@ import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.*;
-import android.support.annotation.WorkerThread;
-import android.support.media.ExifInterface;
-import android.support.v4.content.ContextCompat;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
+import androidx.exifinterface.media.ExifInterface;
+import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -39,7 +42,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 

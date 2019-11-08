@@ -10,15 +10,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.PowerManager;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.v4.content.FileProvider;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -28,24 +27,13 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.Hash;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 public class ApplicationDcContext extends DcContext {
 

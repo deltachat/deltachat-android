@@ -29,18 +29,16 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ComposeText;
-import org.thoughtcrime.securesms.database.Address;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -57,7 +55,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 public class Util {
   private static final String TAG = Util.class.getSimpleName();

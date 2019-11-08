@@ -1,8 +1,8 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,7 +17,6 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
