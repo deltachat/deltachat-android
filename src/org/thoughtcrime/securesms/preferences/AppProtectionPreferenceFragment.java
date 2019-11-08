@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.Preference;
+import androidx.annotation.Nullable;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.Preference;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;

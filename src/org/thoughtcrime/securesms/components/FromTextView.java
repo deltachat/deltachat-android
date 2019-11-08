@@ -2,7 +2,7 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;

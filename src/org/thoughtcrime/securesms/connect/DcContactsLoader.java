@@ -1,7 +1,7 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;

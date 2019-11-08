@@ -3,14 +3,13 @@ package org.thoughtcrime.securesms;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcLot;
 
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.ViewUtil;

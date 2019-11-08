@@ -3,9 +3,9 @@ package org.thoughtcrime.securesms.contacts.avatars;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.content.res.AppCompatResources;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 

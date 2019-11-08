@@ -2,7 +2,7 @@ package org.thoughtcrime.securesms.providers;
 
 import android.content.ContentUris;
 import android.net.Uri;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

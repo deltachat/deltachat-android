@@ -3,8 +3,8 @@ package org.thoughtcrime.securesms.components.reminder;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import android.text.util.Linkify;
 import android.widget.TextView;
 

@@ -2,7 +2,7 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcMsg;
 

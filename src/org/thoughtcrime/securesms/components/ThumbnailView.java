@@ -3,13 +3,10 @@ package org.thoughtcrime.securesms.components;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.media.Image;
-import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -17,14 +14,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
@@ -32,13 +26,11 @@ import org.thoughtcrime.securesms.mms.GlideRequest;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
-import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 
-import java.io.FileOutputStream;
 import java.util.Locale;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;

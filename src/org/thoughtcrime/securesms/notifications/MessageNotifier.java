@@ -8,8 +8,8 @@ import android.media.RingtoneManager;
 import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Vibrator;
-import android.support.annotation.NonNull;
-import android.support.v4.app.NotificationManagerCompat;
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
 

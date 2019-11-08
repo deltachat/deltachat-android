@@ -9,9 +9,9 @@ import android.graphics.Typeface;
 import android.os.Parcel;
 import android.view.animation.Interpolator;
 
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.imageeditor.Bounds;
 import org.thoughtcrime.securesms.imageeditor.ColorableRenderer;

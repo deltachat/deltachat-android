@@ -8,9 +8,9 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 

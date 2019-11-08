@@ -2,7 +2,7 @@ package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.b44t.messenger.DcEventCenter;
