@@ -12,7 +12,7 @@
     <string name="custom">Персональная настройка</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматически</string>
-    <string name="strict">Строго</string>
+    <string name="strict">Строгий</string>
     <string name="open">Открыть</string>
     <string name="delete">Удалить</string>
     <string name="update">Обновить</string>
@@ -181,6 +181,8 @@
     <string name="menu_zoom_out">Уменьшить масштаб</string>
     <string name="menu_save_log">Сохранить журнал</string>
     <string name="title_share_location">Делиться местоположением со всеми участниками группы</string>
+    <string name="device_talk">Сообщения устройства</string>
+    <string name="device_talk_subtitle">Локально сгенерированные сообщения</string>
 
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
@@ -270,8 +272,8 @@
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
     <string name="chat_contact_request">Запрос контакта</string>
     <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, вы можете изменить соответствующий параметр в настройках приложения.</string>
-    <string name="retry_send">Попробовать послать сообщение заново</string>
-    <string name="send_failed">Отправка сообщения завершилась неуспешно</string>
+    <string name="retry_send">Повторить отправку сообщения</string>
+    <string name="send_failed">Не удалось отправить сообщение</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
@@ -332,7 +334,7 @@
     <string name="welcome_start_messaging">Начать общение</string>
     <string name="login_title">Логин</string>
     <string name="login_header">Войдите на ваш сервер</string>
-    <string name="login_explain">Войти с существующим email-аккаунтом</string>
+    <string name="login_explain">Войти с существующим аккаунтом эл.почты</string>
     <string name="login_subheader">Для известных почтовых систем, дополнительные настройки устанавливаются автоматически. Иногда для IMAP требуется разрешение в веб-интерфейсе. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
     <string name="login_no_servers_hint">У Delta Chat нет собственных серверов, ваши данные остаются только на вашем устройстве!</string>
     <string name="login_inbox">Входящие</string>
@@ -364,7 +366,7 @@
     <string name="login_error_server_response">Ответ сервера %1$s: %2$s\n\nНекоторые серверы электронной почты сохраняют дополнительную информацию в папке «Входящие». Вы можете проверить эту папку, например, используя доступ через веб-интерфейс. Если Вы столкнулись с проблемами, проконсультируйте с провайдером электронной почты или знакомым специалистом.</string>
 
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Принимать сертификаты с неверным именем хоста</string>
+    <string name="accept_invalid_hostnames">Принимать сертификаты с недействительным именем хоста</string>
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
 
 
@@ -480,11 +482,11 @@
     <string name="pref_show_emails_all">Все</string>
     <string name="pref_empty_server_title">Удалить электронную почту с сервера</string>
     <string name="pref_empty_server_msg">Эта функция помогает освободить место на сервере IMAP, удаляя ВСЕ сообщения электронной почты, включая чат-сообщения, в указанных папках. Сообщения на этом устройстве не удалятся. Удаление не может быть отменено!</string>
-    <string name="pref_empty_server_inbox">Удалить ВСЕ сообщения электронной почты в папке «Входящие»</string>
-    <string name="pref_empty_server_mvbox">Удалить ВСЕ сообщения электронной почты в папке DeltaChat</string>
+    <string name="pref_empty_server_inbox">Удалить все сообщения электронной почты в папке Входящие</string>
+    <string name="pref_empty_server_mvbox">Удалить все сообщения электронной почты в папке DeltaChat</string>
     <string name="pref_empty_server_do_button">Удаление электронной почты</string>
     <string name="pref_experimental_features">Экспериментальные функции</string>
-    <string name="pref_on_demand_location_streaming">Трансляция местоположения</string>
+    <string name="pref_on_demand_location_streaming">Трансляция местоположения по запросу</string>
     <string name="pref_background_default">Фон по умолчанию</string>
     <string name="pref_background_default_color">Цвет по умолчанию</string>
     <string name="pref_background_custom_image">Пользовательское изображение</string>
@@ -517,7 +519,7 @@
     <string name="systemmsg_group_left">Группа покинута.</string>
     <string name="systemmsg_read_receipt_subject">Уведомление о прочтении</string>
     <string name="systemmsg_read_receipt_body">Это подтверждение того, что сообщение \"%1$s\" было открыто на устройстве получателя. Данное подтверждение не означает, что сообщение было прочитано.</string>
-    <string name="systemmsg_cannot_decrypt">Это сообщение не может быть расшифровано.\n\n• Возможно, это уже поможет просто ответить на это сообщение и попросить отправителя отправить сообщение еще раз.\n\n • В случае, если вы переустановили Delta Chat или другую почтовую программу на этом или другом устройство, с которого вы, возможно, захотите отправить оттуда Сообщение с параметрами Autocrypt.</string>
+    <string name="systemmsg_cannot_decrypt">Это сообщение не может быть расшифровано.\n\n• Возможно, поможет просто ответить на это сообщение и попросить отправителя отправить сообщение еще раз.\n\n • В случае, если вы переустановили Delta Chat или другую почтовую программу на этом или другом устройстве, возможно, вы захотите отправить Сообщение с параметрами Autocrypt оттуда.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s мной.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -558,7 +560,7 @@
     <string name="contact_verified">%1$s подтвержден.</string>
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
-    <string name="contact_setup_changed">Изменённые параметры для %1$s</string>
+    <string name="contact_setup_changed">Изменены параметры для %1$s</string>
 
 
     <!-- notifications  -->
@@ -668,12 +670,12 @@
 
 
     <!-- accessibility -->
-    <string name="a11y_delivery_status_error">Статус доставки: ошибка</string>
+    <string name="a11y_delivery_status_error">Статус доставки: Ошибка</string>
     <string name="a11y_encryption_padlock">Значок шифрования</string>
-    <string name="a11y_delivery_status_sending">Статус доставки: отправляется</string>
-    <string name="a11y_delivery_status_draft">Статус доставки: черновик</string>
-    <string name="a11y_delivery_status_delivered">Статус доставки: доставлено</string>
-    <string name="a11y_delivery_status_read">Статус доставки: прочитано</string>
+    <string name="a11y_delivery_status_sending">Статус доставки: Отправляется</string>
+    <string name="a11y_delivery_status_draft">Статус доставки: Черновик</string>
+    <string name="a11y_delivery_status_delivered">Статус доставки: Доставлено</string>
+    <string name="a11y_delivery_status_read">Статус доставки: Прочитано</string>
     <string name="a11y_delivery_status_invalid">Недопустимый статус доставки</string>
     <string name="a11y_remove_account_btn_label">Удалить аккаунт</string>
     <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>

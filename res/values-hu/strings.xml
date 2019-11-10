@@ -144,7 +144,6 @@
     <string name="menu_view_profile">Profil megtekintése</string>
     <string name="menu_save_log">Naplófájl mentése</string>
     <string name="title_share_location">Hely megosztása a csoport összes tagjával</string>
-
     <string name="mute_for_one_hour">Némítás 1 órára</string>
     <string name="mute_for_two_hours">Némítás 2 órára</string>
     <string name="mute_for_one_day">Némítás 1 napra</string>

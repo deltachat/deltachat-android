@@ -169,6 +169,8 @@
     <string name="menu_zoom_out">Uzaklaştır</string>
     <string name="menu_save_log">Günlüğü kaydet</string>
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
+    <string name="device_talk">Aygıt iletileri</string>
+    <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
 
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>

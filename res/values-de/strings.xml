@@ -169,6 +169,8 @@
     <string name="menu_zoom_out">Ansicht verkleinern</string>
     <string name="menu_save_log">Logdatei sichern</string>
     <string name="title_share_location">Standort mit allen Gruppenmitgliedern teilen</string>
+    <string name="device_talk">Systemnachrichten</string>
+    <string name="device_talk_subtitle">Lokal erzeugte Nachrichten</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
     <string name="mute_for_two_hours">Stumm für 2 Stunden</string>

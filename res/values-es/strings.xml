@@ -166,7 +166,6 @@
     <string name="menu_zoom_out">Alejar</string>
     <string name="menu_save_log">Salvar log</string>
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
-
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>

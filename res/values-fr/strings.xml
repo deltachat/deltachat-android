@@ -156,7 +156,6 @@
     <string name="menu_zoom_out">Zoom arrière</string>
     <string name="menu_save_log">Sauvegarder le journal</string>
     <string name="title_share_location">Partager la position avec tous les membres du groupe</string>
-
     <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>

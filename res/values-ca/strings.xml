@@ -147,7 +147,6 @@
     <string name="menu_deaddrop_subtitle">Prem a missatge per començar a xatejar</string>
     <string name="menu_view_profile">Visualitza el perfil</string>
     <string name="title_share_location">Comparteix la ubicació amb tots els membres del grup</string>
-
     <string name="mute_for_one_hour">Silencia 1 hora</string>
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>

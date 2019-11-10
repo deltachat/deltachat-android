@@ -163,7 +163,6 @@
     <string name="menu_zoom_out">缩小</string>
     <string name="menu_save_log">保存日志</string>
     <string name="title_share_location">与群组所有成员共享位置</string>
-
     <string name="mute_for_one_hour">静音1小时</string>
     <string name="mute_for_two_hours">静音2小时</string>
     <string name="mute_for_one_day">静音1天</string>
