@@ -169,7 +169,7 @@
     <string name="menu_zoom_out">Zoom out</string>
     <string name="menu_save_log">Save log</string>
     <string name="title_share_location">Share location with all group members</string>
-    <string name="device_talk">Device Messages</string>
+    <string name="device_talk">Device messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
