@@ -350,7 +350,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
-    <string name="forward_to">Forward to …</string>
+    <string name="forward_to">Forward to…</string>
     <string name="share_multiple_attachments">Do you want to send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
@@ -390,7 +390,7 @@
     <string name="pref_vibrate">Vibrate</string>
     <string name="pref_chat_settings">Chat settings</string>
     <string name="pref_change_secret">Change secret</string>
-    <string name="pref_change_secret_explain">Change your pin / pattern / fingerprint via system settings</string>
+    <string name="pref_change_secret_explain">Change your PIN / pattern / fingerprint via system settings</string>
     <string name="pref_screen_security">Screen security</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Request to block screenshots in the recents list and inside the app</string>
@@ -459,7 +459,7 @@
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
     <string name="pref_show_emails_all">All</string>
     <string name="pref_empty_server_title">Delete e-mails from server</string>
-    <string name="pref_empty_server_msg">This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted.  The deletion cannot be undone!</string>
+    <string name="pref_empty_server_msg">This function helps to free space on your IMAP server by deleting ALL e-mails, including chat-messages, in the given folders. Messages on this device will not be deleted. The deletion cannot be undone!</string>
     <string name="pref_empty_server_inbox">Delete all e-mails in Inbox folder</string>
     <string name="pref_empty_server_mvbox">Delete all e-mails in DeltaChat folder</string>
     <string name="pref_empty_server_do_button">Delete e-mails</string>
@@ -524,7 +524,7 @@
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself …</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself…</string>
     <string name="qrshow_title">QR invite code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
     <string name="qrshow_x_verified">%1$s verified.</string>
@@ -634,7 +634,7 @@
     <string name="create_chat_error_desktop">Could not create chat.</string>
     <string name="ask_delete_chat_desktop">Are you sure you want to delete this chat?</string>
     <string name="email_validation_failed_desktop">Email address required.</string>
-    <string name="forget_login_confirmation_desktop">Delete this login? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action is final and can not be reversed.</string>
+    <string name="forget_login_confirmation_desktop">Delete this login? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action is final and cannot be reversed.</string>
     <string name="me_desktop">me</string>
     <string name="in_this_group_desktop">Group members</string>
     <string name="not_in_this_group_desktop">Potential group members (not in group)</string>
