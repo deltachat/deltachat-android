@@ -276,8 +276,6 @@
         </intent-filter>
     </service>
 
-    <receiver android:name=".connect.TimerReceiver" android:enabled="true"/>
-
     <receiver android:name=".notifications.MarkReadReceiver"
               android:enabled="true"
               android:exported="false">
