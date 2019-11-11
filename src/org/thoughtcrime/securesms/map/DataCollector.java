@@ -61,15 +61,12 @@ public class DataCollector {
                               long startTimestamp,
                               long endTimestamp) {
         DcArray locations = dcContext.getLocations(chatId, contactId, startTimestamp, endTimestamp);
-        int count = locations.getCnt();
-        if (count == 0) {
-            return;
-        }
 
         MapSource contactMapMetadata = contactMapSources.get(contactId);
         if (contactMapMetadata == null) {
             contactMapMetadata = addContactMapSource(contactMapSources, contactId);
         }
+        int count = locations.getCnt();
 
         LinkedList<Feature> sortedPointFeatures = featureCollections.get(contactMapMetadata.getMarkerFeatureCollection());
         if (sortedPointFeatures != null && sortedPointFeatures.size() == count) {
