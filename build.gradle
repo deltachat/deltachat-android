@@ -95,7 +95,7 @@ android {
         applicationId "com.b44t.messenger"
         multiDexEnabled true
 
-        minSdkVersion 14
+        minSdkVersion 21 // when changing minSdkVersion here, also adapt AndroidManifest.xml!
         targetSdkVersion 28
 
         vectorDrawables.useSupportLibrary = true
