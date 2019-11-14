@@ -11,31 +11,33 @@ cd jni/deltachat-core-rust
 # and add the correct clang-linkers to `~/.cargo/config`:
 # ```
 # [target.armv7-linux-androideabi]
-# linker = "PATH_TO_NDK/toolchains/llvm/prebuilt/HOST/bin/armv7a-linux-androideabi21-clang"
+# linker = "PATH_TO_NDK/toolchains/llvm/prebuilt/HOST/bin/armv7a-linux-androideabi18-clang"
 # [target.aarch64-linux-android]
 # linker = "PATH_TO_NDK/toolchains/llvm/prebuilt/HOST/bin/aarch64-linux-android21-clang"
 # [target.i686-linux-android]
-# linker = "PATH_TO_NDK/toolchains/llvm/prebuilt/HOST/bin/i686-linux-android21-clang"
+# linker = "PATH_TO_NDK/toolchains/llvm/prebuilt/HOST/bin/i686-linux-android18-clang"
 # [target.x86_64-linux-android]
 # linker = "PATH_TO_NDK/toolchains/llvm/prebuilt/HOST/bin/x86_64-linux-android21-clang"
 # ```
 # then, the following should work:
 
-export CFLAGS=-D__ANDROID_API__=21
-
 echo "-- cross compiling to armv7-linux-androideabi (arm) --"
-TARGET_CC=armv7a-linux-androideabi21-clang \
+export CFLAGS=-D__ANDROID_API__=18
+TARGET_CC=armv7a-linux-androideabi18-clang \
 cargo build --release --target armv7-linux-androideabi -p deltachat_ffi
 
 echo "-- cross compiling to aarch64-linux-android (arm64) --"
+export CFLAGS=-D__ANDROID_API__=21
 TARGET_CC=aarch64-linux-android21-clang \
 cargo build --release --target aarch64-linux-android -p deltachat_ffi
 
 echo "-- cross compiling to i686-linux-android (x86) --"
-TARGET_CC=i686-linux-android21-clang \
+export CFLAGS=-D__ANDROID_API__=18
+TARGET_CC=i686-linux-android18-clang \
 cargo build --release --target i686-linux-android -p deltachat_ffi
 
 echo "-- cross compiling to x86_64-linux-android (x86_64) --"
+export CFLAGS=-D__ANDROID_API__=21
 TARGET_CC=x86_64-linux-android21-clang \
 cargo build --release --target x86_64-linux-android -p deltachat_ffi
 
