@@ -344,14 +344,14 @@
     <string name="login_imap_security">Параметры безопасности IMAP</string>
     <string name="login_outbox">Исходящие</string>
     <string name="login_smtp_login">SMTP логин</string>
-    <string name="login_smtp_password">SMTP пароль</string>
+    <string name="login_smtp_password">Пароль SMTP</string>
     <string name="login_smtp_server">SMTP сервер</string>
     <string name="login_smtp_port">SMTP порт</string>
     <string name="login_smtp_security">Параметры безопасности SMTP</string>
     <string name="login_auth_method">Метод авторизации</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth2).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
-    <string name="login_info_gmail_text">Для аккаунтов GMail необходимо задать пароль для приложений - App-Password , если включена 2FA двухфакторная аутентификация. Если эти настройки недоступны, вам нужно активировать параметр Less Secure Apps.</string>
+    <string name="login_info_gmail_text">Для учётных записей GMail необходимо задать пароль для приложений (App-Password), если включена двухфакторная аутентификация (2FA). Если эти настройки недоступны, вам нужно активировать параметр «Менее безопасные приложения» (Less Secure Apps).</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
     <string name="login_error_mail">Укажите действительный адрес эл. почты</string>
     <string name="login_error_server">Укажите действительный сервер / IP адрес</string>

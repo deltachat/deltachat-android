@@ -11,6 +11,8 @@
     <string name="def">Por defecto</string>
     <string name="custom">Personalizado</string>
     <string name="none">Ninguno</string>
+    <string name="automatic">Automático</string>
+    <string name="strict">Estricto</string>
     <string name="open">Abrir</string>
     <string name="delete">Eliminar</string>
     <string name="update">Actualización</string>
@@ -20,6 +22,7 @@
     <string name="close">Cerrar</string>
     <string name="save">Guardar</string>
     <string name="chat">Chat</string>
+    <string name="media">Multimedia</string>
     <string name="main_menu">Menú principal</string>
     <string name="show_password">Mostrar contraseña</string>
     <string name="hide_password">Ocultar contraseña</string>
@@ -166,6 +169,9 @@
     <string name="menu_zoom_out">Alejar</string>
     <string name="menu_save_log">Salvar log</string>
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
+    <string name="device_talk">Mensajes del dispositivo</string>
+    <string name="device_talk_subtitle">Mensajes generados localmente</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
@@ -324,6 +330,7 @@
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
     <string name="login_info_oauth2_text">La dirección de correo electrónico introducida admite una configuración simplificada (OAuth2).\n\nEn el próximo paso, permita que Delta Chat actúe como su aplicación de chat con correo electrónico.\n\nNo hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
     <string name="login_info_gmail_text">Para las cuentas de Gmail, debe crear una contraseña de aplicación si tiene habilitado la verificación en 2 pasos. Si esta opción no está disponible, debe habilitar la opción \"Acceso de aplicaciones poco seguras\".</string>
+    <string name="login_certificate_checks">Comprobaciones de certificados</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
     <string name="login_error_server">Por favor, introduzca un servidor / dirección IP válido</string>
     <string name="login_error_port">Por favor, introduzca un puerto válido (1–65535)</string>
@@ -335,6 +342,11 @@
     <string name="login_error_cannot_login">No se puede iniciar sesión como \"%1$s\". Por favor, compruebe si la dirección de correo y la contraseña son correctas.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Respuesta de %1$s: %2$s\n\nAlgunos proveedores colocan información adicional en su bandeja de entrada; Puedes comprobarlo por ej. en la interfaz web. Consulte a su proveedor o amigos si tiene problemas.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Aceptar nombres de host no válidos</string>
+    <string name="accept_invalid_certificates">Aceptar certificados no válidos</string>
+
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->

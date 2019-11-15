@@ -319,17 +319,17 @@
     <string name="login_imap_login">IMAP oturum açma adı</string>
     <string name="login_imap_server">IMAP sunucusu</string>
     <string name="login_imap_port">IMAP bağlantı noktası</string>
-    <string name="login_imap_security">IMAP Güvenliği</string>
+    <string name="login_imap_security">IMAP güvenliği</string>
     <string name="login_outbox">Giden Kutusu</string>
     <string name="login_smtp_login">SMTP oturum açma adı</string>
-    <string name="login_smtp_password">SMTP Parolası</string>
+    <string name="login_smtp_password">SMTP parolası</string>
     <string name="login_smtp_server">SMTP sunucusu</string>
     <string name="login_smtp_port">SMTP bağlantı noktası</string>
-    <string name="login_smtp_security">SMTP Güvenliği</string>
+    <string name="login_smtp_security">SMTP güvenliği</string>
     <string name="login_auth_method">Yetkilendirme yöntemi</string>
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
     <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth2) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta ile Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucusu yoktur; verileriniz aygıtınızda kalır!</string>
-    <string name="login_info_gmail_text">Gmail hesapları için 2FA\'yı etkinleştirdiyseniz, bir uygulama parolası oluşturmanız gerekir. Bu ayar kullanılabilir değilse, Güvenliği Düşük Uygulamalar\'ı etkinleştirmeniz gerekir.</string>
+    <string name="login_info_gmail_text">Gmail Hesapları için \"2 Adımlı Doğrulama\"yı etkinleştirdiyseniz, bir uygulama parolası oluşturmanız gerekir. Bu ayar kullanılabilir değilse, \"Güvenliği düşük uygulamalar\"ı etkinleştirmeniz gerekir.</string>
     <string name="login_certificate_checks">Sertifika denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
@@ -350,7 +350,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
-    <string name="forward_to">İlet …</string>
+    <string name="forward_to">İlet…</string>
     <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; örn. görseller ve videolar yeniden kodlanmaz.</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
@@ -459,7 +459,7 @@
     <string name="pref_show_emails_accepted_contacts">Kabul edilen kişiler için</string>
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_empty_server_title">E-postaları sunucudan sil</string>
-    <string name="pref_empty_server_msg">Bu işlev, verilen klasörlerdeki sohbet iletilerini kapsayıp TÜM e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek.  Silme geri alınamaz!</string>
+    <string name="pref_empty_server_msg">Bu işlev, verilen klasörlerdeki sohbet iletilerini kapsayıp tüm e-postaları silerek IMAP sunucunuzda alan boşaltmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek. Silme geri alınamaz!</string>
     <string name="pref_empty_server_inbox">Gelen Kutusu klasöründeki tüm e-postaları sil</string>
     <string name="pref_empty_server_mvbox">DeltaChat klasöründeki tüm e-postaları sil</string>
     <string name="pref_empty_server_do_button">E-postaları sil</string>
@@ -524,7 +524,7 @@
     <string name="qrscan_contains_text">Taranan QR kod metni:\n\n%1$s</string>
     <string name="qrscan_contains_url">Taranan QR kod URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s doğrulandı; kendimi tanıtıyorum …</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s doğrulandı; kendimi tanıtıyorum…</string>
     <string name="qrshow_title">QR davet kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>
     <string name="qrshow_x_verified">%1$s doğrulandı.</string>

@@ -13,6 +13,15 @@
     <string name="none">Brak</string>
     <string name="open">Otwórz</string>
     <string name="delete">Usuń</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Załącznik</string>
+    <string name="back">Wróć</string>
+    <string name="close">Zamknij</string>
+    <string name="save">Zapisz</string>
+    <string name="chat">Czat</string>
+    <string name="media">Multimedia</string>
+    <string name="show_password">Pokaż hasło</string>
+    <string name="hide_password">Ukryj hasło</string>
     <string name="not_now">Nie teraz</string>
     <string name="never">Nigdy</string>
     <string name="one_moment">Jedną chwilę…</string>
@@ -370,6 +379,7 @@
     <string name="pref_blocked_contacts">Zablokowane kontakty</string>
     <string name="pref_profile_photo_remove_ask">Usunąć zdjęcie profilowe?</string>
     <string name="pref_help_url">https://delta.chat/pl/help</string>
+    <string name="pref_password_and_account_settings">Hasło i konto</string>
     <string name="pref_who_can_see_this_information">Kto może zobaczyć tę informację?</string>
     <string name="pref_who_can_see_profile_explain">Twoje zdjęcie profilowe i nazwa będą wyświetlane wraz z wiadomościami podczas komunikacji z innymi użytkownikami. Już wysłanych informacji nie można skasować ani usunąć.</string>
     <string name="pref_your_name">Twoja nazwa</string>
@@ -445,6 +455,7 @@
     <string name="pref_watch_inbox_folder">Oglądaj katalog Skrzynka odbiorcza</string>
     <string name="pref_watch_sent_folder">Oglądaj katalog Wysłane</string>
     <string name="pref_watch_mvbox_folder">Oglądaj katalog DeltaChat</string>
+    <string name="pref_send_copy_to_self">Wyślij kopię do siebie</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Rozmowy na czacie są przenoszone, aby nie zaśmiecać folderu Skrzynka odbiorcza</string>
     <string name="pref_email_interaction_title">Interakcja e-mail</string>
@@ -457,6 +468,11 @@
     <string name="pref_empty_server_inbox">Usuń WSZYSTKIE wiadomości e-mail w folderze Skrzynka odbiorcza</string>
     <string name="pref_empty_server_mvbox"> Usuń WSZYSTKIE wiadomości e-mail w folderze DeltaChat</string>
     <string name="pref_empty_server_do_button">Usuń e-maile</string>
+    <string name="pref_background_default">Domyślne tło</string>
+    <string name="pref_background_default_color">Domyślny kolor</string>
+    <string name="pref_background_custom_image">Własny obraz</string>
+    <string name="pref_background_custom_color">Własny kolor</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą Wiadomości konfiguracyjnej automatycznego szyfrowania.</string>
@@ -562,6 +578,8 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Witaj w Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Znane konta</string>
     <string name="global_menu_preferences_language_desktop">Wybierz język</string>
     <string name="global_menu_file_desktop">Plik</string>
@@ -577,8 +595,10 @@
     <string name="global_menu_view_developer_desktop">Programista</string>
     <string name="global_menu_view_developer_tools_desktop">Narzędzia Programisty</string>
     <string name="global_menu_help_desktop">Pomoc</string>
+    <string name="global_menu_help_learn_desktop">Dowiedz się więcej o Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Przyczyń się do rozwoju na GitHub</string>
     <string name="global_menu_help_report_desktop">Zgłoś problem…</string>
+    <string name="global_menu_help_about_desktop">O Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Wybierz czat lub utwórz nowy czat</string>
     <string name="write_message_desktop">Napisz wiadomość</string>
     <string name="encryption_info_title_desktop">Informacje o szyfrowaniu</string>
@@ -630,4 +650,5 @@
     <string name="user_location_permission_explanation">Delta Chat wymaga uprawnienia lokalizacji, aby pokazać i udostępniać swoją lokalizację.</string>
 
 
-    </resources>
+    <string name="a11y_background_preview_label">Podgląd tła</string>
+</resources>
