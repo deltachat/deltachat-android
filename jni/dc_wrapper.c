@@ -59,7 +59,7 @@ static char* char_ref__(JNIEnv* env, jstring a) {
         return NULL;
     }
 
-    char* cstr = strndup(pBytes, length);
+    char* cstr = strndup((const char*)pBytes, length);
 
     (*env)->ReleaseByteArrayElements(env, stringJbytes, pBytes, JNI_ABORT);
     (*env)->DeleteLocalRef(env, stringJbytes);
@@ -92,7 +92,7 @@ static jstring jstring_new__(JNIEnv* env, const char* a)
 
 	int a_bytes = strlen(a);
 	jbyteArray array = (*env)->NewByteArray(env, a_bytes);
-		(*env)->SetByteArrayRegion(env, array, 0, a_bytes, a);
+		(*env)->SetByteArrayRegion(env, array, 0, a_bytes, (const jbyte*)a);
 		jstring ret = (jstring) (*env)->NewObject(env, s_strCls, s_strCtor, array, s_strEncode);
 	(*env)->DeleteLocalRef(env, array); /* we have to delete the reference as it is not returned to Java, AFAIK */
 
