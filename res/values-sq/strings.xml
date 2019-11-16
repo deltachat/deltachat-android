@@ -169,6 +169,8 @@
     <string name="menu_zoom_out">Zvogëlim</string>
     <string name="menu_save_log">Ruaje regjistrin</string>
     <string name="title_share_location">Jepua vendndodhjen krejt anëtarëve të grupit</string>
+    <string name="device_talk">Mesazhe Pajisjeje</string>
+    <string name="device_talk_subtitle">Mesazhe të prodhuar lokalisht</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
     <string name="mute_for_two_hours">Heshtoji për 2 orë</string>

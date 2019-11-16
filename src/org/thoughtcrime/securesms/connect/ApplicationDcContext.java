@@ -73,17 +73,12 @@ public class ApplicationDcContext extends DcContext {
       smtpWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "smtpWakeLock");
       smtpWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
-      afterForegroundWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "afterForegroundWakeLock");
-      afterForegroundWakeLock.setReferenceCounted(false);
-
     } catch (Exception e) {
       Log.e(TAG, "Cannot create wakeLocks");
     }
 
     new ForegroundDetector(ApplicationContext.getInstance(context));
     startThreads(0);
-
-    TimerReceiver.scheduleNextAlarm(context);
 
     BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
     context.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
@@ -295,28 +290,22 @@ public class ApplicationDcContext extends DcContext {
    **********************************************************************************************/
 
   private final Object threadsCritical = new Object();
+  private final Object incLoopsCritical= new Object();
 
-  private boolean imapThreadStartedVal;
-  private final Object imapThreadStartedCond = new Object();
   public Thread imapThread = null;
   private PowerManager.WakeLock imapWakeLock = null;
+  private int inboxLoops = 0;
 
-  private boolean mvboxThreadStartedVal;
-  private final Object mvboxThreadStartedCond = new Object();
   public Thread mvboxThread = null;
   private PowerManager.WakeLock mvboxWakeLock = null;
+  private int mvboxLoops = 0;
 
-  private boolean sentboxThreadStartedVal;
-  private final Object sentboxThreadStartedCond = new Object();
   public Thread sentboxThread = null;
   private PowerManager.WakeLock sentboxWakeLock = null;
 
-  private boolean smtpThreadStartedVal;
-  private final Object smtpThreadStartedCond = new Object();
   public Thread smtpThread = null;
   private PowerManager.WakeLock smtpWakeLock = null;
-
-  public PowerManager.WakeLock afterForegroundWakeLock = null;
+  private int smtpLoops = 0;
 
   private Location__DRAFT localLocation;
 
@@ -327,29 +316,17 @@ public class ApplicationDcContext extends DcContext {
 
       if (imapThread == null || !imapThread.isAlive()) {
 
-        synchronized (imapThreadStartedCond) {
-          imapThreadStartedVal = false;
-        }
-
         imapThread = new Thread(() -> {
-          // raise the starting condition
-          // after acquiring a wakelock so that the process is not terminated.
-          // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
-          imapWakeLock.acquire();
-          synchronized (imapThreadStartedCond) {
-            imapThreadStartedVal = true;
-            imapThreadStartedCond.notifyAll();
-          }
-
           Log.i(TAG, "###################### IMAP-Thread started. ######################");
-
-
           while (true) {
             localLocation.updateLocation();
             imapWakeLock.acquire();
             performImapJobs();
             performImapFetch();
             imapWakeLock.release();
+            synchronized (incLoopsCritical) {
+              inboxLoops++;
+            }
             performImapIdle();
           }
         }, "imapThread");
@@ -364,25 +341,16 @@ public class ApplicationDcContext extends DcContext {
 
       if (mvboxThread == null || !mvboxThread.isAlive()) {
 
-        synchronized (mvboxThreadStartedCond) {
-          mvboxThreadStartedVal = false;
-        }
-
         mvboxThread = new Thread(() -> {
-          mvboxWakeLock.acquire();
-          synchronized (mvboxThreadStartedCond) {
-            mvboxThreadStartedVal = true;
-            mvboxThreadStartedCond.notifyAll();
-          }
-
           Log.i(TAG, "###################### MVBOX-Thread started. ######################");
-
-
           while (true) {
             mvboxWakeLock.acquire();
             performMvboxJobs();
             performMvboxFetch();
             mvboxWakeLock.release();
+            synchronized (incLoopsCritical) {
+              mvboxLoops++;
+            }
             performMvboxIdle();
           }
         }, "mvboxThread");
@@ -397,20 +365,8 @@ public class ApplicationDcContext extends DcContext {
 
       if (sentboxThread == null || !sentboxThread.isAlive()) {
 
-        synchronized (sentboxThreadStartedCond) {
-          sentboxThreadStartedVal = false;
-        }
-
         sentboxThread = new Thread(() -> {
-          sentboxWakeLock.acquire();
-          synchronized (sentboxThreadStartedCond) {
-            sentboxThreadStartedVal = true;
-            sentboxThreadStartedCond.notifyAll();
-          }
-
           Log.i(TAG, "###################### SENTBOX-Thread started. ######################");
-
-
           while (true) {
             sentboxWakeLock.acquire();
             performSentboxJobs();
@@ -427,27 +383,16 @@ public class ApplicationDcContext extends DcContext {
         }
       }
 
-
       if (smtpThread == null || !smtpThread.isAlive()) {
-
-        synchronized (smtpThreadStartedCond) {
-          smtpThreadStartedVal = false;
-        }
-
         smtpThread = new Thread(() -> {
-          smtpWakeLock.acquire();
-          synchronized (smtpThreadStartedCond) {
-            smtpThreadStartedVal = true;
-            smtpThreadStartedCond.notifyAll();
-          }
-
           Log.i(TAG, "###################### SMTP-Thread started. ######################");
-
-
           while (true) {
             smtpWakeLock.acquire();
             performSmtpJobs();
             smtpWakeLock.release();
+            synchronized (incLoopsCritical) {
+              smtpLoops++;
+            }
             performSmtpIdle();
           }
         }, "smtpThread");
@@ -457,33 +402,14 @@ public class ApplicationDcContext extends DcContext {
     }
   }
 
-  public void waitForThreadsRunning() {
-    try {
-      synchronized (imapThreadStartedCond) {
-        while (!imapThreadStartedVal) {
-          imapThreadStartedCond.wait();
+  public void waitForThreadsExecutedOnce() {
+    while(true) {
+      synchronized (incLoopsCritical) {
+        if(inboxLoops>0 && mvboxLoops>0 && smtpLoops>0) {
+          break;
         }
       }
-
-      synchronized (mvboxThreadStartedCond) {
-        while (!mvboxThreadStartedVal) {
-          mvboxThreadStartedCond.wait();
-        }
-      }
-
-      synchronized (sentboxThreadStartedCond) {
-        while (!sentboxThreadStartedVal) {
-          sentboxThreadStartedCond.wait();
-        }
-      }
-
-      synchronized (smtpThreadStartedCond) {
-        while (!smtpThreadStartedVal) {
-          smtpThreadStartedCond.wait();
-        }
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+      Util.sleep(500);
     }
   }
 

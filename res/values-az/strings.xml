@@ -156,7 +156,6 @@
     <string name="menu_zoom_out">Uzaqlaşdırmaq</string>
     <string name="menu_save_log">Loqu saxlamaq</string>
     <string name="title_share_location">Qrup üzvlərinə yerləşdiyin yerini göndər</string>
-
     <string name="mute_for_one_hour">1 saatlıq söndür</string>
     <string name="mute_for_two_hours">2 saatlıq söndür</string>
     <string name="mute_for_one_day">1 günlük söndür</string>

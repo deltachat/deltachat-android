@@ -132,7 +132,6 @@
     <string name="menu_zoom_in">拡大</string>
     <string name="menu_zoom_out">縮小</string>
     <string name="title_share_location">現在地を全員に公開する</string>
-
     <string name="mute_for_one_hour">1時間停止する</string>
     <string name="mute_for_two_hours">2時間停止する</string>
     <string name="mute_for_one_day">24時間停止する</string>

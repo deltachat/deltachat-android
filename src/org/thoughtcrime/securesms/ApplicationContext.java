@@ -4,6 +4,11 @@ import android.annotation.SuppressLint;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ProcessLifecycleOwner;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +20,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
@@ -23,6 +29,8 @@ import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
+
+import java.util.concurrent.TimeUnit;
 //import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication implements DefaultLifecycleObserver {
@@ -74,6 +82,25 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
             dcContext.setStockTranslations();
         }
     }, filter);
+
+    // MAYBE TODO: i think the ApplicationContext is also created
+    // when the app is stated by FetchWorker timeouts.
+    // in this case, the normal threads shall not be started.
+    Constraints constraints = new Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build();
+    PeriodicWorkRequest fetchWorkRequest = new PeriodicWorkRequest.Builder(
+            FetchWorker.class,
+            PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, // usually 15 minutes
+            TimeUnit.MILLISECONDS,
+            PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes, so we run every 10-15 minutes
+            TimeUnit.MILLISECONDS)
+            .setConstraints(constraints)
+            .build();
+    WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "FetchWorker",
+            ExistingPeriodicWorkPolicy.KEEP,
+            fetchWorkRequest);
   }
 
   @Override

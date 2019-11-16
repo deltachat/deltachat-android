@@ -54,7 +54,7 @@ environment.
 # Install Development Environment
 
 1. Some libs required by Android Studio may be missing on 64 bit Linux machines
-   [[Source](https://developer.android.com/studio/install.html)], so for Ubuntu execute
+   [Source](https://developer.android.com/studio/install.html)], so for Ubuntu execute
    `$ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386`
    and for Fedora execute
    `$ sudo yum install zlib.i686 ncurses-libs.i686 bzip2-libs.i686`.
@@ -67,29 +67,25 @@ environment.
    `~/android-studio/bin`, execute `./studio.sh` and use all the standard values
    from the wizard.
 
-4. Android Studio now asks you if you want to download an existing project;
+4. Android Studio now asks you if you want to open an existing project;
    choose `~/deltachat-android` as created in the "Build" chapter (Android Studio starts to
    build the project, however, there are some steps missing before this will
    succeed).
 
-5. As Delta Chat uses API 25 for some reasons, click on the corresponding error
-   message and install "Nougat 7.1.1 (API 25)" and the "Build-Tools" (you should
+5. If components are missing, click on the corresponding error
+   message and install eg. required SDKs and the "Build-Tools" (you should
    also find the option at "Tools / Android / SDK Manager / SDK Platforms").
    Now the build should succeed - but the app still misses the native part.
 
-6. Agree to the terms and download Android NDK Revision 14b from
-   [NDK Archives](https://developer.android.com/ndk/downloads/older_releases)
-   (Newer releases shall not be used currently, they are not compatible,
-   see issues #197, #220, #248) and extract the archive containing a single folder
+6. Download Android NDK from
+   [NDK Archives](https://developer.android.com/ndk/downloads)
+   and extract the archive containing a single folder
    called `android-ndk-r…`; move this folder e.g. to `~/android-ndk-r…`.
 
-7. Export the folder path to your environment as ANDROID_NDK and add it to PATH.
-   You can archive this e.g. by adding the following lines to `.bashrc`
-   `export ANDROID_NDK=/home/bpetersen/android-ndk-r…`
+7. Export the folder path to your environment as `ANDROID_NDK` and add it to `PATH`.
+   You can achieve this e.g. by adding the following lines to `.bashrc`
+   `export ANDROID_NDK=/home/USERNAME/android-ndk-r…`
    `export PATH=$PATH:$ANDROID_NDK`.
-
-The last two steps may be omitted by using the new Android Studio NDK options,
-however, thus far, we have not found the time to do so.
 
 
 # Credits
