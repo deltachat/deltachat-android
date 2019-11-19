@@ -636,7 +636,7 @@
     <string name="download_attachment_desktop">Download attachment</string>
     <string name="export_backup_desktop">Export backup</string>
     <string name="transfer_key_desktop">Transfer key</string>
-    <string name="show_key_transfer_message_desktop">Your key has been sent to yourself. Switch to the other device and open the Autocrypt Setup Message. You should be prompted for a setup code. Once the following digits are typed into your other device, it will be ready to use Autocrypt.</string>
+    <string name="show_key_transfer_message_desktop">Your key has been sent to yourself. Switch to the other device and open the Autocrypt Setup Message. You should be prompted for a setup code. Once the following digits are typed into on other device, it will be ready to use Autocrypt.</string>
     <string name="new_message_from_desktop">New message from</string>
     <string name="unblock_contacts_desktop">Unblock contacts</string>
     <string name="none_blocked_desktop">No blocked contacts yet</string>
