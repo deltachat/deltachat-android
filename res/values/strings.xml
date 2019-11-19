@@ -605,7 +605,7 @@
     <string name="global_menu_help_desktop">Help</string>
     <string name="global_menu_help_learn_desktop">Learn more about Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Contribute on GitHub</string>
-    <string name="global_menu_help_report_desktop">Report an Issue…</string>
+    <string name="global_menu_help_report_desktop">Report an issue…</string>
     <string name="global_menu_help_about_desktop">About Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Select a chat or create a new chat</string>
     <string name="write_message_desktop">Write a message</string>
