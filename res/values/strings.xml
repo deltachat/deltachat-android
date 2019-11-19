@@ -531,7 +531,7 @@
     <string name="qrscan_hint">Hold your camera over the QR code</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the one last seen for %1$s</string>
-    <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no email address.\n\nVerify it by checking to see it matches with the recipient first, in a way that cant be surveilled.</string>
+    <string name="qrscan_no_addr_found">This QR code contains a fingerprint, but no email address.\n\nVerify it by checking to see that it matches with the recipient first, in a way that can\'t be surveilled.</string>
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
