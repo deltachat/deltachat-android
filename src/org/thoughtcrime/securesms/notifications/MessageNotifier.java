@@ -178,6 +178,12 @@ abstract class MessageNotifier {
             lastAudibleNotification = System.currentTimeMillis();
         }
 
+        if (dcContext.getChat(chatId).isDeviceTalk()) {
+            // currently, we just never notify on device chat.
+            // esp. on first start, this is annoying.
+            return;
+        }
+
         synchronized (lock) {
             addMessageToNotificationState(dcContext, chatId, messageId);
             if (notificationState.hasMultipleChats()) {
