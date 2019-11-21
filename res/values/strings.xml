@@ -45,7 +45,7 @@
     <string name="copied_to_clipboard">Copied to clipboard.</string>
     <string name="contacts_headline">Contacts</string>
     <string name="email_address">Email address</string>
-    <string name="bad_email_address">Incorrect email address.</string>
+    <string name="bad_email_address">Bad email address.</string>
     <string name="password">Password</string>
     <string name="now">Now</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
@@ -208,13 +208,13 @@
     <string name="ask_export_attachment">Export attachment? Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
     <string name="ask_block_contact">Block this contact? You will no longer receive messages from this contact.</string>
     <string name="ask_unblock_contact">Unblock this contact? You will once again be able to receive messages from this contact.</string>
-    <string name="ask_delete_contacts">Delete contacts? This will permanently delete the selected contacts.\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
-    <string name="ask_delete_contact">Permanently delete contact %1$s?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
+    <string name="ask_delete_contacts">Delete selected contacts?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
+    <string name="ask_delete_contact">Delete %1$s?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
-    <string name="info_outdated_app_title">Your app version is outdated.</string>
+    <string name="info_outdated_app_title">Your app version is outdated</string>
     <string name="info_outdated_app_text">It seems that you installed Delta Chat from a source without auto updates (e.g. GitHub). Please switch to a store version to receive the latest features and bug fixes.</string>
     <string name="info_outdated_app_dialog_title">Update sources</string>
     <string name="info_outdated_app_dialog_text">Delta Chat is available on:</string>
@@ -258,7 +258,7 @@
     <string name="chat_self_talk_subtitle">Messages I sent to myself</string>
     <string name="chat_contact_request">Contact request</string>
     <string name="chat_no_contact_requests">No contact requests.\n\nIf you want classic emails to appear here as contact requests, you can change the corresponding setting in the app settings.</string>
-    <string name="retry_send">Try to send message again?</string>
+    <string name="retry_send">Retry to send message</string>
     <string name="send_failed">Could not send message</string>
 
     <!-- map -->
@@ -302,17 +302,15 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro1_message">The messenger with the broadest audience in the world. Libre and independent.</string>
+    <string name="welcome_intro1_message">The messenger with the broadest audience in the world. Free and independent.</string>
     <string name="welcome_intro2_headline">Independent</string>
     <string name="welcome_intro2_message">There is no Delta Chat server. The app only uses your mail server.</string>
     <string name="welcome_intro3_headline">Fast</string>
     <string name="welcome_intro3_message">Push messages in seconds.\nRapid interface.</string>
     <string name="welcome_intro4_headline">Powerful</string>
     <string name="welcome_intro4_message">Unlimited chats, images, videos, audio messages and more. Multi-client capable.</string>
-    <!-- Translators: libre sofware as in use, see, change and share freely -->
-    <string name="welcome_intro5_headline">Libre</string>
-    <!-- Translators: https://en.wikipedia.org/wiki/Copyleft meaning it has to be shared with everyone, and https://en.wikipedia.org/wiki/Free_software -->
-    <string name="welcome_intro5_message">Delta Chat is copylefted libre software. It has no ads, subscription or vendor lock-in.</string>
+    <string name="welcome_intro5_headline">Free</string>
+    <string name="welcome_intro5_message">Delta Chat is a free software. No ad or subscription. No vendor lock-in.</string>
     <string name="welcome_intro6_headline">Encrypted</string>
     <string name="welcome_intro6_message">Encrypted with all common algorithms. Messages stay on your servers.</string>
     <string name="welcome_intro7_headline">Trustworthy</string>
@@ -320,23 +318,23 @@
     <string name="welcome_start_messaging">Start messaging</string>
     <string name="login_title">Log in</string>
     <string name="login_header">Log in to your server</string>
-    <string name="login_explain">Log in with an existing e-mail account.</string>
+    <string name="login_explain">Log in with an existing email account</string>
     <string name="login_subheader">For known email providers additional settings are set up automatically. Sometimes IMAP needs to be on in the web settings. Consult your email provider or friends for help.</string>
     <string name="login_no_servers_hint">There are no Delta Chat servers, your data stays on your device.</string>
     <string name="login_inbox">Inbox</string>
-    <string name="login_imap_login">IMAP login-name</string>
+    <string name="login_imap_login">IMAP login name</string>
     <string name="login_imap_server">IMAP server</string>
     <string name="login_imap_port">IMAP port</string>
     <string name="login_imap_security">IMAP security</string>
     <string name="login_outbox">Outbox</string>
-    <string name="login_smtp_login">SMTP login-name</string>
+    <string name="login_smtp_login">SMTP login name</string>
     <string name="login_smtp_password">SMTP password</string>
     <string name="login_smtp_server">SMTP server</string>
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP security</string>
     <string name="login_auth_method">Authorization method</string>
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
-    <string name="login_info_oauth2_text">The entered e-mail-address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your chat with e-mail app.\n\nThere are no Delta Chat servers, your data stays on your device.</string>
+    <string name="login_info_oauth2_text">The entered email address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your chat over email app.\n\nThere are no Delta Chat servers, your data stays on your device.</string>
     <string name="login_info_gmail_text">For Gmail Accounts you need to create an App-Password if you have \"2-Step Verification\" enabled. If this setting is not available, you need to enable \"Less secure apps\".</string>
     <string name="login_certificate_checks">Certificate checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
@@ -345,9 +343,9 @@
     <string name="login_error_required_fields">Please enter a valid email address and a password</string>
     <string name="import_backup_title">Import backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
-    <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to go with the normal setup process.</string>
+    <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to continue with the normal setup process.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
-    <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the email-address and the password are correct.</string>
+    <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the email address and the password are correct.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers place additional information in your inbox; you can check them it eg. in the web frontend. Consult your provider or friends if you run into problems.</string>
 
@@ -423,9 +421,9 @@
     <string name="pref_language">Language</string>
     <string name="pref_incognito_keyboard">Incognito keyboard</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
-    <string name="pref_incognito_keyboard_explain">Request keyboard to turn off personalized learning</string>
+    <string name="pref_incognito_keyboard_explain">Request keyboard to disable personalized learning</string>
     <string name="pref_read_receipts">Read receipts</string>
-    <string name="pref_read_receipts_explain">If read receipts are turned off, you won\'t know if your messages were displayed.</string>
+    <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t know if your messages were displayed.</string>
     <string name="pref_manage_keys">Manage keys</string>
     <string name="pref_use_system_emoji">Use system emoji</string>
     <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
@@ -436,7 +434,7 @@
     <string name="pref_in_chat_sounds">In-chat sounds</string>
     <string name="pref_message_text_size">Message font size</string>
     <string name="pref_view_log">View log</string>
-    <string name="pref_saved_log">Saved the log to Downloads folder</string>
+    <string name="pref_saved_log">Saved the log to \"Downloads\" folder</string>
     <string name="pref_save_log_failed">Failed to save the log</string>
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Other</string>
@@ -444,13 +442,13 @@
     <string name="pref_backup_explain">Backup chats to external storage</string>
     <string name="pref_backup_export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
     <string name="pref_backup_export_start_button">Start backup</string>
-    <string name="pref_backup_written_to_x">Backup written successfully to %1$s</string>
+    <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
     <string name="pref_managekeys_menu_title">Manage keys</string>
     <string name="pref_managekeys_ask_for_storage_permission">Delta Chat needs access to your files to import/export keys.</string>
     <string name="pref_managekeys_export_secret_keys">Export secret keys</string>
     <string name="pref_managekeys_export_explain">Export secret keys to \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Import secret keys</string>
-    <string name="pref_managekeys_import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename</string>
+    <string name="pref_managekeys_import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Secret keys imported from \"%1$s\".</string>
     <string name="pref_background">Background</string>
@@ -469,11 +467,11 @@
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
     <string name="pref_show_emails_all">All</string>
-    <string name="pref_empty_server_title">Delete e-mails from server</string>
-    <string name="pref_empty_server_msg">This function helps free up space on your IMAP server by deleting all e-mails, including chat messages, in the given folders. Messages on this device will not be deleted. The deletion cannot be undone!</string>
-    <string name="pref_empty_server_inbox">Delete all e-mails in \"Inbox\" folder</string>
-    <string name="pref_empty_server_mvbox">Delete all e-mails in \"DeltaChat\" folder</string>
-    <string name="pref_empty_server_do_button">Delete e-mails</string>
+    <string name="pref_empty_server_title">Delete emails from server</string>
+    <string name="pref_empty_server_msg">This function helps free up space on your IMAP server by deleting all emails, including chat messages, in the given folders. Messages on this device will not be deleted. The deletion cannot be undone!</string>
+    <string name="pref_empty_server_inbox">Delete all emails in \"Inbox\" folder</string>
+    <string name="pref_empty_server_mvbox">Delete all emails in \"DeltaChat\" folder</string>
+    <string name="pref_empty_server_do_button">Delete emails</string>
     <string name="pref_experimental_features">Experimental features</string>
     <string name="pref_on_demand_location_streaming">On-demand location streaming</string>
     <string name="pref_background_default">Default background</string>
@@ -485,13 +483,13 @@
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt is a new and open specification for automatic end-to-end email encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with Autocrypt Setup Messages.</string>
     <string name="autocrypt_send_asm_title">Send Autocrypt Setup Message</string>
-    <string name="autocrypt_send_asm_explain_before">An \"Autocrypt Setup Message\" securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code displayed here, to be typed on the other device.</string>
+    <string name="autocrypt_send_asm_explain_before">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
     <string name="autocrypt_send_asm_button">Send Autocrypt Setup Message</string>
-    <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a corresponding setup code. Type the following digits to Autocrypt the new device:\n\n%1$s.</string>
+    <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a corresponding setup code. Type the following digits:\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">Prefer end-to-end encryption</string>
     <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
-    <string name="autocrypt_asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nOpen the message in an Autocrypt-compliant program and enter the setup code presented on the device it was sent from to use it.</string>
-    <string name="autocrypt_asm_click_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTap or click this message to use it.</string>
+    <string name="autocrypt_asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nOpen the message in an Autocrypt-compliant app and enter the setup code presented on the device it was sent from to use it.</string>
+    <string name="autocrypt_asm_click_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nOpen this message to use it.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt Setup Message</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Please enter the setup code displayed on the other device.</string>
     <string name="autocrypt_continue_transfer_succeeded">End-to-end setup transferred. This device is now ready to use Autocrypt with the same setup as the other device.</string>
@@ -517,7 +515,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Screen lock</string>
-    <string name="screenlock_explain">Lock access with Android screen lock or fingerprint; to avoid showing the prior content, please also turn on \"Screen security\".</string>
+    <string name="screenlock_explain">Lock access with Android screen lock or fingerprint; to avoid showing the prior content, please also enable \"Screen security\".</string>
     <string name="screenlock_authentication_failed">Authentication failed.</string>
     <string name="screenlock_unlock_title">Unlock Delta Chat</string>
     <string name="screenlock_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
@@ -529,9 +527,9 @@
     <!-- qr code stuff -->
     <string name="qr_code">QR code</string>
     <string name="qrscan_title">Scan QR code</string>
-    <string name="qrscan_hint">Hold your camera over the QR code</string>
+    <string name="qrscan_hint">Hold your camera over the QR code.</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
-    <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the one last seen for %1$s</string>
+    <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the last seen for %1$s.</string>
     <string name="qrscan_no_addr_found">This QR code contains a fingerprint, but no email address.\n\nVerify it by checking to see that it matches with the recipient first, in a way that can\'t be surveilled.</string>
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
@@ -544,13 +542,13 @@
     <string name="qrshow_join_group_title">QR invite code</string>
     <string name="qrshow_join_group_hint">Scan this to join the group \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR invite code</string>
-    <string name="qrshow_join_contact_hint">Scan this to set up a contact with %1$s</string>
+    <string name="qrshow_join_contact_hint">Scan this to set up a contact with %1$s.</string>
     <string name="qrshow_join_contact_no_connection_hint">Please connect to the Internet before proceeding.</string>
     <string name="qrshow_join_contact_no_connection_toast">Connect to the Internet to perform QR code setup.</string>
     <string name="contact_verified">%1$s verified.</string>
-    <string name="contact_not_verified">Cannot verify %1$s</string>
+    <string name="contact_not_verified">Cannot verify %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
-    <string name="contact_setup_changed">Changed setup for %1$s</string>
+    <string name="contact_setup_changed">Changed setup for %1$s.</string>
 
 
     <!-- notifications  -->
@@ -562,7 +560,7 @@
     <string name="notify_media_message">Media message</string>
     <string name="notify_reply_button">Reply</string>
     <string name="notify_new_message">New message</string>
-    <string name="notify_background_connection_enabled">Background connection on</string>
+    <string name="notify_background_connection_enabled">Background connection enabled</string>
     <string name="notify_priority_high">High</string>
     <string name="notify_priority_max">Max</string>
     <string name="notify_name_and_message">Name and message</string>
@@ -573,14 +571,14 @@
     <!-- permissions -->
     <string name="perm_required_title">Permission required</string>
     <string name="perm_continue">Continue</string>
-    <string name="perm_explain_need_for_camera_access">To capture photos and video, grant Delta Chat camera access.</string>
-    <string name="perm_explain_need_for_mic_access">To send audio messages, grant Delta Chat microphone access.</string>
-    <string name="perm_explain_need_for_storage_access">Grant Delta Chat access to your files in order to export files or to create backups.</string>
-    <string name="perm_explain_need_for_storage_access_share">Grant Delta Chat access to your files to share them.</string>
-    <string name="perm_explain_access_to_camera_denied">To take photos or shoot videos, first go to the app settings menu, select \"Permissions\", and turn on \"Camera\".</string>
-    <string name="perm_explain_access_to_mic_denied">To send audio messages, first go to the app settings menu, select \"Permissions\", and turn on \"Microphone\".</string>
-    <string name="perm_explain_access_to_storage_denied">To attach or export photos, videos, or audio, first go to the app settings menu, select \"Permissions\", and turn on \"Storage\".</string>
-    <string name="perm_explain_access_to_location_denied">To attach a location, first go to the app settings menu, select \"Permissions\", and turn on \"Location\".</string>
+    <string name="perm_explain_need_for_camera_access">To capture photos and video, allow Delta Chat to access the camera.</string>
+    <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat to access the microphone.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat needs access to your files to share them.</string>
+    <string name="perm_explain_access_to_camera_denied">To take photos or capture videos, go to the app settings, select \"Permissions\", and enable \"Camera\".</string>
+    <string name="perm_explain_access_to_mic_denied">To send audio messages, go to the app settings, select \"Permissions\", and enable \"Microphone\".</string>
+    <string name="perm_explain_access_to_storage_denied">To recieve or send files, go to the app settings, select \"Permissions\", and enable \"Storage\".</string>
+    <string name="perm_explain_access_to_location_denied">To attach a location, go to the app settings, select \"Permissions\", and enable \"Location\".</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat uses few resources and takes care not to drain your battery.</string>
 
@@ -590,7 +588,7 @@
     <!-- desktop specific strings -->
     <string name="welcome_desktop">Welcome to Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Known accounts</string>
-    <string name="global_menu_preferences_language_desktop">Choose Language…</string>
+    <string name="global_menu_preferences_language_desktop">Language</string>
     <string name="global_menu_file_desktop">File</string>
     <string name="global_menu_file_quit_desktop">Quit</string>
     <string name="global_menu_edit_desktop">Edit</string>
@@ -600,7 +598,7 @@
     <string name="global_menu_edit_copy_desktop">Copy</string>
     <string name="global_menu_edit_paste_desktop">Paste</string>
     <string name="global_menu_view_desktop">View</string>
-    <string name="global_menu_view_floatontop_desktop">Float-on-top</string>
+    <string name="global_menu_view_floatontop_desktop">Float on Top</string>
     <string name="global_menu_view_developer_desktop">Developer</string>
     <string name="global_menu_view_developer_tools_desktop">Developer Tools</string>
     <string name="global_menu_help_desktop">Help</string>
@@ -630,14 +628,14 @@
     <string name="name_desktop">Name</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt key transfer</string>
     <string name="initiate_key_transfer_title_desktop">Initiate key transfer</string>
-    <string name="initiate_key_transfer_desktop">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps. The setup will be encrypted by a setup code displayed here, to be typed on the other device.</string>
+    <string name="initiate_key_transfer_desktop">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps. The setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
     <string name="reply_to_message_desktop">Reply to message</string>
     <string name="select_group_image_desktop">Select group image</string>
     <string name="imex_progress_title_desktop">Backup progress</string>
     <string name="download_attachment_desktop">Download attachment</string>
     <string name="export_backup_desktop">Export backup</string>
     <string name="transfer_key_desktop">Transfer key</string>
-    <string name="show_key_transfer_message_desktop">Your key has been sent to yourself. Switch to the other device and open the Autocrypt Setup Message. You should be prompted for a setup code. Once the following digits are typed into on other device, it will be ready to use Autocrypt.</string>
+    <string name="show_key_transfer_message_desktop">End-to-end setup transferred. This device is now ready to use Autocrypt with the same setup as the other device.</string>
     <string name="new_message_from_desktop">New message from</string>
     <string name="unblock_contacts_desktop">Unblock contacts</string>
     <string name="none_blocked_desktop">No blocked contacts yet</string>
@@ -656,7 +654,7 @@
     <string name="message_detail_to_desktop">to</string>
     <string name="menu.view.developer.open.log.folder">Open the log folder</string>
     <string name="menu.view.developer.open.current.log.file">Open current logfile</string>
-    <string name="user_location_permission_explanation">Grant location permission to show and share your location.</string>
+    <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
 
 
     <!-- accessibility -->
