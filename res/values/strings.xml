@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- common strings without special context -->
-    <string name="app_name">Delta Chat</string>
+    <string name="dc_app_name" translatable="false">Delta Chat</string>
+    <string name="app_name" translatable="false">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
@@ -44,7 +45,7 @@
     <string name="copied_to_clipboard">Copied to clipboard.</string>
     <string name="contacts_headline">Contacts</string>
     <string name="email_address">Email address</string>
-    <string name="bad_email_address">Bad email address.</string>
+    <string name="bad_email_address">Incorrect email address.</string>
     <string name="password">Password</string>
     <string name="now">Now</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
@@ -383,7 +384,7 @@
     <string name="pref_trim_now_ask">Delete all old messages now? This will immediately trim all chats to the %d most recent messages.</string>
     <string name="pref_blocked_contacts">Blocked contacts</string>
     <string name="pref_profile_photo_remove_ask">Remove profile photo?</string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <string name="pref_help_url" translatable="false">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Password and account</string>
     <string name="pref_who_can_see_this_information">Who can see this?</string>
     <string name="pref_who_can_see_profile_explain">Your profile picture and name will be shown alongside your messages when communicating with other users. Already sent information can not be deleted or removed.</string>
