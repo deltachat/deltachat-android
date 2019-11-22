@@ -334,7 +334,7 @@
     <string name="login_smtp_security">SMTP security</string>
     <string name="login_auth_method">Authorization method</string>
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
-    <string name="login_info_oauth2_text">The entered email address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your chat over email app.\n\nThere are no Delta Chat servers, your data stays on your device.</string>
+    <string name="login_info_oauth2_text">The entered email address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over Email app.\n\nThere are no Delta Chat servers, your data stays on your device.</string>
     <string name="login_info_gmail_text">For Gmail Accounts you need to create an App-Password if you have \"2-Step Verification\" enabled. If this setting is not available, you need to enable \"Less secure apps\".</string>
     <string name="login_certificate_checks">Certificate checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
@@ -461,7 +461,7 @@
     <string name="pref_watch_mvbox_folder">Watch DeltaChat folder</string>
     <string name="pref_send_copy_to_self">Send copy to self</string>
     <string name="pref_auto_folder_moves">Automatic moves to DeltaChat folder</string>
-    <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the \"Inbox\" folder</string>
+    <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
     <string name="pref_email_interaction_title">Email interaction</string>
     <string name="pref_show_emails">Show classic emails</string>
     <string name="pref_show_emails_no">No, chats only</string>
