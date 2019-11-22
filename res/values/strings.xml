@@ -319,7 +319,7 @@
     <string name="login_title">Log in</string>
     <string name="login_header">Log in to your server</string>
     <string name="login_explain">Log in with an existing email account</string>
-    <string name="login_subheader">For known email providers additional settings are set up automatically. Sometimes IMAP needs to be on in the web settings. Consult your email provider or friends for help.</string>
+    <string name="login_subheader">For known email providers additional settings are set up automatically. Sometimes IMAP needs to be enable in the web settings. Consult your email provider or friends for help.</string>
     <string name="login_no_servers_hint">There are no Delta Chat servers, your data stays on your device.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP login name</string>
