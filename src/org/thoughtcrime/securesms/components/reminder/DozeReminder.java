@@ -61,11 +61,11 @@ public class DozeReminder extends Reminder {
       return false;
     }
 
-    // if the chatlist is empty, just after installation,
+    // if the chatlist only contains device-talk and self-talk, just after installation,
     // do not bother with battery, let the user check out other things first.
     try {
       int numberOfChats = DcHelper.getContext(context).getChatlist(0, null, 0).getCnt();
-      if (numberOfChats == 0) {
+      if (numberOfChats <= 2) {
         return false;
       }
     }
