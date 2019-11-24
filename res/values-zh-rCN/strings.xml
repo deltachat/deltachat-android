@@ -15,6 +15,7 @@
     <string name="strict">严格</string>
     <string name="open">打开</string>
     <string name="delete">删除</string>
+    <string name="info">信息</string>
     <string name="update">更新</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">附件</string>
@@ -24,6 +25,7 @@
     <string name="chat">聊天</string>
     <string name="media">媒体</string>
     <string name="main_menu">主菜单</string>
+    <string name="start_chat">开始聊天</string>
     <string name="show_password">显示密码</string>
     <string name="hide_password">隐藏密码</string>
     <string name="not_now">现在不</string>
@@ -31,6 +33,8 @@
     <string name="one_moment">稍等片刻…</string>
     <string name="done">已完成</string>
     <string name="undo">撤销</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">下一步</string>
     <string name="error">错误</string>
     <string name="error_x">错误：%1$s</string>
     <string name="error_no_network">网络不可用。</string>
@@ -43,6 +47,8 @@
     <string name="bad_email_address">错误的电子邮件地址。</string>
     <string name="password">密码</string>
     <string name="now">现在</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">危险!</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d 分钟前</string>
     <string name="today">今天</string>
@@ -165,6 +171,7 @@
     <string name="title_share_location">与群组所有成员共享位置</string>
     <string name="device_talk">设备消息</string>
     <string name="device_talk_subtitle">本地生成的消息</string>
+    <string name="edit_contact">编辑联系人</string>
 
     <string name="mute_for_one_hour">静音1小时</string>
     <string name="mute_for_two_hours">静音2小时</string>
@@ -336,6 +343,9 @@
     <string name="accept_invalid_hostnames">接受无效的主机名</string>
     <string name="accept_invalid_certificates">接受无效的证书</string>
 
+    <string name="used_settings">使用的设置：</string>
+    <string name="delete_account">删除账户</string>
+    <string name="delete_account_ask">您确定要删除您的账户数据吗？</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -505,6 +515,7 @@
 
 
     <!-- qr code stuff -->
+    <string name="qr_code">二维码</string>
     <string name="qrscan_title">扫描二维码</string>
     <string name="qrscan_hint">将您的相机对准二维码</string>
     <string name="qrscan_ask_join_group">您想加入群组“%1$s”吗？</string>

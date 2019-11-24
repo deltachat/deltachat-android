@@ -15,6 +15,7 @@
     <string name="strict">Strikt</string>
     <string name="open">Openen</string>
     <string name="delete">Verwijderen</string>
+    <string name="info">Informatie</string>
     <string name="update">Bijwerken</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bijlage</string>
@@ -24,6 +25,7 @@
     <string name="chat">Gesprek</string>
     <string name="media">Media</string>
     <string name="main_menu">Hoofdmenu</string>
+    <string name="start_chat">Gesprek beginnen</string>
     <string name="show_password">Wachtwoord tonen</string>
     <string name="hide_password">Wachtwoord verbergen</string>
     <string name="not_now">Niet nu</string>
@@ -31,6 +33,8 @@
     <string name="one_moment">Even geduld...</string>
     <string name="done">Klaar</string>
     <string name="undo">Ongedaan maken</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Volgende</string>
     <string name="error">Fout</string>
     <string name="error_x">Fout: %1$s</string>
     <string name="error_no_network">Geen internetverbinding.</string>
@@ -43,6 +47,8 @@
     <string name="bad_email_address">Ongeldig e-mailadres.</string>
     <string name="password">Wachtwoord</string>
     <string name="now">Nu</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Gevarenzone</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Vandaag</string>
@@ -171,6 +177,7 @@
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
     <string name="device_talk">Berichten op apparaat</string>
     <string name="device_talk_subtitle">Lokaal gegenereerde berichten</string>
+    <string name="edit_contact">Contactpersoon bewerken</string>
 
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
     <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
@@ -347,6 +354,9 @@
     <string name="accept_invalid_hostnames">Ongeldige hostnamen accepteren</string>
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
 
+    <string name="used_settings">Gebruikte instellingen:</string>
+    <string name="delete_account">Account verwijderen</string>
+    <string name="delete_account_ask">Weet je zeker dat je je accountgegevens wilt verwijderen?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -516,6 +526,7 @@
 
 
     <!-- qr code stuff -->
+    <string name="qr_code">QR-code</string>
     <string name="qrscan_title">QR-code scannen</string>
     <string name="qrscan_hint">Plaatst je camera boven de QR-code</string>
     <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep \"%1$s\"?</string>

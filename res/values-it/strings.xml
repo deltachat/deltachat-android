@@ -11,8 +11,11 @@
     <string name="def">Predefinito</string>
     <string name="custom">Personalizzato</string>
     <string name="none">Nessuno</string>
+    <string name="automatic">Automatico</string>
+    <string name="strict">Stringente</string>
     <string name="open">Apri</string>
     <string name="delete">Elimina</string>
+    <string name="info">Info</string>
     <string name="update">Aggiorna</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Allegato</string>
@@ -22,6 +25,7 @@
     <string name="chat">Chat</string>
     <string name="media">Media</string>
     <string name="main_menu">Menu principale</string>
+    <string name="start_chat">Inizia una chat</string>
     <string name="show_password">Mostra password</string>
     <string name="hide_password">Nascondi password</string>
     <string name="not_now">Non ora</string>
@@ -29,6 +33,8 @@
     <string name="one_moment">Un momento...</string>
     <string name="done">Fatto</string>
     <string name="undo">Annulla</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Avanti</string>
     <string name="error">Errore</string>
     <string name="error_x">Errore: %1$s</string>
     <string name="error_no_network">Rete non disponibile.</string>
@@ -41,6 +47,8 @@
     <string name="bad_email_address">Indirizzo non valido</string>
     <string name="password">Password</string>
     <string name="now">Ora</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Attenzione</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Oggi</string>
@@ -167,6 +175,10 @@
     <string name="menu_zoom_out">Zoom out</string>
     <string name="menu_save_log">Salva log</string>
     <string name="title_share_location">Condividi posizione con tutti i membri</string>
+    <string name="device_talk">Messaggi del dispositivo</string>
+    <string name="device_talk_subtitle">Messaggi generati localmente</string>
+    <string name="edit_contact">Modifica contatto</string>
+
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_two_hours">Silenzia per 2 ore</string>
     <string name="mute_for_one_day">Silenzia per 1 giorno</string>
@@ -325,6 +337,7 @@
     <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
     <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2).\n\nContinuando, puoi autorizzare Delta Chat ad operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
     <string name="login_info_gmail_text">Per gli account GMail è necessario creare una password per le app se è attiva la verifica in 2 passaggi. Se queste impostazioni non sono disponibili, è necessario abilitare le app meno sicure.</string>
+    <string name="login_certificate_checks">Controlli certificato</string>
     <string name="login_error_mail">Inserisci un indirizzo email valido</string>
     <string name="login_error_server">Inserisci un server / indirizzo IP valido</string>
     <string name="login_error_port">Inserisci una porta valida (1-65535)</string>
@@ -336,6 +349,14 @@
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Verifica che l\'indirizzo email e la password siano corretti.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni provider inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il provider o i tuoi amici se riscontri problemi.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Accetta hostname non validi</string>
+    <string name="accept_invalid_certificates">Accetta certificati non validi</string>
+
+    <string name="used_settings">Impostazioni in uso:</string>
+    <string name="delete_account">Elimina account</string>
+    <string name="delete_account_ask">Sei certo di voler eliminare i dati dell\'account?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -439,6 +460,7 @@
     <string name="pref_watch_inbox_folder">Vedi cartella In Arrivo</string>
     <string name="pref_watch_sent_folder">Vedi cartella Inviati</string>
     <string name="pref_watch_mvbox_folder">Vedi cartella DeltaChat</string>
+    <string name="pref_send_copy_to_self">Auto-invia una copia</string>
     <string name="pref_auto_folder_moves">Sposta automaticamente nella cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Le chat vengono spostate per evitare di riempire la cartella In Arrivo</string>
     <string name="pref_email_interaction_title">Interazione email</string>
@@ -504,6 +526,7 @@
 
 
     <!-- qr code stuff -->
+    <string name="qr_code">Codic QR</string>
     <string name="qrscan_title">Scansiona codice QR</string>
     <string name="qrscan_hint">Posiziona la camera sopra il codice QR</string>
     <string name="qrscan_ask_join_group">Vuoi entrare nel gruppo \"%1$s\"?</string>

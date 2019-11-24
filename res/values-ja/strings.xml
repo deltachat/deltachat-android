@@ -250,7 +250,6 @@ https://delta.chat</string>
     <string name="autocrypt_send_asm_button">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
     <string name="autocrypt_asm_subject">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
     <string name="autocrypt_continue_transfer_title">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
-    <!-- qr code stuff -->
     <string name="qrscan_title">QRｺｰﾄﾞを読み取る</string>
     <string name="qrscan_hint">QRｺｰﾄﾞを読み取って下さい</string>
     <string name="qrscan_contains_text">読み取り結果は以下:\n\n%1$s</string>

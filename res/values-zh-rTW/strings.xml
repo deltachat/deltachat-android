@@ -459,7 +459,6 @@
     <string name="screenlock_inactivity_timeout_interval">閒置逾時時間</string>
 
 
-    <!-- qr code stuff -->
     <string name="qrscan_title">掃描QR Code</string>
     <string name="qrscan_hint">請將相機對準 QR Code</string>
     <string name="qrscan_ask_join_group">你要參加群組 %1$s 嗎?</string>

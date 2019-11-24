@@ -480,7 +480,6 @@
     <string name="screenlock_inactivity_timeout_interval">Limite de inatividade</string>
 
 
-    <!-- qr code stuff -->
     <string name="qrscan_title">Escanear código QR</string>
     <string name="qrscan_hint">Aponte sua câmera para o código QR</string>
     <string name="qrscan_ask_join_group">Você quer ingressar no grupo \"%1$s\"?</string>

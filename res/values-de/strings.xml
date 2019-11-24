@@ -15,6 +15,7 @@
     <string name="strict">Strikt</string>
     <string name="open">Öffnen</string>
     <string name="delete">Löschen</string>
+    <string name="info">Info</string>
     <string name="update">Aktualisieren</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Anhang</string>
@@ -24,6 +25,7 @@
     <string name="chat">Chat</string>
     <string name="media">Medien</string>
     <string name="main_menu">Hauptmenü</string>
+    <string name="start_chat">Chat starten</string>
     <string name="show_password">Passwort anzeigen</string>
     <string name="hide_password">Passwort verstecken</string>
     <string name="not_now">Nicht jetzt</string>
@@ -31,6 +33,8 @@
     <string name="one_moment">Einen Moment…</string>
     <string name="done">Fertig</string>
     <string name="undo">Rückgängig</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Weiter</string>
     <string name="error">Fehler</string>
     <string name="error_x">Fehler: %1$s</string>
     <string name="error_no_network">Kein Netzwerk.</string>
@@ -43,6 +47,8 @@
     <string name="bad_email_address">Ungültige E-Mail-Adresse</string>
     <string name="password">Passwort</string>
     <string name="now">Jetzt</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Achtung</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d Min.</string>
     <string name="today">Heute</string>
@@ -171,6 +177,7 @@
     <string name="title_share_location">Standort mit allen Gruppenmitgliedern teilen</string>
     <string name="device_talk">Systemnachrichten</string>
     <string name="device_talk_subtitle">Lokal erzeugte Nachrichten</string>
+    <string name="edit_contact">Kontakt bearbeiten</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
     <string name="mute_for_two_hours">Stumm für 2 Stunden</string>
@@ -349,6 +356,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="accept_invalid_hostnames">Ungültige Hostnamen akzeptieren</string>
     <string name="accept_invalid_certificates">Ungültige Zertifikate akzeptieren</string>
 
+    <string name="used_settings">Verwendete Einstellungen:</string>
+    <string name="delete_account">E-Mail-Konto löschen</string>
+    <string name="delete_account_ask">Das E-Mail-Konto und alle Daten wirklich von diesem Gerät löschen?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -518,6 +528,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
 
 
     <!-- qr code stuff -->
+    <string name="qr_code">QR-Code</string>
     <string name="qrscan_title">QR-Code scannen</string>
     <string name="qrscan_hint">Kamera über den QR-Code halten</string>
     <string name="qrscan_ask_join_group">Der Gruppe \"%1$s\" beitreten?</string>
