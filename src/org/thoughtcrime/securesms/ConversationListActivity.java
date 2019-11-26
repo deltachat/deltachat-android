@@ -106,7 +106,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     } else {
-      title.setText(R.string.dc_app_name);
+      title.setText(R.string.app_name);
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
     conversationListFragment.onNewIntent();
@@ -199,7 +199,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void handleResetRelaying() {
     resetRelayingMessageContent(this);
-    title.setText(R.string.dc_app_name);
+    title.setText(R.string.app_name);
     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
