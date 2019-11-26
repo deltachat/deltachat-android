@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- common strings without special context -->
-    <string name="dc_app_name" translatable="false">Delta Chat</string>
     <string name="app_name" translatable="false">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
