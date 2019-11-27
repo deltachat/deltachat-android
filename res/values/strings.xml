@@ -318,7 +318,7 @@
     <string name="login_title">Log in</string>
     <string name="login_header">Log in to your server</string>
     <string name="login_explain">Log in with an existing email account</string>
-    <string name="login_subheader">For known email providers additional settings are set up automatically. Sometimes IMAP needs to be enable in the web settings. Consult your email provider or friends for help.</string>
+    <string name="login_subheader">For known email providers additional settings are set up automatically. Sometimes IMAP needs to be enabled in the web settings. Consult your email provider or friends for help.</string>
     <string name="login_no_servers_hint">There are no Delta Chat servers, your data stays on your device.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP login name</string>
@@ -422,7 +422,7 @@
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Request keyboard to disable personalized learning</string>
     <string name="pref_read_receipts">Read receipts</string>
-    <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t know if your messages were displayed.</string>
+    <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
     <string name="pref_manage_keys">Manage keys</string>
     <string name="pref_use_system_emoji">Use system emoji</string>
     <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
@@ -487,8 +487,8 @@
     <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a setup code. Enter the following digits:\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">Prefer end-to-end encryption</string>
     <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
-    <string name="autocrypt_asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nOpen the message in an Autocrypt-compliant app and enter the setup code presented on the device it was sent from to use it.</string>
-    <string name="autocrypt_asm_click_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nOpen this message to use it.</string>
+    <string name="autocrypt_asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
+    <string name="autocrypt_asm_click_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, tap or click on this message.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt Setup Message</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Please enter the setup code displayed on the other device.</string>
     <string name="autocrypt_continue_transfer_succeeded">End-to-end setup transferred. This device is now ready to use Autocrypt with the same setup as the other device.</string>
@@ -505,7 +505,7 @@
     <string name="systemmsg_group_left">Group left.</string>
     <string name="systemmsg_read_receipt_subject">Message opened</string>
     <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
-    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• Reply to this message and ask the sender to try sending it again.\n\n• In case you have re-installed Delta Chat or another email app on this or another device, send it an Autocrypt Setup Message.</string>
+    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another email program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s by me.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
