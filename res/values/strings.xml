@@ -373,7 +373,7 @@
     <string name="pref_using_custom">Using custom: %s</string>
     <string name="pref_using_default">Using default: %s</string>
     <string name="pref_profile_info_headline">Your profile info</string>
-    <string name="pref_profile_photo">Profile photo</string>
+    <string name="pref_profile_photo">Profile picture</string>
     <string name="pref_trim_headline">Message trimming</string>
     <string name="pref_trim_option">Delete old messages</string>
     <string name="pref_trim_option_explain">Automatically delete older messages once a chat exceeds a specified length</string>
