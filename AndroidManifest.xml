@@ -37,7 +37,7 @@
 
     <application android:name=".ApplicationContext"
                  android:icon="@mipmap/ic_launcher"
-                 android:label="@string/dc_app_name"
+                 android:label="@string/app_name"
                  android:supportsRtl="true"
                  tools:replace="android:allowBackup"
                  android:allowBackup="false"
@@ -101,7 +101,7 @@
     </activity>
 
     <activity android:name=".ConversationListActivity"
-              android:label="@string/dc_app_name"
+              android:label="@string/app_name"
               android:launchMode="singleTask"
               android:theme="@style/TextSecure.LightNoActionBar"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
