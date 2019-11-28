@@ -671,6 +671,6 @@
     <!-- Translators: These strings are only used on iOS -->
     <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Allowing access to the camera lets you take photos and videos.</string>
     <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Allowing access to your address book lets you chat with contacts from your device.</string>
-    <string name="INFOPLIST.Privacy.-.Microphone.Usage.Description">Allowing access to the microphone lets you record audio.</string>
-    <string name="INFOPLIST.Privacy.-.Photo.Library.Usage.Description">Allowing access to the photo library allows you to upload images from it.</string>
+    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Allowing access to the microphone lets you record audio.</string>
+    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Allowing access to the photo library allows you to upload images from it.</string>
 </resources>
