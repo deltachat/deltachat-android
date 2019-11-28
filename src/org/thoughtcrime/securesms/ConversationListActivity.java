@@ -17,9 +17,8 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
-import androidx.appcompat.widget.TooltipCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,13 +26,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.TooltipCompat;
+
 import com.b44t.messenger.DcChat;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.map.MapActivity;
-import org.thoughtcrime.securesms.qr.QrScanHandler;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
@@ -56,6 +58,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 {
   @SuppressWarnings("unused")
   private static final String TAG = ConversationListActivity.class.getSimpleName();
+  private static final String OPENPGP4FPR = "openpgp4fpr";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -96,6 +99,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         openConversation(getDirectSharingChatId(this), -1);
       }
     }
+    handleOpenpgp4fpr();
   }
 
   @Override
@@ -111,6 +115,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
+    handleOpenpgp4fpr();
   }
 
   @Override
@@ -118,6 +123,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
+
   }
 
   @Override
@@ -195,6 +201,19 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
 
     return false;
+  }
+
+  private void handleOpenpgp4fpr() {
+    if (getIntent() != null &&
+            Intent.ACTION_VIEW.equals(getIntent().getAction())) {
+      Uri uri = getIntent().getData();
+      if (uri != null && uri.getScheme().equalsIgnoreCase(OPENPGP4FPR)) {
+        String uriString = uri.toString();
+        uriString = uriString.replaceFirst(OPENPGP4FPR, OPENPGP4FPR.toUpperCase());
+        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+        qrCodeHandler.handleOpenPgp4Fpr(uriString);
+      }
+    }
   }
 
   private void handleResetRelaying() {
@@ -288,8 +307,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     switch (requestCode) {
       case IntentIntegrator.REQUEST_CODE:
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        QrScanHandler qrScanHandler = new QrScanHandler(this);
-        qrScanHandler.onScanPerformed(scanResult);
+        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+        qrCodeHandler.onScanPerformed(scanResult);
         break;
       case REQUEST_RELAY:
         if (resultCode == RESULT_OK) {

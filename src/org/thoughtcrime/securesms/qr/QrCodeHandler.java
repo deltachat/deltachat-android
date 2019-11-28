@@ -21,14 +21,14 @@ import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
-public class QrScanHandler implements DcEventCenter.DcEventDelegate {
+public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
 
     private Activity activity;
     ProgressDialog progressDialog;
 
     private ApplicationDcContext dcContext;
 
-    public QrScanHandler(Activity activity) {
+    public QrCodeHandler(Activity activity) {
         this.activity = activity;
         dcContext = DcHelper.getContext(activity);
     }
@@ -38,14 +38,17 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
             return; // Should not happen!
         }
 
+        handleOpenPgp4Fpr(scanResult.getContents());
+    }
+
+    public void handleOpenPgp4Fpr(String rawString) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        final String qrRawString = scanResult.getContents();
-        final DcLot qrParsed = dcContext.checkQr(qrRawString);
+        final DcLot qrParsed = dcContext.checkQr(rawString);
         String nameAndAddress = dcContext.getContact(qrParsed.getId()).getNameNAddr();
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYCONTACT:
             case DcContext.DC_QR_ASK_VERIFYGROUP:
-                showVerifyContactOrGroup(activity, builder, qrRawString, qrParsed, nameAndAddress);
+                showVerifyContactOrGroup(activity, builder, rawString, qrParsed, nameAndAddress);
                 break;
 
             case DcContext.DC_QR_FPR_WITHOUT_ADDR:
@@ -66,7 +69,7 @@ public class QrScanHandler implements DcEventCenter.DcEventDelegate {
                 break;
 
             default:
-                handleDefault(builder, qrRawString, qrParsed);
+                handleDefault(builder, rawString, qrParsed);
                 break;
         }
         builder.create().show();
