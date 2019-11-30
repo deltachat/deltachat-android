@@ -16,6 +16,8 @@ Additionally if the device is laying on your desktop or the night table in a hot
 
 A lot of hours and distances I'm sitting in a German railway express called ICE. Its mirrored window surface filters GPS signals but the train provides free WiFi and a REST API with very precisely location. Connected with **"WIFIonICE"** the locations will be taken from there. TODO: This should be generic with settings to use other providers.
 
+**Note:** Instead of following the development (master branch) you could use the latest release v0.510.1. Respect the build instructions of the native part are very different since the tool chain is switched between C and Rust. Consider to clone it in a separate repository. To separate the installations on the device the release build is using the original icon without "dev". To move data you have to use a backup.
+
 
 ## Delta Chat Android Client
 
