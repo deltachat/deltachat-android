@@ -22,7 +22,7 @@ import org.thoughtcrime.securesms.qr.QrScanFragment;
 
 import java.util.ArrayList;
 
-public class QrScanActivity extends AppCompatActivity {
+public class QrActivity extends AppCompatActivity {
 
     private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();

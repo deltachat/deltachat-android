@@ -35,8 +35,8 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 
 public class QrShowActivity extends AppCompatActivity implements DcEventCenter.DcEventDelegate {
 
-    private final DynamicTheme dynamicTheme    = new DynamicTheme();
-    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+    private final DynamicTheme dynamicTheme    = new DynamicTheme(); //needs to stay when using qrShowFragment because I deleted it there
+    private final DynamicLanguage dynamicLanguage = new DynamicLanguage(); //needs to stay when using qrShowFragment because I deleted it there
 
     public final static int WHITE = 0xFFFFFFFF;
     public final static int BLACK = 0xFF000000;
@@ -61,8 +61,8 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dynamicTheme.onCreate(this);
-        dynamicLanguage.onCreate(this);
+        dynamicTheme.onCreate(this); //needs to stay when using qrShowFragment because I deleted it there
+        dynamicLanguage.onCreate(this); //needs to stay when using qrShowFragment because I deleted it there
 
         setContentView(R.layout.activity_qr_show);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
@@ -76,6 +76,7 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
             chatId = extras.getInt(CHAT_ID);
         }
 
+        // Everything with needs supportActionBar to stay when using qrShowFragment because I deleted it there
         ActionBar supportActionBar = getSupportActionBar();
         assert supportActionBar != null;
         supportActionBar.setDisplayHomeAsUpEnabled(true);

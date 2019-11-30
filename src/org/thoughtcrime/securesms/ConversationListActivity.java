@@ -37,7 +37,7 @@ import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
-import org.thoughtcrime.securesms.qr.QrScanActivity;
+import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrShowActivity;
 import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -235,7 +235,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void handleQrScan() {
-    new IntentIntegrator(this).setCaptureActivity(QrScanActivity.class).initiateScan();
+    new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
   }
 
   private void handleQrShow() {
