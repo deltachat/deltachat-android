@@ -656,9 +656,21 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendTextMsg(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_addDeviceMsg(JNIEnv *env, jobject obj, jobject msg)
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_addDeviceMsg(JNIEnv *env, jobject obj, jstring label, jobject msg)
 {
-	return dc_add_device_msg(get_dc_context(env, obj), get_dc_msg(env, msg));
+	CHAR_REF(label);
+		int msg_id = dc_add_device_msg(get_dc_context(env, obj), labelPtr, get_dc_msg(env, msg));
+	CHAR_UNREF(label);
+	return msg_id;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_wasDeviceMsgEverAdded(JNIEnv *env, jobject obj, jstring label)
+{
+	CHAR_REF(label);
+		jboolean ret = dc_was_device_msg_ever_added(get_dc_context(env, obj), labelPtr) != 0;
+	CHAR_UNREF(label);
+	return ret;
 }
 
 

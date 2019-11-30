@@ -183,7 +183,6 @@
     <string name="title_share_location">Делиться местоположением со всеми участниками группы</string>
     <string name="device_talk">Сообщения устройства</string>
     <string name="device_talk_subtitle">Локально сгенерированные сообщения</string>
-
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
@@ -369,7 +368,6 @@
     <string name="accept_invalid_hostnames">Принимать сертификаты с недействительным именем хоста</string>
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
 
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
@@ -537,7 +535,6 @@
     <string name="screenlock_inactivity_timeout_interval">Время неактивности</string>
 
 
-    <!-- qr code stuff -->
     <string name="qrscan_title">Сканировать QR код</string>
     <string name="qrscan_hint">Наведите камеру на QR код</string>
     <string name="qrscan_ask_join_group">Присоединиться к группе «%1$s»?</string>

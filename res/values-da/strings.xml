@@ -471,7 +471,6 @@
     <string name="screenlock_inactivity_timeout_interval">Inaktivitet tidsudløb interval</string>
 
 
-    <!-- qr code stuff -->
     <string name="qrscan_title">Skanne QR kode</string>
     <string name="qrscan_hint">Placere kamera over QR kode</string>
     <string name="qrscan_ask_join_group">Deltage i gruppen \"%1$s\"?</string>

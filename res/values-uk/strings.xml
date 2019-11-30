@@ -428,7 +428,6 @@
     <string name="screenlock_inactivity_timeout_interval">Час бездіяльності</string>
 
 
-    <!-- qr code stuff -->
     <string name="qrscan_title">Сканувати QR-код</string>
     <string name="qrscan_hint">Наведіть камеру на QR-код</string>
     <string name="qrscan_ask_join_group">Приєднатися до групи «%1$s»?</string>

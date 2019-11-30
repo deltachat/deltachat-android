@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v0.960.0
+2019-11-24
+
+* update translations
+* more reliable background fetch on newer Android versions
+* bug fixes
+* minimum requirement is now Android 4.3 Jelly Bean
+
 ## v0.950.0
 2019-11-05
 

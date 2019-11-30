@@ -15,6 +15,7 @@
     <string name="strict">Strikt</string>
     <string name="open">Hap</string>
     <string name="delete">Fshije</string>
+    <string name="info">Të dhëna</string>
     <string name="update">Përditësoje</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bashkëngjitje</string>
@@ -24,6 +25,7 @@
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>
     <string name="main_menu">Menuja kryesore</string>
+    <string name="start_chat">Nisni fjalosje</string>
     <string name="show_password">Shfaqe fjalëkalimin</string>
     <string name="hide_password">Fshihe fjalëkalimin</string>
     <string name="not_now">Jo tani</string>
@@ -31,6 +33,8 @@
     <string name="one_moment">Një çast…</string>
     <string name="done">U bë</string>
     <string name="undo">Zhbëje</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Pasuesja</string>
     <string name="error">Gabim</string>
     <string name="error_x">Gabim: %1$s</string>
     <string name="error_no_network">Rrjet i pakapshëm.</string>
@@ -43,6 +47,8 @@
     <string name="bad_email_address">Adresë email e keqe.</string>
     <string name="password">Fjalëkalim</string>
     <string name="now">Tani</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Rrezik</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min.</string>
     <string name="today">Sot</string>
@@ -171,6 +177,7 @@
     <string name="title_share_location">Jepua vendndodhjen krejt anëtarëve të grupit</string>
     <string name="device_talk">Mesazhe Pajisjeje</string>
     <string name="device_talk_subtitle">Mesazhe të prodhuar lokalisht</string>
+    <string name="edit_contact">Përpunoni kontaktin</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
     <string name="mute_for_two_hours">Heshtoji për 2 orë</string>
@@ -347,6 +354,9 @@
     <string name="accept_invalid_hostnames">Prano strehëemra të pavlefshëm</string>
     <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
 
+    <string name="used_settings">Rregullime të përdorura</string>
+    <string name="delete_account">Fshije llogarinë</string>
+    <string name="delete_account_ask">Jeni i sigurt se doni të fshihen të dhënat e llogarisë tuaj?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -515,6 +525,7 @@
 
 
     <!-- qr code stuff -->
+    <string name="qr_code">Kod QR</string>
     <string name="qrscan_title">Skanoni kod QR</string>
     <string name="qrscan_hint">Vendoseni kamerën tuaj përmbi kodin QR</string>
     <string name="qrscan_ask_join_group">Doni të bëheni pjesë e grupit \"%1$s\"?</string>

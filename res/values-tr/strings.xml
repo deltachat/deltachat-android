@@ -15,6 +15,7 @@
     <string name="strict">Katı</string>
     <string name="open">Aç</string>
     <string name="delete">Sil</string>
+    <string name="info">Bilgi</string>
     <string name="update">Güncelleştir</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">İlişik</string>
@@ -24,6 +25,7 @@
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
     <string name="main_menu">Ana menü</string>
+    <string name="start_chat">Sohbete başla</string>
     <string name="show_password">Parolayı göster</string>
     <string name="hide_password">Parolayı gizle</string>
     <string name="not_now">Şimdi değil</string>
@@ -31,6 +33,8 @@
     <string name="one_moment">Bir dakika…</string>
     <string name="done">Bitti</string>
     <string name="undo">Geri al</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Sonraki</string>
     <string name="error">Hata</string>
     <string name="error_x">Hata: %1$s</string>
     <string name="error_no_network">Ağ kullanım dışı.</string>
@@ -43,6 +47,8 @@
     <string name="bad_email_address">Yanlış e-posta adresi.</string>
     <string name="password">Parola</string>
     <string name="now">Şimdi</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Tehlike</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d dk</string>
     <string name="today">Bugün</string>
@@ -171,6 +177,7 @@
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
     <string name="device_talk">Aygıt iletileri</string>
     <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
+    <string name="edit_contact">Kişiyi düzenle</string>
 
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
@@ -347,6 +354,9 @@
     <string name="accept_invalid_hostnames">Geçersiz ana bilgisayar adlarını kabul et</string>
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
 
+    <string name="used_settings">Kullanılan ayarlar:</string>
+    <string name="delete_account">Hesabı sil</string>
+    <string name="delete_account_ask">Hesap verilerinizi silmek istediğinizden emin misiniz?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -516,6 +526,7 @@
 
 
     <!-- qr code stuff -->
+    <string name="qr_code">QR kod</string>
     <string name="qrscan_title">QR kod tara</string>
     <string name="qrscan_hint">Kameranızı QR kodun üzerine yerleştirin</string>
     <string name="qrscan_ask_join_group">\"%1$s\" grubuna katılmak istiyor musunuz?</string>
@@ -617,7 +628,7 @@
     <string name="login_required_desktop">gerekli</string>
     <string name="name_desktop">Ad</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt anahtar aktarımı</string>
-    <string name="initiate_key_transfer_title_desktop">Anahtar aktarımını başlat</string>
+    <string name="initiate_key_transfer_title_desktop">Anahtar aktarımına başla</string>
     <string name="initiate_key_transfer_desktop">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır. Ayarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="reply_to_message_desktop">İletiye yanıt ver</string>
     <string name="select_group_image_desktop">Grup görseli seç</string>

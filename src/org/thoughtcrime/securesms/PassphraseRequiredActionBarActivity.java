@@ -17,15 +17,16 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
 
   public static final String LOCALE_EXTRA = "locale_extra";
 
-  private static final int STATE_NORMAL          = 0;
-  private static final int STATE_NEEDS_CONFIGURE = 1;
-
   @Override
   protected final void onCreate(Bundle savedInstanceState) {
     Log.w(TAG, "onCreate(" + savedInstanceState + ")");
     onPreCreate();
 
-    routeApplicationState();
+    if (!DcHelper.isConfigured(getApplicationContext())) {
+      Intent intent = new Intent(this, WelcomeActivity.class);
+      startActivity(intent);
+      finish();
+    }
 
     super.onCreate(savedInstanceState);
 
@@ -85,39 +86,5 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
                                .replace(target, fragment)
                                .commitAllowingStateLoss();
     return fragment;
-  }
-
-  private void routeApplicationState() {
-    Intent intent = getIntentForState(getApplicationState());
-    if (intent != null) {
-      startActivity(intent);
-      finish();
-    }
-  }
-
-  private Intent getIntentForState(int state) {
-    switch (state) {
-      case STATE_NEEDS_CONFIGURE: return getWelcomeIntent();
-      default:                    return null;
-    }
-  }
-
-  private int getApplicationState() {
-    boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
-    if (!isConfigured) {
-      return STATE_NEEDS_CONFIGURE;
-    } else {
-      return STATE_NORMAL;
-    }
-  }
-
-  private Intent getWelcomeIntent() {
-    return getRoutedIntent(WelcomeActivity.class, null);
-  }
-
-  private Intent getRoutedIntent(Class<?> destination, @Nullable Intent nextIntent) {
-    final Intent intent = new Intent(this, destination);
-    if (nextIntent != null)   intent.putExtra("next_intent", nextIntent);
-    return intent;
   }
 }

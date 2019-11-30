@@ -455,7 +455,6 @@
     <string name="screenlock_inactivity_timeout_interval">Neveiklumui skirtas laiko intervalas</string>
 
 
-    <!-- qr code stuff -->
     <string name="qrscan_title">Nuskenuokite QR kodą</string>
     <string name="qrscan_hint">Laikykite savo kamerą virš QR kodo</string>
     <string name="qrscan_ask_join_group">Ar norite prisijungti prie grupės \"%1$s\"?</string>
