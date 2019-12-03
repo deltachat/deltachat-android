@@ -62,7 +62,7 @@ class SearchRepository {
       String cleanQuery = sanitizeQuery(query);
 
       int[]      contacts      = dcContext.getContacts(DcContext.DC_GCL_ADD_SELF, cleanQuery);
-      DcChatlist conversations = dcContext.getChatlist(DcContext.DC_GCL_NO_SPECIALS, cleanQuery, 0);
+      DcChatlist conversations = dcContext.getChatlist(0, cleanQuery, 0);
       int[]      messages      = new int[0];
       if (queryMessages) {
         messages = dcContext.searchMsgs(0, cleanQuery);
