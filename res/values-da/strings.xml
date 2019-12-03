@@ -264,7 +264,7 @@
     <string name="tab_gallery_empty_hint">Billder og video delt i denne samtale vises her.</string>
     <string name="tab_docs_empty_hint">Dokumenter, musik og andre filer delt i denne samtale vises her.</string>
     <string name="media_preview">Medie forhåndvisning</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Venner lader ikke venner være låst i besked siloer.</string>
@@ -280,9 +280,7 @@
     <string name="welcome_intro3_message">Skubbe beskeder på sekunder.\nHurtig grænseflade.</string>
     <string name="welcome_intro4_headline">Kraftfuld</string>
     <string name="welcome_intro4_message">Ubegrænsede samtaler, billeder, video, tale beskeder med mere. Multi klient stand.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Fri</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat er fri for altid. Åben kildekode. Ingen reklamer. Intet abonnement. Ingen leverandør låsning.</string>
     <string name="welcome_intro6_headline">Krypteret</string>
     <string name="welcome_intro6_message">Krypteret med alle almindelige algoritmer. Beskeder bliver på  serveren.</string>

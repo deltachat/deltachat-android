@@ -292,7 +292,7 @@
     <string name="tab_gallery_empty_hint">Las imágenes y videos compartidos en este chat se mostrarán aquí.</string>
     <string name="tab_docs_empty_hint">Documentos, música y otros archivos compartidos en este chat se mostrarán aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Los amigos no dejan a los amigos encerrados en silos de mensajería.</string>
@@ -308,9 +308,7 @@
     <string name="welcome_intro3_message">Envíe mensajes en segundos.\nInterfaz rápida.</string>
     <string name="welcome_intro4_headline">Poderosa</string>
     <string name="welcome_intro4_message">Chats ilimitados, imágenes, videos, mensajes de audio y más. Capacidad multi-cliente.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Libre</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat es gratis y libre para siempre. De código libre. Sin publicidad. Sin suscripción. Sin limitaciones de otras empresas.</string>
     <string name="welcome_intro6_headline">Cifrada</string>
     <string name="welcome_intro6_message">Cifrada con todos los algoritmos comunes. Los mensajes se guardan solo en tu servidor de correo.</string>
@@ -669,4 +667,5 @@
     <string name="a11y_remove_account_btn_label">Eliminar cuenta</string>
     <string name="a11y_message_context_menu_btn_label">Acciones del mensaje</string>
     <string name="a11y_background_preview_label">Previsualización del fondo</string>
-</resources>
+
+    </resources>

@@ -265,7 +265,7 @@
     <string name="tab_gallery_empty_hint">Bu çatda paylaşılan şəkillər və videolar burada nümayiş olunacaq.</string>
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Dostlar dostlar mesaj bunkerində kilidlənməyə imkan vermirlər.</string>
@@ -281,9 +281,7 @@
     <string name="welcome_intro3_message">Push-mesajlar saniyədə. \nSabit interfeys.</string>
     <string name="welcome_intro4_headline">Güclü</string>
     <string name="welcome_intro4_message">Limitsiz çatlar, şəkillər, videolar, audio mesajlar və daha çox. Multi-müştəri qabiliyyətlidir.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Свободное</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat əbədi olaraq azaddır. Açıq mənbə. Reklam yoxdur. Abunə haqqı yoxdur. Satıcı kilidi yox.</string>
     <string name="welcome_intro6_headline">Şifrələndi</string>
     <string name="welcome_intro6_message">Bütün ümumi alqoritmlər ilə şifrələnmişdir. Mesajlarınız serverlərinizdə qalır.</string>

@@ -292,7 +292,7 @@
     <string name="tab_gallery_empty_hint">Txat honetan partekatutako irudi eta bideoak agertuko dira hemen</string>
     <string name="tab_docs_empty_hint">Txat honetan partekatutako dokumentuak, musika, eta bestelako fitxategiak agertuko dira hemen</string>
     <string name="media_preview">Multimediaren aurrebista</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Lagun onek ez diete bere lagunei itxitako mezularitza guneetan giltzaperatzea.</string>
@@ -308,9 +308,7 @@
     <string name="welcome_intro3_message">Bidali mezuak segundotan.\nInterfaze azkarra</string>
     <string name="welcome_intro4_headline">Ahaltsua</string>
     <string name="welcome_intro4_message">Txatak, irudiak, bideoak, audio-mezuak eta gehiago mugarik gabe. Hainbat bezeroekin bateragarria.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Librea</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Txat doan da betirako. Librea. Iragarkirik gabe. Harpidetzarik gabe. Hornitzaile bakarrera lotu gabe.</string>
     <string name="welcome_intro6_headline">Zifratua</string>
     <string name="welcome_intro6_message">Zifratuta ohiko algoritmoekin. Mezuak zure zerbitzarian gordetzen dira.</string>
@@ -669,4 +667,10 @@
     <string name="a11y_remove_account_btn_label">Kendu kontua</string>
     <string name="a11y_message_context_menu_btn_label">Mezu-ekintzak</string>
     <string name="a11y_background_preview_label">Atzealdearen aurrebista</string>
+
+    <!-- Translators: These strings are only used on iOS -->
+    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Kamera atzitzeko baimena emateak argazkiak eta bideoak ateratzea ahalbidetzen dizu.</string>
+    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Kontaktuen liburua atzitzeko baimena emateak zure gailuko kontaktuekin txateatzea ahalbidetzen dizu.</string>
+    <string name="INFOPLIST.Privacy.-.Microphone.Usage.Description">Mikrofonoa  atzitzeko baimena emateak audioa grabatzea ahalbidetzen dizu.</string>
+    <string name="INFOPLIST.Privacy.-.Photo.Library.Usage.Description">Argazkien bilduma atzitzeko baimena emateak bertatik argazkiak igotzea ahalbidetzen dizu.</string>
 </resources>

@@ -292,7 +292,7 @@
     <string name="tab_gallery_empty_hint">De in dit gesprek gedeelde afbeeldingen en video\'s verschijnen hier.</string>
     <string name="tab_docs_empty_hint">De in dit gesprek gedeelde documenten, muziek en overige bestanden verschijnen hier.</string>
     <string name="media_preview">Mediavoorbeeld</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Vrienden houden vrienden niet opgesloten in berichtkluizen.</string>
@@ -308,9 +308,7 @@
     <string name="welcome_intro3_message">Verstuur berichten binnen een paar seconden.\nSnelle gebruikersomgeving.</string>
     <string name="welcome_intro4_headline">Krachtig</string>
     <string name="welcome_intro4_message">Ongelimiteerd aantal gesprekken, afbeeldingen, video\'s, spraakberichten en meer. Kan omgaan met meerdere clients.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Gratis</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat zal altijd gratis blijven. Open source. Geen reclame. Geen abonnement. Onafhankelijk.</string>
     <string name="welcome_intro6_headline">Versleuteld</string>
     <string name="welcome_intro6_message">Versleuteld met alle bekende algoritmen. Berichten blijven op jouw server.</string>
@@ -669,4 +667,10 @@
     <string name="a11y_remove_account_btn_label">Account verwijderen</string>
     <string name="a11y_message_context_menu_btn_label">Berichtacties</string>
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
+
+    <!-- Translators: These strings are only used on iOS -->
+    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken.</string>
+    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen.</string>
+    <string name="INFOPLIST.Privacy.-.Microphone.Usage.Description">Geet Delta Chat toegang tot je microfoon om audio op te nemen.</string>
+    <string name="INFOPLIST.Privacy.-.Photo.Library.Usage.Description">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
 </resources>

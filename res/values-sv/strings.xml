@@ -172,7 +172,7 @@
     <string name="group_self_not_in_group">Du måste vara medlem i gruppen för att utföra denna åtgärd.</string>
     <string name="profile_encryption">Kryptering</string>
     <string name="media_preview">Media förhandsvisning</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Vänner låter inte andra vänner vara inlåsta i meddelandesilo.</string>
@@ -188,9 +188,7 @@
     <string name="welcome_intro3_message">Puss-meddelanden inom några sekunder. \nSnabbt gränssnitt.</string>
     <string name="welcome_intro4_headline">Powerful</string>
     <string name="welcome_intro4_message">Obegränsade chattar, bilder, videoklipp, ljudmeddelanden och mer. Multi-klient kapabel.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Kostnadsfri</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat är kostnadsfri för alltid. Öppen källkod. Inga annonser. Ingen prenumeration. Ingen leverantörslåsning.</string>
     <string name="welcome_intro6_headline">Krypterad</string>
     <string name="welcome_intro6_message">Krypterad med alla vanliga algoritmer. Meddelandena finns kvar på dina servrar.</string>

@@ -26,6 +26,8 @@
     <string name="one_moment">Minutėlę…</string>
     <string name="done">Atlikta</string>
     <string name="undo">Atšaukti</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Kitas</string>
     <string name="error">Klaida</string>
     <string name="error_x">Klaida: %1$s</string>
     <string name="error_no_network">Tinklas neprieinamas.</string>
@@ -38,6 +40,8 @@
     <string name="bad_email_address">Blogas el. pašto adresas.</string>
     <string name="password">Slaptažodis</string>
     <string name="now">Dabar</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Dėmesio</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min.</string>
     <string name="today">Šiandien</string>
@@ -176,6 +180,8 @@
     <string name="menu_zoom_out">Mažinti</string>
     <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
+    <string name="edit_contact">Taisyti adresatą</string>
+
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
@@ -263,7 +269,7 @@
     <string name="tab_gallery_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami paveikslai ir vaizdo įrašai.</string>
     <string name="tab_docs_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami dokumentai, muzika ir kiti failai.</string>
     <string name="media_preview">Medijos peržiūra</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Draugai nepalieka savo draugų susirašinėjimo šachtose.</string>
@@ -279,9 +285,7 @@
     <string name="welcome_intro3_message">Perduokite žinutes akimirksniu.\nSparti sąsaja.</string>
     <string name="welcome_intro4_headline">Galinga</string>
     <string name="welcome_intro4_message">Neriboti pokalbiai, paveikslai, vaizdo įrašai, garso žinutės ir daugiau. Kelių klientų palaikymas.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Laisva</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat yra laisva visiems laikams. Atvirojo kodo. Jokių reklamų. Jokios prenumeratos. Jokios priklausomybės nuo tiekėjo.</string>
     <string name="welcome_intro6_headline">Šifruota</string>
     <string name="welcome_intro6_message">Šifruota visais paplitusiais algoritmais. Žinutės lieka jūsų serveriuose.</string>
@@ -315,6 +319,9 @@
     <string name="login_error_cannot_login">Nepavyksta prisijungti kaip \"%1$s\". Patikrinkite ar el. pašto adresas ir slaptažodis yra teisingi.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Atsakymas iš %1$s: %2$s\n\nKai kurie teikėjai patalpina papildomą informaciją į jūsų gautųjų laiškų aplanką; galite ją patikrinti, pvz., prisijungę per naršyklę. Jei susidursite su problema, pagalbos teiraukitės savo teikėjo ar draugų.</string>
+
+    <string name="delete_account">Ištrinti paskyrą</string>
+    <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -575,4 +582,5 @@
     <string name="a11y_delivery_status_invalid">Neteisinga pristatymo būsena</string>
     <string name="a11y_remove_account_btn_label">Šalinti paskyrą</string>
     <string name="a11y_background_preview_label">Fono peržiūra</string>
-</resources>
+
+    </resources>

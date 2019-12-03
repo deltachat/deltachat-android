@@ -213,7 +213,7 @@
     <string name="group_self_not_in_group">Você deve ser um membro do grupo para executar essa ação.</string>
     <string name="profile_encryption">Encriptação</string>
     <string name="media_preview">Visualização de mídia</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Amigos não deixam amigos fechados em silos de mensagens.</string>
@@ -229,9 +229,7 @@
     <string name="welcome_intro3_message">Envie mensagens em segundos. \n Interface rápida.</string>
     <string name="welcome_intro4_headline">Potente</string>
     <string name="welcome_intro4_message">chats, imagens, vídeos, mensagens de áudio e muito mais. Capacidade multi-cliente.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Grátis</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">O Delta Chat é gratuito para sempre. Código aberto. Sem anúncios. Nenhuma assinatura Nenhum bloqueio de fornecedor.</string>
     <string name="welcome_intro6_headline">Encriptado</string>
     <string name="welcome_intro6_message">Encriptado com todos os algoritmos comuns. Mensagens ficam no seu servidor.</string>

@@ -292,7 +292,7 @@
     <string name="tab_gallery_empty_hint">In diesem Chat geteilte Bilder und Videos werden hier angezeigt.</string>
     <string name="tab_docs_empty_hint">In diesem Chat geteilte Dokumente, Musik und Dateien werden hier angezeigt.</string>
     <string name="media_preview">Media-Vorschau</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Freunde lassen Freunde nicht in Messenger-Silos zurück. </string>
@@ -308,9 +308,7 @@
     <string name="welcome_intro3_message">Push-Nachrichten in Sekunden.\nSchnelles Interface.</string>
     <string name="welcome_intro4_headline">Leistungsstark</string>
     <string name="welcome_intro4_message">Unbegrenzte Chats, Bilder, Videos, Sprachnachrichten und mehr. Multi-Client-fähig.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Frei</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Open Source. Keine Werbung. Kein Abo. Keine Bindung an die Mobilfunknummer.</string>
     <string name="welcome_intro6_headline">Verschlüsselt</string>
     <string name="welcome_intro6_message">Verschlüsselung mit allen gängigen Verfahren. Die Nachrichten bleiben auf Ihren Servern.</string>
@@ -671,4 +669,5 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="a11y_remove_account_btn_label">E-Mail-Konto löschen</string>
     <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
-</resources>
+
+    </resources>

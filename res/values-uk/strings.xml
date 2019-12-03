@@ -231,7 +231,7 @@
     <string name="group_self_not_in_group">Щоб виконати цю дію, Ви повинні бути учасником групи.</string>
     <string name="profile_encryption">Шифрування</string>
     <string name="media_preview">Попередній перегляд медіа</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Друзі не залишають друзів без спілкування.</string>
@@ -247,9 +247,7 @@
     <string name="welcome_intro3_message">Доставляє повідомлення за лічені секунди.\nШвидкий інтерфейс.</string>
     <string name="welcome_intro4_headline">Потужний</string>
     <string name="welcome_intro4_message">Безлімітні чати, відправка фотографій, відео, голосових повідомлень і багато іншого. Підтримує безліч клієнтів.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Безкоштовний</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat безкоштовний і так буде завжди. Має відкритий початковий код. Ніякої реклами. Ніяких платних підписок. Немає прив\'язки до постачальника.</string>
     <string name="welcome_intro6_headline">Зашифрований</string>
     <string name="welcome_intro6_message">Зашифрований з використанням популярних алгоритмів. Повідомлення залишаються на ваших серверах.</string>

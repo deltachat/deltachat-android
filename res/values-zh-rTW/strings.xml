@@ -252,7 +252,7 @@
     <string name="tab_gallery_empty_hint">本對話中共享的圖片和視訊會顯示在這裡。</string>
     <string name="tab_docs_empty_hint">本對話中共享的文件、音樂和其它檔案會顯示在這裡。</string>
     <string name="media_preview">媒體預覽</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">友情不應該被訊息的孤島分隔。</string>
@@ -268,9 +268,7 @@
     <string name="welcome_intro3_message">快速反應的介面\n傳送訊息只要幾秒鐘</string>
     <string name="welcome_intro4_headline">強大!</string>
     <string name="welcome_intro4_message">無限的對話、圖片、視訊、語音訊息。不受限於本通訊軟體。</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">免費!</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat 永遠都免費。開放原始碼，沒有廣告，無需訂閱，不綁電信商。</string>
     <string name="welcome_intro6_headline">保密!</string>
     <string name="welcome_intro6_message">使用常見的演算法加密訊息，而且密文存在你自己的伺服器上。</string>

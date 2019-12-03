@@ -15,6 +15,7 @@
     <string name="strict">Строгий</string>
     <string name="open">Открыть</string>
     <string name="delete">Удалить</string>
+    <string name="info">Информация</string>
     <string name="update">Обновить</string>
     <string name="emoji">Эмодзи</string>
     <string name="attachment">Вложение</string>
@@ -24,6 +25,7 @@
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
     <string name="main_menu">Главное меню</string>
+    <string name="start_chat">Начать чат</string>
     <string name="show_password">Показать пароль</string>
     <string name="hide_password">Скрыть пароль</string>
     <string name="not_now">Не сейчас</string>
@@ -31,6 +33,8 @@
     <string name="one_moment">Один момент…</string>
     <string name="done">Выполнено</string>
     <string name="undo">Отмена</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Дальше</string>
     <string name="error">Ошибка</string>
     <string name="error_x">Ошибка: %1$s</string>
     <string name="error_no_network">Сеть недоступна.</string>
@@ -43,6 +47,8 @@
     <string name="bad_email_address">Неправильный адрес эл.почты.</string>
     <string name="password">Пароль</string>
     <string name="now">Сейчас</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Внимание</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d мин</string>
     <string name="today">Сегодня</string>
@@ -183,6 +189,8 @@
     <string name="title_share_location">Делиться местоположением со всеми участниками группы</string>
     <string name="device_talk">Сообщения устройства</string>
     <string name="device_talk_subtitle">Локально сгенерированные сообщения</string>
+    <string name="edit_contact">Изменить контакт</string>
+
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
@@ -306,7 +314,7 @@
     <string name="tab_gallery_empty_hint">Общедоступные изображения и видео будут отображены здесь, в этом чате.</string>
     <string name="tab_docs_empty_hint">Общедоступная музыка и другие файлы будут отображены здесь, в этом чате.</string>
     <string name="media_preview">Предварительный просмотр медиафайлов</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Друзья, не позволяйте другим, быть запертыми с залежалыми сообщениями.</string>
@@ -322,9 +330,7 @@
     <string name="welcome_intro3_message">Доставляет сообщения за секунды.\nБыстрый интерфейс.</string>
     <string name="welcome_intro4_headline">Мощный</string>
     <string name="welcome_intro4_message">Безлимитные чаты, отправка фотографий, видео, голосовых сообщений и многое другое. Поддерживает множество устройств.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Бесплатный</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat бесплатен навсегда. С открытым исходным кодом. Без рекламы. Без платных подписок. Без привязки к поставщику услуг.</string>
     <string name="welcome_intro6_headline">Зашифрованный</string>
     <string name="welcome_intro6_message">Шифровка общераспространёнными алгоритмами. Сообщения остаются на ваших серверах.</string>
@@ -367,6 +373,10 @@
     <!-- TLS certificate checks -->
     <string name="accept_invalid_hostnames">Принимать сертификаты с недействительным именем хоста</string>
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
+
+    <string name="used_settings">Используемые настройки:</string>
+    <string name="delete_account">Удалить аккаунт</string>
+    <string name="delete_account_ask">Вы уверены, что хотите удалить данные учётной записи?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -535,6 +545,8 @@
     <string name="screenlock_inactivity_timeout_interval">Время неактивности</string>
 
 
+    <!-- qr code stuff -->
+    <string name="qr_code">QR-код</string>
     <string name="qrscan_title">Сканировать QR код</string>
     <string name="qrscan_hint">Наведите камеру на QR код</string>
     <string name="qrscan_ask_join_group">Присоединиться к группе «%1$s»?</string>
@@ -677,4 +689,10 @@
     <string name="a11y_remove_account_btn_label">Удалить аккаунт</string>
     <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>
     <string name="a11y_background_preview_label">Предпросмотр фона</string>
+
+    <!-- Translators: These strings are only used on iOS -->
+    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Предоставление доступа к камере позволяет снимать фотографии и видео.</string>
+    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Предоставление доступа к адресной книге позволяет общаться с имеющимися на устройстве контактами.</string>
+    <string name="INFOPLIST.Privacy.-.Microphone.Usage.Description">Предоставление доступа к микрофону позволяет записывать звук.</string>
+    <string name="INFOPLIST.Privacy.-.Photo.Library.Usage.Description">Предоставление доступа к галерее фотографий позволяет загружать изображения из неё.</string>
 </resources>

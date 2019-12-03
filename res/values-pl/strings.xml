@@ -297,7 +297,7 @@
     <string name="tab_gallery_empty_hint">Wyświetlone zostaną tutaj zdjęcia i filmy udostępnione na tym czacie.</string>
     <string name="tab_docs_empty_hint">Wyświetlone zostaną tutaj dokumenty, muzyka i inne pliki udostępnione na tym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Przyjaciele nie pozwalają przyjaciołom zamknąć się w silosach komunikacyjnych.</string>
@@ -313,9 +313,7 @@
     <string name="welcome_intro3_message">Wiadomości push w kilka sekund.\nSzybki interfejs.</string>
     <string name="welcome_intro4_headline">Potężny</string>
     <string name="welcome_intro4_message">Nieograniczone czaty, obrazy, filmy, wiadomości audio i wiele innych. Obsługujący wielu klientów.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Darmowy</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat jest zawsze darmowy. O otwartym kodzie źródłowym. Bez reklam. Bez abonamentu. Bez ograniczeń dystrybucji.</string>
     <string name="welcome_intro6_headline">Szyfrowane</string>
     <string name="welcome_intro6_message">Zaszyfrowany za pomocą wszystkich typowych algorytmów. Wiadomości pozostają na swoich serwerach.</string>
@@ -650,4 +648,5 @@
 
 
     <string name="a11y_background_preview_label">Podgląd tła</string>
-</resources>
+
+    </resources>

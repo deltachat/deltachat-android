@@ -292,7 +292,7 @@
     <string name="tab_gallery_empty_hint">Figurat dhe videot e dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_docs_empty_hint">Dokumentet, muzika dhe kartela të tjera të dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="media_preview">Paraparje media</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Kush të ka shok, s\’të lë kyçur në silos mesazhesh.</string>
@@ -308,9 +308,7 @@
     <string name="welcome_intro3_message">Dërgoni mesazhe brenda sekondash.\nNdërfaqe e shpejtë.</string>
     <string name="welcome_intro4_headline">I fuqishëm</string>
     <string name="welcome_intro4_message">Fjalosje, figura, video, mesazhe audio të pakufizuara, dhe më tepër. I aftë për multi-klient.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">I lirë</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat është përgjithmonë i lirë.\nMe burim të hapur. Pa reklama. Pa pajtime. Pa kyçje nga tregtues.</string>
     <string name="welcome_intro6_headline">I fshehtëzuar</string>
     <string name="welcome_intro6_message">Fshehtëzuar me krejt algoritmet e zakonshëm. Mesazhet mbeten në shërbyesit tuaj.</string>
@@ -668,4 +666,10 @@
     <string name="a11y_remove_account_btn_label">Hiqe llogarinë</string>
     <string name="a11y_message_context_menu_btn_label">Veprime mesazhesh</string>
     <string name="a11y_background_preview_label">Paraparje sfondi</string>
+
+    <!-- Translators: These strings are only used on iOS -->
+    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Lejimi i përdorimi të kamerës ju bën të mundur të bëni foto dhe video.</string>
+    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Lejimi i përdorimi të librit tuaj të adresave kamerës ju bën të mundur të bisedoni me kontakte prej pajisjes tuaj.</string>
+    <string name="INFOPLIST.Privacy.-.Microphone.Usage.Description">Lejimi i përdorimi të mikrofonit ju bën të mundur të bëni incizoni audio.</string>
+    <string name="INFOPLIST.Privacy.-.Photo.Library.Usage.Description">Lejimi i përdorimi të fototekës tuaj ju bën të mundur të ngarkoni figura prej saj.</string>
 </resources>

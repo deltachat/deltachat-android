@@ -1,66 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <plurals name="n_hours">
-        <item quantity="zero">لا ساعة</item>
-        <item quantity="one">ساعة واحدة</item>
-        <item quantity="two">ساعتان</item>
-        <item quantity="few">%d ساعات</item>
-        <item quantity="many">%d ساعات</item>
-        <item quantity="other">%d ساعات</item>
-    </plurals>
-    <plurals name="n_minutes">
-        <item quantity="zero">لا دقيقة</item>
-        <item quantity="one">دقيقة واحدة</item>
-        <item quantity="two">دقيقتَيْن</item>
-        <item quantity="few">%d دقائق</item>
-        <item quantity="many">%d دقائق</item>
-        <item quantity="other">%d دقائق</item>
-    </plurals>
-    <string name="pref_trim_headline">تفاصيل الرسالة</string>
-    <string name="tab_contact">للاتصال</string>
-    <string name="group_create_button">إنشاء فريق</string>
-    <string name="contact">للاتصال</string>
-    <string name="login_smtp_password">الكلمة السرية لـ SMTP</string>
-    <string name="pref_default_status_label">التوقيع</string>
-    <string name="pref_your_name">اسمك</string>
-    <string name="pref_password_and_account_settings">الكلمة السرية والحساب</string>
-    <string name="pref_profile_photo">صورة الملف التعريفي</string>
-    <string name="pref_profile_info_headline">معلومات ملفك التعريفي</string>
-    <string name="pref_summary_custom">مخصص</string>
-    <string name="pref_summary_default">افتراضي</string>
-    <string name="used_settings">الإعدادات المُستَخدَمة:</string>
-    <string name="import_backup_title">استيراد نسخة احتياطية</string>
-    <string name="login_error_mail">يرجى إدخال عنوان بريد إلكتروني صالح</string>
-    <string name="login_certificate_checks">التحقق مِن الشهادة</string>
-    <string name="login_smtp_security">أمان SMTP</string>
-    <string name="login_smtp_server">خادم SMTP</string>
-    <string name="login_imap_security">أمان IMAP</string>
-    <string name="login_imap_port">مَنفَذ IMAP</string>
-    <string name="login_imap_server">خادم IMAP</string>
-    <string name="login_imap_login">مستخدم IMAP</string>
-    <string name="login_header">الإتصال بخادومك</string>
-    <string name="welcome_start_messaging">لنبدأ التواصل</string>
-    <string name="welcome_intro6_headline">مشفّر</string>
-    <string name="welcome_intro4_headline">قويّ</string>
-    <string name="tab_map">الخريطة</string>
-    <string name="tab_docs">المستندات</string>
-    <string name="tab_group">الفريق</string>
-    <string name="profile_encryption">التعمية</string>
-    <string name="group_add_members">إضافة أعضاء</string>
-    <string name="group_avatar">الصورة المصغّرة للفريق</string>
-    <string name="group_name">اسم الفريق</string>
-    <string name="chat_camera_unavailable">الكاميرا غير متاحة.</string>
-    <string name="contacts_enter_name_or_email">ادخل الإسم أو البريد الإلكتروني</string>
-    <string name="info_outdated_app_dialog_text">دالتا تشات Delta Chat متوفر على:</string>
-    <string name="menu_edit_group_image">تغيير صورة الفريق</string>
-    <string name="menu_edit_group_name">تغيير اسم الفريق</string>
-    <string name="menu_edit_name">تعديل الإسم</string>
-    <string name="menu_invite">دعوة أصدقاء</string>
-    <string name="menu_delete_image">احذف الصورة</string>
-    <string name="menu_delete_messages">احذف الرسائل</string>
-    <string name="menu_group_name_and_image">اسم الفريق وصورته</string>
-    <string name="menu_new_chat">محادثة جديدة</string>
-    <string name="images">الصور</string>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
     <string name="ok">موافق</string>
     <string name="cancel">إلغاء</string>
     <string name="yes">نعم</string>
@@ -90,17 +31,17 @@
     <string name="one_moment">لحظة…</string>
     <string name="done">تم</string>
     <string name="undo">ألغ</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">التالي</string>
     <string name="error">خطأ</string>
     <string name="error_x">خطأ: %1$s</string>
     <string name="copied_to_clipboard">تم نسخه إلى الحافظة.</string>
     <string name="email_address">عنوان البريد الإلكتروني</string>
-    <string name="autocrypt_continue_transfer_retry">أعد المحاولة</string>
-    <string name="screenlock_authentication_failed">فشلت المصادقة.</string>
-    <string name="qrscan_fingerprint_label">البصمة</string>
     <string name="password">الكلمة السرية</string>
     <string name="now">الآن</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">خطر</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d دقائق</string>
     <string name="today">اليوم</string>
     <string name="yesterday">البارحة</string>
@@ -108,18 +49,39 @@
     <string name="this_month">هذا الشهر</string>
     <string name="last_week">الأسبوع الماضي</string>
     <string name="last_month">الشهر الماضي</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="zero">لا دقيقة</item>
+        <item quantity="one">دقيقة واحدة</item>
+        <item quantity="two">دقيقتَيْن</item>
+        <item quantity="few">%d دقائق</item>
+        <item quantity="many">%d دقائق</item>
+        <item quantity="other">%d دقائق</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="zero">لا ساعة</item>
+        <item quantity="one">ساعة واحدة</item>
+        <item quantity="two">ساعتان</item>
+        <item quantity="few">%d ساعات</item>
+        <item quantity="many">%d ساعات</item>
+        <item quantity="other">%d ساعات</item>
+    </plurals>
     <string name="self">أنا</string>
     <string name="draft">مسودة</string>
     <string name="image">صورة</string>
+    <string name="images">الصور</string>
     <string name="audio">الصوت</string>
     <string name="voice_message">رسالة صوتية</string>
     <string name="video">فيديو</string>
     <string name="documents">المستندات</string>
+    <string name="contact">للاتصال</string>
     <string name="camera">آلة التصوير</string>
     <string name="location">المَوقع</string>
     <string name="gallery">المعرض</string>
     <string name="file">ملف</string>
     <string name="unknown">مجهول</string>
+
     <string name="green">أخضر</string>
     <string name="red">أحمر</string>
     <string name="blue">أزرق</string>
@@ -128,18 +90,24 @@
     <string name="purple">بنفسجي</string>
     <string name="magenta">وردي</string>
     <string name="white">أبيض</string>
+
     <string name="small">صغير</string>
     <string name="normal">عادي</string>
     <string name="fast">سريع</string>
     <string name="slow">بطيء</string>
+
+    <string name="menu_new_chat">محادثة جديدة</string>
     <string name="menu_new_group">فريق جديد</string>
     <string name="menu_send">إرسال</string>
     <string name="menu_toggle_keyboard">تبديل لوحة مفاتيح إيموجي</string>
     <string name="menu_edit_group">تعديل الفريق</string>
+    <string name="menu_group_name_and_image">اسم الفريق وصورته</string>
     <string name="menu_show_map">أظهر الخريطة</string>
     <string name="menu_add_attachment">إضافة مرفقات</string>
     <string name="menu_leave_group">غادر الفريق</string>
     <string name="menu_delete_chat">احدف المحادثة</string>
+    <string name="menu_delete_messages">احذف الرسائل</string>
+    <string name="menu_delete_image">احذف الصورة</string>
     <string name="menu_message_details">تفاصيل الرسالة</string>
     <string name="menu_copy_to_clipboard">انسخ إلى الحافظة</string>
     <string name="menu_forward">إعادة توجيه الرسالة</string>
@@ -148,8 +116,12 @@
     <string name="menu_share">شارك</string>
     <string name="menu_play">شغّل</string>
     <string name="menu_pause">تعليق مؤقت</string>
+    <string name="menu_invite">دعوة أصدقاء</string>
     <string name="menu_help">المساعدة</string>
     <string name="menu_select_all">اختر الكل</string>
+    <string name="menu_edit_name">تعديل الإسم</string>
+    <string name="menu_edit_group_name">تغيير اسم الفريق</string>
+    <string name="menu_edit_group_image">تغيير صورة الفريق</string>
     <string name="menu_settings">الإعدادات</string>
     <string name="menu_advanced">مُتقدّم</string>
     <string name="menu_view_profile">عرض الملف الشخصي</string>
@@ -159,28 +131,73 @@
     <string name="mute_for_two_hours">أكتم لمدة ساعتين</string>
     <string name="mute_for_one_day">أكتم لمدة يوم</string>
     <string name="mute_for_seven_days">أكتم لمدة أسبوع</string>
+    <string name="info_outdated_app_dialog_text">دالتا تشات Delta Chat متوفر على:</string>
+
+
+    <string name="contacts_enter_name_or_email">ادخل الإسم أو البريد الإلكتروني</string>
     <string name="contacts_empty_hint">لا توجد جهات اتصال.</string>
+
+
+    <string name="chat_camera_unavailable">الكاميرا غير متاحة.</string>
     <string name="chat_share_with_title">شارك مع</string>
     <string name="chat_input_placeholder">رسالة</string>
     <string name="chat_archived_label">محتفظة</string>
+    <!-- search -->
     <string name="search">بحث</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">اسم الفريق</string>
+    <string name="group_avatar">الصورة المصغّرة للفريق</string>
+    <string name="group_create_button">إنشاء فريق</string>
+    <string name="group_add_members">إضافة أعضاء</string>
+    <string name="profile_encryption">التعمية</string>
+    <string name="tab_contact">للاتصال</string>
+    <string name="tab_group">الفريق</string>
     <string name="tab_members">الأعضاء</string>
     <string name="tab_gallery">المعرض</string>
+    <string name="tab_docs">المستندات</string>
     <string name="tab_links">الروابط</string>
+    <string name="tab_map">الخريطة</string>
     <string name="media_preview">معاينة الصورة</string>
+    
+
+    <!-- welcome and login -->
     <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro3_headline">سريع</string>
+    <string name="welcome_intro4_headline">قويّ</string>
     <string name="welcome_intro5_headline">حُر</string>
+    <string name="welcome_intro6_headline">مشفّر</string>
+    <string name="welcome_start_messaging">لنبدأ التواصل</string>
     <string name="login_title">الولوج</string>
+    <string name="login_header">الإتصال بخادومك</string>
     <string name="login_inbox">صندوق الوارد</string>
+    <string name="login_imap_login">مستخدم IMAP</string>
+    <string name="login_imap_server">خادم IMAP</string>
+    <string name="login_imap_port">مَنفَذ IMAP</string>
+    <string name="login_imap_security">أمان IMAP</string>
     <string name="login_outbox">صندوق المُرسَلات</string>
+    <string name="login_smtp_password">الكلمة السرية لـ SMTP</string>
+    <string name="login_smtp_server">خادم SMTP</string>
     <string name="login_smtp_port">منفذ SMTP</string>
+    <string name="login_smtp_security">أمان SMTP</string>
+    <string name="login_certificate_checks">التحقق مِن الشهادة</string>
+    <string name="login_error_mail">يرجى إدخال عنوان بريد إلكتروني صالح</string>
+    <string name="import_backup_title">استيراد نسخة احتياطية</string>
+    <string name="used_settings">الإعدادات المُستَخدَمة:</string>
     <string name="delete_account">حذف الحساب</string>
     <string name="pref_summary_off">معطّل</string>
+    <string name="pref_summary_default">افتراضي</string>
+    <string name="pref_summary_custom">مخصص</string>
     <string name="pref_using_custom">استخدام التخصيص: %s</string>
     <string name="pref_using_default">مستخدم كافتراضي: %s</string>
+    <string name="pref_profile_info_headline">معلومات ملفك التعريفي</string>
+    <string name="pref_profile_photo">صورة الملف التعريفي</string>
+    <string name="pref_trim_headline">تفاصيل الرسالة</string>
     <string name="pref_trim_option">احذف الرسائل القديمة</string>
     <string name="pref_blocked_contacts">المراسلون المحبوسون</string>
+    <string name="pref_password_and_account_settings">الكلمة السرية والحساب</string>
+    <string name="pref_your_name">اسمك</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">التوقيع</string>
     <string name="pref_vibrate">إهتز</string>
     <string name="pref_screen_security">تأمين الشاشة</string>
     <string name="pref_notifications">الإشعارات</string>
@@ -190,6 +207,7 @@
     <string name="pref_sound">الصوت</string>
     <string name="pref_privacy">الخصوصية</string>
     <string name="pref_chats_and_media">الدردشة والوسائط</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">فاتح</string>
     <string name="pref_dark_theme">داكن</string>
     <string name="pref_appearance">المظهر</string>
@@ -200,6 +218,9 @@
     <string name="pref_other">أخرى</string>
     <string name="pref_background">الخلفية</string>
     <string name="pref_show_emails_all">كلها</string>
+    <string name="autocrypt_continue_transfer_retry">أعد المحاولة</string>
+    <string name="screenlock_authentication_failed">فشلت المصادقة.</string>
+    <string name="qrscan_fingerprint_label">البصمة</string>
     <string name="notify_most_recent_from">آخر رسالة من : %1$s</string>
     <string name="notify_mark_all_read">اعتبر جميع الرسائل مقروءة</string>
     <string name="notify_mark_read">اعتبره كمقروء</string>
@@ -209,7 +230,11 @@
     <string name="notify_name_and_message">الاسم والرسالة</string>
     <string name="notify_name_only">الاسم فقط</string>
     <string name="notify_no_name_or_message">لا إسم ولا رسالة</string>
+
+
+    <!-- dc_str_* resources -->
     <string name="encrypted_message">رسالة مشفرة</string>
+
     <string name="global_menu_preferences_language_desktop">اختر اللغة…</string>
     <string name="global_menu_file_desktop">الملف</string>
     <string name="global_menu_edit_desktop">تعديل</string>
@@ -228,5 +253,4 @@
     <string name="new_message_from_desktop">رسالة جديدة مِن</string>
     <string name="ask_delete_chat_desktop">هل أنت متأكد مِن أنك تريد حذف هذا؟</string>
     <string name="in_this_group_desktop">أعضاء المجموعة</string>
-    <string name="app_name">Delta Chat</string>
-</resources>
+    </resources>

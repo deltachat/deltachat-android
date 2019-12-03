@@ -229,7 +229,7 @@
     <string name="group_self_not_in_group">Has de ser membre del grup per poder fer això.</string>
     <string name="profile_encryption">Encriptació</string>
     <string name="media_preview">Previsualització multimèdia</string>
-
+    
 
     <!-- invite -->
     <string name="invite_slogan">Els amics no deixen els amics tancats en sitges de missatgeria.</string>
@@ -245,9 +245,7 @@
     <string name="welcome_intro3_message">Envia missatges en segons.\nInterfície ràpida.</string>
     <string name="welcome_intro4_headline">Potent</string>
     <string name="welcome_intro4_message">Xats il·limitats, imatges, vídeos, missatges de so i més coses. Capacitat de multi-client.</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_headline">Lliure</string>
-    <!-- Translators: "free" as in freedom here, not "free" as in "free beer" -->
     <string name="welcome_intro5_message">Delta Chat serà sempre lliure. Sense anuncis. Sense subscripció. Sense bloqueig de proveïdor.</string>
     <string name="welcome_intro6_headline">Encriptat</string>
     <string name="welcome_intro6_message">Encriptat amb els algoritmes habituals. Els missatges només es guarden al vostres servidors.</string>
