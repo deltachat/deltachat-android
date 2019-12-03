@@ -670,6 +670,6 @@
     <!-- Translators: These strings are only used on iOS -->
     <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Lejimi i përdorimi të kamerës ju bën të mundur të bëni foto dhe video.</string>
     <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Lejimi i përdorimi të librit tuaj të adresave kamerës ju bën të mundur të bisedoni me kontakte prej pajisjes tuaj.</string>
-    <string name="INFOPLIST.Privacy.-.Microphone.Usage.Description">Lejimi i përdorimi të mikrofonit ju bën të mundur të bëni incizoni audio.</string>
-    <string name="INFOPLIST.Privacy.-.Photo.Library.Usage.Description">Lejimi i përdorimi të fototekës tuaj ju bën të mundur të ngarkoni figura prej saj.</string>
+    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Lejimi i përdorimi të mikrofonit ju bën të mundur të bëni incizoni audio.</string>
+    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Lejimi i përdorimi të fototekës tuaj ju bën të mundur të ngarkoni figura prej saj.</string>
 </resources>

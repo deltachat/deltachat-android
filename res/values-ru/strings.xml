@@ -693,6 +693,6 @@
     <!-- Translators: These strings are only used on iOS -->
     <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Предоставление доступа к камере позволяет снимать фотографии и видео.</string>
     <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Предоставление доступа к адресной книге позволяет общаться с имеющимися на устройстве контактами.</string>
-    <string name="INFOPLIST.Privacy.-.Microphone.Usage.Description">Предоставление доступа к микрофону позволяет записывать звук.</string>
-    <string name="INFOPLIST.Privacy.-.Photo.Library.Usage.Description">Предоставление доступа к галерее фотографий позволяет загружать изображения из неё.</string>
+    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Предоставление доступа к микрофону позволяет записывать звук.</string>
+    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Предоставление доступа к галерее фотографий позволяет загружать изображения из неё.</string>
 </resources>
