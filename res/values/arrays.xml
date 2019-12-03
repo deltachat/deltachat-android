@@ -14,6 +14,7 @@
       <!-- es -->    <item>Español</item>
       <!-- eu -->    <item>Euskara</item>
       <!-- fr -->    <item>Français</item>
+      <!-- gl -->    <item>Galego</item>
       <!-- it -->    <item>Italiano</item>
       <!-- lt -->    <item>Lietuvių kalba</item>
       <!-- hu -->    <item>Magyar nyelv</item>
@@ -42,6 +43,7 @@
       <item>es</item>
       <item>eu</item>
       <item>fr</item>
+      <item>gl</item>
       <item>it</item>
       <item>lt</item>
       <item>hu</item>

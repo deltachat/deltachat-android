@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+    <string name="yes">Si</string>
+    <string name="no">Non</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="def">Por omisión</string>
+    <string name="custom">Personalizado</string>
+    <string name="none">Ningún</string>
+    <string name="automatic">Automático</string>
+    <string name="strict">Estrito</string>
+    <string name="open">Abrir</string>
+    <string name="delete">Eliminar</string>
+    <string name="info">Infor</string>
+    <string name="update">Actualizar</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Anexo</string>
+    <string name="back">Atrás</string>
+    <string name="close">Pechar</string>
+    <string name="save">Gardar</string>
+    <string name="chat">Chat</string>
+    <string name="media">Medios</string>
+    <string name="main_menu">Menú principal</string>
+    <string name="start_chat">Inciar chat</string>
+    <string name="show_password">Mostrar contrasinal</string>
+    <string name="hide_password">Agochar contrasinal</string>
+    <string name="not_now">Agora non</string>
+    <string name="never">Nunca</string>
+    <string name="one_moment">Un momento...</string>
+    <string name="done">Feito</string>
+    <string name="undo">Desfacer</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Seguinte</string>
+    <string name="error">Fallo</string>
+    <string name="error_x">Fallo: %1$s</string>
+    <string name="error_no_network">Non hai conexión a rede.</string>
+    <string name="no_app_to_handle_data">Non se atopa unha app para este tipo de datos.</string>
+    <string name="no_browser_installed">Sen navegador instalado.</string>
+    <string name="file_not_found">Non se atopou %1$s.</string>
+    <string name="copied_to_clipboard">Copiado ao portaretallos.</string>
+    <string name="contacts_headline">Contactos</string>
+    <string name="email_address">Enderezo de correo</string>
+    <string name="bad_email_address">Enderezo incorrecto.</string>
+    <string name="password">Contrasinal</string>
+    <string name="now">Agora</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Perigo</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
+    <string name="n_min_ago">%dmin</string>
+    <string name="today">Hoxe</string>
+    <string name="yesterday">Onte</string>
+    <string name="this_week">Esta semana</string>
+    <string name="this_month">Este mes</string>
+    <string name="last_week">Última semana</string>
+    <string name="last_month">Último mes</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%dmin</item>
+        <item quantity="other">%d min</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d horas</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d conversa</item>
+        <item quantity="other">%d conversas</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d contacto</item>
+        <item quantity="other">%d contactos</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d mensaxe</item>
+        <item quantity="other">%d mensaxes</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d membro</item>
+        <item quantity="other">%d membros</item>
+    </plurals>
+
+    <string name="self">Eu</string>
+    <string name="draft">Borrador</string>
+    <string name="image">Imaxe</string>
+    <string name="gif">Gif</string>
+    <string name="images">Imaxes</string>
+    <string name="audio">Audio</string>
+    <string name="voice_message">Mensaxe de voz</string>
+    <string name="forwarded_message">Mensaxe reenviado</string>
+    <string name="video">Vídeo</string>
+    <string name="documents">Documentos</string>
+    <string name="contact">Contacto</string>
+    <string name="verified_contact">Contacto verificado</string>
+    <string name="camera">Cámara</string>
+    <string name="location">Localización</string>
+    <string name="gallery">Galería</string>
+    <string name="file">Ficheiro</string>
+    <string name="unknown">Descoñecido</string>
+
+    <string name="green">Verde</string>
+    <string name="red">Vermello</string>
+    <string name="blue">Azul</string>
+    <string name="orange">Laranxa</string>
+    <string name="cyan">Ciano</string>
+    <string name="purple">Púrpura</string>
+    <string name="magenta">Maxenta</string>
+    <string name="white">Branco</string>
+
+    <string name="small">Pequeno</string>
+    <string name="normal">Normal</string>
+    <string name="large">Grande</string>
+    <string name="extra_large">Moi grande</string>
+
+    <string name="fast">Rápido</string>
+    <string name="slow">Lento</string>
+
+    <string name="message_delivered">Mensaxe enviado</string>
+    <string name="message_read">Mensaxe lido</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Novo contacto</string>
+    <string name="menu_new_chat">Nova conversa</string>
+    <string name="menu_new_group">Novo grupo</string>
+    <string name="menu_new_verified_group">Novo grupo verificado (experimental)</string>
+    <string name="menu_send">Enviar</string>
+    <string name="menu_toggle_keyboard">Activar teclado emoji</string>
+    <string name="menu_edit_group">Editar grupo</string>
+    <string name="menu_group_name_and_image">Nome e imaxe do grupo</string>
+    <string name="menu_show_map">Mostrar mapa</string>
+    <string name="menu_show_global_map">Mostrar todas as localizacións</string>
+    <string name="menu_archive_chat">Arquivar conversa</string>
+    <string name="menu_unarchive_chat">Restaurar conversa</string>
+    <string name="menu_add_attachment">Engadir anexo</string>
+    <string name="menu_leave_group">Deixar grupo</string>
+    <string name="menu_delete_chat">Eliminar conversa</string>
+    <string name="menu_delete_messages">Eliminar mensaxes</string>
+    <string name="menu_delete_image">Eliminar imaxe</string>
+    <string name="menu_delete_locations">Eliminar todas as localizacións?</string>
+    <string name="menu_delete_location">Eliminar esta localización?</string>
+    <string name="menu_message_details">Detalles da mensaxe</string>
+    <string name="menu_copy_to_clipboard">Copiar ao portaretallos</string>
+    <string name="menu_forward">Reenviar mensaxe</string>
+    <string name="menu_resend">Voltar a enviar mensaxes</string>
+    <string name="menu_reply">Respostar a mensaxe</string>
+    <string name="menu_mute">Acalar notificacións</string>
+    <string name="menu_unmute">Dar voz</string>
+    <string name="menu_export_attachment">Exportar anexo</string>
+    <string name="menu_all_media">Todos os medios</string>
+    <string name="menu_share">Compartir</string>
+    <string name="menu_block_contact">Bloquear contacto</string>
+    <string name="menu_unblock_contact">Desbloquear contacto</string>
+    <string name="menu_play">Reproducir</string>
+    <string name="menu_pause">Pausar</string>
+    <string name="menu_scroll_to_bottom">Moverse abaixo</string>
+    <string name="menu_scroll_to_top">Moverse arriba</string>
+    <string name="menu_invite">Convidar amigos</string>
+    <string name="menu_help">Axuda</string>
+    <string name="menu_select_all">Escoller todo</string>
+    <string name="menu_expand">Despregar</string>
+    <string name="menu_edit_name">Editar nome</string>
+    <string name="menu_edit_group_name">Editar nome do grupo</string>
+    <string name="menu_edit_group_image">Editar imaxe do grupo</string>
+    <string name="menu_settings">Axustes</string>
+    <string name="menu_advanced">Avanzado</string>
+    <string name="menu_deaddrop">Solicitudes de contacto</string>
+    <string name="menu_deaddrop_subtitle">Preme na mensaxe para iniciar conversa</string>
+    <string name="menu_view_profile">Ver perfil</string>
+    <string name="menu_zoom_in">Aumentar</string>
+    <string name="menu_zoom_out">Diminuir</string>
+    <string name="menu_save_log">Gardar rexistro</string>
+    <string name="title_share_location">Compartir localización cos membros do grupo</string>
+    <string name="device_talk">Mensaxes do dispositivo</string>
+    <string name="device_talk_subtitle">Mensaxes xeradas localmente</string>
+    <string name="edit_contact">Editar contacto</string>
+
+    <string name="mute_for_one_hour">Acalar durante 1 h.</string>
+    <string name="mute_for_two_hours">Acalar durante 2 h.</string>
+    <string name="mute_for_one_day">Acalar durante 1 día</string>
+    <string name="mute_for_seven_days">Acalar durante 7 días</string>
+    <string name="mute_forever">Acalar para sempre</string>
+
+    <string name="share_location_once">unha vez</string>
+    <string name="share_location_for_5_minutes">durante 5 min.</string>
+    <string name="share_location_for_30_minutes">durante 30 min.</string>
+    <string name="share_location_for_one_hour">durante 1 hora</string>
+    <string name="share_location_for_two_hours">durante 2 h.</string>
+    <string name="share_location_for_six_hours">durante 6 h.</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Seguro que desexa abandonar o grupo?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Eliminar %d conversa? Non se mostrará na lista de conversas, as súas mensaxes permanecerán no servidor.</item>
+        <item quantity="other">Eliminar %d conversas? Non se mostrarán máis na listas de conversas, as mensaxes permanecerán no servidor.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Eliminar %d mensaxe aquí e no servidor?</item>
+        <item quantity="other">Eliminar %d mensaxes aquí e no servidor?</item>
+    </plurals>
+    <string name="ask_forward">Reenviar mensaxes a %1$s?</string>
+    <string name="ask_export_attachment">Exportar anexo? Ao exportar anexos outras aplicacións no dispositivo terán acceso a eles.\n\nGardar?</string>
+    <string name="ask_block_contact">Bloquear este contacto? Non recibirás mensaxes de este contacto.</string>
+    <string name="ask_unblock_contact">Desbloquear contacto? Voltarás a poder recibir mensaxes de este contacto.</string>
+    <string name="ask_delete_contacts">Eliminar contactos?\n\nOs contactos con conversas activas e os contactos da libreta de enderezos do sistema non se poden eliminar de xeito definitivo.</string>
+    <string name="ask_delete_contact">Eliminar contacto %1$s?\n\nOs contactos con conversas activas e os contactos da libreta de enderezos do sistema non se poden eliminar de xeito definitivo.</string>
+    <string name="cannot_delete_contacts_in_use">Non podes eliminar contactos con conversas activas.</string>
+    <string name="ask_start_chat_with">Conversa con %1$s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Eliminar  %1$s do grupo?</string>
+    <string name="info_outdated_app_title">A versión da app está desactualizada</string>
+    <string name="info_outdated_app_text">Semella que instalaches Delta Chat dunha fonte sen actualización automática (ex. GitHub). Por favor cambia a unha versión de tenda de aplicacións para recibir as últimas características e arranxo de problemas.</string>
+    <string name="info_outdated_app_dialog_title">Actualizar fontes</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat está dispoñible en:</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Contactos</string>
+    <string name="contacts_enter_name_or_email">Introducir nome ou enderezo de correo</string>
+    <string name="contacts_type_email_above">Escribir arriba o enderezo de correo</string>
+    <string name="contacts_empty_hint">Sen contactos.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d conversa arquivada</item>
+        <item quantity="other">%d conversas arquivadas</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d conversa desarquivada</item>
+        <item quantity="other">%d conversas desarquivadas</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Conversas arquivadas</string>
+    <string name="chat_please_enter_message">Por favor escribe unha mensaxe.</string>
+    <string name="chat_camera_unavailable">Cámara non dispoñible.</string>
+    <string name="chat_unable_to_record_audio">Non se puido gravar o audio.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nova mensaxe</item>
+        <item quantity="other">%d novas mensaxes</item>
+    </plurals>
+    <string name="chat_no_messages_hint">Enviar mensaxe a %1$s:\n\n• Da igual se %2$s non utiliza Delta Chat.\n\n• A entrega da primeira mensaxe podería demorarse un pouco e non estar cifrada.</string>
+    <string name="chat_new_group_hint">Escribe a primeira mensaxe, permita a outras responder a este grupo.\n\n• Da igual se outros membros non utilizan Delta Chat.\n\n• A entrega da primeira mensaxe podería demorarse un pouco.</string>
+    <string name="chat_record_slide_to_cancel">Desliza para cancelar</string>
+    <string name="chat_record_explain">Toca e mantén para gravar mensaxe de voz, solta para enviar</string>
+    <string name="chat_no_chats_yet_title">Caixa de entrada baldeira.\n Preme \"+\" para iniciar conversa.</string>
+    <string name="chat_no_chats_yet_hint">Podes conversar con outra usuaria Delta Chat e con calquera enderezo de correo.</string>
+    <string name="chat_all_archived">Arquiváronse todas as conversas.\nPreme \"+\" para iniciar unha nova.</string>
+    <string name="chat_share_with_title">Compartir con</string>
+    <string name="chat_input_placeholder">Mensaxe</string>
+    <string name="chat_archived_label">Arquivado</string>
+    <string name="chat_no_messages">Sen mensaxes.</string>
+    <string name="chat_self_talk_subtitle">Mensaxes que me enviei a min mesma</string>
+    <string name="chat_contact_request">Solicitude de contacto</string>
+    <string name="chat_no_contact_requests">Sen solicitudes de contacto.\n\nSe queres que os correos tradicionais aparezan aquí como solicitudes de contacto, podes establecelo nos axustes da app.</string>
+    <string name="retry_send">Reintentar o envío da mensaxe</string>
+    <string name="send_failed">Non se puido enviar a mensaxe</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Mostrar localizacións no marco temporal</string>
+    <string name="show_location_traces">Mostrar trazas</string>
+    <string name="add_poi">Enviar punto de interese</string>
+
+
+    <!-- search -->
+    <string name="search">Buscar</string>
+    <string name="search_explain">Buscar conversas, contactos e mensaxes</string>
+    <string name="search_no_result_for_x">Non hai resultados para \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Nome do grupo</string>
+    <string name="group_avatar">Avatar do grupo</string>
+    <string name="group_create_button">Crear grupo</string>
+    <string name="group_please_enter_group_name">Por favor, introduce un nome para o grupo</string>
+    <string name="group_add_members">Engadir membros</string>
+    <string name="group_hello_draft">Ola, abrín o grupo de conversa \"%1$s\" para nós.</string>
+    <string name="group_self_not_in_group">Debes ser membro do grupo para executar esta acción.</string>
+    <string name="profile_encryption">Cifrado</string>
+    <string name="profile_shared_chats">Conversas compartidas</string>
+    <string name="tab_contact">Contacto</string>
+    <string name="tab_group">Grupo</string>
+    <string name="tab_members">Membros</string>
+    <string name="tab_gallery">Galería</string>
+    <string name="tab_docs">Docs</string>
+    <string name="tab_links">Ligazóns</string>
+    <string name="tab_map">Mapa</string>
+    <string name="tab_gallery_empty_hint">As imaxes e vídeos compartidos nesta conversa móstranse aquí.</string>
+    <string name="tab_docs_empty_hint">Aquí están os documentos, música e outros ficheiros compartidos na conversa.</string>
+    <string name="media_preview">Vista previa dos medios</string>
+    
+
+    <!-- invite -->
+    <string name="invite_slogan">Os amigos non abandonan aos amigos nos cortellos de mensaxería.</string>
+    <string name="invite_default_text">Cambia a Delta Chat  - %1$s - podes escribirme a %2$s</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_headline">Delta Chat</string>
+    <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
+    <string name="welcome_intro2_headline">Independente</string>
+    <string name="welcome_intro2_message">Non hai servidor Delta Chat. A app só utiliza o teu servidor de correo.</string>
+    <string name="welcome_intro3_headline">Rápido</string>
+    <string name="welcome_intro3_message">Mensaxes en segundos.\nInterface rápida.</string>
+    <string name="welcome_intro4_headline">Potente</string>
+    <string name="welcome_intro4_message">Sen límite de conversas, imaxes, vídeos, mensaxes de audio e aínda máis. Accesible desde varios clientes.</string>
+    <string name="welcome_intro5_headline">Libre</string>
+    <string name="welcome_intro5_message">Delta Chat é software libre. Sen anuncios nen subscricións. Sen atarte a un provedor.</string>
+    <string name="welcome_intro6_headline">Cifrado</string>
+    <string name="welcome_intro6_message">O cifrado funciona con algoritmos públicos. As mensaxes permanecen nos teus servidores.</string>
+    <string name="welcome_intro7_headline">De confianza</string>
+    <string name="welcome_intro7_message">Delta Chat é fiable para as empresas, compatible e baseado en estándars.</string>
+    <string name="welcome_start_messaging">Inicia a conversa</string>
+    <string name="login_title">Conectar</string>
+    <string name="login_header">Conecta co teu servidor</string>
+    <string name="login_explain">Conecta cunha conta de correo existente</string>
+    <string name="login_subheader">Para os provedores de correo máis frecuentes os axustes establécense automaticamente. Porén poderías ter que activar IMAP nos seus axustes. Consulta o teu provedor de correo ou aos amigos se tes dúbidas.</string>
+    <string name="login_no_servers_hint">Non hai servidores Delta Chat, os teus datos permanecen no dispositivo.</string>
+    <string name="login_inbox">Entrada</string>
+    <string name="login_imap_login">nome usuario IMAP</string>
+    <string name="login_imap_server">Servidor IMAP</string>
+    <string name="login_imap_port">Porto IMAP</string>
+    <string name="login_imap_security">Seguridade IMAP</string>
+    <string name="login_outbox">Saída</string>
+    <string name="login_smtp_login">nome usuario SMTP</string>
+    <string name="login_smtp_password">Contrasinal SMTP</string>
+    <string name="login_smtp_server">Servidor SMTP</string>
+    <string name="login_smtp_port">Porto SMTP</string>
+    <string name="login_smtp_security">Seguridade SMTP</string>
+    <string name="login_auth_method">Método de autorización</string>
+    <string name="login_info_oauth2_title">Continuar co axuste simplificado?</string>
+    <string name="login_info_oauth2_text">O enderezo introducido soporta o axuste simplificado (OAuth 2.0).\n\nNo seguinte paso, permite a Delta Chat actuar como app de Conversa sobre Correo-e.\n\nNon hai servidores Delta Chat, os teus datos permanecen no dispositivo.</string>
+    <string name="login_info_gmail_text">Para as contas Gmail debes crear un Contrasinal de App se tes activada a \"Verificación en dous pasos\". Se o axuste non está dispoñible, tes que activar \"Apps menos seguras\".</string>
+    <string name="login_certificate_checks">Comprobacións do certificado</string>
+    <string name="login_error_mail">Introduce un enderezo de correo válido</string>
+    <string name="login_error_server">Introduce un servidor válido / enderezo IP</string>
+    <string name="login_error_port">Introduce un porto (1–65535)</string>
+    <string name="login_error_required_fields">Introduce un enderezo de correo válido e o contrasinal</string>
+    <string name="import_backup_title">Importar respaldo</string>
+    <string name="import_backup_ask">Atopouse un respaldo en \"%1$s\".\n\nQueres importar e utilizar os seus datos e axustes?</string>
+    <string name="import_backup_no_backup_found">Non se atoparon respaldos.\n\nCopia o respaldo a \"%1$s\" e inténtao outra vez. Alternativamente, podes premer \"Comezar conversa\" e continuar co proceso normal de axustes.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Non se puido conectar como \"%1$s\". Comproba o enderezo de correo e o contrasinal.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Resposta desde %1$s: %2$s\n\nAlgúns provedores poñen información adicional na túa caixa de entrada; podes comprobalo por exemplo na interface web. Consulta ao teu provedor ou amigos se atopas problemas.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Aceptar hostnames non válidos</string>
+    <string name="accept_invalid_certificates">Aceptar certificados non válidos</string>
+
+    <string name="used_settings">Axustes utilizados:</string>
+    <string name="delete_account">Eliminar conta</string>
+    <string name="delete_account_ask">Estás seguro de que queres eliminar os datos da túa conta?</string>
+
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Reenviar a...</string>
+    <string name="share_multiple_attachments">Queres enviar %1$d ficheiros a conversa escollida?\n\nOs ficheiros envíanse sen modificar e no seu tamaño orixinal, ex. imaxes e vídeos non se recodifican.</string>
+    <string name="share_abort">Cancelouse a compartición debido a falta de permisos.</string>
+
+
+    <!-- preferences -->
+    <string name="pref_summary_on">on</string>
+    <string name="pref_summary_off">off</string>
+    <string name="pref_summary_default">por omisión</string>
+    <string name="pref_summary_custom">personalizado</string>
+    <string name="pref_using_custom">Utilizar personalizado: %s</string>
+    <string name="pref_using_default">Utilizando por omisión: %s</string>
+    <string name="pref_profile_info_headline">Info do teu perfil</string>
+    <string name="pref_profile_photo">Imaxe de perfil</string>
+    <string name="pref_trim_headline">Recorte de mensaxe</string>
+    <string name="pref_trim_option">Borrar mensaxes antigas</string>
+    <string name="pref_trim_option_explain">Borrar automaticamente as mensaxes antigas cando a conversa alcance determinada lonxitude</string>
+    <string name="pref_trim_length_limit">Límite de lonxitude da conversa</string>
+    <string name="pref_trim_length_limit_summary">%d mensaxes por conversa</string>
+    <string name="pref_trim_now_button">Recortar conversas agora</string>
+    <string name="pref_trim_now_ask">Borrar as mensaxes antigas? Esto borrará todas as conversas ate as %d mensaxes máis recentes.</string>
+    <string name="pref_blocked_contacts">Contactos bloqueados</string>
+    <string name="pref_profile_photo_remove_ask">Eliminar foto de perfil?</string>
+    <string name="pref_help_url">https://delta.chat/help</string>
+    <string name="pref_password_and_account_settings">Contrasinal e conta</string>
+    <string name="pref_who_can_see_this_information">Quen pode ver esto?</string>
+    <string name="pref_who_can_see_profile_explain">A túa foto de perfil e nome móstranse xunto coas túas mensaxes ao comunicarte con outras persoas. A información xa enviada non se pode agochar o borrar.</string>
+    <string name="pref_your_name">O teu nome</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Texto de firma</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">Enviado con mensaxería Delta Chat: https://delta.chat</string>
+    <string name="pref_enter_sends">A tecla Enter envía</string>
+    <string name="pref_enter_sends_explain">Ao premer Enter enviarás a mensaxe</string>
+    <string name="pref_outgoing_media_quality">Calidade dos medios saíntes</string>
+    <string name="pref_outgoing_balanced">Equilibrado</string>
+    <string name="pref_outgoing_worse">Menor calidade, tamaño pequeno</string>
+    <string name="pref_vibrate">Vibrar</string>
+    <string name="pref_chat_settings">Axustes da conversa</string>
+    <string name="pref_change_secret">Cambiar seguridade</string>
+    <string name="pref_change_secret_explain">Cambiar o PIN / patrón / pegada dactilar a través dos axustes do sistema</string>
+    <string name="pref_screen_security">Seguridade da pantalla</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Solicitar bloqueo de captura de pantalla para a lista de recentes e dentro da app</string>
+    <string name="pref_screen_security_please_restart_hint">Para aplicar o axuste de seguridade da pantalla debes reiniciar a app.</string>
+    <string name="pref_notifications">Notificacións</string>
+    <string name="pref_notifications_show">Mostrar</string>
+    <string name="pref_notifications_priority">Prioridade</string>
+    <string name="pref_led_color">cor LED</string>
+    <string name="pref_led_pattern">patrón pestanexo LED</string>
+    <string name="pref_sound">Son</string>
+    <string name="pref_silent">Mudo</string>
+    <string name="pref_privacy">Intimidade</string>
+    <string name="pref_chats_and_media">Conversas e medios</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Claro</string>
+    <string name="pref_dark_theme">Escuro</string>
+    <string name="pref_appearance">Aspecto</string>
+    <string name="pref_theme">Decorado</string>
+    <string name="pref_language">Idioma</string>
+    <string name="pref_incognito_keyboard">Teclado incógnito</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Solicitar que o teclado non aprenda palabras escritas</string>
+    <string name="pref_read_receipts">Confirmación de lectura</string>
+    <string name="pref_read_receipts_explain">Se a confirmación de lectura está desactivada, non poderás ver as confirmacións dos demais.</string>
+    <string name="pref_manage_keys">Xestión das chaves</string>
+    <string name="pref_use_system_emoji">Utilizar emoji do sistema</string>
+    <string name="pref_use_system_emoji_explain">Desactivar o soporte interno para emoji de Delta Chat</string>
+    <string name="pref_app_access">Acceso a app</string>
+    <string name="pref_communication">Comunicación</string>
+    <string name="pref_chats">Conversas</string>
+    <string name="pref_messages">Mensaxes</string>
+    <string name="pref_in_chat_sounds">Sons na conversa</string>
+    <string name="pref_message_text_size">Tamaño da letra na mensaxe</string>
+    <string name="pref_view_log">Ver rexistro</string>
+    <string name="pref_saved_log">Gardouse o rexistro no cartafol \"Descargas\"</string>
+    <string name="pref_save_log_failed">Non se puido gardar o rexistro</string>
+    <string name="pref_log_header">Rexistro</string>
+    <string name="pref_other">Outro</string>
+    <string name="pref_backup">Respaldo</string>
+    <string name="pref_backup_explain">Respaldar conversas na almacenaxe externa</string>
+    <string name="pref_backup_export_explain">Un respaldo axúdache a configurar unha nova instalación en este ou outro dispositivo.\n\nO respaldo contén as mensaxes, contactos e conversas e os axustes de cifrado extremo-a-extremo Autocrypt. Garda o ficheiro de respaldo nun lugar seguro ou bórrao tan pronto sexa posible.</string>
+    <string name="pref_backup_export_start_button">Inciar respaldo</string>
+    <string name="pref_backup_written_to_x">Respaldo gardado en \"%1$s\".</string>
+    <string name="pref_managekeys_menu_title">Xestionar chaves</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat precisa acceso aos ficheiros para importar/exportar chaves.</string>
+    <string name="pref_managekeys_export_secret_keys">Exportar chaves segredas</string>
+    <string name="pref_managekeys_export_explain">Exportar chaves segredas a \"%1$s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">Importar chaves segredas</string>
+    <string name="pref_managekeys_import_explain">Importar chave segreda desde \"%1$s\"?\n\n• As chaves segredas existentes non se borrarán\n\n• A última chave importada utilizarase como a nova chave por omisión a menos que teña a palabra \"legacy\" escrita no seu nome.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Exportación correcta das chaves a \"%1$s\".</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Chaves segredas importadas desde \"%1$s\".</string>
+    <string name="pref_background">Fondo</string>
+    <string name="pref_background_btn_default">Usar imaxe por omisión</string>
+    <string name="pref_background_btn_gallery">Escoller na galería</string>
+    <string name="pref_imap_folder_handling">Xestión cartafol IMAP</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Se desactivas esta opción, asegúrate de que o servidor e os teus outros clientes están configurados de xeito acorde.\n\nSe non, algo podería fallar.</string>
+    <string name="pref_watch_inbox_folder">Vixiar cartafol de Entrada</string>
+    <string name="pref_watch_sent_folder">Vixiar cartafol Enviados</string>
+    <string name="pref_watch_mvbox_folder">Vixiar cartafol DeltaChat</string>
+    <string name="pref_send_copy_to_self">Enviar copia a ti mesmo</string>
+    <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
+    <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>
+    <string name="pref_email_interaction_title">Interación correo-e</string>
+    <string name="pref_show_emails">Mostrar correos clásicos</string>
+    <string name="pref_show_emails_no">Non, só conversas</string>
+    <string name="pref_show_emails_accepted_contacts">Para os contactos aceptados</string>
+    <string name="pref_show_emails_all">Todos</string>
+    <string name="pref_empty_server_title">Borrar correos no servidor</string>
+    <string name="pref_empty_server_msg">Esta función axuda a liberar espazo no servidor IMAP eliminando todos os correos, incuíndo mensaxes de conversa, nos cartafoles indicados. As mensaxes no dispositivo non serán borradas. O borrado non ten volta atrás!</string>
+    <string name="pref_empty_server_inbox">Borrar todos os correos da caixa de \"Entrada\"</string>
+    <string name="pref_empty_server_mvbox">Borrar todos os correos do cartafol \"DeltaChat\"</string>
+    <string name="pref_empty_server_do_button">Borrar correos</string>
+    <string name="pref_experimental_features">Zona de probas</string>
+    <string name="pref_on_demand_location_streaming">Difusión da ubicación por solicitude</string>
+    <string name="pref_background_default">Fondo por omisión</string>
+    <string name="pref_background_default_color">Cor por omisión</string>
+    <string name="pref_background_custom_image">Imaxe persoal</string>
+    <string name="pref_background_custom_color">Cor persoal</string>
+
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">Autocrypt é un xeito novo de cifrado extremo-a-extremo automático do correo electrónico.\n\nOs axustes extremo-a-extremo créanse de xeito automático cando se precisan e son transferidos entre dispositivos con Mensaxes de Configuración Autocrypt.</string>
+    <string name="autocrypt_send_asm_title">Enviar Mensaxe de Configuración Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_before">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt.\n\nO axuste realízase cifrado e protexido cun código que se debe escribir no outro dispositivo.</string>
+    <string name="autocrypt_send_asm_button">Enviar Mensaxe de Configuración Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_after">Os axustes envíanse a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de configuración. Debería solicitarche un código. Introduce os seguintes díxitos:\n\n %1$s</string>
+    <string name="autocrypt_prefer_e2ee">Preferir cifrado extremo-a-extremo</string>
+    <string name="autocrypt_asm_subject">Mensaxe de Configuración Autocrypt</string>
+    <string name="autocrypt_asm_general_body">Esta é a Mensaxe de Configuración Autocrypt utilizado para transferir os teus axustes de cifrado de extremo-a-extremo entre clientes.\n\nPara descifrar e utilizar os axustes abre a mensaxe nun cliente compatible con Autocrypt e introduce o código mostrado no dispositivo de orixe.</string>
+    <string name="autocrypt_asm_click_body">Esta é a Mensaxe de Configuración Autocrypt utilizado para transferir os teus axustes de cifrado extremo-a-extremo entre clientes.\n\nPara descifrar e utilizar os axustes, toca ou preme en esta mensaxe.</string>
+    <string name="autocrypt_continue_transfer_title">Mensaxe de Configuración Autocrypt</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Por favor, introduce o código de protección mostrado no outro dispositivo.</string>
+    <string name="autocrypt_continue_transfer_succeeded">Axustes transferidos. Este dispositivo está preparado para utilizar Autocrypt coa mesma configuración que no outro dispositivo.</string>
+    <string name="autocrypt_continue_transfer_retry">Voltar a intentar</string>
+    <string name="autocrypt_bad_setup_code">Código incorrecto. Inténtao outra vez.\n\nSe non lembras o código, envía unha nova Mensaxe de Configuración Autocrypt desde o outro dispositivo.</string>
+
+
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Nome do grupo cambiado de \"%1$s\" a \"%2$s\".</string>
+    <string name="systemmsg_group_image_changed">Cambiouse a imaxe do grupo.</string>
+    <string name="systemmsg_group_image_deleted">Imaxe do grupo borrada.</string>
+    <string name="systemmsg_member_added">Engadeuse a %1$s.</string>
+    <string name="systemmsg_member_removed">Eliminouse a %1$s.</string>
+    <string name="systemmsg_group_left">Saír do Grupo.</string>
+    <string name="systemmsg_read_receipt_subject">Mensaxe aberta</string>
+    <string name="systemmsg_read_receipt_body">A mensaxe \"%1$s\" que enviaches mostrouse na pantalla do correspondente.\n\nNon hai garantía de que o contido fose lido.</string>
+    <string name="systemmsg_cannot_decrypt">Esta mensaxe non se pode descifrar.\n\n• Podería axudar que respondas a mensaxe pedindo ao remitente que a volte a enviar.\n\n• En caso dunha reinstalación Delta Chat ou outro programa de correo en este ou outro dispositivo igual debes enviar unha Mensaxe de Configuración Autocrypt desde alí.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s por min.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
+
+
+    <!-- screen lock -->
+    <string name="screenlock_title">Bloqueo de pantalla</string>
+    <string name="screenlock_explain">Limita o acceso co bloqueo de pantalla Android ou pegada dactilar; para evitar mostrar o contido, por favor activa \"Seguridade de Pantalla\".</string>
+    <string name="screenlock_authentication_failed">Fallo de Autenticación.</string>
+    <string name="screenlock_unlock_title">Desbloquear Delta Chat</string>
+    <string name="screenlock_unlock_description">Introduce o código establecido no sistema para desbloquerar Delta Chat.</string>
+    <string name="screenlock_inactivity_timeout">Tempo de inactividade para bloquear</string>
+    <string name="screenlock_inactivity_timeout_explain">Bloqueo Automático de Delta Chat tras un período de inactividade</string>
+    <string name="screenlock_inactivity_timeout_interval">Manter activa durante</string>
+
+
+    <!-- qr code stuff -->
+    <string name="qr_code">Código QR</string>
+    <string name="qrscan_title">Escanear código QR</string>
+    <string name="qrscan_hint">Mantén a cámara sobre o código QR.</string>
+    <string name="qrscan_ask_join_group">Queres unirte ao grupo \"%1$s\"?</string>
+    <string name="qrscan_fingerprint_mismatch">A pegada escaneada non concorda coa última vista para %1$s.</string>
+    <string name="qrscan_no_addr_found">Este código QR contén unha pegada dactilar pero non un enderezo de correo.\n\nPara unha verificación fora de liña, por favor establece unha conexión cifrada co correspondente.</string>
+    <string name="qrscan_contains_text">Texto escaneado no código QR:\n\n%1$s</string>
+    <string name="qrscan_contains_url">URL escaneado no código QR:\n\n%1$s</string>
+    <string name="qrscan_fingerprint_label">Pegada dactilar</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s verificado, presentándome...</string>
+    <string name="qrshow_title">Código QR de convite</string>
+    <string name="qrshow_x_joining">%1$s uneuse.</string>
+    <string name="qrshow_x_verified">%1$s verificado.</string>
+    <string name="qrshow_x_has_joined_group">%1$s uneuse ao grupo.</string>
+    <string name="qrshow_join_group_title">Código QR de convite</string>
+    <string name="qrshow_join_group_hint">Escanea esto para unirte ao grupo \"%1$s\".</string>
+    <string name="qrshow_join_contact_title">Código QR de convite</string>
+    <string name="qrshow_join_contact_hint">Escanea esto para conectar con %1$s-</string>
+    <string name="qrshow_join_contact_no_connection_hint">O axuste dun código QR precisa de conexión a internet. Conéctate a rede antes de continuar.</string>
+    <string name="qrshow_join_contact_no_connection_toast">Sen conexión a internet, non se pode facer o axuste por código QR</string>
+    <string name="contact_verified">%1$s verificado.</string>
+    <string name="contact_not_verified">Non se puido verificar %1$s.</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Cambiaron os axustes para %1$s.</string>
+
+
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">%1$d novas mensaxes en %2$d conversas</string>
+    <string name="notify_most_recent_from">Máis recente desde: %1$s</string>
+    <string name="notify_media_message_with_text">Mensaxe de medios: %s</string>
+    <string name="notify_mark_all_read">Marcar todo como lido</string>
+    <string name="notify_mark_read">Marcar como lido</string>
+    <string name="notify_media_message">Mensaxe de medios</string>
+    <string name="notify_reply_button">Responder</string>
+    <string name="notify_new_message">Nova mensaxe</string>
+    <string name="notify_background_connection_enabled">Conexión en segundo plano establecida</string>
+    <string name="notify_priority_high">Alto</string>
+    <string name="notify_priority_max">Máx</string>
+    <string name="notify_name_and_message">Nome e mensaxe</string>
+    <string name="notify_name_only">Só nome</string>
+    <string name="notify_no_name_or_message">Sen nome ou mensaxe</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Permiso requerido</string>
+    <string name="perm_continue">Continuar</string>
+    <string name="perm_explain_need_for_camera_access">Para capturar fotos e vídeos, permite que Delta Chat acceda a cámara.</string>
+    <string name="perm_explain_need_for_mic_access">Para enviar mensaxes de voz, permite a Delta Chat acceder ao micrófono.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat precisa acceder aos teus ficheiros para poder exportar ficheiros ou crear respaldos.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat precisa acceder aos teus ficheiros para poder compartilos.</string>
+    <string name="perm_explain_access_to_camera_denied">Para facer fotos ou vídeos, vaite aos axustes da app, escolle \"Permisos\", e activa \"Cámara\".</string>
+    <string name="perm_explain_access_to_mic_denied">Para enviar mensaxes de voz, vaite aos axustes da app, escolle \"Permisos\" e activa \"Micrófono\".</string>
+    <string name="perm_explain_access_to_storage_denied">Para recibir ou enviar ficheiros, vaite aos axustes da app, escolle \"Permisos\" e activa \"Almacenaxe\".</string>
+    <string name="perm_explain_access_to_location_denied">Para engadir a localización, vaite aos axustes da app, escolle \"Permisos\" e activa \"Localización\".</string>
+    <string name="perm_enable_bg_reminder_title">Toca aquí para recibir mensaxes mentras Delta Chat está en segundo plano.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat utiliza poucos recursos e procura non esgotar a batería.</string>
+
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Mensaxe cifrada</string>
+
+    <!-- desktop specific strings -->
+    <string name="welcome_desktop">Benvida a Delta Chat</string>
+    <string name="login_known_accounts_title_desktop">Contas coñecidas</string>
+    <string name="global_menu_preferences_language_desktop">Idioma</string>
+    <string name="global_menu_file_desktop">Ficheiro</string>
+    <string name="global_menu_file_quit_desktop">Saír</string>
+    <string name="global_menu_edit_desktop">Editar</string>
+    <string name="global_menu_edit_undo_desktop">Desfacer</string>
+    <string name="global_menu_edit_redo_desktop">Volta a facer</string>
+    <string name="global_menu_edit_cut_desktop">Cortar</string>
+    <string name="global_menu_edit_copy_desktop">Copiar</string>
+    <string name="global_menu_edit_paste_desktop">Pegar</string>
+    <string name="global_menu_view_desktop">Ver</string>
+    <string name="global_menu_view_floatontop_desktop">Poñer arriba</string>
+    <string name="global_menu_view_developer_desktop">Desenvolvedora</string>
+    <string name="global_menu_view_developer_tools_desktop">Ferramentas de desenvolvedora</string>
+    <string name="global_menu_help_desktop">Axuda</string>
+    <string name="global_menu_help_learn_desktop">Coñece máis sobre Delta Chat</string>
+    <string name="global_menu_help_contribute_desktop">Contribúe en GitHub</string>
+    <string name="global_menu_help_report_desktop">Informa dun fallo...</string>
+    <string name="global_menu_help_about_desktop">Acerca de Delta Chat</string>
+    <string name="no_chat_selected_suggestion_desktop">Escolle unha conversa ou crea unha nova</string>
+    <string name="write_message_desktop">Escribe unha mensaxe</string>
+    <string name="encryption_info_title_desktop">Info do cifrado</string>
+    <string name="contact_detail_title_desktop">Detalles do contacto</string>
+    <string name="contact_request_title_desktop">Solicitude de contacto</string>
+    <string name="delete_message_desktop">Eliminar mensaxe</string>
+    <string name="more_info_desktop">Máis info</string>
+    <string name="logout_desktop">Desconectar</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
+    <string name="no_archived_chats_desktop">Sen conversas arquivadas</string>
+    <string name="no_chats_desktop">Sen conversas</string>
+    <string name="encryption_info_desktop">Mostrar info de cifrado</string>
+    <string name="verified_desktop">verificado</string>
+    <string name="remove_desktop">Eliminar</string>
+    <string name="save_desktop">Gardar</string>
+    <string name="show_qr_verify_code_desktop">Mostrar código QR de convite</string>
+    <string name="show_qr_invite_code_desktop">Mostrar código QR de convite</string>
+    <string name="add_contact_desktop">Engadir contacto</string>
+    <string name="login_required_desktop">requerido</string>
+    <string name="name_desktop">Nome</string>
+    <string name="autocrypt_key_transfer_desktop">Transferir chave Autocrypt</string>
+    <string name="initiate_key_transfer_title_desktop">Iniciar transferencia da chave</string>
+    <string name="initiate_key_transfer_desktop">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt. O axuste cífrase cun código seguro que se mostra aquí e debes escribir no outro dispositivo.</string>
+    <string name="reply_to_message_desktop">Responder a mensaxe</string>
+    <string name="select_group_image_desktop">Escoller imaxe do grupo</string>
+    <string name="imex_progress_title_desktop">Progreso do respaldo</string>
+    <string name="download_attachment_desktop">Descargar anexo</string>
+    <string name="export_backup_desktop">Exportar respaldo</string>
+    <string name="transfer_key_desktop">Transferir chave</string>
+    <string name="show_key_transfer_message_desktop">Enviaches a chave a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de Configuración. Pedirache o código de configuración. Introduce os seguintes díxitos:</string>
+    <string name="new_message_from_desktop">Nova mensaxe de</string>
+    <string name="unblock_contacts_desktop">Desbloquear contactos</string>
+    <string name="none_blocked_desktop">Sen contactos bloqueados</string>
+    <string name="autocrypt_correct_desktop">Axuste Autocrypt transferido.</string>
+    <string name="autocrypt_incorrect_desktop">Código incorrecto. Inténtao outra vez.</string>
+    <string name="create_chat_error_desktop">Non se puido crear a conversa.</string>
+    <string name="ask_delete_chat_desktop">Eliminar a conversa?</string>
+    <string name="email_validation_failed_desktop">Correo-e requerido.</string>
+    <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>
+    <string name="me_desktop">eu</string>
+    <string name="in_this_group_desktop">Membros do grupo</string>
+    <string name="not_in_this_group_desktop">Membros potenciais do grupo (fóra do grupo)</string>
+    <string name="message_detail_sent_desktop">enviado</string>
+    <string name="message_detail_received_desktop">recibido</string>
+    <string name="message_detail_from_desktop">de</string>
+    <string name="message_detail_to_desktop">para</string>
+    <string name="menu.view.developer.open.log.folder">Abrir cartafol do rexistro</string>
+    <string name="menu.view.developer.open.current.log.file">Abrir ficheiro actual do rexistro</string>
+    <string name="user_location_permission_explanation">Delta Chat precisa permiso para poder mostrar e compartir a túa localización.</string>
+
+
+    <!-- accessibility -->
+    <string name="a11y_delivery_status_error">Estado da entrega: Fallo</string>
+    <string name="a11y_encryption_padlock">Cadeado do cifrado</string>
+    <string name="a11y_delivery_status_sending">Estado da entrega: Enviando</string>
+    <string name="a11y_delivery_status_draft">Estado da entrega: Borrador</string>
+    <string name="a11y_delivery_status_delivered">Estado da entrega: Entregado</string>
+    <string name="a11y_delivery_status_read">Estado da entrega: Lido</string>
+    <string name="a11y_delivery_status_invalid">Estado de entrega inválido</string>
+    <string name="a11y_remove_account_btn_label">Eliminar conta</string>
+    <string name="a11y_message_context_menu_btn_label">Accións da mensaxe</string>
+    <string name="a11y_background_preview_label">Vista previa do fondo</string>
+
+    <!-- Translators: These strings are only used on iOS -->
+    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Conceder acceso a cámara permíteche tomar fotos e vídeos.</string>
+    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Permitir o acceso a libreta de enderezos permíteche conversar con contactos do dispositivo.</string>
+    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Permitindo o acceso ao micrófono poderás gravar audio.</string>
+    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Permitindo o acceso a galería de fotos poderás subir imaxes desde ela.</string>
+</resources>
