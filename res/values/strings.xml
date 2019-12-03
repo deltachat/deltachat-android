@@ -177,6 +177,8 @@
     <string name="title_share_location">Share location with all group members</string>
     <string name="device_talk">Device messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
+    <string name="device_talk_explain">Messages in this chat are generated locally by your Delta Chat app. Its makers use it to inform about app updates and problems during usage.</string>
+    <string name="device_talk_welcome_message">Welcome to Delta Chat! – Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, Delta Chat is an email application with a modern chat interface. Email in a new dress if you will 👻\n\nUse Delta Chat with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install Delta Chat, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edit contact</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
@@ -255,6 +257,8 @@
     <string name="chat_archived_label">Archived</string>
     <string name="chat_no_messages">No messages.</string>
     <string name="chat_self_talk_subtitle">Messages I sent to myself</string>
+    <string name="saved_messages">Saved messages</string>
+    <string name="saved_messages_explain">• Forward messages here for easy access\n\n• Take notes or voice memos\n\n• Attach media to save them</string>
     <string name="chat_contact_request">Contact request</string>
     <string name="chat_no_contact_requests">No contact requests.\n\nIf you want classic emails to appear here as contact requests, you can change the corresponding setting in the app settings.</string>
     <string name="retry_send">Retry to send message</string>

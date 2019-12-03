@@ -118,6 +118,10 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return dcChat.isGroup();
   }
 
+  public @NonNull DcChat getChat(){
+    return dcChat;
+  }
+
   public String getChatName(){
     return dcChat.getName();
   }
