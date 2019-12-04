@@ -21,6 +21,9 @@
     <string name="attachment">Attachment</string>
     <string name="back">Back</string>
     <string name="close">Close</string>
+    <string name="forward">Forward</string>
+    <string name="archive">Archive</string>
+    <string name="mute">Mute</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
