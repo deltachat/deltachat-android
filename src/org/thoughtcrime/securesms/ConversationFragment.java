@@ -177,7 +177,7 @@ public class ConversationFragment extends Fragment
             }
         }
         else if(dcChat.isSelfTalk()) {
-            noMessageTextView.setText(R.string.chat_self_talk_explain);
+            noMessageTextView.setText(R.string.saved_messages_explain);
         }
         else if(dcChat.isDeviceTalk()) {
             noMessageTextView.setText(R.string.device_talk_explain);
