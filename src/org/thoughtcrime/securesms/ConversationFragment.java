@@ -159,6 +159,7 @@ public class ConversationFragment extends Fragment
     }
 
     private void setNoMessageText() {
+        DcChat dcChat = getListAdapter().getChat();
         if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
             if(DcHelper.getInt(getActivity(), "show_emails")!= DcContext.DC_SHOW_EMAILS_ALL) {
                 noMessageTextView.setText(R.string.chat_no_contact_requests);
@@ -167,22 +168,23 @@ public class ConversationFragment extends Fragment
                 noMessageTextView.setText(R.string.chat_no_messages);
             }
         }
-        else if(getListAdapter().isGroupChat()){
+        else if(dcChat.isGroup()){
             if(dcContext.getChat((int) chatId).isUnpromoted()) {
                 noMessageTextView.setText(R.string.chat_new_group_hint);
             }
             else {
                 noMessageTextView.setText(R.string.chat_no_messages);
             }
-        }else{
-            String name = getListAdapter().getChatName();
-            if(dcContext.getChat((int) chatId).isSelfTalk()) {
-                noMessageTextView.setText(R.string.chat_no_messages);
-            }
-            else {
-                String message = getString(R.string.chat_no_messages_hint, name, name);
-                noMessageTextView.setText(message);
-            }
+        }
+        else if(dcChat.isSelfTalk()) {
+            noMessageTextView.setText(R.string.chat_self_talk_explain);
+        }
+        else if(dcChat.isDeviceTalk()) {
+            noMessageTextView.setText(R.string.device_talk_explain);
+        }
+        else {
+            String message = getString(R.string.chat_no_messages_hint, dcChat.getName(), dcChat.getName());
+            noMessageTextView.setText(message);
         }
     }
 
