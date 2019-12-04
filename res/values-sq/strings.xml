@@ -21,6 +21,10 @@
     <string name="attachment">Bashkëngjitje</string>
     <string name="back">Mbrapsht</string>
     <string name="close">Mbylle</string>
+    <string name="forward">Përpara</string>
+    <string name="archive">Arkivoje</string>
+    <string name="unarchive">Çarkivoje</string>
+    <string name="mute">Heshtoje</string>
     <string name="save">Ruaje</string>
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>

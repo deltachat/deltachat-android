@@ -23,6 +23,7 @@
     <string name="close">Kapat</string>
     <string name="forward">İlet</string>
     <string name="archive">Arşivle</string>
+    <string name="unarchive">Arşivden çıkart</string>
     <string name="mute">Sessize al</string>
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
@@ -180,7 +181,7 @@
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
     <string name="device_talk">Aygıt iletileri</string>
     <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
-    <string name="device_talk_explain">Bu sohbetteki iletiler, Delta Chat uygulamanız tarafından yerel olarak oluşturulur. Üreticiler, uygulama güncelleştirmeleri ve kullanımı sırasındaki sorunlar hakkında bilgilendirmek için onu kullanır.</string>
+    <string name="device_talk_explain">Bu sohbetteki iletiler, Delta Chat uygulamanız tarafından yerel olarak oluşturulur. Üreticiler, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için onu kullanır.</string>
     <string name="edit_contact">Kişiyi düzenle</string>
 
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
