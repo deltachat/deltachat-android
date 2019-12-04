@@ -1,5 +1,31 @@
 # Delta Chat Android Changelog
 
+## v0.970.0
+2019-12-04
+
+* introduce a new "Device Chat" that informs the user about app changes
+  and, in the future, problems on the device
+* rename the "Me"-chat to "Saved messages",
+  add a fresh icon and make it visible by default.
+* add Arabic translation
+* add Galician translation
+* update translations
+* use the rust-language for the mail-parsing and -generating part,
+  introducing a vastly improved reliability
+* fix moving messages
+* fix flakyness when receiving messages
+  and in the secure-join process
+* more bug fixes
+
+The changes have been done Alexander Krotov, Allan Nordhøy, Ampli-fier,
+Andrei Guliaikin, Asiel Díaz Benítez, Besnik, Björn Petersen, ButterflyOfFire,
+Calbasi, cyBerta, Daniel Boehrsi, Dmitry Bogatov, dorheim, Emil Lefherz,
+Enrico B., Ferhad Necef, Florian Bruhin, Floris Bruynooghe, Friedel Ziegelmayer,
+Heimen Stoffels, Hocuri, Holger Krekel, Jikstra, Lars-Magnus Skog, Lin Miaoski,
+Moo, Ole Carlsen, Osoitz, Ozancan Karataş, Pablo, Pedro Portela, polo lancien,
+Racer1, Simon Laux, solokot, Waldemar Stoczkowski, Xosé M. Lamas, Zkdc
+
+
 ## v0.960.0
 2019-11-24
 
@@ -8,12 +34,14 @@
 * bug fixes
 * minimum requirement is now Android 4.3 Jelly Bean
 
+
 ## v0.950.0
 2019-11-05
 
 * add "Certificate checks" options to "Login / Advanced"
 * update translations
 * bug fixes
+
 
 ## v0.940.2
 2019-10-31
