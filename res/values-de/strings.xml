@@ -23,6 +23,7 @@
     <string name="close">Schließen</string>
     <string name="forward">Weiterleiten</string>
     <string name="archive">Archivieren</string>
+    <string name="unarchive">Dearchivieren</string>
     <string name="mute">Stumm</string>
     <string name="save">Speichern</string>
     <string name="chat">Chat</string>
