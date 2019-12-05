@@ -28,62 +28,7 @@ import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
 
-/**
- * The welcome activity.  Provides the user with useful information about the app.
- * It also allows the triggering of the backup import process.
- *
- * @author Daniel Böhrs
- */
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
-
-    private class WelcomePagerAdapter extends PagerAdapter {
-
-        private static final int PAGE_COUNT = 7;
-
-        private Context context;
-
-        private int icons[] = new int[]{R.drawable.intro1, R.drawable.intro2, R.drawable.intro3, R.drawable.intro4, R.drawable.intro5, R.drawable.intro6, R.drawable.intro7};
-
-        private int titles[] = new int[]{R.string.welcome_intro1_headline, R.string.welcome_intro2_headline, R.string.welcome_intro3_headline, R.string.welcome_intro4_headline, R.string.welcome_intro5_headline, R.string.welcome_intro6_headline, R.string.welcome_intro7_headline};
-
-        private int messages[] = new int[]{R.string.welcome_intro1_message, R.string.welcome_intro2_message, R.string.welcome_intro3_message, R.string.welcome_intro4_message, R.string.welcome_intro5_message, R.string.welcome_intro6_message, R.string.welcome_intro7_message};
-
-        WelcomePagerAdapter(Context context) {
-            this.context = context;
-        }
-
-        @NonNull
-        @Override
-        public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.welcome_page, container, false);
-            TextView welcomeHeader = layout.findViewById(R.id.welcome_header);
-            welcomeHeader.setText(titles[position]);
-            TextView welcomeSubHeader = layout.findViewById(R.id.welcome_sub_header);
-            welcomeSubHeader.setText(messages[position]);
-            ImageView welcomeIcon = layout.findViewById(R.id.welcome_icon);
-            welcomeIcon.setImageResource(icons[position]);
-            container.addView(layout);
-            return layout;
-        }
-
-        @Override
-        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            container.removeView((View) object);
-        }
-
-
-        @Override
-        public int getCount() {
-            return PAGE_COUNT;
-        }
-
-        @Override
-        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-            return view == object;
-        }
-
-    }
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -93,8 +38,8 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         initializeResources();
 
         ApplicationDcContext dcContext = DcHelper.getContext(this);
-        dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
-        dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_IMEX_PROGRESS);
+        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
     }
 
     @Override
@@ -109,16 +54,10 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     private void initializeResources() {
-        ViewPager viewPager = findViewById(R.id.welcome_viewpager);
-        viewPager.setAdapter(new WelcomePagerAdapter(this));
-        TabLayout tabLayout = findViewById(R.id.welcome_page_tab_layout);
-        tabLayout.setupWithViewPager(viewPager, true);
         Button skipButton = findViewById(R.id.skip_button);
         View backupText = findViewById(R.id.backup_text);
-        View backupImage = findViewById(R.id.backup_icon);
         skipButton.setOnClickListener((view) -> startRegistrationActivity());
         backupText.setOnClickListener((view) -> startImportBackup());
-        backupImage.setOnClickListener((view) -> startImportBackup());
     }
 
     private void startRegistrationActivity() {
