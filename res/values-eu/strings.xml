@@ -300,20 +300,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Munduan erabiltzaile gehien dituen mezularitza aplikazioa. Librea eta independentea.</string>
-    <string name="welcome_intro2_headline">Independientea</string>
-    <string name="welcome_intro2_message">Ez dago Delta Chat zerbitzaririk. Aplikazioak zure e-mail zerbitzaria darabil.</string>
-    <string name="welcome_intro3_headline">Azkarra</string>
-    <string name="welcome_intro3_message">Bidali mezuak segundotan.\nInterfaze azkarra</string>
-    <string name="welcome_intro4_headline">Ahaltsua</string>
-    <string name="welcome_intro4_message">Txatak, irudiak, bideoak, audio-mezuak eta gehiago mugarik gabe. Hainbat bezeroekin bateragarria.</string>
-    <string name="welcome_intro5_headline">Librea</string>
-    <string name="welcome_intro5_message">Delta Txat doan da betirako. Librea. Iragarkirik gabe. Harpidetzarik gabe. Hornitzaile bakarrera lotu gabe.</string>
-    <string name="welcome_intro6_headline">Zifratua</string>
-    <string name="welcome_intro6_message">Zifratuta ohiko algoritmoekin. Mezuak zure zerbitzarian gordetzen dira.</string>
-    <string name="welcome_intro7_headline">Fidagarria</string>
-    <string name="welcome_intro7_message">Delta Chat segurua da negozioetarako, bateragarria eta estandarretan oinarritua.</string>
     <string name="welcome_start_messaging">Hasi txateatzen</string>
     <string name="login_title">Hasi saioa</string>
     <string name="login_header">Hasi saioa zure zerbitzarian</string>

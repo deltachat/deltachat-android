@@ -305,20 +305,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Komunikator o największym zasięgu na świecie. Darmowy i bezpieczny.</string>
-    <string name="welcome_intro2_headline">Niezależny</string>
-    <string name="welcome_intro2_message">Nie ma serwera Delta Chat. Aplikacja wykorzystuje tylko twój serwer e-mail.</string>
-    <string name="welcome_intro3_headline">Szybki</string>
-    <string name="welcome_intro3_message">Wiadomości push w kilka sekund.\nSzybki interfejs.</string>
-    <string name="welcome_intro4_headline">Potężny</string>
-    <string name="welcome_intro4_message">Nieograniczone czaty, obrazy, filmy, wiadomości audio i wiele innych. Obsługujący wielu klientów.</string>
-    <string name="welcome_intro5_headline">Darmowy</string>
-    <string name="welcome_intro5_message">Delta Chat jest zawsze darmowy. O otwartym kodzie źródłowym. Bez reklam. Bez abonamentu. Bez ograniczeń dystrybucji.</string>
-    <string name="welcome_intro6_headline">Szyfrowane</string>
-    <string name="welcome_intro6_message">Zaszyfrowany za pomocą wszystkich typowych algorytmów. Wiadomości pozostają na swoich serwerach.</string>
-    <string name="welcome_intro7_headline">Godny zaufania</string>
-    <string name="welcome_intro7_message">Delta Chat jest bezpieczny dla zastosowań biznesowych, zgodny i oparty na standardach.</string>
     <string name="welcome_start_messaging">Uruchom komunikator</string>
     <string name="login_title">Zaloguj się</string>
     <string name="login_header">Zaloguj się na swój serwer</string>

@@ -308,20 +308,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
-    <string name="welcome_intro2_headline">I pavarur</string>
-    <string name="welcome_intro2_message">S\’ka shërbyes Delta Chat. Aplikacioni përdor vetëm shërbyesin tuaj të email-eve.</string>
-    <string name="welcome_intro3_headline">I shpejtë</string>
-    <string name="welcome_intro3_message">Dërgoni mesazhe brenda sekondash.\nNdërfaqe e shpejtë.</string>
-    <string name="welcome_intro4_headline">I fuqishëm</string>
-    <string name="welcome_intro4_message">Fjalosje, figura, video, mesazhe audio të pakufizuara, dhe më tepër. I aftë për multi-klient.</string>
-    <string name="welcome_intro5_headline">I lirë</string>
-    <string name="welcome_intro5_message">Delta Chat është përgjithmonë i lirë.\nMe burim të hapur. Pa reklama. Pa pajtime. Pa kyçje nga tregtues.</string>
-    <string name="welcome_intro6_headline">I fshehtëzuar</string>
-    <string name="welcome_intro6_message">Fshehtëzuar me krejt algoritmet e zakonshëm. Mesazhet mbeten në shërbyesit tuaj.</string>
-    <string name="welcome_intro7_headline">I besueshëm</string>
-    <string name="welcome_intro7_message">Delta Chat-i është i parrezik për përdorim nga bizneset, i përputhshëm dhe i bazuar në standarde.</string>
     <string name="welcome_start_messaging">Filloni të Shkëmbeni Mesazhe</string>
     <string name="login_title">Hyrje</string>
     <string name="login_header">Hyrje te shërbyesi juaj</string>

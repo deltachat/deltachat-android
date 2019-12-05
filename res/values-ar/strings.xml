@@ -160,12 +160,6 @@
     <string name="media_preview">معاينة الصورة</string>
     
 
-    <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro3_headline">سريع</string>
-    <string name="welcome_intro4_headline">قويّ</string>
-    <string name="welcome_intro5_headline">حُر</string>
-    <string name="welcome_intro6_headline">مشفّر</string>
     <string name="welcome_start_messaging">لنبدأ التواصل</string>
     <string name="login_title">الولوج</string>
     <string name="login_header">الإتصال بخادومك</string>

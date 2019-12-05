@@ -308,20 +308,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
-    <string name="welcome_intro2_headline">Onafhankelijk</string>
-    <string name="welcome_intro2_message">Er is geen Delta Chat-server; de app gebruikt alleen je mailserver.</string>
-    <string name="welcome_intro3_headline">Snel</string>
-    <string name="welcome_intro3_message">Verstuur berichten binnen een paar seconden.\nSnelle gebruikersomgeving.</string>
-    <string name="welcome_intro4_headline">Krachtig</string>
-    <string name="welcome_intro4_message">Ongelimiteerd aantal gesprekken, afbeeldingen, video\'s, spraakberichten en meer. Kan omgaan met meerdere clients.</string>
-    <string name="welcome_intro5_headline">Gratis</string>
-    <string name="welcome_intro5_message">Delta Chat zal altijd gratis blijven. Open source. Geen reclame. Geen abonnement. Onafhankelijk.</string>
-    <string name="welcome_intro6_headline">Versleuteld</string>
-    <string name="welcome_intro6_message">Versleuteld met alle bekende algoritmen. Berichten blijven op jouw server.</string>
-    <string name="welcome_intro7_headline">Betrouwbaar</string>
-    <string name="welcome_intro7_message">Delta Chat is veilig voor zakelijk gebruik, compatibel en gebaseerd op standaarden.</string>
     <string name="welcome_start_messaging">Aan de slag</string>
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>

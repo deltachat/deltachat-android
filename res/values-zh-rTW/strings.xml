@@ -260,20 +260,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">免費、獨立的通訊軟體，我們有全世界最廣的受眾。</string>
-    <string name="welcome_intro2_headline">獨立!</string>
-    <string name="welcome_intro2_message">Delta Chat 沒有中心化伺服器，我們只使用你的郵件伺服器。</string>
-    <string name="welcome_intro3_headline">快速!</string>
-    <string name="welcome_intro3_message">快速反應的介面\n傳送訊息只要幾秒鐘</string>
-    <string name="welcome_intro4_headline">強大!</string>
-    <string name="welcome_intro4_message">無限的對話、圖片、視訊、語音訊息。不受限於本通訊軟體。</string>
-    <string name="welcome_intro5_headline">免費!</string>
-    <string name="welcome_intro5_message">Delta Chat 永遠都免費。開放原始碼，沒有廣告，無需訂閱，不綁電信商。</string>
-    <string name="welcome_intro6_headline">保密!</string>
-    <string name="welcome_intro6_message">使用常見的演算法加密訊息，而且密文存在你自己的伺服器上。</string>
-    <string name="welcome_intro7_headline">值得信賴!</string>
-    <string name="welcome_intro7_message">Delta Chat 可以安心在商業環境使用，基於業界標準，相容度高。</string>
     <string name="welcome_start_messaging">開始傳送訊息</string>
     <string name="login_title">登入</string>
     <string name="login_header">登入你的伺服器</string>

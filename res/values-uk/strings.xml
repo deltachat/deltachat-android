@@ -239,20 +239,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
-    <string name="welcome_intro2_headline">Незалежний</string>
-    <string name="welcome_intro2_message">Delta Chat не має централізованого сервера. Використовується ваш поштовий сервер.</string>
-    <string name="welcome_intro3_headline">Швидкий</string>
-    <string name="welcome_intro3_message">Доставляє повідомлення за лічені секунди.\nШвидкий інтерфейс.</string>
-    <string name="welcome_intro4_headline">Потужний</string>
-    <string name="welcome_intro4_message">Безлімітні чати, відправка фотографій, відео, голосових повідомлень і багато іншого. Підтримує безліч клієнтів.</string>
-    <string name="welcome_intro5_headline">Безкоштовний</string>
-    <string name="welcome_intro5_message">Delta Chat безкоштовний і так буде завжди. Має відкритий початковий код. Ніякої реклами. Ніяких платних підписок. Немає прив\'язки до постачальника.</string>
-    <string name="welcome_intro6_headline">Зашифрований</string>
-    <string name="welcome_intro6_message">Зашифрований з використанням популярних алгоритмів. Повідомлення залишаються на ваших серверах.</string>
-    <string name="welcome_intro7_headline">Надійний</string>
-    <string name="welcome_intro7_message">Delta Chat безпечний для бізнесу, поєднується з іншими технологіями і грунтується на стандартах.</string>
     <string name="welcome_start_messaging">Почати спілкування</string>
     <string name="login_title">Увійти</string>
     <string name="login_header">Увійти на свій сервер</string>

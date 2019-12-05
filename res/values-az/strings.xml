@@ -273,20 +273,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Dünyanın ən böyük auditoriyasına sahib olan mesenjeri. Azad və müstəqil.</string>
-    <string name="welcome_intro2_headline">Müstəqil</string>
-    <string name="welcome_intro2_message">Delta Chat-ın serveri yoxdur. Proqram yalnız poçt serverinizi istifadə edir.</string>
-    <string name="welcome_intro3_headline">Sürətli</string>
-    <string name="welcome_intro3_message">Push-mesajlar saniyədə. \nSabit interfeys.</string>
-    <string name="welcome_intro4_headline">Güclü</string>
-    <string name="welcome_intro4_message">Limitsiz çatlar, şəkillər, videolar, audio mesajlar və daha çox. Multi-müştəri qabiliyyətlidir.</string>
-    <string name="welcome_intro5_headline">Свободное</string>
-    <string name="welcome_intro5_message">Delta Chat əbədi olaraq azaddır. Açıq mənbə. Reklam yoxdur. Abunə haqqı yoxdur. Satıcı kilidi yox.</string>
-    <string name="welcome_intro6_headline">Şifrələndi</string>
-    <string name="welcome_intro6_message">Bütün ümumi alqoritmlər ilə şifrələnmişdir. Mesajlarınız serverlərinizdə qalır.</string>
-    <string name="welcome_intro7_headline">Etibarlı</string>
-    <string name="welcome_intro7_message">Delta Chat biznes istifadəsi üçün uyğun və standartlara uyğun olaraq təhlükəsizdir.</string>
     <string name="welcome_start_messaging">Mesajlaşmağa başla</string>
     <string name="login_title">Daxil ol</string>
     <string name="login_header">Serverinə daxil ol</string>

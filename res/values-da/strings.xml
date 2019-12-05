@@ -272,20 +272,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Budbringeren med verdens bredeste publikum. Fri og uafhængig.</string>
-    <string name="welcome_intro2_headline">Uafhængig</string>
-    <string name="welcome_intro2_message">Der er ingen Delta Chat server. Programmet bruger kun din e-post server.</string>
-    <string name="welcome_intro3_headline">Hurtig</string>
-    <string name="welcome_intro3_message">Skubbe beskeder på sekunder.\nHurtig grænseflade.</string>
-    <string name="welcome_intro4_headline">Kraftfuld</string>
-    <string name="welcome_intro4_message">Ubegrænsede samtaler, billeder, video, tale beskeder med mere. Multi klient stand.</string>
-    <string name="welcome_intro5_headline">Fri</string>
-    <string name="welcome_intro5_message">Delta Chat er fri for altid. Åben kildekode. Ingen reklamer. Intet abonnement. Ingen leverandør låsning.</string>
-    <string name="welcome_intro6_headline">Krypteret</string>
-    <string name="welcome_intro6_message">Krypteret med alle almindelige algoritmer. Beskeder bliver på  serveren.</string>
-    <string name="welcome_intro7_headline">Troværdig</string>
-    <string name="welcome_intro7_message">Delta Chat er sikker til erhvervsmæssig brug, kompatibel og standard baseret.</string>
     <string name="welcome_start_messaging">Start skrivning</string>
     <string name="login_title">Logind</string>
     <string name="login_header">Logind til server</string>

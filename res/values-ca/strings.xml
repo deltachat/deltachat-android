@@ -237,20 +237,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">El programa de missatgeria amb més ususaris del món. Gratuït i independent.</string>
-    <string name="welcome_intro2_headline">Independent</string>
-    <string name="welcome_intro2_message">No hi ha servidor de Delta Chat. L\'app només fa servir el teu servidor de correu electrònic.</string>
-    <string name="welcome_intro3_headline">Ràpid</string>
-    <string name="welcome_intro3_message">Envia missatges en segons.\nInterfície ràpida.</string>
-    <string name="welcome_intro4_headline">Potent</string>
-    <string name="welcome_intro4_message">Xats il·limitats, imatges, vídeos, missatges de so i més coses. Capacitat de multi-client.</string>
-    <string name="welcome_intro5_headline">Lliure</string>
-    <string name="welcome_intro5_message">Delta Chat serà sempre lliure. Sense anuncis. Sense subscripció. Sense bloqueig de proveïdor.</string>
-    <string name="welcome_intro6_headline">Encriptat</string>
-    <string name="welcome_intro6_message">Encriptat amb els algoritmes habituals. Els missatges només es guarden al vostres servidors.</string>
-    <string name="welcome_intro7_headline">Fiable</string>
-    <string name="welcome_intro7_message">Delta Chat és segur per l\'ús empresarial, compatible i basat en estàndards.</string>
     <string name="welcome_start_messaging">Comenceu a comunicar-vos</string>
     <string name="login_title">Identifiqueu-vos</string>
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>

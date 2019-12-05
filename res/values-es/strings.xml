@@ -308,20 +308,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">La aplicación de mensajería instantánea con la audiencia más amplia del mundo. Libre e independiente. </string>
-    <string name="welcome_intro2_headline">Independiente</string>
-    <string name="welcome_intro2_message">No hay un servidor de Delta Chat. La aplicación solo utiliza tu servidor de correo.</string>
-    <string name="welcome_intro3_headline">Rápida</string>
-    <string name="welcome_intro3_message">Envíe mensajes en segundos.\nInterfaz rápida.</string>
-    <string name="welcome_intro4_headline">Poderosa</string>
-    <string name="welcome_intro4_message">Chats ilimitados, imágenes, videos, mensajes de audio y más. Capacidad multi-cliente.</string>
-    <string name="welcome_intro5_headline">Libre</string>
-    <string name="welcome_intro5_message">Delta Chat es gratis y libre para siempre. De código libre. Sin publicidad. Sin suscripción. Sin limitaciones de otras empresas.</string>
-    <string name="welcome_intro6_headline">Cifrada</string>
-    <string name="welcome_intro6_message">Cifrada con todos los algoritmos comunes. Los mensajes se guardan solo en tu servidor de correo.</string>
-    <string name="welcome_intro7_headline">Confiable</string>
-    <string name="welcome_intro7_message">Delta Chat es seguro para usos comerciales y de negocio, compatible y basado en estándares abiertos.</string>
     <string name="welcome_start_messaging">Empezar a Chatear</string>
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>

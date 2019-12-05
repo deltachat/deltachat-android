@@ -179,18 +179,6 @@
     <string name="tab_docs">文章</string>
     <string name="tab_links">ﾘﾝｸ</string>
     <string name="tab_map">地図</string>
-    <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro2_headline">独立</string>
-    <string name="welcome_intro2_message">Delta Chatは自分のﾒｰﾙｻｰﾊﾞｰを設定して使用します｡つまりはﾁｬｯﾄ風のﾒｰﾙｸﾗｲｱﾝﾄｱﾌﾟﾘｹｰｼｮﾝであると謂う事です｡</string>
-    <string name="welcome_intro3_headline">高速</string>
-    <string name="welcome_intro4_headline">強力</string>
-    <string name="welcome_intro5_headline">自由で</string>
-    <string name="welcome_intro5_message">Delta Chatはあの世の終わりまで無料です｡またｿﾌﾄｳｪｱのｿｰｽｺｰﾄﾞを公開しています｡寄付によって開発されているため広告等は混入していません｡</string>
-    <string name="welcome_intro6_headline">暗号通信</string>
-    <string name="welcome_intro6_message">ﾒｯｾｰｼﾞは一般的な方式で暗号化され自分のｻｰﾊﾞｰに保存されます｡</string>
-    <string name="welcome_intro7_headline">信頼</string>
-    <string name="welcome_intro7_message">Delta Chatは商用としても安全に使用できます｡標準規格のﾒｰﾙｻｰﾊﾞｰに対応し､PGPを使用しています｡</string>
     <string name="welcome_start_messaging">開始する</string>
     <string name="login_title">ﾛｸﾞｲﾝ</string>
     <string name="login_header">自分のﾒｰﾙｻｰﾊﾞｰにﾛｸﾞｲﾝする</string>

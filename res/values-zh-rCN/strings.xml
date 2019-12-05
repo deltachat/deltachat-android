@@ -23,6 +23,7 @@
     <string name="close">关闭</string>
     <string name="forward">转发</string>
     <string name="archive">归档</string>
+    <string name="unarchive">解档</string>
     <string name="mute">静音</string>
     <string name="save">保存</string>
     <string name="chat">聊天</string>
@@ -296,20 +297,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">本通讯软件有着世界上最广泛的受众。自由且自主。</string>
-    <string name="welcome_intro2_headline">自主</string>
-    <string name="welcome_intro2_message">不存在Delta Chat服务器。 本应用仅使用您的邮件服务器。</string>
-    <string name="welcome_intro3_headline">快速</string>
-    <string name="welcome_intro3_message">在几秒钟内推送消息。\n快速的接口。</string>
-    <string name="welcome_intro4_headline">强大</string>
-    <string name="welcome_intro4_message">无限制的聊天、图像、视频、音频消息以及更多。 支持多客户端。</string>
-    <string name="welcome_intro5_headline">自由</string>
-    <string name="welcome_intro5_message">Delta Chat是自由软件。没有广告。 没有订阅。 没有供应商锁定。</string>
-    <string name="welcome_intro6_headline">加密</string>
-    <string name="welcome_intro6_message">使用所有常见算法加密。 消息保留于您的服务器。</string>
-    <string name="welcome_intro7_headline">可信赖</string>
-    <string name="welcome_intro7_message">Delta Chat是可以安全地用于商业用途、兼容且基于标准的。</string>
     <string name="welcome_start_messaging">开始发送消息</string>
     <string name="login_title">登录</string>
     <string name="login_header">登录至您的服务器</string>

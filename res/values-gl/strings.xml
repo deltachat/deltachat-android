@@ -300,20 +300,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
-    <string name="welcome_intro2_headline">Independente</string>
-    <string name="welcome_intro2_message">Non hai servidor Delta Chat. A app só utiliza o teu servidor de correo.</string>
-    <string name="welcome_intro3_headline">Rápido</string>
-    <string name="welcome_intro3_message">Mensaxes en segundos.\nInterface rápida.</string>
-    <string name="welcome_intro4_headline">Potente</string>
-    <string name="welcome_intro4_message">Sen límite de conversas, imaxes, vídeos, mensaxes de audio e aínda máis. Accesible desde varios clientes.</string>
-    <string name="welcome_intro5_headline">Libre</string>
-    <string name="welcome_intro5_message">Delta Chat é software libre. Sen anuncios nen subscricións. Sen atarte a un provedor.</string>
-    <string name="welcome_intro6_headline">Cifrado</string>
-    <string name="welcome_intro6_message">O cifrado funciona con algoritmos públicos. As mensaxes permanecen nos teus servidores.</string>
-    <string name="welcome_intro7_headline">De confianza</string>
-    <string name="welcome_intro7_message">Delta Chat é fiable para as empresas, compatible e baseado en estándars.</string>
     <string name="welcome_start_messaging">Inicia a conversa</string>
     <string name="login_title">Conectar</string>
     <string name="login_header">Conecta co teu servidor</string>

@@ -196,9 +196,6 @@
     <string name="media_preview">Média előnézete</string>
     
 
-    <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
-    <string name="welcome_intro6_headline">Titkosított</string>
     <string name="login_imap_server">IMAP kiszolgáló</string>
     <string name="login_imap_port">IMAP port</string>
     <string name="login_imap_security">IMAP biztonság</string>

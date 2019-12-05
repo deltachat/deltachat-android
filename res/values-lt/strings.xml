@@ -277,20 +277,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
-    <string name="welcome_intro2_headline">Nepriklausoma</string>
-    <string name="welcome_intro2_message">Nėra jokio Delta Chat serverio. Programėlė naudoja tik jūsų pašto serverį.</string>
-    <string name="welcome_intro3_headline">Greita</string>
-    <string name="welcome_intro3_message">Perduokite žinutes akimirksniu.\nSparti sąsaja.</string>
-    <string name="welcome_intro4_headline">Galinga</string>
-    <string name="welcome_intro4_message">Neriboti pokalbiai, paveikslai, vaizdo įrašai, garso žinutės ir daugiau. Kelių klientų palaikymas.</string>
-    <string name="welcome_intro5_headline">Laisva</string>
-    <string name="welcome_intro5_message">Delta Chat yra laisva visiems laikams. Atvirojo kodo. Jokių reklamų. Jokios prenumeratos. Jokios priklausomybės nuo tiekėjo.</string>
-    <string name="welcome_intro6_headline">Šifruota</string>
-    <string name="welcome_intro6_message">Šifruota visais paplitusiais algoritmais. Žinutės lieka jūsų serveriuose.</string>
-    <string name="welcome_intro7_headline">Patikima</string>
-    <string name="welcome_intro7_message">Delta Chat yra saugi naudoti versle, suderinama ir pagrįsta standartais.</string>
     <string name="welcome_start_messaging">Pradėti susirašinėjimą</string>
     <string name="login_title">Prisijungti</string>
     <string name="login_header">Prisijunkite prie savo serverio</string>

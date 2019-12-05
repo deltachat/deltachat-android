@@ -305,20 +305,7 @@
 
 
     <!-- welcome and login -->
-    <string name="welcome_intro1_headline">Delta Chat</string>
     <string name="welcome_intro1_message">Der Messenger mit der größten Reichweite der Welt. Frei und unabhängig.</string>
-    <string name="welcome_intro2_headline">Unabhängig</string>
-    <string name="welcome_intro2_message">Es gibt keinen Delta Chat Server. Die App verwendet nur Ihren E-Mail-Server.</string>
-    <string name="welcome_intro3_headline">Schnell</string>
-    <string name="welcome_intro3_message">Push-Nachrichten in Sekunden.\nSchnelles Interface.</string>
-    <string name="welcome_intro4_headline">Leistungsstark</string>
-    <string name="welcome_intro4_message">Unbegrenzte Chats, Bilder, Videos, Sprachnachrichten und mehr. Multi-Client-fähig.</string>
-    <string name="welcome_intro5_headline">Frei</string>
-    <string name="welcome_intro5_message">Open Source. Keine Werbung. Kein Abo. Keine Bindung an die Mobilfunknummer.</string>
-    <string name="welcome_intro6_headline">Verschlüsselt</string>
-    <string name="welcome_intro6_message">Verschlüsselung mit allen gängigen Verfahren. Die Nachrichten bleiben auf Ihren Servern.</string>
-    <string name="welcome_intro7_headline">Vertraulich</string>
-    <string name="welcome_intro7_message">Delta Chat ist für die geschäftliche Kommunikation geeignet, kompatibel und auf Standards basierend.</string>
     <string name="welcome_start_messaging">Jetzt beginnen</string>
     <string name="login_title">Login</string>
     <string name="login_header">Bei ihrem Server anmelden</string>
