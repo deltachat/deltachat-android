@@ -269,7 +269,7 @@
     <string name="send_failed">Could not send message</string>
 
     <!-- map -->
-    <string name="filter_map_on_time">Show locations in timeframe</string>
+    <string name="filter_map_on_time">Show locations in time frame</string>
     <string name="show_location_traces">Show traces</string>
     <string name="add_poi">Send point of interest</string>
 
