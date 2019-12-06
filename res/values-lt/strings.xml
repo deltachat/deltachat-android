@@ -16,6 +16,9 @@
     <string name="attachment">Priedas</string>
     <string name="back">Atgal</string>
     <string name="close">Užverti</string>
+    <string name="forward">Persiųsti</string>
+    <string name="archive">Archyvuoti</string>
+    <string name="unarchive">Išarchyvuoti</string>
     <string name="save">Įrašyti</string>
     <string name="media">Medija</string>
     <string name="main_menu">Pagrindinis meniu</string>
