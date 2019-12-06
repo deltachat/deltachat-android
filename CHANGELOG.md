@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v0.971.0
+2019-12-06
+
+* rework welcome screen
+* update translations
+* improve reconnecting
+* various bug fixes
+
 ## v0.970.0
 2019-12-04
 
