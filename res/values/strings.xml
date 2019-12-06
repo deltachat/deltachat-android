@@ -311,7 +311,7 @@
     <string name="welcome_intro1_message">The messenger with the broadest audience in the world. Free and independent.</string>
     <string name="welcome_start_messaging">Start messaging</string>
     <string name="login_title">Log in</string>
-    <string name="login_header">Log in to your email account/string>
+    <string name="login_header">Log in to your existing email account/string>
     <string name="login_explain">Supply your email address and the password for it</string>
     <string name="login_subheader">Let us know what additional settings are required, if not filled in automatically. Sometimes turning on IMAP in the web settings of your provider is needed too.</string>
     <string name="login_no_servers_hint">There are no Delta Chat servers, your data stays on your device.</string>
