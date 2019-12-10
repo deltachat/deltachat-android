@@ -11,8 +11,25 @@
     <string name="def">Cari olan</string>
     <string name="custom">Xüsusi</string>
     <string name="none">Yoxdur</string>
+    <string name="automatic">Avtomatik</string>
+    <string name="strict">Mıtin</string>
     <string name="open">Açıq</string>
     <string name="delete">Sil</string>
+    <string name="info">məlumat</string>
+    <string name="update">Yeniləmə</string>
+    <string name="emoji">Emojilər</string>
+    <string name="attachment">Fayllar</string>
+    <string name="back">Geri</string>
+    <string name="close">Bağla</string>
+    <string name="forward">Başqasına göndərmə</string>
+    <string name="archive">Arxivləşmə</string>
+    <string name="unarchive">Arxivdən çıxarma</string>
+    <string name="mute">Səssiz</string>
+    <string name="save">Saxla</string>
+    <string name="chat">Çat</string>
+    <string name="media">Mediafayllar</string>
+    <string name="main_menu">Əsas menyu</string>
+    <string name="start_chat">Çata başla</string>
     <string name="not_now">İndi deyil</string>
     <string name="never">Heç vaxt</string>
     <string name="one_moment">Gözləyin...</string>
@@ -156,6 +173,8 @@
     <string name="menu_zoom_out">Uzaqlaşdırmaq</string>
     <string name="menu_save_log">Loqu saxlamaq</string>
     <string name="title_share_location">Qrup üzvlərinə yerləşdiyin yerini göndər</string>
+    <string name="edit_contact">Kontakta dəyişiklik</string>
+
     <string name="mute_for_one_hour">1 saatlıq söndür</string>
     <string name="mute_for_two_hours">2 saatlıq söndür</string>
     <string name="mute_for_one_day">1 günlük söndür</string>
@@ -231,8 +250,12 @@
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>
     <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
+    <string name="saved_messages">Saxlanılmış mesajlar</string>
     <string name="chat_contact_request">Kontakt sorğusu</string>
     <string name="chat_no_contact_requests">Əlaqə sorğuları yoxdur. \n\nƏgər klassik e-poçtların burada əlaqə istəkləri kimi görünməsini istəyirsinizsə, tətbiq parametrlərindəki müvafiq parametrləri dəyişə bilərsiniz.</string>
+    <string name="retry_send">Mesaji yenidən göndərməyə cəht et</string>
+    <string name="send_failed">Mesaj göndərilmədi</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Vaxt məhdudiyyəti ilə yerləşmə yerləri göstərin</string>
     <string name="show_location_traces">İzləri göstərmək</string>
@@ -277,6 +300,7 @@
     <string name="welcome_start_messaging">Mesajlaşmağa başla</string>
     <string name="login_title">Daxil ol</string>
     <string name="login_header">Serverinə daxil ol</string>
+    <string name="login_explain">Mövcud e-mail hesabı ilə daxil olun</string>
     <string name="login_subheader">Məlum elektron poçt provayderləri üçün əlavə parametrlər avtomatik olaraq quraşdırılır. Bəzən IMAP-ın web məkanında aktiv olması lazımdır. Yardım üçün e-poçt provayderinizə və ya dostlarınıza müraciət edin.</string>
     <string name="login_no_servers_hint">Delta Chat serverləri yoxdur, məlumatlarınız cihazınızda qalır!</string>
     <string name="login_inbox">Gələn</string>
@@ -294,6 +318,7 @@
     <string name="login_info_oauth2_title">Sadələşdirilmiş tənzimləmə ilə davam edirsiniz?</string>
     <string name="login_info_oauth2_text">Daxil edilmiş e-poçt ünvanı sadələşdirilmiş bir quraşdırma (OAuth2) dəstəkləyir. \n\nNövbəti addımda Delta Chat e-poçt tətbiqinizlə söhbət etməyə icazə verin. \n\n Delta Chat serverləri, cihazınızda qalır!</string>
     <string name="login_info_gmail_text">2FA aktiv olduqda, GMail hesabları üçün proqramşifrəsi yaratmalısınız. Bu tənzimləmə mövcud deyilsə daha az təhlükəsiz tətbiqləri işə salmalısınız. </string>
+    <string name="login_certificate_checks">Sertifikat yoxlanmaları</string>
     <string name="login_error_mail">Xahiş edirik düzgün bir e-poçt ünvanı daxil et</string>
     <string name="login_error_server">Xahiş edirik, düzgün bir server / IP ünvanı daxil et</string>
     <string name="login_error_port">Xahiş edirik, düzgün bir port (1-65535) daxil et</string>
@@ -402,6 +427,7 @@
     <string name="pref_watch_inbox_folder">Daxil olanla qovluğunu izləyin</string>
     <string name="pref_watch_sent_folder">Göndərilmişlərin qovluğunu izləyin</string>
     <string name="pref_watch_mvbox_folder">DeltaChat qovluğunu izləyin</string>
+    <string name="pref_send_copy_to_self">Özünə kopya göndər</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
     <string name="pref_auto_folder_moves_explain">Çat söhbətləri Daxil olanlar qovluğunun yığılmaması üçün taşınır</string>
     <string name="pref_email_interaction_title">Email qarşılıqlı əlaqə</string>
@@ -414,6 +440,11 @@
     <string name="pref_empty_server_inbox">Daxil olan qutusunda bütün elektron poçtları sil</string>
     <string name="pref_empty_server_mvbox">DeltaChat qutusunda bütün elektron poçtları sil</string>
     <string name="pref_empty_server_do_button">Elektron poçtunu sil</string>
+    <string name="pref_background_default">Özünəməxsus arxa fon</string>
+    <string name="pref_background_default_color">Özünəməxsus rəng</string>
+    <string name="pref_background_custom_image">Şəkil</string>
+    <string name="pref_background_custom_color">Rəng</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Avtomatik şifrələmə</string>
     <string name="autocrypt_explain">Avtoşifrələmə, avtomatik ucdan uca e-poçt şifrələməsi üçün yeni və açıq bir spesifikasiyadır. \n\nTədbirdən sonrakı qurulum avtomatik olaraq yaradılıb və Autocrypt Setup Messages ilə cihazlar arasında köçürə bilərsiniz.</string>

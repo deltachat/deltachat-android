@@ -420,7 +420,7 @@
     <string name="pref_read_receipts_explain">Okundu bilgileri etkisizleştirilirse, diğerlerinden gelen okundu bilgilerini göremeyeceksiniz.</string>
     <string name="pref_manage_keys">Anahtarları yönet</string>
     <string name="pref_use_system_emoji">Sistem emojisini kullan</string>
-    <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini etkisizleştir</string>
+    <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
     <string name="pref_app_access">Uygulama erişimi</string>
     <string name="pref_communication">İletişim</string>
     <string name="pref_chats">Sohbetler</string>
@@ -568,7 +568,7 @@
     <string name="perm_explain_need_for_camera_access">Fotoğraflar ve videolar yakalamak için Delta Chat\'in kameraya erişmesine izin verin.</string>
     <string name="perm_explain_need_for_mic_access">Sesli iletiler göndermek için Delta Chat\'in mikrofona erişmesine izin verin.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat\'in dosyaları dışa aktarmak ya da yedekler oluşturmak için dosyalarınıza erişmesi gerekir.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat\'in dosyalarınızı paylaşmak için onlara erişmesi gerekir.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat\'in paylaşmak için dosyalarınıza erişmesi gerekir.</string>
     <string name="perm_explain_access_to_camera_denied">Fotoğraflar çekmek ya da videolar yakalamak için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Kamera\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
     <string name="perm_explain_access_to_storage_denied">Dosyaları almak ya da göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
