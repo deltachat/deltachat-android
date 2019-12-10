@@ -1,5 +1,14 @@
 # Delta Chat Android Changelog
 
+## v0.972.0
+2019-12-10
+
+* names show up correctly again
+* html-attachments are possible again
+* improve adding/removing group members
+* improve connection handling and reconnects
+* update translations
+
 ## v0.971.0
 2019-12-06
 
