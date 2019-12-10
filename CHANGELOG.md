@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v0.972.0
+## v0.973.0
 2019-12-10
 
 * names show up correctly again
