@@ -179,8 +179,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
       case Crop.REQUEST_CROP:
         if (resultCode == Activity.RESULT_OK) {
 
-          Toast.makeText(CreateProfileActivity.this, "Sending profile picture to others is not yet implemented.\n\nWe're working on it, stay tuned :)", Toast.LENGTH_LONG).show();
-
           new AsyncTask<Void, Void, byte[]>() {
             @Override
             protected byte[] doInBackground(Void... params) {
