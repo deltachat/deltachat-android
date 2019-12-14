@@ -1,5 +1,19 @@
 # Delta Chat Android Changelog
 
+## v0.980.0
+2019-14-10
+
+* support for user avatars: select your profile image
+  at "settings / my profile info"
+  and it will be sent out to people you write to
+* previously selected avatars will not be used automatically,
+  you have to select a new avatar
+* rework tls stack
+* alleviate login problems with providers which only support RSA10
+* prototype a provider-database with a testprovider
+* improve key gossiping
+* bug fixes
+
 ## v0.973.0
 2019-12-10
 
