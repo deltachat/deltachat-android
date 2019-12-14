@@ -74,7 +74,7 @@ public class AvatarHelper {
     public static File getSelfAvatarFile(@NonNull Context context, @NonNull String address) {
         File avatarDirectory = new File(context.getFilesDir(), AVATAR_DIRECTORY);
         avatarDirectory.mkdirs();
-        return new File(avatarDirectory, address);
+        return new File(avatarDirectory, address+".jpg");
     }
 
     public static void setSelfAvatar(@NonNull Context context, @NonNull String address, @Nullable byte[] data) throws IOException {
