@@ -1,5 +1,14 @@
 # Delta Chat Android Changelog
 
+## v0.981.0
+2019-15-10
+
+* avatar recoding to 192x192 to keep file sizes small
+* fix read-receipts appearing as normal messages
+* fix smtp crash
+* fix group name handling if the name contains special characters
+* various other bug fixes
+
 ## v0.980.0
 2019-14-10
 
