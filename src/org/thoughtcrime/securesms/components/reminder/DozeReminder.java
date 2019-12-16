@@ -12,36 +12,20 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
+
+import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
-public class DozeReminder extends Reminder {
-
-  @RequiresApi(api = Build.VERSION_CODES.M)
-  public DozeReminder(@NonNull final Context context) {
-    super(context.getString(R.string.perm_enable_bg_reminder_title),
-          context.getString(R.string.perm_enable_bg_reminder_text));
-
-    setOkListener(v -> {
-      if(ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)==PackageManager.PERMISSION_GRANTED) {
-        Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-            Uri.parse("package:" + context.getPackageName()));
-        context.startActivity(intent);
-      }
-      else {
-        Intent intent = new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
-        context.startActivity(intent);
-      }
-    });
-
-    setDismissListener(v -> {
-      Prefs.  setPromptedOptimizeDoze(context, true);
-    });
-  }
+public class DozeReminder {
 
   public static boolean isEligible(Context context) {
     if(context==null) {
@@ -52,7 +36,7 @@ public class DozeReminder extends Reminder {
       return false;
     }
 
-    if(Prefs.hasPromptedOptimizeDoze(context)) {
+    if(Prefs.getPrompteDozeMsgId(context)!=0) {
       return false;
     }
 
@@ -74,5 +58,47 @@ public class DozeReminder extends Reminder {
     }
 
     return true; // yip, asking for disabling battery optimisations makes sense
+  }
+
+  public static void addDozeReminderDeviceMsg(Context context) {
+    DcContext dcContext = DcHelper.getContext(context);
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg.setText(context.getString(R.string.perm_enable_bg_reminder_title)+"\n\n"
+               +context.getString(R.string.perm_enable_bg_reminder_text));
+    int msgId = dcContext.addDeviceMsg("android.doze-reminder", msg);
+    if(msgId!=0) {
+      Prefs.setPromptedDozeMsgId(context, msgId);
+    }
+  }
+
+  public static boolean isDozeReminderMsg(Context context, DcMsg msg) {
+    return msg != null
+        && msg.getFromId() == DcContact.DC_CONTACT_ID_DEVICE
+        && msg.getId() == Prefs.getPrompteDozeMsgId(context);
+  }
+
+  public static void dozeReminderTapped(Context context) {
+    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+      return;
+    }
+
+    PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+    if(pm.isIgnoringBatteryOptimizations(context.getPackageName())) {
+      new AlertDialog.Builder(context)
+              .setMessage(R.string.perm_enable_bg_already_done)
+              .setPositiveButton(android.R.string.ok, null)
+              .show();
+      return;
+    }
+
+    if(ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)==PackageManager.PERMISSION_GRANTED) {
+      Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+              Uri.parse("package:" + context.getPackageName()));
+      context.startActivity(intent);
+    }
+    else {
+      Intent intent = new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+      context.startActivity(intent);
+    }
   }
 }

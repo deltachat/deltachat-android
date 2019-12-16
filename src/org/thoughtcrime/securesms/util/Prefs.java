@@ -47,7 +47,7 @@ public class Prefs {
   public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
-  private static final String PROMPTED_OPTIMIZE_DOZE_PREF      = "pref_prompted_optimize_doze";
+  private static final String PROMPTED_DOZE_MSG_ID_PREF        = "pref_prompted_doze_msg_id";
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
   public  static final String MESSAGE_BODY_TEXT_SIZE_PREF      = "pref_message_body_text_size";
 
@@ -160,12 +160,12 @@ public class Prefs {
     setStringPreference(context, LANGUAGE_PREF, language);
   }
 
-  public static void setPromptedOptimizeDoze(Context context, boolean value) {
-    setBooleanPreference(context, PROMPTED_OPTIMIZE_DOZE_PREF, value);
+  public static void setPromptedDozeMsgId(Context context, int msg_id) {
+    setIntegerPrefrence(context, PROMPTED_DOZE_MSG_ID_PREF, msg_id);
   }
 
-  public static boolean hasPromptedOptimizeDoze(Context context) {
-    return getBooleanPreference(context, PROMPTED_OPTIMIZE_DOZE_PREF, false);
+  public static int getPrompteDozeMsgId(Context context) {
+    return getIntegerPreference(context, PROMPTED_DOZE_MSG_ID_PREF, 0);
   }
 
   public static boolean isNotificationsEnabled(Context context) {

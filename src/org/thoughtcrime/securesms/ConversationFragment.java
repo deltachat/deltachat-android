@@ -59,6 +59,7 @@ import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
+import org.thoughtcrime.securesms.components.reminder.DozeReminder;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
@@ -705,6 +706,9 @@ public class ConversationFragment extends Fragment
             }
             else if(messageRecord.isSetupMessage()) {
                 querySetupCode(messageRecord,null);
+            }
+            else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
+                DozeReminder.dozeReminderTapped(getContext());
             }
         }
 

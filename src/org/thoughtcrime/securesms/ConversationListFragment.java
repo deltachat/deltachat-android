@@ -190,7 +190,8 @@ public class ConversationListFragment extends Fragment
 //          return Optional.of(new OutdatedBuildReminder(context));
 //        } else
           if (DozeReminder.isEligible(context)) {
-            return Optional.of(new DozeReminder(context));
+            DozeReminder.addDozeReminderDeviceMsg(context);
+            return Optional.absent();
           } else if (OutdatedReminder.isEligible(context)) {
             return Optional.of(new OutdatedReminder(context));
           }
