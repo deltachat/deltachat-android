@@ -184,19 +184,18 @@ public class ConversationListFragment extends Fragment
       @Override
       protected Optional<? extends Reminder> doInBackground(Context... params) {
         final Context context = params[0];
-//        if (ExpiredBuildReminder.isEligible()) {
-//          return Optional.of(new ExpiredBuildReminder(context));
-//        } else if (OutdatedBuildReminder.isEligible()) {
-//          return Optional.of(new OutdatedBuildReminder(context));
-//        } else
+        try {
           if (DozeReminder.isEligible(context)) {
-            return Optional.of(new DozeReminder(context));
+            DozeReminder.addDozeReminderDeviceMsg(context);
+            return Optional.absent();
           } else if (OutdatedReminder.isEligible(context)) {
             return Optional.of(new OutdatedReminder(context));
           }
-          else {
-            return Optional.absent();
-          }
+        } catch(Exception e) {
+          e.printStackTrace();
+        }
+
+        return Optional.absent();
       }
 
       @Override
