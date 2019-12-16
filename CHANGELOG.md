@@ -1,7 +1,16 @@
 # Delta Chat Android Changelog
 
+## v0.982.0
+2019-12-16
+
+* move doze-reminder to device-chat
+* improve logging
+* update translations
+* fix crashes on connecting to some imap and smtp servers
+
+
 ## v0.981.0
-2019-15-10
+2019-12-15
 
 * avatar recoding to 192x192 to keep file sizes small
 * fix read-receipts appearing as normal messages
@@ -9,8 +18,9 @@
 * fix group name handling if the name contains special characters
 * various other bug fixes
 
+
 ## v0.980.0
-2019-14-10
+2019-12-14
 
 * support for user avatars: select your profile image
   at "settings / my profile info"
@@ -23,6 +33,7 @@
 * improve key gossiping
 * bug fixes
 
+
 ## v0.973.0
 2019-12-10
 
@@ -32,6 +43,7 @@
 * improve connection handling and reconnects
 * update translations
 
+
 ## v0.971.0
 2019-12-06
 
@@ -39,6 +51,7 @@
 * update translations
 * improve reconnecting
 * various bug fixes
+
 
 ## v0.970.0
 2019-12-04
