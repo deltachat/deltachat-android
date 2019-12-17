@@ -30,8 +30,8 @@ The changes of this verison and the last beta versions have been done by
 Alexander Krotov, Allan Nordhøy, Ampli-fier, Andrei Guliaikin,
 Asiel Díaz Benítez, Besnik, Björn Petersen, ButterflyOfFire, Calbasi, cyBerta,
 Daniel Boehrsi, Dmitry Bogatov, dorheim, Emil Lefherz, Enrico B., Ferhad Necef,
-Florian Bruhin, Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels,
-Hocuri, Holger Krekel, Jikstra, Lars-Magnus Skog, Lin Miaoski, Moo,
+Florian Bruhin, Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels, Hocuri,
+Holger Krekel, Jikstra, Lars-Magnus Skog, Lin Miaoski, Moo, Nico de Haen,
 Ole Carlsen, Osoitz, Ozancan Karataş, Pablo, Pedro Portela, polo lancien,
 Racer1, Simon Laux, solokot, Waldemar Stoczkowski, Xosé M. Lamas, Zkdc
 
