@@ -6,14 +6,8 @@
 Finally, after months of coding and fixing bugs, here it is: Delta Chat 1.0 :)
 An overview over the changes since v0.510:
 
-* a new core; for better stability, speed and future maintainability,
-  the core is written completely in the Rust programming language now
-* for end-to-end-encryption, rPGP is used now;
-  the rPGP library got a first independent security review mid 2019
-* improved behavior of sending and receiving messages in flaky networks
 * support for user avatars: select your profile image
   at "My profile info" and it will be sent out to people you write to
-* rework welcome screen
 * introduce a new "Device Chat" that informs the user about app changes
   and, in the future, problems on the device
 * new "Saved messages" chat
@@ -21,6 +15,12 @@ An overview over the changes since v0.510:
 * if "Show classic emails" is set to "All",
   emails pop up as contact requests directly in the chatlist
 * add "Send copy to self" switch
+* rework welcome screen
+* a new core: for better stability, speed and future maintainability,
+  the core is written completely in the Rust programming language now
+* for end-to-end-encryption, rPGP is used now;
+  the rPGP library got a first independent security review mid 2019
+* improved behavior of sending and receiving messages in flaky networks
 * more reliable background fetch on newer Android versions
 * native 64bit support
 * minimum requirement is Android 4.3 Jelly Bean
