@@ -193,8 +193,7 @@ public class ApplicationDcContext extends DcContext {
         context.startActivity(Intent.createChooser(intent, context.getString(R.string.chat_share_with_title)));
       }
     } catch (RuntimeException e) {
-      Toast.makeText(context, R.string.no_app_to_handle_data, Toast.LENGTH_LONG).show();
-      Toast.makeText(context, "Media-Type: " + mimeType, Toast.LENGTH_LONG).show();
+      Toast.makeText(context, String.format("%s (%s)", context.getString(R.string.no_app_to_handle_data), mimeType), Toast.LENGTH_LONG).show();
       Log.i(TAG, "opening of external activity failed.", e);
     }
   }
