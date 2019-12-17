@@ -1,5 +1,41 @@
 # Delta Chat Android Changelog
 
+## v1.0.0
+2019-12-17
+
+Finally, after months of coding and fixing bugs, here it is: Delta Chat 1.0 :)
+An overview over the changes since v0.510:
+
+* support for user avatars: select your profile image
+  at "My profile info" and it will be sent out to people you write to
+* introduce a new "Device Chat" that informs the user about app changes
+  and, in the future, problems on the device
+* new "Saved messages" chat
+* add "Certificate checks" options to "Login / Advanced"
+* if "Show classic emails" is set to "All",
+  emails pop up as contact requests directly in the chatlist
+* add "Send copy to self" switch
+* rework welcome screen
+* a new core: for better stability, speed and future maintainability,
+  the core is written completely in the Rust programming language now
+* for end-to-end-encryption, rPGP is used now;
+  the rPGP library got a first independent security review mid 2019
+* improved behavior of sending and receiving messages in flaky networks
+* more reliable background fetch on newer Android versions
+* native 64bit support
+* minimum requirement is Android 4.3 Jelly Bean
+* tons of bug fixes
+
+The changes of this verison and the last beta versions have been done by
+Alexander Krotov, Allan Nordhøy, Ampli-fier, Andrei Guliaikin,
+Asiel Díaz Benítez, Besnik, Björn Petersen, ButterflyOfFire, Calbasi, cyBerta,
+Daniel Boehrsi, Dmitry Bogatov, dorheim, Emil Lefherz, Enrico B., Ferhad Necef,
+Florian Bruhin, Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels, Hocuri,
+Holger Krekel, Jikstra, Lars-Magnus Skog, Lin Miaoski, Moo, Nico de Haen,
+Ole Carlsen, Osoitz, Ozancan Karataş, Pablo, Pedro Portela, polo lancien,
+Racer1, Simon Laux, solokot, Waldemar Stoczkowski, Xosé M. Lamas, Zkdc
+
+
 ## v0.982.0
 2019-12-16
 
@@ -70,14 +106,6 @@
   and in the secure-join process
 * more bug fixes
 
-The changes have been done Alexander Krotov, Allan Nordhøy, Ampli-fier,
-Andrei Guliaikin, Asiel Díaz Benítez, Besnik, Björn Petersen, ButterflyOfFire,
-Calbasi, cyBerta, Daniel Boehrsi, Dmitry Bogatov, dorheim, Emil Lefherz,
-Enrico B., Ferhad Necef, Florian Bruhin, Floris Bruynooghe, Friedel Ziegelmayer,
-Heimen Stoffels, Hocuri, Holger Krekel, Jikstra, Lars-Magnus Skog, Lin Miaoski,
-Moo, Ole Carlsen, Osoitz, Ozancan Karataş, Pablo, Pedro Portela, polo lancien,
-Racer1, Simon Laux, solokot, Waldemar Stoczkowski, Xosé M. Lamas, Zkdc
-
 
 ## v0.960.0
 2019-11-24
@@ -139,14 +167,6 @@ Racer1, Simon Laux, solokot, Waldemar Stoczkowski, Xosé M. Lamas, Zkdc
 * minor ui improvements
 * add Hungarian translation
 * update translations
-
-The changes have been done Alexander Krotov, Ampli-fier, Andrei Guliaikin,
-Asiel Díaz Benítez, Besnik, Björn Petersen, Calbasi, cyBerta, Daniel Boehrsi,
-Dmitry Bogatov, dorheim, Enrico B., Ferhad Necef, Florian Bruhin,
-Floris Bruynooghe, Friedel Ziegelmayer, Heimen Stoffels, Hocuri,
-Holger Krekel, Jikstra, Lars-Magnus Skog, Lin Miaoski, Moo, Ole Carlsen,
-Osoitz, Ozancan Karataş, Pedro Portela, polo lancien, Racer1, Simon Laux,
-solokot, Waldemar Stoczkowski, Zkdc
 
 
 ## v0.510.1
