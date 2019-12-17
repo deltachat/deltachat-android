@@ -21,6 +21,9 @@ cd jni/deltachat-core-rust
 # ```
 # then, the following should work:
 
+# fix build on MacOS Catalina
+unset CPATH
+
 echo "-- cross compiling to armv7-linux-androideabi (arm) --"
 export CFLAGS=-D__ANDROID_API__=18
 TARGET_CC=armv7a-linux-androideabi18-clang \
