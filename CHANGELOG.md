@@ -7,7 +7,7 @@ Finally, after months of coding and fixing bugs, here it is: Delta Chat 1.0 :)
 An overview over the changes since v0.510:
 
 * a new core; for better stability, speed and future maintainability,
-  the core is written completely in rust now
+  the core is written completely in the Rust programming language now
 * for end-to-end-encryption, rPGP is used now;
   the rPGP library got a first independent security review mid 2019
 * improved behavior of sending and receiving messages in flaky networks
