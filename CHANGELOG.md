@@ -1,5 +1,15 @@
 # Delta Chat Android Changelog
 
+## v1.0.1
+2019-12-19
+
+* fix OAauth2/GMail
+* fix group members not appearing in contact list
+* fix hangs appearing under some circumstances
+* retry sending already after 30 seconds
+* improve html parsing
+
+
 ## v1.0.0
 2019-12-17
 
