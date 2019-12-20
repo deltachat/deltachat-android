@@ -187,21 +187,13 @@ public class ApplicationDcContext extends DcContext {
         mimeType = dcContext.checkMime(path, mimeType);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
-        if( Build.VERSION.SDK_INT <= 23 ) {
-          intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK);
-        } else {
-          intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        }
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         context.startActivity(intent);
       } else {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType(mimeType);
         intent.putExtra(Intent.EXTRA_STREAM, uri);
-        if( Build.VERSION.SDK_INT <= 23 ) {
-          intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK);
-        } else {
-          intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        }
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         context.startActivity(Intent.createChooser(intent, context.getString(R.string.chat_share_with_title)));
       }
     } catch (RuntimeException e) {
