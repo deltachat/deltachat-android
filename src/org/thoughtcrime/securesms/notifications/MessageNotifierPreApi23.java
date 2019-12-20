@@ -46,6 +46,12 @@ class MessageNotifierPreApi23 extends MessageNotifier {
             lastAudibleNotification = System.currentTimeMillis();
         }
 
+        if (dcContext.getChat(chatId).isDeviceTalk()) {
+            // currently, we just never notify on device chat.
+            // esp. on first start, this is annoying.
+            return;
+        }
+
         addMessageToNotificationState(dcContext, chatId, messageId);
         synchronized (lock) {
             if (notificationState.hasMultipleChats()) {
