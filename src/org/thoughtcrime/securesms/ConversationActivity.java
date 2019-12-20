@@ -993,7 +993,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             msg = new DcMsg(dcContext,
                 attachment.isVoiceNote()? DcMsg.DC_MSG_VOICE : DcMsg.DC_MSG_AUDIO);
           }
-          else if (MediaUtil.isVideoType(contentType)) {
+          else if (MediaUtil.isVideoType(contentType) && slideDeck.getDocumentSlide()==null) {
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
             recompress = DcMsg.DC_MSG_VIDEO;
           }
