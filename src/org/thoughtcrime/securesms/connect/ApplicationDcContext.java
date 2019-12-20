@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.connect;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -148,8 +149,19 @@ public class ApplicationDcContext extends DcContext {
 
   public static HashMap<String, Integer> sharedFiles = new HashMap<>();
 
-  public void openForViewOrShare(int msg_id, String cmd) {
-    DcMsg msg = getMsg(msg_id);
+  public static void openForViewOrShare(Context context,
+                                 ApplicationDcContext dcContext,
+                                 int msg_id, String cmd) {
+
+    if(!(context instanceof Activity)) {
+      // would be nicer to accepting only Activity objects,
+      // however, typically in Android just Context objects are passed around (as this normally does not make a difference).
+      // Accepting only Activity here would force callers to cast, which would easily result in even more ugliness.
+      Toast.makeText(context, "openForViewOrShare() expects an Activity object", Toast.LENGTH_LONG).show();
+      return;
+    }
+
+    DcMsg msg = dcContext.getMsg(msg_id);
     String path = msg.getFile();
     String mimeType = msg.getFilemime();
     try {
@@ -160,7 +172,7 @@ public class ApplicationDcContext extends DcContext {
       }
 
       Uri uri;
-      if (path.startsWith(getBlobdir())) {
+      if (path.startsWith(dcContext.getBlobdir())) {
         uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
         sharedFiles.put("/" + file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
       } else {
@@ -172,7 +184,7 @@ public class ApplicationDcContext extends DcContext {
       }
 
       if (cmd.equals(Intent.ACTION_VIEW)) {
-        mimeType = checkMime(path, mimeType);
+        mimeType = dcContext.checkMime(path, mimeType);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
         if( Build.VERSION.SDK_INT <= 23 ) {
