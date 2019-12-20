@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.0.2
+2019-12-20
+
+* fix opening attachments on newer android versions
+* fix accidentally shown device-chat-system-notifications on older androids
+* fix sending images and other attachments for some providers
+* don't recreate and thus break group membership if an unknown
+  sender (or mailer-daemon) sends a message referencing the group chat
+* fix yandex/oauth
+
+
 ## v1.0.1
 2019-12-19
 
