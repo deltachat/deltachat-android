@@ -648,7 +648,7 @@ public class ConversationItem extends LinearLayout
 
         context.startActivity(intent);
       } else if (slide.getUri() != null) {
-        dcContext.openForViewOrShare(slide.getDcMsgId(), Intent.ACTION_VIEW);
+        dcContext.openForViewOrShare(context, slide.getDcMsgId(), Intent.ACTION_VIEW);
       }
     }
   }
