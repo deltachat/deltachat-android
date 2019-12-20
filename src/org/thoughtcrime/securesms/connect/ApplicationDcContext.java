@@ -149,11 +149,10 @@ public class ApplicationDcContext extends DcContext {
 
   public static HashMap<String, Integer> sharedFiles = new HashMap<>();
 
-  public static void openForViewOrShare(Context context,
-                                 ApplicationDcContext dcContext,
+  public void openForViewOrShare(Context activity,
                                  int msg_id, String cmd) {
 
-    if(!(context instanceof Activity)) {
+    if(!(activity instanceof Activity)) {
       // would be nicer to accepting only Activity objects,
       // however, typically in Android just Context objects are passed around (as this normally does not make a difference).
       // Accepting only Activity here would force callers to cast, which would easily result in even more ugliness.
@@ -161,7 +160,7 @@ public class ApplicationDcContext extends DcContext {
       return;
     }
 
-    DcMsg msg = dcContext.getMsg(msg_id);
+    DcMsg msg = getMsg(msg_id);
     String path = msg.getFile();
     String mimeType = msg.getFilemime();
     try {
@@ -172,7 +171,7 @@ public class ApplicationDcContext extends DcContext {
       }
 
       Uri uri;
-      if (path.startsWith(dcContext.getBlobdir())) {
+      if (path.startsWith(getBlobdir())) {
         uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
         sharedFiles.put("/" + file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
       } else {
@@ -184,17 +183,17 @@ public class ApplicationDcContext extends DcContext {
       }
 
       if (cmd.equals(Intent.ACTION_VIEW)) {
-        mimeType = dcContext.checkMime(path, mimeType);
+        mimeType = checkMime(path, mimeType);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        context.startActivity(intent);
+        activity.startActivity(intent);
       } else {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType(mimeType);
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        context.startActivity(Intent.createChooser(intent, context.getString(R.string.chat_share_with_title)));
+        activity.startActivity(Intent.createChooser(intent, context.getString(R.string.chat_share_with_title)));
       }
     } catch (RuntimeException e) {
       Toast.makeText(context, String.format("%s (%s)", context.getString(R.string.no_app_to_handle_data), mimeType), Toast.LENGTH_LONG).show();

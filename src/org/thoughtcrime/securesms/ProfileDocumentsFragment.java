@@ -158,7 +158,7 @@ public class ProfileDocumentsFragment
       return;
     }
 
-    ApplicationDcContext.openForViewOrShare(getActivity(), dcContext, dcMsg.getId(), Intent.ACTION_VIEW);
+    dcContext.openForViewOrShare(getActivity(), dcMsg.getId(), Intent.ACTION_VIEW);
   }
 
   @Override
