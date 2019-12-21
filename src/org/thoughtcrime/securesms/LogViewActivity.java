@@ -1,12 +1,17 @@
 package org.thoughtcrime.securesms;
 
+import android.Manifest;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
@@ -63,10 +68,17 @@ public class LogViewActivity extends BaseActionBarActivity {
         finish();
         return true;
       case R.id.save_log:
-        if (logViewFragment.saveLogFile())
-          Toast.makeText(getApplicationContext(), R.string.pref_saved_log, Toast.LENGTH_LONG).show();
-        else
-          Toast.makeText(getApplicationContext(), R.string.pref_save_log_failed, Toast.LENGTH_LONG).show();
+        Permissions.with(this)
+            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .ifNecessary()
+            .onAllGranted(() -> {
+              boolean success = logViewFragment.saveLogFile();
+              new AlertDialog.Builder(this)
+                  .setMessage(success? R.string.pref_saved_log : R.string.pref_save_log_failed)
+                  .setPositiveButton(android.R.string.ok, null)
+                  .show();
+            })
+            .execute();
         return true;
       case R.id.copy_log_to_clipboard:
         Util.writeTextToClipboard(this, logViewFragment.getLogText());
@@ -89,5 +101,10 @@ public class LogViewActivity extends BaseActionBarActivity {
     }
 
     return false;
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 }
