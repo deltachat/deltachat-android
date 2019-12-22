@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -96,8 +95,9 @@ public class QrScanFragment extends Fragment {
 
 
 	private void handleQrScanWithDeniedPermission() {
-		getActivity().setResult(Activity.RESULT_CANCELED);
-		getActivity().finish();
+		if (getActivity() instanceof QrActivity) {
+			((QrActivity) getActivity()).selectQrShowTab();
+		}
 	}
 
 }

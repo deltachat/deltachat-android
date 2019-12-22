@@ -25,6 +25,8 @@ public class QrActivity extends BaseActionBarActivity {
 	private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
 	private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
+	private TabLayout tabLayout;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class QrActivity extends BaseActionBarActivity {
 		dynamicLanguage.onCreate(this);
 
 		setContentView(R.layout.activity_qr);
-		TabLayout tabLayout = ViewUtil.findById(this, R.id.tab_layout);
+		tabLayout = ViewUtil.findById(this, R.id.tab_layout);
 		ViewPager viewPager = ViewUtil.findById(this, R.id.pager);
 		viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
 
@@ -42,7 +44,6 @@ public class QrActivity extends BaseActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		tabLayout.setupWithViewPager(viewPager);
-
 	}
 
 	@Override
@@ -120,4 +121,7 @@ public class QrActivity extends BaseActionBarActivity {
 
 	}
 
+	public void selectQrShowTab() {
+		tabLayout.getTabAt(1).select();
+	}
 }
