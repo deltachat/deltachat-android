@@ -92,7 +92,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
 
   public void setMessageCount(int messageCount) {
     setContentInfo(String.valueOf(messageCount));
-    setNumber(messageCount);
+    setNumber(messageCount); // this also sets badges on android8 and newer
   }
 
   public void setPrimaryMessageBody(@NonNull  Recipient chatRecipients,
