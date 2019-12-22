@@ -22,105 +22,105 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class QrActivity extends BaseActionBarActivity {
 
-    private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
-    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
+	private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
+	private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+	private ViewPager viewPager;
+	private TabLayout tabLayout;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        dynamicTheme.onCreate(this);
-        dynamicLanguage.onCreate(this);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		dynamicTheme.onCreate(this);
+		dynamicLanguage.onCreate(this);
 
-        setContentView(R.layout.activity_qr);
-        this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
-        this.viewPager = ViewUtil.findById(this, R.id.pager);
-        this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+		setContentView(R.layout.activity_qr);
+		this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
+		this.viewPager = ViewUtil.findById(this, R.id.pager);
+		this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
 
-        setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle(R.string.qrscan_title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
+		assert getSupportActionBar() != null;
+		getSupportActionBar().setTitle(R.string.qrscan_title);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.tabLayout.setupWithViewPager(viewPager);
+		this.tabLayout.setupWithViewPager(viewPager);
 
-    }
+	}
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        dynamicTheme.onResume(this);
-        dynamicLanguage.onResume(this);
-    }
+	@Override
+	protected void onResume() {
+		super.onResume();
+		dynamicTheme.onResume(this);
+		dynamicLanguage.onResume(this);
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				finish();
+				return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-    }
-
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //return barcodeScannerView.onKeyDown(keyCode, event) || super.onKeyDown(keyCode, event);
-        return super.onKeyDown(keyCode, event);
-    }
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+		Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+	}
 
 
-    private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		//return barcodeScannerView.onKeyDown(keyCode, event) || super.onKeyDown(keyCode, event);
+		return super.onKeyDown(keyCode, event);
+	}
 
-        ProfilePagerAdapter(FragmentManager fragmentManager) {
-            super(fragmentManager);
-        }
 
-        @NonNull
-        @Override
-        public Fragment getItem(int position) {
-            Fragment fragment;
-            Bundle args = new Bundle();
+	private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
 
-            switch (position) {
-                case 0:
-                    fragment = new QrScanFragment();
-                    break;
+		ProfilePagerAdapter(FragmentManager fragmentManager) {
+			super(fragmentManager);
+		}
 
-                default:
-                    fragment = new QrShowFragment();
-                    break;
-            }
+		@NonNull
+		@Override
+		public Fragment getItem(int position) {
+			Fragment fragment;
+			Bundle args = new Bundle();
 
-            return fragment;
-        }
+			switch (position) {
+				case 0:
+					fragment = new QrScanFragment();
+					break;
 
-        @Override
-        public int getCount() {
-            return 2;
-        }
+				default:
+					fragment = new QrShowFragment();
+					break;
+			}
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch(position) {
-                case 0:
-                    return "Scan";
+			return fragment;
+		}
 
-                default:
-                    return "Show";
-            }
-        }
+		@Override
+		public int getCount() {
+			return 2;
+		}
 
-    }
+		@Override
+		public CharSequence getPageTitle(int position) {
+			switch (position) {
+				case 0:
+					return "Scan";
+
+				default:
+					return "Show";
+			}
+		}
+
+	}
 
 }

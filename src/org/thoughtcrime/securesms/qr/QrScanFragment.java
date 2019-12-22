@@ -83,7 +83,6 @@ public class QrScanFragment extends Fragment {
 	}
 
 
-
 	private void handleQrScanWithPermissions() {
 		init(barcodeScannerView, getActivity().getIntent(), null);
 	}
