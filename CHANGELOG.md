@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.0.3
+2019-12-22
+
+* do not try to recode videos attached as files
+* check write-permissions before trying to save a log
+* enable some linker optimizations and make the apk about 11 mb smaller
+* fix issues with some email providers
+* reset device-chat on import, this removes useless or unfunctional messages
+  and allows messages being added again
+
+
 ## v1.0.2
 2019-12-20
 
