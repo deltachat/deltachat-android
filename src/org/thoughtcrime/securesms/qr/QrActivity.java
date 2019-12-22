@@ -35,7 +35,7 @@ public class QrActivity extends AppCompatActivity {
         dynamicTheme.onCreate(this);
         dynamicLanguage.onCreate(this);
 
-        setContentView(R.layout.activity_qr_scan);
+        setContentView(R.layout.activity_qr);
         this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
         this.viewPager = ViewUtil.findById(this, R.id.pager);
         this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
