@@ -32,7 +32,7 @@ public class QrScanFragment extends Fragment {
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.qr_scan_fragment, container, false);
 
-		barcodeScannerView = getActivity().findViewById(R.id.zxing_barcode_scanner);
+		barcodeScannerView = view.findViewById(R.id.zxing_barcode_scanner);
 		barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
 
 

@@ -87,13 +87,13 @@ public class QrActivity extends AppCompatActivity {
             super(fragmentManager);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
-            //int tabId = tabs.get(position); // TODO wrong solution
             Fragment fragment;
             Bundle args = new Bundle();
 
-            switch (position) { // TODO was tabId
+            switch (position) {
                 case 0:
                     fragment = new QrScanFragment();
                     break;
