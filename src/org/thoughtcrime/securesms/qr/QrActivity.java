@@ -5,7 +5,6 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -13,20 +12,19 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.ArrayList;
+public class QrActivity extends BaseActionBarActivity {
 
-public class QrActivity extends AppCompatActivity {
-
-    private final DynamicTheme dynamicTheme = new DynamicTheme();
+    private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
     private ViewPager viewPager;
-    private ArrayList<Integer> tabs = new ArrayList<>();
     private TabLayout tabLayout;
 
     @Override
@@ -40,6 +38,7 @@ public class QrActivity extends AppCompatActivity {
         this.viewPager = ViewUtil.findById(this, R.id.pager);
         this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
 
+        setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
         assert getSupportActionBar() != null;
         getSupportActionBar().setTitle(R.string.qrscan_title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -110,5 +109,18 @@ public class QrActivity extends AppCompatActivity {
         public int getCount() {
             return 2;
         }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch(position) {
+                case 0:
+                    return "Scan";
+
+                default:
+                    return "Show";
+            }
+        }
+
     }
+
 }
