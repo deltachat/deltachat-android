@@ -18,7 +18,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.qr.QrScanFragment;
 
 import java.util.ArrayList;
 
@@ -90,11 +89,11 @@ public class QrActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            int tabId = tabs.get(position);
+            //int tabId = tabs.get(position); // TODO wrong solution
             Fragment fragment;
             Bundle args = new Bundle();
 
-            switch (tabId) {
+            switch (position) { // TODO was tabId
                 case 0:
                     fragment = new QrScanFragment();
                     break;
