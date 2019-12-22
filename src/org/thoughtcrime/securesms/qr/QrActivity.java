@@ -24,8 +24,6 @@ public class QrActivity extends BaseActionBarActivity {
 
 	private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
 	private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-	private ViewPager viewPager;
-	private TabLayout tabLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +32,16 @@ public class QrActivity extends BaseActionBarActivity {
 		dynamicLanguage.onCreate(this);
 
 		setContentView(R.layout.activity_qr);
-		this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
-		this.viewPager = ViewUtil.findById(this, R.id.pager);
-		this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+		TabLayout tabLayout = ViewUtil.findById(this, R.id.tab_layout);
+		ViewPager viewPager = ViewUtil.findById(this, R.id.pager);
+		viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
 
 		setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
 		assert getSupportActionBar() != null;
 		getSupportActionBar().setTitle(R.string.qrscan_title);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-		this.tabLayout.setupWithViewPager(viewPager);
+		tabLayout.setupWithViewPager(viewPager);
 
 	}
 
@@ -68,7 +66,7 @@ public class QrActivity extends BaseActionBarActivity {
 	}
 
 	@Override
-	public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
 	}
 
@@ -83,14 +81,13 @@ public class QrActivity extends BaseActionBarActivity {
 	private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
 
 		ProfilePagerAdapter(FragmentManager fragmentManager) {
-			super(fragmentManager);
+			super(fragmentManager, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 		}
 
 		@NonNull
 		@Override
 		public Fragment getItem(int position) {
 			Fragment fragment;
-			Bundle args = new Bundle();
 
 			switch (position) {
 				case 0:

@@ -36,16 +36,16 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
 	public final static int WHITE = 0xFFFFFFFF;
-	public final static int BLACK = 0xFF000000;
-	public final static int WIDTH = 400;
-	public final static int HEIGHT = 400;
-	public final static String CHAT_ID = "chat_id";
+	private final static int BLACK = 0xFF000000;
+	private final static int WIDTH = 400;
+	private final static int HEIGHT = 400;
+	private final static String CHAT_ID = "chat_id";
 
-	public int numJoiners;
+	private int numJoiners;
 
-	DcEventCenter dcEventCenter;
+	private DcEventCenter dcEventCenter;
 
-	ApplicationDcContext dcContext;
+	private ApplicationDcContext dcContext;
 
 	private String hint;
 
@@ -143,7 +143,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 		getActivity().unregisterReceiver(broadcastReceiver);
 	}
 
-	Bitmap encodeAsBitmap(String str) throws WriterException {
+	private Bitmap encodeAsBitmap(String str) throws WriterException {
 		BitMatrix result;
 		try {
 			result = new MultiFormatWriter().encode(str,
@@ -172,7 +172,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 		return bitmap;
 	}
 
-	public void putOverlay(Bitmap bitmap, Bitmap overlay) {
+	private void putOverlay(Bitmap bitmap, Bitmap overlay) {
 		int bw = bitmap.getWidth();
 		int bh = bitmap.getHeight();
 		int ow = bw / 6;
@@ -206,7 +206,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 			if (progress == 1000) {
 				numJoiners--;
 				if (numJoiners <= 0) {
-					getActivity().finish();
+					if (getActivity() != null) getActivity().finish();
 				}
 			}
 		}

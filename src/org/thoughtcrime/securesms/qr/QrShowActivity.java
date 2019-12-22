@@ -20,12 +20,7 @@ public class QrShowActivity extends AppCompatActivity {
 	private final DynamicLanguage dynamicLanguage = new DynamicLanguage(); //needs to stay when using qrShowFragment because I deleted it there
 
 	public final static int WHITE = 0xFFFFFFFF;
-	public final static int BLACK = 0xFF000000;
-	public final static int WIDTH = 400;
-	public final static int HEIGHT = 400;
 	public final static String CHAT_ID = "chat_id";
-
-	//public int numJoiners;
 
 	DcEventCenter dcEventCenter;
 
