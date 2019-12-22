@@ -63,6 +63,63 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 		getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
 	}
 
+	@Override
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.qr_show_fragment, container, false);
+
+		dcContext = DcHelper.getContext(getActivity());
+		dcEventCenter = dcContext.eventCenter;
+
+		Bundle extras = getActivity().getIntent().getExtras();
+		int chatId = 0;
+		if (extras != null) {
+			chatId = extras.getInt(CHAT_ID);
+		}
+
+		errorHint = getString(R.string.qrshow_join_contact_no_connection_hint);
+
+		if (chatId != 0) {
+			// verified-group
+			String groupName = dcContext.getChat(chatId).getName();
+			hint = String.format(this.getString(R.string.qrshow_join_group_hint), groupName);
+		} else {
+			// verify-contact
+			String selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
+			String nameAndAddress;
+			if (selfName.isEmpty()) {
+				selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS, "unknown");
+				nameAndAddress = selfName;
+			} else {
+				nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS));
+			}
+			hint = String.format(this.getString(R.string.qrshow_join_contact_hint), nameAndAddress);
+		}
+		hintBelowQr = view.findViewById(R.id.qrShowHint);
+		setHintText();
+
+		dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
+		broadcastReceiver = new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				setHintText();
+			}
+		};
+		getActivity().registerReceiver(broadcastReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
+		numJoiners = 0;
+
+		ImageView imageView = view.findViewById(R.id.qrImage);
+		try {
+			Bitmap bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
+			imageView.setImageBitmap(bitmap);
+		} catch (WriterException e) {
+			e.printStackTrace();
+		}
+
+		return view;
+	}
+
+
 	private void setHintText() {
 		if (!dcContext.isNetworkConnected()) {
 			hintBelowQr.setText(Html.fromHtml(errorHint));
@@ -155,60 +212,6 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 		}
 
 	}
-	@Override
-	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.qr_show_fragment, container, false);
 
-		dcContext = DcHelper.getContext(getActivity());
-		dcEventCenter = dcContext.eventCenter;
-
-		Bundle extras = getActivity().getIntent().getExtras();
-		int chatId = 0;
-		if (extras != null) {
-			chatId = extras.getInt(CHAT_ID);
-		}
-
-		errorHint = getString(R.string.qrshow_join_contact_no_connection_hint);
-
-		if (chatId != 0) {
-			// verified-group
-			String groupName = dcContext.getChat(chatId).getName();
-			hint = String.format(this.getString(R.string.qrshow_join_group_hint), groupName);
-		} else {
-			// verify-contact
-			String selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
-			String nameAndAddress;
-			if (selfName.isEmpty()) {
-				selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS, "unknown");
-				nameAndAddress = selfName;
-			} else {
-				nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS));
-			}
-			hint = String.format(this.getString(R.string.qrshow_join_contact_hint), nameAndAddress);
-		}
-		hintBelowQr = view.findViewById(R.id.qrShowHint);
-		setHintText();
-
-		dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
-		broadcastReceiver = new BroadcastReceiver() {
-			@Override
-			public void onReceive(Context context, Intent intent) {
-				setHintText();
-			}
-		};
-		getActivity().registerReceiver(broadcastReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
-
-		numJoiners = 0;
-
-		ImageView imageView = view.findViewById(R.id.qrImage);
-		try {
-			Bitmap bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
-			imageView.setImageBitmap(bitmap);
-		} catch (WriterException e) {
-			e.printStackTrace();
-		}
-
-		return view;
-	}
 
 }
