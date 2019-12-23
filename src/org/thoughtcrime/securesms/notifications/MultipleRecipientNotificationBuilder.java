@@ -54,7 +54,7 @@ public class MultipleRecipientNotificationBuilder extends AbstractNotificationBu
     setSubText(context.getString(R.string.notify_n_messages_in_m_chats,
                                  messageCount, chatCount));
     setContentInfo(String.valueOf(messageCount));
-    setNumber(messageCount);
+    setNumber(messageCount); // this also sets badges on android8 and newer
   }
 
   void setMostRecentSender(Recipient recipient) {
