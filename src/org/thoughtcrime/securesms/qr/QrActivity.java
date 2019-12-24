@@ -40,7 +40,7 @@ public class QrActivity extends BaseActionBarActivity {
 
 		setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
 		assert getSupportActionBar() != null;
-		getSupportActionBar().setTitle(R.string.qrscan_title);
+		getSupportActionBar().setTitle(R.string.qr_code);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		tabLayout.setupWithViewPager(viewPager);
@@ -112,10 +112,10 @@ public class QrActivity extends BaseActionBarActivity {
 		public CharSequence getPageTitle(int position) {
 			switch (position) {
 				case 0:
-					return "Scan";
+					return getString(R.string.qr_activity_title_scan);
 
 				default:
-					return "Show";
+					return getString(R.string.qr_activity_title_show);
 			}
 		}
 
