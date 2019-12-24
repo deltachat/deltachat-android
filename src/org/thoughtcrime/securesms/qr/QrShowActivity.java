@@ -16,8 +16,8 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 
 public class QrShowActivity extends AppCompatActivity {
 
-	private final DynamicTheme dynamicTheme = new DynamicTheme(); //needs to stay when using qrShowFragment because I deleted it there
-	private final DynamicLanguage dynamicLanguage = new DynamicLanguage(); //needs to stay when using qrShowFragment because I deleted it there
+	private final DynamicTheme dynamicTheme = new DynamicTheme();
+	private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
 	public final static int WHITE = 0xFFFFFFFF;
 	public final static String CHAT_ID = "chat_id";
