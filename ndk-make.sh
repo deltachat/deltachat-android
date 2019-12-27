@@ -49,10 +49,10 @@ cargo build --release --target x86_64-linux-android -p deltachat_ffi
 
 echo -- copy generated .a files --
 cd ..
-rm armeabi-v7a/*
-rm arm64-v8a/*
-rm x86/*
-rm x86_64/*
+rm -f armeabi-v7a/*
+rm -f arm64-v8a/*
+rm -f x86/*
+rm -f x86_64/*
 mkdir -p armeabi-v7a
 mkdir -p arm64-v8a
 mkdir -p x86
