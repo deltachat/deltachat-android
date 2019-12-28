@@ -31,19 +31,12 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
   private static final int WRITE_ACCESS_FAILURE = 2;
 
   private final WeakReference<Context>      contextReference;
-
-  private final int attachmentCount;
-
+  
   public SaveAttachmentTask(Context context) {
-    this(context, 1);
-  }
-
-  public SaveAttachmentTask(Context context, int count) {
     super(context,
           context.getResources().getString(R.string.one_moment),
           context.getResources().getString(R.string.one_moment));
     this.contextReference      = new WeakReference<>(context);
-    this.attachmentCount       = count;
   }
 
   @Override
