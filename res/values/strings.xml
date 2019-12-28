@@ -198,6 +198,7 @@
     <string name="share_location_for_two_hours">for 2 hours</string>
     <string name="share_location_for_six_hours">for 6 hours</string>
 
+    <string name="exported_attachment_to">Saved file to %1$s</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>

@@ -31,7 +31,7 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
   private static final int WRITE_ACCESS_FAILURE = 2;
 
   private final WeakReference<Context>      contextReference;
-  
+
   public SaveAttachmentTask(Context context) {
     super(context,
           context.getResources().getString(R.string.one_moment),
@@ -63,7 +63,12 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
           if (directory == null) return new Pair<>(FAILURE, null);
         }
       }
-
+      final String displayDir = directory;
+      Util.runOnMain(() -> {
+        // Tell the user where the file went
+        // "Saved to " + displayDir
+        Toast.makeText(context, context.getString(R.string.exported_attachment_to, displayDir), Toast.LENGTH_LONG).show();
+      });
       if (attachments.length > 1) return new Pair<>(SUCCESS, null);
       else                        return new Pair<>(SUCCESS, directory);
     } catch (NoExternalStorageException|IOException ioe) {
