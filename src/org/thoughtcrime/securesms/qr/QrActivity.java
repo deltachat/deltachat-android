@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
@@ -49,8 +50,19 @@ public class QrActivity extends BaseActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+
+		int lastSelectedTab = PreferenceManager.getDefaultSharedPreferences(this).getInt("qrTab", 0);
+		tabLayout.getTabAt(lastSelectedTab).select();
+
 		dynamicTheme.onResume(this);
 		dynamicLanguage.onResume(this);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		int currentSelectedTab = tabLayout.getSelectedTabPosition();
+		PreferenceManager.getDefaultSharedPreferences(this).edit().putInt("qrTab", currentSelectedTab).apply();
 	}
 
 	@Override
@@ -74,7 +86,6 @@ public class QrActivity extends BaseActionBarActivity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		//return barcodeScannerView.onKeyDown(keyCode, event) || super.onKeyDown(keyCode, event);
 		return super.onKeyDown(keyCode, event);
 	}
 
@@ -92,11 +103,11 @@ public class QrActivity extends BaseActionBarActivity {
 
 			switch (position) {
 				case 0:
-					fragment = new QrScanFragment();
+					fragment = new QrShowFragment();
 					break;
 
 				default:
-					fragment = new QrShowFragment();
+					fragment = new QrScanFragment();
 					break;
 			}
 
@@ -112,16 +123,16 @@ public class QrActivity extends BaseActionBarActivity {
 		public CharSequence getPageTitle(int position) {
 			switch (position) {
 				case 0:
-					return getString(R.string.qr_activity_title_scan);
+					return getString(R.string.qr_activity_title_show);
 
 				default:
-					return getString(R.string.qr_activity_title_show);
+					return getString(R.string.qr_activity_title_scan);
 			}
 		}
 
 	}
 
 	public void selectQrShowTab() {
-		tabLayout.getTabAt(1).select();
+		tabLayout.getTabAt(0).select();
 	}
 }
