@@ -1,8 +1,9 @@
 package org.thoughtcrime.securesms.qr;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -26,7 +27,11 @@ public class QrActivity extends BaseActionBarActivity {
 	private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
 	private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
+	private final static int TAB_SHOW = 0;
+	private final static int TAB_SCAN = 1;
+
 	private TabLayout tabLayout;
+	private ViewPager viewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,23 +41,52 @@ public class QrActivity extends BaseActionBarActivity {
 
 		setContentView(R.layout.activity_qr);
 		tabLayout = ViewUtil.findById(this, R.id.tab_layout);
-		ViewPager viewPager = ViewUtil.findById(this, R.id.pager);
-		viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+		viewPager = ViewUtil.findById(this, R.id.pager);
+		ProfilePagerAdapter adapter = new ProfilePagerAdapter(getSupportFragmentManager());
+		viewPager.setAdapter(adapter);
 
 		setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
 		assert getSupportActionBar() != null;
 		getSupportActionBar().setTitle(R.string.qr_code);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+		int lastSelectedTab = PreferenceManager.getDefaultSharedPreferences(this).getInt("qrTab", TAB_SHOW);
+		viewPager.setCurrentItem(lastSelectedTab);
+
+		viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+			}
+
+			@Override
+			public void onPageSelected(int position) {
+				checkPermissions(position, adapter, viewPager);
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int state) {
+			}
+		});
+
 		tabLayout.setupWithViewPager(viewPager);
+
+		checkPermissions(lastSelectedTab, adapter, viewPager);
+	}
+
+	private void checkPermissions(int position, ProfilePagerAdapter adapter, ViewPager viewPager) {
+		if (position == TAB_SCAN) {
+			Permissions.with(QrActivity.this)
+					.request(Manifest.permission.CAMERA)
+					.ifNecessary()
+					.onAllGranted(() -> ((QrScanFragment) adapter.getItem(TAB_SCAN)).handleQrScanWithPermissions(QrActivity.this))
+					.onAnyDenied(() -> viewPager.setCurrentItem(TAB_SHOW))
+					.execute();
+		}
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-
-		int lastSelectedTab = PreferenceManager.getDefaultSharedPreferences(this).getInt("qrTab", 0);
-		tabLayout.getTabAt(lastSelectedTab).select();
 
 		dynamicTheme.onResume(this);
 		dynamicLanguage.onResume(this);
@@ -81,14 +115,14 @@ public class QrActivity extends BaseActionBarActivity {
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+		if (permissions.length > 0
+				&& Manifest.permission.CAMERA.equals(permissions[0])
+				&& grantResults[0] == PackageManager.PERMISSION_DENIED) {
+			viewPager.setCurrentItem(TAB_SHOW);
+			// Workaround because sometimes something else requested the permissions before this class
+			// (probably the CameraView) and then this class didn't notice when it was denied
+		}
 	}
-
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		return super.onKeyDown(keyCode, event);
-	}
-
 
 	private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
 
@@ -102,7 +136,7 @@ public class QrActivity extends BaseActionBarActivity {
 			Fragment fragment;
 
 			switch (position) {
-				case 0:
+				case TAB_SHOW:
 					fragment = new QrShowFragment();
 					break;
 
@@ -122,7 +156,7 @@ public class QrActivity extends BaseActionBarActivity {
 		@Override
 		public CharSequence getPageTitle(int position) {
 			switch (position) {
-				case 0:
+				case TAB_SHOW:
 					return getString(R.string.qr_activity_title_show);
 
 				default:
@@ -130,9 +164,7 @@ public class QrActivity extends BaseActionBarActivity {
 			}
 		}
 
+
 	}
 
-	public void selectQrShowTab() {
-		tabLayout.getTabAt(0).select();
-	}
 }

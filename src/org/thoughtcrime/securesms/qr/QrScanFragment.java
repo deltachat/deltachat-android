@@ -1,23 +1,22 @@
 package org.thoughtcrime.securesms.qr;
 
-import android.Manifest;
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.permissions.Permissions;
 
 public class QrScanFragment extends Fragment {
-
+	
 	private CompoundBarcodeView barcodeScannerView;
 	private CaptureManager capture;
 
@@ -34,19 +33,13 @@ public class QrScanFragment extends Fragment {
 		barcodeScannerView = view.findViewById(R.id.zxing_barcode_scanner);
 		barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
 
-
-		if (savedInstanceState != null) {
-			init(barcodeScannerView, getActivity().getIntent(), savedInstanceState);
-		}
-
-		Permissions.with(this)
-				.request(Manifest.permission.CAMERA)
-				.ifNecessary()
-				.onAnyResult(this::handleQrScanWithPermissions)
-				.onAnyDenied(this::handleQrScanWithDeniedPermission)
-				.execute();
-
 		return view;
+	}
+
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		init(barcodeScannerView, requireActivity(), savedInstanceState);
 	}
 
 	@Override
@@ -82,22 +75,17 @@ public class QrScanFragment extends Fragment {
 	}
 
 
-	private void handleQrScanWithPermissions() {
-		init(barcodeScannerView, getActivity().getIntent(), null);
+	void handleQrScanWithPermissions(Activity activity) {
+		if (barcodeScannerView != null)
+			init(barcodeScannerView, activity, null);
 	}
 
 
-	private void init(CompoundBarcodeView barcodeScannerView, Intent intent, Bundle savedInstanceState) {
-		capture = new CaptureManager(getActivity(), barcodeScannerView);
-		capture.initializeFromIntent(intent, savedInstanceState);
+	private void init(CompoundBarcodeView barcodeScannerView, Activity activity, Bundle savedInstanceState) {
+		capture = new CaptureManager(activity, barcodeScannerView);
+		capture.initializeFromIntent(activity.getIntent(), savedInstanceState);
 		capture.decode();
 	}
 
-
-	private void handleQrScanWithDeniedPermission() {
-		if (getActivity() instanceof QrActivity) {
-			((QrActivity) getActivity()).selectQrShowTab();
-		}
-	}
 
 }
