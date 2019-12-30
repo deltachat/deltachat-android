@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.b44t.messenger.DcMsg;
 
@@ -286,10 +287,13 @@ abstract class MessageNotifier {
     }
 
     private void playNotificationSound(Uri uri, boolean vibrate) {
-        Ringtone ringtone = RingtoneManager.getRingtone(appContext, uri);
-        if (ringtone!=null) {
-            ringtone.play();
-        }
+        if(uri != null) {
+            Ringtone ringtone = RingtoneManager.getRingtone(appContext, uri);
+            
+            if (ringtone != null) {
+                ringtone.play();
+            }
+        } // else we selected "no sound"
 
         if (vibrate) {
             Vibrator v = (Vibrator) appContext.getSystemService(Context.VIBRATOR_SERVICE);
