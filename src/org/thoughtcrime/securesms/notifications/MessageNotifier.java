@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.b44t.messenger.DcMsg;
 
