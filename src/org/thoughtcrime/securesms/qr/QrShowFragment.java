@@ -35,183 +35,183 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
-	public final static int WHITE = 0xFFFFFFFF;
-	private final static int BLACK = 0xFF000000;
-	private final static int WIDTH = 400;
-	private final static int HEIGHT = 400;
-	private final static String CHAT_ID = "chat_id";
+    public final static int WHITE = 0xFFFFFFFF;
+    private final static int BLACK = 0xFF000000;
+    private final static int WIDTH = 400;
+    private final static int HEIGHT = 400;
+    private final static String CHAT_ID = "chat_id";
 
-	private int numJoiners;
+    private int numJoiners;
 
-	private DcEventCenter dcEventCenter;
+    private DcEventCenter dcEventCenter;
 
-	private ApplicationDcContext dcContext;
+    private ApplicationDcContext dcContext;
 
-	private String hint;
+    private String hint;
 
-	private String errorHint;
+    private String errorHint;
 
-	private TextView hintBelowQr;
+    private TextView hintBelowQr;
 
-	private BroadcastReceiver broadcastReceiver;
-
-
-	@Override
-	public void onCreate(Bundle bundle) {
-		super.onCreate(bundle);
-
-		getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
-	}
-
-	@Override
-	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.qr_show_fragment, container, false);
-
-		dcContext = DcHelper.getContext(getActivity());
-		dcEventCenter = dcContext.eventCenter;
-
-		Bundle extras = getActivity().getIntent().getExtras();
-		int chatId = 0;
-		if (extras != null) {
-			chatId = extras.getInt(CHAT_ID);
-		}
-
-		errorHint = getString(R.string.qrshow_join_contact_no_connection_hint);
-
-		if (chatId != 0) {
-			// verified-group
-			String groupName = dcContext.getChat(chatId).getName();
-			hint = String.format(this.getString(R.string.qrshow_join_group_hint), groupName);
-		} else {
-			// verify-contact
-			String selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
-			String nameAndAddress;
-			if (selfName.isEmpty()) {
-				selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS, "unknown");
-				nameAndAddress = selfName;
-			} else {
-				nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS));
-			}
-			hint = String.format(this.getString(R.string.qrshow_join_contact_hint), nameAndAddress);
-		}
-		hintBelowQr = view.findViewById(R.id.qrShowHint);
-		setHintText();
-
-		dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
-		broadcastReceiver = new BroadcastReceiver() {
-			@Override
-			public void onReceive(Context context, Intent intent) {
-				setHintText();
-			}
-		};
-		getActivity().registerReceiver(broadcastReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
-
-		numJoiners = 0;
-
-		ImageView imageView = view.findViewById(R.id.qrImage);
-		try {
-			Bitmap bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
-			imageView.setImageBitmap(bitmap);
-		} catch (WriterException e) {
-			e.printStackTrace();
-		}
-
-		return view;
-	}
+    private BroadcastReceiver broadcastReceiver;
 
 
-	private void setHintText() {
-		if (!dcContext.isNetworkConnected()) {
-			hintBelowQr.setText(Html.fromHtml(errorHint));
-		} else {
-			hintBelowQr.setText(Html.fromHtml(hint));
-		}
-	}
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		if (!dcContext.isNetworkConnected()) {
-			Toast.makeText(getActivity(), R.string.qrshow_join_contact_no_connection_toast, Toast.LENGTH_LONG).show();
-		}
-	}
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
+    }
 
-	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
-		dcEventCenter.removeObservers(this);
-		getActivity().unregisterReceiver(broadcastReceiver);
-	}
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.qr_show_fragment, container, false);
 
-	private Bitmap encodeAsBitmap(String str) throws WriterException {
-		BitMatrix result;
-		try {
-			result = new MultiFormatWriter().encode(str,
-					BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null);
-		} catch (IllegalArgumentException iae) {
-			// Unsupported format
-			return null;
-		}
+        dcContext = DcHelper.getContext(getActivity());
+        dcEventCenter = dcContext.eventCenter;
 
-		int w = result.getWidth();
-		int h = result.getHeight();
-		int[] pixels = new int[w * h];
-		for (int y = 0; y < h; y++) {
-			int offset = y * w;
-			for (int x = 0; x < w; x++) {
-				pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
-			}
-		}
+        Bundle extras = getActivity().getIntent().getExtras();
+        int chatId = 0;
+        if (extras != null) {
+            chatId = extras.getInt(CHAT_ID);
+        }
 
-		Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-		bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
+        errorHint = getString(R.string.qrshow_join_contact_no_connection_hint);
 
-		Bitmap overlay = BitmapFactory.decodeResource(this.getResources(), R.drawable.qr_overlay);
-		putOverlay(bitmap, overlay);
+        if (chatId != 0) {
+            // verified-group
+            String groupName = dcContext.getChat(chatId).getName();
+            hint = String.format(this.getString(R.string.qrshow_join_group_hint), groupName);
+        } else {
+            // verify-contact
+            String selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
+            String nameAndAddress;
+            if (selfName.isEmpty()) {
+                selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS, "unknown");
+                nameAndAddress = selfName;
+            } else {
+                nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS));
+            }
+            hint = String.format(this.getString(R.string.qrshow_join_contact_hint), nameAndAddress);
+        }
+        hintBelowQr = view.findViewById(R.id.qrShowHint);
+        setHintText();
 
-		return bitmap;
-	}
+        dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                setHintText();
+            }
+        };
+        getActivity().registerReceiver(broadcastReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
-	private void putOverlay(Bitmap bitmap, Bitmap overlay) {
-		int bw = bitmap.getWidth();
-		int bh = bitmap.getHeight();
-		int ow = bw / 6;
-		int oh = bh / 6;
+        numJoiners = 0;
 
-		Canvas canvas = new Canvas(bitmap);
-		Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
-		canvas.drawBitmap(overlay, null, new Rect(bw / 2 - ow / 2, bh / 2 - oh / 2, bw / 2 + ow / 2, bh / 2 + oh / 2), paint);
-	}
+        ImageView imageView = view.findViewById(R.id.qrImage);
+        try {
+            Bitmap bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
+            imageView.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
 
-	@Override
-	public void handleEvent(int eventId, Object data1, Object data2) {
-		if (eventId == DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS) {
-			DcContext dcContext = DcHelper.getContext(getActivity());
-			int contact_id = ((Long) data1).intValue();
-			long progress = (Long) data2;
-			String msg = null;
-			if (progress == 300) {
-				msg = String.format(getString(R.string.qrshow_x_joining), dcContext.getContact(contact_id).getNameNAddr());
-				numJoiners++;
-			} else if (progress == 600) {
-				msg = String.format(getString(R.string.qrshow_x_verified), dcContext.getContact(contact_id).getNameNAddr());
-			} else if (progress == 800) {
-				msg = String.format(getString(R.string.qrshow_x_has_joined_group), dcContext.getContact(contact_id).getNameNAddr());
-			}
+        return view;
+    }
 
-			if (msg != null) {
-				Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-			}
 
-			if (progress == 1000) {
-				numJoiners--;
-				if (numJoiners <= 0) {
-					if (getActivity() != null) getActivity().finish();
-				}
-			}
-		}
+    private void setHintText() {
+        if (!dcContext.isNetworkConnected()) {
+            hintBelowQr.setText(Html.fromHtml(errorHint));
+        } else {
+            hintBelowQr.setText(Html.fromHtml(hint));
+        }
+    }
 
-	}
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!dcContext.isNetworkConnected()) {
+            Toast.makeText(getActivity(), R.string.qrshow_join_contact_no_connection_toast, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        dcEventCenter.removeObservers(this);
+        getActivity().unregisterReceiver(broadcastReceiver);
+    }
+
+    private Bitmap encodeAsBitmap(String str) throws WriterException {
+        BitMatrix result;
+        try {
+            result = new MultiFormatWriter().encode(str,
+                    BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null);
+        } catch (IllegalArgumentException iae) {
+            // Unsupported format
+            return null;
+        }
+
+        int w = result.getWidth();
+        int h = result.getHeight();
+        int[] pixels = new int[w * h];
+        for (int y = 0; y < h; y++) {
+            int offset = y * w;
+            for (int x = 0; x < w; x++) {
+                pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
+            }
+        }
+
+        Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
+
+        Bitmap overlay = BitmapFactory.decodeResource(this.getResources(), R.drawable.qr_overlay);
+        putOverlay(bitmap, overlay);
+
+        return bitmap;
+    }
+
+    private void putOverlay(Bitmap bitmap, Bitmap overlay) {
+        int bw = bitmap.getWidth();
+        int bh = bitmap.getHeight();
+        int ow = bw / 6;
+        int oh = bh / 6;
+
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
+        canvas.drawBitmap(overlay, null, new Rect(bw / 2 - ow / 2, bh / 2 - oh / 2, bw / 2 + ow / 2, bh / 2 + oh / 2), paint);
+    }
+
+    @Override
+    public void handleEvent(int eventId, Object data1, Object data2) {
+        if (eventId == DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS) {
+            DcContext dcContext = DcHelper.getContext(getActivity());
+            int contact_id = ((Long) data1).intValue();
+            long progress = (Long) data2;
+            String msg = null;
+            if (progress == 300) {
+                msg = String.format(getString(R.string.qrshow_x_joining), dcContext.getContact(contact_id).getNameNAddr());
+                numJoiners++;
+            } else if (progress == 600) {
+                msg = String.format(getString(R.string.qrshow_x_verified), dcContext.getContact(contact_id).getNameNAddr());
+            } else if (progress == 800) {
+                msg = String.format(getString(R.string.qrshow_x_has_joined_group), dcContext.getContact(contact_id).getNameNAddr());
+            }
+
+            if (msg != null) {
+                Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+            }
+
+            if (progress == 1000) {
+                numJoiners--;
+                if (numJoiners <= 0) {
+                    if (getActivity() != null) getActivity().finish();
+                }
+            }
+        }
+
+    }
 
 
 }
