@@ -135,7 +135,7 @@
     <string name="menu_new_contact">Naujas adresatas</string>
     <string name="menu_new_chat">Naujas pokalbis</string>
     <string name="menu_new_group">Nauja grupė</string>
-    <string name="menu_new_verified_group">Nauja patvirtinta grupė (eksperimentinis)</string>
+    <string name="menu_new_verified_group">Nauja patvirtinta grupė</string>
     <string name="menu_send">Siųsti</string>
     <string name="menu_toggle_keyboard">Perjungti šypsniukų klaviatūrą</string>
     <string name="menu_edit_group">Taisyti grupę</string>

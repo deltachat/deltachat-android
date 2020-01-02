@@ -131,7 +131,7 @@
     <string name="menu_new_contact">Kontakt i ri</string>
     <string name="menu_new_chat">Fjalosje e re</string>
     <string name="menu_new_group">Grup i ri</string>
-    <string name="menu_new_verified_group">Grup i ri i verifikuar (eksperimentale)</string>
+    <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih tastierë emoji</string>
     <string name="menu_edit_group">Përpunoni grup</string>

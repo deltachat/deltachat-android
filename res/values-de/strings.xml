@@ -131,7 +131,7 @@
     <string name="menu_new_contact">Neuer Kontakt</string>
     <string name="menu_new_chat">Neuer Chat</string>
     <string name="menu_new_group">Neue Gruppe</string>
-    <string name="menu_new_verified_group">Neue verifizierte Gruppe (experimentell)</string>
+    <string name="menu_new_verified_group">Neue verifizierte Gruppe</string>
     <string name="menu_send">Senden</string>
     <string name="menu_toggle_keyboard">Emojis einblenden</string>
     <string name="menu_edit_group">Gruppe bearbeiten</string>

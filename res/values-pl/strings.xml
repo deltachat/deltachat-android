@@ -140,7 +140,7 @@
     <string name="menu_new_contact">Nowy kontakt</string>
     <string name="menu_new_chat">Nowy czat</string>
     <string name="menu_new_group">Nowa grupa</string>
-    <string name="menu_new_verified_group">Nowa zweryfikowana grupa (eksperymentalne)</string>
+    <string name="menu_new_verified_group">Nowa zweryfikowana grupa</string>
     <string name="menu_send">Wyślij</string>
     <string name="menu_toggle_keyboard">Przełącz klawiaturę emoji</string>
     <string name="menu_edit_group">Edytuj grupę</string>

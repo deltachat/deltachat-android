@@ -125,7 +125,7 @@
     <string name="menu_new_contact">新建联系人</string>
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
-    <string name="menu_new_verified_group">新建已验证群组（实验性）</string>
+    <string name="menu_new_verified_group">新建已验证群组</string>
     <string name="menu_send">发送</string>
     <string name="menu_toggle_keyboard">切换emoji键盘</string>
     <string name="menu_edit_group">编辑群组</string>

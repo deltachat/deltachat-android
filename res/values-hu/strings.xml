@@ -104,7 +104,7 @@
     <string name="menu_new_contact">Új partner</string>
     <string name="menu_new_chat">Új beszélgetés</string>
     <string name="menu_new_group">Új csoport</string>
-    <string name="menu_new_verified_group">Új ellenőrzött csoport (kísérleti)</string>
+    <string name="menu_new_verified_group">Új ellenőrzött csoport</string>
     <string name="menu_send">Küldés</string>
     <string name="menu_edit_group">Csoport szerkesztése</string>
     <string name="menu_group_name_and_image">Csoportnév és -kép</string>

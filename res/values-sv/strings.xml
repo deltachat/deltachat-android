@@ -87,7 +87,7 @@
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_chat">Ny chatt</string>
     <string name="menu_new_group">Ny grupp</string>
-    <string name="menu_new_verified_group">Ny verifierad grupp (experimentell)</string>
+    <string name="menu_new_verified_group">Ny verifierad grupp</string>
     <string name="menu_send">Skickat</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
     <string name="menu_edit_group">Redigera grupp</string>

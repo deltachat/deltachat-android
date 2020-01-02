@@ -131,7 +131,7 @@
     <string name="menu_new_contact">Nieuw contactpersoon</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
-    <string name="menu_new_verified_group">Nieuwe goedgekeurde groep (experimenteel)</string>
+    <string name="menu_new_verified_group">Nieuwe goedgekeurde groep</string>
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep aanpassen</string>

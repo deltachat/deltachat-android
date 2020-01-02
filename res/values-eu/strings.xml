@@ -131,7 +131,7 @@
     <string name="menu_new_contact">Kontaktu berria</string>
     <string name="menu_new_chat">Txat berria</string>
     <string name="menu_new_group">Talde berria</string>
-    <string name="menu_new_verified_group">Egiaztatutako talde berria (esperimentala)</string>
+    <string name="menu_new_verified_group">Egiaztatutako talde berria</string>
     <string name="menu_send">Bidali</string>
     <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
     <string name="menu_edit_group">Editatu taldea</string>

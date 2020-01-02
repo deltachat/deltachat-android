@@ -108,7 +108,7 @@
     <string name="menu_new_contact">Novo contato</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
-    <string name="menu_new_verified_group">Novo grupo verificado (experimental)</string>
+    <string name="menu_new_verified_group">Novo grupo verificado</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Ativar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>

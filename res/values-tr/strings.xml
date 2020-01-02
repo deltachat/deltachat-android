@@ -131,7 +131,7 @@
     <string name="menu_new_contact">Yeni kişi</string>
     <string name="menu_new_chat">Yeni sohbet</string>
     <string name="menu_new_group">Yeni grup</string>
-    <string name="menu_new_verified_group">Yeni doğrulanan grup (deneysel)</string>
+    <string name="menu_new_verified_group">Yeni doğrulanan grup</string>
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji klavyesine geç</string>
     <string name="menu_edit_group">Grubu düzenle</string>

@@ -143,7 +143,7 @@
     <string name="menu_new_contact">Новый контакт</string>
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
-    <string name="menu_new_verified_group">Новая проверенная группа (экспериментальная функция)</string>
+    <string name="menu_new_verified_group">Новая проверенная группа</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>

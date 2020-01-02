@@ -102,7 +102,7 @@
     <string name="menu_new_contact">新增聯絡人</string>
     <string name="menu_new_chat">新增對話</string>
     <string name="menu_new_group">新增群組</string>
-    <string name="menu_new_verified_group">新增驗證專用群組(實驗性)</string>
+    <string name="menu_new_verified_group">新增驗證專用群組</string>
     <string name="menu_send">送出</string>
     <string name="menu_toggle_keyboard">切換表情符號鍵盤</string>
     <string name="menu_edit_group">編輯群組</string>
