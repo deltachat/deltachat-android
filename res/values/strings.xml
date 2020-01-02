@@ -521,8 +521,7 @@
     <!-- qr code stuff -->
     <string name="qr_code">QR code</string>
     <string name="qrscan_title">Scan QR code</string>
-    <string name="qr_activity_title_scan">Scan</string>
-    <string name="qr_activity_title_show">Show</string>
+    <string name="qrscan_title_short">Scan</string>
     <string name="qrscan_hint">Hold your camera over the QR code.</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the last seen for %1$s.</string>
@@ -532,6 +531,7 @@
     <string name="qrscan_fingerprint_label">Fingerprint</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself…</string>
     <string name="qrshow_title">QR invite code</string>
+    <string name="qrshow_title_short">Show</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
     <string name="qrshow_x_verified">%1$s verified.</string>
     <string name="qrshow_x_has_joined_group">%1$s joined the group.</string>

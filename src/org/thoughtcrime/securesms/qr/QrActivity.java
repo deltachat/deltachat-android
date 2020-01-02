@@ -157,10 +157,10 @@ public class QrActivity extends BaseActionBarActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case TAB_SHOW:
-                    return getString(R.string.qr_activity_title_show);
+                    return getString(R.string.qrshow_title_short);
 
                 default:
-                    return getString(R.string.qr_activity_title_scan);
+                    return getString(R.string.qrscan_title_short);
             }
         }
     }
