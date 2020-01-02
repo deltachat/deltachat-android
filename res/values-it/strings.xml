@@ -21,6 +21,10 @@
     <string name="attachment">Allegato</string>
     <string name="back">Indietro</string>
     <string name="close">Chiudi</string>
+    <string name="forward">Inoltra</string>
+    <string name="archive">Archivia</string>
+    <string name="unarchive">Ripristina</string>
+    <string name="mute">Silenzia</string>
     <string name="save">Salva</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -177,6 +181,8 @@
     <string name="title_share_location">Condividi posizione con tutti i membri</string>
     <string name="device_talk">Messaggi del dispositivo</string>
     <string name="device_talk_subtitle">Messaggi generati localmente</string>
+    <string name="device_talk_explain">I messaggio in questa chat vengono generati localmente da Delta Chat. Gli sviluppatori li usano per informarti sugli aggiornamenti o sui problemi d\'utilizzo.</string>
+    <string name="device_talk_welcome_message">Benvenuto in Delta Chat! - Delta Chat ha l\'aspetto e lo stile di altre popolari applicazioni di messaggistica, ma non costringe ad un controllo centralizzato, al tracciamento o alla vendita tua,  dei tuoi amici, colleghi o familiari a grandi organizzazioni.\n \n Tecnicamente, Delta Chat è un\'applicazione di posta elettronica con un\'interfaccia moderna. L\'email sotto una nuova vesta 👻 \n \nUtilizza Delta Chat con chiunque: basta conoscere il loro indirizzo e-mail. I destinatari non hanno bisogno di installare Delta Chat, visitare siti web o iscriversi da nessuna parte -  ma, naturalmente se lo desiderano, puoi suggerirgli 👉 https://get.delta.chat</string>
     <string name="edit_contact">Modifica contatto</string>
 
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
@@ -255,6 +261,8 @@
     <string name="chat_archived_label">Archiviato</string>
     <string name="chat_no_messages">Nessun messaggio.</string>
     <string name="chat_self_talk_subtitle">Messaggi inviati a me stesso</string>
+    <string name="saved_messages">Messaggi salvati</string>
+    <string name="saved_messages_explain">• Inoltra i messaggi per trovarli facilmente\n\n• Memorizza note scritte o vocali\n\n• Allega oggetti per salvarli</string>
     <string name="chat_contact_request">Richiesta di contatto</string>
     <string name="chat_no_contact_requests">Nessuna richiesta di contatto.\n\nSe vuoi che le email tradizionali appaiano qui come richieste di contatto puoi selezionare la relativa opzione nelle impostazioni.</string>
     <string name="retry_send">Riprova l\'invio del messaggio</string>
@@ -655,4 +663,9 @@
     <string name="a11y_message_context_menu_btn_label">Azioni messaggio</string>
     <string name="a11y_background_preview_label">Anteprima sfondo</string>
 
-    </resources>
+    <!-- Translators: These strings are only used on iOS -->
+    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Autorizzare l\'accesso alla camera ti permette di fare foto e video</string>
+    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Autorizzare l\'accesso alla rubrica ti permette di chattare con i contatti nel tuo dispositivo.</string>
+    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Autorizzare l\'accesso al microfono ti permette di registrare audio.</string>
+    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Autorizzare l\'accesso alla galleria ti permette di caricare foto da essa.</string>
+</resources>

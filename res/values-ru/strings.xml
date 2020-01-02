@@ -52,7 +52,7 @@
     <string name="password">Пароль</string>
     <string name="now">Сейчас</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
-    <string name="danger">Внимание</string>
+    <string name="danger">Опасность</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d мин</string>
     <string name="today">Сегодня</string>
