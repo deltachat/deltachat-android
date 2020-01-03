@@ -2,9 +2,11 @@ package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,13 +14,16 @@ import androidx.fragment.app.Fragment;
 
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
+import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
 import org.thoughtcrime.securesms.R;
 
 public class QrScanFragment extends Fragment {
 
+    private static final String TAG = QrScanFragment.class.getSimpleName();
+
     private CompoundBarcodeView barcodeScannerView;
-    private CaptureManager capture;
+    private MyCaptureManager capture;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -79,8 +84,27 @@ public class QrScanFragment extends Fragment {
     }
 
     private void init(CompoundBarcodeView barcodeScannerView, Activity activity, Bundle savedInstanceState) {
-        capture = new CaptureManager(activity, barcodeScannerView);
-        capture.initializeFromIntent(activity.getIntent(), savedInstanceState);
-        capture.decode();
+        try {
+            capture = new MyCaptureManager(activity, barcodeScannerView);
+            capture.initializeFromIntent(activity.getIntent(), savedInstanceState);
+            capture.decode();
+        }
+        catch(Exception e) {
+            Log.w(TAG, e);
+        }
     }
+
+    public class MyCaptureManager extends CaptureManager {
+        private Activity myActivity;
+
+        public MyCaptureManager(Activity activity, DecoratedBarcodeView barcodeView) {
+            super(activity, barcodeView);
+            myActivity = activity;
+        }
+
+        protected void displayFrameworkBugMessageAndExit() {
+            Toast.makeText(myActivity, R.string.zxing_msg_camera_framework_bug, Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
