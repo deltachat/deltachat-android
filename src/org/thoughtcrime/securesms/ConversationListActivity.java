@@ -36,6 +36,7 @@ import com.google.zxing.integration.android.IntentResult;
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
+import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -195,8 +196,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     switch (item.getItemId()) {
       case R.id.menu_new_chat:          createChat();            return true;
       case R.id.menu_settings:          handleDisplaySettings(); return true;
-      case R.id.menu_qr_scan:           handleQrScan();          return true;
-      case R.id.menu_qr_show:           handleQrShow();          return true;
+      case R.id.menu_qr:                handleQr();              return true;
       case R.id.menu_deaddrop:          handleDeaddrop();        return true;
       case R.id.menu_global_map:        handleShowMap();         return true;
       case android.R.id.home:           onBackPressed();         return true;
@@ -232,13 +232,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       startActivity(intent);
   }
 
-  private void handleQrScan() {
-    new IntentIntegrator(this).setCaptureActivity(QrScanActivity.class).initiateScan();
-  }
-
-  private void handleQrShow() {
-    Intent qrIntent = new Intent(this, QrShowActivity.class);
-    startActivity(qrIntent);
+  private void handleQr() {
+    new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
   }
 
   @Override

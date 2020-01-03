@@ -1,4 +1,4 @@
-package org.thoughtcrime.securesms;
+package org.thoughtcrime.securesms.qr;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,14 +10,17 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -26,27 +29,23 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 
-public class QrShowActivity extends AppCompatActivity implements DcEventCenter.DcEventDelegate {
-
-    private final DynamicTheme dynamicTheme    = new DynamicTheme();
-    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
     public final static int WHITE = 0xFFFFFFFF;
-    public final static int BLACK = 0xFF000000;
-    public final static int WIDTH = 400;
-    public final static int HEIGHT = 400;
-    public final static String CHAT_ID = "chat_id";
+    private final static int BLACK = 0xFF000000;
+    private final static int WIDTH = 400;
+    private final static int HEIGHT = 400;
+    private final static String CHAT_ID = "chat_id";
 
-    public int numJoiners;
+    private int numJoiners;
 
-    DcEventCenter dcEventCenter;
+    private DcEventCenter dcEventCenter;
 
-    ApplicationDcContext dcContext;
+    private ApplicationDcContext dcContext;
 
     private String hint;
 
@@ -56,61 +55,47 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
 
     private BroadcastReceiver broadcastReceiver;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        dynamicTheme.onCreate(this);
-        dynamicLanguage.onCreate(this);
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
 
-        setContentView(R.layout.activity_qr_show);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
+    }
 
-        dcContext = DcHelper.getContext(this);
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.qr_show_fragment, container, false);
+
+        dcContext = DcHelper.getContext(getActivity());
         dcEventCenter = dcContext.eventCenter;
 
-        Bundle extras = getIntent().getExtras();
+        Bundle extras = getActivity().getIntent().getExtras();
         int chatId = 0;
         if (extras != null) {
             chatId = extras.getInt(CHAT_ID);
         }
 
-        ActionBar supportActionBar = getSupportActionBar();
-        assert supportActionBar != null;
-        supportActionBar.setDisplayHomeAsUpEnabled(true);
         errorHint = getString(R.string.qrshow_join_contact_no_connection_hint);
 
         if (chatId != 0) {
             // verified-group
             String groupName = dcContext.getChat(chatId).getName();
             hint = String.format(this.getString(R.string.qrshow_join_group_hint), groupName);
-            supportActionBar.setTitle(groupName);
-            supportActionBar.setSubtitle(R.string.qrshow_join_group_title);
         } else {
             // verify-contact
-            String selfName = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
+            String selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
             String nameAndAddress;
             if (selfName.isEmpty()) {
-                selfName = DcHelper.get(this, DcHelper.CONFIG_ADDRESS, "unknown");
+                selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS, "unknown");
                 nameAndAddress = selfName;
             } else {
-                nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(this, DcHelper.CONFIG_ADDRESS));
+                nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS));
             }
             hint = String.format(this.getString(R.string.qrshow_join_contact_hint), nameAndAddress);
-            supportActionBar.setTitle(selfName);
-            supportActionBar.setSubtitle(R.string.qrshow_join_contact_title);
         }
-        hintBelowQr = findViewById(R.id.qrShowHint);
+        hintBelowQr = view.findViewById(R.id.qrShowHint);
         setHintText();
-
-        numJoiners = 0;
-
-        ImageView imageView = findViewById(R.id.qrImage);
-        try {
-            Bitmap bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
-            imageView.setImageBitmap(bitmap);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
 
         dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
         broadcastReceiver = new BroadcastReceiver() {
@@ -119,8 +104,21 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
                 setHintText();
             }
         };
-        this.registerReceiver(broadcastReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+        getActivity().registerReceiver(broadcastReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
+        numJoiners = 0;
+
+        ImageView imageView = view.findViewById(R.id.qrImage);
+        try {
+            Bitmap bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
+            imageView.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+        return view;
     }
+
 
     private void setHintText() {
         if (!dcContext.isNetworkConnected()) {
@@ -131,36 +129,21 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
-        dynamicTheme.onResume(this);
-        dynamicLanguage.onResume(this);
         if (!dcContext.isNetworkConnected()) {
-            Toast.makeText(this, R.string.qrshow_join_contact_no_connection_toast, Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.qrshow_join_contact_no_connection_toast, Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         dcEventCenter.removeObservers(this);
-        this.unregisterReceiver(broadcastReceiver);
+        getActivity().unregisterReceiver(broadcastReceiver);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-
-        return false;
-    }
-
-    Bitmap encodeAsBitmap(String str) throws WriterException {
+    private Bitmap encodeAsBitmap(String str) throws WriterException {
         BitMatrix result;
         try {
             result = new MultiFormatWriter().encode(str,
@@ -189,7 +172,7 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
         return bitmap;
     }
 
-    public void putOverlay(Bitmap bitmap, Bitmap overlay) {
+    private void putOverlay(Bitmap bitmap, Bitmap overlay) {
         int bw = bitmap.getWidth();
         int bh = bitmap.getHeight();
         int ow = bw / 6;
@@ -203,7 +186,7 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
         if (eventId == DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS) {
-            DcContext dcContext = DcHelper.getContext(this);
+            DcContext dcContext = DcHelper.getContext(getActivity());
             int contact_id = ((Long) data1).intValue();
             long progress = (Long) data2;
             String msg = null;
@@ -217,16 +200,18 @@ public class QrShowActivity extends AppCompatActivity implements DcEventCenter.D
             }
 
             if (msg != null) {
-                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
             }
 
             if (progress == 1000) {
                 numJoiners--;
                 if (numJoiners <= 0) {
-                    finish();
+                    if (getActivity() != null) getActivity().finish();
                 }
             }
         }
 
     }
+
+
 }
