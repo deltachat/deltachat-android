@@ -102,6 +102,10 @@ public class QrScanFragment extends Fragment {
             myActivity = activity;
         }
 
+        // the original implementation of displayFrameworkBugMessageAndExit() calls Activity::finish()
+        // which makes _showing_ the QR-code impossible if scanning goes wrong.
+        // therefore, we only show a non-disturbing error here.
+        @Override
         protected void displayFrameworkBugMessageAndExit() {
             Toast.makeText(myActivity, R.string.zxing_msg_camera_framework_bug, Toast.LENGTH_SHORT).show();
         }
