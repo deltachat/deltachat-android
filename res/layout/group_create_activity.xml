@@ -6,71 +6,49 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_height="106dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="18dp"
+        android:paddingTop="14dp"
+        android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="106dp"
-            android:paddingLeft="14dp"
-            android:paddingRight="18dp"
-            android:paddingTop="14dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+        <org.thoughtcrime.securesms.components.ImageDivet android:id="@+id/avatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            position="bottom_right"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/group_avatar" />
 
-            <org.thoughtcrime.securesms.components.ImageDivet android:id="@+id/avatar"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                position="bottom_right"
-                android:layout_marginRight="10dp"
-                android:contentDescription="@string/group_avatar" />
+        <org.thoughtcrime.securesms.components.emoji.EmojiEditText
+            android:id="@+id/group_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"
+            android:lines="1"
+            android:maxLength="255"
+            android:inputType="textAutoCorrect"
+            android:hint="@string/group_name" />
+    </LinearLayout>
 
-            <org.thoughtcrime.securesms.components.emoji.EmojiEditText
-                android:id="@+id/group_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:padding="10dp"
-                android:lines="1"
-                android:maxLength="255"
-                android:inputType="textAutoCorrect"
-                android:hint="@string/group_name" />
-            </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="106dp"
-            android:paddingLeft="18dp"
-            android:paddingRight="18dp"
-            android:paddingTop="18dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:visibility="gone">
-
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                style="@android:style/Widget.ProgressBar"
-                android:indeterminate="true" />
-
-            <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-                android:id="@+id/creating_group_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:padding="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </LinearLayout>
-
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/group_hints"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/verified_group_explain" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <Button

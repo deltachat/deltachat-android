@@ -205,6 +205,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     ViewUtil.findById(this, R.id.verify_button).setOnClickListener(new ShowQrButtonListener());
     initializeAvatarView();
 
+    if (!verified) {
+      ViewUtil.findById(this, R.id.group_hints).setVisibility(View.GONE);
+    }
+
     if(isEdit()) {
       lv.setVisibility(View.GONE);
       findViewById(R.id.add_member_button).setVisibility(View.GONE);
