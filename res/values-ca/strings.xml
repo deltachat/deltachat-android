@@ -487,7 +487,7 @@
     <string name="global_menu_view_developer_tools_desktop">Eines de desenvolupador</string>
     <string name="global_menu_help_desktop">Ajuda</string>
     <string name="global_menu_help_contribute_desktop">Col·labora a GitHub</string>
-    <string name="global_menu_help_report_desktop">Informa d\'un problema...</string>
+    <string name="global_menu_help_report_desktop">Informa d\'un problema</string>
     <string name="no_chat_selected_suggestion_desktop">Tria un xat o crea\'n un de nou</string>
     <string name="write_message_desktop">Escriu un missatge</string>
     <string name="encryption_info_title_desktop">Informació de xifratge</string>

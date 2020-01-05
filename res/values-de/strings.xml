@@ -600,7 +600,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="global_menu_help_desktop">Hilfe</string>
     <string name="global_menu_help_learn_desktop">Lerne mehr über Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Auf GitHub mitwirken</string>
-    <string name="global_menu_help_report_desktop">Melde ein Problem...</string>
+    <string name="global_menu_help_report_desktop">Melde ein Problem</string>
     <string name="global_menu_help_about_desktop">Über Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Wähle einen Chat aus oder erstelle einen neuen Chat.</string>
     <string name="write_message_desktop">Schreibe eine Nachricht</string>

@@ -600,7 +600,7 @@
     <string name="global_menu_help_desktop">Aiuto</string>
     <string name="global_menu_help_learn_desktop">Scopri di più su Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Contribuisci su GitHub</string>
-    <string name="global_menu_help_report_desktop">Segnala un problema...</string>
+    <string name="global_menu_help_report_desktop">Segnala un problema</string>
     <string name="global_menu_help_about_desktop">Informazioni su Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Seleziona o crea una nuova chat</string>
     <string name="write_message_desktop">Scrivi un messaggio</string>

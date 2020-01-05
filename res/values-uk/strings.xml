@@ -482,7 +482,7 @@
     <string name="global_menu_view_developer_tools_desktop">Інструменти розробника</string>
     <string name="global_menu_help_desktop">Допомога</string>
     <string name="global_menu_help_contribute_desktop">Приєднатися до розробки на GitHub</string>
-    <string name="global_menu_help_report_desktop">Повідомити про проблему...</string>
+    <string name="global_menu_help_report_desktop">Повідомити про проблему</string>
     <string name="no_chat_selected_suggestion_desktop">Виберіть чат або створіть новий</string>
     <string name="write_message_desktop">Напишіть повідомлення</string>
     <string name="encryption_info_title_desktop">Інформація про шифрування</string>

@@ -589,7 +589,7 @@
     <string name="global_menu_help_desktop">帮助</string>
     <string name="global_menu_help_learn_desktop">了解有关Delta Chat的更多信息</string>
     <string name="global_menu_help_contribute_desktop">在GitHub上做贡献</string>
-    <string name="global_menu_help_report_desktop">报告一个问题…</string>
+    <string name="global_menu_help_report_desktop">报告一个问题</string>
     <string name="global_menu_help_about_desktop">关于Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">选择一个聊天或创建新聊天</string>
     <string name="write_message_desktop">写消息</string>

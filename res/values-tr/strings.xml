@@ -600,7 +600,7 @@
     <string name="global_menu_help_desktop">Yardım</string>
     <string name="global_menu_help_learn_desktop">Delta Chat hakkında daha fazlasını öğrenin</string>
     <string name="global_menu_help_contribute_desktop">GitHub\'da katkıda bulunun</string>
-    <string name="global_menu_help_report_desktop">Bir sorun raporla…</string>
+    <string name="global_menu_help_report_desktop">Bir sorun raporla</string>
     <string name="global_menu_help_about_desktop">Delta Chat hakkında</string>
     <string name="no_chat_selected_suggestion_desktop">Bir sohbet seçin ya da yeni bir sohbet oluşturun</string>
     <string name="write_message_desktop">Bir ileti yazın</string>

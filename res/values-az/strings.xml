@@ -560,7 +560,7 @@
     <string name="global_menu_view_developer_tools_desktop">İnkişaf etdirici alətləri</string>
     <string name="global_menu_help_desktop">Kömək</string>
     <string name="global_menu_help_contribute_desktop">GitHub-da kömək et</string>
-    <string name="global_menu_help_report_desktop">Problemi bildirin ...</string>
+    <string name="global_menu_help_report_desktop">Problemi bildirin</string>
     <string name="no_chat_selected_suggestion_desktop">Bir çat seçin və ya yeni bir çat yaradın</string>
     <string name="write_message_desktop">Bir mesaj yazın</string>
     <string name="encryption_info_title_desktop">Şifrələmə məlumatları</string>

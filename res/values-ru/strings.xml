@@ -617,7 +617,7 @@
     <string name="global_menu_help_desktop">Помощь</string>
     <string name="global_menu_help_learn_desktop">Узнать больше о Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Присоединиться к разработке на GitHub</string>
-    <string name="global_menu_help_report_desktop">Сообщить о проблеме…</string>
+    <string name="global_menu_help_report_desktop">Сообщить о проблеме</string>
     <string name="global_menu_help_about_desktop">О Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Выберите чат или создайте новый</string>
     <string name="write_message_desktop">Напишите сообщение</string>

@@ -580,7 +580,7 @@
     <string name="global_menu_help_desktop">Aide</string>
     <string name="global_menu_help_learn_desktop">En savoir plus sur Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Contribuer sur Github</string>
-    <string name="global_menu_help_report_desktop">Signaler un problème....</string>
+    <string name="global_menu_help_report_desktop">Signaler un problème</string>
     <string name="global_menu_help_about_desktop">À propos de Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">Sélectionner une discussion ou en créer une nouvelle</string>
     <string name="write_message_desktop">Écrire un message</string>

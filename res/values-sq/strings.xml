@@ -599,7 +599,7 @@
     <string name="global_menu_help_desktop">Ndihmë</string>
     <string name="global_menu_help_learn_desktop">Mësoni më tepër rreth Delta Chat-it</string>
     <string name="global_menu_help_contribute_desktop">Jepni ndihmesë në GitHub</string>
-    <string name="global_menu_help_report_desktop">Njoftoni një Problem…</string>
+    <string name="global_menu_help_report_desktop">Njoftoni një Problem</string>
     <string name="global_menu_help_about_desktop">Rreth Delta Chat-it</string>
     <string name="no_chat_selected_suggestion_desktop">Përzgjidhni një fjalosje ose krijoni një të tillë të re</string>
     <string name="write_message_desktop">Shkruani një mesazh</string>
