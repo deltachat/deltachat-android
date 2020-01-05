@@ -565,8 +565,6 @@
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Изменены параметры для %1$s</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d новых сообщений в %2$d чатах.</string>
     <string name="notify_most_recent_from">Последнее от: %1$s</string>
@@ -597,7 +595,6 @@
     <string name="perm_explain_access_to_location_denied">Чтобы передать местоположение приложению Delta Chat нужно разрешить доступ к нему, но сейчас он заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Местоположение\".</string>
     <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat использует минимальные ресурсы и старается не разряжать батарею.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифрованное сообщение</string>
 

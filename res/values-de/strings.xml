@@ -463,7 +463,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_show_emails_no">Nein, nur Chats</string>
     <string name="pref_show_emails_accepted_contacts">Akzeptierte Kontakte</string>
     <string name="pref_show_emails_all">Alle</string>
-    <string name="pref_empty_server_title">E-Mails vom Server löschen!</string>
+    <string name="pref_empty_server_title">E-Mails vom Server löschen</string>
     <string name="pref_empty_server_msg">Mit dieser Funktion können Sie Speicherplatz auf Ihrem IMAP-Server freigeben, indem Sie ALLE E-Mails, einschließlich Chat-Nachrichten, in den angegebenen Ordnern löschen. Nachrichten auf diesem Gerät werden nicht gelöscht. Die Löschung kann nicht rückgängig gemacht werden!</string>
     <string name="pref_empty_server_inbox">Löschen ALLER e-mails im Nachrichteneingangsordner (INBOX)</string>
     <string name="pref_empty_server_mvbox">Löschen ALLER e-mails im DeltaChat Ordner.</string>
@@ -545,6 +545,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="contact_not_verified">Kann %1$s nicht verifizieren</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
+    <string name="verified_group_explain">Verifizierte Gruppen (experimentell) bieten Schutz gegen aktive Angriffe mittels Zwei-Faktor-Authentifizierung aller Mitglieder und immer aktiver Ende-zu-Ende-Verschlüsselung.</string>
 
 
     <!-- notifications  -->
@@ -577,7 +578,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="perm_explain_access_to_location_denied">Delta Chat benötigt eine Standortberechtigung, um einen Standort anzuhängen, aber er wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Standort\".</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat verbraucht nur minimale Ressourcen und achtet darauf, den Akku zu schonen.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Verschlüsselte Nachricht</string>
 

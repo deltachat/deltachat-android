@@ -488,8 +488,6 @@
     <string name="contact_not_verified">Impossível verificar %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">A configuração Autocrypt mudou para %1$s</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensagens em %2$d conversas</string>
     <string name="notify_most_recent_from">Mais recentes de: %1$s</string>
@@ -520,7 +518,6 @@
     <string name="perm_explain_access_to_location_denied">O Delta Chat precisa acessar sua localização para que você possa enviá-la, mas o acesso foi negado. Por favor, habilite o seu acesso nas configurações de permissões do aplicativo.</string>
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens enquanto o Delta Chat estiver em segundo plano.</string>
     <string name="perm_enable_bg_reminder_text">O Delta Chat usa pouquíssimos recursos e cuida para que sua bateria não esvazie rápido.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensagem criptografada</string>
 

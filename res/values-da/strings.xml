@@ -479,8 +479,6 @@
     <string name="contact_not_verified">Kan ikke efterprøve %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nye beskeder i %2$d samtaler</string>
     <string name="notify_most_recent_from">Nylig fra: %1$s</string>
@@ -511,7 +509,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat kræver placering tilladelse for at kunne vedhæfte placering, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Placering\".</string>
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat bruger minimal resurse og passer på ikke at dræne batteriet.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypteret besked</string>
 

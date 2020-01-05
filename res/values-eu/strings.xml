@@ -543,8 +543,6 @@
     <string name="contact_not_verified">Ezin da %1$s egiaztatu</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Aldatu %1$s(r)en ezarpena</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d mezu berri %2$d txatetan</string>
     <string name="notify_most_recent_from">%1$s(r)en azkena</string>
@@ -575,7 +573,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat-ek kokaleku aatzitzeko baimena behar du kokalekua eransteko, baina behin betiko ukatu zaio. Joan aplikazioaren ezarpen menura, hautatu \"baimenak\", eta gaitu \"Kokalekua\".</string>
     <string name="perm_enable_bg_reminder_title">Sakatu hemen mezuak jasotzeko Delta Chat bigarren planoan dagoenean.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat-ek baliabide gutxi erabiltzen ditu eta zure bateria ez agortzeaz arduratzen da.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zifratutako mezua</string>
 

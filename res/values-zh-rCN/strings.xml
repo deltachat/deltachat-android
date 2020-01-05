@@ -532,6 +532,7 @@
     <string name="contact_not_verified">无法验证%1$s。</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">更改了%1$s的设置</string>
+    <string name="verified_group_explain">已验证群组（实验性）可提供针对主动攻击的安全性。其中的成员被其他成员用第二个因素进行了验证，并且消息始终是端到端加密的。</string>
 
 
     <!-- notifications  -->
@@ -564,6 +565,7 @@
     <string name="perm_explain_access_to_location_denied">要附加位置，请转至应用设置，选择“权限”，然后启用“位置”。</string>
     <string name="perm_enable_bg_reminder_title">点击此处以在Delta Chat处于后台时接收消息。</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
+    <string name="perm_enable_bg_already_done">您已允许Delta Chat在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密消息</string>

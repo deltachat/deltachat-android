@@ -434,8 +434,6 @@
     <string name="contact_not_verified">Неможливо підтвердити %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Змінені параметри для %1$s</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d нових повідомлень з %2$d чатів</string>
     <string name="notify_most_recent_from">Останнє від: %1$s</string>
@@ -465,7 +463,6 @@
     <string name="perm_explain_access_to_location_denied">Щоб передати місцезнаходження, додатку потрібен доступ до геоданих пристрою, але зараз його не надано. Для надання доступу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat, виберіть пункт «Права доступу» і дозвольте доступ до місцезнаходження пристрою.</string>
     <string name="perm_enable_bg_reminder_title">Натисніть тут, щоб отримувати повідомлення, коли Delta Chat знаходиться у фоновому режимі.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat використовує мінімальні ресурси і дбає про те, щоб не розрядити батарею.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифроване повідомлення</string>
 

@@ -452,6 +452,8 @@
     <string name="screenlock_inactivity_timeout_interval">Neveiklumui skirtas laiko intervalas</string>
 
 
+    <!-- qr code stuff -->
+    <string name="qr_code">QR kodas</string>
     <string name="qrscan_title">Nuskenuokite QR kodą</string>
     <string name="qrscan_hint">Laikykite savo kamerą virš QR kodo</string>
     <string name="qrscan_ask_join_group">Ar norite prisijungti prie grupės \"%1$s\"?</string>
@@ -491,7 +493,6 @@
     <string name="perm_explain_need_for_storage_access_share">Norint bendrinti pasirinktus failus, Delta Chat reikia prieigos prie jūsų failų.</string>
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat naudoja mažai išteklių ir rūpinasi, kad neiškrautų jūsų baterijos.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Šifruota žinutė</string>
 

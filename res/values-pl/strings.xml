@@ -562,8 +562,6 @@
     <string name="contact_not_verified">Nie można zweryfikować %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Zmieniono konfigurację dla %1$s</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nowe wiadomości w %2$d czatach</string>
     <string name="notify_most_recent_from">Najnowsze z: %1$s</string>
@@ -594,7 +592,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat wymaga zezwolenia na lokalizację, aby dołączyć lokalizację, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Lokalizacja”.</string>
     <string name="perm_enable_bg_reminder_title">Dotknij tutaj, aby odbierać wiadomości, podczas gdy Delta Chat działa w tle.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat wykorzystuje minimalne zasoby i dba o to, aby nie rozładować baterii.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 

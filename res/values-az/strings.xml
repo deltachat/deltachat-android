@@ -511,8 +511,6 @@
     <string name="contact_not_verified">%1$sDoğrula bilmir</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$süçün quraşdırma dəyişdirildi</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d yeni mesaj %2$d çatda</string>
     <string name="notify_most_recent_from">Ən son olanlar: %1$s</string>
@@ -543,7 +541,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
     <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat minimum resurslardan istifadə edir və batareyanı boşaltmamaq üçün qayğı göstərir.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrələnmiş mesaj</string>
 

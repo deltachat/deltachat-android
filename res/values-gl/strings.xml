@@ -543,8 +543,6 @@
     <string name="contact_not_verified">Non se puido verificar %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Cambiaron os axustes para %1$s.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensaxes en %2$d conversas</string>
     <string name="notify_most_recent_from">Máis recente desde: %1$s</string>
@@ -575,7 +573,6 @@
     <string name="perm_explain_access_to_location_denied">Para engadir a localización, vaite aos axustes da app, escolle \"Permisos\" e activa \"Localización\".</string>
     <string name="perm_enable_bg_reminder_title">Toca aquí para recibir mensaxes mentras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat utiliza poucos recursos e procura non esgotar a batería.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensaxe cifrada</string>
 

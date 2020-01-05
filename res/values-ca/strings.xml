@@ -438,8 +438,6 @@
     <string name="contact_not_verified">No es pot verificar%1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuració canviada per %1$s</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d missatges nous en %2$d xats</string>
     <string name="notify_most_recent_from">El més nou des de : %1$s</string>
@@ -470,7 +468,6 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat necessita accedir a la ubicació per poder-la adjuntar, però li ha estat denegada de forma permanent. Vés a les preferències del menú de l\'aplicació, tria \"Permisos i activa-hi la \"Ubicació\".</string>
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat fa servir els recursos mínims i procura no gastar gaire bateria.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Missatge encriptat</string>
 

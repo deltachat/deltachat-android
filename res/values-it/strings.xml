@@ -543,6 +543,7 @@
     <string name="contact_not_verified">Impossibile verificare %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Impostazioni modificate per %1$s</string>
+    <string name="verified_group_explain">I gruppi verificati (sperimentali) garantiscono sicurezza dagli attacchi. I membri vengono verificati con un secondo fattore dagli altri membri e i messaggi sono sempre cifrati end-to-end. </string>
 
 
     <!-- notifications  -->
@@ -575,6 +576,7 @@
     <string name="perm_explain_access_to_location_denied">Delta Chat richiede l\'autorizzazione per allegare la posizione, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
     <string name="perm_enable_bg_reminder_title">Premi qui per ricevere i messaggi anche quando Delta Chat è in background.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat usa poche risorse ed è progettata per consumare meno batteria possibile.</string>
+    <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Messaggio cifrato</string>
