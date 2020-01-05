@@ -194,12 +194,27 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     super.onOptionsItemSelected(item);
 
     switch (item.getItemId()) {
-      case R.id.menu_new_chat:          createChat();            return true;
-      case R.id.menu_settings:          handleDisplaySettings(); return true;
-      case R.id.menu_qr:                handleQr();              return true;
-      case R.id.menu_deaddrop:          handleDeaddrop();        return true;
-      case R.id.menu_global_map:        handleShowMap();         return true;
-      case android.R.id.home:           onBackPressed();         return true;
+      case R.id.menu_new_chat:
+        createChat();
+        return true;
+      case R.id.menu_settings:
+        startActivity(new Intent(this, ApplicationPreferencesActivity.class));
+        return true;
+      case R.id.menu_help:
+        startActivity(new Intent(this, LocalHelpActivity.class));
+        return true;
+      case R.id.menu_qr:
+        new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
+        return true;
+      case R.id.menu_deaddrop:
+        handleDeaddrop();
+        return true;
+      case R.id.menu_global_map:
+        handleShowMap();
+        return true;
+      case android.R.id.home:
+        onBackPressed();
+        return true;
     }
 
     return false;
@@ -230,10 +245,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       Intent intent = new Intent(this, MapActivity.class);
       intent.putExtra(MapActivity.CHAT_IDS, ALL_CHATS_GLOBAL_MAP);
       startActivity(intent);
-  }
-
-  private void handleQr() {
-    new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
   }
 
   @Override
@@ -291,11 +302,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
     startActivity(intent);
-  }
-
-  private void handleDisplaySettings() {
-    Intent preferencesIntent = new Intent(this, ApplicationPreferencesActivity.class);
-    startActivity(preferencesIntent);
   }
 
   @Override

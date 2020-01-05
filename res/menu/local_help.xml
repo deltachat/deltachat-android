@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="@string/global_menu_help_learn_desktop"
+        android:id="@+id/learn_more"
+        app:showAsAction="never"/>
+
+    <item android:title="@string/global_menu_help_contribute_desktop"
+        android:id="@+id/contribute"
+        app:showAsAction="never"/>
+
+    <item android:title="@string/global_menu_help_report_desktop"
+        android:id="@+id/report_issue"
+        app:showAsAction="never"/>
+
+</menu>
