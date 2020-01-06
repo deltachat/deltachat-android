@@ -32,18 +32,11 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
 
   private final WeakReference<Context>      contextReference;
 
-  private final int attachmentCount;
-
   public SaveAttachmentTask(Context context) {
-    this(context, 1);
-  }
-
-  public SaveAttachmentTask(Context context, int count) {
     super(context,
           context.getResources().getString(R.string.one_moment),
           context.getResources().getString(R.string.one_moment));
     this.contextReference      = new WeakReference<>(context);
-    this.attachmentCount       = count;
   }
 
   @Override
@@ -70,7 +63,6 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
           if (directory == null) return new Pair<>(FAILURE, null);
         }
       }
-
       if (attachments.length > 1) return new Pair<>(SUCCESS, null);
       else                        return new Pair<>(SUCCESS, directory);
     } catch (NoExternalStorageException|IOException ioe) {
@@ -184,8 +176,9 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
                        Toast.LENGTH_LONG).show();
         break;
       case SUCCESS:
+        String dir = result.second();
         Toast.makeText(context,
-                       context.getResources().getString(R.string.done),
+                       dir==null? context.getString(R.string.done) : context.getString(R.string.file_saved_to, dir),
                        Toast.LENGTH_LONG).show();
         break;
       case WRITE_ACCESS_FAILURE:
@@ -215,10 +208,6 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
   }
 
   public static void showWarningDialog(Context context, OnClickListener onAcceptListener) {
-    showWarningDialog(context, onAcceptListener, 1);
-  }
-
-  public static void showWarningDialog(Context context, OnClickListener onAcceptListener, int count) {
     AlertDialog.Builder builder = new AlertDialog.Builder(context);
     builder.setCancelable(true);
     builder.setMessage(R.string.ask_export_attachment);
