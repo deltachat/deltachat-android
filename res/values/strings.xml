@@ -385,7 +385,7 @@
     <string name="pref_trim_now_button">Trim all chats now</string>
     <string name="pref_trim_now_ask">Delete all old messages now? This will immediately trim all chats to the %d most recent messages.</string>
     <string name="pref_blocked_contacts">Blocked contacts</string>
-    <string name="pref_profile_photo_remove_ask">Remove profile photo?</string>
+    <string name="pref_profile_photo_remove_ask">Remove profile picture?</string>
     <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Password and account</string>
     <string name="pref_who_can_see_this_information">Who can see this?</string>
