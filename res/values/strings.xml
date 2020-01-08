@@ -579,11 +579,11 @@
     <string name="perm_required_title">Permission required</string>
     <string name="perm_continue">Continue</string>
     <string name="perm_explain_need_for_camera_access">To capture photos and videos, allow Delta Chat to access the camera.</string>
-    <string name="INFOPLIST.NSCameraUsageDescription">This is used to take photos and videos or scan QR codes.</string>
-    <string name="INFOPLIST.NSPhotoLibraryUsageDescription">This is used to share your photos and videos or set up a profile picture.</string>
+    <string name="INFOPLIST.NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR-codes.</string>
+    <string name="INFOPLIST.NSPhotoLibraryUsageDescription">Delta Chat will let you choose which photos from your library to send.</string>
     <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat to access the microphone.</string>
-    <string name="INFOPLIST.NSMicrophoneUsageDescription">This is used to send your voice.</string>
-    <string name="INFOPLIST.NSContactsUsageDescription">This is used to find your contacts who using Delta Chat.</string>
+    <string name="INFOPLIST.NSMicrophoneUsageDescription">Delta Chat uses your microphone to record and send voice messages and videos with sound.</string>
+    <string name="INFOPLIST.NSContactsUsageDescription">Delta Chat uses your contacts to show a list of email addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>
     <string name="perm_explain_need_for_storage_access_share">Delta Chat needs access to your files to share them.</string>
     <string name="perm_explain_access_to_camera_denied">To take photos or capture videos, go to the app settings, select \"Permissions\", and enable \"Camera\".</string>
@@ -643,7 +643,7 @@
     <string name="initiate_key_transfer_title_desktop">Initiate key transfer</string>
     <string name="initiate_key_transfer_desktop">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps. The setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
     <string name="reply_to_message_desktop">Reply to message</string>
-    <string name="select_profile_image_desktop">Select your new profile image</string>
+    <string name="select_profile_image_desktop">Select your new profile picture</string>
     <string name="select_group_image_desktop">Select group image</string>
     <string name="imex_progress_title_desktop">Backup progress</string>
     <string name="download_attachment_desktop">Download attachment</string>
@@ -684,9 +684,9 @@
     <string name="a11y_remove_account_btn_label">Remove account</string>
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Background preview</string>
-    <string name="a11y_profile_image_label">Your profile image</string>
-    <string name="a11y_profile_image_select">Set a new profile image</string>
-    <string name="a11y_profile_image_remove">Remove your profile image</string>
+    <string name="a11y_profile_image_label">Your profile picture</string>
+    <string name="a11y_profile_image_select">Set a new profile picture</string>
+    <string name="a11y_profile_image_remove">Remove your profile picture</string>
 
 
     <!-- About and legal notices -->
