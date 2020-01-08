@@ -37,6 +37,7 @@
     <string name="one_moment">One moment…</string>
     <string name="done">Done</string>
     <string name="undo">Undo</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Next</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
