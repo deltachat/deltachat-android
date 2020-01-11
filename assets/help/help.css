@@ -1,3 +1,4 @@
-ul#top {
-  line-height: 2em;
+ul#top li {
+  margin-top: .7em;
+  margin-bottom: .7em;
 }
