@@ -37,8 +37,11 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
         webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient(){
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
+                if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
+                    openOnlineUrl(url);
+                    return true;
+                }
+                return false;
             }
         });
         webView.loadUrl("file:///android_asset/help/en/help.html");
