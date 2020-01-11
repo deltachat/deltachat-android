@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +16,10 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.Locale;
 
 public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
 {
@@ -34,6 +39,20 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.menu_help));
 
+        String helpPath = "help/LANG/";
+        String helpLang = "en";
+        String helpFile = "help.html";
+        try {
+            Locale locale = dynamicLanguage.getCurrentLocale();
+            String appLang = locale.getLanguage();
+            AssetManager assetManager = getResources().getAssets();
+            if (Arrays.asList(assetManager.list(helpPath.replace("LANG", appLang))).contains(helpFile)) {
+                helpLang = appLang;
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
         webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient(){
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -44,7 +63,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
                 return false;
             }
         });
-        webView.loadUrl("file:///android_asset/help/en/help.html");
+        webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang) + helpFile);
     }
 
     @Override
