@@ -51,7 +51,7 @@ public class ProgressDialog extends AlertDialog {
         if (progressBar != null) {
             progressBar.getIndeterminateDrawable()
                     .setColorFilter(ContextCompat.getColor(getContext(), R.color.delta_accent), PorterDuff.Mode.SRC_IN);
-            progressBar.setIndeterminate(indeterminate);
+            this.indeterminate = indeterminate;
         }
     }
 
