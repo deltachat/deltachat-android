@@ -95,6 +95,9 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.log_scroll_up:
+                webView.scrollTo(0, 0);
+                return true;
             case R.id.learn_more:
                 openOnlineUrl("https://delta.chat");
                 return true;

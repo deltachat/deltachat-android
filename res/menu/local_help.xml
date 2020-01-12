@@ -2,6 +2,9 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="@string/menu_scroll_to_top"
+        android:id="@+id/log_scroll_up" />
+
     <item android:title="@string/global_menu_help_learn_desktop"
         android:id="@+id/learn_more"
         app:showAsAction="never"/>
