@@ -2,6 +2,10 @@ a {
   text-decoration: none;
 }
 
+h2, h3, h4 {
+  margin-top: 2rem;
+}
+
 ul#top {
   list-style-type: none;
   margin: 1.2rem 0 0 0;
