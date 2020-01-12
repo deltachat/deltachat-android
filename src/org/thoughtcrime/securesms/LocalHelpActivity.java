@@ -105,8 +105,16 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
                 openOnlineUrl("https://github.com/deltachat/deltachat-android/issues");
                 return true;
         }
-
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     private void openOnlineUrl(String url) {
