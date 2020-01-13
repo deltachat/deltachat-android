@@ -251,11 +251,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           startActivity(new Intent(getActivity(), InviteActivity.class));
           break;
         case PREFERENCE_CATEGORY_HELP:
-          try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.pref_help_url))));
-          } catch (ActivityNotFoundException e) {
-            Toast.makeText(getActivity(), R.string.no_browser_installed, Toast.LENGTH_LONG).show();
-          }
+          startActivity(new Intent(getActivity(), LocalHelpActivity.class));
           break;
         default:
           throw new AssertionError();

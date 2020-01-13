@@ -1,0 +1,25 @@
+a {
+  text-decoration: none;
+}
+
+h2, h3, h4 {
+  margin-top: 2rem;
+}
+
+ul#top {
+  list-style-type: none;
+  margin: 1.2rem 0 0 0;
+  padding: 0;
+}
+
+ul#top > li {
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+}
+
+ul#top li {
+  margin-top: .7rem;
+  margin-bottom: .7rem;
+  font-weight: normal;
+  font-size: 1rem;
+}
