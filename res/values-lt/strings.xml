@@ -240,6 +240,12 @@
     <string name="chat_please_enter_message">Įveskite žinutę.</string>
     <string name="chat_camera_unavailable">Kamera neprieinama.</string>
     <string name="chat_unable_to_record_audio">Nepavyko įrašyti garso.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nauja žinutė</item>
+        <item quantity="few">%d naujos žinutės</item>
+        <item quantity="many">%d naujų žinučių</item>
+        <item quantity="other">%d nauja žinutė</item>
+    </plurals>
     <string name="chat_no_messages_hint">Siųskite žinutę %1$s:\n\n• Nieko tokio, jei %2$s nenaudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti ir gali būti nešifruotas.</string>
     <string name="chat_new_group_hint">Rašykite pirmąją žinutę, taip leisdami kitiems atsakyti šioje grupėje..\n\n• Nieko tokio, jei ne visi dalyviai naudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti.</string>
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
@@ -265,6 +271,10 @@
     <string name="group_hello_draft">Sveiki, aš ką tik sukūriau mums grupę \"%1$s\".</string>
     <string name="group_self_not_in_group">Norėdami atlikti šį veiksmą, privalote būti grupės dalyviu.</string>
     <string name="profile_encryption">Šifravimas</string>
+    <string name="profile_shared_chats">Bendrinami pokalbiai</string>
+    <string name="tab_contact">Adresatas</string>
+    <string name="tab_group">Grupė</string>
+    <string name="tab_members">Dalyviai</string>
     <string name="tab_gallery">Galerija</string>
     <string name="tab_docs">Dokumentai</string>
     <string name="tab_links">Nuorodos</string>
@@ -496,7 +506,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Šifruota žinutė</string>
 
-    <!-- desktop specific strings -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Žinomos paskyros</string>
     <string name="global_menu_preferences_language_desktop">Pasirinkti kalbą...</string>

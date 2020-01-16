@@ -11,13 +11,30 @@
     <string name="def">Standard</string>
     <string name="custom">Anpassad</string>
     <string name="none">Ingen</string>
+    <string name="automatic">Automatisk</string>
+    <string name="strict">Sträng</string>
     <string name="open">Öppen</string>
-    <string name="delete">Ta bort</string>
+    <string name="delete">Radera</string>
+    <string name="info">Info</string>
+    <string name="update">Uppdatering</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Bifogad fil</string>
+    <string name="forward">Vidarebefordra</string>
+    <string name="archive">Arkiv</string>
+    <string name="unarchive">Avarkivera</string>
+    <string name="mute">Tysta</string>
+    <string name="save">Spara</string>
+    <string name="chat">Chatt</string>
+    <string name="media">Media</string>
+    <string name="main_menu">Huvudmeny</string>
+    <string name="start_chat">Starta chatt</string>
     <string name="not_now">Inte nu</string>
     <string name="never">Nyare</string>
     <string name="one_moment">Ett ögonblick...</string>
     <string name="done">Klar</string>
     <string name="undo">Ångra</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Fortsätt</string>
     <string name="error">Fel</string>
     <string name="error_x">Fel: %1$s</string>
     <string name="error_no_network">Nätverk ej tillgängligt.</string>
@@ -30,12 +47,16 @@
     <string name="bad_email_address">Fel E-postadress.</string>
     <string name="password">Lösenord</string>
     <string name="now">Nu</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Fara</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Idag</string>
     <string name="yesterday">Igår</string>
     <string name="this_week">Denna vecka</string>
     <string name="this_month">Denna månad</string>
+    <string name="last_week">Förra veckan</string>
+    <string name="last_month">Förra månaden</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -46,6 +67,23 @@
         <item quantity="one">%d timme</item>
         <item quantity="other">%d timmar</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d chatt</item>
+        <item quantity="other">%d chattar</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d kontakt</item>
+        <item quantity="other">%d kontakter</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d meddelande</item>
+        <item quantity="other">%d meddelanden</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d medlem</item>
+        <item quantity="other">%d medlemmar</item>
+    </plurals>
+
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>
@@ -68,6 +106,7 @@
     <string name="blue">Blå</string>
     <string name="orange">Orange</string>
     <string name="cyan">Cyan</string>
+    <string name="purple">Lila</string>
     <string name="magenta">Magenta</string>
     <string name="white">Vit</string>
 
@@ -88,11 +127,11 @@
     <string name="menu_new_chat">Ny chatt</string>
     <string name="menu_new_group">Ny grupp</string>
     <string name="menu_new_verified_group">Ny verifierad grupp</string>
-    <string name="menu_send">Skickat</string>
+    <string name="menu_send">Skicka</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
     <string name="menu_edit_group">Redigera grupp</string>
     <string name="menu_archive_chat">Arkivera chatt</string>
-    <string name="menu_unarchive_chat">Avarkivera chatt</string>
+    <string name="menu_unarchive_chat">Oarkivera chatt</string>
     <string name="menu_add_attachment">Bifoga fil</string>
     <string name="menu_leave_group">Lämna grupp</string>
     <string name="menu_delete_chat">Radera chatt</string>
@@ -113,6 +152,7 @@
     <string name="menu_play">Spela</string>
     <string name="menu_pause">Pausa</string>
     <string name="menu_scroll_to_bottom">Bläddra till botten</string>
+    <string name="menu_scroll_to_top">Bläddra till toppen</string>
     <string name="menu_invite">Bjud in vänner</string>
     <string name="menu_help">Hjälp</string>
     <string name="menu_select_all">Markera alla</string>
@@ -123,10 +163,27 @@
     <string name="menu_deaddrop">Kontaktförfrågningar</string>
     <string name="menu_deaddrop_subtitle">Tryck på meddelande för att börja chatta</string>
     <string name="menu_view_profile">Visa profil</string>
+    <string name="menu_zoom_in">Zooma in</string>
+    <string name="menu_zoom_out">Zooma ut</string>
+    <string name="menu_save_log">Spara logg</string>
+    <string name="device_talk">Enhetsmeddelanden</string>
+    <string name="device_talk_subtitle">Lokalt genererade meddelanden</string>
+    <string name="edit_contact">Redigera kontakt</string>
+
     <string name="mute_for_one_hour">Ljud av 1 timma</string>
     <string name="mute_for_two_hours">Ljud av 2 timma</string>
     <string name="mute_for_one_day">Ljud av 1 dag</string>
     <string name="mute_for_seven_days">Ljud av 7 dagar</string>
+    <string name="mute_forever">Stum för evigt</string>
+
+    <string name="share_location_once">en gång</string>
+    <string name="share_location_for_5_minutes">i 5 minuter</string>
+    <string name="share_location_for_30_minutes">i 30 minuter</string>
+    <string name="share_location_for_one_hour">i 1 timme</string>
+    <string name="share_location_for_two_hours">i 2 timmar</string>
+    <string name="share_location_for_six_hours">i 6 timmar</string>
+
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
     <string name="ask_forward">Vidarebefordra meddelanden till %1$s?</string>
@@ -147,6 +204,10 @@
     <string name="chat_please_enter_message">Skriv in ett meddelande.</string>
     <string name="chat_camera_unavailable">Kamera otillgänglig.</string>
     <string name="chat_unable_to_record_audio">Det går inte att spela in ljud.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nytt meddelande</item>
+        <item quantity="other">%d nya meddelanden</item>
+    </plurals>
     <string name="chat_no_messages_hint">Skicka meddelande till %1$s:\n\n• Det är okej om %2$sinte använder Delta Chat.\n\n• Leverans av det första meddelandet kan ta ett tag och kan vara okrypterad.</string>
     <string name="chat_new_group_hint">Komponera det första meddelandet, så att andra kan svara inom denna grupp.\n\n• Det är okej om inte alla medlemmar använder Delta Chat.\n\n• Det kan ta en stund innan det första meddelandet levereras.</string>
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>
@@ -156,6 +217,7 @@
     <string name="chat_archived_label">Arkiverat</string>
     <string name="chat_no_messages">Inga meddelanden.</string>
     <string name="chat_self_talk_subtitle">Meddelanden jag skickade till mig själv</string>
+    <string name="saved_messages">Sparade meddelanden</string>
     <!-- search -->
     <string name="search">Sök</string>
     <string name="search_explain">Sök efter chattar, kontakter och meddelanden</string>
@@ -168,9 +230,15 @@
     <string name="group_create_button">Skapa grupp</string>
     <string name="group_please_enter_group_name">Ange ett namn för gruppen.</string>
     <string name="group_add_members">Lägg till medlemmar</string>
-    <string name="group_hello_draft">Hej, jag har precis skapat gruppen \" %1$s \" för oss.</string>
+    <string name="group_hello_draft">Hej, jag har precis skapat gruppen \"%1$s\" för oss.</string>
     <string name="group_self_not_in_group">Du måste vara medlem i gruppen för att utföra denna åtgärd.</string>
     <string name="profile_encryption">Kryptering</string>
+    <string name="profile_shared_chats">Delade chattar</string>
+    <string name="tab_contact">Kontakt</string>
+    <string name="tab_group">Grupp</string>
+    <string name="tab_members">Medlemmar</string>
+    <string name="tab_gallery">Galleri</string>
+    <string name="tab_docs">Dokument</string>
     <string name="media_preview">Media förhandsvisning</string>
     
 
@@ -196,6 +264,7 @@
     <string name="login_smtp_server">SMTP-server</string>
     <string name="login_smtp_port">SMTP-port</string>
     <string name="login_smtp_security">SMTP-säkerhet</string>
+    <string name="login_auth_method">Auktoriseringsmetod</string>
     <string name="login_info_gmail_text">För GMail-konton måste du skapa ett app-lösenord om du har 2FA aktiverat. Om denna inställning inte är tillgänglig måste du slå på \"Mindre säkra appar\".</string>
     <string name="login_error_mail">Vänligen ange en giltig e-postadress</string>
     <string name="login_error_server">Vänligen ange en giltig server/IP-adress</string>
@@ -203,6 +272,120 @@
     <string name="login_error_required_fields">Vänligen ange en giltig e-postadress och ett giltigt lösenord</string>
     <string name="import_backup_title">Importera säkerhetskopiering</string>
     <string name="import_backup_ask">Säkerhetskopiering hittades på %1$s.\n\n Vill du importera eller använda all data och alla inställningar från den?</string>
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">vidarebefordra till...</string>
+    <!-- preferences -->
+    <string name="pref_summary_on">på</string>
+    <string name="pref_summary_off">av</string>
     <string name="pref_summary_default">standard</string>
     <string name="pref_profile_info_headline">Din profilinformation</string>
+    <string name="pref_profile_photo">Profilbild</string>
+    <string name="pref_blocked_contacts">Blockerade kontakter</string>
+    <string name="pref_your_name">Ditt namn</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Signaturtext</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">Skickat från Delta Chat: https://delta.chat</string>
+    <string name="pref_screen_security">Skärmsäkerhet</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Blockera skärmdumpar i Senaste-listan samt inuti appen</string>
+    <string name="pref_led_color">Färg på ljusindikator</string>
+    <string name="pref_led_pattern">Blinkmönster på ljusindikator</string>
+    <string name="pref_chats_and_media">Chattar och media</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Ljust</string>
+    <string name="pref_dark_theme">Mörkt</string>
+    <string name="pref_appearance">Utseende</string>
+    <string name="pref_theme">Ljust</string>
+    <string name="pref_language">Språk</string>
+    <string name="pref_incognito_keyboard">Inkognito-tangentbord</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Begär att tangentbordet stänger av personlig inlärning</string>
+    <string name="pref_read_receipts">Returkvitto</string>
+    <string name="pref_use_system_emoji">Använd systemets emojier</string>
+    <string name="pref_use_system_emoji_explain">Inaktivera Delta Chat\'s inbyggda emojier</string>
+    <string name="pref_app_access">Appåtkomst</string>
+    <string name="pref_communication">Kommunikation</string>
+    <string name="pref_chats">Chattar</string>
+    <string name="pref_messages">Meddelanden</string>
+    <string name="pref_in_chat_sounds">Ljud i konversationer</string>
+    <string name="pref_message_text_size">Teckenstorlek för meddelanden</string>
+    <string name="pref_view_log">Visa logg</string>
+    <string name="pref_log_header">Logg</string>
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_before">Ett meddelande för att sätta upp Autocrypt delar den informationen med andra Autocrypt-anpassade applikationer på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
+    <string name="autocrypt_asm_subject">Uppsättningsmeddelande för Autocrypt</string>
+    <string name="autocrypt_asm_general_body">Detta är uppsättningsmeddelandet för Autocrypt som används för att skicka nycklar mellan klienter. För att kunna avkryptera och använda din nyckel, öppna meddelandet i en Autocrypt-kompatibel klient och skriv in uppsättningskoden som visas på den genererande enheten.</string>
+    <string name="autocrypt_asm_click_body">Detta är ett uppsättningsmeddelande för Autocrypt för att föra över krypteringsnyckel mellan klienter. Klicka på det här meddelandet för börja överföring av din krypteringsnyckel.</string>
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Gruppnamnet ändrades från \"%1$s\" till \"%2$s\".</string>
+    <string name="systemmsg_group_image_changed">Gruppbilden ändrades.</string>
+    <string name="systemmsg_group_image_deleted">Gruppbilden togs bort.</string>
+    <string name="systemmsg_member_added">Medlem %1$s lades till.</string>
+    <string name="systemmsg_member_removed">Medlem %1$s togs bort.</string>
+    <string name="systemmsg_group_left">Lämnade gruppen.</string>
+    <!-- qr code stuff -->
+    <string name="qr_code">QR-kod</string>
+    <string name="qrshow_title">QR-kod för inbjudning</string>
+    <string name="qrshow_join_group_title">QR-kod för inbjudning</string>
+    <string name="qrshow_join_contact_title">QR-kod för inbjudning</string>
+    <string name="notify_media_message">Multimediameddelande</string>
+    <string name="notify_reply_button">Svara</string>
+    <string name="notify_new_message">Nytt meddelande</string>
+    <string name="notify_priority_high">Hög</string>
+    <string name="notify_priority_max">Max</string>
+    <string name="notify_name_and_message">Namn och meddelande</string>
+    <string name="notify_name_only">Endast namn</string>
+    <string name="notify_no_name_or_message">Inget namn eller meddelande</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Mejladress är obligatorisk.</string>
+    <string name="perm_continue">Fortsätt</string>
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Krypterat meddelande</string>
+
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="welcome_desktop">Välkommen till Delta Chat</string>
+    <string name="global_menu_preferences_language_desktop">Språk</string>
+    <string name="global_menu_file_desktop">Fil</string>
+    <string name="global_menu_edit_desktop">Redigera</string>
+    <string name="global_menu_edit_redo_desktop">Gör om</string>
+    <string name="global_menu_edit_cut_desktop">Klipp ut</string>
+    <string name="global_menu_edit_copy_desktop">Kopiera</string>
+    <string name="global_menu_edit_paste_desktop">Klistra in</string>
+    <string name="global_menu_view_desktop">Visa</string>
+    <string name="global_menu_view_floatontop_desktop">Behåll fönstret längst fram</string>
+    <string name="global_menu_view_developer_desktop">Utvecklare</string>
+    <string name="global_menu_view_developer_tools_desktop">Utvecklingsverktyg</string>
+    <string name="global_menu_help_learn_desktop">Lär dig mer om Delta Chat</string>
+    <string name="global_menu_help_contribute_desktop">Bidra på GitHub</string>
+    <string name="global_menu_help_report_desktop">Skicka feedback</string>
+    <string name="global_menu_help_about_desktop">Om Delta Chat</string>
+    <string name="no_chat_selected_suggestion_desktop">Välj eller skapa en ny chatt</string>
+    <string name="write_message_desktop">Skriv ett meddelande</string>
+    <string name="contact_detail_title_desktop">Kontaktdetaljer</string>
+    <string name="delete_message_desktop">Radera meddelande</string>
+    <string name="more_info_desktop">Mer information</string>
+    <string name="logout_desktop">Logga ut</string>
+    <string name="no_archived_chats_desktop">Inga arkiverade chattar</string>
+    <string name="no_chats_desktop">Inga chattar</string>
+    <string name="verified_desktop">verifierad</string>
+    <string name="show_qr_verify_code_desktop">Visa QR-kod för inbjudning</string>
+    <string name="show_qr_invite_code_desktop">Visa QR-kod för inbjudning</string>
+    <string name="add_contact_desktop">Lägg till kontakt</string>
+    <string name="login_required_desktop">nödvändig</string>
+    <string name="name_desktop">Namn</string>
+    <string name="reply_to_message_desktop">Svara på meddelande</string>
+    <string name="download_attachment_desktop">Ladda ner bifogad fil</string>
+    <string name="show_key_transfer_message_desktop">Din nyckel har skickats till dig själv. Du bör nu fått ett meddelande på den andra enheten. Byt till den andra enhten, öppna meddelandet och skriv in koden som nu visas. När du har gjort det är den andra enheten redo att använda Autocrypt.</string>
+    <string name="new_message_from_desktop">Nytt meddelande från</string>
+    <string name="create_chat_error_desktop">Chatten kunde inte skapas.</string>
+    <string name="in_this_group_desktop">Gruppmedlemmar</string>
+    <string name="message_detail_sent_desktop">skickat</string>
+    <string name="message_detail_received_desktop">mottaget</string>
+    <string name="message_detail_from_desktop">från</string>
+    <string name="message_detail_to_desktop">till</string>
     </resources>

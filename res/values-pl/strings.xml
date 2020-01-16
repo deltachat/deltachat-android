@@ -595,7 +595,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
-    <!-- desktop specific strings -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Witaj w Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Znane konta</string>
     <string name="global_menu_preferences_language_desktop">Wybierz język</string>
@@ -669,6 +669,7 @@
 
     <!-- accessibility -->
     <string name="a11y_delivery_status_error">Status dostawy: Błąd</string>
+    <string name="a11y_encryption_padlock">Kłódka szyfrowania</string>
     <string name="a11y_delivery_status_sending">Status dostawy: Wysyłanie</string>
     <string name="a11y_delivery_status_draft">Status dostawy: Szkic</string>
     <string name="a11y_delivery_status_delivered">Status dostawy: Dostarczone</string>

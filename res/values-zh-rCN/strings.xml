@@ -570,7 +570,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密消息</string>
 
-    <!-- desktop specific strings -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">欢迎使用Delta Chat</string>
     <string name="login_known_accounts_title_desktop">已知账户</string>
     <string name="global_menu_preferences_language_desktop">语言</string>

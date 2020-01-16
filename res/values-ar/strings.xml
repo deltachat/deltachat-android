@@ -6,6 +6,7 @@
     <string name="cancel">إلغاء</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
+    <string name="on">يعمل</string>
     <string name="off">معطّل</string>
     <string name="def">افتراضي</string>
     <string name="custom">مخصص</string>
@@ -19,6 +20,8 @@
     <string name="attachment">مرفق</string>
     <string name="back">العودة</string>
     <string name="close">إغلاق</string>
+    <string name="forward">إعادة توجيه</string>
+    <string name="mute">حجب المكرفون.</string>
     <string name="save">حفظ</string>
     <string name="chat">الدردشة</string>
     <string name="media">الوسائط</string>
@@ -36,6 +39,7 @@
     <string name="error">خطأ</string>
     <string name="error_x">خطأ: %1$s</string>
     <string name="copied_to_clipboard">تم نسخه إلى الحافظة.</string>
+    <string name="contacts_headline">جهات الإتصا</string>
     <string name="email_address">عنوان البريد الإلكتروني</string>
     <string name="password">الكلمة السرية</string>
     <string name="now">الآن</string>
@@ -70,6 +74,7 @@
     <string name="self">أنا</string>
     <string name="draft">مسودة</string>
     <string name="image">صورة</string>
+    <string name="gif">صورة GIF</string>
     <string name="images">الصور</string>
     <string name="audio">الصوت</string>
     <string name="voice_message">رسالة صوتية</string>
@@ -93,6 +98,9 @@
 
     <string name="small">صغير</string>
     <string name="normal">عادي</string>
+    <string name="large">كبيرة</string>
+    <string name="extra_large">كبيرة جداً</string>
+
     <string name="fast">سريع</string>
     <string name="slow">بطيء</string>
 
@@ -112,7 +120,10 @@
     <string name="menu_copy_to_clipboard">انسخ إلى الحافظة</string>
     <string name="menu_forward">إعادة توجيه الرسالة</string>
     <string name="menu_resend">إعادة الإرسال</string>
+    <string name="menu_reply">الرَدّ على الرسالة</string>
     <string name="menu_mute">كتم الإشعارات</string>
+    <string name="menu_unmute">إلغاء الكتم.</string>
+    <string name="menu_all_media">جميع الوسائط</string>
     <string name="menu_share">شارك</string>
     <string name="menu_play">شغّل</string>
     <string name="menu_pause">تعليق مؤقت</string>
@@ -134,6 +145,8 @@
     <string name="info_outdated_app_dialog_text">دالتا تشات Delta Chat متوفر على:</string>
 
 
+    <!-- contact list -->
+    <string name="contacts_title">جهات الإتصا</string>
     <string name="contacts_enter_name_or_email">ادخل الإسم أو البريد الإلكتروني</string>
     <string name="contacts_empty_hint">لا توجد جهات اتصال.</string>
 
@@ -178,6 +191,8 @@
     <string name="import_backup_title">استيراد نسخة احتياطية</string>
     <string name="used_settings">الإعدادات المُستَخدَمة:</string>
     <string name="delete_account">حذف الحساب</string>
+    <!-- preferences -->
+    <string name="pref_summary_on">يعمل</string>
     <string name="pref_summary_off">معطّل</string>
     <string name="pref_summary_default">افتراضي</string>
     <string name="pref_summary_custom">مخصص</string>
@@ -192,7 +207,9 @@
     <string name="pref_your_name">اسمك</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">التوقيع</string>
+    <string name="pref_enter_sends">مفتاح الدخول يقوم بالإرسا</string>
     <string name="pref_vibrate">إهتز</string>
+    <string name="pref_chat_settings">إعدادات الدردشة</string>
     <string name="pref_screen_security">تأمين الشاشة</string>
     <string name="pref_notifications">الإشعارات</string>
     <string name="pref_notifications_show">عرض</string>
@@ -207,13 +224,22 @@
     <string name="pref_appearance">المظهر</string>
     <string name="pref_theme">السمة</string>
     <string name="pref_language">اللغة</string>
+    <string name="pref_use_system_emoji">استخدام الرموز التعبيرية بالنظام</string>
+    <string name="pref_use_system_emoji_explain"> Delta Chat تعطيل الرموز التعبيرية المدمجة في </string>
+    <string name="pref_app_access">دخول البرنامج</string>
     <string name="pref_communication">التواصل</string>
     <string name="pref_chats">المحادثات</string>
+    <string name="pref_messages">الرسائل</string>
+    <string name="pref_in_chat_sounds">أصوات خلال الدردش</string>
+    <string name="pref_message_text_size">حجم الخط في الرسائل</string>
     <string name="pref_other">أخرى</string>
     <string name="pref_background">الخلفية</string>
     <string name="pref_show_emails_all">كلها</string>
     <string name="autocrypt_continue_transfer_retry">أعد المحاولة</string>
+    <!-- screen lock -->
+    <string name="screenlock_title">قفل الشاشة</string>
     <string name="screenlock_authentication_failed">فشلت المصادقة.</string>
+    <string name="screenlock_inactivity_timeout">نفاذ مهلة قفل الشاشة</string>
     <string name="qrscan_fingerprint_label">البصمة</string>
     <string name="notify_most_recent_from">آخر رسالة من : %1$s</string>
     <string name="notify_mark_all_read">اعتبر جميع الرسائل مقروءة</string>
@@ -221,11 +247,16 @@
     <string name="notify_media_message">رسالة وسائط متعددة</string>
     <string name="notify_reply_button">رد</string>
     <string name="notify_new_message">رسالة جديدة</string>
+    <string name="notify_priority_high">عالي</string>
+    <string name="notify_priority_max">الأقص</string>
     <string name="notify_name_and_message">الاسم والرسالة</string>
     <string name="notify_name_only">الاسم فقط</string>
     <string name="notify_no_name_or_message">لا إسم ولا رسالة</string>
 
 
+    <!-- permissions -->
+    <string name="perm_required_title">منح إحدى الأذونات مطلو</string>
+    <string name="perm_continue">استمر</string>
     <!-- dc_str_* resources -->
     <string name="encrypted_message">رسالة مشفرة</string>
 
@@ -245,6 +276,7 @@
     <string name="save_desktop">حفظ</string>
     <string name="name_desktop">الاسم</string>
     <string name="new_message_from_desktop">رسالة جديدة مِن</string>
+    <string name="none_blocked_desktop">لا توجد جهات اتصال محظورة</string>
     <string name="ask_delete_chat_desktop">هل أنت متأكد مِن أنك تريد حذف هذا؟</string>
     <string name="in_this_group_desktop">أعضاء المجموعة</string>
     </resources>

@@ -433,7 +433,7 @@
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Altro</string>
     <string name="pref_backup">Backup</string>
-    <string name="pref_backup_explain">Backup chat su memoria estera</string>
+    <string name="pref_backup_explain">Backup chat su memoria esterna</string>
     <string name="pref_backup_export_explain">Un backup ti aiuta a impostare una nuova installazione su questo o un altro dispositivo.\n\nIl backup conterrà tutti i messaggi, i contatti, le chat e le impostazioni Autocrypt. Tienilo al sicuro o eliminalo il prima possibile. </string>
     <string name="pref_backup_export_start_button">Avvia backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
@@ -581,7 +581,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Messaggio cifrato</string>
 
-    <!-- desktop specific strings -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Benvenuto in Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Account conosciuti</string>
     <string name="global_menu_preferences_language_desktop">Scegli la lingua...</string>

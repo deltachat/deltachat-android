@@ -11,8 +11,11 @@
     <string name="def">Per defecte</string>
     <string name="custom">Personalitzat</string>
     <string name="none">Cap</string>
+    <string name="automatic">Automàtic</string>
     <string name="open">Obre</string>
     <string name="delete">Esborra</string>
+    <string name="info">Info</string>
+    <string name="forward">Reenvia</string>
     <string name="not_now">Ara no</string>
     <string name="never">Mai</string>
     <string name="one_moment">Espereu...</string>
@@ -151,6 +154,8 @@
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
     <string name="mute_for_seven_days">Silencia 7 dies</string>
+    <string name="mute_forever">Sempre silenciat</string>
+
     <string name="share_location_once">Un cop</string>
     <string name="share_location_for_5_minutes">durant 5 minuts</string>
     <string name="share_location_for_30_minutes">durant 30 minuts</string>
@@ -228,6 +233,8 @@
     <string name="group_hello_draft">Hola, acabo de crear el grup \"%1$s\" per naltros.</string>
     <string name="group_self_not_in_group">Has de ser membre del grup per poder fer això.</string>
     <string name="profile_encryption">Encriptació</string>
+    <string name="tab_contact">Contacte</string>
+    <string name="tab_gallery">Galeria</string>
     <string name="media_preview">Previsualització multimèdia</string>
     
 

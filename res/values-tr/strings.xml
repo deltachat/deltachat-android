@@ -576,12 +576,12 @@
     <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat artalandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
-    <string name="perm_enable_bg_already_done">Delta Chat\'in iletileri artalanda almasına zaten izin verdiniz.\n\nArtalanda iletiler hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
+    <string name="perm_enable_bg_already_done">Delta Chat\'in iletileri artalanda almasına zaten izin verdiniz.\n\nİletiler artalanda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrelenen ileti</string>
 
-    <!-- desktop specific strings -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Delta Chat\'e hoş geldiniz</string>
     <string name="login_known_accounts_title_desktop">Bilinen hesaplar</string>
     <string name="global_menu_preferences_language_desktop">Dil</string>

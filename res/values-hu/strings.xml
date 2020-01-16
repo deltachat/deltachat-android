@@ -10,8 +10,11 @@
     <string name="off">Ki</string>
     <string name="def">Alapértelmezett</string>
     <string name="custom">Egyéni</string>
+    <string name="automatic">Automatikus</string>
     <string name="open">Megnyitás</string>
     <string name="delete">Törlés</string>
+    <string name="info">Infó</string>
+    <string name="forward">Továbbítás</string>
     <string name="not_now">Most nem</string>
     <string name="never">Soha</string>
     <string name="one_moment">Egy pillanat...</string>
@@ -73,6 +76,7 @@
     <string name="forwarded_message">Továbbított üzenet</string>
     <string name="video">Videó</string>
     <string name="documents">Dokumentumok</string>
+    <string name="contact">Névjegy</string>
     <string name="camera">Kamera</string>
     <string name="location">Hely</string>
     <string name="gallery">Galéria</string>
@@ -141,6 +145,7 @@
     <string name="menu_edit_group_image">Csoportkép módosítása</string>
     <string name="menu_settings">Beállítások</string>
     <string name="menu_advanced">Haladó</string>
+    <string name="menu_deaddrop">Levelesláda</string>
     <string name="menu_view_profile">Profil megtekintése</string>
     <string name="menu_save_log">Naplófájl mentése</string>
     <string name="title_share_location">Hely megosztása a csoport összes tagjával</string>
@@ -161,7 +166,13 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Biztosan ki akarsz lépni a csoportból?</string>
     <string name="ask_forward">Továbbítod az üzenetet %1$s részére?</string>
+    <string name="ask_start_chat_with">Beszélgetést indítasz %1$s partnerrel?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Kiveszed a csoportból %1$s partnert?</string>
     <string name="info_outdated_app_dialog_text">A Delta Chat elérhető:</string>
+
+
+    <string name="contacts_empty_hint">Még nincs partner.</string>
 
 
     <!-- chatlist and chat view -->
@@ -174,19 +185,29 @@
         <item quantity="one">%d új üzenet</item>
         <item quantity="other">%d új üzenet</item>
     </plurals>
+    <string name="chat_no_messages_hint">Üzenetküldés %1$s partnernek:\n\n• Nincs gond, ha %2$s nem használja a Delta Chatet.\n\n• Az első üzenet kézbesítése kicsit lassabb lehet.</string>
+    <string name="chat_new_group_hint">Írj egy kezdőüzenetet, hogy a többiek válaszolhassanak a csoportban.\n\n• Nincs gond, ha nem használja minden tag a Delta Chatet.\n\n• Az első üzenet kézbesítése kicsit lassabb lehet.</string>
+    <string name="chat_record_slide_to_cancel">Visszavonás csúsztatással</string>
     <string name="chat_no_chats_yet_title">Üres a postaláda.\nNyomd meg a \"+\" gombot új beszélgetés indításához.</string>
     <string name="chat_all_archived">Minden csevegés archiválva van.\nNyomd meg a \"+\" gombot új beszélgetés indításához.</string>
+    <string name="chat_share_with_title">Megosztás</string>
+    <string name="chat_input_placeholder">Üzenet</string>
+    <string name="chat_archived_label">Archivált</string>
+    <string name="chat_no_messages">Nincs üzenet.</string>
     <string name="chat_self_talk_subtitle">Magamnak küldött üzenetek</string>
+    <string name="chat_contact_request">Levelesláda</string>
     <!-- search -->
     <string name="search">Keresés</string>
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Csoportnév</string>
     <string name="group_avatar">Csoportkép</string>
     <string name="group_create_button">Csoport készítése</string>
+    <string name="group_please_enter_group_name">Nevezd el a csoportot.</string>
     <string name="group_add_members">Tagok felvétele</string>
     <string name="group_hello_draft">Helló, indítottam magunknak egy csoportot „%1$s” néven.</string>
     <string name="group_self_not_in_group">A csoport tagjának kell lenned, hogy ezt megtehesd.</string>
     <string name="profile_encryption">Titkosítás</string>
+    <string name="tab_contact">Névjegy</string>
     <string name="tab_group">Csoport</string>
     <string name="tab_members">Tagok</string>
     <string name="tab_gallery">Galéria</string>
@@ -196,18 +217,55 @@
     <string name="media_preview">Média előnézete</string>
     
 
+    <string name="welcome_start_messaging">Kezdj csevegni!</string>
+    <string name="login_subheader">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk. Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
+    <string name="login_inbox">Bejövő</string>
+    <string name="login_imap_login">IMAP bejelentkezési név</string>
     <string name="login_imap_server">IMAP kiszolgáló</string>
     <string name="login_imap_port">IMAP port</string>
     <string name="login_imap_security">IMAP biztonság</string>
+    <string name="login_outbox">Kimenő</string>
+    <string name="login_smtp_login">SMTP bejelentkezési név</string>
     <string name="login_smtp_password">SMTP jelszó</string>
     <string name="login_smtp_server">SMTP kiszolgáló</string>
     <string name="login_smtp_port">SMTP port</string>
+    <string name="import_backup_title">Biztonsági mentés importálása</string>
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Továbbítás…</string>
+    <!-- preferences -->
+    <string name="pref_summary_on">be</string>
+    <string name="pref_summary_off">ki</string>
+    <string name="pref_summary_default">alapértelmezett</string>
     <string name="pref_profile_photo">Profilkép</string>
     <string name="pref_trim_option">Régi üzenetek törlése</string>
+    <string name="pref_blocked_contacts">Letiltott partnerek</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">A Delta Chat Messengeremmel küldtem: https://delta.chat</string>
+    <string name="pref_enter_sends">Küldés \"enterrel\"</string>
+    <string name="pref_vibrate">Rezgés</string>
+    <string name="pref_notifications">Értesítések</string>
+    <string name="pref_led_color">LED színe</string>
+    <string name="pref_sound">Hang</string>
+    <string name="pref_manage_keys">Privát kulcsok kezelése</string>
+    <string name="pref_backup">Biztonsági mentés</string>
+    <string name="pref_managekeys_menu_title">Privát kulcsok kezelése</string>
+    <string name="pref_managekeys_export_secret_keys">Privát kulcsok exportálása</string>
+    <string name="pref_managekeys_import_secret_keys">Privát kulcsok importálása</string>
+    <string name="pref_background">Beszélgetés háttere</string>
+    <string name="pref_background_btn_gallery">Galériából</string>
+    <string name="pref_show_emails_all">Mind</string>
+    <string name="autocrypt_continue_transfer_retry">Újra</string>
     <string name="systemmsg_group_image_changed">A csoportkép megváltozott.</string>
     <string name="systemmsg_group_image_deleted">A csoportkép törölve.</string>
+    <string name="systemmsg_member_added">%1$s hozzáadva a csoporthoz.</string>
+    <string name="systemmsg_member_removed">%1$s eltávolítva a csoportból.</string>
+    <string name="systemmsg_group_left">Kiléptél a csoportból.</string>
     <!-- screen lock -->
     <string name="screenlock_title">Képernyőzár</string>
+    <!-- qr code stuff -->
+    <string name="qr_code">QR-kód</string>
+    <string name="qrscan_title">QR-kód olvasása</string>
     <string name="qrscan_fingerprint_label">Ujjlenyomat.</string>
     <string name="qrshow_x_joining">%1$s csatlakozik.</string>
     <string name="qrshow_x_verified">%1$s ellenőrizve.</string>
@@ -222,6 +280,10 @@
     <string name="notify_media_message">Médiaüzenet</string>
     <string name="notify_reply_button">Válasz</string>
     <string name="notify_new_message">Új üzenet</string>
+    <string name="notify_priority_max">Hangjelzés legfeljebb</string>
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Titkosított üzenet</string>
+
     <string name="global_menu_preferences_language_desktop">Válassz nyelvet...</string>
     <string name="global_menu_file_desktop">Fájl</string>
     <string name="global_menu_file_quit_desktop">Kilépés</string>
@@ -234,8 +296,16 @@
     <string name="global_menu_view_desktop">Nézet</string>
     <string name="global_menu_help_desktop">Súgó</string>
     <string name="no_chat_selected_suggestion_desktop">Válassz ki egy beszélgetést vagy indíts egy újat</string>
+    <string name="contact_request_title_desktop">Levelesláda</string>
+    <string name="no_chats_desktop">Még nincs beszélgetés.</string>
+    <string name="add_contact_desktop">Új partner</string>
     <string name="name_desktop">Név</string>
     <string name="download_attachment_desktop">Csatolmány letöltése</string>
+    <string name="export_backup_desktop">Biztonsági mentés exportálása</string>
+    <string name="unblock_contacts_desktop">Tiltás feloldása</string>
+    <string name="none_blocked_desktop">Nincs letiltott partner</string>
+    <string name="me_desktop">Én</string>
+    <string name="message_detail_from_desktop">feladó</string>
     <string name="menu.view.developer.open.log.folder">Naplófájlok könyvtárának megnyitása</string>
     <string name="menu.view.developer.open.current.log.file">Jelenlegi naplófájl megnyitása</string>
     </resources>

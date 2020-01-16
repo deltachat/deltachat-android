@@ -10,6 +10,7 @@
     <string name="off">切</string>
     <string name="def">標準</string>
     <string name="none">無し</string>
+    <string name="automatic">自動</string>
     <string name="open">開く</string>
     <string name="delete">削除</string>
     <string name="not_now">今はしない</string>
