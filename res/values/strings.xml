@@ -163,7 +163,6 @@
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Scroll to the bottom</string>
     <string name="menu_scroll_to_top">Scroll to the top</string>
-    <string name="menu_invite">Invite friends</string>
     <string name="menu_help">Help</string>
     <string name="menu_select_all">Select all</string>
     <string name="menu_expand">Expand</string>
@@ -301,11 +300,6 @@
     <string name="tab_gallery_empty_hint">Images and videos shared in this chat will be displayed here.</string>
     <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
     <string name="media_preview">Media preview</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Friends don\'t let friends locked in messaging silos.</string>
-    <string name="invite_default_text">Let\'s switch to Delta Chat - %1$s - you can text me at %2$s</string>
 
 
     <!-- welcome and login -->
