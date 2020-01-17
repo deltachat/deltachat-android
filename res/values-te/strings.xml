@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">సరే</string>
+    <string name="cancel">రద్దు</string>
+    <string name="yes">అవును</string>
+    <string name="no">కాదు</string>
+    <string name="on">ఆన్</string>
+    <string name="off">ఆఫ్</string>
+    <string name="def">డీఫాల్ట్</string>
+    <string name="custom">కస్టమ్</string>
+    <string name="none">ఏదీ కాదు</string>
+    <string name="automatic">స్వయంచాలక</string>
+    <string name="strict">కఠినమైన</string>
+    <string name="open">తెరువు</string>
+    <string name="delete">తొలగించు</string>
+    <string name="info">సమాచారం</string>
+    <string name="update">నవీకరణ</string>
+    <string name="emoji">ఎమోజి</string>
+    <string name="attachment">అటాచ్మెంట్</string>
+    <string name="back">తిరిగి</string>
+    <string name="close">దగ్గరగా</string>
+    <string name="forward">ఫార్వర్డ్</string>
+    <string name="archive">ఆర్కైవ్</string>
+    <string name="unarchive">ఆర్కైవ్ రద్దు</string>
+    <string name="mute">నిశబ్ధం</string>
+    <string name="save">భద్రపరుచు</string>
+    <string name="chat">చాట్</string>
+    <string name="media">మాధ్యమం</string>
+    <string name="main_menu">ప్రధాన మెనూ</string>
+    <string name="start_chat">చాట్ ప్రారంభించండి</string>
+    <string name="not_now">ఇప్పుడు కాదు</string>
+    <string name="never">ఎప్పుడూ</string>
+    <string name="one_moment">ఒక్క క్షణం ...</string>
+    <string name="done">పూర్తయింది</string>
+    <string name="undo">దిద్దుబాటు రద్దుచెయ్యి</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">తరువాత</string>
+    <string name="error">లోపం</string>
+    <string name="contacts_headline">కాంటాక్ట్స్</string>
+    <string name="email_address">ఈమెయిల్ చిరునామా</string>
+    <string name="password">పాస్వర్డ్</string>
+    <string name="now">ఇప్పుడు</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">డేంజర్</string>
+    <string name="today">నేడు</string>
+    <string name="yesterday">నిన్న</string>
+    <string name="this_week">ఈ వారం</string>
+    <string name="this_month">ఈ నెల</string>
+    <string name="last_week">గత వారం</string>
+    <string name="last_month">పోయిన నెల</string>
+    <string name="self">నేను</string>
+    <string name="draft">డ్రాఫ్ట్</string>
+    <string name="image">చిత్రం</string>
+    <string name="gif">Gif</string>
+    <string name="images">చిత్రాలు</string>
+    <string name="audio">ఆడియో</string>
+    <string name="voice_message">మాట సందేశం</string>
+    <string name="forwarded_message">ఫార్వర్డ్ చేయబడిన సందేసం</string>
+    <string name="video">వీడియో</string>
+    <string name="documents">పత్రాలు</string>
+    <string name="contact">పరిచయం</string>
+    <string name="camera">కెమేరా</string>
+    <string name="location">స్థానం</string>
+    <string name="gallery">గ్యాలరీ</string>
+    <string name="file">ఫైల్</string>
+    <string name="unknown">తెలియని</string>
+
+    <string name="green">ఆకు పచ్చ</string>
+    <string name="red">ఎరుపు</string>
+    <string name="blue">నీలం</string>
+    <string name="orange">నారింజ</string>
+    <string name="cyan">సియన్</string>
+    <string name="purple">ఊదా</string>
+    <string name="magenta">మజెంటా</string>
+    <string name="white">తెలుపు</string>
+
+    <string name="small">చిన్న</string>
+    <string name="normal">సాధారణంగా</string>
+    <string name="large">పెద్ద</string>
+    <string name="extra_large">చాలా పెద్దది</string>
+
+    <string name="fast">త్వరగా</string>
+    <string name="slow">మెల్లిగా</string>
+
+    <string name="message_read">సందేశం చదవబడింది</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">కొత్త పరిచయం</string>
+    <string name="menu_new_chat">క్రొత్త చాట్</string>
+    <string name="menu_new_group">కొత్త సమూహము</string>
+    <string name="menu_send">పంపు</string>
+    <string name="menu_toggle_keyboard">టోగుల్ ఎమోజి కీబోర్డు</string>
+    <string name="menu_edit_group">సమూహాన్ని మార్చు</string>
+    <string name="menu_archive_chat">చాట్ ఆర్చివ్</string>
+    <string name="menu_add_attachment">జతచెసిన‌ ఫైళ్ళు</string>
+    <string name="menu_leave_group">సమూహాన్ని వదులు</string>
+    <string name="menu_delete_chat">చాట్ తొలగించు</string>
+    <string name="menu_message_details">సందేశం వివరాలు</string>
+    <string name="menu_copy_to_clipboard">క్లిప్బోర్డ్ కు కాపీ చేయి</string>
+    <string name="menu_forward">సందేశాన్ని బదలాయించు</string>
+    <string name="menu_resend">సందేశాన్ని తిరిగి పంపు</string>
+    <string name="menu_reply">సందేశానికి ప్రత్యుత్తరం ఇవ్వండి</string>
+    <string name="menu_mute">నోటిఫికేషన్ల ను నిలిపివేయి</string>
+    <string name="menu_unmute">మ్యూట్ తీసివేయి</string>
+    <string name="menu_all_media">అన్ని మీడియా</string>
+    <string name="menu_share">పంచుకో</string>
+    <string name="menu_block_contact">పరిచయాన్ని నిరోధించు</string>
+    <string name="menu_play">ప్లే</string>
+    <string name="menu_pause">పాజ్</string>
+    <string name="menu_help">సహాయం</string>
+    <string name="menu_select_all">అన్నీ ఎంచుకో</string>
+    <string name="menu_edit_name">పేరును మార్చు</string>
+    <string name="menu_settings">సెట్టింగులు</string>
+    <string name="menu_advanced">ఆధునిక</string>
+    <string name="menu_deaddrop">పరిచయ అభ్యర్ధనలు</string>
+    <string name="menu_zoom_in">పెద్దదిగా చూపు</string>
+    <string name="menu_zoom_out">పెద్దది చెయ్యి</string>
+    <string name="mute_for_one_hour">1 గంట నిశబ్దంగా ఉంచు</string>
+    <string name="mute_for_two_hours">2 గంటలు నిశబ్దంగా ఉంచు</string>
+    <string name="mute_for_one_day">1 రోజు నిశబ్దంగా ఉంచు</string>
+    <string name="mute_for_seven_days">7 రోజులు నిశబ్దంగా ఉంచు</string>
+    <!-- get confirmations -->
+    <string name="ask_leave_group">మీరు ఈ సమూహాన్ని వదిలిపెట్టాలనుకుంటున్నారా?</string>
+    <string name="ask_forward">సందేశాలు %1$s ఫార్వర్డ్ చేయాలా?</string>
+    <string name="ask_block_contact">మీరు ఈ పరిచయాన్ని రద్దుచేయాలని నిర్ణయించుకున్నారా?</string>
+    <!-- contact list -->
+    <string name="contacts_title">కాంటాక్ట్స్</string>
+    <string name="contacts_empty_hint">ఇంకా ఏ పరిచయాలూ లేవు.</string>
+
+
+    <string name="chat_archived_chats_title">ఆర్కైవ్ చేసిన చాట్స్</string>
+    <string name="chat_record_slide_to_cancel">రద్దు చేయడానికి స్లైడ్ చేయి</string>
+    <string name="chat_share_with_title">తో పంచు</string>
+    <string name="chat_input_placeholder">సందేశం</string>
+    <string name="chat_archived_label">ఆర్చివ్ అయినది</string>
+    <string name="chat_no_messages">సందేశాలు లేవు</string>
+    <string name="chat_contact_request">పరిచయ అభ్యర్ధనలు</string>
+    <!-- search -->
+    <string name="search">వెతుకు</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">సమూహం పేరు</string>
+    <string name="group_please_enter_group_name">సమూహానికి పేరు పెట్టు</string>
+    <string name="group_add_members">సభ్యుడిని జత చేయి</string>
+    <string name="profile_encryption">ఎన్క్రిప్షన్</string>
+    <string name="profile_shared_chats">భాగస్వామ్య చాట్‌లు</string>
+    <string name="tab_contact">పరిచయం</string>
+    <string name="tab_group">సమూహము</string>
+    <string name="tab_gallery">గ్యాలరీ</string>
+    <string name="media_preview">మీడియా పూర్వప్రదర్శన</string>
+    
+
+    <!-- preferences -->
+    <string name="pref_summary_on">ఆన్</string>
+    <string name="pref_summary_off">ఆఫ్</string>
+    <string name="pref_summary_default">డీఫాల్ట్</string>
+    <string name="pref_profile_info_headline">మీ రూప సమాచారం</string>
+    <string name="pref_profile_photo">రూపచిత్రం</string>
+    <string name="pref_trim_option">పాత సందేశాలను తొలగించు</string>
+    <string name="pref_blocked_contacts">నిరోధించిన పరిచయాలు</string>
+    <string name="pref_profile_photo_remove_ask">రూపచిత్రం తీసివేయాలా?</string>
+    <string name="pref_password_and_account_settings">ఖాతా సెట్టింగులు</string>
+    <string name="pref_your_name">మీ పేరు</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">నా Delta Chat మెసెంజర్ ద్వారా పంపబడినది: https://delta.chat</string>
+    <string name="pref_enter_sends">\"ఎంటర్\" నొక్కితే పంపు</string>
+    <string name="pref_vibrate">వైబ్రేషన్</string>
+    <string name="pref_chat_settings">చాట్స్ సెట్టింగులు</string>
+    <string name="pref_screen_security">స్క్రీన్ భద్రత</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">నిరోధించు స్క్రీన్షాట్లు లో ది ఇటీవలి జాబితా మరియు లోపల ది అనువర్తనం</string>
+    <string name="pref_notifications">నోటిఫికేషన్లు</string>
+    <string name="pref_notifications_show">కనబర్చు</string>
+    <string name="pref_notifications_priority">ప్రాధాన్యత</string>
+    <string name="pref_led_color">LED రంగు</string>
+    <string name="pref_led_pattern">ఎల్ఇడి రెప్పపాటు నమూనా</string>
+    <string name="pref_sound">శబ్ధం</string>
+    <string name="pref_silent">మౌనం</string>
+    <string name="pref_privacy">గోప్యత</string>
+    <string name="pref_chats_and_media">ముచ్చట్లు మరియు ప్రసార మాధ్యమం</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">లైటు</string>
+    <string name="pref_dark_theme">గుప్తమైన</string>
+    <string name="pref_appearance">స్వరూపం</string>
+    <string name="pref_theme">వ్యవస్థ</string>
+    <string name="pref_language">భాష</string>
+    <string name="pref_incognito_keyboard">అజ్ఞాత కీబోర్డ్</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">వ్యక్తిగతీకరించిన అభ్యాసను ఆపివేయడానికి కీబోర్డ్ని అభ్యర్థించండి</string>
+    <string name="pref_read_receipts">చదివిన రసీదులు</string>
+    <string name="pref_read_receipts_explain">చదివే రసీదులను నిలిపివేస్తే, మీరు ఇతరుల నుండి చదివే రసీదులను చూడలేరు.</string>
+    <string name="pref_use_system_emoji">యంత్రము యొక్క  ఎమొజిలను  ఉపయొగించు</string>
+    <string name="pref_use_system_emoji_explain">Delta Chat యొక్క అంతర్నిర్మిత ఎమోజి మద్దతును నిలిపివేయి</string>
+    <string name="pref_app_access">అనువర్తన ప్రాప్యత</string>
+    <string name="pref_communication">సమాచారం</string>
+    <string name="pref_chats">చాట్లు</string>
+    <string name="pref_messages">సందేశాలు</string>
+    <string name="pref_in_chat_sounds">యాప్-లోపల నోటిఫికేషన్లు</string>
+    <string name="pref_message_text_size">సందేశం ఫాంట్ పరిమాణం</string>
+    <string name="pref_other">ఇతర</string>
+    <string name="pref_backup">బ్యాకప్</string>
+    <string name="pref_managekeys_export_secret_keys">రహస్య కీలను ఎగుమతి చెయి</string>
+    <string name="pref_background">చాట్ నేపధ్యం</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s నా‌ ద్వరా</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s చే %2$s.</string>
+
+
+    <!-- screen lock -->
+    <string name="screenlock_title">స్క్రీన్ తాళం</string>
+    <string name="screenlock_explain">Android స్క్రీన్ లాక్ లేదా వేలిముద్రతో Signal యాక్సెస్ను లాక్ చేయండి</string>
+    <string name="screenlock_unlock_title">అన్లాక్ Delta Chat</string>
+    <string name="qrscan_fingerprint_label">ఫింగర్‌ప్రింట్స్</string>
+    <string name="notify_media_message">మల్టీమీడియా సందేశం</string>
+    <string name="notify_reply_button">జవాబు</string>
+    <string name="notify_new_message">కొత్త సందేశం</string>
+    <string name="notify_priority_high">అధికం</string>
+    <string name="notify_priority_max">చాలా శబ్ధం</string>
+    <string name="notify_name_and_message">పేరు మరియు సందేశం</string>
+    <string name="notify_name_only">పేరు మాత్రమే</string>
+    <string name="notify_no_name_or_message">పేరు లేదా సందేశం</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">అనుమతి అవసరం</string>
+    <string name="perm_continue">కొనసాగించు</string>
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">ఎంక్రిప్ట్ చెసిన సందేశం</string>
+
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="welcome_desktop">Delta Chat కి స్వాగతం.</string>
+    <string name="global_menu_file_desktop">ఫైల్</string>
+    <string name="global_menu_edit_desktop">మార్చు</string>
+    <string name="global_menu_view_desktop">చూడు</string>
+    <string name="global_menu_help_desktop">సహాయం</string>
+    <string name="global_menu_help_about_desktop">Delta Chat గురించి</string>
+    <string name="contact_request_title_desktop">పరిచయ అభ్యర్ధనలు</string>
+    <string name="more_info_desktop">మరింత సమాచారం</string>
+    <string name="no_chats_desktop">ఏ చాట్లు లేవు</string>
+    <string name="remove_desktop">తొలగించు</string>
+    <string name="save_desktop">భద్రపరుచు</string>
+    <string name="reply_to_message_desktop">సందేశానికి ప్రత్యుత్తరం ఇవ్వండి</string>
+    <string name="export_backup_desktop">బ్యాకప్ ఎగుమతి చెయి</string>
+    <string name="unblock_contacts_desktop">పరిచయం నిరోధాన్ని నిలిపివేయి</string>
+    <string name="me_desktop">నేను</string>
+    <string name="message_detail_from_desktop">నుండీ</string>
+    </resources>
