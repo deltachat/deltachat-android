@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">சரி</string>
+    <string name="cancel">ரத்து செய்</string>
+    <string name="yes">ஆம்</string>
+    <string name="no">இல்லை</string>
+    <string name="on">இயக்கு</string>
+    <string name="off">நிறுத்தவும்</string>
+    <string name="def">இயல்புநிலை</string>
+    <string name="custom">விருப்ப</string>
+    <string name="none">எதுவும் இல்லை</string>
+    <string name="automatic">தானியங்கி</string>
+    <string name="strict">கண்டிப்பான</string>
+    <string name="open">திற</string>
+    <string name="delete">நீக்கவும் </string>
+    <string name="info">தகவல்</string>
+    <string name="update">புதுப்பிக்கப்பட்டது</string>
+    <string name="emoji">ஈமோஜியைப்</string>
+    <string name="attachment">இணைப்பு</string>
+    <string name="back">மீண்டும்</string>
+    <string name="close">நெருக்கமான</string>
+    <string name="forward">முன்னோக்கு</string>
+    <string name="archive">காப்பகத்தை</string>
+    <string name="unarchive">மீட்டெடுக்கலாம்</string>
+    <string name="mute">ஓசையற்ற</string>
+    <string name="save">சேமி</string>
+    <string name="chat">அரட்டை</string>
+    <string name="media">ஊடகம்</string>
+    <string name="main_menu">முதன்மை பட்டியல்</string>
+    <string name="start_chat">அரட்டை தொடங்கவும்</string>
+    <string name="not_now">இப்போது இல்லை</string>
+    <string name="never">எப்போதும் இல்லை</string>
+    <string name="one_moment">ஒரு நிமிடம் காத்திருக்கவும் ...</string>
+    <string name="done">முடிந்தது</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">அடுத்தது</string>
+    <string name="error">பிழை</string>
+    <string name="error_x">பிழை: %1$s</string>
+    <string name="contacts_headline">தொடர்புகள்</string>
+    <string name="email_address">மின் அஞ்சல் முகவரி</string>
+    <string name="bad_email_address">தவறான மின் அஞ்சல் முகவரி</string>
+    <string name="password">கடவுச்சொல்</string>
+    <string name="now">இப்போது</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">ஆபத்து</string>
+    <string name="today">இன்று</string>
+    <string name="yesterday">நேற்று</string>
+    <string name="this_week">இந்த வாரம்</string>
+    <string name="this_month">இந்த மாதம்</string>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d மணி</item>
+        <item quantity="other">%d மணிகள்</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d அரட்டை</item>
+        <item quantity="other">%d அரட்டைகள்</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d தொடர்புகள்</item>
+        <item quantity="other">%d தொடர்புகள்</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d செய்திகள்</item>
+        <item quantity="other">%d செய்திகள்</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one"> %d உறுப்பினர்கள்</item>
+        <item quantity="other"> %d உறுப்பினர்கள்</item>
+    </plurals>
+
+    <string name="self">நான்</string>
+    <string name="draft">வரைவு</string>
+    <string name="image">படம்</string>
+    <string name="gif">GIF</string>
+    <string name="images">புகைப்படங்கள்</string>
+    <string name="audio">ஒலி</string>
+    <string name="voice_message">குரல் செய்தி</string>
+    <string name="forwarded_message">மேல அனுப்பப்பட்ட சேதி</string>
+    <string name="video">காணொளி</string>
+    <string name="documents">ஆவணங்கள்</string>
+    <string name="contact">தொடர்பு</string>
+    <string name="camera">புகைப்படக்கருவி</string>
+    <string name="location">இடம்</string>
+    <string name="gallery">காட்சி கூடம்</string>
+    <string name="file">கோப்பு</string>
+    <string name="unknown">முன் தெரிந்திராத</string>
+
+    <string name="green">பச்சை</string>
+    <string name="red">சிவப்பு</string>
+    <string name="blue">நீலம்</string>
+    <string name="orange">ஆரஞ்சு</string>
+    <string name="cyan">சியான்</string>
+    <string name="purple">ஊதா</string>
+    <string name="magenta">கருநீலம்</string>
+    <string name="white">வெள்ளை</string>
+
+    <string name="small">சிறிய</string>
+    <string name="normal">சாதாரணமாக</string>
+    <string name="large">பெரிய</string>
+    <string name="extra_large">கூடுதல் பெரியது</string>
+
+    <string name="fast">வேகமாக</string>
+    <string name="slow">மெதுவாக</string>
+
+    <string name="message_read">செய்தி வாசிக்கப்பட்டது</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">புதிய தொடர்பு</string>
+    <string name="menu_new_chat">புது அரட்டை</string>
+    <string name="menu_new_group">புதிய குழு</string>
+    <string name="menu_send">அனுப்பு</string>
+    <string name="menu_edit_group">குழுவைத் திருத்து</string>
+    <string name="menu_add_attachment">கோப்புகளை இணைக்கவும்</string>
+    <string name="menu_leave_group">குழுவில் இருந்து வெளியேறு</string>
+    <string name="menu_delete_chat">அரட்டையை நீக்கு</string>
+    <string name="menu_message_details">செய்தி விவரங்கள்</string>
+    <string name="menu_copy_to_clipboard">பிடிப்பு பலகை</string>
+    <string name="menu_forward">செய்தியை முன்னோக்கியனுப்பு</string>
+    <string name="menu_resend">செய்தியை மீண்டும் அனுப்பு</string>
+    <string name="menu_reply">செய்திக்கு பதில்</string>
+    <string name="menu_mute">அறிவிப்புகளை ஊமையாக்கு</string>
+    <string name="menu_unmute">ஊமையாக்குதலை தவிர்க்கவும்</string>
+    <string name="menu_all_media">அனைத்து ஊடகங்களும்</string>
+    <string name="menu_share">பகிர்</string>
+    <string name="menu_block_contact">தொடர்பை தடுக்கவும்</string>
+    <string name="menu_unblock_contact">தொடர்பு தடுப்பினை நீக்கவும்</string>
+    <string name="menu_help">உதவி</string>
+    <string name="menu_select_all">அனைத்தையும்  தேர்வுசெய்</string>
+    <string name="menu_edit_name">பெயரை திருத்தவும்</string>
+    <string name="menu_settings">அமைப்புகள்</string>
+    <string name="menu_advanced">மேம்பட்ட அமைப்புகள்</string>
+    <string name="menu_deaddrop">தொடர்பு கோரிக்கை</string>
+    <string name="menu_view_profile">சுயவிவரத்தை காண்பி</string>
+    <string name="mute_for_one_hour">1 மணி இதற்காக ஊமையாக்கு</string>
+    <string name="mute_for_two_hours">2 மணிகள் இதற்காக ஊமையாக்கு</string>
+    <string name="mute_for_one_day">1 நாள் இதற்காக ஊமையாக்கு</string>
+    <string name="mute_for_seven_days">7 நாட்கள் இதற்காக ஊமையாக்கு</string>
+    <string name="mute_forever">எப்போதுமே ஊமையாக்கு</string>
+
+    <string name="share_location_for_5_minutes">5 நிமிடங்கள் </string>
+    <string name="share_location_for_30_minutes">30 நிமிடங்கள் </string>
+    <string name="share_location_for_one_hour">1 மணி</string>
+    <string name="share_location_for_two_hours">2 மணிகள்</string>
+    <string name="share_location_for_six_hours">6 மணிகள்</string>
+
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">இந்த குழுவில் இருந்து வெளியேறவா ?</string>
+    <string name="ask_forward">தேர்வு செய்யப்பட்ட செய்திகளை இவற்றுக்கு %1$s முன்னோக்கி அனுப்பவா ?</string>
+    <string name="ask_block_contact">இந்த தொடர்பை முடக்கவா ?</string>
+    <!-- contact list -->
+    <string name="contacts_title">தொடர்புகள்</string>
+    <string name="contacts_empty_hint">எந்த தொடர்புகளும் இல்லை</string>
+
+
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d புதிய செய்திகள்</item>
+        <item quantity="other">%d புதிய செய்திகள்</item>
+    </plurals>
+    <string name="chat_record_slide_to_cancel">ரத்து செய்ய திரையில் சறுக்கவும்</string>
+    <string name="chat_share_with_title">பகிர்</string>
+    <string name="chat_input_placeholder">சேதி</string>
+    <string name="chat_archived_label">ஆவண காக்கப்படுத்தப்பட்டது</string>
+    <string name="chat_no_messages">சேதிகள் இல்லை</string>
+    <string name="chat_self_talk_subtitle">தங்களுக்கே அனுப்பி கொண்ட செய்திகள்</string>
+    <string name="chat_contact_request">தொடர்பு கோரிக்கை</string>
+    <!-- search -->
+    <string name="search">தேடு</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">குழுவின் பெயர்</string>
+    <string name="group_please_enter_group_name">குழுவிற்கு ஒரு பெயரை சூட்டவும்</string>
+    <string name="group_add_members">உறுப்பினர்களை சேர்க்க</string>
+    <string name="group_hello_draft">வணக்கம் , நான் நமக்கு \"%1$s\" என்ற பெயரில் குழுவை உருவாக்கி உள்ளேன்</string>
+    <string name="profile_encryption">மறைகுறியாக்கம்</string>
+    <string name="tab_contact">தொடர்பு</string>
+    <string name="tab_gallery">காட்சி கூடம்</string>
+    <string name="welcome_start_messaging">செய்திகளை அனுப்ப தொடங்குங்கள்</string>
+    <string name="login_subheader">அறியப்பட்ட மின் அஞ்சல் வழங்குநர்களுக்கு மற்ற அமைப்புகள் தானாக தீர்மானிக்கப்படும் </string>
+    <string name="login_inbox">உட்பெட்டி</string>
+    <string name="login_outbox">வெளிப்பெட்டி</string>
+    <string name="login_smtp_login">SMTP க் கான உள் நுழைவு பெயர்</string>
+    <string name="login_smtp_password">SMTP க்கான கடவுச்சொல்</string>
+    <string name="login_smtp_server">SMTP க்கான சேவகன்</string>
+    <string name="login_smtp_port">SMTP போர்ட்</string>
+    <!-- preferences -->
+    <string name="pref_summary_on">இயக்க</string>
+    <string name="pref_summary_off">நிறுத்தவும்</string>
+    <string name="pref_summary_default">இயல்புநிலை</string>
+    <string name="pref_profile_info_headline">உங்கள் சுயவிவரத் தகவல்</string>
+    <string name="pref_trim_headline">செய்தி ஒழுங்கமைத்தல்</string>
+    <string name="pref_trim_option">பழைய செய்திகளை நீக்க</string>
+    <string name="pref_trim_option_explain">உரையாடல் ஒரு குறிப்பிட்ட நீளத்தை தாண்டியவுடன் பழைய செய்திகளை தானாக நீக்கு</string>
+    <string name="pref_blocked_contacts">தடுக்கபட்ட தொடர்புகள்</string>
+    <string name="pref_password_and_account_settings">கணக்கு அமைப்புகள்</string>
+    <string name="pref_your_name">எனது பெயர்</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">என்னுடைய Delta Chat செயலியில் இருந்து அனுப்பி உள்ளேன் : https://delta.chat</string>
+    <string name="pref_enter_sends">\"enter\" மூலம் அனுப்பவும்</string>
+    <string name="pref_vibrate">அதிர்வு உண்டாக்கு</string>
+    <string name="pref_chat_settings">அரட்டை அமைப்புகள்</string>
+    <string name="pref_screen_security">திரை பாதுகாப்பு</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">அண்மை பட்டியல் மற்றும் மென்பொருளுக்கு உள்ளே திரையை படம் எடுப்பதை தடுக்கவும்</string>
+    <string name="pref_notifications">அறிவிப்புகள்</string>
+    <string name="pref_notifications_show">காட்டு</string>
+    <string name="pref_notifications_priority">முன்னுரிமை</string>
+    <string name="pref_led_color">LED நிறம்</string>
+    <string name="pref_led_pattern">LED மிளிரும் முறை</string>
+    <string name="pref_sound">ஓசை</string>
+    <string name="pref_silent">அமைதி</string>
+    <string name="pref_privacy">தனியுரிமை</string>
+    <string name="pref_chats_and_media">அரட்டைகள் மற்றும் ஊடகங்கள்</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">வெளிச்சமிக்க</string>
+    <string name="pref_dark_theme">இருள்கொண்ட</string>
+    <string name="pref_appearance">தோற்றம்</string>
+    <string name="pref_theme">நிறவடிவமைப்பு</string>
+    <string name="pref_language">மொழி</string>
+    <string name="pref_incognito_keyboard">மறைநிலை விசைப்பலகை</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">தனிப்பயனாக்கப்பட்ட கற்றலை முடக்க விசைப்பலகை கோருங்கள்</string>
+    <string name="pref_read_receipts">ரசீதுகளைப் படியுங்கள்</string>
+    <string name="pref_read_receipts_explain">வாசிப்பு ரசீதுகள் முடக்கப்பட்டிருந்தால், மற்றவர்களிடமிருந்து வாசிப்பு ரசீதுகளை நீங்கள் </string>
+    <string name="pref_use_system_emoji">கணினி ஈமோஜியைப் பயன்படுத்தவும்</string>
+    <string name="pref_use_system_emoji_explain">Delta Chat உள்ளமைக்கப்பட்ட ஈமோஜி ஆதரவை முடக்கு</string>
+    <string name="pref_app_access">பயன்பாடு அணுகல்</string>
+    <string name="pref_communication">தொடர்பாடல்</string>
+    <string name="pref_chats">அரட்டைகள்</string>
+    <string name="pref_messages">செய்திகள்</string>
+    <string name="pref_in_chat_sounds">௨ள்ளார்ந்த செயலி அறிவிப்புகள்</string>
+    <string name="pref_message_text_size">சேதிகளின் எழுத்துரு அளவு</string>
+    <string name="pref_other">மற்றவை</string>
+    <string name="pref_backup">காப்பு நகல்</string>
+    <string name="pref_background">அரட்டை பின்புலம்</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">மற்ற சாதனத்தில் காணப்படும் அமைப்பு குறியீடை தயவு செய்து உள்ளீடவும்</string>
+    <string name="autocrypt_continue_transfer_retry">மீண்டும் முயற்சி செய்யவும்</string>
+    <string name="systemmsg_group_image_changed">குழு படம் மாற்றப்பட்டது.</string>
+    <string name="systemmsg_group_image_deleted">குழு படம் நீக்கப்பட்டது</string>
+    <string name="systemmsg_member_added"> %1$s உறுப்பினராக சேர்க்கப்பட்டார்</string>
+    <string name="systemmsg_member_removed">உறுப்பினர் %1$s நீக்கப்பட்டார்</string>
+    <string name="systemmsg_group_left">குழுவில் இருந்து வெளியேறினது</string>
+    <!-- screen lock -->
+    <string name="screenlock_title">திரை பூட்டி</string>
+    <string name="screenlock_explain">அண்ட்ராய்டு திரை பூட்டு அல்லது கைரேகையுடன் Signal அணுகலைப் பூட்டு</string>
+    <string name="screenlock_unlock_title">Delta Chat லைத் திற</string>
+    <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
+    <string name="notify_media_message">மல்டிமீடியா செய்தி</string>
+    <string name="notify_reply_button">மறுமொழி</string>
+    <string name="notify_new_message">புதிய செய்தி</string>
+    <string name="notify_priority_high">உயர்</string>
+    <string name="notify_priority_max">மேக்ஸ்</string>
+    <string name="notify_name_and_message">பெயரும் செய்தியும்</string>
+    <string name="notify_name_only">பெயர் மட்டும்</string>
+    <string name="notify_no_name_or_message">பெயர் அல்லது செய்தி இல்லை</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">அனுமதி தேவை</string>
+    <string name="perm_continue">தொடர்</string>
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">மறைகுறியாக்கப்பட்ட செய்தி</string>
+
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="welcome_desktop">Delta Chat க்கு வரவேற்கிறது.</string>
+    <string name="global_menu_preferences_language_desktop">நிறவடிவமைப்பு</string>
+    <string name="global_menu_file_desktop">கோப்பு</string>
+    <string name="global_menu_edit_desktop">திருத்து</string>
+    <string name="global_menu_view_desktop">பார்வை</string>
+    <string name="global_menu_help_desktop">உதவி</string>
+    <string name="global_menu_help_about_desktop">Delta Chat பற்றி</string>
+    <string name="contact_request_title_desktop">தொடர்பு கோரிக்கை</string>
+    <string name="more_info_desktop">மேலும் தகவல்</string>
+    <string name="no_chats_desktop">இதுவரையில் எந்த அரட்டைகளும் இல்லை</string>
+    <string name="remove_desktop">நீக்கு</string>
+    <string name="save_desktop">சேமி</string>
+    <string name="add_contact_desktop">புதிய தொடர்பு</string>
+    <string name="name_desktop">பெயர்</string>
+    <string name="unblock_contacts_desktop">தொடர்பு தடுப்பினை நீக்கவும்</string>
+    <string name="none_blocked_desktop">இதுவரையில் எந்த தொடர்பும் தடுக்கப்படவில்லை</string>
+    <string name="me_desktop">நான்</string>
+    <string name="message_detail_from_desktop">அனுப்புதல்</string>
+    </resources>

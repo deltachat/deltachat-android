@@ -19,6 +19,7 @@
       <!-- lt -->    <item>Lietuvių kalba</item>
       <!-- hu -->    <item>Magyar nyelv</item>
       <!-- nl -->    <item>Nederlands</item>
+      <!-- nb -->    <item>Norsk Bokmål</item>
       <!-- pl -->    <item>Polski</item>
       <!-- pt -->    <item>Português</item>
       <!-- pt_BR --> <item>Português do Brasil</item>
@@ -26,11 +27,15 @@
       <!-- sv -->    <item>Svenska</item>
       <!-- tr -->    <item>Türkçe</item>
       <!-- ru -->    <item>Pусский</item>
+      <!-- sr -->    <item>Српски</item>
       <!-- uk -->    <item>Українська</item>
       <!-- ar -->    <item>عربى</item>
       <!-- ja -->    <item>日本語</item>
+      <!-- ko -->    <item>한국어</item>
       <!-- zh_CN --> <item>简体中文</item>
       <!-- zh_TW --> <item>繁體中文</item>
+      <!-- ta -->    <item>தமிழ்</item>
+      <!-- te -->    <item>తెలుగు</item>
   </string-array>
 
   <string-array name="language_values">
@@ -48,6 +53,7 @@
       <item>lt</item>
       <item>hu</item>
       <item>nl</item>
+      <item>nb</item>
       <item>pl</item>
       <item>pt</item>
       <item>pt_BR</item>
@@ -55,11 +61,15 @@
       <item>sv</item>
       <item>tr</item>
       <item>ru</item>
+      <item>sr</item>
       <item>uk</item>
       <item>ar</item>
       <item>ja</item>
+      <item>ko</item>
       <item>zh_CN</item>
       <item>zh_TW</item>
+      <item>ta</item>
+      <item>te</item>
   </string-array>
 
     <string-array name="pref_theme_entries">
