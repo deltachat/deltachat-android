@@ -354,10 +354,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">on</string>
-    <string name="pref_summary_off">off</string>
-    <string name="pref_summary_default">default</string>
-    <string name="pref_summary_custom">custom</string>
     <string name="pref_using_custom">Using custom: %s</string>
     <string name="pref_using_default">Using default: %s</string>
     <string name="pref_profile_info_headline">Your profile info</string>
@@ -612,13 +608,10 @@
     <string name="verified_desktop">verified</string>
     <string name="remove_desktop">Remove</string>
     <string name="save_desktop">Save</string>
-    <string name="show_qr_verify_code_desktop">Show QR invite code</string>
-    <string name="show_qr_invite_code_desktop">Show QR invite code</string>
     <string name="add_contact_desktop">Add contact</string>
     <string name="login_required_desktop">required</string>
     <string name="name_desktop">Name</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt key transfer</string>
-    <string name="initiate_key_transfer_title_desktop">Initiate key transfer</string>
     <string name="initiate_key_transfer_desktop">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps. The setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
     <string name="reply_to_message_desktop">Reply to message</string>
     <string name="select_group_image_desktop">Select group image</string>
