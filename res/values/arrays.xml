@@ -27,6 +27,7 @@
       <!-- sv -->    <item>Svenska</item>
       <!-- tr -->    <item>Türkçe</item>
       <!-- ru -->    <item>Pусский</item>
+      <!-- sr -->    <item>Српски</item>
       <!-- uk -->    <item>Українська</item>
       <!-- ar -->    <item>عربى</item>
       <!-- ja -->    <item>日本語</item>
@@ -57,6 +58,7 @@
       <item>sv</item>
       <item>tr</item>
       <item>ru</item>
+      <item>sr</item>
       <item>uk</item>
       <item>ar</item>
       <item>ja</item>
