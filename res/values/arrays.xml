@@ -19,6 +19,7 @@
       <!-- lt -->    <item>Lietuvių kalba</item>
       <!-- hu -->    <item>Magyar nyelv</item>
       <!-- nl -->    <item>Nederlands</item>
+      <!-- nb -->    <item>Norsk Bokmål</item>
       <!-- pl -->    <item>Polski</item>
       <!-- pt -->    <item>Português</item>
       <!-- pt_BR --> <item>Português do Brasil</item>
@@ -48,6 +49,7 @@
       <item>lt</item>
       <item>hu</item>
       <item>nl</item>
+      <item>nb</item>
       <item>pl</item>
       <item>pt</item>
       <item>pt_BR</item>
