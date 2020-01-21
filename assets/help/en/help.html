@@ -41,6 +41,10 @@
   <li><a href="#multiclient">Multi-client</a>
     <ul>
       <li><a href="#can-i-use-delta-chat-on-multiple-devices-at-the-same-time">Can I use Delta Chat on multiple devices at the same time?</a></li>
+      <li><a href="#why-can-i-choose-not-to-watch-the-inbox">Why can I choose not to watch the Inbox?</a></li>
+      <li><a href="#what-is-the-send-copy-to-self-setting-good-for">What is the “Send Copy to Self” setting good for?</a></li>
+      <li><a href="#why-can-i-choose-to-watch-the-sent-folder">Why can I choose to watch the “Sent” folder?</a></li>
+      <li><a href="#why-can-i-choose-not-to-watch-the-deltachat-folder">Why can I choose not to watch the DeltaChat folder?</a></li>
     </ul>
   </li>
   <li><a href="#miscellaneous">Miscellaneous</a>
@@ -63,6 +67,8 @@
 
 <p>Delta Chat is a new chat app that sends messages via e-mails, encrypted if possible, with Autocrypt. 
 <strong>You do not have to sign up anywhere, just use your existing e-mail account with Delta Chat.</strong></p>
+
+<p><img style="float:right; width:50%; max-width:360%; margin:1em;" src="../delta-what-optim.png" /></p>
     
       <h3 id="how-can-i-find-people-to-chat-with">
         
@@ -657,6 +663,78 @@ arrive and click on it, which should prompt you for the security number.</p>
 sending and receiving E2E-encrypted messages with your communication partners.</p>
   </li>
 </ul>
+    
+      <h3 id="why-can-i-choose-not-to-watch-the-inbox">
+        
+        
+          Why can I choose not to watch the Inbox? <a href="#why-can-i-choose-not-to-watch-the-inbox" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>This is an experimental setting for some people who are experimenting with
+server-side rules. Not all providers support this, but with some you can move
+all mails with a “Chat-Version” header to the DeltaChat folder. Normally, this
+would be done by the Delta Chat app.</p>
+
+<p>Watching the Inbox makes sense to turn off, if you have both:</p>
+
+<ul>
+  <li>enabled a server-side rule to move all messages with Chat-Version header to the DeltaChat folder, and</li>
+  <li>have set the “Show classic emails” setting to “no, chats only”.</li>
+</ul>
+
+<p>In this case, Delta Chat doesn’t need to watch the Inbox.</p>
+    
+      <h3 id="what-is-the-send-copy-to-self-setting-good-for">
+        
+        
+          What is the “Send Copy to Self” setting good for? <a href="#what-is-the-send-copy-to-self-setting-good-for" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Sending a copy of your messages to yourself ensures that you receive your own
+messages on all devices. If you have multiple devices and don’t turn it on, you
+see only the messages from other people, and the messages you send from the
+current device.</p>
+
+<p>The copy is send to the Inbox, and then moved to the DeltaChat folder; it’s not
+put into the “Sent” folder. Delta Chat <em>never</em> uploads anything to the Sent
+folder because this would mean uploading a message twice (once through SMTP,
+and once through IMAP to Sent folder).</p>
+
+<p>The default setting for copy-to-self is “no”.</p>
+    
+      <h3 id="why-can-i-choose-to-watch-the-sent-folder">
+        
+        
+          Why can I choose to watch the “Sent” folder? <a href="#why-can-i-choose-to-watch-the-sent-folder" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The only reason one wants to watch the Sent folder is if you are using another
+mail program (like Thunderbird) next to your Delta Chat app, and want your MUA
+to participate in chat conversations.</p>
+
+<p>However, we recommend to use the Delta Chat Desktop Client; you can download it
+on <a href="https://get.delta.chat">get.delta.chat</a>. The option to watch the “Sent”
+folder might go away in the future. It was introduced at a time where there was
+no Delta Chat Desktop client available on all platforms.</p>
+    
+      <h3 id="why-can-i-choose-not-to-watch-the-deltachat-folder">
+        
+        
+          Why can I choose not to watch the DeltaChat folder? <a href="#why-can-i-choose-not-to-watch-the-deltachat-folder" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Some people use Delta Chat as a regular email client, and want to use the Inbox
+folder for their mail, instead of the DeltaChat folder. If you disable “Watch
+DeltaChat folder”, you should also disable “move chat messages to DeltaChat”.
+Otherwise, deleting messages or multi-device setups might not work properly.</p>
     
       <h2 id="miscellaneous">
         

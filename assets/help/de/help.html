@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
-  <li><a href="#allgemein">Allgemein</a>
+  <li><a href="#was-ist-delta-chat">Was ist Delta Chat?</a>
     <ul>
-      <li><a href="#was-ist-delta-chat">Was ist Delta Chat?</a></li>
       <li><a href="#wie-finde-ich-leute-mit-denen-ich-chatten-kann">Wie finde ich Leute, mit denen ich chatten kann?</a></li>
       <li><a href="#welche-vorteile-hat-delta-chat-gegenüber-anderen-messengern">Welche Vorteile hat Delta Chat gegenüber anderen Messengern?</a></li>
       <li><a href="#welche-nachrichten-erscheinen-in-delta-chat">Welche Nachrichten erscheinen in Delta Chat?</a></li>
@@ -45,6 +44,10 @@
   <li><a href="#multiclient">Mehrere Geräte verwenden</a>
     <ul>
       <li><a href="#kann-ich-delta-chat-auf-mehreren-geräten-zur-selben-zeit-verwenden">Kann ich Delta Chat auf mehreren Geräten zur selben Zeit verwenden?</a></li>
+      <li><a href="#why-can-i-choose-not-to-watch-the-inbox">Why can I choose not to watch the Inbox?</a></li>
+      <li><a href="#what-is-the-send-copy-to-self-setting-good-for">What is the “Send Copy to Self” setting good for?</a></li>
+      <li><a href="#why-can-i-choose-to-watch-the-sent-folder">Why can I choose to watch the “Sent” folder?</a></li>
+      <li><a href="#why-can-i-choose-not-to-watch-the-deltachat-folder">Why can I choose not to watch the DeltaChat folder?</a></li>
     </ul>
   </li>
   <li><a href="#verschiedenes">Verschiedenes</a>
@@ -57,27 +60,18 @@
 
 
 
-<!-- GENERATED FILE -- DO NOT EDIT -->
-      <h2 id="allgemein">
-        
-        
-          Allgemein <a href="#allgemein" class="anchor"></a>
-        
-        
-      </h2>
-    
-      <h3 id="was-ist-delta-chat">
+<h2 id="was-ist-delta-chat">
         
         
           Was ist Delta Chat? <a href="#was-ist-delta-chat" class="anchor"></a>
         
         
-      </h3>
-
-<p><img style="float: right;" width="400px" src="../assets/home/delta-what.png" /></p>
+      </h2>
 
 <p>Delta Chat ist eine neue Chat-App, die mit Autocrypt verschlüsselte E-Mails versendet. 
 <strong>Sie müssen sich nirgendwo anmelden, verwenden Sie einfach Ihr bestehendes E-Mail-Konto bei Delta Chat.</strong></p>
+
+<p><img style="float:right; width:50%; max-width:360%; margin:1em;" src="../delta-what-optim.png" /></p>
     
       <h3 id="wie-finde-ich-leute-mit-denen-ich-chatten-kann">
         
@@ -301,7 +295,7 @@ dieselbe Anwendung zu installieren, die Sie auch verwenden.</p>
 <ul>
   <li>
     <p>Eine verifizierte Gruppe ist ein Chat, welcher Sicherheit gegen einen aktiven Angreifer garantiert. Alle Nachrichten in einer verifizierten Gruppe sind Ende-zu-Ende verschlüsselt und Gruppenmitglieder können durch Scannen eines “QR-Einladungscodes” beitreten. Alle Gruppenmitglieder sind deshalb durch eine Kette von Einladungen miteinander verbunden, welche kryptografische Konsistenz gegen aktive Netzwerk- oder Anbieterangriffe garantiert.
- Lese https://countermitm.readthedocs.io/en/latest/new.html für die Forschung und Entwicklung hinter dieser Funktion.</p>
+Siehe <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm.readthedocs.io</a> für die Forschung und Entwicklung hinter dieser Funktion.</p>
   </li>
   <li>
     <p>Im Dezember 2019 bleibt eine “verifizierte Gruppe” eine experimentelle Funktion.
@@ -490,7 +484,7 @@ Das bedeutet, dass wenn Ihr geheimer Schlüssel aus Delta Chat bekannt wird und 
   </li>
   <li>
     <p>Jemand der ihr Telefon beschlagnahmt oder hackt, kann typischerweise alle Nachrichten lesen - unabhängig davon ob Perfect Forward Secrecy verwendet wird oder nicht.
-Der Zugriff auf ein einzelnes Gerät eines Gruppenmitglieds verrät viel über den sozialen Graphen. Verwendet man E-Mail-Adressen, welche sich nicht einfach zu Personen zurückverfolgen lassen, hilft Gruppenmitgliedern sich besser vor der den Folgen der Beschlagnahmung eines Geräts zu schützen.</p>
+Der Zugriff auf ein einzelnes Gerät eines Gruppenmitglieds verrät viel über den sozialen Graphen. Verwendet man E-Mail-Adressen, welche sich nicht einfach zu Personen zurückverfolgen lassen, hilft das Gruppenmitgliedern besser, sich vor der den Folgen der Beschlagnahmung eines Geräts zu schützen.</p>
   </li>
   <li>
     <p>Wir zeichnen Wege auf, um Kommunikation besser vor dem Fall eines beschlagnahmten Geräts zu schützen.</p>
@@ -606,6 +600,78 @@ zum Senden und Empfangen von Ende-zu-Ende-verschlüsselten Nachrichten an Ihre K
   </li>
 </ul>
     
+      <h3 id="why-can-i-choose-not-to-watch-the-inbox">
+        
+        
+          Why can I choose not to watch the Inbox? <a href="#why-can-i-choose-not-to-watch-the-inbox" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>This is an experimental setting for some people who are experimenting with
+server-side rules. Not all providers support this, but with some you can move
+all mails with a “Chat-Version” header to the DeltaChat folder. Normally, this
+would be done by the Delta Chat app.</p>
+
+<p>Watching the Inbox makes sense to turn off, if you have both:</p>
+
+<ul>
+  <li>enabled a server-side rule to move all messages with Chat-Version header to the DeltaChat folder, and</li>
+  <li>have set the “Show classic emails” setting to “no, chats only”.</li>
+</ul>
+
+<p>In this case, Delta Chat doesn’t need to watch the Inbox.</p>
+    
+      <h3 id="what-is-the-send-copy-to-self-setting-good-for">
+        
+        
+          What is the “Send Copy to Self” setting good for? <a href="#what-is-the-send-copy-to-self-setting-good-for" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Sending a copy of your messages to yourself ensures that you receive your own
+messages on all devices. If you have multiple devices and don’t turn it on, you
+see only the messages from other people, and the messages you send from the
+current device.</p>
+
+<p>The copy is send to the Inbox, and then moved to the DeltaChat folder; it’s not
+put into the “Sent” folder. Delta Chat <em>never</em> uploads anything to the Sent
+folder because this would mean uploading a message twice (once through SMTP,
+and once through IMAP to Sent folder).</p>
+
+<p>The default setting for copy-to-self is “no”.</p>
+    
+      <h3 id="why-can-i-choose-to-watch-the-sent-folder">
+        
+        
+          Why can I choose to watch the “Sent” folder? <a href="#why-can-i-choose-to-watch-the-sent-folder" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The only reason one wants to watch the Sent folder is if you are using another
+mail program (like Thunderbird) next to your Delta Chat app, and want your MUA
+to participate in chat conversations.</p>
+
+<p>However, we recommend to use the Delta Chat Desktop Client; you can download it
+on <a href="https://get.delta.chat">get.delta.chat</a>. The option to watch the “Sent”
+folder might go away in the future. It was introduced at a time where there was
+no Delta Chat Desktop client available on all platforms.</p>
+    
+      <h3 id="why-can-i-choose-not-to-watch-the-deltachat-folder">
+        
+        
+          Why can I choose not to watch the DeltaChat folder? <a href="#why-can-i-choose-not-to-watch-the-deltachat-folder" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Some people use Delta Chat as a regular email client, and want to use the Inbox
+folder for their mail, instead of the DeltaChat folder. If you disable “Watch
+DeltaChat folder”, you should also disable “move chat messages to DeltaChat”.
+Otherwise, deleting messages or multi-device setups might not work properly.</p>
+    
       <h2 id="verschiedenes">
         
         
@@ -623,8 +689,8 @@ zum Senden und Empfangen von Ende-zu-Ende-verschlüsselten Nachrichten an Ihre K
       </h3>
 
 <ul>
-  <li>Mit ziemlich hoher Wahrscheinlichkeit: Ja :) 
-Allerdings benötigen einige Anbieter besondere Optionen, um ordnungsgemäß zu funktionieren; eine von Nutzern erstellte Sammlung zu einigen Optionen findet sich unter <a href="https://support.delta.chat/t/provider-overview/">Provider Overview</a>.</li>
+  <li>Mit ziemlich hoher Wahrscheinlichkeit: Ja :)</li>
+  <li>Allerdings benötigen einige Anbieter besondere Optionen, um ordnungsgemäß zu funktionieren; eine von Nutzern erstellte Sammlung zu einigen Optionen findet sich unter <a href="https://providers.delta.chat">Provider Overview</a>.</li>
 </ul>
     
       <h3 id="ich-bin-an-technischen-details-interessiert-gibt-es-hierzu-weitere-infos">
