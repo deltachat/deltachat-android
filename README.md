@@ -78,4 +78,4 @@ The user interface classes are based on the Signal messenger.
 
 Licensed GPLv3+, see the LICENSE file for details.
 
-Copyright © 2017-2019 Delta Chat contributors.
+Copyright © 2020 Delta Chat contributors.
