@@ -11,13 +11,27 @@
     <string name="def">Padrão</string>
     <string name="custom">Personalizado</string>
     <string name="none">Nenhum</string>
+    <string name="automatic">Automático</string>
+    <string name="strict">Rigoroso</string>
     <string name="open">Abrir</string>
     <string name="delete">Apagar</string>
+    <string name="info">Informação</string>
+    <string name="update">Atualizar</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Anexo</string>
+    <string name="back">Voltar</string>
+    <string name="close">Fechar</string>
+    <string name="forward">Encaminhar</string>
+    <string name="mute">Mudo</string>
+    <string name="save">Salvar</string>
+    <string name="media">Mídia</string>
     <string name="not_now">Não agora</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Um momento...</string>
     <string name="done">Feito</string>
     <string name="undo">Desfazer</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Avançar</string>
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
     <string name="error_no_network">Rede indisponível.</string>
@@ -26,8 +40,8 @@
     <string name="file_not_found">Impossível achar%1$s.</string>
     <string name="copied_to_clipboard">Copiado para a área de transferência.</string>
     <string name="contacts_headline">Contatos</string>
-    <string name="email_address">Endereço eletrônico</string>
-    <string name="bad_email_address">Endereço inválido.</string>
+    <string name="email_address">Endereço de email</string>
+    <string name="bad_email_address">Email inválido.</string>
     <string name="password">Senha</string>
     <string name="now">Agora</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
@@ -521,6 +535,8 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensagem criptografada</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="welcome_desktop">Boas-vindas ao Delta Chat.</string>
     <string name="login_known_accounts_title_desktop">Contas conhecidas</string>
     <string name="global_menu_preferences_language_desktop">Escolher língua...</string>
     <string name="global_menu_file_desktop">Arquivo</string>

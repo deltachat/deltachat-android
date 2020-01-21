@@ -10,16 +10,24 @@
     <string name="off">Ki</string>
     <string name="def">Alapértelmezett</string>
     <string name="custom">Egyéni</string>
+    <string name="none">Egyik sem</string>
     <string name="automatic">Automatikus</string>
+    <string name="strict">Szigorú</string>
     <string name="open">Megnyitás</string>
     <string name="delete">Törlés</string>
     <string name="info">Infó</string>
+    <string name="emoji">Emoji</string>
     <string name="forward">Továbbítás</string>
+    <string name="mute">Némítás</string>
+    <string name="save">Mentés</string>
+    <string name="media">Média</string>
     <string name="not_now">Most nem</string>
     <string name="never">Soha</string>
     <string name="one_moment">Egy pillanat...</string>
     <string name="done">Kész</string>
     <string name="undo">Visszavonás</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Tovább</string>
     <string name="error">Hiba</string>
     <string name="error_x">Hiba: %1$s</string>
     <string name="error_no_network">A hálózat nem elérhető.</string>
@@ -110,6 +118,7 @@
     <string name="menu_new_group">Új csoport</string>
     <string name="menu_new_verified_group">Új ellenőrzött csoport</string>
     <string name="menu_send">Küldés</string>
+    <string name="menu_toggle_keyboard">Emoji billentyűzet kapcsoló</string>
     <string name="menu_edit_group">Csoport szerkesztése</string>
     <string name="menu_group_name_and_image">Csoportnév és -kép</string>
     <string name="menu_show_map">Térkép megjelenítése</string>
@@ -123,6 +132,7 @@
     <string name="menu_delete_image">Kép törlése</string>
     <string name="menu_delete_locations">Minden helyszínt törölsz?</string>
     <string name="menu_delete_location">Törlöd ezt a helyszínt?</string>
+    <string name="menu_message_details">Üzenet részletei</string>
     <string name="menu_copy_to_clipboard">Vágólapra másolás</string>
     <string name="menu_forward">Üzenet továbbítása</string>
     <string name="menu_resend">Üzenet újraküldése</string>
@@ -140,6 +150,7 @@
     <string name="menu_scroll_to_top">Ugrás a tetejére</string>
     <string name="menu_invite">Barátok meghívása</string>
     <string name="menu_help">Segítség</string>
+    <string name="menu_select_all">Összes kiválasztása</string>
     <string name="menu_edit_name">Név módosítása</string>
     <string name="menu_edit_group_name">Csoportnév módosítása</string>
     <string name="menu_edit_group_image">Csoportkép módosítása</string>
@@ -172,6 +183,8 @@
     <string name="info_outdated_app_dialog_text">A Delta Chat elérhető:</string>
 
 
+    <!-- contact list -->
+    <string name="contacts_title">Kontaktok</string>
     <string name="contacts_empty_hint">Még nincs partner.</string>
 
 
@@ -237,17 +250,51 @@
     <string name="pref_summary_on">be</string>
     <string name="pref_summary_off">ki</string>
     <string name="pref_summary_default">alapértelmezett</string>
+    <string name="pref_profile_info_headline">Profilod adatai</string>
     <string name="pref_profile_photo">Profilkép</string>
+    <string name="pref_trim_headline">Üzenetek csonkítása</string>
     <string name="pref_trim_option">Régi üzenetek törlése</string>
     <string name="pref_blocked_contacts">Letiltott partnerek</string>
+    <string name="pref_who_can_see_this_information">Ki láthatja ezt az információt?</string>
+    <string name="pref_your_name">Neved</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">A Delta Chat Messengeremmel küldtem: https://delta.chat</string>
     <string name="pref_enter_sends">Küldés \"enterrel\"</string>
     <string name="pref_vibrate">Rezgés</string>
+    <string name="pref_chat_settings">Csevegés beállításai</string>
+    <string name="pref_screen_security">Képernyőbiztonság</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Képernyőképek készítésének blokkolása a futó alkalmazások listájában és az alkalmazáson belül</string>
     <string name="pref_notifications">Értesítések</string>
+    <string name="pref_notifications_show">Megjelenítés</string>
+    <string name="pref_notifications_priority">Prioritás</string>
     <string name="pref_led_color">LED színe</string>
+    <string name="pref_led_pattern">LED villogás mintázata</string>
     <string name="pref_sound">Hang</string>
+    <string name="pref_silent">Csendes</string>
+    <string name="pref_privacy">Privacy</string>
+    <string name="pref_chats_and_media">Csevegések és média</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Világos</string>
+    <string name="pref_dark_theme">Sötét</string>
+    <string name="pref_appearance">Megjelenés</string>
+    <string name="pref_theme">Sötét</string>
+    <string name="pref_language">Nyelv</string>
+    <string name="pref_incognito_keyboard">Inkognitó billentyűzet</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Tanulás letiltásának kérése a billentyűzettől (személyre szabás kikapcsolása)</string>
+    <string name="pref_read_receipts">Olvasási nyugták</string>
+    <string name="pref_read_receipts_explain">Ha az olvasási nyugták le vannak tiltva, te sem fogod látni mások olvasási nyugtáit.</string>
     <string name="pref_manage_keys">Privát kulcsok kezelése</string>
+    <string name="pref_use_system_emoji">Rendszer emojik használata</string>
+    <string name="pref_use_system_emoji_explain">A Delta Chat beépített emoji-támogatásának letiltása</string>
+    <string name="pref_app_access">Alkalmazás hozzáférés</string>
+    <string name="pref_communication">Kommunikáció</string>
+    <string name="pref_chats">Csevegések</string>
+    <string name="pref_messages">Üzenetek</string>
+    <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
+    <string name="pref_message_text_size">Üzenetek betűmérete</string>
+    <string name="pref_other">Egyéb</string>
     <string name="pref_backup">Biztonsági mentés</string>
     <string name="pref_managekeys_menu_title">Privát kulcsok kezelése</string>
     <string name="pref_managekeys_export_secret_keys">Privát kulcsok exportálása</string>
@@ -280,10 +327,21 @@
     <string name="notify_media_message">Médiaüzenet</string>
     <string name="notify_reply_button">Válasz</string>
     <string name="notify_new_message">Új üzenet</string>
+    <string name="notify_priority_high">Magas</string>
     <string name="notify_priority_max">Hangjelzés legfeljebb</string>
+    <string name="notify_name_and_message">Név és üzenet</string>
+    <string name="notify_name_only">Csak név</string>
+    <string name="notify_no_name_or_message">Se név, se üzenet</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Engedély szükséges</string>
+    <string name="perm_continue">Folytatás</string>
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Titkosított üzenet</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="welcome_desktop">Üdvözöl a Delta Chat!</string>
     <string name="global_menu_preferences_language_desktop">Válassz nyelvet...</string>
     <string name="global_menu_file_desktop">Fájl</string>
     <string name="global_menu_file_quit_desktop">Kilépés</string>
@@ -297,7 +355,10 @@
     <string name="global_menu_help_desktop">Súgó</string>
     <string name="no_chat_selected_suggestion_desktop">Válassz ki egy beszélgetést vagy indíts egy újat</string>
     <string name="contact_request_title_desktop">Levelesláda</string>
+    <string name="more_info_desktop">További információ</string>
     <string name="no_chats_desktop">Még nincs beszélgetés.</string>
+    <string name="remove_desktop">Eltávolítás</string>
+    <string name="save_desktop">Mentés</string>
     <string name="add_contact_desktop">Új partner</string>
     <string name="name_desktop">Név</string>
     <string name="download_attachment_desktop">Csatolmány letöltése</string>

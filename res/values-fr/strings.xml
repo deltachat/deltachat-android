@@ -24,6 +24,7 @@
     <string name="forward">Faire suivre</string>
     <string name="archive">Archiver</string>
     <string name="unarchive">Désarchiver</string>
+    <string name="mute">Sourdine</string>
     <string name="save">Sauvegarder</string>
     <string name="chat">Conversation</string>
     <string name="media">Média</string>
@@ -186,7 +187,7 @@
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>
     <string name="mute_for_seven_days">Déactiver pour 7 jours</string>
-    <string name="mute_forever">muet pour toujours</string>
+    <string name="mute_forever">Sourdine pour toujours</string>
 
     <string name="share_location_once">une fois</string>
     <string name="share_location_for_5_minutes">pour 5 minutes</string>

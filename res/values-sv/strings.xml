@@ -281,17 +281,32 @@
     <string name="pref_summary_default">standard</string>
     <string name="pref_profile_info_headline">Din profilinformation</string>
     <string name="pref_profile_photo">Profilbild</string>
+    <string name="pref_trim_headline">Trimma meddelanden</string>
+    <string name="pref_trim_option">Ta bort gamla meddelanden</string>
+    <string name="pref_trim_option_explain">Ta bort automatiskt gamla meddelanden när en konversation överstiger en specificerad längd</string>
+    <string name="pref_trim_now_button">Trimma alla konversationer nu</string>
     <string name="pref_blocked_contacts">Blockerade kontakter</string>
+    <string name="pref_who_can_see_this_information">Vem kan se denna information?</string>
     <string name="pref_your_name">Ditt namn</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signaturtext</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Skickat från Delta Chat: https://delta.chat</string>
+    <string name="pref_enter_sends">Returtangenten skickar</string>
+    <string name="pref_enter_sends_explain">Tryck på returtangenten skickar textmeddelanden</string>
+    <string name="pref_vibrate">Vibrera</string>
+    <string name="pref_chat_settings">Konversationsinställningar</string>
     <string name="pref_screen_security">Skärmsäkerhet</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Blockera skärmdumpar i Senaste-listan samt inuti appen</string>
+    <string name="pref_notifications">Aviseringar</string>
+    <string name="pref_notifications_show">Visa</string>
+    <string name="pref_notifications_priority">Prioritet</string>
     <string name="pref_led_color">Färg på ljusindikator</string>
     <string name="pref_led_pattern">Blinkmönster på ljusindikator</string>
+    <string name="pref_sound">Ljud</string>
+    <string name="pref_silent">Tyst</string>
+    <string name="pref_privacy">Integritetsskydd</string>
     <string name="pref_chats_and_media">Chattar och media</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Ljust</string>
@@ -303,6 +318,7 @@
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Begär att tangentbordet stänger av personlig inlärning</string>
     <string name="pref_read_receipts">Returkvitto</string>
+    <string name="pref_read_receipts_explain">Om läskvittenser är avstängda kan du inte se läskvittenser från andra.</string>
     <string name="pref_use_system_emoji">Använd systemets emojier</string>
     <string name="pref_use_system_emoji_explain">Inaktivera Delta Chat\'s inbyggda emojier</string>
     <string name="pref_app_access">Appåtkomst</string>
@@ -313,6 +329,7 @@
     <string name="pref_message_text_size">Teckenstorlek för meddelanden</string>
     <string name="pref_view_log">Visa logg</string>
     <string name="pref_log_header">Logg</string>
+    <string name="pref_other">Övrigt</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Ett meddelande för att sätta upp Autocrypt delar den informationen med andra Autocrypt-anpassade applikationer på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
@@ -326,11 +343,17 @@
     <string name="systemmsg_member_added">Medlem %1$s lades till.</string>
     <string name="systemmsg_member_removed">Medlem %1$s togs bort.</string>
     <string name="systemmsg_group_left">Lämnade gruppen.</string>
+    <!-- screen lock -->
+    <string name="screenlock_title">Skärmlås</string>
+    <string name="screenlock_explain">Lås åtkomst till Delta Chat med Androids skärmlås eller fingeravtryck</string>
+    <string name="screenlock_unlock_title">Lås upp Delta Chat</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kod</string>
     <string name="qrshow_title">QR-kod för inbjudning</string>
     <string name="qrshow_join_group_title">QR-kod för inbjudning</string>
     <string name="qrshow_join_contact_title">QR-kod för inbjudning</string>
+    <string name="notify_mark_all_read">Markera alla som lästa</string>
+    <string name="notify_mark_read">Läst</string>
     <string name="notify_media_message">Multimediameddelande</string>
     <string name="notify_reply_button">Svara</string>
     <string name="notify_new_message">Nytt meddelande</string>
@@ -360,6 +383,7 @@
     <string name="global_menu_view_floatontop_desktop">Behåll fönstret längst fram</string>
     <string name="global_menu_view_developer_desktop">Utvecklare</string>
     <string name="global_menu_view_developer_tools_desktop">Utvecklingsverktyg</string>
+    <string name="global_menu_help_desktop">Hjälp</string>
     <string name="global_menu_help_learn_desktop">Lär dig mer om Delta Chat</string>
     <string name="global_menu_help_contribute_desktop">Bidra på GitHub</string>
     <string name="global_menu_help_report_desktop">Skicka feedback</string>
@@ -373,6 +397,8 @@
     <string name="no_archived_chats_desktop">Inga arkiverade chattar</string>
     <string name="no_chats_desktop">Inga chattar</string>
     <string name="verified_desktop">verifierad</string>
+    <string name="remove_desktop">Ta bort</string>
+    <string name="save_desktop">Save</string>
     <string name="show_qr_verify_code_desktop">Visa QR-kod för inbjudning</string>
     <string name="show_qr_invite_code_desktop">Visa QR-kod för inbjudning</string>
     <string name="add_contact_desktop">Lägg till kontakt</string>

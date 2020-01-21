@@ -13,11 +13,17 @@
     <string name="none">Ingen</string>
     <string name="open">Åbne</string>
     <string name="delete">Slette</string>
+    <string name="forward">Videresend</string>
+    <string name="mute">Udsæt</string>
+    <string name="save">Gem</string>
+    <string name="media">Medie</string>
     <string name="not_now">Ikke nu</string>
     <string name="never">Aldrig</string>
     <string name="one_moment">Et øjeblik…</string>
     <string name="done">Færdig</string>
     <string name="undo">Genskabe</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Næste</string>
     <string name="error">Fejl</string>
     <string name="error_x">Fejl: %1$s</string>
     <string name="error_no_network">Netværk utilgængelig</string>
@@ -30,6 +36,8 @@
     <string name="bad_email_address">Ugyldig e-post adresse.</string>
     <string name="password">Adgangskode</string>
     <string name="now">Nu</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Fare</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min.</string>
     <string name="today">I dag</string>
@@ -512,6 +520,8 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypteret besked</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="welcome_desktop">Velkommen til Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Kendte konti</string>
     <string name="global_menu_preferences_language_desktop">Vælge sprog...</string>
     <string name="global_menu_file_desktop">Fil</string>
