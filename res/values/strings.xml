@@ -163,7 +163,6 @@
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Scroll to the bottom</string>
     <string name="menu_scroll_to_top">Scroll to the top</string>
-    <string name="menu_invite">Invite friends</string>
     <string name="menu_help">Help</string>
     <string name="menu_select_all">Select all</string>
     <string name="menu_expand">Expand</string>
@@ -301,11 +300,6 @@
     <string name="tab_gallery_empty_hint">Images and videos shared in this chat will be displayed here.</string>
     <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
     <string name="media_preview">Media preview</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Friends don\'t let friends locked in messaging silos.</string>
-    <string name="invite_default_text">Let\'s switch to Delta Chat - %1$s - you can text me at %2$s</string>
 
 
     <!-- welcome and login -->
@@ -360,10 +354,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">on</string>
-    <string name="pref_summary_off">off</string>
-    <string name="pref_summary_default">default</string>
-    <string name="pref_summary_custom">custom</string>
     <string name="pref_using_custom">Using custom: %s</string>
     <string name="pref_using_default">Using default: %s</string>
     <string name="pref_profile_info_headline">Your profile info</string>
@@ -618,13 +608,10 @@
     <string name="verified_desktop">verified</string>
     <string name="remove_desktop">Remove</string>
     <string name="save_desktop">Save</string>
-    <string name="show_qr_verify_code_desktop">Show QR invite code</string>
-    <string name="show_qr_invite_code_desktop">Show QR invite code</string>
     <string name="add_contact_desktop">Add contact</string>
     <string name="login_required_desktop">required</string>
     <string name="name_desktop">Name</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt key transfer</string>
-    <string name="initiate_key_transfer_title_desktop">Initiate key transfer</string>
     <string name="initiate_key_transfer_desktop">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps. The setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
     <string name="reply_to_message_desktop">Reply to message</string>
     <string name="select_group_image_desktop">Select group image</string>

@@ -67,7 +67,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   private static final String PREFERENCE_CATEGORY_APPEARANCE     = "preference_category_appearance";
   private static final String PREFERENCE_CATEGORY_CHATS          = "preference_category_chats";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
-  private static final String PREFERENCE_CATEGORY_INVITE         = "preference_category_invite";
   private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
 
   public static final int REQUEST_CODE_SET_BACKGROUND            = 11;
@@ -148,10 +147,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
 
-      Preference invitePreference = this.findPreference(PREFERENCE_CATEGORY_INVITE);
-      invitePreference.setVisible(false);
-      invitePreference.setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_INVITE));
-
       this.findPreference(PREFERENCE_CATEGORY_HELP)
           .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_HELP));
 
@@ -195,7 +190,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       Drawable appearance    = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_brightness_6_white_24dp));
       Drawable chats         = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_forum_white_24dp));
       Drawable advanced      = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_advanced_white_24dp));
-      Drawable invite        = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_mood_white_24dp));
       Drawable help          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_help_white_24dp));
 
       int[]      tintAttr   = new int[]{R.attr.pref_icon_tint};
@@ -208,7 +202,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       DrawableCompat.setTint(appearance, color);
       DrawableCompat.setTint(chats, color);
       DrawableCompat.setTint(advanced, color);
-      DrawableCompat.setTint(invite, color);
       DrawableCompat.setTint(help, color);
 
       this.findPreference(PREFERENCE_CATEGORY_NOTIFICATIONS).setIcon(notifications);
@@ -216,7 +209,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       this.findPreference(PREFERENCE_CATEGORY_APPEARANCE).setIcon(appearance);
       this.findPreference(PREFERENCE_CATEGORY_CHATS).setIcon(chats);
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED).setIcon(advanced);
-      this.findPreference(PREFERENCE_CATEGORY_INVITE).setIcon(invite);
       this.findPreference(PREFERENCE_CATEGORY_HELP).setIcon(help);
     }
 
@@ -246,9 +238,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();
-          break;
-        case PREFERENCE_CATEGORY_INVITE:
-          startActivity(new Intent(getActivity(), InviteActivity.class));
           break;
         case PREFERENCE_CATEGORY_HELP:
           startActivity(new Intent(getActivity(), LocalHelpActivity.class));
