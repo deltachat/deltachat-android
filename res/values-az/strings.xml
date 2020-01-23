@@ -157,7 +157,6 @@
     <string name="menu_pause">Dayandır</string>
     <string name="menu_scroll_to_bottom">Altına keçin</string>
     <string name="menu_scroll_to_top">Yuxarı qalxmaq</string>
-    <string name="menu_invite">Dost dəvət et</string>
     <string name="menu_help">Kömək</string>
     <string name="menu_select_all">Hamısını səç</string>
     <string name="menu_expand">Genişləndirmək</string>
@@ -187,7 +186,6 @@
     <string name="share_location_for_one_hour">1 saat üçün</string>
     <string name="share_location_for_two_hours">2 saat üçün </string>
     <string name="share_location_for_six_hours">6 saat üçün</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu qrupu tərk etmək istədiyinizə əminsiniz?</string>
@@ -288,11 +286,6 @@
     <string name="tab_gallery_empty_hint">Bu çatda paylaşılan şəkillər və videolar burada nümayiş olunacaq.</string>
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Dostlar dostlar mesaj bunkerində kilidlənməyə imkan vermirlər.</string>
-    <string name="invite_default_text">Gəl  Delta Chat-a keçək %1$s - sən mənə mesaj yaza bilərsə %2$s- ə mesaj yaza bilərsən</string>
 
 
     <!-- welcome and login -->
@@ -335,10 +328,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">açıq</string>
-    <string name="pref_summary_off">bağlı</string>
-    <string name="pref_summary_default">Cari olan</string>
-    <string name="pref_summary_custom">Xüsusi</string>
     <string name="pref_using_custom">:Xüsusi istifadə %s</string>
     <string name="pref_using_default">Varsayılan istifadə: %s</string>
     <string name="pref_profile_info_headline">Profil məlumatınız</string>
@@ -576,13 +565,10 @@
     <string name="verified_desktop">təsdiqləndi</string>
     <string name="remove_desktop">Sil</string>
     <string name="save_desktop">Saxla</string>
-    <string name="show_qr_verify_code_desktop">Dəvət QR-kodu göstər</string>
-    <string name="show_qr_invite_code_desktop">Dəvət QR-kodu göstər</string>
     <string name="add_contact_desktop">Kontakt əlavə et</string>
     <string name="login_required_desktop">tələb olunur</string>
     <string name="name_desktop">Ad</string>
     <string name="autocrypt_key_transfer_desktop">Avtoşifrələmə açarın ötürülməsi</string>
-    <string name="initiate_key_transfer_title_desktop">Açar ötürülməsinin təşəbbüsü</string>
     <string name="initiate_key_transfer_desktop">Autocrypt konfiqurasiya mesajı təhlükəsiz olaraq \"sondan sona\" parametrinizi Autocrypt ilə uyğun olan digər tətbiqlərlə bölüşür. Quraşdırma burada göstərilir və başqa bir cihazda yığılmış olmalıdır. Bir quraşdırma kodu ilə şifrələ olunacaq.</string>
     <string name="reply_to_message_desktop">Mesaja cavab ver</string>
     <string name="select_group_image_desktop">Qrup şəklini seç</string>

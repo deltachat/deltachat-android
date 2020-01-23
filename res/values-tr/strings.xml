@@ -163,7 +163,6 @@
     <string name="menu_pause">Duraklat</string>
     <string name="menu_scroll_to_bottom">Alta kaydır</string>
     <string name="menu_scroll_to_top">Üste kaydır</string>
-    <string name="menu_invite">Arkadaşları davet et</string>
     <string name="menu_help">Yardım</string>
     <string name="menu_select_all">Tümünü seç</string>
     <string name="menu_expand">Genişlet</string>
@@ -198,6 +197,7 @@
     <string name="share_location_for_two_hours">2 saatliğine</string>
     <string name="share_location_for_six_hours">6 saatliğine</string>
 
+    <string name="file_saved_to">Dosya \"%1$s\" üzerine kaydedildi.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
@@ -300,11 +300,6 @@
     <string name="tab_gallery_empty_hint">Bu sohbette paylaşılan görseller ve videolar burada görüntülenecek.</string>
     <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler, müzik ve diğer dosyalar burada görüntülenecek.</string>
     <string name="media_preview">Ortam önizlemesi</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Arkadaşlar, arkadaşların iletileşme silolarına kilitlenmesine izin vermez.</string>
-    <string name="invite_default_text">Delta Chat\'e geçelim - %1$s - %2$s üzerinden bana yazabilirsiniz</string>
 
 
     <!-- welcome and login -->
@@ -359,10 +354,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">açık</string>
-    <string name="pref_summary_off">kapalı</string>
-    <string name="pref_summary_default">varsayılan</string>
-    <string name="pref_summary_custom">özel</string>
     <string name="pref_using_custom">Özel kullanılıyor: %s</string>
     <string name="pref_using_default">Varsayılan kullanılıyor: %s</string>
     <string name="pref_profile_info_headline">Profil bilginiz</string>
@@ -617,13 +608,10 @@
     <string name="verified_desktop">doğrulanan</string>
     <string name="remove_desktop">Kaldır</string>
     <string name="save_desktop">Kaydet</string>
-    <string name="show_qr_verify_code_desktop">QR davet kodunu göster</string>
-    <string name="show_qr_invite_code_desktop">QR davet kodunu göster</string>
     <string name="add_contact_desktop">Kişi ekle</string>
     <string name="login_required_desktop">gerekli</string>
     <string name="name_desktop">Ad</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt anahtar aktarımı</string>
-    <string name="initiate_key_transfer_title_desktop">Anahtar aktarımına başla</string>
     <string name="initiate_key_transfer_desktop">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır. Ayarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="reply_to_message_desktop">İletiye yanıt ver</string>
     <string name="select_group_image_desktop">Grup görseli seç</string>

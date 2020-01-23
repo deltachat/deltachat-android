@@ -147,7 +147,6 @@
     <string name="share_location_for_two_hours">2 மணிகள்</string>
     <string name="share_location_for_six_hours">6 மணிகள்</string>
 
-
     <!-- get confirmations -->
     <string name="ask_leave_group">இந்த குழுவில் இருந்து வெளியேறவா ?</string>
     <string name="ask_forward">தேர்வு செய்யப்பட்ட செய்திகளை இவற்றுக்கு %1$s முன்னோக்கி அனுப்பவா ?</string>
@@ -186,10 +185,6 @@
     <string name="login_smtp_password">SMTP க்கான கடவுச்சொல்</string>
     <string name="login_smtp_server">SMTP க்கான சேவகன்</string>
     <string name="login_smtp_port">SMTP போர்ட்</string>
-    <!-- preferences -->
-    <string name="pref_summary_on">இயக்க</string>
-    <string name="pref_summary_off">நிறுத்தவும்</string>
-    <string name="pref_summary_default">இயல்புநிலை</string>
     <string name="pref_profile_info_headline">உங்கள் சுயவிவரத் தகவல்</string>
     <string name="pref_trim_headline">செய்தி ஒழுங்கமைத்தல்</string>
     <string name="pref_trim_option">பழைய செய்திகளை நீக்க</string>

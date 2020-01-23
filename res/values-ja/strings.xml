@@ -153,7 +153,6 @@
     <string name="share_location_for_two_hours">2時間</string>
     <string name="share_location_for_six_hours">6時間</string>
 
-
     <!-- get confirmations -->
     <string name="ask_leave_group">本当に退室しますか</string>
     <string name="ask_block_contact">この連絡先を拒否しますか</string>
@@ -191,7 +190,7 @@
     <string name="tab_links">ﾘﾝｸ</string>
     <string name="tab_map">地図</string>
     <string name="media_preview">メディアのプレビュー</string>
-    
+
 
     <string name="welcome_start_messaging">開始する</string>
     <string name="login_title">ﾛｸﾞｲﾝ</string>
@@ -209,10 +208,6 @@
     <string name="login_smtp_server">SMTPｻｰﾊﾞｰ</string>
     <string name="login_smtp_port">SMTPﾎﾟｰﾄ</string>
     <string name="login_smtp_security">SMTP暗号方式</string>
-    <!-- preferences -->
-    <string name="pref_summary_on">入</string>
-    <string name="pref_summary_off">切</string>
-    <string name="pref_summary_default">標準</string>
     <string name="pref_trim_headline">メッセージの削減</string>
     <string name="pref_trim_option">古いメッセージの削除</string>
     <string name="pref_trim_option_explain">すべての会話で長さが一定値以下になるよう整理する</string>
@@ -319,8 +314,6 @@ https://delta.chat</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="no_chats_desktop">ﾁｬｯﾄ無し</string>
     <string name="remove_desktop">削除</string>
-    <string name="show_qr_verify_code_desktop">自分のQRｺｰﾄﾞを見る</string>
-    <string name="show_qr_invite_code_desktop">自分のQRｺｰﾄﾞを見る</string>
     <string name="add_contact_desktop">連絡先を追加</string>
     <string name="login_required_desktop">>保存</string>
     <string name="name_desktop">名前</string>

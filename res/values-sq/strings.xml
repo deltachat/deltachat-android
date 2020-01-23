@@ -163,7 +163,6 @@
     <string name="menu_pause">Pushoje</string>
     <string name="menu_scroll_to_bottom">Rrëshqit drejt fundit</string>
     <string name="menu_scroll_to_top">Rrëshqit sipër në krye</string>
-    <string name="menu_invite">Ftoni shokë</string>
     <string name="menu_help">Nidhmë</string>
     <string name="menu_select_all">Përzgjidhi krejt</string>
     <string name="menu_expand">Zgjeroje</string>
@@ -198,6 +197,7 @@
     <string name="share_location_for_two_hours">për 2 orë</string>
     <string name="share_location_for_six_hours">për 6 orë</string>
 
+    <string name="file_saved_to">Kartela u ruajt te \"%1$s\".</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
@@ -300,11 +300,6 @@
     <string name="tab_gallery_empty_hint">Figurat dhe videot e dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_docs_empty_hint">Dokumentet, muzika dhe kartela të tjera të dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="media_preview">Paraparje media</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Kush të ka shok, s\’të lë kyçur në silos mesazhesh.</string>
-    <string name="invite_default_text">Le të hidhemi në Delta Chat - %1$s - mund të më dërgoni mesazhe tekst te %2$s</string>
 
 
     <!-- welcome and login -->
@@ -359,10 +354,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">on</string>
-    <string name="pref_summary_off">off</string>
-    <string name="pref_summary_default">parazgjedhje</string>
-    <string name="pref_summary_custom">vetjake</string>
     <string name="pref_using_custom">Po përdoret vetjak: %s</string>
     <string name="pref_using_default">Po përdoret parazgjedhje: %s</string>
     <string name="pref_profile_info_headline">Të dhëna tuajat të profilit</string>
@@ -616,13 +607,10 @@
     <string name="verified_desktop">e verifikuar</string>
     <string name="remove_desktop">Hiqe</string>
     <string name="save_desktop">Ruaje</string>
-    <string name="show_qr_verify_code_desktop">Shfaq kod QR ftese</string>
-    <string name="show_qr_invite_code_desktop">Shfaq kod QR ftese</string>
     <string name="add_contact_desktop">Shtoni kontakt</string>
     <string name="login_required_desktop">e domosdoshme</string>
     <string name="name_desktop">Emër</string>
     <string name="autocrypt_key_transfer_desktop">Shpërngulje kyçi Autocrypt</string>
-    <string name="initiate_key_transfer_title_desktop">Nis shpërngulje kyçi</string>
     <string name="initiate_key_transfer_desktop">Një Mesazh Rregullimi Autocrypt-i ndan në mënyrë të sigurt formësimin tuaj skaj-më-skaj me aplikacione të tjera të përputhshme me Autocrypt-in. Formësimi do të fshehtëzohet përmes një kodi rregullimi, i cili shfaqet këtu dhe duhet dhënë në pajisjen tjetër.</string>
     <string name="reply_to_message_desktop">Përgjigjuni mesazhit</string>
     <string name="select_group_image_desktop">Përzgjidhni figurë grupi</string>

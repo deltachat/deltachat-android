@@ -134,7 +134,6 @@
     <string name="menu_pause">暫停</string>
     <string name="menu_scroll_to_bottom">捲動到底端</string>
     <string name="menu_scroll_to_top">捲動到頂端</string>
-    <string name="menu_invite">邀請朋友</string>
     <string name="menu_help">求助</string>
     <string name="menu_select_all">全選</string>
     <string name="menu_expand">展開</string>
@@ -161,7 +160,6 @@
     <string name="share_location_for_one_hour">1小時</string>
     <string name="share_location_for_two_hours">2小時</string>
     <string name="share_location_for_six_hours">6小時</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">確定要離開本群組？</string>
@@ -252,11 +250,6 @@
     <string name="tab_gallery_empty_hint">本對話中共享的圖片和視訊會顯示在這裡。</string>
     <string name="tab_docs_empty_hint">本對話中共享的文件、音樂和其它檔案會顯示在這裡。</string>
     <string name="media_preview">媒體預覽</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">友情不應該被訊息的孤島分隔。</string>
-    <string name="invite_default_text">一起來用 Delta Chat 吧! %1$s -- 你可以傳訊息到 %2$s 給我</string>
 
 
     <!-- welcome and login -->
@@ -301,10 +294,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">開</string>
-    <string name="pref_summary_off">關</string>
-    <string name="pref_summary_default">預設</string>
-    <string name="pref_summary_custom">自訂</string>
     <string name="pref_using_custom">使用自訂值: %s</string>
     <string name="pref_using_default">使用預設值: %s</string>
     <string name="pref_profile_info_headline">你的個人資料</string>

@@ -145,7 +145,6 @@
     <string name="menu_play">Грати</string>
     <string name="menu_pause">Пауза</string>
     <string name="menu_scroll_to_bottom">Перейти в кінець</string>
-    <string name="menu_invite">Запросити друзів</string>
     <string name="menu_help">Допомога</string>
     <string name="menu_select_all">Вибрати все</string>
     <string name="menu_expand">Розширити</string>
@@ -231,11 +230,6 @@
     <string name="group_self_not_in_group">Щоб виконати цю дію, Ви повинні бути учасником групи.</string>
     <string name="profile_encryption">Шифрування</string>
     <string name="media_preview">Попередній перегляд медіа</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Друзі не залишають друзів без спілкування.</string>
-    <string name="invite_default_text">Пропоную перейти на Delta Chat – %1$s– Ви можете написати мені на %2$s</string>
 
 
     <!-- welcome and login -->
@@ -276,10 +270,6 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслати...</string>
     <!-- preferences -->
-    <string name="pref_summary_on">увімкн.</string>
-    <string name="pref_summary_off">вимкн.</string>
-    <string name="pref_summary_default">за замовчуванням</string>
-    <string name="pref_summary_custom">персоналізовано</string>
     <string name="pref_using_custom">Використовувати персоналізовано: %s</string>
     <string name="pref_using_default">Використовувати за замовчуванням: %s</string>
     <string name="pref_profile_info_headline">Ваш профіль</string>
@@ -498,13 +488,10 @@
     <string name="verified_desktop">Перевірено</string>
     <string name="remove_desktop">Видалити</string>
     <string name="save_desktop">Зберегти</string>
-    <string name="show_qr_verify_code_desktop">Показати QR-код запрошення</string>
-    <string name="show_qr_invite_code_desktop">Показати QR-код запрошення</string>
     <string name="add_contact_desktop">Додати контакт</string>
     <string name="login_required_desktop">потрібний</string>
     <string name="name_desktop">Ім\'я</string>
     <string name="autocrypt_key_transfer_desktop">Передавання ключів Autocrypt</string>
-    <string name="initiate_key_transfer_title_desktop">Ініціювати передачу ключа</string>
     <string name="initiate_key_transfer_desktop">Повідомлення з параметрами Autocrypt слугує для безпечного передавання параметрів наскрізного шифрування між власними додатками для роботи з електронною поштою, що підтримують протокол Autocrypt. Ці параметри шифруються з використанням спеціального інсталяційного коду, що показаний тут і повинен бути введений у налаштовуємому додатку.</string>
     <string name="reply_to_message_desktop">Відповісти на повідомлення</string>
     <string name="select_group_image_desktop">Вибрати зображення групи</string>

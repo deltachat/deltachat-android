@@ -148,7 +148,6 @@
     <string name="menu_pause">Szünet</string>
     <string name="menu_scroll_to_bottom">Ugrás az aljára</string>
     <string name="menu_scroll_to_top">Ugrás a tetejére</string>
-    <string name="menu_invite">Barátok meghívása</string>
     <string name="menu_help">Segítség</string>
     <string name="menu_select_all">Összes kiválasztása</string>
     <string name="menu_edit_name">Név módosítása</string>
@@ -172,7 +171,6 @@
     <string name="share_location_for_one_hour">1 óráig</string>
     <string name="share_location_for_two_hours">2 óráig</string>
     <string name="share_location_for_six_hours">6 óráig</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Biztosan ki akarsz lépni a csoportból?</string>
@@ -228,7 +226,7 @@
     <string name="tab_links">Linkek</string>
     <string name="tab_map">Térkép</string>
     <string name="media_preview">Média előnézete</string>
-    
+
 
     <string name="welcome_start_messaging">Kezdj csevegni!</string>
     <string name="login_subheader">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk. Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
@@ -246,10 +244,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Továbbítás…</string>
-    <!-- preferences -->
-    <string name="pref_summary_on">be</string>
-    <string name="pref_summary_off">ki</string>
-    <string name="pref_summary_default">alapértelmezett</string>
     <string name="pref_profile_info_headline">Profilod adatai</string>
     <string name="pref_profile_photo">Profilkép</string>
     <string name="pref_trim_headline">Üzenetek csonkítása</string>

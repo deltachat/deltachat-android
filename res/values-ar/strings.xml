@@ -127,7 +127,6 @@
     <string name="menu_share">شارك</string>
     <string name="menu_play">شغّل</string>
     <string name="menu_pause">تعليق مؤقت</string>
-    <string name="menu_invite">دعوة أصدقاء</string>
     <string name="menu_help">المساعدة</string>
     <string name="menu_select_all">اختر الكل</string>
     <string name="menu_edit_name">تعديل الإسم</string>
@@ -171,7 +170,7 @@
     <string name="tab_links">الروابط</string>
     <string name="tab_map">الخريطة</string>
     <string name="media_preview">معاينة الصورة</string>
-    
+
 
     <string name="welcome_start_messaging">لنبدأ التواصل</string>
     <string name="login_title">الولوج</string>
@@ -192,10 +191,6 @@
     <string name="used_settings">الإعدادات المُستَخدَمة:</string>
     <string name="delete_account">حذف الحساب</string>
     <!-- preferences -->
-    <string name="pref_summary_on">يعمل</string>
-    <string name="pref_summary_off">معطّل</string>
-    <string name="pref_summary_default">افتراضي</string>
-    <string name="pref_summary_custom">مخصص</string>
     <string name="pref_using_custom">استخدام التخصيص: %s</string>
     <string name="pref_using_default">مستخدم كافتراضي: %s</string>
     <string name="pref_profile_info_headline">معلومات ملفك التعريفي</string>

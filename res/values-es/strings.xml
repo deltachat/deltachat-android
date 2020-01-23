@@ -163,7 +163,6 @@
     <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Desplazarse al final</string>
     <string name="menu_scroll_to_top">Desplazarse al inicio</string>
-    <string name="menu_invite">Invitar amigos</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_select_all">Seleccionar todo</string>
     <string name="menu_expand">Expandir</string>
@@ -197,7 +196,6 @@
     <string name="share_location_for_one_hour">por 1 hora</string>
     <string name="share_location_for_two_hours">por 2 horas</string>
     <string name="share_location_for_six_hours">por 6 horas</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">¿Seguro que deseas abandonar este grupo? </string>
@@ -300,11 +298,6 @@
     <string name="tab_gallery_empty_hint">Las imágenes y videos compartidos en este chat se mostrarán aquí.</string>
     <string name="tab_docs_empty_hint">Documentos, música y otros archivos compartidos en este chat se mostrarán aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Los amigos no dejan a los amigos encerrados en silos de mensajería.</string>
-    <string name="invite_default_text">Cambiémonos a Delta Chat - %1$s - puedes enviarme un mensaje a %2$s</string>
 
 
     <!-- welcome and login -->
@@ -359,10 +352,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">activado</string>
-    <string name="pref_summary_off">desactivado</string>
-    <string name="pref_summary_default">por defecto</string>
-    <string name="pref_summary_custom">personalizado</string>
     <string name="pref_using_custom">Usando valor personalizado: %s</string>
     <string name="pref_using_default">Usando valor por defecto: %s</string>
     <string name="pref_profile_info_headline">Información de perfil </string>
@@ -612,13 +601,10 @@
     <string name="verified_desktop">verificado</string>
     <string name="remove_desktop">Eliminar</string>
     <string name="save_desktop">Guardar</string>
-    <string name="show_qr_verify_code_desktop">Mostrar código de invitación QR</string>
-    <string name="show_qr_invite_code_desktop">Mostrar código de invitación QR</string>
     <string name="add_contact_desktop">Añadir contacto</string>
     <string name="login_required_desktop">requerido</string>
     <string name="name_desktop">Nombre</string>
     <string name="autocrypt_key_transfer_desktop">Transferencia de clave Autocrypt</string>
-    <string name="initiate_key_transfer_title_desktop">Iniciar transferencia de clave</string>
     <string name="initiate_key_transfer_desktop">Un Mensaje de Configuración Autocrypt comparte de forma segura su configuración de extremo a extremo con otras aplicaciones compatibles con Autocrypt. La configuración se cifrará mediante un código de configuración que se muestra aquí y debe escribirse en el otro dispositivo.</string>
     <string name="reply_to_message_desktop">Responder al mensaje</string>
     <string name="select_group_image_desktop">Seleccionar imagen de grupo</string>

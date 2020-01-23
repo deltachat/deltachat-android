@@ -163,7 +163,6 @@
     <string name="menu_pause">Pauzeren</string>
     <string name="menu_scroll_to_bottom">Ga naar het einde</string>
     <string name="menu_scroll_to_top">Ga naar het begin</string>
-    <string name="menu_invite">Vrienden uitnodigen</string>
     <string name="menu_help">Hulp</string>
     <string name="menu_select_all">Alles selecteren</string>
     <string name="menu_expand">Uitvouwen</string>
@@ -198,6 +197,7 @@
     <string name="share_location_for_two_hours">2 uur lang</string>
     <string name="share_location_for_six_hours">6 uur lang</string>
 
+    <string name="file_saved_to">Het bestand is opgeslagen in \'%1$s\'.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
@@ -300,11 +300,6 @@
     <string name="tab_gallery_empty_hint">De in dit gesprek gedeelde afbeeldingen en video\'s verschijnen hier.</string>
     <string name="tab_docs_empty_hint">De in dit gesprek gedeelde documenten, muziek en overige bestanden verschijnen hier.</string>
     <string name="media_preview">Mediavoorbeeld</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Vrienden houden vrienden niet opgesloten in berichtkluizen.</string>
-    <string name="invite_default_text">Laten we overgaan op Delta Chat - %1$s - je kunt me een bericht sturen op %2$s</string>
 
 
     <!-- welcome and login -->
@@ -359,10 +354,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">aan</string>
-    <string name="pref_summary_off">uit</string>
-    <string name="pref_summary_default">standaard</string>
-    <string name="pref_summary_custom">aangepast</string>
     <string name="pref_using_custom">Aangepast wordt gebruikt: %s</string>
     <string name="pref_using_default">Standaard wordt gebruikt: %s</string>
     <string name="pref_profile_info_headline">Mijn profiel</string>
@@ -617,13 +608,10 @@
     <string name="verified_desktop">goedgekeurd</string>
     <string name="remove_desktop">Verwijderen</string>
     <string name="save_desktop">Opslaan</string>
-    <string name="show_qr_verify_code_desktop">QR-uitnodigingscode tonen</string>
-    <string name="show_qr_invite_code_desktop">QR-uitnodigingscode tonen</string>
     <string name="add_contact_desktop">Contactpersoon toevoegen</string>
     <string name="login_required_desktop">vereist</string>
     <string name="name_desktop">Naam</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt-sleuteloverdracht</string>
-    <string name="initiate_key_transfer_title_desktop">Sleuteloverdracht starten</string>
     <string name="initiate_key_transfer_desktop">Een \'Autocrypt-instelbericht\' deelt je end-to-end-instellingen veilig met andere Autocrypt-compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="reply_to_message_desktop">Bericht beantwoorden</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>

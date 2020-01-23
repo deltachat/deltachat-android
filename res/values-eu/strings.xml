@@ -163,7 +163,6 @@
     <string name="menu_pause">Pausatu</string>
     <string name="menu_scroll_to_bottom">Korritu behealdera</string>
     <string name="menu_scroll_to_top">Korritu goialdera</string>
-    <string name="menu_invite">Gonbidatu lagunak</string>
     <string name="menu_help">Laguntza</string>
     <string name="menu_select_all">Hautatu guztiak</string>
     <string name="menu_expand">Hedatu</string>
@@ -197,7 +196,6 @@
     <string name="share_location_for_one_hour">Ordu 1</string>
     <string name="share_location_for_two_hours">2 orduz</string>
     <string name="share_location_for_six_hours">6 orduz</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ziur talde honetatik atera nahi duzula?</string>
@@ -300,11 +298,6 @@
     <string name="tab_gallery_empty_hint">Txat honetan partekatutako irudi eta bideoak agertuko dira hemen</string>
     <string name="tab_docs_empty_hint">Txat honetan partekatutako dokumentuak, musika, eta bestelako fitxategiak agertuko dira hemen</string>
     <string name="media_preview">Multimediaren aurrebista</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Lagun onek ez diete bere lagunei itxitako mezularitza guneetan giltzaperatzea.</string>
-    <string name="invite_default_text">Alda gaitezen Delta Chat-era %1$s - %2$s helbidera idatzi diezadakezu</string>
 
 
     <!-- welcome and login -->
@@ -359,10 +352,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">bai</string>
-    <string name="pref_summary_off">ez</string>
-    <string name="pref_summary_default">lehenetsia</string>
-    <string name="pref_summary_custom">pertsonalizatua</string>
     <string name="pref_using_custom">Pertsonalizatua erabiltzen: %s</string>
     <string name="pref_using_default">Lehenetsia erabiltzen: %s</string>
     <string name="pref_profile_info_headline">Zure profileko informazioa</string>
@@ -618,13 +607,10 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="verified_desktop">egiaztatuta</string>
     <string name="remove_desktop">Kendu</string>
     <string name="save_desktop">Gorde</string>
-    <string name="show_qr_verify_code_desktop">Erakutsi gonbidapenerako QR kodea</string>
-    <string name="show_qr_invite_code_desktop">Erakutsi gonbidapenerako QR kodea</string>
     <string name="add_contact_desktop">Gehitu kontaktua</string>
     <string name="login_required_desktop">derrigorrezkoa</string>
     <string name="name_desktop">Izena</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt gakoaren transferentzia</string>
-    <string name="initiate_key_transfer_title_desktop">Hasi gakoaren transferentzia</string>
     <string name="initiate_key_transfer_desktop">Autocrypt ezarpen mezu batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="reply_to_message_desktop">Erantzun mezuari</string>
     <string name="select_group_image_desktop">Hautatu taldearen irudia</string>

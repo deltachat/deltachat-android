@@ -233,7 +233,7 @@
     <string name="tab_gallery">Галерија</string>
     <string name="tab_docs">Документи</string>
     <string name="media_preview">Преглед медијума</string>
-    
+
 
     <string name="welcome_start_messaging">Почните ћаскање</string>
     <string name="login_subheader">За познате пружаоце услуге е-поште, додатне поставке се одређују аутоматски. Каткад, морате омогућити ИМАП у поставкама на веб сучељу ваше е-поште.\n\nПосаветујте се са пружаоцем услуге е-поште или пријатељима ако наиђете на проблеме.</string>
@@ -262,10 +262,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Проследи за…</string>
-    <!-- preferences -->
-    <string name="pref_summary_on">Укљ</string>
-    <string name="pref_summary_off">Иск</string>
-    <string name="pref_summary_default">Подразумевано</string>
     <string name="pref_profile_info_headline">Подаци вашег профила</string>
     <string name="pref_trim_headline">Скраћивање порука</string>
     <string name="pref_trim_option">Бриши старе поруке</string>
@@ -386,8 +382,6 @@
     <string name="no_chats_desktop">Још нема ћаскања.</string>
     <string name="remove_desktop">Уклони</string>
     <string name="save_desktop">Сачувај</string>
-    <string name="show_qr_verify_code_desktop">Прикажи бар-кôд за позивницу</string>
-    <string name="show_qr_invite_code_desktop">Прикажи бар-кôд за позивницу</string>
     <string name="add_contact_desktop">Нови контакт</string>
     <string name="name_desktop">Име</string>
     <string name="export_backup_desktop">Извези резервну копију</string>

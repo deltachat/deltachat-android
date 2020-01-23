@@ -148,7 +148,6 @@
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Rulle til bunden</string>
     <string name="menu_scroll_to_top">Rulle til toppen</string>
-    <string name="menu_invite">Invitere venner</string>
     <string name="menu_help">Hjælp</string>
     <string name="menu_select_all">Vælge alle</string>
     <string name="menu_expand">Udvide</string>
@@ -175,7 +174,6 @@
     <string name="share_location_for_one_hour">for 1 time</string>
     <string name="share_location_for_two_hours">for 2 timer</string>
     <string name="share_location_for_six_hours">for 6 timer</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Forlade denne gruppe?</string>
@@ -272,11 +270,6 @@
     <string name="tab_gallery_empty_hint">Billder og video delt i denne samtale vises her.</string>
     <string name="tab_docs_empty_hint">Dokumenter, musik og andre filer delt i denne samtale vises her.</string>
     <string name="media_preview">Medie forhåndvisning</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Venner lader ikke venner være låst i besked siloer.</string>
-    <string name="invite_default_text">Skift til Delta Chat - %1$s - skriv til mig på %2$s</string>
 
 
     <!-- welcome and login -->
@@ -321,10 +314,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">til</string>
-    <string name="pref_summary_off">fra</string>
-    <string name="pref_summary_default">standard</string>
-    <string name="pref_summary_custom">tilpasset</string>
     <string name="pref_using_custom">Bruger tilpasset: %s</string>
     <string name="pref_using_default">Bruger standard: %s</string>
     <string name="pref_profile_info_headline">Profil information</string>
@@ -554,13 +543,10 @@
     <string name="verified_desktop">efterprøvet</string>
     <string name="remove_desktop">Fjerne</string>
     <string name="save_desktop">Gemme</string>
-    <string name="show_qr_verify_code_desktop">Vise QR invitere kode</string>
-    <string name="show_qr_invite_code_desktop">Vise QR invitere kode</string>
     <string name="add_contact_desktop">Tilføje kontakt</string>
     <string name="login_required_desktop">påkrævet</string>
     <string name="name_desktop">Navn</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt nøgle overførsel</string>
-    <string name="initiate_key_transfer_title_desktop">Starte nøgle overførsel</string>
     <string name="initiate_key_transfer_desktop">En Autocrypt opsætning beskeddeler sikkert ende-til-ende opsætning med andre Autocrypt kompatible programmer. Opsætninger er krypteret med en opsætning kode som er vist her og skal indtastes på de andre enheder.</string>
     <string name="reply_to_message_desktop">Svare besked</string>
     <string name="select_group_image_desktop">Vælge gruppe billede</string>

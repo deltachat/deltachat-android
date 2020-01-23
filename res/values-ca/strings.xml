@@ -139,7 +139,6 @@
     <string name="menu_play">Reprodueix</string>
     <string name="menu_pause">Pausa</string>
     <string name="menu_scroll_to_bottom">Vés al final</string>
-    <string name="menu_invite">Convida-hi amics</string>
     <string name="menu_help">Ajuda</string>
     <string name="menu_select_all">Selecciona-ho tot</string>
     <string name="menu_expand">Desplega</string>
@@ -162,7 +161,6 @@
     <string name="share_location_for_one_hour">durant 1 hora</string>
     <string name="share_location_for_two_hours">durant 2 hores</string>
     <string name="share_location_for_six_hours">durant 6 hores</string>
-
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Segur que voleu deixar aquest grup?</string>
@@ -236,11 +234,6 @@
     <string name="tab_contact">Contacte</string>
     <string name="tab_gallery">Galeria</string>
     <string name="media_preview">Previsualització multimèdia</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">Els amics no deixen els amics tancats en sitges de missatgeria.</string>
-    <string name="invite_default_text">Canviem a Delta Chat - %1$s - pots escriure\'m a %2$s</string>
 
 
     <!-- welcome and login -->
@@ -285,10 +278,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">on</string>
-    <string name="pref_summary_off">off</string>
-    <string name="pref_summary_default">per defecte</string>
-    <string name="pref_summary_custom">personalitza</string>
     <string name="pref_using_custom">Ús personalitzat: %s</string>
     <string name="pref_using_default">Ús per defecte: %s</string>
     <string name="pref_profile_info_headline">Informació del vostre perfil</string>
@@ -510,13 +499,10 @@
     <string name="verified_desktop">Verificat</string>
     <string name="remove_desktop">Elimina</string>
     <string name="save_desktop">Desa</string>
-    <string name="show_qr_verify_code_desktop">Mostra el codi QR d\'invitació</string>
-    <string name="show_qr_invite_code_desktop">Mostra el codi QR d\'invitació</string>
     <string name="add_contact_desktop">Afegeix contacte</string>
     <string name="login_required_desktop">necessari</string>
     <string name="name_desktop">Nom</string>
     <string name="autocrypt_key_transfer_desktop">Transfereix la clau d\'Autocrypt</string>
-    <string name="initiate_key_transfer_title_desktop">Inicia la transferència de claus</string>
     <string name="initiate_key_transfer_desktop">Un missatge de configuració Autocrypt comparteix de manera segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles. La configuració es xifrarà mitjançant un codi de configuració que es mostrarà aquí i que s\'ha d’escriure a l’altre dispositiu.</string>
     <string name="reply_to_message_desktop">Respon el missatge</string>
     <string name="select_group_image_desktop">Tria una imatge de grup</string>

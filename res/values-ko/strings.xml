@@ -167,16 +167,12 @@
     <string name="tab_group">그룹</string>
     <string name="tab_gallery">앨범</string>
     <string name="media_preview">미디어 미리보기</string>
-    
+
 
     <string name="welcome_start_messaging">시작하기</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">채팅방 선택</string>
-    <!-- preferences -->
-    <string name="pref_summary_on">사용</string>
-    <string name="pref_summary_off">끄기</string>
-    <string name="pref_summary_default">기본값</string>
     <string name="pref_profile_info_headline">내 프로필</string>
     <string name="pref_profile_photo">프로필 사진</string>
     <string name="pref_trim_headline">대화 줄이기</string>

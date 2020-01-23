@@ -157,7 +157,6 @@
     <string name="menu_pause">暂停</string>
     <string name="menu_scroll_to_bottom">滚动至底部</string>
     <string name="menu_scroll_to_top">滚动至顶部</string>
-    <string name="menu_invite">邀请朋友</string>
     <string name="menu_help">帮助</string>
     <string name="menu_select_all">全选</string>
     <string name="menu_expand">展开</string>
@@ -192,6 +191,7 @@
     <string name="share_location_for_two_hours">2小时</string>
     <string name="share_location_for_six_hours">6小时</string>
 
+    <string name="file_saved_to">文件已保存到“%1$s”。</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">您确定要离开此群组吗？</string>
@@ -289,11 +289,6 @@
     <string name="tab_gallery_empty_hint">在此聊天中分享的图像和视频将显示于此。</string>
     <string name="tab_docs_empty_hint">在此聊天中分享的文档、音乐和其他文件将显示于此。</string>
     <string name="media_preview">媒体预览</string>
-    
-
-    <!-- invite -->
-    <string name="invite_slogan">朋友不会让朋友陷入消息孤岛。</string>
-    <string name="invite_default_text">让我们切换到Delta Chat - %1$s - 你可以通过%2$s发消息给我</string>
 
 
     <!-- welcome and login -->
@@ -348,10 +343,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_summary_on">开</string>
-    <string name="pref_summary_off">关</string>
-    <string name="pref_summary_default">默认</string>
-    <string name="pref_summary_custom">自定义</string>
     <string name="pref_using_custom">使用自定义：%s</string>
     <string name="pref_using_default">使用默认：%s</string>
     <string name="pref_profile_info_headline">您的个人资料</string>
@@ -606,13 +597,10 @@
     <string name="verified_desktop">已验证</string>
     <string name="remove_desktop">移除</string>
     <string name="save_desktop">保存</string>
-    <string name="show_qr_verify_code_desktop">显示邀请二维码</string>
-    <string name="show_qr_invite_code_desktop">显示邀请二维码</string>
     <string name="add_contact_desktop">添加联系人</string>
     <string name="login_required_desktop">必需</string>
     <string name="name_desktop">名称</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt密钥传输</string>
-    <string name="initiate_key_transfer_title_desktop">启动密钥传输</string>
     <string name="initiate_key_transfer_desktop">“Autocrypt设置消息”安全地共享您的端到端设置至其他兼容Autocrypt的应用程序。该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
     <string name="reply_to_message_desktop">回复消息</string>
     <string name="select_group_image_desktop">选择群组图像</string>
