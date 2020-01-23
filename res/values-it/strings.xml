@@ -197,6 +197,8 @@
     <string name="share_location_for_two_hours">per 2 ore</string>
     <string name="share_location_for_six_hours">per 6 ore</string>
 
+    <string name="file_saved_to">File salvato su \"%1$s\".</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare il gruppo?</string>
     <plurals name="ask_delete_chat">
