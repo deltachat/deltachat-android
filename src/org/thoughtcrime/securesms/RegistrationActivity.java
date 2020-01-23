@@ -1,16 +1,22 @@
 package org.thoughtcrime.securesms;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Group;
+
+import com.b44t.messenger.DcProvider;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
+
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.Menu;
@@ -45,6 +51,7 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
+import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
@@ -58,6 +65,12 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private TextInputEditText emailInput;
     private TextInputEditText passwordInput;
+
+    private View providerLayout;
+    private TextView providerHint;
+    private TextView providerLink;
+    private @Nullable DcProvider provider;
+
     private Group advancedGroup;
     private ImageView advancedIcon;
     private ProgressDialog progressDialog;
@@ -78,6 +91,12 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         emailInput = findViewById(R.id.email_text);
         passwordInput = findViewById(R.id.password_text);
+
+        providerLayout = findViewById(R.id.provider_layout);
+        providerHint = findViewById(R.id.provider_hint);
+        providerLink = findViewById(R.id.provider_link);
+        providerLink.setOnClickListener(l -> onProviderLink());
+
         advancedGroup = findViewById(R.id.advanced_group);
         advancedIcon = findViewById(R.id.advanced_icon);
         TextView advancedTextView = findViewById(R.id.advanced_text);
@@ -223,6 +242,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             switch (type) {
                 case EMAIL:
                     verifyEmail(inputEditText);
+                    updateProviderInfo();
                     checkOauth2start();
                     break;
                 case SERVER:
@@ -282,6 +302,51 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
 
         return oauth2started;
+    }
+
+    private void updateProviderInfo() {
+        provider = getContext(this).getProviderFromEmail(emailInput.getText().toString());
+        if (provider!=null) {
+            Resources res = getResources();
+            providerHint.setText(provider.getBeforeLoginHint());
+            switch (provider.getStatus()) {
+                case DcProvider.DC_PROVIDER_STATUS_PREPARATION:
+                    providerHint.setTextColor(res.getColor(R.color.provider_prep_fg));
+                    providerLink.setTextColor(res.getColor(R.color.provider_prep_fg));
+                    providerLayout.setBackgroundColor(res.getColor(R.color.provider_prep_bg));
+                    providerLayout.setVisibility(View.VISIBLE);
+                    break;
+
+                case DcProvider.DC_PROVIDER_STATUS_BROKEN:
+                    providerHint.setTextColor(res.getColor(R.color.provider_broken_fg));
+                    providerLink.setTextColor(res.getColor(R.color.provider_broken_fg));
+                    providerLayout.setBackgroundColor(getResources().getColor(R.color.provider_broken_bg));
+                    providerLayout.setVisibility(View.VISIBLE);
+                    break;
+
+                default:
+                    providerLayout.setVisibility(View.GONE);
+                    break;
+            }
+        } else {
+            providerLayout.setVisibility(View.GONE);
+        }
+    }
+
+    private void onProviderLink() {
+        if (provider!=null) {
+            String url = provider.getOverviewPage();
+            if(!url.isEmpty()) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(this, R.string.no_browser_installed, Toast.LENGTH_LONG).show();
+                }
+            } else {
+                // this should normally not happen
+                Toast.makeText(this, "ErrProviderWithoutUrl", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
