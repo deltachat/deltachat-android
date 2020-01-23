@@ -242,7 +242,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             switch (type) {
                 case EMAIL:
                     verifyEmail(inputEditText);
-                    updateProviderInfo();
                     checkOauth2start();
                     break;
                 case SERVER:
@@ -273,9 +272,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     .setTitle(R.string.login_info_oauth2_title)
                     .setMessage(R.string.login_info_oauth2_text)
                     .setNegativeButton(R.string.cancel, (dialog, which)->{
-                        if(isGmail(email)) {
-                            showGmailNoOauth2Hint();
-                        }
+                        updateProviderInfo();
                         oauth2started.set(false);
                     })
                     .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
@@ -286,18 +283,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     })
                     .setCancelable(false)
                     .show();
-            } else if (isGmail(email)) {
-                showGmailNoOauth2Hint();
-                oauth2started.set(false);
-            } else if (isOutlook(email)) {
-                showOutlookHint();
-                oauth2started.set(false);
-            }
-            else {
+            } else {
+                updateProviderInfo();
                 oauth2started.set(false);
             }
         }
         else {
+            updateProviderInfo();
             oauth2started.set(false);
         }
 
@@ -372,45 +364,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private boolean matchesEmailPattern(String email) {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    private boolean isGmail(String email) {
-        return email != null && (email.toLowerCase().contains("@gmail.") || email.toLowerCase().contains("@googlemail."));
-    }
-
-    private void showGmailNoOauth2Hint()
-    {
-        if(!gmailDialogShown) {
-            gmailDialogShown = true;
-            new AlertDialog.Builder(this)
-                .setMessage(R.string.login_info_gmail_text)
-                .setPositiveButton(R.string.ok, null)
-                .show();
-        }
-    }
-
-    private boolean isOutlook(String email) {
-        return email != null
-           && (email.toLowerCase().contains("@outlook.") || email.toLowerCase().contains("@hotmail."));
-    }
-
-    private boolean outlookDialogShown;
-    private void showOutlookHint()
-    {
-        if(!outlookDialogShown) {
-            outlookDialogShown = true;
-            new AlertDialog.Builder(this)
-                .setMessage(
-                      "Outlook- and Hotmail-e-mail-addresses "
-                    + "may currently not work as expected "
-                    + "as these servers may remove some important transport information."
-                    + "\n\n"
-                    + "Hopefully sooner or later there will be a fix; "
-                    + "for now, we suggest to use another e-mail-address "
-                    + "or try Delta Chat again when the issue is fixed.")
-                .setPositiveButton(R.string.ok, null)
-                .show();
-        }
     }
 
     private void verifyEmail(TextInputEditText view) {
