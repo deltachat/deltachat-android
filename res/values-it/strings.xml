@@ -441,9 +441,9 @@
     <string name="pref_background_btn_gallery">Seleziona dalla galleria</string>
     <string name="pref_imap_folder_handling">Gestione cartella IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se disabiliti questa opzione assicurati che il tuo server e gli altri client siano configurati allo stesso modo.\n\nAltrimenti le cose potrebbero non funzionare affatto.</string>
-    <string name="pref_watch_inbox_folder">Vedi cartella In Arrivo</string>
-    <string name="pref_watch_sent_folder">Vedi cartella Inviati</string>
-    <string name="pref_watch_mvbox_folder">Vedi cartella DeltaChat</string>
+    <string name="pref_watch_inbox_folder">Controlla cartella In Arrivo</string>
+    <string name="pref_watch_sent_folder">Controlla cartella Inviata</string>
+    <string name="pref_watch_mvbox_folder">Controlla cartella DeltaChat</string>
     <string name="pref_send_copy_to_self">Auto-invia una copia</string>
     <string name="pref_auto_folder_moves">Sposta automaticamente nella cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Le chat vengono spostate per evitare di riempire la cartella In Arrivo</string>

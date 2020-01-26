@@ -22,9 +22,16 @@
     <string name="back">Voltar</string>
     <string name="close">Fechar</string>
     <string name="forward">Encaminhar</string>
+    <string name="archive">Arquivar</string>
+    <string name="unarchive">Desarquivar</string>
     <string name="mute">Mudo</string>
     <string name="save">Salvar</string>
+    <string name="chat">Conversa</string>
     <string name="media">Mídia</string>
+    <string name="main_menu">Menu principal</string>
+    <string name="start_chat">Começar conversa</string>
+    <string name="show_password">Mostrar senha</string>
+    <string name="hide_password">Ocultar senha</string>
     <string name="not_now">Não agora</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Um momento...</string>
@@ -44,6 +51,8 @@
     <string name="bad_email_address">Email inválido.</string>
     <string name="password">Senha</string>
     <string name="now">Agora</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Perigo</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Hoje</string>
@@ -169,6 +178,8 @@
     <string name="menu_zoom_out">Afastar</string>
     <string name="menu_save_log">Salvar registro</string>
     <string name="title_share_location">Compartilhar localização com o grupo</string>
+    <string name="edit_contact">Editar contato</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 dia</string>
@@ -244,6 +255,7 @@
     <string name="chat_archived_label">Arquivado</string>
     <string name="chat_no_messages">Sem mensagens.</string>
     <string name="chat_self_talk_subtitle">Mensagens para mim mesmo</string>
+    <string name="saved_messages">Mensagens salvas</string>
     <string name="chat_contact_request">Pedido de contato</string>
     <string name="chat_no_contact_requests">Sem pedidos de contato.\n\nSe você quiser, e-mails normais podem ser exibidos como pedidos de contato. Basta habilitar nas configurações.</string>
     <!-- map -->
