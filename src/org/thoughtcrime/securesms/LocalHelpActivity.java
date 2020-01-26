@@ -18,6 +18,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -33,21 +34,40 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
         dynamicLanguage.onCreate(this);
     }
 
+    private boolean assetExists(String fileName) {
+        // test using AssetManager.open();
+        // AssetManager.list() is unreliable eg. on my Android 7 Moto G
+        // and also reported to be pretty slow.
+        boolean exists = false;
+        try {
+            AssetManager assetManager = getResources().getAssets();
+            InputStream is = assetManager.open(fileName);
+            exists = true;
+            is.close();
+        } catch(Exception e) {
+            ;
+        }
+        return exists;
+    }
+
     @Override
     protected void onCreate(Bundle state, boolean ready) {
         setContentView(R.layout.local_help_activity);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.menu_help));
 
-        String helpPath = "help/LANG/";
+        String helpPath = "help/LANG/help.html";
         String helpLang = "en";
-        String helpFile = "help.html";
         try {
             Locale locale = dynamicLanguage.getCurrentLocale();
             String appLang = locale.getLanguage();
-            AssetManager assetManager = getResources().getAssets();
-            if (Arrays.asList(assetManager.list(helpPath.replace("LANG", appLang))).contains(helpFile)) {
+            if (assetExists(helpPath.replace("LANG", appLang))) {
                 helpLang = appLang;
+            } else {
+                appLang = appLang.substring(0, 2);
+                if (assetExists(helpPath.replace("LANG", appLang))) {
+                    helpLang = appLang;
+                }
             }
         } catch(Exception e) {
             e.printStackTrace();
@@ -63,7 +83,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
                 return false;
             }
         });
-        webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang) + helpFile);
+        webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang));
     }
 
     @Override
