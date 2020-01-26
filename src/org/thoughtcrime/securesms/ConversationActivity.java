@@ -953,7 +953,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  //////// send message
+  //////// send message or save draft
 
   protected static final int ACTION_SEND_OUT = 1;
   protected static final int ACTION_SAVE_DRAFT = 2;
@@ -971,10 +971,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcMsg msg = null;
     Integer recompress = 0;
 
-    composeText.setText("");
+    // for a quick ui feedback, we clear the related controls immediately on sending messages.
+    // for drafts, however, we do not change the controls, the activity may be resumed.
+    if (action==ACTION_SEND_OUT) {
+      composeText.setText("");
+    }
 
     if(slideDeck!=null) {
-      attachmentManager.clear(glideRequests, false);
+
+      if (action==ACTION_SEND_OUT) {
+        attachmentManager.clear(glideRequests, false);
+      }
 
       try {
         List<Attachment> attachments = slideDeck.asAttachments();
