@@ -41,6 +41,7 @@
   <li><a href="#multiclient">Multi-client</a>
     <ul>
       <li><a href="#can-i-use-delta-chat-on-multiple-devices-at-the-same-time">Can I use Delta Chat on multiple devices at the same time?</a></li>
+      <li><a href="#are-there-any-plans-for-introducing-a-delta-chat-web-client">Are there any plans for introducing a Delta Chat Web Client?</a></li>
       <li><a href="#why-can-i-choose-not-to-watch-the-inbox">Why can I choose not to watch the Inbox?</a></li>
       <li><a href="#what-is-the-send-copy-to-self-setting-good-for">What is the “Send Copy to Self” setting good for?</a></li>
       <li><a href="#why-can-i-choose-to-watch-the-sent-folder">Why can I choose to watch the “Sent” folder?</a></li>
@@ -50,6 +51,8 @@
   <li><a href="#miscellaneous">Miscellaneous</a>
     <ul>
       <li><a href="#does-delta-chat-work-with-my-e-mail-provider">Does Delta Chat work with <em>my</em> e-mail-provider?</a></li>
+      <li><a href="#if-delta-chat-uses-e-mail-is-it-really-an-instant-messenger">If Delta Chat uses E-Mail, is it really an <em>Instant</em> Messenger?</a></li>
+      <li><a href="#is-delta-chat-compatible-with-protonmail--tutanota--criptext">Is Delta Chat compatible with Protonmail / Tutanota / Criptext?</a></li>
       <li><a href="#im-interested-in-the-technical-details-can-you-tell-me-more">I’m interested in the technical details. Can you tell me more?</a></li>
     </ul>
   </li>
@@ -664,6 +667,25 @@ sending and receiving E2E-encrypted messages with your communication partners.</
   </li>
 </ul>
     
+      <h3 id="are-there-any-plans-for-introducing-a-delta-chat-web-client">
+        
+        
+          Are there any plans for introducing a Delta Chat Web Client? <a href="#are-there-any-plans-for-introducing-a-delta-chat-web-client" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>There are no immediate plans but some preliminary thoughts.</li>
+  <li>There are 2-3 avenues for introducing a Delta Chat Web Client, but all are
+significant work. For now, we focus on getting stable releases into all
+appstores (Google Play/iOS/Windows/macOS/Linux repositories) as native apps.</li>
+  <li>If you need a Web Client, because you are not allowed to install software on
+the computer you work with, you can use the portable Windows Desktop Client,
+or the AppImage for Linux. You can find them on
+<a href="https://get.delta.chat">get.delta.chat</a>.</li>
+</ul>
+    
       <h3 id="why-can-i-choose-not-to-watch-the-inbox">
         
         
@@ -756,6 +778,51 @@ Otherwise, deleting messages or multi-device setups might not work properly.</p>
   <li>With a rather good chance: Yes :)<br />
 However, some providers need special options to work properly,
 see <a href="https://providers.delta.chat">Provider Overview</a></li>
+</ul>
+    
+      <h3 id="if-delta-chat-uses-e-mail-is-it-really-an-instant-messenger">
+        
+        
+          If Delta Chat uses E-Mail, is it really an <em>Instant</em> Messenger? <a href="#if-delta-chat-uses-e-mail-is-it-really-an-instant-messenger" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Sending and receiving messages takes a few seconds, typically. Sometimes
+there are cases where it takes longer but that is arguably true as well for
+any other messenger.</li>
+  <li>Instant chatting works fast if both parties are actively using the app. It’s
+sometimes slower if the app is running in background.</li>
+  <li>Receiving messages then can take minutes because both Android and iOS often
+stop Delta Chat from running in the background, and only wake it up
+occassionally. This artifical delay is usually worse on iOS than on Android.</li>
+  <li>Note that Delta Chat doesn’t use Google Cloud Messaging (GCM) or the Apple
+Push Notification Service (APNS), because this leads to user tracking and
+central control which Delta Chat aims to avoid as much as feasible.</li>
+  <li>However, that Android and iOS kill apps running in the background is a
+problem for many legitimate apps. For more information, see
+<a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
+</ul>
+    
+      <h3 id="is-delta-chat-compatible-with-protonmail--tutanota--criptext">
+        
+        
+          Is Delta Chat compatible with Protonmail / Tutanota / Criptext? <a href="#is-delta-chat-compatible-with-protonmail--tutanota--criptext" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Yes and No.</li>
+  <li>No, you can not use your Protonmail, Tutanota, or Criptext account with Delta
+Chat; they do not offer receiving mails via IMAP.</li>
+  <li>In any case you can use Delta Chat to send Messages to people who use
+Protonmail, Tutanota, or Criptext. Those messages will not be End-to-End
+encrypted, though. The End-to-End encryption those providers offer is only
+working inside their platforms, and not compatible with anyone outside.</li>
+  <li>Delta Chat can e2e-encrypt through any e-mail provider with any
+<a href="Autocrypt-enabled e-mail app">https://autocrypt.org/dev-status.html</a>.</li>
 </ul>
     
       <h3 id="im-interested-in-the-technical-details-can-you-tell-me-more">
