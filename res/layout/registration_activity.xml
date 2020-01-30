@@ -74,6 +74,38 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:id="@+id/provider_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/password"
+            >
+
+            <TextView
+                android:id="@+id/provider_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/provider_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="12dp"
+                android:textSize="16sp"
+                android:text="@string/more_info_desktop"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/no_servers_hint"
             android:layout_width="0dp"
@@ -82,7 +114,7 @@
             android:padding="16dp"
             android:text="@string/login_no_servers_hint"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password" />
+            app:layout_constraintTop_toBottomOf="@id/provider_layout" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/advanced_group"

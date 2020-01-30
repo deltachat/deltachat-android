@@ -16,11 +16,9 @@ public class DcProvider {
         providerCPtr = 0;
     }
 
-    public native String    getName        ();
-    public native int       getStatus      ();
-    public native String    getStatusDate  ();
-    public native String    getMarkdown    ();
-    public native String    getOverviewPage();
+    public native int       getStatus          ();
+    public native String    getBeforeLoginHint ();
+    public native String    getOverviewPage    ();
 
     // working with raw c-data
     private long        providerCPtr;    // CAVE: the name is referenced in the JNI
