@@ -46,7 +46,19 @@
         android:id="@+id/skip_button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="@string/welcome_start_messaging" />
+        android:text="@string/login_header" />
+
+    <TextView
+        android:id="@+id/scan_account_from_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:gravity="center"
+        android:text="@string/qrscan_title"
+        android:textSize="16sp"
+        android:textColor="@color/delta_accent"/>
 
     <androidx.legacy.widget.Space
         android:layout_weight="5"
@@ -56,8 +68,10 @@
     <TextView
         android:id="@+id/backup_text"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:paddingBottom="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:gravity="center"
         android:text="@string/import_backup_title"
         android:textSize="16sp"
