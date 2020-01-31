@@ -197,6 +197,8 @@
     <string name="share_location_for_two_hours">für 2 Stunden</string>
     <string name="share_location_for_six_hours">für 6 Stunden</string>
 
+    <string name="file_saved_to">Datei gespeichert unter \"%1$s\".</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>
     <plurals name="ask_delete_chat">
@@ -322,6 +324,7 @@
     <string name="login_auth_method">Autorisierungsmethode</string>
     <string name="login_info_oauth2_title">Mit vereinfachter Einrichtung fortfahren?</string>
     <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth2).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt als Chat-Über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
+    <string name="login_manually">Manuell anmelden</string>
     <string name="login_info_gmail_text">Für GMail-Konten muss ein App-Passwort erstellt werden, wenn die 2FA (Zwei-Faktor-Authentifizierung) aktiviert ist. Wenn diese Einstellung nicht verfügbar ist, muss \"Zugriff durch weniger sichere Anwendungen\" aktiviert werden.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>
