@@ -17,7 +17,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -118,6 +120,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         }
 
+        emailInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            @Override
+            public void afterTextChanged(Editable s) { maybeCleanProviderInfo(); }
+        });
         emailInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.EMAIL));
         imapServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
         imapPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
@@ -322,6 +332,17 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             }
         } else {
             providerLayout.setVisibility(View.GONE);
+        }
+    }
+
+    private void maybeCleanProviderInfo() {
+        if (provider!=null && providerLayout.getVisibility()==View.VISIBLE) {
+            DcProvider newProvider = getContext(this).getProviderFromEmail(emailInput.getText().toString());
+            if (newProvider == null
+             || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
+                provider = null;
+                providerLayout.setVisibility(View.GONE);
+            }
         }
     }
 
