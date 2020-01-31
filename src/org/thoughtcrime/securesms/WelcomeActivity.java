@@ -71,8 +71,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         Permissions.with(this)
                 .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                 .ifNecessary()
-                .withRationaleDialog("Delta Chat needs access to your files in order start the backup import",
-                        R.drawable.ic_folder_white_48dp)
+                .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                 .onAllGranted(() -> {
                     ApplicationDcContext dcContext = DcHelper.getContext(this);
                     File imexDir = dcContext.getImexDir();

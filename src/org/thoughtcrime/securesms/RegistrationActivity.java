@@ -17,7 +17,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -118,6 +120,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         }
 
+        emailInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            @Override
+            public void afterTextChanged(Editable s) { maybeCleanProviderInfo(); }
+        });
         emailInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.EMAIL));
         imapServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
         imapPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
@@ -203,16 +213,20 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         int id = item.getItemId();
 
         if (id == R.id.do_register) {
+            // "log in" button clicked - even if oauth2DeclinedByUser is true,
+            // we will ask for oauth2 to allow reverting the decision.
             checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
                 @Override
                 public void onSuccess(Boolean oauth2started) {
                     if(!oauth2started) {
+                        updateProviderInfo();
                         onLogin();
                     }
                 }
 
                 @Override
                 public void onFailure(ExecutionException e) {
+                    updateProviderInfo();
                     onLogin();
                 }
             });
@@ -237,12 +251,29 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void focusListener(View view, boolean focused, VerificationType type) {
+
         if (!focused) {
             TextInputEditText inputEditText = (TextInputEditText) view;
             switch (type) {
                 case EMAIL:
                     verifyEmail(inputEditText);
-                    checkOauth2start();
+                    if (!oauth2DeclinedByUser) {
+                        checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
+                            @Override
+                            public void onSuccess(Boolean oauth2started) {
+                                if (!oauth2started) {
+                                    updateProviderInfo();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(ExecutionException e) {
+                                updateProviderInfo();
+                            }
+                        });
+                    } else {
+                        updateProviderInfo();
+                    }
                     break;
                 case SERVER:
                     verifyServer(inputEditText);
@@ -256,6 +287,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private long oauth2Requested = 0;
 
+    // this flag is set, if the user has declined oauth2 at some point;
+    // if so, we won't bother em on focus changes again,
+    // however, to allow reverting the decision, we will always ask on clicking the login button.
+    private boolean oauth2DeclinedByUser = false;
+
+    // this function checks if oauth2 is available for a given email address
+    // and and asks the user if one wants to start oauth2.
+    // the function returns the future "true" if oauth2 was started and "false" otherwise.
     private ListenableFuture<Boolean> checkOauth2start() {
         SettableFuture<Boolean> oauth2started = new SettableFuture<>();
 
@@ -271,8 +310,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 new AlertDialog.Builder(this)
                     .setTitle(R.string.login_info_oauth2_title)
                     .setMessage(R.string.login_info_oauth2_text)
-                    .setNegativeButton(R.string.cancel, (dialog, which)->{
-                        updateProviderInfo();
+                    .setNegativeButton(R.string.login_manually, (dialog, which)->{
+                        oauth2DeclinedByUser = true;
                         oauth2started.set(false);
                     })
                     .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
@@ -284,12 +323,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     .setCancelable(false)
                     .show();
             } else {
-                updateProviderInfo();
                 oauth2started.set(false);
             }
         }
         else {
-            updateProviderInfo();
             oauth2started.set(false);
         }
 
@@ -322,6 +359,17 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             }
         } else {
             providerLayout.setVisibility(View.GONE);
+        }
+    }
+
+    private void maybeCleanProviderInfo() {
+        if (provider!=null && providerLayout.getVisibility()==View.VISIBLE) {
+            DcProvider newProvider = getContext(this).getProviderFromEmail(emailInput.getText().toString());
+            if (newProvider == null
+             || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
+                provider = null;
+                providerLayout.setVisibility(View.GONE);
+            }
         }
     }
 
