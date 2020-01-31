@@ -213,6 +213,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         int id = item.getItemId();
 
         if (id == R.id.do_register) {
+            // "log in" button clicked - even if oauth2DeclinedByUser is true,
+            // we will ask for oauth2 to allow reverting the decision.
             checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
                 @Override
                 public void onSuccess(Boolean oauth2started) {
@@ -255,19 +257,23 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             switch (type) {
                 case EMAIL:
                     verifyEmail(inputEditText);
-                    checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
-                        @Override
-                        public void onSuccess(Boolean oauth2started) {
-                            if(!oauth2started) {
+                    if (!oauth2DeclinedByUser) {
+                        checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
+                            @Override
+                            public void onSuccess(Boolean oauth2started) {
+                                if (!oauth2started) {
+                                    updateProviderInfo();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(ExecutionException e) {
                                 updateProviderInfo();
                             }
-                        }
-
-                        @Override
-                        public void onFailure(ExecutionException e) {
-                            updateProviderInfo();
-                        }
-                    });
+                        });
+                    } else {
+                        updateProviderInfo();
+                    }
                     break;
                 case SERVER:
                     verifyServer(inputEditText);
@@ -280,6 +286,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private long oauth2Requested = 0;
+
+    // this flag is set, if the user has declined oauth2 at some point;
+    // if so, we won't bother em on focus changes again,
+    // however, to allow reverting the decision, we will always ask on clicking the login button.
+    private boolean oauth2DeclinedByUser = false;
 
     // this function checks if oauth2 is available for a given email address
     // and and asks the user if one wants to start oauth2.
@@ -300,6 +311,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     .setTitle(R.string.login_info_oauth2_title)
                     .setMessage(R.string.login_info_oauth2_text)
                     .setNegativeButton(R.string.login_manually, (dialog, which)->{
+                        oauth2DeclinedByUser = true;
                         oauth2started.set(false);
                     })
                     .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
