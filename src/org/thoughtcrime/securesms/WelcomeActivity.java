@@ -35,7 +35,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         super.onCreate(bundle);
         setContentView(R.layout.welcome_activity);
 
-        initializeResources();
+        Button loginButton = findViewById(R.id.login_button);
+        View scanQrButton = findViewById(R.id.scan_qr_button);
+        View backupButton = findViewById(R.id.backup_button);
+
+        loginButton.setOnClickListener((view) -> startRegistrationActivity());
+        scanQrButton.setOnClickListener((view) -> startRegistrationQrActivity());
+        backupButton.setOnClickListener((view) -> startImportBackup());
 
         ApplicationDcContext dcContext = DcHelper.getContext(this);
         dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
@@ -53,16 +59,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
 
-    private void initializeResources() {
-        Button skipButton = findViewById(R.id.skip_button);
-        View backupText = findViewById(R.id.backup_text);
-        skipButton.setOnClickListener((view) -> startRegistrationActivity());
-        backupText.setOnClickListener((view) -> startImportBackup());
-    }
-
     private void startRegistrationActivity() {
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
+        // no finish() here, the back key should take the user back from RegistrationActivity to WelcomeActivity
+    }
+
+    private void startRegistrationQrActivity() {
         // no finish() here, the back key should take the user back from RegistrationActivity to WelcomeActivity
     }
 
