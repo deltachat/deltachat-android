@@ -217,12 +217,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 @Override
                 public void onSuccess(Boolean oauth2started) {
                     if(!oauth2started) {
+                        updateProviderInfo();
                         onLogin();
                     }
                 }
 
                 @Override
                 public void onFailure(ExecutionException e) {
+                    updateProviderInfo();
                     onLogin();
                 }
             });
@@ -247,12 +249,25 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void focusListener(View view, boolean focused, VerificationType type) {
+
         if (!focused) {
             TextInputEditText inputEditText = (TextInputEditText) view;
             switch (type) {
                 case EMAIL:
                     verifyEmail(inputEditText);
-                    checkOauth2start();
+                    checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
+                        @Override
+                        public void onSuccess(Boolean oauth2started) {
+                            if(!oauth2started) {
+                                updateProviderInfo();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(ExecutionException e) {
+                            updateProviderInfo();
+                        }
+                    });
                     break;
                 case SERVER:
                     verifyServer(inputEditText);
@@ -266,6 +281,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private long oauth2Requested = 0;
 
+    // this function checks if oauth2 is available for a given email address
+    // and and asks the user if one wants to start oauth2.
+    // the function returns the future "true" if oauth2 was started and "false" otherwise.
     private ListenableFuture<Boolean> checkOauth2start() {
         SettableFuture<Boolean> oauth2started = new SettableFuture<>();
 
@@ -282,7 +300,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     .setTitle(R.string.login_info_oauth2_title)
                     .setMessage(R.string.login_info_oauth2_text)
                     .setNegativeButton(R.string.cancel, (dialog, which)->{
-                        updateProviderInfo();
                         oauth2started.set(false);
                     })
                     .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
@@ -294,12 +311,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     .setCancelable(false)
                     .show();
             } else {
-                updateProviderInfo();
                 oauth2started.set(false);
             }
         }
         else {
-            updateProviderInfo();
             oauth2started.set(false);
         }
 
