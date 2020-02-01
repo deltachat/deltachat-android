@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -150,6 +151,14 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             if (progress==1000/*done*/) {
                 finish(); // remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
             }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==IntentIntegrator.REQUEST_CODE) {
+            Toast.makeText(this, "The scanned QR code cannot be used to set up a new account.", Toast.LENGTH_LONG).show();
         }
     }
 }

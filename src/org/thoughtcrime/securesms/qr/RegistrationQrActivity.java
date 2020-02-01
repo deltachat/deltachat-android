@@ -36,10 +36,6 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
 
         setContentView(R.layout.activity_registration_qr);
 
-        /*assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle(R.string.qrscan_title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
         barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
         barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
 

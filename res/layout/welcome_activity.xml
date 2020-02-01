@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
-        android:text="@string/app_name"
+        android:text="@string/welcome_desktop"
         android:textSize="22sp"
         android:textStyle="bold"/>
 
