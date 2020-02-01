@@ -50,6 +50,7 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         Permissions.with(this)
                 .request(Manifest.permission.CAMERA)
                 .ifNecessary()
+                .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
                 .onAnyResult(this::handleQrScanWithPermissions)
                 .onAnyDenied(this::handleQrScanWithDeniedPermission)
                 .execute();
