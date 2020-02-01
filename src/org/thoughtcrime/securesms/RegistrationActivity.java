@@ -310,7 +310,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 new AlertDialog.Builder(this)
                     .setTitle(R.string.login_info_oauth2_title)
                     .setMessage(R.string.login_info_oauth2_text)
-                    .setNegativeButton(R.string.login_manually, (dialog, which)->{
+                    .setNegativeButton(R.string.cancel, (dialog, which)->{
                         oauth2DeclinedByUser = true;
                         oauth2started.set(false);
                     })
