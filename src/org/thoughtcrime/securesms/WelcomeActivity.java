@@ -9,11 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
+import com.b44t.messenger.DcLot;
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -158,7 +159,30 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==IntentIntegrator.REQUEST_CODE) {
-            Toast.makeText(this, "The scanned QR code cannot be used to set up a new account.", Toast.LENGTH_LONG).show();
+            IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+            if (scanResult == null || scanResult.getFormatName() == null) {
+                return; // aborted
+            }
+            ApplicationDcContext dcContext = DcHelper.getContext(this);
+            DcLot qrParsed = dcContext.checkQr(scanResult.getContents());
+            switch (qrParsed.getState()) {
+                case DcContext.DC_QR_ACCOUNT:
+                    String domain = qrParsed.getText1();
+                    new AlertDialog.Builder(this)
+                            .setMessage(String.format("Create new e-mail address on \"%s\" and log in there?", domain))
+                            .setPositiveButton(R.string.ok, null)
+                            .setNegativeButton(R.string.cancel, null)
+                            .setCancelable(false)
+                            .show();
+                    break;
+
+                default:
+                    new AlertDialog.Builder(this)
+                            .setMessage("The scanned QR code cannot be used to set up a new account.")
+                            .setPositiveButton(R.string.ok, null)
+                            .show();
+                    break;
+            }
         }
     }
 }

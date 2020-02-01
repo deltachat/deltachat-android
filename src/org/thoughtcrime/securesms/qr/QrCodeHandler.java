@@ -35,7 +35,7 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
 
     public void onScanPerformed(IntentResult scanResult) {
         if (scanResult == null || scanResult.getFormatName() == null) {
-            return; // Should not happen!
+            return; // aborted
         }
 
         handleOpenPgp4Fpr(scanResult.getContents());
@@ -66,6 +66,11 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
 
             case DcContext.DC_QR_URL:
                 showQrUrl(builder, qrParsed);
+                break;
+
+            case DcContext.DC_QR_ACCOUNT:
+                builder.setMessage("The scanned QR code is for setting up a new account. You can scan the QR code during a new Delta Chat installation.");
+                builder.setPositiveButton(R.string.ok, null);
                 break;
 
             default:
