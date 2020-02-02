@@ -655,8 +655,8 @@
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
 
     <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken.</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen.</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Geet Delta Chat toegang tot je microfoon om audio op te nemen.</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Geet Delta Chat toegang tot je microfoon om audio op te nemen.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
 </resources>

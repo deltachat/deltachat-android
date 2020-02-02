@@ -644,8 +644,8 @@
     <string name="a11y_background_preview_label">背景预览</string>
 
     <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">允许访问相机可让您拍摄照片和视频。</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">允许访问您的地址簿可让您与设备上的联系人聊天。</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">允许使用麦克风可让您录制音频。</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">允许访问照片库可让您从中上传图像。</string>
+    <string name="InfoPlist_NSCameraUsageDescription">允许访问相机可让您拍摄照片和视频。</string>
+    <string name="InfoPlist_NSContactsUsageDescription">允许访问您的地址簿可让您与设备上的联系人聊天。</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">允许使用麦克风可让您录制音频。</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">允许访问照片库可让您从中上传图像。</string>
 </resources>
