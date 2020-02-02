@@ -650,7 +650,7 @@
     <string name="a11y_message_context_menu_btn_label">Actions sur le message</string>
     <string name="a11y_background_preview_label">Aperçu de l\'arrière-plan</string>
 
-    <!-- Translators: These strings are only used on iOS -->
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Autoriser l\'accès à l\'appareil photo. Vous permet de prendre photos et vidéos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Autoriser l\'accès au carnet d\'adresses. Vous permet de discuter avec les contacts de votre appareil.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Autoriser l\'accès au micro. Vous permet d\'enregistrer des fichiers audio.</string>

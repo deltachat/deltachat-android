@@ -675,7 +675,7 @@
     <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>
     <string name="a11y_background_preview_label">Предпросмотр фона</string>
 
-    <!-- Translators: These strings are only used on iOS -->
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Предоставление доступа к камере позволяет снимать фотографии и видео.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Предоставление доступа к адресной книге позволяет общаться с имеющимися на устройстве контактами.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Предоставление доступа к микрофону позволяет записывать звук.</string>

@@ -654,7 +654,7 @@
     <string name="a11y_message_context_menu_btn_label">İleti eylemleri</string>
     <string name="a11y_background_preview_label">Artalan önizlemesi</string>
 
-    <!-- Translators: These strings are only used on iOS -->
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Kameraya erişime izin vermek, fotoğraflar ve videolar çekmenize izin verir.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Adres defterinize erişime izin vermek, aygıtınızdan gelen kişilerle sohbet etmenize izin verir.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Mikrofona erişime izin vermek, ses kaydetmenize izin verir.</string>

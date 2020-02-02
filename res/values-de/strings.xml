@@ -656,9 +656,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
 
-    <!-- Translators: These strings are only used on iOS -->
-    <string name="InfoPlist_NSCameraUsageDescription">Zugriff auf die Kamera ermöglicht das Aufnehmen von Fotos und Videos.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Wenn Du Zugriff auf das Adressbuch zulässt, kannst du von Deinem Gerät aus mit Kontakten chatten.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Wenn Du den Zugriff auf das Mikrofon zulässt, kannst Du Audio aufnehmen.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Wenn Du Zugriff auf die Fotobibliothek erlaubst, kannst Du Bilder aus der Bibliothek hochladen.</string>
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat verwendet die Kamera um Fotos aufzunehmen und zu versenden und im QR-Codes zu scannen.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat verwendet die Kontakte um eine Liste von E-Mail-Adressen anzuzeigen, an die Sie schreiben können. Delta Chat hat keine Server; das Adressbuch wird nicht versandt.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat verwendet das Mikrofon um Sprachnachrichten und Videos mit Sound aufzunehmen und zu versenden.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat verwendet die Fotos um Ihnen die Möglichkeit zu geben, diese auszuwählen und zu versenden.</string>
 </resources>
