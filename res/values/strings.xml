@@ -654,9 +654,9 @@
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Background preview</string>
 
-    <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Allowing access to the camera lets you take photos and videos.</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Allowing access to your address book lets you chat with contacts from your device.</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Allowing access to the microphone lets you record audio.</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Allowing access to the photo library allows you to upload images from it.</string>
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR-codes.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of email addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat uses your microphone to record and send voice messages and videos with sound.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat will let you choose which photos from your library to send.</string>
 </resources>
