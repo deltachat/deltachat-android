@@ -324,6 +324,7 @@
     <string name="login_auth_method">Yetkilendirme yöntemi</string>
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
     <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta ile Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucuları yoktur; verileriniz aygıtınızda kalır.</string>
+    <string name="login_manually">Elle oturum aç</string>
     <string name="login_info_gmail_text">Gmail Hesapları için \"2 Adımlı Doğrulama\"yı etkinleştirdiyseniz, bir uygulama parolası oluşturmanız gerekir. Bu ayar kullanılabilir değilse, \"Güvenliği düşük uygulamalar\"ı etkinleştirmeniz gerekir.</string>
     <string name="login_certificate_checks">Sertifika denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
@@ -654,8 +655,8 @@
     <string name="a11y_background_preview_label">Artalan önizlemesi</string>
 
     <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Kameraya erişime izin vermek, fotoğraflar ve videolar çekmenize izin verir.</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Adres defterinize erişime izin vermek, aygıtınızdan gelen kişilerle sohbet etmenize izin verir.</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Mikrofona erişime izin vermek, ses kaydetmenize izin verir.</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Fotoğraf kitaplığına erişime izin vermek, ondan gelen görselleri karşıya yüklemenize izin verir.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Kameraya erişime izin vermek, fotoğraflar ve videolar çekmenize izin verir.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Adres defterinize erişime izin vermek, aygıtınızdan gelen kişilerle sohbet etmenize izin verir.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Mikrofona erişime izin vermek, ses kaydetmenize izin verir.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Fotoğraf kitaplığına erişime izin vermek, ondan gelen görselleri karşıya yüklemenize izin verir.</string>
 </resources>

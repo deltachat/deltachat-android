@@ -324,6 +324,7 @@
     <string name="login_auth_method">Autorisatiemethode</string>
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
     <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
+    <string name="login_manually">Handmatig inloggen</string>
     <string name="login_info_gmail_text">Bij Gmail-accounts moet je een app-wachtwoord creëren als je authenticatie in twee stappen hebt ingeschakeld. Als dit niet beschikbaar is, schakel dan \'Minder veilige apps\' in.</string>
     <string name="login_certificate_checks">Certificaatcontrole</string>
     <string name="login_error_mail">Voer een geldig e-mailadres in</string>
@@ -654,8 +655,8 @@
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
 
     <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken.</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen.</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Geet Delta Chat toegang tot je microfoon om audio op te nemen.</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Geet Delta Chat toegang tot je microfoon om audio op te nemen.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
 </resources>

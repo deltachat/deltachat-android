@@ -654,8 +654,8 @@
     <string name="a11y_background_preview_label">Anteprima sfondo</string>
 
     <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Autorizzare l\'accesso alla camera ti permette di fare foto e video</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Autorizzare l\'accesso alla rubrica ti permette di chattare con i contatti nel tuo dispositivo.</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Autorizzare l\'accesso al microfono ti permette di registrare audio.</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Autorizzare l\'accesso alla galleria ti permette di caricare foto da essa.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Autorizzare l\'accesso alla camera ti permette di fare foto e video</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Autorizzare l\'accesso alla rubrica ti permette di chattare con i contatti nel tuo dispositivo.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Autorizzare l\'accesso al microfono ti permette di registrare audio.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Autorizzare l\'accesso alla galleria ti permette di caricare foto da essa.</string>
 </resources>

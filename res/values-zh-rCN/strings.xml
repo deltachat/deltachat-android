@@ -313,6 +313,7 @@
     <string name="login_auth_method">认证方法</string>
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许Delta Chat充当您的“通过电子邮件聊天”应用程序。\n\n不存在Delta Chat服务器，您的数据保留于您的设备！</string>
+    <string name="login_manually">手动登录</string>
     <string name="login_info_gmail_text">对于GMail帐户，如果您启用了“两步验证”，则需要创建应用专用密码。 如果此设置不可用，则需要启用“安全性较低的应用”。</string>
     <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
@@ -643,8 +644,8 @@
     <string name="a11y_background_preview_label">背景预览</string>
 
     <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">允许访问相机可让您拍摄照片和视频。</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">允许访问您的地址簿可让您与设备上的联系人聊天。</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">允许使用麦克风可让您录制音频。</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">允许访问照片库可让您从中上传图像。</string>
+    <string name="InfoPlist_NSCameraUsageDescription">允许访问相机可让您拍摄照片和视频。</string>
+    <string name="InfoPlist_NSContactsUsageDescription">允许访问您的地址簿可让您与设备上的联系人聊天。</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">允许使用麦克风可让您录制音频。</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">允许访问照片库可让您从中上传图像。</string>
 </resources>

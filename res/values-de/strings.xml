@@ -322,7 +322,7 @@
     <string name="login_smtp_port">SMTP-Port</string>
     <string name="login_smtp_security">SMTP-Sicherheit</string>
     <string name="login_auth_method">Autorisierungsmethode</string>
-    <string name="login_info_oauth2_title">Mit vereinfachter Einrichtung fortfahren?</string>
+    <string name="login_info_oauth2_title">Weiter mit vereinfachter Einrichtung?</string>
     <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth2).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt als Chat-Über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_manually">Manuell anmelden</string>
     <string name="login_info_gmail_text">Für GMail-Konten muss ein App-Passwort erstellt werden, wenn die 2FA (Zwei-Faktor-Authentifizierung) aktiviert ist. Wenn diese Einstellung nicht verfügbar ist, muss \"Zugriff durch weniger sichere Anwendungen\" aktiviert werden.</string>
@@ -559,7 +559,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
 
     <!-- permissions -->
     <string name="perm_required_title">Berechtigung erforderlich</string>
-    <string name="perm_continue">Fortsetzen</string>
+    <string name="perm_continue">Weiter</string>
     <string name="perm_explain_need_for_camera_access">Delta Chat den Zugriff auf die Kamera erlauben, um Fotos und Videos aufzunehmen.</string>
     <string name="perm_explain_need_for_mic_access">Delta Chat den Zugriff auf das Mikrofon erlauben, um Audionachrichten aufzunehmen.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat benötigt Zugriff auf das Dateisystem, um Dateien zu exportieren oder Backups zu erstellen.</string>
@@ -657,8 +657,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
 
     <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Zugriff auf die Kamera ermöglicht das Aufnehmen von Fotos und Videos.</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Wenn Du Zugriff auf das Adressbuch zulässt, kannst du von Deinem Gerät aus mit Kontakten chatten.</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Wenn Du den Zugriff auf das Mikrofon zulässt, kannst Du Audio aufnehmen.</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Wenn Du Zugriff auf die Fotobibliothek erlaubst, kannst Du Bilder aus der Bibliothek hochladen.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Zugriff auf die Kamera ermöglicht das Aufnehmen von Fotos und Videos.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Wenn Du Zugriff auf das Adressbuch zulässt, kannst du von Deinem Gerät aus mit Kontakten chatten.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Wenn Du den Zugriff auf das Mikrofon zulässt, kannst Du Audio aufnehmen.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Wenn Du Zugriff auf die Fotobibliothek erlaubst, kannst Du Bilder aus der Bibliothek hochladen.</string>
 </resources>

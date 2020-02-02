@@ -665,8 +665,8 @@
     <string name="a11y_background_preview_label">Podgląd tła</string>
 
     <!-- Translators: These strings are only used on iOS -->
-    <string name="INFOPLIST.Privacy._.Camera.Usage.Description">Zezwolenie na dostęp do aparatu pozwala robić zdjęcia i nagrywać filmy.</string>
-    <string name="INFOPLIST.Privacy._.Contacts.Usage.Description">Zezwolenie na dostęp do książki adresowej pozwala czatować z kontaktami z urządzenia.</string>
-    <string name="INFOPLIST.Privacy._.Microphone.Usage.Description">Zezwolenie na dostęp do mikrofonu pozwala nagrywać dźwięk.</string>
-    <string name="INFOPLIST.Privacy._.Photo.Library.Usage.Description">Zezwolenie na dostęp do biblioteki zdjęć umożliwia przesyłanie z niej zdjęć.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Zezwolenie na dostęp do aparatu pozwala robić zdjęcia i nagrywać filmy.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Zezwolenie na dostęp do książki adresowej pozwala czatować z kontaktami z urządzenia.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Zezwolenie na dostęp do mikrofonu pozwala nagrywać dźwięk.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Zezwolenie na dostęp do biblioteki zdjęć umożliwia przesyłanie z niej zdjęć.</string>
 </resources>
