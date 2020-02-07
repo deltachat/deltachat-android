@@ -275,7 +275,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_ADDR,dcContact.getAddr()));
 //      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_NAME, context.getString(R.string.menu_edit_name)));
 //      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_ENCRYPTION, context.getString(R.string.profile_encryption)));
-      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.menu_new_chat)));
+      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.send_message)));
       itemDataSharedChats = sharedChats;
       int sharedChatsCnt = sharedChats.getCnt();
       for (int i = 0; i < sharedChatsCnt; i++) {
