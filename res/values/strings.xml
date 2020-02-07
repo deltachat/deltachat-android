@@ -300,6 +300,7 @@
     <string name="tab_gallery_empty_hint">Images and videos shared in this chat will be displayed here.</string>
     <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
     <string name="media_preview">Media preview</string>
+    <string name="send_message">Send message</string>
 
 
     <!-- welcome and login -->
