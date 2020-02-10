@@ -26,6 +26,10 @@ import java.io.File;
 
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
+    private boolean manualConfigure = true; // false: configure by QR account creation
+    private ProgressDialog progressDialog = null;
+    ApplicationDcContext dcContext;
+
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -39,7 +43,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         scanQrButton.setOnClickListener((view) -> startRegistrationQrActivity());
         backupButton.setOnClickListener((view) -> startImportBackup());
 
-        ApplicationDcContext dcContext = DcHelper.getContext(this);
+        dcContext = DcHelper.getContext(this);
         dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
         dcContext.eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
     }
@@ -56,14 +60,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     private void startRegistrationActivity() {
+        manualConfigure = true;
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
         // no finish() here, the back key should take the user back from RegistrationActivity to WelcomeActivity
     }
 
     private void startRegistrationQrActivity() {
+        manualConfigure = false;
         new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan();
-        // no finish() here, the back key should take the user back from RegistrationActivity to WelcomeActivity
+        // no finish() here, the back key should take the user back from RegistrationQrActivity to WelcomeActivity
     }
 
     @SuppressLint("InlinedApi")
@@ -73,7 +79,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 .ifNecessary()
                 .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                 .onAllGranted(() -> {
-                    ApplicationDcContext dcContext = DcHelper.getContext(this);
                     File imexDir = dcContext.getImexDir();
                     final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
                     if (backupFile != null) {
@@ -97,11 +102,8 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 .execute();
     }
 
-    private ProgressDialog progressDialog = null;
     private void startImport(final String backupFile)
     {
-        ApplicationDcContext dcContext = DcHelper.getContext(this);
-
         if( progressDialog!=null ) {
             progressDialog.dismiss();
             progressDialog = null;
@@ -120,37 +122,82 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         dcContext.imex(DcContext.DC_IMEX_IMPORT_BACKUP, backupFile);
     }
 
+    private void startQrAccountCreation(String qrCode)
+    {
+        if( progressDialog!=null ) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getResources().getString(R.string.one_moment));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(android.R.string.cancel), (dialog, which) -> {
+            dcContext.stopOngoingProcess();
+        });
+        progressDialog.show();
+
+        // calling configure() results in
+        // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
+        dcContext.captureNextError();
+        dcContext.configure();
+    }
+
+    private void progressError() {
+        dcContext.endCaptureNextError();
+        progressDialog.dismiss();
+        if (dcContext.hasCapturedError()) {
+            new AlertDialog.Builder(this)
+                    .setMessage(dcContext.getCapturedError())
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+        }
+    }
+
+    private void progressUpdate(int progress) {
+        int percent = progress / 10;
+        progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+    }
+
+    private void progressSuccess() {
+        dcContext.endCaptureNextError();
+        progressDialog.dismiss();
+        Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
+        startActivity(conversationList);
+        finish();
+    }
+
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
-        if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS) {
-            ApplicationDcContext dcContext = DcHelper.getContext(this);
+        if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {
             long progress = (Long)data1;
             if (progress==0/*error/aborted*/) {
-                dcContext.endCaptureNextError();
-                progressDialog.dismiss();
-                if (dcContext.hasCapturedError()) {
-                    new AlertDialog.Builder(this)
-                            .setMessage(dcContext.getCapturedError())
-                            .setPositiveButton(android.R.string.ok, null)
-                            .show();
-                }
+                progressError();
             }
             else if (progress<1000/*progress in permille*/) {
-                int percent = (int)progress / 10;
-                progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+                progressUpdate((int)progress);
             }
             else if (progress==1000/*done*/) {
-                dcContext.endCaptureNextError();
-                progressDialog.dismiss();
-                Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
-                startActivity(conversationList);
-                finish();
+                progressSuccess();
             }
         }
-        else if (eventId== DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+        else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
             long progress = (Long)data1;
             if (progress==1000/*done*/) {
                 finish(); // remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
+            }
+        }
+        else if (!manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+            long progress = (Long)data1;
+            if (progress==0/*error/aborted*/) {
+                progressError();
+            }
+            else if (progress<1000/*progress in permille*/) {
+                progressUpdate((int)progress);
+            }
+            else if (progress==1000/*done*/) {
+                progressSuccess();
             }
         }
     }
@@ -163,14 +210,14 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             if (scanResult == null || scanResult.getFormatName() == null) {
                 return; // aborted
             }
-            ApplicationDcContext dcContext = DcHelper.getContext(this);
-            DcLot qrParsed = dcContext.checkQr(scanResult.getContents());
+            String qrRaw = scanResult.getContents();
+            DcLot qrParsed = dcContext.checkQr(qrRaw);
             switch (qrParsed.getState()) {
                 case DcContext.DC_QR_ACCOUNT:
                     String domain = qrParsed.getText1();
                     new AlertDialog.Builder(this)
                             .setMessage(String.format("Create new e-mail address on \"%s\" and log in there?", domain))
-                            .setPositiveButton(R.string.ok, null)
+                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
                             .show();
