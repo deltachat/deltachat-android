@@ -124,7 +124,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     private void startQrAccountCreation(String qrCode)
     {
-        if( progressDialog!=null ) {
+        if (progressDialog!=null) {
             progressDialog.dismiss();
             progressDialog = null;
         }
@@ -138,9 +138,14 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         });
         progressDialog.show();
 
+        dcContext.captureNextError();
+
+        if (!dcContext.setConfigFromQr(qrCode)) {
+            progressError();
+        }
+
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
-        dcContext.captureNextError();
         dcContext.configure();
     }
 

@@ -262,6 +262,15 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_setStockTranslation(JNIEnv *env
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setConfigFromQr(JNIEnv *env, jobject obj, jstring qr)
+{
+	CHAR_REF(qr);
+		jboolean ret = dc_set_config_from_qr(get_dc_context(env, obj), qrPtr);
+	CHAR_UNREF(qr);
+	return ret;
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getBlobdir(JNIEnv *env, jobject obj)
 {
 	char* temp = dc_get_blobdir(get_dc_context(env, obj));

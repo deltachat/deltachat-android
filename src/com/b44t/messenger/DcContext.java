@@ -102,6 +102,7 @@ public class DcContext {
     public native void         maybeNetwork         ();
     public native void         setConfig            (String key, String value);
     public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
+    public native boolean      setConfigFromQr      (String qr);
     public native String       getConfig            (String key);
     public int                 getConfigInt         (String key) { try{return Integer.parseInt(getConfig(key));} catch(Exception e) {} return 0; }
     @Deprecated public String  getConfig            (String key, String def) { return getConfig(key); }
