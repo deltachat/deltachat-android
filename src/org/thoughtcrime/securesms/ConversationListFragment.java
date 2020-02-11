@@ -214,6 +214,19 @@ public class ConversationListFragment extends Fragment
     getLoaderManager().restartLoader(0, null, this);
   }
 
+  private void handlePinAllSelected() {
+    final DcContext dcContext             = DcHelper.getContext(getActivity());
+    final Set<Long> selectedConversations = new HashSet<>(getListAdapter().getBatchSelections());
+    boolean doPin = areSomeSelectedChatsUnpinned();
+    for (long chatId : selectedConversations) {
+      dcContext.archiveChat((int)chatId, doPin? 2 : 0);
+    }
+    if (actionMode != null) {
+      actionMode.finish();
+      actionMode = null;
+    }
+  }
+
   @SuppressLint("StaticFieldLeak")
   private void handleArchiveAllSelected() {
     final DcContext dcContext             = DcHelper.getContext(getActivity());
@@ -405,6 +418,7 @@ public class ConversationListFragment extends Fragment
       if (adapter.getBatchSelections().size() == 0) {
         actionMode.finish();
       } else {
+        updateActionModeItems(actionMode.getMenu());
         actionMode.setTitle(String.valueOf(getListAdapter().getBatchSelections().size()));
       }
 
@@ -419,6 +433,7 @@ public class ConversationListFragment extends Fragment
     getListAdapter().initializeBatchMode(true);
     getListAdapter().toggleThreadInBatchSet(item.getChatId());
     getListAdapter().notifyDataSetChanged();
+    updateActionModeItems(actionMode.getMenu());
   }
 
   @Override
@@ -429,7 +444,30 @@ public class ConversationListFragment extends Fragment
   public interface ConversationSelectedListener {
     void onCreateConversation(int chatId);
     void onSwitchToArchive();
-}
+  }
+
+  private boolean areSomeSelectedChatsUnpinned() {
+    ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
+    final Set<Long> selectedChats = getListAdapter().getBatchSelections();
+    for (long chatId : selectedChats) {
+      DcChat dcChat = dcContext.getChat((int)chatId);
+      if (dcChat.getArchived()!=2) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private void updateActionModeItems(Menu menu) {
+    MenuItem pinItem = menu.findItem(R.id.menu_pin_selected);
+    if (areSomeSelectedChatsUnpinned()) {
+      pinItem.setIcon(R.drawable.ic_pin_white);
+      pinItem.setTitle(R.string.pin_chat);
+    } else {
+      pinItem.setIcon(R.drawable.ic_unpin_white);
+      pinItem.setTitle(R.string.unpin_chat);
+    }
+  }
 
   @Override
   public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -438,6 +476,8 @@ public class ConversationListFragment extends Fragment
     }
 
     MenuInflater inflater = getActivity().getMenuInflater();
+
+    inflater.inflate(R.menu.conversation_list_batch_pin, menu);
 
     if (archive) inflater.inflate(R.menu.conversation_list_batch_unarchive, menu);
     else         inflater.inflate(R.menu.conversation_list_batch_archive, menu);
@@ -463,6 +503,7 @@ public class ConversationListFragment extends Fragment
     switch (item.getItemId()) {
     case R.id.menu_select_all:       handleSelectAllThreads();   return true;
     case R.id.menu_delete_selected:  handleDeleteAllSelected();  return true;
+    case R.id.menu_pin_selected:     handlePinAllSelected();     return true;
     case R.id.menu_archive_selected: handleArchiveAllSelected(); return true;
     }
 
