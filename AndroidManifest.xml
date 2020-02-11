@@ -243,6 +243,10 @@
               android:theme="@style/TextSecure.LightTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
+    <activity android:name=".qr.RegistrationQrActivity"
+              android:theme="@style/TextSecure.LightTheme"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+
     <activity android:name=".ClearProfileAvatarActivity"
               android:theme="@style/Theme.AppCompat.Dialog.Alert"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"

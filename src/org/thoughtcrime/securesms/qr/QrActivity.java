@@ -78,6 +78,7 @@ public class QrActivity extends BaseActionBarActivity {
             Permissions.with(QrActivity.this)
                     .request(Manifest.permission.CAMERA)
                     .ifNecessary()
+                    .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
                     .onAllGranted(() -> ((QrScanFragment) adapter.getItem(TAB_SCAN)).handleQrScanWithPermissions(QrActivity.this))
                     .onAnyDenied(() -> viewPager.setCurrentItem(TAB_SHOW))
                     .execute();

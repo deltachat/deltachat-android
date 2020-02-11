@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".WelcomeActivity">
+
+    <androidx.legacy.widget.Space
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+    <ImageView
+        android:id="@+id/welcome_icon"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:src="@drawable/intro1"
+        android:padding="8dp"
+        tools:ignore="contentDescription"/>
+
+    <TextView
+        android:id="@+id/welcome_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/qrscan_title"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical">
+
+        <com.journeyapps.barcodescanner.CompoundBarcodeView
+            android:id="@+id/zxing_barcode_scanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+    <androidx.legacy.widget.Space
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+</LinearLayout>

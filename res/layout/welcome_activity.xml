@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
-        android:text="@string/app_name"
+        android:text="@string/welcome_desktop"
         android:textSize="22sp"
         android:textStyle="bold"/>
 
@@ -43,25 +43,44 @@
 
     <Button
         style="@style/ButtonPrimary"
-        android:id="@+id/skip_button"
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="@string/welcome_start_messaging" />
+        android:text="@string/login_header" />
 
     <androidx.legacy.widget.Space
         android:layout_weight="5"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
-    <TextView
-        android:id="@+id/backup_text"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:paddingBottom="20dp"
-        android:gravity="center"
-        android:text="@string/import_backup_title"
-        android:textSize="16sp"
-        android:textColor="@color/delta_accent"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/scan_qr_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:gravity="center"
+            android:text="@string/qrscan_title"
+            android:textSize="16sp"
+            android:textColor="@color/delta_accent"/>
+
+        <TextView
+            android:id="@+id/backup_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:gravity="center"
+            android:text="@string/import_backup_title"
+            android:textSize="16sp"
+            android:textColor="@color/delta_accent"/>
+
+    </LinearLayout>
 
 </LinearLayout>
 
