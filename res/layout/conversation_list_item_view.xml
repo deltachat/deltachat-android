@@ -88,6 +88,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
+                <ImageView android:id="@+id/pinned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:tint="?attr/conversation_list_item_date_color"
+                    android:src="@drawable/ic_pin_white"
+                    android:visibility="gone" />
                 <TextView android:id="@+id/archived"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
