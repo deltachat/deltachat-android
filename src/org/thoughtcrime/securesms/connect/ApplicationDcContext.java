@@ -279,12 +279,11 @@ public class ApplicationDcContext extends DcContext {
     Recipient recipient = getRecipient(chat);
     long date = summary.getTimestamp();
     int unreadCount = getFreshMsgCount(chatId);
-    boolean archived = chat.getArchived() != 0;
     boolean verified = chat.isVerified();
 
     return new ThreadRecord(context, body, recipient, date,
         unreadCount, chatId,
-        archived, verified, chat.isSendingLocations(), summary);
+        chat.getArchived(), verified, chat.isSendingLocations(), summary);
   }
 
 

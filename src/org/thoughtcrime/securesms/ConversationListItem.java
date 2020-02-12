@@ -254,7 +254,7 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setStatusIcons(ThreadRecord thread) {
-    if (thread.isArchived())
+    if (thread.getArchived()==1)
     {
       // archived
       this.archivedView.setVisibility(View.VISIBLE);

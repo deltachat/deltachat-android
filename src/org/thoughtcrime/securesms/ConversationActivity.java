@@ -447,11 +447,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    if( dcChat.getArchived()==0 ) {
-      inflater.inflate(R.menu.conversation_archive, menu);
+    if( dcChat.getArchived()==1 ) {
+      inflater.inflate(R.menu.conversation_unarchive, menu);
     }
     else {
-      inflater.inflate(R.menu.conversation_unarchive, menu);
+      inflater.inflate(R.menu.conversation_archive, menu);
     }
 
     inflater.inflate(R.menu.conversation_delete, menu);
@@ -558,7 +558,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleArchiveChat() {
-    int doArchive = dcContext.getChat(chatId).getArchived() == 0 ? 1: 0;
+    int doArchive = dcContext.getChat(chatId).getArchived() == 1 ? 0: 1;
     dcContext.archiveChat(chatId, doArchive);
     Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
     if( doArchive == 1 ) {
