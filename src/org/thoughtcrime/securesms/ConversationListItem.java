@@ -258,7 +258,7 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setStatusIcons(ThreadRecord thread) {
-    if (thread.getArchived()==1)
+    if (thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
       // archived
       this.pinnedView.setVisibility(View.GONE);
@@ -268,7 +268,7 @@ public class ConversationListItem extends RelativeLayout
     }
     else
     {
-      this.pinnedView.setVisibility(thread.getArchived()==2? View.VISIBLE : View.GONE);
+      this.pinnedView.setVisibility(thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED? View.VISIBLE : View.GONE);
       this.archivedView.setVisibility(View.GONE);
       int state = dcSummary.getState();
       if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)

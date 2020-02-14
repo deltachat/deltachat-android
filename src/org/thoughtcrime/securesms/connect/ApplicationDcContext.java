@@ -283,7 +283,7 @@ public class ApplicationDcContext extends DcContext {
 
     return new ThreadRecord(context, body, recipient, date,
         unreadCount, chatId,
-        chat.getArchived(), verified, chat.isSendingLocations(), summary);
+        chat.getVisibility(), verified, chat.isSendingLocations(), summary);
   }
 
 

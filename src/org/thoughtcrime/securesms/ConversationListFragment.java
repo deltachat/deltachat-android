@@ -219,7 +219,8 @@ public class ConversationListFragment extends Fragment
     final Set<Long> selectedConversations = new HashSet<>(getListAdapter().getBatchSelections());
     boolean doPin = areSomeSelectedChatsUnpinned();
     for (long chatId : selectedConversations) {
-      dcContext.archiveChat((int)chatId, doPin? 2 : 0);
+      dcContext.setChatVisibility((int)chatId,
+              doPin? DcChat.DC_CHAT_VISIBILITY_PINNED : DcChat.DC_CHAT_VISIBILITY_NORMAL);
     }
     if (actionMode != null) {
       actionMode.finish();
@@ -263,7 +264,8 @@ public class ConversationListFragment extends Fragment
             dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
           }
           else {
-            dcContext.archiveChat((int)chatId, !archive? 1 : 0);
+            dcContext.setChatVisibility((int)chatId,
+                    !archive? DcChat.DC_CHAT_VISIBILITY_ARCHIVED : DcChat.DC_CHAT_VISIBILITY_NORMAL);
           }
         }
       }
@@ -271,7 +273,8 @@ public class ConversationListFragment extends Fragment
       @Override
       protected void reverseAction(@Nullable Void parameter) {
         for (long threadId : selectedConversations) {
-          dcContext.archiveChat((int)threadId, !archive? 0 : 1);
+          dcContext.setChatVisibility((int)threadId,
+                  !archive? DcChat.DC_CHAT_VISIBILITY_NORMAL : DcChat.DC_CHAT_VISIBILITY_ARCHIVED);
         }
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -451,7 +454,7 @@ public class ConversationListFragment extends Fragment
     final Set<Long> selectedChats = getListAdapter().getBatchSelections();
     for (long chatId : selectedChats) {
       DcChat dcChat = dcContext.getChat((int)chatId);
-      if (dcChat.getArchived()!=2) {
+      if (dcChat.getVisibility()!=DcChat.DC_CHAT_VISIBILITY_PINNED) {
         return true;
       }
     }
