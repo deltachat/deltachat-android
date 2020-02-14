@@ -1,7 +1,7 @@
 # Delta Chat Android Changelog
 
 ## v1.1.2
-2020-12-26
+2020-01-26
 
 * fix draft saving
 * fix oauth2 issue introduced in 1.1.0
@@ -10,13 +10,13 @@
 
 
 ## v1.1.1
-2020-12-24
+2020-01-24
 
 * fix draft saving
 
 
 ## v1.1.0
-2020-12-21
+2020-01-21
 
 * integrate the help to the app
   so that it is also available when the device is offline
