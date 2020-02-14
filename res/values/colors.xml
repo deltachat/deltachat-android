@@ -64,4 +64,7 @@
     <color name="provider_broken_bg">#fffd0b00</color>
     <color name="provider_broken_fg">#ffffffff</color>
 
+    <color name="pinned_bg">#eeeeee</color>
+    <color name="pinned_bg_dark">#222222</color>
+
 </resources>
