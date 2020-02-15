@@ -131,7 +131,7 @@ public class DcContext {
     public native void         marknoticedChat      (int chat_id);
     public native void         marknoticedAllChats  ();
     public native void         marknoticedContact   (int contact_id);
-    public native void         archiveChat          (int chat_id, int archive);
+    public native void         setChatVisibility    (int chat_id, int visibility);
     public native int          getChatIdByContactId (int contact_id);
     public native int          createChatByContactId(int contact_id);
     public native int          createChatByMsgId    (int msg_id);

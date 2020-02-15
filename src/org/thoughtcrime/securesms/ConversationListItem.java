@@ -154,12 +154,14 @@ public class ConversationListItem extends RelativeLayout
       dateView.setText("");
     }
 
-    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-        thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0);
+    dateView.setCompoundDrawablesWithIntrinsicBounds(
+        thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED? R.drawable.ic_pinned_chatlist : 0, 0,
+        thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0
+    );
 
     setStatusIcons(thread);
     setBatchState(batchMode);
-    setBgColor();
+    setBgColor(thread);
 
     ApplicationDcContext dcContext = DcHelper.getContext(getContext());
     if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
@@ -196,7 +198,6 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    setBgColor();
     contactPhotoImage.setAvatar(glideRequests, recipient, true);
   }
 
@@ -228,7 +229,6 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    setBgColor();
     contactPhotoImage.setAvatar(glideRequests, recipient, true);
   }
 
@@ -254,7 +254,7 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setStatusIcons(ThreadRecord thread) {
-    if (thread.isArchived())
+    if (thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
       // archived
       this.archivedView.setVisibility(View.VISIBLE);
@@ -306,12 +306,15 @@ public class ConversationListItem extends RelativeLayout
     }
   }
 
-  private void setBgColor() {
-    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      TypedArray ta = getContext().obtainStyledAttributes(new int[] { R.attr.conversation_list_deaddrop_bg_color});
-      setBackgroundColor(ta.getColor(0, 0xffffffff));
-      ta.recycle();
+  private void setBgColor(ThreadRecord thread) {
+    int bg = R.attr.conversation_list_item_background;
+    if (chatId == DcChat.DC_CHAT_ID_DEADDROP
+     || (thread!=null && thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED)) {
+        bg = R.attr.pinned_list_item_background;
     }
+    TypedArray ta = getContext().obtainStyledAttributes(new int[] { bg });
+    ViewUtil.setBackground(this, ta.getDrawable(0));
+    ta.recycle();
   }
 
   private Spanned getHighlightedSpan(@NonNull  Locale locale,

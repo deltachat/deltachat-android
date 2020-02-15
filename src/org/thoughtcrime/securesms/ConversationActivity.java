@@ -447,7 +447,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    if( dcChat.getArchived()==0 ) {
+    if (dcChat.getVisibility()!=DcChat.DC_CHAT_VISIBILITY_ARCHIVED) {
       inflater.inflate(R.menu.conversation_archive, menu);
     }
     else {
@@ -558,10 +558,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleArchiveChat() {
-    int doArchive = dcContext.getChat(chatId).getArchived() == 0 ? 1: 0;
-    dcContext.archiveChat(chatId, doArchive);
+    int newVisibility = dcContext.getChat(chatId).getVisibility()==DcChat.DC_CHAT_VISIBILITY_ARCHIVED?
+            DcChat.DC_CHAT_VISIBILITY_NORMAL : DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
+    dcContext.setChatVisibility(chatId, newVisibility);
     Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
-    if( doArchive == 1 ) {
+    if (newVisibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED) {
       finish();
     }
   }

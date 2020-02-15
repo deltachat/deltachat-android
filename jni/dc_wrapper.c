@@ -515,9 +515,9 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedContact(JNIEnv *env,
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_archiveChat(JNIEnv *env, jobject obj, jint chat_id, jint archive)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_setChatVisibility(JNIEnv *env, jobject obj, jint chat_id, jint visibility)
 {
-	dc_archive_chat(get_dc_context(env, obj), chat_id, archive);
+	dc_set_chat_visibility(get_dc_context(env, obj), chat_id, visibility);
 }
 
 
@@ -1058,9 +1058,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isGroup(JNIEnv *env, jobject o
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcChat_getArchived(JNIEnv *env, jobject obj)
+JNIEXPORT jint Java_com_b44t_messenger_DcChat_getVisibility(JNIEnv *env, jobject obj)
 {
-	return dc_chat_get_archived(get_dc_chat(env, obj));
+	return dc_chat_get_visibility(get_dc_chat(env, obj));
 }
 
 

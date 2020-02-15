@@ -45,7 +45,7 @@ public class ThreadRecord {
   private final String     body;
 
   private           final int     unreadCount;
-  private           final boolean archived;
+  private           final int     visibility;
   private           final boolean verified;
   private           final boolean isSendingLocations;
   private @Nullable final DcLot   dcSummary;
@@ -53,7 +53,7 @@ public class ThreadRecord {
   public ThreadRecord(@NonNull Context context, @NonNull String body,
                       @NonNull Recipient recipient, long dateReceived, int unreadCount,
                       long threadId,
-                      boolean archived,
+                      int visibility,
                       boolean verified,
                       boolean isSendingLocations,
                       @Nullable DcLot dcSummary)
@@ -64,7 +64,7 @@ public class ThreadRecord {
     this.dateReceived         = dateReceived;
     this.body                 = body;
     this.unreadCount      = unreadCount;
-    this.archived         = archived;
+    this.visibility       = visibility;
     this.verified         = verified;
     this.isSendingLocations = isSendingLocations;
     this.dcSummary        = dcSummary;
@@ -110,8 +110,8 @@ public class ThreadRecord {
     return getDateReceived();
   }
 
-  public boolean isArchived() {
-    return archived;
+  public int getVisibility() {
+    return visibility;
   }
 
   public boolean isVerified() {

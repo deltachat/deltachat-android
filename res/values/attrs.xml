@@ -5,6 +5,7 @@
     <attr name="attachment_type_selector_background" format="color"/>
 
     <attr name="conversation_list_item_background" format="reference"/>
+    <attr name="pinned_list_item_background" format="reference"/>
     <attr name="conversation_list_deaddrop_bg_color" format="reference|color"/>
     <attr name="conversation_list_item_contact_color" format="reference|color"/>
     <attr name="conversation_list_item_subject_color" format="reference|color"/>
