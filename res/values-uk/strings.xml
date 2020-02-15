@@ -230,8 +230,6 @@
     <string name="group_self_not_in_group">Щоб виконати цю дію, Ви повинні бути учасником групи.</string>
     <string name="profile_encryption">Шифрування</string>
     <string name="media_preview">Попередній перегляд медіа</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
     <string name="welcome_start_messaging">Почати спілкування</string>

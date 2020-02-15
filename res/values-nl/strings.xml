@@ -300,6 +300,7 @@
     <string name="tab_gallery_empty_hint">De in dit gesprek gedeelde afbeeldingen en video\'s verschijnen hier.</string>
     <string name="tab_docs_empty_hint">De in dit gesprek gedeelde documenten, muziek en overige bestanden verschijnen hier.</string>
     <string name="media_preview">Mediavoorbeeld</string>
+    <string name="send_message">Bericht versturen</string>
 
 
     <!-- welcome and login -->
@@ -655,8 +656,8 @@
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Geet Delta Chat toegang tot je microfoon om audio op te nemen.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken, en QR-codes te scannen.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus je contactpersonen worden niet opgestuurd.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Geef Delta Chat toegang tot je microfoon om audio op te nemen voor spraakberichten en in video\'s.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
 </resources>

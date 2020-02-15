@@ -281,8 +281,6 @@
     <string name="tab_gallery_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami paveikslai ir vaizdo įrašai.</string>
     <string name="tab_docs_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami dokumentai, muzika ir kiti failai.</string>
     <string name="media_preview">Medijos peržiūra</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="welcome_start_messaging">Pradėti susirašinėjimą</string>

@@ -197,6 +197,8 @@
     <string name="share_location_for_two_hours">2 orduz</string>
     <string name="share_location_for_six_hours">6 orduz</string>
 
+    <string name="file_saved_to">Fitxategia \"%1$s\" helbidean gordeta</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Ziur talde honetatik atera nahi duzula?</string>
     <plurals name="ask_delete_chat">
@@ -298,6 +300,7 @@
     <string name="tab_gallery_empty_hint">Txat honetan partekatutako irudi eta bideoak agertuko dira hemen</string>
     <string name="tab_docs_empty_hint">Txat honetan partekatutako dokumentuak, musika, eta bestelako fitxategiak agertuko dira hemen</string>
     <string name="media_preview">Multimediaren aurrebista</string>
+    <string name="send_message">Bidali mezua</string>
 
 
     <!-- welcome and login -->
@@ -322,6 +325,7 @@
     <string name="login_auth_method">Baimentze metodoa</string>
     <string name="login_info_oauth2_title">Jarraitu ezarpen sinplifikatuarekin</string>
     <string name="login_info_oauth2_text">Sartu duzun e-mail helbideak ezarpen sinplifikatua onartzen du (OAuth2).\n\nHurrengo urratsean, baimendu Detla Chat zure e-mail bidezko txat aplikazio gisa erabili ahal izateko.\n\nEz dago Delta Chat zerbitzaririk, zure datuak zure gailuan mantentzen dira!</string>
+    <string name="login_manually">Hasi saioa eskuz</string>
     <string name="login_info_gmail_text">GMail kontu bat erabiltzeko Aplikazio-pasahitza sortu behar duzu 2FA aktibatuta baduzu. Ezarpen hau eskuragarri ez baduzu, aplikazio ez hain seguruak gaitu behar dituzu.</string>
     <string name="login_certificate_checks">Ziurtagiri-egiaztaketak</string>
     <string name="login_error_mail">Sartu baliozko e-mail helbide bat</string>

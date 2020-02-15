@@ -300,8 +300,6 @@
     <string name="tab_gallery_empty_hint">As imaxes e vídeos compartidos nesta conversa móstranse aquí.</string>
     <string name="tab_docs_empty_hint">Aquí están os documentos, música e outros ficheiros compartidos na conversa.</string>
     <string name="media_preview">Vista previa dos medios</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
     <string name="welcome_start_messaging">Inicia a conversa</string>

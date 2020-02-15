@@ -226,8 +226,6 @@
     <string name="tab_links">Linkek</string>
     <string name="tab_map">Térkép</string>
     <string name="media_preview">Média előnézete</string>
-
-
     <string name="welcome_start_messaging">Kezdj csevegni!</string>
     <string name="login_subheader">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk. Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
     <string name="login_inbox">Bejövő</string>

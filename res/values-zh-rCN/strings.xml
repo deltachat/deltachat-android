@@ -40,7 +40,7 @@
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">下一步</string>
     <string name="error">错误</string>
-    <string name="error_x">错误：%1$s</string>
+    <string name="error_x">错误： %1$s</string>
     <string name="error_no_network">网络不可用。</string>
     <string name="no_app_to_handle_data">无法找到用于处理此类数据的应用程序。</string>
     <string name="no_browser_installed">没有安装浏览器。</string>
@@ -52,7 +52,7 @@
     <string name="password">密码</string>
     <string name="now">现在</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
-    <string name="danger">危险!</string>
+    <string name="danger">危险</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d 分钟前</string>
     <string name="today">今天</string>
@@ -70,16 +70,16 @@
         <item quantity="other">%d 小时</item>
     </plurals>
     <plurals name="n_chats">
-        <item quantity="other">%d个聊天</item>
+        <item quantity="other">%d 个聊天</item>
     </plurals>
     <plurals name="n_contacts">
-        <item quantity="other">%d个联系人</item>
+        <item quantity="other">%d 个联系人</item>
     </plurals>
     <plurals name="n_messages">
-        <item quantity="other">%d条消息</item>
+        <item quantity="other">%d 条消息</item>
     </plurals>
     <plurals name="n_members">
-        <item quantity="other">%d个成员</item>
+        <item quantity="other">%d 个成员</item>
     </plurals>
 
     <string name="self">我</string>
@@ -127,7 +127,7 @@
     <string name="menu_new_group">新建群组</string>
     <string name="menu_new_verified_group">新建已验证群组</string>
     <string name="menu_send">发送</string>
-    <string name="menu_toggle_keyboard">切换emoji键盘</string>
+    <string name="menu_toggle_keyboard">切换 emoji 键盘</string>
     <string name="menu_edit_group">编辑群组</string>
     <string name="menu_group_name_and_image">群组名称和图像</string>
     <string name="menu_show_map">显示地图</string>
@@ -171,50 +171,50 @@
     <string name="menu_zoom_in">放大</string>
     <string name="menu_zoom_out">缩小</string>
     <string name="menu_save_log">保存日志</string>
-    <string name="title_share_location">与群组所有成员共享位置</string>
+    <string name="title_share_location">与所有群组成员共享位置</string>
     <string name="device_talk">设备消息</string>
     <string name="device_talk_subtitle">本地生成的消息</string>
-    <string name="device_talk_explain">此聊天中的消息是由您的Delta Chat应用本地生成的。 它的制作者使用它来通知应用更新以及使用过程中的问题。</string>
-    <string name="device_talk_welcome_message">欢迎使用Delta Chat！ – Delta Chat看起来、用起来就跟其他流行的通讯应用一样，但是却不涉及中心化的控制、跟踪以及将您、朋友、同事或家庭出卖给大型组织。\n从技术上来说，Delta Chat是具有现代聊天界面的电子邮件应用程序。若您愿意，电子邮件将装扮一新👻\n\n与数十亿人中的任何人一起使用Delta Chat：只需使用他们的电子邮件地址即可。收件人不需要安装Delta Chat、访问网站或是在什么地方注册 - 当然，如果他们愿意，您可以指给他们👉https://get.delta.chat</string>
+    <string name="device_talk_explain">此聊天中的消息是由您的 Delta Chat 应用本地生成的。 它的制作者使用它来通知应用更新和使用过程中出现的问题。</string>
+    <string name="device_talk_welcome_message">欢迎使用 Delta Chat！ – Delta Chat 看起来、用起来就跟其他流行的通讯应用一样，但是却不涉及中心化的控制、跟踪以及将您、朋友、同事或家庭出卖给大型组织。\n\n从技术上来说，Delta Chat 是具有现代聊天界面的电子邮件应用程序。若您愿意，电子邮件将装扮一新👻\n\n与数十亿人中的任何人一起使用 Delta Chat：只需使用他们的电子邮件地址即可。收件人不需要安装 Delta Chat、访问网站或是在什么地方注册 - 当然，如果他们愿意，您可以指给他们👉 https://get.delta.chat</string>
     <string name="edit_contact">编辑联系人</string>
 
-    <string name="mute_for_one_hour">静音1小时</string>
-    <string name="mute_for_two_hours">静音2小时</string>
-    <string name="mute_for_one_day">静音1天</string>
-    <string name="mute_for_seven_days">静音7天</string>
+    <string name="mute_for_one_hour">静音 1 小时</string>
+    <string name="mute_for_two_hours">静音 2 小时</string>
+    <string name="mute_for_one_day">静音 1 天</string>
+    <string name="mute_for_seven_days">静音 7 天</string>
     <string name="mute_forever">永久静音</string>
 
     <string name="share_location_once">一次</string>
-    <string name="share_location_for_5_minutes">5分钟</string>
-    <string name="share_location_for_30_minutes">30分钟</string>
-    <string name="share_location_for_one_hour">1小时</string>
-    <string name="share_location_for_two_hours">2小时</string>
-    <string name="share_location_for_six_hours">6小时</string>
+    <string name="share_location_for_5_minutes">5 分钟</string>
+    <string name="share_location_for_30_minutes">30 分钟</string>
+    <string name="share_location_for_one_hour">1 小时</string>
+    <string name="share_location_for_two_hours">2 小时</string>
+    <string name="share_location_for_six_hours">6 小时</string>
 
-    <string name="file_saved_to">文件已保存到“%1$s”。</string>
+    <string name="file_saved_to">文件已保存到 “%1$s”。</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">您确定要离开此群组吗？</string>
     <plurals name="ask_delete_chat">
-        <item quantity="other">删除%d个聊天？它们将不再显示在聊天列表中，但它们的消息仍将保留于服务器。</item>
+        <item quantity="other">删除 %d 个聊天？它们将不再显示在聊天列表中，但它们的消息仍将保留于服务器。</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="other">在此处和服务器上删除%d条消息？</item>
+        <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
     </plurals>
-    <string name="ask_forward">将消息转发给%1$s？</string>
+    <string name="ask_forward">将消息转发给 %1$s？</string>
     <string name="ask_export_attachment">导出附件？导出附件将允许您设备上的任意应用程序访问它们。\n\n继续？</string>
     <string name="ask_block_contact">屏蔽此联系人？您将不再收到此联系人的消息。</string>
     <string name="ask_unblock_contact">取消屏蔽此联系人？您将再次能收到此联系人的消息。</string>
     <string name="ask_delete_contacts">删除联系人？\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
-    <string name="ask_delete_contact">删除联系人%1$s?\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
+    <string name="ask_delete_contact">删除联系人 %1$s?\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
     <string name="cannot_delete_contacts_in_use">无法删除仍有在进行中的聊天的联系人。</string>
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
-    <string name="ask_remove_members">将 %1$s  从群组中移除？</string>
+    <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
     <string name="info_outdated_app_title">您的应用程序版本过时了</string>
-    <string name="info_outdated_app_text">您似乎是从没有自动更新的源（例如GitHub）安装的Delta Chat。请切换到应用商店版本来接收最新功能和错误修复。</string>
+    <string name="info_outdated_app_text">您似乎是从没有自动更新的源（例如 GitHub）安装的 Delta Chat。请切换到应用商店版本来接收最新功能和错误修复。</string>
     <string name="info_outdated_app_dialog_title">更新源</string>
-    <string name="info_outdated_app_dialog_text">可以从这些地方获取Delta Chat:</string>
+    <string name="info_outdated_app_dialog_text">可以从这些地方获取 Delta Chat:</string>
 
 
     <!-- contact list -->
@@ -226,25 +226,25 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="other">%d个聊天已归档</item>
+        <item quantity="other">%d 个聊天已归档</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="other">%d个聊天已解档</item>
+        <item quantity="other">%d 个聊天已解档</item>
     </plurals>
     <string name="chat_archived_chats_title">已归档聊天</string>
     <string name="chat_please_enter_message">请输入消息。</string>
     <string name="chat_camera_unavailable">相机不可用。</string>
     <string name="chat_unable_to_record_audio">无法录制音频。</string>
     <plurals name="chat_n_new_messages">
-        <item quantity="other">%d条新消息</item>
+        <item quantity="other">%d 条新消息</item>
     </plurals>
-    <string name="chat_no_messages_hint">发消息给%1$s。\n\n即使%2$s不使用Delta Chat也没问题。发送第一条消息可能需要一些时间并且可能未经加密。</string>
-    <string name="chat_new_group_hint">撰写第一条消息以允许其他人在此群组内回复。\n\n• 即使有成员不使用Delta Chat也没问题。\n\n• 发送第一条消息可能需要一些时间。</string>
+    <string name="chat_no_messages_hint">发消息给 %1$s。\n\n• 即使 %2$s 不使用 Delta Chat 也没问题。\n\n• 发送第一条消息可能需要一些时间并且可能未经加密。</string>
+    <string name="chat_new_group_hint">撰写第一条消息以允许其他人在此群组内回复。\n\n• 即使有成员不使用 Delta Chat 也没问题。\n\n• 发送第一条消息可能需要一些时间。</string>
     <string name="chat_record_slide_to_cancel">滑动来取消</string>
     <string name="chat_record_explain">按住来录制语音消息，松开来发送</string>
     <string name="chat_no_chats_yet_title">收件箱为空。\n按“+”来开始新聊天。</string>
-    <string name="chat_no_chats_yet_hint">您可以与其他Delta Chat用户以及任意电子邮件地址聊天。</string>
-    <string name="chat_all_archived">所有聊天已归档。按\"+\"来开始新聊天。</string>
+    <string name="chat_no_chats_yet_hint">您可以与其他 Delta Chat 用户以及任意电子邮件地址聊天。</string>
+    <string name="chat_all_archived">所有聊天已归档。\n按\"+\"来开始新聊天。</string>
     <string name="chat_share_with_title">分享给</string>
     <string name="chat_input_placeholder">消息</string>
     <string name="chat_archived_label">已归档</string>
@@ -289,6 +289,7 @@
     <string name="tab_gallery_empty_hint">在此聊天中分享的图像和视频将显示于此。</string>
     <string name="tab_docs_empty_hint">在此聊天中分享的文档、音乐和其他文件将显示于此。</string>
     <string name="media_preview">媒体预览</string>
+    <string name="send_message">发送消息</string>
 
 
     <!-- welcome and login -->
@@ -297,75 +298,75 @@
     <string name="login_title">登录</string>
     <string name="login_header">登录至您的服务器</string>
     <string name="login_explain">使用现有电子邮件帐户登录</string>
-    <string name="login_subheader">对于已知的电子邮件提供商，附加设置会被自动设置。有时IMAP需要在Web端启用。 请咨询您的电子邮件提供商或朋友来寻求帮助。</string>
-    <string name="login_no_servers_hint">不存在Delta Chat服务器，您的数据保留于您的设备！</string>
+    <string name="login_subheader">对于已知的电子邮件提供商，附加设置会被自动设置。有时 IMAP 需要在网页版设置里启用。 请咨询您的电子邮件提供商或朋友来寻求帮助。</string>
+    <string name="login_no_servers_hint">不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
     <string name="login_inbox">收件箱</string>
-    <string name="login_imap_login">IMAP登录名</string>
-    <string name="login_imap_server">IMAP服务器</string>
-    <string name="login_imap_port">IMAP端口</string>
-    <string name="login_imap_security">IMAP安全类型</string>
+    <string name="login_imap_login">IMAP 登录名</string>
+    <string name="login_imap_server">IMAP 服务器</string>
+    <string name="login_imap_port">IMAP 端口</string>
+    <string name="login_imap_security">IMAP 安全类型</string>
     <string name="login_outbox">发件箱</string>
-    <string name="login_smtp_login">SMTP登录名</string>
-    <string name="login_smtp_password">SMTP密码</string>
-    <string name="login_smtp_server">SMTP服务器</string>
-    <string name="login_smtp_port">SMTP端口</string>
-    <string name="login_smtp_security">SMTP安全类型</string>
+    <string name="login_smtp_login">SMTP 登录名</string>
+    <string name="login_smtp_password">SMTP 密码</string>
+    <string name="login_smtp_server">SMTP 服务器</string>
+    <string name="login_smtp_port">SMTP 端口</string>
+    <string name="login_smtp_security">SMTP 安全类型</string>
     <string name="login_auth_method">认证方法</string>
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
-    <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许Delta Chat充当您的“通过电子邮件聊天”应用程序。\n\n不存在Delta Chat服务器，您的数据保留于您的设备！</string>
+    <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许 Delta Chat 充当您的“通过电子邮件聊天”应用程序。\n\n不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
     <string name="login_manually">手动登录</string>
-    <string name="login_info_gmail_text">对于GMail帐户，如果您启用了“两步验证”，则需要创建应用专用密码。 如果此设置不可用，则需要启用“安全性较低的应用”。</string>
+    <string name="login_info_gmail_text">对于 GMail 帐户，如果您启用了“两步验证”，则需要创建应用专用密码。 如果此设置不可用，则需要启用“安全性较低的应用”。</string>
     <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
-    <string name="login_error_server">请输入有效的服务器/IP地址</string>
+    <string name="login_error_server">请输入有效的服务器 / IP 地址</string>
     <string name="login_error_port">请输入有效的端口（1-65535）</string>
     <string name="login_error_required_fields">请输入有效的电子邮件地址和密码</string>
     <string name="import_backup_title">导入备份</string>
-    <string name="import_backup_ask">在“%1$s”找到备份。\n\n您想导入并使用备份中的全部数据与设置吗？</string>
-    <string name="import_backup_no_backup_found">没有找到备份。\n\n将备份复制到“%1$s”然后再试一次；或者按“开始发送消息”来进行常规设置流程。</string>
+    <string name="import_backup_ask">在“%1$s”找到备份。\n\n您想导入并使用其中的全部数据与设置吗？</string>
+    <string name="import_backup_no_backup_found">没有找到备份。\n\n将备份复制到“%1$s”然后再试一次。或者按“开始发送消息”来进行常规设置流程。</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">来自%1$s的回应：%2$s\n\n某些提供商会在您的收件箱中放置额外信息; 您可以在Web端等处等查看它。 如遇到问题，请咨询您的提供商或朋友。</string>
+    <string name="login_error_server_response">来自 %1$s 的回应： %2$s\n\n某些提供商会在您的收件箱中放置额外信息; 您可以在 Web 端等处等查看它。 如遇到问题，请咨询您的提供商或朋友。</string>
 
     <!-- TLS certificate checks -->
     <string name="accept_invalid_hostnames">接受无效的主机名</string>
     <string name="accept_invalid_certificates">接受无效的证书</string>
 
-    <string name="used_settings">使用的设置：</string>
+    <string name="used_settings">已使用设置：</string>
     <string name="delete_account">删除账户</string>
     <string name="delete_account_ask">您确定要删除您的账户数据吗？</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">转发给…</string>
-    <string name="share_multiple_attachments">是否将%1$d个文件发送到所选聊天？文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
+    <string name="share_multiple_attachments">是否将 %1$d 个文件发送到所选聊天？\n\n文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">使用自定义：%s</string>
-    <string name="pref_using_default">使用默认：%s</string>
+    <string name="pref_using_custom">使用自定义： %s</string>
+    <string name="pref_using_default">使用默认： %s</string>
     <string name="pref_profile_info_headline">您的个人资料</string>
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_trim_headline">消息裁剪</string>
     <string name="pref_trim_option">删除旧消息</string>
     <string name="pref_trim_option_explain">聊天超过指定长度后自动删除较旧的消息</string>
     <string name="pref_trim_length_limit">聊天长度限制</string>
-    <string name="pref_trim_length_limit_summary">每个聊天%d个消息</string>
+    <string name="pref_trim_length_limit_summary">每个聊天 %d 个消息</string>
     <string name="pref_trim_now_button">立即裁剪所有聊天</string>
-    <string name="pref_trim_now_ask">立即删除所有旧消息？这会立即将所有的聊天裁剪到仅剩%d条最近的消息。</string>
+    <string name="pref_trim_now_ask">立即删除所有旧消息？这会立即将所有的聊天裁剪到仅剩 %d 条最近的消息。</string>
     <string name="pref_blocked_contacts">已屏蔽联系人</string>
     <string name="pref_profile_photo_remove_ask">移除个人资料照片？</string>
     <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">密码和账户</string>
     <string name="pref_who_can_see_this_information">谁能看到这个？</string>
-    <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起显示。 已发送的信息无法删除或移除。</string>
+    <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起显示。 已经发送的信息不能被删除或者移除。</string>
     <string name="pref_your_name">您的名称</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">签名档</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
-    <string name="pref_default_status_text">由我的Delta Chat Messenger发送：https://delta.chat</string>
+    <string name="pref_default_status_text">由我的 Delta Chat Messenger 发送： https://delta.chat</string>
     <string name="pref_enter_sends">回车键发送</string>
     <string name="pref_enter_sends_explain">按回车键发送文本消息</string>
     <string name="pref_outgoing_media_quality">发送媒体质量</string>
@@ -374,7 +375,7 @@
     <string name="pref_vibrate">振动</string>
     <string name="pref_chat_settings">聊天设置</string>
     <string name="pref_change_secret">更改密码</string>
-    <string name="pref_change_secret_explain">通过系统设置来更改您的PIN码/图案/指纹</string>
+    <string name="pref_change_secret_explain">通过系统设置来更改您的 PIN 码 / 图案 / 指纹</string>
     <string name="pref_screen_security">屏幕安全</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">请求系统在近期任务列表和本应用内阻止截屏</string>
@@ -382,8 +383,8 @@
     <string name="pref_notifications">通知</string>
     <string name="pref_notifications_show">显示</string>
     <string name="pref_notifications_priority">优先级</string>
-    <string name="pref_led_color">LED颜色</string>
-    <string name="pref_led_pattern">LED闪烁模式</string>
+    <string name="pref_led_color">LED 颜色</string>
+    <string name="pref_led_pattern">LED 闪烁模式</string>
     <string name="pref_sound">声音</string>
     <string name="pref_silent">无声</string>
     <string name="pref_privacy">隐私</string>
@@ -400,8 +401,8 @@
     <string name="pref_read_receipts">已读回执</string>
     <string name="pref_read_receipts_explain">如果禁用已读回执，您将无法看到其他人的已读回执。</string>
     <string name="pref_manage_keys">管理密钥</string>
-    <string name="pref_use_system_emoji">使用系统emoji</string>
-    <string name="pref_use_system_emoji_explain">关闭Delta Chat内置emoji支持</string>
+    <string name="pref_use_system_emoji">使用系统 emoji</string>
+    <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
     <string name="pref_app_access">应用程序访问</string>
     <string name="pref_communication">通讯</string>
     <string name="pref_chats">聊天</string>
@@ -415,27 +416,27 @@
     <string name="pref_other">其他</string>
     <string name="pref_backup">备份</string>
     <string name="pref_backup_explain">将聊天备份至外部存储</string>
-    <string name="pref_backup_export_explain">备份可帮助您在此设备或另一台设备上设置新安装的本应用。备份将包含所有消息、联系人、聊天以及端到端的Autocrypt设置。请将备份文件保存在安全的地方或尽快将其删除。</string>
+    <string name="pref_backup_export_explain">备份可帮助您在此设备或另一台设备上设置新安装的本应用。\n\n备份将包含所有消息、联系人、聊天以及端到端的 Autocrypt 设置。请将备份文件保存在安全的地方或尽快将其删除。</string>
     <string name="pref_backup_export_start_button">开始备份</string>
     <string name="pref_backup_written_to_x">备份已成功写入到“%1$s”。</string>
     <string name="pref_managekeys_menu_title">管理密钥</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat需要访问您的文件来导入/导出密钥。</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat 需要访问您的文件来导入 / 导出密钥。</string>
     <string name="pref_managekeys_export_secret_keys">导出密钥</string>
     <string name="pref_managekeys_export_explain">导出密钥到“%1$s”？</string>
     <string name="pref_managekeys_import_secret_keys">导入密钥</string>
-    <string name="pref_managekeys_import_explain">从“%1$s”导入密钥？现有密钥不会被删除。\n\n最后导入的密钥将被用作新的默认密钥除非它的文件名中含有单词\"legacy\".</string>
+    <string name="pref_managekeys_import_explain">从“%1$s”导入密钥？\n\n• 现有密钥不会被删除。\n\n• 除非最后导入的密钥文件名中带有单词\"legacy\"，否则它将会被用作新的默认密钥。</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">密钥已成功写入至\"%1$s\"。</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">密钥已从\"%1$s\"导入。</string>
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">使用默认图像</string>
     <string name="pref_background_btn_gallery">从图库中选择</string>
-    <string name="pref_imap_folder_handling">IMAP文件夹处理</string>
+    <string name="pref_imap_folder_handling">IMAP 文件夹处理</string>
     <string name="pref_imap_folder_warn_disable_defaults">如果禁用了此选项，请确保您的服务器和其他客户端已进行了相应的设置。\n\n否则可能无法正常工作。</string>
     <string name="pref_watch_inbox_folder">监视收件箱文件夹</string>
     <string name="pref_watch_sent_folder">监视发送文件夹</string>
-    <string name="pref_watch_mvbox_folder">监视DeltaChat文件夹</string>
+    <string name="pref_watch_mvbox_folder">监视 DeltaChat 文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
-    <string name="pref_auto_folder_moves">自动移动至DeltaChat文件夹</string>
+    <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
     <string name="pref_auto_folder_moves_explain">移动聊天对话以免弄乱收件箱</string>
     <string name="pref_email_interaction_title">电子邮件交互</string>
     <string name="pref_show_emails">显示传统电子邮件</string>
@@ -443,7 +444,7 @@
     <string name="pref_show_emails_accepted_contacts">已接受的联系人</string>
     <string name="pref_show_emails_all">全部</string>
     <string name="pref_empty_server_title">从服务器上删除电子邮件</string>
-    <string name="pref_empty_server_msg">此功能通过删除给定文件夹中包括聊天消息在内的所有电子邮件来释放您IMAP服务器上的空间。 此设备上的消息不会被删除。 此删除无法撤消！</string>
+    <string name="pref_empty_server_msg">此功能通过删除给定文件夹中包括聊天消息在内的所有电子邮件来释放您 IMAP 服务器上的空间。 此设备上的消息不会被删除。 此删除无法撤消！</string>
     <string name="pref_empty_server_inbox">删除“收件箱”文件夹中所有电子邮件</string>
     <string name="pref_empty_server_mvbox">删除“DeltaChat”文件夹中所有电子邮件</string>
     <string name="pref_empty_server_do_button">删除电子邮件</string>
@@ -456,20 +457,20 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt是一种用于自动端到端电子邮件加密的全新开放规范。\n\n您的端到端设置会根据需要自动创建并且您可以使用Autocrypt设置消息在设备之间传输此设置。</string>
-    <string name="autocrypt_send_asm_title">发送Autocrypt设置消息</string>
-    <string name="autocrypt_send_asm_explain_before">“Autocrypt设置消息”安全地共享您的端到端设置至其他兼容Autocrypt的应用程序。\n\n该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
-    <string name="autocrypt_send_asm_button">发送Autocrypt设置消息</string>
+    <string name="autocrypt_explain">Autocrypt 是一种用于自动端到端电子邮件加密的全新开放规范。\n\n您的端到端设置会根据需要自动创建并且您可以使用 Autocrypt 设置消息在设备之间传输此设置。</string>
+    <string name="autocrypt_send_asm_title">发送 Autocrypt 设置消息</string>
+    <string name="autocrypt_send_asm_explain_before">Autocrypt 设置消息安全地共享您的端到端设置至其他兼容 Autocrypt 的应用程序。\n\n该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
+    <string name="autocrypt_send_asm_button">发送 Autocrypt 设置消息</string>
     <string name="autocrypt_send_asm_explain_after">您的设置已发送给您自己。切换到另一台设备并打开该设置消息。 您将被要求输入设置码。 输入以下数字：\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">优先端到端加密</string>
-    <string name="autocrypt_asm_subject">Autocrypt设置消息</string>
-    <string name="autocrypt_asm_general_body">这是用于在客户端之间传输端到端设置的Autocrypt设置消息。\n\n要解密并使用您的设置，请在Autocrypt兼容的客户端中打开本消息，然后输入生成设备上显示的设置码。</string>
-    <string name="autocrypt_asm_click_body">这是用于在客户端之间传输端到端设置的Autocrypt设置消息。\n\n要解密并使用您的设置，请点击本消息。</string>
-    <string name="autocrypt_continue_transfer_title">Autocrypt设置消息</string>
+    <string name="autocrypt_asm_subject">Autocrypt 设置消息</string>
+    <string name="autocrypt_asm_general_body">这是用于在客户端之间传输端到端设置的 Autocrypt 设置消息。\n\n要解密并使用您的设置，请在兼容 Autocrypt 的客户端中打开本消息，然后输入生成设备上显示的设置码。</string>
+    <string name="autocrypt_asm_click_body">这是用于在客户端之间传输端到端设置的 Autocrypt 设置消息。\n\n要解密并使用您的设置，请点击本消息。</string>
+    <string name="autocrypt_continue_transfer_title">Autocrypt 设置消息</string>
     <string name="autocrypt_continue_transfer_please_enter_code">请输入另一台设备上显示的设置码。</string>
-    <string name="autocrypt_continue_transfer_succeeded">端到端设置已传输。此设备已准备好用与另一台设备相同的设置来使用Autocrypt了。</string>
+    <string name="autocrypt_continue_transfer_succeeded">端到端设置已传输。此设备已准备好用与另一台设备相同的设置来使用 Autocrypt 了。</string>
     <string name="autocrypt_continue_transfer_retry">重试</string>
-    <string name="autocrypt_bad_setup_code">错误的设置码，请重试。\n\n如果您不记得设置码，从另一台设备发送一个新的Autocrypt设置消息即可。</string>
+    <string name="autocrypt_bad_setup_code">错误的设置码，请重试。\n\n如果您不记得设置码，从另一台设备发送一个新的 Autocrypt 设置消息即可。</string>
 
 
     <!-- system messages -->
@@ -481,22 +482,22 @@
     <string name="systemmsg_group_left">已离开群组</string>
     <string name="systemmsg_read_receipt_subject">消息已被打开</string>
     <string name="systemmsg_read_receipt_body">您发送的“%1$s”消息已在收件人的屏幕上显示过。\n\n这并不保证内容已被阅读。</string>
-    <string name="systemmsg_cannot_decrypt">此消息无法解密。\n\n•简单地回复此消息以要求发件人再次发送该消息可能会有所帮助。\n\n• 如果您在此设备或其他设备上重新安装了Delta Chat或其他电子邮件程序，则可能需要从别处发送Autocrypt设置消息。</string>
+    <string name="systemmsg_cannot_decrypt">此消息无法解密。\n\n• 简单地回复此消息以要求发件人再次发送该消息可能会有所帮助。\n\n• 如果您在此设备或其他设备上重新安装了 Delta Chat 或其他电子邮件程序，则可能需要从别处发送 Autocrypt 设置消息。</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
-    <string name="systemmsg_action_by_me">我%1$s。</string>
+    <string name="systemmsg_action_by_me">我 %1$s。</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
-    <string name="systemmsg_action_by_user">%2$s%1$s。</string>
+    <string name="systemmsg_action_by_user">%2$s %1$s。</string>
 
 
     <!-- screen lock -->
     <string name="screenlock_title">屏幕锁定</string>
-    <string name="screenlock_explain">使用Android屏幕锁定或指纹锁定访问权限;要避免出现之前的内容，请同时启用“屏幕安全”</string>
+    <string name="screenlock_explain">使用 Android 屏幕锁定或指纹锁定访问权限;要避免出现之前的内容，请同时启用“屏幕安全”。</string>
     <string name="screenlock_authentication_failed">认证失败。</string>
-    <string name="screenlock_unlock_title">解锁Delta Chat</string>
-    <string name="screenlock_unlock_description">请输入您的系统密码以解锁Delta Chat。</string>
+    <string name="screenlock_unlock_title">解锁 Delta Chat</string>
+    <string name="screenlock_unlock_description">请输入您的系统密码以解锁 Delta Chat。</string>
     <string name="screenlock_inactivity_timeout">闲置超时锁定</string>
-    <string name="screenlock_inactivity_timeout_explain">在指定的闲置时间间隔后自动锁定Delta Chat</string>
-    <string name="screenlock_inactivity_timeout_interval">保持活跃的时间</string>
+    <string name="screenlock_inactivity_timeout_explain">在指定的闲置时间间隔后自动锁定 Delta Chat</string>
+    <string name="screenlock_inactivity_timeout_interval">保持活跃的时长</string>
 
 
     <!-- qr code stuff -->
@@ -504,33 +505,33 @@
     <string name="qrscan_title">扫描二维码</string>
     <string name="qrscan_hint">将您的相机放于二维码上方。</string>
     <string name="qrscan_ask_join_group">您想加入群组“%1$s”吗？</string>
-    <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的%1$s的指纹不匹配</string>
+    <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的 %1$s 的指纹不匹配。</string>
     <string name="qrscan_no_addr_found">此二维码包含指纹但没有电子邮件地址。\n\n对于带外验证，请先与收件人建立加密连接。</string>
     <string name="qrscan_contains_text">已扫描到的二维码文本：\n\n%1$s</string>
-    <string name="qrscan_contains_url">已扫描到的二维码URL:\n\n%1$s</string>
+    <string name="qrscan_contains_url">已扫描到的二维码 URL：\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">指纹</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s已验证， 介绍自己…</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s 已验证， 自我介绍…</string>
     <string name="qrshow_title">邀请二维码</string>
-    <string name="qrshow_x_joining">%1$s加入。</string>
-    <string name="qrshow_x_verified">%1$s已验证。</string>
-    <string name="qrshow_x_has_joined_group">%1$s已加入群组。</string>
+    <string name="qrshow_x_joining">%1$s 加入。</string>
+    <string name="qrshow_x_verified">%1$s 已验证。</string>
+    <string name="qrshow_x_has_joined_group">%1$s 已加入群组。</string>
     <string name="qrshow_join_group_title">邀请二维码</string>
     <string name="qrshow_join_group_hint">扫描此处来加入群组\"%1$s\"。</string>
     <string name="qrshow_join_contact_title">邀请二维码</string>
-    <string name="qrshow_join_contact_hint">扫描此处来建立联系人\"%1$s\"。</string>
+    <string name="qrshow_join_contact_hint">扫描此处来建立联系人 %1$s。</string>
     <string name="qrshow_join_contact_no_connection_hint">二维码设置需要互联网连接。 要继续，请先连接到网络。</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
-    <string name="contact_verified">%1$s已验证。</string>
-    <string name="contact_not_verified">无法验证%1$s。</string>
+    <string name="contact_verified">%1$s 已验证。</string>
+    <string name="contact_not_verified">无法验证 %1$s。</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
-    <string name="contact_setup_changed">更改了%1$s的设置</string>
+    <string name="contact_setup_changed">更改了 %1$s 的加密设置。</string>
     <string name="verified_group_explain">已验证群组（实验性）可提供针对主动攻击的安全性。其中的成员被其他成员用第二个因素进行了验证，并且消息始终是端到端加密的。</string>
 
 
     <!-- notifications  -->
-    <string name="notify_n_messages_in_m_chats">%2$d个聊天中有%1$d条新消息</string>
-    <string name="notify_most_recent_from">最新来自：%1$s</string>
-    <string name="notify_media_message_with_text">媒体消息：%s</string>
+    <string name="notify_n_messages_in_m_chats">%2$d 个聊天中有 %1$d 条新消息</string>
+    <string name="notify_most_recent_from">最新来自： %1$s</string>
+    <string name="notify_media_message_with_text">媒体消息： %s</string>
     <string name="notify_mark_all_read">将所有标记为已读</string>
     <string name="notify_mark_read">标记为已读</string>
     <string name="notify_media_message">媒体消息</string>
@@ -547,23 +548,23 @@
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
-    <string name="perm_explain_need_for_camera_access">要拍照和录像，请允许Delta Chat访问相机。</string>
-    <string name="perm_explain_need_for_mic_access">要发送音频消息，请允许Delta Chat访问您的麦克风。</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat需要访问您的文件来导出文件或创建备份。</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat需要访问您的文件来分享它们。</string>
+    <string name="perm_explain_need_for_camera_access">要拍照和录像，请允许 Delta Chat 访问相机。</string>
+    <string name="perm_explain_need_for_mic_access">要发送音频消息，请允许 Delta Chat 访问麦克风。</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat 需要访问您的文件来导出文件或创建备份。</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat 需要访问您的文件来分享它们。</string>
     <string name="perm_explain_access_to_camera_denied">要拍照或录像，请转至应用设置，选择“权限”，然后启用“相机”。</string>
     <string name="perm_explain_access_to_mic_denied">要发送音频消息，请转至应用设置，选择“权限”，然后启用“麦克风”。</string>
     <string name="perm_explain_access_to_storage_denied">要发送或接收文件，请转至应用设置，选择“权限”，然后启用“存储”。</string>
     <string name="perm_explain_access_to_location_denied">要附加位置，请转至应用设置，选择“权限”，然后启用“位置”。</string>
-    <string name="perm_enable_bg_reminder_title">点击此处以在Delta Chat处于后台时接收消息。</string>
+    <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
-    <string name="perm_enable_bg_already_done">您已允许Delta Chat在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
+    <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
 
     <!-- dc_str_* resources -->
-    <string name="encrypted_message">加密消息</string>
+    <string name="encrypted_message">加密的消息</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="welcome_desktop">欢迎使用Delta Chat</string>
+    <string name="welcome_desktop">欢迎使用 Delta Chat</string>
     <string name="login_known_accounts_title_desktop">已知账户</string>
     <string name="global_menu_preferences_language_desktop">语言</string>
     <string name="global_menu_file_desktop">文件</string>
@@ -579,10 +580,10 @@
     <string name="global_menu_view_developer_desktop">开发者</string>
     <string name="global_menu_view_developer_tools_desktop">开发者工具</string>
     <string name="global_menu_help_desktop">帮助</string>
-    <string name="global_menu_help_learn_desktop">了解有关Delta Chat的更多信息</string>
-    <string name="global_menu_help_contribute_desktop">在GitHub上做贡献</string>
+    <string name="global_menu_help_learn_desktop">了解有关 Delta Chat 的更多信息</string>
+    <string name="global_menu_help_contribute_desktop">在 GitHub 上做贡献</string>
     <string name="global_menu_help_report_desktop">报告一个问题</string>
-    <string name="global_menu_help_about_desktop">关于Delta Chat</string>
+    <string name="global_menu_help_about_desktop">关于 Delta Chat</string>
     <string name="no_chat_selected_suggestion_desktop">选择一个聊天或创建新聊天</string>
     <string name="write_message_desktop">写消息</string>
     <string name="encryption_info_title_desktop">加密信息</string>
@@ -601,8 +602,8 @@
     <string name="add_contact_desktop">添加联系人</string>
     <string name="login_required_desktop">必需</string>
     <string name="name_desktop">名称</string>
-    <string name="autocrypt_key_transfer_desktop">Autocrypt密钥传输</string>
-    <string name="initiate_key_transfer_desktop">“Autocrypt设置消息”安全地共享您的端到端设置至其他兼容Autocrypt的应用程序。该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
+    <string name="autocrypt_key_transfer_desktop">Autocrypt 密钥传输</string>
+    <string name="initiate_key_transfer_desktop">Autocrypt 设置消息安全地共享您的端到端设置至其他兼容 Autocrypt 的应用程序。该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
     <string name="reply_to_message_desktop">回复消息</string>
     <string name="select_group_image_desktop">选择群组图像</string>
     <string name="imex_progress_title_desktop">备份进度</string>
@@ -613,12 +614,12 @@
     <string name="new_message_from_desktop">新消息来自</string>
     <string name="unblock_contacts_desktop">取消屏蔽联系人</string>
     <string name="none_blocked_desktop">还没有已屏蔽的联系人</string>
-    <string name="autocrypt_correct_desktop">已传输Autocrypt设置！</string>
+    <string name="autocrypt_correct_desktop">Autocrypt 设置已传输 。</string>
     <string name="autocrypt_incorrect_desktop">不正确的设置码。请重试。</string>
     <string name="create_chat_error_desktop">无法创建聊天。</string>
     <string name="ask_delete_chat_desktop">删除此聊天？</string>
     <string name="email_validation_failed_desktop">需要电子邮件地址。</string>
-    <string name="forget_login_confirmation_desktop">删除此登录？ 一切都将被删除，包括您的端到端设置，联系人，聊天，消息和媒体。 此操作无法撤消。</string>
+    <string name="forget_login_confirmation_desktop">删除此登录？ 一切都将被删除，包括您的端到端设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
     <string name="me_desktop">我</string>
     <string name="in_this_group_desktop">群组成员</string>
     <string name="not_in_this_group_desktop">潜在的群组成员（不在群组中）</string>
@@ -628,7 +629,7 @@
     <string name="message_detail_to_desktop">到</string>
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>
     <string name="menu.view.developer.open.current.log.file">打开当前日志文件</string>
-    <string name="user_location_permission_explanation">Delta Chat需要位置权限来显示和分享您的位置。</string>
+    <string name="user_location_permission_explanation">Delta Chat 需要位置权限来显示和分享您的位置。</string>
 
 
     <!-- accessibility -->
@@ -644,8 +645,8 @@
     <string name="a11y_background_preview_label">背景预览</string>
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">允许访问相机可让您拍摄照片和视频。</string>
-    <string name="InfoPlist_NSContactsUsageDescription">允许访问您的地址簿可让您与设备上的联系人聊天。</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">允许使用麦克风可让您录制音频。</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">允许访问照片库可让您从中上传图像。</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用您的相机来拍摄、发送照片和视频以及扫描二维码。</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用您的麦克风来录制、发送语音消息和带有声音的视频。</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
 </resources>

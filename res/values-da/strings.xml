@@ -270,8 +270,6 @@
     <string name="tab_gallery_empty_hint">Billder og video delt i denne samtale vises her.</string>
     <string name="tab_docs_empty_hint">Dokumenter, musik og andre filer delt i denne samtale vises her.</string>
     <string name="media_preview">Medie forhåndvisning</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Budbringeren med verdens bredeste publikum. Fri og uafhængig.</string>
     <string name="welcome_start_messaging">Start skrivning</string>

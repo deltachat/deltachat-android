@@ -290,8 +290,6 @@
     <string name="tab_gallery_empty_hint">Imagens e vídeos compartilhados nesta conversa serão mostrados aqui.</string>
     <string name="tab_docs_empty_hint">Documentos, músicas e outros arquivos compartilhados nesta conversa serão mostrados aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O aplicativo com a maior base de usuários do mundo. Livre e independente.</string>
     <string name="welcome_start_messaging">Comece a conversar</string>

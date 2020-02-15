@@ -16,7 +16,8 @@
     <string name="open">Отвори</string>
     <string name="delete">Обриши</string>
     <string name="info">Инфо</string>
-    <string name="emoji">Емоји</string>
+    <string name="update">Ажурирање</string>
+    <string name="emoji">Емоџи</string>
     <string name="attachment">Прилог</string>
     <string name="back">Назад</string>
     <string name="close">Близу</string>
@@ -233,8 +234,6 @@
     <string name="tab_gallery">Галерија</string>
     <string name="tab_docs">Документи</string>
     <string name="media_preview">Преглед медијума</string>
-
-
     <string name="welcome_start_messaging">Почните ћаскање</string>
     <string name="login_subheader">За познате пружаоце услуге е-поште, додатне поставке се одређују аутоматски. Каткад, морате омогућити ИМАП у поставкама на веб сучељу ваше е-поште.\n\nПосаветујте се са пружаоцем услуге е-поште или пријатељима ако наиђете на проблеме.</string>
     <string name="login_no_servers_hint">Не постоји сервер Делта ћаскања. Апликација користи само сервер ваше е-поште.</string>

@@ -34,7 +34,7 @@
     <string name="hide_password">Passwort verstecken</string>
     <string name="not_now">Nicht jetzt</string>
     <string name="never">Nie</string>
-    <string name="one_moment">Einen Moment…</string>
+    <string name="one_moment">Einen Moment …</string>
     <string name="done">Fertig</string>
     <string name="undo">Rückgängig</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
@@ -181,7 +181,7 @@
     <string name="device_talk">Systemnachrichten</string>
     <string name="device_talk_subtitle">Lokal erzeugte Nachrichten</string>
     <string name="device_talk_explain">Nachrichten in diesem Chat werden lokal von der Delta Chat App erzeugt. Der Chat wird von den Entwicklern verwendet, um auf Neuigkeiten und Probleme hinzuweisen.</string>
-    <string name="device_talk_welcome_message">Willkommen – Delta Chat sieht aus und funktioniert wie andere populäre Messenger - aber ohne zentrale Überwachung, ohne Tracking, ohne die Daten von Ihnen, Freunden, Kollegen oder Familienmitgliedern an irgendwelche Firmen zu verkaufen.\n\nTechnisch ist Delta Chat ein E-Mail-Programm mit einer modernen Chat-Oberfläche - E-Mail in neuen Kleidern 👻\n\nMit Delta Chat haben Sie Milliarden potentieller Chatpartner: Verwenden Sie einfach deren E-Mail-Adresse - die Empfänger selbst müssen Delta Chat dazu nicht installiert haben oder sich irgendwo anmelden. Aber natürlich, wenn Sie mögen, können Sie sie auf 👉 https://get.delta.chat hinweisen</string>
+    <string name="device_talk_welcome_message">Willkommen – Delta Chat sieht aus und funktioniert wie andere populäre Messenger - aber ohne zentrale Überwachung, ohne Tracking, ohne die Daten von Ihnen, Freunden, Kollegen oder Familienmitgliedern an irgendwelche Firmen zu verkaufen.\n\nTechnisch ist Delta Chat ein E-Mail-Programm mit einer modernen Chat-Oberfläche - E-Mail in neuen Kleidern 👻\n\nMit Delta Chat haben Sie Milliarden potentieller Chatpartner: Verwenden Sie einfach deren E-Mail-Adresse - die Empfänger selbst müssen Delta Chat dazu nicht installieren oder sich irgendwo anmelden. Aber natürlich, wenn Sie mögen, können Sie sie auf 👉 https://get.delta.chat hinweisen</string>
     <string name="edit_contact">Kontakt bearbeiten</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
@@ -213,7 +213,7 @@
     <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
     <string name="ask_block_contact">Diesen Kontakt blockieren? Sie werden keine Nachrichten mehr von diesem Kontakt erhalten.</string>
     <string name="ask_unblock_contact">Diesen Kontakt nicht mehr blockieren? Nachrichten von diesem Kontakt werden dann wieder angezeigt.</string>
-    <string name="ask_delete_contacts">Kontakte löschen? Dadurch werden die ausgewählten Kontakte dauerhaft gelöscht.\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
+    <string name="ask_delete_contacts">Kontakte dauerhaft löschen?\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="ask_delete_contact">Kontakt %1$s dauerhaft löschen?\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="cannot_delete_contacts_in_use">Kontakte mit laufenden Chats können nicht gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
@@ -249,7 +249,7 @@
         <item quantity="one">%d neue Nachricht</item>
         <item quantity="other">%d neue Nachrichten</item>
     </plurals>
-    <string name="chat_no_messages_hint">Eine Nachricht an %1$s:\n\n• Es ist in Ordnung wenn %2$s kein Delta Chat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern und erfolgt unverschlüsselt. </string>
+    <string name="chat_no_messages_hint">Eine Nachricht an %1$s senden:\n\n• Es ist in Ordnung wenn %2$s kein Delta Chat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern und erfolgt unverschlüsselt. </string>
     <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
     <string name="chat_record_slide_to_cancel">Schieben um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>
@@ -300,6 +300,7 @@
     <string name="tab_gallery_empty_hint">In diesem Chat geteilte Bilder und Videos werden hier angezeigt.</string>
     <string name="tab_docs_empty_hint">In diesem Chat geteilte Dokumente, Musik und Dateien werden hier angezeigt.</string>
     <string name="media_preview">Media-Vorschau</string>
+    <string name="send_message">Nachricht senden</string>
 
 
     <!-- welcome and login -->
@@ -333,7 +334,7 @@
     <string name="login_error_required_fields">Bitte eine gültige E-Mail-Adresse und ein Passwort eingeben</string>
     <string name="import_backup_title">Backup importieren</string>
     <string name="import_backup_ask">Backup \"%1$s\" gefunden.\n\nDieses einlesen und alle Daten und Einstellungen daraus verwenden?</string>
-    <string name="import_backup_no_backup_found">Kein Backup gefunden.\n\nKopiere die Sicherung nach \"%1$s\" und versuche es erneut. Alternativ \"Jetzt beginnen\" wählen, um den normalen Einrichtungsprozess fortzusetzen.</string>
+    <string name="import_backup_no_backup_found">Kein Backup gefunden.\n\nDie Sicherung nach \"%1$s\" kopieren und es erneut versuchen. Alternativ \"Jetzt beginnen\" wählen, um den normalen Einrichtungsprozess fortzusetzen.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Login als \"%1$s\" nicht möglich. Bitte E-Mail Adresse und Passwort auf Richtigkeit überprüfen.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
@@ -413,7 +414,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_read_receipts">Lesebestätigungen</string>
     <string name="pref_read_receipts_explain">Wenn Lesebestätigungen deaktiviert sind, werden auch keine Lesebestätigungen von anderen angezeigt. </string>
     <string name="pref_manage_keys">Schlüssel verwalten</string>
-    <string name="pref_use_system_emoji">Benutze System-Emoji</string>
+    <string name="pref_use_system_emoji">System-Emoji benutzen</string>
     <string name="pref_use_system_emoji_explain">Deaktivieung der integrierten Emoji-Unterstützung von Delta Chat.</string>
     <string name="pref_app_access">App-Zugriff</string>
     <string name="pref_communication">Kommunikation</string>
@@ -473,7 +474,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="autocrypt_send_asm_title">Autocrypt-Setup-Nachricht senden</string>
     <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt-Setup-Nachricht\" überträgt das Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät.\n\nDas Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-Setup-Nachricht senden</string>
-    <string name="autocrypt_send_asm_explain_after">Das Setup wurde an dich geschickt. Wechsele nun zum anderen Gerät und öffne die Setup-Nachricht. Folge den Anweisungen und gib den Setup-Code ein:\n\n%1$s\n\nDanach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
+    <string name="autocrypt_send_asm_explain_after">Das Setup wurde an Sie geschickt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Den Anweisungen folgen und den Setup-Code eingeben:\n\n%1$s\n\nDanach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
     <string name="autocrypt_prefer_e2ee">Ende-zu-Ende-Verschlüsselung bevorzugen</string>
     <string name="autocrypt_asm_subject">Autocrypt-Setup-Nachricht</string>
     <string name="autocrypt_asm_general_body">Dies ist die Autocrypt-Setup-Nachricht, um das Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nUm das Setup zu entschlüsseln und zu verwenden, öffne diese Nachricht in einer Autocrypt-kompatiblen App und gib den Setup-Code ein, der auf dem anderen Gerät angezeigt wurde.</string>
@@ -518,7 +519,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrscan_hint">Kamera über den QR-Code halten</string>
     <string name="qrscan_ask_join_group">Der Gruppe \"%1$s\" beitreten?</string>
     <string name="qrscan_fingerprint_mismatch">Der gescannte Fingerabdruck stimmt nicht mit dem zuletzt für %1$s gesehenen Fingerabdruck überein.</string>
-    <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine E-Mail-Adresse.\n\nFür eine Out-of-Band-Verifizierung stelle bitte zuerst eine verschlüsselte Verbindung zum Empfänger her.</string>
+    <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine E-Mail-Adresse.\n\nFür eine Out-of-Band-Verifizierung bitte zuerst eine verschlüsselte Verbindung zum Empfänger herstellen.</string>
     <string name="qrscan_contains_text">Gescannter QR-Code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Gescannter QR-Code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
@@ -528,7 +529,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrshow_x_verified">%1$s verifiziert.</string>
     <string name="qrshow_x_has_joined_group">%1$s ist der Gruppe beigetreten.</string>
     <string name="qrshow_join_group_title">QR-Einladungscode</string>
-    <string name="qrshow_join_group_hint">Scanne dies, um der Gruppe \"%1$s\" beizutreten.</string>
+    <string name="qrshow_join_group_hint">Dies scannen, um der Gruppe \"%1$s\" beizutreten.</string>
     <string name="qrshow_join_contact_title">QR-Einladungscode</string>
     <string name="qrshow_join_contact_hint">Scannen, um einen Kontakt mit %1$s herzustellen.</string>
     <string name="qrshow_join_contact_no_connection_hint">Der Austausch von QR-Codes erfordert eine Verbindung zum Internet. Bitte stellen Sie diese her, bevor Sie fortfahtren.</string>
@@ -564,7 +565,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="perm_explain_need_for_mic_access">Delta Chat den Zugriff auf das Mikrofon erlauben, um Audionachrichten aufzunehmen.</string>
     <string name="perm_explain_need_for_storage_access">Delta Chat benötigt Zugriff auf das Dateisystem, um Dateien zu exportieren oder Backups zu erstellen.</string>
     <string name="perm_explain_need_for_storage_access_share">Delta Chat benötigt Zugriff auf Ihre Dateien, um die ausgewählten Dateien zu teilen.</string>
-    <string name="perm_explain_access_to_camera_denied">Delta Chat benötigt die Erlaubnis der Kamera, um Fotos oder Videos aufzunehmen, aber es wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Kamera\".</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat benötigt die Erlaubnis, die Kamera zu benutzen, um Fotos oder Videos aufzunehmen, aber es wurde dauerhaft abgelehnt. Bitte fahren Sie mit dem Menü App-Einstellungen fort, wählen Sie \"Berechtigungen\" und aktiviere \"Kamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat benötigt die Erlaubnis des Mikrofons, um Audio-Nachrichten zu senden, aber es wurde dauerhaft abgelehnt. Bitte fahre mit den App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat benötigt die Speichergenehmigung, um Fotos, Videos oder Audiodateien anzuhängen oder zu exportieren, aber es wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Speicher\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat benötigt eine Standortberechtigung, um einen Standort anzuhängen, aber er wurde dauerhaft abgelehnt. Bitte fahre mit dem Menü App-Einstellungen fort, wähle \"Berechtigungen\" und aktiviere \"Standort\".</string>
@@ -578,7 +579,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Willkommen bei Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Bekannte Konten</string>
-    <string name="global_menu_preferences_language_desktop">Wähle Sprache...</string>
+    <string name="global_menu_preferences_language_desktop">Wähle Sprache ...</string>
     <string name="global_menu_file_desktop">Datei</string>
     <string name="global_menu_file_quit_desktop">Beenden</string>
     <string name="global_menu_edit_desktop">Bearbeiten</string>
@@ -622,7 +623,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="download_attachment_desktop">Download Anhang</string>
     <string name="export_backup_desktop">Backup exportieren</string>
     <string name="transfer_key_desktop">Übertragungsschlüssel</string>
-    <string name="show_key_transfer_message_desktop">Der Schlüssel wurde an dich geschickt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Nach Aufforderung, den Setup-Code einzugeben, die folgenden Zahlen eingeben: Danach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
+    <string name="show_key_transfer_message_desktop">Der Schlüssel wurde an Sie versandt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Nach Aufforderung, den Setup-Code einzugeben, die folgenden Zahlen eingeben: Danach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
     <string name="new_message_from_desktop">Neue Nachricht von</string>
     <string name="unblock_contacts_desktop">Kontakte freischalten</string>
     <string name="none_blocked_desktop">Noch keine blockierten Kontakte</string>
@@ -657,8 +658,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat verwendet die Kamera um Fotos aufzunehmen und zu versenden und im QR-Codes zu scannen.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat verwendet die Kontakte um eine Liste von E-Mail-Adressen anzuzeigen, an die Sie schreiben können. Delta Chat hat keine Server; das Adressbuch wird nicht versandt.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat verwendet das Mikrofon um Sprachnachrichten und Videos mit Sound aufzunehmen und zu versenden.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat verwendet die Fotos um Ihnen die Möglichkeit zu geben, diese auszuwählen und zu versenden.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat verwendet die Kamera, um Fotos aufzunehmen und zu versenden und im QR-Codes zu scannen.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat verwendet die Kontakte, um eine Liste von E-Mail-Adressen anzuzeigen, an die Sie schreiben können. Delta Chat hat keine Server; das Adressbuch wird nicht versandt.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat verwendet das Mikrofon, um Sprachnachrichten und Videos mit Sound aufzunehmen und zu versenden.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat verwendet die Fotos, um Ihnen die Möglichkeit zu geben, diese auszuwählen und zu versenden.</string>
 </resources>

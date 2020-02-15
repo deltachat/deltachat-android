@@ -317,8 +317,6 @@
     <string name="tab_gallery_empty_hint">Tutaj zostaną wyświetlone zdjęcia i filmy udostępnione na tym czacie.</string>
     <string name="tab_docs_empty_hint">Tutaj zostaną wyświetlone dokumenty, muzyka i inne pliki udostępnione na tym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Komunikator o największym zasięgu na świecie. Darmowy i bezpieczny.</string>
     <string name="welcome_start_messaging">Uruchom komunikator</string>

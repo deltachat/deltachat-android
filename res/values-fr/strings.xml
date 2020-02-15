@@ -299,8 +299,6 @@
     <string name="tab_gallery_empty_hint">Les images et vidéos partagées dans ce tchat seront affichées ici.</string>
     <string name="tab_docs_empty_hint">Les documents, musiques et autres fichiers partagés dans ce chat seront affichés ici.</string>
     <string name="media_preview">Prévisualiser le fichier multimédia</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Le messager avec le plus large public au monde. Libre et indépendant.</string>
     <string name="welcome_start_messaging">Démarrage la communication</string>

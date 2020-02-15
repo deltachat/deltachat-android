@@ -234,8 +234,6 @@
     <string name="tab_contact">Contacte</string>
     <string name="tab_gallery">Galeria</string>
     <string name="media_preview">Previsualització multimèdia</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">El programa de missatgeria amb més ususaris del món. Gratuït i independent.</string>
     <string name="welcome_start_messaging">Comenceu a comunicar-vos</string>

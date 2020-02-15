@@ -300,6 +300,7 @@
     <string name="tab_gallery_empty_hint">Figurat dhe videot e dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_docs_empty_hint">Dokumentet, muzika dhe kartela të tjera të dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="media_preview">Paraparje media</string>
+    <string name="send_message">Dërgo mesazh</string>
 
 
     <!-- welcome and login -->

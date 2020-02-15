@@ -300,8 +300,6 @@
     <string name="tab_gallery_empty_hint">Las imágenes y videos compartidos en este chat se mostrarán aquí.</string>
     <string name="tab_docs_empty_hint">Documentos, música y otros archivos compartidos en este chat se mostrarán aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">La aplicación de mensajería instantánea con la audiencia más amplia del mundo. Libre e independiente. </string>
     <string name="welcome_start_messaging">Empezar a Chatear</string>

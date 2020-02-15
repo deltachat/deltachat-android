@@ -209,6 +209,8 @@
     <string name="share_location_for_two_hours">2 часа</string>
     <string name="share_location_for_six_hours">6 часов</string>
 
+    <string name="file_saved_to">Файл сохранен в «%1$s».</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
     <plurals name="ask_delete_chat">
@@ -320,6 +322,7 @@
     <string name="tab_gallery_empty_hint">Общедоступные изображения и видео будут отображены здесь, в этом чате.</string>
     <string name="tab_docs_empty_hint">Общедоступная музыка и другие файлы будут отображены здесь, в этом чате.</string>
     <string name="media_preview">Предварительный просмотр медиафайлов</string>
+    <string name="send_message">Отправить сообщение</string>
 
 
     <!-- welcome and login -->
@@ -344,6 +347,7 @@
     <string name="login_auth_method">Метод авторизации</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth2).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
+    <string name="login_manually">Войти вручную</string>
     <string name="login_info_gmail_text">Для учётных записей GMail необходимо задать пароль для приложений (App-Password), если включена двухфакторная аутентификация (2FA). Если эти настройки недоступны, вам нужно активировать параметр «Менее безопасные приложения» (Less Secure Apps).</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
     <string name="login_error_mail">Укажите действительный адрес эл. почты</string>
@@ -458,7 +462,7 @@
     <string name="pref_managekeys_secret_keys_imported_from_x">Секретные ключи импортированы из папки «%1$s».</string>
     <string name="pref_background">Фон</string>
     <string name="pref_background_btn_default">Использовать изображение по умолчанию</string>
-    <string name="pref_background_btn_gallery">Выбрать из галлереи</string>
+    <string name="pref_background_btn_gallery">Выбрать из галереи</string>
     <string name="pref_imap_folder_handling">Параметры папок IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">При отключении этого параметра убедитесь, что сервер и ваши другие приложения для работы с электронной почтой настроены таким же образом.\n\nВ противном случае, всё может перестать работать.</string>
     <string name="pref_watch_inbox_folder">Следить за папкой Входящие</string>

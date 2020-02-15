@@ -238,8 +238,6 @@
     <string name="tab_gallery">Galleri</string>
     <string name="tab_docs">Dokument</string>
     <string name="media_preview">Media förhandsvisning</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Chattappen med den bredaste publiken i världen. Fri och oberoende.</string>
     <string name="welcome_start_messaging">Börja Chatta</string>

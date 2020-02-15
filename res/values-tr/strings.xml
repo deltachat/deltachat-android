@@ -300,6 +300,7 @@
     <string name="tab_gallery_empty_hint">Bu sohbette paylaşılan görseller ve videolar burada görüntülenecek.</string>
     <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler, müzik ve diğer dosyalar burada görüntülenecek.</string>
     <string name="media_preview">Ortam önizlemesi</string>
+    <string name="send_message">İleti gönder</string>
 
 
     <!-- welcome and login -->
@@ -655,8 +656,8 @@
     <string name="a11y_background_preview_label">Artalan önizlemesi</string>
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Kameraya erişime izin vermek, fotoğraflar ve videolar çekmenize izin verir.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Adres defterinize erişime izin vermek, aygıtınızdan gelen kişilerle sohbet etmenize izin verir.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Mikrofona erişime izin vermek, ses kaydetmenize izin verir.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Fotoğraf kitaplığına erişime izin vermek, ondan gelen görselleri karşıya yüklemenize izin verir.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodları taramak için kameranızı kullanır.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat\'in sunucusu yoktur; kişileriniz hiçbir yere gönderilmez.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat, göndermek için kitaplığınızdan fotoğraflar seçmenizi sağlayacak.</string>
 </resources>
