@@ -76,7 +76,6 @@ public class ConversationListItem extends RelativeLayout
   private TextView           subjectView;
   private FromTextView       fromView;
   private TextView           dateView;
-  private ImageView          pinnedView;
   private TextView           archivedView;
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
@@ -100,7 +99,6 @@ public class ConversationListItem extends RelativeLayout
     this.dateView                = findViewById(R.id.date);
     this.deliveryStatusIndicator = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
     this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
-    this.pinnedView              = findViewById(R.id.pinned);
     this.archivedView            = findViewById(R.id.archived);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
 
@@ -156,8 +154,10 @@ public class ConversationListItem extends RelativeLayout
       dateView.setText("");
     }
 
-    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-        thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0);
+    dateView.setCompoundDrawablesWithIntrinsicBounds(
+        thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED? R.drawable.ic_pinned_chatlist : 0, 0,
+        thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0
+    );
 
     setStatusIcons(thread);
     setBatchState(batchMode);
@@ -193,7 +193,6 @@ public class ConversationListItem extends RelativeLayout
     subjectView.setText(getHighlightedSpan(locale, contact.getAddr(), highlightSubstring));
     dateView.setText("");
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    pinnedView.setVisibility(GONE);
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
@@ -225,7 +224,6 @@ public class ConversationListItem extends RelativeLayout
       dateView.setText("");
     }
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    pinnedView.setVisibility(GONE);
     archivedView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
@@ -259,14 +257,12 @@ public class ConversationListItem extends RelativeLayout
     if (thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
       // archived
-      this.pinnedView.setVisibility(View.GONE);
       this.archivedView.setVisibility(View.VISIBLE);
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
     }
     else
     {
-      this.pinnedView.setVisibility(thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED? View.VISIBLE : View.GONE);
       this.archivedView.setVisibility(View.GONE);
       int state = dcSummary.getState();
       if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)
