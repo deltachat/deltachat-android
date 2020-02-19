@@ -60,6 +60,8 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private static final String TAG = CreateProfileActivity.class.getSimpleName();
 
+  public static final String FROM_WELCOME   = "from_welcome";
+
   private static final int REQUEST_CODE_AVATAR = 1;
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
@@ -72,6 +74,8 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private TextInputEditText statusView;
   private View                   reveal;
 
+  private boolean fromWelcome;
+
   private byte[] avatarBytes;
   private File   captureFile;
 
@@ -79,6 +83,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+    this.fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
 
     dynamicTheme.onCreate(this);
     dynamicLanguage.onCreate(this);
@@ -86,7 +91,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     setContentView(R.layout.profile_create_activity);
 
     getSupportActionBar().setTitle(R.string.pref_profile_info_headline);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(!this.fromWelcome);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
     initializeResources();
@@ -127,8 +132,14 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   @Override
   public void onBackPressed() {
-    if (container.isInputOpen()) container.hideCurrentInput(name);
-    else                         super.onBackPressed();
+    if (container.isInputOpen()) {
+      container.hideCurrentInput(name);
+    } else if (fromWelcome) {
+      startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+      finish();
+    } else {
+      super.onBackPressed();
+    }
   }
 
   @Override
@@ -205,13 +216,13 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private void initializeResources() {
     TextView passwordAccountSettings       = ViewUtil.findById(this, R.id.password_account_settings_button);
-
+    TextView loginSuccessText              = ViewUtil.findById(this, R.id.login_success_text);
     this.avatar       = ViewUtil.findById(this, R.id.avatar);
     this.name         = ViewUtil.findById(this, R.id.name_text);
     this.emojiDrawer  = ViewUtil.findById(this, R.id.emoji_drawer);
     this.container    = ViewUtil.findById(this, R.id.container);
     this.reveal       = ViewUtil.findById(this, R.id.reveal);
-    this.statusView = ViewUtil.findById(this, R.id.status_text);
+    this.statusView   = ViewUtil.findById(this, R.id.status_text);
 
     this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
 
@@ -225,6 +236,19 @@ public class CreateProfileActivity extends BaseActionBarActivity {
       Intent intent = new Intent(this, RegistrationActivity.class);
       startActivity(intent);
     });
+
+    if (fromWelcome) {
+      String addr = DcHelper.get(this, "addr");
+      loginSuccessText.setText(String.format(
+              "Login successfull - your email address is %1$s\n\n" +
+              "If you like, you can now enter a name and an avatar image " +
+              "that will be displayed to people you write to.", addr));
+      ViewUtil.findById(this, R.id.status_text_layout).setVisibility(View.GONE);
+      ViewUtil.findById(this, R.id.information_label).setVisibility(View.GONE);
+      passwordAccountSettings.setVisibility(View.GONE);
+    } else {
+      loginSuccessText.setVisibility(View.GONE);
+    }
   }
 
   private void initializeProfileName() {
@@ -369,6 +393,9 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
         if (result) {
           if (captureFile != null) captureFile.delete();
+          if (fromWelcome) {
+            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+          }
           finish();
         } else        {
           Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_LONG).show();
