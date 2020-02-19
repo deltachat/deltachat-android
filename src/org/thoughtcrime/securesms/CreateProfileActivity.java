@@ -14,10 +14,7 @@ import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.textfield.TextInputEditText;
-import androidx.appcompat.app.AlertDialog;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -63,8 +60,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
   private static final String TAG = CreateProfileActivity.class.getSimpleName();
 
-  public static final String NEXT_INTENT    = "next_intent";
-
   private static final int REQUEST_CODE_AVATAR = 1;
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
@@ -77,7 +72,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private TextInputEditText statusView;
   private View                   reveal;
 
-  private Intent nextIntent;
   private byte[] avatarBytes;
   private File   captureFile;
 
@@ -218,7 +212,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     this.container    = ViewUtil.findById(this, R.id.container);
     this.reveal       = ViewUtil.findById(this, R.id.reveal);
     this.statusView = ViewUtil.findById(this, R.id.status_text);
-    this.nextIntent   = getIntent().getParcelableExtra(NEXT_INTENT);
 
     this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
 
@@ -376,7 +369,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
         if (result) {
           if (captureFile != null) captureFile.delete();
-          handleFinishedLegacy();
+          finish();
         } else        {
           Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_LONG).show();
         }
@@ -387,10 +380,5 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private void setStatusText() {
     String newStatus = statusView.getText().toString().trim();
     DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, newStatus);
-  }
-
-  private void handleFinishedLegacy() {
-    if (nextIntent != null) startActivity(nextIntent);
-    finish();
   }
 }
