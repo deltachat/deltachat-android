@@ -76,7 +76,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private EmojiDrawer            emojiDrawer;
   private TextInputEditText statusView;
   private View                   reveal;
-  private MenuItem               finishMenuItem;
 
   private Intent nextIntent;
   private byte[] avatarBytes;
@@ -107,7 +106,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   public boolean onPrepareOptionsMenu(Menu menu) {
     MenuInflater inflater = this.getMenuInflater();
     inflater.inflate(R.menu.preferences_create_profile_menu, menu);
-    finishMenuItem = menu.findItem(R.id.menu_create_profile);
     return true;
   }
 
@@ -229,21 +227,6 @@ public class CreateProfileActivity extends BaseActionBarActivity {
                                                       .ifNecessary()
                                                       .onAnyResult(this::handleAvatarSelectionWithPermissions)
                                                       .execute());
-
-    this.name.addTextChangedListener(new TextWatcher() {
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-      @Override
-      public void onTextChanged(CharSequence s, int start, int before, int count) {}
-      @Override
-      public void afterTextChanged(Editable s) {
-        if(finishMenuItem != null){
-          if (name.getError() != null || !finishMenuItem.isEnabled()) {
-            name.setError(null);
-            finishMenuItem.setEnabled(true);
-          }
-      }}
-    });
 
     passwordAccountSettings.setOnClickListener(view -> {
       Intent intent = new Intent(this, RegistrationActivity.class);
