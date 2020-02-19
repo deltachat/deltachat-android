@@ -165,11 +165,18 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
     }
 
-    private void progressSuccess() {
+    private void progressSuccess(boolean enterDisplayname) {
         dcContext.endCaptureNextError();
         progressDialog.dismiss();
-        Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
-        startActivity(conversationList);
+
+        if (enterDisplayname) {
+            Intent intent = new Intent(getApplicationContext(), CreateProfileActivity.class);
+            intent.putExtra(CreateProfileActivity.FROM_WELCOME, true);
+            startActivity(intent);
+        } else {
+            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+        }
+
         finish();
     }
 
@@ -184,7 +191,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 progressUpdate((int)progress);
             }
             else if (progress==1000/*done*/) {
-                progressSuccess();
+                progressSuccess(false);
             }
         }
         else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
@@ -202,7 +209,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 progressUpdate((int)progress);
             }
             else if (progress==1000/*done*/) {
-                progressSuccess();
+                progressSuccess(true);
             }
         }
     }
