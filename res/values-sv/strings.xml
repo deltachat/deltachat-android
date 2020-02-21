@@ -168,7 +168,6 @@
     <string name="device_talk">Enhetsmeddelanden</string>
     <string name="device_talk_subtitle">Lokalt genererade meddelanden</string>
     <string name="edit_contact">Redigera kontakt</string>
-
     <string name="mute_for_one_hour">Ljud av 1 timma</string>
     <string name="mute_for_two_hours">Ljud av 2 timma</string>
     <string name="mute_for_one_day">Ljud av 1 dag</string>

@@ -183,7 +183,6 @@
     <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
     <string name="edit_contact">Taisyti adresatą</string>
-
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>

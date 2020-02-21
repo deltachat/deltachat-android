@@ -182,7 +182,6 @@
     <string name="device_talk_subtitle">Messages générés localement</string>
     <string name="device_talk_explain">Les messages dans cette discussion sont générés localement par votre application Delta Chat. Ils vous informerons des nouveautés après les mis à jour et des éventuels problèmes rencontrés lors de l\'utilisation.</string>
     <string name="edit_contact">Éditer le contact</string>
-
     <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>

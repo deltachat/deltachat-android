@@ -23,7 +23,7 @@
     <string name="close">Kapat</string>
     <string name="forward">İlet</string>
     <string name="archive">Arşivle</string>
-    <string name="unarchive">Arşivden çıkart</string>
+    <string name="unarchive">Arşivleme</string>
     <string name="mute">Sessize al</string>
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
@@ -139,7 +139,7 @@
     <string name="menu_show_map">Haritayı göster</string>
     <string name="menu_show_global_map">Tüm konumları göster</string>
     <string name="menu_archive_chat">Sohbeti arşivle</string>
-    <string name="menu_unarchive_chat">Sohbeti arşivden çıkart</string>
+    <string name="menu_unarchive_chat">Sohbeti arşivleme</string>
     <string name="menu_add_attachment">İlişik ekle</string>
     <string name="menu_leave_group">Gruptan ayrıl</string>
     <string name="menu_delete_chat">Sohbeti sil</string>
@@ -158,7 +158,7 @@
     <string name="menu_all_media">Tüm ortamlar</string>
     <string name="menu_share">Paylaş</string>
     <string name="menu_block_contact">Kişiyi engelle</string>
-    <string name="menu_unblock_contact">Kişinin engellemesini kaldır</string>
+    <string name="menu_unblock_contact">Kişiyi engelleme</string>
     <string name="menu_play">Oynat</string>
     <string name="menu_pause">Duraklat</string>
     <string name="menu_scroll_to_bottom">Alta kaydır</string>
@@ -183,6 +183,14 @@
     <string name="device_talk_explain">Bu sohbetteki iletiler, Delta Chat uygulamanız tarafından yerel olarak oluşturulur. Oluşturucuları, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için onu kullanır.</string>
     <string name="device_talk_welcome_message">Delta Chat\'e hoş geldiniz! – Delta Chat, diğer yaygın ulak uygulamaları gibi görünür ve hissettirir ama merkezi denetim, izleme içermez ya da sizi, arkadaşlarınızı, iş arkadaşlarınızı ya da ailenizi büyük kuruluşlara satmaz.\n\nTeknik olarak Delta Chat, çağdaş bir sohbet arabirimli bir e-posta uygulamasıdır. 👻 olacaksanız, e-posta yeni bir elbisedir\n\nMilyarlarca insanın herhangi biriyle Delta Chat kullanın: Yalnızca onların e-posta adresini kullanın. Alıcıların Delta Chat\'i kurması, web sitelerini ziyaret etmesi ya da herhangi bir yere kaydolması gerekmez - ancak, elbette isterlerse, onlara 👉 https://get.delta.chat adresini işaret edebilirsiniz</string>
     <string name="edit_contact">Kişiyi düzenle</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Sohbeti sabitle</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Sohbeti sabitleme</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Sabitle</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Sabitleme</string>
 
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
@@ -212,7 +220,7 @@
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
     <string name="ask_export_attachment">İlişik dışa aktarılsın mı? İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden gelen iletileri almayacaksınız.</string>
-    <string name="ask_unblock_contact">Bu kişinin engellemesi kaldırılsın mı? Bir kez daha bu kişiden gelen iletileri alabileceksiniz.</string>
+    <string name="ask_unblock_contact">Bu kişi engellenmesin mi? Bir kez daha bu kişiden gelen iletileri alabileceksiniz.</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="cannot_delete_contacts_in_use">Sohbetlerin sürdüğü kişiler silinemez.</string>
@@ -238,8 +246,8 @@
         <item quantity="other">%d sohbet arşivlendi</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">%d sohbet arşivden çıkartıldı</item>
-        <item quantity="other">%d sohbet arşivden çıkartıldı</item>
+        <item quantity="one">%d sohbet arşivlenmiyor</item>
+        <item quantity="other">%d sohbet arşivlenmiyor</item>
     </plurals>
     <string name="chat_archived_chats_title">Arşivlenen sohbetler</string>
     <string name="chat_please_enter_message">Lütfen bir ileti girin.</string>
@@ -438,7 +446,7 @@
     <string name="pref_managekeys_import_explain">Sır anahtarlar \"%1$s\" üzerinden içe aktarılsın mı?\n\n• Varolan sır anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosya adında \"legacy\" sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar \"%1$s\" üzerine başarıyla yazıldı.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Sır anahtarlar \"%1$s\" üzerinden içe aktarıldı.</string>
-    <string name="pref_background">Artalan</string>
+    <string name="pref_background">Arka plan</string>
     <string name="pref_background_btn_default">Varsayılan görseli kullan</string>
     <string name="pref_background_btn_gallery">Galeriden seç</string>
     <string name="pref_imap_folder_handling">IMAP klasör işleme</string>
@@ -461,7 +469,7 @@
     <string name="pref_empty_server_do_button">E-postaları sil</string>
     <string name="pref_experimental_features">Deneysel özellikler</string>
     <string name="pref_on_demand_location_streaming">İsteğe bağlı konum akışı</string>
-    <string name="pref_background_default">Varsayılan artalan</string>
+    <string name="pref_background_default">Varsayılan arka plan</string>
     <string name="pref_background_default_color">Varsayılan renk</string>
     <string name="pref_background_custom_image">Özel görsel</string>
     <string name="pref_background_custom_color">Özel renk</string>
@@ -548,7 +556,7 @@
     <string name="notify_media_message">Ortam iletisi</string>
     <string name="notify_reply_button">Yanıtla</string>
     <string name="notify_new_message">Yeni ileti</string>
-    <string name="notify_background_connection_enabled">Artalan bağlantısı etkinleştirildi</string>
+    <string name="notify_background_connection_enabled">Arka plan bağlantısı etkinleştirildi</string>
     <string name="notify_priority_high">Yüksek</string>
     <string name="notify_priority_max">En yüksek</string>
     <string name="notify_name_and_message">Ad ve ileti</string>
@@ -567,9 +575,9 @@
     <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
     <string name="perm_explain_access_to_storage_denied">Dosyaları almak ya da göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
-    <string name="perm_enable_bg_reminder_title">Delta Chat artalandayken iletileri almak için buraya dokunun.</string>
+    <string name="perm_enable_bg_reminder_title">Delta Chat arka plandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
-    <string name="perm_enable_bg_already_done">Delta Chat\'in iletileri artalanda almasına zaten izin verdiniz.\n\nİletiler artalanda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
+    <string name="perm_enable_bg_already_done">Delta Chat\'in iletileri arka planda almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrelenen ileti</string>
@@ -623,7 +631,7 @@
     <string name="transfer_key_desktop">Anahtarı aktar</string>
     <string name="show_key_transfer_message_desktop">Anahtarınız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
     <string name="new_message_from_desktop">Şundan yeni ileti</string>
-    <string name="unblock_contacts_desktop">Kişilerin engellemesini kaldır</string>
+    <string name="unblock_contacts_desktop">Kişileri engelleme</string>
     <string name="none_blocked_desktop">Henüz engellenen kişi yok</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
     <string name="autocrypt_incorrect_desktop">Yanlış ayarlama kodu. Lütfen yeniden deneyin.</string>
@@ -653,7 +661,7 @@
     <string name="a11y_delivery_status_invalid">Geçersiz teslimat durumu</string>
     <string name="a11y_remove_account_btn_label">Hesabı kaldır</string>
     <string name="a11y_message_context_menu_btn_label">İleti eylemleri</string>
-    <string name="a11y_background_preview_label">Artalan önizlemesi</string>
+    <string name="a11y_background_preview_label">Arka plan önizlemesi</string>
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodları taramak için kameranızı kullanır.</string>
