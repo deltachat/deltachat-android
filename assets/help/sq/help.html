@@ -20,6 +20,7 @@
       <li><a href="#çështë-një-grup-i-verifikuar-pse-është-eksperimentale-kjo">Ç’është një grup i verifikuar? Pse është eksperimentale kjo?</a></li>
       <li><a href="#fshiva-veten-padashje">Fshiva veten padashje.</a></li>
       <li><a href="#sdua-ti-marr-më-mesazhet-e-një-grupi">S’dua t’i marr më mesazhet e një grupi.</a></li>
+      <li><a href="#çduan-të-thonë-dy-shenjat-në-mesazhe-grupi-që-gjithkush-i-ka-lexuar-tani-mesazhet-e-mi">Ç’duan të thonë dy shenjat në mesazhe grupi? Që gjithkush i ka lexuar tani mesazhet e mi?</a></li>
     </ul>
   </li>
   <li><a href="#encryption">Fshehtëzim</a>
@@ -54,6 +55,7 @@
       <li><a href="#sa-kohë-që-delta-chat-i-përdor-email-a-është-vërtet-një-shkëmbyes-mesazhesh-të-atypëratyshme">Sa kohë që Delta Chat-i përdor email, a është vërtet një Shkëmbyes Mesazhesh të <em>Atypëratyshme</em>?</a></li>
       <li><a href="#a-është-i-përputhshëm-delta-chat-i-me-protonmail-in--tutanota-n--criptext-in">A është i përputhshëm Delta Chat-i me Protonmail-in / Tutanota-n / Criptext-in?</a></li>
       <li><a href="#më-interesojnë-hollësitë-teknike-mund-të-më-tregoni-diçka-më-tepër">Më interesojnë hollësitë teknike. Mund të më tregoni diçka më tepër?</a></li>
+      <li><a href="#si-financohet-zhvillimi-i-delta-chat-it">Si financohet zhvillimi i Delta Chat-it?</a></li>
     </ul>
   </li>
 </ul>
@@ -356,6 +358,24 @@ për çfarëdo mesazhesh të rinj.</p>
   </li>
 </ul>
     
+      <h3 id="çduan-të-thonë-dy-shenjat-në-mesazhe-grupi-që-gjithkush-i-ka-lexuar-tani-mesazhet-e-mi">
+        
+        
+          Ç’duan të thonë dy shenjat në mesazhe grupi? Që gjithkush i ka lexuar tani mesazhet e mi? <a href="#çduan-të-thonë-dy-shenjat-në-mesazhe-grupi-që-gjithkush-i-ka-lexuar-tani-mesazhet-e-mi" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Një mesazh shfaqet me dy shenja pasi më shumë se gjysma e marrësve ta kenë
+parë mesazhin në ekranin e tyre.</li>
+  <li>Kini parasysh që disa marrës, për arsye privatësie mund të kenë
+çaktivizuar dëftesa leximi.</li>
+  <li>Nëse më shumë se 50% në një grup çaktivizojnë dëftesa leximi, dy shenjat
+s’do të shfaqen kurrë. Për të dhëna më të hollësishme, shihni
+<a href="https://delta.chat/en/2017-07-06-read-receipts-and-social-pressure">këtë postim blogu</a>.</li>
+</ul>
+    
       <h2 id="encryption">
         
         
@@ -373,9 +393,16 @@ për çfarëdo mesazhesh të rinj.</p>
       </h3>
 
 <ul>
-  <li>Po. DeltaChat sendërton standardin Autocrypt Level 1 
+  <li>
+    <p>Po. DeltaChat sendërton standardin Autocrypt Level 1 
 dhe është pra në gjendje të fshehtëzojë mesazhe me e2e-n 
-përmes aplikacionesh të tjera të afta të përdorin Autocrypt-in.</li>
+përmes aplikacionesh të tjera të afta të përdorin Autocrypt-in.</p>
+  </li>
+  <li>
+    <p>Delta Chat mbulon po ashtu një formë të fuqishme fshehtëzimi skaj-më-skaj
+që është edhe më e sigurt kundër sulmesh aktive, shihni më poshtë
+“grupe të verifikuar”.</p>
+  </li>
 </ul>
     
       <h3 id="çduhet-të-bëj-që-të-aktivizohet-fshehtëzimi-skaj-më-skaj">
@@ -399,8 +426,8 @@ në bisedë, më pas, përdor një aplikacion email që nuk mbulon Autocrypt-in,
 mesazhet nuk fshehtëzohen, derisa të ketë sërish një aplikacion të aftë për Autocrypt-in.</p>
   </li>
   <li>
-    <p>Nëse doni të <em>çaktivizohet</em> fshehtëzimi skaj-më-skaj, 
-përdorni fushën përkatës te “Rregullime / Rregullime të mëtejshme”.</p>
+    <p>Nëse doni që email-et e fshehtëzuar të shmagen, si parazgjedhje, përdorni
+rregullimin përgjegjës Autocrypt, te “Rregullime / Rregullime të mëtejshme”.</p>
   </li>
 </ul>
     
@@ -474,12 +501,17 @@ Nëse po ata shfaqen te pajisja e partnerit tuaj në bisedë, lidhja
       </h3>
 
 <ul>
-  <li><a href="https://autocrypt.org">Autocrypt</a> përdoret për të vendosur fshehtëzim skaj
-më skaj me aplikacione të tjera poste Delta Chat dhe të aftë për Autocrypt. 
-Autocrypt-i përdor një nëngrup të kufizuar të funksioneve OpenPGP. Për më tepër, 
-Delta Chat sendërton protokollin “countermitm” për të arritur mbrojtje
-kundër sulmesh aktive rrjeti, duke shkuar tej mbrojtjes elementare oportuniste
-të Autocrypt-it, shihni pyetje rreth “Grupesh të Verifikuar”.</li>
+  <li>
+    <p><a href="https://autocrypt.org">Autocrypt</a> përdoret për të vënë në punë fshehtëzim e2e
+me Delta Chat tjetër dhe aplikacione të tjera poste që janë të aftë
+të mbulojnë Autocrypt-in. 
+Autocrypt-i përdor një nëngrup të kufizuar të funksioneve OpenPGP.</p>
+  </li>
+  <li>
+    <p>Për të bërë të mundur mbrojtjen kundër sulmesh aktive rrjeti, Delta Chat-i
+sendërton <a href="https://countermitm.readthedocs.io/en/latest/new.html">protokollet countermitm, setup-contact dhe verified-group</a>.  Kjo shkon përtej mbrojtjes bazë oportuniste të
+Autocrypt Level 1, ndërkohë që ruhet lehtësia e përdorimit.</p>
+  </li>
 </ul>
     
       <h3 id="cili-është-dallimi-mes-grupesh-të-verifikuar-dhe-fjalosjesh-11-me-kontakte-të-verifikuar">
@@ -648,22 +680,20 @@ Autocrypt-i</a>.</li>
         
       </h3>
 
-<p>Nëse doni të përdorni <strong>të njëjtën llogari</strong> në pajisje të ndryshme (të afta 
-për Autocrypt), lypset të njëkohësoni aftësitë e tyre për fshehtëzim:</p>
+<p>Nëse doni të përdorni të <strong>njëjtën llogari</strong> në pajisje të ndryshme, duhet
+të eksportoni nga njëra pajisje një kopjeruatje dhe ta importoni te tjetra:</p>
 
 <ul>
-  <li>
-    <p>Në pajisjen e parë, zgjidhni “Rregullime të mëtejshme / Dërgo mesazh Rregullimi Autocrypt-i” 
-dhe klikoni derisa të shfaqet një “numër sigurie”.</p>
-  </li>
-  <li>
-    <p>Në pajisjen tjetër, pritni të mbërrijë “Mesazh Rregullimi Autocrypt-i” 
-dhe klikoni mbi të, çka do të duhej t’ju kërkonte numrin e sigurisë.</p>
-  </li>
-  <li>
-    <p>Tani jeni i njëkohësuar dhe mund të përdorni që të dyja pajisjet për marrje
-dhe dërgim mesazhesh, të fshehtëzuar me E2E, me partnerët tuaj në komunikim.</p>
-  </li>
+  <li>Te pajisja e parë, zgjidhni “Rregullime / Biseda dhe media / Kopjeruajtje”.
+Jepni PIN-in, rregullsinë ose fjalëkalimin tuaj për shkyçje ekrani. Mandej
+klikoni mbi “Fillo Kopjeruajtje”. Kështu te pajisja juaj do të ruhet kartela
+e kopjeruajtjes. Tani ju duhet ta shpërngulni në një farë mënyre te pajisja
+tjetër.</li>
+  <li>Te pajisja tjetër, te skena e hyrjeve, në vend se të hyni në llogarinë tuaj
+të email-eve, zgjidhni “Importo Kopjeruajtje”. Pas importimit, bisedat, kyçet
+e fshehtëzimit dhe mediat tuaja do të jenë kopjuar te pajisja e re.</li>
+  <li>Tanimë jeni i njëkohësuar dhe mund të përdorni të dyja pajisjet për dërgim dhe
+marrje mesazhesh të fshehtëzuar skaj më skaj me partnerët tuaj në komunikim.</li>
 </ul>
     
       <h3 id="a-ka-ndonjë-plan-për-të-sjellë-një-klient-web-delta-chat">
@@ -822,7 +852,7 @@ të dhëna, shihni <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</
   <li>Po dhe Jo.</li>
   <li>Jo, s’mund të përdorni llogarinë tuaj Protonmail, Tutanota, ose Criptext me
 Delta Chat-in; këta nuk ofrojnë marrje email-esh përmes IMAP-it.</li>
-  <li>Sidoqoftë, mund të përdorni Delta Chat-in të dërgoni mesazhe te persona që
+  <li>Sidoqoftë, mund të përdorni Delta Chat-in të dërgoni Mesazhe te persona që
 përdorin Protonmail-in, Tutanota-n, ose Criptext-in. Por këto mesazhe s’do
 të jenë të fshehtëzuara Skaj-Më-Skaj. Fshehtëzimi Skaj-Më-Skaj që ofrojnë këto
 shërbime funksionon vetëm brenda platformave përkatëse, pa qenë i përputhshëm
@@ -842,6 +872,60 @@ email me çfarëdo [https://autocrypt.org/dev-status.html] (aplikacion email që
 <ul>
   <li>Shihni <a href="https://github.com/deltachat/deltachat-android/blob/master/standards.md#standards-used-in-delta-chat">Standarde të përdorur në Delta Chat</a>.</li>
 </ul>
+    
+      <h3 id="si-financohet-zhvillimi-i-delta-chat-it">
+        
+        
+          Si financohet zhvillimi i Delta Chat-it? <a href="#si-financohet-zhvillimi-i-delta-chat-it" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>First of all, Delta Chat does not receive any Venture Capital and
+is not indebted, and under no pressure to produce huge profits, or to 
+sell users and their friends and family to advertisers (or worse).</p>
+
+<p>Deri këtu, zhvillimi i Delta Chat-it është financuar nga katër burime kryesore:</p>
+
+<ul>
+  <li>
+    <p>Projekti <a href="https://nextleap.eu">NEXTLEAP</a> i BE-së financoi kërkimin dhe
+sendërtimin e grupeve të verifikuar dhe protokolle ujdisje kontaktesh
+më 2017 dhe 2018.</p>
+  </li>
+  <li>
+    <p>The <a href="https://opentechfund.org">Open Technology Fund</a> has given two grants.
+The first 2018/2019 grant (~$200K) majorly improved the Android app 
+and allowed us to release a Desktop app beta version, and also 
+moored our feature developments in UX research in human rights contexts, 
+see our concluding <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
+The second 2019/2020 grant (~$300K) is still ongoing and helps us to 
+release Delta/iOS versions, to convert our core library to Rust, and
+to provide new features for all platforms.  See the 
+ongoing <a href="https://delta.chat/en/blog">blog posts</a> for more info.</p>
+  </li>
+  <li>
+    <p><a href="https://nlnet.nl/">Fondacioni NLnet</a> dha një grant prej 46 mijë eurosh për
+të plotësuar <em>Rust/Python bindings</em> për t’i dhënë udhë një ekosistemi <em>Chat-bot</em>.</p>
+  </li>
+  <li>
+    <p>Last but by far not least, several pro-bono experts and enthusiasts contributed 
+and contribute to Delta Chat developments without receiving money, or only 
+small amounts. Without them, Delta Chat would not be where it is today, not
+even close.</p>
+  </li>
+</ul>
+
+<p>Financimi monetar i përmendur më sipër u organizua nga merlinux GmbH në
+Frajburg (Gjermany), dhe shpërndarë më pas thuajse një duzine kontribuesish.</p>
+
+<p>Fincimi për 2020/2021 s’është përcaktuar ende. Po ndjekim një dorë mundësish
+me ente dhe partnerë të ndryshëm. Po shohim gjithashtu mundësinë të kërkojmë
+dhurime. Në fakt, kemi filluar paksa, eksperimentalisht <a href="https://liberapay.com/delta.chat/">llogari dhurimesh
+Delta Chat / Liberapay</a>, por s’e kemi bërë
+ende publike këtë.  Pati gjithashtu rreth 3-4 mijë euro dhuruar deri sot për
+Bjornin (autorin fillestar të Delta Chat-it) nga kanalet e dhurimit në Paypal
+dhe në bitkoin.</p>
 
 
 

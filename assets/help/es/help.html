@@ -17,6 +17,7 @@
       <li><a href="#qué-es-un-grupo-verificado-por-qué-es-experimental">¿Qué es un grupo verificado? ¿Por qué es experimental?</a></li>
       <li><a href="#me-he-eliminado-por-accidente">Me he eliminado por accidente.</a></li>
       <li><a href="#no-quiero-recibir-más-los-mensajes-de-un-grupo">No quiero recibir más los mensajes de un grupo.</a></li>
+      <li><a href="#what-do-double-ticks-mean-in-group-messages-has-everyone-read-my-message-now">What do double ticks mean in group messages? Has everyone read my message now?</a></li>
     </ul>
   </li>
   <li><a href="#encryption">Cifrado</a>
@@ -51,6 +52,7 @@
       <li><a href="#si-delta-chat-utiliza-el-correo-electrónico-es-realmente-una-aplicación-de-mensajería-instantánea">Si Delta Chat utiliza el correo electrónico, ¿es realmente una aplicación de mensajería <em>instantánea</em>?</a></li>
       <li><a href="#delta-chat-es-compatible-con-protonmail--tutanota--criptext">¿Delta Chat es compatible con Protonmail / Tutanota / Criptext?</a></li>
       <li><a href="#estoy-interesado-en-los-detalles-técnicos-pueden-decirme-más">Estoy interesado en los detalles técnicos. ¿Pueden decirme más?</a></li>
+      <li><a href="#how-are-delta-chat-developments-funded">How are Delta Chat developments funded?</a></li>
     </ul>
   </li>
 </ul>
@@ -356,6 +358,24 @@ aún puede escribir, pero ya no se le notifican nuevos mensajes.</p>
   </li>
 </ul>
     
+      <h3 id="what-do-double-ticks-mean-in-group-messages-has-everyone-read-my-message-now">
+        
+        
+          What do double ticks mean in group messages? Has everyone read my message now? <a href="#what-do-double-ticks-mean-in-group-messages-has-everyone-read-my-message-now" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>A message shows double ticks after more than half the the recipients have
+seen the message on their display.</li>
+  <li>Note that some recipients might have disabled read-receipts for
+privacy-reasons.</li>
+  <li>If more than 50% in a group disabled read receipts, the double ticks will
+never show up. For more detailed information, see
+<a href="https://delta.chat/en/2017-07-06-read-receipts-and-social-pressure">this blogpost</a>.</li>
+</ul>
+    
       <h2 id="encryption">
         
         
@@ -373,7 +393,13 @@ aún puede escribir, pero ya no se le notifican nuevos mensajes.</p>
       </h3>
 
 <ul>
-  <li>Si. Delta Chat implementa el estándar Autocrypt Nivel 1 y, por lo tanto, puede cifrar E2E mensajes con otras aplicaciones compatibles con Autocrypt.</li>
+  <li>
+    <p>Si. Delta Chat implementa el estándar Autocrypt Nivel 1 y, por lo tanto, puede cifrar E2E mensajes con otras aplicaciones compatibles con Autocrypt.</p>
+  </li>
+  <li>
+    <p>Delta Chat also supports a strong form of end-to-end encryption that is 
+even safe against active attacks, see “verified groups” further below.</p>
+  </li>
 </ul>
     
       <h3 id="qué-debo-hacer-para-activar-el-cifrado-de-extremo-a-extremo">
@@ -394,8 +420,8 @@ Después de esto, todos los mensajes subsiguientes se cifran de extremo a extrem
 Si uno de los compañeros de chat usa una aplicación de correo electrónico que no soporta Autocrypt, los mensajes no se cifrarán hasta que una aplicación compatible con Autocrypt sea utilizada.</p>
   </li>
   <li>
-    <p>Si desea <em>desactivar</em> el cifrado de extremo a extremo,
-use la configuración correspondiente en “Ajustes / Avanzado”.</p>
+    <p>If you want to rather avoid end-to-end-encrypted e-mails by default, 
+use the corresponding Autocrypt setting in “Settings / Advanced settings”.</p>
   </li>
 </ul>
     
@@ -469,12 +495,15 @@ la conexión es segura.</p>
       </h3>
 
 <ul>
-  <li><a href="https://autocrypt.org">Autocrypt</a> is used for establishing
+  <li>
+    <p><a href="https://autocrypt.org">Autocrypt</a> is used for establishing
 e2e-encryption with other Delta Chat and other Autocrypt-capable mail apps. 
-Autocrypt uses a limited subset of OpenPGP functionality. Moreover, 
-Delta Chat implements the “countermitm” protocols to achieve
-protection against active network attacks, going beyond the opportunistic
-base protection of Autocrypt, see questions about “Verified Groups”.</li>
+Autocrypt uses a limited subset of OpenPGP functionality.</p>
+  </li>
+  <li>
+    <p>Delta Chat implements <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm setup-contact and verified-group protocols</a> to achieve protection against active network attacks.  This goes beyond the opportunistic
+base protection of Autocrypt Level 1, while maintaining its ease of use.</p>
+  </li>
 </ul>
     
       <h3 id="cuál-es-la-diferencia-entre-grupos-verificados-y-chats-11-con-contactos-verificados">
@@ -641,21 +670,19 @@ FAQ</a>.</li>
         
       </h3>
 
-<p>If you want to use the <strong>same account</strong> on different (Autocrypt
-capable) devices, you have to sync their encryption capabilities:</p>
+<p>If you want to use the <strong>same account</strong> on different devices, you should export
+a backup from the old device, and import it into the new device:</p>
 
 <ul>
-  <li>
-    <p>En el primer dispositivo, elija “Configuración avanzada / Enviar mensaje de configuración de Autocrypt” y haga clic hasta que aparezca un “número de seguridad”.</p>
-  </li>
-  <li>
-    <p>En el otro dispositivo, espere la llega del “Mensaje de Configuración de Autocrypt”
-y haga clic en él, lo cual debe solicitarle el número de seguridad.</p>
-  </li>
-  <li>
-    <p>Ahora está sincronizado y puede usar ambos dispositivos para
-enviar y recibir mensajes cifrados E2E con tus compañeros.</p>
-  </li>
+  <li>On the old device, choose “Settings / Chats and media / Backup”. Enter your
+screen unlock PIN, pattern, or password. Then you can click on “Start
+Backup”. This saves the backup file to your device. Now you have to transfer
+it to the other device somehow.</li>
+  <li>On the new device, on the login screen, instead of logging into your email
+account, choose “Import Backup”. After import, your conversations, encryption
+keys, and media should be copied to the new device.</li>
+  <li>You are now synchronized, and can use both devices for sending and receiving
+E2E-encrypted messages with your communication partners.</li>
 </ul>
     
       <h3 id="tienen-planeado-crear-un-cliente-web-de-delta-chat">
@@ -793,10 +820,15 @@ problem for many legitimate apps. For more information, see
       </h3>
 
 <ul>
-  <li>Si y no.</li>
-  <li>No, no puede usar su cuenta de Protonmail, Tutanota o Criptext con Delta Chat; esos servicios no permiten recibir correos a través de IMAP.</li>
-  <li>En cualquier caso, puede usar Delta Chat para enviar mensajes a personas que usan Protonmail, Tutanota o Criptext. Sin embargo, esos mensajes no se cifrarán de extremo a extremo. El cifrado de extremo a extremo que ofrecen esos proveedores solo funciona dentro de sus plataformas y no es compatible con nadie externo.</li>
-  <li>Delta Chat puede encriptar e2e a través de cualquier proveedor de correo electrónico con cualquier <a href="aplicación de correo electrónico compatible con Autocrypt">https://autocrypt.org/dev-status.html</a>.</li>
+  <li>Yes and No.</li>
+  <li>No, you can not use your Protonmail, Tutanota, or Criptext account with Delta
+Chat; they do not offer receiving mails via IMAP.</li>
+  <li>In any case you can use Delta Chat to send Messages to people who use
+Protonmail, Tutanota, or Criptext. Those messages will not be End-to-End
+encrypted, though. The End-to-End encryption those providers offer is only
+working inside their platforms, and not compatible with anyone outside.</li>
+  <li>Delta Chat can e2e-encrypt through any e-mail provider with any
+<a href="https://autocrypt.org/dev-status.html">Autocrypt-enabled e-mail app</a>.</li>
 </ul>
     
       <h3 id="estoy-interesado-en-los-detalles-técnicos-pueden-decirme-más">
@@ -810,6 +842,60 @@ problem for many legitimate apps. For more information, see
 <ul>
   <li>Visita la página <a href="https://github.com/deltachat/deltachat-android/blob/master/standards.md#standards-used-in-delta-chat">Estándares usados en Delta Chat</a>.</li>
 </ul>
+    
+      <h3 id="how-are-delta-chat-developments-funded">
+        
+        
+          How are Delta Chat developments funded? <a href="#how-are-delta-chat-developments-funded" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>First of all, Delta Chat does not receive any Venture Capital and
+is not indebted, and under no pressure to produce huge profits, or to 
+sell users and their friends and family to advertisers (or worse).</p>
+
+<p>Delta Chat developments have so far been funded from four major sources:</p>
+
+<ul>
+  <li>
+    <p>The <a href="https://nextleap.eu">NEXTLEAP</a> EU project funded the research
+and implementation of verified groups and setup contact protocols
+in 2017 and 2018.</p>
+  </li>
+  <li>
+    <p>The <a href="https://opentechfund.org">Open Technology Fund</a> has given two grants.
+The first 2018/2019 grant (~$200K) majorly improved the Android app 
+and allowed us to release a Desktop app beta version, and also 
+moored our feature developments in UX research in human rights contexts, 
+see our concluding <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
+The second 2019/2020 grant (~$300K) is still ongoing and helps us to 
+release Delta/iOS versions, to convert our core library to Rust, and
+to provide new features for all platforms.  See the 
+ongoing <a href="https://delta.chat/en/blog">blog posts</a> for more info.</p>
+  </li>
+  <li>
+    <p>The <a href="https://nlnet.nl/">NLnet foundation</a> granted EUR 46K for
+completing Rust/Python bindings and instigating a Chat-bot ecosystem.</p>
+  </li>
+  <li>
+    <p>Last but by far not least, several pro-bono experts and enthusiasts contributed 
+and contribute to Delta Chat developments without receiving money, or only 
+small amounts. Without them, Delta Chat would not be where it is today, not
+even close.</p>
+  </li>
+</ul>
+
+<p>The monetary funding mentioned above was organized by merlinux GmbH in
+Freiburg (Germany), and then distributed to almost a dozen contributors.</p>
+
+<p>Funding for 2020/2021 is yet to be determined. We are pursuing several
+opportunities with different organisations and partners. We also are
+considering to ask for donations. In fact, we experimentally started
+a little <a href="https://liberapay.com/delta.chat/">Delta Chat / Liberapay donation account</a>
+but have not published this yet.  There were also around 3-4K so far
+donated to Bjoern’s (the original author of Delta Chat) paypal and bitcoin
+donation channels.</p>
 
 
 
