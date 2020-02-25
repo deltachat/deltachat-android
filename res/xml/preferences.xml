@@ -5,14 +5,14 @@
     <org.thoughtcrime.securesms.preferences.widgets.ProfilePreference
             android:key="preference_category_profile"/>
 
+    <Preference android:key="preference_category_chats"
+                android:title="@string/pref_chats_and_media"
+                android:icon="@drawable/ic_forum_24dp"
+                android:layout="@layout/preference_item" />
+
     <Preference android:key="preference_category_notifications"
                 android:title="@string/pref_notifications"
                 android:icon="@drawable/ic_notifications_24dp"
-                android:layout="@layout/preference_item" />
-
-    <Preference android:key="preference_category_app_protection"
-                android:title="@string/pref_privacy"
-                android:icon="@drawable/ic_security_24dp"
                 android:layout="@layout/preference_item" />
 
     <Preference android:key="preference_category_appearance"
@@ -20,9 +20,9 @@
                 android:icon="@drawable/ic_brightness_6_24dp"
                 android:layout="@layout/preference_item" />
 
-    <Preference android:key="preference_category_chats"
-                android:title="@string/pref_chats_and_media"
-                android:icon="@drawable/ic_forum_24dp"
+    <Preference android:key="preference_category_app_protection"
+                android:title="@string/pref_app_access"
+                android:icon="@drawable/ic_security_24dp"
                 android:layout="@layout/preference_item" />
 
     <Preference android:key="preference_category_advanced"

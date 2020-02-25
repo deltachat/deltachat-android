@@ -2,6 +2,20 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:tools="http://schemas.android.com/tools">
+    <PreferenceCategory android:title="@string/pref_communication">
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_read_receipts"
+            android:summary="@string/pref_read_receipts_explain"
+            android:title="@string/pref_read_receipts" />
+
+        <Preference
+            android:key="preference_category_blocked"
+            android:title="@string/pref_blocked_contacts" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/pref_chats">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat

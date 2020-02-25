@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import android.widget.Toast;
@@ -14,7 +15,9 @@ import android.widget.Toast;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
+import org.thoughtcrime.securesms.BlockedAndShareContactsActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
@@ -28,6 +31,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
 
   ListPreference showEmails;
+  CheckBoxPreference readReceiptsCheckbox;
 
 //  CheckBoxPreference trimEnabledCheckbox;
 
@@ -44,6 +48,11 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
       dcContext.setConfigInt(CONFIG_SHOW_EMAILS, Util.objectToInt(newValue));
       return true;
     });
+
+    readReceiptsCheckbox = (CheckBoxPreference) this.findPreference("pref_read_receipts");
+    readReceiptsCheckbox.setOnPreferenceChangeListener(new ReadReceiptToggleListener());
+
+    this.findPreference("preference_category_blocked").setOnPreferenceClickListener(new BlockedContactsClickListener());
 
     Preference backup = this.findPreference("pref_backup");
     backup.setOnPreferenceClickListener(new BackupListener());
@@ -72,6 +81,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     String value = Integer.toString(dcContext.getConfigInt("show_emails"));
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
+    readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED));
 
 //    trimEnabledCheckbox.setChecked(0!=dcContext.getConfigInt("trim_enabled", DcContext.DC_PREF_DEFAULT_TRIM_ENABLED));
   }
@@ -150,7 +160,29 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 //  }
 
   public static CharSequence getSummary(Context context) {
-    return null;
+    final String onRes = context.getString(R.string.on);
+    final String offRes = context.getString(R.string.off);
+    String readReceiptState = DcHelper.getContext(context).getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED)!=0? onRes : offRes;
+    return context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
+  }
+
+  private class BlockedContactsClickListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      Intent intent = new Intent(getActivity(), BlockedAndShareContactsActivity.class);
+      intent.putExtra(BlockedAndShareContactsActivity.SHOW_ONLY_BLOCKED_EXTRA, true);
+      startActivity(intent);
+      return true;
+    }
+  }
+
+  private class ReadReceiptToggleListener implements Preference.OnPreferenceChangeListener {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+      boolean enabled = (boolean) newValue;
+      dcContext.setConfigInt("mdns_enabled", enabled ? 1 : 0);
+      return true;
+    }
   }
 
   /***********************************************************************************************
