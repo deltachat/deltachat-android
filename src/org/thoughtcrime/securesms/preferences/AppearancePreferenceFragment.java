@@ -26,6 +26,8 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     initializeListSummary((ListPreference)findPreference(Prefs.THEME_PREF));
     initializeListSummary((ListPreference)findPreference(Prefs.LANGUAGE_PREF));
     this.findPreference(Prefs.BACKGROUND_PREF).setOnPreferenceClickListener(new BackgroundClickListener());
+    this.findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF).setOnPreferenceChangeListener(new ListSummaryListener());
+    initializeListSummary((ListPreference) findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF));
   }
 
   @Override

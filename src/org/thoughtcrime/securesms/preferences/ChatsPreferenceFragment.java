@@ -35,9 +35,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
 
-    findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF)
-            .setOnPreferenceChangeListener(new ListSummaryListener());
-
     findPreference("pref_compression")
             .setOnPreferenceChangeListener(new ListSummaryListener());
 
@@ -58,9 +55,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 //        .setOnPreferenceChangeListener(new TrimLengthValidationListener());
 //    findPreference("pref_trim_now")
 //        .setOnPreferenceClickListener(new TrimNowClickListener());
-
-    initializeListSummary((ListPreference) findPreference(Prefs.MESSAGE_BODY_TEXT_SIZE_PREF));
-
   }
 
   @Override
