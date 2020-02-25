@@ -34,29 +34,23 @@
         android:entryValues="@array/pref_compression_values"
         android:defaultValue="0" />
 
+    <PreferenceCategory android:title="@string/pref_autodel_headline">
+        <ListPreference
+            android:key="autodel_device"
+            android:title="@string/pref_autodel_device"
+            android:entries="@array/autodel_durations"
+            android:entryValues="@array/autodel_values"/>
+
+        <ListPreference
+            android:key="autodel_server"
+            android:title="@string/pref_autodel_server"
+            android:entries="@array/autodel_durations"
+            android:entryValues="@array/autodel_values" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/pref_backup">
         <Preference android:key="pref_backup"
             android:title="@string/pref_backup_explain"/>
     </PreferenceCategory>
-
-    <!--
-    <PreferenceCategory android:key="message_trimming" android:title="@string/pref_trim_headline">
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_trim_threads"
-            android:summary="@string/pref_trim_option_explain"
-            android:title="@string/pref_trim_option" />
-
-        <EditTextPreference android:defaultValue="500"
-                            android:key="pref_trim_length"
-                            android:title="@string/pref_trim_length_limit"
-                            android:inputType="number"
-                            android:dependency="pref_trim_threads" />
-
-        <Preference android:key="pref_trim_now"
-                    android:title="@string/pref_trim_now_button"
-                    android:dependency="pref_trim_threads" />
-    </PreferenceCategory>
-    -->
 
 </PreferenceScreen>

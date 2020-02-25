@@ -8,8 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
+import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+
+import android.util.Log;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
@@ -30,10 +33,11 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private static final String TAG = ChatsPreferenceFragment.class.getSimpleName();
 
 
-  ListPreference showEmails;
-  CheckBoxPreference readReceiptsCheckbox;
+  private ListPreference showEmails;
+  private CheckBoxPreference readReceiptsCheckbox;
 
-//  CheckBoxPreference trimEnabledCheckbox;
+  private ListPreference autoDelDevice;
+  private ListPreference autoDelServer;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -57,13 +61,19 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     Preference backup = this.findPreference("pref_backup");
     backup.setOnPreferenceClickListener(new BackupListener());
 
-//    trimEnabledCheckbox = (CheckBoxPreference) findPreference("pref_trim_threads");
-//    trimEnabledCheckbox.setOnPreferenceChangeListener(new TrimEnabledListener());
-//
-//    findPreference("pref_trim_length")
-//        .setOnPreferenceChangeListener(new TrimLengthValidationListener());
-//    findPreference("pref_trim_now")
-//        .setOnPreferenceClickListener(new TrimNowClickListener());
+    autoDelDevice = findPreference("autodel_device");
+    autoDelDevice.setOnPreferenceChangeListener((preference, newValue) -> {
+      updateListSummary(preference, newValue);
+      dcContext.setConfigInt("delete_device_after", Util.objectToInt(newValue));
+      return true;
+    });
+
+    autoDelServer = findPreference("autodel_server");
+    autoDelServer.setOnPreferenceChangeListener((preference, newValue) -> {
+      updateListSummary(preference, newValue);
+      dcContext.setConfigInt("delete_server_after", Util.objectToInt(newValue));
+      return true;
+    });
   }
 
   @Override
@@ -81,9 +91,15 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     String value = Integer.toString(dcContext.getConfigInt("show_emails"));
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
-    readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED));
+    readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled"));
 
-//    trimEnabledCheckbox.setChecked(0!=dcContext.getConfigInt("trim_enabled", DcContext.DC_PREF_DEFAULT_TRIM_ENABLED));
+    value = Integer.toString(dcContext.getConfigInt("delete_server_after"));
+    autoDelServer.setValue(value);
+    updateListSummary(autoDelServer, value);
+
+    value = Integer.toString(dcContext.getConfigInt("delete_device_after"));
+    autoDelDevice.setValue(value);
+    updateListSummary(autoDelDevice, value);
   }
 
   @Override
@@ -101,68 +117,10 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     }
   }
 
-//  private class TrimEnabledListener implements Preference.OnPreferenceChangeListener {
-//    @Override
-//    public boolean onPreferenceChange(final Preference preference, Object newValue) {
-//      boolean enabled = (Boolean) newValue;
-//      dcContext.setConfigInt("trim_enabled", enabled? 1 : 0);
-//      Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show();
-//      return true;
-//    }
-//  }
-//
-//  private class TrimLengthValidationListener implements Preference.OnPreferenceChangeListener {
-//
-//    public TrimLengthValidationListener() {
-//      EditTextPreference preference = (EditTextPreference)findPreference("pref_trim_length");
-//      onPreferenceChange(preference, dcContext.getConfig("trim_length", ""+DcContext.DC_PREF_DEFAULT_TRIM_LENGTH));
-//    }
-//
-//    @Override
-//    public boolean onPreferenceChange(Preference preference, Object newValue) {
-//      if (newValue == null || ((String)newValue).trim().length() == 0) {
-//        return false;
-//      }
-//
-//      int value;
-//      try {
-//        value = Integer.parseInt((String)newValue);
-//      } catch (NumberFormatException nfe) {
-//        Log.w(TAG, nfe);
-//        return false;
-//      }
-//
-//      if (value < 1) {
-//        return false;
-//      }
-//
-//      dcContext.setConfigInt("trim_length", value);
-//      preference.setSummary(getResources().getString(R.string.pref_trim_length_limit_summary, value));
-//      return true;
-//    }
-//  }
-//
-//  private class TrimNowClickListener implements Preference.OnPreferenceClickListener {
-//    @Override
-//    public boolean onPreferenceClick(Preference preference) {
-//      final int threadLengthLimit = dcContext.getConfigInt("trim_length", DcContext.DC_PREF_DEFAULT_TRIM_LENGTH);
-//      AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//      builder.setMessage(getResources().getString(R.string.pref_trim_now_ask,
-//          threadLengthLimit));
-//      builder.setPositiveButton(R.string.ok,
-//          (dialog, which) -> Toast.makeText(getActivity(), "Not yet implemented.", Toast.LENGTH_LONG).show());
-//
-//      builder.setNegativeButton(android.R.string.cancel, null);
-//      builder.show();
-//
-//      return true;
-//    }
-//  }
-
   public static CharSequence getSummary(Context context) {
     final String onRes = context.getString(R.string.on);
     final String offRes = context.getString(R.string.off);
-    String readReceiptState = DcHelper.getContext(context).getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED)!=0? onRes : offRes;
+    String readReceiptState = DcHelper.getContext(context).getConfigInt("mdns_enabled")!=0? onRes : offRes;
     return context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
   }
 

@@ -198,6 +198,12 @@
     <string name="mute_for_seven_days">Mute for 7 days</string>
     <string name="mute_forever">Mute forever</string>
 
+    <string name="at_once">At once</string>
+    <string name="after_1_hour">After 1 hour</string>
+    <string name="after_1_day">After 1 day</string>
+    <string name="after_1_week">After 1 week</string>
+    <string name="after_4_weeks">After 4 weeks</string>
+
     <string name="share_location_once">once</string>
     <string name="share_location_for_5_minutes">for 5 minutes</string>
     <string name="share_location_for_30_minutes">for 30 minutes</string>
@@ -367,13 +373,9 @@
     <string name="pref_using_default">Using default: %s</string>
     <string name="pref_profile_info_headline">Your profile info</string>
     <string name="pref_profile_photo">Profile picture</string>
-    <string name="pref_trim_headline">Message trimming</string>
-    <string name="pref_trim_option">Delete old messages</string>
-    <string name="pref_trim_option_explain">Automatically delete older messages once a chat exceeds a specified length</string>
-    <string name="pref_trim_length_limit">Chat length limit</string>
-    <string name="pref_trim_length_limit_summary">%d messages per chat</string>
-    <string name="pref_trim_now_button">Trim all chats now</string>
-    <string name="pref_trim_now_ask">Delete all old messages now? This will immediately trim all chats to the %d most recent messages.</string>
+    <string name="pref_autodel_headline">Ephemeral messages</string>
+    <string name="pref_autodel_device">Delete from device</string>
+    <string name="pref_autodel_server">Delete from server</string>
     <string name="pref_blocked_contacts">Blocked contacts</string>
     <string name="pref_profile_photo_remove_ask">Remove profile photo?</string>
     <string name="pref_help_url">https://delta.chat/help</string>
