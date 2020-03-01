@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
+<html><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
   <li><a href="#was-ist-delta-chat">Was ist Delta Chat?</a>
     <ul>
       <li><a href="#wie-finde-ich-leute-mit-denen-ich-chatten-kann">Wie finde ich Leute, mit denen ich chatten kann?</a></li>
@@ -29,12 +29,9 @@
       <li><a href="#was-muss-ich-tun-um-die-ende-zu-ende-verschlüsselung-zu-aktivieren">Was muss ich tun, um die Ende-zu-Ende-Verschlüsselung zu aktivieren?</a></li>
       <li><a href="#wird-ohne-ende-zu-ende-verschlüsselung-gar-nicht-verschlüsselt">Wird ohne Ende-zu-Ende-Verschlüsselung gar nicht verschlüsselt?</a></li>
       <li><a href="#wie-kann-ich-den-kryptografischen-zustand-mit-einem-absender-überprüfen">Wie kann ich den kryptografischen Zustand mit einem Absender überprüfen?</a></li>
-    </ul>
-  </li>
-  <li><a href="#wie-kann-ich-die-verschlüsselung-der-nachrichten-überprüfen">Wie kann ich die Verschlüsselung der Nachrichten überprüfen?</a>
-    <ul>
+      <li><a href="#wie-kann-ich-die-verschlüsselung-der-nachrichten-überprüfen">Wie kann ich die Verschlüsselung der Nachrichten überprüfen?</a></li>
       <li><a href="#welches-verfahren-wird-für-die-ende-zu-ende-verschlüsselung-verwendet">Welches Verfahren wird für die Ende-zu-Ende-Verschlüsselung verwendet?</a></li>
-      <li><a href="#was-ist-der-unterschied-zwischen-verifizerten-gruppen-und-11-chats-mit-verifizierten-kontakten">Was ist der Unterschied zwischen verifizerten Gruppen und 1:1 Chats mit verifizierten Kontakten?</a></li>
+      <li><a href="#was-ist-der-unterschied-zwischen-verifizierten-gruppen-und-11-chats-mit-verifizierten-kontakten">Was ist der Unterschied zwischen verifizierten Gruppen und 1:1 Chats mit verifizierten Kontakten?</a></li>
       <li><a href="#unterstützt-delta-chat-perfect-forward-secrecy">Unterstützt Delta Chat Perfect Forward Secrecy?</a></li>
       <li><a href="#wie-schützt-delta-chat-meine-metadaten">Wie schützt Delta Chat meine Metadaten?</a></li>
       <li><a href="#kann-ich-meinen-existierenden-privaten-schlüssel-weiter-verwenden">Kann ich meinen existierenden privaten Schlüssel weiter verwenden?</a></li>
@@ -46,19 +43,19 @@
     <ul>
       <li><a href="#kann-ich-delta-chat-auf-mehreren-geräten-zur-selben-zeit-verwenden">Kann ich Delta Chat auf mehreren Geräten zur selben Zeit verwenden?</a></li>
       <li><a href="#gibt-es-pläne-für-eine-delta-chat-web-anwendung">Gibt es Pläne für eine Delta Chat Web Anwendung?</a></li>
-      <li><a href="#warum-kann-ich-ausschalten-den-posteingang-zu-beobachten">Warum kann ich ausschalten, den Posteingang zu beobachten?</a></li>
+      <li><a href="#warum-kann-ich-posteingang-beobachten-ausschalten">Warum kann ich “Posteingang beobachten” ausschalten?</a></li>
       <li><a href="#was-macht-die-option-kopie-an-mich-selbst-senden">Was macht die Option “Kopie an mich selbst senden”?</a></li>
-      <li><a href="#warum-kann-ich-ausschalten-den-gesendet-ordner-zu-beobachten">Warum kann ich ausschalten, den Gesendet-Ordner zu beobachten?</a></li>
-      <li><a href="#warum-kann-ich-ausschalten-den-deltachat-ordner-zu-beobachten">Warum kann ich ausschalten, den DeltaChat-Ordner zu beobachten?</a></li>
+      <li><a href="#warum-gibt-es-die-funktion-gesendet-ordner-beobachten">Warum gibt es die Funktion “Gesendet-Ordner beobachten”?</a></li>
+      <li><a href="#warum-kann-ich-deltachat-ordner-beobachten-ausschalten">Warum kann ich “DeltaChat-Ordner beobachten” ausschalten?</a></li>
     </ul>
   </li>
   <li><a href="#verschiedenes">Verschiedenes</a>
     <ul>
       <li><a href="#funktioniert-delta-chat-mit-meinem-e-mail-anbieter">Funktioniert Delta Chat mit <em>meinem</em> E-Mail-Anbieter?</a></li>
       <li><a href="#delta-chat-verwendet-e-mail---ist-es-dann-wirklich-ein-instant-messenger">Delta Chat verwendet E-Mail - ist es dann wirklich ein <em>Instant</em> Messenger?</a></li>
-      <li><a href="#is-delta-chat-compatible-with-protonmail--tutanota--criptext">Is Delta Chat compatible with Protonmail / Tutanota / Criptext?</a></li>
+      <li><a href="#ist-delta-chat-kompatibel-mit-protonmail--tutanota--criptext">Ist Delta Chat kompatibel mit Protonmail / Tutanota / Criptext?</a></li>
       <li><a href="#ich-bin-an-technischen-details-interessiert-gibt-es-hierzu-weitere-infos">Ich bin an technischen Details interessiert. Gibt es hierzu weitere Infos?</a></li>
-      <li><a href="#how-are-delta-chat-developments-funded">How are Delta Chat developments funded?</a></li>
+      <li><a href="#wie-wird-delta-chat-finanziert">Wie wird Delta Chat finanziert?</a></li>
     </ul>
   </li>
 </ul>
@@ -98,15 +95,14 @@ zu anderen Instant Messengern muss der/die Empfängerin nicht Delta Chat install
       </h3>
 
 <ul>
-  <li><em>Unabhängig</em> von Unternehmen oder Dienstleistungen. <em>Sie</em> besitzen Ihre Daten.</li>
-  <li>Ihre Daten werden <em>nicht</em> auf einem zentralen Server gespeichert; im Gegensatz zu den meisten anderen Instant Messengern schützt Delta Chat auf diese Weise sogar Ihre Metadaten (wer schreibt mit wem?)</li>
-  <li>Sie übermitteln Ihr Adressbuch nicht an Dritte.</li>
+  <li>Delta Chat ist <em>unabhängig</em> von Unternehmen oder Dienstleistungen. Ihre Daten gehören nur <em>Ihnen</em> .</li>
+  <li>Ihre Daten werden <em>nicht</em> auf einem zentralen Server gespeichert; im Gegensatz zu den meisten anderen Instant Messengern schützt Delta Chat auf diese Weise sogar Ihre Metadaten.</li>
+  <li>Ihr Adressbuch wird nicht an Dritte übermittelt.</li>
   <li><em>Schnell</em> durch die Verwendung von Push-IMAP.</li>
   <li><em>Größte Nutzerbasis</em> - EmpfängerInnen, die Delta Chat <em>nicht</em> nutzen, können ebenfalls erreicht werden.</li>
-  <li><em>Kompatibel</em> - nicht nur zu sich selbst.</li>
   <li><em>Elegante</em> und <em>einfache</em> Benutzeroberfläche.</li>
   <li><em>Verteiltes</em> System.</li>
-  <li><em>Kein Spam</em> - standardmäßig werden nur Nachrichten bekannter BenutzerInnen angezeigt.</li>
+  <li><em>Kein Spam</em> - standardmäßig werden nur Nachrichten bekannter Kontakte angezeigt.</li>
   <li><em>Zuverlässig</em> - sicher für den professionellen Einsatz.</li>
   <li><em>Vertrauenswürdig</em> - kann sogar für geschäftliche Nachrichten verwendet werden.</li>
   <li>Auf <em>Copyleft</em> und <em>Standards</em> basierende freie Software.</li>
@@ -123,12 +119,12 @@ zu anderen Instant Messengern muss der/die Empfängerin nicht Delta Chat install
 <p>Delta Chat zeigt automatisch:</p>
 
 <ul>
-  <li>Nachrichten von Kontakten in Ihrem <strong>Adressbuch</strong></li>
-  <li>Nachrichten von Kontakten, <strong>die von Ihnen kontaktiert wurden</strong></li>
+  <li>Nachrichten von Kontakten aus Ihrem <strong>Adressbuch</strong></li>
+  <li>Nachrichten von Kontakten, <strong>die von Ihnen bisher kontaktiert wurden</strong></li>
   <li><strong>Antworten</strong> auf von Ihnen gesendete Nachrichten</li>
 </ul>
 
-<p>Andere Nachrichten werden nicht automatisch angezeigt, diese sind im <em>Hauptmenü</em> unter <strong>Kontaktanfragen</strong> zu finden. Wenn gewünscht, kann ein neuer Chat von dort gestartet werden.</p>
+<p>Andere Nachrichten werden nicht automatisch angezeigt; diese sind im <em>Hauptmenü</em> unter <strong>Kontaktanfragen</strong> zu finden. Wenn gewünscht, kann ein neuer Chat von dort gestartet werden.</p>
     
       <h3 id="was-ist-mit-spam">
         
@@ -139,9 +135,9 @@ zu anderen Instant Messengern muss der/die Empfängerin nicht Delta Chat install
       </h3>
 
 <ul>
-  <li>Nachrichten in allgemeinen Spam-Ordnern werden ignoriert und enthaltene Adressen gelten nicht als bekannte Kontakte.</li>
+  <li>Nachrichten in allgemeinen Spam-Ordnern werden ignoriert und darin enthaltene Adressen gelten nicht als bekannte Kontakte.</li>
   <li>Da Nachrichten von unbekannten Kontakten nicht automatisch angezeigt werden, gibt es normalerweise <strong>keinen Spam</strong>.</li>
-  <li>Sie können jedoch bei Bedarf jeden Kontakt <strong>sperren</strong>.</li>
+  <li>Sie können jedoch bei Bedarf jeden Kontakt <strong>blockieren</strong>.</li>
 </ul>
     
       <h3 id="unterstützt-delta-chat-bilder-videos-und-dateianhänge">
@@ -153,7 +149,7 @@ zu anderen Instant Messengern muss der/die Empfängerin nicht Delta Chat install
       </h3>
 
 <ul>
-  <li>Ja. Neben Klartext werden alle E-Mail-Anhänge als separate Nachrichten angezeigt. Ausgehende Nachrichten erhalten bei Bedarf automatisch Anhänge.</li>
+  <li>Ja. Alle E-Mail-Anhänge werden als separate Nachrichten angezeigt. Ausgehende Nachrichten erhalten bei Bedarf automatisch Anhänge.</li>
 </ul>
     
       <h3 id="wer-sieht-mein-profilbild">
@@ -172,10 +168,10 @@ zu anderen Instant Messengern muss der/die Empfängerin nicht Delta Chat install
     <p>Kontakte, die kein Delta Chat benutzen, sehen es als E-Mail Anhang.</p>
   </li>
   <li>
-    <p>Aus Datenschutzgründen sieht niemand Ihr Profilbild bevor Sie ihnen eine Nachricht senden.</p>
+    <p>Aus Datenschutzgründen sieht niemand Ihr Profilbild, dem Sie nicht zuvor eine bevor eine Nachricht gesendet haben.</p>
   </li>
   <li>
-    <p>Ihr Profilbild wird nicht mit jeder Nachricht gesendet, aber häufig genug, so dass Ihre Kontakte es auch dann erhalten, wenn sie ein neues Gerät hinzufügen.</p>
+    <p>Ihr Profilbild wird nicht mit jeder Nachricht gesendet, aber häufig genug, so dass Ihre Kontakte es auch dann erhalten, wenn sie ein neues Gerät nutzen.</p>
   </li>
 </ul>
     
@@ -199,11 +195,11 @@ zu anderen Instant Messengern muss der/die Empfängerin nicht Delta Chat install
         
       </h3>
 
-<p>Genau wie auch bei anderen E-Mail Programmen wie Thunderbird, K9-Mail oder Outlook benötigt das Programm das Passwort, um E-Mails versenden zu können. Selbstverständlich wird das Passwort nur auf Ihrem Gerät gespeichert. Das Passwort wird nur an Ihren E-Mail Anbieter gesendet (wenn Sie sich einloggen), welcher ohnehin Zugriff auf Ihre Mails hat.</p>
+<p>Genau wie auch bei anderen E-Mail Programmen (z. B. Thunderbird, K9-Mail oder Outlook) benötigt das Delta Chat das Passwort, um E-Mails versenden zu können. Das Passwort wird nur auf Ihrem Gerät gespeichert und beim Einloggen an Ihren E-Mail Anbieter gesendet.</p>
 
-<p>Wenn Sie einen E-Mail-Anbieter wie gmail.com oder yandex.ru mit Unterstützung für OAuth2 nutzen, dann wird Ihr Passwort nicht auf Ihrem Gerät gespeichert. In diesem Fall wird nur ein Zugriffstoken genutzt.</p>
+<p>Wenn Sie einen E-Mail-Anbieter wie gmail.com oder yandex.ru nutzen, der OAuth2 unterstützt, wird Ihr Passwort nicht auf Ihrem Gerät gespeichert. In diesem Fall wird nur ein Zugriffstoken genutzt.</p>
 
-<p>Da Delta Chat Open Source ist, können Sie den <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/src/login_param.rs">Quellcode</a> überprüfen, wenn Sie sich davon überzeugen möchten, dass Ihre Zugangsdaten sicher gehandhabt werden. Wir freuen uns über Feedback, welches unsere App sicherer für all unsere NutzerInnen macht.</p>
+<p>Da Delta Chat Open Source ist, können Sie den <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/src/login_param.rs">Quellcode</a> einsehen und sich davon überzeugen, dass Ihre Zugangsdaten sicher gehandhabt werden. Wir freuen uns über Feedback, das unsere App sicherer für all unsere NutzerInnen macht.</p>
     
       <h3 id="welche-android-app-berechtigungen-benötigt-delta-chat">
         
@@ -250,7 +246,7 @@ zu anderen Instant Messengern muss der/die Empfängerin nicht Delta Chat install
       <li>Ruhezustand deaktivieren: Damit Sie einfacher den Sicherheitscode während der Autocrypt-Setupnachricht abtippen können</li>
       <li>Auf alle Netzwerke zugreifen: Um eine Verbindung zu Ihrem E-Mail-Anbieter herzustellen</li>
       <li>WLAN-Verbindungen abrufen: Um eine Verbindung zu Ihrem E-Mail-Anbieter herzustellen</li>
-      <li>Fragen, ob Akku-Leistungsoptimierungen ignoriert werden können: Für Nutzer, die permanent Nachrichten empfangen möchten</li>
+      <li>Fragen, ob Akku-Leistungsoptimierungen ignoriert werden können: Für NutzerInnen, die permanent Nachrichten empfangen möchten</li>
     </ul>
   </li>
 </ul>
@@ -305,7 +301,7 @@ Siehe <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermit
   </li>
   <li>
     <p>Seit Dezember 2019 gibt es “verifizierte Gruppe” als experimentelles Feature.
- Sie wird kontinuierlich verbessert und viele Fehler wurden seit der ursprünglichen Einführung in 2018 behoben. Allerdings gibt es immer noch Fälle, besonders in großen Gruppen, bei denen es zu Inkonsistenzen kommen kann oder Nachrichten unleserlich werden. Anfang 2020 wird es eine Sicherheitsüberprüfung geben und es finden einige neue Entwicklungen rund um QR-Beitrittsprotokolle statt. Die Chancen, dass wir das Etikett “experimentell” in nicht all zu ferner Zukunft entfernen können, stehen gut.</p>
+ Es wird kontinuierlich verbessert und viele Fehler wurden seit der ursprünglichen Einführung in 2018 behoben. Allerdings gibt es immer noch Fälle, besonders in großen Gruppen, bei denen es zu Inkonsistenzen kommen kann oder Nachrichten unleserlich werden. Anfang 2020 wird es eine Sicherheitsüberprüfung geben und es finden einige neue Entwicklungen rund um QR-Beitrittsprotokolle statt. Die Chancen, dass wir das Etikett “experimentell” in nicht all zu ferner Zukunft entfernen können, stehen gut.</p>
   </li>
 </ul>
     
@@ -336,7 +332,7 @@ Kein Problem, bitten Sie einfach ein anderes Gruppenmitglied in einem normalen C
 Wenn Sie der Gruppe später erneut beitreten möchten, bitten Sie ein anderes Gruppenmitglied, Sie erneut hinzuzufügen.</p>
   </li>
   <li>
-    <p>Alternativ können Sie eine Gruppe auch “Stummschalten” - dies bedeutet, dass Sie weiterhin alle Nachrichten erhalten und neue schreiben können, aber nicht mehr über neue Nachrichten informiert werden.</p>
+    <p>Alternativ können Sie eine Gruppe auch “stummschalten” - dies bedeutet, dass Sie weiterhin alle Nachrichten erhalten und neue schreiben können, aber nicht mehr über neue Nachrichten informiert werden.</p>
   </li>
 </ul>
     
@@ -349,9 +345,9 @@ Wenn Sie der Gruppe später erneut beitreten möchten, bitten Sie ein anderes Gr
       </h3>
 
 <ul>
-  <li>Neben einer Nachricht werden zwei Häkchen angezeigt, wenn sie von mehr als die Hälfte der EmpfängerInnen geöffnet wurde</li>
+  <li>Neben einer Nachricht werden zwei Häkchen angezeigt, wenn sie von mehr als der Hälfte der EmpfängerInnen geöffnet wurde.</li>
   <li>EmpfängerInnen können diese Lesebestätigungen ausschalten</li>
-  <li>Wenn mehr als 50% der EmpfängerInnen einer Gruppe die Lesebestätigungen ausgeschaltet haben, werden zwei Häkchen niemals angezeigt werden - weitere Informationen in <a href="https://delta.chat/en/2017-07-06-read-receipts-and-social-pressure">diesem Blogbeitrag</a>.</li>
+  <li>Wenn mehr als 50% der EmpfängerInnen einer Gruppe die Lesebestätigungen ausgeschaltet haben, werden niemals zwei Häkchen angezeigt - weitere Informationen in <a href="https://delta.chat/en/2017-07-06-read-receipts-and-social-pressure">diesem Blogbeitrag</a>.</li>
 </ul>
     
       <h2 id="encryption">
@@ -376,7 +372,7 @@ Wenn Sie der Gruppe später erneut beitreten möchten, bitten Sie ein anderes Gr
 daher Ende-zu-Ende-verschlüsselte Nachrichten mit anderen Autocrypt-fähigen Anwendungen austauschen.</p>
   </li>
   <li>
-    <p>Darüber hinaus unterstützt Delta Chat eine weitere From der Ende-zu-Ende-Verschlüsselung, die sogar gegen aktive Angriffe schützt, siehe “Verifizierte Gruppen” unten.</p>
+    <p>Darüber hinaus unterstützt Delta Chat eine weitere Form der Ende-zu-Ende-Verschlüsselung, die sogar gegen aktive Angriffe schützt, siehe “Verifizierte Gruppen”.</p>
   </li>
 </ul>
     
@@ -412,7 +408,7 @@ Wenn einer der Chat-Kontakte eine E-Mail-Anwendung verwendet, die nicht Autocryp
 
 <ul>
   <li>Mit den meisten E-Mail-Servern stellt Delta Chat eine <em>transportverschlüsselte</em> Verbindung her (<a href="https://de.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>).
- Dies schützt nur die Verbindung zwischen Ihrem Gerät und Ihrem E-Mail-Server. Wohingegen Ende-zu-Ende-Verschlüsselung die gesamte Kommunikation zwischen Ihrem Gerät und dem Empfangsgerät  schützt.</li>
+ Diese schützt nur die Verbindung zwischen Ihrem Gerät und Ihrem E-Mail-Server. Wohingegen Ende-zu-Ende-Verschlüsselung die gesamte Kommunikation zwischen Ihrem Gerät und dem Empfangsgerät schützt.</li>
 </ul>
     
       <h3 id="wie-kann-ich-den-kryptografischen-zustand-mit-einem-absender-überprüfen">
@@ -430,28 +426,27 @@ wird (falls er noch nicht existiert) ein Chat-Kanal  eingerichtet und die Schlü
 
 <ul>
   <li>
-    <p>Für die Ende-zu-Ende-Verschlüsselung zeigt Delta Chat dort zwei Fingerabdrücke an. 
-Wenn auf dem Gerät Ihres Chatkontakts dieselben Fingerabdrücke angezeigt werden, ist die Verbindung sicher.</p>
+    <p>Für die Ende-zu-Ende-Verschlüsselung zeigt Delta Chat dort zwei Fingerabdrücke an.  Wenn auf dem Gerät Ihres Chatkontakts dieselben Fingerabdrücke angezeigt werden, ist die Verbindung sicher.</p>
   </li>
   <li>
     <p>Bei der Transportverschlüsselung wird dieser Zustand dort nur angezeigt.</p>
   </li>
 </ul>
     
-      <h2 id="wie-kann-ich-die-verschlüsselung-der-nachrichten-überprüfen">
+      <h3 id="wie-kann-ich-die-verschlüsselung-der-nachrichten-überprüfen">
         
         
           Wie kann ich die Verschlüsselung der Nachrichten überprüfen? <a href="#wie-kann-ich-die-verschlüsselung-der-nachrichten-überprüfen" class="anchor"></a>
         
         
-      </h2>
+      </h3>
 
 <ul>
   <li>
     <p>Wenn neben einer Nachricht ein kleines <strong>Vorhängeschloss</strong> angezeigt wird, bedeutet dies, dass die Nachricht durchgehend Ende-zu-Ende verschlüsselt ist <em>und</em> vom angegebenen Absender gesendet wurde <em>und</em> dass Ihre Antwort ebenfalls durchgehend Ende-zu-Ende verschlüsselt wird.</p>
   </li>
   <li>
-    <p>Wenn <strong>kein Vorhängeschloss</strong> vorhanden ist, wird die Nachricht normalerweise unverschlüsselt transportiert, z.B. weil der Absender oder Sie die Ende-zu-Ende-Verschlüsselung deaktiviert haben oder der Absender eine Anwendung ohne Unterstützung für die Ende-zu-Ende-Verschlüsselung verwendet.</p>
+    <p>Wenn <strong>kein Vorhängeschloss</strong> vorhanden ist, wird die Nachricht normalerweise unverschlüsselt transportiert, z.B. weil der Absender oder Sie die Ende-zu-Ende-Verschlüsselung deaktiviert haben oder der Absender eine Anwendung ohne Unterstützung der Ende-zu-Ende-Verschlüsselung verwendet.</p>
   </li>
 </ul>
     
@@ -465,32 +460,32 @@ Wenn auf dem Gerät Ihres Chatkontakts dieselben Fingerabdrücke angezeigt werde
 
 <ul>
   <li>
-    <p><a href="https://autocrypt.org">Autocrypt</a> wird verwendet um eine Ende-zu-Ende-Verschüsselung mit anderen Delta Chats oder anderen Autocrypt-kompatiblen Apps aufzubauen.
+    <p><a href="https://autocrypt.org">Autocrypt</a> wird verwendet, um eine Ende-zu-Ende-Verschüsselung mit anderen Delta Chats oder anderen Autocrypt-kompatiblen Apps aufzubauen.
 Autocrypt verwendet eine begrenzte Teilmenge des OpenPGP-Standards.</p>
   </li>
   <li>
-    <p>Um vor aktivien Netzwekangriffen zu schützen, implementiert Delta Chat <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm Kontakt-Setup- und Verifizierte-Gruppen-Protokolle</a>. Dies geht über den Basisschutz der opportunistischen Verschlüsselung von Autocrypt Level 1 hinaus - behält aber dessen Einfachheit bei.</p>
+    <p>Um vor aktiven Netzwerkangriffen zu schützen, implementiert Delta Chat <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm Kontakt-Setup- und Verifizierte-Gruppen-Protokolle</a>. Dies geht über den Basisschutz der opportunistischen Verschlüsselung von Autocrypt Level 1 hinaus - behält aber dessen Einfachheit bei.</p>
   </li>
 </ul>
     
-      <h3 id="was-ist-der-unterschied-zwischen-verifizerten-gruppen-und-11-chats-mit-verifizierten-kontakten">
+      <h3 id="was-ist-der-unterschied-zwischen-verifizierten-gruppen-und-11-chats-mit-verifizierten-kontakten">
         
         
-          Was ist der Unterschied zwischen verifizerten Gruppen und 1:1 Chats mit verifizierten Kontakten? <a href="#was-ist-der-unterschied-zwischen-verifizerten-gruppen-und-11-chats-mit-verifizierten-kontakten" class="anchor"></a>
+          Was ist der Unterschied zwischen verifizierten Gruppen und 1:1 Chats mit verifizierten Kontakten? <a href="#was-ist-der-unterschied-zwischen-verifizierten-gruppen-und-11-chats-mit-verifizierten-kontakten" class="anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>
-    <p>1:1 Chats mit einem verifizierten Kontakt und verifizierte Gruppen sind nicht das Gleiche, sogar wenn sich nur 2 Personen in einer verifizierten Gruppe befinden. Ein Unterschied ist, dass Sie einfach weitere Personen zu einer Gruppe hinzufügen können, aber es gibt noch weitere Unterschiede.</p>
+    <p>1:1 Chats mit einem verifizierten Kontakt und verifizierte Gruppen sind nicht das Gleiche, auch wenn sich nur 2 Personen in einer verifizierten Gruppe befinden. Ein Unterschied ist, dass Sie zu einer Gruppe einfach weitere Personen hinzufügen können, aber es gibt noch weitere Unterschiede.</p>
   </li>
   <li>
     <p>Verifizierte Gruppen sind immer geschützt. Jeder Bruch (Klartextnachrichten oder falsch signierte Nachrichten) wird erkannt und nicht in diesem Chat dargestellt.
 Sie können darauf vertrauen, dass alle Nachrichten in diesem verifizierten Chat nicht von Dritten verändert oder gelesen wurden.</p>
   </li>
   <li>
-    <p>In 1:1 Chats können NutzerInnen auch dann miteinander kommunizieren, wenn sie ihre E-Mail-Programme, Einstellungen oder Geräte gewechselt haben. Deshalb sehen Sie in diesen Chats kein Verifikationshäkchen, auch wenn Sie den Kontakt verifiziert haben.</p>
+    <p>1:1 Chats verhalten sich, was die Verschlüsselung angeht, opportunistisch. Wenn möglich, wird verschlüsselt. Aber auch wenn eine Verschlüsselung nicht möglich ist, werden die Nachrichten versandt, damit NutzerInnen auch dann miteinander kommunizieren, wenn sie ihre E-Mail-Programme, Einstellungen oder Geräte gewechselt haben. Deshalb sehen Sie in diesen Chats kein Verifikationshäkchen, auch wenn Sie den Kontakt verifiziert haben.</p>
   </li>
 </ul>
     
@@ -530,8 +525,8 @@ Der Zugriff auf ein einzelnes Gerät eines Gruppenmitglieds verrät viel über d
     <p>Da Delta Chat ein dezentraler Messenger ist, werden Metadaten nicht auf einem zentralen Server gespeichert. Allerdings werden diese auf den Mailservern des Absenders und des Empfängers einer Nachricht gespeichert.</p>
   </li>
   <li>
-    <p>Jeder Mailserver kann derzeit über die unverschlüsselten An- und CC-Feldern herausfinden, wer eine Nachricht an wen gesendet hat und welche E-Mail-Adressen Teil einer Gruppe sind. Delta Chat selbst kann unverschlüsselte An- und CC-Felder vollständig vermeiden und diese immer nur in den verschlüsselten  Teil einer Nachricht schreiben. Lesen Sie dazu auch  <a href="https://github.com/deltachat/deltachat-core-rust/issues/1032">Avoid sending To/CC headers for verified groups</a>.
-Bei normalen 1:1 Chats ist das Hauptproblem, wie andere Mail-Programme, die womöglich Teil der Chatkommunikation sind, damit umgehen</p>
+    <p>Jeder Mailserver kann derzeit über die unverschlüsselten An- und CC-Felder herausfinden, wer eine Nachricht an wen gesendet hat und welche E-Mail-Adressen Teil einer Gruppe sind. Delta Chat selbst kann unverschlüsselte An- und CC-Felder vollständig vermeiden und schreibt diese immer nur in den verschlüsselten Teil einer Nachricht. Lesen Sie dazu auch  <a href="https://github.com/deltachat/deltachat-core-rust/issues/1032">Avoid sending To/CC headers for verified groups</a>.
+Bei normalen 1:1 Chats ist das Hauptproblem, wie andere Mail-Programme, die womöglich Teil der Chatkommunikation sind, damit umgehen.</p>
   </li>
   <li>
     <p>Viele weitere E-Mail-Header, insbesondere der “Betreff” Header, sind Ende-zu-Ende verschlüsselt. Lesen Sie dazu auch  <a href="https://datatracker.ietf.org/doc/draft-autocrypt-lamps-protected-headers/">IETF RFC</a>.</p>
@@ -569,10 +564,8 @@ Achtung: Der private Schlüssel darf <em>nicht</em> mit einem Passwort geschütz
 <p>Wahrscheinlich ist Ihr Schlüssel verschlüsselt und/oder mit einem Passwort geschützt. Solche Schlüssel werden von Delta Chat nicht unterstützt. Bitte entfernen Sie die Verschlüsselung und das Passwort und versuchen Sie den Import danach erneut.
 Wenn Sie das Passwort nicht entfernen möchten, dann müssen Sie einen E-Mail-Alias zur Nutzung mit Delta Chat anlegen, sodass der Schlüssel von Delta Chat mit diesem E-Mail-Alias verknüpft ist.</p>
 
-<p>Grundsätzlich sollte Delta Chat “gängige” private Schlüsselformate unterstützen, allerdings
-ist es unwahrscheinlich, dass wir 100% aller privaten Schlüssel aus sämtlichen Quellen unterstützen. 
-Dies ist auch nicht das Hauptaugenmerk von Delta Chat (tatsächlich besitzt die große Mehrheit der Delta
- Chat Benutzer keinen Schlüssel, bevor sie Delta Chat verwendet). 
+<p>Grundsätzlich sollte Delta Chat “gängige” private Schlüsselformate unterstützen, allerdings ist es unwahrscheinlich, dass wir 100% aller privaten Schlüssel aus sämtlichen Quellen unterstützen. 
+Dies ist auch nicht das Hauptaugenmerk von Delta Chat (tatsächlich besitzt die große Mehrheit der Delta Chat NutzerInnen keinen Schlüssel, bevor sie Delta Chat verwendet). 
 Wir versuchen jedoch, private Schlüssel aus anderen Quellen so gut wie möglich zu unterstützen.</p>
 
 <p>Das Entfernen des Passworts vom privaten Schlüssel ist abhängig von der Software, mit der Sie Ihre PGP-Schlüssel verwalten. 
@@ -589,8 +582,7 @@ Für andere Programme können Sie online eine Lösung finden.</p>
       </h3>
 
 <ul>
-  <li>Delta Chat verwendet den Autocrypt Ende-zu-Ende-Verschlüsselungsstandard. Lesen Sie die <a href="https://autocrypt.org/faq.html#how-does-autocrypt-differ-from-pep">Autocrypt
-FAQ</a> für eine Unterscheidung zwischen Autocrypt und pEp.</li>
+  <li>Delta Chat verwendet den Autocrypt Ende-zu-Ende-Verschlüsselungsstandard. Lesen Sie die <a href="https://autocrypt.org/faq.html#how-does-autocrypt-differ-from-pep">Autocrypt  FAQ</a> für eine Unterscheidung zwischen Autocrypt und pEp.</li>
 </ul>
     
       <h2 id="multiclient">
@@ -612,7 +604,7 @@ FAQ</a> für eine Unterscheidung zwischen Autocrypt und pEp.</li>
 <p>Möchten Sie einen Account auf verschiedenen Geräten nutzen, müssen Sie in Delta Chat auf dem “alten” Gerät ein Backup erstellen und dieses auf dem neuen importieren:</p>
 
 <ul>
-  <li>Wählen Sie auf dem alten Devise “Einstellungen / Chats und Medien / Backup”. Geben Sie Ihre Entsperrungs-PIN, -Muster oder -Passwort ein. Klicken Sie dann auf “Start Backup”. Die Backup-Datei wird auf Ihrem Gerät gespeichert. Nun übertragen Sie die Datei auf Ihr neues Gerät.</li>
+  <li>Wählen Sie auf dem alten Gerät “Einstellungen / Chats und Medien / Backup”. Geben Sie Ihre Entsperrungs-PIN, -Muster oder -Passwort ein. Klicken Sie dann auf “Start Backup”. Die Backup-Datei wird auf Ihrem Gerät gespeichert. Nun übertragen Sie die Datei auf Ihr neues Gerät.</li>
   <li>Rufen Sie auf Ihrem neuen Gerät Delta Chat auf und wählen Sie nun auf dem Startbildschirm “Importiere Backup” - anstatt sich mit Ihrer E-Mail-Adresse einzuloggen. Ihre Chatkonversationen, Schlüssel und Medien werden nun auf das neue Gerät kopiert.</li>
   <li>Die Geräte sind nun synchronisiert und Sie können beide für das Senden und Empfangen von Ende-zu-Ende-verschlüsselten Nachrichten mit Ihren Chat-Kontakten nutzen.</li>
 </ul>
@@ -631,15 +623,15 @@ FAQ</a> für eine Unterscheidung zwischen Autocrypt und pEp.</li>
   <li>Sollten Sie einen Web-Client benötigen, weil Sie auf Ihrem Arbeitsrechner keine Software installieren dürfen, können Sie den Windows Desktop Client bzw. Applmage für Linux nutzen. Sie finden diese unter  <a href="https://get.delta.chat">get.delta.chat</a>.</li>
 </ul>
     
-      <h3 id="warum-kann-ich-ausschalten-den-posteingang-zu-beobachten">
+      <h3 id="warum-kann-ich-posteingang-beobachten-ausschalten">
         
         
-          Warum kann ich ausschalten, den Posteingang zu beobachten? <a href="#warum-kann-ich-ausschalten-den-posteingang-zu-beobachten" class="anchor"></a>
+          Warum kann ich “Posteingang beobachten” ausschalten? <a href="#warum-kann-ich-posteingang-beobachten-ausschalten" class="anchor"></a>
         
         
       </h3>
 
-<p>Dies ist eine experimentelle Einstellung für BenutzerInnen, die  serverseitigen Regeln verwenden möchten. Dies wird nicht von allen Providern unterstützt, aber bei einigen können Sie Nachrichten mit einem “Chat-Version” Header vom Server in den DeltaChat-Ordner verschieben - normalerweise wird dies von der Delta Chat App erledigt.</p>
+<p>Dies ist eine experimentelle Einstellung für BenutzerInnen, die  serverseitige Regeln verwenden möchten. Dies wird nicht von allen Providern unterstützt, aber bei einigen können Sie Nachrichten mit einem “Chat-Version”-Header vom Server in den DeltaChat-Ordner verschieben - normalerweise wird dies von der Delta Chat App erledigt.</p>
 
 <p>“Posteingang beobachten” auszuschalten ist sinnvoll, wenn die folgenden Punkte erfüllt sind:</p>
 
@@ -648,7 +640,7 @@ FAQ</a> für eine Unterscheidung zwischen Autocrypt und pEp.</li>
   <li>“Normale E-Mails anzeigen” ist auf “Nein, nur Chats” gesetzt</li>
 </ul>
 
-<p>In diesem Fall muss Delta Chat nicht den Posteingang beobachten.</p>
+<p>In diesem Fall muss Delta Chat den Posteingang nicht beobachten.</p>
     
       <h3 id="was-macht-die-option-kopie-an-mich-selbst-senden">
         
@@ -658,28 +650,28 @@ FAQ</a> für eine Unterscheidung zwischen Autocrypt und pEp.</li>
         
       </h3>
 
-<p>Das Senden einer Kopie an Sie selbst stellt sicher, dass Sie Ihre eigenen Nachrichten auf all Ihren Geräten sehen. Wenn Sie mehrere Geräte haben, aber die Option nicht eingeschaltet ist, sehen Sie nur die Nachrichten, die andere Ihnen geschickt haben und die ausgehenden Nachrichten, die auf dem Gerät selbst verschickt wurden.</p>
+<p>Das Senden einer Kopie an Sie selbst stellt sicher, dass Sie Ihre eigenen Nachrichten auf all Ihren Geräten sehen. Wenn Sie mehrere Geräte nutzen, aber diese Option nicht eingeschaltet ist, sehen Sie nur die Nachrichten, die andere Ihnen geschickt haben, und die ausgehenden Nachrichten, die auf dem Gerät selbst verschickt wurden.</p>
 
 <p>Die Kopie wird dabei an den Posteingang verschickt und wird von dort in den DeltaChat-Ordner verschoben. Delta Chat lädt <em>niemals</em> etwas in den Gesendet-Ordner hoch, weil dies bedeuten würde, dass eine Nachricht zweimal hochgeladen werden müsste (einmal SMTP und dann IMAP in den Gesendet-Ordner)</p>
 
 <p>Die Standardeinstellung für “Kopie an mich selbst senden” ist “Aus”.</p>
     
-      <h3 id="warum-kann-ich-ausschalten-den-gesendet-ordner-zu-beobachten">
+      <h3 id="warum-gibt-es-die-funktion-gesendet-ordner-beobachten">
         
         
-          Warum kann ich ausschalten, den Gesendet-Ordner zu beobachten? <a href="#warum-kann-ich-ausschalten-den-gesendet-ordner-zu-beobachten" class="anchor"></a>
+          Warum gibt es die Funktion “Gesendet-Ordner beobachten”? <a href="#warum-gibt-es-die-funktion-gesendet-ordner-beobachten" class="anchor"></a>
         
         
       </h3>
 
-<p>Der einzige Grund, den Gesendet-Ordner zu beobachten, ist, wenn Sie ein weiteres E-Mail-Programm (wie Thunderbird) mit dem selben E-Mail-Account verwenden und dieses an den Chats teilhaben soll.</p>
+<p>Der einzige Grund, den Gesendet-Ordner zu beobachten, ist, wenn Sie ein weiteres E-Mail-Programm (wie Thunderbird) mit demselben E-Mail-Account verwenden und dieses an den Chats teilhaben soll.</p>
 
 <p>Wir empfehlen für diesen Zweck aber “Delta Chat Desktop” - Sie können die App unter <a href="https://get.delta.chat">get.delta.chat</a> herunterladen. Möglicherweise wird die Option “Gesendet-Ordner beobachten” zukünftig wegfallen; sie kommt aus einer Zeit, als Delta Chat Desktop noch nicht auf allen Plattformen zur Verfügung stand.</p>
     
-      <h3 id="warum-kann-ich-ausschalten-den-deltachat-ordner-zu-beobachten">
+      <h3 id="warum-kann-ich-deltachat-ordner-beobachten-ausschalten">
         
         
-          Warum kann ich ausschalten, den DeltaChat-Ordner zu beobachten? <a href="#warum-kann-ich-ausschalten-den-deltachat-ordner-zu-beobachten" class="anchor"></a>
+          Warum kann ich “DeltaChat-Ordner beobachten” ausschalten? <a href="#warum-kann-ich-deltachat-ordner-beobachten-ausschalten" class="anchor"></a>
         
         
       </h3>
@@ -704,7 +696,7 @@ FAQ</a> für eine Unterscheidung zwischen Autocrypt und pEp.</li>
 
 <ul>
   <li>Mit ziemlich hoher Wahrscheinlichkeit: Ja :)</li>
-  <li>Allerdings benötigen einige Anbieter besondere Optionen, um ordnungsgemäß zu funktionieren; eine von Nutzern erstellte Sammlung zu einigen Optionen findet sich unter <a href="https://providers.delta.chat">Provider Overview</a>.</li>
+  <li>Allerdings benötigen einige Anbieter besondere Einstellungen, um ordnungsgemäß zu funktionieren; eine von NutzerInnen erstellte Sammlung zu einigen Optionen findet sich unter <a href="https://providers.delta.chat">Provider Overview</a>.</li>
 </ul>
     
       <h3 id="delta-chat-verwendet-e-mail---ist-es-dann-wirklich-ein-instant-messenger">
@@ -716,31 +708,25 @@ FAQ</a> für eine Unterscheidung zwischen Autocrypt und pEp.</li>
       </h3>
 
 <ul>
-  <li>Typischerweise benötigt das Senden und Empfangen von Nachchten nur wenige Sekunden. Es gibt Fälle, in dnen es länger Dauert - aber das trifft auch auf andere Messenger zu.</li>
-  <li>Das Chatten geht schnell, wenn beide Seiten die App direkt verwenden. Wenn die App im Hintergrund läuft, kann es manchmal etwas langsamer sein.</li>
-  <li>Das Empfangen von Nachrichten im Hintergrund kann Minuten dauern, da Android und iOS Apps häufig daran hindern, im Hintergrund zu laufen und Apps so nur gelegentlich aktiv sind.</li>
-  <li>Delta Chat verwendet nicht die Push-Dienst Google Cloud Messaging (GCM) oder die Apple Push Notification Services (APNS), da dies zu Überwachung und Kontrolle führt, die Delta Chat so gut wie möglich zu verhindern versucht</li>
-  <li>Das Problem, dass Android und iOS Apps unaufgefordert beendet ist übrigens ein Problem, dass viele legitime Apps haben, siehe <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
+  <li>Typischerweise benötigt das Senden und Empfangen von Nachrichten nur wenige Sekunden. Es gibt Fälle, in denen es länger dauert - aber das trifft auch auf andere Messenger zu.</li>
+  <li>Das Chatten geht schnell, wenn beide Seiten die App direkt verwenden. Wenn die App im Hintergrund läuft, kann es zu Verzögerungen kommen.</li>
+  <li>Das Empfangen von Nachrichten im Hintergrund kann deshalb manchmal Minuten dauern, weil Android und iOS Delta Chat (und andere Apps) daran hindert, aktiv im Hintergrund zu laufen, und die App so nur gelegentlich aktiv sind.</li>
+  <li>Push-Dienste wie Google Cloud Messaging (GCM) oder Apple Push Notification Services (APNS) werden von Delta Chat nicht verwendet, um User Tracking und Kontrolle so gut wie möglich zu vermeiden!</li>
+  <li>Das Problem, dass Android und iOS Apps unaufgefordert Programme, die im Hintergrund laufen, stilllegt, ist übrigens ein Problem, das viele Apps haben, siehe <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
 </ul>
     
-      <h3 id="is-delta-chat-compatible-with-protonmail--tutanota--criptext">
+      <h3 id="ist-delta-chat-kompatibel-mit-protonmail--tutanota--criptext">
         
         
-          Is Delta Chat compatible with Protonmail / Tutanota / Criptext? <a href="#is-delta-chat-compatible-with-protonmail--tutanota--criptext" class="anchor"></a>
+          Ist Delta Chat kompatibel mit Protonmail / Tutanota / Criptext? <a href="#ist-delta-chat-kompatibel-mit-protonmail--tutanota--criptext" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>Yes and No.</li>
-  <li>No, you can not use your Protonmail, Tutanota, or Criptext account with Delta
-Chat; they do not offer receiving mails via IMAP.</li>
-  <li>In any case you can use Delta Chat to send Messages to people who use
-Protonmail, Tutanota, or Criptext. Those messages will not be End-to-End
-encrypted, though. The End-to-End encryption those providers offer is only
-working inside their platforms, and not compatible with anyone outside.</li>
-  <li>Delta Chat can e2e-encrypt through any e-mail provider with any
-<a href="https://autocrypt.org/dev-status.html">Autocrypt-enabled e-mail app</a>.</li>
+  <li>Sie können Ihren Protonmail, Tutanota oder Criptext Account nicht mit Delta Chat nutzen, da diese das Empfangen von Mails über IMAP nicht anbieten.</li>
+  <li>Sie können allerdings Nachrichten über Delta Chat an Kontakte senden, die Protonmail, Tutanota oder Criptext nutzen. Diese Nachrichten sind allerdings nicht Ende-zu-Ende-verschlüsselt. Die Verschlüsselung, die diese Provider anbietet, funktioniert nur innerhalb deren Plattformen und ist nicht mit anderen Systemen kompatibel.</li>
+  <li>Die End-zu-Ende-Verschlüsselung mit Delta Chat funktioniert mit allen Providern und  E-Mail-Programmen, die den  <a href="https://autocrypt.org/dev-status.html">Autocrypt Standard</a> unterstützen.</li>
 </ul>
     
       <h3 id="ich-bin-an-technischen-details-interessiert-gibt-es-hierzu-weitere-infos">
@@ -755,59 +741,38 @@ working inside their platforms, and not compatible with anyone outside.</li>
   <li>Siehe hierzu <a href="https://github.com/deltachat/deltachat-android/blob/master/standards.md#standards-used-in-delta-chat">in Delta Chat genutzte Standards</a>.</li>
 </ul>
     
-      <h3 id="how-are-delta-chat-developments-funded">
+      <h3 id="wie-wird-delta-chat-finanziert">
         
         
-          How are Delta Chat developments funded? <a href="#how-are-delta-chat-developments-funded" class="anchor"></a>
+          Wie wird Delta Chat finanziert? <a href="#wie-wird-delta-chat-finanziert" class="anchor"></a>
         
         
       </h3>
 
-<p>First of all, Delta Chat does not receive any Venture Capital and
-is not indebted, and under no pressure to produce huge profits, or to 
-sell users and their friends and family to advertisers (or worse).</p>
+<p>Delta Chat erhält keinerlei Venture Kapital (Risiko-Kapital) und ist damit niemandem verpflichtet und nicht unter Druck, hohe Erträge zu generieren oder die Daten von Usern an Werbetreibende zu verkaufen (oder Schlimmeres…)</p>
 
-<p>Delta Chat developments have so far been funded from four major sources:</p>
+<p>Delta Chat wurde bisher hauptsächlich durch vier Stellen finanziert:</p>
 
 <ul>
   <li>
-    <p>The <a href="https://nextleap.eu">NEXTLEAP</a> EU project funded the research
-and implementation of verified groups and setup contact protocols
-in 2017 and 2018.</p>
+    <p>Das EU-Projekt <a href="https://nextleap.eu">NEXTLEAP</a> finanzierte 2017 und 2018 die Entwicklung und Implementation der Verifizierten Gruppen und die Einrichtung der Kontaktprotokolle.</p>
   </li>
   <li>
-    <p>The <a href="https://opentechfund.org">Open Technology Fund</a> has given two grants.
-The first 2018/2019 grant (~$200K) majorly improved the Android app 
-and allowed us to release a Desktop app beta version, and also 
-moored our feature developments in UX research in human rights contexts, 
-see our concluding <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
-The second 2019/2020 grant (~$300K) is still ongoing and helps us to 
-release Delta/iOS versions, to convert our core library to Rust, and
-to provide new features for all platforms.  See the 
-ongoing <a href="https://delta.chat/en/blog">blog posts</a> for more info.</p>
+    <p>Der <a href="https://opentechfund.org">Open Technology Fund</a> hat Delta Chat zweimal bezuschusst: Mit der ersten Förderung (~$200K)  wurden 2018/2019 hauptsächlich die Android App verbessert sowie das Release der Desktop App in einer Betaversion ermöglicht. Basierend auf Nutzererfahrungen im Menschenrechtskontext wurden zudem verschiedene Funktionen entwickelt, siehe unseren Bericht  <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
+Die zweite Förderung 2019/2020 (~$300K) läuft derzeit noch. Durch sie werden die Veröffentlichung einer Delta/iOS Version, die Konvertierung unserer Core Library (Programmbibliothek) in die Programmiersprache Rust sowie weitere Funktionalitäten für alle Plattformen ermöglicht. Aktuelle Infos finden Sie auf unserem <a href="https://delta.chat/en/blog">Blog</a>.</p>
   </li>
   <li>
-    <p>The <a href="https://nlnet.nl/">NLnet foundation</a> granted EUR 46K for
-completing Rust/Python bindings and instigating a Chat-bot ecosystem.</p>
+    <p>Die <a href="https://nlnet.nl/">NLnet foundation</a> bewilligte 46.000 €, um den Transfer von Python in Rust zu vervollständigen und ein Chat-Bot-System zu entwickeln.</p>
   </li>
   <li>
-    <p>Last but by far not least, several pro-bono experts and enthusiasts contributed 
-and contribute to Delta Chat developments without receiving money, or only 
-small amounts. Without them, Delta Chat would not be where it is today, not
-even close.</p>
+    <p>Last but by not least beteiligen sich verschiedene ExpertInnen und Engagierte pro bono an Delta Chat. Sie erhalten dafür teils nur wenig, oftmals sogar überhaupt kein Geld. Ohne sie wäre Delta Chat nicht im entferntesten das, was es heute ist!</p>
   </li>
 </ul>
 
-<p>The monetary funding mentioned above was organized by merlinux GmbH in
-Freiburg (Germany), and then distributed to almost a dozen contributors.</p>
+<p>Die oben aufgeführte finanzielle Förderung wurde von der Merlinux GmbH in Freiburg (Germany) organisiert und an fast ein Dutzend Mitwirkende verteilt.</p>
 
-<p>Funding for 2020/2021 is yet to be determined. We are pursuing several
-opportunities with different organisations and partners. We also are
-considering to ask for donations. In fact, we experimentally started
-a little <a href="https://liberapay.com/delta.chat/">Delta Chat / Liberapay donation account</a>
-but have not published this yet.  There were also around 3-4K so far
-donated to Bjoern’s (the original author of Delta Chat) paypal and bitcoin
-donation channels.</p>
+<p>Die Förderung für 2020/2021 steht noch nicht fest. Wir verfolgen mehrere
+Möglichkeiten mit verschiedenen Organisationen und Partnern. Wir sind zudem am überlegen, ob wir Spenden einwerben sollen. Wir haben bereits einen kleinen <a href="https://liberapay.com/delta.chat/">Delta Chat / Liberapay Spenden Account</a> eingerichtet, diesen aber bisher nicht groß veröffentlicht. Es sind bis jetzt zudem ungefähr 3-4000 € über Björns (dem ursprünglichen Autor von Delta Chat) Paypal und Bitcoin Spendenkanäle eingegangen.</p>
 
 
 
