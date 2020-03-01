@@ -412,7 +412,7 @@
     <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
     <string name="pref_outgoing_media_quality">Качество отправляемого медиа-контента</string>
     <string name="pref_outgoing_balanced">Сбалансированное</string>
-    <string name="pref_outgoing_worse">Низкого качество, с меньшим размером</string>
+    <string name="pref_outgoing_worse">Низкого качества, с меньшим размером</string>
     <string name="pref_vibrate">Вибрация</string>
     <string name="pref_chat_settings">Настройки чата</string>
     <string name="pref_change_secret">Изменение метода блокировки</string>
@@ -551,7 +551,7 @@
     <string name="qrscan_contains_text">Текст из QR кода:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL из QR кода:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
-    <string name="qrscan_x_verified_introduce_myself">Подлинность %1$s проверена, передается личная информация…</string>
+    <string name="qrscan_x_verified_introduce_myself">Подлинность %1$s проверена, представляемся…</string>
     <string name="qrshow_title">QR код приглашения</string>
     <string name="qrshow_x_joining">%1$s присоединилось.</string>
     <string name="qrshow_x_verified">%1$s проверен.</string>

@@ -262,7 +262,7 @@
     <string name="chat_record_slide_to_cancel">Schieben um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>
     <string name="chat_no_chats_yet_title">Posteingang ist leer.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
-    <string name="chat_no_chats_yet_hint">Es kann mit anderen Delta Chat Benutzern und mit jeder E-Mail-Adresse gechattet werden,</string>
+    <string name="chat_no_chats_yet_hint">Es kann mit anderen Delta Chat BenutzerInnen und mit jeder E-Mail-Adresse gechattet werden.</string>
     <string name="chat_all_archived">Alle Chats archiviert.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
     <string name="chat_share_with_title">Teilen mit</string>
     <string name="chat_input_placeholder">Nachricht</string>
@@ -423,7 +423,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_read_receipts_explain">Wenn Lesebestätigungen deaktiviert sind, werden auch keine Lesebestätigungen von anderen angezeigt. </string>
     <string name="pref_manage_keys">Schlüssel verwalten</string>
     <string name="pref_use_system_emoji">System-Emoji benutzen</string>
-    <string name="pref_use_system_emoji_explain">Deaktivieung der integrierten Emoji-Unterstützung von Delta Chat.</string>
+    <string name="pref_use_system_emoji_explain">Deaktivierung der integrierten Emoji-Unterstützung von Delta Chat.</string>
     <string name="pref_app_access">App-Zugriff</string>
     <string name="pref_communication">Kommunikation</string>
     <string name="pref_chats">Chats</string>
