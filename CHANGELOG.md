@@ -1,14 +1,12 @@
 # Delta Chat Android Changelog
 
-## v1.2.0
-2020-02-21
+## v1.2.1
+2020-03-01
 
 * on log in, for known providers, detailed information are shown if needed;
 * in these cases, also the log in is faster
   as needed settings are available in-app
 * save traffic: messages are downloaded only if really needed,
-* keys are 2/3rd smaller in size by the move to Ed25519 keys;
-  this saves traffic and also has speed advantages
 * chats can now be pinned so that they stay sticky atop of the chat list
 * a 'setup contact' qr scan is now instant and works even when offline -
   the verification is done in background
@@ -18,6 +16,7 @@
   this has to be supported by the used provider
 * lower minimal requirements, Delta Chat now also runs on Android 4.1 Lollipop
 * fix updating names from incoming mails
+* fix encryption to Ed25519 keys that will be used in one of the next releases
 * several bug fixes, eg. on sending and receivind messages, see
   https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md#1250
   for details on that
