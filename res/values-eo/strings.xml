@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">Bone</string>
+    <string name="cancel">Nuligi</string>
+    <string name="yes">Jes</string>
+    <string name="no">Ne</string>
+    <string name="on">Ŝaltita</string>
+    <string name="off">Malŝaltita</string>
+    <string name="def">Defaŭlta</string>
+    <string name="custom">Propran</string>
+    <string name="none">Neniu</string>
+    <string name="automatic">Aŭtomata</string>
+    <string name="strict">Strikta</string>
+    <string name="open">Malferma</string>
+    <string name="delete">Forigi</string>
+    <string name="info">Informoj</string>
+    <string name="update">Ĝisdatigi</string>
+    <string name="emoji">Emoji</string>
+    <string name="close">Fermi</string>
+    <string name="forward">Plusendi</string>
+    <string name="mute">Muta sciigoj</string>
+    <string name="save">Konservi</string>
+    <string name="chat">Babilo</string>
+    <string name="show_password">Montri pasvorton</string>
+    <string name="hide_password">Kaŝi pasvorton</string>
+    <string name="not_now">Ne nun</string>
+    <string name="never">Neniam</string>
+    <string name="one_moment">Unu momenton…</string>
+    <string name="done">Farita</string>
+    <string name="undo">Malfari</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Sekva</string>
+    <string name="error">Eraro</string>
+    <string name="error_x">Eraro: %1$s</string>
+    <string name="error_no_network">Reto neatingebla.</string>
+    <string name="no_browser_installed">Neniu retumilo instalita.</string>
+    <string name="file_not_found">Ne povis trovi %1$s.</string>
+    <string name="copied_to_clipboard">Kopiita al tondujo</string>
+    <string name="contacts_headline">Kontaktoj</string>
+    <string name="email_address">Retadreso</string>
+    <string name="bad_email_address">Malbona retadreso.</string>
+    <string name="password">Pasvorto</string>
+    <string name="now">Nun</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Danĝero</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
+    <string name="n_min_ago">%dmin</string>
+    <string name="today">Hodiaŭ</string>
+    <string name="yesterday">Hieraŭ</string>
+    <string name="this_week">Ĉi-semajne</string>
+    <string name="this_month">Ĉi-monate</string>
+    <string name="last_week">Pasint-semajne</string>
+    <string name="last_month">Pasint-monate</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%dmin</item>
+        <item quantity="other">%dmin-oj</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d horo</item>
+        <item quantity="other">%d horoj</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d Parolado</item>
+        <item quantity="other">%d Paroladoj</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d kontakto</item>
+        <item quantity="other">%d kontaktoj</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%dmesaĝo</item>
+        <item quantity="other">%d mesaĝoj</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d ano</item>
+        <item quantity="other">%d anoj </item>
+    </plurals>
+
+    <string name="self">Mi</string>
+    <string name="draft">Malneto</string>
+    <string name="image">Bildo</string>
+    <string name="gif">Gif</string>
+    <string name="images">Bildoj</string>
+    <string name="audio">Sonaĵo</string>
+    <string name="voice_message">Voĉmesaĝo</string>
+    <string name="forwarded_message">Plusendita mesaĝo</string>
+    <string name="video">Filmo</string>
+    <string name="documents">Dokumentoj</string>
+    <string name="contact">Kontakto</string>
+    <string name="verified_contact">Kontrolita kontakto</string>
+    <string name="camera">Fotilo</string>
+    <string name="location">Loko</string>
+    <string name="gallery">Galerio</string>
+    <string name="file">Dosiero</string>
+    <string name="unknown">Nekonata</string>
+
+    <string name="green">Verda</string>
+    <string name="red">Ruĝa</string>
+    <string name="blue">Blua</string>
+    <string name="orange">Oranĝkolora</string>
+    <string name="cyan">Cejana</string>
+    <string name="magenta">Malva</string>
+    <string name="white">Blanka</string>
+
+    <string name="small">Malgranda</string>
+    <string name="normal">Normala</string>
+    <string name="large">Granda</string>
+    <string name="extra_large">Tre granda</string>
+
+    <string name="fast">Rapida</string>
+    <string name="slow">Malrapida</string>
+
+    <string name="message_delivered">Mesaĝo sendita</string>
+    <string name="message_read">Mesaĝo legita</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Nova kontakto</string>
+    <string name="menu_new_chat">Nova babilo</string>
+    <string name="menu_new_group">Nova grupo</string>
+    <string name="menu_new_verified_group">Nova kontrolita grupo.</string>
+    <string name="menu_send">Sendi</string>
+    <string name="menu_toggle_keyboard">Baskuligi emoĝian klavaron</string>
+    <string name="menu_edit_group">Redakti grupon</string>
+    <string name="menu_group_name_and_image">Grup-nomo kaj bildo</string>
+    <string name="menu_show_map">Montri mapon</string>
+    <string name="menu_show_global_map">Montri ĉiujn lokojn</string>
+    <string name="menu_add_attachment">Aldoni kunsendaĵon</string>
+    <string name="menu_leave_group">Forlasi grupon</string>
+    <string name="menu_delete_chat">Forigi babilon</string>
+    <string name="menu_delete_messages">Forigi mesaĝojn</string>
+    <string name="menu_delete_image">Forigi bildon</string>
+    <string name="menu_delete_locations">Ĉu forigi ĉiujn lokojn?</string>
+    <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
+    <string name="menu_message_details">Mesaĝ-detaloj</string>
+    <string name="menu_copy_to_clipboard">Kopii al tondujo</string>
+    <string name="menu_forward">Plusendi mesaĝon</string>
+    <string name="menu_resend">Resendi mesaĝon</string>
+    <string name="menu_reply">Respondi al mesaĝo</string>
+    <string name="menu_mute">Silentigi sciigojn</string>
+    <string name="menu_unmute">Malsilentigi</string>
+    <string name="menu_all_media">Ĉiuj aŭvidaĵoj</string>
+    <string name="menu_share">Kunhavigi</string>
+    <string name="menu_block_contact">Bloki kontakton</string>
+    <string name="menu_unblock_contact">Malbloki kontakton</string>
+    <string name="menu_help">Helpo</string>
+    <string name="menu_select_all">Elekti ĉion</string>
+    <string name="menu_edit_name">Redakti nomon</string>
+    <string name="menu_edit_group_name">Redakti grup-nomon</string>
+    <string name="menu_edit_group_image">Redakti grup-bildon</string>
+    <string name="menu_settings">Agordoj</string>
+    <string name="menu_advanced">Speciala</string>
+    <string name="menu_deaddrop">Kontakt-petoj</string>
+    <string name="edit_contact">Redakti kontakton</string>
+    <string name="mute_for_one_hour">Silentigi por 1 horo</string>
+    <string name="mute_for_two_hours">Silentigi por 2 horoj</string>
+    <string name="mute_for_one_day">Silentigi por 1 tago</string>
+    <string name="mute_for_seven_days">Silentigi por 7 tagoj</string>
+    <string name="share_location_once">unufoje</string>
+    <string name="share_location_for_5_minutes">por 5 minutoj</string>
+    <string name="share_location_for_30_minutes">por 30 minutoj</string>
+    <string name="share_location_for_one_hour">por 1 horo</string>
+    <string name="share_location_for_two_hours">por 2 horoj</string>
+    <string name="share_location_for_six_hours">por 6 horoj</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Ĉu vi estas certa, ke vi volas forlasi tiun ĉi grupon?</string>
+    <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
+    <string name="ask_start_chat_with">Babili kun %1$s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
+    <!-- contact list -->
+    <string name="contacts_title">Kontaktoj</string>
+    <string name="contacts_enter_name_or_email">Enigi nomon aŭ retadreson</string>
+    <string name="contacts_empty_hint">Neniu kontakto.</string>
+
+
+    <string name="chat_please_enter_message">Bonvolu enigi mesaĝon.</string>
+    <string name="chat_camera_unavailable">Fotilo neatingebla.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nova mesaĝo</item>
+        <item quantity="other">%d novaj mesaĝoj</item>
+    </plurals>
+    <string name="chat_record_slide_to_cancel">Gliti por nuligi</string>
+    <string name="chat_record_explain">Tuŝadi por registri voĉan mesaĝon, maltuŝadi por sendi</string>
+    <string name="chat_input_placeholder">Mesaĝo</string>
+    <string name="chat_archived_label">Enarĥivigitaj</string>
+    <string name="chat_no_messages">Neniu mesaĝo.</string>
+    <string name="chat_self_talk_subtitle">Mesaĝoj senditaj al mi mem</string>
+    <string name="chat_contact_request">Kontakt-peto</string>
+    <string name="retry_send">Reprovi sendi mesaĝon</string>
+    <string name="send_failed">Ne povis sendi mesaĝon</string>
+
+    <!-- search -->
+    <string name="search">Serĉi</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Grup-nomo</string>
+    <string name="group_avatar">Bildo de la grupo</string>
+    <string name="group_create_button">Krei grupon</string>
+    <string name="group_please_enter_group_name">Bonvolu enigi nomon por la grupo.</string>
+    <string name="group_add_members">Aldoni anojn</string>
+    <string name="group_hello_draft">Saluton, mi ĵus kreis la grupon \"%1$s\" por ni.</string>
+    <string name="group_self_not_in_group">Vi devas esti grupano por fari tion.</string>
+    <string name="profile_encryption">Ĉifrado</string>
+    <string name="tab_contact">Kontakto</string>
+    <string name="tab_group">Grupo</string>
+    <string name="tab_members">Anoj</string>
+    <string name="tab_gallery">Galerio</string>
+    <string name="tab_docs">Dokumentoj</string>
+    <string name="tab_links">Ligiloj</string>
+    <string name="tab_map">Mapo</string>
+    <string name="media_preview">Aŭdvida antaŭrigardo</string>
+    <string name="send_message">Sendi mesaĝon</string>
+
+
+    <string name="welcome_start_messaging">Komenci mesaĝadon</string>
+    <string name="login_title">Ensaluti</string>
+    <string name="login_header">Ensaluti al via servilo</string>
+    <string name="login_manually">Ensaltui neaŭtomate</string>
+    <string name="delete_account">Forigi konton</string>
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Plusendi al…</string>
+    <string name="pref_trim_option">Forigi malnovajn mesaĝojn</string>
+    <string name="pref_trim_length_limit_summary">Po %d mesaĝoj en babilo</string>
+    <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
+    <string name="pref_help_url">https://delta.chat/help</string>
+    <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
+    <string name="pref_who_can_see_this_information">Kiu povas vidi ĉi tion?</string>
+    <string name="pref_your_name">Via nomo</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">Sendita per mia Delta Chat mesaĝilo: https://delta.chat</string>
+    <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
+    <string name="pref_enter_sends_explain">Premado de la Eniga klavo sendos mesaĝojn</string>
+    <string name="pref_vibrate">Vibrado</string>
+    <string name="pref_chat_settings">Babilaj agordoj</string>
+    <string name="pref_change_secret">Ŝanĝi sekreton</string>
+    <string name="pref_screen_security">Ekrana sekureco</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Neebligi ekrankopiojn en la listo de ĵus uzitaj aplikaĵoj kaj ene de la aplikaĵo mem</string>
+    <string name="pref_notifications">Sciigoj</string>
+    <string name="pref_notifications_show">Montri</string>
+    <string name="pref_notifications_priority">Prioritato</string>
+    <string name="pref_led_color">LED-a koloro</string>
+    <string name="pref_led_pattern">LED-a pulsa modelo</string>
+    <string name="pref_sound">Sono</string>
+    <string name="pref_silent">Silenta</string>
+    <string name="pref_privacy">Privateco</string>
+    <string name="pref_chats_and_media">Interparoloj kaj aŭdvidaĵoj</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Hela</string>
+    <string name="pref_dark_theme">Malhela</string>
+    <string name="pref_appearance">Aspekto</string>
+    <string name="pref_theme">Etoso</string>
+    <string name="pref_language">Lingvo</string>
+    <string name="pref_incognito_keyboard">Inkognita klavaro</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Peti al la klavaro malŝalti personan lernadon</string>
+    <string name="pref_read_receipts">Legokonfirmoj</string>
+    <string name="pref_read_receipts_explain">Se legokonfirmoj ne estas ŝaltitaj, vi ne vidos aliulajn legokonfirmojn.</string>
+    <string name="pref_use_system_emoji">Uzi sisteman emoĝiaron</string>
+    <string name="pref_use_system_emoji_explain">Malebligi emoĝiaron de Delta Chat</string>
+    <string name="pref_app_access">Aliro al aplikaĵo</string>
+    <string name="pref_communication">Komunikado</string>
+    <string name="pref_chats">Interparoloj</string>
+    <string name="pref_messages">Mesaĝoj</string>
+    <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
+    <string name="pref_message_text_size">Mesaĝa tipargrando</string>
+    <string name="pref_other">Alia</string>
+    <string name="pref_show_emails_all">Ĉiuj</string>
+    <!-- screen lock -->
+    <string name="screenlock_title">Ekranŝloso</string>
+    <string name="screenlock_explain">Lock Delta Chat access with Android screen lock or fingerprint</string>
+    <string name="screenlock_unlock_title">Malŝlosi Delta Chat-on</string>
+    <string name="screenlock_inactivity_timeout_explain">Aŭtomate ŝlosi Signal-on post specifa templimo de neaktiveco</string>
+    <string name="notify_mark_all_read">Marki ĉiujn legitaj</string>
+    <string name="notify_mark_read">Marki legita</string>
+    <string name="notify_media_message">Aŭdvida mesaĝo</string>
+    <string name="notify_reply_button">Respondi</string>
+    <string name="notify_new_message">Nova mesaĝo</string>
+    <string name="notify_priority_high">Alta</string>
+    <string name="notify_priority_max">Maksimuma</string>
+    <string name="notify_name_and_message">Nomon kaj mesaĝon</string>
+    <string name="notify_name_only">Nur nomon</string>
+    <string name="notify_no_name_or_message">Nek nomon aŭ mesaĝon</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Permeso bezonata</string>
+    <string name="perm_continue">Daŭrigi</string>
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="welcome_desktop">Bonvenon al Delta Chat</string>
+    <string name="global_menu_preferences_language_desktop">Lingvo</string>
+    <string name="global_menu_file_desktop">Dosiero</string>
+    <string name="global_menu_edit_desktop">Modifi</string>
+    <string name="global_menu_edit_undo_desktop">Malfari</string>
+    <string name="global_menu_help_desktop">Helpo</string>
+    <string name="more_info_desktop">Plia informo</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
+    <string name="no_chats_desktop">Neniu parolado ankoraŭ.</string>
+    <string name="remove_desktop">Forviŝi</string>
+    <string name="save_desktop">Konservi</string>
+    <string name="me_desktop">mi</string>
+    <string name="message_detail_from_desktop">De</string>
+    </resources>

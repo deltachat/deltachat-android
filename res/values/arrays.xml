@@ -12,9 +12,11 @@
       <!-- de -->    <item>Deutsch</item>
       <!-- en -->    <item>English</item>
       <!-- es -->    <item>Español</item>
+      <!-- eo -->    <item>Esperanto</item>
       <!-- eu -->    <item>Euskara</item>
       <!-- fr -->    <item>Français</item>
       <!-- gl -->    <item>Galego</item>
+      <!-- hr -->    <item>Hrvatski</item>
       <!-- it -->    <item>Italiano</item>
       <!-- lt -->    <item>Lietuvių kalba</item>
       <!-- hu -->    <item>Magyar nyelv</item>
@@ -46,9 +48,11 @@
       <item>de</item>
       <item>en</item>
       <item>es</item>
+      <item>eo</item>
       <item>eu</item>
       <item>fr</item>
       <item>gl</item>
+      <item>hr</item>
       <item>it</item>
       <item>lt</item>
       <item>hu</item>

@@ -19,6 +19,8 @@
     <string name="update">Uppdatering</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bifogad fil</string>
+    <string name="back">Tillbaka</string>
+    <string name="close">Stäng</string>
     <string name="forward">Vidarebefordra</string>
     <string name="archive">Arkiv</string>
     <string name="unarchive">Avarkivera</string>
@@ -28,6 +30,8 @@
     <string name="media">Media</string>
     <string name="main_menu">Huvudmeny</string>
     <string name="start_chat">Starta chatt</string>
+    <string name="show_password">Visa lösenord</string>
+    <string name="hide_password">Dölj lösenord</string>
     <string name="not_now">Inte nu</string>
     <string name="never">Nyare</string>
     <string name="one_moment">Ett ögonblick...</string>
@@ -95,6 +99,7 @@
     <string name="video">Video</string>
     <string name="documents">Dokument</string>
     <string name="contact">Kontakt</string>
+    <string name="verified_contact">Verifierad kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Plats</string>
     <string name="gallery">Galleri</string>
@@ -130,6 +135,9 @@
     <string name="menu_send">Skicka</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
     <string name="menu_edit_group">Redigera grupp</string>
+    <string name="menu_group_name_and_image">Gruppnamn och bild</string>
+    <string name="menu_show_map">Visa karta</string>
+    <string name="menu_show_global_map">Visa alla platser</string>
     <string name="menu_archive_chat">Arkivera chatt</string>
     <string name="menu_unarchive_chat">Oarkivera chatt</string>
     <string name="menu_add_attachment">Bifoga fil</string>
@@ -137,6 +145,8 @@
     <string name="menu_delete_chat">Radera chatt</string>
     <string name="menu_delete_messages">Radera meddelanden</string>
     <string name="menu_delete_image">Radera bild</string>
+    <string name="menu_delete_locations">Radera alla platser?</string>
+    <string name="menu_delete_location">Radera denna plats?</string>
     <string name="menu_message_details">Meddelandedetaljer</string>
     <string name="menu_copy_to_clipboard">Kopierad till Urklipp</string>
     <string name="menu_forward">Vidarebefordran</string>
@@ -157,6 +167,8 @@
     <string name="menu_select_all">Markera alla</string>
     <string name="menu_expand">Expandera</string>
     <string name="menu_edit_name">Redigera namn</string>
+    <string name="menu_edit_group_name">Redigera gruppnamn</string>
+    <string name="menu_edit_group_image">Redigera gruppbild</string>
     <string name="menu_settings">Inställningar</string>
     <string name="menu_advanced">Avancerad</string>
     <string name="menu_deaddrop">Kontaktförfrågningar</string>
@@ -165,9 +177,19 @@
     <string name="menu_zoom_in">Zooma in</string>
     <string name="menu_zoom_out">Zooma ut</string>
     <string name="menu_save_log">Spara logg</string>
+    <string name="title_share_location">Dela plats med alla gruppmedlemmar</string>
     <string name="device_talk">Enhetsmeddelanden</string>
     <string name="device_talk_subtitle">Lokalt genererade meddelanden</string>
     <string name="edit_contact">Redigera kontakt</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Nåla chatt</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Ta bort nål</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Nåla</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Ta bort nål</string>
+
     <string name="mute_for_one_hour">Ljud av 1 timma</string>
     <string name="mute_for_two_hours">Ljud av 2 timma</string>
     <string name="mute_for_one_day">Ljud av 1 dag</string>
@@ -181,8 +203,18 @@
     <string name="share_location_for_two_hours">i 2 timmar</string>
     <string name="share_location_for_six_hours">i 6 timmar</string>
 
+    <string name="file_saved_to">Filen är sparad till \"%1$s\".</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Radera %d chatt? Det kommer inte längre synas i chattlistan, meddelanden kommer att finnas kvar på servern.</item>
+        <item quantity="other">Radera %d chatt? De kommer inte visas i chattlistan, deras meddelanden kommer finns kvar på servern.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Radera %d meddelande här och på servern.</item>
+        <item quantity="other">Radera %d meddelanden här och på servern?</item>
+    </plurals>
     <string name="ask_forward">Vidarebefordra meddelanden till %1$s?</string>
     <string name="ask_export_attachment">Exportera bifogad fil? Exportera bilagor tillåter andra appar på din enhet att komma åt dem.\n\nFortsätt?</string>
     <string name="ask_block_contact">Blockera den här kontakten? Du kommer inte längre att få meddelanden från den här kontakten.</string>
