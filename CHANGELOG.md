@@ -1,7 +1,7 @@
 # Delta Chat Android Changelog
 
 ## v1.2.1
-2020-03-01
+2020-03-04
 
 * on log in, for known providers, detailed information are shown if needed;
 * in these cases, also the log in is faster
@@ -20,7 +20,7 @@
 * several bug fixes, eg. on sending and receivind messages, see
   https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md#1250
   for details on that
-* update translations, update local help
+* add Croatian and Esperanto translations, update other translations and help
 
 The changes have been done by Alexander Krotov, Allan Nordhøy, Ampli-fier,
 Angelo Fuchs, Andrei Guliaikin, Asiel Díaz Benítez, Besnik, Björn Petersen,
