@@ -2,53 +2,43 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:tools="http://schemas.android.com/tools">
-    <PreferenceCategory android:title="@string/pref_chats">
-        <ListPreference
-                android:key="pref_message_body_text_size"
-                android:title="@string/pref_message_text_size"
-                android:entries="@array/pref_message_font_size_entries"
-                android:entryValues="@array/pref_message_font_size_values"
-                android:defaultValue="16"/>
 
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                android:defaultValue="false"
-                android:key="pref_system_emoji"
-                android:title="@string/pref_use_system_emoji"
-                android:summary="@string/pref_use_system_emoji_explain" />
+    <ListPreference
+        android:key="pref_show_emails"
+        android:title="@string/pref_show_emails"
+        android:dependency="pref_show_emails"
+        android:entries="@array/pref_show_emails_entries"
+        android:entryValues="@array/pref_show_emails_values" />
 
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                android:defaultValue="false"
-                android:key="pref_enter_sends"
-                android:summary="@string/pref_enter_sends_explain"
-                android:title="@string/pref_enter_sends"/>
+    <Preference
+        android:key="preference_category_blocked"
+        android:title="@string/pref_blocked_contacts" />
 
-        <ListPreference
-            android:key="pref_compression"
-            android:title="@string/pref_outgoing_media_quality"
-            android:dependency="pref_compression"
-            android:entries="@array/pref_compression_entries"
-            android:entryValues="@array/pref_compression_values"
-            android:defaultValue="0" />
+    <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="pref_read_receipts"
+        android:summary="@string/pref_read_receipts_explain"
+        android:title="@string/pref_read_receipts" />
 
-    </PreferenceCategory>
+    <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="pref_enter_sends"
+        android:summary="@string/pref_enter_sends_explain"
+        android:title="@string/pref_enter_sends"/>
 
-    <PreferenceCategory android:title="@string/pref_email_interaction_title">
+    <ListPreference
+        android:key="pref_compression"
+        android:title="@string/pref_outgoing_media_quality"
+        android:dependency="pref_compression"
+        android:entries="@array/pref_compression_entries"
+        android:entryValues="@array/pref_compression_values"
+        android:defaultValue="0" />
 
-        <ListPreference
-            android:key="pref_show_emails"
-            android:title="@string/pref_show_emails"
-            android:dependency="pref_show_emails"
-            android:entries="@array/pref_show_emails_entries"
-            android:entryValues="@array/pref_show_emails_values" />
-
-    </PreferenceCategory>
-
-
-    <PreferenceCategory android:title="@string/pref_other">
+    <PreferenceCategory android:title="@string/pref_backup">
         <Preference android:key="pref_backup"
-            android:title="@string/pref_backup"
-            android:summary="@string/pref_backup_explain"/>
+            android:title="@string/pref_backup_explain"/>
     </PreferenceCategory>
+
     <!--
     <PreferenceCategory android:key="message_trimming" android:title="@string/pref_trim_headline">
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat

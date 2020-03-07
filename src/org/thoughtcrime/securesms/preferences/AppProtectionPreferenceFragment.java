@@ -28,11 +28,7 @@ import mobi.upod.timedurationpicker.TimeDurationPickerDialog;
 
 public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment {
 
-    private static final String PREFERENCE_CATEGORY_BLOCKED = "preference_category_blocked";
-
     private ApplicationDcContext dcContext;
-
-    CheckBoxPreference readReceiptsCheckbox;
 
     @Override
     public void onAttach(Activity activity) {
@@ -50,11 +46,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         this.findPreference(Prefs.SCREEN_LOCK_TIMEOUT_INTERVAL_PREF).setOnPreferenceClickListener(new LockIntervalClickListener());
         this.findPreference(Prefs.SCREEN_SECURITY_PREF).setOnPreferenceChangeListener(new ScreenShotSecurityListener());
 
-        readReceiptsCheckbox = (CheckBoxPreference) this.findPreference("pref_read_receipts");
-        readReceiptsCheckbox.setOnPreferenceChangeListener(new ReadReceiptToggleListener());
-
-        this.findPreference(PREFERENCE_CATEGORY_BLOCKED).setOnPreferenceClickListener(new BlockedContactsClickListener());
-
         initializeVisibility();
     }
 
@@ -66,10 +57,8 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_privacy);
+        ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_app_access);
         initializePassphraseTimeoutSummary();
-
-        readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED));
     }
 
     private void initializePassphraseTimeoutSummary() {
@@ -120,36 +109,11 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         }
     }
 
-    private class BlockedContactsClickListener implements Preference.OnPreferenceClickListener {
-        @Override
-        public boolean onPreferenceClick(Preference preference) {
-            Intent intent = new Intent(getActivity(), BlockedAndShareContactsActivity.class);
-            intent.putExtra(BlockedAndShareContactsActivity.SHOW_ONLY_BLOCKED_EXTRA, true);
-            startActivity(intent);
-            return true;
-        }
-    }
-
-    private class ReadReceiptToggleListener implements Preference.OnPreferenceChangeListener {
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-            boolean enabled = (boolean) newValue;
-            dcContext.setConfigInt("mdns_enabled", enabled ? 1 : 0);
-            return true;
-        }
-    }
-
     public static CharSequence getSummary(Context context) {
         final String onRes = context.getString(R.string.on);
         final String offRes = context.getString(R.string.off);
         String screenLockState = Prefs.isScreenLockEnabled(context) ? onRes : offRes;
-        String readReceiptState = DcHelper.getContext(context).getConfigInt("mdns_enabled", DcContext.DC_PREF_DEFAULT_MDNS_ENABLED)!=0? onRes : offRes;
-
-        // adding combined strings as "Read receipt: %1$s, Screen lock: %1$s, "
-        // makes things inflexible on changes and/or adds lot of additional works to programmers.
-        // however, if needed, we can refine this later.
-        return context.getString(R.string.pref_read_receipts) + " " + readReceiptState + ", "
-            + context.getString(R.string.screenlock_title) + " " + screenLockState;
+        return context.getString(R.string.screenlock_title) + " " + screenLockState;
     }
 
     private class ChangePassphraseClickListener implements Preference.OnPreferenceClickListener {
