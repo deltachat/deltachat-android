@@ -12,6 +12,9 @@
             android:title="@string/autocrypt_send_asm_title"
             android:summary="@string/autocrypt_explain"/>
 
+        <Preference android:key="pref_manage_keys"
+            android:title="@string/pref_manage_keys"/>
+
     </PreferenceCategory>
 
 
@@ -60,9 +63,6 @@
 
 
     <PreferenceCategory android:title="@string/pref_other">
-
-        <Preference android:key="pref_manage_keys"
-                    android:title="@string/pref_manage_keys"/>
 
         <Preference android:key="pref_view_log"
                     android:title="@string/pref_view_log"/>
