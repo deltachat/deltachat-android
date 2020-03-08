@@ -376,6 +376,10 @@
     <string name="pref_autodel_headline">Ephemeral messages</string>
     <string name="pref_autodel_device">Delete from device</string>
     <string name="pref_autodel_server">Delete from server</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %1$s will be replaced by a timespan in italics or so. -->
+    <string name="pref_autodel_device_ask">Do you really want to delete %1$d messages now and all new messages %2$s in the future?\n\n\"Saved messages\" are skipped from deletion.</string>
+    <string name="pref_autodel_server_ask">Do you really want to delete %1$d messages now and all new messages %2$s in the future?\n\n• If you have enabled \"Show classic emails\" or enable it in the future, the affected emails will be deleted from the server as well.\n\n\• "Saved messages\" are skipped from deletion.</string>
+    <string name="pref_autodel_confirm">I understand, delete all these messages</string>
     <string name="pref_blocked_contacts">Blocked contacts</string>
     <string name="pref_profile_photo_remove_ask">Remove profile photo?</string>
     <string name="pref_help_url">https://delta.chat/help</string>

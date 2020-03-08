@@ -12,7 +12,10 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
+import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
@@ -62,18 +65,10 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     backup.setOnPreferenceClickListener(new BackupListener());
 
     autoDelDevice = findPreference("autodel_device");
-    autoDelDevice.setOnPreferenceChangeListener((preference, newValue) -> {
-      updateListSummary(preference, newValue);
-      dcContext.setConfigInt("delete_device_after", Util.objectToInt(newValue));
-      return true;
-    });
+    autoDelDevice.setOnPreferenceChangeListener(new AutodelChangeListener("delete_device_after"));
 
     autoDelServer = findPreference("autodel_server");
-    autoDelServer.setOnPreferenceChangeListener((preference, newValue) -> {
-      updateListSummary(preference, newValue);
-      dcContext.setConfigInt("delete_server_after", Util.objectToInt(newValue));
-      return true;
-    });
+    autoDelServer.setOnPreferenceChangeListener(new AutodelChangeListener("delete_server_after"));
   }
 
   @Override
@@ -139,6 +134,47 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     public boolean onPreferenceChange(Preference preference, Object newValue) {
       boolean enabled = (boolean) newValue;
       dcContext.setConfigInt("mdns_enabled", enabled ? 1 : 0);
+      return true;
+    }
+  }
+
+  private class AutodelChangeListener implements Preference.OnPreferenceChangeListener {
+    private String coreKey;
+
+    AutodelChangeListener(String coreKey) {
+      this.coreKey = coreKey;
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+      int timeout = Util.objectToInt(newValue);
+      if (timeout>0) {
+        Context context = preference.getContext();
+        int delNowMsgCount = 666; // XXX TODO: get correct count from core.
+        View gl = View.inflate(getActivity(), R.layout.autodel_confirm, null);
+        CheckBox confirmCheckbox = gl.findViewById(R.id.i_understand);
+        String timeoutDescr = getSelectedSummary(preference, newValue);
+        String msg = context.getString(coreKey.equals("delete_server_after")?
+                R.string.pref_autodel_server_ask : R.string.pref_autodel_device_ask,
+                delNowMsgCount, "<i>"+timeoutDescr+"</i>");
+        new AlertDialog.Builder(context)
+                .setTitle(preference.getTitle())
+                .setMessage(Html.fromHtml(msg.replace("\n", "<br>")))
+                .setView(gl)
+                .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
+                  if (confirmCheckbox.isChecked()) {
+                    updateListSummary(preference, newValue);
+                    dcContext.setConfigInt(coreKey, timeout);
+                  } else {
+                    onPreferenceChange(preference, newValue);
+                  }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+      } else {
+        updateListSummary(preference, newValue);
+        dcContext.setConfigInt(coreKey, timeout);
+      }
       return true;
     }
   }
