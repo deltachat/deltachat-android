@@ -88,7 +88,11 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     updateListSummary(showEmails, value);
     readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled"));
 
-    value = Integer.toString(dcContext.getConfigInt("delete_server_after"));
+    initAutodelFromCore();
+  }
+
+  private void initAutodelFromCore() {
+    String value = Integer.toString(dcContext.getConfigInt("delete_server_after"));
     autoDelServer.setValue(value);
     updateListSummary(autoDelServer, value);
 
@@ -150,26 +154,28 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
       int timeout = Util.objectToInt(newValue);
       if (timeout>0) {
         Context context = preference.getContext();
-        int delNowMsgCount = 666; // XXX TODO: get correct count from core.
+        boolean fromServer = coreKey.equals("delete_server_after");
+        int delCount = DcHelper.getContext(context).estimateDeletionCount(fromServer, timeout);
+
         View gl = View.inflate(getActivity(), R.layout.autodel_confirm, null);
         CheckBox confirmCheckbox = gl.findViewById(R.id.i_understand);
-        String timeoutDescr = getSelectedSummary(preference, newValue);
-        String msg = context.getString(coreKey.equals("delete_server_after")?
+        String msg = context.getString(fromServer?
                 R.string.pref_autodel_server_ask : R.string.pref_autodel_device_ask,
-                delNowMsgCount, "<i>"+timeoutDescr+"</i>");
+                delCount, "<i>"+getSelectedSummary(preference, newValue)+"</i>");
+
         new AlertDialog.Builder(context)
                 .setTitle(preference.getTitle())
                 .setMessage(Html.fromHtml(msg.replace("\n", "<br>")))
                 .setView(gl)
                 .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
                   if (confirmCheckbox.isChecked()) {
-                    updateListSummary(preference, newValue);
                     dcContext.setConfigInt(coreKey, timeout);
+                    initAutodelFromCore();
                   } else {
                     onPreferenceChange(preference, newValue);
                   }
                 })
-                .setNegativeButton(android.R.string.cancel, null)
+                .setNegativeButton(android.R.string.cancel, (dialog, whichButton) -> initAutodelFromCore())
                 .show();
       } else {
         updateListSummary(preference, newValue);

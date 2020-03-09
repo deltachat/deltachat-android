@@ -605,6 +605,13 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_getFreshMsgCount(JNIEnv *env, j
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_estimateDeletionCount(JNIEnv *env, jobject obj, jboolean from_server, jlong seconds)
+{
+	return dc_estimate_deletion_cnt(get_dc_context(env, obj), from_server, seconds);
+}
+
+
+
 JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getMsgCPtr(JNIEnv *env, jobject obj, jint id)
 {
 	return (jlong)dc_get_msg(get_dc_context(env, obj), id);
