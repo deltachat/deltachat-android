@@ -14,7 +14,7 @@ ul#top {
 
 ul#top > li {
   font-weight: bold !important;
-  font-size: 1.2rem !important;
+  font-size: 1.1rem !important;
 }
 
 ul#top li {
@@ -22,4 +22,11 @@ ul#top li {
   margin-bottom: .7rem;
   font-weight: normal;
   font-size: 1rem;
+}
+
+
+/* ---------- colors ---------- */
+
+a {
+  color: #0078f1;
 }
