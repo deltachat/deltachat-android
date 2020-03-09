@@ -14,7 +14,7 @@ ul#top {
 
 ul#top > li {
   font-weight: bold !important;
-  font-size: 1.2rem !important;
+  font-size: 1.1rem !important;
 }
 
 ul#top li {
@@ -28,5 +28,5 @@ ul#top li {
 /* ---------- colors ---------- */
 
 a {
-  color: #0984ff;
+  color: #0078f1;
 }
