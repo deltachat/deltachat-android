@@ -80,6 +80,7 @@ public class ConversationListFragment extends Fragment
   implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate
 {
   public static final String ARCHIVE = "archive";
+  public static final String FORWARDING = "for_forwarding";
 
   @SuppressWarnings("unused")
   private static final String TAG = ConversationListFragment.class.getSimpleName();
@@ -93,12 +94,14 @@ public class ConversationListFragment extends Fragment
   private Locale                      locale;
   private String                      queryFilter  = "";
   private boolean                     archive;
+  private boolean                     forwarding;
 
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
     locale  = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
+    forwarding = getArguments().getBoolean(FORWARDING, false);
 
     ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
@@ -347,10 +350,11 @@ public class ConversationListFragment extends Fragment
   @Override
   public Loader<DcChatlist> onCreateLoader(int arg0, Bundle arg1) {
     int listflags = 0;
-    if(archive) {
+    if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
-    }
-    else {
+    } else if (forwarding) {
+      listflags |= DcContext.DC_GCL_FOR_FORWARDING;
+    } else {
       listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT;
     }
     return new DcChatlistLoader(getActivity(), listflags, queryFilter.isEmpty()? null : queryFilter, 0);
