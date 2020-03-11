@@ -46,23 +46,40 @@ on success, the generated APK is at
    If your key isn't added to the secrets, you can ask on irc add you.
    Add the key to your `~/.ssh/config` for the host, or to your ssh-agent, so rsync is able to use it)
 
+8. a) Test the APK yourself.
+      The "Testing checklist" gives some hints.
+   b) Give the APK to testing groups.
+
 
 # Release on Play Store
 
 on https://play.google.com/apps/publish/ :
 
-8. a) open "Delta Chat/Release management/App releases/Open track/Manage"
+9. a) open "Delta Chat/Release management/App releases/Open track/Manage"
       then "Create release/Browse files" and select APK from above
    b) fill out "What's new in this release?" (500 characters max)
    c) click "Save" and then "Review"
    d) rollout to 20% by default is fine
 
+
 # Release new F-Droid version
 
-9. make sure, everything is pushed, then:
-   $ git tag v1.2.1; git push --tags
+10. make sure, everything is pushed, then:
+    $ git tag v1.2.1; git push --tags
     
 F-Droid picks on the tags starting with "v" and builds the version.
 This may take some days.
 
 
+# Testing checklist
+
+Only some rough ideas, ideally, this should result into a simple checklist
+that can be checked before releasing.
+However, although it would be nice to test "everything", we should keep in mind
+that the test should be doable in, say, 10~15 minutes.
+- create new account with (one of?): gmail, yandex, other
+  or (?) test an existing account
+- send and receive a message
+- create a group
+- do a contact verification
+- join a group via a qr scan
