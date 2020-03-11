@@ -245,19 +245,13 @@ public class ProfileSettingsFragment extends Fragment
 
   private void onNewChat() {
     DcContact dcContact = dcContext.getContact(contactId);
-    new AlertDialog.Builder(getActivity())
-        .setMessage(getActivity().getString(R.string.ask_start_chat_with, dcContact.getNameNAddr()))
-        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-          int chatId = dcContext.createChatByContactId(dcContact.getId());
-          if (chatId != 0) {
-            Intent intent = new Intent(getActivity(), ConversationActivity.class);
-            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-            getActivity().startActivity(intent);
-            getActivity().finish();
-          }
-        })
-        .setNegativeButton(R.string.cancel, null)
-        .show();
+    int chatId = dcContext.createChatByContactId(dcContact.getId());
+    if (chatId != 0) {
+      Intent intent = new Intent(getActivity(), ConversationActivity.class);
+      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+      getActivity().startActivity(intent);
+      getActivity().finish();
+    }
   }
 
   private class ActionModeCallback implements ActionMode.Callback {

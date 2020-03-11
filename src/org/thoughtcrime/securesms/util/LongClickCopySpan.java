@@ -31,6 +31,16 @@ public class LongClickCopySpan extends URLSpan {
     super(url);
   }
 
+  private void openChat(Activity activity, DcContact contact) {
+    DcContext dcContext = DcHelper.getContext(activity);
+    int chatId = dcContext.createChatByContactId(contact.getId());
+    if (chatId != 0) {
+      Intent intent = new Intent(activity, ConversationActivity.class);
+      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+      activity.startActivity(intent);
+    }
+  }
+
   @Override
   public void onClick(View widget) {
     String url = getURL();
@@ -40,18 +50,17 @@ public class LongClickCopySpan extends URLSpan {
         Activity activity = (Activity) widget.getContext();
         DcContext dcContext = DcHelper.getContext(activity);
         DcContact contact = dcContext.getContact(dcContext.createContact(null, addr));
-        new AlertDialog.Builder(activity)
-            .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
-            .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-              int chatId = dcContext.createChatByContactId(contact.getId());
-              if (chatId != 0) {
-                Intent intent = new Intent(activity, ConversationActivity.class);
-                intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-                activity.startActivity(intent);
-              }
-            })
-            .setNegativeButton(R.string.cancel, null)
-            .show();
+        if (contact.getId()!=0 && dcContext.getChatIdByContactId(contact.getId())!=0) {
+          openChat(activity, contact);
+        } else {
+          new AlertDialog.Builder(activity)
+                  .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+                  .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    openChat(activity, contact);
+                  })
+                  .setNegativeButton(R.string.cancel, null)
+                  .show();
+        }
       }
       catch(Exception e) {
         e.printStackTrace();
