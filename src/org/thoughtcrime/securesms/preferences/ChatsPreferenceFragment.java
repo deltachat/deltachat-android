@@ -117,10 +117,13 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   public static CharSequence getSummary(Context context) {
+    DcContext dcContext = DcHelper.getContext(context);
     final String onRes = context.getString(R.string.on);
     final String offRes = context.getString(R.string.off);
-    String readReceiptState = DcHelper.getContext(context).getConfigInt("mdns_enabled")!=0? onRes : offRes;
-    return context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
+    String readReceiptState = dcContext.getConfigInt("mdns_enabled")!=0? onRes : offRes;
+    String autodelState = (dcContext.getConfigInt("delete_device_after")!=0 || dcContext.getConfigInt("delete_server_after")!=0)? onRes : offRes;
+    return context.getString(R.string.pref_read_receipts) + " " + readReceiptState +
+            ", " + context.getString(R.string.autodel_title_short) + " " + autodelState;
   }
 
   private class BlockedContactsClickListener implements Preference.OnPreferenceClickListener {

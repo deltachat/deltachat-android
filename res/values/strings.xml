@@ -467,7 +467,8 @@
     <string name="pref_background_custom_color">Custom color</string>
 
     <!-- automatically delete message -->
-    <string name="autodel_title">Automatically delete messages</string>
+    <string name="autodel_title">Auto-delete messages</string>
+    <string name="autodel_title_short">Auto-delete</string>
     <string name="autodel_device_title">Delete messages from device</string>
     <string name="autodel_server_title">Delete messages from server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %1$s will be replaced by a timespan in italics or so. -->
