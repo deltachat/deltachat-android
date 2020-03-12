@@ -198,12 +198,6 @@
     <string name="mute_for_seven_days">Mute for 7 days</string>
     <string name="mute_forever">Mute forever</string>
 
-    <string name="at_once">At once</string>
-    <string name="after_1_hour">After 1 hour</string>
-    <string name="after_1_day">After 1 day</string>
-    <string name="after_1_week">After 1 week</string>
-    <string name="after_4_weeks">After 4 weeks</string>
-
     <string name="share_location_once">once</string>
     <string name="share_location_for_5_minutes">for 5 minutes</string>
     <string name="share_location_for_30_minutes">for 30 minutes</string>
@@ -373,13 +367,6 @@
     <string name="pref_using_default">Using default: %s</string>
     <string name="pref_profile_info_headline">Your profile info</string>
     <string name="pref_profile_photo">Profile picture</string>
-    <string name="pref_autodel_headline">Ephemeral messages</string>
-    <string name="pref_autodel_device">Delete from device</string>
-    <string name="pref_autodel_server">Delete from server</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %1$s will be replaced by a timespan in italics or so. -->
-    <string name="pref_autodel_device_ask">Do you really want to delete %1$d messages now and all new messages %2$s in the future?\n\n• Message will be deleted whether they were seen or not\n\n• \"Saved messages\" will be skipped from local deletion</string>
-    <string name="pref_autodel_server_ask">Do you really want to delete %1$d messages now and all new messages %2$s in the future?\n\n• This will also delete emails affected by the \"Show classic emails\" option\n\n• \"Saved messages\" will be deleted from the server as well</string>
-    <string name="pref_autodel_confirm">I understand, delete all these messages</string>
     <string name="pref_blocked_contacts">Blocked contacts</string>
     <string name="pref_profile_photo_remove_ask">Remove profile photo?</string>
     <string name="pref_help_url">https://delta.chat/help</string>
@@ -478,6 +465,20 @@
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
     <string name="pref_background_custom_color">Custom color</string>
+
+    <!-- automatically delete message -->
+    <string name="autodel_title">Ephemeral messages</string>
+    <string name="autodel_device_title">Delete from device</string>
+    <string name="autodel_server_title">Delete from server</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %1$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_device_ask">Do you really want to delete %1$d messages now and all new messages %2$s in the future?\n\n• Message will be deleted whether they were seen or not\n\n• \"Saved messages\" will be skipped from local deletion</string>
+    <string name="autodel_server_ask">Do you really want to delete %1$d messages now and all new messages %2$s in the future?\n\n• This will also delete emails affected by the \"Show classic emails\" option\n\n• \"Saved messages\" will be deleted from the server as well</string>
+    <string name="autodel_confirm">I understand, delete all these messages</string>
+    <string name="autodel_at_once">At once</string>
+    <string name="autodel_after_1_hour">After 1 hour</string>
+    <string name="autodel_after_1_day">After 1 day</string>
+    <string name="autodel_after_1_week">After 1 week</string>
+    <string name="autodel_after_4_weeks">After 4 weeks</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>

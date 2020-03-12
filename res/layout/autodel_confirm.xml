@@ -6,7 +6,7 @@
 
     <CheckBox
         android:id="@+id/i_understand"
-        android:text="@string/pref_autodel_confirm"
+        android:text="@string/autodel_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"

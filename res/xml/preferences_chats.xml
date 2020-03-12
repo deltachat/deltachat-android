@@ -34,16 +34,16 @@
         android:entryValues="@array/pref_compression_values"
         android:defaultValue="0" />
 
-    <PreferenceCategory android:title="@string/pref_autodel_headline">
+    <PreferenceCategory android:title="@string/autodel_title">
         <ListPreference
             android:key="autodel_device"
-            android:title="@string/pref_autodel_device"
+            android:title="@string/autodel_device_title"
             android:entries="@array/autodel_durations"
             android:entryValues="@array/autodel_values"/>
 
         <ListPreference
             android:key="autodel_server"
-            android:title="@string/pref_autodel_server"
+            android:title="@string/autodel_server_title"
             android:entries="@array/autodel_durations"
             android:entryValues="@array/autodel_values" />
     </PreferenceCategory>
