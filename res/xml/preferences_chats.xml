@@ -38,14 +38,14 @@
         <ListPreference
             android:key="autodel_device"
             android:title="@string/autodel_device_title"
-            android:entries="@array/autodel_durations"
-            android:entryValues="@array/autodel_values"/>
+            android:entries="@array/autodel_device_durations"
+            android:entryValues="@array/autodel_device_values"/>
 
         <ListPreference
             android:key="autodel_server"
             android:title="@string/autodel_server_title"
-            android:entries="@array/autodel_durations"
-            android:entryValues="@array/autodel_values" />
+            android:entries="@array/autodel_server_durations"
+            android:entryValues="@array/autodel_server_values" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_backup">

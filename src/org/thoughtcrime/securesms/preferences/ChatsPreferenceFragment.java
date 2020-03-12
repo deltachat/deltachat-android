@@ -160,7 +160,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
         View gl = View.inflate(getActivity(), R.layout.autodel_confirm, null);
         CheckBox confirmCheckbox = gl.findViewById(R.id.i_understand);
         String msg = context.getString(fromServer?
-                R.string.pref_autodel_server_ask : R.string.pref_autodel_device_ask,
+                R.string.autodel_server_ask : R.string.autodel_device_ask,
                 delCount, "<i>"+getSelectedSummary(preference, newValue)+"</i>");
 
         new AlertDialog.Builder(context)
