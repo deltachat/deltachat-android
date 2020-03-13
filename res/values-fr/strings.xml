@@ -26,7 +26,7 @@
     <string name="unarchive">Désarchiver</string>
     <string name="mute">Sourdine</string>
     <string name="save">Sauvegarder</string>
-    <string name="chat">Conversation</string>
+    <string name="chat">Discussion</string>
     <string name="media">Média</string>
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Commencer la discussion</string>
@@ -180,8 +180,18 @@
     <string name="title_share_location">Partager la position avec tous les membres du groupe</string>
     <string name="device_talk">Messages de l\'appareil</string>
     <string name="device_talk_subtitle">Messages générés localement</string>
-    <string name="device_talk_explain">Les messages dans cette discussion sont générés localement par votre application Delta Chat. Ils vous informerons des nouveautés après les mis à jour et des éventuels problèmes rencontrés lors de l\'utilisation.</string>
-    <string name="edit_contact">Éditer le contact</string>
+    <string name="device_talk_explain">Les messages dans cette discussion sont générés localement par votre application Delta Chat. Ses créateurs l\'utilise pour informer des mises à jour et problèmes rencontrés lors de l\'utilisation.</string>
+    <string name="device_talk_welcome_message">Bienvenue sur Delta Chat ! - Delta Chat ressemble à d\'autres applications de messagerie populaires, mais n\'implique pas un contrôle centralisé, le traçage ou la revente de vos données, de vos amis, collègues ou famille à de grandes organisations. Techniquement, Delta Chat est une application de messagerie électronique avec une interface de tchate moderne. Un courriel retoiletté si vous voulez 👻\n\nUtilisez Delta Chat avec n\'importe qui parmi des milliards de personnes : utilisez simplement leur adresse électronique. Les destinataires n\'ont pas besoin d\'installer Delta Chat, de visiter des sites web ou de s\'inscrire où que ce soit - cependant, bien sûr, s\'ils le souhaitent, vous pouvez les diriger vers 👉 https://get.delta.chat</string>
+    <string name="edit_contact">Mettre à jour le contact</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Épingler le tchate </string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Désépingler le tchate </string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Épingler</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Désépingler</string>
+
     <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>
@@ -298,13 +308,16 @@
     <string name="tab_gallery_empty_hint">Les images et vidéos partagées dans ce tchat seront affichées ici.</string>
     <string name="tab_docs_empty_hint">Les documents, musiques et autres fichiers partagés dans ce chat seront affichés ici.</string>
     <string name="media_preview">Prévisualiser le fichier multimédia</string>
+    <string name="send_message">Envoyer message</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Le messager avec le plus large public au monde. Libre et indépendant.</string>
-    <string name="welcome_start_messaging">Démarrage la communication</string>
+    <string name="welcome_start_messaging">Démarrer la conversation</string>
     <string name="login_title">Connexion</string>
     <string name="login_header">Connexion vers votre serveur</string>
-    <string name="login_explain">Se connecter avec un compte de messagerie existant.</string>
-    <string name="login_subheader">Pour les fournisseurs de messagerie connus, des paramètres supplémentaires sont automatiquement configurés. Parfois, IMAP doit être activé dans l\'interface Web. Consultez votre fournisseur de courriel ou vos amis pour obtenir de l\'aide.</string>
+    <string name="login_explain">Se connecter avec un compte de courriel existant.</string>
+    <string name="login_subheader">Pour les fournisseurs de courriel connus, des paramètres supplémentaires sont automatiquement configurés. Parfois, IMAP doit être activé dans l\'interface Web. Consultez votre fournisseur de courriel ou vos amis pour obtenir de l\'aide.</string>
     <string name="login_no_servers_hint">Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_inbox">Boîte de réception</string>
     <string name="login_imap_login">Utilisateur IMAP</string>
@@ -319,7 +332,7 @@
     <string name="login_smtp_security">Sécurité SMTP</string>
     <string name="login_auth_method">Méthode d\'autorisation</string>
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
-    <string name="login_info_oauth2_text">L\'adresse e-mail saisie prend en charge une configuration simplifiée (OAuth2). Dans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec E-Mail. Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
+    <string name="login_info_oauth2_text">L\'adresse de courriel saisie prend en charge une configuration simplifiée (OAuth2.0). \n\nDans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec courriel . Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
     <string name="login_info_gmail_text">Pour les comptes GMail, vous devez créer un mot de passe d\'application si vous avez activé 2FA. Si ce paramètre n\'est pas disponible, vous devez autoriser des applications moins sécurisées.</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
     <string name="login_error_mail">Entrez une adresse email valide</string>
@@ -335,12 +348,12 @@
     <string name="login_error_server_response">Réponse de %1$s: %2$s\n\nCertains fournisseurs ajoutent des informations dans votre boite de réception; vous pouvez les vérifier par exemple dans le gestionnaire Web. Consultez votre fournisseur ou vos amis si vous rencontrez des problèmes.</string>
 
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Accepter les noms d’hôtes invalides</string>
+    <string name="accept_invalid_hostnames">Accepter les noms d’hôtes non valides</string>
     <string name="accept_invalid_certificates">Accepter les certificats non valides</string>
 
     <string name="used_settings">Paramètres utilisés :</string>
     <string name="delete_account">Supprimer le compte</string>
-    <string name="delete_account_ask">Êtes-vous sûr de vouloir supprimer les données de votre compte \?</string>
+    <string name="delete_account_ask">Êtes-vous sûr de vouloir supprimer les données de votre compte ?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -353,7 +366,7 @@
     <string name="pref_using_custom">Usage de la personnalisation : %s</string>
     <string name="pref_using_default">Utilisation par défaut : %s</string>
     <string name="pref_profile_info_headline">Informations de votre profil</string>
-    <string name="pref_profile_photo">Photo du profile</string>
+    <string name="pref_profile_photo">Photo du profil</string>
     <string name="pref_trim_headline">Ajustement du message</string>
     <string name="pref_trim_option">Effacer les anciens messages</string>
     <string name="pref_trim_option_explain">Effacer automatiquement les anciens messages dès qu’une discussion dépasse une durée spécifiée.</string>
@@ -363,9 +376,9 @@
     <string name="pref_trim_now_ask">Effacer tous les messages anciens? Cela écrêtera immédiatement toutes les conversations jusqu\'aux %d messages les plus récents.</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="pref_profile_photo_remove_ask">Supprimer la photo de profil ?</string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
-    <string name="pref_who_can_see_this_information">Qui peut voir cette information ?</string>
+    <string name="pref_who_can_see_this_information">Qui peut voir ceci ?</string>
     <string name="pref_who_can_see_profile_explain">L\'image et le nom de votre profil seront affichés à côté de vos messages lorsque vous communiquez avec d\'autres utilisateurs. Les informations déjà envoyées ne peuvent pas être effacées ou supprimées.</string>
     <string name="pref_your_name">Votre nom</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -415,8 +428,7 @@
     <string name="pref_in_chat_sounds">Sons de messages entrants</string>
     <string name="pref_message_text_size">Taille de police des messages</string>
     <string name="pref_view_log">Voir le journal</string>
-    <string name="pref_saved_log">Enregistrer le journal dans le dossier Téléchargements
-</string>
+    <string name="pref_saved_log">Journal enregistré dans le dossier \"Téléchargements\"</string>
     <string name="pref_save_log_failed">Enregistrement du journal échoué</string>
     <string name="pref_log_header">Journal</string>
     <string name="pref_other">Autre</string>
@@ -443,14 +455,14 @@
     <string name="pref_watch_mvbox_folder">Regarder le dossier DeltaChat</string>
     <string name="pref_send_copy_to_self">M\'envoyer une copie</string>
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
-    <string name="pref_auto_folder_moves_explain">Les conversations de tchat sont déplacées pour éviter d\'encombrer le dossier Boîte de réception</string>
+    <string name="pref_auto_folder_moves_explain">Les discussions sont déplacées pour éviter d\'encombrer le dossier Boîte de réception</string>
     <string name="pref_email_interaction_title">Interaction par courriel</string>
     <string name="pref_show_emails">Voir les courriels classiques</string>
     <string name="pref_show_emails_no">Non, seulement les tchats</string>
     <string name="pref_show_emails_accepted_contacts">Pour les contacts acceptés</string>
     <string name="pref_show_emails_all">Tout</string>
-    <string name="pref_empty_server_title">Effacer les courriels du serveur</string>
-    <string name="pref_empty_server_msg">Cette fonction aide à faire de la place sur votre serveur IMAP en effaçant TOUS les courriels, y compris les messages de discussion, dans les dossiers indiqués. Les messages sur cet appareil ne seront pas effacés. L\'effacement ne peut pas être annulée !</string>
+    <string name="pref_empty_server_title">Effacer les courriels depuis le serveur</string>
+    <string name="pref_empty_server_msg">Cette fonction aide à faire de la place sur votre serveur IMAP en effaçant TOUS les courriels, y compris les messages de discussion, dans les dossiers indiqués. Les messages sur cet appareil ne seront pas effacés. L\'effacement ne peut pas être annulé !</string>
     <string name="pref_empty_server_inbox">Effacer TOUS les courriels du dossier boîte de réception</string>
     <string name="pref_empty_server_mvbox">Effacer TOUS les courriels du dossier DeltaChat</string>
     <string name="pref_empty_server_do_button">Effacer les courriels</string>
@@ -467,7 +479,7 @@
     <string name="autocrypt_send_asm_title">Envoyer le message de configuration Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"Message de configuration d\'Autocrypt\" partages en toute sécurité vos paramètres de bout-en-bout avec les autres applications conformes à Autocrypt.\n\nLa configuration sera chiffrée par un code d\'installation affiché ici et doit être saisi sur l\'autre appareil.</string>
     <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Votre configuration vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Vous devriez être invité à entrer un code de configuration. Tapez les chiffres suivants dans l\'invite :\n\n%1$s\n\nUne fois que vous avez terminé, votre autre périphérique sera prêt à utiliser Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Votre configuration vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Vous devriez être invité à entrer un code de configuration. Tapez les chiffres suivants dans l\'invite :\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">Préférez le chiffrement de bout en bout</string>
     <string name="autocrypt_asm_subject">Message de configuration Autocrypt</string>
     <string name="autocrypt_asm_general_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout en bout entre clients. Pour déchiffrer et utiliser votre configuration, ouvrez le message dans un client compatible Autocrypt et entrez le code de configuration présenté sur le périphérique de génération.</string>
@@ -502,8 +514,8 @@
     <string name="screenlock_unlock_title">Déverrouiller DeltaChat</string>
     <string name="screenlock_unlock_description">Veuillez entrer votre secret défini par le système pour déverrouiller DeltaChat.</string>
     <string name="screenlock_inactivity_timeout">Verrouillage du délai d\'inactivité</string>
-    <string name="screenlock_inactivity_timeout_explain">Auto-verrouillage de Chat Delta après un intervalle de temps d\'inactivité spécifié</string>
-    <string name="screenlock_inactivity_timeout_interval">Intervalle de temps d\'inactivité</string>
+    <string name="screenlock_inactivity_timeout_explain">Auto-verrouillage de Delta Chat après un intervalle de temps d\'inactivité spécifié</string>
+    <string name="screenlock_inactivity_timeout_interval">Temps pour rester actif</string>
 
 
     <!-- qr code stuff -->
@@ -524,13 +536,16 @@
     <string name="qrshow_join_group_title">QR code d\'invitation</string>
     <string name="qrshow_join_group_hint">Scannez ceci pour rejoindre le groupe \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR code d\'invitation</string>
-    <string name="qrshow_join_contact_hint">Scanner ceci pour avoir un contact avec %1$s</string>
+    <string name="qrshow_join_contact_hint">Scanner ceci pour créer un contact avec %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">\'installation du QR code nécessite une connexion Internet. Veuillez vous connecter à un réseau avant de continuer.</string>
     <string name="qrshow_join_contact_no_connection_toast">Pas de connexion Internet, ne peut pas effectuer la configuration du QR code.</string>
     <string name="contact_verified">%1$s vérifié.</string>
     <string name="contact_not_verified">Ne peut pas vérifier %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuration modifiée pour %1$s</string>
+    <string name="verified_group_explain">Les groupes vérifiés (fonction expérimentale) offrent une sécurité contre les attaques actives. Les membres sont vérifiés avec un second facteur par d\'autres membres et les messages sont toujours chiffrés de bout en bout.</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nouveaux messages dans %2$d tchats</string>
     <string name="notify_most_recent_from">Plus récents depuis : %1$s</string>
@@ -551,16 +566,16 @@
     <!-- permissions -->
     <string name="perm_required_title">Autorisation requise</string>
     <string name="perm_continue">Continuez</string>
-    <string name="perm_explain_need_for_camera_access">Pour prendre des photos et des vidéos, autorisez DeltaChat à accéder à la caméra.</string>
-    <string name="perm_explain_need_for_mic_access">Pour envoyer des messages audios, autorisez DeltaChat à accéder à votre micro.</string>
+    <string name="perm_explain_need_for_camera_access">Pour prendre des photos et des vidéos, autorisez Delta Chat à accéder à l\'appareil photo</string>
+    <string name="perm_explain_need_for_mic_access">Pour envoyer des messages audios, autorisez Delta Chat à accéder à votre micro.</string>
     <string name="perm_explain_need_for_storage_access">DeltaChat a besoin d\'accéder à vos fichiers afin d\'exporter des fichiers ou de créer des sauvegardes.</string>
-    <string name="perm_explain_need_for_storage_access_share">DeltaChat a besoin d\'accéder à vos fichiers pour partager les fichiers sélectionnés.</string>
-    <string name="perm_explain_access_to_camera_denied">DeltaChat nécessite l\'autorisation de l\'appareil photo pour prendre des photos ou des vidéos, mais elle a été définitivement refusée. Veuillez continuer jusqu\'au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Caméra\".</string>
-    <string name="perm_explain_access_to_mic_denied">DeltaChat nécessite l\'autorisation du microphone pour envoyer des messages audio, mais elle a été définitivement refusée. Veuillez continuer les réglages de l\'application, sélectionner \"Autorisations\" et activer \"Microphone\".</string>
-    <string name="perm_explain_access_to_storage_denied">DeltaChat nécessite l\'autorisation de stockage pour pouvoir joindre ou exporter des photos, des vidéos ou des fichiers audio, mais elle a été définitivement refusée. Continuez jusqu\'au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Stockage\".</string>
-    <string name="perm_explain_access_to_location_denied">DeltaChat nécessite l\'autorisation de la position pour attacher une position, mais elle a été définitivement refusée. Continuez jusqu\'au menu des paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat a besoin d\'accéder à vos fichiers pour les partager.</string>
+    <string name="perm_explain_access_to_camera_denied">Pour prendre des photos ou filmer des vidéos, aller au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et autorisez \"Appareil photo\".</string>
+    <string name="perm_explain_access_to_mic_denied">Pour envoyer des messages audio,  aller dans les réglages de l\'application, sélectionner \"Autorisations\" et autoriser \"Microphone\".</string>
+    <string name="perm_explain_access_to_storage_denied">Pour recevoir ou envoyer des fichiers, aller au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et autoriser \"Stockage\".</string>
+    <string name="perm_explain_access_to_location_denied">Pour attacher une position, aller au menu paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>
     <string name="perm_enable_bg_reminder_title">Touchez ici pour recevoir des messages pendant que DeltaChat est en arrière-plan.</string>
-    <string name="perm_enable_bg_reminder_text">DeltaChat utilise un minimum de ressources et veille à ne pas vider votre batterie.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat utilise un minimum de ressources et veille à ne pas vider votre batterie.</string>
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
 
     <!-- dc_str_* resources -->
@@ -606,23 +621,23 @@
     <string name="login_required_desktop">requis</string>
     <string name="name_desktop">Nom</string>
     <string name="autocrypt_key_transfer_desktop">Transfert de la clé Autocrypt</string>
-    <string name="initiate_key_transfer_desktop">Un message de configuration Autocrypt partage en toute sécurité votre configuration de bout en bout avec d\'autres applications compatibles Autocrypt. La configuration est cryptée par un code de configuration qui s\'affiche ici et doit être tapé sur l\'autre appareil.</string>
+    <string name="initiate_key_transfer_desktop">Un message de configuration Autocrypt partage en toute sécurité votre configuration de bout en bout avec d\'autres applications compatibles Autocrypt. La configuration est chiffrée par un code de configuration qui s\'affiche ici et doit être tapé sur l\'autre appareil.</string>
     <string name="reply_to_message_desktop">Répondre au lmessage</string>
     <string name="select_group_image_desktop">Choisir l\'image de groupe</string>
     <string name="imex_progress_title_desktop">Avancement de la sauvegarde</string>
     <string name="download_attachment_desktop">Télécharger la pièce jointe</string>
     <string name="export_backup_desktop">Exporter la sauvegarde</string>
     <string name="transfer_key_desktop">Transférer la clé</string>
-    <string name="show_key_transfer_message_desktop">Votre clé vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Vous devriez être invité à entrer un code de configuration. Tapez les chiffres suivants dans l\'invite. Une fois que vous avez terminé, votre autre appareil sera prêt à utiliser Autocrypt.</string>
+    <string name="show_key_transfer_message_desktop">Votre clé vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Vous devriez être invité à entrer un code de configuration. Tapez les chiffres suivants:</string>
     <string name="new_message_from_desktop">Nouveau message de</string>
     <string name="unblock_contacts_desktop">Débloquer des contacts</string>
     <string name="none_blocked_desktop">Aucun contact bloqué</string>
     <string name="autocrypt_correct_desktop">Installation d\'Autocrypt transférée avec succès !</string>
     <string name="autocrypt_incorrect_desktop">Code de configuration incorrect. Veuillez réessayer.</string>
     <string name="create_chat_error_desktop">La discussion n’a pas pu être créée.</string>
-    <string name="ask_delete_chat_desktop">Êtes-vous sûr(e) de vouloir effacer cette discussion?</string>
+    <string name="ask_delete_chat_desktop">Effacer cette discussion?</string>
     <string name="email_validation_failed_desktop">Adresse email requise.</string>
-    <string name="forget_login_confirmation_desktop">Effacer cette connexion? Tout sera supprimé, y compris vos réglages bout en bout, contacts, discussions, messages et les fichiers multimédia. Cette action est définitive et ne peut pas être inversée.</string>
+    <string name="forget_login_confirmation_desktop">Effacer cette connexion? Tout sera supprimé, y compris vos réglages bout en bout, contacts, discussions, messages et les fichiers multimédia. Cette action ne peut pas être défaite.</string>
     <string name="me_desktop">moi</string>
     <string name="in_this_group_desktop">Membres du groupe</string>
     <string name="not_in_this_group_desktop">Membres de groupe possibles (pas dans groupe)</string>
@@ -648,8 +663,8 @@
     <string name="a11y_background_preview_label">Aperçu de l\'arrière-plan</string>
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Autoriser l\'accès à l\'appareil photo. Vous permet de prendre photos et vidéos.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Autoriser l\'accès au carnet d\'adresses. Vous permet de discuter avec les contacts de votre appareil.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Autoriser l\'accès au micro. Vous permet d\'enregistrer des fichiers audio.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Autoriser l\'accès à la photothèque. Vous permet de téléverser des images depuis cette celle-ci.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilise votre appareil photo pour pendre et envoyer des photos et des vidéos et pour scanner des QR codes.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilise votre micro pour enregistrer et envoyer des messages vocaux et des vidéos avec bande son.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vous laisse choisir quelles photos envoyer de votre photothèque. </string>
 </resources>

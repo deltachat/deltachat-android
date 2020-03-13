@@ -355,7 +355,6 @@
     <string name="login_auth_method">Метод авторизации</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth2).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
-    <string name="login_manually">Войти вручную</string>
     <string name="login_info_gmail_text">Для учётных записей GMail необходимо задать пароль для приложений (App-Password), если включена двухфакторная аутентификация (2FA). Если эти настройки недоступны, вам нужно активировать параметр «Менее безопасные приложения» (Less Secure Apps).</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
     <string name="login_error_mail">Укажите действительный адрес эл. почты</string>
@@ -476,7 +475,7 @@
     <string name="pref_watch_inbox_folder">Следить за папкой Входящие</string>
     <string name="pref_watch_sent_folder">Следить за папкой Исходящие</string>
     <string name="pref_watch_mvbox_folder">Следить за папкой DeltaChat</string>
-    <string name="pref_send_copy_to_self">Отправить копию себе</string>
+    <string name="pref_send_copy_to_self">Отправлять копию себе</string>
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Чаты были перемещены, чтобы избежать путаницы в папке Входящие</string>
     <string name="pref_email_interaction_title">Взаимодействие с электронной почтой</string>

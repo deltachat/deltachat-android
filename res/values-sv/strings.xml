@@ -180,6 +180,8 @@
     <string name="title_share_location">Dela plats med alla gruppmedlemmar</string>
     <string name="device_talk">Enhetsmeddelanden</string>
     <string name="device_talk_subtitle">Lokalt genererade meddelanden</string>
+    <string name="device_talk_explain">Meddelanden i denna chatt är lokalt genererade av din Delta Chat-app. Dess skapare använder den för att informera om app-uppdateringar och problem vid användning.</string>
+    <string name="device_talk_welcome_message">Välkommen till Delta Chat! - Delta Chat ser och känns som andra populär meddelande-appar, men involverar ingen centraliserad kontroll, tracking eller säljer dig, dina vänner, kollegor eller familj till stora organisationer/företag.\n\nTekniskt, Delta Chat är en epost applikation med ett modernt utseende. Epost i ett nytt utseende som får dig att vilja 👻\n\nAnvänd Delta Chat med vem som helst av alla miljader människor som har en epostadress. Mottagare behöver inte installera Delta Chat, besöka webbsidor eller registera sig någonstans - men såklart om de vill så kan du visa dem till 👉 https://get.delta.chat</string>
     <string name="edit_contact">Redigera kontakt</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Nåla chatt</string>
@@ -220,8 +222,17 @@
     <string name="ask_block_contact">Blockera den här kontakten? Du kommer inte längre att få meddelanden från den här kontakten.</string>
     <string name="ask_unblock_contact">Avblockera den här kontakten? Du kommer återigen att kunna ta emot meddelanden från den här kontakten.</string>
     <string name="ask_delete_contacts">Ta bort kontakter? Detta kommer permanent radera de valda kontakterna.\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte raderas permanent.</string>
+    <string name="ask_delete_contact">Radera kontakt %1$s?\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte raderas permanent. </string>
     <string name="cannot_delete_contacts_in_use">Det går inte att radera kontakter med pågående chattar.</string>
     <string name="ask_start_chat_with">Chatta med%1$s ?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Radera %1$s från grupp?</string>
+    <string name="info_outdated_app_title">Din app-version är för gammal.</string>
+    <string name="info_outdated_app_text">Det verkar som att du installerade Delta Chat från en källa som inte har auto-uppdateringar (t.ex. GitHub). Vänligen använd en butiksversion för att komma åt de senaste funktionerna och buggfixar.</string>
+    <string name="info_outdated_app_dialog_title">Uppdatera källan</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat är tillgänglig för:</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Ange namn eller e-postadress</string>
@@ -229,6 +240,15 @@
     <string name="contacts_empty_hint">Inga kontakter.</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d chatt arkiverad</item>
+        <item quantity="other">%d chattar arkiverade</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d chatt ur arkivet</item>
+        <item quantity="other">%d chattar ur arkivet</item>
+    </plurals>
     <string name="chat_archived_chats_title">Arkiverade chattar</string>
     <string name="chat_please_enter_message">Skriv in ett meddelande.</string>
     <string name="chat_camera_unavailable">Kamera otillgänglig.</string>
@@ -241,12 +261,27 @@
     <string name="chat_new_group_hint">Komponera det första meddelandet, så att andra kan svara inom denna grupp.\n\n• Det är okej om inte alla medlemmar använder Delta Chat.\n\n• Det kan ta en stund innan det första meddelandet levereras.</string>
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>
     <string name="chat_record_explain">Tryck och håll ned för att spela in ett röstmeddelande, släpp för att skicka</string>
+    <string name="chat_no_chats_yet_title">Tom inkorg.\nTryck på \"+\" för att starta en ny chatt.</string>
+    <string name="chat_no_chats_yet_hint">Du kan chatta med andra Delta Chat-användare och med alla andra med en e-postadress.</string>
+    <string name="chat_all_archived">Alla chattar arkiverade.\nTryck på \"+\" för att starta en ny chatt.</string>
     <string name="chat_share_with_title">Dela med</string>
     <string name="chat_input_placeholder">Meddelande</string>
     <string name="chat_archived_label">Arkiverat</string>
     <string name="chat_no_messages">Inga meddelanden.</string>
     <string name="chat_self_talk_subtitle">Meddelanden jag skickade till mig själv</string>
     <string name="saved_messages">Sparade meddelanden</string>
+    <string name="saved_messages_explain">• Vidarebefordra meddelanden här för att komma åt dom enkelt\n\n• Spara anteckningar eller röstmemon\n\n• Bifoga mediafiler för att spara dom</string>
+    <string name="chat_contact_request">Kontaktförfrågningar</string>
+    <string name="chat_no_contact_requests">Inga kontaktförfrågningar.\n\nOm du vill ha vanliga e-postmeddelande här som kontakter, så kan du ändra på det under appens inställningar.</string>
+    <string name="retry_send">Skicka om meddelande</string>
+    <string name="send_failed">Kunde inte skicka meddelande</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Visa platser inom tidsramen</string>
+    <string name="show_location_traces">Visa spår</string>
+    <string name="add_poi">Skicka intressant plats</string>
+
+
     <!-- search -->
     <string name="search">Sök</string>
     <string name="search_explain">Sök efter chattar, kontakter och meddelanden</string>
@@ -268,7 +303,12 @@
     <string name="tab_members">Medlemmar</string>
     <string name="tab_gallery">Galleri</string>
     <string name="tab_docs">Dokument</string>
+    <string name="tab_links">Länkar</string>
+    <string name="tab_map">Karta</string>
     <string name="media_preview">Media förhandsvisning</string>
+    <string name="send_message">Skicka meddelande</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Chattappen med den bredaste publiken i världen. Fri och oberoende.</string>
     <string name="welcome_start_messaging">Börja Chatta</string>

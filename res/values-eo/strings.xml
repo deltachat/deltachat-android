@@ -18,11 +18,18 @@
     <string name="info">Informoj</string>
     <string name="update">Ĝisdatigi</string>
     <string name="emoji">Emoji</string>
+    <string name="attachment">Aldonaĵo</string>
+    <string name="back">Reen</string>
     <string name="close">Fermi</string>
     <string name="forward">Plusendi</string>
+    <string name="archive">Arĥivi</string>
+    <string name="unarchive">Malarĥivi</string>
     <string name="mute">Muta sciigoj</string>
     <string name="save">Konservi</string>
     <string name="chat">Babilo</string>
+    <string name="media">Aŭdovidaĵoj</string>
+    <string name="main_menu">Ĉefa menuo</string>
+    <string name="start_chat">Komenci babilon</string>
     <string name="show_password">Montri pasvorton</string>
     <string name="hide_password">Kaŝi pasvorton</string>
     <string name="not_now">Ne nun</string>
@@ -35,6 +42,7 @@
     <string name="error">Eraro</string>
     <string name="error_x">Eraro: %1$s</string>
     <string name="error_no_network">Reto neatingebla.</string>
+    <string name="no_app_to_handle_data">Ne povas trovi aplikaĵon por trakti tiun ĉi tipon de datumo.</string>
     <string name="no_browser_installed">Neniu retumilo instalita.</string>
     <string name="file_not_found">Ne povis trovi %1$s.</string>
     <string name="copied_to_clipboard">Kopiita al tondujo</string>
@@ -46,7 +54,7 @@
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Danĝero</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%dmin</string>
+    <string name="n_min_ago">%d min</string>
     <string name="today">Hodiaŭ</string>
     <string name="yesterday">Hieraŭ</string>
     <string name="this_week">Ĉi-semajne</string>
@@ -55,8 +63,8 @@
     <string name="last_month">Pasint-monate</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
-        <item quantity="one">%dmin</item>
-        <item quantity="other">%dmin-oj</item>
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d min</item>
     </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
@@ -65,7 +73,7 @@
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d Parolado</item>
-        <item quantity="other">%d Paroladoj</item>
+        <item quantity="other">%d babiloj</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d kontakto</item>
@@ -103,6 +111,7 @@
     <string name="blue">Blua</string>
     <string name="orange">Oranĝkolora</string>
     <string name="cyan">Cejana</string>
+    <string name="purple">Purpura</string>
     <string name="magenta">Malva</string>
     <string name="white">Blanka</string>
 
@@ -129,6 +138,8 @@
     <string name="menu_group_name_and_image">Grup-nomo kaj bildo</string>
     <string name="menu_show_map">Montri mapon</string>
     <string name="menu_show_global_map">Montri ĉiujn lokojn</string>
+    <string name="menu_archive_chat">Enarĥivigi babilon</string>
+    <string name="menu_unarchive_chat">Elarĥivigi babilon</string>
     <string name="menu_add_attachment">Aldoni kunsendaĵon</string>
     <string name="menu_leave_group">Forlasi grupon</string>
     <string name="menu_delete_chat">Forigi babilon</string>
@@ -143,23 +154,50 @@
     <string name="menu_reply">Respondi al mesaĝo</string>
     <string name="menu_mute">Silentigi sciigojn</string>
     <string name="menu_unmute">Malsilentigi</string>
+    <string name="menu_export_attachment">Eksporti aldonaĵon</string>
     <string name="menu_all_media">Ĉiuj aŭvidaĵoj</string>
     <string name="menu_share">Kunhavigi</string>
     <string name="menu_block_contact">Bloki kontakton</string>
     <string name="menu_unblock_contact">Malbloki kontakton</string>
+    <string name="menu_play">Ludi</string>
+    <string name="menu_pause">Paŭzigi</string>
+    <string name="menu_scroll_to_bottom">Rulumi al la malsupro</string>
+    <string name="menu_scroll_to_top">Rulumi al la supro</string>
     <string name="menu_help">Helpo</string>
     <string name="menu_select_all">Elekti ĉion</string>
+    <string name="menu_expand">Etendi</string>
     <string name="menu_edit_name">Redakti nomon</string>
     <string name="menu_edit_group_name">Redakti grup-nomon</string>
     <string name="menu_edit_group_image">Redakti grup-bildon</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_advanced">Speciala</string>
     <string name="menu_deaddrop">Kontakt-petoj</string>
+    <string name="menu_deaddrop_subtitle">Premu mesaĝon por komenci babiladon</string>
+    <string name="menu_view_profile">Vidi profilon</string>
+    <string name="menu_zoom_in">Zomi</string>
+    <string name="menu_zoom_out">Malzomi</string>
+    <string name="menu_save_log">Konservi protokolon</string>
+    <string name="title_share_location">Konigi lokon al ĉiuj grupanoj</string>
+    <string name="device_talk">Aparataj mesaĝoj</string>
+    <string name="device_talk_subtitle">Loke generitaj mesaĝoj</string>
+    <string name="device_talk_explain">Mesaĝoj en tiu ĉi babilo estas surloke generataj de via Delta Chat apo. Ĝiaj kreintoj uzas ilin por informi pri apaj ĝisdatigoj kaj problemoj dum uzado.</string>
+    <string name="device_talk_welcome_message">Bonvenon al Delta Chat! – Delta Chat aspektas kvazaŭ aliaj popularaj mesaĝiloj, sed al ĝi mankas centra regado, sekvado de kaj perfido al vi, viaj amikoj, kolegoj kaj familianoj je la servo de grandaj organizoj.\n\nVere, Delta Chat estas retpoŝta aplikaĵo kun moderna babila interfaco. Alivorte, retpoŝto kun novaj vestaĵoj 👻\n\nUzu Delta Chat-on kun iu ajn el miliardoj da homoj: simple uzu la retadreson. Ricevantoj ne devas instali Delta Chat-on, viziti retejojn aŭ registriĝi ie ajn - sed, kompreneble, se ili volas, vi povas atentigi ilin al 👉 https://get.delta.chat</string>
     <string name="edit_contact">Redakti kontakton</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Alpingli babilon</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Depingli babilon</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Alpingli</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Depingli</string>
+
     <string name="mute_for_one_hour">Silentigi por 1 horo</string>
     <string name="mute_for_two_hours">Silentigi por 2 horoj</string>
     <string name="mute_for_one_day">Silentigi por 1 tago</string>
     <string name="mute_for_seven_days">Silentigi por 7 tagoj</string>
+    <string name="mute_forever">Silentigi por ĉiam</string>
+
     <string name="share_location_once">unufoje</string>
     <string name="share_location_for_5_minutes">por 5 minutoj</string>
     <string name="share_location_for_30_minutes">por 30 minutoj</string>
@@ -167,36 +205,78 @@
     <string name="share_location_for_two_hours">por 2 horoj</string>
     <string name="share_location_for_six_hours">por 6 horoj</string>
 
+    <string name="file_saved_to">Dosiero konservita kiel \"%1$s\".</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Ĉu vi estas certa, ke vi volas forlasi tiun ĉi grupon?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Ĉu forigi %d babilon? Ĝi ne plu troveblos en la babilaro, tamen ĝiaj mesaĝoj plurestos en la servilo.</item>
+        <item quantity="other">Ĉu forigi %d babilojn? Ili ne plu troveblos en la babilaro, tamen iliaj mesaĝoj plurestos en la servilo.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Ĉu forigi %d mesaĝon kaj ĉi tie kaj en la servilo?</item>
+        <item quantity="other">Ĉu forigi %d mesaĝojn kaj ĉi tie kaj en la servilo?</item>
+    </plurals>
     <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
+    <string name="cannot_delete_contacts_in_use">Ne eblas forigi kontaktojn kun aktualaj babiloj.</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
+    <string name="info_outdated_app_title">La versio de via aplikaĵo estas malnova.</string>
+    <string name="info_outdated_app_text">Ŝajnas ke vi instalis Delta Chat-on el fonto sen aŭtomataj ĝisdatigoj (t.e. GitHub). Bonvolu ŝanĝi al butika versio por ricevi la plej novajn eblecojn kaj cimoriparojn.</string>
+    <string name="info_outdated_app_dialog_title">Ĝisdatigi fontojn</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat estas atingebla je:</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontaktoj</string>
     <string name="contacts_enter_name_or_email">Enigi nomon aŭ retadreson</string>
+    <string name="contacts_type_email_above">Enigu retadreson supren</string>
     <string name="contacts_empty_hint">Neniu kontakto.</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d babilo enarĥivigita</item>
+        <item quantity="other">%d babiloj enarĥivigitaj</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d babilo elarĥivigita</item>
+        <item quantity="other">%d babiloj elarĥivigitaj</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Enarĥivigitaj babiloj</string>
     <string name="chat_please_enter_message">Bonvolu enigi mesaĝon.</string>
     <string name="chat_camera_unavailable">Fotilo neatingebla.</string>
+    <string name="chat_unable_to_record_audio">Ne povas registri aŭdaĵon.</string>
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d nova mesaĝo</item>
         <item quantity="other">%d novaj mesaĝoj</item>
     </plurals>
+    <string name="chat_no_messages_hint">Sendi mesaĝon al %1$s:\n\n• Ne estas problemo se %2$s ne uzas Delta Chat-on.\n\n• Liveri la unuan mesaĝon eble prenos iom da tempo kaj eble ne estos ĉifrita.</string>
     <string name="chat_record_slide_to_cancel">Gliti por nuligi</string>
     <string name="chat_record_explain">Tuŝadi por registri voĉan mesaĝon, maltuŝadi por sendi</string>
+    <string name="chat_no_chats_yet_hint">Vi povas babili kun aliaj uzantoj de Delta Chat kaj kun iu ajn retadreso.</string>
+    <string name="chat_all_archived">Ĉiuj babiloj enarĥivigitaj.\nPremu \"+\" por komenci novan babilon.</string>
+    <string name="chat_share_with_title">Kunhavigi kun</string>
     <string name="chat_input_placeholder">Mesaĝo</string>
     <string name="chat_archived_label">Enarĥivigitaj</string>
     <string name="chat_no_messages">Neniu mesaĝo.</string>
     <string name="chat_self_talk_subtitle">Mesaĝoj senditaj al mi mem</string>
+    <string name="saved_messages">Konservitaj mesaĝoj</string>
     <string name="chat_contact_request">Kontakt-peto</string>
     <string name="retry_send">Reprovi sendi mesaĝon</string>
     <string name="send_failed">Ne povis sendi mesaĝon</string>
 
+    <string name="show_location_traces">Montri spurojn</string>
+    <string name="add_poi">Sendi punkton de intereso</string>
+
+
     <!-- search -->
     <string name="search">Serĉi</string>
+    <string name="search_explain">Serĉi babilojn, kontaktojn, kaj mesaĝojn</string>
+    <string name="search_no_result_for_x">Neniu rezulto trovita por \"%s\"</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Grup-nomo</string>
     <string name="group_avatar">Bildo de la grupo</string>
@@ -206,6 +286,7 @@
     <string name="group_hello_draft">Saluton, mi ĵus kreis la grupon \"%1$s\" por ni.</string>
     <string name="group_self_not_in_group">Vi devas esti grupano por fari tion.</string>
     <string name="profile_encryption">Ĉifrado</string>
+    <string name="profile_shared_chats">Kunhavigitaj babiloj</string>
     <string name="tab_contact">Kontakto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_members">Anoj</string>
@@ -220,14 +301,45 @@
     <string name="welcome_start_messaging">Komenci mesaĝadon</string>
     <string name="login_title">Ensaluti</string>
     <string name="login_header">Ensaluti al via servilo</string>
-    <string name="login_manually">Ensaltui neaŭtomate</string>
+    <string name="login_inbox">Ricevujo</string>
+    <string name="login_imap_login">IMAP salutnomo</string>
+    <string name="login_imap_server">IMAP servilo</string>
+    <string name="login_imap_port">IMAP pordo</string>
+    <string name="login_imap_security">IMAP sekureco</string>
+    <string name="login_outbox">Senditujo</string>
+    <string name="login_smtp_login">SMTP salutnomo</string>
+    <string name="login_smtp_password">SMTP pasvorto</string>
+    <string name="login_smtp_server">SMTP servilo</string>
+    <string name="login_smtp_port">SMTP pordo</string>
+    <string name="login_smtp_security">SMTP sekureco</string>
+    <string name="login_auth_method">Metodo de rajtigado</string>
+    <string name="login_info_oauth2_title">Ĉu daŭri kun faciligitaj agordoj?</string>
+    <string name="login_certificate_checks">Atestilaj kontroloj</string>
+    <string name="login_error_mail">Bonvolu enigi validan retadreson</string>
+    <string name="login_error_server">Bonvolu enigi validan servilon / IP adreson</string>
+    <string name="login_error_port">Bonvolu enigi validan pordon (1-65535)</string>
+    <string name="login_error_required_fields">Bonvolu enigi validan retadreson kaj pasvorton</string>
+    <string name="import_backup_title">Importi savkopion</string>
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Akcepti nevalidajn hostnomojn</string>
+    <string name="accept_invalid_certificates">Akcepti nevalidajn atestilojn</string>
+
+    <string name="used_settings">Uzitaj agordoj:</string>
     <string name="delete_account">Forigi konton</string>
+    <string name="delete_account_ask">Ĉu vi certas, ke vi volas forigi ĉiujn datumojn de vi konto?</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Plusendi al…</string>
+    <string name="share_multiple_attachments">Ĉu vi volas sendi %1$d dosierojn al la elektita babilo?\n\nLa dosieroj sendiĝos senŝanĝe en iliaj originalaj grandecoj, ekz. bildoj kaj filmetoj ne estos rekoditaj.</string>
+    <string name="share_abort">Kunhavigado ĉesis pro manko de permesoj.</string>
+
+
+    <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_trim_option">Forigi malnovajn mesaĝojn</string>
     <string name="pref_trim_length_limit_summary">Po %d mesaĝoj en babilo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
+    <string name="pref_profile_photo_remove_ask">Ĉu forigi profilbildon?</string>
     <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_who_can_see_this_information">Kiu povas vidi ĉi tion?</string>
@@ -262,6 +374,7 @@
     <string name="pref_incognito_keyboard_explain">Peti al la klavaro malŝalti personan lernadon</string>
     <string name="pref_read_receipts">Legokonfirmoj</string>
     <string name="pref_read_receipts_explain">Se legokonfirmoj ne estas ŝaltitaj, vi ne vidos aliulajn legokonfirmojn.</string>
+    <string name="pref_manage_keys">Administri ŝlosilojn</string>
     <string name="pref_use_system_emoji">Uzi sisteman emoĝiaron</string>
     <string name="pref_use_system_emoji_explain">Malebligi emoĝiaron de Delta Chat</string>
     <string name="pref_app_access">Aliro al aplikaĵo</string>
@@ -270,8 +383,30 @@
     <string name="pref_messages">Mesaĝoj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
     <string name="pref_message_text_size">Mesaĝa tipargrando</string>
+    <string name="pref_view_log">Vidi protokolon</string>
+    <string name="pref_saved_log">Konservis protokolon al la elŝuta dosierujo</string>
+    <string name="pref_save_log_failed">Malsukcesis konservi protokolon</string>
+    <string name="pref_log_header">Protokolo</string>
     <string name="pref_other">Alia</string>
+    <string name="pref_backup">Savkopio</string>
+    <string name="pref_backup_explain">Savkopii babilojn al ekstera memorilo</string>
+    <string name="pref_backup_export_start_button">Komenci savkopiadon</string>
+    <string name="pref_backup_written_to_x">Savkopio sukcese konservita al \"%1$s\".</string>
+    <string name="pref_managekeys_menu_title">Administri ŝlosilojn</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat bezonas permeson atingi viajn dosierojn por importi/eksporti ŝlosilojn.</string>
+    <string name="pref_managekeys_export_secret_keys">Eksporti sekretajn ŝlosilojn</string>
+    <string name="pref_managekeys_export_explain">Ĉu eksporti sekretajn ŝlosilojn al \"%1$s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">Importi sekretajn ŝlosilojn</string>
+    <string name="pref_background">Fono</string>
+    <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
+    <string name="pref_background_btn_gallery">Elekti el galerio</string>
+    <string name="pref_imap_folder_handling">IMAP dosieruja traktado</string>
+    <string name="pref_watch_inbox_folder">Kontroli ricevujon</string>
+    <string name="pref_watch_sent_folder">Kontroli senditujon</string>
+    <string name="pref_watch_mvbox_folder">Kontroli DeltaChat dosierujon</string>
+    <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
+    <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
     <!-- screen lock -->
     <string name="screenlock_title">Ekranŝloso</string>
     <string name="screenlock_explain">Lock Delta Chat access with Android screen lock or fingerprint</string>
@@ -301,7 +436,7 @@
     <string name="global_menu_help_desktop">Helpo</string>
     <string name="more_info_desktop">Plia informo</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_chats_desktop">Neniu parolado ankoraŭ.</string>
+    <string name="no_chats_desktop">Neniu babilo nun</string>
     <string name="remove_desktop">Forviŝi</string>
     <string name="save_desktop">Konservi</string>
     <string name="me_desktop">mi</string>

@@ -322,7 +322,6 @@
     <string name="login_auth_method">认证方法</string>
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许 Delta Chat 充当您的“通过电子邮件聊天”应用程序。\n\n不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
-    <string name="login_manually">手动登录</string>
     <string name="login_info_gmail_text">对于 GMail 帐户，如果您启用了“两步验证”，则需要创建应用专用密码。 如果此设置不可用，则需要启用“安全性较低的应用”。</string>
     <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
