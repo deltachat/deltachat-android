@@ -1,25 +1,36 @@
-FROM ubuntu:17.04
+FROM ubuntu:18.04
 
-RUN dpkg --add-architecture i386 && \
-    apt-get update -y && \
-    apt-get install -y software-properties-common && \
-    apt-get update -y && \
-    apt-get install -y libc6:i386=2.24-9ubuntu2.2 libncurses5:i386=6.0+20160625-1ubuntu1 libstdc++6:i386=6.3.0-12ubuntu2 lib32z1=1:1.2.11.dfsg-0ubuntu1 wget openjdk-8-jdk=8u131-b11-2ubuntu1.17.04.3 git unzip && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get autoremove -y && \
-    apt-get clean
+# Install Android Studio requirements
+# See https://developer.android.com/studio/install#linux
+RUN apt-get update -y \
+&& apt-get install -y --no-install-recommends \
+wget \
+curl \
+unzip \
+openjdk-11-jre \
+file \
+build-essential \
+&& rm -rf /var/lib/apt/lists/*
 
-ENV ANDROID_SDK_FILENAME android-sdk_r24.4.1-linux.tgz
-ENV ANDROID_SDK_URL https://dl.google.com/android/${ANDROID_SDK_FILENAME}
-ENV ANDROID_API_LEVELS android-27
-ENV ANDROID_BUILD_TOOLS_VERSION 27.0.1
-ENV ANDROID_HOME /usr/local/android-sdk-linux
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-RUN cd /usr/local/ && \
-    wget -q ${ANDROID_SDK_URL} && \
-    tar -xzf ${ANDROID_SDK_FILENAME} && \
-    rm ${ANDROID_SDK_FILENAME} 
-RUN echo y | android update sdk --no-ui -a --filter ${ANDROID_API_LEVELS}
-RUN echo y | android update sdk --no-ui -a --filter extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository
-RUN echo y | android update sdk --no-ui -a --filter tools,platform-tools,build-tools-${ANDROID_BUILD_TOOLS_VERSION}
-RUN rm -rf ${ANDROID_HOME}/tools && unzip ${ANDROID_HOME}/temp/*.zip -d ${ANDROID_HOME}
+ENV ANDROID_HOME /android-sdk
+
+WORKDIR /android-sdk
+RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip && \
+  unzip commandlinetools-linux-6200805_latest.zip && \
+  rm commandlinetools-linux-6200805_latest.zip
+
+RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
+
+ENV PATH ${PATH}:/android-sdk/tools/bin
+
+# Install NDK manually. Other SDK parts are installed automatically by gradle.
+RUN sdkmanager --sdk_root=${ANDROID_HOME} ndk-bundle
+
+ENV PATH ${PATH}:/android-sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/:/android-sdk/ndk-bundle/
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain none
+ENV PATH ${PATH}:/root/.cargo/bin
+RUN rustup default nightly-2019-11-06 \
+&& rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android
+
+COPY docker/cargo-config /root/.cargo/config

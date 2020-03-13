@@ -12,7 +12,7 @@ For the core library and other common info, please refer to the
 <img alt="Screenshot Chat List" src="docs/images/2019-01-chatlist.png" width="298" /> <img alt="Screenshot Chat View" src="docs/images/2019-01-chat.png" width="298" />
 
 
-# Build
+# Check Out Repository
 
 When checking out _deltachat-android_, make sure also to check out the
 subproject _deltachat-core-rust_:
@@ -22,8 +22,44 @@ subproject _deltachat-core-rust_:
   or later by `git submodule update --init --recursive`. If you do this in your
   home directory, this results in the folder `~/deltachat-android` which is just fine.
 
-Then, open `ndk-make.sh` in an editor and follow the instructions
-to set up a rust build environment.  This is needed only once.
+# Build Using Dockerfile
+
+If you only want to build an APK, the easiest way is to use
+provided `Dockerfile` with [Docker](https://www.docker.com/) or
+[Podman](https://podman.io/). Podman is a drop-in replacement for Docker
+that does not require root privileges.  It is used in the following
+example.
+
+First, build the image `deltachat-android` by running
+```
+podman build . -t deltachat-android
+```
+
+Then, run the image:
+```
+podman run -it -v $(pwd):/home/app -w /home/app localhost/deltachat-android
+```
+
+Within the container, build the native library first:
+```
+root@6012dcb974fe:/home/app# ./ndk-make.sh
+```
+
+Then, [build an APK](https://developer.android.com/studio/build/building-cmdline):
+```
+root@6012dcb974fe:/home/app# ./gradlew assembleDebug
+```
+
+If you don't want to use Docker or Podman, proceed to the next section.
+
+# Install Build Environment
+
+To setup build environment manually, you can read the `Dockerfile`
+and mimic what it does.
+
+First, you need to setup Android SDK and Android NDK.  Then, open
+`ndk-make.sh` in an editor and follow the instructions to set up a rust
+build environment.  This is needed only once.
 
 After that, call `./ndk-make.sh` in the root directory to build core-rust.
 Afterwards run the project in Android Studio. The project requires API 25.
