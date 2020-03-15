@@ -62,7 +62,4 @@ cp deltachat-core-rust/target/aarch64-linux-android/release/libdeltachat.a arm64
 cp deltachat-core-rust/target/i686-linux-android/release/libdeltachat.a x86
 cp deltachat-core-rust/target/x86_64-linux-android/release/libdeltachat.a x86_64
 
-echo -- ndk-build --
-cd ..
-ndk-build
 echo "ending time: `date`"

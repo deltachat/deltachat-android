@@ -148,6 +148,12 @@ android {
         release
     }
 
+    externalNativeBuild {
+        ndkBuild {
+            path "./jni/Android.mk"
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
