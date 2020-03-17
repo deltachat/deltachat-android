@@ -14,7 +14,7 @@
 * streamline onboarding
 * add an option to create an account by scanning a qr code, of course,
   this has to be supported by the used provider
-* lower minimal requirements, Delta Chat now also runs on Android 4.1 Lollipop
+* lower minimal requirements, Delta Chat now also runs on Android 4.1 Jelly Bean
 * fix updating names from incoming mails
 * fix encryption to Ed25519 keys that will be used in one of the next releases
 * several bug fixes, eg. on sending and receivind messages, see
