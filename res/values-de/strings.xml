@@ -181,7 +181,7 @@
     <string name="device_talk">Systemnachrichten</string>
     <string name="device_talk_subtitle">Lokal erzeugte Nachrichten</string>
     <string name="device_talk_explain">Nachrichten in diesem Chat werden lokal von der Delta Chat App erzeugt, um auf Neuigkeiten und Probleme hinzuweisen.</string>
-    <string name="device_talk_welcome_message">Willkommen – Delta Chat sieht aus und funktioniert wie andere populäre Messenger - aber ohne zentrale Überwachung, ohne Tracking, ohne die Daten von Ihnen, Ihren FreundInnen, KollegInnen oder Familienmitgliedern an irgendwelche Firmen zu verkaufen.\n\nTechnisch ist Delta Chat ein E-Mail-Programm mit einer modernen Chat-Oberfläche - E-Mail in neuen Kleidern 👻\n\nMit Delta Chat haben Sie Milliarden potentieller ChatpartnerInnen: Verwenden Sie einfach deren E-Mail-Adresse - die EmpfängerInnen selbst müssen Delta Chat dazu nicht installieren oder sich irgendwo anmelden. Sie können sie aber natürlich gerne auf 👉 https://get.delta.chat hinweisen</string>
+    <string name="device_talk_welcome_message">Willkommen – Delta Chat sieht aus und funktioniert wie andere populäre Messenger - aber ohne zentrale Überwachung, ohne Tracking, ohne die Daten von Ihnen, Ihren FreundInnen, KollegInnen oder Familienmitgliedern an irgendwelche Firmen zu verkaufen.\n\nTechnisch gesehen ist Delta Chat ein E-Mail-Programm unter einer modernen Chat-Oberfläche - sozusagen E-Mail in neuem Gewand 👻\n\nMit Delta Chat haben Sie Milliarden potentieller ChatpartnerInnen: Verwenden Sie einfach deren E-Mail-Adresse - die EmpfängerInnen selbst müssen Delta Chat dazu nicht installieren oder sich irgendwo anmelden. Sie können sie aber natürlich gerne auf 👉 https://get.delta.chat hinweisen</string>
     <string name="edit_contact">Kontakt bearbeiten</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Chat anheften</string>
@@ -317,7 +317,7 @@
     <string name="login_title">Login</string>
     <string name="login_header">Bei Ihrem Server anmelden</string>
     <string name="login_explain">Mit existierendem E-Mail-Konto einloggen</string>
-    <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP im Web-Frontend aktiviert werden. Bitten Sie Ihren Anbieter oder FreundInnen um Rat, wenn es Probleme gibt.</string>
+    <string name="login_subheader">Für bekannte E-Mail-Anbieter werden zusätzliche Einstellungen automatisch vorgenommen. Manchmal muss IMAP in der Weboberfläche aktiviert werden. Bitten Sie Ihren Anbieter oder Freunde um Rat, wenn es Probleme gibt.</string>
     <string name="login_no_servers_hint">Es gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_inbox">Posteingang</string>
     <string name="login_imap_login">IMAP-Anmeldename</string>
@@ -332,7 +332,7 @@
     <string name="login_smtp_security">SMTP-Sicherheit</string>
     <string name="login_auth_method">Autorisierungsmethode</string>
     <string name="login_info_oauth2_title">Weiter mit vereinfachter Einrichtung?</string>
-    <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth2).\n\nBitte erlauben Sie Delta Chat im nächsten Schrit,t als Chat-über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
+    <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth 2.0).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt, als Chat-über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_info_gmail_text">Für GMail-Konten muss ein App-Passwort erstellt werden, wenn die 2FA (Zwei-Faktor-Authentifizierung) aktiviert ist. Wenn diese Einstellung nicht verfügbar ist, muss \"Zugriff durch weniger sichere Anwendungen\" aktiviert werden.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>
@@ -355,7 +355,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
 
     <string name="used_settings">Verwendete Einstellungen:</string>
     <string name="delete_account">Account löschen</string>
-    <string name="delete_account_ask">Das E-Mail-Konto und alle Daten wirklich von diesem Gerät löschen?</string>
+    <string name="delete_account_ask">Möchten Sie das E-Mail-Konto und alle Daten wirklich von diesem Gerät löschen?</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -422,7 +422,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_read_receipts_explain">Wenn Lesebestätigungen deaktiviert sind, werden auch keine Lesebestätigungen von anderen angezeigt. </string>
     <string name="pref_manage_keys">Schlüssel verwalten</string>
     <string name="pref_use_system_emoji">System-Emoji benutzen</string>
-    <string name="pref_use_system_emoji_explain">Deaktivierung der integrierten Emoji-Unterstützung von Delta Chat.</string>
+    <string name="pref_use_system_emoji_explain">Eingebaute Emoji-Unterstützung von Delta Chat deaktivieren</string>
     <string name="pref_app_access">App-Zugriff</string>
     <string name="pref_communication">Kommunikation</string>
     <string name="pref_chats">Chats</string>
@@ -457,7 +457,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>
     <string name="pref_send_copy_to_self">Kopie an mich selbst senden</string>
     <string name="pref_auto_folder_moves">Autom. Verschieben in den DeltaChat-Ordner</string>
-    <string name="pref_auto_folder_moves_explain">Nachrichten verschieben, um einen unübersichtlichen Posteingang zu verhindern.</string>
+    <string name="pref_auto_folder_moves_explain">Konversationen verschieben für einen übersichtlichen Posteingang</string>
     <string name="pref_email_interaction_title">E-Mail-Zusammenspiel</string>
     <string name="pref_show_emails">Normale E-Mails anzeigen</string>
     <string name="pref_show_emails_no">Nein, nur Chats</string>
@@ -469,7 +469,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_empty_server_mvbox">Löschen ALLER E-Mails im DeltaChat Ordner.</string>
     <string name="pref_empty_server_do_button">E-Mails löschen</string>
     <string name="pref_experimental_features">Experimentelle Features</string>
-    <string name="pref_on_demand_location_streaming">Standortübertragung auf Nachfrage</string>
+    <string name="pref_on_demand_location_streaming">Standortübertragung nach Bedarf</string>
     <string name="pref_background_default">Voreingestellter Hintergrund</string>
     <string name="pref_background_default_color">Voreingestellte Farbe</string>
     <string name="pref_background_custom_image">Benutzerdefiniertes Hintergrundbild</string>
