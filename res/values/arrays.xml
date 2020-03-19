@@ -25,6 +25,7 @@
       <!-- pl -->    <item>Polski</item>
       <!-- pt -->    <item>Português</item>
       <!-- pt_BR --> <item>Português do Brasil</item>
+      <!-- sc -->    <item>Sardu</item>
       <!-- sq -->    <item>Shqip</item>
       <!-- sv -->    <item>Svenska</item>
       <!-- tr -->    <item>Türkçe</item>
@@ -61,6 +62,7 @@
       <item>pl</item>
       <item>pt</item>
       <item>pt_BR</item>
+      <item>sc</item>
       <item>sq</item>
       <item>sv</item>
       <item>tr</item>

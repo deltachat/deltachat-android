@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">AB</string>
+    <string name="cancel">Annulla</string>
+    <string name="yes">Eja</string>
+    <string name="no">Nono</string>
+    <string name="on">Allutu</string>
+    <string name="off">Istudadu</string>
+    <string name="def">Predefinidu</string>
+    <string name="custom">Personalizadu</string>
+    <string name="none">Perunu</string>
+    <string name="automatic">Automàticu</string>
+    <string name="strict">Astrintu</string>
+    <string name="open">Aberi</string>
+    <string name="delete">Iscantzella</string>
+    <string name="info">Informatziones</string>
+    <string name="update">Agiorna</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Allegadu</string>
+    <string name="back">In palas</string>
+    <string name="close">Serra</string>
+    <string name="forward">Imbia a àtere</string>
+    <string name="archive">Archìvia</string>
+    <string name="unarchive">Riprìstina</string>
+    <string name="mute">Boga su sonu</string>
+    <string name="save">Sarva</string>
+    <string name="chat">Tzarrada</string>
+    <string name="media">Cuntenutu multimediale</string>
+    <string name="main_menu">Menù printzipale</string>
+    <string name="start_chat">Faghe incumintzare una tzarrada</string>
+    <string name="show_password">Ammustra sa crae de intrada</string>
+    <string name="hide_password">Cua sa crae de intrada</string>
+    <string name="not_now">Como nono</string>
+    <string name="never">Mai</string>
+    <string name="one_moment">Unu momentu...</string>
+    <string name="done">Fatu</string>
+    <string name="undo">Annulla</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Sighi</string>
+    <string name="error">Faddina</string>
+    <string name="error_x">Faddina: %1$s</string>
+    <string name="error_no_network">Retza non disponìbile.</string>
+    <string name="no_app_to_handle_data">No apo agatadu un\'aplicatzione pro amministrare custa casta de datos.</string>
+    <string name="no_browser_installed">Non b\'at perunu navigadore/esploradore (browser) instaladu.</string>
+    <string name="file_not_found">%1$s no agatadu.</string>
+    <string name="copied_to_clipboard">Copiadu in punta de billete.</string>
+    <string name="contacts_headline">Cuntatos</string>
+    <string name="email_address">Indiritzu de posta eletrònica</string>
+    <string name="bad_email_address">Indiritzu non vàlidu.</string>
+    <string name="password">Crae de intrada</string>
+    <string name="now">Como</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Perìgulu</string>
+    <!-- n_min_ago is deprecated, use n_minutes instead -->
+    <string name="n_min_ago">%d min</string>
+    <string name="today">Oe</string>
+    <string name="yesterday">Eris</string>
+    <string name="this_week">Custa chida</string>
+    <string name="this_month">Custu mese</string>
+    <string name="last_week">Ùrtima chida</string>
+    <string name="last_month">Ùrtimu mese</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d min</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d ora</item>
+        <item quantity="other">%d oras</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d tzarrada</item>
+        <item quantity="other">%d tzarradas</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d contatu</item>
+        <item quantity="other">%d contatos</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d messàgiu</item>
+        <item quantity="other">%d messàgios</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d membru</item>
+        <item quantity="other">%d membros</item>
+    </plurals>
+
+    <string name="self">Deo</string>
+    <string name="draft">Abbotzu</string>
+    <string name="image">Immàgine</string>
+    <string name="gif">Gif</string>
+    <string name="images">Immàgines</string>
+    <string name="audio">Àudio</string>
+    <string name="voice_message">Messàgiu sonoru</string>
+    <string name="forwarded_message">Messàgiu imbiadu a àtere</string>
+    <string name="video">Vìdeu</string>
+    <string name="documents">Documentos editàbiles</string>
+    <string name="contact">Cuntatu</string>
+    <string name="verified_contact">Cuntatu verificadu</string>
+    <string name="camera">Fotocàmera</string>
+    <string name="location">Positzione</string>
+    <string name="gallery">Galleria</string>
+    <string name="file">Documentu</string>
+    <string name="unknown">Disconnotu</string>
+
+    <string name="green">Birde</string>
+    <string name="red">Ruju</string>
+    <string name="blue">Biaitu</string>
+    <string name="orange">Arantzu</string>
+    <string name="cyan">Cianu</string>
+    <string name="purple">Pùrpura</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">Biancu</string>
+
+    <string name="small">Minore</string>
+    <string name="normal">Normale</string>
+    <string name="large">Largu</string>
+    <string name="extra_large">Largu meda</string>
+
+    <string name="fast">Lestru</string>
+    <string name="slow">Lentu</string>
+
+    <string name="message_delivered">Messàgiu intregadu</string>
+    <string name="message_read">Messàgiu lèghidu</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Cuntatu nou</string>
+    <string name="menu_new_chat">Tzarrada noa</string>
+    <string name="menu_new_group">Grupu nou</string>
+    <string name="menu_new_verified_group">Grupu verificadu nou</string>
+    <string name="menu_send">Imbiadu</string>
+    <string name="menu_toggle_keyboard">Alterna sa tastiera emoji</string>
+    <string name="menu_edit_group">Modìfica su grupu</string>
+    <string name="menu_group_name_and_image">Nùmene e immàgine de su grupu</string>
+    <string name="menu_show_map">Ammustra sa mapa</string>
+    <string name="menu_show_global_map">Ammustra totu sas positziones</string>
+    <string name="menu_archive_chat">Archìvia sa tzarrada</string>
+    <string name="menu_unarchive_chat">Riprìstina sa tzarrada</string>
+    <string name="menu_add_attachment">Annanghe un\'allegadu</string>
+    <string name="menu_leave_group">Lassa su grupu</string>
+    <string name="menu_delete_chat">Iscantzella sa tzarrada</string>
+    <string name="menu_delete_messages">Iscantzella sos messàgios</string>
+    <string name="menu_delete_image">Iscantzella s\'immàgine</string>
+    <string name="menu_delete_locations">Iscantzellare totu sas positziones?</string>
+    <string name="menu_delete_location">Iscantzellare custa positzione?</string>
+    <string name="menu_message_details">Detàllios de su messàgiu</string>
+    <string name="menu_copy_to_clipboard">Còpia in punta de billete</string>
+    <string name="menu_forward">Imbia su messàgiu a calicun\'àteru</string>
+    <string name="menu_resend">Torra a imbiare su messàgiu</string>
+    <string name="menu_reply">Risponde a su messàgiu</string>
+    <string name="menu_mute">Istuda sas notìficas</string>
+    <string name="menu_unmute">Allughe sas notìficas</string>
+    <string name="menu_export_attachment">Esposta s\'allegadu</string>
+    <string name="menu_all_media">Totu sos mèdios</string>
+    <string name="menu_share">Cumpartzi</string>
+    <string name="menu_block_contact">Bloca su cuntatu</string>
+    <string name="menu_unblock_contact">Isbloca su cuntatu</string>
+    <string name="menu_play">Riprodui</string>
+    <string name="menu_pause">Pàusa</string>
+    <string name="menu_scroll_to_bottom">Iscurre a fundu</string>
+    <string name="menu_scroll_to_top">Iscurre a pitzus</string>
+    <string name="menu_help">Agiudu</string>
+    <string name="menu_select_all">Ischerta totu</string>
+    <string name="menu_expand">Ismànnia</string>
+    <string name="menu_edit_name">Modìfica su nùmene</string>
+    <string name="menu_edit_group_name">Modìfica su nùmene de su grupu</string>
+    <string name="menu_edit_group_image">Modìfica s\'immàgine de su grupu</string>
+    <string name="menu_settings">Impostatziones</string>
+    <string name="menu_advanced">Avantzadas</string>
+    <string name="menu_deaddrop">Rechestas de cuntatu</string>
+    <string name="menu_deaddrop_subtitle">Incarca Messàgiu pro incumentzare a tzarrare</string>
+    <string name="menu_view_profile">Pòmpia su profilu</string>
+    <string name="menu_zoom_in">Ismànnia</string>
+    <string name="menu_zoom_out">Mìnima</string>
+    <string name="menu_save_log">Sarva su registru</string>
+    <string name="title_share_location">Cumpartzi sa positzione cun totu sos membros de su grupu</string>
+    <string name="device_talk">Messàgios de su dispositivu</string>
+    <string name="device_talk_subtitle">Messàgios ingendrados localmente</string>
+    <string name="device_talk_explain">Sos messàgios in custa tzarrada benint ingendrados localmente dae s\'aplicatzone Delta Chat tua. Sos isvilupadores los impreant pro informare a pitzu de sos agiornamentos de s\'aplicatzione e de problemas durante s\'impreu.</string>
+    <string name="device_talk_welcome_message">Bene bènnidu in Delta Chat! – Delta Chat paret simigiante a àteras aplicatziones populares pro imbiare messàgios, ma non tenet controllos tzentralizados, arrastamentu o bèndida de sos datos tuos, de sos collegas tuos o de sos familiares tuos a organizatziones mannas.\n\nTecnicamente, Delta Chat est un\'aplicatzione de posta eletrònica cun un\'interfache de tzarrada moderna. Sa posta eletrònica in una bestimenta noa, diamus pòdere nàrrere 👻\n\nImprea Delta Chat cun chie si siat: depes impreare petzi s\'indiritzu de posta eletrònica issoro. Sos destinatàrios non tenent bisòngiu de installare Delta Chat, de bisitare sitos web o de si registrare in noddue - ma craru chi, si sunt interessados, li podes nàrrere de andare a s\'indiritzu 👉 https://get.delta.chat</string>
+    <string name="edit_contact">Modìfica su cuntatu</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Apica sa tzarrada</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Isbloca sa tzarrada</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Apica</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Isbloca</string>
+
+    <string name="mute_for_one_hour">A sa muda pro 1 ora</string>
+    <string name="mute_for_two_hours">A sa muda pro 2 oras</string>
+    <string name="mute_for_one_day">A sa muda pro 1 die</string>
+    <string name="mute_for_seven_days">A sa muda pro 7 dies</string>
+    <string name="mute_forever">A sa muda pro semper</string>
+
+    <string name="share_location_once">una borta</string>
+    <string name="share_location_for_5_minutes">pro 5 minutos</string>
+    <string name="share_location_for_30_minutes">pro 30 minutos</string>
+    <string name="share_location_for_one_hour">pro 1 ora</string>
+    <string name="share_location_for_two_hours">pro 2 oras</string>
+    <string name="share_location_for_six_hours">pro 6 oras</string>
+
+    <string name="file_saved_to">Documentu sarvadu in \"%1$s\".</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Ses seguru de chèrrere lassare custu grupu?</string>
+    <string name="ask_forward">Imbiare su messàgiu a %1$s?</string>
+    <string name="saved_messages_explain">• Torra a imbiare sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n• Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Torra a imbiare a...</string>
+    <string name="pref_profile_info_headline">Sas informatziones de profilu tuas</string>
+    <string name="pref_profile_photo">Fotografia de profilu</string>
+    <string name="pref_who_can_see_this_information">Chie podet pompiare custu?</string>
+    <string name="pref_your_name">Su nùmene tuo</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Firma</string>
+    <string name="pref_screen_security">Seguresa de s\'ischermu</string>
+    <string name="pref_notifications">Notìficas</string>
+    <string name="pref_notifications_show">Ammustra</string>
+    <string name="pref_notifications_priority">Prioridade</string>
+    <string name="pref_led_color">Colore LED</string>
+    <string name="pref_sound">Sonu</string>
+    <string name="pref_privacy">Riservadesa</string>
+    <string name="pref_chats_and_media">Tzarradas e mèdios</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Craru</string>
+    <string name="pref_dark_theme">Iscuru</string>
+    <string name="pref_appearance">Aparèntzia</string>
+    <string name="pref_theme">Tema</string>
+    <string name="pref_language">Limba</string>
+    <string name="pref_chats">Tzarradas</string>
+    <string name="pref_messages">Messàgios</string>
+    <string name="pref_other">Àteru</string>
+    <string name="pref_backup">Còpia de seguresa</string>
+    <string name="pref_backup_explain">Faghe una còpia de seguresa in sa memòria esterna</string>
+    <string name="pref_background">Isfundu</string>
+    <string name="write_message_desktop">Iscrie unu messàgiu</string>
+    <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
+    <string name="more_info_desktop">Àteras informatziones</string>
+    <string name="encryption_info_desktop">Ammustra sas informatziones de tzifradura</string>
+    </resources>
