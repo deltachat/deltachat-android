@@ -71,6 +71,13 @@ F-Droid picks on the tags starting with "v" and builds the version.
 This may take some days.
 
 
+# Release new Amazon Appstore version
+
+on https://developer.amazon.com/dashboard :
+
+11. upload the APK from above
+
+
 # Testing checklist
 
 Only some rough ideas, ideally, this should result into a simple checklist
