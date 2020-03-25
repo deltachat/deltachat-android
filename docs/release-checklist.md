@@ -12,7 +12,7 @@ this will take some time - meanwhile we're doing some housekeeping:
 
 3. update translations and local help:
    $ ./tools/tx-pull-translations.sh
-   $ cd ../deltachat-pages; ./tools/create-local-help.py; cd ../deltachat-ios
+   $ cd ../deltachat-pages; ./tools/create-local-help.py; cd ../deltachat-android
 
 4. update CHANGELOG.md
    (the core-changelog at
