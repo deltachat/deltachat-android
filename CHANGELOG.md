@@ -1,5 +1,19 @@
 # Delta Chat Android Changelog
 
+## v1.3.0
+2020-03-25
+
+* on forwarding, "Saved messages" will be always shown at the top of the list
+* streamline confirmation dialogs on chat creation and on forwarding to "Saved messages"
+* cleanup settings
+* improve interoperability eg. with Cyrus server
+* fix group creation if group was created by non-delta clients
+* fix showing replies from non-delta clients
+* fix crash when using empty groups
+* several other fixes
+* add Sardinian translation, update other translations and help
+
+
 ## v1.2.1
 2020-03-04
 
