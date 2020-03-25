@@ -339,6 +339,8 @@
     <string name="login_error_required_fields">Vänligen ange en giltig e-postadress och ett giltigt lösenord</string>
     <string name="import_backup_title">Importera säkerhetskopiering</string>
     <string name="import_backup_ask">Säkerhetskopiering hittades på %1$s.\n\n Vill du importera eller använda all data och alla inställningar från den?</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". \"% 1 $ s\". Kontrollera om e-postadressen och lösenordet är korrekta.</string>
     <string name="used_settings">Använda inställningar:</string>
     <string name="delete_account">Radera konto</string>
     <string name="delete_account_ask">Är du säker på att du vill ta bort dina kontodata?</string>
@@ -346,13 +348,17 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">vidarebefordra till...</string>
+    <string name="pref_using_default">Använder standard: %s</string>
     <string name="pref_profile_info_headline">Din profilinformation</string>
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_trim_headline">Trimma meddelanden</string>
     <string name="pref_trim_option">Ta bort gamla meddelanden</string>
     <string name="pref_trim_option_explain">Ta bort automatiskt gamla meddelanden när en konversation överstiger en specificerad längd</string>
+    <string name="pref_trim_length_limit">Chattens maximala längd</string>
+    <string name="pref_trim_length_limit_summary">%d meddelanden per chatt</string>
     <string name="pref_trim_now_button">Trimma alla konversationer nu</string>
     <string name="pref_blocked_contacts">Blockerade kontakter</string>
+    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Lösenord och konto</string>
     <string name="pref_who_can_see_this_information">Vem kan se denna information?</string>
     <string name="pref_your_name">Ditt namn</string>
@@ -412,6 +418,17 @@
     <string name="pref_managekeys_export_explain">Exportera hemliga nycklar till \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importera hemliga nycklar</string>
     <string name="pref_background">Bakgrund</string>
+    <string name="pref_background_btn_default">Använd standard bild</string>
+    <string name="pref_background_btn_gallery">Välj från galleriet</string>
+    <string name="pref_watch_mvbox_folder">Titta på DeltaChat-mappen</string>
+    <string name="pref_show_emails_no">Nej, bara cattar</string>
+    <string name="pref_show_emails_accepted_contacts">För godkända kontakter</string>
+    <string name="pref_show_emails_all">Allt</string>
+    <string name="pref_background_default">Standard bakgrund</string>
+    <string name="pref_background_default_color">Standard färg</string>
+    <string name="pref_background_custom_image">Anpassad bild</string>
+    <string name="pref_background_custom_color">Anpassad färg</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Ett meddelande för att sätta upp Autocrypt delar den informationen med andra Autocrypt-anpassade applikationer på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
@@ -491,6 +508,7 @@
     <string name="login_required_desktop">nödvändig</string>
     <string name="name_desktop">Namn</string>
     <string name="reply_to_message_desktop">Svara på meddelande</string>
+    <string name="select_group_image_desktop">Välj en gruppbild</string>
     <string name="download_attachment_desktop">Ladda ner bifogad fil</string>
     <string name="show_key_transfer_message_desktop">Din nyckel har skickats till dig själv. Du bör nu fått ett meddelande på den andra enheten. Byt till den andra enhten, öppna meddelandet och skriv in koden som nu visas. När du har gjort det är den andra enheten redo att använda Autocrypt.</string>
     <string name="new_message_from_desktop">Nytt meddelande från</string>
