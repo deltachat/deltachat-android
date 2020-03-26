@@ -55,7 +55,7 @@ on success, the generated APK is at
 
 on https://play.google.com/apps/publish/ :
 
-9. a) open "Delta Chat/Release management/App releases/Open track/Manage"
+9. a) open "Delta Chat/Release management/App releases/Production track/Manage"
       then "Create release/Browse files" and select APK from above
    b) fill out "What's new in this release?" (500 characters max)
    c) click "Save" and then "Review"
