@@ -48,6 +48,9 @@ public class DirectShareService extends ChooserTargetService {
     }
     for (int i = 0; i <= max; i++) {
       DcChat chat = chatlist.getChat(i);
+      if (!chat.canSend()) {
+        continue;
+      }
 
       Bundle bundle = new Bundle();
       bundle.putInt(ShareActivity.EXTRA_CHAT_ID, chat.getId());
