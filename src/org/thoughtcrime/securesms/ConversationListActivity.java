@@ -115,6 +115,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (isRelayingMessageContent(this)) {
       title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      if (isDirectSharing(this)) {
+        openConversation(getDirectSharingChatId(this), -1);
+      }
     } else {
       title.setText(R.string.app_name);
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
