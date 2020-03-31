@@ -539,6 +539,10 @@
     <string name="qrshow_join_contact_hint">Scan this to set up a contact with %1$s.</string>
     <string name="qrshow_join_contact_no_connection_hint">QR code setup requires an internet connection. Please connect to a network before proceeding.</string>
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
+    <string name="qraccount_ask_create_and_login">Create new e-mail address on \"%1$s\" and log in there?</string>
+    <string name="qraccount_success_enter_name">Login successful - your email address is %1$s\n\nIf you like, you can now enter a name and an avatar image that will be displayed to people you write to.</string>
+    <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new account.</string>
+    <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new account. You can scan the QR code during a new Delta Chat installation.</string>
     <string name="contact_verified">%1$s verified.</string>
     <string name="contact_not_verified">Cannot verify %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
