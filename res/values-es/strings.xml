@@ -367,13 +367,6 @@
     <string name="pref_using_default">Usando valor por defecto: %s</string>
     <string name="pref_profile_info_headline">Información de perfil </string>
     <string name="pref_profile_photo">Foto de perfil</string>
-    <string name="pref_trim_headline">Límite de mensajes</string>
-    <string name="pref_trim_option">Eliminar mensajes antiguos </string>
-    <string name="pref_trim_option_explain">Eliminar automáticamente los mensajes antiguos una vez que el chat supera una cantidad específica</string>
-    <string name="pref_trim_length_limit">Límite de longitud de chat</string>
-    <string name="pref_trim_length_limit_summary">%d mensajes por chat</string>
-    <string name="pref_trim_now_button">Recortar todos los chats ahora</string>
-    <string name="pref_trim_now_ask">¿Borrar todos los mensajes antiguos ahora? Esto recortará inmediatamente todos los chats a los %d mensajes más recientes.</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="pref_profile_photo_remove_ask">¿Eliminar foto de perfil? </string>
     <string name="pref_help_url">https://delta.chat/es/help</string>

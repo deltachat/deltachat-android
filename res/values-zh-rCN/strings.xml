@@ -356,13 +356,6 @@
     <string name="pref_using_default">使用默认： %s</string>
     <string name="pref_profile_info_headline">您的个人资料</string>
     <string name="pref_profile_photo">个人资料图片</string>
-    <string name="pref_trim_headline">消息裁剪</string>
-    <string name="pref_trim_option">删除旧消息</string>
-    <string name="pref_trim_option_explain">聊天超过指定长度后自动删除较旧的消息</string>
-    <string name="pref_trim_length_limit">聊天长度限制</string>
-    <string name="pref_trim_length_limit_summary">每个聊天 %d 个消息</string>
-    <string name="pref_trim_now_button">立即裁剪所有聊天</string>
-    <string name="pref_trim_now_ask">立即删除所有旧消息？这会立即将所有的聊天裁剪到仅剩 %d 条最近的消息。</string>
     <string name="pref_blocked_contacts">已屏蔽联系人</string>
     <string name="pref_profile_photo_remove_ask">移除个人资料照片？</string>
     <string name="pref_help_url">https://delta.chat/help</string>
@@ -528,6 +521,10 @@
     <string name="qrshow_join_contact_hint">扫描此处来建立联系人 %1$s。</string>
     <string name="qrshow_join_contact_no_connection_hint">二维码设置需要互联网连接。 要继续，请先连接到网络。</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
+    <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并在那登录？</string>
+    <string name="qraccount_success_enter_name">登录成功——您的电子邮件地址是 %1$s\n\n如果您愿意，您现在可以去设置一个名称和头像。它们将显示给您写信到的人。</string>
+    <string name="qraccount_qr_code_cannot_be_used">无法使用扫描到的二维码建立新账户。</string>
+    <string name="qraccount_use_on_new_install">扫描到的二维码是用于设置新帐户的。设置新的 Delta Chat 安装时，您可以扫描此二维码。</string>
     <string name="contact_verified">%1$s 已验证。</string>
     <string name="contact_not_verified">无法验证 %1$s。</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

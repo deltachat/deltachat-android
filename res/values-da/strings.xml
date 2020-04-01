@@ -316,13 +316,6 @@
     <string name="pref_using_default">Bruger standard: %s</string>
     <string name="pref_profile_info_headline">Profil information</string>
     <string name="pref_profile_photo">Profil billede</string>
-    <string name="pref_trim_headline">Trimme besked</string>
-    <string name="pref_trim_option">Slette gamle beskeder</string>
-    <string name="pref_trim_option_explain">Automatisk slette ældre beskeder når samtale overskrider en angivet længde. </string>
-    <string name="pref_trim_length_limit">Samtale længde grænse</string>
-    <string name="pref_trim_length_limit_summary">%d beskeder pr. samtale</string>
-    <string name="pref_trim_now_button">Trimme alle samtaler</string>
-    <string name="pref_trim_now_ask">Slette alle ældre beskeder? Dette vil trimme alle samtaler til %d mest nylige beskeder.</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="pref_profile_photo_remove_ask">Fjerne profil billede?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>

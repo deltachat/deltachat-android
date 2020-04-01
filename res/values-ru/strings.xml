@@ -389,13 +389,6 @@
     <string name="pref_using_default">Использовать по умолчанию: %s</string>
     <string name="pref_profile_info_headline">Личный профиль</string>
     <string name="pref_profile_photo">Фото профиля</string>
-    <string name="pref_trim_headline">Очистка сообщений</string>
-    <string name="pref_trim_option">Удалить старые сообщения</string>
-    <string name="pref_trim_option_explain">Автоматически удалять старые сообщения по достижении указанного лимита</string>
-    <string name="pref_trim_length_limit">Ограничение длины чата</string>
-    <string name="pref_trim_length_limit_summary">%d сообщений в чате</string>
-    <string name="pref_trim_now_button">Очистить все чаты</string>
-    <string name="pref_trim_now_ask">Удалить все старые сообщения? Это действие немедленно очистит все чаты до %dпоследних сообщений</string>
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
     <string name="pref_profile_photo_remove_ask">Удалить фото профиля?</string>
     <string name="pref_help_url">https://delta.chat/ru/help</string>

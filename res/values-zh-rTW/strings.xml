@@ -296,13 +296,6 @@
     <string name="pref_using_default">使用預設值: %s</string>
     <string name="pref_profile_info_headline">你的個人資料</string>
     <string name="pref_profile_photo">大頭照</string>
-    <string name="pref_trim_headline">刪除訊息</string>
-    <string name="pref_trim_option">刪除舊訊息</string>
-    <string name="pref_trim_option_explain">對話超過指定長度後，自動刪除舊訊息</string>
-    <string name="pref_trim_length_limit">對話長度限制</string>
-    <string name="pref_trim_length_limit_summary">每組對話最多%d筆訊息</string>
-    <string name="pref_trim_now_button">立刻套用設定</string>
-    <string name="pref_trim_now_ask">立刻刪除所有的舊訊息嗎? 確定的話，所有的對話中超過%d筆的舊訊息都會被刪除。</string>
     <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
     <string name="pref_profile_photo_remove_ask">移除大頭照?</string>
     <string name="pref_help_url">https://delta.chat/tw/help</string>

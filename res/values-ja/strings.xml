@@ -206,10 +206,6 @@
     <string name="login_smtp_server">SMTPｻｰﾊﾞｰ</string>
     <string name="login_smtp_port">SMTPﾎﾟｰﾄ</string>
     <string name="login_smtp_security">SMTP暗号方式</string>
-    <string name="pref_trim_headline">メッセージの削減</string>
-    <string name="pref_trim_option">古いメッセージの削除</string>
-    <string name="pref_trim_option_explain">すべての会話で長さが一定値以下になるよう整理する</string>
-    <string name="pref_trim_now_button">全会話で古いメッセージを削減する</string>
     <string name="pref_who_can_see_this_information">誰がこの情報を見れるようになるのですか？</string>
     <string name="pref_your_name">あなたの名前</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->

@@ -340,7 +340,7 @@
     <string name="import_backup_title">Importera säkerhetskopiering</string>
     <string name="import_backup_ask">Säkerhetskopiering hittades på %1$s.\n\n Vill du importera eller använda all data och alla inställningar från den?</string>
     <!-- Translators: %1$s will be replaced by the email address -->
-    <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". \"% 1 $ s\". Kontrollera om e-postadressen och lösenordet är korrekta.</string>
+    <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekta.</string>
     <string name="used_settings">Använda inställningar:</string>
     <string name="delete_account">Radera konto</string>
     <string name="delete_account_ask">Är du säker på att du vill ta bort dina kontodata?</string>
@@ -351,12 +351,6 @@
     <string name="pref_using_default">Använder standard: %s</string>
     <string name="pref_profile_info_headline">Din profilinformation</string>
     <string name="pref_profile_photo">Profilbild</string>
-    <string name="pref_trim_headline">Trimma meddelanden</string>
-    <string name="pref_trim_option">Ta bort gamla meddelanden</string>
-    <string name="pref_trim_option_explain">Ta bort automatiskt gamla meddelanden när en konversation överstiger en specificerad längd</string>
-    <string name="pref_trim_length_limit">Chattens maximala längd</string>
-    <string name="pref_trim_length_limit_summary">%d meddelanden per chatt</string>
-    <string name="pref_trim_now_button">Trimma alla konversationer nu</string>
     <string name="pref_blocked_contacts">Blockerade kontakter</string>
     <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Lösenord och konto</string>

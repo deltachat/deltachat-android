@@ -173,8 +173,6 @@
     <string name="forward_to">채팅방 선택</string>
     <string name="pref_profile_info_headline">내 프로필</string>
     <string name="pref_profile_photo">프로필 사진</string>
-    <string name="pref_trim_headline">대화 줄이기</string>
-    <string name="pref_trim_option">이전 메시지 삭제</string>
     <string name="pref_blocked_contacts">차단 목록</string>
     <string name="pref_password_and_account_settings">계정 설정</string>
     <string name="pref_who_can_see_this_information">이 정보는 누가 볼 수 있나요?</string>

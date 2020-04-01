@@ -322,13 +322,6 @@
 
     <string name="pref_profile_info_headline">Jūsų profilio informacija</string>
     <string name="pref_profile_photo">Profilio nuotrauka</string>
-    <string name="pref_trim_headline">Žinučių apkarpymas</string>
-    <string name="pref_trim_option">Ištrinti senas žinutes</string>
-    <string name="pref_trim_option_explain">Automatiškai ištrinti senesnes žinutes, kai pokalbis viršija nurodytą ilgį</string>
-    <string name="pref_trim_length_limit">Pokalbio ilgio riba</string>
-    <string name="pref_trim_length_limit_summary">%d žinučių pokalbyje</string>
-    <string name="pref_trim_now_button">Apkarpyti visus pokalbius dabar</string>
-    <string name="pref_trim_now_ask">Ištrinti visas senas žinutes dabar? Tai nedelsiant apkarpys visus pokalbius iki %d paskiausių žinučių.</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="pref_profile_photo_remove_ask">Šalinti profilio nuotrauką?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>

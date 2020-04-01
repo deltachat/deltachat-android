@@ -367,13 +367,6 @@
     <string name="pref_using_default">Standaard wordt gebruikt: %s</string>
     <string name="pref_profile_info_headline">Mijn profiel</string>
     <string name="pref_profile_photo">Profielfoto</string>
-    <string name="pref_trim_headline">Gespreksinkorting</string>
-    <string name="pref_trim_option">Oude berichten verwijderen</string>
-    <string name="pref_trim_option_explain">Oudere berichten automatisch verwijderen na het overschrijden van de opgegeven lengte</string>
-    <string name="pref_trim_length_limit">Lengtelimiet</string>
-    <string name="pref_trim_length_limit_summary">%d berichten per gesprek</string>
-    <string name="pref_trim_now_button">Alle gesprekken nu inkorten</string>
-    <string name="pref_trim_now_ask">Wil je alle oude berichten verwijderen? Alle gesprekken worden direct ingekort tot de %d recentste berichten.</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="pref_profile_photo_remove_ask">Profielfoto verwijderen?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
@@ -539,6 +532,10 @@
     <string name="qrshow_join_contact_hint">Scan dit om een contactpersoon in te stellen met %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Voor het instellen van QR-codes is een internetverbinding vereist. Maak verbinding en probeer het opnieuw.</string>
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
+    <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op \'%1$s\' en daarmee inloggen?</string>
+    <string name="qraccount_success_enter_name">Het inloggen is gelukt. Je e-mailadres is \'%1$s\'.\n\nAls je wilt, kun je een naam en profielafbeelding opgeven die worden getoond aan de mensen waarmee je communiceert.</string>
+    <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
+    <string name="qraccount_use_on_new_install">De gescande QR-code is voor het instellen van een nieuw account. Je kunt deze direct scannen na het (opnieuw) installeren van Delta Chat.</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
     <string name="contact_not_verified">Kan %1$s niet goedkeuren</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

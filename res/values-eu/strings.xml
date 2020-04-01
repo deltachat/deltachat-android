@@ -367,13 +367,6 @@
     <string name="pref_using_default">Lehenetsia erabiltzen: %s</string>
     <string name="pref_profile_info_headline">Zure profileko informazioa</string>
     <string name="pref_profile_photo">Profileko argazkia</string>
-    <string name="pref_trim_headline">Mezu kimaketa</string>
-    <string name="pref_trim_option">Ezabatu mezu zaharrak</string>
-    <string name="pref_trim_option_explain">Automatikoki ezabatu mezu zaharrenak txat batek luzera zehatz bat gainditzen duenean</string>
-    <string name="pref_trim_length_limit">Txaten luzera muga</string>
-    <string name="pref_trim_length_limit_summary">%d mezu txateko</string>
-    <string name="pref_trim_now_button">Kimatu txat guztiak orain</string>
-    <string name="pref_trim_now_ask">Ezabatu mezu zaharrak orain? Honek berehala kimatuko ditu txat guztiak %d mezu berrienetara.</string>
     <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
     <string name="pref_profile_photo_remove_ask">Kendu profileko argazkia?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>

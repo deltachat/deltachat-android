@@ -329,13 +329,6 @@
     <string name="pref_using_default">Varsayılan istifadə: %s</string>
     <string name="pref_profile_info_headline">Profil məlumatınız</string>
     <string name="pref_profile_photo">Profil şəkili</string>
-    <string name="pref_trim_headline">Mesajın düzəldilməsi</string>
-    <string name="pref_trim_option">Köhnə mesajları sil</string>
-    <string name="pref_trim_option_explain">Bir çat müəyyən bir uzunluğu aşdıqdan sonra köhnə mesajları avtomatik olaraq silin</string>
-    <string name="pref_trim_length_limit">Çat uzunluq limiti</string>
-    <string name="pref_trim_length_limit_summary">%d mesaj çatda. </string>
-    <string name="pref_trim_now_button">İndi bütün söhbətləri kəsin</string>
-    <string name="pref_trim_now_ask">Bütün köhnə mesajları indi silmək istəyirsiniz? Bu, bütün mesajları%d ən son olan mesaja  salacaq. </string>
     <string name="pref_blocked_contacts">Bloklanmış kontaktlar</string>
     <string name="pref_profile_photo_remove_ask">Profil şəkilini silmək?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>

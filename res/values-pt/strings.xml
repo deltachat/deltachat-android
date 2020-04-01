@@ -252,13 +252,6 @@
     <string name="pref_using_default">Utilizando padrão: %s</string>
     <string name="pref_profile_info_headline">O seu perfil</string>
     <string name="pref_profile_photo">Foto do perfil</string>
-    <string name="pref_trim_headline">Aparar mensagens</string>
-    <string name="pref_trim_option">Apagar mensagens antigas</string>
-    <string name="pref_trim_option_explain">Apagar automaticamente as mensagens mais antigas quando a chat ultrapassar um determinado período</string>
-    <string name="pref_trim_length_limit">Limite de dimensão da chat</string>
-    <string name="pref_trim_length_limit_summary">%d mensagens por chat</string>
-    <string name="pref_trim_now_button">Aparar todas as chats</string>
-    <string name="pref_trim_now_ask">Apagar todas as mensagens antigas agora? Isso reduzirá imediatamente todas as chats às %d mensagens mais recentes.</string>
     <string name="pref_blocked_contacts">Bloquear contactos</string>
     <string name="pref_profile_photo_remove_ask">Remover a foto do perfil</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>

@@ -261,8 +261,6 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Проследи за…</string>
     <string name="pref_profile_info_headline">Подаци вашег профила</string>
-    <string name="pref_trim_headline">Скраћивање порука</string>
-    <string name="pref_trim_option">Бриши старе поруке</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="pref_who_can_see_this_information">Ко може да види ове податке?</string>
     <string name="pref_your_name">Ваше име</string>

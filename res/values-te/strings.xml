@@ -152,7 +152,6 @@
     <string name="media_preview">మీడియా పూర్వప్రదర్శన</string>
     <string name="pref_profile_info_headline">మీ రూప సమాచారం</string>
     <string name="pref_profile_photo">రూపచిత్రం</string>
-    <string name="pref_trim_option">పాత సందేశాలను తొలగించు</string>
     <string name="pref_blocked_contacts">నిరోధించిన పరిచయాలు</string>
     <string name="pref_profile_photo_remove_ask">రూపచిత్రం తీసివేయాలా?</string>
     <string name="pref_password_and_account_settings">ఖాతా సెట్టింగులు</string>

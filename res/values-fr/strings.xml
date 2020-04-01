@@ -367,13 +367,6 @@
     <string name="pref_using_default">Utilisation par défaut : %s</string>
     <string name="pref_profile_info_headline">Informations de votre profil</string>
     <string name="pref_profile_photo">Photo du profil</string>
-    <string name="pref_trim_headline">Ajustement du message</string>
-    <string name="pref_trim_option">Effacer les anciens messages</string>
-    <string name="pref_trim_option_explain">Effacer automatiquement les anciens messages dès qu’une discussion dépasse une durée spécifiée.</string>
-    <string name="pref_trim_length_limit">limite de longueur de tchat</string>
-    <string name="pref_trim_length_limit_summary">%d messages par tchat</string>
-    <string name="pref_trim_now_button">Ajuster tous les tchats maintenant</string>
-    <string name="pref_trim_now_ask">Effacer tous les messages anciens? Cela écrêtera immédiatement toutes les conversations jusqu\'aux %d messages les plus récents.</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="pref_profile_photo_remove_ask">Supprimer la photo de profil ?</string>
     <string name="pref_help_url">https://delta.chat/help</string>

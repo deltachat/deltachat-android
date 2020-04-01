@@ -244,8 +244,6 @@
     <string name="forward_to">Továbbítás…</string>
     <string name="pref_profile_info_headline">Profilod adatai</string>
     <string name="pref_profile_photo">Profilkép</string>
-    <string name="pref_trim_headline">Üzenetek csonkítása</string>
-    <string name="pref_trim_option">Régi üzenetek törlése</string>
     <string name="pref_blocked_contacts">Letiltott partnerek</string>
     <string name="pref_who_can_see_this_information">Ki láthatja ezt az információt?</string>
     <string name="pref_your_name">Neved</string>

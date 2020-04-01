@@ -336,8 +336,6 @@
 
 
     <string name="pref_profile_photo">Profilbildo</string>
-    <string name="pref_trim_option">Forigi malnovajn mesaĝojn</string>
-    <string name="pref_trim_length_limit_summary">Po %d mesaĝoj en babilo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
     <string name="pref_profile_photo_remove_ask">Ĉu forigi profilbildon?</string>
     <string name="pref_help_url">https://delta.chat/help</string>

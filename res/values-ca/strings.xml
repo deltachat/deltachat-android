@@ -280,13 +280,6 @@
     <string name="pref_using_default">Ús per defecte: %s</string>
     <string name="pref_profile_info_headline">Informació del vostre perfil</string>
     <string name="pref_profile_photo">Fotografia de perfil</string>
-    <string name="pref_trim_headline">Retalla missatges</string>
-    <string name="pref_trim_option">Esborra missatges antics</string>
-    <string name="pref_trim_option_explain">Esborra els missatges més antics quan el xat sobrepassi una mida concreta</string>
-    <string name="pref_trim_length_limit">Límit de mida del xat</string>
-    <string name="pref_trim_length_limit_summary">%d missatges per xat</string>
-    <string name="pref_trim_now_button">Retalla tots els xats ara</string>
-    <string name="pref_trim_now_ask">Esborrar ara els missatges antics? Això reduirà el nombre de xats als %d missatges més recents.</string>
     <string name="pref_blocked_contacts">Contactes bloquejats</string>
     <string name="pref_profile_photo_remove_ask">Esborrar la foto de perfil?</string>
     <string name="pref_help_url">https://delta.chat/ca/help</string>

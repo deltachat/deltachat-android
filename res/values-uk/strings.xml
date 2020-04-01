@@ -272,13 +272,6 @@
     <string name="pref_using_default">Використовувати за замовчуванням: %s</string>
     <string name="pref_profile_info_headline">Ваш профіль</string>
     <string name="pref_profile_photo">Фото профілю</string>
-    <string name="pref_trim_headline">Очищення повідомлень</string>
-    <string name="pref_trim_option">Видалити старі повідомлення</string>
-    <string name="pref_trim_option_explain">Автоматично видаляти старі повідомлення після досягнення зазначеного ліміту</string>
-    <string name="pref_trim_length_limit">Ліміт довжини чату</string>
-    <string name="pref_trim_length_limit_summary">%d повідомлень у чаті</string>
-    <string name="pref_trim_now_button">Очистити всі чати</string>
-    <string name="pref_trim_now_ask">Видалити всі старі повідомлення? Ця дія негайно очистить всі чати до %d останніх повідомлень.</string>
     <string name="pref_blocked_contacts">Заблоковані контакти</string>
     <string name="pref_profile_photo_remove_ask">Видалити фото профілю?</string>
     <string name="pref_help_url">https://delta.chat/uk/help</string>

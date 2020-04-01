@@ -369,13 +369,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_using_default">Standard verwenden: %s</string>
     <string name="pref_profile_info_headline">Mein Profil</string>
     <string name="pref_profile_photo">Profilbild</string>
-    <string name="pref_trim_headline">Nachrichten kürzen</string>
-    <string name="pref_trim_option">Alte Nachrichten löschen</string>
-    <string name="pref_trim_option_explain">Ältere Nachrichten automatisch löschen, sobald ein Chat eine bestimmte Länge überschreitet.</string>
-    <string name="pref_trim_length_limit">Chat-Länge begrenzen</string>
-    <string name="pref_trim_length_limit_summary">%d Nachrichten pro Chat</string>
-    <string name="pref_trim_now_button">Alle Chats kürzen</string>
-    <string name="pref_trim_now_ask">Alte Nachrichten jetzt löschen? In allen Chats werden die Nachrichten bis auf die %d neuesten entfernt.</string>
     <string name="pref_blocked_contacts">Blockierte Kontakte</string>
     <string name="pref_profile_photo_remove_ask">Profilbild entfernen?</string>
     <string name="pref_help_url">https://delta.chat/de/help</string>
@@ -541,6 +534,10 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrshow_join_contact_hint">Scannen, um einen Kontakt mit %1$s herzustellen.</string>
     <string name="qrshow_join_contact_no_connection_hint">Der Austausch von QR-Codes erfordert eine Verbindung zum Internet. Bitte stellen Sie diese her, bevor Sie fortfahtren.</string>
     <string name="qrshow_join_contact_no_connection_toast">Keine Verbindung zum Internet, Austausch des QR-Codes nicht möglich.</string>
+    <string name="qraccount_ask_create_and_login"> \"%1$s\" erzeugen und dort anmelden?</string>
+    <string name="qraccount_success_enter_name">Anmeldung Erfolgreich — Ihre E-Mail-Adresse ist %1$s\n\nWenn Sie mögen, können Sie nun einen Namen und einen Avatar festlegen, der den ChatpartnerInnen angezeigt wird.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Der eingescannte QR-Code kann nicht dazu verwendet werden, eine neues E-Mail-Konto zu erzeugen.</string>
+    <string name="qraccount_use_on_new_install">Der gescannte QR-Code ist zum Erstellen eines neuen E-Mail-Kontos. Sie können den QR-Code nur bei einer neuen Delta Chat Installation verwenden.</string>
     <string name="contact_verified">%1$s verifiziert.</string>
     <string name="contact_not_verified">Kann %1$s nicht verifizieren</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

@@ -193,8 +193,6 @@
     <string name="pref_using_default">مستخدم كافتراضي: %s</string>
     <string name="pref_profile_info_headline">معلومات ملفك التعريفي</string>
     <string name="pref_profile_photo">صورة الملف التعريفي</string>
-    <string name="pref_trim_headline">تفاصيل الرسالة</string>
-    <string name="pref_trim_option">احذف الرسائل القديمة</string>
     <string name="pref_blocked_contacts">المراسلون المحبوسون</string>
     <string name="pref_password_and_account_settings">الكلمة السرية والحساب</string>
     <string name="pref_your_name">اسمك</string>

@@ -367,13 +367,6 @@
     <string name="pref_using_default">Po përdoret parazgjedhje: %s</string>
     <string name="pref_profile_info_headline">Të dhëna tuajat të profilit</string>
     <string name="pref_profile_photo">Foto profili</string>
-    <string name="pref_trim_headline">Qethje mesazhi</string>
-    <string name="pref_trim_option">Fshiji mesazhet e vjetër</string>
-    <string name="pref_trim_option_explain">Fshiji automatikisht mesazhet më të vjetër, pasi një fjalosje tejkalon një gjatësi të caktuar</string>
-    <string name="pref_trim_length_limit">Kufi gjatësie fjalosjeje</string>
-    <string name="pref_trim_length_limit_summary">%d mesazhe për fjalosje</string>
-    <string name="pref_trim_now_button">Qethi krejt fjalosjet tani</string>
-    <string name="pref_trim_now_ask">Të fshihen krejt mesazhet e vjetër tani? Kjo do të sjellë qethjen e menjëhershme të krejt fjalosjeve duke lënë %d mesazhet më të rinj.</string>
     <string name="pref_blocked_contacts">Kontakte të bllokuar</string>
     <string name="pref_profile_photo_remove_ask">Të hiqet fotoja e profilit?</string>
     <string name="pref_help_url">https://delta.chat/en/help</string>
@@ -538,6 +531,10 @@
     <string name="qrshow_join_contact_hint">Skanojeni këtë që të rregullohet një kontakt %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Ujdisja e kodit QR lyp lidhje në internet. Ju lutemi, përpara se të ecni më tej, lidhuni me një rrjet.</string>
     <string name="qrshow_join_contact_no_connection_toast">S\’ka lidhje në internet, s\’bëhet dot ujdisja e kodit QR.</string>
+    <string name="qraccount_ask_create_and_login">Të krijohet adresë email e re te \"%1$s\" dhe të bëhet hyrja atje?</string>
+    <string name="qraccount_success_enter_name">Hyrje e suksesshme—adresa juaj email është %1$s\n\nNëse doni, tani mund të jepni një emër dhe një figurë avatari që do t’u shfaqet personave që ju shkruajnë.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Kodi QR i skanuar s’mund të përdoret për të ujdisur një llogari të re.</string>
+    <string name="qraccount_use_on_new_install">Kodi QR i skanuar është për ujdisje të një llogarie të re. Kodin QR mund ta skanoni kur ujdisni një instalim të ri të Delta Chat-it.</string>
     <string name="contact_verified">%1$s u verifikua.</string>
     <string name="contact_not_verified">S\’verifikohet dot %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

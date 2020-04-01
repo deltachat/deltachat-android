@@ -255,10 +255,6 @@
     <string name="forward_to">Videresend til…</string>
     <string name="pref_profile_info_headline">Din profilinfo</string>
     <string name="pref_profile_photo">Profilbilde</string>
-    <string name="pref_trim_headline">Automatisk sletting</string>
-    <string name="pref_trim_option">Slett gamle meldinger</string>
-    <string name="pref_trim_option_explain">Automatically delete older messages once a conversation exceeds a specified length</string>
-    <string name="pref_trim_now_button">Rydd opp i alle samtaler nå</string>
     <string name="pref_blocked_contacts">Blokkerte kontakter</string>
     <string name="pref_password_and_account_settings">Kontoinnstillinger</string>
     <string name="pref_who_can_see_this_information">Hvem kan se denne informasjonen?</string>

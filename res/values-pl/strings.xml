@@ -381,13 +381,6 @@
     <string name="pref_using_default">Użyj domyślne: %s</string>
     <string name="pref_profile_info_headline">Twój profil</string>
     <string name="pref_profile_photo">Zdjęcie profilowe</string>
-    <string name="pref_trim_headline">Przycinanie wiadomości</string>
-    <string name="pref_trim_option">Usuń stare wiadomości</string>
-    <string name="pref_trim_option_explain">Automatycznie usuwaj starsze wiadomości, gdy czat przekroczy określoną długość</string>
-    <string name="pref_trim_length_limit">Ograniczenie długości czatu</string>
-    <string name="pref_trim_length_limit_summary">%d wiadomości na czat</string>
-    <string name="pref_trim_now_button">Przytnij teraz wszystkie czaty</string>
-    <string name="pref_trim_now_ask">Usunąć teraz wszystkie stare wiadomości? Spowoduje to natychmiastowe przycięcie wszystkich czatów do %d ostatnich wiadomości.</string>
     <string name="pref_blocked_contacts">Zablokowane kontakty</string>
     <string name="pref_profile_photo_remove_ask">Usunąć zdjęcie profilowe?</string>
     <string name="pref_help_url">https://delta.chat/pl/help</string>
