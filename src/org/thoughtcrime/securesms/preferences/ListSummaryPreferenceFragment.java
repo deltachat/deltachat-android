@@ -44,13 +44,17 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     }
   }
 
-  protected void updateListSummary(Preference preference, Object value) {
+  protected String getSelectedSummary(Preference preference, Object value) {
     ListPreference listPref = (ListPreference) preference;
     int entryIndex = Arrays.asList(listPref.getEntryValues()).indexOf(value);
+    return entryIndex >= 0 && entryIndex < listPref.getEntries().length
+            ? listPref.getEntries()[entryIndex].toString()
+            : getString(R.string.unknown);
+  }
 
-    listPref.setSummary(entryIndex >= 0 && entryIndex < listPref.getEntries().length
-        ? listPref.getEntries()[entryIndex]
-        : getString(R.string.unknown));
+  protected void updateListSummary(Preference preference, Object value) {
+    ListPreference listPref = (ListPreference) preference;
+    listPref.setSummary(getSelectedSummary(preference, value));
   }
 
   protected void initializeListSummary(ListPreference pref) {

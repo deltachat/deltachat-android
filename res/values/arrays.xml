@@ -143,6 +143,39 @@
       <item>@string/mute_forever</item>
   </string-array>
 
+  <string-array name="autodel_device_durations">
+      <item>@string/off</item>
+      <item>@string/autodel_after_1_hour</item>
+      <item>@string/autodel_after_1_day</item>
+      <item>@string/autodel_after_1_week</item>
+      <item>@string/autodel_after_4_weeks</item>
+  </string-array>
+
+  <string-array name="autodel_device_values">
+      <item>0</item>
+      <item>3600</item>
+      <item>86400</item>
+      <item>604800</item>
+      <item>2419200</item>
+  </string-array>
+
+  <string-array name="autodel_server_durations">
+      <item>@string/off</item>
+      <item>@string/autodel_at_once</item>
+      <item>@string/autodel_after_1_hour</item>
+      <item>@string/autodel_after_1_day</item>
+      <item>@string/autodel_after_1_week</item>
+      <item>@string/autodel_after_4_weeks</item>
+  </string-array>
+
+  <string-array name="autodel_server_values">
+      <item>0</item>
+      <item>1</item>
+      <item>3600</item>
+      <item>86400</item>
+      <item>604800</item>
+      <item>2419200</item>
+  </string-array>
 
 <string-array name="share_location_durations">
     <item>@string/share_location_for_5_minutes</item>
