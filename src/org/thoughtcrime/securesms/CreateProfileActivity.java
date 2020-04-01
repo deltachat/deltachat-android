@@ -239,10 +239,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
     if (fromWelcome) {
       String addr = DcHelper.get(this, "addr");
-      loginSuccessText.setText(String.format(
-              "Login successfull - your email address is %1$s\n\n" +
-              "If you like, you can now enter a name and an avatar image " +
-              "that will be displayed to people you write to.", addr));
+      loginSuccessText.setText(getString(R.string.qraccount_success_enter_name, addr));
       ViewUtil.findById(this, R.id.status_text_layout).setVisibility(View.GONE);
       ViewUtil.findById(this, R.id.information_label).setVisibility(View.GONE);
       passwordAccountSettings.setVisibility(View.GONE);

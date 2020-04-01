@@ -228,7 +228,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 case DcContext.DC_QR_ACCOUNT:
                     String domain = qrParsed.getText1();
                     new AlertDialog.Builder(this)
-                            .setMessage(String.format("Create new e-mail address on \"%s\" and log in there?", domain))
+                            .setMessage(getString(R.string.qraccount_ask_create_and_login, domain))
                             .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
@@ -237,7 +237,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
                 default:
                     new AlertDialog.Builder(this)
-                            .setMessage("The scanned QR code cannot be used to set up a new account.")
+                            .setMessage(R.string.qraccount_qr_code_cannot_be_used)
                             .setPositiveButton(R.string.ok, null)
                             .show();
                     break;

@@ -69,7 +69,7 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
                 break;
 
             case DcContext.DC_QR_ACCOUNT:
-                builder.setMessage("The scanned QR code is for setting up a new account. You can scan the QR code during a new Delta Chat installation.");
+                builder.setMessage(R.string.qraccount_use_on_new_install);
                 builder.setPositiveButton(R.string.ok, null);
                 break;
 
