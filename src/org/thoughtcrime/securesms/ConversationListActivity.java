@@ -98,20 +98,19 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     initializeSearchListener();
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
-    if (isRelayingMessageContent(this)) {
-      title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      if (isDirectSharing(this)) {
-        openConversation(getDirectSharingChatId(this), -1);
-      }
-    }
-    handleOpenpgp4fpr();
+    refresh();
   }
 
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
     setIntent(intent);
+    refresh();
+    conversationListFragment.onNewIntent();
+    invalidateOptionsMenu();
+  }
+
+  private void refresh() {
     if (isRelayingMessageContent(this)) {
       title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -122,8 +121,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       title.setText(R.string.app_name);
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
-    conversationListFragment.onNewIntent();
-    invalidateOptionsMenu();
     handleOpenpgp4fpr();
   }
 
