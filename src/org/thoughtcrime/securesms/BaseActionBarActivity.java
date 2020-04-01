@@ -38,18 +38,28 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
       forceOverflowMenu();
     }
     super.onCreate(savedInstanceState);
+
+    if (shouldLock()) {
+      // Already hide everything here to prevent sensible data from popping up shortly:
+      findViewById(android.R.id.content).setVisibility(View.INVISIBLE);
+      isHiddenByScreenLock = true;
+    }
   }
 
-    @Override
-    protected void onStart() {
-        if (ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult) {
-          ScreenLockUtil.applyScreenLock(this);
-        } else if (isHiddenByScreenLock) {
-          findViewById(android.R.id.content).setVisibility(View.VISIBLE);
-          isHiddenByScreenLock = false;
-        }
-        super.onStart();
+  @Override
+  protected void onStart() {
+    if (shouldLock()) {
+      ScreenLockUtil.applyScreenLock(this);
+    } else if (isHiddenByScreenLock) {
+      findViewById(android.R.id.content).setVisibility(View.VISIBLE);
+      isHiddenByScreenLock = false;
     }
+    super.onStart();
+  }
+
+  private boolean shouldLock() {
+    return ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult;
+  }
 
   @Override
   protected void onStop() {
