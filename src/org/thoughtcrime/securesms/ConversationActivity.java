@@ -428,14 +428,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     }
 
-    if (recipient != null && Prefs.isChatMuted(this, chatId)) {
-      inflater.inflate(R.menu.conversation_muted, menu);
-    }
-    else {
-      inflater.inflate(R.menu.conversation_unmuted, menu);
-    }
-
     inflater.inflate(R.menu.conversation, menu);
+
+    if(Prefs.isChatMuted(this, chatId)) {
+      menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
+    }
 
     if (!Prefs.isLocationStreamingEnabled(this)) {
       menu.findItem(R.id.menu_show_map).setVisible(false);
@@ -469,7 +466,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_archive_chat:          handleArchiveChat();               return true;
       case R.id.menu_delete_chat:           handleDeleteChat();                return true;
       case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
-      case R.id.menu_unmute_notifications:  handleUnmuteNotifications();       return true;
       case R.id.menu_profile:               handleProfile();                   return true;
       case R.id.menu_show_map:              handleShowMap();                   return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
@@ -525,10 +521,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleMuteNotifications() {
-    MuteDialog.show(this, until -> {
-      Prefs.setChatMutedUntil(this, chatId, until);
-      titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
-    });
+    if(!Prefs.isChatMuted(this, chatId)) {
+      MuteDialog.show(this, until -> {
+        Prefs.setChatMutedUntil(this, chatId, until);
+        titleView.setTitle(glideRequests, dcChat);
+      });
+    } else {
+      Prefs.setChatMutedUntil(this, chatId, 0);
+      titleView.setTitle(glideRequests, dcChat);
+    }
   }
 
   private void handleProfile() {
@@ -539,11 +540,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       startActivity(intent);
       overridePendingTransition(0, 0);
     }
-  }
-
-  private void handleUnmuteNotifications() {
-    Prefs.setChatMutedUntil(this, chatId, 0);
-    titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
   }
 
   private void handleLeaveGroup() {
