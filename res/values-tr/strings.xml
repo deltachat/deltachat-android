@@ -466,6 +466,18 @@
     <string name="pref_background_custom_image">Özel görsel</string>
     <string name="pref_background_custom_color">Özel renk</string>
 
+    <!-- automatically delete message -->
+    <string name="autodel_title">İletileri otomatik sil</string>
+    <string name="autodel_title_short">Otomatik sil</string>
+    <string name="autodel_device_title">İletileri aygıttan sil</string>
+    <string name="autodel_server_title">İletileri sunucudan sil</string>
+    <string name="autodel_confirm">Anladım, tüm bu iletileri sil</string>
+    <string name="autodel_at_once">Bir kerede</string>
+    <string name="autodel_after_1_hour">1 saat sonra</string>
+    <string name="autodel_after_1_day">1 gün sonra</string>
+    <string name="autodel_after_1_week">1 hafta sonra</string>
+    <string name="autodel_after_4_weeks">4 hafta sonra</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt, otomatik uçtan uca e-posta şifrelemesi için yeni ve açık bir belirtimdir.\n\nUçtan uca ayarlamanız, gerektiğinde otomatik olarak oluşturulur ve Autocrypt Ayarlama İletileri ile aygıtlar arasında aktarabilirsiniz.</string>

@@ -468,6 +468,21 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_background_custom_image">Benutzerdefiniertes Hintergrundbild</string>
     <string name="pref_background_custom_color">Benutzerdefinierte Farbe</string>
 
+    <!-- automatically delete message -->
+    <string name="autodel_title">Nachrichten automatisch löschen</string>
+    <string name="autodel_title_short">Automatisch löschen</string>
+    <string name="autodel_device_title">Nachrichten vom Gerät löschen</string>
+    <string name="autodel_server_title">Nachrichten vom Server löschen</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %1$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_device_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten %2$s löschen?\n\n• Dies schliesst alle Medien mit ein\n\n• Nachrichten werden gelöscht, auch wenn sie nicht angesehen wurden\n\n• \"Gespeicherte Nachrichten\" werden nicht gelöscht</string>
+    <string name="autodel_server_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten %2$s löschen?\n\n• Dies schliesst alle Medien mit ein\n\n• E-Mails, die aufgrund von \"Normale E-Mails anzeigen\" angezeigt werden, werden ebenfalls vom Server gelöscht\n\n• \"Gespeicherte Nachrichten\" werden ebenfalls vom Server gelöschet</string>
+    <string name="autodel_confirm">Verstanden, löschen all diese Nachrichten</string>
+    <string name="autodel_at_once">Sofort</string>
+    <string name="autodel_after_1_hour">Nach 1 Stunde</string>
+    <string name="autodel_after_1_day">Nach 1 Tag</string>
+    <string name="autodel_after_1_week">Nach 1 Woche</string>
+    <string name="autodel_after_4_weeks">Nach 4 Wochen</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nDas Ende-zu-Ende-Setup wird dabei automatisch eingerichtet und kann mit Autocrypt-Setup-Nachrichten zwischen Geräten übertragen werden.</string>

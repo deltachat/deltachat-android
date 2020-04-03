@@ -465,6 +465,21 @@
     <string name="pref_background_custom_image">Figurë vetjake</string>
     <string name="pref_background_custom_color">Ngjyrë vetjake</string>
 
+    <!-- automatically delete message -->
+    <string name="autodel_title">Vetëfshi mesazhe</string>
+    <string name="autodel_title_short">Vetëfshi</string>
+    <string name="autodel_device_title">Fshini mesazhe prej pajisjes</string>
+    <string name="autodel_server_title">Fshini mesazhe prej shërbyesi</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %1$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_device_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi %2$s në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Mesazhi do të fshihet, qoftë kur e kanë parë, qoftë kur s’e kanë parë\n\n• \"Mesazhe të ruajtur\" do të anashkalohen nga fshirja vendore</string>
+    <string name="autodel_server_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi %2$s në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Kjo do të fshijë gjithashtu email-e nën mundësinë \"Shfaq email-e klasikë\"\n\n• \"Mesazhet e ruajtur\" do të fshihen gjithashtu nga shërbyesi</string>
+    <string name="autodel_confirm">E kuptoj, fshiji krejt këto mesazhe</string>
+    <string name="autodel_at_once">Menjëherë</string>
+    <string name="autodel_after_1_hour">Pas 1 ore</string>
+    <string name="autodel_after_1_day">Pas 1 dite</string>
+    <string name="autodel_after_1_week">Pas 1 jave</string>
+    <string name="autodel_after_4_weeks">Pas 4 javësh</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt-i është një protokoll i ri dhe i hapur për fshehtëzim automatik email-esh skaj-më-skaj.\n\nRregullimi skaj-më-skaj për ju krijohet vetvetiu kur duhet dhe mund ta shpërngulni nga një pajisje në tjetër përmes Mesazhesh Rregullimi Autocrypt-i.</string>
