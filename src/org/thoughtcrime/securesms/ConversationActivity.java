@@ -34,6 +34,7 @@ import android.os.Vibrator;
 import android.provider.Browser;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.WindowCompat;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -54,6 +55,7 @@ import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -140,6 +142,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 public class ConversationActivity extends PassphraseRequiredActionBarActivity
     implements ConversationFragment.ConversationFragmentListener,
                AttachmentManager.AttachmentListener,
+               SearchView.OnQueryTextListener,
                DcEventCenter.DcEventDelegate,
                OnKeyboardShownListener,
                AttachmentDrawerListener,
@@ -453,6 +456,36 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     inflater.inflate(R.menu.conversation_delete, menu);
 
+    try {
+      MenuItem searchItem = menu.findItem(R.id.menu_search_chat);
+      searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+        @Override
+        public boolean onMenuItemActionExpand(final MenuItem item) {
+          ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+          return true;
+        }
+
+        @Override
+        public boolean onMenuItemActionCollapse(final MenuItem item) {
+          ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, true);
+          return true;
+        }
+      });
+      SearchView searchView = (SearchView) searchItem.getActionView();
+      searchView.setOnQueryTextListener(this);
+      searchView.setQueryHint(getString(R.string.search));
+      searchView.setIconifiedByDefault(true);
+
+      // hide the [X] beside the search field - this is too much noise, search can be aborted eg. by "back"
+      ImageView closeBtn = searchView.findViewById(R.id.search_close_btn);
+      if (closeBtn!=null) {
+        closeBtn.setEnabled(false);
+        closeBtn.setImageDrawable(null);
+      }
+    } catch (Exception e) {
+      Log.e(TAG, "cannot set up in-chat-search: ", e);
+    }
+
     super.onPrepareOptionsMenu(menu);
     return true;
   }
@@ -468,6 +501,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
       case R.id.menu_profile:               handleProfile();                   return true;
       case R.id.menu_show_map:              handleShowMap();                   return true;
+      case R.id.menu_search_up:             handleMenuSearchNext(false);       return true;
+      case R.id.menu_search_down:           handleMenuSearchNext(true);        return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
     }
 
@@ -1494,5 +1529,21 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       initializeSecurity(isSecureText, isDefaultSms);
       invalidateOptionsMenu();
     }
+  }
+
+
+  // in-chat search
+
+  private void handleMenuSearchNext(boolean searchNext) {
+  }
+
+  @Override
+  public boolean onQueryTextSubmit(String query) {
+    return true; // action handled by listener
+  }
+
+  @Override
+  public boolean onQueryTextChange(String query) {
+    return true; // action handled by listener
   }
 }
