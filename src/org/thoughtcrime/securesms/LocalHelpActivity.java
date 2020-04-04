@@ -12,6 +12,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
+
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -23,6 +25,8 @@ import java.util.Arrays;
 import java.util.Locale;
 
 public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
+                               implements SearchView.OnQueryTextListener,
+                                          WebView.FindListener
 {
     private WebView webView;
     private final DynamicTheme    dynamicTheme    = new DynamicTheme();
@@ -84,6 +88,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
             }
         });
         webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang));
+        webView.setFindListener(this);
     }
 
     @Override
@@ -104,8 +109,47 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
         menu.clear();
 
         inflater.inflate(R.menu.local_help, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.menu_search_localhelp);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+
         super.onPrepareOptionsMenu(menu);
         return true;
+    }
+
+    private String lastQuery = "";
+    private Toast lastToast = null;
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        webView.findNext(true);
+        return true; // action handled by listener
+    }
+
+    @Override
+    public boolean onQueryTextChange(String query) {
+        String normQuery = query.trim();
+        lastQuery = normQuery;
+        if (lastToast!=null) {
+            lastToast.cancel();
+            lastToast = null;
+        }
+        webView.findAllAsync(normQuery);
+        return true; // action handled by listener
+    }
+
+    @Override
+    public void onFindResultReceived (int activeMatchOrdinal, int numberOfMatches, boolean isDoneCounting)
+    {
+        if (isDoneCounting && numberOfMatches==0 && !lastQuery.isEmpty()) {
+            String msg = getString(R.string.search_no_result_for_x, lastQuery);
+            if (lastToast!=null) {
+                lastToast.cancel();
+            }
+            lastToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+            lastToast.show();
+        }
     }
 
     @Override
