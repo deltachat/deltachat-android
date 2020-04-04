@@ -170,6 +170,14 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return fromDb;
   }
 
+  public int msgIdToPosition(int msgId) {
+    for(int i=0; i<dcMsgList.length; i++ ) {
+      if(dcMsgList[i]==msgId) {
+        return dcMsgList.length - 1 - i;
+      }
+    }
+    return -1;
+  }
 
   static class HeaderViewHolder extends RecyclerView.ViewHolder {
     TextView textView;

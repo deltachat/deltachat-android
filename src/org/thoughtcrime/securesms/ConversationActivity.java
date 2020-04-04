@@ -1534,8 +1534,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   // in-chat search
 
-  int beforeSearchComposeVisibility = View.VISIBLE;
-  int beforeSearchAttachVisibility = View.GONE;
+  private int beforeSearchComposeVisibility = View.VISIBLE;
+  private int beforeSearchAttachVisibility = View.GONE;
+
+  private int[] searchResult = {};
+  private int   searchResultPosition = -1;
+
+  private Toast lastToast = null;
 
   private void searchExpand(final Menu menu, final MenuItem searchItem) {
     beforeSearchComposeVisibility = composePanel.getVisibility();
@@ -1555,6 +1560,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleMenuSearchNext(boolean searchNext) {
+    if(searchResult.length>0) {
+      searchResultPosition += searchNext? 1 : -1;
+      if(searchResultPosition<0) searchResultPosition = searchResult.length-1;
+      if(searchResultPosition>=searchResult.length) searchResultPosition = 0;
+      fragment.scrollToMsgId(searchResult[searchResultPosition]);
+    }
   }
 
   @Override
@@ -1564,6 +1575,30 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public boolean onQueryTextChange(String query) {
+    if (lastToast!=null) {
+      lastToast.cancel();
+      lastToast = null;
+    }
+
+    String normQuery = query.trim();
+    searchResult = dcContext.searchMsgs(chatId, normQuery);
+
+    if(searchResult.length>0) {
+      searchResultPosition = 0;
+      fragment.scrollToMsgId(searchResult[searchResultPosition]);
+    } else {
+      searchResultPosition = -1;
+      if (!normQuery.isEmpty()) {
+        String msg = getString(R.string.search_no_result_for_x, normQuery);
+        if (lastToast != null) {
+          lastToast.cancel();
+        }
+        lastToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+        lastToast.show();
+      }
+    }
     return true; // action handled by listener
   }
+
+
 }

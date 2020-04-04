@@ -512,6 +512,15 @@ public class ConversationFragment extends Fragment
         }
     }
 
+    public void scrollToMsgId(final int msgId) {
+        ConversationAdapter adapter = (ConversationAdapter)list.getAdapter();
+        int position = adapter.msgIdToPosition(msgId);
+        if (position!=-1) {
+            scrollToStartingPosition(position);
+            Log.i("Delta Chat", String.format(">>>>>>>>>>>>>>>>>>> %d", position));
+        }
+    }
+
     public interface ConversationFragmentListener {
         void setChatId(int threadId);
         void handleReplyMessage(DcMsg messageRecord);
