@@ -461,13 +461,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
         @Override
         public boolean onMenuItemActionExpand(final MenuItem item) {
-          ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+          searchExpand(menu, item);
           return true;
         }
 
         @Override
         public boolean onMenuItemActionCollapse(final MenuItem item) {
-          ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, true);
+          searchCollapse(menu, item);
           return true;
         }
       });
@@ -1533,6 +1533,26 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
 
   // in-chat search
+
+  int beforeSearchComposeVisibility = View.VISIBLE;
+  int beforeSearchAttachVisibility = View.GONE;
+
+  private void searchExpand(final Menu menu, final MenuItem searchItem) {
+    beforeSearchComposeVisibility = composePanel.getVisibility();
+    composePanel.setVisibility(View.GONE);
+
+    beforeSearchAttachVisibility = attachmentManager.getVisibility();
+    attachmentManager.setVisibility(View.GONE);
+
+    ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+  }
+
+  private void searchCollapse(final Menu menu, final MenuItem searchItem) {
+    composePanel.setVisibility(beforeSearchComposeVisibility);
+    attachmentManager.setVisibility(beforeSearchAttachVisibility);
+
+    ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, true);
+  }
 
   private void handleMenuSearchNext(boolean searchNext) {
   }
