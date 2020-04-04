@@ -9,6 +9,8 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
@@ -154,6 +156,18 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     super.startActivityForResult(intent, requestCode);
     if (requestCode != -1) {
       isWaitingForResult = true;
+    }
+  }
+
+  public void makeSearchMenuVisible(final Menu menu, final MenuItem exception, boolean visible) {
+    for (int i = 0; i < menu.size(); ++i) {
+      MenuItem item = menu.getItem(i);
+      int id = item.getItemId();
+      if (id==R.id.menu_search_up || id==R.id.menu_search_down) {
+        item.setVisible(!visible);
+      } else if (item != exception) {
+        item.setVisible(visible);
+      }
     }
   }
 }
