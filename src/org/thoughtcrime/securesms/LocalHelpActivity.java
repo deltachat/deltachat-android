@@ -14,14 +14,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
-import java.io.File;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.Locale;
 
 public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
@@ -113,6 +109,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
         MenuItem searchItem = menu.findItem(R.id.menu_search_localhelp);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(this);
+        searchView.setQueryHint(getString(R.string.search));
 
         super.onPrepareOptionsMenu(menu);
         return true;
