@@ -2,6 +2,11 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="@string/search"
+        android:id="@+id/menu_search_localhelp"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|never" />
+
     <item android:title="@string/menu_scroll_to_top"
         android:id="@+id/log_scroll_up" />
 
