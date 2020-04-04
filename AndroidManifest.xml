@@ -265,7 +265,8 @@
 
     <activity android:name=".LocalHelpActivity"
               android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+    </activity>
 
     <activity android:name=".map.MapActivity" />
 

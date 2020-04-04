@@ -5,25 +5,29 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcHelper;
+import androidx.appcompat.widget.SearchView;
+
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
-import java.io.File;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.Locale;
 
 public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
+                               implements SearchView.OnQueryTextListener,
+                                          WebView.FindListener
 {
+    private static final String TAG = LocalHelpActivity.class.getSimpleName();
+
     private WebView webView;
     private final DynamicTheme    dynamicTheme    = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -84,6 +88,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
             }
         });
         webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang));
+        webView.setFindListener(this);
     }
 
     @Override
@@ -104,8 +109,73 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
         menu.clear();
 
         inflater.inflate(R.menu.local_help, menu);
+
+        try {
+            MenuItem searchItem = menu.findItem(R.id.menu_search_localhelp);
+            searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+                @Override
+                public boolean onMenuItemActionExpand(final MenuItem item) {
+                    LocalHelpActivity.this.lastQuery = "";
+                    LocalHelpActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+                    return true;
+                }
+
+                @Override
+                public boolean onMenuItemActionCollapse(final MenuItem item) {
+                    LocalHelpActivity.this.makeSearchMenuVisible(menu, searchItem, true);
+                    return true;
+                }
+            });
+            SearchView searchView = (SearchView) searchItem.getActionView();
+            searchView.setOnQueryTextListener(this);
+            searchView.setQueryHint(getString(R.string.search));
+            searchView.setIconifiedByDefault(true);
+
+            // hide the [X] beside the search field - this is too much noise, search can be aborted eg. by "back"
+            ImageView closeBtn = searchView.findViewById(R.id.search_close_btn);
+            if (closeBtn!=null) {
+                closeBtn.setEnabled(false);
+                closeBtn.setImageDrawable(null);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "cannot set up help-search: ", e);
+        }
+
         super.onPrepareOptionsMenu(menu);
         return true;
+    }
+
+    private String lastQuery = "";
+    private Toast lastToast = null;
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return true; // action handled by listener
+    }
+
+    @Override
+    public boolean onQueryTextChange(String query) {
+        String normQuery = query.trim();
+        lastQuery = normQuery;
+        if (lastToast!=null) {
+            lastToast.cancel();
+            lastToast = null;
+        }
+        webView.findAllAsync(normQuery);
+        return true; // action handled by listener
+    }
+
+    @Override
+    public void onFindResultReceived (int activeMatchOrdinal, int numberOfMatches, boolean isDoneCounting)
+    {
+        if (isDoneCounting && numberOfMatches==0 && !lastQuery.isEmpty()) {
+            String msg = getString(R.string.search_no_result_for_x, lastQuery);
+            if (lastToast!=null) {
+                lastToast.cancel();
+            }
+            lastToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+            lastToast.show();
+        }
     }
 
     @Override
@@ -114,6 +184,20 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.menu_search_up:
+                if (lastQuery.isEmpty()) {
+                    webView.scrollTo(0, 0);
+                } else {
+                    webView.findNext(false);
+                }
+                return true;
+            case R.id.menu_search_down:
+                if (lastQuery.isEmpty()) {
+                    webView.scrollTo(0, 1000000000);
+                } else {
+                    webView.findNext(true);
+                }
                 return true;
             case R.id.log_scroll_up:
                 webView.scrollTo(0, 0);
