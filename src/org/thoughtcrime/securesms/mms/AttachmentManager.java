@@ -594,11 +594,11 @@ public class AttachmentManager {
   }
 
   public int getVisibility() {
-    int ret = View.GONE;
     try {
-      ret = attachmentViewStub.get().getVisibility();
-    } catch(Exception e) {}
-    return ret;
+      return attachmentViewStub.get().getVisibility();
+    } catch(Exception e) {
+      return View.GONE;
+    }
   }
 
   public void setVisibility(int vis) {
