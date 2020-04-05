@@ -1572,6 +1572,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if(searchResultPosition<0) searchResultPosition = searchResult.length-1;
       if(searchResultPosition>=searchResult.length) searchResultPosition = 0;
       fragment.scrollToMsgId(searchResult[searchResultPosition]);
+    } else {
+      // no search, scroll to first/last message
+      if(searchNext) {
+        fragment.scrollToBottom();
+      } else {
+        fragment.scrollToTop();
+      }
     }
   }
 
