@@ -281,7 +281,7 @@ public class ConversationItem extends LinearLayout
     } else if (pulseHighlight) {
       setBackgroundResource(R.drawable.conversation_item_background_animated);
       setSelected(true);
-      postDelayed(() -> setSelected(false), 500);
+      postDelayed(() -> setSelected(false), 1500);
     } else {
       setSelected(false);
     }

@@ -34,6 +34,7 @@ import android.os.Vibrator;
 import android.provider.Browser;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.WindowCompat;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -54,6 +55,7 @@ import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -140,6 +142,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 public class ConversationActivity extends PassphraseRequiredActionBarActivity
     implements ConversationFragment.ConversationFragmentListener,
                AttachmentManager.AttachmentListener,
+               SearchView.OnQueryTextListener,
                DcEventCenter.DcEventDelegate,
                OnKeyboardShownListener,
                AttachmentDrawerListener,
@@ -428,14 +431,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     }
 
-    if (recipient != null && Prefs.isChatMuted(this, chatId)) {
-      inflater.inflate(R.menu.conversation_muted, menu);
-    }
-    else {
-      inflater.inflate(R.menu.conversation_unmuted, menu);
-    }
-
     inflater.inflate(R.menu.conversation, menu);
+
+    if(Prefs.isChatMuted(this, chatId)) {
+      menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
+    }
 
     if (!Prefs.isLocationStreamingEnabled(this)) {
       menu.findItem(R.id.menu_show_map).setVisible(false);
@@ -456,6 +456,43 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     inflater.inflate(R.menu.conversation_delete, menu);
 
+    try {
+      MenuItem searchItem = menu.findItem(R.id.menu_search_chat);
+      searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+        @Override
+        public boolean onMenuItemActionExpand(final MenuItem item) {
+          searchExpand(menu, item);
+          return true;
+        }
+
+        @Override
+        public boolean onMenuItemActionCollapse(final MenuItem item) {
+          searchCollapse(menu, item);
+          return true;
+        }
+      });
+      SearchView searchView = (SearchView) searchItem.getActionView();
+      searchView.setOnQueryTextListener(this);
+      searchView.setQueryHint(getString(R.string.search));
+      searchView.setIconifiedByDefault(true);
+
+      // hide the [X] beside the search field - this is too much noise, search can be aborted eg. by "back"
+      ImageView closeBtn = searchView.findViewById(R.id.search_close_btn);
+      if (closeBtn!=null) {
+        closeBtn.setEnabled(false);
+        closeBtn.setImageDrawable(null);
+      }
+    } catch (Exception e) {
+      Log.e(TAG, "cannot set up in-chat-search: ", e);
+    }
+
+    if (!dcChat.canSend()) {
+      MenuItem attachItem =  menu.findItem(R.id.menu_add_attachment);
+      if (attachItem!=null) {
+        attachItem.setVisible(false);
+      }
+    }
+
     super.onPrepareOptionsMenu(menu);
     return true;
   }
@@ -469,9 +506,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_archive_chat:          handleArchiveChat();               return true;
       case R.id.menu_delete_chat:           handleDeleteChat();                return true;
       case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
-      case R.id.menu_unmute_notifications:  handleUnmuteNotifications();       return true;
       case R.id.menu_profile:               handleProfile();                   return true;
       case R.id.menu_show_map:              handleShowMap();                   return true;
+      case R.id.menu_search_up:             handleMenuSearchNext(false);       return true;
+      case R.id.menu_search_down:           handleMenuSearchNext(true);        return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
     }
 
@@ -525,10 +563,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleMuteNotifications() {
-    MuteDialog.show(this, until -> {
-      Prefs.setChatMutedUntil(this, chatId, until);
-      titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
-    });
+    if(!Prefs.isChatMuted(this, chatId)) {
+      MuteDialog.show(this, until -> {
+        Prefs.setChatMutedUntil(this, chatId, until);
+        titleView.setTitle(glideRequests, dcChat);
+      });
+    } else {
+      // unmute
+      Prefs.setChatMutedUntil(this, chatId, 0);
+      titleView.setTitle(glideRequests, dcChat);
+    }
   }
 
   private void handleProfile() {
@@ -539,11 +583,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       startActivity(intent);
       overridePendingTransition(0, 0);
     }
-  }
-
-  private void handleUnmuteNotifications() {
-    Prefs.setChatMutedUntil(this, chatId, 0);
-    titleView.setTitle(glideRequests, dcChat); // update title-mute-icon
   }
 
   private void handleLeaveGroup() {
@@ -1499,4 +1538,82 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       invalidateOptionsMenu();
     }
   }
+
+
+  // in-chat search
+
+  private int beforeSearchComposeVisibility = View.VISIBLE;
+  private int beforeSearchAttachVisibility = View.GONE;
+
+  private int[] searchResult = {};
+  private int   searchResultPosition = -1;
+
+  private Toast lastToast = null;
+
+  private void searchExpand(final Menu menu, final MenuItem searchItem) {
+    beforeSearchComposeVisibility = composePanel.getVisibility();
+    composePanel.setVisibility(View.GONE);
+
+    beforeSearchAttachVisibility = attachmentManager.getVisibility();
+    attachmentManager.setVisibility(View.GONE);
+
+    ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+  }
+
+  private void searchCollapse(final Menu menu, final MenuItem searchItem) {
+    composePanel.setVisibility(beforeSearchComposeVisibility);
+    attachmentManager.setVisibility(beforeSearchAttachVisibility);
+
+    ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, true);
+  }
+
+  private void handleMenuSearchNext(boolean searchNext) {
+    if(searchResult.length>0) {
+      searchResultPosition += searchNext? 1 : -1;
+      if(searchResultPosition<0) searchResultPosition = searchResult.length-1;
+      if(searchResultPosition>=searchResult.length) searchResultPosition = 0;
+      fragment.scrollToMsgId(searchResult[searchResultPosition]);
+    } else {
+      // no search, scroll to first/last message
+      if(searchNext) {
+        fragment.scrollToBottom();
+      } else {
+        fragment.scrollToTop();
+      }
+    }
+  }
+
+  @Override
+  public boolean onQueryTextSubmit(String query) {
+    return true; // action handled by listener
+  }
+
+  @Override
+  public boolean onQueryTextChange(String query) {
+    if (lastToast!=null) {
+      lastToast.cancel();
+      lastToast = null;
+    }
+
+    String normQuery = query.trim();
+    searchResult = dcContext.searchMsgs(chatId, normQuery);
+
+    if(searchResult.length>0) {
+      searchResultPosition = 0;
+      fragment.scrollToMsgId(searchResult[searchResultPosition]);
+    } else {
+      searchResultPosition = -1;
+      if (!normQuery.isEmpty()) {
+        String msg = getString(R.string.search_no_result_for_x, normQuery);
+        if (lastToast != null) {
+          lastToast.cancel();
+        }
+        lastToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+        lastToast.show();
+      }
+    }
+    return true; // action handled by listener
+  }
+
+
 }

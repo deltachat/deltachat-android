@@ -310,6 +310,16 @@ public class ConversationFragment extends Fragment
         }
     }
 
+    public void scrollToTop() {
+        ConversationAdapter adapter = (ConversationAdapter)list.getAdapter();
+        if (adapter.getItemCount()>0) {
+            final int pos = adapter.getItemCount()-1;
+            list.post(() -> {
+                list.getLayoutManager().scrollToPosition(pos);
+            });
+        }
+    }
+
     public void scrollToBottom() {
         if (((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() < SCROLL_ANIMATION_THRESHOLD) {
             list.smoothScrollToPosition(0);
@@ -509,6 +519,14 @@ public class ConversationFragment extends Fragment
     private void scrollToLastSeenPosition(final int lastSeenPosition) {
         if (lastSeenPosition > 0) {
             list.post(() -> ((LinearLayoutManager)list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
+        }
+    }
+
+    public void scrollToMsgId(final int msgId) {
+        ConversationAdapter adapter = (ConversationAdapter)list.getAdapter();
+        int position = adapter.msgIdToPosition(msgId);
+        if (position!=-1) {
+            scrollToStartingPosition(position);
         }
     }
 
