@@ -41,13 +41,20 @@ public class DirectShareService extends ChooserTargetService {
     ComponentName       componentName  = new ComponentName(this, ShareActivity.class);
     ApplicationDcContext dcContext = DcHelper.getContext(this);
 
-    DcChatlist chatlist = dcContext.getChatlist(DcContext.DC_GCL_ADD_ALLDONE_HINT, null, 0);
+    DcChatlist chatlist = dcContext.getChatlist(
+            DcContext.DC_GCL_ADD_ALLDONE_HINT | DcContext.DC_GCL_FOR_FORWARDING | DcContext.DC_GCL_NO_SPECIALS,
+            null,
+            0
+    );
     int max = 4;
     if (chatlist.getCnt() < max) {
       max = chatlist.getCnt();
     }
     for (int i = 0; i <= max; i++) {
       DcChat chat = chatlist.getChat(i);
+      if (!chat.canSend()) {
+        continue;
+      }
 
       Bundle bundle = new Bundle();
       bundle.putInt(ShareActivity.EXTRA_CHAT_ID, chat.getId());
