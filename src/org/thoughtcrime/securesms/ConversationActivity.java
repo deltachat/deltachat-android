@@ -569,6 +569,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         titleView.setTitle(glideRequests, dcChat);
       });
     } else {
+      // unmute
       Prefs.setChatMutedUntil(this, chatId, 0);
       titleView.setTitle(glideRequests, dcChat);
     }
