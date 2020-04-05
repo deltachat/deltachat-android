@@ -486,6 +486,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       Log.e(TAG, "cannot set up in-chat-search: ", e);
     }
 
+    if (!dcChat.canSend()) {
+      MenuItem attachItem =  menu.findItem(R.id.menu_add_attachment);
+      if (attachItem!=null) {
+        attachItem.setVisible(false);
+      }
+    }
+
     super.onPrepareOptionsMenu(menu);
     return true;
   }
