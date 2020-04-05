@@ -170,6 +170,9 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return fromDb;
   }
 
+  /**
+   * Returns the position of the message with msgId in the chat list, counted from the top
+   */
   public int msgIdToPosition(int msgId) {
     for(int i=0; i<dcMsgList.length; i++ ) {
       if(dcMsgList[i]==msgId) {
@@ -420,4 +423,3 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
   }
 }
-
