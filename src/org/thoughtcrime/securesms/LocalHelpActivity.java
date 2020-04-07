@@ -115,6 +115,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
             searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
                 @Override
                 public boolean onMenuItemActionExpand(final MenuItem item) {
+                    searchMenu = menu;
                     LocalHelpActivity.this.lastQuery = "";
                     LocalHelpActivity.this.makeSearchMenuVisible(menu, searchItem, false);
                     return true;
@@ -145,8 +146,24 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
         return true;
     }
 
+
+    // search
+
+    private Menu   searchMenu = null;
     private String lastQuery = "";
-    private Toast lastToast = null;
+    private Toast  lastToast = null;
+
+    private void updateResultCounter(int curr, int total) {
+        if (searchMenu!=null) {
+            MenuItem item = searchMenu.findItem(R.id.menu_search_counter);
+            if (curr!=-1) {
+                item.setTitle(String.format("%d/%d", total==0? 0 : curr+1, total));
+                item.setVisible(true);
+            } else {
+                item.setVisible(false);
+            }
+        }
+    }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -168,15 +185,27 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onFindResultReceived (int activeMatchOrdinal, int numberOfMatches, boolean isDoneCounting)
     {
-        if (isDoneCounting && numberOfMatches==0 && !lastQuery.isEmpty()) {
-            String msg = getString(R.string.search_no_result_for_x, lastQuery);
-            if (lastToast!=null) {
-                lastToast.cancel();
+        if (isDoneCounting) {
+            if (numberOfMatches>0) {
+                updateResultCounter(activeMatchOrdinal, numberOfMatches);
+            } else {
+                if (lastQuery.isEmpty()) {
+                    updateResultCounter(-1, 0); // hide
+                } else {
+                    String msg = getString(R.string.search_no_result_for_x, lastQuery);
+                    if (lastToast != null) {
+                        lastToast.cancel();
+                    }
+                    lastToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+                    lastToast.show();
+                    updateResultCounter(0, 0); // show as "0/0"
+                }
             }
-            lastToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
-            lastToast.show();
         }
     }
+
+
+    // other actions
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -7,6 +7,11 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|never" />
 
+    <item android:title="0/0"
+        android:id="@+id/menu_search_counter"
+        android:visible="false"
+        app:showAsAction="always"/>
+
     <item android:title="@string/back"
         android:id="@+id/menu_search_up"
         android:icon="@drawable/ic_search_up"
