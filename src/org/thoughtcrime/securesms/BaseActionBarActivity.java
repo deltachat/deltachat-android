@@ -165,6 +165,8 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
       int id = item.getItemId();
       if (id==R.id.menu_search_up || id==R.id.menu_search_down) {
         item.setVisible(!visible);
+      } else if (id==R.id.menu_search_counter) {
+        item.setVisible(false);
       } else if (item != exception) {
         item.setVisible(visible);
       }
