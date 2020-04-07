@@ -1545,12 +1545,27 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private int beforeSearchComposeVisibility = View.VISIBLE;
   private int beforeSearchAttachVisibility = View.GONE;
 
+  private Menu  searchMenu = null;
   private int[] searchResult = {};
   private int   searchResultPosition = -1;
 
   private Toast lastToast = null;
 
+  private void updateResultCounter(int curr, int total) {
+    if (searchMenu!=null) {
+      MenuItem item = searchMenu.findItem(R.id.menu_search_counter);
+      if (curr!=-1) {
+        item.setTitle(String.format("%d/%d", total==0? 0 : curr+1, total));
+        item.setVisible(true);
+      } else {
+        item.setVisible(false);
+      }
+    }
+  }
+
   private void searchExpand(final Menu menu, final MenuItem searchItem) {
+    searchMenu = menu;
+
     beforeSearchComposeVisibility = composePanel.getVisibility();
     composePanel.setVisibility(View.GONE);
 
@@ -1573,6 +1588,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if(searchResultPosition<0) searchResultPosition = searchResult.length-1;
       if(searchResultPosition>=searchResult.length) searchResultPosition = 0;
       fragment.scrollToMsgId(searchResult[searchResultPosition]);
+      updateResultCounter(searchResultPosition, searchResult.length);
     } else {
       // no search, scroll to first/last message
       if(searchNext) {
@@ -1601,19 +1617,21 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if(searchResult.length>0) {
       searchResultPosition = 0;
       fragment.scrollToMsgId(searchResult[searchResultPosition]);
+      updateResultCounter(0, searchResult.length);
     } else {
       searchResultPosition = -1;
-      if (!normQuery.isEmpty()) {
+      if (normQuery.isEmpty()) {
+        updateResultCounter(-1, 0); // hide
+      } else {
         String msg = getString(R.string.search_no_result_for_x, normQuery);
         if (lastToast != null) {
           lastToast.cancel();
         }
         lastToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
         lastToast.show();
+        updateResultCounter(0, 0); // show as "0/0"
       }
     }
     return true; // action handled by listener
   }
-
-
 }
