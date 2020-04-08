@@ -50,6 +50,7 @@
     <string name="email_address">Email address</string>
     <string name="bad_email_address">Bad email address.</string>
     <string name="password">Password</string>
+    <string name="existing_password">Existing password</string>
     <string name="now">Now</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Danger</string>
