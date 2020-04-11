@@ -7,6 +7,7 @@
   <string-array name="language_entries">
       <!-- zz -->    <item>@string/def</item>
       <!-- az -->    <item>Azeri</item>
+      <!-- in -->    <item>Bahasa Indonesia</item>
       <!-- ca -->    <item>Català</item>
       <!-- da -->    <item>Dansk</item>
       <!-- de -->    <item>Deutsch</item>
@@ -33,6 +34,7 @@
       <!-- sr -->    <item>Српски</item>
       <!-- uk -->    <item>Українська</item>
       <!-- ar -->    <item>عربى</item>
+      <!-- fa -->    <item>فارسی</item>
       <!-- ja -->    <item>日本語</item>
       <!-- ko -->    <item>한국어</item>
       <!-- zh_CN --> <item>简体中文</item>
@@ -44,6 +46,7 @@
   <string-array name="language_values">
       <item>zz</item>
       <item>az</item>
+      <item>in</item> <!-- sic: Android uses "in" where ISO 639-1 is "id" -->
       <item>ca</item>
       <item>da</item>
       <item>de</item>
@@ -70,6 +73,7 @@
       <item>sr</item>
       <item>uk</item>
       <item>ar</item>
+      <item>fa</item>
       <item>ja</item>
       <item>ko</item>
       <item>zh_CN</item>
