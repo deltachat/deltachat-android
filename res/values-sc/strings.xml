@@ -240,6 +240,15 @@
     <string name="pref_backup">Còpia de seguresa</string>
     <string name="pref_backup_explain">Faghe una còpia de seguresa in sa memòria esterna</string>
     <string name="pref_background">Isfundu</string>
+    <string name="pref_background_default_color">Colore predefinidu</string>
+    <string name="pref_background_custom_image">Immàgine personalizada</string>
+    <string name="pref_background_custom_color">Colore personalizadu</string>
+
+    <!-- automatically delete message -->
+    <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
+    <string name="autodel_title_short">Iscantzella automaticamente</string>
+    <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>
+    <string name="autodel_server_title">Iscantzella sos messàgios dae su servidore</string>
     <string name="write_message_desktop">Iscrie unu messàgiu</string>
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>

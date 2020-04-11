@@ -50,6 +50,7 @@
     <string name="email_address">电子邮件地址</string>
     <string name="bad_email_address">错误的电子邮件地址。</string>
     <string name="password">密码</string>
+    <string name="existing_password">现有密码</string>
     <string name="now">现在</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">危险</string>
@@ -454,6 +455,18 @@
     <string name="pref_background_default_color">默认颜色</string>
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
+
+    <!-- automatically delete message -->
+    <string name="autodel_title">自动删除消息</string>
+    <string name="autodel_title_short">自动删除</string>
+    <string name="autodel_device_title">从设备删除消息</string>
+    <string name="autodel_server_title">从服务器删除消息</string>
+    <string name="autodel_confirm">我了解，将这些消息全部删除</string>
+    <string name="autodel_at_once">立刻</string>
+    <string name="autodel_after_1_hour">1 小时后</string>
+    <string name="autodel_after_1_day">1 天后</string>
+    <string name="autodel_after_1_week">1 周后</string>
+    <string name="autodel_after_4_weeks">4 星期后</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>

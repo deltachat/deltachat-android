@@ -473,7 +473,7 @@
     <string name="autodel_device_title">Delete messages from device</string>
     <string name="autodel_server_title">Delete messages from server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
-    <string name="autodel_device_ask">Do you want to delete %1$d messages now and all newly fetched messages %2$s in the future?\n\n• This includes all media\n\n• Message will be deleted whether they were seen or not\n\n• \"Saved messages\" will be skipped from local deletion</string>
+    <string name="autodel_device_ask">Do you want to delete %1$d messages now and all newly fetched messages %2$s in the future?\n\n• This includes all media\n\n• Messages will be deleted whether they were seen or not\n\n• \"Saved messages\" will be skipped from local deletion</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
     <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages %2$s in the future?\n\n• This includes all media\n\n• This will also delete emails affected by the \"Show classic emails\" option\n\n• \"Saved messages\" will be deleted from the server as well</string>
     <string name="autodel_confirm">I understand, delete all these messages</string>
