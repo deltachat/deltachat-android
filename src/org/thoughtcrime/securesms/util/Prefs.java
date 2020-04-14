@@ -190,6 +190,15 @@ public class Prefs {
     }
   }
 
+  public static boolean isAccountSwitchingEnabled(Context context) {
+    try {
+      return getBooleanPreference(context, "pref_account_switching_enabled", false);
+    }
+    catch(Exception e) {
+      return false;
+    }
+  }
+
   // ringtone
 
   public static @NonNull Uri getNotificationRingtone(Context context) {

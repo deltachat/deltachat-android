@@ -147,6 +147,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       if (!Prefs.isLocationStreamingEnabled(this)) {
         menu.findItem(R.id.menu_global_map).setVisible(false);
       }
+
+      if (Prefs.isAccountSwitchingEnabled(this)) {
+        menu.findItem(R.id.menu_switch_account).setVisible(true);
+      }
     }
 
     super.onPrepareOptionsMenu(menu);

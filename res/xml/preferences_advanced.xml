@@ -53,6 +53,11 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
+            android:key="pref_account_switching_enabled"
+            android:title="Switch between multiple accounts"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
             android:key="pref_location_streaming_enabled"
             android:title="On-demand location streaming"/>
 

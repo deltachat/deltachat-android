@@ -353,6 +353,7 @@
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
 
     <string name="used_settings">Used settings:</string>
+    <string name="switch_account">Switch account</string>
     <string name="delete_account">Delete account</string>
     <string name="delete_account_ask">Are you sure you want to delete your account data?</string>
 
