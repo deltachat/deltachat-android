@@ -23,12 +23,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
+                android:gravity="start"
+                android:textAlignment="viewStart"
                 android:textSize="20sp"
                 tools:text="Voltarine DeClyre"/>
 
         <TextView android:id="@+id/number"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
+                  android:gravity="start"
+                  android:textAlignment="viewStart"
                   tools:text="+14151231234"/>
 
     </LinearLayout>
