@@ -50,6 +50,7 @@
     <string name="email_address">Адрес эл.почты</string>
     <string name="bad_email_address">Неправильный адрес эл.почты.</string>
     <string name="password">Пароль</string>
+    <string name="existing_password">Существующий пароль</string>
     <string name="now">Сейчас</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Опасность</string>
@@ -288,7 +289,7 @@
     <string name="chat_all_archived">Все чаты заархивированы.\nНажмите на \"+\" для начала нового чата.</string>
     <string name="chat_share_with_title">Поделиться с</string>
     <string name="chat_input_placeholder">Сообщение</string>
-    <string name="chat_archived_label">Ахивировано</string>
+    <string name="chat_archived_label">Архивировано</string>
     <string name="chat_no_messages">Нет сообщений.</string>
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
     <string name="saved_messages">Сохранённые сообщения</string>
@@ -488,6 +489,17 @@
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
 
+    <!-- automatically delete message -->
+    <string name="autodel_title">Автоматическое удаление сообщений</string>
+    <string name="autodel_title_short">Автоматическое удаление</string>
+    <string name="autodel_device_title">Удалять сообщения с устройства</string>
+    <string name="autodel_server_title">Удалять сообщения с сервера</string>
+    <string name="autodel_at_once">Сразу</string>
+    <string name="autodel_after_1_hour">Через 1 час</string>
+    <string name="autodel_after_1_day">Через 1 день</string>
+    <string name="autodel_after_1_week">Через 1 неделю</string>
+    <string name="autodel_after_4_weeks">Через 4 недели</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>
@@ -554,6 +566,7 @@
     <string name="qrshow_join_contact_hint">Отсканируйте, чтобы создать контакт с %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Для настройки по QR коду необходимо интернет соединение. Сначала подключитесь к сети интернет.</string>
     <string name="qrshow_join_contact_no_connection_toast">Нет соединения к интернету, невозможно начать процесс настройки по QR коду.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Отсканированный QR-код не может быть использован для создания нового аккаунта.</string>
     <string name="contact_verified">%1$s подтвержден.</string>
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

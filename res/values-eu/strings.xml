@@ -405,7 +405,7 @@
     <string name="pref_light_theme">Argia</string>
     <string name="pref_dark_theme">Iluna</string>
     <string name="pref_appearance">Itxura</string>
-    <string name="pref_theme">Gaia</string>
+    <string name="pref_theme">Azala</string>
     <string name="pref_language">Hizkuntza</string>
     <string name="pref_incognito_keyboard">Teklatu pribatua</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->

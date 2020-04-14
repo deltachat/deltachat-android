@@ -551,8 +551,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrshow_join_contact_hint">Scannen, um einen Kontakt mit %1$s herzustellen.</string>
     <string name="qrshow_join_contact_no_connection_hint">Der Austausch von QR-Codes erfordert eine Verbindung zum Internet. Bitte stellen Sie diese her, bevor Sie fortfahtren.</string>
     <string name="qrshow_join_contact_no_connection_toast">Keine Verbindung zum Internet, Austausch des QR-Codes nicht möglich.</string>
-    <string name="qraccount_ask_create_and_login"> \"%1$s\" erzeugen und dort anmelden?</string>
-    <string name="qraccount_success_enter_name">Anmeldung Erfolgreich — Ihre E-Mail-Adresse ist %1$s\n\nWenn Sie mögen, können Sie nun einen Namen und einen Avatar festlegen, der den ChatpartnerInnen angezeigt wird.</string>
+    <string name="qraccount_ask_create_and_login">E-Mail-Konto auf \"%1$s\" erzeugen und dort anmelden?</string>
+    <string name="qraccount_success_enter_name">Anmeldung erfolgreich — Ihre E-Mail-Adresse ist %1$s\n\nWenn Sie mögen, können Sie nun einen Namen und einen Avatar festlegen, der den ChatpartnerInnen angezeigt wird.</string>
     <string name="qraccount_qr_code_cannot_be_used">Der eingescannte QR-Code kann nicht dazu verwendet werden, eine neues E-Mail-Konto zu erzeugen.</string>
     <string name="qraccount_use_on_new_install">Der gescannte QR-Code ist zum Erstellen eines neuen E-Mail-Kontos. Sie können den QR-Code nur bei einer neuen Delta Chat Installation verwenden.</string>
     <string name="contact_verified">%1$s verifiziert.</string>
