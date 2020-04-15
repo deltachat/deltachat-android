@@ -24,6 +24,7 @@ public class AccountManager {
         private String addr;
         private boolean configured;
         private boolean current;
+
         public String getDescr(Context context) {
             String ret = "";
             if (!displayname.isEmpty() && !addr.isEmpty()) {
@@ -40,6 +41,14 @@ public class AccountManager {
                 ret += " (" + context.getString(R.string.current) + ")";
             }
             return ret;
+        }
+
+        public boolean isCurrent() {
+            return current;
+        }
+
+        public String getDbName() {
+            return dbName;
         }
     };
 
@@ -118,9 +127,13 @@ public class AccountManager {
     }
 
     public void switchAccount(Context context, Account account) {
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putString("curr_account_db_name", account.dbName).apply();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String oldDbName = sharedPreferences.getString("curr_account_db_name", "");
+
+        // we remember prev_account_db_name in case the account is not configured
+        // and the user want to rollback to the working account
+        sharedPreferences.edit().putString("prev_account_db_name", oldDbName).apply();
+        sharedPreferences.edit().putString("curr_account_db_name", account.dbName).apply();
         resetDcContext(context);
     }
 
@@ -159,7 +172,7 @@ public class AccountManager {
 
         sharedPreferences.edit().putString("prev_account_db_name", "").apply();
         sharedPreferences.edit().putString("curr_account_db_name", oldDbName).apply();
-        deleteAccount(newDbName);
+        deleteAccount(context, newDbName);
 
         resetDcContext(context);
     }
@@ -167,7 +180,15 @@ public class AccountManager {
 
     // delete account
 
-    public void deleteAccount(String dbName) {
-        // TODO
+    public void deleteAccount(Context context, String dbName) {
+        try {
+            File file = new File(context.getFilesDir(), dbName);
+            file.delete();
+
+            File blobs = new File(context.getFilesDir(), dbName+"-blobs");
+            blobs.delete();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }

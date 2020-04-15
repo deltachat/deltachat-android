@@ -289,7 +289,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
           startActivity(new Intent(this, WelcomeActivity.class));
           finish();
         } else if (which==deleteAccount) {
-          ;
+          handleDeleteAccount();
         } else { // switch account
           accountManager.switchAccount(this, accounts.get(which));
           finish();
@@ -297,6 +297,42 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         }
       })
       .show();
+  }
+
+  private void handleDeleteAccount() {
+    AccountManager accountManager = AccountManager.getInstance();
+    ArrayList<AccountManager.Account> accounts = accountManager.getAccounts(this);
+
+    ArrayList<String> menu = new ArrayList<>();
+    for (AccountManager.Account account : accounts) {
+      menu.add(account.getDescr(this));
+    }
+    int[] selection = {-1};
+    new AlertDialog.Builder(this)
+            .setTitle(R.string.delete_account)
+            .setSingleChoiceItems(menu.toArray(new String[menu.size()]), -1, (dialog, which) -> selection[0] = which)
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.delete, (dialog, which) -> {
+              if (selection[0] >= 0 && selection[0] < accounts.size()) {
+                AccountManager.Account account = accounts.get(selection[0]);
+                if (account.isCurrent()) {
+                  new AlertDialog.Builder(this)
+                          .setMessage("Cannot delete current account.")
+                          .setPositiveButton(R.string.ok, null)
+                          .show();
+                } else {
+                  new AlertDialog.Builder(this)
+                          .setTitle(account.getDescr(this))
+                          .setMessage(R.string.forget_login_confirmation_desktop)
+                          .setNegativeButton(R.string.cancel, null)
+                          .setPositiveButton(R.string.ok, (dialog2, which2) -> {
+                            accountManager.deleteAccount(this, account.getDbName());
+                          })
+                          .show();
+                }
+              }
+            })
+            .show();
   }
 
   @Override
