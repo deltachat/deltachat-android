@@ -11,6 +11,7 @@
     <string name="def">Default</string>
     <string name="custom">Custom</string>
     <string name="none">None</string>
+    <string name="current">Current</string>
     <string name="automatic">Automatic</string>
     <string name="strict">Strict</string>
     <string name="open">Open</string>

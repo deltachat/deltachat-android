@@ -268,7 +268,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // build menu
     ArrayList<String> menu = new ArrayList<>();
     for (AccountManager.Account account : accounts) {
-      menu.add(account.getDescr());
+      menu.add(account.getDescr(this));
     }
 
     int addAccount = menu.size();

@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.R;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class AccountManager {
         private String displayname;
         private String addr;
         private boolean configured;
-        public String getDescr() {
+        private boolean current;
+        public String getDescr(Context context) {
             String ret = "";
             if (!displayname.isEmpty() && !addr.isEmpty()) {
                 ret = String.format("%s (%s)", displayname, addr);
@@ -33,6 +35,9 @@ public class AccountManager {
             }
             if (!configured) {
                 ret += " (not configured)";
+            }
+            if (current) {
+                ret += " (" + context.getString(R.string.current) + ")";
             }
             return ret;
         }
@@ -90,12 +95,18 @@ public class AccountManager {
     public ArrayList<Account> getAccounts(Context context) {
         ArrayList<Account> result = new ArrayList<>();
 
+        String dbName = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString("curr_account_db_name", "messenger.db");
+
         try {
             File dir = context.getFilesDir();
             File[] files = dir.listFiles();
             for (File file : files) {
                 Account account = maybeGetAccount(file);
                 if (account!=null) {
+                    if (account.dbName.equals(dbName)) {
+                        account.current = true;
+                    }
                     result.add(account);
                 }
             }
