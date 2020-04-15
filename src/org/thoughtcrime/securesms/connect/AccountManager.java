@@ -13,13 +13,6 @@ public class AccountManager {
 
     private static AccountManager self;
 
-    public static AccountManager getInstance() {
-        if (self == null) {
-            self = new AccountManager();
-        }
-        return self;
-    }
-
     public class Account {
         private String file;
         private String displayname;
@@ -41,7 +34,7 @@ public class AccountManager {
         }
     };
 
-    public @Nullable Account maybeGetAccount(File file) {
+    private @Nullable Account maybeGetAccount(File file) {
         try {
             if (!file.isDirectory() && file.getName().endsWith(".db")) {
                 DcContext testContext = new DcContext(null);
@@ -58,6 +51,29 @@ public class AccountManager {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private File getUniqueDbName(Context context) {
+        File dir = context.getFilesDir();
+        int index = 1;
+        while (true) {
+            File test = new File(dir, String.format("messenger-%d.db", index));
+            File testBlobdir = new File(dir, String.format("messenger-%d.db-blobs", index));
+            if (!test.exists() && !testBlobdir.exists()) {
+                return test;
+            }
+            index++;
+        }
+    }
+
+
+    // public api
+
+    public static AccountManager getInstance() {
+        if (self == null) {
+            self = new AccountManager();
+        }
+        return self;
     }
 
     public ArrayList<Account> getAccounts(Context context) {
@@ -77,5 +93,21 @@ public class AccountManager {
         }
 
         return result;
+    }
+
+    public void prepareToAddAccount(Context context) {
+        File newDb = getUniqueDbName(context);
+    }
+
+    public void cancelAccountAdding(Context context) {
+
+    }
+
+    public void switchAccount(Context context, Account account) {
+
+    }
+
+    public File getSelectedAccount(Context context) {
+        return new File(context.getFilesDir(), "messenger.db");
     }
 }

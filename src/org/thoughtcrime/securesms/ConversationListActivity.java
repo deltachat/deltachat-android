@@ -262,7 +262,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void handleSwitchAccount() {
-    ArrayList<AccountManager.Account> accounts = AccountManager.getInstance().getAccounts(this);
+    AccountManager accountManager = AccountManager.getInstance();
+    ArrayList<AccountManager.Account> accounts = accountManager.getAccounts(this);
 
     // build menu
     ArrayList<String> menu = new ArrayList<>();
@@ -284,11 +285,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       .setNegativeButton(R.string.cancel, null)
       .setItems(menu.toArray(new String[menu.size()]), (dialog, which) -> {
         if (which==addAccount) {
-          ;
+          accountManager.prepareToAddAccount(this);
+          Intent intent = new Intent(this, WelcomeActivity.class);
+          startActivity(intent);
+          finish();
         } else if (which==deleteAccount) {
           ;
         } else { // switch account
-          ;
+          accountManager.switchAccount(this, accounts.get(which));
+          finish();
+          startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
         }
       })
       .show();
