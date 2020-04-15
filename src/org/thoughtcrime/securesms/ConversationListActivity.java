@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
@@ -34,6 +35,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -43,6 +45,8 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+
+import java.util.ArrayList;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
@@ -219,6 +223,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_global_map:
         handleShowMap();
         return true;
+      case R.id.menu_switch_account:
+        handleSwitchAccount();
+        return true;
       case android.R.id.home:
         onBackPressed();
         return true;
@@ -252,6 +259,39 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       Intent intent = new Intent(this, MapActivity.class);
       intent.putExtra(MapActivity.CHAT_IDS, ALL_CHATS_GLOBAL_MAP);
       startActivity(intent);
+  }
+
+  private void handleSwitchAccount() {
+    ArrayList<AccountManager.Account> accounts = AccountManager.getInstance().getAccounts(this);
+
+    // build menu
+    ArrayList<String> menu = new ArrayList<>();
+    for (AccountManager.Account account : accounts) {
+      menu.add(account.getDescr());
+    }
+
+    int addAccount = menu.size();
+    menu.add(getString(R.string.add_account));
+
+    int deleteAccount = accounts.size() > 1 ? menu.size() : -1;
+    if (accounts.size() > 1) {
+      menu.add(getString(R.string.delete_account));
+    }
+
+    // show dialog
+    new AlertDialog.Builder(this)
+      .setTitle(R.string.switch_account)
+      .setNegativeButton(R.string.cancel, null)
+      .setItems(menu.toArray(new String[menu.size()]), (dialog, which) -> {
+        if (which==addAccount) {
+          ;
+        } else if (which==deleteAccount) {
+          ;
+        } else { // switch account
+          ;
+        }
+      })
+      .show();
   }
 
   @Override

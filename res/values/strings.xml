@@ -354,6 +354,7 @@
 
     <string name="used_settings">Used settings:</string>
     <string name="switch_account">Switch account</string>
+    <string name="add_account">Add account</string>
     <string name="delete_account">Delete account</string>
     <string name="delete_account_ask">Are you sure you want to delete your account data?</string>
 
