@@ -236,8 +236,13 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createContextCPtr(JNIEnv *env,
 }
 
 
-/* DcContext - open/configure/connect/fetch */
+JNIEXPORT void Java_com_b44t_messenger_DcContact_unrefContextCPtr(JNIEnv *env, jobject obj)
+{
+	dc_context_unref(get_dc_context(env, obj));
+}
 
+
+/* DcContext - open/configure/connect/fetch */
 
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_open(JNIEnv *env, jobject obj, jstring dbfile)
 {
