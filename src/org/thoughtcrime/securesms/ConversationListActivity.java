@@ -285,9 +285,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       .setNegativeButton(R.string.cancel, null)
       .setItems(menu.toArray(new String[menu.size()]), (dialog, which) -> {
         if (which==addAccount) {
-          accountManager.prepareToAddAccount(this);
-          Intent intent = new Intent(this, WelcomeActivity.class);
-          startActivity(intent);
+          accountManager.beginAccountCreation(this);
+          startActivity(new Intent(this, WelcomeActivity.class));
           finish();
         } else if (which==deleteAccount) {
           ;

@@ -16,6 +16,7 @@ import com.b44t.messenger.DcLot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -242,6 +243,18 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                             .show();
                     break;
             }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AccountManager accountManager = AccountManager.getInstance();
+        if (accountManager.canRollbackAccountCreation(this)) {
+            accountManager.rollbackAccountCreation(this);
+            finish();
+            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+        } else {
+            super.onBackPressed();
         }
     }
 }

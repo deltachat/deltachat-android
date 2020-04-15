@@ -1,10 +1,14 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcContext;
+
+import org.thoughtcrime.securesms.ApplicationContext;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,7 +18,7 @@ public class AccountManager {
     private static AccountManager self;
 
     public class Account {
-        private String file;
+        private String dbName;
         private String displayname;
         private String addr;
         private boolean configured;
@@ -25,7 +29,7 @@ public class AccountManager {
             } else if (!addr.isEmpty()) {
                 ret = addr;
             } else {
-                ret = file;
+                ret = dbName;
             }
             if (!configured) {
                 ret += " (not configured)";
@@ -40,7 +44,7 @@ public class AccountManager {
                 DcContext testContext = new DcContext(null);
                 if (testContext.open(file.getAbsolutePath()) != 0) {
                     Account ret = new Account();
-                    ret.file = file.getAbsolutePath();
+                    ret.dbName = file.getName();
                     ret.displayname = testContext.getConfig("displayname");
                     ret.addr = testContext.getConfig("addr");
                     ret.configured = testContext.isConfigured() != 0;
@@ -64,6 +68,13 @@ public class AccountManager {
             }
             index++;
         }
+    }
+
+    private void resetDcContext(Context context) {
+        // create an empty DcContext object - this will be set up then, starting with
+        // getSelectedAccount()
+        ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
+        appContext.dcContext = new ApplicationDcContext(context);
     }
 
 
@@ -95,19 +106,57 @@ public class AccountManager {
         return result;
     }
 
-    public void prepareToAddAccount(Context context) {
-        File newDb = getUniqueDbName(context);
-    }
-
-    public void cancelAccountAdding(Context context) {
-
-    }
-
     public void switchAccount(Context context, Account account) {
-
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putString("curr_account_db_name", account.dbName).apply();
+        resetDcContext(context);
     }
 
     public File getSelectedAccount(Context context) {
-        return new File(context.getFilesDir(), "messenger.db");
+        String dbName = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString("curr_account_db_name", "messenger.db");
+        return new File(context.getFilesDir(), dbName);
+    }
+
+
+    // add accounts
+
+    public void beginAccountCreation(Context context) {
+        // pause the current account and let the user create a new one.
+        // this function is not needed on the very first account creation.
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String oldDbName = sharedPreferences.getString("curr_account_db_name", "");
+        String newDbName = getUniqueDbName(context).getName();
+
+        sharedPreferences.edit().putString("prev_account_db_name", oldDbName).apply();
+        sharedPreferences.edit().putString("curr_account_db_name", newDbName).apply();
+
+        resetDcContext(context);
+    }
+
+    public boolean canRollbackAccountCreation(Context context) {
+        String oldDbName = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString("prev_account_db_name", "");
+        return !oldDbName.isEmpty();
+    }
+
+    public void rollbackAccountCreation(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String oldDbName = sharedPreferences.getString("prev_account_db_name", "");
+        String newDbName = sharedPreferences.getString("curr_account_db_name", "");
+
+        sharedPreferences.edit().putString("prev_account_db_name", "").apply();
+        sharedPreferences.edit().putString("curr_account_db_name", oldDbName).apply();
+        deleteAccount(newDbName);
+
+        resetDcContext(context);
+    }
+
+
+    // delete account
+
+    public void deleteAccount(String dbName) {
+        // TODO
     }
 }
