@@ -126,11 +126,11 @@ public class AccountManager {
 
     public void switchAccount(Context context, Account account) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String oldDbName = sharedPreferences.getString("curr_account_db_name", DEFAULT_DB_NAME);
+        String prevDbName = sharedPreferences.getString("curr_account_db_name", DEFAULT_DB_NAME);
 
         // we remember prev_account_db_name in case the account is not configured
         // and the user want to rollback to the working account
-        sharedPreferences.edit().putString("prev_account_db_name", oldDbName).apply();
+        sharedPreferences.edit().putString("prev_account_db_name", prevDbName).apply();
         sharedPreferences.edit().putString("curr_account_db_name", account.dbName).apply();
         resetDcContext(context);
     }
@@ -148,29 +148,29 @@ public class AccountManager {
         // pause the current account and let the user create a new one.
         // this function is not needed on the very first account creation.
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String oldDbName = sharedPreferences.getString("curr_account_db_name", DEFAULT_DB_NAME);
-        String newDbName = getUniqueDbName(context).getName();
+        String prevDbName = sharedPreferences.getString("curr_account_db_name", DEFAULT_DB_NAME);
+        String inCreationDbName = getUniqueDbName(context).getName();
 
-        sharedPreferences.edit().putString("prev_account_db_name", oldDbName).apply();
-        sharedPreferences.edit().putString("curr_account_db_name", newDbName).apply();
+        sharedPreferences.edit().putString("prev_account_db_name", prevDbName).apply();
+        sharedPreferences.edit().putString("curr_account_db_name", inCreationDbName).apply();
 
         resetDcContext(context);
     }
 
     public boolean canRollbackAccountCreation(Context context) {
-        String oldDbName = PreferenceManager.getDefaultSharedPreferences(context)
+        String prevDbName = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString("prev_account_db_name", "");
-        return !oldDbName.isEmpty();
+        return !prevDbName.isEmpty();
     }
 
     public void rollbackAccountCreation(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String oldDbName = sharedPreferences.getString("prev_account_db_name", "");
-        String newDbName = sharedPreferences.getString("curr_account_db_name", "");
+        String prevDbName = sharedPreferences.getString("prev_account_db_name", "");
+        String inCreationDbName = sharedPreferences.getString("curr_account_db_name", "");
 
         sharedPreferences.edit().putString("prev_account_db_name", "").apply();
-        sharedPreferences.edit().putString("curr_account_db_name", oldDbName).apply();
-        deleteAccount(context, newDbName);
+        sharedPreferences.edit().putString("curr_account_db_name", prevDbName).apply();
+        deleteAccount(context, inCreationDbName);
 
         resetDcContext(context);
     }
