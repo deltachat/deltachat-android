@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
-import org.thoughtcrime.securesms.R;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,6 +16,8 @@ import java.util.ArrayList;
 public class AccountManager {
 
     private static AccountManager self;
+
+    private final static String DEFAULT_DB_NAME = "messenger.db";
 
     public class Account {
         private String dbName;
@@ -102,7 +103,7 @@ public class AccountManager {
         ArrayList<Account> result = new ArrayList<>();
 
         String dbName = PreferenceManager.getDefaultSharedPreferences(context)
-                .getString("curr_account_db_name", "messenger.db");
+                .getString("curr_account_db_name", DEFAULT_DB_NAME);
 
         try {
             File dir = context.getFilesDir();
@@ -125,7 +126,7 @@ public class AccountManager {
 
     public void switchAccount(Context context, Account account) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String oldDbName = sharedPreferences.getString("curr_account_db_name", "");
+        String oldDbName = sharedPreferences.getString("curr_account_db_name", DEFAULT_DB_NAME);
 
         // we remember prev_account_db_name in case the account is not configured
         // and the user want to rollback to the working account
@@ -136,7 +137,7 @@ public class AccountManager {
 
     public File getSelectedAccount(Context context) {
         String dbName = PreferenceManager.getDefaultSharedPreferences(context)
-                .getString("curr_account_db_name", "messenger.db");
+                .getString("curr_account_db_name", DEFAULT_DB_NAME);
         return new File(context.getFilesDir(), dbName);
     }
 
@@ -147,7 +148,7 @@ public class AccountManager {
         // pause the current account and let the user create a new one.
         // this function is not needed on the very first account creation.
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String oldDbName = sharedPreferences.getString("curr_account_db_name", "");
+        String oldDbName = sharedPreferences.getString("curr_account_db_name", DEFAULT_DB_NAME);
         String newDbName = getUniqueDbName(context).getName();
 
         sharedPreferences.edit().putString("prev_account_db_name", oldDbName).apply();
