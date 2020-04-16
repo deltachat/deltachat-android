@@ -8,10 +8,13 @@ if [ -z "$TEXT" ]; then
 fi
 
 echo "==================== ANDROID USAGE ===================="
-grep --exclude={*.apk,*.a,*.o,*.so,strings.xml} --exclude-dir={.git,.gradle,jni,obj,release,.idea,build,jni} -ri $TEXT .
+grep --exclude={*.apk,*.a,*.o,*.so,strings.xml} --exclude-dir={.git,.gradle,obj,release,.idea,build,deltachat-core-rust} -ri $TEXT .
 
 echo "==================== IOS USAGE ===================="
 grep --exclude=*.strings --exclude-dir={.git,libraries,Pods,deltachat-ios.xcodeproj,deltachat-ios.xcworkspace} -ri $TEXT ../deltachat-ios/
 
 echo "==================== DESKTOP USAGE ===================="
 grep  --exclude-dir={.git,_locales} -ri $TEXT ../deltachat-desktop/
+
+echo "==================== NODE USAGE ===================="
+grep  --exclude-dir={.git} -ri $TEXT ../deltachat-node/
