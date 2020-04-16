@@ -37,9 +37,6 @@ public class AccountManager {
             if (!configured) {
                 ret += " (not configured)";
             }
-            if (current) {
-                ret += " (" + context.getString(R.string.current) + ")";
-            }
             return ret;
         }
 
