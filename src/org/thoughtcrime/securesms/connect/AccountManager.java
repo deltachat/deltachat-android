@@ -232,11 +232,11 @@ public class AccountManager {
                 .setSingleChoiceItems(menu.toArray(new String[menu.size()]), presel, (dialog, which) -> {
                     if (which==addAccount) {
                         beginAccountCreation(activity);
+                        activity.finishAffinity();
                         activity.startActivity(new Intent(activity, WelcomeActivity.class));
-                        activity.finish();
                     } else { // switch account
                         switchAccount(activity, accounts.get(which));
-                        activity.finish();
+                        activity.finishAffinity();
                         activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
                     }
                 });
