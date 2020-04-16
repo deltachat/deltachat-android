@@ -1,14 +1,20 @@
 package org.thoughtcrime.securesms.connect;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.ConversationListActivity;
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.WelcomeActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -198,4 +204,86 @@ public class AccountManager {
             e.printStackTrace();
         }
     }
+
+
+    // ui
+
+    public void handleSwitchAccount(Activity activity) {
+        ArrayList<AccountManager.Account> accounts = getAccounts(activity);
+
+        // build menu
+        int presel = 0;
+        ArrayList<String> menu = new ArrayList<>();
+        for (int i = 0; i < accounts.size(); i++) {
+            AccountManager.Account account = accounts.get(i);
+            if (account.isCurrent()) {
+                presel = i;
+            }
+            menu.add(account.getDescr(activity));
+        }
+
+        int addAccount = menu.size();
+        menu.add(activity.getString(R.string.add_account));
+
+        // show dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity)
+                .setTitle(R.string.switch_account)
+                .setNegativeButton(R.string.cancel, null)
+                .setSingleChoiceItems(menu.toArray(new String[menu.size()]), presel, (dialog, which) -> {
+                    if (which==addAccount) {
+                        beginAccountCreation(activity);
+                        activity.startActivity(new Intent(activity, WelcomeActivity.class));
+                        activity.finish();
+                    } else { // switch account
+                        switchAccount(activity, accounts.get(which));
+                        activity.finish();
+                        activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
+                    }
+                });
+        if (accounts.size() > 1) {
+            builder.setNeutralButton(R.string.delete_account, (dialog, which) -> {
+                handleDeleteAccount(activity);
+            });
+        }
+        builder.show();
+    }
+
+    private void handleDeleteAccount(Activity activity) {
+        ArrayList<AccountManager.Account> accounts = getAccounts(activity);
+
+        ArrayList<String> menu = new ArrayList<>();
+        for (AccountManager.Account account : accounts) {
+            menu.add(account.getDescr(activity));
+        }
+        int[] selection = {-1};
+        new AlertDialog.Builder(activity)
+                .setTitle(R.string.delete_account)
+                .setSingleChoiceItems(menu.toArray(new String[menu.size()]), -1, (dialog, which) -> selection[0] = which)
+                .setNegativeButton(R.string.cancel, (dialog, which) -> handleSwitchAccount(activity))
+                .setPositiveButton(R.string.ok, (dialog, which) -> {
+                    if (selection[0] >= 0 && selection[0] < accounts.size()) {
+                        AccountManager.Account account = accounts.get(selection[0]);
+                        if (account.isCurrent()) {
+                            new AlertDialog.Builder(activity)
+                                    .setMessage("To delete the currently active account, switch to another account first.")
+                                    .setPositiveButton(R.string.ok, null)
+                                    .show();
+                        } else {
+                            new AlertDialog.Builder(activity)
+                                    .setTitle(account.getDescr(activity))
+                                    .setMessage(R.string.forget_login_confirmation_desktop)
+                                    .setNegativeButton(R.string.cancel, (dialog2, which2) -> handleSwitchAccount(activity))
+                                    .setPositiveButton(R.string.ok, (dialog2, which2) -> {
+                                        deleteAccount(activity, account.getDbName());
+                                        handleSwitchAccount(activity);
+                                    })
+                                    .show();
+                        }
+                    } else {
+                        handleDeleteAccount(activity);
+                    }
+                })
+                .show();
+    }
+
 }
