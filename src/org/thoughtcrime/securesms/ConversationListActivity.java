@@ -34,7 +34,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
-import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -148,10 +147,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       if (!Prefs.isLocationStreamingEnabled(this)) {
         menu.findItem(R.id.menu_global_map).setVisible(false);
       }
-
-      if (Prefs.isAccountSwitchingEnabled(this)) {
-        menu.findItem(R.id.menu_switch_account).setVisible(true);
-      }
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -219,9 +214,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         return true;
       case R.id.menu_global_map:
         handleShowMap();
-        return true;
-      case R.id.menu_switch_account:
-        AccountManager.getInstance().handleSwitchAccount(this);
         return true;
       case android.R.id.home:
         onBackPressed();

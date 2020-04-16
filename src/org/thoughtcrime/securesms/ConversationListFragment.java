@@ -57,11 +57,13 @@ import org.thoughtcrime.securesms.components.reminder.DozeReminder;
 import org.thoughtcrime.securesms.components.reminder.OutdatedReminder;
 import org.thoughtcrime.securesms.components.reminder.Reminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
@@ -178,6 +180,13 @@ public class ConversationListFragment extends Fragment
       fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_RELAY));
     } else {
       fab.setOnClickListener(v -> startActivity(intent));
+      fab.setOnLongClickListener(v -> {
+        if (Prefs.isAccountSwitchingEnabled(getActivity())) {
+          AccountManager.getInstance().handleSwitchAccount(getActivity());
+          return true;
+        }
+        return false;
+      });
     }
   }
 

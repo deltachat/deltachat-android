@@ -15,6 +15,7 @@ import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WelcomeActivity;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -127,6 +128,7 @@ public class AccountManager {
             e.printStackTrace();
         }
 
+        Prefs.setAccountSwitchingEnabled(context, result.size()>1);
         return result;
     }
 
@@ -161,6 +163,8 @@ public class AccountManager {
         sharedPreferences.edit().putString("curr_account_db_name", inCreationDbName).apply();
 
         resetDcContext(context);
+
+        Prefs.setAccountSwitchingEnabled(context, true);
     }
 
     public boolean canRollbackAccountCreation(Context context) {

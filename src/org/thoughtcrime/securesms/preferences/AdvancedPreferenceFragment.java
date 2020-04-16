@@ -22,6 +22,7 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -93,6 +94,14 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Preference emptyServerFolders = this.findPreference("pref_empty_server_folders");
     if(emptyServerFolders!=null) {
       emptyServerFolders.setOnPreferenceClickListener(new EmptyServerFoldersListener());
+    }
+
+    Preference switchAccount = this.findPreference("pref_switch_account");
+    if(switchAccount!=null) {
+      switchAccount.setOnPreferenceClickListener(preference -> {
+        AccountManager.getInstance().handleSwitchAccount(getActivity());
+        return true;
+      });
     }
 
     Preference manageKeys = this.findPreference("pref_manage_keys");
