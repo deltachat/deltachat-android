@@ -179,6 +179,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
                   }
                 })
                 .setNegativeButton(android.R.string.cancel, (dialog, whichButton) -> initAutodelFromCore())
+                .setCancelable(false)
                 .show();
       } else {
         updateListSummary(preference, newValue);
