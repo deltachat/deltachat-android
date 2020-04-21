@@ -94,9 +94,7 @@ public class ApplicationDcContext extends DcContext {
 
     }
 
-    if (!isScreenOn) {
-      KeepAliveService.startSelf(context);
-    }
+    KeepAliveService.startSelf(context);
   }
 
   public void setStockTranslations() {
