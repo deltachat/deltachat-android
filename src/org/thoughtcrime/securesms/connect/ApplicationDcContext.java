@@ -48,7 +48,6 @@ public class ApplicationDcContext extends DcContext {
   public static final int RECIPIENT_TYPE_CONTACT = 1;
 
   public Context context;
-  public volatile boolean isScreenOn = false;
 
   public ApplicationDcContext(Context context) {
     super("Android "+BuildConfig.VERSION_NAME);
@@ -82,21 +81,7 @@ public class ApplicationDcContext extends DcContext {
     BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
     context.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
-    IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
-    filter.addAction(Intent.ACTION_SCREEN_OFF);
-    BroadcastReceiver screenReceiver = new ScreenReceiver();
-    context.registerReceiver(screenReceiver, filter);
-
-    try {
-      PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-      isScreenOn = pm.isScreenOn();
-    } catch (Exception e) {
-
-    }
-
-    if (!isScreenOn) {
-      KeepAliveService.startSelf(context);
-    }
+    KeepAliveService.startSelf(context);
   }
 
   public void setStockTranslations() {
