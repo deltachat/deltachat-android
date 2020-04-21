@@ -74,6 +74,13 @@ public class DcContext {
         contextCPtr = createContextCPtr(osName);
     }
 
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        unrefContextCPtr();
+        contextCPtr = 0;
+    }
+
     public native int          open                 (String dbfile);
     public native void         close                ();
     public native void         setStockTranslation  (int stockId, String translation);
@@ -190,6 +197,7 @@ public class DcContext {
     // working with raw c-data
     private long        contextCPtr;     // CAVE: the name is referenced in the JNI
     private native long createContextCPtr(String osName);
+    private native void unrefContextCPtr ();
     public  native long createMsgCPtr    (int viewtype);
     private native long getChatlistCPtr  (int listflags, String query, int queryId);
     private native long getChatCPtr      (int chat_id);

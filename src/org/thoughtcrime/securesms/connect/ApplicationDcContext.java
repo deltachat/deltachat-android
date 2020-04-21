@@ -53,7 +53,7 @@ public class ApplicationDcContext extends DcContext {
     super("Android "+BuildConfig.VERSION_NAME);
     this.context = context;
 
-    File dbfile = new File(context.getFilesDir(), "messenger.db");
+    File dbfile = AccountManager.getInstance().getSelectedAccount(context);
     open(dbfile.getAbsolutePath());
 
     try {

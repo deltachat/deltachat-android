@@ -250,6 +250,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       startActivity(intent);
   }
 
+
   @Override
   public void onCreateConversation(int chatId) {
     openConversation(chatId, -1);
