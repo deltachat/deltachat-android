@@ -24,13 +24,14 @@ public class MyProfileContactPhoto implements ContactPhoto {
 
     @Override
     public InputStream openInputStream(Context context) throws IOException {
-        return AvatarHelper.getInputStreamFor(context, address);
+        return AvatarHelper.getInputStreamFor(context);
     }
 
     @Override
     public @Nullable
     Uri getUri(@NonNull Context context) {
-        return Uri.fromFile(AvatarHelper.getSelfAvatarFile(context, address));
+
+        return Uri.fromFile(AvatarHelper.getSelfAvatarFile(context));
     }
 
     @Override

@@ -72,11 +72,10 @@ public class AvatarHelper {
     }
 
     public static void setSelfAvatar(@NonNull Context context, @NonNull String address, @Nullable byte[] data) throws IOException {
-        File avatar = getSelfAvatarFile(context);
         if (data == null) {
-            avatar.delete();
             DcHelper.set(context, DcHelper.CONFIG_SELF_AVATAR, null);
         } else {
+            File avatar = File.createTempFile("prefix", "extension", context.getCacheDir());
             FileOutputStream out = new FileOutputStream(avatar);
             if (data != null) {
                 out.write(data);
@@ -84,6 +83,7 @@ public class AvatarHelper {
             out.close();
             String path = avatar.getPath();
             DcHelper.set(context, DcHelper.CONFIG_SELF_AVATAR, path);
+            avatar.delete();
         }
     }
 }

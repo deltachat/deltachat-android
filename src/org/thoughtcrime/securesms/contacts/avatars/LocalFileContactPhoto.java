@@ -42,7 +42,7 @@ public abstract class LocalFileContactPhoto implements ContactPhoto {
 
     @Override
     public @Nullable Uri getUri(@NonNull Context context) {
-        return isProfilePhoto() ? Uri.fromFile(AvatarHelper.getSelfAvatarFile(context, address)) : null;
+        return isProfilePhoto() ? Uri.fromFile(AvatarHelper.getSelfAvatarFile(context)) : null;
     }
 
     @Override
