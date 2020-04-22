@@ -347,7 +347,6 @@
     <string name="login_auth_method">Metoda autoryzacji</string>
     <string name="login_info_oauth2_title">Kontynuuj w uproszczonej konfiguracji?</string>
     <string name="login_info_oauth2_text">Wprowadzony adres e-mail obsługuje uproszczoną konfigurację (OAuth2.0).\n\nW następnym kroku pozwól, aby Delta Chat działał jako czat z aplikacją e-mail.\n\nNie ma serwerów Delta Chat, Twoje dane pozostają na Twoim urządzeniu!</string>
-    <string name="login_info_gmail_text">W przypadku kont GMail, jeśli masz włączone 2FA, musisz utworzyć hasło aplikacji. Jeśli to ustawienie nie jest dostępne, musisz włączyć mniej bezpieczne aplikacje.</string>
     <string name="login_certificate_checks">Sprawdzanie certyfikatów</string>
     <string name="login_error_mail">Podaj ważny adres e-mail</string>
     <string name="login_error_server">Wprowadź poprawny adres serwera / IP</string>

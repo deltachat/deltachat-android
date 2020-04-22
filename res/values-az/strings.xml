@@ -307,7 +307,6 @@
     <string name="login_auth_method">Yetkiləndirmə metodu</string>
     <string name="login_info_oauth2_title">Sadələşdirilmiş tənzimləmə ilə davam edirsiniz?</string>
     <string name="login_info_oauth2_text">Daxil edilmiş e-poçt ünvanı sadələşdirilmiş bir quraşdırma (OAuth2) dəstəkləyir. \n\nNövbəti addımda Delta Chat e-poçt tətbiqinizlə söhbət etməyə icazə verin. \n\n Delta Chat serverləri, cihazınızda qalır!</string>
-    <string name="login_info_gmail_text">2FA aktiv olduqda, GMail hesabları üçün proqramşifrəsi yaratmalısınız. Bu tənzimləmə mövcud deyilsə daha az təhlükəsiz tətbiqləri işə salmalısınız. </string>
     <string name="login_certificate_checks">Sertifikat yoxlanmaları</string>
     <string name="login_error_mail">Xahiş edirik düzgün bir e-poçt ünvanı daxil et</string>
     <string name="login_error_server">Xahiş edirik, düzgün bir server / IP ünvanı daxil et</string>

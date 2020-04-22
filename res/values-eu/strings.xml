@@ -334,7 +334,6 @@
     <string name="login_auth_method">Baimentze metodoa</string>
     <string name="login_info_oauth2_title">Jarraitu ezarpen sinplifikatuarekin</string>
     <string name="login_info_oauth2_text">Sartu duzun e-mail helbideak ezarpen sinplifikatua onartzen du (OAuth2).\n\nHurrengo urratsean, baimendu Detla Chat zure e-mail bidezko txat aplikazio gisa erabili ahal izateko.\n\nEz dago Delta Chat zerbitzaririk, zure datuak zure gailuan mantentzen dira!</string>
-    <string name="login_info_gmail_text">GMail kontu bat erabiltzeko Aplikazio-pasahitza sortu behar duzu 2FA aktibatuta baduzu. Ezarpen hau eskuragarri ez baduzu, aplikazio ez hain seguruak gaitu behar dituzu.</string>
     <string name="login_certificate_checks">Ziurtagiri-egiaztaketak</string>
     <string name="login_error_mail">Sartu baliozko e-mail helbide bat</string>
     <string name="login_error_server">Sartu baliozko zerbitzari / IP helbide bat</string>

@@ -271,7 +271,6 @@
     <string name="login_auth_method">授權方式</string>
     <string name="login_info_oauth2_title">繼續使用簡易設定?</string>
     <string name="login_info_oauth2_text">你輸入的 email 支援簡單設定 (OAuth2)\n\n下一步請允許 Delta Chat 成為你的 email 聊天軟體\n\nDelta Chat 沒有伺服器，所有的資料都留在你的裝置上面!</string>
-    <string name="login_info_gmail_text">GMail 的使用者如果有啟動二階段認證的話，請新增「應用程式密碼」。如果找不到這個選項，請試著打開「較不安全的應用程式」設定。</string>
     <string name="login_error_mail">請輸入合法的 email 地址</string>
     <string name="login_error_server">請輸入合法的伺服器名稱 / IP位址</string>
     <string name="login_error_port">請輸入合法的埠號 (1-65535)</string>

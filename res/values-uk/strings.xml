@@ -251,7 +251,6 @@
     <string name="login_auth_method">Метод авторизації</string>
     <string name="login_info_oauth2_title">Продовжити спрощене налаштування?</string>
     <string name="login_info_oauth2_text">Введена адреса електронної пошти підтримує спрощене налаштування (OAuth2).\n\nНа наступному кроці дозвольте, будь ласка, Delta Chat виступати у якості Вашого додатку для чату за допомогою електронної пошти.\n\nУ Delta Chat немає серверів, Ваші дані залишаються на Вашому пристрої!</string>
-    <string name="login_info_gmail_text">Якщо Ви користуєтеся GMail і у вас увімкнена двофакторна аутентифікація, Вам потрібно створити спеціальний пароль для додатків - App-Password. Якщо ці налаштування недоступні, Вам потрібно активувати параметр Less Secure Apps.</string>
     <string name="login_error_mail">Вкажіть дійсну адресу електронної пошти</string>
     <string name="login_error_server">Вкажіть дійсний сервер / IP-адресу</string>
     <string name="login_error_port">Вкажіть дійсний порт (1–65535)</string>

@@ -332,7 +332,6 @@
     <string name="login_smtp_security">SMTP-säkerhet</string>
     <string name="login_auth_method">Auktoriseringsmetod</string>
     <string name="login_info_oauth2_title">Fortsätt med förenklad installation?</string>
-    <string name="login_info_gmail_text">För GMail-konton måste du skapa ett app-lösenord om du har 2FA aktiverat. Om denna inställning inte är tillgänglig måste du slå på \"Mindre säkra appar\".</string>
     <string name="login_error_mail">Vänligen ange en giltig e-postadress</string>
     <string name="login_error_server">Vänligen ange en giltig server/IP-adress</string>
     <string name="login_error_port">Vänligen ange en giltig port (1–65535)</string>

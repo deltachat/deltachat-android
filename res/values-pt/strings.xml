@@ -231,7 +231,6 @@
     <string name="login_auth_method">Método de autorização</string>
     <string name="login_info_oauth2_title">Usar configuração simplificada?</string>
     <string name="login_info_oauth2_text">Seu servidor de e-mail aceita o método de configuração simplificada (OAuth2).\n\n No próximo passo, por favor, permita que o Delta Chat seja seu aplicativo de e-mail.\n\nNão há servidor do Delta Chat. Seus dados ficam no seu aparelho!</string>
-    <string name="login_info_gmail_text">Para contas do GMail, precisa criar uma senha do aplicativo se tiver 2FA activado. Se essa configuração não estiver disponível, precisará de activar os aplicativos menos seguros.</string>
     <string name="login_error_mail">Por favor insira um endereço de e-mail válido</string>
     <string name="login_error_server">Por favor insira um servidor ou endereço IP válido</string>
     <string name="login_error_port">Por favor, insira um porto válido (1-65535)</string>

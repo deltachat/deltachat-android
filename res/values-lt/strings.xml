@@ -183,11 +183,22 @@
     <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
     <string name="edit_contact">Taisyti adresatą</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Prisegti pokalbį</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Atsegti pokalbį</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Prisegti</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Atsegti</string>
+
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
     <string name="mute_forever">Išjungti visam laikui</string>
+
+    <string name="file_saved_to">Failas įrašytas į \"%1$s\".</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
@@ -253,7 +264,10 @@
     <string name="chat_archived_label">Archyvuotas</string>
     <string name="chat_no_messages">Žinučių nėra.</string>
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
+    <string name="saved_messages">Įrašytos žinutės</string>
     <string name="chat_contact_request">Adresato užklausa</string>
+    <string name="send_failed">Nepavyko išsiųsti žinutės</string>
+
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>
@@ -280,6 +294,9 @@
     <string name="tab_gallery_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami paveikslai ir vaizdo įrašai.</string>
     <string name="tab_docs_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami dokumentai, muzika ir kiti failai.</string>
     <string name="media_preview">Medijos peržiūra</string>
+    <string name="send_message">Siųsti žinutę</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="welcome_start_messaging">Pradėti susirašinėjimą</string>
@@ -311,6 +328,7 @@
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Atsakymas iš %1$s: %2$s\n\nKai kurie teikėjai patalpina papildomą informaciją į jūsų gautųjų laiškų aplanką; galite ją patikrinti, pvz., prisijungę per naršyklę. Jei susidursite su problema, pagalbos teiraukitės savo teikėjo ar draugų.</string>
 
+    <string name="used_settings">Naudoti nustatymai:</string>
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
 
@@ -405,6 +423,13 @@
     <string name="pref_background_default_color">Numatytoji spalva</string>
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
+
+    <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
+    <string name="autodel_at_once">Iš karto</string>
+    <string name="autodel_after_1_hour">Po 1 valandos</string>
+    <string name="autodel_after_1_day">Po 1 dienos</string>
+    <string name="autodel_after_1_week">Po 1 savaitės</string>
+    <string name="autodel_after_4_weeks">Po 4 savaičių</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>

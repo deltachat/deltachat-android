@@ -50,6 +50,7 @@
     <string name="email_address">Enderezo de correo</string>
     <string name="bad_email_address">Enderezo incorrecto.</string>
     <string name="password">Contrasinal</string>
+    <string name="existing_password">Contrasinal actual</string>
     <string name="now">Agora</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Perigo</string>
@@ -333,7 +334,6 @@
     <string name="login_auth_method">Método de autorización</string>
     <string name="login_info_oauth2_title">Continuar co axuste simplificado?</string>
     <string name="login_info_oauth2_text">O enderezo introducido soporta o axuste simplificado (OAuth 2.0).\n\nNo seguinte paso, permite a Delta Chat actuar como app de Conversa sobre Correo-e.\n\nNon hai servidores Delta Chat, os teus datos permanecen no dispositivo.</string>
-    <string name="login_info_gmail_text">Para as contas Gmail debes crear un Contrasinal de App se tes activada a \"Verificación en dous pasos\". Se o axuste non está dispoñible, tes que activar \"Apps menos seguras\".</string>
     <string name="login_certificate_checks">Comprobacións do certificado</string>
     <string name="login_error_mail">Introduce un enderezo de correo válido</string>
     <string name="login_error_server">Introduce un servidor válido / enderezo IP</string>
@@ -465,6 +465,22 @@
     <string name="pref_background_default_color">Cor por omisión</string>
     <string name="pref_background_custom_image">Imaxe persoal</string>
     <string name="pref_background_custom_color">Cor persoal</string>
+
+    <!-- automatically delete message -->
+    <string name="autodel_title">Borrado automático</string>
+    <string name="autodel_title_short">Borrar automáticamente</string>
+    <string name="autodel_device_title">Borrar mensaxes do dispositivo</string>
+    <string name="autodel_server_title">Borrar mensaxes do servidor</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_device_ask">Queres borrar %1$d mensaxes agora e todas as novas mensaxes %2$s no futuro?\n\n• Esto inclúe todo o multimedia\n\n• As mensaxes borraranse fosen lidas ou non\n\n• As \"mensaxes gardadas\" non será borradas do dispositivo.</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_server_ask">Queres borrar %1$d mensaxes agora e todas as novas mensaxes recibidas %2$s no futuro?\n\n• Esto inclúe todo o multimedia\n\n• Esto tamén borrará os correos afectados pola opción \"Mostrar correo clásico\"\n\n• As \"mensaxes gardadas\" tamén se borrarán no servidor.</string>
+    <string name="autodel_confirm">Entendo, dalle e borra as mensaxes todas</string>
+    <string name="autodel_at_once">dunha vez</string>
+    <string name="autodel_after_1_hour">Após 1 hora</string>
+    <string name="autodel_after_1_day">Após 1 día</string>
+    <string name="autodel_after_1_week">Após 1 semana</string>
+    <string name="autodel_after_4_weeks">Após 4 semanas</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>

@@ -291,7 +291,6 @@
     <string name="login_auth_method">Tilladelse metode</string>
     <string name="login_info_oauth2_title">Fortsætte med forenklet opsætning?</string>
     <string name="login_info_oauth2_text">Indtastet e-post adresse understøtter simple opsætning (OAuth2).\n\nI næste trin tillad at Delta Chat agerer som samtale med e-post program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed!</string>
-    <string name="login_info_gmail_text">For GMail konti skal der oprettes en App-Password hvis 2FA er aktiveret. Hvis denne opsætning ikke er tilgængelig skal Less Secure Apps aktiveres.</string>
     <string name="login_error_mail">Indtast gyldig e-post adresse</string>
     <string name="login_error_server">Indtast gyldig server / IP adresse</string>
     <string name="login_error_port">Indtast gyldig port (1–65535)</string>

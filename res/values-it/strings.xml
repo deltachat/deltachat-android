@@ -50,6 +50,7 @@
     <string name="email_address">Indirizzo email</string>
     <string name="bad_email_address">Indirizzo non valido</string>
     <string name="password">Password</string>
+    <string name="existing_password">Password esistente</string>
     <string name="now">Ora</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Attenzione</string>
@@ -183,6 +184,15 @@
     <string name="device_talk_explain">I messaggio in questa chat vengono generati localmente da Delta Chat. Gli sviluppatori li usano per informarti sugli aggiornamenti o sui problemi d\'utilizzo.</string>
     <string name="device_talk_welcome_message">Benvenuto in Delta Chat! - Delta Chat ha l\'aspetto e lo stile di altre popolari applicazioni di messaggistica, ma non costringe ad un controllo centralizzato, al tracciamento o alla vendita tua,  dei tuoi amici, colleghi o familiari a grandi organizzazioni.\n \n Tecnicamente, Delta Chat è un\'applicazione di posta elettronica con un\'interfaccia moderna. L\'email in una nuova veste 👻 \n \nUtilizza Delta Chat con chiunque: basta conoscere il loro indirizzo e-mail. I destinatari non hanno bisogno di installare Delta Chat, visitare siti web o iscriversi da nessuna parte -  ma, naturalmente se lo desiderano, puoi suggerirgli 👉 https://get.delta.chat</string>
     <string name="edit_contact">Modifica contatto</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Fissa chat</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Sblocca chat</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Fissa</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Sblocca</string>
+
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_two_hours">Silenzia per 2 ore</string>
     <string name="mute_for_one_day">Silenzia per 1 giorno</string>
@@ -324,7 +334,6 @@
     <string name="login_auth_method">Metodo di autorizzazione</string>
     <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
     <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2).\n\nContinuando, puoi autorizzare Delta Chat ad operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
-    <string name="login_info_gmail_text">Per gli account GMail è necessario creare una password per le app se è attiva la verifica in 2 passaggi. Se queste impostazioni non sono disponibili, è necessario abilitare le app meno sicure.</string>
     <string name="login_certificate_checks">Controlli certificato</string>
     <string name="login_error_mail">Inserisci un indirizzo email valido</string>
     <string name="login_error_server">Inserisci un server / indirizzo IP valido</string>
@@ -457,6 +466,22 @@
     <string name="pref_background_custom_image">Immagine personalizzata</string>
     <string name="pref_background_custom_color">Colore personalizzato</string>
 
+    <!-- automatically delete message -->
+    <string name="autodel_title">Auto eliminazione dei messaggi</string>
+    <string name="autodel_title_short">Auto-eliminazione</string>
+    <string name="autodel_device_title">Elimina messaggi dal dispositivo</string>
+    <string name="autodel_server_title">Elimina messaggi dal server</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_device_ask">Vuoi eliminare %1$d messaggi ora e tutti i messaggi arrivati %2$s nel futuro?\n\n• Questo include tutti i media\n\n• I messaggi verranno eliminati anche se non sono stati letti\n\n• I \"Messaggi salvati\" vengono preservati dalla cancellazione locale.</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_server_ask">Vuoi eliminare %1$d messaggi ora e tutti i messaggi arrivati %2$s nel futuro?\n\n• Questo include tutti i media\n\n• Verranno eliminate anche le email legate all\'opzione \"Mostra email classiche\"\n\n• Anche i \"Messaggi salvati\" verranno eliminati dal server.</string>
+    <string name="autodel_confirm">Ho capito, elimina tutti i messaggi</string>
+    <string name="autodel_at_once">Una volta</string>
+    <string name="autodel_after_1_hour">Dopo 1 ora</string>
+    <string name="autodel_after_1_day">Dopo 1 giorno</string>
+    <string name="autodel_after_1_week">Dopo 1 settimana</string>
+    <string name="autodel_after_4_weeks">Dopo 4 settimane</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt è una nuova specifica aperta per la cifratura end-to-end delle email.\n\nLa tua configurazione end-to-end viene creata automaticamente quando necessario e puoi trasferirla tra dispositivi tramite i Messaggi di configurazione.</string>
@@ -523,6 +548,10 @@
     <string name="qrshow_join_contact_hint">Scansionalo per creare un contatto per %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Il setup tramite codice QR richiede una connessione internet. Collegati a una rete prima di procedere.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nessuna connessione internet, impossibile effettuare l\'impostazione tramite QR.</string>
+    <string name="qraccount_ask_create_and_login">Creo un nuovo indirizzo email su \"%1$s\" e accedo?</string>
+    <string name="qraccount_success_enter_name">Accesso completato—il tuo indirizzo email è %1$s\n\nSe vuoi, puoi inserire un nome e un\'immagine profilo che verranno mostrati a chi ti scrive.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere usato per creare un nuovo account.</string>
+    <string name="qraccount_use_on_new_install">Il codice QR scansionato serve a creare un nuovo account. Puoi scansionare il codice quando configuri una nuova installazione di Delta Chat.</string>
     <string name="contact_verified">%1$s verificato.</string>
     <string name="contact_not_verified">Impossibile verificare %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

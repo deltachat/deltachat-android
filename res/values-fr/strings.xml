@@ -333,7 +333,6 @@
     <string name="login_auth_method">Méthode d\'autorisation</string>
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
     <string name="login_info_oauth2_text">L\'adresse de courriel saisie prend en charge une configuration simplifiée (OAuth2.0). \n\nDans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec courriel . Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
-    <string name="login_info_gmail_text">Pour les comptes GMail, vous devez créer un mot de passe d\'application si vous avez activé 2FA. Si ce paramètre n\'est pas disponible, vous devez autoriser des applications moins sécurisées.</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
     <string name="login_error_mail">Entrez une adresse email valide</string>
     <string name="login_error_server">Entre un serveur / adresse IP valide</string>

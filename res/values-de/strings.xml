@@ -334,7 +334,6 @@
     <string name="login_auth_method">Autorisierungsmethode</string>
     <string name="login_info_oauth2_title">Weiter mit vereinfachter Einrichtung?</string>
     <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth 2.0).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt, als Chat-über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
-    <string name="login_info_gmail_text">Für GMail-Konten muss ein App-Passwort erstellt werden, wenn die 2FA (Zwei-Faktor-Authentifizierung) aktiviert ist. Wenn diese Einstellung nicht verfügbar ist, muss \"Zugriff durch weniger sichere Anwendungen\" aktiviert werden.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>
     <string name="login_error_server">Bitte eine gültige Server/IP-Adresse eingeben</string>
@@ -355,7 +354,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="accept_invalid_certificates">Ungültige Zertifikate akzeptieren</string>
 
     <string name="used_settings">Verwendete Einstellungen:</string>
-    <string name="delete_account">Account löschen</string>
+    <string name="switch_account">E-Mail-Konto wechseln</string>
+    <string name="add_account">E-Mail-Konto hinzufügen</string>
+    <string name="delete_account">E-Mail-Konto löschen</string>
     <string name="delete_account_ask">Möchten Sie das E-Mail-Konto und alle Daten wirklich von diesem Gerät löschen?</string>
 
     <!-- share and forward messages -->
@@ -599,7 +600,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Willkommen bei Delta Chat</string>
-    <string name="login_known_accounts_title_desktop">Bekannte Konten</string>
+    <string name="login_known_accounts_title_desktop">Bekannte E-Mail-Konten</string>
     <string name="global_menu_preferences_language_desktop">Sprache</string>
     <string name="global_menu_file_desktop">Datei</string>
     <string name="global_menu_file_quit_desktop">Beenden</string>
@@ -674,7 +675,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="a11y_delivery_status_delivered">Übertragungsstatus: Versendet</string>
     <string name="a11y_delivery_status_read">Übertragungsstatus: Gelesen</string>
     <string name="a11y_delivery_status_invalid">Übertragungsstatus: Ungültig</string>
-    <string name="a11y_remove_account_btn_label">Account löschen</string>
+    <string name="a11y_remove_account_btn_label">E-Mail-Konto löschen</string>
     <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
 
