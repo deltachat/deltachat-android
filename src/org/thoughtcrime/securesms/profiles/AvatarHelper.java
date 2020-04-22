@@ -61,23 +61,18 @@ public class AvatarHelper {
         }
     }
 
-    public static InputStream getInputStreamFor(@NonNull Context context, @NonNull String address)
+    public static InputStream getInputStreamFor(@NonNull Context context)
             throws IOException {
-        return new FileInputStream(getSelfAvatarFile(context, address));
+        return new FileInputStream(getSelfAvatarFile(context));
     }
 
-    public static File getSelfAvatarFile(@NonNull Context context, @NonNull Address address) {
-        String name = new File(address.serialize()).getName();
-        return getSelfAvatarFile(context, name);
-    }
-
-    public static File getSelfAvatarFile(@NonNull Context context, @NonNull String address) {
+    public static File getSelfAvatarFile(@NonNull Context context) {
         String dirString = DcHelper.getContext(context).getConfig(DcHelper.CONFIG_SELF_AVATAR);
         return new File(dirString);
     }
 
     public static void setSelfAvatar(@NonNull Context context, @NonNull String address, @Nullable byte[] data) throws IOException {
-        File avatar = getSelfAvatarFile(context, address);
+        File avatar = getSelfAvatarFile(context);
         if (data == null) {
             avatar.delete();
             DcHelper.set(context, DcHelper.CONFIG_SELF_AVATAR, null);

@@ -259,12 +259,12 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private void initializeProfileAvatar() {
     String address = DcHelper.get(this, DcHelper.CONFIG_ADDRESS);
 
-    if (AvatarHelper.getSelfAvatarFile(this, address).exists() && AvatarHelper.getSelfAvatarFile(this, address).length() > 0) {
+    if (AvatarHelper.getSelfAvatarFile(this).exists() && AvatarHelper.getSelfAvatarFile(this).length() > 0) {
       new AsyncTask<Void, Void, byte[]>() {
         @Override
         protected byte[] doInBackground(Void... params) {
           try {
-            return Util.readFully(AvatarHelper.getInputStreamFor(CreateProfileActivity.this, address));
+            return Util.readFully(AvatarHelper.getInputStreamFor(CreateProfileActivity.this));
           } catch (IOException e) {
             Log.w(TAG, e);
             return null;
