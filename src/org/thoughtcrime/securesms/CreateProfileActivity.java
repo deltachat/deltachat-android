@@ -48,6 +48,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.LinkedList;
@@ -264,7 +265,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
         @Override
         protected byte[] doInBackground(Void... params) {
           try {
-            return Util.readFully(AvatarHelper.getInputStreamFor(CreateProfileActivity.this));
+            return Util.readFully(new FileInputStream(AvatarHelper.getSelfAvatarFile(CreateProfileActivity.this)));
           } catch (IOException e) {
             Log.w(TAG, e);
             return null;

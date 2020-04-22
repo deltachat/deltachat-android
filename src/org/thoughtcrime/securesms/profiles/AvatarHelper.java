@@ -61,11 +61,6 @@ public class AvatarHelper {
         }
     }
 
-    public static InputStream getInputStreamFor(@NonNull Context context)
-            throws IOException {
-        return new FileInputStream(getSelfAvatarFile(context));
-    }
-
     public static File getSelfAvatarFile(@NonNull Context context) {
         String dirString = DcHelper.getContext(context).getConfig(DcHelper.CONFIG_SELF_AVATAR);
         return new File(dirString);
