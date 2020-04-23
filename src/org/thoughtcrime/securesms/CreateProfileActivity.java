@@ -48,6 +48,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.LinkedList;
@@ -259,12 +260,12 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private void initializeProfileAvatar() {
     String address = DcHelper.get(this, DcHelper.CONFIG_ADDRESS);
 
-    if (AvatarHelper.getSelfAvatarFile(this, address).exists() && AvatarHelper.getSelfAvatarFile(this, address).length() > 0) {
+    if (AvatarHelper.getSelfAvatarFile(this).exists() && AvatarHelper.getSelfAvatarFile(this).length() > 0) {
       new AsyncTask<Void, Void, byte[]>() {
         @Override
         protected byte[] doInBackground(Void... params) {
           try {
-            return Util.readFully(AvatarHelper.getInputStreamFor(CreateProfileActivity.this, address));
+            return Util.readFully(new FileInputStream(AvatarHelper.getSelfAvatarFile(CreateProfileActivity.this)));
           } catch (IOException e) {
             Log.w(TAG, e);
             return null;
@@ -374,7 +375,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
         setStatusText();
 
         try {
-          AvatarHelper.setSelfAvatar(CreateProfileActivity.this, DcHelper.get(context, DcHelper.CONFIG_ADDRESS), avatarBytes);
+          AvatarHelper.setSelfAvatar(CreateProfileActivity.this, avatarBytes);
           Prefs.setProfileAvatarId(CreateProfileActivity.this, new SecureRandom().nextInt());
         } catch (IOException e) {
           Log.w(TAG, e);

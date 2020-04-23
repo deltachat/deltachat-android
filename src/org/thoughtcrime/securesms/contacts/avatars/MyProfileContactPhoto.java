@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.MessageDigest;
@@ -24,13 +25,13 @@ public class MyProfileContactPhoto implements ContactPhoto {
 
     @Override
     public InputStream openInputStream(Context context) throws IOException {
-        return AvatarHelper.getInputStreamFor(context, address);
+        return new FileInputStream(AvatarHelper.getSelfAvatarFile(context));
     }
 
     @Override
     public @Nullable
     Uri getUri(@NonNull Context context) {
-        return Uri.fromFile(AvatarHelper.getSelfAvatarFile(context, address));
+        return Uri.fromFile(AvatarHelper.getSelfAvatarFile(context));
     }
 
     @Override
