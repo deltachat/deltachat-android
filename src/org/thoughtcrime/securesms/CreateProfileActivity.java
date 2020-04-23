@@ -375,7 +375,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
         setStatusText();
 
         try {
-          AvatarHelper.setSelfAvatar(CreateProfileActivity.this, DcHelper.get(context, DcHelper.CONFIG_ADDRESS), avatarBytes);
+          AvatarHelper.setSelfAvatar(CreateProfileActivity.this, avatarBytes);
           Prefs.setProfileAvatarId(CreateProfileActivity.this, new SecureRandom().nextInt());
         } catch (IOException e) {
           Log.w(TAG, e);

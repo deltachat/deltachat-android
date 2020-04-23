@@ -24,7 +24,7 @@ public class AvatarHelper {
             dcContext.setChatProfileImage(chatId, null);
         } else {
             try {
-                File avatar = File.createTempFile("groupavatar", "jpg", context.getCacheDir());
+                File avatar = File.createTempFile("groupavatar", ".jpg", context.getCacheDir());
                 FileOutputStream out = new FileOutputStream(avatar);
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 85, out);
                 out.close();
@@ -46,7 +46,7 @@ public class AvatarHelper {
         if (data == null) {
             DcHelper.set(context, DcHelper.CONFIG_SELF_AVATAR, null);
         } else {
-            File avatar = File.createTempFile("selfavatar", "jpg", context.getCacheDir());
+            File avatar = File.createTempFile("selfavatar", ".jpg", context.getCacheDir());
             FileOutputStream out = new FileOutputStream(avatar);
             out.write(data);
             out.close();
