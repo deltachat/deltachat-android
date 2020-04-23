@@ -449,7 +449,10 @@ public class ConversationListFragment extends Fragment
     getListAdapter().initializeBatchMode(true);
     getListAdapter().toggleThreadInBatchSet(item.getChatId());
     getListAdapter().notifyDataSetChanged();
-    updateActionModeItems(actionMode.getMenu());
+    Menu menu = actionMode.getMenu();
+    if (menu != null) {
+        updateActionModeItems(menu);
+    }
   }
 
   @Override
