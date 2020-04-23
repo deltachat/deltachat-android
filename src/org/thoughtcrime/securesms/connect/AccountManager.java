@@ -239,9 +239,14 @@ public class AccountManager {
                         activity.finishAffinity();
                         activity.startActivity(new Intent(activity, WelcomeActivity.class));
                     } else { // switch account
-                        switchAccount(activity, accounts.get(which));
-                        activity.finishAffinity();
-                        activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
+                        Account account = accounts.get(which);
+                        if (account.isCurrent()) {
+                            dialog.dismiss();
+                        } else {
+                            switchAccount(activity, account);
+                            activity.finishAffinity();
+                            activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
+                        }
                     }
                 });
         if (accounts.size() > 1) {
