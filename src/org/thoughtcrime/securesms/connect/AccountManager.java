@@ -212,7 +212,7 @@ public class AccountManager {
         private final @Nullable String deleteDbName;
 
         public SwitchAccountAsyncTask(Activity activity, int title, @Nullable Account destAccount, @Nullable String deleteDbName) {
-            super(activity, title, R.string.one_moment);
+            super(activity, null, activity.getString(title));
             this.activityWeakReference = new WeakReference<>(activity);
             this.destAccount = destAccount;
             this.deleteDbName = deleteDbName;
