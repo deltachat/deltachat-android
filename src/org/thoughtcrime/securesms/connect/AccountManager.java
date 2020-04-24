@@ -16,8 +16,10 @@ import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class AccountManager {
@@ -212,6 +214,44 @@ public class AccountManager {
     }
 
 
+    // helper class for switching accounts gracefully
+
+    private static class SwitchAccountAsyncTask extends ProgressDialogAsyncTask<Integer, Void, Void> {
+        private final WeakReference<Activity> activityWeakReference;
+        private final @Nullable Account destAccount; // null creates a new account
+
+        public SwitchAccountAsyncTask(Activity activity, int title, @Nullable Account destAccount) {
+            super(activity, title, R.string.one_moment);
+            this.activityWeakReference = new WeakReference<>(activity);
+            this.destAccount = destAccount;
+        }
+        @Override
+        protected Void doInBackground(Integer... recipientIds) {
+            Activity activity = activityWeakReference.get();
+            if (activity!=null) {
+                if (destAccount==null) {
+                    AccountManager.getInstance().beginAccountCreation(activity);
+                } else {
+                    AccountManager.getInstance().switchAccount(activity, destAccount);
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            Activity activity = activityWeakReference.get();
+            if (activity!=null) {
+                activity.finishAffinity();
+                if (destAccount==null) {
+                    activity.startActivity(new Intent(activity, WelcomeActivity.class));
+                } else {
+                    activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
+                }
+            }
+        }
+    }
+
     // ui
 
     public void handleSwitchAccount(Activity activity) {
@@ -236,18 +276,13 @@ public class AccountManager {
                 .setTitle(R.string.switch_account)
                 .setNegativeButton(R.string.cancel, null)
                 .setSingleChoiceItems(menu.toArray(new String[menu.size()]), presel, (dialog, which) -> {
+                    dialog.dismiss();
                     if (which==addAccount) {
-                        beginAccountCreation(activity);
-                        activity.finishAffinity();
-                        activity.startActivity(new Intent(activity, WelcomeActivity.class));
+                        new SwitchAccountAsyncTask(activity, R.string.add_account, null).execute(0);
                     } else { // switch account
                         Account account = accounts.get(which);
-                        if (account.isCurrent()) {
-                            dialog.dismiss();
-                        } else {
-                            switchAccount(activity, account);
-                            activity.finishAffinity();
-                            activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
+                        if (!account.isCurrent()) {
+                            new SwitchAccountAsyncTask(activity, R.string.switch_account, account).execute(0);
                         }
                     }
                 });
