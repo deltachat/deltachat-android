@@ -1,7 +1,9 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
+
 import android.util.Log;
 
 import org.thoughtcrime.securesms.util.AsyncLoader;
@@ -10,14 +12,14 @@ public class DcMsgListLoader extends AsyncLoader<int[]> {
 
     private static final String TAG = DcMsgListLoader.class.getName();
 
-    private final int    chatId;
-    private final int    listflags;
-    private final int    marker1before;
+    private final int chatId;
+    private final int listflags;
+    private final int marker1before;
 
     public DcMsgListLoader(Context context, int chatId, int listflags, int marker1before) {
         super(context);
-        this.chatId        = chatId;
-        this.listflags     = listflags;
+        this.chatId = chatId;
+        this.listflags = listflags;
         this.marker1before = marker1before;
     }
 

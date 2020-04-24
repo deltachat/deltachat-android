@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -74,8 +77,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
             if (telemetry != null) {
                 telemetry.setUserTelemetryRequestState(false);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -87,7 +89,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         lazyMapboxInit(this);
 
         setContentView(R.layout.activity_map);
-        chatId =  getIntent().getIntExtra(CHAT_ID, -1);
+        chatId = getIntent().getIntExtra(CHAT_ID, -1);
 
         if (chatId == -1) {
             finish();
@@ -144,25 +146,25 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                     mapboxMap.getLocationComponent(),
                     chatId,
                     (latLngBounds) -> {
-                Log.d(TAG, "on Data initialized");
-                if (latLngBounds != null && lastMapCenter == null) {
-                    mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
-                }
+                        Log.d(TAG, "on Data initialized");
+                        if (latLngBounds != null && lastMapCenter == null) {
+                            mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50), 1000);
+                        }
 
-                mapboxMap.addOnMapClickListener(point ->
-                        handleInfoWindowClick(point) ||
-                        handleMarkerClick(point) ||
-                        handleAddPoiClick(point));
+                        mapboxMap.addOnMapClickListener(point ->
+                                handleInfoWindowClick(point) ||
+                                        handleMarkerClick(point) ||
+                                        handleAddPoiClick(point));
 
 
-                mapboxMap.addOnMapLongClickListener(point ->
-                    handlePoiLongClick(point));
+                        mapboxMap.addOnMapLongClickListener(point ->
+                                handlePoiLongClick(point));
 
-                SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
-                switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                    mapDataManager.showTraces(isChecked);
-                });
-            });
+                        SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
+                        switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                            mapDataManager.showTraces(isChecked);
+                        });
+                    });
 
             TimeRangeSlider timeRangeSlider = this.findViewById(R.id.timeRangeSlider);
             timeRangeSlider.setOnTimestampChangedListener(this);
@@ -259,7 +261,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         for (Feature feature : features) {
             Log.d(TAG, "found feature: " + feature.toJson());
             //show first feature that has meta data infos
-            if (feature.hasProperty(MARKER_SELECTED))  {
+            if (feature.hasProperty(MARKER_SELECTED)) {
                 mapDataManager.setMarkerSelected(feature.id());
                 if (markerViewManager.hasMarkers()) {
                     markerViewManager.removeMarkers();
@@ -288,9 +290,9 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
             int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
             int startingPosition = -1;
-            for(int i=0; i< msgs.length; i++ ) {
-                if(msgs[i] == messageId) {
-                    startingPosition = msgs.length-1-i;
+            for (int i = 0; i < msgs.length; i++) {
+                if (msgs[i] == messageId) {
+                    startingPosition = msgs.length - 1 - i;
                     break;
                 }
             }

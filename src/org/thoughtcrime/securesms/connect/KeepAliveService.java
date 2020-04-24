@@ -11,7 +11,9 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.PowerManager;
+
 import androidx.core.app.NotificationCompat;
+
 import android.util.Log;
 
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -21,16 +23,14 @@ public class KeepAliveService extends Service {
 
     static KeepAliveService s_this = null;
 
-    public static void startSelf(Context context)
-    {
+    public static void startSelf(Context context) {
         try {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
-                if(powerManager.isIgnoringBatteryOptimizations(context.getPackageName())) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+                if (powerManager.isIgnoringBatteryOptimizations(context.getPackageName())) {
                     return; // fine, the user has disabled the battery optimisations for us
                 }
-            }
-            else {
+            } else {
                 return; // android <= lollipop does not have a doze mode
             }
 
@@ -40,12 +40,10 @@ public class KeepAliveService extends Service {
                 // the started service has to call startForeground() within 5 seconds,
                 // see https://developer.android.com/about/versions/oreo/android-8.0-changes
                 context.startForegroundService(new Intent(context, KeepAliveService.class));
-            }
-            else {
+            } else {
                 context.startService(new Intent(context, KeepAliveService.class));
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -61,8 +59,7 @@ public class KeepAliveService extends Service {
         try {
             stopForeground(true);
             startForeground(FG_NOTIFICATION_ID, createNotification());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -86,8 +83,7 @@ public class KeepAliveService extends Service {
         // the service will be restarted due to START_STICKY automatically, there's nothing more to do.
     }
 
-    static public KeepAliveService getInstance()
-    {
+    static public KeepAliveService getInstance() {
         return s_this; // may be null
     }
 
@@ -97,8 +93,8 @@ public class KeepAliveService extends Service {
      **********************************************************************************************/
 
     public static final int FG_NOTIFICATION_ID = 4142;
-    private Notification createNotification()
-    {
+
+    private Notification createNotification() {
         Intent intent = new Intent(this, ConversationListActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         // a notification _must_ contain a small icon, a title and a text, see https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Required
@@ -107,13 +103,13 @@ public class KeepAliveService extends Service {
         builder.setContentTitle(getString(R.string.app_name));
         builder.setContentText(getString(R.string.notify_background_connection_enabled));
 
-        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             builder.setPriority(NotificationCompat.PRIORITY_MIN);
         }
         builder.setWhen(0);
         builder.setContentIntent(contentIntent);
         builder.setSmallIcon(R.drawable.notification_permanent);
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createFgNotificationChannel(this);
             builder.setChannelId(FG_CHANNEL_ID);
         }
@@ -122,12 +118,13 @@ public class KeepAliveService extends Service {
 
     private static boolean ch_created = false;
     private static final String FG_CHANNEL_ID = "dc_foreground_notification_ch";
+
     @TargetApi(Build.VERSION_CODES.O)
     static private void createFgNotificationChannel(Context context) {
-        if(!ch_created) {
+        if (!ch_created) {
             ch_created = true;
             NotificationChannel channel = new NotificationChannel(FG_CHANNEL_ID,
-                "Receive messages in background.", NotificationManager.IMPORTANCE_MIN); // IMPORTANCE_DEFAULT will play a sound
+                    "Receive messages in background.", NotificationManager.IMPORTANCE_MIN); // IMPORTANCE_DEFAULT will play a sound
             channel.setDescription("Ensure reliable message receiving.");
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);

@@ -56,276 +56,275 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
-    implements ConversationListFragment.ConversationSelectedListener
-{
-  @SuppressWarnings("unused")
-  private static final String TAG = ConversationListActivity.class.getSimpleName();
-  private static final String OPENPGP4FPR = "openpgp4fpr";
+        implements ConversationListFragment.ConversationSelectedListener {
+    @SuppressWarnings("unused")
+    private static final String TAG = ConversationListActivity.class.getSimpleName();
+    private static final String OPENPGP4FPR = "openpgp4fpr";
 
-  private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+    private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
+    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
-  private ConversationListFragment conversationListFragment;
-  private TextView                 title;
-  private SearchFragment           searchFragment;
-  private SearchToolbar            searchToolbar;
-  private ImageView                searchAction;
-  private ViewGroup                fragmentContainer;
+    private ConversationListFragment conversationListFragment;
+    private TextView title;
+    private SearchFragment searchFragment;
+    private SearchToolbar searchToolbar;
+    private ImageView searchAction;
+    private ViewGroup fragmentContainer;
 
-  @Override
-  protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
-  }
-
-  @Override
-  protected void onCreate(Bundle icicle, boolean ready) {
-    DcHelper.getContext(this).updateDeviceChats();
-    setContentView(R.layout.conversation_list_activity);
-
-    Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
-
-    title                    = findViewById(R.id.toolbar_title);
-    searchToolbar            = findViewById(R.id.search_toolbar);
-    searchAction             = findViewById(R.id.search_action);
-    fragmentContainer        = findViewById(R.id.fragment_container);
-
-    Bundle bundle = new Bundle();
-    bundle.putBoolean(ConversationListFragment.FORWARDING, isForwarding(this));
-    conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
-
-    initializeSearchListener();
-
-    TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
-    refresh();
-  }
-
-  @Override
-  protected void onNewIntent(Intent intent) {
-    super.onNewIntent(intent);
-    setIntent(intent);
-    refresh();
-    conversationListFragment.onNewIntent();
-    invalidateOptionsMenu();
-  }
-
-  private void refresh() {
-    if (isRelayingMessageContent(this)) {
-      title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      if (isDirectSharing(this)) {
-        openConversation(getDirectSharingChatId(this), -1);
-      }
-    } else {
-      title.setText(R.string.app_name);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-    }
-    handleOpenpgp4fpr();
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
-
-  }
-
-  @Override
-  public boolean onPrepareOptionsMenu(Menu menu) {
-    MenuInflater inflater = this.getMenuInflater();
-    menu.clear();
-
-    if (!isRelayingMessageContent(this)) {
-      inflater.inflate(R.menu.text_secure_normal, menu);
-      MenuItem item = menu.findItem(R.id.menu_global_map);
-      if (Prefs.isLocationStreamingEnabled(this)) {
-        item.setVisible(true);
-      }
-
-      if (!Prefs.isLocationStreamingEnabled(this)) {
-        menu.findItem(R.id.menu_global_map).setVisible(false);
-      }
+    @Override
+    protected void onPreCreate() {
+        dynamicTheme.onCreate(this);
+        dynamicLanguage.onCreate(this);
     }
 
-    super.onPrepareOptionsMenu(menu);
-    return true;
-  }
+    @Override
+    protected void onCreate(Bundle icicle, boolean ready) {
+        DcHelper.getContext(this).updateDeviceChats();
+        setContentView(R.layout.conversation_list_activity);
 
-  private void initializeSearchListener() {
-    searchAction.setOnClickListener(v -> {
-      searchToolbar.display(searchAction.getX() + (searchAction.getWidth() / 2),
-                            searchAction.getY() + (searchAction.getHeight() / 2));
-    });
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-    searchToolbar.setListener(new SearchToolbar.SearchListener() {
-      @Override
-      public void onSearchTextChange(String text) {
-        String trimmed = text.trim();
+        title = findViewById(R.id.toolbar_title);
+        searchToolbar = findViewById(R.id.search_toolbar);
+        searchAction = findViewById(R.id.search_action);
+        fragmentContainer = findViewById(R.id.fragment_container);
 
-        if (trimmed.length() > 0) {
-          if (searchFragment == null) {
-            searchFragment = SearchFragment.newInstance(dynamicLanguage.getCurrentLocale());
-            getSupportFragmentManager().beginTransaction()
-                                       .add(R.id.fragment_container, searchFragment, null)
-                                       .commit();
-          }
-          searchFragment.updateSearchQuery(trimmed);
-        } else if (searchFragment != null) {
-          getSupportFragmentManager().beginTransaction()
-                                     .remove(searchFragment)
-                                     .commit();
-          searchFragment = null;
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(ConversationListFragment.FORWARDING, isForwarding(this));
+        conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
+
+        initializeSearchListener();
+
+        TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
+        refresh();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        refresh();
+        conversationListFragment.onNewIntent();
+        invalidateOptionsMenu();
+    }
+
+    private void refresh() {
+        if (isRelayingMessageContent(this)) {
+            title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (isDirectSharing(this)) {
+                openConversation(getDirectSharingChatId(this), -1);
+            }
+        } else {
+            title.setText(R.string.app_name);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
-      }
+        handleOpenpgp4fpr();
+    }
 
-      @Override
-      public void onSearchClosed() {
-        if (searchFragment != null) {
-          getSupportFragmentManager().beginTransaction()
-                                     .remove(searchFragment)
-                                     .commit();
-          searchFragment = null;
+    @Override
+    public void onResume() {
+        super.onResume();
+        dynamicTheme.onResume(this);
+        dynamicLanguage.onResume(this);
+
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuInflater inflater = this.getMenuInflater();
+        menu.clear();
+
+        if (!isRelayingMessageContent(this)) {
+            inflater.inflate(R.menu.text_secure_normal, menu);
+            MenuItem item = menu.findItem(R.id.menu_global_map);
+            if (Prefs.isLocationStreamingEnabled(this)) {
+                item.setVisible(true);
+            }
+
+            if (!Prefs.isLocationStreamingEnabled(this)) {
+                menu.findItem(R.id.menu_global_map).setVisible(false);
+            }
         }
-      }
-    });
-  }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    super.onOptionsItemSelected(item);
-
-    switch (item.getItemId()) {
-      case R.id.menu_new_chat:
-        createChat();
-        return true;
-      case R.id.menu_settings:
-        startActivity(new Intent(this, ApplicationPreferencesActivity.class));
-        return true;
-      case R.id.menu_help:
-        startActivity(new Intent(this, LocalHelpActivity.class));
-        return true;
-      case R.id.menu_qr:
-        new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
-        return true;
-      case R.id.menu_deaddrop:
-        handleDeaddrop();
-        return true;
-      case R.id.menu_global_map:
-        handleShowMap();
-        return true;
-      case android.R.id.home:
-        onBackPressed();
+        super.onPrepareOptionsMenu(menu);
         return true;
     }
 
-    return false;
-  }
+    private void initializeSearchListener() {
+        searchAction.setOnClickListener(v -> {
+            searchToolbar.display(searchAction.getX() + (searchAction.getWidth() / 2),
+                    searchAction.getY() + (searchAction.getHeight() / 2));
+        });
 
-  private void handleOpenpgp4fpr() {
-    if (getIntent() != null &&
-            Intent.ACTION_VIEW.equals(getIntent().getAction())) {
-      Uri uri = getIntent().getData();
-      if (uri != null && uri.getScheme().equalsIgnoreCase(OPENPGP4FPR)) {
-        String uriString = uri.toString();
-        uriString = uriString.replaceFirst(OPENPGP4FPR, OPENPGP4FPR.toUpperCase());
-        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleOpenPgp4Fpr(uriString);
-      }
-    }
-  }
+        searchToolbar.setListener(new SearchToolbar.SearchListener() {
+            @Override
+            public void onSearchTextChange(String text) {
+                String trimmed = text.trim();
 
-  private void handleResetRelaying() {
-    resetRelayingMessageContent(this);
-    title.setText(R.string.app_name);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-    conversationListFragment.onNewIntent();
-    invalidateOptionsMenu();
-  }
+                if (trimmed.length() > 0) {
+                    if (searchFragment == null) {
+                        searchFragment = SearchFragment.newInstance(dynamicLanguage.getCurrentLocale());
+                        getSupportFragmentManager().beginTransaction()
+                                .add(R.id.fragment_container, searchFragment, null)
+                                .commit();
+                    }
+                    searchFragment.updateSearchQuery(trimmed);
+                } else if (searchFragment != null) {
+                    getSupportFragmentManager().beginTransaction()
+                            .remove(searchFragment)
+                            .commit();
+                    searchFragment = null;
+                }
+            }
 
-  private void handleShowMap() {
-      Intent intent = new Intent(this, MapActivity.class);
-      intent.putExtra(MapActivity.CHAT_IDS, ALL_CHATS_GLOBAL_MAP);
-      startActivity(intent);
-  }
-
-
-  @Override
-  public void onCreateConversation(int chatId) {
-    openConversation(chatId, -1);
-  }
-
-  public void openConversation(int chatId, int startingPosition) {
-    searchToolbar.clearFocus();
-
-    Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(CHAT_ID_EXTRA, chatId);
-    intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
-    if (isRelayingMessageContent(this)) {
-      acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
+            @Override
+            public void onSearchClosed() {
+                if (searchFragment != null) {
+                    getSupportFragmentManager().beginTransaction()
+                            .remove(searchFragment)
+                            .commit();
+                    searchFragment = null;
+                }
+            }
+        });
     }
 
-    overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
-  }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
 
-  @Override
-  public void onSwitchToArchive() {
-    Intent intent = new Intent(this, ConversationListArchiveActivity.class);
-    if (isRelayingMessageContent(this)) {
-      acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
-    }
-  }
-
-  @Override
-  public void onBackPressed() {
-    if (searchToolbar.isVisible()) searchToolbar.collapse();
-    else if (isRelayingMessageContent(this)) {
-      handleResetRelaying();
-      finish();
-    } else super.onBackPressed();
-  }
-
-  private void createChat() {
-    Intent intent = new Intent(this, NewConversationActivity.class);
-    if (isRelayingMessageContent(this)) {
-      acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
-    }
-  }
-
-  private void handleDeaddrop() {
-    Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
-    startActivity(intent);
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    switch (requestCode) {
-      case IntentIntegrator.REQUEST_CODE:
-        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.onScanPerformed(scanResult);
-        break;
-      case REQUEST_RELAY:
-        if (resultCode == RESULT_OK) {
-          handleResetRelaying();
-          setResult(RESULT_OK);
-          finish();
+        switch (item.getItemId()) {
+            case R.id.menu_new_chat:
+                createChat();
+                return true;
+            case R.id.menu_settings:
+                startActivity(new Intent(this, ApplicationPreferencesActivity.class));
+                return true;
+            case R.id.menu_help:
+                startActivity(new Intent(this, LocalHelpActivity.class));
+                return true;
+            case R.id.menu_qr:
+                new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
+                return true;
+            case R.id.menu_deaddrop:
+                handleDeaddrop();
+                return true;
+            case R.id.menu_global_map:
+                handleShowMap();
+                return true;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
         }
-        break;
-      default:
-        break;
+
+        return false;
     }
-  }
+
+    private void handleOpenpgp4fpr() {
+        if (getIntent() != null &&
+                Intent.ACTION_VIEW.equals(getIntent().getAction())) {
+            Uri uri = getIntent().getData();
+            if (uri != null && uri.getScheme().equalsIgnoreCase(OPENPGP4FPR)) {
+                String uriString = uri.toString();
+                uriString = uriString.replaceFirst(OPENPGP4FPR, OPENPGP4FPR.toUpperCase());
+                QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+                qrCodeHandler.handleOpenPgp4Fpr(uriString);
+            }
+        }
+    }
+
+    private void handleResetRelaying() {
+        resetRelayingMessageContent(this);
+        title.setText(R.string.app_name);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        conversationListFragment.onNewIntent();
+        invalidateOptionsMenu();
+    }
+
+    private void handleShowMap() {
+        Intent intent = new Intent(this, MapActivity.class);
+        intent.putExtra(MapActivity.CHAT_IDS, ALL_CHATS_GLOBAL_MAP);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onCreateConversation(int chatId) {
+        openConversation(chatId, -1);
+    }
+
+    public void openConversation(int chatId, int startingPosition) {
+        searchToolbar.clearFocus();
+
+        Intent intent = new Intent(this, ConversationActivity.class);
+        intent.putExtra(CHAT_ID_EXTRA, chatId);
+        intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
+        if (isRelayingMessageContent(this)) {
+            acquireRelayMessageContent(this, intent);
+            startActivityForResult(intent, REQUEST_RELAY);
+        } else {
+            startActivity(intent);
+        }
+
+        overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+    }
+
+    @Override
+    public void onSwitchToArchive() {
+        Intent intent = new Intent(this, ConversationListArchiveActivity.class);
+        if (isRelayingMessageContent(this)) {
+            acquireRelayMessageContent(this, intent);
+            startActivityForResult(intent, REQUEST_RELAY);
+        } else {
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (searchToolbar.isVisible()) searchToolbar.collapse();
+        else if (isRelayingMessageContent(this)) {
+            handleResetRelaying();
+            finish();
+        } else super.onBackPressed();
+    }
+
+    private void createChat() {
+        Intent intent = new Intent(this, NewConversationActivity.class);
+        if (isRelayingMessageContent(this)) {
+            acquireRelayMessageContent(this, intent);
+            startActivityForResult(intent, REQUEST_RELAY);
+        } else {
+            startActivity(intent);
+        }
+    }
+
+    private void handleDeaddrop() {
+        Intent intent = new Intent(this, ConversationActivity.class);
+        intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case IntentIntegrator.REQUEST_CODE:
+                IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+                QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+                qrCodeHandler.onScanPerformed(scanResult);
+                break;
+            case REQUEST_RELAY:
+                if (resultCode == RESULT_OK) {
+                    handleResetRelaying();
+                    setResult(RESULT_OK);
+                    finish();
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }

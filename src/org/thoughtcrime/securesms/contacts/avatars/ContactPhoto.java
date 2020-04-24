@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.contacts.avatars;
 
 import android.content.Context;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -14,10 +15,11 @@ import java.io.InputStream;
 
 public interface ContactPhoto extends Key {
 
-  InputStream openInputStream(Context context) throws IOException;
+    InputStream openInputStream(Context context) throws IOException;
 
-  @Nullable Uri getUri(@NonNull Context context);
+    @Nullable
+    Uri getUri(@NonNull Context context);
 
-  boolean isProfilePhoto();
+    boolean isProfilePhoto();
 
 }

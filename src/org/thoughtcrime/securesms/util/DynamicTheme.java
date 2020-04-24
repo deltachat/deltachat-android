@@ -8,41 +8,41 @@ import org.thoughtcrime.securesms.R;
 
 public class DynamicTheme {
 
-  public static final String DARK  = "dark";
-  public static final String LIGHT = "light";
+    public static final String DARK = "dark";
+    public static final String LIGHT = "light";
 
-  private int currentTheme;
+    private int currentTheme;
 
-  public void onCreate(Activity activity) {
-    currentTheme = getSelectedTheme(activity);
-    activity.setTheme(currentTheme);
-  }
-
-  public void onResume(Activity activity) {
-    if (currentTheme != getSelectedTheme(activity)) {
-      Intent intent = activity.getIntent();
-      activity.finish();
-      OverridePendingTransition.invoke(activity);
-      activity.startActivity(intent);
-      OverridePendingTransition.invoke(activity);
+    public void onCreate(Activity activity) {
+        currentTheme = getSelectedTheme(activity);
+        activity.setTheme(currentTheme);
     }
-  }
 
-  protected int getSelectedTheme(Activity activity) {
-    String theme = Prefs.getTheme(activity);
-
-    if (theme.equals(DARK)) return R.style.TextSecure_DarkTheme;
-
-    return R.style.TextSecure_LightTheme;
-  }
-
-  public static boolean isDarkTheme(Context context) {
-    return Prefs.getTheme(context).equals(DARK);
-  }
-
-  private static final class OverridePendingTransition {
-    static void invoke(Activity activity) {
-      activity.overridePendingTransition(0, 0);
+    public void onResume(Activity activity) {
+        if (currentTheme != getSelectedTheme(activity)) {
+            Intent intent = activity.getIntent();
+            activity.finish();
+            OverridePendingTransition.invoke(activity);
+            activity.startActivity(intent);
+            OverridePendingTransition.invoke(activity);
+        }
     }
-  }
+
+    protected int getSelectedTheme(Activity activity) {
+        String theme = Prefs.getTheme(activity);
+
+        if (theme.equals(DARK)) return R.style.TextSecure_DarkTheme;
+
+        return R.style.TextSecure_LightTheme;
+    }
+
+    public static boolean isDarkTheme(Context context) {
+        return Prefs.getTheme(context).equals(DARK);
+    }
+
+    private static final class OverridePendingTransition {
+        static void invoke(Activity activity) {
+            activity.overridePendingTransition(0, 0);
+        }
+    }
 }

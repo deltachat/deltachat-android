@@ -43,23 +43,23 @@ public class TextureRenderer {
 
     private static final String VERTEX_SHADER =
             "uniform mat4 uMVPMatrix;\n" +
-            "uniform mat4 uSTMatrix;\n" +
-            "attribute vec4 aPosition;\n" +
-            "attribute vec4 aTextureCoord;\n" +
-            "varying vec2 vTextureCoord;\n" +
-            "void main() {\n" +
-            "  gl_Position = uMVPMatrix * aPosition;\n" +
-            "  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n" +
-            "}\n";
+                    "uniform mat4 uSTMatrix;\n" +
+                    "attribute vec4 aPosition;\n" +
+                    "attribute vec4 aTextureCoord;\n" +
+                    "varying vec2 vTextureCoord;\n" +
+                    "void main() {\n" +
+                    "  gl_Position = uMVPMatrix * aPosition;\n" +
+                    "  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n" +
+                    "}\n";
 
     private static final String FRAGMENT_SHADER =
             "#extension GL_OES_EGL_image_external : require\n" +
-            "precision mediump float;\n" +
-            "varying vec2 vTextureCoord;\n" +
-            "uniform samplerExternalOES sTexture;\n" +
-            "void main() {\n" +
-            "  gl_FragColor = texture2D(sTexture, vTextureCoord);\n" +
-            "}\n";
+                    "precision mediump float;\n" +
+                    "varying vec2 vTextureCoord;\n" +
+                    "uniform samplerExternalOES sTexture;\n" +
+                    "void main() {\n" +
+                    "  gl_FragColor = texture2D(sTexture, vTextureCoord);\n" +
+                    "}\n";
 
     private float[] mMVPMatrix = new float[16];
     private float[] mSTMatrix = new float[16];

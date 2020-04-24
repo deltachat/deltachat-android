@@ -6,10 +6,10 @@
  * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
  * sell copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,109 +30,112 @@ import java.util.Map;
  */
 public class EmojiTree {
 
-  private final EmojiTreeNode root = new EmojiTreeNode();
+    private final EmojiTreeNode root = new EmojiTreeNode();
 
-  private static final char TERMINATOR = '\ufe0f';
+    private static final char TERMINATOR = '\ufe0f';
 
-  public void add(String emojiEncoding, EmojiDrawInfo emoji) {
-    EmojiTreeNode tree = root;
+    public void add(String emojiEncoding, EmojiDrawInfo emoji) {
+        EmojiTreeNode tree = root;
 
-    for (char c: emojiEncoding.toCharArray()) {
-      if (!tree.hasChild(c)) {
-        tree.addChild(c);
-      }
+        for (char c : emojiEncoding.toCharArray()) {
+            if (!tree.hasChild(c)) {
+                tree.addChild(c);
+            }
 
-      tree = tree.getChild(c);
+            tree = tree.getChild(c);
+        }
+
+        tree.setEmoji(emoji);
     }
 
-    tree.setEmoji(emoji);
-  }
+    public Matches isEmoji(CharSequence sequence, int startPosition, int endPosition) {
+        if (sequence == null) {
+            return Matches.POSSIBLY;
+        }
 
-  public Matches isEmoji(CharSequence sequence, int startPosition, int endPosition) {
-    if (sequence == null) {
-      return Matches.POSSIBLY;
+        EmojiTreeNode tree = root;
+
+        for (int i = startPosition; i < endPosition; i++) {
+            char character = sequence.charAt(i);
+
+            if (!tree.hasChild(character)) {
+                return Matches.IMPOSSIBLE;
+            }
+
+            tree = tree.getChild(character);
+        }
+
+        if (tree.isEndOfEmoji()) {
+            return Matches.EXACTLY;
+        } else if (sequence.charAt(endPosition - 1) != TERMINATOR && tree.hasChild(TERMINATOR) && tree.getChild(TERMINATOR).isEndOfEmoji()) {
+            return Matches.EXACTLY;
+        } else {
+            return Matches.POSSIBLY;
+        }
     }
 
-    EmojiTreeNode tree = root;
+    public @Nullable
+    EmojiDrawInfo getEmoji(CharSequence unicode, int startPosition, int endPostiion) {
+        EmojiTreeNode tree = root;
 
-    for (int i=startPosition; i<endPosition; i++) {
-      char character = sequence.charAt(i);
+        for (int i = startPosition; i < endPostiion; i++) {
+            char character = unicode.charAt(i);
 
-      if (!tree.hasChild(character)) {
-        return Matches.IMPOSSIBLE;
-      }
+            if (!tree.hasChild(character)) {
+                return null;
+            }
 
-      tree = tree.getChild(character);
+            tree = tree.getChild(character);
+        }
+
+        if (tree.getEmoji() != null) return tree.getEmoji();
+        else if (unicode.charAt(endPostiion - 1) != TERMINATOR && tree.hasChild(TERMINATOR))
+            return tree.getChild(TERMINATOR).getEmoji();
+        else return null;
     }
 
-    if (tree.isEndOfEmoji()) {
-      return Matches.EXACTLY;
-    } else if (sequence.charAt(endPosition-1) != TERMINATOR && tree.hasChild(TERMINATOR) && tree.getChild(TERMINATOR).isEndOfEmoji()) {
-      return Matches.EXACTLY;
-    } else {
-      return Matches.POSSIBLY;
-    }
-  }
 
-  public @Nullable EmojiDrawInfo getEmoji(CharSequence unicode, int startPosition, int endPostiion) {
-    EmojiTreeNode tree = root;
+    private static class EmojiTreeNode {
 
-    for (int i=startPosition; i<endPostiion; i++) {
-      char character = unicode.charAt(i);
+        private Map<Character, EmojiTreeNode> children = new HashMap<>();
+        private EmojiDrawInfo emoji;
 
-      if (!tree.hasChild(character)) {
-        return null;
-      }
+        public void setEmoji(EmojiDrawInfo emoji) {
+            this.emoji = emoji;
+        }
 
-      tree = tree.getChild(character);
-    }
+        public @Nullable
+        EmojiDrawInfo getEmoji() {
+            return emoji;
+        }
 
-    if      (tree.getEmoji() != null)                                                  return tree.getEmoji();
-    else if (unicode.charAt(endPostiion-1) != TERMINATOR && tree.hasChild(TERMINATOR)) return tree.getChild(TERMINATOR).getEmoji();
-    else    return null;
-  }
+        boolean hasChild(char child) {
+            return children.containsKey(child);
+        }
 
+        void addChild(char child) {
+            children.put(child, new EmojiTreeNode());
+        }
 
-  private static class EmojiTreeNode {
+        EmojiTreeNode getChild(char child) {
+            return children.get(child);
+        }
 
-    private Map<Character, EmojiTreeNode> children = new HashMap<>();
-    private EmojiDrawInfo emoji;
-
-    public void setEmoji(EmojiDrawInfo emoji) {
-      this.emoji = emoji;
+        boolean isEndOfEmoji() {
+            return emoji != null;
+        }
     }
 
-    public @Nullable EmojiDrawInfo getEmoji() {
-      return emoji;
-    }
+    public enum Matches {
+        EXACTLY, POSSIBLY, IMPOSSIBLE;
 
-    boolean hasChild(char child) {
-      return children.containsKey(child);
-    }
+        public boolean exactMatch() {
+            return this == EXACTLY;
+        }
 
-    void addChild(char child) {
-      children.put(child, new EmojiTreeNode());
+        public boolean impossibleMatch() {
+            return this == IMPOSSIBLE;
+        }
     }
-
-    EmojiTreeNode getChild(char child) {
-      return children.get(child);
-    }
-
-    boolean isEndOfEmoji() {
-      return emoji != null;
-    }
-  }
-
-  public enum Matches {
-    EXACTLY, POSSIBLY, IMPOSSIBLE;
-
-    public boolean exactMatch() {
-      return this == EXACTLY;
-    }
-
-    public boolean impossibleMatch() {
-      return this == IMPOSSIBLE;
-    }
-  }
 
 }

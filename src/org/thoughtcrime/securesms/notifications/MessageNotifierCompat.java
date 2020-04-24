@@ -7,9 +7,9 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class MessageNotifierCompat {
 
-    public static final int     NO_VISIBLE_CHAT_ID        = -1;
-    static final  int           SUMMARY_NOTIFICATION_ID   = 1339;
-    static final  String        EXTRA_REMOTE_REPLY        = "extra_remote_reply";
+    public static final int NO_VISIBLE_CHAT_ID = -1;
+    static final int SUMMARY_NOTIFICATION_ID = 1339;
+    static final String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
 
     private static MessageNotifier instance;

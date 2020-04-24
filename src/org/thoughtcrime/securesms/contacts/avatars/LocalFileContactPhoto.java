@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.contacts.avatars;
 
 import android.content.Context;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -41,7 +42,8 @@ public abstract class LocalFileContactPhoto implements ContactPhoto {
     }
 
     @Override
-    public @Nullable Uri getUri(@NonNull Context context) {
+    public @Nullable
+    Uri getUri(@NonNull Context context) {
         return isProfilePhoto() ? Uri.fromFile(AvatarHelper.getSelfAvatarFile(context)) : null;
     }
 

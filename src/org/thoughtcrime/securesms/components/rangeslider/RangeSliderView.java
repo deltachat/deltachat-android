@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -61,7 +62,9 @@ public class RangeSliderView extends View {
 
     public interface OnValueChangedListener {
         void onValueChanged(int minValue, int maxValue);
+
         String parseMinValueDisplayText(int minValue);
+
         String parseMaxValueDisplayText(int maxValue);
     }
 
@@ -240,7 +243,7 @@ public class RangeSliderView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 float minValuePosition = getPositionFromIndex(minValue);
-                Log.d(TAG, "action_down minVal: " + minValue + ", " + minValuePosition );
+                Log.d(TAG, "action_down minVal: " + minValue + ", " + minValuePosition);
                 if (offsetX >= minValuePosition - thumbRadius && offsetX <= minValuePosition + thumbRadius) {
                     minValueThumb.isHighlight = true;
                 } else {
@@ -299,7 +302,7 @@ public class RangeSliderView extends View {
     }
 
     protected int getIndexFromPosition(int offsetX) {
-        return  (int) (((offsetX - sliderPaddingLeft) * getCount()) / sliderWidth);
+        return (int) (((offsetX - sliderPaddingLeft) * getCount()) / sliderWidth);
     }
 
     protected float getPositionFromIndex(int value) {
@@ -309,6 +312,7 @@ public class RangeSliderView extends View {
     /**
      * When filtering for a point (in time) a delta (time) span is added to improve the search results.
      * This method converts the delta to pixel related to the slider width.
+     *
      * @return
      */
     public float getDeltaInPixel() {

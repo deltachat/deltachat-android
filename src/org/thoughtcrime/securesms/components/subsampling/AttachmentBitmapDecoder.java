@@ -13,33 +13,34 @@ import org.thoughtcrime.securesms.mms.PartAuthority;
 
 import java.io.InputStream;
 
-public class AttachmentBitmapDecoder implements ImageDecoder{
+public class AttachmentBitmapDecoder implements ImageDecoder {
 
-  public AttachmentBitmapDecoder() {}
-
-  @Override
-  public Bitmap decode(Context context, Uri uri) throws Exception {
-    if (!PartAuthority.isLocalUri(uri)) {
-      return new SkiaImageDecoder().decode(context, uri);
+    public AttachmentBitmapDecoder() {
     }
 
-    InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
+    @Override
+    public Bitmap decode(Context context, Uri uri) throws Exception {
+        if (!PartAuthority.isLocalUri(uri)) {
+            return new SkiaImageDecoder().decode(context, uri);
+        }
 
-    try {
-      BitmapFactory.Options options = new BitmapFactory.Options();
-      options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
 
-      Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, options);
+        try {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 
-      if (bitmap == null) {
-        throw new RuntimeException("Skia image region decoder returned null bitmap - image format may not be supported");
-      }
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, options);
 
-      return bitmap;
-    } finally {
-      if (inputStream != null) inputStream.close();
+            if (bitmap == null) {
+                throw new RuntimeException("Skia image region decoder returned null bitmap - image format may not be supported");
+            }
+
+            return bitmap;
+        } finally {
+            if (inputStream != null) inputStream.close();
+        }
     }
-  }
 
 
 }

@@ -10,45 +10,44 @@ import com.b44t.messenger.DcChatlist;
  */
 public class SearchResult {
 
-  public static final SearchResult EMPTY = new SearchResult("", new int[]{}, new DcChatlist(0), new int[]{});
+    public static final SearchResult EMPTY = new SearchResult("", new int[]{}, new DcChatlist(0), new int[]{});
 
-  private final String     query;
-  private final int[]      contacts;
-  private final DcChatlist conversations;
-  private final int[]      messages;
+    private final String query;
+    private final int[] contacts;
+    private final DcChatlist conversations;
+    private final int[] messages;
 
-  public SearchResult(@NonNull String     query,
-                      @NonNull int[]      contacts,
-                      @NonNull DcChatlist conversations,
-                      @NonNull int[]      messages)
-  {
-    this.query         = query;
-    this.contacts      = contacts;
-    this.conversations = conversations;
-    this.messages      = messages;
-  }
+    public SearchResult(@NonNull String query,
+                        @NonNull int[] contacts,
+                        @NonNull DcChatlist conversations,
+                        @NonNull int[] messages) {
+        this.query = query;
+        this.contacts = contacts;
+        this.conversations = conversations;
+        this.messages = messages;
+    }
 
-  public int[] getContacts() {
-    return contacts;
-  }
+    public int[] getContacts() {
+        return contacts;
+    }
 
-  public DcChatlist getChats() {
-    return conversations;
-  }
+    public DcChatlist getChats() {
+        return conversations;
+    }
 
-  public int[] getMessages() {
-    return messages;
-  }
+    public int[] getMessages() {
+        return messages;
+    }
 
-  public String getQuery() {
-    return query;
-  }
+    public String getQuery() {
+        return query;
+    }
 
-  public int size() {
-    return contacts.length + conversations.getCnt() + messages.length;
-  }
+    public int size() {
+        return contacts.length + conversations.getCnt() + messages.length;
+    }
 
-  public boolean isEmpty() {
-    return size() == 0;
-  }
+    public boolean isEmpty() {
+        return size() == 0;
+    }
 }

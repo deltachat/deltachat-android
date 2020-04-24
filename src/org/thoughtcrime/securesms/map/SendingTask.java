@@ -37,7 +37,7 @@ public class SendingTask extends AsyncTask<SendingTask.Model, SendingTask.Model,
     @Override
     protected Model doInBackground(Model... param) {
         Model m = param[0];
-        if(m.msg!=null) {
+        if (m.msg != null) {
             dcContext.sendMsg(m.chatId, m.msg);
         }
         return m;

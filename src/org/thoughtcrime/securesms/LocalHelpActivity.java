@@ -23,13 +23,12 @@ import java.io.InputStream;
 import java.util.Locale;
 
 public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
-                               implements SearchView.OnQueryTextListener,
-                                          WebView.FindListener
-{
+        implements SearchView.OnQueryTextListener,
+        WebView.FindListener {
     private static final String TAG = LocalHelpActivity.class.getSimpleName();
 
     private WebView webView;
-    private final DynamicTheme    dynamicTheme    = new DynamicTheme();
+    private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     @Override
@@ -48,7 +47,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
             InputStream is = assetManager.open(fileName);
             exists = true;
             is.close();
-        } catch(Exception e) {
+        } catch (Exception e) {
             ;
         }
         return exists;
@@ -73,12 +72,12 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
                     helpLang = appLang;
                 }
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         webView = findViewById(R.id.webview);
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
                     openOnlineUrl(url);
@@ -134,7 +133,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
 
             // hide the [X] beside the search field - this is too much noise, search can be aborted eg. by "back"
             ImageView closeBtn = searchView.findViewById(R.id.search_close_btn);
-            if (closeBtn!=null) {
+            if (closeBtn != null) {
                 closeBtn.setEnabled(false);
                 closeBtn.setImageDrawable(null);
             }
@@ -149,15 +148,15 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
 
     // search
 
-    private Menu   searchMenu = null;
+    private Menu searchMenu = null;
     private String lastQuery = "";
-    private Toast  lastToast = null;
+    private Toast lastToast = null;
 
     private void updateResultCounter(int curr, int total) {
-        if (searchMenu!=null) {
+        if (searchMenu != null) {
             MenuItem item = searchMenu.findItem(R.id.menu_search_counter);
-            if (curr!=-1) {
-                item.setTitle(String.format("%d/%d", total==0? 0 : curr+1, total));
+            if (curr != -1) {
+                item.setTitle(String.format("%d/%d", total == 0 ? 0 : curr + 1, total));
                 item.setVisible(true);
             } else {
                 item.setVisible(false);
@@ -174,7 +173,7 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
     public boolean onQueryTextChange(String query) {
         String normQuery = query.trim();
         lastQuery = normQuery;
-        if (lastToast!=null) {
+        if (lastToast != null) {
             lastToast.cancel();
             lastToast = null;
         }
@@ -183,10 +182,9 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
     }
 
     @Override
-    public void onFindResultReceived (int activeMatchOrdinal, int numberOfMatches, boolean isDoneCounting)
-    {
+    public void onFindResultReceived(int activeMatchOrdinal, int numberOfMatches, boolean isDoneCounting) {
         if (isDoneCounting) {
-            if (numberOfMatches>0) {
+            if (numberOfMatches > 0) {
                 updateResultCounter(activeMatchOrdinal, numberOfMatches);
             } else {
                 if (lastQuery.isEmpty()) {

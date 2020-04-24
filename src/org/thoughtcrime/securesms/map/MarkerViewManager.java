@@ -86,7 +86,7 @@ public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListe
         if (mapView.isDestroyed()) {
             return;
         }
-        
+
         for (MarkerView markerView : markers) {
             mapView.removeView(markerView.getView());
         }

@@ -19,63 +19,63 @@ import java.io.InputStream;
 
 public class AttachmentRegionDecoder implements ImageRegionDecoder {
 
-  private static final String TAG = AttachmentRegionDecoder.class.getName();
+    private static final String TAG = AttachmentRegionDecoder.class.getName();
 
-  private SkiaImageRegionDecoder passthrough;
+    private SkiaImageRegionDecoder passthrough;
 
-  private BitmapRegionDecoder bitmapRegionDecoder;
+    private BitmapRegionDecoder bitmapRegionDecoder;
 
-  @Override
-  public Point init(Context context, Uri uri) throws Exception {
-    Log.w(TAG, "Init!");
-    if (!PartAuthority.isLocalUri(uri)) {
-      passthrough = new SkiaImageRegionDecoder();
-      return passthrough.init(context, uri);
+    @Override
+    public Point init(Context context, Uri uri) throws Exception {
+        Log.w(TAG, "Init!");
+        if (!PartAuthority.isLocalUri(uri)) {
+            passthrough = new SkiaImageRegionDecoder();
+            return passthrough.init(context, uri);
+        }
+
+        InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
+
+        this.bitmapRegionDecoder = BitmapRegionDecoder.newInstance(inputStream, false);
+        inputStream.close();
+
+        return new Point(bitmapRegionDecoder.getWidth(), bitmapRegionDecoder.getHeight());
     }
 
-    InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
+    @Override
+    public Bitmap decodeRegion(Rect rect, int sampleSize) {
+        Log.w(TAG, "Decode region: " + rect);
 
-    this.bitmapRegionDecoder = BitmapRegionDecoder.newInstance(inputStream, false);
-    inputStream.close();
+        if (passthrough != null) {
+            return passthrough.decodeRegion(rect, sampleSize);
+        }
 
-    return new Point(bitmapRegionDecoder.getWidth(), bitmapRegionDecoder.getHeight());
-  }
+        synchronized (this) {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = sampleSize;
+            options.inPreferredConfig = Bitmap.Config.RGB_565;
 
-  @Override
-  public Bitmap decodeRegion(Rect rect, int sampleSize) {
-    Log.w(TAG, "Decode region: " + rect);
+            Bitmap bitmap = bitmapRegionDecoder.decodeRegion(rect, options);
 
-    if (passthrough != null) {
-      return passthrough.decodeRegion(rect, sampleSize);
+            if (bitmap == null) {
+                throw new RuntimeException("Skia image decoder returned null bitmap - image format may not be supported");
+            }
+
+            return bitmap;
+        }
     }
 
-    synchronized(this) {
-      BitmapFactory.Options options = new BitmapFactory.Options();
-      options.inSampleSize      = sampleSize;
-      options.inPreferredConfig = Bitmap.Config.RGB_565;
-
-      Bitmap bitmap = bitmapRegionDecoder.decodeRegion(rect, options);
-
-      if (bitmap == null) {
-        throw new RuntimeException("Skia image decoder returned null bitmap - image format may not be supported");
-      }
-
-      return bitmap;
+    public boolean isReady() {
+        Log.w(TAG, "isReady");
+        return (passthrough != null && passthrough.isReady()) ||
+                (bitmapRegionDecoder != null && !bitmapRegionDecoder.isRecycled());
     }
-  }
 
-  public boolean isReady() {
-    Log.w(TAG, "isReady");
-    return (passthrough != null && passthrough.isReady()) ||
-           (bitmapRegionDecoder != null && !bitmapRegionDecoder.isRecycled());
-  }
-
-  public void recycle() {
-    if (passthrough != null) {
-      passthrough.recycle();
-      passthrough = null;
-    } else {
-      bitmapRegionDecoder.recycle();
+    public void recycle() {
+        if (passthrough != null) {
+            passthrough.recycle();
+            passthrough = null;
+        } else {
+            bitmapRegionDecoder.recycle();
+        }
     }
-  }
 }

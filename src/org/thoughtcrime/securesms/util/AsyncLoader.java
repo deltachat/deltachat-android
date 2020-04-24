@@ -17,64 +17,64 @@ package org.thoughtcrime.securesms.util;
  */
 
 import androidx.loader.content.AsyncTaskLoader;
+
 import android.content.Context;
 
 /**
  * Loader which extends AsyncTaskLoaders and handles caveats
  * as pointed out in http://code.google.com/p/android/issues/detail?id=14944.
- *
+ * <p>
  * Based on CursorLoader.java in the Fragment compatibility package
  *
- * @author Alexander Blom (me@alexanderblom.se)
- *
  * @param <D> data type
+ * @author Alexander Blom (me@alexanderblom.se)
  */
 public abstract class AsyncLoader<D> extends AsyncTaskLoader<D> {
-  private D data;
+    private D data;
 
-  public AsyncLoader(Context context) {
-    super(context);
-  }
-
-  @Override
-  public void deliverResult(D data) {
-    if (isReset()) {
-      // An async query came in while the loader is stopped
-      return;
+    public AsyncLoader(Context context) {
+        super(context);
     }
 
-    this.data = data;
+    @Override
+    public void deliverResult(D data) {
+        if (isReset()) {
+            // An async query came in while the loader is stopped
+            return;
+        }
 
-    super.deliverResult(data);
-  }
+        this.data = data;
 
-
-  @Override
-  protected void onStartLoading() {
-    if (data != null) {
-      deliverResult(data);
+        super.deliverResult(data);
     }
 
-    if (takeContentChanged() || data == null) {
-      forceLoad();
+
+    @Override
+    protected void onStartLoading() {
+        if (data != null) {
+            deliverResult(data);
+        }
+
+        if (takeContentChanged() || data == null) {
+            forceLoad();
+        }
     }
-  }
 
-  @Override
-  protected void onStopLoading() {
-    // Attempt to cancel the current load task if possible.
-    cancelLoad();
-  }
+    @Override
+    protected void onStopLoading() {
+        // Attempt to cancel the current load task if possible.
+        cancelLoad();
+    }
 
-  @Override
-  protected void onReset() {
-    super.onReset();
+    @Override
+    protected void onReset() {
+        super.onReset();
 
-    // Ensure the loader is stopped
-    onStopLoading();
+        // Ensure the loader is stopped
+        onStopLoading();
 
-    data = null;
-  }
+        data = null;
+    }
 
 
 }

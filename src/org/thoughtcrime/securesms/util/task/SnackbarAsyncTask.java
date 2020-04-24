@@ -1,98 +1,103 @@
 package org.thoughtcrime.securesms.util.task;
 
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
+
 import android.os.AsyncTask;
+
 import androidx.annotation.Nullable;
+
 import com.google.android.material.snackbar.Snackbar;
+
 import android.view.View;
 
 import org.thoughtcrime.securesms.R;
 
 public abstract class SnackbarAsyncTask<Params>
-    extends AsyncTask<Params, Void, Void>
-    implements View.OnClickListener
-{
+        extends AsyncTask<Params, Void, Void>
+        implements View.OnClickListener {
 
-  private final View    view;
-  private final String  snackbarText;
-  private final String  snackbarActionText;
-  private final int     snackbarDuration;
-  private final boolean showProgress;
+    private final View view;
+    private final String snackbarText;
+    private final String snackbarActionText;
+    private final int snackbarDuration;
+    private final boolean showProgress;
 
-  private @Nullable Params         reversibleParameter;
-  private @Nullable ProgressDialog progressDialog;
+    private @Nullable
+    Params reversibleParameter;
+    private @Nullable
+    ProgressDialog progressDialog;
 
-  public SnackbarAsyncTask(View view,
-                           String snackbarText,
-                           String snackbarActionText,
-                           int snackbarDuration,
-                           boolean showProgress)
-  {
-    this.view                = view;
-    this.snackbarText        = snackbarText;
-    this.snackbarActionText  = snackbarActionText;
-    this.snackbarDuration    = snackbarDuration;
-    this.showProgress        = showProgress;
-  }
-
-  @Override
-  protected void onPreExecute() {
-    if (this.showProgress) {
-      this.progressDialog = ProgressDialog.show(view.getContext(),
-          "", view.getContext().getString(R.string.one_moment), true, false);
-    }
-    else {
-      this.progressDialog = null;
-    }
-  }
-
-  @SafeVarargs
-  @Override
-  protected final Void doInBackground(Params... params) {
-    this.reversibleParameter = params != null && params.length > 0 ?params[0] : null;
-    executeAction(reversibleParameter);
-    return null;
-  }
-
-  @Override
-  protected void onPostExecute(Void result) {
-    if (this.showProgress && this.progressDialog != null) {
-      this.progressDialog.dismiss();
-      this.progressDialog = null;
+    public SnackbarAsyncTask(View view,
+                             String snackbarText,
+                             String snackbarActionText,
+                             int snackbarDuration,
+                             boolean showProgress) {
+        this.view = view;
+        this.snackbarText = snackbarText;
+        this.snackbarActionText = snackbarActionText;
+        this.snackbarDuration = snackbarDuration;
+        this.showProgress = showProgress;
     }
 
-    Snackbar.make(view, snackbarText, snackbarDuration)
-            .setAction(snackbarActionText, this)
-            .setActionTextColor(view.getResources().getColor(R.color.white))
-            .show();
-  }
-
-  @Override
-  public void onClick(View v) {
-    new AsyncTask<Void, Void, Void>() {
-      @Override
-      protected void onPreExecute() {
-        if (showProgress) progressDialog = ProgressDialog.show(view.getContext(), "", "", true);
-        else              progressDialog = null;
-      }
-
-      @Override
-      protected Void doInBackground(Void... params) {
-        reverseAction(reversibleParameter);
-        return null;
-      }
-
-      @Override
-      protected void onPostExecute(Void result) {
-        if (showProgress && progressDialog != null) {
-          progressDialog.dismiss();
-          progressDialog = null;
+    @Override
+    protected void onPreExecute() {
+        if (this.showProgress) {
+            this.progressDialog = ProgressDialog.show(view.getContext(),
+                    "", view.getContext().getString(R.string.one_moment), true, false);
+        } else {
+            this.progressDialog = null;
         }
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-  }
+    }
 
-  protected abstract void executeAction(@Nullable Params parameter);
-  protected abstract void reverseAction(@Nullable Params parameter);
+    @SafeVarargs
+    @Override
+    protected final Void doInBackground(Params... params) {
+        this.reversibleParameter = params != null && params.length > 0 ? params[0] : null;
+        executeAction(reversibleParameter);
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void result) {
+        if (this.showProgress && this.progressDialog != null) {
+            this.progressDialog.dismiss();
+            this.progressDialog = null;
+        }
+
+        Snackbar.make(view, snackbarText, snackbarDuration)
+                .setAction(snackbarActionText, this)
+                .setActionTextColor(view.getResources().getColor(R.color.white))
+                .show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected void onPreExecute() {
+                if (showProgress)
+                    progressDialog = ProgressDialog.show(view.getContext(), "", "", true);
+                else progressDialog = null;
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                reverseAction(reversibleParameter);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void result) {
+                if (showProgress && progressDialog != null) {
+                    progressDialog.dismiss();
+                    progressDialog = null;
+                }
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    protected abstract void executeAction(@Nullable Params parameter);
+
+    protected abstract void reverseAction(@Nullable Params parameter);
 
 }

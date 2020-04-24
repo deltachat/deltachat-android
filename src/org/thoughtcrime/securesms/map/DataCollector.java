@@ -57,9 +57,9 @@ public class DataCollector {
 
 
     public void updateSource(int chatId,
-                              int contactId,
-                              long startTimestamp,
-                              long endTimestamp) {
+                             int contactId,
+                             long startTimestamp,
+                             long endTimestamp) {
         DcArray locations = dcContext.getLocations(chatId, contactId, startTimestamp, endTimestamp);
 
         MapSource contactMapMetadata = contactMapSources.get(contactId);

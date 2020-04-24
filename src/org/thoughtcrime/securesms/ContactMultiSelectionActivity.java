@@ -29,64 +29,63 @@ import java.util.List;
  * Activity container for selecting a list of contacts.
  *
  * @author Moxie Marlinspike
- *
  */
 public class ContactMultiSelectionActivity extends ContactSelectionActivity {
 
-  @SuppressWarnings("unused")
-  private final static String TAG = ContactMultiSelectionActivity.class.getSimpleName();
+    @SuppressWarnings("unused")
+    private final static String TAG = ContactMultiSelectionActivity.class.getSimpleName();
 
-  @Override
-  protected void onCreate(Bundle icicle, boolean ready) {
-    getIntent().putExtra(ContactSelectionListFragment.MULTI_SELECT, true);
-    super.onCreate(icicle, ready);
-    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+    @Override
+    protected void onCreate(Bundle icicle, boolean ready) {
+        getIntent().putExtra(ContactSelectionListFragment.MULTI_SELECT, true);
+        super.onCreate(icicle, ready);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
-    // it's a bit confusing having one "X" button on the left and one on the right -
-    // and the "clear search" button is not that important.
-    getToolbar().setUseClearButton(false);
-  }
+        // it's a bit confusing having one "X" button on the left and one on the right -
+        // and the "clear search" button is not that important.
+        getToolbar().setUseClearButton(false);
+    }
 
-  @Override
-  public boolean onPrepareOptionsMenu(Menu menu) {
-    MenuInflater inflater = this.getMenuInflater();
-    menu.clear();
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuInflater inflater = this.getMenuInflater();
+        menu.clear();
 
-    inflater.inflate(R.menu.add_members, menu);
-    super.onPrepareOptionsMenu(menu);
-    return true;
-  }
+        inflater.inflate(R.menu.add_members, menu);
+        super.onPrepareOptionsMenu(menu);
+        return true;
+    }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-      case R.id.menu_add_members:
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.menu_add_members:
+                saveSelection();
+                finish();
+                return true;
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
         saveSelection();
-        finish();
-        return true;
-      case android.R.id.home:
-        finish();
-        return true;
+        super.onBackPressed();
     }
 
-    return false;
-  }
+    private void saveSelection() {
+        Intent resultIntent = getIntent();
+        List<String> selectedContacts = contactsFragment.getSelectedContacts();
 
-  @Override
-  public void onBackPressed() {
-    saveSelection();
-    super.onBackPressed();
-  }
+        if (selectedContacts != null) {
+            resultIntent.putStringArrayListExtra("contacts", new ArrayList<>(selectedContacts));
+        }
 
-  private void saveSelection() {
-    Intent resultIntent = getIntent();
-    List<String> selectedContacts = contactsFragment.getSelectedContacts();
-
-    if (selectedContacts != null) {
-      resultIntent.putStringArrayListExtra("contacts", new ArrayList<>(selectedContacts));
+        setResult(RESULT_OK, resultIntent);
     }
-
-    setResult(RESULT_OK, resultIntent);
-  }
 }

@@ -18,22 +18,22 @@ import java.io.InputStream;
 
 class DecryptableStreamLocalUriFetcher extends StreamLocalUriFetcher {
 
-  private static final String TAG = DecryptableStreamLocalUriFetcher.class.getSimpleName();
+    private static final String TAG = DecryptableStreamLocalUriFetcher.class.getSimpleName();
 
-  private Context context;
+    private Context context;
 
-  DecryptableStreamLocalUriFetcher(Context context, Uri uri) {
-    super(context.getContentResolver(), uri);
-    this.context      = context;
-  }
-
-  @Override
-  protected InputStream loadResource(Uri uri, ContentResolver contentResolver) throws FileNotFoundException {
-    try {
-      return PartAuthority.getAttachmentStream(context, uri);
-    } catch (IOException ioe) {
-      Log.w(TAG, ioe);
-      throw new FileNotFoundException("PartAuthority couldn't load Uri resource.");
+    DecryptableStreamLocalUriFetcher(Context context, Uri uri) {
+        super(context.getContentResolver(), uri);
+        this.context = context;
     }
-  }
+
+    @Override
+    protected InputStream loadResource(Uri uri, ContentResolver contentResolver) throws FileNotFoundException {
+        try {
+            return PartAuthority.getAttachmentStream(context, uri);
+        } catch (IOException ioe) {
+            Log.w(TAG, ioe);
+            throw new FileNotFoundException("PartAuthority couldn't load Uri resource.");
+        }
+    }
 }

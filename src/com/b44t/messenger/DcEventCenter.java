@@ -11,6 +11,7 @@ public class DcEventCenter {
 
     public interface DcEventDelegate {
         void handleEvent(int eventId, Object data1, Object data2);
+
         default boolean runOnMain() {
             return true;
         }
@@ -45,7 +46,7 @@ public class DcEventCenter {
 
     public void removeObservers(DcEventDelegate observer) {
         synchronized (LOCK) {
-            for(Integer eventId : allObservers.keySet()) {
+            for (Integer eventId : allObservers.keySet()) {
                 ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
                 if (idObservers != null) {
                     idObservers.remove(observer);
@@ -62,12 +63,11 @@ public class DcEventCenter {
                     // using try/catch blocks as under some circumstances eg. getContext() may return NULL -
                     // and as this function is used virtually everywhere, also in libs,
                     // it's not feasible to check all single occurrences.
-                    if(observer.runOnMain()) {
+                    if (observer.runOnMain()) {
                         Util.runOnMain(() -> {
                             try {
                                 observer.handleEvent(eventId, data1, data2);
-                            }
-                            catch(Exception e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         });
@@ -75,8 +75,7 @@ public class DcEventCenter {
                         Util.runOnBackground(() -> {
                             try {
                                 observer.handleEvent(eventId, data1, data2);
-                            }
-                            catch (Exception e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         });

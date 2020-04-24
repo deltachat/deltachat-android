@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -18,69 +19,71 @@ import java.security.MessageDigest;
 
 public class DecryptableStreamUriLoader implements ModelLoader<DecryptableUri, InputStream> {
 
-  private final Context context;
-
-  private DecryptableStreamUriLoader(Context context) {
-    this.context = context;
-  }
-
-  @Nullable
-  @Override
-  public LoadData<InputStream> buildLoadData(@NonNull DecryptableUri decryptableUri, int width, int height, @NonNull Options options) {
-    return new LoadData<>(decryptableUri, new DecryptableStreamLocalUriFetcher(context, decryptableUri.uri));
-  }
-
-  @Override
-  public boolean handles(@NonNull DecryptableUri decryptableUri) {
-    return true;
-  }
-
-  static class Factory implements ModelLoaderFactory<DecryptableUri, InputStream> {
-
     private final Context context;
 
-    Factory(Context context) {
-      this.context = context.getApplicationContext();
+    private DecryptableStreamUriLoader(Context context) {
+        this.context = context;
+    }
+
+    @Nullable
+    @Override
+    public LoadData<InputStream> buildLoadData(@NonNull DecryptableUri decryptableUri, int width, int height, @NonNull Options options) {
+        return new LoadData<>(decryptableUri, new DecryptableStreamLocalUriFetcher(context, decryptableUri.uri));
     }
 
     @Override
-    public @NonNull ModelLoader<DecryptableUri, InputStream> build(@NonNull MultiModelLoaderFactory multiFactory) {
-      return new DecryptableStreamUriLoader(context);
+    public boolean handles(@NonNull DecryptableUri decryptableUri) {
+        return true;
     }
 
-    @Override
-    public void teardown() {
-      // Do nothing.
-    }
-  }
+    static class Factory implements ModelLoaderFactory<DecryptableUri, InputStream> {
 
-  public static class DecryptableUri implements Key {
-    public @NonNull Uri          uri;
+        private final Context context;
 
-    public DecryptableUri(@NonNull Uri uri) {
-      this.uri = uri;
-    }
+        Factory(Context context) {
+            this.context = context.getApplicationContext();
+        }
 
-    @Override
-    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
-      messageDigest.update(uri.toString().getBytes());
-    }
+        @Override
+        public @NonNull
+        ModelLoader<DecryptableUri, InputStream> build(@NonNull MultiModelLoaderFactory multiFactory) {
+            return new DecryptableStreamUriLoader(context);
+        }
 
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-
-      DecryptableUri that = (DecryptableUri)o;
-
-      return uri.equals(that.uri);
-
+        @Override
+        public void teardown() {
+            // Do nothing.
+        }
     }
 
-    @Override
-    public int hashCode() {
-      return uri.hashCode();
+    public static class DecryptableUri implements Key {
+        public @NonNull
+        Uri uri;
+
+        public DecryptableUri(@NonNull Uri uri) {
+            this.uri = uri;
+        }
+
+        @Override
+        public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+            messageDigest.update(uri.toString().getBytes());
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            DecryptableUri that = (DecryptableUri) o;
+
+            return uri.equals(that.uri);
+
+        }
+
+        @Override
+        public int hashCode() {
+            return uri.hashCode();
+        }
     }
-  }
 }
 

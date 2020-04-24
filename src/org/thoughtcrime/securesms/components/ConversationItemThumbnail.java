@@ -8,9 +8,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
+
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -27,165 +29,163 @@ import java.util.concurrent.ExecutionException;
 
 public class ConversationItemThumbnail extends FrameLayout {
 
-  private static final String TAG = ConversationItemThumbnail.class.getSimpleName();
+    private static final String TAG = ConversationItemThumbnail.class.getSimpleName();
 
-  private static final Paint LIGHT_THEME_OUTLINE_PAINT = new Paint();
-  private static final Paint DARK_THEME_OUTLINE_PAINT = new Paint();
+    private static final Paint LIGHT_THEME_OUTLINE_PAINT = new Paint();
+    private static final Paint DARK_THEME_OUTLINE_PAINT = new Paint();
 
-  static {
-    LIGHT_THEME_OUTLINE_PAINT.setColor(Color.argb((int) (255 * 0.2), 0, 0, 0));
-    LIGHT_THEME_OUTLINE_PAINT.setStyle(Paint.Style.STROKE);
-    LIGHT_THEME_OUTLINE_PAINT.setStrokeWidth(1f);
-    LIGHT_THEME_OUTLINE_PAINT.setAntiAlias(true);
+    static {
+        LIGHT_THEME_OUTLINE_PAINT.setColor(Color.argb((int) (255 * 0.2), 0, 0, 0));
+        LIGHT_THEME_OUTLINE_PAINT.setStyle(Paint.Style.STROKE);
+        LIGHT_THEME_OUTLINE_PAINT.setStrokeWidth(1f);
+        LIGHT_THEME_OUTLINE_PAINT.setAntiAlias(true);
 
-    DARK_THEME_OUTLINE_PAINT.setColor(Color.argb((int) (255 * 0.2), 255, 255, 255));
-    DARK_THEME_OUTLINE_PAINT.setStyle(Paint.Style.STROKE);
-    DARK_THEME_OUTLINE_PAINT.setStrokeWidth(1f);
-    DARK_THEME_OUTLINE_PAINT.setAntiAlias(true);
-  }
-
-  private final float[] radii   = new float[8];
-  private final RectF   bounds  = new RectF();
-  private final Path    corners = new Path();
-
-  private ThumbnailView          thumbnail;
-  private ImageView              shade;
-  private ConversationItemFooter footer;
-  private Paint                  outlinePaint;
-  private CornerMask             cornerMask;
-
-  public ConversationItemThumbnail(Context context) {
-    super(context);
-    init(null);
-  }
-
-  public ConversationItemThumbnail(Context context, AttributeSet attrs) {
-    super(context, attrs);
-    init(attrs);
-  }
-
-  public ConversationItemThumbnail(final Context context, AttributeSet attrs, int defStyle) {
-    super(context, attrs, defStyle);
-    init(attrs);
-  }
-
-  private void init(@Nullable AttributeSet attrs) {
-    inflate(getContext(), R.layout.conversation_item_thumbnail, this);
-
-    this.thumbnail    = findViewById(R.id.conversation_thumbnail_image);
-    this.shade        = findViewById(R.id.conversation_thumbnail_shade);
-    this.footer       = findViewById(R.id.conversation_thumbnail_footer);
-    this.outlinePaint = ThemeUtil.isDarkTheme(getContext()) ? DARK_THEME_OUTLINE_PAINT : LIGHT_THEME_OUTLINE_PAINT;
-    this.cornerMask   = new CornerMask(this);
-
-    setTouchDelegate(thumbnail.getTouchDelegate());
-
-    if (attrs != null) {
-      TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemThumbnail, 0, 0);
-      thumbnail.setBounds(typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_minWidth, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_maxWidth, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_minHeight, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_maxHeight, 0));
-      typedArray.recycle();
-    }
-  }
-
-  @SuppressWarnings("SuspiciousNameCombination")
-  @Override
-  protected void dispatchDraw(Canvas canvas) {
-    if (cornerMask.isLegacy()) {
-      cornerMask.mask(canvas);
+        DARK_THEME_OUTLINE_PAINT.setColor(Color.argb((int) (255 * 0.2), 255, 255, 255));
+        DARK_THEME_OUTLINE_PAINT.setStyle(Paint.Style.STROKE);
+        DARK_THEME_OUTLINE_PAINT.setStrokeWidth(1f);
+        DARK_THEME_OUTLINE_PAINT.setAntiAlias(true);
     }
 
-    super.dispatchDraw(canvas);
+    private final float[] radii = new float[8];
+    private final RectF bounds = new RectF();
+    private final Path corners = new Path();
 
-    if (!cornerMask.isLegacy()) {
-      cornerMask.mask(canvas);
+    private ThumbnailView thumbnail;
+    private ImageView shade;
+    private ConversationItemFooter footer;
+    private Paint outlinePaint;
+    private CornerMask cornerMask;
+
+    public ConversationItemThumbnail(Context context) {
+        super(context);
+        init(null);
     }
 
-    final float halfStrokeWidth = outlinePaint.getStrokeWidth() / 2;
+    public ConversationItemThumbnail(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(attrs);
+    }
 
-    bounds.left   = halfStrokeWidth;
-    bounds.top    = halfStrokeWidth;
-    bounds.right  = canvas.getWidth() - halfStrokeWidth;
-    bounds.bottom = canvas.getHeight() - halfStrokeWidth;
+    public ConversationItemThumbnail(final Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(attrs);
+    }
 
-    corners.reset();
-    corners.addRoundRect(bounds, radii, Path.Direction.CW);
+    private void init(@Nullable AttributeSet attrs) {
+        inflate(getContext(), R.layout.conversation_item_thumbnail, this);
 
-    canvas.drawPath(corners, outlinePaint);
-  }
+        this.thumbnail = findViewById(R.id.conversation_thumbnail_image);
+        this.shade = findViewById(R.id.conversation_thumbnail_shade);
+        this.footer = findViewById(R.id.conversation_thumbnail_footer);
+        this.outlinePaint = ThemeUtil.isDarkTheme(getContext()) ? DARK_THEME_OUTLINE_PAINT : LIGHT_THEME_OUTLINE_PAINT;
+        this.cornerMask = new CornerMask(this);
 
-  @Override
-  public void setFocusable(boolean focusable) {
-    thumbnail.setFocusable(focusable);
-  }
+        setTouchDelegate(thumbnail.getTouchDelegate());
 
-  @Override
-  public void setClickable(boolean clickable) {
-    thumbnail.setClickable(clickable);
-  }
+        if (attrs != null) {
+            TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemThumbnail, 0, 0);
+            thumbnail.setBounds(typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_minWidth, 0),
+                    typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_maxWidth, 0),
+                    typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_minHeight, 0),
+                    typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_maxHeight, 0));
+            typedArray.recycle();
+        }
+    }
 
-  @Override
-  public void setOnLongClickListener(@Nullable OnLongClickListener l) {
-    thumbnail.setOnLongClickListener(l);
-  }
+    @SuppressWarnings("SuspiciousNameCombination")
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        if (cornerMask.isLegacy()) {
+            cornerMask.mask(canvas);
+        }
 
-  public void showShade(boolean show) {
-    shade.setVisibility(show ? VISIBLE : GONE);
-    forceLayout();
-  }
+        super.dispatchDraw(canvas);
 
-  public void setOutlineCorners(int topLeft, int topRight, int bottomRight, int bottomLeft) {
-    radii[0] = radii[1] = topLeft;
-    radii[2] = radii[3] = topRight;
-    radii[4] = radii[5] = bottomRight;
-    radii[6] = radii[7] = bottomLeft;
+        if (!cornerMask.isLegacy()) {
+            cornerMask.mask(canvas);
+        }
 
-    cornerMask.setRadii(topLeft, topRight, bottomRight, bottomLeft);
-  }
+        final float halfStrokeWidth = outlinePaint.getStrokeWidth() / 2;
 
-  public ConversationItemFooter getFooter() {
-    return footer;
-  }
+        bounds.left = halfStrokeWidth;
+        bounds.top = halfStrokeWidth;
+        bounds.right = canvas.getWidth() - halfStrokeWidth;
+        bounds.bottom = canvas.getHeight() - halfStrokeWidth;
 
-  private void refreshSlideAttachmentState(ListenableFuture<Boolean> signal, Slide slide) {
-    signal.addListener(new ListenableFuture.Listener<Boolean>() {
-      @Override
-      public void onSuccess(Boolean result) {
-        slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_DONE);
-      }
+        corners.reset();
+        corners.addRoundRect(bounds, radii, Path.Direction.CW);
 
-      @Override
-      public void onFailure(ExecutionException e) {
-        slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_FAILED);
-      }
-    });
-  }
+        canvas.drawPath(corners, outlinePaint);
+    }
 
-  @UiThread
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide)
-  {
-    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
-  }
+    @Override
+    public void setFocusable(boolean focusable) {
+        thumbnail.setFocusable(focusable);
+    }
 
-  @UiThread
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                               int naturalWidth, int naturalHeight)
-  {
-    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, naturalWidth, naturalHeight), slide);
+    @Override
+    public void setClickable(boolean clickable) {
+        thumbnail.setClickable(clickable);
+    }
 
-  }
+    @Override
+    public void setOnLongClickListener(@Nullable OnLongClickListener l) {
+        thumbnail.setOnLongClickListener(l);
+    }
 
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {
-    thumbnail.setImageResource(glideRequests, uri);
-  }
+    public void showShade(boolean show) {
+        shade.setVisibility(show ? VISIBLE : GONE);
+        forceLayout();
+    }
 
-  public void setThumbnailClickListener(SlideClickListener listener) {
-    thumbnail.setThumbnailClickListener(listener);
-  }
+    public void setOutlineCorners(int topLeft, int topRight, int bottomRight, int bottomLeft) {
+        radii[0] = radii[1] = topLeft;
+        radii[2] = radii[3] = topRight;
+        radii[4] = radii[5] = bottomRight;
+        radii[6] = radii[7] = bottomLeft;
 
-  public void clear(GlideRequests glideRequests) {
-    thumbnail.clear(glideRequests);
-  }
+        cornerMask.setRadii(topLeft, topRight, bottomRight, bottomLeft);
+    }
+
+    public ConversationItemFooter getFooter() {
+        return footer;
+    }
+
+    private void refreshSlideAttachmentState(ListenableFuture<Boolean> signal, Slide slide) {
+        signal.addListener(new ListenableFuture.Listener<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_DONE);
+            }
+
+            @Override
+            public void onFailure(ExecutionException e) {
+                slide.asAttachment().setTransferState(AttachmentDatabase.TRANSFER_PROGRESS_FAILED);
+            }
+        });
+    }
+
+    @UiThread
+    public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide) {
+        refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
+    }
+
+    @UiThread
+    public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
+                                 int naturalWidth, int naturalHeight) {
+        refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, naturalWidth, naturalHeight), slide);
+
+    }
+
+    public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {
+        thumbnail.setImageResource(glideRequests, uri);
+    }
+
+    public void setThumbnailClickListener(SlideClickListener listener) {
+        thumbnail.setThumbnailClickListener(listener);
+    }
+
+    public void clear(GlideRequests glideRequests) {
+        thumbnail.clear(glideRequests);
+    }
 }

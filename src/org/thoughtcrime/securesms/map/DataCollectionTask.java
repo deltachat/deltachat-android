@@ -72,7 +72,7 @@ public class DataCollectionTask extends AsyncTask<Void, Void, Void> {
                 lastPositions,
                 boundingBuilder);
         for (int contactId : contactIds) {
-           dataCollector.updateSource(chatId,
+            dataCollector.updateSource(chatId,
                     contactId,
                     System.currentTimeMillis() - TIME_FRAME,
                     TIMESTAMP_NOW);

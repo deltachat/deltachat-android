@@ -26,6 +26,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -35,6 +36,7 @@ import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
+
 import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -84,32 +86,31 @@ import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends Fragment
-        implements DcEventCenter.DcEventDelegate
-{
-    private static final String TAG       = ConversationFragment.class.getSimpleName();
+        implements DcEventCenter.DcEventDelegate {
+    private static final String TAG = ConversationFragment.class.getSimpleName();
     private static final String KEY_LIMIT = "limit";
 
     private static final int SCROLL_ANIMATION_THRESHOLD = 50;
-    private static final int CODE_ADD_EDIT_CONTACT      = 77;
+    private static final int CODE_ADD_EDIT_CONTACT = 77;
 
-    private final ActionModeCallback actionModeCallback     = new ActionModeCallback();
-    private final ItemClickListener  selectionClickListener = new ConversationFragmentItemClickListener();
+    private final ActionModeCallback actionModeCallback = new ActionModeCallback();
+    private final ItemClickListener selectionClickListener = new ConversationFragmentItemClickListener();
 
     private ConversationFragmentListener listener;
 
-    private Recipient                   recipient;
-    private long                        chatId;
-    private int                         startingPosition;
-    private boolean                     firstLoad;
-    private ActionMode                  actionMode;
-    private Locale                      locale;
-    private RecyclerView                list;
+    private Recipient recipient;
+    private long chatId;
+    private int startingPosition;
+    private boolean firstLoad;
+    private ActionMode actionMode;
+    private Locale locale;
+    private RecyclerView list;
     private RecyclerView.ItemDecoration lastSeenDecoration;
-    private StickyHeaderDecoration      dateDecoration;
-    private View                        scrollToBottomButton;
-    private View                        floatingLocationButton;
-    private TextView                    noMessageTextView;
-    private ApplicationDcContext        dcContext;
+    private StickyHeaderDecoration dateDecoration;
+    private View scrollToBottomButton;
+    private View floatingLocationButton;
+    private TextView noMessageTextView;
+    private ApplicationDcContext dcContext;
 
     private Debouncer markseenDebouncer;
 
@@ -133,10 +134,10 @@ public class ConversationFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         final View view = inflater.inflate(R.layout.conversation_fragment, container, false);
-        list                   = ViewUtil.findById(view, android.R.id.list);
-        scrollToBottomButton   = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
+        list = ViewUtil.findById(view, android.R.id.list);
+        scrollToBottomButton = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
         floatingLocationButton = ViewUtil.findById(view, R.id.floating_location_button);
-        noMessageTextView      = ViewUtil.findById(view, R.id.no_messages_text_view);
+        noMessageTextView = ViewUtil.findById(view, R.id.no_messages_text_view);
 
         scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
 
@@ -161,29 +162,23 @@ public class ConversationFragment extends Fragment
 
     private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
-        if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-            if(DcHelper.getInt(getActivity(), "show_emails")!= DcContext.DC_SHOW_EMAILS_ALL) {
+        if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
+            if (DcHelper.getInt(getActivity(), "show_emails") != DcContext.DC_SHOW_EMAILS_ALL) {
                 noMessageTextView.setText(R.string.chat_no_contact_requests);
-            }
-            else {
+            } else {
                 noMessageTextView.setText(R.string.chat_no_messages);
             }
-        }
-        else if(dcChat.isGroup()){
-            if(dcContext.getChat((int) chatId).isUnpromoted()) {
+        } else if (dcChat.isGroup()) {
+            if (dcContext.getChat((int) chatId).isUnpromoted()) {
                 noMessageTextView.setText(R.string.chat_new_group_hint);
-            }
-            else {
+            } else {
                 noMessageTextView.setText(R.string.chat_no_messages);
             }
-        }
-        else if(dcChat.isSelfTalk()) {
+        } else if (dcChat.isSelfTalk()) {
             noMessageTextView.setText(R.string.saved_messages_explain);
-        }
-        else if(dcChat.isDeviceTalk()) {
+        } else if (dcChat.isDeviceTalk()) {
             noMessageTextView.setText(R.string.device_talk_explain);
-        }
-        else {
+        } else {
             String message = getString(R.string.chat_no_messages_hint, dcChat.getName(), dcChat.getName());
             noMessageTextView.setText(message);
         }
@@ -198,7 +193,7 @@ public class ConversationFragment extends Fragment
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.listener = (ConversationFragmentListener)activity;
+        this.listener = (ConversationFragmentListener) activity;
     }
 
     @Override
@@ -251,10 +246,10 @@ public class ConversationFragment extends Fragment
     }
 
     private void initializeResources() {
-        this.chatId            = this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
-        this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.chatId));
-        this.startingPosition  = this.getActivity().getIntent().getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
-        this.firstLoad         = true;
+        this.chatId = this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
+        this.recipient = Recipient.from(getActivity(), Address.fromChat((int) this.chatId));
+        this.startingPosition = this.getActivity().getIntent().getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
+        this.firstLoad = true;
 
         OnScrollListener scrollListener = new ConversationScrollListener(getActivity());
         list.addOnScrollListener(scrollListener);
@@ -273,7 +268,7 @@ public class ConversationFragment extends Fragment
     }
 
     private void setCorrectMenuVisibility(Menu menu) {
-        Set<DcMsg>         messageRecords = getListAdapter().getSelectedItems();
+        Set<DcMsg> messageRecords = getListAdapter().getSelectedItems();
 
         if (actionMode != null && messageRecords.size() == 0) {
             actionMode.finish();
@@ -298,7 +293,7 @@ public class ConversationFragment extends Fragment
         Set<DcMsg> messageRecords = getListAdapter().getSelectedItems();
 
         if (messageRecords.size() == 1) return messageRecords.iterator().next();
-        else                            throw new AssertionError();
+        else throw new AssertionError();
     }
 
     public void reload(Recipient recipient, long chatId) {
@@ -311,9 +306,9 @@ public class ConversationFragment extends Fragment
     }
 
     public void scrollToTop() {
-        ConversationAdapter adapter = (ConversationAdapter)list.getAdapter();
-        if (adapter.getItemCount()>0) {
-            final int pos = adapter.getItemCount()-1;
+        ConversationAdapter adapter = (ConversationAdapter) list.getAdapter();
+        if (adapter.getItemCount() > 0) {
+            final int pos = adapter.getItemCount() - 1;
             list.post(() -> {
                 list.getLayoutManager().scrollToPosition(pos);
             });
@@ -340,8 +335,7 @@ public class ConversationFragment extends Fragment
         }
     }
 
-    private String getMessageContent(DcMsg msg, DcMsg prev_msg)
-    {
+    private String getMessageContent(DcMsg msg, DcMsg prev_msg) {
         String ret = "";
 
         if (msg.getFromId() != prev_msg.getFromId()) {
@@ -349,10 +343,9 @@ public class ConversationFragment extends Fragment
             ret += contact.getDisplayName() + ":\n";
         }
 
-        if(msg.getType() == DcMsg.DC_MSG_TEXT) {
+        if (msg.getType() == DcMsg.DC_MSG_TEXT) {
             ret += msg.getText();
-        }
-        else {
+        } else {
             ret += msg.getSummarytext(1000);
         }
 
@@ -364,9 +357,9 @@ public class ConversationFragment extends Fragment
         Collections.sort(dcMsgsList, new Comparator<DcMsg>() {
             @Override
             public int compare(DcMsg lhs, DcMsg rhs) {
-                if      (lhs.getDateReceived() < rhs.getDateReceived())  return -1;
+                if (lhs.getDateReceived() < rhs.getDateReceived()) return -1;
                 else if (lhs.getDateReceived() == rhs.getDateReceived()) return 0;
-                else                                                     return 1;
+                else return 1;
             }
         });
 
@@ -374,27 +367,26 @@ public class ConversationFragment extends Fragment
 
         DcMsg prevMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
         for (DcMsg msg : dcMsgsList) {
-            if (result.length()>0) {
+            if (result.length() > 0) {
                 result.append("\n\n");
             }
             result.append(getMessageContent(msg, prevMsg));
             prevMsg = msg;
         }
 
-        if (result.length()>0) {
+        if (result.length() > 0) {
             try {
                 ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                 clipboard.setText(result.toString());
                 Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show();
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void handleDeleteMessages(final Set<DcMsg> messageRecords) {
-        int                 messagesCount = messageRecords.size();
+        int messagesCount = messageRecords.size();
 
         new AlertDialog.Builder(getActivity())
                 .setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount))
@@ -487,26 +479,30 @@ public class ConversationFragment extends Fragment
                 scrollToLastSeenPosition(lastSeenPosition);
             }
             firstLoad = false;
-        } else if(oldIndex  > 0) {
+        } else if (oldIndex > 0) {
             int newIndex = oldIndex + msgs.length - oldCount;
 
-            if (newIndex < 0)                 { newIndex = 0; pixelOffset = 0; }
-            else if (newIndex >= msgs.length) { newIndex = msgs.length - 1; pixelOffset = 0; }
+            if (newIndex < 0) {
+                newIndex = 0;
+                pixelOffset = 0;
+            } else if (newIndex >= msgs.length) {
+                newIndex = msgs.length - 1;
+                pixelOffset = 0;
+            }
 
             ((LinearLayoutManager) list.getLayoutManager()).scrollToPositionWithOffset(newIndex, pixelOffset);
         }
 
-        if(!adapter.isActive()){
+        if (!adapter.isActive()) {
             setNoMessageText();
             noMessageTextView.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             noMessageTextView.setVisibility(View.GONE);
         }
     }
 
     private void updateLocationButton() {
-        floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int) chatId)? View.VISIBLE : View.GONE);
+        floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int) chatId) ? View.VISIBLE : View.GONE);
     }
 
     private void scrollToStartingPosition(final int startingPosition) {
@@ -518,34 +514,35 @@ public class ConversationFragment extends Fragment
 
     private void scrollToLastSeenPosition(final int lastSeenPosition) {
         if (lastSeenPosition > 0) {
-            list.post(() -> ((LinearLayoutManager)list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
+            list.post(() -> ((LinearLayoutManager) list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
         }
     }
 
     public void scrollToMsgId(final int msgId) {
-        ConversationAdapter adapter = (ConversationAdapter)list.getAdapter();
+        ConversationAdapter adapter = (ConversationAdapter) list.getAdapter();
         int position = adapter.msgIdToPosition(msgId);
-        if (position!=-1) {
+        if (position != -1) {
             scrollToStartingPosition(position);
         }
     }
 
     public interface ConversationFragmentListener {
         void setChatId(int threadId);
+
         void handleReplyMessage(DcMsg messageRecord);
     }
 
     private class ConversationScrollListener extends OnScrollListener {
 
-        private final Animation              scrollButtonInAnimation;
-        private final Animation              scrollButtonOutAnimation;
+        private final Animation scrollButtonInAnimation;
+        private final Animation scrollButtonOutAnimation;
 
-        private boolean wasAtBottom           = true;
+        private boolean wasAtBottom = true;
         private boolean wasAtZoomScrollHeight = false;
         //private long    lastPositionId        = -1;
 
         ConversationScrollListener(@NonNull Context context) {
-            this.scrollButtonInAnimation  = AnimationUtils.loadAnimation(context, R.anim.fade_scale_in);
+            this.scrollButtonInAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_scale_in);
             this.scrollButtonOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_scale_out);
 
             this.scrollButtonInAnimation.setDuration(100);
@@ -554,7 +551,7 @@ public class ConversationFragment extends Fragment
 
         @Override
         public void onScrolled(final RecyclerView rv, final int dx, final int dy) {
-            boolean currentlyAtBottom           = isAtBottom();
+            boolean currentlyAtBottom = isAtBottom();
             boolean currentlyAtZoomScrollHeight = isAtZoomScrollHeight();
 //            int     positionId                  = getHeaderPositionId();
 
@@ -570,7 +567,7 @@ public class ConversationFragment extends Fragment
 //        bindScrollHeader(conversationDateHeader, positionId);
 //      }
 
-            wasAtBottom           = currentlyAtBottom;
+            wasAtBottom = currentlyAtBottom;
             wasAtZoomScrollHeight = currentlyAtZoomScrollHeight;
 //            lastPositionId        = positionId;
 
@@ -589,9 +586,9 @@ public class ConversationFragment extends Fragment
         private boolean isAtBottom() {
             if (list.getChildCount() == 0) return true;
 
-            View    bottomView       = list.getChildAt(0);
-            int     firstVisibleItem = ((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition();
-            boolean isAtBottom       = (firstVisibleItem == 0);
+            View bottomView = list.getChildAt(0);
+            int firstVisibleItem = ((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition();
+            boolean isAtBottom = (firstVisibleItem == 0);
 
             return isAtBottom && bottomView.getBottom() <= list.getHeight();
         }
@@ -600,30 +597,30 @@ public class ConversationFragment extends Fragment
             return ((LinearLayoutManager) list.getLayoutManager()).findFirstCompletelyVisibleItemPosition() > 4;
         }
 
- //       private int getHeaderPositionId() {
- //           return ((LinearLayoutManager)list.getLayoutManager()).findLastVisibleItemPosition();
- //       }
+        //       private int getHeaderPositionId() {
+        //           return ((LinearLayoutManager)list.getLayoutManager()).findLastVisibleItemPosition();
+        //       }
 
- //       private void bindScrollHeader(HeaderViewHolder headerViewHolder, int positionId) {
- //           if (((ConversationAdapter)list.getAdapter()).getHeaderId(positionId) != -1) {
- //               ((ConversationAdapter) list.getAdapter()).onBindHeaderViewHolder(headerViewHolder, positionId);
- //           }
- //       }
+        //       private void bindScrollHeader(HeaderViewHolder headerViewHolder, int positionId) {
+        //           if (((ConversationAdapter)list.getAdapter()).getHeaderId(positionId) != -1) {
+        //               ((ConversationAdapter) list.getAdapter()).onBindHeaderViewHolder(headerViewHolder, positionId);
+        //           }
+        //       }
     }
 
     private void manageMessageSeenState() {
 
-        LinearLayoutManager layoutManager = (LinearLayoutManager)list.getLayoutManager();
+        LinearLayoutManager layoutManager = (LinearLayoutManager) list.getLayoutManager();
 
         int firstPos = layoutManager.findFirstVisibleItemPosition();
         int lastPos = layoutManager.findLastVisibleItemPosition();
-        if(firstPos == RecyclerView.NO_POSITION || lastPos == RecyclerView.NO_POSITION) {
+        if (firstPos == RecyclerView.NO_POSITION || lastPos == RecyclerView.NO_POSITION) {
             return;
         }
 
         int[] ids = new int[lastPos - firstPos + 1];
         int index = 0;
-        for(int pos = firstPos; pos <= lastPos; pos++) {
+        for (int pos = firstPos; pos <= lastPos; pos++) {
             DcMsg message = ((ConversationAdapter) list.getAdapter()).getMsg(pos);
             if (message.getFromId() != DC_CONTACT_ID_SELF && !message.isSeen()) {
                 ids[index] = message.getId();
@@ -634,25 +631,24 @@ public class ConversationFragment extends Fragment
     }
 
 
-    void querySetupCode(final DcMsg dcMsg, String[] preload)
-    {
-        if( !dcMsg.isSetupMessage()) {
+    void querySetupCode(final DcMsg dcMsg, String[] preload) {
+        if (!dcMsg.isSetupMessage()) {
             return;
         }
 
         View gl = View.inflate(getActivity(), R.layout.setup_code_grid, null);
         final EditText[] editTexts = {
-                gl.findViewById(R.id.setupCode0),  gl.findViewById(R.id.setupCode1),  gl.findViewById(R.id.setupCode2),
-                gl.findViewById(R.id.setupCode3),  gl.findViewById(R.id.setupCode4),  gl.findViewById(R.id.setupCode5),
-                gl.findViewById(R.id.setupCode6),  gl.findViewById(R.id.setupCode7),  gl.findViewById(R.id.setupCode8)
+                gl.findViewById(R.id.setupCode0), gl.findViewById(R.id.setupCode1), gl.findViewById(R.id.setupCode2),
+                gl.findViewById(R.id.setupCode3), gl.findViewById(R.id.setupCode4), gl.findViewById(R.id.setupCode5),
+                gl.findViewById(R.id.setupCode6), gl.findViewById(R.id.setupCode7), gl.findViewById(R.id.setupCode8)
         };
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
         builder1.setView(gl);
         editTexts[0].setText(dcMsg.getSetupCodeBegin());
         editTexts[0].setSelection(editTexts[0].getText().length());
 
-        for( int i = 0; i < 9; i++ ) {
-            if( preload != null && i < preload.length ) {
+        for (int i = 0; i < 9; i++) {
+            if (preload != null && i < preload.length) {
                 editTexts[i].setText(preload[i]);
                 editTexts[i].setSelection(editTexts[i].getText().length());
             }
@@ -663,10 +659,10 @@ public class ConversationFragment extends Fragment
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if( s.length()==4 ) {
-                        for ( int i = 0; i < 8; i++ ) {
-                            if( editTexts[i].hasFocus() && editTexts[i+1].getText().length()<4 ) {
-                                editTexts[i+1].requestFocus();
+                    if (s.length() == 4) {
+                        for (int i = 0; i < 8; i++) {
+                            if (editTexts[i].hasFocus() && editTexts[i + 1].getText().length() < 4) {
+                                editTexts[i + 1].requestFocus();
                                 break;
                             }
                         }
@@ -686,7 +682,7 @@ public class ConversationFragment extends Fragment
         builder1.setPositiveButton(android.R.string.ok, (dialog, which) -> {
             String setup_code = "";
             final String[] preload1 = new String[9];
-            for ( int i = 0; i < 9; i++ ) {
+            for (int i = 0; i < 9; i++) {
                 preload1[i] = editTexts[i].getText().toString();
                 setup_code += preload1[i];
             }
@@ -694,11 +690,10 @@ public class ConversationFragment extends Fragment
 
             AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
             builder2.setTitle(getActivity().getString(R.string.autocrypt_continue_transfer_title));
-            builder2.setMessage(getActivity().getString(success? R.string.autocrypt_continue_transfer_succeeded : R.string.autocrypt_bad_setup_code));
-            if( success ) {
+            builder2.setMessage(getActivity().getString(success ? R.string.autocrypt_continue_transfer_succeeded : R.string.autocrypt_bad_setup_code));
+            if (success) {
                 builder2.setPositiveButton(android.R.string.ok, null);
-            }
-            else {
+            } else {
                 builder2.setNegativeButton(android.R.string.cancel, null);
                 builder2.setPositiveButton(R.string.autocrypt_continue_transfer_retry, (dialog1, which1) -> querySetupCode(dcMsg, preload1));
             }
@@ -721,11 +716,9 @@ public class ConversationFragment extends Fragment
                     setCorrectMenuVisibility(actionMode.getMenu());
                     actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
                 }
-            }
-            else if(messageRecord.isSetupMessage()) {
-                querySetupCode(messageRecord,null);
-            }
-            else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
+            } else if (messageRecord.isSetupMessage()) {
+                querySetupCode(messageRecord, null);
+            } else if (DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());
             }
         }
@@ -736,7 +729,7 @@ public class ConversationFragment extends Fragment
                 ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
                 list.getAdapter().notifyDataSetChanged();
 
-                actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
+                actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
             }
         }
 
@@ -794,7 +787,7 @@ public class ConversationFragment extends Fragment
 
         @Override
         public void onDestroyActionMode(ActionMode mode) {
-            ((ConversationAdapter)list.getAdapter()).clearSelection();
+            ((ConversationAdapter) list.getAdapter()).clearSelection();
             list.getAdapter().notifyDataSetChanged();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -806,7 +799,7 @@ public class ConversationFragment extends Fragment
 
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            switch(item.getItemId()) {
+            switch (item.getItemId()) {
                 case R.id.menu_context_copy:
                     handleCopyMessage(getListAdapter().getSelectedItems());
                     actionMode.finish();

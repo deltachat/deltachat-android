@@ -15,15 +15,14 @@ import org.thoughtcrime.securesms.util.Prefs;
  */
 public class PanicResponderListener extends BroadcastReceiver {
 
-  @Override
-  public void onReceive(Context context, Intent intent) {
-    if (intent != null  && !Prefs.isPasswordDisabled(context) &&
-        "info.guardianproject.panic.action.TRIGGER".equals(intent.getAction()))
-    {
-      // as delta is protected with the system credentials,
-      // the current suggestion on "panic" would probably just be to lock the device.
-      // this would also lock delta chat.
-      // however, we leave this class to allow easy changes on this.
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (intent != null && !Prefs.isPasswordDisabled(context) &&
+                "info.guardianproject.panic.action.TRIGGER".equals(intent.getAction())) {
+            // as delta is protected with the system credentials,
+            // the current suggestion on "panic" would probably just be to lock the device.
+            // this would also lock delta chat.
+            // however, we leave this class to allow easy changes on this.
+        }
     }
-  }
 }

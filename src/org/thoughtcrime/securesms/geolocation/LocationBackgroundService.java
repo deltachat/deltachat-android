@@ -77,7 +77,7 @@ public class LocationBackgroundService extends Service {
             locationManager.requestLocationUpdates(
                     provider, LOCATION_INTERVAL, LOCATION_DISTANCE,
                     locationListener);
-        } catch (SecurityException | IllegalArgumentException  ex) {
+        } catch (SecurityException | IllegalArgumentException ex) {
             Log.e(TAG, String.format("Unable to request %s provider based location updates.", provider), ex);
         }
     }
@@ -135,10 +135,12 @@ public class LocationBackgroundService extends Service {
         }
 
 
-        /** https://developer.android.com/guide/topics/location/strategies
+        /**
+         * https://developer.android.com/guide/topics/location/strategies
          * Determines whether one Location reading is better than the current Location fix
-         * @param location  The new Location that you want to evaluate
-         * @param currentBestLocation  The current Location fix, to which you want to compare the new one
+         *
+         * @param location            The new Location that you want to evaluate
+         * @param currentBestLocation The current Location fix, to which you want to compare the new one
          */
         private boolean isBetterLocation(Location location, Location currentBestLocation) {
             if (currentBestLocation == null) {
@@ -186,11 +188,11 @@ public class LocationBackgroundService extends Service {
             double endLat = currentBestLocation.getLatitude();
             double endLong = currentBestLocation.getLongitude();
 
-            double dLat  = Math.toRadians(endLat - startLat);
+            double dLat = Math.toRadians(endLat - startLat);
             double dLong = Math.toRadians(endLong - startLong);
 
             startLat = Math.toRadians(startLat);
-            endLat   = Math.toRadians(endLat);
+            endLat = Math.toRadians(endLat);
 
             double a = haversin(dLat) + Math.cos(startLat) * Math.cos(endLat) * haversin(dLong);
             double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
@@ -204,7 +206,9 @@ public class LocationBackgroundService extends Service {
             return Math.pow(Math.sin(val / 2), 2);
         }
 
-        /** Checks whether two providers are the same */
+        /**
+         * Checks whether two providers are the same
+         */
         private boolean isSameProvider(String provider1, String provider2) {
             if (provider1 == null) {
                 return provider2 == null;

@@ -9,7 +9,9 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBar;
+
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -66,9 +68,9 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
         galleryButton.setOnClickListener(new GalleryClickListener());
 
         String backgroundImagePath = Prefs.getBackgroundImagePath(this);
-        if(backgroundImagePath.isEmpty()){
+        if (backgroundImagePath.isEmpty()) {
             setDefaultLayoutBackgroundImage();
-        }else {
+        } else {
             setLayoutBackgroundImage(backgroundImagePath);
         }
 
@@ -105,7 +107,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
         if (id == R.id.apply_background) {
             // handle confirmation button click here
             Context context = getApplicationContext();
-            if(imageUpdate) {
+            if (imageUpdate) {
                 if (imageUri != null) {
                     Thread thread = new Thread() {
                         @Override
@@ -132,7 +134,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
     }
 
     private void scaleAndSaveImage(Context context, String destinationPath) {
-        try{
+        try {
             Display display = ServiceUtil.getWindowManager(context).getDefaultDisplay();
             Point size = new Point();
             display.getSize(size);
@@ -167,11 +169,10 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
     }
 
     private void setDefaultLayoutBackgroundImage() {
-        if(dynamicTheme.isDarkTheme(this)) {
+        if (dynamicTheme.isDarkTheme(this)) {
             Drawable image = getResources().getDrawable(R.drawable.background_hd_dark);
             preview.setImageDrawable(image);
-        }
-        else {
+        } else {
             Drawable image = getResources().getDrawable(R.drawable.background_hd);
             preview.setImageDrawable(image);
         }
@@ -185,7 +186,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
             imageUri = data.getData();
             if (imageUri != null) {
                 acceptMenuItem.setEnabled(true);
-                Thread thread = new Thread(){
+                Thread thread = new Thread() {
                     @Override
                     public void run() {
                         tempDestinationPath = context.getFilesDir().getAbsolutePath() + "/background-temp";
@@ -198,7 +199,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
                 };
                 thread.start();
             }
-            imageUpdate=true;
+            imageUpdate = true;
         }
     }
 
@@ -212,7 +213,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
             imageUri = null;
             tempDestinationPath = "";
             setDefaultLayoutBackgroundImage();
-            imageUpdate=true;
+            imageUpdate = true;
         }
 
     }

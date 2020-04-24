@@ -36,14 +36,14 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     @Override
     public void onActivityStarted(Activity activity) {
         refs++;
-        
+
         application.dcContext.startThreads(0);
     }
 
 
     @Override
     public void onActivityStopped(Activity activity) {
-        if( refs <= 0 ) {
+        if (refs <= 0) {
             return;
         }
 

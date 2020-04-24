@@ -3,8 +3,10 @@ package org.thoughtcrime.securesms.components.reminder;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+
 import android.text.util.Linkify;
 import android.widget.TextView;
 
@@ -25,8 +27,8 @@ public class OutdatedReminder extends Reminder {
             AlertDialog sourceDialog = new AlertDialog.Builder(context)
                     .setTitle(R.string.info_outdated_app_dialog_title)
                     .setMessage(context.getString(R.string.info_outdated_app_dialog_text)
-                        +"\n\nF-Droid: https://f-droid.org/packages/com.b44t.messenger"
-                        +"\n\nGoogle Play: https://play.google.com/store/apps/details?id=chat.delta")
+                            + "\n\nF-Droid: https://f-droid.org/packages/com.b44t.messenger"
+                            + "\n\nGoogle Play: https://play.google.com/store/apps/details?id=chat.delta")
                     .setPositiveButton(R.string.ok, (dialog, which) -> dialog.cancel())
                     .create();
             sourceDialog.show();

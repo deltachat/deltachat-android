@@ -5,7 +5,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
+
 import androidx.annotation.NonNull;
+
 import android.util.Log;
 import android.util.Pair;
 
@@ -22,77 +24,78 @@ import java.util.concurrent.ExecutorService;
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class AudioRecorder {
 
-  private static final String TAG = AudioRecorder.class.getSimpleName();
+    private static final String TAG = AudioRecorder.class.getSimpleName();
 
-  private static final ExecutorService executor = ThreadUtil.newDynamicSingleThreadedExecutor();
+    private static final ExecutorService executor = ThreadUtil.newDynamicSingleThreadedExecutor();
 
-  private final Context                context;
-  private final PersistentBlobProvider blobProvider;
+    private final Context context;
+    private final PersistentBlobProvider blobProvider;
 
-  private AudioCodec audioCodec;
-  private Uri        captureUri;
+    private AudioCodec audioCodec;
+    private Uri captureUri;
 
-  public AudioRecorder(@NonNull Context context) {
-    this.context      = context;
-    this.blobProvider = PersistentBlobProvider.getInstance(context.getApplicationContext());
-  }
+    public AudioRecorder(@NonNull Context context) {
+        this.context = context;
+        this.blobProvider = PersistentBlobProvider.getInstance(context.getApplicationContext());
+    }
 
-  public void startRecording() {
-    Log.w(TAG, "startRecording()");
+    public void startRecording() {
+        Log.w(TAG, "startRecording()");
 
-    executor.execute(() -> {
-      Log.w(TAG, "Running startRecording() + " + Thread.currentThread().getId());
-      try {
-        if (audioCodec != null) {
-          throw new AssertionError("We can only record once at a time.");
-        }
+        executor.execute(() -> {
+            Log.w(TAG, "Running startRecording() + " + Thread.currentThread().getId());
+            try {
+                if (audioCodec != null) {
+                    throw new AssertionError("We can only record once at a time.");
+                }
 
-        ParcelFileDescriptor fds[] = ParcelFileDescriptor.createPipe();
+                ParcelFileDescriptor fds[] = ParcelFileDescriptor.createPipe();
 
-        captureUri  = blobProvider.create(context, new ParcelFileDescriptor.AutoCloseInputStream(fds[0]),
-                                          MediaUtil.AUDIO_AAC, null, null);
-        audioCodec  = new AudioCodec(context);
+                captureUri = blobProvider.create(context, new ParcelFileDescriptor.AutoCloseInputStream(fds[0]),
+                        MediaUtil.AUDIO_AAC, null, null);
+                audioCodec = new AudioCodec(context);
 
-        audioCodec.start(new ParcelFileDescriptor.AutoCloseOutputStream(fds[1]));
-      } catch (IOException e) {
-        Log.w(TAG, e);
-      }
-    });
-  }
+                audioCodec.start(new ParcelFileDescriptor.AutoCloseOutputStream(fds[1]));
+            } catch (IOException e) {
+                Log.w(TAG, e);
+            }
+        });
+    }
 
-  public @NonNull ListenableFuture<Pair<Uri, Long>> stopRecording() {
-    Log.w(TAG, "stopRecording()");
+    public @NonNull
+    ListenableFuture<Pair<Uri, Long>> stopRecording() {
+        Log.w(TAG, "stopRecording()");
 
-    final SettableFuture<Pair<Uri, Long>> future = new SettableFuture<>();
+        final SettableFuture<Pair<Uri, Long>> future = new SettableFuture<>();
 
-    executor.execute(() -> {
-      if (audioCodec == null) {
-        sendToFuture(future, new IOException("MediaRecorder was never initialized successfully!"));
-        return;
-      }
+        executor.execute(() -> {
+            if (audioCodec == null) {
+                sendToFuture(future, new IOException("MediaRecorder was never initialized successfully!"));
+                return;
+            }
 
-      audioCodec.stop();
+            audioCodec.stop();
 
-      try {
-        long size = MediaUtil.getMediaSize(context, captureUri);
-        sendToFuture(future, new Pair<>(captureUri, size));
-      } catch (IOException ioe) {
-        Log.w(TAG, ioe);
-        sendToFuture(future, ioe);
-      }
+            try {
+                long size = MediaUtil.getMediaSize(context, captureUri);
+                sendToFuture(future, new Pair<>(captureUri, size));
+            } catch (IOException ioe) {
+                Log.w(TAG, ioe);
+                sendToFuture(future, ioe);
+            }
 
-      audioCodec = null;
-      captureUri = null;
-    });
+            audioCodec = null;
+            captureUri = null;
+        });
 
-    return future;
-  }
+        return future;
+    }
 
-  private <T> void sendToFuture(final SettableFuture<T> future, final Exception exception) {
-    Util.runOnMain(() -> future.setException(exception));
-  }
+    private <T> void sendToFuture(final SettableFuture<T> future, final Exception exception) {
+        Util.runOnMain(() -> future.setException(exception));
+    }
 
-  private <T> void sendToFuture(final SettableFuture<T> future, final T result) {
-    Util.runOnMain(() -> future.set(result));
-  }
+    private <T> void sendToFuture(final SettableFuture<T> future, final T result) {
+        Util.runOnMain(() -> future.set(result));
+    }
 }

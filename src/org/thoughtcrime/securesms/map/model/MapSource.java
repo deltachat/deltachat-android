@@ -90,11 +90,17 @@ public class MapSource {
         return markerPoi;
     }
 
-    public String getMarkerFeatureCollection() { return markerFeatureCollection; }
+    public String getMarkerFeatureCollection() {
+        return markerFeatureCollection;
+    }
 
-    public String getLineFeatureCollection() { return lineFeatureCollection; }
+    public String getLineFeatureCollection() {
+        return lineFeatureCollection;
+    }
 
-    public int getContactId() { return contactId; }
+    public int getContactId() {
+        return contactId;
+    }
 
     public String getDisplayName() {
         return displayName;

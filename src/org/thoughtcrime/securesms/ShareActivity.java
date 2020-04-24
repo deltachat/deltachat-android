@@ -21,10 +21,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -49,204 +51,205 @@ import static org.thoughtcrime.securesms.util.RelayUtil.setSharedText;
  *
  * @author Jake McGinty
  */
-public class ShareActivity extends PassphraseRequiredActionBarActivity implements ResolveMediaTask.OnMediaResolvedListener
-{
-  private static final String TAG = ShareActivity.class.getSimpleName();
+public class ShareActivity extends PassphraseRequiredActionBarActivity implements ResolveMediaTask.OnMediaResolvedListener {
+    private static final String TAG = ShareActivity.class.getSimpleName();
 
-  public static final String EXTRA_CHAT_ID = "chat_id";
+    public static final String EXTRA_CHAT_ID = "chat_id";
 
-  private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+    private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
+    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
-  private ArrayList<Uri>               resolvedExtras;
-  private ApplicationDcContext         dcContext;
-  private boolean                      isResolvingUrisOnMainThread;
+    private ArrayList<Uri> resolvedExtras;
+    private ApplicationDcContext dcContext;
+    private boolean isResolvingUrisOnMainThread;
 
-  @Override
-  protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
-  }
-
-  @Override
-  protected void onCreate(Bundle icicle, boolean ready) {
-    dcContext = DcHelper.getContext(this);
-
-    setContentView(R.layout.share_activity);
-
-    initializeToolbar();
-    initializeMedia();
-  }
-
-  @Override
-  protected void onNewIntent(Intent intent) {
-    Log.w(TAG, "onNewIntent()");
-    super.onNewIntent(intent);
-    setIntent(intent);
-    initializeMedia();
-  }
-
-  @Override
-  public void onResume() {
-    Log.w(TAG, "onResume()");
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
-  }
-
-  @Override
-  protected void onDestroy() {
-    super.onDestroy();
-    ResolveMediaTask.cancelTasks();
-  }
-
-  private void initializeToolbar() {
-    Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
-    ActionBar actionBar = getSupportActionBar();
-
-    if (actionBar != null) {
-      actionBar.setDisplayHomeAsUpEnabled(true);
-    }
-  }
-
-  private void initializeMedia() {
-    resolvedExtras = new ArrayList<>();
-
-    List<Uri> streamExtras = new ArrayList<>();
-    if (Intent.ACTION_SEND.equals(getIntent().getAction()) &&
-            getIntent().getParcelableExtra(Intent.EXTRA_STREAM) != null) {
-        Uri uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
-        streamExtras.add(uri);
-    } else if (getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM) != null) {
-      streamExtras = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+    @Override
+    protected void onPreCreate() {
+        dynamicTheme.onCreate(this);
+        dynamicLanguage.onCreate(this);
     }
 
-    if (needsFilePermission(streamExtras)) {
-      if (Permissions.hasAll(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-        resolveUris(streamExtras);
-      } else {
-        requestPermissionForFiles(streamExtras);
-      }
-    } else {
-      resolveUris(streamExtras);
-    }
-  }
+    @Override
+    protected void onCreate(Bundle icicle, boolean ready) {
+        dcContext = DcHelper.getContext(this);
 
-  private boolean needsFilePermission(List<Uri> uris) {
-    for(Uri uri : uris) {
-      // uri may be null, however, hasFileScheme() just returns false in this case
-      if (hasFileScheme(uri)) {
-        return true;
-      }
-    }
-    return false;
-  }
+        setContentView(R.layout.share_activity);
 
-  private void requestPermissionForFiles(List<Uri> streamExtras) {
-    Permissions.with(this)
-            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-            .ifNecessary()
-            .withRationaleDialog(this.getString(R.string.perm_explain_need_for_storage_access_share), R.drawable.ic_folder_white_48dp)
-            .onAllGranted(() -> resolveUris(streamExtras))
-            .onAnyDenied(this::abortShare)
-            .execute();
-  }
-
-  @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-    Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-  }
-
-  private void abortShare() {
-    Toast.makeText(this, R.string.share_abort, Toast.LENGTH_LONG).show();
-    finish();
-  }
-
-  private void resolveUris(List<Uri> streamExtras) {
-    isResolvingUrisOnMainThread = true;
-    for (Uri streamExtra : streamExtras) {
-      if (streamExtra != null && PartAuthority.isLocalUri(streamExtra)) {
-        resolvedExtras.add(streamExtra);
-      } else {
-        new ResolveMediaTask(this, this).execute(streamExtra);
-      }
+        initializeToolbar();
+        initializeMedia();
     }
 
-    if (!ResolveMediaTask.isExecuting()) {
-      handleResolvedMedia(getIntent());
-    }
-    isResolvingUrisOnMainThread = false;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    super.onOptionsItemSelected(item);
-    switch (item.getItemId()) {
-    case android.R.id.home:     finish();                return true;
-    }
-    return false;
-  }
-
-  @Override
-  public void onMediaResolved(Uri uri) {
-    if (uri != null) {
-      resolvedExtras.add(uri);
+    @Override
+    protected void onNewIntent(Intent intent) {
+        Log.w(TAG, "onNewIntent()");
+        super.onNewIntent(intent);
+        setIntent(intent);
+        initializeMedia();
     }
 
-    if (!ResolveMediaTask.isExecuting() && !isResolvingUrisOnMainThread) {
-     handleResolvedMedia(getIntent());
-    }
-  }
-
-  private void handleResolvedMedia(Intent intent) {
-    int       chatId           = intent.getIntExtra(EXTRA_CHAT_ID, -1);
-    Intent composeIntent = getBaseShareIntent(ConversationListActivity.class);
-    RelayUtil.setSharedUris(composeIntent, resolvedExtras);
-    if (chatId != -1) {
-      RelayUtil.setDirectSharing(composeIntent, chatId);
-    }
-    startActivity(composeIntent);
-    finish();
-
-  }
-
-  private Intent getBaseShareIntent(final @NonNull Class<?> target) {
-    final Intent intent = new Intent(this, target);
-    String text = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-    if (text==null) {
-      CharSequence cs = getIntent().getCharSequenceExtra(Intent.EXTRA_TEXT);
-      if (cs!=null) {
-        text = cs.toString();
-      }
+    @Override
+    public void onResume() {
+        Log.w(TAG, "onResume()");
+        super.onResume();
+        dynamicTheme.onResume(this);
+        dynamicLanguage.onResume(this);
     }
 
-    if (text != null) {
-      setSharedText(intent, text.toString());
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ResolveMediaTask.cancelTasks();
     }
-    if (resolvedExtras.size() > 0) {
-      Uri data = resolvedExtras.get(0);
-      if (data != null) {
-        String mimeType = getMimeType(data);
-        intent.setDataAndType(data, mimeType);
-      }
-    }
-    return intent;
-  }
 
-  private String getMimeType(@Nullable Uri uri) {
-    if (uri != null) {
-      final String mimeType = MediaUtil.getMimeType(getApplicationContext(), uri);
-      if (mimeType != null) return mimeType;
-    }
-    return MediaUtil.getCorrectedMimeType(getIntent().getType());
-  }
+    private void initializeToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
 
-  private boolean hasFileScheme(Uri uri) {
-    if (uri==null) {
-      return false;
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
-    return "file".equals(uri.getScheme());
-  }
+
+    private void initializeMedia() {
+        resolvedExtras = new ArrayList<>();
+
+        List<Uri> streamExtras = new ArrayList<>();
+        if (Intent.ACTION_SEND.equals(getIntent().getAction()) &&
+                getIntent().getParcelableExtra(Intent.EXTRA_STREAM) != null) {
+            Uri uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
+            streamExtras.add(uri);
+        } else if (getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM) != null) {
+            streamExtras = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+        }
+
+        if (needsFilePermission(streamExtras)) {
+            if (Permissions.hasAll(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                resolveUris(streamExtras);
+            } else {
+                requestPermissionForFiles(streamExtras);
+            }
+        } else {
+            resolveUris(streamExtras);
+        }
+    }
+
+    private boolean needsFilePermission(List<Uri> uris) {
+        for (Uri uri : uris) {
+            // uri may be null, however, hasFileScheme() just returns false in this case
+            if (hasFileScheme(uri)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void requestPermissionForFiles(List<Uri> streamExtras) {
+        Permissions.with(this)
+                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                .ifNecessary()
+                .withRationaleDialog(this.getString(R.string.perm_explain_need_for_storage_access_share), R.drawable.ic_folder_white_48dp)
+                .onAllGranted(() -> resolveUris(streamExtras))
+                .onAnyDenied(this::abortShare)
+                .execute();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
+
+    private void abortShare() {
+        Toast.makeText(this, R.string.share_abort, Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    private void resolveUris(List<Uri> streamExtras) {
+        isResolvingUrisOnMainThread = true;
+        for (Uri streamExtra : streamExtras) {
+            if (streamExtra != null && PartAuthority.isLocalUri(streamExtra)) {
+                resolvedExtras.add(streamExtra);
+            } else {
+                new ResolveMediaTask(this, this).execute(streamExtra);
+            }
+        }
+
+        if (!ResolveMediaTask.isExecuting()) {
+            handleResolvedMedia(getIntent());
+        }
+        isResolvingUrisOnMainThread = false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onMediaResolved(Uri uri) {
+        if (uri != null) {
+            resolvedExtras.add(uri);
+        }
+
+        if (!ResolveMediaTask.isExecuting() && !isResolvingUrisOnMainThread) {
+            handleResolvedMedia(getIntent());
+        }
+    }
+
+    private void handleResolvedMedia(Intent intent) {
+        int chatId = intent.getIntExtra(EXTRA_CHAT_ID, -1);
+        Intent composeIntent = getBaseShareIntent(ConversationListActivity.class);
+        RelayUtil.setSharedUris(composeIntent, resolvedExtras);
+        if (chatId != -1) {
+            RelayUtil.setDirectSharing(composeIntent, chatId);
+        }
+        startActivity(composeIntent);
+        finish();
+
+    }
+
+    private Intent getBaseShareIntent(final @NonNull Class<?> target) {
+        final Intent intent = new Intent(this, target);
+        String text = getIntent().getStringExtra(Intent.EXTRA_TEXT);
+        if (text == null) {
+            CharSequence cs = getIntent().getCharSequenceExtra(Intent.EXTRA_TEXT);
+            if (cs != null) {
+                text = cs.toString();
+            }
+        }
+
+        if (text != null) {
+            setSharedText(intent, text.toString());
+        }
+        if (resolvedExtras.size() > 0) {
+            Uri data = resolvedExtras.get(0);
+            if (data != null) {
+                String mimeType = getMimeType(data);
+                intent.setDataAndType(data, mimeType);
+            }
+        }
+        return intent;
+    }
+
+    private String getMimeType(@Nullable Uri uri) {
+        if (uri != null) {
+            final String mimeType = MediaUtil.getMimeType(getApplicationContext(), uri);
+            if (mimeType != null) return mimeType;
+        }
+        return MediaUtil.getCorrectedMimeType(getIntent().getType());
+    }
+
+    private boolean hasFileScheme(Uri uri) {
+        if (uri == null) {
+            return false;
+        }
+        return "file".equals(uri.getScheme());
+    }
 
 }

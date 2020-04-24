@@ -14,20 +14,21 @@ import java.util.Locale;
 import java.util.Set;
 
 public interface BindableConversationItem extends Unbindable {
-  void bind(@NonNull DcMsg                   messageRecord,
-            @NonNull DcChat                  dcChat,
-            @NonNull GlideRequests           glideRequests,
-            @NonNull Locale                  locale,
-            @NonNull Set<DcMsg>              batchSelected,
-            @NonNull Recipient               recipients,
-                     boolean                 pulseHighlight);
+    void bind(@NonNull DcMsg messageRecord,
+              @NonNull DcChat dcChat,
+              @NonNull GlideRequests glideRequests,
+              @NonNull Locale locale,
+              @NonNull Set<DcMsg> batchSelected,
+              @NonNull Recipient recipients,
+              boolean pulseHighlight);
 
-  DcMsg getMessageRecord();
+    DcMsg getMessageRecord();
 
-  void setEventListener(@Nullable EventListener listener);
+    void setEventListener(@Nullable EventListener listener);
 
-  interface EventListener {
-    void onMessageSharedContactClicked(@NonNull List<Recipient> choices);
-    void onInviteSharedContactClicked(@NonNull List<Recipient> choices);
-  }
+    interface EventListener {
+        void onMessageSharedContactClicked(@NonNull List<Recipient> choices);
+
+        void onInviteSharedContactClicked(@NonNull List<Recipient> choices);
+    }
 }

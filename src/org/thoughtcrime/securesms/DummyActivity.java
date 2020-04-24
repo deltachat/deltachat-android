@@ -8,9 +8,9 @@ import android.os.Bundle;
  * https://code.google.com/p/android/issues/detail?id=53313
  */
 public class DummyActivity extends Activity {
-  @Override
-  public void onCreate(Bundle bundle) {
-    super.onCreate(bundle);
-    finish();
-  }
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        finish();
+    }
 }

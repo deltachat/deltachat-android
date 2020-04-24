@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.util;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -10,9 +11,9 @@ import java.util.ArrayList;
 import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
 
 public class RelayUtil {
-    private static final String FORWARDED_MESSAGE_IDS   = "forwarded_message_ids";
-    private static final String SHARED_URIS             = "shared_uris";
-    private static final String IS_SHARING              = "is_sharing";
+    private static final String FORWARDED_MESSAGE_IDS = "forwarded_message_ids";
+    private static final String SHARED_URIS = "shared_uris";
+    private static final String IS_SHARING = "is_sharing";
     public static final int REQUEST_RELAY = 100;
     private static final String DIRECT_SHARING_CHAT_ID = "direct_sharing_chat_id";
 

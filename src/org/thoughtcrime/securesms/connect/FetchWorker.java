@@ -8,7 +8,8 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 public class FetchWorker extends Worker {
-    private @NonNull Context context;
+    private @NonNull
+    Context context;
 
     public FetchWorker(
             @NonNull Context context,
@@ -18,7 +19,8 @@ public class FetchWorker extends Worker {
     }
 
     @Override
-    public @NonNull Result doWork() {
+    public @NonNull
+    Result doWork() {
         // MAYBE TODO:
         // - when no threads are running: fetch-inbox, maybe fetch-mvbox, do smtp-jobs.
         //   fetch-sendbox is not needed as these messages shall not be notified.

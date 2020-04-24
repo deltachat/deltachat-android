@@ -100,7 +100,7 @@ class GenerateInfoWindowTask extends AsyncTask<Feature, Bitmap, Bitmap> {
 
             String msgText;
             if (messageId != 0) {
-                DcContext dcContext =  DcHelper.getContext(callbackRef.get().getContext());
+                DcContext dcContext = DcHelper.getContext(callbackRef.get().getContext());
                 DcMsg msg = dcContext.getMsg(messageId);
                 if (hasImgThumbnail(msg)) {
                     ImageView thumbnailView = bubbleLayout.findViewById(R.id.map_bubble_img_thumbnail);

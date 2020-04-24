@@ -10,89 +10,86 @@ import org.thoughtcrime.securesms.R;
 
 public class DeliveryStatusView {
 
-  private final ImageView deliveryIndicator;
-  private static RotateAnimation prepareAnimation;
-  private static RotateAnimation sendingAnimation;
-  private boolean animated;
+    private final ImageView deliveryIndicator;
+    private static RotateAnimation prepareAnimation;
+    private static RotateAnimation sendingAnimation;
+    private boolean animated;
 
-  public DeliveryStatusView(ImageView deliveryIndicator) {
-    this.deliveryIndicator = deliveryIndicator;
-  }
-
-  private void animatePrepare()
-  {
-    if(prepareAnimation ==null) {
-      prepareAnimation = new RotateAnimation(360f, 0f,
-          Animation.RELATIVE_TO_SELF, 0.5f,
-          Animation.RELATIVE_TO_SELF, 0.5f);
-      prepareAnimation.setInterpolator(new LinearInterpolator());
-      prepareAnimation.setDuration(2500);
-      prepareAnimation.setRepeatCount(Animation.INFINITE);
+    public DeliveryStatusView(ImageView deliveryIndicator) {
+        this.deliveryIndicator = deliveryIndicator;
     }
 
-    deliveryIndicator.startAnimation(prepareAnimation);
-    animated = true;
-  }
+    private void animatePrepare() {
+        if (prepareAnimation == null) {
+            prepareAnimation = new RotateAnimation(360f, 0f,
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f);
+            prepareAnimation.setInterpolator(new LinearInterpolator());
+            prepareAnimation.setDuration(2500);
+            prepareAnimation.setRepeatCount(Animation.INFINITE);
+        }
 
-  private void animateSending()
-  {
-    if(sendingAnimation ==null) {
-      sendingAnimation = new RotateAnimation(0, 360f,
-          Animation.RELATIVE_TO_SELF, 0.5f,
-          Animation.RELATIVE_TO_SELF, 0.5f);
-      sendingAnimation.setInterpolator(new LinearInterpolator());
-      sendingAnimation.setDuration(1500);
-      sendingAnimation.setRepeatCount(Animation.INFINITE);
+        deliveryIndicator.startAnimation(prepareAnimation);
+        animated = true;
     }
 
-    deliveryIndicator.startAnimation(sendingAnimation);
-    animated = true;
-  }
+    private void animateSending() {
+        if (sendingAnimation == null) {
+            sendingAnimation = new RotateAnimation(0, 360f,
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f);
+            sendingAnimation.setInterpolator(new LinearInterpolator());
+            sendingAnimation.setDuration(1500);
+            sendingAnimation.setRepeatCount(Animation.INFINITE);
+        }
 
-  private void clearAnimation()
-  {
-    if(animated) {
-      deliveryIndicator.clearAnimation();
-      animated = false;
+        deliveryIndicator.startAnimation(sendingAnimation);
+        animated = true;
     }
-  }
 
-  public void setNone() {
-    deliveryIndicator.setVisibility(View.GONE);
-    deliveryIndicator.clearAnimation();
-  }
+    private void clearAnimation() {
+        if (animated) {
+            deliveryIndicator.clearAnimation();
+            animated = false;
+        }
+    }
 
-  public void setPreparing() {
-    deliveryIndicator.setVisibility(View.VISIBLE);
-    deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
-    animatePrepare();
-  }
+    public void setNone() {
+        deliveryIndicator.setVisibility(View.GONE);
+        deliveryIndicator.clearAnimation();
+    }
 
-  public void setPending() {
-    deliveryIndicator.setVisibility(View.VISIBLE);
-    deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
-    animateSending();
-  }
+    public void setPreparing() {
+        deliveryIndicator.setVisibility(View.VISIBLE);
+        deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
+        animatePrepare();
+    }
 
-  public void setSent() {
-    deliveryIndicator.setVisibility(View.VISIBLE);
-    deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sent);
-    clearAnimation();
-  }
+    public void setPending() {
+        deliveryIndicator.setVisibility(View.VISIBLE);
+        deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
+        animateSending();
+    }
 
-  public void setRead() {
-    deliveryIndicator.setVisibility(View.VISIBLE);
-    deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_read);
-    clearAnimation();
-  }
+    public void setSent() {
+        deliveryIndicator.setVisibility(View.VISIBLE);
+        deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sent);
+        clearAnimation();
+    }
 
-  public void setFailed() {
-    deliveryIndicator.setVisibility(View.VISIBLE);
-    deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_failed);
-    clearAnimation();
-  }
+    public void setRead() {
+        deliveryIndicator.setVisibility(View.VISIBLE);
+        deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_read);
+        clearAnimation();
+    }
 
-  public void setTint(int color) {
-    deliveryIndicator.setColorFilter(color);
-  }
+    public void setFailed() {
+        deliveryIndicator.setVisibility(View.VISIBLE);
+        deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_failed);
+        clearAnimation();
+    }
+
+    public void setTint(int color) {
+        deliveryIndicator.setColorFilter(color);
+    }
 }

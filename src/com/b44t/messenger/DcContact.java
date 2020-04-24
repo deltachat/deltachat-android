@@ -2,15 +2,15 @@ package com.b44t.messenger;
 
 public class DcContact {
 
-    public final static int DC_CONTACT_ID_SELF               = 1;
-    public final static int DC_CONTACT_ID_INFO               = 2;
-    public final static int DC_CONTACT_ID_DEVICE             = 5;
-    public final static int DC_CONTACT_ID_LAST_SPECIAL       = 9;
-    public final static int DC_CONTACT_ID_NEW_CONTACT        = -1; // used by the UI, not valid to the core
-    public final static int DC_CONTACT_ID_NEW_GROUP          = -2; //      - " -
+    public final static int DC_CONTACT_ID_SELF = 1;
+    public final static int DC_CONTACT_ID_INFO = 2;
+    public final static int DC_CONTACT_ID_DEVICE = 5;
+    public final static int DC_CONTACT_ID_LAST_SPECIAL = 9;
+    public final static int DC_CONTACT_ID_NEW_CONTACT = -1; // used by the UI, not valid to the core
+    public final static int DC_CONTACT_ID_NEW_GROUP = -2; //      - " -
     public final static int DC_CONTACT_ID_NEW_VERIFIED_GROUP = -3; //      - " -
-    public final static int DC_CONTACT_ID_ADD_MEMBER         = -4; //      - " -
-    public final static int DC_CONTACT_ID_QR_INVITE          = -5; //      - " -
+    public final static int DC_CONTACT_ID_ADD_MEMBER = -4; //      - " -
+    public final static int DC_CONTACT_ID_QR_INVITE = -5; //      - " -
 
     public DcContact(long contactCPtr) {
         this.contactCPtr = contactCPtr;
@@ -31,7 +31,7 @@ public class DcContact {
         }
 
         DcContact that = (DcContact) other;
-        return this.getId()==that.getId();
+        return this.getId() == that.getId();
     }
 
     @Override
@@ -39,18 +39,28 @@ public class DcContact {
         return getAddr();
     }
 
-    public native int     getId          ();
-    public native String  getName        ();
-    public native String  getDisplayName ();
-    public native String  getFirstName   ();
-    public native String  getAddr        ();
-    public native String  getNameNAddr   ();
-    public native String  getProfileImage();
-    public native int     getColor       ();
-    public native boolean isBlocked      ();
-    public native boolean isVerified     ();
+    public native int getId();
+
+    public native String getName();
+
+    public native String getDisplayName();
+
+    public native String getFirstName();
+
+    public native String getAddr();
+
+    public native String getNameNAddr();
+
+    public native String getProfileImage();
+
+    public native int getColor();
+
+    public native boolean isBlocked();
+
+    public native boolean isVerified();
 
     // working with raw c-data
-    private long        contactCPtr;    // CAVE: the name is referenced in the JNI
+    private long contactCPtr;    // CAVE: the name is referenced in the JNI
+
     private native void unrefContactCPtr();
 }

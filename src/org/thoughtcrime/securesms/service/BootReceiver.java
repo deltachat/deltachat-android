@@ -8,11 +8,11 @@ import android.util.Log;
 
 public class BootReceiver extends BroadcastReceiver {
 
-  @Override
-  public void onReceive(Context context, Intent intent) {
-    Log.i("DeltaChat", "*** BootReceiver.onReceive()");
-    // there's nothing more to do here as all initialisation stuff is already done in
-    // ApplicationDcContext() which is called before this broadcast is sent.
-  }
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Log.i("DeltaChat", "*** BootReceiver.onReceive()");
+        // there's nothing more to do here as all initialisation stuff is already done in
+        // ApplicationDcContext() which is called before this broadcast is sent.
+    }
 
 }

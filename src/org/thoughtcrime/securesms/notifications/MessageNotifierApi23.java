@@ -27,30 +27,29 @@ import org.thoughtcrime.securesms.util.ServiceUtil;
 
 /**
  * Handles posting system notifications for new messages.
- *
  */
 
 @TargetApi(23)
 class MessageNotifierApi23 extends MessageNotifier {
 
-  MessageNotifierApi23(Context context) {
-    super(context);
-  }
-
-  void cancelActiveNotifications() {
-    super.cancelActiveNotifications();
-    NotificationManager notifications = ServiceUtil.getNotificationManager(appContext);
-    try {
-
-        StatusBarNotification[]  activeNotifications = notifications.getActiveNotifications();
-        for (StatusBarNotification activeNotification : activeNotifications) {
-          notifications.cancel(activeNotification.getId());
-        }
-    } catch (Throwable e) {
-      // XXX Appears to be a ROM bug, see #6043
-      Log.w(TAG, e);
-      notifications.cancelAll();
+    MessageNotifierApi23(Context context) {
+        super(context);
     }
-  }
 
-  }
+    void cancelActiveNotifications() {
+        super.cancelActiveNotifications();
+        NotificationManager notifications = ServiceUtil.getNotificationManager(appContext);
+        try {
+
+            StatusBarNotification[] activeNotifications = notifications.getActiveNotifications();
+            for (StatusBarNotification activeNotification : activeNotifications) {
+                notifications.cancel(activeNotification.getId());
+            }
+        } catch (Throwable e) {
+            // XXX Appears to be a ROM bug, see #6043
+            Log.w(TAG, e);
+            notifications.cancelAll();
+        }
+    }
+
+}

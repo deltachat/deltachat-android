@@ -3,7 +3,9 @@ package org.thoughtcrime.securesms;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+
 import androidx.annotation.NonNull;
+
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,34 +21,34 @@ import java.util.Set;
 
 public class ConversationListItemAction extends LinearLayout implements BindableConversationListItem {
 
-  private TextView description;
+    private TextView description;
 
-  public ConversationListItemAction(Context context) {
-    super(context);
-  }
+    public ConversationListItemAction(Context context) {
+        super(context);
+    }
 
-  public ConversationListItemAction(Context context, AttributeSet attrs) {
-    super(context, attrs);
-  }
+    public ConversationListItemAction(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-  @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-  public ConversationListItemAction(Context context, AttributeSet attrs, int defStyleAttr) {
-    super(context, attrs, defStyleAttr);
-  }
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public ConversationListItemAction(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
 
-  @Override
-  public void onFinishInflate() {
-    super.onFinishInflate();
-    this.description = ViewUtil.findById(this, R.id.description);
-  }
+    @Override
+    public void onFinishInflate() {
+        super.onFinishInflate();
+        this.description = ViewUtil.findById(this, R.id.description);
+    }
 
-  @Override
-  public void bind(@NonNull ThreadRecord thread, int msgId, @NonNull DcLot dcSummary, @NonNull GlideRequests glideRequests, @NonNull Locale locale, @NonNull Set<Long> selectedThreads, boolean batchMode) {
-    this.description.setText(thread.getRecipient().getName());
-  }
+    @Override
+    public void bind(@NonNull ThreadRecord thread, int msgId, @NonNull DcLot dcSummary, @NonNull GlideRequests glideRequests, @NonNull Locale locale, @NonNull Set<Long> selectedThreads, boolean batchMode) {
+        this.description.setText(thread.getRecipient().getName());
+    }
 
-  @Override
-  public void unbind() {
+    @Override
+    public void unbind() {
 
-  }
+    }
 }

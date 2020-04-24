@@ -33,7 +33,7 @@ class TrackLayer {
     }
 
     void draw(Canvas canvas, int width, float offsetLeft, float offsetRight, float offsetY, float delta) {
-        draw(canvas, backgoundPaint, paddingLeft,  width - paddingRight,  offsetY);
+        draw(canvas, backgoundPaint, paddingLeft, width - paddingRight, offsetY);
         if (offsetLeft == offsetRight) {
             float maxEndX = width - paddingRight;
             float minStartX = paddingLeft;
@@ -47,8 +47,7 @@ class TrackLayer {
             }
 
             draw(canvas, centerPaint, offsetDeltaLeft, offsetDeltaRight, offsetY);
-        }
-        else {
+        } else {
             draw(canvas, centerPaint, offsetLeft, offsetRight, offsetY);
         }
 

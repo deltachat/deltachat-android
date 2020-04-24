@@ -21,10 +21,12 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -72,138 +74,141 @@ import java.util.Set;
  * thread.  Used by ComposeMessageActivity's ListActivity via a ConversationAdapter.
  *
  * @author Moxie Marlinspike
- *
  */
 
 public class ConversationItem extends LinearLayout
-    implements BindableConversationItem
-{
-  private static final String TAG = ConversationItem.class.getSimpleName();
+        implements BindableConversationItem {
+    private static final String TAG = ConversationItem.class.getSimpleName();
 
-  private static final int MAX_MEASURE_CALLS = 3;
+    private static final int MAX_MEASURE_CALLS = 3;
 
-  private DcMsg         messageRecord;
-  private DcChat        dcChat;
-  private DcContact     dcContact;
-  private Locale        locale;
-  private boolean       groupThread;
-  private GlideRequests glideRequests;
+    private DcMsg messageRecord;
+    private DcChat dcChat;
+    private DcContact dcContact;
+    private Locale locale;
+    private boolean groupThread;
+    private GlideRequests glideRequests;
 
-  protected ViewGroup              bodyBubble;
-  private   TextView               bodyText;
-  private   ConversationItemFooter footer;
-  private   TextView               groupSender;
-  private   View                   groupSenderHolder;
-  private   AvatarImageView        contactPhoto;
-  private   ViewGroup              contactPhotoHolder;
-  private   ViewGroup              container;
+    protected ViewGroup bodyBubble;
+    private TextView bodyText;
+    private ConversationItemFooter footer;
+    private TextView groupSender;
+    private View groupSenderHolder;
+    private AvatarImageView contactPhoto;
+    private ViewGroup contactPhotoHolder;
+    private ViewGroup container;
 
-  private @NonNull  Set<DcMsg>                      batchSelected = new HashSet<>();
-  private @NonNull  Recipient                       conversationRecipient;
-  private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
-  private @NonNull  Stub<AudioView>                 audioViewStub;
-  private @NonNull  Stub<DocumentView>              documentViewStub;
-  private @Nullable EventListener                   eventListener;
+    private @NonNull
+    Set<DcMsg> batchSelected = new HashSet<>();
+    private @NonNull
+    Recipient conversationRecipient;
+    private @NonNull
+    Stub<ConversationItemThumbnail> mediaThumbnailStub;
+    private @NonNull
+    Stub<AudioView> audioViewStub;
+    private @NonNull
+    Stub<DocumentView> documentViewStub;
+    private @Nullable
+    EventListener eventListener;
 
-  private int incomingBubbleColor;
-  private int outgoingBubbleColor;
-  private int forwardedTitleColor;
+    private int incomingBubbleColor;
+    private int outgoingBubbleColor;
+    private int forwardedTitleColor;
 
-  private final PassthroughClickListener        passthroughClickListener   = new PassthroughClickListener();
+    private final PassthroughClickListener passthroughClickListener = new PassthroughClickListener();
 
-  private final Context context;
-  private final ApplicationDcContext dcContext;
+    private final Context context;
+    private final ApplicationDcContext dcContext;
 
-  public ConversationItem(Context context) {
-    this(context, null);
-  }
-
-  public ConversationItem(Context context, AttributeSet attrs) {
-    super(context, attrs);
-    this.context = context;
-    this.dcContext = DcHelper.getContext(context);
-  }
-
-  @Override
-  public void setOnClickListener(OnClickListener l) {
-    super.setOnClickListener(new ClickListener(l));
-  }
-
-  @Override
-  protected void onFinishInflate() {
-    super.onFinishInflate();
-
-    initializeAttributes();
-
-    this.bodyText                =            findViewById(R.id.conversation_item_body);
-    this.footer                  =            findViewById(R.id.conversation_item_footer);
-    this.groupSender             =            findViewById(R.id.group_message_sender);
-    this.contactPhoto            =            findViewById(R.id.contact_photo);
-    this.contactPhotoHolder      =            findViewById(R.id.contact_photo_container);
-    this.bodyBubble              =            findViewById(R.id.body_bubble);
-    this.mediaThumbnailStub      = new Stub<>(findViewById(R.id.image_view_stub));
-    this.audioViewStub           = new Stub<>(findViewById(R.id.audio_view_stub));
-    this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
-    this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
-    this.container               =            findViewById(R.id.container);
-
-    setOnClickListener(new ClickListener(null));
-
-    bodyText.setOnLongClickListener(passthroughClickListener);
-    bodyText.setOnClickListener(passthroughClickListener);
-
-    bodyText.setMovementMethod(LongClickMovementMethod.getInstance(getContext()));
-  }
-
-  @Override
-  public void bind(@NonNull DcMsg                   messageRecord,
-                   @NonNull DcChat                  dcChat,
-                   @NonNull GlideRequests           glideRequests,
-                   @NonNull Locale                  locale,
-                   @NonNull Set<DcMsg>              batchSelected,
-                   @NonNull Recipient               recipients,
-                   boolean                          pulseHighlight)
-  {
-    this.messageRecord          = messageRecord;
-    this.dcChat                 = dcChat;
-    this.locale                 = locale;
-    this.glideRequests          = glideRequests;
-    this.batchSelected          = batchSelected;
-    this.conversationRecipient  = recipients;
-    this.groupThread            = dcChat.isGroup();
-
-    if (groupThread && !messageRecord.isOutgoing()) {
-      this.dcContact = dcContext.getContact(messageRecord.getFromId());
+    public ConversationItem(Context context) {
+        this(context, null);
     }
 
-    setGutterSizes(messageRecord, groupThread);
-    setMessageShape(messageRecord);
-    setMediaAttributes(messageRecord, conversationRecipient, groupThread);
-    setInteractionState(messageRecord, pulseHighlight);
-    setBodyText(messageRecord);
-    setBubbleState(messageRecord);
-    setContactPhoto();
-    setGroupMessageStatus();
-    setAuthor(messageRecord, groupThread);
-    setMessageSpacing(context);
-    setFooter(messageRecord, locale);
-  }
-
-
-  @Override
-  public void setEventListener(@Nullable EventListener eventListener) {
-    this.eventListener = eventListener;
-  }
-
-  @Override
-  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-    if (isInEditMode()) {
-      return;
+    public ConversationItem(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        this.context = context;
+        this.dcContext = DcHelper.getContext(context);
     }
 
-    //boolean needsMeasure = false;
+    @Override
+    public void setOnClickListener(OnClickListener l) {
+        super.setOnClickListener(new ClickListener(l));
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+
+        initializeAttributes();
+
+        this.bodyText = findViewById(R.id.conversation_item_body);
+        this.footer = findViewById(R.id.conversation_item_footer);
+        this.groupSender = findViewById(R.id.group_message_sender);
+        this.contactPhoto = findViewById(R.id.contact_photo);
+        this.contactPhotoHolder = findViewById(R.id.contact_photo_container);
+        this.bodyBubble = findViewById(R.id.body_bubble);
+        this.mediaThumbnailStub = new Stub<>(findViewById(R.id.image_view_stub));
+        this.audioViewStub = new Stub<>(findViewById(R.id.audio_view_stub));
+        this.documentViewStub = new Stub<>(findViewById(R.id.document_view_stub));
+        this.groupSenderHolder = findViewById(R.id.group_sender_holder);
+        this.container = findViewById(R.id.container);
+
+        setOnClickListener(new ClickListener(null));
+
+        bodyText.setOnLongClickListener(passthroughClickListener);
+        bodyText.setOnClickListener(passthroughClickListener);
+
+        bodyText.setMovementMethod(LongClickMovementMethod.getInstance(getContext()));
+    }
+
+    @Override
+    public void bind(@NonNull DcMsg messageRecord,
+                     @NonNull DcChat dcChat,
+                     @NonNull GlideRequests glideRequests,
+                     @NonNull Locale locale,
+                     @NonNull Set<DcMsg> batchSelected,
+                     @NonNull Recipient recipients,
+                     boolean pulseHighlight) {
+        this.messageRecord = messageRecord;
+        this.dcChat = dcChat;
+        this.locale = locale;
+        this.glideRequests = glideRequests;
+        this.batchSelected = batchSelected;
+        this.conversationRecipient = recipients;
+        this.groupThread = dcChat.isGroup();
+
+        if (groupThread && !messageRecord.isOutgoing()) {
+            this.dcContact = dcContext.getContact(messageRecord.getFromId());
+        }
+
+        setGutterSizes(messageRecord, groupThread);
+        setMessageShape(messageRecord);
+        setMediaAttributes(messageRecord, conversationRecipient, groupThread);
+        setInteractionState(messageRecord, pulseHighlight);
+        setBodyText(messageRecord);
+        setBubbleState(messageRecord);
+        setContactPhoto();
+        setGroupMessageStatus();
+        setAuthor(messageRecord, groupThread);
+        setMessageSpacing(context);
+        setFooter(messageRecord, locale);
+    }
+
+
+    @Override
+    public void setEventListener(@Nullable EventListener eventListener) {
+        this.eventListener = eventListener;
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        if (isInEditMode()) {
+            return;
+        }
+
+        //boolean needsMeasure = false;
 
     /*
     ConversationItemFooter activeFooter   = getActiveFooter(messageRecord);
@@ -225,464 +230,457 @@ public class ConversationItem extends LinearLayout
       measureCalls = 0;
     }
     */
-  }
-
-  private int getAvailableMessageBubbleWidth(@NonNull View forView) {
-    int availableWidth;
-    if (hasAudio(messageRecord)) {
-      availableWidth = audioViewStub.get().getMeasuredWidth() + ViewUtil.getLeftMargin(audioViewStub.get()) + ViewUtil.getRightMargin(audioViewStub.get());
-    } else if (hasThumbnail(messageRecord)) {
-      availableWidth = mediaThumbnailStub.get().getMeasuredWidth();
-    } else {
-      availableWidth = bodyBubble.getMeasuredWidth() - bodyBubble.getPaddingLeft() - bodyBubble.getPaddingRight();
     }
 
-    availableWidth -= ViewUtil.getLeftMargin(forView) + ViewUtil.getRightMargin(forView);
-
-    return availableWidth;
-  }
-
-  private void initializeAttributes() {
-    final int[]      attributes = new int[] {
-        R.attr.conversation_item_incoming_bubble_color,
-        R.attr.conversation_item_outgoing_bubble_color,
-        R.attr.conversation_item_incoming_text_secondary_color
-    };
-    final TypedArray attrs      = context.obtainStyledAttributes(attributes);
-
-    incomingBubbleColor = attrs.getColor(0, Color.WHITE);
-    outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
-    forwardedTitleColor = attrs.getColor(2, Color.BLACK);
-    attrs.recycle();
-  }
-
-  @Override
-  public void unbind() {
-  }
-
-  public DcMsg getMessageRecord() {
-    return messageRecord;
-  }
-
-  /// DcMsg Attribute Parsers
-
-  private void setBubbleState(DcMsg messageRecord) {
-    if (messageRecord.isOutgoing()) {
-      bodyBubble.getBackground().setColorFilter(outgoingBubbleColor, PorterDuff.Mode.MULTIPLY);
-    } else {
-      bodyBubble.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
-    }
-  }
-
-  private void setInteractionState(DcMsg messageRecord, boolean pulseHighlight) {
-    if (batchSelected.contains(messageRecord)) {
-      setBackgroundResource(R.drawable.conversation_item_background);
-      setSelected(true);
-    } else if (pulseHighlight) {
-      setBackgroundResource(R.drawable.conversation_item_background_animated);
-      setSelected(true);
-      postDelayed(() -> setSelected(false), 1500);
-    } else {
-      setSelected(false);
-    }
-
-    if (mediaThumbnailStub.resolved()) {
-      mediaThumbnailStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
-      mediaThumbnailStub.get().setClickable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
-      mediaThumbnailStub.get().setLongClickable(batchSelected.isEmpty());
-    }
-
-    if (audioViewStub.resolved()) {
-      audioViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
-      audioViewStub.get().setClickable(batchSelected.isEmpty());
-      audioViewStub.get().setEnabled(batchSelected.isEmpty());
-    }
-
-    if (documentViewStub.resolved()) {
-      documentViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
-      documentViewStub.get().setClickable(batchSelected.isEmpty());
-    }
-  }
-
-  private boolean hasAudio(DcMsg messageRecord) {
-    int type = messageRecord.getType();
-    return type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE;
-  }
-
-  private boolean hasThumbnail(DcMsg messageRecord) {
-    int type = messageRecord.getType();
-    return type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_VIDEO;
-  }
-
-  private boolean hasOnlyThumbnail(DcMsg messageRecord) {
-    return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord);
-  }
-
-  private boolean hasDocument(DcMsg dcMsg) {
-    return dcMsg.getType()==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
-  }
-
-  private void setBodyText(DcMsg messageRecord) {
-    bodyText.setClickable(false);
-    bodyText.setFocusable(false);
-    bodyText.setTextSize(TypedValue.COMPLEX_UNIT_SP, Prefs.getMessageBodyTextSize(context));
-
-    String text = messageRecord.getText();
-
-    if (messageRecord.isSetupMessage()) {
-      bodyText.setText(context.getString(R.string.autocrypt_asm_click_body));
-      bodyText.setVisibility(View.VISIBLE);
-    }
-    else if (text.isEmpty()) {
-      bodyText.setVisibility(View.GONE);
-    }
-    else {
-      bodyText.setText(linkifyMessageBody(new SpannableString(text), batchSelected.isEmpty()));
-      bodyText.setVisibility(View.VISIBLE);
-    }
-
-  }
-
-  private void setMediaAttributes(@NonNull DcMsg           messageRecord,
-                                  @NonNull Recipient       conversationRecipient,
-                                           boolean         isGroupThread)
-  {
-    class SetDurationListener implements AudioSlidePlayer.Listener {
-      @Override
-      public void onStart() {}
-
-      @Override
-      public void onStop() {}
-
-      @Override
-      public void onProgress(double progress, long millis) {}
-
-      @Override
-      public void onReceivedDuration(int millis) {
-        messageRecord.lateFilingMediaSize(0,0, millis);
-        audioViewStub.get().setDuration(millis);
-      }
-    }
-    if (hasAudio(messageRecord)) {
-      audioViewStub.get().setVisibility(View.VISIBLE);
-      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-
-      //noinspection ConstantConditions
-      if(dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {  // no audio on dead drops
-        // TODO: replace the currently defunct display of a play button with some notification text
-        // to inform the user that here would be audio, if this were a proper chat, then ask the user
-        // if he wants to start the chat on click.
-        audioViewStub.get().setEnabled(false);
-        audioViewStub.get().setOnClickListener(passthroughClickListener);
-      } else {
-        int duration = messageRecord.getDuration();
-        if (duration == 0) {
-          AudioSlide audio = new AudioSlide(context, messageRecord);
-          AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, new SetDurationListener());
-          audioSlidePlayer.requestDuration();
+    private int getAvailableMessageBubbleWidth(@NonNull View forView) {
+        int availableWidth;
+        if (hasAudio(messageRecord)) {
+            availableWidth = audioViewStub.get().getMeasuredWidth() + ViewUtil.getLeftMargin(audioViewStub.get()) + ViewUtil.getRightMargin(audioViewStub.get());
+        } else if (hasThumbnail(messageRecord)) {
+            availableWidth = mediaThumbnailStub.get().getMeasuredWidth();
+        } else {
+            availableWidth = bodyBubble.getMeasuredWidth() - bodyBubble.getPaddingLeft() - bodyBubble.getPaddingRight();
         }
 
-        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
-      }
-      audioViewStub.get().setOnLongClickListener(passthroughClickListener);
+        availableWidth -= ViewUtil.getLeftMargin(forView) + ViewUtil.getRightMargin(forView);
 
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      footer.setVisibility(VISIBLE);
-    }
-    else if (hasDocument(messageRecord)) {
-      documentViewStub.get().setVisibility(View.VISIBLE);
-      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-
-      //noinspection ConstantConditions
-      documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
-      documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
-      documentViewStub.get().setOnLongClickListener(passthroughClickListener);
-
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      footer.setVisibility(VISIBLE);
-    }
-    else if (hasThumbnail(messageRecord)) {
-      mediaThumbnailStub.get().setVisibility(View.VISIBLE);
-      if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
-
-      Slide slide;
-      if (messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
-        slide = new VideoSlide(context, messageRecord);
-      }
-      else {
-        slide = new DocumentSlide(context, messageRecord);
-      }
-
-      MediaUtil.ThumbnailSize thumbnailSize = new MediaUtil.ThumbnailSize(messageRecord.getWidth(0), messageRecord.getHeight(0));
-      if ((thumbnailSize.width<=0||thumbnailSize.height<=0)) {
-        if(messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
-          MediaUtil.createVideoThumbnailIfNeeded(context, slide.getUri(), slide.getThumbnailUri(), thumbnailSize);
-        }
-        if (thumbnailSize.width<=0||thumbnailSize.height<=0) {
-          thumbnailSize.width = 180;
-          thumbnailSize.height = 180;
-        }
-        messageRecord.lateFilingMediaSize(thumbnailSize.width, thumbnailSize.height, 0);
-      }
-
-      mediaThumbnailStub.get().setImageResource(glideRequests,
-                                                slide,
-                                                thumbnailSize.width,
-                                                thumbnailSize.height);
-      mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
-      mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
-      mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
-      mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
-
-      setThumbnailOutlineCorners(messageRecord, isGroupThread);
-
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      footer.setVisibility(VISIBLE);
-    }
-    else {
-      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      footer.setVisibility(VISIBLE);
-    }
-  }
-
-  private void setThumbnailOutlineCorners(@NonNull DcMsg           current,
-                                          boolean                  isGroupThread)
-  {
-    int defaultRadius  = readDimen(R.dimen.message_corner_radius);
-
-    int topLeft     = defaultRadius;
-    int topRight    = defaultRadius;
-    int bottomLeft  = defaultRadius;
-    int bottomRight = defaultRadius;
-
-    if (!TextUtils.isEmpty(current.getText())) {
-      bottomLeft  = 0;
-      bottomRight = 0;
+        return availableWidth;
     }
 
-    if ((!current.isOutgoing() && isGroupThread)
-     || current.isForwarded()){
-      topLeft  = 0;
-      topRight = 0;
-    }
+    private void initializeAttributes() {
+        final int[] attributes = new int[]{
+                R.attr.conversation_item_incoming_bubble_color,
+                R.attr.conversation_item_outgoing_bubble_color,
+                R.attr.conversation_item_incoming_text_secondary_color
+        };
+        final TypedArray attrs = context.obtainStyledAttributes(attributes);
 
-    if(bottomLeft != 0 && bottomRight !=0) {
-      if(current.isOutgoing()) {
-        bottomRight = 0;
-      }
-      else {
-        bottomLeft = 0;
-      }
-    }
-
-    mediaThumbnailStub.get().setOutlineCorners(topLeft, topRight, bottomRight, bottomLeft);
-  }
-
-  private void setContactPhoto() {
-    if (contactPhoto == null) return;
-
-    if (messageRecord.isOutgoing() || !groupThread || dcContact ==null) {
-      contactPhoto.setVisibility(View.GONE);
-    } else {
-      contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
-      contactPhoto.setVisibility(View.VISIBLE);
-    }
-  }
-
-  private SpannableString linkifyMessageBody(SpannableString messageBody, boolean shouldLinkifyAllLinks) {
-    boolean hasLinks = Linkify.addLinks(messageBody,
-        shouldLinkifyAllLinks ? Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS : 0);
-
-    if (hasLinks) {
-      URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
-      for (URLSpan urlSpan : urlSpans) {
-        int start = messageBody.getSpanStart(urlSpan);
-        int end = messageBody.getSpanEnd(urlSpan);
-        messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-      }
-    }
-    return messageBody;
-  }
-
-  private void setGutterSizes(@NonNull DcMsg current, boolean isGroupThread) {
-    if (isGroupThread && current.isOutgoing()) {
-      ViewUtil.setLeftMargin(container, readDimen(R.dimen.conversation_group_left_gutter));
-    } else if (current.isOutgoing()) {
-      ViewUtil.setLeftMargin(container, readDimen(R.dimen.conversation_individual_left_gutter));
-    }
-  }
-
-  private void setFooter(@NonNull DcMsg current, @NonNull Locale locale) {
-    ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
-    footer.setVisibility(GONE);
-    if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
-
-    ConversationItemFooter activeFooter = getActiveFooter(current);
-    activeFooter.setVisibility(VISIBLE);
-    activeFooter.setMessageRecord(current, locale);
-  }
-
-  private ConversationItemFooter getActiveFooter(@NonNull DcMsg messageRecord) {
-    if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
-      return mediaThumbnailStub.get().getFooter();
-    } else {
-      return footer;
-    }
-  }
-
-  private int readDimen(@DimenRes int dimenId) {
-    return context.getResources().getDimensionPixelOffset(dimenId);
-  }
-
-  private boolean shouldInterceptClicks(DcMsg messageRecord) {
-    return batchSelected.isEmpty() && (messageRecord.isFailed());
-  }
-
-  private void setGroupMessageStatus() {
-    if (messageRecord.isForwarded()) {
-      this.groupSender.setText(context.getString(R.string.forwarded_message));
-      this.groupSender.setTextColor(forwardedTitleColor);
-    }
-    else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
-      this.groupSender.setText(dcContact.getDisplayName());
-
-      int rgb = dcContact.getColor();
-      int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
-      this.groupSender.setTextColor(argb);
-    }
-  }
-
-  private void setAuthor(@NonNull DcMsg current, boolean isGroupThread) {
-    int groupSenderHolderVisibility = GONE;
-    if (isGroupThread && !current.isOutgoing()) {
-      if (contactPhotoHolder != null) {
-        contactPhotoHolder.setVisibility(VISIBLE);
-      }
-      groupSenderHolderVisibility = VISIBLE;
-      contactPhoto.setVisibility(VISIBLE);
-    } else {
-      if (contactPhotoHolder != null) {
-        contactPhotoHolder.setVisibility(GONE);
-      }
-    }
-
-    if(current.isForwarded()) {
-      groupSenderHolderVisibility = VISIBLE;
-    }
-
-    groupSenderHolder.setVisibility(groupSenderHolderVisibility);
-
-    boolean collapse = false;
-    if(groupSenderHolderVisibility==VISIBLE && current.getType()==DcMsg.DC_MSG_TEXT) {
-      collapse = true;
-    }
-
-    int spacingTop = collapse? 0 /*2dp border come from the senderHolder*/ : readDimen(context, R.dimen.message_bubble_top_padding);
-    ViewUtil.setPaddingTop(bodyText, spacingTop);
-  }
-
-  private void setMessageShape(@NonNull DcMsg current) {
-    int background;
-    background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
-                                      : R.drawable.message_bubble_background_received_alone;
-    bodyBubble.setBackgroundResource(background);
-  }
-
-  private void setMessageSpacing(@NonNull Context context) {
-    int spacingTop = readDimen(context, R.dimen.conversation_vertical_message_spacing_collapse);
-    int spacingBottom = spacingTop;
-
-    ViewUtil.setPaddingTop(this, spacingTop);
-    ViewUtil.setPaddingBottom(this, spacingBottom);
-  }
-
-  private int readDimen(@NonNull Context context, @DimenRes int dimenId) {
-    return context.getResources().getDimensionPixelOffset(dimenId);
-  }
-
-  /// Event handlers
-
-  private void handleDeadDropClick() {
-    new AlertDialog.Builder(context)
-      .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-        int chatId = dcContext.createChatByMsgId(messageRecord.getId());
-        if( chatId != 0 ) {
-          Intent intent = new Intent(context, ConversationActivity.class);
-          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-          context.startActivity(intent);
-        }
-      })
-      .setNegativeButton(android.R.string.cancel, null)
-      .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
-        dcContext.blockContact(messageRecord.getFromId(), 1);
-      })
-      .setMessage(context.getString(R.string.ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
-      .show();
-  }
-
-  private class ThumbnailClickListener implements SlideClickListener {
-    public void onClick(final View v, final Slide slide) {
-      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
-        handleDeadDropClick();
-      } else if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
-        performClick();
-      } else if (MediaPreviewActivity.isContentTypeSupported(slide.getContentType()) && slide.getUri() != null) {
-        Intent intent = new Intent(context, MediaPreviewActivity.class);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.putExtra(MediaPreviewActivity.DC_MSG_ID, slide.getDcMsgId());
-        intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, conversationRecipient.getAddress());
-        intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, messageRecord.isOutgoing());
-        intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, false);
-
-        context.startActivity(intent);
-      } else if (slide.getUri() != null) {
-        dcContext.openForViewOrShare(context, slide.getDcMsgId(), Intent.ACTION_VIEW);
-      }
-    }
-  }
-
-  private class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
-
-    @Override
-    public boolean onLongClick(View v) {
-      if (bodyText.hasSelection()) {
-        return false;
-      }
-      performLongClick();
-      return true;
+        incomingBubbleColor = attrs.getColor(0, Color.WHITE);
+        outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
+        forwardedTitleColor = attrs.getColor(2, Color.BLACK);
+        attrs.recycle();
     }
 
     @Override
-    public void onClick(View v) {
-      performClick();
-    }
-  }
-
-  private class ClickListener implements View.OnClickListener {
-    private OnClickListener parent;
-
-    ClickListener(@Nullable OnClickListener parent) {
-      this.parent = parent;
+    public void unbind() {
     }
 
-    public void onClick(View v) {
-      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
-        handleDeadDropClick();
-      } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
-        parent.onClick(v);
-      }
+    public DcMsg getMessageRecord() {
+        return messageRecord;
     }
-  }
+
+    /// DcMsg Attribute Parsers
+
+    private void setBubbleState(DcMsg messageRecord) {
+        if (messageRecord.isOutgoing()) {
+            bodyBubble.getBackground().setColorFilter(outgoingBubbleColor, PorterDuff.Mode.MULTIPLY);
+        } else {
+            bodyBubble.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
+        }
+    }
+
+    private void setInteractionState(DcMsg messageRecord, boolean pulseHighlight) {
+        if (batchSelected.contains(messageRecord)) {
+            setBackgroundResource(R.drawable.conversation_item_background);
+            setSelected(true);
+        } else if (pulseHighlight) {
+            setBackgroundResource(R.drawable.conversation_item_background_animated);
+            setSelected(true);
+            postDelayed(() -> setSelected(false), 1500);
+        } else {
+            setSelected(false);
+        }
+
+        if (mediaThumbnailStub.resolved()) {
+            mediaThumbnailStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+            mediaThumbnailStub.get().setClickable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+            mediaThumbnailStub.get().setLongClickable(batchSelected.isEmpty());
+        }
+
+        if (audioViewStub.resolved()) {
+            audioViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+            audioViewStub.get().setClickable(batchSelected.isEmpty());
+            audioViewStub.get().setEnabled(batchSelected.isEmpty());
+        }
+
+        if (documentViewStub.resolved()) {
+            documentViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+            documentViewStub.get().setClickable(batchSelected.isEmpty());
+        }
+    }
+
+    private boolean hasAudio(DcMsg messageRecord) {
+        int type = messageRecord.getType();
+        return type == DcMsg.DC_MSG_AUDIO || type == DcMsg.DC_MSG_VOICE;
+    }
+
+    private boolean hasThumbnail(DcMsg messageRecord) {
+        int type = messageRecord.getType();
+        return type == DcMsg.DC_MSG_GIF || type == DcMsg.DC_MSG_IMAGE || type == DcMsg.DC_MSG_VIDEO;
+    }
+
+    private boolean hasOnlyThumbnail(DcMsg messageRecord) {
+        return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord);
+    }
+
+    private boolean hasDocument(DcMsg dcMsg) {
+        return dcMsg.getType() == DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
+    }
+
+    private void setBodyText(DcMsg messageRecord) {
+        bodyText.setClickable(false);
+        bodyText.setFocusable(false);
+        bodyText.setTextSize(TypedValue.COMPLEX_UNIT_SP, Prefs.getMessageBodyTextSize(context));
+
+        String text = messageRecord.getText();
+
+        if (messageRecord.isSetupMessage()) {
+            bodyText.setText(context.getString(R.string.autocrypt_asm_click_body));
+            bodyText.setVisibility(View.VISIBLE);
+        } else if (text.isEmpty()) {
+            bodyText.setVisibility(View.GONE);
+        } else {
+            bodyText.setText(linkifyMessageBody(new SpannableString(text), batchSelected.isEmpty()));
+            bodyText.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    private void setMediaAttributes(@NonNull DcMsg messageRecord,
+                                    @NonNull Recipient conversationRecipient,
+                                    boolean isGroupThread) {
+        class SetDurationListener implements AudioSlidePlayer.Listener {
+            @Override
+            public void onStart() {
+            }
+
+            @Override
+            public void onStop() {
+            }
+
+            @Override
+            public void onProgress(double progress, long millis) {
+            }
+
+            @Override
+            public void onReceivedDuration(int millis) {
+                messageRecord.lateFilingMediaSize(0, 0, millis);
+                audioViewStub.get().setDuration(millis);
+            }
+        }
+        if (hasAudio(messageRecord)) {
+            audioViewStub.get().setVisibility(View.VISIBLE);
+            if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+            if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+
+            //noinspection ConstantConditions
+            if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {  // no audio on dead drops
+                // TODO: replace the currently defunct display of a play button with some notification text
+                // to inform the user that here would be audio, if this were a proper chat, then ask the user
+                // if he wants to start the chat on click.
+                audioViewStub.get().setEnabled(false);
+                audioViewStub.get().setOnClickListener(passthroughClickListener);
+            } else {
+                int duration = messageRecord.getDuration();
+                if (duration == 0) {
+                    AudioSlide audio = new AudioSlide(context, messageRecord);
+                    AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, new SetDurationListener());
+                    audioSlidePlayer.requestDuration();
+                }
+
+                audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
+            }
+            audioViewStub.get().setOnLongClickListener(passthroughClickListener);
+
+            ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            footer.setVisibility(VISIBLE);
+        } else if (hasDocument(messageRecord)) {
+            documentViewStub.get().setVisibility(View.VISIBLE);
+            if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+            if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+
+            //noinspection ConstantConditions
+            documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
+            documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
+            documentViewStub.get().setOnLongClickListener(passthroughClickListener);
+
+            ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            footer.setVisibility(VISIBLE);
+        } else if (hasThumbnail(messageRecord)) {
+            mediaThumbnailStub.get().setVisibility(View.VISIBLE);
+            if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+            if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+
+            Slide slide;
+            if (messageRecord.getType() == DcMsg.DC_MSG_VIDEO) {
+                slide = new VideoSlide(context, messageRecord);
+            } else {
+                slide = new DocumentSlide(context, messageRecord);
+            }
+
+            MediaUtil.ThumbnailSize thumbnailSize = new MediaUtil.ThumbnailSize(messageRecord.getWidth(0), messageRecord.getHeight(0));
+            if ((thumbnailSize.width <= 0 || thumbnailSize.height <= 0)) {
+                if (messageRecord.getType() == DcMsg.DC_MSG_VIDEO) {
+                    MediaUtil.createVideoThumbnailIfNeeded(context, slide.getUri(), slide.getThumbnailUri(), thumbnailSize);
+                }
+                if (thumbnailSize.width <= 0 || thumbnailSize.height <= 0) {
+                    thumbnailSize.width = 180;
+                    thumbnailSize.height = 180;
+                }
+                messageRecord.lateFilingMediaSize(thumbnailSize.width, thumbnailSize.height, 0);
+            }
+
+            mediaThumbnailStub.get().setImageResource(glideRequests,
+                    slide,
+                    thumbnailSize.width,
+                    thumbnailSize.height);
+            mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
+            mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
+            mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
+            mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
+
+            setThumbnailOutlineCorners(messageRecord, isGroupThread);
+
+            ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            footer.setVisibility(VISIBLE);
+        } else {
+            if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+            if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+            if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+
+            ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            footer.setVisibility(VISIBLE);
+        }
+    }
+
+    private void setThumbnailOutlineCorners(@NonNull DcMsg current,
+                                            boolean isGroupThread) {
+        int defaultRadius = readDimen(R.dimen.message_corner_radius);
+
+        int topLeft = defaultRadius;
+        int topRight = defaultRadius;
+        int bottomLeft = defaultRadius;
+        int bottomRight = defaultRadius;
+
+        if (!TextUtils.isEmpty(current.getText())) {
+            bottomLeft = 0;
+            bottomRight = 0;
+        }
+
+        if ((!current.isOutgoing() && isGroupThread)
+                || current.isForwarded()) {
+            topLeft = 0;
+            topRight = 0;
+        }
+
+        if (bottomLeft != 0 && bottomRight != 0) {
+            if (current.isOutgoing()) {
+                bottomRight = 0;
+            } else {
+                bottomLeft = 0;
+            }
+        }
+
+        mediaThumbnailStub.get().setOutlineCorners(topLeft, topRight, bottomRight, bottomLeft);
+    }
+
+    private void setContactPhoto() {
+        if (contactPhoto == null) return;
+
+        if (messageRecord.isOutgoing() || !groupThread || dcContact == null) {
+            contactPhoto.setVisibility(View.GONE);
+        } else {
+            contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
+            contactPhoto.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private SpannableString linkifyMessageBody(SpannableString messageBody, boolean shouldLinkifyAllLinks) {
+        boolean hasLinks = Linkify.addLinks(messageBody,
+                shouldLinkifyAllLinks ? Linkify.EMAIL_ADDRESSES | Linkify.WEB_URLS | Linkify.PHONE_NUMBERS : 0);
+
+        if (hasLinks) {
+            URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
+            for (URLSpan urlSpan : urlSpans) {
+                int start = messageBody.getSpanStart(urlSpan);
+                int end = messageBody.getSpanEnd(urlSpan);
+                messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+        return messageBody;
+    }
+
+    private void setGutterSizes(@NonNull DcMsg current, boolean isGroupThread) {
+        if (isGroupThread && current.isOutgoing()) {
+            ViewUtil.setLeftMargin(container, readDimen(R.dimen.conversation_group_left_gutter));
+        } else if (current.isOutgoing()) {
+            ViewUtil.setLeftMargin(container, readDimen(R.dimen.conversation_individual_left_gutter));
+        }
+    }
+
+    private void setFooter(@NonNull DcMsg current, @NonNull Locale locale) {
+        ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+        footer.setVisibility(GONE);
+        if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
+
+        ConversationItemFooter activeFooter = getActiveFooter(current);
+        activeFooter.setVisibility(VISIBLE);
+        activeFooter.setMessageRecord(current, locale);
+    }
+
+    private ConversationItemFooter getActiveFooter(@NonNull DcMsg messageRecord) {
+        if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
+            return mediaThumbnailStub.get().getFooter();
+        } else {
+            return footer;
+        }
+    }
+
+    private int readDimen(@DimenRes int dimenId) {
+        return context.getResources().getDimensionPixelOffset(dimenId);
+    }
+
+    private boolean shouldInterceptClicks(DcMsg messageRecord) {
+        return batchSelected.isEmpty() && (messageRecord.isFailed());
+    }
+
+    private void setGroupMessageStatus() {
+        if (messageRecord.isForwarded()) {
+            this.groupSender.setText(context.getString(R.string.forwarded_message));
+            this.groupSender.setTextColor(forwardedTitleColor);
+        } else if (groupThread && !messageRecord.isOutgoing() && dcContact != null) {
+            this.groupSender.setText(dcContact.getDisplayName());
+
+            int rgb = dcContact.getColor();
+            int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
+            this.groupSender.setTextColor(argb);
+        }
+    }
+
+    private void setAuthor(@NonNull DcMsg current, boolean isGroupThread) {
+        int groupSenderHolderVisibility = GONE;
+        if (isGroupThread && !current.isOutgoing()) {
+            if (contactPhotoHolder != null) {
+                contactPhotoHolder.setVisibility(VISIBLE);
+            }
+            groupSenderHolderVisibility = VISIBLE;
+            contactPhoto.setVisibility(VISIBLE);
+        } else {
+            if (contactPhotoHolder != null) {
+                contactPhotoHolder.setVisibility(GONE);
+            }
+        }
+
+        if (current.isForwarded()) {
+            groupSenderHolderVisibility = VISIBLE;
+        }
+
+        groupSenderHolder.setVisibility(groupSenderHolderVisibility);
+
+        boolean collapse = false;
+        if (groupSenderHolderVisibility == VISIBLE && current.getType() == DcMsg.DC_MSG_TEXT) {
+            collapse = true;
+        }
+
+        int spacingTop = collapse ? 0 /*2dp border come from the senderHolder*/ : readDimen(context, R.dimen.message_bubble_top_padding);
+        ViewUtil.setPaddingTop(bodyText, spacingTop);
+    }
+
+    private void setMessageShape(@NonNull DcMsg current) {
+        int background;
+        background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
+                : R.drawable.message_bubble_background_received_alone;
+        bodyBubble.setBackgroundResource(background);
+    }
+
+    private void setMessageSpacing(@NonNull Context context) {
+        int spacingTop = readDimen(context, R.dimen.conversation_vertical_message_spacing_collapse);
+        int spacingBottom = spacingTop;
+
+        ViewUtil.setPaddingTop(this, spacingTop);
+        ViewUtil.setPaddingBottom(this, spacingBottom);
+    }
+
+    private int readDimen(@NonNull Context context, @DimenRes int dimenId) {
+        return context.getResources().getDimensionPixelOffset(dimenId);
+    }
+
+    /// Event handlers
+
+    private void handleDeadDropClick() {
+        new AlertDialog.Builder(context)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    int chatId = dcContext.createChatByMsgId(messageRecord.getId());
+                    if (chatId != 0) {
+                        Intent intent = new Intent(context, ConversationActivity.class);
+                        intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+                        context.startActivity(intent);
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
+                    dcContext.blockContact(messageRecord.getFromId(), 1);
+                })
+                .setMessage(context.getString(R.string.ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
+                .show();
+    }
+
+    private class ThumbnailClickListener implements SlideClickListener {
+        public void onClick(final View v, final Slide slide) {
+            if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
+                handleDeadDropClick();
+            } else if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
+                performClick();
+            } else if (MediaPreviewActivity.isContentTypeSupported(slide.getContentType()) && slide.getUri() != null) {
+                Intent intent = new Intent(context, MediaPreviewActivity.class);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.putExtra(MediaPreviewActivity.DC_MSG_ID, slide.getDcMsgId());
+                intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, conversationRecipient.getAddress());
+                intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, messageRecord.isOutgoing());
+                intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, false);
+
+                context.startActivity(intent);
+            } else if (slide.getUri() != null) {
+                dcContext.openForViewOrShare(context, slide.getDcMsgId(), Intent.ACTION_VIEW);
+            }
+        }
+    }
+
+    private class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
+
+        @Override
+        public boolean onLongClick(View v) {
+            if (bodyText.hasSelection()) {
+                return false;
+            }
+            performLongClick();
+            return true;
+        }
+
+        @Override
+        public void onClick(View v) {
+            performClick();
+        }
+    }
+
+    private class ClickListener implements View.OnClickListener {
+        private OnClickListener parent;
+
+        ClickListener(@Nullable OnClickListener parent) {
+            this.parent = parent;
+        }
+
+        public void onClick(View v) {
+            if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
+                handleDeadDropClick();
+            } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
+                parent.onClick(v);
+            }
+        }
+    }
 }

@@ -17,7 +17,7 @@
 package org.thoughtcrime.securesms.database;
 
 public class AttachmentDatabase {
-  public static final int TRANSFER_PROGRESS_DONE    = 0;
-  public static final int TRANSFER_PROGRESS_STARTED = 1;
-  public static final int TRANSFER_PROGRESS_FAILED  = 3;
+    public static final int TRANSFER_PROGRESS_DONE = 0;
+    public static final int TRANSFER_PROGRESS_STARTED = 1;
+    public static final int TRANSFER_PROGRESS_FAILED = 3;
 }

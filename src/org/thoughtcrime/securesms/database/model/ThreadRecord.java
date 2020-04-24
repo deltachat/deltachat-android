@@ -21,6 +21,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
@@ -33,92 +34,92 @@ import org.thoughtcrime.securesms.recipients.Recipient;
  * The message record model which represents thread heading messages.
  *
  * @author Moxie Marlinspike
- *
  */
 public class ThreadRecord {
 
-  protected final Context context;
+    protected final Context context;
 
-  private final Recipient  recipient;
-  private final long       dateReceived;
-  private final long       threadId;
-  private final String     body;
+    private final Recipient recipient;
+    private final long dateReceived;
+    private final long threadId;
+    private final String body;
 
-  private           final int     unreadCount;
-  private           final int     visibility;
-  private           final boolean verified;
-  private           final boolean isSendingLocations;
-  private @Nullable final DcLot   dcSummary;
+    private final int unreadCount;
+    private final int visibility;
+    private final boolean verified;
+    private final boolean isSendingLocations;
+    private @Nullable
+    final DcLot dcSummary;
 
-  public ThreadRecord(@NonNull Context context, @NonNull String body,
-                      @NonNull Recipient recipient, long dateReceived, int unreadCount,
-                      long threadId,
-                      int visibility,
-                      boolean verified,
-                      boolean isSendingLocations,
-                      @Nullable DcLot dcSummary)
-  {
-    this.context              = context.getApplicationContext();
-    this.threadId             = threadId;
-    this.recipient            = recipient;
-    this.dateReceived         = dateReceived;
-    this.body                 = body;
-    this.unreadCount      = unreadCount;
-    this.visibility       = visibility;
-    this.verified         = verified;
-    this.isSendingLocations = isSendingLocations;
-    this.dcSummary        = dcSummary;
-  }
-
-  public @NonNull String getBody() {
-    return body == null ? "" : body;
-  }
-
-  public Recipient getRecipient() {
-    return recipient;
-  }
-
-  public long getDateReceived() {
-    return dateReceived;
-  }
-
-  public long getThreadId() {
-    return threadId;
-  }
-
-  public SpannableString getDisplayBody() {
-    if(dcSummary!=null && dcSummary.getText1Meaning()==DcLot.DC_TEXT1_DRAFT) {
-      String draftText = dcSummary.getText1() + ":";
-      return emphasisAdded(draftText + " " + dcSummary.getText2(), 0, draftText.length());
-    } else {
-      return new SpannableString(getBody());
+    public ThreadRecord(@NonNull Context context, @NonNull String body,
+                        @NonNull Recipient recipient, long dateReceived, int unreadCount,
+                        long threadId,
+                        int visibility,
+                        boolean verified,
+                        boolean isSendingLocations,
+                        @Nullable DcLot dcSummary) {
+        this.context = context.getApplicationContext();
+        this.threadId = threadId;
+        this.recipient = recipient;
+        this.dateReceived = dateReceived;
+        this.body = body;
+        this.unreadCount = unreadCount;
+        this.visibility = visibility;
+        this.verified = verified;
+        this.isSendingLocations = isSendingLocations;
+        this.dcSummary = dcSummary;
     }
-  }
 
-  private SpannableString emphasisAdded(String sequence, int start, int end) {
-    SpannableString spannable = new SpannableString(sequence);
-    spannable.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC),
-                      start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-    return spannable;
-  }
+    public @NonNull
+    String getBody() {
+        return body == null ? "" : body;
+    }
 
-  public int getUnreadCount() {
-    return unreadCount;
-  }
+    public Recipient getRecipient() {
+        return recipient;
+    }
 
-  public long getDate() {
-    return getDateReceived();
-  }
+    public long getDateReceived() {
+        return dateReceived;
+    }
 
-  public int getVisibility() {
-    return visibility;
-  }
+    public long getThreadId() {
+        return threadId;
+    }
 
-  public boolean isVerified() {
-    return verified;
-  }
+    public SpannableString getDisplayBody() {
+        if (dcSummary != null && dcSummary.getText1Meaning() == DcLot.DC_TEXT1_DRAFT) {
+            String draftText = dcSummary.getText1() + ":";
+            return emphasisAdded(draftText + " " + dcSummary.getText2(), 0, draftText.length());
+        } else {
+            return new SpannableString(getBody());
+        }
+    }
 
-  public boolean isSendingLocations() {
-    return  isSendingLocations;
-  }
+    private SpannableString emphasisAdded(String sequence, int start, int end) {
+        SpannableString spannable = new SpannableString(sequence);
+        spannable.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC),
+                start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannable;
+    }
+
+    public int getUnreadCount() {
+        return unreadCount;
+    }
+
+    public long getDate() {
+        return getDateReceived();
+    }
+
+    public int getVisibility() {
+        return visibility;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public boolean isSendingLocations() {
+        return isSendingLocations;
+    }
 }

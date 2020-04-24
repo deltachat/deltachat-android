@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.constraintlayout.widget.Group;
 import com.b44t.messenger.DcProvider;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 
@@ -64,7 +66,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         PORT,
     }
 
-    private final DynamicTheme dynamicTheme    = new DynamicTheme();
+    private final DynamicTheme dynamicTheme = new DynamicTheme();
 
     private TextInputEditText emailInput;
     private TextInputEditText passwordInput;
@@ -72,7 +74,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private View providerLayout;
     private TextView providerHint;
     private TextView providerLink;
-    private @Nullable DcProvider provider;
+    private @Nullable
+    DcProvider provider;
 
     private Group advancedGroup;
     private ImageView advancedIcon;
@@ -123,11 +126,17 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         emailInput.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
             @Override
-            public void afterTextChanged(Editable s) { maybeCleanProviderInfo(); }
+            public void afterTextChanged(Editable s) {
+                maybeCleanProviderInfo();
+            }
         });
         emailInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.EMAIL));
         imapServerInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
@@ -149,7 +158,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
             String email = DcHelper.get(this, CONFIG_ADDRESS);
             emailInput.setText(email);
-            if(!TextUtils.isEmpty(email)) {
+            if (!TextUtils.isEmpty(email)) {
                 emailInput.setSelection(email.length(), email.length());
             }
 
@@ -167,19 +176,19 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             int serverFlags = DcHelper.getInt(this, "server_flags", 0);
 
             int sel = 0;
-            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_SSL)!=0) sel = 1;
-            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_STARTTLS)!=0) sel = 2;
-            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_PLAIN)!=0) sel = 3;
+            if ((serverFlags & DcContext.DC_LP_IMAP_SOCKET_SSL) != 0) sel = 1;
+            if ((serverFlags & DcContext.DC_LP_IMAP_SOCKET_STARTTLS) != 0) sel = 2;
+            if ((serverFlags & DcContext.DC_LP_IMAP_SOCKET_PLAIN) != 0) sel = 3;
             imapSecurity.setSelection(sel);
 
             sel = 0;
-            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_SSL)!=0) sel = 1;
-            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_STARTTLS)!=0) sel = 2;
-            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_PLAIN)!=0) sel = 3;
+            if ((serverFlags & DcContext.DC_LP_SMTP_SOCKET_SSL) != 0) sel = 1;
+            if ((serverFlags & DcContext.DC_LP_SMTP_SOCKET_STARTTLS) != 0) sel = 2;
+            if ((serverFlags & DcContext.DC_LP_SMTP_SOCKET_PLAIN) != 0) sel = 3;
             smtpSecurity.setSelection(sel);
 
             sel = 0;
-            if((serverFlags&DcContext.DC_LP_AUTH_OAUTH2)!=0) sel = 1;
+            if ((serverFlags & DcContext.DC_LP_AUTH_OAUTH2) != 0) sel = 1;
             authMethod.setSelection(sel);
 
             int certCheckFlags = DcHelper.getInt(this, "imap_certificate_checks");
@@ -219,7 +228,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
                 @Override
                 public void onSuccess(Boolean oauth2started) {
-                    if(!oauth2started) {
+                    if (!oauth2started) {
                         updateProviderInfo();
                         onLogin();
                     }
@@ -300,34 +309,33 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         SettableFuture<Boolean> oauth2started = new SettableFuture<>();
 
         String email = emailInput.getText().toString();
-        if (!TextUtils.isEmpty(email) ) {
+        if (!TextUtils.isEmpty(email)) {
 
             // the redirect-uri is also used as intent-filter in the manifest
             // and should be whitelisted by the supported oauth2 services
-            String redirectUrl = "chat.delta:/"+BuildConfig.APPLICATION_ID+"/auth";
+            String redirectUrl = "chat.delta:/" + BuildConfig.APPLICATION_ID + "/auth";
 
             String oauth2url = DcHelper.getContext(this).getOauth2Url(email, redirectUrl);
             if (!TextUtils.isEmpty(oauth2url)) {
                 new AlertDialog.Builder(this)
-                    .setTitle(R.string.login_info_oauth2_title)
-                    .setMessage(R.string.login_info_oauth2_text)
-                    .setNegativeButton(R.string.cancel, (dialog, which)->{
-                        oauth2DeclinedByUser = true;
-                        oauth2started.set(false);
-                    })
-                    .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
-                        // pass control to browser, we'll be back in business at (**)
-                        oauth2Requested = System.currentTimeMillis();
-                        IntentUtils.showBrowserIntent(this, oauth2url);
-                        oauth2started.set(true);
-                    })
-                    .setCancelable(false)
-                    .show();
+                        .setTitle(R.string.login_info_oauth2_title)
+                        .setMessage(R.string.login_info_oauth2_text)
+                        .setNegativeButton(R.string.cancel, (dialog, which) -> {
+                            oauth2DeclinedByUser = true;
+                            oauth2started.set(false);
+                        })
+                        .setPositiveButton(R.string.perm_continue, (dialog, which) -> {
+                            // pass control to browser, we'll be back in business at (**)
+                            oauth2Requested = System.currentTimeMillis();
+                            IntentUtils.showBrowserIntent(this, oauth2url);
+                            oauth2started.set(true);
+                        })
+                        .setCancelable(false)
+                        .show();
             } else {
                 oauth2started.set(false);
             }
-        }
-        else {
+        } else {
             oauth2started.set(false);
         }
 
@@ -336,7 +344,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private void updateProviderInfo() {
         provider = getContext(this).getProviderFromEmail(emailInput.getText().toString());
-        if (provider!=null) {
+        if (provider != null) {
             Resources res = getResources();
             providerHint.setText(provider.getBeforeLoginHint());
             switch (provider.getStatus()) {
@@ -364,10 +372,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void maybeCleanProviderInfo() {
-        if (provider!=null && providerLayout.getVisibility()==View.VISIBLE) {
+        if (provider != null && providerLayout.getVisibility() == View.VISIBLE) {
             DcProvider newProvider = getContext(this).getProviderFromEmail(emailInput.getText().toString());
             if (newProvider == null
-             || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
+                    || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
                 provider = null;
                 providerLayout.setVisibility(View.GONE);
             }
@@ -375,9 +383,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void onProviderLink() {
-        if (provider!=null) {
+        if (provider != null) {
             String url = provider.getOverviewPage();
-            if(!url.isEmpty()) {
+            if (!url.isEmpty()) {
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 } catch (ActivityNotFoundException e) {
@@ -393,17 +401,17 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if(Intent.ACTION_VIEW.equals(intent.getAction())) {
+        if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             Uri uri = intent.getData();
             String path = uri.getPath();
-            if(!(path.startsWith("/"+BuildConfig.APPLICATION_ID)||path.startsWith("/auth"))
-             || System.currentTimeMillis()-oauth2Requested > 3*60*60*1000) {
+            if (!(path.startsWith("/" + BuildConfig.APPLICATION_ID) || path.startsWith("/auth"))
+                    || System.currentTimeMillis() - oauth2Requested > 3 * 60 * 60 * 1000) {
                 return; // timeout after some hours or a request belonging to a bad path.
             }
 
             // back in business after we passed control to the browser in (**)
             String code = uri.getQueryParameter("code");
-            if(!TextUtils.isEmpty(code)) {
+            if (!TextUtils.isEmpty(code)) {
                 passwordInput.setText(code);
                 authMethod.setSelection(1/*OAuth2*/);
                 onLogin();
@@ -497,13 +505,19 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         setConfig(R.id.smtp_password_text, "send_pw", false);
 
         int server_flags = 0;
-        if(imapSecurity.getSelectedItemPosition()==1) server_flags |= DcContext.DC_LP_IMAP_SOCKET_SSL;
-        if(imapSecurity.getSelectedItemPosition()==2) server_flags |= DcContext.DC_LP_IMAP_SOCKET_STARTTLS;
-        if(imapSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_IMAP_SOCKET_PLAIN;
-        if(smtpSecurity.getSelectedItemPosition()==1) server_flags |= DcContext.DC_LP_SMTP_SOCKET_SSL;
-        if(smtpSecurity.getSelectedItemPosition()==2) server_flags |= DcContext.DC_LP_SMTP_SOCKET_STARTTLS;
-        if(smtpSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_SMTP_SOCKET_PLAIN;
-        if(authMethod.getSelectedItemPosition()==1)   server_flags |= DcContext.DC_LP_AUTH_OAUTH2;
+        if (imapSecurity.getSelectedItemPosition() == 1)
+            server_flags |= DcContext.DC_LP_IMAP_SOCKET_SSL;
+        if (imapSecurity.getSelectedItemPosition() == 2)
+            server_flags |= DcContext.DC_LP_IMAP_SOCKET_STARTTLS;
+        if (imapSecurity.getSelectedItemPosition() == 3)
+            server_flags |= DcContext.DC_LP_IMAP_SOCKET_PLAIN;
+        if (smtpSecurity.getSelectedItemPosition() == 1)
+            server_flags |= DcContext.DC_LP_SMTP_SOCKET_SSL;
+        if (smtpSecurity.getSelectedItemPosition() == 2)
+            server_flags |= DcContext.DC_LP_SMTP_SOCKET_STARTTLS;
+        if (smtpSecurity.getSelectedItemPosition() == 3)
+            server_flags |= DcContext.DC_LP_SMTP_SOCKET_PLAIN;
+        if (authMethod.getSelectedItemPosition() == 1) server_flags |= DcContext.DC_LP_AUTH_OAUTH2;
         DcHelper.getContext(this).setConfigInt("server_flags", server_flags);
 
         DcHelper.getContext(this).setConfigInt("smtp_certificate_checks", certCheck.getSelectedItemPosition());
@@ -518,10 +532,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {
         TextInputEditText view = findViewById(viewId);
         String value = view.getText().toString();
-        if(doTrim) {
+        if (doTrim) {
             value = value.trim();
         }
-        DcHelper.getContext(this).setConfig(configTarget, value.isEmpty()? null : value);
+        DcHelper.getContext(this).setConfig(configTarget, value.isEmpty() ? null : value);
     }
 
     private void stopLoginProcess() {
@@ -530,10 +544,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
-        if (eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+        if (eventId == DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
             ApplicationDcContext dcContext = DcHelper.getContext(this);
-            long progress = (Long)data1;
-            if (progress==0/*error/aborted*/) {
+            long progress = (Long) data1;
+            if (progress == 0/*error/aborted*/) {
                 dcContext.endCaptureNextError();
                 progressDialog.dismiss();
                 if (dcContext.hasCapturedError()) {
@@ -545,16 +559,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     try {
                         //noinspection ConstantConditions
                         Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
-                    } catch(NullPointerException e) {
+                    } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
                 }
-            }
-            else if (progress<1000/*progress in permille*/) {
-                int percent = (int)progress / 10;
-                progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
-            }
-            else if (progress==1000/*done*/) {
+            } else if (progress < 1000/*progress in permille*/) {
+                int percent = (int) progress / 10;
+                progressDialog.setMessage(getResources().getString(R.string.one_moment) + String.format(" %d%%", percent));
+            } else if (progress == 1000/*done*/) {
                 dcContext.endCaptureNextError();
                 progressDialog.dismiss();
                 Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);

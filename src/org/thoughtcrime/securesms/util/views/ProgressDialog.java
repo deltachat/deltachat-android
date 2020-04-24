@@ -3,9 +3,11 @@ package org.thoughtcrime.securesms.util.views;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AlertDialog;
+
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;

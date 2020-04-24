@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.contacts.avatars;
 
 import android.content.Context;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -15,8 +16,10 @@ import java.security.MessageDigest;
 
 public class MyProfileContactPhoto implements ContactPhoto {
 
-    private final @NonNull String address;
-    private final @NonNull String avatarObject;
+    private final @NonNull
+    String address;
+    private final @NonNull
+    String avatarObject;
 
     public MyProfileContactPhoto(@NonNull String address, @NonNull String avatarObject) {
         this.address = address;

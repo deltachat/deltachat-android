@@ -5,8 +5,10 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+
 import android.view.View;
 import android.widget.Button;
 
@@ -88,11 +90,10 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                                 .setMessage(String.format(getResources().getString(R.string.import_backup_ask), backupFile))
                                 .setNegativeButton(android.R.string.cancel, null)
                                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                                        startImport(backupFile);
+                                    startImport(backupFile);
                                 })
                                 .show();
-                    }
-                    else {
+                    } else {
                         new AlertDialog.Builder(this)
                                 .setTitle(R.string.import_backup_title)
                                 .setMessage(String.format(getResources().getString(R.string.import_backup_no_backup_found), imexDir.getAbsolutePath()))
@@ -103,9 +104,8 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 .execute();
     }
 
-    private void startImport(final String backupFile)
-    {
-        if( progressDialog!=null ) {
+    private void startImport(final String backupFile) {
+        if (progressDialog != null) {
             progressDialog.dismiss();
             progressDialog = null;
         }
@@ -123,9 +123,8 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         dcContext.imex(DcContext.DC_IMEX_IMPORT_BACKUP, backupFile);
     }
 
-    private void startQrAccountCreation(String qrCode)
-    {
-        if (progressDialog!=null) {
+    private void startQrAccountCreation(String qrCode) {
+        if (progressDialog != null) {
             progressDialog.dismiss();
             progressDialog = null;
         }
@@ -163,7 +162,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     private void progressUpdate(int progress) {
         int percent = progress / 10;
-        progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+        progressDialog.setMessage(getResources().getString(R.string.one_moment) + String.format(" %d%%", percent));
     }
 
     private void progressSuccess(boolean enterDisplayname) {
@@ -183,33 +182,27 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
-        if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {
-            long progress = (Long)data1;
-            if (progress==0/*error/aborted*/) {
+        if (eventId == DcContext.DC_EVENT_IMEX_PROGRESS) {
+            long progress = (Long) data1;
+            if (progress == 0/*error/aborted*/) {
                 progressError();
-            }
-            else if (progress<1000/*progress in permille*/) {
-                progressUpdate((int)progress);
-            }
-            else if (progress==1000/*done*/) {
+            } else if (progress < 1000/*progress in permille*/) {
+                progressUpdate((int) progress);
+            } else if (progress == 1000/*done*/) {
                 progressSuccess(false);
             }
-        }
-        else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            long progress = (Long)data1;
-            if (progress==1000/*done*/) {
+        } else if (manualConfigure && eventId == DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+            long progress = (Long) data1;
+            if (progress == 1000/*done*/) {
                 finish(); // remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
             }
-        }
-        else if (!manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            long progress = (Long)data1;
-            if (progress==0/*error/aborted*/) {
+        } else if (!manualConfigure && eventId == DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+            long progress = (Long) data1;
+            if (progress == 0/*error/aborted*/) {
                 progressError();
-            }
-            else if (progress<1000/*progress in permille*/) {
-                progressUpdate((int)progress);
-            }
-            else if (progress==1000/*done*/) {
+            } else if (progress < 1000/*progress in permille*/) {
+                progressUpdate((int) progress);
+            } else if (progress == 1000/*done*/) {
                 progressSuccess(true);
             }
         }
@@ -218,7 +211,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==IntentIntegrator.REQUEST_CODE) {
+        if (requestCode == IntentIntegrator.REQUEST_CODE) {
             IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
             if (scanResult == null || scanResult.getFormatName() == null) {
                 return; // aborted

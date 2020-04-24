@@ -4,8 +4,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import android.util.Log;
 
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -21,136 +23,139 @@ import static org.thoughtcrime.securesms.notifications.MessageNotifierCompat.SUM
 
 public class NotificationState {
 
-  private final LinkedList<NotificationItem> notifications = new LinkedList<>();
-  private final LinkedHashSet<Integer>       chats         = new LinkedHashSet<>();
+    private final LinkedList<NotificationItem> notifications = new LinkedList<>();
+    private final LinkedHashSet<Integer> chats = new LinkedHashSet<>();
 
-  private int notificationCount = 0;
+    private int notificationCount = 0;
 
-  NotificationState() {}
-
-  NotificationState(@NonNull List<NotificationItem> items) {
-    for (NotificationItem item : items) {
-      addNotification(item);
-    }
-  }
-
-  public void reset() {
-    notificationCount = 0;
-    notifications.clear();
-    chats.clear();
-  }
-
-  void addNotification(NotificationItem item) {
-    notifications.addFirst(item);
-
-    if (chats.contains(item.getChatId())) {
-      chats.remove(item.getChatId());
+    NotificationState() {
     }
 
-    chats.add(item.getChatId());
-    notificationCount++;
-  }
-
-  @Nullable Uri getRingtone(Context context) {
-    if (!notifications.isEmpty()) {
-      Recipient recipient = notifications.iterator().next().getRecipient();
-      if (recipient.getAddress().isDcChat()) {
-        return Prefs.getChatRingtone(context, recipient.getAddress().getDcChatId());
-      }
+    NotificationState(@NonNull List<NotificationItem> items) {
+        for (NotificationItem item : items) {
+            addNotification(item);
+        }
     }
 
-    return null;
-  }
-
-  VibrateState getVibrate(Context context) {
-    if (!notifications.isEmpty()) {
-      Recipient recipient = notifications.iterator().next().getRecipient();
-
-      if (recipient.getAddress().isDcChat()) {
-        return Prefs.getChatVibrate(context, recipient.getAddress().getDcChatId());
-      }
+    public void reset() {
+        notificationCount = 0;
+        notifications.clear();
+        chats.clear();
     }
 
-    return VibrateState.DEFAULT;
-  }
+    void addNotification(NotificationItem item) {
+        notifications.addFirst(item);
 
-  boolean hasMultipleChats() {
-    return chats.size() > 1;
-  }
+        if (chats.contains(item.getChatId())) {
+            chats.remove(item.getChatId());
+        }
 
-  public LinkedHashSet<Integer> getChats() {
-    return chats;
-  }
-
-  int getChatCount() {
-    return chats.size();
-  }
-
-  int getMessageCount() {
-    return notificationCount;
-  }
-
-  public List<NotificationItem> getNotifications() {
-    return notifications;
-  }
-
-  List<NotificationItem> getNotificationsForChat(int chatId) {
-    LinkedList<NotificationItem> list = new LinkedList<>();
-
-    for (NotificationItem item : notifications) {
-      if (item.getChatId() == chatId) list.addFirst(item);
+        chats.add(item.getChatId());
+        notificationCount++;
     }
 
-    return list;
-  }
+    @Nullable
+    Uri getRingtone(Context context) {
+        if (!notifications.isEmpty()) {
+            Recipient recipient = notifications.iterator().next().getRecipient();
+            if (recipient.getAddress().isDcChat()) {
+                return Prefs.getChatRingtone(context, recipient.getAddress().getDcChatId());
+            }
+        }
 
-   List<NotificationItem> removeNotificationsForChat(int chatId) {
-    LinkedList<NotificationItem> removedItems = new LinkedList<>();
-    chats.remove(chatId);
-    for (Iterator<NotificationItem> it = notifications.iterator(); it.hasNext();) {
-      NotificationItem item = it.next();
-      if (item.getChatId() == chatId) {
-        removedItems.add(item);
-        it.remove();
-      }
-    }
-    notificationCount -= removedItems.size();
-    return removedItems;
-  }
-
-  PendingIntent getMarkAsReadIntent(Context context, int chatId,  int notificationId) {
-    int    index       = 0;
-    int[] chatArray;
-    if (notificationId == SUMMARY_NOTIFICATION_ID) {
-      chatArray = new int[chats.size()];
-      for (int chat : chats) {
-        Log.w("NotificationState", "Added chat: " + chat);
-        chatArray[index++] = chat;
-      }
-    } else {
-      chatArray = new int[]{chatId};
+        return null;
     }
 
-    Intent intent = new Intent(MarkReadReceiver.CLEAR_ACTION);
-    intent.setClass(context, MarkReadReceiver.class);
-    intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
-    intent.putExtra(MarkReadReceiver.CHAT_IDS_EXTRA, chatArray);
-    intent.putExtra(MarkReadReceiver.NOTIFICATION_ID_EXTRA, notificationId);
+    VibrateState getVibrate(Context context) {
+        if (!notifications.isEmpty()) {
+            Recipient recipient = notifications.iterator().next().getRecipient();
 
-    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-  }
+            if (recipient.getAddress().isDcChat()) {
+                return Prefs.getChatVibrate(context, recipient.getAddress().getDcChatId());
+            }
+        }
 
-  PendingIntent getRemoteReplyIntent(Context context, Recipient recipient) {
-    if (chats.size() != 1) throw new AssertionError("We only support replies to single chat notifications!");
+        return VibrateState.DEFAULT;
+    }
 
-    Intent intent = new Intent(RemoteReplyReceiver.REPLY_ACTION);
-    intent.setClass(context, RemoteReplyReceiver.class);
-    intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
-    intent.putExtra(RemoteReplyReceiver.ADDRESS_EXTRA, recipient.getAddress());
-    intent.setPackage(context.getPackageName());
+    boolean hasMultipleChats() {
+        return chats.size() > 1;
+    }
 
-    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-  }
+    public LinkedHashSet<Integer> getChats() {
+        return chats;
+    }
+
+    int getChatCount() {
+        return chats.size();
+    }
+
+    int getMessageCount() {
+        return notificationCount;
+    }
+
+    public List<NotificationItem> getNotifications() {
+        return notifications;
+    }
+
+    List<NotificationItem> getNotificationsForChat(int chatId) {
+        LinkedList<NotificationItem> list = new LinkedList<>();
+
+        for (NotificationItem item : notifications) {
+            if (item.getChatId() == chatId) list.addFirst(item);
+        }
+
+        return list;
+    }
+
+    List<NotificationItem> removeNotificationsForChat(int chatId) {
+        LinkedList<NotificationItem> removedItems = new LinkedList<>();
+        chats.remove(chatId);
+        for (Iterator<NotificationItem> it = notifications.iterator(); it.hasNext(); ) {
+            NotificationItem item = it.next();
+            if (item.getChatId() == chatId) {
+                removedItems.add(item);
+                it.remove();
+            }
+        }
+        notificationCount -= removedItems.size();
+        return removedItems;
+    }
+
+    PendingIntent getMarkAsReadIntent(Context context, int chatId, int notificationId) {
+        int index = 0;
+        int[] chatArray;
+        if (notificationId == SUMMARY_NOTIFICATION_ID) {
+            chatArray = new int[chats.size()];
+            for (int chat : chats) {
+                Log.w("NotificationState", "Added chat: " + chat);
+                chatArray[index++] = chat;
+            }
+        } else {
+            chatArray = new int[]{chatId};
+        }
+
+        Intent intent = new Intent(MarkReadReceiver.CLEAR_ACTION);
+        intent.setClass(context, MarkReadReceiver.class);
+        intent.setData((Uri.parse("custom://" + System.currentTimeMillis())));
+        intent.putExtra(MarkReadReceiver.CHAT_IDS_EXTRA, chatArray);
+        intent.putExtra(MarkReadReceiver.NOTIFICATION_ID_EXTRA, notificationId);
+
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    PendingIntent getRemoteReplyIntent(Context context, Recipient recipient) {
+        if (chats.size() != 1)
+            throw new AssertionError("We only support replies to single chat notifications!");
+
+        Intent intent = new Intent(RemoteReplyReceiver.REPLY_ACTION);
+        intent.setClass(context, RemoteReplyReceiver.class);
+        intent.setData((Uri.parse("custom://" + System.currentTimeMillis())));
+        intent.putExtra(RemoteReplyReceiver.ADDRESS_EXTRA, recipient.getAddress());
+        intent.setPackage(context.getPackageName());
+
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
 
 
 }

@@ -93,6 +93,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
 
         /**
          * filter for lastPosition beginning from startTimestamp to now
+         *
          * @param startTimestamp begin of time frame
          */
         void onFilterLastPosition(long startTimestamp);
@@ -114,8 +115,8 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
                     listener.onFilterLastPosition(minTimeStamp);
                 }
             } else if (minValue == maxValue) {
-                    // filter for time of event with delta before and after
-                    listener.onTimestampChanged(minTimeStamp - (long) DEFAULT_DELTA, minTimeStamp + (long) DEFAULT_DELTA);
+                // filter for time of event with delta before and after
+                listener.onTimestampChanged(minTimeStamp - (long) DEFAULT_DELTA, minTimeStamp + (long) DEFAULT_DELTA);
             } else {
                 //filter for time span
                 listener.onTimestampChanged(minTimeStamp, getTimestampForValue(maxValue));
@@ -142,7 +143,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
     }
 
     private long getTimestampForValue(int value) {
-        return  System.currentTimeMillis() - ((timeFrame / getCount()) * (getCount() - value) * 1000);
+        return System.currentTimeMillis() - ((timeFrame / getCount()) * (getCount() - value) * 1000);
     }
 
     public String getDeltaInTime(Context context) {
@@ -151,6 +152,7 @@ public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.
 
     /**
      * When filtering for a point in time a delta time span is added to improve the search results.
+     *
      * @return normalized delta
      */
     private float getDelta() {

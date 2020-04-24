@@ -1,16 +1,16 @@
 /**
  * Copyright (C) 2011 Whisper Systems
- *
+ * <p>
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
+ * <p>
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *
+ * <p>
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -42,46 +42,46 @@ import java.util.Set;
 
 public class ContactAccessor {
 
-  private static final int CONTACT_CURSOR_NAME = 0;
+    private static final int CONTACT_CURSOR_NAME = 0;
 
-  private static final int CONTACT_CURSOR_MAIL = 1;
+    private static final int CONTACT_CURSOR_MAIL = 1;
 
-  private static final int CONTACT_CURSOR_CONTACT_ID = 2;
+    private static final int CONTACT_CURSOR_CONTACT_ID = 2;
 
-  private static final ContactAccessor instance = new ContactAccessor();
+    private static final ContactAccessor instance = new ContactAccessor();
 
-  public static synchronized ContactAccessor getInstance() {
-    return instance;
-  }
-
-  public Cursor getAllSystemContacts(Context context) {
-    String[] projection = {ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Email.ADDRESS, ContactsContract.Data.CONTACT_ID};
-    return context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projection, null, null, null);
-  }
-
-  public String getAllSystemContactsAsString(Context context) {
-    Cursor systemContactsCursor = getAllSystemContacts(context);
-    StringBuilder result = new StringBuilder();
-    List<String> mailList = new ArrayList<>();
-    Set<String> contactPhotoIdentifiers = new HashSet<>();
-    while (systemContactsCursor != null && systemContactsCursor.moveToNext()) {
-      String name = systemContactsCursor.getString(CONTACT_CURSOR_NAME);
-      String mail = systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
-      String contactId = systemContactsCursor.getString(CONTACT_CURSOR_CONTACT_ID);
-      if (contactId != null) {
-        String identifier = name + mail;
-        String hashedIdentifierAndId = Hash.sha256(identifier) + "|" + contactId;
-        contactPhotoIdentifiers.add(hashedIdentifierAndId);
-      }
-      if (mail != null && !mail.isEmpty() && !mailList.contains(mail)) {
-          mailList.add(mail);
-          if (name.isEmpty()) {
-            name = mail;
-          }
-          result.append(name).append("\n").append(mail).append("\n");
-      }
+    public static synchronized ContactAccessor getInstance() {
+        return instance;
     }
-    Prefs.setSystemContactPhotos(context, contactPhotoIdentifiers);
-    return result.toString();
-  }
+
+    public Cursor getAllSystemContacts(Context context) {
+        String[] projection = {ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Email.ADDRESS, ContactsContract.Data.CONTACT_ID};
+        return context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projection, null, null, null);
+    }
+
+    public String getAllSystemContactsAsString(Context context) {
+        Cursor systemContactsCursor = getAllSystemContacts(context);
+        StringBuilder result = new StringBuilder();
+        List<String> mailList = new ArrayList<>();
+        Set<String> contactPhotoIdentifiers = new HashSet<>();
+        while (systemContactsCursor != null && systemContactsCursor.moveToNext()) {
+            String name = systemContactsCursor.getString(CONTACT_CURSOR_NAME);
+            String mail = systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
+            String contactId = systemContactsCursor.getString(CONTACT_CURSOR_CONTACT_ID);
+            if (contactId != null) {
+                String identifier = name + mail;
+                String hashedIdentifierAndId = Hash.sha256(identifier) + "|" + contactId;
+                contactPhotoIdentifiers.add(hashedIdentifierAndId);
+            }
+            if (mail != null && !mail.isEmpty() && !mailList.contains(mail)) {
+                mailList.add(mail);
+                if (name.isEmpty()) {
+                    name = mail;
+                }
+                result.append(name).append("\n").append(mail).append("\n");
+            }
+        }
+        Prefs.setSystemContactPhotos(context, contactPhotoIdentifiers);
+        return result.toString();
+    }
 }

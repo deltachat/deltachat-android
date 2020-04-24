@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import androidx.core.app.RemoteInput;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -35,36 +36,36 @@ import org.thoughtcrime.securesms.database.Address;
  */
 public class RemoteReplyReceiver extends BroadcastReceiver {
 
-  public static final String TAG           = RemoteReplyReceiver.class.getSimpleName();
-  public static final String REPLY_ACTION  = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
-  public static final String ADDRESS_EXTRA = "address";
+    public static final String TAG = RemoteReplyReceiver.class.getSimpleName();
+    public static final String REPLY_ACTION = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
+    public static final String ADDRESS_EXTRA = "address";
 
-  @SuppressLint("StaticFieldLeak")
-  @Override
-  public void onReceive(final Context context, Intent intent) {
-    if (!REPLY_ACTION.equals(intent.getAction())) return;
-    Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
+    @SuppressLint("StaticFieldLeak")
+    @Override
+    public void onReceive(final Context context, Intent intent) {
+        if (!REPLY_ACTION.equals(intent.getAction())) return;
+        Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
 
-    if (remoteInput == null) return;
+        if (remoteInput == null) return;
 
-    final Address      address      = intent.getParcelableExtra(ADDRESS_EXTRA);
-    final CharSequence responseText = remoteInput.getCharSequence(MessageNotifierCompat.EXTRA_REMOTE_REPLY);
+        final Address address = intent.getParcelableExtra(ADDRESS_EXTRA);
+        final CharSequence responseText = remoteInput.getCharSequence(MessageNotifierCompat.EXTRA_REMOTE_REPLY);
 
-    if (responseText != null) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
+        if (responseText != null) {
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
 
-          if(address.isDcChat()) {
-            ApplicationDcContext dcContext = DcHelper.getContext(context);
-            dcContext.sendTextMsg(address.getDcChatId(), responseText.toString());
-            MessageNotifierCompat.removeNotifications(address.getDcChatId());
-          }
+                    if (address.isDcChat()) {
+                        ApplicationDcContext dcContext = DcHelper.getContext(context);
+                        dcContext.sendTextMsg(address.getDcChatId(), responseText.toString());
+                        MessageNotifierCompat.removeNotifications(address.getDcChatId());
+                    }
 
-          return null;
+                    return null;
+                }
+            }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
 
-  }
+    }
 }

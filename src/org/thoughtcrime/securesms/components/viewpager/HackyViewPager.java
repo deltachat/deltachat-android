@@ -2,7 +2,9 @@ package org.thoughtcrime.securesms.components.viewpager;
 
 
 import android.content.Context;
+
 import androidx.viewpager.widget.ViewPager;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -21,23 +23,23 @@ import android.view.MotionEvent;
  */
 public class HackyViewPager extends ViewPager {
 
-  private static final String TAG = HackyViewPager.class.getSimpleName();
+    private static final String TAG = HackyViewPager.class.getSimpleName();
 
-  public HackyViewPager(Context context) {
-    super(context);
-  }
-
-  public HackyViewPager(Context context, AttributeSet attrs) {
-    super(context, attrs);
-  }
-
-  @Override
-  public boolean onInterceptTouchEvent(MotionEvent ev) {
-    try {
-      return super.onInterceptTouchEvent(ev);
-    } catch (IllegalArgumentException e) {
-      Log.w(TAG, e);
-      return false;
+    public HackyViewPager(Context context) {
+        super(context);
     }
-  }
+
+    public HackyViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        try {
+            return super.onInterceptTouchEvent(ev);
+        } catch (IllegalArgumentException e) {
+            Log.w(TAG, e);
+            return false;
+        }
+    }
 }

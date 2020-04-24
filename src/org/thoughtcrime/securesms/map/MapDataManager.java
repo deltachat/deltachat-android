@@ -2,7 +2,9 @@ package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+
 import androidx.annotation.NonNull;
+
 import android.util.Log;
 
 import com.b44t.messenger.DcEventCenter;
@@ -359,16 +361,16 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void initInfoWindowLayer() {
         Expression iconOffset = switchCase(
-                toBool(get(LAST_LOCATION)), literal(new Float[] {-2f, -25f}),
-                literal(new Float[] {-2f, -20f}));
+                toBool(get(LAST_LOCATION)), literal(new Float[]{-2f, -25f}),
+                literal(new Float[]{-2f, -20f}));
         GeoJsonSource infoWindowSource = new GeoJsonSource(INFO_WINDOW_SRC);
         mapboxStyle.addSource(infoWindowSource);
         mapboxStyle.addLayer(new SymbolLayer(INFO_WINDOW_LAYER, INFO_WINDOW_SRC).withProperties(
                 iconImage(INFO_WINDOW_ID),
                 iconAnchor(ICON_ANCHOR_BOTTOM_LEFT),
-                     /* all info window and marker image to appear at the same time*/
+                /* all info window and marker image to appear at the same time*/
                 iconAllowOverlap(true),
-                    /* offset the info window to be above the marker */
+                /* offset the info window to be above the marker */
                 iconOffset(iconOffset)
         ));
     }
@@ -380,7 +382,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 switchCase(toBool(get(MARKER_SELECTED)), literal(1.75f), literal(1.25f));
         mapboxStyle.addLayerBelow(new SymbolLayer(LAST_POSITION_LAYER, LAST_POSITION_SOURCE).withProperties(
                 iconImage(get(LAST_POSITION_ICON)),
-                     /* all info window and marker image to appear at the same time*/
+                /* all info window and marker image to appear at the same time*/
                 iconAllowOverlap(true),
                 iconIgnorePlacement(true),
                 iconSize(markerSize),
@@ -392,9 +394,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         ).withFilter(filterProvider.getTimeFilter()), INFO_WINDOW_LAYER);
     }
 
-    @SuppressWarnings( {"MissingPermission"})
+    @SuppressWarnings({"MissingPermission"})
     private void initLocationComponent() {
-        if (! PermissionsManager.areLocationPermissionsGranted(context)) {
+        if (!PermissionsManager.areLocationPermissionsGranted(context)) {
             return;
         }
 
@@ -432,28 +434,28 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         Expression markerSize =
                 switchCase(
                         neq(length(get(MARKER_CHAR)), literal(0)),
-                            switchCase(toBool(get(MARKER_SELECTED)), literal(2.25f), literal(2.0f)),
+                        switchCase(toBool(get(MARKER_SELECTED)), literal(2.25f), literal(2.0f)),
                         neq(get(MESSAGE_ID), literal(0)),
-                            switchCase(toBool(get(MARKER_SELECTED)), literal(2.25f), literal(2.0f)),
+                        switchCase(toBool(get(MARKER_SELECTED)), literal(2.25f), literal(2.0f)),
                         switchCase(toBool(get(MARKER_SELECTED)), literal(1.1f), literal(0.7f)));
         Expression markerIcon = get(MARKER_ICON);
 
         mapboxStyle.addLayerBelow(new LineLayer(source.getLineLayer(), source.getLineSource())
-                .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
-                        lineJoin(Property.LINE_JOIN_ROUND),
-                        lineWidth(3f),
-                        lineOpacity(0.5f),
-                        lineColor(source.getColorArgb()),
-                        visibility(NONE)
-                )
-                .withFilter(filterProvider.getTimeFilter()),
+                        .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
+                                lineJoin(Property.LINE_JOIN_ROUND),
+                                lineWidth(3f),
+                                lineOpacity(0.5f),
+                                lineColor(source.getColorArgb()),
+                                visibility(NONE)
+                        )
+                        .withFilter(filterProvider.getTimeFilter()),
                 LAST_POSITION_LAYER);
 
 
         Expression textField = switchCase(eq(length(get(MARKER_CHAR)), 1), get(MARKER_CHAR),
                 get(POI_LONG_DESCRIPTION));
-        Float[] offset = new Float[] {0.0f, 1.25f};
-        Float[] zeroOffset = new Float[] {0.0f, 0.0f};
+        Float[] offset = new Float[]{0.0f, 1.25f};
+        Float[] zeroOffset = new Float[]{0.0f, 0.0f};
         Expression textOffset = switchCase(
                 has(POI_LONG_DESCRIPTION), literal(offset),
                 literal(zeroOffset));

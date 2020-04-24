@@ -1,7 +1,9 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
+
 import android.util.Log;
 
 import com.b44t.messenger.DcChatlist;
@@ -12,15 +14,15 @@ public class DcChatlistLoader extends AsyncLoader<DcChatlist> {
 
     private static final String TAG = DcChatlistLoader.class.getName();
 
-    private final int    listflags;
+    private final int listflags;
     private final String query;
-    private final int    queryId;
+    private final int queryId;
 
     public DcChatlistLoader(Context context, int listflags, String query, int queryId) {
         super(context);
         this.listflags = listflags;
-        this.query     = query;
-        this.queryId   = queryId;
+        this.query = query;
+        this.queryId = queryId;
     }
 
     @Override

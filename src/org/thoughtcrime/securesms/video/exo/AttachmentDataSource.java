@@ -15,41 +15,41 @@ import java.util.Map;
 
 public class AttachmentDataSource implements DataSource {
 
-  private final DefaultDataSource defaultDataSource;
+    private final DefaultDataSource defaultDataSource;
 
-  private DataSource dataSource;
+    private DataSource dataSource;
 
-  public AttachmentDataSource(DefaultDataSource defaultDataSource) {
-    this.defaultDataSource = defaultDataSource;
-  }
+    public AttachmentDataSource(DefaultDataSource defaultDataSource) {
+        this.defaultDataSource = defaultDataSource;
+    }
 
-  @Override
-  public void addTransferListener(TransferListener transferListener) {
-  }
+    @Override
+    public void addTransferListener(TransferListener transferListener) {
+    }
 
-  @Override
-  public long open(DataSpec dataSpec) throws IOException {
-    dataSource = defaultDataSource;
-    return dataSource.open(dataSpec);
-  }
+    @Override
+    public long open(DataSpec dataSpec) throws IOException {
+        dataSource = defaultDataSource;
+        return dataSource.open(dataSpec);
+    }
 
-  @Override
-  public int read(byte[] buffer, int offset, int readLength) throws IOException {
-    return dataSource.read(buffer, offset, readLength);
-  }
+    @Override
+    public int read(byte[] buffer, int offset, int readLength) throws IOException {
+        return dataSource.read(buffer, offset, readLength);
+    }
 
-  @Override
-  public Uri getUri() {
-    return dataSource.getUri();
-  }
+    @Override
+    public Uri getUri() {
+        return dataSource.getUri();
+    }
 
-  @Override
-  public Map<String, List<String>> getResponseHeaders() {
-    return Collections.emptyMap();
-  }
+    @Override
+    public Map<String, List<String>> getResponseHeaders() {
+        return Collections.emptyMap();
+    }
 
-  @Override
-  public void close() throws IOException {
-    dataSource.close();
-  }
+    @Override
+    public void close() throws IOException {
+        dataSource.close();
+    }
 }

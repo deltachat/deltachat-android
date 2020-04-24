@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,64 +19,62 @@ import java.util.Locale;
 import java.util.Set;
 
 public class ConversationUpdateItem extends LinearLayout
-    implements BindableConversationItem
-{
-  private Set<DcMsg>    batchSelected;
+        implements BindableConversationItem {
+    private Set<DcMsg> batchSelected;
 
-  private TextView      body;
-  private DcMsg         messageRecord;
+    private TextView body;
+    private DcMsg messageRecord;
 
-  public ConversationUpdateItem(Context context) {
-    super(context);
-  }
+    public ConversationUpdateItem(Context context) {
+        super(context);
+    }
 
-  public ConversationUpdateItem(Context context, AttributeSet attrs) {
-    super(context, attrs);
-  }
+    public ConversationUpdateItem(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-  @Override
-  public void onFinishInflate() {
-    super.onFinishInflate();
+    @Override
+    public void onFinishInflate() {
+        super.onFinishInflate();
 
-    this.body  = findViewById(R.id.conversation_update_body);
-  }
+        this.body = findViewById(R.id.conversation_update_body);
+    }
 
-  @Override
-  public void bind(@NonNull DcMsg                   messageRecord,
-                   @NonNull DcChat                  dcChat,
-                   @NonNull GlideRequests           glideRequests,
-                   @NonNull Locale                  locale,
-                   @NonNull Set<DcMsg>              batchSelected,
-                   @NonNull Recipient               conversationRecipient,
-                            boolean                 pulseUpdate)
-  {
-    this.batchSelected = batchSelected;
+    @Override
+    public void bind(@NonNull DcMsg messageRecord,
+                     @NonNull DcChat dcChat,
+                     @NonNull GlideRequests glideRequests,
+                     @NonNull Locale locale,
+                     @NonNull Set<DcMsg> batchSelected,
+                     @NonNull Recipient conversationRecipient,
+                     boolean pulseUpdate) {
+        this.batchSelected = batchSelected;
 
-    bind(messageRecord, locale);
-  }
+        bind(messageRecord, locale);
+    }
 
-  @Override
-  public void setEventListener(@Nullable EventListener listener) {
-    // No events to report yet
-  }
+    @Override
+    public void setEventListener(@Nullable EventListener listener) {
+        // No events to report yet
+    }
 
-  @Override
-  public DcMsg getMessageRecord() {
-    return messageRecord;
-  }
+    @Override
+    public DcMsg getMessageRecord() {
+        return messageRecord;
+    }
 
-  private void bind(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
-    this.messageRecord = messageRecord;
-    setGenericInfoRecord(messageRecord);
-    setSelected(batchSelected.contains(messageRecord));
-  }
+    private void bind(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
+        this.messageRecord = messageRecord;
+        setGenericInfoRecord(messageRecord);
+        setSelected(batchSelected.contains(messageRecord));
+    }
 
-  private void setGenericInfoRecord(DcMsg messageRecord) {
-    body.setText(messageRecord.getDisplayBody());
-    body.setVisibility(VISIBLE);
-  }
+    private void setGenericInfoRecord(DcMsg messageRecord) {
+        body.setText(messageRecord.getDisplayBody());
+        body.setVisibility(VISIBLE);
+    }
 
-  @Override
-  public void unbind() {
-  }
+    @Override
+    public void unbind() {
+    }
 }
