@@ -183,6 +183,8 @@ public class AccountManager {
         sharedPreferences.edit().putString("prev_account_db_name", "").apply();
         sharedPreferences.edit().putString("curr_account_db_name", prevDbName).apply();
 
+        resetDcContext(context);
+
         // delete the previous account, however, as a resilience check, make sure,
         // we do not delete already configured accounts (just in case sth. changes the flow of activities)
         DcContext testContext = new DcContext(null);
@@ -192,8 +194,6 @@ public class AccountManager {
                 deleteAccount(context, inCreationDbName);
             }
         }
-
-        resetDcContext(context);
     }
 
 
