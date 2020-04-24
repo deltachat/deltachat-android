@@ -404,21 +404,26 @@ public class ApplicationDcContext extends DcContext {
   }
 
   public void stopThreads() {
-    Log.i(TAG, "!!!!!!!!!!!! Stopping threads ...");
     run = false;
     synchronized (threadsCritical) {
-      if (imapThread!=null) { interruptImapIdle(); }
-      if (mvboxThread!=null) { interruptMvboxIdle(); }
-      if (sentboxThread!=null) { interruptSentboxIdle(); }
-      if (smtpThread!=null) { interruptSmtpIdle(); }
       while (true) {
-        if ( (imapThread==null || !imapThread.isAlive())
-          && (mvboxThread==null || !mvboxThread.isAlive())
+
+        // in theory, interrupting once outside the loop should be sufficient,
+        // but there are some corner cases, see https://github.com/deltachat/deltachat-core-rust/issues/925
+        Log.i(TAG, "!!!!!!!!!!!! Stopping threads ...");
+        if (imapThread!=null    && imapThread.isAlive())    { interruptImapIdle(); }
+        if (mvboxThread!=null   && mvboxThread.isAlive())   { interruptMvboxIdle(); }
+        if (sentboxThread!=null && sentboxThread.isAlive()) { interruptSentboxIdle(); }
+        if (smtpThread!=null    && smtpThread.isAlive())    { interruptSmtpIdle(); }
+
+        Util.sleep(300);
+
+        if ( (imapThread==null    || !imapThread.isAlive())
+          && (mvboxThread==null   || !mvboxThread.isAlive())
           && (sentboxThread==null || !sentboxThread.isAlive())
-          && (smtpThread==null || !smtpThread.isAlive())) {
+          && (smtpThread==null    || !smtpThread.isAlive())) {
           break;
         }
-        Util.sleep(100);
       }
     }
     Log.i(TAG, "!!!!!!!!!!!! threads stopped");
