@@ -106,6 +106,7 @@ public class DcContext {
 
     public native void         performSmtpJobs      ();
     public native void         performSmtpIdle      ();
+    public native void         interruptSmtpIdle    ();
 
     public native void         maybeNetwork         ();
     public native void         setConfig            (String key, String value);

@@ -251,8 +251,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         AccountManager accountManager = AccountManager.getInstance();
         if (accountManager.canRollbackAccountCreation(this)) {
             accountManager.rollbackAccountCreation(this);
-            finish();
-            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
         } else {
             super.onBackPressed();
         }

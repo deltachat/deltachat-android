@@ -296,6 +296,8 @@ public class ApplicationDcContext extends DcContext {
 
   public final static int INTERRUPT_IDLE = 0x01; // interrupt idle if the thread is already running
 
+  public boolean run = true;
+
   public void startThreads(int flags) {
     synchronized (threadsCritical) {
 
@@ -303,7 +305,7 @@ public class ApplicationDcContext extends DcContext {
 
         imapThread = new Thread(() -> {
           Log.i(TAG, "###################### IMAP-Thread started. ######################");
-          while (true) {
+          while (run) {
             imapWakeLock.acquire();
             performImapJobs();
             performImapFetch();
@@ -313,6 +315,7 @@ public class ApplicationDcContext extends DcContext {
             }
             performImapIdle();
           }
+          Log.i(TAG, "!!!!!!!!!!!! IMAP-Thread stopped");
         }, "imapThread");
         imapThread.setPriority(Thread.NORM_PRIORITY);
         imapThread.start();
@@ -327,7 +330,7 @@ public class ApplicationDcContext extends DcContext {
 
         mvboxThread = new Thread(() -> {
           Log.i(TAG, "###################### MVBOX-Thread started. ######################");
-          while (true) {
+          while (run) {
             mvboxWakeLock.acquire();
             performMvboxJobs();
             performMvboxFetch();
@@ -337,6 +340,7 @@ public class ApplicationDcContext extends DcContext {
             }
             performMvboxIdle();
           }
+          Log.i(TAG, "!!!!!!!!!!!! MVBOX-Thread stopped");
         }, "mvboxThread");
         mvboxThread.setPriority(Thread.NORM_PRIORITY);
         mvboxThread.start();
@@ -351,13 +355,14 @@ public class ApplicationDcContext extends DcContext {
 
         sentboxThread = new Thread(() -> {
           Log.i(TAG, "###################### SENTBOX-Thread started. ######################");
-          while (true) {
+          while (run) {
             sentboxWakeLock.acquire();
             performSentboxJobs();
             performSentboxFetch();
             sentboxWakeLock.release();
             performSentboxIdle();
           }
+          Log.i(TAG, "!!!!!!!!!!!! SENTBOX-Thread stopped");
         }, "sentboxThread");
         sentboxThread.setPriority(Thread.NORM_PRIORITY-1);
         sentboxThread.start();
@@ -370,7 +375,7 @@ public class ApplicationDcContext extends DcContext {
       if (smtpThread == null || !smtpThread.isAlive()) {
         smtpThread = new Thread(() -> {
           Log.i(TAG, "###################### SMTP-Thread started. ######################");
-          while (true) {
+          while (run) {
             smtpWakeLock.acquire();
             performSmtpJobs();
             smtpWakeLock.release();
@@ -379,6 +384,7 @@ public class ApplicationDcContext extends DcContext {
             }
             performSmtpIdle();
           }
+          Log.i(TAG, "!!!!!!!!!!!! SMTP-Thread stopped");
         }, "smtpThread");
         smtpThread.setPriority(Thread.MAX_PRIORITY);
         smtpThread.start();
@@ -395,6 +401,32 @@ public class ApplicationDcContext extends DcContext {
       }
       Util.sleep(500);
     }
+  }
+
+  public void stopThreads() {
+    run = false;
+    synchronized (threadsCritical) {
+      while (true) {
+
+        // in theory, interrupting once outside the loop should be sufficient,
+        // but there are some corner cases, see https://github.com/deltachat/deltachat-core-rust/issues/925
+        Log.i(TAG, "!!!!!!!!!!!! Stopping threads ...");
+        if (imapThread!=null    && imapThread.isAlive())    { interruptImapIdle(); }
+        if (mvboxThread!=null   && mvboxThread.isAlive())   { interruptMvboxIdle(); }
+        if (sentboxThread!=null && sentboxThread.isAlive()) { interruptSentboxIdle(); }
+        if (smtpThread!=null    && smtpThread.isAlive())    { interruptSmtpIdle(); }
+
+        Util.sleep(300);
+
+        if ( (imapThread==null    || !imapThread.isAlive())
+          && (mvboxThread==null   || !mvboxThread.isAlive())
+          && (sentboxThread==null || !sentboxThread.isAlive())
+          && (smtpThread==null    || !smtpThread.isAlive())) {
+          break;
+        }
+      }
+    }
+    Log.i(TAG, "!!!!!!!!!!!! threads stopped");
   }
 
 
