@@ -184,7 +184,7 @@ public class AccountManager {
 
         Account prevAccount = maybeGetAccount(new File(activity.getFilesDir(), prevDbName));
         if (prevAccount!=null) {
-            new SwitchAccountAsyncTask(activity, R.string.switch_account, prevAccount, inCreationDbName).execute();
+            new SwitchAccountAsyncTask(activity, R.string.switching_account, prevAccount, inCreationDbName).execute();
         }
     }
 
@@ -284,11 +284,11 @@ public class AccountManager {
                 .setSingleChoiceItems(menu.toArray(new String[menu.size()]), presel, (dialog, which) -> {
                     dialog.dismiss();
                     if (which==addAccount) {
-                        new SwitchAccountAsyncTask(activity, R.string.add_account, null, null).execute();
+                        new SwitchAccountAsyncTask(activity, R.string.one_moment, null, null).execute();
                     } else { // switch account
                         Account account = accounts.get(which);
                         if (!account.isCurrent()) {
-                            new SwitchAccountAsyncTask(activity, R.string.switch_account, account, null).execute();
+                            new SwitchAccountAsyncTask(activity, R.string.switching_account, account, null).execute();
                         }
                     }
                 });
