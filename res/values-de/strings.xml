@@ -358,6 +358,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="add_account">E-Mail-Konto hinzufügen</string>
     <string name="delete_account">E-Mail-Konto löschen</string>
     <string name="delete_account_ask">Möchten Sie das E-Mail-Konto und alle Daten wirklich von diesem Gerät löschen?</string>
+    <string name="switching_account">E-Mail-Konto wechseln…</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->

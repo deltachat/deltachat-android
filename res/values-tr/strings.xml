@@ -247,7 +247,7 @@
         <item quantity="other">%d sohbet arşivlendi</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">%d sohbet arşivlenmiyor</item>
+        <item quantity="one">%d sohbet arşivlenmedi</item>
         <item quantity="other">%d sohbet arşivlenmedi</item>
     </plurals>
     <string name="chat_archived_chats_title">Arşivlenen sohbetler</string>
@@ -352,9 +352,10 @@
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
 
     <string name="used_settings">Kullanılan ayarlar:</string>
+    <string name="switch_account">Hesap değiştir</string>
+    <string name="add_account">Hesap ekle</string>
     <string name="delete_account">Hesabı sil</string>
     <string name="delete_account_ask">Hesap verilerinizi silmek istediğinizden emin misiniz?</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İlet…</string>

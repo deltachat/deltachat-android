@@ -333,9 +333,14 @@
     <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi. Cara lain, tekan \"Mulai obrolan\" untuk melanjutkan proses pengaturan normal.</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Tanggapan dari %1$s: %2$s\n\nBeberapa penyedia layanan (provider) menempatkan informasi tambahan di kotak masuk Anda; Anda bisa memeriksanya, misalnya di beranda depan web. Konsultasikan dengan penyedia atau teman Anda jika Anda mengalami masalah.</string>
+
+    <string name="used_settings">Setelan yang digunakan:</string>
+    <string name="switch_account">Alihkan akun</string>
+    <string name="add_account">Tambah akun</string>
     <string name="delete_account">Hapus Akun</string>
     <string name="delete_account_ask">Apakah anda yakin ingin menghapus data akun anda?</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Diteruskan ke…</string>
@@ -345,25 +350,42 @@
 
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
+    <string name="pref_blocked_contacts">Kontak yang diblokir</string>
     <string name="pref_profile_photo_remove_ask">Hapus foto profil?</string>
     <string name="pref_help_url">https://delta.chat/help</string>
+    <string name="pref_password_and_account_settings">Kata sandi dan akun</string>
+    <string name="pref_who_can_see_this_information">Siapa yang dapat melihat ini?</string>
     <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signature text</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Kirim dengan Percakapan Delta Chat: https://delta.chat</string>
+    <string name="pref_enter_sends">Tombol Enter mengirim</string>
+    <string name="pref_enter_sends_explain">Menekan tombol Enter akan mengirimkan teks pesan</string>
+    <string name="pref_outgoing_media_quality">Kualitas media yang dikirim</string>
     <string name="pref_outgoing_balanced">Seimbang</string>
+    <string name="pref_outgoing_worse">Kualitas rendah, ukuran kecil</string>
+    <string name="pref_vibrate">Bergetar</string>
+    <string name="pref_chat_settings">Setelan chat</string>
+    <string name="pref_change_secret">Ubah rahasia</string>
+    <string name="pref_change_secret_explain">Ubah PIN / pola / sidik jari melalui setelan sistem</string>
     <string name="pref_screen_security">Keamanan layar</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Permintaan untuk memblok screenshot di daftar terbaru dan di dalam aplikasi</string>
     <string name="pref_screen_security_please_restart_hint">Untuk menjalankan fungsi keamanan layar mohon aplikasi dibuka ulang.</string>
+    <string name="pref_notifications">Notifikasi</string>
     <string name="pref_notifications_show">Menunjukkan</string>
     <string name="pref_notifications_priority">Prioritas</string>
+    <string name="pref_led_color">Warna LED</string>
+    <string name="pref_led_pattern">Pola kedip LED</string>
     <string name="pref_sound">Suara</string>
     <string name="pref_silent">Sunyi</string>
     <string name="pref_privacy">Privasi</string>
     <string name="pref_chats_and_media">Obrolan dan media</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Cahaya</string>
+    <string name="pref_dark_theme">Gelap</string>
     <string name="pref_appearance">Penampilan</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Bahasa</string>

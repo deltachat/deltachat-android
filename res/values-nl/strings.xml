@@ -352,9 +352,10 @@
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
 
     <string name="used_settings">Gebruikte instellingen:</string>
+    <string name="switch_account">Ander account kiezen</string>
+    <string name="add_account">Account toevoegen</string>
     <string name="delete_account">Account verwijderen</string>
     <string name="delete_account_ask">Weet je zeker dat je je accountgegevens wilt verwijderen?</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Doorsturen naar...</string>

@@ -353,7 +353,6 @@
     <string name="used_settings">Ajustes usados:</string>
     <string name="delete_account">Eliminar cuenta</string>
     <string name="delete_account_ask">Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenviar a ...</string>

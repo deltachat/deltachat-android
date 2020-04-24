@@ -26,7 +26,7 @@
     <string name="unarchive">خروج از بایگانی</string>
     <string name="mute">سکوت</string>
     <string name="save">ذخیره</string>
-    <string name="chat">چت</string>
+    <string name="chat">گفتگو</string>
     <string name="media">رسانه</string>
     <string name="main_menu">صفحه اصلی</string>
     <string name="start_chat">شروع چت</string>
@@ -38,7 +38,7 @@
     <string name="done">انجام شد</string>
     <string name="undo">واگرد</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
-    <string name="next">بعد</string>
+    <string name="next">بعدی</string>
     <string name="error">خطا</string>
     <string name="error_x">خطا: %1$s</string>
     <string name="error_no_network">شبکه در دسترس نیست.</string>
@@ -194,18 +194,18 @@
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">سنجاق برداری</string>
 
-    <string name="mute_for_one_hour">ساکت کردن به مدت ۱ ساعت</string>
-    <string name="mute_for_two_hours">ساکت کردن به مدت ۲ ساعت</string>
-    <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>
-    <string name="mute_for_seven_days">ساکت کردن به مدت۷ روز</string>
+    <string name="mute_for_one_hour">ساکت کردن به مدت 1 ساعت</string>
+    <string name="mute_for_two_hours">ساکت کردن به مدت 2 ساعت</string>
+    <string name="mute_for_one_day">ساکت کردن به مدت 1 روز</string>
+    <string name="mute_for_seven_days">ساکت کردن به مدت7 روز</string>
     <string name="mute_forever">ساکت کردن دائمی</string>
 
     <string name="share_location_once">یک بار</string>
-    <string name="share_location_for_5_minutes">به مدت ۵ دقیقه</string>
-    <string name="share_location_for_30_minutes">به مدت ۳۰ دقیقه</string>
-    <string name="share_location_for_one_hour">به مدت ۱ ساعت</string>
-    <string name="share_location_for_two_hours">به مدت ۲ ساعت</string>
-    <string name="share_location_for_six_hours">به مدت ۶ ساعت</string>
+    <string name="share_location_for_5_minutes">به مدت 5 دقیقه</string>
+    <string name="share_location_for_30_minutes">به مدت 30 دقیقه</string>
+    <string name="share_location_for_one_hour">به مدت 1 ساعت</string>
+    <string name="share_location_for_two_hours">به مدت 2 ساعت</string>
+    <string name="share_location_for_six_hours">به مدت 6 ساعت</string>
 
     <string name="file_saved_to">فایل در \"%1$s\" ذخیره شد</string>
 
@@ -237,18 +237,18 @@
 
     <!-- contact list -->
     <string name="contacts_title">مخاطبین</string>
-    <string name="contacts_enter_name_or_email">نام یا آدرس رایانامه را وارد کنید</string>
-    <string name="contacts_type_email_above">ادرس رایانامه را در بخش بالا وارد کنید</string>
+    <string name="contacts_enter_name_or_email">نام یا آدرس ایمیل را وارد کنید</string>
+    <string name="contacts_type_email_above">ادرس ایمیل را در بخش بالا وارد کنید</string>
     <string name="contacts_empty_hint">بدون مخاطب.</string>
 
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="one">%d چت بایگانی شد</item>
+        <item quantity="one">%d گفتگو بایگانی شد</item>
         <item quantity="other">%d گفتگو بایگانی شد</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="one">%dچت از بایگانی خارج شد</item>
+        <item quantity="one">%dگفتگو از بایگانی خارج شد</item>
         <item quantity="other">%d گفتگو از بایگانی خارج شد</item>
     </plurals>
     <string name="chat_archived_chats_title">گفتگو‌های بایگانی شده</string>
@@ -260,7 +260,7 @@
         <item quantity="other">%d پیام جدید</item>
     </plurals>
     <string name="chat_no_messages_hint">به %1$sپیام ارسال کنید:\n\n• مشکلی نیست اگر %2$s از دلتاچت استفاده نمی‌کند. \n\n• دریافت اولین پیام ممکن است زمان ببرد و ممکن است پیام اول رمزگذاری نشده باشد. </string>
-    <string name="chat_new_group_hint">نوشتن اولین پیام به دیگران امکان می‌دهد در این گروه پاسخ دهند. \n\n• مشکلی نیست اگر همه اعضا از دلتاچت استفاده نکنند\n\n• درییافت اولین پیام ممکن است به زمان بیشتری نیاز داشته باشد. </string>
+    <string name="chat_new_group_hint">نوشتن اولین پیام به دیگران امکان می‌دهد در این گروه پاسخ دهند. \n\n• مشکلی نیست اگر همه اعضا از دلتاچت استفاده نکنند\n\n• دریافت اولین پیام ممکن است به زمان بیشتری نیاز داشته باشد. </string>
     <string name="chat_record_slide_to_cancel">برای لغو بکشید.</string>
     <string name="chat_record_explain">برای ضبط پیام صوتی فشار داده و نگهدارید، برای ارسال رها کنید. </string>
     <string name="chat_no_chats_yet_title">جعبه ورودی خالی. \n برای شروع گفتگو جدید \"+\" را فشار دهید.</string>
@@ -296,4 +296,196 @@
     <string name="group_create_button">ایجاد گروه</string>
     <string name="group_please_enter_group_name">لطفا نامی برای گروه وارد کنید. </string>
     <string name="group_add_members">افزودن اعضا</string>
+    <string name="group_hello_draft">سلام، همین الان گروه \"%1$s\"را درست کردم. </string>
+    <string name="group_self_not_in_group">برای این کار باید عضو گروه باشید.</string>
+    <string name="profile_encryption">رمزگذاری</string>
+    <string name="profile_shared_chats">گفتگوهای اشتراک گذاری شده</string>
+    <string name="tab_contact">مخاطب</string>
+    <string name="tab_group">گروه</string>
+    <string name="tab_members">اعضا</string>
+    <string name="tab_gallery">گالری</string>
+    <string name="tab_docs">اسناد</string>
+    <string name="tab_links">لینک‌ها</string>
+    <string name="tab_map">نقشه</string>
+    <string name="tab_gallery_empty_hint">عکس‌ها و فیلم‌هایی که در این گفتگو به اشتراک گذاشته شده اند در اینجا نمایش داده خواهد شد. </string>
+    <string name="tab_docs_empty_hint">اسناد، آهنگ‌ها و دیگر فایل‌هایی که در این گفتگو به اشتراک گذاشته شده باشند در اینجا نمایش داده خواهند شد. </string>
+    <string name="media_preview">نمایش رسانه</string>
+    <string name="send_message">ارسال پیام</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطب در جهان. آزاد و مستقل. </string>
+    <string name="welcome_start_messaging">شروع پیام‌رسانی</string>
+    <string name="login_title">ورود</string>
+    <string name="login_header">به سرور خود وارد شوید</string>
+    <string name="login_explain">ورود با یک ایمیل موجود</string>
+    <string name="login_subheader">برای ارائه دهندگان ایمیل شناخته شده تنظبمات اضافه به صورت خودکار تنظیم می‌شود. گاهی اوقات IMAP باید در تنظیمات ایمیل شما فعال شود. از ارائه دهنده ایمیل یا دوستانتان در این مورد کمک بگیرید. </string>
+    <string name="login_no_servers_hint">دلتاچت هیچ سروری ندارد، داده‌های شما در دستگاه شما باقی می‌ماند.</string>
+    <string name="login_inbox">ورودی</string>
+    <string name="login_imap_login">نام ورود IMAP</string>
+    <string name="login_imap_server">سرورIMAP</string>
+    <string name="login_imap_port">IMAP port </string>
+    <string name="login_imap_security">امنیت IMAP</string>
+    <string name="login_outbox">خروجی</string>
+    <string name="login_smtp_login">نام ورودی SMTP</string>
+    <string name="login_smtp_password">رمز عبور SMTP</string>
+    <string name="login_smtp_server">سرور SMTP</string>
+    <string name="login_smtp_port">SMTP port </string>
+    <string name="login_smtp_security">امنیت SMTP  </string>
+    <string name="login_auth_method">روش تایید هویت</string>
+    <string name="login_info_oauth2_title">با تنظیمات ساده‌ شده ادامه می‌دهید؟</string>
+    <string name="login_info_oauth2_text">آدرس ایمیل وارد شده از تنظیمات ساده پشتیبانی می‌کند(OAuth 2.0).\n\nIn مرحله بعد، لطفا به دلتاچت اجازه دهید که به عنوان نرم‌افزار ایمیل شما عمل نماید\n\n سرور دلتاچت وجود ندارد داده‌های شما در دستگاه خودتان باقی می‌ماند. </string>
+    <string name="login_certificate_checks">بررسی تاییدیه</string>
+    <string name="login_error_mail">لطفا یک آدرس ایمیل صحیح وارد کنید</string>
+    <string name="login_error_server">لطفا یک ایمیل/IP صحیح وارد کنید</string>
+    <string name="login_error_port">لظفا یک پورت صحیح وارد کنید(1–65535) </string>
+    <string name="login_error_required_fields">لطفا یک ایمیل و رمزعبور صحیح وارد کنید</string>
+    <string name="import_backup_title">وارد کردن نسخه پشتیبانی</string>
+    <string name="import_backup_ask">نسخه پشتیبانی در\"%1$s\" پیدا شد.\n\n آیا می‌خواهید همه داده ها و تنظیمات از آن وارد شود؟</string>
+    <string name="import_backup_no_backup_found">نسخه پشتیبانی پیدا نشد.\n\n نسخه پشتیبانی را در\"%1$s\" کپی کرده و دوباره امتحان کنید. در غیر این صورت می‌توانید \"شروع پیام‌رسانی\" را فشار دهید دا فرایند به صورت عادی ادامه یابد. </string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">امکان ورود با\"%1$s\"وجود ندارد. لطفا صحت ایمیل و رمز عبور را بررسی کنید. </string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">بازخورد از %1$s: %2$s\n\n برخی ارائه دهندگان ایمیل اطلاعات اضافی در صندوق ورودی شما قرار می‌دهند. می‌توانید این موارد را در صفحه وب بررسی کنید. اگر به مشکلی برخوردید به ارائه دهندگان ایمیل یا دوستان خود مراجعه کنید. </string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">پذیرش Hostname های نادرست</string>
+    <string name="accept_invalid_certificates">پذیرش تاییدیه‌های نادرست</string>
+
+    <string name="used_settings">تنظیمات استفاده شده:</string>
+    <string name="switch_account">تغییر حساب کاربری</string>
+    <string name="add_account">افزودن حساب کاربری</string>
+    <string name="delete_account">حذف حساب کاربری</string>
+    <string name="delete_account_ask">آیا از حذف حساب کاربری اطمینان دارید؟</string>
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">هدایت به...</string>
+    <string name="share_multiple_attachments">آیا می‌خواهید فایل‌های%1$d را به چت انتخاب شده ارسال کنید؟\n\n فایل‌ها با اندازه اصلی و بدون تغییر ارسال می‌شوند به این معنا که عکس‌ها و فیلم‌ها فشرده نمی‌شوند. </string>
+    <string name="share_abort">اشتراک گذاری به دلیل نبود مجوز‌ها متوقف شد.</string>
+
+
+    <!-- preferences -->
+    <string name="pref_using_custom">استفاده از ترجیحی: %s</string>
+    <string name="pref_using_default">استفاده از پیش‌فرض: %s</string>
+    <string name="pref_profile_info_headline">اطلاعات پروفایل شما</string>
+    <string name="pref_profile_photo">تصویر پروفایل</string>
+    <string name="pref_blocked_contacts">مخاطبین مسدود شده</string>
+    <string name="pref_profile_photo_remove_ask">حذف تصویر پروفایل؟</string>
+    <string name="pref_help_url">https://delta.chat/help</string>
+    <string name="pref_password_and_account_settings">رمزعبور و حساب کاربری</string>
+    <string name="pref_who_can_see_this_information">چه کسی می‌تواند این را ببیند؟</string>
+    <string name="pref_who_can_see_profile_explain">وقتی با دیگر کاربران گفتگو می‌کنید تصویر پروفایل و اسم شما در کنار پیام‌ها نمایش داده می‌شوند. اطلاعاتی که تا کنون ارسال شده‌اند قابل حذف نیستند. </string>
+    <string name="pref_your_name">اسم شما</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">متن امضا</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">ارسال شده با پیام‌رسان دلتاچت: https://delta.chat</string>
+    <string name="pref_enter_sends">ورود کلیدهای ارسال</string>
+    <string name="pref_enter_sends_explain">فشاردادن کلید Enter پیام‌ها را ارسال می‌کند</string>
+    <string name="pref_outgoing_media_quality">کیفیت رسانه خروجی</string>
+    <string name="pref_outgoing_balanced">متعادل</string>
+    <string name="pref_outgoing_worse">بدترین‌ کیفیت، حجم کم</string>
+    <string name="pref_vibrate">لرزش</string>
+    <string name="pref_chat_settings">تنظیمات گفتگو</string>
+    <string name="pref_change_secret">تغییر رمز</string>
+    <string name="pref_change_secret_explain">تغییر پین/ الگو/ اثرانگشت از طریق تنظیمات سیستم</string>
+    <string name="pref_screen_security">امنیت صفحه</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">درخواست مسدود کردن عکس گرفتن از صفحه در لیست اخیر و درون نرم‌افزار</string>
+    <string name="pref_screen_security_please_restart_hint">برای اعمال کردن تنظیمات امنیت صفحه لطفا نرم‌افزار را بسته و دوباره باز کنید.</string>
+    <string name="pref_notifications">اعلان‌ها</string>
+    <string name="pref_notifications_show">نمایش</string>
+    <string name="pref_notifications_priority">اولویت</string>
+    <string name="pref_led_color">رنگ LED</string>
+    <string name="pref_led_pattern">الگوی چشمک زدن LED</string>
+    <string name="pref_sound">صدا</string>
+    <string name="pref_silent">سکوت</string>
+    <string name="pref_privacy">حریم خصوصی</string>
+    <string name="pref_chats_and_media">گفتگوها و رسانه</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">روشن</string>
+    <string name="pref_dark_theme">تاریک</string>
+    <string name="pref_appearance">ظاهر</string>
+    <string name="pref_theme">قالب</string>
+    <string name="pref_language">زبان</string>
+    <string name="pref_incognito_keyboard">صفحه کلید ناشناس</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">درخواست دهید که صفحه کلید رفتارهای شخصی شما را یاد نگیرد</string>
+    <string name="pref_read_receipts">رسید خوانده شدن</string>
+    <string name="pref_read_receipts_explain">اگر رسید خوانده شدن غیرفعال باشد، نمی‌توانید اعلام خوانده شدن توسط دیگران را ببینید.</string>
+    <string name="pref_manage_keys">مدیریت کلیدها</string>
+    <string name="pref_use_system_emoji">استفاده از شکلک‌های سیستم</string>
+    <string name="pref_use_system_emoji_explain">غیرفعال کردن شکلک‌های داخلی دلتاچت</string>
+    <string name="pref_app_access">دسترسی نرم‌افزار</string>
+    <string name="pref_communication">ارتباط</string>
+    <string name="pref_chats">گفتگوها</string>
+    <string name="pref_messages">پیام‌ها</string>
+    <string name="pref_in_chat_sounds">صداهای مربوط به گفتگو</string>
+    <string name="pref_message_text_size">اندازه فونت پیام</string>
+    <string name="pref_view_log">نمایش گزارش</string>
+    <string name="pref_saved_log">گزارش را در پوشه\"دانلودها\" ذخیره کن </string>
+    <string name="pref_save_log_failed">ذخیره گزارش ناموفق بود</string>
+    <string name="pref_log_header">گزارش</string>
+    <string name="pref_other">دیگر</string>
+    <string name="pref_backup">نسخه پشتیبان</string>
+    <string name="pref_backup_explain">تهیه نسخه پشتیبان از گفتگوها در حافظه خارجی</string>
+    <string name="pref_backup_export_explain">تهیه نسخه پشتیبان به شما  کمک می‌کند روی این دستگاه یا دستگاه دیگر نرم‌افزار را دوباره نصب کنید.\n\n نسخه پشتیبان حاوی همه پیام‌ها، مخاطبین، گفتگوها و سیستم رمزگذاری خودکار گیرنده به گیرنده  شما هواهد بود. فایل پشتیبانی را در یک جای امن نگه دارید و در اسرع وقت آن را پاک کنید.</string>
+    <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
+    <string name="pref_backup_written_to_x">نسخه پشتیبان با موفقیت در\"%1$s\" ذخیره شد.</string>
+    <string name="pref_managekeys_menu_title">مدیریت کلیدها</string>
+    <string name="pref_managekeys_ask_for_storage_permission">دلتا چت برای وارد کردن و صادر کردن کلیدها به اجازه دسترسی به فایل‌ها نیاز دارد. </string>
+    <string name="pref_managekeys_export_secret_keys">صادر کردن کلید خصوصی</string>
+    <string name="pref_managekeys_export_explain">صادر کردن کلیدهای خصوصی به\"%1$s\"؟</string>
+    <string name="pref_managekeys_import_secret_keys">وارد کردن کلیدهای خصوصی</string>
+    <string name="pref_managekeys_import_explain">وارد کردن کلیدهای خصوصی از\"%1$s\"؟\n\n• کلیدهای خصوصی موجود پاک نخواهند شد\n\n•  آخرین کلید وارد شده به عنوان کلید پیش‌فرض جدید استفاده می شود مگر اینکه در اسم فایل آن کلمه \"Legacy\" وجود داشته باشد. </string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">کلیدهای خصوصی با موفقیت در\"%1$s\" ذخیره شدند. </string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">کلیدهای خصوصی از \"%1$s\" وارد شدند. </string>
+    <string name="pref_background">تصویرزمینه</string>
+    <string name="pref_background_btn_default">استفاده از تصویر پیش‌فرض</string>
+    <string name="pref_background_btn_gallery">انتخاب از گالری</string>
+    <string name="pref_imap_folder_handling">نحوه مدیریت پوشه IMAP</string>
+    <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
+    <string name="pref_watch_inbox_folder">پوشه صندوق ورودی را نگاه کنید</string>
+    <string name="pref_watch_sent_folder">پوشه ارسال شده‌ها را نگاه کنید</string>
+    <string name="pref_watch_mvbox_folder">پوشه دلتاچت را نگاه کنید</string>
+    <string name="pref_send_copy_to_self">ارسال کپی به خودم</string>
+    <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
+    <string name="pref_auto_folder_moves_explain">گفتگوها برای جلوگیری از پر شدن صندوق ورودی جابجا شده‌اند</string>
+    <string name="pref_email_interaction_title">تعامل ایمیل</string>
+    <string name="pref_show_emails">نمایش ایمیل‌های معمولی</string>
+    <string name="pref_show_emails_no">نه، فقط چت‌ها</string>
+    <string name="pref_show_emails_accepted_contacts">برای مخاطبین پذیرفته شده</string>
+    <string name="pref_show_emails_all">همه</string>
+    <string name="pref_empty_server_title">حذف ایمیل‌ها از سرور</string>
+    <string name="pref_empty_server_msg">این عملگر کمک به آزاد کردن فضای IMAP می‌کند و این کار را با حذف همه ایمیل‌ها و گفتگوها  از پوشه  های انتخاب شده انجام می‌شود. پیام‌هایی که در این دستگاه هستند حذف نمی‌شوند. حذف کردن قابل بازگشت نیست! </string>
+    <string name="pref_empty_server_inbox">حذف ایمیل‌های پوشه \"Inbox\"</string>
+    <string name="pref_empty_server_mvbox">حذف همه ایمیل‌ها در پوشه\"DeltaChat\"</string>
+    <string name="pref_empty_server_do_button">حذف ایمیل‌ها</string>
+    <string name="pref_experimental_features">ویژگی‌های آزمایشی</string>
+    <string name="pref_on_demand_location_streaming">اشتراک موقعیت مکانی در صورت نیاز</string>
+    <string name="pref_background_default">تصویر زمینه پیش‌فرض</string>
+    <string name="pref_background_default_color">رنگ پیش‌فرض</string>
+    <string name="pref_background_custom_image">تصویر ترجیحی</string>
+    <string name="pref_background_custom_color">رنگ ترجیحی</string>
+
+    <!-- automatically delete message -->
+    <string name="autodel_title">پاک کردن خودکار پیام‌ها</string>
+    <string name="autodel_title_short">پاک کردن خودکار</string>
+    <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>
+    <string name="autodel_server_title">پاک کردن پیام‌ها از سرور</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_device_ask">آیا می‌خواهید %1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه هم می‌شود\n\n•  پیام‌ها جدای از اینکه دیده شده باشند یا نه پاک می‌شوند. \"پیام های ذخیره شده\" شامل این پاک کردن محلی نمی‌شوند. </string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_server_ask">آیا می‌خواهید%1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه هم می‌شود\n\n• همچنین ایمیل‌های مربوط به \"نمایش ایمیل‌های معمولی\" باشند نیز از سرور پاک می‌شوند. </string>
+    <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
+    <string name="autodel_at_once">یک بار</string>
+    <string name="autodel_after_1_hour">بعد از 1 ساعت</string>
+    <string name="autodel_after_1_day">بعد از 1  روز</string>
+    <string name="autodel_after_1_week">بعد از 1 هفته</string>
+    <string name="autodel_after_4_weeks">بعد از 4 هفته</string>
+
+    <!-- autocrypt -->
+    <string name="autocrypt">رمزگذاری خودکار</string>
+    <string name="autocrypt_explain">رمزگذاری خودکار یک ویژگی جدید و باز برای رمزگذاری گیرنده به گیرنده خودکار برای رمزگذاری ایمیل است.\n\n تنظیمات رمزگذاری گیرنده به گیرنده در موقع لازم به صورت خودکار ایجاد می‌شود و می‌توانید با پیام تنظیمات رمزگذاری خودکار بین دستگاه‌ها  انتقال دهید. </string>
+    <string name="autocrypt_send_asm_title">ارسال پیام تنظیمات رمزگذاری خودکار</string>
     </resources>

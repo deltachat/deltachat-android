@@ -341,9 +341,10 @@
     <string name="accept_invalid_certificates">接受无效的证书</string>
 
     <string name="used_settings">已使用设置：</string>
+    <string name="switch_account">切换账户 </string>
+    <string name="add_account">添加账户</string>
     <string name="delete_account">删除账户</string>
     <string name="delete_account_ask">您确定要删除您的账户数据吗？</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">转发给…</string>

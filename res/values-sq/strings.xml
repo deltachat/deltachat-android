@@ -352,9 +352,10 @@
     <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
 
     <string name="used_settings">Rregullime të përdorura</string>
+    <string name="switch_account">Ndërroni llogari</string>
+    <string name="add_account">Shtoni llogari</string>
     <string name="delete_account">Fshije llogarinë</string>
     <string name="delete_account_ask">Jeni i sigurt se doni të fshihen të dhënat e llogarisë tuaj?</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Përcilljani …</string>

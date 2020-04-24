@@ -331,7 +331,6 @@
     <string name="used_settings">Naudoti nustatymai:</string>
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Kam persiųsti …</string>
