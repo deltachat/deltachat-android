@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.util.views;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AlertDialog;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -38,9 +40,22 @@ public class ProgressDialog extends AlertDialog {
         }
     }
 
+    private boolean isButtonVisible(int which) {
+        Button button = getButton(which);
+        if (button==null) {
+            return false;
+        }
+        return button.getVisibility()==View.VISIBLE;
+    }
+
     @Override
     public void show() {
         super.show();
+
+        if (isButtonVisible(Dialog.BUTTON_POSITIVE) || isButtonVisible(Dialog.BUTTON_NEGATIVE) || isButtonVisible(Dialog.BUTTON_NEUTRAL)) {
+            findViewById(R.id.noButtonsSpacer).setVisibility(View.GONE);
+        }
+
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.text);
         setupProgressBar();
