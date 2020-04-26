@@ -68,9 +68,8 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     }
 
     private void initializeVisibility() {
-        KeyguardManager keyguardManager = (KeyguardManager) getContext().getSystemService(Context.KEYGUARD_SERVICE);
         SwitchPreferenceCompat screenLockPreference = (SwitchPreferenceCompat) findPreference(Prefs.SCREEN_LOCK);
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP || keyguardManager == null || !keyguardManager.isKeyguardSecure()) {
+        if (!ScreenLockUtil.isScreenLockAvailable(getContext())) {
             screenLockPreference.setChecked(false);
             screenLockPreference.setEnabled(false);
         }

@@ -23,7 +23,7 @@ public class ScreenLockUtil {
     public static boolean applyScreenLock(Activity activity, int requestCode) {
         KeyguardManager keyguardManager = (KeyguardManager) activity.getSystemService(Context.KEYGUARD_SERVICE);
         Intent intent;
-        if (keyguardManager != null && isScreenLockAvailable()) {
+        if (keyguardManager != null && isScreenLockAvailable(activity)) {
             intent = keyguardManager.createConfirmDeviceCredentialIntent(activity.getString(R.string.screenlock_unlock_title), activity.getString(R.string.screenlock_unlock_description));
             if (intent != null) {
                 activity.startActivityForResult(intent, requestCode);
@@ -34,15 +34,16 @@ public class ScreenLockUtil {
     }
 
     public static boolean isScreenLockEnabled(Context context) {
-        return isScreenLockAvailable() && Prefs.isScreenLockEnabled(context);
+        return isScreenLockAvailable(context) && Prefs.isScreenLockEnabled(context);
     }
 
-    private static boolean isScreenLockAvailable() {
-        return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
+    public static boolean isScreenLockAvailable(Context context) {
+        KeyguardManager keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+        return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP && keyguardManager != null && keyguardManager.isKeyguardSecure();
     }
 
     public static boolean isScreenLockTimeoutEnabled(Context context) {
-        return isScreenLockAvailable() && Prefs.isScreenLockTimeoutEnabled(context);
+        return isScreenLockAvailable(context) && Prefs.isScreenLockTimeoutEnabled(context);
     }
 
     public static Timer scheduleScreenLockTimer(Timer timer, Activity activity) {

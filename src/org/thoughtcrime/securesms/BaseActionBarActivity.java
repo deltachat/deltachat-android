@@ -46,28 +46,8 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     }
   }
 
-  @Override
-  protected void onStart() {
-    if (shouldLock()) {
-      ScreenLockUtil.applyScreenLock(this);
-    } else if (isHiddenByScreenLock) {
-      findViewById(android.R.id.content).setVisibility(View.VISIBLE);
-      isHiddenByScreenLock = false;
-    }
-    super.onStart();
-  }
-
   private boolean shouldLock() {
     return ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult;
-  }
-
-  @Override
-  protected void onStop() {
-    if (ScreenLockUtil.isScreenLockEnabled(this)) {
-      findViewById(android.R.id.content).setVisibility(View.GONE);
-      isHiddenByScreenLock = true;
-    }
-    super.onStop();
   }
 
   @Override
@@ -86,6 +66,12 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   @Override
   protected void onResume() {
+    if (shouldLock()) {
+      ScreenLockUtil.applyScreenLock(this);
+    } else if (isHiddenByScreenLock) {
+      findViewById(android.R.id.content).setVisibility(View.VISIBLE);
+      isHiddenByScreenLock = false;
+    }
     super.onResume();
     initializeScreenshotSecurity();
     initializeScreenLockTimeout();
@@ -99,8 +85,12 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   @Override
     protected void onPause() {
-      super.onPause();
-      tearDownScreenLockTimeout();
+    if (ScreenLockUtil.isScreenLockEnabled(this)) {
+      findViewById(android.R.id.content).setVisibility(View.INVISIBLE);
+      isHiddenByScreenLock = true;
+    }
+    super.onPause();
+    tearDownScreenLockTimeout();
   }
 
   private void tearDownScreenLockTimeout() {
