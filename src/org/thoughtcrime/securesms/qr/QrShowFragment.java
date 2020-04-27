@@ -122,9 +122,9 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     private void setHintText() {
         if (!dcContext.isNetworkConnected()) {
-            hintBelowQr.setText(Html.fromHtml(errorHint));
+            hintBelowQr.setText(errorHint);
         } else {
-            hintBelowQr.setText(Html.fromHtml(hint));
+            hintBelowQr.setText(hint);
         }
     }
 

@@ -162,13 +162,13 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
         View gl = View.inflate(getActivity(), R.layout.autodel_confirm, null);
         CheckBox confirmCheckbox = gl.findViewById(R.id.i_understand);
-        String msg = context.getString(fromServer?
-                R.string.autodel_server_ask : R.string.autodel_device_ask,
-                delCount, "<i>"+getSelectedSummary(preference, newValue)+"</i>");
+        String html = String.format(Html.escapeHtml(context.getString(fromServer?
+                R.string.autodel_server_ask : R.string.autodel_device_ask)),
+                delCount, "<i>"+Html.escapeHtml(getSelectedSummary(preference, newValue))+"</i>");
 
         new AlertDialog.Builder(context)
                 .setTitle(preference.getTitle())
-                .setMessage(Html.fromHtml(msg.replace("\n", "<br>")))
+                .setMessage(Html.fromHtml(html.replace("\n", "<br>")))
                 .setView(gl)
                 .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
                   if (confirmCheckbox.isChecked()) {
