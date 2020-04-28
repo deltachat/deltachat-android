@@ -294,13 +294,13 @@ public class AccountManager {
                 });
         if (accounts.size() > 1) {
             builder.setNeutralButton(R.string.delete_account, (dialog, which) -> {
-                handleDeleteAccount(activity);
+                showDeleteAccountMenu(activity);
             });
         }
         builder.show();
     }
 
-    private void handleDeleteAccount(Activity activity) {
+    private void showDeleteAccountMenu(Activity activity) {
         ArrayList<AccountManager.Account> accounts = getAccounts(activity);
 
         ArrayList<String> menu = new ArrayList<>();
@@ -332,7 +332,7 @@ public class AccountManager {
                                     .show();
                         }
                     } else {
-                        handleDeleteAccount(activity);
+                        showDeleteAccountMenu(activity);
                     }
                 })
                 .show();
