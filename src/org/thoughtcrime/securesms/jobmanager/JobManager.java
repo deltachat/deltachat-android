@@ -56,10 +56,6 @@ public class JobManager implements RequirementListener {
    * @param job The Job to be executed.
    */
   public void add(final Job job) {
-    if (job.needsWakeLock()) {
-      job.setWakeLock(acquireWakeLock(context, job.toString(), job.getWakeLockTimeout()));
-    }
-
     eventExecutor.execute(new Runnable() {
       @Override
       public void run() {

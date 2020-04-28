@@ -49,10 +49,6 @@ class JobConsumer extends Thread {
           job.onCanceled();
         }
 
-        if (job.getWakeLock() != null && job.getWakeLockTimeout() == 0) {
-          job.getWakeLock().release();
-        }
-
         if (job.getGroupId() != null) {
           jobQueue.setGroupIdAvailable(job.getGroupId());
         }

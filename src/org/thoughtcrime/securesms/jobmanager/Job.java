@@ -34,7 +34,6 @@ public abstract class Job implements Serializable {
   private transient long                  persistentId;
   private transient int                   runIteration;
   private transient long                  lastRunTime;
-  private transient PowerManager.WakeLock wakeLock;
 
   public Job(JobParameters parameters) {
     this.parameters = parameters;
@@ -87,22 +86,6 @@ public abstract class Job implements Serializable {
 
   public int getRunIteration() {
     return runIteration;
-  }
-
-  public boolean needsWakeLock() {
-    return parameters.needsWakeLock();
-  }
-
-  public long getWakeLockTimeout() {
-    return parameters.getWakeLockTimeout();
-  }
-
-  public void setWakeLock(PowerManager.WakeLock wakeLock) {
-    this.wakeLock = wakeLock;
-  }
-
-  public PowerManager.WakeLock getWakeLock() {
-    return this.wakeLock;
   }
 
   public void onRetry() {

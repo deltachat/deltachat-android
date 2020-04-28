@@ -34,20 +34,15 @@ public class JobParameters implements Serializable {
   private final int               retryCount;
   private final long              retryUntil;
   private final String            groupId;
-  private final boolean           wakeLock;
-  private final long              wakeLockTimeout;
 
   private JobParameters(List<Requirement> requirements,
                         String groupId,
-                        int retryCount, long retryUntil, boolean wakeLock,
-                        long wakeLockTimeout)
+                        int retryCount, long retryUntil)
   {
     this.requirements    = requirements;
     this.groupId         = groupId;
     this.retryCount      = retryCount;
     this.retryUntil      = retryUntil;
-    this.wakeLock        = wakeLock;
-    this.wakeLockTimeout = wakeLockTimeout;
   }
 
   public List<Requirement> getRequirements() {
@@ -77,21 +72,11 @@ public class JobParameters implements Serializable {
     return groupId;
   }
 
-  public boolean needsWakeLock() {
-    return wakeLock;
-  }
-
-  public long getWakeLockTimeout() {
-    return wakeLockTimeout;
-  }
-
   public static class Builder {
     private List<Requirement> requirements    = new LinkedList<>();
     private int               retryCount      = 100;
     private long              retryDuration   = 0;
     private String            groupId         = null;
-    private boolean           wakeLock        = false;
-    private long              wakeLockTimeout = 0;
 
     /**
      * Specify a {@link org.thoughtcrime.securesms.jobmanager.requirements.Requirement }that must be met
@@ -136,35 +121,10 @@ public class JobParameters implements Serializable {
     }
 
     /**
-     * Specify whether this job should hold a wake lock.
-     *
-     * @param needsWakeLock If set, this job will acquire a wakelock on add(), and hold it until
-     *                      run() completes, or cancel().
-     * @param timeout       Specify a timeout for the wakelock.  A timeout of
-     *                      0 will result in no timeout.
-     *
-     * @return the builder.
-     */
-    public Builder withWakeLock(boolean needsWakeLock, long timeout, TimeUnit unit) {
-      this.wakeLock        = needsWakeLock;
-      this.wakeLockTimeout = unit.toMillis(timeout);
-      return this;
-    }
-
-    /**
-     * Specify whether this job should hold a wake lock.
-     *
-     * @return the builder.
-     */
-    public Builder withWakeLock(boolean needsWakeLock) {
-      return withWakeLock(needsWakeLock, 0, TimeUnit.MILLISECONDS);
-    }
-
-    /**
      * @return the JobParameters instance that describes a Job.
      */
     public JobParameters create() {
-      return new JobParameters(requirements, groupId, retryCount, System.currentTimeMillis() + retryDuration, wakeLock, wakeLockTimeout);
+      return new JobParameters(requirements, groupId, retryCount, System.currentTimeMillis() + retryDuration);
     }
   }
 }
