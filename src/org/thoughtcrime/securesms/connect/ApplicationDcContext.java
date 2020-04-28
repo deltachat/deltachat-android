@@ -30,6 +30,7 @@ import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
@@ -81,7 +82,7 @@ public class ApplicationDcContext extends DcContext {
     BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
     context.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
-    KeepAliveService.startSelf(context);
+    KeepAliveService.maybeStartSelf(context);
   }
 
   public void setStockTranslations() {

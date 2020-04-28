@@ -468,6 +468,10 @@
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
     <string name="pref_background_custom_color">Custom color</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Reliable service</string>
+    <string name="pref_reliable_service_explain">Requires a permanent notification</string>
+
 
     <!-- automatically delete message -->
     <string name="autodel_title">Auto-delete messages</string>
