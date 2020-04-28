@@ -99,7 +99,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Preference switchAccount = this.findPreference("pref_switch_account");
     if(switchAccount!=null) {
       switchAccount.setOnPreferenceClickListener(preference -> {
-        AccountManager.getInstance().handleSwitchAccount(getActivity());
+        AccountManager.getInstance().showSwitchAccountMenu(getActivity());
         return true;
       });
     }

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 
 public class AccountManager {
 
+    private static final String TAG = AccountManager.class.getSimpleName();
     private static AccountManager self;
 
     private final static String DEFAULT_DB_NAME = "messenger.db";
@@ -193,13 +196,24 @@ public class AccountManager {
 
     public void deleteAccount(Context context, String dbName) {
         try {
-            File file = new File(context.getFilesDir(), dbName);
-            file.delete();
+            File blobdir = new File(context.getFilesDir(), dbName+"-blobs");
+            String [] blobfiles = blobdir.list();
+            for (String blobfile: blobfiles) {
+                new File(blobdir, blobfile).delete();
+            }
+            blobdir.delete();
 
-            File blobs = new File(context.getFilesDir(), dbName+"-blobs");
-            blobs.delete();
+            File dbFile = new File(context.getFilesDir(), dbName);
+            dbFile.delete();
         } catch(Exception e) {
             e.printStackTrace();
+        }
+
+        File test = new File(context.getFilesDir(), dbName);
+        if (test.exists()) {
+            String err = String.format("Cannot delete account %s", test.getAbsolutePath());
+            Log.w(TAG, err);
+            Toast.makeText(context, err, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -260,7 +274,7 @@ public class AccountManager {
 
     // ui
 
-    public void handleSwitchAccount(Activity activity) {
+    public void showSwitchAccountMenu(Activity activity) {
         ArrayList<AccountManager.Account> accounts = getAccounts(activity);
 
         // build menu
@@ -294,13 +308,13 @@ public class AccountManager {
                 });
         if (accounts.size() > 1) {
             builder.setNeutralButton(R.string.delete_account, (dialog, which) -> {
-                handleDeleteAccount(activity);
+                showDeleteAccountMenu(activity);
             });
         }
         builder.show();
     }
 
-    private void handleDeleteAccount(Activity activity) {
+    private void showDeleteAccountMenu(Activity activity) {
         ArrayList<AccountManager.Account> accounts = getAccounts(activity);
 
         ArrayList<String> menu = new ArrayList<>();
@@ -311,7 +325,7 @@ public class AccountManager {
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.delete_account)
                 .setSingleChoiceItems(menu.toArray(new String[menu.size()]), -1, (dialog, which) -> selection[0] = which)
-                .setNegativeButton(R.string.cancel, (dialog, which) -> handleSwitchAccount(activity))
+                .setNegativeButton(R.string.cancel, (dialog, which) -> showSwitchAccountMenu(activity))
                 .setPositiveButton(R.string.ok, (dialog, which) -> {
                     if (selection[0] >= 0 && selection[0] < accounts.size()) {
                         AccountManager.Account account = accounts.get(selection[0]);
@@ -324,15 +338,15 @@ public class AccountManager {
                             new AlertDialog.Builder(activity)
                                     .setTitle(account.getDescr(activity))
                                     .setMessage(R.string.forget_login_confirmation_desktop)
-                                    .setNegativeButton(R.string.cancel, (dialog2, which2) -> handleSwitchAccount(activity))
+                                    .setNegativeButton(R.string.cancel, (dialog2, which2) -> showSwitchAccountMenu(activity))
                                     .setPositiveButton(R.string.ok, (dialog2, which2) -> {
                                         deleteAccount(activity, account.getDbName());
-                                        handleSwitchAccount(activity);
+                                        showSwitchAccountMenu(activity);
                                     })
                                     .show();
                         }
                     } else {
-                        handleDeleteAccount(activity);
+                        showDeleteAccountMenu(activity);
                     }
                 })
                 .show();
