@@ -196,8 +196,12 @@ public class AccountManager {
             File file = new File(context.getFilesDir(), dbName);
             file.delete();
 
-            File blobs = new File(context.getFilesDir(), dbName+"-blobs");
-            blobs.delete();
+            File blobdir = new File(context.getFilesDir(), dbName+"-blobs");
+            String [] blobfiles = blobdir.list();
+            for (String blobfile: blobfiles) {
+                new File(blobdir, blobfile).delete();
+            }
+            blobdir.delete();
         } catch(Exception e) {
             e.printStackTrace();
         }
