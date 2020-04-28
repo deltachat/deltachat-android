@@ -50,6 +50,7 @@
     <string name="email_address">Indiritzu de posta eletrònica</string>
     <string name="bad_email_address">Indiritzu non vàlidu.</string>
     <string name="password">Crae de intrada</string>
+    <string name="existing_password">Crae chi b\'at</string>
     <string name="now">Como</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Perìgulu</string>
@@ -209,8 +210,72 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Ses seguru de chèrrere lassare custu grupu?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Cheres iscantzellare %d tzarrada? No at a èssere prus ammustrada in sa lista de sas tzarradas, ma sos messàgios ant a abarrare in su servidore.</item>
+        <item quantity="other">Cheres iscantzellare %d tzarradas? No ant a èssere prus ammustradas in sa lista de sas tzarradas, ma sos messàgios ant a abarrare in su servidore.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Iscantzellare %d messàgiu inoghe e in su servidore?</item>
+        <item quantity="other">Iscantzellare %d messàgios inoghe e in su servidore?</item>
+    </plurals>
     <string name="ask_forward">Imbiare su messàgiu a %1$s?</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat est a disponimentu in:</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Cuntatos</string>
+    <string name="contacts_enter_name_or_email">Inserta su nùmene o s\'indiritzu de posta eletrònica</string>
+    <string name="contacts_type_email_above">Inserta s\'indiritzu de posta eletrònica inoghe in subra</string>
+    <string name="contacts_empty_hint">Perunu cuntatu.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d tzarrada archiviada</item>
+        <item quantity="other">%d tzarradas archiviadas</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d tzarrada ripristinada</item>
+        <item quantity="other">%d tzarradas ripristinadas</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Tzarradas archiviadas</string>
+    <string name="chat_please_enter_message">Pro praghere inserta unu messàgiu.</string>
+    <string name="chat_camera_unavailable">Fotocàmera non disponìbile</string>
+    <string name="chat_unable_to_record_audio">Registratzione de su sonu fallida</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d messàgiu nou</item>
+        <item quantity="other">%dmessàgios noos</item>
+    </plurals>
+    <string name="chat_record_slide_to_cancel">Iscurre pro annulare</string>
+    <string name="chat_record_explain">Incarca e mantene incarcadu pro registrare unu messàgiu vocale, lassa pro imbiare</string>
+    <string name="chat_share_with_title">Cumpartzi cun</string>
+    <string name="chat_input_placeholder">Messàgiu</string>
+    <string name="chat_archived_label">Archiviadu</string>
+    <string name="chat_no_messages">Perunu messàgiu.</string>
+    <string name="saved_messages">Messàgios sarvados</string>
     <string name="saved_messages_explain">• Torra a imbiare sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n• Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
+    <string name="chat_contact_request">Rechesta de cuntatu</string>
+    <!-- search -->
+    <string name="search">Chirca</string>
+    <string name="search_explain">Chirca in sas tzarradas, sos cuntatos e sos messàgios</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Nùmene de su grupu</string>
+    <string name="group_please_enter_group_name">Inserta unu nùmene pro su grupu.</string>
+    <string name="group_add_members">Annanghe mambros</string>
+    <string name="group_hello_draft">Salude, apo creadu su grupu \"%1$s\" como como pro nois.</string>
+    <string name="group_self_not_in_group">Depes èssre unu membru de su grupu pro fàghere cust\'atzione.</string>
+    <string name="profile_shared_chats">Tzarradas cumpartzidas</string>
+    <string name="tab_contact">Cuntatu</string>
+    <string name="tab_group">Grupu</string>
+    <string name="tab_members">Membros</string>
+    <string name="tab_gallery">Galleria</string>
+    <string name="tab_docs">Documentos</string>
+    <string name="tab_links">Ligàmenes</string>
+    <string name="tab_map">Mapa</string>
+    <string name="login_title">Intra</string>
+    <string name="login_header">Intra in su servidore tuo</string>
+    <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
+    <string name="login_inbox">In arrivu</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Torra a imbiare a...</string>

@@ -374,8 +374,12 @@
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
 
     <string name="used_settings">Используемые настройки:</string>
+    <string name="switch_account">Сменить аккаунт</string>
+    <string name="add_account">Добавить аккаунт</string>
     <string name="delete_account">Удалить аккаунт</string>
     <string name="delete_account_ask">Вы уверены, что хотите удалить данные учётной записи?</string>
+    <string name="switching_account">Меняем аккаунт...</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
@@ -492,12 +496,16 @@
     <string name="autodel_title_short">Автоматическое удаление</string>
     <string name="autodel_device_title">Удалять сообщения с устройства</string>
     <string name="autodel_server_title">Удалять сообщения с сервера</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения %2$s в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Сообщения будут удалены независимо от того, были ли они прочитаны\n\n• \"Сохраненные сообщения\" будут пропущены при локальном удалении</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan in italics or so. -->
+    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения %2$s в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Это также удалит почту, затронутую опцией \"Показывать обычную почту\"\n\n• \"Сохраненные сообщения\" также будут удалены с сервера</string>
+    <string name="autodel_confirm">Я понимаю, удалите все эти сообщения</string>
     <string name="autodel_at_once">Сразу</string>
     <string name="autodel_after_1_hour">Через 1 час</string>
     <string name="autodel_after_1_day">Через 1 день</string>
     <string name="autodel_after_1_week">Через 1 неделю</string>
     <string name="autodel_after_4_weeks">Через 4 недели</string>
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>
@@ -564,7 +572,10 @@
     <string name="qrshow_join_contact_hint">Отсканируйте, чтобы создать контакт с %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Для настройки по QR коду необходимо интернет соединение. Сначала подключитесь к сети интернет.</string>
     <string name="qrshow_join_contact_no_connection_toast">Нет соединения к интернету, невозможно начать процесс настройки по QR коду.</string>
+    <string name="qraccount_ask_create_and_login">Создать новый адрес электронной почты на \"%1$s\" и войти?</string>
+    <string name="qraccount_success_enter_name">Вход удался—ваш адрес электронной почты %1$s\n\nЕсли хотите, вы можете ввести имя и установить аватар, которые будут отображаться людям, которым вы пишете.</string>
     <string name="qraccount_qr_code_cannot_be_used">Отсканированный QR-код не может быть использован для создания нового аккаунта.</string>
+    <string name="qraccount_use_on_new_install">Отсканированный QR-код предназначен для создания нового аккаунта. Вы можете отсканировать QR-код при установке Delta Chat.</string>
     <string name="contact_verified">%1$s подтвержден.</string>
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

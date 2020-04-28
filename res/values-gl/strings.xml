@@ -352,8 +352,12 @@
     <string name="accept_invalid_certificates">Aceptar certificados non válidos</string>
 
     <string name="used_settings">Axustes utilizados:</string>
+    <string name="switch_account">Cambiar de conta</string>
+    <string name="add_account">Engadir conta</string>
     <string name="delete_account">Eliminar conta</string>
     <string name="delete_account_ask">Estás seguro de que queres eliminar os datos da túa conta?</string>
+    <string name="switching_account">Cambiando de conta...</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenviar a...</string>
@@ -480,7 +484,6 @@
     <string name="autodel_after_1_day">Após 1 día</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
     <string name="autodel_after_4_weeks">Após 4 semanas</string>
-
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt é un xeito novo de cifrado extremo-a-extremo automático do correo electrónico.\n\nOs axustes extremo-a-extremo créanse de xeito automático cando se precisan e son transferidos entre dispositivos con Mensaxes de Configuración Autocrypt.</string>
