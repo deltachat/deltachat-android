@@ -260,7 +260,7 @@ public class AccountManager {
 
     // ui
 
-    public void handleSwitchAccount(Activity activity) {
+    public void showSwitchAccountMenu(Activity activity) {
         ArrayList<AccountManager.Account> accounts = getAccounts(activity);
 
         // build menu
@@ -311,7 +311,7 @@ public class AccountManager {
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.delete_account)
                 .setSingleChoiceItems(menu.toArray(new String[menu.size()]), -1, (dialog, which) -> selection[0] = which)
-                .setNegativeButton(R.string.cancel, (dialog, which) -> handleSwitchAccount(activity))
+                .setNegativeButton(R.string.cancel, (dialog, which) -> showSwitchAccountMenu(activity))
                 .setPositiveButton(R.string.ok, (dialog, which) -> {
                     if (selection[0] >= 0 && selection[0] < accounts.size()) {
                         AccountManager.Account account = accounts.get(selection[0]);
@@ -324,10 +324,10 @@ public class AccountManager {
                             new AlertDialog.Builder(activity)
                                     .setTitle(account.getDescr(activity))
                                     .setMessage(R.string.forget_login_confirmation_desktop)
-                                    .setNegativeButton(R.string.cancel, (dialog2, which2) -> handleSwitchAccount(activity))
+                                    .setNegativeButton(R.string.cancel, (dialog2, which2) -> showSwitchAccountMenu(activity))
                                     .setPositiveButton(R.string.ok, (dialog2, which2) -> {
                                         deleteAccount(activity, account.getDbName());
-                                        handleSwitchAccount(activity);
+                                        showSwitchAccountMenu(activity);
                                     })
                                     .show();
                         }

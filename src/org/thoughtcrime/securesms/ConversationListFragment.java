@@ -182,7 +182,7 @@ public class ConversationListFragment extends Fragment
       fab.setOnClickListener(v -> startActivity(intent));
       fab.setOnLongClickListener(v -> {
         if (Prefs.isAccountSwitchingEnabled(getActivity())) {
-          AccountManager.getInstance().handleSwitchAccount(getActivity());
+          AccountManager.getInstance().showSwitchAccountMenu(getActivity());
           return true;
         }
         return false;
