@@ -135,10 +135,12 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   }
 
   public static CharSequence getSummary(Context context) {
-    final int onCapsResId   = R.string.on;
-    final int offCapsResId  = R.string.off;
-
-    return context.getString(Prefs.isNotificationsEnabled(context) ? onCapsResId : offCapsResId);
+    boolean notificationsEnabled = Prefs.isNotificationsEnabled(context);
+    String ret = context.getString(notificationsEnabled ? R.string.on : R.string.off);
+    if (notificationsEnabled && !Prefs.reliableService(context)) {
+      ret += ", " + context.getString(R.string.pref_reliable_service) + " " + context.getString(R.string.off);
+    }
+    return ret;
   }
 
   private class NotificationPrivacyListener extends ListSummaryListener {
