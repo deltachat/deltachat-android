@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 
 public class AccountManager {
 
+    private static final String TAG = AccountManager.class.getSimpleName();
     private static AccountManager self;
 
     private final static String DEFAULT_DB_NAME = "messenger.db";
@@ -193,17 +196,24 @@ public class AccountManager {
 
     public void deleteAccount(Context context, String dbName) {
         try {
-            File file = new File(context.getFilesDir(), dbName);
-            file.delete();
-
             File blobdir = new File(context.getFilesDir(), dbName+"-blobs");
             String [] blobfiles = blobdir.list();
             for (String blobfile: blobfiles) {
                 new File(blobdir, blobfile).delete();
             }
             blobdir.delete();
+
+            File dbFile = new File(context.getFilesDir(), dbName);
+            dbFile.delete();
         } catch(Exception e) {
             e.printStackTrace();
+        }
+
+        File test = new File(context.getFilesDir(), dbName);
+        if (test.exists()) {
+            String err = String.format("Cannot delete account %s", test.getAbsolutePath());
+            Log.w(TAG, err);
+            Toast.makeText(context, err, Toast.LENGTH_LONG).show();
         }
     }
 
