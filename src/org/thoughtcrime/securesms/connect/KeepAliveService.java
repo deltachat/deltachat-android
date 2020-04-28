@@ -10,32 +10,29 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
-import android.os.PowerManager;
 import androidx.core.app.NotificationCompat;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.Prefs;
 
 public class KeepAliveService extends Service {
 
     static KeepAliveService s_this = null;
 
+    public static void maybeStartSelf(Context context) {
+        // note, that unfortunately, the check for isIgnoringBatteryOptimizations() is not sufficient,
+        // this checks only stock-android settings, several os have additional "optimizers" that ignore this setting.
+        // therefore, the most reliable way to not get killed is a permanent-foreground-notification.
+        if(Prefs.reliableService(context))  {
+            startSelf(context);
+        }
+    }
+
     public static void startSelf(Context context)
     {
         try {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
-                if(powerManager.isIgnoringBatteryOptimizations(context.getPackageName())) {
-                    return; // fine, the user has disabled the battery optimisations for us
-                }
-            }
-            else {
-                return; // android <= lollipop does not have a doze mode
-            }
-
-            // if we're here, we're on a system with doze mode and battery optimisations enabled.
-            // add foreground notification to stay alive.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // the started service has to call startForeground() within 5 seconds,
                 // see https://developer.android.com/about/versions/oreo/android-8.0-changes

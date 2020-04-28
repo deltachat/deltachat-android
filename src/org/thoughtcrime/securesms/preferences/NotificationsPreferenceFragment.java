@@ -10,12 +10,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import androidx.annotation.Nullable;
+import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import android.text.TextUtils;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -64,6 +66,19 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIORITY_PREF));
 
     initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
+
+
+    CheckBoxPreference reliableService =  this.findPreference("pref_reliable_service");
+    reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
+      Context context = getContext();
+      boolean enabled = (Boolean) newValue;
+      if (enabled) {
+          KeepAliveService.startSelf(context);
+      } else {
+        context.stopService(new Intent(context, KeepAliveService.class));
+      }
+      return true;
+    });
   }
 
   @Override
@@ -120,10 +135,12 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   }
 
   public static CharSequence getSummary(Context context) {
-    final int onCapsResId   = R.string.on;
-    final int offCapsResId  = R.string.off;
-
-    return context.getString(Prefs.isNotificationsEnabled(context) ? onCapsResId : offCapsResId);
+    boolean notificationsEnabled = Prefs.isNotificationsEnabled(context);
+    String ret = context.getString(notificationsEnabled ? R.string.on : R.string.off);
+    if (notificationsEnabled && !Prefs.reliableService(context)) {
+      ret += ", " + context.getString(R.string.pref_reliable_service) + " " + context.getString(R.string.off);
+    }
+    return ret;
   }
 
   private class NotificationPrivacyListener extends ListSummaryListener {

@@ -40,6 +40,7 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.NoExternalStorageException;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Scrubber;
 import org.thoughtcrime.securesms.util.StorageUtil;
 
@@ -240,6 +241,8 @@ public class LogViewFragment extends Fragment {
         builder.append("ignoreBatteryOptimizations=").append(
             powerManager.isIgnoringBatteryOptimizations(context.getPackageName())).append("\n");
       }
+      builder.append("reliableService=").append(
+              Prefs.reliableService(context)).append("\n");
     } catch (Exception e) {
       builder.append("Unknown\n");
     }

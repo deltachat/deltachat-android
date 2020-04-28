@@ -237,6 +237,15 @@ public class Prefs {
     return result==null? null : Uri.parse(result);
   }
 
+  public static boolean reliableService(Context context) {
+    try {
+      return getBooleanPreference(context, "pref_reliable_service", true);
+    }
+    catch(Exception e) {
+      return false;
+    }
+  }
+
   // vibrate
 
   public static boolean isNotificationVibrateEnabled(Context context) {

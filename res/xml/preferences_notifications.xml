@@ -58,4 +58,10 @@
                 android:entries="@array/pref_notification_priority_entries"
                 android:entryValues="@array/pref_notification_priority_values"/>
 
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="pref_reliable_service"
+            android:title="@string/pref_reliable_service"
+            android:summary="@string/pref_reliable_service_explain"/>
+
 </PreferenceScreen>
