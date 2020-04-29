@@ -457,7 +457,6 @@
     <string name="pref_background_default_color">默认颜色</string>
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
-
     <!-- automatically delete message -->
     <string name="autodel_title">自动删除消息</string>
     <string name="autodel_title_short">自动删除</string>
@@ -473,6 +472,8 @@
     <string name="autodel_after_1_day">1 天后</string>
     <string name="autodel_after_1_week">1 周后</string>
     <string name="autodel_after_4_weeks">4 星期后</string>
+    <string name="autodel_after_1_year">1 年后</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt 是一种用于自动端到端电子邮件加密的全新开放规范。\n\n您的端到端设置会根据需要自动创建并且您可以使用 Autocrypt 设置消息在设备之间传输此设置。</string>

@@ -490,7 +490,6 @@
     <string name="pref_background_default_color">Цвет по умолчанию</string>
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
-
     <!-- automatically delete message -->
     <string name="autodel_title">Автоматическое удаление сообщений</string>
     <string name="autodel_title_short">Автоматическое удаление</string>

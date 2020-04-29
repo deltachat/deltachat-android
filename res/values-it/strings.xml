@@ -464,7 +464,6 @@
     <string name="pref_background_default_color">Colore predefinito</string>
     <string name="pref_background_custom_image">Immagine personalizzata</string>
     <string name="pref_background_custom_color">Colore personalizzato</string>
-
     <!-- automatically delete message -->
     <string name="autodel_title">Auto eliminazione dei messaggi</string>
     <string name="autodel_title_short">Auto-eliminazione</string>

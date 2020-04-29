@@ -470,6 +470,10 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_background_default_color">Voreingestellte Farbe</string>
     <string name="pref_background_custom_image">Benutzerdefiniertes Hintergrundbild</string>
     <string name="pref_background_custom_color">Benutzerdefinierte Farbe</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Zuverlässige Hintergrundverbindung</string>
+    <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
+
 
     <!-- automatically delete message -->
     <string name="autodel_title">Nachrichten automatisch löschen</string>
@@ -574,7 +578,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="notify_media_message">Medienmitteilung</string>
     <string name="notify_reply_button">Antworten</string>
     <string name="notify_new_message">Neue Nachricht</string>
-    <string name="notify_background_connection_enabled">Verbindung im Hintergrund aktiviert</string>
+    <string name="notify_background_connection_enabled">Hintergrundverbindung aktiviert</string>
     <string name="notify_priority_high">Hoch</string>
     <string name="notify_priority_max">Maximum</string>
     <string name="notify_name_and_message">Name und Nachricht</string>

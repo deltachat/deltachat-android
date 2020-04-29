@@ -422,7 +422,6 @@
     <string name="pref_background_default_color">Numatytoji spalva</string>
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
-
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
     <string name="autodel_at_once">Iš karto</string>
     <string name="autodel_after_1_hour">Po 1 valandos</string>

@@ -352,8 +352,12 @@
     <string name="accept_invalid_certificates">Onartu ziurtagiri baliogabeak</string>
 
     <string name="used_settings">Erabilitako ezarpenak:</string>
+    <string name="switch_account">Aldatu kontua</string>
+    <string name="add_account">Gehitu kontua</string>
     <string name="delete_account">Ezabatu kontua</string>
     <string name="delete_account_ask">Ziur al zaude zure kontuaren datuak ezabatu nahi dituzula?</string>
+    <string name="switching_account">Kontua aldatzen...</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
@@ -464,7 +468,6 @@
     <string name="pref_background_default_color">Lehenetsitako kolorea</string>
     <string name="pref_background_custom_image">Irudi pertsonalizatua</string>
     <string name="pref_background_custom_color">Kolore pertsonalizatua</string>
-
     <!-- automatically delete message -->
     <string name="autodel_title">Automatikoki ezabatu mezuak</string>
     <string name="autodel_title_short">Automatikoki ezabatu</string>
@@ -480,6 +483,8 @@
     <string name="autodel_after_1_day">Egun bat eta gero</string>
     <string name="autodel_after_1_week">Aste bat eta gero</string>
     <string name="autodel_after_4_weeks">4 aste eta gero</string>
+    <string name="autodel_after_1_year">Urtebete eta gero</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt e-maila muturretik muturrera zifratzeko espezifikazio berri eta ireki bat da.\n\nZure muturretik muturrerako ezarpena automatikoki sortzend a behar denean eta gailutik gailura eraman dezakezu Autocrypt ezarpen mezuekin.</string>

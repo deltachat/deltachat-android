@@ -308,7 +308,6 @@
     <string name="pref_background_default_color">Colore predefinidu</string>
     <string name="pref_background_custom_image">Immàgine personalizada</string>
     <string name="pref_background_custom_color">Colore personalizadu</string>
-
     <!-- automatically delete message -->
     <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
     <string name="autodel_title_short">Iscantzella automaticamente</string>

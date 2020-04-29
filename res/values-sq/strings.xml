@@ -467,7 +467,6 @@
     <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
     <string name="pref_background_custom_image">Figurë vetjake</string>
     <string name="pref_background_custom_color">Ngjyrë vetjake</string>
-
     <!-- automatically delete message -->
     <string name="autodel_title">Vetëfshi mesazhe</string>
     <string name="autodel_title_short">Vetëfshi</string>
@@ -483,6 +482,8 @@
     <string name="autodel_after_1_day">Pas 1 dite</string>
     <string name="autodel_after_1_week">Pas 1 jave</string>
     <string name="autodel_after_4_weeks">Pas 4 javësh</string>
+    <string name="autodel_after_1_year">Pas 1 viti</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt-i është një protokoll i ri dhe i hapur për fshehtëzim automatik email-esh skaj-më-skaj.\n\nRregullimi skaj-më-skaj për ju krijohet vetvetiu kur duhet dhe mund ta shpërngulni nga një pajisje në tjetër përmes Mesazhesh Rregullimi Autocrypt-i.</string>
