@@ -61,7 +61,7 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_reliable_service"
-            android:title="@string/pref_reliable_service"
-            android:summary="@string/pref_reliable_service_explain"/>
+            android:title="@string/reliability_service"
+            android:summary="@string/reliability_service_explain"/>
 
 </PreferenceScreen>

@@ -138,7 +138,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     boolean notificationsEnabled = Prefs.isNotificationsEnabled(context);
     String ret = context.getString(notificationsEnabled ? R.string.on : R.string.off);
     if (notificationsEnabled && !Prefs.reliableService(context)) {
-      ret += ", " + context.getString(R.string.pref_reliable_service) + " " + context.getString(R.string.off);
+      ret += ", " + context.getString(R.string.reliability_service) + " " + context.getString(R.string.off);
     }
     return ret;
   }

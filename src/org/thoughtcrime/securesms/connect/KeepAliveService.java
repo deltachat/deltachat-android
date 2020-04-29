@@ -102,7 +102,7 @@ public class KeepAliveService extends Service {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 
         builder.setContentTitle(getString(R.string.app_name));
-        builder.setContentText(getString(R.string.notify_background_connection_enabled));
+        builder.setContentText(getString(R.string.reliability_service_enabled));
 
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ) {
             builder.setPriority(NotificationCompat.PRIORITY_MIN);
