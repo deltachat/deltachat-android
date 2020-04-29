@@ -30,10 +30,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -80,7 +82,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
-    DcHelper.getContext(this).updateDeviceChats();
+    ApplicationDcContext dcContext = DcHelper.getContext(this);
+    dcContext.updateDeviceChats();
+
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg.setText("We are happy that we could fulfil the requests of many users - thanks for reporting \uD83E\uDD17 - " +
+            "and could improve the receiving of messages in background!\n\n" +
+            "The task was to avoid letting the operating system kill the connection between Delta Chat and your server.\n\n" +
+            "A reliable way to achieve this is to use an instant service, for which the operating system shows a permanent hint in the status bar or so.\n" +
+            "If you think, this is weird - we totally agree - but so many manufacturer require exactly that \uD83D\uDC49 https://dontkillmyapp.com");
+    dcContext.addDeviceMsg("update1.6.0", msg);
+
     setContentView(R.layout.conversation_list_activity);
 
     Toolbar toolbar = findViewById(R.id.toolbar);
