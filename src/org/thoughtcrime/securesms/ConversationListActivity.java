@@ -86,12 +86,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     dcContext.updateDeviceChats();
 
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText("We are happy that we could fulfil the requests of many users - thanks for reporting \uD83E\uDD17 - " +
-            "and could improve the receiving of messages in background!\n\n" +
-            "The task was to avoid letting the operating system kill the connection between Delta Chat and your server.\n\n" +
-            "A reliable way to achieve this is to use an instant service, for which the operating system shows a permanent hint in the status bar or so.\n" +
-            "If you think, this is weird - we totally agree - but so many manufacturer require exactly that \uD83D\uDC49 https://dontkillmyapp.com");
-    dcContext.addDeviceMsg("update1.6.0", msg);
+    msg.setText(
+            "You may already have noticed, " +
+            "that there is a new hint \"Background connection enabled\" shown by the system.\n" +
+            "\n" +
+            "This hint is required to get reliable background notifications. " +
+            "Without the hint, the operating system would probably kill the connection between Delta Chat and your server -\n" +
+            "if you think, this is weird - we totally agree - but so many manufacturers require exactly that \uD83D\uDC49 https://dontkillmyapp.com\n" +
+            "\n" +
+            "However, we are happy that we could improve the receiving of messages in background with this change and could " +
+            "fulfil the requests of many users - thanks for reporting \uD83E\uDD17");
+    dcContext.addDeviceMsg("update1.6.0-h", msg);
 
     setContentView(R.layout.conversation_list_activity);
 
