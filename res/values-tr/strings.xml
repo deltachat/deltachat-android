@@ -468,6 +468,11 @@
     <string name="pref_background_default_color">Varsayılan renk</string>
     <string name="pref_background_custom_image">Özel görsel</string>
     <string name="pref_background_custom_color">Özel renk</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Güvenilir arka plan bağlantısı</string>
+    <string name="pref_reliable_service_explain">Kalıcı bir bildirim gerektirir</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">İletileri otomatik sil</string>
     <string name="autodel_title_short">Otomatik sil</string>

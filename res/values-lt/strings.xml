@@ -329,8 +329,12 @@
     <string name="login_error_server_response">Atsakymas iš %1$s: %2$s\n\nKai kurie teikėjai patalpina papildomą informaciją į jūsų gautųjų laiškų aplanką; galite ją patikrinti, pvz., prisijungę per naršyklę. Jei susidursite su problema, pagalbos teiraukitės savo teikėjo ar draugų.</string>
 
     <string name="used_settings">Naudoti nustatymai:</string>
+    <string name="switch_account">Perjungti paskyrą</string>
+    <string name="add_account">Pridėti paskyrą</string>
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
+    <string name="switching_account">Perjungiama paskyra…</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Kam persiųsti …</string>

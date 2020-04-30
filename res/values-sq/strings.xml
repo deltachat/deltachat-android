@@ -467,6 +467,11 @@
     <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
     <string name="pref_background_custom_image">Figurë vetjake</string>
     <string name="pref_background_custom_color">Ngjyrë vetjake</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Lidhje e qëndrueshme në prapaskenë</string>
+    <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">Vetëfshi mesazhe</string>
     <string name="autodel_title_short">Vetëfshi</string>

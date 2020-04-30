@@ -468,6 +468,11 @@
     <string name="pref_background_default_color">Standaard kleur</string>
     <string name="pref_background_custom_image">Eigen afbeelding</string>
     <string name="pref_background_custom_color">Eigen kleur</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Betrouwbare achtergrondverbinding</string>
+    <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">Berichten automatisch verwijderen</string>
     <string name="autodel_title_short">Automatisch verwijderen</string>
