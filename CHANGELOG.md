@@ -1,5 +1,20 @@
 # Delta Chat Android Changelog
 
+## v1.6.0
+2020-04-29
+
+* new options to auto-delete messages from the device or from your server
+  see "Settings / Chats and media"
+* to save traffic and time, smaller and faster Ed25519 keys are used by default
+* in-chat search
+* search inside the integrated help
+* new experimental feature that allows switching the account in use
+* improve interaction with traditional mail clients
+* improved onboarding when the provider returns a link
+* bug fixes
+* add Indonesian and Persian translations, update other translations
+
+
 ## v1.3.0
 2020-03-25
 
