@@ -1,10 +1,8 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -25,12 +23,10 @@ import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
@@ -76,13 +72,7 @@ public class ApplicationDcContext extends DcContext {
       Log.e(TAG, "Cannot create wakeLocks");
     }
 
-    new ForegroundDetector(ApplicationContext.getInstance(context));
     startThreads(0);
-
-    BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
-    context.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
-
-    KeepAliveService.maybeStartSelf(context);
   }
 
   public void setStockTranslations() {

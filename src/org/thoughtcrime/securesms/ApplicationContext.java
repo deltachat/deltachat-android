@@ -21,6 +21,9 @@ import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.FetchWorker;
+import org.thoughtcrime.securesms.connect.ForegroundDetector;
+import org.thoughtcrime.securesms.connect.KeepAliveService;
+import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
@@ -57,6 +60,13 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
 
     System.loadLibrary("native-utils");
     dcContext = new ApplicationDcContext(this);
+
+    new ForegroundDetector(ApplicationContext.getInstance(this));
+
+    BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
+    registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
+    KeepAliveService.maybeStartSelf(this);
 
     initializeRandomNumberFix();
     initializeLogging();
