@@ -690,4 +690,9 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat låter dig välja vilka bilder från ditt galleri som du vill skicka.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">Du kanske redan har märkt att det finns ett tips, \"Bakgrundsanslutning aktiverad\" som visas av systemet.\n\n👉 Tipset förhindrar normalt att operativsystemet dödar anslutningen mellan Delta Chat och din server.\n\n👉 Om tipset försvinner utan någon åtgärd från din sida, har anslutningen förmodligen dödats ändå.\nOm du tycker att detta är konstigt, är vi helt överens men många tillverkare gör just så. Webbplatsen https://dontkillmyapp.com visar några lösningar.\n\nVi är dock glada att vi kunde förbättra mottagandet av meddelanden i bakgrunden, med denna förändring, och att vi kunde uppfylla önskemålen från många användare. Tack för rapporteringen! 🤗</string>
+
+
+</resources>
