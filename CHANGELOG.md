@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.6.1
+2020-05-02
+
+* expunge deleted messages more frequently
+* bug fixes
+* update translations
+
+
 ## v1.6.0
 2020-04-29
 
