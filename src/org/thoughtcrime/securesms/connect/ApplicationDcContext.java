@@ -1,10 +1,9 @@
 package org.thoughtcrime.securesms.connect;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -25,12 +24,11 @@ import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
+import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
@@ -76,13 +74,7 @@ public class ApplicationDcContext extends DcContext {
       Log.e(TAG, "Cannot create wakeLocks");
     }
 
-    new ForegroundDetector(ApplicationContext.getInstance(context));
     startThreads(0);
-
-    BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
-    context.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
-
-    KeepAliveService.maybeStartSelf(context);
   }
 
   public void setStockTranslations() {
@@ -537,6 +529,14 @@ public class ApplicationDcContext extends DcContext {
       case DC_EVENT_ERROR_SELF_NOT_IN_GROUP:
         handleError(event, true, dataToString(data2));
         break;
+
+      case DC_EVENT_INCOMING_MSG:
+        MessageNotifierCompat.updateNotification((int) data1, (int) data2); // updateNotification() makes sure to run in the correct thread
+        if (eventCenter != null) {
+          eventCenter.sendToObservers(event, data1, data2); // Other parts of the code are also interested in this event
+        }
+        break;
+
 
       default: {
         final Object data1obj = data1IsString(event) ? dataToString(data1) : data1;
