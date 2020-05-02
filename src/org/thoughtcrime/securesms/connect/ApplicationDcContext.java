@@ -74,7 +74,6 @@ public class ApplicationDcContext extends DcContext {
       Log.e(TAG, "Cannot create wakeLocks");
     }
 
-    initializeIncomingMessageNotifier();
     startThreads(0);
   }
 
@@ -531,6 +530,14 @@ public class ApplicationDcContext extends DcContext {
         handleError(event, true, dataToString(data2));
         break;
 
+      case DC_EVENT_INCOMING_MSG:
+        MessageNotifierCompat.updateNotification(((Long) data1).intValue(), ((Long) data2).intValue());
+        if (eventCenter != null) {
+          eventCenter.sendToObservers(event, data1, data2); // Other parts of the code are also interested in this event
+        }
+        break;
+
+
       default: {
         final Object data1obj = data1IsString(event) ? dataToString(data1) : data1;
         final Object data2obj = data2IsString(event) ? dataToString(data2) : data2;
@@ -541,22 +548,6 @@ public class ApplicationDcContext extends DcContext {
       break;
     }
     return 0;
-  }
-
-  @SuppressLint("StaticFieldLeak")
-  private void initializeIncomingMessageNotifier() {
-
-    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
-      @Override
-      public void handleEvent(int eventId, Object data1, Object data2) {
-        MessageNotifierCompat.updateNotification(((Long) data1).intValue(), ((Long) data2).intValue());
-      }
-
-      @Override
-      public boolean runOnMain() {
-        return false;
-      }
-    });
   }
 
 }
