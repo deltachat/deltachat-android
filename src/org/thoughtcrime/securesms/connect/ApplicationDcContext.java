@@ -531,7 +531,7 @@ public class ApplicationDcContext extends DcContext {
         break;
 
       case DC_EVENT_INCOMING_MSG:
-        MessageNotifierCompat.updateNotification(((Long) data1).intValue(), ((Long) data2).intValue());
+        MessageNotifierCompat.updateNotification((int) data1, (int) data2); // updateNotification() makes sure to run in the correct thread
         if (eventCenter != null) {
           eventCenter.sendToObservers(event, data1, data2); // Other parts of the code are also interested in this event
         }
