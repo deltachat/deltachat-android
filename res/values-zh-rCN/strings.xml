@@ -457,6 +457,11 @@
     <string name="pref_background_default_color">默认颜色</string>
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">可靠后台连接</string>
+    <string name="pref_reliable_service_explain">需要一个永久通知</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">自动删除消息</string>
     <string name="autodel_title_short">自动删除</string>
@@ -655,7 +660,7 @@
     <string name="user_location_permission_explanation">Delta Chat 需要位置权限来显示和分享您的位置。</string>
 
 
-    <!-- accessibility -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">发送状态：错误</string>
     <string name="a11y_encryption_padlock">加密挂锁</string>
     <string name="a11y_delivery_status_sending">发送状态：发送中</string>
@@ -672,4 +677,6 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用您的麦克风来录制、发送语音消息和带有声音的视频。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
-</resources>
+
+
+    </resources>

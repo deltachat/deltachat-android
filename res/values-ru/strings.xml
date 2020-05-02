@@ -473,7 +473,7 @@
     <string name="pref_watch_mvbox_folder">Следить за папкой DeltaChat</string>
     <string name="pref_send_copy_to_self">Отправлять копию себе</string>
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
-    <string name="pref_auto_folder_moves_explain">Чаты были перемещены, чтобы избежать путаницы в папке Входящие</string>
+    <string name="pref_auto_folder_moves_explain">Сообщения чатов переносятся, чтобы избежать путаницы в папке «Входящие»</string>
     <string name="pref_email_interaction_title">Взаимодействие с электронной почтой</string>
     <string name="pref_show_emails">Показывать обычную почту</string>
     <string name="pref_show_emails_no">Нет, только чаты</string>
@@ -490,6 +490,11 @@
     <string name="pref_background_default_color">Цвет по умолчанию</string>
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Надежное фоновое соединение</string>
+    <string name="pref_reliable_service_explain">Требует постоянного уведомления</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">Автоматическое удаление сообщений</string>
     <string name="autodel_title_short">Автоматическое удаление</string>
@@ -505,6 +510,8 @@
     <string name="autodel_after_1_day">Через 1 день</string>
     <string name="autodel_after_1_week">Через 1 неделю</string>
     <string name="autodel_after_4_weeks">Через 4 недели</string>
+    <string name="autodel_after_1_year">Через 1 год</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически и их возможно передавать между своими устройствами используя  сообщения с параметрами Autocrypt.</string>
@@ -688,7 +695,7 @@
     <string name="user_location_permission_explanation">Для отображения и публикации вашего местоположения Delta Chat необходимо разрешение на местоположение.</string>
 
 
-    <!-- accessibility -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Ошибка</string>
     <string name="a11y_encryption_padlock">Значок шифрования</string>
     <string name="a11y_delivery_status_sending">Статус доставки: Отправляется</string>
@@ -705,4 +712,11 @@
     <string name="InfoPlist_NSContactsUsageDescription">Предоставление доступа к адресной книге позволяет общаться с имеющимися на устройстве контактами.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Предоставление доступа к микрофону позволяет записывать звук.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Предоставление доступа к галерее фотографий позволяет загружать изображения из неё.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">Как вы уже могли заметить, система теперь отображает уведомление «Соединение в фоновом режиме включено».\n\n👉 Это уведомление предотвращает остановку соединения между Delta Chat и вашим сервером операционной системой.\n\n👉 Если уведомление исчезает без каких-либо действий с вашей стороны, значит соединение все равно было остановлено\nЕсли вы считаете, что это странно — мы полностью согласны — но многие производители телефонов требуют именно этого. Сайт https://dontkillmyapp.com показывает некоторые обходные пути.\n\nТем не менее, мы рады, что нам удалось улучшить доставку сообщений в фоне с помощью этого изменения и удовлетворить пожелания многих пользователей — спасибо за сообщения об ошибках. 🤗</string>
+
+
 </resources>

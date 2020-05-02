@@ -671,7 +671,7 @@
     <string name="user_location_permission_explanation">Delta Chat heeft de locatiemachtiging nodig om je locatie te kunnen tonen en delen.</string>
 
 
-    <!-- accessibility -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Bezorgstatus: afleveren mislukt</string>
     <string name="a11y_encryption_padlock">Versleutelingsslot</string>
     <string name="a11y_delivery_status_sending">Bezorgstatus: bezig met versturen</string>
@@ -688,4 +688,11 @@
     <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus je contactpersonen worden niet opgestuurd.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Geef Delta Chat toegang tot je microfoon om audio op te nemen voor spraakberichten en in video\'s.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">Je hebt wellicht al gemerkt dat er een systeemmelding \'Achtergrondverbinding ingeschakeld\' wordt getoond.\n\n👉 Deze melding voorkomt dat het systeem de verbinding tussen Delta Chat en je server verbreekt.\n\n👉 Als de melding zomaar verdwijnt, dan is de verbinding waarschijnlijk verbroken.\nVind je dat vreemd? Wij ook. Maar helaas doen sommige fabrikanten dit. Op de website https://dontkillmyapp.com vind je mogelijke oplossingen hiervoor.\n\nDesalniettemin zijn we blij dat we op deze manier het ophalen van berichten op de achtergrond hebben verbeterd en daarmee een grote gebruikerswens in vervulling hebben laten gaan. Bedankt voor alle steun 🤗</string>
+
+
 </resources>

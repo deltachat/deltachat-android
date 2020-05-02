@@ -670,7 +670,7 @@
     <string name="user_location_permission_explanation">Që të mund të shfaqë dhe ndajë me të tjerët vendndodhjen tuaj, Delta Chat lyp lejen vendore.</string>
 
 
-    <!-- accessibility -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Gjendje dërgimi: Gabim</string>
     <string name="a11y_encryption_padlock">Dry fshehtëzimi</string>
     <string name="a11y_delivery_status_sending">Gjendje dërgimi: Po dërgohet</string>
@@ -687,4 +687,11 @@
     <string name="InfoPlist_NSContactsUsageDescription">Lejimi i përdorimi të librit tuaj të adresave kamerës ju bën të mundur të bisedoni me kontakte prej pajisjes tuaj.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Lejimi i përdorimi të mikrofonit ju bën të mundur të bëni incizoni audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Lejimi i përdorimi të fototekës tuaj ju bën të mundur të ngarkoni figura prej saj.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">Mund të keni vënë re tashmë se ka një ndihmëz \"Lidhje në prapaskenë e aktivizuar\" shfaqur nga sistemi.\n\n👉 Normalisht ndihmëza shërben për te penguar sistemin operativ të asgjësojë lidhjen mes Delta Chat-it dhe shërbyesin tuaj.\n\n👉 Nëse ndihmëza zhduket pa ndonjë veprim nga ana juaj, lidhja ka mundësi të jetë asgjësuar.\nNëse kjo ju duket e çuditshme - pajtohemi me ju plotësisht - por prodhuesit e telefonave bëjnë pikërisht këtë. Sajti https://dontkillmyapp.com tregon disa zgjidhje prej halli.\n\nSidoqoftë, jemi të lumtur që me këtë ndryshim mund të përmirësojmë marrjen e mesazheve në prapaskenë dhe mund të plotësojmë kërkesat e mjaft përdoruesve - faleminderit që e keni kërkuar 🤗</string>
+
+
 </resources>

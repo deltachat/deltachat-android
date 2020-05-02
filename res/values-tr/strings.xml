@@ -597,7 +597,7 @@
     <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat arka plandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
-    <string name="perm_enable_bg_already_done">Delta Chat\'in iletileri arka planda almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
+    <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrelenen ileti</string>
@@ -671,7 +671,7 @@
     <string name="user_location_permission_explanation">Delta Chat\'in konumunuzu göstermesi ya da paylaşması için konum izni gerekir.</string>
 
 
-    <!-- accessibility -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Teslimat durumu: Hata</string>
     <string name="a11y_encryption_padlock">Şifreleme asma kilidi</string>
     <string name="a11y_delivery_status_sending">Teslimat durumu: Gönderiliyor</string>
@@ -688,4 +688,11 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat\'in sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat, göndermek için kitaplığınızdan fotoğraflar seçmenizi sağlayacak.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">Sistem tarafından gösterilen bir \"Arka plan bağlantısı etkinleştirildi\" ipucu olduğunu zaten fark etmiş olabilirsiniz.\n\n👉 İpucu, normal olarak işletim sisteminin Delta Chat ve sunucunuz arasındaki bağlantıyı kesmesini önler.\n\n👉 Sizin tarafınızda herhangi bir eylem olmadan ipucu kaybolursa, bağlantının yine de kesilmesi olasıdır.\nBunun olmaması gerektiğini düşünüyorsanız - genelde buna katılırız - ama çoğu üretici tam olarak bunu yapar. https://dontkillmyapp.com sitesi, bazı geçici çözümleri gösterir.\n\nBununla birlikte, bu değişiklikle arka planda iletilerin alınmasını iyileştirebildiğimiz ve çoğu kullanıcının isteklerini yerine getirebildiğimiz için mutluyuz - raporlama için teşekkürler 🤗</string>
+
+
 </resources>

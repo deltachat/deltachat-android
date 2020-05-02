@@ -640,7 +640,7 @@
     <string name="user_location_permission_explanation">Delta Chat necesita el permiso de ubicación para mostrar y compartir tu ubicación.</string>
 
 
-    <!-- accessibility -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado de envío: Error</string>
     <string name="a11y_encryption_padlock">Candado de cifrado</string>
     <string name="a11y_delivery_status_sending">Estado de envío: Enviando</string>
@@ -657,4 +657,11 @@
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Al permitir el acceso al micrófono podrás grabar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Al permitir el acceso a la galería de fotos podrás subir tus imágenes desde allí.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">Es posible que ya haya notado que el sistema muestra una notificación \"Conexión de fondo habilitada\".\n\n👉 Esta notificación normalmente impide que el sistema operativo corte la conexión entre Delta Chat y su servidor.\n\n👉 Si la notificación desaparece sin ninguna acción de su parte, la conexión probablemente se haya interrumpido de todos modos. Si cree, esto es extraño, estamos totalmente de acuerdo, pero muchos fabricantes hacen exactamente eso. El sitio https://dontkillmyapp.com muestra algunas soluciones.\n\nSin embargo, estamos contentos de poder mejorar la recepción de mensajes en segundo plano con esta cambio y podríamos satisfacer las solicitudes de muchos usuarios. Gracias por informarnos. 🤗</string>
+
+
 </resources>

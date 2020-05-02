@@ -664,7 +664,7 @@
     <string name="user_location_permission_explanation">Delta Chat precisa permiso para poder mostrar e compartir a túa localización.</string>
 
 
-    <!-- accessibility -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado da entrega: Fallo</string>
     <string name="a11y_encryption_padlock">Cadeado do cifrado</string>
     <string name="a11y_delivery_status_sending">Estado da entrega: Enviando</string>
@@ -681,4 +681,6 @@
     <string name="InfoPlist_NSContactsUsageDescription">Permitir o acceso a libreta de enderezos permíteche conversar con contactos do dispositivo.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Permitindo o acceso ao micrófono poderás gravar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Permitindo o acceso a galería de fotos poderás subir imaxes desde ela.</string>
-</resources>
+
+
+    </resources>
