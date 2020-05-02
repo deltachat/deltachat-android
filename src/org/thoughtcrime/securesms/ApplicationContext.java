@@ -71,7 +71,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeRandomNumberFix();
     initializeLogging();
     initializeJobManager();
-    initializeIncomingMessageNotifier();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
     MessageNotifierCompat.init(this);
 
@@ -138,23 +137,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
 
   private void initializeLogging() {
     SignalProtocolLoggerProvider.setProvider(new AndroidSignalProtocolLogger());
-  }
-
-  @SuppressLint("StaticFieldLeak")
-  private void initializeIncomingMessageNotifier() {
-
-    DcEventCenter dcEventCenter = dcContext.eventCenter;
-    dcEventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
-      @Override
-      public void handleEvent(int eventId, Object data1, Object data2) {
-        MessageNotifierCompat.updateNotification(((Long) data1).intValue(), ((Long) data2).intValue());
-      }
-
-      @Override
-      public boolean runOnMain() {
-        return false;
-      }
-    });
   }
 
   private void initializeJobManager() {

@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.connect;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
+import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -72,6 +74,7 @@ public class ApplicationDcContext extends DcContext {
       Log.e(TAG, "Cannot create wakeLocks");
     }
 
+    initializeIncomingMessageNotifier();
     startThreads(0);
   }
 
@@ -538,6 +541,22 @@ public class ApplicationDcContext extends DcContext {
       break;
     }
     return 0;
+  }
+
+  @SuppressLint("StaticFieldLeak")
+  private void initializeIncomingMessageNotifier() {
+
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, new DcEventCenter.DcEventDelegate() {
+      @Override
+      public void handleEvent(int eventId, Object data1, Object data2) {
+        MessageNotifierCompat.updateNotification(((Long) data1).intValue(), ((Long) data2).intValue());
+      }
+
+      @Override
+      public boolean runOnMain() {
+        return false;
+      }
+    });
   }
 
 }
