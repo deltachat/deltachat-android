@@ -65,8 +65,15 @@ public class ContactAccessor {
     List<String> mailList = new ArrayList<>();
     Set<String> contactPhotoIdentifiers = new HashSet<>();
     while (systemContactsCursor != null && systemContactsCursor.moveToNext()) {
+
       String name = systemContactsCursor.getString(CONTACT_CURSOR_NAME);
+      name = name.replace("\r", ""); // remove characters later used as field separator
+      name = name.replace("\n", "");
+
       String mail = systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
+      mail = mail.replace("\r", ""); // remove characters later used as field separator
+      mail = mail.replace("\n", "");
+
       String contactId = systemContactsCursor.getString(CONTACT_CURSOR_CONTACT_ID);
       if (contactId != null) {
         String identifier = name + mail;
