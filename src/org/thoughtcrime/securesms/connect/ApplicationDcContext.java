@@ -1,9 +1,9 @@
 package org.thoughtcrime.securesms.connect;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -13,6 +13,8 @@ import android.os.PowerManager;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
+
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
@@ -54,6 +56,22 @@ public class ApplicationDcContext extends DcContext {
 
     File dbfile = AccountManager.getInstance().getSelectedAccount(context);
     open(dbfile.getAbsolutePath());
+
+    // migration, can be removed after some versions (added 5/2020)
+    // (this will convert only for one account, but that is fine, multi-account is experimental anyway)
+    try {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      if(sharedPreferences.contains("pref_compression")) {
+        if (sharedPreferences.getString("pref_compression", "0").equals("1")) {
+          setConfigInt("media_quality", DC_MEDIA_QUALITY_WORSE);
+        }
+        sharedPreferences.edit().remove("pref_compression").apply();
+      }
+    }
+    catch(Exception e) {
+      Log.e(TAG, "cannot migrate pref_compression");
+    }
+    // /migration
 
     try {
       PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
