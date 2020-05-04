@@ -8,12 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
-import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
-import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -25,7 +22,6 @@ import org.thoughtcrime.securesms.BlockedAndShareContactsActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -37,6 +33,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
 
   private ListPreference showEmails;
+  private ListPreference mediaQuality;
   private CheckBoxPreference readReceiptsCheckbox;
 
   private ListPreference autoDelDevice;
@@ -46,8 +43,12 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
 
-    findPreference("pref_compression")
-            .setOnPreferenceChangeListener(new ListSummaryListener());
+    mediaQuality = (ListPreference) this.findPreference("pref_compression");
+    mediaQuality.setOnPreferenceChangeListener((preference, newValue) -> {
+      updateListSummary(preference, newValue);
+      dcContext.setConfigInt("media_quality", Util.objectToInt(newValue));
+      return true;
+    });
 
     showEmails = (ListPreference) this.findPreference("pref_show_emails");
     showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -81,11 +82,14 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     super.onResume();
     ((ApplicationPreferencesActivity)getActivity()).getSupportActionBar().setTitle(R.string.pref_chats_and_media);
 
-    initializeListSummary((ListPreference) findPreference("pref_compression"));
-
     String value = Integer.toString(dcContext.getConfigInt("show_emails"));
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
+
+    value = Integer.toString(dcContext.getConfigInt("media_quality"));
+    mediaQuality.setValue(value);
+    updateListSummary(mediaQuality, value);
+
     readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled"));
 
     initAutodelFromCore();
