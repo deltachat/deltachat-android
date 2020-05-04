@@ -175,7 +175,7 @@ public class Prefs {
   }
 
   public static boolean isHardCompressionEnabled(Context context) {
-    return DcHelper.getContext(context).getConfigInt("media_quality") == DcContext.DC_MEDIA_QUALITY_WORSE;
+    return DcHelper.getContext(context).getConfigInt(DcHelper.CONFIG_MEDIA_QUALITY) == DcContext.DC_MEDIA_QUALITY_WORSE;
   }
 
   public static boolean isLocationStreamingEnabled(Context context) {

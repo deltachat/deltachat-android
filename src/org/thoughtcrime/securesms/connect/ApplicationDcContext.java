@@ -63,7 +63,7 @@ public class ApplicationDcContext extends DcContext {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       if(sharedPreferences.contains("pref_compression")) {
         if (sharedPreferences.getString("pref_compression", "0").equals("1")) {
-          setConfigInt("media_quality", DC_MEDIA_QUALITY_WORSE);
+          setConfigInt(DcHelper.CONFIG_MEDIA_QUALITY, DC_MEDIA_QUALITY_WORSE);
         }
         sharedPreferences.edit().remove("pref_compression").apply();
       }

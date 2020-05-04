@@ -29,6 +29,7 @@ public class DcHelper {
     public static final String CONFIG_MVBOX_MOVE = "mvbox_move";
     public static final String CONFIG_BCC_SELF = "bcc_self";
     public static final String CONFIG_SHOW_EMAILS = "show_emails";
+    public static final String CONFIG_MEDIA_QUALITY = "media_quality";
 
     public static ApplicationDcContext getContext(Context context) {
         return ApplicationContext.getInstance(context).dcContext;

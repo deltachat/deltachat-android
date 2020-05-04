@@ -46,7 +46,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     mediaQuality = (ListPreference) this.findPreference("pref_compression");
     mediaQuality.setOnPreferenceChangeListener((preference, newValue) -> {
       updateListSummary(preference, newValue);
-      dcContext.setConfigInt("media_quality", Util.objectToInt(newValue));
+      dcContext.setConfigInt(DcHelper.CONFIG_MEDIA_QUALITY, Util.objectToInt(newValue));
       return true;
     });
 
@@ -86,7 +86,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     showEmails.setValue(value);
     updateListSummary(showEmails, value);
 
-    value = Integer.toString(dcContext.getConfigInt("media_quality"));
+    value = Integer.toString(dcContext.getConfigInt(DcHelper.CONFIG_MEDIA_QUALITY));
     mediaQuality.setValue(value);
     updateListSummary(mediaQuality, value);
 
