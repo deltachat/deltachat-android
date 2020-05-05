@@ -253,7 +253,6 @@ abstract class MessageNotifier {
                 firstItem.getText(""), firstItem.getSlideDeck());
         builder.setContentIntent(firstItem.getPendingIntent(context));
         builder.setGroup(NOTIFICATION_GROUP);
-        builder.setDeleteIntent(notificationState.getMarkAsReadIntent(context, chatId, notificationId));
 
         long timestamp = firstItem.getTimestamp();
         if (timestamp != 0) builder.setWhen(timestamp);
@@ -313,7 +312,6 @@ abstract class MessageNotifier {
         builder.setMessageCount(notificationState.getMessageCount(), notificationState.getChatCount());
         builder.setMostRecentSender(firstItem.getIndividualRecipient());
         builder.setGroup(NOTIFICATION_GROUP);
-        builder.setDeleteIntent(notificationState.getMarkAsReadIntent(context, 0, SUMMARY_NOTIFICATION_ID));
 
         long timestamp = firstItem.getTimestamp();
         if (timestamp != 0) builder.setWhen(timestamp);
