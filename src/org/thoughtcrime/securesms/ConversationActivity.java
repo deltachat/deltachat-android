@@ -1108,7 +1108,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return future;
   }
 
-  private static class RelayingTask extends AsyncTask<Void, Void, Void> {
+  static class RelayingTask extends AsyncTask<Void, Void, Void> {
 
     WeakReference<Activity> activityRef;
     int chatId;
@@ -1143,8 +1143,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     private void handleSharing(Activity activity) {
       DcContext dcContext = DcHelper.getContext(activity);
       ArrayList<Uri> uris = getSharedUris(activity);
+      Log.e(TAG, "HandleSharing, size: " + uris.size());
       try {
         for(Uri uri : uris) {
+          Log.e(TAG, "HandleSharing "+uri);
           DcMsg message = createMessage(activityRef.get(), uri);
           dcContext.sendMsg(chatId, message);
           cleanup(activity, uri);
