@@ -66,6 +66,7 @@ import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.SendMessageUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
@@ -80,6 +81,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageConte
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 
 public class ConversationListFragment extends Fragment
@@ -193,8 +195,12 @@ public class ConversationListFragment extends Fragment
                       final Set<Long> selectedChats = getListAdapter().getBatchSelections();
                       for (long chatId : selectedChats) {
                         Log.e(TAG, "...to "+chatId);
-                        new ConversationActivity.RelayingTask(getActivity(), (int) chatId).execute();
+                        SendMessageUtil.immediatelyRelay(getActivity(), (int) chatId);
                       }
+                      resetRelayingMessageContent(getActivity());
+                      actionMode.finish();
+                      actionMode = null;
+                      startActivity(new Intent(getActivity(), (ConversationListActivity.class)));
                     })
                     .show();
           }

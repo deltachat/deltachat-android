@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.util;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -131,6 +132,5 @@ public class RelayUtil {
     public static void setDirectSharing(Intent composeIntent, int chatId) {
         composeIntent.putExtra(DIRECT_SHARING_CHAT_ID, chatId);
     }
-
 
 }

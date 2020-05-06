@@ -103,6 +103,7 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.SendMessageUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -124,13 +125,10 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
-import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetSharedText;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -643,7 +641,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleForwarding() {
     DcChat dcChat = dcContext.getChat(chatId);
     if (dcChat.isSelfTalk()) {
-      new RelayingTask(this, chatId).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      SendMessageUtil.immediatelyRelay(this, chatId);
     } else {
       String name = dcChat.getName();
       if (!dcChat.isGroup()) {
@@ -654,7 +652,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       new AlertDialog.Builder(this)
               .setMessage(getString(R.string.ask_forward, name))
-              .setPositiveButton(R.string.ok, (dialogInterface, i) -> new RelayingTask(this, chatId).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR))
+              .setPositiveButton(R.string.ok, (dialogInterface, i) -> SendMessageUtil.immediatelyRelay(this, chatId))
               .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
               .show();
     }
@@ -672,11 +670,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {
                 finish();
               }))
-              .setPositiveButton(R.string.menu_send, (dialog, which) -> new RelayingTask(this, chatId).execute())
+              .setPositiveButton(R.string.menu_send, (dialog, which) -> SendMessageUtil.immediatelyRelay(this, chatId))
               .show();
     } else {
         if (uriList.size() == 1) {
-          DcMsg message = createMessage(this, uriList.get(0), getSharedText(this));
+          DcMsg message = SendMessageUtil.createMessage(this, uriList.get(0), getSharedText(this));
           dcContext.setDraft(chatId, message);
         }
         initializeDraft().addListener(new AssertedSuccessListener<Boolean>() {
@@ -1108,120 +1106,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, msg, recompress);
 
     return future;
-  }
-
-  static class RelayingTask extends AsyncTask<Void, Void, Void> {
-
-    WeakReference<Activity> activityRef;
-    int chatId;
-
-    RelayingTask(Activity activity, int chatId) {
-      activityRef = new WeakReference<>(activity);
-      this.chatId = chatId;
-    }
-
-    @Override
-    protected Void doInBackground(Void... voids) {
-      Activity activity = activityRef.get();
-      if (activity == null) {
-        return null;
-      }
-
-      activity.setResult(RESULT_OK);
-      if (isForwarding(activity)) {
-        handleForwarding(activity);
-      } else if (isSharing(activity)) {
-        handleSharing(activity);
-      }
-      return null;
-    }
-
-
-    private void handleForwarding(Activity activity) {
-      DcContext dcContext = DcHelper.getContext(activity);
-      dcContext.forwardMsgs(getForwardedMessageIDs(activity), chatId);
-    }
-
-    private void handleSharing(Activity activity) {
-      DcContext dcContext = DcHelper.getContext(activity);
-      ArrayList<Uri> uris = getSharedUris(activity);
-      Log.e(TAG, "HandleSharing, size: " + uris.size()+" text: "+ getSharedText(activity));
-      try {
-        DcMsg textMessage = createMessage(activity, null, getSharedText(activity));
-        dcContext.sendMsg(chatId, textMessage);
-        for(Uri uri : uris) {
-          Log.e(TAG, "HandleSharing "+uri + " text: "+ getSharedText(activity));
-          DcMsg message = createMessage(activity, uri, null);
-          dcContext.sendMsg(chatId, message);
-          cleanup(activity, uri);
-        }
-      } catch (NullPointerException npe) {
-        Log.w(TAG, "Activity destroyed before background task finished. " +
-                "Cancelling message relaying. " +
-                npe.getMessage());
-      }
-    }
-
-    private void cleanup(Context context, final @Nullable Uri uri) {
-      if (uri != null && PersistentBlobProvider.isAuthority(context, uri)) {
-        Log.w(TAG, "cleaning up " + uri);
-        PersistentBlobProvider.getInstance(context).delete(context, uri);
-      }
-    }
-
-  }
-
-  private static DcMsg createMessage(Context context, Uri uri, String text) throws NullPointerException {
-    DcContext dcContext = DcHelper.getContext(context);
-    DcMsg message;
-    String mimeType = MediaUtil.getMimeType(context, uri);
-    if (uri == null) {
-      message = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    } else if (MediaUtil.isImageType(mimeType)) {
-      message = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
-    }
-    else if (MediaUtil.isAudioType(mimeType)) {
-      message = new DcMsg(dcContext,DcMsg.DC_MSG_AUDIO);
-    }
-    else if (MediaUtil.isVideoType(mimeType)) {
-      message = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
-    }
-    else {
-      message = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
-    }
-
-    if (uri != null) {
-      message.setFile(getRealPathFromUri(context, uri), mimeType);
-    }
-    message.setText(text);
-    return message;
-  }
-
-  private static String getRealPathFromUri(Context context, Uri uri) throws NullPointerException {
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
-    try {
-      String filename = uri.getPathSegments().get(2); // Get real file name from Uri
-      String ext = "";
-      int i = filename.lastIndexOf(".");
-      if(i>=0) {
-        ext = filename.substring(i);
-        filename = filename.substring(0, i);
-      }
-      String path = dcContext.getBlobdirFile(filename, ext);
-
-      // copy content to this file
-      if(path != null) {
-        InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
-        OutputStream outputStream = new FileOutputStream(path);
-        Util.copy(inputStream, outputStream);
-      }
-
-      return path;
-    }
-    catch(Exception e) {
-      e.printStackTrace();
-      return null;
-    }
   }
 
 
