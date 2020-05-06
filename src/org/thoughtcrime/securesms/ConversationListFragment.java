@@ -193,10 +193,7 @@ public class ConversationListFragment extends Fragment
                     .setPositiveButton(R.string.menu_send, (dialog, which) -> {
                       Log.e(TAG, "sending uris: " + getSharedUris(getActivity()).size() + " text: "+getSharedText(getActivity()));
                       final Set<Long> selectedChats = getListAdapter().getBatchSelections();
-                      for (long chatId : selectedChats) {
-                        Log.e(TAG, "...to "+chatId);
-                        SendMessageUtil.immediatelyRelay(getActivity(), (int) chatId);
-                      }
+                      SendMessageUtil.immediatelyRelay(getActivity(), selectedChats);
                       resetRelayingMessageContent(getActivity());
                       actionMode.finish();
                       actionMode = null;

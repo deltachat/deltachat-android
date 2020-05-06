@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.util;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Handler;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Set;
 
 import static android.app.Activity.RESULT_OK;
 import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
@@ -30,7 +32,19 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 public class SendMessageUtil {
   private static final String TAG = SendMessageUtil.class.getSimpleName();
 
+  public static void immediatelyRelay(Activity activity, Set<Long> chatIds) {
+    Util.runOnAnyBackgroundThread(() -> {
+      for (long chatId: chatIds) {
+        immediatelyRelayInner(activity, (int) chatId);
+      }
+    });
+  }
+
   public static void immediatelyRelay(Activity activity, int chatId) {
+    Util.runOnAnyBackgroundThread(() -> immediatelyRelayInner(activity, chatId));
+  }
+
+  private static void immediatelyRelayInner(Activity activity, int chatId) {
     activity.setResult(RESULT_OK);
     if (isForwarding(activity)) {
       handleForwarding(activity, chatId);
@@ -57,7 +71,10 @@ public class SendMessageUtil {
       }
       for (Uri uri : uris) {
         dcContext.sendMsg(chatId, createMessage(activity, uri, null));
-        cleanup(activity, uri);
+
+        // The file might still be needed because it is sent to multiple chats. But as soon as this
+        // thread has finished its current task (sharing files), it can be safely deleted.
+        new Handler().post(() -> cleanup(activity, uri));
       }
     }
   }
