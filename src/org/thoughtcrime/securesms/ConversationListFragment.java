@@ -194,7 +194,8 @@ public class ConversationListFragment extends Fragment
                       resetRelayingMessageContent(getActivity());
                       actionMode.finish();
                       actionMode = null;
-                      startActivity(new Intent(getActivity(), (ConversationListActivity.class)));
+                      // Start this activity again, this time with an intent without sharing:
+                      startActivity(new Intent(getActivity(), ConversationListActivity.class));
                     })
                     .show();
           }
@@ -498,6 +499,7 @@ public class ConversationListFragment extends Fragment
   }
 
   private void updateActionModeItems(Menu menu) {
+    // We do not show action mode icons when relaying (= sharing or forwarding).
     if (!isRelayingMessageContent(getActivity())) {
       MenuItem pinItem = menu.findItem(R.id.menu_pin_selected);
       if (areSomeSelectedChatsUnpinned()) {

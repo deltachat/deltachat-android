@@ -53,7 +53,7 @@ public class RelayUtil {
         }
     }
 
-    public static int[] getForwardedMessageIDs(Activity activity) {
+    static int[] getForwardedMessageIDs(Activity activity) {
         try {
             return activity.getIntent().getIntArrayExtra(FORWARDED_MESSAGE_IDS);
         } catch (NullPointerException npe) {
@@ -74,14 +74,6 @@ public class RelayUtil {
             return activity.getIntent().getStringExtra(TEXT_EXTRA);
         } catch (NullPointerException npe) {
             return null;
-        }
-    }
-
-    public static void resetSharedText(Activity activity) {
-        try {
-            activity.getIntent().removeExtra(TEXT_EXTRA);
-        } catch (NullPointerException npe) {
-            npe.printStackTrace();
         }
     }
 
