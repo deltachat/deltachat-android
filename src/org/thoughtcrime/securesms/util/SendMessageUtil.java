@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
@@ -48,15 +47,18 @@ public class SendMessageUtil {
   private static void handleSharing(Activity activity, int chatId) {
     DcContext dcContext = DcHelper.getContext(activity);
     ArrayList<Uri> uris = getSharedUris(activity);
+    String text = getSharedText(activity);
 
-    Log.e(TAG, "HandleSharing, size: " + uris.size()+" text: "+ getSharedText(activity));
-    DcMsg textMessage = createMessage(activity, null, getSharedText(activity));
-    dcContext.sendMsg(chatId, textMessage);
-    for(Uri uri : uris) {
-      Log.e(TAG, "HandleSharing "+uri + " text: "+ getSharedText(activity));
-      DcMsg message = createMessage(activity, uri, null);
-      dcContext.sendMsg(chatId, message);
-      cleanup(activity, uri);
+    if (uris.size() == 1) {
+      dcContext.sendMsg(chatId, createMessage(activity, uris.get(0), text));
+    } else {
+      if (text != null) {
+        dcContext.sendMsg(chatId, createMessage(activity, null, text));
+      }
+      for (Uri uri : uris) {
+        dcContext.sendMsg(chatId, createMessage(activity, uri, null));
+        cleanup(activity, uri);
+      }
     }
   }
 
@@ -75,21 +77,20 @@ public class SendMessageUtil {
       message = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     } else if (MediaUtil.isImageType(mimeType)) {
       message = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
-    }
-    else if (MediaUtil.isAudioType(mimeType)) {
-      message = new DcMsg(dcContext,DcMsg.DC_MSG_AUDIO);
-    }
-    else if (MediaUtil.isVideoType(mimeType)) {
+    } else if (MediaUtil.isAudioType(mimeType)) {
+      message = new DcMsg(dcContext, DcMsg.DC_MSG_AUDIO);
+    } else if (MediaUtil.isVideoType(mimeType)) {
       message = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
-    }
-    else {
+    } else {
       message = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
     }
 
     if (uri != null) {
       message.setFile(getRealPathFromUri(context, uri), mimeType);
     }
-    message.setText(text);
+    if (text != null) {
+      message.setText(text);
+    }
     return message;
   }
 
@@ -99,22 +100,21 @@ public class SendMessageUtil {
       String filename = uri.getPathSegments().get(2); // Get real file name from Uri
       String ext = "";
       int i = filename.lastIndexOf(".");
-      if(i>=0) {
+      if (i >= 0) {
         ext = filename.substring(i);
         filename = filename.substring(0, i);
       }
       String path = dcContext.getBlobdirFile(filename, ext);
 
       // copy content to this file
-      if(path != null) {
+      if (path != null) {
         InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
         OutputStream outputStream = new FileOutputStream(path);
         Util.copy(inputStream, outputStream);
       }
 
       return path;
-    }
-    catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return null;
     }
