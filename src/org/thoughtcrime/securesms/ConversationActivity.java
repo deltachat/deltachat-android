@@ -660,7 +660,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleSharing() {
     ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
-    RelayUtil.resetRelayingMessageContent(this); // This avoids that the shared text appears again if another chat is opened
+    RelayUtil.resetRelayingMessageContent(this);
     if (uriList == null) return;
     if (uriList.size() > 1) {
       String message = String.format(getString(R.string.share_multiple_attachments), uriList.size());
