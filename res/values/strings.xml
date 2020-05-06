@@ -362,6 +362,7 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Forward to…</string>
     <string name="share_multiple_attachments">Do you want to send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_multiple_attachments_multiple_chats">Do you want to send %1$d file(s) to %2$d chats?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
 
