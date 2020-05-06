@@ -180,7 +180,6 @@ public class ConversationListFragment extends Fragment
     Intent intent = new Intent(getActivity(), NewConversationActivity.class);
     if (isRelayingMessageContent(getActivity())) {
       if (isActionMode) {
-        Log.e(TAG, "init fab actionmode");
         fab.setOnClickListener(v -> {
           String message = String.format("Do you want to share?");
           Context context = getContext();
@@ -190,7 +189,6 @@ public class ConversationListFragment extends Fragment
                     .setCancelable(false)
                     .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {}))
                     .setPositiveButton(R.string.menu_send, (dialog, which) -> {
-                      Log.e(TAG, "sending uris: " + getSharedUris(getActivity()).size() + " text: "+getSharedText(getActivity()));
                       final Set<Long> selectedChats = getListAdapter().getBatchSelections();
                       SendMessageUtil.immediatelyRelay(getActivity(), selectedChats);
                       resetRelayingMessageContent(getActivity());
@@ -203,11 +201,9 @@ public class ConversationListFragment extends Fragment
         });
       } else {
         acquireRelayMessageContent(getActivity(), intent);
-        Log.e(TAG, "init fab nonactionmode");
         fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_RELAY));
       }
     } else {
-      Log.e(TAG, "init fab nonrelaying");
       fab.setOnClickListener(v -> startActivity(intent));
     }
   }
