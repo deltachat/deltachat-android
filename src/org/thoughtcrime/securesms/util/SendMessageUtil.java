@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.Collection;
 
 import static android.app.Activity.RESULT_OK;
 import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
@@ -29,49 +29,48 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 public class SendMessageUtil {
   private static final String TAG = SendMessageUtil.class.getSimpleName();
 
-  public static void immediatelyRelay(Activity activity, Set<Long> chatIds) {
-    Util.runOnAnyBackgroundThread(() -> {
-      for (long chatId : chatIds) {
-        immediatelyRelayInner(activity, (int) chatId);
-      }
-      cleanup(activity);
-    });
-  }
-
   public static void immediatelyRelay(Activity activity, int chatId) {
-    Util.runOnAnyBackgroundThread(() -> {
-      immediatelyRelayInner(activity, chatId);
-      cleanup(activity);
-    });
+    immediatelyRelay(activity, new Long[]{(long) chatId});
   }
 
-  private static void immediatelyRelayInner(Activity activity, int chatId) {
+  public static void immediatelyRelay(Activity activity, final Long[] chatIds) {
     activity.setResult(RESULT_OK);
     if (isForwarding(activity)) {
-      handleForwarding(activity, chatId);
+      int[] forwardedMessageIDs = getForwardedMessageIDs(activity);
+      Util.runOnAnyBackgroundThread(() -> {
+        for (long chatId : chatIds) {
+          handleForwarding(activity, (int) chatId, forwardedMessageIDs);
+        }
+      });
     } else if (isSharing(activity)) {
-      handleSharing(activity, chatId);
+      ArrayList<Uri> sharedUris = getSharedUris(activity);
+      String sharedText = getSharedText(activity);
+      Util.runOnAnyBackgroundThread(() -> {
+        for (long chatId : chatIds) {
+          handleSharing(activity, (int) chatId, sharedUris, sharedText);
+        }
+      });
     }
   }
 
-  private static void handleForwarding(Activity activity, int chatId) {
-    DcContext dcContext = DcHelper.getContext(activity);
-    dcContext.forwardMsgs(getForwardedMessageIDs(activity), chatId);
+  private static void handleForwarding(Context context, int chatId, int[] forwardedMessageIDs) {
+    DcContext dcContext = DcHelper.getContext(context);
+    dcContext.forwardMsgs(forwardedMessageIDs, chatId);
   }
 
-  private static void handleSharing(Activity activity, int chatId) {
-    DcContext dcContext = DcHelper.getContext(activity);
-    ArrayList<Uri> uris = getSharedUris(activity);
-    String text = getSharedText(activity);
+  private static void handleSharing(Context context, int chatId, ArrayList<Uri> sharedUris, String sharedText) {
+    DcContext dcContext = DcHelper.getContext(context);
+    ArrayList<Uri> uris = sharedUris;
+    String text = sharedText;
 
     if (uris.size() == 1) {
-      dcContext.sendMsg(chatId, createMessage(activity, uris.get(0), text));
+      dcContext.sendMsg(chatId, createMessage(context, uris.get(0), text));
     } else {
       if (text != null) {
-        dcContext.sendMsg(chatId, createMessage(activity, null, text));
+        dcContext.sendMsg(chatId, createMessage(context, null, text));
       }
       for (Uri uri : uris) {
-        dcContext.sendMsg(chatId, createMessage(activity, uri, null));
+        dcContext.sendMsg(chatId, createMessage(context, uri, null));
       }
     }
   }

@@ -39,7 +39,6 @@ import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -78,7 +77,6 @@ import java.util.Set;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
@@ -181,7 +179,13 @@ public class ConversationListFragment extends Fragment
     if (isRelayingMessageContent(getActivity())) {
       if (isActionMode) {
         fab.setOnClickListener(v -> {
-          String message = String.format("Do you want to share?");
+          final Set<Long> selectedChats = getListAdapter().getBatchSelections();
+          String message = String.format(
+                  Locale.getDefault(),
+                  getString(R.string.share_multiple_attachments_multiple_chats),
+                  getSharedUris(getActivity()).size(),
+                  selectedChats.size()
+          );
           Context context = getContext();
           if (context != null) {
             new AlertDialog.Builder(context)
@@ -189,8 +193,7 @@ public class ConversationListFragment extends Fragment
                     .setCancelable(false)
                     .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {}))
                     .setPositiveButton(R.string.menu_send, (dialog, which) -> {
-                      final Set<Long> selectedChats = getListAdapter().getBatchSelections();
-                      SendMessageUtil.immediatelyRelay(getActivity(), selectedChats);
+                      SendMessageUtil.immediatelyRelay(getActivity(), selectedChats.toArray(new Long[selectedChats.size()]));
                       resetRelayingMessageContent(getActivity());
                       actionMode.finish();
                       actionMode = null;
