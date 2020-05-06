@@ -3,10 +3,7 @@ package org.thoughtcrime.securesms.util;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
-import android.os.Handler;
 import android.util.Log;
-
-import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
@@ -34,14 +31,18 @@ public class SendMessageUtil {
 
   public static void immediatelyRelay(Activity activity, Set<Long> chatIds) {
     Util.runOnAnyBackgroundThread(() -> {
-      for (long chatId: chatIds) {
+      for (long chatId : chatIds) {
         immediatelyRelayInner(activity, (int) chatId);
       }
+      cleanup(activity);
     });
   }
 
   public static void immediatelyRelay(Activity activity, int chatId) {
-    Util.runOnAnyBackgroundThread(() -> immediatelyRelayInner(activity, chatId));
+    Util.runOnAnyBackgroundThread(() -> {
+      immediatelyRelayInner(activity, chatId);
+      cleanup(activity);
+    });
   }
 
   private static void immediatelyRelayInner(Activity activity, int chatId) {
@@ -71,18 +72,16 @@ public class SendMessageUtil {
       }
       for (Uri uri : uris) {
         dcContext.sendMsg(chatId, createMessage(activity, uri, null));
-
-        // The file might still be needed because it is sent to multiple chats. But as soon as this
-        // thread has finished its current task (sharing files), it can be safely deleted.
-        new Handler().post(() -> cleanup(activity, uri));
       }
     }
   }
 
-  private static void cleanup(Context context, final @Nullable Uri uri) {
-    if (uri != null && PersistentBlobProvider.isAuthority(context, uri)) {
-      Log.w(TAG, "cleaning up " + uri);
-      PersistentBlobProvider.getInstance(context).delete(context, uri);
+  private static void cleanup(Activity activity) {
+    for (Uri uri : getSharedUris(activity)) {
+      if (uri != null && PersistentBlobProvider.isAuthority(activity, uri)) {
+        Log.i(TAG, "cleaning up " + uri);
+        PersistentBlobProvider.getInstance(activity).delete(activity, uri);
+      }
     }
   }
 
