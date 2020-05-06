@@ -61,11 +61,11 @@ public class RelayUtil {
         }
     }
 
-    public static ArrayList<Uri> getSharedUris(Activity activity) {
+    public static @NonNull ArrayList<Uri> getSharedUris(Activity activity) {
         try {
             return activity.getIntent().getParcelableArrayListExtra(SHARED_URIS);
         } catch (NullPointerException npe) {
-            return null;
+            return new ArrayList<>();
         }
     }
 
@@ -106,7 +106,7 @@ public class RelayUtil {
             if (isDirectSharing(currentActivity)) {
                 newActivityIntent.putExtra(DIRECT_SHARING_CHAT_ID, getDirectSharingChatId(currentActivity));
             }
-            if (getSharedUris(currentActivity) != null) {
+            if (!getSharedUris(currentActivity).isEmpty()) {
                 newActivityIntent.putParcelableArrayListExtra(SHARED_URIS, getSharedUris(currentActivity));
             }
             if (getSharedText(currentActivity) != null) {
