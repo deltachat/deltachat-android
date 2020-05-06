@@ -660,15 +660,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleSharing() {
     ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
-    RelayUtil.resetRelayingMessageContent(this);
     if (uriList.size() > 1) {
       String message = String.format(getString(R.string.share_multiple_attachments), uriList.size());
       new AlertDialog.Builder(this)
               .setMessage(message)
               .setCancelable(false)
-              .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {
-                finish();
-              }))
+              .setNegativeButton(android.R.string.cancel, ((dialog, which) -> finish()))
               .setPositiveButton(R.string.menu_send, (dialog, which) -> SendMessageUtil.immediatelyRelay(this, chatId))
               .show();
     } else {
@@ -683,6 +680,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           }
         });
     }
+    RelayUtil.resetRelayingMessageContent(this);
   }
 
   ///// Initializers

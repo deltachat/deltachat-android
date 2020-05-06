@@ -188,8 +188,7 @@ public class ConversationListFragment extends Fragment
             new AlertDialog.Builder(context)
                     .setMessage(message)
                     .setCancelable(false)
-                    .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {
-                    }))
+                    .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {}))
                     .setPositiveButton(R.string.menu_send, (dialog, which) -> {
                       Log.e(TAG, "sending uris: " + getSharedUris(getActivity()).size() + " text: "+getSharedText(getActivity()));
                       final Set<Long> selectedChats = getListAdapter().getBatchSelections();
