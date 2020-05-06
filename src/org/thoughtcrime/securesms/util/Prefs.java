@@ -12,8 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.b44t.messenger.DcContext;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 
 import java.util.ArrayList;
@@ -173,12 +175,7 @@ public class Prefs {
   }
 
   public static boolean isHardCompressionEnabled(Context context) {
-    try {
-      return getStringPreference(context, "pref_compression", "0").equals("1");
-    }
-    catch(Exception e) {
-      return false;
-    }
+    return DcHelper.getContext(context).getConfigInt(DcHelper.CONFIG_MEDIA_QUALITY) == DcContext.DC_MEDIA_QUALITY_WORSE;
   }
 
   public static boolean isLocationStreamingEnabled(Context context) {
