@@ -125,10 +125,12 @@ import java.util.concurrent.ExecutionException;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
 import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetSharedText;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -674,7 +676,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               .show();
     } else {
         if (uriList.size() == 1) {
-          DcMsg message = createMessage(this, uriList.get(0));
+          DcMsg message = createMessage(this, uriList.get(0), getSharedText(this));
           dcContext.setDraft(chatId, message);
         }
         initializeDraft().addListener(new AssertedSuccessListener<Boolean>() {
@@ -1143,11 +1145,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     private void handleSharing(Activity activity) {
       DcContext dcContext = DcHelper.getContext(activity);
       ArrayList<Uri> uris = getSharedUris(activity);
-      Log.e(TAG, "HandleSharing, size: " + uris.size());
+      Log.e(TAG, "HandleSharing, size: " + uris.size()+" text: "+ getSharedText(activity));
       try {
+        DcMsg textMessage = createMessage(activity, null, getSharedText(activity));
+        dcContext.sendMsg(chatId, textMessage);
         for(Uri uri : uris) {
-          Log.e(TAG, "HandleSharing "+uri);
-          DcMsg message = createMessage(activityRef.get(), uri);
+          Log.e(TAG, "HandleSharing "+uri + " text: "+ getSharedText(activity));
+          DcMsg message = createMessage(activity, uri, null);
           dcContext.sendMsg(chatId, message);
           cleanup(activity, uri);
         }
@@ -1167,11 +1171,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   }
 
-  private static DcMsg createMessage(Context context, Uri uri) throws NullPointerException {
+  private static DcMsg createMessage(Context context, Uri uri, String text) throws NullPointerException {
     DcContext dcContext = DcHelper.getContext(context);
     DcMsg message;
     String mimeType = MediaUtil.getMimeType(context, uri);
-    if (MediaUtil.isImageType(mimeType)) {
+    if (uri == null) {
+      message = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    } else if (MediaUtil.isImageType(mimeType)) {
       message = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
     }
     else if (MediaUtil.isAudioType(mimeType)) {
@@ -1183,7 +1189,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     else {
       message = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
     }
-    message.setFile(getRealPathFromUri(context, uri), mimeType);
+
+    if (uri != null) {
+      message.setFile(getRealPathFromUri(context, uri), mimeType);
+    }
+    message.setText(text);
     return message;
   }
 

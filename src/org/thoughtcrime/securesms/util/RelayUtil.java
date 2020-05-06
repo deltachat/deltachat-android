@@ -76,6 +76,15 @@ public class RelayUtil {
         }
     }
 
+    public static void resetSharedText(Activity activity) {
+        try {
+            activity.getIntent().removeExtra(TEXT_EXTRA);
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();
+        }
+    }
+
+
     public static void resetRelayingMessageContent(Activity activity) {
         try {
             activity.getIntent().removeExtra(FORWARDED_MESSAGE_IDS);

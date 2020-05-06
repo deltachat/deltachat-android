@@ -77,6 +77,8 @@ import java.util.Set;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 
@@ -175,7 +177,6 @@ public class ConversationListFragment extends Fragment
   private void initializeFabClickListener(boolean isActionMode) {
     Intent intent = new Intent(getActivity(), NewConversationActivity.class);
     if (isRelayingMessageContent(getActivity())) {
-      acquireRelayMessageContent(getActivity(), intent);
       if (isActionMode) {
         Log.e(TAG, "init fab actionmode");
         fab.setOnClickListener(v -> {
@@ -188,7 +189,7 @@ public class ConversationListFragment extends Fragment
                     .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {
                     }))
                     .setPositiveButton(R.string.menu_send, (dialog, which) -> {
-                      Log.e(TAG, "sending");
+                      Log.e(TAG, "sending uris: " + getSharedUris(getActivity()).size() + " text: "+getSharedText(getActivity()));
                       final Set<Long> selectedChats = getListAdapter().getBatchSelections();
                       for (long chatId : selectedChats) {
                         Log.e(TAG, "...to "+chatId);
@@ -199,6 +200,7 @@ public class ConversationListFragment extends Fragment
           }
         });
       } else {
+        acquireRelayMessageContent(getActivity(), intent);
         Log.e(TAG, "init fab nonactionmode");
         fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_RELAY));
       }
