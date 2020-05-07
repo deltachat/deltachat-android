@@ -265,7 +265,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     MediaItem mediaItem = getCurrentMediaItem();
 
     if (mediaItem != null) {
-      Intent composeIntent = new Intent(this, ConversationListActivity.class);
+      Intent composeIntent = ConversationListActivity.getLaunchIntent(this);
       int[] msgIds = new int[]{mediaItem.msgId};
       setForwardingMessageIds(composeIntent, msgIds);
       startActivity(composeIntent);

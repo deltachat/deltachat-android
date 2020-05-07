@@ -417,7 +417,7 @@ public class ConversationFragment extends Fragment
     }
 
     private void handleForwardMessage(final Set<DcMsg> messageRecords) {
-        Intent composeIntent = new Intent(getActivity(), ConversationListActivity.class);
+        Intent composeIntent = ConversationListActivity.getLaunchIntent(getActivity());
         int[] msgIds = DcMsg.msgSetToIds(messageRecords);
         setForwardingMessageIds(composeIntent, msgIds);
         startActivityForResult(composeIntent, REQUEST_RELAY);

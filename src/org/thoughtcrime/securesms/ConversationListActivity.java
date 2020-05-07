@@ -16,6 +16,7 @@
  */
 package org.thoughtcrime.securesms;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -338,5 +339,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       default:
         break;
     }
+  }
+
+  public static Intent getLaunchIntent(Context context) {
+    Intent intent = new Intent(context, ConversationListActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    return intent;
   }
 }

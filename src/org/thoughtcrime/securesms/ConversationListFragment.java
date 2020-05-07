@@ -151,6 +151,8 @@ public class ConversationListFragment extends Fragment
     initializeListAdapter();
   }
 
+
+
   @Override
   public void onResume() {
     super.onResume();
