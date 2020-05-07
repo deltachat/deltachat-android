@@ -185,7 +185,7 @@ public class ConversationListFragment extends Fragment
           final Set<Long> selectedChats = getListAdapter().getBatchSelections();
           ArrayList<Uri> uris = getSharedUris(getActivity());
           String message;
-          if (uris.size() > 1) {
+          if (uris.size() > 0) {
             message = String.format(Locale.getDefault(), getString(R.string.share_multiple_attachments_multiple_chats), uris.size(), selectedChats.size());
           } else {
             message = String.format(Locale.getDefault(), getString(R.string.share_text_multiple_chats), selectedChats.size(), getSharedText(getActivity()));
