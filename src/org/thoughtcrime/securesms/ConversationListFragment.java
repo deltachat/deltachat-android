@@ -81,6 +81,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
@@ -185,7 +186,9 @@ public class ConversationListFragment extends Fragment
           final Set<Long> selectedChats = getListAdapter().getBatchSelections();
           ArrayList<Uri> uris = getSharedUris(getActivity());
           String message;
-          if (uris.size() > 0) {
+          if (isForwarding(getActivity())) {
+            message = String.format(Locale.getDefault(), getString(R.string.ask_forward_multiple), selectedChats.size());
+          } else if (uris.size() > 0) {
             message = String.format(Locale.getDefault(), getString(R.string.share_multiple_attachments_multiple_chats), uris.size(), selectedChats.size());
           } else {
             message = String.format(Locale.getDefault(), getString(R.string.share_text_multiple_chats), selectedChats.size(), getSharedText(getActivity()));
