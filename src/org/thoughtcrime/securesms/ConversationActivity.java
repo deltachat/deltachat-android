@@ -129,6 +129,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -680,8 +681,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           isShareDraftInitialized = true;
         }
       });
+      resetRelayingMessageContent(this);
     }
-    RelayUtil.resetRelayingMessageContent(this);
   }
 
   ///// Initializers

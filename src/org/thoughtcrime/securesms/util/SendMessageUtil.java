@@ -25,6 +25,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 public class SendMessageUtil {
   private static final String TAG = SendMessageUtil.class.getSimpleName();
@@ -37,14 +38,17 @@ public class SendMessageUtil {
     activity.setResult(RESULT_OK);
     if (isForwarding(activity)) {
       int[] forwardedMessageIDs = getForwardedMessageIDs(activity);
+      resetRelayingMessageContent(activity);
       Util.runOnAnyBackgroundThread(() -> {
         for (long chatId : chatIds) {
           handleForwarding(activity, (int) chatId, forwardedMessageIDs);
         }
+
       });
     } else if (isSharing(activity)) {
       ArrayList<Uri> sharedUris = getSharedUris(activity);
       String sharedText = getSharedText(activity);
+      resetRelayingMessageContent(activity);
       Util.runOnAnyBackgroundThread(() -> {
         for (long chatId : chatIds) {
           handleSharing(activity, (int) chatId, sharedUris, sharedText);

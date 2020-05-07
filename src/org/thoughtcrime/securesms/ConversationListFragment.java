@@ -198,7 +198,6 @@ public class ConversationListFragment extends Fragment
                     .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {}))
                     .setPositiveButton(R.string.menu_send, (dialog, which) -> {
                       SendMessageUtil.immediatelyRelay(getActivity(), selectedChats.toArray(new Long[selectedChats.size()]));
-                      resetRelayingMessageContent(getActivity());
                       actionMode.finish();
                       actionMode = null;
                       // Start this activity again, this time with an intent without sharing:
