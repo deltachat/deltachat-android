@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -71,12 +72,14 @@ import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
@@ -180,12 +183,13 @@ public class ConversationListFragment extends Fragment
       if (isActionMode) {
         fab.setOnClickListener(v -> {
           final Set<Long> selectedChats = getListAdapter().getBatchSelections();
-          String message = String.format(
-                  Locale.getDefault(),
-                  getString(R.string.share_multiple_attachments_multiple_chats),
-                  getSharedUris(getActivity()).size(),
-                  selectedChats.size()
-          );
+          ArrayList<Uri> uris = getSharedUris(getActivity());
+          String message;
+          if (uris.size() > 1) {
+            message = String.format(Locale.getDefault(), getString(R.string.share_multiple_attachments_multiple_chats), uris.size(), selectedChats.size());
+          } else {
+            message = String.format(Locale.getDefault(), getString(R.string.share_text_multiple_chats), selectedChats.size(), getSharedText(getActivity()));
+          }
           Context context = getContext();
           if (context != null) {
             new AlertDialog.Builder(context)
