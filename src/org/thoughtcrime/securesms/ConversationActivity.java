@@ -669,16 +669,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               .setPositiveButton(R.string.menu_send, (dialog, which) -> SendMessageUtil.immediatelyRelay(this, chatId))
               .show();
     } else {
-        if (uriList.size() == 1) {
-          DcMsg message = SendMessageUtil.createMessage(this, uriList.get(0), getSharedText(this));
-          dcContext.setDraft(chatId, message);
+      if (uriList.isEmpty()) {
+        dcContext.setDraft(chatId, SendMessageUtil.createMessage(this, null, getSharedText(this)));
+      } else {
+        dcContext.setDraft(chatId, SendMessageUtil.createMessage(this, uriList.get(0), getSharedText(this)));
+      }
+      initializeDraft().addListener(new AssertedSuccessListener<Boolean>() {
+        @Override
+        public void onSuccess(Boolean result) {
+          isShareDraftInitialized = true;
         }
-        initializeDraft().addListener(new AssertedSuccessListener<Boolean>() {
-          @Override
-          public void onSuccess(Boolean result) {
-            isShareDraftInitialized = true;
-          }
-        });
+      });
     }
     RelayUtil.resetRelayingMessageContent(this);
   }
@@ -686,27 +687,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   ///// Initializers
 
   private ListenableFuture<Boolean> initializeDraft() {
-    final SettableFuture<Boolean> result = new SettableFuture<>();
-
-    final String    draftText      = getIntent().getStringExtra(TEXT_EXTRA);
-    final Uri       draftMedia     = getIntent().getData();
-    final MediaType draftMediaType = MediaType.from(getIntent().getType());
-
-    if (draftText != null) {
-      composeText.setText(draftText);
-      result.set(true);
-    }
-    if (draftMedia != null && draftMediaType != null) {
-      return setMedia(draftMedia, draftMediaType);
-    }
-
-    if (draftText == null && draftMedia == null && draftMediaType == null) {
-      return initializeDraftFromDatabase();
-    } else {
-      updateToggleButtonState();
-      result.set(false);
-    }
-
+    ListenableFuture<Boolean> result = initializeDraftFromDatabase();
+    updateToggleButtonState();
     return result;
   }
 
