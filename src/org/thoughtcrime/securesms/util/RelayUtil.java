@@ -62,11 +62,14 @@ public class RelayUtil {
     }
 
     public static @NonNull ArrayList<Uri> getSharedUris(Activity activity) {
-        try {
-            return activity.getIntent().getParcelableArrayListExtra(SHARED_URIS);
-        } catch (NullPointerException npe) {
-            return new ArrayList<>();
+        if (activity != null) {
+            Intent i = activity.getIntent();
+            if (i != null) {
+                ArrayList<Uri> uris = i.getParcelableArrayListExtra(SHARED_URIS);
+                if (uris != null) return uris;
+            }
         }
+        return new ArrayList<>();
     }
 
     public static String getSharedText(Activity activity) {
