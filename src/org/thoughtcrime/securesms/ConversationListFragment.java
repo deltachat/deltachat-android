@@ -63,6 +63,7 @@ import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
@@ -74,6 +75,7 @@ import java.util.Set;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 
@@ -95,14 +97,12 @@ public class ConversationListFragment extends Fragment
   private Locale                      locale;
   private String                      queryFilter  = "";
   private boolean                     archive;
-  private boolean                     forwarding;
 
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
     locale  = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
-    forwarding = getArguments().getBoolean(FORWARDING, false);
 
     ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
@@ -360,7 +360,7 @@ public class ConversationListFragment extends Fragment
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
-    } else if (forwarding) {
+    } else if (RelayUtil.isRelayingMessageContent(getActivity())) {
       listflags |= DcContext.DC_GCL_FOR_FORWARDING;
     } else {
       listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT;
