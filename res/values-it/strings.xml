@@ -352,8 +352,12 @@
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
 
     <string name="used_settings">Impostazioni in uso:</string>
+    <string name="switch_account">Cambia account</string>
+    <string name="add_account">Aggiungi account</string>
     <string name="delete_account">Elimina account</string>
     <string name="delete_account_ask">Sei certo di voler eliminare i dati dell\'account?</string>
+    <string name="switching_account">Cambio account</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Inotra a...</string>
@@ -464,6 +468,11 @@
     <string name="pref_background_default_color">Colore predefinito</string>
     <string name="pref_background_custom_image">Immagine personalizzata</string>
     <string name="pref_background_custom_color">Colore personalizzato</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Connessione in background affidabile</string>
+    <string name="pref_reliable_service_explain">Richiede una notifica permanente</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">Auto eliminazione dei messaggi</string>
     <string name="autodel_title_short">Auto-eliminazione</string>
@@ -479,6 +488,8 @@
     <string name="autodel_after_1_day">Dopo 1 giorno</string>
     <string name="autodel_after_1_week">Dopo 1 settimana</string>
     <string name="autodel_after_4_weeks">Dopo 4 settimane</string>
+    <string name="autodel_after_1_year">Dopo 1 anno</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt è una nuova specifica aperta per la cifratura end-to-end delle email.\n\nLa tua configurazione end-to-end viene creata automaticamente quando necessario e puoi trasferirla tra dispositivi tramite i Messaggi di configurazione.</string>
@@ -505,7 +516,7 @@
     <string name="systemmsg_member_removed">Membro %1$s rimosso.</string>
     <string name="systemmsg_group_left">Gruppo abbandonato.</string>
     <string name="systemmsg_read_receipt_subject">Ricevuta di lettura</string>
-    <string name="systemmsg_read_receipt_body">Questa è una ricevuta di lettura del messaggio \"%1$s\".\n\nCiò significa che il messaggio è stato mostrato nel dispositivo del destinatario, ma necessariamente che il contenuto è stato letto.</string>
+    <string name="systemmsg_read_receipt_body">Questa è una ricevuta di lettura del messaggio \"%1$s\".\n\nCiò significa che il messaggio è stato mostrato nel dispositivo del destinatario, ma non necessariamente che il contenuto è stato letto.</string>
     <string name="systemmsg_cannot_decrypt">Questo messaggio non può essere decrittato.\n\n• Potrebbe essere sufficiente rispondere a questo messaggio e chiedere al mittente di rispedirlo.\n\n• Se hai reinstallato Delta Chat o usi un altro client email dovresti inviare un Messaggio di configurazione Autocrypt dal dispositivo originario.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s da me.</string>
@@ -679,4 +690,9 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Autorizzare l\'accesso alla galleria ti permette di caricare foto da essa.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">Potresti aver già notato che esiste una notifica \"Connessione in background abilitata\" mostrata dal sistema.\n\n 👉 La notifica normalmente impedisce al sistema operativo di interrompere la connessione tra Delta Chat e il tuo server.\n\n Se la notifica scompare senza alcuna azione da parte tua, la connessione è stata probabilmente soppressa.\nSe pensi che sia strano, siamo totalmente d\'accordo - ma molti produttori fanno esattamente questo. Il sito https://dontkillmyapp.com mostra alcune soluzioni alternative.\n\nTuttavia, siamo felici di poter migliorare la ricezione dei messaggi in background con questa modifica e di soddisfare le richieste di molti utenti, grazie per avercelo segnalato 🤗</string>
+
+
+</resources>

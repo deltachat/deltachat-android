@@ -679,4 +679,9 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">您可能已经注意到了，系统显示了“后台连接已启用”的提示。\n\n👉通常，该提示可防止操作系统终止 Delta Chat 与您的服务器之间的连接。\n\n👉如果您没有采取任何行动而提示消失了，则连接可能已被终止。\n如果您认为这很奇怪，我们完全同意——但许多制造商确实是这么做的。网站 https://dontkillmyapp.com 给出了一些解决办法。\n\n不过，我们很高兴可以通过此更改改善后台的消息接收并能满足许多用户的请求——感谢您的报告🤗</string>
+
+
+</resources>

@@ -468,6 +468,11 @@
     <string name="pref_background_default_color">Cor por omisión</string>
     <string name="pref_background_custom_image">Imaxe persoal</string>
     <string name="pref_background_custom_color">Cor persoal</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Conexión estable en segundo plano</string>
+    <string name="pref_reliable_service_explain">Require unha notificación permanente</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">Borrado automático</string>
     <string name="autodel_title_short">Borrar automáticamente</string>
@@ -483,6 +488,8 @@
     <string name="autodel_after_1_day">Após 1 día</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
     <string name="autodel_after_4_weeks">Após 4 semanas</string>
+    <string name="autodel_after_1_year">Após 1 ano</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt é un xeito novo de cifrado extremo-a-extremo automático do correo electrónico.\n\nOs axustes extremo-a-extremo créanse de xeito automático cando se precisan e son transferidos entre dispositivos con Mensaxes de Configuración Autocrypt.</string>
@@ -683,4 +690,9 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Permitindo o acceso a galería de fotos poderás subir imaxes desde ela.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">Igual xa o notaches, hai un aviso \"Conexión en segundo plano activada\" na bandexa do sistema.\n\n👉 O aviso normalmente evita que o sistema corte a conexión entre Delta Chat e o teu servidor.\n\n👉 O aviso desaparece sen que teñas que facer nada, a conexión vaise cortar igualmente.\nSe cres que é raro, entendémolo - pero moitos fabricantes fan precisamente eso. A web https://dontkillmyapp.com proporciona posibles solucións.\n\nPorén, agrádanos poder mellorar a recepción de mensaxes en segundo plano con este cambio e poder cumprir coas expectativas de moitas usuarias - grazas por informarnos  🤗</string>
+
+
+</resources>
