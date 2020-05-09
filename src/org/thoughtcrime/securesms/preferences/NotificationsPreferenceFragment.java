@@ -71,9 +71,21 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     CheckBoxPreference reliableService =  this.findPreference("pref_reliable_service");
     reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
       Context context = getContext();
-      boolean enabled = (Boolean) newValue;
-      if (enabled) {
+      boolean enabled = (Boolean) newValue; // Prefs.reliableService() still has the old value
+      if (enabled && Prefs.isNotificationsEnabled(context)) {
           KeepAliveService.startSelf(context);
+      } else {
+        context.stopService(new Intent(context, KeepAliveService.class));
+      }
+      return true;
+    });
+
+    CheckBoxPreference notificationsEnabled = this.findPreference("pref_key_enable_notifications");
+    notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+      Context context = getContext();
+      boolean enabled = (Boolean) newValue; // Prefs.isNotificationsEnabled() still has the old value
+      if (enabled && Prefs.reliableService(context)) {
+        KeepAliveService.startSelf(context);
       } else {
         context.stopService(new Intent(context, KeepAliveService.class));
       }
@@ -137,9 +149,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   public static CharSequence getSummary(Context context) {
     boolean notificationsEnabled = Prefs.isNotificationsEnabled(context);
     String ret = context.getString(notificationsEnabled ? R.string.on : R.string.off);
-    if (notificationsEnabled && !Prefs.reliableService(context)) {
-      ret += ", " + context.getString(R.string.pref_reliable_service) + " " + context.getString(R.string.off);
-    }
     return ret;
   }
 

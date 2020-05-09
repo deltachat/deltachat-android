@@ -241,6 +241,8 @@ public class LogViewFragment extends Fragment {
         builder.append("ignoreBatteryOptimizations=").append(
             powerManager.isIgnoringBatteryOptimizations(context.getPackageName())).append("\n");
       }
+      builder.append("notifications=").append(
+              Prefs.isNotificationsEnabled(context)).append("\n");
       builder.append("reliableService=").append(
               Prefs.reliableService(context)).append("\n");
     } catch (Exception e) {
