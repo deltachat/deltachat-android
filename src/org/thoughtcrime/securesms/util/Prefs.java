@@ -236,7 +236,7 @@ public class Prefs {
 
   public static boolean reliableService(Context context) {
     try {
-      return getBooleanPreference(context, "pref_reliable_service", true);
+      return getBooleanPreference(context, "pref_reliable_service", false);
     }
     catch(Exception e) {
       return false;

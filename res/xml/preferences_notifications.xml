@@ -7,6 +7,13 @@
                             android:title="@string/pref_notifications"
                             android:defaultValue="true" />
 
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:dependency="pref_key_enable_notifications"
+            android:defaultValue="false"
+            android:key="pref_reliable_service"
+            android:title="@string/pref_reliable_service"
+            android:summary="@string/pref_reliable_service_explain"/>
+
         <Preference
                 android:dependency="pref_key_enable_notifications"
                 android:key="pref_key_ringtone"
@@ -57,11 +64,5 @@
                 android:defaultValue="1"
                 android:entries="@array/pref_notification_priority_entries"
                 android:entryValues="@array/pref_notification_priority_values"/>
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_reliable_service"
-            android:title="@string/pref_reliable_service"
-            android:summary="@string/pref_reliable_service_explain"/>
 
 </PreferenceScreen>

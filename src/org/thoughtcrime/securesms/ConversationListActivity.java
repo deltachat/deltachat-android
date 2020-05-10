@@ -84,14 +84,13 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   protected void onCreate(Bundle icicle, boolean ready) {
     ApplicationDcContext dcContext = DcHelper.getContext(this);
 
-    // show the permanent-notification hint above the welcome-messages (that is also visible in the preview)
-    // for existing installation, of course, that will be the last as the welcome-messages are added long time ago.
-    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(getString(R.string.device_talk_background_connection_android));
-    dcContext.addDeviceMsg("update1.6.0-h", msg);
-
     // add welcome message
     dcContext.updateDeviceChats();
+    if (dcContext.wasDeviceMsgEverAdded("update1.6.0-h")) {
+      DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+      msg.setText(getString(R.string.device_talk_background_connection2_android));
+      dcContext.addDeviceMsg("update1.8.0-a", msg);
+    }
 
     setContentView(R.layout.conversation_list_activity);
 
