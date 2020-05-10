@@ -55,7 +55,7 @@
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Attenzione</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
+    <string name="n_min_ago">%d min.</string>
     <string name="today">Oggi</string>
     <string name="yesterday">Ieri</string>
     <string name="this_week">Questa settimana</string>
@@ -65,7 +65,7 @@
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
-        <item quantity="other">%d min</item>
+        <item quantity="other">%d min.</item>
     </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
@@ -134,8 +134,8 @@
     <string name="menu_new_group">Nuovo gruppo</string>
     <string name="menu_new_verified_group">Nuovo gruppo verificato</string>
     <string name="menu_send">Inviato</string>
-    <string name="menu_toggle_keyboard">Alterna tastiera emoji</string>
-    <string name="menu_edit_group">Modifica grupp</string>
+    <string name="menu_toggle_keyboard">Attiva/Disattiva tastiera emoji</string>
+    <string name="menu_edit_group">Modifica gruppo</string>
     <string name="menu_group_name_and_image">Nome e immagine gruppo</string>
     <string name="menu_show_map">Mostra mappa</string>
     <string name="menu_show_global_map">Mostra tutte le posizioni</string>
@@ -181,7 +181,7 @@
     <string name="title_share_location">Condividi posizione con tutti i membri</string>
     <string name="device_talk">Messaggi del dispositivo</string>
     <string name="device_talk_subtitle">Messaggi generati localmente</string>
-    <string name="device_talk_explain">I messaggio in questa chat vengono generati localmente da Delta Chat. Gli sviluppatori li usano per informarti sugli aggiornamenti o sui problemi d\'utilizzo.</string>
+    <string name="device_talk_explain">I messaggi in questa chat vengono generati localmente da Delta Chat. Gli sviluppatori li usano per informarti sugli aggiornamenti o sui problemi d\'utilizzo.</string>
     <string name="device_talk_welcome_message">Benvenuto in Delta Chat! - Delta Chat ha l\'aspetto e lo stile di altre popolari applicazioni di messaggistica, ma non costringe ad un controllo centralizzato, al tracciamento o alla vendita tua,  dei tuoi amici, colleghi o familiari a grandi organizzazioni.\n \n Tecnicamente, Delta Chat è un\'applicazione di posta elettronica con un\'interfaccia moderna. L\'email in una nuova veste 👻 \n \nUtilizza Delta Chat con chiunque: basta conoscere il loro indirizzo e-mail. I destinatari non hanno bisogno di installare Delta Chat, visitare siti web o iscriversi da nessuna parte -  ma, naturalmente se lo desiderano, puoi suggerirgli 👉 https://get.delta.chat</string>
     <string name="edit_contact">Modifica contatto</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
@@ -225,10 +225,10 @@
     <string name="ask_delete_contacts">Eliminare il contatto? Questo eliminerà per sempre il contatto selezionato.\n\nI contatti con chat attive o presenti nella rubrica del sistema non possono essere eliminati permanentemente.</string>
     <string name="ask_delete_contact">Vuoi eliminare per sempre %1$s?\n\nI contatti con chat attive e quelli in rubrica non possono essere eliminati permanentemente.</string>
     <string name="cannot_delete_contacts_in_use">Impossibile eliminare contatti con chat in corso.</string>
-    <string name="ask_start_chat_with">Chattare with %1$s?</string>
+    <string name="ask_start_chat_with">Chattare con %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
-    <string name="info_outdated_app_title">La applicazione non è aggiornata.</string>
+    <string name="info_outdated_app_title">L\' applicazione non è aggiornata.</string>
     <string name="info_outdated_app_text">Sembra che tu abbia installato Delta Chat da una sorgente che non fornisce aggiornamenti automatici (es. GitHub). Scaricala da uno store per riceve nuove funzionalità e bug fix.</string>
     <string name="info_outdated_app_dialog_title">Aggiorna sorgenti</string>
     <string name="info_outdated_app_dialog_text">Delta Chat è disponibile su:</string>
@@ -333,7 +333,7 @@
     <string name="login_smtp_security">Sicurezza SMTP</string>
     <string name="login_auth_method">Metodo di autorizzazione</string>
     <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
-    <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2).\n\nContinuando, puoi autorizzare Delta Chat ad operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
+    <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2.0).\n\nContinuando, puoi autorizzare Delta Chat ad operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
     <string name="login_certificate_checks">Controlli certificato</string>
     <string name="login_error_mail">Inserisci un indirizzo email valido</string>
     <string name="login_error_server">Inserisci un server / indirizzo IP valido</string>
@@ -372,7 +372,7 @@
     <string name="pref_profile_photo">Foto profilo</string>
     <string name="pref_blocked_contacts">Contatti bloccati</string>
     <string name="pref_profile_photo_remove_ask">Rimuvere la foto profilo?</string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
+    <string name="pref_help_url">https://delta.chat/it/help</string>
     <string name="pref_password_and_account_settings">Password e account</string>
     <string name="pref_who_can_see_this_information">Chi può vedere queste informazioni?</string>
     <string name="pref_who_can_see_profile_explain">L\'immagine del tuo profilo e il tuo nome saranno mostrati insieme ai tuoi messaggi quando comunichi con altri utenti. Le informazioni già inviate non possono essere cancellate o rimosse.</string>
@@ -536,7 +536,7 @@
 
 
     <!-- qr code stuff -->
-    <string name="qr_code">Codic QR</string>
+    <string name="qr_code">Codice QR</string>
     <string name="qrscan_title">Scansiona codice QR</string>
     <string name="qrscan_hint">Posiziona la camera sopra il codice QR</string>
     <string name="qrscan_ask_join_group">Vuoi entrare nel gruppo \"%1$s\"?</string>
@@ -576,7 +576,7 @@
     <string name="notify_media_message">Messaggio multimediale</string>
     <string name="notify_reply_button">Rispondi</string>
     <string name="notify_new_message">Nuovo messaggio</string>
-    <string name="notify_background_connection_enabled">Connession in background abilitata</string>
+    <string name="notify_background_connection_enabled">Connessione in background abilitata</string>
     <string name="notify_priority_high">Alta</string>
     <string name="notify_priority_max">Massima</string>
     <string name="notify_name_and_message">Nome e messaggio</string>
@@ -644,7 +644,7 @@
     <string name="autocrypt_key_transfer_desktop">Trasferimento chiave Autocrypt</string>
     <string name="initiate_key_transfer_desktop">Un \'Messaggio di configurazione Autocrypt\' condivide in sicurezza le tue impostazioni end-to-end con altre app compatibili. Le impostazioni sono criptate con un codice mostrato qui che deve essere inserito nell\'altro dispositivo.</string>
     <string name="reply_to_message_desktop">Rispondi al messaggio</string>
-    <string name="select_group_image_desktop">Seleziona immagine grupp</string>
+    <string name="select_group_image_desktop">Seleziona immagine gruppo</string>
     <string name="imex_progress_title_desktop">Avanzamento backup</string>
     <string name="download_attachment_desktop">Scarica allegato</string>
     <string name="export_backup_desktop">Esporta backup</string>
@@ -692,7 +692,7 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
-    <string name="device_talk_background_connection_android">Potresti aver già notato che esiste una notifica \"Connessione in background abilitata\" mostrata dal sistema.\n\n 👉 La notifica normalmente impedisce al sistema operativo di interrompere la connessione tra Delta Chat e il tuo server.\n\n Se la notifica scompare senza alcuna azione da parte tua, la connessione è stata probabilmente soppressa.\nSe pensi che sia strano, siamo totalmente d\'accordo - ma molti produttori fanno esattamente questo. Il sito https://dontkillmyapp.com mostra alcune soluzioni alternative.\n\nTuttavia, siamo felici di poter migliorare la ricezione dei messaggi in background con questa modifica e di soddisfare le richieste di molti utenti, grazie per avercelo segnalato 🤗</string>
+    <string name="device_talk_background_connection_android">Potresti aver già notato che esiste una notifica \"Connessione in background abilitata\" mostrata dal sistema.\n\n 👉 La notifica normalmente impedisce al sistema operativo di interrompere la connessione tra Delta Chat e il tuo server.\n\n👉 Se la notifica scompare senza alcuna azione da parte tua, la connessione è stata probabilmente soppressa.\nSe pensi che sia strano, siamo totalmente d\'accordo - ma molti produttori fanno esattamente questo. Il sito https://dontkillmyapp.com mostra alcune soluzioni alternative.\n\nTuttavia, siamo felici di poter migliorare la ricezione dei messaggi in background con questa modifica e di soddisfare le richieste di molti utenti, grazie per avercelo segnalato 🤗</string>
 
 
 </resources>
