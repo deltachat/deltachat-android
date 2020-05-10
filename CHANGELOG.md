@@ -1,12 +1,13 @@
 # Delta Chat Android Changelog
 
 ## v1.8.0
-2020-05-10
+2020-05-11
 
 * by default, the permantent notification is no longer shown;
   the background fetch realibility depends on the system and the
   permantent notification can be enabled at "Settings / Notifications" as needed
-* bug fixes
+* fix a bug that stops receiving messages under some circumstances
+* more bug fixes
 * update translations
 
 
