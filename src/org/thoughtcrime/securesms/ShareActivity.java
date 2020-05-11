@@ -200,20 +200,18 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   }
 
   private void handleResolvedMedia(Intent intent) {
+    int       chatId           = intent.getIntExtra(EXTRA_CHAT_ID, -1);
 
-    if(getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL) != null)
-    {
-      final String addr = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL)[0];
+    String[] extraEmail = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL);
+    if(chatId == -1 && extraEmail != null && extraEmail.length > 0) {
+      final String addr = extraEmail[0];
       int contactId = dcContext.lookupContactIdByAddr(addr);
 
       if(contactId == 0)
         contactId = dcContext.createContact(null, addr);
 
-      int chatId = dcContext.createChatByContactId(contactId);
-      intent.putExtra(EXTRA_CHAT_ID, chatId);
+      chatId = dcContext.createChatByContactId(contactId);
     }
-
-    int       chatId           = intent.getIntExtra(EXTRA_CHAT_ID, -1);
     Intent composeIntent = getBaseShareIntent(ConversationListActivity.class);
     RelayUtil.setSharedUris(composeIntent, resolvedExtras);
     if (chatId != -1) {
