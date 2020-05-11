@@ -60,6 +60,7 @@ import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -350,6 +351,10 @@ public class AttachmentManager {
           Pair<Integer, Integer> dimens = MediaUtil.getDimensions(context, mimeType, uri);
           width  = dimens.first;
           height = dimens.second;
+        }
+
+        if (fileName == null) {
+          fileName = new File(uri.getPath()).getName();
         }
 
         Log.w(TAG, "local slide with size " + mediaSize + " took " + (System.currentTimeMillis() - start) + "ms");
