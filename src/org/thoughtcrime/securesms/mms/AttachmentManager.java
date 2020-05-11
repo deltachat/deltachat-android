@@ -354,7 +354,10 @@ public class AttachmentManager {
         }
 
         if (fileName == null) {
-          fileName = new File(uri.getPath()).getName();
+          String path = uri.getPath();
+          if (path != null) {
+            fileName = new File(path).getName();
+          }
         }
 
         Log.w(TAG, "local slide with size " + mediaSize + " took " + (System.currentTimeMillis() - start) + "ms");
