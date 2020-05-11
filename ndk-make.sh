@@ -9,6 +9,8 @@ cd jni/deltachat-core-rust
 # $ rustup target add armv7-linux-androideabi aarch64-linux-android  i686-linux-android x86_64-linux-android
 # 
 # Currently ndk20b is minimum required version
+# (newer versions will likely work, however, are not tested and not used in offial releases,
+# in general, changes on the ndk-version should be done with care)
 #
 # after that, add PATH_TO_NDK/toolchains/llvm/prebuilt/HOST/bin to your $PATH
 # and add the correct clang-linkers to `~/.cargo/config`:
