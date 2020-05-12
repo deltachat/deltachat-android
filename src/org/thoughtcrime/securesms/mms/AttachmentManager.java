@@ -354,9 +354,10 @@ public class AttachmentManager {
         }
 
         if (fileName == null) {
-          String path = uri.getPath();
-          if (path != null) {
-            fileName = new File(path).getName();
+          try {
+            fileName = new File(uri.getPath()).getName();
+          } catch(Exception e) {
+            Log.w(TAG, "Could not get file name from uri: " + e.toString());
           }
         }
 
