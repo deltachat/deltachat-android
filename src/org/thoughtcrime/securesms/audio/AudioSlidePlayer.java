@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.audio;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.Log;
 import android.util.Pair;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.exoplayer2.C;
@@ -26,6 +28,7 @@ import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.util.Util;
@@ -36,6 +39,9 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 public class AudioSlidePlayer {
+// TODO: DANGER! the synchronization on the static methods does NOT sync on the same monitor
+// as the non-static sync on the other things in this class.
+// consider creating private static final Object MONITOR; to sync on.
 
   private static final String TAG = AudioSlidePlayer.class.getSimpleName();
 
@@ -102,6 +108,7 @@ public class AudioSlidePlayer {
     play(progress, false);
   }
 
+  // TODO: parameter earpiece is always false. Cleanup?
   private void play(final double progress, boolean earpiece) throws IOException {
     if (this.mediaPlayer != null) {
       return;
@@ -121,6 +128,9 @@ public class AudioSlidePlayer {
             .setContentType(earpiece ? C.CONTENT_TYPE_SPEECH : C.CONTENT_TYPE_MUSIC)
             .setUsage(earpiece ? C.USAGE_VOICE_COMMUNICATION : C.USAGE_MEDIA)
             .build());
+
+    startKeepingScreenOn();
+
     mediaPlayer.addListener(new Player.EventListener() {
 
       boolean started = false;
@@ -156,6 +166,7 @@ public class AudioSlidePlayer {
 
           case Player.STATE_ENDED:
             Log.i(TAG, "onComplete");
+            stopKeepingScreenOn();
             synchronized (AudioSlidePlayer.this) {
               getListener().onReceivedDuration(Long.valueOf(mediaPlayer.getDuration()).intValue());
               mediaPlayer = null;
@@ -175,11 +186,29 @@ public class AudioSlidePlayer {
         synchronized (AudioSlidePlayer.this) {
           mediaPlayer = null;
         }
-
+        stopKeepingScreenOn();
         notifyOnStop();
         progressEventHandler.removeMessages(0);
       }
     });
+  }
+
+  private void startKeepingScreenOn() {
+    Log.d(TAG, "startKeepingScreenOn");
+    if(context instanceof Activity) { // should always be true
+      Activity activity = ((Activity)context);
+      activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    } else {
+      Log.i(TAG, "currently in non-activity context, can't keep the screen on");
+    }
+  }
+
+  private void stopKeepingScreenOn() {
+    Log.d(TAG, "stopKeepingScreenOn");
+    if(context instanceof Activity) { // should always be true
+      Activity activity = ((Activity)context);
+      activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    } // else we already handled when setting the screen on
   }
 
   private MediaSource createMediaSource(@NonNull Uri uri) {
@@ -196,7 +225,7 @@ public class AudioSlidePlayer {
     Log.i(TAG, "Stop called!");
 
     removePlaying(this);
-
+    stopKeepingScreenOn();
     if (this.mediaPlayer != null) {
       this.mediaPlayer.stop();
       this.mediaPlayer.release();
