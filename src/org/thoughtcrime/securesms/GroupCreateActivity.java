@@ -303,7 +303,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         dcContext.addContactToChat(groupChatId, contactId);
       }
     }
-    AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
+    if (avatarBmp!=null) {
+      AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
+    }
   }
 
   private void groupCreateDone() {
@@ -332,7 +334,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     dcContext.setChatName(groupChatId, groupName);
     updateGroupParticipants();
 
-    AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
+    if (avatarBmp!=null) {
+      AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
+    }
   }
 
   private void groupUpdateDone() {
