@@ -35,6 +35,7 @@ public class DcChat {
     public native boolean canSend           ();
     public native boolean isVerified        ();
     public native boolean isSendingLocations();
+    public native boolean isMuted           ();
 
     // working with raw c-data
     private long        chatCPtr;    // CAVE: the name is referenced in the JNI

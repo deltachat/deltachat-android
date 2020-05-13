@@ -15,20 +15,20 @@ public class MuteDialog {
     builder.setItems(R.array.mute_durations, (dialog, which) -> {
       final long muteUntil;
 
+      // See https://c.delta.chat/classdc__context__t.html#a6460395925d49d2053bc95224bf5ce37.
       switch (which) {
-        case 0:  muteUntil = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1);    break;
-        case 1:  muteUntil = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(2);    break;
-        case 2:  muteUntil = System.currentTimeMillis() + TimeUnit.DAYS.toMillis(1);     break;
-        case 3:  muteUntil = System.currentTimeMillis() + TimeUnit.DAYS.toMillis(7);     break;
-        case 4:  muteUntil = System.currentTimeMillis() + TimeUnit.DAYS.toMillis(36500); break;
-        default: muteUntil = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1);    break;
+        case 0:  muteUntil = 0;    break; // unmute
+        case 1:  muteUntil = TimeUnit.HOURS.toSeconds(2);    break;
+        case 2:  muteUntil = TimeUnit.DAYS.toSeconds(1);     break;
+        case 3:  muteUntil = TimeUnit.DAYS.toSeconds(7);     break;
+        case 4:  muteUntil = -1; break; // mute forever
+        default: muteUntil = 0; break;
       }
 
       listener.onMuted(muteUntil);
     });
 
     builder.show();
-
   }
 
   public interface MuteSelectionListener {

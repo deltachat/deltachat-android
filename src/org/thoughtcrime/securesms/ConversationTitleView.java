@@ -66,7 +66,7 @@ public class ConversationTitleView extends RelativeLayout {
       setComposeTitle();
     } else {
       setRecipientTitle(dcChat, showSubtitle);
-      if (Prefs.isChatMuted(getContext(), dcChat.getId())) {
+      if (Prefs.isChatMuted(dcChat)) {
         imgLeft = R.drawable.ic_volume_off_white_18dp;
       }
       if (dcChat.isVerified()) {

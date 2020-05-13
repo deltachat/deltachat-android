@@ -1184,6 +1184,16 @@ JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatContacts(JNIEnv *en
 	return dc_array2jintArray_n_unref(env, ca);
 }
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setChatMuteDuration(JNIEnv *env, jobject obj, jint chat_id, jlong duration)
+{
+    return dc_set_chat_mute_duration(get_dc_context(env, obj), chat_id, duration);
+}
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isMuted(JNIEnv *env, jobject obj)
+{
+    return dc_chat_is_muted(get_dc_chat(env, obj));
+}
+
 
 /*******************************************************************************
  * DcMsg
@@ -1669,4 +1679,3 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_dataToString(JNIEnv *env, jc
 	const char* cstring = (const char*)data;
 	return JSTRING_NEW(cstring);
 }
-

@@ -90,7 +90,7 @@ abstract class MessageNotifier {
         boolean isVisible = visibleChatId == chatId;
 
         if (!Prefs.isNotificationsEnabled(appContext) ||
-                Prefs.isChatMuted(appContext, chatId))
+                Prefs.isChatMuted(dcContext.getChat(chatId)))
         {
             return;
         }
@@ -352,7 +352,7 @@ abstract class MessageNotifier {
             return;
         }
 
-        if(Prefs.isChatMuted(appContext, chatId)) {
+        if(Prefs.isChatMuted(, chatId)) {
             Log.d(TAG, "chat muted");
             return;
         }
@@ -363,7 +363,7 @@ abstract class MessageNotifier {
     }
 
     void addMessageToNotificationState(ApplicationDcContext dcContext, int chatId, int msgId) {
-        if (Prefs.isChatMuted(appContext, chatId)) {
+        if (Prefs.isChatMuted(dcContext.getChat(chatId))) {
             return;
         }
 
