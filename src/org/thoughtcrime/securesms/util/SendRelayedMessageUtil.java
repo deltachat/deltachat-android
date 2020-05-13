@@ -17,7 +17,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import static android.app.Activity.RESULT_OK;
 import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
@@ -27,8 +26,8 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
-public class SendMessageUtil {
-  private static final String TAG = SendMessageUtil.class.getSimpleName();
+public class SendRelayedMessageUtil {
+  private static final String TAG = SendRelayedMessageUtil.class.getSimpleName();
 
   public static void immediatelyRelay(Activity activity, int chatId) {
     immediatelyRelay(activity, new Long[]{(long) chatId});

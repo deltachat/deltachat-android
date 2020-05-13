@@ -18,7 +18,6 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -103,7 +102,7 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.RelayUtil;
-import org.thoughtcrime.securesms.util.SendMessageUtil;
+import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -117,7 +116,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -642,7 +640,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void handleForwarding() {
     DcChat dcChat = dcContext.getChat(chatId);
     if (dcChat.isSelfTalk()) {
-      SendMessageUtil.immediatelyRelay(this, chatId);
+      SendRelayedMessageUtil.immediatelyRelay(this, chatId);
     } else {
       String name = dcChat.getName();
       if (!dcChat.isGroup()) {
@@ -653,7 +651,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       new AlertDialog.Builder(this)
               .setMessage(getString(R.string.ask_forward, name))
-              .setPositiveButton(R.string.ok, (dialogInterface, i) -> SendMessageUtil.immediatelyRelay(this, chatId))
+              .setPositiveButton(R.string.ok, (dialogInterface, i) -> SendRelayedMessageUtil.immediatelyRelay(this, chatId))
               .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
               .show();
     }
@@ -667,13 +665,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               .setMessage(message)
               .setCancelable(false)
               .setNegativeButton(android.R.string.cancel, ((dialog, which) -> finish()))
-              .setPositiveButton(R.string.menu_send, (dialog, which) -> SendMessageUtil.immediatelyRelay(this, chatId))
+              .setPositiveButton(R.string.menu_send, (dialog, which) -> SendRelayedMessageUtil.immediatelyRelay(this, chatId))
               .show();
     } else {
       if (uriList.isEmpty()) {
-        dcContext.setDraft(chatId, SendMessageUtil.createMessage(this, null, getSharedText(this)));
+        dcContext.setDraft(chatId, SendRelayedMessageUtil.createMessage(this, null, getSharedText(this)));
       } else {
-        dcContext.setDraft(chatId, SendMessageUtil.createMessage(this, uriList.get(0), getSharedText(this)));
+        dcContext.setDraft(chatId, SendRelayedMessageUtil.createMessage(this, uriList.get(0), getSharedText(this)));
       }
       initializeDraft().addListener(new AssertedSuccessListener<Boolean>() {
         @Override

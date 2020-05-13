@@ -66,7 +66,7 @@ import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.RelayUtil;
-import org.thoughtcrime.securesms.util.SendMessageUtil;
+import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
@@ -83,7 +83,6 @@ import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 
 public class ConversationListFragment extends Fragment
@@ -200,7 +199,7 @@ public class ConversationListFragment extends Fragment
                     .setCancelable(false)
                     .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {}))
                     .setPositiveButton(R.string.menu_send, (dialog, which) -> {
-                      SendMessageUtil.immediatelyRelay(getActivity(), selectedChats.toArray(new Long[selectedChats.size()]));
+                      SendRelayedMessageUtil.immediatelyRelay(getActivity(), selectedChats.toArray(new Long[selectedChats.size()]));
                       actionMode.finish();
                       actionMode = null;
                       // Start this activity again, this time with an intent without sharing:
