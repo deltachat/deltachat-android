@@ -12,11 +12,13 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -216,6 +218,10 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     public void onClick(View v) {
       try {
         Log.w(TAG, "playbutton onClick");
+        if(getContext() instanceof ConversationActivity) {
+          ConversationActivity context = ((ConversationActivity)getContext());
+          context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
         if (audioSlidePlayer != null) {
           togglePlayToPause();
           audioSlidePlayer.play(getProgress());
@@ -231,6 +237,10 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     @Override
     public void onClick(View v) {
       Log.w(TAG, "pausebutton onClick");
+      if(getContext() instanceof ConversationActivity) {
+        ConversationActivity context = ((ConversationActivity)getContext());
+        context.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+      }
       if (audioSlidePlayer != null) {
         togglePauseToPlay();
         audioSlidePlayer.stop();
