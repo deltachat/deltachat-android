@@ -116,28 +116,29 @@ public class AudioSlidePlayer {
   }
 
   public void play(final double progress) throws IOException {
-    // TODO: synchronized (MONITOR) {
-    if (this.mediaPlayer != null) {
-      return;
+    synchronized (MONITOR) {
+      if (this.mediaPlayer != null) {
+        return;
+      }
+
+      if (slide.getUri() == null) {
+        throw new IOException("Slide has no URI!");
+      }
+
+      LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).createDefaultLoadControl();
+      this.mediaPlayer = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
+
+      mediaPlayer.prepare(createMediaSource(slide.getUri()));
+      mediaPlayer.setPlayWhenReady(true);
+      mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
+          .setContentType(C.CONTENT_TYPE_MUSIC)
+          .setUsage(C.USAGE_MEDIA)
+          .build());
+
+      startKeepingScreenOn();
+
+      mediaPlayer.addListener(new MediaPlayerListener(progress));
     }
-
-    if (slide.getUri() == null) {
-      throw new IOException("Slide has no URI!");
-    }
-
-    LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).createDefaultLoadControl();
-    this.mediaPlayer        = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
-
-    mediaPlayer.prepare(createMediaSource(slide.getUri()));
-    mediaPlayer.setPlayWhenReady(true);
-    mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
-            .setContentType(C.CONTENT_TYPE_MUSIC)
-            .setUsage(C.USAGE_MEDIA)
-            .build());
-
-    startKeepingScreenOn();
-
-    mediaPlayer.addListener(new MediaPlayerListener(progress));
   }
 
   private class MediaPlayerListener implements Player.EventListener {
