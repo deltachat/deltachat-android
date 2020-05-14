@@ -4,7 +4,7 @@
 2020-05-14
 
 * fix a bug that could led to load if the server does not use sent-folder
-* fix bug on sharig
+* fix bug on sharing
 * improve polling when background-connection is unreliable
 * since 1.6.0, changing group-name removed the group-avatar sometimes, fixed
 
