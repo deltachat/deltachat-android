@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.8.1
+2020-05-14
+
+* fix a but that could led to load if the server does not use sent-folder
+* since 1.6.0, changing group-name removed the group-avatar sometimes, fixed
+
+
 ## v1.8.0
 2020-05-11
 
