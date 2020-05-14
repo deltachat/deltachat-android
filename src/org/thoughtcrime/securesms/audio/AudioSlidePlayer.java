@@ -36,6 +36,8 @@ import org.thoughtcrime.securesms.video.exo.AttachmentDataSourceFactory;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AudioSlidePlayer {
   // this is used as a single element all aspects of this class can synchronize on.
@@ -47,6 +49,12 @@ public class AudioSlidePlayer {
 
   private static @NonNull Optional<AudioSlidePlayer> playing = Optional.absent();
 
+  // contains the currently playing files, usually exactly one but if one
+  // starts a second it will start playing, then pause the first.
+  // this would cause the screen lock to go away and allow interrupt of playing.
+  // be certain to always synchronize properly before modifying this list.
+  private final static List<String> CURRENTLY_PLAYING = new ArrayList<>();
+
   private final @NonNull  Context           context;
   private final @NonNull  AudioSlide        slide;
   private final @NonNull  Handler           progressEventHandler;
@@ -54,6 +62,7 @@ public class AudioSlidePlayer {
   private @NonNull  WeakReference<Listener> listener;
   private @Nullable SimpleExoPlayer         mediaPlayer;
   private @Nullable SimpleExoPlayer         durationCalculator;
+  private @NonNull  String                  name;
 
   public static AudioSlidePlayer createFor(@NonNull Context context,
                                            @NonNull AudioSlide slide,
@@ -124,9 +133,15 @@ public class AudioSlidePlayer {
       if (slide.getUri() == null) {
         throw new IOException("Slide has no URI!");
       }
+      if (slide.getFileName().isPresent()) {
+        name = slide.getFileName().get();
+      } else {
+        name = slide.getUri().toString();
+      }
+      startKeepingScreenOn();
 
       LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).createDefaultLoadControl();
-      this.mediaPlayer = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
+      mediaPlayer = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
 
       mediaPlayer.prepare(createMediaSource(slide.getUri()));
       mediaPlayer.setPlayWhenReady(true);
@@ -134,8 +149,6 @@ public class AudioSlidePlayer {
           .setContentType(C.CONTENT_TYPE_MUSIC)
           .setUsage(C.USAGE_MEDIA)
           .build());
-
-      startKeepingScreenOn();
 
       mediaPlayer.addListener(new MediaPlayerListener(progress));
     }
@@ -182,12 +195,12 @@ public class AudioSlidePlayer {
 
         case Player.STATE_ENDED:
           Log.i(TAG, "onComplete");
-          stopKeepingScreenOn();
           synchronized (MONITOR) {
             if(mediaPlayer == null) return;
             getListener().onReceivedDuration(Long.valueOf(mediaPlayer.getDuration()).intValue());
             mediaPlayer = null;
           }
+          stopKeepingScreenOn();
 
           notifyOnStop();
           progressEventHandler.removeMessages(0);
@@ -210,21 +223,30 @@ public class AudioSlidePlayer {
   }
 
   private void startKeepingScreenOn() {
-    Log.d(TAG, "startKeepingScreenOn");
-    if(context instanceof Activity) { // should always be true
-      Activity activity = ((Activity)context);
-      activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-    } else {
-      Log.i(TAG, "currently in non-activity context, can't keep the screen on");
+    synchronized (MONITOR) {
+      Log.d(TAG, "startKeepingScreenOn " + name);
+      if (context instanceof Activity) { // should always be true
+        Activity activity = ((Activity) context);
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        CURRENTLY_PLAYING.add(name);
+      } else {
+        Log.i(TAG, "currently in non-activity context, can't keep the screen on");
+      }
     }
   }
 
   private void stopKeepingScreenOn() {
-    Log.d(TAG, "stopKeepingScreenOn");
-    if(context instanceof Activity) { // should always be true
-      Activity activity = ((Activity)context);
-      activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-    } // else we already handled when setting the screen on
+    synchronized (MONITOR) {
+      Log.d(TAG, "stopKeepingScreenOn " + name + " list: " + CURRENTLY_PLAYING);
+      if (context instanceof Activity) { // should always be true
+        // check on string equality is valid as it should be the same instance.
+        if(CURRENTLY_PLAYING.get(CURRENTLY_PLAYING.size()-1) == name) {
+          Activity activity = ((Activity) context);
+          activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+        CURRENTLY_PLAYING.remove(name);
+      } // else we already handled when setting the screen on
+    }
   }
 
   private MediaSource createMediaSource(@NonNull Uri uri) {
@@ -242,13 +264,13 @@ public class AudioSlidePlayer {
       Log.i(TAG, "Stop called!");
 
       removePlaying(this);
-      stopKeepingScreenOn();
       if (this.mediaPlayer != null) {
         this.mediaPlayer.stop();
         this.mediaPlayer.release();
       }
 
       this.mediaPlayer = null;
+      stopKeepingScreenOn();
     }
   }
 
