@@ -39,9 +39,10 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 public class AudioSlidePlayer {
-// TODO: DANGER! the synchronization on the static methods does NOT sync on the same monitor
-// as the non-static sync on the other things in this class.
-// consider creating private static final Object MONITOR; to sync on.
+  // this is used as a single element all aspects of this class can synchronize on.
+  // compare: (search for static synchronized)
+  // https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html
+  private static final Object MONITOR = new Object();
 
   private static final String TAG = AudioSlidePlayer.class.getSimpleName();
 
@@ -56,15 +57,17 @@ public class AudioSlidePlayer {
   private @Nullable SimpleExoPlayer         durationCalculator;
   private           long                    startTime;
 
-  public synchronized static AudioSlidePlayer createFor(@NonNull Context context,
+  public static AudioSlidePlayer createFor(@NonNull Context context,
                                                         @NonNull AudioSlide slide,
                                                         @NonNull Listener listener)
   {
-    if (playing.isPresent() && playing.get().getAudioSlide().equals(slide)) {
-      playing.get().setListener(listener);
-      return playing.get();
-    } else {
-      return new AudioSlidePlayer(context, slide, listener);
+    synchronized (MONITOR) {
+      if (playing.isPresent() && playing.get().getAudioSlide().equals(slide)) {
+        playing.get().setListener(listener);
+        return playing.get();
+      } else {
+        return new AudioSlidePlayer(context, slide, listener);
+      }
     }
   }
 
@@ -142,7 +145,7 @@ public class AudioSlidePlayer {
           case Player.STATE_READY:
 
             Log.i(TAG, "onPrepared() " + mediaPlayer.getBufferedPercentage() + "% buffered");
-            synchronized (AudioSlidePlayer.this) {
+            synchronized (MONITOR) {
               if (mediaPlayer == null) return;
               Log.d(TAG, "DURATION: " + mediaPlayer.getDuration());
 
@@ -167,7 +170,7 @@ public class AudioSlidePlayer {
           case Player.STATE_ENDED:
             Log.i(TAG, "onComplete");
             stopKeepingScreenOn();
-            synchronized (AudioSlidePlayer.this) {
+            synchronized (MONITOR) {
               getListener().onReceivedDuration(Long.valueOf(mediaPlayer.getDuration()).intValue());
               mediaPlayer = null;
             }
@@ -183,7 +186,7 @@ public class AudioSlidePlayer {
 
         Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show();
 
-        synchronized (AudioSlidePlayer.this) {
+        synchronized (MONITOR) {
           mediaPlayer = null;
         }
         stopKeepingScreenOn();
@@ -221,30 +224,35 @@ public class AudioSlidePlayer {
             .createMediaSource(uri);
   }
 
-  public synchronized void stop() {
-    Log.i(TAG, "Stop called!");
+  public void stop() {
+    synchronized (MONITOR) {
+      Log.i(TAG, "Stop called!");
 
-    removePlaying(this);
-    stopKeepingScreenOn();
-    if (this.mediaPlayer != null) {
-      this.mediaPlayer.stop();
-      this.mediaPlayer.release();
+      removePlaying(this);
+      stopKeepingScreenOn();
+      if (this.mediaPlayer != null) {
+        this.mediaPlayer.stop();
+        this.mediaPlayer.release();
+      }
+
+      this.mediaPlayer = null;
     }
-
-    this.mediaPlayer = null;
   }
 
-  public synchronized static void stopAll() {
-    if (playing.isPresent()) {
-      playing.get().stop();
+  public static void stopAll() {
+    synchronized (MONITOR) {
+      if (playing.isPresent()) {
+        playing.get().stop();
+      }
     }
   }
 
   public void setListener(@NonNull Listener listener) {
     this.listener = new WeakReference<>(listener);
-
-    if (this.mediaPlayer != null && this.mediaPlayer.getPlaybackState() == Player.STATE_READY) {
-      notifyOnStart();
+    synchronized (MONITOR) {
+      if (this.mediaPlayer != null && this.mediaPlayer.getPlaybackState() == Player.STATE_READY) {
+        notifyOnStart();
+      }
     }
   }
 
@@ -254,11 +262,13 @@ public class AudioSlidePlayer {
 
 
   private Pair<Double, Integer> getProgress() {
-    if (mediaPlayer == null || mediaPlayer.getCurrentPosition() <= 0 || mediaPlayer.getDuration() <= 0) {
-      return new Pair<>(0D, 0);
-    } else {
-      return new Pair<>((double) mediaPlayer.getCurrentPosition() / (double) mediaPlayer.getDuration(),
-              (int) mediaPlayer.getCurrentPosition());
+    synchronized (MONITOR) {
+      if (mediaPlayer == null || mediaPlayer.getCurrentPosition() <= 0 || mediaPlayer.getDuration() <= 0) {
+        return new Pair<>(0D, 0);
+      } else {
+        return new Pair<>((double) mediaPlayer.getCurrentPosition() / (double) mediaPlayer.getDuration(),
+            (int) mediaPlayer.getCurrentPosition());
+      }
     }
   }
 
@@ -305,18 +315,22 @@ public class AudioSlidePlayer {
     };
   }
 
-  private synchronized static void setPlaying(@NonNull AudioSlidePlayer player) {
-    if (playing.isPresent() && playing.get() != player) {
-      playing.get().notifyOnStop();
-      playing.get().stop();
-    }
+  private static void setPlaying(@NonNull AudioSlidePlayer player) {
+    synchronized (MONITOR) {
+      if (playing.isPresent() && playing.get() != player) {
+        playing.get().notifyOnStop();
+        playing.get().stop();
+      }
 
-    playing = Optional.of(player);
+      playing = Optional.of(player);
+    }
   }
 
-  private synchronized static void removePlaying(@NonNull AudioSlidePlayer player) {
-    if (playing.isPresent() && playing.get() == player) {
-      playing = Optional.absent();
+  private static void removePlaying(@NonNull AudioSlidePlayer player) {
+    synchronized (MONITOR) {
+      if (playing.isPresent() && playing.get() == player) {
+        playing = Optional.absent();
+      }
     }
   }
 
@@ -338,9 +352,11 @@ public class AudioSlidePlayer {
     @Override
     public void handleMessage(Message msg) {
       AudioSlidePlayer player = playerReference.get();
-
-      if (player == null || player.mediaPlayer == null || !isPlayerActive(player.mediaPlayer)) {
-        return;
+      if (player == null) return;
+      synchronized (player.MONITOR) {
+        if (player.mediaPlayer == null || !isPlayerActive(player.mediaPlayer)) {
+          return;
+        }
       }
 
       Pair<Double, Integer> progress = player.getProgress();
