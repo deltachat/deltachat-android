@@ -28,7 +28,6 @@ import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.util.Util;
@@ -55,11 +54,10 @@ public class AudioSlidePlayer {
   private @NonNull  WeakReference<Listener> listener;
   private @Nullable SimpleExoPlayer         mediaPlayer;
   private @Nullable SimpleExoPlayer         durationCalculator;
-  private           long                    startTime;
 
   public static AudioSlidePlayer createFor(@NonNull Context context,
-                                                        @NonNull AudioSlide slide,
-                                                        @NonNull Listener listener)
+                                           @NonNull AudioSlide slide,
+                                           @NonNull Listener listener)
   {
     synchronized (MONITOR) {
       if (playing.isPresent() && playing.get().getAudioSlide().equals(slide)) {
@@ -81,7 +79,17 @@ public class AudioSlidePlayer {
     this.progressEventHandler = new ProgressEventHandler(this);
   }
 
+  /**
+   * creates a non-playing player and requests the duration from it.
+   * The value is then sent to the AudioSlidePlayer.Listener.onReceivedDuration() function.
+   */
   public void requestDuration() {
+    if (slide.getUri() == null) {
+      getListener().onReceivedDuration(0);
+      return; // we can't handle this here, but in the worst case the duration is not displayed
+      // no need to throw IOException here.
+    }
+
     try {
       LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).createDefaultLoadControl();
       durationCalculator = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
@@ -108,11 +116,7 @@ public class AudioSlidePlayer {
   }
 
   public void play(final double progress) throws IOException {
-    play(progress, false);
-  }
-
-  // TODO: parameter earpiece is always false. Cleanup?
-  private void play(final double progress, boolean earpiece) throws IOException {
+    // TODO: synchronized (MONITOR) {
     if (this.mediaPlayer != null) {
       return;
     }
@@ -122,78 +126,86 @@ public class AudioSlidePlayer {
     }
 
     LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).createDefaultLoadControl();
-    this.mediaPlayer           = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
-    this.startTime             = System.currentTimeMillis();
+    this.mediaPlayer        = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
 
     mediaPlayer.prepare(createMediaSource(slide.getUri()));
     mediaPlayer.setPlayWhenReady(true);
     mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
-            .setContentType(earpiece ? C.CONTENT_TYPE_SPEECH : C.CONTENT_TYPE_MUSIC)
-            .setUsage(earpiece ? C.USAGE_VOICE_COMMUNICATION : C.USAGE_MEDIA)
+            .setContentType(C.CONTENT_TYPE_MUSIC)
+            .setUsage(C.USAGE_MEDIA)
             .build());
 
     startKeepingScreenOn();
 
-    mediaPlayer.addListener(new Player.EventListener() {
+    mediaPlayer.addListener(new MediaPlayerListener(progress));
+  }
 
-      boolean started = false;
+  private class MediaPlayerListener implements Player.EventListener {
 
-      @Override
-      public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-        Log.d(TAG, "onPlayerStateChanged(" + playWhenReady + ", " + playbackState + ")");
-        switch (playbackState) {
-          case Player.STATE_READY:
+    final double progress;
+    MediaPlayerListener(double progress) {
+      this.progress = progress;
+    }
 
+    boolean started = false;
+
+    @Override
+    public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+      Log.d(TAG, "onPlayerStateChanged(" + playWhenReady + ", " + playbackState + ")");
+      switch (playbackState) {
+        case Player.STATE_READY:
+
+          synchronized (MONITOR) {
+            if(mediaPlayer == null) return;
             Log.i(TAG, "onPrepared() " + mediaPlayer.getBufferedPercentage() + "% buffered");
-            synchronized (MONITOR) {
-              if (mediaPlayer == null) return;
-              Log.d(TAG, "DURATION: " + mediaPlayer.getDuration());
+            if (mediaPlayer == null) return;
+            Log.d(TAG, "DURATION: " + mediaPlayer.getDuration());
 
-              if (started) {
-                Log.d(TAG, "Already started. Ignoring.");
-                return;
-              }
-
-              started = true;
-
-              if (progress > 0) {
-                mediaPlayer.seekTo((long) (mediaPlayer.getDuration() * progress));
-              }
-
-              setPlaying(AudioSlidePlayer.this);
+            if (started) {
+              Log.d(TAG, "Already started. Ignoring.");
+              return;
             }
 
-            notifyOnStart();
-            progressEventHandler.sendEmptyMessage(0);
-            break;
+            started = true;
 
-          case Player.STATE_ENDED:
-            Log.i(TAG, "onComplete");
-            stopKeepingScreenOn();
-            synchronized (MONITOR) {
-              getListener().onReceivedDuration(Long.valueOf(mediaPlayer.getDuration()).intValue());
-              mediaPlayer = null;
+            if (progress > 0) {
+              mediaPlayer.seekTo((long) (mediaPlayer.getDuration() * progress));
             }
 
-            notifyOnStop();
-            progressEventHandler.removeMessages(0);
-        }
+            setPlaying(AudioSlidePlayer.this);
+          }
+
+          notifyOnStart();
+          progressEventHandler.sendEmptyMessage(0);
+          break;
+
+        case Player.STATE_ENDED:
+          Log.i(TAG, "onComplete");
+          stopKeepingScreenOn();
+          synchronized (MONITOR) {
+            if(mediaPlayer == null) return;
+            getListener().onReceivedDuration(Long.valueOf(mediaPlayer.getDuration()).intValue());
+            mediaPlayer = null;
+          }
+
+          notifyOnStop();
+          progressEventHandler.removeMessages(0);
       }
+    }
 
-      @Override
-      public void onPlayerError(ExoPlaybackException error) {
-        Log.w(TAG, "MediaPlayer Error: " + error);
+    @Override
+    public void onPlayerError(ExoPlaybackException error) {
+      Log.w(TAG, "MediaPlayer Error: " + error);
 
-        Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show();
+      Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show();
 
-        synchronized (MONITOR) {
-          mediaPlayer = null;
-        }
-        stopKeepingScreenOn();
-        notifyOnStop();
-        progressEventHandler.removeMessages(0);
+      synchronized (MONITOR) {
+        mediaPlayer = null;
       }
-    });
+      stopKeepingScreenOn();
+      notifyOnStop();
+      progressEventHandler.removeMessages(0);
+    }
   }
 
   private void startKeepingScreenOn() {
@@ -256,7 +268,7 @@ public class AudioSlidePlayer {
     }
   }
 
-  public @NonNull AudioSlide getAudioSlide() {
+  private @NonNull AudioSlide getAudioSlide() {
     return slide;
   }
 
@@ -273,30 +285,15 @@ public class AudioSlidePlayer {
   }
 
   private void notifyOnStart() {
-    Util.runOnMain(new Runnable() {
-      @Override
-      public void run() {
-        getListener().onStart();
-      }
-    });
+    Util.runOnMain(() -> getListener().onStart());
   }
 
   private void notifyOnStop() {
-    Util.runOnMain(new Runnable() {
-      @Override
-      public void run() {
-        getListener().onStop();
-      }
-    });
+    Util.runOnMain(() -> getListener().onStop());
   }
 
   private void notifyOnProgress(final double progress, final long millis) {
-    Util.runOnMain(new Runnable() {
-      @Override
-      public void run() {
-        getListener().onProgress(progress, millis);
-      }
-    });
+    Util.runOnMain(() -> getListener().onProgress(progress, millis));
   }
 
   private @NonNull Listener getListener() {
@@ -353,7 +350,7 @@ public class AudioSlidePlayer {
     public void handleMessage(Message msg) {
       AudioSlidePlayer player = playerReference.get();
       if (player == null) return;
-      synchronized (player.MONITOR) {
+      synchronized (MONITOR) {
         if (player.mediaPlayer == null || !isPlayerActive(player.mediaPlayer)) {
           return;
         }
