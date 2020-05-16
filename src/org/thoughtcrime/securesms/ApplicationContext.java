@@ -27,7 +27,6 @@ import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
-import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
@@ -72,7 +71,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeLogging();
     initializeJobManager();
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
-    MessageNotifierCompat.init(this);
 
     dcLocationManager = new DcLocationManager(this);
     try {

@@ -93,7 +93,6 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.MediaConstraints;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.SlideDeck;
-import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -302,14 +301,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    MessageNotifierCompat.updateVisibleChat(chatId);
+    dcContext.notificationManger.updateVisibleChat(chatId);
   }
 
   @Override
   protected void onPause() {
     super.onPause();
     processComposeControls(ACTION_SAVE_DRAFT);
-    MessageNotifierCompat.updateVisibleChat(MessageNotifierCompat.NO_VISIBLE_CHAT_ID);
+    dcContext.notificationManger.updateVisibleChat(0);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
@@ -1224,7 +1223,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (refreshFragment) {
       fragment.reload(recipient, chatId);
-      MessageNotifierCompat.updateVisibleChat(chatId);
+      dcContext.notificationManger.updateVisibleChat(chatId);
     }
 
     fragment.scrollToBottom();
@@ -1443,7 +1442,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       else {
         processComposeControls(ACTION_SEND_OUT);
-        MessageNotifierCompat.playSendSound();
+        dcContext.notificationManger.playSendSound();
       }
     }
 
