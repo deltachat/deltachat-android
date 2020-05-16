@@ -13,6 +13,8 @@ import androidx.core.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
@@ -86,23 +88,27 @@ abstract class MessageNotifier {
         }
     }
 
-    public void updateNotification(int chatId, int messageId) {
-        boolean isVisible = visibleChatId == chatId;
+    void updateNotification(int chatId, int messageId) {
+        updateNotification(DcHelper.getContext(appContext).getChat(chatId), messageId);
+    }
+
+    private void updateNotification(DcChat chat, int messageId) {
+        boolean isVisible = visibleChatId == chat.getId();
 
         if (!Prefs.isNotificationsEnabled(appContext) ||
-                Prefs.isChatMuted(dcContext.getChat(chatId)))
+                Prefs.isChatMuted(chat))
         {
             return;
         }
 
         if (isVisible) {
-            sendInChatNotification(chatId);
+            sendInChatNotification(chat);
         } else if (visibleChatId != NO_VISIBLE_CHAT_ID) {
             //different chat is on top
-            sendNotifications(chatId, messageId, false);
+            sendNotifications(chat, messageId, false);
         } else {
             //app is in background or different Activity is on top
-            sendNotifications(chatId, messageId, true);
+            sendNotifications(chat, messageId, true);
         }
     }
 
@@ -120,7 +126,7 @@ abstract class MessageNotifier {
         int[] freshMessages = dcContext.getFreshMsgs();
         for (int message : freshMessages) {
             DcMsg record = dcContext.getMsg(message);
-            updateNotification(record.getChatId(), record.getId());
+            updateNotification(dcContext.getChat(record.getChatId()), record.getId());
         }
     }
 
@@ -172,20 +178,20 @@ abstract class MessageNotifier {
         notifications.cancel(SUMMARY_NOTIFICATION_ID);
     }
 
-    void sendNotifications(int chatId, int messageId, boolean signal) {
+    void sendNotifications(DcChat chat, int messageId, boolean signal) {
         ApplicationDcContext dcContext = DcHelper.getContext(appContext);
         if (signal = isSignalAllowed(signal)) {
             lastAudibleNotification = System.currentTimeMillis();
         }
 
-        if (dcContext.getChat(chatId).isDeviceTalk()) {
+        if (chat.isDeviceTalk()) {
             // currently, we just never notify on device chat.
             // esp. on first start, this is annoying.
             return;
         }
 
         synchronized (lock) {
-            addMessageToNotificationState(dcContext, chatId, messageId);
+            addMessageToNotificationState(dcContext, chat, messageId);
             if (notificationState.hasMultipleChats()) {
                 for (int id : notificationState.getChats()) {
                     sendSingleChatNotification(appContext, new NotificationState(notificationState.getNotificationsForChat(id)), false, true);
@@ -345,14 +351,14 @@ abstract class MessageNotifier {
         NotificationManagerCompat.from(context).notify(notificationId, notificationBuilder.build());
     }
 
-    private void sendInChatNotification(int chatId) {
+    private void sendInChatNotification(DcChat chat) {
         if (!Prefs.isInChatNotifications(appContext) ||
                 audioManager.getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
         {
             return;
         }
 
-        if(Prefs.isChatMuted(, chatId)) {
+        if(Prefs.isChatMuted(chat)) {
             Log.d(TAG, "chat muted");
             return;
         }
@@ -362,8 +368,8 @@ abstract class MessageNotifier {
         }
     }
 
-    void addMessageToNotificationState(ApplicationDcContext dcContext, int chatId, int msgId) {
-        if (Prefs.isChatMuted(dcContext.getChat(chatId))) {
+    void addMessageToNotificationState(ApplicationDcContext dcContext, DcChat chat, int msgId) {
+        if (Prefs.isChatMuted(chat)) {
             return;
         }
 
@@ -399,7 +405,7 @@ abstract class MessageNotifier {
         }
 
         synchronized (lock) {
-            notificationState.addNotification(new NotificationItem(id, chatRecipient, individualRecipient, chatId, body, timestamp, slideDeck));
+            notificationState.addNotification(new NotificationItem(id, chatRecipient, individualRecipient, chat.getId(), body, timestamp, slideDeck));
         }
     }
 }

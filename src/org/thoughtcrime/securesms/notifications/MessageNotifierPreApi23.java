@@ -3,6 +3,8 @@ package org.thoughtcrime.securesms.notifications;
 import android.content.Context;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.b44t.messenger.DcChat;
+
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
@@ -40,19 +42,19 @@ class MessageNotifierPreApi23 extends MessageNotifier {
     }
 
     @Override
-    void sendNotifications(int chatId, int messageId, boolean signal) {
+    void sendNotifications(DcChat chat, int messageId, boolean signal) {
         ApplicationDcContext dcContext = DcHelper.getContext(appContext);
         if (signal = isSignalAllowed(signal)) {
             lastAudibleNotification = System.currentTimeMillis();
         }
 
-        if (dcContext.getChat(chatId).isDeviceTalk()) {
+        if (chat.isDeviceTalk()) {
             // currently, we just never notify on device chat.
             // esp. on first start, this is annoying.
             return;
         }
 
-        addMessageToNotificationState(dcContext, chatId, messageId);
+        addMessageToNotificationState(dcContext, chat, messageId);
         synchronized (lock) {
             if (notificationState.hasMultipleChats()) {
                 sendMultipleChatNotification(appContext, notificationState, signal);

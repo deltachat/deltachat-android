@@ -355,7 +355,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       setMuted(0);
     }
     else {
-      MuteDialog.show(this, until -> setMuted(until));
+      MuteDialog.show(this, duration -> setMuted(duration));
     }
   }
 

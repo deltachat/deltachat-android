@@ -70,7 +70,7 @@ public class ConversationListItem extends RelativeLayout
 
   private DcLot              dcSummary;
   private Set<Long>          selectedThreads;
-  private long               chatId;
+  private int                chatId;
   private int                msgId;
   private GlideRequests      glideRequests;
   private TextView           subjectView;
@@ -130,7 +130,7 @@ public class ConversationListItem extends RelativeLayout
     this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
     Recipient recipient   = thread.getRecipient();
-    this.chatId           = thread.getThreadId();
+    this.chatId           = (int) thread.getThreadId();
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
     this.unreadCount      = thread.getUnreadCount();
@@ -173,7 +173,7 @@ public class ConversationListItem extends RelativeLayout
     }
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
-        Prefs.isChatMuted(getContext(), (int) chatId)? R.drawable.ic_volume_off_grey600_18dp : 0,
+        Prefs.isChatMuted(dcContext.getChat(chatId))? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
         thread.isVerified()? R.drawable.ic_verified : 0,
         0);
