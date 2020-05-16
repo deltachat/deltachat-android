@@ -47,7 +47,7 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   }
 
   private boolean shouldLock() {
-    return ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp() && !isWaitingForResult;
+    return ScreenLockUtil.isScreenLockEnabled(this) && ScreenLockUtil.getShouldLockApp();
   }
 
   @Override
@@ -59,7 +59,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
                 ScreenLockUtil.setShouldLockApp(false);
             } else {
                 Toast.makeText(this, R.string.screenlock_authentication_failed, Toast.LENGTH_SHORT).show();
-                ScreenLockUtil.applyScreenLock(this);
             }
         }
     }
