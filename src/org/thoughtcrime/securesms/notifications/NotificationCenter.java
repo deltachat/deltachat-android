@@ -9,7 +9,6 @@ import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -27,13 +26,13 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.List;
 
-public class MsgNotificationManager {
+public class NotificationCenter {
     private static final String TAG = InChatSounds.class.getSimpleName();
     @NonNull private ApplicationDcContext dcContext;
     @NonNull private Context context;
     private volatile int visibleChatId = 0;
 
-    public MsgNotificationManager(ApplicationDcContext dcContext) {
+    public NotificationCenter(ApplicationDcContext dcContext) {
         this.dcContext = dcContext;
         this.context = dcContext.context.getApplicationContext();
     }

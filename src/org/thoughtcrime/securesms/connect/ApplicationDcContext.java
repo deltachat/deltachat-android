@@ -30,7 +30,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
-import org.thoughtcrime.securesms.notifications.MsgNotificationManager;
+import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
@@ -53,7 +53,7 @@ public class ApplicationDcContext extends DcContext {
   public static final int RECIPIENT_TYPE_CONTACT = 1;
 
   public Context context;
-  public MsgNotificationManager notificationManger;
+  public NotificationCenter notificationManger;
 
   public ApplicationDcContext(Context context) {
     super("Android "+BuildConfig.VERSION_NAME);
@@ -122,7 +122,7 @@ public class ApplicationDcContext extends DcContext {
       Log.e(TAG, "Cannot create wakeLocks");
     }
 
-    notificationManger = new MsgNotificationManager(this);
+    notificationManger = new NotificationCenter(this);
     startThreads(0);
   }
 
