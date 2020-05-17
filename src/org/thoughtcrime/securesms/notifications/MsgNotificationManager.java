@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.notifications;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -37,6 +38,41 @@ public class MsgNotificationManager {
         this.context = dcContext.context.getApplicationContext();
     }
 
+    private Uri getEffectiveSound(int chatId) {
+        Uri chatRingtone = Prefs.getChatRingtone(context, chatId);
+        if (chatRingtone!=null) {
+            return chatRingtone;
+        } else {
+            Uri appDefaultRingtone = Prefs.getNotificationRingtone(context);
+            if (!TextUtils.isEmpty(appDefaultRingtone.toString())) {
+                return appDefaultRingtone;
+            }
+        }
+        return null;
+    }
+
+    private boolean getEffectiveVibrate(int chatId) {
+        Prefs.VibrateState vibrate = Prefs.getChatVibrate(context, chatId);
+        if (vibrate == Prefs.VibrateState.ENABLED) {
+            return true;
+        } else if (vibrate == Prefs.VibrateState.DISABLED) {
+            return false;
+        }
+        return Prefs.isNotificationVibrateEnabled(context);
+    }
+
+    private int getLedArgb(String ledColor) {
+        int argb;
+        try {
+            argb = Color.parseColor(ledColor);
+        }
+        catch (Exception e) {
+            argb = Color.rgb(0xFF, 0xFF, 0xFF);
+        }
+        return argb;
+    }
+
+
 
     // handle notification channels
     // --------------------------------------------------------------------------------------------
@@ -72,6 +108,8 @@ public class MsgNotificationManager {
 
                 // get channel name
                 chId = chBase + hash;
+
+                // delete previously used channel, if changed
                 String oldChId = Prefs.getStringPreference(context, "ch_curr_" + chBase, "");
                 if (!oldChId.equals(chId)) {
                     try {
@@ -89,6 +127,7 @@ public class MsgNotificationManager {
                 for (int i = 0; i < channels.size(); i++) {
                     if (chId.equals(channels.get(i).getId())) {
                         channelExists = true;
+                        break;
                     }
                 }
 
@@ -101,14 +140,7 @@ public class MsgNotificationManager {
 
                     if (!ledColor.equals("none")) {
                         channel.enableLights(true);
-                        int argb;
-                        try {
-                            argb = Color.parseColor(ledColor);
-                        }
-                        catch (Exception e) {
-                            argb = Color.rgb(0xFF, 0xFF, 0xFF);
-                        }
-                        channel.setLightColor(argb);
+                        channel.setLightColor(getLedArgb(ledColor));
                     } else {
                         channel.enableLights(false);
                     }
@@ -151,6 +183,7 @@ public class MsgNotificationManager {
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
+            // create a basic notification
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager))
                     .setSmallIcon(R.drawable.icon_notification)
                     .setColor(context.getResources().getColor(R.color.delta_primary))
@@ -159,6 +192,23 @@ public class MsgNotificationManager {
                     .setContentTitle(dcContext.getChat(chatId).getName())
                     .setContentText(dcContext.getMsg(msgId).getSummarytext(100));
 
+            // set sound, vibrate, led for systems that do not have notification channels
+            if (!notificationChannelsSupported()) {
+                Uri sound = getEffectiveSound(chatId);
+                if (sound != null) {
+                    builder.setSound(sound);
+                }
+                boolean vibrate = getEffectiveVibrate(chatId);
+                if (vibrate) {
+                    builder.setDefaults(Notification.DEFAULT_VIBRATE);
+                }
+                String ledColor = Prefs.getNotificationLedColor(context);
+                if (!ledColor.equals("none")) {
+                    builder.setLights(getLedArgb(ledColor),500, 2000);
+                }
+            }
+
+            // add notification
             notificationManager.notify(msgId, builder.build());
         });
     }
