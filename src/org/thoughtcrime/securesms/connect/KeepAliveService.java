@@ -93,7 +93,7 @@ public class KeepAliveService extends Service {
      * Delta Chat won't get new messages reliable
      **********************************************************************************************/
 
-    public static final int FG_NOTIFICATION_ID = 4142;
+    public static final int FG_NOTIFICATION_ID = 1; // given to NotificationManagerCompat.notify(); for normal notifications, we use msgId>=10
     private Notification createNotification()
     {
         Intent intent = new Intent(this, ConversationListActivity.class);
