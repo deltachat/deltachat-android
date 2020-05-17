@@ -4,6 +4,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
@@ -125,11 +126,15 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
 
         // get all values we'll use as settings for the NotificationChannel
         String ledColor = Prefs.getNotificationLedColor(context);
+        boolean defaultVibrate = Prefs.isNotificationVibrateEnabled(context);
+        Uri ringtone = Prefs.getNotificationRingtone(context);
 
         // compute hash from these settings
         String hash = "";
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(ledColor.getBytes());
+        md.update(defaultVibrate ? (byte) 1 : (byte) 0);
+        md.update(ringtone.toString().getBytes());
         hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
         // get channel name
@@ -175,8 +180,14 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
             channel.enableLights(false);
           }
 
-          channel.setSound(null, null);
-          channel.enableVibration(false);
+          if (!TextUtils.isEmpty(ringtone.toString())) {
+            channel.setSound(ringtone,
+                    new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
+                            .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
+                            .build());
+          }
+
+          channel.enableVibration(defaultVibrate);
 
           notificationManager.createNotificationChannel(channel);
         }
