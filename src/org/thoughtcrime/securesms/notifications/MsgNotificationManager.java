@@ -61,6 +61,13 @@ public class MsgNotificationManager {
         return Prefs.isNotificationVibrateEnabled(context);
     }
 
+    private boolean requiresIndependentChannel(int chatId) {
+        if (Prefs.getChatRingtone(context, chatId)!=null || Prefs.getChatVibrate(context, chatId)!=Prefs.VibrateState.DEFAULT) {
+            return true;
+        }
+        return false;
+    }
+
     private int getLedArgb(String ledColor) {
         int argb;
         try {
@@ -83,13 +90,35 @@ public class MsgNotificationManager {
     // - NotificationChannels can be deleted, however, on re-creation it becomes un-deleted with the old settings
     // - the idea is that sound and vibrate are handled outside of the scope of the notification channel
 
+    // our Channel-IDs have the format ""ch_msgV_HASH" or "ch_msgV_HASH.CHATID"
+    // note, that there are other Channel-IDs as "dc_foreground_notification_ch"
+    static private final String CH_PREFIX = "ch_msg";
+    static private final String CH_VERSION = "4";
+
     private boolean notificationChannelsSupported() {
         return Build.VERSION.SDK_INT >= 26;
     }
 
+    private boolean isNotificationChannelInUse(String chId) {
+        try {
+            if (chId.startsWith(CH_PREFIX + CH_VERSION)) {
+                int point = chId.lastIndexOf(".");
+                if (point == -1) {
+                    return true; // this is the current standard channel for all chats that do not have explicit sound/vibrate set
+                } else {
+                    int chatId = Integer.parseInt(chId.substring(point + 1));
+                    if (requiresIndependentChannel(chatId)) {
+                        return true; // this is a channel for a chat with explicit sound/vibrate set
+                    }
+
+                }
+            }
+        } catch(Exception e) { }
+        return false;
+    }
+
     private String getNotificationChannel(NotificationManagerCompat notificationManager) {
-        final String chBase = "ch_msg4_";
-        String chId = chBase + "unsupported";
+        String chId = CH_PREFIX + CH_VERSION + "_" + "unsupported";
 
         if(notificationChannelsSupported()) {
             try {
@@ -107,27 +136,21 @@ public class MsgNotificationManager {
                 hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
                 // get channel name
-                chId = chBase + hash;
+                chId = CH_PREFIX + CH_VERSION + "_" + hash;
 
-                // delete previously used channel, if changed
-                String oldChId = Prefs.getStringPreference(context, "ch_curr_" + chBase, "");
-                if (!oldChId.equals(chId)) {
-                    try {
-                        notificationManager.deleteNotificationChannel(oldChId);
-                    }
-                    catch (Exception e) {
-                        // channel not created before
-                    }
-                    Prefs.setStringPreference(context, "ch_curr_" + chBase, chId);
-                }
-
-                // check if there is already a channel with the given name
+                // check if there is already a channel with the given name,
+                // delete unused `ch_msg` channel names (keep others as `dc_foreground_notification_ch`)
                 List<NotificationChannel> channels = notificationManager.getNotificationChannels();
                 boolean channelExists = false;
                 for (int i = 0; i < channels.size(); i++) {
-                    if (chId.equals(channels.get(i).getId())) {
+                    String testChId = channels.get(i).getId();
+                    if (chId.equals(testChId)) {
                         channelExists = true;
-                        break;
+                    } else if (testChId.startsWith(CH_PREFIX) && !isNotificationChannelInUse(testChId)) {
+                        try {
+                            notificationManager.deleteNotificationChannel(testChId);
+                        }
+                        catch (Exception e) { }
                     }
                 }
 
