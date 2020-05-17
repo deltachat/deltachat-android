@@ -117,15 +117,17 @@ public class MsgNotificationManager {
         return false;
     }
 
-    private String getNotificationChannel(NotificationManagerCompat notificationManager) {
-        String chId = CH_PREFIX + CH_VERSION + "_" + "unsupported";
+    private String getNotificationChannel(NotificationManagerCompat notificationManager, DcChat dcChat) {
+        int chatId = dcChat.getId();
+        String channelId = CH_PREFIX + CH_VERSION + "_" + "unsupported";
 
         if(notificationChannelsSupported()) {
             try {
                 // get all values we'll use as settings for the NotificationChannel
                 String ledColor = Prefs.getNotificationLedColor(context);
-                boolean defaultVibrate = Prefs.isNotificationVibrateEnabled(context);
-                Uri ringtone = Prefs.getNotificationRingtone(context);
+                boolean defaultVibrate = getEffectiveVibrate(chatId);
+                Uri ringtone = getEffectiveSound(chatId);
+                boolean isIndependent = requiresIndependentChannel(chatId);
 
                 // compute hash from these settings
                 String hash = "";
@@ -135,20 +137,32 @@ public class MsgNotificationManager {
                 md.update(ringtone.toString().getBytes());
                 hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
-                // get channel name
-                chId = CH_PREFIX + CH_VERSION + "_" + hash;
+                // get channel id
+                channelId = CH_PREFIX + CH_VERSION + "_" + hash;
+                if (isIndependent) {
+                    channelId += String.format(".%d", chatId);
+                }
+
+                // user-visible name of the channel
+                String name = "New messages";
+                if (isIndependent) {
+                    name = dcChat.getName();
+                }
 
                 // check if there is already a channel with the given name,
                 // delete unused `ch_msg` channel names (keep others as `dc_foreground_notification_ch`)
                 List<NotificationChannel> channels = notificationManager.getNotificationChannels();
                 boolean channelExists = false;
                 for (int i = 0; i < channels.size(); i++) {
-                    String testChId = channels.get(i).getId();
-                    if (chId.equals(testChId)) {
+                    String testChannelId = channels.get(i).getId();
+                    if (channelId.equals(testChannelId)) {
                         channelExists = true;
-                    } else if (testChId.startsWith(CH_PREFIX) && !isNotificationChannelInUse(testChId)) {
                         try {
-                            notificationManager.deleteNotificationChannel(testChId);
+                            channels.get(i).setName(name);
+                        } catch(Exception e) { }
+                    } else if (testChannelId.startsWith(CH_PREFIX) && !isNotificationChannelInUse(testChannelId)) {
+                        try {
+                            notificationManager.deleteNotificationChannel(testChannelId);
                         }
                         catch (Exception e) { }
                     }
@@ -157,8 +171,8 @@ public class MsgNotificationManager {
                 // create a channel with the given settings;
                 // we cannot change the settings, however, this is handled by using different values for chId
                 if(!channelExists) {
-                    NotificationChannel channel = new NotificationChannel(chId,
-                            "New messages", NotificationManager.IMPORTANCE_HIGH);
+                    NotificationChannel channel = new NotificationChannel(channelId,
+                            name, NotificationManager.IMPORTANCE_HIGH);
                     channel.setDescription("Informs about new messages.");
 
                     if (!ledColor.equals("none")) {
@@ -185,7 +199,7 @@ public class MsgNotificationManager {
             }
         }
 
-        return chId;
+        return channelId;
     }
 
 
@@ -207,12 +221,13 @@ public class MsgNotificationManager {
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
             // create a basic notification
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager))
+            DcChat dcChat = dcContext.getChat(chatId);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager, dcChat))
                     .setSmallIcon(R.drawable.icon_notification)
                     .setColor(context.getResources().getColor(R.color.delta_primary))
                     .setPriority(Prefs.getNotificationPriority(context))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                    .setContentTitle(dcContext.getChat(chatId).getName())
+                    .setContentTitle(dcChat.getName())
                     .setContentText(dcContext.getMsg(msgId).getSummarytext(100));
 
             // set sound, vibrate, led for systems that do not have notification channels
