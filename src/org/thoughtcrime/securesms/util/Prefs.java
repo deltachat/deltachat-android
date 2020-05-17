@@ -42,9 +42,7 @@ public class Prefs {
   private static final String CHAT_VIBRATE                     = "pref_chat_vibrate_"; // followed by chat-id
   private static final String NOTIFICATION_PREF                = "pref_key_enable_notifications";
   public  static final String LED_COLOR_PREF                   = "pref_led_color";
-  public  static final String LED_BLINK_PREF                   = "pref_led_blink";
-  private static final String LED_BLINK_PREF_CUSTOM            = "pref_led_blink_custom";
-  public static final String CHAT_MUTED_UNTIL                 = "pref_chat_muted_until_"; // followed by chat-id
+  public  static final String CHAT_MUTED_UNTIL                 = "pref_chat_muted_until_"; // followed by chat-id
   private static final String CHAT_RINGTONE                    = "pref_chat_ringtone_"; // followed by chat-id
   public  static final String SCREEN_LOCK_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
   public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
@@ -267,14 +265,6 @@ public class Prefs {
 
   public static String getNotificationLedColor(Context context) {
     return getStringPreference(context, LED_COLOR_PREF, "blue");
-  }
-
-  public static String getNotificationLedPattern(Context context) {
-    return getStringPreference(context, LED_BLINK_PREF, "500,2000");
-  }
-
-  public static String getNotificationLedPatternCustom(Context context) {
-    return getStringPreference(context, LED_BLINK_PREF_CUSTOM, "500,2000");
   }
 
   // mute

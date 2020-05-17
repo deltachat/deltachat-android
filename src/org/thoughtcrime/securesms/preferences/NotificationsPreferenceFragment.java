@@ -32,8 +32,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     this.findPreference(Prefs.LED_COLOR_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
-    this.findPreference(Prefs.LED_BLINK_PREF)
-        .setOnPreferenceChangeListener(new ListSummaryListener());
     this.findPreference(Prefs.RINGTONE_PREF)
         .setOnPreferenceChangeListener(new RingtoneSummaryListener());
     this.findPreference(Prefs.NOTIFICATION_PRIVACY_PREF)
@@ -58,7 +56,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         });
 
     initializeListSummary((ListPreference) findPreference(Prefs.LED_COLOR_PREF));
-    initializeListSummary((ListPreference) findPreference(Prefs.LED_BLINK_PREF));
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIVACY_PREF));
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIORITY_PREF));
 

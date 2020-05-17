@@ -72,6 +72,7 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
   }
 
   private void setLed() {
+    /*
     String ledColor              = Prefs.getNotificationLedColor(context);
     String ledBlinkPattern       = Prefs.getNotificationLedPattern(context);
     String ledBlinkPatternCustom = Prefs.getNotificationLedPatternCustom(context);
@@ -89,6 +90,7 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
               Integer.parseInt(blinkPatternArray[0]),
               Integer.parseInt(blinkPatternArray[1]));
     }
+    */
   }
 
   void setTicker(@NonNull Recipient recipient, @Nullable CharSequence message) {

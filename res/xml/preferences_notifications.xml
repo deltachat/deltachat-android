@@ -36,20 +36,6 @@
             android:entryValues="@array/pref_led_color_values" />
 
         <ListPreference
-            android:key="pref_led_blink"
-            android:defaultValue="500,2000"
-            android:title="@string/pref_led_pattern"
-            android:dependency="pref_led_color"
-            android:entries="@array/pref_led_blink_pattern_entries"
-            android:entryValues="@array/pref_led_blink_pattern_values" />
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                            android:key="pref_key_inthread_notifications"
-                            android:title="@string/pref_in_chat_sounds"
-                            android:dependency="pref_key_enable_notifications"
-                            android:defaultValue="true" />
-
-        <ListPreference
                 android:key="pref_notification_privacy"
                 android:title="@string/pref_notifications_show"
                 android:dependency="pref_key_enable_notifications"
@@ -64,5 +50,10 @@
                 android:defaultValue="1"
                 android:entries="@array/pref_notification_priority_entries"
                 android:entryValues="@array/pref_notification_priority_values"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:key="pref_key_inthread_notifications"
+            android:title="@string/pref_in_chat_sounds"
+            android:defaultValue="true" />
 
 </PreferenceScreen>
