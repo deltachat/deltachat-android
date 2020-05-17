@@ -3,11 +3,7 @@ package org.thoughtcrime.securesms.notifications;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.media.SoundPool;
-import android.net.Uri;
-import android.os.Vibrator;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationManagerCompat;
 import android.text.TextUtils;
@@ -218,7 +214,7 @@ abstract class MessageNotifier {
     {
         AbstractNotificationBuilder notificationBuilder = createSingleChatNotification(context, notificationState, signal, bundled);
         if (notificationBuilder != null)
-            notify(context, notificationBuilder.getNotificationId(), notificationBuilder, signal);
+            NotificationManagerCompat.from(context).notify(notificationBuilder.getNotificationId(), notificationBuilder.build());
     }
 
     void sendMultipleChatNotification(@NonNull  Context context,
@@ -227,7 +223,7 @@ abstract class MessageNotifier {
     {
         AbstractNotificationBuilder notificationBuilder = createMultipleChatNotification(context, notificationState, signal);
         if (notificationBuilder != null)
-            notify(context, SUMMARY_NOTIFICATION_ID, notificationBuilder, signal);
+            NotificationManagerCompat.from(context).notify(notificationBuilder.getNotificationId(), notificationBuilder.build());
     }
 
     protected AbstractNotificationBuilder createSingleChatNotification(@NonNull  Context context,
@@ -254,6 +250,7 @@ abstract class MessageNotifier {
         builder.setContentIntent(firstItem.getPendingIntent(context));
         builder.setGroup(NOTIFICATION_GROUP);
         builder.setDeleteIntent(notificationState.getMarkAsReadIntent(context, chatId, notificationId));
+        builder.setOnlyAlertOnce(!signal);
 
         long timestamp = firstItem.getTimestamp();
         if (timestamp != 0) builder.setWhen(timestamp);
@@ -269,8 +266,7 @@ abstract class MessageNotifier {
         }
 
         if (signal) {
-            builder.setAlarms(audioManager.getRingerMode(),
-                    notificationState.getRingtone(context),
+            builder.setAlarms(notificationState.getRingtone(context),
                     notificationState.getVibrate(context));
             builder.setTicker(firstItem.getIndividualRecipient(),
                     firstItem.getText());
@@ -285,24 +281,6 @@ abstract class MessageNotifier {
 
     }
 
-    private void playNotificationSound(Uri uri, boolean vibrate) {
-        if(uri != null) {
-            Ringtone ringtone = RingtoneManager.getRingtone(appContext, uri);
-            
-            if (ringtone != null) {
-                ringtone.play();
-            }
-        } // else we selected "no sound"
-
-        if (vibrate) {
-            Vibrator v = (Vibrator) appContext.getSystemService(Context.VIBRATOR_SERVICE);
-            if (v!=null) {
-                v.vibrate(100);
-                v.vibrate(200);
-            }
-        }
-    }
-
     protected AbstractNotificationBuilder createMultipleChatNotification(@NonNull Context context,
                                                                          @NonNull NotificationState notificationState,
                                                                          boolean signal) {
@@ -314,6 +292,7 @@ abstract class MessageNotifier {
         builder.setMostRecentSender(firstItem.getIndividualRecipient());
         builder.setGroup(NOTIFICATION_GROUP);
         builder.setDeleteIntent(notificationState.getMarkAsReadIntent(context, 0, SUMMARY_NOTIFICATION_ID));
+        builder.setOnlyAlertOnce(!signal);
 
         long timestamp = firstItem.getTimestamp();
         if (timestamp != 0) builder.setWhen(timestamp);
@@ -328,21 +307,13 @@ abstract class MessageNotifier {
         }
 
         if (signal) {
-            builder.setAlarms(audioManager.getRingerMode(),
-                    notificationState.getRingtone(context),
+            builder.setAlarms(notificationState.getRingtone(context),
                     notificationState.getVibrate(context));
             builder.setTicker(firstItem.getIndividualRecipient(),
                     firstItem.getText());
         }
 
         return builder;
-    }
-
-    private void notify(Context context, int notificationId, AbstractNotificationBuilder notificationBuilder, boolean signal) {
-        if (signal) {
-            playNotificationSound(notificationBuilder.getRingtone(), notificationBuilder.getVibrate());
-        }
-        NotificationManagerCompat.from(context).notify(notificationId, notificationBuilder.build());
     }
 
     private void sendInChatNotification(int chatId) {

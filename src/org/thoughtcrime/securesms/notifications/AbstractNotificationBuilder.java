@@ -1,11 +1,11 @@
 package org.thoughtcrime.securesms.notifications;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.AudioAttributes;
-import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import androidx.annotation.NonNull;
@@ -32,8 +32,6 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
   protected Context                       context;
   protected NotificationPrivacyPreference privacy;
   private int notificationId;
-  private Uri ringtone;
-  private boolean vibrate;
 
   AbstractNotificationBuilder(Context context, NotificationPrivacyPreference privacy) {
     super(context, createMsgNotificationChannel(context));
@@ -53,23 +51,24 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
     return builder;
   }
 
-  // Alarms are not set in the notification or the notification channel but handled separately
-  // by the MessageNotifier. It allows us to dynamically turn on and off the sounds and as well as
-  // to change vibration and sounds during runtime
-  void setAlarms(int systemRingerMode, @Nullable Uri ringtone, Prefs.VibrateState vibrate) {
+  void setAlarms(@Nullable Uri ringtone, Prefs.VibrateState vibrate) {
     Uri     appDefaultRingtone = Prefs.getNotificationRingtone(context);
     boolean appDefaultVibrate  = Prefs.isNotificationVibrateEnabled(context);
-    if (systemRingerMode == AudioManager.RINGER_MODE_NORMAL) {
-      if (ringtone == null && !TextUtils.isEmpty(appDefaultRingtone.toString())) {
-        this.ringtone = appDefaultRingtone;
-      } else if (ringtone != null && !ringtone.toString().isEmpty()) {
-        this.ringtone = ringtone;
-      }
+
+    // TODO: chat-specific sounds/vibrate do not work in Android O or newer,
+    // we should move these settings to the notification channel, if we want to continue support this
+    // (maybe "mute" is sufficient)
+    if (ringtone == null && !TextUtils.isEmpty(appDefaultRingtone.toString())) {
+      setSound(appDefaultRingtone);
+    } else if (ringtone != null && !ringtone.toString().isEmpty()) {
+      setSound(ringtone);
     }
 
-    this.vibrate = (systemRingerMode != AudioManager.RINGER_MODE_SILENT) &&
-            (vibrate == Prefs.VibrateState.ENABLED ||
-            (vibrate == Prefs.VibrateState.DEFAULT && appDefaultVibrate));
+    if (vibrate == Prefs.VibrateState.ENABLED ||
+            (vibrate == Prefs.VibrateState.DEFAULT && appDefaultVibrate))
+    {
+      setDefaults(Notification.DEFAULT_VIBRATE);
+    }
   }
 
   private void setLed() {
@@ -211,13 +210,5 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
 
   public int getNotificationId() {
     return this.notificationId;
-  }
-
-  public Uri getRingtone() {
-    return this.ringtone;
-  }
-
-  public boolean getVibrate() {
-    return this.vibrate;
   }
 }
