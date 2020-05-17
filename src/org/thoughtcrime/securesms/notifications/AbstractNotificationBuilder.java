@@ -72,12 +72,9 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
   }
 
   private void setLed() {
-    String ledColor              = Prefs.getNotificationLedColor(context);
-    String ledBlinkPattern       = Prefs.getNotificationLedPattern(context);
-    String ledBlinkPatternCustom = Prefs.getNotificationLedPatternCustom(context);
-
+    // for Android O or newer, this is handled by the notification channel
+    String ledColor = Prefs.getNotificationLedColor(context);
     if (!ledColor.equals("none")) {
-      String[] blinkPatternArray = parseBlinkPattern(ledBlinkPattern, ledBlinkPatternCustom);
       int argb;
       try {
         argb = Color.parseColor(ledColor);
@@ -85,9 +82,7 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
       catch (Exception e) {
         argb = Color.rgb(0xFF, 0xFF, 0xFF);
       }
-      setLights(argb,
-              Integer.parseInt(blinkPatternArray[0]),
-              Integer.parseInt(blinkPatternArray[1]));
+      setLights(argb,500, 2000);
     }
   }
 
@@ -99,13 +94,6 @@ abstract class AbstractNotificationBuilder extends NotificationCompat.Builder {
     } else {
       setTicker(context.getString(R.string.notify_new_message));
     }
-  }
-
-  private String[] parseBlinkPattern(String blinkPattern, String blinkPatternCustom) {
-    if (blinkPattern.equals("custom"))
-      blinkPattern = blinkPatternCustom;
-
-    return blinkPattern.split(",");
   }
 
   // handle NotificationChannels:

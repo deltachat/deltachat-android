@@ -117,18 +117,6 @@
     <item>none</item>
   </string-array>
 
-  <string-array name="pref_led_blink_pattern_entries">
-    <item>@string/fast</item>
-    <item>@string/normal</item>
-    <item>@string/slow</item>
-  </string-array>
-
-  <string-array name="pref_led_blink_pattern_values" translatable="false">
-    <item>300,300</item>
-    <item>500,2000</item>
-    <item>3000,3000</item>
-  </string-array>
-
   <string-array name="default_or_custom_values" translatable="false">
       <item>default</item>
       <item>custom</item>

@@ -35,14 +35,6 @@
             android:entries="@array/pref_led_color_entries"
             android:entryValues="@array/pref_led_color_values" />
 
-        <ListPreference
-            android:key="pref_led_blink"
-            android:defaultValue="500,2000"
-            android:title="@string/pref_led_pattern"
-            android:dependency="pref_led_color"
-            android:entries="@array/pref_led_blink_pattern_entries"
-            android:entryValues="@array/pref_led_blink_pattern_values" />
-
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                             android:key="pref_key_inthread_notifications"
                             android:title="@string/pref_in_chat_sounds"
