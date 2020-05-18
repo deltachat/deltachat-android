@@ -29,7 +29,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   private Timer timer;
 
-  private boolean isWaitingForResult;
   private boolean isHiddenByScreenLock;
 
   @Override
@@ -53,8 +52,7 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       super.onActivityResult(requestCode, resultCode, data);
-      isWaitingForResult = false;
-      if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
+    if (requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
             if (resultCode == RESULT_OK) {
                 ScreenLockUtil.setShouldLockApp(false);
             } else {
@@ -154,7 +152,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   public void startActivityForResult(Intent intent, int requestCode) {
     super.startActivityForResult(intent, requestCode);
     if (requestCode != -1) {
-      isWaitingForResult = true;
     }
   }
 
