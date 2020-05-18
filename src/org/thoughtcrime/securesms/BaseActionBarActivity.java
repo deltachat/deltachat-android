@@ -149,11 +149,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
         ActivityCompat.startActivity(this, intent, bundle);
     }
 
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode) {
-        super.startActivityForResult(intent, requestCode);
-    }
-
     public void makeSearchMenuVisible(final Menu menu, final MenuItem exception, boolean visible) {
         for (int i = 0; i < menu.size(); ++i) {
             MenuItem item = menu.getItem(i);
