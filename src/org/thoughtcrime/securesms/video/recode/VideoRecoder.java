@@ -854,13 +854,13 @@ public class VideoRecoder {
       DcHelper.getContext(context).prepareMsg(chatId, msg);
 
       // calulate bytes
-      vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
-          vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
+//      vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
+//          vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
 
-      if (vei.estimatedBytes > MAX_BYTES+MAX_BYTES/4) {
-        logNtoast(context, String.format("recoding for %s failed: resulting file probably too large", inPath));
-        return false;
-      }
+//      if (vei.estimatedBytes > MAX_BYTES+MAX_BYTES/4) {
+//        logNtoast(context, String.format("recoding for %s failed: resulting file probably too large", inPath));
+//        return false;
+//      }
 
       // recode
       String tempPath = DcHelper.getContext(context).getBlobdirFile(inPath);
