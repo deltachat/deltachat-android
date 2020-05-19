@@ -323,7 +323,7 @@ public class ConversationListFragment extends Fragment
                 dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
               }
               else {
-                dcContext.notificationManger.removeNotifications((int) chatId);
+                dcContext.notificationCenter.removeNotifications((int) chatId);
                 dcContext.deleteChat((int) chatId);
               }
             }

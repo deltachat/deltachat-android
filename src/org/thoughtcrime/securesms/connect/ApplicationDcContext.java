@@ -53,7 +53,7 @@ public class ApplicationDcContext extends DcContext {
   public static final int RECIPIENT_TYPE_CONTACT = 1;
 
   public Context context;
-  public NotificationCenter notificationManger;
+  public NotificationCenter notificationCenter;
 
   public ApplicationDcContext(Context context) {
     super("Android "+BuildConfig.VERSION_NAME);
@@ -122,7 +122,7 @@ public class ApplicationDcContext extends DcContext {
       Log.e(TAG, "Cannot create wakeLocks");
     }
 
-    notificationManger = new NotificationCenter(this);
+    notificationCenter = new NotificationCenter(this);
     startThreads(0);
   }
 
@@ -446,6 +446,7 @@ public class ApplicationDcContext extends DcContext {
   }
 
   public void stopThreads() {
+    notificationCenter.removeAllNotifiations();
     run = false;
     synchronized (threadsCritical) {
       while (true) {
@@ -580,7 +581,7 @@ public class ApplicationDcContext extends DcContext {
         break;
 
       case DC_EVENT_INCOMING_MSG:
-        Util.runOnAnyBackgroundThread(() -> notificationManger.addNotification((int) data1, (int) data2));
+        notificationCenter.addNotification((int) data1, (int) data2);
         if (eventCenter != null) {
           eventCenter.sendToObservers(event, data1, data2); // Other parts of the code are also interested in this event
         }

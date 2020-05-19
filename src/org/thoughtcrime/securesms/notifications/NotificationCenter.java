@@ -257,6 +257,13 @@ public class NotificationCenter {
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
+            // get notification text
+            DcMsg dcMsg = dcContext.getMsg(msgId);
+            String text = dcMsg.getSummarytext(100);
+            if (dcChat.isGroup()) {
+                text = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + text;
+            }
+
             // create a basic notification
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager, dcChat))
                     .setSmallIcon(R.drawable.icon_notification)
@@ -264,7 +271,7 @@ public class NotificationCenter {
                     .setPriority(Prefs.getNotificationPriority(context))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setContentTitle(dcChat.getName())
-                    .setContentText(dcContext.getMsg(msgId).getSummarytext(100));
+                    .setContentText(text);
 
             // set sound, vibrate, led for systems that do not have notification channels
             if (!notificationChannelsSupported()) {
@@ -282,22 +289,29 @@ public class NotificationCenter {
                 }
             }
 
-            // add notification
-            notificationManager.notify(ID_MSG_OFFSET+msgId, builder.build());
+            // add notification, we use one notification per chat,
+            // esp. older android are not that great at grouping
+            notificationManager.notify(ID_MSG_OFFSET+chatId, builder.build());
         });
     }
 
     public void removeNotifications(int chatId) {
-        Util.runOnAnyBackgroundThread(() -> {
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.cancel(ID_MSG_OFFSET + chatId);
+    }
 
-        });
+    public void removeAllNotifiations() {
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.cancelAll();
     }
 
     public void updateVisibleChat(int chatId) {
         Util.runOnAnyBackgroundThread(() -> {
 
             visibleChatId = chatId;
-            removeNotifications(chatId);
+            if (chatId!=0) {
+                removeNotifications(chatId);
+            }
 
         });
     }
