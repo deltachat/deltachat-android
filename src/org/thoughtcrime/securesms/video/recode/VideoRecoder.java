@@ -28,8 +28,11 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.List;
+
+import androidx.annotation.RequiresApi;
 
 public class VideoRecoder {
 
@@ -46,7 +49,7 @@ public class VideoRecoder {
   private boolean cancelCurrentVideoConversion = false;
   private final Object videoConvertSync = new Object();
 
-  private void checkConversionCanceled() throws Exception {
+  private void checkConversionCanceled() {
     boolean cancelConversion;
     synchronized (videoConvertSync) {
       cancelConversion = cancelCurrentVideoConversion;
@@ -129,7 +132,9 @@ public class VideoRecoder {
   }
 
   @TargetApi(16)
-  private long readAndWriteTrack(MediaExtractor extractor, MP4Builder mediaMuxer, MediaCodec.BufferInfo info, long start, long end, File file, boolean isAudio) throws Exception {
+  private long readAndWriteTrack(MediaExtractor extractor, MP4Builder mediaMuxer,
+                                 MediaCodec.BufferInfo info, long start, long end,
+                                 File file, boolean isAudio) throws IOException {
     int trackIndex = selectTrack(extractor, isAudio);
     if (trackIndex >= 0) {
       extractor.selectTrack(trackIndex);
@@ -537,7 +542,7 @@ public class VideoRecoder {
                           outputSurface.awaitNewImage();
                         } catch (Exception e) {
                           errorWait = true;
-
+                          Log.d(TAG, "error while waiting for recording output surface", e);
                         }
                         if (!errorWait) {
                           if (Build.VERSION.SDK_INT >= 18) {
@@ -770,7 +775,9 @@ public class VideoRecoder {
   // prepareVideo() assumes the msg object is set up properly to being sent;
   // the function fills out missing information and also recodes the video as needed;
   // to get a responsive ui, DcChat.prepareMsg() may be called.
+  // see canRecode() for version requirement
   // return: true=video might be prepared, can be sent, false=error
+  @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
   public static boolean prepareVideo(Context context, int chatId, DcMsg msg) {
 
     try {
