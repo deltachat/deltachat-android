@@ -48,7 +48,6 @@
     <string name="error_x">Error: %1$s</string>
     <string name="error_no_network">Network unavailable.</string>
     <string name="no_app_to_handle_data">Can\'t find an app to handle this type of data.</string>
-    <string name="no_app_to_capture_video">Can\'t access any app to capture a video.</string>
     <string name="no_browser_installed">No browser installed.</string>
     <string name="file_not_found">Could not find %1$s.</string>
     <string name="copied_to_clipboard">Copied to clipboard.</string>
@@ -708,5 +707,11 @@
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
+    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
+    <string name="device_talk_background_connection_android">You may already have noticed, that there is a hint \"Background connection enabled\" shown by the system.\n\n👉 The hint normally prevents the operating system from killing the connection between Delta Chat and your server.\n\n👉 If the hint disappears without any action on your part, the connection has probably been killed anyway.\nIf you think this is weird, we totally agree - but many manufacturers do exactly that. The site https://dontkillmyapp.com shows some workarounds.\n\nHowever, we are happy that we could improve the receiving of messages in background with this change and could fulfil the requests of many users - thanks for reporting 🤗</string>
+    <string name="device_talk_background_connection2_android">You can now enable and disabled the \"Background connection\" as needed at \"Settings / Notifications\".</string>
 
+    <!-- Video recording error texts -->
+    <string name="no_app_to_capture_video">Can\'t access any app to capture a video.</string>
+    <string name="recoding_video_failed">Recoding failed. Can\'t create video.</string>
 </resources>

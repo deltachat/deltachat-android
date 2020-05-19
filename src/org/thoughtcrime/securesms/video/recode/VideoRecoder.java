@@ -23,6 +23,7 @@ import com.coremedia.iso.boxes.TrackHeaderBox;
 import com.googlecode.mp4parser.util.Matrix;
 import com.googlecode.mp4parser.util.Path;
 
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
@@ -245,6 +246,7 @@ public class VideoRecoder {
 
     File inputFile = new File(videoEditedInfo.originalPath);
     if (!inputFile.canRead()) {
+      Log.w(TAG, "Could not read video file to be recoded");
       //didWriteData(messageObject, cacheFile, true, true);
       return false;
     }
@@ -550,6 +552,7 @@ public class VideoRecoder {
                             inputSurface.setPresentationTime(info.presentationTimeUs * 1000);
                             inputSurface.swapBuffers();
                           } else {
+                            Log.i(TAG, "Cannot proceed with the current SDK version");
                             return false; // TODO: this should be caught much earlier
                             /*
                             int inputBufIndex = encoder.dequeueInputBuffer(TIMEOUT_USEC);
@@ -587,7 +590,7 @@ public class VideoRecoder {
                 videoStartTime = videoTime;
               }
             } catch (Exception e) {
-
+              Log.i(TAG,"Recoding video failed unexpectedly", e);
               error = true;
             }
 
@@ -621,22 +624,24 @@ public class VideoRecoder {
         }
       } catch (Exception e) {
         error = true;
-
+        Log.i(TAG,"Recoding video failed unexpectedly", e);
+        return false;
       } finally {
         if (extractor != null) {
           extractor.release();
         }
         if (mediaMuxer != null) {
           try {
-            mediaMuxer.finishMovie(false);
+            mediaMuxer.finishMovie(error);
           } catch (Exception e) {
-
+            Log.i(TAG,"Flushing video failed unexpectedly", e);
           }
         }
         //Log.i("DeltaChat", "time = " + (System.currentTimeMillis() - time));
       }
     } else {
       //didWriteData(messageObject, cacheFile, true, true);
+      Log.i(TAG,"Video width or height are 0, refusing recode.");
       return false;
     }
     //didWriteData(messageObject, cacheFile, true, error);
@@ -691,6 +696,7 @@ public class VideoRecoder {
           }
         }
       } catch (Exception e) {
+        Log.i(TAG, "Determinating recoding capabilities failed unexpectedly", e);
         canRecode = false;
       }
     }
@@ -728,7 +734,7 @@ public class VideoRecoder {
           trackBitrate = (int) (sampleSizes * 8 / originalVideoSeconds);
           vei.originalDurationMs = originalVideoSeconds * 1000;
         } catch (Exception e) {
-
+          Log.i(TAG, "Calculating sample sizes failed unexpectedly", e);
         }
         TrackHeaderBox headerBox = trackBox.getTrackHeaderBox();
         if (headerBox.getWidth() != 0 && headerBox.getHeight() != 0) {
@@ -754,6 +760,7 @@ public class VideoRecoder {
       vei.originalHeight = (int) trackHeaderBox.getHeight();
 
     } catch (Exception e) {
+      Log.i(TAG, "Reading message info failed unexpectedly", e);
       return null;
     }
 
@@ -766,10 +773,9 @@ public class VideoRecoder {
     return size;
   }
 
-  private static void logNtoast(Context context, String str)
-  {
-    Log.w(TAG, str);
-    Util.runOnMain(()->Toast.makeText(context, str, Toast.LENGTH_LONG).show());
+  private static void toastRecodingFailed(Context context) {
+    Util.runOnMain(() -> Toast.makeText(context, R.string.recoding_video_failed,
+        Toast.LENGTH_LONG).show());
   }
 
   // prepareVideo() assumes the msg object is set up properly to being sent;
@@ -786,7 +792,8 @@ public class VideoRecoder {
       // try to get information from video file
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
       if (vei == null) {
-        logNtoast(context, String.format("recoding for %s failed: cannot get info", inPath));
+        Log.w(TAG, String.format("recoding for %s failed: cannot get info", inPath));
+        toastRecodingFailed(context);
         return false;
       }
       vei.rotationValue = vei.originalRotationValue;
@@ -803,7 +810,8 @@ public class VideoRecoder {
       msg.setDuration((int)vei.originalDurationMs);
 
       if (!canRecode()) {
-        logNtoast(context, String.format("recoding for %s failed: this system cannot recode videos", inPath));
+        Log.w(TAG, String.format("recoding for %s failed: this system cannot recode videos", inPath));
+        toastRecodingFailed(context);
         return false;
       }
 
@@ -866,19 +874,23 @@ public class VideoRecoder {
       String tempPath = DcHelper.getContext(context).getBlobdirFile(inPath);
       VideoRecoder videoRecoder = new VideoRecoder();
       if (!videoRecoder.convertVideo(vei, tempPath)) {
-        logNtoast(context, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));
+        Log.w(TAG, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));
+        toastRecodingFailed(context);
         return false;
       }
 
       if (!Util.moveFile(tempPath, inPath)) {
-        logNtoast(context, String.format("recoding for %s failed: cannot move temporary file %s", inPath, tempPath));
+        Log.w(TAG, String.format("recoding for %s failed: cannot move temporary file %s", inPath, tempPath));
+        toastRecodingFailed(context);
         return false;
       }
 
       Log.i(TAG, String.format("recoding for %s done", inPath));
     }
     catch(Exception e) {
-      e.printStackTrace();
+      Log.w(TAG, "Video recoding failed unexpectedly.", e);
+      toastRecodingFailed(context);
+      return false;
     }
 
     return true;
