@@ -48,6 +48,7 @@
     <string name="error_x">Error: %1$s</string>
     <string name="error_no_network">Network unavailable.</string>
     <string name="no_app_to_handle_data">Can\'t find an app to handle this type of data.</string>
+    <string name="no_app_to_capture_video">Can\'t access any app to capture a video.</string>
     <string name="no_browser_installed">No browser installed.</string>
     <string name="file_not_found">Could not find %1$s.</string>
     <string name="copied_to_clipboard">Copied to clipboard.</string>
