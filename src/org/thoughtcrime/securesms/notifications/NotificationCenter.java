@@ -38,7 +38,7 @@ public class NotificationCenter {
         this.context = dcContext.context.getApplicationContext();
     }
 
-    private Uri getEffectiveSound(int chatId) {
+    private Uri effectiveSound(int chatId) { // chatId=0: return app-global setting
         Uri chatRingtone = Prefs.getChatRingtone(context, chatId);
         if (chatRingtone!=null) {
             return chatRingtone;
@@ -51,7 +51,7 @@ public class NotificationCenter {
         return null;
     }
 
-    private boolean getEffectiveVibrate(int chatId) {
+    private boolean effectiveVibrate(int chatId) { // chatId=0: return app-global setting
         Prefs.VibrateState vibrate = Prefs.getChatVibrate(context, chatId);
         if (vibrate == Prefs.VibrateState.ENABLED) {
             return true;
@@ -78,8 +78,7 @@ public class NotificationCenter {
         }
         return argb;
     }
-
-
+    
 
     // Notification channels
     // --------------------------------------------------------------------------------------------
@@ -99,7 +98,7 @@ public class NotificationCenter {
     //   can edit the notifications in Delta Chat as well as in the system
 
     // channelIds: CH_MSG_* are used here, the other ones from outside (defined here to have some overview)
-    public static final String CH_MSG_PREFIX = "ch_msg"; // full name is "ch_msgV_HASH" or "ch_msgV_HASH.CHATID"
+    public static final String CH_MSG_PREFIX = "ch_msg";
     public static final String CH_MSG_VERSION = "4";
     public static final String CH_PERMANENT_NOTIFICATION = "dc_foreground_notification_ch";
 
@@ -107,22 +106,35 @@ public class NotificationCenter {
         return Build.VERSION.SDK_INT >= 26;
     }
 
-    private boolean isNotificationChannelInUse(String chId) {
+    // full name is "ch_msgV_HASH" or "ch_msgV_HASH.CHATID"
+    private String computeChannelId(String ledColor, boolean vibrate, Uri ringtone, int chatId) {
+        String channelId = CH_MSG_PREFIX;
         try {
-            if (chId.startsWith(CH_MSG_PREFIX + CH_MSG_VERSION)) {
-                int point = chId.lastIndexOf(".");
-                if (point == -1) {
-                    return true; // this is the current standard channel for all chats that do not have explicit sound/vibrate set
-                } else {
-                    int chatId = Integer.parseInt(chId.substring(point + 1));
-                    if (requiresIndependentChannel(chatId)) {
-                        return true; // this is a channel for a chat with explicit sound/vibrate set
-                    }
+            String hash = "";
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(ledColor.getBytes());
+            md.update(vibrate ? (byte) 1 : (byte) 0);
+            md.update(ringtone.toString().getBytes());
+            hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
-                }
+            channelId = CH_MSG_PREFIX + CH_MSG_VERSION + "_" + hash;
+            if (chatId!=0) {
+                channelId += String.format(".%d", chatId);
+            }
+
+        } catch(Exception e) { }
+        return channelId;
+    }
+
+    // return chatId from "ch_msgV_HASH.CHATID" or 0
+    private int parseNotificationChannelChatId(String channelId) {
+        try {
+            int point = channelId.lastIndexOf(".");
+            if (point>0) {
+                return Integer.parseInt(channelId.substring(point + 1));
             }
         } catch(Exception e) { }
-        return false;
+        return 0;
     }
 
     private String getNotificationChannelGroup(NotificationManagerCompat notificationManager) {
@@ -136,29 +148,18 @@ public class NotificationCenter {
 
     private String getNotificationChannel(NotificationManagerCompat notificationManager, DcChat dcChat) {
         int chatId = dcChat.getId();
-        String channelId = CH_MSG_PREFIX + CH_MSG_VERSION + "_" + "unsupported";
+        String channelId = CH_MSG_PREFIX;
 
         if(notificationChannelsSupported()) {
             try {
                 // get all values we'll use as settings for the NotificationChannel
                 String  ledColor       = Prefs.getNotificationLedColor(context);
-                boolean defaultVibrate = getEffectiveVibrate(chatId);
-                Uri     ringtone       = getEffectiveSound(chatId);
+                boolean defaultVibrate = effectiveVibrate(chatId);
+                Uri     ringtone       = effectiveSound(chatId);
                 boolean isIndependent  = requiresIndependentChannel(chatId);
 
-                // compute hash from these settings
-                String hash = "";
-                MessageDigest md = MessageDigest.getInstance("SHA-256");
-                md.update(ledColor.getBytes());
-                md.update(defaultVibrate ? (byte) 1 : (byte) 0);
-                md.update(ringtone.toString().getBytes());
-                hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
-
-                // get channel id
-                channelId = CH_MSG_PREFIX + CH_MSG_VERSION + "_" + hash;
-                if (isIndependent) {
-                    channelId += String.format(".%d", chatId);
-                }
+                // get channel id from these settings
+                channelId = computeChannelId(ledColor, defaultVibrate, ringtone, isIndependent? chatId : 0);
 
                 // user-visible name of the channel -
                 // we just use the name of the chat or "Default"
@@ -168,25 +169,25 @@ public class NotificationCenter {
                     name = dcChat.getName();
                 }
 
-                // check if there is already a channel with the given name,
-                // delete unused `ch_msg` channel names (keep others as `dc_foreground_notification_ch`)
+                // check if there is already a channel with the given name
                 List<NotificationChannel> channels = notificationManager.getNotificationChannels();
                 boolean channelExists = false;
                 for (int i = 0; i < channels.size(); i++) {
-                    NotificationChannel currChannel = channels.get(i);
-                    String currChannelId = currChannel.getId();
-                    if (channelId.equals(currChannelId)) {
-                        channelExists = true;
-                        try {
+                    String currChannelId = channels.get(i).getId();
+                    if (currChannelId.startsWith(CH_MSG_PREFIX)) {
+                        // this is one of the message channels handled here ...
+                        if (currChannelId.equals(channelId)) {
+                            // ... this is the actually required channel, fine :)
                             // update the name to reflect localize changes and chat renames
-                            currChannel.setName(name);
-                        } catch(Exception e) { }
-                    } else if (currChannelId.startsWith(CH_MSG_PREFIX) && !isNotificationChannelInUse(currChannelId)) {
-                        // TODO: outdated un-independent channels are not deleted
-                        try {
-                            notificationManager.deleteNotificationChannel(currChannelId);
+                            channelExists = true;
+                            channels.get(i).setName(name);
+                        } else {
+                            // ... another message channel, delete if it is not in use.
+                            int currChatId = parseNotificationChannelChatId(currChannelId);
+                            if (!currChannelId.equals(computeChannelId(ledColor, effectiveVibrate(currChatId), effectiveSound(currChatId), currChatId))) {
+                                notificationManager.deleteNotificationChannel(currChannelId);
+                            }
                         }
-                        catch (Exception e) { }
                     }
                 }
 
@@ -260,11 +261,11 @@ public class NotificationCenter {
 
             // set sound, vibrate, led for systems that do not have notification channels
             if (!notificationChannelsSupported()) {
-                Uri sound = getEffectiveSound(chatId);
+                Uri sound = effectiveSound(chatId);
                 if (sound != null) {
                     builder.setSound(sound);
                 }
-                boolean vibrate = getEffectiveVibrate(chatId);
+                boolean vibrate = effectiveVibrate(chatId);
                 if (vibrate) {
                     builder.setDefaults(Notification.DEFAULT_VIBRATE);
                 }
