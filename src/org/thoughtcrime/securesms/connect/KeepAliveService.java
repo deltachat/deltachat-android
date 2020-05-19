@@ -15,6 +15,7 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.Prefs;
 
 public class KeepAliveService extends Service {
@@ -112,18 +113,17 @@ public class KeepAliveService extends Service {
         builder.setSmallIcon(R.drawable.notification_permanent);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
             createFgNotificationChannel(this);
-            builder.setChannelId(FG_CHANNEL_ID);
+            builder.setChannelId(NotificationCenter.CH_PERMANENT_NOTIFICATION);
         }
         return builder.build();
     }
 
     private static boolean ch_created = false;
-    private static final String FG_CHANNEL_ID = "dc_foreground_notification_ch";
     @TargetApi(Build.VERSION_CODES.O)
     static private void createFgNotificationChannel(Context context) {
         if(!ch_created) {
             ch_created = true;
-            NotificationChannel channel = new NotificationChannel(FG_CHANNEL_ID,
+            NotificationChannel channel = new NotificationChannel(NotificationCenter.CH_PERMANENT_NOTIFICATION,
                 "Receive messages in background.", NotificationManager.IMPORTANCE_MIN); // IMPORTANCE_DEFAULT will play a sound
             channel.setDescription("Ensure reliable message receiving.");
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);

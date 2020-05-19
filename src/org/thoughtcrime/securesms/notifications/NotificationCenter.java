@@ -81,19 +81,27 @@ public class NotificationCenter {
 
 
 
-    // handle notification channels
+    // Notification channels
     // --------------------------------------------------------------------------------------------
 
-    // - since oreo, a NotificationChannel is a MUST
-    // - NotificationChannels have default values that have a higher precedence as the Notification.Builder setting
+    // Overview:
+    // - since SDK 26 (Oreo), a NotificationChannel is a MUST for notifications
+    // - NotificationChannels are defined by a channelId
+    //   and its user-editable settings have a higher precedence as the Notification.Builder setting
     // - once created, NotificationChannels cannot be modified programmatically
-    // - NotificationChannels can be deleted, however, on re-creation it becomes un-deleted with the old settings
-    // - the idea is that sound and vibrate are handled outside of the scope of the notification channel
+    // - NotificationChannels can be deleted, however, on re-creation with the same id,
+    //   it becomes un-deleted with the old user-defined settings
+    //
+    // How we use Notification channel:
+    // - We include the delta-chat-notifications settings into the name of the channelId
+    // - The chatId is included only, if there are separate sound- or vibration-settings for a chat
+    // - This way, we have stable and few channelIds and the user
+    //   can edit the notifications in Delta Chat as well as in the system
 
-    // our Channel-IDs have the format ""ch_msgV_HASH" or "ch_msgV_HASH.CHATID"
-    // note, that there are other Channel-IDs as "dc_foreground_notification_ch"
-    static private final String CH_PREFIX = "ch_msg";
-    static private final String CH_VERSION = "4";
+    // channelIds: CH_MSG_* are used here, the other ones from outside (defined here to have some overview)
+    public static final String CH_MSG_PREFIX = "ch_msg"; // full name is "ch_msgV_HASH" or "ch_msgV_HASH.CHATID"
+    public static final String CH_MSG_VERSION = "4";
+    public static final String CH_PERMANENT_NOTIFICATION = "dc_foreground_notification_ch";
 
     private boolean notificationChannelsSupported() {
         return Build.VERSION.SDK_INT >= 26;
@@ -101,7 +109,7 @@ public class NotificationCenter {
 
     private boolean isNotificationChannelInUse(String chId) {
         try {
-            if (chId.startsWith(CH_PREFIX + CH_VERSION)) {
+            if (chId.startsWith(CH_MSG_PREFIX + CH_MSG_VERSION)) {
                 int point = chId.lastIndexOf(".");
                 if (point == -1) {
                     return true; // this is the current standard channel for all chats that do not have explicit sound/vibrate set
@@ -128,15 +136,15 @@ public class NotificationCenter {
 
     private String getNotificationChannel(NotificationManagerCompat notificationManager, DcChat dcChat) {
         int chatId = dcChat.getId();
-        String channelId = CH_PREFIX + CH_VERSION + "_" + "unsupported";
+        String channelId = CH_MSG_PREFIX + CH_MSG_VERSION + "_" + "unsupported";
 
         if(notificationChannelsSupported()) {
             try {
                 // get all values we'll use as settings for the NotificationChannel
-                String ledColor = Prefs.getNotificationLedColor(context);
+                String  ledColor       = Prefs.getNotificationLedColor(context);
                 boolean defaultVibrate = getEffectiveVibrate(chatId);
-                Uri ringtone = getEffectiveSound(chatId);
-                boolean isIndependent = requiresIndependentChannel(chatId);
+                Uri     ringtone       = getEffectiveSound(chatId);
+                boolean isIndependent  = requiresIndependentChannel(chatId);
 
                 // compute hash from these settings
                 String hash = "";
@@ -147,12 +155,14 @@ public class NotificationCenter {
                 hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
                 // get channel id
-                channelId = CH_PREFIX + CH_VERSION + "_" + hash;
+                channelId = CH_MSG_PREFIX + CH_MSG_VERSION + "_" + hash;
                 if (isIndependent) {
                     channelId += String.format(".%d", chatId);
                 }
 
-                // user-visible name of the channel
+                // user-visible name of the channel -
+                // we just use the name of the chat or "Default"
+                // (the name is shown in the context of the group "Chats" - that should be enough context)
                 String name = context.getString(R.string.def);
                 if (isIndependent) {
                     name = dcChat.getName();
@@ -163,17 +173,18 @@ public class NotificationCenter {
                 List<NotificationChannel> channels = notificationManager.getNotificationChannels();
                 boolean channelExists = false;
                 for (int i = 0; i < channels.size(); i++) {
-                    String testChannelId = channels.get(i).getId();
-                    if (channelId.equals(testChannelId)) {
+                    NotificationChannel currChannel = channels.get(i);
+                    String currChannelId = currChannel.getId();
+                    if (channelId.equals(currChannelId)) {
                         channelExists = true;
                         try {
                             // update the name to reflect localize changes and chat renames
-                            channels.get(i).setName(name);
+                            currChannel.setName(name);
                         } catch(Exception e) { }
-                    } else if (testChannelId.startsWith(CH_PREFIX) && !isNotificationChannelInUse(testChannelId)) {
+                    } else if (currChannelId.startsWith(CH_MSG_PREFIX) && !isNotificationChannelInUse(currChannelId)) {
                         // TODO: outdated un-independent channels are not deleted
                         try {
-                            notificationManager.deleteNotificationChannel(testChannelId);
+                            notificationManager.deleteNotificationChannel(currChannelId);
                         }
                         catch (Exception e) { }
                     }
@@ -182,10 +193,10 @@ public class NotificationCenter {
                 // create a channel with the given settings;
                 // we cannot change the settings, however, this is handled by using different values for chId
                 if(!channelExists) {
-                    NotificationChannel channel = new NotificationChannel(channelId,
-                            name, NotificationManager.IMPORTANCE_HIGH);
+                    NotificationChannel channel = new NotificationChannel(channelId, name, NotificationManager.IMPORTANCE_HIGH);
                     channel.setDescription("Informs about new messages.");
                     channel.setGroup(getNotificationChannelGroup(notificationManager));
+                    channel.enableVibration(defaultVibrate);
 
                     if (!ledColor.equals("none")) {
                         channel.enableLights(true);
@@ -193,8 +204,6 @@ public class NotificationCenter {
                     } else {
                         channel.enableLights(false);
                     }
-
-                    channel.enableVibration(defaultVibrate);
 
                     if (!TextUtils.isEmpty(ringtone.toString())) {
                         channel.setSound(ringtone,
