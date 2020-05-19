@@ -84,6 +84,12 @@ public class DcContext {
         contextCPtr = 0;
     }
 
+    public String getDbName() {
+        String ret = getBlobdir();
+        ret = ret.substring(ret.lastIndexOf('/') + 1);
+        return ret.replace("-blobs", "");
+    }
+
     public native int          open                 (String dbfile);
     public native void         close                ();
     public native void         setStockTranslation  (int stockId, String translation);

@@ -122,6 +122,10 @@ public class NotificationCenter {
             md.update(ledColor.getBytes());
             md.update(vibrate ? (byte) 1 : (byte) 0);
             md.update(ringtone.toString().getBytes());
+            if (chatId!=0) {
+                // for multi-account, force different channelIds for maybe the same chatIds in multiple accounts
+                md.update(dcContext.getDbName().getBytes());
+            }
             hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
             channelId = CH_MSG_PREFIX + CH_MSG_VERSION + "_" + hash;
