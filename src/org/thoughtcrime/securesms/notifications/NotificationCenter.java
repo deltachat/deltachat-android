@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.notifications;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
+import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
@@ -116,6 +117,15 @@ public class NotificationCenter {
         return false;
     }
 
+    private String getNotificationChannelGroup(NotificationManagerCompat notificationManager) {
+        final String chGrpId = "chgrp_msg";
+        if (notificationChannelsSupported() && notificationManager.getNotificationChannelGroup(chGrpId) == null) {
+            NotificationChannelGroup chGrp = new NotificationChannelGroup(chGrpId, context.getString(R.string.pref_chats));
+            notificationManager.createNotificationChannelGroup(chGrp);
+        }
+        return chGrpId;
+    }
+
     private String getNotificationChannel(NotificationManagerCompat notificationManager, DcChat dcChat) {
         int chatId = dcChat.getId();
         String channelId = CH_PREFIX + CH_VERSION + "_" + "unsupported";
@@ -143,7 +153,7 @@ public class NotificationCenter {
                 }
 
                 // user-visible name of the channel
-                String name = "New messages";
+                String name = context.getString(R.string.def);
                 if (isIndependent) {
                     name = dcChat.getName();
                 }
@@ -157,9 +167,11 @@ public class NotificationCenter {
                     if (channelId.equals(testChannelId)) {
                         channelExists = true;
                         try {
+                            // update the name to reflect localize changes and chat renames
                             channels.get(i).setName(name);
                         } catch(Exception e) { }
                     } else if (testChannelId.startsWith(CH_PREFIX) && !isNotificationChannelInUse(testChannelId)) {
+                        // TODO: outdated un-independent channels are not deleted
                         try {
                             notificationManager.deleteNotificationChannel(testChannelId);
                         }
@@ -173,6 +185,7 @@ public class NotificationCenter {
                     NotificationChannel channel = new NotificationChannel(channelId,
                             name, NotificationManager.IMPORTANCE_HIGH);
                     channel.setDescription("Informs about new messages.");
+                    channel.setGroup(getNotificationChannelGroup(notificationManager));
 
                     if (!ledColor.equals("none")) {
                         channel.enableLights(true);
@@ -208,7 +221,15 @@ public class NotificationCenter {
     public void addNotification(int chatId, int msgId) {
         Util.runOnAnyBackgroundThread(() -> {
 
+            DcChat dcChat = dcContext.getChat(chatId);
+
             if (Prefs.isChatMuted(dcContext.context, chatId)) {
+                return;
+            }
+
+            if (dcChat.isDeviceTalk()) {
+                // currently, we just never notify on device chat.
+                // esp. on first start, this is annoying.
                 return;
             }
 
@@ -220,7 +241,6 @@ public class NotificationCenter {
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
             // create a basic notification
-            DcChat dcChat = dcContext.getChat(chatId);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager, dcChat))
                     .setSmallIcon(R.drawable.icon_notification)
                     .setColor(context.getResources().getColor(R.color.delta_primary))
