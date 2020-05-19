@@ -78,7 +78,14 @@ public class NotificationCenter {
         }
         return argb;
     }
-    
+
+
+    // Notification IDs
+    // --------------------------------------------------------------------------------------------
+
+    public static final int ID_PERMANTENT = 1;
+    public static final int ID_MSG_OFFSET = 0; // msgId is added - as msgId start at 10, there are no conflicts with lower numbers
+
 
     // Notification channels
     // --------------------------------------------------------------------------------------------
@@ -100,7 +107,7 @@ public class NotificationCenter {
     // channelIds: CH_MSG_* are used here, the other ones from outside (defined here to have some overview)
     public static final String CH_MSG_PREFIX = "ch_msg";
     public static final String CH_MSG_VERSION = "4";
-    public static final String CH_PERMANENT_NOTIFICATION = "dc_foreground_notification_ch";
+    public static final String CH_PERMANENT = "dc_foreground_notification_ch";
 
     private boolean notificationChannelsSupported() {
         return Build.VERSION.SDK_INT >= 26;
@@ -276,7 +283,7 @@ public class NotificationCenter {
             }
 
             // add notification
-            notificationManager.notify(msgId, builder.build());
+            notificationManager.notify(ID_MSG_OFFSET+msgId, builder.build());
         });
     }
 

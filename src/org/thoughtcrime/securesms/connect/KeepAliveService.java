@@ -58,7 +58,7 @@ public class KeepAliveService extends Service {
         // set self as foreground
         try {
             stopForeground(true);
-            startForeground(FG_NOTIFICATION_ID, createNotification());
+            startForeground(NotificationCenter.ID_PERMANTENT, createNotification());
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -94,7 +94,6 @@ public class KeepAliveService extends Service {
      * Delta Chat won't get new messages reliable
      **********************************************************************************************/
 
-    public static final int FG_NOTIFICATION_ID = 1; // given to NotificationManagerCompat.notify(); for normal notifications, we use msgId>=10
     private Notification createNotification()
     {
         Intent intent = new Intent(this, ConversationListActivity.class);
@@ -113,7 +112,7 @@ public class KeepAliveService extends Service {
         builder.setSmallIcon(R.drawable.notification_permanent);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
             createFgNotificationChannel(this);
-            builder.setChannelId(NotificationCenter.CH_PERMANENT_NOTIFICATION);
+            builder.setChannelId(NotificationCenter.CH_PERMANENT);
         }
         return builder.build();
     }
@@ -123,7 +122,7 @@ public class KeepAliveService extends Service {
     static private void createFgNotificationChannel(Context context) {
         if(!ch_created) {
             ch_created = true;
-            NotificationChannel channel = new NotificationChannel(NotificationCenter.CH_PERMANENT_NOTIFICATION,
+            NotificationChannel channel = new NotificationChannel(NotificationCenter.CH_PERMANENT,
                 "Receive messages in background.", NotificationManager.IMPORTANCE_MIN); // IMPORTANCE_DEFAULT will play a sound
             channel.setDescription("Ensure reliable message receiving.");
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
