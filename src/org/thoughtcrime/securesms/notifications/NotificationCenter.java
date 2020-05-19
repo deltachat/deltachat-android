@@ -80,6 +80,12 @@ public class NotificationCenter {
     }
 
 
+    // Groups and Notifcation channel groups
+    // --------------------------------------------------------------------------------------------
+
+    public static final String GRP_MSG = "chgrp_msg";
+
+
     // Notification IDs
     // --------------------------------------------------------------------------------------------
 
@@ -149,12 +155,11 @@ public class NotificationCenter {
     }
 
     private String getNotificationChannelGroup(NotificationManagerCompat notificationManager) {
-        final String chGrpId = "chgrp_msg";
-        if (notificationChannelsSupported() && notificationManager.getNotificationChannelGroup(chGrpId) == null) {
-            NotificationChannelGroup chGrp = new NotificationChannelGroup(chGrpId, context.getString(R.string.pref_chats));
+        if (notificationChannelsSupported() && notificationManager.getNotificationChannelGroup(GRP_MSG) == null) {
+            NotificationChannelGroup chGrp = new NotificationChannelGroup(GRP_MSG, context.getString(R.string.pref_chats));
             notificationManager.createNotificationChannelGroup(chGrp);
         }
-        return chGrpId;
+        return GRP_MSG;
     }
 
     private String getNotificationChannel(NotificationManagerCompat notificationManager, DcChat dcChat) {
@@ -274,6 +279,7 @@ public class NotificationCenter {
                     .setColor(context.getResources().getColor(R.color.delta_primary))
                     .setPriority(Prefs.getNotificationPriority(context))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                    .setGroup(GRP_MSG)
                     .setContentTitle(dcChat.getName())
                     .setContentText(text);
 
