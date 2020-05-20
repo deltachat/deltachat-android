@@ -99,7 +99,7 @@ public class NotificationCenter {
         return argb;
     }
     
-    private PendingIntent getPendingIntent(int chatId) {
+    private PendingIntent getOpenChatIntent(int chatId) {
         Intent intent = new Intent(context, ConversationActivity.class);
         intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
         intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
@@ -323,6 +323,9 @@ public class NotificationCenter {
             }
 
             // create a basic notification
+            // even without a name or message displayed,
+            // it makes sense to use separate notification channels and to open the respective chat directly -
+            // the user may eg. have chosen a different sound
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager, dcChat))
                     .setSmallIcon(R.drawable.icon_notification)
                     .setColor(context.getResources().getColor(R.color.delta_primary))
@@ -331,8 +334,7 @@ public class NotificationCenter {
                     .setGroup(GRP_MSG)
                     .setOnlyAlertOnce(!signal)
                     .setContentText(line)
-                    .setContentIntent(getPendingIntent(chatId));
-
+                    .setContentIntent(getOpenChatIntent(chatId));
             if (privacy.isDisplayContact()) {
                 builder.setContentTitle(dcChat.getName());
             }
