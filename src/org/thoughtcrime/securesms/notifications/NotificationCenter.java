@@ -39,6 +39,8 @@ import org.thoughtcrime.securesms.util.Util;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -49,6 +51,7 @@ public class NotificationCenter {
     private volatile int visibleChatId = 0;
     private volatile long lastAudibleNotification = 0;
     private static final long MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(2);
+    private final HashMap<Integer, ArrayList<String>> inboxes = new HashMap<>(); // contains the last lines of each chat
 
     public NotificationCenter(ApplicationDcContext dcContext) {
         this.dcContext = dcContext;
@@ -303,13 +306,13 @@ public class NotificationCenter {
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
-            // get notification text
+            // get notification text as a single line
             NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);
 
             DcMsg dcMsg = dcContext.getMsg(msgId);
-            String text = privacy.isDisplayMessage()? dcMsg.getSummarytext(100) : context.getString(R.string.notify_new_message);
+            String line = privacy.isDisplayMessage()? dcMsg.getSummarytext(100) : context.getString(R.string.notify_new_message);
             if (dcChat.isGroup() && privacy.isDisplayContact()) {
-                text = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + text;
+                line = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + line;
             }
 
             // play signal?
@@ -327,7 +330,7 @@ public class NotificationCenter {
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setGroup(GRP_MSG)
                     .setOnlyAlertOnce(!signal)
-                    .setContentText(text)
+                    .setContentText(line)
                     .setContentIntent(getPendingIntent(chatId));
 
             if (privacy.isDisplayContact()) {
@@ -377,34 +380,54 @@ public class NotificationCenter {
                             builder.setLargeIcon(bitmap);
                         }
                     }
-                } catch (Exception e) {
-                    Log.w(TAG, e);
-                }
+                } catch (Exception e) { Log.w(TAG, e); }
             }
 
             // add a reply-button that allows answering without opening Delta Chat.
             // the reply-button is useful only if sender+message is displayed and if app-lock is disabled.
             if (privacy.isDisplayContact() && privacy.isDisplayMessage()
              && !Prefs.isScreenLockEnabled(context)) {
-                PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatId);
+                try {
+                    PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatId);
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    NotificationCompat.Action replyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply_white_36dp,
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        NotificationCompat.Action replyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply_white_36dp,
+                                context.getString(R.string.notify_reply_button),
+                                inNotificationReplyIntent)
+                                .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
+                                        .setLabel(context.getString(R.string.notify_reply_button)).build())
+                                .build();
+                        builder.addAction(replyAction);
+                    }
+
+                    NotificationCompat.Action wearableReplyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply,
                             context.getString(R.string.notify_reply_button),
                             inNotificationReplyIntent)
                             .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
                                     .setLabel(context.getString(R.string.notify_reply_button)).build())
                             .build();
-                    builder.addAction(replyAction);
-                }
+                    builder.extend(new NotificationCompat.WearableExtender().addAction(wearableReplyAction));
+                } catch(Exception e) { Log.w(TAG, e); }
+            }
 
-                NotificationCompat.Action wearableReplyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply,
-                        context.getString(R.string.notify_reply_button),
-                        inNotificationReplyIntent)
-                        .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
-                                .setLabel(context.getString(R.string.notify_reply_button)).build())
-                        .build();
-                builder.extend(new NotificationCompat.WearableExtender().addAction(wearableReplyAction));
+            // create a tiny inbox (gets visible if the notification is expanded)
+            if (privacy.isDisplayContact() && privacy.isDisplayMessage()) {
+                try {
+                    NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+                    synchronized (inboxes) {
+                        ArrayList<String> lines = inboxes.get(chatId);
+                        if (lines == null) {
+                            lines = new ArrayList<>();
+                            inboxes.put(chatId, lines);
+                        }
+                        lines.add(line);
+
+                        for (int l = lines.size() - 1; l >= 0; l--) {
+                            inboxStyle.addLine(lines.get(l));
+                        }
+                    }
+                    builder.setStyle(inboxStyle);
+                } catch(Exception e) { Log.w(TAG, e); }
             }
 
             // messages count, some os make some use of that
@@ -422,11 +445,17 @@ public class NotificationCenter {
     }
 
     public void removeNotifications(int chatId) {
+        synchronized (inboxes) {
+            inboxes.remove(chatId);
+        }
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.cancel(ID_MSG_OFFSET + chatId);
     }
 
     public void removeAllNotifiations() {
+        synchronized (inboxes) {
+            inboxes.clear();
+        }
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.cancelAll();
     }
