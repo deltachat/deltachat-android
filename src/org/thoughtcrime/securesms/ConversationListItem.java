@@ -173,7 +173,7 @@ public class ConversationListItem extends RelativeLayout
     }
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
-        Prefs.isChatMuted(dcContext.getChat(chatId))? R.drawable.ic_volume_off_grey600_18dp : 0,
+        thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
         thread.isVerified()? R.drawable.ic_verified : 0,
         0);
