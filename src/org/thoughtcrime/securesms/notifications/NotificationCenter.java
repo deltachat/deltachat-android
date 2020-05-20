@@ -30,6 +30,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -292,9 +293,11 @@ public class NotificationCenter {
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
             // get notification text
+            NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);
+
             DcMsg dcMsg = dcContext.getMsg(msgId);
-            String text = dcMsg.getSummarytext(100);
-            if (dcChat.isGroup()) {
+            String text = privacy.isDisplayMessage()? dcMsg.getSummarytext(100) : context.getString(R.string.notify_new_message);
+            if (dcChat.isGroup() && privacy.isDisplayContact()) {
                 text = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + text;
             }
 
@@ -313,9 +316,12 @@ public class NotificationCenter {
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setGroup(GRP_MSG)
                     .setOnlyAlertOnce(!signal)
-                    .setContentTitle(dcChat.getName())
                     .setContentText(text)
                     .setContentIntent(getPendingIntent(chatId));
+
+            if (privacy.isDisplayContact()) {
+                builder.setContentTitle(dcChat.getName());
+            }
 
             // set sound, vibrate, led for systems that do not have notification channels
             if (!notificationChannelsSupported()) {
@@ -336,12 +342,13 @@ public class NotificationCenter {
             }
 
             // set avatar
-            try {
-                Drawable drawable;
-                Recipient recipient = new Recipient(context, dcChat, null);
-                ContactPhoto contactPhoto = recipient.getContactPhoto(context);
-                if (contactPhoto != null) {
-                    drawable = GlideApp.with(context.getApplicationContext())
+            if (privacy.isDisplayContact()) {
+                try {
+                    Drawable drawable;
+                    Recipient recipient = new Recipient(context, dcChat, null);
+                    ContactPhoto contactPhoto = recipient.getContactPhoto(context);
+                    if (contactPhoto != null) {
+                        drawable = GlideApp.with(context.getApplicationContext())
                                 .load(contactPhoto)
                                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                                 .circleCrop()
@@ -349,17 +356,20 @@ public class NotificationCenter {
                                         context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height))
                                 .get();
 
-                } else {
-                    drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor(context));
-                }
-                if (drawable!=null) {
-                    int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
-                    Bitmap bitmap = BitmapUtil.createFromDrawable(drawable, wh, wh);
-                    if (bitmap!=null) {
-                        builder.setLargeIcon(bitmap);
+                    } else {
+                        drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor(context));
                     }
+                    if (drawable != null) {
+                        int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
+                        Bitmap bitmap = BitmapUtil.createFromDrawable(drawable, wh, wh);
+                        if (bitmap != null) {
+                            builder.setLargeIcon(bitmap);
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.w(TAG, e);
                 }
-            } catch (Exception e) { Log.w(TAG, e);  }
+            }
 
             // messages count, some os make some use of that
             // - do not use setSubText() as this is displayed together with setContentInfo() eg. on Lollipop
