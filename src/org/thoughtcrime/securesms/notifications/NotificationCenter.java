@@ -289,7 +289,7 @@ public class NotificationCenter {
 
             DcChat dcChat = dcContext.getChat(chatId);
 
-            if (Prefs.isChatMuted(dcContext.context, chatId)) {
+            if (!Prefs.isNotificationsEnabled(context) || Prefs.isChatMuted(context, chatId)) {
                 return;
             }
 
