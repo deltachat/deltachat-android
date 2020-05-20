@@ -48,6 +48,7 @@ public class ThreadRecord {
   private           final int     visibility;
   private           final boolean verified;
   private           final boolean isSendingLocations;
+  private           final boolean isMuted;
   private @Nullable final DcLot   dcSummary;
 
   public ThreadRecord(@NonNull Context context, @NonNull String body,
@@ -56,6 +57,7 @@ public class ThreadRecord {
                       int visibility,
                       boolean verified,
                       boolean isSendingLocations,
+                      boolean isMuted,
                       @Nullable DcLot dcSummary)
   {
     this.context              = context.getApplicationContext();
@@ -67,6 +69,7 @@ public class ThreadRecord {
     this.visibility       = visibility;
     this.verified         = verified;
     this.isSendingLocations = isSendingLocations;
+    this.isMuted          = isMuted;
     this.dcSummary        = dcSummary;
   }
 
@@ -120,5 +123,9 @@ public class ThreadRecord {
 
   public boolean isSendingLocations() {
     return  isSendingLocations;
+  }
+
+  public boolean isMuted() {
+    return  isMuted;
   }
 }

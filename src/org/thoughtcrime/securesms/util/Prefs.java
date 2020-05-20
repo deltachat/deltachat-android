@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
@@ -278,16 +279,12 @@ public class Prefs {
 
   // mute
 
-  public static void setChatMutedUntil(Context context, int chatId, long until) {
-    setLongPreference(context, CHAT_MUTED_UNTIL+chatId, until);
+  public static void setChatMuteDuration(DcContext context, int chatId, long duration) {
+    context.setChatMuteDuration(chatId, duration);
   }
 
-  public static long getChatMutedUntil(Context context, int chatId) {
-    return getLongPreference(context, CHAT_MUTED_UNTIL+chatId, 0);
-  }
-
-  public static boolean isChatMuted(Context context, int chatId) {
-    return System.currentTimeMillis() <= getChatMutedUntil(context, chatId);
+  public static boolean isChatMuted(DcChat chat) {
+    return chat.isMuted();
   }
 
   // map

@@ -161,6 +161,7 @@ public class DcContext {
     public native int[]        getChatMedia         (int chat_id, int type1, int type2, int type3);
     public native int          getNextMedia         (int msg_id, int dir, int type1, int type2, int type3);
     public native int[]        getChatContacts      (int chat_id);
+    public native boolean      setChatMuteDuration  (int chat_id, long duration);
     public native void         deleteChat           (int chat_id);
     public @NonNull DcMsg      getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
     public native String       getMsgInfo           (int id);

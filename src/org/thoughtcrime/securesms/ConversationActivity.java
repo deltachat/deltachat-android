@@ -433,7 +433,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     inflater.inflate(R.menu.conversation, menu);
 
-    if(Prefs.isChatMuted(this, chatId)) {
+    if(Prefs.isChatMuted(dcChat)) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
     }
 
@@ -561,14 +561,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleMuteNotifications() {
-    if(!Prefs.isChatMuted(this, chatId)) {
-      MuteDialog.show(this, until -> {
-        Prefs.setChatMutedUntil(this, chatId, until);
+    if(!Prefs.isChatMuted(dcChat)) {
+      MuteDialog.show(this, duration -> {
+        Prefs.setChatMuteDuration(dcContext, chatId, duration);
         titleView.setTitle(glideRequests, dcChat);
       });
     } else {
       // unmute
-      Prefs.setChatMutedUntil(this, chatId, 0);
+      Prefs.setChatMuteDuration(dcContext, chatId, 0);
       titleView.setTitle(glideRequests, dcChat);
     }
   }

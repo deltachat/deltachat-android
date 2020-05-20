@@ -140,7 +140,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     item = menu.findItem(R.id.menu_mute_notifications);
     if(item!=null) {
-      item.setTitle(Prefs.isChatMuted(this, chatId)? R.string.menu_unmute : R.string.menu_mute);
+      item.setTitle(Prefs.isChatMuted(dcContext.getChat(chatId))? R.string.menu_unmute : R.string.menu_mute);
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -351,22 +351,17 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void onNotifyOnOff() {
-    if (Prefs.isChatMuted(this, chatId)) {
+    if (Prefs.isChatMuted(dcContext.getChat(chatId))) {
       setMuted(0);
     }
     else {
-      MuteDialog.show(this, until -> setMuted(until));
+      MuteDialog.show(this, duration -> setMuted(duration));
     }
   }
 
-  private void setMuted(final long until) {
-    if(chatId!=0) {
-      Prefs.setChatMutedUntil(this, chatId, until);
-
-      // normally, sendToObservers() is only used to forward events from the core to the ui.
-      // we do an exception here, as "mute" is not handled by the core,
-      // but various elements listen to similar changes with the DC_EVENT_CHAT_MODIFIED event.
-      dcContext.eventCenter.sendToObservers(DcContext.DC_EVENT_CHAT_MODIFIED, new Integer(chatId), 0);
+  private void setMuted(final long duration) {
+    if (chatId != 0) {
+      Prefs.setChatMuteDuration(dcContext, chatId, duration);
     }
   }
 

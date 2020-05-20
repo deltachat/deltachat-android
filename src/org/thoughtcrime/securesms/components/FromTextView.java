@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ResUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -71,15 +72,6 @@ public class FromTextView extends EmojiTextView {
     }
 
     setText(builder);
-
-    int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
-
-    if (Prefs.isChatMuted(getContext(), chatId)) {
-      setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_volume_off_grey600_18dp, 0, 0, 0);
-    }
-    else {
-      setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    }
   }
 
 
