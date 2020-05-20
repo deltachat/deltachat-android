@@ -292,11 +292,11 @@ public class NotificationCenter {
             if (chatId == visibleChatId) {
                 // in-chat sounds are not related to notifications,
                 // they can be enabled/disabled independently
-                InChatSounds.getInstance(dcContext.context).playIncomingSound();
+                InChatSounds.getInstance(context).playIncomingSound();
                 return;
             }
 
-            if (!Prefs.isNotificationsEnabled(context) || Prefs.isChatMuted(context, chatId)) {
+            if (!Prefs.isNotificationsEnabled(context) || dcChat.isMuted()) {
                 return;
             }
 
