@@ -19,6 +19,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.RemoteInput;
 import androidx.core.app.TaskStackBuilder;
 
 import com.b44t.messenger.DcChat;
@@ -104,8 +105,18 @@ public class NotificationCenter {
                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
+    private PendingIntent getRemoteReplyIntent(int chatId) {
+        Intent intent = new Intent(RemoteReplyReceiver.REPLY_ACTION);
+        intent.setClass(context, RemoteReplyReceiver.class);
+        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
+        intent.putExtra(RemoteReplyReceiver.CHAT_ID_EXTRA, chatId);
+        intent.setPackage(context.getPackageName());
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
 
-    // Groups and Notifcation channel groups
+
+
+    // Groups and Notification channel groups
     // --------------------------------------------------------------------------------------------
 
     public static final String GRP_MSG = "chgrp_msg";
@@ -342,10 +353,10 @@ public class NotificationCenter {
             }
 
             // set avatar
+            Recipient recipient = new Recipient(context, dcChat, null);
             if (privacy.isDisplayContact()) {
                 try {
                     Drawable drawable;
-                    Recipient recipient = new Recipient(context, dcChat, null);
                     ContactPhoto contactPhoto = recipient.getContactPhoto(context);
                     if (contactPhoto != null) {
                         drawable = GlideApp.with(context.getApplicationContext())
@@ -369,6 +380,31 @@ public class NotificationCenter {
                 } catch (Exception e) {
                     Log.w(TAG, e);
                 }
+            }
+
+            // add a reply-button that allows answering without opening Delta Chat.
+            // the reply-button is useful only if sender+message is displayed and if app-lock is disabled.
+            if (privacy.isDisplayContact() && privacy.isDisplayMessage()
+             && !Prefs.isScreenLockEnabled(context)) {
+                PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatId);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    NotificationCompat.Action replyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply_white_36dp,
+                            context.getString(R.string.notify_reply_button),
+                            inNotificationReplyIntent)
+                            .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
+                                    .setLabel(context.getString(R.string.notify_reply_button)).build())
+                            .build();
+                    builder.addAction(replyAction);
+                }
+
+                NotificationCompat.Action wearableReplyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply,
+                        context.getString(R.string.notify_reply_button),
+                        inNotificationReplyIntent)
+                        .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
+                                .setLabel(context.getString(R.string.notify_reply_button)).build())
+                        .build();
+                builder.extend(new NotificationCompat.WearableExtender().addAction(wearableReplyAction));
             }
 
             // messages count, some os make some use of that

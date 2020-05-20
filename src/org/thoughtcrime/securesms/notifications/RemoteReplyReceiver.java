@@ -27,7 +27,6 @@ import androidx.core.app.RemoteInput;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.Address;
 
 
 /**
@@ -37,30 +36,26 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
 
   public static final String TAG           = RemoteReplyReceiver.class.getSimpleName();
   public static final String REPLY_ACTION  = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
-  public static final String ADDRESS_EXTRA = "address";
+  public static final String CHAT_ID_EXTRA = "chat_id";
 
   @SuppressLint("StaticFieldLeak")
   @Override
   public void onReceive(final Context context, Intent intent) {
     if (!REPLY_ACTION.equals(intent.getAction())) return;
     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
+    final int chatId = intent.getIntExtra(CHAT_ID_EXTRA, 0);
 
-    if (remoteInput == null) return;
+    if (remoteInput == null || chatId == 0) return;
 
-    final Address      address      = intent.getParcelableExtra(ADDRESS_EXTRA);
     final CharSequence responseText = remoteInput.getCharSequence(MessageNotifierCompat.EXTRA_REMOTE_REPLY);
 
     if (responseText != null) {
       new AsyncTask<Void, Void, Void>() {
         @Override
         protected Void doInBackground(Void... params) {
-
-          if(address.isDcChat()) {
-            ApplicationDcContext dcContext = DcHelper.getContext(context);
-            dcContext.sendTextMsg(address.getDcChatId(), responseText.toString());
-            MessageNotifierCompat.removeNotifications(address.getDcChatId());
-          }
-
+          ApplicationDcContext dcContext = DcHelper.getContext(context);
+          dcContext.sendTextMsg(chatId, responseText.toString());
+          dcContext.notificationCenter.removeNotifications(chatId);
           return null;
         }
       }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);

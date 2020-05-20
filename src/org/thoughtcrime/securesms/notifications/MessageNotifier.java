@@ -264,8 +264,8 @@ abstract class MessageNotifier {
         long timestamp = firstItem.getTimestamp();
         if (timestamp != 0) builder.setWhen(timestamp);
 
-        builder.addActions(notificationState.getMarkAsReadIntent(context, chatId, notificationId),
-                notificationState.getRemoteReplyIntent(context, recipient));
+        //builder.addActions(notificationState.getMarkAsReadIntent(context, chatId, notificationId),
+        //        notificationState.getRemoteReplyIntent(context, recipient));
 
         ListIterator<NotificationItem> iterator = notifications.listIterator(notifications.size());
 

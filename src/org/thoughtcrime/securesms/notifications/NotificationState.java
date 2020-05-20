@@ -139,18 +139,4 @@ public class NotificationState {
 
     return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
   }
-
-  PendingIntent getRemoteReplyIntent(Context context, Recipient recipient) {
-    if (chats.size() != 1) throw new AssertionError("We only support replies to single chat notifications!");
-
-    Intent intent = new Intent(RemoteReplyReceiver.REPLY_ACTION);
-    intent.setClass(context, RemoteReplyReceiver.class);
-    intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
-    intent.putExtra(RemoteReplyReceiver.ADDRESS_EXTRA, recipient.getAddress());
-    intent.setPackage(context.getPackageName());
-
-    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-  }
-
-
 }
