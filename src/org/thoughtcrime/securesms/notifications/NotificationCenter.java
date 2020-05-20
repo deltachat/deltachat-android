@@ -402,7 +402,7 @@ public class NotificationCenter {
                         NotificationCompat.Action replyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply_white_36dp,
                                 context.getString(R.string.notify_reply_button),
                                 inNotificationReplyIntent)
-                                .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
+                                .addRemoteInput(new RemoteInput.Builder(RemoteReplyReceiver.EXTRA_REMOTE_REPLY)
                                         .setLabel(context.getString(R.string.notify_reply_button)).build())
                                 .build();
                         builder.addAction(replyAction);
@@ -411,7 +411,7 @@ public class NotificationCenter {
                     NotificationCompat.Action wearableReplyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply,
                             context.getString(R.string.notify_reply_button),
                             inNotificationReplyIntent)
-                            .addRemoteInput(new RemoteInput.Builder(MessageNotifierCompat.EXTRA_REMOTE_REPLY)
+                            .addRemoteInput(new RemoteInput.Builder(RemoteReplyReceiver.EXTRA_REMOTE_REPLY)
                                     .setLabel(context.getString(R.string.notify_reply_button)).build())
                             .build();
                     builder.extend(new NotificationCompat.WearableExtender().addAction(wearableReplyAction));

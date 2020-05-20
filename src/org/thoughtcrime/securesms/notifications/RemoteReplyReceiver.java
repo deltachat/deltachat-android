@@ -37,6 +37,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
   public static final String TAG           = RemoteReplyReceiver.class.getSimpleName();
   public static final String REPLY_ACTION  = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
   public static final String CHAT_ID_EXTRA = "chat_id";
+  public static final String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
   @SuppressLint("StaticFieldLeak")
   @Override
@@ -47,7 +48,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
 
     if (remoteInput == null || chatId == 0) return;
 
-    final CharSequence responseText = remoteInput.getCharSequence(MessageNotifierCompat.EXTRA_REMOTE_REPLY);
+    final CharSequence responseText = remoteInput.getCharSequence(EXTRA_REMOTE_REPLY);
 
     if (responseText != null) {
       new AsyncTask<Void, Void, Void>() {
