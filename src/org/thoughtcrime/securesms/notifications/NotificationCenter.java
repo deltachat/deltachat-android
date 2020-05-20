@@ -235,6 +235,7 @@ public class NotificationCenter {
                     channel.setDescription("Informs about new messages.");
                     channel.setGroup(getNotificationChannelGroup(notificationManager));
                     channel.enableVibration(defaultVibrate);
+                    channel.setShowBadge(true);
 
                     if (!ledColor.equals("none")) {
                         channel.enableLights(true);
@@ -346,6 +347,14 @@ public class NotificationCenter {
                     }
                 }
             } catch (Exception e) { Log.w(TAG, e);  }
+
+            // messages count, some os make some use of that
+            // - do not use setSubText() as this is displayed together with setContentInfo() eg. on Lollipop
+            // - setNumber() may overwrite setContentInfo(), should be called last
+            // weird stuff.
+            int cnt = dcContext.getFreshMsgCount(chatId);
+            builder.setContentInfo(String.valueOf(cnt));
+            builder.setNumber(cnt);
 
             // add notification, we use one notification per chat,
             // esp. older android are not that great at grouping
