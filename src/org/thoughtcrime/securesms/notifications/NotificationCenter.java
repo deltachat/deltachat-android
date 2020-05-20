@@ -7,11 +7,14 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -20,10 +23,15 @@ import androidx.core.app.TaskStackBuilder;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
+import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -312,6 +320,32 @@ public class NotificationCenter {
                     builder.setLights(getLedArgb(ledColor),500, 2000);
                 }
             }
+
+            // set avatar
+            try {
+                Drawable drawable;
+                Recipient recipient = new Recipient(context, dcChat, null);
+                ContactPhoto contactPhoto = recipient.getContactPhoto(context);
+                if (contactPhoto != null) {
+                    drawable = GlideApp.with(context.getApplicationContext())
+                                .load(contactPhoto)
+                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                .circleCrop()
+                                .submit(context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
+                                        context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height))
+                                .get();
+
+                } else {
+                    drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor(context));
+                }
+                if (drawable!=null) {
+                    int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
+                    Bitmap bitmap = BitmapUtil.createFromDrawable(drawable, wh, wh);
+                    if (bitmap!=null) {
+                        builder.setLargeIcon(bitmap);
+                    }
+                }
+            } catch (Exception e) { Log.w(TAG, e);  }
 
             // add notification, we use one notification per chat,
             // esp. older android are not that great at grouping
