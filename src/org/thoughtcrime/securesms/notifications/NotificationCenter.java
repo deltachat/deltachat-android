@@ -4,7 +4,9 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.net.Uri;
@@ -14,10 +16,12 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.TaskStackBuilder;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -77,6 +81,15 @@ public class NotificationCenter {
             argb = Color.rgb(0xFF, 0xFF, 0xFF);
         }
         return argb;
+    }
+    
+    private PendingIntent getPendingIntent(int chatId) {
+        Intent intent = new Intent(context, ConversationActivity.class);
+        intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
+        return TaskStackBuilder.create(context)
+                .addNextIntentWithParentStack(intent)
+                .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
 
@@ -281,7 +294,8 @@ public class NotificationCenter {
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setGroup(GRP_MSG)
                     .setContentTitle(dcChat.getName())
-                    .setContentText(text);
+                    .setContentText(text)
+                    .setContentIntent(getPendingIntent(chatId));
 
             // set sound, vibrate, led for systems that do not have notification channels
             if (!notificationChannelsSupported()) {
