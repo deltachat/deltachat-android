@@ -289,6 +289,13 @@ public class NotificationCenter {
 
             DcChat dcChat = dcContext.getChat(chatId);
 
+            if (chatId == visibleChatId) {
+                // in-chat sounds are not related to notifications,
+                // they can be enabled/disabled independently
+                InChatSounds.getInstance(dcContext.context).playIncomingSound();
+                return;
+            }
+
             if (!Prefs.isNotificationsEnabled(context) || Prefs.isChatMuted(context, chatId)) {
                 return;
             }
@@ -296,11 +303,6 @@ public class NotificationCenter {
             if (dcChat.isDeviceTalk()) {
                 // currently, we just never notify on device chat.
                 // esp. on first start, this is annoying.
-                return;
-            }
-
-            if (chatId == visibleChatId) {
-                InChatSounds.getInstance(dcContext.context).playIncomingSound();
                 return;
             }
 
