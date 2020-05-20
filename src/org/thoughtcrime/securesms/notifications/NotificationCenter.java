@@ -38,12 +38,15 @@ import org.thoughtcrime.securesms.util.Util;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class NotificationCenter {
     private static final String TAG = InChatSounds.class.getSimpleName();
     @NonNull private ApplicationDcContext dcContext;
     @NonNull private Context context;
     private volatile int visibleChatId = 0;
+    private volatile long lastAudibleNotification = 0;
+    private static final long MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(2);
 
     public NotificationCenter(ApplicationDcContext dcContext) {
         this.dcContext = dcContext;
@@ -295,6 +298,13 @@ public class NotificationCenter {
                 text = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + text;
             }
 
+            // play signal?
+            long now = System.currentTimeMillis();
+            boolean signal = (now - lastAudibleNotification) > MIN_AUDIBLE_PERIOD_MILLIS;
+            if (signal) {
+                lastAudibleNotification = now;
+            }
+
             // create a basic notification
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager, dcChat))
                     .setSmallIcon(R.drawable.icon_notification)
@@ -302,19 +312,22 @@ public class NotificationCenter {
                     .setPriority(Prefs.getNotificationPriority(context))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setGroup(GRP_MSG)
+                    .setOnlyAlertOnce(!signal)
                     .setContentTitle(dcChat.getName())
                     .setContentText(text)
                     .setContentIntent(getPendingIntent(chatId));
 
             // set sound, vibrate, led for systems that do not have notification channels
             if (!notificationChannelsSupported()) {
-                Uri sound = effectiveSound(chatId);
-                if (sound != null) {
-                    builder.setSound(sound);
-                }
-                boolean vibrate = effectiveVibrate(chatId);
-                if (vibrate) {
-                    builder.setDefaults(Notification.DEFAULT_VIBRATE);
+                if (signal) {
+                    Uri sound = effectiveSound(chatId);
+                    if (sound != null) {
+                        builder.setSound(sound);
+                    }
+                    boolean vibrate = effectiveVibrate(chatId);
+                    if (vibrate) {
+                        builder.setDefaults(Notification.DEFAULT_VIBRATE);
+                    }
                 }
                 String ledColor = Prefs.getNotificationLedColor(context);
                 if (!ledColor.equals("none")) {
