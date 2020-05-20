@@ -72,15 +72,6 @@ public class FromTextView extends EmojiTextView {
     }
 
     setText(builder);
-
-    int chatId = recipient.getAddress().isDcChat()? recipient.getAddress().getDcChatId() : 0;
-
-    if (Prefs.isChatMuted(DcHelper.getContext(getContext()).getChat(chatId))) {
-      setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_volume_off_grey600_18dp, 0, 0, 0);
-    }
-    else {
-      setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    }
   }
 
 
