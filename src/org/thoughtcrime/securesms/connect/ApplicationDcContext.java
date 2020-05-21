@@ -20,6 +20,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -31,11 +32,14 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class ApplicationDcContext extends DcContext {
 
@@ -70,6 +74,31 @@ public class ApplicationDcContext extends DcContext {
     }
     catch(Exception e) {
       Log.e(TAG, "cannot migrate pref_compression");
+    }
+    // /migration
+
+    // migration, can be removed after some versions (added 5/2020)
+    try {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      Set<String> keys = sharedPreferences.getAll().keySet();
+      for (String key : keys) {
+        if (key.startsWith(Prefs.CHAT_MUTED_UNTIL)) {
+          int id = Integer.parseInt(key.substring(Prefs.CHAT_MUTED_UNTIL.length()));
+          long mutedUntil = Prefs.getLongPreference(context, key, 0);
+          long remainingSeconds = (mutedUntil - System.currentTimeMillis()) / 1000;
+          if (remainingSeconds > 0) {
+            setChatMuteDuration(id, remainingSeconds);
+            Log.i(TAG, "Migrating sharedPref mutedUntil "+mutedUntil+" to duration "+remainingSeconds);
+          } else {
+            Log.i(TAG, "Not migrating sharedPref mutedUntil "+mutedUntil+" to duration "+remainingSeconds+"because it's negative");
+          }
+          sharedPreferences.edit().remove(key).apply();
+        }
+      }
+    }
+    catch(Exception e) {
+      Log.e(TAG, "cannot migrate mutedUntil");
+      e.printStackTrace();
     }
     // /migration
 
