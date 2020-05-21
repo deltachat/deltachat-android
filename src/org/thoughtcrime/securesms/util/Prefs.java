@@ -44,7 +44,7 @@ public class Prefs {
   public  static final String LED_COLOR_PREF                   = "pref_led_color";
   public  static final String LED_BLINK_PREF                   = "pref_led_blink";
   private static final String LED_BLINK_PREF_CUSTOM            = "pref_led_blink_custom";
-  private static final String CHAT_MUTED_UNTIL                 = "pref_chat_muted_until_"; // followed by chat-id
+  public static final String CHAT_MUTED_UNTIL                 = "pref_chat_muted_until_"; // followed by chat-id
   private static final String CHAT_RINGTONE                    = "pref_chat_ringtone_"; // followed by chat-id
   public  static final String SCREEN_LOCK_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
   public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
@@ -352,7 +352,7 @@ public class Prefs {
     PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(key, value).apply();
   }
 
-  private static long getLongPreference(Context context, String key, long defaultValue) {
+  public static long getLongPreference(Context context, String key, long defaultValue) {
     return PreferenceManager.getDefaultSharedPreferences(context).getLong(key, defaultValue);
   }
 
