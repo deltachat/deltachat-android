@@ -225,7 +225,7 @@
     <string name="ask_delete_contacts">Ta bort kontakter? Detta kommer att ta bort de valda kontakterna permanent.\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent.</string>
     <string name="ask_delete_contact">Ta bort kontakten %1$s?\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent. </string>
     <string name="cannot_delete_contacts_in_use">Det går inte att ta bort kontakter med pågående chattar.</string>
-    <string name="ask_start_chat_with">Chatta med%1$s ?</string>
+    <string name="ask_start_chat_with">Chatta med %1$s ?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Ta bort %1$s från gruppen?</string>
     <string name="info_outdated_app_title">Din appversion är för gammal.</string>
