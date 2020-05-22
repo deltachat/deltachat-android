@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.RemoteInput;
@@ -58,12 +59,12 @@ public class NotificationCenter {
         this.context = dcContext.context.getApplicationContext();
     }
 
-    private Uri effectiveSound(int chatId) { // chatId=0: return app-global setting
-        Uri chatRingtone = Prefs.getChatRingtone(context, chatId);
+    private @Nullable Uri effectiveSound(int chatId) { // chatId=0: return app-global setting
+        @Nullable Uri chatRingtone = Prefs.getChatRingtone(context, chatId);
         if (chatRingtone!=null) {
             return chatRingtone;
         } else {
-            Uri appDefaultRingtone = Prefs.getNotificationRingtone(context);
+            @NonNull Uri appDefaultRingtone = Prefs.getNotificationRingtone(context);
             if (!TextUtils.isEmpty(appDefaultRingtone.toString())) {
                 return appDefaultRingtone;
             }
@@ -157,13 +158,13 @@ public class NotificationCenter {
     }
 
     // full name is "ch_msgV_HASH" or "ch_msgV_HASH.CHATID"
-    private String computeChannelId(String ledColor, boolean vibrate, Uri ringtone, int chatId) {
+    private String computeChannelId(String ledColor, boolean vibrate, @Nullable Uri ringtone, int chatId) {
         String channelId = CH_MSG_PREFIX;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(ledColor.getBytes());
             md.update(vibrate ? (byte) 1 : (byte) 0);
-            md.update(ringtone.toString().getBytes());
+            md.update((ringtone != null ? ringtone.toString() : "").getBytes());
             if (chatId!=0) {
                 // for multi-account, force different channelIds for maybe the same chatIds in multiple accounts
                 md.update(dcContext.getConfig("addr").getBytes());
@@ -205,10 +206,10 @@ public class NotificationCenter {
         if(notificationChannelsSupported()) {
             try {
                 // get all values we'll use as settings for the NotificationChannel
-                String  ledColor       = Prefs.getNotificationLedColor(context);
-                boolean defaultVibrate = effectiveVibrate(chatId);
-                Uri     ringtone       = effectiveSound(chatId);
-                boolean isIndependent  = requiresIndependentChannel(chatId);
+                String        ledColor       = Prefs.getNotificationLedColor(context);
+                boolean       defaultVibrate = effectiveVibrate(chatId);
+                @Nullable Uri ringtone       = effectiveSound(chatId);
+                boolean       isIndependent  = requiresIndependentChannel(chatId);
 
                 // get channel id from these settings
                 channelId = computeChannelId(ledColor, defaultVibrate, ringtone, isIndependent? chatId : 0);
