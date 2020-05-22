@@ -45,7 +45,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class NotificationCenter {
-    private static final String TAG = InChatSounds.class.getSimpleName();
+    private static final String TAG = NotificationCenter.class.getSimpleName();
     @NonNull private ApplicationDcContext dcContext;
     @NonNull private Context context;
     private volatile int visibleChatId = 0;
