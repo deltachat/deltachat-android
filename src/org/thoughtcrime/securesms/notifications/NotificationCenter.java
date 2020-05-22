@@ -176,7 +176,9 @@ public class NotificationCenter {
                 channelId += String.format(".%d", chatId);
             }
 
-        } catch(Exception e) { }
+        } catch(Exception e) {
+            Log.e(TAG, e.toString());
+        }
         return channelId;
     }
 
