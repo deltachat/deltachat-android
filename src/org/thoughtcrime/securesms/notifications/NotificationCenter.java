@@ -169,7 +169,7 @@ public class NotificationCenter {
             md.update(ringtone.toString().getBytes());
             if (chatId!=0) {
                 // for multi-account, force different channelIds for maybe the same chatIds in multiple accounts
-                md.update(dcContext.getDbName().getBytes());
+                md.update(dcContext.getConfig("addr").getBytes());
             }
             hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
