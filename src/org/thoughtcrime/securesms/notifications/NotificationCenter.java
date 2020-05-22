@@ -160,7 +160,6 @@ public class NotificationCenter {
     private String computeChannelId(String ledColor, boolean vibrate, Uri ringtone, int chatId) {
         String channelId = CH_MSG_PREFIX;
         try {
-            String hash = "";
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(ledColor.getBytes());
             md.update(vibrate ? (byte) 1 : (byte) 0);
@@ -169,7 +168,7 @@ public class NotificationCenter {
                 // for multi-account, force different channelIds for maybe the same chatIds in multiple accounts
                 md.update(dcContext.getConfig("addr").getBytes());
             }
-            hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
+            String hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
             channelId = CH_MSG_PREFIX + CH_MSG_VERSION + "_" + hash;
             if (chatId!=0) {
