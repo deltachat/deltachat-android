@@ -452,7 +452,7 @@ public class NotificationCenter {
 
             // add notification, we use one notification per chat,
             // esp. older android are not that great at grouping
-            notificationManager.notify(ID_MSG_OFFSET+chatId, builder.build());
+            notificationManager.notify(ID_MSG_OFFSET + chatId, builder.build());
         });
     }
 
