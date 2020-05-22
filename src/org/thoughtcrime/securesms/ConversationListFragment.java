@@ -293,9 +293,9 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint("StaticFieldLeak")
   private void handleDeleteAllSelected() {
-    final ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
-    int                 conversationsCount = getListAdapter().getBatchSelections().size();
-    AlertDialog.Builder alert              = new AlertDialog.Builder(getActivity());
+    final ApplicationDcContext dcContext          = DcHelper.getContext(getActivity());
+    int                        conversationsCount = getListAdapter().getBatchSelections().size();
+    AlertDialog.Builder        alert              = new AlertDialog.Builder(getActivity());
     alert.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_chat,
                                                                     conversationsCount, conversationsCount));
     alert.setCancelable(true);
