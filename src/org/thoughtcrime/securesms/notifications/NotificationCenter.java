@@ -82,10 +82,8 @@ public class NotificationCenter {
     }
 
     private boolean requiresIndependentChannel(int chatId) {
-        if (Prefs.getChatRingtone(context, chatId)!=null || Prefs.getChatVibrate(context, chatId)!=Prefs.VibrateState.DEFAULT) {
-            return true;
-        }
-        return false;
+        return Prefs.getChatRingtone(context, chatId) != null 
+                || Prefs.getChatVibrate(context, chatId) != Prefs.VibrateState.DEFAULT;
     }
 
     private int getLedArgb(String ledColor) {
