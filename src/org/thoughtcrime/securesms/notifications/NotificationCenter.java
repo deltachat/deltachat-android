@@ -203,7 +203,7 @@ public class NotificationCenter {
         int chatId = dcChat.getId();
         String channelId = CH_MSG_PREFIX;
 
-        if(notificationChannelsSupported()) {
+        if (notificationChannelsSupported()) {
             try {
                 // get all values we'll use as settings for the NotificationChannel
                 String        ledColor       = Prefs.getNotificationLedColor(context);
