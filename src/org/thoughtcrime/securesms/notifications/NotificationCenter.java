@@ -260,7 +260,7 @@ public class NotificationCenter {
                         channel.enableLights(false);
                     }
 
-                    if (!TextUtils.isEmpty(ringtone.toString())) {
+                    if (ringtone != null && !TextUtils.isEmpty(ringtone.toString())) {
                         channel.setSound(ringtone,
                                 new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
                                         .setUsage(AudioAttributes.USAGE_NOTIFICATION_COMMUNICATION_INSTANT)
