@@ -70,7 +70,7 @@ public class ConversationListItem extends RelativeLayout
 
   private DcLot              dcSummary;
   private Set<Long>          selectedThreads;
-  private int                chatId;
+  private long               chatId;
   private int                msgId;
   private GlideRequests      glideRequests;
   private TextView           subjectView;
@@ -130,7 +130,7 @@ public class ConversationListItem extends RelativeLayout
     this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
     Recipient recipient   = thread.getRecipient();
-    this.chatId           = (int) thread.getThreadId();
+    this.chatId           = thread.getThreadId();
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
     this.unreadCount      = thread.getUnreadCount();
