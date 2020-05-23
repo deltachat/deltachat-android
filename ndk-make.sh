@@ -6,7 +6,7 @@ cd jni/deltachat-core-rust
 
 # to setup the toolchains (from https://medium.com/visly/rust-on-android-19f34a2fb43 )
 # run the following in `jni/deltachat-core-rust`:
-# $ rustup target add armv7-linux-androideabi aarch64-linux-android  i686-linux-android x86_64-linux-android
+# $ rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android --toolchain `cat rust-toolchain`
 # 
 # Currently ndk20b is minimum required version
 # (newer versions will likely work, however, are not tested and not used in offial releases,
@@ -32,22 +32,22 @@ unset CPATH
 echo "-- cross compiling to armv7-linux-androideabi (arm) --"
 export CFLAGS=-D__ANDROID_API__=16
 TARGET_CC=armv7a-linux-androideabi16-clang \
-cargo build --release --target armv7-linux-androideabi -p deltachat_ffi
+cargo +`cat rust-toolchain` build --release --target armv7-linux-androideabi -p deltachat_ffi
 
 echo "-- cross compiling to aarch64-linux-android (arm64) --"
 export CFLAGS=-D__ANDROID_API__=21
 TARGET_CC=aarch64-linux-android21-clang \
-cargo build --release --target aarch64-linux-android -p deltachat_ffi
+cargo +`cat rust-toolchain` build --release --target aarch64-linux-android -p deltachat_ffi
 
 echo "-- cross compiling to i686-linux-android (x86) --"
 export CFLAGS=-D__ANDROID_API__=16
 TARGET_CC=i686-linux-android16-clang \
-cargo build --release --target i686-linux-android -p deltachat_ffi
+cargo +`cat rust-toolchain` build --release --target i686-linux-android -p deltachat_ffi
 
 echo "-- cross compiling to x86_64-linux-android (x86_64) --"
 export CFLAGS=-D__ANDROID_API__=21
 TARGET_CC=x86_64-linux-android21-clang \
-cargo build --release --target x86_64-linux-android -p deltachat_ffi
+cargo +`cat rust-toolchain` build --release --target x86_64-linux-android -p deltachat_ffi
 
 echo -- copy generated .a files --
 cd ..
