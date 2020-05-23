@@ -111,6 +111,7 @@ public class ConversationFragment extends Fragment
     private TextView                    noMessageTextView;
     private ApplicationDcContext        dcContext;
 
+    public boolean isPaused;
     private Debouncer markseenDebouncer;
 
     @Override
@@ -209,6 +210,11 @@ public class ConversationFragment extends Fragment
         if (list.getAdapter() != null) {
             list.getAdapter().notifyDataSetChanged();
         }
+
+        if (isPaused) {
+            isPaused = false;
+            markseenDebouncer.publish(() -> manageMessageSeenState());
+        }
     }
 
 
@@ -216,6 +222,7 @@ public class ConversationFragment extends Fragment
     public void onPause() {
         super.onPause();
         setLastSeen(System.currentTimeMillis());
+        isPaused = true;
     }
 
     @Override
@@ -502,6 +509,10 @@ public class ConversationFragment extends Fragment
         }
         else{
             noMessageTextView.setVisibility(View.GONE);
+        }
+
+        if (!isPaused) {
+            markseenDebouncer.publish(() -> manageMessageSeenState());
         }
     }
 
