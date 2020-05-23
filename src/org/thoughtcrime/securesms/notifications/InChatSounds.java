@@ -41,9 +41,7 @@ public class InChatSounds {
 
     public void playSendSound() {
         try {
-            if (Prefs.isInChatNotifications(appContext)) {
-                soundPool.play(soundOut, 1.0f, 1.0f, 1, 0, 1.0f);
-            }
+            soundPool.play(soundOut, 1.0f, 1.0f, 1, 0, 1.0f);
         } catch(Exception e) {
             Log.e(TAG, "cannot play send sound", e);
         }
@@ -51,9 +49,7 @@ public class InChatSounds {
 
     public void playIncomingSound() {
         try {
-            if (Prefs.isInChatNotifications(appContext)) {
-                soundPool.play(soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
-            }
+            soundPool.play(soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
         } catch(Exception e) {
             Log.e(TAG, "cannot play incoming sound", e);
         }

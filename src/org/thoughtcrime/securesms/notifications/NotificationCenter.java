@@ -289,14 +289,14 @@ public class NotificationCenter {
 
             DcChat dcChat = dcContext.getChat(chatId);
 
-            if (chatId == visibleChatId) {
-                // in-chat sounds are not related to notifications,
-                // they can be enabled/disabled independently
-                InChatSounds.getInstance(context).playIncomingSound();
+            if (!Prefs.isNotificationsEnabled(context) || dcChat.isMuted()) {
                 return;
             }
 
-            if (!Prefs.isNotificationsEnabled(context) || dcChat.isMuted()) {
+            if (chatId == visibleChatId) {
+                if (Prefs.isInChatNotifications(context)) {
+                    InChatSounds.getInstance(context).playIncomingSound();
+                }
                 return;
             }
 
@@ -481,5 +481,11 @@ public class NotificationCenter {
             }
 
         });
+    }
+
+    public void maybePlaySendSound(DcChat dcChat) {
+        if (Prefs.isNotificationsEnabled(context) && !dcChat.isMuted()) {
+            InChatSounds.getInstance(context).playSendSound();
+        }
     }
 }

@@ -53,6 +53,7 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:key="pref_key_inthread_notifications"
+            android:dependency="pref_key_enable_notifications"
             android:title="@string/pref_in_chat_sounds"
             android:defaultValue="true" />
 
