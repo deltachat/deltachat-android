@@ -9,7 +9,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.os.PowerManager;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
@@ -20,10 +19,11 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
+import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
@@ -38,7 +38,6 @@ import org.thoughtcrime.securesms.util.Util;
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 public class ApplicationDcContext extends DcContext {
@@ -99,6 +98,18 @@ public class ApplicationDcContext extends DcContext {
       e.printStackTrace();
     }
     // /migration
+
+    new Thread(() -> {
+      DcEventEmitter emitter = getEventEmitter();
+      while (true) {
+        DcEvent event = emitter.getNextEvent();
+        if (event==null) {
+          break;
+        }
+        handleEvent(event);
+      }
+      Log.i(TAG, "shutting down event handler");
+    }, "eventThread").start();
 
     notificationCenter = new NotificationCenter(this);
     maybeStartIo();
@@ -387,41 +398,41 @@ public class ApplicationDcContext extends DcContext {
     });
   }
 
-  // TODO-ASYNC: make this work again
-  public long handleEvent(final int event, long data1, long data2) {
-    switch (event) {
+  public long handleEvent(DcEvent event) {
+    int id = event.getId();
+    switch (id) {
       case DC_EVENT_INFO:
-        Log.i(TAG, dataToString(data2));
+        Log.i(TAG, event.getData2Str());
         break;
 
       case DC_EVENT_WARNING:
-        Log.w(TAG, dataToString(data2));
+        Log.w(TAG, event.getData2Str());
         break;
 
       case DC_EVENT_ERROR:
-        handleError(event, true, dataToString(data2));
+        handleError(id, true, event.getData2Str());
         break;
 
       case DC_EVENT_ERROR_NETWORK:
-        handleError(event, data1 != 0, dataToString(data2));
+        handleError(id, event.getData1Int() != 0, event.getData2Str());
         break;
 
       case DC_EVENT_ERROR_SELF_NOT_IN_GROUP:
-        handleError(event, true, dataToString(data2));
+        handleError(id, true, event.getData2Str());
         break;
 
       case DC_EVENT_INCOMING_MSG:
-        notificationCenter.addNotification((int) data1, (int) data2);
+        notificationCenter.addNotification(event.getData1Int(), event.getData2Int());
         if (eventCenter != null) {
-          eventCenter.sendToObservers(event, data1, data2); // Other parts of the code are also interested in this event
+          eventCenter.sendToObservers(id, (long)event.getData1Int(), (long)event.getData2Int());
         }
         break;
 
       default: {
-        final Object data1obj = data1IsString(event) ? dataToString(data1) : data1;
-        final Object data2obj = data2IsString(event) ? dataToString(data2) : data2;
+        final Object data1obj = (long)event.getData1Int();
+        final Object data2obj = data2IsString(id) ? event.getData2Str() : (long)event.getData2Int();
         if (eventCenter != null) {
-          eventCenter.sendToObservers(event, data1obj, data2obj);
+          eventCenter.sendToObservers(id, data1obj, data2obj);
         }
       }
       break;

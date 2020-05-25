@@ -1616,29 +1616,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcProvider_getOverviewPage(JNIEnv *env
 	return ret;
 }
 
+
 /*******************************************************************************
  * Tools
  ******************************************************************************/
 
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_data1IsString(JNIEnv *env, jclass cls, jint event)
-{
-	return DC_EVENT_DATA1_IS_STRING(event);
-}
-
-
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_data2IsString(JNIEnv *env, jclass cls, jint event)
 {
 	return DC_EVENT_DATA2_IS_STRING(event);
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_dataToString(JNIEnv *env, jclass cls, jlong data)
-{
-	/* the callback may return a long that represents a pointer to a C-String; this function creates a Java-string from such values. */
-	if (data==0) {
-		return NULL;
-	}
-	const char* cstring = (const char*)data;
-	return JSTRING_NEW(cstring);
 }
