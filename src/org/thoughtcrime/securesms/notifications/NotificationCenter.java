@@ -498,7 +498,7 @@ public class NotificationCenter {
     }
 
     public void maybePlaySendSound(DcChat dcChat) {
-        if (Prefs.isNotificationsEnabled(context) && !dcChat.isMuted()) {
+        if (Prefs.isInChatNotifications(context) && Prefs.isNotificationsEnabled(context) && !dcChat.isMuted()) {
             InChatSounds.getInstance(context).playSendSound();
         }
     }
