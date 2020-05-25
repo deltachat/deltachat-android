@@ -93,6 +93,7 @@ public class DcContext {
         }
     }
 
+    public DcEventEmitter      getEventEmitter      () { return new DcEventEmitter(getEventEmitterCPtr()); }
     public native void         setStockTranslation  (int stockId, String translation);
     public native String       getBlobdir           ();
     public native void         configure            ();
@@ -190,6 +191,7 @@ public class DcContext {
     private long        contextCPtr;     // CAVE: the name is referenced in the JNI
     private native long createContextCPtr(String osName, String dbfile);
     private native void unrefContextCPtr ();
+    private native long getEventEmitterCPtr();
     public  native long createMsgCPtr    (int viewtype);
     private native long getChatlistCPtr  (int listflags, String query, int queryId);
     private native long getChatCPtr      (int chat_id);

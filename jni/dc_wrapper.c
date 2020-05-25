@@ -273,6 +273,11 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_maybeNetwork(JNIEnv *env, jobje
 	dc_maybe_network(get_dc_context(env, obj));
 }
 
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getEventEmitterCPtr(JNIEnv *env, jobject obj)
+{
+	return (jlong)dc_get_event_emitter(get_dc_context(env, obj));
+}
+
 
 /* DcContext - handle contacts */
 
@@ -761,6 +766,89 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getProviderFromEmailCPtr(JNIEn
 	CHAR_REF(email);
 		jlong ret = (jlong)dc_provider_new_from_email(get_dc_context(env, obj), emailPtr);
 	CHAR_UNREF(email);
+	return ret;
+}
+
+
+/*******************************************************************************
+ * DcEventEmitter
+ ******************************************************************************/
+
+
+static dc_event_emitter_t* get_dc_event_emitter(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if (fid==0) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "eventEmitterCPtr", "J" /*Signature, J=long*/);
+	}
+	if (fid) {
+		return (dc_event_emitter_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcEventEmitter_unrefEventEmitterCPtr(JNIEnv *env, jobject obj)
+{
+	dc_event_emitter_unref(get_dc_event_emitter(env, obj));
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcEventEmitter_getNextEventCPtr(JNIEnv *env, jobject obj)
+{
+	return (jlong)dc_get_next_event(get_dc_event_emitter(env, obj));
+}
+
+
+/*******************************************************************************
+ * DcEvent
+ ******************************************************************************/
+
+
+static dc_event_t* get_dc_event(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if (fid==0) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "eventCPtr", "J" /*Signature, J=long*/);
+	}
+	if (fid) {
+		return (dc_event_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcEvent_unrefEventCPtr(JNIEnv *env, jobject obj)
+{
+	dc_event_unref(get_dc_event(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcEvent_getId(JNIEnv *env, jobject obj)
+{
+	return dc_event_get_id(get_dc_event(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcEvent_getData1Int(JNIEnv *env, jobject obj)
+{
+	return dc_event_get_data1_int(get_dc_event(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcEvent_getData2Int(JNIEnv *env, jobject obj)
+{
+	return dc_event_get_data2_int(get_dc_event(env, obj));
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcEvent_getData2Str(JNIEnv *env, jobject obj)
+{
+	char* temp = dc_event_get_data2_str(get_dc_event(env, obj));
+		jstring ret = JSTRING_NEW(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
