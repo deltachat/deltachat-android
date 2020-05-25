@@ -134,8 +134,8 @@ public class NotificationState {
     Intent intent = new Intent(MarkReadReceiver.CLEAR_ACTION);
     intent.setClass(context, MarkReadReceiver.class);
     intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
-    intent.putExtra(MarkReadReceiver.CHAT_IDS_EXTRA, chatArray);
-    intent.putExtra(MarkReadReceiver.NOTIFICATION_ID_EXTRA, notificationId);
+    //intent.putExtra(MarkReadReceiver.CHAT_IDS_EXTRA, chatArray);
+    //intent.putExtra(MarkReadReceiver.NOTIFICATION_ID_EXTRA, notificationId);
 
     return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
   }

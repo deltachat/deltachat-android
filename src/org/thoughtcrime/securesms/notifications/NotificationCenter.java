@@ -116,6 +116,14 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
+    private PendingIntent getMarkAsReadIntent(int chatId) {
+        Intent intent = new Intent(MarkReadReceiver.CLEAR_ACTION);
+        intent.setClass(context, MarkReadReceiver.class);
+        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
+        intent.putExtra(MarkReadReceiver.CHAT_ID_EXTRA, chatId);
+        intent.setPackage(context.getPackageName());
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
 
 
     // Groups and Notification channel groups
@@ -395,12 +403,17 @@ public class NotificationCenter {
                 } catch (Exception e) { Log.w(TAG, e); }
             }
 
-            // add a reply-button that allows answering without opening Delta Chat.
-            // the reply-button is useful only if sender+message is displayed and if app-lock is disabled.
+            // add buttons that allow some actions without opening Delta Chat.
+            // if privacy options are enabled, the buttons are not added.
             if (privacy.isDisplayContact() && privacy.isDisplayMessage()
              && !Prefs.isScreenLockEnabled(context)) {
                 try {
                     PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatId);
+                    PendingIntent markReadIntent = getMarkAsReadIntent(chatId);
+
+                    NotificationCompat.Action markAsReadAction = new NotificationCompat.Action(R.drawable.check,
+                            context.getString(R.string.notify_mark_read),
+                            markReadIntent);
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         NotificationCompat.Action replyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply_white_36dp,
@@ -418,7 +431,8 @@ public class NotificationCenter {
                             .addRemoteInput(new RemoteInput.Builder(RemoteReplyReceiver.EXTRA_REMOTE_REPLY)
                                     .setLabel(context.getString(R.string.notify_reply_button)).build())
                             .build();
-                    builder.extend(new NotificationCompat.WearableExtender().addAction(wearableReplyAction));
+                    builder.addAction(markAsReadAction);
+                    builder.extend(new NotificationCompat.WearableExtender().addAction(markAsReadAction).addAction(wearableReplyAction));
                 } catch(Exception e) { Log.w(TAG, e); }
             }
 
