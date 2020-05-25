@@ -30,7 +30,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
-import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
+import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
@@ -53,6 +53,7 @@ public class ApplicationDcContext extends DcContext {
   public static final int RECIPIENT_TYPE_CONTACT = 1;
 
   public Context context;
+  public NotificationCenter notificationCenter;
 
   public ApplicationDcContext(Context context) {
     super("Android "+BuildConfig.VERSION_NAME);
@@ -121,6 +122,7 @@ public class ApplicationDcContext extends DcContext {
       Log.e(TAG, "Cannot create wakeLocks");
     }
 
+    notificationCenter = new NotificationCenter(this);
     startThreads(0);
   }
 
@@ -444,6 +446,7 @@ public class ApplicationDcContext extends DcContext {
   }
 
   public void stopThreads() {
+    notificationCenter.removeAllNotifiations();
     run = false;
     synchronized (threadsCritical) {
       while (true) {
@@ -578,12 +581,11 @@ public class ApplicationDcContext extends DcContext {
         break;
 
       case DC_EVENT_INCOMING_MSG:
-        MessageNotifierCompat.updateNotification((int) data1, (int) data2); // updateNotification() makes sure to run in the correct thread
+        notificationCenter.addNotification((int) data1, (int) data2);
         if (eventCenter != null) {
           eventCenter.sendToObservers(event, data1, data2); // Other parts of the code are also interested in this event
         }
         break;
-
 
       default: {
         final Object data1obj = data1IsString(event) ? dataToString(data1) : data1;

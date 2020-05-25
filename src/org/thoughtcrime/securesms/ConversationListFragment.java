@@ -62,7 +62,6 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
@@ -294,9 +293,9 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint("StaticFieldLeak")
   private void handleDeleteAllSelected() {
-    final DcContext     dcContext          = DcHelper.getContext(getActivity());
-    int                 conversationsCount = getListAdapter().getBatchSelections().size();
-    AlertDialog.Builder alert              = new AlertDialog.Builder(getActivity());
+    final ApplicationDcContext dcContext          = DcHelper.getContext(getActivity());
+    int                        conversationsCount = getListAdapter().getBatchSelections().size();
+    AlertDialog.Builder        alert              = new AlertDialog.Builder(getActivity());
     alert.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_chat,
                                                                     conversationsCount, conversationsCount));
     alert.setCancelable(true);
@@ -324,7 +323,7 @@ public class ConversationListFragment extends Fragment
                 dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
               }
               else {
-                MessageNotifierCompat.removeNotifications((int) chatId);
+                dcContext.notificationCenter.removeNotifications((int) chatId);
                 dcContext.deleteChat((int) chatId);
               }
             }

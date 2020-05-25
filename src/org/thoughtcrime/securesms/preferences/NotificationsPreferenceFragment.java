@@ -1,12 +1,10 @@
 package org.thoughtcrime.securesms.preferences;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import androidx.annotation.Nullable;
@@ -18,7 +16,6 @@ import android.text.TextUtils;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
-import org.thoughtcrime.securesms.notifications.MessageNotifierCompat;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static android.app.Activity.RESULT_OK;
@@ -35,12 +32,10 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     this.findPreference(Prefs.LED_COLOR_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
-    this.findPreference(Prefs.LED_BLINK_PREF)
-        .setOnPreferenceChangeListener(new ListSummaryListener());
     this.findPreference(Prefs.RINGTONE_PREF)
         .setOnPreferenceChangeListener(new RingtoneSummaryListener());
     this.findPreference(Prefs.NOTIFICATION_PRIVACY_PREF)
-        .setOnPreferenceChangeListener(new NotificationPrivacyListener());
+        .setOnPreferenceChangeListener(new ListSummaryListener());
     this.findPreference(Prefs.NOTIFICATION_PRIORITY_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
 
@@ -61,7 +56,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         });
 
     initializeListSummary((ListPreference) findPreference(Prefs.LED_COLOR_PREF));
-    initializeListSummary((ListPreference) findPreference(Prefs.LED_BLINK_PREF));
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIVACY_PREF));
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIORITY_PREF));
 
@@ -150,22 +144,5 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     boolean notificationsEnabled = Prefs.isNotificationsEnabled(context);
     String ret = context.getString(notificationsEnabled ? R.string.on : R.string.off);
     return ret;
-  }
-
-  private class NotificationPrivacyListener extends ListSummaryListener {
-    @SuppressLint("StaticFieldLeak")
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object value) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          MessageNotifierCompat.onNotificationPrivacyChanged();
-          return null;
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
-      return super.onPreferenceChange(preference, value);
-    }
-
   }
 }
