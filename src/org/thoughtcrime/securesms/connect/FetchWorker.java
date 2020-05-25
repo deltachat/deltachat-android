@@ -19,16 +19,13 @@ public class FetchWorker extends Worker {
 
     @Override
     public @NonNull Result doWork() {
-        // MAYBE TODO:
-        // - when no threads are running: fetch-inbox, maybe fetch-mvbox, do smtp-jobs.
-        //   fetch-sendbox is not needed as these messages shall not be notified.
-        // - when threads are running: interrupt-all-idle
-
         Log.i("DeltaChat", "-------------------- FetchWorker.doWork() started --------------------");
         ApplicationDcContext dcContext = DcHelper.getContext(context);
-        dcContext.startThreads(ApplicationDcContext.INTERRUPT_IDLE);
-        dcContext.waitForThreadsExecutedOnce();
+        dcContext.maybeStartIo();
         Log.i("DeltaChat", "-------------------- FetchWorker.doWork() done --------------------");
+
+        // TODO-ASYNC: check, that the threads get some minimal amount of time and the app is not terminated
+        // directly after returning
 
         return Result.success(); // when returning, the os may terminate the app again
     }

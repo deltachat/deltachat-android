@@ -250,79 +250,21 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_isConfigured(JNIEnv *env, jobje
 }
 
 
-// TODO-ASYNC: delete these functions, also in the java-part
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapJobs(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_startIo(JNIEnv *env, jobject obj)
 {
+	dc_start_io(get_dc_context(env, obj));
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapIdle(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_stopIo(JNIEnv *env, jobject obj)
 {
+	dc_stop_io(get_dc_context(env, obj));
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapFetch(JNIEnv *env, jobject obj)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isIoRunning(JNIEnv *env, jobject obj)
 {
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptImapIdle(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxJobs(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxFetch(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxIdle(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptSentboxIdle(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxJobs(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxFetch(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxIdle(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptMvboxIdle(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSmtpJobs(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSmtpIdle(JNIEnv *env, jobject obj)
-{
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptSmtpIdle(JNIEnv *env, jobject obj)
-{
+	return dc_is_io_running(get_dc_context(env, obj)) != 0;
 }
 
 

@@ -512,7 +512,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
         DcHelper.getContext(this).captureNextError();
-        DcHelper.getContext(this).configure();
+        DcHelper.getContext(this).configure(); // TODO-ASYNC: make sure, io is stopped before and started afterwards
     }
 
     private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {

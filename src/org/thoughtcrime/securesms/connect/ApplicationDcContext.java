@@ -100,27 +100,20 @@ public class ApplicationDcContext extends DcContext {
     }
     // /migration
 
-    try {
-      PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-
-      imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "imapWakeLock");
-      imapWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
-
-      mvboxWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "mvboxWakeLock");
-      mvboxWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
-
-      sentboxWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "sentboxWakeLock");
-      sentboxWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
-
-      smtpWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "smtpWakeLock");
-      smtpWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
-
-    } catch (Exception e) {
-      Log.e(TAG, "Cannot create wakeLocks");
-    }
-
     notificationCenter = new NotificationCenter(this);
-    startThreads(0);
+    maybeStartIo();
+  }
+
+  public void maybeStartIo() {
+    if (!isIoRunning()) {
+      startIo();
+    }
+  }
+
+  public void maybeStopIo() {
+    if (isIoRunning()) {
+      stopIo();
+    }
   }
 
   public void setStockTranslations() {
@@ -309,181 +302,6 @@ public class ApplicationDcContext extends DcContext {
         unreadCount, chatId,
         chat.getVisibility(), verified, chat.isSendingLocations(), chat.isMuted(), summary);
   }
-
-
-  /***********************************************************************************************
-   * Working Threads
-   **********************************************************************************************/
-
-  private final Object threadsCritical = new Object();
-  private final Object incLoopsCritical= new Object();
-
-  public Thread imapThread = null;
-  private PowerManager.WakeLock imapWakeLock = null;
-  private int inboxLoops = 0;
-
-  public Thread mvboxThread = null;
-  private PowerManager.WakeLock mvboxWakeLock = null;
-  private int mvboxLoops = 0;
-
-  public Thread sentboxThread = null;
-  private PowerManager.WakeLock sentboxWakeLock = null;
-
-  public Thread smtpThread = null;
-  private PowerManager.WakeLock smtpWakeLock = null;
-  private int smtpLoops = 0;
-
-  public final static int INTERRUPT_IDLE = 0x01; // interrupt idle if the thread is already running
-
-  public boolean run = true;
-
-  public void startThreads(int flags) {
-
-    // TODO-ASYNC: remove this function, handle the flags differently
-
-    /*
-    synchronized (threadsCritical) {
-
-      if (imapThread == null || !imapThread.isAlive()) {
-
-        imapThread = new Thread(() -> {
-          Log.i(TAG, "###################### IMAP-Thread started. ######################");
-          while (run) {
-            imapWakeLock.acquire();
-            performImapJobs();
-            performImapFetch();
-            imapWakeLock.release();
-            synchronized (incLoopsCritical) {
-              inboxLoops++;
-            }
-            performImapIdle();
-          }
-          Log.i(TAG, "!!!!!!!!!!!! IMAP-Thread stopped");
-        }, "imapThread");
-        imapThread.setPriority(Thread.NORM_PRIORITY);
-        imapThread.start();
-      } else {
-        if ((flags & INTERRUPT_IDLE) != 0) {
-          interruptImapIdle();
-        }
-      }
-
-
-      if (mvboxThread == null || !mvboxThread.isAlive()) {
-
-        mvboxThread = new Thread(() -> {
-          Log.i(TAG, "###################### MVBOX-Thread started. ######################");
-          while (run) {
-            mvboxWakeLock.acquire();
-            performMvboxJobs();
-            performMvboxFetch();
-            mvboxWakeLock.release();
-            synchronized (incLoopsCritical) {
-              mvboxLoops++;
-            }
-            performMvboxIdle();
-          }
-          Log.i(TAG, "!!!!!!!!!!!! MVBOX-Thread stopped");
-        }, "mvboxThread");
-        mvboxThread.setPriority(Thread.NORM_PRIORITY);
-        mvboxThread.start();
-      } else {
-        if ((flags & INTERRUPT_IDLE) != 0) {
-          interruptMvboxIdle();
-        }
-      }
-
-
-      if (sentboxThread == null || !sentboxThread.isAlive()) {
-
-        sentboxThread = new Thread(() -> {
-          Log.i(TAG, "###################### SENTBOX-Thread started. ######################");
-          while (run) {
-            sentboxWakeLock.acquire();
-            performSentboxJobs();
-            performSentboxFetch();
-            sentboxWakeLock.release();
-            performSentboxIdle();
-          }
-          Log.i(TAG, "!!!!!!!!!!!! SENTBOX-Thread stopped");
-        }, "sentboxThread");
-        sentboxThread.setPriority(Thread.NORM_PRIORITY-1);
-        sentboxThread.start();
-      } else {
-        if ((flags & INTERRUPT_IDLE) != 0) {
-          interruptSentboxIdle();
-        }
-      }
-
-      if (smtpThread == null || !smtpThread.isAlive()) {
-        smtpThread = new Thread(() -> {
-          Log.i(TAG, "###################### SMTP-Thread started. ######################");
-          while (run) {
-            smtpWakeLock.acquire();
-            performSmtpJobs();
-            smtpWakeLock.release();
-            synchronized (incLoopsCritical) {
-              smtpLoops++;
-            }
-            performSmtpIdle();
-          }
-          Log.i(TAG, "!!!!!!!!!!!! SMTP-Thread stopped");
-        }, "smtpThread");
-        smtpThread.setPriority(Thread.MAX_PRIORITY);
-        smtpThread.start();
-      }
-    }
-    */
-  }
-
-  public void waitForThreadsExecutedOnce() {
-
-    // TODO-ASYNC
-
-    /*
-    while(true) {
-      synchronized (incLoopsCritical) {
-        if(inboxLoops>0 && mvboxLoops>0 && smtpLoops>0) {
-          break;
-        }
-      }
-      Util.sleep(500);
-    }
-    */
-  }
-
-  public void stopThreads() {
-    notificationCenter.removeAllNotifiations();
-
-    // TODO-ASYNC
-
-    /*
-    run = false;
-    synchronized (threadsCritical) {
-      while (true) {
-
-        // in theory, interrupting once outside the loop should be sufficient,
-        // but there are some corner cases, see https://github.com/deltachat/deltachat-core-rust/issues/925
-        Log.i(TAG, "!!!!!!!!!!!! Stopping threads ...");
-        if (imapThread!=null    && imapThread.isAlive())    { interruptImapIdle(); }
-        if (mvboxThread!=null   && mvboxThread.isAlive())   { interruptMvboxIdle(); }
-        if (sentboxThread!=null && sentboxThread.isAlive()) { interruptSentboxIdle(); }
-        if (smtpThread!=null    && smtpThread.isAlive())    { interruptSmtpIdle(); }
-
-        Util.sleep(300);
-
-        if ( (imapThread==null    || !imapThread.isAlive())
-          && (mvboxThread==null   || !mvboxThread.isAlive())
-          && (sentboxThread==null || !sentboxThread.isAlive())
-          && (smtpThread==null    || !smtpThread.isAlive())) {
-          break;
-        }
-      }
-    }
-    Log.i(TAG, "!!!!!!!!!!!! threads stopped");
-    */
-  }
-
 
   /***********************************************************************************************
    * Tools

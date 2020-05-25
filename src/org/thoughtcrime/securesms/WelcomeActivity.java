@@ -147,7 +147,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
-        dcContext.configure();
+        dcContext.configure(); // TODO-ASYNC: make sure, io is stopped before and started afterwards
     }
 
     private void progressError() {
