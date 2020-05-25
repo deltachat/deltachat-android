@@ -56,11 +56,8 @@ public class ApplicationDcContext extends DcContext {
   public NotificationCenter notificationCenter;
 
   public ApplicationDcContext(Context context) {
-    super("Android "+BuildConfig.VERSION_NAME);
+    super("Android "+BuildConfig.VERSION_NAME, AccountManager.getInstance().getSelectedAccount(context).getAbsolutePath());
     this.context = context;
-
-    File dbfile = AccountManager.getInstance().getSelectedAccount(context);
-    open(dbfile.getAbsolutePath());
 
     // migration, can be removed after some versions (added 5/2020)
     // (this will convert only for one account, but that is fine, multi-account is experimental anyway)
@@ -341,6 +338,10 @@ public class ApplicationDcContext extends DcContext {
   public boolean run = true;
 
   public void startThreads(int flags) {
+
+    // TODO-ASYNC: remove this function, handle the flags differently
+
+    /*
     synchronized (threadsCritical) {
 
       if (imapThread == null || !imapThread.isAlive()) {
@@ -432,9 +433,14 @@ public class ApplicationDcContext extends DcContext {
         smtpThread.start();
       }
     }
+    */
   }
 
   public void waitForThreadsExecutedOnce() {
+
+    // TODO-ASYNC
+
+    /*
     while(true) {
       synchronized (incLoopsCritical) {
         if(inboxLoops>0 && mvboxLoops>0 && smtpLoops>0) {
@@ -443,10 +449,15 @@ public class ApplicationDcContext extends DcContext {
       }
       Util.sleep(500);
     }
+    */
   }
 
   public void stopThreads() {
     notificationCenter.removeAllNotifiations();
+
+    // TODO-ASYNC
+
+    /*
     run = false;
     synchronized (threadsCritical) {
       while (true) {
@@ -470,6 +481,7 @@ public class ApplicationDcContext extends DcContext {
       }
     }
     Log.i(TAG, "!!!!!!!!!!!! threads stopped");
+    */
   }
 
 
@@ -557,7 +569,7 @@ public class ApplicationDcContext extends DcContext {
     });
   }
 
-  @Override
+  // TODO-ASYNC: make this work again
   public long handleEvent(final int event, long data1, long data2) {
     switch (event) {
       case DC_EVENT_INFO:

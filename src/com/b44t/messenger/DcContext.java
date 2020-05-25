@@ -72,20 +72,27 @@ public class DcContext {
     public final static int DC_EMPTY_MVBOX           = 0x01;
     public final static int DC_EMPTY_INBOX           = 0x02;
 
-    public DcContext(String osName) {
-        handleEvent(0,0,0); // call handleEvent() to make sure it is not optimized away and JNI won't find it
-        contextCPtr = createContextCPtr(osName);
+    public DcContext(String osName, String dbfile) {
+        contextCPtr = createContextCPtr(osName, dbfile);
+    }
+
+    public boolean isOk() {
+        return contextCPtr != 0;
     }
 
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
-        unrefContextCPtr();
-        contextCPtr = 0;
+        unref();
     }
 
-    public native int          open                 (String dbfile);
-    public native void         close                ();
+    public void unref() {
+        if (contextCPtr != 0) {
+            unrefContextCPtr();
+            contextCPtr = 0;
+        }
+    }
+
     public native void         setStockTranslation  (int stockId, String translation);
     public native String       getBlobdir           ();
     public native void         configure            ();
@@ -189,11 +196,6 @@ public class DcContext {
      */
     public native boolean      setLocation          (float latitude, float longitude, float accuracy);
 
-    // event handling - you should @Override this function in derived classes
-    public long handleEvent(int event, long data1, long data2) {
-        return 0;
-    }
-
     // helper to get/return strings from/to handleEvent()
     public native static boolean data1IsString(int event);
     public native static boolean data2IsString(int event);
@@ -201,7 +203,7 @@ public class DcContext {
 
     // working with raw c-data
     private long        contextCPtr;     // CAVE: the name is referenced in the JNI
-    private native long createContextCPtr(String osName);
+    private native long createContextCPtr(String osName, String dbfile);
     private native void unrefContextCPtr ();
     public  native long createMsgCPtr    (int viewtype);
     private native long getChatlistCPtr  (int listflags, String query, int queryId);
