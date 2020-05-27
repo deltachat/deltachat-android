@@ -99,7 +99,7 @@ public class AccountManager {
         // getSelectedAccount()
         ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
         appContext.dcContext.notificationCenter.removeAllNotifiations();
-        appContext.dcContext.maybeStopIo();
+        appContext.dcContext.stopIo();
         appContext.dcContext.unref();
         appContext.dcContext = new ApplicationDcContext(context);
     }

@@ -116,14 +116,8 @@ public class ApplicationDcContext extends DcContext {
   }
 
   public void maybeStartIo() {
-    if (!isIoRunning()) {
+    if (isConfigured()!=0) {
       startIo();
-    }
-  }
-
-  public void maybeStopIo() {
-    if (isIoRunning()) {
-      stopIo();
     }
   }
 
