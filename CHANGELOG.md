@@ -453,7 +453,7 @@ Ozancan Karataş, Racer1, sebek, Viktor Pracht, Webratte and others
 * Improved setup for many other providers
 * Decide, which e-mails should appear - "Chats only", "Accepted contacts" or "All"
 * Improve moving chat messages to the DeltaChat folder
-* Optional a stronger image compression
+* Option for a stronger image compression
 * Smaller message sizes in groups
 * Share files from other apps to Delta Chat
 * Share texts from mailto:-links
@@ -508,7 +508,7 @@ Iskatel Istiny, Lech Rowerski, violoncelloCH and others.
 * Show date always atop of the chat
 * Fix redraw problems with hidden system status or navigation bar
 * Reply directly from within notification
-* The system credentials has be be entered before exports
+* The system credentials have to be entered before exports
 * The app can be protected by the system credentials
 * Hide the permanent notification more reliable
 * Improved resending of messages
