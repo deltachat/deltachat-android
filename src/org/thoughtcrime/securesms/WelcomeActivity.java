@@ -147,6 +147,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
+        dcContext.stopIo();
         dcContext.configure();
     }
 
@@ -192,12 +193,14 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 progressUpdate((int)progress);
             }
             else if (progress==1000/*done*/) {
+                dcContext.maybeStartIo();
                 progressSuccess(false);
             }
         }
         else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
             long progress = (Long)data1;
             if (progress==1000/*done*/) {
+                dcContext.maybeStartIo();
                 finish(); // remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
             }
         }

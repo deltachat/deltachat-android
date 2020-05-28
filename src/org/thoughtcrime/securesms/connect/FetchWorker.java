@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import org.thoughtcrime.securesms.util.Util;
+
 public class FetchWorker extends Worker {
     private @NonNull Context context;
 
@@ -17,19 +19,24 @@ public class FetchWorker extends Worker {
         this.context = context;
     }
 
+    // doWork() is called in a background thread;
+    // once we return, Worker is considered to have finished and will be destroyed,
+    // this does not necessarily mean, that the app is killed, we may or may not keep running,
+    // therefore we do not stopIo() here.
     @Override
     public @NonNull Result doWork() {
-        // MAYBE TODO:
-        // - when no threads are running: fetch-inbox, maybe fetch-mvbox, do smtp-jobs.
-        //   fetch-sendbox is not needed as these messages shall not be notified.
-        // - when threads are running: interrupt-all-idle
-
         Log.i("DeltaChat", "-------------------- FetchWorker.doWork() started --------------------");
         ApplicationDcContext dcContext = DcHelper.getContext(context);
-        dcContext.startThreads(ApplicationDcContext.INTERRUPT_IDLE);
-        dcContext.waitForThreadsExecutedOnce();
-        Log.i("DeltaChat", "-------------------- FetchWorker.doWork() done --------------------");
+        dcContext.maybeStartIo();
 
-        return Result.success(); // when returning, the os may terminate the app again
+        // as we do not know when startIo() has done it's work or if is even doable in one step,
+        // we go the easy way and just wait for some amount of time.
+        // the core has to handle interrupts at any point anyway,
+        // and work also maybe continued when doWork() returns.
+        // however, we should not wait too long here to avoid getting bad battery ratings.
+        Util.sleep(60 * 1000);
+
+        Log.i("DeltaChat", "-------------------- FetchWorker.doWork() done --------------------");
+        return Result.success();
     }
 }

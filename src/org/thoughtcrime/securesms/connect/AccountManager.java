@@ -65,8 +65,8 @@ public class AccountManager {
     private @Nullable Account maybeGetAccount(File file) {
         try {
             if (!file.isDirectory() && file.getName().endsWith(".db")) {
-                DcContext testContext = new DcContext(null);
-                if (testContext.open(file.getAbsolutePath()) != 0) {
+                DcContext testContext = new DcContext(null, file.getAbsolutePath());
+                if (testContext.isOk()) {
                     Account ret = new Account();
                     ret.dbName = file.getName();
                     ret.displayname = testContext.getConfig("displayname");
@@ -98,8 +98,9 @@ public class AccountManager {
         // create an empty DcContext object - this will be set up then, starting with
         // getSelectedAccount()
         ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
-        appContext.dcContext.stopThreads();
-        appContext.dcContext.close();
+        appContext.dcContext.notificationCenter.removeAllNotifiations();
+        appContext.dcContext.stopIo();
+        appContext.dcContext.unref();
         appContext.dcContext = new ApplicationDcContext(context);
     }
 
@@ -243,10 +244,10 @@ public class AccountManager {
                     if (deleteDbName!=null) {
                         // used to delete the previous account, however, as a resilience check, make sure,
                         // we do not delete already configured accounts (just in case sth. changes the flow of activities)
-                        DcContext testContext = new DcContext(null);
-                        if (testContext.open(new File(activity.getFilesDir(), deleteDbName).getAbsolutePath()) != 0) {
+                        DcContext testContext = new DcContext(null, new File(activity.getFilesDir(), deleteDbName).getAbsolutePath());
+                        if (testContext.isOk()) {
                             if (testContext.isConfigured() == 0) {
-                                testContext.close();
+                                testContext.unref();
                                 AccountManager.getInstance().deleteAccount(activity, deleteDbName);
                                 PreferenceManager.getDefaultSharedPreferences(activity)
                                         .edit().putString("prev_account_db_name", "").apply();

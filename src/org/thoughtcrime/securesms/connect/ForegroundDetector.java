@@ -37,7 +37,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     public void onActivityStarted(Activity activity) {
         refs++;
         
-        application.dcContext.startThreads(0);
+        application.dcContext.maybeStartIo();
     }
 
 

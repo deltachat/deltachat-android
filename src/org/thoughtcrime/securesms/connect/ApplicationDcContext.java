@@ -9,7 +9,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.os.PowerManager;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
@@ -20,10 +19,11 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
+import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
@@ -38,7 +38,6 @@ import org.thoughtcrime.securesms.util.Util;
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 public class ApplicationDcContext extends DcContext {
@@ -56,11 +55,8 @@ public class ApplicationDcContext extends DcContext {
   public NotificationCenter notificationCenter;
 
   public ApplicationDcContext(Context context) {
-    super("Android "+BuildConfig.VERSION_NAME);
+    super("Android "+BuildConfig.VERSION_NAME, AccountManager.getInstance().getSelectedAccount(context).getAbsolutePath());
     this.context = context;
-
-    File dbfile = AccountManager.getInstance().getSelectedAccount(context);
-    open(dbfile.getAbsolutePath());
 
     // migration, can be removed after some versions (added 5/2020)
     // (this will convert only for one account, but that is fine, multi-account is experimental anyway)
@@ -103,27 +99,26 @@ public class ApplicationDcContext extends DcContext {
     }
     // /migration
 
-    try {
-      PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-
-      imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "imapWakeLock");
-      imapWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
-
-      mvboxWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "mvboxWakeLock");
-      mvboxWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
-
-      sentboxWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "sentboxWakeLock");
-      sentboxWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
-
-      smtpWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "smtpWakeLock");
-      smtpWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
-
-    } catch (Exception e) {
-      Log.e(TAG, "Cannot create wakeLocks");
-    }
+    new Thread(() -> {
+      DcEventEmitter emitter = getEventEmitter();
+      while (true) {
+        DcEvent event = emitter.getNextEvent();
+        if (event==null) {
+          break;
+        }
+        handleEvent(event);
+      }
+      Log.i(TAG, "shutting down event handler");
+    }, "eventThread").start();
 
     notificationCenter = new NotificationCenter(this);
-    startThreads(0);
+    maybeStartIo();
+  }
+
+  public void maybeStartIo() {
+    if (isConfigured()!=0) {
+      startIo();
+    }
   }
 
   public void setStockTranslations() {
@@ -313,166 +308,6 @@ public class ApplicationDcContext extends DcContext {
         chat.getVisibility(), verified, chat.isSendingLocations(), chat.isMuted(), summary);
   }
 
-
-  /***********************************************************************************************
-   * Working Threads
-   **********************************************************************************************/
-
-  private final Object threadsCritical = new Object();
-  private final Object incLoopsCritical= new Object();
-
-  public Thread imapThread = null;
-  private PowerManager.WakeLock imapWakeLock = null;
-  private int inboxLoops = 0;
-
-  public Thread mvboxThread = null;
-  private PowerManager.WakeLock mvboxWakeLock = null;
-  private int mvboxLoops = 0;
-
-  public Thread sentboxThread = null;
-  private PowerManager.WakeLock sentboxWakeLock = null;
-
-  public Thread smtpThread = null;
-  private PowerManager.WakeLock smtpWakeLock = null;
-  private int smtpLoops = 0;
-
-  public final static int INTERRUPT_IDLE = 0x01; // interrupt idle if the thread is already running
-
-  public boolean run = true;
-
-  public void startThreads(int flags) {
-    synchronized (threadsCritical) {
-
-      if (imapThread == null || !imapThread.isAlive()) {
-
-        imapThread = new Thread(() -> {
-          Log.i(TAG, "###################### IMAP-Thread started. ######################");
-          while (run) {
-            imapWakeLock.acquire();
-            performImapJobs();
-            performImapFetch();
-            imapWakeLock.release();
-            synchronized (incLoopsCritical) {
-              inboxLoops++;
-            }
-            performImapIdle();
-          }
-          Log.i(TAG, "!!!!!!!!!!!! IMAP-Thread stopped");
-        }, "imapThread");
-        imapThread.setPriority(Thread.NORM_PRIORITY);
-        imapThread.start();
-      } else {
-        if ((flags & INTERRUPT_IDLE) != 0) {
-          interruptImapIdle();
-        }
-      }
-
-
-      if (mvboxThread == null || !mvboxThread.isAlive()) {
-
-        mvboxThread = new Thread(() -> {
-          Log.i(TAG, "###################### MVBOX-Thread started. ######################");
-          while (run) {
-            mvboxWakeLock.acquire();
-            performMvboxJobs();
-            performMvboxFetch();
-            mvboxWakeLock.release();
-            synchronized (incLoopsCritical) {
-              mvboxLoops++;
-            }
-            performMvboxIdle();
-          }
-          Log.i(TAG, "!!!!!!!!!!!! MVBOX-Thread stopped");
-        }, "mvboxThread");
-        mvboxThread.setPriority(Thread.NORM_PRIORITY);
-        mvboxThread.start();
-      } else {
-        if ((flags & INTERRUPT_IDLE) != 0) {
-          interruptMvboxIdle();
-        }
-      }
-
-
-      if (sentboxThread == null || !sentboxThread.isAlive()) {
-
-        sentboxThread = new Thread(() -> {
-          Log.i(TAG, "###################### SENTBOX-Thread started. ######################");
-          while (run) {
-            sentboxWakeLock.acquire();
-            performSentboxJobs();
-            performSentboxFetch();
-            sentboxWakeLock.release();
-            performSentboxIdle();
-          }
-          Log.i(TAG, "!!!!!!!!!!!! SENTBOX-Thread stopped");
-        }, "sentboxThread");
-        sentboxThread.setPriority(Thread.NORM_PRIORITY-1);
-        sentboxThread.start();
-      } else {
-        if ((flags & INTERRUPT_IDLE) != 0) {
-          interruptSentboxIdle();
-        }
-      }
-
-      if (smtpThread == null || !smtpThread.isAlive()) {
-        smtpThread = new Thread(() -> {
-          Log.i(TAG, "###################### SMTP-Thread started. ######################");
-          while (run) {
-            smtpWakeLock.acquire();
-            performSmtpJobs();
-            smtpWakeLock.release();
-            synchronized (incLoopsCritical) {
-              smtpLoops++;
-            }
-            performSmtpIdle();
-          }
-          Log.i(TAG, "!!!!!!!!!!!! SMTP-Thread stopped");
-        }, "smtpThread");
-        smtpThread.setPriority(Thread.MAX_PRIORITY);
-        smtpThread.start();
-      }
-    }
-  }
-
-  public void waitForThreadsExecutedOnce() {
-    while(true) {
-      synchronized (incLoopsCritical) {
-        if(inboxLoops>0 && mvboxLoops>0 && smtpLoops>0) {
-          break;
-        }
-      }
-      Util.sleep(500);
-    }
-  }
-
-  public void stopThreads() {
-    notificationCenter.removeAllNotifiations();
-    run = false;
-    synchronized (threadsCritical) {
-      while (true) {
-
-        // in theory, interrupting once outside the loop should be sufficient,
-        // but there are some corner cases, see https://github.com/deltachat/deltachat-core-rust/issues/925
-        Log.i(TAG, "!!!!!!!!!!!! Stopping threads ...");
-        if (imapThread!=null    && imapThread.isAlive())    { interruptImapIdle(); }
-        if (mvboxThread!=null   && mvboxThread.isAlive())   { interruptMvboxIdle(); }
-        if (sentboxThread!=null && sentboxThread.isAlive()) { interruptSentboxIdle(); }
-        if (smtpThread!=null    && smtpThread.isAlive())    { interruptSmtpIdle(); }
-
-        Util.sleep(300);
-
-        if ( (imapThread==null    || !imapThread.isAlive())
-          && (mvboxThread==null   || !mvboxThread.isAlive())
-          && (sentboxThread==null || !sentboxThread.isAlive())
-          && (smtpThread==null    || !smtpThread.isAlive())) {
-          break;
-        }
-      }
-    }
-    Log.i(TAG, "!!!!!!!!!!!! threads stopped");
-  }
-
-
   /***********************************************************************************************
    * Tools
    **********************************************************************************************/
@@ -557,41 +392,41 @@ public class ApplicationDcContext extends DcContext {
     });
   }
 
-  @Override
-  public long handleEvent(final int event, long data1, long data2) {
-    switch (event) {
+  public long handleEvent(DcEvent event) {
+    int id = event.getId();
+    switch (id) {
       case DC_EVENT_INFO:
-        Log.i(TAG, dataToString(data2));
+        Log.i(TAG, event.getData2Str());
         break;
 
       case DC_EVENT_WARNING:
-        Log.w(TAG, dataToString(data2));
+        Log.w(TAG, event.getData2Str());
         break;
 
       case DC_EVENT_ERROR:
-        handleError(event, true, dataToString(data2));
+        handleError(id, true, event.getData2Str());
         break;
 
       case DC_EVENT_ERROR_NETWORK:
-        handleError(event, data1 != 0, dataToString(data2));
+        handleError(id, event.getData1Int() != 0, event.getData2Str());
         break;
 
       case DC_EVENT_ERROR_SELF_NOT_IN_GROUP:
-        handleError(event, true, dataToString(data2));
+        handleError(id, true, event.getData2Str());
         break;
 
       case DC_EVENT_INCOMING_MSG:
-        notificationCenter.addNotification((int) data1, (int) data2);
+        notificationCenter.addNotification(event.getData1Int(), event.getData2Int());
         if (eventCenter != null) {
-          eventCenter.sendToObservers(event, data1, data2); // Other parts of the code are also interested in this event
+          eventCenter.sendToObservers(id, (long)event.getData1Int(), (long)event.getData2Int());
         }
         break;
 
       default: {
-        final Object data1obj = data1IsString(event) ? dataToString(data1) : data1;
-        final Object data2obj = data2IsString(event) ? dataToString(data2) : data2;
+        final Object data1obj = (long)event.getData1Int();
+        final Object data2obj = data2IsString(id) ? event.getData2Str() : (long)event.getData2Int();
         if (eventCenter != null) {
-          eventCenter.sendToObservers(event, data1obj, data2obj);
+          eventCenter.sendToObservers(id, data1obj, data2obj);
         }
       }
       break;

@@ -173,14 +173,6 @@ static uint32_t* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* ret_icn
  ******************************************************************************/
 
 
-typedef struct dc_jnicontext_t {
-	JavaVM*   jvm; // JNIEnv cannot be shared between threads, so we share the JavaVM object
-	jclass    cls;
-	jobject   obj;
-	jmethodID methodId;
-} dc_jnicontext_t;
-
-
 static dc_context_t* get_dc_context(JNIEnv *env, jobject obj)
 {
 	static jfieldID fid = 0;
@@ -195,69 +187,24 @@ static dc_context_t* get_dc_context(JNIEnv *env, jobject obj)
 }
 
 
-static uintptr_t s_context_callback_(dc_context_t* context, int event, uintptr_t data1, uintptr_t data2)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createContextCPtr(JNIEnv *env, jobject obj, jstring osname, jstring dbfile)
 {
-	jlong   l;
-	JNIEnv* env;
-	dc_jnicontext_t* jnicontext = dc_get_userdata(context);
-
-	if (jnicontext==NULL || jnicontext->jvm==NULL || jnicontext->cls==NULL ||  jnicontext->obj==NULL || jnicontext->methodId==NULL) {
-		return 0; /* may happen on startup */
-	}
-
-	(*jnicontext->jvm)->GetEnv(jnicontext->jvm, (void**)&env, JNI_VERSION_1_6); // as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv
-	if (env==NULL) {
-		return 0; /* may happen on startup */
-	}
-
-	l = (*env)->CallLongMethod(env, jnicontext->obj, jnicontext->methodId, (jint)event, (jlong)data1, (jlong)data2);
-	return (uintptr_t)l;
-}
-
-
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createContextCPtr(JNIEnv *env, jobject obj, jstring osname)
-{
-	jclass cls = (*env)->GetObjectClass(env, obj);
-
-	dc_jnicontext_t* jnicontext = calloc(1, sizeof(dc_jnicontext_t));
-	if (cls==NULL || jnicontext==NULL) {
-		return 0;
-	}
-
-	(*env)->GetJavaVM(env, &jnicontext->jvm);
-	jnicontext->cls = (*env)->NewGlobalRef(env, cls);
-	jnicontext->obj = (*env)->NewGlobalRef(env, obj);
-	jnicontext->methodId = (*env)->GetMethodID(env, jnicontext->cls, "handleEvent","(IJJ)J" /*signature as "(param)ret" with I=int, J=long*/);
-
 	CHAR_REF(osname);
-		jlong contextCPtr = (jlong)dc_context_new(s_context_callback_, jnicontext, osnamePtr);
+	CHAR_REF(dbfile)
+		jlong contextCPtr = (jlong)dc_context_new(osnamePtr, dbfilePtr, NULL);
+	CHAR_UNREF(dbfile)
 	CHAR_UNREF(osname);
 	return contextCPtr;
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContact_unrefContextCPtr(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_unrefContextCPtr(JNIEnv *env, jobject obj)
 {
 	dc_context_unref(get_dc_context(env, obj));
 }
 
 
 /* DcContext - open/configure/connect/fetch */
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_open(JNIEnv *env, jobject obj, jstring dbfile)
-{
-	CHAR_REF(dbfile);
-		jint ret = dc_open(get_dc_context(env, obj), dbfilePtr, NULL);
-	CHAR_UNREF(dbfile)
-	return ret;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_close(JNIEnv *env, jobject obj)
-{
-	dc_close(get_dc_context(env, obj));
-}
-
 
 JNIEXPORT void Java_com_b44t_messenger_DcContext_setStockTranslation(JNIEnv *env, jobject obj, jint stock_id, jstring translation)
 {
@@ -303,99 +250,32 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_isConfigured(JNIEnv *env, jobje
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapJobs(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_startIo(JNIEnv *env, jobject obj)
 {
-	dc_perform_imap_jobs(get_dc_context(env, obj));
+	dc_start_io(get_dc_context(env, obj));
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapIdle(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_DcContext_stopIo(JNIEnv *env, jobject obj)
 {
-	dc_perform_imap_idle(get_dc_context(env, obj));
+	dc_stop_io(get_dc_context(env, obj));
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performImapFetch(JNIEnv *env, jobject obj)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isIoRunning(JNIEnv *env, jobject obj)
 {
-	dc_perform_imap_fetch(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptImapIdle(JNIEnv *env, jobject obj)
-{
-	dc_interrupt_imap_idle(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxJobs(JNIEnv *env, jobject obj)
-{
-	dc_perform_sentbox_jobs(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxFetch(JNIEnv *env, jobject obj)
-{
-	dc_perform_sentbox_fetch(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSentboxIdle(JNIEnv *env, jobject obj)
-{
-	dc_perform_sentbox_idle(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptSentboxIdle(JNIEnv *env, jobject obj)
-{
-	dc_interrupt_sentbox_idle(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxJobs(JNIEnv *env, jobject obj)
-{
-	dc_perform_mvbox_jobs(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxFetch(JNIEnv *env, jobject obj)
-{
-	dc_perform_mvbox_fetch(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performMvboxIdle(JNIEnv *env, jobject obj)
-{
-	dc_perform_mvbox_idle(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptMvboxIdle(JNIEnv *env, jobject obj)
-{
-	dc_interrupt_mvbox_idle(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSmtpJobs(JNIEnv *env, jobject obj)
-{
-	dc_perform_smtp_jobs(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_performSmtpIdle(JNIEnv *env, jobject obj)
-{
-	dc_perform_smtp_idle(get_dc_context(env, obj));
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptSmtpIdle(JNIEnv *env, jobject obj)
-{
-	dc_interrupt_smtp_idle(get_dc_context(env, obj));
+	return dc_is_io_running(get_dc_context(env, obj)) != 0;
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_DcContext_maybeNetwork(JNIEnv *env, jobject obj)
 {
 	dc_maybe_network(get_dc_context(env, obj));
+}
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getEventEmitterCPtr(JNIEnv *env, jobject obj)
+{
+	return (jlong)dc_get_event_emitter(get_dc_context(env, obj));
 }
 
 
@@ -886,6 +766,89 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getProviderFromEmailCPtr(JNIEn
 	CHAR_REF(email);
 		jlong ret = (jlong)dc_provider_new_from_email(get_dc_context(env, obj), emailPtr);
 	CHAR_UNREF(email);
+	return ret;
+}
+
+
+/*******************************************************************************
+ * DcEventEmitter
+ ******************************************************************************/
+
+
+static dc_event_emitter_t* get_dc_event_emitter(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if (fid==0) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "eventEmitterCPtr", "J" /*Signature, J=long*/);
+	}
+	if (fid) {
+		return (dc_event_emitter_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcEventEmitter_unrefEventEmitterCPtr(JNIEnv *env, jobject obj)
+{
+	dc_event_emitter_unref(get_dc_event_emitter(env, obj));
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcEventEmitter_getNextEventCPtr(JNIEnv *env, jobject obj)
+{
+	return (jlong)dc_get_next_event(get_dc_event_emitter(env, obj));
+}
+
+
+/*******************************************************************************
+ * DcEvent
+ ******************************************************************************/
+
+
+static dc_event_t* get_dc_event(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if (fid==0) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "eventCPtr", "J" /*Signature, J=long*/);
+	}
+	if (fid) {
+		return (dc_event_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcEvent_unrefEventCPtr(JNIEnv *env, jobject obj)
+{
+	dc_event_unref(get_dc_event(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcEvent_getId(JNIEnv *env, jobject obj)
+{
+	return dc_event_get_id(get_dc_event(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcEvent_getData1Int(JNIEnv *env, jobject obj)
+{
+	return dc_event_get_data1_int(get_dc_event(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcEvent_getData2Int(JNIEnv *env, jobject obj)
+{
+	return dc_event_get_data2_int(get_dc_event(env, obj));
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcEvent_getData2Str(JNIEnv *env, jobject obj)
+{
+	char* temp = dc_event_get_data2_str(get_dc_event(env, obj));
+		jstring ret = JSTRING_NEW(temp);
+	dc_str_unref(temp);
 	return ret;
 }
 
@@ -1653,29 +1616,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcProvider_getOverviewPage(JNIEnv *env
 	return ret;
 }
 
+
 /*******************************************************************************
  * Tools
  ******************************************************************************/
 
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_data1IsString(JNIEnv *env, jclass cls, jint event)
-{
-	return DC_EVENT_DATA1_IS_STRING(event);
-}
-
-
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_data2IsString(JNIEnv *env, jclass cls, jint event)
 {
 	return DC_EVENT_DATA2_IS_STRING(event);
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_dataToString(JNIEnv *env, jclass cls, jlong data)
-{
-	/* the callback may return a long that represents a pointer to a C-String; this function creates a Java-string from such values. */
-	if (data==0) {
-		return NULL;
-	}
-	const char* cstring = (const char*)data;
-	return JSTRING_NEW(cstring);
 }
