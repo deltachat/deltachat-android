@@ -8,7 +8,7 @@ public class DcEvent {
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        unrefEventCPtr();;
+        unrefEventCPtr();
         eventCPtr = 0;
     }
 

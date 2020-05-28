@@ -8,11 +8,14 @@ public class DcEventEmitter {
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        unrefEventEmitterCPtr();;
+        unrefEventEmitterCPtr();
         eventEmitterCPtr = 0;
     }
 
-    public DcEvent getNextEvent () { return new DcEvent(getNextEventCPtr()); }
+    public DcEvent getNextEvent () {
+        long eventCPtr = getNextEventCPtr();
+        return eventCPtr == 0 ? null : new DcEvent(eventCPtr);
+    }
 
     // working with raw c-data
     private long        eventEmitterCPtr;    // CAVE: the name is referenced in the JNI
