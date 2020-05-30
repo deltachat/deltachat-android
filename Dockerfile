@@ -30,7 +30,7 @@ ENV PATH ${PATH}:/android-sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/b
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain none
 ENV PATH ${PATH}:/root/.cargo/bin
-RUN rustup default nightly-2020-03-12 \
+RUN rustup default 1.43.1 \
 && rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android
 
 COPY docker/cargo-config /root/.cargo/config
