@@ -56,6 +56,13 @@
             android:key="pref_location_streaming_enabled"
             android:title="@string/pref_on_demand_location_streaming"/>
 
+        <Preference
+            android:key="pref_location_streaming_import"
+            android:title="@string/pref_map_import"/>
+        <Preference
+            android:key="pref_location_streaming_export"
+            android:title="@string/pref_map_export"/>
+
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_ephemeral_messages"
