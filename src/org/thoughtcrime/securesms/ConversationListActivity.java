@@ -115,6 +115,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ Mejorado el selector de stickers para Android < 7.\n" +
 	    "✳️ Añadido de vuelta la funcionalidad experimental de mapas (debe ser activada en ajustes avanzados).\n" +
 	    "✳️ Ahora el editor de imágenes tiene los iconos de forma vertical para que sean visibles en teléfonos de pantalla pequeña, gracias al programador: Ruben David (https://github.com/RubenDavidPerezJimenez)\n" +
+	    "✳️ Añadido soporte para exportar/importar el mapa de la app, gracias al programador: Ruben David.\n" +
 	    "✳️ Corregido detalle visual: ahora el icono de stickers se oculta mientras se graba audio, gracias al programador: Ruben David.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
     dcContext.addDeviceMsg("dlab-1.13.3-chlog", msg);
