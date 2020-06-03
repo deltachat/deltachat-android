@@ -70,14 +70,18 @@ public class DynamicLanguage {
   // Beware that Locale.getDefault() returns the locale the App was STARTED in, not the locale of the system.
   // It just happens to be the same for the majority of use cases.
   private static Locale getDefaultLocale() {
-    Locale locale;
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-      locale = Resources.getSystem().getConfiguration().getLocales().get(0);
-    } else {
-      //noinspection deprecation
-      locale = Resources.getSystem().getConfiguration().locale;
+    Locale locale = null;
+    try {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        locale = Resources.getSystem().getConfiguration().getLocales().get(0);
+      } else {
+        //noinspection deprecation
+        locale = Resources.getSystem().getConfiguration().locale;
+      }
+    } catch(Exception e) {
+      e.printStackTrace();
     }
-    return locale;
+    return locale != null ? locale : Locale.getDefault();
   }
 
   public static Locale getSelectedLocale(Context context) {
