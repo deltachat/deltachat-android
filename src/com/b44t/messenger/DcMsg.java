@@ -2,8 +2,6 @@ package com.b44t.messenger;
 
 import android.util.Log;
 
-import org.thoughtcrime.securesms.ConversationItem;
-
 import androidx.annotation.NonNull;
 
 import java.io.File;
@@ -34,7 +32,7 @@ public class DcMsg {
     public final static int DC_MSG_ID_MARKER1 = 1;
     public final static int DC_MSG_ID_DAYMARKER = 9;
 
-    private static final String TAG = ConversationItem.class.getSimpleName();
+    private static final String TAG = DcMsg.class.getSimpleName();
 
     public DcMsg(DcContext context, int viewtype) {
         msgCPtr = context.createMsgCPtr(viewtype);
@@ -53,8 +51,9 @@ public class DcMsg {
 
     @Override
     public int hashCode() {
-        if(this.getId() ==0)
+        if (this.getId() == 0) {
             Log.e(TAG, "encountered a DcMsg with id 0.");
+        }
         return this.getId();
     }
 
