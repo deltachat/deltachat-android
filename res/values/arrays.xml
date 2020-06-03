@@ -230,8 +230,13 @@
     <string-array name="pref_dc_certck_entries">
         <item>@string/automatic</item>
         <item>@string/strict</item>
-        <item>@string/accept_invalid_hostnames</item>
         <item>@string/accept_invalid_certificates</item>
+    </string-array>
+
+    <string-array name="pref_dc_certck_values">
+        <item>0</item>
+        <item>1</item>
+        <item>3</item>
     </string-array>
 
   <!-- discrete MIME type (the part before the "/") -->
