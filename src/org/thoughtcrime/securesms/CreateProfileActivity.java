@@ -7,6 +7,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -47,6 +50,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -187,7 +191,17 @@ public class CreateProfileActivity extends BaseActionBarActivity {
             @Override
             protected byte[] doInBackground(Void... params) {
               try {
-                BitmapUtil.ScaleResult result = BitmapUtil.createScaledBytes(CreateProfileActivity.this, Crop.getOutput(data), new ProfileMediaConstraints());
+                try {
+                  Uri imageUri = Crop.getOutput(data);
+                  Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                  ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                  bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                  return stream.toByteArray();
+                } catch (Exception any) {
+                  Log.e(TAG, "could not send raw PNG to core. Using scaled JPG.", any);
+                }
+                BitmapUtil.ScaleResult result =
+                    BitmapUtil.createScaledBytes(CreateProfileActivity.this, Crop.getOutput(data), new ProfileMediaConstraints());
                 return result.getBitmap();
               } catch (BitmapDecodingException e) {
                 Log.w(TAG, e);
@@ -199,7 +213,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
             protected void onPostExecute(byte[] result) {
               if (result != null) {
                 avatarBytes = result;
-                GlideApp.with(CreateProfileActivity.this)
+                GlideApp.with(getApplicationContext())
                         .load(avatarBytes)
                         .skipMemoryCache(true)
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
