@@ -98,7 +98,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     titleView = (ConversationTitleView) supportActionBar.getCustomView();
     titleView.setOnBackClickedListener(view -> onBackPressed());
-    titleView.setOnAvatarClickListener(view -> onShowAndEditImage());
+    titleView.setOnAvatarClickListener(view -> onEnlargeAvatar());
 
     updateToolbar();
 
@@ -118,10 +118,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
         if (chatIsGroup) {
-          menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_group_name);
-        }
-        else {
-          menu.findItem(R.id.edit_group_image).setVisible(false);
+          menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_group_name_and_image);
         }
       }
 
@@ -339,9 +336,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.edit_name:
         onEditName();
         break;
-      case R.id.edit_group_image:
-        onShowAndEditImage();
-        break;
       case R.id.show_encr_info:
         onEncrInfo();
         break;
@@ -398,7 +392,19 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             .show();
   }
 
-  public void onShowAndEditImage() {
+  public void onEnlargeAvatar() {
+    AvatarImageView profileLarge = findViewById(R.id.profile_large);
+    Recipient recipient;
+    if(chatIsGroup)
+        recipient = dcContext.getRecipient(dcContext.getChat(chatId));
+    else
+        recipient = dcContext.getRecipient(dcContext.getContact(contactId));
+    profileLarge.setAvatar(GlideApp.with(this), recipient, false);
+    profileLarge.setVisibility(ImageView.VISIBLE);
+    profileLarge.setOnClickListener(v -> profileLarge.setVisibility(ImageView.INVISIBLE));
+  }
+
+  public void onEditName() {
     if (chatIsGroup) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
@@ -406,19 +412,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
       }
       startActivity(intent);
-    } else {
-      AvatarImageView profileLarge = findViewById(R.id.profile_large);
-      DcContact contact = dcContext.getContact(contactId);
-      Recipient recipient = dcContext.getRecipient(contact);
-      profileLarge.setAvatar(GlideApp.with(this), recipient, false);
-      profileLarge.setVisibility(ImageView.VISIBLE);
-      profileLarge.setOnClickListener(v -> profileLarge.setVisibility(ImageView.INVISIBLE));
-    }
-  }
-
-  public void onEditName() {
-    if (chatIsGroup) {
-      onShowAndEditImage();
     }
     else {
       DcContact dcContact = dcContext.getContact(contactId);
