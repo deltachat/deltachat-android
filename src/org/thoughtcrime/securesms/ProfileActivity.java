@@ -18,19 +18,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 
-import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -407,13 +403,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
       }
       startActivity(intent);
-    } else {
-      AvatarImageView profileLarge = findViewById(R.id.profile_large);
-      DcContact contact = dcContext.getContact(contactId);
-      Recipient recipient = dcContext.getRecipient(contact);
-      profileLarge.setAvatar(GlideApp.with(this), recipient, false);
-      profileLarge.setVisibility(ImageView.VISIBLE);
-      profileLarge.setOnClickListener(v -> profileLarge.setVisibility(ImageView.INVISIBLE));
     }
   }
 

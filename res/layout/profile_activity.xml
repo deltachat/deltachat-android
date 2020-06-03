@@ -44,13 +44,4 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <org.thoughtcrime.securesms.components.AvatarImageView
-        android:id="@+id/profile_large"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/pager"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"/>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
