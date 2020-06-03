@@ -5,6 +5,8 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import androidx.annotation.RequiresApi;
@@ -65,11 +67,24 @@ public class DynamicLanguage {
     return activity.getResources().getConfiguration().locale;
   }
 
+  // Beware that Locale.getDefault() returns the locale the App was STARTED in, not the locale of the system.
+  // It just happens to be the same for the majority of use cases.
+  private static Locale getDefaultLocale() {
+    Locale locale;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+      locale = Resources.getSystem().getConfiguration().getLocales().get(0);
+    } else {
+      //noinspection deprecation
+      locale = Resources.getSystem().getConfiguration().locale;
+    }
+    return locale;
+  }
+
   public static Locale getSelectedLocale(Context context) {
     String language[] = TextUtils.split(Prefs.getLanguage(context), "_");
 
     if (language[0].equals(DEFAULT)) {
-      return Locale.getDefault();
+      return getDefaultLocale();
     } else if (language.length == 2) {
       return new Locale(language[0], language[1]);
     } else {
