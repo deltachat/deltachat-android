@@ -1,5 +1,7 @@
 package com.b44t.messenger;
 
+import android.util.Log;
+
 public class DcContact {
 
     public final static int DC_CONTACT_ID_SELF               = 1;
@@ -32,6 +34,11 @@ public class DcContact {
 
         DcContact that = (DcContact) other;
         return this.getId()==that.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getId();
     }
 
     @Override
