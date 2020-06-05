@@ -1,11 +1,13 @@
 package org.thoughtcrime.securesms;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -33,6 +35,7 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
@@ -95,7 +98,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     titleView = (ConversationTitleView) supportActionBar.getCustomView();
     titleView.setOnBackClickedListener(view -> onBackPressed());
-    titleView.setOnAvatarClickListener(view -> onShowAndEditImage());
+    titleView.setOnAvatarClickListener(view -> onEnlargeAvatar());
 
     updateToolbar();
 
@@ -115,10 +118,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
         if (chatIsGroup) {
-          menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_group_name);
-        }
-        else {
-          menu.findItem(R.id.edit_group_image).setVisible(false);
+          menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_group_name_and_image);
         }
       }
 
@@ -336,9 +336,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.edit_name:
         onEditName();
         break;
-      case R.id.edit_group_image:
-        onShowAndEditImage();
-        break;
       case R.id.show_encr_info:
         onEncrInfo();
         break;
@@ -395,7 +392,24 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             .show();
   }
 
-  public void onShowAndEditImage() {
+  public void onEnlargeAvatar() {
+    String profileImagePath;
+    Uri profileImageUri;
+    if(chatId!=0)
+      profileImagePath = dcContext.getChat(chatId).getProfileImage();
+    else
+      profileImagePath = dcContext.getContact(contactId).getProfileImage();
+
+    profileImageUri = Uri.fromFile(new File(profileImagePath));
+    Context ctx = getBaseContext();
+    String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") +1);
+
+    Intent intent = new Intent(ctx, MediaPreviewActivity.class);
+      intent.setDataAndType(profileImageUri, type);
+    ctx.startActivity(intent);
+  }
+
+  public void onEditName() {
     if (chatIsGroup) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
@@ -403,12 +417,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
       }
       startActivity(intent);
-    }
-  }
-
-  public void onEditName() {
-    if (chatIsGroup) {
-      onShowAndEditImage();
     }
     else {
       DcContact dcContact = dcContext.getContact(contactId);

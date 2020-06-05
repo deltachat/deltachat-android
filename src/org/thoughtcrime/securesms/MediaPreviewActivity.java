@@ -335,6 +335,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     if (!isMediaInDb()) {
       menu.findItem(R.id.media_preview__overview).setVisible(false);
       menu.findItem(R.id.delete).setVisible(false);
+      menu.findItem(R.id.media_preview__forward).setVisible(false);
     }
 
     return true;
