@@ -395,7 +395,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public void onEnlargeAvatar() {
     String profileImagePath;
     Uri profileImageUri;
-    if(chatIsGroup)
+    if(chatId!=0)
       profileImagePath = dcContext.getChat(chatId).getProfileImage();
     else
       profileImagePath = dcContext.getContact(contactId).getProfileImage();
