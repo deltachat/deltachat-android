@@ -195,10 +195,10 @@ public class CreateProfileActivity extends BaseActionBarActivity {
                   Uri imageUri = Crop.getOutput(data);
                   Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
                   ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                  bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                  bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                   return stream.toByteArray();
                 } catch (Exception any) {
-                  Log.e(TAG, "could not send raw PNG to core. Using scaled JPG.", any);
+                  Log.e(TAG, "could not send raw JPG to core. Using scaled JPG.", any);
                 }
                 BitmapUtil.ScaleResult result =
                     BitmapUtil.createScaledBytes(CreateProfileActivity.this, Crop.getOutput(data), new ProfileMediaConstraints());
