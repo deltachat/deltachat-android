@@ -2,17 +2,20 @@ package org.thoughtcrime.securesms.scribbles;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Switch;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.scribbles.widget.ColorPaletteAdapter;
 import org.thoughtcrime.securesms.scribbles.widget.VerticalSlideColorPicker;
+import org.thoughtcrime.securesms.util.Debouncer;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,12 +34,17 @@ public final class ImageEditorHud extends LinearLayout {
   private View                     cropRotateButton;
   private View                     drawButton;
   private View                     highlightButton;
+  private View                     blurButton;
   private View                     textButton;
   private View                     stickerButton;
   private View                     undoButton;
   private View                     saveButton;
   private View                     deleteButton;
   private View                     confirmButton;
+  //private View                     doneButton;
+  private View                     blurToggleHud;
+  private Switch                   blurToggle;
+  private View                     blurToast;
   private VerticalSlideColorPicker colorPicker;
   private RecyclerView             colorPalette;
 
@@ -47,6 +55,7 @@ public final class ImageEditorHud extends LinearLayout {
 
   private final Map<Mode, Set<View>> visibilityModeMap = new HashMap<>();
   private final Set<View>            allViews          = new HashSet<>();
+  private final Debouncer            toastDebouncer    = new Debouncer(3000);
 
   private Mode    currentMode;
   private boolean undoAvailable;
@@ -76,6 +85,7 @@ public final class ImageEditorHud extends LinearLayout {
     colorPalette     = findViewById(R.id.scribble_color_palette);
     drawButton       = findViewById(R.id.scribble_draw_button);
     highlightButton  = findViewById(R.id.scribble_highlight_button);
+    blurButton       = findViewById(R.id.scribble_blur_button);
     textButton       = findViewById(R.id.scribble_text_button);
     stickerButton    = findViewById(R.id.scribble_sticker_button);
     undoButton       = findViewById(R.id.scribble_undo_button);
@@ -83,6 +93,10 @@ public final class ImageEditorHud extends LinearLayout {
     deleteButton     = findViewById(R.id.scribble_delete_button);
     confirmButton    = findViewById(R.id.scribble_confirm_button);
     colorPicker      = findViewById(R.id.scribble_color_picker);
+    //doneButton       = findViewById(R.id.scribble_done_button);
+    blurToggleHud    = findViewById(R.id.scribble_blur_toggle_hud);
+    blurToggle       = findViewById(R.id.scribble_blur_toggle);
+    blurToast        = findViewById(R.id.scribble_blur_toast);
 
     initializeViews();
     initializeVisibilityMap();
@@ -90,11 +104,13 @@ public final class ImageEditorHud extends LinearLayout {
   }
 
   private void initializeVisibilityMap() {
-    setVisibleViewsWhenInMode(Mode.NONE, drawButton, highlightButton, textButton, stickerButton, cropButton, undoButton, saveButton);
+    setVisibleViewsWhenInMode(Mode.NONE, drawButton, blurButton, textButton, stickerButton, cropButton, undoButton, saveButton);
 
     setVisibleViewsWhenInMode(Mode.DRAW, confirmButton, undoButton, colorPicker, colorPalette);
 
     setVisibleViewsWhenInMode(Mode.HIGHLIGHT, confirmButton, undoButton, colorPicker, colorPalette);
+
+    setVisibleViewsWhenInMode(Mode.BLUR, confirmButton, undoButton, blurToggleHud);
 
     setVisibleViewsWhenInMode(Mode.TEXT, confirmButton, deleteButton, colorPicker, colorPalette);
 
@@ -105,6 +121,9 @@ public final class ImageEditorHud extends LinearLayout {
     for (Set<View> views : visibilityModeMap.values()) {
       allViews.addAll(views);
     }
+
+    //allViews.add(stickerButton);
+    //allViews.add(doneButton);
   }
 
   private void setVisibleViewsWhenInMode(Mode mode, View... views) {
@@ -112,12 +131,6 @@ public final class ImageEditorHud extends LinearLayout {
   }
 
   private void initializeViews() {
-
-    saveButton.setOnClickListener(v -> {
-      eventListener.onSave();
-      setMode(Mode.NONE);
-    });
-
     undoButton.setOnClickListener(v -> eventListener.onUndo());
 
     deleteButton.setOnClickListener(v -> {
@@ -138,9 +151,12 @@ public final class ImageEditorHud extends LinearLayout {
     colorPalette.setAdapter(colorPaletteAdapter);
 
     drawButton.setOnClickListener(v -> setMode(Mode.DRAW));
+    blurButton.setOnClickListener(v -> setMode(Mode.BLUR));
     highlightButton.setOnClickListener(v -> setMode(Mode.HIGHLIGHT));
     textButton.setOnClickListener(v -> setMode(Mode.TEXT));
-    stickerButton.setOnClickListener(v -> setMode(Mode.MOVE_DELETE));
+    saveButton.setOnClickListener(v -> eventListener.onSave());
+    //doneButton.setOnClickListener(v -> eventListener.onDone());
+    blurToggle.setOnCheckedChangeListener((button, enabled) -> eventListener.onBlurFacesToggled(enabled));
   }
 
   public void setColorPalette(@NonNull Set<Integer> colors) {
@@ -157,34 +173,50 @@ public final class ImageEditorHud extends LinearLayout {
     colorPicker.setActiveColor(color);
   }
 
-  public void setEventListener(@Nullable EventListener eventListener) {
-    this.eventListener = eventListener != null ? eventListener : NULL_EVENT_LISTENER;
+  public void setBlurFacesToggleEnabled(boolean enabled) {
+    blurToggle.setOnCheckedChangeListener(null);
+    blurToggle.setChecked(enabled);
+    blurToggle.setOnCheckedChangeListener((button, value) -> eventListener.onBlurFacesToggled(value));
   }
 
-  public boolean onBackPressed() {
-    if (ImageEditorHud.Mode.NONE != currentMode) {
-      setMode(ImageEditorHud.Mode.NONE);
-      return true;
-    }
-    return false;
+  public void showBlurHudTooltip() {
+    /*TooltipPopup.forTarget(blurButton)
+                .setText(R.string.ImageEditorHud_new_blur_faces_or_draw_anywhere_to_blur)
+                .setBackgroundTint(ContextCompat.getColor(getContext(), R.color.core_ultramarine))
+                .setTextColor(ContextCompat.getColor(getContext(), R.color.core_white))
+                .show(TooltipPopup.POSITION_BELOW);*/
+  }
+
+  public void showBlurToast() {
+    blurToast.clearAnimation();
+    blurToast.setVisibility(View.VISIBLE);
+    toastDebouncer.publish(() -> blurToast.setVisibility(GONE));
+  }
+
+  public void hideBlurToast() {
+    blurToast.clearAnimation();
+    blurToast.setVisibility(View.GONE);
+    toastDebouncer.clear();
+  }
+
+  public void setEventListener(@Nullable EventListener eventListener) {
+    this.eventListener = eventListener != null ? eventListener : NULL_EVENT_LISTENER;
   }
 
   public void enterMode(@NonNull Mode mode) {
     setMode(mode, false);
   }
 
-  private void setMode(@NonNull Mode mode) {
+  public void setMode(@NonNull Mode mode) {
     setMode(mode, true);
   }
 
   private void setMode(@NonNull Mode mode, boolean notify) {
     this.currentMode = mode;
-    Set<View> visibleButtons = visibilityModeMap.get(mode);
-    for (View button : allViews) {
-      button.setVisibility(buttonIsVisible(visibleButtons, button) ? VISIBLE : GONE);
-    }
+    updateButtonVisibility(mode);
 
     switch (mode) {
+      case NONE:      presentModeNone();      break;
       case DRAW:      presentModeDraw();      break;
       case HIGHLIGHT: presentModeHighlight(); break;
       case TEXT:      presentModeText();      break;
@@ -193,13 +225,24 @@ public final class ImageEditorHud extends LinearLayout {
     if (notify) {
       eventListener.onModeStarted(mode);
     }
-    eventListener.onRequestFullScreen(mode != Mode.NONE);
+    eventListener.onRequestFullScreen(mode != Mode.NONE, mode != Mode.TEXT);
+  }
+
+  private void updateButtonVisibility(@NonNull Mode mode) {
+    Set<View> visibleButtons = visibilityModeMap.get(mode);
+    for (View button : allViews) {
+      button.setVisibility(buttonIsVisible(visibleButtons, button) ? VISIBLE : GONE);
+    }
   }
 
   private boolean buttonIsVisible(@Nullable Set<View> visibleButtons, @NonNull View button) {
     return visibleButtons != null &&
            visibleButtons.contains(button) &&
            (button != undoButton || undoAvailable);
+  }
+
+  private void presentModeNone() {
+    blurToast.setVisibility(GONE);
   }
 
   private void presentModeDraw() {
@@ -232,18 +275,26 @@ public final class ImageEditorHud extends LinearLayout {
   }
 
   public enum Mode {
-    NONE, DRAW, HIGHLIGHT, TEXT, MOVE_DELETE, CROP
+    NONE,
+    CROP,
+    TEXT,
+    DRAW,
+    HIGHLIGHT,
+    BLUR,
+    MOVE_DELETE,
   }
 
   public interface EventListener {
     void onModeStarted(@NonNull Mode mode);
     void onColorChange(int color);
+    void onBlurFacesToggled(boolean enabled);
     void onUndo();
     void onDelete();
+    void onSave();
     void onFlipHorizontal();
     void onRotate90AntiClockwise();
-    void onRequestFullScreen(boolean fullScreen);
-    void onSave();
+    void onRequestFullScreen(boolean fullScreen, boolean hideKeyboard);
+    void onDone();
   }
 
   private static final EventListener NULL_EVENT_LISTENER = new EventListener() {
@@ -257,11 +308,19 @@ public final class ImageEditorHud extends LinearLayout {
     }
 
     @Override
+    public void onBlurFacesToggled(boolean enabled) {
+    }
+
+    @Override
     public void onUndo() {
     }
 
     @Override
     public void onDelete() {
+    }
+
+    @Override
+    public void onSave() {
     }
 
     @Override
@@ -272,13 +331,12 @@ public final class ImageEditorHud extends LinearLayout {
     public void onRotate90AntiClockwise() {
     }
 
-
     @Override
-    public void onRequestFullScreen(boolean fullScreen) {
+    public void onRequestFullScreen(boolean fullScreen, boolean hideKeyboard) {
     }
 
     @Override
-    public void onSave() {
+    public void onDone() {
     }
   };
 }

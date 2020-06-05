@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.imageeditor;
 
-
 import androidx.annotation.ColorInt;
 
 /**

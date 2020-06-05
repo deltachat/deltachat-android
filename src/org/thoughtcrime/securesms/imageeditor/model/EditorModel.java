@@ -9,6 +9,7 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
@@ -19,6 +20,7 @@ import org.thoughtcrime.securesms.imageeditor.Renderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
 import org.thoughtcrime.securesms.imageeditor.UndoRedoStackListener;
 import org.thoughtcrime.securesms.imageeditor.renderers.MultiLineTextRenderer;
+import org.thoughtcrime.securesms.imageeditor.renderers.FaceBlurRenderer;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -34,13 +36,18 @@ import java.util.UUID;
  */
 public final class EditorModel implements Parcelable, RendererContext.Ready {
 
+  public static final int Z_MASK     = -1;
+  public static final int Z_DRAWING  = 0;
+  public static final int Z_STICKERS = 0;
+  public static final int Z_TEXT     = 1;
+
   private static final Runnable NULL_RUNNABLE = () -> {
   };
 
   private static final int MINIMUM_OUTPUT_WIDTH = 1024;
 
   private static final int   MINIMUM_CROP_PIXEL_COUNT = 100;
-  private static final Point MINIMIM_RATIO            = new Point(15, 1);
+  private static final Point MINIMUM_RATIO            = new Point(15, 1);
 
   @NonNull
   private Runnable invalidate = NULL_RUNNABLE;
@@ -49,26 +56,44 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
 
   private final UndoRedoStacks undoRedoStacks;
   private final UndoRedoStacks cropUndoRedoStacks;
-  private final InBoundsMemory inBoundsMemory = new InBoundsMemory();
+  private final InBoundsMemory inBoundsMemory     = new InBoundsMemory();
 
   private EditorElementHierarchy editorElementHierarchy;
 
-  private final RectF visibleViewPort = new RectF();
-  private final Point size;
+  private final RectF   visibleViewPort = new RectF();
+  private final Point   size;
+  private final boolean circleEditing;
 
   public EditorModel() {
+    this(false, EditorElementHierarchy.create());
+  }
+
+  private EditorModel(@NonNull Parcel in) {
+    ClassLoader classLoader     = getClass().getClassLoader();
+    this.circleEditing          = in.readByte() == 1;
+    this.size                   = new Point(in.readInt(), in.readInt());
+    //noinspection ConstantConditions
+    this.editorElementHierarchy = EditorElementHierarchy.create(in.readParcelable(classLoader));
+    this.undoRedoStacks         = in.readParcelable(classLoader);
+    this.cropUndoRedoStacks     = in.readParcelable(classLoader);
+  }
+
+  public EditorModel(boolean circleEditing, @NonNull EditorElementHierarchy editorElementHierarchy) {
+    this.circleEditing          = circleEditing;
     this.size                   = new Point(1024, 1024);
-    this.editorElementHierarchy = EditorElementHierarchy.create();
+    this.editorElementHierarchy = editorElementHierarchy;
     this.undoRedoStacks         = new UndoRedoStacks(50);
     this.cropUndoRedoStacks     = new UndoRedoStacks(50);
   }
 
-  private EditorModel(Parcel in) {
-    ClassLoader classLoader     = getClass().getClassLoader();
-    this.size                   = new Point(in.readInt(), in.readInt());
-    this.editorElementHierarchy = EditorElementHierarchy.create(in.readParcelable(classLoader));
-    this.undoRedoStacks         = in.readParcelable(classLoader);
-    this.cropUndoRedoStacks     = in.readParcelable(classLoader);
+  public static EditorModel create() {
+    return new EditorModel(false, EditorElementHierarchy.create());
+  }
+
+  public static EditorModel createForCircleEditing() {
+    EditorModel editorModel = new EditorModel(true, EditorElementHierarchy.createForCircleEditing());
+    editorModel.setCropAspectLock(true);
+    return editorModel;
   }
 
   public void setInvalidate(@Nullable Runnable invalidate) {
@@ -247,6 +272,20 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
     updateUndoRedoAvailableState(undoRedoStacks);
   }
 
+  public void setCropAspectLock(boolean locked) {
+    EditorFlags flags = editorElementHierarchy.getCropEditorElement().getFlags();
+    int currentState  = flags.setAspectLocked(locked).getCurrentState();
+
+    flags.reset();
+    flags.setAspectLocked(locked)
+         .persist();
+    flags.restoreState(currentState);
+  }
+
+  public boolean isCropAspectLocked() {
+    return editorElementHierarchy.getCropEditorElement().getFlags().isAspectLocked();
+  }
+
   public void postEdit(boolean allowScaleToRepairCrop) {
     boolean cropping = isCropping();
     if (cropping) {
@@ -412,7 +451,7 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
     int   outputPixelCount  = outputSize.x * outputSize.y;
     int   minimumPixelCount = Math.min(size.x * size.y, MINIMUM_CROP_PIXEL_COUNT);
 
-    Point thinnestRatio = MINIMIM_RATIO;
+    Point thinnestRatio = MINIMUM_RATIO;
 
     if (compareRatios(size, thinnestRatio) < 0) {
       // original is narrower than the thinnestRatio
@@ -499,6 +538,7 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
 
   @Override
   public void writeToParcel(Parcel dest, int flags) {
+    dest.writeByte((byte) (circleEditing ? 1 : 0));
     dest.writeInt(size.x);
     dest.writeInt(size.y);
     dest.writeParcelable(editorElementHierarchy.getRoot(), flags);
@@ -510,10 +550,18 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
    * Blocking render of the model.
    */
   @WorkerThread
-  public Bitmap render(@NonNull Context context) {
+  public @NonNull Bitmap render(@NonNull Context context) {
+    return render(context, null);
+  }
+
+  /**
+   * Blocking render of the model.
+   */
+  @WorkerThread
+  public @NonNull Bitmap render(@NonNull Context context, @Nullable Point size) {
     EditorElement image      = editorElementHierarchy.getFlipRotate();
     RectF         cropRect   = editorElementHierarchy.getCropRect();
-    Point         outputSize = getOutputSize();
+    Point         outputSize = size != null ? size : getOutputSize();
 
     Bitmap bitmap = Bitmap.createBitmap(outputSize.x, outputSize.y, Bitmap.Config.ARGB_8888);
     try {
@@ -556,14 +604,48 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
     return new Point(width, height);
   }
 
+  @NonNull
+  public Point getOutputSizeMaxWidth(int maxDimension) {
+    PointF outputSize = editorElementHierarchy.getOutputSize(size);
+
+    int width  = Math.min(maxDimension, (int) Math.max(MINIMUM_OUTPUT_WIDTH, outputSize.x));
+    int height = (int) (width * outputSize.y / outputSize.x);
+
+    if (height > maxDimension) {
+      height = maxDimension;
+      width  = (int) (height * outputSize.x / outputSize.y);
+    }
+
+    return new Point(width, height);
+  }
+
   @Override
   public void onReady(@NonNull Renderer renderer, @Nullable Matrix cropMatrix, @Nullable Point size) {
     if (cropMatrix != null && size != null && isRendererOfMainImage(renderer)) {
-      Matrix imageCropMatrix = editorElementHierarchy.getImageCrop().getLocalMatrix();
+      boolean changedBefore   = isChanged();
+      Matrix  imageCropMatrix = editorElementHierarchy.getImageCrop().getLocalMatrix();
       this.size.set(size.x, size.y);
       if (imageCropMatrix.isIdentity()) {
         imageCropMatrix.set(cropMatrix);
+
+        if (circleEditing) {
+          Matrix userCropMatrix = editorElementHierarchy.getCropEditorElement().getLocalMatrix();
+          if (size.x > size.y) {
+            userCropMatrix.setScale(size.y / (float) size.x, 1f);
+          } else {
+            userCropMatrix.setScale(1f, size.x / (float) size.y);
+          }
+        }
+
         editorElementHierarchy.doneCrop(visibleViewPort, null);
+
+        if (!changedBefore) {
+          undoRedoStacks.clear(editorElementHierarchy.getRoot());
+        }
+
+        if (circleEditing) {
+          startCrop();
+        }
       }
     }
   }
@@ -596,7 +678,10 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
    */
   public void addElement(@NonNull EditorElement element) {
     pushUndoPoint();
+    addElementWithoutPushUndo(element);
+  }
 
+  public void addElementWithoutPushUndo(@NonNull EditorElement element) {
     EditorElement mainImage = editorElementHierarchy.getMainImage();
     EditorElement parent    = mainImage != null ? mainImage : editorElementHierarchy.getImageRoot();
 
@@ -607,6 +692,36 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
     }
 
     updateUndoRedoAvailableState(undoRedoStacks);
+  }
+
+  public void clearFaceRenderers() {
+    EditorElement mainImage = editorElementHierarchy.getMainImage();
+    if (mainImage != null) {
+      boolean hasPushedUndo = false;
+      for (int i = mainImage.getChildCount() - 1; i >= 0; i--) {
+        if (mainImage.getChild(i).getRenderer() instanceof FaceBlurRenderer) {
+          if (!hasPushedUndo) {
+            pushUndoPoint();
+            hasPushedUndo = true;
+          }
+          
+          mainImage.deleteChild(mainImage.getChild(i), invalidate);
+        }
+      }
+    }
+  }
+
+  public boolean hasFaceRenderer() {
+    EditorElement mainImage = editorElementHierarchy.getMainImage();
+    if (mainImage != null) {
+      for (int i = mainImage.getChildCount() - 1; i >= 0; i--) {
+        if (mainImage.getChild(i).getRenderer() instanceof FaceBlurRenderer) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
   public boolean isChanged() {
@@ -675,6 +790,10 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
     return editorElementHierarchy.getRoot();
   }
 
+  public EditorElement getMainImage() {
+    return editorElementHierarchy.getMainImage();
+  }
+
   public void delete(@NonNull EditorElement editorElement) {
     editorElementHierarchy.getImageRoot().forAllInTree(element -> element.deleteChild(editorElement, invalidate));
   }
@@ -715,4 +834,16 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
     return editorElementHierarchy.getCropEditorElement().getFlags().isVisible();
   }
 
+  /**
+   * Returns a matrix that maps bounds to the crop area.
+   */
+  public Matrix getInverseCropPosition() {
+    Matrix matrix = new Matrix();
+    matrix.set(findRelativeMatrix(editorElementHierarchy.getMainImage(), editorElementHierarchy.getCropEditorElement()));
+    matrix.postConcat(editorElementHierarchy.getFlipRotate().getLocalMatrix());
+
+    Matrix positionRelativeToCrop = new Matrix();
+    matrix.invert(positionRelativeToCrop);
+    return positionRelativeToCrop;
+  }
 }
