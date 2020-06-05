@@ -232,6 +232,12 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
         imageEditorView.startDrawing(0.03f, Paint.Cap.SQUARE, false);
         break;
 
+      case BLUR: {
+        imageEditorView.startDrawing(0.052f, Paint.Cap.ROUND, true);
+        imageEditorHud.setBlurFacesToggleEnabled(imageEditorView.getModel().hasFaceRenderer());
+        break;
+      }
+
       case TEXT:
         addText();
         break;
