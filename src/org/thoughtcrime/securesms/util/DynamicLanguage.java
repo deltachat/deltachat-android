@@ -10,11 +10,16 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import androidx.annotation.RequiresApi;
+import androidx.core.os.ConfigurationCompat;
+
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.Locale;
 
 public class DynamicLanguage {
+
+  private static final String TAG = DynamicLanguage.class.getSimpleName();
 
   private static final String DEFAULT = "zz";
 
@@ -72,14 +77,9 @@ public class DynamicLanguage {
   private static Locale getDefaultLocale() {
     Locale locale = null;
     try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        locale = Resources.getSystem().getConfiguration().getLocales().get(0);
-      } else {
-        //noinspection deprecation
-        locale = Resources.getSystem().getConfiguration().locale;
-      }
+      locale = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
     } catch(Exception e) {
-      e.printStackTrace();
+      Log.e(TAG, "could not determine the system locale.", e);
     }
     return locale != null ? locale : Locale.getDefault();
   }
