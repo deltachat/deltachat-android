@@ -1,11 +1,13 @@
 package org.thoughtcrime.securesms;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -18,24 +20,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 
-import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
@@ -393,15 +393,20 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void onEnlargeAvatar() {
-    AvatarImageView profileLarge = findViewById(R.id.profile_large);
-    Recipient recipient;
+    String profileImagePath;
+    Uri profileImageUri;
     if(chatIsGroup)
-        recipient = dcContext.getRecipient(dcContext.getChat(chatId));
+      profileImagePath = dcContext.getChat(chatId).getProfileImage();
     else
-        recipient = dcContext.getRecipient(dcContext.getContact(contactId));
-    profileLarge.setAvatar(GlideApp.with(this), recipient, false);
-    profileLarge.setVisibility(ImageView.VISIBLE);
-    profileLarge.setOnClickListener(v -> profileLarge.setVisibility(ImageView.INVISIBLE));
+      profileImagePath = dcContext.getContact(contactId).getProfileImage();
+
+    profileImageUri = Uri.fromFile(new File(profileImagePath));
+    Context ctx = getBaseContext();
+    String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") +1);
+
+    Intent intent = new Intent(ctx, MediaPreviewActivity.class);
+      intent.setDataAndType(profileImageUri, type);
+    ctx.startActivity(intent);
   }
 
   public void onEditName() {
