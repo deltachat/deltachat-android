@@ -5,14 +5,21 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import androidx.annotation.RequiresApi;
+import androidx.core.os.ConfigurationCompat;
+
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.Locale;
 
 public class DynamicLanguage {
+
+  private static final String TAG = DynamicLanguage.class.getSimpleName();
 
   private static final String DEFAULT = "zz";
 
@@ -65,11 +72,23 @@ public class DynamicLanguage {
     return activity.getResources().getConfiguration().locale;
   }
 
+  // Beware that Locale.getDefault() returns the locale the App was STARTED in, not the locale of the system.
+  // It just happens to be the same for the majority of use cases.
+  private static Locale getDefaultLocale() {
+    Locale locale = null;
+    try {
+      locale = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
+    } catch(Exception e) {
+      Log.e(TAG, "could not determine the system locale.", e);
+    }
+    return locale != null ? locale : Locale.getDefault();
+  }
+
   public static Locale getSelectedLocale(Context context) {
     String language[] = TextUtils.split(Prefs.getLanguage(context), "_");
 
     if (language[0].equals(DEFAULT)) {
-      return Locale.getDefault();
+      return getDefaultLocale();
     } else if (language.length == 2) {
       return new Locale(language[0], language[1]);
     } else {
