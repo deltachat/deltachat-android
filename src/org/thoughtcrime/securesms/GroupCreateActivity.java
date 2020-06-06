@@ -126,7 +126,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     String title;
     if(isEdit()) {
-      title = getString(R.string.menu_edit_group);
+      title = getString(R.string.menu_group_name_and_image);
     }
     else if(verified) {
       title = getString(R.string.menu_new_verified_group);
