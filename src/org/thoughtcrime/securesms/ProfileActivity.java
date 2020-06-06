@@ -401,12 +401,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       profileImagePath = dcContext.getContact(contactId).getProfileImage();
 
     profileImageUri = Uri.fromFile(new File(profileImagePath));
-    Context ctx = getBaseContext();
     String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") +1);
 
-    Intent intent = new Intent(ctx, MediaPreviewActivity.class);
-      intent.setDataAndType(profileImageUri, type);
-    ctx.startActivity(intent);
+    Intent intent = new Intent(this, MediaPreviewActivity.class);
+    intent.setDataAndType(profileImageUri, type);
+    startActivity(intent);
   }
 
   public void onEditName() {
