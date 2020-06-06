@@ -78,6 +78,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
   private final static String TAG = MediaPreviewActivity.class.getSimpleName();
 
+  public static final String ACTIVITY_TITLE_EXTRA = "activity_title";
+  public static final String EDIT_AVATAR_CHAT_ID  = "avatar_for_chat_id";
   public static final String ADDRESS_EXTRA        = "address";
   public static final String OUTGOING_EXTRA       = "outgoing";
   public static final String LEFT_IS_RECENT_EXTRA = "left_is_recent";
@@ -101,6 +103,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
   private int restartItem = -1;
 
+  private int editAvatarChatId = 0;
+
   @SuppressWarnings("ConstantConditions")
   @Override
   protected void onCreate(Bundle bundle, boolean ready) {
@@ -113,6 +117,12 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     setContentView(R.layout.media_preview_activity);
+
+    editAvatarChatId = getIntent().getIntExtra(EDIT_AVATAR_CHAT_ID, 0);
+    @Nullable String title = getIntent().getStringExtra(ACTIVITY_TITLE_EXTRA);
+    if (title!=null) {
+      getSupportActionBar().setTitle(title);
+    }
 
     initializeViews();
     initializeResources();
@@ -246,6 +256,17 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     return restartItem;
   }
 
+  private void editAvatar() {
+    Intent intent = new Intent(this, GroupCreateActivity.class);
+    intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, editAvatarChatId);
+    if (dcContext.getChat(editAvatarChatId).isVerified()) {
+      intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
+    }
+    startActivity(intent);
+    finish(); // avoid the need to update the enlarged-avatar
+  }
+
+
   private void showOverview() {
     if(conversationRecipient.getAddress().isDcChat()) {
       Intent intent = new Intent(this, ProfileActivity.class);
@@ -338,6 +359,10 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.media_preview__forward).setVisible(false);
     }
 
+    if (editAvatarChatId==0) {
+        menu.findItem(R.id.media_preview__edit).setVisible(false);
+    }
+
     return true;
   }
 
@@ -346,6 +371,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     super.onOptionsItemSelected(item);
 
     switch (item.getItemId()) {
+      case R.id.media_preview__edit:     editAvatar();   return true;
       case R.id.media_preview__overview: showOverview(); return true;
       case R.id.media_preview__forward:  forward();      return true;
       case R.id.save:                    saveToDisk();   return true;

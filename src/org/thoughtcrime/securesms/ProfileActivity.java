@@ -405,6 +405,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     Intent intent = new Intent(this, MediaPreviewActivity.class);
     intent.setDataAndType(profileImageUri, type);
+    intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, getString(isContactProfile() ? R.string.pref_profile_photo : R.string.group_avatar));
+    intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsGroup ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
     startActivity(intent);
   }
 
