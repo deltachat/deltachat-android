@@ -98,7 +98,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     titleView = (ConversationTitleView) supportActionBar.getCustomView();
     titleView.setOnBackClickedListener(view -> onBackPressed());
-    titleView.setOnAvatarClickListener(view -> onEnlargeAvatar());
+    titleView.setOnClickListener(view -> onEnlargeAvatar());
 
     updateToolbar();
 
