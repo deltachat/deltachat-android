@@ -13,7 +13,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     private int refs = 0;
     private static ForegroundDetector Instance = null;
-    ApplicationContext application;
+    private ApplicationContext application;
 
     public static ForegroundDetector getInstance() {
         return Instance;
@@ -35,9 +35,16 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     @Override
     public void onActivityStarted(Activity activity) {
+        if (refs == 0) {
+            application.dcContext.maybeStartIo();
+            if (application.dcContext.isNetworkConnected()) {
+                new Thread(() -> {
+                    application.dcContext.maybeNetwork();
+                });
+            }
+        }
+
         refs++;
-        
-        application.dcContext.maybeStartIo();
     }
 
 
