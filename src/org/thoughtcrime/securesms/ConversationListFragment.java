@@ -83,7 +83,6 @@ public class ConversationListFragment extends Fragment
   implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate
 {
   public static final String ARCHIVE = "archive";
-  public static final String FORWARDING = "for_forwarding";
 
   @SuppressWarnings("unused")
   private static final String TAG = ConversationListFragment.class.getSimpleName();

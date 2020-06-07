@@ -103,7 +103,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     fragmentContainer        = findViewById(R.id.fragment_container);
 
     Bundle bundle = new Bundle();
-    bundle.putBoolean(ConversationListFragment.FORWARDING, isForwarding(this));
     conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
 
     initializeSearchListener();
