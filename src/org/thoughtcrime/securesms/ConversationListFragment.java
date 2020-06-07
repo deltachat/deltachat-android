@@ -165,6 +165,7 @@ public class ConversationListFragment extends Fragment
 
   public void onNewIntent() {
     initializeFabClickListener();
+    initializeListAdapter();
   }
 
   public ConversationListAdapter getListAdapter() {
