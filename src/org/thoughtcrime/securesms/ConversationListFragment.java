@@ -24,17 +24,6 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.fragment.app.Fragment;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,11 +33,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
@@ -63,6 +64,7 @@ import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
@@ -81,7 +83,6 @@ public class ConversationListFragment extends Fragment
   implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate
 {
   public static final String ARCHIVE = "archive";
-  public static final String FORWARDING = "for_forwarding";
 
   @SuppressWarnings("unused")
   private static final String TAG = ConversationListFragment.class.getSimpleName();
@@ -95,14 +96,12 @@ public class ConversationListFragment extends Fragment
   private Locale                      locale;
   private String                      queryFilter  = "";
   private boolean                     archive;
-  private boolean                     forwarding;
 
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
     locale  = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
-    forwarding = getArguments().getBoolean(FORWARDING, false);
 
     ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
@@ -360,7 +359,7 @@ public class ConversationListFragment extends Fragment
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
-    } else if (forwarding) {
+    } else if (RelayUtil.isRelayingMessageContent(getActivity())) {
       listflags |= DcContext.DC_GCL_FOR_FORWARDING;
     } else {
       listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT;
