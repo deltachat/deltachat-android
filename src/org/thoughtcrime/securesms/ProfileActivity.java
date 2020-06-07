@@ -98,7 +98,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     titleView = (ConversationTitleView) supportActionBar.getCustomView();
     titleView.setOnBackClickedListener(view -> onBackPressed());
-    titleView.setOnAvatarClickListener(view -> onEnlargeAvatar());
+    titleView.setOnClickListener(view -> onEnlargeAvatar());
 
     updateToolbar();
 
@@ -118,7 +118,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
         if (chatIsGroup) {
-          menu.findItem(R.id.edit_name).setTitle(R.string.menu_edit_group_name_and_image);
+          menu.findItem(R.id.edit_name).setTitle(R.string.menu_group_name_and_image);
         }
       }
 
@@ -401,12 +401,13 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       profileImagePath = dcContext.getContact(contactId).getProfileImage();
 
     profileImageUri = Uri.fromFile(new File(profileImagePath));
-    Context ctx = getBaseContext();
     String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") +1);
 
-    Intent intent = new Intent(ctx, MediaPreviewActivity.class);
-      intent.setDataAndType(profileImageUri, type);
-    ctx.startActivity(intent);
+    Intent intent = new Intent(this, MediaPreviewActivity.class);
+    intent.setDataAndType(profileImageUri, type);
+    intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, getString(isContactProfile() ? R.string.pref_profile_photo : R.string.group_avatar));
+    intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsGroup ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
+    startActivity(intent);
   }
 
   public void onEditName() {

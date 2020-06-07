@@ -213,7 +213,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
             protected void onPostExecute(byte[] result) {
               if (result != null) {
                 avatarBytes = result;
-                GlideApp.with(getApplicationContext())
+                GlideApp.with(CreateProfileActivity.this)
                         .load(avatarBytes)
                         .skipMemoryCache(true)
                         .diskCacheStrategy(DiskCacheStrategy.NONE)

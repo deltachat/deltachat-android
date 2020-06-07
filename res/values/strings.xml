@@ -168,7 +168,6 @@
     <string name="menu_select_all">Select all</string>
     <string name="menu_expand">Expand</string>
     <string name="menu_edit_name">Edit name</string>
-    <string name="menu_edit_group_name_and_image">Edit group name and image</string>
     <string name="menu_edit_group_name">Edit group name</string>
     <string name="menu_edit_group_image">Edit group image</string>
     <string name="menu_settings">Settings</string>
