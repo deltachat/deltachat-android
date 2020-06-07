@@ -38,9 +38,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
         if (refs == 0) {
             application.dcContext.maybeStartIo();
             if (application.dcContext.isNetworkConnected()) {
-                new Thread(() -> {
-                    application.dcContext.maybeNetwork();
-                });
+                new Thread(() -> application.dcContext.maybeNetwork()).start();
             }
         }
 
