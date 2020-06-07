@@ -394,18 +394,27 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   public void onEnlargeAvatar() {
     String profileImagePath;
+    String title;
     Uri profileImageUri;
-    if(chatId!=0)
-      profileImagePath = dcContext.getChat(chatId).getProfileImage();
-    else
-      profileImagePath = dcContext.getContact(contactId).getProfileImage();
+    if(chatId!=0) {
+      DcChat dcChat = dcContext.getChat(chatId);
+      profileImagePath = dcChat.getProfileImage();
+      title = dcChat.getName();
+    } else {
+      DcContact dcContact = dcContext.getContact(contactId);
+      profileImagePath = dcContact.getProfileImage();
+      title = dcContact.getDisplayName();
+    }
 
-    profileImageUri = Uri.fromFile(new File(profileImagePath));
+    File file = new File(profileImagePath);
+    if (!file.exists()) return;
+
+    profileImageUri = Uri.fromFile(file);
     String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") +1);
 
     Intent intent = new Intent(this, MediaPreviewActivity.class);
     intent.setDataAndType(profileImageUri, type);
-    intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, getString(isContactProfile() ? R.string.pref_profile_photo : R.string.group_avatar));
+    intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
     intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsGroup ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
     startActivity(intent);
   }
