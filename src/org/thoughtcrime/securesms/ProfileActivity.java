@@ -406,7 +406,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       title = dcContact.getDisplayName();
     }
 
-    profileImageUri = Uri.fromFile(new File(profileImagePath));
+    File file = new File(profileImagePath);
+    if (!file.exists()) return;
+
+    profileImageUri = Uri.fromFile(file);
     String type = "image/" + profileImagePath.substring(profileImagePath.lastIndexOf(".") +1);
 
     Intent intent = new Intent(this, MediaPreviewActivity.class);
