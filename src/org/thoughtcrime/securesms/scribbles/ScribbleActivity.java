@@ -17,10 +17,10 @@ public class ScribbleActivity extends PassphraseRequiredActionBarActivity {
     imageEditorFragment = initFragment(R.id.scribble_container, ImageEditorFragment.newInstance(getIntent().getData()));
   }
 
-  @Override
+/*  @Override
   public void onBackPressed() {
     if (!imageEditorFragment.onBackPressed()) {
       super.onBackPressed();
     }
-  }
+  } */
 }

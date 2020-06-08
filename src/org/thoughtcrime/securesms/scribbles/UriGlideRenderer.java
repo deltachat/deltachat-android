@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.scribbles;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -10,14 +11,17 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Parcel;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
@@ -114,13 +118,16 @@ final class UriGlideRenderer implements Renderer {
 
       rendererContext.restore();
 
-      renderBlurOverlay(rendererContext);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        renderBlurOverlay(rendererContext);
+      }
     } else if (rendererContext.isBlockingLoad()) {
       // If failed to load, we draw a black out, in case image was sticker positioned to cover private info.
       rendererContext.canvas.drawRect(Bounds.FULL_BOUNDS, paint);
     }
   }
 
+  @RequiresApi(17)
   private void renderBlurOverlay(RendererContext rendererContext) {
       boolean renderMask = false;
 
@@ -234,6 +241,7 @@ final class UriGlideRenderer implements Renderer {
     return matrix;
   }
 
+  @RequiresApi(17)
   private static @NonNull Bitmap blur(Bitmap bitmap, Context context) {
     Point  previewSize = scaleKeepingAspectRatio(new Point(bitmap.getWidth(), bitmap.getHeight()), PREVIEW_DIMENSION_LIMIT);
     Point  blurSize    = scaleKeepingAspectRatio(new Point(previewSize.x / 2, previewSize.y / 2 ), MAX_BLUR_DIMENSION);
