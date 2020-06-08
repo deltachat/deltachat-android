@@ -55,8 +55,6 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
 
   private EditorModel restoredModel;
 
-  private Pair<Uri, FaceDetectionResult> cachedFaceDetection;
-
   @Nullable
   private EditorElement currentSelection;
   private int           imageMaxHeight;
@@ -234,7 +232,6 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
 
       case BLUR: {
         imageEditorView.startDrawing(0.052f, Paint.Cap.ROUND, true);
-        imageEditorHud.setBlurFacesToggleEnabled(imageEditorView.getModel().hasFaceRenderer());
         break;
       }
 
@@ -284,138 +281,10 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     changeEntityColor(color);
   }
 
-  static class BlurTask extends AsyncTask<EditorModel, Void, FaceDetectionResult> {
-
-    interface BlurTaskCallback {
-       void onFaceDetectionFinished(FaceDetectionResult result);
-    }
-
-    WeakReference<Context> contextRef;
-    WeakReference<BlurTaskCallback> callbackRef;
-
-    public BlurTask(Context context, BlurTaskCallback callback) {
-      contextRef = new WeakReference<>(context);
-      callbackRef = new WeakReference<>(callback);
-    }
-
-    @Override
-    protected FaceDetectionResult doInBackground(EditorModel... editorModels) {
-      EditorModel model = editorModels[0];
-      EditorElement element = model.getMainImage();
-      Matrix inverseCropPosition = model.getInverseCropPosition();
-
-      Context context = contextRef.get();
-      if (context == null) {
-        return null;
-      }
-
-      if (element.getRenderer() != null) {
-        Bitmap bitmap = ((UriGlideRenderer) element.getRenderer()).getBitmap();
-        if (bitmap != null) {
-          FaceDetector detector = new FirebaseFaceDetector();
-
-          Point size = model.getOutputSizeMaxWidth(1000);
-          Bitmap render = model.render(context.getApplicationContext(), size);
-          try {
-            return new FaceDetectionResult(detector.detect(render), new Point(render.getWidth(), render.getHeight()), inverseCropPosition);
-          } finally {
-            render.recycle();
-            element.getFlags().reset();
-          }
-        }
-      }
-
-      return new FaceDetectionResult(Collections.emptyList(), new Point(0, 0), new Matrix());
-    }
-
-    @Override
-    protected void onPostExecute(FaceDetectionResult faceDetectionResult) {
-      super.onPostExecute(faceDetectionResult);
-      BlurTaskCallback callback = callbackRef.get();
-      if (callback != null) {
-        callback.onFaceDetectionFinished(faceDetectionResult);
-      }
-    }
-  }
-
-  @Override
-  public void onBlurFacesToggled(boolean enabled) {
-    EditorModel   model     = imageEditorView.getModel();
-    EditorElement mainImage = model.getMainImage();
-    if (mainImage == null) {
-      imageEditorHud.hideBlurToast();
-      return;
-    }
-
-    if (!enabled) {
-      model.clearFaceRenderers();
-      imageEditorHud.hideBlurToast();
-      return;
-    }
-
-    Matrix inverseCropPosition = model.getInverseCropPosition();
-
-    if (cachedFaceDetection != null) {
-      if (cachedFaceDetection.first().equals(getUri()) && cachedFaceDetection.second().position.equals(inverseCropPosition)) {
-        renderFaceBlurs(cachedFaceDetection.second());
-        imageEditorHud.showBlurToast();
-        return;
-      } else {
-        cachedFaceDetection = null;
-      }
-    }
-
-    //TODO: implement alert
-    /*AlertDialog dialog = new AlertDialog.Builder(getContext())
-            .setMessage("Blurring... Please wait")
-            .setCancelable(false)
-            .create();
-    dialog.show();*/
-
-    mainImage.getFlags().setChildrenVisible(false);
-
-    BlurTask blurTask = new BlurTask(getContext(), this::onFaceDetectionFinieshed);
-    blurTask.doInBackground(model);
-
-    /*SimpleTask.run(getLifecycle(), () -> {
-      if (mainImage.getRenderer() != null) {
-        Bitmap bitmap = ((UriGlideRenderer) mainImage.getRenderer()).getBitmap();
-        if (bitmap != null) {
-          FaceDetector detector = new FirebaseFaceDetector();
-
-          Point size = model.getOutputSizeMaxWidth(1000);
-          Bitmap render = model.render(ApplicationDependencies.getApplication(), size);
-          try {
-            return new FaceDetectionResult(detector.detect(render), new Point(render.getWidth(), render.getHeight()), inverseCropPosition);
-          } finally {
-            render.recycle();
-            mainImage.getFlags().reset();
-          }
-        }
-      }
-
-      return new FaceDetectionResult(Collections.emptyList(), new Point(0, 0), new Matrix());
-    }, result -> {
-      mainImage.getFlags().reset();
-      renderFaceBlurs(result);
-      progress.dismiss();
-      imageEditorHud.showBlurToast();
-    });*/
-  }
-
-  void onFaceDetectionFinieshed(FaceDetectionResult result) {
-    EditorModel   model     = imageEditorView.getModel();
-    EditorElement mainImage = model.getMainImage();
-    mainImage.getFlags().reset();
-    renderFaceBlurs(result);
-    imageEditorHud.showBlurToast();
-  }
-
   @Override
   public void onUndo() {
     imageEditorView.getModel().undo();
     refreshUniqueColors();
-    imageEditorHud.setBlurFacesToggleEnabled(imageEditorView.getModel().hasFaceRenderer());
   }
 
   @Override
@@ -439,40 +308,12 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
 
   }
 
-  @Override
-  public void onDone() {
-
-  }
-
   private void refreshUniqueColors() {
     imageEditorHud.setColorPalette(imageEditorView.getModel().getUniqueColorsIgnoringAlpha());
   }
 
   private void onUndoRedoAvailabilityChanged(boolean undoAvailable, boolean redoAvailable) {
     imageEditorHud.setUndoAvailability(undoAvailable);
-  }
-
-  private void renderFaceBlurs(@NonNull FaceDetectionResult result) {
-    List<RectF> faces = result.rects;
-    Point       size  = result.imageSize;
-
-    if (faces.isEmpty()) {
-      cachedFaceDetection = null;
-      return;
-    }
-
-    imageEditorView.getModel().pushUndoPoint();
-
-    for (RectF face : faces) {
-      FaceBlurRenderer faceBlurRenderer = new FaceBlurRenderer(face, size);
-      EditorElement element = new EditorElement(faceBlurRenderer, EditorModel.Z_MASK);
-      element.getLocalMatrix().set(result.position);
-      imageEditorView.getModel().addElementWithoutPushUndo(element);
-    }
-
-    imageEditorView.invalidate();
-
-    cachedFaceDetection = new Pair<>(getUri(), result);
   }
 
    private final ImageEditorView.TapListener selectionListener = new ImageEditorView.TapListener() {
@@ -518,16 +359,4 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
        }
      }
    };
-
-  protected static class FaceDetectionResult {
-    private final List<RectF> rects;
-    private final Point       imageSize;
-    private final Matrix      position;
-
-    FaceDetectionResult(@NonNull List<RectF> rects, @NonNull Point imageSize, @NonNull Matrix position) {
-      this.rects     = rects;
-      this.imageSize = imageSize;
-      this.position  = new Matrix(position);
-    }
-  }
 }
