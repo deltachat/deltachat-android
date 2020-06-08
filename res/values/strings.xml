@@ -600,11 +600,7 @@
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
 
     <!-- ImageEditorHud -->
-    <string name="ImageEditorHud_blur_faces">Blur faces</string>
-    <string name="ImageEditorHud_new_blur_faces_or_draw_anywhere_to_blur">New: Blur faces or draw anywhere to blur</string>
     <string name="ImageEditorHud_draw_anywhere_to_blur">Draw anywhere to blur</string>
-    <string name="ImageEditorHud_draw_to_blur_additional_faces_or_areas">Draw to blur additional faces or areas</string>
-
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Encrypted message</string>
