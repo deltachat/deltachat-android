@@ -20,7 +20,6 @@ import org.thoughtcrime.securesms.imageeditor.Renderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
 import org.thoughtcrime.securesms.imageeditor.UndoRedoStackListener;
 import org.thoughtcrime.securesms.imageeditor.renderers.MultiLineTextRenderer;
-import org.thoughtcrime.securesms.imageeditor.renderers.FaceBlurRenderer;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -692,36 +691,6 @@ public final class EditorModel implements Parcelable, RendererContext.Ready {
     }
 
     updateUndoRedoAvailableState(undoRedoStacks);
-  }
-
-  public void clearFaceRenderers() {
-    EditorElement mainImage = editorElementHierarchy.getMainImage();
-    if (mainImage != null) {
-      boolean hasPushedUndo = false;
-      for (int i = mainImage.getChildCount() - 1; i >= 0; i--) {
-        if (mainImage.getChild(i).getRenderer() instanceof FaceBlurRenderer) {
-          if (!hasPushedUndo) {
-            pushUndoPoint();
-            hasPushedUndo = true;
-          }
-          
-          mainImage.deleteChild(mainImage.getChild(i), invalidate);
-        }
-      }
-    }
-  }
-
-  public boolean hasFaceRenderer() {
-    EditorElement mainImage = editorElementHierarchy.getMainImage();
-    if (mainImage != null) {
-      for (int i = mainImage.getChildCount() - 1; i >= 0; i--) {
-        if (mainImage.getChild(i).getRenderer() instanceof FaceBlurRenderer) {
-          return true;
-        }
-      }
-    }
-
-    return false;
   }
 
   public boolean isChanged() {
