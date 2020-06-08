@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.scribbles;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -95,7 +96,11 @@ public final class ImageEditorHud extends LinearLayout {
   }
 
   private void initializeVisibilityMap() {
-    setVisibleViewsWhenInMode(Mode.NONE, drawButton, highlightButton, blurButton, textButton, stickerButton, cropButton, undoButton, saveButton);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+      setVisibleViewsWhenInMode(Mode.NONE, drawButton, highlightButton, blurButton, textButton, stickerButton, cropButton, undoButton, saveButton);
+    } else {
+      setVisibleViewsWhenInMode(Mode.NONE, drawButton, highlightButton, textButton, stickerButton, cropButton, undoButton, saveButton);
+    }
 
     setVisibleViewsWhenInMode(Mode.DRAW, confirmButton, undoButton, colorPicker, colorPalette);
 
