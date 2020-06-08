@@ -71,7 +71,7 @@
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="8dp"
-                android:src="@drawable/ic_image_editor_blur" />
+                android:src="@drawable/ic_blur_on_white_24" />
 
             <ImageView
                 android:id="@+id/scribble_sticker_button"
