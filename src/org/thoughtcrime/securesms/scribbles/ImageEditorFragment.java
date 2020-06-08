@@ -231,7 +231,7 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
         break;
 
       case BLUR: {
-        imageEditorView.startDrawing(0.052f, Paint.Cap.ROUND, true);
+        imageEditorView.startDrawing(0.075f, Paint.Cap.ROUND, true);
         break;
       }
 
