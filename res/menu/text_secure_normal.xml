@@ -24,4 +24,7 @@
     <item android:title="@string/menu_help"
         android:id="@+id/menu_help" />
 
+    <item android:title="@string/switch_account"
+        android:id="@+id/menu_switch_account" />
+
 </menu>
