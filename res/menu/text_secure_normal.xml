@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/qrscan_title"
+    <item android:title="@string/qr_code"
           android:id="@+id/menu_qr"
           android:icon="@drawable/ic_ab_qr"
           app:showAsAction="always"/>
