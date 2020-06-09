@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.imageeditor.model;
 
 import android.animation.ValueAnimator;
-
 import androidx.annotation.Nullable;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;

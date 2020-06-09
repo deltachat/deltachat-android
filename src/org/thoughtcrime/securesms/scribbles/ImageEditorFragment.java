@@ -6,12 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.imageeditor.ColorableRenderer;
@@ -212,12 +213,17 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
       break;
 
       case DRAW:
-        imageEditorView.startDrawing(0.01f, Paint.Cap.ROUND);
+        imageEditorView.startDrawing(0.01f, Paint.Cap.ROUND, false);
         break;
 
       case HIGHLIGHT:
-        imageEditorView.startDrawing(0.03f, Paint.Cap.SQUARE);
+        imageEditorView.startDrawing(0.03f, Paint.Cap.SQUARE, false);
         break;
+
+      case BLUR: {
+        imageEditorView.startDrawing(0.075f, Paint.Cap.ROUND, true);
+        break;
+      }
 
       case TEXT:
         addText();
@@ -288,11 +294,8 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
   }
 
   @Override
-  public void onRequestFullScreen(boolean fullScreen) {
-  }
+  public void onRequestFullScreen(boolean fullScreen, boolean hideKeyboard) {
 
-  public boolean onBackPressed() {
-    return imageEditorHud.onBackPressed();
   }
 
   private void refreshUniqueColors() {
@@ -346,5 +349,4 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
        }
      }
    };
-
 }

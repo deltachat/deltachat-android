@@ -59,10 +59,10 @@ final class Bisect {
    * @return matrix to replace local matrix iff finds a result, null otherwise.
    */
  static @Nullable Matrix bisectToTest(@NonNull EditorElement element,
-                     float outOfBoundsValue,
-                     float atMost,
-                     @NonNull Predicate predicate,
-                     @NonNull ModifyElement modifyElement)
+                                      float outOfBoundsValue,
+                                      float atMost,
+                                      @NonNull Predicate predicate,
+                                      @NonNull ModifyElement modifyElement)
  {
    Matrix  elementMatrix     = element.getLocalMatrix();
    Matrix  original          = new Matrix(elementMatrix);
@@ -83,7 +83,7 @@ final class Bisect {
          inBoundsValue = nextValueToTry;
 
          // if first success or closer to out of bounds than the current closest
-         if (!haveResult || Math.abs(nextValueToTry) < Math.abs(successValue)) {
+         if (!haveResult || Math.abs(nextValueToTry - outOfBoundsValue) < Math.abs(successValue - outOfBoundsValue)) {
            haveResult = true;
            successValue = nextValueToTry;
            closestSuccessful.set(elementMatrix);

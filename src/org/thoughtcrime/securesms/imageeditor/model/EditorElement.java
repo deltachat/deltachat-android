@@ -3,13 +3,15 @@ package org.thoughtcrime.securesms.imageeditor.model;
 import android.graphics.Matrix;
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 
 import org.thoughtcrime.securesms.imageeditor.Renderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,10 +35,13 @@ import java.util.UUID;
  */
 public final class EditorElement implements Parcelable {
 
+  private static final Comparator<EditorElement> Z_ORDER_COMPARATOR = (e1, e2) -> Integer.compare(e1.zOrder, e2.zOrder);
+
   private final UUID        id;
   private final EditorFlags flags;
   private final Matrix      localMatrix  = new Matrix();
   private final Matrix      editorMatrix = new Matrix();
+  private final int         zOrder;
 
   @Nullable
   private final Renderer renderer;
@@ -55,9 +60,14 @@ public final class EditorElement implements Parcelable {
   private AlphaAnimation alphaAnimation = AlphaAnimation.NULL_1;
 
   public EditorElement(@Nullable Renderer renderer) {
+    this(renderer, 0);
+  }
+
+  public EditorElement(@Nullable Renderer renderer, int zOrder) {
     this.id       = UUID.randomUUID();
     this.flags    = new EditorFlags();
     this.renderer = renderer;
+    this.zOrder   = zOrder;
   }
 
   private EditorElement(Parcel in) {
@@ -65,6 +75,7 @@ public final class EditorElement implements Parcelable {
     flags    = new EditorFlags(in.readInt());
     ParcelUtils.readMatrix(localMatrix, in);
     renderer = in.readParcelable(Renderer.class.getClassLoader());
+    zOrder   = in.readInt();
     in.readTypedList(children, EditorElement.CREATOR);
   }
 
@@ -86,7 +97,7 @@ public final class EditorElement implements Parcelable {
    *
    * @param rendererContext Canvas to draw on to.
    */
-  void draw(@NonNull RendererContext rendererContext) {
+  public void draw(@NonNull RendererContext rendererContext) {
     if (!flags.isVisible() && !flags.isChildrenVisible()) return;
 
     rendererContext.save();
@@ -102,6 +113,7 @@ public final class EditorElement implements Parcelable {
       float alpha = alphaAnimation.getValue();
       if (alpha > 0) {
         rendererContext.setFade(alpha);
+        rendererContext.setChildren(children);
         drawSelf(rendererContext);
         rendererContext.setFade(1f);
       }
@@ -122,12 +134,15 @@ public final class EditorElement implements Parcelable {
 
   private static void drawChildren(@NonNull List<EditorElement> children, @NonNull RendererContext rendererContext) {
     for (EditorElement element : children) {
-      element.draw(rendererContext);
+      if (element.zOrder >= 0) {
+        element.draw(rendererContext);
+      }
     }
   }
 
   public void addElement(@NonNull EditorElement element) {
     children.add(element);
+    Collections.sort(children, Z_ORDER_COMPARATOR);
   }
 
   public Matrix getLocalMatrix() {
@@ -240,6 +255,10 @@ public final class EditorElement implements Parcelable {
     animationMatrix = AnimationMatrix.singlePulse(scale, invalidate);
   }
 
+  public int getZOrder() {
+    return zOrder;
+  }
+
   public interface PerElementFunction {
     void apply(EditorElement element);
   }
@@ -329,6 +348,7 @@ public final class EditorElement implements Parcelable {
     dest.writeInt(this.flags.asInt());
     ParcelUtils.writeMatrix(dest, localMatrix);
     dest.writeParcelable(renderer, flags);
+    dest.writeInt(zOrder);
     dest.writeTypedList(children);
   }
 }

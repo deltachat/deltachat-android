@@ -599,6 +599,9 @@
     <string name="perm_enable_bg_reminder_text">Delta Chat uses few resources and takes care not to drain your battery.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
 
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Draw anywhere to blur</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Encrypted message</string>
 
