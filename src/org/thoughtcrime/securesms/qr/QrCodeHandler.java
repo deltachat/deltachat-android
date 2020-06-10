@@ -15,6 +15,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.IntentUtils;
@@ -69,8 +70,13 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
                 break;
 
             case DcContext.DC_QR_ACCOUNT:
-                builder.setMessage(R.string.qraccount_use_on_new_install);
-                builder.setPositiveButton(R.string.ok, null);
+                String domain = qrParsed.getText1();
+                builder.setMessage(activity.getString(R.string.qraccount_ask_create_and_login_another, domain));
+                builder.setPositiveButton(R.string.ok, (dialog, which) -> {
+                    AccountManager.getInstance().addAccountFromQr(activity, rawString);
+                });
+                builder.setNegativeButton(R.string.cancel, null);
+                builder.setCancelable(false);
                 break;
 
             default:

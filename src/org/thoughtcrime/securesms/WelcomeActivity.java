@@ -26,6 +26,7 @@ import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import java.io.File;
 
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
+    public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
 
     private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
@@ -47,6 +48,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         dcContext = DcHelper.getContext(this);
         dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
         dcContext.eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        String qrAccount = getIntent().getStringExtra(QR_ACCOUNT_EXTRA);
+        if (qrAccount!=null) {
+            manualConfigure = false;
+            startQrAccountCreation(qrAccount);
+        }
     }
 
     @Override

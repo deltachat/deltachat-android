@@ -59,9 +59,6 @@
         <Preference android:key="pref_empty_server_folders"
                     android:title="@string/pref_empty_server_title" />
 
-        <Preference android:key="pref_switch_account"
-            android:title="@string/switch_account" />
-
     </PreferenceCategory>
 
 

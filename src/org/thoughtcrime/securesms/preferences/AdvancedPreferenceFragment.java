@@ -96,14 +96,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       emptyServerFolders.setOnPreferenceClickListener(new EmptyServerFoldersListener());
     }
 
-    Preference switchAccount = this.findPreference("pref_switch_account");
-    if(switchAccount!=null) {
-      switchAccount.setOnPreferenceClickListener(preference -> {
-        AccountManager.getInstance().showSwitchAccountMenu(getActivity());
-        return true;
-      });
-    }
-
     Preference manageKeys = this.findPreference("pref_manage_keys");
     manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
 
