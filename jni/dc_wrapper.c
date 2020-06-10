@@ -716,12 +716,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_imexHasBackup(JNIEnv *env, j
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_emptyServer(JNIEnv *env, jobject obj, jint flags)
-{
-	dc_empty_server(get_dc_context(env, obj), flags);
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_addAddressBook(JNIEnv *env, jobject obj, jstring adrbook)
 {
 	CHAR_REF(adrbook);
