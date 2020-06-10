@@ -158,7 +158,7 @@ public class AccountManager {
 
     // add accounts
 
-    public void beginAccountCreation(Context context) {
+    private void beginAccountCreation(Context context) {
         // pause the current account and let the user create a new one.
         // this function is not needed on the very first account creation.
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -184,14 +184,14 @@ public class AccountManager {
 
         Account prevAccount = maybeGetAccount(new File(activity.getFilesDir(), prevDbName));
         if (prevAccount!=null) {
-            new SwitchAccountAsyncTask(activity, R.string.switching_account, prevAccount, inCreationDbName).execute();
+            new SwitchAccountAsyncTask(activity, R.string.switching_account, prevAccount, inCreationDbName, null).execute();
         }
     }
 
 
     // delete account
 
-    public void deleteAccount(Context context, String dbName) {
+    private void deleteAccount(Context context, String dbName) {
         try {
             File blobdir = new File(context.getFilesDir(), dbName+"-blobs");
             String [] blobfiles = blobdir.list();
@@ -221,12 +221,14 @@ public class AccountManager {
         private final WeakReference<Activity> activityWeakReference;
         private final @Nullable Account destAccount; // null creates a new account
         private final @Nullable String deleteDbName;
+        private final @Nullable String qrAccount;
 
-        public SwitchAccountAsyncTask(Activity activity, int title, @Nullable Account destAccount, @Nullable String deleteDbName) {
+        public SwitchAccountAsyncTask(Activity activity, int title, @Nullable Account destAccount, @Nullable String deleteDbName, @Nullable String qrAccount) {
             super(activity, null, activity.getString(title));
             this.activityWeakReference = new WeakReference<>(activity);
             this.destAccount = destAccount;
             this.deleteDbName = deleteDbName;
+            this.qrAccount = qrAccount;
         }
         @Override
         protected Void doInBackground(Void... voids) {
@@ -261,7 +263,11 @@ public class AccountManager {
             if (activity!=null) {
                 activity.finishAffinity();
                 if (destAccount==null) {
-                    activity.startActivity(new Intent(activity, WelcomeActivity.class));
+                    Intent intent = new Intent(activity, WelcomeActivity.class);
+                    if (qrAccount!=null) {
+                        intent.putExtra(WelcomeActivity.QR_ACCOUNT_EXTRA, qrAccount);
+                    }
+                    activity.startActivity(intent);
                 } else {
                     activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
                 }
@@ -295,11 +301,11 @@ public class AccountManager {
                 .setSingleChoiceItems(menu.toArray(new String[menu.size()]), presel, (dialog, which) -> {
                     dialog.dismiss();
                     if (which==addAccount) {
-                        new SwitchAccountAsyncTask(activity, R.string.one_moment, null, null).execute();
+                        new SwitchAccountAsyncTask(activity, R.string.one_moment, null, null, null).execute();
                     } else { // switch account
                         Account account = accounts.get(which);
                         if (!account.isCurrent()) {
-                            new SwitchAccountAsyncTask(activity, R.string.switching_account, account, null).execute();
+                            new SwitchAccountAsyncTask(activity, R.string.switching_account, account, null, null).execute();
                         }
                     }
                 });
@@ -349,4 +355,7 @@ public class AccountManager {
                 .show();
     }
 
+    public void addAccountFromQr(Activity activity, String qr) {
+        new SwitchAccountAsyncTask(activity, R.string.one_moment, null, null, qr).execute();
+    }
 }
