@@ -588,4 +588,6 @@
     <string name="a11y_remove_account_btn_label">Šalinti paskyrą</string>
     <string name="a11y_background_preview_label">Fono peržiūra</string>
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

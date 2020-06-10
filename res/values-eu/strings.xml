@@ -468,6 +468,11 @@
     <string name="pref_background_default_color">Lehenetsitako kolorea</string>
     <string name="pref_background_custom_image">Irudi pertsonalizatua</string>
     <string name="pref_background_custom_color">Kolore pertsonalizatua</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Bigarren planoko konexio egonkorra</string>
+    <string name="pref_reliable_service_explain">Etengabeko jakinarazpena eskatzen du</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">Automatikoki ezabatu mezuak</string>
     <string name="autodel_title_short">Automatikoki ezabatu</string>
@@ -686,4 +691,6 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Argazkien bilduma atzitzeko baimena emateak bertatik argazkiak igotzea ahalbidetzen dizu.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

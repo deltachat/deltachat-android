@@ -559,6 +559,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrshow_join_contact_no_connection_hint">Der Austausch von QR-Codes erfordert eine Verbindung zum Internet. Bitte stellen Sie diese her, bevor Sie fortfahtren.</string>
     <string name="qrshow_join_contact_no_connection_toast">Keine Verbindung zum Internet, Austausch des QR-Codes nicht möglich.</string>
     <string name="qraccount_ask_create_and_login">E-Mail-Konto auf \"%1$s\" erzeugen und dort anmelden?</string>
+    <string name="qraccount_ask_create_and_login_another">E-Mail-Konto auf \"%1$s\" erzeugen und dort anmelden?
+
+Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Option \"E-Mail-Konto wechseln\" jederzeit zwischen den Konten hin- und herschalten.</string>
     <string name="qraccount_success_enter_name">Anmeldung erfolgreich — Ihre E-Mail-Adresse ist %1$s\n\nWenn Sie mögen, können Sie nun einen Namen und einen Avatar festlegen, der den ChatpartnerInnen angezeigt wird.</string>
     <string name="qraccount_qr_code_cannot_be_used">Der eingescannte QR-Code kann nicht dazu verwendet werden, eine neues E-Mail-Konto zu erzeugen.</string>
     <string name="qraccount_use_on_new_install">Der gescannte QR-Code ist zum Erstellen eines neuen E-Mail-Kontos. Sie können den QR-Code nur bei einer neuen Delta Chat Installation verwenden.</string>
@@ -600,6 +603,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat verbraucht nur minimale Ressourcen und achtet darauf, den Akku zu schonen.</string>
     <string name="perm_enable_bg_already_done">Sie haben Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfen Sie bitte auch Ihre Systemeinstellungen.</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Zeichne zum Verwischen in beliebige Bereiche</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Verschlüsselte Nachricht</string>
@@ -693,8 +699,5 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
-    <string name="device_talk_background_connection_android">Zum Hinweis \"Hintergrundverbindung aktiviert\" im Systembereich:\n\n👉 Der Hinweis hält das Betriebssystem normalerweise davon ab, die Verbindung zwischen Delta Chat und Ihrem Server zu unterbrechen.\n\n👉 Wenn der Hinweis ohne Ihr Zutun verschwindet wurde die Verbindung vermutlich dennoch unterbrochen. Auch wenn dies seltsam erscheint - viele Handyhersteller tun genau dies - auf der Seite https://dontkillmyapp.com finden Sie herstellerspezifische Hinweise, was Sie dagegen tun können.\n\nWie auch immer - wir freuen uns, dass wir die Hintergrundverbindung grundsätzlich stabiler gestalten konnten und so viele Benutzerwünsche erfüllen könnten 🤗</string>
-
 
 </resources>

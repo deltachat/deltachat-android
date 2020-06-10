@@ -248,4 +248,6 @@
     <string name="none_blocked_desktop">차단한 친구가 없습니다</string>
     <string name="me_desktop">나</string>
     <string name="message_detail_from_desktop">보낸 사람</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

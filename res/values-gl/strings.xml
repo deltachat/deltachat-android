@@ -389,7 +389,7 @@
     <string name="pref_vibrate">Vibrar</string>
     <string name="pref_chat_settings">Axustes da conversa</string>
     <string name="pref_change_secret">Cambiar seguridade</string>
-    <string name="pref_change_secret_explain">Cambiar o PIN / patrón / pegada dactilar a través dos axustes do sistema</string>
+    <string name="pref_change_secret_explain">Cambiar o PIN / patrón / impresión dactilar a través dos axustes do sistema</string>
     <string name="pref_screen_security">Seguridade da pantalla</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Solicitar bloqueo de captura de pantalla para a lista de recentes e dentro da app</string>
@@ -526,7 +526,7 @@
 
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueo de pantalla</string>
-    <string name="screenlock_explain">Limita o acceso co bloqueo de pantalla Android ou pegada dactilar; para evitar mostrar o contido, por favor activa \"Seguridade de Pantalla\".</string>
+    <string name="screenlock_explain">Limita o acceso co bloqueo de pantalla Android ou impresión dactilar; para evitar mostrar o contido, por favor activa \"Seguridade de Pantalla\".</string>
     <string name="screenlock_authentication_failed">Fallo de Autenticación.</string>
     <string name="screenlock_unlock_title">Desbloquear Delta Chat</string>
     <string name="screenlock_unlock_description">Introduce o código establecido no sistema para desbloquerar Delta Chat.</string>
@@ -540,8 +540,8 @@
     <string name="qrscan_title">Escanear código QR</string>
     <string name="qrscan_hint">Mantén a cámara sobre o código QR.</string>
     <string name="qrscan_ask_join_group">Queres unirte ao grupo \"%1$s\"?</string>
-    <string name="qrscan_fingerprint_mismatch">A pegada escaneada non concorda coa última vista para %1$s.</string>
-    <string name="qrscan_no_addr_found">Este código QR contén unha pegada dactilar pero non un enderezo de correo.\n\nPara unha verificación fora de liña, por favor establece unha conexión cifrada co correspondente.</string>
+    <string name="qrscan_fingerprint_mismatch">A impresión escaneada non concorda coa última vista para %1$s.</string>
+    <string name="qrscan_no_addr_found">Este código QR contén unha imprsión dixital pero non un enderezo de correo.\n\nPara unha verificación fora de liña, por favor establece unha conexión cifrada co correspondente.</string>
     <string name="qrscan_contains_text">Texto escaneado no código QR:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL escaneado no código QR:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Pegada dactilar</string>
@@ -691,8 +691,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
-    <string name="device_talk_background_connection_android">Igual xa o notaches, hai un aviso \"Conexión en segundo plano activada\" na bandexa do sistema.\n\n👉 O aviso normalmente evita que o sistema corte a conexión entre Delta Chat e o teu servidor.\n\n👉 O aviso desaparece sen que teñas que facer nada, a conexión vaise cortar igualmente.\nSe cres que é raro, entendémolo - pero moitos fabricantes fan precisamente eso. A web https://dontkillmyapp.com proporciona posibles solucións.\n\nPorén, agrádanos poder mellorar a recepción de mensaxes en segundo plano con este cambio e poder cumprir coas expectativas de moitas usuarias - grazas por informarnos  🤗</string>
-
 
 </resources>

@@ -691,8 +691,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
-    <string name="device_talk_background_connection_android">Je hebt wellicht al gemerkt dat er een systeemmelding \'Achtergrondverbinding ingeschakeld\' wordt getoond.\n\n👉 Deze melding voorkomt dat het systeem de verbinding tussen Delta Chat en je server verbreekt.\n\n👉 Als de melding zomaar verdwijnt, dan is de verbinding waarschijnlijk verbroken.\nVind je dat vreemd? Wij ook. Maar helaas doen sommige fabrikanten dit. Op de website https://dontkillmyapp.com vind je mogelijke oplossingen hiervoor.\n\nDesalniettemin zijn we blij dat we op deze manier het ophalen van berichten op de achtergrond hebben verbeterd en daarmee een grote gebruikerswens in vervulling hebben laten gaan. Bedankt voor alle steun 🤗</string>
-
 
 </resources>

@@ -691,8 +691,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
-    <string name="device_talk_background_connection_android">Potresti aver già notato che esiste una notifica \"Connessione in background abilitata\" mostrata dal sistema.\n\n 👉 La notifica normalmente impedisce al sistema operativo di interrompere la connessione tra Delta Chat e il tuo server.\n\n👉 Se la notifica scompare senza alcuna azione da parte tua, la connessione è stata probabilmente soppressa.\nSe pensi che sia strano, siamo totalmente d\'accordo - ma molti produttori fanno esattamente questo. Il sito https://dontkillmyapp.com mostra alcune soluzioni alternative.\n\nTuttavia, siamo felici di poter migliorare la ricezione dei messaggi in background con questa modifica e di soddisfare le richieste di molti utenti, grazie per avercelo segnalato 🤗</string>
-
 
 </resources>

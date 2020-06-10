@@ -153,7 +153,7 @@
     <string name="menu_forward">Vidarebefordra meddelande</string>
     <string name="menu_resend">Skicka om meddelandet</string>
     <string name="menu_reply">Svara på meddelandet</string>
-    <string name="menu_mute">Stäng av aviseringar</string>
+    <string name="menu_mute">Stäng av avisering</string>
     <string name="menu_unmute">Slå på</string>
     <string name="menu_export_attachment">Exportera bilaga</string>
     <string name="menu_all_media">All media</string>
@@ -394,7 +394,7 @@
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Blockera skärmklipp i tidigare-listan samt inuti programmet</string>
     <string name="pref_screen_security_please_restart_hint">Starta om programmet för att tillämpa skärmsäkerhetsinställningarna</string>
-    <string name="pref_notifications">Aviseringar</string>
+    <string name="pref_notifications">Avisering</string>
     <string name="pref_notifications_show">Visa</string>
     <string name="pref_notifications_priority">Prioritet</string>
     <string name="pref_led_color">Färg på ljusindikator</string>
@@ -470,7 +470,7 @@
     <string name="pref_background_custom_color">Anpassad färg</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Tillförlitlig bakgrundsanslutning</string>
-    <string name="pref_reliable_service_explain">Kräver en permanent avisering</string>
+    <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
 
 
     <!-- automatically delete message -->
@@ -691,8 +691,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <!-- this message is shown in the device chat, starting in version 1.6, it should explain the need for the permanent-notifiation and also use the same wording as used there (see "Background connection enabled") -->
-    <string name="device_talk_background_connection_android">Du kanske redan har märkt att det finns ett tips, \"Bakgrundsanslutning aktiverad\" som visas av systemet.\n\n👉 Tipset förhindrar normalt att operativsystemet dödar anslutningen mellan Delta Chat och din server.\n\n👉 Om tipset försvinner utan någon åtgärd från din sida, har anslutningen förmodligen dödats ändå.\nOm du tycker att detta är konstigt, är vi helt överens men många tillverkare gör just så. Webbplatsen https://dontkillmyapp.com visar några lösningar.\n\nVi är dock glada att vi kunde förbättra mottagandet av meddelanden i bakgrunden, med denna förändring, och att vi kunde uppfylla önskemålen från många användare. Tack för rapporteringen! 🤗</string>
-
 
 </resources>

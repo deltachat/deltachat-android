@@ -406,4 +406,6 @@
     <string name="none_blocked_desktop">Ingen blokkerte kontakter enda</string>
     <string name="me_desktop">Meg</string>
     <string name="message_detail_from_desktop">Fra</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

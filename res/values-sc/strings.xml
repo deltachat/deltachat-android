@@ -219,6 +219,18 @@
         <item quantity="other">Iscantzellare %d messàgios inoghe e in su servidore?</item>
     </plurals>
     <string name="ask_forward">Imbiare su messàgiu a %1$s?</string>
+    <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>
+    <string name="ask_block_contact">Blocare custu cuntatu? No as a retzire prus messàgios dae custu cuntatu.</string>
+    <string name="ask_unblock_contact">Isblocare custu cuntatu? As a torrare a pòdere retzire messàgios dae custu cuntatu.</string>
+    <string name="ask_delete_contacts">Iscantzellare sos cuntatos?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
+    <string name="ask_delete_contact">Cheres iscantzellare a %1$s pro semper?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
+    <string name="cannot_delete_contacts_in_use">Non podes iscantzellare cuntatos cun tzarradas ativas.</string>
+    <string name="ask_start_chat_with">Cheres tzarrare cun %1$s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Cheres bogare %1$sdae su grupu?</string>
+    <string name="info_outdated_app_title">Sa versione tua de s\'aplicatzione est betza</string>
+    <string name="info_outdated_app_text">Paret chi tue apat installadu Delta Chat dae una fonte chene agiornamentos automàticos (es. GitHub). Pro praghere cola a una versione de una butaga de aplicatziones pro retzire sas ùrtimas funtzionalidades e sos acontzos de sos problemas.</string>
+    <string name="info_outdated_app_dialog_title">Agiorna sas fontes</string>
     <string name="info_outdated_app_dialog_text">Delta Chat est a disponimentu in:</string>
 
 
@@ -246,24 +258,46 @@
         <item quantity="one">%d messàgiu nou</item>
         <item quantity="other">%dmessàgios noos</item>
     </plurals>
+    <string name="chat_no_messages_hint">Imbia unu messàgiu a %1$s:\n\n• Lu podes fàghere fintzas si %2$s no impreat Delta Chat.\n\n• Sa cunsinna de su primu messàgiu diat pòdere pigare un\'agigu de tempus e no èssere critografada.</string>
+    <string name="chat_new_group_hint">Imbia su primu messàgiu, permitende a sos àteros de ti rispòndere in intro de custu grupu.\n\n•Lu podes fàghere fintzas si non totu sos membros impreant Delta Chat.Sa cunsinna de su primu messàgiu diat pòdere pigare un\'agigu de tempus.</string>
     <string name="chat_record_slide_to_cancel">Iscurre pro annulare</string>
     <string name="chat_record_explain">Incarca e mantene incarcadu pro registrare unu messàgiu vocale, lassa pro imbiare</string>
+    <string name="chat_no_chats_yet_title">Cartella de intrada bòida.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
+    <string name="chat_no_chats_yet_hint">Podes tzarrare cun àteros impreadores de Delta Chat e cun cale si siat indiritzu de posta eletrònica.</string>
+    <string name="chat_all_archived">Tzarradas archiviadas.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
     <string name="chat_share_with_title">Cumpartzi cun</string>
     <string name="chat_input_placeholder">Messàgiu</string>
     <string name="chat_archived_label">Archiviadu</string>
     <string name="chat_no_messages">Perunu messàgiu.</string>
+    <string name="chat_self_talk_subtitle">Messàgios chi m\'apo imbiadu a sa sola</string>
     <string name="saved_messages">Messàgios sarvados</string>
     <string name="saved_messages_explain">• Torra a imbiare sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n• Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
     <string name="chat_contact_request">Rechesta de cuntatu</string>
+    <string name="chat_no_contact_requests">Peruna rechesta de cuntatu.\n\nSi cheres chi sas lìteras eletrònicas clàssicas apàrgiant inoghe comente rechestas de cuntatu, podes mudare s\'impostatzione chi li pertocat in sas impostatziones de s\'aplicatzione.</string>
+    <string name="retry_send">Torra a proare a imbiare su messàgiu</string>
+    <string name="send_failed">Imbiu de su messàgiu fallidu</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Ammustra sas positziones in su tempus</string>
+    <string name="show_location_traces">Ammustra sas rastas</string>
+    <string name="add_poi">Imbia puntu de interesse</string>
+
+
     <!-- search -->
     <string name="search">Chirca</string>
     <string name="search_explain">Chirca in sas tzarradas, sos cuntatos e sos messàgios</string>
+    <string name="search_no_result_for_x">Perunu resurtadu pro \"%s\"</string>
+
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nùmene de su grupu</string>
+    <string name="group_avatar">Avatar de su grupu</string>
+    <string name="group_create_button">Crea unu grupu</string>
     <string name="group_please_enter_group_name">Inserta unu nùmene pro su grupu.</string>
     <string name="group_add_members">Annanghe mambros</string>
     <string name="group_hello_draft">Salude, apo creadu su grupu \"%1$s\" como como pro nois.</string>
     <string name="group_self_not_in_group">Depes èssre unu membru de su grupu pro fàghere cust\'atzione.</string>
+    <string name="profile_encryption">Tzifradura</string>
     <string name="profile_shared_chats">Tzarradas cumpartzidas</string>
     <string name="tab_contact">Cuntatu</string>
     <string name="tab_group">Grupu</string>
@@ -272,25 +306,99 @@
     <string name="tab_docs">Documentos</string>
     <string name="tab_links">Ligàmenes</string>
     <string name="tab_map">Mapa</string>
+    <string name="tab_gallery_empty_hint">Sas immàgines e sos vìdeos cumpartzidos in custa tzarrada ant a èssere ammustrados inoghe.</string>
+    <string name="tab_docs_empty_hint">Sos documentos editàbiles, cussos musicales e totu sas àteras castas de documentos cumpartzidos in custa tzarrada ant a èssere ammustrados inoghe.</string>
+    <string name="media_preview">Anteprima de su documentu multimediale</string>
+    <string name="send_message">Imbia messàgiu</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_message">S\'aplicatzione de messagìstica cun prus impreadores in su mundu. Lìbera e indipendente.</string>
+    <string name="welcome_start_messaging">Incumintza a messagiare</string>
     <string name="login_title">Intra</string>
     <string name="login_header">Intra in su servidore tuo</string>
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
+    <string name="login_subheader">Pro sos frunidores de posta eletrònica connotos sas impostatziones additzionales benint impostadas in automàticu. Cada tantu s\'IMAP cheret abilitadu in sas impostatziones web. Si ti serbit agiudu pedi a su frunidore de posta eletrònica tuo o a sos amigos tuos.</string>
+    <string name="login_no_servers_hint">No esistint serbidores de Delta Chat, sos datos tuos abarrant in su dispositivu tuo.</string>
     <string name="login_inbox">In arrivu</string>
+    <string name="login_imap_login">Nùmene impreadore IMAP</string>
+    <string name="login_imap_server">Serbidore IMAP</string>
+    <string name="login_imap_port">Ghenna IMAP</string>
+    <string name="login_imap_security">Seguresa IMAP</string>
+    <string name="login_outbox">In essida</string>
+    <string name="login_smtp_login">Nùmene impreadore SMTP</string>
+    <string name="login_smtp_password">Crae de intrada SMTP</string>
+    <string name="login_smtp_server">Serbidore SMTP</string>
+    <string name="login_smtp_port">Ghenna SMTP</string>
+    <string name="login_smtp_security">Seguresa SMTP</string>
+    <string name="login_auth_method">Manera de autenticatzione</string>
+    <string name="login_info_oauth2_title">Cheres sighire cun s\'impostatzione semplificada?</string>
+    <string name="login_info_oauth2_text">S\'indiritzu de posta eletrònica insertadu suportat un\'impostztione semplificada (OAuth 2.0).\n\n In su passu chi sighet, pro praghere, permite a Delta Chat de operare che a aplicatzione de tzarrada pro mèdiu de posta eletrònica.\n\nNon bi sunt serbidores de Delta Chat, abarrat totu in su dispositivu tuo.</string>
+    <string name="login_certificate_checks">Verìficas de su tzertificadu</string>
+    <string name="login_error_mail">Inserta un\'indiritzu de posta eletrònica bàlidu</string>
+    <string name="login_error_server">Inserta un\'indiritzu de serbidore / IP bàlidu</string>
+    <string name="login_error_port">Inserta una ghenna bàlida (1–65535)</string>
+    <string name="login_error_required_fields">Inserta un\'indiritzu de posta eletrònica e una crae de intrada bàlidos</string>
+    <string name="import_backup_title">Importa una còpia de seguresa</string>
+    <string name="import_backup_ask">Còpia de seguresa agatada in \"%1$s\".\n\nCheres a l\'importare e a impreare totu sos datos e sas impostatziones dae cue?</string>
+    <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca. Asinuncas, incarca \"Incumintza a messagiare\" pro sighire cun su protzessu de impostatzione normale.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Risposta dae %1$s: %2$s\n\nUnos cantos frunidores insertant informatziones in prus in sa cartella de intrada tua; podes verificare a es. dae sa pàgina web. Si tenes problemas consulta su frunidore tuo o sos amigos tuos.</string>
+
+    <string name="accept_invalid_certificates">Atzetat tzertificados non vàlidos</string>
+
+    <string name="used_settings">Impostatziones impreadas:</string>
+    <string name="switch_account">Càmbia contu</string>
+    <string name="add_account">Annanghe unu contu</string>
+    <string name="delete_account">Iscantzella su contu</string>
+    <string name="delete_account_ask">Ses seguru de chèrrere iscantzellare sos datos de su contu tuo?</string>
+    <string name="switching_account">Cambiende contu…</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Torra a imbiare a...</string>
+    <string name="share_multiple_attachments">Cheres imbiare %1$d documentos a sa tzarrada ischertada?\n\nSos documentos benint imbiados che emodìficas in sa mannària originale issoro, a es. sas immàgines e sos vìdeos non benint torrados a codificare.</string>
+    <string name="share_abort">Cumpartzidura annullada pro permissos chi mancant.</string>
+
+
+    <!-- preferences -->
+    <string name="pref_using_custom">Personalizatziones impreadas: %s</string>
+    <string name="pref_using_default">Predefinidos impreados: %s</string>
     <string name="pref_profile_info_headline">Sas informatziones de profilu tuas</string>
     <string name="pref_profile_photo">Fotografia de profilu</string>
+    <string name="pref_blocked_contacts">Cuntatos blocados</string>
+    <string name="pref_profile_photo_remove_ask">Bogare sa fotografia de profilu?</string>
+    <string name="pref_help_url">https://delta.chat/help</string>
+    <string name="pref_password_and_account_settings">Crae de intrada e contu</string>
     <string name="pref_who_can_see_this_information">Chie podet pompiare custu?</string>
+    <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
     <string name="pref_your_name">Su nùmene tuo</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Firma</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">Imbiadu cun Delta Chat: https://delta.chat</string>
+    <string name="pref_enter_sends">Imbia cun \"Imbiu\"</string>
+    <string name="pref_enter_sends_explain">Incarchende sa tecla Imbiu as a imbiare sos messàgios</string>
+    <string name="pref_outgoing_media_quality">Calidade de sos documentos multimediales in essida</string>
+    <string name="pref_outgoing_balanced">Bilantziada</string>
+    <string name="pref_outgoing_worse">Calidade pègius, mannària minore</string>
+    <string name="pref_vibrate">Vibratzione</string>
+    <string name="pref_chat_settings">Impostatziones de sa tzarradas</string>
+    <string name="pref_change_secret">Càmbia su còdighe</string>
+    <string name="pref_change_secret_explain">Càmbia su PIN / sa secuèntzia / s\'imprenta digitale dae sas impostatziones de sistema</string>
     <string name="pref_screen_security">Seguresa de s\'ischermu</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Pedi de blocare sas ischermadas in sa lista de sos reghentes e in intro de s\'aplicatzione</string>
+    <string name="pref_screen_security_please_restart_hint">Pro aplicare s\'impostatzione de seguresa de s\'ischermu torra a allùghere s\'aplicatzione.</string>
     <string name="pref_notifications">Notìficas</string>
     <string name="pref_notifications_show">Ammustra</string>
     <string name="pref_notifications_priority">Prioridade</string>
     <string name="pref_led_color">Colore LED</string>
+    <string name="pref_led_pattern">Istile de lampègiu LED</string>
     <string name="pref_sound">Sonu</string>
+    <string name="pref_silent">Istuda su sonu</string>
     <string name="pref_privacy">Riservadesa</string>
     <string name="pref_chats_and_media">Tzarradas e mèdios</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
@@ -299,22 +407,95 @@
     <string name="pref_appearance">Aparèntzia</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Limba</string>
+    <string name="pref_incognito_keyboard">Tastiera anònima</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Pedi a sa tastiera de disabilitare s\'imparu personalizadu</string>
+    <string name="pref_read_receipts">Retzidas de leghidura</string>
+    <string name="pref_read_receipts_explain">Si sas retzidas de leghidura sunt disabilitadas, no as a pòdere bìdere sas retzidas de leghidura de àtere.</string>
+    <string name="pref_manage_keys">Amministra sas craes</string>
+    <string name="pref_use_system_emoji">Imprea sas emoji de sistema</string>
+    <string name="pref_use_system_emoji_explain">Istuda su suportu de sas emoji incorporadu in Delta Chat</string>
+    <string name="pref_app_access">Atzessu a s\'aplicatzione</string>
+    <string name="pref_communication">Comunicatzione</string>
     <string name="pref_chats">Tzarradas</string>
     <string name="pref_messages">Messàgios</string>
+    <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>
+    <string name="pref_message_text_size">Mannària de sos caràteres in sos messàgios</string>
+    <string name="pref_view_log">Pòmpia su registru</string>
+    <string name="pref_saved_log">Registru sarvadu in sa cartella \"Iscarrigamentos\"</string>
+    <string name="pref_save_log_failed">Sarvatàgiu de su registru fallidu</string>
+    <string name="pref_log_header">Registru</string>
     <string name="pref_other">Àteru</string>
     <string name="pref_backup">Còpia de seguresa</string>
     <string name="pref_backup_explain">Faghe una còpia de seguresa in sa memòria esterna</string>
+    <string name="pref_backup_export_explain">Una còpia de seguresa t\'agiudat a impostare un\'installatzione noa in custu o in un\'àteru dispositivu.\n\nSa còpia de seguresa ant a cuntènnere totu sos messàgios, sos cuntatos, sas tzarradas e s\'impostatzione de sa tzifradura a nodu terminale (end-to-end) de Autocrypt. Mantene su documentu in unu logu seguru o iscantzellalu in su primu momentu chi podes.</string>
+    <string name="pref_backup_export_start_button">Incumintza sa còpia de seguresa</string>
+    <string name="pref_backup_written_to_x">Còpia de seguresa sarvada in \"%1$s\"chene problemas.</string>
+    <string name="pref_managekeys_menu_title">Amministra sas craes</string>
+    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat tenet bisòngiu de atzèdere a sos documentos tuos pro importare/esportare sas craes.</string>
+    <string name="pref_managekeys_export_secret_keys">Esporta sas craes segretas</string>
+    <string name="pref_managekeys_export_explain">Esportare sas craes segretas in \"%1$s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">Importa sas craes segretas</string>
+    <string name="pref_managekeys_import_explain">Cheres importare sas craes segretas dae \"%1$s\"?\n\n• Sas craes de como no ant a èssere iscantzelladas\n\n• S\'ùrtima crae importada at a èssere impreada comente crae predefinida francu chi tèngiat sa paràula \"legacy\" in su nùmene de su documentu suo.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Craes segretas sarvadas in \"%1$s\" chene problemas.</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Craes segredas importadas dae \"%1$s\".</string>
     <string name="pref_background">Isfundu</string>
+    <string name="pref_background_btn_default">Imprea s\'immàgine predefinida</string>
+    <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>
+    <string name="pref_imap_folder_handling">Amministratzione de sa cartella IMAP</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Si disabìlitas custa opztione assegura·ti chi su serbidore tuo e totu sos àteros clientes siant cunfigurados in sa matessi manera\n\nSi nono sas cosas diant pòdere non funtzionare pro nudda.</string>
+    <string name="pref_watch_inbox_folder">Pòmpia sa cartella de intrada</string>
+    <string name="pref_watch_sent_folder">Pòmpia sa cartella de sos imbiados</string>
+    <string name="pref_watch_mvbox_folder">Pòmpia sa cartella DeltaChat</string>
+    <string name="pref_send_copy_to_self">Imbia·ti·nche una còpia</string>
+    <string name="pref_auto_folder_moves">Tramudòngios automàticos a sa cartella DeltaChat</string>
+    <string name="pref_auto_folder_moves_explain">Sos arresonos de sas tzarradas benint tramudados pro evitare su prenamentu de sa cartella de intrada</string>
+    <string name="pref_email_interaction_title">Interatzione de posta eletrònica</string>
+    <string name="pref_show_emails">Ammustra sas lìteras traditzionales</string>
+    <string name="pref_show_emails_no">Nono, tzarradas ebbia</string>
+    <string name="pref_show_emails_accepted_contacts">Pro sos cuntatos atzetados</string>
+    <string name="pref_show_emails_all">Totus</string>
+    <string name="pref_empty_server_title">Iscantzella sas lìteras dae su serbidore</string>
+    <string name="pref_empty_server_msg">Custa funtzionalidade permitet de liberare tretu in su serbidore IMAP tuo iscantzellende totu sas lìteras de posta eletrònica, incluende sos messàgios de sas tzarradas, in sas cartellas ischertadas. Sos messàgios in custu dispositivu no ant a èssere iscantzellados. S\'iscantzellamentu non podet èssere annulladu!</string>
+    <string name="pref_empty_server_inbox">Iscantzella totu sas lìteras in sa cartella de intrada</string>
+    <string name="pref_empty_server_mvbox">Iscantzella totu sas lìteras in sa cartella \"DeltaChat\"</string>
+    <string name="pref_empty_server_do_button">Iscantzella lìteras</string>
+    <string name="pref_experimental_features">Funtzionalidades isperimentales</string>
+    <string name="pref_on_demand_location_streaming">Trasmissione de sa positzione suta dimanda</string>
+    <string name="pref_background_default">Isfundu predefinidu</string>
     <string name="pref_background_default_color">Colore predefinidu</string>
     <string name="pref_background_custom_image">Immàgine personalizada</string>
     <string name="pref_background_custom_color">Colore personalizadu</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Connessione de isfundu de fide</string>
+    <string name="pref_reliable_service_explain">Tenet bisòngiu de una notìfica permanente</string>
+
+
     <!-- automatically delete message -->
     <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
     <string name="autodel_title_short">Iscantzella automaticamente</string>
     <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>
     <string name="autodel_server_title">Iscantzella sos messàgios dae su servidore</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_device_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos multimediales\n\n• Sos messàgios ant a èssere iscantzellados fintzas si no ant a èssere istados lèghidos\n\n• Sos \"Messàgios sarvados\" ant a èssere esclùdidos dae s\'iscantzellamentu locale</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos multimediales\n\n• Custu at a iscantzellare fintzas totu sas lìteras de posta eletrònica influentzadas dae s\'optzione \"Ammustra sas lìteras traditzionales\"\n\n• Sos \"Messàgios sarvados\" ant a èssere iscantzellados dae su serbidore fintzas issos</string>
+    <string name="autodel_confirm">Apo cumpresu, iscantzella totu sos messàgios</string>
+    <string name="autodel_at_once">Una borta</string>
+    <string name="autodel_after_1_hour">A pustis de 1 ora</string>
+    <string name="autodel_after_1_day">A pustis de 1 die</string>
+    <string name="autodel_after_1_week">A pustis de 1 chida</string>
+    <string name="autodel_after_4_weeks">A pustis de 4 chidas</string>
+    <string name="autodel_after_1_year">A pustis de 1 annu</string>
+
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">Autocrypt est un ispetzìfica noa e aberta pro sa tzifradura automàtica a nodu terminale (end-to-end) de sas lìteras de posta eletrònica.\n\nS\'impostatzione a nodu terminale tua benit creada automaticamente icando sebit e la podes tramudare dae unu dispositivu a s\'àteru cun sos Messàgios de impostatzione de Autocrypt.</string>
+    <string name="autocrypt_send_asm_title">Imbia unu messàgiu de impostatzione de Autocrypt</string>
     <string name="write_message_desktop">Iscrie unu messàgiu</string>
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>
     <string name="encryption_info_desktop">Ammustra sas informatziones de tzifradura</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>
