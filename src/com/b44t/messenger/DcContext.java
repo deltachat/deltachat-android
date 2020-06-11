@@ -69,9 +69,6 @@ public class DcContext {
     public final static int DC_MEDIA_QUALITY_BALANCED = 0;
     public final static int DC_MEDIA_QUALITY_WORSE    = 1;
 
-    public final static int DC_EMPTY_MVBOX           = 0x01;
-    public final static int DC_EMPTY_INBOX           = 0x02;
-
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
     }
@@ -118,7 +115,6 @@ public class DcContext {
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
-    public native void         emptyServer          (int flags);
     public native boolean      mayBeValidAddr       (String addr);
     public native int          lookupContactIdByAddr(String addr);
     public native int[]        getContacts          (int flags, String query);
