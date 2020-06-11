@@ -137,6 +137,7 @@
         <item name="emoji_tab_underline">#44555555</item>
         <item name="emoji_tab_seperator">@color/gray20</item>
         <item name="emoji_text_color">@color/black</item>
+        <item name="emoji_drawer_background">@color/grey_100</item>
 
         <item name="emoji_category_recent">@drawable/emoji_category_recent_light</item>
         <item name="emoji_category_people">@drawable/emoji_category_people_light</item>
@@ -148,7 +149,7 @@
         <item name="emoji_category_symbol">@drawable/emoji_category_symbol_light</item>
         <item name="emoji_category_flags">@drawable/emoji_category_flags_light</item>
         <item name="emoji_category_emoticons">@drawable/emoji_category_emoticons_light</item>
-
+        <item name="emoji_variation_selector_background">@drawable/emoji_variation_selector_background_light</item>
 
         <!-- light theme -->
         <item name="conversation_item_incoming_bubble_color">@color/white</item>
@@ -202,6 +203,8 @@
         <item name="reminder_header_background">#ff1d85d7</item>
 
         <item name="pref_icon_tint">@color/delta_primary_dark</item>
+        <item name="icon_tint">@color/grey_700</item>
+        <item name="icon_tint_dark">@color/grey_100</item>
 
         <item name="group_members_dialog_icon">@drawable/ic_group_grey600_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.Fix</item>
@@ -313,6 +316,7 @@
         <item name="emoji_tab_seperator">@color/gray70</item>
         <item name="emoji_background">@color/black</item>
         <item name="emoji_text_color">@color/white</item>
+        <item name="emoji_drawer_background">@color/grey_700</item>
 
         <item name="emoji_category_recent">@drawable/emoji_category_recent_dark</item>
         <item name="emoji_category_people">@drawable/emoji_category_people_dark</item>
@@ -324,6 +328,7 @@
         <item name="emoji_category_symbol">@drawable/emoji_category_symbol_dark</item>
         <item name="emoji_category_flags">@drawable/emoji_category_flags_dark</item>
         <item name="emoji_category_emoticons">@drawable/emoji_category_emoticons_dark</item>
+        <item name="emoji_variation_selector_background">@drawable/emoji_variation_selector_background_dark</item>
 
         <item name="quick_camera_icon">@drawable/quick_camera_dark</item>
         <item name="quick_mic_icon">@drawable/ic_mic_white_24dp</item>
@@ -346,6 +351,9 @@
         <item name="reminder_header_background">@color/delta_primary_dark</item>
 
         <item name="pref_icon_tint">@color/core_white</item>
+        <item name="icon_tint">@color/grey_100</item>
+        <item name="icon_tint_dark">?icon_tint</item>
+
 
         <item name="group_members_dialog_icon">@drawable/ic_group_white_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.Fix</item>

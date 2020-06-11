@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="theme_type" format="string"/>
+    <attr name="icon_tint" format="color" />
+    <attr name="icon_tint_dark" format="color" />
 
     <attr name="attachment_type_selector_background" format="color"/>
 
@@ -51,6 +53,7 @@
     <attr name="emoji_tab_indicator" format="color" />
     <attr name="emoji_tab_underline" format="color" />
     <attr name="emoji_tab_seperator" format="color" />
+    <attr name="emoji_drawer_background" format="color" />
     <attr name="emoji_background" format="color" />
     <attr name="emoji_text_color" format="color" />
 
@@ -61,9 +64,11 @@
     <attr name="emoji_category_activity" format="reference"/>
     <attr name="emoji_category_places" format="reference"/>
     <attr name="emoji_category_objects" format="reference"/>
+    <attr name="emoji_category_symbols" format="reference"/>
     <attr name="emoji_category_symbol" format="reference"/>
     <attr name="emoji_category_flags" format="reference"/>
     <attr name="emoji_category_emoticons" format="reference"/>
+    <attr name="emoji_variation_selector_background" format="reference|color" />
     <attr name="quick_camera_icon" format="reference"/>
     <attr name="quick_mic_icon" format="reference"/>
 
@@ -146,6 +151,19 @@
     <attr name="login_top_background" format="color"/>
     <attr name="login_floating_background" format="reference"/>
 
+    <declare-styleable name="MediaKeyboard">
+        <attr name="tabs_gravity" format="enum">
+            <enum name="bottom" value="0" />
+            <enum name="top" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="EmojiTextView">
+        <attr name="scaleEmojis" format="boolean" />
+        <attr name="emoji_maxLength" format="integer" />
+        <attr name="emoji_forceCustom" format="boolean" />
+    </declare-styleable>
+
     <declare-styleable name="ColorPreference">
         <attr name="itemLayout" format="reference" />
         <attr name="choices" format="reference" />
@@ -185,11 +203,6 @@
         <attr name="pickerBorderColor" format="color" />
         <attr name="pickerBorderWidth" format="dimension" />
         <attr name="pickerColors" format="reference" />
-    </declare-styleable>
-
-    <declare-styleable name="EmojiTextView">
-        <attr name="scaleEmojis" format="boolean" />
-        <attr name="createInBackground" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="RingtonePreference">
