@@ -140,17 +140,6 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
  */
 @SuppressLint("StaticFieldLeak")
 public class ConversationActivity extends PassphraseRequiredActionBarActivity
-  /*implements xAttachmentManager.AttachmentListener,
-        xOnKeyboardShownListener,
-        xInputPanel.Listener,
-        xInputPanel.MediaListener,
-        xComposeText.CursorPositionChangedListener,
-        xConversationSearchBottomBar.EventListener,
-        StickerKeyboardProvider.StickerEventListener,
-        AttachmentKeyboard.Callback,
-        xConversationReactionOverlay.OnReactionSelectedListener,
-        xReactWithAnyEmojiBottomSheetDialogFragment.Callback*/
-
     implements ConversationFragment.ConversationFragmentListener,
                AttachmentManager.AttachmentListener,
                SearchView.OnQueryTextListener,
@@ -1541,7 +1530,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleReplyMessage(DcMsg messageRecord) {
-    inputPanel.clickOnComposeInput();
   }
 
   @Override
