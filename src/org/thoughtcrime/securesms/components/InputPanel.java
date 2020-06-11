@@ -83,9 +83,11 @@ public class InputPanel extends LinearLayout
     this.quickAudioToggle       = findViewById(R.id.quick_audio_toggle);
     this.buttonToggle           = findViewById(R.id.button_toggle);
     this.recordingContainer     = findViewById(R.id.recording_container);
+    this.recordTime             = new RecordTime(findViewById(R.id.record_time));
     this.slideToCancel          = new SlideToCancel(findViewById(R.id.slide_to_cancel));
     this.microphoneRecorderView = findViewById(R.id.recorder_view);
     this.microphoneRecorderView.setListener(this);
+
 
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
       this.microphoneRecorderView.setVisibility(View.GONE);
@@ -304,7 +306,7 @@ public class InputPanel extends LinearLayout
     private final AtomicLong startTime = new AtomicLong(0);
     private final int UPDATE_EVERY_MS = 137;
 
-    private RecordTime(@NonNull TextView recordTimeView, @NonNull View microphone, long limitSeconds, @NonNull Runnable onLimitHit) {
+    private RecordTime(TextView recordTimeView) {
       this.recordTimeView = recordTimeView;
     }
 
@@ -335,7 +337,7 @@ public class InputPanel extends LinearLayout
     private String formatElapsedTime(long ms)
     {
       return DateUtils.formatElapsedTime(TimeUnit.MILLISECONDS.toSeconds(ms))
-          + String.format(".%02d", ((ms/10)%100));
+              + String.format(".%02d", ((ms/10)%100));
 
     }
   }
