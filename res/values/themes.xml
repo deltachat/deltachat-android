@@ -316,7 +316,7 @@
         <item name="emoji_tab_seperator">@color/gray70</item>
         <item name="emoji_background">@color/black</item>
         <item name="emoji_text_color">@color/white</item>
-        <item name="emoji_drawer_background">@color/grey_700</item>
+        <item name="emoji_drawer_background">@color/gray95</item>
 
         <item name="emoji_category_recent">@drawable/emoji_category_recent_dark</item>
         <item name="emoji_category_people">@drawable/emoji_category_people_dark</item>
