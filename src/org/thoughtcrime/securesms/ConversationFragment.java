@@ -347,54 +347,33 @@ public class ConversationFragment extends Fragment
         }
     }
 
-    private String getMessageContent(DcMsg msg, DcMsg prev_msg)
-    {
-        String ret = "";
-
-        if (msg.getFromId() != prev_msg.getFromId()) {
-            DcContact contact = dcContext.getContact(msg.getFromId());
-            ret += contact.getDisplayName() + ":\n";
-        }
-
-        if(msg.getType() == DcMsg.DC_MSG_TEXT) {
-            ret += msg.getText();
-        }
-        else {
-            ret += msg.getSummarytext(1000);
-        }
-
-        return ret;
-    }
-
     private void handleCopyMessage(final Set<DcMsg> dcMsgsSet) {
         List<DcMsg> dcMsgsList = new LinkedList<>(dcMsgsSet);
-        Collections.sort(dcMsgsList, new Comparator<DcMsg>() {
-            @Override
-            public int compare(DcMsg lhs, DcMsg rhs) {
-                if      (lhs.getDateReceived() < rhs.getDateReceived())  return -1;
-                else if (lhs.getDateReceived() == rhs.getDateReceived()) return 0;
-                else                                                     return 1;
-            }
-        });
+        Collections.sort(dcMsgsList, (lhs, rhs) -> Long.compare(lhs.getDateReceived(), rhs.getDateReceived()));
 
         StringBuilder result = new StringBuilder();
 
         DcMsg prevMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
         for (DcMsg msg : dcMsgsList) {
-            if (result.length()>0) {
+            if (result.length() > 0) {
                 result.append("\n\n");
             }
-            result.append(getMessageContent(msg, prevMsg));
+
+            if (msg.getFromId() != prevMsg.getFromId()) {
+                DcContact contact = dcContext.getContact(msg.getFromId());
+                result.append(contact.getDisplayName()).append(":\n");
+            }
+            result.append(msg.getText());
+
             prevMsg = msg;
         }
 
-        if (result.length()>0) {
+        if (result.length() > 0) {
             try {
                 ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                 clipboard.setText(result.toString());
                 Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show();
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
