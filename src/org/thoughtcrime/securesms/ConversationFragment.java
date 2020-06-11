@@ -363,7 +363,11 @@ public class ConversationFragment extends Fragment
                 DcContact contact = dcContext.getContact(msg.getFromId());
                 result.append(contact.getDisplayName()).append(":\n");
             }
-            result.append(msg.getText());
+            if(msg.getType() == DcMsg.DC_MSG_TEXT) {
+                result.append(msg.getText());
+            } else {
+                result.append(msg.getSummarytext(10000000));
+            }
 
             prevMsg = msg;
         }
