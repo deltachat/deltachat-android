@@ -113,29 +113,8 @@ public class InputPanel extends LinearLayout
     composeText.setMediaListener(listener);
   }
 
-  public void clickOnComposeInput() {
-    composeText.performClick();
-  }
-
   public void setMediaKeyboard(@NonNull MediaKeyboard mediaKeyboard) {
     this.mediaKeyboard.attach(mediaKeyboard);
-  }
-
-  public void showMediaKeyboardToggle(boolean show) {
-    emojiVisible = show;
-    mediaKeyboard.setVisibility(show ? View.VISIBLE : GONE);
-  }
-
-  public void setMediaKeyboardToggleMode(boolean isSticker) {
-    mediaKeyboard.setStickerMode(isSticker);
-  }
-
-  public boolean isStickerMode() {
-    return mediaKeyboard.isStickerMode();
-  }
-
-  public View getMediaKeyboardToggleAnchorView() {
-    return mediaKeyboard;
   }
 
   @Override
