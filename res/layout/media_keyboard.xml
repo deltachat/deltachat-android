@@ -11,21 +11,6 @@
         android:layout_height="match_parent"
         android:background="?emoji_drawer_background">
 
-       <!-- <ImageView
-            android:id="@+id/media_keyboard_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginLeft="6dp"
-            android:padding="6dp"
-            app:srcCompat="@drawable/ic_search_24"
-            android:tint="?media_keyboard_button_color"
-            android:background="?selectableItemBackgroundBorderless"
-            android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/media_keyboard_provider_tabs"
-            app:layout_constraintBottom_toBottomOf="@id/media_keyboard_provider_tabs"
-            tools:visibility="visible"/> -->
         <ImageView
             android:id="@+id/media_keyboard_search"
             android:layout_width="wrap_content"
@@ -128,21 +113,6 @@
             app:layout_constraintTop_toTopOf="@id/media_keyboard_tabs"
             app:layout_constraintEnd_toStartOf="@id/media_keyboard_backspace_backup"
             />
-  <!--      <ImageView
-            android:id="@+id/media_keyboard_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:scaleType="fitCenter"
-            android:tint="?media_keyboard_button_color"
-            android:visibility="gone"
-            android:background="?selectableItemBackground"
-            app:srcCompat="@drawable/ic_plus_24"
-            app:layout_constraintBottom_toBottomOf="@id/media_keyboard_tabs"
-            app:layout_constraintTop_toTopOf="@id/media_keyboard_tabs"
-            app:layout_constraintEnd_toStartOf="@id/media_keyboard_backspace_backup"
-            tools:visibility="visible"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
