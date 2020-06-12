@@ -129,7 +129,12 @@ public class NotificationCenter {
     // Groups and Notification channel groups
     // --------------------------------------------------------------------------------------------
 
-    public static final String GRP_MSG = "chgrp_msg";
+    // this is just to further organize the appearance of channels in the settings UI
+    private static final String CH_GRP_MSG = "chgrp_msg";
+
+    // this is to group together notifications as such, maybe including a summary,
+    // ^see https://developer.android.com/training/notify-user/group.html
+    private static final String GRP_MSG = "grp_msg";
 
 
     // Notification IDs
@@ -202,8 +207,8 @@ public class NotificationCenter {
     }
 
     private String getNotificationChannelGroup(NotificationManagerCompat notificationManager) {
-        if (notificationChannelsSupported() && notificationManager.getNotificationChannelGroup(GRP_MSG) == null) {
-            NotificationChannelGroup chGrp = new NotificationChannelGroup(GRP_MSG, context.getString(R.string.pref_chats));
+        if (notificationChannelsSupported() && notificationManager.getNotificationChannelGroup(CH_GRP_MSG) == null) {
+            NotificationChannelGroup chGrp = new NotificationChannelGroup(CH_GRP_MSG, context.getString(R.string.pref_chats));
             notificationManager.createNotificationChannelGroup(chGrp);
         }
         return GRP_MSG;
