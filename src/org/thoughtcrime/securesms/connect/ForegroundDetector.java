@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 
@@ -36,9 +37,14 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     @Override
     public void onActivityStarted(Activity activity) {
         if (refs == 0) {
+            Log.i("DeltaChat", "++++++++++++++++++ first ForegroundDetector.onActivityStarted() ++++++++++++++++++");
             application.dcContext.maybeStartIo();
             if (application.dcContext.isNetworkConnected()) {
-                new Thread(() -> application.dcContext.maybeNetwork()).start();
+                new Thread(() -> {
+                    Log.i("DeltaChat", "calling maybeNetwork()");
+                    application.dcContext.maybeNetwork();
+                    Log.i("DeltaChat", "maybeNetwork() returned");
+                }).start();
             }
         }
 
@@ -49,10 +55,15 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     @Override
     public void onActivityStopped(Activity activity) {
         if( refs <= 0 ) {
+            Log.w("DeltaChat", "invalid call to ForegroundDetector.onActivityStopped()");
             return;
         }
 
         refs--;
+
+        if (refs == 0) {
+            Log.i("DeltaChat", "++++++++++++++++++ last ForegroundDetector.onActivityStopped() ++++++++++++++++++");
+        }
     }
 
     @Override

@@ -13,6 +13,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDexApplication;
 
@@ -57,6 +59,8 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     //   return;
     // }
     // LeakCanary.install(this);
+
+    Log.i("DeltaChat", "++++++++++++++++++ ApplicationContext.onCreate() ++++++++++++++++++");
 
     System.loadLibrary("native-utils");
     dcContext = new ApplicationDcContext(this);
