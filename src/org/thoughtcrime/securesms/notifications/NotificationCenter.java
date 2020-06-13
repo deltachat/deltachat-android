@@ -333,7 +333,7 @@ public class NotificationCenter {
             NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);
 
             DcMsg dcMsg = dcContext.getMsg(msgId);
-            String line = privacy.isDisplayMessage()? dcMsg.getSummarytext(100) : context.getString(R.string.notify_new_message);
+            String line = privacy.isDisplayMessage()? dcMsg.getSummarytext(2000) : context.getString(R.string.notify_new_message);
             if (dcChat.isGroup() && privacy.isDisplayContact()) {
                 line = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + line;
             }
