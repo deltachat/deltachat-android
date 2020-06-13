@@ -28,6 +28,7 @@ import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ConversationActivity;
+import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
@@ -97,7 +98,13 @@ public class NotificationCenter {
         }
         return argb;
     }
-    
+
+    private PendingIntent getOpenChatlistIntent() {
+        Intent intent = new Intent(context, ConversationListActivity.class);
+        intent.putExtra(ConversationListActivity.CLEAR_NOTIFICATIONS, true);
+        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
     private PendingIntent getOpenChatIntent(int chatId) {
         Intent intent = new Intent(context, ConversationActivity.class);
         intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
@@ -485,7 +492,8 @@ public class NotificationCenter {
                         .setColor(context.getResources().getColor(R.color.delta_primary))
                         .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                         .setContentTitle("summary title")
-                        .setContentText("summary text");
+                        .setContentText("summary text")
+                        .setContentIntent(getOpenChatlistIntent());
                 notificationManager.notify(ID_MSG_SUMMARY, summary.build());
             }
         });

@@ -64,6 +64,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @SuppressWarnings("unused")
   private static final String TAG = ConversationListActivity.class.getSimpleName();
   private static final String OPENPGP4FPR = "openpgp4fpr";
+  public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -128,6 +129,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
     handleOpenpgp4fpr();
+
+    if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
+      DcHelper.getContext(this).notificationCenter.removeAllNotifiations();
+    }
   }
 
   @Override
