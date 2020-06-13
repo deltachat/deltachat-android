@@ -546,6 +546,7 @@
     <string name="qrshow_join_contact_no_connection_hint">二维码设置需要互联网连接。 要继续，请先连接到网络。</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并在那登录？</string>
+    <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新的电子邮件地址并在那登录？\n\n您的已存在账户不会被删除。使用“切换账户”来在您的账户之间切换。</string>
     <string name="qraccount_success_enter_name">登录成功——您的电子邮件地址是 %1$s\n\n如果您愿意，您现在可以去设置一个名称和头像。它们将显示给您写信到的人。</string>
     <string name="qraccount_qr_code_cannot_be_used">无法使用扫描到的二维码建立新账户。</string>
     <string name="qraccount_use_on_new_install">扫描到的二维码是用于设置新帐户的。设置新的 Delta Chat 安装时，您可以扫描此二维码。</string>
@@ -587,6 +588,9 @@
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">对任意地方进行模糊</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密的消息</string>

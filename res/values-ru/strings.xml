@@ -101,7 +101,7 @@
         <item quantity="other">%d участников</item>
     </plurals>
 
-    <string name="self">Самим собой</string>
+    <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
     <string name="gif">GIF</string>
@@ -579,6 +579,7 @@
     <string name="qrshow_join_contact_no_connection_hint">Для настройки по QR коду необходимо интернет соединение. Сначала подключитесь к сети интернет.</string>
     <string name="qrshow_join_contact_no_connection_toast">Нет соединения к интернету, невозможно начать процесс настройки по QR коду.</string>
     <string name="qraccount_ask_create_and_login">Создать новый адрес электронной почты на \"%1$s\" и войти?</string>
+    <string name="qraccount_ask_create_and_login_another">Создать новый адрес почты на \"%1$s\" и войти?\n\nВаш существующий аккаунт не будет удалён. Используйте пункт меню «Сменить аккаунт», чтобы переключаться между аккаунтами.</string>
     <string name="qraccount_success_enter_name">Вход удался—ваш адрес электронной почты %1$s\n\nЕсли хотите, вы можете ввести имя и установить аватар, которые будут отображаться людям, которым вы пишете.</string>
     <string name="qraccount_qr_code_cannot_be_used">Отсканированный QR код не может быть использован для создания нового аккаунта.</string>
     <string name="qraccount_use_on_new_install">Отсканированный QR код предназначен для создания нового аккаунта. Вы можете отсканировать QR код при установке Delta Chat.</string>
@@ -621,6 +622,9 @@
     <string name="perm_enable_bg_reminder_text">Delta Chat использует минимальные ресурсы и старается не разряжать батарею.</string>
     <string name="perm_enable_bg_already_done"> 
 Вы уже разрешили Delta Chat получать сообщения в фоне.\n\nЕсли сообщения всё ещё не приходят в фоне, пожалуйста, проверьте также системные настройки.</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Рисуйте, чтобы размывать</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифрованное сообщение</string>

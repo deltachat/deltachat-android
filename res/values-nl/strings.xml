@@ -557,6 +557,7 @@
     <string name="qrshow_join_contact_no_connection_hint">Voor het instellen van QR-codes is een internetverbinding vereist. Maak verbinding en probeer het opnieuw.</string>
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
     <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op \'%1$s\' en daarmee inloggen?</string>
+    <string name="qraccount_ask_create_and_login_another">Wil je een nieuw e-mailadres aanmaken op \'%1$s\' en daarmee inloggen?\n\nJe reeds aanwezige account wordt niet verwijderd. Gebruik de knop \'Ander account kiezen\' om tussen accounts te schakelen.</string>
     <string name="qraccount_success_enter_name">Het inloggen is gelukt. Je e-mailadres is \'%1$s\'.\n\nAls je wilt, kun je een naam en profielafbeelding opgeven die worden getoond aan de mensen waarmee je communiceert.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
     <string name="qraccount_use_on_new_install">De gescande QR-code is voor het instellen van een nieuw account. Je kunt deze direct scannen na het (opnieuw) installeren van Delta Chat.</string>
@@ -598,6 +599,9 @@
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_reminder_text">Delta Chat\'s accugebruik is laag omdat het slechts een minimaal aantal systeembronnen gebruikt.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Teken met je vinger om vervaging toe te passen</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Versleuteld bericht</string>
