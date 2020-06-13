@@ -133,7 +133,7 @@ public class NotificationCenter {
     private static final String CH_GRP_MSG = "chgrp_msg";
 
     // this is to group together notifications as such, maybe including a summary,
-    // ^see https://developer.android.com/training/notify-user/group.html
+    // see https://developer.android.com/training/notify-user/group.html
     private static final String GRP_MSG = "grp_msg";
 
 
