@@ -116,8 +116,8 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    private PendingIntent getMarkAsReadIntent(int chatId) {
-        Intent intent = new Intent(MarkReadReceiver.CLEAR_ACTION);
+    private PendingIntent getMarkAsReadIntent(int chatId, boolean markNoticed) {
+        Intent intent = new Intent(markNoticed? MarkReadReceiver.MARK_NOTICED_ACTION : MarkReadReceiver.CANCEL_ACTION);
         intent.setClass(context, MarkReadReceiver.class);
         intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
         intent.putExtra(MarkReadReceiver.CHAT_ID_EXTRA, chatId);
@@ -351,7 +351,7 @@ public class NotificationCenter {
                     .setGroup(GRP_MSG)
                     .setOnlyAlertOnce(!signal)
                     .setContentText(line)
-                    .setDeleteIntent(getDeleteIntent())
+                    .setDeleteIntent(getMarkAsReadIntent(chatId, false))
                     .setContentIntent(getOpenChatIntent(chatId));
             if (privacy.isDisplayContact()) {
                 builder.setContentTitle(dcChat.getName());
@@ -417,7 +417,7 @@ public class NotificationCenter {
              && !Prefs.isScreenLockEnabled(context)) {
                 try {
                     PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatId);
-                    PendingIntent markReadIntent = getMarkAsReadIntent(chatId);
+                    PendingIntent markReadIntent = getMarkAsReadIntent(chatId, true);
 
                     NotificationCompat.Action markAsReadAction = new NotificationCompat.Action(R.drawable.check,
                             context.getString(R.string.notify_mark_read),
@@ -492,11 +492,19 @@ public class NotificationCenter {
     }
 
     public void removeNotifications(int chatId) {
+        boolean removeSummary = false;
         synchronized (inboxes) {
             inboxes.remove(chatId);
+            removeSummary = inboxes.isEmpty();
         }
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.cancel(ID_MSG_OFFSET + chatId);
+
+        try {
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.cancel(ID_MSG_OFFSET + chatId);
+            if (removeSummary) {
+                notificationManager.cancel(ID_MSG_SUMMARY);
+            }
+        } catch (Exception e) { Log.w(TAG, e); }
     }
 
     public void removeAllNotifiations() {

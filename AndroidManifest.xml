@@ -285,7 +285,8 @@
               android:enabled="true"
               android:exported="false">
         <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.notifications.CLEAR"/>
+            <action android:name="org.thoughtcrime.securesms.notifications.MARK_NOTICED"/>
+            <action android:name="org.thoughtcrime.securesms.notifications.CANCEL"/>
         </intent-filter>
     </receiver>
 

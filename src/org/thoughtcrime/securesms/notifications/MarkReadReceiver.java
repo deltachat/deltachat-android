@@ -11,13 +11,14 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
 
 public class MarkReadReceiver extends BroadcastReceiver {
-
-  public static final  String CLEAR_ACTION          = "org.thoughtcrime.securesms.notifications.CLEAR";
+  public static final  String MARK_NOTICED_ACTION   = "org.thoughtcrime.securesms.notifications.MARK_NOTICED";
+  public static final  String CANCEL_ACTION         = "org.thoughtcrime.securesms.notifications.CANCEL";
   public static final  String CHAT_ID_EXTRA         = "chat_id";
 
   @Override
   public void onReceive(final Context context, Intent intent) {
-    if (!CLEAR_ACTION.equals(intent.getAction())) {
+    boolean markNoticed = MARK_NOTICED_ACTION.equals(intent.getAction());
+    if (!markNoticed && !CANCEL_ACTION.equals(intent.getAction())) {
       return;
     }
 
@@ -30,7 +31,9 @@ public class MarkReadReceiver extends BroadcastReceiver {
 
     Util.runOnAnyBackgroundThread(() -> {
       dcContext.notificationCenter.removeNotifications(chatId);
-      dcContext.marknoticedChat(chatId);
+      if (markNoticed) {
+        dcContext.marknoticedChat(chatId);
+      }
     });
   }
 }
