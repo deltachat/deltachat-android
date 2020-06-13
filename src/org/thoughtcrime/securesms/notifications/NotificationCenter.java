@@ -140,8 +140,9 @@ public class NotificationCenter {
     // Notification IDs
     // --------------------------------------------------------------------------------------------
 
-    public static final int ID_PERMANTENT = 1;
-    public static final int ID_MSG_OFFSET = 0; // msgId is added - as msgId start at 10, there are no conflicts with lower numbers
+    public static final int ID_PERMANTENT  = 1;
+    public static final int ID_MSG_SUMMARY = 2;
+    public static final int ID_MSG_OFFSET  = 0; // msgId is added - as msgId start at 10, there are no conflicts with lower numbers
 
 
     // Notification channels
@@ -341,7 +342,8 @@ public class NotificationCenter {
             // even without a name or message displayed,
             // it makes sense to use separate notification channels and to open the respective chat directly -
             // the user may eg. have chosen a different sound
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager, dcChat))
+            String notificationChannel = getNotificationChannel(notificationManager, dcChat);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
                     .setSmallIcon(R.drawable.icon_notification)
                     .setColor(context.getResources().getColor(R.color.delta_primary))
                     .setPriority(Prefs.getNotificationPriority(context))
@@ -349,6 +351,7 @@ public class NotificationCenter {
                     .setGroup(GRP_MSG)
                     .setOnlyAlertOnce(!signal)
                     .setContentText(line)
+                    .setDeleteIntent(getDeleteIntent())
                     .setContentIntent(getOpenChatIntent(chatId));
             if (privacy.isDisplayContact()) {
                 builder.setContentTitle(dcChat.getName());
@@ -472,6 +475,19 @@ public class NotificationCenter {
             // add notification, we use one notification per chat,
             // esp. older android are not that great at grouping
             notificationManager.notify(ID_MSG_OFFSET + chatId, builder.build());
+
+            // group notifications together in a summary
+            if (Build.VERSION.SDK_INT >= 23) {
+                NotificationCompat.Builder summary = new NotificationCompat.Builder(context, notificationChannel)
+                        .setGroup(GRP_MSG)
+                        .setGroupSummary(true)
+                        .setSmallIcon(R.drawable.icon_notification)
+                        .setColor(context.getResources().getColor(R.color.delta_primary))
+                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                        .setContentTitle("summary title")
+                        .setContentText("summary text");
+                notificationManager.notify(ID_MSG_SUMMARY, summary.build());
+            }
         });
     }
 
