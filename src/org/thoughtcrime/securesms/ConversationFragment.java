@@ -722,6 +722,15 @@ public class ConversationFragment extends Fragment
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());
             }
+            else {
+                String self_mail = dcContext.getConfig("configured_mail_user");
+                if (self_mail != null && !self_mail.isEmpty()
+                        && messageRecord.getText().contains(self_mail)
+                        && getListAdapter().getChat().isDeviceTalk()) {
+                    // This is a device message informing the user that the password is wrong
+                    startActivity(new Intent(getActivity(), RegistrationActivity.class));
+                }
+            }
         }
 
         @Override
