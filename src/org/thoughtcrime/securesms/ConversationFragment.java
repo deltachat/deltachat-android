@@ -415,17 +415,6 @@ public class ConversationFragment extends Fragment
     }
 
     private void handleResendMessage(final DcMsg message) {
-        // TODO
-    /*
-    final Context context = getActivity().getApplicationContext();
-    new AsyncTask<MessageRecord, Void, Void>() {
-      @Override
-      protected Void doInBackground(MessageRecord... messageRecords) {
-        MessageSender.resend(context, messageRecords[0]);
-        return null;
-      }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, message);
-    */
     }
 
     private void handleReplyMessage(final DcMsg message) {

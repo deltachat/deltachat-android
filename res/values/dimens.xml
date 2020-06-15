@@ -6,6 +6,7 @@
     <dimen name="min_custom_keyboard_size">110dp</dimen>
     <dimen name="min_custom_keyboard_top_margin">170dp</dimen>
     <dimen name="emoji_drawer_item_padding">5dp</dimen>
+    <dimen name="emoji_drawer_item_width">48dp</dimen>
     <dimen name="emoji_drawer_indicator_height">1.5dp</dimen>
     <dimen name="emoji_drawer_left_right_padding">5dp</dimen>
     <dimen name="conversation_item_body_text_size">16sp</dimen>
@@ -36,6 +37,10 @@
 
     <dimen name="gallery_thumbnail_radius">1dp</dimen>
 
+    <dimen name="media_keyboard_provider_icon_padding">5dp</dimen>
+    <dimen name="media_keyboard_provider_icon_margin">4dp</dimen>
+
+    <dimen name="conversation_compose_height">40dp</dimen>
     <dimen name="conversation_individual_right_gutter">12dp</dimen>
     <dimen name="conversation_individual_left_gutter">12dp</dimen>
     <dimen name="conversation_group_left_gutter">52dp</dimen>

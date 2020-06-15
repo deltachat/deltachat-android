@@ -48,7 +48,12 @@ public class ResUtil {
   }
 
   public static Drawable getDrawable(Context c, @AttrRes int attr) {
-    return ContextCompat.getDrawable(c, getDrawableRes(c, attr));
+    try {
+      return ContextCompat.getDrawable(c, getDrawableRes(c, attr));
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
   public static int[] getResourceIds(Context c, @ArrayRes int array) {

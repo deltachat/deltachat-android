@@ -33,7 +33,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.InputAwareLayout;
-import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
+import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
+import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -49,6 +50,7 @@ import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -61,7 +63,7 @@ import java.util.List;
 import static android.provider.MediaStore.EXTRA_OUTPUT;
 
 @SuppressLint("StaticFieldLeak")
-public class CreateProfileActivity extends BaseActionBarActivity {
+public class CreateProfileActivity extends BaseActionBarActivity implements EmojiKeyboardProvider.EmojiEventListener {
 
   private static final String TAG = CreateProfileActivity.class.getSimpleName();
 
@@ -75,7 +77,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
   private InputAwareLayout       container;
   private ImageView              avatar;
   private EditText               name;
-  private EmojiDrawer            emojiDrawer;
+  private MediaKeyboard          emojiDrawer;
   private TextInputEditText statusView;
   private View                   reveal;
 
@@ -300,24 +302,30 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     }
   }
 
+
+  @Override
+  public void onEmojiSelected(String emoji) {
+    final int start = name.getSelectionStart();
+    final int end   = name.getSelectionEnd();
+
+    name.getText().replace(Math.min(start, end), Math.max(start, end), emoji);
+    name.setSelection(start + emoji.length());
+  }
+
+  @Override
+  public void onKeyEvent(KeyEvent keyEvent) {
+    name.dispatchKeyEvent(keyEvent);
+  }
+
+  private void initializeMediaKeyboardProviders(@NonNull MediaKeyboard mediaKeyboard) {
+    boolean isSystemEmojiPreferred   = Prefs.isSystemEmojiPreferred(this);
+    if (!isSystemEmojiPreferred) {
+      mediaKeyboard.setProviders(0, new EmojiKeyboardProvider(this, this));
+    }
+  }
+
   private void initializeEmojiInput() {
-
-    this.emojiDrawer.setEmojiEventListener(new EmojiDrawer.EmojiEventListener() {
-      @Override
-      public void onKeyEvent(KeyEvent keyEvent) {
-        name.dispatchKeyEvent(keyEvent);
-      }
-
-      @Override
-      public void onEmojiSelected(String emoji) {
-        final int start = name.getSelectionStart();
-        final int end   = name.getSelectionEnd();
-
-        name.getText().replace(Math.min(start, end), Math.max(start, end), emoji);
-        name.setSelection(start + emoji.length());
-      }
-    });
-
+    initializeMediaKeyboardProviders(emojiDrawer);
     this.name.setOnClickListener(v -> container.showSoftkey(name));
   }
 
@@ -420,4 +428,5 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     String newStatus = statusView.getText().toString().trim();
     DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, newStatus);
   }
+
 }

@@ -80,7 +80,8 @@ import org.thoughtcrime.securesms.components.SendButton;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.AttachmentDrawerListener;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
-import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
+import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
+import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -180,7 +181,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
   private   AudioRecorder          audioRecorder;
-  private   Stub<EmojiDrawer>      emojiDrawerStub;
+  private   Stub<MediaKeyboard>    emojiDrawerStub;
   protected HidingLinearLayout     quickAttachmentToggle;
   private   QuickAttachmentDrawer  quickAttachmentDrawer;
   private   InputPanel             inputPanel;
@@ -258,6 +259,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
     Log.w(TAG, "onNewIntent()");
     
     if (isFinishing()) {
@@ -1371,8 +1373,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onEmojiToggle() {
     if (!emojiDrawerStub.resolved()) {
-      inputPanel.setEmojiDrawer(emojiDrawerStub.get());
-      emojiDrawerStub.get().setEmojiEventListener(inputPanel);
+      initializeMediaKeyboardProviders(emojiDrawerStub.get(), false);
+      inputPanel.setMediaKeyboard(emojiDrawerStub.get());
     }
 
     if (container.getCurrentInput() == emojiDrawerStub.get()) {
@@ -1395,6 +1397,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+
+  private void initializeMediaKeyboardProviders(@NonNull MediaKeyboard mediaKeyboard, boolean stickersAvailable) {
+    boolean isSystemEmojiPreferred   = Prefs.isSystemEmojiPreferred(this);
+    if (!isSystemEmojiPreferred) {
+      mediaKeyboard.setProviders(0, new EmojiKeyboardProvider(this, inputPanel));
+    }
+  }
 
   // Listeners
 
