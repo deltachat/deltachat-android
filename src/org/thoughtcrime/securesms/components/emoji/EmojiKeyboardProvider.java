@@ -48,6 +48,7 @@ public class EmojiKeyboardProvider implements MediaKeyboardProvider,
       @Override
       public void onEmojiSelected(String emoji) {
         recentModel.onCodePointSelected(emoji);
+        emojiPagerAdapter.notifyDataSetChanged();
 
         if (emojiEventListener != null) {
           emojiEventListener.onEmojiSelected(emoji);
@@ -156,6 +157,11 @@ public class EmojiKeyboardProvider implements MediaKeyboardProvider,
     @Override
     public boolean isViewFromObject(View view, Object object) {
       return view == object;
+    }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+      return POSITION_NONE;
     }
   }
 
