@@ -116,6 +116,7 @@ public class ApplicationDcContext extends DcContext {
   }
 
   public void maybeStartIo() {
+    Log.i("DeltaChat", "++++++++++++++++++ ApplicationDcContext.maybeStartIo() ++++++++++++++++++");
     if (isConfigured()!=0) {
       startIo();
     }
