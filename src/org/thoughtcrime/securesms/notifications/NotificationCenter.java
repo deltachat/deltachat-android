@@ -219,7 +219,7 @@ public class NotificationCenter {
             NotificationChannelGroup chGrp = new NotificationChannelGroup(CH_GRP_MSG, context.getString(R.string.pref_chats));
             notificationManager.createNotificationChannelGroup(chGrp);
         }
-        return GRP_MSG;
+        return CH_GRP_MSG;
     }
 
     private String getNotificationChannel(NotificationManagerCompat notificationManager, DcChat dcChat) {
