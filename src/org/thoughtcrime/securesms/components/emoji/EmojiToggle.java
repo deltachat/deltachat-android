@@ -7,7 +7,6 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ResUtil;
 
 public class EmojiToggle extends AppCompatImageButton implements MediaKeyboard.MediaKeyboardListener {
