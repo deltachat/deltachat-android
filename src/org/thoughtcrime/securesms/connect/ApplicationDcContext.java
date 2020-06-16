@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -57,6 +58,23 @@ public class ApplicationDcContext extends DcContext {
   public ApplicationDcContext(Context context) {
     super("Android "+BuildConfig.VERSION_NAME, AccountManager.getInstance().getSelectedAccount(context).getAbsolutePath());
     this.context = context;
+
+    // migration, can be removed after some versions (added 6/2020)
+    // (removes a custom background after introduction of landscape and protrait specific background images)
+    try {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      String customBackgroundPath = sharedPreferences.getString(Prefs.BACKGROUND_PREF, "");
+      if (!customBackgroundPath.isEmpty()) {
+        Drawable drawable = Drawable.createFromPath(customBackgroundPath.concat("_landscape"));
+        if (drawable == null) {
+          sharedPreferences.edit().remove(Prefs.BACKGROUND_PREF).apply();
+        }
+      }
+    } catch(Exception e) {
+      Log.e(TAG, "cannot migrate pref_chat_background");
+    }
+    // /migration
+
 
     // migration, can be removed after some versions (added 5/2020)
     // (this will convert only for one account, but that is fine, multi-account is experimental anyway)
