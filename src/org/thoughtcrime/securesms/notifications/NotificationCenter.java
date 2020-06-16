@@ -28,6 +28,7 @@ import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ConversationActivity;
+import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
@@ -97,7 +98,13 @@ public class NotificationCenter {
         }
         return argb;
     }
-    
+
+    private PendingIntent getOpenChatlistIntent() {
+        Intent intent = new Intent(context, ConversationListActivity.class);
+        intent.putExtra(ConversationListActivity.CLEAR_NOTIFICATIONS, true);
+        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
     private PendingIntent getOpenChatIntent(int chatId) {
         Intent intent = new Intent(context, ConversationActivity.class);
         intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
@@ -116,8 +123,8 @@ public class NotificationCenter {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    private PendingIntent getMarkAsReadIntent(int chatId) {
-        Intent intent = new Intent(MarkReadReceiver.CLEAR_ACTION);
+    private PendingIntent getMarkAsReadIntent(int chatId, boolean markNoticed) {
+        Intent intent = new Intent(markNoticed? MarkReadReceiver.MARK_NOTICED_ACTION : MarkReadReceiver.CANCEL_ACTION);
         intent.setClass(context, MarkReadReceiver.class);
         intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
         intent.putExtra(MarkReadReceiver.CHAT_ID_EXTRA, chatId);
@@ -129,14 +136,20 @@ public class NotificationCenter {
     // Groups and Notification channel groups
     // --------------------------------------------------------------------------------------------
 
-    public static final String GRP_MSG = "chgrp_msg";
+    // this is just to further organize the appearance of channels in the settings UI
+    private static final String CH_GRP_MSG = "chgrp_msg";
+
+    // this is to group together notifications as such, maybe including a summary,
+    // see https://developer.android.com/training/notify-user/group.html
+    private static final String GRP_MSG = "grp_msg";
 
 
     // Notification IDs
     // --------------------------------------------------------------------------------------------
 
-    public static final int ID_PERMANTENT = 1;
-    public static final int ID_MSG_OFFSET = 0; // msgId is added - as msgId start at 10, there are no conflicts with lower numbers
+    public static final int ID_PERMANTENT  = 1;
+    public static final int ID_MSG_SUMMARY = 2;
+    public static final int ID_MSG_OFFSET  = 0; // msgId is added - as msgId start at 10, there are no conflicts with lower numbers
 
 
     // Notification channels
@@ -202,11 +215,11 @@ public class NotificationCenter {
     }
 
     private String getNotificationChannelGroup(NotificationManagerCompat notificationManager) {
-        if (notificationChannelsSupported() && notificationManager.getNotificationChannelGroup(GRP_MSG) == null) {
-            NotificationChannelGroup chGrp = new NotificationChannelGroup(GRP_MSG, context.getString(R.string.pref_chats));
+        if (notificationChannelsSupported() && notificationManager.getNotificationChannelGroup(CH_GRP_MSG) == null) {
+            NotificationChannelGroup chGrp = new NotificationChannelGroup(CH_GRP_MSG, context.getString(R.string.pref_chats));
             notificationManager.createNotificationChannelGroup(chGrp);
         }
-        return GRP_MSG;
+        return CH_GRP_MSG;
     }
 
     private String getNotificationChannel(NotificationManagerCompat notificationManager, DcChat dcChat) {
@@ -320,7 +333,7 @@ public class NotificationCenter {
             NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);
 
             DcMsg dcMsg = dcContext.getMsg(msgId);
-            String line = privacy.isDisplayMessage()? dcMsg.getSummarytext(100) : context.getString(R.string.notify_new_message);
+            String line = privacy.isDisplayMessage()? dcMsg.getSummarytext(2000) : context.getString(R.string.notify_new_message);
             if (dcChat.isGroup() && privacy.isDisplayContact()) {
                 line = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + line;
             }
@@ -336,7 +349,8 @@ public class NotificationCenter {
             // even without a name or message displayed,
             // it makes sense to use separate notification channels and to open the respective chat directly -
             // the user may eg. have chosen a different sound
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getNotificationChannel(notificationManager, dcChat))
+            String notificationChannel = getNotificationChannel(notificationManager, dcChat);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
                     .setSmallIcon(R.drawable.icon_notification)
                     .setColor(context.getResources().getColor(R.color.delta_primary))
                     .setPriority(Prefs.getNotificationPriority(context))
@@ -344,6 +358,7 @@ public class NotificationCenter {
                     .setGroup(GRP_MSG)
                     .setOnlyAlertOnce(!signal)
                     .setContentText(line)
+                    .setDeleteIntent(getMarkAsReadIntent(chatId, false))
                     .setContentIntent(getOpenChatIntent(chatId));
             if (privacy.isDisplayContact()) {
                 builder.setContentTitle(dcChat.getName());
@@ -409,7 +424,7 @@ public class NotificationCenter {
              && !Prefs.isScreenLockEnabled(context)) {
                 try {
                     PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatId);
-                    PendingIntent markReadIntent = getMarkAsReadIntent(chatId);
+                    PendingIntent markReadIntent = getMarkAsReadIntent(chatId, true);
 
                     NotificationCompat.Action markAsReadAction = new NotificationCompat.Action(R.drawable.check,
                             context.getString(R.string.notify_mark_read),
@@ -467,15 +482,39 @@ public class NotificationCenter {
             // add notification, we use one notification per chat,
             // esp. older android are not that great at grouping
             notificationManager.notify(ID_MSG_OFFSET + chatId, builder.build());
+
+            // group notifications together in a summary, this is possible since SDK 24 (Android 7)
+            // https://developer.android.com/training/notify-user/group.html
+            // in theory, this won't be needed due to setGroup(), however, in practise, it is needed up to at least Android 10.
+            if (Build.VERSION.SDK_INT >= 24) {
+                NotificationCompat.Builder summary = new NotificationCompat.Builder(context, notificationChannel)
+                        .setGroup(GRP_MSG)
+                        .setGroupSummary(true)
+                        .setSmallIcon(R.drawable.icon_notification)
+                        .setColor(context.getResources().getColor(R.color.delta_primary))
+                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                        .setContentTitle("Delta Chat") // content title would only be used on SDK <24
+                        .setContentText("New messages") // content text would only be used on SDK <24
+                        .setContentIntent(getOpenChatlistIntent());
+                notificationManager.notify(ID_MSG_SUMMARY, summary.build());
+            }
         });
     }
 
     public void removeNotifications(int chatId) {
+        boolean removeSummary = false;
         synchronized (inboxes) {
             inboxes.remove(chatId);
+            removeSummary = inboxes.isEmpty();
         }
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.cancel(ID_MSG_OFFSET + chatId);
+
+        try {
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.cancel(ID_MSG_OFFSET + chatId);
+            if (removeSummary) {
+                notificationManager.cancel(ID_MSG_SUMMARY);
+            }
+        } catch (Exception e) { Log.w(TAG, e); }
     }
 
     public void removeAllNotifiations() {
