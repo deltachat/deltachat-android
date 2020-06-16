@@ -22,6 +22,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -36,6 +37,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.Display;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ComposeText;
@@ -415,5 +417,12 @@ public class Util {
     } catch (InterruptedException e) {
       throw new AssertionError(e);
     }
+  }
+
+  public static Point getDisplaySize(Context context) {
+    Display display = ServiceUtil.getWindowManager(context).getDefaultDisplay();
+    Point size = new Point();
+    display.getSize(size);
+    return size;
   }
 }

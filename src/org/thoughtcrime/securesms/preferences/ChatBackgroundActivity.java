@@ -25,6 +25,7 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.mms.GlideRequest;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ServiceUtil;
@@ -33,6 +34,8 @@ import org.thoughtcrime.securesms.util.Prefs;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.concurrent.ExecutionException;
+
+import static org.thoughtcrime.securesms.util.Util.getDisplaySize;
 
 public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity {
 
@@ -133,21 +136,29 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
 
     private void scaleAndSaveImage(Context context, String destinationPath) {
         try{
-            Display display = ServiceUtil.getWindowManager(context).getDefaultDisplay();
-            Point size = new Point();
-            display.getSize(size);
-            // resize so that the larger side fits the screen accurately
-            int largerSide = (size.x > size.y ? size.x : size.y);
-            Bitmap scaledBitmap = GlideApp.with(context)
+            Bitmap scaledBitmapDirectionPortrait;
+            Bitmap scaledBitmapDirectionLandscape;
+            String destinationPathLandscape = destinationPath.concat("_landscape");
+            Point size = getDisplaySize(context);
+            boolean isPortait = size.x < size.y;
+            GlideRequest<Bitmap> scaleRequest =  GlideApp.with(context)
                     .asBitmap()
                     .load(imageUri)
-                    .fitCenter()
+                    .centerCrop()
                     .skipMemoryCache(true)
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .submit(largerSide, largerSide)
-                    .get();
-            FileOutputStream outStream = new FileOutputStream(destinationPath);
-            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
+                    .diskCacheStrategy(DiskCacheStrategy.NONE);
+
+            if (isPortait) {
+                scaledBitmapDirectionPortrait = scaleRequest.submit(size.x, size.y).get();
+                scaledBitmapDirectionLandscape = scaleRequest.submit(size.y, size.x).get();
+            } else {
+                scaledBitmapDirectionPortrait = scaleRequest.submit(size.y, size.x).get();
+                scaledBitmapDirectionLandscape = scaleRequest.submit(size.x, size.y).get();
+            }
+            FileOutputStream outStreamDirectionPortrait = new FileOutputStream(destinationPath);
+            FileOutputStream outStreamDirectionLandscape = new FileOutputStream(destinationPathLandscape);
+            scaledBitmapDirectionPortrait.compress(Bitmap.CompressFormat.JPEG, 85, outStreamDirectionPortrait);
+            scaledBitmapDirectionLandscape.compress(Bitmap.CompressFormat.JPEG, 85, outStreamDirectionLandscape);
         } catch (InterruptedException e) {
             e.printStackTrace();
             Prefs.setBackgroundImagePath(context, "");

@@ -3,11 +3,13 @@ package org.thoughtcrime.securesms.util;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.hardware.Camera.CameraInfo;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.Settings;
+import android.view.Display;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -26,6 +28,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.mapbox.mapboxsdk.constants.MapboxConstants.MINIMUM_ZOOM;
+import static org.thoughtcrime.securesms.util.Util.getDisplaySize;
 
 public class Prefs {
 
@@ -292,7 +295,14 @@ public class Prefs {
   // misc.
 
   public static String getBackgroundImagePath(Context context) {
-    return getStringPreference(context, BACKGROUND_PREF, "");
+    Point size = getDisplaySize(context);
+    boolean isPortait = size.x < size.y;
+    String backgroundImagePath = getStringPreference(context, BACKGROUND_PREF, "");
+    if (isPortait || backgroundImagePath.isEmpty()) {
+      return backgroundImagePath;
+    } else {
+      return backgroundImagePath.concat("_landscape");
+    }
   }
 
   public static void setBackgroundImagePath(Context context, String path) {
