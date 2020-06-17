@@ -1,5 +1,32 @@
 # Delta Chat Android Changelog
 
+## v1.10.0
+2020-06
+
+* with this version, Delta Chat enters a whole new level of speed,
+  messages will be downloaded and sent way faster -
+  technically, this was introduced by using so called "async-processing"
+* avatars can be enlarged
+* new emoji selector - including new and diversified emojis
+* you can now "blur" areas in an image before sending
+* new default wallpaper
+* if a message cannot be delivered to a recipient
+  and the server replies with an error report message,
+  the error is shown beside the message itself in more cases
+* backup now includes the mute-state of chats
+* notifications now use one system-editable channel per chat,
+  this fix various notification bugs
+* android 7 and newer groups notifications
+* multi-account is an officially supported feature now
+* default to "Strict TLS" for some known providers
+* improve reconnection handling
+* improve interaction with conventional email programs
+  by showing better subjects
+* allow calling the app from others apps with a standard email intent
+* fix issues with database locking
+* fix importing addresses
+* lots of other fixes
+
 ## v1.8.1
 2020-05-14
 
