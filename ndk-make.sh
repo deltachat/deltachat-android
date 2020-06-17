@@ -25,6 +25,7 @@ cd jni/deltachat-core-rust
 # linker = "PATH_TO_NDK/toolchains/llvm/prebuilt/HOST/bin/x86_64-linux-android21-clang"
 # ```
 # then, the following should work:
+# (If you want to speed up compilation, have look at the comment in ndk-make-fast.sh.)
 
 # fix build on MacOS Catalina
 unset CPATH
