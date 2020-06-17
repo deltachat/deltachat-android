@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# If you want to, you can run this script with instead of ndk-make.sh your architecture as an argument
+# If you want to, you can run this script instead of ndk-make.sh with your architecture as an argument
 # to speed up compilation by factor 4 (will not work on macOS and might not work for other reasons):
 #
-#     ./ndk-make.sh arm64-v8a
+#     ./ndk-make-fast.sh arm64-v8a
 #
 # Possible values are armeabi-v7a, arm64-v8a, x86 and x86_64.
 # You should be able to find out your architecture by running:
