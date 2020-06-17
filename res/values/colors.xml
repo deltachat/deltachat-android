@@ -1,5 +1,45 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
+  <!-- PURPLE -->
+  <color name="purple_primary">#ff785c8d</color>
+  <color name="purple_primary_dark">#ff604a71</color>
+  <color name="purple_primary_lite">#ff785c8d</color>
+  <color name="purple_accent">#785c8d</color>
+  <color name="purple_outgoing_bubble">#fffff9d9</color>
+  <color name="purple_outgoing_label">#ff8754b4</color>
+  <color name="purple_unreadcount">#7b00c8</color>
+  <!-- ========== -->
+
+  <!-- GREEN -->
+  <color name="green_primary">#ff43a047</color>
+  <color name="green_primary_dark">#ff2f7d32</color>
+  <color name="green_primary_lite">#ff43a047</color>
+  <color name="green_accent">#43a047</color>
+  <color name="green_outgoing_bubble">#fffff9d9</color>
+  <color name="green_outgoing_label">#ff58ab43</color>
+  <color name="green_unreadcount">#5fbf41</color>
+  <!-- ========== -->
+
+  <!-- BLUE -->
+  <color name="blue_primary">#ff517da2</color>
+  <color name="blue_primary_dark">#ff426382</color>
+  <color name="blue_primary_lite">#ff517da2</color>
+  <color name="blue_accent">#517da2</color>
+  <color name="blue_outgoing_bubble">#fffff9d9</color>
+  <color name="blue_outgoing_label">#ff2f97d6</color>
+  <color name="blue_unreadcount">#1ab7c8</color>
+  <!-- ========== -->
+
+  <!-- RED -->
+  <color name="red_primary">#ffb61c1c</color>
+  <color name="red_primary_dark">#ffa41a1a</color>
+  <color name="red_primary_lite">#ffb61c1c</color>
+  <color name="red_accent">#b61c1c</color>
+  <color name="red_outgoing_bubble">#fffff9d9</color>
+  <color name="red_outgoing_label">#ffce303e</color>
+  <color name="red_unreadcount">#d51431</color>
+  <!-- ========== -->
+
     <color name="delta_primary">#ff415e6b</color>
     <color name="delta_primary_dark">#ff364e59</color>
     <color name="delta_primary_lite">#4c6e7d</color>

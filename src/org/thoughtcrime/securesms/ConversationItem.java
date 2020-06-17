@@ -66,6 +66,8 @@ import org.thoughtcrime.securesms.util.views.Stub;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
+import java.util.regex.Pattern;
+import org.thoughtcrime.securesms.CmdFilter;
 
 /**
  * A view that displays an individual conversation item within a conversation
@@ -78,6 +80,7 @@ import java.util.Set;
 public class ConversationItem extends LinearLayout
     implements BindableConversationItem
 {
+
   private static final String TAG = ConversationItem.class.getSimpleName();
 
   private static final int MAX_MEASURE_CALLS = 3;
@@ -504,12 +507,15 @@ public class ConversationItem extends LinearLayout
     boolean hasLinks = Linkify.addLinks(messageBody,
         shouldLinkifyAllLinks ? Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS : 0);
 
-    if (hasLinks) {
+    Pattern cmdPattern = Pattern.compile("(^|\\s)/[a-zA-Z@\\d_/]{1,255}");
+    boolean hasCommands = Linkify.addLinks(messageBody, cmdPattern, "mailto:", null, new CmdFilter());
+
+    if (hasLinks || hasCommands) {
       URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
       for (URLSpan urlSpan : urlSpans) {
         int start = messageBody.getSpanStart(urlSpan);
         int end = messageBody.getSpanEnd(urlSpan);
-        messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL(), this.dcChat.getId()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       }
     }
     return messageBody;

@@ -19,6 +19,7 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
+
 public class LongClickCopySpan extends URLSpan {
   private static final String PREFIX_MAILTO = "mailto:";
   private static final String PREFIX_TEL = "tel:";
@@ -26,10 +27,17 @@ public class LongClickCopySpan extends URLSpan {
   private boolean isHighlighted;
   @ColorInt
   private int highlightColor;
+    private int chatId;
 
-  public LongClickCopySpan(String url) {
-    super(url);
-  }
+    public LongClickCopySpan(String url) {
+	super(url);
+	this.chatId = 0;
+    }
+
+    public LongClickCopySpan(String url, int chatId) {
+	super(url);
+	this.chatId = chatId;
+    }
 
   private void openChat(Activity activity, DcContact contact) {
     DcContext dcContext = DcHelper.getContext(activity);
@@ -44,7 +52,17 @@ public class LongClickCopySpan extends URLSpan {
   @Override
   public void onClick(View widget) {
     String url = getURL();
-    if (url.startsWith(PREFIX_MAILTO)) {
+    if (url.startsWith(PREFIX_MAILTO+"/")) {
+	try {
+	    String cmd = prepareUrl(url);
+	    Activity activity = (Activity) widget.getContext();
+	    DcContext dcContext = DcHelper.getContext(activity);
+	    dcContext.sendTextMsg(this.chatId, cmd);
+	}
+	catch(Exception e) {
+	    e.printStackTrace();
+	}
+    } else if (url.startsWith(PREFIX_MAILTO)) {
       try {
         String addr = prepareUrl(url);
         Activity activity = (Activity) widget.getContext();
@@ -72,20 +90,25 @@ public class LongClickCopySpan extends URLSpan {
   }
 
   void onLongClick(View widget) {
+      String url = getURL();
     Context context = widget.getContext();
-    String preparedUrl = prepareUrl(getURL());
-
-    new AlertDialog.Builder(context)
-        .setTitle(preparedUrl)
-        .setItems(new CharSequence[]{
-                context.getString(R.string.menu_copy_to_clipboard)
-            },
-            (dialogInterface, i) -> {
-              copyUrl(context, preparedUrl);
-              Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
-            })
-        .setNegativeButton(R.string.cancel, null)
-        .show();
+    String preparedUrl = prepareUrl(url);
+    if (url.startsWith(PREFIX_MAILTO+"/")) {
+	copyUrl(context, preparedUrl);
+	Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+    } else {
+	new AlertDialog.Builder(context)
+	    .setTitle(preparedUrl)
+	    .setItems(new CharSequence[]{
+		    context.getString(R.string.menu_copy_to_clipboard)
+		},
+		(dialogInterface, i) -> {
+		    copyUrl(context, preparedUrl);
+		    Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+		})
+	    .setNegativeButton(R.string.cancel, null)
+	    .show();
+    }
   }
 
   @Override

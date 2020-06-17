@@ -123,6 +123,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.regex.Matcher;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
 import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
@@ -1042,7 +1043,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             msg.setDimension(attachment.getWidth(), attachment.getHeight());
 
             // recompress jpeg-files unless sent as documents
-            if (MediaUtil.isJpegType(contentType) && slideDeck.getDocumentSlide()==null) {
+            if ((MediaUtil.isJpegType(contentType) || MediaUtil.isPngType(contentType)) && slideDeck.getDocumentSlide()==null) {
               recompress = DcMsg.DC_MSG_IMAGE;
             }
           }
@@ -1533,7 +1534,41 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleReplyMessage(DcMsg messageRecord) {
+  public void handleReplyMessage(DcMsg msg) {
+      DcContact contact = dcContext.getContact(msg.getFromId());
+      String prefix = "> ";
+      String quote;
+      if(msg.getType() == DcMsg.DC_MSG_TEXT) {
+	  quote = msg.getText();
+      }
+      else {
+	  quote = msg.getSummarytext(1000);
+      }
+
+      quote = quote.replaceAll("> .*\n", "").trim();
+
+      int nl_count = 0;
+      for(int i=0; i < quote.length(); i++) {
+	  if(quote.charAt(i) == '\n') {
+	      nl_count += 1;
+	      if (nl_count == 4) {
+		  quote = quote.substring(0, i);
+		  break;
+	      }
+	  }
+      }
+
+      if (quote.length() > 60) {
+	  quote = quote.substring(0, 60) + "[...]";
+      } else if (nl_count == 4) {
+	  quote += "[...]";
+      }
+
+      quote = "@" + contact.getDisplayName() + ":\n" + quote;
+      quote = prefix+quote.replaceAll("(?:\r\n?|\n)(?!\\z)", "$0"+Matcher.quoteReplacement(prefix)) + "\n\n\n";
+      composeText.setText(quote);
+      composeText.setSelection(composeText.getText().length());
+      container.showSoftkey(composeText);
   }
 
   @Override

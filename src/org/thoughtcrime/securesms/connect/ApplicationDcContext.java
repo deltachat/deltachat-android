@@ -40,6 +40,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.thoughtcrime.securesms.ZhvActivity;
+
 public class ApplicationDcContext extends DcContext {
 
   public static final String TAG = "DeltaChat";
@@ -207,10 +209,17 @@ public class ApplicationDcContext extends DcContext {
 
       if (cmd.equals(Intent.ACTION_VIEW)) {
         mimeType = checkMime(path, mimeType);
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(uri, mimeType);
-        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        activity.startActivity(intent);
+	if(mimeType.equals("text/html") || path.endsWith(".md") || path.endsWith(".html") || path.endsWith(".htmlzip") || path.endsWith(".html.zip")) {
+	    Intent intent = new Intent(activity, ZhvActivity.class);
+	    intent.setDataAndType(uri, mimeType);
+	    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+	    activity.startActivity(intent);
+	} else {
+	    Intent intent = new Intent(Intent.ACTION_VIEW);
+	    intent.setDataAndType(uri, mimeType);
+	    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+	    activity.startActivity(intent);
+	}
       } else {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType(mimeType);

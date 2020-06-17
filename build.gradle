@@ -89,13 +89,13 @@ android {
     }
 
     defaultConfig {
-        versionCode 583
+        versionCode 584
         versionName "1.10.0"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
 
-        minSdkVersion 16
+        minSdkVersion 15
         targetSdkVersion 28
 
         vectorDrawables.useSupportLibrary = true
@@ -151,7 +151,7 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            applicationIdSuffix ".beta"
+            applicationIdSuffix ".lite"
         }
         release {
             // minification and proguard disabled for now.

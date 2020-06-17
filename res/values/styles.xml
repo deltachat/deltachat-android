@@ -71,7 +71,7 @@
     <style name="ComposeEditText" parent="@style/Signal.Text.Body">
         <item name="android:padding">2dp</item>
         <item name="android:background">@null</item>
-        <item name="android:maxLines">5</item>
+        <item name="android:maxLines">8</item>
         <item name="android:maxLength">64000</item>
         <item name="android:textColor">?conversation_item_outgoing_text_primary_color</item>
         <item name="android:capitalize">sentences</item>
@@ -108,6 +108,100 @@
 
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">#ff2090ea</item>
+    </style>
+
+
+
+
+
+
+    <!-- =========================================================== -->
+
+
+    <!-- PURPLE -->
+    <style name="TextSecure.PurpleActionBar"
+           parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/purple_primary</item>
+        <item name="elevation">4dp</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
+        <item name="subtitleTextStyle">@style/TextSecure.SubtitleTextStyle</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="TextSecure.PurpleActionBar.TabBar"
+        parent="@style/Widget.AppCompat.ActionBar.TabBar">
+        <item name="android:background">@color/purple_primary</item>
+        <item name="background">@color/purple_primary</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">#BFffffff</item>
+        <item name="elevation">4dp</item>
+    </style>
+
+
+    <!-- RED -->
+    <style name="TextSecure.RedActionBar"
+           parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/red_primary</item>
+        <item name="elevation">4dp</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
+        <item name="subtitleTextStyle">@style/TextSecure.SubtitleTextStyle</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="TextSecure.RedActionBar.TabBar"
+        parent="@style/Widget.AppCompat.ActionBar.TabBar">
+        <item name="android:background">@color/red_primary</item>
+        <item name="background">@color/red_primary</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">#BFffffff</item>
+        <item name="elevation">4dp</item>
+    </style>
+
+
+    <!-- GREEN -->
+    <style name="TextSecure.GreenActionBar"
+           parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/green_primary</item>
+        <item name="elevation">4dp</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
+        <item name="subtitleTextStyle">@style/TextSecure.SubtitleTextStyle</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="TextSecure.GreenActionBar.TabBar"
+        parent="@style/Widget.AppCompat.ActionBar.TabBar">
+        <item name="android:background">@color/green_primary</item>
+        <item name="background">@color/green_primary</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">#BFffffff</item>
+        <item name="elevation">4dp</item>
+    </style>
+
+    <!-- BLUE -->
+    <style name="TextSecure.BlueActionBar"
+           parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/blue_primary</item>
+        <item name="elevation">4dp</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
+        <item name="subtitleTextStyle">@style/TextSecure.SubtitleTextStyle</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="TextSecure.BlueActionBar.TabBar"
+        parent="@style/Widget.AppCompat.ActionBar.TabBar">
+        <item name="android:background">@color/blue_primary</item>
+        <item name="background">@color/blue_primary</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">#BFffffff</item>
+        <item name="elevation">4dp</item>
     </style>
 
 </resources>

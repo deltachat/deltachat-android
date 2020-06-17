@@ -411,14 +411,14 @@ public class BitmapUtil {
   // recode jpeg
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  public static void recodeImageMsg(Context context, DcMsg msg)
+    public static void recodeImageMsg(Context context, DcMsg msg)
   {
-    int desiredWH = 1280;
-    int desiredJpegQuality = 85;
+    int desiredWH = 640;
+    int desiredJpegQuality = 75;
 
     if (Prefs.isHardCompressionEnabled(context)) {
-      desiredWH = 640;
-      desiredJpegQuality = 75;
+      desiredWH = 500;
+      desiredJpegQuality = 60;
     }
 
     try {

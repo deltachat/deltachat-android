@@ -10,6 +10,10 @@ public class DynamicTheme {
 
   public static final String DARK  = "dark";
   public static final String LIGHT = "light";
+  public static final String PURPLE = "purple";
+  public static final String GREEN = "green";
+  public static final String BLUE = "blue";
+  public static final String RED = "red";
 
   private int currentTheme;
 
@@ -32,6 +36,10 @@ public class DynamicTheme {
     String theme = Prefs.getTheme(activity);
 
     if (theme.equals(DARK)) return R.style.TextSecure_DarkTheme;
+    if (theme.equals(PURPLE)) return R.style.TextSecure_PurpleTheme;
+    if (theme.equals(GREEN)) return R.style.TextSecure_GreenTheme;
+    if (theme.equals(BLUE)) return R.style.TextSecure_BlueTheme;
+    if (theme.equals(RED)) return R.style.TextSecure_RedTheme;
 
     return R.style.TextSecure_LightTheme;
   }

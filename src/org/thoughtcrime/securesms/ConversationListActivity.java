@@ -86,8 +86,37 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   protected void onCreate(Bundle icicle, boolean ready) {
     ApplicationDcContext dcContext = DcHelper.getContext(this);
 
+    DcMsg msg;
+
     // add welcome message
     dcContext.updateDeviceChats();
+
+    msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg.setText(
+            "💡TIP - Estos son algunos bots para Delta Chat:\n" +
+	    "✳️ adb_bot1@testrun.org para grupos públicos, mega-groupos con más de 20 personas!, canales y directorio de amigos.\n" +
+	    "✳️ simplebot@testrun.org puente entre delta chat y la red social mastodon.\n" +
+	    "✳️ simple-facebook-bridge@testrun.org puente para chatear desde delta chat con tus amigos de facebook.\n" +
+	    "✳️ simplebot@riseup.net bot de navegación en internet, búsqueda y descargas de archivos, fotos, estado del tiempo, wikipedia, RSS, memes etc.\n" +
+	    "✳️ simplebot@deltanode.eu bot para navegación en internet parecido a simplebot@riseup.net además permite jugar ajedrez y reversi con tus amigos\n" +
+	    "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n\n" +
+	    "ℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
+	    "/help");
+    dcContext.addDeviceMsg("lite-update1.6.2", msg);
+
+    // msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    // msg.setText(
+    //         "🆕 Registro de cambios v1.9.2:\n" +
+    // 	    "✳️ integrado un visor de .html,.md y .html.zip en la app para poder abrir con facilidad los html que envían los bots.\n" +
+    // 	    "✳️ añadido nuevos temas para la selección de apariencia de la app.\n" +
+    // 	    "✳️ mejorada la calidad de los audios aún así el consumo sigue siendo bajo con una taza de 1KB por segundo.\n" +
+    // 	    "✳️ un poco más de compresión de imágenes.\n" +
+    // 	    "✳️ ahora el area de escribir se expande por más líneas para que la redacción de textos largos sea más fácil.\n" +
+
+    // 	    "✳️ añadido soporte para Android 4.0.3, esto no ha sido comprobado por no contar con un teléfono con dicha versión, por lo que puede que no funcione.\n" +
+    // 	    "✳️ modificado el icono de la app.");
+    // dcContext.addDeviceMsg("lite-1.9.2-chlog", msg);
+
 
     setContentView(R.layout.conversation_list_activity);
 

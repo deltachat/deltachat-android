@@ -270,6 +270,43 @@
 
     <activity android:name=".map.MapActivity" />
 
+
+    <activity android:name=".ZhvActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <action android:name="android.intent.action.GET_CONTENT"/>
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:host="*"/>
+        <data android:scheme="http"/>
+        <data android:scheme="https"/>
+        <data android:scheme="content"/>
+        <data android:scheme="file"/>
+        <data android:mimeType="*/*" />
+        <data android:mimeType="application/octet-stream" />
+        <data android:pathPattern=".*\\.html.zip" />
+        <data android:pathPattern=".*\\..*\\.html.zip" />
+        <data android:pathPattern=".*\\..*\\..*\\.html.zip" />
+        <data android:pathPattern=".*\\..*\\..*\\..*\\.html.zip" />
+        <data android:pathPattern=".*\\.htmlzip" />
+        <data android:pathPattern=".*\\..*\\.htmlzip" />
+        <data android:pathPattern=".*\\..*\\..*\\.htmlzip" />
+        <data android:pathPattern=".*\\..*\\..*\\..*\\.htmlzip" />
+        <data android:mimeType="text/html"/>
+        <data android:pathPattern=".*\\.html" />
+        <data android:pathPattern=".*\\..*\\.html" />
+        <data android:pathPattern=".*\\..*\\..*\\.html" />
+        <data android:pathPattern=".*\\..*\\..*\\..*\\.html" />
+        <data android:mimeType="text/markdown"/>
+        <data android:pathPattern=".*\\.md" />
+        <data android:pathPattern=".*\\..*\\.md" />
+        <data android:pathPattern=".*\\..*\\..*\\.md" />
+        <data android:pathPattern=".*\\..*\\..*\\..*\\.md" />
+      </intent-filter>
+    </activity>
+
+
+
     <service android:name=".connect.KeepAliveService" android:enabled="true" />
 
     <service android:name=".geolocation.LocationBackgroundService"  />
