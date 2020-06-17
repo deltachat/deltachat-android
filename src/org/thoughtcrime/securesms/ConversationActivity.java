@@ -332,6 +332,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (emojiDrawerStub.resolved() && container.getCurrentInput() == emojiDrawerStub.get()) {
       container.hideAttachedInput(true);
     }
+
+    initializeBackground();
   }
 
   @Override
@@ -841,6 +843,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       quickCameraToggle.setEnabled(false);
     }
 
+    initializeBackground();
+  }
+
+  private void initializeBackground() {
     String backgroundImagePath = Prefs.getBackgroundImagePath(this);
     if(!backgroundImagePath.isEmpty()) {
       Drawable image = Drawable.createFromPath(backgroundImagePath);
