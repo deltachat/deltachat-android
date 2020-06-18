@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.util.views;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -105,6 +106,11 @@ public class ProgressDialog extends AlertDialog {
         dialog.setIndeterminate(indeterminate);
         dialog.setCancelable(cancelable);
         dialog.setOnCancelListener(cancelListener);
+        if (cancelable) {
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, context.getString(R.string.cancel),
+                    ((dialog1, which) -> cancelListener.onCancel(dialog)));
+        }
         dialog.show();
         return dialog;
     }

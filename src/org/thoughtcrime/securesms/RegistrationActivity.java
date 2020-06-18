@@ -325,6 +325,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             this.email = email;
             this.oauth2started = oauth2started;
             this.dcContext = DcHelper.getContext(activity);
+            setCancellable(dialog -> {
+                oauth2started.set(false);
+            });
         }
         @Override
         protected Void doInBackground(Void... voids) {
