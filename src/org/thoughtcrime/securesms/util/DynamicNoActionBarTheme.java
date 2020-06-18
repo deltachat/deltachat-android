@@ -14,6 +14,7 @@ public class DynamicNoActionBarTheme extends DynamicTheme {
     if (theme.equals(DynamicTheme.GREEN)) return R.style.TextSecure_GreenNoActionBar;
     if (theme.equals(DynamicTheme.BLUE)) return R.style.TextSecure_BlueNoActionBar;
     if (theme.equals(DynamicTheme.RED)) return R.style.TextSecure_RedNoActionBar;
+    if (theme.equals(DynamicTheme.PINK)) return R.style.TextSecure_PinkNoActionBar;
 
     return R.style.TextSecure_LightNoActionBar;
   }

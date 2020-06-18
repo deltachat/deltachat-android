@@ -89,6 +89,7 @@
       <item>@string/green</item>
       <item>@string/blue</item>
       <item>@string/red</item>
+      <item>@string/pink</item>
   </string-array>
 
   <string-array name="pref_theme_values" translatable="false">
@@ -98,6 +99,7 @@
       <item>green</item>
       <item>blue</item>
       <item>red</item>
+      <item>pink</item>
   </string-array>
 
   <string-array name="pref_led_color_entries">

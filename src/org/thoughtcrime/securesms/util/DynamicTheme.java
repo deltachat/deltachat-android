@@ -14,6 +14,7 @@ public class DynamicTheme {
   public static final String GREEN = "green";
   public static final String BLUE = "blue";
   public static final String RED = "red";
+  public static final String PINK = "pink";
 
   private int currentTheme;
 
@@ -40,6 +41,7 @@ public class DynamicTheme {
     if (theme.equals(GREEN)) return R.style.TextSecure_GreenTheme;
     if (theme.equals(BLUE)) return R.style.TextSecure_BlueTheme;
     if (theme.equals(RED)) return R.style.TextSecure_RedTheme;
+    if (theme.equals(PINK)) return R.style.TextSecure_PinkTheme;
 
     return R.style.TextSecure_LightTheme;
   }

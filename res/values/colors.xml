@@ -40,6 +40,16 @@
   <color name="red_unreadcount">#d51431</color>
   <!-- ========== -->
 
+  <!-- PINK -->
+  <color name="pink_primary">#ffc84595</color>
+  <color name="pink_primary_dark">#ffa03779</color>
+  <color name="pink_primary_lite">#ffc84595</color>
+  <color name="pink_accent">#c84595</color>
+  <color name="pink_outgoing_bubble">#fffff9d9</color>
+  <color name="pink_outgoing_label">#ffa03779</color>
+  <color name="pink_unreadcount">#ff25b7</color>
+  <!-- ========== -->
+
     <color name="delta_primary">#ff415e6b</color>
     <color name="delta_primary_dark">#ff364e59</color>
     <color name="delta_primary_lite">#4c6e7d</color>
