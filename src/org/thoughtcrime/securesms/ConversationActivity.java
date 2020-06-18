@@ -176,6 +176,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputAwareLayout            container;
   private   View                        composePanel;
   protected Stub<ReminderView>          reminderView;
+  private   ImageView                   backgroundView;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
@@ -802,6 +803,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer = ViewUtil.findById(this, R.id.quick_attachment_drawer);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel            = ViewUtil.findById(this, R.id.bottom_panel);
+    backgroundView        = ViewUtil.findById(this, R.id.conversation_background);
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
@@ -850,13 +852,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     String backgroundImagePath = Prefs.getBackgroundImagePath(this);
     if(!backgroundImagePath.isEmpty()) {
       Drawable image = Drawable.createFromPath(backgroundImagePath);
-      getWindow().setBackgroundDrawable(image);
+      backgroundView.setImageDrawable(image);
     }
     else if(dynamicTheme.isDarkTheme(this)) {
-      getWindow().setBackgroundDrawableResource(R.drawable.background_hd_dark);
+      backgroundView.setImageResource(R.drawable.background_hd_dark);
     }
     else {
-      getWindow().setBackgroundDrawableResource(R.drawable.background_hd);
+      backgroundView.setImageResource(R.drawable.background_hd);
     }
   }
 
