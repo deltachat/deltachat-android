@@ -41,8 +41,10 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
+import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
+import java.lang.ref.WeakReference;
 import java.util.concurrent.ExecutionException;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
@@ -301,37 +303,62 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         String email = emailInput.getText().toString();
         if (!TextUtils.isEmpty(email) ) {
-
-            // the redirect-uri is also used as intent-filter in the manifest
-            // and should be whitelisted by the supported oauth2 services
-            String redirectUrl = "chat.delta:/"+BuildConfig.APPLICATION_ID+"/auth";
-
-            String oauth2url = DcHelper.getContext(this).getOauth2Url(email, redirectUrl);
-            if (!TextUtils.isEmpty(oauth2url)) {
-                new AlertDialog.Builder(this)
-                    .setTitle(R.string.login_info_oauth2_title)
-                    .setMessage(R.string.login_info_oauth2_text)
-                    .setNegativeButton(R.string.cancel, (dialog, which)->{
-                        oauth2DeclinedByUser = true;
-                        oauth2started.set(false);
-                    })
-                    .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
-                        // pass control to browser, we'll be back in business at (**)
-                        oauth2Requested = System.currentTimeMillis();
-                        IntentUtils.showBrowserIntent(this, oauth2url);
-                        oauth2started.set(true);
-                    })
-                    .setCancelable(false)
-                    .show();
-            } else {
-                oauth2started.set(false);
-            }
+            new PrecheckOauth2AsyncTask(this, email, oauth2started).execute();
         }
         else {
             oauth2started.set(false);
         }
 
         return oauth2started;
+    }
+
+    private static class PrecheckOauth2AsyncTask extends ProgressDialogAsyncTask<Void, Void, Void> {
+        private final WeakReference<RegistrationActivity> activityWeakReference;
+        private final String email;
+        private final SettableFuture<Boolean> oauth2started;
+        private final DcContext dcContext;
+        private @NonNull String oauth2url = "";
+
+        public PrecheckOauth2AsyncTask(RegistrationActivity activity, String email, SettableFuture<Boolean> oauth2started) {
+            super(activity, null, activity.getString(R.string.one_moment));
+            this.activityWeakReference = new WeakReference<>(activity);
+            this.email = email;
+            this.oauth2started = oauth2started;
+            this.dcContext = DcHelper.getContext(activity);
+        }
+        @Override
+        protected Void doInBackground(Void... voids) {
+            // the redirect-uri is also used as intent-filter in the manifest
+            // and should be whitelisted by the supported oauth2 services
+            String redirectUrl = "chat.delta:/"+BuildConfig.APPLICATION_ID+"/auth";
+            oauth2url = dcContext.getOauth2Url(email, redirectUrl);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            RegistrationActivity activity = activityWeakReference.get();
+            if (activity!=null && !TextUtils.isEmpty(oauth2url)) {
+                new AlertDialog.Builder(activity)
+                        .setTitle(R.string.login_info_oauth2_title)
+                        .setMessage(R.string.login_info_oauth2_text)
+                        .setNegativeButton(R.string.cancel, (dialog, which)->{
+                            activity.oauth2DeclinedByUser = true;
+                            oauth2started.set(false);
+                        })
+                        .setPositiveButton(R.string.perm_continue, (dialog, which)-> {
+                            // pass control to browser, we'll be back in business at (**)
+                            activity.oauth2Requested = System.currentTimeMillis();
+                            IntentUtils.showBrowserIntent(activity, oauth2url);
+                            oauth2started.set(true);
+                        })
+                        .setCancelable(false)
+                        .show();
+            } else {
+                oauth2started.set(false);
+            }
+        }
     }
 
     private void updateProviderInfo() {
