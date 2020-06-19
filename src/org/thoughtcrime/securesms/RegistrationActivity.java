@@ -320,7 +320,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         private @NonNull String oauth2url = "";
 
         public PrecheckOauth2AsyncTask(RegistrationActivity activity, String email, SettableFuture<Boolean> oauth2started) {
-            super(activity, null, activity.getString(R.string.one_moment));
+            super(activity, null, activity.getString(R.string.login_oauth2_checking_addr, email));
             this.activityWeakReference = new WeakReference<>(activity);
             this.email = email;
             this.oauth2started = oauth2started;
