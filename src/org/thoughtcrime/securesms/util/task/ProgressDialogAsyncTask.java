@@ -16,7 +16,7 @@ public abstract class ProgressDialogAsyncTask<Params, Progress, Result> extends 
   private       ProgressDialog         progress;
   private final String                 title;
   private final String                 message;
-  private       boolean                cancellable;
+  private       boolean                cancelable;
   private       OnCancelListener       onCancelListener;
 
   public ProgressDialogAsyncTask(Context context, String title, String message) {
@@ -26,8 +26,8 @@ public abstract class ProgressDialogAsyncTask<Params, Progress, Result> extends 
     this.message          = message;
   }
 
-  public void setCancellable(@Nullable OnCancelListener onCancelListener) {
-    this.cancellable = true;
+  public void setCancelable(@Nullable OnCancelListener onCancelListener) {
+    this.cancelable = true;
     this.onCancelListener = onCancelListener;
   }
 
@@ -39,7 +39,7 @@ public abstract class ProgressDialogAsyncTask<Params, Progress, Result> extends 
   protected void onPreExecute() {
     final Context context = contextReference.get();
     if (context != null) {
-      progress = ProgressDialog.show(context, title, message, true, cancellable, onCancelListener);
+      progress = ProgressDialog.show(context, title, message, true, cancelable, onCancelListener);
     }
   }
 
