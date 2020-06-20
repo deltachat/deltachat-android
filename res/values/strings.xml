@@ -334,6 +334,8 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP security</string>
     <string name="login_auth_method">Authorization method</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Checking %1$s</string>
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
     <string name="login_info_oauth2_text">The entered email address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over Email app.\n\nThere are no Delta Chat servers, your data stays on your device.</string>
     <string name="login_certificate_checks">Certificate checks</string>
