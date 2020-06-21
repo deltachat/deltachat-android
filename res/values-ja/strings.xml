@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- common strings without special context -->
-    <string name="app_name">Delta Chat</string>
+    <string name="app_name">DeltaLab</string>
     <string name="ok">了承</string>
     <string name="cancel">取消</string>
     <string name="yes">はい</string>

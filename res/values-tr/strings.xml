@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- common strings without special context -->
-    <string name="app_name">Delta Chat</string>
+    <string name="app_name">DeltaLab</string>
     <string name="ok">Tamam</string>
     <string name="cancel">Vazgeç</string>
     <string name="yes">Evet</string>
