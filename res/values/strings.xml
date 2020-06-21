@@ -2,7 +2,7 @@
 <resources>
   <string name="could_not_open_file">Could not open file</string>
     <!-- common strings without special context -->
-    <string name="app_name">Delta Chat Lite</string>
+    <string name="app_name">DeltaLab</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
