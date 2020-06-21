@@ -332,6 +332,8 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
     <string name="login_auth_method">Auktoriseringsmetod</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Kontrollerar %1$s</string>
     <string name="login_info_oauth2_title">Fortsätta med förenklad installation?</string>
     <string name="login_info_oauth2_text">Den angivna e-postadressen stödjer förenklad inställning (OAuth 2.0).\n\nLåt Delta Chat agera som ditt chatt-över-epost-program, i nästa steg.\n\nDet finns ingen Delta Chat-server, din data stannar på din enhet.</string>
     <string name="login_certificate_checks">Certifikatkontroller</string>

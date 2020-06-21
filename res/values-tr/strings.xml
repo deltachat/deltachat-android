@@ -332,6 +332,8 @@
     <string name="login_smtp_port">SMTP bağlantı noktası</string>
     <string name="login_smtp_security">SMTP güvenliği</string>
     <string name="login_auth_method">Yetkilendirme yöntemi</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">%1$s denetleniyor</string>
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
     <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta ile Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucuları yoktur; verileriniz aygıtınızda kalır.</string>
     <string name="login_certificate_checks">Sertifika denetimleri</string>
