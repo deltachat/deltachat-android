@@ -332,6 +332,8 @@
     <string name="login_smtp_port">Porta SMTP</string>
     <string name="login_smtp_security">Sicurezza SMTP</string>
     <string name="login_auth_method">Metodo di autorizzazione</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Verifica %1$s</string>
     <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
     <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2.0).\n\nContinuando, puoi autorizzare Delta Chat ad operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
     <string name="login_certificate_checks">Controlli certificato</string>

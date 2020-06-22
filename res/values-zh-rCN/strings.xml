@@ -321,6 +321,8 @@
     <string name="login_smtp_port">SMTP 端口</string>
     <string name="login_smtp_security">SMTP 安全类型</string>
     <string name="login_auth_method">认证方法</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">检查 %1$s 中</string>
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许 Delta Chat 充当您的“通过电子邮件聊天”应用程序。\n\n不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
     <string name="login_certificate_checks">证书检查</string>

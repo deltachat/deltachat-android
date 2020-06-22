@@ -332,6 +332,8 @@
     <string name="login_smtp_port">SMTP-poort</string>
     <string name="login_smtp_security">SMTP-beveiliging</string>
     <string name="login_auth_method">Autorisatiemethode</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Bezig met controleren van %1$s</string>
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
     <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
     <string name="login_certificate_checks">Certificaatcontrole</string>

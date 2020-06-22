@@ -1,18 +1,13 @@
 # Delta Chat Android Changelog
 
-## v1.10.1
-2020-06
-
-* bug fixes
-
-
-## v1.10.0
+## v1.10.2
 2020-06
 
 * with this version, Delta Chat enters a whole new level of speed,
   messages will be downloaded and sent way faster -
   technically, this was introduced by using so called "async-processing"
 * avatars can be enlarged
+* add simplified login for gsuite email addresses
 * new emoji selector - including new and diversified emojis
 * you can now "blur" areas in an image before sending
 * new default wallpaper
