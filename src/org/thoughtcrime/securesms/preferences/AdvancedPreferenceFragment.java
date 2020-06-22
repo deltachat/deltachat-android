@@ -101,15 +101,19 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private boolean handleImapCheck(Preference preference, Object newValue, String dc_config_name) {
     final boolean newEnabled = (Boolean) newValue;
     if(newEnabled) {
+      dcContext.stopIo();
       dcContext.setConfigInt(dc_config_name, 1);
+      dcContext.maybeStartIo();
       return true;
     }
     else {
       new AlertDialog.Builder(getContext())
         .setMessage(R.string.pref_imap_folder_warn_disable_defaults)
         .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+          dcContext.stopIo();
           dcContext.setConfigInt(dc_config_name, 0);
           ((CheckBoxPreference)preference).setChecked(false);
+          dcContext.maybeStartIo();
         })
         .setNegativeButton(R.string.cancel, null)
         .show();
