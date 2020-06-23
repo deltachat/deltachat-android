@@ -32,4 +32,4 @@ SYMBOLS_ZIP="$APK-symbols.zip"
 rm $SYMBOLS_ZIP
 zip -r $SYMBOLS_ZIP obj
 ls -l $SYMBOLS_ZIP
-rsync --progress $SYMBOLS_ZIP jekyll@download.delta.chat:/var/www/html/download/android/
+rsync --progress $SYMBOLS_ZIP jekyll@download.delta.chat:/var/www/html/download/android/symbols/
