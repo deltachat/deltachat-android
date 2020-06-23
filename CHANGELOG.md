@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.10.2
+## v1.10.3
 2020-06
 
 * with this version, Delta Chat enters a whole new level of speed,
@@ -27,6 +27,7 @@
 * fix issues with database locking
 * fix importing addresses
 * lots of other fixes
+
 
 ## v1.8.1
 2020-05-14

@@ -37,14 +37,7 @@ on success, the generated APK is at
 
 # Upload APK to get.delta.chat
 
-7. $ cd gplay/release
-   $ rsync deltachat-gplay-release-VERSION.apk jekyll@download.delta.chat:/var/www/html/download/android/
-   (you need the private SSH key of the jekyll user; you can find it in this file:
-   https://github.com/hpk42/otf-deltachat/blob/master/secrets/delta.chat
-   It is protected with [git-crypt](https://www.agwa.name/projects/git-crypt/) -
-   after installing it, you can decrypt it with `git crypt unlock`. 
-   If your key isn't added to the secrets, you can ask on irc add you.
-   Add the key to your `~/.ssh/config` for the host, or to your ssh-agent, so rsync is able to use it)
+7. $ ./tools/upload-release.sh VERSION
 
 8. a) Test the APK yourself.
       The "Testing checklist" gives some hints.
