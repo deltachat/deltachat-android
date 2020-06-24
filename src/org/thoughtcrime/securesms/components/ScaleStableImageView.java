@@ -55,6 +55,7 @@ public class ScaleStableImageView
     @Override
     public void setImageDrawable(@Nullable Drawable drawable) {
         defaultDrawable = drawable;
+        storedSizes.clear();
         overrideDrawable(defaultDrawable);
     }
 
