@@ -110,6 +110,7 @@ public class ConversationFragment extends Fragment
     private View                        floatingLocationButton;
     private TextView                    noMessageTextView;
     private ApplicationDcContext        dcContext;
+    private Debouncer                   updateDebouncer = new Debouncer(500);
 
     public boolean isPaused;
     private Debouncer markseenDebouncer;
@@ -835,6 +836,6 @@ public class ConversationFragment extends Fragment
             setLastSeen(-1);
         }*/
 
-        reloadList();
+        updateDebouncer.publish(() -> reloadList());
     }
 }

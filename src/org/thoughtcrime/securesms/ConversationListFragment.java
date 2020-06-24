@@ -62,6 +62,7 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
@@ -94,6 +95,7 @@ public class ConversationListFragment extends Fragment
   private Locale                      locale;
   private String                      queryFilter  = "";
   private boolean                     archive;
+  private Debouncer                   updateDebouncer = new Debouncer(500);
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -533,7 +535,7 @@ public class ConversationListFragment extends Fragment
 
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
-    getLoaderManager().restartLoader(0,null,this);
+    updateDebouncer.publish(() -> getLoaderManager().restartLoader(0,null,this));
   }
 }
 
