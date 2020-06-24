@@ -76,6 +76,7 @@ import org.thoughtcrime.securesms.components.HidingLinearLayout;
 import org.thoughtcrime.securesms.components.InputAwareLayout;
 import org.thoughtcrime.securesms.components.InputPanel;
 import org.thoughtcrime.securesms.components.KeyboardAwareLinearLayout.OnKeyboardShownListener;
+import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.components.SendButton;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.AttachmentDrawerListener;
@@ -176,7 +177,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputAwareLayout            container;
   private   View                        composePanel;
   protected Stub<ReminderView>          reminderView;
-  private   ImageView                   backgroundView;
+  private   ScaleStableImageView        backgroundView;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
@@ -808,6 +809,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
     container.addOnKeyboardShownListener(this);
+    container.addOnKeyboardHiddenListener(backgroundView);
+    container.addOnKeyboardShownListener(backgroundView);
     inputPanel.setListener(this);
     inputPanel.setMediaListener(this);
 
@@ -850,16 +853,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void initializeBackground() {
     String backgroundImagePath = Prefs.getBackgroundImagePath(this);
+    Drawable background;
     if(!backgroundImagePath.isEmpty()) {
-      Drawable image = Drawable.createFromPath(backgroundImagePath);
-      backgroundView.setImageDrawable(image);
+      background = Drawable.createFromPath(backgroundImagePath);
     }
-    else if(dynamicTheme.isDarkTheme(this)) {
-      backgroundView.setImageResource(R.drawable.background_hd_dark);
+    else if(DynamicTheme.isDarkTheme(this)) {
+      background = getResources().getDrawable(R.drawable.background_hd_dark);
     }
     else {
-      backgroundView.setImageResource(R.drawable.background_hd);
+      background = getResources().getDrawable(R.drawable.background_hd);
     }
+    backgroundView.setImageDrawable(background);
   }
 
   protected void initializeActionBar() {
