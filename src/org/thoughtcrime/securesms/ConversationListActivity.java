@@ -117,7 +117,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // 	    "✳️ modificado el icono de la app.");
     // dcContext.addDeviceMsg("lite-1.9.2-chlog", msg);
 
-
+    // create view
     setContentView(R.layout.conversation_list_activity);
 
     Toolbar toolbar = findViewById(R.id.toolbar);

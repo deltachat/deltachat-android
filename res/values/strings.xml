@@ -700,5 +700,6 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="update_1_10_android">New Delta Chat 1.10 features at a glance: faster, multi-account, blur images, new emojis, reworked notifications, better error-reporting but most importantly:\n\nClick an avatar in profile and enlarge it 🚀</string>
 
 </resources>

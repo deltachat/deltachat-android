@@ -14,7 +14,8 @@ this will take some time - meanwhile we're doing some housekeeping:
    $ ./tools/tx-pull-translations.sh
    $ cd ../deltachat-pages; ./tools/create-local-help.py; cd ../deltachat-android
 
-4. update CHANGELOG.md
+4. add a device message to ConversationListActivity::onCreate()
+   and update CHANGELOG.md
    (the core-changelog at
    https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md
    and the "N commits to master since last release" on
