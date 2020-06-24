@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent" android:layout_width="match_parent">
 
-    <ImageView
+    <org.thoughtcrime.securesms.components.ScaleStableImageView
         android:id="@+id/conversation_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="ContentDescription"
-        android:scaleType="matrix" />
+        android:scaleType="centerCrop" />
 
     <org.thoughtcrime.securesms.components.InputAwareLayout
             android:id="@+id/layout_container"
