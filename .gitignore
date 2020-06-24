@@ -27,6 +27,9 @@ test/androidTestEspresso/res/values/arrays.xml
 obj/
 jni/libspeex/.deps/
 
+# ignore debug symbols created by ./tools/upload-release.sh
+*-symbols.zip
+
 # ignore private scripts and directories, eg. local2github.prv.sh
 *.prv*
 
