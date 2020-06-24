@@ -89,6 +89,13 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // add welcome message
     dcContext.updateDeviceChats();
 
+    // update messages - for new messages, do not reuse or modify strings but create new ones.
+    // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg.setText(getString(R.string.update_1_10_android));
+    dcContext.addDeviceMsg("update_1_10b_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
+
+    // create view
     setContentView(R.layout.conversation_list_activity);
 
     Toolbar toolbar = findViewById(R.id.toolbar);
