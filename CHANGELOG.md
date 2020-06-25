@@ -1,5 +1,11 @@
 # Delta Chat Android Changelog
 
+## v1.10.4
+
+* add device message, summing up changes
+* update translations and help
+
+
 ## v1.10.3
 2020-06
 
