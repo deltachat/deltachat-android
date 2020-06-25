@@ -692,8 +692,4 @@
     <string name="InfoPlist_NSContactsUsageDescription">Permitir o acceso a libreta de enderezos permíteche conversar con contactos do dispositivo.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Permitindo o acceso ao micrófono poderás gravar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Permitindo o acceso a galería de fotos poderás subir imaxes desde ela.</string>
-
-
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

@@ -606,8 +606,4 @@
     <string name="a11y_delivery_status_invalid">Status pengiriman tidak valid</string>
     <string name="a11y_remove_account_btn_label">Menghapus akun</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk dikirim.</string>
-
-
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

@@ -689,8 +689,4 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="InfoPlist_NSContactsUsageDescription">Kontaktuen liburua atzitzeko baimena emateak zure gailuko kontaktuekin txateatzea ahalbidetzen dizu.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Mikrofonoa  atzitzeko baimena emateak audioa grabatzea ahalbidetzen dizu.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Argazkien bilduma atzitzeko baimena emateak bertatik argazkiak igotzea ahalbidetzen dizu.</string>
-
-
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

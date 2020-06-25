@@ -657,8 +657,4 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilise votre micro pour enregistrer et envoyer des messages vocaux et des vidéos avec bande son.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vous laisse choisir quelles photos envoyer de votre photothèque. </string>
-
-
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

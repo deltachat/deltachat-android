@@ -694,8 +694,10 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat\'in sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat, göndermek için kitaplığınızdan fotoğraflar seçmenizi sağlayacak.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat, görselleri fotoğraf kitaplığınıza kaydetmek istiyor.</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="update_1_10_android">Bir bakışta yeni Delta Chat 1.10: Daha hızlı, çoklu hesap, bulanık görseller, yeni emojiler, yeniden çalışılmış bildirimler, daha iyi hata raporlama ama en önemlisi:\n\nProfildeki bir avatarı tıklayın ve onu genişletin 🚀</string>
 
 </resources>

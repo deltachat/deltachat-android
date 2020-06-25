@@ -275,6 +275,4 @@
     <string name="none_blocked_desktop">இதுவரையில் எந்த தொடர்பும் தடுக்கப்படவில்லை</string>
     <string name="me_desktop">நான்</string>
     <string name="message_detail_from_desktop">அனுப்புதல்</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

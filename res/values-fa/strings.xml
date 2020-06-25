@@ -682,8 +682,4 @@
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش لیست ایمیل‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت سرور ندارد مخاطبین شما به جایی ارسال نمی‌شوند. </string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دلتاچت از میکروفون برای ذخیره و ارسال پیام صوتی یا فیلم دارای صدا استفاده می‌کند.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
-
-
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

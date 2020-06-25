@@ -496,6 +496,4 @@
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>
     <string name="encryption_info_desktop">Ammustra sas informatziones de tzifradura</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

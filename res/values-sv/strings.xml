@@ -694,8 +694,7 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat använder dina kontakter för att visa en lista över e-postadresser som du kan skriva till.m Delta Chat har ingen server, dina kontakter skickas inte någonstans.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat använder din mikrofon för att spela in och skicka röstmeddelanden, och filmer med ljud.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat låter dig välja vilka bilder från ditt galleri som du vill skicka.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vill spara bilder i ditt fotogalleri.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

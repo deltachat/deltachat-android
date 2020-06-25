@@ -683,8 +683,4 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用您的麦克风来录制、发送语音消息和带有声音的视频。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
-
-
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

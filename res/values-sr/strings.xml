@@ -382,6 +382,4 @@
     <string name="name_desktop">Име</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
     <string name="me_desktop">Ја</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

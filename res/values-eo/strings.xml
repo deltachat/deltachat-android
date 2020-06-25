@@ -438,6 +438,4 @@
     <string name="save_desktop">Konservi</string>
     <string name="me_desktop">mi</string>
     <string name="message_detail_from_desktop">De</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

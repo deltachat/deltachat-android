@@ -586,6 +586,4 @@
     <string name="user_location_permission_explanation">Delta Chat yerinizi göstərmək və bölüşmək üçün yer icazəsinə ehtiyac duyur.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

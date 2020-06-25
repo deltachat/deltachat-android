@@ -694,8 +694,10 @@
     <string name="InfoPlist_NSContactsUsageDescription">Autorizzare l\'accesso alla rubrica ti permette di chattare con i contatti nel tuo dispositivo.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Autorizzare l\'accesso al microfono ti permette di registrare audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Autorizzare l\'accesso alla galleria ti permette di caricare foto da essa.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vuole salvare le immagini nella tua libreria di foto.</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="update_1_10_android">Nuove funzionalità di Delta Chat 1.10 a colpo d\'occhio: più veloce, multi-account, immagini sfocate, nuove emoji, notifiche rielaborate, migliore segnalazione degli errori, ma soprattutto:\n\nFai clic su un avatar nel profilo e ingrandiscilo 🚀</string>
 
 </resources>
