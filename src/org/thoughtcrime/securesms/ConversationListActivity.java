@@ -102,20 +102,22 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n\n" +
 	    "ℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
 	    "/help");
-    dcContext.addDeviceMsg("lite-update1.6.2", msg);
+    dcContext.addDeviceMsg("dlab-1.10.4-bots", msg);
 
-    // msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    // msg.setText(
-    //         "🆕 Registro de cambios v1.9.2:\n" +
-    // 	    "✳️ integrado un visor de .html,.md y .html.zip en la app para poder abrir con facilidad los html que envían los bots.\n" +
-    // 	    "✳️ añadido nuevos temas para la selección de apariencia de la app.\n" +
-    // 	    "✳️ mejorada la calidad de los audios aún así el consumo sigue siendo bajo con una taza de 1KB por segundo.\n" +
-    // 	    "✳️ un poco más de compresión de imágenes.\n" +
-    // 	    "✳️ ahora el area de escribir se expande por más líneas para que la redacción de textos largos sea más fácil.\n" +
-
-    // 	    "✳️ añadido soporte para Android 4.0.3, esto no ha sido comprobado por no contar con un teléfono con dicha versión, por lo que puede que no funcione.\n" +
-    // 	    "✳️ modificado el icono de la app.");
-    // dcContext.addDeviceMsg("lite-1.9.2-chlog", msg);
+    msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg.setText(
+	    "🆕 Registro de cambios v1.10.4:\n" +
+	    "✳️ La app ahora es mucho más rápida, recibe cientos de mensajes en cuestiones de segundos.\n" +
+	    "✳️ Múltiples cuentas de correo pueden ser usadas con la misma apk.\n" +
+	    "✳️ Ahora es posible difuminar partes de una imagen en el editor antes de enviarla, útil para ocultar rostros o contenido privado de una forma elegante.\n" +
+	    "✳️ Nuevo selector de emojis con más emojis a escojer.\n" +
+	    "✳️ Mejoradas las notificaciones.\n" +
+	    "✳️ Ahora es posible ver en pantalla completa los avatar de los usuarios haciendo click en el avatar en el perfil del usuario.\n" +
+	    "✳️ La apariencia de los temas fue retocada y añadido un nuevo tema rosado.\n" +
+	    "✳️ Aplicación renombrada a DeltaLab y cambiado el icono para diferenciar del Delta Chat oficial.\n" +
+	    "\n" +
+	    "DeltaLab es una versión personalizada de Delta Chat, pensada para ahorrar datos y experimentar, la versión oficial puedes descargarla de: https://get.delta.chat");
+    dcContext.addDeviceMsg("dlab-1.10.4-chlog", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
