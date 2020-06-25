@@ -698,8 +698,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat verwendet die Kontakte, um eine Liste von E-Mail-Adressen anzuzeigen, an die Sie schreiben können. Delta Chat hat keine Server; das Adressbuch wird nicht versandt.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat verwendet das Mikrofon, um Sprachnachrichten und Videos mit Sound aufzunehmen und zu versenden.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat verwendet die Fotos, um Ihnen die Möglichkeit zu geben, diese auszuwählen und zu versenden.</string>
-
-
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="update_1_10_android">Die neuen Delta Chat 1.10 Features im Überblick: schneller, Multi-Account, Bildbereiche verwischen, neue Emojis, überarbeitete Benachrichtigungen, Anzeige fehlerhafter Nachrichten. Aber am wichtigsten:\n\nAvatare im Profil vergrößern 🚀</string>
 
 </resources>

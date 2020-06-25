@@ -592,6 +592,4 @@
     <string name="user_location_permission_explanation">O Delta Chat precisa acessar sua localização para que você possa exibi-la e compartilhá-la.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

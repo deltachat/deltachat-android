@@ -507,6 +507,4 @@
     <string name="message_detail_to_desktop"> </string>
     <string name="menu.view.developer.open.log.folder">Відкрити папку журналів</string>
     <string name="menu.view.developer.open.current.log.file">Відкрити поточний файл журналу</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

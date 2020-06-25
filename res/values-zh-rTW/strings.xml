@@ -434,6 +434,4 @@
     <string name="unblock_contacts_desktop">解除封鎖聯絡人</string>
     <string name="none_blocked_desktop">沒有封鎖的聯絡人</string>
     <string name="forget_login_confirmation_desktop">確定要刪除這裡的登入嗎? 所有的設定都會被刪除，包括端到端加密設定、聯絡人、對話、訊息、媒體檔案等。本動作不能復原。</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

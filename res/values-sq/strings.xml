@@ -693,8 +693,10 @@
     <string name="InfoPlist_NSContactsUsageDescription">Lejimi i përdorimi të librit tuaj të adresave kamerës ju bën të mundur të bisedoni me kontakte prej pajisjes tuaj.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Lejimi i përdorimi të mikrofonit ju bën të mundur të bëni incizoni audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Lejimi i përdorimi të fototekës tuaj ju bën të mundur të ngarkoni figura prej saj.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat dëshiron të ruajë figura në fototekën tuaj.</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="update_1_10_android">Veçori të reja në Delta Chat 1.10, me një vështrim: më i shpejtë, llogari të shumëfishta, turbullim figurash, emotikone të rinj, njoftime të ripunuara, njoftim më i mirë të metash, por më e rëndësishmja:\n\nKlikoni mbi një avatar profili dhe zmadhojeni 🚀</string>
 
 </resources>
