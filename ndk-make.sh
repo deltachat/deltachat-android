@@ -40,15 +40,15 @@ export CFLAGS=-D__ANDROID_API__=21
 TARGET_CC=aarch64-linux-android21-clang \
 cargo +`cat rust-toolchain` build --release --target aarch64-linux-android -p deltachat_ffi
 
-echo "-- cross compiling to i686-linux-android (x86) --"
-export CFLAGS=-D__ANDROID_API__=16
-TARGET_CC=i686-linux-android16-clang \
-cargo +`cat rust-toolchain` build --release --target i686-linux-android -p deltachat_ffi
+# echo "-- cross compiling to i686-linux-android (x86) --"
+# export CFLAGS=-D__ANDROID_API__=16
+# TARGET_CC=i686-linux-android16-clang \
+# cargo +`cat rust-toolchain` build --release --target i686-linux-android -p deltachat_ffi
 
-echo "-- cross compiling to x86_64-linux-android (x86_64) --"
-export CFLAGS=-D__ANDROID_API__=21
-TARGET_CC=x86_64-linux-android21-clang \
-cargo +`cat rust-toolchain` build --release --target x86_64-linux-android -p deltachat_ffi
+# echo "-- cross compiling to x86_64-linux-android (x86_64) --"
+# export CFLAGS=-D__ANDROID_API__=21
+# TARGET_CC=x86_64-linux-android21-clang \
+# cargo +`cat rust-toolchain` build --release --target x86_64-linux-android -p deltachat_ffi
 
 echo -- copy generated .a files --
 cd ..
