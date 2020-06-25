@@ -117,18 +117,12 @@ static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
 
 	if (ca) {
 		if (icnt) {
-			const uint32_t* ca_data = dc_array_get_raw(ca);
-			if (sizeof(uint32_t)==sizeof(jint)) {
-				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
+			jint* temp = calloc(icnt, sizeof(jint));
+			for (i = 0; i < icnt; i++) {
+				temp[i] = (jint)dc_array_get_id(ca, i);
 			}
-			else {
-				jint* temp = calloc(icnt, sizeof(jint));
-					for (i = 0; i < icnt; i++) {
-						temp[i] = (jint)ca_data[i];
-					}
-					(*env)->SetIntArrayRegion(env, ret, 0, icnt, temp);
-				free(temp);
-			}
+			(*env)->SetIntArrayRegion(env, ret, 0, icnt, temp);
+			free(temp);
 		}
 		dc_array_unref(ca);
 	}
