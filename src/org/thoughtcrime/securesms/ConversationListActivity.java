@@ -99,8 +99,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    // "✳️ simple-facebook-bridge@testrun.org puente para chatear desde delta chat con tus amigos de facebook.\n" +
 	    "✳️ simplebot@riseup.net bot de navegación en internet, búsqueda y descargas de archivos, fotos, estado del tiempo, wikipedia, RSS, memes etc.\n" +
 	    "✳️ simplebot@systemli.org bot para navegación en internet parecido a simplebot@riseup.net además permite jugar ajedrez y reversi con tus amigos\n" +
-	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n\n" +
-	    "ℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
+	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n" +
+	    "\nℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
 	    "/help");
     dcContext.addDeviceMsg("dlab-1.10.4-bots", msg);
 
@@ -110,13 +110,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ La app ahora es mucho más rápida, recibe cientos de mensajes en cuestiones de segundos.\n" +
 	    "✳️ Múltiples cuentas de correo pueden ser usadas con la misma apk.\n" +
 	    "✳️ Ahora es posible difuminar partes de una imagen en el editor antes de enviarla, útil para ocultar rostros o contenido privado de una forma elegante.\n" +
-	    "✳️ Nuevo selector de emojis con más emojis a escojer.\n" +
+	    "✳️ Nuevo selector de emojis con más emojis a escoger.\n" +
 	    "✳️ Mejoradas las notificaciones.\n" +
 	    "✳️ Ahora es posible ver en pantalla completa los avatar de los usuarios haciendo click en el avatar en el perfil del usuario.\n" +
 	    "✳️ La apariencia de los temas fue retocada y añadido un nuevo tema rosado.\n" +
 	    "✳️ Aplicación renombrada a DeltaLab y cambiado el icono para diferenciar del Delta Chat oficial.\n" +
-	    "\n" +
-	    "DeltaLab es una versión personalizada de Delta Chat, pensada para ahorrar datos y experimentar, la versión oficial puedes descargarla de: https://get.delta.chat");
+	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ahorrar datos y experimentar, la versión oficial puedes descargarla de: https://get.delta.chat");
     dcContext.addDeviceMsg("dlab-1.10.4-chlog", msg);
 
     // create view
