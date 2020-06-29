@@ -444,6 +444,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
+    if (Prefs.isEphemeralMessagesEnabled(this)) {
+      menu.findItem(R.id.menu_ephemeral_messages).setVisible(true);
+    }
+
     if (isGroupConversation()) {
       if (isActiveGroup()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);

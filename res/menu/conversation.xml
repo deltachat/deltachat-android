@@ -39,4 +39,8 @@
           android:icon="?menu_map_icon"
           app:showAsAction="ifRoom" />
 
+    <item android:id="@+id/menu_ephemeral_messages"
+          android:title="@string/pref_ephemeral_messages"
+          android:visible="false" />
+
 </menu>
