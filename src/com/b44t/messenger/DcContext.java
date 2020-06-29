@@ -20,6 +20,7 @@ public class DcContext {
     public final static int DC_EVENT_MSG_FAILED                  = 2012;
     public final static int DC_EVENT_MSG_READ                    = 2015;
     public final static int DC_EVENT_CHAT_MODIFIED               = 2020;
+    public final static int DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED = 2021;
     public final static int DC_EVENT_CONTACTS_CHANGED            = 2030;
     public final static int DC_EVENT_LOCATION_CHANGED            = 2035;
     public final static int DC_EVENT_CONFIGURE_PROGRESS          = 2041;
@@ -150,6 +151,8 @@ public class DcContext {
     public native int[]        getChatMedia         (int chat_id, int type1, int type2, int type3);
     public native int          getNextMedia         (int msg_id, int dir, int type1, int type2, int type3);
     public native int[]        getChatContacts      (int chat_id);
+    public native int          getChatEphemeralTimer (int chat_id);
+    public native boolean      setChatEphemeralTimer (int chat_id, int timer);
     public native boolean      setChatMuteDuration  (int chat_id, long duration);
     public native void         deleteChat           (int chat_id);
     public @NonNull DcMsg      getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
