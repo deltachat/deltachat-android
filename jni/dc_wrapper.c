@@ -1135,6 +1135,16 @@ JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatContacts(JNIEnv *en
 	return dc_array2jintArray_n_unref(env, ca);
 }
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_getChatEphemeralTimer(JNIEnv *env, jobject obj, jint chat_id)
+{
+	return dc_get_chat_ephemeral_timer(get_dc_context(env, obj), chat_id);
+}
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setChatEphemeralTimer(JNIEnv *env, jobject obj, jint chat_id, jint timer)
+{
+	return dc_set_chat_ephemeral_timer(get_dc_context(env, obj), chat_id, timer);
+}
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setChatMuteDuration(JNIEnv *env, jobject obj, jint chat_id, jlong duration)
 {
     return dc_set_chat_mute_duration(get_dc_context(env, obj), chat_id, duration);
