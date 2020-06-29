@@ -62,12 +62,6 @@
     <string name="this_month">This month</string>
     <string name="last_week">Last week</string>
     <string name="last_month">Last month</string>
-    <string name="n_seconds">%d seconds</string>
-    <string name="one_minute">One minute</string>
-    <string name="one_hour">One hour</string>
-    <string name="one_day">One day</string>
-    <string name="one_week">One week</string>
-    <string name="four_weeks">Four weeks</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -198,6 +192,14 @@
     <string name="pin">Pin</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Unpin</string>
+
+    <!-- epemeral messages -->
+    <string name="after_30_seconds">After 30 seconds</string>
+    <string name="after_one_minute">After one minute</string>
+    <string name="after_one_hour">After one hour</string>
+    <string name="after_one_day">After one day</string>
+    <string name="after_one_week">After one week</string>
+    <string name="after_four_weeks">After four weeks</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_two_hours">Mute for 2 hours</string>

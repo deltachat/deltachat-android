@@ -518,6 +518,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_search_up:             handleMenuSearchNext(false);       return true;
       case R.id.menu_search_down:           handleMenuSearchNext(true);        return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
+      case R.id.menu_ephemeral_messages:    handleEphemeralMessages();         return true;
     }
 
     return false;
@@ -544,6 +545,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   //////// Event Handlers
+
+  private void handleEphemeralMessages() {
+      int preselected = dcContext.getChatEphemeralTimer(chatId);
+      EphemeralMessagesDialog.show(this, preselected, duration -> {
+        dcContext.setChatEphemeralTimer(chatId, (int) duration);
+      });
+  }
 
   private void handleShowMap() {
     Intent intent = new Intent(this, MapActivity.class);
