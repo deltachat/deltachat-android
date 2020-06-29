@@ -62,6 +62,12 @@
     <string name="this_month">This month</string>
     <string name="last_week">Last week</string>
     <string name="last_month">Last month</string>
+    <string name="n_seconds">%d seconds</string>
+    <string name="one_minute">One minute</string>
+    <string name="one_hour">One hour</string>
+    <string name="one_day">One day</string>
+    <string name="one_week">One week</string>
+    <string name="four_weeks">Four weeks</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
