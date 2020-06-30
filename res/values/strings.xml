@@ -219,6 +219,7 @@
         <item quantity="other">Delete %d messages here and on the server?</item>
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
+    <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
     <string name="ask_export_attachment">Export attachment? Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
     <string name="ask_block_contact">Block this contact? You will no longer receive messages from this contact.</string>
     <string name="ask_unblock_contact">Unblock this contact? You will once again be able to receive messages from this contact.</string>
@@ -363,7 +364,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Forward to…</string>
-    <string name="share_multiple_attachments">Do you want to send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_multiple_attachments">Send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_multiple_attachments_multiple_chats">Send %1$d file(s) to %2$d chats?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
 

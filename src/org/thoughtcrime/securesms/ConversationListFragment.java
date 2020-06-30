@@ -21,9 +21,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,23 +48,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
-import androidx.fragment.app.Fragment;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
@@ -63,23 +66,27 @@ import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.RelayUtil;
+import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 
 public class ConversationListFragment extends Fragment
-  implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate
-{
+        implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate {
   public static final String ARCHIVE = "archive";
 
   @SuppressWarnings("unused")
@@ -98,7 +105,7 @@ public class ConversationListFragment extends Fragment
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
-    locale  = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
+    locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
 
     ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
@@ -116,6 +123,7 @@ public class ConversationListFragment extends Fragment
     DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
   }
 
+  @SuppressLint("RestrictedApi")
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
     final View view = inflater.inflate(R.layout.conversation_list_fragment, container, false);
@@ -143,7 +151,7 @@ public class ConversationListFragment extends Fragment
     super.onActivityCreated(bundle);
 
     setHasOptionsMenu(true);
-    initializeFabClickListener();
+    initializeFabClickListener(false);
     initializeListAdapter();
   }
 
@@ -162,18 +170,48 @@ public class ConversationListFragment extends Fragment
   }
 
   public void onNewIntent() {
-    initializeFabClickListener();
+    initializeFabClickListener(actionMode != null);
   }
 
   public ConversationListAdapter getListAdapter() {
     return (ConversationListAdapter) list.getAdapter();
   }
 
-  private void initializeFabClickListener() {
+  private void initializeFabClickListener(boolean isActionMode) {
     Intent intent = new Intent(getActivity(), NewConversationActivity.class);
     if (isRelayingMessageContent(getActivity())) {
-      acquireRelayMessageContent(getActivity(), intent);
-      fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_RELAY));
+      if (isActionMode) {
+        fab.setOnClickListener(v -> {
+          final Set<Long> selectedChats = getListAdapter().getBatchSelections();
+          ArrayList<Uri> uris = getSharedUris(getActivity());
+          String message;
+          if (isForwarding(getActivity())) {
+            message = String.format(Locale.getDefault(), getString(R.string.ask_forward_multiple), selectedChats.size());
+          } else if (uris.size() > 0) {
+            message = String.format(Locale.getDefault(), getString(R.string.share_multiple_attachments_multiple_chats), uris.size(), selectedChats.size());
+          } else {
+            message = String.format(Locale.getDefault(), getString(R.string.share_text_multiple_chats), selectedChats.size(), getSharedText(getActivity()));
+          }
+          Context context = getContext();
+          if (context != null) {
+            new AlertDialog.Builder(context)
+                    .setMessage(message)
+                    .setCancelable(false)
+                    .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {}))
+                    .setPositiveButton(R.string.menu_send, (dialog, which) -> {
+                      SendRelayedMessageUtil.immediatelyRelay(getActivity(), selectedChats.toArray(new Long[selectedChats.size()]));
+                      actionMode.finish();
+                      actionMode = null;
+                      // Start this activity again, this time with an intent without sharing:
+                      startActivity(new Intent(getActivity(), ConversationListActivity.class));
+                    })
+                    .show();
+          }
+        });
+      } else {
+        acquireRelayMessageContent(getActivity(), intent);
+        fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_RELAY));
+      }
     } else {
       fab.setOnClickListener(v -> startActivity(intent));
     }
@@ -192,7 +230,7 @@ public class ConversationListFragment extends Fragment
           } else if (OutdatedReminder.isEligible(context)) {
             return Optional.of(new OutdatedReminder(context));
           }
-        } catch(Exception e) {
+        } catch (Exception e) {
           e.printStackTrace();
         }
 
@@ -398,26 +436,26 @@ public class ConversationListFragment extends Fragment
         int contactId = item.getContactId();
         DcContact contact = dcContext.getContact(contactId);
         new AlertDialog.Builder(getActivity())
-          .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
-          .setPositiveButton(android.R.string.ok, (dialog, which) ->  {
-              int belongingChatId = dcContext.createChatByMsgId(msgId);
-              if( belongingChatId != 0 ) {
-                handleCreateConversation(belongingChatId);
-              }
-          })
-          .setNegativeButton(R.string.not_now, (dialog, which) -> {
-            dcContext.marknoticedContact(contactId);
-          })
-          .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
-            dcContext.blockContact(contactId, 1);
-          })
-          .show();
+                .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                  int belongingChatId = dcContext.createChatByMsgId(msgId);
+                  if (belongingChatId != 0) {
+                    handleCreateConversation(belongingChatId);
+                  }
+                })
+                .setNegativeButton(R.string.not_now, (dialog, which) -> {
+                  dcContext.marknoticedContact(contactId);
+                })
+                .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
+                  dcContext.blockContact(contactId, 1);
+                })
+                .show();
         return;
       }
 
       handleCreateConversation(chatId);
     } else {
-      ConversationListAdapter adapter = (ConversationListAdapter)list.getAdapter();
+      ConversationListAdapter adapter = (ConversationListAdapter) list.getAdapter();
       adapter.toggleThreadInBatchSet(item.getChatId());
 
       if (adapter.getBatchSelections().size() == 0) {
@@ -435,12 +473,14 @@ public class ConversationListFragment extends Fragment
   public void onItemLongClick(ConversationListItem item) {
     actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(ConversationListFragment.this);
 
-    getListAdapter().initializeBatchMode(true);
-    getListAdapter().toggleThreadInBatchSet(item.getChatId());
-    getListAdapter().notifyDataSetChanged();
-    Menu menu = actionMode.getMenu();
-    if (menu != null) {
+    if (actionMode != null) {
+      getListAdapter().initializeBatchMode(true);
+      getListAdapter().toggleThreadInBatchSet(item.getChatId());
+      getListAdapter().notifyDataSetChanged();
+      Menu menu = actionMode.getMenu();
+      if (menu != null) {
         updateActionModeItems(menu);
+      }
     }
   }
 
@@ -467,30 +507,38 @@ public class ConversationListFragment extends Fragment
   }
 
   private void updateActionModeItems(Menu menu) {
-    MenuItem pinItem = menu.findItem(R.id.menu_pin_selected);
-    if (areSomeSelectedChatsUnpinned()) {
-      pinItem.setIcon(R.drawable.ic_pin_white);
-      pinItem.setTitle(R.string.pin_chat);
-    } else {
-      pinItem.setIcon(R.drawable.ic_unpin_white);
-      pinItem.setTitle(R.string.unpin_chat);
+    // We do not show action mode icons when relaying (= sharing or forwarding).
+    if (!isRelayingMessageContent(getActivity())) {
+      MenuItem pinItem = menu.findItem(R.id.menu_pin_selected);
+      if (areSomeSelectedChatsUnpinned()) {
+        pinItem.setIcon(R.drawable.ic_pin_white);
+        pinItem.setTitle(R.string.pin_chat);
+      } else {
+        pinItem.setIcon(R.drawable.ic_unpin_white);
+        pinItem.setTitle(R.string.unpin_chat);
+      }
     }
   }
 
   @Override
   public boolean onCreateActionMode(ActionMode mode, Menu menu) {
     if (isRelayingMessageContent(getActivity())) {
-      return false;
+      Context context = getContext();
+      if (context != null) {
+        fab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_send_sms_white_24dp));
+      }
+      initializeFabClickListener(true);
+    } else {
+
+      MenuInflater inflater = getActivity().getMenuInflater();
+
+      inflater.inflate(R.menu.conversation_list_batch_pin, menu);
+
+      if (archive) inflater.inflate(R.menu.conversation_list_batch_unarchive, menu);
+      else inflater.inflate(R.menu.conversation_list_batch_archive, menu);
+
+      inflater.inflate(R.menu.conversation_list, menu);
     }
-
-    MenuInflater inflater = getActivity().getMenuInflater();
-
-    inflater.inflate(R.menu.conversation_list_batch_pin, menu);
-
-    if (archive) inflater.inflate(R.menu.conversation_list_batch_unarchive, menu);
-    else         inflater.inflate(R.menu.conversation_list_batch_archive, menu);
-
-    inflater.inflate(R.menu.conversation_list, menu);
 
     mode.setTitle("1");
 
@@ -528,12 +576,18 @@ public class ConversationListFragment extends Fragment
       color.recycle();
     }
 
+    Context context = getContext();
+    if (context != null) {
+      fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_add_white_24dp));
+    }
+    initializeFabClickListener(false);
+
     actionMode = null;
   }
 
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
-    getLoaderManager().restartLoader(0,null,this);
+    getLoaderManager().restartLoader(0, null, this);
   }
 }
 
