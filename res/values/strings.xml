@@ -193,14 +193,6 @@
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Unpin</string>
 
-    <!-- epemeral messages -->
-    <string name="after_30_seconds">After 30 seconds</string>
-    <string name="after_one_minute">After one minute</string>
-    <string name="after_one_hour">After one hour</string>
-    <string name="after_one_day">After one day</string>
-    <string name="after_one_week">After one week</string>
-    <string name="after_four_weeks">After four weeks</string>
-
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_two_hours">Mute for 2 hours</string>
     <string name="mute_for_one_day">Mute for 1 day</string>
@@ -495,6 +487,8 @@
     <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n• This includes all media\n\n• This will also delete emails affected by the \"Show classic emails\" option\n\n• \"Saved messages\" will be deleted from the server as well</string>
     <string name="autodel_confirm">I understand, delete all these messages</string>
     <string name="autodel_at_once">At once</string>
+    <string name="after_30_seconds">After 30 seconds</string>
+    <string name="after_1_minute">After 1 minute</string>
     <string name="autodel_after_1_hour">After 1 hour</string>
     <string name="autodel_after_1_day">After 1 day</string>
     <string name="autodel_after_1_week">After 1 week</string>
