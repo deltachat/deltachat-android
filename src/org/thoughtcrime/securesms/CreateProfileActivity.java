@@ -336,8 +336,8 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
   private Intent createAvatarSelectionIntent(@Nullable File captureFile, boolean includeClear, boolean includeCamera) {
     List<Intent> extraIntents  = new LinkedList<>();
-    Intent       galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-    galleryIntent.setType("image/*");
+    Intent       galleryIntent = new Intent(Intent.ACTION_PICK);
+    galleryIntent.setDataAndType(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");
 
     if (!IntentUtils.isResolvable(CreateProfileActivity.this, galleryIntent)) {
       galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
