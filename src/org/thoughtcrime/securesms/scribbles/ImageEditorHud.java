@@ -185,6 +185,7 @@ public final class ImageEditorHud extends LinearLayout {
       case DRAW:      presentModeDraw();      break;
       case HIGHLIGHT: presentModeHighlight(); break;
       case TEXT:      presentModeText();      break;
+      case BLUR:      presentModeBlur();      break;
     }
 
     if (notify) {
@@ -204,6 +205,11 @@ public final class ImageEditorHud extends LinearLayout {
     return visibleButtons != null &&
            visibleButtons.contains(button) &&
            (button != undoButton || undoAvailable);
+  }
+
+  private void presentModeBlur() {
+    colorPicker.setOnColorChangeListener(standardOnColorChangeListener);
+    colorPicker.setActiveColor(Color.WHITE);
   }
 
   private void presentModeDraw() {
