@@ -46,6 +46,7 @@ import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.FileProviderUtil;
+import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
@@ -56,6 +57,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.List;
@@ -347,8 +349,15 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     if (includeCamera) {
       Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-      if (captureFile != null && cameraIntent.resolveActivity(getPackageManager()) != null) {
-        cameraIntent.putExtra(EXTRA_OUTPUT, FileProviderUtil.getUriFor(this, captureFile));
+      Uri captureUri = null;
+      try {
+        captureUri = FileProviderUtil.getUriFor(this, captureFile);
+      } catch (Exception e) {
+        Log.w(TAG, e);
+      }
+
+      if (captureUri != null && cameraIntent.resolveActivity(getPackageManager()) != null) {
+        cameraIntent.putExtra(EXTRA_OUTPUT, captureUri);
         extraIntents.add(cameraIntent);
       }
     }
