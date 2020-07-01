@@ -372,7 +372,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
     if (hasCameraPermission) {
       try {
-        captureFile = File.createTempFile("capture", "jpg", getExternalCacheDir());
+        captureFile = File.createTempFile("capture", ".jpg", getExternalCacheDir());
       } catch (IOException e) {
         Log.w(TAG, e);
         captureFile = null;
