@@ -106,9 +106,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
-	    "🆕 Registro de cambios v1.10.4:\n" +
+	    "🆕 Registro de cambios v1.10.5:\n" +
 	    "✳️ La app ahora es mucho más rápida, recibe cientos de mensajes en cuestiones de segundos.\n" +
 	    "✳️ Múltiples cuentas de correo pueden ser usadas con la misma apk.\n" +
+	    "✳️ Nueva funcionalidad experimental de mensajes que se autodestruyen.\n" +
 	    "✳️ Ahora es posible difuminar partes de una imagen en el editor antes de enviarla, útil para ocultar rostros o contenido privado de una forma elegante.\n" +
 	    "✳️ Nuevo selector de emojis con más emojis a escoger.\n" +
 	    "✳️ Mejoradas las notificaciones.\n" +
@@ -116,7 +117,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ La apariencia de los temas fue retocada y añadido un nuevo tema rosado.\n" +
 	    "✳️ Aplicación renombrada a DeltaLab y cambiado el icono para diferenciar del Delta Chat oficial.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ahorrar datos y experimentar, la versión oficial puedes descargarla de: https://get.delta.chat");
-    dcContext.addDeviceMsg("dlab-1.10.4-chlog", msg);
+    dcContext.addDeviceMsg("dlab-1.10.5-chlog", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
