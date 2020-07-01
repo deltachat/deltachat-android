@@ -221,6 +221,7 @@
         <item quantity="other">Delete %d messages here and on the server?</item>
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
+    <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
     <string name="ask_export_attachment">Export attachment? Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
     <string name="ask_block_contact">Block this contact? You will no longer receive messages from this contact.</string>
     <string name="ask_unblock_contact">Unblock this contact? You will once again be able to receive messages from this contact.</string>
@@ -365,7 +366,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Forward to…</string>
-    <string name="share_multiple_attachments">Do you want to send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_multiple_attachments">Send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_multiple_attachments_multiple_chats">Send %1$d file(s) to %2$d chats?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
 
@@ -475,6 +478,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Reliable background connection</string>
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
+    <string name="pref_ephemeral_messages">Self-destructing messages</string>
 
 
     <!-- automatically delete message -->
@@ -488,6 +492,8 @@
     <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n• This includes all media\n\n• This will also delete emails affected by the \"Show classic emails\" option\n\n• \"Saved messages\" will be deleted from the server as well</string>
     <string name="autodel_confirm">I understand, delete all these messages</string>
     <string name="autodel_at_once">At once</string>
+    <string name="after_30_seconds">After 30 seconds</string>
+    <string name="after_1_minute">After 1 minute</string>
     <string name="autodel_after_1_hour">After 1 hour</string>
     <string name="autodel_after_1_day">After 1 day</string>
     <string name="autodel_after_1_week">After 1 week</string>

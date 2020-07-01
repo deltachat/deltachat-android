@@ -54,7 +54,12 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_location_streaming_enabled"
-            android:title="On-demand location streaming"/>
+            android:title="@string/pref_on_demand_location_streaming"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_ephemeral_messages"
+            android:title="@string/pref_ephemeral_messages"/>
 
     </PreferenceCategory>
 

@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.util;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class RelayUtil {
         }
     }
 
-    public static int[] getForwardedMessageIDs(Activity activity) {
+    static int[] getForwardedMessageIDs(Activity activity) {
         try {
             return activity.getIntent().getIntArrayExtra(FORWARDED_MESSAGE_IDS);
         } catch (NullPointerException npe) {
@@ -60,12 +61,15 @@ public class RelayUtil {
         }
     }
 
-    public static ArrayList<Uri> getSharedUris(Activity activity) {
-        try {
-            return activity.getIntent().getParcelableArrayListExtra(SHARED_URIS);
-        } catch (NullPointerException npe) {
-            return null;
+    public static @NonNull ArrayList<Uri> getSharedUris(Activity activity) {
+        if (activity != null) {
+            Intent i = activity.getIntent();
+            if (i != null) {
+                ArrayList<Uri> uris = i.getParcelableArrayListExtra(SHARED_URIS);
+                if (uris != null) return uris;
+            }
         }
+        return new ArrayList<>();
     }
 
     public static String getSharedText(Activity activity) {
@@ -75,6 +79,7 @@ public class RelayUtil {
             return null;
         }
     }
+
 
     public static void resetRelayingMessageContent(Activity activity) {
         try {
@@ -96,7 +101,7 @@ public class RelayUtil {
             if (isDirectSharing(currentActivity)) {
                 newActivityIntent.putExtra(DIRECT_SHARING_CHAT_ID, getDirectSharingChatId(currentActivity));
             }
-            if (getSharedUris(currentActivity) != null) {
+            if (!getSharedUris(currentActivity).isEmpty()) {
                 newActivityIntent.putParcelableArrayListExtra(SHARED_URIS, getSharedUris(currentActivity));
             }
             if (getSharedText(currentActivity) != null) {
@@ -122,6 +127,5 @@ public class RelayUtil {
     public static void setDirectSharing(Intent composeIntent, int chatId) {
         composeIntent.putExtra(DIRECT_SHARING_CHAT_ID, chatId);
     }
-
 
 }
