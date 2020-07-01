@@ -161,6 +161,16 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(69, context.getString(R.string.saved_messages));
     setStockTranslation(70, context.getString(R.string.device_talk_explain));
     setStockTranslation(71, context.getString(R.string.device_talk_welcome_message));
+    setStockTranslation(72, context.getString(R.string.systemmsg_unknown_sender_for_chat));
+    setStockTranslation(73, context.getString(R.string.systemmsg_subject_for_new_contact));
+    setStockTranslation(74, context.getString(R.string.systemmsg_failed_sending_to));
+    setStockTranslation(75, context.getString(R.string.systemmsg_ephemeral_timer_disabled));
+    setStockTranslation(76, context.getString(R.string.systemmsg_ephemeral_timer_enabled));
+    setStockTranslation(77, context.getString(R.string.systemmsg_ephemeral_timer_minute));
+    setStockTranslation(78, context.getString(R.string.systemmsg_ephemeral_timer_hour));
+    setStockTranslation(79, context.getString(R.string.systemmsg_ephemeral_timer_day));
+    setStockTranslation(80, context.getString(R.string.systemmsg_ephemeral_timer_week));
+    setStockTranslation(81, context.getString(R.string.systemmsg_ephemeral_timer_four_weeks));
   }
 
   public File getImexDir() {
