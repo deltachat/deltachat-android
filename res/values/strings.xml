@@ -530,6 +530,9 @@
     <string name="systemmsg_action_by_me">%1$s by me.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s by %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Unknown Sender for this chat. See \'info\' for more details.</string>
+    <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
+    <string name="systemmsg_failed_sending_to">Failed to send message to %1$s.</string>
 
 
     <!-- screen lock -->
