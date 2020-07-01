@@ -159,6 +159,9 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(69, context.getString(R.string.saved_messages));
     setStockTranslation(70, context.getString(R.string.device_talk_explain));
     setStockTranslation(71, context.getString(R.string.device_talk_welcome_message));
+    setStockTranslation(72, context.getString(R.string.systemmsg_unknown_sender_for_chat));
+    setStockTranslation(73, context.getString(R.string.systemmsg_subject_for_new_contact));
+    setStockTranslation(74, context.getString(R.string.systemmsg_failed_sending_to));
   }
 
   public File getImexDir() {
