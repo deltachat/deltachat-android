@@ -235,6 +235,7 @@
         <item quantity="other">Удалить %d сообщений здесь и на сервере?</item>
     </plurals>
     <string name="ask_forward">Переслать сообщения для %1$s?</string>
+    <string name="ask_forward_multiple">Отправить сообщения в %1$d чатов?</string>
     <string name="ask_export_attachment">Экспортировать вложения? Экспорт вложений, позволит любому приложению на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
     <string name="ask_block_contact">Заблокировать контакт? Вы больше не сможете получать от него сообщения.</string>
     <string name="ask_unblock_contact">Разблокировать контакт? Вы сможете получать от него сообщения снова.</string>
@@ -354,6 +355,8 @@
     <string name="login_smtp_port">SMTP порт</string>
     <string name="login_smtp_security">Параметры безопасности SMTP</string>
     <string name="login_auth_method">Метод авторизации</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Проверяем %1$s</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth2).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
@@ -384,6 +387,8 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
     <string name="share_multiple_attachments">Вы хотите отправить %1$d файлов в выбранный чат?\n\nФайлы отправляются без изменений в их исходном размере, например. изображения и видео не перекодируются.</string>
+    <string name="share_multiple_attachments_multiple_chats">Отправить %1$d файл(ов) в %2$d чатов?\n\nФайлы отправляются без изменений в их исходном размере, например. изображения и видео не перекодируются.</string>
+    <string name="share_text_multiple_chats">Отправить текст в %1$d чатов?\n\n\"%2$s\"</string>
     <string name="share_abort">Общий доступ прерван из-за отсутствия разрешений.</string>
 
 
@@ -493,6 +498,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Надёжное фоновое соединение</string>
     <string name="pref_reliable_service_explain">Требует постоянного уведомления</string>
+    <string name="ephemeral_dialog_title">Удалять прочитанные сообщения</string>
 
 
     <!-- automatically delete message -->
@@ -506,6 +512,8 @@
     <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения \"%2$s\" в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Это также удалит почту, затронутую опцией \"Показывать обычную почту\"\n\n• \"Сохранённые сообщения\" также будут удалены с сервера</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
     <string name="autodel_at_once">Сразу</string>
+    <string name="after_30_seconds">Через 30 секунд</string>
+    <string name="after_1_minute">Через 1 минуту</string>
     <string name="autodel_after_1_hour">Через 1 час</string>
     <string name="autodel_after_1_day">Через 1 день</string>
     <string name="autodel_after_1_week">Через 1 неделю</string>
@@ -544,6 +552,17 @@
     <string name="systemmsg_action_by_me">%1$s мной.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s пользователем %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Неизвестный отправитель для данного чата. Смотрите \"информацию\" для подробностей.</string>
+    <string name="systemmsg_subject_for_new_contact">Сообщения от %1$s</string>
+    <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">Таймер удаления сообщений отключен.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Таймер удаления сообщений установлен в %1$s с.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Таймер удаления сообщений установлен в 1 минуту.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Таймер удаления сообщений установлен в 1 час.</string>
+    <string name="systemmsg_ephemeral_timer_day">Таймер удаления сообщений установлен в 1 день.</string>
+    <string name="systemmsg_ephemeral_timer_week">Таймер удаления сообщений установлен в 1 неделю.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Таймер удаления сообщений установлен в 4 недели.</string>
 
 
     <!-- screen lock -->
@@ -715,4 +734,10 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat использует ваши контакты для просмотра имеющихся у них адресов электронной почты, которым вы можете написать. Delta Chat не имеет сервера, ваши контакты никуда не будут отправлены.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat использует микрофон для записи и отправки голосовых сообщений а также видео со звуком.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat предоставит вам возможность выбирать какие фотографии и из какой галереи отправлять.</string>
-    </resources>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хочет сохранить изображения в вашу галерею.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="update_1_10_android">Новое в Delta Chat 1.10: скорость, поддержка нескольких аккаунтов, размытие изображений, новые эмодзи, обновленные уведомления, улучшенные сообщения об ошибках, но самое главное:\n\nНажмите на аватар в профиле, чтобы увеличить его 🚀</string>
+
+</resources>

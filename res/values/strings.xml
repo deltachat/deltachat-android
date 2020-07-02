@@ -478,7 +478,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Reliable background connection</string>
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
-    <string name="pref_ephemeral_messages">Self-destructing messages</string>
+    <string name="ephemeral_dialog_title">Delete read messages</string>
 
 
     <!-- automatically delete message -->
