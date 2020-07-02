@@ -694,15 +694,41 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           isShareDraftInitialized = true;
         }
       });
-      resetRelayingMessageContent(this);
+      //resetRelayingMessageContent(this);
     }
   }
 
   ///// Initializers
 
+  /**
+   * Drafts can be initialized by click on a mailto: link or from the database
+   * @return
+   */
   private ListenableFuture<Boolean> initializeDraft() {
-    ListenableFuture<Boolean> result = initializeDraftFromDatabase();
-    updateToggleButtonState();
+
+    final SettableFuture<Boolean> result = new SettableFuture<>();
+
+    final String    draftText      = getIntent().getStringExtra(TEXT_EXTRA);
+    final Uri       draftMedia     = getIntent().getData();
+    final MediaType draftMediaType = MediaType.from(getIntent().getType());
+
+    if (draftText != null) {
+      composeText.setText(draftText);
+      result.set(true);
+    }
+    if (draftMedia != null && draftMediaType != null) {
+      return setMedia(draftMedia, draftMediaType);
+    }
+
+    if (draftText == null && draftMedia == null && draftMediaType == null) {
+      return initializeDraftFromDatabase();
+    } else {
+      updateToggleButtonState();
+      result.set(false);
+    }
+
+    //ListenableFuture<Boolean> result = initializeDraftFromDatabase();
+    //updateToggleButtonState();
     return result;
   }
 
