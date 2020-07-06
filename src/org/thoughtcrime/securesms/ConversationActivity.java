@@ -194,6 +194,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private boolean    isSecurityInitialized    = false;
   private boolean    isShareDraftInitialized  = false;
 
+  private boolean successfulForwardingAttempt = false;
+
 
   private final DynamicTheme       dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage    dynamicLanguage = new DynamicLanguage();
@@ -560,7 +562,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleReturnToConversationList() {
 
-    if (isRelayingMessageContent(this)) {
+    if (isRelayingMessageContent(this) || successfulForwardingAttempt) {
       if (isSharing(this)) {
         // we're allowing only 1 try to share, going back to the conversation list will
         // close the conversation list in activtyForResult() as well, so that the user
@@ -669,7 +671,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       new AlertDialog.Builder(this)
               .setMessage(getString(R.string.ask_forward, name))
-              .setPositiveButton(R.string.ok, (dialogInterface, i) -> SendRelayedMessageUtil.immediatelyRelay(this, chatId))
+              .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+                SendRelayedMessageUtil.immediatelyRelay(this, chatId);
+                successfulForwardingAttempt = true;
+              })
               .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
               .show();
     }
