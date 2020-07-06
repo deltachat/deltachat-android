@@ -95,8 +95,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     msg.setText(
             "💡TIP - Estos son algunos bots para Delta Chat:\n" +
 	    "✳️ adb_bot1@testrun.org para grupos públicos, mega-groupos con más de 20 personas!, canales y directorio de amigos.\n" +
-	    // "✳️ simplebot@testrun.org puente entre delta chat y la red social mastodon.\n" +
-	    // "✳️ simple-facebook-bridge@testrun.org puente para chatear desde delta chat con tus amigos de facebook.\n" +
+	    "✳️ simplebot@testrun.org puente entre delta chat y la red social mastodon.\n" +
+	    "✳️ simple-facebook-bridge@testrun.org puente para chatear desde delta chat con tus amigos de facebook.\n" +
 	    "✳️ simplebot@riseup.net bot de navegación en internet, búsqueda y descargas de archivos, fotos, estado del tiempo, wikipedia, RSS, memes etc.\n" +
 	    "✳️ simplebot@systemli.org bot para navegación en internet parecido a simplebot@riseup.net además permite jugar ajedrez y reversi con tus amigos\n" +
 	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n" +
