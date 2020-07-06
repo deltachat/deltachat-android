@@ -442,6 +442,20 @@ public class ApplicationDcContext extends DcContext {
         }
         break;
 
+      case DC_EVENT_MSGS_CHANGED:  // auto-accept contact requests
+        int data2 = event.getData2Int();
+        if (data2 != 0) {
+            DcMsg msg = this.getMsg(data2);
+            if (msg.getState() == DcMsg.DC_STATE_IN_FRESH) {
+               int chatId = this.createChatByMsgId(data2);
+               notificationCenter.addNotification(chatId, data2);
+               if (eventCenter != null) {
+                   eventCenter.sendToObservers(id, (long)event.getData1Int(), (long)data2);
+               }
+               break;
+            }
+        }
+
       default: {
         final Object data1obj = (long)event.getData1Int();
         final Object data2obj = data2IsString(id) ? event.getData2Str() : (long)event.getData2Int();

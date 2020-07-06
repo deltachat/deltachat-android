@@ -114,9 +114,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ Nuevo selector de emojis con más emojis a escoger.\n" +
 	    "✳️ Mejoradas las notificaciones.\n" +
 	    "✳️ Ahora es posible ver en pantalla completa los avatar de los usuarios haciendo click en el avatar en el perfil del usuario.\n" +
+	    "\n✳️ Cuando un nuevo contacto te escribe ahora se muestra una notificación y sale el chat directamente.\n" +
 	    "✳️ La apariencia de los temas fue retocada y añadido un nuevo tema rosado.\n" +
 	    "✳️ Aplicación renombrada a DeltaLab y cambiado el icono para diferenciar del Delta Chat oficial.\n" +
-	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ahorrar datos y experimentar, la versión oficial puedes descargarla de: https://get.delta.chat");
+	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
     dcContext.addDeviceMsg("dlab-1.10.5-chlog", msg);
 
     // create view
