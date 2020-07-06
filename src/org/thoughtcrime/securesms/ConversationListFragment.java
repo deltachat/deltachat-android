@@ -202,8 +202,7 @@ public class ConversationListFragment extends Fragment
                       SendRelayedMessageUtil.immediatelyRelay(getActivity(), selectedChats.toArray(new Long[selectedChats.size()]));
                       actionMode.finish();
                       actionMode = null;
-                      // Start this activity again, this time with an intent without sharing:
-                      startActivity(new Intent(getActivity(), ConversationListActivity.class));
+                      getActivity().finish();
                     })
                     .show();
           }
