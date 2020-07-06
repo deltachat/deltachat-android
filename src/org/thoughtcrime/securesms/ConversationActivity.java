@@ -702,7 +702,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           isShareDraftInitialized = true;
         }
       });
-      //resetRelayingMessageContent(this);
     }
   }
 
@@ -735,8 +734,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       result.set(false);
     }
 
-    //ListenableFuture<Boolean> result = initializeDraftFromDatabase();
-    //updateToggleButtonState();
     return result;
   }
 
