@@ -8,8 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -50,7 +48,6 @@ import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -336,8 +333,8 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
   private Intent createAvatarSelectionIntent(@Nullable File captureFile, boolean includeClear, boolean includeCamera) {
     List<Intent> extraIntents  = new LinkedList<>();
-    Intent       galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-    galleryIntent.setType("image/*");
+    Intent       galleryIntent = new Intent(Intent.ACTION_PICK);
+    galleryIntent.setDataAndType(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");
 
     if (!IntentUtils.isResolvable(CreateProfileActivity.this, galleryIntent)) {
       galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -347,8 +344,15 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     if (includeCamera) {
       Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-      if (captureFile != null && cameraIntent.resolveActivity(getPackageManager()) != null) {
-        cameraIntent.putExtra(EXTRA_OUTPUT, FileProviderUtil.getUriFor(this, captureFile));
+      Uri captureUri = null;
+      try {
+        captureUri = FileProviderUtil.getUriFor(this, captureFile);
+      } catch (Exception e) {
+        Log.w(TAG, e);
+      }
+
+      if (captureUri != null && cameraIntent.resolveActivity(getPackageManager()) != null) {
+        cameraIntent.putExtra(EXTRA_OUTPUT, captureUri);
         extraIntents.add(cameraIntent);
       }
     }
@@ -372,7 +376,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
     if (hasCameraPermission) {
       try {
-        captureFile = File.createTempFile("capture", "jpg", getExternalCacheDir());
+        captureFile = File.createTempFile("capture", ".jpg", getExternalCacheDir());
       } catch (IOException e) {
         Log.w(TAG, e);
         captureFile = null;

@@ -114,8 +114,8 @@ public class PersistentBlobProvider {
     });
   }
 
-  public Uri createForExternal(@NonNull Context context, @NonNull String mimeType) throws IOException {
-    File target = new File(getExternalDir(context), String.valueOf(System.currentTimeMillis()) + "." + getExtensionFromMimeType(mimeType));
+  public Uri createForExternal(@NonNull Context context, @NonNull String mimeType) throws IOException, IllegalStateException, NullPointerException {
+    File target = new File(getExternalDir(context), System.currentTimeMillis() + "." + getExtensionFromMimeType(mimeType));
     return FileProviderUtil.getUriFor(context, target);
   }
 

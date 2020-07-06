@@ -15,7 +15,7 @@ public class FileProviderUtil {
 
   private static final String AUTHORITY = BuildConfig.APPLICATION_ID+".fileprovider";
 
-  public static Uri getUriFor(@NonNull Context context, @NonNull File file) {
+  public static Uri getUriFor(@NonNull Context context, @NonNull File file) throws IllegalStateException, NullPointerException {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) return FileProvider.getUriForFile(context, AUTHORITY, file);
     else                                                       return Uri.fromFile(file);
   }
