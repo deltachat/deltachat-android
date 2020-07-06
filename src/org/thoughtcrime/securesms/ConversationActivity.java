@@ -31,13 +31,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Browser;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
-import androidx.core.view.WindowCompat;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -58,6 +51,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -128,7 +129,6 @@ import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -562,7 +562,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (isRelayingMessageContent(this)) {
       if (isSharing(this)) {
-        attachmentManager.cleanup();
+        // we're allowing only 1 try to share, going back to the conversation list will
+        // close the conversation list in activtyForResult() as well, so that the user
+        // comes back to the extenal app's share menu
+        setResult(RESULT_OK);
       }
       finish();
       return;
