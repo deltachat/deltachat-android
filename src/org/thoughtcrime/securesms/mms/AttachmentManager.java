@@ -460,8 +460,8 @@ public class AttachmentManager {
                      captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageCaptureUri);
                      activity.startActivityForResult(captureIntent, requestCode);
                    }
-                 } catch (IOException ioe) {
-                   Log.w(TAG, ioe);
+                 } catch (Exception e) {
+                   Log.w(TAG, e);
                  }
                })
                .execute();
@@ -485,8 +485,8 @@ public class AttachmentManager {
               captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
               activity.startActivityForResult(captureIntent, requestCode);
             }
-          } catch (IOException ioe) {
-            Log.w(TAG, ioe);
+          } catch (Exception e) {
+            Log.w(TAG, e);
           }
         })
         .execute();

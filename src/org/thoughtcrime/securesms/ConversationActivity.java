@@ -31,13 +31,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Browser;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
-import androidx.core.view.WindowCompat;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -58,6 +51,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -129,7 +130,6 @@ import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -194,6 +194,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private boolean    isDefaultSms             = true;
   private boolean    isSecurityInitialized    = false;
   private boolean    isShareDraftInitialized  = false;
+
+  private boolean successfulForwardingAttempt = false;
 
 
   private final DynamicTheme       dynamicTheme    = new DynamicTheme();
@@ -561,9 +563,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleReturnToConversationList() {
 
-    if (isRelayingMessageContent(this)) {
+    if (isRelayingMessageContent(this) || successfulForwardingAttempt) {
       if (isSharing(this)) {
-        attachmentManager.cleanup();
+        // we're allowing only 1 try to share, going back to the conversation list will
+        // close the conversation list in activtyForResult() as well, so that the user
+        // comes back to the extenal app's share menu
+        setResult(RESULT_OK);
       }
       finish();
       return;
@@ -667,7 +672,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       new AlertDialog.Builder(this)
               .setMessage(getString(R.string.ask_forward, name))
-              .setPositiveButton(R.string.ok, (dialogInterface, i) -> SendRelayedMessageUtil.immediatelyRelay(this, chatId))
+              .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+                SendRelayedMessageUtil.immediatelyRelay(this, chatId);
+                successfulForwardingAttempt = true;
+              })
               .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
               .show();
     }
@@ -695,15 +703,38 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           isShareDraftInitialized = true;
         }
       });
-      resetRelayingMessageContent(this);
     }
   }
 
   ///// Initializers
 
+  /**
+   * Drafts can be initialized by click on a mailto: link or from the database
+   * @return
+   */
   private ListenableFuture<Boolean> initializeDraft() {
-    ListenableFuture<Boolean> result = initializeDraftFromDatabase();
-    updateToggleButtonState();
+
+    final SettableFuture<Boolean> result = new SettableFuture<>();
+
+    final String    draftText      = getIntent().getStringExtra(TEXT_EXTRA);
+    final Uri       draftMedia     = getIntent().getData();
+    final MediaType draftMediaType = MediaType.from(getIntent().getType());
+
+    if (draftText != null) {
+      composeText.setText(draftText);
+      result.set(true);
+    }
+    if (draftMedia != null && draftMediaType != null) {
+      return setMedia(draftMedia, draftMediaType);
+    }
+
+    if (draftText == null && draftMedia == null && draftMediaType == null) {
+      return initializeDraftFromDatabase();
+    } else {
+      updateToggleButtonState();
+      result.set(false);
+    }
+
     return result;
   }
 
