@@ -102,7 +102,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n" +
 	    "\nℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
 	    "/help");
-    dcContext.addDeviceMsg("dlab-1.10.4-bots", msg);
+    dcContext.addDeviceMsg("dlab-1.10.5-bots", msg);
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
@@ -115,6 +115,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ Mejoradas las notificaciones.\n" +
 	    "✳️ Ahora es posible ver en pantalla completa los avatar de los usuarios haciendo click en el avatar en el perfil del usuario.\n" +
 	    "\n✳️ Cuando un nuevo contacto te escribe ahora se muestra una notificación y sale el chat directamente.\n" +
+	    "✳️ Mejorado el envío de archivos, más ahorro al enviar archivos grandes que tardaban mucho en enviarse.\n" +
 	    "✳️ La apariencia de los temas fue retocada y añadido un nuevo tema rosado.\n" +
 	    "✳️ Aplicación renombrada a DeltaLab y cambiado el icono para diferenciar del Delta Chat oficial.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
