@@ -219,6 +219,7 @@
         <item quantity="other">%d ileti buradan ve sunucudan silinsin mi?</item>
     </plurals>
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
+    <string name="ask_forward_multiple">İletiler %1$d sohbete iletilsin mi?</string>
     <string name="ask_export_attachment">İlişik dışa aktarılsın mı? İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden gelen iletileri almayacaksınız.</string>
     <string name="ask_unblock_contact">Bu kişi engellenmesin mi? Bir kez daha bu kişiden gelen iletileri alabileceksiniz.</string>
@@ -363,7 +364,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İlet…</string>
-    <string name="share_multiple_attachments">%1$d dosyayı seçilen sohbete göndermek istiyor musunuz?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; örn. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments">%1$d dosya seçilen sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; örn. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments_multiple_chats">%1$d dosya %2$d sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; örn. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n\"%2$s\"</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
 
@@ -473,6 +476,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Güvenilir arka plan bağlantısı</string>
     <string name="pref_reliable_service_explain">Kalıcı bir bildirim gerektirir</string>
+    <string name="ephemeral_dialog_title">Okunan iletileri sil</string>
 
 
     <!-- automatically delete message -->
@@ -486,6 +490,8 @@
     <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri \"%2$s\" silmek istiyor musunuz?\n\n• Bu, tüm ortamları kapsar\n\n• Bu, \"Klasik e-postaları göster\" seçeneği tarafından etkilenen e-postaları da silecek\n\n• \"Kaydedilen iletiler\" sunucudan da silinecek</string>
     <string name="autodel_confirm">Anladım, tüm bu iletileri sil</string>
     <string name="autodel_at_once">Bir kerede</string>
+    <string name="after_30_seconds">30 saniye sonra</string>
+    <string name="after_1_minute">1 dakika sonra</string>
     <string name="autodel_after_1_hour">1 saat sonra</string>
     <string name="autodel_after_1_day">1 gün sonra</string>
     <string name="autodel_after_1_week">1 hafta sonra</string>
@@ -524,6 +530,17 @@
     <string name="systemmsg_action_by_me">Benim tarafımdan %1$s.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s tarafından %1$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
+    <string name="systemmsg_subject_for_new_contact">Şundan ileti: %1$s</string>
+    <string name="systemmsg_failed_sending_to">%1$s alıcısına ileti gönderme başarısız.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">İleti silme zamanlayıcısı etkisiz.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">İleti silme zamanlayıcısı ayarlı: %1$s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">İleti silme zamanlayıcısı 1 dakikaya ayarlı.</string>
+    <string name="systemmsg_ephemeral_timer_hour">İleti silme zamanlayıcısı 1 saate ayarlı.</string>
+    <string name="systemmsg_ephemeral_timer_day">İleti silme zamanlayıcısı 1 güne ayarlı.</string>
+    <string name="systemmsg_ephemeral_timer_week">İleti silme zamanlayıcısı 1 haftaya ayarlı.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">İleti silme zamanlayıcısı 4 haftaya ayarlı.</string>
 
 
     <!-- screen lock -->

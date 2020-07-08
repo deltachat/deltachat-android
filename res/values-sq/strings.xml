@@ -219,6 +219,7 @@
         <item quantity="other">Të fshihen %d mesazhe këtu dhe te shërbyesi?</item>
     </plurals>
     <string name="ask_forward">Të përcillen mesazhet te %1$s?</string>
+    <string name="ask_forward_multiple">Të përcillen mesazhet te %1$d fjalosje?</string>
     <string name="ask_export_attachment">Të eksportohet bashkëngjitja? Eksportimi i bashkëngjitjeve do t\’i lejojë çfarëdo aplikacioni tjetër në pajisjen tuaj t\’i përdorë ato.\n\nTë vazhdohet?</string>
     <string name="ask_block_contact">Të bllokohet ky kontakt? S\’do të merrni më mesazhe prej këtij kontakti.</string>
     <string name="ask_unblock_contact">Të zhbllokohet ky kontakt? Do të jeni sërish në gjendje të merrni mesazhe prej këtij kontakti.</string>
@@ -363,7 +364,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Përcilljani …</string>
-    <string name="share_multiple_attachments">Doni të dërgohen %1$d kartela te fjalosja e përzgjedhur?\n\nKartelat dërgohen të pandryshuara, në madhësinë e tyre origjinale, p.sh., figura dhe video nuk rikodohen.</string>
+    <string name="share_multiple_attachments">Të dërgohen %1$d kartela te fjalosja e përzgjedhur?\n\nKartelat dërgohen të pandryshuara, në madhësinë e tyre origjinale, p.sh., figurat dhe videot nuk rikodohen.</string>
+    <string name="share_multiple_attachments_multiple_chats">Doni të dërgohet %1$d kartelë(a) te 2 %2$d fjalosje?\n\nKartelat dërgohen të pandryshuara, në madhësinë e tyre origjinale, p.sh., figura dhe video nuk rikodohen.</string>
+    <string name="share_text_multiple_chats">Të dërgohet ky tekst te %1$d fjalosje?\n\n\"%2$s\"</string>
     <string name="share_abort">Ndarja me të tjerë dështoi ngaqë mungojnë leje.</string>
 
 
@@ -472,6 +475,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Lidhje e qëndrueshme në prapaskenë</string>
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
+    <string name="ephemeral_dialog_title">Fshiji mesazhet e lexuar</string>
 
 
     <!-- automatically delete message -->
@@ -485,6 +489,8 @@
     <string name="autodel_server_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi \"%2$s\" në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Kjo do të fshijë gjithashtu email-e nën mundësinë \"Shfaq email-e klasikë\"\n\n• \"Mesazhet e ruajtur\" do të fshihen gjithashtu nga shërbyesi</string>
     <string name="autodel_confirm">E kuptoj, fshiji krejt këto mesazhe</string>
     <string name="autodel_at_once">Menjëherë</string>
+    <string name="after_30_seconds">Pas 30 sekondash</string>
+    <string name="after_1_minute">Pas 1 minute</string>
     <string name="autodel_after_1_hour">Pas 1 ore</string>
     <string name="autodel_after_1_day">Pas 1 dite</string>
     <string name="autodel_after_1_week">Pas 1 jave</string>
@@ -523,6 +529,17 @@
     <string name="systemmsg_action_by_me">%1$s nga unë.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s nga %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Dërgues i panjohur për këtë fjalosje. Për më tepër hollësi, shihni \'info\'.</string>
+    <string name="systemmsg_subject_for_new_contact">Mesazh nga %1$s</string>
+    <string name="systemmsg_failed_sending_to">S’u arrit të dërgohej mesazh te %1$s.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">Kohëmatësi i fshirjes së mesazheve është i çaktivizuar.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Kohëmatësi i fshirjes së mesazheve është vënë në %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Kohëmatësi i fshirjes së mesazheve është vënë në 1 minutë.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Kohëmatësi i fshirjes së mesazheve është vënë në 1 orë.</string>
+    <string name="systemmsg_ephemeral_timer_day">Kohëmatësi i fshirjes së mesazheve është vënë në 1 ditë.</string>
+    <string name="systemmsg_ephemeral_timer_week">Kohëmatësi i fshirjes së mesazheve është vënë në 1 javë.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi i fshirjes së mesazheve është vënë në 4 javë.</string>
 
 
     <!-- screen lock -->

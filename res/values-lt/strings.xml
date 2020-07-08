@@ -11,8 +11,11 @@
     <string name="def">Pagal numatymą</string>
     <string name="custom">Tinkintas</string>
     <string name="none">Nėra</string>
+    <string name="automatic">Automatinis</string>
+    <string name="strict">Griežtas</string>
     <string name="open">Atverti</string>
     <string name="delete">Ištrinti</string>
+    <string name="info">Informacija</string>
     <string name="attachment">Priedas</string>
     <string name="back">Atgal</string>
     <string name="close">Užverti</string>
@@ -42,6 +45,7 @@
     <string name="email_address">El. pašto adresas</string>
     <string name="bad_email_address">Blogas el. pašto adresas.</string>
     <string name="password">Slaptažodis</string>
+    <string name="existing_password">Esamas slaptažodis</string>
     <string name="now">Dabar</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Dėmesio</string>
@@ -301,7 +305,7 @@
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="welcome_start_messaging">Pradėti susirašinėjimą</string>
     <string name="login_title">Prisijungti</string>
-    <string name="login_header">Prisijunkite prie savo serverio</string>
+    <string name="login_header">Prisijungti prie savo serverio</string>
     <string name="login_subheader">Žinomiems el. pašto teikėjams papildomi nustatymai yra nustatomi automatiškai. Kartais, IMAP turi būti įjungtas prisijungus per naršyklę. Išsamesnės pagalbos teiraukitės savo el. pašto teikėjo ar draugų.</string>
     <string name="login_no_servers_hint">Nėra jokių Delta Chat serverių, jūsų duomenys išlieka jūsų įrenginyje!</string>
     <string name="login_inbox">Gauta</string>
@@ -315,7 +319,9 @@
     <string name="login_smtp_server">SMTP serveris</string>
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
+    <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
     <string name="login_info_oauth2_title">Tęsti, naudojant supaprastintą sąranką?</string>
+    <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
     <string name="login_error_server">Įveskite teisingą serverį / IP adresą</string>
     <string name="login_error_port">Įveskite teisingą prievadą (1–65535)</string>
@@ -327,6 +333,10 @@
     <string name="login_error_cannot_login">Nepavyksta prisijungti kaip \"%1$s\". Patikrinkite ar el. pašto adresas ir slaptažodis yra teisingi.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Atsakymas iš %1$s: %2$s\n\nKai kurie teikėjai patalpina papildomą informaciją į jūsų gautųjų laiškų aplanką; galite ją patikrinti, pvz., prisijungę per naršyklę. Jei susidursite su problema, pagalbos teiraukitės savo teikėjo ar draugų.</string>
+
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_hostnames">Priimti neteisingus serverių vardus</string>
+    <string name="accept_invalid_certificates">Priimti negaliojančius liudijimus</string>
 
     <string name="used_settings">Naudoti nustatymai:</string>
     <string name="switch_account">Perjungti paskyrą</string>
@@ -395,6 +405,7 @@
     <string name="pref_message_text_size">Žinučių šrifto dydis</string>
     <string name="pref_view_log">Rodyti žurnalą</string>
     <string name="pref_save_log_failed">Nepavyko įrašyti žurnalo</string>
+    <string name="pref_log_header">Žurnalas</string>
     <string name="pref_other">Kita</string>
     <string name="pref_backup">Atsarginė kopija</string>
     <string name="pref_backup_explain">Padaro atsarginę pokalbių kopiją į išorinę saugyklą</string>
@@ -426,12 +437,18 @@
     <string name="pref_background_default_color">Numatytoji spalva</string>
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
+    <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
+    <string name="autodel_server_title">Ištrinti žinutes iš serverio</string>
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
     <string name="autodel_at_once">Iš karto</string>
+    <string name="after_30_seconds">Po 30 sekundžių</string>
+    <string name="after_1_minute">Po 1 minutės</string>
     <string name="autodel_after_1_hour">Po 1 valandos</string>
     <string name="autodel_after_1_day">Po 1 dienos</string>
     <string name="autodel_after_1_week">Po 1 savaitės</string>
     <string name="autodel_after_4_weeks">Po 4 savaičių</string>
+    <string name="autodel_after_1_year">Po 1 metų</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt yra naujoji ir atviroji specifikacija automatiniam ištisiniam el. pašto šifravui.\n\nPrireikus, jūsų ištisinė sąranka yra sukuriama automatiškai ir gali būti perduodama tarp įrenginių, naudojant Autocrypt sąrankos žinutes.</string>
@@ -459,6 +476,16 @@
     <string name="systemmsg_read_receipt_subject">Pranešimas apie skaitymą</string>
     <string name="systemmsg_read_receipt_body">Tai yra pranešimas apie žinutės \"%1$s\" skaitymą.\n\nTai reiškia, kad žinutė buvo atvaizduota gavėjo įrenginyje, tačiau neužtikrina, kad jos turinys buvo perskaitytas.</string>
     <string name="systemmsg_cannot_decrypt">Nepavyksta iššifruoti šios žinutės.\n\n• Galima, tiesiog, atsakyti į šią žinutę ir paprašyti siuntėjo dar kartą išsiųsti šią žinutę.\n\n• Tuo atveju, jeigu iš naujo įdiegėte Delta Chat ar kitą el. pašto programą šiame ar kitame įrenginyje, jūs galite pageidauti išsiųsti Autocrypt sąrankos žinutę iš to įrenginio.</string>
+    <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Žinučių ištrynimo laikmatis yra išjungtas.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Žinučių ištrynimo laikmatis yra nustatytas į %1$s sek.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Žinučių ištrynimo laikmatis yra nustatytas į 1 minutę.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Žinučių ištrynimo laikmatis yra nustatytas į 1 valandą.</string>
+    <string name="systemmsg_ephemeral_timer_day">Žinučių ištrynimo laikmatis yra nustatytas į 1 dieną.</string>
+    <string name="systemmsg_ephemeral_timer_week">Žinučių ištrynimo laikmatis yra nustatytas į 1 savaitę.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Žinučių ištrynimo laikmatis yra nustatytas į 4 savaites.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Ekrano užraktas</string>
     <string name="screenlock_authentication_failed">Tapatybės nustatymas nepavyko.</string>
@@ -471,7 +498,7 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">QR kodas</string>
-    <string name="qrscan_title">Nuskenuokite QR kodą</string>
+    <string name="qrscan_title">Nuskenuoti QR kodą</string>
     <string name="qrscan_hint">Laikykite savo kamerą virš QR kodo</string>
     <string name="qrscan_ask_join_group">Ar norite prisijungti prie grupės \"%1$s\"?</string>
     <string name="qrscan_contains_text">Nuskenuoto QR kodo tekstas:\n\n%1$s</string>

@@ -361,7 +361,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>
-    <string name="share_multiple_attachments">%1$d fitxategi bidali nahi dituzu hautatutako txatera?\n\nFitxategiak   aldatu gabe eta jatorrizko tamainan bidaltzen dira, adibidez irudiei eta bideoei ez zaie kodeketa aldatzen.</string>
     <string name="share_abort">Partekatzea eten da baimenak falta direlako.</string>
 
 
@@ -471,8 +470,6 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Bigarren planoko konexio egonkorra</string>
     <string name="pref_reliable_service_explain">Etengabeko jakinarazpena eskatzen du</string>
-
-
     <!-- automatically delete message -->
     <string name="autodel_title">Automatikoki ezabatu mezuak</string>
     <string name="autodel_title_short">Automatikoki ezabatu</string>
@@ -522,8 +519,6 @@
     <string name="systemmsg_action_by_me">Nik: %1$s</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s(e)k: %1$s</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Pantila-blokeoa</string>
     <string name="screenlock_explain">Blokeatu sarbidea Androideko blokeo-pantailarekin edo hatz-markarekin aurreko edukia agertzea ekiditeko, gaitu ere \"Pantaila-segurtasuna\"</string>

@@ -330,7 +330,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Plusendi al…</string>
-    <string name="share_multiple_attachments">Ĉu vi volas sendi %1$d dosierojn al la elektita babilo?\n\nLa dosieroj sendiĝos senŝanĝe en iliaj originalaj grandecoj, ekz. bildoj kaj filmetoj ne estos rekoditaj.</string>
     <string name="share_abort">Kunhavigado ĉesis pro manko de permesoj.</string>
 
 

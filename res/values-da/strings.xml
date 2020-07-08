@@ -306,7 +306,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Videresende til …</string>
-    <string name="share_multiple_attachments">Sende %1$d filer til udvalgt samtale?\n\nFilerne sendes umodificeret i deres originale størrelse, eksempelvis bliver billeder og video ikke omkodet.</string>
     <string name="share_abort">Deling afbrudt på grund af manglende tilladelser.</string>
 
 
@@ -430,8 +429,6 @@
     <string name="systemmsg_action_by_me">%1$s af undertegnet.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s af %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Skærm lås</string>
     <string name="screenlock_explain">Låse adgang med Android skærmlås eller fingeraftryk; for at undgå at vise det forrige indhold, skal \"Skærm sikkerhed\" også aktiveres.</string>

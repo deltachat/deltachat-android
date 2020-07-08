@@ -12,15 +12,31 @@
     <string name="custom">Personalitzat</string>
     <string name="none">Cap</string>
     <string name="automatic">Automàtic</string>
+    <string name="strict">Estricte</string>
     <string name="open">Obre</string>
     <string name="delete">Esborra</string>
     <string name="info">Info</string>
+    <string name="update">Actualitza</string>
+    <string name="attachment">Adjunt</string>
+    <string name="back">Enrere</string>
+    <string name="close">Tanca</string>
     <string name="forward">Reenvia</string>
+    <string name="archive">Arxiva</string>
+    <string name="unarchive">Treu de l\'arxiu</string>
+    <string name="mute">Emmudeix</string>
+    <string name="save">Guarda</string>
+    <string name="chat">Xat</string>
+    <string name="main_menu">Menú principal</string>
+    <string name="start_chat">Inicia un xat</string>
+    <string name="show_password">Mostra la contrasenya</string>
+    <string name="hide_password">Amaga la contrasenya</string>
     <string name="not_now">Ara no</string>
     <string name="never">Mai</string>
     <string name="one_moment">Espereu...</string>
     <string name="done">Fet</string>
     <string name="undo">Desfés</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Següent</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
     <string name="error_no_network">Xarxa no disponible.</string>
@@ -32,7 +48,10 @@
     <string name="email_address">Adreça de correu electrònic</string>
     <string name="bad_email_address">Adreça de correu electrònic errònia.</string>
     <string name="password">Contrasenya</string>
+    <string name="existing_password">Contrasenya existent</string>
     <string name="now">Ara</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Perill</string>
     <!-- n_min_ago is deprecated, use n_minutes instead -->
     <string name="n_min_ago">%d min</string>
     <string name="today">Avui</string>
@@ -79,6 +98,7 @@
     <string name="video">Vídeo</string>
     <string name="documents">Documents</string>
     <string name="contact">Contacte</string>
+    <string name="verified_contact">Contacte verificat</string>
     <string name="camera">Càmera</string>
     <string name="location">Ubicació</string>
     <string name="gallery">Galeria</string>
@@ -114,6 +134,7 @@
     <string name="menu_send">Envia</string>
     <string name="menu_toggle_keyboard">Canvia al teclat d\'emoticones</string>
     <string name="menu_edit_group">Modifica el grup</string>
+    <string name="menu_group_name_and_image">Nom i imatge del grup</string>
     <string name="menu_show_map">Mostra el mapa</string>
     <string name="menu_show_global_map">Mostra totes les ubicacions</string>
     <string name="menu_archive_chat">Arxiva el xat</string>
@@ -124,6 +145,7 @@
     <string name="menu_delete_messages">Esborra els missatges</string>
     <string name="menu_delete_image">Esborra la imatge</string>
     <string name="menu_delete_locations">Voleu esborrar totes les ubicacions?</string>
+    <string name="menu_delete_location">Voleu esborrar aquesta ubicació?</string>
     <string name="menu_message_details">Detalls del missatge</string>
     <string name="menu_copy_to_clipboard">Copia al porta-retalls</string>
     <string name="menu_forward">Reenvia el missatge</string>
@@ -139,16 +161,23 @@
     <string name="menu_play">Reprodueix</string>
     <string name="menu_pause">Pausa</string>
     <string name="menu_scroll_to_bottom">Vés al final</string>
+    <string name="menu_scroll_to_top">Desplaça\'t al cap d\'amunt</string>
     <string name="menu_help">Ajuda</string>
     <string name="menu_select_all">Selecciona-ho tot</string>
     <string name="menu_expand">Desplega</string>
     <string name="menu_edit_name">Edita el nom</string>
+    <string name="menu_edit_group_name">Modifica el nom del grup</string>
+    <string name="menu_edit_group_image">Modifica la imatge del grup</string>
     <string name="menu_settings">Preferències</string>
     <string name="menu_advanced">Avançat</string>
     <string name="menu_deaddrop">Sol·licituds de contacte</string>
     <string name="menu_deaddrop_subtitle">Prem a missatge per començar a xatejar</string>
     <string name="menu_view_profile">Visualitza el perfil</string>
+    <string name="menu_zoom_in">Apropa</string>
+    <string name="menu_zoom_out">Allunya</string>
+    <string name="menu_save_log">Guarda el registre</string>
     <string name="title_share_location">Comparteix la ubicació amb tots els membres del grup</string>
+    <string name="device_talk">Missatges del dispositiu</string>
     <string name="mute_for_one_hour">Silencia 1 hora</string>
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
@@ -166,7 +195,7 @@
     <string name="ask_leave_group">Segur que voleu deixar aquest grup?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Esborra %d xat? Ja no es mostrarà al llistat de xats, i els seus missatges no romandran al servidor.</item>
-        <item quantity="other">Esborra %d xats? Ja no es mostraran al llistat de xats i els missatges no quedaran al servidor.</item>
+        <item quantity="other">Voleu esborrar %d xats? Ja no es mostraran al llistat de xats i els missatges no quedaran al servidor.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Esborra %d missatge aquí i al servidor?</item>
@@ -181,8 +210,8 @@
     <string name="ask_start_chat_with">Voleu xatejar amb %1$s?</string>
     <!-- contact list -->
     <string name="contacts_title">Llista de contactes</string>
-    <string name="contacts_enter_name_or_email">Introduïu el vostre nom o la vostra adreça d\'e-mail</string>
-    <string name="contacts_type_email_above">Escriviu l\'adreça d\'email anterior</string>
+    <string name="contacts_enter_name_or_email">Introduïu el vostre nom o la vostra adreça de correu electrònic</string>
+    <string name="contacts_type_email_above">Escriviu l\'adreça d\'email superior</string>
     <string name="contacts_empty_hint">Cap contacte.</string>
 
 
@@ -253,7 +282,7 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Seguretat SMTP</string>
     <string name="login_auth_method">Mètode d\'autorització</string>
-    <string name="login_info_oauth2_title">Continua amb la configuració simplificada?</string>
+    <string name="login_info_oauth2_title">Voleu continuar amb la configuració simplificada?</string>
     <string name="login_info_oauth2_text">L’adreça d\'e-mail que heu introduït admet una configuració simplificada. (OAuth2).\n\nEn el pas següent, permeteu que Delta Chat actuï com a xat amb l\'aplicació de correu electrònic..\n\nNo hi ha servidors de Delta Chat, les vostres dades romanen al vostre dispositiu!</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
     <string name="login_error_server">Si us plau poseu un servidor / adreça IP vàlida</string>
@@ -270,7 +299,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenvia a ...</string>
-    <string name="share_multiple_attachments">Voleu enviar %1$d fitxers al xat seleccionat?\n\nEls fitxers s\'envien sense variar-ne la mida, p. ex. les imatges i els vídeos no són recodificats.</string>
     <string name="share_abort">S\'ha avortat la compartició per falta de permisos.</string>
 
 
@@ -390,8 +418,6 @@
     <string name="systemmsg_action_by_me">%1$s per mi.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s per %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueja la pantalla</string>
     <string name="screenlock_explain">Bloqueja l’accés amb el bloqueig de la pantalla d’Android o amb l’empremta digital; per evitar que aparegui el contingut anterior, habiliteu també \"Seguretat de pantalla\"</string>

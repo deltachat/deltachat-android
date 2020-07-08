@@ -319,7 +319,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İrəli ...</string>
-    <string name="share_multiple_attachments">%1$d fayı seçilmiş söhbətə salırsınız?\n\nFayllar orijinal ölçüsündə dəyişdirilməmiş göndərilir. şəkillər və videolar yazılmış deyil.</string>
     <string name="share_abort">İcazə olmadığına görə göndərmə kəsildi</string>
 
 
@@ -452,8 +451,6 @@
     <string name="systemmsg_action_by_me">%1$s məndən. </string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s ilə %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Ekran kilidi</string>
     <string name="screenlock_explain">Android ekran kilidi və ya barmaq izi ilə daxil olmaq; əvvəlki məzmunun görünməməsi üçün \"Ekran təhlükəsizliyi\"</string>

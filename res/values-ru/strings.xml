@@ -386,8 +386,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>
-    <string name="share_multiple_attachments">Вы хотите отправить %1$d файлов в выбранный чат?\n\nФайлы отправляются без изменений в их исходном размере, например. изображения и видео не перекодируются.</string>
-    <string name="share_multiple_attachments_multiple_chats">Отправить %1$d файл(ов) в %2$d чатов?\n\nФайлы отправляются без изменений в их исходном размере, например. изображения и видео не перекодируются.</string>
+    <string name="share_multiple_attachments">Отправить %1$d файл(ов) в выбранный чат?\n\nФайлы отправляются без изменений в исходном размере, например. изображения и видео не перекодируются.</string>
+    <string name="share_multiple_attachments_multiple_chats">Отправить %1$d файл(ов) в %2$d чатов?\n\nФайлы отправляются без изменений в исходном размере, например. изображения и видео не перекодируются.</string>
     <string name="share_text_multiple_chats">Отправить текст в %1$d чатов?\n\n\"%2$s\"</string>
     <string name="share_abort">Общий доступ прерван из-за отсутствия разрешений.</string>
 
@@ -553,16 +553,16 @@
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s пользователем %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Неизвестный отправитель для данного чата. Смотрите \"информацию\" для подробностей.</string>
-    <string name="systemmsg_subject_for_new_contact">Сообщения от %1$s</string>
+    <string name="systemmsg_subject_for_new_contact">Сообщение от %1$s</string>
     <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">Таймер удаления сообщений отключен.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Таймер удаления сообщений установлен в %1$s с.</string>
-    <string name="systemmsg_ephemeral_timer_minute">Таймер удаления сообщений установлен в 1 минуту.</string>
-    <string name="systemmsg_ephemeral_timer_hour">Таймер удаления сообщений установлен в 1 час.</string>
-    <string name="systemmsg_ephemeral_timer_day">Таймер удаления сообщений установлен в 1 день.</string>
-    <string name="systemmsg_ephemeral_timer_week">Таймер удаления сообщений установлен в 1 неделю.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">Таймер удаления сообщений установлен в 4 недели.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Таймер удаления сообщений отключён.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Таймер удаления сообщений установлен на %1$s с.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Таймер удаления сообщений установлен на 1 минуту.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Таймер удаления сообщений установлен на 1 час.</string>
+    <string name="systemmsg_ephemeral_timer_day">Таймер удаления сообщений установлен на 1 день.</string>
+    <string name="systemmsg_ephemeral_timer_week">Таймер удаления сообщений установлен на 1 неделю.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Таймер удаления сообщений установлен на 4 недели.</string>
 
 
     <!-- screen lock -->

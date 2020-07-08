@@ -219,6 +219,7 @@
         <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
     </plurals>
     <string name="ask_forward">Wil je de berichten doorsturen aan %1$s?</string>
+    <string name="ask_forward_multiple">Wil je de berichten doorsturen naar %1$d gesprekken?</string>
     <string name="ask_export_attachment">Als je de bijlage exporteert, geef je andere apps op je apparaat toegang om hem uit te lezen.\n\nWil je doorgaan?</string>
     <string name="ask_block_contact">Wil je deze contactpersoon blokkeren? Hij/zij kan je geen berichten meer sturen.</string>
     <string name="ask_unblock_contact">Wil je deze contactpersoon deblokkeren? Hij/zij kan je wederom berichten sturen.</string>
@@ -364,6 +365,8 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Doorsturen naar...</string>
     <string name="share_multiple_attachments">Wil je %1$d bestanden delen in het gekozen gesprek?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
+    <string name="share_multiple_attachments_multiple_chats">Wil je %1$d bestand(en) delen in %2$d gesprekken?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
+    <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n\"%2$s\"</string>
     <string name="share_abort">Kan niet delen wegens ontbrekende machtigingen.</string>
 
 
@@ -473,6 +476,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Betrouwbare achtergrondverbinding</string>
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
+    <string name="ephemeral_dialog_title">Gelezen berichten verwijderen</string>
 
 
     <!-- automatically delete message -->
@@ -486,6 +490,8 @@
     <string name="autodel_server_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten \'%2$s\'?\n\n• Dit omvat alle media\n\n• Berichten worden verwijderd, ongeacht of ze bekeken zijn\n\n• Het gesprek \'Opgeslagen berichten\' wordt eveneens verwijderd van de server</string>
     <string name="autodel_confirm">Ik begrijp het; verwijder alle berichten</string>
     <string name="autodel_at_once">Direct</string>
+    <string name="after_30_seconds">Na 30 seconden</string>
+    <string name="after_1_minute">Na 1 minuut</string>
     <string name="autodel_after_1_hour">Na 1 uur</string>
     <string name="autodel_after_1_day">Na 1 dag</string>
     <string name="autodel_after_1_week">Na 1 week</string>
@@ -524,6 +530,17 @@
     <string name="systemmsg_action_by_me">%1$s door mij.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s door %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Onbekende afzender in dit gesprek. Zie \'Informatie\' voor meer informatie.</string>
+    <string name="systemmsg_subject_for_new_contact">Bericht van %1$s</string>
+    <string name="systemmsg_failed_sending_to">Het bericht kan niet worden verstuurd aan %1$s.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">De tijdklok omtrent berichtverwijdering is uitgeschakeld.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">De tijdklok omtrent berichtverwijdering is ingesteld op %1$s seconden.</string>
+    <string name="systemmsg_ephemeral_timer_minute">De tijdklok omtrent berichtverwijdering is ingesteld op 1 minuut.</string>
+    <string name="systemmsg_ephemeral_timer_hour">De tijdklok omtrent berichtverwijdering is ingesteld op 1 uur.</string>
+    <string name="systemmsg_ephemeral_timer_day">De tijdklok omtrent berichtverwijdering is ingesteld op 1 dag.</string>
+    <string name="systemmsg_ephemeral_timer_week">De tijdklok omtrent berichtverwijdering is ingesteld op 1 week.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">De tijdklok omtrent berichtverwijdering is ingesteld op 4 weken.</string>
 
 
     <!-- screen lock -->

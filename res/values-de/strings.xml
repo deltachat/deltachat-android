@@ -365,7 +365,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Weiterleiten an ...</string>
-    <string name="share_multiple_attachments">Möchten Sie %1$d Dateien an den ausgewählten Chat senden?\n\nDie Dateien werden unverändert in ihrer Originalgröße gesendet, z.B. werden Bilder und Videos nicht neu codiert.</string>
     <string name="share_abort">Teilen aufgrund fehlender Berechtigungen abgebrochen.</string>
 
 
@@ -475,8 +474,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Zuverlässige Hintergrundverbindung</string>
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
-
-
     <!-- automatically delete message -->
     <string name="autodel_title">Nachrichten automatisch löschen</string>
     <string name="autodel_title_short">Automatisch löschen</string>
@@ -488,6 +485,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="autodel_server_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten \"%2$s\" löschen?\n\n• Dies schliesst alle Medien mit ein\n\n• E-Mails, die aufgrund von \"Normale E-Mails anzeigen\" angezeigt werden, werden ebenfalls vom Server gelöscht\n\n• \"Gespeicherte Nachrichten\" werden ebenfalls vom Server gelöschet</string>
     <string name="autodel_confirm">Verstanden, löschen all diese Nachrichten</string>
     <string name="autodel_at_once">Sofort</string>
+    <string name="after_30_seconds">Nach 30 Sekunden</string>
+    <string name="after_1_minute">Nach 1 Minute</string>
     <string name="autodel_after_1_hour">Nach 1 Stunde</string>
     <string name="autodel_after_1_day">Nach 1 Tag</string>
     <string name="autodel_after_1_week">Nach 1 Woche</string>
@@ -526,8 +525,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="systemmsg_action_by_me">%1$s von mir.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s von %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Bildschirmsperre</string>
     <string name="screenlock_explain">Zugriff sichern mittels Android-Bildschirmsperre oder Fingerabdruck. Um vorherige Inhalte zu verbergen, bitte außerdem \"Bildschirmsicherheit\" aktivieren.</string>
@@ -698,6 +695,9 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat verwendet die Kontakte, um eine Liste von E-Mail-Adressen anzuzeigen, an die Sie schreiben können. Delta Chat hat keine Server; das Adressbuch wird nicht versandt.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat verwendet das Mikrofon, um Sprachnachrichten und Videos mit Sound aufzunehmen und zu versenden.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat verwendet die Fotos, um Ihnen die Möglichkeit zu geben, diese auszuwählen und zu versenden.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat möchte Bilder in Ihrer Fotobibliothek speichern.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="update_1_10_android">Die neuen Delta Chat 1.10 Features im Überblick: schneller, Multi-Account, Bildbereiche verwischen, neue Emojis, überarbeitete Benachrichtigungen, Anzeige fehlerhafter Nachrichten. Aber am wichtigsten:\n\nAvatare im Profil vergrößern 🚀</string>
 

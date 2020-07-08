@@ -286,7 +286,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">轉發給...</string>
-    <string name="share_multiple_attachments">確定要傳送%1$d個檔案到指定的對話嗎?\n\n檔案會用原始大小傳送，亦即不會被修改，圖片和視訊也不會被重新壓縮編碼。</string>
     <string name="share_abort">共享失敗。權限不足。</string>
 
 
@@ -410,8 +409,6 @@
     <string name="systemmsg_action_by_me">我%1$s</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s%1$s</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">螢幕鎖</string>
     <string name="screenlock_explain">使用 Android 螢幕鎖或指紋鎖定，為防止訊息顯示在螢幕上，請一併開啟「螢幕安全」。</string>
