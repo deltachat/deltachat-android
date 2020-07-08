@@ -25,6 +25,10 @@
         android:visible="false"
         app:showAsAction="always"/>
 
+    <item android:id="@+id/menu_ephemeral_messages"
+        android:title="@string/ephemeral_messages"
+        android:visible="false" />
+
     <item android:title="@string/menu_mute"
         android:id="@+id/menu_mute_notifications"/>
 
@@ -38,9 +42,5 @@
           android:title="@string/menu_show_map"
           android:icon="?menu_map_icon"
           app:showAsAction="ifRoom" />
-
-    <item android:id="@+id/menu_ephemeral_messages"
-          android:title="@string/autodel_title_short"
-          android:visible="false" />
 
 </menu>

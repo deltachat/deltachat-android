@@ -25,6 +25,7 @@
     <string name="archive">Archive</string>
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
+    <string name="ephemeral_messages">Disappearing messages</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -534,13 +535,13 @@
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
     <string name="systemmsg_failed_sending_to">Failed to send message to %1$s.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">Message deletion timer is disabled.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Message deletion timer is set to %1$s s.</string>
-    <string name="systemmsg_ephemeral_timer_minute">Message deletion timer is set to 1 minute.</string>
-    <string name="systemmsg_ephemeral_timer_hour">Message deletion timer is set to 1 hour.</string>
-    <string name="systemmsg_ephemeral_timer_day">Message deletion timer is set to 1 day.</string>
-    <string name="systemmsg_ephemeral_timer_week">Message deletion timer is set to 1 week.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">Message deletion timer is set to 4 weeks.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Disappearing messages timer is disabled.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Disappearing messages timer is set to %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Disappearing messages timer is set to 1 minute.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Disappearing messages timer is set to 1 hour.</string>
+    <string name="systemmsg_ephemeral_timer_day">Disappearing messages timer is set to 1 day.</string>
+    <string name="systemmsg_ephemeral_timer_week">Disappearing messages timer is set to 1 week.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Disappearing messages timer is set to 4 weeks.</string>
 
 
     <!-- screen lock -->
