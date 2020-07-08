@@ -481,6 +481,7 @@
 
 
     <!-- automatically delete message -->
+    <string name="delete_old_messages">Delete old messages</string>
     <string name="autodel_title">Auto-delete messages</string>
     <string name="autodel_title_short">Auto-delete</string>
     <string name="autodel_device_title">Delete messages from device</string>

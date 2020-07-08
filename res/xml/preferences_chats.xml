@@ -34,7 +34,7 @@
         android:entryValues="@array/pref_compression_values"
         android:defaultValue="0" />
 
-    <PreferenceCategory android:title="@string/autodel_title">
+    <PreferenceCategory android:title="@string/delete_old_messages">
         <ListPreference
             android:key="autodel_device"
             android:title="@string/autodel_device_title"
