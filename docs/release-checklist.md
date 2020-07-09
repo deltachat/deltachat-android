@@ -2,9 +2,13 @@
 
 on the command-line:
 
-1. update core rust submodule, if needed:
-   $ ./tools/update-core.sh
-   $ ./tools/clean-core.sh  # to be sure nothing gets mixed up
+1. a) update core rust submodule, if needed:
+      $ ./tools/update-core.sh
+
+   b) make sure, `lto = true` is present in jni/deltachat-core-rust/Cargo.toml
+
+   depending on how much you trust in rust, you might want to do a
+   ./tools/clean-core.sh before building
 
 2. $ ./ndk-make.sh
 
