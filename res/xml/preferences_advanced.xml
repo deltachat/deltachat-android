@@ -59,7 +59,7 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_ephemeral_messages"
-            android:title="Chat auto-delete setting"/>
+            android:title="Disappearing messages options"/>
 
     </PreferenceCategory>
 

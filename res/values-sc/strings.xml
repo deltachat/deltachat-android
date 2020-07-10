@@ -359,7 +359,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Torra a imbiare a...</string>
-    <string name="share_multiple_attachments">Cheres imbiare %1$d documentos a sa tzarrada ischertada?\n\nSos documentos benint imbiados che emodìficas in sa mannària originale issoro, a es. sas immàgines e sos vìdeos non benint torrados a codificare.</string>
     <string name="share_abort">Cumpartzidura annullada pro permissos chi mancant.</string>
 
 
@@ -469,8 +468,6 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Connessione de isfundu de fide</string>
     <string name="pref_reliable_service_explain">Tenet bisòngiu de una notìfica permanente</string>
-
-
     <!-- automatically delete message -->
     <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
     <string name="autodel_title_short">Iscantzella automaticamente</string>

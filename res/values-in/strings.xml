@@ -346,7 +346,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Diteruskan ke…</string>
-    <string name="share_multiple_attachments">Apakah Anda ingin mengirim berkas %1$d di ombrolan terpilih?\n\nBerkas dikirim tanpa dimodifikasi dalam ukuran asli, mis. gambar-gambar dan video juga tidak dikode ulang.</string>
     <string name="share_abort">Pembagian dibatalkan karena tidak ada izin.</string>
 
 
@@ -465,8 +464,6 @@
     <string name="systemmsg_action_by_me">%1$s oleh saya.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s oleh %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Kunci Layar</string>
     <string name="screenlock_explain">Kunci akses dengan kunci layar Android atau sidik jari; kalau tidak mau menampilkan konten sebelumnya, mohon aktifkan pula \"Keamanan Layar\".</string>

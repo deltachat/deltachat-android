@@ -219,6 +219,7 @@
         <item quantity="other">Eliminare %d messaggi qui e sul sever?</item>
     </plurals>
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
+    <string name="ask_forward_multiple">Inoltra messaggi a %1$d chat?</string>
     <string name="ask_export_attachment">Esportare allegato? Questo permetterà ad ogni altra app sul tuo dispositivo di accedervi.\n\nContinuare?</string>
     <string name="ask_block_contact">Bloccare il contatto? Non riceverai più messaggi da questo contatto.</string>
     <string name="ask_unblock_contact">Sbloccare il contatto? Potrai nuovamente ricevere messaggi da questo contatto.</string>
@@ -363,7 +364,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Inotra a...</string>
-    <string name="share_multiple_attachments">Vuoi inviare %1$d file alla chat selezionata?\n\nI file vengono inviati senza modifiche e della dimensione originale. Immagini e video non vengono ricodificati.</string>
+    <string name="share_multiple_attachments">Invia %1$d file alla chat selezionata?\n\nI file vengono inviati non modificati nella loro dimensione originale, ad es. immagini e video non vengono ricodificati.</string>
+    <string name="share_multiple_attachments_multiple_chats">Invia %1$d file(s) a %2$d chat?\n\nI file vengono inviati non modificati nella loro dimensione originale, ad es. immagini e video non vengono ricodificati.</string>
+    <string name="share_text_multiple_chats">Invia questo testo alle %1$d chat?\n\n\"%2$s\"</string>
     <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
 
 
@@ -473,6 +476,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Connessione in background affidabile</string>
     <string name="pref_reliable_service_explain">Richiede una notifica permanente</string>
+    <string name="ephemeral_dialog_title">Elimina i messaggi letti</string>
 
 
     <!-- automatically delete message -->
@@ -486,6 +490,8 @@
     <string name="autodel_server_ask">Vuoi eliminare %1$d messaggi ora e tutti i messaggi arrivati \"%2$s\" nel futuro?\n\n• Questo include tutti i media\n\n• Verranno eliminate anche le email legate all\'opzione \"Mostra email classiche\"\n\n• Anche i \"Messaggi salvati\" verranno eliminati dal server.</string>
     <string name="autodel_confirm">Ho capito, elimina tutti i messaggi</string>
     <string name="autodel_at_once">Una volta</string>
+    <string name="after_30_seconds">Dopo 30 secondi</string>
+    <string name="after_1_minute">Dopo 1 minuto</string>
     <string name="autodel_after_1_hour">Dopo 1 ora</string>
     <string name="autodel_after_1_day">Dopo 1 giorno</string>
     <string name="autodel_after_1_week">Dopo 1 settimana</string>
@@ -524,6 +530,17 @@
     <string name="systemmsg_action_by_me">%1$s da me.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s da %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Mittente sconosciuto per questa chat. Vedi \'info\' per maggiori dettagli.</string>
+    <string name="systemmsg_subject_for_new_contact">Messaggio da %1$s</string>
+    <string name="systemmsg_failed_sending_to">Impossibile inviare il messaggio a %1$s.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">Il timer di eliminazione dei messaggi è disabilitato.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Il timer di eliminazione dei messaggi è impostato su %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Il timer di eliminazione dei messaggi è impostato su 1 minuto.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Il timer di eliminazione dei messaggi è impostato su 1 ora.</string>
+    <string name="systemmsg_ephemeral_timer_day">Il timer di eliminazione dei messaggi è impostato su 1 giorno.</string>
+    <string name="systemmsg_ephemeral_timer_week">Il timer di eliminazione dei messaggi è impostato su 1 settimana.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Il timer di eliminazione dei messaggi è impostato su 4 settimane.</string>
 
 
     <!-- screen lock -->

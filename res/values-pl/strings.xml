@@ -47,6 +47,7 @@
     <string name="email_address">Adres e-mail</string>
     <string name="bad_email_address">Zły adres e-mail</string>
     <string name="password">Hasło</string>
+    <string name="existing_password">Istniejące hasło</string>
     <string name="now">Teraz</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Uwaga</string>
@@ -214,6 +215,8 @@
     <string name="share_location_for_two_hours">na 2 godziny</string>
     <string name="share_location_for_six_hours">na 6 godzin</string>
 
+    <string name="file_saved_to">Plik zapisany w „%1$s</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Czy na pewno chcesz opuścić tą grupę?</string>
     <plurals name="ask_delete_chat">
@@ -325,6 +328,9 @@
     <string name="tab_gallery_empty_hint">Tutaj zostaną wyświetlone zdjęcia i filmy udostępnione na tym czacie.</string>
     <string name="tab_docs_empty_hint">Tutaj zostaną wyświetlone dokumenty, muzyka i inne pliki udostępnione na tym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
+    <string name="send_message">Wyślij wiadomość</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Komunikator o największym zasięgu na świecie. Darmowy i bezpieczny.</string>
     <string name="welcome_start_messaging">Uruchom komunikator</string>
@@ -365,12 +371,15 @@
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
 
     <string name="used_settings">Użyte ustawienia:</string>
+    <string name="switch_account">Przełącz konto</string>
+    <string name="add_account">Dodaj konto</string>
     <string name="delete_account">Usuń konto</string>
     <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
+    <string name="switching_account">Przełączam konto…</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Przekaż do…</string>
-    <string name="share_multiple_attachments">Czy chcesz wysłać pliki %1$d do wybranego czatu?\n\nPliki są wysyłane niezmodyfikowane w oryginalnym rozmiarze, np. obrazy i filmy nie są przekodowywane.</string>
     <string name="share_abort">Udostępnianie zostało przerwane z powodu brakujących uprawnień.</string>
 
 
@@ -477,6 +486,22 @@
     <string name="pref_background_default_color">Domyślny kolor</string>
     <string name="pref_background_custom_image">Własny obraz</string>
     <string name="pref_background_custom_color">Własny kolor</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Niezawodne połączenie w tle</string>
+    <string name="pref_reliable_service_explain">Wymaga stałego powiadomienia</string>
+    <!-- automatically delete message -->
+    <string name="autodel_title">Automatyczne usuwanie wiadomości</string>
+    <string name="autodel_title_short">Automatyczne usuwanie</string>
+    <string name="autodel_device_title">Usuwanie wiadomości z urządzenia</string>
+    <string name="autodel_server_title">Usuwanie wiadomości z serwera</string>
+    <string name="autodel_confirm">Rozumiem, usuń te wszystkie wiadomości</string>
+    <string name="autodel_at_once">Od razu</string>
+    <string name="autodel_after_1_hour">Po 1 godzinie</string>
+    <string name="autodel_after_1_day">Po 1 dniu</string>
+    <string name="autodel_after_1_week">Po 1 tygodniu</string>
+    <string name="autodel_after_4_weeks">Po 4 tygodniach</string>
+    <string name="autodel_after_1_year">Po 1 roku</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą Wiadomości konfiguracyjnej automatycznego szyfrowania.</string>
@@ -509,8 +534,6 @@
     <string name="systemmsg_action_by_me">%1$s przeze mnie.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s przez %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Blokada ekranu</string>
     <string name="screenlock_explain">Blokuj dostęp za pomocą blokady ekranu systemu Android lub odcisku palca; aby uniknąć pojawienia się poprzedniej zawartości, włącz również opcję „Zabezpieczenia ekranu”</string>
@@ -665,4 +688,7 @@
     <string name="InfoPlist_NSContactsUsageDescription">Zezwolenie na dostęp do książki adresowej pozwala czatować z kontaktami z urządzenia.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Zezwolenie na dostęp do mikrofonu pozwala nagrywać dźwięk.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Zezwolenie na dostęp do biblioteki zdjęć umożliwia przesyłanie z niej zdjęć.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce zapisać obrazy w twojej bibliotece zdjęć.</string>
+
+
     </resources>

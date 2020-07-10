@@ -339,8 +339,6 @@
     <string name="systemmsg_action_by_me">%1$s av meg.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s av %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Skjermlås</string>
     <string name="screenlock_explain">Lås Signal tilgang med Android-skjermlås eller fingeravtrykk</string>

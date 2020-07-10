@@ -18,7 +18,7 @@ public class EphemeralMessagesDialog {
         final int[] selectedChoice = new int[]{preselected};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
-                .setTitle(R.string.ephemeral_dialog_title)
+                .setTitle(R.string.ephemeral_messages)
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok, (dialog, which) -> {
                     final long burnAfter;

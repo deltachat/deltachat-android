@@ -211,6 +211,7 @@
         <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
     </plurals>
     <string name="ask_forward">将消息转发给 %1$s？</string>
+    <string name="ask_forward_multiple">转发消息到 %1$d 个聊天？</string>
     <string name="ask_export_attachment">导出附件？导出附件将允许您设备上的任意应用程序访问它们。\n\n继续？</string>
     <string name="ask_block_contact">屏蔽此联系人？您将不再收到此联系人的消息。</string>
     <string name="ask_unblock_contact">取消屏蔽此联系人？您将再次能收到此联系人的消息。</string>
@@ -352,7 +353,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">转发给…</string>
-    <string name="share_multiple_attachments">是否将 %1$d 个文件发送到所选聊天？\n\n文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
+    <string name="share_multiple_attachments">发送 %1$d 个文件到所选聊天？\n\n文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
+    <string name="share_multiple_attachments_multiple_chats">发送 %1$d 个文件到 %2$d 个聊天？\n\n文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
+    <string name="share_text_multiple_chats">发送这段文字到 %1$d 个聊天？\n\n\"%2$s“</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>
 
 
@@ -462,6 +465,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">可靠后台连接</string>
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
+    <string name="ephemeral_dialog_title">删除已读消息</string>
 
 
     <!-- automatically delete message -->
@@ -475,6 +479,8 @@
     <string name="autodel_server_ask">您要删除目前的 %1$d 条消息以及之后 %2$s 内新收到的消息吗？\n\n• 这包括所有媒体文件\n\n• 这也会删除被“显示传统电子邮件”选项影响的电子邮件\n\n• “保存的消息”也将从服务器中删除</string>
     <string name="autodel_confirm">我了解，将这些消息全部删除</string>
     <string name="autodel_at_once">立刻</string>
+    <string name="after_30_seconds">30 秒后</string>
+    <string name="after_1_minute">1 分钟后</string>
     <string name="autodel_after_1_hour">1 小时后</string>
     <string name="autodel_after_1_day">1 天后</string>
     <string name="autodel_after_1_week">1 周后</string>
@@ -513,6 +519,17 @@
     <string name="systemmsg_action_by_me">我 %1$s。</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s %1$s。</string>
+    <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
+    <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
+    <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">消息删除定时器已禁用。</string>
+    <string name="systemmsg_ephemeral_timer_enabled">消息删除定时器被设置为 %1$s 秒。</string>
+    <string name="systemmsg_ephemeral_timer_minute">消息删除定时器被设置为 1 分钟。</string>
+    <string name="systemmsg_ephemeral_timer_hour">消息删除定时器被设置为 1 小时。</string>
+    <string name="systemmsg_ephemeral_timer_day">消息删除定时器被设置为 1 天。</string>
+    <string name="systemmsg_ephemeral_timer_week">消息删除定时器被设置为 1 周。</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">消息删除定时器被设置为 4 周。</string>
 
 
     <!-- screen lock -->
@@ -683,4 +700,10 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用您的麦克风来录制、发送语音消息和带有声音的视频。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
-    </resources>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到您的图库。</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="update_1_10_android">Delta Chat 1.10 新功能概览：更快、多帐户、对图像进行模糊、新表情、通知重做、更好的错误报告，以及最重要的：\n\n点击个人资料中的头像并放大🚀</string>
+
+</resources>

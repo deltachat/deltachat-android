@@ -32,7 +32,7 @@
     <string name="start_chat">Começar conversa</string>
     <string name="show_password">Mostrar senha</string>
     <string name="hide_password">Ocultar senha</string>
-    <string name="not_now">Não agora</string>
+    <string name="not_now">Mais tarde</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Um momento...</string>
     <string name="done">Feito</string>
@@ -42,14 +42,15 @@
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
     <string name="error_no_network">Rede indisponível.</string>
-    <string name="no_app_to_handle_data">Arquivo desconhecido.</string>
+    <string name="no_app_to_handle_data">Não foi possível encontrar um app para abrir esse tipo de arquivo.</string>
     <string name="no_browser_installed">Nenhum navegador instalado.</string>
-    <string name="file_not_found">Impossível achar%1$s.</string>
-    <string name="copied_to_clipboard">Copiado para a área de transferência.</string>
+    <string name="file_not_found">Não foi possível encontrar %1$s.</string>
+    <string name="copied_to_clipboard">Salvo na área de transferência.</string>
     <string name="contacts_headline">Contatos</string>
     <string name="email_address">Endereço de email</string>
     <string name="bad_email_address">Email inválido.</string>
     <string name="password">Senha</string>
+    <string name="existing_password">Senha existente</string>
     <string name="now">Agora</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Perigo</string>
@@ -73,7 +74,7 @@
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d conversa</item>
-        <item quantity="other">%d conversa</item>
+        <item quantity="other">%d conversas</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d contatos</item>
@@ -85,7 +86,7 @@
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d participantes</item>
-        <item quantity="other">%d participantes</item>
+        <item quantity="other">%d membros</item>
     </plurals>
 
     <string name="self">Eu</string>
@@ -118,12 +119,12 @@
     <string name="small">Pequeno</string>
     <string name="normal">Normal</string>
     <string name="large">Grande</string>
-    <string name="extra_large">Extragrande</string>
+    <string name="extra_large">Muito grande</string>
 
     <string name="fast">Rápido</string>
     <string name="slow">Lento</string>
 
-    <string name="message_delivered">Mensagem enviada</string>
+    <string name="message_delivered">Mensagem entregue</string>
     <string name="message_read">Mensagem lida</string>
 
 
@@ -133,20 +134,20 @@
     <string name="menu_new_group">Novo grupo</string>
     <string name="menu_new_verified_group">Novo grupo verificado</string>
     <string name="menu_send">Enviar</string>
-    <string name="menu_toggle_keyboard">Ativar teclado emoji</string>
-    <string name="menu_edit_group">Editar grupo</string>
+    <string name="menu_toggle_keyboard">Ativar teclado de emojis</string>
+    <string name="menu_edit_group">Modificar grupo</string>
     <string name="menu_group_name_and_image">Nome e Imagem do grupo</string>
     <string name="menu_show_map">Exibir mapa</string>
     <string name="menu_show_global_map">Exibir todas as localizações</string>
     <string name="menu_archive_chat">Arquivar conversa</string>
     <string name="menu_unarchive_chat">Desarquivar conversa</string>
     <string name="menu_add_attachment">Inserir anexo</string>
-    <string name="menu_leave_group">Deixar o grupo</string>
+    <string name="menu_leave_group">Sair do grupo</string>
     <string name="menu_delete_chat">Apagar conversa</string>
     <string name="menu_delete_messages">Apagar mensagens</string>
     <string name="menu_delete_image">Apagar imagem</string>
     <string name="menu_delete_locations">Apagar todas as localizações?</string>
-    <string name="menu_delete_location">Deletar esta localização?</string>
+    <string name="menu_delete_location">Apagar esta localização?</string>
     <string name="menu_message_details">Detalhes da mensagem</string>
     <string name="menu_copy_to_clipboard">Copiar para a área de transferência</string>
     <string name="menu_forward">Encaminhar mensagem</string>
@@ -159,31 +160,33 @@
     <string name="menu_share">Compartilhar</string>
     <string name="menu_block_contact">Bloquear contato</string>
     <string name="menu_unblock_contact">Desbloquear contato</string>
-    <string name="menu_play">Executar</string>
+    <string name="menu_play">Ouvir</string>
     <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Rolar até o fim</string>
     <string name="menu_scroll_to_top">Rolar até o início</string>
     <string name="menu_help">Ajuda</string>
     <string name="menu_select_all">Selecionar tudo</string>
     <string name="menu_expand">Expandir</string>
-    <string name="menu_edit_name">Editar nome</string>
-    <string name="menu_edit_group_name">Editar nome do grupo</string>
-    <string name="menu_edit_group_image">Editar imagem do grupo</string>
+    <string name="menu_edit_name">Modificar nome</string>
+    <string name="menu_edit_group_name">Modificar nome do grupo</string>
+    <string name="menu_edit_group_image">Modificar imagem do grupo</string>
     <string name="menu_settings">Configurações</string>
     <string name="menu_advanced">Avançado</string>
-    <string name="menu_deaddrop">Pedidos de contato</string>
-    <string name="menu_deaddrop_subtitle">Pressione na mensagem para conversar</string>
+    <string name="menu_deaddrop">Solicitações de contato</string>
+    <string name="menu_deaddrop_subtitle">Pressione na mensagem para iniciar a conversa</string>
     <string name="menu_view_profile">Ver perfil</string>
     <string name="menu_zoom_in">Ampliar</string>
     <string name="menu_zoom_out">Afastar</string>
     <string name="menu_save_log">Salvar registro</string>
     <string name="title_share_location">Compartilhar localização com o grupo</string>
+    <string name="device_talk">Mensagens desse aparelho</string>
+    <string name="device_talk_subtitle">Mensagens geradas localmente</string>
     <string name="edit_contact">Editar contato</string>
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 dia</string>
     <string name="mute_for_seven_days">Silenciar por 7 dias</string>
-    <string name="mute_forever">Silenciar eternamente</string>
+    <string name="mute_forever">Silenciar para sempre</string>
 
     <string name="share_location_once">uma vez</string>
     <string name="share_location_for_5_minutes">por 5 minutos</string>
@@ -191,6 +194,8 @@
     <string name="share_location_for_one_hour">por 1 hora</string>
     <string name="share_location_for_two_hours">por 2 horas</string>
     <string name="share_location_for_six_hours">por 6 horas</string>
+
+    <string name="file_saved_to">Arquivo salvo em \"%1$s\".</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Quer mesmo sair do grupo?</string>
@@ -203,17 +208,18 @@
         <item quantity="other">Apagar %d mensagens aqui e no servidor?</item>
     </plurals>
     <string name="ask_forward">Encaminhar mensagens para %1$s?</string>
-    <string name="ask_export_attachment">Exportar o anexo? Anexos exportados poderão ser acessados pelos demais aplicativos.\n\nContinuar?</string>
-    <string name="ask_block_contact">Bloquear este contato? Você não mais receberá mensagens dele.</string>
+    <string name="ask_forward_multiple">Encaminhar mensagens para 1%1$d conversas?</string>
+    <string name="ask_export_attachment">Exportar o anexo? Anexos exportados poderão ser acessados por outros aplicativos.\n\nContinuar?</string>
+    <string name="ask_block_contact">Bloquear este contato? Você não receberá mais mensagens dele.</string>
     <string name="ask_unblock_contact">Desbloquear este contato? Você voltará a receber mensagens dele.</string>
-    <string name="ask_delete_contacts">Apagar contatos? Eles serão permanentemente apagados.\n\nContatos com conversas ativas e contatos do livro de endereços do sistema não podem ser permanentemente apagados.</string>
+    <string name="ask_delete_contacts">Apagar contatos? Eles serão permanentemente apagados.\n\nContatos com conversas ativas e contatos do livro de endereços do sistema não podem ser apagados permanentemente.</string>
     <string name="ask_delete_contact">Apagar permanentemente contato %1$s?\n\nContatos com conversas em andamento e contatos da lista de contatos do sistema não podem ser apagados permanentemente.</string>
     <string name="cannot_delete_contacts_in_use">Impossível apagar contatos com conversas em curso.</string>
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remover %1$s do grupo?</string>
     <string name="info_outdated_app_title">Seu aplicativo está desatualizado.</string>
-    <string name="info_outdated_app_text">Parece que você instalou Delta Chat de uma fonte sem atualizações automáticas (ex: Github). Por favor altere para a versão de loja para receber as funções mais recentes e correções de bugs.</string>
+    <string name="info_outdated_app_text">Parece que você instalou Delta Chat de uma fonte sem atualizações automáticas (ex: Github). Por favor altere para a versão da loja para receber as funções mais recentes e correções de falhas.</string>
     <string name="info_outdated_app_dialog_title">Atualizar fontes</string>
     <string name="info_outdated_app_dialog_text">Delta Chat está disponível em:</string>
 
@@ -325,7 +331,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Encaminhar para...</string>
-    <string name="share_multiple_attachments">Você quer enviar %1$d arquivos para o destinatário selecionado?\n\nOs arquivos não serão modificados, por exemplo, imagens e vídeos não serão reprocessados.</string>
     <string name="share_abort">Compartilhamento abortado devido a falta de permissões.</string>
 
 
@@ -456,8 +461,6 @@
     <string name="systemmsg_action_by_me">%1$s por mim.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueio de tela</string>
     <string name="screenlock_explain">Tranque o acesso com o bloqueio de tela do Android ou com sua digital; para evitar que o conteúdo prévio seja exibido habilite também a \"segurança de tela\".</string>

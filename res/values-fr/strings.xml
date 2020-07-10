@@ -356,7 +356,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Transférer à …</string>
-    <string name="share_multiple_attachments">Voulez-vous envoyer %1$d fichiers dans la discussion sélectionnée?\n\nLes fichiers sont envoyés tels quels dans leur taille originale, par exemple les photos et les vidéos ne sont pas ré-encodées.</string>
     <string name="share_abort">Partage annulé en raison de permissions manquantes.</string>
 
 
@@ -495,8 +494,6 @@
     <string name="systemmsg_action_by_me">%1$s par moi.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s sur %2$s.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Verrouillage de l\'écran</string>
     <string name="screenlock_explain">Verrouiller l’accès avec le verrouillage d’écran Android ou l’empreinte digitale ; pour éviter d’afficher le contenu précédent, veuillez également activer « Sécurité écran »</string>

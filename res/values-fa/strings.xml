@@ -362,7 +362,6 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">هدایت به...</string>
-    <string name="share_multiple_attachments">آیا می‌خواهید فایل‌های%1$d را به چت انتخاب شده ارسال کنید؟\n\n فایل‌ها با اندازه اصلی و بدون تغییر ارسال می‌شوند به این معنا که عکس‌ها و فیلم‌ها فشرده نمی‌شوند. </string>
     <string name="share_abort">اشتراک گذاری به دلیل نبود مجوز‌ها متوقف شد.</string>
 
 
@@ -516,8 +515,6 @@
     <string name="systemmsg_action_by_me">%1$sتوسط من</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$sتوسط%2$s</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">قفل صفحه</string>
     <string name="screenlock_explain">قفل کردن صفحه با قفل صفحه اندروید یا اثر انگشت، برای اینکه محتوای قبلی نشان داده نشود لطفا \"امنیت صفحه\" را هم فعال کنید.</string>

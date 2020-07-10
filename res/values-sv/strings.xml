@@ -219,6 +219,7 @@
         <item quantity="other">Radera %d meddelanden här och på servern?</item>
     </plurals>
     <string name="ask_forward">Vidarebefordra meddelanden till %1$s?</string>
+    <string name="ask_forward_multiple">Vill du vidarebefordra meddelanden till %1$d chattar?</string>
     <string name="ask_export_attachment">Exportera bilagor? Exporterade bilagor tillåter andra appar på din enhet att komma åt dem.\n\nVill du fortsätta?</string>
     <string name="ask_block_contact">Blockera den här kontakten? Du kommer inte att få fler meddelanden från den här kontakten.</string>
     <string name="ask_unblock_contact">Avblockera den här kontakten? Du kommer återigen att kunna ta emot meddelanden från den här kontakten.</string>
@@ -364,6 +365,8 @@
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Vidarebefordra till...</string>
     <string name="share_multiple_attachments">Vill du skicka %1$d filer till den valda chatten?\n\nFilerna skickas oförändrade i ursprunglig storlek, t.ex. bilder och videor kodas inte om.</string>
+    <string name="share_multiple_attachments_multiple_chats">Vill du skicka %1$d fil(er) till %2$d chattar?\n\nFilerna skickas oförändrade i ursprunglig storlek, t.ex. bilder och videor kodas inte om.</string>
+    <string name="share_text_multiple_chats">Vill du skicka denna text till %1$d chattar?\n\n\"%2$s\"</string>
     <string name="share_abort">Delningen avbröts på grund av saknad behörighet.</string>
 
 
@@ -473,6 +476,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Tillförlitlig bakgrundsanslutning</string>
     <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
+    <string name="ephemeral_dialog_title">Ta bort lästa meddelanden</string>
 
 
     <!-- automatically delete message -->
@@ -486,6 +490,8 @@
     <string name="autodel_server_ask">Vill du ta bort %1$d meddelanden nu och alla kommande meddelanden \"%2$s\" i framtiden?\n\n• Detta inkluderar all mediafiler.\n\n• Detta tar också bort e-post som påverkas av alternativet \"Visa vanlig e-post\".\n\n• \"Sparade e-postmeddelanden\" kommer även att tas bort från servern.</string>
     <string name="autodel_confirm">Jag förstår! Ta bort alla dessa meddelanden.</string>
     <string name="autodel_at_once">Nu genast</string>
+    <string name="after_30_seconds">Efter 30 sekunder</string>
+    <string name="after_1_minute">Efter 1 minut</string>
     <string name="autodel_after_1_hour">Efter 1 timma</string>
     <string name="autodel_after_1_day">Efter 1 dag</string>
     <string name="autodel_after_1_week">Efter 1 vecka</string>
@@ -524,6 +530,17 @@
     <string name="systemmsg_action_by_me">%1$s av mig.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s av %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Okänd avsändare för denna chatt. Se info för fler detaljer.</string>
+    <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>
+    <string name="systemmsg_failed_sending_to">Kunde inte skicka meddelande till %1$s.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">Tiduret för meddelandeborttagning är inaktiverat.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Tiduret för meddelandeborttagning är satt till %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Tiduret för meddelandeborttagning är satt till 1 minut.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Tiduret för meddelandeborttagning är satt till 1 timma.</string>
+    <string name="systemmsg_ephemeral_timer_day">Tiduret för meddelandeborttagning är satt till 1 dag.</string>
+    <string name="systemmsg_ephemeral_timer_week">Tiduret för meddelandeborttagning är satt till 1 vecka.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Tiduret för meddelandeborttagning är satt till 4 veckor.</string>
 
 
     <!-- screen lock -->
@@ -697,4 +714,7 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vill spara bilder i ditt fotogalleri.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="update_1_10_android">Nya Delta Chatt 1.10-funktioner i korthet: Snabbare, multikonto, suddiga bilder, nya emojis, omarbetade meddelanden, bättre felrapportering men viktigast av allt... \n\nKlicka på en avatar i profilen och förstora den 🚀</string>
+
+</resources>
