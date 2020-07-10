@@ -53,32 +53,27 @@ public class ConversationTitleView extends RelativeLayout {
     ViewUtil.setTextViewGravityStart(this.subtitle, getContext());
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat) {
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat) {
     setTitle(glideRequests, dcChat, true);
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat, boolean showSubtitle) {
-
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat, boolean showSubtitle) {
     int imgLeft = 0;
     int imgRight = 0;
 
-    if (dcChat == null) {
-      setComposeTitle();
-    } else {
-      setRecipientTitle(dcChat, showSubtitle);
-      if (Prefs.isChatMuted(dcChat)) {
-        imgLeft = R.drawable.ic_volume_off_white_18dp;
-      }
-      if (dcChat.isVerified()) {
-        imgRight = R.drawable.ic_verified;
-      }
-      this.avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
+    setRecipientTitle(dcChat, showSubtitle);
+    if (Prefs.isChatMuted(dcChat)) {
+      imgLeft = R.drawable.ic_volume_off_white_18dp;
     }
+    if (dcChat.isVerified()) {
+      imgRight = R.drawable.ic_verified;
+    }
+    this.avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
 
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcContact contact) {
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcContact contact) {
     // the verified state is _not_ shown in the title. this will be confusing as in the one-to-one-ChatViews, the verified
     // icon is also not shown as these chats are always opportunistic chats
     avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(contact), false);
@@ -97,10 +92,6 @@ public class ConversationTitleView extends RelativeLayout {
     this.avatar.setOnClickListener(listener);
   }
 
-  public void setOnAvatarClickListener(@Nullable OnClickListener listener) {
-    this.avatar.setOnClickListener(listener);
-  }
-
   @Override
   public void setOnLongClickListener(@Nullable OnLongClickListener listener) {
     this.content.setOnLongClickListener(listener);
@@ -109,12 +100,6 @@ public class ConversationTitleView extends RelativeLayout {
 
   public void setOnBackClickedListener(@Nullable OnClickListener listener) {
     this.back.setOnClickListener(listener);
-  }
-
-  private void setComposeTitle() {
-    this.title.setText(null);
-    this.subtitle.setText(null);
-    this.subtitle.setVisibility(View.GONE);
   }
 
   private void setRecipientTitle(DcChat dcChat, boolean showSubtitle) {
