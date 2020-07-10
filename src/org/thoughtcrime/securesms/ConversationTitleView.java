@@ -29,6 +29,7 @@ public class ConversationTitleView extends RelativeLayout {
   private AvatarImageView avatar;
   private TextView        title;
   private TextView        subtitle;
+  private ImageView       ephemeralIcon;
 
   public ConversationTitleView(Context context) {
     this(context, null);
@@ -43,11 +44,12 @@ public class ConversationTitleView extends RelativeLayout {
   public void onFinishInflate() {
     super.onFinishInflate();
 
-    this.back     = ViewUtil.findById(this, R.id.up_button);
-    this.content  = ViewUtil.findById(this, R.id.content);
-    this.title    = ViewUtil.findById(this, R.id.title);
-    this.subtitle = ViewUtil.findById(this, R.id.subtitle);
-    this.avatar   = ViewUtil.findById(this, R.id.contact_photo_image);
+    this.back          = ViewUtil.findById(this, R.id.up_button);
+    this.content       = ViewUtil.findById(this, R.id.content);
+    this.title         = ViewUtil.findById(this, R.id.title);
+    this.subtitle      = ViewUtil.findById(this, R.id.subtitle);
+    this.avatar        = ViewUtil.findById(this, R.id.contact_photo_image);
+    this.ephemeralIcon = ViewUtil.findById(this, R.id.ephemeral_icon);
 
     ViewUtil.setTextViewGravityStart(this.title, getContext());
     ViewUtil.setTextViewGravityStart(this.subtitle, getContext());
@@ -57,7 +59,7 @@ public class ConversationTitleView extends RelativeLayout {
     setTitle(glideRequests, dcChat, true);
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat, boolean showSubtitle) {
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat, boolean showAddInfo) {
     final int chatId = dcChat.getId();
     final Context context = getContext();
     final DcContext dcContext = DcHelper.getContext(context);
@@ -99,9 +101,12 @@ public class ConversationTitleView extends RelativeLayout {
       imgRight = R.drawable.ic_verified;
     }
 
-    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
-    subtitle.setVisibility(showSubtitle? View.VISIBLE : View.GONE);
     avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
+    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
+    subtitle.setVisibility(showAddInfo? View.VISIBLE : View.GONE);
+
+    boolean isEphemeral = dcContext.getChatEphemeralTimer(chatId) != 0;
+    ephemeralIcon.setVisibility((showAddInfo && isEphemeral)? View.VISIBLE : View.GONE);
   }
 
   public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcContact contact) {
