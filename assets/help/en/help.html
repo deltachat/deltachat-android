@@ -34,7 +34,7 @@
       <li><a href="#what-is-the-difference-between-verified-groups-and-11-chats-with-verified-contacts">What is the difference between verified groups and 1:1 chats with verified contacts?</a></li>
       <li><a href="#does-delta-chat-support-perfect-forward-secrecy">Does Delta Chat support Perfect Forward Secrecy?</a></li>
       <li><a href="#how-does-delta-chat-protect-my-metadata">How does Delta Chat protect my Metadata?</a></li>
-      <li><a href="#can-i-re-use-my-existing-private-key">Can I re-use my existing private key?</a></li>
+      <li><a href="#can-i-reuse-my-existing-private-key">Can I reuse my existing private key?</a></li>
       <li><a href="#i-cant-import-my-existing-pgp-key-into-delta-chat">I can’t import my existing PGP key into Delta Chat.</a></li>
       <li><a href="#why-dont-you-use-pep-pretty-easy-privacy">Why don’t you use pEp (pretty easy privacy)?</a></li>
     </ul>
@@ -191,7 +191,7 @@ device.</p>
       </h3>
 
 <ul>
-  <li>Yes. If incoming e-mail lacks a plain text part, HTML-emails is converted to plain text in the app. Outgoing e-mails always use plain text.</li>
+  <li>Yes. If an incoming e-mail lacks a plain text part, HTML-emails are converted to plain text in the app. Outgoing e-mails always use plain text.</li>
 </ul>
     
       <h3 id="why-do-i-have-to-enter-my-e-mail-password-into-delta-chat-is-this-secure">
@@ -311,7 +311,7 @@ about feedback which makes the app more secure for all of our users.</p>
 
 <ul>
   <li>
-    <p>A verified group is a chat that gurantees safety against an active
+    <p>A verified group is a chat that guarantees safety against an active
 attacker.  All Messages in a verified chat view are e2e-encrypted, and
 members can join by scanning a “QR invite code”.  All members are thus 
 connected with each other through a chain of invites, which guarantee 
@@ -321,9 +321,9 @@ for the R&amp;D behind this feature.</p>
   </li>
   <li>
     <p>As of Dec 2019, a “verified group” remains an experimental feature.
-It is continously improved and many bugs have been fixed since the
+It is continuously improved and many bugs have been fixed since the
 original introduction in 2018.  However, there remain cases, especially 
-with large groups where inconsistencies can occure, or messages become 
+with large groups where inconsistencies can occur, or messages become 
 unreadable.  Early 2020 a security review is upcoming, and several new
 developments around qr-join protocols are taking place so chances
 are we remove the “experimental” label not too far in the future.</p>
@@ -371,7 +371,7 @@ can still write, but are no longer notified of any new messages.</p>
       </h3>
 
 <ul>
-  <li>A message shows double ticks after more than half the the recipients have
+  <li>A message shows double ticks after more than half of the recipients have
 seen the message on their display.</li>
   <li>Note that some recipients might have disabled read-receipts for
 privacy-reasons.</li>
@@ -469,7 +469,7 @@ and the encryption keys will also be verified.  Both will see a
   </li>
   <li>
     <p>For end-to-end-encryption, Delta Chat shows two fingerprints there. 
-If the same fingerprints appears on your chat partner’s device, 
+If the same fingerprints appear on your chat partner’s device, 
 the connection is safe.</p>
   </li>
   <li>
@@ -587,7 +587,7 @@ are not stored on a single central server. However, they are stored on the mail
 servers of the sender and the recipient of a message.</p>
   </li>
   <li>
-    <p>Each mail server currently know about who sent and who received a message by 
+    <p>Each mail server currently knows about who sent and who received a message by 
 inspecting the unencrypted To/Cc headers and thus determine which e-mail addresses
 are part of a group. Delta Chat itself could avoid unencrypted To/Cc headers quite 
 and always put them only into the encrypted section. See 
@@ -602,10 +602,10 @@ RFC</a>.</p>
   </li>
 </ul>
     
-      <h3 id="can-i-re-use-my-existing-private-key">
+      <h3 id="can-i-reuse-my-existing-private-key">
         
         
-          Can I re-use my existing private key? <a href="#can-i-re-use-my-existing-private-key" class="anchor"></a>
+          Can I reuse my existing private key? <a href="#can-i-reuse-my-existing-private-key" class="anchor"></a>
         
         
       </h3>
@@ -705,7 +705,7 @@ E2E-encrypted messages with your communication partners.</li>
   <li>There are no immediate plans but some preliminary thoughts.</li>
   <li>There are 2-3 avenues for introducing a Delta Chat Web Client, but all are
 significant work. For now, we focus on getting stable releases into all
-appstores (Google Play/iOS/Windows/macOS/Linux repositories) as native apps.</li>
+app stores (Google Play/iOS/Windows/macOS/Linux repositories) as native apps.</li>
   <li>If you need a Web Client, because you are not allowed to install software on
 the computer you work with, you can use the portable Windows Desktop Client,
 or the AppImage for Linux. You can find them on
@@ -747,7 +747,7 @@ messages on all devices. If you have multiple devices and don’t turn it on, yo
 see only the messages from other people, and the messages you send from the
 current device.</p>
 
-<p>The copy is send to the Inbox, and then moved to the DeltaChat folder; it’s not
+<p>The copy is sent to the Inbox, and then moved to the DeltaChat folder; it’s not
 put into the “Sent” folder. Delta Chat <em>never</em> uploads anything to the Sent
 folder because this would mean uploading a message twice (once through SMTP,
 and once through IMAP to Sent folder).</p>
@@ -766,7 +766,7 @@ and once through IMAP to Sent folder).</p>
 mail program (like Thunderbird) next to your Delta Chat app, and want your MUA
 to participate in chat conversations.</p>
 
-<p>However, we recommend to use the Delta Chat Desktop Client; you can download it
+<p>However, we recommend using the Delta Chat Desktop Client; you can download it
 on <a href="https://get.delta.chat">get.delta.chat</a>. The option to watch the “Sent”
 folder might go away in the future. It was introduced at a time where there was
 no Delta Chat Desktop client available on all platforms.</p>
@@ -819,14 +819,14 @@ see <a href="https://providers.delta.chat">Provider Overview</a></li>
 there are cases where it takes longer but that is arguably true as well for
 any other messenger.</li>
   <li>Instant chatting works fast if both parties are actively using the app. It’s
-sometimes slower if the app is running in background.</li>
+sometimes slower if the app is running in the background.</li>
   <li>Receiving messages then can take minutes because both Android and iOS often
 stop Delta Chat from running in the background, and only wake it up
-occassionally. This artifical delay is usually worse on iOS than on Android.</li>
+occasionally. This artificial delay is usually worse on iOS than on Android.</li>
   <li>Note that Delta Chat doesn’t use Google Cloud Messaging (GCM) or the Apple
 Push Notification Service (APNS), because this leads to user tracking and
 central control which Delta Chat aims to avoid as much as feasible.</li>
-  <li>However, that Android and iOS kill apps running in the background is a
+  <li>However, Android and iOS kill apps running in the background is a
 problem for many legitimate apps. For more information, see
 <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
 </ul>
