@@ -25,6 +25,7 @@
     <string name="archive">Arkivoje</string>
     <string name="unarchive">Çarkivoje</string>
     <string name="mute">Heshtoje</string>
+    <string name="ephemeral_messages">Mesazhe që zhduken</string>
     <string name="save">Ruaje</string>
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>
@@ -479,6 +480,7 @@
 
 
     <!-- automatically delete message -->
+    <string name="delete_old_messages">Fshiji mesazhet e vjetër</string>
     <string name="autodel_title">Vetëfshi mesazhe</string>
     <string name="autodel_title_short">Vetëfshi</string>
     <string name="autodel_device_title">Fshini mesazhe prej pajisjes</string>
@@ -533,13 +535,13 @@
     <string name="systemmsg_subject_for_new_contact">Mesazh nga %1$s</string>
     <string name="systemmsg_failed_sending_to">S’u arrit të dërgohej mesazh te %1$s.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">Kohëmatësi i fshirjes së mesazheve është i çaktivizuar.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Kohëmatësi i fshirjes së mesazheve është vënë në %1$s s.</string>
-    <string name="systemmsg_ephemeral_timer_minute">Kohëmatësi i fshirjes së mesazheve është vënë në 1 minutë.</string>
-    <string name="systemmsg_ephemeral_timer_hour">Kohëmatësi i fshirjes së mesazheve është vënë në 1 orë.</string>
-    <string name="systemmsg_ephemeral_timer_day">Kohëmatësi i fshirjes së mesazheve është vënë në 1 ditë.</string>
-    <string name="systemmsg_ephemeral_timer_week">Kohëmatësi i fshirjes së mesazheve është vënë në 1 javë.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi i fshirjes së mesazheve është vënë në 4 javë.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Kohëmatësi për mesazhe që zhduken është i çaktivizuar.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Kohëmatësi i zhdukjes së mesazheve është vënë në %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Kohëmatësi për mesazhe që zhduken është vënë në 1 minutë.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Kohëmatësi për mesazhe që zhduken është vënë në 1 orë.</string>
+    <string name="systemmsg_ephemeral_timer_day">Kohëmatësi për mesazhe që zhduken është vënë në 1 ditë.</string>
+    <string name="systemmsg_ephemeral_timer_week">Kohëmatësi për mesazhe që zhduken është vënë në 1 javë.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi për mesazhe që zhduken është vënë në 4 javë.</string>
 
 
     <!-- screen lock -->

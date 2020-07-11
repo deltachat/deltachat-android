@@ -25,6 +25,7 @@
     <string name="archive">В архив</string>
     <string name="unarchive">Из архива</string>
     <string name="mute">Отключить уведомления</string>
+    <string name="ephemeral_messages">Исчезающие сообщения</string>
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
@@ -502,6 +503,7 @@
 
 
     <!-- automatically delete message -->
+    <string name="delete_old_messages">Удалять старые сообщения</string>
     <string name="autodel_title">Автоматическое удаление сообщений</string>
     <string name="autodel_title_short">Автоматическое удаление</string>
     <string name="autodel_device_title">Удалять сообщения с устройства</string>
@@ -556,13 +558,13 @@
     <string name="systemmsg_subject_for_new_contact">Сообщение от %1$s</string>
     <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">Таймер удаления сообщений отключён.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Таймер удаления сообщений установлен на %1$s с.</string>
-    <string name="systemmsg_ephemeral_timer_minute">Таймер удаления сообщений установлен на 1 минуту.</string>
-    <string name="systemmsg_ephemeral_timer_hour">Таймер удаления сообщений установлен на 1 час.</string>
-    <string name="systemmsg_ephemeral_timer_day">Таймер удаления сообщений установлен на 1 день.</string>
-    <string name="systemmsg_ephemeral_timer_week">Таймер удаления сообщений установлен на 1 неделю.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">Таймер удаления сообщений установлен на 4 недели.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Таймер исчезающих сообщений отключен.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s с.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Таймер исчезающих сообщений установлен на 1 минуту.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Таймер исчезающих сообщений установлен на 1 час.</string>
+    <string name="systemmsg_ephemeral_timer_day">Таймер исчезающих сообщений установлен на 1 день.</string>
+    <string name="systemmsg_ephemeral_timer_week">Таймер исчезающих сообщений установлен на 1 неделю.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Таймер исчезающих сообщений установлен на 4 недели.</string>
 
 
     <!-- screen lock -->

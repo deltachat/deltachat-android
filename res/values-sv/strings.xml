@@ -25,6 +25,7 @@
     <string name="archive">Arkiv</string>
     <string name="unarchive">Avarkivera</string>
     <string name="mute">Tyst</string>
+    <string name="ephemeral_messages">Försvinnande meddelanden</string>
     <string name="save">Spara</string>
     <string name="chat">Chatt</string>
     <string name="media">Media</string>
@@ -480,6 +481,7 @@
 
 
     <!-- automatically delete message -->
+    <string name="delete_old_messages">Ta bort gamla meddelanden</string>
     <string name="autodel_title">Ta bort meddelanden automatiskt</string>
     <string name="autodel_title_short">Ta bort automatiskt</string>
     <string name="autodel_device_title">Ta bort meddelanden från enheten</string>

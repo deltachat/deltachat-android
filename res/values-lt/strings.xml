@@ -477,15 +477,6 @@
     <string name="systemmsg_read_receipt_body">Tai yra pranešimas apie žinutės \"%1$s\" skaitymą.\n\nTai reiškia, kad žinutė buvo atvaizduota gavėjo įrenginyje, tačiau neužtikrina, kad jos turinys buvo perskaitytas.</string>
     <string name="systemmsg_cannot_decrypt">Nepavyksta iššifruoti šios žinutės.\n\n• Galima, tiesiog, atsakyti į šią žinutę ir paprašyti siuntėjo dar kartą išsiųsti šią žinutę.\n\n• Tuo atveju, jeigu iš naujo įdiegėte Delta Chat ar kitą el. pašto programą šiame ar kitame įrenginyje, jūs galite pageidauti išsiųsti Autocrypt sąrankos žinutę iš to įrenginio.</string>
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
-    <string name="systemmsg_ephemeral_timer_disabled">Žinučių ištrynimo laikmatis yra išjungtas.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Žinučių ištrynimo laikmatis yra nustatytas į %1$s sek.</string>
-    <string name="systemmsg_ephemeral_timer_minute">Žinučių ištrynimo laikmatis yra nustatytas į 1 minutę.</string>
-    <string name="systemmsg_ephemeral_timer_hour">Žinučių ištrynimo laikmatis yra nustatytas į 1 valandą.</string>
-    <string name="systemmsg_ephemeral_timer_day">Žinučių ištrynimo laikmatis yra nustatytas į 1 dieną.</string>
-    <string name="systemmsg_ephemeral_timer_week">Žinučių ištrynimo laikmatis yra nustatytas į 1 savaitę.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">Žinučių ištrynimo laikmatis yra nustatytas į 4 savaites.</string>
-
-
     <!-- screen lock -->
     <string name="screenlock_title">Ekrano užraktas</string>
     <string name="screenlock_authentication_failed">Tapatybės nustatymas nepavyko.</string>
