@@ -25,6 +25,7 @@
     <string name="archive">Archivieren</string>
     <string name="unarchive">Dearchivieren</string>
     <string name="mute">Stumm</string>
+    <string name="ephemeral_messages">Verschwindende Nachrichten</string>
     <string name="save">Speichern</string>
     <string name="chat">Chat</string>
     <string name="media">Medien</string>
@@ -219,6 +220,7 @@
         <item quantity="other">%d Nachrichten lokal und vom Server löschen?</item>
     </plurals>
     <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
+    <string name="ask_forward_multiple">Nachrichten an %1$d Chats weiterleiten?</string>
     <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
     <string name="ask_block_contact">Diesen Kontakt blockieren? Sie werden keine Nachrichten mehr von diesem Kontakt erhalten.</string>
     <string name="ask_unblock_contact">Diesen Kontakt nicht mehr blockieren? Nachrichten von diesem Kontakt werden dann wieder angezeigt.</string>
@@ -365,6 +367,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Weiterleiten an ...</string>
+    <string name="share_multiple_attachments">%1$d Dateien an den ausgewählten Chat senden?\n\nDie Dateien werden unverändert in ihrer Originalgröße gesendet, z.B. werden Bilder und Videos nicht neu codiert.</string>
+    <string name="share_multiple_attachments_multiple_chats">%1$d Datei(en) an %2$d Chats senden?\n\nDie Dateien werden unverändert in ihrer Originalgröße gesendet, z.B. werden Bilder und Videos nicht neu codiert.</string>
+    <string name="share_text_multiple_chats">Den folgenden Text an %1$d Chats senden?\n\n\"%2$s\"</string>
     <string name="share_abort">Teilen aufgrund fehlender Berechtigungen abgebrochen.</string>
 
 
@@ -474,7 +479,11 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Zuverlässige Hintergrundverbindung</string>
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
+    <string name="ephemeral_dialog_title">Gelesene Nachrichten löschen</string>
+
+
     <!-- automatically delete message -->
+    <string name="delete_old_messages">Alte Nachrichten löschen</string>
     <string name="autodel_title">Nachrichten automatisch löschen</string>
     <string name="autodel_title_short">Automatisch löschen</string>
     <string name="autodel_device_title">Nachrichten vom Gerät löschen</string>
@@ -525,6 +534,19 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="systemmsg_action_by_me">%1$s von mir.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s von %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Absender ist für diesen Chat unbekannt. Siehe \"Info\" für weitere Details,</string>
+    <string name="systemmsg_subject_for_new_contact">Nachricht von %1$s</string>
+    <string name="systemmsg_failed_sending_to">Nachricht senden an %1$s fehlgeschlagen.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">Verschwindende Nachrichten deaktiviert.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Ablaufzeit verschwindender Nachrichten auf %1$s s festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Ablaufzeit verschwindender Nachrichten auf 1 Minute festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Ablaufzeit verschwindender Nachrichten auf 1 Stunde festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_day">Ablaufzeit verschwindender Nachrichten auf 1 Tag festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_week">Ablaufzeit verschwindender Nachrichten auf 1 Woche festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Ablaufzeit verschwindender Nachrichten auf 4 Wochen festgelegt.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Bildschirmsperre</string>
     <string name="screenlock_explain">Zugriff sichern mittels Android-Bildschirmsperre oder Fingerabdruck. Um vorherige Inhalte zu verbergen, bitte außerdem \"Bildschirmsicherheit\" aktivieren.</string>

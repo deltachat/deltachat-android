@@ -25,6 +25,7 @@
     <string name="archive">Archivia</string>
     <string name="unarchive">Ripristina</string>
     <string name="mute">Silenzia</string>
+    <string name="ephemeral_messages">Messaggi che scompaiono</string>
     <string name="save">Salva</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -480,6 +481,7 @@
 
 
     <!-- automatically delete message -->
+    <string name="delete_old_messages">Elimina i vecchi messaggi</string>
     <string name="autodel_title">Auto eliminazione dei messaggi</string>
     <string name="autodel_title_short">Auto-eliminazione</string>
     <string name="autodel_device_title">Elimina messaggi dal dispositivo</string>
@@ -534,13 +536,13 @@
     <string name="systemmsg_subject_for_new_contact">Messaggio da %1$s</string>
     <string name="systemmsg_failed_sending_to">Impossibile inviare il messaggio a %1$s.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">Il timer di eliminazione dei messaggi è disabilitato.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Il timer di eliminazione dei messaggi è impostato su %1$s s.</string>
-    <string name="systemmsg_ephemeral_timer_minute">Il timer di eliminazione dei messaggi è impostato su 1 minuto.</string>
-    <string name="systemmsg_ephemeral_timer_hour">Il timer di eliminazione dei messaggi è impostato su 1 ora.</string>
-    <string name="systemmsg_ephemeral_timer_day">Il timer di eliminazione dei messaggi è impostato su 1 giorno.</string>
-    <string name="systemmsg_ephemeral_timer_week">Il timer di eliminazione dei messaggi è impostato su 1 settimana.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">Il timer di eliminazione dei messaggi è impostato su 4 settimane.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Timer scomparsa messaggi disabilitato.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Il timer per la scomparsa dei messaggi è impostato su %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Il timer per la scomparsa dei messaggi è impostato su 1 minuto.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Il timer per la scomparsa dei messaggi è impostato su 1 ora.</string>
+    <string name="systemmsg_ephemeral_timer_day">Il timer per la scomparsa dei messaggi è impostato su 1 giorno.</string>
+    <string name="systemmsg_ephemeral_timer_week">Il timer per la scomparsa dei messaggi è impostato su 1 settimana.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Il timer per la scomparsa dei messaggi è impostato su 4 settimane.</string>
 
 
     <!-- screen lock -->

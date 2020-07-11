@@ -2,11 +2,9 @@
 
 on the command-line:
 
-1. a) update core rust submodule, if needed:
-      $ ./tools/update-core.sh
-
-   b) make sure, `lto = true` is present in jni/deltachat-core-rust/Cargo.toml
-
+1. update core rust submodule, if needed:
+   $ ./tools/update-core.sh
+   and make sure, `lto=true` is present in jni/deltachat-core-rust/Cargo.toml.
    depending on how much you trust in rust, you might want to do a
    ./tools/clean-core.sh before building
 
@@ -27,7 +25,7 @@ this will take some time - meanwhile we're doing some housekeeping:
 
 in Android Studio:
 
-5. bump version in gradle.build,
+5. bump version in build.gradle,
    update _both_, versionCode and versionName
 
 6. if `./ndk-make.sh` from step 2. is finished successfully:

@@ -89,7 +89,7 @@ android {
     }
 
     defaultConfig {
-        versionCode 587
+        versionCode 588
         versionName "1.10.5"
 
         applicationId "com.b44t.messenger"

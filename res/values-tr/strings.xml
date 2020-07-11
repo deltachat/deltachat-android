@@ -25,6 +25,7 @@
     <string name="archive">Arşivle</string>
     <string name="unarchive">Arşivleme</string>
     <string name="mute">Sessize al</string>
+    <string name="ephemeral_messages">Kaybolan iletiler</string>
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
@@ -480,6 +481,7 @@
 
 
     <!-- automatically delete message -->
+    <string name="delete_old_messages">Eski iletileri sil</string>
     <string name="autodel_title">İletileri otomatik sil</string>
     <string name="autodel_title_short">Otomatik sil</string>
     <string name="autodel_device_title">İletileri aygıttan sil</string>
@@ -534,13 +536,13 @@
     <string name="systemmsg_subject_for_new_contact">Şundan ileti: %1$s</string>
     <string name="systemmsg_failed_sending_to">%1$s alıcısına ileti gönderme başarısız.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">İleti silme zamanlayıcısı etkisiz.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">İleti silme zamanlayıcısı ayarlı: %1$s.</string>
-    <string name="systemmsg_ephemeral_timer_minute">İleti silme zamanlayıcısı 1 dakikaya ayarlı.</string>
-    <string name="systemmsg_ephemeral_timer_hour">İleti silme zamanlayıcısı 1 saate ayarlı.</string>
-    <string name="systemmsg_ephemeral_timer_day">İleti silme zamanlayıcısı 1 güne ayarlı.</string>
-    <string name="systemmsg_ephemeral_timer_week">İleti silme zamanlayıcısı 1 haftaya ayarlı.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">İleti silme zamanlayıcısı 4 haftaya ayarlı.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Kaybolan iletiler zamanlayıcısı %1$s s\'ye ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Kaybolan iletiler zamanlayıcısı 1 dakikaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Kaybolan iletiler zamanlayıcısı 1 saate ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_day">Kaybolan iletiler zamanlayıcısı 1 güne ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_week">Kaybolan iletiler zamanlayıcısı 1 haftaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Kaybolan iletiler zamanlayıcısı 4 haftaya ayarlandı.</string>
 
 
     <!-- screen lock -->

@@ -25,6 +25,7 @@
     <string name="archive">Archiveren</string>
     <string name="unarchive">De-archiveren</string>
     <string name="mute">Dempen</string>
+    <string name="ephemeral_messages">Verdwijnende berichten</string>
     <string name="save">Opslaan</string>
     <string name="chat">Gesprek</string>
     <string name="media">Media</string>
@@ -480,6 +481,7 @@
 
 
     <!-- automatically delete message -->
+    <string name="delete_old_messages">Oude berichten verwijderen</string>
     <string name="autodel_title">Berichten automatisch verwijderen</string>
     <string name="autodel_title_short">Automatisch verwijderen</string>
     <string name="autodel_device_title">Berichten verwijderen van apparaat</string>
@@ -534,13 +536,13 @@
     <string name="systemmsg_subject_for_new_contact">Bericht van %1$s</string>
     <string name="systemmsg_failed_sending_to">Het bericht kan niet worden verstuurd aan %1$s.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">De tijdklok omtrent berichtverwijdering is uitgeschakeld.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">De tijdklok omtrent berichtverwijdering is ingesteld op %1$s seconden.</string>
-    <string name="systemmsg_ephemeral_timer_minute">De tijdklok omtrent berichtverwijdering is ingesteld op 1 minuut.</string>
-    <string name="systemmsg_ephemeral_timer_hour">De tijdklok omtrent berichtverwijdering is ingesteld op 1 uur.</string>
-    <string name="systemmsg_ephemeral_timer_day">De tijdklok omtrent berichtverwijdering is ingesteld op 1 dag.</string>
-    <string name="systemmsg_ephemeral_timer_week">De tijdklok omtrent berichtverwijdering is ingesteld op 1 week.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">De tijdklok omtrent berichtverwijdering is ingesteld op 4 weken.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">De tijdklok van verdwijnende berichten is uitgeschakeld.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">De tijdklok van verdwijnende berichten is ingesteld op %1$s sec.</string>
+    <string name="systemmsg_ephemeral_timer_minute">De tijdklop van verdwijnende berichten is ingesteld op 1 minuut.</string>
+    <string name="systemmsg_ephemeral_timer_hour">De tijdklok van verdwijnende berichten is ingesteld op 1 uur.</string>
+    <string name="systemmsg_ephemeral_timer_day">De tijdklok van verdwijnende berichten is ingesteld op 1 dag.</string>
+    <string name="systemmsg_ephemeral_timer_week">De tijdklok van verdwijnende berichten is ingesteld op 1 week.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">De tijdklok van verdwijnende berichten is ingesteld op 4 weken.</string>
 
 
     <!-- screen lock -->
