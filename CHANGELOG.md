@@ -4,7 +4,7 @@
 2020-07
 
 * forward and share to multiple contacts in one step
-* disappearing messags added as an experimental feature
+* disappearing messages added as an experimental feature
 * fix profile image selection
 * fix blurring
 * improve message processing
