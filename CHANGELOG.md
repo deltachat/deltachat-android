@@ -1,11 +1,14 @@
 # Delta Chat Android Changelog
 
-# Unreleased
+## v1.10.5
+2020-07
 
 * forward and share to multiple contacts in one step
-* add per-chat auto-deletion as experimental feature
+* disappearing messags added as an experimental feature
 * fix profile image selection
 * fix blurring
+* improve message processing
+* improve overall stability
 
 
 ## v1.10.4
