@@ -113,6 +113,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ Ahora es posible difuminar partes de una imagen en el editor antes de enviarla, útil para ocultar rostros o contenido privado de una forma elegante.\n" +
 	    "✳️ Nuevo selector de emojis con más emojis a escoger.\n" +
 	    "✳️ Mejoradas las notificaciones.\n" +
+	    "✳️ Ahora es posible reenviar mensajes a multiples chats a la vez(presionando por unos segundos un chat para seleccionar).\n" +
 	    "✳️ Ahora es posible ver en pantalla completa los avatar de los usuarios haciendo click en el avatar en el perfil del usuario.\n" +
 	    "\n✳️ Cuando un nuevo contacto te escribe ahora se muestra una notificación y sale el chat directamente.\n" +
 	    "✳️ Mejorado el envío de archivos, más ahorro al enviar archivos grandes que tardaban mucho en enviarse.\n" +
