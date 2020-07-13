@@ -86,11 +86,11 @@ public class ScaleStableImageView
             return; // something fishy happened.
         }
 
-        measureViewSize(width, height, oldWidth, oldHeight, portrait);
         if (!(defaultDrawable instanceof BitmapDrawable)) {
             return; // need Bitmap for scaling and cropping.
         }
 
+        measureViewSize(width, height, oldWidth, oldHeight, portrait);
         // if the image is already fit for the screen, just show it.
         if (defaultDrawable.getIntrinsicWidth() == width &&
             defaultDrawable.getIntrinsicHeight() == height) {
