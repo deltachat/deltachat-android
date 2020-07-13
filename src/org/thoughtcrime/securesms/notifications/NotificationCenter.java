@@ -321,12 +321,6 @@ public class NotificationCenter {
                 return;
             }
 
-            if (dcChat.isDeviceTalk()) {
-                // currently, we just never notify on device chat.
-                // esp. on first start, this is annoying.
-                return;
-            }
-
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
             // get notification text as a single line
