@@ -29,6 +29,7 @@ public class ConversationTitleView extends RelativeLayout {
   private AvatarImageView avatar;
   private TextView        title;
   private TextView        subtitle;
+  private ImageView       ephemeralIcon;
 
   public ConversationTitleView(Context context) {
     this(context, null);
@@ -43,42 +44,72 @@ public class ConversationTitleView extends RelativeLayout {
   public void onFinishInflate() {
     super.onFinishInflate();
 
-    this.back     = ViewUtil.findById(this, R.id.up_button);
-    this.content  = ViewUtil.findById(this, R.id.content);
-    this.title    = ViewUtil.findById(this, R.id.title);
-    this.subtitle = ViewUtil.findById(this, R.id.subtitle);
-    this.avatar   = ViewUtil.findById(this, R.id.contact_photo_image);
+    this.back          = ViewUtil.findById(this, R.id.up_button);
+    this.content       = ViewUtil.findById(this, R.id.content);
+    this.title         = ViewUtil.findById(this, R.id.title);
+    this.subtitle      = ViewUtil.findById(this, R.id.subtitle);
+    this.avatar        = ViewUtil.findById(this, R.id.contact_photo_image);
+    this.ephemeralIcon = ViewUtil.findById(this, R.id.ephemeral_icon);
 
     ViewUtil.setTextViewGravityStart(this.title, getContext());
     ViewUtil.setTextViewGravityStart(this.subtitle, getContext());
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat) {
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat) {
     setTitle(glideRequests, dcChat, true);
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat, boolean showSubtitle) {
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat, boolean showAddInfo) {
+    final int chatId = dcChat.getId();
+    final Context context = getContext();
+    final DcContext dcContext = DcHelper.getContext(context);
 
+    // set title and subtitle texts
+    if( chatId == DcChat.DC_CHAT_ID_DEADDROP ) {
+      title.setText(R.string.menu_deaddrop);
+      subtitle.setText(R.string.menu_deaddrop_subtitle);
+    } else {
+      title.setText(dcChat.getName());
+      String subtitleStr = "ErrSubtitle";
+
+      int[] chatContacts = dcContext.getChatContacts(chatId);
+      if( dcChat.isGroup() ) {
+        subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
+      } else if( chatContacts.length>=1 ) {
+        if( dcChat.isSelfTalk() ) {
+          subtitleStr = context.getString(R.string.chat_self_talk_subtitle);
+        }
+        else if( dcChat.isDeviceTalk() ) {
+          subtitleStr = context.getString(R.string.device_talk_subtitle);
+        }
+        else {
+          subtitleStr = dcContext.getContact(chatContacts[0]).getAddr();
+        }
+      }
+
+      subtitle.setText(subtitleStr);
+    }
+
+    // set icons etc.
     int imgLeft = 0;
     int imgRight = 0;
 
-    if (dcChat == null) {
-      setComposeTitle();
-    } else {
-      setRecipientTitle(dcChat, showSubtitle);
-      if (Prefs.isChatMuted(dcChat)) {
-        imgLeft = R.drawable.ic_volume_off_white_18dp;
-      }
-      if (dcChat.isVerified()) {
-        imgRight = R.drawable.ic_verified;
-      }
-      this.avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
+    if (Prefs.isChatMuted(dcChat)) {
+      imgLeft = R.drawable.ic_volume_off_white_18dp;
+    }
+    if (dcChat.isVerified()) {
+      imgRight = R.drawable.ic_verified;
     }
 
+    avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
+    subtitle.setVisibility(showAddInfo? View.VISIBLE : View.GONE);
+
+    boolean isEphemeral = dcContext.getChatEphemeralTimer(chatId) != 0;
+    ephemeralIcon.setVisibility((showAddInfo && isEphemeral)? View.VISIBLE : View.GONE);
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcContact contact) {
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcContact contact) {
     // the verified state is _not_ shown in the title. this will be confusing as in the one-to-one-ChatViews, the verified
     // icon is also not shown as these chats are always opportunistic chats
     avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(contact), false);
@@ -97,10 +128,6 @@ public class ConversationTitleView extends RelativeLayout {
     this.avatar.setOnClickListener(listener);
   }
 
-  public void setOnAvatarClickListener(@Nullable OnClickListener listener) {
-    this.avatar.setOnClickListener(listener);
-  }
-
   @Override
   public void setOnLongClickListener(@Nullable OnLongClickListener listener) {
     this.content.setOnLongClickListener(listener);
@@ -109,43 +136,5 @@ public class ConversationTitleView extends RelativeLayout {
 
   public void setOnBackClickedListener(@Nullable OnClickListener listener) {
     this.back.setOnClickListener(listener);
-  }
-
-  private void setComposeTitle() {
-    this.title.setText(null);
-    this.subtitle.setText(null);
-    this.subtitle.setVisibility(View.GONE);
-  }
-
-  private void setRecipientTitle(DcChat dcChat, boolean showSubtitle) {
-    int chatId = dcChat.getId();
-    if( chatId == DcChat.DC_CHAT_ID_DEADDROP ) {
-      this.title.setText(R.string.menu_deaddrop);
-      this.subtitle.setText(R.string.menu_deaddrop_subtitle);
-    } else {
-      this.title.setText(dcChat.getName());
-      String subtitle = "ErrSubtitle";
-
-      Context context = getContext();
-      DcContext dcContext = DcHelper.getContext(context);
-      int[] chatContacts = dcContext.getChatContacts(chatId);
-      if( dcChat.isGroup() ) {
-        subtitle = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
-      } else if( chatContacts.length>=1 ) {
-        if( dcChat.isSelfTalk() ) {
-          subtitle = context.getString(R.string.chat_self_talk_subtitle);
-        }
-        else if( dcChat.isDeviceTalk() ) {
-          subtitle = context.getString(R.string.device_talk_subtitle);
-        }
-        else {
-          subtitle = dcContext.getContact(chatContacts[0]).getAddr();
-        }
-      }
-
-      this.subtitle.setText(subtitle);
-    }
-
-    this.subtitle.setVisibility(showSubtitle? View.VISIBLE : View.GONE);
   }
 }

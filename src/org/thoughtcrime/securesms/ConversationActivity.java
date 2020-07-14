@@ -249,6 +249,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
 
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
     if (isForwarding(this)) {
@@ -1496,7 +1497,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED || eventId == DcContext.DC_EVENT_CONTACTS_CHANGED) {
+    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED
+     || eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED
+     || eventId == DcContext.DC_EVENT_CONTACTS_CHANGED) {
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       initializeSecurity(isSecureText, isDefaultSms);
