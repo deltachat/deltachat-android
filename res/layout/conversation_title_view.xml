@@ -49,17 +49,35 @@
         android:layout_toEndOf="@id/contact_photo_image"
         android:layout_toRightOf="@id/contact_photo_image">
 
-        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-            android:id="@+id/title"
-            style="@style/TextSecure.TitleTextStyle"
+        <LinearLayout android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="5dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="20dp"
-            android:transitionName="recipient_name"
-            tools:text="Jules Bonnot" />
+            android:layout_height="wrap_content">
+
+            <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+                android:id="@+id/title"
+                style="@style/TextSecure.TitleTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="20dp"
+                android:transitionName="recipient_name"
+                android:layout_weight="1"
+                tools:text="Jules Bonnot" />
+
+            <ImageView
+                android:id="@+id/ephemeral_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:contentDescription="@string/ephemeral_messages"
+                app:srcCompat="@drawable/ic_timer_gray_18dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/subtitle"
