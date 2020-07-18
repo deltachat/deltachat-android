@@ -98,7 +98,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
-import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -1059,14 +1058,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         List<Attachment> attachments = slideDeck.asAttachments();
         for (Attachment attachment : attachments) {
           String contentType = attachment.getContentType();
-          if (MediaUtil.isImageType(contentType)) {
+          if (MediaUtil.isImageType(contentType) && slideDeck.getDocumentSlide()==null) {
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
             msg.setDimension(attachment.getWidth(), attachment.getHeight());
-
-            // recompress jpeg-files unless sent as documents
-            if (MediaUtil.isJpegType(contentType) && slideDeck.getDocumentSlide()==null) {
-              recompress = DcMsg.DC_MSG_IMAGE;
-            }
           }
           else if (MediaUtil.isAudioType(contentType)) {
             msg = new DcMsg(dcContext,
@@ -1105,13 +1099,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           if(msg!=null)
           {
             boolean doSend = true;
-            if(recompress!=0) {
-              if(recompress==DcMsg.DC_MSG_IMAGE) {
-                BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
-              }
-              else if(recompress==DcMsg.DC_MSG_VIDEO) {
-                doSend = VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
-              }
+            if (recompress==DcMsg.DC_MSG_VIDEO) {
+              doSend = VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
             }
 
             if (doSend) {
