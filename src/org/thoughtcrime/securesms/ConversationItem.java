@@ -178,7 +178,7 @@ public class ConversationItem extends LinearLayout
 
     setGutterSizes(messageRecord, groupThread);
     setMessageShape(messageRecord);
-    setMediaAttributes(messageRecord, conversationRecipient, groupThread);
+    setMediaAttributes(messageRecord, groupThread);
     setInteractionState(messageRecord, pulseHighlight);
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
@@ -344,7 +344,6 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
-                                  @NonNull Recipient       conversationRecipient,
                                            boolean         isGroupThread)
   {
     class SetDurationListener implements AudioSlidePlayer.Listener {
