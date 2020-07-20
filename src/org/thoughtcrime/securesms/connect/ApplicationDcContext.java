@@ -345,6 +345,7 @@ public class ApplicationDcContext extends DcContext {
   private final Object lastErrorLock = new Object();
   private String lastErrorString = "";
   private boolean showNextErrorAsToast = true;
+  public boolean showNetworkErrors = true; // set to false if one network error was reported while having no internet
 
   public void captureNextError() {
     synchronized (lastErrorLock) {
@@ -371,7 +372,7 @@ public class ApplicationDcContext extends DcContext {
     }
   }
 
-  private void handleError(int event, boolean popUp, String string) {
+  private void handleError(int event, String string) {
     // log error
     boolean showAsToast;
     Log.e(TAG, string);
@@ -383,12 +384,16 @@ public class ApplicationDcContext extends DcContext {
 
     // show error to user
     Util.runOnMain(() -> {
-      if (popUp && showAsToast) {
-        String toastString = string;
+      if (showAsToast) {
+        String toastString = null;
 
         if (event == DC_EVENT_ERROR_NETWORK) {
-          if (!isNetworkConnected()) {
+          if (isNetworkConnected()) {
+            toastString = string;
+            showNetworkErrors = true;
+          } else if (showNetworkErrors) {
             toastString = context.getString(R.string.error_no_network);
+            showNetworkErrors = false;
           }
         }
         else if (event == DC_EVENT_ERROR_SELF_NOT_IN_GROUP) {
@@ -396,7 +401,7 @@ public class ApplicationDcContext extends DcContext {
         }
 
         ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
-        if (foregroundDetector==null || foregroundDetector.isForeground()) {
+        if (toastString != null && (foregroundDetector == null || foregroundDetector.isForeground())) {
           Toast.makeText(context, toastString, Toast.LENGTH_LONG).show();
         }
       }
@@ -415,15 +420,15 @@ public class ApplicationDcContext extends DcContext {
         break;
 
       case DC_EVENT_ERROR:
-        handleError(id, true, event.getData2Str());
+        handleError(id, event.getData2Str());
         break;
 
       case DC_EVENT_ERROR_NETWORK:
-        handleError(id, event.getData1Int() != 0, event.getData2Str());
+        handleError(id, event.getData2Str());
         break;
 
       case DC_EVENT_ERROR_SELF_NOT_IN_GROUP:
-        handleError(id, true, event.getData2Str());
+        handleError(id, event.getData2Str());
         break;
 
       case DC_EVENT_INCOMING_MSG:
