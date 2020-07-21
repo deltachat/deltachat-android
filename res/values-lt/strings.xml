@@ -22,6 +22,7 @@
     <string name="forward">Persiųsti</string>
     <string name="archive">Archyvuoti</string>
     <string name="unarchive">Išarchyvuoti</string>
+    <string name="ephemeral_messages">Išnykstančios žinutės</string>
     <string name="save">Įrašyti</string>
     <string name="media">Medija</string>
     <string name="main_menu">Pagrindinis meniu</string>

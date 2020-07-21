@@ -25,6 +25,7 @@
     <string name="archive">بایگانی</string>
     <string name="unarchive">خروج از بایگانی</string>
     <string name="mute">سکوت</string>
+    <string name="ephemeral_messages">پیام‌های ناپدید شونده</string>
     <string name="save">ذخیره</string>
     <string name="chat">گفتگو</string>
     <string name="media">رسانه</string>

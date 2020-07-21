@@ -13,6 +13,7 @@
     <string name="none">Nenhum</string>
     <string name="open">Abrir</string>
     <string name="delete">Apagar</string>
+    <string name="ephemeral_messages">Destruição de mensagens</string>
     <string name="not_now">Agora não</string>
     <string name="never">Nunca</string>
     <string name="one_moment">Um momento...</string>

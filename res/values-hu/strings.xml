@@ -19,6 +19,7 @@
     <string name="emoji">Emoji</string>
     <string name="forward">Továbbítás</string>
     <string name="mute">Némítás</string>
+    <string name="ephemeral_messages">Eltűnő üzenetek</string>
     <string name="save">Mentés</string>
     <string name="media">Média</string>
     <string name="not_now">Most nem</string>

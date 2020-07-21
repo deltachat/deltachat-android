@@ -24,6 +24,7 @@
     <string name="archive">Arxiva</string>
     <string name="unarchive">Treu de l\'arxiu</string>
     <string name="mute">Emmudeix</string>
+    <string name="ephemeral_messages">Missatges efímers</string>
     <string name="save">Guarda</string>
     <string name="chat">Xat</string>
     <string name="main_menu">Menú principal</string>

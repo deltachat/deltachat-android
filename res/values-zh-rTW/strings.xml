@@ -13,6 +13,7 @@
     <string name="none">無</string>
     <string name="open">開啟</string>
     <string name="delete">刪除</string>
+    <string name="ephemeral_messages">自動銷毀訊息</string>
     <string name="not_now">不要</string>
     <string name="never">永遠不要</string>
     <string name="one_moment">請稍候…</string>

@@ -25,6 +25,7 @@
     <string name="archive">Архивирај ћаскање</string>
     <string name="unarchive">Деархивирај ћаскање</string>
     <string name="mute">Искључи обавештења</string>
+    <string name="ephemeral_messages">Нестајуће поруке</string>
     <string name="save">Сачувај</string>
     <string name="chat">Ћаскање</string>
     <string name="media">Медији</string>

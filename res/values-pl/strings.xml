@@ -22,6 +22,7 @@
     <string name="forward">Przekaż</string>
     <string name="archive">Archiwizuj</string>
     <string name="unarchive">Przywróć z archiwum</string>
+    <string name="ephemeral_messages">Znikające wiadomości</string>
     <string name="save">Zapisz</string>
     <string name="chat">Czat</string>
     <string name="media">Multimedia</string>

@@ -15,6 +15,7 @@
     <string name="delete">削除</string>
     <string name="forward">転送</string>
     <string name="mute">ミュート</string>
+    <string name="ephemeral_messages">消えるメッセージ</string>
     <string name="save">保存</string>
     <string name="media">メディア</string>
     <string name="not_now">今はしない</string>

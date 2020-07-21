@@ -25,6 +25,7 @@
     <string name="archive">Arquivar</string>
     <string name="unarchive">Desarquivar</string>
     <string name="mute">Acalar</string>
+    <string name="ephemeral_messages">Desaparición das mensaxes</string>
     <string name="save">Gardar</string>
     <string name="chat">Chat</string>
     <string name="media">Medios</string>
