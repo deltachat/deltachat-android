@@ -14,6 +14,7 @@ import androidx.preference.Preference;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
@@ -23,6 +24,7 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -96,6 +98,10 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
     Preference submitDebugLog = this.findPreference("pref_view_log");
     submitDebugLog.setOnPreferenceClickListener(new ViewLogListener());
+
+    Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
+    webrtcInstance.setOnPreferenceClickListener(new WebrtcInstanceListener());
+    updateWebrtcSummary();
   }
 
   private boolean handleImapCheck(Preference preference, Object newValue, String dc_config_name) {
@@ -173,6 +179,35 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
   }
 
+  private class WebrtcInstanceListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      View gl = View.inflate(getActivity(), R.layout.single_line_input, null);
+      EditText inputField = gl.findViewById(R.id.input_field);
+      inputField.setHint("Your WebRTC instance");
+      inputField.setText(dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE));
+      inputField.setSelection(inputField.getText().length());
+      new AlertDialog.Builder(getActivity())
+              .setTitle("WebRTC instance")
+              .setMessage("If a WebRTC instance is defined here, you will find a button to start videochats in each one-to-one chat (groups will probably come a bit later :) Videochats require a supported browser.\n\nExamples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server")
+              .setView(gl)
+              .setNegativeButton(android.R.string.cancel, null)
+              .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                dcContext.setConfig(DcHelper.CONFIG_WEBRTC_INSTANCE, inputField.getText().toString());
+                updateWebrtcSummary();
+              })
+              .show();
+      return true;
+    }
+  }
+
+  private void updateWebrtcSummary() {
+    Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
+    if (webrtcInstance != null) {
+      webrtcInstance.setSummary(dcContext.isWebrtcConfigOk()?
+              dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE) : getString(R.string.none));
+    }
+  }
 
   /***********************************************************************************************
    * Autocrypt

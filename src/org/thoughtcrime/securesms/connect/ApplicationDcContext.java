@@ -284,6 +284,11 @@ public class ApplicationDcContext extends DcContext {
 
   }
 
+  public boolean isWebrtcConfigOk() {
+    String instance = getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE);
+    return (instance != null && !instance.isEmpty());
+  }
+
   /***********************************************************************************************
    * create objects compatible to the database model of Signal
    **********************************************************************************************/
