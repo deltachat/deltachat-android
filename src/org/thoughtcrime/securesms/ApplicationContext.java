@@ -1,6 +1,8 @@
 package org.thoughtcrime.securesms;
 
 import android.annotation.SuppressLint;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ProcessLifecycleOwner;
@@ -114,6 +116,7 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
             "FetchWorker",
             ExistingPeriodicWorkPolicy.KEEP,
             fetchWorkRequest);
+    AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
   }
 
   @Override
