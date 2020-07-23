@@ -186,7 +186,6 @@
         <item name="import_export_item_card_background">@drawable/clickable_card_light</item>
 
         <item name="menu_new_conversation_icon">@drawable/ic_add_white_24dp</item>
-        <item name="menu_map_icon">@android:drawable/ic_dialog_map</item>
         <item name="menu_search_icon">@drawable/ic_search_white_24dp</item>
         <item name="menu_popup_expand">@drawable/ic_launch_white_24dp</item>
         <item name="menu_unlock_icon">@drawable/ic_unlocked_white_24dp</item>
@@ -334,7 +333,6 @@
         <item name="quick_mic_icon">@drawable/ic_mic_white_24dp</item>
 
         <item name="menu_new_conversation_icon">@drawable/ic_add_white_24dp</item>
-        <item name="menu_map_icon">@android:drawable/ic_dialog_map</item>
         <item name="menu_search_icon">@drawable/ic_search_white_24dp</item>
         <item name="menu_popup_expand">@drawable/ic_launch_white_24dp</item>
         <item name="menu_unlock_icon">@drawable/ic_unlocked_white_24dp</item>
