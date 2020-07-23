@@ -731,20 +731,6 @@ public class ConversationFragment extends Fragment
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
             }
         }
-
-        @Override
-        public void onMessageSharedContactClicked(@NonNull List<Recipient> choices) {
-            if (getContext() == null) return;
-
-//      ContactUtil.selectRecipientThroughDialog(getContext(), choices, locale, recipient -> {
-//        CommunicationActions.startConversation(getContext(), recipient, null);
-//      });
-        }
-
-        @Override
-        public void onInviteSharedContactClicked(@NonNull List<Recipient> choices) {
-            if (getContext() == null) return;
-        }
     }
 
     @Override
