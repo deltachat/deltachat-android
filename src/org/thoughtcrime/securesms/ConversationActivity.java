@@ -1505,14 +1505,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     beforeSearchAttachVisibility = attachmentManager.getVisibility();
     attachmentManager.setVisibility(View.GONE);
 
-    ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+    ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, true);
   }
 
   private void searchCollapse(final Menu menu, final MenuItem searchItem) {
     composePanel.setVisibility(beforeSearchComposeVisibility);
     attachmentManager.setVisibility(beforeSearchAttachVisibility);
 
-    ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, true);
+    ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+    invalidateOptionsMenu();
   }
 
   private void handleMenuSearchNext(boolean searchNext) {

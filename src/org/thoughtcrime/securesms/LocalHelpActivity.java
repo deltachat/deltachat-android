@@ -117,13 +117,13 @@ public class LocalHelpActivity extends PassphraseRequiredActionBarActivity
                 public boolean onMenuItemActionExpand(final MenuItem item) {
                     searchMenu = menu;
                     LocalHelpActivity.this.lastQuery = "";
-                    LocalHelpActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+                    LocalHelpActivity.this.makeSearchMenuVisible(menu, searchItem, true);
                     return true;
                 }
 
                 @Override
                 public boolean onMenuItemActionCollapse(final MenuItem item) {
-                    LocalHelpActivity.this.makeSearchMenuVisible(menu, searchItem, true);
+                    LocalHelpActivity.this.makeSearchMenuVisible(menu, searchItem, false);
                     return true;
                 }
             });

@@ -159,16 +159,18 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     }
   }
 
-  public void makeSearchMenuVisible(final Menu menu, final MenuItem exception, boolean visible) {
+  public void makeSearchMenuVisible(final Menu menu, final MenuItem searchItem, boolean visible) {
     for (int i = 0; i < menu.size(); ++i) {
       MenuItem item = menu.getItem(i);
       int id = item.getItemId();
-      if (id==R.id.menu_search_up || id==R.id.menu_search_down) {
-        item.setVisible(!visible);
-      } else if (id==R.id.menu_search_counter) {
-        item.setVisible(false);
-      } else if (item != exception) {
+      if (id == R.id.menu_search_up || id == R.id.menu_search_down) {
         item.setVisible(visible);
+      } else if (id == R.id.menu_search_counter) {
+        item.setVisible(false); // always hide menu_search_counter initially
+      } else if (item == searchItem) {
+        ; // searchItem is just always visible
+      } else {
+        item.setVisible(!visible); // if search is shown, other items are hidden - and the other way round
       }
     }
   }
