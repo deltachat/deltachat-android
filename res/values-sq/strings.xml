@@ -105,7 +105,9 @@
     <string name="camera">Kamerë</string>
     <string name="location">Vendndodhje</string>
     <string name="gallery">Galeri</string>
+    <string name="images_and_videos">Figura dhe video</string>
     <string name="file">Kartelë</string>
+    <string name="files">Kartela</string>
     <string name="unknown">E panjohur</string>
 
     <string name="green">E gjelbër</string>

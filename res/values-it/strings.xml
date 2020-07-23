@@ -105,7 +105,9 @@
     <string name="camera">Camera</string>
     <string name="location">Posizione</string>
     <string name="gallery">Galleria</string>
+    <string name="images_and_videos">Immagini e video</string>
     <string name="file">File</string>
+    <string name="files">File</string>
     <string name="unknown">Sconosciuto</string>
 
     <string name="green">Verde</string>

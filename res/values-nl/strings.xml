@@ -105,7 +105,9 @@
     <string name="camera">Camera</string>
     <string name="location">Locatie</string>
     <string name="gallery">Galerij</string>
+    <string name="images_and_videos">Afbeeldingen en video\'s</string>
     <string name="file">Bestand</string>
+    <string name="files">Bestanden</string>
     <string name="unknown">Onbekend</string>
 
     <string name="green">Groen</string>
