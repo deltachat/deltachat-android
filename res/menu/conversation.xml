@@ -25,6 +25,11 @@
         android:visible="false"
         app:showAsAction="always"/>
 
+    <item android:id="@+id/menu_videochat_invite"
+        android:title="@string/videochat"
+        android:icon="@drawable/ic_videocam_white_24dp"
+        app:showAsAction="ifRoom" />
+
     <item android:id="@+id/menu_ephemeral_messages"
         android:title="@string/ephemeral_messages"
         android:visible="false" />

@@ -212,6 +212,8 @@
 
     <string name="file_saved_to">File saved to \"%1$s\".</string>
 
+    <string name="videochat">Video chat</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
     <plurals name="ask_delete_chat">
