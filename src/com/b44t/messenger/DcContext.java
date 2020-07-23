@@ -164,6 +164,7 @@ public class DcContext {
     public native int          prepareMsg           (int chat_id, DcMsg msg);
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);
+    public native int          sendVideochatInvitation(int chat_id);
     public native int          addDeviceMsg         (String label, DcMsg msg);
     public native boolean      wasDeviceMsgEverAdded(String label);
     public native void         updateDeviceChats    ();
