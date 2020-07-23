@@ -113,6 +113,7 @@ import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.views.Stub;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
+import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -451,7 +452,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(true);
     }
 
-    if (!dcContext.isWebrtcConfigOk()) {
+    if (!dcContext.isWebrtcConfigOk() || !dcChat.canVideochat()) {
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
@@ -526,6 +527,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_search_down:           handleMenuSearchNext(true);        return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
       case R.id.menu_ephemeral_messages:    handleEphemeralMessages();         return true;
+      case R.id.menu_videochat_invite:      handleVideochatInvite();           return true;
     }
 
     return false;
@@ -558,6 +560,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       EphemeralMessagesDialog.show(this, preselected, duration -> {
         dcContext.setChatEphemeralTimer(chatId, (int) duration);
       });
+  }
+
+  private void handleVideochatInvite() {
+    new VideochatUtil().invite(this, chatId);
   }
 
   private void handleShowMap() {

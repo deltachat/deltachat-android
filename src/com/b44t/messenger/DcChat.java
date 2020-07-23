@@ -37,6 +37,10 @@ public class DcChat {
     public native boolean isSendingLocations();
     public native boolean isMuted           ();
 
+    public boolean canVideochat() {
+        return canSend() && !isGroup() && !isSelfTalk();
+    }
+
     // working with raw c-data
     private long        chatCPtr;    // CAVE: the name is referenced in the JNI
     private native void unrefChatCPtr();
