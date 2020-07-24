@@ -136,13 +136,15 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
             Display display = ServiceUtil.getWindowManager(context).getDefaultDisplay();
             Point size = new Point();
             display.getSize(size);
+            // resize so that the larger side fits the screen accurately
+            int largerSide = (size.x > size.y ? size.x : size.y);
             Bitmap scaledBitmap = GlideApp.with(context)
                     .asBitmap()
                     .load(imageUri)
-                    .centerCrop()
+                    .fitCenter()
                     .skipMemoryCache(true)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .submit(size.x, size.y)
+                    .submit(largerSide, largerSide)
                     .get();
             FileOutputStream outStream = new FileOutputStream(destinationPath);
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
