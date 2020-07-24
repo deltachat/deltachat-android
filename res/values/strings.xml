@@ -213,6 +213,8 @@
     <string name="file_saved_to">File saved to \"%1$s\".</string>
 
     <string name="videochat">Video chat</string>
+    <string name="videochat_contact_invited_hint">%1$s invited to a video chat.</string>
+    <string name="videochat_you_invited_hint">You invited to a video chat.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
