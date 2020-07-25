@@ -461,10 +461,10 @@
     <string name="pref_auto_folder_moves">Automatic moves to DeltaChat folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
     <string name="pref_email_interaction_title">Email interaction</string>
-    <string name="pref_show_emails">Show classic emails</string>
-    <string name="pref_show_emails_no">No, chats only</string>
+    <string name="pref_show_emails">Show all emails</string>
+    <string name="pref_show_emails_no">No, only chats via Delta Chat</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
-    <string name="pref_show_emails_all">All</string>
+    <string name="pref_show_emails_all">Yes, show all emails from my mail account</string>
     <string name="pref_empty_server_title">Delete emails from server</string>
     <string name="pref_empty_server_msg">This function helps free up space on your IMAP server by deleting all emails, including chat messages, in the given folders. Messages on this device will not be deleted. The deletion cannot be undone!</string>
     <string name="pref_empty_server_inbox">Delete all emails in \"Inbox\" folder</string>
