@@ -123,8 +123,8 @@ public class KeepAliveService extends Service {
         if(!ch_created) {
             ch_created = true;
             NotificationChannel channel = new NotificationChannel(NotificationCenter.CH_PERMANENT,
-                "Receive messages in background.", NotificationManager.IMPORTANCE_MIN); // IMPORTANCE_DEFAULT will play a sound
-            channel.setDescription("Ensure reliable message receiving.");
+                "Backgrund connection. This can safely be turned off.", NotificationManager.IMPORTANCE_MIN); // IMPORTANCE_DEFAULT will play a sound
+            channel.setDescription("Delta Chat has to show this notification to reliably receive messages in background. But this will still work if you hide this notification.");
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
