@@ -70,6 +70,7 @@ import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -707,6 +708,9 @@ public class ConversationFragment extends Fragment
             }
             else if(messageRecord.isSetupMessage()) {
                 querySetupCode(messageRecord,null);
+            }
+            else if (messageRecord.getType()==DcMsg.DC_MSG_VIDEOCHAT_INVITATION) {
+                new VideochatUtil().join(getActivity(), messageRecord.getId());
             }
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());
