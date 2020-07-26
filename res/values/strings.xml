@@ -26,6 +26,7 @@
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
     <string name="ephemeral_messages">Disappearing messages</string>
+    <string name="ephemeral_messages_hint">These settings apply to all participants using Delta Chat. However, you must trust your conversation partners to use Delta Chat and not copy, save or forward any content.</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
