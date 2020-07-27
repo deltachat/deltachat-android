@@ -76,6 +76,7 @@ import org.thoughtcrime.securesms.components.HidingLinearLayout;
 import org.thoughtcrime.securesms.components.InputAwareLayout;
 import org.thoughtcrime.securesms.components.InputPanel;
 import org.thoughtcrime.securesms.components.KeyboardAwareLinearLayout.OnKeyboardShownListener;
+import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.components.SendButton;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.AttachmentDrawerListener;
@@ -98,7 +99,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
-import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -176,6 +176,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputAwareLayout            container;
   private   View                        composePanel;
   protected Stub<ReminderView>          reminderView;
+  private   ScaleStableImageView        backgroundView;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
@@ -825,10 +826,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer = ViewUtil.findById(this, R.id.quick_attachment_drawer);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel            = ViewUtil.findById(this, R.id.bottom_panel);
+    backgroundView        = ViewUtil.findById(this, R.id.conversation_background);
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
     container.addOnKeyboardShownListener(this);
+    container.addOnKeyboardHiddenListener(backgroundView);
+    container.addOnKeyboardShownListener(backgroundView);
     inputPanel.setListener(this);
     inputPanel.setMediaListener(this);
 
@@ -871,16 +875,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void initializeBackground() {
     String backgroundImagePath = Prefs.getBackgroundImagePath(this);
+    Drawable background;
     if(!backgroundImagePath.isEmpty()) {
-      Drawable image = Drawable.createFromPath(backgroundImagePath);
-      getWindow().setBackgroundDrawable(image);
+      background = Drawable.createFromPath(backgroundImagePath);
     }
-    else if(dynamicTheme.isDarkTheme(this)) {
-      getWindow().setBackgroundDrawableResource(R.drawable.background_hd_dark);
+    else if(DynamicTheme.isDarkTheme(this)) {
+      background = getResources().getDrawable(R.drawable.background_hd_dark);
     }
     else {
-      getWindow().setBackgroundDrawableResource(R.drawable.background_hd);
+      background = getResources().getDrawable(R.drawable.background_hd);
     }
+    backgroundView.setImageDrawable(background);
   }
 
   protected void initializeActionBar() {
@@ -1060,14 +1065,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         List<Attachment> attachments = slideDeck.asAttachments();
         for (Attachment attachment : attachments) {
           String contentType = attachment.getContentType();
-          if (MediaUtil.isImageType(contentType)) {
+          if (MediaUtil.isImageType(contentType) && slideDeck.getDocumentSlide()==null) {
             msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
             msg.setDimension(attachment.getWidth(), attachment.getHeight());
-
-            // recompress jpeg-files unless sent as documents
-            if ((MediaUtil.isJpegType(contentType) || MediaUtil.isPngType(contentType)) && slideDeck.getDocumentSlide()==null) {
-              recompress = DcMsg.DC_MSG_IMAGE;
-            }
           }
           else if (MediaUtil.isAudioType(contentType)) {
             msg = new DcMsg(dcContext,
@@ -1106,13 +1106,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           if(msg!=null)
           {
             boolean doSend = true;
-            if(recompress!=0) {
-              if(recompress==DcMsg.DC_MSG_IMAGE) {
-                BitmapUtil.recodeImageMsg(ConversationActivity.this, msg);
-              }
-              else if(recompress==DcMsg.DC_MSG_VIDEO) {
-                doSend = VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
-              }
+            if (recompress==DcMsg.DC_MSG_VIDEO) {
+              doSend = VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
             }
 
             if (doSend) {

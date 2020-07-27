@@ -105,7 +105,9 @@
     <string name="camera">Camera</string>
     <string name="location">Posizione</string>
     <string name="gallery">Galleria</string>
+    <string name="images_and_videos">Immagini e video</string>
     <string name="file">File</string>
+    <string name="files">File</string>
     <string name="unknown">Sconosciuto</string>
 
     <string name="green">Verde</string>
@@ -260,7 +262,7 @@
         <item quantity="one">%d nuovo messaggio</item>
         <item quantity="other">%d nuovi messaggi</item>
     </plurals>
-    <string name="chat_no_messages_hint">Invia un messaggio a %1$s:\n\n• Non è necessario che anche %2$s usi Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante ed non essere crittografato. </string>
+    <string name="chat_no_messages_hint">Invia un messaggio a %1$s:\n\n• Non è necessario che anche %2$s usi Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante e non essere crittografato. </string>
     <string name="chat_new_group_hint">Invia il primo messaggio per permettere agli altri di rispondere nel gruppo\n\n• Non è necessario che tutti i membri usino Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>
@@ -436,7 +438,7 @@
     <string name="pref_other">Altro</string>
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Backup chat su memoria esterna</string>
-    <string name="pref_backup_export_explain">Un backup ti aiuta a impostare una nuova installazione su questo o un altro dispositivo.\n\nIl backup conterrà tutti i messaggi, i contatti, le chat e le impostazioni Autocrypt. Tienilo al sicuro o eliminalo il prima possibile. </string>
+    <string name="pref_backup_export_explain">Un backup ti aiuta ad impostare una nuova installazione su questo o un altro dispositivo.\n\nIl backup conterrà tutti i messaggi, i contatti, le chat e le impostazioni Autocrypt. Tienilo al sicuro o eliminalo il prima possibile. </string>
     <string name="pref_backup_export_start_button">Avvia backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
     <string name="pref_managekeys_menu_title">Gestisci chiavi</string>

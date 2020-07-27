@@ -15,6 +15,7 @@
     <string name="delete">Slette</string>
     <string name="forward">Videresend</string>
     <string name="mute">Udsæt</string>
+    <string name="ephemeral_messages">Beskeder med tidsudløb</string>
     <string name="save">Gem</string>
     <string name="media">Medie</string>
     <string name="not_now">Ikke nu</string>

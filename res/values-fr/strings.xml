@@ -25,6 +25,7 @@
     <string name="archive">Archiver</string>
     <string name="unarchive">Désarchiver</string>
     <string name="mute">Sourdine</string>
+    <string name="ephemeral_messages">Messages éphémères</string>
     <string name="save">Sauvegarder</string>
     <string name="chat">Discussion</string>
     <string name="media">Média</string>

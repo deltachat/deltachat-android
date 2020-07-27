@@ -25,6 +25,7 @@
     <string name="archive">Artxibatu</string>
     <string name="unarchive">Berreskuratu artxibotik</string>
     <string name="mute">Isilarazi</string>
+    <string name="ephemeral_messages">Mezuen desagerpena</string>
     <string name="save">Gorde</string>
     <string name="chat">Txata</string>
     <string name="media">Multimedia</string>

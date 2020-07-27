@@ -19,6 +19,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             if (ni != null && ni.getState() == NetworkInfo.State.CONNECTED) {
                 Log.i("DeltaChat", "++++++++++++++++++ Connected ++++++++++++++++++");
                 ApplicationDcContext dcContext = DcHelper.getContext(context);
+                dcContext.showNetworkErrors = true;
                 new Thread(() -> {
                     // call dc_maybe_network() from a worker thread.
                     // theoretically, dc_maybe_network() can be called from the main thread and returns at once,

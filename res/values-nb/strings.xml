@@ -25,6 +25,7 @@
     <string name="archive">Arkiver</string>
     <string name="unarchive">Fjern fra arkiv</string>
     <string name="mute">Demp</string>
+    <string name="ephemeral_messages">Forsvinnende meldinger</string>
     <string name="save">Lagre</string>
     <string name="chat">Sludring</string>
     <string name="media">Media</string>

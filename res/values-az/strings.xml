@@ -25,6 +25,7 @@
     <string name="archive">Arxivləşmə</string>
     <string name="unarchive">Arxivdən çıxarma</string>
     <string name="mute">Səssiz</string>
+    <string name="ephemeral_messages">Yox olan mesajlar</string>
     <string name="save">Saxla</string>
     <string name="chat">Çat</string>
     <string name="media">Mediafayllar</string>

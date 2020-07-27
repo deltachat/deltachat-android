@@ -105,7 +105,9 @@
     <string name="camera">Kamera</string>
     <string name="location">Plats</string>
     <string name="gallery">Galleri</string>
+    <string name="images_and_videos">Bilder och videor</string>
     <string name="file">Arkiv</string>
+    <string name="files">Filer</string>
     <string name="unknown">Okänd</string>
 
     <string name="green">Grön</string>
@@ -203,7 +205,7 @@
     <string name="share_location_once">en gång</string>
     <string name="share_location_for_5_minutes">i 5 minuter</string>
     <string name="share_location_for_30_minutes">i 30 minuter</string>
-    <string name="share_location_for_one_hour">i 1 timme</string>
+    <string name="share_location_for_one_hour">i 1 timma</string>
     <string name="share_location_for_two_hours">i 2 timmar</string>
     <string name="share_location_for_six_hours">i 6 timmar</string>
 

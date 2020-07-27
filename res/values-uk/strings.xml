@@ -13,6 +13,7 @@
     <string name="none">Не задано</string>
     <string name="open">Відкрити</string>
     <string name="delete">Видалити</string>
+    <string name="ephemeral_messages">Зникнення повідомлень</string>
     <string name="not_now">Не зараз</string>
     <string name="never">Ніколи</string>
     <string name="one_moment">Зачекайте, будь ласка...</string>

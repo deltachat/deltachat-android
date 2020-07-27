@@ -25,6 +25,7 @@
     <string name="archive">归档</string>
     <string name="unarchive">解档</string>
     <string name="mute">静音</string>
+    <string name="ephemeral_messages">阅后即焚</string>
     <string name="save">保存</string>
     <string name="chat">聊天</string>
     <string name="media">媒体</string>
@@ -99,6 +100,7 @@
     <string name="location">位置</string>
     <string name="gallery">图库</string>
     <string name="file">文件</string>
+    <string name="files">文件</string>
     <string name="unknown">未知</string>
 
     <string name="green">绿色</string>

@@ -25,6 +25,7 @@
     <string name="archive">ఆర్కైవ్</string>
     <string name="unarchive">ఆర్కైవ్ రద్దు</string>
     <string name="mute">నిశబ్ధం</string>
+    <string name="ephemeral_messages">అదృశ్యమవుతున్న సందేశాలు</string>
     <string name="save">భద్రపరుచు</string>
     <string name="chat">చాట్</string>
     <string name="media">మాధ్యమం</string>

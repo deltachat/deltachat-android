@@ -559,12 +559,12 @@
     <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
 
     <string name="systemmsg_ephemeral_timer_disabled">Таймер исчезающих сообщений отключен.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s с.</string>
-    <string name="systemmsg_ephemeral_timer_minute">Таймер исчезающих сообщений установлен на 1 минуту.</string>
-    <string name="systemmsg_ephemeral_timer_hour">Таймер исчезающих сообщений установлен на 1 час.</string>
-    <string name="systemmsg_ephemeral_timer_day">Таймер исчезающих сообщений установлен на 1 день.</string>
-    <string name="systemmsg_ephemeral_timer_week">Таймер исчезающих сообщений установлен на 1 неделю.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">Таймер исчезающих сообщений установлен на 4 недели.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s с.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Таймер исчезающих сообщений установлен на 1 минуту.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Таймер исчезающих сообщений установлен на 1 час.</string>
+    <string name="systemmsg_ephemeral_timer_day">Таймер исчезающих сообщений установлен на 1 день.</string>
+    <string name="systemmsg_ephemeral_timer_week">Таймер исчезающих сообщений установлен на 1 неделю.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Таймер исчезающих сообщений установлен на 4 недели.</string>
 
 
     <!-- screen lock -->

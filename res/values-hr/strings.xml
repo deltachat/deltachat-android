@@ -24,6 +24,7 @@
     <string name="archive">Arhiviraj</string>
     <string name="unarchive">Dearhiviraj</string>
     <string name="mute">Prigušiti</string>
+    <string name="ephemeral_messages">Nestajuće poruke</string>
     <string name="save">Spremi</string>
     <string name="media">Medij</string>
     <string name="main_menu">Glavni izbornik</string>

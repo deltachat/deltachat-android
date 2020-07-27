@@ -105,7 +105,9 @@
     <string name="camera">Kamera</string>
     <string name="location">Konum</string>
     <string name="gallery">Galeri</string>
+    <string name="images_and_videos">Görseller ve videolar</string>
     <string name="file">Dosya</string>
+    <string name="files">Dosyalar</string>
     <string name="unknown">Bilinmeyen</string>
 
     <string name="green">Yeşil</string>
