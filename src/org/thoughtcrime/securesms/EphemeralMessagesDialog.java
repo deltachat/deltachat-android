@@ -2,9 +2,17 @@ package org.thoughtcrime.securesms;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.widget.TextViewCompat;
+
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +25,38 @@ public class EphemeralMessagesDialog {
         int preselected = getPreselection(currentSelectedTime);
         final int[] selectedChoice = new int[]{preselected};
 
+        View dialogView = View.inflate(context, R.layout.dialog_extended_options, null);
+        RadioGroup container = dialogView.findViewById(R.id.optionsContainer);
+        for (CharSequence choice : choices) {
+
+            RadioButton radioButton = new RadioButton(context);
+            radioButton.setText(choice);
+            TextViewCompat.setTextAppearance(radioButton, android.R.style.TextAppearance_Medium);
+
+            RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0, 0, 0, ViewUtil.dpToPx(context, 8));
+            radioButton.setLayoutParams(params);
+            container.addView(radioButton);
+        }
+
+        container.setOnCheckedChangeListener((group, checkedId) -> {
+            int childCount = group.getChildCount();
+            for (int x = 0; x < childCount; x++) {
+                RadioButton btn = (RadioButton) group.getChildAt(x);
+                if (btn.getId() == checkedId) {
+                    selectedChoice[0] = x;
+                }
+            }
+        });
+        container.check(container.getChildAt(preselected).getId());
+
+        TextView messageView = dialogView.findViewById(R.id.description);
+        messageView.setText(context.getString(R.string.ephemeral_messages_hint));
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle(R.string.ephemeral_messages)
+                .setView(dialogView)
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok, (dialog, which) -> {
                     final long burnAfter;
@@ -32,10 +70,7 @@ public class EphemeralMessagesDialog {
                         default: burnAfter = 0; break;
                     }
                     listener.onTimeSelected(burnAfter);
-                })
-                .setSingleChoiceItems(choices, preselected, ((dialog, which) -> {
-                    selectedChoice[0] = which;
-                }));
+                });
         builder.show();
     }
 
