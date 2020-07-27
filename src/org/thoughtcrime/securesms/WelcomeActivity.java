@@ -5,10 +5,11 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
@@ -21,6 +22,8 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
+import org.thoughtcrime.securesms.service.GenericForegroundService;
+import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
@@ -31,6 +34,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
     ApplicationDcContext dcContext;
+    private NotificationController notificationController;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -116,6 +120,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     private void startImport(final String backupFile)
     {
+        notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.one_moment));
         if( progressDialog!=null ) {
             progressDialog.dismiss();
             progressDialog = null;
@@ -189,7 +194,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         } else {
             startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
         }
-
         finish();
     }
 
@@ -199,13 +203,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             long progress = (Long)data1;
             if (progress==0/*error/aborted*/) {
                 progressError();
+                notificationController.close();
             }
             else if (progress<1000/*progress in permille*/) {
                 progressUpdate((int)progress);
+                notificationController.setProgress(1000, progress, String.format(" %d%%", (int) progress / 10));
             }
             else if (progress==1000/*done*/) {
                 dcContext.maybeStartIo();
                 progressSuccess(false);
+                notificationController.close();
             }
         }
         else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {

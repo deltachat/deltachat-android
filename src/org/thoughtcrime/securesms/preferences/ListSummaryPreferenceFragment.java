@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.preferences;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -13,6 +14,8 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.service.GenericForegroundService;
+import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
@@ -22,6 +25,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   protected static final int REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP = ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS + 1;
   protected static final int REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS = REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP + 1;
   protected ApplicationDcContext dcContext;
+  private NotificationController notificationController;
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -66,6 +70,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   protected String         imexDir = "";
   protected void startImex(int what)
   {
+    notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.one_moment));
     if( progressDialog!=null ) {
       progressDialog.dismiss();
       progressDialog = null;
@@ -100,12 +105,15 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
       }
       else if (progress<1000/*progress in permille*/) {
         int percent = (int)progress / 10;
-        progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
+        String formattedPercent = String.format(" %d%%", percent);
+        progressDialog.setMessage(getResources().getString(R.string.one_moment) + formattedPercent);
+        notificationController.setProgress(1000, progress, formattedPercent);
       }
       else if (progress==1000/*done*/) {
         dcContext.endCaptureNextError();
         progressDialog.dismiss();
         progressDialog = null;
+        notificationController.close();
         String msg = "";
         if (progressWhat==DcContext.DC_IMEX_EXPORT_BACKUP) {
           msg = getActivity().getString(R.string.pref_backup_written_to_x, imexDir);
