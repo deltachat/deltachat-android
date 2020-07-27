@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+
 import android.util.Log;
 
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -34,14 +36,7 @@ public class KeepAliveService extends Service {
     public static void startSelf(Context context)
     {
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                // the started service has to call startForeground() within 5 seconds,
-                // see https://developer.android.com/about/versions/oreo/android-8.0-changes
-                context.startForegroundService(new Intent(context, KeepAliveService.class));
-            }
-            else {
-                context.startService(new Intent(context, KeepAliveService.class));
-            }
+            ContextCompat.startForegroundService(context, new Intent(context, KeepAliveService.class));
         }
         catch(Exception e) {
             e.printStackTrace();
