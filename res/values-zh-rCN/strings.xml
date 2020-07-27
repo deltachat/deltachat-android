@@ -99,6 +99,7 @@
     <string name="camera">相机</string>
     <string name="location">位置</string>
     <string name="gallery">图库</string>
+    <string name="images_and_videos">图片和视频</string>
     <string name="file">文件</string>
     <string name="files">文件</string>
     <string name="unknown">未知</string>
@@ -525,6 +526,15 @@
     <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">已禁用消息在多久后消失的计时器</string>
+    <string name="systemmsg_ephemeral_timer_enabled">消息将在%1$s秒后消失</string>
+    <string name="systemmsg_ephemeral_timer_minute">消息将在1分钟后消失</string>
+    <string name="systemmsg_ephemeral_timer_hour">消息将在1小时后消失</string>
+    <string name="systemmsg_ephemeral_timer_day">消息将在1天后消失</string>
+    <string name="systemmsg_ephemeral_timer_week">消息将在1周后消失</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">消息将在4周后消失</string>
+
 
     <!-- screen lock -->
     <string name="screenlock_title">屏幕锁定</string>
