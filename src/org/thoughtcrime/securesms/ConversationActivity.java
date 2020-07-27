@@ -205,6 +205,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected void onPreCreate() {
     dynamicTheme.onCreate(this);
     dynamicLanguage.onCreate(this);
+
+    // BaseActionBarActivity.onCreate() calls {content}.setVisibility(View.INVISIBLE) when the screen should be locked in order not to
+    // show sensitive content to the user. This call here has to happen before.
+    supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
   }
 
   @Override
@@ -214,7 +218,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     final Context context = getApplicationContext();
     this.dcContext = DcHelper.getContext(context);
 
-    supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(R.layout.conversation_activity);
 
     TypedArray typedArray = obtainStyledAttributes(new int[] {R.attr.conversation_background});
