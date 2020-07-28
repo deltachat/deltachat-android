@@ -120,7 +120,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     private void startImport(final String backupFile)
     {
-        notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.one_moment));
+        notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.import_backup_title));
         if( progressDialog!=null ) {
             progressDialog.dismiss();
             progressDialog = null;

@@ -70,7 +70,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   protected String         imexDir = "";
   protected void startImex(int what)
   {
-    notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.one_moment));
+    notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop));
     if( progressDialog!=null ) {
       progressDialog.dismiss();
       progressDialog = null;
