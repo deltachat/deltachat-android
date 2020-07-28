@@ -408,6 +408,12 @@ public class ConversationFragment extends Fragment
                 .setMessage(info_str)
                 .setPositiveButton(android.R.string.ok, null)
                 .show();
+	try {
+	    ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+	    clipboard.setText(info_str);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
     }
 
     private void handleForwardMessage(final Set<DcMsg> messageRecords) {
