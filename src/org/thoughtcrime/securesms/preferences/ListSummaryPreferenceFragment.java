@@ -102,6 +102,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
                   .setPositiveButton(android.R.string.ok, null)
                   .show();
         }
+        notificationController.close();
       }
       else if (progress<1000/*progress in permille*/) {
         int percent = (int)progress / 10;
