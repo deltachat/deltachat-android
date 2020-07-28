@@ -53,7 +53,6 @@ public class EphemeralMessagesDialog {
         TextView messageView = dialogView.findViewById(R.id.description);
         messageView.setText(context.getString(R.string.ephemeral_messages_hint));
 
-
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle(R.string.ephemeral_messages)
                 .setView(dialogView)
