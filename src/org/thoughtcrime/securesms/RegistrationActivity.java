@@ -21,6 +21,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,6 +38,7 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
@@ -189,6 +191,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
 
         DcHelper.getContext(this).eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+        DcHelper.getContext(this).eventCenter.addObserver(DcContext.DC_EVENT_SETUP_SECOND_DEVICE, this);
     }
 
     @Override
@@ -595,6 +598,18 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 startActivity(conversationList);
                 finish();
             }
+        }
+
+        if (eventId == DcContext.DC_EVENT_SETUP_SECOND_DEVICE) {
+            Log.e("dbg", "ev_setup");
+            ApplicationDcContext dcContext = DcHelper.getContext(this);
+            dcContext.maybeStartIo();
+            dcContext.endCaptureNextError();
+            progressDialog.dismiss();
+            Intent intent = new Intent(getApplicationContext(), QrActivity.class);
+            intent.putExtra(QrActivity.SETUP_SECOND_DEVICE, true);
+            startActivity(intent);
+            finish();
         }
     }
 }

@@ -20,6 +20,7 @@ import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
@@ -48,6 +49,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         dcContext = DcHelper.getContext(this);
         dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
         dcContext.eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
+        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_SETUP_SECOND_DEVICE, this);
     }
 
     @Override
@@ -178,13 +180,17 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
     }
 
-    private void progressSuccess(boolean enterDisplayname) {
+    private void progressSuccess(boolean enterDisplayname, boolean setupSecondDevice) {
         dcContext.endCaptureNextError();
         progressDialog.dismiss();
 
         if (enterDisplayname) {
             Intent intent = new Intent(getApplicationContext(), CreateProfileActivity.class);
             intent.putExtra(CreateProfileActivity.FROM_WELCOME, true);
+            startActivity(intent);
+        } else if (setupSecondDevice) {
+            Intent intent = new Intent(getApplicationContext(), QrActivity.class);
+            intent.putExtra(QrActivity.SETUP_SECOND_DEVICE, true);
             startActivity(intent);
         } else {
             startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
@@ -205,7 +211,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             }
             else if (progress==1000/*done*/) {
                 dcContext.maybeStartIo();
-                progressSuccess(false);
+                progressSuccess(false, false);
             }
         }
         else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
@@ -224,8 +230,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 progressUpdate((int)progress);
             }
             else if (progress==1000/*done*/) {
-                progressSuccess(true);
+                progressSuccess(true, false);
             }
+        }
+
+        if (eventId == DcContext.DC_EVENT_SETUP_SECOND_DEVICE) {
+            dcContext.maybeStartIo();
+            progressSuccess(false, true);
         }
     }
 

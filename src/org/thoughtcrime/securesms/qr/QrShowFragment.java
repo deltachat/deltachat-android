@@ -10,7 +10,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,19 +47,24 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     private ApplicationDcContext dcContext;
 
     private String hint;
-
     private String errorHint;
 
     private TextView hintBelowQr;
 
     private BroadcastReceiver broadcastReceiver;
+    private boolean setupSecondDevice;
+
+    QrShowFragment(boolean setupSecondDevice) {
+        this.setupSecondDevice = setupSecondDevice;
+    }
 
 
-    @Override
+  @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        // keeping the screen on also avoids falling back from IDLE to POLL
     }
 
     @Override
@@ -87,7 +91,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             String selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
             String nameAndAddress;
             if (selfName.isEmpty()) {
-                selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS, "unknown");
+                selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS);
                 nameAndAddress = selfName;
             } else {
                 nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS));
@@ -123,6 +127,8 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     private void setHintText() {
         if (!dcContext.isNetworkConnected()) {
             hintBelowQr.setText(errorHint);
+        } else if (setupSecondDevice) {
+            hintBelowQr.setText(R.string.setupSecondDevice_hint);
         } else {
             hintBelowQr.setText(hint);
         }

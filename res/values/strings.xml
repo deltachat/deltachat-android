@@ -721,5 +721,10 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="update_1_10_android">New Delta Chat 1.10 features at a glance: faster, multi-account, blur images, new emojis, reworked notifications, better error-reporting but most importantly:\n\nClick an avatar in profile and enlarge it 🚀</string>
+	<string name="setupSecondDevice_hint">Scan this to transfer all chats, contacts and setting to a new device</string>
+    <string name="setup_new_title">Setup a new device</string>
+    <string name="setup_new_message">Seems like you have used DC before. Please make sure the other device is online so that your data can be transferred.</string>
+	<string name="confirm_cancel_second_title">Cancel setting up a second device?</string>
+    <string name="confirm_cancel_second_message">Do you really want to stop transferring your data to a new device?</string>
 
 </resources>

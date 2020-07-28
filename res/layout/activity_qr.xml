@@ -27,7 +27,6 @@
             android:layout_height="wrap_content"
             android:elevation="4dp"
             android:layout_gravity="top"
-            android:background="?attr/colorPrimary"
             app:tabMode="fixed"
             app:tabPaddingStart="3dp"
             app:tabPaddingEnd="3dp"

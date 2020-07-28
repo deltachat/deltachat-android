@@ -1,28 +1,39 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.b44t.messenger.DcContext;
 import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
+import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+@SuppressWarnings("SwitchStatementWithTooFewBranches")
 public class QrActivity extends BaseActionBarActivity {
+
+    public static final String SETUP_SECOND_DEVICE   = "SETUP_SECOND_DEVICE";
 
     private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -32,6 +43,8 @@ public class QrActivity extends BaseActionBarActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Toolbar toolbar;
+    private DcContext dcContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +52,12 @@ public class QrActivity extends BaseActionBarActivity {
         dynamicTheme.onCreate(this);
         dynamicLanguage.onCreate(this);
 
+        dcContext = DcHelper.getContext(this);
+
         setContentView(R.layout.activity_qr);
         tabLayout = ViewUtil.findById(this, R.id.tab_layout);
         viewPager = ViewUtil.findById(this, R.id.pager);
+        toolbar = ViewUtil.findById(this, R.id.toolbar);
         ProfilePagerAdapter adapter = new ProfilePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
@@ -71,6 +87,56 @@ public class QrActivity extends BaseActionBarActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         checkPermissions(lastSelectedTab, adapter, viewPager);
+
+        maybeSetupSecondDevice();
+    }
+
+    private void maybeSetupSecondDevice() {
+        if (!isSetupSecondDevice()) return;
+
+        toolbar.setBackgroundColor(Color.RED);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setTitle(R.string.setup_new_title);
+
+        confirmStartSetup();
+    }
+
+    private void confirmStartSetup() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.setup_new_title)
+                .setMessage(R.string.setup_new_message)
+                .setNeutralButton(android.R.string.cancel, (dialog, which) -> maybeConfirmLeave(true))
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> sendInitMessage())
+                .setCancelable(false)
+                .show();
+    }
+
+    private void sendInitMessage() {
+        dcContext.sendInitSecondDeviceMsg();
+    }
+
+    private void maybeConfirmLeave(boolean confirmStartSetupOnNo) {
+        if (isSetupSecondDevice()) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.confirm_cancel_second_title)
+                    .setMessage(R.string.confirm_cancel_second_message)
+                    .setNeutralButton(R.string.no, (dialog, which) -> {
+                        if (confirmStartSetupOnNo) confirmStartSetup();
+                    })
+                    .setPositiveButton(R.string.yes, (dialog, which) -> endSetupSecondDevice())
+                    .show();
+        } else {
+            finish();
+        }
+    }
+
+    private void endSetupSecondDevice() {
+        startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+        finish();
+    }
+
+    private boolean isSetupSecondDevice() {
+        return getIntent().getBooleanExtra(SETUP_SECOND_DEVICE, false);
     }
 
     private void checkPermissions(int position, ProfilePagerAdapter adapter, ViewPager viewPager) {
@@ -106,11 +172,16 @@ public class QrActivity extends BaseActionBarActivity {
 
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                maybeConfirmLeave(false);
                 return true;
         }
 
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        maybeConfirmLeave(false);
     }
 
     @Override
@@ -138,7 +209,7 @@ public class QrActivity extends BaseActionBarActivity {
 
             switch (position) {
                 case TAB_SHOW:
-                    fragment = new QrShowFragment();
+                    fragment = new QrShowFragment(isSetupSecondDevice());
                     break;
 
                 default:
