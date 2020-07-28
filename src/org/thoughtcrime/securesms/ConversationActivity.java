@@ -1065,7 +1065,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         for (Attachment attachment : attachments) {
           String contentType = attachment.getContentType();
           if (MediaUtil.isImageType(contentType) && slideDeck.getDocumentSlide()==null) {
-            msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
+            msg = new DcMsg(dcContext,
+                    MediaUtil.isGif(contentType) ? DcMsg.DC_MSG_GIF : DcMsg.DC_MSG_IMAGE);
             msg.setDimension(attachment.getWidth(), attachment.getHeight());
           }
           else if (MediaUtil.isAudioType(contentType)) {
