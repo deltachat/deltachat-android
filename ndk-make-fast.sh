@@ -20,7 +20,10 @@
 # arm64-v8a, aarch64 and arm64
 # x86 and i686
 # (there are no synonyms for x86_64)
-
+# 
+#
+# If you put this in your .bashrc, then you can directly build and deploy DeltaChat from the jni/deltachat-core-rust directory by typing nmake():
+# nmake() {sh -c 'cd ../..; ./ndk-make-fast.sh arm64-v8a && ./gradlew installFatDebug; notify-send "install finished" }
 
 set -e
 echo "starting time: `date`"
