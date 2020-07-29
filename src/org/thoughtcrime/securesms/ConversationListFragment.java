@@ -160,6 +160,7 @@ public class ConversationListFragment extends Fragment
     super.onResume();
 
     updateReminders();
+    DozeReminder.maybeAskDirectly(getActivity());
     list.getAdapter().notifyDataSetChanged();
   }
 
