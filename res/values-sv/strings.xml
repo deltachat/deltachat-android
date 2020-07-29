@@ -26,6 +26,7 @@
     <string name="unarchive">Avarkivera</string>
     <string name="mute">Tyst</string>
     <string name="ephemeral_messages">Försvinnande meddelanden</string>
+    <string name="ephemeral_messages_hint">Dessa inställningar tillämpas för alla deltagare som använder Delta Chat. De kan dock kopiera, spara och vidarebefordra meddelanden eller använda andra e-postklienter.</string>
     <string name="save">Spara</string>
     <string name="chat">Chatt</string>
     <string name="media">Media</string>

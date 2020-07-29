@@ -26,6 +26,7 @@
     <string name="unarchive">De-archiveren</string>
     <string name="mute">Dempen</string>
     <string name="ephemeral_messages">Verdwijnende berichten</string>
+    <string name="ephemeral_messages_hint">Deze instellingen zijn van toepassing op alle deelnemers die Delta Chat gebruiken. Ze kunnen echter wél berichten kopiëren, opslaan of doorsturen middels andere e-mailapps.</string>
     <string name="save">Opslaan</string>
     <string name="chat">Gesprek</string>
     <string name="media">Media</string>

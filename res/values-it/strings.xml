@@ -26,6 +26,7 @@
     <string name="unarchive">Ripristina</string>
     <string name="mute">Silenzia</string>
     <string name="ephemeral_messages">Messaggi che scompaiono</string>
+    <string name="ephemeral_messages_hint">Queste impostazioni si applicano a tutti i partecipanti che utilizzano Delta Chat. Tuttavia, possono copiare, salvare e inoltrare messaggi o utilizzare altri client e-mail.</string>
     <string name="save">Salva</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>

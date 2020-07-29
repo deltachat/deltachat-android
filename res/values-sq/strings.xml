@@ -26,6 +26,7 @@
     <string name="unarchive">Çarkivoje</string>
     <string name="mute">Heshtoje</string>
     <string name="ephemeral_messages">Mesazhe që zhduken</string>
+    <string name="ephemeral_messages_hint">Këto rregullime zbatohen mbi krejt pjesëmarrësit që përdorin Delta Chat-in. Sidoqoftë, ata mund të kopjojnë, ruajnë dhe përcjellin mesazhe ose të përdorin klientë të tjerë email-i.</string>
     <string name="save">Ruaje</string>
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>

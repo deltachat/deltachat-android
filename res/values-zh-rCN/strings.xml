@@ -26,6 +26,7 @@
     <string name="unarchive">解档</string>
     <string name="mute">静音</string>
     <string name="ephemeral_messages">阅后即焚</string>
+    <string name="ephemeral_messages_hint">这些设置适用于所有使用 Delta Chat 的参与者。 但是，他们可能会复制、保存和转发消息或者使用其他的电子邮件客户端。</string>
     <string name="save">保存</string>
     <string name="chat">聊天</string>
     <string name="media">媒体</string>
@@ -527,7 +528,7 @@
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">已禁用消息在多久后消失的计时器</string>
+    <string name="systemmsg_ephemeral_timer_disabled">已禁用消息消失定时器</string>
     <string name="systemmsg_ephemeral_timer_enabled">消息将在%1$s秒后消失</string>
     <string name="systemmsg_ephemeral_timer_minute">消息将在1分钟后消失</string>
     <string name="systemmsg_ephemeral_timer_hour">消息将在1小时后消失</string>

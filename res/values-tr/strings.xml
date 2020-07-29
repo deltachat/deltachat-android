@@ -26,6 +26,7 @@
     <string name="unarchive">Arşivleme</string>
     <string name="mute">Sessize al</string>
     <string name="ephemeral_messages">Kaybolan iletiler</string>
+    <string name="ephemeral_messages_hint">Bu ayarlar, Delta Chat\'i kullanan tüm katılımcılara uygulanır. Ancak onlar, iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerinde kullanabilir.</string>
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
