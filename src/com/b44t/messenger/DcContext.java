@@ -49,6 +49,7 @@ public class DcContext {
     public final static int DC_QR_FPR_MISMATCH      = 220;
     public final static int DC_QR_FPR_WITHOUT_ADDR  = 230;
     public final static int DC_QR_ACCOUNT           = 250;
+    public final static int DC_QR_WEBRTC            = 260;
     public final static int DC_QR_ADDR              = 320;
     public final static int DC_QR_TEXT              = 330;
     public final static int DC_QR_URL               = 332;

@@ -79,6 +79,15 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
                 builder.setCancelable(false);
                 break;
 
+            case DcContext.DC_QR_WEBRTC:
+                builder.setMessage(activity.getString(R.string.videochat_instance_from_qr, qrParsed.getText1()));
+                builder.setPositiveButton(R.string.ok, (dialog, which) -> {
+                    dcContext.setConfigFromQr(rawString);
+                });
+                builder.setNegativeButton(R.string.cancel, null);
+                builder.setCancelable(false);
+                break;
+
             default:
                 handleDefault(builder, rawString, qrParsed);
                 break;
