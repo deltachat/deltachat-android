@@ -184,12 +184,12 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     public boolean onPreferenceClick(Preference preference) {
       View gl = View.inflate(getActivity(), R.layout.single_line_input, null);
       EditText inputField = gl.findViewById(R.id.input_field);
-      inputField.setHint("Your WebRTC instance");
+      inputField.setHint(R.string.videochat_instance_placeholder);
       inputField.setText(dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE));
       inputField.setSelection(inputField.getText().length());
       new AlertDialog.Builder(getActivity())
-              .setTitle("WebRTC instance")
-              .setMessage("If a WebRTC instance is defined here, you will find a button to start videochats in each one-to-one chat (groups will probably come a bit later :) Videochats require a supported browser.\n\nExamples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server")
+              .setTitle(R.string.videochat_instance)
+              .setMessage(R.string.videochat_instance_explain)
               .setView(gl)
               .setNegativeButton(android.R.string.cancel, null)
               .setPositiveButton(android.R.string.ok, (dialog, which) -> {

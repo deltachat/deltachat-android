@@ -62,7 +62,7 @@
             android:title="Disappearing messages options"/>
 
         <Preference android:key="pref_webrtc_instance"
-            android:title="WebRTC instance"
+            android:title="Video chat instance"
             android:summary="@string/none"/>
 
     </PreferenceCategory>
