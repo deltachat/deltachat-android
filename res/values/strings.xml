@@ -15,6 +15,8 @@
     <string name="automatic">Automatic</string>
     <string name="strict">Strict</string>
     <string name="open">Open</string>
+    <string name="join">Join</string>
+    <string name="rejoin">Rejoin</string>
     <string name="delete">Delete</string>
     <string name="info">Info</string>
     <string name="update">Update</string>
@@ -213,6 +215,19 @@
     <string name="share_location_for_six_hours">for 6 hours</string>
 
     <string name="file_saved_to">File saved to \"%1$s\".</string>
+
+    <string name="videochat">Video chat</string>
+    <string name="videochat_contact_invited_hint">%1$s invited to a video chat.</string>
+    <string name="videochat_you_invited_hint">You invited to a video chat.</string>
+    <string name="videochat_will_open_in_your_browser">This video chat will open in your browser.</string>
+    <string name="videochat_tap_to_join">Tap to join</string>
+    <string name="videochat_tap_to_open">Tap to open</string>
+    <string name="videochat_instance">Video chat instance</string>
+    <string name="videochat_instance_placeholder">Your video chat instance</string>
+    <string name="videochat_instance_explain">If a video chat instance is defined, you can start a video chat from each one-to-one chat. Video chats require a compatible app or a compatible browser on both ends.\n\nExamples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each one-to-one chat. This will replace the previous setting for video chats, if any.</string>
+    <string name="videochat_invitation">Video chat invitation</string>
+    <string name="videochat_invitation_body">You are invited to a video chat, click %1$s to join.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>

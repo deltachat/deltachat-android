@@ -105,7 +105,9 @@
     <string name="camera">Cámara</string>
     <string name="location">Localización</string>
     <string name="gallery">Galería</string>
+    <string name="images_and_videos">Imaxes e vídeos</string>
     <string name="file">Ficheiro</string>
+    <string name="files">Ficheiros</string>
     <string name="unknown">Descoñecido</string>
 
     <string name="green">Verde</string>
@@ -220,6 +222,7 @@
         <item quantity="other">Eliminar %d mensaxes aquí e no servidor?</item>
     </plurals>
     <string name="ask_forward">Reenviar mensaxes a %1$s?</string>
+    <string name="ask_forward_multiple">¿Reenviar mensaxes a %1$d conversas?</string>
     <string name="ask_export_attachment">Exportar anexo? Ao exportar anexos outras aplicacións no dispositivo terán acceso a eles.\n\nGardar?</string>
     <string name="ask_block_contact">Bloquear este contacto? Non recibirás mensaxes de este contacto.</string>
     <string name="ask_unblock_contact">Desbloquear contacto? Voltarás a poder recibir mensaxes de este contacto.</string>
@@ -364,6 +367,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenviar a...</string>
+    <string name="share_multiple_attachments">Enviar %1$d ficheiro á conversa seleccionada?\n\nOs ficheiros terán o mesmo tamaño que o orixinal, ex. as imaxes e vídeos non se recodifican.</string>
+    <string name="share_multiple_attachments_multiple_chats">Enviar %1$d ficheiro(s) a %2$d conversas?\n\nOs ficheiros terán o mesmo tamaño, ex. imaxes e vídeos non se recodifican.</string>
+    <string name="share_text_multiple_chats">Enviar este texto a %1$d conversas?\n\n\"%2$s\"</string>
     <string name="share_abort">Cancelouse a compartición debido a falta de permisos.</string>
 
 
@@ -473,6 +479,11 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Conexión estable en segundo plano</string>
     <string name="pref_reliable_service_explain">Require unha notificación permanente</string>
+    <string name="ephemeral_dialog_title">Eliminar mensaxes lidas</string>
+
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">Eliminar mensaxes antigas</string>
     <string name="autodel_title">Borrado automático</string>
     <string name="autodel_title_short">Borrar automáticamente</string>
     <string name="autodel_device_title">Borrar mensaxes do dispositivo</string>
@@ -483,6 +494,8 @@
     <string name="autodel_server_ask">Queres borrar %1$d mensaxes agora e todas as novas mensaxes recibidas \"%2$s\" no futuro?\n\n• Esto inclúe todo o multimedia\n\n• Esto tamén borrará os correos afectados pola opción \"Mostrar correo clásico\"\n\n• As \"mensaxes gardadas\" tamén se borrarán no servidor.</string>
     <string name="autodel_confirm">Entendo, dalle e borra as mensaxes todas</string>
     <string name="autodel_at_once">dunha vez</string>
+    <string name="after_30_seconds">Após 30 segundos</string>
+    <string name="after_1_minute">Após 1 minuto</string>
     <string name="autodel_after_1_hour">Após 1 hora</string>
     <string name="autodel_after_1_day">Após 1 día</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
@@ -521,6 +534,19 @@
     <string name="systemmsg_action_by_me">%1$s por min.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Remitente descoñecido para esta convers. Mira en \'info\' para saber máis.</string>
+    <string name="systemmsg_subject_for_new_contact">Mensaxe de %1$s</string>
+    <string name="systemmsg_failed_sending_to">Fallou o envío para %1$s.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">Desactivada a caducidade para as mensaxes.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">As mensaxes desparecerán após %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">As mensaxes desparecerán após 1 minuto.</string>
+    <string name="systemmsg_ephemeral_timer_hour">As mensaxes desparecerán após 1 hora.</string>
+    <string name="systemmsg_ephemeral_timer_day">As mensaxes desaparecerán após 1 día.</string>
+    <string name="systemmsg_ephemeral_timer_week">As mensaxes desaparecerán após 1 semana.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">As mensaxes desaparecerán após 4 semanas.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueo de pantalla</string>
     <string name="screenlock_explain">Limita o acceso co bloqueo de pantalla Android ou impresión dactilar; para evitar mostrar o contido, por favor activa \"Seguridade de Pantalla\".</string>

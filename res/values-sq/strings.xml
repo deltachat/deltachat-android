@@ -14,6 +14,8 @@
     <string name="automatic">Automatike</string>
     <string name="strict">Strikt</string>
     <string name="open">Hap</string>
+    <string name="join">Hyni</string>
+    <string name="rejoin">Rihyni</string>
     <string name="delete">Fshije</string>
     <string name="info">Të dhëna</string>
     <string name="update">Përditësoje</string>
@@ -26,6 +28,7 @@
     <string name="unarchive">Çarkivoje</string>
     <string name="mute">Heshtoje</string>
     <string name="ephemeral_messages">Mesazhe që zhduken</string>
+    <string name="ephemeral_messages_hint">Këto rregullime zbatohen mbi krejt pjesëmarrësit që përdorin Delta Chat-in. Sidoqoftë, ata mund të kopjojnë, ruajnë dhe përcjellin mesazhe ose të përdorin klientë të tjerë email-i.</string>
     <string name="save">Ruaje</string>
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>
@@ -211,6 +214,16 @@
 
     <string name="file_saved_to">Kartela u ruajt te \"%1$s\".</string>
 
+    <string name="videochat">Fjalosje me video</string>
+    <string name="videochat_contact_invited_hint">%1$s ftoi te një fjalosje me video.</string>
+    <string name="videochat_you_invited_hint">Ftuat te një fjalosje me video.</string>
+    <string name="videochat_will_open_in_your_browser">Kjo fjalosje me video do të hapet në shfletuesin tuaj.</string>
+    <string name="videochat_tap_to_join">Prekeni që të hyni</string>
+    <string name="videochat_tap_to_open">Prekeni që të hapet</string>
+    <string name="videochat_instance">Instancë fjalosjeje me video</string>
+    <string name="videochat_instance_placeholder">Instanca juaj e fjalosjes me video</string>
+    <string name="videochat_instance_explain">Nëse është përkufizuar një instancë fjalosjeje me video, mund të nisni një fjalosje me video prej secilës anë të fjalosjes tek-për-tek. Fjalosjet me video kanë të domosdoshëm në të dy skajet një aplikacion të përputhshëm ose një shfletues të përputhshëm.\n\nShembuj: https://meet.jit.si/$ROOM ose basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">Të përdoret \"%1$s\" për të ftuar të tjerë në fjalosje me video?\n\nPasi të ujdiset kjo, mund të filloni një fjalosje me video që prej një fjalosjeje tek-për-tek. Kështu do të zëvendësohet rregullimi i mëparshëm për fjalosje video, në pastë.</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Jeni i sigurt se doni ta braktisni këtë grup?</string>
     <plurals name="ask_delete_chat">

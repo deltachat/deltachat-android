@@ -14,6 +14,8 @@
     <string name="automatic">Automatico</string>
     <string name="strict">Stringente</string>
     <string name="open">Apri</string>
+    <string name="join">Partecipa</string>
+    <string name="rejoin">Ripartecipa</string>
     <string name="delete">Elimina</string>
     <string name="info">Info</string>
     <string name="update">Aggiorna</string>
@@ -26,6 +28,7 @@
     <string name="unarchive">Ripristina</string>
     <string name="mute">Silenzia</string>
     <string name="ephemeral_messages">Messaggi che scompaiono</string>
+    <string name="ephemeral_messages_hint">Queste impostazioni si applicano a tutti i partecipanti che utilizzano Delta Chat. Tuttavia, possono copiare, salvare e inoltrare messaggi o utilizzare altri client e-mail.</string>
     <string name="save">Salva</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -210,6 +213,19 @@
     <string name="share_location_for_six_hours">per 6 ore</string>
 
     <string name="file_saved_to">File salvato su \"%1$s\".</string>
+
+    <string name="videochat">Chat video</string>
+    <string name="videochat_contact_invited_hint">%1$s invitato a una chat video.</string>
+    <string name="videochat_you_invited_hint">Hai invitato a una chat video.</string>
+    <string name="videochat_will_open_in_your_browser">Questa video chat si aprirà nel tuo browser.</string>
+    <string name="videochat_tap_to_join">Tocca per partecipare</string>
+    <string name="videochat_tap_to_open">Tocca per aprire</string>
+    <string name="videochat_instance">Istanza chat video</string>
+    <string name="videochat_instance_placeholder">La tua istanza chat video</string>
+    <string name="videochat_instance_explain">Se viene definita un\'istanza chat video, è possibile avviare una chat video da ciascuna chat uno a uno. Le chat video richiedono un\'app compatibile o un browser compatibile da entrambe le parti.\n\nEsempi: https://meet.jit.si/$ROOM o basicwebrtc: https://your-server</string>
+    <string name="videochat_instance_from_qr">Utilizzare \"%1$s\" per invitare altri alla chat video?\n\nUna volta impostato, è possibile avviare una chat video da ogni chat uno a uno. Ciò sostituirà l\'eventuale impostazione precedente per le chat video.</string>
+    <string name="videochat_invitation">Invito alla chat video</string>
+    <string name="videochat_invitation_body">Sei invitato a una chat video, fai clic %1$s per partecipare.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare il gruppo?</string>

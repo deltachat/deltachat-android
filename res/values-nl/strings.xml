@@ -14,6 +14,8 @@
     <string name="automatic">Automatisch</string>
     <string name="strict">Strikt</string>
     <string name="open">Openen</string>
+    <string name="join">Deelnemen</string>
+    <string name="rejoin">Opnieuw deelnemen</string>
     <string name="delete">Verwijderen</string>
     <string name="info">Informatie</string>
     <string name="update">Bijwerken</string>
@@ -26,6 +28,7 @@
     <string name="unarchive">De-archiveren</string>
     <string name="mute">Dempen</string>
     <string name="ephemeral_messages">Verdwijnende berichten</string>
+    <string name="ephemeral_messages_hint">Deze instellingen zijn van toepassing op alle deelnemers die Delta Chat gebruiken. Ze kunnen echter wél berichten kopiëren, opslaan of doorsturen middels andere e-mailapps.</string>
     <string name="save">Opslaan</string>
     <string name="chat">Gesprek</string>
     <string name="media">Media</string>
@@ -210,6 +213,19 @@
     <string name="share_location_for_six_hours">6 uur lang</string>
 
     <string name="file_saved_to">Het bestand is opgeslagen in \'%1$s\'.</string>
+
+    <string name="videochat">Videogesprek</string>
+    <string name="videochat_contact_invited_hint">%1$s is uitgenodigd voor een videogesprek.</string>
+    <string name="videochat_you_invited_hint">Je bent uitgenodigd voor een videogesprek.</string>
+    <string name="videochat_will_open_in_your_browser">Het videogesprek wordt geopend in je webbrowser.</string>
+    <string name="videochat_tap_to_join">Druk om deel te nemen</string>
+    <string name="videochat_tap_to_open">Druk om te openen</string>
+    <string name="videochat_instance">Videogespreksinstantie</string>
+    <string name="videochat_instance_placeholder">Mijn videogespreksinstantie</string>
+    <string name="videochat_instance_explain">Als je een videogespreksinstantie opgeeft, kun je een videogesprek starten vanuit elk één-op-ééngesprek. Voor videogesprekken hebben zowel jij als je gesprekspartner een compatibele app of webbrowser nodig.\n\nVoorbeelden: https://meet.jit.si/$KAMER of basicwebrtc:https://mijn-server</string>
+    <string name="videochat_instance_from_qr">Wil je \"%1$s\" gebruiken om anderen uit te nodigen voor videogesprekken?\n\nNa het instellen kun je een videogesprek starten vanuit elk één-op-ééngesprek. Deze instelling vervangt de vorige videogespreksinstelling.</string>
+    <string name="videochat_invitation">Uitnodiging voor videogesprek</string>
+    <string name="videochat_invitation_body">Je bent uitgenodigd voor een videogesprek. Druk op %1$s om deel te nemen.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>

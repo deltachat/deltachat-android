@@ -4,7 +4,6 @@ on the command-line:
 
 1. update core rust submodule, if needed:
    $ ./tools/update-core.sh
-   and make sure, `lto=true` is present in jni/deltachat-core-rust/Cargo.toml.
    depending on how much you trust in rust, you might want to do a
    ./tools/clean-core.sh before building
 

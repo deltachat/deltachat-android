@@ -27,7 +27,5 @@ public interface BindableConversationItem extends Unbindable {
   void setEventListener(@Nullable EventListener listener);
 
   interface EventListener {
-    void onMessageSharedContactClicked(@NonNull List<Recipient> choices);
-    void onInviteSharedContactClicked(@NonNull List<Recipient> choices);
   }
 }

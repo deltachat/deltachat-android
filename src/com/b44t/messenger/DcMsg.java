@@ -17,6 +17,7 @@ public class DcMsg {
     public final static int DC_MSG_VOICE = 41;
     public final static int DC_MSG_VIDEO = 50;
     public final static int DC_MSG_FILE = 60;
+    public final static int DC_MSG_VIDEOCHAT_INVITATION = 70;
 
     public final static int DC_STATE_UNDEFINED =  0;
     public final static int DC_STATE_IN_FRESH = 10;
@@ -31,6 +32,9 @@ public class DcMsg {
     public static final int DC_MSG_NO_ID = 0;
     public final static int DC_MSG_ID_MARKER1 = 1;
     public final static int DC_MSG_ID_DAYMARKER = 9;
+
+    public final static int DC_VIDEOCHATTYPE_UNKNOWN = 0;
+    public final static int DC_VIDEOCHATTYPE_BASICWEBRTC = 1;
 
     private static final String TAG = DcMsg.class.getSimpleName();
 
@@ -93,6 +97,8 @@ public class DcMsg {
     public native boolean isInfo             ();
     public native boolean isSetupMessage     ();
     public native String  getSetupCodeBegin  ();
+    public native String  getVideochatUrl    ();
+    public native int     getVideochatType   ();
     public native boolean isIncreation       ();
     public native void    setText            (String text);
     public native void    setFile            (String file, String filemime);

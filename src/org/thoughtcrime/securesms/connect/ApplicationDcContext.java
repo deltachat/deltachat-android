@@ -9,14 +9,15 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
-import androidx.core.content.FileProvider;
-
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
+
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -171,6 +172,8 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(79, context.getString(R.string.systemmsg_ephemeral_timer_day));
     setStockTranslation(80, context.getString(R.string.systemmsg_ephemeral_timer_week));
     setStockTranslation(81, context.getString(R.string.systemmsg_ephemeral_timer_four_weeks));
+    setStockTranslation(82, context.getString(R.string.videochat_invitation));
+    setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
   }
 
   public File getImexDir() {
@@ -223,12 +226,13 @@ public class ApplicationDcContext extends DcContext {
 	    Intent intent = new Intent(activity, ZhvActivity.class);
 	    intent.setDataAndType(uri, mimeType);
 	    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-	    activity.startActivity(intent);
+	    startActivity((Activity) activity, intent);
 	} else {
 	    Intent intent = new Intent(Intent.ACTION_VIEW);
 	    intent.setDataAndType(uri, mimeType);
 	    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-	    activity.startActivity(intent);
+	    startActivity((Activity) activity, intent);
+
 	}
       } else {
         Intent intent = new Intent(Intent.ACTION_SEND);
@@ -241,6 +245,17 @@ public class ApplicationDcContext extends DcContext {
       Toast.makeText(context, String.format("%s (%s)", context.getString(R.string.no_app_to_handle_data), mimeType), Toast.LENGTH_LONG).show();
       Log.i(TAG, "opening of external activity failed.", e);
     }
+  }
+
+  private void startActivity(Activity activity, Intent intent) {
+    // request for permission to install apks on API 26+ if intent mimetype is an apk
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+              "application/vnd.android.package-archive".equals(intent.getType()) &&
+              !activity.getPackageManager().canRequestPackageInstalls()) {
+            activity.startActivity(new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).setData(Uri.parse(String.format("package:%s", activity.getPackageName()))));
+            return;
+      }
+      activity.startActivity(intent);
   }
 
   private String checkMime(String path, String mimeType) {
@@ -279,6 +294,11 @@ public class ApplicationDcContext extends DcContext {
     }
     return getBlobdirFile(filename, ext);
 
+  }
+
+  public boolean isWebrtcConfigOk() {
+    String instance = getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE);
+    return (instance != null && !instance.isEmpty());
   }
 
   /***********************************************************************************************

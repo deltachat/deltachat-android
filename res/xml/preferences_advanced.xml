@@ -49,7 +49,7 @@
     </PreferenceCategory>
 
 
-    <PreferenceCategory android:title="Experimental features">
+    <PreferenceCategory android:title="@string/pref_experimental_features">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
@@ -60,6 +60,10 @@
             android:defaultValue="false"
             android:key="pref_ephemeral_messages"
             android:title="Disappearing messages options"/>
+
+        <Preference android:key="pref_webrtc_instance"
+            android:title="Video chat instance"
+            android:summary="@string/none"/>
 
     </PreferenceCategory>
 

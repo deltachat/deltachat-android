@@ -14,6 +14,8 @@
     <string name="automatic">Automatisch</string>
     <string name="strict">Strikt</string>
     <string name="open">Öffnen</string>
+    <string name="join">Teilnehmen</string>
+    <string name="rejoin">Öffnen</string>
     <string name="delete">Löschen</string>
     <string name="info">Info</string>
     <string name="update">Aktualisieren</string>
@@ -26,6 +28,7 @@
     <string name="unarchive">Dearchivieren</string>
     <string name="mute">Stumm</string>
     <string name="ephemeral_messages">Verschwindende Nachrichten</string>
+    <string name="ephemeral_messages_hint">Diese Einstellungen gelten für alle Delta Chat BenutzerInnen. Nachrichten können jedoch kopiert, gespeichert und weitergeleitet werden oder es können andere E-Mail-Clients verwenden werden.</string>
     <string name="save">Speichern</string>
     <string name="chat">Chat</string>
     <string name="media">Medien</string>
@@ -210,6 +213,19 @@
     <string name="share_location_for_six_hours">für 6 Stunden</string>
 
     <string name="file_saved_to">Datei gespeichert unter \"%1$s\".</string>
+
+    <string name="videochat">Videochat</string>
+    <string name="videochat_contact_invited_hint">%1$s hat Sie zu einem Videochat eingeladen.</string>
+    <string name="videochat_you_invited_hint">Sie haben zu einem Videochat eingeladen.</string>
+    <string name="videochat_will_open_in_your_browser">Dieser Videochat wird im Browser geöffnet.</string>
+    <string name="videochat_tap_to_join">Teilnehmen</string>
+    <string name="videochat_tap_to_open">Öffnen</string>
+    <string name="videochat_instance">Videochat-Instanz</string>
+    <string name="videochat_instance_placeholder">Videochat-Instanz</string>
+    <string name="videochat_instance_explain">Wenn eine Videochat-Instanz definiert ist, können SIe einen Videochat von jedem Direktchat aus starten. Videochats erfordern beidseitig eine kompatible App oder einen kompatiblen Browser.\n\nBeispiele: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">\"%1$s\" verwenden, um andere zu Videochats einzuladen?\n\nWenn Sie diese Einstellung vornehmen, können Sie von jedem Direktchat aus einen Videochat starten. Dies überschreibt, falls vorhanden, die bisherige Einstellung zu Videochats.</string>
+    <string name="videochat_invitation">Videochat-Einladung</string>
+    <string name="videochat_invitation_body">Sie sind zu einem Videochat eingeladen, clicken Sie auf %1$s , um teilzunehmen.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Diese Gruppe verlassen?</string>

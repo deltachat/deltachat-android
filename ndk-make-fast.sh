@@ -20,7 +20,10 @@
 # arm64-v8a, aarch64 and arm64
 # x86 and i686
 # (there are no synonyms for x86_64)
-
+# 
+#
+# If you put this in your .bashrc, then you can directly build and deploy DeltaChat from the jni/deltachat-core-rust directory by typing nmake():
+# nmake() {sh -c 'cd ../..; ./ndk-make-fast.sh arm64-v8a && ./gradlew installFatDebug; notify-send "install finished" }
 
 set -e
 echo "starting time: `date`"
@@ -50,32 +53,32 @@ if test -z $1 || test $1 = armeabi-v7a; then
     echo "-- cross compiling to armv7-linux-androideabi (arm) --"
     export CFLAGS=-D__ANDROID_API__=16
     TARGET_CC=armv7a-linux-androideabi16-clang \
-    cargo +`cat rust-toolchain` build --release --target armv7-linux-androideabi -p deltachat_ffi
-    cp target/armv7-linux-androideabi/release/libdeltachat.a ../armeabi-v7a
+    cargo +`cat rust-toolchain` build --target armv7-linux-androideabi -p deltachat_ffi
+    cp target/armv7-linux-androideabi/debug/libdeltachat.a ../armeabi-v7a
 fi
 
 if test -z $1 || test $1 = arm64-v8a; then
     echo "-- cross compiling to aarch64-linux-android (arm64) --"
     export CFLAGS=-D__ANDROID_API__=21
     TARGET_CC=aarch64-linux-android21-clang \
-    cargo +`cat rust-toolchain` build --release --target aarch64-linux-android -p deltachat_ffi
-    cp target/aarch64-linux-android/release/libdeltachat.a ../arm64-v8a
+    cargo +`cat rust-toolchain` build --target aarch64-linux-android -p deltachat_ffi
+    cp target/aarch64-linux-android/debug/libdeltachat.a ../arm64-v8a
 fi
 
 if test -z $1 || test $1 = x86; then
     echo "-- cross compiling to i686-linux-android (x86) --"
     export CFLAGS=-D__ANDROID_API__=16
     TARGET_CC=i686-linux-android16-clang \
-    cargo +`cat rust-toolchain` build --release --target i686-linux-android -p deltachat_ffi
-    cp target/i686-linux-android/release/libdeltachat.a ../x86
+    cargo +`cat rust-toolchain` build --target i686-linux-android -p deltachat_ffi
+    cp target/i686-linux-android/debug/libdeltachat.a ../x86
 fi
 
 if test -z $1 || test $1 = x86_64; then
     echo "-- cross compiling to x86_64-linux-android (x86_64) --"
     export CFLAGS=-D__ANDROID_API__=21
     TARGET_CC=x86_64-linux-android21-clang \
-    cargo +`cat rust-toolchain` build --release --target x86_64-linux-android -p deltachat_ffi
-    cp target/x86_64-linux-android/release/libdeltachat.a ../x86_64
+    cargo +`cat rust-toolchain` build --target x86_64-linux-android -p deltachat_ffi
+    cp target/x86_64-linux-android/debug/libdeltachat.a ../x86_64
 fi
 
 echo -- ndk-build --

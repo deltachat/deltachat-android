@@ -14,6 +14,8 @@
     <string name="automatic">Автоматически</string>
     <string name="strict">Строгий</string>
     <string name="open">Открыть</string>
+    <string name="join">Зайти</string>
+    <string name="rejoin">Перезайти</string>
     <string name="delete">Удалить</string>
     <string name="info">Информация</string>
     <string name="update">Обновить</string>
@@ -26,6 +28,7 @@
     <string name="unarchive">Из архива</string>
     <string name="mute">Отключить уведомления</string>
     <string name="ephemeral_messages">Исчезающие сообщения</string>
+    <string name="ephemeral_messages_hint">Эти настройки применяются ко всем участникам, использующим Delta Chat. Тем не менее, они могут копировать, сохранять и делиться сообщениями или использовать другие почтовые клиенты.</string>
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
@@ -117,7 +120,9 @@
     <string name="camera">Камера</string>
     <string name="location">Местоположение</string>
     <string name="gallery">Галерея</string>
+    <string name="images_and_videos">Изображения и видео</string>
     <string name="file">Файл</string>
+    <string name="files">Файлы</string>
     <string name="unknown">Неизвестно</string>
 
     <string name="green">Зелёный</string>
@@ -220,6 +225,21 @@
     <string name="share_location_for_six_hours">6 часов</string>
 
     <string name="file_saved_to">Файл сохранён в «%1$s».</string>
+
+    <string name="videochat">Видеочат</string>
+    <string name="videochat_contact_invited_hint">%1$s приглашает вас в видеочат.</string>
+    <string name="videochat_you_invited_hint">Вы пригласили в видеочат.</string>
+    <string name="videochat_will_open_in_your_browser">Этот видеочат будет открываться в браузере</string>
+    <string name="videochat_tap_to_join">Нажмите чтобы зайти.</string>
+    <string name="videochat_tap_to_open">Нажмите чтобы открыть.</string>
+    <string name="videochat_instance">Узел видеочатов</string>
+    <string name="videochat_instance_placeholder">Ваш узел видеочатов</string>
+    <string name="videochat_instance_explain">Если узел видеочатов определен, вы можете начинать видеочаты из чатов с одним контактом. Видеочаты требуют совместимого приложения или совместимого браузера на обоих концах.
+
+Примеры: https://meet.jit.si/$ROOM или basicwebrtc:https://ваш-сервер</string>
+    <string name="videochat_instance_from_qr">Использовать «%1$s» чтобы приглашать других в видеочаты?\n\nКогда установлено, вы можете начинать видеочаты из чатов с одним контактом. Это заменит предыдущие настройки видеочатов, если они были.</string>
+    <string name="videochat_invitation">Приглашение в видеочат</string>
+    <string name="videochat_invitation_body">Вы приглашены в видеочат, нажмите %1$s чтобы зайти.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
