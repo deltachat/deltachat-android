@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.12.0
+## v1.12.1
 2020-07
 
 * show a device message when the password was changed on the server
