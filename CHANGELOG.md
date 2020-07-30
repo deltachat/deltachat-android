@@ -1,5 +1,20 @@
 # Delta Chat Android Changelog
 
+## v1.12.0
+2020-07
+
+* show a device message when the password was changed on the server
+* videochats introduced as experimental feature
+* show experimental disappearing-messags state in chat's title bar
+* improve sending large messages
+* improve receiving messages
+* improve error handling when there is no network
+* use correct aspect ratio of background images
+* fix sending umcompressed images
+* fix emojis for android 4
+* more bug fixes
+
+
 ## v1.10.5
 2020-07
 
