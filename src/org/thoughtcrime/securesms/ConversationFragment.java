@@ -70,6 +70,7 @@ import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -708,6 +709,9 @@ public class ConversationFragment extends Fragment
             else if(messageRecord.isSetupMessage()) {
                 querySetupCode(messageRecord,null);
             }
+            else if (messageRecord.getType()==DcMsg.DC_MSG_VIDEOCHAT_INVITATION) {
+                new VideochatUtil().join(getActivity(), messageRecord.getId());
+            }
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());
             }
@@ -730,20 +734,6 @@ public class ConversationFragment extends Fragment
 
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
             }
-        }
-
-        @Override
-        public void onMessageSharedContactClicked(@NonNull List<Recipient> choices) {
-            if (getContext() == null) return;
-
-//      ContactUtil.selectRecipientThroughDialog(getContext(), choices, locale, recipient -> {
-//        CommunicationActions.startConversation(getContext(), recipient, null);
-//      });
-        }
-
-        @Override
-        public void onInviteSharedContactClicked(@NonNull List<Recipient> choices) {
-            if (getContext() == null) return;
         }
     }
 

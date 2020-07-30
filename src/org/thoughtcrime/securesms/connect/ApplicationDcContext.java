@@ -170,6 +170,8 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(79, context.getString(R.string.systemmsg_ephemeral_timer_day));
     setStockTranslation(80, context.getString(R.string.systemmsg_ephemeral_timer_week));
     setStockTranslation(81, context.getString(R.string.systemmsg_ephemeral_timer_four_weeks));
+    setStockTranslation(82, context.getString(R.string.videochat_invitation));
+    setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
   }
 
   public File getImexDir() {
@@ -282,6 +284,11 @@ public class ApplicationDcContext extends DcContext {
     }
     return getBlobdirFile(filename, ext);
 
+  }
+
+  public boolean isWebrtcConfigOk() {
+    String instance = getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE);
+    return (instance != null && !instance.isEmpty());
   }
 
   /***********************************************************************************************
