@@ -23,7 +23,10 @@ public class VideochatUtil {
             .setMessage("This requires a compatible app or a compatible browser on both ends.")
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok, (dialog, which) -> {
-                dcContext.sendVideochatInvitation(dcChat.getId());
+                int msgId = dcContext.sendVideochatInvitation(dcChat.getId());
+                if (msgId != 0) {
+                  join(activity, msgId);
+                }
             })
             .show();
   }
