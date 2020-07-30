@@ -14,6 +14,8 @@
     <string name="automatic">自动</string>
     <string name="strict">严格</string>
     <string name="open">打开</string>
+    <string name="join">加入</string>
+    <string name="rejoin">重新加入</string>
     <string name="delete">删除</string>
     <string name="info">信息</string>
     <string name="update">更新</string>
@@ -25,7 +27,7 @@
     <string name="archive">归档</string>
     <string name="unarchive">解档</string>
     <string name="mute">静音</string>
-    <string name="ephemeral_messages">阅后即焚</string>
+    <string name="ephemeral_messages">阅后即焚消息</string>
     <string name="ephemeral_messages_hint">这些设置适用于所有使用 Delta Chat 的参与者。 但是，他们可能会复制、保存和转发消息或者使用其他的电子邮件客户端。</string>
     <string name="save">保存</string>
     <string name="chat">聊天</string>
@@ -100,7 +102,7 @@
     <string name="camera">相机</string>
     <string name="location">位置</string>
     <string name="gallery">图库</string>
-    <string name="images_and_videos">图片和视频</string>
+    <string name="images_and_videos">图像和视频</string>
     <string name="file">文件</string>
     <string name="files">文件</string>
     <string name="unknown">未知</string>
@@ -206,6 +208,16 @@
 
     <string name="file_saved_to">文件已保存到 “%1$s”。</string>
 
+    <string name="videochat">视频聊天</string>
+    <string name="videochat_contact_invited_hint">%1$s 被邀请参加视频聊天。</string>
+    <string name="videochat_you_invited_hint">您被邀请参加视频聊天。</string>
+    <string name="videochat_will_open_in_your_browser">该视频聊天将在您的浏览器中打开。</string>
+    <string name="videochat_tap_to_join">点击来加入</string>
+    <string name="videochat_tap_to_open">点击来打开</string>
+    <string name="videochat_instance">视频聊天实例</string>
+    <string name="videochat_instance_placeholder">您的视频聊天实例</string>
+    <string name="videochat_instance_explain">定义了视频聊天实例之后，您可以从一对一聊天中启动视频聊天。视频聊天的两端都需要有兼容的应用或兼容的浏览器。\n\n示例: https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">使用“%1$s”邀请其他人加入视频聊天吗？\n\n设置好后，您可以从每个一对一聊天中开始视频聊天。 这会取代之前的视频聊天设置（如果有的话）。</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">您确定要离开此群组吗？</string>
     <plurals name="ask_delete_chat">
@@ -528,13 +540,13 @@
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">已禁用消息消失定时器</string>
-    <string name="systemmsg_ephemeral_timer_enabled">消息将在%1$s秒后消失</string>
-    <string name="systemmsg_ephemeral_timer_minute">消息将在1分钟后消失</string>
-    <string name="systemmsg_ephemeral_timer_hour">消息将在1小时后消失</string>
-    <string name="systemmsg_ephemeral_timer_day">消息将在1天后消失</string>
-    <string name="systemmsg_ephemeral_timer_week">消息将在1周后消失</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">消息将在4周后消失</string>
+    <string name="systemmsg_ephemeral_timer_disabled">已禁用阅后即焚消息定时器。</string>
+    <string name="systemmsg_ephemeral_timer_enabled">设置阅后即焚消息定时器为 %1$s 秒。</string>
+    <string name="systemmsg_ephemeral_timer_minute">设置阅后即焚消息定时器为 1 分钟。</string>
+    <string name="systemmsg_ephemeral_timer_hour">设置阅后即焚消息定时器为 1 小时。</string>
+    <string name="systemmsg_ephemeral_timer_day">设置阅后即焚消息定时器为 1 天。</string>
+    <string name="systemmsg_ephemeral_timer_week">设置阅后即焚消息定时器为 1 周。</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">设置阅后即焚消息定时器为 4 周。</string>
 
 
     <!-- screen lock -->

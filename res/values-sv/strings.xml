@@ -14,6 +14,8 @@
     <string name="automatic">Automatiskt</string>
     <string name="strict">Sträng</string>
     <string name="open">Öppna</string>
+    <string name="join">Anslut</string>
+    <string name="rejoin">Återanslut</string>
     <string name="delete">Ta bort</string>
     <string name="info">Info</string>
     <string name="update">Uppdatera</string>
@@ -212,6 +214,16 @@
 
     <string name="file_saved_to">Filen är sparad i \"%1$s\".</string>
 
+    <string name="videochat">Videochatt</string>
+    <string name="videochat_contact_invited_hint">%1$s bjöd in till en videochatt</string>
+    <string name="videochat_you_invited_hint">Du bjöd in till en videochatt</string>
+    <string name="videochat_will_open_in_your_browser">Denna videochatt öppnas i din webbläsare.</string>
+    <string name="videochat_tap_to_join">Tryck för att ansluta</string>
+    <string name="videochat_tap_to_open">Tryck för att öppna</string>
+    <string name="videochat_instance">Videochattinstans</string>
+    <string name="videochat_instance_placeholder">Din videochattinstans</string>
+    <string name="videochat_instance_explain">Om en videochattinstans har definierats kan du starta en videochatt från varje en-till-en-chatt. Videochattar kräver en kompatibel app eller en kompatibel webbläsare i båda ändar.\n\nExempel: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">Vill du använda \"%1$s\" för att bjuda in andra till videochattar?\n\nNär det väl är inställt kan du starta en videochatt från vilken en-till-en-chatt som helst. Detta ersätter den tidigare inställningen för eventuella videochattar.</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Är du säker på att du vill lämna den här gruppen?</string>
     <plurals name="ask_delete_chat">

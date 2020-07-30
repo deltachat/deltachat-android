@@ -14,6 +14,8 @@
     <string name="automatic">Otomatik</string>
     <string name="strict">Katı</string>
     <string name="open">Aç</string>
+    <string name="join">Katıl</string>
+    <string name="rejoin">Yeniden katıl</string>
     <string name="delete">Sil</string>
     <string name="info">Bilgi</string>
     <string name="update">Güncelleştir</string>
@@ -212,6 +214,16 @@
 
     <string name="file_saved_to">Dosya \"%1$s\" üzerine kaydedildi.</string>
 
+    <string name="videochat">Video sohbeti</string>
+    <string name="videochat_contact_invited_hint">%1$s video sohbetine davet etti.</string>
+    <string name="videochat_you_invited_hint">Video sohbetine davet ettiniz.</string>
+    <string name="videochat_will_open_in_your_browser">Bu video sohbeti tarayıcınızda açılacak.</string>
+    <string name="videochat_tap_to_join">Katılmak için dokunun</string>
+    <string name="videochat_tap_to_open">Açmak için dokunun</string>
+    <string name="videochat_instance">Video sohbeti örneği</string>
+    <string name="videochat_instance_placeholder">Video sohbeti örneğiniz</string>
+    <string name="videochat_instance_explain">Bir video sohbeti örneği tanımlanırsa, her bire bir sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.\n\nÖrnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her bire bir sohbetten video sohbeti başlatabilirsiniz. Varsa bu, video sohbetleri için önceki ayarla değiştirilir.</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
