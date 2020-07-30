@@ -224,6 +224,9 @@
     <string name="videochat_instance_placeholder">Mijn videogespreksinstantie</string>
     <string name="videochat_instance_explain">Als je een videogespreksinstantie opgeeft, kun je een videogesprek starten vanuit elk één-op-ééngesprek. Voor videogesprekken hebben zowel jij als je gesprekspartner een compatibele app of webbrowser nodig.\n\nVoorbeelden: https://meet.jit.si/$KAMER of basicwebrtc:https://mijn-server</string>
     <string name="videochat_instance_from_qr">Wil je \"%1$s\" gebruiken om anderen uit te nodigen voor videogesprekken?\n\nNa het instellen kun je een videogesprek starten vanuit elk één-op-ééngesprek. Deze instelling vervangt de vorige videogespreksinstelling.</string>
+    <string name="videochat_invitation">Uitnodiging voor videogesprek</string>
+    <string name="videochat_invitation_body">Je bent uitgenodigd voor een videogesprek. Druk op %1$s om deel te nemen.</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Weet je zeker dat je deze groep wilt verlaten?</string>
     <plurals name="ask_delete_chat">

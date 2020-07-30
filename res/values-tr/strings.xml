@@ -224,6 +224,9 @@
     <string name="videochat_instance_placeholder">Video sohbeti örneğiniz</string>
     <string name="videochat_instance_explain">Bir video sohbeti örneği tanımlanırsa, her bire bir sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.\n\nÖrnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her bire bir sohbetten video sohbeti başlatabilirsiniz. Varsa bu, video sohbetleri için önceki ayarla değiştirilir.</string>
+    <string name="videochat_invitation">Video sohbeti daveti</string>
+    <string name="videochat_invitation_body">Bir video sohbetine davet edildiniz, katılmak için %1$s öğesini tıklayın.</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
