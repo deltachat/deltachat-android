@@ -96,32 +96,23 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
             "💡TIP - Estos son algunos bots para Delta Chat:\n" +
 	    "✳️ adb_bot1@testrun.org para grupos públicos, mega-groupos con más de 20 personas!, canales y directorio de amigos.\n" +
 	    "✳️ simplebot@testrun.org puente entre delta chat y la red social mastodon.\n" +
-	    "✳️ simple-facebook-bridge@testrun.org puente para chatear desde delta chat con tus amigos de facebook.\n" +
-	    "✳️ simplebot@riseup.net bot de navegación en internet, búsqueda y descargas de archivos, fotos, estado del tiempo, wikipedia, RSS, memes etc.\n" +
-	    "✳️ simplebot@systemli.org bot para navegación en internet parecido a simplebot@riseup.net además permite jugar ajedrez y reversi con tus amigos\n" +
+	    // "✳️ simple-facebook-bridge@testrun.org puente para chatear desde delta chat con tus amigos de facebook.\n" +
+	    "✳️ simplebot@systemli.org bot de navegación en internet, búsqueda y descargas de archivos, fotos, estado del tiempo, wikipedia, RSS, memes etc.\n" +
+	    "✳️ simplebot@riseup.net bot para navegación en internet con prestaciones similares a simplebot@systemli.org\n" +
+	    "✳️ games@echedeylr.tk bot de juegos, permite jugar con otros usuarios.\n" +
 	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n" +
 	    "\nℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
 	    "/help");
-    dcContext.addDeviceMsg("dlab-1.10.5-bots", msg);
+    dcContext.addDeviceMsg("dlab-1.11.0-bots", msg);
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
-	    "🆕 Registro de cambios v1.10.6:\n" +
-	    "✳️ La app ahora es mucho más rápida, recibe cientos de mensajes en cuestiones de segundos.\n" +
-	    "✳️ Múltiples cuentas de correo pueden ser usadas con la misma apk.\n" +
-	    "✳️ Nueva funcionalidad experimental de mensajes que se autodestruyen.\n" +
-	    "✳️ Ahora es posible difuminar partes de una imagen en el editor antes de enviarla, útil para ocultar rostros o contenido privado de una forma elegante.\n" +
-	    "✳️ Nuevo selector de emojis con más emojis a escoger.\n" +
-	    "✳️ Mejoradas las notificaciones.\n" +
-	    "✳️ Ahora es posible reenviar mensajes a multiples chats a la vez(presionando por unos segundos un chat para seleccionar).\n" +
-	    "✳️ Ahora es posible ver en pantalla completa los avatar de los usuarios haciendo click en el avatar en el perfil del usuario.\n" +
-	    "\n✳️ Cuando un nuevo contacto te escribe ahora se muestra una notificación y sale el chat directamente.\n" +
-	    "✳️ Ahora los mensajes de listas de correos también se muestran en la aplicación.\n" +
-	    "✳️ Mejorado el envío de archivos, más ahorro al enviar archivos grandes que tardaban mucho en enviarse.\n" +
-	    "✳️ La apariencia de los temas fue retocada y añadido un nuevo tema rosado.\n" +
-	    "✳️ Aplicación renombrada a DeltaLab y cambiado el icono para diferenciar del Delta Chat oficial.\n" +
+	    "🆕 Registro de cambios v1.11.0:\n" +
+	    "✳️ Cuando seleccionas el botón de información de un mensaje, esa información es copiada al portapapeles.\n" +
+	    "✳️ Reducido el tamaño de la apk.\n" +
+	    "✳️ Actualizado el listado de bots.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
-    dcContext.addDeviceMsg("dlab-1.10.6-chlog", msg);
+    dcContext.addDeviceMsg("dlab-1.11.0-chlog", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
