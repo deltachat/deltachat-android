@@ -62,12 +62,12 @@ rm -f x86/*
 rm -f x86_64/*
 mkdir -p armeabi-v7a
 mkdir -p arm64-v8a
-mkdir -p x86
-mkdir -p x86_64
+#mkdir -p x86
+#mkdir -p x86_64
 cp deltachat-core-rust/target/armv7-linux-androideabi/release/libdeltachat.a armeabi-v7a
 cp deltachat-core-rust/target/aarch64-linux-android/release/libdeltachat.a arm64-v8a
-cp deltachat-core-rust/target/i686-linux-android/release/libdeltachat.a x86
-cp deltachat-core-rust/target/x86_64-linux-android/release/libdeltachat.a x86_64
+#cp deltachat-core-rust/target/i686-linux-android/release/libdeltachat.a x86
+#cp deltachat-core-rust/target/x86_64-linux-android/release/libdeltachat.a x86_64
 
 echo -- ndk-build --
 cd ..

@@ -108,9 +108,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
 	    "🆕 Registro de cambios v1.11.0:\n" +
+	    "✳️ Ahora se muestra un mensaje del dispositivo cuando la contraseña ha sido cambiada.\n" +
+	    "✳️ Nueva funcionalidad experimental para videochats (debes definir servidor de internet).\n" +
+	    "✳️ Mejorado el envío de adjuntos grandes, incluso de varios megas.\n" +
+	    "✳️ Mejorada la recepción de mensajes.\n" +
+	    "✳️ Mejorado el manejo de errores ya no debe salir el cartel molesto de versiones anteriores.\n" +
+	    "✳️ Arreglado los emojis para Android 4.\n" +
+	    "✳️ Ahora se usa la resolución correcta para las imágenes de fondo de chat.\n" +
 	    "✳️ Cuando seleccionas el botón de información de un mensaje, esa información es copiada al portapapeles.\n" +
 	    "✳️ Reducido el tamaño de la apk.\n" +
 	    "✳️ Actualizado el listado de bots.\n" +
+	    "✳️ Corrección de otros errores.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
     dcContext.addDeviceMsg("dlab-1.11.0-chlog", msg);
 
