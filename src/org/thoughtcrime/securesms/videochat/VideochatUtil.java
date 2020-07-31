@@ -19,8 +19,8 @@ public class VideochatUtil {
     DcChat dcChat = dcContext.getChat(chatId);
 
     new AlertDialog.Builder(activity)
-            .setTitle(String.format("Invite %1$s to a video chat?", dcChat.getName()))
-            .setMessage("This requires a compatible app or a compatible browser on both ends.")
+            .setTitle(activity.getString(R.string.videochat_invite_user_to_videochat, dcChat.getName()))
+            .setMessage(R.string.videochat_invite_user_hint)
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.ok, (dialog, which) -> {
                 int msgId = dcContext.sendVideochatInvitation(dcChat.getId());
