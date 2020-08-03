@@ -7,6 +7,7 @@
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="select">Select</string>
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="def">Default</string>
@@ -217,6 +218,8 @@
     <string name="file_saved_to">File saved to \"%1$s\".</string>
 
     <string name="videochat">Video chat</string>
+    <string name="videochat_invite_user_to_videochat">Invite %1$s to a video chat?</string>
+    <string name="videochat_invite_user_hint">This requires a compatible app or a compatible browser on both ends.</string>
     <string name="videochat_contact_invited_hint">%1$s invited to a video chat.</string>
     <string name="videochat_you_invited_hint">You invited to a video chat.</string>
     <string name="videochat_will_open_in_your_browser">This video chat will open in your browser.</string>

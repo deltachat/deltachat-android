@@ -218,6 +218,9 @@
     <string name="videochat_instance_placeholder">您的视频聊天实例</string>
     <string name="videochat_instance_explain">定义了视频聊天实例之后，您可以从一对一聊天中启动视频聊天。视频聊天的两端都需要有兼容的应用或兼容的浏览器。\n\n示例: https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">使用“%1$s”邀请其他人加入视频聊天吗？\n\n设置好后，您可以从每个一对一聊天中开始视频聊天。 这会取代之前的视频聊天设置（如果有的话）。</string>
+    <string name="videochat_invitation">视频聊天邀请</string>
+    <string name="videochat_invitation_body">您被邀请参加视频聊天，点击 %1$s 来加入。</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">您确定要离开此群组吗？</string>
     <plurals name="ask_delete_chat">
