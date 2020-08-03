@@ -103,7 +103,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n" +
 	    "\nℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
 	    "/help");
-    dcContext.addDeviceMsg("dlab-1.11.0-bots", msg);
+    dcContext.addDeviceMsg("dlab-1.12.0-bots", msg);
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
@@ -120,7 +120,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ Actualizado el listado de bots.\n" +
 	    "✳️ Corrección de otros errores.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
-    dcContext.addDeviceMsg("dlab-1.11.0-chlog", msg);
+    dcContext.addDeviceMsg("dlab-1.12.0-chlog", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
