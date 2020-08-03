@@ -25,12 +25,15 @@ import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+
+import android.graphics.Rect;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,13 +50,16 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
+import org.thoughtcrime.securesms.components.QuoteView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
+import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
+import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
@@ -81,8 +87,11 @@ public class ConversationItem extends LinearLayout
 {
   private static final String TAG = ConversationItem.class.getSimpleName();
 
+  private static final Rect SWIPE_RECT = new Rect();
+
   private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
   private static final int MAX_MEASURE_CALLS = 3;
+  static long PULSE_HIGHLIGHT_MILLIS = 500;
 
   private DcMsg         messageRecord;
   private DcChat        dcChat;
@@ -92,12 +101,14 @@ public class ConversationItem extends LinearLayout
   private GlideRequests glideRequests;
 
   protected ViewGroup              bodyBubble;
+  protected View                   reply;
+  @Nullable private QuoteView      quoteView;
   private   TextView               bodyText;
   private   ConversationItemFooter footer;
   private   TextView               groupSender;
   private   View                   groupSenderHolder;
   private   AvatarImageView        contactPhoto;
-  private   ViewGroup              contactPhotoHolder;
+  protected ViewGroup              contactPhotoHolder;
   private   ViewGroup              container;
 
   private @NonNull  Set<DcMsg>                      batchSelected = new HashSet<>();
@@ -106,6 +117,8 @@ public class ConversationItem extends LinearLayout
   private @NonNull  Stub<AudioView>                 audioViewStub;
   private @NonNull  Stub<DocumentView>              documentViewStub;
   private @Nullable EventListener                   eventListener;
+
+  private int measureCalls;
 
   private int incomingBubbleColor;
   private int outgoingBubbleColor;
@@ -147,7 +160,9 @@ public class ConversationItem extends LinearLayout
     this.audioViewStub           = new Stub<>(findViewById(R.id.audio_view_stub));
     this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
+    this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
+    this.reply                   =            findViewById(R.id.reply_icon);
 
     setOnClickListener(new ClickListener(null));
 
@@ -189,6 +204,8 @@ public class ConversationItem extends LinearLayout
     setAuthor(messageRecord, groupThread);
     setMessageSpacing(context);
     setFooter(messageRecord, locale);
+    setQuote(messageRecord);
+
   }
 
 
@@ -197,12 +214,46 @@ public class ConversationItem extends LinearLayout
     this.eventListener = eventListener;
   }
 
+  public boolean disallowSwipe(float downX, float downY) {
+    if (reply == null) return true;
+    if (!hasAudio(messageRecord)) return false;
+
+    audioViewStub.get().getSeekBarGlobalVisibleRect(SWIPE_RECT);
+    return SWIPE_RECT.contains((int) downX, (int) downY);
+  }
+
   @Override
   protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
     if (isInEditMode()) {
       return;
+    }
+
+    boolean needsMeasure = false;
+
+    if (hasQuote(messageRecord)) {
+      if (quoteView == null) {
+        throw new AssertionError();
+      }
+      int quoteWidth     = quoteView.getMeasuredWidth();
+      int availableWidth = getAvailableMessageBubbleWidth(quoteView);
+
+      if (quoteWidth != availableWidth) {
+        quoteView.getLayoutParams().width = availableWidth;
+        needsMeasure = true;
+      }
+    }
+
+    if (needsMeasure) {
+      if (measureCalls < MAX_MEASURE_CALLS) {
+        measureCalls++;
+        measure(widthMeasureSpec, heightMeasureSpec);
+      } else {
+        Log.w(TAG, "Hit measure() cap of " + MAX_MEASURE_CALLS);
+      }
+    } else {
+      measureCalls = 0;
     }
   }
 
@@ -245,7 +296,7 @@ public class ConversationItem extends LinearLayout
     } else if (pulseHighlight) {
       setBackgroundResource(R.drawable.conversation_item_background_animated);
       setSelected(true);
-      postDelayed(() -> setSelected(false), 1500);
+      postDelayed(() -> setSelected(false), PULSE_HIGHLIGHT_MILLIS);
     } else {
       setSelected(false);
     }
@@ -271,6 +322,10 @@ public class ConversationItem extends LinearLayout
   private boolean hasAudio(DcMsg messageRecord) {
     int type = messageRecord.getType();
     return type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE;
+  }
+
+  private boolean hasQuote(DcMsg messageRecord) {
+    return !"".equals(messageRecord.getQuotedText());
   }
 
   private boolean hasThumbnail(DcMsg messageRecord) {
@@ -492,6 +547,54 @@ public class ConversationItem extends LinearLayout
     return messageBody;
   }
 
+  private void setQuote(@NonNull DcMsg current) {
+    if (quoteView == null) {
+      throw new AssertionError();
+    }
+    String quoteTxt = current.getQuotedText();
+    if (quoteTxt == null || quoteTxt.isEmpty()) {
+      quoteView.dismiss();
+      if (mediaThumbnailStub.resolved()) {
+        ViewUtil.setTopMargin(mediaThumbnailStub.get(), 0);
+      }
+      return;
+    }
+    DcMsg msg = current.getQuotedMsg();
+
+    // If you modify these lines you may also want to modify ConversationActivity.handleReplyMessage():
+    Recipient author = null;
+    SlideDeck slideDeck = new SlideDeck();
+    if (msg != null) {
+      author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
+      if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+        slideDeck.addSlide(MediaUtil.getSlideForMsg(context, msg));
+      }
+    }
+
+    quoteView.setQuote(GlideApp.with(this),
+            msg,
+            author,
+            quoteTxt,
+            slideDeck);
+
+    quoteView.setVisibility(View.VISIBLE);
+    quoteView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
+
+    quoteView.setOnClickListener(view -> {
+      if (eventListener != null && batchSelected.isEmpty()) {
+        eventListener.onQuoteClicked(current);
+      } else {
+        passthroughClickListener.onClick(view);
+      }
+    });
+
+    quoteView.setOnLongClickListener(passthroughClickListener);
+
+    if (mediaThumbnailStub.resolved()) {
+      ViewUtil.setTopMargin(mediaThumbnailStub.get(), readDimen(R.dimen.message_bubble_top_padding));
+    }
+  }
+
   private void setGutterSizes(@NonNull DcMsg current, boolean isGroupThread) {
     if (isGroupThread && current.isOutgoing()) {
       ViewUtil.setLeftMargin(container, readDimen(R.dimen.conversation_group_left_gutter));
@@ -535,9 +638,7 @@ public class ConversationItem extends LinearLayout
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
       this.groupSender.setText(dcContact.getDisplayName());
 
-      int rgb = dcContact.getColor();
-      int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
-      this.groupSender.setTextColor(argb);
+      this.groupSender.setTextColor(dcContact.getArgbColor());
     }
   }
 
@@ -587,6 +688,21 @@ public class ConversationItem extends LinearLayout
 
   private int readDimen(@NonNull Context context, @DimenRes int dimenId) {
     return context.getResources().getDimensionPixelOffset(dimenId);
+  }
+
+  private int getAvailableMessageBubbleWidth(@NonNull View forView) {
+    int availableWidth;
+    if (hasAudio(messageRecord)) {
+      availableWidth = audioViewStub.get().getMeasuredWidth() + ViewUtil.getLeftMargin(audioViewStub.get()) + ViewUtil.getRightMargin(audioViewStub.get());
+    } else if (hasThumbnail(messageRecord)) {
+      availableWidth = mediaThumbnailStub.get().getMeasuredWidth();
+    } else {
+      availableWidth = bodyBubble.getMeasuredWidth() - bodyBubble.getPaddingLeft() - bodyBubble.getPaddingRight();
+    }
+
+    availableWidth -= ViewUtil.getLeftMargin(forView) + ViewUtil.getRightMargin(forView);
+
+    return availableWidth;
   }
 
   /// Event handlers

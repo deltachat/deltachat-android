@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
 import androidx.annotation.NonNull;
@@ -180,6 +181,10 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
       this.seekBar.getThumb().setColorFilter(foregroundTint, PorterDuff.Mode.SRC_IN);
     }
+  }
+
+  public void getSeekBarGlobalVisibleRect(@NonNull Rect rect) {
+    seekBar.getGlobalVisibleRect(rect);
   }
 
   private double getProgress() {

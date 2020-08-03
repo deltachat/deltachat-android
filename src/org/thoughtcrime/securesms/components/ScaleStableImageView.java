@@ -112,7 +112,7 @@ public class ScaleStableImageView
                 large = storedSizes.get(landscapeWidth + "x" + landscapeHeight);
             if (large == null) return; // no baseline. can't work.
             Bitmap original = ((BitmapDrawable) large).getBitmap();
-            if (height <= original.getHeight() || width <= original.getWidth()) {
+            if (height <= original.getHeight() && width <= original.getWidth()) {
                 Bitmap cropped = Bitmap.createBitmap(original, 0, 0, width, height);
                 Drawable croppedDrawable = new BitmapDrawable(getResources(), cropped);
                 overrideDrawable(croppedDrawable);

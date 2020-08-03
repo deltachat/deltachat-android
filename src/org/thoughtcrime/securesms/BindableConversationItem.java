@@ -27,5 +27,6 @@ public interface BindableConversationItem extends Unbindable {
   void setEventListener(@Nullable EventListener listener);
 
   interface EventListener {
+    void onQuoteClicked(DcMsg messageRecord);
   }
 }

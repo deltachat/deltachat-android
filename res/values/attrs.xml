@@ -119,6 +119,9 @@
 
     <attr name="pref_icon_tint" format="color"/>
 
+    <attr name="quote_missing_icon_color" format="color" />
+    <attr name="quote_dismiss_button_tint" format="color" />
+
     <declare-styleable name="CustomDefaultPreference">
         <attr name="custom_pref_toggle" format="string"/>
     </declare-styleable>
@@ -234,6 +237,20 @@
 
     <declare-styleable name="TimeRangeSlider">
         <attr name="timeFrame" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="QuoteView">
+        <attr name="message_type" format="enum">
+            <enum name="preview" value="0" />
+            <enum name="outgoing" value="1" />
+            <enum name="incoming" value="2" />
+        </attr>
+        <attr name="quote_colorPrimary" format="color" />
+        <attr name="quote_colorSecondary" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="AdaptiveActionsToolbar">
+        <attr name="aat_max_shown" format="integer" />
     </declare-styleable>
 
 </resources>

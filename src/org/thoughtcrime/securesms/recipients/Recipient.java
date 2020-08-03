@@ -137,6 +137,10 @@ public class Recipient {
     return "";
   }
 
+  public @Nullable DcContact getDcContact() {
+    return dcContact;
+  }
+
   public @NonNull Address getAddress() {
     return address;
   }

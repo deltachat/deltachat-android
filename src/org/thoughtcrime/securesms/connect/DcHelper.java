@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
@@ -34,7 +36,7 @@ public class DcHelper {
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
     public static final String CONFIG_WEBRTC_INSTANCE = "webrtc_instance";
 
-    public static ApplicationDcContext getContext(Context context) {
+    public static ApplicationDcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;
     }
 

@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -23,6 +24,7 @@ import org.thoughtcrime.securesms.animation.AnimationCompleteListener;
 
 public class SearchToolbar extends LinearLayout {
 
+  private static final String TAG = SearchToolbar.class.getSimpleName();
   private float x, y;
   private MenuItem searchItem;
   private SearchListener listener;
@@ -47,6 +49,10 @@ public class SearchToolbar extends LinearLayout {
     setOrientation(VERTICAL);
 
     Toolbar toolbar = findViewById(R.id.toolbar);
+    if (toolbar == null) {
+      Log.e(TAG, "SearchToolbar: No toolbar");
+      return;
+    }
 
     Drawable drawable = getContext().getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
     drawable.mutate();

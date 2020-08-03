@@ -11,6 +11,11 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="Signal.Text.Quote" parent="Base.TextAppearance.AppCompat.Small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
     <style name="Signal.Text.Caption" parent="Base.TextAppearance.AppCompat.Caption">
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">sans-serif</item>

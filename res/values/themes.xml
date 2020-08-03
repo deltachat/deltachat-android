@@ -178,6 +178,8 @@
         <item name="icon_tint">@color/grey_700</item>
         <item name="icon_tint_dark">@color/grey_100</item>
 
+        <item name="quote_dismiss_button_tint">@color/gray70</item>
+
         <item name="group_members_dialog_icon">@drawable/ic_group_grey600_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.Fix</item>
 
@@ -323,6 +325,7 @@
         <item name="icon_tint">@color/grey_100</item>
         <item name="icon_tint_dark">?icon_tint</item>
 
+        <item name="quote_dismiss_button_tint">@color/core_white</item>
 
         <item name="group_members_dialog_icon">@drawable/ic_group_white_24dp</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.Fix</item>

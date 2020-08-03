@@ -50,6 +50,19 @@ public class SlideDeck {
     slides.add(slide);
   }
 
+  public List<Slide> getSlides() {
+    return slides;
+  }
+
+  public boolean containsMediaSlide() {
+    for (Slide slide : slides) {
+      if (slide.hasImage() || slide.hasVideo() || slide.hasAudio() || slide.hasDocument()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public @Nullable DocumentSlide getDocumentSlide() {
     for (Slide slide: slides) {
       if (slide.hasDocument()) {
