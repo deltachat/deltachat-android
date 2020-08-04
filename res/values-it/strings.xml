@@ -6,6 +6,7 @@
     <string name="cancel">Annulla</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
+    <string name="select">Selezionare</string>
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="def">Predefinito</string>
@@ -215,7 +216,9 @@
     <string name="file_saved_to">File salvato su \"%1$s\".</string>
 
     <string name="videochat">Chat video</string>
-    <string name="videochat_contact_invited_hint">%1$s invitato a una chat video.</string>
+    <string name="videochat_invite_user_to_videochat">Invito %1$s a una chat video?</string>
+    <string name="videochat_invite_user_hint">Questo richiede un\'app compatibile o un browser compatibile da entrambe le parti.</string>
+    <string name="videochat_contact_invited_hint">%1$s ti ha invitato a una chat video.</string>
     <string name="videochat_you_invited_hint">Hai invitato a una chat video.</string>
     <string name="videochat_will_open_in_your_browser">Questa video chat si aprirà nel tuo browser.</string>
     <string name="videochat_tap_to_join">Tocca per partecipare</string>

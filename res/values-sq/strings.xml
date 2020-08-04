@@ -6,6 +6,7 @@
     <string name="cancel">Anuloje</string>
     <string name="yes">Po</string>
     <string name="no">Jo</string>
+    <string name="select">Përzgjidhni</string>
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="def">Parazgjedhje</string>
@@ -215,6 +216,8 @@
     <string name="file_saved_to">Kartela u ruajt te \"%1$s\".</string>
 
     <string name="videochat">Fjalosje me video</string>
+    <string name="videochat_invite_user_to_videochat">Të ftohet %1$s te një thirrje me video?</string>
+    <string name="videochat_invite_user_hint">Kjo lyp në të dy anët një aplikacion të përputhshëm ose një shfletues të përputhshëm</string>
     <string name="videochat_contact_invited_hint">%1$s ftoi te një fjalosje me video.</string>
     <string name="videochat_you_invited_hint">Ftuat te një fjalosje me video.</string>
     <string name="videochat_will_open_in_your_browser">Kjo fjalosje me video do të hapet në shfletuesin tuaj.</string>

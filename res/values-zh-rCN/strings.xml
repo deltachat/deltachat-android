@@ -6,6 +6,7 @@
     <string name="cancel">取消</string>
     <string name="yes">是</string>
     <string name="no">否</string>
+    <string name="select">选择</string>
     <string name="on">开</string>
     <string name="off">关</string>
     <string name="def">默认</string>
@@ -209,6 +210,8 @@
     <string name="file_saved_to">文件已保存到 “%1$s”。</string>
 
     <string name="videochat">视频聊天</string>
+    <string name="videochat_invite_user_to_videochat">邀请 %1$s 进行视频聊天？</string>
+    <string name="videochat_invite_user_hint">这需要两端都具有兼容的应用或兼容的浏览器。</string>
     <string name="videochat_contact_invited_hint">%1$s 被邀请参加视频聊天。</string>
     <string name="videochat_you_invited_hint">您被邀请参加视频聊天。</string>
     <string name="videochat_will_open_in_your_browser">该视频聊天将在您的浏览器中打开。</string>
