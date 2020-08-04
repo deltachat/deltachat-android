@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.12.2
+2020-08
+
+* fix improvements for sending larger mails
+* more bug fixes
+
+
 ## v1.12.1
 2020-07
 
