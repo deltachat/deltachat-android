@@ -103,11 +103,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n" +
 	    "\nℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
 	    "/help");
-    dcContext.addDeviceMsg("dlab-1.12.0-bots", msg);
+    dcContext.addDeviceMsg("dlab-1.12.1-bots", msg);
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
-	    "🆕 Registro de cambios v1.11.0:\n" +
+	    "🆕 Registro de cambios v1.12.1:\n" +
 	    "✳️ Ahora se muestra un mensaje del dispositivo cuando la contraseña ha sido cambiada.\n" +
 	    "✳️ Nueva funcionalidad experimental para videochats (debes definir servidor de internet).\n" +
 	    "✳️ Mejorado el envío de adjuntos grandes, incluso de varios megas.\n" +
@@ -117,10 +117,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ Ahora se usa la resolución correcta para las imágenes de fondo de chat.\n" +
 	    "✳️ Cuando seleccionas el botón de información de un mensaje, esa información es copiada al portapapeles.\n" +
 	    "✳️ Reducido el tamaño de la apk.\n" +
+	    "✳️ Las imágenes ahora tienen la misma calidad que en la versión oficial.\n" +
 	    "✳️ Actualizado el listado de bots.\n" +
 	    "✳️ Corrección de otros errores.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
-    dcContext.addDeviceMsg("dlab-1.12.0-chlog", msg);
+    dcContext.addDeviceMsg("dlab-1.12.1-chlog", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
