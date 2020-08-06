@@ -6,6 +6,7 @@
     <string name="cancel">Vazgeç</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
+    <string name="select">Seç</string>
     <string name="on">Açık</string>
     <string name="off">Kapalı</string>
     <string name="def">Varsayılan</string>
@@ -215,6 +216,8 @@
     <string name="file_saved_to">Dosya \"%1$s\" üzerine kaydedildi.</string>
 
     <string name="videochat">Video sohbeti</string>
+    <string name="videochat_invite_user_to_videochat">%1$s bir video sohbetine davet edilsin mi?</string>
+    <string name="videochat_invite_user_hint">Bu, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.</string>
     <string name="videochat_contact_invited_hint">%1$s video sohbetine davet etti.</string>
     <string name="videochat_you_invited_hint">Video sohbetine davet ettiniz.</string>
     <string name="videochat_will_open_in_your_browser">Bu video sohbeti tarayıcınızda açılacak.</string>

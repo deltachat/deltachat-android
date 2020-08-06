@@ -6,6 +6,7 @@
     <string name="cancel">Annuleren</string>
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
+    <string name="select">Selecteren</string>
     <string name="on">Aan</string>
     <string name="off">Uit</string>
     <string name="def">Standaard</string>
@@ -215,6 +216,8 @@
     <string name="file_saved_to">Het bestand is opgeslagen in \'%1$s\'.</string>
 
     <string name="videochat">Videogesprek</string>
+    <string name="videochat_invite_user_to_videochat">Wil je %1$s uitnodigen voor een videogesprek?</string>
+    <string name="videochat_invite_user_hint">Hiervoor hebben jullie beiden een compatibele app of webbrowser nodig.</string>
     <string name="videochat_contact_invited_hint">%1$s is uitgenodigd voor een videogesprek.</string>
     <string name="videochat_you_invited_hint">Je bent uitgenodigd voor een videogesprek.</string>
     <string name="videochat_will_open_in_your_browser">Het videogesprek wordt geopend in je webbrowser.</string>
