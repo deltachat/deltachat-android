@@ -23,6 +23,9 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 public class LongClickCopySpan extends URLSpan {
   private static final String PREFIX_MAILTO = "mailto:";
   private static final String PREFIX_TEL = "tel:";
+  private static final String PREFIX_MENTION = "mention:";
+  private static final String PREFIX_TAG = "tag:";
+  private static final String PREFIX_CMD = "cmd:";
 
   private boolean isHighlighted;
   @ColorInt
@@ -52,9 +55,20 @@ public class LongClickCopySpan extends URLSpan {
   @Override
   public void onClick(View widget) {
     String url = getURL();
-    if (url.startsWith(PREFIX_MAILTO+"/")) {
+    if (url.startsWith(PREFIX_MENTION)) {
+    } else if (url.startsWith(PREFIX_TAG)) {
 	try {
-	    String cmd = prepareUrl(url);
+	    String tag = url.substring(PREFIX_TAG.length());
+	    Activity activity = (Activity) widget.getContext();
+	    DcContext dcContext = DcHelper.getContext(activity);
+	    dcContext.sendTextMsg(this.chatId, tag);
+	}
+	catch(Exception e) {
+	    e.printStackTrace();
+	}
+    } else if (url.startsWith(PREFIX_CMD)) {
+	try {
+	    String cmd = url.substring(PREFIX_CMD.length());
 	    Activity activity = (Activity) widget.getContext();
 	    DcContext dcContext = DcHelper.getContext(activity);
 	    dcContext.sendTextMsg(this.chatId, cmd);
@@ -93,8 +107,14 @@ public class LongClickCopySpan extends URLSpan {
       String url = getURL();
     Context context = widget.getContext();
     String preparedUrl = prepareUrl(url);
-    if (url.startsWith(PREFIX_MAILTO+"/")) {
-	copyUrl(context, preparedUrl);
+    if (url.startsWith(PREFIX_MENTION)) {
+	copyUrl(context, url.substring(PREFIX_MENTION.length()));
+	Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+    } else if (url.startsWith(PREFIX_TAG)) {
+	copyUrl(context, url.substring(PREFIX_TAG.length()));
+	Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+    } else if (url.startsWith(PREFIX_CMD)) {
+	copyUrl(context, url.substring(PREFIX_CMD.length()));
 	Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
     } else {
 	new AlertDialog.Builder(context)

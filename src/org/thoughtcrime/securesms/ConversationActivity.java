@@ -1488,7 +1488,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 	  quote += "[...]";
       }
 
-      quote = "@" + contact.getDisplayName() + ":\n" + quote;
+      quote = "@" + contact.getDisplayName().replace(' ', '_') + ":\n" + quote;
       quote = prefix+quote.replaceAll("(?:\r\n?|\n)(?!\\z)", "$0"+Matcher.quoteReplacement(prefix)) + "\n\n\n";
       composeText.setText(quote);
       composeText.setSelection(composeText.getText().length());
