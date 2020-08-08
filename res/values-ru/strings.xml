@@ -6,6 +6,7 @@
     <string name="cancel">Отмена</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+    <string name="select">Выбрать</string>
     <string name="on">Вкл.</string>
     <string name="off">Выкл.</string>
     <string name="def">По умолчанию</string>
@@ -227,6 +228,8 @@
     <string name="file_saved_to">Файл сохранён в «%1$s».</string>
 
     <string name="videochat">Видеочат</string>
+    <string name="videochat_invite_user_to_videochat">Пригласить %1$s в видеочат?</string>
+    <string name="videochat_invite_user_hint">Это требует совместимого приложения или совместимого браузера на обоих концах.</string>
     <string name="videochat_contact_invited_hint">%1$s приглашает вас в видеочат.</string>
     <string name="videochat_you_invited_hint">Вы пригласили в видеочат.</string>
     <string name="videochat_will_open_in_your_browser">Этот видеочат будет открываться в браузере</string>
