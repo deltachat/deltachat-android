@@ -28,6 +28,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.airbnb.android:lottie:3.4.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'
@@ -95,7 +96,7 @@ android {
         applicationId "com.b44t.messenger"
         multiDexEnabled true
 
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
 
         vectorDrawables.useSupportLibrary = true
