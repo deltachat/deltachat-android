@@ -1,5 +1,18 @@
 # Delta Chat Android Changelog
 
+## v1.12.2
+2020-08
+
+* fix improvements for sending larger mails
+* fix a crash related to muted chats
+* fix incorrect dimensions sometimes reported for images
+* improve linebreak-handling in HTML mails
+* improve footer detection in plain text email
+* define own jitsi-servers by the prefix `jitsi:`
+* fix deletion of multiple messages
+* more bug fixes
+
+
 ## v1.12.1
 2020-07
 
