@@ -725,26 +725,28 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
    */
   private ListenableFuture<Boolean> initializeDraft() {
 
-    final SettableFuture<Boolean> result = new SettableFuture<>();
+    SettableFuture<Boolean> result = new SettableFuture<>();
 
-    final String    draftText      = getIntent().getStringExtra(TEXT_EXTRA);
-    final Uri       draftMedia     = getIntent().getData();
-    final MediaType draftMediaType = MediaType.from(getIntent().getType());
+    final String draftText = RelayUtil.getSharedText(this);
+    final ArrayList<Uri> draftMediaList = RelayUtil.getSharedUris(this);
+    Uri draftMedia = null;
+    if (!draftMediaList.isEmpty()) draftMedia = draftMediaList.get(0);
+    final MediaType draftMediaType = MediaType.from(MediaUtil.getMimeType(this, draftMedia));
 
     if (draftText != null) {
       composeText.setText(draftText);
       result.set(true);
     }
     if (draftMedia != null && draftMediaType != null) {
-      return setMedia(draftMedia, draftMediaType);
+      result = setMedia(draftMedia, draftMediaType);
     }
 
-    if (draftText == null && draftMedia == null && draftMediaType == null) {
-      return initializeDraftFromDatabase();
+    if (draftText == null || draftMedia == null || draftMediaType == null) {
+      result = initializeDraftFromDatabase();
     } else {
-      updateToggleButtonState();
       result.set(false);
     }
+    updateToggleButtonState();
 
     return result;
   }
@@ -756,7 +758,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     attachButton.setEnabled(enabled);
   }
 
-  private ListenableFuture<Boolean> initializeDraftFromDatabase() {
+  private SettableFuture<Boolean> initializeDraftFromDatabase() {
     SettableFuture<Boolean> future = new SettableFuture<>();
 
     new AsyncTask<Void, Void, DcMsg>() {
@@ -969,7 +971,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     startActivityForResult(intent, PICK_CONTACT);
   }
 
-  private ListenableFuture<Boolean> setMedia(@Nullable Uri uri, @NonNull MediaType mediaType) {
+  private SettableFuture<Boolean> setMedia(@Nullable Uri uri, @NonNull MediaType mediaType) {
     if (uri == null) {
       return new SettableFuture<>(false);
     }
