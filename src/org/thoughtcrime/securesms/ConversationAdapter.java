@@ -21,6 +21,9 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +80,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private static final int MESSAGE_TYPE_DOCUMENT_OUTGOING  = 7;
   private static final int MESSAGE_TYPE_DOCUMENT_INCOMING  = 8;
   private static final int MESSAGE_TYPE_VIDEOCHAT_INVITE   = 9;
+  private static final int MESSAGE_TYPE_ANIMATED_OUTGOING  = 10;
+  private static final int MESSAGE_TYPE_ANIMATED_INCOMING  = 11;
 
   private final Set<DcMsg> batchSelected = Collections.synchronizedSet(new HashSet<DcMsg>());
 
@@ -241,6 +246,11 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   @Override
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     final V itemView = ViewUtil.inflate(inflater, parent, getLayoutForViewType(viewType));
+    if (viewType == MESSAGE_TYPE_ANIMATED_INCOMING || viewType == MESSAGE_TYPE_ANIMATED_OUTGOING) {
+      itemView.getBackground().setColorFilter(Color.parseColor("#00000000"), PorterDuff.Mode.CLEAR);
+      itemView.findViewById(R.id.body_bubble).getBackground().setColorFilter(Color.parseColor("#00000000"), PorterDuff.Mode.CLEAR);
+    }
+
     itemView.setOnClickListener(view -> {
       if (clickListener != null) {
         clickListener.onItemClick(itemView.getMessageRecord());
@@ -261,10 +271,12 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       case MESSAGE_TYPE_AUDIO_OUTGOING:
       case MESSAGE_TYPE_THUMBNAIL_OUTGOING:
       case MESSAGE_TYPE_DOCUMENT_OUTGOING:
+      case MESSAGE_TYPE_ANIMATED_OUTGOING:
       case MESSAGE_TYPE_OUTGOING:        return R.layout.conversation_item_sent;
       case MESSAGE_TYPE_AUDIO_INCOMING:
       case MESSAGE_TYPE_THUMBNAIL_INCOMING:
       case MESSAGE_TYPE_DOCUMENT_INCOMING:
+      case MESSAGE_TYPE_ANIMATED_INCOMING:
       case MESSAGE_TYPE_INCOMING:        return R.layout.conversation_item_received;
       case MESSAGE_TYPE_INFO:            return R.layout.conversation_item_update;
       case MESSAGE_TYPE_VIDEOCHAT_INVITE:return R.layout.conversation_item_videochat;
@@ -276,6 +288,11 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   public int getItemViewType(int i) {
     DcMsg dcMsg = getMsg(i);
     int type = dcMsg.getType();
+    if (dcMsg.hasFile()) {
+      if (dcMsg.getFilename().endsWith(".tgs")) {
+        return dcMsg.isOutgoing()? MESSAGE_TYPE_ANIMATED_OUTGOING : MESSAGE_TYPE_ANIMATED_INCOMING;
+      }
+    }
     if (dcMsg.isInfo()) {
       return MESSAGE_TYPE_INFO;
     }

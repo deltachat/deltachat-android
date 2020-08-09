@@ -288,6 +288,9 @@ public class AttachmentManager {
           } else if (slide.hasDocument()) {
             documentView.setDocument((DocumentSlide) slide);
             removableMediaView.display(documentView, false);
+	    if (((DocumentSlide) slide).hasAnimation()) {
+              documentView.setBackgroundResource(R.drawable.void_background);
+            }
             result.set(true);
           } else {
             Attachment attachment = slide.asAttachment();

@@ -625,8 +625,12 @@ public class ConversationItem extends LinearLayout
 
   private void setMessageShape(@NonNull DcMsg current) {
     int background;
-    background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
-                                      : R.drawable.message_bubble_background_received_alone;
+    if (current.hasFile()&&current.getFilename().endsWith(".tgs")) {
+	background = R.drawable.void_background;
+    } else {
+	background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
+	                                  : R.drawable.message_bubble_background_received_alone;
+    }
     bodyBubble.setBackgroundResource(background);
   }
 

@@ -8,14 +8,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
+
+import java.io.FileNotFoundException;
 
 public class DocumentView extends FrameLayout {
 
@@ -24,6 +30,7 @@ public class DocumentView extends FrameLayout {
   private final @NonNull View            container;
   private final @NonNull TextView        fileName;
   private final @NonNull TextView        fileSize;
+  private final @NonNull LottieAnimationView lottie;
 
   private @Nullable SlideClickListener viewListener;
   private @Nullable DocumentSlide      documentSlide;
@@ -43,6 +50,7 @@ public class DocumentView extends FrameLayout {
     this.container        = findViewById(R.id.document_container);
     this.fileName         = findViewById(R.id.file_name);
     this.fileSize         = findViewById(R.id.file_size);
+    this.lottie           = findViewById(R.id.doc_animation);
   }
 
   public void setDocumentClickListener(@Nullable SlideClickListener listener) {
@@ -51,15 +59,43 @@ public class DocumentView extends FrameLayout {
 
   public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
-    this.documentSlide = documentSlide;
+      String filename = documentSlide.getFileName().or("");
+      if ((filename.endsWith(".tgs"))) {
+	  container.setVisibility(GONE);
+	  lottie.setVisibility(VISIBLE);
+	  lottie.setOnFocusChangeListener((v, hasFocus) -> {
+		  if (v instanceof LottieAnimationView) {
+		      ((LottieAnimationView) v).resumeAnimation();
+		  }
+	      });
+	  ViewUtil.updateLayoutParams(lottie, ViewGroup.LayoutParams.WRAP_CONTENT, 300);
+	  try {
+	      lottie.setAnimation(getContext().getContentResolver().openInputStream(documentSlide.getUri()), filename);
+	  } catch (FileNotFoundException e) {
+	      e.printStackTrace();
+	  }
+	  lottie.setOnClickListener(v -> {
+		  if (v instanceof LottieAnimationView) {
+		      ((LottieAnimationView) v).setRepeatCount(5);
+		      ((LottieAnimationView) v).resumeAnimation();
+		  }
+	      });
+	  lottie.clearAnimation();
+	  lottie.animate();
+      } else {
+	  container.setVisibility(VISIBLE);
+	  lottie.setVisibility(GONE);
 
-    this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
+	  this.documentSlide = documentSlide;
 
-    String fileSize = Util.getPrettyFileSize(documentSlide.getFileSize())
-        + " " + getFileType(documentSlide.getFileName()).toUpperCase();
-    this.fileSize.setText(fileSize);
+	  this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
 
-    this.setOnClickListener(new OpenClickedListener(documentSlide));
+	  String fileSize = Util.getPrettyFileSize(documentSlide.getFileSize())
+	      + " " + getFileType(documentSlide.getFileName()).toUpperCase();
+	  this.fileSize.setText(fileSize);
+
+	  this.setOnClickListener(new OpenClickedListener(documentSlide));
+      }
   }
 
   @Override

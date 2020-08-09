@@ -35,4 +35,7 @@ public class DocumentSlide extends Slide {
     return true;
   }
 
+  public boolean hasAnimation() {
+    return getFileName().or("").endsWith(".tgs");
+  }
 }
