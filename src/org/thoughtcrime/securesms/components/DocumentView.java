@@ -21,7 +21,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
-import java.io.FileNotFoundException;
+import java.util.zip.GZIPInputStream;
 
 public class DocumentView extends FrameLayout {
 
@@ -70,8 +70,8 @@ public class DocumentView extends FrameLayout {
 	      });
 	  ViewUtil.updateLayoutParams(lottie, ViewGroup.LayoutParams.WRAP_CONTENT, 300);
 	  try {
-	      lottie.setAnimation(getContext().getContentResolver().openInputStream(documentSlide.getUri()), filename);
-	  } catch (FileNotFoundException e) {
+	      lottie.setAnimation(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), filename);
+	  } catch (Exception e) {
 	      e.printStackTrace();
 	  }
 	  lottie.setOnClickListener(v -> {
