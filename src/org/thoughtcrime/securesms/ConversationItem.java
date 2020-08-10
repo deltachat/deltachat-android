@@ -510,29 +510,18 @@ public class ConversationItem extends LinearLayout
 
     boolean hasLinks = false;
 
-    Linkify.TransformFilter filter = new Linkify.TransformFilter() {
-	    public final String transformUrl(final Matcher match, String url) {
-		return match.group();
-	    }
-    };
-
     Pattern mentionPattern = Pattern.compile("(?<=^|\\s)@([A-Za-z0-9_-]+)");
-    hasLinks = Linkify.addLinks(messageBody, mentionPattern, "mention:", null, filter) || hasLinks ;
+    hasLinks = Linkify.addLinks(messageBody, mentionPattern, "mention:", null, null) || hasLinks ;
 
     Pattern hashtagPattern = Pattern.compile("(?<=^|\\s)#([A-Za-z0-9_-]+)");
-    hasLinks = Linkify.addLinks(messageBody, hashtagPattern, "tag:", null, filter) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, hashtagPattern, "tag:", null, null) || hasLinks;
 
-    Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z@\\d_/]{1,255}");
-    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, filter) || hasLinks;
+    Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
+    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null) || hasLinks;
 
-    filter = new Linkify.TransformFilter() {
-	    public final String transformUrl(final Matcher match, String url) {
-		return match.group();
-	    }
-    };
-    hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, null, null, filter) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, null, null, filter) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, null, null, filter) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", null, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "http://", new String[]{"http://", "https://"},  null, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", null, null) || hasLinks;
 
     if (hasLinks) {
       URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
