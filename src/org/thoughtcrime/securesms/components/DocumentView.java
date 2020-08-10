@@ -69,8 +69,7 @@ public class DocumentView extends FrameLayout {
 	      });
 	  ViewUtil.updateLayoutParams(lottie, ViewGroup.LayoutParams.WRAP_CONTENT, 300);
 	  try {
-	      String filename = documentSlide.getFileName().or("");
-	      lottie.setAnimation(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), filename);
+	      lottie.setAnimation(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), null);
 	  } catch (Exception e) {
 	      e.printStackTrace();
 	  }
