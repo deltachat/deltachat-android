@@ -59,8 +59,7 @@ public class DocumentView extends FrameLayout {
 
   public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
-      String filename = documentSlide.getFileName().or("");
-      if ((filename.endsWith(".tgs"))) {
+      if ((documentSlide.hasAnimation())) {
 	  container.setVisibility(GONE);
 	  lottie.setVisibility(VISIBLE);
 	  lottie.setOnFocusChangeListener((v, hasFocus) -> {
@@ -70,14 +69,18 @@ public class DocumentView extends FrameLayout {
 	      });
 	  ViewUtil.updateLayoutParams(lottie, ViewGroup.LayoutParams.WRAP_CONTENT, 300);
 	  try {
+	      String filename = documentSlide.getFileName().or("");
 	      lottie.setAnimation(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), filename);
 	  } catch (Exception e) {
 	      e.printStackTrace();
 	  }
 	  lottie.setOnClickListener(v -> {
 		  if (v instanceof LottieAnimationView) {
-		      ((LottieAnimationView) v).setRepeatCount(5);
-		      ((LottieAnimationView) v).resumeAnimation();
+		      if (((LottieAnimationView) v).isAnimating()) {
+			  ((LottieAnimationView) v).pauseAnimation();
+		      } else {
+			  ((LottieAnimationView) v).resumeAnimation();
+		      }
 		  }
 	      });
 	  lottie.clearAnimation();

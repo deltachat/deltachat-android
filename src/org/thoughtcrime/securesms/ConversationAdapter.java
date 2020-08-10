@@ -288,10 +288,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   public int getItemViewType(int i) {
     DcMsg dcMsg = getMsg(i);
     int type = dcMsg.getType();
-    if (dcMsg.hasFile()) {
-      if (dcMsg.getFilename().endsWith(".tgs")) {
-        return dcMsg.isOutgoing()? MESSAGE_TYPE_ANIMATED_OUTGOING : MESSAGE_TYPE_ANIMATED_INCOMING;
-      }
+    if (dcMsg.hasFile() && dcMsg.getFilename().endsWith(".tgs")) {
+      return dcMsg.isOutgoing()? MESSAGE_TYPE_ANIMATED_OUTGOING : MESSAGE_TYPE_ANIMATED_INCOMING;
     }
     if (dcMsg.isInfo()) {
       return MESSAGE_TYPE_INFO;

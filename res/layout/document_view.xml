@@ -13,8 +13,7 @@
            android:focusable="false"
            android:orientation="horizontal"
            app:lottie_autoPlay="true"
-           app:lottie_repeatMode="restart"
-           app:lottie_repeatCount="4"
+           app:lottie_loop="true"
            android:visibility="visible" />
 
         <LinearLayout android:id="@+id/document_container"
