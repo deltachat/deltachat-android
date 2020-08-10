@@ -22,13 +22,20 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 public class LongClickCopySpan extends URLSpan {
   private static final String PREFIX_MAILTO = "mailto:";
   private static final String PREFIX_TEL = "tel:";
+  private static final String PREFIX_CMD = "cmd:";
 
   private boolean isHighlighted;
   @ColorInt
   private int highlightColor;
+  private int chatId;
 
   public LongClickCopySpan(String url) {
+    this(url, 0);
+  }
+
+  public LongClickCopySpan(String url, int chatId) {
     super(url);
+    this.chatId = chatId;
   }
 
   private void openChat(Activity activity, DcContact contact) {
@@ -44,7 +51,17 @@ public class LongClickCopySpan extends URLSpan {
   @Override
   public void onClick(View widget) {
     String url = getURL();
-    if (url.startsWith(PREFIX_MAILTO)) {
+    if (url.startsWith(PREFIX_CMD)) {
+	try {
+	    String cmd = url.substring(PREFIX_CMD.length());
+	    Activity activity = (Activity) widget.getContext();
+	    DcContext dcContext = DcHelper.getContext(activity);
+	    dcContext.sendTextMsg(this.chatId, cmd);
+	}
+	catch(Exception e) {
+	    e.printStackTrace();
+	}
+    } else if (url.startsWith(PREFIX_MAILTO)) {
       try {
         String addr = prepareUrl(url);
         Activity activity = (Activity) widget.getContext();
@@ -73,19 +90,25 @@ public class LongClickCopySpan extends URLSpan {
 
   void onLongClick(View widget) {
     Context context = widget.getContext();
-    String preparedUrl = prepareUrl(getURL());
+    String url = getURL();
 
-    new AlertDialog.Builder(context)
-        .setTitle(preparedUrl)
-        .setItems(new CharSequence[]{
-                context.getString(R.string.menu_copy_to_clipboard)
-            },
-            (dialogInterface, i) -> {
-              copyUrl(context, preparedUrl);
-              Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
-            })
-        .setNegativeButton(R.string.cancel, null)
-        .show();
+    if (url.startsWith(PREFIX_CMD)) {
+      copyUrl(context, url.substring(PREFIX_CMD.length()));
+      Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+    } else {
+      String preparedUrl = prepareUrl(url);
+      new AlertDialog.Builder(context)
+          .setTitle(preparedUrl)
+          .setItems(new CharSequence[]{
+                  context.getString(R.string.menu_copy_to_clipboard)
+              },
+              (dialogInterface, i) -> {
+                copyUrl(context, preparedUrl);
+                Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+              })
+          .setNegativeButton(R.string.cancel, null)
+          .show();
+    }
   }
 
   @Override
