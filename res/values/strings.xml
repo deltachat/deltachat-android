@@ -30,7 +30,7 @@
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
     <string name="ephemeral_messages">Disappearing messages</string>
-    <string name="ephemeral_messages_hint">These settings apply to all participants using Delta Chat. However, they may copy, save and forward messages or use other e-mail clients.</string>
+    <string name="ephemeral_messages_hint">These settings apply to all participants using DeltaLab. However, they may copy, save and forward messages or use other e-mail clients.</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -190,8 +190,8 @@
     <string name="title_share_location">Share location with all group members</string>
     <string name="device_talk">Device messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
-    <string name="device_talk_explain">Messages in this chat are generated locally by your Delta Chat app. Its makers use it to inform about app updates and problems during usage.</string>
-    <string name="device_talk_welcome_message">Welcome to Delta Chat! – Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, Delta Chat is an email application with a modern chat interface. Email in a new dress if you will 👻\n\nUse Delta Chat with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install Delta Chat, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
+    <string name="device_talk_explain">Messages in this chat are generated locally by your DeltaLab app. Its makers use it to inform about app updates and problems during usage.</string>
+    <string name="device_talk_welcome_message">Welcome to DeltaLab! – DeltaLab looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, DeltaLab is an email application with a modern chat interface. Email in a new dress if you will 👻\n\nUse DeltaLab with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install DeltaLab, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edit contact</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Pin chat</string>
@@ -254,7 +254,7 @@
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
     <string name="info_outdated_app_title">Your app version is outdated</string>
-    <string name="info_outdated_app_text">It seems that you installed Delta Chat from a source without auto updates (e.g. GitHub). Please switch to a store version to receive the latest features and bug fixes.</string>
+    <string name="info_outdated_app_text">It seems that you installed DeltaLab from a source without auto updates (e.g. GitHub). Please switch to a store version to receive the latest features and bug fixes.</string>
     <string name="info_outdated_app_dialog_title">Update sources</string>
     <string name="info_outdated_app_dialog_text">Delta Chat is available on:</string>
 
@@ -283,12 +283,12 @@
         <item quantity="one">%d new message</item>
         <item quantity="other">%d new messages</item>
     </plurals>
-    <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use Delta Chat.\n\n• Delivering the first message may take a while and may be unencrypted.</string>
-    <string name="chat_new_group_hint">Compose the first message, allowing others to reply within this group.\n\n• It is okay if not all members use Delta Chat.\n\n• Delivering the first message may take a while.</string>
+    <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use DeltaLab.\n\n• Delivering the first message may take a while and may be unencrypted.</string>
+    <string name="chat_new_group_hint">Compose the first message, allowing others to reply within this group.\n\n• It is okay if not all members use DeltaLab.\n\n• Delivering the first message may take a while.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
     <string name="chat_no_chats_yet_title">Empty inbox.\nPress \"+\" to start a new chat.</string>
-    <string name="chat_no_chats_yet_hint">You can chat with other Delta Chat users and with any email address.</string>
+    <string name="chat_no_chats_yet_hint">You can chat with other DeltaLab users and with any email address.</string>
     <string name="chat_all_archived">All chats archived.\nPress \"+\" to start a new chat.</string>
     <string name="chat_share_with_title">Share with</string>
     <string name="chat_input_placeholder">Message</string>
@@ -344,7 +344,7 @@
     <string name="login_header">Log in to your server</string>
     <string name="login_explain">Log in with an existing email account</string>
     <string name="login_subheader">For known email providers additional settings are set up automatically. Sometimes IMAP needs to be enabled in the web settings. Consult your email provider or friends for help.</string>
-    <string name="login_no_servers_hint">There are no Delta Chat servers, your data stays on your device.</string>
+    <string name="login_no_servers_hint">There are no DeltaLab servers, your data stays on your device.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP login name</string>
     <string name="login_imap_server">IMAP server</string>
@@ -360,7 +360,7 @@
     <!-- Translators: %1$s will be replaced by an email address -->
     <string name="login_oauth2_checking_addr">Checking %1$s</string>
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
-    <string name="login_info_oauth2_text">The entered email address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over Email app.\n\nThere are no Delta Chat servers, your data stays on your device.</string>
+    <string name="login_info_oauth2_text">The entered email address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow DeltaLab to act as your Chat over Email app.\n\nThere are no DeltaLab servers, your data stays on your device.</string>
     <string name="login_certificate_checks">Certificate checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>
@@ -409,7 +409,7 @@
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signature text</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
-    <string name="pref_default_status_text">Sent with my Delta Chat Messenger: https://delta.chat</string>
+    <string name="pref_default_status_text">Sent with my DeltaLab Messenger</string>
     <string name="pref_enter_sends">Enter key sends</string>
     <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
     <string name="pref_outgoing_media_quality">Outgoing media quality</string>
@@ -445,7 +445,7 @@
     <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
     <string name="pref_manage_keys">Manage keys</string>
     <string name="pref_use_system_emoji">Use system emoji</string>
-    <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
+    <string name="pref_use_system_emoji_explain">Turn off DeltaLab\'s built-in emoji support</string>
     <string name="pref_app_access">App access</string>
     <string name="pref_communication">Communication</string>
     <string name="pref_chats">Chats</string>
@@ -463,7 +463,7 @@
     <string name="pref_backup_export_start_button">Start backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
     <string name="pref_managekeys_menu_title">Manage keys</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat needs access to your files to import/export keys.</string>
+    <string name="pref_managekeys_ask_for_storage_permission">DeltaLab needs access to your files to import/export keys.</string>
     <string name="pref_managekeys_export_secret_keys">Export secret keys</string>
     <string name="pref_managekeys_export_explain">Export secret keys to \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Import secret keys</string>
@@ -550,7 +550,7 @@
     <string name="systemmsg_group_left">Group left.</string>
     <string name="systemmsg_read_receipt_subject">Message opened</string>
     <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
-    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another email program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
+    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed DeltaLab or another email program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s by me.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -572,10 +572,10 @@
     <string name="screenlock_title">Screen lock</string>
     <string name="screenlock_explain">Lock access with Android screen lock or fingerprint; to avoid showing the prior content, please also enable \"Screen security\".</string>
     <string name="screenlock_authentication_failed">Authentication failed.</string>
-    <string name="screenlock_unlock_title">Unlock Delta Chat</string>
-    <string name="screenlock_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
+    <string name="screenlock_unlock_title">Unlock DeltaLab</string>
+    <string name="screenlock_unlock_description">Please enter your system defined secret to unlock DeltaLab.</string>
     <string name="screenlock_inactivity_timeout">Inactivity timeout lock</string>
-    <string name="screenlock_inactivity_timeout_explain">Auto-lock Delta Chat after a specified time period of inactivity</string>
+    <string name="screenlock_inactivity_timeout_explain">Auto-lock DeltaLab after a specified time period of inactivity</string>
     <string name="screenlock_inactivity_timeout_interval">Time to remain active</string>
 
 
@@ -604,7 +604,7 @@
     <string name="qraccount_ask_create_and_login_another">Create new e-mail address on \"%1$s\" and log in there?\n\nYour existing account will not be deleted. Use the \"Switch account\" item to switch between your accounts.</string>
     <string name="qraccount_success_enter_name">Login successful—your email address is %1$s\n\nIf you like, you can now enter a name and an avatar image that will be displayed to people you write to.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new account.</string>
-    <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new account. You can scan the QR code when setting up a new Delta Chat installation.</string>
+    <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new account. You can scan the QR code when setting up a new DeltaLab installation.</string>
     <string name="contact_verified">%1$s verified.</string>
     <string name="contact_not_verified">Cannot verify %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -632,17 +632,17 @@
     <!-- permissions -->
     <string name="perm_required_title">Permission required</string>
     <string name="perm_continue">Continue</string>
-    <string name="perm_explain_need_for_camera_access">To capture photos and videos, allow Delta Chat to access the camera.</string>
-    <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat to access the microphone.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat needs access to your files to share them.</string>
+    <string name="perm_explain_need_for_camera_access">To capture photos and videos, allow DeltaLab to access the camera.</string>
+    <string name="perm_explain_need_for_mic_access">To send audio messages, allow DeltaLab to access the microphone.</string>
+    <string name="perm_explain_need_for_storage_access">DeltaLab needs access to your files in order to export files or to create backups.</string>
+    <string name="perm_explain_need_for_storage_access_share">DeltaLab needs access to your files to share them.</string>
     <string name="perm_explain_access_to_camera_denied">To take photos or capture videos, go to the app settings, select \"Permissions\", and enable \"Camera\".</string>
     <string name="perm_explain_access_to_mic_denied">To send audio messages, go to the app settings, select \"Permissions\", and enable \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">To recieve or send files, go to the app settings, select \"Permissions\", and enable \"Storage\".</string>
     <string name="perm_explain_access_to_location_denied">To attach a location, go to the app settings, select \"Permissions\", and enable \"Location\".</string>
-    <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat uses few resources and takes care not to drain your battery.</string>
-    <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
+    <string name="perm_enable_bg_reminder_title">Tap here to receive messages while DeltaLab is in the background.</string>
+    <string name="perm_enable_bg_reminder_text">DeltaLab uses few resources and takes care not to drain your battery.</string>
+    <string name="perm_enable_bg_already_done">You already allowed DeltaLab to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Draw anywhere to blur</string>
@@ -651,7 +651,7 @@
     <string name="encrypted_message">Encrypted message</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="welcome_desktop">Welcome to Delta Chat</string>
+    <string name="welcome_desktop">Welcome to DeltaLab</string>
     <string name="login_known_accounts_title_desktop">Known accounts</string>
     <string name="global_menu_preferences_language_desktop">Language</string>
     <string name="global_menu_file_desktop">File</string>
@@ -667,10 +667,10 @@
     <string name="global_menu_view_developer_desktop">Developer</string>
     <string name="global_menu_view_developer_tools_desktop">Developer Tools</string>
     <string name="global_menu_help_desktop">Help</string>
-    <string name="global_menu_help_learn_desktop">Learn more about Delta Chat</string>
+    <string name="global_menu_help_learn_desktop">Learn more about DeltaLab</string>
     <string name="global_menu_help_contribute_desktop">Contribute on GitHub</string>
     <string name="global_menu_help_report_desktop">Report an issue</string>
-    <string name="global_menu_help_about_desktop">About Delta Chat</string>
+    <string name="global_menu_help_about_desktop">About DeltaLab</string>
     <string name="no_chat_selected_suggestion_desktop">Select a chat or create a new chat</string>
     <string name="write_message_desktop">Write a message</string>
     <string name="encryption_info_title_desktop">Encryption info</string>
@@ -716,7 +716,7 @@
     <string name="message_detail_to_desktop">to</string>
     <string name="menu.view.developer.open.log.folder">Open the log folder</string>
     <string name="menu.view.developer.open.current.log.file">Open current logfile</string>
-    <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
+    <string name="user_location_permission_explanation">DeltaLab needs the location permission in order to show and share your location.</string>
 
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
@@ -732,14 +732,14 @@
     <string name="a11y_background_preview_label">Background preview</string>
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR codes.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of email addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat uses your microphone to record and send voice messages and videos with sound.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat will let you choose which photos from your library to send.</string>
-    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wants to save images to your photo library.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">DeltaLab uses your camera to take and send photos and videos and to scan QR codes.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">DeltaLab uses your contacts to show a list of email addresses you can write to. DeltaLab has no server, your contacts are not sent anywhere.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">DeltaLab uses your microphone to record and send voice messages and videos with sound.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">DeltaLab will let you choose which photos from your library to send.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">DeltaLab wants to save images to your photo library.</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">New Delta Chat 1.10 features at a glance: faster, multi-account, blur images, new emojis, reworked notifications, better error-reporting but most importantly:\n\nClick an avatar in profile and enlarge it 🚀</string>
+    <string name="update_1_10_android">New DeltaLab 1.10 features at a glance: faster, multi-account, blur images, new emojis, reworked notifications, better error-reporting but most importantly:\n\nClick an avatar in profile and enlarge it 🚀</string>
 
 </resources>

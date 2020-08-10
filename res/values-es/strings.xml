@@ -182,8 +182,8 @@
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
     <string name="device_talk">Mensajes del dispositivo</string>
     <string name="device_talk_subtitle">Mensajes generados localmente</string>
-    <string name="device_talk_explain">Los mensajes en este chat son generados localmente por tu aplicación Delta Chat. Los creadores lo usan para informar sobre actualizaciones y problemas durante el uso de la aplicación.</string>
-    <string name="device_talk_welcome_message">¡Bienvenido a Delta Chat! – Delta Chat luce como otras aplicaciones de mensajería populares, pero sin control centralizado, seguimiento ni venta de tus datos, o los de tus amigos, colegas o familiares a grandes organizaciones.\n\nTécnicamente, Delta Chat es una aplicación de correo electrónico con una interfaz de chat moderna. Correo electrónico en un nuevo vestido si quieres 👻\n\nUsa Delta Chat con cualquiera de miles de millones de personas: solo necesitas su dirección de correo electrónico. Los destinatarios no necesitan instalar Delta Chat, visitar sitios web o registrarse en ningún lugar - sin embargo, por supuesto, si lo desean, puedes indicarles 👉 https://get.delta.chat</string>
+    <string name="device_talk_explain">Los mensajes en este chat son generados localmente por tu aplicación DeltaLab. Los creadores lo usan para informar sobre actualizaciones y problemas durante el uso de la aplicación.</string>
+    <string name="device_talk_welcome_message">¡Bienvenido a DeltaLab! – DeltaLab luce como otras aplicaciones de mensajería populares, pero sin control centralizado, seguimiento ni venta de tus datos, o los de tus amigos, colegas o familiares a grandes organizaciones.\n\nTécnicamente, DeltaLab es una aplicación de correo electrónico con una interfaz de chat moderna. Correo electrónico en un nuevo vestido si quieres 👻\n\nUsa DeltaLab con cualquiera de miles de millones de personas: solo necesitas su dirección de correo electrónico. Los destinatarios no necesitan instalar DeltaLab, visitar sitios web o registrarse en ningún lugar - sin embargo, por supuesto, si lo desean, puedes indicarles 👉 https://get.delta.chat</string>
     <string name="edit_contact">Editar contacto</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Anclar chat</string>
@@ -230,7 +230,7 @@
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
     <string name="info_outdated_app_title">Tu versión de la aplicación está desactualizada.</string>
-    <string name="info_outdated_app_text">Parece que instaló Delta Chat desde una fuente sin actualizaciones automáticas (por ejemplo, GitHub). Cambie a una versión de tienda para recibir las últimas funciones y correcciones de errores.</string>
+    <string name="info_outdated_app_text">Parece que instaló DeltaLab desde una fuente sin actualizaciones automáticas (por ejemplo, GitHub). Cambie a una versión de tienda para recibir las últimas funciones y correcciones de errores.</string>
     <string name="info_outdated_app_dialog_title">Actualizar las fuentes</string>
     <string name="info_outdated_app_dialog_text">Delta Chat está disponible en:</string>
 
@@ -259,12 +259,12 @@
         <item quantity="one">%d nuevo mensaje</item>
         <item quantity="other">%d nuevos mensajes</item>
     </plurals>
-    <string name="chat_no_messages_hint">Enviar mensaje a %1$s:\n\n• No hay problema si %2$s no usa Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
-    <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
+    <string name="chat_no_messages_hint">Enviar mensaje a %1$s:\n\n• No hay problema si %2$s no usa DeltaLab.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
+    <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan DeltaLab.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_record_explain">Mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
     <string name="chat_no_chats_yet_title">Bandeja de entrada vacía.\nPresiona \"+\" para iniciar un nuevo chat.</string>
-    <string name="chat_no_chats_yet_hint">Puedes chatear con otros usuarios de Delta Chat y con cualquier dirección de correo electrónico.</string>
+    <string name="chat_no_chats_yet_hint">Puedes chatear con otros usuarios de DeltaLab y con cualquier dirección de correo electrónico.</string>
     <string name="chat_all_archived">Todos los chats archivados.\nPresiona \"+\" para iniciar un nuevo chat.</string>
     <string name="chat_share_with_title">Compartir con</string>
     <string name="chat_input_placeholder">Mensaje</string>
@@ -320,7 +320,7 @@
     <string name="login_header">Inicie sesión en su servidor</string>
     <string name="login_explain">Iniciar sesión con una cuenta de e-mail existente</string>
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
-    <string name="login_no_servers_hint">No hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
+    <string name="login_no_servers_hint">No hay servidores de DeltaLab, tus datos permanecen en tu dispositivo!</string>
     <string name="login_inbox">Bandeja de entrada</string>
     <string name="login_imap_login">Nombre de usuario IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
@@ -334,7 +334,7 @@
     <string name="login_smtp_security">Seguridad SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
-    <string name="login_info_oauth2_text">La dirección de correo electrónico introducida admite una configuración simplificada (OAuth2).\n\nEn el próximo paso, permita que Delta Chat actúe como su aplicación de chat con correo electrónico.\n\nNo hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
+    <string name="login_info_oauth2_text">La dirección de correo electrónico introducida admite una configuración simplificada (OAuth2).\n\nEn el próximo paso, permita que DeltaLab actúe como su aplicación de chat con correo electrónico.\n\nNo hay servidores de DeltaLab, tus datos permanecen en tu dispositivo!</string>
     <string name="login_certificate_checks">Comprobaciones de certificados</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
     <string name="login_error_server">Por favor, introduzca un servidor / dirección IP válido</string>
@@ -376,7 +376,7 @@
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Texto de firma</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
-    <string name="pref_default_status_text">Enviado con mi aplicación de mensajería Delta Chat: https://delta.chat</string>
+    <string name="pref_default_status_text">Enviado con mi aplicación de mensajería DeltaLab</string>
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
     <string name="pref_outgoing_media_quality">Calidad multimedia saliente</string>
@@ -412,7 +412,7 @@
     <string name="pref_read_receipts_explain">Si los acuses de recibo están deshabilitados, no podrá ver los acuses de recibo de otros.</string>
     <string name="pref_manage_keys">Administrar claves</string>
     <string name="pref_use_system_emoji">Usar emoji del sistema</string>
-    <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
+    <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de DeltaLab</string>
     <string name="pref_app_access">Acceso a la aplicación</string>
     <string name="pref_communication">Comunicación</string>
     <string name="pref_chats">Chats</string>
@@ -430,7 +430,7 @@
     <string name="pref_backup_export_start_button">Iniciar copia de respaldo</string>
     <string name="pref_backup_written_to_x">Copia de respaldo escrita correctamente en %1$s</string>
     <string name="pref_managekeys_menu_title">Administrar claves</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat necesita acceso a tus archivos para importar/exportar claves</string>
+    <string name="pref_managekeys_ask_for_storage_permission">DeltaLab necesita acceso a tus archivos para importar/exportar claves</string>
     <string name="pref_managekeys_export_secret_keys">Exportar claves secretas</string>
     <string name="pref_managekeys_export_explain">¿Exportar claves secretas a \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importar claves secretas</string>
@@ -491,7 +491,7 @@
     <string name="systemmsg_group_left">Grupo abandonado.</string>
     <string name="systemmsg_read_receipt_subject">Acuse de recibo</string>
     <string name="systemmsg_read_receipt_body">Este es un acuse de recibo para el mensaje \"%1$s\".\n\nSignifica que el mensaje se mostró en el dispositivo del destinatario, pero no necesariamente que se leyó el contenido.</string>
-    <string name="systemmsg_cannot_decrypt">Este mensaje no puede ser descifrado.\n\n• Es posible que sea útil simplemente responderlo y pedirle al remitente que lo envíe nuevamente.\n\n• En caso de que haya reinstalado Delta Chat u otro programa de correo en este u otro dispositivo, puede que quiera enviar un Mensaje de Configuración de Autocrypt desde allí.</string>
+    <string name="systemmsg_cannot_decrypt">Este mensaje no puede ser descifrado.\n\n• Es posible que sea útil simplemente responderlo y pedirle al remitente que lo envíe nuevamente.\n\n• En caso de que haya reinstalado DeltaLab u otro programa de correo en este u otro dispositivo, puede que quiera enviar un Mensaje de Configuración de Autocrypt desde allí.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s por mi.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -500,10 +500,10 @@
     <string name="screenlock_title">Bloqueo de pantalla</string>
     <string name="screenlock_explain">Bloquea el acceso con el bloqueo de pantalla de Android o huella; para evitar que aparezca el contenido anterior, habilite también \"Seguridad de pantalla\"</string>
     <string name="screenlock_authentication_failed">La autenticación falló.</string>
-    <string name="screenlock_unlock_title">Desbloquear Delta Chat</string>
-    <string name="screenlock_unlock_description">Por favor, ingrese la clave definida en su sistema para desbloquear Delta Chat.</string>
+    <string name="screenlock_unlock_title">Desbloquear DeltaLab</string>
+    <string name="screenlock_unlock_description">Por favor, ingrese la clave definida en su sistema para desbloquear DeltaLab.</string>
     <string name="screenlock_inactivity_timeout">Bloquear en inactividad</string>
-    <string name="screenlock_inactivity_timeout_explain">Bloquear Delta Chat automáticamente después de un intervalo de inactividad</string>
+    <string name="screenlock_inactivity_timeout_explain">Bloquear DeltaLab automáticamente después de un intervalo de inactividad</string>
     <string name="screenlock_inactivity_timeout_interval">Tiempo de espera antes de bloquear por inactividad</string>
 
 
@@ -555,23 +555,23 @@
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
-    <string name="perm_explain_need_for_camera_access">Para capturar fotos y videos, permita que Delta Chat acceda a la cámara.</string>
-    <string name="perm_explain_need_for_mic_access">Para enviar mensajes de audio, permita que Delta Chat acceda a su micrófono.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat necesita acceso a sus archivos para exportar archivos o crear copias de respaldo.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat necesita acceso a tus archivos para compartir los archivos seleccionados.</string>
-    <string name="perm_explain_access_to_camera_denied">Delta Chat requiere el permiso de Cámara para tomar fotos o videos, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
-    <string name="perm_explain_access_to_mic_denied">Delta Chat requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
-    <string name="perm_explain_access_to_location_denied">Delta Chat requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
-    <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat utiliza los recursos al mínimo y tiene cuidado de no drenar tu batería.</string>
-    <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
+    <string name="perm_explain_need_for_camera_access">Para capturar fotos y videos, permita que DeltaLab acceda a la cámara.</string>
+    <string name="perm_explain_need_for_mic_access">Para enviar mensajes de audio, permita que DeltaLab acceda a su micrófono.</string>
+    <string name="perm_explain_need_for_storage_access">DeltaLab necesita acceso a sus archivos para exportar archivos o crear copias de respaldo.</string>
+    <string name="perm_explain_need_for_storage_access_share">DeltaLab necesita acceso a tus archivos para compartir los archivos seleccionados.</string>
+    <string name="perm_explain_access_to_camera_denied">DeltaLab requiere el permiso de Cámara para tomar fotos o videos, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
+    <string name="perm_explain_access_to_mic_denied">DeltaLab requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
+    <string name="perm_explain_access_to_storage_denied">DeltaLab requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
+    <string name="perm_explain_access_to_location_denied">DeltaLab requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
+    <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras DeltaLab está en segundo plano.</string>
+    <string name="perm_enable_bg_reminder_text">DeltaLab utiliza los recursos al mínimo y tiene cuidado de no drenar tu batería.</string>
+    <string name="perm_enable_bg_already_done">Ya has permitido que DeltaLab reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensaje cifrado</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="welcome_desktop">Bienvenido a Delta Chat</string>
+    <string name="welcome_desktop">Bienvenido a DeltaLab</string>
     <string name="login_known_accounts_title_desktop">Cuentas conocidas</string>
     <string name="global_menu_preferences_language_desktop">Seleccione Idioma...</string>
     <string name="global_menu_file_desktop">Archivo</string>
@@ -587,10 +587,10 @@
     <string name="global_menu_view_developer_desktop">Programador</string>
     <string name="global_menu_view_developer_tools_desktop">Herramientas del Programador</string>
     <string name="global_menu_help_desktop">Ayuda</string>
-    <string name="global_menu_help_learn_desktop">Aprender más sobre Delta Chat</string>
+    <string name="global_menu_help_learn_desktop">Aprender más sobre DeltaLab</string>
     <string name="global_menu_help_contribute_desktop">Contribuir en GitHub</string>
     <string name="global_menu_help_report_desktop">Reportar un Problema</string>
-    <string name="global_menu_help_about_desktop">Sobre Delta Chat</string>
+    <string name="global_menu_help_about_desktop">Sobre DeltaLab</string>
     <string name="no_chat_selected_suggestion_desktop">Selecciona un chat o crea uno nuevo</string>
     <string name="write_message_desktop">Escribe un mensaje</string>
     <string name="encryption_info_title_desktop">Información de cifrado</string>
@@ -636,7 +636,7 @@
     <string name="message_detail_to_desktop">para</string>
     <string name="menu.view.developer.open.log.folder">Abrir Carpeta de Logs</string>
     <string name="menu.view.developer.open.current.log.file">Abrir Archivo de Logs Actual</string>
-    <string name="user_location_permission_explanation">Delta Chat necesita el permiso de ubicación para mostrar y compartir tu ubicación.</string>
+    <string name="user_location_permission_explanation">DeltaLab necesita el permiso de ubicación para mostrar y compartir tu ubicación.</string>
 
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->

@@ -107,21 +107,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
-	    "🆕 Registro de cambios v1.12.1:\n" +
-	    "✳️ Ahora se muestra un mensaje del dispositivo cuando la contraseña ha sido cambiada.\n" +
-	    "✳️ Nueva funcionalidad experimental para videochats (debes definir servidor de internet).\n" +
-	    "✳️ Mejorado el envío de adjuntos grandes, incluso de varios megas.\n" +
-	    "✳️ Mejorada la recepción de mensajes.\n" +
-	    "✳️ Mejorado el manejo de errores ya no debe salir el cartel molesto de versiones anteriores.\n" +
-	    "✳️ Arreglado los emojis para Android 4.\n" +
-	    "✳️ Ahora se usa la resolución correcta para las imágenes de fondo de chat.\n" +
-	    "✳️ Cuando seleccionas el botón de información de un mensaje, esa información es copiada al portapapeles.\n" +
-	    "✳️ Reducido el tamaño de la apk.\n" +
-	    "✳️ Las imágenes ahora tienen la misma calidad que en la versión oficial.\n" +
-	    "✳️ Actualizado el listado de bots.\n" +
-	    "✳️ Corrección de otros errores.\n" +
+	    "🆕 Registro de cambios v1.12.2:\n" +
+	    "✳️ Basado en el Delta Chat oficial 1.12.2\n" +
+	    "✳️ Por tanto incluye gran cantidad de corrección de errores.\n" +
+	    "✳️ Las firmas de los correos de SIJU recibidos no se muestran lo que permite leerlos mejor como chat.\n" +
+	    "✳️ Mejor detección de formatos a la hora de agruparlos en las pestañas de Galería y Documentos de cada chat.\n" +
+	    "✳️ Ahora las @menciones son resaltadas y al presionar por unos segundos se copia al portapapeles.\n" +
+	    "✳️ Ahora las #etiquetas son resaltadas, al hacerle click se envían como mensaje y al presionar por unos segundos se copia al portapapeles.\n" +
+	    "✳️ Añadido soporte para visualizar los stickers animados de Telegram (los mismos que usa ToDus) que de momento deben ser añadidos como ficheros adjuntos, gracias al programador \"AndroidUser\".\n" +
+	    "✳️ Nuevo icono de la aplicación, creado por el diseñador \"Meloncito\", muchas gracias!!!.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
-    dcContext.addDeviceMsg("dlab-1.12.1-chlog", msg);
+    dcContext.addDeviceMsg("dlab-1.12.2-chlog", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
