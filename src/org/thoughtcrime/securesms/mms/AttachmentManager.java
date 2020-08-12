@@ -212,7 +212,7 @@ public class AttachmentManager {
   */
 
   @SuppressLint("StaticFieldLeak")
-  public SettableFuture<Boolean> setMedia(@NonNull final GlideRequests glideRequests,
+  public ListenableFuture<Boolean> setMedia(@NonNull final GlideRequests glideRequests,
                                             @NonNull final Uri uri,
                                             @NonNull final MediaType mediaType,
                                             @NonNull final MediaConstraints constraints,

@@ -125,6 +125,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import static org.thoughtcrime.securesms.NewConversationActivity.MAILTO;
 import static org.thoughtcrime.securesms.TransportOption.Type;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
@@ -724,30 +725,31 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
    * @return
    */
   private ListenableFuture<Boolean> initializeDraft() {
+    if (isInitializedFromMailToIntent()) {
+      return initializeDraftFromIntent();
+    } else {
+      return initializeDraftFromDatabase();
+    }
+  }
 
+  boolean isInitializedFromMailToIntent() {
+    return getIntent() != null && getIntent().getData() != null && MAILTO.equals(getIntent().getData().getScheme());
+  }
+
+  boolean isInitializedFromRelay() {
+    return RelayUtil.getSharedText(this) != null;
+  }
+
+  private ListenableFuture<Boolean> initializeDraftFromIntent() {
     SettableFuture<Boolean> result = new SettableFuture<>();
-
     final String draftText = RelayUtil.getSharedText(this);
-    final ArrayList<Uri> draftMediaList = RelayUtil.getSharedUris(this);
-    Uri draftMedia = null;
-    if (!draftMediaList.isEmpty()) draftMedia = draftMediaList.get(0);
-    final MediaType draftMediaType = MediaType.from(MediaUtil.getMimeType(this, draftMedia));
 
     if (draftText != null) {
       composeText.setText(draftText);
-      result.set(true);
-    }
-    if (draftMedia != null && draftMediaType != null) {
-      result = setMedia(draftMedia, draftMediaType);
     }
 
-    if (draftText == null || draftMedia == null || draftMediaType == null) {
-      result = initializeDraftFromDatabase();
-    } else {
-      result.set(false);
-    }
+    result.set(draftText != null);
     updateToggleButtonState();
-
     return result;
   }
 
@@ -758,54 +760,62 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     attachButton.setEnabled(enabled);
   }
 
-  private SettableFuture<Boolean> initializeDraftFromDatabase() {
-    SettableFuture<Boolean> future = new SettableFuture<>();
+  private ListenableFuture<Boolean> initializeDraftFromDatabase() {
+    final SettableFuture<Boolean> future = new SettableFuture<>();
+    DcMsg draft = dcContext.getDraft(chatId);
 
-    new AsyncTask<Void, Void, DcMsg>() {
+    if (draft == null) {
+      future.set(false);
+      updateToggleButtonState();
+      return future;
+    }
+
+    final String text = draft.getText();
+    if(!text.isEmpty()) {
+      composeText.setText(text);
+      composeText.setSelection(composeText.getText().length());
+    }
+
+    ListenableFuture.Listener listener = new ListenableFuture.Listener<Boolean>() {
       @Override
-      protected DcMsg doInBackground(Void... params) {
-        return dcContext.getDraft(chatId);
-      }
-
-      @Override
-      protected void onPostExecute(DcMsg draft) {
-        if(draft!=null) {
-          String text = draft.getText();
-          if(!text.isEmpty()) {
-            composeText.setText(text);
-            composeText.setSelection(composeText.getText().length());
-          }
-
-          String filename = draft.getFile();
-          if(!filename.isEmpty()) {
-            File file = new File(filename);
-            if(file.exists()) {
-              Uri uri = Uri.fromFile(file);
-              switch (draft.getType()) {
-                case DcMsg.DC_MSG_IMAGE:
-                  setMedia(uri, MediaType.IMAGE);
-                  break;
-                case DcMsg.DC_MSG_GIF:
-                  setMedia(uri, MediaType.GIF);
-                  break;
-                case DcMsg.DC_MSG_AUDIO:
-                  setMedia(uri, MediaType.AUDIO);
-                  break;
-                case DcMsg.DC_MSG_VIDEO:
-                  setMedia(uri, MediaType.VIDEO);
-                  break;
-                default:
-                  setMedia(uri, MediaType.DOCUMENT);
-                  break;
-              }
-            }
-          }
-        }
-
+      public void onSuccess(Boolean result) {
+        future.set(true);
         updateToggleButtonState();
-        future.set(draft!=null);
       }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+      @Override
+      public void onFailure(ExecutionException e) {
+        future.set(!text.isEmpty());
+        updateToggleButtonState();
+      }
+    };
+
+    String filename = draft.getFile();
+    if (filename.isEmpty() || !new File(filename).exists()) {
+      future.set(!text.isEmpty());
+      updateToggleButtonState();
+      return future;
+    }
+
+    File file = new File(filename);
+    Uri uri = Uri.fromFile(file);
+    switch (draft.getType()) {
+      case DcMsg.DC_MSG_IMAGE:
+        setMedia(uri, MediaType.IMAGE).addListener(listener);
+        break;
+      case DcMsg.DC_MSG_GIF:
+        setMedia(uri, MediaType.GIF).addListener(listener);
+        break;
+      case DcMsg.DC_MSG_AUDIO:
+        setMedia(uri, MediaType.AUDIO).addListener(listener);
+        break;
+      case DcMsg.DC_MSG_VIDEO:
+        setMedia(uri, MediaType.VIDEO).addListener(listener);
+        break;
+      default:
+        setMedia(uri, MediaType.DOCUMENT).addListener(listener);
+        break;
+    }
 
     return future;
   }
@@ -971,7 +981,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     startActivityForResult(intent, PICK_CONTACT);
   }
 
-  private SettableFuture<Boolean> setMedia(@Nullable Uri uri, @NonNull MediaType mediaType) {
+  private ListenableFuture<Boolean> setMedia(@Nullable Uri uri, @NonNull MediaType mediaType) {
     if (uri == null) {
       return new SettableFuture<>(false);
     }

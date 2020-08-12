@@ -52,7 +52,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   @SuppressWarnings("unused")
   private static final String TAG = NewConversationActivity.class.getSimpleName();
-  private static final String MAILTO = "mailto";
+  public  static final String MAILTO = "mailto";
   private static final String SUBJECT = "subject";
   private static final String BODY = "body";
   private static final String QUERY_SEPARATOR = "&";
