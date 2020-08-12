@@ -776,6 +776,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composeText.setSelection(composeText.getText().length());
     }
 
+    String filename = draft.getFile();
+    if (filename.isEmpty() || !new File(filename).exists()) {
+      future.set(!text.isEmpty());
+      updateToggleButtonState();
+      return future;
+    }
+
     ListenableFuture.Listener listener = new ListenableFuture.Listener<Boolean>() {
       @Override
       public void onSuccess(Boolean result) {
@@ -789,13 +796,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         updateToggleButtonState();
       }
     };
-
-    String filename = draft.getFile();
-    if (filename.isEmpty() || !new File(filename).exists()) {
-      future.set(!text.isEmpty());
-      updateToggleButtonState();
-      return future;
-    }
 
     File file = new File(filename);
     Uri uri = Uri.fromFile(file);
