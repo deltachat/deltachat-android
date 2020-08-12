@@ -736,10 +736,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return getIntent() != null && getIntent().getData() != null && MAILTO.equals(getIntent().getData().getScheme());
   }
 
-  boolean isInitializedFromRelay() {
-    return RelayUtil.getSharedText(this) != null;
-  }
-
   private ListenableFuture<Boolean> initializeDraftFromIntent() {
     SettableFuture<Boolean> result = new SettableFuture<>();
     final String draftText = RelayUtil.getSharedText(this);
