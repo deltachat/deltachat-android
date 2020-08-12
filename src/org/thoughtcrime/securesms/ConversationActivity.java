@@ -779,7 +779,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return future;
     }
 
-    ListenableFuture.Listener listener = new ListenableFuture.Listener<Boolean>() {
+    ListenableFuture.Listener<Boolean> listener = new ListenableFuture.Listener<Boolean>() {
       @Override
       public void onSuccess(Boolean result) {
         future.set(result || !text.isEmpty());
