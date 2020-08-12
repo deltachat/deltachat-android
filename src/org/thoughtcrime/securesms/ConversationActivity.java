@@ -782,7 +782,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     ListenableFuture.Listener listener = new ListenableFuture.Listener<Boolean>() {
       @Override
       public void onSuccess(Boolean result) {
-        future.set(true);
+        future.set(result || !text.isEmpty());
         updateToggleButtonState();
       }
 
