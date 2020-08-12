@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.gson.JsonParser;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -21,6 +22,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
+import java.io.InputStreamReader;
 import java.util.zip.GZIPInputStream;
 
 public class DocumentView extends FrameLayout {
@@ -59,7 +61,9 @@ public class DocumentView extends FrameLayout {
 
   public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
-      if ((documentSlide.hasAnimation())) {
+      this.documentSlide = documentSlide;
+
+      if (hasAnimation()) {
 	  container.setVisibility(GONE);
 	  lottie.setVisibility(VISIBLE);
 	  lottie.setOnFocusChangeListener((v, hasFocus) -> {
@@ -82,13 +86,12 @@ public class DocumentView extends FrameLayout {
 		      }
 		  }
 	      });
-	  lottie.clearAnimation();
-	  lottie.animate();
+	  if (!lottie.isAnimating()) {
+	      lottie.playAnimation();
+	  }
       } else {
 	  container.setVisibility(VISIBLE);
 	  lottie.setVisibility(GONE);
-
-	  this.documentSlide = documentSlide;
 
 	  this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
 
@@ -98,6 +101,19 @@ public class DocumentView extends FrameLayout {
 
 	  this.setOnClickListener(new OpenClickedListener(documentSlide));
       }
+  }
+
+  public boolean hasAnimation() {
+    boolean animated = false;
+    if(documentSlide.hasAnimation()){
+      try {
+        new JsonParser().parse(new InputStreamReader(new GZIPInputStream( getContext().getContentResolver().openInputStream(documentSlide.getUri())))).isJsonArray();
+        animated = true;
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    return animated;
   }
 
   @Override
