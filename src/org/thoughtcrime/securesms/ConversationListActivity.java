@@ -107,15 +107,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
-	    "🆕 Registro de cambios v1.12.2:\n" +
-	    "✳️ Basado en el Delta Chat oficial 1.12.2\n" +
-	    "✳️ Por tanto incluye gran cantidad de corrección de errores.\n" +
-	    "✳️ Las firmas de los correos de SIJU recibidos no se muestran lo que permite leerlos mejor como chat.\n" +
-	    "✳️ Mejor detección de formatos a la hora de agruparlos en las pestañas de Galería y Documentos de cada chat.\n" +
-	    "✳️ Ahora las @menciones son resaltadas y al presionar por unos segundos se copia al portapapeles.\n" +
-	    "✳️ Ahora las #etiquetas son resaltadas, al hacerle click se envían como mensaje y al presionar por unos segundos se copia al portapapeles.\n" +
-	    "✳️ Añadido soporte para visualizar los stickers animados de Telegram (los mismos que usa ToDus) que de momento deben ser añadidos como ficheros adjuntos, gracias al programador \"AndroidUser\".\n" +
-	    "✳️ Nuevo icono de la aplicación, creado por el diseñador \"Meloncito\", muchas gracias!!!.\n" +
+	    "🆕 Registro de cambios v1.13.0:\n" +
+	    "✳️ Nuevo fondo por defecto, gracias al diseñador \"Meloncito\"\n" +
+	    "✳️ Ahora los stickers animados no se pausan al recibir nuevos mensajes, gracias al programador: Ruben David (https://github.com/RubenDavidPerezJimenez)\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
     dcContext.addDeviceMsg("dlab-1.12.2-chlog", msg);
 
