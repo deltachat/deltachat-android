@@ -725,14 +725,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
    * @return
    */
   private ListenableFuture<Boolean> initializeDraft() {
-    if (isInitializedFromMailToIntent()) {
+    if (isMailToIntent()) {
       return initializeDraftFromIntent();
     } else {
       return initializeDraftFromDatabase();
     }
   }
 
-  boolean isInitializedFromMailToIntent() {
+  boolean isMailToIntent() {
     return getIntent() != null && getIntent().getData() != null && MAILTO.equals(getIntent().getData().getScheme());
   }
 
