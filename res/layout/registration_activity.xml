@@ -172,6 +172,7 @@
                 android:id="@+id/imap_login_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text|textNoSuggestions"
                 android:hint="@string/login_imap_login" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -258,6 +259,7 @@
                 android:id="@+id/smtp_login_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text|textNoSuggestions"
                 android:hint="@string/login_smtp_login" />
 
         </com.google.android.material.textfield.TextInputLayout>
