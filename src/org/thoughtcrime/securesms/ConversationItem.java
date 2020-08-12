@@ -549,6 +549,13 @@ public class ConversationItem extends LinearLayout
     if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
+    if (documentViewStub.resolved()) {
+        if (documentViewStub.get().hasAnimation()) {
+            activeFooter.setBackgroundResource(R.drawable.conversation_item_update_background);
+            activeFooter.setTextColor(Color.parseColor("#ffffffff"));
+            activeFooter.setPadding(8,4,8,4);
+        }
+    }
     activeFooter.setVisibility(VISIBLE);
     activeFooter.setMessageRecord(current, locale);
   }

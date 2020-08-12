@@ -111,6 +111,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ Nuevo fondo por defecto, gracias al diseñador \"Meloncito\"\n" +
 	    "✳️ Nueva imagen de bienvenida, gracias al diseñador \"Meloncito\"\n" +
 	    "✳️ Ahora los stickers animados no se pausan al recibir nuevos mensajes, gracias al programador: Ruben David (https://github.com/RubenDavidPerezJimenez)\n" +
+	    "✳️ Retocada la apariencia de la etiqueta de fecha de los stickers animados, gracias al programador: Ruben David\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
     dcContext.addDeviceMsg("dlab-1.12.2-chlog", msg);
 
