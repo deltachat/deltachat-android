@@ -38,6 +38,7 @@ import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -401,10 +402,17 @@ public class ConversationFragment extends Fragment
 
     private void handleDisplayDetails(DcMsg dcMsg) {
         String info_str = dcContext.getMsgInfo(dcMsg.getId());
-        new AlertDialog.Builder(getActivity())
+        AlertDialog d = new AlertDialog.Builder(getActivity())
                 .setMessage(info_str)
                 .setPositiveButton(android.R.string.ok, null)
-                .show();
+                .create();
+        d.show();
+        try {
+            //noinspection ConstantConditions
+            Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS);
+        } catch(NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 
     private void handleForwardMessage(final Set<DcMsg> messageRecords) {
