@@ -233,16 +233,16 @@
     <string name="videochat_contact_invited_hint">%1$s приглашает вас в видеочат.</string>
     <string name="videochat_you_invited_hint">Вы пригласили в видеочат.</string>
     <string name="videochat_will_open_in_your_browser">Этот видеочат будет открываться в браузере</string>
-    <string name="videochat_tap_to_join">Нажмите чтобы зайти.</string>
-    <string name="videochat_tap_to_open">Нажмите чтобы открыть.</string>
+    <string name="videochat_tap_to_join">Нажмите, чтобы зайти.</string>
+    <string name="videochat_tap_to_open">Нажмите, чтобы открыть.</string>
     <string name="videochat_instance">Узел видеочатов</string>
     <string name="videochat_instance_placeholder">Ваш узел видеочатов</string>
-    <string name="videochat_instance_explain">Если узел видеочатов определен, вы можете начинать видеочаты из чатов с одним контактом. Видеочаты требуют совместимого приложения или совместимого браузера на обоих концах.
+    <string name="videochat_instance_explain">Если узел видеочатов определён, вы можете начинать видеочаты из чатов с одним контактом. Видеочаты требуют совместимого приложения или совместимого браузера на обоих концах.
 
 Примеры: https://meet.jit.si/$ROOM или basicwebrtc:https://ваш-сервер</string>
-    <string name="videochat_instance_from_qr">Использовать «%1$s» чтобы приглашать других в видеочаты?\n\nКогда установлено, вы можете начинать видеочаты из чатов с одним контактом. Это заменит предыдущие настройки видеочатов, если они были.</string>
+    <string name="videochat_instance_from_qr">Использовать «%1$s», чтобы приглашать других в видеочаты?\n\nКогда установлено, вы можете начинать видеочаты из чатов с одним контактом. Это заменит предыдущие настройки видеочатов, если они были.</string>
     <string name="videochat_invitation">Приглашение в видеочат</string>
-    <string name="videochat_invitation_body">Вы приглашены в видеочат, нажмите %1$s чтобы зайти.</string>
+    <string name="videochat_invitation_body">Вы приглашены в видеочат, нажмите %1$s, чтобы зайти.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Вы уверены, что хотите покинуть эту группу?</string>
@@ -581,8 +581,8 @@
     <string name="systemmsg_subject_for_new_contact">Сообщение от %1$s</string>
     <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">Таймер исчезающих сообщений отключен.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s с.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Таймер исчезающих сообщений отключён.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s сек.</string>
     <string name="systemmsg_ephemeral_timer_minute">Таймер исчезающих сообщений установлен на 1 минуту.</string>
     <string name="systemmsg_ephemeral_timer_hour">Таймер исчезающих сообщений установлен на 1 час.</string>
     <string name="systemmsg_ephemeral_timer_day">Таймер исчезающих сообщений установлен на 1 день.</string>
