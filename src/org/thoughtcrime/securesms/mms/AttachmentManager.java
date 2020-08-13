@@ -415,8 +415,7 @@ public class AttachmentManager {
       return;
     }
 
-    Permissions.with(activity)
-            .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+    Permissions.PermissionsBuilder permissionsBuilder = Permissions.with(activity)
             .ifNecessary()
             .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
             .onAllGranted(() -> {
@@ -428,8 +427,13 @@ public class AttachmentManager {
                     break;
                 }
               });
-            })
-            .execute();
+            });
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+      permissionsBuilder.request(Manifest.permission.ACCESS_BACKGROUND_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
+    } else {
+      permissionsBuilder.request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
+    }
+    permissionsBuilder.execute();
   }
 
   private @Nullable Uri getSlideUri() {
