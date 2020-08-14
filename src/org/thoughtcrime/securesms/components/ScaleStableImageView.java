@@ -112,9 +112,12 @@ public class ScaleStableImageView
                 large = storedSizes.get(landscapeWidth + "x" + landscapeHeight);
             if (large == null) return; // no baseline. can't work.
             Bitmap original = ((BitmapDrawable) large).getBitmap();
-            Bitmap cropped = Bitmap.createBitmap(original, 0, 0, width, height);
-            Drawable croppedDrawable = new BitmapDrawable(getResources(), cropped);
-            overrideDrawable(croppedDrawable);
+            if (height <= original.getHeight()) {
+                Bitmap cropped = Bitmap.createBitmap(original, 0, 0, width, height);
+                Drawable croppedDrawable = new BitmapDrawable(getResources(), cropped);
+                overrideDrawable(croppedDrawable);
+            } // else we do not know what to do.
+            // At least it does not crash anymore but only jumps a little, see https://github.com/deltachat/deltachat-android/issues/1544.
         } else {
             Util.runOnBackground(() -> {
                 Bitmap bitmap = ((BitmapDrawable) defaultDrawable).getBitmap();
