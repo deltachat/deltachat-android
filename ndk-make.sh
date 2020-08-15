@@ -35,7 +35,7 @@ export CFLAGS=-D__ANDROID_API__=16
 RUSTFLAGS="-C lto=on -C embed-bitcode=yes" \
 TARGET_CC=armv7a-linux-androideabi16-clang \
 cargo +`cat rust-toolchain` build --release --target armv7-linux-androideabi -p deltachat_ffi
-armv7a-linux-androideabi-strip target/armv7-linux-androideabi/release/libdeltachat.a
+arm-linux-androideabi-strip target/armv7-linux-androideabi/release/libdeltachat.a
 
 echo "-- cross compiling to aarch64-linux-android (arm64) --"
 export CFLAGS=-D__ANDROID_API__=21
