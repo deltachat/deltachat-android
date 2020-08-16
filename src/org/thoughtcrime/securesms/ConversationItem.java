@@ -550,9 +550,9 @@ public class ConversationItem extends LinearLayout
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
     if (documentViewStub.resolved()) {
-        if (documentViewStub.get().hasAnimation()) {
+	if (documentViewStub.get().getComposedAnimation() != null) {
             activeFooter.setBackgroundResource(R.drawable.conversation_item_update_background);
-            activeFooter.setTextColor(Color.parseColor("#ffffffff"));
+            activeFooter.setTextColor(Color.parseColor("#FFFFFF"));
             activeFooter.setPadding(8,4,8,4);
         }
     }

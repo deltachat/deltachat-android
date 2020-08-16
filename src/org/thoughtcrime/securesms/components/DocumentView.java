@@ -13,7 +13,9 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.gson.JsonParser;
+import com.airbnb.lottie.LottieComposition;
+import com.airbnb.lottie.LottieCompositionFactory;
+import com.airbnb.lottie.LottieResult;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -22,7 +24,6 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
-import java.io.InputStreamReader;
 import java.util.zip.GZIPInputStream;
 
 public class DocumentView extends FrameLayout {
@@ -63,20 +64,19 @@ public class DocumentView extends FrameLayout {
   {
       this.documentSlide = documentSlide;
 
-      if (hasAnimation()) {
+      LottieComposition composedAnimation = getComposedAnimation();
+      if (composedAnimation != null) {
 	  container.setVisibility(GONE);
 	  lottie.setVisibility(VISIBLE);
+	  lottie.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+	  lottie.setScale(0.3f);
 	  lottie.setOnFocusChangeListener((v, hasFocus) -> {
 		  if (v instanceof LottieAnimationView) {
 		      ((LottieAnimationView) v).resumeAnimation();
 		  }
 	      });
 	  ViewUtil.updateLayoutParams(lottie, ViewGroup.LayoutParams.WRAP_CONTENT, 300);
-	  try {
-	      lottie.setAnimation(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), null);
-	  } catch (Exception e) {
-	      e.printStackTrace();
-	  }
+	  lottie.setComposition(composedAnimation);
 	  lottie.setOnClickListener(v -> {
 		  if (v instanceof LottieAnimationView) {
 		      if (((LottieAnimationView) v).isAnimating()) {
@@ -103,17 +103,20 @@ public class DocumentView extends FrameLayout {
       }
   }
 
-  public boolean hasAnimation() {
-    boolean animated = false;
+  public LottieComposition getComposedAnimation() {
     if(documentSlide.hasAnimation()){
       try {
-        new JsonParser().parse(new InputStreamReader(new GZIPInputStream( getContext().getContentResolver().openInputStream(documentSlide.getUri())))).isJsonArray();
-        animated = true;
+	  LottieResult<LottieComposition> composed = LottieCompositionFactory.fromJsonInputStreamSync(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), documentSlide.getUri().toString());
+	  if (composed.getValue() != null) {
+	      if (composed.getValue() instanceof LottieComposition) {
+		  return composed.getValue();
+	      }
+	  }
       } catch (Exception e) {
-        e.printStackTrace();
+	  e.printStackTrace();
       }
     }
-    return animated;
+    return null;
   }
 
   @Override
