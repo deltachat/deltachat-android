@@ -45,7 +45,6 @@
                  android:theme="@style/TextSecure.LightTheme"
                  android:largeHeap="true"
                  tools:ignore="GoogleAppIndexingWarning"
-                 android:requestLegacyExternalStorage="true"
         >
 
     <!-- android car support, see https://developer.android.com/training/auto/start/,
@@ -273,7 +272,7 @@
     </activity>
 
     <activity android:name=".map.MapActivity" />
-
+    <activity android:name=".AnimatedStickerActivity" />
 
     <activity android:name=".ZhvActivity">
       <intent-filter>

@@ -129,6 +129,20 @@
                         android:clipToPadding="false">
 
                         <ImageButton
+                            android:id="@+id/quick_sticker_toggle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:src="?conversation_sticker_toggle"
+                            android:paddingLeft="11dp"
+                            android:paddingRight="11dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:background="@drawable/touch_highlight_background"
+                            android:contentDescription="Stickers"
+                            />
+
+                        <ImageButton
                             android:id="@+id/quick_camera_toggle"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"

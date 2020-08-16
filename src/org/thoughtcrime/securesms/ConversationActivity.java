@@ -167,6 +167,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int RECORD_VIDEO        = 8;
   private static final int PICK_LOCATION       = 9;  // TODO: i think, this can be deleted
   private static final int SMS_DEFAULT         = 11; // TODO: i think, this can be deleted
+  private static final int PICK_STICKER        = 12;
 
   private   GlideRequests               glideRequests;
   protected ComposeText                 composeText;
@@ -371,6 +372,20 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
       setMedia(data.getData(), mediaType);
 
+      break;
+    case PICK_STICKER:
+      setMedia(data.getData(), MediaType.DOCUMENT);
+      AsyncTask.execute(()->{
+        try {
+          Thread.sleep(1000);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        composeText.post(()->{
+        processComposeControls(ACTION_SEND_OUT,"",attachmentManager.buildSlideDeck());
+        });
+      });
+      dcContext.notificationCenter.maybePlaySendSound(dcChat);
       break;
     case PICK_DOCUMENT:
       setMedia(data.getData(), MediaType.DOCUMENT);
@@ -847,6 +862,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     backgroundView        = ViewUtil.findById(this, R.id.conversation_background);
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
+    ImageButton quickStickerToggle = ViewUtil.findById(this,R.id.quick_sticker_toggle);
 
     container.addOnKeyboardShownListener(this);
     container.addOnKeyboardHiddenListener(backgroundView);
@@ -879,6 +895,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setOnEditorActionListener(sendButtonListener);
     composeText.setOnClickListener(composeKeyPressedListener);
     composeText.setOnFocusChangeListener(composeKeyPressedListener);
+
+    quickStickerToggle.setOnClickListener(new QuickStickerListener());
 
     if (QuickAttachmentDrawer.isDeviceSupported(this)) {
       quickAttachmentDrawer.setListener(this);
@@ -1356,6 +1374,24 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       intent.setData(uri);
 
       onActivityResult(PICK_GALLERY, RESULT_OK, intent);
+    }
+  }
+
+  private class QuickStickerListener implements OnClickListener{
+
+    @Override
+    public void onClick(View v) {
+      Permissions.with(ConversationActivity.this)
+          .request(Manifest.permission.READ_EXTERNAL_STORAGE,
+              Manifest.permission.WRITE_EXTERNAL_STORAGE)
+          .ifNecessary()
+          .withRationaleDialog(getString(R.string.perm_explain_need_for_storage_access_share),R.drawable.ic_folder_white_48dp)
+          .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
+          .onAllGranted(()->{
+            startActivityForResult(new Intent(ConversationActivity.this, AnimatedStickerActivity.class),PICK_STICKER);
+          })
+          .onAnyDenied(()->{Toast.makeText(ConversationActivity.this,R.string.perm_explain_access_to_storage_denied,Toast.LENGTH_LONG).show();})
+          .execute();
     }
   }
 
