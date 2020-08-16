@@ -126,6 +126,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
 
+import static org.thoughtcrime.securesms.NewConversationActivity.MAILTO;
 import static org.thoughtcrime.securesms.TransportOption.Type;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
@@ -725,28 +726,27 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
    * @return
    */
   private ListenableFuture<Boolean> initializeDraft() {
+    if (isMailToIntent()) {
+      return initializeDraftFromIntent();
+    } else {
+      return initializeDraftFromDatabase();
+    }
+  }
 
-    final SettableFuture<Boolean> result = new SettableFuture<>();
+  boolean isMailToIntent() {
+    return getIntent() != null && getIntent().getData() != null && MAILTO.equals(getIntent().getData().getScheme());
+  }
 
-    final String    draftText      = getIntent().getStringExtra(TEXT_EXTRA);
-    final Uri       draftMedia     = getIntent().getData();
-    final MediaType draftMediaType = MediaType.from(getIntent().getType());
+  private ListenableFuture<Boolean> initializeDraftFromIntent() {
+    SettableFuture<Boolean> result = new SettableFuture<>();
+    final String draftText = RelayUtil.getSharedText(this);
 
     if (draftText != null) {
       composeText.setText(draftText);
-      result.set(true);
-    }
-    if (draftMedia != null && draftMediaType != null) {
-      return setMedia(draftMedia, draftMediaType);
     }
 
-    if (draftText == null && draftMedia == null && draftMediaType == null) {
-      return initializeDraftFromDatabase();
-    } else {
-      updateToggleButtonState();
-      result.set(false);
-    }
-
+    result.set(draftText != null);
+    updateToggleButtonState();
     return result;
   }
 
@@ -758,53 +758,61 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private ListenableFuture<Boolean> initializeDraftFromDatabase() {
-    SettableFuture<Boolean> future = new SettableFuture<>();
+    final SettableFuture<Boolean> future = new SettableFuture<>();
+    DcMsg draft = dcContext.getDraft(chatId);
 
-    new AsyncTask<Void, Void, DcMsg>() {
+    if (draft == null) {
+      future.set(false);
+      updateToggleButtonState();
+      return future;
+    }
+
+    final String text = draft.getText();
+    if(!text.isEmpty()) {
+      composeText.setText(text);
+      composeText.setSelection(composeText.getText().length());
+    }
+
+    String filename = draft.getFile();
+    if (filename.isEmpty() || !new File(filename).exists()) {
+      future.set(!text.isEmpty());
+      updateToggleButtonState();
+      return future;
+    }
+
+    ListenableFuture.Listener<Boolean> listener = new ListenableFuture.Listener<Boolean>() {
       @Override
-      protected DcMsg doInBackground(Void... params) {
-        return dcContext.getDraft(chatId);
-      }
-
-      @Override
-      protected void onPostExecute(DcMsg draft) {
-        if(draft!=null) {
-          String text = draft.getText();
-          if(!text.isEmpty()) {
-            composeText.setText(text);
-            composeText.setSelection(composeText.getText().length());
-          }
-
-          String filename = draft.getFile();
-          if(!filename.isEmpty()) {
-            File file = new File(filename);
-            if(file.exists()) {
-              Uri uri = Uri.fromFile(file);
-              switch (draft.getType()) {
-                case DcMsg.DC_MSG_IMAGE:
-                  setMedia(uri, MediaType.IMAGE);
-                  break;
-                case DcMsg.DC_MSG_GIF:
-                  setMedia(uri, MediaType.GIF);
-                  break;
-                case DcMsg.DC_MSG_AUDIO:
-                  setMedia(uri, MediaType.AUDIO);
-                  break;
-                case DcMsg.DC_MSG_VIDEO:
-                  setMedia(uri, MediaType.VIDEO);
-                  break;
-                default:
-                  setMedia(uri, MediaType.DOCUMENT);
-                  break;
-              }
-            }
-          }
-        }
-
+      public void onSuccess(Boolean result) {
+        future.set(result || !text.isEmpty());
         updateToggleButtonState();
-        future.set(draft!=null);
       }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+      @Override
+      public void onFailure(ExecutionException e) {
+        future.set(!text.isEmpty());
+        updateToggleButtonState();
+      }
+    };
+
+    File file = new File(filename);
+    Uri uri = Uri.fromFile(file);
+    switch (draft.getType()) {
+      case DcMsg.DC_MSG_IMAGE:
+        setMedia(uri, MediaType.IMAGE).addListener(listener);
+        break;
+      case DcMsg.DC_MSG_GIF:
+        setMedia(uri, MediaType.GIF).addListener(listener);
+        break;
+      case DcMsg.DC_MSG_AUDIO:
+        setMedia(uri, MediaType.AUDIO).addListener(listener);
+        break;
+      case DcMsg.DC_MSG_VIDEO:
+        setMedia(uri, MediaType.VIDEO).addListener(listener);
+        break;
+      default:
+        setMedia(uri, MediaType.DOCUMENT).addListener(listener);
+        break;
+    }
 
     return future;
   }
