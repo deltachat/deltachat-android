@@ -375,17 +375,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case PICK_STICKER:
       setMedia(data.getData(), MediaType.DOCUMENT);
-      AsyncTask.execute(()->{
-        try {
-          Thread.sleep(1000);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
-        composeText.post(()->{
-        processComposeControls(ACTION_SEND_OUT,"",attachmentManager.buildSlideDeck());
-        });
-      });
-      dcContext.notificationCenter.maybePlaySendSound(dcChat);
       break;
     case PICK_DOCUMENT:
       setMedia(data.getData(), MediaType.DOCUMENT);
