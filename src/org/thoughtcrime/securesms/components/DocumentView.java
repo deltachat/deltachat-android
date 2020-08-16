@@ -77,7 +77,11 @@ public class DocumentView extends FrameLayout {
 		  }
 	      });
 	  ViewUtil.updateLayoutParams(lottie, ViewGroup.LayoutParams.WRAP_CONTENT, 300);
-	  lottie.setComposition(composedAnimation);
+	  try {
+	      lottie.setAnimation(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), documentSlide.getUri().toString());
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
 	  lottie.setOnClickListener(v -> {
 		  if (v instanceof LottieAnimationView) {
 		      if (((LottieAnimationView) v).isAnimating()) {
@@ -87,9 +91,7 @@ public class DocumentView extends FrameLayout {
 		      }
 		  }
 	      });
-	  if (!lottie.isAnimating()) {
-	      lottie.playAnimation();
-	  }
+	  lottie.resumeAnimation();
       } else {
 	  container.setVisibility(VISIBLE);
 	  lottie.setVisibility(GONE);
