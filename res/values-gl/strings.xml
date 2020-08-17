@@ -6,6 +6,7 @@
     <string name="cancel">Cancelar</string>
     <string name="yes">Si</string>
     <string name="no">Non</string>
+    <string name="select">Seleccionar</string>
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="def">Por omisión</string>
@@ -14,6 +15,8 @@
     <string name="automatic">Automático</string>
     <string name="strict">Estrito</string>
     <string name="open">Abrir</string>
+    <string name="join">Unirse</string>
+    <string name="rejoin">Volta a unirte</string>
     <string name="delete">Eliminar</string>
     <string name="info">Infor</string>
     <string name="update">Actualizar</string>
@@ -26,6 +29,7 @@
     <string name="unarchive">Desarquivar</string>
     <string name="mute">Acalar</string>
     <string name="ephemeral_messages">Desaparición das mensaxes</string>
+    <string name="ephemeral_messages_hint">Estos axustes aplícanse a todas as participantes que usan Delta Chat. Porén, elas poderían copiar, gardar e reenviar mensaxes ou usar outros clientes de email.</string>
     <string name="save">Gardar</string>
     <string name="chat">Chat</string>
     <string name="media">Medios</string>
@@ -210,6 +214,21 @@
     <string name="share_location_for_six_hours">durante 6 h.</string>
 
     <string name="file_saved_to">Ficheiro gardado en \"%1$s\".</string>
+
+    <string name="videochat">Chat de vídeo</string>
+    <string name="videochat_invite_user_to_videochat">Convidar a %1$s a un chat de vídeo?</string>
+    <string name="videochat_invite_user_hint">Esto require unha app compatible ou un navegador compatible nos dous extremos.</string>
+    <string name="videochat_contact_invited_hint">%1$s convidada a un chat de vídeo.</string>
+    <string name="videochat_you_invited_hint">Convidaches a un chat de vídeo.</string>
+    <string name="videochat_will_open_in_your_browser">Este chat de vídeo abrirase no teu navegador.</string>
+    <string name="videochat_tap_to_join">Toca para unirte</string>
+    <string name="videochat_tap_to_open">Toca para abrir</string>
+    <string name="videochat_instance">Instancia para video chat</string>
+    <string name="videochat_instance_placeholder">A túa instancia para video chat</string>
+    <string name="videochat_instance_explain">Se está definida unha instancia de video chat podes iniciar o chat desde calquera conversa un-a-un. Os chats de vídeo requiren unha app ou navegador compatibles para as participantes.\n\nExemplos: https://meet.jit.si/$ROOM ou basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">¿Usar \"%1$s\" para convidar a outras a chats de vídeo?\n\nUnha vez establecido podes iniciar o chat desde a conversa un-a-un. Esto restablece o axuste anterior para video chats se existise.</string>
+    <string name="videochat_invitation">Convite a chat de vídeo</string>
+    <string name="videochat_invitation_body">Convidáronte a un chat de vídeo, preme %1$s para unirte.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Seguro que desexa abandonar o grupo?</string>

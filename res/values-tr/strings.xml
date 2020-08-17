@@ -370,7 +370,7 @@
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">\"%1$s\" olarak oturum açılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">%1$s yanıtı: %2$s\n\nBazı sağlayıcılar gelen kutunuza ek bilgiler yerleştirir; onları örn. web ön ucundan denetleyebilirsiniz. Sorun yaşarsanız sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
+    <string name="login_error_server_response">%1$s yanıtı: %2$s\n\nBazı sağlayıcılar size bu sorun hakkında e-posta gönderebilir; ilgili uygulamanızdan ya da web sitesinden gelen kutunuzu denetleyebiliyor olmalısınız. Sorun yaşarsanız sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
 
     <!-- TLS certificate checks -->
     <string name="accept_invalid_hostnames">Geçersiz ana bilgisayar adlarını kabul et</string>
