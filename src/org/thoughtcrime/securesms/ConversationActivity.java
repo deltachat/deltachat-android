@@ -554,6 +554,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
+  public void setDraftText(String txt) {
+    composeText.setText(txt);
+    composeText.setSelection(composeText.getText().length());
+  }
+
   //////// Event Handlers
 
   private void handleEphemeralMessages() {

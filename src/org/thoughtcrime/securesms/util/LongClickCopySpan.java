@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
@@ -50,9 +51,8 @@ public class LongClickCopySpan extends URLSpan {
     if (url.startsWith(PREFIX_CMD)) {
       try {
         String cmd = url.substring(PREFIX_CMD.length());
-        Activity activity = (Activity) widget.getContext();
-        DcContext dcContext = DcHelper.getContext(activity);
-        dcContext.sendTextMsg(this.chatId, cmd);
+        ConversationActivity activity = (ConversationActivity) widget.getContext();
+        activity.setDraftText(cmd + " ");
       } catch (Exception e) {
         e.printStackTrace();
       }
