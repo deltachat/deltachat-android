@@ -78,8 +78,8 @@ public class NewConversationActivity extends ContactSelectionActivity {
             String textToShare = getTextToShare(uri);
             MailTo mailto = MailTo.parse(uri.toString());
             String recipientsList = mailto.getTo();
-            if(recipientsList != null && !recipientsList.isEmpty()) {
-              String[] recipientsArray = recipientsList.split(",");
+            if(recipientsList != null && !recipientsList.trim().isEmpty()) {
+              String[] recipientsArray = recipientsList.trim().split(",");
               if (recipientsArray.length >= 1) {
                 String recipient = recipientsArray[0];
                 if (textToShare != null && !textToShare.isEmpty()) {
