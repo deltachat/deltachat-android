@@ -20,18 +20,20 @@ import android.content.Intent;
 import android.net.MailTo;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -123,7 +125,11 @@ public class NewConversationActivity extends ContactSelectionActivity {
       String[] queryArray = query.split(QUERY_SEPARATOR);
       for(String queryEntry : queryArray) {
         String[] queryEntryArray = queryEntry.split(KEY_VALUE_SEPARATOR);
-        mailtoQueryMap.put(queryEntryArray[0], URLDecoder.decode(queryEntryArray[1]));
+        try {
+          mailtoQueryMap.put(queryEntryArray[0], URLDecoder.decode(queryEntryArray[1], "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
+        }
       }
     }
     return mailtoQueryMap;
