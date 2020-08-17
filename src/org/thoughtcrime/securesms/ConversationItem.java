@@ -519,8 +519,18 @@ public class ConversationItem extends LinearLayout
     Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
     hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null) || hasLinks;
 
+    Linkify.TransformFilter urlFilter = new Linkify.TransformFilter() {
+           public final String transformUrl(final Matcher match, String url) {
+	       if (url.startsWith("http://") || url.startsWith("https://")) {
+		   return url;
+	       } else {
+		   return "http://" + url;
+	       }
+           }
+    };
+
     hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", null, null) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "http://", new String[]{"http://", "https://"},  null, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "",  null, urlFilter) || hasLinks;
     hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", null, null) || hasLinks;
 
     if (hasLinks) {
