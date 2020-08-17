@@ -503,17 +503,13 @@ public class ConversationItem extends LinearLayout
 
   private SpannableString linkifyMessageBody(SpannableString messageBody, boolean shouldLinkifyAllLinks) {
     if (!shouldLinkifyAllLinks) {
-	return messageBody;
+      return messageBody;
     }
 
-    boolean hasLinks = false;
-
     Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
-    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null) || hasLinks;
+    boolean hasLinks = Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS);
 
-    hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", null, null) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "http://", new String[]{"http://", "https://"},  null, null) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", null, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null) || hasLinks;
 
     if (hasLinks) {
       URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);

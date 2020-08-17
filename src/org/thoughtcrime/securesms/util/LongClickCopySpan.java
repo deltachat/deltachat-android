@@ -29,10 +29,6 @@ public class LongClickCopySpan extends URLSpan {
   private int highlightColor;
   private int chatId;
 
-  public LongClickCopySpan(String url) {
-    this(url, 0);
-  }
-
   public LongClickCopySpan(String url, int chatId) {
     super(url);
     this.chatId = chatId;
@@ -52,22 +48,21 @@ public class LongClickCopySpan extends URLSpan {
   public void onClick(View widget) {
     String url = getURL();
     if (url.startsWith(PREFIX_CMD)) {
-	try {
-	    String cmd = url.substring(PREFIX_CMD.length());
-	    Activity activity = (Activity) widget.getContext();
-	    DcContext dcContext = DcHelper.getContext(activity);
-	    dcContext.sendTextMsg(this.chatId, cmd);
-	}
-	catch(Exception e) {
-	    e.printStackTrace();
-	}
+      try {
+        String cmd = url.substring(PREFIX_CMD.length());
+        Activity activity = (Activity) widget.getContext();
+        DcContext dcContext = DcHelper.getContext(activity);
+        dcContext.sendTextMsg(this.chatId, cmd);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     } else if (url.startsWith(PREFIX_MAILTO)) {
       try {
         String addr = prepareUrl(url);
         Activity activity = (Activity) widget.getContext();
         DcContext dcContext = DcHelper.getContext(activity);
         DcContact contact = dcContext.getContact(dcContext.createContact(null, addr));
-        if (contact.getId()!=0 && dcContext.getChatIdByContactId(contact.getId())!=0) {
+        if (contact.getId() != 0 && dcContext.getChatIdByContactId(contact.getId()) != 0) {
           openChat(activity, contact);
         } else {
           new AlertDialog.Builder(activity)
@@ -78,12 +73,10 @@ public class LongClickCopySpan extends URLSpan {
                   .setNegativeButton(R.string.cancel, null)
                   .show();
         }
-      }
-      catch(Exception e) {
+      } catch (Exception e) {
         e.printStackTrace();
       }
-    }
-    else {
+    } else {
       super.onClick(widget);
     }
   }
