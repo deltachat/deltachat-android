@@ -141,29 +141,20 @@ public class ScaleStableImageView
     }
 
     private void measureViewSize(int width, int height, int oldWidth, int oldHeight, boolean portrait) {
-        if (portraitWidth != 0 && portraitHeight != 0 && landscapeWidth != 0 && landscapeHeight != 0)
-            return;
+        if (portraitWidth != 0 && portraitHeight != 0 && landscapeWidth != 0 && landscapeHeight != 0) {
+            if(portrait && portraitWidth >= width && portraitHeight >= height)
+                return;
+            if(!portrait && landscapeWidth >= width && landscapeHeight >= height)
+                return;
+            // else we were once called with a smaller size and now need to reset the larger values.
+        }
 
-        if (oldWidth == 0 && oldHeight == 0) { // screen just opened from inside the app
-            if (portrait) { // portrait
-                portraitHeight = height;
-                portraitWidth = width;
-            } else { // landscape
-                landscapeHeight = height;
-                landscapeWidth = width;
-            }
+        if(portrait) {
+            portraitHeight = height;
+            portraitWidth = width;
         } else {
-            if (oldWidth == portraitWidth) { // was in portrait
-                if (!portrait) { // rotate to landscape
-                    landscapeHeight = height;
-                    landscapeWidth = width;
-                }
-            } else if (oldHeight == landscapeHeight) {
-                if (portrait) {
-                    portraitHeight = height;
-                    portraitWidth = width;
-                }
-            }
+            landscapeHeight = height;
+            landscapeWidth = width;
         }
     }
 
