@@ -69,8 +69,6 @@ public class DocumentView extends FrameLayout {
       if (composedAnimation != null) {
 	  container.setVisibility(GONE);
 	  lottie.setVisibility(VISIBLE);
-	  lottie.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-	  lottie.setScale(0.3f);
 	  lottie.setOnFocusChangeListener((v, hasFocus) -> {
 		  if (v instanceof LottieAnimationView) {
 		      ((LottieAnimationView) v).resumeAnimation();
