@@ -108,11 +108,12 @@ public class QuickAttachmentDrawer extends ViewGroup implements InputView, Camer
     final boolean rotationChanged = this.rotation != rotation;
     this.rotation = rotation;
     if (rotationChanged) {
-      if (isShowing()) {
-        cameraView.onPause();
-      }
       updateControlsView();
       setDrawerStateAndUpdate(drawerState, true);
+      if (isShowing()) {
+        cameraView.onPause();
+        cameraView.onResume();
+      }
     }
   }
 
