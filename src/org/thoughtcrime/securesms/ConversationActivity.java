@@ -153,7 +153,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
   public static final String CHAT_ID_EXTRA           = "chat_id";
-  public static final String IS_ARCHIVED_EXTRA       = "is_archived";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
 
@@ -191,7 +190,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private ApplicationDcContext dcContext;
   private DcChat     dcChat                = new DcChat(0);
   private int        chatId;
-  private boolean    archived;
   private final boolean isSecureText          = true;
   private boolean    isDefaultSms             = true;
   private boolean    isSecurityInitialized    = false;
@@ -463,11 +461,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    if (dcChat.getVisibility()!=DcChat.DC_CHAT_VISIBILITY_ARCHIVED) {
-      inflater.inflate(R.menu.conversation_archive, menu);
-    }
-    else {
-      inflater.inflate(R.menu.conversation_unarchive, menu);
+    inflater.inflate(R.menu.conversation_archive, menu);
+    if (isArchived()) {
+      menu.findItem(R.id.menu_archive_chat).setTitle(R.string.menu_unarchive_chat);
     }
 
     inflater.inflate(R.menu.conversation_delete, menu);
@@ -586,7 +582,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
-    Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
+    Intent intent = new Intent(this, (isArchived() ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     startActivity(intent);
     finish();
@@ -627,13 +623,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleArchiveChat() {
-    int newVisibility = dcContext.getChat(chatId).getVisibility()==DcChat.DC_CHAT_VISIBILITY_ARCHIVED?
+    int newVisibility = isArchived() ?
             DcChat.DC_CHAT_VISIBILITY_NORMAL : DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
     dcContext.setChatVisibility(chatId, newVisibility);
     Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
     if (newVisibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED) {
       finish();
+      return;
     }
+    dcChat = dcContext.getChat(chatId);
   }
 
   private void handleDeleteChat() {
@@ -925,7 +923,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = dcContext.getChat(chatId);
     recipient        = dcContext.getRecipient(dcChat);
-    archived         = getIntent().getBooleanExtra(IS_ARCHIVED_EXTRA, false);
     glideRequests    = GlideApp.with(this);
 
 
@@ -1001,6 +998,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private boolean isPushGroupConversation() {
     return isGroupConversation(); // push groups are non-sms groups, so in delta, these are all groups
+  }
+
+  private boolean isArchived() {
+    return dcChat.getVisibility() == DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
   }
 
   protected Recipient getRecipient() {
