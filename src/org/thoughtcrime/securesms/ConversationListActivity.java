@@ -112,8 +112,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 	    "✳️ Nueva imagen de bienvenida, gracias al diseñador \"Meloncito\"\n" +
 	    "✳️ Ahora los stickers animados no se pausan al recibir nuevos mensajes, gracias al programador: Ruben David (https://github.com/RubenDavidPerezJimenez)\n" +
 	    "✳️ Retocada la apariencia de la etiqueta de fecha de los stickers animados, gracias al programador: Ruben David\n" +
-	    "✳️ Ahora la app tiene un selector de stickers integrado!!! gracias al programador: Ruben David. Para añadir packs de stickers copia las carpetas de packs a la carpeta DeltaStickers en el almacenamiento del teléfono.\n" +
-	    "✳️ Es posible agregar o eliminar packs de stickers desde la propia app, gracias al programador: Ruben David\n" +
+	    "✳️ Ahora la app tiene un selector de stickers integrado!!! Es posible agregar o eliminar packs de stickers desde la propia app, gracias al programador: Ruben David.\n" +
 	    "✳️ Arreglado problema de compatibilidad con versiones de Android menores que 7.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
     dcContext.addDeviceMsg("dlab-1.13.1-chlog", msg);

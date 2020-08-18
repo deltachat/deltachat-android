@@ -1,15 +1,20 @@
 package org.thoughtcrime.securesms;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,19 +27,27 @@ import com.airbnb.lottie.RenderMode;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.FileProviderUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 
 public class AnimatedStickerActivity extends PassphraseRequiredActionBarActivity implements OnClickCategory {
   private static final String STICKER_PACK_SELECTED = "STICKER_PACK_SELECTED";
   private static final String STICKERS_PACKS = "STICKERS_PACKS";
+  private static final int STICKER_REQUEST_CODE = 13;
   private int stickerPackSelection = -1;
 
 
@@ -43,6 +56,7 @@ public class AnimatedStickerActivity extends PassphraseRequiredActionBarActivity
   private @NonNull
   RecyclerView recycler;
   boolean canceled = false;
+  Menu menu;
   ArrayList<StickerPack> stickers;
 
   @Override
@@ -75,7 +89,7 @@ public class AnimatedStickerActivity extends PassphraseRequiredActionBarActivity
         if (!canceled) {
           progressDialog.dismiss();
           recycler.setLayoutManager(new GridLayoutManager(AnimatedStickerActivity.this, 2));
-          recycler.setAdapter(new AnimatedStickersAdapter(AnimatedStickerActivity.this.getFiles(), AnimatedStickerActivity.this));
+          recycler.setAdapter(new AnimatedStickersAdapter(getFiles(), AnimatedStickerActivity.this));
           if (stickerPackSelection != -1) {
             ((AnimatedStickersAdapter) recycler.getAdapter()).setCategory(true);
           }
@@ -83,6 +97,57 @@ public class AnimatedStickerActivity extends PassphraseRequiredActionBarActivity
       });
 
     });
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.stickers_menu, menu);
+    this.menu=menu;
+    menu.getItem(0).setOnMenuItemClickListener(item -> {
+      Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+      intent.setType("application/zip");
+      startActivityForResult(Intent.createChooser(intent, "Buscar pack con..."), STICKER_REQUEST_CODE);
+      return true;
+    });
+ 
+    menu.getItem(1).setOnMenuItemClickListener(item -> {
+      if (stickerPackSelection != -1) {
+        new AlertDialog.Builder(this).setMessage("¿Desea eliminar este pack de stickers?").setPositiveButton("Aceptar", (dialog, which) -> {
+          StickerPack removed = stickers.remove(stickerPackSelection);
+          for (Uri file : removed.files) {
+            File file1 = new File(file.getPath());
+            if (file1.exists()) {
+              file1.delete();
+            }
+          }
+          removed.folder.delete();
+          stickerPackSelection=-1;
+          if(menu!=null){
+            changeMenuVisibility();
+          }
+          ((AnimatedStickersAdapter)recycler.getAdapter()).setCategory(false);
+          ((AnimatedStickersAdapter)recycler.getAdapter()).changeData(getFiles());
+          dialog.dismiss();
+        }).setNegativeButton("Cancelar", (dialog, which) -> {
+          dialog.dismiss();
+        }).setOnCancelListener((dialogInterface) -> {
+          dialogInterface.dismiss();
+        }).show() ;
+      }
+      return true;
+     });
+    changeMenuVisibility();
+    return super.onCreateOptionsMenu(menu);
+  }
+
+  private void changeMenuVisibility() {
+    if (stickerPackSelection == -1) {
+      menu.getItem(0).setVisible(true);
+      menu.getItem(1).setVisible(false);
+    } else {
+      menu.getItem(0).setVisible(false);
+      menu.getItem(1).setVisible(true);
+    }
   }
 
   private ArrayList<StickerPack> getStickers(File internal) {
@@ -124,12 +189,87 @@ public class AnimatedStickerActivity extends PassphraseRequiredActionBarActivity
 
 
   @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode == Activity.RESULT_OK && requestCode == STICKER_REQUEST_CODE) {
+      Uri uri = data.getData();
+      long length = DocumentFile.fromSingleUri(this, uri).length();
+      if ((((length / 1024) / 1024) / 2) > 1) {
+        Toast.makeText(this, "El archivo es muy grande para ser un pack de stickers \uD83E\uDD14️", Toast.LENGTH_SHORT).show();
+      } else {
+        Toast.makeText(this, "Agregando el pack", Toast.LENGTH_SHORT).show();
+        File cacheDir = new File(getCacheDir(), "tgscache");
+        if(!cacheDir.exists()){
+          cacheDir.mkdir();
+        }
+        AsyncTask.execute(() -> {
+          try {
+            File cache = File.createTempFile("cache", ".zip", cacheDir);
+            Util.copy(getContentResolver().openInputStream(uri), new FileOutputStream(cache));
+            ZipFile zipFile = new ZipFile(cache);
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            ArrayList<File> TGSfiles = new ArrayList<>();
+            while (entries.hasMoreElements()) {
+              ZipEntry zipEntry = entries.nextElement();
+              if (!zipEntry.isDirectory() && zipEntry.getName().endsWith(".tgs")) {
+                InputStream stream = zipFile.getInputStream(zipEntry);
+                String[] split = zipEntry.getName().split("/");
+                File tgs = new File(cacheDir, split[split.length-1]);
+                if (!tgs.exists()) {
+                  tgs.createNewFile();
+                  Util.copy(stream, new FileOutputStream(tgs));
+                  TGSfiles.add(tgs);
+                }
+              }
+            }
+            cache.delete();
+            if (TGSfiles.size() > 0) {
+              String folder = String.valueOf(new Date().getTime());
+              File deltaNewStickers = new File(new File(Environment.getExternalStorageDirectory(), "DeltaStickers"), folder);
+              if (!deltaNewStickers.exists()) {
+                deltaNewStickers.mkdir();
+              }
+              List<Uri> files = new ArrayList<>();
+              for (File tgSfile : TGSfiles) {
+                File file = new File(deltaNewStickers, tgSfile.getName());
+                files.add(Uri.fromFile(file));
+                if (!file.exists()) {
+                  file.createNewFile();
+                }
+                Util.copy(new FileInputStream(tgSfile), new FileOutputStream(file));
+                tgSfile.delete();
+              }
+              if (!canceled) {
+                stickers.add(new StickerPack(deltaNewStickers, files));
+                recycler.post(() -> {
+                  ((AnimatedStickersAdapter) recycler.getAdapter()).changeData(getFiles());
+                });
+              }
+            }
+          } catch (IOException e) {
+            e.printStackTrace();
+            if (this != null) {
+              recycler.post(() -> {
+                Toast.makeText(this, "Hubo un problema al procesar el archivo \uD83D\uDC1E️", Toast.LENGTH_SHORT).show();
+              });
+            }
+          }
+        });
+      }
+    }
+  }
+
+
+  @Override
   public void onBackPressed() {
     if (stickerPackSelection != -1) {
       stickerPackSelection = -1;
       try {
         ((AnimatedStickersAdapter) recycler.getAdapter()).setCategory(false);
         ((AnimatedStickersAdapter) recycler.getAdapter()).changeData(getFiles());
+        if(menu!=null){
+            changeMenuVisibility();
+        }
       } catch (NullPointerException e) {
       }
     } else {
@@ -151,6 +291,9 @@ public class AnimatedStickerActivity extends PassphraseRequiredActionBarActivity
       finish();
     } else {
       stickerPackSelection = position;
+      if(menu!=null){
+        changeMenuVisibility();
+      }
       ((AnimatedStickersAdapter) recycler.getAdapter()).setCategory(true);
       ((AnimatedStickersAdapter) recycler.getAdapter()).changeData(getFiles());
       getFiles();
