@@ -506,7 +506,6 @@ public class ConversationItem extends LinearLayout
     if (!shouldLinkifyAllLinks) {
       return messageBody;
     }
-    Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS);
     boolean hasLinks = false;
 
     Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
@@ -520,9 +519,21 @@ public class ConversationItem extends LinearLayout
       }
     };
 
-    hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", null, null) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "", null, urlFilter) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", null, null) || hasLinks;
+    Linkify.MatchFilter matcher = (s, start, end) -> {
+      URLSpan[] urlSpans = messageBody.getSpans(start, end, URLSpan.class);
+      for (URLSpan urlSpan : urlSpans) {
+        int start2 = messageBody.getSpanStart(urlSpan);
+        int end2 = messageBody.getSpanEnd(urlSpan);
+        if ((start >= start2 && start < end2) || (end >= start2 && end < end2)) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", matcher, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "", matcher, urlFilter) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", matcher, null) || hasLinks;
 
     if (hasLinks) {
       URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
