@@ -1,5 +1,22 @@
 # Delta Chat Android Changelog
 
+## v1.12.3
+2020-08
+
+* more generous acceptance of entered webrtc-servers names
+* allow importing backups in the upcoming .tar format
+* remove X-Mailer debug header
+* try various server domains on configuration
+* improve guessing message types from extension
+* make links in error messages clickable
+* fix rotation when taking photos with internal camera
+* fix and improve sharing and sendto/mailto-handling
+* fix oauth2 issues
+* fix threading in interaction with non-delta-clients
+* fix showing unprotected subjects in encrypted messages
+* more fixes, update provider database and dependencies
+
+
 ## v1.12.2
 2020-08
 
