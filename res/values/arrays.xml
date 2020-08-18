@@ -207,12 +207,6 @@
       <item>@string/off</item>
   </string-array>
 
-  <string-array name="recipient_vibrate_values">
-      <item>0</item>
-      <item>1</item>
-      <item>2</item>
-  </string-array>
-
   <string-array name="pref_notification_privacy_entries">
       <item>@string/notify_name_and_message</item>
       <item>@string/notify_name_only</item>

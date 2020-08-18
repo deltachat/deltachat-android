@@ -44,31 +44,6 @@
         <item name="profile_document_foreground">@color/white</item>
     </style>
 
-    <style name="TextSecure.HighlightTheme" parent="@style/TextSecure.LightTheme">
-        <item name="actionBarStyle">@style/TextSecure.FlatLightActionBar</item>
-        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
-        <item name="android:windowBackground">@color/delta_primary</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="colorButtonNormal">@color/white</item>
-    </style>
-
-    <style name="PopupAnimation" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/slide_from_top</item>
-        <item name="android:windowExitAnimation">@anim/slide_to_top</item>
-    </style>
-
-    <style name="TextSecure.LightTheme.Popup" parent="TextSecure.LightTheme">
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:windowSoftInputMode">stateUnchanged</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowActionModeOverlay" tools:targetApi="honeycomb">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowAnimationStyle">@style/PopupAnimation</item>
-        <item name="android:windowCloseOnTouchOutside" tools:targetApi="honeycomb">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
-    </style>
-
     <style name="TextSecure.LightTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="theme_type">light</item>
         <item name="actionBarStyle">@style/TextSecure.LightActionBar</item>
