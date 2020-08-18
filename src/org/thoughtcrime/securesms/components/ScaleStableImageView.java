@@ -13,6 +13,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -38,7 +39,8 @@ public class ScaleStableImageView
 
     private Drawable defaultDrawable;
     private Drawable currentDrawable;
-    private Map<String, Drawable> storedSizes = new HashMap<>();
+
+    private boolean keyboardShown = false;
 
     public ScaleStableImageView(Context context) {
         this(context, null);
@@ -54,27 +56,25 @@ public class ScaleStableImageView
 
     @Override
     public void setImageDrawable(@Nullable Drawable drawable) {
+        if(defaultDrawable != null && defaultDrawable.equals(drawable)) {
+            Log.i(TAG, "revoked new drawable, it was the same");
+            return;
+        }
+        Log.i(TAG, "new drawable");
         defaultDrawable = drawable;
-        storedSizes.clear();
         overrideDrawable(defaultDrawable);
     }
 
     private void overrideDrawable(Drawable newDrawable) {
+        Log.i(TAG, "override drawable");
         if (currentDrawable == newDrawable) return;
         currentDrawable = newDrawable;
         super.setImageDrawable(newDrawable);
     }
 
-    private int landscapeWidth = 0;
-    private int landscapeHeight = 0;
-    private int portraitWidth = 0;
-    private int portraitHeight = 0;
-    private boolean keyboardShown = false;
-
     @Override
     protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
         if (width == 0 || height == 0) return;
-        final String newKey = width + "x" + height;
         int orientation = getResources().getConfiguration().orientation;
         boolean portrait;
         if (orientation == ORIENTATION_PORTRAIT) {
@@ -85,73 +85,31 @@ public class ScaleStableImageView
             Log.i(TAG, "orientation was: " + orientation);
             return; // something fishy happened.
         }
-
         if (!(defaultDrawable instanceof BitmapDrawable)) {
             return; // need Bitmap for scaling and cropping.
         }
 
-        measureViewSize(width, height, portrait);
+        Log.i(TAG, "view size. w: " + width + " h: " + height + " p: " + portrait);
+        Log.i(TAG, "image size. w: " + defaultDrawable.getIntrinsicWidth() + " h: " + defaultDrawable.getIntrinsicHeight());
+        Log.i(TAG, "with" + (keyboardShown ? "" : "OUT") + " keyboard");
         // if the image is already fit for the screen, just show it.
         if (defaultDrawable.getIntrinsicWidth() == width &&
             defaultDrawable.getIntrinsicHeight() == height) {
             overrideDrawable(defaultDrawable);
         }
 
-        // check if we have the new one already
-        if (storedSizes.containsKey(newKey)) {
-            super.setImageDrawable(storedSizes.get(newKey));
-            return;
-        }
-
-        if (keyboardShown) {
-            // don't scale; Crop.
-            Drawable large;
-            if (portrait)
-                large = storedSizes.get(portraitWidth + "x" + portraitHeight);
-            else
-                large = storedSizes.get(landscapeWidth + "x" + landscapeHeight);
-            if (large == null) return; // no baseline. can't work.
-            Bitmap original = ((BitmapDrawable) large).getBitmap();
-            Bitmap cropped = Bitmap.createBitmap(original, 0, 0, width, height);
+        // don't scale; Crop.
+        Bitmap original = ((BitmapDrawable) defaultDrawable).getBitmap();
+        if(original.getHeight() >= height && original.getWidth() >= width) {
+            int startX = (original.getWidth() - width) /2;
+            Bitmap cropped = Bitmap.createBitmap(original, startX, 0, width, height);
             Drawable croppedDrawable = new BitmapDrawable(getResources(), cropped);
             overrideDrawable(croppedDrawable);
         } else {
-            Util.runOnBackground(() -> {
-                Bitmap bitmap = ((BitmapDrawable) defaultDrawable).getBitmap();
-                Context context = getContext();
-                try {
-                    Bitmap scaledBitmap = GlideApp.with(context)
-                        .asBitmap()
-                        .load(bitmap)
-                        .centerCrop()
-                        .skipMemoryCache(true)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .submit(width, height)
-                        .get();
-                    Drawable rescaled = new BitmapDrawable(getResources(), scaledBitmap);
-                    storedSizes.put(newKey, rescaled);
-                    Util.runOnMain(() -> overrideDrawable(rescaled));
-                } catch (ExecutionException | InterruptedException ex) {
-                    Log.e(TAG, "could not rescale background", ex);
-                    // No background set.
-                }
-            });
+            Log.e(TAG, "could not rescale background image. Original too small");
+            Log.i(TAG, "image size. w: " + original.getWidth() + " h: " + original.getHeight());
         }
         super.onSizeChanged(width, height, oldWidth, oldHeight);
-    }
-
-    private void measureViewSize(int width, int height, boolean portrait) {
-        if(portrait) {
-            if(portraitWidth < width || portraitHeight < height) {
-                portraitWidth = width;
-                portraitHeight = height;
-            }
-        } else {
-            if(landscapeWidth < width || landscapeHeight < height) {
-                landscapeWidth = width;
-                landscapeHeight = height;
-            }
-        }
     }
 
     @Override

@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
+
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -38,6 +40,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
 
     private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+    private static final String TAG = ChatBackgroundActivity.class.getSimpleName();
 
     Button galleryButton;
     Button defaultButton;
@@ -141,11 +144,12 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
             Bitmap scaledBitmap = GlideApp.with(context)
                     .asBitmap()
                     .load(imageUri)
-                    .fitCenter()
+                    .centerCrop()
                     .skipMemoryCache(true)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .submit(largerSide, largerSide)
                     .get();
+            Log.i(TAG, "image size. w: " + scaledBitmap.getWidth() + " h: " + scaledBitmap.getHeight());
             FileOutputStream outStream = new FileOutputStream(destinationPath);
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
         } catch (InterruptedException e) {
@@ -169,7 +173,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
     }
 
     private void setDefaultLayoutBackgroundImage() {
-        if(dynamicTheme.isDarkTheme(this)) {
+        if(DynamicTheme.isDarkTheme(this)) {
             Drawable image = getResources().getDrawable(R.drawable.background_hd_dark);
             preview.setImageDrawable(image);
         }
