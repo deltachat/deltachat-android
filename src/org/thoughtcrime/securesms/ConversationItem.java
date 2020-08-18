@@ -523,6 +523,7 @@ public class ConversationItem extends LinearLayout
 	       return true;
            }
     };
+
     Pattern mentionPattern = Pattern.compile("(?<=^|\\s)@([A-Za-z0-9_-]+)");
     hasLinks = Linkify.addLinks(messageBody, mentionPattern, "mention:", matcher, null) || hasLinks ;
 
