@@ -510,14 +510,27 @@ public class ConversationItem extends LinearLayout
 
     boolean hasLinks = false;
 
+    Linkify.MatchFilter matcher = new Linkify.MatchFilter() {
+           public final boolean acceptMatch(CharSequence s, int start, int end) {
+	       URLSpan[] urlSpans = messageBody.getSpans(start, end, URLSpan.class);
+	       for (URLSpan urlSpan : urlSpans) {
+		   int start2 = messageBody.getSpanStart(urlSpan);
+		   int end2 = messageBody.getSpanEnd(urlSpan);
+		   if ((start >= start2 && start < end2) || (end >= start2 && end < end2)) {
+		       return false;
+		   }
+	       }
+	       return true;
+           }
+    };
     Pattern mentionPattern = Pattern.compile("(?<=^|\\s)@([A-Za-z0-9_-]+)");
-    hasLinks = Linkify.addLinks(messageBody, mentionPattern, "mention:", null, null) || hasLinks ;
+    hasLinks = Linkify.addLinks(messageBody, mentionPattern, "mention:", matcher, null) || hasLinks ;
 
     Pattern hashtagPattern = Pattern.compile("(?<=^|\\s)#([A-Za-z0-9_-]+)");
-    hasLinks = Linkify.addLinks(messageBody, hashtagPattern, "tag:", null, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, hashtagPattern, "tag:", matcher, null) || hasLinks;
 
     Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
-    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", matcher, null) || hasLinks;
 
     Linkify.TransformFilter urlFilter = new Linkify.TransformFilter() {
            public final String transformUrl(final Matcher match, String url) {
@@ -529,9 +542,9 @@ public class ConversationItem extends LinearLayout
            }
     };
 
-    hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", null, null) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "",  null, urlFilter) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", null, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", matcher, null) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "",  matcher, urlFilter) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", matcher, null) || hasLinks;
 
     if (hasLinks) {
       URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
