@@ -90,7 +90,7 @@ public class ScaleStableImageView
             return; // need Bitmap for scaling and cropping.
         }
 
-        measureViewSize(width, height, oldWidth, oldHeight, portrait);
+        measureViewSize(width, height, portrait);
         // if the image is already fit for the screen, just show it.
         if (defaultDrawable.getIntrinsicWidth() == width &&
             defaultDrawable.getIntrinsicHeight() == height) {
@@ -140,21 +140,17 @@ public class ScaleStableImageView
         super.onSizeChanged(width, height, oldWidth, oldHeight);
     }
 
-    private void measureViewSize(int width, int height, int oldWidth, int oldHeight, boolean portrait) {
-        if (portraitWidth != 0 && portraitHeight != 0 && landscapeWidth != 0 && landscapeHeight != 0) {
-            if(portrait && portraitWidth >= width && portraitHeight >= height)
-                return;
-            if(!portrait && landscapeWidth >= width && landscapeHeight >= height)
-                return;
-            // else we were once called with a smaller size and now need to reset the larger values.
-        }
-
+    private void measureViewSize(int width, int height, boolean portrait) {
         if(portrait) {
-            portraitHeight = height;
-            portraitWidth = width;
+            if(portraitWidth < width || portraitHeight < height) {
+                portraitWidth = width;
+                portraitHeight = height;
+            }
         } else {
-            landscapeHeight = height;
-            landscapeWidth = width;
+            if(landscapeWidth < width || landscapeHeight < height) {
+                landscapeWidth = width;
+                landscapeHeight = height;
+            }
         }
     }
 
