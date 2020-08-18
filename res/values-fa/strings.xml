@@ -55,8 +55,6 @@
     <string name="now">اکنون</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">خطر</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d دقیقه</string>
     <string name="today">امروز</string>
     <string name="yesterday">دیروز</string>
     <string name="this_week">این هفته</string>
@@ -169,8 +167,6 @@
     <string name="menu_select_all">انتخاب همه</string>
     <string name="menu_expand">گسترش</string>
     <string name="menu_edit_name">ویرایش نام</string>
-    <string name="menu_edit_group_name">ویرایش نام گروه</string>
-    <string name="menu_edit_group_image">ویرایش تصویر گروه</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_advanced">پیشرفته</string>
     <string name="menu_deaddrop">درخواست‌های مخاطب</string>
@@ -348,11 +344,8 @@
     <string name="login_error_cannot_login">امکان ورود با\"%1$s\"وجود ندارد. لطفا صحت ایمیل و رمز عبور را بررسی کنید. </string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">بازخورد از %1$s: %2$s\n\n برخی ارائه دهندگان ایمیل اطلاعات اضافی در صندوق ورودی شما قرار می‌دهند. می‌توانید این موارد را در صفحه وب بررسی کنید. اگر به مشکلی برخوردید به ارائه دهندگان ایمیل یا دوستان خود مراجعه کنید. </string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">پذیرش Hostname های نادرست</string>
     <string name="accept_invalid_certificates">پذیرش تاییدیه‌های نادرست</string>
-
     <string name="used_settings">تنظیمات استفاده شده:</string>
     <string name="switch_account">تغییر حساب کاربری</string>
     <string name="add_account">افزودن حساب کاربری</string>
@@ -399,7 +392,6 @@
     <string name="pref_notifications_show">نمایش</string>
     <string name="pref_notifications_priority">اولویت</string>
     <string name="pref_led_color">رنگ LED</string>
-    <string name="pref_led_pattern">الگوی چشمک زدن LED</string>
     <string name="pref_sound">صدا</string>
     <string name="pref_silent">سکوت</string>
     <string name="pref_privacy">حریم خصوصی</string>
@@ -458,19 +450,14 @@
     <string name="pref_show_emails_no">نه، فقط چت‌ها</string>
     <string name="pref_show_emails_accepted_contacts">برای مخاطبین پذیرفته شده</string>
     <string name="pref_show_emails_all">همه</string>
-    <string name="pref_empty_server_title">حذف ایمیل‌ها از سرور</string>
-    <string name="pref_empty_server_msg">این عملگر کمک به آزاد کردن فضای IMAP می‌کند و این کار را با حذف همه ایمیل‌ها و گفتگوها  از پوشه  های انتخاب شده انجام می‌شود. پیام‌هایی که در این دستگاه هستند حذف نمی‌شوند. حذف کردن قابل بازگشت نیست! </string>
-    <string name="pref_empty_server_inbox">حذف ایمیل‌های پوشه \"Inbox\"</string>
-    <string name="pref_empty_server_mvbox">حذف همه ایمیل‌ها در پوشه\"DeltaChat\"</string>
-    <string name="pref_empty_server_do_button">حذف ایمیل‌ها</string>
     <string name="pref_experimental_features">ویژگی‌های آزمایشی</string>
     <string name="pref_on_demand_location_streaming">اشتراک موقعیت مکانی در صورت نیاز</string>
     <string name="pref_background_default">تصویر زمینه پیش‌فرض</string>
     <string name="pref_background_default_color">رنگ پیش‌فرض</string>
     <string name="pref_background_custom_image">تصویر ترجیحی</string>
     <string name="pref_background_custom_color">رنگ ترجیحی</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">پاک کردن خودکار پیام‌ها</string>
-    <string name="autodel_title_short">پاک کردن خودکار</string>
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>
     <string name="autodel_server_title">پاک کردن پیام‌ها از سرور</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -623,8 +610,6 @@
     <string name="more_info_desktop">جزئیات بیشتر </string>
     <string name="logout_desktop">خروج</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">بدون چت آرشیو شده</string>
-    <string name="no_chats_desktop">بدون چت</string>
     <string name="encryption_info_desktop">نمایش مشخصات رمزگذاری</string>
     <string name="verified_desktop">تایید شده</string>
     <string name="remove_desktop">حذف</string>
@@ -679,4 +664,6 @@
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش لیست ایمیل‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت سرور ندارد مخاطبین شما به جایی ارسال نمی‌شوند. </string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دلتاچت از میکروفون برای ذخیره و ارسال پیام صوتی یا فیلم دارای صدا استفاده می‌کند.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

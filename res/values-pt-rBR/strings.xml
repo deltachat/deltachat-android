@@ -55,8 +55,6 @@
     <string name="now">Agora</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Perigo</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Hoje</string>
     <string name="yesterday">Ontem</string>
     <string name="this_week">Esta semana</string>
@@ -169,8 +167,6 @@
     <string name="menu_select_all">Selecionar tudo</string>
     <string name="menu_expand">Expandir</string>
     <string name="menu_edit_name">Modificar nome</string>
-    <string name="menu_edit_group_name">Modificar nome do grupo</string>
-    <string name="menu_edit_group_image">Modificar imagem do grupo</string>
     <string name="menu_settings">Configurações</string>
     <string name="menu_advanced">Avançado</string>
     <string name="menu_deaddrop">Solicitações de contato</string>
@@ -328,7 +324,6 @@
     <string name="login_error_cannot_login">Impossível acessar \"%1$s\". Por favor, verifique o e-mail e senha.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Resposta de %1$s: %2$s\n\nAlguns provedores colocam informações adicionais na sua caixa de entrada; verifique-as, por exemplo, na interface web. Consulte o seu provedor ou amigos se você tiver problemas.</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Encaminhar para...</string>
@@ -367,7 +362,6 @@
     <string name="pref_notifications_show">Exibir</string>
     <string name="pref_notifications_priority">Prioridade</string>
     <string name="pref_led_color">Cor do LED</string>
-    <string name="pref_led_pattern">Padrão de brilho do LED</string>
     <string name="pref_sound">Som</string>
     <string name="pref_silent">Silêncio</string>
     <string name="pref_privacy">Privacidade</string>
@@ -425,11 +419,6 @@
     <string name="pref_show_emails_no">Não, somente conversas</string>
     <string name="pref_show_emails_accepted_contacts">Para contatos aceitos</string>
     <string name="pref_show_emails_all">Todos</string>
-    <string name="pref_empty_server_title">Apagar e-mails do servidor</string>
-    <string name="pref_empty_server_msg">Esta função ajuda a liberar espaço em seu servidor IMAP ao apagar TODOS os e-mails, incluindo conversas, em suas respectivas pastas. Mensagens neste dispositivo não serão apagadas. A remoção não pode ser desfeita!</string>
-    <string name="pref_empty_server_inbox">Deletar TODOS os e-mais na Caixa de Entrada.</string>
-    <string name="pref_empty_server_mvbox">Deletar TODOS os e-mails na pasta DeltaChat.</string>
-    <string name="pref_empty_server_do_button">Deletar e-mails</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">A criptografia automática (Autocrypt) é um padrão novo e aberto para criptografia de e-mail de ponta a ponta. \n\n A sua configuração é feita automaticamente conforme necessário e pode ser compartilhada entre dispositivos diferentes com \"mensagens de configuração do Autocrypt\".</string>
@@ -557,8 +546,6 @@
     <string name="more_info_desktop">Mais informação</string>
     <string name="logout_desktop">Sair</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Não há conversas arquivadas</string>
-    <string name="no_chats_desktop">Sem conversas</string>
     <string name="encryption_info_desktop">Exibir informações de criptografia</string>
     <string name="verified_desktop">verificado</string>
     <string name="remove_desktop">Remover</string>
@@ -596,4 +583,6 @@
     <string name="user_location_permission_explanation">O Delta Chat precisa acessar sua localização para que você possa exibi-la e compartilhá-la.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

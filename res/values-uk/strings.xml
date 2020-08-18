@@ -31,8 +31,6 @@
     <string name="bad_email_address">Невірна адреса електронної пошти.</string>
     <string name="password">Пароль</string>
     <string name="now">Зараз</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%dхв</string>
     <string name="today">Сьогодні</string>
     <string name="yesterday">Вчора</string>
     <string name="this_week">Цього тижня</string>
@@ -263,7 +261,6 @@
     <string name="login_error_cannot_login">Не вдалося увійти як «%1$s». Будь ласка, перевірте правильність адреси електронної пошти і пароля.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Відповідь сервера %1$s: %2$s\n\nДеякі сервери електронної пошти зберігають додаткову інформацію у папці «Вхідні». Ви можете перевірити цю папку, наприклад, використовуючи доступ через веб-інтерфейс. Якщо Ви зіткнулися з проблемами, проконсультуйтеся з провайдером електронної пошти або знайомими фахівцями.</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслати...</string>
@@ -296,7 +293,6 @@
     <string name="pref_notifications_show">Показати</string>
     <string name="pref_notifications_priority">Пріоритет</string>
     <string name="pref_led_color">Колір світлодіоду</string>
-    <string name="pref_led_pattern">Ритм мерехтіння світлодіоіду</string>
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучний</string>
     <string name="pref_privacy">Конфіденційність</string>
@@ -471,8 +467,6 @@
     <string name="more_info_desktop">Більше інформації</string>
     <string name="logout_desktop">Вийти</string>
     <string name="timestamp_format_m_desktop">МММ Д</string>
-    <string name="no_archived_chats_desktop">Немає заархівованих чатів</string>
-    <string name="no_chats_desktop">Немає чатів</string>
     <string name="encryption_info_desktop">Показати інформацію про шифрування</string>
     <string name="verified_desktop">Перевірено</string>
     <string name="remove_desktop">Видалити</string>
@@ -506,4 +500,6 @@
     <string name="message_detail_to_desktop"> </string>
     <string name="menu.view.developer.open.log.folder">Відкрити папку журналів</string>
     <string name="menu.view.developer.open.current.log.file">Відкрити поточний файл журналу</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

@@ -52,8 +52,6 @@
     <string name="now">Nå</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Fare</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d minutt</string>
     <string name="today">I dag</string>
     <string name="yesterday">I går</string>
     <string name="this_week">Denne uken</string>
@@ -164,8 +162,6 @@
     <string name="menu_select_all">Velg alle</string>
     <string name="menu_expand">Utvid</string>
     <string name="menu_edit_name">Rediger navn</string>
-    <string name="menu_edit_group_name">Rediger gruppenavn</string>
-    <string name="menu_edit_group_image">Rediger gruppebilde</string>
     <string name="menu_settings">Innstillinger</string>
     <string name="menu_advanced">Avanserte innstillinger</string>
     <string name="menu_deaddrop">Kontaktforespørsler</string>
@@ -274,7 +270,6 @@
     <string name="pref_notifications_show">Vis</string>
     <string name="pref_notifications_priority">Prioritet</string>
     <string name="pref_led_color">LED-farge</string>
-    <string name="pref_led_pattern">LED-blinkemønster</string>
     <string name="pref_sound">Lyd</string>
     <string name="pref_silent">Stille</string>
     <string name="pref_privacy">Personvern</string>
@@ -392,7 +387,6 @@
     <string name="contact_request_title_desktop">Kontaktforespørsel</string>
     <string name="delete_message_desktop">Slett melding</string>
     <string name="more_info_desktop">Mer informasjon</string>
-    <string name="no_chats_desktop">Ingen sladder.</string>
     <string name="encryption_info_desktop">Krypteringsinfo</string>
     <string name="verified_desktop">bekreftet</string>
     <string name="remove_desktop">Fjerne</string>
@@ -405,4 +399,6 @@
     <string name="none_blocked_desktop">Ingen blokkerte kontakter enda</string>
     <string name="me_desktop">Meg</string>
     <string name="message_detail_from_desktop">Fra</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>
