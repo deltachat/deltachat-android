@@ -86,9 +86,7 @@ public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListe
 
     @Override
     public void onDidFinishRenderingFrame(boolean fully) {
-        if (fully) {
-            update();
-        }
+        update();
     }
 
     private void update() {
