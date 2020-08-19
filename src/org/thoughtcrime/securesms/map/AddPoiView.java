@@ -71,4 +71,8 @@ public class AddPoiView extends LinearLayoutCompat {
     public void setOnMessageSentListener(SendingTask.OnMessageSentListener listener) {
         this.listener = listener;
     }
+
+    public EditText getMessageView() {
+        return messageView;
+    }
 }
