@@ -349,11 +349,15 @@ public class NotificationCenter {
                     .setColor(context.getResources().getColor(R.color.delta_primary))
                     .setPriority(Prefs.getNotificationPriority(context))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                    .setGroup(GRP_MSG)
                     .setOnlyAlertOnce(!signal)
                     .setContentText(line)
                     .setDeleteIntent(getMarkAsReadIntent(chatId, false))
                     .setContentIntent(getOpenChatIntent(chatId));
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                builder.setGroup(GRP_MSG);
+            }
+
             if (privacy.isDisplayContact()) {
                 builder.setContentTitle(dcChat.getName());
             }
