@@ -42,6 +42,7 @@ import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_
 import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
 import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
 import static com.mapbox.mapboxsdk.constants.MapboxConstants.MINIMUM_ZOOM;
+import static org.thoughtcrime.securesms.map.MapDataManager.CONTACT_ID;
 import static org.thoughtcrime.securesms.map.MapDataManager.IS_POI;
 import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
@@ -334,6 +335,11 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                             int[] messages = new int[1];
                             messages[0] = messageId;
                             ApplicationContext.getInstance(MapActivity.this).dcContext.deleteMsgs(messages);
+                            int contactId = feature.getNumberProperty(CONTACT_ID).intValue();
+                            if (mapDataManager.isSelected(feature)) {
+                                mapDataManager.unselectMarker();
+                            }
+                            mapDataManager.updateSource(contactId);
                         })
                         .setNegativeButton(R.string.no, null)
                         .show();
