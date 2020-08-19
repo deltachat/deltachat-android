@@ -68,21 +68,6 @@ public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListe
         markers.add(markerView);
     }
 
-    /**
-     * Remove an existing markerView from the map.
-     *
-     * @param markerView the markerView to be removed from the map
-     */
-    @UiThread
-    public void removeMarker(@NonNull MarkerView markerView) {
-        if (mapView.isDestroyed() || !markers.contains(markerView)) {
-            return;
-        }
-
-        mapView.removeView(markerView.getView());
-        markers.remove(markerView);
-    }
-
     public boolean hasMarkers() {
         return markers.size() > 0;
     }
