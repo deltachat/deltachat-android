@@ -72,13 +72,12 @@ public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListe
         return markers.size() > 0;
     }
 
+    @UiThread
     public void removeMarkers() {
-        if (mapView.isDestroyed()) {
-            return;
-        }
-        
-        for (MarkerView markerView : markers) {
-            mapView.removeView(markerView.getView());
+        if (!mapView.isDestroyed()) {
+            for (MarkerView markerView : markers) {
+                mapView.removeView(markerView.getView());
+            }
         }
 
         centeredMarker = null;
