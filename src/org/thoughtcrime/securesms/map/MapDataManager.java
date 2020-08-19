@@ -243,6 +243,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         new GenerateInfoWindowTask(this).execute(selectedFeature);
     }
 
+    public boolean isSelected(@NonNull Feature feature) {
+        return selectedFeature != null && selectedFeature.id().equals(feature.id());
+    }
+
     /**
      * Invoked when the bitmaps have been generated from a view.
      */
@@ -502,6 +506,17 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         new DataCollectionTask(dcContext,
                 chatId,
                 getContactIds(chatId),
+                contactMapSources,
+                featureCollections,
+                lastPositions,
+                boundingBuilder,
+                this).execute();
+    }
+
+    public void updateSource(int contactId) {
+        new DataCollectionTask(dcContext,
+                chatId,
+                new int[]{contactId},
                 contactMapSources,
                 featureCollections,
                 lastPositions,
