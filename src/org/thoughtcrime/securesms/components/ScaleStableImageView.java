@@ -101,8 +101,14 @@ public class ScaleStableImageView
         // don't scale; Crop.
         Bitmap original = ((BitmapDrawable) defaultDrawable).getBitmap();
         if(original.getHeight() >= height && original.getWidth() >= width) {
-            int startX = (original.getWidth() - width) /2;
-            Bitmap cropped = Bitmap.createBitmap(original, startX, 0, width, height);
+            Bitmap cropped;
+            if (portrait) {
+                int startX = (original.getWidth() - width) / 2;
+                cropped = Bitmap.createBitmap(original, startX, 0, width, height);
+            } else {
+                int startY = (original.getHeight() - height) /2;
+                cropped = Bitmap.createBitmap(original, 0, startY, width, height);
+            }
             Drawable croppedDrawable = new BitmapDrawable(getResources(), cropped);
             overrideDrawable(croppedDrawable);
         } else {
