@@ -62,7 +62,7 @@ public class AudioSlidePlayer {
   private @NonNull  WeakReference<Listener> listener;
   private @Nullable SimpleExoPlayer         mediaPlayer;
   private @Nullable SimpleExoPlayer         durationCalculator;
-  private @NonNull  String                  name;
+  private @NonNull  String                  name = "-- Nothing yet --";
 
   public static AudioSlidePlayer createFor(@NonNull Context context,
                                            @NonNull AudioSlide slide,
@@ -239,8 +239,7 @@ public class AudioSlidePlayer {
     synchronized (MONITOR) {
       Log.d(TAG, "stopKeepingScreenOn " + name + " list: " + CURRENTLY_PLAYING);
       if (context instanceof Activity) { // should always be true
-        // check on string equality is valid as it should be the same instance.
-        if(CURRENTLY_PLAYING.get(CURRENTLY_PLAYING.size()-1) == name) {
+        if(CURRENTLY_PLAYING.get(CURRENTLY_PLAYING.size()-1).equals(name)) {
           Activity activity = ((Activity) context);
           activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
@@ -370,7 +369,7 @@ public class AudioSlidePlayer {
     }
 
     @Override
-    public void handleMessage(Message msg) {
+    public void handleMessage(@NonNull Message msg) {
       AudioSlidePlayer player = playerReference.get();
       if (player == null) return;
       synchronized (MONITOR) {
