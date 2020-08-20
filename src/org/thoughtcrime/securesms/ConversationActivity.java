@@ -848,8 +848,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
     container.addOnKeyboardShownListener(this);
-    container.addOnKeyboardHiddenListener(backgroundView);
-    container.addOnKeyboardShownListener(backgroundView);
     inputPanel.setListener(this);
     inputPanel.setMediaListener(this);
 

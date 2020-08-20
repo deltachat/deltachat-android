@@ -7,16 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
-import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.util.Util;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 
@@ -32,15 +22,11 @@ import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
  * @author Angelo Fuchs
  */
 public class ScaleStableImageView
-    extends AppCompatImageView
-    implements KeyboardAwareLinearLayout.OnKeyboardShownListener, KeyboardAwareLinearLayout.OnKeyboardHiddenListener {
+    extends AppCompatImageView {
 
     private static final String TAG = ScaleStableImageView.class.getSimpleName();
 
     private Drawable defaultDrawable;
-    private Drawable currentDrawable;
-
-    private boolean keyboardShown = false;
 
     public ScaleStableImageView(Context context) {
         this(context, null);
@@ -56,19 +42,11 @@ public class ScaleStableImageView
 
     @Override
     public void setImageDrawable(@Nullable Drawable drawable) {
-        if(defaultDrawable != null && defaultDrawable.equals(drawable)) {
-            Log.i(TAG, "revoked new drawable, it was the same");
-            return;
-        }
-        Log.i(TAG, "new drawable");
         defaultDrawable = drawable;
         overrideDrawable(defaultDrawable);
     }
 
     private void overrideDrawable(Drawable newDrawable) {
-        Log.i(TAG, "override drawable");
-        if (currentDrawable == newDrawable) return;
-        currentDrawable = newDrawable;
         super.setImageDrawable(newDrawable);
     }
 
@@ -89,9 +67,6 @@ public class ScaleStableImageView
             return; // need Bitmap for scaling and cropping.
         }
 
-        Log.i(TAG, "view size. w: " + width + " h: " + height + " p: " + portrait);
-        Log.i(TAG, "image size. w: " + defaultDrawable.getIntrinsicWidth() + " h: " + defaultDrawable.getIntrinsicHeight());
-        Log.i(TAG, "with" + (keyboardShown ? "" : "OUT") + " keyboard");
         // if the image is already fit for the screen, just show it.
         if (defaultDrawable.getIntrinsicWidth() == width &&
             defaultDrawable.getIntrinsicHeight() == height) {
@@ -116,17 +91,5 @@ public class ScaleStableImageView
             Log.i(TAG, "image size. w: " + original.getWidth() + " h: " + original.getHeight());
         }
         super.onSizeChanged(width, height, oldWidth, oldHeight);
-    }
-
-    @Override
-    public void onKeyboardHidden() {
-        keyboardShown = false;
-        Log.i(TAG, "Keyboard hidden");
-    }
-
-    @Override
-    public void onKeyboardShown() {
-        keyboardShown = true;
-        Log.i(TAG, "Keyboard shown");
     }
 }
