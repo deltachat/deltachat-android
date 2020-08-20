@@ -53,8 +53,6 @@
     <string name="now">Ara</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Perill</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Avui</string>
     <string name="yesterday">Ahir</string>
     <string name="this_week">Aquesta setmana</string>
@@ -167,8 +165,6 @@
     <string name="menu_select_all">Selecciona-ho tot</string>
     <string name="menu_expand">Desplega</string>
     <string name="menu_edit_name">Edita el nom</string>
-    <string name="menu_edit_group_name">Modifica el nom del grup</string>
-    <string name="menu_edit_group_image">Modifica la imatge del grup</string>
     <string name="menu_settings">Preferències</string>
     <string name="menu_advanced">Avançat</string>
     <string name="menu_deaddrop">Sol·licituds de contacte</string>
@@ -296,7 +292,6 @@
     <string name="login_error_cannot_login">No es pot iniciar la sessió com a \"%1$s\". Comproveu que l\'adreça electrònica i la contrasenya són correctes.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">La resposta de%1$s ha sigut: %2$s\n\nHi ha proveïdors que posen informació addicional a la vostra safata d\'entrada; podeu trobar-la allà p. ex. usant la interfície de correu web. Consulteu el vostre proveïdor o els vostres amics si teniu problemes.</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenvia a ...</string>
@@ -332,7 +327,6 @@
     <string name="pref_notifications_show">Mostra</string>
     <string name="pref_notifications_priority">Prioritat</string>
     <string name="pref_led_color">Color LED</string>
-    <string name="pref_led_pattern">Patró de pampallugues del LED</string>
     <string name="pref_sound">So</string>
     <string name="pref_silent">Silenci</string>
     <string name="pref_privacy">Privacitat</string>
@@ -510,8 +504,6 @@
     <string name="more_info_desktop">Més informació</string>
     <string name="logout_desktop">Surt</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Cap xat arxivat</string>
-    <string name="no_chats_desktop">Cap xat</string>
     <string name="encryption_info_desktop">Mostra la informació de xifratge</string>
     <string name="verified_desktop">Verificat</string>
     <string name="remove_desktop">Elimina</string>
@@ -549,4 +541,6 @@
     <string name="user_location_permission_explanation">Delta Chat necessita permís per accedir a la ubicació per poder-la mostrar i compartir.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

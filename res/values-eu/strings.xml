@@ -55,8 +55,6 @@
     <string name="now">Orain</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Arriskua</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Gaur</string>
     <string name="yesterday">Atzo</string>
     <string name="this_week">Aste honetan</string>
@@ -169,8 +167,6 @@
     <string name="menu_select_all">Hautatu guztiak</string>
     <string name="menu_expand">Hedatu</string>
     <string name="menu_edit_name">Editatu izena</string>
-    <string name="menu_edit_group_name">Editatu taldearen izena</string>
-    <string name="menu_edit_group_image">Editatu taldearen irudia</string>
     <string name="menu_settings">Ezarpenak</string>
     <string name="menu_advanced">Aurreratua</string>
     <string name="menu_deaddrop">Kontaktu-eskaerak</string>
@@ -347,11 +343,8 @@
     <string name="login_error_cannot_login">Ezin da \"%1$s\" bezala saioa hasi. Egiaztatu E-mail helbidea eta pasahitza zuzenak diren.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">%1$s(r)en erantzuna: %2$s\n\nHornitzaile batzuk informazio gehigarria uzten dute zure sarrera ontzian; adibidez bere web interfazearen bidez egiaztatu dezakezu. Galdetu zure hornitzaileari edo lagunei arazoak badituzu.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Onartu ostalari izen baliogabeak</string>
     <string name="accept_invalid_certificates">Onartu ziurtagiri baliogabeak</string>
-
     <string name="used_settings">Erabilitako ezarpenak:</string>
     <string name="switch_account">Aldatu kontua</string>
     <string name="add_account">Gehitu kontua</string>
@@ -398,7 +391,6 @@
     <string name="pref_notifications_show">Erakutsi</string>
     <string name="pref_notifications_priority">Lehentasuna</string>
     <string name="pref_led_color">LED kolorea</string>
-    <string name="pref_led_pattern">LEDaren kliskatze eredua</string>
     <string name="pref_sound">Soinua</string>
     <string name="pref_silent">Isila</string>
     <string name="pref_privacy">Pribatutasuna</string>
@@ -457,11 +449,6 @@
     <string name="pref_show_emails_no">Ez, txatak besterik ez</string>
     <string name="pref_show_emails_accepted_contacts">Onartutako kontaktuena</string>
     <string name="pref_show_emails_all">Denak</string>
-    <string name="pref_empty_server_title">Ezabatu e-mailak zerbitzaritik</string>
-    <string name="pref_empty_server_msg">Funtzio honek IMAP zerbitzarian espazioa aurreztea ahalbidetzen dizu karpeta zehatzetako e-mail GUZTIAK ezabatuz, txatetako mezuak barne. Gailu honetako mezuak ez dira ezabatuko. Behin ezabatuta ezin dira berreskuratu!</string>
-    <string name="pref_empty_server_inbox">Ezabatu sarrera ontziko e-mail GUZTIAK</string>
-    <string name="pref_empty_server_mvbox">Ezabatu DeltaChat karpetako e-mail GUZTIAK</string>
-    <string name="pref_empty_server_do_button">Ezabatu e-mailak</string>
     <string name="pref_experimental_features">Ezaugarri esperimentalak</string>
     <string name="pref_on_demand_location_streaming">Eskaera bidezko kokalekuaren hedapena</string>
     <string name="pref_background_default">Lehenetsitako atzealdea</string>
@@ -471,8 +458,10 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Bigarren planoko konexio egonkorra</string>
     <string name="pref_reliable_service_explain">Etengabeko jakinarazpena eskatzen du</string>
+
+
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Automatikoki ezabatu mezuak</string>
-    <string name="autodel_title_short">Automatikoki ezabatu</string>
     <string name="autodel_device_title">Ezabatu mezuak gailutik</string>
     <string name="autodel_server_title">Ezabatu mezuak zerbitzaritik</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -628,8 +617,6 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="more_info_desktop">Informazio gehiago</string>
     <string name="logout_desktop">Amaitu saioa</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Artxibatutako txatik ez</string>
-    <string name="no_chats_desktop">Txatik ez</string>
     <string name="encryption_info_desktop">Erakutsi zifratzeari buruzko informazioa</string>
     <string name="verified_desktop">egiaztatuta</string>
     <string name="remove_desktop">Kendu</string>
@@ -684,4 +671,6 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="InfoPlist_NSContactsUsageDescription">Kontaktuen liburua atzitzeko baimena emateak zure gailuko kontaktuekin txateatzea ahalbidetzen dizu.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Mikrofonoa  atzitzeko baimena emateak audioa grabatzea ahalbidetzen dizu.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Argazkien bilduma atzitzeko baimena emateak bertatik argazkiak igotzea ahalbidetzen dizu.</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

@@ -54,8 +54,6 @@
     <string name="now">Como</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Perìgulu</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Oe</string>
     <string name="yesterday">Eris</string>
     <string name="this_week">Custa chida</string>
@@ -168,8 +166,6 @@
     <string name="menu_select_all">Ischerta totu</string>
     <string name="menu_expand">Ismànnia</string>
     <string name="menu_edit_name">Modìfica su nùmene</string>
-    <string name="menu_edit_group_name">Modìfica su nùmene de su grupu</string>
-    <string name="menu_edit_group_image">Modìfica s\'immàgine de su grupu</string>
     <string name="menu_settings">Impostatziones</string>
     <string name="menu_advanced">Avantzadas</string>
     <string name="menu_deaddrop">Rechestas de cuntatu</string>
@@ -346,9 +342,8 @@
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta dae %1$s: %2$s\n\nUnos cantos frunidores insertant informatziones in prus in sa cartella de intrada tua; podes verificare a es. dae sa pàgina web. Si tenes problemas consulta su frunidore tuo o sos amigos tuos.</string>
-
+    <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Atzetat tzertificados non vàlidos</string>
-
     <string name="used_settings">Impostatziones impreadas:</string>
     <string name="switch_account">Càmbia contu</string>
     <string name="add_account">Annanghe unu contu</string>
@@ -395,7 +390,6 @@
     <string name="pref_notifications_show">Ammustra</string>
     <string name="pref_notifications_priority">Prioridade</string>
     <string name="pref_led_color">Colore LED</string>
-    <string name="pref_led_pattern">Istile de lampègiu LED</string>
     <string name="pref_sound">Sonu</string>
     <string name="pref_silent">Istuda su sonu</string>
     <string name="pref_privacy">Riservadesa</string>
@@ -454,11 +448,6 @@
     <string name="pref_show_emails_no">Nono, tzarradas ebbia</string>
     <string name="pref_show_emails_accepted_contacts">Pro sos cuntatos atzetados</string>
     <string name="pref_show_emails_all">Totus</string>
-    <string name="pref_empty_server_title">Iscantzella sas lìteras dae su serbidore</string>
-    <string name="pref_empty_server_msg">Custa funtzionalidade permitet de liberare tretu in su serbidore IMAP tuo iscantzellende totu sas lìteras de posta eletrònica, incluende sos messàgios de sas tzarradas, in sas cartellas ischertadas. Sos messàgios in custu dispositivu no ant a èssere iscantzellados. S\'iscantzellamentu non podet èssere annulladu!</string>
-    <string name="pref_empty_server_inbox">Iscantzella totu sas lìteras in sa cartella de intrada</string>
-    <string name="pref_empty_server_mvbox">Iscantzella totu sas lìteras in sa cartella \"DeltaChat\"</string>
-    <string name="pref_empty_server_do_button">Iscantzella lìteras</string>
     <string name="pref_experimental_features">Funtzionalidades isperimentales</string>
     <string name="pref_on_demand_location_streaming">Trasmissione de sa positzione suta dimanda</string>
     <string name="pref_background_default">Isfundu predefinidu</string>
@@ -468,8 +457,10 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Connessione de isfundu de fide</string>
     <string name="pref_reliable_service_explain">Tenet bisòngiu de una notìfica permanente</string>
+
+
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
-    <string name="autodel_title_short">Iscantzella automaticamente</string>
     <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>
     <string name="autodel_server_title">Iscantzella sos messàgios dae su servidore</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -492,4 +483,6 @@
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>
     <string name="encryption_info_desktop">Ammustra sas informatziones de tzifradura</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

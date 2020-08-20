@@ -59,8 +59,6 @@
     <string name="now">Şimdi</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Tehlikeli</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d dk</string>
     <string name="today">Bugün</string>
     <string name="yesterday">Dün</string>
     <string name="this_week">Bu hafta</string>
@@ -175,8 +173,6 @@
     <string name="menu_select_all">Tümünü seç</string>
     <string name="menu_expand">Genişlet</string>
     <string name="menu_edit_name">Adı düzenle</string>
-    <string name="menu_edit_group_name">Grup adını düzenle</string>
-    <string name="menu_edit_group_image">Grup görselini düzenle</string>
     <string name="menu_settings">Ayarlar</string>
     <string name="menu_advanced">Gelişmiş</string>
     <string name="menu_deaddrop">İletişim istekleri</string>
@@ -370,12 +366,9 @@
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">\"%1$s\" olarak oturum açılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">%1$s yanıtı: %2$s\n\nBazı sağlayıcılar gelen kutunuza ek bilgiler yerleştirir; onları örn. web ön ucundan denetleyebilirsiniz. Sorun yaşarsanız sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
-
+    <string name="login_error_server_response">%1$s yanıtı: %2$s\n\nBazı sağlayıcılar size bu sorun hakkında e-posta gönderebilir; ilgili uygulamanızdan ya da web sitesinden gelen kutunuzu denetleyebiliyor olmalısınız. Sorun yaşarsanız sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Geçersiz ana bilgisayar adlarını kabul et</string>
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
-
     <string name="used_settings">Kullanılan ayarlar:</string>
     <string name="switch_account">Hesap değiştir</string>
     <string name="add_account">Hesap ekle</string>
@@ -425,7 +418,6 @@
     <string name="pref_notifications_show">Göster</string>
     <string name="pref_notifications_priority">Öncelik</string>
     <string name="pref_led_color">LED rengi</string>
-    <string name="pref_led_pattern">LED yanıp sönme deseni</string>
     <string name="pref_sound">Ses</string>
     <string name="pref_silent">Sessiz</string>
     <string name="pref_privacy">Gizlilik</string>
@@ -484,11 +476,6 @@
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
     <string name="pref_show_emails_accepted_contacts">Kabul edilen kişiler için</string>
     <string name="pref_show_emails_all">Tümü</string>
-    <string name="pref_empty_server_title">E-postaları sunucudan sil</string>
-    <string name="pref_empty_server_msg">Bu işlev, verilen klasörlerdeki sohbet iletilerini kapsayıp tüm e-postaları silerek IMAP sunucunuzda boş alan açmanıza yardım eder. Bu aygıttaki iletiler silinmeyecek. Silme geri alınamaz!</string>
-    <string name="pref_empty_server_inbox">\"Gelen Kutusu\" klasöründeki tüm e-postaları sil</string>
-    <string name="pref_empty_server_mvbox">\"DeltaChat\" klasöründeki tüm e-postaları sil</string>
-    <string name="pref_empty_server_do_button">E-postaları sil</string>
     <string name="pref_experimental_features">Deneysel özellikler</string>
     <string name="pref_on_demand_location_streaming">İsteğe bağlı konum akışı</string>
     <string name="pref_background_default">Varsayılan arka plan</string>
@@ -498,13 +485,12 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Güvenilir arka plan bağlantısı</string>
     <string name="pref_reliable_service_explain">Kalıcı bir bildirim gerektirir</string>
-    <string name="ephemeral_dialog_title">Okunan iletileri sil</string>
 
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski iletileri sil</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">İletileri otomatik sil</string>
-    <string name="autodel_title_short">Otomatik sil</string>
     <string name="autodel_device_title">İletileri aygıttan sil</string>
     <string name="autodel_server_title">İletileri sunucudan sil</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -678,8 +664,6 @@
     <string name="more_info_desktop">Daha fazla bilgi</string>
     <string name="logout_desktop">Oturumu kapat</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Arşivlenen sohbet yok</string>
-    <string name="no_chats_desktop">Sohbet yok</string>
     <string name="encryption_info_desktop">Şifreleme bilgisini göster</string>
     <string name="verified_desktop">doğrulanan</string>
     <string name="remove_desktop">Kaldır</string>
@@ -738,6 +722,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">Bir bakışta yeni Delta Chat 1.10: Daha hızlı, çoklu hesap, bulanık görseller, yeni emojiler, yeniden çalışılmış bildirimler, daha iyi hata raporlama ama en önemlisi:\n\nProfildeki bir avatarı tıklayın ve onu genişletin 🚀</string>
 
 </resources>

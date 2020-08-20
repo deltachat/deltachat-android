@@ -59,8 +59,6 @@
     <string name="now">Nu</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Fara</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Idag</string>
     <string name="yesterday">Igår</string>
     <string name="this_week">Denna vecka</string>
@@ -175,8 +173,6 @@
     <string name="menu_select_all">Markera alla</string>
     <string name="menu_expand">Expandera</string>
     <string name="menu_edit_name">Redigera namn</string>
-    <string name="menu_edit_group_name">Redigera gruppnamn</string>
-    <string name="menu_edit_group_image">Redigera gruppbild</string>
     <string name="menu_settings">Inställningar</string>
     <string name="menu_advanced">Avancerat</string>
     <string name="menu_deaddrop">Kontaktförfrågningar</string>
@@ -371,11 +367,8 @@
     <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Svar från %1$s: %2$s\n\nVissa e-postleverantörer placerar tilläggsinformation i din inkorg. Du kan kontrollera dem i t.ex. webbgränssnittet. Kontakta din e-postleverantör eller vänner om du stöter på problem.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Acceptera ogiltiga värdnamn</string>
     <string name="accept_invalid_certificates">Acceptera ogiltiga certifikat</string>
-
     <string name="used_settings">Använda inställningar:</string>
     <string name="switch_account">Byt konto</string>
     <string name="add_account">Lägg till konto</string>
@@ -425,7 +418,6 @@
     <string name="pref_notifications_show">Visa</string>
     <string name="pref_notifications_priority">Prioritet</string>
     <string name="pref_led_color">Färg på ljusindikator</string>
-    <string name="pref_led_pattern">Blinkmönster på ljusindikator</string>
     <string name="pref_sound">Ljud</string>
     <string name="pref_silent">Tyst</string>
     <string name="pref_privacy">Integritet</string>
@@ -484,11 +476,6 @@
     <string name="pref_show_emails_no">Nej, bara cattar</string>
     <string name="pref_show_emails_accepted_contacts">För godkända kontakter</string>
     <string name="pref_show_emails_all">Alla</string>
-    <string name="pref_empty_server_title">Ta bort e-postmeddelanden från servern</string>
-    <string name="pref_empty_server_msg">Den här funktionen hjälper till att frigöra utrymme på din IMAP-server genom att ta bort alla e-postmeddelanden, inklusive chattmeddelanden, i de angivna mapparna. Meddelanden på den här enheten tas inte bort. Borttagningen kan inte ångras!</string>
-    <string name="pref_empty_server_inbox">Ta bort alla e-postmeddelanden i mappen \"Inkorg\"</string>
-    <string name="pref_empty_server_mvbox">Ta bort alla e-postmeddelanden i mappen \"DeltaChat\"</string>
-    <string name="pref_empty_server_do_button">Ta bort e-postmeddelanden</string>
     <string name="pref_experimental_features">Experimentella funktioner</string>
     <string name="pref_on_demand_location_streaming">På-begäran platsströmning</string>
     <string name="pref_background_default">Standardbakgrund</string>
@@ -498,13 +485,12 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Tillförlitlig bakgrundsanslutning</string>
     <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
-    <string name="ephemeral_dialog_title">Ta bort lästa meddelanden</string>
 
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ta bort gamla meddelanden</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Ta bort meddelanden automatiskt</string>
-    <string name="autodel_title_short">Ta bort automatiskt</string>
     <string name="autodel_device_title">Ta bort meddelanden från enheten</string>
     <string name="autodel_server_title">Ta bort meddelanden från servern</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -678,8 +664,6 @@
     <string name="more_info_desktop">Mer information</string>
     <string name="logout_desktop">Logga ut</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Inga arkiverade chattar</string>
-    <string name="no_chats_desktop">Inga chattar</string>
     <string name="encryption_info_desktop">Visa krypteringsinfo</string>
     <string name="verified_desktop">verifierad</string>
     <string name="remove_desktop">Ta bort</string>
@@ -738,6 +722,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">Nya Delta Chatt 1.10-funktioner i korthet: Snabbare, multikonto, suddiga bilder, nya emojis, omarbetade meddelanden, bättre felrapportering men viktigast av allt... \n\nKlicka på en avatar i profilen och förstora den 🚀</string>
 
 </resources>

@@ -6,6 +6,7 @@
     <string name="cancel">Cancelar</string>
     <string name="yes">Si</string>
     <string name="no">Non</string>
+    <string name="select">Seleccionar</string>
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="def">Por omisión</string>
@@ -14,6 +15,8 @@
     <string name="automatic">Automático</string>
     <string name="strict">Estrito</string>
     <string name="open">Abrir</string>
+    <string name="join">Unirse</string>
+    <string name="rejoin">Volta a unirte</string>
     <string name="delete">Eliminar</string>
     <string name="info">Infor</string>
     <string name="update">Actualizar</string>
@@ -26,6 +29,7 @@
     <string name="unarchive">Desarquivar</string>
     <string name="mute">Acalar</string>
     <string name="ephemeral_messages">Desaparición das mensaxes</string>
+    <string name="ephemeral_messages_hint">Estos axustes aplícanse a todas as participantes que usan Delta Chat. Porén, elas poderían copiar, gardar e reenviar mensaxes ou usar outros clientes de email.</string>
     <string name="save">Gardar</string>
     <string name="chat">Chat</string>
     <string name="media">Medios</string>
@@ -55,8 +59,6 @@
     <string name="now">Agora</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Perigo</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%dmin</string>
     <string name="today">Hoxe</string>
     <string name="yesterday">Onte</string>
     <string name="this_week">Esta semana</string>
@@ -171,8 +173,6 @@
     <string name="menu_select_all">Escoller todo</string>
     <string name="menu_expand">Despregar</string>
     <string name="menu_edit_name">Editar nome</string>
-    <string name="menu_edit_group_name">Editar nome do grupo</string>
-    <string name="menu_edit_group_image">Editar imaxe do grupo</string>
     <string name="menu_settings">Axustes</string>
     <string name="menu_advanced">Avanzado</string>
     <string name="menu_deaddrop">Solicitudes de contacto</string>
@@ -210,6 +210,21 @@
     <string name="share_location_for_six_hours">durante 6 h.</string>
 
     <string name="file_saved_to">Ficheiro gardado en \"%1$s\".</string>
+
+    <string name="videochat">Chat de vídeo</string>
+    <string name="videochat_invite_user_to_videochat">Convidar a %1$s a un chat de vídeo?</string>
+    <string name="videochat_invite_user_hint">Esto require unha app compatible ou un navegador compatible nos dous extremos.</string>
+    <string name="videochat_contact_invited_hint">%1$s convidada a un chat de vídeo.</string>
+    <string name="videochat_you_invited_hint">Convidaches a un chat de vídeo.</string>
+    <string name="videochat_will_open_in_your_browser">Este chat de vídeo abrirase no teu navegador.</string>
+    <string name="videochat_tap_to_join">Toca para unirte</string>
+    <string name="videochat_tap_to_open">Toca para abrir</string>
+    <string name="videochat_instance">Instancia para video chat</string>
+    <string name="videochat_instance_placeholder">A túa instancia para video chat</string>
+    <string name="videochat_instance_explain">Se está definida unha instancia de video chat podes iniciar o chat desde calquera conversa un-a-un. Os chats de vídeo requiren unha app ou navegador compatibles para as participantes.\n\nExemplos: https://meet.jit.si/$ROOM ou basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">¿Usar \"%1$s\" para convidar a outras a chats de vídeo?\n\nUnha vez establecido podes iniciar o chat desde a conversa un-a-un. Esto restablece o axuste anterior para video chats se existise.</string>
+    <string name="videochat_invitation">Convite a chat de vídeo</string>
+    <string name="videochat_invitation_body">Convidáronte a un chat de vídeo, preme %1$s para unirte.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Seguro que desexa abandonar o grupo?</string>
@@ -352,11 +367,8 @@
     <string name="login_error_cannot_login">Non se puido conectar como \"%1$s\". Comproba o enderezo de correo e o contrasinal.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Resposta desde %1$s: %2$s\n\nAlgúns provedores poñen información adicional na túa caixa de entrada; podes comprobalo por exemplo na interface web. Consulta ao teu provedor ou amigos se atopas problemas.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Aceptar hostnames non válidos</string>
     <string name="accept_invalid_certificates">Aceptar certificados non válidos</string>
-
     <string name="used_settings">Axustes utilizados:</string>
     <string name="switch_account">Cambiar de conta</string>
     <string name="add_account">Engadir conta</string>
@@ -406,7 +418,6 @@
     <string name="pref_notifications_show">Mostrar</string>
     <string name="pref_notifications_priority">Prioridade</string>
     <string name="pref_led_color">cor LED</string>
-    <string name="pref_led_pattern">patrón pestanexo LED</string>
     <string name="pref_sound">Son</string>
     <string name="pref_silent">Mudo</string>
     <string name="pref_privacy">Intimidade</string>
@@ -465,11 +476,6 @@
     <string name="pref_show_emails_no">Non, só conversas</string>
     <string name="pref_show_emails_accepted_contacts">Para os contactos aceptados</string>
     <string name="pref_show_emails_all">Todos</string>
-    <string name="pref_empty_server_title">Borrar correos no servidor</string>
-    <string name="pref_empty_server_msg">Esta función axuda a liberar espazo no servidor IMAP eliminando todos os correos, incuíndo mensaxes de conversa, nos cartafoles indicados. As mensaxes no dispositivo non serán borradas. O borrado non ten volta atrás!</string>
-    <string name="pref_empty_server_inbox">Borrar todos os correos da caixa de \"Entrada\"</string>
-    <string name="pref_empty_server_mvbox">Borrar todos os correos do cartafol \"DeltaChat\"</string>
-    <string name="pref_empty_server_do_button">Borrar correos</string>
     <string name="pref_experimental_features">Zona de probas</string>
     <string name="pref_on_demand_location_streaming">Difusión da ubicación por solicitude</string>
     <string name="pref_background_default">Fondo por omisión</string>
@@ -479,13 +485,12 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Conexión estable en segundo plano</string>
     <string name="pref_reliable_service_explain">Require unha notificación permanente</string>
-    <string name="ephemeral_dialog_title">Eliminar mensaxes lidas</string>
 
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eliminar mensaxes antigas</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Borrado automático</string>
-    <string name="autodel_title_short">Borrar automáticamente</string>
     <string name="autodel_device_title">Borrar mensaxes do dispositivo</string>
     <string name="autodel_server_title">Borrar mensaxes do servidor</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -659,8 +664,6 @@
     <string name="more_info_desktop">Máis info</string>
     <string name="logout_desktop">Desconectar</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Sen conversas arquivadas</string>
-    <string name="no_chats_desktop">Sen conversas</string>
     <string name="encryption_info_desktop">Mostrar info de cifrado</string>
     <string name="verified_desktop">verificado</string>
     <string name="remove_desktop">Eliminar</string>
@@ -719,6 +722,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">As novas características de Delta Chat 1.10 nunha ollada: máis rápida, múltiples contas, emborranchado de imaxes, novas emoticonas, notificacións melloradas, mellor reporte de fallos, pero o máis importante:\n\nPreme no avatar nun perfil e faino máis grande 🚀</string>
 
 </resources>

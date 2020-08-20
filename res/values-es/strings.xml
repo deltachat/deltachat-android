@@ -54,8 +54,6 @@
     <string name="now">Ahora</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Sea cuidadoso</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Hoy</string>
     <string name="yesterday">Ayer</string>
     <string name="this_week">Esta semana</string>
@@ -168,8 +166,6 @@
     <string name="menu_select_all">Seleccionar todo</string>
     <string name="menu_expand">Expandir</string>
     <string name="menu_edit_name">Editar nombre</string>
-    <string name="menu_edit_group_name">Editar nombre de grupo</string>
-    <string name="menu_edit_group_image">Editar imagen de grupo</string>
     <string name="menu_settings">Ajustes</string>
     <string name="menu_advanced">Avanzado</string>
     <string name="menu_deaddrop">Solicitudes de contacto</string>
@@ -346,11 +342,8 @@
     <string name="login_error_cannot_login">No se puede iniciar sesión como \"%1$s\". Por favor, compruebe si la dirección de correo y la contraseña son correctas.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Respuesta de %1$s: %2$s\n\nAlgunos proveedores colocan información adicional en su bandeja de entrada; Puedes comprobarlo por ej. en la interfaz web. Consulte a su proveedor o amigos si tiene problemas.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Aceptar nombres de host no válidos</string>
     <string name="accept_invalid_certificates">Aceptar certificados no válidos</string>
-
     <string name="used_settings">Ajustes usados:</string>
     <string name="delete_account">Eliminar cuenta</string>
     <string name="delete_account_ask">Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
@@ -393,7 +386,6 @@
     <string name="pref_notifications_show">Mostrar</string>
     <string name="pref_notifications_priority">Prioridad</string>
     <string name="pref_led_color">Color de LED</string>
-    <string name="pref_led_pattern">Patrón de parpadeo LED</string>
     <string name="pref_sound">Sonido</string>
     <string name="pref_silent">Silencio</string>
     <string name="pref_privacy">Privacidad</string>
@@ -452,11 +444,6 @@
     <string name="pref_show_emails_no">No, sólo chats</string>
     <string name="pref_show_emails_accepted_contacts">Para contactos aceptados</string>
     <string name="pref_show_emails_all">Todos</string>
-    <string name="pref_empty_server_title">Eliminar correos del servidor</string>
-    <string name="pref_empty_server_msg">Esta función ayuda a liberar espacio en su servidor IMAP al eliminar TODOS los correos, incluidos los mensajes de chat, en las carpetas indicadas. Los mensajes en este dispositivo no serán eliminados. La eliminación no se puede deshacer!</string>
-    <string name="pref_empty_server_inbox">Eliminar TODOS los correos en la carpeta INBOX</string>
-    <string name="pref_empty_server_mvbox">Eliminar TODOS los correos en la carpeta DeltaChat</string>
-    <string name="pref_empty_server_do_button">Eliminar correos</string>
     <string name="pref_experimental_features">Características experimentales</string>
     <string name="pref_on_demand_location_streaming">Transmisión de ubicación bajo demanda</string>
     <string name="pref_background_default">Fondo por defecto</string>
@@ -599,8 +586,6 @@
     <string name="more_info_desktop">Más información</string>
     <string name="logout_desktop">Cerrar sesión</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">No hay chats archivados</string>
-    <string name="no_chats_desktop">No hay chats</string>
     <string name="encryption_info_desktop">Mostrar información de cifrado</string>
     <string name="verified_desktop">verificado</string>
     <string name="remove_desktop">Eliminar</string>
@@ -655,4 +640,6 @@
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Al permitir el acceso al micrófono podrás grabar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Al permitir el acceso a la galería de fotos podrás subir tus imágenes desde allí.</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

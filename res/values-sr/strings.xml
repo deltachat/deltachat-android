@@ -52,8 +52,6 @@
     <string name="now">Сада</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Опасност</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%dмин</string>
     <string name="today">Данас</string>
     <string name="yesterday">Јуче</string>
     <string name="this_week">Ове недеље</string>
@@ -166,8 +164,6 @@
     <string name="menu_help">Помоћ</string>
     <string name="menu_select_all">Изабери све</string>
     <string name="menu_edit_name">Уреди назив</string>
-    <string name="menu_edit_group_name">уреди назив групе</string>
-    <string name="menu_edit_group_image">уреди слику групе</string>
     <string name="menu_settings">Поставке</string>
     <string name="menu_advanced">Напредно</string>
     <string name="menu_deaddrop">Захтеви за контакт</string>
@@ -257,7 +253,6 @@
     <string name="login_error_cannot_login">Не могу да се пријавим као %1$s. Проверите да ли су е-адреса и лозинка тачни.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Одговор од %1$s: %2$s\n\nНеки пружаоци услуга остављају додатне информације у ваше пријемно сандуче; можете да проверите ово нпр. користећи веб сучеље ваше е-поште. Посаветујте се са пружаоцем услуге или пријатељима ако налетите на проблеме.</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Проследи за…</string>
@@ -277,7 +272,6 @@
     <string name="pref_notifications_show">Прикажи</string>
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_led_color">Боја ЛЕД светла</string>
-    <string name="pref_led_pattern">Трептање ЛЕД светла</string>
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Без звука</string>
     <string name="pref_privacy">Приватност</string>
@@ -374,11 +368,12 @@
     <string name="global_menu_help_desktop">Помоћ</string>
     <string name="contact_request_title_desktop">Захтеви за контакт</string>
     <string name="more_info_desktop">Више података</string>
-    <string name="no_chats_desktop">Још нема ћаскања.</string>
     <string name="remove_desktop">Уклони</string>
     <string name="save_desktop">Сачувај</string>
     <string name="add_contact_desktop">Нови контакт</string>
     <string name="name_desktop">Име</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
     <string name="me_desktop">Ја</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

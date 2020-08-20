@@ -59,8 +59,6 @@
     <string name="now">Tani</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Rrezik</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min.</string>
     <string name="today">Sot</string>
     <string name="yesterday">Dje</string>
     <string name="this_week">Këtë javë</string>
@@ -175,8 +173,6 @@
     <string name="menu_select_all">Përzgjidhi krejt</string>
     <string name="menu_expand">Zgjeroje</string>
     <string name="menu_edit_name">Përpunoni emrin</string>
-    <string name="menu_edit_group_name">Përpunoni emër grupi</string>
-    <string name="menu_edit_group_image">Përpunoni figurë grupi</string>
     <string name="menu_settings">Rregullime</string>
     <string name="menu_advanced">Të mëtejshme</string>
     <string name="menu_deaddrop">Kërkesa kontakti</string>
@@ -371,11 +367,8 @@
     <string name="login_error_cannot_login">S\’bëhet dot hyrja si %1$s. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t\’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Prano strehëemra të pavlefshëm</string>
     <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
-
     <string name="used_settings">Rregullime të përdorura</string>
     <string name="switch_account">Ndërroni llogari</string>
     <string name="add_account">Shtoni llogari</string>
@@ -425,7 +418,6 @@
     <string name="pref_notifications_show">Shfaqi</string>
     <string name="pref_notifications_priority">Përparësi</string>
     <string name="pref_led_color">Ngjyrë LED-i</string>
-    <string name="pref_led_pattern">Rregullsi xixëllimi LED-i</string>
     <string name="pref_sound">Tingull</string>
     <string name="pref_silent">Heshtazi</string>
     <string name="pref_privacy">Privatësi</string>
@@ -484,11 +476,6 @@
     <string name="pref_show_emails_no">Jo, vetëm fjalosje</string>
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>
     <string name="pref_show_emails_all">Krejt</string>
-    <string name="pref_empty_server_title">Fshini email-e që nga shërbyesi</string>
-    <string name="pref_empty_server_msg">Ky funksion ndihmon të lironi hapësirë te shërbyesi juaj IMAP përmes fshirjes së KREJT email-eve, përfshi mesazhe bisedash, te dosjet e dhëna. Mesazhet në këtë pajisje s’do të fshihen.  Fshirja s’mund të zhbëhet!</string>
-    <string name="pref_empty_server_inbox">Fshiji KREJT email-et te dosja e të Marrëve</string>
-    <string name="pref_empty_server_mvbox">Fshiji KREJT email-et te dosja DeltaChat</string>
-    <string name="pref_empty_server_do_button">Fshiji email-et</string>
     <string name="pref_experimental_features">Veçori eksperimentale</string>
     <string name="pref_background_default">Sfond parazgjedhje</string>
     <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
@@ -497,13 +484,12 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Lidhje e qëndrueshme në prapaskenë</string>
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
-    <string name="ephemeral_dialog_title">Fshiji mesazhet e lexuar</string>
 
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Fshiji mesazhet e vjetër</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Vetëfshi mesazhe</string>
-    <string name="autodel_title_short">Vetëfshi</string>
     <string name="autodel_device_title">Fshini mesazhe prej pajisjes</string>
     <string name="autodel_server_title">Fshini mesazhe prej shërbyesi</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -677,8 +663,6 @@
     <string name="more_info_desktop">Më tepër të dhëna</string>
     <string name="logout_desktop">Dalje</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">S\’ka fjalosje të arkivuara</string>
-    <string name="no_chats_desktop">S\’ka fjalosje</string>
     <string name="encryption_info_desktop">Shfaq të dhëna fshehtëzimi</string>
     <string name="verified_desktop">e verifikuar</string>
     <string name="remove_desktop">Hiqe</string>
@@ -737,6 +721,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">Veçori të reja në Delta Chat 1.10, me një vështrim: më i shpejtë, llogari të shumëfishta, turbullim figurash, emotikone të rinj, njoftime të ripunuara, njoftim më i mirë të metash, por më e rëndësishmja:\n\nKlikoni mbi një avatar profili dhe zmadhojeni 🚀</string>
 
 </resources>

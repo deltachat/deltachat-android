@@ -188,7 +188,6 @@
     <string name="pref_notifications_show">보이기</string>
     <string name="pref_notifications_priority">우선순위</string>
     <string name="pref_led_color">LED 색상</string>
-    <string name="pref_led_pattern">알림등 반복 패턴</string>
     <string name="pref_sound">>알림음</string>
     <string name="pref_silent">무음</string>
     <string name="pref_privacy">개인정보 보호</string>
@@ -242,11 +241,12 @@
     <string name="global_menu_help_desktop">도움말</string>
     <string name="contact_request_title_desktop">사서함</string>
     <string name="more_info_desktop">더 많은 정보</string>
-    <string name="no_chats_desktop">채팅방이 없습니다…</string>
     <string name="remove_desktop">삭제</string>
     <string name="save_desktop">저장</string>
     <string name="add_contact_desktop">대화상대 추가</string>
     <string name="none_blocked_desktop">차단한 친구가 없습니다</string>
     <string name="me_desktop">나</string>
     <string name="message_detail_from_desktop">보낸 사람</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>
