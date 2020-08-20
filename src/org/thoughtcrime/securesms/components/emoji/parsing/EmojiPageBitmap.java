@@ -40,7 +40,6 @@ public class EmojiPageBitmap {
   @SuppressLint("StaticFieldLeak")
   public ListenableFutureTask<Bitmap> get() {
     Util.assertMainThread();
-
     if (bitmapReference != null && bitmapReference.get() != null) {
       return new ListenableFutureTask<>(bitmapReference.get());
     } else if (task != null) {
@@ -70,7 +69,7 @@ public class EmojiPageBitmap {
     return task;
   }
 
-  private Bitmap loadPage() throws IOException {
+  public Bitmap loadPage() throws IOException {
     if (bitmapReference != null && bitmapReference.get() != null) return bitmapReference.get();
 
 
