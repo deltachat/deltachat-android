@@ -1366,7 +1366,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         Permissions.with(ConversationActivity.this)
                    .request(Manifest.permission.CAMERA)
                    .ifNecessary()
-                   .withRationaleDialog(getString(R.string.perm_explain_need_for_camera_access), R.drawable.ic_photo_camera_white_48dp)
                    .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
                    .onAllGranted(() -> {
                      composeText.clearFocus();
