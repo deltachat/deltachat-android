@@ -106,11 +106,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-    Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-  }
-
-  @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP) {
@@ -216,7 +211,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     Permissions.with(getActivity())
             .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
             .ifNecessary()
-            .withRationaleDialog(getActivity().getString(R.string.perm_explain_need_for_storage_access), R.drawable.ic_folder_white_48dp)
+            .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
             .onAllGranted(() -> {
               new AlertDialog.Builder(getActivity())
                       .setTitle(R.string.pref_backup)
