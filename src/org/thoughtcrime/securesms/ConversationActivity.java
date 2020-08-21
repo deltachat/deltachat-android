@@ -168,6 +168,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int SMS_DEFAULT         = 11; // TODO: i think, this can be deleted
   private static final int PICK_STICKER        = 12;
 
+  private   Menu                        menu;
   private   GlideRequests               glideRequests;
   protected ComposeText                 composeText;
   private   AnimatingToggle             buttonToggle;
@@ -202,6 +203,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private final DynamicTheme       dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage    dynamicLanguage = new DynamicLanguage();
+
+  public void openSearch(String text) {
+      MenuItem searchItem = menu.findItem(R.id.menu_search_chat);
+      searchItem.expandActionView();
+      SearchView searchView = (SearchView) searchItem.getActionView();
+      searchView.setQuery(text, true);
+      searchView.clearFocus();  // hide keyboard
+  }
 
   @Override
   protected void onPreCreate() {
@@ -435,6 +444,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
+    this.menu = menu;
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 

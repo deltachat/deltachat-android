@@ -74,7 +74,7 @@ public class LongClickCopySpan extends URLSpan {
       try {
 	String tag = url.substring(PREFIX_TAG.length());
         ConversationActivity activity = (ConversationActivity) widget.getContext();
-        activity.setDraftText(tag + " ");
+        activity.openSearch(tag);
       } catch(Exception e) {
 	e.printStackTrace();
       }
