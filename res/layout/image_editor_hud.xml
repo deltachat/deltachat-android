@@ -17,13 +17,13 @@
 
         <LinearLayout
             android:id="@+id/scribble_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
                 android:id="@+id/scribble_undo_button"
@@ -139,8 +139,8 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/scribble_toolbar"
-            app:layout_constraintTop_toBottomOf="@+id/scribble_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:pickerBorderColor="@color/white"
             app:pickerBorderWidth="3dp"
             app:pickerColors="@array/scribble_colors" />
