@@ -202,7 +202,6 @@
     <string name="pref_notifications_show">காட்டு</string>
     <string name="pref_notifications_priority">முன்னுரிமை</string>
     <string name="pref_led_color">LED நிறம்</string>
-    <string name="pref_led_pattern">LED மிளிரும் முறை</string>
     <string name="pref_sound">ஓசை</string>
     <string name="pref_silent">அமைதி</string>
     <string name="pref_privacy">தனியுரிமை</string>
@@ -267,7 +266,6 @@
     <string name="global_menu_help_about_desktop">Delta Chat பற்றி</string>
     <string name="contact_request_title_desktop">தொடர்பு கோரிக்கை</string>
     <string name="more_info_desktop">மேலும் தகவல்</string>
-    <string name="no_chats_desktop">இதுவரையில் எந்த அரட்டைகளும் இல்லை</string>
     <string name="remove_desktop">நீக்கு</string>
     <string name="save_desktop">சேமி</string>
     <string name="add_contact_desktop">புதிய தொடர்பு</string>
@@ -276,4 +274,6 @@
     <string name="none_blocked_desktop">இதுவரையில் எந்த தொடர்பும் தடுக்கப்படவில்லை</string>
     <string name="me_desktop">நான்</string>
     <string name="message_detail_from_desktop">அனுப்புதல்</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

@@ -31,8 +31,6 @@
     <string name="bad_email_address">錯誤的電子郵件信箱</string>
     <string name="password">密碼</string>
     <string name="now">現在</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d分鐘</string>
     <string name="today">今天</string>
     <string name="yesterday">昨天</string>
     <string name="this_week">本週</string>
@@ -139,8 +137,6 @@
     <string name="menu_select_all">全選</string>
     <string name="menu_expand">展開</string>
     <string name="menu_edit_name">編輯名稱</string>
-    <string name="menu_edit_group_name">編輯群組名稱</string>
-    <string name="menu_edit_group_image">編輯群組圖片</string>
     <string name="menu_settings">設定</string>
     <string name="menu_advanced">進階</string>
     <string name="menu_deaddrop">聯絡請求</string>
@@ -283,7 +279,6 @@
     <string name="login_error_cannot_login">無法登入 %1$s。請確定 email 帳號和密碼是否正確。 </string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">伺服器 %1$s 的回應: %2$s\n\n有些郵件服務商會在你的收件匣提供進一步的資訊，請檢查一下，並看看 web 介面上有沒有相關設定。還是不行的話，請洽詢郵件服務商，或是請朋友幫忙。</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">轉發給...</string>
@@ -322,7 +317,6 @@
     <string name="pref_notifications_show">顯示通知</string>
     <string name="pref_notifications_priority">通知優先權</string>
     <string name="pref_led_color">LED顏色</string>
-    <string name="pref_led_pattern">LED閃爍模式</string>
     <string name="pref_sound">音效</string>
     <string name="pref_silent">靜音</string>
     <string name="pref_privacy">隱私權設定</string>
@@ -427,9 +421,10 @@
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
     <string name="contact_detail_title_desktop">聯絡人詳細資料</string>
     <string name="contact_request_title_desktop">聯絡請求</string>
-    <string name="no_archived_chats_desktop">沒有封存的對話</string>
     <string name="add_contact_desktop">新增聯絡人</string>
     <string name="unblock_contacts_desktop">解除封鎖聯絡人</string>
     <string name="none_blocked_desktop">沒有封鎖的聯絡人</string>
     <string name="forget_login_confirmation_desktop">確定要刪除這裡的登入嗎? 所有的設定都會被刪除，包括端到端加密設定、聯絡人、對話、訊息、媒體檔案等。本動作不能復原。</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

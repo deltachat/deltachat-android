@@ -13,7 +13,6 @@ import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,7 +22,6 @@ import com.b44t.messenger.DcEventCenter;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
@@ -31,6 +29,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import static android.app.Activity.RESULT_OK;
+import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_E2EE_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_INBOX_WATCH;
@@ -187,6 +186,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       inputField.setHint(R.string.videochat_instance_placeholder);
       inputField.setText(dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE));
       inputField.setSelection(inputField.getText().length());
+      inputField.setInputType(TYPE_TEXT_VARIATION_URI);
       new AlertDialog.Builder(getActivity())
               .setTitle(R.string.videochat_instance)
               .setMessage(R.string.videochat_instance_explain)

@@ -26,15 +26,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -53,6 +44,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
+
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -70,15 +71,17 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
@@ -112,6 +115,7 @@ public class ConversationFragment extends Fragment
     private View                        floatingLocationButton;
     private TextView                    noMessageTextView;
     private ApplicationDcContext        dcContext;
+    private Timer                       reloadTimer;
 
     public boolean isPaused;
     private Debouncer markseenDebouncer;
@@ -130,6 +134,13 @@ public class ConversationFragment extends Fragment
         dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
 
         markseenDebouncer = new Debouncer(800);
+        reloadTimer = new Timer("reloadTimer", false);
+        reloadTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Util.runOnMain(ConversationFragment.this::reloadList);
+            }
+        }, 60 * 1000, 60 * 1000);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -195,6 +206,7 @@ public class ConversationFragment extends Fragment
     @Override
     public void onDestroy() {
         dcContext.eventCenter.removeObservers(this);
+        reloadTimer.cancel();
         super.onDestroy();
     }
 

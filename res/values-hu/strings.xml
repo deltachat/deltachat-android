@@ -40,8 +40,6 @@
     <string name="bad_email_address">Rossz e-mail cím.</string>
     <string name="password">Jelszó</string>
     <string name="now">Most</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d perce</string>
     <string name="today">Ma</string>
     <string name="yesterday">Tegnap</string>
     <string name="this_week">Ezen a héten</string>
@@ -152,8 +150,6 @@
     <string name="menu_help">Segítség</string>
     <string name="menu_select_all">Összes kiválasztása</string>
     <string name="menu_edit_name">Név módosítása</string>
-    <string name="menu_edit_group_name">Csoportnév módosítása</string>
-    <string name="menu_edit_group_image">Csoportkép módosítása</string>
     <string name="menu_settings">Beállítások</string>
     <string name="menu_advanced">Haladó</string>
     <string name="menu_deaddrop">Levelesláda</string>
@@ -260,7 +256,6 @@
     <string name="pref_notifications_show">Megjelenítés</string>
     <string name="pref_notifications_priority">Prioritás</string>
     <string name="pref_led_color">LED színe</string>
-    <string name="pref_led_pattern">LED villogás mintázata</string>
     <string name="pref_sound">Hang</string>
     <string name="pref_silent">Csendes</string>
     <string name="pref_privacy">Privacy</string>
@@ -347,7 +342,6 @@
     <string name="no_chat_selected_suggestion_desktop">Válassz ki egy beszélgetést vagy indíts egy újat</string>
     <string name="contact_request_title_desktop">Levelesláda</string>
     <string name="more_info_desktop">További információ</string>
-    <string name="no_chats_desktop">Még nincs beszélgetés.</string>
     <string name="remove_desktop">Eltávolítás</string>
     <string name="save_desktop">Mentés</string>
     <string name="add_contact_desktop">Új partner</string>
@@ -360,4 +354,6 @@
     <string name="message_detail_from_desktop">feladó</string>
     <string name="menu.view.developer.open.log.folder">Naplófájlok könyvtárának megnyitása</string>
     <string name="menu.view.developer.open.current.log.file">Jelenlegi naplófájl megnyitása</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

@@ -59,8 +59,6 @@
     <string name="now">现在</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">危险</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d 分钟前</string>
     <string name="today">今天</string>
     <string name="yesterday">昨天</string>
     <string name="this_week">本周</string>
@@ -169,8 +167,6 @@
     <string name="menu_select_all">全选</string>
     <string name="menu_expand">展开</string>
     <string name="menu_edit_name">编辑名称</string>
-    <string name="menu_edit_group_name">编辑群组名称</string>
-    <string name="menu_edit_group_image">编辑群组图像</string>
     <string name="menu_settings">设置</string>
     <string name="menu_advanced">高级</string>
     <string name="menu_deaddrop">联系人请求</string>
@@ -360,11 +356,8 @@
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">来自 %1$s 的回应： %2$s\n\n某些提供商会在您的收件箱中放置额外信息; 您可以在 Web 端等处等查看它。 如遇到问题，请咨询您的提供商或朋友。</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">接受无效的主机名</string>
     <string name="accept_invalid_certificates">接受无效的证书</string>
-
     <string name="used_settings">已使用设置：</string>
     <string name="switch_account">切换账户 </string>
     <string name="add_account">添加账户</string>
@@ -414,7 +407,6 @@
     <string name="pref_notifications_show">显示</string>
     <string name="pref_notifications_priority">优先级</string>
     <string name="pref_led_color">LED 颜色</string>
-    <string name="pref_led_pattern">LED 闪烁模式</string>
     <string name="pref_sound">声音</string>
     <string name="pref_silent">无声</string>
     <string name="pref_privacy">隐私</string>
@@ -473,11 +465,6 @@
     <string name="pref_show_emails_no">不显示，仅聊天</string>
     <string name="pref_show_emails_accepted_contacts">已接受的联系人</string>
     <string name="pref_show_emails_all">全部</string>
-    <string name="pref_empty_server_title">从服务器上删除电子邮件</string>
-    <string name="pref_empty_server_msg">此功能通过删除给定文件夹中包括聊天消息在内的所有电子邮件来释放您 IMAP 服务器上的空间。 此设备上的消息不会被删除。 此删除无法撤消！</string>
-    <string name="pref_empty_server_inbox">删除“收件箱”文件夹中所有电子邮件</string>
-    <string name="pref_empty_server_mvbox">删除“DeltaChat”文件夹中所有电子邮件</string>
-    <string name="pref_empty_server_do_button">删除电子邮件</string>
     <string name="pref_experimental_features">实验性功能</string>
     <string name="pref_on_demand_location_streaming">按需位置流</string>
     <string name="pref_background_default">默认背景</string>
@@ -487,13 +474,12 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">可靠后台连接</string>
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
-    <string name="ephemeral_dialog_title">删除已读消息</string>
 
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">删除旧消息</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">自动删除消息</string>
-    <string name="autodel_title_short">自动删除</string>
     <string name="autodel_device_title">从设备删除消息</string>
     <string name="autodel_server_title">从服务器删除消息</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -667,8 +653,6 @@
     <string name="more_info_desktop">更多信息</string>
     <string name="logout_desktop">登出</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">没有已归档聊天</string>
-    <string name="no_chats_desktop">没有聊天</string>
     <string name="encryption_info_desktop">显示加密信息</string>
     <string name="verified_desktop">已验证</string>
     <string name="remove_desktop">移除</string>
@@ -727,6 +711,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">Delta Chat 1.10 新功能概览：更快、多帐户、对图像进行模糊、新表情、通知重做、更好的错误报告，以及最重要的：\n\n点击个人资料中的头像并放大🚀</string>
 
 </resources>

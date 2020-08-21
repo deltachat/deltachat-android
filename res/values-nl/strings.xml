@@ -59,8 +59,6 @@
     <string name="now">Nu</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Gevarenzone</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Vandaag</string>
     <string name="yesterday">Gisteren</string>
     <string name="this_week">Deze week</string>
@@ -175,8 +173,6 @@
     <string name="menu_select_all">Alles selecteren</string>
     <string name="menu_expand">Uitvouwen</string>
     <string name="menu_edit_name">Naam wijzigen</string>
-    <string name="menu_edit_group_name">Groepsnaam wijzigen</string>
-    <string name="menu_edit_group_image">Groepsafbeelding wijzigen</string>
     <string name="menu_settings">Instellingen</string>
     <string name="menu_advanced">Geavanceerd</string>
     <string name="menu_deaddrop">Contactpersoonverzoeken</string>
@@ -371,11 +367,8 @@
     <string name="login_error_cannot_login">Kan niet inloggen als \"%1$s\". Controleer het e-mailadres en wachtwoord.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in, bijv., de webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Ongeldige hostnamen accepteren</string>
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
-
     <string name="used_settings">Gebruikte instellingen:</string>
     <string name="switch_account">Ander account kiezen</string>
     <string name="add_account">Account toevoegen</string>
@@ -425,7 +418,6 @@
     <string name="pref_notifications_show">Tonen</string>
     <string name="pref_notifications_priority">Prioriteit</string>
     <string name="pref_led_color">LED-kleur</string>
-    <string name="pref_led_pattern">LED-knipperpatroon</string>
     <string name="pref_sound">Geluid</string>
     <string name="pref_silent">Stil</string>
     <string name="pref_privacy">Privacy</string>
@@ -484,11 +476,6 @@
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
     <string name="pref_show_emails_all">Alles</string>
-    <string name="pref_empty_server_title">E-mails verwijderen van server</string>
-    <string name="pref_empty_server_msg">Deze optie helpt je ruimte vrij te maken op je IMAP-server door ALLE e-mails, inclusief gesprekken, te verwijderen uit de opgegeven mappen. Berichten op dit apparaat worden niet verwijderd. Deze actie kan niet ongedaan worden gemaakt!</string>
-    <string name="pref_empty_server_inbox">Alle e-mails verwijderen uit Postvak IN</string>
-    <string name="pref_empty_server_mvbox">Alle e-mails verwijderen uit DeltaChat-map</string>
-    <string name="pref_empty_server_do_button">E-mails verwijderen</string>
     <string name="pref_experimental_features">Experimentele functies</string>
     <string name="pref_on_demand_location_streaming">Locatie continue doorgeven (op verzoek)</string>
     <string name="pref_background_default">Standaard achtergrond</string>
@@ -498,13 +485,12 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Betrouwbare achtergrondverbinding</string>
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
-    <string name="ephemeral_dialog_title">Gelezen berichten verwijderen</string>
 
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Berichten automatisch verwijderen</string>
-    <string name="autodel_title_short">Automatisch verwijderen</string>
     <string name="autodel_device_title">Berichten verwijderen van apparaat</string>
     <string name="autodel_server_title">Berichten verwijderen van server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -678,8 +664,6 @@
     <string name="more_info_desktop">Meer informatie</string>
     <string name="logout_desktop">Uitloggen</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Geen gearchiveerde gesprekken</string>
-    <string name="no_chats_desktop">Geen gesprekken</string>
     <string name="encryption_info_desktop">Versleutelingsinformatie tonen</string>
     <string name="verified_desktop">goedgekeurd</string>
     <string name="remove_desktop">Verwijderen</string>
@@ -738,6 +722,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">Een klein overzicht van de nieuwe Delta Chat 1.10-functies: sneller, meerdere accounts, afbeeldingen vervagen, nieuwe emoji\'s, verbeterde meldingen, verbeterde foutrapportage, en het allerbelangrijkste:\n\ndruk op een profielafbeelding om deze te vergroten 🚀</string>
 
 </resources>

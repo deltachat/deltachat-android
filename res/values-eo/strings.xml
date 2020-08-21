@@ -54,8 +54,6 @@
     <string name="now">Nun</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Danĝero</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Hodiaŭ</string>
     <string name="yesterday">Hieraŭ</string>
     <string name="this_week">Ĉi-semajne</string>
@@ -168,8 +166,6 @@
     <string name="menu_select_all">Elekti ĉion</string>
     <string name="menu_expand">Etendi</string>
     <string name="menu_edit_name">Redakti nomon</string>
-    <string name="menu_edit_group_name">Redakti grup-nomon</string>
-    <string name="menu_edit_group_image">Redakti grup-bildon</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_advanced">Speciala</string>
     <string name="menu_deaddrop">Kontakt-petoj</string>
@@ -322,9 +318,7 @@
     <string name="login_error_required_fields">Bonvolu enigi validan retadreson kaj pasvorton</string>
     <string name="import_backup_title">Importi savkopion</string>
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Akcepti nevalidajn hostnomojn</string>
     <string name="accept_invalid_certificates">Akcepti nevalidajn atestilojn</string>
-
     <string name="used_settings">Uzitaj agordoj:</string>
     <string name="delete_account">Forigi konton</string>
     <string name="delete_account_ask">Ĉu vi certas, ke vi volas forigi ĉiujn datumojn de vi konto?</string>
@@ -355,7 +349,6 @@
     <string name="pref_notifications_show">Montri</string>
     <string name="pref_notifications_priority">Prioritato</string>
     <string name="pref_led_color">LED-a koloro</string>
-    <string name="pref_led_pattern">LED-a pulsa modelo</string>
     <string name="pref_sound">Sono</string>
     <string name="pref_silent">Silenta</string>
     <string name="pref_privacy">Privateco</string>
@@ -433,9 +426,10 @@
     <string name="global_menu_help_desktop">Helpo</string>
     <string name="more_info_desktop">Plia informo</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_chats_desktop">Neniu babilo nun</string>
     <string name="remove_desktop">Forviŝi</string>
     <string name="save_desktop">Konservi</string>
     <string name="me_desktop">mi</string>
     <string name="message_detail_from_desktop">De</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

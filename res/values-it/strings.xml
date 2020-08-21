@@ -59,8 +59,6 @@
     <string name="now">Ora</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Attenzione</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min.</string>
     <string name="today">Oggi</string>
     <string name="yesterday">Ieri</string>
     <string name="this_week">Questa settimana</string>
@@ -175,8 +173,6 @@
     <string name="menu_select_all">Seleziona tutto</string>
     <string name="menu_expand">Espandi</string>
     <string name="menu_edit_name">Modifica nome</string>
-    <string name="menu_edit_group_name">Modifica nome gruppo</string>
-    <string name="menu_edit_group_image">Modifica immagine gruppo</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="menu_advanced">Avanzate</string>
     <string name="menu_deaddrop">Richieste di contatto</string>
@@ -371,11 +367,8 @@
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Verifica che l\'indirizzo email e la password siano corretti.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni provider inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il provider o i tuoi amici se riscontri problemi.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Accetta hostname non validi</string>
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
-
     <string name="used_settings">Impostazioni in uso:</string>
     <string name="switch_account">Cambia account</string>
     <string name="add_account">Aggiungi account</string>
@@ -425,7 +418,6 @@
     <string name="pref_notifications_show">Mostra</string>
     <string name="pref_notifications_priority">Priorità</string>
     <string name="pref_led_color">Colore LED</string>
-    <string name="pref_led_pattern">Stile lampeggio LED</string>
     <string name="pref_sound">Suono</string>
     <string name="pref_silent">Silenzia</string>
     <string name="pref_privacy">Privacy</string>
@@ -484,11 +476,6 @@
     <string name="pref_show_emails_no">No, solo chat</string>
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
     <string name="pref_show_emails_all">Tutte</string>
-    <string name="pref_empty_server_title">Elimina email dal server</string>
-    <string name="pref_empty_server_msg">Questa funzione permette di liberare spazio sul server IMAP eliminando TUTTE le email, inclusi i messaggi di chat, nelle cartelle selezionate. I messaggi su questo dispositivo non saranno eliminati. L\'eliminazione non è annullabile!</string>
-    <string name="pref_empty_server_inbox">Elimina TUTTE le email nella cartella In Arrivo</string>
-    <string name="pref_empty_server_mvbox">Elimina TUTTE le email nella cartella DeltaChat</string>
-    <string name="pref_empty_server_do_button">Elimina email</string>
     <string name="pref_experimental_features">Funzionalità sperimentali</string>
     <string name="pref_on_demand_location_streaming">Streaming della posizione</string>
     <string name="pref_background_default">Sfondo predefinito</string>
@@ -498,13 +485,12 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Connessione in background affidabile</string>
     <string name="pref_reliable_service_explain">Richiede una notifica permanente</string>
-    <string name="ephemeral_dialog_title">Elimina i messaggi letti</string>
 
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Elimina i vecchi messaggi</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Auto eliminazione dei messaggi</string>
-    <string name="autodel_title_short">Auto-eliminazione</string>
     <string name="autodel_device_title">Elimina messaggi dal dispositivo</string>
     <string name="autodel_server_title">Elimina messaggi dal server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -678,8 +664,6 @@
     <string name="more_info_desktop">Maggiori informazioni</string>
     <string name="logout_desktop">Logout</string>
     <string name="timestamp_format_m_desktop">D MMM</string>
-    <string name="no_archived_chats_desktop">Nessuna chat archiviata</string>
-    <string name="no_chats_desktop">Nessuna chat</string>
     <string name="encryption_info_desktop">Mostra info cifratura</string>
     <string name="verified_desktop">verificato</string>
     <string name="remove_desktop">Rimuovi</string>
@@ -738,6 +722,5 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">Nuove funzionalità di Delta Chat 1.10 a colpo d\'occhio: più veloce, multi-account, immagini sfocate, nuove emoji, notifiche rielaborate, migliore segnalazione degli errori, ma soprattutto:\n\nFai clic su un avatar nel profilo e ingrandiscilo 🚀</string>
 
 </resources>

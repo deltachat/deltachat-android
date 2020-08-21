@@ -54,8 +54,6 @@
     <string name="now">Sekarang</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Bahaya</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%dmenit</string>
     <string name="today">Hari ini</string>
     <string name="yesterday">Kemarin</string>
     <string name="this_week">Minggu ini</string>
@@ -162,8 +160,6 @@
     <string name="menu_select_all">Pilih semua</string>
     <string name="menu_expand">Perluas</string>
     <string name="menu_edit_name">Edit nama</string>
-    <string name="menu_edit_group_name">Edit nama grup</string>
-    <string name="menu_edit_group_image">Edit gambar grup</string>
     <string name="menu_settings">Setelan</string>
     <string name="menu_advanced">Lanjutan</string>
     <string name="menu_deaddrop">Permintaan kontak</string>
@@ -335,7 +331,6 @@
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Tanggapan dari %1$s: %2$s\n\nBeberapa penyedia layanan (provider) menempatkan informasi tambahan di kotak masuk Anda; Anda bisa memeriksanya, misalnya di beranda depan web. Konsultasikan dengan penyedia atau teman Anda jika Anda mengalami masalah.</string>
-
     <string name="used_settings">Setelan yang digunakan:</string>
     <string name="switch_account">Alihkan akun</string>
     <string name="add_account">Tambah akun</string>
@@ -382,7 +377,6 @@
     <string name="pref_notifications_show">Menunjukkan</string>
     <string name="pref_notifications_priority">Prioritas</string>
     <string name="pref_led_color">Warna LED</string>
-    <string name="pref_led_pattern">Pola kedip LED</string>
     <string name="pref_sound">Suara</string>
     <string name="pref_silent">Sunyi</string>
     <string name="pref_privacy">Privasi</string>
@@ -428,10 +422,6 @@
     <string name="pref_auto_folder_moves_explain">Percakapan dipindahkan untuk menghindari memenuhi kotak masuk</string>
     <string name="pref_email_interaction_title">Interaksi surel</string>
     <string name="pref_show_emails_all">Semua</string>
-    <string name="pref_empty_server_title">Hapus surel dari server</string>
-    <string name="pref_empty_server_inbox">Hapus semuail email di berkas \"Pesan Masuk\"</string>
-    <string name="pref_empty_server_mvbox">Hapus semua email di berkas \"DeltaChat\"</string>
-    <string name="pref_empty_server_do_button">Hapus email</string>
     <string name="autodel_device_title">Hapus pesarn dari perangkat</string>
     <string name="autodel_server_title">Hapus pesan dari server</string>
     <string name="autodel_confirm">Saya mengerti, hapus semua pesan ini</string>
@@ -560,8 +550,6 @@
     <string name="more_info_desktop">Info lebih lanjut</string>
     <string name="logout_desktop">Keluar</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Tidak ada arsip chat</string>
-    <string name="no_chats_desktop">Belum ada obrolan</string>
     <string name="encryption_info_desktop">Tampilkan info enkripsi</string>
     <string name="verified_desktop">Diverifikasi</string>
     <string name="remove_desktop">Menghapus</string>
@@ -603,4 +591,6 @@
     <string name="a11y_delivery_status_invalid">Status pengiriman tidak valid</string>
     <string name="a11y_remove_account_btn_label">Menghapus akun</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk dikirim.</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

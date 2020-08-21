@@ -67,8 +67,8 @@ import org.thoughtcrime.securesms.util.views.Stub;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A view that displays an individual conversation item within a conversation
@@ -505,46 +505,40 @@ public class ConversationItem extends LinearLayout
 
   private SpannableString linkifyMessageBody(SpannableString messageBody, boolean shouldLinkifyAllLinks) {
     if (!shouldLinkifyAllLinks) {
-	return messageBody;
+      return messageBody;
     }
+
+    Linkify.TransformFilter urlFilter = (match, url) -> {
+      if (url.startsWith("http://") || url.startsWith("https://")) {
+        return url;
+      } else {
+        return "https://" + url;
+      }
+    };
+
+    Linkify.MatchFilter matcher = (s, start, end) -> {
+      URLSpan[] urlSpans = messageBody.getSpans(start, end, URLSpan.class);
+      for (URLSpan urlSpan : urlSpans) {
+        int start2 = messageBody.getSpanStart(urlSpan);
+        int end2 = messageBody.getSpanEnd(urlSpan);
+        if ((start >= start2 && start < end2) || (end >= start2 && end < end2)) {
+          return false;
+        }
+      }
+      return true;
+    };
 
     boolean hasLinks = false;
 
-    Linkify.MatchFilter matcher = new Linkify.MatchFilter() {
-           public final boolean acceptMatch(CharSequence s, int start, int end) {
-	       URLSpan[] urlSpans = messageBody.getSpans(start, end, URLSpan.class);
-	       for (URLSpan urlSpan : urlSpans) {
-		   int start2 = messageBody.getSpanStart(urlSpan);
-		   int end2 = messageBody.getSpanEnd(urlSpan);
-		   if ((start >= start2 && start < end2) || (end >= start2 && end < end2)) {
-		       return false;
-		   }
-	       }
-	       return true;
-           }
-    };
-
-    Pattern mentionPattern = Pattern.compile("(?<=^|\\s)@([A-Za-z0-9_-]+)");
-    hasLinks = Linkify.addLinks(messageBody, mentionPattern, "mention:", matcher, null) || hasLinks ;
-
-    Pattern hashtagPattern = Pattern.compile("(?<=^|\\s)#([A-Za-z0-9_-]+)");
-    hasLinks = Linkify.addLinks(messageBody, hashtagPattern, "tag:", matcher, null) || hasLinks;
-
     Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
-    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", matcher, null) || hasLinks;
-
-    Linkify.TransformFilter urlFilter = new Linkify.TransformFilter() {
-           public final String transformUrl(final Matcher match, String url) {
-	       if (url.startsWith("http://") || url.startsWith("https://")) {
-		   return url;
-	       } else {
-		   return "http://" + url;
-	       }
-           }
-    };
+    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null) || hasLinks;
+    Pattern mentionPattern = Pattern.compile("(?<=^|\\s)@([\\w\\d@_.-]+)");
+    hasLinks = Linkify.addLinks(messageBody, mentionPattern, "mention:", null, null) || hasLinks ;
+    Pattern hashtagPattern = Pattern.compile("(?<=^|\\s)#([\\w\\d_-]+)");
+    hasLinks = Linkify.addLinks(messageBody, hashtagPattern, "tag:", null, null) || hasLinks;
 
     hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", matcher, null) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "",  matcher, urlFilter) || hasLinks;
+    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "", matcher, urlFilter) || hasLinks;
     hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", matcher, null) || hasLinks;
 
     if (hasLinks) {

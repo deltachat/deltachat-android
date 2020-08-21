@@ -45,8 +45,6 @@
     <string name="now">Sada</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Oprez</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Danas</string>
     <string name="yesterday">Jučer</string>
     <string name="this_week">Ovaj tjedan</string>
@@ -206,7 +204,6 @@
     <string name="pref_notifications_show">Prikaži</string>
     <string name="pref_notifications_priority">Prioritet</string>
     <string name="pref_led_color">Boja LED</string>
-    <string name="pref_led_pattern">LED uzorak treptanja</string>
     <string name="pref_sound">Zvuk</string>
     <string name="pref_silent">Tiho</string>
     <string name="pref_privacy">Privatnost</string>
@@ -294,4 +291,6 @@
     <string name="message_detail_from_desktop">od</string>
     <string name="message_detail_to_desktop">za</string>
     <string name="a11y_remove_account_btn_label">Ukloni račun</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

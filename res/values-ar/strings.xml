@@ -46,8 +46,6 @@
     <string name="now">الآن</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">خطر</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d دقائق</string>
     <string name="today">اليوم</string>
     <string name="yesterday">البارحة</string>
     <string name="this_week">هذا الأسبوع</string>
@@ -132,8 +130,6 @@
     <string name="menu_help">المساعدة</string>
     <string name="menu_select_all">اختر الكل</string>
     <string name="menu_edit_name">تعديل الإسم</string>
-    <string name="menu_edit_group_name">تغيير اسم الفريق</string>
-    <string name="menu_edit_group_image">تغيير صورة الفريق</string>
     <string name="menu_settings">الإعدادات</string>
     <string name="menu_advanced">مُتقدّم</string>
     <string name="menu_view_profile">عرض الملف الشخصي</string>
@@ -207,7 +203,6 @@
     <string name="pref_notifications">الإشعارات</string>
     <string name="pref_notifications_show">عرض</string>
     <string name="pref_led_color">لون ضوء التنبيه LED</string>
-    <string name="pref_led_pattern">نمط وميض LED</string>
     <string name="pref_sound">الصوت</string>
     <string name="pref_privacy">الخصوصية</string>
     <string name="pref_chats_and_media">الدردشة والوسائط</string>
@@ -272,4 +267,6 @@
     <string name="none_blocked_desktop">لا توجد جهات اتصال محظورة</string>
     <string name="ask_delete_chat_desktop">هل أنت متأكد مِن أنك تريد حذف هذا؟</string>
     <string name="in_this_group_desktop">أعضاء المجموعة</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

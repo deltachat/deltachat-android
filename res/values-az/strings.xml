@@ -48,8 +48,6 @@
     <string name="bad_email_address">Səhv e-mail ünvanı.</string>
     <string name="password">Parol</string>
     <string name="now">Indi</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d dəqiqə</string>
     <string name="today">Bugün</string>
     <string name="yesterday">Dünən</string>
     <string name="this_week">Bu həftə</string>
@@ -162,8 +160,6 @@
     <string name="menu_select_all">Hamısını səç</string>
     <string name="menu_expand">Genişləndirmək</string>
     <string name="menu_edit_name">Adı dəyişdir</string>
-    <string name="menu_edit_group_name">Qrup adını dəyişmək</string>
-    <string name="menu_edit_group_image">Qrup şəkilini dəyişmək</string>
     <string name="menu_settings">Tənzimləmə</string>
     <string name="menu_advanced">Ətraflı</string>
     <string name="menu_deaddrop">Kontakta sorğu</string>
@@ -355,7 +351,6 @@
     <string name="pref_notifications_show">Göstərmək</string>
     <string name="pref_notifications_priority">Öndəmdə olan</string>
     <string name="pref_led_color">LED rəng</string>
-    <string name="pref_led_pattern">İşiq diodu qırpınır</string>
     <string name="pref_sound">Səs</string>
     <string name="pref_silent">Səssiz</string>
     <string name="pref_privacy">Gizlilik</string>
@@ -413,11 +408,6 @@
     <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
     <string name="pref_show_emails_accepted_contacts">Qəbul edilən kontaktlar üçün</string>
     <string name="pref_show_emails_all">Hamısı</string>
-    <string name="pref_empty_server_title">Serverdən e-poçtları silin</string>
-    <string name="pref_empty_server_msg">Bu funksiya, verilmiş qovluqlarda, söhbət mesajları da daxil olmaqla, bütün elektron poçtları silməklə IMAP serverinizdə olan yaddaşı boşaltmağa  kömək edir. Bu cihazdakı mesajlar silinməyəcək. Silinmə geri qaytarıla bilməz!</string>
-    <string name="pref_empty_server_inbox">Daxil olan qutusunda bütün elektron poçtları sil</string>
-    <string name="pref_empty_server_mvbox">DeltaChat qutusunda bütün elektron poçtları sil</string>
-    <string name="pref_empty_server_do_button">Elektron poçtunu sil</string>
     <string name="pref_background_default">Özünəməxsus arxa fon</string>
     <string name="pref_background_default_color">Özünəməxsus rəng</string>
     <string name="pref_background_custom_image">Şəkil</string>
@@ -545,8 +535,6 @@
     <string name="more_info_desktop">Daha çox məlumat</string>
     <string name="logout_desktop">Çıxış</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Arxivləşmiş çat yoxdur</string>
-    <string name="no_chats_desktop">Çat yoxdur</string>
     <string name="encryption_info_desktop">Şifrələmə məlumatını göstər</string>
     <string name="verified_desktop">təsdiqləndi</string>
     <string name="remove_desktop">Sil</string>
@@ -584,4 +572,6 @@
     <string name="user_location_permission_explanation">Delta Chat yerinizi göstərmək və bölüşmək üçün yer icazəsinə ehtiyac duyur.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

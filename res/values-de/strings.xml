@@ -59,8 +59,6 @@
     <string name="now">Jetzt</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Achtung</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d Min.</string>
     <string name="today">Heute</string>
     <string name="yesterday">Gestern</string>
     <string name="this_week">Diese Woche</string>
@@ -175,8 +173,6 @@
     <string name="menu_select_all">Alles auswählen</string>
     <string name="menu_expand">Erweitern</string>
     <string name="menu_edit_name">Name bearbeiten</string>
-    <string name="menu_edit_group_name">Gruppenname</string>
-    <string name="menu_edit_group_image">Gruppenbild</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_advanced">Erweitert</string>
     <string name="menu_deaddrop">Kontaktanfragen</string>
@@ -373,11 +369,8 @@
     <string name="login_error_server_response">Antwort von %1$s: %2$s
 
 Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.B. im Web-Frontend abrufen können. Bitten Sie Ihren Anbieter oder FreundInnen um Rat, wenn es Probleme gibt.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Ungültige Hostnamen akzeptieren</string>
     <string name="accept_invalid_certificates">Ungültige Zertifikate akzeptieren</string>
-
     <string name="used_settings">Verwendete Einstellungen:</string>
     <string name="switch_account">E-Mail-Konto wechseln</string>
     <string name="add_account">E-Mail-Konto hinzufügen</string>
@@ -427,7 +420,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_notifications_show">Anzeigen</string>
     <string name="pref_notifications_priority">Priorität</string>
     <string name="pref_led_color">LED-Farbe</string>
-    <string name="pref_led_pattern">LED-Blinkgeschwindigkeit</string>
     <string name="pref_sound">Ton</string>
     <string name="pref_silent">Leise</string>
     <string name="pref_privacy">Datenschutz</string>
@@ -486,11 +478,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_show_emails_no">Nein, nur Chats</string>
     <string name="pref_show_emails_accepted_contacts">Akzeptierte Kontakte</string>
     <string name="pref_show_emails_all">Alle</string>
-    <string name="pref_empty_server_title">E-Mails vom Server löschen</string>
-    <string name="pref_empty_server_msg">Mit dieser Funktion können Sie Speicherplatz auf Ihrem IMAP-Server freigeben, indem Sie ALLE E-Mails, einschließlich Chat-Nachrichten, in den angegebenen Ordnern löschen. Nachrichten auf diesem Gerät werden nicht gelöscht. Die Löschung kann nicht rückgängig gemacht werden!</string>
-    <string name="pref_empty_server_inbox">Löschen ALLER E-Mails im Nachrichteneingangsordner (Inbox)</string>
-    <string name="pref_empty_server_mvbox">Löschen ALLER E-Mails im DeltaChat Ordner.</string>
-    <string name="pref_empty_server_do_button">E-Mails löschen</string>
     <string name="pref_experimental_features">Experimentelle Features</string>
     <string name="pref_on_demand_location_streaming">Standortübertragung nach Bedarf</string>
     <string name="pref_background_default">Voreingestellter Hintergrund</string>
@@ -500,13 +487,12 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Zuverlässige Hintergrundverbindung</string>
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
-    <string name="ephemeral_dialog_title">Gelesene Nachrichten löschen</string>
 
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Alte Nachrichten löschen</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Nachrichten automatisch löschen</string>
-    <string name="autodel_title_short">Automatisch löschen</string>
     <string name="autodel_device_title">Nachrichten vom Gerät löschen</string>
     <string name="autodel_server_title">Nachrichten vom Server löschen</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -682,8 +668,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="more_info_desktop">Mehr Informationen</string>
     <string name="logout_desktop">Abmelden</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Keine archivierten Chats</string>
-    <string name="no_chats_desktop">Keine Chats</string>
     <string name="encryption_info_desktop">Zeige Verschlüsselungsinfo</string>
     <string name="verified_desktop">Verifiziert</string>
     <string name="remove_desktop">Entfernen</string>
@@ -742,6 +726,5 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="update_1_10_android">Die neuen Delta Chat 1.10 Features im Überblick: schneller, Multi-Account, Bildbereiche verwischen, neue Emojis, überarbeitete Benachrichtigungen, Anzeige fehlerhafter Nachrichten. Aber am wichtigsten:\n\nAvatare im Profil vergrößern 🚀</string>
 
 </resources>

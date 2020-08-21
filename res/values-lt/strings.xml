@@ -50,8 +50,6 @@
     <string name="now">Dabar</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Dėmesio</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min.</string>
     <string name="today">Šiandien</string>
     <string name="yesterday">Vakar</string>
     <string name="this_week">Šią savaitę</string>
@@ -176,8 +174,6 @@
     <string name="menu_select_all">Žymėti viską</string>
     <string name="menu_expand">Išplėsti</string>
     <string name="menu_edit_name">Taisyti vardą</string>
-    <string name="menu_edit_group_name">Taisyti grupės pavadinimą</string>
-    <string name="menu_edit_group_image">Taisyti grupės paveikslą</string>
     <string name="menu_settings">Nustatymai</string>
     <string name="menu_advanced">Išplėstiniai</string>
     <string name="menu_deaddrop">Adresatų užklausos</string>
@@ -334,11 +330,8 @@
     <string name="login_error_cannot_login">Nepavyksta prisijungti kaip \"%1$s\". Patikrinkite ar el. pašto adresas ir slaptažodis yra teisingi.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Atsakymas iš %1$s: %2$s\n\nKai kurie teikėjai patalpina papildomą informaciją į jūsų gautųjų laiškų aplanką; galite ją patikrinti, pvz., prisijungę per naršyklę. Jei susidursite su problema, pagalbos teiraukitės savo teikėjo ar draugų.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Priimti neteisingus serverių vardus</string>
     <string name="accept_invalid_certificates">Priimti negaliojančius liudijimus</string>
-
     <string name="used_settings">Naudoti nustatymai:</string>
     <string name="switch_account">Perjungti paskyrą</string>
     <string name="add_account">Pridėti paskyrą</string>
@@ -382,7 +375,6 @@
     <string name="pref_notifications_show">Rodyti</string>
     <string name="pref_notifications_priority">Pirmenybė</string>
     <string name="pref_led_color">Šviesos diodo spalva</string>
-    <string name="pref_led_pattern">Šviesos diodo blykčiojimo šablonas</string>
     <string name="pref_sound">Garsas</string>
     <string name="pref_privacy">Privatumas</string>
     <string name="pref_chats_and_media">Pokalbiai ir medija</string>
@@ -432,7 +424,6 @@
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
     <string name="pref_auto_folder_moves_explain">Pokalbiai yra perkeliami, kad nebūtų sujauktas Gautųjų aplankas</string>
     <string name="pref_email_interaction_title">Sąveika su el. paštu</string>
-    <string name="pref_empty_server_title">Ištrinti el. laiškus iš serverio</string>
     <string name="pref_experimental_features">Eksperimentinės ypatybės</string>
     <string name="pref_background_default">Numatytasis fonas</string>
     <string name="pref_background_default_color">Numatytoji spalva</string>
@@ -562,8 +553,6 @@
     <string name="more_info_desktop">Daugiau informacijos</string>
     <string name="logout_desktop">Atsijungti</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Archyvuotų pokalbių nėra</string>
-    <string name="no_chats_desktop">Pokalbių nėra</string>
     <string name="encryption_info_desktop">Rodyti šifravimo informaciją</string>
     <string name="remove_desktop">Šalinti</string>
     <string name="save_desktop">Išsaugoti</string>
@@ -607,4 +596,6 @@
     <string name="a11y_remove_account_btn_label">Šalinti paskyrą</string>
     <string name="a11y_background_preview_label">Fono peržiūra</string>
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

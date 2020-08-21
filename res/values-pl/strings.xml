@@ -52,8 +52,6 @@
     <string name="now">Teraz</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Uwaga</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min.</string>
     <string name="today">Dzisiaj</string>
     <string name="yesterday">Wczoraj</string>
     <string name="this_week">Ten tydzień</string>
@@ -178,8 +176,6 @@
     <string name="menu_select_all">Zaznacz wszystko</string>
     <string name="menu_expand">Rozwiń</string>
     <string name="menu_edit_name">Edytuj nazwę</string>
-    <string name="menu_edit_group_name">Edytuj nazwę grupy</string>
-    <string name="menu_edit_group_image">Edytuj obraz grupy</string>
     <string name="menu_settings">Ustawienia</string>
     <string name="menu_advanced">Zaawansowane</string>
     <string name="menu_deaddrop">Prośba o kontakt</string>
@@ -366,11 +362,8 @@
     <string name="login_error_cannot_login">Nie można się zalogować jako „%1$s. Sprawdź, czy adres e-mail i hasło są poprawne.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Odpowiedź od %1$s: %2$s\n\nNiektórzy dostawcy umieszczają w skrzynce odbiorczej dodatkowe informacje, które można sprawdzić np. na stronie internetowej. W przypadku wystąpienia problemów należy skonsultować się z dostawcą lub znajomymi.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Zaakceptuj nieprawidłowe nazwy hostów</string>
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
-
     <string name="used_settings">Użyte ustawienia:</string>
     <string name="switch_account">Przełącz konto</string>
     <string name="add_account">Dodaj konto</string>
@@ -417,7 +410,6 @@
     <string name="pref_notifications_show">Pokaż</string>
     <string name="pref_notifications_priority">Priorytet</string>
     <string name="pref_led_color">Kolor LED-a</string>
-    <string name="pref_led_pattern">Miganie diody LED</string>
     <string name="pref_sound">Dźwięk</string>
     <string name="pref_silent">Cichy</string>
     <string name="pref_privacy">Prywatność</string>
@@ -476,11 +468,6 @@
     <string name="pref_show_emails_no">Nie, tylko czaty</string>
     <string name="pref_show_emails_accepted_contacts">Dla zaakceptowanych kontaktów</string>
     <string name="pref_show_emails_all">Wszystkie</string>
-    <string name="pref_empty_server_title">Usuwanie e-maili z serwera</string>
-    <string name="pref_empty_server_msg">Ta funkcja pomaga zwolnić miejsce na serwerze IMAP, usuwając WSZYSTKIE wiadomości e-mail, w tym wiadomości czat, w podanych folderach. Wiadomości na tym urządzeniu nie zostaną usunięte. Usunięcia nie można cofnąć!</string>
-    <string name="pref_empty_server_inbox">Usuń WSZYSTKIE wiadomości e-mail w folderze Skrzynka odbiorcza</string>
-    <string name="pref_empty_server_mvbox"> Usuń WSZYSTKIE wiadomości e-mail w folderze DeltaChat</string>
-    <string name="pref_empty_server_do_button">Usuń e-maile</string>
     <string name="pref_experimental_features">Funkcje eksperymentalne</string>
     <string name="pref_on_demand_location_streaming">Przesyłanie strumieniowe lokalizacji na żądanie</string>
     <string name="pref_background_default">Domyślne tło</string>
@@ -490,8 +477,10 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Niezawodne połączenie w tle</string>
     <string name="pref_reliable_service_explain">Wymaga stałego powiadomienia</string>
+
+
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Automatyczne usuwanie wiadomości</string>
-    <string name="autodel_title_short">Automatyczne usuwanie</string>
     <string name="autodel_device_title">Usuwanie wiadomości z urządzenia</string>
     <string name="autodel_server_title">Usuwanie wiadomości z serwera</string>
     <string name="autodel_confirm">Rozumiem, usuń te wszystkie wiadomości</string>
@@ -633,8 +622,6 @@
     <string name="more_info_desktop">Więcej informacji</string>
     <string name="logout_desktop">Wyloguj się</string>
     <string name="timestamp_format_m_desktop">D MMM</string>
-    <string name="no_archived_chats_desktop">Nie ma zarchiwizowanych czatów</string>
-    <string name="no_chats_desktop">Nie ma czatów</string>
     <string name="encryption_info_desktop">Pokaż informacje o szyfrowaniu</string>
     <string name="verified_desktop">zweryfikowano</string>
     <string name="remove_desktop">Usuń</string>
@@ -691,4 +678,6 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce zapisać obrazy w twojej bibliotece zdjęć.</string>
 
 
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

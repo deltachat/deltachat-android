@@ -54,8 +54,6 @@
     <string name="now">Maintenant</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Attention</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Aujourd\'hui</string>
     <string name="yesterday">Hier</string>
     <string name="this_week">Cette semaine</string>
@@ -168,8 +166,6 @@
     <string name="menu_select_all">Tout sélectionner</string>
     <string name="menu_expand">Étendre</string>
     <string name="menu_edit_name">Modifier le nom</string>
-    <string name="menu_edit_group_name">Modifier le nom du groupe</string>
-    <string name="menu_edit_group_image">Modifier la photo du groupe</string>
     <string name="menu_settings">Configuration</string>
     <string name="menu_advanced">Avancé</string>
     <string name="menu_deaddrop">Demande de contact</string>
@@ -346,11 +342,8 @@
     <string name="login_error_cannot_login">Connexion en tant que \"%1$s\" échouée. Vérifiez s.v.p. que votre adresse courriel et votre mot de passe sont corrects.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Réponse de %1$s: %2$s\n\nCertains fournisseurs ajoutent des informations dans votre boite de réception; vous pouvez les vérifier par exemple dans le gestionnaire Web. Consultez votre fournisseur ou vos amis si vous rencontrez des problèmes.</string>
-
     <!-- TLS certificate checks -->
-    <string name="accept_invalid_hostnames">Accepter les noms d’hôtes non valides</string>
     <string name="accept_invalid_certificates">Accepter les certificats non valides</string>
-
     <string name="used_settings">Paramètres utilisés :</string>
     <string name="delete_account">Supprimer le compte</string>
     <string name="delete_account_ask">Êtes-vous sûr de vouloir supprimer les données de votre compte ?</string>
@@ -393,7 +386,6 @@
     <string name="pref_notifications_show">Afficher</string>
     <string name="pref_notifications_priority">Priorité</string>
     <string name="pref_led_color">Couleur de LED</string>
-    <string name="pref_led_pattern">mode de clignotement de LED</string>
     <string name="pref_sound">Son</string>
     <string name="pref_silent">Silencieux</string>
     <string name="pref_privacy">Vie privée</string>
@@ -452,11 +444,6 @@
     <string name="pref_show_emails_no">Non, seulement les tchats</string>
     <string name="pref_show_emails_accepted_contacts">Pour les contacts acceptés</string>
     <string name="pref_show_emails_all">Tout</string>
-    <string name="pref_empty_server_title">Effacer les courriels depuis le serveur</string>
-    <string name="pref_empty_server_msg">Cette fonction aide à faire de la place sur votre serveur IMAP en effaçant TOUS les courriels, y compris les messages de discussion, dans les dossiers indiqués. Les messages sur cet appareil ne seront pas effacés. L\'effacement ne peut pas être annulé !</string>
-    <string name="pref_empty_server_inbox">Effacer TOUS les courriels du dossier boîte de réception</string>
-    <string name="pref_empty_server_mvbox">Effacer TOUS les courriels du dossier DeltaChat</string>
-    <string name="pref_empty_server_do_button">Effacer les courriels</string>
     <string name="pref_experimental_features">Fonctionnalités expérimentales</string>
     <string name="pref_on_demand_location_streaming">Envoi de la géolocalisation à la demande</string>
     <string name="pref_background_default">Arrière-plan par défaut</string>
@@ -599,8 +586,6 @@
     <string name="more_info_desktop">En savoir plus</string>
     <string name="logout_desktop">Déconnexion</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Aucune discussion archivée</string>
-    <string name="no_chats_desktop">Aucune discussion</string>
     <string name="encryption_info_desktop">Afficher les informations de chiffrement</string>
     <string name="verified_desktop">vérifié</string>
     <string name="remove_desktop">Retirer</string>
@@ -655,4 +640,6 @@
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilise votre micro pour enregistrer et envoyer des messages vocaux et des vidéos avec bande son.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vous laisse choisir quelles photos envoyer de votre photothèque. </string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>

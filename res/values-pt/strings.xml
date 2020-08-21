@@ -31,8 +31,6 @@
     <string name="bad_email_address">Endereço de errado de email</string>
     <string name="password">Palavra-chave</string>
     <string name="now">Agora</string>
-    <!-- n_min_ago is deprecated, use n_minutes instead -->
-    <string name="n_min_ago">%d min</string>
     <string name="today">Hoje</string>
     <string name="yesterday">Ontem</string>
     <string name="this_week">Esta semana</string>
@@ -243,7 +241,6 @@
     <string name="login_error_cannot_login">Não é possível fazer o login como \"%1$s\". Por favor, verifique se o endereço de email e a palavra-chave estão corretos.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Resposta de %1$s: %2$s \n\nAlguns provedores colocam informações adicionais na sua caixa de entrada; pode verificá-los, por exemplo, na interface web. Consulte o seu provedor ou amigos se você tiver problemas.</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reencaminhar ...</string>
@@ -276,7 +273,6 @@
     <string name="pref_notifications_show">Mostrar</string>
     <string name="pref_notifications_priority">Prioridade</string>
     <string name="pref_led_color">Cor do LED</string>
-    <string name="pref_led_pattern">Padrão de piscar do LED</string>
     <string name="pref_sound">Som</string>
     <string name="pref_silent">Silêncio</string>
     <string name="pref_privacy">Privacidade</string>
@@ -449,8 +445,6 @@
     <string name="more_info_desktop">Informação adicional</string>
     <string name="logout_desktop">Sair</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="no_archived_chats_desktop">Não existem arquivos de CHATS</string>
-    <string name="no_chats_desktop">Não existem CHATS</string>
     <string name="encryption_info_desktop">Mostrar a informação de encriptação</string>
     <string name="verified_desktop">verificado</string>
     <string name="remove_desktop">Apagar</string>
@@ -484,4 +478,6 @@
     <string name="message_detail_to_desktop">para</string>
     <string name="menu.view.developer.open.log.folder">Abrir pasta de Log</string>
     <string name="menu.view.developer.open.current.log.file">Abrir o aqrquio do log actual</string>
-    </resources>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+
+</resources>
