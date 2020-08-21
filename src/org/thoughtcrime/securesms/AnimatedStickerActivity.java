@@ -76,26 +76,15 @@ public class AnimatedStickerActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.activity_select_animated_stickers);
     recycler = findViewById(R.id.animated_sticker_list);
 
-    ProgressDialog progressDialog = ProgressDialog.show(this, "Cargando Stickers", "Este proceso puede demorar algun tiempo", true, true, dialog -> {
-      dialog.dismiss();
-      AnimatedStickerActivity.this.finish();
-      canceled = true;
-    });
-    AsyncTask.execute(() -> {
-      if (stickers == null) {
-        stickers = getStickers(Environment.getExternalStorageDirectory());
+    if (stickers == null) {
+      stickers = getStickers(Environment.getExternalStorageDirectory());
+    }
+    recycler.post(() -> {
+      recycler.setLayoutManager(new GridLayoutManager(AnimatedStickerActivity.this, 2));
+      recycler.setAdapter(new AnimatedStickersAdapter(getFiles(), AnimatedStickerActivity.this));
+      if (stickerPackSelection != -1) {
+        ((AnimatedStickersAdapter) recycler.getAdapter()).setCategory(true);
       }
-      recycler.post(() -> {
-        if (!canceled) {
-          progressDialog.dismiss();
-          recycler.setLayoutManager(new GridLayoutManager(AnimatedStickerActivity.this, 2));
-          recycler.setAdapter(new AnimatedStickersAdapter(getFiles(), AnimatedStickerActivity.this));
-          if (stickerPackSelection != -1) {
-            ((AnimatedStickersAdapter) recycler.getAdapter()).setCategory(true);
-          }
-        }
-      });
-
     });
   }
 
