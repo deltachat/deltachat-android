@@ -305,7 +305,6 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
                    .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                    .ifNecessary()
                    .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
-                   .onAnyDenied(() -> Toast.makeText(this, R.string.perm_explain_access_to_storage_denied, Toast.LENGTH_LONG).show())
                    .onAllGranted(() -> {
                      SaveAttachmentTask saveTask = new SaveAttachmentTask(MediaPreviewActivity.this);
                      long saveDate = (mediaItem.date > 0) ? mediaItem.date : System.currentTimeMillis();
