@@ -319,11 +319,15 @@ public class ConversationItem extends LinearLayout
   }
 
   private boolean hasOnlyThumbnail(DcMsg messageRecord) {
-    return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord);
+    return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord) && !hasSticker(messageRecord);
   }
 
   private boolean hasDocument(DcMsg dcMsg) {
     return dcMsg.getType()==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
+  }
+
+  private boolean hasSticker(DcMsg dcMsg) {
+    return dcMsg.getType()==DcMsg.DC_MSG_STICKER;
   }
 
   private void setBodyText(DcMsg messageRecord) {
@@ -394,7 +398,7 @@ public class ConversationItem extends LinearLayout
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
     }
-    else if (hasDocument(messageRecord)) {
+    else if (hasDocument(messageRecord) || hasSticker(messageRecord)) {
       documentViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
@@ -568,7 +572,7 @@ public class ConversationItem extends LinearLayout
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
     if (documentViewStub.resolved()) {
-	if (documentViewStub.get().getComposedAnimation() != null) {
+	if (documentViewStub.get().hasSticker()) {
             activeFooter.setBackgroundResource(R.drawable.conversation_item_update_background);
             activeFooter.setTextColor(Color.parseColor("#FFFFFF"));
             activeFooter.setPadding(8,4,8,4);
@@ -639,7 +643,7 @@ public class ConversationItem extends LinearLayout
 
   private void setMessageShape(@NonNull DcMsg current) {
     int background;
-    if (current.hasFile() && current.getFilename().endsWith(".tgs")) {
+    if (current.getType()==DcMsg.DC_MSG_STICKER) {
 	background = R.drawable.void_background;
     } else {
 	background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone

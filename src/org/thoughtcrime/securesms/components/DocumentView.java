@@ -66,7 +66,11 @@ public class DocumentView extends FrameLayout {
       this.documentSlide = documentSlide;
 
       LottieComposition composedAnimation = getComposedAnimation();
-      if (composedAnimation != null) {
+      if (documentSlide.hasSticker() && documentSlide.getContentType().startsWith("image/")) {
+	  container.setVisibility(GONE);
+	  lottie.setVisibility(VISIBLE);
+	  lottie.setImageURI(documentSlide.getUri());
+      } else if (composedAnimation != null) {
 	  container.setVisibility(GONE);
 	  lottie.setVisibility(VISIBLE);
 	  lottie.setOnFocusChangeListener((v, hasFocus) -> {
@@ -118,6 +122,10 @@ public class DocumentView extends FrameLayout {
       }
     }
     return null;
+  }
+
+  public boolean hasSticker() {
+      return documentSlide.hasSticker();
   }
 
   @Override
