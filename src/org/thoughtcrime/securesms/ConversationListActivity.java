@@ -107,13 +107,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
-	    "🆕 Registro de cambios v1.13.1:\n" +
-	    "✳️ Nuevo fondo por defecto, gracias al diseñador \"Meloncito\"\n" +
-	    "✳️ Nueva imagen de bienvenida, gracias al diseñador \"Meloncito\"\n" +
-	    "✳️ Ahora los stickers animados no se pausan al recibir nuevos mensajes, gracias al programador: Ruben David (https://github.com/RubenDavidPerezJimenez)\n" +
-	    "✳️ Retocada la apariencia de la etiqueta de fecha de los stickers animados, gracias al programador: Ruben David\n" +
-	    "✳️ Ahora la app tiene un selector de stickers integrado!!! Es posible agregar o eliminar packs de stickers desde la propia app, gracias al programador: Ruben David.\n" +
-	    "✳️ Arreglado problema de compatibilidad con versiones de Android menores que 7.\n" +
+	    "🆕 Registro de cambios v1.X.X:\n" +
+	    "✳️ Ahora los /comandos (y @menciones) se ponen de borrador al hacerles click, para evitar envíos accidentales.\n" +
+	    "✳️ Al hacer click en una #etiqueta se activa la búsqueda de dicha etiqueta en el chat.\n" +
+	    "✳️ Ahora las imágenes .webp son mostradas como stickers sin burbuja.\n" +
+	    "✳️ Mejorado el selector de stickers para Android < 7.\n" +
+	    "✳️ Ahora el editor de imágenes tiene los iconos de forma vertical para que sean visibles en teléfonos de pantalla pequeña, gracias al programador: Ruben David (https://github.com/RubenDavidPerezJimenez)\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
     dcContext.addDeviceMsg("dlab-1.13.1-chlog", msg);
 
