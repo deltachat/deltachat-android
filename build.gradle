@@ -102,7 +102,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         // base name of the generated apk
-        project.ext.set("archivesBaseName", "deltachat");
+        project.ext.set("archivesBaseName", "deltalab");
 
         buildConfigField "boolean", "DEV_BUILD", "false"
         buildConfigField "String", "MAP_ACCESS_TOKEN", '"pk.eyJ1IjoiZGVsdGFjaGF0IiwiYSI6ImNqc3c1aWczMzBjejY0M28wZmU0a3cwMzMifQ.ZPTH9dFJaav06RAu4rTYHw"'
