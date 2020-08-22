@@ -93,28 +93,31 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
-            "💡TIP - Estos son algunos bots para Delta Chat:\n" +
+            "💡TIP - Estos son algunos bots para DeltaLab:\n" +
 	    "✳️ adb_bot1@testrun.org para grupos públicos, mega-groupos con más de 20 personas!, canales y directorio de amigos.\n" +
-	    "✳️ simplebot@testrun.org puente entre delta chat y la red social mastodon.\n" +
+	    "✳️ simplebot@testrun.org puente entre delta chat y la red social Mastodon (https://joinmastodon.org).\n" +
 	    // "✳️ simple-facebook-bridge@testrun.org puente para chatear desde delta chat con tus amigos de facebook.\n" +
 	    "✳️ simplebot@systemli.org bot de navegación en internet, búsqueda y descargas de archivos, fotos, estado del tiempo, wikipedia, RSS, memes etc.\n" +
 	    "✳️ simplebot@riseup.net bot para navegación en internet con prestaciones similares a simplebot@systemli.org\n" +
-	    "✳️ games@echedeylr.tk bot de juegos, permite jugar con otros usuarios.\n" +
-	    // "✳️ xmpp@deltanode.eu el cual es un puente entre delta chat y la red XMPP\n" +
+	    "✳️ deltabot@echedeylr.tk bot para navegación en internet con prestaciones similares a simplebot@systemli.org\n" +
+	    "✳️ games@echedeylr.tk bot de juegos, permite jugar con otros usuarios a varios juegos.\n" +
+	    "✳️ dcbridge@echedeylr.tk bot puente con IRC para unirse a salas de chat de internet como #deltachat-es\n" +
 	    "\nℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
 	    "/help");
-    dcContext.addDeviceMsg("dlab-1.12.1-bots", msg);
+    dcContext.addDeviceMsg("dlab-1.13.3-bots", msg);
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(
-	    "🆕 Registro de cambios v1.X.X:\n" +
+	    "🆕 Registro de cambios v1.13.3:\n" +
 	    "✳️ Ahora los /comandos (y @menciones) se ponen de borrador al hacerles click, para evitar envíos accidentales.\n" +
 	    "✳️ Al hacer click en una #etiqueta se activa la búsqueda de dicha etiqueta en el chat.\n" +
 	    "✳️ Ahora las imágenes .webp son mostradas como stickers sin burbuja.\n" +
 	    "✳️ Mejorado el selector de stickers para Android < 7.\n" +
+	    "✳️ Añadido de vuelta la funcionalidad experimental de mapas (debe ser activada en ajustes avanzados).\n" +
 	    "✳️ Ahora el editor de imágenes tiene los iconos de forma vertical para que sean visibles en teléfonos de pantalla pequeña, gracias al programador: Ruben David (https://github.com/RubenDavidPerezJimenez)\n" +
+	    "✳️ Corregido detalle visual: ahora el icono de stickers se oculta mientras se graba audio, gracias al programador: Ruben David.\n" +
 	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
-    dcContext.addDeviceMsg("dlab-1.13.1-chlog", msg);
+    dcContext.addDeviceMsg("dlab-1.13.3-chlog", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
