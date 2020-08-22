@@ -51,6 +51,7 @@ public class InputPanel extends LinearLayout
   private View            quickAudioToggle;
   private View            buttonToggle;
   private View            recordingContainer;
+  private View            quickStickerToggle;
 
   private MicrophoneRecorderView microphoneRecorderView;
   private SlideToCancel          slideToCancel;
@@ -80,6 +81,7 @@ public class InputPanel extends LinearLayout
     this.mediaKeyboard          = findViewById(R.id.emoji_toggle);
     this.composeText            = findViewById(R.id.embedded_text_editor);
     this.quickCameraToggle      = findViewById(R.id.quick_camera_toggle);
+    this.quickStickerToggle     = findViewById(R.id.quick_sticker_toggle);
     this.quickAudioToggle       = findViewById(R.id.quick_audio_toggle);
     this.buttonToggle           = findViewById(R.id.button_toggle);
     this.recordingContainer     = findViewById(R.id.recording_container);
@@ -131,6 +133,7 @@ public class InputPanel extends LinearLayout
     if (emojiVisible) ViewUtil.fadeOut(mediaKeyboard, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(composeText, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(quickCameraToggle, FADE_TIME, View.INVISIBLE);
+    ViewUtil.fadeOut(quickStickerToggle, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(quickAudioToggle, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(buttonToggle, FADE_TIME, View.INVISIBLE);
   }
@@ -179,6 +182,7 @@ public class InputPanel extends LinearLayout
     mediaKeyboard.setEnabled(enabled);
     quickAudioToggle.setEnabled(enabled);
     quickCameraToggle.setEnabled(enabled);
+    quickStickerToggle.setEnabled(enabled);
   }
 
   private long onRecordHideEvent(float x) {
@@ -191,6 +195,7 @@ public class InputPanel extends LinearLayout
         if (emojiVisible) ViewUtil.fadeIn(mediaKeyboard, FADE_TIME);
         ViewUtil.fadeIn(composeText, FADE_TIME);
         ViewUtil.fadeIn(quickCameraToggle, FADE_TIME);
+        ViewUtil.fadeIn(quickStickerToggle, FADE_TIME);
         ViewUtil.fadeIn(quickAudioToggle, FADE_TIME);
         ViewUtil.fadeIn(buttonToggle, FADE_TIME);
       }
