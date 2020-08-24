@@ -28,6 +28,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -37,6 +39,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.preference.Preference;
 import android.widget.Toast;
 
+import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.preferences.AdvancedPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.AppProtectionPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.AppearancePreferenceFragment;
@@ -271,4 +274,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     }
   }
 
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+  }
 }

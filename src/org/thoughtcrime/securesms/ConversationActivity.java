@@ -1236,7 +1236,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Permissions.with(this)
                .request(Manifest.permission.RECORD_AUDIO)
                .ifNecessary()
-               .withRationaleDialog(getString(R.string.perm_explain_need_for_mic_access), R.drawable.ic_mic_white_48dp)
                .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_mic_denied))
                .execute();
   }
@@ -1376,7 +1375,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                      composeText.clearFocus();
                      container.show(composeText, quickAttachmentDrawer);
                    })
-                   .onAnyDenied(() -> Toast.makeText(ConversationActivity.this, R.string.perm_explain_need_for_camera_access, Toast.LENGTH_LONG).show())
                    .execute();
       } else {
         container.hideAttachedInput(false);
