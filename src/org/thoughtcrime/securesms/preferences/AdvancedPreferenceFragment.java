@@ -326,7 +326,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Permissions.with(getActivity())
         .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
         .ifNecessary()
-        .withRationaleDialog(getActivity().getString(R.string.pref_managekeys_ask_for_storage_permission), R.drawable.ic_folder_white_48dp)
+        .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
         .onAllGranted(() -> {
           new AlertDialog.Builder(getActivity())
               .setTitle(R.string.pref_managekeys_menu_title)

@@ -454,11 +454,10 @@ public class ConversationFragment extends Fragment
 
     private void handleSaveAttachment(final DcMsg message) {
         SaveAttachmentTask.showWarningDialog(getContext(), (dialogInterface, i) -> {
-            Permissions.with(this)
+            Permissions.with(getActivity())
                     .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                     .ifNecessary()
                     .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
-                    .onAnyDenied(() -> Toast.makeText(getContext(), R.string.perm_explain_access_to_storage_denied, Toast.LENGTH_LONG).show())
                     .onAllGranted(() -> {
                         SaveAttachmentTask saveTask = new SaveAttachmentTask(getContext());
                         SaveAttachmentTask.Attachment attachment = new SaveAttachmentTask.Attachment(
