@@ -1389,12 +1389,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           .request(Manifest.permission.READ_EXTERNAL_STORAGE,
               Manifest.permission.WRITE_EXTERNAL_STORAGE)
           .ifNecessary()
-          .withRationaleDialog(getString(R.string.perm_explain_need_for_storage_access_share),R.drawable.ic_folder_white_48dp)
           .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
           .onAllGranted(()->{
             startActivityForResult(new Intent(ConversationActivity.this, AnimatedStickerActivity.class),PICK_STICKER);
           })
-          .onAnyDenied(()->{Toast.makeText(ConversationActivity.this,R.string.perm_explain_access_to_storage_denied,Toast.LENGTH_LONG).show();})
           .execute();
     }
   }

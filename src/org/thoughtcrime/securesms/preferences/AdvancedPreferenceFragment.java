@@ -370,7 +370,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Permissions.with(getActivity())
         .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
         .ifNecessary()
-        .withRationaleDialog(getActivity().getString(R.string.perm_explain_need_for_storage_access), R.drawable.ic_folder_white_48dp)
         .onAllGranted(() -> {
 		File download = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 		List<File> files = Arrays.asList(download.listFiles(new FileFilter(){
@@ -421,7 +420,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 	Permissions.with(getActivity())
 	    .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
 	    .ifNecessary()
-	    .withRationaleDialog(getActivity().getString(R.string.perm_explain_need_for_storage_access), R.drawable.ic_folder_white_48dp)
 	    .onAllGranted(() -> {
 		    new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.pref_map_export)
