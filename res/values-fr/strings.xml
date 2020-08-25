@@ -6,6 +6,7 @@
     <string name="cancel">Annuler</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
+    <string name="select">Sélectionner</string>
     <string name="on">Allumé</string>
     <string name="off">Éteint</string>
     <string name="def">Par défaut</string>
@@ -14,6 +15,8 @@
     <string name="automatic">Automatique</string>
     <string name="strict">Stricte</string>
     <string name="open">Ouvert</string>
+    <string name="join">Rejoindre</string>
+    <string name="rejoin">Réintégrer</string>
     <string name="delete">Supprimer</string>
     <string name="info">Info</string>
     <string name="update">Mise à jour</string>
@@ -26,6 +29,7 @@
     <string name="unarchive">Désarchiver</string>
     <string name="mute">Sourdine</string>
     <string name="ephemeral_messages">Messages éphémères</string>
+    <string name="ephemeral_messages_hint">Ces paramètres s\'appliquent à tous les participants utilisant Delta Chat. Cependant, ils peuvent copier, enregistrer et faire suivre des messages ou utiliser un autre client de messagerie.</string>
     <string name="save">Sauvegarder</string>
     <string name="chat">Discussion</string>
     <string name="media">Média</string>
@@ -51,6 +55,7 @@
     <string name="email_address">Adresse de courriel</string>
     <string name="bad_email_address">Mauvaise adresse email.</string>
     <string name="password">Mot de passe</string>
+    <string name="existing_password">Mot de passe existant</string>
     <string name="now">Maintenant</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Attention</string>
@@ -102,7 +107,9 @@
     <string name="camera">Caméra</string>
     <string name="location">Position</string>
     <string name="gallery">Galerie</string>
+    <string name="images_and_videos">Images et vidéos</string>
     <string name="file">Fichier</string>
+    <string name="files">Fichiers</string>
     <string name="unknown">Inconnu</string>
 
     <string name="green">Vert</string>
@@ -204,6 +211,9 @@
 
     <string name="file_saved_to">Fichier enregistré dans \"%1$s\".</string>
 
+    <string name="videochat_invite_user_hint">Cela requiert une application compatible ou un navigateur compatible des deux côtés.</string>
+    <string name="videochat_tap_to_join">Appuyez pour rejoindre</string>
+    <string name="videochat_tap_to_open">Appuyez pour ouvrir</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
     <plurals name="ask_delete_chat">
@@ -345,8 +355,12 @@
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accepter les certificats non valides</string>
     <string name="used_settings">Paramètres utilisés :</string>
+    <string name="switch_account">Changer de compte</string>
+    <string name="add_account">Ajouter un compte</string>
     <string name="delete_account">Supprimer le compte</string>
     <string name="delete_account_ask">Êtes-vous sûr de vouloir supprimer les données de votre compte ?</string>
+    <string name="switching_account">Changement de compte...</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Transférer à …</string>
@@ -450,6 +464,18 @@
     <string name="pref_background_default_color">Couleur par défaut</string>
     <string name="pref_background_custom_image">Image personnalisée</string>
     <string name="pref_background_custom_color">Couleur personnalisée</string>
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">Effacer les anciens messages</string>
+    <string name="autodel_device_title">Effacer les messages sur appareil</string>
+    <string name="autodel_server_title">Effacer les messages sur le serveur</string>
+    <string name="after_30_seconds">Après 30 secondes</string>
+    <string name="after_1_minute">Après 1 minute</string>
+    <string name="autodel_after_1_hour">Après 1 heure</string>
+    <string name="autodel_after_1_day">Après 1 jour</string>
+    <string name="autodel_after_1_week">Après 1 semaine</string>
+    <string name="autodel_after_4_weeks">Après 4 semaines</string>
+    <string name="autodel_after_1_year">Après 1 année</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt est une nouvelle spécification ouverte pour le chiffrement automatique de bout en bout des courriels.\n\nVotre configuration de bout en bout est créée automatiquement si nécessaire et vous pouvez la transférer entre les périphériques avec les messages de configuration Autocrypt.</string>
@@ -482,6 +508,9 @@
     <string name="systemmsg_action_by_me">%1$s par moi.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s sur %2$s.</string>
+    <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>
+    <string name="systemmsg_failed_sending_to">Échec de l\'envoi du message à %1$s.</string>
+
     <!-- screen lock -->
     <string name="screenlock_title">Verrouillage de l\'écran</string>
     <string name="screenlock_explain">Verrouiller l’accès avec le verrouillage d’écran Android ou l’empreinte digitale ; pour éviter d’afficher le contenu précédent, veuillez également activer « Sécurité écran »</string>
@@ -514,6 +543,8 @@
     <string name="qrshow_join_contact_hint">Scanner ceci pour créer un contact avec %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">\'installation du QR code nécessite une connexion Internet. Veuillez vous connecter à un réseau avant de continuer.</string>
     <string name="qrshow_join_contact_no_connection_toast">Pas de connexion Internet, ne peut pas effectuer la configuration du QR code.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
+    <string name="qraccount_use_on_new_install">Le code QR scanné permet d\'ouvrir un nouveau compte. Vous pouvez scanner le code QR lors de la mise en place d\'une nouvelle installation de Delta Chat.</string>
     <string name="contact_verified">%1$s vérifié.</string>
     <string name="contact_not_verified">Ne peut pas vérifier %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

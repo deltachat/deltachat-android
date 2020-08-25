@@ -6,6 +6,7 @@
     <string name="cancel">Anuluj</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
+    <string name="select">Zaznacz</string>
     <string name="on">Włączone</string>
     <string name="off">Wyłączone</string>
     <string name="def">Domyślne</string>
@@ -14,7 +15,10 @@
     <string name="automatic">Automatyczne</string>
     <string name="strict">Dokładne</string>
     <string name="open">Otwórz</string>
+    <string name="join">Dołącz</string>
+    <string name="rejoin">Dołącz ponownie</string>
     <string name="delete">Usuń</string>
+    <string name="info">Informacje</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Załącznik</string>
     <string name="back">Wróć</string>
@@ -23,6 +27,7 @@
     <string name="archive">Archiwizuj</string>
     <string name="unarchive">Przywróć z archiwum</string>
     <string name="ephemeral_messages">Znikające wiadomości</string>
+    <string name="ephemeral_messages_hint">Te ustawienia dotyczą wszystkich uczestników korzystających z Delta Chat. Mogą jednak kopiować, zapisywać i przekazywać wiadomości lub korzystać z innych klientów poczty e-mail.</string>
     <string name="save">Zapisz</string>
     <string name="chat">Czat</string>
     <string name="media">Multimedia</string>
@@ -112,7 +117,9 @@
     <string name="camera">Kamera</string>
     <string name="location">Lokalizacja</string>
     <string name="gallery">Galeria</string>
+    <string name="images_and_videos">Obrazy i wideo</string>
     <string name="file">Plik</string>
+    <string name="files">Pliki</string>
     <string name="unknown">Nieznany</string>
 
     <string name="green">Zielony</string>
@@ -214,6 +221,21 @@
 
     <string name="file_saved_to">Plik zapisany w „%1$s</string>
 
+    <string name="videochat">Czat wideo</string>
+    <string name="videochat_invite_user_to_videochat">Zaprosić %1$s do czatu wideo?</string>
+    <string name="videochat_invite_user_hint">Wymaga to kompatybilnej aplikacji lub kompatybilnej przeglądarki po obu stronach.</string>
+    <string name="videochat_contact_invited_hint">Użytkownik %1$s zaprosił na czat wideo.</string>
+    <string name="videochat_you_invited_hint">Zaprosiłeś do czatu wideo.</string>
+    <string name="videochat_will_open_in_your_browser">Ten czat wideo otworzy się w twojej przeglądarce.</string>
+    <string name="videochat_tap_to_join">Dotknij, aby dołączyć</string>
+    <string name="videochat_tap_to_open">Dotknij, aby otworzyć</string>
+    <string name="videochat_instance">Instancja czatu wideo</string>
+    <string name="videochat_instance_placeholder">Twoja instancja czatu wideo</string>
+    <string name="videochat_instance_explain">Jeśli zdefiniowano instancję czatu wideo, możesz rozpocząć rozmowę wideo z każdego czatu indywidualnego. Czaty wideo wymagają kompatybilnej aplikacji lub kompatybilnej przeglądarki po obu stronach.\n\nPrzykłady: https://meet.jit.si/$ROOM lub basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">Czy użyć „%1$s”, aby zaprosić innych do czatów wideo?\n\nPo ustawieniu możesz rozpocząć czat wideo z każdego czatu indywidualnego. Spowoduje to zastąpienie poprzedniego ustawienia czatów wideo, jeśli takie istnieją.</string>
+    <string name="videochat_invitation">Zaproszenie do czatu wideo</string>
+    <string name="videochat_invitation_body">Masz zaproszenie do czatu wideo, naciśnij %1$s, aby dołączyć.</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Czy na pewno chcesz opuścić tą grupę?</string>
     <plurals name="ask_delete_chat">
@@ -229,6 +251,7 @@
         <item quantity="other">Usunąć %d wiadomości tutaj i na serwerze?</item>
     </plurals>
     <string name="ask_forward">Przekazać wiadomości do użytkownika %1$s?</string>
+    <string name="ask_forward_multiple">Przekazać wiadomości do %1$d czatów?</string>
     <string name="ask_export_attachment">Eksportować załącznik? Eksportowanie załączników umożliwi dostęp do nich wszystkim aplikacjom na urządzeniu.\n\nKontynuować?</string>
     <string name="ask_block_contact">Zablokować ten kontakt? Nie będziesz już odbierać wiadomości od tego kontaktu.</string>
     <string name="ask_unblock_contact">Odblokować ten kontakt? Ponownie będzie można odbierać wiadomości od tego kontaktu.</string>
@@ -348,6 +371,8 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Bezpieczeństwo SMTP</string>
     <string name="login_auth_method">Metoda autoryzacji</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Sprawdzanie %1$s</string>
     <string name="login_info_oauth2_title">Kontynuuj w uproszczonej konfiguracji?</string>
     <string name="login_info_oauth2_text">Wprowadzony adres e-mail obsługuje uproszczoną konfigurację (OAuth2.0).\n\nW następnym kroku pozwól, aby Delta Chat działał jako czat z aplikacją e-mail.\n\nNie ma serwerów Delta Chat, Twoje dane pozostają na Twoim urządzeniu!</string>
     <string name="login_certificate_checks">Sprawdzanie certyfikatów</string>
@@ -374,6 +399,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Przekaż do…</string>
+    <string name="share_multiple_attachments">Wysłać %1$d pliki do wybranych czatów?\n\nWysyłane pliki są niezmodyfikowane w oryginalnym rozmiarze, np. obrazy i filmy nie są przekodowywane.</string>
+    <string name="share_multiple_attachments_multiple_chats">Wysłać %1$d plik(i) do %2$d czatów?\n\nWysyłane pliki są niezmodyfikowane w oryginalnym rozmiarze, np. obrazy i filmy nie są przekodowywane.</string>
+    <string name="share_text_multiple_chats">Wysłać ten tekst do %1$d czatów?\n\n\"%2$s\"</string>
     <string name="share_abort">Udostępnianie zostało przerwane z powodu brakujących uprawnień.</string>
 
 
@@ -479,12 +507,20 @@
     <string name="pref_reliable_service_explain">Wymaga stałego powiadomienia</string>
 
 
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">Usuń stare wiadomości</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Automatyczne usuwanie wiadomości</string>
     <string name="autodel_device_title">Usuwanie wiadomości z urządzenia</string>
     <string name="autodel_server_title">Usuwanie wiadomości z serwera</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_device_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n• Obejmuje to wszystkie multimedia\n\n• Wiadomości zostaną usunięte niezależnie od tego, czy były widoczne, czy nie\n\n• „Zapisane wiadomości” zostaną pominięte podczas lokalnego usuwania</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n• Obejmuje to wszystkie multimedia\n\n• Spowoduje to również usunięcie e-maili, na które ma wpływ opcja „Pokaż klasyczne e-maile”\n\n• „Zapisane wiadomości” zostaną pominięte podczas lokalnego usuwania</string>
     <string name="autodel_confirm">Rozumiem, usuń te wszystkie wiadomości</string>
     <string name="autodel_at_once">Od razu</string>
+    <string name="after_30_seconds">Po 30 sekundach</string>
+    <string name="after_1_minute">Po 1 minucie</string>
     <string name="autodel_after_1_hour">Po 1 godzinie</string>
     <string name="autodel_after_1_day">Po 1 dniu</string>
     <string name="autodel_after_1_week">Po 1 tygodniu</string>
@@ -523,6 +559,19 @@
     <string name="systemmsg_action_by_me">%1$s przeze mnie.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s przez %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Nieznany nadawca tego czatu. Więcej szczegółów znajdziesz w sekcji „Informacje”.</string>
+    <string name="systemmsg_subject_for_new_contact">Wiadomość od %1$s</string>
+    <string name="systemmsg_failed_sending_to">Nie udało się wysłać wiadomości do %1$s.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">Wyłączono zegar znikających wiadomości.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Ustawiono zegar znikających wiadomości na %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Ustawiono zegar znikających wiadomości na 1 minutę.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Ustawiono zegar znikających wiadomości na 1 godzinę.</string>
+    <string name="systemmsg_ephemeral_timer_day">Ustawiono zegar znikających wiadomości na 1 dzień.</string>
+    <string name="systemmsg_ephemeral_timer_week">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Ustawiono zegar znikających wiadomości na 4 tygodnie.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">Blokada ekranu</string>
     <string name="screenlock_explain">Blokuj dostęp za pomocą blokady ekranu systemu Android lub odcisku palca; aby uniknąć pojawienia się poprzedniej zawartości, włącz również opcję „Zabezpieczenia ekranu”</string>

@@ -6,6 +6,7 @@
     <string name="cancel">Avbryt</string>
     <string name="yes">Ja</string>
     <string name="no">Nei</string>
+    <string name="select">Velg</string>
     <string name="on">På</string>
     <string name="off">Av</string>
     <string name="def">Forvalg</string>
@@ -27,10 +28,10 @@
     <string name="mute">Demp</string>
     <string name="ephemeral_messages">Forsvinnende meldinger</string>
     <string name="save">Lagre</string>
-    <string name="chat">Sludring</string>
+    <string name="chat">Chat</string>
     <string name="media">Media</string>
     <string name="main_menu">Hovedmeny</string>
-    <string name="start_chat">Start sludring</string>
+    <string name="start_chat">Start chat</string>
     <string name="show_password">Vis passord</string>
     <string name="hide_password">Skjul passord</string>
     <string name="not_now">Ikke nå</string>
@@ -43,12 +44,14 @@
     <string name="error">Feil</string>
     <string name="error_x">Feil: %1$s</string>
     <string name="error_no_network">Nettverk utilgjengelig.</string>
+    <string name="no_browser_installed">Ingen nettleser installert</string>
     <string name="file_not_found">Filen %1$s ble ikke funnet.</string>
     <string name="copied_to_clipboard">Kopiert til utklippstavle</string>
     <string name="contacts_headline">Kontakter</string>
     <string name="email_address">E-postadresse</string>
     <string name="bad_email_address">Feilaktig e-postadresse.</string>
     <string name="password">Passord</string>
+    <string name="existing_password">Eksisterende passord</string>
     <string name="now">Nå</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">Fare</string>
@@ -70,7 +73,7 @@
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d sludring</item>
-        <item quantity="other">%d sludringer</item>
+        <item quantity="other">%d chatter</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d kontakt</item>
@@ -100,7 +103,9 @@
     <string name="camera">Kamera</string>
     <string name="location">Posisjon</string>
     <string name="gallery">Galleri</string>
+    <string name="images_and_videos">Bilder og videoer</string>
     <string name="file">Fil</string>
+    <string name="files">Filer</string>
     <string name="unknown">Ukjent</string>
 
     <string name="green">Grønn</string>
@@ -126,7 +131,7 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Ny kontakt</string>
-    <string name="menu_new_chat">Ny sludring</string>
+    <string name="menu_new_chat">Ny chat</string>
     <string name="menu_new_group">Ny gruppe</string>
     <string name="menu_new_verified_group">Ny bekreftet gruppe</string>
     <string name="menu_send">Send</string>
@@ -135,8 +140,8 @@
     <string name="menu_group_name_and_image">Gruppenavn og bilde</string>
     <string name="menu_show_map">Vis kart</string>
     <string name="menu_show_global_map">Vis alle posisjoner</string>
-    <string name="menu_archive_chat">Arkiver sludring</string>
-    <string name="menu_unarchive_chat">Fjern sludring fra arkiv</string>
+    <string name="menu_archive_chat">Arkiver chat</string>
+    <string name="menu_unarchive_chat">Fjern chat fra arkiv</string>
     <string name="menu_add_attachment">Legg ved filer</string>
     <string name="menu_leave_group">Forlat gruppe</string>
     <string name="menu_delete_chat">Slett sludring</string>
@@ -173,6 +178,8 @@
     <string name="title_share_location">Del beliggenhet med alle gruppemedlemmer</string>
     <string name="device_talk">Enhetsmeldinger</string>
     <string name="device_talk_subtitle">Lokalt genererte meldinger</string>
+    <string name="device_talk_explain">Meldinger i denne chatten blir generert lokalt av Delta Chat-appen. Produsentene bruker den for å informere om appoppdateringer og problemer under bruk.</string>
+    <string name="device_talk_welcome_message">Velkommen til Delta Chat! – Delta Chat ser ut og føles som andre populære messenger-apper, men involverer ikke sentralisert kontroll, sporing eller salg av deg, venner, kolleger eller familie til store organisasjoner.\n\nTeknisk er Delta Chat en e-postapplikasjon med et moderne chatgrensesnitt. E-post i en nye klær hvis du vil 👻\n\nBruk Delta Chat med hvem som helst av milliarder av mennesker: bare bruk e-postadressen deres. Mottakere trenger ikke installere Delta Chat, besøke nettsteder eller registrere seg noen steder – men selvfølgelig, hvis de vil, kan du peke dem til 👉 https://get.delta.chat</string>
     <string name="edit_contact">Rediger kontakt</string>
     <string name="mute_for_one_hour">Demp i 1 time</string>
     <string name="mute_for_two_hours">Demp i 2 timer</string>
@@ -187,6 +194,11 @@
     <string name="share_location_for_two_hours">i 2 timer</string>
     <string name="share_location_for_six_hours">i 6 timer</string>
 
+    <string name="videochat">Videochat</string>
+    <string name="videochat_invite_user_to_videochat">Inviter %1$s til en videochat?</string>
+    <string name="videochat_invite_user_hint">Dette krever en kompatibel app, eller en kompatible nettleser i begge ender.</string>
+    <string name="videochat_contact_invited_hint">%1$s inviterte til en videochat.</string>
+    <string name="videochat_you_invited_hint">Du inviterte til en videochat.</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Er du sikker på at du vil forlate denne gruppen?</string>
     <plurals name="ask_delete_messages">

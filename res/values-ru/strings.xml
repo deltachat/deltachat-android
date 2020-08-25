@@ -227,7 +227,7 @@
     <string name="videochat_invite_user_to_videochat">Пригласить %1$s в видеочат?</string>
     <string name="videochat_invite_user_hint">Это требует совместимого приложения или совместимого браузера на обоих концах.</string>
     <string name="videochat_contact_invited_hint">%1$s приглашает вас в видеочат.</string>
-    <string name="videochat_you_invited_hint">Вы пригласили в видеочат.</string>
+    <string name="videochat_you_invited_hint">Вас пригласили в видеочат.</string>
     <string name="videochat_will_open_in_your_browser">Этот видеочат будет открываться в браузере</string>
     <string name="videochat_tap_to_join">Нажмите, чтобы зайти.</string>
     <string name="videochat_tap_to_open">Нажмите, чтобы открыть.</string>
@@ -390,7 +390,7 @@
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Не удалось выполнить вход с логином \"%1$s\". Убедитесь, что адрес эл. почты и пароль указаны верно.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Ответ сервера %1$s: %2$s\n\nНекоторые серверы электронной почты помещают дополнительную информацию во входящие; вы можете проверить это, к примеру, через веб-интерфейс. В случае возникновения проблем, проконсультируйте с провайдером вашей эл. почты или знакомым специалистом.</string>
+    <string name="login_error_server_response">Ответ сервера %1$s: %2$s\n\nНекоторые серверы электронной почты помещают дополнительную информацию во входящие; вы можете проверить это, к примеру, через веб-интерфейс. В случае возникновения проблем проконсультируйтесь с провайдером вашей эл. почты или знакомым специалистом.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
     <string name="used_settings">Используемые настройки:</string>
@@ -568,7 +568,7 @@
     <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
 
     <string name="systemmsg_ephemeral_timer_disabled">Таймер исчезающих сообщений отключён.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s сек.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s с.</string>
     <string name="systemmsg_ephemeral_timer_minute">Таймер исчезающих сообщений установлен на 1 минуту.</string>
     <string name="systemmsg_ephemeral_timer_hour">Таймер исчезающих сообщений установлен на 1 час.</string>
     <string name="systemmsg_ephemeral_timer_day">Таймер исчезающих сообщений установлен на 1 день.</string>
