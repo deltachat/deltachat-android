@@ -178,7 +178,6 @@ class EmojiProvider {
 
     @TargetApi(VERSION_CODES.HONEYCOMB_MR1)
     public void setBitmap(Bitmap bitmap) {
-      Util.assertMainThread();
       setBitmap(bitmap, false);
     }
 
