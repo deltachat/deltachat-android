@@ -32,7 +32,6 @@ import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.util.Patterns;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -67,7 +66,6 @@ import org.thoughtcrime.securesms.util.views.Stub;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -502,47 +500,33 @@ public class ConversationItem extends LinearLayout
     }
   }
 
+  private void replaceURLSpan(SpannableString messageBody) {
+    URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
+    for (URLSpan urlSpan : urlSpans) {
+      int start = messageBody.getSpanStart(urlSpan);
+      int end = messageBody.getSpanEnd(urlSpan);
+      // LongClickCopySpan must not be derived from URLSpan, otherwise links will be removed on the next addLinks() call
+      messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL(), this.dcChat.getId()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    }
+  }
+
   private SpannableString linkifyMessageBody(SpannableString messageBody, boolean shouldLinkifyAllLinks) {
     if (!shouldLinkifyAllLinks) {
       return messageBody;
     }
-    boolean hasLinks = false;
 
+    // linkify commands such as `/echo` -
+    // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
     Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
-    hasLinks = Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null) || hasLinks;
-
-    Linkify.TransformFilter urlFilter = (match, url) -> {
-      if (url.startsWith("http://") || url.startsWith("https://")) {
-        return url;
-      } else {
-        return "https://" + url;
-      }
-    };
-
-    Linkify.MatchFilter matcher = (s, start, end) -> {
-      URLSpan[] urlSpans = messageBody.getSpans(start, end, URLSpan.class);
-      for (URLSpan urlSpan : urlSpans) {
-        int start2 = messageBody.getSpanStart(urlSpan);
-        int end2 = messageBody.getSpanEnd(urlSpan);
-        if ((start >= start2 && start < end2) || (end >= start2 && end < end2)) {
-          return false;
-        }
-      }
-      return true;
-    };
-
-    hasLinks = Linkify.addLinks(messageBody, Patterns.EMAIL_ADDRESS, "mailto:", matcher, null) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.WEB_URL, "", matcher, urlFilter) || hasLinks;
-    hasLinks = Linkify.addLinks(messageBody, Patterns.PHONE, "tel:", matcher, null) || hasLinks;
-
-    if (hasLinks) {
-      URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
-      for (URLSpan urlSpan : urlSpans) {
-        int start = messageBody.getSpanStart(urlSpan);
-        int end = messageBody.getSpanEnd(urlSpan);
-        messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL(), this.dcChat.getId()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-      }
+    if (Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null)) {
+      replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
     }
+
+    // linkyfiy urls etc., this removes all existing URLSpan
+    if (Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS)) {
+      replaceURLSpan(messageBody);
+    }
+
     return messageBody;
   }
 
