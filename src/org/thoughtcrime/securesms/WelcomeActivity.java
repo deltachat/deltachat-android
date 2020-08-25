@@ -224,6 +224,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 progressUpdate((int)progress);
             }
             else if (progress==1000/*done*/) {
+                dcContext.maybeStartIo();
                 progressSuccess(true);
             }
         }
