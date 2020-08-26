@@ -81,6 +81,7 @@ public class ConversationItem extends LinearLayout
 {
   private static final String TAG = ConversationItem.class.getSimpleName();
 
+  private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
   private static final int MAX_MEASURE_CALLS = 3;
 
   private DcMsg         messageRecord;
@@ -517,8 +518,7 @@ public class ConversationItem extends LinearLayout
 
     // linkify commands such as `/echo` -
     // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
-    Pattern cmdPattern = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
-    if (Linkify.addLinks(messageBody, cmdPattern, "cmd:", null, null)) {
+    if (Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null)) {
       replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
     }
 
