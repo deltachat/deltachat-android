@@ -50,12 +50,15 @@ import java.util.concurrent.ExecutionException;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PORT;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_PORT;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
@@ -159,28 +162,17 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             imapLoginInput.setText(DcHelper.get(this, CONFIG_MAIL_USER));
             imapServerInput.setText(DcHelper.get(this, CONFIG_MAIL_SERVER));
             imapPortInput.setText(DcHelper.get(this, CONFIG_MAIL_PORT));
+            imapSecurity.setSelection(DcHelper.getInt(this, CONFIG_MAIL_SECURITY));
             TextInputEditText smtpLoginInput = findViewById(R.id.smtp_login_text);
             TextInputEditText smtpPasswordInput = findViewById(R.id.smtp_password_text);
             smtpLoginInput.setText(DcHelper.get(this, CONFIG_SEND_USER));
             smtpPasswordInput.setText(DcHelper.get(this, CONFIG_SEND_PASSWORD));
             smtpServerInput.setText(DcHelper.get(this, CONFIG_SEND_SERVER));
             smtpPortInput.setText(DcHelper.get(this, CONFIG_SEND_PORT));
+            smtpSecurity.setSelection(DcHelper.getInt(this, CONFIG_SEND_SECURITY));
 
-            int serverFlags = DcHelper.getInt(this, "server_flags", 0);
-
+            int serverFlags = DcHelper.getInt(this, CONFIG_SERVER_FLAGS);
             int sel = 0;
-            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_SSL)!=0) sel = 1;
-            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_STARTTLS)!=0) sel = 2;
-            if((serverFlags&DcContext.DC_LP_IMAP_SOCKET_PLAIN)!=0) sel = 3;
-            imapSecurity.setSelection(sel);
-
-            sel = 0;
-            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_SSL)!=0) sel = 1;
-            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_STARTTLS)!=0) sel = 2;
-            if((serverFlags&DcContext.DC_LP_SMTP_SOCKET_PLAIN)!=0) sel = 3;
-            smtpSecurity.setSelection(sel);
-
-            sel = 0;
             if((serverFlags&DcContext.DC_LP_AUTH_OAUTH2)!=0) sel = 1;
             authMethod.setSelection(sel);
 
@@ -526,15 +518,12 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         setConfig(R.id.smtp_login_text, "send_user", false);
         setConfig(R.id.smtp_password_text, "send_pw", false);
 
+        DcHelper.getContext(this).setConfigInt(CONFIG_MAIL_SECURITY, imapSecurity.getSelectedItemPosition());
+        DcHelper.getContext(this).setConfigInt(CONFIG_SEND_SECURITY, smtpSecurity.getSelectedItemPosition());
+
         int server_flags = 0;
-        if(imapSecurity.getSelectedItemPosition()==1) server_flags |= DcContext.DC_LP_IMAP_SOCKET_SSL;
-        if(imapSecurity.getSelectedItemPosition()==2) server_flags |= DcContext.DC_LP_IMAP_SOCKET_STARTTLS;
-        if(imapSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_IMAP_SOCKET_PLAIN;
-        if(smtpSecurity.getSelectedItemPosition()==1) server_flags |= DcContext.DC_LP_SMTP_SOCKET_SSL;
-        if(smtpSecurity.getSelectedItemPosition()==2) server_flags |= DcContext.DC_LP_SMTP_SOCKET_STARTTLS;
-        if(smtpSecurity.getSelectedItemPosition()==3) server_flags |= DcContext.DC_LP_SMTP_SOCKET_PLAIN;
         if(authMethod.getSelectedItemPosition()==1)   server_flags |= DcContext.DC_LP_AUTH_OAUTH2;
-        DcHelper.getContext(this).setConfigInt("server_flags", server_flags);
+        DcHelper.getContext(this).setConfigInt(CONFIG_SERVER_FLAGS, server_flags);
 
         DcHelper.getContext(this).setConfigInt("smtp_certificate_checks", certCheck.getSelectedItemPosition());
         DcHelper.getContext(this).setConfigInt("imap_certificate_checks", certCheck.getSelectedItemPosition());
