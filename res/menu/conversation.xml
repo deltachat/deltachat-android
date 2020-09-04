@@ -26,8 +26,7 @@
         app:showAsAction="always"/>
 
     <item android:id="@+id/menu_ephemeral_messages"
-        android:title="@string/ephemeral_messages"
-        android:visible="false" />
+        android:title="@string/ephemeral_messages" />
 
     <item android:title="@string/menu_mute"
         android:id="@+id/menu_mute_notifications"/>
