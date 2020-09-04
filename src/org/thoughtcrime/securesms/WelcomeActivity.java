@@ -132,6 +132,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         progressDialog.setCancelable(false);
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(android.R.string.cancel), (dialog, which) -> {
             dcContext.stopOngoingProcess();
+            notificationController.close();
         });
         progressDialog.show();
 
