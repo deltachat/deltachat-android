@@ -32,7 +32,6 @@ public final class GenericForegroundService extends Service {
 
   private final IBinder binder = new LocalBinder();
 
-  private static final int    NOTIFICATION_ID              = 849319618;
   private static final String EXTRA_TITLE                  = "extra_title";
   private static final String EXTRA_CONTENT_TEXT           = "extra_content_text";
   private static final String EXTRA_CHANNEL_ID             = "extra_channel_id";
@@ -109,7 +108,7 @@ public final class GenericForegroundService extends Service {
 
   private void postObligatoryForegroundNotification(@NonNull Entry active) {
     lastPosted = active;
-    startForeground(NOTIFICATION_ID, new Builder(this, active.channelId)
+    startForeground(NotificationCenter.ID_GENERIC, new Builder(this, active.channelId)
                                                            .setSmallIcon(active.iconRes)
                                                            .setContentTitle(active.title)
                                                            .setTicker(active.contentText)

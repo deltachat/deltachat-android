@@ -80,7 +80,10 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     progressDialog.setMessage(getActivity().getString(R.string.one_moment));
     progressDialog.setCanceledOnTouchOutside(false);
     progressDialog.setCancelable(false);
-    progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog, which) -> dcContext.stopOngoingProcess());
+    progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog, which) -> {
+      dcContext.stopOngoingProcess();
+      notificationController.close();
+    });
     progressDialog.show();
 
     imexDir = dcContext.getImexDir().getAbsolutePath();
