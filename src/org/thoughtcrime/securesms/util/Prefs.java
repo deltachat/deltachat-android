@@ -49,6 +49,7 @@ public class Prefs {
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
   private static final String PROMPTED_DOZE_MSG_ID_PREF        = "pref_prompted_doze_msg_id";
+  public  static final String DOZE_ASKED_DIRECTLY              = "pref_doze_asked_directly";
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
   public  static final String MESSAGE_BODY_TEXT_SIZE_PREF      = "pref_message_body_text_size";
   public  static final String EPHEMERAL_MESSAGES_PREF          = "pref_ephemeral_messages";

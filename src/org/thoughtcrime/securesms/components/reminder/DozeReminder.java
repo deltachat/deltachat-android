@@ -10,8 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
@@ -21,12 +20,10 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
 public class DozeReminder {
-
   public static boolean isEligible(Context context) {
     if(context==null) {
       return false;
@@ -37,6 +34,11 @@ public class DozeReminder {
     }
 
     if(Prefs.getPrompteDozeMsgId(context)!=0) {
+      return false;
+    }
+
+    // If we did never ask directly, we do not want to add a device message yet. First we want to try to ask directly.
+    if (!Prefs.getBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, false)) {
       return false;
     }
 
@@ -99,6 +101,26 @@ public class DozeReminder {
     else {
       Intent intent = new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
       context.startActivity(intent);
+    }
+  }
+
+  public static void maybeAskDirectly(Context context) {
+    try {
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M
+          && !Prefs.getBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, false)
+          && ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) == PackageManager.PERMISSION_GRANTED
+          && !((PowerManager) context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName())) {
+
+        Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+            Uri.parse("package:" + context.getPackageName()));
+        context.startActivity(intent);
+      }
+      // Prefs.DOZE_ASKED_DIRECTLY is also used above in isEligible().
+      // As long as Prefs.DOZE_ASKED_DIRECTLY is false, isEligible() will return false
+      // and no device message will be added.
+      Prefs.setBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, true);
+    } catch(Exception e) {
+      e.printStackTrace();
     }
   }
 }
