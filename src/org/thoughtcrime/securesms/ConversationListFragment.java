@@ -160,7 +160,6 @@ public class ConversationListFragment extends Fragment
     super.onResume();
 
     updateReminders();
-    DozeReminder.maybeAskDirectly(getActivity());
     list.getAdapter().notifyDataSetChanged();
   }
 
@@ -239,6 +238,7 @@ public class ConversationListFragment extends Fragment
 
       @Override
       protected void onPostExecute(Optional<? extends Reminder> reminder) {
+        DozeReminder.maybeAskDirectly(getActivity());
         if (reminder.isPresent() && getActivity() != null && !isRemoving()) {
           reminderView.showReminder(reminder.get());
         } else if (!reminder.isPresent()) {
