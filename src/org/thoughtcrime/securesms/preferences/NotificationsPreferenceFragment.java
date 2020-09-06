@@ -1,13 +1,18 @@
 package org.thoughtcrime.securesms.preferences;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.provider.Settings;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -25,6 +30,8 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   @SuppressWarnings("unused")
   private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
   private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
+
+  private CheckBoxPreference ignoreBattery;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -61,6 +68,13 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
 
+    ignoreBattery = this.findPreference("pref_ignore_battery_optimizations");
+    ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
+    ignoreBattery.setOnPreferenceChangeListener((preference, newValue) -> {
+      requestToggleIgnoreBatteryOptimizations();
+      return true;
+    });
+
 
     CheckBoxPreference reliableService =  this.findPreference("pref_reliable_service");
     reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -96,6 +110,9 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   public void onResume() {
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_notifications);
+
+    // upate ignoreBattery in onResume() to reflects changes done in the system settings
+    ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
   }
 
   @Override
@@ -130,6 +147,45 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       }
 
       return true;
+    }
+  }
+
+  private boolean needsIgnoreBatteryOptimizations() {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+  }
+
+  private boolean isIgnoringBatteryOptimizations() {
+    if (!needsIgnoreBatteryOptimizations()) {
+      return true;
+    }
+    PowerManager pm = (PowerManager)getActivity().getSystemService(Context.POWER_SERVICE);
+    if(pm.isIgnoringBatteryOptimizations(getActivity().getPackageName())) {
+      return true;
+    }
+    return false;
+  }
+
+  private void requestToggleIgnoreBatteryOptimizations() {
+    Context context = getActivity();
+    boolean openManualSettings = true;
+
+    try {
+      if (needsIgnoreBatteryOptimizations()
+              && !isIgnoringBatteryOptimizations()
+              && ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) == PackageManager.PERMISSION_GRANTED) {
+        Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:" + context.getPackageName()));
+        context.startActivity(intent);
+        openManualSettings = false;
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    if (openManualSettings && needsIgnoreBatteryOptimizations()) {
+      // fire ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS if ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS fails
+      // or if isIgnoringBatteryOptimizations() is already true (there is no intent to re-enable battery optimizations)
+      Intent intent = new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+      context.startActivity(intent);
     }
   }
 
