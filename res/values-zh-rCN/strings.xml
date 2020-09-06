@@ -532,7 +532,7 @@
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">已禁用阅后即焚消息定时器。</string>
+    <string name="systemmsg_ephemeral_timer_disabled">已禁用阅后即焚消息定时器</string>
     <string name="systemmsg_ephemeral_timer_enabled">设置阅后即焚消息定时器为 %1$s 秒</string>
     <string name="systemmsg_ephemeral_timer_minute">设置阅后即焚消息定时器为 1 分钟</string>
     <string name="systemmsg_ephemeral_timer_hour">设置阅后即焚消息定时器为 1 小时</string>

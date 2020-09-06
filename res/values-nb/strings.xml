@@ -15,6 +15,8 @@
     <string name="automatic">Automatisk</string>
     <string name="strict">Streng</string>
     <string name="open">Åpne</string>
+    <string name="join">Bli med</string>
+    <string name="rejoin">Bli med igjen</string>
     <string name="delete">Slett</string>
     <string name="info">Info</string>
     <string name="update">Oppdater</string>
@@ -27,6 +29,7 @@
     <string name="unarchive">Fjern fra arkiv</string>
     <string name="mute">Demp</string>
     <string name="ephemeral_messages">Forsvinnende meldinger</string>
+    <string name="ephemeral_messages_hint">Disse innstillingene gjelder alle deltakerne som bruker Delta Chat. Men de kan kopiere, lagre og videresende meldinger eller bruke annen e-postklient.</string>
     <string name="save">Lagre</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -44,6 +47,7 @@
     <string name="error">Feil</string>
     <string name="error_x">Feil: %1$s</string>
     <string name="error_no_network">Nettverk utilgjengelig.</string>
+    <string name="no_app_to_handle_data">Kan ikke finne en app som kan handtere denne typen data.</string>
     <string name="no_browser_installed">Ingen nettleser installert</string>
     <string name="file_not_found">Filen %1$s ble ikke funnet.</string>
     <string name="copied_to_clipboard">Kopiert til utklippstavle</string>
@@ -147,6 +151,8 @@
     <string name="menu_delete_chat">Slett sludring</string>
     <string name="menu_delete_messages">Slett meldinger</string>
     <string name="menu_delete_image">Slett bilde</string>
+    <string name="menu_delete_locations">Slett alle steder?</string>
+    <string name="menu_delete_location">Slett på dette stedet?</string>
     <string name="menu_message_details">Meldingsdetaljer</string>
     <string name="menu_copy_to_clipboard">Kopier til utklippstavle</string>
     <string name="menu_forward">Videresend melding</string>

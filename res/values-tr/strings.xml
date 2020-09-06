@@ -395,7 +395,7 @@
     <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Parola ve hesap</string>
     <string name="pref_who_can_see_this_information">Bunu kim görebilir?</string>
-    <string name="pref_who_can_see_profile_explain">Profil resminiz ve adınız, diğer kullanıcılarla iletişim kurarken iletilerinizin yanında gösterilir. Zaten gönderilen bilgiler silinemeyebilir ya da kaldırılamayabilir.</string>
+    <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurarken, profil resminiz ve adınız iletilerinizin yanında gösterilir. Zaten gönderilen bilgiler silinemeyebilir ya da kaldırılamayabilir.</string>
     <string name="pref_your_name">Adınız</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">İmza metni</string>
