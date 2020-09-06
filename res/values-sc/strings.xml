@@ -454,10 +454,6 @@
     <string name="pref_background_default_color">Colore predefinidu</string>
     <string name="pref_background_custom_image">Immàgine personalizada</string>
     <string name="pref_background_custom_color">Colore personalizadu</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Connessione de isfundu de fide</string>
-    <string name="pref_reliable_service_explain">Tenet bisòngiu de una notìfica permanente</string>
-
 
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
@@ -483,6 +479,7 @@
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>
     <string name="encryption_info_desktop">Ammustra sas informatziones de tzifradura</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Connessione de isfundu de fide</string>
+    <string name="pref_reliable_service_explain">Tenet bisòngiu de una notìfica permanente</string>
+    </resources>

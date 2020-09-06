@@ -267,6 +267,4 @@
     <string name="none_blocked_desktop">لا توجد جهات اتصال محظورة</string>
     <string name="ask_delete_chat_desktop">هل أنت متأكد مِن أنك تريد حذف هذا؟</string>
     <string name="in_this_group_desktop">أعضاء المجموعة</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

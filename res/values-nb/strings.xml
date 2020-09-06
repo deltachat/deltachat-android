@@ -187,6 +187,15 @@
     <string name="device_talk_explain">Meldinger i denne chatten blir generert lokalt av Delta Chat-appen. Produsentene bruker den for å informere om appoppdateringer og problemer under bruk.</string>
     <string name="device_talk_welcome_message">Velkommen til Delta Chat! – Delta Chat ser ut og føles som andre populære messenger-apper, men involverer ikke sentralisert kontroll, sporing eller salg av deg, venner, kolleger eller familie til store organisasjoner.\n\nTeknisk er Delta Chat en e-postapplikasjon med et moderne chatgrensesnitt. E-post i en nye klær hvis du vil 👻\n\nBruk Delta Chat med hvem som helst av milliarder av mennesker: bare bruk e-postadressen deres. Mottakere trenger ikke installere Delta Chat, besøke nettsteder eller registrere seg noen steder – men selvfølgelig, hvis de vil, kan du peke dem til 👉 https://get.delta.chat</string>
     <string name="edit_contact">Rediger kontakt</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Fest chat</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Løsne chat</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Fest</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Løsn</string>
+
     <string name="mute_for_one_hour">Demp i 1 time</string>
     <string name="mute_for_two_hours">Demp i 2 timer</string>
     <string name="mute_for_one_day">Demp i 1 dag</string>
@@ -200,11 +209,19 @@
     <string name="share_location_for_two_hours">i 2 timer</string>
     <string name="share_location_for_six_hours">i 6 timer</string>
 
+    <string name="file_saved_to">Lagre fil til \"%1$s\".</string>
+
     <string name="videochat">Videochat</string>
     <string name="videochat_invite_user_to_videochat">Inviter %1$s til en videochat?</string>
     <string name="videochat_invite_user_hint">Dette krever en kompatibel app, eller en kompatible nettleser i begge ender.</string>
     <string name="videochat_contact_invited_hint">%1$s inviterte til en videochat.</string>
     <string name="videochat_you_invited_hint">Du inviterte til en videochat.</string>
+    <string name="videochat_will_open_in_your_browser">Denne videochatten åpnes i nettleseren din</string>
+    <string name="videochat_tap_to_join">Trykk for å bli med</string>
+    <string name="videochat_tap_to_open">Trykk for å åpne</string>
+    <string name="videochat_instance">Videochatinstans</string>
+    <string name="videochat_instance_placeholder">Din videochatinstans</string>
+    <string name="videochat_instance_explain">Hvis en videochatinstans er definert, kan dere starte videochat med hverandre en-til-en. Videochat trenger en kompatibel nettleser i begge ender.\n\nEksempel: https://meet.jit.si/$ROOM eller basicwebrtc:https://your-server</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Er du sikker på at du vil forlate denne gruppen?</string>
     <plurals name="ask_delete_messages">
@@ -417,6 +434,4 @@
     <string name="none_blocked_desktop">Ingen blokkerte kontakter enda</string>
     <string name="me_desktop">Meg</string>
     <string name="message_detail_from_desktop">Fra</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>
