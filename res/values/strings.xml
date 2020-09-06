@@ -718,6 +718,7 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Background notifications</string>
     <string name="pref_background_notifications_explain">Uses a background connection to your server and requires ignored battery optimizations.</string>
+    <string name="pref_background_notifications_ask">Do you want to receive messages in the background?\n\nThis requires ignored battery optimizations, however, Delta Chat uses few resources and takes care not to drain your battery.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Reliable background connection</string>
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>

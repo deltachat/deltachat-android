@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
@@ -110,10 +111,17 @@ public class DozeReminder {
           && !Prefs.getBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, false)
           && ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) == PackageManager.PERMISSION_GRANTED
           && !((PowerManager) context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName())) {
-
-        Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-            Uri.parse("package:" + context.getPackageName()));
-        context.startActivity(intent);
+        new AlertDialog.Builder(context)
+            .setTitle(R.string.pref_background_notifications)
+            .setMessage(R.string.pref_background_notifications_ask)
+            .setPositiveButton(R.string.perm_continue, (dialog, which) -> {
+                  Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                      Uri.parse("package:" + context.getPackageName()));
+                  context.startActivity(intent);
+            })
+            .setNegativeButton(R.string.not_now, null)
+            .setCancelable(false)
+            .show();
       }
       // Prefs.DOZE_ASKED_DIRECTLY is also used above in isEligible().
       // As long as Prefs.DOZE_ASKED_DIRECTLY is false, isEligible() will return false
