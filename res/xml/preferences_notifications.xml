@@ -11,8 +11,8 @@
             android:dependency="pref_key_enable_notifications"
             android:defaultValue="false"
             android:key="pref_ignore_battery_optimizations"
-            android:title="@string/pref_ignore_battery"
-            android:summary="@string/pref_ignore_battery_explain"/>
+            android:title="@string/pref_background_notifications"
+            android:summary="@string/pref_background_notifications_explain"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:dependency="pref_key_enable_notifications"
