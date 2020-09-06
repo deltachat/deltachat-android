@@ -24,8 +24,6 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
 public class DozeReminder {
-  private static final String ALREADY_ASKED_DIRECTLY = "DOZE_ALREADY_ASKED_DIRECTLY";
-
   public static boolean isEligible(Context context) {
     if(context==null) {
       return false;
@@ -40,7 +38,7 @@ public class DozeReminder {
     }
 
     // If we did never ask directly, we do not want to add a device message yet. First we want to try to ask directly.
-    if (!Prefs.getBooleanPreference(context, DozeReminder.ALREADY_ASKED_DIRECTLY, false)) {
+    if (!Prefs.getBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, false)) {
       return false;
     }
 
@@ -108,7 +106,7 @@ public class DozeReminder {
 
   public static void maybeAskDirectly(Context context) {
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M
-        && !Prefs.getBooleanPreference(context, DozeReminder.ALREADY_ASKED_DIRECTLY, false)
+        && !Prefs.getBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, false)
         && ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)==PackageManager.PERMISSION_GRANTED
         && !((PowerManager)context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName())) {
 
@@ -116,8 +114,9 @@ public class DozeReminder {
               Uri.parse("package:" + context.getPackageName()));
       context.startActivity(intent);
     }
-    Prefs.setBooleanPreference(context, DozeReminder.ALREADY_ASKED_DIRECTLY, true);
-    // ALREADY_ASKED_DIRECTLY is also used above in isEligible(). As long as ALREADY_ASKED_DIRECTLY is false, isEligible() will return false
+    Prefs.setBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, true);
+    // Prefs.DOZE_ASKED_DIRECTLY is also used above in isEligible().
+    // As long as Prefs.DOZE_ASKED_DIRECTLY is false, isEligible() will return false
     // and no device message will be added.
   }
 }
