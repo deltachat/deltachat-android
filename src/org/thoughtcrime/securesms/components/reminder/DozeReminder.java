@@ -105,18 +105,22 @@ public class DozeReminder {
   }
 
   public static void maybeAskDirectly(Context context) {
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M
-        && !Prefs.getBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, false)
-        && ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)==PackageManager.PERMISSION_GRANTED
-        && !((PowerManager)context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName())) {
+    try {
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M
+          && !Prefs.getBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, false)
+          && ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) == PackageManager.PERMISSION_GRANTED
+          && !((PowerManager) context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName())) {
 
-      Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-              Uri.parse("package:" + context.getPackageName()));
-      context.startActivity(intent);
+        Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+            Uri.parse("package:" + context.getPackageName()));
+        context.startActivity(intent);
+      }
+      // Prefs.DOZE_ASKED_DIRECTLY is also used above in isEligible().
+      // As long as Prefs.DOZE_ASKED_DIRECTLY is false, isEligible() will return false
+      // and no device message will be added.
+      Prefs.setBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, true);
+    } catch(Exception e) {
+      e.printStackTrace();
     }
-    Prefs.setBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, true);
-    // Prefs.DOZE_ASKED_DIRECTLY is also used above in isEligible().
-    // As long as Prefs.DOZE_ASKED_DIRECTLY is false, isEligible() will return false
-    // and no device message will be added.
   }
 }
