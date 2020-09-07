@@ -114,12 +114,11 @@ public class DozeReminder {
         new AlertDialog.Builder(context)
             .setTitle(R.string.pref_background_notifications)
             .setMessage(R.string.pref_background_notifications_ask)
-            .setPositiveButton(R.string.perm_continue, (dialog, which) -> {
+            .setPositiveButton(R.string.ok, (dialog, which) -> {
                   Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
                       Uri.parse("package:" + context.getPackageName()));
                   context.startActivity(intent);
             })
-            .setNegativeButton(R.string.not_now, null)
             .setCancelable(false)
             .show();
       }
