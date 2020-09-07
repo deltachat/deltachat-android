@@ -113,8 +113,8 @@ public class DozeReminder {
           && !((PowerManager) context.getSystemService(Context.POWER_SERVICE)).isIgnoringBatteryOptimizations(context.getPackageName())) {
         new AlertDialog.Builder(context)
             .setTitle(R.string.pref_background_notifications)
-            .setMessage(R.string.pref_background_notifications_ask)
-            .setPositiveButton(R.string.ok, (dialog, which) -> {
+            .setMessage(R.string.pref_background_notifications_rationale)
+            .setPositiveButton(R.string.perm_continue, (dialog, which) -> {
                   Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
                       Uri.parse("package:" + context.getPackageName()));
                   context.startActivity(intent);
