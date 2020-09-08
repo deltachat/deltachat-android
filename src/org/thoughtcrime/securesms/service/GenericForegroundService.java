@@ -47,6 +47,7 @@ public final class GenericForegroundService extends Service {
   private static final AtomicInteger NEXT_ID = new AtomicInteger();
   private static final AtomicBoolean CHANNEL_CREATED = new AtomicBoolean(false);
 
+  private static int startedCounter = 0;
 
   private final LinkedHashMap<Integer, Entry> allActiveMessages = new LinkedHashMap<>();
 
@@ -124,6 +125,7 @@ public final class GenericForegroundService extends Service {
 
 
   public static NotificationController startForegroundTask(@NonNull Context context, @NonNull String task) {
+    startedCounter++;
     final int id = NEXT_ID.getAndIncrement();
 
     createFgNotificationChannel(context);
@@ -145,6 +147,11 @@ public final class GenericForegroundService extends Service {
     intent.putExtra(EXTRA_ID, id);
 
     ContextCompat.startForegroundService(context, intent);
+    startedCounter = Math.max(startedCounter-1, 0);
+  }
+
+  public static boolean isForegroundTaskStarted() {
+    return startedCounter > 0;
   }
 
   synchronized void replaceProgress(int id, int progressMax, int progress, boolean indeterminate, String message) {
