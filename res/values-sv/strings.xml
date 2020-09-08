@@ -482,10 +482,6 @@
     <string name="pref_background_default_color">Standardfärg</string>
     <string name="pref_background_custom_image">Anpassad bild</string>
     <string name="pref_background_custom_color">Anpassad färg</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Tillförlitlig bakgrundsanslutning</string>
-    <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
-
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ta bort gamla meddelanden</string>
@@ -624,9 +620,6 @@
     <string name="perm_explain_access_to_mic_denied">Gå till programinställningarna och aktivera \"Mikrofon\" under \"Behörighet\", för att skicka röstmeddelanden.</string>
     <string name="perm_explain_access_to_storage_denied">Gå till programinställningarna och aktivera \"Lagring\" under \"Behörighet\", för att ta emot eller skicka filer.</string>
     <string name="perm_explain_access_to_location_denied">Gå till programinställningarna och aktivera \"Plats\" under \"Behörighet\", för att bifoga en plats.</string>
-    <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat använder få resurser och försöker att inte dränera ditt batteri.</string>
-    <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rita var som helst för att smeta ut</string>
@@ -713,6 +706,7 @@
     <string name="a11y_message_context_menu_btn_label">Meddelandeåtgärder</string>
     <string name="a11y_background_preview_label">Förhandsvisning i bakgrunden</string>
 
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat använder din kamera för att ta och skicka foton och filmer, och för att skanna QR-koder.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat använder dina kontakter för att visa en lista över e-postadresser som du kan skriva till.m Delta Chat har ingen server, dina kontakter skickas inte någonstans.</string>
@@ -721,6 +715,11 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vill spara bilder i ditt fotogalleri.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Tillförlitlig bakgrundsanslutning</string>
+    <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
+    <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat använder få resurser och försöker att inte dränera ditt batteri.</string>
+    <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
 </resources>

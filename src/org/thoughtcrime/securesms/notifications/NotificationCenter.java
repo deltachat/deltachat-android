@@ -149,6 +149,7 @@ public class NotificationCenter {
 
     public static final int ID_PERMANTENT  = 1;
     public static final int ID_MSG_SUMMARY = 2;
+    public static final int ID_GENERIC     = 3;
     public static final int ID_MSG_OFFSET  = 0; // msgId is added - as msgId start at 10, there are no conflicts with lower numbers
 
 
@@ -173,6 +174,7 @@ public class NotificationCenter {
     public static final String CH_MSG_PREFIX = "ch_msg";
     public static final String CH_MSG_VERSION = "4";
     public static final String CH_PERMANENT = "dc_foreground_notification_ch";
+    public static final String CH_GENERIC = "ch_generic";
 
     private boolean notificationChannelsSupported() {
         return Build.VERSION.SDK_INT >= 26;

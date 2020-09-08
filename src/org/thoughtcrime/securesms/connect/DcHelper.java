@@ -13,10 +13,12 @@ public class DcHelper {
     public static final String CONFIG_MAIL_USER = "mail_user";
     public static final String CONFIG_MAIL_PASSWORD = "mail_pw";
     public static final String CONFIG_MAIL_PORT = "mail_port";
+    public static final String CONFIG_MAIL_SECURITY = "mail_security";
     public static final String CONFIG_SEND_SERVER = "send_server";
     public static final String CONFIG_SEND_USER = "send_user";
     public static final String CONFIG_SEND_PASSWORD = "send_pw";
     public static final String CONFIG_SEND_PORT = "send_port";
+    public static final String CONFIG_SEND_SECURITY = "send_security";
     public static final String CONFIG_SERVER_FLAGS = "server_flags";
     public static final String CONFIG_DISPLAY_NAME = "displayname";
     public static final String CONFIG_SELF_STATUS = "selfstatus";

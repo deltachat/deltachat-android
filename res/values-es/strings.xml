@@ -551,17 +551,14 @@
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
-    <string name="perm_explain_need_for_camera_access">Para capturar fotos y videos, permita que DeltaLab acceda a la cámara.</string>
-    <string name="perm_explain_need_for_mic_access">Para enviar mensajes de audio, permita que DeltaLab acceda a su micrófono.</string>
-    <string name="perm_explain_need_for_storage_access">DeltaLab necesita acceso a sus archivos para exportar archivos o crear copias de respaldo.</string>
-    <string name="perm_explain_need_for_storage_access_share">DeltaLab necesita acceso a tus archivos para compartir los archivos seleccionados.</string>
-    <string name="perm_explain_access_to_camera_denied">DeltaLab requiere el permiso de Cámara para tomar fotos o videos, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
-    <string name="perm_explain_access_to_mic_denied">DeltaLab requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
-    <string name="perm_explain_access_to_storage_denied">DeltaLab requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
-    <string name="perm_explain_access_to_location_denied">DeltaLab requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
-    <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras DeltaLab está en segundo plano.</string>
-    <string name="perm_enable_bg_reminder_text">DeltaLab utiliza los recursos al mínimo y tiene cuidado de no drenar tu batería.</string>
-    <string name="perm_enable_bg_already_done">Ya has permitido que DeltaLab reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
+    <string name="perm_explain_need_for_camera_access">Para capturar fotos y videos, permita que Delta Chat acceda a la cámara.</string>
+    <string name="perm_explain_need_for_mic_access">Para enviar mensajes de audio, permita que Delta Chat acceda a su micrófono.</string>
+    <string name="perm_explain_need_for_storage_access">Delta Chat necesita acceso a sus archivos para exportar archivos o crear copias de respaldo.</string>
+    <string name="perm_explain_need_for_storage_access_share">Delta Chat necesita acceso a tus archivos para compartir los archivos seleccionados.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat requiere el permiso de Cámara para tomar fotos o videos, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensaje cifrado</string>
@@ -645,11 +642,14 @@
     <string name="a11y_message_context_menu_btn_label">Acciones del mensaje</string>
     <string name="a11y_background_preview_label">Previsualización del fondo</string>
 
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Al permitir el acceso a la cámara podrás tomar fotos y videos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Al permitir el acceso al micrófono podrás grabar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Al permitir el acceso a la galería de fotos podrás subir tus imágenes desde allí.</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat utiliza los recursos al mínimo y tiene cuidado de no drenar tu batería.</string>
+    <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
 
 </resources>

@@ -314,6 +314,4 @@ https://delta.chat</string>
     <string name="user_location_permission_explanation">Delta Chatは位置情報を共有出来る様にする為権限が必要です</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>

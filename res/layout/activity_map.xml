@@ -5,11 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".map.MapActivity">
 
-    <FrameLayout
-        android:id="@+id/container"
+    <org.thoughtcrime.securesms.components.InputAwareLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/inputAwareContainer"
+        >
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </org.thoughtcrime.securesms.components.InputAwareLayout>
 
     <include layout="@layout/bottom_map_sheet" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

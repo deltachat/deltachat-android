@@ -8,20 +8,18 @@ import android.content.Intent;
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AlertDialog;
 import android.text.TextPaint;
-import android.text.style.URLSpan;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
-
-public class LongClickCopySpan extends URLSpan {
+public class LongClickCopySpan extends ClickableSpan {
   private static final String PREFIX_MAILTO = "mailto:";
   private static final String PREFIX_TEL = "tel:";
   private static final String PREFIX_CMD = "cmd:";
@@ -31,10 +29,11 @@ public class LongClickCopySpan extends URLSpan {
   private boolean isHighlighted;
   @ColorInt
   private int highlightColor;
+  private final String url;
   private int chatId;
 
   public LongClickCopySpan(String url, int chatId) {
-    super(url);
+    this.url = url;
     this.chatId = chatId;
   }
 
@@ -50,7 +49,6 @@ public class LongClickCopySpan extends URLSpan {
 
   @Override
   public void onClick(View widget) {
-    String url = getURL();
     if (url.startsWith(PREFIX_CMD)) {
       try {
         String cmd = url.substring(PREFIX_CMD.length());
@@ -99,13 +97,12 @@ public class LongClickCopySpan extends URLSpan {
         e.printStackTrace();
       }
     } else {
-      super.onClick(widget);
+      IntentUtils.showBrowserIntent(widget.getContext(), url);
     }
   }
 
   void onLongClick(View widget) {
     Context context = widget.getContext();
-    String url = getURL();
 
     if (url.startsWith(PREFIX_CMD)) {
       copyUrl(context, url.substring(PREFIX_CMD.length()));

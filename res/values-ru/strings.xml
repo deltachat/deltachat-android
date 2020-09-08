@@ -227,7 +227,7 @@
     <string name="videochat_invite_user_to_videochat">Пригласить %1$s в видеочат?</string>
     <string name="videochat_invite_user_hint">Это требует совместимого приложения или совместимого браузера на обоих концах.</string>
     <string name="videochat_contact_invited_hint">%1$s приглашает вас в видеочат.</string>
-    <string name="videochat_you_invited_hint">Вы пригласили в видеочат.</string>
+    <string name="videochat_you_invited_hint">Вас пригласили в видеочат.</string>
     <string name="videochat_will_open_in_your_browser">Этот видеочат будет открываться в браузере</string>
     <string name="videochat_tap_to_join">Нажмите, чтобы зайти.</string>
     <string name="videochat_tap_to_open">Нажмите, чтобы открыть.</string>
@@ -390,7 +390,7 @@
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Не удалось выполнить вход с логином \"%1$s\". Убедитесь, что адрес эл. почты и пароль указаны верно.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Ответ сервера %1$s: %2$s\n\nНекоторые серверы электронной почты помещают дополнительную информацию во входящие; вы можете проверить это, к примеру, через веб-интерфейс. В случае возникновения проблем, проконсультируйте с провайдером вашей эл. почты или знакомым специалистом.</string>
+    <string name="login_error_server_response">Ответ сервера %1$s: %2$s\n\nНекоторые серверы электронной почты помещают дополнительную информацию во входящие; вы можете проверить это, к примеру, через веб-интерфейс. В случае возникновения проблем проконсультируйтесь с провайдером вашей эл. почты или знакомым специалистом.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
     <string name="used_settings">Используемые настройки:</string>
@@ -506,10 +506,6 @@
     <string name="pref_background_default_color">Цвет по умолчанию</string>
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Надёжное фоновое соединение</string>
-    <string name="pref_reliable_service_explain">Требует постоянного уведомления</string>
-
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалять старые сообщения</string>
@@ -568,7 +564,7 @@
     <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
 
     <string name="systemmsg_ephemeral_timer_disabled">Таймер исчезающих сообщений отключён.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s сек.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s с.</string>
     <string name="systemmsg_ephemeral_timer_minute">Таймер исчезающих сообщений установлен на 1 минуту.</string>
     <string name="systemmsg_ephemeral_timer_hour">Таймер исчезающих сообщений установлен на 1 час.</string>
     <string name="systemmsg_ephemeral_timer_day">Таймер исчезающих сообщений установлен на 1 день.</string>
@@ -648,10 +644,6 @@
     <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению Delta Chat нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов в Delta Chat требуется доступ к памяти устройства, однако в этом разрешении было отказано навсегда. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Память\".</string>
     <string name="perm_explain_access_to_location_denied">Чтобы передать местоположение приложению Delta Chat нужно разрешить доступ к нему, но сейчас он заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Местоположение\".</string>
-    <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat использует минимальные ресурсы и старается не разряжать батарею.</string>
-    <string name="perm_enable_bg_already_done"> 
-Вы уже разрешили Delta Chat получать сообщения в фоне.\n\nЕсли сообщения всё ещё не приходят в фоне, пожалуйста, проверьте также системные настройки.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Рисуйте, чтобы размывать</string>
@@ -738,6 +730,7 @@
     <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>
     <string name="a11y_background_preview_label">Предпросмотр фона</string>
 
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото и видео съёмки и сканирования QR кодов.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat использует ваши контакты для просмотра имеющихся у них адресов электронной почты, которым вы можете написать. Delta Chat не имеет сервера, ваши контакты никуда не будут отправлены.</string>
@@ -746,6 +739,12 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хочет сохранить изображения в вашу галерею.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Надёжное фоновое соединение</string>
+    <string name="pref_reliable_service_explain">Требует постоянного уведомления</string>
+    <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat использует минимальные ресурсы и старается не разряжать батарею.</string>
+    <string name="perm_enable_bg_already_done"> 
+Вы уже разрешили Delta Chat получать сообщения в фоне.\n\nЕсли сообщения всё ещё не приходят в фоне, пожалуйста, проверьте также системные настройки.</string>
 
 </resources>

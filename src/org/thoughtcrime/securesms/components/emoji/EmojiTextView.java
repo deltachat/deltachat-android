@@ -25,6 +25,7 @@ public class EmojiTextView extends AppCompatTextView {
 
   private final boolean scaleEmojis;
   private final boolean forceCustom;
+  private final boolean createInBackground;
 
   private static final char ELLIPSIS = '…';
 
@@ -52,6 +53,7 @@ public class EmojiTextView extends AppCompatTextView {
     scaleEmojis = a.getBoolean(R.styleable.EmojiTextView_scaleEmojis, false);
     maxLength   = a.getInteger(R.styleable.EmojiTextView_emoji_maxLength, -1);
     forceCustom = a.getBoolean(R.styleable.EmojiTextView_emoji_forceCustom, false);
+    createInBackground = a.getBoolean(R.styleable.EmojiTextView_createInBackground, false);
     a.recycle();
 
     a = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.textSize});
@@ -93,7 +95,7 @@ public class EmojiTextView extends AppCompatTextView {
         ellipsizeAnyTextForMaxLength();
       }
     } else {
-      CharSequence emojified = provider.emojify(candidates, text, this);
+      CharSequence emojified = provider.emojify(candidates, text, this, createInBackground);
       super.setText(new SpannableStringBuilder(emojified).append(Optional.fromNullable(overflowText).or("")), BufferType.SPANNABLE);
 
       // Android fails to ellipsize spannable strings. (https://issuetracker.google.com/issues/36991688)
@@ -123,7 +125,7 @@ public class EmojiTextView extends AppCompatTextView {
       if (useSystemEmoji || newCandidates == null || newCandidates.size() == 0) {
         super.setText(newContent, BufferType.NORMAL);
       } else {
-        CharSequence emojified = EmojiProvider.getInstance(getContext()).emojify(newCandidates, newContent, this);
+        CharSequence emojified = EmojiProvider.getInstance(getContext()).emojify(newCandidates, newContent, this, createInBackground);
         super.setText(emojified, BufferType.SPANNABLE);
       }
     }
@@ -153,7 +155,7 @@ public class EmojiTextView extends AppCompatTextView {
                   .append(Optional.fromNullable(overflowText).or(""));
 
         EmojiParser.CandidateList newCandidates = EmojiProvider.getInstance(getContext()).getCandidates(newContent);
-        CharSequence              emojified     = EmojiProvider.getInstance(getContext()).emojify(newCandidates, newContent, this);
+        CharSequence              emojified     = EmojiProvider.getInstance(getContext()).emojify(newCandidates, newContent, this, createInBackground);
 
         super.setText(emojified, BufferType.SPANNABLE);
       }

@@ -45,6 +45,10 @@ public class MarkerView {
         update();
     }
 
+    public LatLng getLatLng() {
+        return latLng;
+    }
+
     /**
      * Set a callback to be invoked when position placement is calculated.
      * <p>

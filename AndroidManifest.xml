@@ -319,6 +319,8 @@
         </intent-filter>
     </service>
 
+    <service android:name=".service.GenericForegroundService" />
+
     <receiver android:name=".notifications.MarkReadReceiver"
               android:enabled="true"
               android:exported="false">

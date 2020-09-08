@@ -412,6 +412,7 @@
     <string name="pref_background_default_color">Özünəməxsus rəng</string>
     <string name="pref_background_custom_image">Şəkil</string>
     <string name="pref_background_custom_color">Rəng</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Avtomatik şifrələmə</string>
     <string name="autocrypt_explain">Avtoşifrələmə, avtomatik ucdan uca e-poçt şifrələməsi üçün yeni və açıq bir spesifikasiyadır. \n\nTədbirdən sonrakı qurulum avtomatik olaraq yaradılıb və Autocrypt Setup Messages ilə cihazlar arasında köçürə bilərsiniz.</string>
@@ -504,8 +505,7 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoşəkilləri, videoları və ya səsləri əlavə etmək və ya ixrac etmək üçün saxlama icazəsini tələb edir, lakin bu daimi olaraq rədd edildi. Xahiş edirik tətbiq ayarları menyusuna davam edin, \"İzinlər\" seçin və \"Yaddaş\" funksiyasını aktivləşdirin.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
-    <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat minimum resurslardan istifadə edir və batareyanı boşaltmamaq üçün qayğı göstərir.</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrələnmiş mesaj</string>
 
@@ -572,6 +572,6 @@
     <string name="user_location_permission_explanation">Delta Chat yerinizi göstərmək və bölüşmək üçün yer icazəsinə ehtiyac duyur.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
+    <string name="perm_enable_bg_reminder_text">Delta Chat minimum resurslardan istifadə edir və batareyanı boşaltmamaq üçün qayğı göstərir.</string>
+    </resources>

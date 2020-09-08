@@ -3,6 +3,9 @@ package org.thoughtcrime.securesms.map;
 import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
 
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdate;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 
@@ -18,6 +21,8 @@ public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListe
     private final MapboxMap mapboxMap;
     private final List<MarkerView> markers = new ArrayList<>();
     private boolean initialised;
+    private MarkerView centeredMarker;
+    private int keyboardHeight = 0;
 
     /**
      * Create a MarkerViewManager.
@@ -63,41 +68,25 @@ public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListe
         markers.add(markerView);
     }
 
-    /**
-     * Remove an existing markerView from the map.
-     *
-     * @param markerView the markerView to be removed from the map
-     */
-    @UiThread
-    public void removeMarker(@NonNull MarkerView markerView) {
-        if (mapView.isDestroyed() || !markers.contains(markerView)) {
-            return;
-        }
-
-        mapView.removeView(markerView.getView());
-        markers.remove(markerView);
-    }
-
     public boolean hasMarkers() {
         return markers.size() > 0;
     }
 
+    @UiThread
     public void removeMarkers() {
-        if (mapView.isDestroyed()) {
-            return;
+        if (!mapView.isDestroyed()) {
+            for (MarkerView markerView : markers) {
+                mapView.removeView(markerView.getView());
+            }
         }
-        
-        for (MarkerView markerView : markers) {
-            mapView.removeView(markerView.getView());
-        }
+
+        centeredMarker = null;
         markers.clear();
     }
 
     @Override
     public void onDidFinishRenderingFrame(boolean fully) {
-        if (fully) {
-            update();
-        }
+        update();
     }
 
     private void update() {
@@ -109,5 +98,35 @@ public class MarkerViewManager implements MapView.OnDidFinishRenderingFrameListe
     @Override
     public void onMessageSent() {
         removeMarkers();
+    }
+
+    @UiThread
+    public void center(MarkerView view) {
+        centeredMarker = view;
+        view.getView().post(() -> {
+            int markerWidth = view.getView().getWidth();
+            CameraPosition currentPosition = mapboxMap.getCameraPosition();
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(
+                    new CameraPosition.Builder().
+                            target(view.getLatLng()).
+                            bearing(currentPosition.bearing).
+                            tilt(currentPosition.tilt).
+                            zoom(currentPosition.zoom).
+                            padding(0d , 0d, markerWidth / 2d, keyboardHeight).
+                            build());
+            mapboxMap.easeCamera(cameraUpdate);
+        });
+    }
+
+    MarkerView getCenteredMarker() {
+        return centeredMarker;
+    }
+
+    @UiThread
+    void onKeyboardShown(int keyboardHeight) {
+        this.keyboardHeight = keyboardHeight;
+        if (centeredMarker != null) {
+            center(centeredMarker);
+        }
     }
 }

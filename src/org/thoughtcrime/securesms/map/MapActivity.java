@@ -28,6 +28,8 @@ import org.thoughtcrime.securesms.BaseActivity;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.InputAwareLayout;
+import org.thoughtcrime.securesms.components.KeyboardAwareLinearLayout;
 import org.thoughtcrime.securesms.components.rangeslider.TimeRangeSlider;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.geolocation.DcLocation;
@@ -48,7 +50,10 @@ import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
 import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
 import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 
-public class MapActivity extends BaseActivity implements Observer, TimeRangeSlider.OnTimestampChangedListener {
+public class MapActivity extends BaseActivity implements Observer,
+        TimeRangeSlider.OnTimestampChangedListener,
+        KeyboardAwareLinearLayout.OnKeyboardShownListener,
+        KeyboardAwareLinearLayout.OnKeyboardHiddenListener {
 
     public static final String TAG = MapActivity.class.getSimpleName();
     public static final String CHAT_ID = "chat_id";
@@ -61,6 +66,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
     DCMapFragment mapFragment;
     MarkerViewManager markerViewManager;
     private int chatId;
+    private InputAwareLayout inputAwareContainer;
 
     public static void lazyMapboxInit(Context context) {
         try {
@@ -110,7 +116,9 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
 
             this.mapboxMap = mapboxMap;
             this.markerViewManager = new MarkerViewManager(mapFragment.getMapView(), mapboxMap);
-
+            inputAwareContainer = findViewById(R.id.inputAwareContainer);
+            inputAwareContainer.addOnKeyboardHiddenListener(this);
+            inputAwareContainer.addOnKeyboardShownListener(this);
 
             final LatLng lastMapCenter = Prefs.getMapCenter(this.getApplicationContext(), chatId);
             if (lastMapCenter != null) {
@@ -156,8 +164,7 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
                         handleAddPoiClick(point));
 
 
-                mapboxMap.addOnMapLongClickListener(point ->
-                    handlePoiLongClick(point));
+                mapboxMap.addOnMapLongClickListener(this::handlePoiLongClick);
 
                 SwitchCompat switchCompat = this.findViewById(R.id.locationTraceSwitch);
                 switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -312,13 +319,21 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         }
 
         if (markerViewManager.hasMarkers()) {
+            MarkerView markerView = markerViewManager.getCenteredMarker();
+            if (markerView != null && markerView.getView() instanceof AddPoiView) {
+                AddPoiView view = (AddPoiView) markerView.getView();
+                inputAwareContainer.hideCurrentInput(view.getMessageView());
+            }
             markerViewManager.removeMarkers();
         } else {
             AddPoiView addPoiView = new AddPoiView(this);
             addPoiView.setLatLng(point);
             addPoiView.setChatId(chatId);
             addPoiView.setOnMessageSentListener(markerViewManager);
-            markerViewManager.addMarker(new MarkerView(point, addPoiView));
+            MarkerView markerView = new MarkerView(point, addPoiView);
+            markerViewManager.addMarker(markerView);
+            inputAwareContainer.showSoftkey(addPoiView.getMessageView());
+            markerViewManager.center(markerView);
         }
         return true;
     }
@@ -349,4 +364,13 @@ public class MapActivity extends BaseActivity implements Observer, TimeRangeSlid
         return false;
     }
 
+    @Override
+    public void onKeyboardHidden() {
+        markerViewManager.onKeyboardShown(0);
+    }
+
+    @Override
+    public void onKeyboardShown() {
+        markerViewManager.onKeyboardShown(inputAwareContainer.getKeyboardHeight());
+    }
 }

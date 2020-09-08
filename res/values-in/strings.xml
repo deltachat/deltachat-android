@@ -6,6 +6,7 @@
     <string name="cancel">Batalkan</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
+    <string name="select">Pilih</string>
     <string name="on">Nyala</string>
     <string name="off">Mati</string>
     <string name="def">Default</string>
@@ -14,6 +15,8 @@
     <string name="automatic">Otomatis</string>
     <string name="strict">Ketat</string>
     <string name="open">Buka</string>
+    <string name="join">Gabung</string>
+    <string name="rejoin">Gabung kembali</string>
     <string name="delete">Hapus</string>
     <string name="info">Info</string>
     <string name="update">Memperbarui</string>
@@ -96,7 +99,9 @@
     <string name="camera">Kamera</string>
     <string name="location">Lokasi</string>
     <string name="gallery">Galeri</string>
+    <string name="images_and_videos">Gambar dan video</string>
     <string name="file">Berkas</string>
+    <string name="files">File</string>
     <string name="unknown">Tak dikenal</string>
 
     <string name="green">Hijau</string>
@@ -198,6 +203,8 @@
 
     <string name="file_saved_to">Berkas disimpan ke \"%1$s\".</string>
 
+    <string name="videochat_tap_to_join">Ketuk untuk bergabung</string>
+    <string name="videochat_tap_to_open">Ketuk untuk membuka</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Apakah anda yakin untuk keluar dari grup ini?</string>
     <plurals name="ask_delete_chat">
@@ -317,6 +324,8 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">Keamanan SMTP</string>
     <string name="login_auth_method">Metode otorisasi</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Memeriksa %1$s</string>
     <string name="login_info_oauth2_title">Lanjutkan dengan pengaturan yang disederhanakan?</string>
     <string name="login_info_oauth2_text">Bantuan untuk alamat surel yang telah dimasukkan adalah pengaturan yang disederhanakan (OAuth 2.0).\n\nPada langkah selanjutnya, izinkan Delta Chat sebagai Obrolan Anda pada aplikasi Surel.\n\nTidak ada server Delta Chat, obrolan Anda tetap di perangkat Anda.</string>
     <string name="login_certificate_checks">Cek sertifikat</string>
@@ -330,7 +339,7 @@
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Tanggapan dari %1$s: %2$s\n\nBeberapa penyedia layanan (provider) menempatkan informasi tambahan di kotak masuk Anda; Anda bisa memeriksanya, misalnya di beranda depan web. Konsultasikan dengan penyedia atau teman Anda jika Anda mengalami masalah.</string>
+    <string name="login_error_server_response">Tanggapan dari %1$s: %2$s\n\nBeberapa penyedia layanan provider menempatkan informasi tambahan di kotak masuk Anda; Anda bisa memeriksanya, misalnya di beranda depan web. Konsultasikan dengan penyedia atau teman Anda jika Anda mengalami masalah.</string>
     <string name="used_settings">Setelan yang digunakan:</string>
     <string name="switch_account">Alihkan akun</string>
     <string name="add_account">Tambah akun</string>
@@ -396,6 +405,7 @@
     <string name="pref_communication">Komunikasi</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_messages">Pesan</string>
+    <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
     <string name="pref_message_text_size">Ukuran huruf pesan</string>
     <string name="pref_view_log">Lihat catatan</string>
     <string name="pref_saved_log">Menyimpan log ke folder \"Unduhan\"</string>
@@ -518,6 +528,7 @@
     <string name="perm_explain_access_to_mic_denied">Untuk mengirim pesan audio, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih \"Perizinan\", dan fungsikan \"Penyimpanan\".</string>
     <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Lokasi\".</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Pesan terenkripsi</string>
 
@@ -591,6 +602,4 @@
     <string name="a11y_delivery_status_invalid">Status pengiriman tidak valid</string>
     <string name="a11y_remove_account_btn_label">Menghapus akun</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk dikirim.</string>
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-
-</resources>
+    </resources>
