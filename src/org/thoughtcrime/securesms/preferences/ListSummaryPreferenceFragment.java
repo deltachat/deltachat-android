@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.preferences;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.ListPreference;
@@ -37,6 +38,28 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   @Override
   public void onDestroy() {
     dcContext.eventCenter.removeObservers(this);
+
+    if (notificationController != null) {
+      // cancel backup when settings-activity is destroyed.
+      //
+      // where possible, we avoid the settings-activity from being destroyed,
+      // however, i did not find a simple way to cancel ConversationListActivity.onNewIntent() -
+      // which one is cleaning up "back stack" due to the singleTask flag.
+      // using a dummy activity and several workarounds all result even in worse side-effects
+      // than cancel-backup when the user relaunches the app.
+      // maybe we could bear the singleTask flag or could decouple
+      // backup completely from ui-flows -
+      // however, all this is some work and probably not maybe the effort just now.
+      //
+      // anyway, normally, the backup is fast enough and the users will just wait.
+      // btw, import does not have this issue (no singleTask in play there)
+      // and also for export, switching to other apps and tapping the notification will work.
+      // so, the current state is not that bad :)
+      notificationController.close();
+      dcContext.stopOngoingProcess();
+      Toast.makeText(getActivity(), R.string.export_aborted, Toast.LENGTH_LONG).show();
+    }
+
     super.onDestroy();
   }
 
@@ -83,6 +106,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog, which) -> {
       dcContext.stopOngoingProcess();
       notificationController.close();
+      notificationController = null;
     });
     progressDialog.show();
 
@@ -106,6 +130,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
                   .show();
         }
         notificationController.close();
+        notificationController = null;
       }
       else if (progress<1000/*progress in permille*/) {
         int percent = (int)progress / 10;
@@ -118,6 +143,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         progressDialog.dismiss();
         progressDialog = null;
         notificationController.close();
+        notificationController = null;
         String msg = "";
         if (progressWhat==DcContext.DC_IMEX_EXPORT_BACKUP) {
           msg = getActivity().getString(R.string.pref_backup_written_to_x, imexDir);
