@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.service;
 import android.annotation.TargetApi;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat.Builder;
 import androidx.core.content.ContextCompat;
 
+import org.thoughtcrime.securesms.DummyActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 
@@ -115,6 +117,7 @@ public final class GenericForegroundService extends Service {
                                                            .setTicker(active.contentText)
                                                            .setContentText(active.contentText)
                                                            .setProgress(active.progressMax, active.progress, active.indeterminate)
+                                                           .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DummyActivity.class), 0))
                                                            .build());
   }
 
