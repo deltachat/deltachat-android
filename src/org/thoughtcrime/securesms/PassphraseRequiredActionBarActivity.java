@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.service.GenericForegroundService;
 
 import java.util.Locale;
 
@@ -21,6 +22,15 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   protected final void onCreate(Bundle savedInstanceState) {
     Log.w(TAG, "onCreate(" + savedInstanceState + ")");
     onPreCreate();
+
+    if (GenericForegroundService.isForegroundTaskStarted()) {
+      // this does not prevent intent set by onNewIntent(),
+      // however, at least during onboarding,
+      // this catches a lot of situations with otherwise weird app states.
+      super.onCreate(savedInstanceState);
+      finish();
+      return;
+    }
 
     if (!DcHelper.isConfigured(getApplicationContext())) {
       Intent intent = new Intent(this, WelcomeActivity.class);
