@@ -100,9 +100,8 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
               android:exported="true" />
 
-    <activity-alias android:name=".RoutingActivity"
-                    android:targetActivity=".ConversationListActivity"
-                    android:exported="true">
+    <activity android:name=".RoutingActivity"
+              android:exported="true">
 
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -122,7 +121,7 @@
         <meta-data android:name="com.sec.minimode.icon.landscape.normal"
                    android:resource="@mipmap/ic_launcher" />
 
-    </activity-alias>
+    </activity>
 
     <activity android:name=".ConversationListArchiveActivity"
               android:label="@string/chat_archived_chats_title"
