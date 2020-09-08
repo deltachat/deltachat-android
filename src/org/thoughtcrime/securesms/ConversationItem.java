@@ -84,7 +84,7 @@ public class ConversationItem extends LinearLayout
 
   private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
   private static final Pattern MENTION_PATTERN = Pattern.compile("(?<=^|\\s)@([\\w\\d@_.-]+)");
-  private static final Pattern HASTAG_PATTERN = Pattern.compile("(?<=^|\\s)#([\\w\\d_-]+)");
+  private static final Pattern HASHTAG_PATTERN = Pattern.compile("(?<=^|\\s)#([\\w\\d_-]+)");
   private static final int MAX_MEASURE_CALLS = 3;
 
   private DcMsg         messageRecord;
