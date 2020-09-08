@@ -66,8 +66,8 @@ public class DozeReminder {
   public static void addDozeReminderDeviceMsg(Context context) {
     DcContext dcContext = DcHelper.getContext(context);
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(context.getString(R.string.perm_enable_bg_reminder_title)+"\n\n"
-               +context.getString(R.string.perm_enable_bg_reminder_text));
+    msg.setText("\uD83D\uDC49 "+context.getString(R.string.perm_enable_bg_reminder_title)+" \uD83D\uDC48\n\n"
+               +context.getString(R.string.pref_background_notifications_rationale));
     int msgId = dcContext.addDeviceMsg("android.doze-reminder", msg);
     if(msgId!=0) {
       Prefs.setPromptedDozeMsgId(context, msgId);
