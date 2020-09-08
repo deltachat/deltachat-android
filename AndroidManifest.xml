@@ -98,7 +98,16 @@
               android:launchMode="singleTask"
               android:theme="@style/TextSecure.LightNoActionBar"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
-              android:exported="true" />
+              android:exported="true">
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="openpgp4fpr" />
+        </intent-filter>
+
+    </activity>
 
     <activity android:name=".RoutingActivity"
               android:exported="true">
@@ -107,13 +116,6 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
             <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
-        </intent-filter>
-
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-            <category android:name="android.intent.category.BROWSABLE"/>
-            <data android:scheme="openpgp4fpr" />
         </intent-filter>
 
         <meta-data android:name="com.sec.minimode.icon.portrait.normal"
