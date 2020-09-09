@@ -333,7 +333,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">The messenger with the broadest audience in the world. Free and independent.</string>
-    <string name="welcome_start_messaging">Start messaging</string>
     <string name="login_title">Log in</string>
     <string name="login_header">Log in to your server</string>
     <string name="login_explain">Log in with an existing email account</string>
@@ -392,9 +391,7 @@
     <string name="pref_profile_photo">Profile picture</string>
     <string name="pref_blocked_contacts">Blocked contacts</string>
     <string name="pref_profile_photo_remove_ask">Remove profile photo?</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Password and account</string>
-    <string name="pref_who_can_see_this_information">Who can see this?</string>
     <string name="pref_who_can_see_profile_explain">Your profile picture and name will be shown alongside your messages when communicating with other users. Already sent information can not be deleted or removed.</string>
     <string name="pref_your_name">Your name</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -407,7 +404,6 @@
     <string name="pref_outgoing_balanced">Balanced</string>
     <string name="pref_outgoing_worse">Worse quality, small size</string>
     <string name="pref_vibrate">Vibrate</string>
-    <string name="pref_chat_settings">Chat settings</string>
     <string name="pref_change_secret">Change secret</string>
     <string name="pref_change_secret_explain">Change your PIN / pattern / fingerprint via system settings</string>
     <string name="pref_screen_security">Screen security</string>
@@ -439,7 +435,6 @@
     <string name="pref_app_access">App access</string>
     <string name="pref_communication">Communication</string>
     <string name="pref_chats">Chats</string>
-    <string name="pref_messages">Messages</string>
     <string name="pref_in_chat_sounds">In-chat sounds</string>
     <string name="pref_message_text_size">Message font size</string>
     <string name="pref_view_log">View log</string>
@@ -453,7 +448,6 @@
     <string name="pref_backup_export_start_button">Start backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
     <string name="pref_managekeys_menu_title">Manage keys</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat needs access to your files to import/export keys.</string>
     <string name="pref_managekeys_export_secret_keys">Export secret keys</string>
     <string name="pref_managekeys_export_explain">Export secret keys to \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Import secret keys</string>
@@ -471,7 +465,6 @@
     <string name="pref_send_copy_to_self">Send copy to self</string>
     <string name="pref_auto_folder_moves">Automatic moves to DeltaChat folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
-    <string name="pref_email_interaction_title">Email interaction</string>
     <string name="pref_show_emails">Show classic emails</string>
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
@@ -595,11 +588,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d new messages in %2$d chats</string>
-    <string name="notify_most_recent_from">Most recent from: %1$s</string>
-    <string name="notify_media_message_with_text">Media message: %s</string>
-    <string name="notify_mark_all_read">Mark all as read</string>
     <string name="notify_mark_read">Mark read</string>
-    <string name="notify_media_message">Media message</string>
     <string name="notify_reply_button">Reply</string>
     <string name="notify_new_message">New message</string>
     <string name="notify_background_connection_enabled">Background connection enabled</string>
@@ -613,10 +602,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Permission required</string>
     <string name="perm_continue">Continue</string>
-    <string name="perm_explain_need_for_camera_access">To capture photos and videos, allow Delta Chat to access the camera.</string>
-    <string name="perm_explain_need_for_mic_access">To send audio messages, allow Delta Chat to access the microphone.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat needs access to your files in order to export files or to create backups.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat needs access to your files to share them.</string>
     <string name="perm_explain_access_to_camera_denied">To take photos or capture videos, go to the app settings, select \"Permissions\", and enable \"Camera\".</string>
     <string name="perm_explain_access_to_mic_denied">To send audio messages, go to the app settings, select \"Permissions\", and enable \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">To recieve or send files, go to the app settings, select \"Permissions\", and enable \"Storage\".</string>
@@ -724,7 +709,6 @@
     <string name="pref_reliable_service">Reliable background connection</string>
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat uses few resources and takes care not to drain your battery.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
 
 </resources>
