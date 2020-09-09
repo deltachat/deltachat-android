@@ -20,7 +20,6 @@ import androidx.annotation.NonNull;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
@@ -28,10 +27,6 @@ class JobQueue {
 
   private final Map<String, Job> activeGroupIds = new HashMap<>();
   private final LinkedList<Job>  jobQueue       = new LinkedList<>();
-
-  synchronized void onRequirementStatusChanged() {
-    notifyAll();
-  }
 
   synchronized void add(Job job) {
     jobQueue.add(job);
