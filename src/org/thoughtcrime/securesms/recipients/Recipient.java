@@ -181,7 +181,7 @@ public class Recipient {
     return getName();
   }
 
-  public int getFallbackAvatarColor(Context context) {
+  public int getFallbackAvatarColor() {
     int rgb = 0x00808080;
     if(dcContact!=null) {
       rgb = dcContact.getColor();
@@ -194,7 +194,7 @@ public class Recipient {
   }
 
   public synchronized @NonNull Drawable getFallbackAvatarDrawable(Context context) {
-    return getFallbackContactPhoto().asDrawable(context, getFallbackAvatarColor(context));
+    return getFallbackContactPhoto().asDrawable(context, getFallbackAvatarColor());
   }
 
   public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {

@@ -249,7 +249,7 @@ public class ConversationListFragment extends Fragment
   }
 
   private void initializeListAdapter() {
-    list.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this), locale, null, this));
+    list.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this), locale, this));
     getLoaderManager().restartLoader(0, null, this);
   }
 

@@ -82,9 +82,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private Group advancedGroup;
     private ImageView advancedIcon;
     private ProgressDialog progressDialog;
-    private boolean gmailDialogShown;
 
-    MenuItem loginMenuItem;
     Spinner imapSecurity;
     Spinner smtpSecurity;
     Spinner authMethod;
@@ -199,7 +197,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         MenuInflater inflater = this.getMenuInflater();
         menu.clear();
         inflater.inflate(R.menu.registration, menu);
-        loginMenuItem = menu.findItem(R.id.do_register);
         super.onPrepareOptionsMenu(menu);
         return true;
     }

@@ -160,7 +160,7 @@ public class AttachmentManager {
   private void cleanup(final @Nullable Uri uri) {
     if (uri != null && PersistentBlobProvider.isAuthority(context, uri)) {
       Log.w(TAG, "cleaning up " + uri);
-      PersistentBlobProvider.getInstance(context).delete(context, uri);
+      PersistentBlobProvider.getInstance().delete(context, uri);
     }
   }
 
@@ -458,7 +458,7 @@ public class AttachmentManager {
                    Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                    if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
                      if (imageCaptureUri == null) {
-                       imageCaptureUri = PersistentBlobProvider.getInstance(context).createForExternal(context, MediaUtil.IMAGE_JPEG);
+                       imageCaptureUri = PersistentBlobProvider.getInstance().createForExternal(context, MediaUtil.IMAGE_JPEG);
                      }
                      Log.w(TAG, "imageCaptureUri path is " + imageCaptureUri.getPath());
                      captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageCaptureUri);
@@ -481,7 +481,7 @@ public class AttachmentManager {
             Intent captureIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
             if (captureIntent.resolveActivity(activity.getPackageManager()) != null) {
               if (videoCaptureUri==null) {
-                videoCaptureUri = PersistentBlobProvider.getInstance(context).createForExternal(context, "video/mp4");
+                videoCaptureUri = PersistentBlobProvider.getInstance().createForExternal(context, "video/mp4");
               }
               Log.w(TAG, "videoCaptureUri path is " + videoCaptureUri.getPath());
               captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoCaptureUri);

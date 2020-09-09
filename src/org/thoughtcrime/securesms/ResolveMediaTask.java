@@ -82,7 +82,7 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
                     if (cursor != null) cursor.close();
                 }
                 String mimeType = getMimeType(contextRef.get(), uri);
-                return PersistentBlobProvider.getInstance(contextRef.get()).create(contextRef.get(), inputStream, mimeType, fileName, fileSize);
+                return PersistentBlobProvider.getInstance().create(contextRef.get(), inputStream, mimeType, fileName, fileSize);
             } catch (NullPointerException | IOException ioe) {
                 Log.w(TAG, ioe);
                 return null;

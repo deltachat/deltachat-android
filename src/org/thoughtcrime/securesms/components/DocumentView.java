@@ -26,7 +26,6 @@ public class DocumentView extends FrameLayout {
   private final @NonNull TextView        fileSize;
 
   private @Nullable SlideClickListener viewListener;
-  private @Nullable DocumentSlide      documentSlide;
 
   public DocumentView(@NonNull Context context) {
     this(context, null);
@@ -51,8 +50,6 @@ public class DocumentView extends FrameLayout {
 
   public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
-    this.documentSlide = documentSlide;
-
     this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
 
     String fileSize = Util.getPrettyFileSize(documentSlide.getFileSize())

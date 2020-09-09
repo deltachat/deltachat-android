@@ -63,11 +63,6 @@ public abstract class Slide {
   }
 
   @NonNull
-  public Optional<String> getBody() {
-    return Optional.absent();
-  }
-
-  @NonNull
   public Optional<String> getFileName() {
     return Optional.fromNullable(attachment.getFileName());
   }

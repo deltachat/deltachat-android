@@ -61,10 +61,6 @@ public class Util {
 
   public static Handler handler = new Handler(Looper.getMainLooper());
 
-  public static String join(String[] list, String delimiter) {
-    return join(Arrays.asList(list), delimiter);
-  }
-
   public static String join(Collection<String> list, String delimiter) {
     StringBuilder result = new StringBuilder();
     int i = 0;
@@ -77,17 +73,6 @@ public class Util {
     }
 
     return result.toString();
-  }
-
-  public static String join(long[] list, String delimeter) {
-    StringBuilder sb = new StringBuilder();
-
-    for (int j=0;j<list.length;j++) {
-      if (j != 0) sb.append(delimeter);
-      sb.append(list[j]);
-    }
-
-    return sb.toString();
   }
 
   public static boolean isEmpty(ComposeText value) {
@@ -119,14 +104,6 @@ public class Util {
       lock.wait(timeout);
     } catch (InterruptedException ie) {
       throw new AssertionError(ie);
-    }
-  }
-
-  public static void close(InputStream in) {
-    try {
-      in.close();
-    } catch (IOException e) {
-      Log.w(TAG, e);
     }
   }
 
@@ -202,19 +179,6 @@ public class Util {
     return success;
   }
 
-  public static List<String> split(String source, String delimiter) {
-    List<String> results = new LinkedList<>();
-
-    if (TextUtils.isEmpty(source)) {
-      return results;
-    }
-
-    String[] elements = source.split(delimiter);
-    Collections.addAll(results, elements);
-
-    return results;
-  }
-
   public static byte[] getSecretBytes(int size) {
     byte[] secret = new byte[size];
     getSecureRandom().nextBytes(secret);
@@ -288,11 +252,6 @@ public class Util {
 
   public static int hashCode(@Nullable Object... objects) {
     return Arrays.hashCode(objects);
-  }
-
-  public static @Nullable Uri uri(@Nullable String uri) {
-    if (uri == null) return null;
-    else             return Uri.parse(uri);
   }
 
   @TargetApi(VERSION_CODES.KITKAT)
