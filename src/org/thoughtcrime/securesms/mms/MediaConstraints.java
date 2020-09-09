@@ -14,8 +14,4 @@ public abstract class MediaConstraints {
   public abstract int getImageMaxWidth(Context context);
   public abstract int getImageMaxHeight(Context context);
   public abstract int getImageMaxSize(Context context);
-
-  public boolean canResize(@Nullable Attachment attachment) {
-    return attachment != null && MediaUtil.isImage(attachment) && !MediaUtil.isGif(attachment);
-  }
 }

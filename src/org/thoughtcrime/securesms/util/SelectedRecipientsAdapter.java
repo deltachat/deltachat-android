@@ -34,10 +34,6 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
   @NonNull  private List<RecipientWrapper>     recipients;
   @NonNull  private final ApplicationDcContext dcContext;
 
-  public SelectedRecipientsAdapter(@NonNull Context context) {
-    this(context, Collections.<Recipient>emptyList());
-  }
-
   public SelectedRecipientsAdapter(@NonNull Context context,
                                    @NonNull Collection<Recipient> existingRecipients)
   {
@@ -174,10 +170,6 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
 
     public boolean isModifiable() {
       return modifiable;
-    }
-
-    public boolean isPush() {
-      return push;
     }
   }
 }

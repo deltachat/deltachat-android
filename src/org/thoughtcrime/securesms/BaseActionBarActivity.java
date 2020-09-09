@@ -145,12 +145,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
     }
   }
 
-  protected void startActivitySceneTransition(Intent intent, View sharedView, String transitionName) {
-    Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedView, transitionName)
-                                         .toBundle();
-    ActivityCompat.startActivity(this, intent, bundle);
-  }
-
   @Override
   public void startActivityForResult(Intent intent, int requestCode) {
     super.startActivityForResult(intent, requestCode);

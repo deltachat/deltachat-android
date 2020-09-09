@@ -124,22 +124,6 @@ public class BitmapUtil {
   }
 
   @WorkerThread
-  public static <T> Bitmap createScaledBitmap(Context context, T model, int maxWidth, int maxHeight)
-      throws BitmapDecodingException
-  {
-    try {
-      return GlideApp.with(context.getApplicationContext())
-                     .asBitmap()
-                     .load(model)
-                     .downsample(DownsampleStrategy.AT_MOST)
-                     .submit(maxWidth, maxHeight)
-                     .get();
-    } catch (InterruptedException | ExecutionException e) {
-      throw new BitmapDecodingException(e);
-    }
-  }
-
-  @WorkerThread
   public static Bitmap createScaledBitmap(Bitmap bitmap, int maxWidth, int maxHeight) {
     if (bitmap.getWidth() <= maxWidth && bitmap.getHeight() <= maxHeight) {
       return bitmap;
@@ -207,24 +191,6 @@ public class BitmapUtil {
   public static Pair<Integer, Integer> getDimensions(InputStream inputStream) throws BitmapDecodingException {
     BitmapFactory.Options options = getImageDimensions(inputStream);
     return new Pair<>(options.outWidth, options.outHeight);
-  }
-
-  public static InputStream toCompressedJpeg(Bitmap bitmap) {
-    ByteArrayOutputStream thumbnailBytes = new ByteArrayOutputStream();
-    bitmap.compress(CompressFormat.JPEG, 85, thumbnailBytes);
-    return new ByteArrayInputStream(thumbnailBytes.toByteArray());
-  }
-
-  public static @Nullable byte[] toByteArray(@Nullable Bitmap bitmap) {
-    if (bitmap == null) return null;
-    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-    return stream.toByteArray();
-  }
-
-  public static @Nullable Bitmap fromByteArray(@Nullable byte[] bytes) {
-    if (bytes == null) return null;
-    return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
   }
 
   public static byte[] createFromNV21(@NonNull final byte[] data,

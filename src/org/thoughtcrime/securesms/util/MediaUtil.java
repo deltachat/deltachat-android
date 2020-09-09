@@ -41,7 +41,6 @@ public class MediaUtil {
   private static final String TAG = MediaUtil.class.getSimpleName();
 
   public static final String IMAGE_WEBP        = "image/webp";
-  public static final String IMAGE_PNG         = "image/png";
   public static final String IMAGE_JPEG        = "image/jpeg";
   public static final String IMAGE_GIF         = "image/gif";
   public static final String AUDIO_AAC         = "audio/aac";
@@ -198,22 +197,6 @@ public class MediaUtil {
     return !TextUtils.isEmpty(contentType) && contentType.trim().equals("application/mms");
   }
 
-  public static boolean isGif(Attachment attachment) {
-    return isGif(attachment.getContentType());
-  }
-
-  public static boolean isImage(Attachment attachment) {
-    return isImageType(attachment.getContentType());
-  }
-
-  public static boolean isAudio(Attachment attachment) {
-    return isAudioType(attachment.getContentType());
-  }
-
-  public static boolean isVideo(Attachment attachment) {
-    return isVideoType(attachment.getContentType());
-  }
-
   public static boolean isVideo(String contentType) {
     return !TextUtils.isEmpty(contentType) && contentType.trim().startsWith("video/");
   }
@@ -224,10 +207,6 @@ public class MediaUtil {
 
   public static boolean isJpegType(String contentType) {
     return !TextUtils.isEmpty(contentType) && contentType.trim().equals(IMAGE_JPEG);
-  }
-
-  public static boolean isFile(Attachment attachment) {
-    return !isGif(attachment) && !isImage(attachment) && !isAudio(attachment) && !isVideo(attachment);
   }
 
   public static boolean isImageType(String contentType) {

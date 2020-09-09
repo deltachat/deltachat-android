@@ -31,17 +31,11 @@ public abstract class Job implements Serializable {
 
   private final JobParameters parameters;
 
-  private transient long                  persistentId;
   private transient int                   runIteration;
-  private transient long                  lastRunTime;
   private transient PowerManager.WakeLock wakeLock;
 
   public Job(JobParameters parameters) {
     this.parameters = parameters;
-  }
-
-  public List<Requirement> getRequirements() {
-    return parameters.getRequirements();
   }
 
   public boolean isRequirementsMet() {
@@ -56,10 +50,6 @@ public abstract class Job implements Serializable {
     return parameters.getGroupId();
   }
 
-  public boolean isPersistent() {
-    return parameters.isPersistent();
-  }
-
   public int getRetryCount() {
     return parameters.getRetryCount();
   }
@@ -68,21 +58,8 @@ public abstract class Job implements Serializable {
     return parameters.getRetryUntil();
   }
 
-  public long getLastRunTime() {
-    return lastRunTime;
-  }
-
   public void resetRunStats() {
     runIteration = 0;
-    lastRunTime  = 0;
-  }
-
-  public void setPersistentId(long persistentId) {
-    this.persistentId = persistentId;
-  }
-
-  public long getPersistentId() {
-    return persistentId;
   }
 
   public int getRunIteration() {
@@ -107,7 +84,6 @@ public abstract class Job implements Serializable {
 
   public void onRetry() {
     runIteration++;
-    lastRunTime = System.currentTimeMillis();
 
     for (Requirement requirement : parameters.getRequirements()) {
       requirement.onRetry(this);

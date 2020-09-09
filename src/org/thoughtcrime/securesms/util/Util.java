@@ -138,18 +138,6 @@ public class Util {
     }
   }
 
-  public static void readFully(InputStream in, byte[] buffer) throws IOException {
-    int offset = 0;
-
-    for (;;) {
-      int read = in.read(buffer, offset, buffer.length - offset);
-      if (read == -1) throw new IOException("Stream ended early");
-
-      if (read + offset < buffer.length) offset += read;
-      else                		           return;
-    }
-  }
-
   public static byte[] readFully(InputStream in) throws IOException {
     ByteArrayOutputStream bout = new ByteArrayOutputStream();
     byte[] buffer              = new byte[4096];
@@ -225,47 +213,6 @@ public class Util {
     Collections.addAll(results, elements);
 
     return results;
-  }
-
-  public static byte[][] split(byte[] input, int firstLength, int secondLength) {
-    byte[][] parts = new byte[2][];
-
-    parts[0] = new byte[firstLength];
-    System.arraycopy(input, 0, parts[0], 0, firstLength);
-
-    parts[1] = new byte[secondLength];
-    System.arraycopy(input, firstLength, parts[1], 0, secondLength);
-
-    return parts;
-  }
-
-  public static byte[] combine(byte[]... elements) {
-    try {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-      for (byte[] element : elements) {
-        baos.write(element);
-      }
-
-      return baos.toByteArray();
-    } catch (IOException e) {
-      throw new AssertionError(e);
-    }
-  }
-
-  public static byte[] trim(byte[] input, int length) {
-    byte[] result = new byte[length];
-    System.arraycopy(input, 0, result, 0, result.length);
-
-    return result;
-  }
-
-  public static int getCurrentApkReleaseVersion(Context context) {
-    try {
-      return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
-    } catch (PackageManager.NameNotFoundException e) {
-      throw new AssertionError(e);
-    }
   }
 
   public static byte[] getSecretBytes(int size) {

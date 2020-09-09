@@ -1005,14 +1005,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return dcChat.getVisibility() == DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
   }
 
-  protected Recipient getRecipient() {
-    return this.recipient;
-  }
-
-  protected long getChatId() {
-    return this.chatId;
-  }
-
   private MediaConstraints getCurrentMediaConstraints() {
     return MediaConstraints.getPushMediaConstraints();
   }
@@ -1456,11 +1448,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {}
-  }
-
-  @Override
-  public void setChatId(int chatId) {
-    this.chatId = chatId;
   }
 
   @Override

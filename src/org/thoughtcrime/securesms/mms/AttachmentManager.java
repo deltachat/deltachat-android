@@ -593,17 +593,6 @@ public class AttachmentManager {
       default:       throw  new AssertionError("unrecognized enum");
       }
     }
-
-    public static @Nullable MediaType from(final @Nullable String mimeType) {
-      if (TextUtils.isEmpty(mimeType))     return null;
-      if (MediaUtil.isGif(mimeType))       return GIF;
-      if (MediaUtil.isImageType(mimeType)) return IMAGE;
-      if (MediaUtil.isAudioType(mimeType)) return AUDIO;
-      if (MediaUtil.isVideoType(mimeType)) return VIDEO;
-
-      return DOCUMENT;
-    }
-
   }
 
   public int getVisibility() {

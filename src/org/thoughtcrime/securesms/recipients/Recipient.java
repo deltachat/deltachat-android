@@ -60,7 +60,6 @@ public class Recipient {
 
   private @Nullable Uri                  systemContactPhoto;
   private           Uri                  contactUri;
-  private @Nullable Uri                  messageRingtone       = null;
 
   private @Nullable String         profileName;
   private @Nullable String         profileAvatar;
@@ -126,10 +125,6 @@ public class Recipient {
     else {
       this.address = Address.UNKNOWN;
     }
-  }
-
-  public @Nullable Uri getContactUri() {
-    return this.contactUri;
   }
 
   public @Nullable String getName() {
@@ -252,21 +247,6 @@ public class Recipient {
     if (notify) notifyListeners();
   }
 
-  public synchronized @Nullable Uri getMessageRingtone() {
-    if (messageRingtone != null && messageRingtone.getScheme() != null && messageRingtone.getScheme().startsWith("file")) {
-      return null;
-    }
-
-    return messageRingtone;
-  }
-
-  public boolean isBlocked() {
-    if (dcContact!=null) {
-      return dcContact.isBlocked();
-    }
-    return false;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -291,17 +271,6 @@ public class Recipient {
 
     for (RecipientModifiedListener listener : localListeners)
       listener.onModified(this);
-  }
-
-  public void reload(Context context)
-  {
-    DcContext dcContext = DcHelper.getContext(context);
-    if(dcContact!=null) {
-      dcContact = dcContext.getContact(dcContact.getId());
-    }
-    else if(dcChat!=null) {
-      dcChat = dcContext.getChat(dcChat.getId());
-    }
   }
 
   public DcChat getChat()

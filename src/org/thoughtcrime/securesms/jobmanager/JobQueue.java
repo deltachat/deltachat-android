@@ -39,16 +39,6 @@ class JobQueue {
     notifyAll();
   }
 
-  synchronized void addAll(List<Job> jobs) {
-    jobQueue.addAll(jobs);
-
-    for (Job job : jobs) {
-      processJobAddition(job);
-    }
-
-    notifyAll();
-  }
-
   private void processJobAddition(@NonNull Job job) {
     if (isJobActive(job) && isGroupIdAvailable(job)) {
       setGroupIdUnavailable(job);
