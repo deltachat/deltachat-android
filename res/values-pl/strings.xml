@@ -502,7 +502,6 @@
     <string name="pref_background_default_color">Domyślny kolor</string>
     <string name="pref_background_custom_image">Własny obraz</string>
     <string name="pref_background_custom_color">Własny kolor</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Usuń stare wiadomości</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->

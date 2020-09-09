@@ -454,7 +454,6 @@
     <string name="pref_background_default_color">Colore predefinidu</string>
     <string name="pref_background_custom_image">Immàgine personalizada</string>
     <string name="pref_background_custom_color">Colore personalizadu</string>
-
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
     <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>

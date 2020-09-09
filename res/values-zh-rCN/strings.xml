@@ -471,7 +471,6 @@
     <string name="pref_background_default_color">默认颜色</string>
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">删除旧消息</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -704,6 +703,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到您的图库。</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">后台通知</string>
+    <string name="pref_background_notifications_explain">使用与服务器的后台连接，并且需要忽略电池优化。</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">可靠后台连接</string>
     <string name="pref_reliable_service_explain">需要一个永久通知</string>

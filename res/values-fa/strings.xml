@@ -456,7 +456,6 @@
     <string name="pref_background_default_color">رنگ پیش‌فرض</string>
     <string name="pref_background_custom_image">تصویر ترجیحی</string>
     <string name="pref_background_custom_color">رنگ ترجیحی</string>
-
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">پاک کردن خودکار پیام‌ها</string>
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>

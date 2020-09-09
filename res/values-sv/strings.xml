@@ -482,7 +482,6 @@
     <string name="pref_background_default_color">Standardfärg</string>
     <string name="pref_background_custom_image">Anpassad bild</string>
     <string name="pref_background_custom_color">Anpassad färg</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ta bort gamla meddelanden</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -715,6 +714,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vill spara bilder i ditt fotogalleri.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Bakgrundsaviseringar</string>
+    <string name="pref_background_notifications_explain">Använder en bakgrundsanslutning till din server och kräver undantagna batterioptimeringar.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Tillförlitlig bakgrundsanslutning</string>
     <string name="pref_reliable_service_explain">Kräver permanent avisering</string>

@@ -506,7 +506,6 @@
     <string name="pref_background_default_color">Цвет по умолчанию</string>
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалять старые сообщения</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->

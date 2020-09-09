@@ -482,7 +482,6 @@
     <string name="pref_background_default_color">Standaard kleur</string>
     <string name="pref_background_custom_image">Eigen afbeelding</string>
     <string name="pref_background_custom_color">Eigen kleur</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -715,6 +714,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wil afbeeldingen opslaan in je fotogalerij.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Achtergrondmeldingen</string>
+    <string name="pref_background_notifications_explain">Zet een achtergrondverbinding op naar je server en negeert alle accu-optimalisaties.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Betrouwbare achtergrondverbinding</string>
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
