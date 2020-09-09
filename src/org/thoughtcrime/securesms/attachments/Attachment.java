@@ -25,8 +25,7 @@ public abstract class Attachment {
   private final int height;
 
   public Attachment(@NonNull String contentType, int transferState, long size, @Nullable String fileName,
-                    @Nullable String location, @Nullable String key, @Nullable String relay,
-                    @Nullable byte[] digest, @Nullable String fastPreflightId, boolean voiceNote,
+                    @Nullable String location, @Nullable String fastPreflightId, boolean voiceNote,
                     int width, int height)
   {
     this.contentType     = contentType;

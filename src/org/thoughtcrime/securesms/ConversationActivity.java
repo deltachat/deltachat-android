@@ -92,7 +92,6 @@ import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.mms.MediaConstraints;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -400,10 +399,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       break;
     case PICK_LOCATION:
-      /*
-      SignalPlace place = new SignalPlace(PlacePicker.getPlace(data, this));
-      attachmentManager.setLocation(place, getCurrentMediaConstraints());
-      */
       break;
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
@@ -980,7 +975,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return new SettableFuture<>(false);
     }
 
-    return attachmentManager.setMedia(glideRequests, uri, mediaType, getCurrentMediaConstraints(), 0, 0);
+    return attachmentManager.setMedia(glideRequests, uri, mediaType, 0, 0);
   }
 
   private void addAttachmentContactInfo(Intent data) {
@@ -1003,10 +998,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private boolean isArchived() {
     return dcChat.getVisibility() == DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
-  }
-
-  private MediaConstraints getCurrentMediaConstraints() {
-    return MediaConstraints.getPushMediaConstraints();
   }
 
   private String getRealPathFromAttachment(Attachment attachment) {

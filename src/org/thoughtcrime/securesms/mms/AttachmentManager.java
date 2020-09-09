@@ -215,7 +215,6 @@ public class AttachmentManager {
   public ListenableFuture<Boolean> setMedia(@NonNull final GlideRequests glideRequests,
                                             @NonNull final Uri uri,
                                             @NonNull final MediaType mediaType,
-                                            @NonNull final MediaConstraints constraints,
                                                      final int width,
                                                      final int height)
   {

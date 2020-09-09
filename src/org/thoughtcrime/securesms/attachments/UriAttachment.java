@@ -14,7 +14,7 @@ public class UriAttachment extends Attachment {
                        @Nullable String fileName, @Nullable String fastPreflightId,
                        boolean voiceNote)
   {
-    super(contentType, transferState, size, fileName, null, null, null, null, fastPreflightId, voiceNote, width, height);
+    super(contentType, transferState, size, fileName, null, fastPreflightId, voiceNote, width, height);
     this.dataUri      = dataUri;
     this.thumbnailUri = thumbnailUri;
   }
