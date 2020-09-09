@@ -59,46 +59,8 @@ public class ApplicationDcContext extends DcContext {
     super("Android "+BuildConfig.VERSION_NAME, AccountManager.getInstance().getSelectedAccount(context).getAbsolutePath());
     this.context = context;
 
-    // migration, can be removed after some versions (added 5/2020)
-    // (this will convert only for one account, but that is fine, multi-account is experimental anyway)
-    try {
-      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-      if(sharedPreferences.contains("pref_compression")) {
-        if (sharedPreferences.getString("pref_compression", "0").equals("1")) {
-          setConfigInt(DcHelper.CONFIG_MEDIA_QUALITY, DC_MEDIA_QUALITY_WORSE);
-        }
-        sharedPreferences.edit().remove("pref_compression").apply();
-      }
-    }
-    catch(Exception e) {
-      Log.e(TAG, "cannot migrate pref_compression");
-    }
-    // /migration
-
-    // migration, can be removed after some versions (added 5/2020)
-    try {
-      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-      Set<String> keys = sharedPreferences.getAll().keySet();
-      for (String key : keys) {
-        if (key.startsWith(Prefs.CHAT_MUTED_UNTIL)) {
-          int id = Integer.parseInt(key.substring(Prefs.CHAT_MUTED_UNTIL.length()));
-          long mutedUntil = Prefs.getLongPreference(context, key, 0);
-          long remainingSeconds = (mutedUntil - System.currentTimeMillis()) / 1000;
-          if (remainingSeconds > 0) {
-            setChatMuteDuration(id, remainingSeconds);
-            Log.i(TAG, "Migrating sharedPref mutedUntil "+mutedUntil+" to duration "+remainingSeconds);
-          } else {
-            Log.i(TAG, "Not migrating sharedPref mutedUntil "+mutedUntil+" to duration "+remainingSeconds+"because it's negative");
-          }
-          sharedPreferences.edit().remove(key).apply();
-        }
-      }
-    }
-    catch(Exception e) {
-      Log.e(TAG, "cannot migrate mutedUntil");
-      e.printStackTrace();
-    }
-    // /migration
+    // if ui-based migrations are needed, this is a good place
+    // (see eg. https://github.com/deltachat/deltachat-android/pull/1618 for an example)
 
     new Thread(() -> {
       DcEventEmitter emitter = getEventEmitter();
