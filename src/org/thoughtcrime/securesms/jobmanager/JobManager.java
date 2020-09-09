@@ -24,7 +24,7 @@ public class JobManager implements RequirementListener {
   private final Context                     context;
   private final List<RequirementProvider>   requirementProviders;
 
-  private JobManager(Context context, String name,
+  private JobManager(Context context,
                      List<RequirementProvider> requirementProviders,
                      int consumers)
   {
@@ -91,25 +91,12 @@ public class JobManager implements RequirementListener {
 
   public static class Builder {
     private final Context                   context;
-    private       String                    name;
     private       List<RequirementProvider> requirementProviders;
     private       int                       consumerThreads;
 
     Builder(Context context) {
       this.context         = context;
       this.consumerThreads = 5;
-    }
-
-    /**
-     * A name for the {@link org.thoughtcrime.securesms.jobmanager.JobManager}. This is a required parameter,
-     * and is linked to the durable queue used by persistent jobs.
-     *
-     * @param name The name for the JobManager to build.
-     * @return The builder.
-     */
-    public Builder withName(String name) {
-      this.name = name;
-      return this;
     }
 
     /**
@@ -127,15 +114,11 @@ public class JobManager implements RequirementListener {
      * @return A constructed JobManager.
      */
     public JobManager build() {
-      if (name == null) {
-        throw new IllegalArgumentException("You must specify a name!");
-      }
-
       if (requirementProviders == null) {
         requirementProviders = new LinkedList<>();
       }
 
-      return new JobManager(context, name, requirementProviders,
+      return new JobManager(context, requirementProviders,
                             consumerThreads);
     }
   }
