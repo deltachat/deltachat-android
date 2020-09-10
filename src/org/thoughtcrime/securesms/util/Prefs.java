@@ -52,7 +52,6 @@ public class Prefs {
   public  static final String DOZE_ASKED_DIRECTLY              = "pref_doze_asked_directly";
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
   public  static final String MESSAGE_BODY_TEXT_SIZE_PREF      = "pref_message_body_text_size";
-  public  static final String EPHEMERAL_MESSAGES_PREF          = "pref_ephemeral_messages";
 
   public  static final String NOTIFICATION_PRIVACY_PREF        = "pref_notification_privacy";
   public  static final String NOTIFICATION_PRIORITY_PREF       = "pref_notification_priority";
@@ -186,10 +185,6 @@ public class Prefs {
     catch(Exception e) {
       return false;
     }
-  }
-
-  public static boolean isEphemeralMessagesEnabled(Context context) {
-      return getBooleanPreference(context, EPHEMERAL_MESSAGES_PREF, false);
   }
 
   // ringtone

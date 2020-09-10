@@ -482,7 +482,6 @@
     <string name="pref_background_default_color">Varsayılan renk</string>
     <string name="pref_background_custom_image">Özel görsel</string>
     <string name="pref_background_custom_color">Özel renk</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski iletileri sil</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -715,6 +714,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat, görselleri fotoğraf kitaplığınıza kaydetmek istiyor.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Arka plan bildirimleri</string>
+    <string name="pref_background_notifications_explain">Sunucunuza bir arka plan bağlantısı kullanır ve pil iyileştirmelerinin yoksayılmasını gerektirir.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Güvenilir arka plan bağlantısı</string>
     <string name="pref_reliable_service_explain">Kalıcı bir bildirim gerektirir</string>

@@ -504,7 +504,6 @@
     <string name="pref_background_default_color">Колір за замовчуванням</string>
     <string name="pref_background_custom_image">Персональне зображення</string>
     <string name="pref_background_custom_color">Персональний колір</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Видалити старі повідомлення</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -737,6 +736,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хоче зберігати зображення у вашу фото-бібліотеку.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Фонові сповіщення</string>
+    <string name="pref_background_notifications_explain">Використовує фонове з\'єднання з вашим сервером та потребує ігнорування оптимізації батареї.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Надійне фонове з\'єднання</string>
     <string name="pref_reliable_service_explain">Потребує перманентного сповіщення</string>

@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.service;
 import android.annotation.TargetApi;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat.Builder;
 import androidx.core.content.ContextCompat;
 
+import org.thoughtcrime.securesms.DummyActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 
@@ -47,6 +49,7 @@ public final class GenericForegroundService extends Service {
   private static final AtomicInteger NEXT_ID = new AtomicInteger();
   private static final AtomicBoolean CHANNEL_CREATED = new AtomicBoolean(false);
 
+  private static int startedCounter = 0;
 
   private final LinkedHashMap<Integer, Entry> allActiveMessages = new LinkedHashMap<>();
 
@@ -114,6 +117,7 @@ public final class GenericForegroundService extends Service {
                                                            .setTicker(active.contentText)
                                                            .setContentText(active.contentText)
                                                            .setProgress(active.progressMax, active.progress, active.indeterminate)
+                                                           .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DummyActivity.class), 0))
                                                            .build());
   }
 
@@ -124,6 +128,7 @@ public final class GenericForegroundService extends Service {
 
 
   public static NotificationController startForegroundTask(@NonNull Context context, @NonNull String task) {
+    startedCounter++;
     final int id = NEXT_ID.getAndIncrement();
 
     createFgNotificationChannel(context);
@@ -145,6 +150,11 @@ public final class GenericForegroundService extends Service {
     intent.putExtra(EXTRA_ID, id);
 
     ContextCompat.startForegroundService(context, intent);
+    startedCounter = Math.max(startedCounter-1, 0);
+  }
+
+  public static boolean isForegroundTaskStarted() {
+    return startedCounter > 0;
   }
 
   synchronized void replaceProgress(int id, int progressMax, int progress, boolean indeterminate, String message) {

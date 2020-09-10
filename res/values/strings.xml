@@ -492,6 +492,7 @@
     <string name="pref_map_import_ask">Do you want to import map?</string>
     <string name="pref_map_import">Import map</string>
     <string name="pref_map_export">Export map</string>
+    <string name="export_aborted">Export aborted.</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Delete old messages</string>
@@ -728,6 +729,7 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Background notifications</string>
     <string name="pref_background_notifications_explain">Uses a background connection to your server and requires ignored battery optimizations.</string>
+    <string name="pref_background_notifications_rationale">To maintain connection to your email server and receive messages in the background, ignore battery optimizations in the next step.\n\nDelta Chat uses few resources and takes care not to drain your battery.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Reliable background connection</string>
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>

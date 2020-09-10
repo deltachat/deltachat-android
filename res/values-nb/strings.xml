@@ -185,7 +185,7 @@
     <string name="device_talk">Enhetsmeldinger</string>
     <string name="device_talk_subtitle">Lokalt genererte meldinger</string>
     <string name="device_talk_explain">Meldinger i denne chatten blir generert lokalt av Delta Chat-appen. Produsentene bruker den for å informere om appoppdateringer og problemer under bruk.</string>
-    <string name="device_talk_welcome_message">Velkommen til Delta Chat! – Delta Chat ser ut og føles som andre populære messenger-apper, men involverer ikke sentralisert kontroll, sporing eller salg av deg, venner, kolleger eller familie til store organisasjoner.\n\nTeknisk er Delta Chat en e-postapplikasjon med et moderne chatgrensesnitt. E-post i en nye klær hvis du vil 👻\n\nBruk Delta Chat med hvem som helst av milliarder av mennesker: bare bruk e-postadressen deres. Mottakere trenger ikke installere Delta Chat, besøke nettsteder eller registrere seg noen steder – men selvfølgelig, hvis de vil, kan du peke dem til 👉 https://get.delta.chat</string>
+    <string name="device_talk_welcome_message">Velkommen til Delta Chat! – Delta Chat ser ut og føles som andre populære messenger-apper, men involverer ikke sentralisert kontroll, sporing eller salg av deg, venner, kolleger eller familie til store organisasjoner.\n\nTeknisk er Delta Chat en e-postapplikasjon med et moderne chattegrensesnitt. E-post i en nye klær hvis du vil 👻\n\nBruk Delta Chat med hvem som helst av milliarder av mennesker: bare bruk e-postadressen deres. Mottakere trenger ikke installere Delta Chat, besøke nettsteder eller registrere seg noen steder – men selvfølgelig, hvis de vil, kan du peke dem til 👉 https://get.delta.chat</string>
     <string name="edit_contact">Rediger kontakt</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Fest chat</string>
@@ -219,23 +219,60 @@
     <string name="videochat_will_open_in_your_browser">Denne videochatten åpnes i nettleseren din</string>
     <string name="videochat_tap_to_join">Trykk for å bli med</string>
     <string name="videochat_tap_to_open">Trykk for å åpne</string>
-    <string name="videochat_instance">Videochatinstans</string>
-    <string name="videochat_instance_placeholder">Din videochatinstans</string>
-    <string name="videochat_instance_explain">Hvis en videochatinstans er definert, kan dere starte videochat med hverandre en-til-en. Videochat trenger en kompatibel nettleser i begge ender.\n\nEksempel: https://meet.jit.si/$ROOM eller basicwebrtc:https://your-server</string>
+    <string name="videochat_instance">Videochatteinstans</string>
+    <string name="videochat_instance_placeholder">Din videochatteinstans</string>
+    <string name="videochat_instance_explain">Hvis en videochatteinstans er definert, kan dere starte videochat med hverandre en-til-en. Videochat trenger en kompatibel nettleser i begge ender.\n\nEksempel: https://meet.jit.si/$ROOM eller basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">Bruk \"%1$s\" til å invitere andre til videochatter?\n\nNår satt, kan dere starte videochatter til hverandre en-til-en. Dette vil erstatte, eventuelle, tidligere innstillinger for videochatter.</string>
+    <string name="videochat_invitation">Videochatinvitasjon</string>
+    <string name="videochat_invitation_body">Du er invitert til en videochat, klikk %1$s for å bli med.</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Er du sikker på at du vil forlate denne gruppen?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Slett %d chat? Den vil ikke lenger vises</item>
+        <item quantity="other">Slett %d chatter? De vil ikke lenger vises i chattelisten, meldingene vil fortsatt være lagret tjeneren.</item>
+    </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Slett %d melding? Den vil også bli slettet fra tjeneren?</item>
         <item quantity="other">Slett %d meldinger? De vil også bli slettet fra tjeneren.</item>
     </plurals>
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
+    <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
+    <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>
+    <string name="ask_block_contact">Blokkere denne kontakten? Du vil ikke lenger motta meldinger fra kontakten.</string>
+    <string name="ask_unblock_contact">Fjern blokkering av denne kontakten? Du vil igjen kunne motta meldinger fra kontakten.</string>
+    <string name="ask_delete_contacts">Slett kontakter?\n\nKontakter med pågående chatter og kontakter fra systemet adressebok kan ikke bli slettet permanent.</string>
+    <string name="ask_delete_contact">Slett kontakter %1$s?\n\nKontakter med pågående chatter og kontakter fra systemets adressebok, kan ikke slettes permanent.</string>
+    <string name="cannot_delete_contacts_in_use">Kan ikke slette kontakter med pågående chatter.</string>
     <string name="ask_start_chat_with">Begynn å sludre med %1$s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Fjern %1$s fra gruppen?</string>
+    <string name="info_outdated_app_title">Din appversjon er utdatert</string>
+    <string name="info_outdated_app_text">Det ser ut til at du installerte Delta Chat fra en kilde uten automatisk oppdatering (f.eks. GitHub). Vennligst bytt til en butikkversjon for å motta de siste funksjoner og sikkerhetsfikser.</string>
+    <string name="info_outdated_app_dialog_title">Oppdater kilder</string>
+    <string name="info_outdated_app_dialog_text">Delta Chat er tilgjengelig på:</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
+    <string name="contacts_enter_name_or_email">Skriv navn eller e-postadresse</string>
+    <string name="contacts_type_email_above">Skriv e-postadresse over</string>
     <string name="contacts_empty_hint">Ingen kontakter.</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d chatter </item>
+        <item quantity="other">%d chatter arkivert</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d chatter fjernet fra arkivet</item>
+        <item quantity="other">%d chatter fjernet fra arkivet</item>
+    </plurals>
     <string name="chat_archived_chats_title">Arkiverte sludringer</string>
+    <string name="chat_please_enter_message">Vennligst skiv en melding.</string>
+    <string name="chat_camera_unavailable">Kamera ikke tilgjengelig.</string>
+    <string name="chat_unable_to_record_audio">Ikke mulig å ta opp lyd.</string>
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d ny melding</item>
         <item quantity="other">%d nye meldinger</item>
@@ -243,6 +280,10 @@
     <string name="chat_no_messages_hint">Send melding til %1$s:\n\n• Det er greit hvis %2$s ikke bruker Delta Chat.\n\n• Levering av den første meldingen kan ta sin tid.</string>
     <string name="chat_new_group_hint">Forfatt den første meldingen, noe som lar andre svare i gruppen.\n\n• Det er greit at ikke alle medlemmer bruker Delta Chat.\n\n• Levering av den første meldingen kan ta sin tid.</string>
     <string name="chat_record_slide_to_cancel">Dra for å avbryte</string>
+    <string name="chat_record_explain">Trykk og hold for å ta opp en melding, slipp for å sende</string>
+    <string name="chat_no_chats_yet_title">Tøm innboksen.\nTrykk \"+\" for å starte en ny chat.</string>
+    <string name="chat_no_chats_yet_hint">Du kan chatte med andre Delta Chat-brukere og med hvilken som helst annen e-postadresse.</string>
+    <string name="chat_all_archived">Alle chatter er arkivert\nTrykk \"+\" for å starte en ny chat.</string>
     <string name="chat_share_with_title">Del med</string>
     <string name="chat_input_placeholder">Melding</string>
     <string name="chat_archived_label">Arkivert</string>

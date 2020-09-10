@@ -462,10 +462,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    if (Prefs.isEphemeralMessagesEnabled(this) || dcContext.getChatEphemeralTimer(chatId) != 0) {
-      menu.findItem(R.id.menu_ephemeral_messages).setVisible(true);
-    }
-
     if (!dcContext.isWebrtcConfigOk() || !dcChat.canVideochat()) {
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }

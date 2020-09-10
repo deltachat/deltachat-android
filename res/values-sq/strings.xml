@@ -481,7 +481,6 @@
     <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
     <string name="pref_background_custom_image">Figurë vetjake</string>
     <string name="pref_background_custom_color">Ngjyrë vetjake</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Fshiji mesazhet e vjetër</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -714,6 +713,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat dëshiron të ruajë figura në fototekën tuaj.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Njoftime në prapaskenë</string>
+    <string name="pref_background_notifications_explain">Përdor një lidhje në prapaskenë me shërbyesin tuaj dhe lyp shpërfillje optimizimesh baterie.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Lidhje e qëndrueshme në prapaskenë</string>
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>

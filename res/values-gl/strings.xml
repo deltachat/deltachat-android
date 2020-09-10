@@ -482,7 +482,6 @@
     <string name="pref_background_default_color">Cor por omisión</string>
     <string name="pref_background_custom_image">Imaxe persoal</string>
     <string name="pref_background_custom_color">Cor persoal</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eliminar mensaxes antigas</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->

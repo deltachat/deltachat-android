@@ -455,7 +455,6 @@
     <string name="pref_background_default_color">Lehenetsitako kolorea</string>
     <string name="pref_background_custom_image">Irudi pertsonalizatua</string>
     <string name="pref_background_custom_color">Kolore pertsonalizatua</string>
-
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Automatikoki ezabatu mezuak</string>
     <string name="autodel_device_title">Ezabatu mezuak gailutik</string>

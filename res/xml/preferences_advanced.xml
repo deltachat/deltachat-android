@@ -63,11 +63,6 @@
             android:key="pref_location_streaming_export"
             android:title="@string/pref_map_export"/>
 
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_ephemeral_messages"
-            android:title="Disappearing messages options"/>
-
         <Preference android:key="pref_webrtc_instance"
             android:defaultValue="https://jitsi.hostcero.com"
             android:title="Video chat instance"

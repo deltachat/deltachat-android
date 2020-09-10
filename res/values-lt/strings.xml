@@ -429,7 +429,6 @@
     <string name="pref_background_default_color">Numatytoji spalva</string>
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
-
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
     <string name="autodel_server_title">Ištrinti žinutes iš serverio</string>
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
