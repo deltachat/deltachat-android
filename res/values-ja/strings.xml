@@ -187,7 +187,6 @@
     <string name="tab_links">ﾘﾝｸ</string>
     <string name="tab_map">地図</string>
     <string name="media_preview">メディアのプレビュー</string>
-    <string name="welcome_start_messaging">開始する</string>
     <string name="login_title">ﾛｸﾞｲﾝ</string>
     <string name="login_header">自分のﾒｰﾙｻｰﾊﾞｰにﾛｸﾞｲﾝする</string>
     <string name="login_subheader">有名なﾒｰﾙｻｰﾊﾞｰは自動で設定されます｡一般にIMAPはｻｰﾊﾞｰ側で有効に設定する必要が有ります｡ｻｰﾊﾞｰ提供者や詳しい人に確認しましょう｡</string>
@@ -203,7 +202,6 @@
     <string name="login_smtp_server">SMTPｻｰﾊﾞｰ</string>
     <string name="login_smtp_port">SMTPﾎﾟｰﾄ</string>
     <string name="login_smtp_security">SMTP暗号方式</string>
-    <string name="pref_who_can_see_this_information">誰がこの情報を見れるようになるのですか？</string>
     <string name="pref_your_name">あなたの名前</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">署名</string>
@@ -213,7 +211,6 @@ https://delta.chat</string>
     <string name="pref_enter_sends">エンターキーで送信</string>
     <string name="pref_enter_sends_explain">エンターキーを押すとテキストメッセージが送信されます</string>
     <string name="pref_vibrate">振動</string>
-    <string name="pref_chat_settings">ﾁｬｯﾄ設定</string>
     <string name="pref_screen_security">画面セキュリティ</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">アプリ内や「最近使ったアプリ」でスクリーンショットを表示しない</string>
@@ -241,7 +238,6 @@ https://delta.chat</string>
     <string name="pref_app_access">アプリのアクセス</string>
     <string name="pref_communication">通信</string>
     <string name="pref_chats">ﾁｬｯﾄ</string>
-    <string name="pref_messages">ﾒｯｾｰｼﾞ</string>
     <string name="pref_in_chat_sounds">着信音</string>
     <string name="pref_message_text_size">文字の大きさ</string>
     <string name="pref_other">その他</string>
@@ -267,9 +263,7 @@ https://delta.chat</string>
     <string name="qrshow_x_joining">%1$sが参加しました</string>
     <string name="qrshow_join_group_title">自分のQRｺｰﾄﾞ</string>
     <string name="qrshow_join_contact_title">自分のQRｺｰﾄﾞ</string>
-    <string name="notify_mark_all_read">全て閲覧済</string>
     <string name="notify_mark_read">閲覧済</string>
-    <string name="notify_media_message">マルチメディアメッセージ</string>
     <string name="notify_reply_button">返信</string>
     <string name="notify_new_message">新規ﾒｯｾｰｼﾞ</string>
     <string name="notify_priority_high">高</string>

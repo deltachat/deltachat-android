@@ -333,7 +333,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
-    <string name="welcome_start_messaging">Aan de slag</string>
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>
     <string name="login_explain">Log in met een bestaand e-mailaccount.</string>
@@ -392,9 +391,7 @@
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="pref_profile_photo_remove_ask">Profielfoto verwijderen?</string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
-    <string name="pref_who_can_see_this_information">Wie kan deze informatie bekijken?</string>
     <string name="pref_who_can_see_profile_explain">Je profielfoto en -naam worden getoond in gesprekken, naast je berichten. Reeds verstuurde informatie kan niet worden verwijderd of teruggehaald.</string>
     <string name="pref_your_name">Je naam</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -407,7 +404,6 @@
     <string name="pref_outgoing_balanced">Normaal</string>
     <string name="pref_outgoing_worse">Lagere kwaliteit, kleinere bestanden</string>
     <string name="pref_vibrate">Trillen</string>
-    <string name="pref_chat_settings">Gespreksinstellingen</string>
     <string name="pref_change_secret">Toegangsmethode beheren</string>
     <string name="pref_change_secret_explain">Wijzig je pincode/patroon/vingerafdruk via de systeeminstellingen</string>
     <string name="pref_screen_security">Schermbeveiliging</string>
@@ -439,7 +435,6 @@
     <string name="pref_app_access">App-toegang</string>
     <string name="pref_communication">Communicatie</string>
     <string name="pref_chats">Gesprekken</string>
-    <string name="pref_messages">Berichten</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
     <string name="pref_message_text_size">Tekstgrootte van berichten</string>
     <string name="pref_view_log">Logboek bekijken</string>
@@ -453,7 +448,6 @@
     <string name="pref_backup_export_start_button">Nu back-uppen</string>
     <string name="pref_backup_written_to_x">Back-up weggeschreven naar %1$s</string>
     <string name="pref_managekeys_menu_title">Sleutels beheren</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat heeft toegang nodig tot je bestanden om sleutels te im- en exporteren.</string>
     <string name="pref_managekeys_export_secret_keys">Geheime sleutels exporteren</string>
     <string name="pref_managekeys_export_explain">Geheime sleutels exporteren naar \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Geheime sleutels importeren</string>
@@ -471,7 +465,6 @@
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je Postvak IN netjes te houden</string>
-    <string name="pref_email_interaction_title">E-mailinteractie</string>
     <string name="pref_show_emails">Klassieke e-mails tonen</string>
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
@@ -482,6 +475,8 @@
     <string name="pref_background_default_color">Standaard kleur</string>
     <string name="pref_background_custom_image">Eigen afbeelding</string>
     <string name="pref_background_custom_color">Eigen kleur</string>
+    <string name="export_aborted">Het exporteren is afgebroken.</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -593,11 +588,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nieuwe berichten in %2$d gesprekken</string>
-    <string name="notify_most_recent_from">Recentste van: %1$s</string>
-    <string name="notify_media_message_with_text">Mediabericht: %s</string>
-    <string name="notify_mark_all_read">Alles markeren als gelezen</string>
     <string name="notify_mark_read">Markeren als gelezen</string>
-    <string name="notify_media_message">Mediabericht</string>
     <string name="notify_reply_button">Beantwoorden</string>
     <string name="notify_new_message">Nieuw bericht</string>
     <string name="notify_background_connection_enabled">Achtergrondverbinding ingeschakeld</string>
@@ -611,10 +602,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Machtiging vereist</string>
     <string name="perm_continue">Doorgaan</string>
-    <string name="perm_explain_need_for_camera_access">Delta Chat heeft toegang nodig tot de camera om foto\'s en video\'s te kunnen vastleggen.</string>
-    <string name="perm_explain_need_for_mic_access">Delta Chat heeft toegang nodig tot je microfoon om audioberichten te kunnen versturen.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat heeft toegang nodig tot je bestanden om bestanden te kunnen exporteren of back-ups te kunnen maken.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat heeft toegang nodig tot je bestanden om de geselecteerde bestanden te kunnen delen.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat vereist de cameramachtiging om foto\'s en video\'s te kunnen maken, maar je hebt dit permanent geweigerd. Ga naar de app-instellingen, kies \"Machtigingen\" en schakel \"Camera\" in.</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat vereist de microfoonmachtiging om audioberichten te kunnen versturen, maar je hebt dit permanent geweigerd. Ga naar de app-instellingen, kies \"Machtigingen\" en schakel \"Microfoon\" in.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat vereist de opslagmachtiging om foto\'s, video\'s of audio te kunnen bijvoegen of exporteren, maar je hebt dit permanent geweigerd. Ga naar de app-instellingen, kies \"Machtigingen\" en schakel \"Opslag\" in.</string>
@@ -717,11 +704,11 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Achtergrondmeldingen</string>
     <string name="pref_background_notifications_explain">Zet een achtergrondverbinding op naar je server en negeert alle accu-optimalisaties.</string>
+    <string name="pref_background_notifications_rationale">Om een achtergrondverbinding naar je server op te zetten, dien je alle accu-optimalisaties te negeren in de volgende stap.\n\nDelta Chat gebruikt weinig systeembronnen en verhoogt je accuverbruik nauwelijks.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Betrouwbare achtergrondverbinding</string>
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat\'s accugebruik is laag omdat het slechts een minimaal aantal systeembronnen gebruikt.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
 
 </resources>

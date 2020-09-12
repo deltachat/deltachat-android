@@ -355,7 +355,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
-    <string name="welcome_start_messaging">Почати спілкування</string>
     <string name="login_title">Увійти</string>
     <string name="login_header">Увійти на свій сервер</string>
     <string name="login_explain">Увійти з наявним обліковим записом електронної пошти</string>
@@ -414,9 +413,7 @@
     <string name="pref_profile_photo">Фото профілю</string>
     <string name="pref_blocked_contacts">Заблоковані контакти</string>
     <string name="pref_profile_photo_remove_ask">Видалити фото профілю?</string>
-    <string name="pref_help_url">https://delta.chat/uk/help</string>
     <string name="pref_password_and_account_settings">Пароль та обліковий запис</string>
-    <string name="pref_who_can_see_this_information">Хто може бачити цю інформацію?</string>
     <string name="pref_who_can_see_profile_explain">Зображення профілю та ім\'я будуть відображатися в чатах з іншими користувачами. Відправлена інформація не може бути видалена або відкликана.</string>
     <string name="pref_your_name">Ваше ім\'я</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -429,7 +426,6 @@
     <string name="pref_outgoing_balanced">Збалансовано</string>
     <string name="pref_outgoing_worse">Гірша якість, менший розмір</string>
     <string name="pref_vibrate">Вібрує</string>
-    <string name="pref_chat_settings">Налаштування чату</string>
     <string name="pref_change_secret">Змінити захисний код</string>
     <string name="pref_change_secret_explain">Змініть Ваш PIN-код / графічний ключ / відбиток пальця за допомогою системних налаштувань</string>
     <string name="pref_screen_security">Безпека екрану</string>
@@ -461,7 +457,6 @@
     <string name="pref_app_access">Доступ додатку</string>
     <string name="pref_communication">Зв\'язок</string>
     <string name="pref_chats">Чати</string>
-    <string name="pref_messages">Повідомлення</string>
     <string name="pref_in_chat_sounds">Звуки у чаті</string>
     <string name="pref_message_text_size">Розмір шрифту повідомлення</string>
     <string name="pref_view_log">Переглянути журнал</string>
@@ -475,7 +470,6 @@
     <string name="pref_backup_export_start_button">Почати резервне копіювання</string>
     <string name="pref_backup_written_to_x">Резервна копія успішно записана на %1$s</string>
     <string name="pref_managekeys_menu_title">Управління ключами</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Додатку необхідний доступ до файлів для імпорту/експорту ключів.</string>
     <string name="pref_managekeys_export_secret_keys">Експорт секретних ключів</string>
     <string name="pref_managekeys_export_explain">Експортувати секретні ключі до «%1$s»?</string>
     <string name="pref_managekeys_import_secret_keys">Імпорт секретних ключів</string>
@@ -493,7 +487,6 @@
     <string name="pref_send_copy_to_self">Відправити копію собі</string>
     <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Чати були переміщені, щоб уникнути плутанини у папці «Вхідні».</string>
-    <string name="pref_email_interaction_title">Взаємодія з електронною поштою</string>
     <string name="pref_show_emails">Показувати звичайну пошту</string>
     <string name="pref_show_emails_no">Ні, лише чати</string>
     <string name="pref_show_emails_accepted_contacts">Для прийнятих контактів</string>
@@ -504,6 +497,8 @@
     <string name="pref_background_default_color">Колір за замовчуванням</string>
     <string name="pref_background_custom_image">Персональне зображення</string>
     <string name="pref_background_custom_color">Персональний колір</string>
+    <string name="export_aborted">Експорт припинено.</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Видалити старі повідомлення</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -615,11 +610,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d нових повідомлень з %2$d чатів</string>
-    <string name="notify_most_recent_from">Останнє від: %1$s</string>
-    <string name="notify_media_message_with_text">Медіа-повідомлення: %s</string>
-    <string name="notify_mark_all_read">Позначити все як прочитане</string>
     <string name="notify_mark_read">Позначити прочитаним</string>
-    <string name="notify_media_message">Медіа-повідомлення</string>
     <string name="notify_reply_button">Відповісти</string>
     <string name="notify_new_message">Нове повідомлення</string>
     <string name="notify_background_connection_enabled">З\'єднання у фоновому режимі увімкнено</string>
@@ -633,10 +624,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Потрібен дозвіл</string>
     <string name="perm_continue">Продовжити</string>
-    <string name="perm_explain_need_for_camera_access">Для захоплення фото і відео дозвольте доступ до камери.</string>
-    <string name="perm_explain_need_for_mic_access">Для відправки звукових повідомлень дозвольте доступ до мікрофону.</string>
-    <string name="perm_explain_need_for_storage_access">Додатку необхідний доступ до файлів для експорту та резервного копіювання.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat потребує доступу до ваших файлів щоб ділитися ними.</string>
     <string name="perm_explain_access_to_camera_denied">Для зйомки фотографій або відео додатку потрібен дозвіл на використання камери, але зараз його не надано. Для надання дозволу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до камери.</string>
     <string name="perm_explain_access_to_mic_denied">Для надсилання голосових повідомлень додатку потрібен дозвіл на використання мікрофону, але зараз його не надано. Для надання дозволу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до мікрофону.</string>
     <string name="perm_explain_access_to_storage_denied">Для збереження або передавання фотографій та відео додатку потрібен дозвіл на використання сховища, але зараз його не надано. Для надання дозволу перейдіть в системне меню налаштувань, в розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до сховища.</string>
@@ -739,11 +726,11 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Фонові сповіщення</string>
     <string name="pref_background_notifications_explain">Використовує фонове з\'єднання з вашим сервером та потребує ігнорування оптимізації батареї.</string>
+    <string name="pref_background_notifications_rationale">Для підтримки з\'єднання з вашим сервером електронної пошти і отримання повідомлень у фоновому режимі, вимкніть оптимізації батареї на наступному кроці.\n\nDelta Chat використовує менше ресурсів і намагається не витрачати вашу батарею.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Надійне фонове з\'єднання</string>
     <string name="pref_reliable_service_explain">Потребує перманентного сповіщення</string>
     <string name="perm_enable_bg_reminder_title">Натисніть тут, щоб отримувати повідомлення, коли Delta Chat знаходиться у фоновому режимі.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat використовує мінімальні ресурси і дбає про те, щоб не розрядити батарею.</string>
     <string name="perm_enable_bg_already_done">Ви вже дозволили Delta Chat отримувати повідомлення у фоні.\n\nЯкщо повідомлення досі не приходять у фоні, перевірте налаштування вашої системи.</string>
 
 </resources>

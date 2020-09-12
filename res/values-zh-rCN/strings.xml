@@ -322,7 +322,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">本通讯软件有着世界上最广泛的受众。自由且自主。</string>
-    <string name="welcome_start_messaging">开始发送消息</string>
     <string name="login_title">登录</string>
     <string name="login_header">登录至您的服务器</string>
     <string name="login_explain">使用现有电子邮件帐户登录</string>
@@ -381,9 +380,7 @@
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_blocked_contacts">已屏蔽联系人</string>
     <string name="pref_profile_photo_remove_ask">移除个人资料照片？</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">密码和账户</string>
-    <string name="pref_who_can_see_this_information">谁能看到这个？</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起显示。 已经发送的信息不能被删除或者移除。</string>
     <string name="pref_your_name">您的名称</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -396,7 +393,6 @@
     <string name="pref_outgoing_balanced">平衡</string>
     <string name="pref_outgoing_worse">体积小，但质量更差</string>
     <string name="pref_vibrate">振动</string>
-    <string name="pref_chat_settings">聊天设置</string>
     <string name="pref_change_secret">更改密码</string>
     <string name="pref_change_secret_explain">通过系统设置来更改您的 PIN 码 / 图案 / 指纹</string>
     <string name="pref_screen_security">屏幕安全</string>
@@ -428,7 +424,6 @@
     <string name="pref_app_access">应用程序访问</string>
     <string name="pref_communication">通讯</string>
     <string name="pref_chats">聊天</string>
-    <string name="pref_messages">消息</string>
     <string name="pref_in_chat_sounds">聊天音</string>
     <string name="pref_message_text_size">消息字体大小</string>
     <string name="pref_view_log">查看日志</string>
@@ -442,7 +437,6 @@
     <string name="pref_backup_export_start_button">开始备份</string>
     <string name="pref_backup_written_to_x">备份已成功写入到“%1$s”。</string>
     <string name="pref_managekeys_menu_title">管理密钥</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat 需要访问您的文件来导入 / 导出密钥。</string>
     <string name="pref_managekeys_export_secret_keys">导出密钥</string>
     <string name="pref_managekeys_export_explain">导出密钥到“%1$s”？</string>
     <string name="pref_managekeys_import_secret_keys">导入密钥</string>
@@ -460,7 +454,6 @@
     <string name="pref_send_copy_to_self">给自己发送副本</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
     <string name="pref_auto_folder_moves_explain">移动聊天对话以免弄乱收件箱</string>
-    <string name="pref_email_interaction_title">电子邮件交互</string>
     <string name="pref_show_emails">显示传统电子邮件</string>
     <string name="pref_show_emails_no">不显示，仅聊天</string>
     <string name="pref_show_emails_accepted_contacts">已接受的联系人</string>
@@ -471,6 +464,8 @@
     <string name="pref_background_default_color">默认颜色</string>
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
+    <string name="export_aborted">导出已中止。</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">删除旧消息</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -582,11 +577,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%2$d 个聊天中有 %1$d 条新消息</string>
-    <string name="notify_most_recent_from">最新来自： %1$s</string>
-    <string name="notify_media_message_with_text">媒体消息： %s</string>
-    <string name="notify_mark_all_read">将所有标记为已读</string>
     <string name="notify_mark_read">标记为已读</string>
-    <string name="notify_media_message">媒体消息</string>
     <string name="notify_reply_button">回复</string>
     <string name="notify_new_message">新消息</string>
     <string name="notify_background_connection_enabled">后台连接已启用</string>
@@ -600,10 +591,6 @@
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
-    <string name="perm_explain_need_for_camera_access">要拍照和录像，请允许 Delta Chat 访问相机。</string>
-    <string name="perm_explain_need_for_mic_access">要发送音频消息，请允许 Delta Chat 访问麦克风。</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat 需要访问您的文件来导出文件或创建备份。</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat 需要访问您的文件来分享它们。</string>
     <string name="perm_explain_access_to_camera_denied">要拍照或录像，请转至应用设置，选择“权限”，然后启用“相机”。</string>
     <string name="perm_explain_access_to_mic_denied">要发送音频消息，请转至应用设置，选择“权限”，然后启用“麦克风”。</string>
     <string name="perm_explain_access_to_storage_denied">要发送或接收文件，请转至应用设置，选择“权限”，然后启用“存储”。</string>
@@ -706,11 +693,11 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">后台通知</string>
     <string name="pref_background_notifications_explain">使用与服务器的后台连接，并且需要忽略电池优化。</string>
+    <string name="pref_background_notifications_rationale">要保持与您的电子邮件服务器的连接并在后台接收消息，请在下一步中忽略电池优化。\n\nDelta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">可靠后台连接</string>
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
 
 </resources>

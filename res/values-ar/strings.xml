@@ -168,7 +168,6 @@
     <string name="tab_links">الروابط</string>
     <string name="tab_map">الخريطة</string>
     <string name="media_preview">معاينة الصورة</string>
-    <string name="welcome_start_messaging">لنبدأ التواصل</string>
     <string name="login_title">الولوج</string>
     <string name="login_header">الإتصال بخادومك</string>
     <string name="login_inbox">صندوق الوارد</string>
@@ -198,7 +197,6 @@
     <string name="pref_default_status_label">التوقيع</string>
     <string name="pref_enter_sends">مفتاح الدخول يقوم بالإرسا</string>
     <string name="pref_vibrate">إهتز</string>
-    <string name="pref_chat_settings">إعدادات الدردشة</string>
     <string name="pref_screen_security">تأمين الشاشة</string>
     <string name="pref_notifications">الإشعارات</string>
     <string name="pref_notifications_show">عرض</string>
@@ -217,7 +215,6 @@
     <string name="pref_app_access">دخول البرنامج</string>
     <string name="pref_communication">التواصل</string>
     <string name="pref_chats">المحادثات</string>
-    <string name="pref_messages">الرسائل</string>
     <string name="pref_in_chat_sounds">أصوات خلال الدردش</string>
     <string name="pref_message_text_size">حجم الخط في الرسائل</string>
     <string name="pref_other">أخرى</string>
@@ -229,10 +226,7 @@
     <string name="screenlock_authentication_failed">فشلت المصادقة.</string>
     <string name="screenlock_inactivity_timeout">نفاذ مهلة قفل الشاشة</string>
     <string name="qrscan_fingerprint_label">البصمة</string>
-    <string name="notify_most_recent_from">آخر رسالة من : %1$s</string>
-    <string name="notify_mark_all_read">اعتبر جميع الرسائل مقروءة</string>
     <string name="notify_mark_read">اعتبره كمقروء</string>
-    <string name="notify_media_message">رسالة وسائط متعددة</string>
     <string name="notify_reply_button">رد</string>
     <string name="notify_new_message">رسالة جديدة</string>
     <string name="notify_priority_high">عالي</string>

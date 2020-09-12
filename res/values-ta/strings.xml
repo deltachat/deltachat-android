@@ -178,7 +178,6 @@
     <string name="profile_encryption">மறைகுறியாக்கம்</string>
     <string name="tab_contact">தொடர்பு</string>
     <string name="tab_gallery">காட்சி கூடம்</string>
-    <string name="welcome_start_messaging">செய்திகளை அனுப்ப தொடங்குங்கள்</string>
     <string name="login_subheader">அறியப்பட்ட மின் அஞ்சல் வழங்குநர்களுக்கு மற்ற அமைப்புகள் தானாக தீர்மானிக்கப்படும் </string>
     <string name="login_inbox">உட்பெட்டி</string>
     <string name="login_outbox">வெளிப்பெட்டி</string>
@@ -194,7 +193,6 @@
     <string name="pref_default_status_text">என்னுடைய Delta Chat செயலியில் இருந்து அனுப்பி உள்ளேன் : https://delta.chat</string>
     <string name="pref_enter_sends">\"enter\" மூலம் அனுப்பவும்</string>
     <string name="pref_vibrate">அதிர்வு உண்டாக்கு</string>
-    <string name="pref_chat_settings">அரட்டை அமைப்புகள்</string>
     <string name="pref_screen_security">திரை பாதுகாப்பு</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">அண்மை பட்டியல் மற்றும் மென்பொருளுக்கு உள்ளே திரையை படம் எடுப்பதை தடுக்கவும்</string>
@@ -222,7 +220,6 @@
     <string name="pref_app_access">பயன்பாடு அணுகல்</string>
     <string name="pref_communication">தொடர்பாடல்</string>
     <string name="pref_chats">அரட்டைகள்</string>
-    <string name="pref_messages">செய்திகள்</string>
     <string name="pref_in_chat_sounds">௨ள்ளார்ந்த செயலி அறிவிப்புகள்</string>
     <string name="pref_message_text_size">சேதிகளின் எழுத்துரு அளவு</string>
     <string name="pref_other">மற்றவை</string>
@@ -240,7 +237,6 @@
     <string name="screenlock_explain">அண்ட்ராய்டு திரை பூட்டு அல்லது கைரேகையுடன் Signal அணுகலைப் பூட்டு</string>
     <string name="screenlock_unlock_title">Delta Chat லைத் திற</string>
     <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
-    <string name="notify_media_message">மல்டிமீடியா செய்தி</string>
     <string name="notify_reply_button">மறுமொழி</string>
     <string name="notify_new_message">புதிய செய்தி</string>
     <string name="notify_priority_high">உயர்</string>

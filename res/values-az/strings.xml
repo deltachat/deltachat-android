@@ -284,7 +284,6 @@
     <string name="media_preview">Fayllara baxmaq</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Dünyanın ən böyük auditoriyasına sahib olan mesenjeri. Azad və müstəqil.</string>
-    <string name="welcome_start_messaging">Mesajlaşmağa başla</string>
     <string name="login_title">Daxil ol</string>
     <string name="login_header">Serverinə daxil ol</string>
     <string name="login_explain">Mövcud e-mail hesabı ilə daxil olun</string>
@@ -326,8 +325,6 @@
     <string name="pref_profile_photo">Profil şəkili</string>
     <string name="pref_blocked_contacts">Bloklanmış kontaktlar</string>
     <string name="pref_profile_photo_remove_ask">Profil şəkilini silmək?</string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_who_can_see_this_information">Bu məlumatları kim görə bilər?</string>
     <string name="pref_who_can_see_profile_explain">Digər istifadəçilərlə ünsiyyət qurarkən profil şəkliniz və adınız mesajlarınızla birlikdə göstərilir. Zatən göndərilən məlumat silinməyəcək. </string>
     <string name="pref_your_name">Adın</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -340,7 +337,6 @@
     <string name="pref_outgoing_balanced">Balanslıdır</string>
     <string name="pref_outgoing_worse">Daha pis keyfiyyət, kiçik ölçülü</string>
     <string name="pref_vibrate">Vibrasiya</string>
-    <string name="pref_chat_settings">Çat tənzimləməsi</string>
     <string name="pref_change_secret">Kodu dəyişdir</string>
     <string name="pref_change_secret_explain">Sistem tənzimləmələri ilə pin-kod / model / barmaq izinizi dəyişdir</string>
     <string name="pref_screen_security">Ekran təhlükəsizliyi</string>
@@ -372,7 +368,6 @@
     <string name="pref_app_access">Daxil oldu</string>
     <string name="pref_communication">Əlaqə</string>
     <string name="pref_chats">Çatlar</string>
-    <string name="pref_messages">Mesajlar</string>
     <string name="pref_in_chat_sounds">Çatda olan səslər</string>
     <string name="pref_message_text_size">Mətnin ölçüsü</string>
     <string name="pref_view_log">Log-a bax</string>
@@ -386,7 +381,6 @@
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_backup_written_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
     <string name="pref_managekeys_menu_title">Açar idarəetməsi</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat, faylları idxal / ixrac etmək üçün girişə ehtiyac duyur.</string>
     <string name="pref_managekeys_export_secret_keys">Gizli açar ixracı</string>
     <string name="pref_managekeys_export_explain"> \"%1$s\" - ə gizli açar ixracı?</string>
     <string name="pref_managekeys_import_secret_keys">Gizli açar idxalı</string>
@@ -403,7 +397,6 @@
     <string name="pref_send_copy_to_self">Özünə kopya göndər</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
     <string name="pref_auto_folder_moves_explain">Çat söhbətləri Daxil olanlar qovluğunun yığılmaması üçün taşınır</string>
-    <string name="pref_email_interaction_title">Email qarşılıqlı əlaqə</string>
     <string name="pref_show_emails">Klassik e-poçtları göstər</string>
     <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
     <string name="pref_show_emails_accepted_contacts">Qəbul edilən kontaktlar üçün</string>
@@ -478,11 +471,7 @@
     <string name="contact_setup_changed">%1$süçün quraşdırma dəyişdirildi</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d yeni mesaj %2$d çatda</string>
-    <string name="notify_most_recent_from">Ən son olanlar: %1$s</string>
-    <string name="notify_media_message_with_text">Media messaj: %s</string>
-    <string name="notify_mark_all_read">Hamısını oxunmuş olaraq işarələ</string>
     <string name="notify_mark_read">Oxuma işarəsi</string>
-    <string name="notify_media_message">Media mesaj</string>
     <string name="notify_reply_button">Cavab ver</string>
     <string name="notify_new_message">Yeni mesaj</string>
     <string name="notify_background_connection_enabled">Arxa fon əlaqəsi aktivdir</string>
@@ -496,10 +485,6 @@
     <!-- permissions -->
     <string name="perm_required_title">İzin tələb olunur</string>
     <string name="perm_continue">Davam edin</string>
-    <string name="perm_explain_need_for_camera_access">Foto və video çəkmək üçün Delta Chat-ə kameraya giriş imkanı verin.</string>
-    <string name="perm_explain_need_for_mic_access">Səsli mesajları göndərmək üçün mikrofona izn verin. </string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat, faylları idxal / ixrac etmək üçün iznə ehtiyacı var.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat-la seçilmiş faylları bölüşmək üçün icazə vermək lazımdır. </string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat şəkillər və ya video çəkmək üçün kamera icazə tələb edir, lakin bu, əbədi imtina edilmişdir. Proqramın sistem ayarlarına gedib \"İcazələr\"-i seçin və \"kamera\" izni verin.</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoşəkilləri, videoları və ya səsləri əlavə etmək və ya ixrac etmək üçün saxlama icazəsini tələb edir, lakin bu daimi olaraq rədd edildi. Xahiş edirik tətbiq ayarları menyusuna davam edin, \"İzinlər\" seçin və \"Yaddaş\" funksiyasını aktivləşdirin.</string>
@@ -572,5 +557,4 @@
 
 
     <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat minimum resurslardan istifadə edir və batareyanı boşaltmamaq üçün qayğı göstərir.</string>
     </resources>

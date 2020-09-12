@@ -262,7 +262,6 @@
     <string name="media_preview">Previsualització multimèdia</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">El programa de missatgeria amb més ususaris del món. Gratuït i independent.</string>
-    <string name="welcome_start_messaging">Comenceu a comunicar-vos</string>
     <string name="login_title">Identifiqueu-vos</string>
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
     <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>
@@ -305,8 +304,6 @@
     <string name="pref_profile_photo">Fotografia de perfil</string>
     <string name="pref_blocked_contacts">Contactes bloquejats</string>
     <string name="pref_profile_photo_remove_ask">Esborrar la foto de perfil?</string>
-    <string name="pref_help_url">https://delta.chat/ca/help</string>
-    <string name="pref_who_can_see_this_information">Qui pot veure aquesta informació?</string>
     <string name="pref_who_can_see_profile_explain">La vostra imatge de perfil i el vostre nom es mostraran en els missatges que envieu als altres usuaris. La informació que ja s\'hagi enviat no es pot eliminar ni esborrar.</string>
     <string name="pref_your_name">El vostre nom</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -316,7 +313,6 @@
     <string name="pref_enter_sends">La tecla \"Intro\" envia</string>
     <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla \"Intro\"</string>
     <string name="pref_vibrate">Vibració</string>
-    <string name="pref_chat_settings">Configuració del xat</string>
     <string name="pref_change_secret">Canvieu el secret</string>
     <string name="pref_change_secret_explain">Canvieu el vostre pin / patró / empremta digital via preferències del sistema</string>
     <string name="pref_screen_security">Seguretat de la pantalla</string>
@@ -348,7 +344,6 @@
     <string name="pref_app_access">Accés a l\'aplicació</string>
     <string name="pref_communication">Comunicació</string>
     <string name="pref_chats">Xats</string>
-    <string name="pref_messages">Missatges</string>
     <string name="pref_in_chat_sounds">Sons d\'entrada</string>
     <string name="pref_message_text_size">Mida de la font del missatge</string>
     <string name="pref_view_log">Veure el registre</string>
@@ -359,7 +354,6 @@
     <string name="pref_backup_export_start_button">Inicia la còpia de seguretat</string>
     <string name="pref_backup_written_to_x">La còpia de seguretat s\'ha escrit correctament a %1$s</string>
     <string name="pref_managekeys_menu_title">Gestiona les claus</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat necessita accedir als vostres arxius per poder importar/exportar les claus.</string>
     <string name="pref_managekeys_export_secret_keys">Exporta les claus secretes</string>
     <string name="pref_managekeys_export_explain">Exporto les claus secretes a \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importa les claus secretes</string>
@@ -376,7 +370,6 @@
     <string name="pref_watch_mvbox_folder">Mostra la safata DeltaChat</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">Les converses de xat s\'han mogut per no atapeir la safata d’entrada</string>
-    <string name="pref_email_interaction_title">Interacció per correu electrònic</string>
     <string name="pref_show_emails">Mostra els e-mails clàssics</string>
     <string name="pref_show_emails_no">No, només xats</string>
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
@@ -447,11 +440,7 @@
     <string name="contact_setup_changed">Configuració canviada per %1$s</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d missatges nous en %2$d xats</string>
-    <string name="notify_most_recent_from">El més nou des de : %1$s</string>
-    <string name="notify_media_message_with_text">Missatge multimèdia: %s</string>
-    <string name="notify_mark_all_read">Marca\'ls tots com a llegits</string>
     <string name="notify_mark_read">Marca\'l com a llegit</string>
-    <string name="notify_media_message">Missatge multimèdia</string>
     <string name="notify_reply_button">Respondre</string>
     <string name="notify_new_message">Missatge nou</string>
     <string name="notify_background_connection_enabled">Connexió habilitada en segon pla</string>
@@ -465,10 +454,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Es requereix permís</string>
     <string name="perm_continue">Continua</string>
-    <string name="perm_explain_need_for_camera_access">Permet que Delta Chat accedeixi a la càmera per fer fotos i vídeo</string>
-    <string name="perm_explain_need_for_mic_access">Permet que Delta Chat accedeixi al micròfon per enviar missatges d\'àudio</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat necessita accedir als vostres arxius per exportar documents o per fer-ne còpies de seguretat.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat necessita accedir als vostres documents per poder compartir els arxius triats.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat demana accés a la càmera per poder fer fotos o vídeos, però li ha estat denegat. Sisplau, vés al menú de configuració de l\'app, busca-hi els \"Permisos\" i habilita\'n la \"Càmera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat demana accés al micròfon per poder enviar missatges d\'àudio, però li ha estat denegat. Sisplau, vés al menú de configuració de l\'app, busca-hi els \"Permisos\" i habilita\'n el \"Micròfon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat necessita accedir a l’emmagatzematge per adjuntar o exportar fotos, vídeos o àudio, però se li ha denegat permanentment. Aneu al menú de configuració de l\'aplicació, seleccioneu \"Permisos\" i activeu \"Emmagatzematge\".</string>
@@ -541,5 +526,4 @@
 
 
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat fa servir els recursos mínims i procura no gastar gaire bateria.</string>
     </resources>

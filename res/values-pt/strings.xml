@@ -212,7 +212,6 @@
     <string name="media_preview">Visualização de mídia</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O mensageiro com o público mais amplo do mundo. Livre e independente.</string>
-    <string name="welcome_start_messaging">Comece a chatr</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login no seu servidor</string>
     <string name="login_subheader">Para os provedores de e-mail conhecidos as configurações adicionais são configuradas automaticamente. Por vezes, o IMAP precisa estar activado no frontend da web. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
@@ -251,8 +250,6 @@
     <string name="pref_profile_photo">Foto do perfil</string>
     <string name="pref_blocked_contacts">Bloquear contactos</string>
     <string name="pref_profile_photo_remove_ask">Remover a foto do perfil</string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_who_can_see_this_information">Quem pode ver esta informação?</string>
     <string name="pref_who_can_see_profile_explain">A sua foto e nome de perfil serão mostrados ao lado das suas mensagens ao comunicar com outros utilizadores. As informações já enviadas não podem ser excluídas ou removidas</string>
     <string name="pref_your_name">O seu nome</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -262,7 +259,6 @@
     <string name="pref_enter_sends">Tecla ENTER para enviar</string>
     <string name="pref_enter_sends_explain">Pressionar a tecla ENTER enviará mensagens de texto</string>
     <string name="pref_vibrate">Vibrar</string>
-    <string name="pref_chat_settings">Definições da chat</string>
     <string name="pref_change_secret">Modificar cóidgo secreto</string>
     <string name="pref_change_secret_explain">Mude o seu pin/padrão/impressão digital através das configurações do sistema</string>
     <string name="pref_screen_security">Segurança do ecrã</string>
@@ -294,7 +290,6 @@
     <string name="pref_app_access">Acesso à App</string>
     <string name="pref_communication">Comunicação</string>
     <string name="pref_chats">chats</string>
-    <string name="pref_messages">Mensagens</string>
     <string name="pref_in_chat_sounds">Sons na chat</string>
     <string name="pref_message_text_size">Tamanho do texto das mensagens</string>
     <string name="pref_view_log">Ver o log</string>
@@ -305,7 +300,6 @@
     <string name="pref_backup_export_start_button">Inicia backup</string>
     <string name="pref_backup_written_to_x">Backup escrito com sucesso em %1$s</string>
     <string name="pref_managekeys_menu_title">Gerir teclas</string>
-    <string name="pref_managekeys_ask_for_storage_permission">O Delta Chat precisa de acesso aos seus arquivos para importar/exportar chaves</string>
     <string name="pref_managekeys_export_secret_keys">Exportar chave secreta</string>
     <string name="pref_managekeys_export_explain">Exportar chave secreta para \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importar chave secreta</string>
@@ -320,7 +314,6 @@
     <string name="pref_watch_mvbox_folder">Ver a pasta do Delta Chat</string>
     <string name="pref_auto_folder_moves">Mover pasta automaticamente para o Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">As chats de chat são movidas para evitar atravancar da pasta Inbox</string>
-    <string name="pref_email_interaction_title">Interação com e-mails</string>
     <string name="pref_show_emails">Exibir e-mails comuns</string>
     <string name="pref_show_emails_no">Não, apenas conversas</string>
     <string name="pref_show_emails_all">Tudo</string>
@@ -389,11 +382,7 @@
     <string name="contact_setup_changed">Configuração alterada para %1$s</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensagens em %2$d chats</string>
-    <string name="notify_most_recent_from">Mais recentes de: %1$s</string>
-    <string name="notify_media_message_with_text">Mensagem de mídia: %s</string>
-    <string name="notify_mark_all_read">Marcar tudo como lido</string>
     <string name="notify_mark_read">Marcar lido</string>
-    <string name="notify_media_message">Mensagem de mídia</string>
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Mensagem nova</string>
     <string name="notify_background_connection_enabled">Conexão em segundo plano ativada</string>
@@ -407,9 +396,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Permissão necessária</string>
     <string name="perm_continue">Continuar</string>
-    <string name="perm_explain_need_for_camera_access">Para capturar fotos e vídeos, permita que o Delta Chat aceda a câmera.</string>
-    <string name="perm_explain_need_for_mic_access">Para enviar mensagens de áudio, permita o acesso do Delta Chat ao seu microfone.</string>
-    <string name="perm_explain_need_for_storage_access">O Delta Chat precisa de acesso aos seus arquivos para exportar arquivos ou criar backups.</string>
     <string name="perm_explain_access_to_camera_denied">O Delta Chat necessita de permissão de acesso à Câmera para tirar fotos ou vídeos, mas o acesso foi negado permanentemente. Por favor, continue no menu de configurações do aplicativo, selecione \"Permissões\" e active \"Câmera\".</string>
     <string name="perm_explain_access_to_mic_denied">O Delta Chat necessita de permissão de  acesso ao microfone para enviar mensagens de áudio, mas foi negado. Por favor, continue com as configurações do aplicativo, selecione \"Permissões\" e active \"Microfone\".</string>
     <string name="perm_explain_access_to_storage_denied">O Delta Chat necessita da permissão de armazenamento para anexar ou exportar fotos, vídeos ou áudio, mas foi negado. Por favor, continue no menu de configurações do aplicativo, seleccione \"Permissões\" e active \"Armazenamento\".</string>
@@ -478,5 +464,4 @@
     <string name="menu.view.developer.open.log.folder">Abrir pasta de Log</string>
     <string name="menu.view.developer.open.current.log.file">Abrir o aqrquio do log actual</string>
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens mesmo que o Delta Chat esteja em segundo plano.</string>
-    <string name="perm_enable_bg_reminder_text">O Delta Chat usa pouquíssimos recursos e busca não consumir muito a bateria.</string>
     </resources>

@@ -357,7 +357,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и независимый.</string>
-    <string name="welcome_start_messaging">Начать общение</string>
     <string name="login_title">Логин</string>
     <string name="login_header">Войдите на ваш сервер</string>
     <string name="login_explain">Войти с существующим аккаунтом эл.почты</string>
@@ -416,9 +415,7 @@
     <string name="pref_profile_photo">Фото профиля</string>
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
     <string name="pref_profile_photo_remove_ask">Удалить фото профиля?</string>
-    <string name="pref_help_url">https://delta.chat/ru/help</string>
     <string name="pref_password_and_account_settings">Пароль и аккаунт</string>
-    <string name="pref_who_can_see_this_information">Кто может видеть эту информацию?</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будут отображаться при общении с другими пользователями. Уже отправленная информация не может быть удалена или отозвана.</string>
     <string name="pref_your_name">Ваше имя</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -431,7 +428,6 @@
     <string name="pref_outgoing_balanced">Сбалансированное</string>
     <string name="pref_outgoing_worse">Низкого качества, с меньшим размером</string>
     <string name="pref_vibrate">Вибрация</string>
-    <string name="pref_chat_settings">Настройки чата</string>
     <string name="pref_change_secret">Изменение метода блокировки</string>
     <string name="pref_change_secret_explain">Смените ваш ПИН-код / графический ключ / отпечаток пальца с помощью системных настроек</string>
     <string name="pref_screen_security">Безопасность экрана</string>
@@ -463,7 +459,6 @@
     <string name="pref_app_access">Доступ приложения</string>
     <string name="pref_communication">Связь</string>
     <string name="pref_chats">Чаты</string>
-    <string name="pref_messages">Сообщения</string>
     <string name="pref_in_chat_sounds">Звуки в чате</string>
     <string name="pref_message_text_size">Размер шрифта сообщения</string>
     <string name="pref_view_log">Открыть журнал</string>
@@ -477,7 +472,6 @@
     <string name="pref_backup_export_start_button">Начать резервное копирование</string>
     <string name="pref_backup_written_to_x">Резервная копия успешно записана на %1$s</string>
     <string name="pref_managekeys_menu_title">Управление ключами</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Приложению необходим доступ к файлам для импорта/экспорта ключей</string>
     <string name="pref_managekeys_export_secret_keys">Экспортировать секретные ключи</string>
     <string name="pref_managekeys_export_explain">Экспортировать секретные ключи в папку «%1$s»?</string>
     <string name="pref_managekeys_import_secret_keys">Импортировать секретные ключи</string>
@@ -495,7 +489,6 @@
     <string name="pref_send_copy_to_self">Отправлять копию себе</string>
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Сообщения чатов переносятся, чтобы избежать путаницы в папке «Входящие»</string>
-    <string name="pref_email_interaction_title">Взаимодействие с электронной почтой</string>
     <string name="pref_show_emails">Показывать обычную почту</string>
     <string name="pref_show_emails_no">Нет, только чаты</string>
     <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
@@ -506,6 +499,8 @@
     <string name="pref_background_default_color">Цвет по умолчанию</string>
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
+    <string name="export_aborted">Экспорт прекращен.</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалять старые сообщения</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -617,11 +612,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d новых сообщений в %2$d чатах.</string>
-    <string name="notify_most_recent_from">Последнее от: %1$s</string>
-    <string name="notify_media_message_with_text">Медиа-сообщение: %s</string>
-    <string name="notify_mark_all_read">Отметить всё как прочитанное</string>
     <string name="notify_mark_read">Отметить как прочитанное</string>
-    <string name="notify_media_message">Медиа-сообщение</string>
     <string name="notify_reply_button">Ответить</string>
     <string name="notify_new_message">Новое сообщение</string>
     <string name="notify_background_connection_enabled">Соединение в фоновом режиме включено</string>
@@ -635,10 +626,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Требуется разрешение</string>
     <string name="perm_continue">Продолжить</string>
-    <string name="perm_explain_need_for_camera_access">Для захвата фото и видео разрешите Delta Chat доступ к камере.</string>
-    <string name="perm_explain_need_for_mic_access">Для отправки звуковых сообщений разрешите Delta Chat доступ к микрофону</string>
-    <string name="perm_explain_need_for_storage_access">Приложению Delta Chat необходим доступ к файлам для экспорта или резервного копирования.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat необходим доступ к вашим файлам, чтобы поделиться выбранными файлами.</string>
     <string name="perm_explain_access_to_camera_denied">Для съемки фотографий или видео приложению Delta Chat требуется разрешение использовать Камеру, но сейчас она заблокирована. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Камера\".</string>
     <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению Delta Chat нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов в Delta Chat требуется доступ к памяти устройства, однако в этом разрешении было отказано навсегда. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Память\".</string>
@@ -738,11 +725,14 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хочет сохранить изображения в вашу галерею.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Фоновые уведомления</string>
+    <string name="pref_background_notifications_explain">Использует фоновое соединение с вашим сервером и требует игнорирования оптимизаций батареи.</string>
+    <string name="pref_background_notifications_rationale">Чтобы поддерживать соединение с вашим сервером и получать уведомления в фоне, отключите оптимизации батареи на следующем шаге.\n\nDelta Chat использует мало ресурсов и старается не расходовать вашу батарею.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Надёжное фоновое соединение</string>
     <string name="pref_reliable_service_explain">Требует постоянного уведомления</string>
     <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat использует минимальные ресурсы и старается не разряжать батарею.</string>
     <string name="perm_enable_bg_already_done"> 
 Вы уже разрешили Delta Chat получать сообщения в фоне.\n\nЕсли сообщения всё ещё не приходят в фоне, пожалуйста, проверьте также системные настройки.</string>
 

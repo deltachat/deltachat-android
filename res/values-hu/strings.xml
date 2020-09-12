@@ -223,7 +223,6 @@
     <string name="tab_links">Linkek</string>
     <string name="tab_map">Térkép</string>
     <string name="media_preview">Média előnézete</string>
-    <string name="welcome_start_messaging">Kezdj csevegni!</string>
     <string name="login_subheader">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk. Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
     <string name="login_inbox">Bejövő</string>
     <string name="login_imap_login">IMAP bejelentkezési név</string>
@@ -242,13 +241,11 @@
     <string name="pref_profile_info_headline">Profilod adatai</string>
     <string name="pref_profile_photo">Profilkép</string>
     <string name="pref_blocked_contacts">Letiltott partnerek</string>
-    <string name="pref_who_can_see_this_information">Ki láthatja ezt az információt?</string>
     <string name="pref_your_name">Neved</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">A Delta Chat Messengeremmel küldtem: https://delta.chat</string>
     <string name="pref_enter_sends">Küldés \"enterrel\"</string>
     <string name="pref_vibrate">Rezgés</string>
-    <string name="pref_chat_settings">Csevegés beállításai</string>
     <string name="pref_screen_security">Képernyőbiztonság</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Képernyőképek készítésének blokkolása a futó alkalmazások listájában és az alkalmazáson belül</string>
@@ -277,7 +274,6 @@
     <string name="pref_app_access">Alkalmazás hozzáférés</string>
     <string name="pref_communication">Kommunikáció</string>
     <string name="pref_chats">Csevegések</string>
-    <string name="pref_messages">Üzenetek</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
     <string name="pref_message_text_size">Üzenetek betűmérete</string>
     <string name="pref_other">Egyéb</string>
@@ -307,10 +303,7 @@
     <string name="contact_not_verified">%1$s nem ellenőrizhető</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$dúj üzenet %2$d beszélgetésben</string>
-    <string name="notify_media_message_with_text">Médiaüzenet: %s</string>
-    <string name="notify_mark_all_read">Mindet olvasottnak jelöl</string>
     <string name="notify_mark_read">Olvasottnak jelöl</string>
-    <string name="notify_media_message">Médiaüzenet</string>
     <string name="notify_reply_button">Válasz</string>
     <string name="notify_new_message">Új üzenet</string>
     <string name="notify_priority_high">Magas</string>

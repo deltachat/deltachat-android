@@ -320,7 +320,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Le messager avec le plus large public au monde. Libre et indépendant.</string>
-    <string name="welcome_start_messaging">Démarrer la conversation</string>
     <string name="login_title">Connexion</string>
     <string name="login_header">Connexion vers votre serveur</string>
     <string name="login_explain">Se connecter avec un compte de courriel existant.</string>
@@ -374,9 +373,7 @@
     <string name="pref_profile_photo">Photo du profil</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="pref_profile_photo_remove_ask">Supprimer la photo de profil ?</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
-    <string name="pref_who_can_see_this_information">Qui peut voir ceci ?</string>
     <string name="pref_who_can_see_profile_explain">L\'image et le nom de votre profil seront affichés à côté de vos messages lorsque vous communiquez avec d\'autres utilisateurs. Les informations déjà envoyées ne peuvent pas être effacées ou supprimées.</string>
     <string name="pref_your_name">Votre nom</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -389,7 +386,6 @@
     <string name="pref_outgoing_balanced">Équilibré</string>
     <string name="pref_outgoing_worse">Pire qualité, taille réduite</string>
     <string name="pref_vibrate">Vibrer</string>
-    <string name="pref_chat_settings">Configuration du tchat</string>
     <string name="pref_change_secret">Modifier le secret</string>
     <string name="pref_change_secret_explain">Modifiez votre code PIN / modèle / empreinte digitale via les paramètres du système</string>
     <string name="pref_screen_security">Écran de sécurité</string>
@@ -421,7 +417,6 @@
     <string name="pref_app_access">Accès à l\'application</string>
     <string name="pref_communication">Communication</string>
     <string name="pref_chats">Discussions</string>
-    <string name="pref_messages">Messages</string>
     <string name="pref_in_chat_sounds">Sons de messages entrants</string>
     <string name="pref_message_text_size">Taille de police des messages</string>
     <string name="pref_view_log">Voir le journal</string>
@@ -435,7 +430,6 @@
     <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
     <string name="pref_backup_written_to_x">Sauvegarde effectuée avec succès sur %1$s</string>
     <string name="pref_managekeys_menu_title">Gérer les clés</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat a besoin d\'accéder à vos fichiers pour importer/exporter des clés.</string>
     <string name="pref_managekeys_export_secret_keys">Exporter les clés secrètes</string>
     <string name="pref_managekeys_export_explain">Exporter les clés secrètes vers \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importer des clés secrètes</string>
@@ -453,7 +447,6 @@
     <string name="pref_send_copy_to_self">M\'envoyer une copie</string>
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Les discussions sont déplacées pour éviter d\'encombrer le dossier Boîte de réception</string>
-    <string name="pref_email_interaction_title">Interaction par courriel</string>
     <string name="pref_show_emails">Voir les courriels classiques</string>
     <string name="pref_show_emails_no">Non, seulement les tchats</string>
     <string name="pref_show_emails_accepted_contacts">Pour les contacts acceptés</string>
@@ -554,11 +547,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nouveaux messages dans %2$d tchats</string>
-    <string name="notify_most_recent_from">Plus récents depuis : %1$s</string>
-    <string name="notify_media_message_with_text">Message multimédia: %s</string>
-    <string name="notify_mark_all_read">Tout marquer comme lus</string>
     <string name="notify_mark_read">Marquer comme lu</string>
-    <string name="notify_media_message">Message multimédia</string>
     <string name="notify_reply_button">Répondre</string>
     <string name="notify_new_message">Nouveau message</string>
     <string name="notify_background_connection_enabled">Connexion en arrière-plan activée</string>
@@ -572,10 +561,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Autorisation requise</string>
     <string name="perm_continue">Continuez</string>
-    <string name="perm_explain_need_for_camera_access">Pour prendre des photos et des vidéos, autorisez Delta Chat à accéder à l\'appareil photo</string>
-    <string name="perm_explain_need_for_mic_access">Pour envoyer des messages audios, autorisez Delta Chat à accéder à votre micro.</string>
-    <string name="perm_explain_need_for_storage_access">DeltaChat a besoin d\'accéder à vos fichiers afin d\'exporter des fichiers ou de créer des sauvegardes.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat a besoin d\'accéder à vos fichiers pour les partager.</string>
     <string name="perm_explain_access_to_camera_denied">Pour prendre des photos ou filmer des vidéos, aller au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et autorisez \"Appareil photo\".</string>
     <string name="perm_explain_access_to_mic_denied">Pour envoyer des messages audio,  aller dans les réglages de l\'application, sélectionner \"Autorisations\" et autoriser \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Pour recevoir ou envoyer des fichiers, aller au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et autoriser \"Stockage\".</string>
@@ -670,7 +655,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilise votre micro pour enregistrer et envoyer des messages vocaux et des vidéos avec bande son.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vous laisse choisir quelles photos envoyer de votre photothèque. </string>
     <string name="perm_enable_bg_reminder_title">Touchez ici pour recevoir des messages pendant que DeltaChat est en arrière-plan.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat utilise un minimum de ressources et veille à ne pas vider votre batterie.</string>
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
 
 </resources>
