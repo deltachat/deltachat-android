@@ -20,7 +20,6 @@ import androidx.appcompat.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.util.Linkify;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -555,19 +554,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 dcContext.maybeStartIo(); // start-io is also needed on errors to make previous config work in case of changes
                 dcContext.endCaptureNextError();
                 progressDialog.dismiss();
-                if (dcContext.hasCapturedError()) {
-                    AlertDialog d = new AlertDialog.Builder(this)
-                            .setMessage(dcContext.getCapturedError())
-                            .setPositiveButton(android.R.string.ok, null)
-                            .create();
-                    d.show();
-                    try {
-                        //noinspection ConstantConditions
-                        Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
-                    } catch(NullPointerException e) {
-                        e.printStackTrace();
-                    }
-                }
+                WelcomeActivity.maybeShowConfigurationError(this, data2);
             }
             else if (progress<1000/*progress in permille*/) {
                 int percent = (int)progress / 10;
