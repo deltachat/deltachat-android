@@ -475,6 +475,8 @@
     <string name="pref_background_default_color">Colore predefinito</string>
     <string name="pref_background_custom_image">Immagine personalizzata</string>
     <string name="pref_background_custom_color">Colore personalizzato</string>
+    <string name="export_aborted">Esportazione interrotta.</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Elimina i vecchi messaggi</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -702,6 +704,7 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Notifiche in background</string>
     <string name="pref_background_notifications_explain">Utilizza una connessione in background al tuo server e richiede ignora ottimizzazioni della batteria.</string>
+    <string name="pref_background_notifications_rationale">Per mantenere la connessione al tuo server di posta e ricevere messaggi in background, ignora le ottimizzazioni della batteria nel passaggio successivo.\n\nDelta Chat utilizza poche risorse e fa attenzione a non consumare la batteria.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Connessione in background affidabile</string>
     <string name="pref_reliable_service_explain">Richiede una notifica permanente</string>
