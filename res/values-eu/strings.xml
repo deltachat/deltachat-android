@@ -350,7 +350,6 @@
     <string name="delete_account">Ezabatu kontua</string>
     <string name="delete_account_ask">Ziur al zaude zure kontuaren datuak ezabatu nahi dituzula?</string>
     <string name="switching_account">Kontua aldatzen...</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Birbidali honi …</string>

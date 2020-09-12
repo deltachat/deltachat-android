@@ -398,7 +398,6 @@
     <string name="delete_account">Удалить аккаунт</string>
     <string name="delete_account_ask">Вы уверены, что хотите удалить данные учётной записи?</string>
     <string name="switching_account">Меняем аккаунт...</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслать...</string>

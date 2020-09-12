@@ -394,7 +394,6 @@
     <string name="delete_account">Usuń konto</string>
     <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
     <string name="switching_account">Przełączam konto…</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Przekaż do…</string>

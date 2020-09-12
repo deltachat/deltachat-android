@@ -374,7 +374,6 @@
     <string name="delete_account">Fshije llogarinë</string>
     <string name="delete_account_ask">Jeni i sigurt se doni të fshihen të dhënat e llogarisë tuaj?</string>
     <string name="switching_account">Po ndërrohet llogari…</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Përcilljani …</string>

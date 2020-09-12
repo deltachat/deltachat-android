@@ -345,7 +345,6 @@
     <string name="delete_account">Hapus Akun</string>
     <string name="delete_account_ask">Apakah anda yakin ingin menghapus data akun anda?</string>
     <string name="switching_account">Ubah akun</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Diteruskan ke…</string>

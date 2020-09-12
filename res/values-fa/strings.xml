@@ -351,7 +351,6 @@
     <string name="delete_account">حذف حساب کاربری</string>
     <string name="delete_account_ask">آیا از حذف حساب کاربری اطمینان دارید؟</string>
     <string name="switching_account">درحال تغییر حساب کاربری</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">هدایت به...</string>

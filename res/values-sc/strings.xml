@@ -349,7 +349,6 @@
     <string name="delete_account">Iscantzella su contu</string>
     <string name="delete_account_ask">Ses seguru de chèrrere iscantzellare sos datos de su contu tuo?</string>
     <string name="switching_account">Cambiende contu…</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Torra a imbiare a...</string>

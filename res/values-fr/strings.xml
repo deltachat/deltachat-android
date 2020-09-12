@@ -359,7 +359,6 @@
     <string name="delete_account">Supprimer le compte</string>
     <string name="delete_account_ask">Êtes-vous sûr de vouloir supprimer les données de votre compte ?</string>
     <string name="switching_account">Changement de compte...</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Transférer à …</string>

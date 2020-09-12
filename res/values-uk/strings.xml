@@ -396,7 +396,6 @@
     <string name="delete_account">Видалити обліковий запис</string>
     <string name="delete_account_ask">Ви впевнені, що хочете видалити дані вашого облікового запису?</string>
     <string name="switching_account">Перемикаємо обліковий запис...</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Переслати...</string>
