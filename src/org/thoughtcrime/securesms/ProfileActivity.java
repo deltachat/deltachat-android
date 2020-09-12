@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 import com.b44t.messenger.DcChat;
@@ -430,13 +431,15 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     else {
       DcContact dcContact = dcContext.getContact(contactId);
-      final EditText txt = new EditText(this);
-      txt.setText(dcContact.getName());
+      View gl = View.inflate(this, R.layout.single_line_input, null);
+      EditText inputField = gl.findViewById(R.id.input_field);
+      inputField.setText(dcContact.getName());
+      inputField.setSelection(inputField.getText().length());
       new AlertDialog.Builder(this)
           .setTitle(R.string.menu_edit_name)
-          .setView(txt)
+          .setView(gl)
           .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
-            String newName = txt.getText().toString();
+            String newName = inputField.getText().toString();
             dcContext.createContact(newName, dcContact.getAddr());
           })
           .setNegativeButton(android.R.string.cancel, null)

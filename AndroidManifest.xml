@@ -205,7 +205,6 @@
 
     <activity android:name=".ProfileActivity"
               android:theme="@style/TextSecure.LightNoActionBar"
-              android:windowSoftInputMode="stateHidden"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".DummyActivity"
