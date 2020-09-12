@@ -80,10 +80,6 @@ public class ReminderView extends LinearLayout {
     this.dismissListener = dismissListener;
   }
 
-  public void requestDismiss() {
-    closeButton.performClick();
-  }
-
   public void hide() {
     container.setVisibility(View.GONE);
   }

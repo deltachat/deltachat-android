@@ -38,7 +38,7 @@ public class AccountManager {
         private boolean configured;
         private boolean current;
 
-        public String getDescr(Context context) {
+        public String getDescr() {
             String ret = "";
             if (!displayname.isEmpty() && !addr.isEmpty()) {
                 ret = String.format("%s (%s)", displayname, addr);
@@ -289,7 +289,7 @@ public class AccountManager {
             if (account.isCurrent()) {
                 presel = i;
             }
-            menu.add(account.getDescr(activity));
+            menu.add(account.getDescr());
         }
 
         int addAccount = menu.size();
@@ -323,7 +323,7 @@ public class AccountManager {
 
         ArrayList<String> menu = new ArrayList<>();
         for (AccountManager.Account account : accounts) {
-            menu.add(account.getDescr(activity));
+            menu.add(account.getDescr());
         }
         int[] selection = {-1};
         new AlertDialog.Builder(activity)
@@ -340,7 +340,7 @@ public class AccountManager {
                                     .show();
                         } else {
                             new AlertDialog.Builder(activity)
-                                    .setTitle(account.getDescr(activity))
+                                    .setTitle(account.getDescr())
                                     .setMessage(R.string.forget_login_confirmation_desktop)
                                     .setNegativeButton(R.string.cancel, (dialog2, which2) -> showSwitchAccountMenu(activity))
                                     .setPositiveButton(R.string.ok, (dialog2, which2) -> {

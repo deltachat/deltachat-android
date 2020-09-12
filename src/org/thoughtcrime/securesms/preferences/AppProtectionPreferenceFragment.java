@@ -28,8 +28,6 @@ import mobi.upod.timedurationpicker.TimeDurationPickerDialog;
 
 public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment {
 
-    private ApplicationDcContext dcContext;
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -38,8 +36,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     @Override
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-
-        dcContext = DcHelper.getContext(getContext());
 
         this.findPreference(Prefs.SCREEN_LOCK).setOnPreferenceChangeListener(new ScreenLockListener());
         this.findPreference(Prefs.CHANGE_PASSPHRASE_PREF).setOnPreferenceClickListener(new ChangePassphraseClickListener());

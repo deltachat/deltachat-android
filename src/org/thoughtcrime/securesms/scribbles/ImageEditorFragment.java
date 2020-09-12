@@ -249,7 +249,7 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
         return;
       }
       Bitmap bitmap = imageEditorView.getModel().render(activity);
-      PersistentBlobProvider provider = PersistentBlobProvider.getInstance(ImageEditorFragment.this.getContext());
+      PersistentBlobProvider provider = PersistentBlobProvider.getInstance();
       ByteArrayOutputStream baos     = new ByteArrayOutputStream();
       bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
 

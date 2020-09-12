@@ -37,8 +37,6 @@ import org.thoughtcrime.securesms.recipients.Recipient;
  */
 public class ThreadRecord {
 
-  protected final Context context;
-
   private final Recipient  recipient;
   private final long       dateReceived;
   private final long       threadId;
@@ -51,7 +49,7 @@ public class ThreadRecord {
   private           final boolean isMuted;
   private @Nullable final DcLot   dcSummary;
 
-  public ThreadRecord(@NonNull Context context, @NonNull String body,
+  public ThreadRecord(@NonNull String body,
                       @NonNull Recipient recipient, long dateReceived, int unreadCount,
                       long threadId,
                       int visibility,
@@ -60,7 +58,6 @@ public class ThreadRecord {
                       boolean isMuted,
                       @Nullable DcLot dcSummary)
   {
-    this.context              = context.getApplicationContext();
     this.threadId             = threadId;
     this.recipient            = recipient;
     this.dateReceived         = dateReceived;

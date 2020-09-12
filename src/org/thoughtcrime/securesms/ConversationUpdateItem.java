@@ -51,7 +51,7 @@ public class ConversationUpdateItem extends LinearLayout
   {
     this.batchSelected = batchSelected;
 
-    bind(messageRecord, locale);
+    bind(messageRecord);
   }
 
   @Override
@@ -64,7 +64,7 @@ public class ConversationUpdateItem extends LinearLayout
     return messageRecord;
   }
 
-  private void bind(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
+  private void bind(@NonNull DcMsg messageRecord) {
     this.messageRecord = messageRecord;
     setGenericInfoRecord(messageRecord);
     setSelected(batchSelected.contains(messageRecord));

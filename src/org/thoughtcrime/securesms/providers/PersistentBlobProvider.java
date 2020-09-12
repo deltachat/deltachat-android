@@ -49,11 +49,11 @@ public class PersistentBlobProvider {
 
   private static volatile PersistentBlobProvider instance;
 
-  public static PersistentBlobProvider getInstance(Context context) {
+  public static PersistentBlobProvider getInstance() {
     if (instance == null) {
       synchronized (PersistentBlobProvider.class) {
         if (instance == null) {
-          instance = new PersistentBlobProvider(context);
+          instance = new PersistentBlobProvider();
         }
       }
     }
@@ -63,7 +63,7 @@ public class PersistentBlobProvider {
   @SuppressLint("UseSparseArrays")
   private final ExecutorService   executor = Executors.newCachedThreadPool();
 
-  private PersistentBlobProvider(@NonNull Context context) {
+  private PersistentBlobProvider() {
   }
 
   public Uri create(@NonNull Context context,

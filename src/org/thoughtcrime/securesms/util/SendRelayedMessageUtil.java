@@ -82,7 +82,7 @@ public class SendRelayedMessageUtil {
     for (Uri uri : getSharedUris(activity)) {
       if (uri != null && PersistentBlobProvider.isAuthority(activity, uri)) {
         Log.i(TAG, "cleaning up " + uri);
-        PersistentBlobProvider.getInstance(activity).delete(activity, uri);
+        PersistentBlobProvider.getInstance().delete(activity, uri);
       }
     }
   }

@@ -19,7 +19,6 @@ public class QrShowActivity extends AppCompatActivity {
     private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
-    public final static int WHITE = 0xFFFFFFFF;
     public final static String CHAT_ID = "chat_id";
 
     DcEventCenter dcEventCenter;

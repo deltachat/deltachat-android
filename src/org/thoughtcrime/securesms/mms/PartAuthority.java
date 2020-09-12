@@ -15,11 +15,6 @@ import java.io.InputStream;
 
 public class PartAuthority {
 
-  private static final String PART_URI_STRING   = "content://org.thoughtcrime.securesms/part";
-  private static final String THUMB_URI_STRING  = "content://org.thoughtcrime.securesms/thumb";
-  private static final Uri    PART_CONTENT_URI  = Uri.parse(PART_URI_STRING);
-  private static final Uri    THUMB_CONTENT_URI = Uri.parse(THUMB_URI_STRING);
-
   private static final int PERSISTENT_ROW = 3;
   private static final int SINGLE_USE_ROW = 4;
 
@@ -38,7 +33,7 @@ public class PartAuthority {
     int match = uriMatcher.match(uri);
     try {
       switch (match) {
-      case PERSISTENT_ROW: return PersistentBlobProvider.getInstance(context).getStream(context, ContentUris.parseId(uri));
+      case PERSISTENT_ROW: return PersistentBlobProvider.getInstance().getStream(context, ContentUris.parseId(uri));
       case SINGLE_USE_ROW: return SingleUseBlobProvider.getInstance().getStream(ContentUris.parseId(uri));
       default:             return context.getContentResolver().openInputStream(uri);
       }

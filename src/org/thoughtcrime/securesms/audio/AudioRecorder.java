@@ -34,7 +34,7 @@ public class AudioRecorder {
 
   public AudioRecorder(@NonNull Context context) {
     this.context      = context;
-    this.blobProvider = PersistentBlobProvider.getInstance(context.getApplicationContext());
+    this.blobProvider = PersistentBlobProvider.getInstance();
   }
 
   public void startRecording() {

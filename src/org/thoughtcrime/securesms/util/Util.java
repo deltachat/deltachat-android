@@ -61,10 +61,6 @@ public class Util {
 
   public static Handler handler = new Handler(Looper.getMainLooper());
 
-  public static String join(String[] list, String delimiter) {
-    return join(Arrays.asList(list), delimiter);
-  }
-
   public static String join(Collection<String> list, String delimiter) {
     StringBuilder result = new StringBuilder();
     int i = 0;
@@ -77,17 +73,6 @@ public class Util {
     }
 
     return result.toString();
-  }
-
-  public static String join(long[] list, String delimeter) {
-    StringBuilder sb = new StringBuilder();
-
-    for (int j=0;j<list.length;j++) {
-      if (j != 0) sb.append(delimeter);
-      sb.append(list[j]);
-    }
-
-    return sb.toString();
   }
 
   public static boolean isEmpty(ComposeText value) {
@@ -122,31 +107,11 @@ public class Util {
     }
   }
 
-  public static void close(InputStream in) {
-    try {
-      in.close();
-    } catch (IOException e) {
-      Log.w(TAG, e);
-    }
-  }
-
   public static void close(OutputStream out) {
     try {
       out.close();
     } catch (IOException e) {
       Log.w(TAG, e);
-    }
-  }
-
-  public static void readFully(InputStream in, byte[] buffer) throws IOException {
-    int offset = 0;
-
-    for (;;) {
-      int read = in.read(buffer, offset, buffer.length - offset);
-      if (read == -1) throw new IOException("Stream ended early");
-
-      if (read + offset < buffer.length) offset += read;
-      else                		           return;
     }
   }
 
@@ -212,60 +177,6 @@ public class Util {
     }
 
     return success;
-  }
-
-  public static List<String> split(String source, String delimiter) {
-    List<String> results = new LinkedList<>();
-
-    if (TextUtils.isEmpty(source)) {
-      return results;
-    }
-
-    String[] elements = source.split(delimiter);
-    Collections.addAll(results, elements);
-
-    return results;
-  }
-
-  public static byte[][] split(byte[] input, int firstLength, int secondLength) {
-    byte[][] parts = new byte[2][];
-
-    parts[0] = new byte[firstLength];
-    System.arraycopy(input, 0, parts[0], 0, firstLength);
-
-    parts[1] = new byte[secondLength];
-    System.arraycopy(input, firstLength, parts[1], 0, secondLength);
-
-    return parts;
-  }
-
-  public static byte[] combine(byte[]... elements) {
-    try {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-      for (byte[] element : elements) {
-        baos.write(element);
-      }
-
-      return baos.toByteArray();
-    } catch (IOException e) {
-      throw new AssertionError(e);
-    }
-  }
-
-  public static byte[] trim(byte[] input, int length) {
-    byte[] result = new byte[length];
-    System.arraycopy(input, 0, result, 0, result.length);
-
-    return result;
-  }
-
-  public static int getCurrentApkReleaseVersion(Context context) {
-    try {
-      return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
-    } catch (PackageManager.NameNotFoundException e) {
-      throw new AssertionError(e);
-    }
   }
 
   public static byte[] getSecretBytes(int size) {
@@ -341,11 +252,6 @@ public class Util {
 
   public static int hashCode(@Nullable Object... objects) {
     return Arrays.hashCode(objects);
-  }
-
-  public static @Nullable Uri uri(@Nullable String uri) {
-    if (uri == null) return null;
-    else             return Uri.parse(uri);
   }
 
   @TargetApi(VERSION_CODES.KITKAT)

@@ -35,7 +35,6 @@ public class DateUtils extends android.text.format.DateUtils {
 
   @SuppressWarnings("unused")
   private static final String           TAG         = DateUtils.class.getSimpleName();
-  private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMdd");
 
   private static boolean isWithin(final long millis, final long span, final TimeUnit unit) {
     return System.currentTimeMillis() - millis <= unit.toMillis(span);
@@ -98,49 +97,6 @@ public class DateUtils extends android.text.format.DateUtils {
     }
   }
 
-  public static String getTimeOfDayTimeSpanString(final Context c, final Locale locale, final long timestamp) {
-    if (isWithin(timestamp, 1, TimeUnit.MINUTES)) {
-      return c.getString(R.string.now);
-    } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
-      int mins = (int)TimeUnit.MINUTES.convert(System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
-      return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
-    } else {
-      StringBuilder format = new StringBuilder();
-      if (DateFormat.is24HourFormat(c)) format.append("HH:mm");
-      else                              format.append("hh:mm a");
-
-      return getFormattedDateTime(timestamp, format.toString(), locale);
-    }
-  }
-
-  public static String getDayPrecisionTimeSpanString(Context context, Locale locale, long timestamp) {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-
-    if (simpleDateFormat.format(System.currentTimeMillis()).equals(simpleDateFormat.format(timestamp))) {
-      return context.getString(R.string.today);
-    } else {
-      String format;
-
-      if      (isWithin(timestamp, 6, TimeUnit.DAYS))   format = "EEE ";
-      else if (isWithin(timestamp, 365, TimeUnit.DAYS)) format = "MMM d";
-      else                                              format = "MMM d, yyy";
-
-      return getFormattedDateTime(timestamp, format, locale);
-    }
-  }
-
-  public static SimpleDateFormat getDetailedDateFormatter(Context context, Locale locale) {
-    String dateFormatPattern;
-
-    if (DateFormat.is24HourFormat(context)) {
-      dateFormatPattern = getLocalizedPattern("MMM d, yyyy HH:mm:ss zzz", locale);
-    } else {
-      dateFormatPattern = getLocalizedPattern("MMM d, yyyy hh:mm:ss a zzz", locale);
-    }
-
-    return new SimpleDateFormat(dateFormatPattern, locale);
-  }
-
   public static String getRelativeDate(@NonNull Context context,
                                        @NonNull Locale locale,
                                        long timestamp)
@@ -152,14 +108,6 @@ public class DateUtils extends android.text.format.DateUtils {
     } else {
       return getFormattedDateTime(timestamp, "EEEE, MMMM d, yyyy", locale);
     }
-  }
-
-  public static boolean isSameDay(long t1, long t2) {
-    return DATE_FORMAT.format(new Date(t1)).equals(DATE_FORMAT.format(new Date(t2)));
-  }
-
-  public static boolean isSameBriefRelativeTimestamp(@NonNull Context context, @NonNull Locale locale, long t1, long t2) {
-    return getBriefRelativeTimeSpanString(context, locale, t1).equals(getBriefRelativeTimeSpanString(context, locale, t2));
   }
 
   private static String getLocalizedPattern(String template, Locale locale) {
