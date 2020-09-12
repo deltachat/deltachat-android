@@ -67,6 +67,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
@@ -76,6 +77,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
@@ -101,6 +104,7 @@ public class ConversationListFragment extends Fragment
   private Locale                      locale;
   private String                      queryFilter  = "";
   private boolean                     archive;
+  private Timer                       reloadTimer;
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -161,11 +165,20 @@ public class ConversationListFragment extends Fragment
 
     updateReminders();
     list.getAdapter().notifyDataSetChanged();
+
+    reloadTimer = new Timer();
+    reloadTimer.scheduleAtFixedRate(new TimerTask() {
+      @Override
+      public void run() {
+        Util.runOnMain(() -> { list.getAdapter().notifyDataSetChanged(); });
+      }
+    }, 60 * 1000, 60 * 1000);
   }
 
   @Override
   public void onPause() {
     super.onPause();
+    reloadTimer.cancel();
     fab.stopPulse();
   }
 
