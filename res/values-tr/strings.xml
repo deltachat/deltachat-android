@@ -374,6 +374,9 @@
     <string name="delete_account">Hesabı sil</string>
     <string name="delete_account_ask">Hesap verilerinizi silmek istediğinizden emin misiniz?</string>
     <string name="switching_account">Hesap değiştiriliyor…</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">Yapılandırma başarısız. Hata: %1$s</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İlet…</string>

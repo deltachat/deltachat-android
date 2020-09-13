@@ -374,6 +374,9 @@
     <string name="delete_account">Elimina account</string>
     <string name="delete_account_ask">Sei certo di voler eliminare i dati dell\'account?</string>
     <string name="switching_account">Cambio account</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">Configurazione fallita. Errore: %1$s</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Inotra a...</string>

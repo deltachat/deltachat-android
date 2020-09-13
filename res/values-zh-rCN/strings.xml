@@ -363,6 +363,9 @@
     <string name="delete_account">删除账户</string>
     <string name="delete_account_ask">您确定要删除您的账户数据吗？</string>
     <string name="switching_account">切换账户 …</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">配置失败。错误：%1$s</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">转发给…</string>
