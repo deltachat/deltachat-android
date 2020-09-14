@@ -694,7 +694,6 @@
     <string name="a11y_delivery_status_delivered">Status dostawy: Dostarczone</string>
     <string name="a11y_delivery_status_read">Status dostawy: Przeczytane</string>
     <string name="a11y_delivery_status_invalid">Nieprawidłowy status dostawy</string>
-    <string name="a11y_remove_account_btn_label">Usuń konto</string>
     <string name="a11y_background_preview_label">Podgląd tła</string>
 
 

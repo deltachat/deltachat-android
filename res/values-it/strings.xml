@@ -690,7 +690,6 @@
     <string name="a11y_delivery_status_delivered">Stato di consegna: consegnato</string>
     <string name="a11y_delivery_status_read">Stato di consegna: letto</string>
     <string name="a11y_delivery_status_invalid">Stato di consegna non valido</string>
-    <string name="a11y_remove_account_btn_label">Rimuovi account</string>
     <string name="a11y_message_context_menu_btn_label">Azioni messaggio</string>
     <string name="a11y_background_preview_label">Anteprima sfondo</string>
 

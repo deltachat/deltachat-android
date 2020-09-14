@@ -636,7 +636,6 @@
     <string name="a11y_delivery_status_delivered">وضعیت ارسال: دریافت شد</string>
     <string name="a11y_delivery_status_read">وضعیت ارسال: خوانده شد</string>
     <string name="a11y_delivery_status_invalid">وضعیت ارسال نامعتبر</string>
-    <string name="a11y_remove_account_btn_label">حذف حساب کاربری</string>
     <string name="a11y_message_context_menu_btn_label">عملیات‌های پیام</string>
     <string name="a11y_background_preview_label">نمایش پس زمینه</string>
 

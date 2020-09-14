@@ -679,7 +679,6 @@
     <string name="a11y_delivery_status_delivered">发送状态：已投递</string>
     <string name="a11y_delivery_status_read">发送状态：已读</string>
     <string name="a11y_delivery_status_invalid">无效的发送状态</string>
-    <string name="a11y_remove_account_btn_label">移除账户</string>
     <string name="a11y_message_context_menu_btn_label">消息操作</string>
     <string name="a11y_background_preview_label">背景预览</string>
 

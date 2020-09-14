@@ -638,7 +638,6 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="a11y_delivery_status_delivered">Bidalketa-egoera: Bidalita</string>
     <string name="a11y_delivery_status_read">Bidalketa-egoera: Irakurrita</string>
     <string name="a11y_delivery_status_invalid">Bidalketa-egoera baliogabea</string>
-    <string name="a11y_remove_account_btn_label">Kendu kontua</string>
     <string name="a11y_message_context_menu_btn_label">Mezu-ekintzak</string>
     <string name="a11y_background_preview_label">Atzealdearen aurrebista</string>
 

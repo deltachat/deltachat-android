@@ -690,7 +690,6 @@
     <string name="a11y_delivery_status_delivered">Teslimat durumu: Teslim edildi</string>
     <string name="a11y_delivery_status_read">Teslimat durumu: Okundu</string>
     <string name="a11y_delivery_status_invalid">Geçersiz teslimat durumu</string>
-    <string name="a11y_remove_account_btn_label">Hesabı kaldır</string>
     <string name="a11y_message_context_menu_btn_label">İleti eylemleri</string>
     <string name="a11y_background_preview_label">Arka plan önizlemesi</string>
 

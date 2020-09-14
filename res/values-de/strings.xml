@@ -694,7 +694,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="a11y_delivery_status_delivered">Übertragungsstatus: Versendet</string>
     <string name="a11y_delivery_status_read">Übertragungsstatus: Gelesen</string>
     <string name="a11y_delivery_status_invalid">Übertragungsstatus: Ungültig</string>
-    <string name="a11y_remove_account_btn_label">E-Mail-Konto löschen</string>
     <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
 

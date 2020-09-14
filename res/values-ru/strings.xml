@@ -711,7 +711,6 @@
     <string name="a11y_delivery_status_delivered">Статус доставки: Доставлено</string>
     <string name="a11y_delivery_status_read">Статус доставки: Прочитано</string>
     <string name="a11y_delivery_status_invalid">Недопустимый статус доставки</string>
-    <string name="a11y_remove_account_btn_label">Удалить аккаунт</string>
     <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>
     <string name="a11y_background_preview_label">Предпросмотр фона</string>
 

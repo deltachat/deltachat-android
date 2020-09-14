@@ -110,7 +110,9 @@
     <string name="camera">Kamera</string>
     <string name="location">Vieta</string>
     <string name="gallery">Galerija</string>
+    <string name="images_and_videos">Paveikslai ir vaizdo įrašai</string>
     <string name="file">Failas</string>
+    <string name="files">Failai</string>
     <string name="unknown">Nežinoma</string>
 
     <string name="green">Žalia</string>
@@ -421,6 +423,8 @@
     <string name="pref_background_default_color">Numatytoji spalva</string>
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
+    <string name="export_aborted">Eksportavimas nutrauktas.</string>
+
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
     <string name="autodel_server_title">Ištrinti žinutes iš serverio</string>
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
@@ -575,7 +579,6 @@
     <string name="a11y_delivery_status_delivered">Pristatymo būsena: Pristatyta</string>
     <string name="a11y_delivery_status_read">Pristatymo būsena: Perskaityta</string>
     <string name="a11y_delivery_status_invalid">Neteisinga pristatymo būsena</string>
-    <string name="a11y_remove_account_btn_label">Šalinti paskyrą</string>
     <string name="a11y_background_preview_label">Fono peržiūra</string>
 
 

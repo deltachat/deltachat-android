@@ -613,7 +613,6 @@
     <string name="a11y_delivery_status_delivered">Estado de envío: Enviado</string>
     <string name="a11y_delivery_status_read">Estado de envío: Leído</string>
     <string name="a11y_delivery_status_invalid">Estado de envío no válido</string>
-    <string name="a11y_remove_account_btn_label">Eliminar cuenta</string>
     <string name="a11y_message_context_menu_btn_label">Acciones del mensaje</string>
     <string name="a11y_background_preview_label">Previsualización del fondo</string>
 

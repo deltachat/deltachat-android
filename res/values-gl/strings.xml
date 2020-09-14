@@ -685,7 +685,6 @@
     <string name="a11y_delivery_status_delivered">Estado da entrega: Entregado</string>
     <string name="a11y_delivery_status_read">Estado da entrega: Lido</string>
     <string name="a11y_delivery_status_invalid">Estado de entrega inválido</string>
-    <string name="a11y_remove_account_btn_label">Eliminar conta</string>
     <string name="a11y_message_context_menu_btn_label">Accións da mensaxe</string>
     <string name="a11y_background_preview_label">Vista previa do fondo</string>
 

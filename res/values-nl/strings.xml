@@ -690,7 +690,6 @@
     <string name="a11y_delivery_status_delivered">Bezorgstatus: afgeleverd</string>
     <string name="a11y_delivery_status_read">Bezorgstatus: gelezen</string>
     <string name="a11y_delivery_status_invalid">Onbekende bezorgstatus</string>
-    <string name="a11y_remove_account_btn_label">Account verwijderen</string>
     <string name="a11y_message_context_menu_btn_label">Berichtacties</string>
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
 

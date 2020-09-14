@@ -687,7 +687,6 @@
     <string name="a11y_delivery_status_delivered">Leveransstatus: Levererat</string>
     <string name="a11y_delivery_status_read">Leveransstatus: Läst</string>
     <string name="a11y_delivery_status_invalid">Ogiltig leveransstatus</string>
-    <string name="a11y_remove_account_btn_label">Ta bort konto</string>
     <string name="a11y_message_context_menu_btn_label">Meddelandeåtgärder</string>
     <string name="a11y_background_preview_label">Förhandsvisning i bakgrunden</string>
 

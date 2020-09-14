@@ -643,7 +643,6 @@
     <string name="a11y_delivery_status_delivered">État de la livraison : Livré</string>
     <string name="a11y_delivery_status_read">État de la livraison : Lu</string>
     <string name="a11y_delivery_status_invalid">Statut de livraison non valide</string>
-    <string name="a11y_remove_account_btn_label">Supprimer le compte</string>
     <string name="a11y_message_context_menu_btn_label">Actions sur le message</string>
     <string name="a11y_background_preview_label">Aperçu de l\'arrière-plan</string>
 

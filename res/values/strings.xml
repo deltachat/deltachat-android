@@ -690,7 +690,6 @@
     <string name="a11y_delivery_status_delivered">Delivery status: Delivered</string>
     <string name="a11y_delivery_status_read">Delivery status: Read</string>
     <string name="a11y_delivery_status_invalid">Invalid delivery status</string>
-    <string name="a11y_remove_account_btn_label">Remove account</string>
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Background preview</string>
 

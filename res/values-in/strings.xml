@@ -584,6 +584,5 @@
     <string name="a11y_delivery_status_delivered">Status pengiriman: Terkirim</string>
     <string name="a11y_delivery_status_read">Status pengiriman: Dibaca</string>
     <string name="a11y_delivery_status_invalid">Status pengiriman tidak valid</string>
-    <string name="a11y_remove_account_btn_label">Menghapus akun</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk dikirim.</string>
     </resources>

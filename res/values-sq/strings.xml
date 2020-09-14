@@ -689,7 +689,6 @@
     <string name="a11y_delivery_status_delivered">Gjendje dërgimi: I dërguar</string>
     <string name="a11y_delivery_status_read">Gjendje dërgimi: I lexuar</string>
     <string name="a11y_delivery_status_invalid">Gjendje dërgimi e pavlefshme</string>
-    <string name="a11y_remove_account_btn_label">Hiqe llogarinë</string>
     <string name="a11y_message_context_menu_btn_label">Veprime mesazhesh</string>
     <string name="a11y_background_preview_label">Paraparje sfondi</string>
 
