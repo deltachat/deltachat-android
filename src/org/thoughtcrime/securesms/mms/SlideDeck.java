@@ -16,15 +16,10 @@
  */
 package org.thoughtcrime.securesms.mms;
 
-import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.b44t.messenger.DcMsg;
-
 import org.thoughtcrime.securesms.attachments.Attachment;
-import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,53 +28,11 @@ public class SlideDeck {
 
   private final List<Slide> slides = new LinkedList<>();
 
-  public SlideDeck(@NonNull Context context, @NonNull List<? extends Attachment> attachments) {
-    for (Attachment attachment : attachments) {
-      Slide slide = MediaUtil.getSlideForAttachment(context, attachment);
-      if (slide != null) slides.add(slide);
-    }
-  }
-
-  // this uses the odd order of arguments to avoid type erasure problems. If the constructor that takes attachments is gone
-  // update this.
-  public SlideDeck(@NonNull List<? extends DcMsg> messages, @NonNull Context context) {
-    for (DcMsg message : messages) {
-      Slide slide = MediaUtil.getSlideForMsg(context, message);
-      if (slide != null) slides.add(slide);
-    }
-  }
-
-
-  public SlideDeck(@NonNull Context context, @NonNull Attachment attachment) {
-    Slide slide = MediaUtil.getSlideForAttachment(context, attachment);
-    if (slide != null) slides.add(slide);
-  }
-
-  public SlideDeck(@NonNull Context context, @NonNull DcMsg message) {
-    Slide slide = MediaUtil.getSlideForMsg(context, message);
-    if (slide != null) slides.add(slide);
-  }
-
   public SlideDeck() {
   }
 
   public void clear() {
     slides.clear();
-  }
-
-  @NonNull
-  public String getBody() {
-    String body = "";
-
-    for (Slide slide : slides) {
-      Optional<String> slideBody = slide.getBody();
-
-      if (slideBody.isPresent()) {
-        body = slideBody.get();
-      }
-    }
-
-    return body;
   }
 
   @NonNull
@@ -95,39 +48,6 @@ public class SlideDeck {
 
   public void addSlide(Slide slide) {
     slides.add(slide);
-  }
-
-  public List<Slide> getSlides() {
-    return slides;
-  }
-
-  public boolean containsMediaSlide() {
-    for (Slide slide : slides) {
-      if (slide.hasImage() || slide.hasVideo() || slide.hasAudio() || slide.hasDocument()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  public @Nullable Slide getThumbnailSlide() {
-    for (Slide slide : slides) {
-      if (slide.hasImage()) {
-        return slide;
-      }
-    }
-
-    return null;
-  }
-
-  public @Nullable AudioSlide getAudioSlide() {
-    for (Slide slide : slides) {
-      if (slide.hasAudio()) {
-        return (AudioSlide)slide;
-      }
-    }
-
-    return null;
   }
 
   public @Nullable DocumentSlide getDocumentSlide() {

@@ -333,7 +333,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
-    <string name="welcome_start_messaging">Inicia a conversa</string>
     <string name="login_title">Conectar</string>
     <string name="login_header">Conecta co teu servidor</string>
     <string name="login_explain">Conecta cunha conta de correo existente</string>
@@ -375,7 +374,6 @@
     <string name="delete_account">Eliminar conta</string>
     <string name="delete_account_ask">Estás seguro de que queres eliminar os datos da túa conta?</string>
     <string name="switching_account">Cambiando de conta...</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenviar a...</string>
@@ -392,9 +390,7 @@
     <string name="pref_profile_photo">Imaxe de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="pref_profile_photo_remove_ask">Eliminar foto de perfil?</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Contrasinal e conta</string>
-    <string name="pref_who_can_see_this_information">Quen pode ver esto?</string>
     <string name="pref_who_can_see_profile_explain">A túa foto de perfil e nome móstranse xunto coas túas mensaxes ao comunicarte con outras persoas. A información xa enviada non se pode agochar o borrar.</string>
     <string name="pref_your_name">O teu nome</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -407,7 +403,6 @@
     <string name="pref_outgoing_balanced">Equilibrado</string>
     <string name="pref_outgoing_worse">Menor calidade, tamaño pequeno</string>
     <string name="pref_vibrate">Vibrar</string>
-    <string name="pref_chat_settings">Axustes da conversa</string>
     <string name="pref_change_secret">Cambiar seguridade</string>
     <string name="pref_change_secret_explain">Cambiar o PIN / patrón / impresión dactilar a través dos axustes do sistema</string>
     <string name="pref_screen_security">Seguridade da pantalla</string>
@@ -439,7 +434,6 @@
     <string name="pref_app_access">Acceso a app</string>
     <string name="pref_communication">Comunicación</string>
     <string name="pref_chats">Conversas</string>
-    <string name="pref_messages">Mensaxes</string>
     <string name="pref_in_chat_sounds">Sons na conversa</string>
     <string name="pref_message_text_size">Tamaño da letra na mensaxe</string>
     <string name="pref_view_log">Ver rexistro</string>
@@ -453,7 +447,6 @@
     <string name="pref_backup_export_start_button">Inciar respaldo</string>
     <string name="pref_backup_written_to_x">Respaldo gardado en \"%1$s\".</string>
     <string name="pref_managekeys_menu_title">Xestionar chaves</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat precisa acceso aos ficheiros para importar/exportar chaves.</string>
     <string name="pref_managekeys_export_secret_keys">Exportar chaves segredas</string>
     <string name="pref_managekeys_export_explain">Exportar chaves segredas a \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importar chaves segredas</string>
@@ -471,7 +464,6 @@
     <string name="pref_send_copy_to_self">Enviar copia a ti mesmo</string>
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>
-    <string name="pref_email_interaction_title">Interación correo-e</string>
     <string name="pref_show_emails">Mostrar correos clásicos</string>
     <string name="pref_show_emails_no">Non, só conversas</string>
     <string name="pref_show_emails_accepted_contacts">Para os contactos aceptados</string>
@@ -593,11 +585,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensaxes en %2$d conversas</string>
-    <string name="notify_most_recent_from">Máis recente desde: %1$s</string>
-    <string name="notify_media_message_with_text">Mensaxe de medios: %s</string>
-    <string name="notify_mark_all_read">Marcar todo como lido</string>
     <string name="notify_mark_read">Marcar como lido</string>
-    <string name="notify_media_message">Mensaxe de medios</string>
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nova mensaxe</string>
     <string name="notify_background_connection_enabled">Conexión en segundo plano establecida</string>
@@ -611,10 +599,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
-    <string name="perm_explain_need_for_camera_access">Para capturar fotos e vídeos, permite que Delta Chat acceda a cámara.</string>
-    <string name="perm_explain_need_for_mic_access">Para enviar mensaxes de voz, permite a Delta Chat acceder ao micrófono.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat precisa acceder aos teus ficheiros para poder exportar ficheiros ou crear respaldos.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat precisa acceder aos teus ficheiros para poder compartilos.</string>
     <string name="perm_explain_access_to_camera_denied">Para facer fotos ou vídeos, vaite aos axustes da app, escolle \"Permisos\", e activa \"Cámara\".</string>
     <string name="perm_explain_access_to_mic_denied">Para enviar mensaxes de voz, vaite aos axustes da app, escolle \"Permisos\" e activa \"Micrófono\".</string>
     <string name="perm_explain_access_to_storage_denied">Para recibir ou enviar ficheiros, vaite aos axustes da app, escolle \"Permisos\" e activa \"Almacenaxe\".</string>
@@ -701,7 +685,6 @@
     <string name="a11y_delivery_status_delivered">Estado da entrega: Entregado</string>
     <string name="a11y_delivery_status_read">Estado da entrega: Lido</string>
     <string name="a11y_delivery_status_invalid">Estado de entrega inválido</string>
-    <string name="a11y_remove_account_btn_label">Eliminar conta</string>
     <string name="a11y_message_context_menu_btn_label">Accións da mensaxe</string>
     <string name="a11y_background_preview_label">Vista previa do fondo</string>
 
@@ -718,7 +701,6 @@
     <string name="pref_reliable_service">Conexión estable en segundo plano</string>
     <string name="pref_reliable_service_explain">Require unha notificación permanente</string>
     <string name="perm_enable_bg_reminder_title">Toca aquí para recibir mensaxes mentras Delta Chat está en segundo plano.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat utiliza poucos recursos e procura non esgotar a batería.</string>
     <string name="perm_enable_bg_already_done">Xa permitiches que Delta Chat reciba mensaxes en segundo plano\n\nSe aínda así non recibes as mensaxes, por favor comproba os axustes do sistema.</string>
 
 </resources>

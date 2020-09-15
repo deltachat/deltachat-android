@@ -312,7 +312,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطب در جهان. آزاد و مستقل. </string>
-    <string name="welcome_start_messaging">شروع پیام‌رسانی</string>
     <string name="login_title">ورود</string>
     <string name="login_header">به سرور خود وارد شوید</string>
     <string name="login_explain">ورود با یک ایمیل موجود</string>
@@ -352,7 +351,6 @@
     <string name="delete_account">حذف حساب کاربری</string>
     <string name="delete_account_ask">آیا از حذف حساب کاربری اطمینان دارید؟</string>
     <string name="switching_account">درحال تغییر حساب کاربری</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">هدایت به...</string>
@@ -366,9 +364,7 @@
     <string name="pref_profile_photo">تصویر پروفایل</string>
     <string name="pref_blocked_contacts">مخاطبین مسدود شده</string>
     <string name="pref_profile_photo_remove_ask">حذف تصویر پروفایل؟</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">رمزعبور و حساب کاربری</string>
-    <string name="pref_who_can_see_this_information">چه کسی می‌تواند این را ببیند؟</string>
     <string name="pref_who_can_see_profile_explain">وقتی با دیگر کاربران گفتگو می‌کنید تصویر پروفایل و اسم شما در کنار پیام‌ها نمایش داده می‌شوند. اطلاعاتی که تا کنون ارسال شده‌اند قابل حذف نیستند. </string>
     <string name="pref_your_name">اسم شما</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -381,7 +377,6 @@
     <string name="pref_outgoing_balanced">متعادل</string>
     <string name="pref_outgoing_worse">بدترین‌ کیفیت، حجم کم</string>
     <string name="pref_vibrate">لرزش</string>
-    <string name="pref_chat_settings">تنظیمات گفتگو</string>
     <string name="pref_change_secret">تغییر رمز</string>
     <string name="pref_change_secret_explain">تغییر پین/ الگو/ اثرانگشت از طریق تنظیمات سیستم</string>
     <string name="pref_screen_security">امنیت صفحه</string>
@@ -413,7 +408,6 @@
     <string name="pref_app_access">دسترسی نرم‌افزار</string>
     <string name="pref_communication">ارتباط</string>
     <string name="pref_chats">گفتگوها</string>
-    <string name="pref_messages">پیام‌ها</string>
     <string name="pref_in_chat_sounds">صداهای مربوط به گفتگو</string>
     <string name="pref_message_text_size">اندازه فونت پیام</string>
     <string name="pref_view_log">نمایش گزارش</string>
@@ -427,7 +421,6 @@
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
     <string name="pref_backup_written_to_x">نسخه پشتیبان با موفقیت در\"%1$s\" ذخیره شد.</string>
     <string name="pref_managekeys_menu_title">مدیریت کلیدها</string>
-    <string name="pref_managekeys_ask_for_storage_permission">دلتا چت برای وارد کردن و صادر کردن کلیدها به اجازه دسترسی به فایل‌ها نیاز دارد. </string>
     <string name="pref_managekeys_export_secret_keys">صادر کردن کلید خصوصی</string>
     <string name="pref_managekeys_export_explain">صادر کردن کلیدهای خصوصی به\"%1$s\"؟</string>
     <string name="pref_managekeys_import_secret_keys">وارد کردن کلیدهای خصوصی</string>
@@ -445,7 +438,6 @@
     <string name="pref_send_copy_to_self">ارسال کپی به خودم</string>
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
     <string name="pref_auto_folder_moves_explain">گفتگوها برای جلوگیری از پر شدن صندوق ورودی جابجا شده‌اند</string>
-    <string name="pref_email_interaction_title">تعامل ایمیل</string>
     <string name="pref_show_emails">نمایش ایمیل‌های معمولی</string>
     <string name="pref_show_emails_no">نه، فقط چت‌ها</string>
     <string name="pref_show_emails_accepted_contacts">برای مخاطبین پذیرفته شده</string>
@@ -547,11 +539,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d پیام جدید در %2$d چت</string>
-    <string name="notify_most_recent_from">جدیدترین از: %1$s</string>
-    <string name="notify_media_message_with_text">پیام رسانه از: %s</string>
-    <string name="notify_mark_all_read">همه را خوانده شده علامت بزن</string>
     <string name="notify_mark_read">خوانده شده</string>
-    <string name="notify_media_message">پیام رسانه</string>
     <string name="notify_reply_button">پاسخ</string>
     <string name="notify_new_message">پیام جدید</string>
     <string name="notify_background_connection_enabled">اتصالات پیش زمینه فعال شد</string>
@@ -565,10 +553,6 @@
     <!-- permissions -->
     <string name="perm_required_title">مجوز لازم است</string>
     <string name="perm_continue">ادامه</string>
-    <string name="perm_explain_need_for_camera_access">برای گرفتن عکس و فیلم به دلتاچت اجازه دسترسی به دوربین بدهید.</string>
-    <string name="perm_explain_need_for_mic_access">برای ارسال پیام صوتی، به دلتاچت اجازه دسترسی به میکروفون بدهید. </string>
-    <string name="perm_explain_need_for_storage_access">دلتاچت باید به فایل‌هایتان دسترسی پیدا کند تا بتوانید فایل صادر کرده یا فایل پشتیبان درست کنید. </string>
-    <string name="perm_explain_need_for_storage_access_share">برای اشتراک فایل‌ها دلتاچت باید به فایل‌ها دسترسی داشته باشد. </string>
     <string name="perm_explain_access_to_camera_denied">برای گرفتن فیلم و عکس به app settings بروید و \"Permissions\"  را انتخاب کرده و \"Camera\" را فعال کنید.  </string>
     <string name="perm_explain_access_to_mic_denied">برای ارسال پیام صوتی به تنظیمات نرم‌افزار رفته و پس از انتخاب \"Permissions\" گزینه \"Microphone\" را فعال نمایید. </string>
     <string name="perm_explain_access_to_storage_denied">برای دریافت یا ارسال فایل به تنظیمات نرم‌افزار برویرد و از \"Permissions\" گزینه \"Storage\" را فعال نمایید. </string>
@@ -652,7 +636,6 @@
     <string name="a11y_delivery_status_delivered">وضعیت ارسال: دریافت شد</string>
     <string name="a11y_delivery_status_read">وضعیت ارسال: خوانده شد</string>
     <string name="a11y_delivery_status_invalid">وضعیت ارسال نامعتبر</string>
-    <string name="a11y_remove_account_btn_label">حذف حساب کاربری</string>
     <string name="a11y_message_context_menu_btn_label">عملیات‌های پیام</string>
     <string name="a11y_background_preview_label">نمایش پس زمینه</string>
 
@@ -663,7 +646,6 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">دلتاچت از میکروفون برای ذخیره و ارسال پیام صوتی یا فیلم دارای صدا استفاده می‌کند.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
     <string name="perm_enable_bg_reminder_title">برای دریافت پیام‌ها به صورت پس زمینه در دلتاچت این جا را ضربه بزنید. </string>
-    <string name="perm_enable_bg_reminder_text">دلتاچت از سخت افزار کمی استفاده می‌کند و سعی می‌کند باتری شما را خالی نکند. </string>
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتا چت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
 
 </resources>

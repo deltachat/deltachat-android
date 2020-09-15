@@ -310,7 +310,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">S\'aplicatzione de messagìstica cun prus impreadores in su mundu. Lìbera e indipendente.</string>
-    <string name="welcome_start_messaging">Incumintza a messagiare</string>
     <string name="login_title">Intra</string>
     <string name="login_header">Intra in su servidore tuo</string>
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
@@ -350,7 +349,6 @@
     <string name="delete_account">Iscantzella su contu</string>
     <string name="delete_account_ask">Ses seguru de chèrrere iscantzellare sos datos de su contu tuo?</string>
     <string name="switching_account">Cambiende contu…</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Torra a imbiare a...</string>
@@ -364,9 +362,7 @@
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
     <string name="pref_profile_photo_remove_ask">Bogare sa fotografia de profilu?</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Crae de intrada e contu</string>
-    <string name="pref_who_can_see_this_information">Chie podet pompiare custu?</string>
     <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
     <string name="pref_your_name">Su nùmene tuo</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -379,7 +375,6 @@
     <string name="pref_outgoing_balanced">Bilantziada</string>
     <string name="pref_outgoing_worse">Calidade pègius, mannària minore</string>
     <string name="pref_vibrate">Vibratzione</string>
-    <string name="pref_chat_settings">Impostatziones de sa tzarradas</string>
     <string name="pref_change_secret">Càmbia su còdighe</string>
     <string name="pref_change_secret_explain">Càmbia su PIN / sa secuèntzia / s\'imprenta digitale dae sas impostatziones de sistema</string>
     <string name="pref_screen_security">Seguresa de s\'ischermu</string>
@@ -411,7 +406,6 @@
     <string name="pref_app_access">Atzessu a s\'aplicatzione</string>
     <string name="pref_communication">Comunicatzione</string>
     <string name="pref_chats">Tzarradas</string>
-    <string name="pref_messages">Messàgios</string>
     <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>
     <string name="pref_message_text_size">Mannària de sos caràteres in sos messàgios</string>
     <string name="pref_view_log">Pòmpia su registru</string>
@@ -425,7 +419,6 @@
     <string name="pref_backup_export_start_button">Incumintza sa còpia de seguresa</string>
     <string name="pref_backup_written_to_x">Còpia de seguresa sarvada in \"%1$s\"chene problemas.</string>
     <string name="pref_managekeys_menu_title">Amministra sas craes</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat tenet bisòngiu de atzèdere a sos documentos tuos pro importare/esportare sas craes.</string>
     <string name="pref_managekeys_export_secret_keys">Esporta sas craes segretas</string>
     <string name="pref_managekeys_export_explain">Esportare sas craes segretas in \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importa sas craes segretas</string>
@@ -443,7 +436,6 @@
     <string name="pref_send_copy_to_self">Imbia·ti·nche una còpia</string>
     <string name="pref_auto_folder_moves">Tramudòngios automàticos a sa cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Sos arresonos de sas tzarradas benint tramudados pro evitare su prenamentu de sa cartella de intrada</string>
-    <string name="pref_email_interaction_title">Interatzione de posta eletrònica</string>
     <string name="pref_show_emails">Ammustra sas lìteras traditzionales</string>
     <string name="pref_show_emails_no">Nono, tzarradas ebbia</string>
     <string name="pref_show_emails_accepted_contacts">Pro sos cuntatos atzetados</string>

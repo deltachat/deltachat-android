@@ -55,14 +55,4 @@ public class ResUtil {
       return null;
     }
   }
-
-  public static int[] getResourceIds(Context c, @ArrayRes int array) {
-    final TypedArray typedArray  = c.getResources().obtainTypedArray(array);
-    final int[]      resourceIds = new int[typedArray.length()];
-    for (int i = 0; i < typedArray.length(); i++) {
-      resourceIds[i] = typedArray.getResourceId(i, 0);
-    }
-    typedArray.recycle();
-    return resourceIds;
-  }
 }

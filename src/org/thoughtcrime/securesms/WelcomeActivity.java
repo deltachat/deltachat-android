@@ -2,11 +2,14 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -159,7 +162,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         dcContext.captureNextError();
 
         if (!dcContext.setConfigFromQr(qrCode)) {
-            progressError();
+            progressError(dcContext.getCapturedError());
         }
 
         // calling configure() results in
@@ -168,15 +171,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         dcContext.configure();
     }
 
-    private void progressError() {
-        dcContext.endCaptureNextError();
+    private void progressError(Object data2) {
         progressDialog.dismiss();
-        if (dcContext.hasCapturedError()) {
-            new AlertDialog.Builder(this)
-                    .setMessage(dcContext.getCapturedError())
-                    .setPositiveButton(android.R.string.ok, null)
-                    .show();
-        }
+        maybeShowConfigurationError(this, data2);
     }
 
     private void progressUpdate(int progress) {
@@ -198,12 +195,28 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         finish();
     }
 
+    public static void maybeShowConfigurationError(Activity activity, Object data2) {
+        if (data2 instanceof String && !((String) data2).isEmpty()) {
+            AlertDialog d = new AlertDialog.Builder(activity)
+                .setMessage(((String) data2))
+                .setPositiveButton(android.R.string.ok, null)
+                .create();
+            d.show();
+            try {
+                //noinspection ConstantConditions
+                Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
+            } catch(NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
         if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {
             long progress = (Long)data1;
             if (progress==0/*error/aborted*/) {
-                progressError();
+                progressError(dcContext.getCapturedError());
                 notificationController.close();
             }
             else if (progress<1000/*progress in permille*/) {
@@ -226,7 +239,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         else if (!manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
             long progress = (Long)data1;
             if (progress==0/*error/aborted*/) {
-                progressError();
+                progressError(data2);
             }
             else if (progress<1000/*progress in permille*/) {
                 progressUpdate((int)progress);

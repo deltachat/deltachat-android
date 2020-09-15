@@ -84,7 +84,6 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   ConversationListAdapter(@NonNull Context context,
                           @NonNull GlideRequests glideRequests,
                           @NonNull Locale locale,
-                          @Nullable Cursor cursor,
                           @Nullable ItemClickListener clickListener)
   {
     super();

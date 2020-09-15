@@ -333,7 +333,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">L’applicazione di messaggistica con la maggiore utenza al mondo. Libera e indipendente.</string>
-    <string name="welcome_start_messaging">Inizia a messaggiare</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login al tuo server</string>
     <string name="login_explain">Accedi con un indirizzo e-mail esistente</string>
@@ -375,6 +374,8 @@
     <string name="delete_account">Elimina account</string>
     <string name="delete_account_ask">Sei certo di voler eliminare i dati dell\'account?</string>
     <string name="switching_account">Cambio account</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">Configurazione fallita. Errore: %1$s</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -392,9 +393,7 @@
     <string name="pref_profile_photo">Foto profilo</string>
     <string name="pref_blocked_contacts">Contatti bloccati</string>
     <string name="pref_profile_photo_remove_ask">Rimuvere la foto profilo?</string>
-    <string name="pref_help_url">https://delta.chat/it/help</string>
     <string name="pref_password_and_account_settings">Password e account</string>
-    <string name="pref_who_can_see_this_information">Chi può vedere queste informazioni?</string>
     <string name="pref_who_can_see_profile_explain">L\'immagine del tuo profilo e il tuo nome saranno mostrati insieme ai tuoi messaggi quando comunichi con altri utenti. Le informazioni già inviate non possono essere cancellate o rimosse.</string>
     <string name="pref_your_name">Il tuo nome</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -407,7 +406,6 @@
     <string name="pref_outgoing_balanced">Bilanciata</string>
     <string name="pref_outgoing_worse">Qualità peggiore, dimensione ridotta</string>
     <string name="pref_vibrate">Vibrazione</string>
-    <string name="pref_chat_settings">Impostazioni chat</string>
     <string name="pref_change_secret">Cambia codice</string>
     <string name="pref_change_secret_explain">Cambia il pin / sequenza / impronta digitale dalle impostazioni di sistema.</string>
     <string name="pref_screen_security">Sicurezza schermo</string>
@@ -439,7 +437,6 @@
     <string name="pref_app_access">Accesso all\'app</string>
     <string name="pref_communication">Comunicazione</string>
     <string name="pref_chats">Chat</string>
-    <string name="pref_messages">Messaggi</string>
     <string name="pref_in_chat_sounds">Suoni in-chat</string>
     <string name="pref_message_text_size">Dimensione font messaggi</string>
     <string name="pref_view_log">Vedi registro</string>
@@ -453,7 +450,6 @@
     <string name="pref_backup_export_start_button">Avvia backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
     <string name="pref_managekeys_menu_title">Gestisci chiavi</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat ha bisgno di accedere ai tuoi file per importare/esportare le chiavi</string>
     <string name="pref_managekeys_export_secret_keys">Esporta chiavi segrete</string>
     <string name="pref_managekeys_export_explain">Esportare chiavi segrete in \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importa chiavi segrete</string>
@@ -471,7 +467,6 @@
     <string name="pref_send_copy_to_self">Auto-invia una copia</string>
     <string name="pref_auto_folder_moves">Sposta automaticamente nella cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Le chat vengono spostate per evitare di riempire la cartella In Arrivo</string>
-    <string name="pref_email_interaction_title">Interazione email</string>
     <string name="pref_show_emails">Mostra email tradizionali</string>
     <string name="pref_show_emails_no">No, solo chat</string>
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
@@ -482,6 +477,8 @@
     <string name="pref_background_default_color">Colore predefinito</string>
     <string name="pref_background_custom_image">Immagine personalizzata</string>
     <string name="pref_background_custom_color">Colore personalizzato</string>
+    <string name="export_aborted">Esportazione interrotta.</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Elimina i vecchi messaggi</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -593,11 +590,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuovi messaggi in %2$d chat</string>
-    <string name="notify_most_recent_from">Più recente da: %1$s</string>
-    <string name="notify_media_message_with_text">Messaggio multimediale: %s</string>
-    <string name="notify_mark_all_read">Segna tutti come letti</string>
     <string name="notify_mark_read">Segna come letto</string>
-    <string name="notify_media_message">Messaggio multimediale</string>
     <string name="notify_reply_button">Rispondi</string>
     <string name="notify_new_message">Nuovo messaggio</string>
     <string name="notify_background_connection_enabled">Connessione in background abilitata</string>
@@ -611,10 +604,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Autorizzazione richiesta</string>
     <string name="perm_continue">Continua</string>
-    <string name="perm_explain_need_for_camera_access">Per acquisire foto e video autorizza Delta Chat ad accedere alla fotocamera.</string>
-    <string name="perm_explain_need_for_mic_access">Per inviare messaggi audio autorizza Delta Chat ad accedere al microfono.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat richiede l\'accesso ai file per esportare i file o creare backup.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat richiede l\'accesso ai file per condividere i file selezionati.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat richiede l\'autorizzazione per scattare foto e video, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Fotocamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat richiede l\'autorizzazione inviare messaggi audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat richiede l\'autorizzazione per creare allegati, esportare foto, video e audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
@@ -701,7 +690,6 @@
     <string name="a11y_delivery_status_delivered">Stato di consegna: consegnato</string>
     <string name="a11y_delivery_status_read">Stato di consegna: letto</string>
     <string name="a11y_delivery_status_invalid">Stato di consegna non valido</string>
-    <string name="a11y_remove_account_btn_label">Rimuovi account</string>
     <string name="a11y_message_context_menu_btn_label">Azioni messaggio</string>
     <string name="a11y_background_preview_label">Anteprima sfondo</string>
 
@@ -717,11 +705,11 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Notifiche in background</string>
     <string name="pref_background_notifications_explain">Utilizza una connessione in background al tuo server e richiede ignora ottimizzazioni della batteria.</string>
+    <string name="pref_background_notifications_rationale">Per mantenere la connessione al tuo server di posta e ricevere messaggi in background, ignora le ottimizzazioni della batteria nel passaggio successivo.\n\nDelta Chat utilizza poche risorse e fa attenzione a non consumare la batteria.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Connessione in background affidabile</string>
     <string name="pref_reliable_service_explain">Richiede una notifica permanente</string>
     <string name="perm_enable_bg_reminder_title">Premi qui per ricevere i messaggi anche quando Delta Chat è in background.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat usa poche risorse ed è progettata per consumare meno batteria possibile.</string>
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>
 
 </resources>

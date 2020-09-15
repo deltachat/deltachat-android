@@ -92,7 +92,6 @@ import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.mms.MediaConstraints;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -414,10 +413,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       break;
     case PICK_LOCATION:
-      /*
-      SignalPlace place = new SignalPlace(PlacePicker.getPlace(data, this));
-      attachmentManager.setLocation(place, getCurrentMediaConstraints());
-      */
       break;
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
@@ -998,7 +993,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return new SettableFuture<>(false);
     }
 
-    return attachmentManager.setMedia(glideRequests, uri, mediaType, getCurrentMediaConstraints(), 0, 0);
+    return attachmentManager.setMedia(glideRequests, uri, mediaType, 0, 0);
   }
 
   private void addAttachmentContactInfo(Intent data) {
@@ -1021,18 +1016,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private boolean isArchived() {
     return dcChat.getVisibility() == DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
-  }
-
-  protected Recipient getRecipient() {
-    return this.recipient;
-  }
-
-  protected long getChatId() {
-    return this.chatId;
-  }
-
-  private MediaConstraints getCurrentMediaConstraints() {
-    return MediaConstraints.getPushMediaConstraints();
   }
 
   private String getRealPathFromAttachment(Attachment attachment) {
@@ -1226,7 +1209,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onImageCapture(@NonNull final byte[] imageBytes) {
-    setMedia(PersistentBlobProvider.getInstance(this)
+    setMedia(PersistentBlobProvider.getInstance()
                                    .create(this, imageBytes, MediaUtil.IMAGE_JPEG, null),
              MediaType.IMAGE);
     quickAttachmentDrawer.hide(false);
@@ -1285,7 +1268,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             new AsyncTask<Void, Void, Void>() {
               @Override
               protected Void doInBackground(Void... params) {
-                PersistentBlobProvider.getInstance(ConversationActivity.this).delete(ConversationActivity.this, result.first);
+                PersistentBlobProvider.getInstance().delete(ConversationActivity.this, result.first);
                 return null;
               }
             }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -1314,7 +1297,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         new AsyncTask<Void, Void, Void>() {
           @Override
           protected Void doInBackground(Void... params) {
-            PersistentBlobProvider.getInstance(ConversationActivity.this).delete(ConversationActivity.this, result.first);
+            PersistentBlobProvider.getInstance().delete(ConversationActivity.this, result.first);
             return null;
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -1493,20 +1476,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void setChatId(int chatId) {
-    this.chatId = chatId;
-  }
-
-  @Override
-  public void handleReplyMessage(DcMsg msg) {
-      DcContact contact = dcContext.getContact(msg.getFromId());
+  public void handleReplyMessage(DcMsg messageRecord) {
+      DcContact contact = dcContext.getContact(messageRecord.getFromId());
       String prefix = "> ";
       String quote;
-      if(msg.getType() == DcMsg.DC_MSG_TEXT) {
-	  quote = msg.getText();
+      if(messageRecord.getType() == DcMsg.DC_MSG_TEXT) {
+	  quote = messageRecord.getText();
       }
       else {
-	  quote = msg.getSummarytext(1000);
+	  quote = messageRecord.getSummarytext(1000);
       }
 
       quote = quote.replaceAll("> .*\n", "").trim();

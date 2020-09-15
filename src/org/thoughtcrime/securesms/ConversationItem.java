@@ -207,44 +207,6 @@ public class ConversationItem extends LinearLayout
     if (isInEditMode()) {
       return;
     }
-
-    //boolean needsMeasure = false;
-
-    /*
-    ConversationItemFooter activeFooter   = getActiveFooter(messageRecord);
-    int                    availableWidth = getAvailableMessageBubbleWidth(footer);
-
-    if (activeFooter.getVisibility() != GONE && activeFooter.getMeasuredWidth() != availableWidth) {
-      activeFooter.getLayoutParams().width = availableWidth;
-      needsMeasure = true;
-    }
-
-    if (needsMeasure) {
-      if (measureCalls < MAX_MEASURE_CALLS) {
-        measureCalls++;
-        measure(widthMeasureSpec, heightMeasureSpec);
-      } else {
-        Log.w(TAG, "Hit measure() cap of " + MAX_MEASURE_CALLS);
-      }
-    } else {
-      measureCalls = 0;
-    }
-    */
-  }
-
-  private int getAvailableMessageBubbleWidth(@NonNull View forView) {
-    int availableWidth;
-    if (hasAudio(messageRecord)) {
-      availableWidth = audioViewStub.get().getMeasuredWidth() + ViewUtil.getLeftMargin(audioViewStub.get()) + ViewUtil.getRightMargin(audioViewStub.get());
-    } else if (hasThumbnail(messageRecord)) {
-      availableWidth = mediaThumbnailStub.get().getMeasuredWidth();
-    } else {
-      availableWidth = bodyBubble.getMeasuredWidth() - bodyBubble.getPaddingLeft() - bodyBubble.getPaddingRight();
-    }
-
-    availableWidth -= ViewUtil.getLeftMargin(forView) + ViewUtil.getRightMargin(forView);
-
-    return availableWidth;
   }
 
   private void initializeAttributes() {

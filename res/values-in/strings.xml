@@ -306,7 +306,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Percakapan dengan pemirsa terluas di dunia. Gratis dan independen.</string>
-    <string name="welcome_start_messaging">Mulai obrolan</string>
     <string name="login_title">Masuk</string>
     <string name="login_header">Masuk ke server Anda</string>
     <string name="login_explain">Masuk dengan akun surel yang ada</string>
@@ -346,7 +345,6 @@
     <string name="delete_account">Hapus Akun</string>
     <string name="delete_account_ask">Apakah anda yakin ingin menghapus data akun anda?</string>
     <string name="switching_account">Ubah akun</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Diteruskan ke…</string>
@@ -360,9 +358,7 @@
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
     <string name="pref_profile_photo_remove_ask">Hapus foto profil?</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Kata sandi dan akun</string>
-    <string name="pref_who_can_see_this_information">Siapa yang dapat melihat ini?</string>
     <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -375,7 +371,6 @@
     <string name="pref_outgoing_balanced">Seimbang</string>
     <string name="pref_outgoing_worse">Kualitas rendah, ukuran kecil</string>
     <string name="pref_vibrate">Bergetar</string>
-    <string name="pref_chat_settings">Setelan chat</string>
     <string name="pref_change_secret">Ubah rahasia</string>
     <string name="pref_change_secret_explain">Ubah PIN / pola / sidik jari melalui setelan sistem</string>
     <string name="pref_screen_security">Keamanan layar</string>
@@ -404,7 +399,6 @@
     <string name="pref_app_access">Akes Aplikasi</string>
     <string name="pref_communication">Komunikasi</string>
     <string name="pref_chats">Obrolan</string>
-    <string name="pref_messages">Pesan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
     <string name="pref_message_text_size">Ukuran huruf pesan</string>
     <string name="pref_view_log">Lihat catatan</string>
@@ -418,7 +412,6 @@
     <string name="pref_backup_export_start_button">Mulai Cadangkan</string>
     <string name="pref_backup_written_to_x">Cadangan berhasil ditulis ke \"%1$s\".</string>
     <string name="pref_managekeys_menu_title">Kelola kunci</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat perlu akses ke berkas Anda untuk impor/ekspor kunci.</string>
     <string name="pref_managekeys_export_secret_keys">Ekspor kunci rahasia</string>
     <string name="pref_managekeys_export_explain">Ekspor kunci rahasia ke \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Impor kunci rahasia</string>
@@ -430,7 +423,6 @@
     <string name="pref_send_copy_to_self">Kirim salinan ke saya</string>
     <string name="pref_auto_folder_moves">Perpindahan otomatis ke berkas DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Percakapan dipindahkan untuk menghindari memenuhi kotak masuk</string>
-    <string name="pref_email_interaction_title">Interaksi surel</string>
     <string name="pref_show_emails_all">Semua</string>
     <string name="autodel_device_title">Hapus pesarn dari perangkat</string>
     <string name="autodel_server_title">Hapus pesan dari server</string>
@@ -503,10 +495,6 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$dpesan baru di%2$d obrolan</string>
-    <string name="notify_most_recent_from">Terbaru dari: %1$s</string>
-    <string name="notify_media_message_with_text">Pesan media: %s</string>
-    <string name="notify_mark_all_read">Tandai semua telah dibaca</string>
-    <string name="notify_media_message">Pesan media</string>
     <string name="notify_reply_button">Balasan</string>
     <string name="notify_new_message">Pesan baru</string>
     <string name="notify_background_connection_enabled">Koneksi latar diaktifkan</string>
@@ -520,10 +508,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Perlu izin</string>
     <string name="perm_continue">Lanjutkan</string>
-    <string name="perm_explain_need_for_camera_access">Untuk mengambil foto dan video, izinkan akses Delta Chat ke kamera.</string>
-    <string name="perm_explain_need_for_mic_access">Untuk mengirim pesan suara, izinkan akses Delta Chat ke mikrofon.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat perlu akses ke berkas-berkas Anda untuk mengekspor berkas atau membuat cadangan.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat perlu akses ke berkas-berkas Anda supaya bisa membagikannya.</string>
     <string name="perm_explain_access_to_camera_denied">Untuk mengambil foto atau merekam video, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Kamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Untuk mengirim pesan audio, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih \"Perizinan\", dan fungsikan \"Penyimpanan\".</string>
@@ -600,6 +584,5 @@
     <string name="a11y_delivery_status_delivered">Status pengiriman: Terkirim</string>
     <string name="a11y_delivery_status_read">Status pengiriman: Dibaca</string>
     <string name="a11y_delivery_status_invalid">Status pengiriman tidak valid</string>
-    <string name="a11y_remove_account_btn_label">Menghapus akun</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk dikirim.</string>
     </resources>

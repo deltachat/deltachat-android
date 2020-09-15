@@ -295,7 +295,6 @@
     <string name="send_message">Sendi mesaĝon</string>
 
 
-    <string name="welcome_start_messaging">Komenci mesaĝadon</string>
     <string name="login_title">Ensaluti</string>
     <string name="login_header">Ensaluti al via servilo</string>
     <string name="login_inbox">Ricevujo</string>
@@ -331,16 +330,13 @@
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
     <string name="pref_profile_photo_remove_ask">Ĉu forigi profilbildon?</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
-    <string name="pref_who_can_see_this_information">Kiu povas vidi ĉi tion?</string>
     <string name="pref_your_name">Via nomo</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Sendita per mia Delta Chat mesaĝilo: https://delta.chat</string>
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
     <string name="pref_enter_sends_explain">Premado de la Eniga klavo sendos mesaĝojn</string>
     <string name="pref_vibrate">Vibrado</string>
-    <string name="pref_chat_settings">Babilaj agordoj</string>
     <string name="pref_change_secret">Ŝanĝi sekreton</string>
     <string name="pref_screen_security">Ekrana sekureco</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
@@ -370,7 +366,6 @@
     <string name="pref_app_access">Aliro al aplikaĵo</string>
     <string name="pref_communication">Komunikado</string>
     <string name="pref_chats">Interparoloj</string>
-    <string name="pref_messages">Mesaĝoj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
     <string name="pref_message_text_size">Mesaĝa tipargrando</string>
     <string name="pref_view_log">Vidi protokolon</string>
@@ -383,7 +378,6 @@
     <string name="pref_backup_export_start_button">Komenci savkopiadon</string>
     <string name="pref_backup_written_to_x">Savkopio sukcese konservita al \"%1$s\".</string>
     <string name="pref_managekeys_menu_title">Administri ŝlosilojn</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat bezonas permeson atingi viajn dosierojn por importi/eksporti ŝlosilojn.</string>
     <string name="pref_managekeys_export_secret_keys">Eksporti sekretajn ŝlosilojn</string>
     <string name="pref_managekeys_export_explain">Ĉu eksporti sekretajn ŝlosilojn al \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importi sekretajn ŝlosilojn</string>
@@ -402,9 +396,7 @@
     <string name="screenlock_explain">Lock Delta Chat access with Android screen lock or fingerprint</string>
     <string name="screenlock_unlock_title">Malŝlosi Delta Chat-on</string>
     <string name="screenlock_inactivity_timeout_explain">Aŭtomate ŝlosi Signal-on post specifa templimo de neaktiveco</string>
-    <string name="notify_mark_all_read">Marki ĉiujn legitaj</string>
     <string name="notify_mark_read">Marki legita</string>
-    <string name="notify_media_message">Aŭdvida mesaĝo</string>
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>
     <string name="notify_priority_high">Alta</string>

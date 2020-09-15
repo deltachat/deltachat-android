@@ -269,7 +269,6 @@
     <string name="media_preview">Medie forhåndvisning</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Budbringeren med verdens bredeste publikum. Fri og uafhængig.</string>
-    <string name="welcome_start_messaging">Start skrivning</string>
     <string name="login_title">Logind</string>
     <string name="login_header">Logind til server</string>
     <string name="login_subheader">For kendte e-post udbydere opsættes yderligere indstillinger automatisk. Nogle gange skal IMAP aktiveres i brugerfladen. Kontakt din e-post udbyder eller venner for at få hjælp.</string>
@@ -312,8 +311,6 @@
     <string name="pref_profile_photo">Profil billede</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="pref_profile_photo_remove_ask">Fjerne profil billede?</string>
-    <string name="pref_help_url">https://delta.chat/en/help</string>
-    <string name="pref_who_can_see_this_information">Hvem kan se denne information?</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Nanv</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -326,7 +323,6 @@
     <string name="pref_outgoing_balanced">Balanceret</string>
     <string name="pref_outgoing_worse">Dårligere kvalitet mindre størrelse</string>
     <string name="pref_vibrate">Vibrere</string>
-    <string name="pref_chat_settings">Samtale opsætning</string>
     <string name="pref_change_secret">Ændre hemmelighed</string>
     <string name="pref_change_secret_explain">Ændre PIN / mønster / fingeraftryk via system opsætning</string>
     <string name="pref_screen_security">Skærm sikkerhed</string>
@@ -358,7 +354,6 @@
     <string name="pref_app_access">Program adgang</string>
     <string name="pref_communication">Kommunikation</string>
     <string name="pref_chats">Samtaler</string>
-    <string name="pref_messages">Beskeder</string>
     <string name="pref_in_chat_sounds">I samtale lyde</string>
     <string name="pref_message_text_size">Besked tekststørrelse</string>
     <string name="pref_view_log">Vise log</string>
@@ -370,7 +365,6 @@
     <string name="pref_backup_export_start_button">Starte sikkerhedskopiering</string>
     <string name="pref_backup_written_to_x">Sikkerhedskopi skrevet til %1$s</string>
     <string name="pref_managekeys_menu_title">Håndtere nøgler</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat behøver fil adgang for importere/eksportere nøgler.</string>
     <string name="pref_managekeys_export_secret_keys">Eksportere hemmelige nøgler</string>
     <string name="pref_managekeys_export_explain">Eksportere hemmelige nøgler til \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importere hemmelige nøgler</string>
@@ -387,7 +381,6 @@
     <string name="pref_watch_mvbox_folder">Overvåge DeltaChat mappe</string>
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>
     <string name="pref_auto_folder_moves_explain">Samtaler er flyttet for at undgå rodet indbakke mappe</string>
-    <string name="pref_email_interaction_title">E-post interaktion</string>
     <string name="pref_show_emails">Vis klassisk e-post</string>
     <string name="pref_show_emails_no">Nej, kun samtaler</string>
     <string name="pref_show_emails_accepted_contacts">For godkendte kontakter</string>
@@ -460,11 +453,7 @@
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nye beskeder i %2$d samtaler</string>
-    <string name="notify_most_recent_from">Nylig fra: %1$s</string>
-    <string name="notify_media_message_with_text">Medie besked: %s</string>
-    <string name="notify_mark_all_read">Vælge alle som læst</string>
     <string name="notify_mark_read">Vælge læst</string>
-    <string name="notify_media_message">Medie besked</string>
     <string name="notify_reply_button">Svare</string>
     <string name="notify_new_message">Ny besked</string>
     <string name="notify_background_connection_enabled">Baggrunds forbindelse aktiveret</string>
@@ -478,10 +467,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Tilladelse påkrævet</string>
     <string name="perm_continue">Fortsætte</string>
-    <string name="perm_explain_need_for_camera_access">For at fange billeder og video, tillad Delta Chat adgang til kamera.</string>
-    <string name="perm_explain_need_for_mic_access">For at sende lyd beskeder, tillad Delta Chat mikrofon adgang.</string>
-    <string name="perm_explain_need_for_storage_access">Delta Chat behøver fil adgang for at kunne eksportere filer eller oprette sikkerhedskopier.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat behøver adgang til filer for at dele de udvalgte filer.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat kræver kamera tilladelse for at tage billeder eller video men det er blevet afvist permanent. Fortsæt til program opsætning menu og vælg \"Tilladelser\" og aktivere \"Kamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat kræver lagring tilladelse for at vedhæfte eller eksportere billeder, video eller lyd, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Lagring\".</string>
@@ -556,5 +541,4 @@
 
 
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat bruger minimal resurse og passer på ikke at dræne batteriet.</string>
     </resources>

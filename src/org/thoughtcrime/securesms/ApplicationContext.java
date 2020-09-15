@@ -147,9 +147,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
   }
 
   private void initializeJobManager() {
-    this.jobManager = JobManager.newBuilder(this)
-                                .withName("TextSecureJobs")
-                                .withConsumerThreads(5)
-                                .build();
+    this.jobManager = new JobManager(this, 5);
   }
 }

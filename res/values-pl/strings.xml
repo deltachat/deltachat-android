@@ -353,7 +353,6 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Komunikator o największym zasięgu na świecie. Darmowy i bezpieczny.</string>
-    <string name="welcome_start_messaging">Uruchom komunikator</string>
     <string name="login_title">Zaloguj się</string>
     <string name="login_header">Zaloguj się na swój serwer</string>
     <string name="login_explain">Zaloguj się przy użyciu istniejącego konta e-mail</string>
@@ -395,7 +394,6 @@
     <string name="delete_account">Usuń konto</string>
     <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
     <string name="switching_account">Przełączam konto…</string>
-
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Przekaż do…</string>
@@ -412,9 +410,7 @@
     <string name="pref_profile_photo">Zdjęcie profilowe</string>
     <string name="pref_blocked_contacts">Zablokowane kontakty</string>
     <string name="pref_profile_photo_remove_ask">Usunąć zdjęcie profilowe?</string>
-    <string name="pref_help_url">https://delta.chat/pl/help</string>
     <string name="pref_password_and_account_settings">Hasło i konto</string>
-    <string name="pref_who_can_see_this_information">Kto może zobaczyć tę informację?</string>
     <string name="pref_who_can_see_profile_explain">Twoje zdjęcie profilowe i nazwa będą wyświetlane wraz z wiadomościami podczas komunikacji z innymi użytkownikami. Już wysłanych informacji nie można skasować ani usunąć.</string>
     <string name="pref_your_name">Twoja nazwa</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -427,7 +423,6 @@
     <string name="pref_outgoing_balanced">Zrównoważona</string>
     <string name="pref_outgoing_worse">Gorsza jakość, mały rozmiar</string>
     <string name="pref_vibrate">Wibracje</string>
-    <string name="pref_chat_settings">Ustawienia czatu</string>
     <string name="pref_change_secret">Zmień zabezpieczenia</string>
     <string name="pref_change_secret_explain">Zmień swój pin / wzór / odcisk palca za pomocą ustawień systemowych</string>
     <string name="pref_screen_security">Zabezpieczenie ekranu</string>
@@ -459,7 +454,6 @@
     <string name="pref_app_access">Dostęp do aplikacji</string>
     <string name="pref_communication">Komunikacja</string>
     <string name="pref_chats">Czaty</string>
-    <string name="pref_messages">Wiadomości</string>
     <string name="pref_in_chat_sounds">Dźwięki w czacie</string>
     <string name="pref_message_text_size">Rozmiar czcionki w wiadomości</string>
     <string name="pref_view_log">Wyświetl dziennik</string>
@@ -473,7 +467,6 @@
     <string name="pref_backup_export_start_button">Utwórz kopię</string>
     <string name="pref_backup_written_to_x">Kopia zapasowa została pomyślnie zapisana do %1$s</string>
     <string name="pref_managekeys_menu_title">Zarządzaj prywatnymi kluczami</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Aby zaimportować/wyeksportować klucze Delta Chat musi mieć dostęp do twoich plików.</string>
     <string name="pref_managekeys_export_secret_keys">Eksportuj prywatne klucze</string>
     <string name="pref_managekeys_export_explain">Wyeksportować prywatne klucze do „%1$s”?</string>
     <string name="pref_managekeys_import_secret_keys">Importuj prywatne klucze</string>
@@ -491,7 +484,6 @@
     <string name="pref_send_copy_to_self">Wyślij kopię do siebie</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Rozmowy na czacie są przenoszone, aby nie zaśmiecać folderu Skrzynka odbiorcza</string>
-    <string name="pref_email_interaction_title">Interakcja e-mail</string>
     <string name="pref_show_emails">Pokaż klasyczne e-maile</string>
     <string name="pref_show_emails_no">Nie, tylko czaty</string>
     <string name="pref_show_emails_accepted_contacts">Dla zaakceptowanych kontaktów</string>
@@ -605,11 +597,7 @@
     <string name="contact_setup_changed">Zmieniono konfigurację dla %1$s</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nowe wiadomości w %2$d czatach</string>
-    <string name="notify_most_recent_from">Najnowsze z: %1$s</string>
-    <string name="notify_media_message_with_text">Wiadomość multimedialna: %s</string>
-    <string name="notify_mark_all_read">Oznacz wszystkie jako przeczytane</string>
     <string name="notify_mark_read">Oznacz jako przeczytane</string>
-    <string name="notify_media_message">Wiadomość multimedialna</string>
     <string name="notify_reply_button">Odpowiedz</string>
     <string name="notify_new_message">Nowa wiadomość</string>
     <string name="notify_background_connection_enabled">Połączenie w tle włączone</string>
@@ -623,10 +611,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Wymagane zezwolenie</string>
     <string name="perm_continue">Kontynuuj</string>
-    <string name="perm_explain_need_for_camera_access">Aby robić zdjęcia i nagrywać wideo, zezwól Delta Chat na dostęp do aparatu.</string>
-    <string name="perm_explain_need_for_mic_access">Aby wysyłać wiadomości audio, zezwól Delta Chat na dostęp do mikrofonu.</string>
-    <string name="perm_explain_need_for_storage_access">Aby eksportować pliki lub tworzyć kopie zapasowe Delta Chat potrzebuje dostępu do twoich plików.</string>
-    <string name="perm_explain_need_for_storage_access_share">Delta Chat potrzebuje dostępu do twoich plików, aby udostępnić wybrane pliki.</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat wymaga pozwolenia na używanie aparatu, aby robić zdjęcia lub nagrywać filmy, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Aparat”.</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat wymaga zezwolenia użycia mikrofonu, aby wysyłać wiadomości audio, ale zostało ono trwale odrzucone. Przejdź do ustawień aplikacji, wybierz „Uprawnienia” i włącz „Mikrofon”.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat wymaga uprawnienia do przechowywania, aby dołączyć lub wyeksportować zdjęcia, filmy lub dźwięk, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Pamięć”.</string>
@@ -710,7 +694,6 @@
     <string name="a11y_delivery_status_delivered">Status dostawy: Dostarczone</string>
     <string name="a11y_delivery_status_read">Status dostawy: Przeczytane</string>
     <string name="a11y_delivery_status_invalid">Nieprawidłowy status dostawy</string>
-    <string name="a11y_remove_account_btn_label">Usuń konto</string>
     <string name="a11y_background_preview_label">Podgląd tła</string>
 
 
@@ -726,5 +709,4 @@
     <string name="pref_reliable_service">Niezawodne połączenie w tle</string>
     <string name="pref_reliable_service_explain">Wymaga stałego powiadomienia</string>
     <string name="perm_enable_bg_reminder_title">Dotknij tutaj, aby odbierać wiadomości, podczas gdy Delta Chat działa w tle.</string>
-    <string name="perm_enable_bg_reminder_text">Delta Chat wykorzystuje minimalne zasoby i dba o to, aby nie rozładować baterii.</string>
     </resources>

@@ -120,17 +120,10 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return dcMsgList.length > 0;
   }
 
-  public boolean isGroupChat(){
-    return dcChat.isGroup();
-  }
-
   public @NonNull DcChat getChat(){
     return dcChat;
   }
 
-  public String getChatName(){
-    return dcChat.getName();
-  }
 
   public void setLastSeen(long timestamp) {
     lastSeen = timestamp;

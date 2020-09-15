@@ -230,7 +230,6 @@
     <string name="tab_gallery">Галерија</string>
     <string name="tab_docs">Документи</string>
     <string name="media_preview">Преглед медијума</string>
-    <string name="welcome_start_messaging">Почните ћаскање</string>
     <string name="login_subheader">За познате пружаоце услуге е-поште, додатне поставке се одређују аутоматски. Каткад, морате омогућити ИМАП у поставкама на веб сучељу ваше е-поште.\n\nПосаветујте се са пружаоцем услуге е-поште или пријатељима ако наиђете на проблеме.</string>
     <string name="login_no_servers_hint">Не постоји сервер Делта ћаскања. Апликација користи само сервер ваше е-поште.</string>
     <string name="login_inbox">Пријем</string>
@@ -258,13 +257,11 @@
     <string name="forward_to">Проследи за…</string>
     <string name="pref_profile_info_headline">Подаци вашег профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
-    <string name="pref_who_can_see_this_information">Ко може да види ове податке?</string>
     <string name="pref_your_name">Ваше име</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Послато Делта ћаскањем: https://delta.chat</string>
     <string name="pref_enter_sends">Шаљи ЕНТЕР тастером</string>
     <string name="pref_vibrate">Вибрирање</string>
-    <string name="pref_chat_settings">Поставке ћаскања</string>
     <string name="pref_screen_security">Безбедност екрана</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Блокирање снимка екрана у списку недавних апликација и унутар апликације</string>
@@ -291,7 +288,6 @@
     <string name="pref_app_access">Приступ апликацији</string>
     <string name="pref_communication">Комуникација</string>
     <string name="pref_chats">Ћаскања</string>
-    <string name="pref_messages">Поруке</string>
     <string name="pref_in_chat_sounds">Звуци ћаскања</string>
     <string name="pref_message_text_size">Величина фонта поруке</string>
     <string name="pref_other">Остало</string>
@@ -343,9 +339,7 @@
     <string name="qrshow_join_group_title">Бар-кôд за потврду</string>
     <string name="qrshow_join_contact_title">Бар-кôд за потврду</string>
     <string name="contact_verified">%1$s потврђен.</string>
-    <string name="notify_mark_all_read">Означи све прочитаним</string>
     <string name="notify_mark_read">Означи прочитаним</string>
-    <string name="notify_media_message">Мултимедијална порука</string>
     <string name="notify_reply_button">Одговори</string>
     <string name="notify_new_message">Нова порука</string>
     <string name="notify_priority_high">Висок</string>

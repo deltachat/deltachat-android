@@ -544,7 +544,6 @@ public class ConversationFragment extends Fragment
     }
 
     public interface ConversationFragmentListener {
-        void setChatId(int threadId);
         void handleReplyMessage(DcMsg messageRecord);
     }
 

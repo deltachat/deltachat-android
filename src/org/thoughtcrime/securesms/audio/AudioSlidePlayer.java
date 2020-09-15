@@ -184,7 +184,7 @@ public class AudioSlidePlayer {
 
   private MediaSource createMediaSource(@NonNull Uri uri) {
     DefaultDataSourceFactory    defaultDataSourceFactory    = new DefaultDataSourceFactory(context, "GenericUserAgent", null);
-    AttachmentDataSourceFactory attachmentDataSourceFactory = new AttachmentDataSourceFactory(context, defaultDataSourceFactory, null);
+    AttachmentDataSourceFactory attachmentDataSourceFactory = new AttachmentDataSourceFactory(defaultDataSourceFactory);
     ExtractorsFactory           extractorsFactory           = new DefaultExtractorsFactory().setConstantBitrateSeekingEnabled(true);
 
     return new ExtractorMediaSource.Factory(attachmentDataSourceFactory)

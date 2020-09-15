@@ -249,7 +249,6 @@
     <string name="media_preview">媒體預覽</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">免費、獨立的通訊軟體，我們有全世界最廣的受眾。</string>
-    <string name="welcome_start_messaging">開始傳送訊息</string>
     <string name="login_title">登入</string>
     <string name="login_header">登入你的伺服器</string>
     <string name="login_subheader">我們能自動處理大多數常見的郵件伺服器設定。有時候你需要在 web 界面上手動打開 IMAP 服務，請詢問郵件服務商或請朋友幫忙。</string>
@@ -292,8 +291,6 @@
     <string name="pref_profile_photo">大頭照</string>
     <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
     <string name="pref_profile_photo_remove_ask">移除大頭照?</string>
-    <string name="pref_help_url">https://delta.chat/tw/help</string>
-    <string name="pref_who_can_see_this_information">隱私權設定</string>
     <string name="pref_who_can_see_profile_explain">你的名字和大頭照在通訊的過程中，會提供給對方看到。已傳送的資訊無法被刪除或移除。</string>
     <string name="pref_your_name">你的名字</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -306,7 +303,6 @@
     <string name="pref_outgoing_balanced">普通</string>
     <string name="pref_outgoing_worse">低品質</string>
     <string name="pref_vibrate">振動</string>
-    <string name="pref_chat_settings">對話設定</string>
     <string name="pref_change_secret">更改密碼</string>
     <string name="pref_change_secret_explain">使用系統設定更改數字、圖型、指紋密碼</string>
     <string name="pref_screen_security">螢幕安全性</string>
@@ -338,7 +334,6 @@
     <string name="pref_app_access">App 存取</string>
     <string name="pref_communication">通訊</string>
     <string name="pref_chats">對話</string>
-    <string name="pref_messages">訊息</string>
     <string name="pref_in_chat_sounds">對話內的音效</string>
     <string name="pref_message_text_size">訊息的字型大小</string>
     <string name="pref_view_log">觀看系統紀錄</string>
@@ -350,7 +345,6 @@
     <string name="pref_backup_export_start_button">開始備份</string>
     <string name="pref_backup_written_to_x">成功備份至 %1$s</string>
     <string name="pref_managekeys_menu_title">管理金鑰</string>
-    <string name="pref_managekeys_ask_for_storage_permission">Delta Chat 需要存取檔案權限，以便匯入/匯出金鑰。</string>
     <string name="pref_managekeys_export_secret_keys">匯出金鑰</string>
     <string name="pref_managekeys_export_explain">將金鑰匯出至 %1$s ?</string>
     <string name="pref_managekeys_import_secret_keys">匯入金鑰</string>
@@ -367,7 +361,6 @@
     <string name="pref_watch_mvbox_folder">監看 DeltaChat 資料夾</string>
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
     <string name="pref_auto_folder_moves_explain">搬移對話以避免塞爆收件匣</string>
-    <string name="pref_email_interaction_title">Email 互動</string>
     <string name="pref_show_emails">顯示傳統email</string>
     <string name="pref_show_emails_no">只顯示對話</string>
     <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>

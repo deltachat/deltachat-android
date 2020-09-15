@@ -12,7 +12,6 @@ public class InChatSounds {
     private static final String TAG = InChatSounds.class.getSimpleName();
     private static volatile InChatSounds instance;
 
-    private Context appContext = null;
     private SoundPool soundPool = null;
     private int soundIn = 0;
     private int soundOut = 0;
@@ -30,7 +29,6 @@ public class InChatSounds {
 
     private InChatSounds(Context context) {
         try {
-            appContext = context.getApplicationContext();
             soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
             soundIn = soundPool.load(context, R.raw.sound_in, 1);
             soundOut = soundPool.load(context, R.raw.sound_out, 1);

@@ -406,7 +406,7 @@ public class NotificationCenter {
                                 .get();
 
                     } else {
-                        drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor(context));
+                        drawable = recipient.getFallbackContactPhoto().asDrawable(context, recipient.getFallbackAvatarColor());
                     }
                     if (drawable != null) {
                         int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);

@@ -37,7 +37,6 @@ public class DocumentView extends FrameLayout {
   private final @NonNull LottieAnimationView lottie;
 
   private @Nullable SlideClickListener viewListener;
-  private @Nullable DocumentSlide      documentSlide;
 
   public DocumentView(@NonNull Context context) {
     this(context, null);

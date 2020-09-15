@@ -189,14 +189,11 @@
     <string name="pref_profile_photo">Profilna slika</string>
     <string name="pref_blocked_contacts">Blokirani kontakti</string>
     <string name="pref_profile_photo_remove_ask">Ukloniti profilnu sliku?</string>
-    <string name="pref_help_url">https://delta.chat/help</string>
     <string name="pref_password_and_account_settings">Lozinka i račun</string>
-    <string name="pref_who_can_see_this_information">Tko može ovo vidjeti?</string>
     <string name="pref_your_name">Vaše ime</string>
     <string name="pref_enter_sends">Enter šalje poruku</string>
     <string name="pref_enter_sends_explain">Pritisak na Enter će poslati tekst poruku</string>
     <string name="pref_vibrate">Vibracija</string>
-    <string name="pref_chat_settings">Postavke razgovora</string>
     <string name="pref_screen_security">Sigurnost ekrana</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Onemogući snimanje ekrana na popisu nedavnih i unutar aplikacije</string>
@@ -224,7 +221,6 @@
     <string name="pref_app_access">Pristup aplikaciji</string>
     <string name="pref_communication">Komunikacija</string>
     <string name="pref_chats">Razgovori</string>
-    <string name="pref_messages">Poruke</string>
     <string name="pref_in_chat_sounds">Zvuk unutar razgovora</string>
     <string name="pref_message_text_size">Veličina fonta poruke</string>
     <string name="pref_other">Ostalo</string>
@@ -246,9 +242,7 @@
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
     <string name="qrscan_fingerprint_label">Otisak prsta</string>
-    <string name="notify_mark_all_read">Označi sve kao pročitane</string>
     <string name="notify_mark_read">Označi pročitano</string>
-    <string name="notify_media_message">Multimedijalna poruka</string>
     <string name="notify_reply_button">Odgovori</string>
     <string name="notify_new_message">Nova poruka</string>
     <string name="notify_priority_high">Visoko</string>
@@ -290,5 +284,4 @@
     <string name="message_detail_received_desktop">primljeno</string>
     <string name="message_detail_from_desktop">od</string>
     <string name="message_detail_to_desktop">za</string>
-    <string name="a11y_remove_account_btn_label">Ukloni račun</string>
     </resources>

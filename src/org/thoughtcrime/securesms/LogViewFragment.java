@@ -161,7 +161,8 @@ public class LogViewFragment extends Fragment {
       Context context = weakContext.get();
       if (context == null) return null;
 
-      return buildDescription(context) + "\n" + new Scrubber().scrub(grabLogcat());
+      return "**This log may contain sensitive information. If you want to post it publicly you may examine and edit it beforehand.**\n\n" +
+          buildDescription(context) + "\n" + new Scrubber().scrub(grabLogcat());
     }
 
     @Override
