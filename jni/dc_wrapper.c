@@ -36,35 +36,35 @@ static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
 #define CHAR_REF(a) \
 	char* a##Ptr = char_ref__(env, (a));
 static char* char_ref__(JNIEnv* env, jstring a) {
-    if (a==NULL) {
-        return NULL;
-    }
+	if (a==NULL) {
+		return NULL;
+	}
 
-    /* we do not use the JNI functions GetStringUTFChars()/ReleaseStringUTFChars()
-    as they do not work on some older systems for code points >0xffff, eg. emojos.
-    as a workaround, we're calling back to java-land's String.getBytes() which works as expected */
-    static jclass    s_strCls    = NULL;
-    static jmethodID s_getBytes  = NULL;
-    static jclass    s_strEncode = NULL;
-    if (s_getBytes==NULL) {
-        s_strCls    = (*env)->NewGlobalRef(env, (*env)->FindClass(env, "java/lang/String"));
-        s_getBytes  = (*env)->GetMethodID(env, s_strCls, "getBytes", "(Ljava/lang/String;)[B");
-        s_strEncode = (*env)->NewGlobalRef(env, (*env)->NewStringUTF(env, "UTF-8"));
-    }
+	/* we do not use the JNI functions GetStringUTFChars()/ReleaseStringUTFChars()
+	as they do not work on some older systems for code points >0xffff, eg. emojos.
+	as a workaround, we're calling back to java-land's String.getBytes() which works as expected */
+	static jclass    s_strCls    = NULL;
+	static jmethodID s_getBytes  = NULL;
+	static jclass    s_strEncode = NULL;
+	if (s_getBytes==NULL) {
+		s_strCls    = (*env)->NewGlobalRef(env, (*env)->FindClass(env, "java/lang/String"));
+		s_getBytes  = (*env)->GetMethodID(env, s_strCls, "getBytes", "(Ljava/lang/String;)[B");
+		s_strEncode = (*env)->NewGlobalRef(env, (*env)->NewStringUTF(env, "UTF-8"));
+	}
 
-    const jbyteArray stringJbytes = (jbyteArray)(*env)->CallObjectMethod(env, a, s_getBytes, s_strEncode);
-    const jsize length = (*env)->GetArrayLength(env, stringJbytes);
-    jbyte* pBytes = (*env)->GetByteArrayElements(env, stringJbytes, NULL);
-    if (pBytes==NULL) {
-        return NULL;
-    }
+	const jbyteArray stringJbytes = (jbyteArray)(*env)->CallObjectMethod(env, a, s_getBytes, s_strEncode);
+	const jsize length = (*env)->GetArrayLength(env, stringJbytes);
+	jbyte* pBytes = (*env)->GetByteArrayElements(env, stringJbytes, NULL);
+	if (pBytes==NULL) {
+		return NULL;
+	}
 
-    char* cstr = strndup((const char*)pBytes, length);
+	char* cstr = strndup((const char*)pBytes, length);
 
-    (*env)->ReleaseByteArrayElements(env, stringJbytes, pBytes, JNI_ABORT);
-    (*env)->DeleteLocalRef(env, stringJbytes);
+	(*env)->ReleaseByteArrayElements(env, stringJbytes, pBytes, JNI_ABORT);
+	(*env)->DeleteLocalRef(env, stringJbytes);
 
-    return cstr;
+	return cstr;
 }
 
 #define CHAR_UNREF(a) \
@@ -1153,12 +1153,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setChatEphemeralTimer(JNIEn
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setChatMuteDuration(JNIEnv *env, jobject obj, jint chat_id, jlong duration)
 {
-    return dc_set_chat_mute_duration(get_dc_context(env, obj), chat_id, duration);
+	return dc_set_chat_mute_duration(get_dc_context(env, obj), chat_id, duration);
 }
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isMuted(JNIEnv *env, jobject obj)
 {
-    return dc_chat_is_muted(get_dc_chat(env, obj));
+	return dc_chat_is_muted(get_dc_chat(env, obj));
 }
 
 
@@ -1334,25 +1334,25 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getFilename(JNIEnv *env, jobject
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isForwarded(JNIEnv *env, jobject obj)
 {
-    return dc_msg_is_forwarded(get_dc_msg(env, obj))!=0;
+	return dc_msg_is_forwarded(get_dc_msg(env, obj))!=0;
 }
 
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isIncreation(JNIEnv *env, jobject obj)
 {
-    return dc_msg_is_increation(get_dc_msg(env, obj))!=0;
+	return dc_msg_is_increation(get_dc_msg(env, obj))!=0;
 }
 
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isInfo(JNIEnv *env, jobject obj)
 {
-    return dc_msg_is_info(get_dc_msg(env, obj))!=0;
+	return dc_msg_is_info(get_dc_msg(env, obj))!=0;
 }
 
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isSetupMessage(JNIEnv *env, jobject obj)
 {
-    return dc_msg_is_setupmessage(get_dc_msg(env, obj));
+	return dc_msg_is_setupmessage(get_dc_msg(env, obj));
 }
 
 
@@ -1400,19 +1400,19 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFile(JNIEnv *env, jobject obj, j
 
 JNIEXPORT void Java_com_b44t_messenger_DcMsg_setDimension(JNIEnv *env, jobject obj, int width, int height)
 {
-    dc_msg_set_dimension(get_dc_msg(env, obj), width, height);
+	dc_msg_set_dimension(get_dc_msg(env, obj), width, height);
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_DcMsg_setDuration(JNIEnv *env, jobject obj, int duration)
 {
-    dc_msg_set_duration(get_dc_msg(env, obj), duration);
+	dc_msg_set_duration(get_dc_msg(env, obj), duration);
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_DcMsg_setLocation(JNIEnv *env, jobject obj, jfloat latitude, jfloat longitude)
 {
-    dc_msg_set_location(get_dc_msg(env, obj), latitude, longitude);
+	dc_msg_set_location(get_dc_msg(env, obj), latitude, longitude);
 }
 
 
