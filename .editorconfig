@@ -12,7 +12,8 @@ indent_style = space
 indent_size = 2
 
 [*.c]
-indent_style = tab
+indent_style = space
+indent_size = 4
 
 [*.gradle]
 indent_style = space
