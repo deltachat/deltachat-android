@@ -62,69 +62,7 @@ public class DocumentView extends FrameLayout {
 
   public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
-      this.documentSlide = documentSlide;
-
-      LottieComposition composedAnimation = getComposedAnimation();
-      if (documentSlide.hasSticker() && documentSlide.getContentType().startsWith("image/")) {
-	  container.setVisibility(GONE);
-	  lottie.setVisibility(VISIBLE);
-	  lottie.setImageURI(documentSlide.getUri());
-      } else if (composedAnimation != null) {
-	  container.setVisibility(GONE);
-	  lottie.setVisibility(VISIBLE);
-	  lottie.setOnFocusChangeListener((v, hasFocus) -> {
-		  if (v instanceof LottieAnimationView) {
-		      ((LottieAnimationView) v).resumeAnimation();
-		  }
-	      });
-	  ViewUtil.updateLayoutParams(lottie, ViewGroup.LayoutParams.WRAP_CONTENT, 300);
-	  try {
-	      lottie.setAnimation(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), documentSlide.getUri().toString());
-	  } catch (Exception e) {
-	      e.printStackTrace();
-	  }
-	  lottie.setOnClickListener(v -> {
-		  if (v instanceof LottieAnimationView) {
-		      if (((LottieAnimationView) v).isAnimating()) {
-			  ((LottieAnimationView) v).pauseAnimation();
-		      } else {
-			  ((LottieAnimationView) v).resumeAnimation();
-		      }
-		  }
-	      });
-	  lottie.resumeAnimation();
-      } else {
-	  container.setVisibility(VISIBLE);
-	  lottie.setVisibility(GONE);
-
-	  this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
-
-	  String fileSize = Util.getPrettyFileSize(documentSlide.getFileSize())
-	      + " " + getFileType(documentSlide.getFileName()).toUpperCase();
-	  this.fileSize.setText(fileSize);
-
-	  this.setOnClickListener(new OpenClickedListener(documentSlide));
-      }
-  }
-
-  public LottieComposition getComposedAnimation() {
-    if(documentSlide.hasAnimation()){
-      try {
-	  LottieResult<LottieComposition> composed = LottieCompositionFactory.fromJsonInputStreamSync(new GZIPInputStream(getContext().getContentResolver().openInputStream(documentSlide.getUri())), documentSlide.getUri().toString());
-	  if (composed.getValue() != null) {
-	      if (composed.getValue() instanceof LottieComposition) {
-		  return composed.getValue();
-	      }
-	  }
-      } catch (Exception e) {
-	  e.printStackTrace();
-      }
-    }
-    return null;
-  }
-
-  public boolean hasSticker() {
-      return documentSlide.hasSticker();
+      this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
   }
 
   @Override

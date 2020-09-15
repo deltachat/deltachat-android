@@ -282,7 +282,7 @@ public class ConversationItem extends LinearLayout
   }
 
   private boolean hasOnlyThumbnail(DcMsg messageRecord) {
-    return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord) && !hasSticker(messageRecord);
+    return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord);
   }
 
   private boolean hasDocument(DcMsg dcMsg) {
@@ -520,13 +520,6 @@ public class ConversationItem extends LinearLayout
     if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
-    if (documentViewStub.resolved()) {
-	if (documentViewStub.get().hasSticker()) {
-            activeFooter.setBackgroundResource(R.drawable.conversation_item_update_background);
-            activeFooter.setTextColor(Color.parseColor("#FFFFFF"));
-            activeFooter.setPadding(8,4,8,4);
-        }
-    }
     activeFooter.setVisibility(VISIBLE);
     activeFooter.setMessageRecord(current, locale);
   }
