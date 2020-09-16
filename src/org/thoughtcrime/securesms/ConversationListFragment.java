@@ -58,9 +58,6 @@ import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
-import org.thoughtcrime.securesms.components.reminder.OutdatedReminder;
-import org.thoughtcrime.securesms.components.reminder.Reminder;
-import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -97,7 +94,6 @@ public class ConversationListFragment extends Fragment
 
   private ActionMode                  actionMode;
   private RecyclerView                list;
-  private ReminderView                reminderView;
   private View                        emptyState;
   private TextView                    emptySearch;
   private PulsingFloatingActionButton fab;
@@ -132,7 +128,6 @@ public class ConversationListFragment extends Fragment
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
     final View view = inflater.inflate(R.layout.conversation_list_fragment, container, false);
 
-    reminderView = ViewUtil.findById(view, R.id.reminder);
     list         = ViewUtil.findById(view, R.id.list);
     fab          = ViewUtil.findById(view, R.id.fab);
     emptyState   = ViewUtil.findById(view, R.id.empty_state);
@@ -140,8 +135,6 @@ public class ConversationListFragment extends Fragment
 
     if (archive) fab.setVisibility(View.GONE);
     else         fab.setVisibility(View.VISIBLE);
-
-    reminderView.setOnDismissListener(this::updateReminders);
 
     list.setHasFixedSize(true);
     list.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -231,32 +224,23 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint({"StaticFieldLeak", "NewApi"})
   private void updateReminders() {
-    new AsyncTask<Context, Void, Optional<? extends Reminder>>() {
+    new AsyncTask<Context, Void, Void>() {
       @Override
-      protected Optional<? extends Reminder> doInBackground(Context... params) {
+      protected Void doInBackground(Context... params) {
         final Context context = params[0];
         try {
           if (DozeReminder.isEligible(context)) {
             DozeReminder.addDozeReminderDeviceMsg(context);
-            return Optional.absent();
-          } else if (OutdatedReminder.isEligible(context)) {
-            return Optional.of(new OutdatedReminder(context));
           }
         } catch (Exception e) {
           e.printStackTrace();
         }
-
-        return Optional.absent();
+        return null;
       }
 
       @Override
-      protected void onPostExecute(Optional<? extends Reminder> reminder) {
+      protected void onPostExecute(Void result) {
         DozeReminder.maybeAskDirectly(getActivity());
-        if (reminder.isPresent() && getActivity() != null && !isRemoving()) {
-          reminderView.showReminder(reminder.get());
-        } else if (!reminder.isPresent()) {
-          reminderView.hide();
-        }
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getActivity());
   }
