@@ -7,18 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import androidx.annotation.Nullable;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+
 import android.widget.Toast;
 
-import com.b44t.messenger.DcContext;
-
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
-import org.thoughtcrime.securesms.BlockedAndShareContactsActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.SwitchPreferenceCompat;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 
@@ -73,6 +69,16 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         if (!screenLockPreference.isChecked()) {
             manageScreenLockChildren(false);
         }
+
+        // screen-lock is deprecated
+        try {
+            if (!Prefs.getBooleanPreference(getContext(), "pref_android_screen_lock_keep_for_now", false)) {
+                PreferenceCategory screenLockCategory = findPreference("pref_android_screen_lock_category");
+                screenLockCategory.setVisible(false);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void manageScreenLockChildren(boolean enable) {
@@ -103,13 +109,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
             ScreenLockUtil.setShouldLockApp(false);
             return true;
         }
-    }
-
-    public static CharSequence getSummary(Context context) {
-        final String onRes = context.getString(R.string.on);
-        final String offRes = context.getString(R.string.off);
-        String screenLockState = Prefs.isScreenLockEnabled(context) ? onRes : offRes;
-        return context.getString(R.string.screenlock_title) + " " + screenLockState;
     }
 
     private class ChangePassphraseClickListener implements Preference.OnPreferenceClickListener {
