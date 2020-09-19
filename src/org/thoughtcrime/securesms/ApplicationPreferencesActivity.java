@@ -176,8 +176,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
       this.findPreference(PREFERENCE_CATEGORY_NOTIFICATIONS)
           .setSummary(NotificationsPreferenceFragment.getSummary(getActivity()));
-      this.findPreference(PREFERENCE_CATEGORY_APP_PROTECTION)
-          .setSummary(AppProtectionPreferenceFragment.getSummary(getActivity()));
       this.findPreference(PREFERENCE_CATEGORY_APPEARANCE)
           .setSummary(AppearancePreferenceFragment.getSummary(getActivity()));
       this.findPreference(PREFERENCE_CATEGORY_CHATS)

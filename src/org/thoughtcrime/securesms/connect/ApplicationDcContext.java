@@ -62,6 +62,35 @@ public class ApplicationDcContext extends DcContext {
     // if ui-based migrations are needed, this is a good place
     // (see eg. https://github.com/deltachat/deltachat-android/pull/1618 for an example)
 
+    // screen-lock is deprecated, inform users still using it
+    try {
+      if (!Prefs.getBooleanPreference(context, "pref_android_screen_lock_checked", false)) {
+        Prefs.setBooleanPreference(context, "pref_android_screen_lock_checked", true);
+        if (Prefs.isScreenLockEnabled(context)) {
+          Prefs.setBooleanPreference(context, "pref_android_screen_lock_keep_for_now", true);
+          DcMsg msg = new DcMsg(this, DcMsg.DC_MSG_TEXT);
+          msg.setText("⚠️ You are using the function \"Screen lock\" " +
+            "that will be removed in one of the next versions for the following reasons:\n" +
+            "\n" +
+            "• It does not add much protection as one just has to repeat the system secret.\n" +
+            "\n" +
+            "• It is hard to maintain across different Android versions and is not even doable on some." +
+            " We like to put the resources to other things.\n" +
+            "\n" +
+            "• It is not planned/possible on iOS or Desktop this way" +
+            " and stands in the way of moving towards unified solutions.\n" +
+            "\n" +
+            "• Same or even better functionality is available by other apps or maybe by the device itself.\n" +
+            "\n" +
+            "\uD83D\uDC49 For the future, we suggest to keep your phone locked " +
+            "or use an appropriate app or check the device settings.");
+          addDeviceMsg("android-screen-lock-deprecated14", msg);
+        }
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
     new Thread(() -> {
       DcEventEmitter emitter = getEventEmitter();
       while (true) {
