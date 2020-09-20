@@ -42,17 +42,17 @@ RUSTFLAGS="-C lto=on -C embed-bitcode=yes" \
 TARGET_CC=aarch64-linux-android21-clang \
 cargo +`cat rust-toolchain` build --release --target aarch64-linux-android -p deltachat_ffi
 
-echo "-- cross compiling to i686-linux-android (x86) --"
-export CFLAGS=-D__ANDROID_API__=16
-RUSTFLAGS="-C lto=on -C embed-bitcode=yes" \
-TARGET_CC=i686-linux-android16-clang \
-cargo +`cat rust-toolchain` build --release --target i686-linux-android -p deltachat_ffi
+# echo "-- cross compiling to i686-linux-android (x86) --"
+# export CFLAGS=-D__ANDROID_API__=16
+# RUSTFLAGS="-C lto=on -C embed-bitcode=yes" \
+# TARGET_CC=i686-linux-android16-clang \
+# cargo +`cat rust-toolchain` build --release --target i686-linux-android -p deltachat_ffi
 
-echo "-- cross compiling to x86_64-linux-android (x86_64) --"
-export CFLAGS=-D__ANDROID_API__=21
-RUSTFLAGS="-C lto=on -C embed-bitcode=yes" \
-TARGET_CC=x86_64-linux-android21-clang \
-cargo +`cat rust-toolchain` build --release --target x86_64-linux-android -p deltachat_ffi
+# echo "-- cross compiling to x86_64-linux-android (x86_64) --"
+# export CFLAGS=-D__ANDROID_API__=21
+# RUSTFLAGS="-C lto=on -C embed-bitcode=yes" \
+# TARGET_CC=x86_64-linux-android21-clang \
+# cargo +`cat rust-toolchain` build --release --target x86_64-linux-android -p deltachat_ffi
 
 echo -- copy generated .a files --
 cd ..
@@ -66,8 +66,8 @@ mkdir -p x86
 mkdir -p x86_64
 cp deltachat-core-rust/target/armv7-linux-androideabi/release/libdeltachat.a armeabi-v7a
 cp deltachat-core-rust/target/aarch64-linux-android/release/libdeltachat.a arm64-v8a
-cp deltachat-core-rust/target/i686-linux-android/release/libdeltachat.a x86
-cp deltachat-core-rust/target/x86_64-linux-android/release/libdeltachat.a x86_64
+# cp deltachat-core-rust/target/i686-linux-android/release/libdeltachat.a x86
+# cp deltachat-core-rust/target/x86_64-linux-android/release/libdeltachat.a x86_64
 
 echo -- ndk-build --
 cd ..
