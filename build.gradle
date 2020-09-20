@@ -154,6 +154,7 @@ android {
             applicationIdSuffix ".beta"
         }
         release {
+	    applicationIdSuffix ".lite"
             // minification and proguard disabled for now.
             //
             // when enabled, it can cut down apk size about 6%,
