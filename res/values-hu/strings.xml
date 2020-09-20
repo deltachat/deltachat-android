@@ -175,7 +175,6 @@
     <string name="ask_start_chat_with">Beszélgetést indítasz %1$s partnerrel?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Kiveszed a csoportból %1$s partnert?</string>
-    <string name="info_outdated_app_dialog_text">A Delta Chat elérhető:</string>
 
 
     <!-- contact list -->

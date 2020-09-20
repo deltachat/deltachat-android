@@ -226,10 +226,6 @@
     <string name="ask_start_chat_with">گفتگو با %1$s؟</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">حذف %1$s از گروه؟</string>
-    <string name="info_outdated_app_title">ورژن نرم‌افزار شما قدیمی است. </string>
-    <string name="info_outdated_app_text">به نظر می‌رسد دلتاچت را از منبعی نصب کرده‌اید که به روزرسانی ارائه نمی‌دهد(به عنوان مثال گیت‌هاب). لطفا ورژن موجود در استور را نصب کنید تا به جدیدترین قابلیت‌ها و رفع باگ‌ها دسترسی داشته باشد.</string>
-    <string name="info_outdated_app_dialog_title">منابع به روزرسانی</string>
-    <string name="info_outdated_app_dialog_text">دلتا چت روی این موارد در دسترس است: </string>
 
 
     <!-- contact list -->

@@ -224,8 +224,6 @@
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
-    <string name="info_outdated_app_title">Atrodo, kad jūsų programėlės versija yra pasenusi.</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat yra prieinama:</string>
 
 
     <!-- contact list -->

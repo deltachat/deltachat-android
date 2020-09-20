@@ -139,9 +139,6 @@
     <string name="mute_for_two_hours">أكتم لمدة ساعتين</string>
     <string name="mute_for_one_day">أكتم لمدة يوم</string>
     <string name="mute_for_seven_days">أكتم لمدة أسبوع</string>
-    <string name="info_outdated_app_dialog_text">دالتا تشات Delta Chat متوفر على:</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">جهات الإتصا</string>
     <string name="contacts_enter_name_or_email">ادخل الإسم أو البريد الإلكتروني</string>

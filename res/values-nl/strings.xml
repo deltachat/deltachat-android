@@ -247,10 +247,6 @@
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
-    <string name="info_outdated_app_title">Je gebruikt een verouderde versie.</string>
-    <string name="info_outdated_app_text">Het lijkt erop dat je Delta Chat hebt geïnstalleerd uit een bron zonder automatische updates (bijv. GitHub). Installeer Delta Chat via een appwinkel om updates te ontvangen.</string>
-    <string name="info_outdated_app_dialog_title">Bronnen bijwerken</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat is beschikbaar in:</string>
 
 
     <!-- contact list -->

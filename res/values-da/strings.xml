@@ -191,10 +191,6 @@
     <string name="ask_start_chat_with">Samtale med %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Fjerne %1$s fra gruppe?</string>
-    <string name="info_outdated_app_title">Program version er forældet.</string>
-    <string name="info_outdated_app_text">Det ser ud til at Delta Chat er installeret fra en kilde uden auto-opdatering (eks. GitHub). Skift til en butik version for at modtage seneste funktioner og fejlrettelser.</string>
-    <string name="info_outdated_app_dialog_title">Opdatere kilder</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat er tilgængelig på:</string>
 
 
     <!-- contact list -->

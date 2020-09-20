@@ -224,10 +224,6 @@
     <string name="ask_start_chat_with">Cheres tzarrare cun %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Cheres bogare %1$sdae su grupu?</string>
-    <string name="info_outdated_app_title">Sa versione tua de s\'aplicatzione est betza</string>
-    <string name="info_outdated_app_text">Paret chi tue apat installadu Delta Chat dae una fonte chene agiornamentos automàticos (es. GitHub). Pro praghere cola a una versione de una butaga de aplicatziones pro retzire sas ùrtimas funtzionalidades e sos acontzos de sos problemas.</string>
-    <string name="info_outdated_app_dialog_title">Agiorna sas fontes</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat est a disponimentu in:</string>
 
 
     <!-- contact list -->

@@ -247,10 +247,6 @@
     <string name="ask_start_chat_with">Conversa con %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Eliminar  %1$s do grupo?</string>
-    <string name="info_outdated_app_title">A versión da app está desactualizada</string>
-    <string name="info_outdated_app_text">Semella que instalaches Delta Chat dunha fonte sen actualización automática (ex. GitHub). Por favor cambia a unha versión de tenda de aplicacións para recibir as últimas características e arranxo de problemas.</string>
-    <string name="info_outdated_app_dialog_title">Actualizar fontes</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat está dispoñible en:</string>
 
 
     <!-- contact list -->

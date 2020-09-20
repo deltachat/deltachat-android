@@ -219,10 +219,6 @@
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
-    <string name="info_outdated_app_title">La versio de via aplikaĵo estas malnova.</string>
-    <string name="info_outdated_app_text">Ŝajnas ke vi instalis Delta Chat-on el fonto sen aŭtomataj ĝisdatigoj (t.e. GitHub). Bonvolu ŝanĝi al butika versio por ricevi la plej novajn eblecojn kaj cimoriparojn.</string>
-    <string name="info_outdated_app_dialog_title">Ĝisdatigi fontojn</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat estas atingebla je:</string>
 
 
     <!-- contact list -->

@@ -225,10 +225,6 @@
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Kendu %1$s taldetik?</string>
-    <string name="info_outdated_app_title">Zure aplikazioaren bertsioa zaharkituta dago</string>
-    <string name="info_outdated_app_text">Badirudi eguneraketak automatikoki kudeatzen ez dituen iturri batetik instalatu duzula Delta Chat (esaterako GitHub). Aldatu aplikazio dendaren bateko bertsiora azken eguneraketak eta arazoen konponketak jasotzeko.</string>
-    <string name="info_outdated_app_dialog_title">Eguneratu iturriak</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat hemen ago eskuragarri:</string>
 
 
     <!-- contact list -->

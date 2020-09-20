@@ -263,10 +263,6 @@
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
-    <string name="info_outdated_app_title">У вас застаріла версія додатку</string>
-    <string name="info_outdated_app_text">Виглядає так, що ви встановили Delta Chat із джерела без автоматичних оновлень (напр. GitHub). Будь ласка, перейдіть на версію з магазину аби отримувати найновіші функції та виправлення помилок.</string>
-    <string name="info_outdated_app_dialog_title">Оновити джерела</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat доступний на:</string>
 
 
     <!-- contact list -->

@@ -223,10 +223,6 @@
     <string name="ask_start_chat_with">Ngobrol dengan %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Hapus %1$s dari grup?</string>
-    <string name="info_outdated_app_title">Versi aplikasi anda tidak update.</string>
-    <string name="info_outdated_app_text">Tampaknya anda menginstal Delta Chat dari sumber tanpa pemutakhiran otomatis (contoh: GitHub). Silakan ubah ke versi toko untuk mendapatkan fitur-fitur terbaru dan perbaikan bug.</string>
-    <string name="info_outdated_app_dialog_title">Mutakhirkan sumber</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat tersedia di:</string>
 
 
     <!-- contact list -->

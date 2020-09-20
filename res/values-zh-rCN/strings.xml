@@ -239,10 +239,6 @@
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
-    <string name="info_outdated_app_title">您的应用程序版本过时了</string>
-    <string name="info_outdated_app_text">您似乎是从没有自动更新的源（例如 GitHub）安装的 Delta Chat。请切换到应用商店版本来接收最新功能和错误修复。</string>
-    <string name="info_outdated_app_dialog_title">更新源</string>
-    <string name="info_outdated_app_dialog_text">可以从这些地方获取 Delta Chat:</string>
 
 
     <!-- contact list -->

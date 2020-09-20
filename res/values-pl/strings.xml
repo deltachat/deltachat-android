@@ -261,10 +261,6 @@
     <string name="ask_start_chat_with">Rozpocząć czat z %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Usunąć %1$s z grupy?</string>
-    <string name="info_outdated_app_title">Twoja wersja aplikacji jest nieaktualna.</string>
-    <string name="info_outdated_app_text">Wygląda na to, że zainstalowałeś Delta Chat ze źródła bez automatycznych aktualizacji (np. GitHub). Przejdź do sklepu, aby otrzymywać wersję z najnowszymi funkcjami i poprawkami błędów.</string>
-    <string name="info_outdated_app_dialog_title">Źródła aktualizacji</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat jest dostępny na:</string>
 
 
     <!-- contact list -->
