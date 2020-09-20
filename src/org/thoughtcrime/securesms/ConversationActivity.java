@@ -1452,8 +1452,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void handleEvent(DcEvent event) {
     int eventId = event.getId();
-    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED
-     || eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED
+    if ((eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId)
+     || (eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED && event.getData1Int() == chatId)
      || eventId == DcContext.DC_EVENT_CONTACTS_CHANGED) {
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
