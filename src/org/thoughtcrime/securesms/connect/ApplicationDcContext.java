@@ -446,15 +446,13 @@ public class ApplicationDcContext extends DcContext {
       case DC_EVENT_INCOMING_MSG:
         notificationCenter.addNotification(event.getData1Int(), event.getData2Int());
         if (eventCenter != null) {
-          eventCenter.sendToObservers(id, (long)event.getData1Int(), (long)event.getData2Int());
+          eventCenter.sendToObservers(event);
         }
         break;
 
       default: {
-        final Object data1obj = (long)event.getData1Int();
-        final Object data2obj = data2IsString(id) ? event.getData2Str() : (long)event.getData2Int();
         if (eventCenter != null) {
-          eventCenter.sendToObservers(id, data1obj, data2obj);
+          eventCenter.sendToObservers(event);
         }
       }
       break;
