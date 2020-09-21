@@ -6,6 +6,7 @@
     <string name="cancel">لغو</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
+    <string name="select">انتخاب</string>
     <string name="on">روشن</string>
     <string name="off">خاموش</string>
     <string name="def">پیش‌فرض</string>
@@ -14,6 +15,8 @@
     <string name="automatic">خودکار</string>
     <string name="strict">سخت‌گیرانه</string>
     <string name="open">بازکردن</string>
+    <string name="join">پیوستن</string>
+    <string name="rejoin">پیوستن مجدد</string>
     <string name="delete">حذف</string>
     <string name="info">درباره</string>
     <string name="update">به‌ روز رسانی</string>
@@ -103,7 +106,9 @@
     <string name="camera">دوربین</string>
     <string name="location">موقعیت مکانی</string>
     <string name="gallery">گالری</string>
+    <string name="images_and_videos">تصاویر و فیلم‌ها</string>
     <string name="file">پوشه</string>
+    <string name="files">فایل‌ها</string>
     <string name="unknown">ناشناس</string>
 
     <string name="green">سبز</string>
@@ -206,6 +211,17 @@
 
     <string name="file_saved_to">فایل در \"%1$s\" ذخیره شد</string>
 
+    <string name="videochat">گفتگوی تصویری</string>
+    <string name="videochat_invite_user_to_videochat">دعوت کردن %1$sبه گفتگوی تصویری</string>
+    <string name="videochat_invite_user_hint">این عمل، به نرم افزار یا مرورگر سازگار برای هردوطرف مکالمه نیاز دارد. </string>
+    <string name="videochat_contact_invited_hint">%1$sبه تماس تصویری دعوت شد. </string>
+    <string name="videochat_you_invited_hint">شما به تماس تصویری دعوت شده‌اید.</string>
+    <string name="videochat_will_open_in_your_browser">این تماس تصویری در مرورگر شما باز خواهد شد.</string>
+    <string name="videochat_tap_to_join">برای پیوستن ضربه بزنید. </string>
+    <string name="videochat_tap_to_open">برای باز کردن ضربه بزنید. </string>
+    <string name="videochat_invitation">دعوت به مکالمه تصویری.</string>
+    <string name="videochat_invitation_body">شما به مکالمه تصویری دعوت شده اید برای پیوستن%1$s را بزنید.</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">مطمئن هستید می‌خواهید این گروه را ترک کنید؟</string>
     <plurals name="ask_delete_chat">
@@ -217,6 +233,7 @@
         <item quantity="other">پاک کردن %d گفتگو از اینجا و سرور؟</item>
     </plurals>
     <string name="ask_forward">پیام‌ها به %1$sهدایت شوند؟</string>
+    <string name="ask_forward_multiple">انتقال پیام‌ها به %1$d چت؟</string>
     <string name="ask_export_attachment">ضمیمه صادر شود؟ صادر کردن ضمیمه باعث می‌شود دیگر نرم‌افزارهای روی دستگاه شما بتوانند به آن دسترسی داشته باشند. \n\nادامه می‌دهید؟</string>
     <string name="ask_block_contact">مخاطب مسدود شود؟ شما دیگر پیامی از این مخاطب دریافت نخواهید کرد.</string>
     <string name="ask_unblock_contact">رفع مسدودیت مخاطب؟ دوباره قادر خواهید بود پیام‌های ارسال شده توسط این مخاطب را دریافت کنید.</string>
@@ -325,6 +342,8 @@
     <string name="login_smtp_port">SMTP port </string>
     <string name="login_smtp_security">امنیت SMTP  </string>
     <string name="login_auth_method">روش تایید هویت</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">بررسی %1$s</string>
     <string name="login_info_oauth2_title">با تنظیمات ساده‌ شده ادامه می‌دهید؟</string>
     <string name="login_info_oauth2_text">آدرس ایمیل وارد شده از تنظیمات ساده پشتیبانی می‌کند(OAuth 2.0).\n\nIn مرحله بعد، لطفا به دلتاچت اجازه دهید که به عنوان نرم‌افزار ایمیل شما عمل نماید\n\n سرور دلتاچت وجود ندارد داده‌های شما در دستگاه خودتان باقی می‌ماند. </string>
     <string name="login_certificate_checks">بررسی تاییدیه</string>
@@ -338,7 +357,7 @@
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">امکان ورود با\"%1$s\"وجود ندارد. لطفا صحت ایمیل و رمز عبور را بررسی کنید. </string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">بازخورد از %1$s: %2$s\n\n برخی ارائه دهندگان ایمیل اطلاعات اضافی در صندوق ورودی شما قرار می‌دهند. می‌توانید این موارد را در صفحه وب بررسی کنید. اگر به مشکلی برخوردید به ارائه دهندگان ایمیل یا دوستان خود مراجعه کنید. </string>
+    <string name="login_error_server_response">بازخورد از %1$s: %2$s\n\n برخی ارائه دهندگان ایمیل، اطلاعات بیشتری درمورد ابن مشکل برایتان ارسال می‌کنند. می‌توانید صندوق ورودی خود را از طریق وب سایت ایمیل یا نرم‌افزار همیشگی خود بررسی کنید. . اگر به مشکلی برخوردید به ارائه دهندگان ایمیل یا دوستان خود مراجعه کنید. </string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">پذیرش تاییدیه‌های نادرست</string>
     <string name="used_settings">تنظیمات استفاده شده:</string>
@@ -449,9 +468,9 @@
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>
     <string name="autodel_server_title">پاک کردن پیام‌ها از سرور</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">آیا می‌خواهید %1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه هم می‌شود\n\n•  پیام‌ها جدای از اینکه دیده شده باشند یا نه پاک می‌شوند. \"پیام های ذخیره شده\" شامل این پاک کردن محلی نمی‌شوند. </string>
+    <string name="autodel_device_ask">آیا می‌خواهید %1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه‌ها هم می‌شود\n\n•  پیام‌ها جدای از اینکه دیده شده باشند یا نه پاک می‌شوند. \"پیام های ذخیره شده\" شامل این پاک کردن محلی نمی‌شوند. </string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">آیا می‌خواهید%1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه هم می‌شود\n\n• همچنین ایمیل‌های مربوط به \"نمایش ایمیل‌های معمولی\" باشند نیز از سرور پاک می‌شوند. </string>
+    <string name="autodel_server_ask">آیا می‌خواهید%1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه هم می‌شود\n\n• همچنین ایمیل‌های مربوط به \"نمایش ایمیل‌های معمولی\"  نیز از سرور پاک می‌شوند. </string>
     <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
     <string name="autodel_at_once">یک بار</string>
     <string name="autodel_after_1_hour">بعد از 1 ساعت</string>
