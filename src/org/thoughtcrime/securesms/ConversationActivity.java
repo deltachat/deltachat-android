@@ -63,6 +63,7 @@ import androidx.core.view.WindowCompat;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
@@ -1449,9 +1450,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED
-     || eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED
+  public void handleEvent(DcEvent event) {
+    int eventId = event.getId();
+    if ((eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId)
+     || (eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED && event.getData1Int() == chatId)
      || eventId == DcContext.DC_EVENT_CONTACTS_CHANGED) {
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);

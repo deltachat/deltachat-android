@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.geojson.Feature;
@@ -183,9 +184,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     @Override
-    public void handleEvent(int eventId, Object data1, Object data2) {
+    public void handleEvent(DcEvent event) {
+        int eventId = event.getId();
         Log.d(TAG, "updateEvent in MapDataManager called. eventId: " + eventId);
-        int contactId = ((Long) data1).intValue();
+        int contactId = event.getData1Int();
         if (contactMapSources.containsKey(contactId)) {
             DataCollector collector = new DataCollector(dcContext,
                     contactMapSources,

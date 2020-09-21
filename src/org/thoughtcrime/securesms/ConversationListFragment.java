@@ -28,6 +28,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.b44t.messenger.DcEvent;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.core.content.ContextCompat;
@@ -583,7 +585,7 @@ public class ConversationListFragment extends Fragment
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
+  public void handleEvent(DcEvent event) {
     getLoaderManager().restartLoader(0, null, this);
   }
 }

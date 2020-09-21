@@ -57,6 +57,7 @@ import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
@@ -840,9 +841,30 @@ public class ConversationFragment extends Fragment
     }
 
     @Override
-    public void handleEvent(int eventId, Object data1, Object data2) {
-        if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED) {
-            updateLocationButton();
+    public void handleEvent(DcEvent event) {
+        switch (event.getId()) {
+            case DcContext.DC_EVENT_MSGS_CHANGED:
+                if (event.getData1Int() == 0 // deleted messages or batch insert
+                 || event.getData1Int() == chatId) {
+                    reloadList();
+                }
+                break;
+
+            case DcContext.DC_EVENT_INCOMING_MSG:
+            case DcContext.DC_EVENT_MSG_DELIVERED:
+            case DcContext.DC_EVENT_MSG_FAILED:
+            case DcContext.DC_EVENT_MSG_READ:
+                if (event.getData1Int() == chatId) {
+                    reloadList();
+                }
+                break;
+
+            case DcContext.DC_EVENT_CHAT_MODIFIED:
+                if (event.getData1Int() == chatId) {
+                  updateLocationButton();
+                  reloadList();
+                }
+                break;
         }
 
         // removing the "new message" marker on incoming messages may be a bit unexpected,
@@ -851,7 +873,5 @@ public class ConversationFragment extends Fragment
         /*if (eventId == DcContext.DC_EVENT_INCOMING_MSG && isResumed()) {
             setLastSeen(-1);
         }*/
-
-        reloadList();
     }
 }
