@@ -701,7 +701,7 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Achtergrondmeldingen</string>
     <string name="pref_background_notifications_explain">Zet een achtergrondverbinding op naar je server en negeert alle accu-optimalisaties.</string>
-    <string name="pref_background_notifications_rationale">Om een achtergrondverbinding naar je server op te zetten, dien je alle accu-optimalisaties te negeren in de volgende stap.\n\nDelta Chat gebruikt weinig systeembronnen en verhoogt je accuverbruik nauwelijks.</string>
+    <string name="pref_background_notifications_rationale">Om een achtergrondverbinding naar je server op te zetten, dien je in de volgende stap alle accu-optimalisaties te negeren.\n\nDelta Chat gebruikt weinig systeembronnen en verhoogt nauwelijks je accuverbruik.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Betrouwbare achtergrondverbinding</string>
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>

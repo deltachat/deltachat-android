@@ -47,6 +47,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
@@ -426,8 +427,8 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+  public void handleEvent(DcEvent event) {
+    if (event.getId()==DcContext.DC_EVENT_CONTACTS_CHANGED) {
       getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
     }
   }

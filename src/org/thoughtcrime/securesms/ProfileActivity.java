@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 
+import com.b44t.messenger.DcEvent;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -177,7 +178,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
+  public void handleEvent(DcEvent event) {
     updateToolbar();
   }
 
