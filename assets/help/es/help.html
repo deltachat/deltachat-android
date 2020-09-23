@@ -10,7 +10,7 @@
       <li><a href="#quién-ve-mi-foto-de-perfil">¿Quién ve mi foto de perfil?</a></li>
       <li><a href="#delta-chat-soporta-mensajes-con-formato-html">¿Delta Chat soporta mensajes con formato HTML?</a></li>
       <li><a href="#por-qué-debo-ingresar-mi-contraseña-de-correo-electrónico-en-delta-chat-es-esto-seguro">¿Por qué debo ingresar mi contraseña de correo electrónico en Delta Chat? ¿Es esto seguro?</a></li>
-      <li><a href="#qué-permisos-de-android-necesita-delta-chat">¿Qué permisos de Android necesita Delta Chat?</a></li>
+      <li><a href="#which-permissions-does-delta-chat-need">Which permissions does Delta Chat need?</a></li>
       <li><a href="#grupos">Grupos</a></li>
       <li><a href="#creación-de-un-grupo">Creación de un grupo</a></li>
       <li><a href="#agregar-miembros-a-un-grupo">Agregar miembros a un grupo</a></li>
@@ -124,7 +124,7 @@ los mismos servidores de correo electrónico</li>
   <li><strong>Respuestas</strong> a mensajes enviados por ti</li>
 </ul>
 
-<p>Otros mensajes no aparecen automáticamente y se encuentran en el menú principal en <strong>Solicitudes de contacto</strong>. Si lo desea, puede iniciar un chat desde allí.</p>
+<p>Other messages do not appear automatically, and are to be found in <strong>Contact requests</strong>. If desired a chat can be started from there.</p>
     
       <h3 id="qué-pasa-con-el-spam">
         
@@ -210,13 +210,17 @@ token de acceso.</p>
 <p>Como Delta Chat es de Código Abierto, puedes investigar el Código Fuente si quieres verificar que tus credenciales son gestionadas de manera segura.
 Estamos felices de recibir críticas que hagan la aplicación más segura para todos los usuarios.</p>
     
-      <h3 id="qué-permisos-de-android-necesita-delta-chat">
+      <h3 id="which-permissions-does-delta-chat-need">
         
         
-          ¿Qué permisos de Android necesita Delta Chat? <a href="#qué-permisos-de-android-necesita-delta-chat" class="anchor"></a>
+          Which permissions does Delta Chat need? <a href="#which-permissions-does-delta-chat-need" class="anchor"></a>
         
         
       </h3>
+
+<p>Depending on the operating system in use,
+you may be asked to grant permissions to the app.
+This is what Delta Chat does with these permissions:</p>
 
 <ul>
   <li>Camera <em>(can be disallowed)</em>
@@ -277,9 +281,9 @@ Estamos felices de recibir críticas que hagan la aplicación más segura para t
       </h3>
 
 <ul>
-  <li>Seleccione <strong>Agregar grupo</strong> desde el “Menú sándwich” en la esquina superior derecha de la descripción del chat.</li>
-  <li>En la siguiente vista, seleccione los <strong>miembros del grupo</strong> y presione la marca de verificación en la esquina superior derecha. Después de eso, usted puede definir un <strong>nombre de grupo</strong>.</li>
-  <li>Tan pronto como escriba <strong>el primer mensaje</strong>, se le informará a todos los miembros sobre el nuevo grupo y pueden responder en el grupo (hasta que no escriba un mensaje en el grupo, este es invisible para los miembros).</li>
+  <li>Select <strong>New chat</strong> and then <strong>New group</strong> from the menu in the upper right corner or hit the corresponding button on Android/iOS.</li>
+  <li>On the following screen, select the <strong>group members</strong> and define a <strong>group name</strong>. You can also select a <strong>group avatar</strong>.</li>
+  <li>As soon as you write the <strong>first message</strong> in the group, all members are informed about the new group and can answer in the group (as long as you do not write a message in the group the group is invisible to the members).</li>
 </ul>
     
       <h3 id="agregar-miembros-a-un-grupo">
@@ -418,8 +422,8 @@ Después de esto, todos los mensajes subsiguientes se cifran de extremo a extrem
 Si uno de los compañeros de chat usa una aplicación de correo electrónico que no soporta Autocrypt, los mensajes no se cifrarán hasta que una aplicación compatible con Autocrypt sea utilizada.</p>
   </li>
   <li>
-    <p>Si desea <em>desactivar</em> el cifrado de extremo a extremo,
-use la configuración correspondiente en “Ajustes / Avanzado”.</p>
+    <p>If you want to rather avoid end-to-end-encrypted e-mails by default, 
+use the corresponding Autocrypt setting in “Settings” or “Advanced settings”.</p>
   </li>
 </ul>
     
@@ -447,16 +451,20 @@ your device and a friend’s device.</li>
         
       </h3>
 
-<p>El perfil del usuario muestra información adicional:</p>
+<p>If you are within immediate distance of the chat partner:</p>
 
 <ul>
-  <li>
-    <p>Puede pulsar “Código de invitación QR” en Android y luego usar el botón “Escanear código QR “
-en otro dispositivo para escanear este código. Si ambos dispositivos están en línea,
-comenzarán un chat entre sí (si no existe ya)
-y también se verificarán las claves de cifrado. Ambos verán un
-mensaje del sistema “remitente verificado” en su chat 1:1.</p>
-  </li>
+  <li>Select <strong>QR Invite code</strong> on one device and then <strong>Scan QR code</strong>
+on the other one and scan the code. If both devices are online,
+they will introduce a chat channel with each-other (if it doesn’t exist already) 
+and the encryption keys will also be verified.  Both will see a
+“sender verified” system message in their 1:1 chat.</li>
+</ul>
+
+<p>If you are not near the chat partner, you can check the status manually in the “Encryption” dialog
+(user profile on Android/iOS or right-click a user’s chat-list item on desktop):</p>
+
+<ul>
   <li>
     <p>Para el cifrado de extremo a extremo, Delta Chat muestra dos huellas digitales allí.
 Si aparecen las mismas huellas digitales en el dispositivo de su compañero de chat,
@@ -477,7 +485,7 @@ la conexión es segura.</p>
 
 <ul>
   <li>
-    <p>Si se muestra un pequeño <strong>candado</strong> junto a un mensaje, esto implica que el mensaje está encriptado de extremo a extremo <em>y</em> se envía desde el remitente dado, <em>y</em> su respuesta también se cifrará de extremo a extremo.</p>
+    <p>A little <strong>padlock</strong> shown beside a message denotes whether the message is end-to-end-encrypted from from the given sender.</p>
   </li>
   <li>
     <p>Si no hay <strong>ningún candado</strong>, el mensaje generalmente se transporta sin encriptar, por ejemplo. porque usted o el remitente han deshabilitado el cifrado de extremo a extremo, o el remitente utiliza una aplicación que no admite el cifrado de extremo a extremo.</p>
@@ -605,7 +613,7 @@ RFC</a>.</p>
     <p>Si. La mejor manera es enviar un Mensaje de Configuración de Autocrypt desde el otro cliente de correo electrónico. Busca algo como <strong>Iniciar la Transferencia de la Configuración Autocrypt</strong> en la configuración del otro cliente y seguir las instrucciones que se muestren allí.</p>
   </li>
   <li>
-    <p>Alternativamente, puede importar la clave manualmente en “Configuración avanzada / Administrar claves privadas”. Precaución: asegúrese de que la clave no esté protegida por una contraseña o elimine la contraseña de antemano.</p>
+    <p>Alternatively, you can import the key manually in “Settings” or “Advanced settings” and then “Import secret keys”. Caution: Make sure the key is not protected by a password, or remove the password beforehand.</p>
   </li>
 </ul>
 
@@ -672,7 +680,7 @@ FAQ</a>.</li>
 a backup from the old device, and import it into the new device:</p>
 
 <ul>
-  <li>On the old device, choose “Settings / Chats and media / Backup”. Enter your
+  <li>On the old device, go to “Settings” or “Settings / Chats and media” and then to “Backup”. Enter your
 screen unlock PIN, pattern, or password. Then you can click on “Start
 Backup”. This saves the backup file to your device. Now you have to transfer
 it to the other device somehow.</li>
