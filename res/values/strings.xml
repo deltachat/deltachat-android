@@ -371,7 +371,7 @@
     <string name="delete_account_ask">Are you sure you want to delete your account data?</string>
     <string name="switching_account">Switching account…</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
-    <string name="configuration_failed_with_error">Configuration failed. Error: %1$s</string>
+    <string name="configuration_failed_with_error">Error:\n\n%1$s</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
