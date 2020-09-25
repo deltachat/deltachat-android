@@ -29,6 +29,7 @@
     <string name="unarchive">خروج از بایگانی</string>
     <string name="mute">سکوت</string>
     <string name="ephemeral_messages">پیام‌های ناپدید شونده</string>
+    <string name="ephemeral_messages_hint">این تنظیمات مشمول تمام افرادی که از دلتاچت استفاده می کنند. با این وجود، آنها ممکن است پیامها را کپی، ذخیره یا فوروارد کنند و یا از سایر برنامه های ایمیل استفاده کند.</string>
     <string name="save">ذخیره</string>
     <string name="chat">گفتگو</string>
     <string name="media">رسانه</string>
@@ -219,6 +220,8 @@
     <string name="videochat_will_open_in_your_browser">این تماس تصویری در مرورگر شما باز خواهد شد.</string>
     <string name="videochat_tap_to_join">برای پیوستن ضربه بزنید. </string>
     <string name="videochat_tap_to_open">برای باز کردن ضربه بزنید. </string>
+    <string name="videochat_instance">جلسه تماس تصویری</string>
+    <string name="videochat_instance_placeholder">جلسه تماس تصویری شما</string>
     <string name="videochat_invitation">دعوت به مکالمه تصویری.</string>
     <string name="videochat_invitation_body">شما به مکالمه تصویری دعوت شده اید برای پیوستن%1$s را بزنید.</string>
 
@@ -463,6 +466,10 @@
     <string name="pref_background_default_color">رنگ پیش‌فرض</string>
     <string name="pref_background_custom_image">تصویر ترجیحی</string>
     <string name="pref_background_custom_color">رنگ ترجیحی</string>
+    <string name="export_aborted">فرایند صدور متوقف شد.</string>
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">پاک کردن پیام های قدیمی</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">پاک کردن خودکار پیام‌ها</string>
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>
@@ -473,10 +480,14 @@
     <string name="autodel_server_ask">آیا می‌خواهید%1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه هم می‌شود\n\n• همچنین ایمیل‌های مربوط به \"نمایش ایمیل‌های معمولی\"  نیز از سرور پاک می‌شوند. </string>
     <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
     <string name="autodel_at_once">یک بار</string>
+    <string name="after_30_seconds">بعد از 30 ثانیه</string>
+    <string name="after_1_minute">بعد از 1 دقیقه</string>
     <string name="autodel_after_1_hour">بعد از 1 ساعت</string>
     <string name="autodel_after_1_day">بعد از 1  روز</string>
     <string name="autodel_after_1_week">بعد از 1 هفته</string>
     <string name="autodel_after_4_weeks">بعد از 4 هفته</string>
+    <string name="autodel_after_1_year">بعد از 1 سال</string>
+
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt یک ویژگی جدید و باز برای رمزگذاری گیرنده به گیرنده خودکار برای رمزگذاری ایمیل است.\n\n تنظیمات رمزگذاری گیرنده به گیرنده در موقع لازم به صورت خودکار ایجاد می‌شود و می‌توانید با پیام تنظیماتAutocrypt را بین دستگاه‌ها  انتقال دهید. </string>
@@ -509,6 +520,15 @@
     <string name="systemmsg_action_by_me">%1$sتوسط من</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$sتوسط%2$s</string>
+    <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">زمان سنج پیام های ناپدید شونده غیرفعال شد.</string>
+    <string name="systemmsg_ephemeral_timer_minute">زمان سنج پیام های ناپدید شونده برای 1 دقیقه تنظیم شد.</string>
+    <string name="systemmsg_ephemeral_timer_hour">زمان سنج پیام های ناپدید شونده برای 1 ساعت تنظیم شد.</string>
+    <string name="systemmsg_ephemeral_timer_day">زمان سنج پیام های ناپدید شونده برای 1 روز تنظیم شد.</string>
+    <string name="systemmsg_ephemeral_timer_week">زمان سنج پیام های ناپدید شونده برای 1 هفته تنظیم شد.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">زمان سنج پیام های ناپدید شونده برای 4 هفته تنظیم شد.</string>
+
+
     <!-- screen lock -->
     <string name="screenlock_title">قفل صفحه</string>
     <string name="screenlock_explain">قفل کردن صفحه با قفل صفحه اندروید یا اثر انگشت، برای اینکه محتوای قبلی نشان داده نشود لطفا \"امنیت صفحه\" را هم فعال کنید.</string>
@@ -572,6 +592,9 @@
     <string name="perm_explain_access_to_mic_denied">برای ارسال پیام صوتی به تنظیمات نرم‌افزار رفته و پس از انتخاب \"Permissions\" گزینه \"Microphone\" را فعال نمایید. </string>
     <string name="perm_explain_access_to_storage_denied">برای دریافت یا ارسال فایل به تنظیمات نرم‌افزار برویرد و از \"Permissions\" گزینه \"Storage\" را فعال نمایید. </string>
     <string name="perm_explain_access_to_location_denied">برای افزودن موقعیت مکانی به تنظیمات نرم‌افزار رفته و از \"Permissions\" گزینه\"Location\" را فعال نمایید.</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">هر کجا مایلید شروع به رسم کردن کنید تا مات شود.</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">پیام رمزگذاری شده</string>
@@ -660,6 +683,16 @@
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش لیست ایمیل‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت سرور ندارد مخاطبین شما به جایی ارسال نمی‌شوند. </string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دلتاچت از میکروفون برای ذخیره و ارسال پیام صوتی یا فیلم دارای صدا استفاده می‌کند.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دلتاچت میخواهد تصاویر را در مجموعه عکسهای شما ذخیره کند.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">اعلان‌های پیش زمینه</string>
+    <string name="pref_background_notifications_explain">از یک ارتباط پیش زمینه به سرور شما استفاده می کند و برای استفاده از آن باید تنظیمات بهینه سازی مصرف باتری غیرفعال شود.</string>
+    <string name="pref_background_notifications_rationale">برای حفظ ارتباطتان با سرور ایمیل و دریافت پیامها در پیش زمینه، در گام بعدی، تنظیمات بهینه سازی باتری را نادیده بگیرید. \n\n دلتاچت از منابع کمی استفاده میکند و مراقب است باتری شما را بیش از حد مصرف نکند. </string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">اتصالات پیش زمینه قابل اطمینان</string>
+    <string name="pref_reliable_service_explain">به یک اعلان دائمی احتیاج دارد.</string>
     <string name="perm_enable_bg_reminder_title">برای دریافت پیام‌ها به صورت پس زمینه در دلتاچت این جا را ضربه بزنید. </string>
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتا چت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
 
