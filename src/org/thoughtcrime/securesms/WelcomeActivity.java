@@ -197,7 +197,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     public static void maybeShowConfigurationError(Activity activity, String data2) {
-        if (data2 != null && data2.isEmpty()) {
+        if (data2 != null && !data2.isEmpty()) {
             AlertDialog d = new AlertDialog.Builder(activity)
                 .setMessage(data2)
                 .setPositiveButton(android.R.string.ok, null)
