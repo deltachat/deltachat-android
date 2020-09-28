@@ -35,6 +35,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -342,10 +344,15 @@ public class ContactSelectionListFragment extends    Fragment
     Thread thread = new Thread() {
       @Override
       public void run() {
-        ContactAccessor contactAccessor = ContactAccessor.getInstance();
-        String allSystemContacts = contactAccessor.getAllSystemContactsAsString(getContext());
-        if (!allSystemContacts.isEmpty()) {
-          dcContext.addAddressBook(allSystemContacts);
+        try {
+          ContactAccessor contactAccessor = ContactAccessor.getInstance();
+          String allSystemContacts = contactAccessor.getAllSystemContactsAsString(getContext());
+          if (!allSystemContacts.isEmpty()) {
+            dcContext.addAddressBook(allSystemContacts);
+          }
+        } catch (SecurityException e) {
+          Log.e(TAG, "Caught a weird bug in the Android OS https://github.com/deltachat/deltachat-android/issues/1639: " + e);
+          e.printStackTrace();
         }
       }
     };
