@@ -172,6 +172,12 @@ public class ConversationFragment extends Fragment
         super.onActivityCreated(bundle);
         initializeResources();
         initializeListAdapter();
+
+        int freshMsgs = dcContext.getFreshMsgCount((int) chatId);
+        if (freshMsgs > 0) {
+            setLastSeenPosition(freshMsgs - 1);
+            moveToLastSeen();
+        }
     }
 
     private void setNoMessageText() {
@@ -269,7 +275,7 @@ public class ConversationFragment extends Fragment
         if (getListAdapter().getLastSeenPosition() < 0) {
             return;
         }
-        scrollToLastSeenPosition(getListAdapter().getLastSeenPosition());
+        scrollToLastSeenPosition(getListAdapter().getLastSeenPosition() + 1);
     }
 
     private void initializeResources() {
@@ -350,14 +356,24 @@ public class ConversationFragment extends Fragment
         }
     }
 
-    public void setLastSeen(long lastSeen) {
+    void setLastSeen(long lastSeen) {
         getListAdapter().setLastSeen(lastSeen);
         if (lastSeenDecoration != null) {
             list.removeItemDecoration(lastSeenDecoration);
         }
-
         if (lastSeen > 0) {
-            lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter()/*, lastSeen*/);
+            lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
+            list.addItemDecoration(lastSeenDecoration);
+        }
+    }
+
+    private void setLastSeenPosition(int position) {
+        getListAdapter().setLastSeenPosition(position);
+        if (lastSeenDecoration != null) {
+            list.removeItemDecoration(lastSeenDecoration);
+        }
+        if (position >= 0) {
+            lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
             list.addItemDecoration(lastSeenDecoration);
         }
     }
