@@ -101,7 +101,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         // base name of the generated apk
-        project.ext.set("archivesBaseName", "deltachat");
+        project.ext.set("archivesBaseName", "deltachat-lite");
 
         buildConfigField "boolean", "DEV_BUILD", "false"
         buildConfigField "String", "MAP_ACCESS_TOKEN", '"pk.eyJ1IjoiZGVsdGFjaGF0IiwiYSI6ImNqc3c1aWczMzBjejY0M28wZmU0a3cwMzMifQ.ZPTH9dFJaav06RAu4rTYHw"'
@@ -154,7 +154,7 @@ android {
             applicationIdSuffix ".beta"
         }
         release {
-	    applicationIdSuffix ".lite"
+	    applicationIdSuffix ".lite2"
             // minification and proguard disabled for now.
             //
             // when enabled, it can cut down apk size about 6%,
