@@ -577,14 +577,12 @@ public class ConversationFragment extends Fragment
             boolean currentlyAtZoomScrollHeight = isAtZoomScrollHeight();
 //            int     positionId                  = getHeaderPositionId();
 
-            if (currentlyAtBottom && !wasAtBottom) {
-                ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
-            }
-
             if (currentlyAtZoomScrollHeight && !wasAtZoomScrollHeight) {
                 ViewUtil.animateIn(scrollToBottomButton, scrollButtonInAnimation);
+            } else if (currentlyAtBottom && !wasAtBottom) {
+                ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
             }
-
+            
 //      if (positionId != lastPositionId) {
 //        bindScrollHeader(conversationDateHeader, positionId);
 //      }
