@@ -10,7 +10,7 @@
       <li><a href="#who-sees-my-profile-picture">Who sees my profile picture?</a></li>
       <li><a href="#does-delta-chat-support-html-e-mails">Does Delta Chat support HTML e-mails?</a></li>
       <li><a href="#why-do-i-have-to-enter-my-e-mail-password-into-delta-chat-is-this-secure">Why do I have to enter my E-Mail password into Delta Chat? Is this secure?</a></li>
-      <li><a href="#which-android-permissions-does-delta-chat-need">Which Android permissions does Delta Chat need?</a></li>
+      <li><a href="#which-permissions-does-delta-chat-need">Which permissions does Delta Chat need?</a></li>
     </ul>
   </li>
   <li><a href="#groups">Groups</a>
@@ -127,7 +127,7 @@ the same e-mail servers</li>
   <li><strong>Replies</strong> to messages sent by you</li>
 </ul>
 
-<p>Other messages do not appear automatically, and are to be found in the main menu at <strong>Contact requests</strong>. If desired a chat can be started from there.</p>
+<p>Other messages do not appear automatically, and are to be found in <strong>Contact requests</strong>. If desired a chat can be started from there.</p>
     
       <h3 id="what-about-spam">
         
@@ -216,13 +216,17 @@ Code</a>
 if you want to verify that your credentials are handled securely. We are happy
 about feedback which makes the app more secure for all of our users.</p>
     
-      <h3 id="which-android-permissions-does-delta-chat-need">
+      <h3 id="which-permissions-does-delta-chat-need">
         
         
-          Which Android permissions does Delta Chat need? <a href="#which-android-permissions-does-delta-chat-need" class="anchor"></a>
+          Which permissions does Delta Chat need? <a href="#which-permissions-does-delta-chat-need" class="anchor"></a>
         
         
       </h3>
+
+<p>Depending on the operating system in use,
+you may be asked to grant permissions to the app.
+This is what Delta Chat does with these permissions:</p>
 
 <ul>
   <li>Camera <em>(can be disallowed)</em>
@@ -283,8 +287,8 @@ about feedback which makes the app more secure for all of our users.</p>
       </h3>
 
 <ul>
-  <li>Select <strong>Add group</strong> from the “Sandwich menu” in the upper right corner of the chat overview.</li>
-  <li>On the following screen, select the <strong>group members</strong> and hit the check mark in the upper right corner. After that, you can define a <strong>group name</strong>.</li>
+  <li>Select <strong>New chat</strong> and then <strong>New group</strong> from the menu in the upper right corner or hit the corresponding button on Android/iOS.</li>
+  <li>On the following screen, select the <strong>group members</strong> and define a <strong>group name</strong>. You can also select a <strong>group avatar</strong>.</li>
   <li>As soon as you write the <strong>first message</strong> in the group, all members are informed about the new group and can answer in the group (as long as you do not write a message in the group the group is invisible to the members).</li>
 </ul>
     
@@ -429,7 +433,7 @@ messages are not encrypted until an Autocrypt-compliant app is available again.<
   </li>
   <li>
     <p>If you want to rather avoid end-to-end-encrypted e-mails by default, 
-use the corresponding Autocrypt setting in “Settings / Advanced settings”.</p>
+use the corresponding Autocrypt setting in “Settings” or “Advanced settings”.</p>
   </li>
 </ul>
     
@@ -457,16 +461,20 @@ your device and a friend’s device.</li>
         
       </h3>
 
-<p>The user’s profile shows some additional info:</p>
+<p>If you are within immediate distance of the chat partner:</p>
 
 <ul>
-  <li>
-    <p>Tap “QR Invite code” on Android and then use the “Scan QR code”
-button on another device to scan this code. If both devices are online,
+  <li>Select <strong>QR Invite code</strong> on one device and then <strong>Scan QR code</strong>
+on the other one and scan the code. If both devices are online,
 they will introduce a chat channel with each-other (if it doesn’t exist already) 
 and the encryption keys will also be verified.  Both will see a
-“sender verified” system message in their 1:1 chat.</p>
-  </li>
+“sender verified” system message in their 1:1 chat.</li>
+</ul>
+
+<p>If you are not near the chat partner, you can check the status manually in the “Encryption” dialog
+(user profile on Android/iOS or right-click a user’s chat-list item on desktop):</p>
+
+<ul>
   <li>
     <p>For end-to-end-encryption, Delta Chat shows two fingerprints there. 
 If the same fingerprints appear on your chat partner’s device, 
@@ -487,7 +495,7 @@ the connection is safe.</p>
 
 <ul>
   <li>
-    <p>If a little <strong>padlock</strong> is shown beside a message, this denotes the message is end-to-end-encrypted <em>and</em> is sent from the given sender <em>and</em> that your answer will be end-to-end-encrypted as well.</p>
+    <p>A little <strong>padlock</strong> shown beside a message denotes whether the message is end-to-end-encrypted from from the given sender.</p>
   </li>
   <li>
     <p>If there is <strong>no padlock</strong>, the message is usually transported unencrypted e.g. because you or the sender have turned off end-to-end-encryption, or the sender uses an app without support for end-to-end-encryption.</p>
@@ -615,7 +623,7 @@ RFC</a>.</p>
     <p>Yes. The best way is to send an Autocrypt Setup Message from the other e-mail client. Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the settings of the other client and follow the instructions shown there.</p>
   </li>
   <li>
-    <p>Alternatively, you can import the key manually in “Advanced settings / Manage private keys”. Caution: Make sure the key is not protected by a password, or remove the password beforehand.</p>
+    <p>Alternatively, you can import the key manually in “Settings” or “Advanced settings” and then “Import secret keys”. Caution: Make sure the key is not protected by a password, or remove the password beforehand.</p>
   </li>
 </ul>
 
@@ -682,7 +690,7 @@ FAQ</a>.</li>
 a backup from the old device, and import it into the new device:</p>
 
 <ul>
-  <li>On the old device, choose “Settings / Chats and media / Backup”. Enter your
+  <li>On the old device, go to “Settings” or “Settings / Chats and media” and then to “Backup”. Enter your
 screen unlock PIN, pattern, or password. Then you can click on “Start
 Backup”. This saves the backup file to your device. Now you have to transfer
 it to the other device somehow.</li>

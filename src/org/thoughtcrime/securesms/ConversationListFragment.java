@@ -114,6 +114,7 @@ public class ConversationListFragment extends Fragment
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
