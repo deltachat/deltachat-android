@@ -636,7 +636,7 @@ public class ConversationItem extends LinearLayout
       this.groupSender.setTextColor(forwardedTitleColor);
     }
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
-      this.groupSender.setText(dcContact.getDisplayName());
+      this.groupSender.setText(messageRecord.getSenderName());
 
       this.groupSender.setTextColor(dcContact.getArgbColor());
     }
@@ -710,7 +710,7 @@ public class ConversationItem extends LinearLayout
   private void handleDeadDropClick() {
     new AlertDialog.Builder(context)
       .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-        int chatId = dcContext.createChatByMsgId(messageRecord.getId());
+        int chatId = messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_YES);
         if( chatId != 0 ) {
           Intent intent = new Intent(context, ConversationActivity.class);
           intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
@@ -718,9 +718,7 @@ public class ConversationItem extends LinearLayout
         }
       })
       .setNegativeButton(android.R.string.cancel, null)
-      .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
-        dcContext.blockContact(messageRecord.getFromId(), 1);
-      })
+      .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
       .setMessage(context.getString(R.string.ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
       .show();
   }

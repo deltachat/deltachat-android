@@ -388,12 +388,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedChat(JNIEnv *env, jo
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedContact(JNIEnv *env, jobject obj, jint contact_id)
-{
-    dc_marknoticed_contact(get_dc_context(env, obj), contact_id);
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcContext_setChatVisibility(JNIEnv *env, jobject obj, jint chat_id, jint visibility)
 {
     dc_set_chat_visibility(get_dc_context(env, obj), chat_id, visibility);
@@ -403,12 +397,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_setChatVisibility(JNIEnv *env, 
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_createChatByContactId(JNIEnv *env, jobject obj, jint contact_id)
 {
     return (jint)dc_create_chat_by_contact_id(get_dc_context(env, obj), contact_id);
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_createChatByMsgId(JNIEnv *env, jobject obj, jint msg_id)
-{
-    return (jint)dc_create_chat_by_msg_id(get_dc_context(env, obj), msg_id);
 }
 
 
@@ -1027,6 +1015,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isGroup(JNIEnv *env, jobject o
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isMailingList(JNIEnv *env, jobject obj)
+{
+    return dc_chat_is_mailing_list(get_dc_chat(env, obj))!=0;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcChat_getVisibility(JNIEnv *env, jobject obj)
 {
     return dc_chat_get_visibility(get_dc_chat(env, obj));
@@ -1293,6 +1287,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSummarytext(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSenderName(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_msg_get_sender_name(get_dc_msg(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_showPadlock(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_showpadlock(get_dc_msg(env, obj));
@@ -1365,6 +1368,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getVideochatUrl(JNIEnv *env, job
         jstring ret =  JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_decideOnContactRequest(JNIEnv *env, jobject obj, jint decision)
+{
+    return (jint)dc_decide_on_contact_request(get_dc_msg(env, obj), decision);
 }
 
 

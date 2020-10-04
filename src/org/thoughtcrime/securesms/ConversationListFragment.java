@@ -30,6 +30,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcMsg;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.core.content.ContextCompat;
@@ -300,7 +301,7 @@ public class ConversationListFragment extends Fragment
       protected void executeAction(@Nullable Void parameter) {
         for (long chatId : selectedConversations) {
           if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-            dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
+            dcContext.marknoticedChat(DcChat.DC_CHAT_ID_DEADDROP);
           }
           else {
             dcContext.setChatVisibility((int)chatId,
@@ -348,7 +349,7 @@ public class ConversationListFragment extends Fragment
           protected Void doInBackground(Void... params) {
             for (long chatId : selectedConversations) {
               if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-                dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
+                dcContext.marknoticedChat(DcChat.DC_CHAT_ID_DEADDROP);
               }
               else {
                 dcContext.notificationCenter.removeNotifications((int) chatId);
@@ -433,21 +434,22 @@ public class ConversationListFragment extends Fragment
       if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
         DcContext dcContext = DcHelper.getContext(getActivity());
         int msgId = item.getMsgId();
+        DcMsg msg = dcContext.getMsg(msgId);
         int contactId = item.getContactId();
         DcContact contact = dcContext.getContact(contactId);
         new AlertDialog.Builder(getActivity())
                 .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                  int belongingChatId = dcContext.createChatByMsgId(msgId);
+                  int belongingChatId = msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_YES);
                   if (belongingChatId != 0) {
                     handleCreateConversation(belongingChatId);
                   }
                 })
                 .setNegativeButton(R.string.not_now, (dialog, which) -> {
-                  dcContext.marknoticedContact(contactId);
+                  msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NOT_NOW);
                 })
                 .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
-                  dcContext.blockContact(contactId, 1);
+                  msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO);
                 })
                 .show();
         return;
