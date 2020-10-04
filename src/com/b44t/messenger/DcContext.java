@@ -131,11 +131,9 @@ public class DcContext {
     public @NonNull DcChat     getChat              (int chat_id) { return new DcChat(getChatCPtr(chat_id)); }
     public native void         markseenMsgs         (int msg_ids[]);
     public native void         marknoticedChat      (int chat_id);
-    public native void         marknoticedContact   (int contact_id);
     public native void         setChatVisibility    (int chat_id, int visibility);
     public native int          getChatIdByContactId (int contact_id);
     public native int          createChatByContactId(int contact_id);
-    public native int          createChatByMsgId    (int msg_id);
     public native int          createGroupChat      (boolean verified, String name);
     public native boolean      isContactInChat      (int chat_id, int contact_id);
     public native int          addContactToChat     (int chat_id, int contact_id);

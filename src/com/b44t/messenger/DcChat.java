@@ -37,6 +37,7 @@ public class DcChat {
     public native boolean isProtected       ();
     public native boolean isSendingLocations();
     public native boolean isMuted           ();
+    public native boolean isMailingList  ();
 
     public boolean canVideochat() {
         return canSend() && !isGroup() && !isSelfTalk();
