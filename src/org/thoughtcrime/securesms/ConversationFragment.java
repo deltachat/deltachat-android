@@ -445,7 +445,13 @@ public class ConversationFragment extends Fragment
     private void handleResendMessage(final DcMsg message) {
     }
 
+    @SuppressLint("RestrictedApi")
     private void handleReplyMessage(final DcMsg message) {
+        if (getActivity() != null) {
+            //noinspection ConstantConditions
+            ((AppCompatActivity) getActivity()).getSupportActionBar().collapseActionView();
+        }
+
         listener.handleReplyMessage(message);
     }
 
