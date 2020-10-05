@@ -25,6 +25,9 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.EmojiToggle;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
+import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.mms.SlideDeck;
+import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -45,6 +48,7 @@ public class InputPanel extends LinearLayout
 
   private static final int FADE_TIME = 150;
 
+  private QuoteView       quoteView;
   private EmojiToggle     mediaKeyboard;
   private ComposeText     composeText;
   private View            quickCameraToggle;
@@ -112,6 +116,35 @@ public class InputPanel extends LinearLayout
   public void setMediaListener(@NonNull MediaListener listener) {
     composeText.setMediaListener(listener);
   }
+
+  public void setQuote(@NonNull GlideRequests glideRequests,
+                       long id,
+                       @NonNull Recipient author,
+                       @NonNull CharSequence body,
+                       @NonNull SlideDeck attachments)
+  {
+    this.quoteView.setQuote(glideRequests, id, author, body, false, attachments);
+
+    int originalHeight = this.quoteView.getVisibility() == VISIBLE ? this.quoteView.getMeasuredHeight()
+            : 0;
+
+    this.quoteView.setVisibility(VISIBLE);
+    this.quoteView.measure(0, 0);
+
+    if (quoteAnimator != null) {
+      quoteAnimator.cancel();
+    }
+
+    quoteAnimator = createHeightAnimator(quoteView, originalHeight, this.quoteView.getMeasuredHeight(), null);
+
+    quoteAnimator.start();
+
+    if (this.linkPreview.getVisibility() == View.VISIBLE) {
+      int cornerRadius = readDimen(R.dimen.message_corner_collapse_radius);
+      this.linkPreview.setCorners(cornerRadius, cornerRadius);
+    }
+  }
+
 
   public void setMediaKeyboard(@NonNull MediaKeyboard mediaKeyboard) {
     this.mediaKeyboard.attach(mediaKeyboard);

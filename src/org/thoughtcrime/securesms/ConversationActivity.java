@@ -87,6 +87,7 @@ import org.thoughtcrime.securesms.components.emoji.EmojiStrings;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
@@ -1445,50 +1446,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcContact contact = dcContext.getContact(msg.getFromId());
     Recipient author = new Recipient(this, dcChat, contact);
 
-    if (msg.isMms() && !((MmsMessageRecord) msg).getSharedContacts().isEmpty()) {
-      DcContact   contact     = ((MmsMessageRecord) msg).getSharedContacts().get(0);
-      String    displayName = ContactUtil.getDisplayName(contact);
-      String    body        = getString(R.string.ConversationActivity_quoted_contact_message, EmojiStrings.BUST_IN_SILHOUETTE, displayName);
-      SlideDeck slideDeck   = new SlideDeck();
+    String displayName = contact.getDisplayName();
+    SlideDeck slideDeck = new SlideDeck();
 
-      if (contact.getAvatarAttachment() != null) {
-        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, contact.getAvatarAttachment()));
-      }
+    inputPanel.setQuote(GlideApp.with(this),
+            msg.getTimestamp(),
+            author,
+            displayName,
+            slideDeck);
 
-      inputPanel.setQuote(GlideApp.with(this),
-              msg.getDateSent(),
-              author,
-              body,
-              slideDeck);
-
-    } else if (msg.isMms() && !((MmsMessageRecord) msg).getLinkPreviews().isEmpty()) {
-      LinkPreview linkPreview = ((MmsMessageRecord) msg).getLinkPreviews().get(0);
-      SlideDeck   slideDeck   = new SlideDeck();
-
-      if (linkPreview.getThumbnail().isPresent()) {
-        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, linkPreview.getThumbnail().get()));
-      }
-
-      inputPanel.setQuote(GlideApp.with(this),
-              msg.getDateSent(),
-              author,
-              conversationMessage.getDisplayBody(this),
-              slideDeck);
-    } else {
-      SlideDeck slideDeck = msg.isMms() ? ((MmsMessageRecord) msg).getSlideDeck() : new SlideDeck();
-
-      if (msg.isMms() && ((MmsMessageRecord) msg).isViewOnce()) {
-        Attachment attachment = new TombstoneAttachment(MediaUtil.VIEW_ONCE, true);
-        slideDeck = new SlideDeck();
-        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, attachment));
-      }
-
-      inputPanel.setQuote(GlideApp.with(this),
-              msg.getDateSent(),
-              author,
-              conversationMessage.getDisplayBody(this),
-              slideDeck);
-    }
 
     inputPanel.clickOnComposeInput();
   }
