@@ -160,6 +160,11 @@ public class ConversationFragment extends Fragment
         list.setLayoutManager(layoutManager);
         list.setItemAnimator(null);
 
+        new ConversationItemSwipeCallback(
+                conversationMessage -> actionMode == null, // TODO here we could disale swiping e.g. when the message is failed or pending
+                this::handleReplyMessage
+        ).attachToRecyclerView(list);
+
         // setLayerType() is needed to allow larger items (long texts in our case)
         // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be rendered into a texture"
         list.setLayerType(View.LAYER_TYPE_SOFTWARE, null);

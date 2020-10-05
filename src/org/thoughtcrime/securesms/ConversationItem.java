@@ -25,6 +25,8 @@ import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+
+import android.graphics.Rect;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -81,6 +83,8 @@ public class ConversationItem extends LinearLayout
 {
   private static final String TAG = ConversationItem.class.getSimpleName();
 
+  private static final Rect SWIPE_RECT = new Rect();
+
   private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
   private static final int MAX_MEASURE_CALLS = 3;
 
@@ -92,12 +96,13 @@ public class ConversationItem extends LinearLayout
   private GlideRequests glideRequests;
 
   protected ViewGroup              bodyBubble;
+  protected View                   reply;
   private   TextView               bodyText;
   private   ConversationItemFooter footer;
   private   TextView               groupSender;
   private   View                   groupSenderHolder;
   private   AvatarImageView        contactPhoto;
-  private   ViewGroup              contactPhotoHolder;
+  protected ViewGroup              contactPhotoHolder;
   private   ViewGroup              container;
 
   private @NonNull  Set<DcMsg>                      batchSelected = new HashSet<>();
@@ -148,6 +153,7 @@ public class ConversationItem extends LinearLayout
     this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
     this.container               =            findViewById(R.id.container);
+    this.reply                   =            findViewById(R.id.reply_icon);
 
     setOnClickListener(new ClickListener(null));
 
@@ -195,6 +201,13 @@ public class ConversationItem extends LinearLayout
   @Override
   public void setEventListener(@Nullable EventListener eventListener) {
     this.eventListener = eventListener;
+  }
+
+  public boolean disallowSwipe(float downX, float downY) {
+    if (!hasAudio(messageRecord)) return false;
+
+    audioViewStub.get().getSeekBarGlobalVisibleRect(SWIPE_RECT);
+    return SWIPE_RECT.contains((int) downX, (int) downY);
   }
 
   @Override
