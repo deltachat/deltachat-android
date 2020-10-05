@@ -28,12 +28,14 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
   private float   latestDownY;
 
   private final SwipeAvailabilityProvider     swipeAvailabilityProvider;
+  private final ConversationItemTouchListener itemTouchListener;
   private final OnSwipeListener               onSwipeListener;
 
   ConversationItemSwipeCallback(@NonNull SwipeAvailabilityProvider swipeAvailabilityProvider,
                                 @NonNull OnSwipeListener onSwipeListener)
   {
     super(0, ItemTouchHelper.END);
+    this.itemTouchListener          = new ConversationItemTouchListener(this::updateLatestDownCoordinate);
     this.swipeAvailabilityProvider  = swipeAvailabilityProvider;
     this.onSwipeListener            = onSwipeListener;
     this.shouldTriggerSwipeFeedback = true;
@@ -41,6 +43,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
   }
 
   void attachToRecyclerView(@NonNull RecyclerView recyclerView) {
+    recyclerView.addOnItemTouchListener(itemTouchListener);
     new ItemTouchHelper(this).attachToRecyclerView(recyclerView);
   }
 
@@ -171,6 +174,11 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
     ConversationItem item = ((ConversationItem) viewHolder.itemView);
     return !swipeAvailabilityProvider.isSwipeAvailable(item.getMessageRecord()) ||
             item.disallowSwipe(latestDownX, latestDownY);
+  }
+
+  private void updateLatestDownCoordinate(float x, float y) {
+    latestDownX = x;
+    latestDownY = y;
   }
 
   private static float getSignFromDirection(@NonNull View view) {

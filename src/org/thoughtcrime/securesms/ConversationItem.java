@@ -204,6 +204,7 @@ public class ConversationItem extends LinearLayout
   }
 
   public boolean disallowSwipe(float downX, float downY) {
+    if (reply == null) return true;
     if (!hasAudio(messageRecord)) return false;
 
     audioViewStub.get().getSeekBarGlobalVisibleRect(SWIPE_RECT);
