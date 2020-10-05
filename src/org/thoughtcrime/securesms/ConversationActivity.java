@@ -1441,6 +1441,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleReplyMessage(DcMsg messageRecord) {
+    Log.e(TAG, "TODO Replying is not yet implemented");
   }
 
   @Override

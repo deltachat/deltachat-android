@@ -161,7 +161,8 @@ public class ConversationFragment extends Fragment
         list.setItemAnimator(null);
 
         new ConversationItemSwipeCallback(
-                conversationMessage -> actionMode == null, // TODO here we could disable swiping e.g. when the message is failed or pending
+                msg -> actionMode == null &&
+                    dcContext.getChat(msg.getChatId()).canSend(), // TODO here we could disable swiping e.g. when the message is failed or pending
                 this::handleReplyMessage
         ).attachToRecyclerView(list);
 
