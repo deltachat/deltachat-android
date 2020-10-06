@@ -10,6 +10,7 @@
         android:orientation="vertical"
         android:clickable="true"
         android:paddingTop="6dp"
+        android:animateLayoutChanges="true"
         android:paddingBottom="6dp"
         android:clipChildren="false"
         android:clipToPadding="false"

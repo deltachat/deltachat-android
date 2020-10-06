@@ -142,28 +142,29 @@ public class InputPanel extends LinearLayout
     this.quoteView.setVisibility(VISIBLE);
     this.quoteView.measure(0, 0);
 
-    if (quoteAnimator != null) {
-      quoteAnimator.cancel();
-    }
-
-    quoteAnimator = createHeightAnimator(quoteView, originalHeight, this.quoteView.getMeasuredHeight(), null);
-
-    quoteAnimator.start();
+//    if (quoteAnimator != null) {
+//      quoteAnimator.cancel();
+//    }
+//
+//    quoteAnimator = createHeightAnimator(quoteView, originalHeight, 220, null);
+//
+//    quoteAnimator.start();
   }
 
   public void clearQuote() {
-    if (quoteAnimator != null) {
-      quoteAnimator.cancel();
-    }
-
-    quoteAnimator = createHeightAnimator(quoteView, quoteView.getMeasuredHeight(), 0, new AnimationCompleteListener() {
-      @Override
-      public void onAnimationEnd(Animator animation) {
-        quoteView.dismiss();
-      }
-    });
-
-    quoteAnimator.start();
+//    if (quoteAnimator != null) {
+//      quoteAnimator.cancel();
+//    }
+//
+//    quoteAnimator = createHeightAnimator(quoteView, quoteView.getMeasuredHeight(), 0, new AnimationCompleteListener() {
+//      @Override
+//      public void onAnimationEnd(Animator animation) {
+//        quoteView.dismiss();
+//      }
+//    });
+//
+//    quoteAnimator.start();
+    quoteView.dismiss();
   }
 
   private static ValueAnimator createHeightAnimator(@NonNull View view,
