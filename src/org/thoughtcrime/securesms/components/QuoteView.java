@@ -47,7 +47,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   //private ViewGroup footerView;
   private TextView  authorView;
   private TextView  bodyView;
-  private View quoteBarView;
+  private ImageView      quoteBarView;
   private ImageView thumbnailView;
   private View      attachmentVideoOverlayView;
   //private ViewGroup attachmentContainerView;
@@ -109,15 +109,12 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
     if (attrs != null) {
       TypedArray typedArray     = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.QuoteView, 0, 0);
-      int        primaryColor   = typedArray.getColor(R.styleable.QuoteView_quote_colorPrimary, Color.BLACK);
       int        secondaryColor = typedArray.getColor(R.styleable.QuoteView_quote_colorSecondary, Color.BLACK);
       messageType = typedArray.getInt(R.styleable.QuoteView_message_type, 0);
       typedArray.recycle();
 
       dismissView.setVisibility(messageType == MESSAGE_TYPE_PREVIEW ? VISIBLE : GONE);
 
-      authorView.setTextColor(primaryColor);
-      bodyView.setTextColor(primaryColor);
       mediaDescriptionText.setTextColor(secondaryColor);
       //missingLinkText.setTextColor(primaryColor);
 
@@ -187,11 +184,13 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private void setQuoteAuthor(@NonNull Recipient author) {
     boolean outgoing = messageType != MESSAGE_TYPE_INCOMING;
 
-    authorView.setText(author.getDcContact().getDisplayName());
-
-    // We use the raw color resource because Android 4.x was struggling with tints here
-    quoteBarView.setBackgroundColor(author.getDcContact().getColor());
-    mainView.setBackgroundColor(author.getDcContact().getColor());
+    DcContact contact = author.getDcContact();
+    if (contact != null) {
+      authorView.setText(contact.getDisplayName());
+      // We use the raw color resource because Android 4.x was struggling with tints here
+      quoteBarView.setBackgroundColor(contact.getArgbColor());
+      authorView.setTextColor(contact.getArgbColor());
+    }
   }
 
   private void setQuoteText(@Nullable CharSequence body, @NonNull SlideDeck attachments) {

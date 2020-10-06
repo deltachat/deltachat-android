@@ -549,9 +549,7 @@ public class ConversationItem extends LinearLayout
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
       this.groupSender.setText(dcContact.getDisplayName());
 
-      int rgb = dcContact.getColor();
-      int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
-      this.groupSender.setTextColor(argb);
+      this.groupSender.setTextColor(dcContact.getArgbColor());
     }
   }
 

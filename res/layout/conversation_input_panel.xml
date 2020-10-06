@@ -14,7 +14,7 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:background="?attr/input_panel_bg_color">
-    
+
     <org.thoughtcrime.securesms.components.QuoteView
         android:id="@+id/quote_view"
         android:layout_width="match_parent"
@@ -24,8 +24,6 @@
         android:layout_marginEnd="6dp"
         android:visibility="gone"
         app:message_type="preview"
-        app:quote_colorPrimary="?attr/conversation_item_outgoing_text_secondary_color"
-        app:quote_colorSecondary="?attr/conversation_item_outgoing_text_secondary_color"
         tools:visibility="visible" />
 
     <LinearLayout

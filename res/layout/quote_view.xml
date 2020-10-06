@@ -21,12 +21,12 @@
 			android:layout_height="wrap_content"
 			android:orientation="horizontal">
 
-			<View
+			<ImageView
 				android:id="@+id/quote_bar"
 				android:layout_width="4dp"
 				android:layout_height="match_parent"
-				android:background="@color/purple_400"
-				android:src="@color/white" />
+				android:src="@color/purple_400"
+				android:background="@color/purple_400"/>
 
 			<LinearLayout
 				android:layout_width="0dp"
