@@ -68,6 +68,7 @@ import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AnimatingToggle;
@@ -95,6 +96,7 @@ import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.PartAuthority;
+import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -1443,58 +1445,26 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleReplyMessage(DcMsg msg) {
-    Recipient author;
+    DcContact dcContact = dcContext.getContact(msg.getFromId());
+    Recipient author = dcContext.getRecipient(dcContact);
 
-    if (msg.isOutgoing()) {
-      author = Recipient.self();
-    } else {
-      author = msg.getIndividualRecipient();
+    SlideDeck slideDeck = new SlideDeck();
+    if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+      slideDeck.addSlide(MediaUtil.getSlideForMsg(this, msg));
     }
 
-    if (msg.isMms() && !((MmsMessageRecord) msg).getSharedContacts().isEmpty()) {
-      Contact   contact     = ((MmsMessageRecord) msg).getSharedContacts().get(0);
-      String    displayName = ContactUtil.getDisplayName(contact);
-      String    body        = getString(R.string.ConversationActivity_quoted_contact_message, EmojiStrings.BUST_IN_SILHOUETTE, displayName);
-      SlideDeck slideDeck   = new SlideDeck();
-
-      if (contact.getAvatarAttachment() != null) {
-        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, contact.getAvatarAttachment()));
-      }
-
-      inputPanel.setQuote(GlideApp.with(this),
-              msg.getDateSent(),
-              author,
-              body,
-              slideDeck);
-
-    } else if (msg.isMms() && !((MmsMessageRecord) msg).getLinkPreviews().isEmpty()) {
-      LinkPreview linkPreview = ((MmsMessageRecord) msg).getLinkPreviews().get(0);
-      SlideDeck   slideDeck   = new SlideDeck();
-
-      if (linkPreview.getThumbnail().isPresent()) {
-        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, linkPreview.getThumbnail().get()));
-      }
-
-      inputPanel.setQuote(GlideApp.with(this),
-              msg.getDateSent(),
-              author,
-              conversationMessage.getDisplayBody(this),
-              slideDeck);
-    } else {
-      SlideDeck slideDeck = msg.isMms() ? ((MmsMessageRecord) msg).getSlideDeck() : new SlideDeck();
-
-      if (msg.isMms() && ((MmsMessageRecord) msg).isViewOnce()) {
-        Attachment attachment = new TombstoneAttachment(MediaUtil.VIEW_ONCE, true);
-        slideDeck = new SlideDeck();
-        slideDeck.addSlide(MediaUtil.getSlideForAttachment(this, attachment));
-      }
-
-      inputPanel.setQuote(GlideApp.with(this),
-              msg.getDateSent(),
-              author,
-              conversationMessage.getDisplayBody(this),
-              slideDeck);
+    String text = msg.getSummarytext(100);
+    if (msg.getType() == DcMsg.DC_MSG_FILE || msg.getType() == DcMsg.DC_MSG_AUDIO) {
+      // These two types already take up all the space and have their filename shown.
+      // So, make sure that if there is no manually entered text, the text field stays empty.
+      text = msg.getText();
     }
+
+    inputPanel.setQuote(GlideApp.with(this),
+            msg.getTimestamp(),
+            author,
+            text,
+            slideDeck);
 
     inputPanel.clickOnComposeInput();
   }
