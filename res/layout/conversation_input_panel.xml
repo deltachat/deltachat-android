@@ -7,14 +7,31 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:clickable="true"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:background="?attr/input_panel_bg_color">
+    
+    <org.thoughtcrime.securesms.components.QuoteView
+        android:id="@+id/quote_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:visibility="gone"
+        app:message_type="preview"
+        app:quote_colorPrimary="?attr/conversation_item_outgoing_text_secondary_color"
+        app:quote_colorSecondary="?attr/conversation_item_outgoing_text_secondary_color"
+        tools:visibility="visible" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -221,4 +238,5 @@
             android:background="@drawable/circle_touch_highlight_background" />
 
     </org.thoughtcrime.securesms.components.AnimatingToggle>
+    </LinearLayout>
 </org.thoughtcrime.securesms.components.InputPanel>

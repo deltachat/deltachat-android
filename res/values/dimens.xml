@@ -41,6 +41,10 @@
     <dimen name="conversation_group_left_gutter">52dp</dimen>
     <dimen name="conversation_vertical_message_spacing_collapse">1dp</dimen>
 
+    <dimen name="quote_corner_radius_large">10dp</dimen>
+    <dimen name="quote_corner_radius_bottom">4dp</dimen>
+    <dimen name="quote_corner_radius_preview">18dp</dimen>
+
     <dimen name="quick_camera_shutter_ring_size">52dp</dimen>
 
     <dimen name="contact_selection_actions_tap_area">10dp</dimen>
@@ -50,5 +54,6 @@
     <dimen name="slider_thumbOutlineSize">4dp</dimen>
     <dimen name="slider_displayTextFontSize">12sp</dimen>
     <dimen name="slider_displayTextBasicOffsetY">8dp</dimen>
+	<dimen name="quote_thumb_size">60dp</dimen>
 
 </resources>
