@@ -58,7 +58,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private DcContact     author;
   private DcChat        dcChat;
   private CharSequence  body;
-  private TextView      mediaDescriptionText;
   //private TextView      missingLinkText;
   private SlideDeck     attachments;
   private int           messageType;
@@ -100,7 +99,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     this.attachmentVideoOverlayView   = findViewById(R.id.quote_video_overlay);
     this.attachmentView               = findViewById(R.id.attachment_view);
     this.dismissView                  = findViewById(R.id.quote_dismiss);
-    this.mediaDescriptionText         = findViewById(R.id.media_type);
     this.largeCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_large);
     this.smallCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_bottom);
 
@@ -115,7 +113,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
       dismissView.setVisibility(messageType == MESSAGE_TYPE_PREVIEW ? VISIBLE : GONE);
 
-      mediaDescriptionText.setTextColor(secondaryColor);
       //missingLinkText.setTextColor(primaryColor);
 
       if (messageType == MESSAGE_TYPE_PREVIEW) {
@@ -197,12 +194,9 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     if (!TextUtils.isEmpty(body) || !attachments.containsMediaSlide()) {
       bodyView.setVisibility(VISIBLE);
       bodyView.setText(body == null ? "" : body);
-      mediaDescriptionText.setVisibility(GONE);
-      return;
+    } else {
+      bodyView.setVisibility(GONE);
     }
-
-    bodyView.setVisibility(GONE);
-    mediaDescriptionText.setVisibility(VISIBLE);
   }
 
   private void setQuoteAttachment(@NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
