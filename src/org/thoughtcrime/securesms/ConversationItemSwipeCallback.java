@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 
 class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
@@ -133,6 +134,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
           break;
         case MotionEvent.ACTION_UP:
           handleTouchActionUp(recyclerView, viewHolder, dx);
+          //fallthrough
         case MotionEvent.ACTION_CANCEL:
           swipeBack = true;
           shouldTriggerSwipeFeedback = false;
@@ -153,7 +155,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
       if (shouldTriggerSwipeFeedback) {
         vibrate(viewHolder.itemView.getContext());
       }
-      recyclerView.setOnTouchListener(null);
+      //recyclerView.setOnTouchListener(null);
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       recyclerView.cancelPendingInputEvents();
@@ -161,11 +163,11 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
   }
 
   private static void resetProgressIfAnimationsDisabled(RecyclerView.ViewHolder viewHolder) {
-/*    if (AccessibilityUtil.areAnimationsDisabled(viewHolder.itemView.getContext())) {
+    if (AccessibilityUtil.areAnimationsDisabled(viewHolder.itemView.getContext())) {
       ConversationSwipeAnimationHelper.update((ConversationItem) viewHolder.itemView,
               0f,
               getSignFromDirection(viewHolder.itemView));
-    }*/
+    }
   }
 
   private boolean cannotSwipeViewHolder(@NonNull RecyclerView.ViewHolder viewHolder) {
