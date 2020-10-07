@@ -7,7 +7,6 @@
 
     <item android:title="@string/menu_reply"
           android:id="@+id/menu_context_reply"
-          android:visible="false"
           android:icon="?menu_reply_icon"
           app:showAsAction="always" />
 
