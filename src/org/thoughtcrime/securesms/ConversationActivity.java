@@ -767,6 +767,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composeText.setSelection(composeText.getText().length());
     }
 
+    DcMsg quote = draft.getQuotedMsg();
+    if (quote != null) {
+      handleReplyMessage(quote);
+    }
+
     String filename = draft.getFile();
     if (filename.isEmpty() || !new File(filename).exists()) {
       future.set(!text.isEmpty());
@@ -1099,7 +1104,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       msg.setText(body);
     }
 
-    if (msg != null && quote.isPresent()) {
+    if (quote.isPresent()) {
+      if (msg == null) msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
       msg.setQuote(quote.get().getQuotedMsg());
     }
 

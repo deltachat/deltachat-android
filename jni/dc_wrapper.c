@@ -1410,9 +1410,9 @@ JNIEXPORT void Java_com_b44t_messenger_DcMsg_setLocation(JNIEnv *env, jobject ob
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcMsg_setQuote(JNIEnv *env, jobject obj, jobject quote)
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setQuoteCPtr(JNIEnv *env, jobject obj, jlong quoteCPtr)
 {
-    dc_msg_set_quote(get_dc_msg(env, obj), get_dc_msg(env, quote));
+    dc_msg_set_quote(get_dc_msg(env, obj), (dc_msg_t*)quoteCPtr);
 }
 
 
@@ -1427,7 +1427,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getQuotedText(JNIEnv *env, jobje
 
 JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getQuotedMsgCPtr(JNIEnv *env, jobject obj)
 {
-    return (jlong)dc_msg_get_quoted_msg(get_dc_msg(env, obj);
+    return (jlong)dc_msg_get_quoted_msg(get_dc_msg(env, obj));
 }
 
 

@@ -105,9 +105,13 @@ public class DcMsg {
     public native void    setDimension       (int width, int height);
     public native void    setDuration        (int duration);
     public native void    setLocation        (float latitude, float longitude);
-    public native void    setQuote           (DcMsg quote);
+    public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
-    public DcMsg          getQuotedMsg       () { return new DcMsg(getQuotedMsgCPtr()); }
+
+    public DcMsg          getQuotedMsg       () {
+        long cPtr = getQuotedMsgCPtr();
+        return cPtr != 0 ? new DcMsg(cPtr) : null;
+    }
 
     public File getFileAsFile() {
         if(getFile()==null)
@@ -192,5 +196,6 @@ public class DcMsg {
     private long        msgCPtr;        // CAVE: the name is referenced in the JNI
     private native void unrefMsgCPtr    ();
     private native long getSummaryCPtr  (long chatCPtr);
-    private native long getQuotedMsgCPtr   ();
+    private native void setQuoteCPtr    (long quoteCPtr);
+    private native long getQuotedMsgCPtr ();
 };
