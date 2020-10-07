@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components;
 
-import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -23,6 +22,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
+
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.animation.AnimationCompleteListener;
@@ -129,12 +130,13 @@ public class InputPanel extends LinearLayout
   }
 
   public void setQuote(@NonNull GlideRequests glideRequests,
+                       DcMsg msg,
                        long id,
                        @NonNull Recipient author,
                        @NonNull CharSequence body,
                        @NonNull SlideDeck attachments)
   {
-    this.quoteView.setQuote(glideRequests, id, author, body, false, attachments);
+    this.quoteView.setQuote(glideRequests, msg, id, author, body, false, attachments);
 
     int originalHeight = this.quoteView.getVisibility() == VISIBLE ? this.quoteView.getMeasuredHeight()
             : 0;
@@ -190,7 +192,10 @@ public class InputPanel extends LinearLayout
 
   public Optional<QuoteModel> getQuote() {
     if (quoteView.getQuoteId() > 0 && quoteView.getVisibility() == View.VISIBLE) {
-      return Optional.of(new QuoteModel(quoteView.getQuoteId(), quoteView.getAuthor().getDcContact(), quoteView.getBody().toString(), false, quoteView.getAttachments()));
+      return Optional.of(new QuoteModel(
+              quoteView.getQuoteId(), quoteView.getDcContact(), quoteView.getBody().toString(),
+              false, quoteView.getAttachments(), quoteView.getOriginalMsg()
+      ));
     } else {
       return Optional.absent();
     }

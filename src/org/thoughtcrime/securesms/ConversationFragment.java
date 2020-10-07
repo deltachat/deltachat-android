@@ -311,10 +311,12 @@ public class ConversationFragment extends Fragment
         if (messageRecords.size() > 1) {
             menu.findItem(R.id.menu_context_details).setVisible(false);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(false);
+            menu.findItem(R.id.menu_context_reply).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
             menu.findItem(R.id.menu_context_details).setVisible(true);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
+            menu.findItem(R.id.menu_context_reply).setVisible(true);
         }
     }
 

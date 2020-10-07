@@ -4,6 +4,7 @@ package org.thoughtcrime.securesms.mms;
 import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
 
@@ -16,13 +17,15 @@ public class QuoteModel {
   private final String           text;
   private final boolean          missing;
   private final List<Attachment> attachments;
+  private DcMsg quotedMsg;
 
-  public QuoteModel(long id, DcContact author, String text, boolean missing, @Nullable List<Attachment> attachments) {
+  public QuoteModel(long id, DcContact author, String text, boolean missing, @Nullable List<Attachment> attachments, DcMsg quotedMsg) {
     this.id          = id;
     this.author      = author;
     this.text        = text;
     this.missing     = missing;
     this.attachments = attachments;
+    this.quotedMsg = quotedMsg;
   }
 
   public long getId() {
@@ -45,4 +48,7 @@ public class QuoteModel {
     return attachments;
   }
 
+  public DcMsg getQuotedMsg() {
+    return quotedMsg;
+  }
 }

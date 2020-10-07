@@ -25,7 +25,6 @@
 				android:id="@+id/quote_bar"
 				android:layout_width="4dp"
 				android:layout_height="match_parent"
-				android:src="@color/purple_400"
 				android:background="@color/purple_400"/>
 
 			<LinearLayout
@@ -58,7 +57,7 @@
 					android:id="@+id/quote_text"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					style="@style/Signal.Text.Body"
+					style="@style/Signal.Text.Quote"
 					android:ellipsize="end"
 					android:maxLines="2"
 					tools:text="With great power comes great responsibility."

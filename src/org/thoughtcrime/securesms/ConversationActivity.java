@@ -68,7 +68,6 @@ import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
-import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AnimatingToggle;
@@ -84,11 +83,9 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.AttachmentDrawerListener;
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
-import org.thoughtcrime.securesms.components.emoji.EmojiStrings;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
@@ -96,7 +93,7 @@ import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.PartAuthority;
-import org.thoughtcrime.securesms.mms.Slide;
+import org.thoughtcrime.securesms.mms.QuoteModel;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -114,6 +111,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
+import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
@@ -1051,12 +1049,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     final SettableFuture<Integer> future  = new SettableFuture<>();
 
     DcMsg msg = null;
+    Optional<QuoteModel> quote = inputPanel.getQuote();
     Integer recompress = 0;
 
     // for a quick ui feedback, we clear the related controls immediately on sending messages.
     // for drafts, however, we do not change the controls, the activity may be resumed.
     if (action==ACTION_SEND_OUT) {
       composeText.setText("");
+      inputPanel.clearQuote();
     }
 
     if(slideDeck!=null) {
@@ -1097,6 +1097,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     else if (!body.isEmpty()){
       msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
       msg.setText(body);
+    }
+
+    if (msg != null && quote.isPresent()) {
+      msg.setQuote(quote.get().getQuotedMsg());
     }
 
     // msg may still be null to clear drafts
@@ -1461,6 +1465,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     inputPanel.setQuote(GlideApp.with(this),
+            msg,
             msg.getTimestamp(),
             author,
             text,

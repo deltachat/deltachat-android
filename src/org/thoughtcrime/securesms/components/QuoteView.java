@@ -21,6 +21,7 @@ import androidx.annotation.RequiresApi;
 import com.annimon.stream.Stream;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.R;
@@ -54,9 +55,9 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private DocumentView attachmentView;
   private ImageView dismissView;
 
+  private DcMsg quotedMsg;
   private long          id;
   private DcContact     author;
-  private DcChat        dcChat;
   private CharSequence  body;
   //private TextView      missingLinkText;
   private SlideDeck     attachments;
@@ -138,6 +139,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   }
 
   public void setQuote(GlideRequests glideRequests,
+                       DcMsg msg,
                        long id,
                        @NonNull Recipient author,
                        @Nullable CharSequence body,
@@ -147,6 +149,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 //    if (this.author != null) this.author.removeForeverObserver(this);
 
     this.id          = id;
+    quotedMsg        = msg;
     this.author      = author.getDcContact();
     this.body        = body;
     this.attachments = attachments;
@@ -184,7 +187,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     DcContact contact = author.getDcContact();
     if (contact != null) {
       authorView.setText(contact.getDisplayName());
-      // We use the raw color resource because Android 4.x was struggling with tints here
       quoteBarView.setBackgroundColor(contact.getArgbColor());
       authorView.setTextColor(contact.getArgbColor());
     }
@@ -242,15 +244,19 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     return id;
   }
 
-  public Recipient getAuthor() {
-    return new Recipient(getContext(), dcChat, author);
-  }
-
   public CharSequence getBody() {
     return body;
   }
 
   public List<Attachment> getAttachments() {
     return attachments.asAttachments();
+  }
+
+  public DcContact getDcContact() {
+    return author;
+  }
+
+  public DcMsg getOriginalMsg() {
+    return quotedMsg;
   }
 }
