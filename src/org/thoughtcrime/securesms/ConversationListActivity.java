@@ -25,12 +25,12 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -46,6 +46,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
@@ -280,17 +281,25 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public void openConversation(int chatId, int startingPosition) {
     searchToolbar.clearFocus();
 
-    Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(CHAT_ID_EXTRA, chatId);
-    intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
-    if (isRelayingMessageContent(this)) {
-      acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
+    final ApplicationDcContext dcContext = DcHelper.getContext(this);
+    if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk()) {
+      SendRelayedMessageUtil.immediatelyRelay(this, chatId);
+      Toast.makeText(this, "✔️ " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
+      handleResetRelaying();
+      finish();
     } else {
-      startActivity(intent);
-    }
+      Intent intent = new Intent(this, ConversationActivity.class);
+      intent.putExtra(CHAT_ID_EXTRA, chatId);
+      intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
+      if (isRelayingMessageContent(this)) {
+        acquireRelayMessageContent(this, intent);
+        startActivityForResult(intent, REQUEST_RELAY);
+      } else {
+        startActivity(intent);
+      }
 
-    overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+      overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+    }
   }
 
   @Override
