@@ -91,6 +91,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private void initialize(@Nullable AttributeSet attrs) {
     inflate(getContext(), R.layout.quote_view, this);
 
+    this.mainView                     = findViewById(R.id.quote_main);
     //this.footerView                   = findViewById(R.id.quote_missing_footer);
     this.authorView                   = findViewById(R.id.quote_author);
     this.bodyView                     = findViewById(R.id.quote_text);
