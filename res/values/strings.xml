@@ -707,5 +707,6 @@
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
+	<string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
 
 </resources>

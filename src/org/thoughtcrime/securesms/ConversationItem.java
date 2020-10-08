@@ -33,6 +33,7 @@ import android.text.TextUtils;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,13 +50,16 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
+import org.thoughtcrime.securesms.components.QuoteView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
+import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
+import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
@@ -63,6 +67,7 @@ import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.util.HashSet;
@@ -97,6 +102,7 @@ public class ConversationItem extends LinearLayout
 
   protected ViewGroup              bodyBubble;
   protected View                   reply;
+  @Nullable private QuoteView      quoteView;
   private   TextView               bodyText;
   private   ConversationItemFooter footer;
   private   TextView               groupSender;
@@ -111,6 +117,8 @@ public class ConversationItem extends LinearLayout
   private @NonNull  Stub<AudioView>                 audioViewStub;
   private @NonNull  Stub<DocumentView>              documentViewStub;
   private @Nullable EventListener                   eventListener;
+
+  private int measureCalls;
 
   private int incomingBubbleColor;
   private int outgoingBubbleColor;
@@ -152,6 +160,7 @@ public class ConversationItem extends LinearLayout
     this.audioViewStub           = new Stub<>(findViewById(R.id.audio_view_stub));
     this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
+    this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
     this.reply                   =            findViewById(R.id.reply_icon);
 
@@ -195,6 +204,7 @@ public class ConversationItem extends LinearLayout
     setAuthor(messageRecord, groupThread);
     setMessageSpacing(context);
     setFooter(messageRecord, locale);
+    setQuote(messageRecord);
   }
 
 
@@ -217,6 +227,32 @@ public class ConversationItem extends LinearLayout
 
     if (isInEditMode()) {
       return;
+    }
+
+    boolean needsMeasure = false;
+
+    if (hasQuote(messageRecord)) {
+      if (quoteView == null) {
+        throw new AssertionError();
+      }
+      int quoteWidth     = quoteView.getMeasuredWidth();
+      int availableWidth = getAvailableMessageBubbleWidth(quoteView);
+
+      if (quoteWidth != availableWidth) {
+        quoteView.getLayoutParams().width = availableWidth;
+        needsMeasure = true;
+      }
+    }
+
+    if (needsMeasure) {
+      if (measureCalls < MAX_MEASURE_CALLS) {
+        measureCalls++;
+        measure(widthMeasureSpec, heightMeasureSpec);
+      } else {
+        Log.w(TAG, "Hit measure() cap of " + MAX_MEASURE_CALLS);
+      }
+    } else {
+      measureCalls = 0;
     }
   }
 
@@ -285,6 +321,11 @@ public class ConversationItem extends LinearLayout
   private boolean hasAudio(DcMsg messageRecord) {
     int type = messageRecord.getType();
     return type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE;
+  }
+
+  private boolean hasQuote(DcMsg messageRecord) {
+    //return !"".equals(messageRecord.getQuotedText());//TODO this would be nice
+    return messageRecord.getQuotedMsg() != null;
   }
 
   private boolean hasThumbnail(DcMsg messageRecord) {
@@ -506,6 +547,70 @@ public class ConversationItem extends LinearLayout
     return messageBody;
   }
 
+  private void setQuote(@NonNull DcMsg current) {
+    if (hasQuote(current)) {
+      if (quoteView == null) {
+        throw new AssertionError();
+      }
+      //Quote quote = ((MediaMmsMessageRecord)current).getQuote();
+      //noinspection ConstantConditions
+      //quoteView.setQuote(glideRequests, quote.getId(), Recipient.live(quote.getAuthor()).get(), quote.getDisplayText(), quote.isOriginalMissing(), quote.getAttachment());
+      DcMsg msg = current.getQuotedMsg();
+      String quoteTxt = current.getQuotedText();
+
+      // TODO the next lines are duplicates of ConversationActivity.handleReplyMessage()
+      DcContact dcContact = dcContext.getContact(msg.getFromId());
+      Recipient author = dcContext.getRecipient(dcContact);
+
+      SlideDeck slideDeck = new SlideDeck();
+      if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+        slideDeck.addSlide(MediaUtil.getSlideForMsg(context, msg));
+      }
+
+      String text = msg.getSummarytext(100);
+      if (msg.getType() == DcMsg.DC_MSG_FILE || msg.getType() == DcMsg.DC_MSG_AUDIO) {
+        // These two types already take up all the space and have their filename shown.
+        // So, make sure that if there is no manually entered text, the text field stays empty.
+        text = msg.getText();
+      }
+
+
+      quoteView.setQuote(GlideApp.with(this),
+              msg,
+              msg.getTimestamp(),
+              author,
+              text,
+              false,
+              slideDeck);
+
+      quoteView.setVisibility(View.VISIBLE);
+      quoteView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
+
+      quoteView.setOnClickListener(view -> {
+        if (eventListener != null && batchSelected.isEmpty()) {
+          eventListener.onQuoteClicked(current);
+        } else {
+          passthroughClickListener.onClick(view);
+        }
+      });
+
+      quoteView.setOnLongClickListener(passthroughClickListener);
+
+      if (mediaThumbnailStub.resolved()) {
+        ViewUtil.setTopMargin(mediaThumbnailStub.get(), readDimen(R.dimen.message_bubble_top_padding));
+      }
+    } else {
+      if (quoteView != null) {
+        quoteView.dismiss();
+      }
+
+      if (mediaThumbnailStub.resolved()) {
+        ViewUtil.setTopMargin(mediaThumbnailStub.get(), 0);
+      }
+    }
+  }
+
+
   private void setGutterSizes(@NonNull DcMsg current, boolean isGroupThread) {
     if (isGroupThread && current.isOutgoing()) {
       ViewUtil.setLeftMargin(container, readDimen(R.dimen.conversation_group_left_gutter));
@@ -599,6 +704,21 @@ public class ConversationItem extends LinearLayout
 
   private int readDimen(@NonNull Context context, @DimenRes int dimenId) {
     return context.getResources().getDimensionPixelOffset(dimenId);
+  }
+
+  private int getAvailableMessageBubbleWidth(@NonNull View forView) {
+    int availableWidth;
+    if (hasAudio(messageRecord)) {
+      availableWidth = audioViewStub.get().getMeasuredWidth() + ViewUtil.getLeftMargin(audioViewStub.get()) + ViewUtil.getRightMargin(audioViewStub.get());
+    } else if (hasThumbnail(messageRecord)) {
+      availableWidth = mediaThumbnailStub.get().getMeasuredWidth();
+    } else {
+      availableWidth = bodyBubble.getMeasuredWidth() - bodyBubble.getPaddingLeft() - bodyBubble.getPaddingRight();
+    }
+
+    availableWidth -= ViewUtil.getLeftMargin(forView) + ViewUtil.getRightMargin(forView);
+
+    return availableWidth;
   }
 
   /// Event handlers

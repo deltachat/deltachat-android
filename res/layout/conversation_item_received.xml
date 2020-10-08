@@ -99,6 +99,19 @@
 
             </LinearLayout>
 
+            <org.thoughtcrime.securesms.components.QuoteView
+                android:id="@+id/quote_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/message_bubble_top_padding"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:visibility="gone"
+                app:message_type="incoming"
+                app:quote_colorPrimary="?attr/conversation_item_quote_text_color"
+                app:quote_colorSecondary="?attr/conversation_item_quote_text_color"
+                tools:visibility="visible"/>
+
             <ViewStub
                 android:id="@+id/image_view_stub"
                 android:layout_width="wrap_content"

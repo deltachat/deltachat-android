@@ -45,6 +45,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -106,6 +107,7 @@ public class ConversationFragment extends Fragment
     private Recipient                   recipient;
     private long                        chatId;
     private int                         startingPosition;
+    private int                         startingMsgId;
     private boolean                     firstLoad;
     private ActionMode                  actionMode;
     private Locale                      locale;
@@ -282,6 +284,7 @@ public class ConversationFragment extends Fragment
         this.chatId            = this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
         this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.chatId));
         this.startingPosition  = this.getActivity().getIntent().getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
+        this.startingMsgId     = this.getActivity().getIntent().getIntExtra(ConversationActivity.SCROLL_TO_MSG_ID_EXTRA, -1);
         this.firstLoad         = true;
 
         OnScrollListener scrollListener = new ConversationScrollListener(getActivity());
@@ -497,6 +500,8 @@ public class ConversationFragment extends Fragment
         if (firstLoad) {
             if (startingPosition >= 0) {
                 scrollToStartingPosition(startingPosition);
+            } else if (startingMsgId >= 0) {
+                scrollToMsgId(startingMsgId);
             } else {
                 scrollToLastSeenPosition(lastSeenPosition);
             }
@@ -529,7 +534,12 @@ public class ConversationFragment extends Fragment
 
     private void scrollToStartingPosition(final int startingPosition) {
         list.post(() -> {
-            list.getLayoutManager().scrollToPosition(startingPosition);
+            int diff = Math.abs(((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() - startingPosition);
+            if (diff < SCROLL_ANIMATION_THRESHOLD) {
+                list.smoothScrollToPosition(startingPosition);
+            } else {
+                list.scrollToPosition(startingPosition);
+            }
             getListAdapter().pulseHighlightItem(startingPosition);
         });
     }
@@ -545,6 +555,8 @@ public class ConversationFragment extends Fragment
         int position = adapter.msgIdToPosition(msgId);
         if (position!=-1) {
             scrollToStartingPosition(position);
+        } else {
+            Log.e(TAG, "msgId {} not found for scrolling");
         }
     }
 
@@ -766,6 +778,33 @@ public class ConversationFragment extends Fragment
                 list.getAdapter().notifyDataSetChanged();
 
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
+            }
+        }
+
+        @Override
+        public void onQuoteClicked(DcMsg messageRecord) {
+            if ("".equals(messageRecord.getQuotedText())) {
+                Log.w(TAG, "Received a 'quote clicked' event, but there's no quote...");
+                return;
+            }
+
+            DcMsg quoted = messageRecord.getQuotedMsg();
+            if (quoted == null) {
+                Log.i(TAG, "Clicked on a quote whose original message we never had.");
+                Toast.makeText(getContext(), R.string.ConversationFragment_quoted_message_not_found, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            DcContact dcContact = dcContext.getContact(quoted.getFromId());
+            int foreignChatId = dcContext.createChatByContactId(dcContact.getId());
+            if (foreignChatId != 0 && foreignChatId != chatId) {
+                Intent intent = new Intent(getActivity(), ConversationActivity.class);
+                intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
+                intent.putExtra(ConversationActivity.SCROLL_TO_MSG_ID_EXTRA, quoted.getId());
+                getActivity().startActivity(intent);
+                getActivity().finish();
+            } else {
+                scrollToMsgId(quoted.getId());
             }
         }
     }
