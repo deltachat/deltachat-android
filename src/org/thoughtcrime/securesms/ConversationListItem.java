@@ -126,6 +126,8 @@ public class ConversationListItem extends RelativeLayout
                    boolean batchMode,
                    @Nullable String highlightSubstring)
   {
+    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+
     this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
     Recipient recipient   = thread.getRecipient();
@@ -133,8 +135,15 @@ public class ConversationListItem extends RelativeLayout
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
 
+    // if the last message is not fresh or noticed, we assume, there are no unread things
+    // and also remove notifications for the chat.
+    // this might be improved at some point in core, however, for now it is not that bad
+    // and ensures, things answered on device-A are no longer notified on device-B
     int state       = dcSummary.getState();
     int unreadCount = (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)? thread.getUnreadCount() : 0;
+    if (unreadCount==0) {
+      dcContext.notificationCenter.removeNotifications((int)chatId);
+    }
 
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
@@ -164,7 +173,6 @@ public class ConversationListItem extends RelativeLayout
     setBatchState(batchMode);
     setBgColor(thread);
 
-    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
     if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       DcContact dcContact = dcContext.getContact(dcContext.getMsg(msgId).getFromId());
       this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), false);
