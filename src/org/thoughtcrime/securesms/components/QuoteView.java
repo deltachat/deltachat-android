@@ -45,7 +45,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private static final int MESSAGE_TYPE_INCOMING = 2;
 
   private ViewGroup mainView;
-  private ViewGroup footerView;
   private TextView  authorView;
   private TextView  bodyView;
   private ImageView quoteBarView;
@@ -92,7 +91,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     inflate(getContext(), R.layout.quote_view, this);
 
     this.mainView                     = findViewById(R.id.quote_main);
-    this.footerView                   = findViewById(R.id.quote_missing_footer);
     this.authorView                   = findViewById(R.id.quote_author);
     this.bodyView                     = findViewById(R.id.quote_text);
     this.quoteBarView                 = findViewById(R.id.quote_bar);

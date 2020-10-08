@@ -146,25 +146,6 @@
 
 		</LinearLayout>
 
-		<LinearLayout
-			android:id="@+id/quote_missing_footer"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:padding="8dp"
-			android:visibility="gone"
-			tools:visibility="visible">
-
-			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:src="@android:drawable/ic_menu_close_clear_cancel"
-				android:layout_marginRight="8dp" />
-
-		</LinearLayout>
-
-
 	</LinearLayout>
 
 	<ImageView
