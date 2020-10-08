@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.components;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -174,7 +175,7 @@ public class InputPanel extends LinearLayout
                                                     @Nullable AnimationCompleteListener onAnimationComplete)
   {
     ValueAnimator animator = ValueAnimator.ofInt(originalHeight, finalHeight)
-            .setDuration(150);
+            .setDuration(300);
 
     animator.addUpdateListener(animation -> {
       ViewGroup.LayoutParams params = view.getLayoutParams();

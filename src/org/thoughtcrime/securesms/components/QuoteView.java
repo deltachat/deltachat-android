@@ -45,14 +45,14 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private static final int MESSAGE_TYPE_INCOMING = 2;
 
   private ViewGroup mainView;
-  //private ViewGroup footerView;
+  private ViewGroup footerView;
   private TextView  authorView;
   private TextView  bodyView;
-  private ImageView      quoteBarView;
+  private ImageView quoteBarView;
   private ImageView thumbnailView;
   private View      attachmentVideoOverlayView;
-  //private ViewGroup attachmentContainerView;
-  private DocumentView attachmentView;
+  private ViewGroup attachmentContainerView;
+  private TextView  attachmentNameView;
   private ImageView dismissView;
 
   private DcMsg quotedMsg;
@@ -92,13 +92,14 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     inflate(getContext(), R.layout.quote_view, this);
 
     this.mainView                     = findViewById(R.id.quote_main);
-    //this.footerView                   = findViewById(R.id.quote_missing_footer);
+    this.footerView                   = findViewById(R.id.quote_missing_footer);
     this.authorView                   = findViewById(R.id.quote_author);
     this.bodyView                     = findViewById(R.id.quote_text);
     this.quoteBarView                 = findViewById(R.id.quote_bar);
     this.thumbnailView                = findViewById(R.id.quote_thumbnail);
     this.attachmentVideoOverlayView   = findViewById(R.id.quote_video_overlay);
-    this.attachmentView               = findViewById(R.id.attachment_view);
+    this.attachmentContainerView      = findViewById(R.id.quote_attachment_container);
+    this.attachmentNameView           = findViewById(R.id.quote_attachment_name);
     this.dismissView                  = findViewById(R.id.quote_dismiss);
     this.largeCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_large);
     this.smallCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_bottom);
@@ -108,13 +109,16 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
     if (attrs != null) {
       TypedArray typedArray     = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.QuoteView, 0, 0);
+      int        primaryColor   = typedArray.getColor(R.styleable.QuoteView_quote_colorPrimary, Color.BLACK);
       int        secondaryColor = typedArray.getColor(R.styleable.QuoteView_quote_colorSecondary, Color.BLACK);
       messageType = typedArray.getInt(R.styleable.QuoteView_message_type, 0);
       typedArray.recycle();
 
       dismissView.setVisibility(messageType == MESSAGE_TYPE_PREVIEW ? VISIBLE : GONE);
 
-      //missingLinkText.setTextColor(primaryColor);
+      authorView.setTextColor(primaryColor);
+      bodyView.setTextColor(primaryColor);
+      attachmentNameView.setTextColor(primaryColor);
 
       if (messageType == MESSAGE_TYPE_PREVIEW) {
         int radius = getResources().getDimensionPixelOffset(R.dimen.quote_corner_radius_preview);
@@ -203,13 +207,13 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
   private void setQuoteAttachment(@NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
     List<Slide> imageVideoSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasImage() || s.hasVideo()).limit(1).toList();
-    List<Slide> documentSlides = Stream.of(attachments.getSlides()).filter(Slide::hasDocument).limit(1).toList();
+    List<Slide> documentSlides   = Stream.of(attachments.getSlides()).filter(Slide::hasDocument).limit(1).toList();
 
     attachmentVideoOverlayView.setVisibility(GONE);
 
     if (!imageVideoSlides.isEmpty() && imageVideoSlides.get(0).getUri() != null) {
       thumbnailView.setVisibility(VISIBLE);
-      attachmentView.setVisibility(GONE);
+      attachmentContainerView.setVisibility(GONE);
       dismissView.setBackgroundResource(R.drawable.dismiss_background);
       if (imageVideoSlides.get(0).hasVideo()) {
         attachmentVideoOverlayView.setVisibility(VISIBLE);
@@ -219,15 +223,14 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
               .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
               .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
               .into(thumbnailView);
-    } else if (!documentSlides.isEmpty()) {
+    } else if (!documentSlides.isEmpty()){
       thumbnailView.setVisibility(GONE);
-      attachmentView.setVisibility(VISIBLE);
-      //attachmentNameView.setText(documentSlides.get(0).getFileName().or(""));
-      attachmentView.setDocument(attachments.getDocumentSlide());
+      attachmentContainerView.setVisibility(VISIBLE);
+      attachmentNameView.setText(documentSlides.get(0).getFileName().or(""));
     } else {
       thumbnailView.setVisibility(GONE);
-      attachmentView.setVisibility(GONE);
-      dismissView.setBackground(null);
+      attachmentContainerView.setVisibility(GONE);
+      dismissView.setBackgroundDrawable(null);
     }
 
     if (ThemeUtil.isDarkTheme(getContext())) {
