@@ -25,7 +25,7 @@
 				android:id="@+id/quote_bar"
 				android:layout_width="@dimen/quote_corner_radius_bottom"
 				android:layout_height="match_parent"
-				android:src="@color/white"
+				android:background="@color/purple_400"
 				tools:tint="@color/purple_400" />
 
 			<LinearLayout
@@ -59,14 +59,16 @@
 					android:visibility="gone"
 					tools:visibility="visible">
 
-					<ImageView
-						android:layout_width="27dp"
+					<org.thoughtcrime.securesms.components.CircleColorImageView
+						android:padding="4dp"
+						android:layout_width="35dp"
 						android:layout_height="35dp"
-						android:layout_marginEnd="4dp"
-						android:paddingStart="-4dp"
+						android:layout_marginRight="5dp"
 						android:src="@drawable/ic_insert_drive_file_white_24dp"
-						android:layout_marginRight="4dp"
-						android:paddingLeft="-4dp" />
+						android:scaleType="center"
+						android:contentDescription="@string/file"
+						app:circleColor="@color/document_icon"
+						android:layout_marginEnd="5dp" />
 
 					<TextView
 						android:id="@+id/quote_attachment_name"

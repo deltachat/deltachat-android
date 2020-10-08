@@ -116,7 +116,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
       dismissView.setVisibility(messageType == MESSAGE_TYPE_PREVIEW ? VISIBLE : GONE);
 
-      authorView.setTextColor(primaryColor);
       bodyView.setTextColor(primaryColor);
       attachmentNameView.setTextColor(primaryColor);
 
