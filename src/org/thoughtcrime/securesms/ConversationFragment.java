@@ -795,8 +795,7 @@ public class ConversationFragment extends Fragment
                 return;
             }
 
-            DcContact dcContact = dcContext.getContact(quoted.getFromId());
-            int foreignChatId = dcContext.createChatByContactId(dcContact.getId());
+            int foreignChatId = quoted.getChatId();
             if (foreignChatId != 0 && foreignChatId != chatId) {
                 Intent intent = new Intent(getActivity(), ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
