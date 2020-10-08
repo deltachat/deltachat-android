@@ -20,7 +20,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.annimon.stream.Stream;
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -203,6 +202,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
   private void setQuoteAttachment(@NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
     List<Slide> imageVideoSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasImage() || s.hasVideo()).limit(1).toList();
+    List<Slide> audioSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasAudio()).limit(1).toList();
     List<Slide> documentSlides = Stream.of(attachments.getSlides()).filter(Slide::hasDocument).limit(1).toList();
 
     attachmentVideoOverlayView.setVisibility(GONE);
@@ -224,6 +224,9 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
               .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
               .into(thumbnailView);
 
+    } else if(!audioSlides.isEmpty()) {
+      thumbnailView.setVisibility(GONE);
+      attachmentContainerView.setVisibility(GONE);
     } else if (!documentSlides.isEmpty()) {
       thumbnailView.setVisibility(GONE);
       attachmentContainerView.setVisibility(VISIBLE);

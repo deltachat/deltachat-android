@@ -568,8 +568,8 @@ public class ConversationItem extends LinearLayout
       }
 
       String text = msg.getSummarytext(100);
-      if (msg.getType() == DcMsg.DC_MSG_FILE || msg.getType() == DcMsg.DC_MSG_AUDIO) {
-        // These two types already take up all the space and have their filename shown.
+      if (msg.getType() == DcMsg.DC_MSG_FILE) {
+        // This two type already takes up all the space to have the filename shown.
         // So, make sure that if there is no manually entered text, the text field stays empty.
         text = msg.getText();
       }
