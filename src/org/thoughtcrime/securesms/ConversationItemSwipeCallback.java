@@ -128,22 +128,36 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
                                 @NonNull RecyclerView.ViewHolder viewHolder,
                                 float dx)
   {
-    recyclerView.setOnTouchListener((v, event) -> {
-      switch (event.getAction()) {
-        case MotionEvent.ACTION_DOWN:
-          shouldTriggerSwipeFeedback = true;
-          break;
-        case MotionEvent.ACTION_UP:
-          handleTouchActionUp(recyclerView, viewHolder, dx);
-          //fallthrough
-        case MotionEvent.ACTION_CANCEL:
-          swipeBack = true;
-          shouldTriggerSwipeFeedback = false;
-          resetProgressIfAnimationsDisabled(viewHolder);
-          recyclerView.setOnTouchListener(null);
-          break;
+    recyclerView.setOnTouchListener(new View.OnTouchListener() {
+
+      // This variable is necessary to make sure that the handleTouchActionUp() and therefore onSwiped() is called only once.
+      // Otherwise, any subsequent little swipe would invoke onSwiped().
+      // We can't call recyclerView.setOnTouchListener(null) because another ConversationItem might have set its own
+      // on touch listener in the meantime.
+      private boolean listenerCalled = false;
+
+      @Override
+      public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+          case MotionEvent.ACTION_DOWN:
+            shouldTriggerSwipeFeedback = true;
+            break;
+          case MotionEvent.ACTION_UP:
+            if (!listenerCalled) {
+              listenerCalled = true;
+              ConversationItemSwipeCallback.this.handleTouchActionUp(recyclerView, viewHolder, dx);
+            }
+            //fallthrough
+          case MotionEvent.ACTION_CANCEL:
+            swipeBack = true;
+            shouldTriggerSwipeFeedback = false;
+            resetProgressIfAnimationsDisabled(viewHolder);
+            recyclerView.setOnTouchListener(null);
+            break;
+        }
+        return false;
       }
-      return false;
+
     });
   }
 
@@ -157,7 +171,6 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
       if (shouldTriggerSwipeFeedback) {
         vibrate(viewHolder.itemView.getContext());
       }
-      //recyclerView.setOnTouchListener(null);
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       recyclerView.cancelPendingInputEvents();

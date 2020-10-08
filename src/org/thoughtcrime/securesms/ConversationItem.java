@@ -205,6 +205,7 @@ public class ConversationItem extends LinearLayout
     setMessageSpacing(context);
     setFooter(messageRecord, locale);
     setQuote(messageRecord);
+
   }
 
 
