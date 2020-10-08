@@ -80,7 +80,6 @@ public class ConversationListItem extends RelativeLayout
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
 
-  private int             unreadCount;
   private AvatarImageView contactPhotoImage;
 
   public ConversationListItem(Context context) {
@@ -133,7 +132,9 @@ public class ConversationListItem extends RelativeLayout
     this.chatId           = thread.getThreadId();
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
-    this.unreadCount      = thread.getUnreadCount();
+
+    int state       = dcSummary.getState();
+    int unreadCount = (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)? thread.getUnreadCount() : 0;
 
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
@@ -159,7 +160,7 @@ public class ConversationListItem extends RelativeLayout
         thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0
     );
 
-    setStatusIcons(thread);
+    setStatusIcons(thread.getVisibility(), state, unreadCount);
     setBatchState(batchMode);
     setBgColor(thread);
 
@@ -253,10 +254,9 @@ public class ConversationListItem extends RelativeLayout
     return dcContext.getMsg(msgId).getFromId();
   }
 
-  private void setStatusIcons(ThreadRecord thread) {
-    if (thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
+  private void setStatusIcons(int visibility, int state, int unreadCount) {
+    if (visibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
-      // archived
       this.archivedView.setVisibility(View.VISIBLE);
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
@@ -264,12 +264,9 @@ public class ConversationListItem extends RelativeLayout
     else
     {
       this.archivedView.setVisibility(View.GONE);
-      int state = dcSummary.getState();
       if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)
       {
-        // incoming
         deliveryStatusIndicator.setNone();
-        int unreadCount = thread.getUnreadCount();
         if(unreadCount==0) {
           unreadIndicator.setVisibility(View.GONE);
         }
@@ -287,7 +284,6 @@ public class ConversationListItem extends RelativeLayout
       }
       else
       {
-        // outgoing
         unreadIndicator.setVisibility(View.GONE);
         if (state == DcMsg.DC_STATE_OUT_ERROR) {
           deliveryStatusIndicator.setFailed();
