@@ -114,9 +114,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
       dismissView.setVisibility(messageType == MESSAGE_TYPE_PREVIEW ? VISIBLE : GONE);
 
-      bodyView.setTextColor(primaryColor);
-      attachmentNameView.setTextColor(primaryColor);
-
       if (messageType == MESSAGE_TYPE_PREVIEW) {
         int radius = getResources().getDimensionPixelOffset(R.dimen.quote_corner_radius_preview);
         cornerMask.setTopLeftRadius(radius);

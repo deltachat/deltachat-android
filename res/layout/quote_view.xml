@@ -54,28 +54,29 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginBottom="2dp"
+					android:layout_marginTop="2dp"
 					android:orientation="horizontal"
 					android:gravity="center_vertical"
 					android:visibility="gone"
 					tools:visibility="visible">
 
 					<org.thoughtcrime.securesms.components.CircleColorImageView
-						android:padding="4dp"
 						android:layout_width="35dp"
 						android:layout_height="35dp"
+						android:layout_marginEnd="5dp"
 						android:layout_marginRight="5dp"
-						android:src="@drawable/ic_insert_drive_file_white_24dp"
-						android:scaleType="center"
 						android:contentDescription="@string/file"
-						app:circleColor="@color/document_icon"
-						android:layout_marginEnd="5dp" />
+						android:padding="4dp"
+						android:scaleType="center"
+						android:src="@drawable/ic_insert_drive_file_white_24dp"
+						app:circleColor="@color/document_icon" />
 
 					<TextView
 						android:id="@+id/quote_attachment_name"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						style="@style/Signal.Text.Body"
-						android:textColor="@color/gray95"
+						android:textColor="@color/document_icon_text"
 						android:maxLines="1"
 						android:ellipsize="end"
 						tools:text="The-Amazing-Spider-Man.cba" />
@@ -89,7 +90,6 @@
 					android:layout_marginEnd="8dp"
 					style="@style/Signal.Text.Caption"
 					android:textColor="@color/gray95"
-					android:paddingTop="4dp"
 					android:textStyle="italic"
 					android:visibility="gone"
 					tools:text="Photo"
@@ -100,7 +100,7 @@
 					android:id="@+id/quote_text"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					style="@style/Signal.Text.Body"
+					style="@style/Signal.Text.Quote"
 					android:ellipsize="end"
 					android:maxLines="2"
 					tools:text="With great power comes great responsibility."
