@@ -31,7 +31,7 @@ class ContactPhotoFetcher implements DataFetcher<InputStream> {
       inputStream = contactPhoto.openInputStream(context);
       callback.onDataReady(inputStream);
     } catch (IOException e) {
-      callback.onLoadFailed(e);
+      //callback.onLoadFailed(e);//TODO dbg
     }
   }
 

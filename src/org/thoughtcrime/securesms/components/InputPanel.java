@@ -130,7 +130,7 @@ public class InputPanel extends LinearLayout
   }
 
   public void setQuote(@NonNull GlideRequests glideRequests,
-                       DcMsg msg,
+                       @NonNull DcMsg msg,
                        long id,
                        @NonNull Recipient author,
                        @NonNull CharSequence body,

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -116,7 +117,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
   private void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder) {
     if (cannotSwipeViewHolder(viewHolder)) return;
 
-    ConversationItem    item          = ((ConversationItem) viewHolder.itemView);
+    ConversationItem item = ((ConversationItem) viewHolder.itemView);
     DcMsg messageRecord = item.getMessageRecord();
 
     onSwipeListener.onSwipe(messageRecord);
@@ -139,6 +140,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
           swipeBack = true;
           shouldTriggerSwipeFeedback = false;
           resetProgressIfAnimationsDisabled(viewHolder);
+          recyclerView.setOnTouchListener(null);
           break;
       }
       return false;
