@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.components;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;

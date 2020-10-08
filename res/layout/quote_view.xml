@@ -10,100 +10,103 @@
 	android:layout_margin="3dp"
 	tools:visibility="visible">
 
-	<LinearLayout
+	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical">
+		android:layout_height="wrap_content">
 
-		<LinearLayout
-			android:id="@+id/quote_main"
-			android:layout_width="match_parent"
+
+		<FrameLayout
+			android:id="@+id/quote_video_overlay"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:orientation="horizontal">
+			android:background="@drawable/circle_white"
+			android:longClickable="false"
+			android:visibility="gone"
+			android:layout_gravity="center"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:visibility="visible">
 
 			<ImageView
-				android:id="@+id/quote_bar"
-				android:layout_width="4dp"
-				android:layout_height="match_parent"
-				android:background="@color/purple_400"/>
-
-			<LinearLayout
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="8dp"
-				android:layout_marginEnd="8dp"
+				android:layout_width="13dp"
+				android:layout_height="16dp"
+				android:layout_marginLeft="11dp"
 				android:layout_marginTop="8dp"
+				android:layout_marginRight="11dp"
 				android:layout_marginBottom="8dp"
-				android:orientation="vertical"
-				android:layout_weight="1">
+				android:scaleType="fitXY"
+				android:tint="#2c6bed"
+				app:srcCompat="@drawable/triangle_right" />
 
-				<org.thoughtcrime.securesms.components.emoji.EmojiTextView
-					android:id="@+id/quote_author"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					style="@style/Signal.Text.Caption"
-					android:textColor="@color/core_black"
-					android:textStyle="bold"
-					android:maxLines="1"
-					android:ellipsize="end"
-					tools:text="Peter Parker" />
+		</FrameLayout>
 
-				<org.thoughtcrime.securesms.components.DocumentView
-					android:id="@+id/attachment_view"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"/>
 
-				<org.thoughtcrime.securesms.components.emoji.EmojiTextView
-					android:id="@+id/quote_text"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					style="@style/Signal.Text.Quote"
-					android:ellipsize="end"
-					android:maxLines="2"
-					tools:text="With great power comes great responsibility."
-					tools:visibility="visible" />
+		<ImageView
+			android:id="@+id/quote_thumbnail"
+			android:layout_height="match_parent"
+			android:scaleType="centerCrop"
+			android:visibility="gone"
+			android:layout_width="@dimen/quote_thumb_size"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:visibility="gone" />
 
-			</LinearLayout>
+		<ImageView
+			android:id="@+id/quote_bar"
+			android:layout_width="4dp"
+			android:layout_height="0dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginRight="8dp"
+			android:background="@color/purple_400"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
-			<FrameLayout
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent">
+		<org.thoughtcrime.securesms.components.DocumentView
+			android:id="@+id/attachment_view"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:layout_marginRight="8dp"
+			app:layout_constraintEnd_toStartOf="@+id/quote_video_overlay"
+			app:layout_constraintStart_toStartOf="@+id/quote_author"
+			app:layout_constraintTop_toBottomOf="@+id/quote_author" />
 
-				<ImageView
-					android:id="@+id/quote_thumbnail"
-					android:layout_width="@dimen/quote_thumb_size"
-					android:layout_height="match_parent"
-					android:scaleType="centerCrop"
-					android:visibility="gone"
-					tools:visibility="gone" />
 
-				<FrameLayout
-					android:id="@+id/quote_video_overlay"
-					android:layout_width="32dp"
-					android:layout_height="32dp"
-					android:background="@drawable/circle_white"
-					android:layout_gravity="center"
-					android:longClickable="false"
-					android:visibility="gone"
-					tools:visibility="visible">
+		<org.thoughtcrime.securesms.components.emoji.EmojiTextView
+			android:id="@+id/quote_author"
+			style="@style/Signal.Text.Caption"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:ellipsize="end"
+			android:maxLines="1"
+			android:textColor="@color/core_black"
+			android:textStyle="bold"
+			android:layout_marginStart="8dp"
+			android:layout_marginLeft="8dp"
+			app:layout_constraintStart_toEndOf="@+id/quote_bar"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="Peter Parker" />
 
-					<ImageView
-						android:layout_width="13dp"
-						android:layout_height="16dp"
-						android:layout_marginStart="11dp"
-						android:layout_marginTop="8dp"
-						android:tint="#2c6bed"
-						android:scaleType="fitXY"
-						app:srcCompat="@drawable/triangle_right"
-						android:layout_marginLeft="11dp" />
+		<org.thoughtcrime.securesms.components.emoji.EmojiTextView
+			android:id="@+id/quote_text"
+			style="@style/Signal.Text.Quote"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ellipsize="end"
+			android:maxLines="2"
+			android:paddingBottom="8dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="@+id/attachment_view"
+			app:layout_constraintTop_toBottomOf="@+id/attachment_view"
+			tools:text="With great power comes great responsibility."
+			tools:visibility="visible" />
 
-				</FrameLayout>
 
-			</FrameLayout>
-
-		</LinearLayout>
-
-	</LinearLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
 
 	<ImageView
 		android:id="@+id/quote_dismiss"
@@ -112,6 +115,8 @@
 		android:padding="6dp"
 		android:layout_gravity="top|end"
 		android:background="@drawable/dismiss_background"
+		android:scaleX="0.7"
+		android:scaleY="0.7"
 		android:src="@drawable/ic_close_white_18dp"
 		android:tint="?quote_dismiss_button_tint" />
 
