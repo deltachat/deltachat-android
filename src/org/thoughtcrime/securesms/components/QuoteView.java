@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -32,6 +33,7 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientForeverObserver;
+import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 
 import java.util.List;
@@ -201,7 +203,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
   private void setQuoteAttachment(@NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
     List<Slide> imageVideoSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasImage() || s.hasVideo()).limit(1).toList();
-    List<Slide> documentSlides   = Stream.of(attachments.getSlides()).filter(Slide::hasDocument).limit(1).toList();
+    List<Slide> documentSlides = Stream.of(attachments.getSlides()).filter(Slide::hasDocument).limit(1).toList();
 
     attachmentVideoOverlayView.setVisibility(GONE);
 
@@ -209,15 +211,20 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       thumbnailView.setVisibility(VISIBLE);
       attachmentContainerView.setVisibility(GONE);
       dismissView.setBackgroundResource(R.drawable.dismiss_background);
+
+      Uri thumbnailUri = imageVideoSlides.get(0).getUri();
       if (imageVideoSlides.get(0).hasVideo()) {
         attachmentVideoOverlayView.setVisibility(VISIBLE);
+        MediaUtil.createVideoThumbnailIfNeeded(getContext(), imageVideoSlides.get(0).getUri(), imageVideoSlides.get(0).getThumbnailUri(), null);
+        thumbnailUri = imageVideoSlides.get(0).getThumbnailUri();
       }
-      glideRequests.load(new DecryptableUri(imageVideoSlides.get(0).getUri()))
+      glideRequests.load(new DecryptableUri(thumbnailUri))
               .centerCrop()
               .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
               .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
               .into(thumbnailView);
-    } else if (!documentSlides.isEmpty()){
+
+    } else if (!documentSlides.isEmpty()) {
       thumbnailView.setVisibility(GONE);
       attachmentContainerView.setVisibility(VISIBLE);
       attachmentNameView.setText(documentSlides.get(0).getFileName().or(""));
