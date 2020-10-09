@@ -125,7 +125,7 @@
 					android:id="@+id/quote_video_overlay"
 					android:layout_width="32dp"
 					android:layout_height="32dp"
-					android:background="@drawable/circle_white"
+					android:background="@drawable/circle_universal_overlay"
 					android:layout_gravity="center"
 					android:longClickable="false"
 					android:visibility="gone"
@@ -136,7 +136,6 @@
 						android:layout_height="16dp"
 						android:layout_marginStart="11dp"
 						android:layout_marginTop="8dp"
-						android:tint="#2c6bed"
 						android:scaleType="fitXY"
 						app:srcCompat="@drawable/triangle_right"
 						android:layout_marginLeft="11dp" />
