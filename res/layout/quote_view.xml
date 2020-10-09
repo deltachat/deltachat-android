@@ -103,7 +103,7 @@
 					android:layout_height="wrap_content"
 					style="@style/Signal.Text.Quote"
 					android:ellipsize="end"
-					android:maxLines="2"
+					android:maxLines="3"
 					tools:text="With great power comes great responsibility."
 					tools:visibility="visible" />
 
