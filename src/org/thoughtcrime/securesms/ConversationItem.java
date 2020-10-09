@@ -67,7 +67,6 @@ import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 import java.util.HashSet;
@@ -325,8 +324,7 @@ public class ConversationItem extends LinearLayout
   }
 
   private boolean hasQuote(DcMsg messageRecord) {
-    //return !"".equals(messageRecord.getQuotedText());//TODO this would be nice
-    return messageRecord.getQuotedMsg() != null;
+    return !"".equals(messageRecord.getQuotedText());
   }
 
   private boolean hasThumbnail(DcMsg messageRecord) {
@@ -549,68 +547,52 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setQuote(@NonNull DcMsg current) {
-    if (hasQuote(current)) {
-      if (quoteView == null) {
-        throw new AssertionError();
-      }
-      //Quote quote = ((MediaMmsMessageRecord)current).getQuote();
-      //noinspection ConstantConditions
-      //quoteView.setQuote(glideRequests, quote.getId(), Recipient.live(quote.getAuthor()).get(), quote.getDisplayText(), quote.isOriginalMissing(), quote.getAttachment());
-      DcMsg msg = current.getQuotedMsg();
-      String quoteTxt = current.getQuotedText();
-
-      // TODO the next lines are duplicates of ConversationActivity.handleReplyMessage()
-      DcContact dcContact = dcContext.getContact(msg.getFromId());
-      Recipient author = dcContext.getRecipient(dcContact);
-
-      SlideDeck slideDeck = new SlideDeck();
-      if (msg.getType() != DcMsg.DC_MSG_TEXT) {
-        slideDeck.addSlide(MediaUtil.getSlideForMsg(context, msg));
-      }
-
-      String text = msg.getSummarytext(100);
-      if (msg.getType() == DcMsg.DC_MSG_FILE) {
-        // This two type already takes up all the space to have the filename shown.
-        // So, make sure that if there is no manually entered text, the text field stays empty.
-        text = msg.getText();
-      }
-
-
-      quoteView.setQuote(GlideApp.with(this),
-              msg,
-              msg.getTimestamp(),
-              author,
-              text,
-              false,
-              slideDeck);
-
-      quoteView.setVisibility(View.VISIBLE);
-      quoteView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-
-      quoteView.setOnClickListener(view -> {
-        if (eventListener != null && batchSelected.isEmpty()) {
-          eventListener.onQuoteClicked(current);
-        } else {
-          passthroughClickListener.onClick(view);
-        }
-      });
-
-      quoteView.setOnLongClickListener(passthroughClickListener);
-
-      if (mediaThumbnailStub.resolved()) {
-        ViewUtil.setTopMargin(mediaThumbnailStub.get(), readDimen(R.dimen.message_bubble_top_padding));
-      }
-    } else {
-      if (quoteView != null) {
-        quoteView.dismiss();
-      }
-
+    if (quoteView == null) {
+      throw new AssertionError();
+    }
+    String quoteTxt = current.getQuotedText();
+    if (quoteTxt == null || quoteTxt.isEmpty()) {
+      quoteView.dismiss();
       if (mediaThumbnailStub.resolved()) {
         ViewUtil.setTopMargin(mediaThumbnailStub.get(), 0);
       }
+      return;
+    }
+    DcMsg msg = current.getQuotedMsg();
+
+    // If you modify these lines you may also want to modify ConversationActivity.handleReplyMessage():
+    Recipient author = null;
+    SlideDeck slideDeck = new SlideDeck();
+    if (msg != null) {
+      author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
+      if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+        slideDeck.addSlide(MediaUtil.getSlideForMsg(context, msg));
+      }
+    }
+
+    quoteView.setQuote(GlideApp.with(this),
+            msg,
+            author,
+            quoteTxt,
+            slideDeck);
+
+    quoteView.setVisibility(View.VISIBLE);
+    quoteView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
+
+    quoteView.setOnClickListener(view -> {
+      if (eventListener != null && batchSelected.isEmpty()) {
+        eventListener.onQuoteClicked(current);
+      } else {
+        passthroughClickListener.onClick(view);
+      }
+    });
+
+    quoteView.setOnLongClickListener(passthroughClickListener);
+
+    if (mediaThumbnailStub.resolved()) {
+      ViewUtil.setTopMargin(mediaThumbnailStub.get(), readDimen(R.dimen.message_bubble_top_padding));
     }
   }
-
 
   private void setGutterSizes(@NonNull DcMsg current, boolean isGroupThread) {
     if (isGroupThread && current.isOutgoing()) {

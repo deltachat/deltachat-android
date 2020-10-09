@@ -52,11 +52,9 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private ImageView thumbnailView;
   private View      attachmentVideoOverlayView;
   private ViewGroup attachmentContainerView;
-  private TextView  attachmentNameView;
   private ImageView dismissView;
 
   private DcMsg quotedMsg;
-  private long          id;
   private DcContact     author;
   private CharSequence  body;
   //private TextView      missingLinkText;
@@ -98,7 +96,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     this.thumbnailView                = findViewById(R.id.quote_thumbnail);
     this.attachmentVideoOverlayView   = findViewById(R.id.quote_video_overlay);
     this.attachmentContainerView      = findViewById(R.id.quote_attachment_container);
-    this.attachmentNameView           = findViewById(R.id.quote_attachment_name);
     this.dismissView                  = findViewById(R.id.quote_dismiss);
     this.largeCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_large);
     this.smallCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_bottom);
@@ -139,17 +136,14 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
   public void setQuote(GlideRequests glideRequests,
                        DcMsg msg,
-                       long id,
-                       @NonNull Recipient author,
+                       @Nullable Recipient author,
                        @Nullable CharSequence body,
-                       boolean originalMissing,
                        @NonNull SlideDeck attachments)
   {
 //    if (this.author != null) this.author.removeForeverObserver(this);
 
-    this.id          = id;
     quotedMsg        = msg;
-    this.author      = author.getDcContact();
+    this.author      = author != null ? author.getDcContact() : null;
     this.body        = body;
     this.attachments = attachments;
 
@@ -168,7 +162,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   public void dismiss() {
     //if (this.author != null) this.author.removeForeverObserver(this);
 
-    this.id     = 0;
     this.author = null;
     this.body   = null;
 
@@ -180,11 +173,15 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     setQuoteAuthor(recipient);
   }
 
-  private void setQuoteAuthor(@NonNull Recipient author) {
-    boolean outgoing = messageType != MESSAGE_TYPE_INCOMING;
+  private void setQuoteAuthor(@Nullable Recipient author) {
+    if (author == null) {
+      authorView.setVisibility(GONE);
+      return;
+    }
 
     DcContact contact = author.getDcContact();
     if (contact != null) {
+      authorView.setVisibility(VISIBLE);
       authorView.setText(contact.getDisplayName());
       quoteBarView.setBackgroundColor(contact.getArgbColor());
       authorView.setTextColor(contact.getArgbColor());
@@ -230,11 +227,9 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     } else if (!documentSlides.isEmpty()) {
       thumbnailView.setVisibility(GONE);
       attachmentContainerView.setVisibility(VISIBLE);
-      attachmentNameView.setText(documentSlides.get(0).getFileName().or(""));
     } else {
       thumbnailView.setVisibility(GONE);
       attachmentContainerView.setVisibility(GONE);
-      dismissView.setBackgroundDrawable(null);
     }
 
     if (ThemeUtil.isDarkTheme(getContext())) {
@@ -246,10 +241,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 //    footerView.setVisibility(missing ? VISIBLE : GONE);
 //    footerView.setBackgroundColor(author.getColor());
 //  }
-
-  public long getQuoteId() {
-    return id;
-  }
 
   public CharSequence getBody() {
     return body;

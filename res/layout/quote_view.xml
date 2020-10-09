@@ -47,42 +47,8 @@
 					android:textStyle="bold"
 					android:maxLines="1"
 					android:ellipsize="end"
+					tools:visibility="gone"
 					tools:text="Peter Parker" />
-
-				<LinearLayout
-					android:id="@+id/quote_attachment_container"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginBottom="2dp"
-					android:layout_marginTop="2dp"
-					android:orientation="horizontal"
-					android:gravity="center_vertical"
-					android:visibility="gone"
-					tools:visibility="visible">
-
-					<org.thoughtcrime.securesms.components.CircleColorImageView
-						android:id="@+id/quote_attachment_icon"
-						android:layout_width="35dp"
-						android:layout_height="35dp"
-						android:layout_marginEnd="5dp"
-						android:layout_marginRight="5dp"
-						android:contentDescription="@string/file"
-						android:padding="4dp"
-						android:scaleType="center"
-						android:src="@drawable/ic_insert_drive_file_white_24dp"
-						app:circleColor="@color/document_icon" />
-
-					<TextView
-						android:id="@+id/quote_attachment_name"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						style="@style/Signal.Text.Body"
-						android:textColor="@color/document_icon_text"
-						android:maxLines="1"
-						android:ellipsize="end"
-						tools:text="The-Amazing-Spider-Man.cba" />
-
-				</LinearLayout>
 
 				<TextView
 					android:id="@+id/media_type"
@@ -113,6 +79,29 @@
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent">
 
+				<LinearLayout
+					android:id="@+id/quote_attachment_container"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:orientation="horizontal"
+					android:gravity="center_vertical"
+					android:visibility="gone"
+					tools:visibility="visible">
+
+					<org.thoughtcrime.securesms.components.CircleColorImageView
+						android:id="@+id/quote_attachment_icon"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:layout_marginEnd="5dp"
+						android:layout_marginRight="5dp"
+						android:contentDescription="@string/file"
+						android:padding="4dp"
+						android:scaleType="center"
+						android:src="@drawable/ic_insert_drive_file_white_24dp"
+						app:circleColor="@color/document_icon" />
+
+				</LinearLayout>
+
 				<ImageView
 					android:id="@+id/quote_thumbnail"
 					android:layout_width="@dimen/quote_thumb_size"
@@ -129,7 +118,7 @@
 					android:layout_gravity="center"
 					android:longClickable="false"
 					android:visibility="gone"
-					tools:visibility="visible">
+					tools:visibility="gone">
 
 					<ImageView
 						android:layout_width="13dp"

@@ -1456,20 +1456,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleReplyMessage(DcMsg msg) {
-    DcContact dcContact = dcContext.getContact(msg.getFromId());
-    Recipient author = dcContext.getRecipient(dcContact);
+    // If you modify these lines you may also want to modify ConversationItem.setQuote():
+    Recipient author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
     if (msg.getType() != DcMsg.DC_MSG_TEXT) {
       slideDeck.addSlide(MediaUtil.getSlideForMsg(this, msg));
     }
 
-    String text = msg.getSummarytext(100);
-    if (msg.getType() == DcMsg.DC_MSG_FILE) {
-      // This type already takes up all the space to have the filename shown.
-      // So, make sure that if there is no manually entered text, the text field stays empty.
-      text = msg.getText();
-    }
+    String text = msg.getSummarytext(500);
 
     inputPanel.setQuote(GlideApp.with(this),
             msg,

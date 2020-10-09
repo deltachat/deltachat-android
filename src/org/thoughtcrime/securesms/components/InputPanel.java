@@ -137,7 +137,7 @@ public class InputPanel extends LinearLayout
                        @NonNull CharSequence body,
                        @NonNull SlideDeck attachments)
   {
-    this.quoteView.setQuote(glideRequests, msg, id, author, body, false, attachments);
+    this.quoteView.setQuote(glideRequests, msg, author, body, attachments);
 
     int originalHeight = this.quoteView.getVisibility() == VISIBLE ? this.quoteView.getMeasuredHeight()
             : 0;
@@ -191,9 +191,9 @@ public class InputPanel extends LinearLayout
   }
 
   public Optional<QuoteModel> getQuote() {
-    if (quoteView.getQuoteId() > 0 && quoteView.getVisibility() == View.VISIBLE) {
+    if (quoteView.getVisibility() == View.VISIBLE) {
       return Optional.of(new QuoteModel(
-              quoteView.getQuoteId(), quoteView.getDcContact(), quoteView.getBody().toString(),
+              quoteView.getDcContact(), quoteView.getBody().toString(),
               false, quoteView.getAttachments(), quoteView.getOriginalMsg()
       ));
     } else {
