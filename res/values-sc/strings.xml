@@ -6,6 +6,7 @@
     <string name="cancel">Annulla</string>
     <string name="yes">Eja</string>
     <string name="no">Nono</string>
+    <string name="select">Ischerta</string>
     <string name="on">Allutu</string>
     <string name="off">Istudadu</string>
     <string name="def">Predefinidu</string>
@@ -14,6 +15,8 @@
     <string name="automatic">Automàticu</string>
     <string name="strict">Astrintu</string>
     <string name="open">Aberi</string>
+    <string name="join">Auni·ti</string>
+    <string name="rejoin">Torra a t\'aunire</string>
     <string name="delete">Iscantzella</string>
     <string name="info">Informatziones</string>
     <string name="update">Agiorna</string>
@@ -21,10 +24,12 @@
     <string name="attachment">Allegadu</string>
     <string name="back">In palas</string>
     <string name="close">Serra</string>
-    <string name="forward">Imbia a àtere</string>
+    <string name="forward">Inoltra</string>
     <string name="archive">Archìvia</string>
     <string name="unarchive">Riprìstina</string>
     <string name="mute">Boga su sonu</string>
+    <string name="ephemeral_messages">Messàgios chi isparessent</string>
+    <string name="ephemeral_messages_hint">Custas impostatziones s\'àplicant a totu sos partetzipantes chi impreant Delta Chat. Nointames custu podent copiare, sarvare e torrare a imbiare messàgios o impreare àteros clientes de posta eletrònica.</string>
     <string name="save">Sarva</string>
     <string name="chat">Tzarrada</string>
     <string name="media">Cuntenutu multimediale</string>
@@ -94,7 +99,7 @@
     <string name="images">Immàgines</string>
     <string name="audio">Àudio</string>
     <string name="voice_message">Messàgiu sonoru</string>
-    <string name="forwarded_message">Messàgiu imbiadu a àtere</string>
+    <string name="forwarded_message">Messàgiu inoltradu</string>
     <string name="video">Vìdeu</string>
     <string name="documents">Documentos editàbiles</string>
     <string name="contact">Cuntatu</string>
@@ -102,7 +107,9 @@
     <string name="camera">Fotocàmera</string>
     <string name="location">Positzione</string>
     <string name="gallery">Galleria</string>
+    <string name="images_and_videos">Immàgines e vìdeos</string>
     <string name="file">Documentu</string>
+    <string name="files">Documentos</string>
     <string name="unknown">Disconnotu</string>
 
     <string name="green">Birde</string>
@@ -148,7 +155,7 @@
     <string name="menu_delete_location">Iscantzellare custa positzione?</string>
     <string name="menu_message_details">Detàllios de su messàgiu</string>
     <string name="menu_copy_to_clipboard">Còpia in punta de billete</string>
-    <string name="menu_forward">Imbia su messàgiu a calicun\'àteru</string>
+    <string name="menu_forward">Inoltra su messàgiu</string>
     <string name="menu_resend">Torra a imbiare su messàgiu</string>
     <string name="menu_reply">Risponde a su messàgiu</string>
     <string name="menu_mute">Istuda sas notìficas</string>
@@ -204,6 +211,21 @@
 
     <string name="file_saved_to">Documentu sarvadu in \"%1$s\".</string>
 
+    <string name="videochat">Vìdeu-tzarrada</string>
+    <string name="videochat_invite_user_to_videochat">Cheres invitare %1$s a una vìdeu-tzarrada?</string>
+    <string name="videochat_invite_user_hint">Custu bisòngiat de un\'aplicatzione cumpatìbile o unu navigadore cumpatìbile dae ambas alas.</string>
+    <string name="videochat_contact_invited_hint">%1$s t\'at invitadu a una vìdeu-tzarrada.</string>
+    <string name="videochat_you_invited_hint">As invitadu a una vìdeu-tzarrada.</string>
+    <string name="videochat_will_open_in_your_browser">Custa vìdeu-tzarrada s\'at a abèrrere in su navigadore web tuo.</string>
+    <string name="videochat_tap_to_join">Toca pro bi pigare parte</string>
+    <string name="videochat_tap_to_open">Toca pro abèrrere</string>
+    <string name="videochat_instance">Istàntzia de vìdeu-tzarrada</string>
+    <string name="videochat_instance_placeholder">S\'istàntzia de vìdeu-tzarrada tua</string>
+    <string name="videochat_instance_explain">Si benit definida un\'istàntzia de vìdeu-tzarrada, podes fàghere incumentzare una vìdeu-tzarrada dae cada tzarrada unu-a-unu. Sas vìdeu-tzarradas tenent bisòngiu de un\'aplicatzione cumpatìbile o de unu navigadore web cumpatìbile dae ambas alas..\n\nEsèmpios: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">Cheres impreare \"%1$s\" pro invitare calicun\'àteru a sa vìdeu-tzarrada?\n\nA pustis de s\'impostatzione, podes fàghere incumentzare una vìdeu-tzarrada dae cada tzarrada unu-a-unu. Custu at a remplasare sas impostatziones antepostas pro sas vìdeu-tzarradas, si bi nde fiant.</string>
+    <string name="videochat_invitation">Invitu a sa vìdeu-tzarrada</string>
+    <string name="videochat_invitation_body">Ses invitadu a una vìdeu-tzarrada. Incarca %1$s pro bi pigare parte.</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Ses seguru de chèrrere lassare custu grupu?</string>
     <plurals name="ask_delete_chat">
@@ -214,7 +236,8 @@
         <item quantity="one">Iscantzellare %d messàgiu inoghe e in su servidore?</item>
         <item quantity="other">Iscantzellare %d messàgios inoghe e in su servidore?</item>
     </plurals>
-    <string name="ask_forward">Imbiare su messàgiu a %1$s?</string>
+    <string name="ask_forward">Inoltrare su messàgiu a %1$s?</string>
+    <string name="ask_forward_multiple">Inoltrare messàgios a %1$d tzarradas?</string>
     <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>
     <string name="ask_block_contact">Blocare custu cuntatu? No as a retzire prus messàgios dae custu cuntatu.</string>
     <string name="ask_unblock_contact">Isblocare custu cuntatu? As a torrare a pòdere retzire messàgios dae custu cuntatu.</string>
@@ -263,7 +286,7 @@
     <string name="chat_no_messages">Perunu messàgiu.</string>
     <string name="chat_self_talk_subtitle">Messàgios chi m\'apo imbiadu a sa sola</string>
     <string name="saved_messages">Messàgios sarvados</string>
-    <string name="saved_messages_explain">• Torra a imbiare sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n• Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
+    <string name="saved_messages_explain">• Inoltra sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n• Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
     <string name="chat_contact_request">Rechesta de cuntatu</string>
     <string name="chat_no_contact_requests">Peruna rechesta de cuntatu.\n\nSi cheres chi sas lìteras eletrònicas clàssicas apàrgiant inoghe comente rechestas de cuntatu, podes mudare s\'impostatzione chi li pertocat in sas impostatziones de s\'aplicatzione.</string>
     <string name="retry_send">Torra a proare a imbiare su messàgiu</string>
@@ -323,6 +346,8 @@
     <string name="login_smtp_port">Ghenna SMTP</string>
     <string name="login_smtp_security">Seguresa SMTP</string>
     <string name="login_auth_method">Manera de autenticatzione</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Verifichende %1$s</string>
     <string name="login_info_oauth2_title">Cheres sighire cun s\'impostatzione semplificada?</string>
     <string name="login_info_oauth2_text">S\'indiritzu de posta eletrònica insertadu suportat un\'impostztione semplificada (OAuth 2.0).\n\n In su passu chi sighet, pro praghere, permite a Delta Chat de operare che a aplicatzione de tzarrada pro mèdiu de posta eletrònica.\n\nNon bi sunt serbidores de Delta Chat, abarrat totu in su dispositivu tuo.</string>
     <string name="login_certificate_checks">Verìficas de su tzertificadu</string>
@@ -345,9 +370,15 @@
     <string name="delete_account">Iscantzella su contu</string>
     <string name="delete_account_ask">Ses seguru de chèrrere iscantzellare sos datos de su contu tuo?</string>
     <string name="switching_account">Cambiende contu…</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">Configuratzione fallida. Errore: %1$s</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
-    <string name="forward_to">Torra a imbiare a...</string>
+    <string name="forward_to">Inoltra a...</string>
+    <string name="share_multiple_attachments">Cheres imbiare %1$d documentos a sa tzarrada ischertada?\n\nSos documentos benint imbiados chene modìficas a sa mannària originale issoro, a es. sas immàgines e sos vìdeos non benint torrados a codificare.</string>
+    <string name="share_multiple_attachments_multiple_chats">Cheres imbiare %1$d documentu(os) a %2$d tzarradas?\n\nSos documentos benint imbiados chene modìficas a sa mannària originale issoro, a es. sas immàgines e sos vìdeos non benint torrados a codificare.</string>
+    <string name="share_text_multiple_chats">Cheres inviare custu testu a %1$d tzarradas?\n\n\"%2$s\"</string>
     <string name="share_abort">Cumpartzidura annullada pro permissos chi mancant.</string>
 
 
@@ -442,6 +473,10 @@
     <string name="pref_background_default_color">Colore predefinidu</string>
     <string name="pref_background_custom_image">Immàgine personalizada</string>
     <string name="pref_background_custom_color">Colore personalizadu</string>
+    <string name="export_aborted">Esportatzione annullada.</string>
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">Iscantzella sos messàgios betzos</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
     <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>
@@ -452,6 +487,8 @@
     <string name="autodel_server_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos multimediales\n\n• Custu at a iscantzellare fintzas totu sas lìteras de posta eletrònica influentzadas dae s\'optzione \"Ammustra sas lìteras traditzionales\"\n\n• Sos \"Messàgios sarvados\" ant a èssere iscantzellados dae su serbidore fintzas issos</string>
     <string name="autodel_confirm">Apo cumpresu, iscantzella totu sos messàgios</string>
     <string name="autodel_at_once">Una borta</string>
+    <string name="after_30_seconds">A pustis de 30 segundos</string>
+    <string name="after_1_minute">A pustis de 1 minutu</string>
     <string name="autodel_after_1_hour">A pustis de 1 ora</string>
     <string name="autodel_after_1_day">A pustis de 1 die</string>
     <string name="autodel_after_1_week">A pustis de 1 chida</string>
@@ -462,10 +499,16 @@
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt est un ispetzìfica noa e aberta pro sa tzifradura automàtica a nodu terminale (end-to-end) de sas lìteras de posta eletrònica.\n\nS\'impostatzione a nodu terminale tua benit creada automaticamente icando sebit e la podes tramudare dae unu dispositivu a s\'àteru cun sos Messàgios de impostatzione de Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Imbia unu messàgiu de impostatzione de Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_before">Unu \'Messàgiu de configuratzione Autocrypt\' cumpartzit sa configuratzione a nodu terminale (end-to-end) cun àteras aplicatziones cumpatìbiles cun Autocrypt.\n\nSa configuratzione ant a èssere tzifradas cun unu còdighe ammustradu inoghe chi depet èssere insertadu in s\'àteru dispositivu. </string>
+    <string name="autocrypt_send_asm_button">Imbia unu messàgiu de impostatzione de Autocrypt</string>
+    <string name="autocrypt_send_asm_explain_after">Ti ses imbiadu sa configuratzione tua. Cola a s\'àteru dispositivu e aberi su messàgiu de configuratzione. Ti diat dèpere èssere pedidu unu còdighe de configuratzione. Inserta custas tzifras:\n\n%1$s</string>
+    <string name="autocrypt_prefer_e2ee">Preferi sa tzifradura a nodu terminale (end-to-end)</string>
+    <string name="autocrypt_asm_subject">Messàgiu de configuratzione de Autocrypt</string>
     <string name="write_message_desktop">Iscrie unu messàgiu</string>
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>
     <string name="encryption_info_desktop">Ammustra sas informatziones de tzifradura</string>
+    <string name="a11y_encryption_padlock">Luchete de tzifradura</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Connessione de isfundu de fide</string>
     <string name="pref_reliable_service_explain">Tenet bisòngiu de una notìfica permanente</string>
