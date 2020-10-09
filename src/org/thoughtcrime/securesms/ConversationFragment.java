@@ -534,12 +534,7 @@ public class ConversationFragment extends Fragment
 
     private void scrollToStartingPosition(final int startingPosition) {
         list.post(() -> {
-            int diff = Math.abs(((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() - startingPosition);
-            if (diff < SCROLL_ANIMATION_THRESHOLD) {
-                list.smoothScrollToPosition(startingPosition);
-            } else {
-                list.scrollToPosition(startingPosition);
-            }
+            list.getLayoutManager().scrollToPosition(startingPosition);
             getListAdapter().pulseHighlightItem(startingPosition);
         });
     }
