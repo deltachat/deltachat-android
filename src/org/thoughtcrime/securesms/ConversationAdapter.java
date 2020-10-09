@@ -243,6 +243,11 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   @Override
+  public void onViewRecycled(@NonNull RecyclerView.ViewHolder viewHolder) {
+    ConversationSwipeAnimationHelper.update((ConversationItem) viewHolder.itemView, 0, 1);
+  }
+
+  @Override
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     final V itemView = ViewUtil.inflate(inflater, parent, getLayoutForViewType(viewType));
     itemView.setOnClickListener(view -> {
