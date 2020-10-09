@@ -4,7 +4,6 @@ public class DcChat {
 
     public static final int DC_CHAT_NO_CHAT          = 0;
     public final static int DC_CHAT_ID_DEADDROP      = 1;
-    public final static int DC_CHAT_ID_STARRED       = 5;
     public final static int DC_CHAT_ID_ARCHIVED_LINK = 6;
     public final static int DC_CHAT_ID_ALLDONE_HINT  = 7;
     public final static int DC_CHAT_ID_LAST_SPECIAL  = 9;
