@@ -133,7 +133,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
       // This variable is necessary to make sure that the handleTouchActionUp() and therefore onSwiped() is called only once.
       // Otherwise, any subsequent little swipe would invoke onSwiped().
       // We can't call recyclerView.setOnTouchListener(null) because another ConversationItem might have set its own
-      // on touch listener in the meantime.
+      // on touch listener in the meantime and we don't want to cancel it
       private boolean listenerCalled = false;
 
       @Override
@@ -152,7 +152,6 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
             swipeBack = true;
             shouldTriggerSwipeFeedback = false;
             resetProgressIfAnimationsDisabled(viewHolder);
-            recyclerView.setOnTouchListener(null);
             break;
         }
         return false;
