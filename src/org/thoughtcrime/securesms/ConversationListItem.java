@@ -52,6 +52,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ThemeUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Collections;
@@ -80,7 +81,6 @@ public class ConversationListItem extends RelativeLayout
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
 
-  private int             unreadCount;
   private AvatarImageView contactPhotoImage;
 
   public ConversationListItem(Context context) {
@@ -127,13 +127,29 @@ public class ConversationListItem extends RelativeLayout
                    boolean batchMode,
                    @Nullable String highlightSubstring)
   {
+    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+
     this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
     Recipient recipient   = thread.getRecipient();
     this.chatId           = thread.getThreadId();
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
-    this.unreadCount      = thread.getUnreadCount();
+
+    int state       = dcSummary.getState();
+    int unreadCount = (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)? thread.getUnreadCount() : 0;
+
+    // if the last message is not fresh or noticed, we assume, there are no unread things
+    // and also remove notifications for the chat.
+    // this might be improved at some point in core, https://github.com/deltachat/deltachat-core-rust/issues/1974
+    // and the following call to removeNotifications() can go to DC_EVENT_MSGS_NOTICED handler.
+    // however, for now it is not that bad
+    // and ensures, things answered on device-A are no longer notified on device-B.
+    if (unreadCount==0) {
+      Util.runOnAnyBackgroundThread(() -> {
+        dcContext.notificationCenter.removeNotifications((int) chatId);
+      });
+    }
 
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
@@ -159,11 +175,10 @@ public class ConversationListItem extends RelativeLayout
         thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0
     );
 
-    setStatusIcons(thread);
+    setStatusIcons(thread.getVisibility(), state, unreadCount);
     setBatchState(batchMode);
     setBgColor(thread);
 
-    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
     if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       DcContact dcContact = dcContext.getContact(dcContext.getMsg(msgId).getFromId());
       this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), false);
@@ -253,10 +268,9 @@ public class ConversationListItem extends RelativeLayout
     return dcContext.getMsg(msgId).getFromId();
   }
 
-  private void setStatusIcons(ThreadRecord thread) {
-    if (thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
+  private void setStatusIcons(int visibility, int state, int unreadCount) {
+    if (visibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
-      // archived
       this.archivedView.setVisibility(View.VISIBLE);
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
@@ -264,12 +278,9 @@ public class ConversationListItem extends RelativeLayout
     else
     {
       this.archivedView.setVisibility(View.GONE);
-      int state = dcSummary.getState();
       if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)
       {
-        // incoming
         deliveryStatusIndicator.setNone();
-        int unreadCount = thread.getUnreadCount();
         if(unreadCount==0) {
           unreadIndicator.setVisibility(View.GONE);
         }
@@ -287,7 +298,6 @@ public class ConversationListItem extends RelativeLayout
       }
       else
       {
-        // outgoing
         unreadIndicator.setVisibility(View.GONE);
         if (state == DcMsg.DC_STATE_OUT_ERROR) {
           deliveryStatusIndicator.setFailed();
