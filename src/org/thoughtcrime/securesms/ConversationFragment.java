@@ -783,11 +783,6 @@ public class ConversationFragment extends Fragment
 
         @Override
         public void onQuoteClicked(DcMsg messageRecord) {
-            if ("".equals(messageRecord.getQuotedText())) {
-                Log.w(TAG, "Received a 'quote clicked' event, but there's no quote...");
-                return;
-            }
-
             DcMsg quoted = messageRecord.getQuotedMsg();
             if (quoted == null) {
                 Log.i(TAG, "Clicked on a quote whose original message we never had.");
