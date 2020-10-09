@@ -52,6 +52,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ThemeUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Collections;
@@ -135,14 +136,19 @@ public class ConversationListItem extends RelativeLayout
     this.msgId            = msgId;
     this.glideRequests    = glideRequests;
 
-    // if the last message is not fresh or noticed, we assume, there are no unread things
-    // and also remove notifications for the chat.
-    // this might be improved at some point in core, however, for now it is not that bad
-    // and ensures, things answered on device-A are no longer notified on device-B
     int state       = dcSummary.getState();
     int unreadCount = (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)? thread.getUnreadCount() : 0;
+
+    // if the last message is not fresh or noticed, we assume, there are no unread things
+    // and also remove notifications for the chat.
+    // this might be improved at some point in core, https://github.com/deltachat/deltachat-core-rust/issues/1974
+    // and the following call to removeNotifications() can go to DC_EVENT_MSGS_NOTICED handler.
+    // however, for now it is not that bad
+    // and ensures, things answered on device-A are no longer notified on device-B.
     if (unreadCount==0) {
-      dcContext.notificationCenter.removeNotifications((int)chatId);
+      Util.runOnAnyBackgroundThread(() -> {
+        dcContext.notificationCenter.removeNotifications((int) chatId);
+      });
     }
 
     if (highlightSubstring != null) {
