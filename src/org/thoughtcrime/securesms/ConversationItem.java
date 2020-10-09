@@ -91,6 +91,7 @@ public class ConversationItem extends LinearLayout
 
   private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
   private static final int MAX_MEASURE_CALLS = 3;
+  static long PULSE_HIGHLIGHT_MILLIS = 500;
 
   private DcMsg         messageRecord;
   private DcChat        dcChat;
@@ -295,7 +296,7 @@ public class ConversationItem extends LinearLayout
     } else if (pulseHighlight) {
       setBackgroundResource(R.drawable.conversation_item_background_animated);
       setSelected(true);
-      postDelayed(() -> setSelected(false), 1500);
+      postDelayed(() -> setSelected(false), PULSE_HIGHLIGHT_MILLIS);
     } else {
       setSelected(false);
     }
