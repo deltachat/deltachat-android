@@ -126,7 +126,10 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   public void updateLastSeenPosition() {
     this.lastSeenPosition = findLastSeenPosition(lastSeen);
+  }
 
+  void setLastSeenPosition(int pos) {
+    lastSeenPosition = pos;
   }
 
   public int getLastSeenPosition() {
