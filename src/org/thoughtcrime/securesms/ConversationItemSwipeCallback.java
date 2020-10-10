@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -151,7 +150,11 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
           case MotionEvent.ACTION_CANCEL:
             swipeBack = true;
             shouldTriggerSwipeFeedback = false;
-            resetProgressIfAnimationsDisabled(viewHolder);
+            // Sometimes the view does not go back correctly, so make sure that after 2s the progress is reset:
+            viewHolder.itemView.postDelayed(() -> resetProgress(viewHolder), 2000);
+            if (AccessibilityUtil.areAnimationsDisabled(viewHolder.itemView.getContext())) {
+              resetProgress(viewHolder);
+            }
             break;
         }
         return false;
@@ -176,12 +179,10 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
     }
   }
 
-  private static void resetProgressIfAnimationsDisabled(RecyclerView.ViewHolder viewHolder) {
-    if (AccessibilityUtil.areAnimationsDisabled(viewHolder.itemView.getContext())) {
-      ConversationSwipeAnimationHelper.update((ConversationItem) viewHolder.itemView,
-              0f,
-              getSignFromDirection(viewHolder.itemView));
-    }
+  private static void resetProgress(RecyclerView.ViewHolder viewHolder) {
+    ConversationSwipeAnimationHelper.update((ConversationItem) viewHolder.itemView,
+            0f,
+            getSignFromDirection(viewHolder.itemView));
   }
 
   private boolean cannotSwipeViewHolder(@NonNull RecyclerView.ViewHolder viewHolder) {
