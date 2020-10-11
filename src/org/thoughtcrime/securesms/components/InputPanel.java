@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.ViewCompat;
 
 import com.b44t.messenger.DcMsg;
@@ -46,7 +47,7 @@ import org.thoughtcrime.securesms.util.guava.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class InputPanel extends LinearLayout
+public class InputPanel extends ConstraintLayout
     implements MicrophoneRecorderView.Listener,
                KeyboardAwareLinearLayout.OnKeyboardShownListener,
                EmojiKeyboardProvider.EmojiEventListener

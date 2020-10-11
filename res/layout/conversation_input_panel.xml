@@ -15,22 +15,12 @@
         android:clipToPadding="false"
         android:background="?attr/input_panel_bg_color">
 
-    <org.thoughtcrime.securesms.components.QuoteView
-        android:id="@+id/quote_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginBottom="6dp"
-        android:layout_marginEnd="6dp"
-        android:visibility="gone"
-        app:message_type="preview"
-        tools:visibility="visible" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
     <FrameLayout
+        android:id="@+id/input_field_frame_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_toggle"
+        app:layout_constraintTop_toBottomOf="@id/quote_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -203,6 +193,9 @@
     </FrameLayout>
 
     <org.thoughtcrime.securesms.components.AnimatingToggle
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/input_field_frame_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/button_toggle"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -236,5 +229,15 @@
             android:background="@drawable/circle_touch_highlight_background" />
 
     </org.thoughtcrime.securesms.components.AnimatingToggle>
-    </LinearLayout>
+
+    <org.thoughtcrime.securesms.components.QuoteView
+        android:id="@+id/quote_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="6dp"
+        android:visibility="gone"
+        app:message_type="preview"
+        tools:visibility="visible" />
 </org.thoughtcrime.securesms.components.InputPanel>
