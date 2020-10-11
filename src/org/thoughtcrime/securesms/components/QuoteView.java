@@ -62,7 +62,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private int           messageType;
   private int           largeCornerRadius;
   private int           smallCornerRadius;
-  private CornerMask    cornerMask;
+//  private CornerMask    cornerMask;
 
 
   public QuoteView(Context context) {
@@ -97,11 +97,11 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     this.attachmentVideoOverlayView   = findViewById(R.id.quote_video_overlay);
     this.attachmentContainerView      = findViewById(R.id.quote_attachment_container);
     this.dismissView                  = findViewById(R.id.quote_dismiss);
-    this.largeCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_large);
-    this.smallCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_bottom);
+//    this.largeCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_large);
+//    this.smallCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_bottom);
 
-    cornerMask = new CornerMask(this);
-    cornerMask.setRadii(largeCornerRadius, largeCornerRadius, smallCornerRadius, smallCornerRadius);
+//    cornerMask = new CornerMask(this);
+//    cornerMask.setRadii(largeCornerRadius, largeCornerRadius, smallCornerRadius, smallCornerRadius);
 
     if (attrs != null) {
       TypedArray typedArray     = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.QuoteView, 0, 0);
@@ -112,21 +112,21 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
       dismissView.setVisibility(messageType == MESSAGE_TYPE_PREVIEW ? VISIBLE : GONE);
 
-      if (messageType == MESSAGE_TYPE_PREVIEW) {
-        int radius = getResources().getDimensionPixelOffset(R.dimen.quote_corner_radius_preview);
-        cornerMask.setTopLeftRadius(radius);
-        cornerMask.setTopRightRadius(radius);
-      }
+//      if (messageType == MESSAGE_TYPE_PREVIEW) {
+//        int radius = getResources().getDimensionPixelOffset(R.dimen.quote_corner_radius_preview);
+//        cornerMask.setTopLeftRadius(radius);
+//        cornerMask.setTopRightRadius(radius);
+//      }
     }
 
     dismissView.setOnClickListener(view -> setVisibility(GONE));
   }
-
-  @Override
-  protected void dispatchDraw(Canvas canvas) {
-    super.dispatchDraw(canvas);
-    cornerMask.mask(canvas);
-  }
+//
+//  @Override
+//  protected void dispatchDraw(Canvas canvas) {
+//    super.dispatchDraw(canvas);
+//    cornerMask.mask(canvas);
+//  }
 
   @Override
   protected void onDetachedFromWindow() {
@@ -154,10 +154,10 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     //setQuoteMissingFooter(originalMissing);
   }
 
-  public void setTopCornerSizes(boolean topLeftLarge, boolean topRightLarge) {
-    cornerMask.setTopLeftRadius(topLeftLarge ? largeCornerRadius : smallCornerRadius);
-    cornerMask.setTopRightRadius(topRightLarge ? largeCornerRadius : smallCornerRadius);
-  }
+//  public void setTopCornerSizes(boolean topLeftLarge, boolean topRightLarge) {
+//    cornerMask.setTopLeftRadius(topLeftLarge ? largeCornerRadius : smallCornerRadius);
+//    cornerMask.setTopRightRadius(topRightLarge ? largeCornerRadius : smallCornerRadius);
+//  }
 
   public void dismiss() {
     //if (this.author != null) this.author.removeForeverObserver(this);
