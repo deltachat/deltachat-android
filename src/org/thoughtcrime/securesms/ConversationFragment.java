@@ -492,6 +492,10 @@ public class ConversationFragment extends Fragment
             pixelOffset = (firstView == null) ? 0 : list.getBottom() - firstView.getBottom() - list.getPaddingBottom();
         }
 
+        if (getContext() == null) {
+            Log.e(TAG, "reloadList: getContext() was null");
+            return;
+        }
         int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int) chatId, 0, 0);
         adapter.changeData(msgs);
         int lastSeenPosition = adapter.getLastSeenPosition();
