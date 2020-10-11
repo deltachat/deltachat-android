@@ -244,7 +244,9 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   @Override
   public void onViewRecycled(@NonNull RecyclerView.ViewHolder viewHolder) {
-    ConversationSwipeAnimationHelper.update((ConversationItem) viewHolder.itemView, 0, 1);
+    if (viewHolder.itemView instanceof  ConversationItem) {
+      ConversationSwipeAnimationHelper.update((ConversationItem) viewHolder.itemView, 0, 1);
+    }
   }
 
   @Override
