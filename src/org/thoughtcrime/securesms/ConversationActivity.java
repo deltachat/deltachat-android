@@ -93,6 +93,7 @@ import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.PartAuthority;
+import org.thoughtcrime.securesms.mms.QuoteModel;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -110,6 +111,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
+import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
@@ -154,6 +156,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public static final String CHAT_ID_EXTRA           = "chat_id";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
+  public static final String SCROLL_TO_MSG_ID_EXTRA  = "scroll_to_msg_id_extra";
 
   private static final int PICK_GALLERY        = 1;
   private static final int PICK_DOCUMENT       = 2;
@@ -765,6 +768,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composeText.setSelection(composeText.getText().length());
     }
 
+    DcMsg quote = draft.getQuotedMsg();
+    if (quote != null) {
+      handleReplyMessage(quote);
+    }
+
     String filename = draft.getFile();
     if (filename.isEmpty() || !new File(filename).exists()) {
       future.set(!text.isEmpty());
@@ -1047,12 +1055,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     final SettableFuture<Integer> future  = new SettableFuture<>();
 
     DcMsg msg = null;
+    Optional<QuoteModel> quote = inputPanel.getQuote();
     Integer recompress = 0;
 
     // for a quick ui feedback, we clear the related controls immediately on sending messages.
     // for drafts, however, we do not change the controls, the activity may be resumed.
     if (action==ACTION_SEND_OUT) {
       composeText.setText("");
+      inputPanel.clearQuote();
     }
 
     if(slideDeck!=null) {
@@ -1093,6 +1103,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     else if (!body.isEmpty()){
       msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
       msg.setText(body);
+    }
+
+    if (quote.isPresent()) {
+      if (msg == null) msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+      msg.setQuote(quote.get().getQuotedMsg());
     }
 
     // msg may still be null to clear drafts
@@ -1440,7 +1455,25 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleReplyMessage(DcMsg messageRecord) {
+  public void handleReplyMessage(DcMsg msg) {
+    // If you modify these lines you may also want to modify ConversationItem.setQuote():
+    Recipient author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
+
+    SlideDeck slideDeck = new SlideDeck();
+    if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+      slideDeck.addSlide(MediaUtil.getSlideForMsg(this, msg));
+    }
+
+    String text = msg.getSummarytext(500);
+
+    inputPanel.setQuote(GlideApp.with(this),
+            msg,
+            msg.getTimestamp(),
+            author,
+            text,
+            slideDeck);
+
+    inputPanel.clickOnComposeInput();
   }
 
   @Override

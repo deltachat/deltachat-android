@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.components;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
@@ -9,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -19,23 +22,32 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.ViewCompat;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.animation.AnimationCompleteListener;
 import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.EmojiToggle;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
+import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.mms.QuoteModel;
+import org.thoughtcrime.securesms.mms.SlideDeck;
+import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
+import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class InputPanel extends LinearLayout
+public class InputPanel extends ConstraintLayout
     implements MicrophoneRecorderView.Listener,
                KeyboardAwareLinearLayout.OnKeyboardShownListener,
                EmojiKeyboardProvider.EmojiEventListener
@@ -45,6 +57,7 @@ public class InputPanel extends LinearLayout
 
   private static final int FADE_TIME = 150;
 
+  private QuoteView       quoteView;
   private EmojiToggle     mediaKeyboard;
   private ComposeText     composeText;
   private View            quickCameraToggle;
@@ -55,6 +68,7 @@ public class InputPanel extends LinearLayout
   private MicrophoneRecorderView microphoneRecorderView;
   private SlideToCancel          slideToCancel;
   private RecordTime             recordTime;
+  private ValueAnimator quoteAnimator;
 
   private @Nullable Listener listener;
   private           boolean  emojiVisible;
@@ -76,7 +90,9 @@ public class InputPanel extends LinearLayout
   public void onFinishInflate() {
     super.onFinishInflate();
 
+    View quoteDismiss           = findViewById(R.id.quote_dismiss);
 
+    this.quoteView              = findViewById(R.id.quote_view);
     this.mediaKeyboard          = findViewById(R.id.emoji_toggle);
     this.composeText            = findViewById(R.id.embedded_text_editor);
     this.quickCameraToggle      = findViewById(R.id.quick_camera_toggle);
@@ -101,6 +117,8 @@ public class InputPanel extends LinearLayout
       mediaKeyboard.setVisibility(View.VISIBLE);
       emojiVisible = true;
     }
+
+    quoteDismiss.setOnClickListener(v -> clearQuote());
   }
 
   public void setListener(final @NonNull Listener listener) {
@@ -111,6 +129,81 @@ public class InputPanel extends LinearLayout
 
   public void setMediaListener(@NonNull MediaListener listener) {
     composeText.setMediaListener(listener);
+  }
+
+  public void setQuote(@NonNull GlideRequests glideRequests,
+                       @NonNull DcMsg msg,
+                       long id,
+                       @NonNull Recipient author,
+                       @NonNull CharSequence body,
+                       @NonNull SlideDeck attachments)
+  {
+    this.quoteView.setQuote(glideRequests, msg, author, body, attachments);
+
+    int originalHeight = this.quoteView.getVisibility() == VISIBLE ? this.quoteView.getMeasuredHeight()
+            : 0;
+
+    this.quoteView.setVisibility(VISIBLE);
+    this.quoteView.measure(0, 0);
+
+    if (quoteAnimator != null) {
+      quoteAnimator.cancel();
+    }
+
+    quoteAnimator = createHeightAnimator(quoteView, originalHeight, this.quoteView.getMeasuredHeight(), null);
+
+    quoteAnimator.start();
+  }
+
+  public void clearQuote() {
+    if (quoteAnimator != null) {
+      quoteAnimator.cancel();
+    }
+
+    quoteAnimator = createHeightAnimator(quoteView, quoteView.getMeasuredHeight(), 0, new AnimationCompleteListener() {
+      @Override
+      public void onAnimationEnd(Animator animation) {
+        quoteView.dismiss();
+      }
+    });
+
+    quoteAnimator.start();
+  }
+
+  private static ValueAnimator createHeightAnimator(@NonNull View view,
+                                                    int originalHeight,
+                                                    int finalHeight,
+                                                    @Nullable AnimationCompleteListener onAnimationComplete)
+  {
+    ValueAnimator animator = ValueAnimator.ofInt(originalHeight, finalHeight)
+            .setDuration(300);
+
+    animator.addUpdateListener(animation -> {
+      ViewGroup.LayoutParams params = view.getLayoutParams();
+      params.height = Math.max(1, (int) animation.getAnimatedValue());
+      view.setLayoutParams(params);
+    });
+
+    if (onAnimationComplete != null) {
+      animator.addListener(onAnimationComplete);
+    }
+
+    return animator;
+  }
+
+  public Optional<QuoteModel> getQuote() {
+    if (quoteView.getVisibility() == View.VISIBLE && quoteView.getBody() != null) {
+      return Optional.of(new QuoteModel(
+              quoteView.getDcContact(), quoteView.getBody().toString(),
+              false, quoteView.getAttachments(), quoteView.getOriginalMsg()
+      ));
+    } else {
+      return Optional.absent();
+    }
+  }
+
+  public void clickOnComposeInput() {
+    composeText.performClick();
   }
 
   public void setMediaKeyboard(@NonNull MediaKeyboard mediaKeyboard) {
