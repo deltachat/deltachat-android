@@ -318,10 +318,11 @@ public class ConversationFragment extends Fragment
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
+            DcChat chat = getListAdapter().getChat();
             menu.findItem(R.id.menu_context_details).setVisible(true);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
-            menu.findItem(R.id.menu_context_reply).setVisible(true);
-            boolean showReplyPrivately = getListAdapter().getChat().isGroup() && !messageRecord.isOutgoing();
+            menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend());
+            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing();
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
     }
