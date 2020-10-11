@@ -45,7 +45,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -499,7 +498,7 @@ public class ConversationFragment extends Fragment
 
         if (firstLoad) {
             if (startingPosition >= 0) {
-                scrollToStartingPosition(startingPosition);
+                scrollAndHighlight(startingPosition, false);
             } else if (startingMsgId >= 0) {
                 scrollToMsgId(startingMsgId);
             } else {
@@ -532,10 +531,14 @@ public class ConversationFragment extends Fragment
         floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int) chatId)? View.VISIBLE : View.GONE);
     }
 
-    private void scrollToStartingPosition(final int startingPosition) {
+    private void scrollAndHighlight(final int pos, boolean smooth) {
         list.post(() -> {
-            list.getLayoutManager().scrollToPosition(startingPosition);
-            getListAdapter().pulseHighlightItem(startingPosition);
+            if (smooth) {
+                list.smoothScrollToPosition(pos);
+            } else {
+                list.scrollToPosition(pos);
+            }
+            getListAdapter().pulseHighlightItem(pos);
         });
     }
 
@@ -549,7 +552,7 @@ public class ConversationFragment extends Fragment
         ConversationAdapter adapter = (ConversationAdapter)list.getAdapter();
         int position = adapter.msgIdToPosition(msgId);
         if (position!=-1) {
-            scrollToStartingPosition(position);
+            scrollAndHighlight(position, false);
         } else {
             Log.e(TAG, "msgId {} not found for scrolling");
         }
@@ -790,10 +793,31 @@ public class ConversationFragment extends Fragment
                 Intent intent = new Intent(getActivity(), ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
                 intent.putExtra(ConversationActivity.SCROLL_TO_MSG_ID_EXTRA, quoted.getId());
-                getActivity().startActivity(intent);
-                getActivity().finish();
+                if (getActivity() != null) {
+                    getActivity().startActivity(intent);
+                    getActivity().finish();
+                } else {
+                    Log.e(TAG, "Activity was null");
+                }
             } else {
-                scrollToMsgId(quoted.getId());
+                LinearLayoutManager layout = ((LinearLayoutManager) list.getLayoutManager());
+                boolean smooth = false;
+                ConversationAdapter adapter = (ConversationAdapter) list.getAdapter();
+                if (adapter == null) return;
+                int position = adapter.msgIdToPosition(quoted.getId());
+                if (layout != null) {
+                    int distance1 = Math.abs(position - layout.findFirstVisibleItemPosition());
+                    int distance2 = Math.abs(position - layout.findLastVisibleItemPosition());
+                    int distance = Math.min(distance1, distance2);
+                    smooth = distance < 15;
+                    Log.i(TAG, "Scrolling to quote, smoth: " + smooth + ", distance: " + distance);
+                }
+
+                if (position != -1) {
+                    scrollAndHighlight(position, smooth);
+                } else {
+                    Log.e(TAG, "msgId {} not found for scrolling");
+                }
             }
         }
     }
