@@ -36,4 +36,7 @@
           android:icon="?menu_forward_icon"
           app:showAsAction="always" />
 
+    <item android:title="@string/reply_privately"
+        android:id="@+id/menu_context_reply_privately"
+        app:showAsAction="collapseActionView" />
 </menu>

@@ -80,7 +80,8 @@ public class AdaptiveActionsToolbar extends Toolbar {
 
     for (int i = 0; i < menu.size(); i++) {
       MenuItem item = menu.getItem(i);
-      if (item.isVisible() && nItemsToShow > 0) {
+      boolean neverShowAsAction = item.getItemId() == R.id.menu_context_reply_privately;
+      if (item.isVisible() && nItemsToShow > 0 && !neverShowAsAction) {
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         nItemsToShow--;
       } else {

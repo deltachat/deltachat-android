@@ -315,11 +315,14 @@ public class ConversationFragment extends Fragment
             menu.findItem(R.id.menu_context_details).setVisible(false);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(false);
             menu.findItem(R.id.menu_context_reply).setVisible(false);
+            menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
             menu.findItem(R.id.menu_context_details).setVisible(true);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
             menu.findItem(R.id.menu_context_reply).setVisible(true);
+            boolean showReplyPrivately = getListAdapter().getChat().isGroup() && !messageRecord.isOutgoing();
+            menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
     }
 
@@ -458,6 +461,23 @@ public class ConversationFragment extends Fragment
         }
 
         listener.handleReplyMessage(message);
+    }
+
+    private void handleReplyMessagePrivately(final DcMsg msg) {
+
+        if (getActivity() != null) {
+            int privateChatId = dcContext.createChatByContactId(msg.getFromId());
+            DcMsg replyMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+            replyMsg.setQuote(msg);
+            dcContext.setDraft(privateChatId, replyMsg);
+
+            Intent intent = new Intent(getActivity(), ConversationActivity.class);
+            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, privateChatId);
+            getActivity().startActivity(intent);
+            getActivity().finish();
+        } else {
+            Log.e(TAG, "Activity was null");
+        }
     }
 
     private void handleSaveAttachment(final DcMsg message) {
@@ -750,7 +770,9 @@ public class ConversationFragment extends Fragment
                 if (getListAdapter().getSelectedItems().size() == 0) {
                     actionMode.finish();
                 } else {
-                    setCorrectMenuVisibility(actionMode.getMenu());
+                    Menu menu = actionMode.getMenu();
+                    setCorrectMenuVisibility(menu);
+                    AdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
                     actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
                 }
             }
@@ -905,6 +927,9 @@ public class ConversationFragment extends Fragment
                 case R.id.menu_context_reply:
                     handleReplyMessage(getSelectedMessageRecord());
                     actionMode.finish();
+                    return true;
+                case R.id.menu_context_reply_privately:
+                    handleReplyMessagePrivately(getSelectedMessageRecord());
                     return true;
             }
 
