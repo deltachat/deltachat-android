@@ -180,7 +180,7 @@ public class InputPanel extends ConstraintLayout
 
     animator.addUpdateListener(animation -> {
       ViewGroup.LayoutParams params = view.getLayoutParams();
-      params.height = (int) animation.getAnimatedValue();
+      params.height = Math.max(1, (int) animation.getAnimatedValue());
       view.setLayoutParams(params);
     });
 
