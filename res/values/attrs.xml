@@ -249,4 +249,8 @@
         <attr name="quote_colorSecondary" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="AdaptiveActionsToolbar">
+        <attr name="aat_max_shown" format="integer" />
+    </declare-styleable>
+
 </resources>

@@ -74,6 +74,7 @@ import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.util.views.AdaptiveActionsToolbar;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.util.Collections;
@@ -163,7 +164,7 @@ public class ConversationFragment extends Fragment
 
         new ConversationItemSwipeCallback(
                 msg -> actionMode == null &&
-                    dcContext.getChat(msg.getChatId()).canSend(), // TODO here we could disable swiping e.g. when the message is failed or pending
+                    dcContext.getChat(msg.getChatId()).canSend(),
                 this::handleReplyMessage
         ).attachToRecyclerView(list);
 
@@ -855,6 +856,7 @@ public class ConversationFragment extends Fragment
             }
 
             setCorrectMenuVisibility(menu);
+            AdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
             return true;
         }
 
