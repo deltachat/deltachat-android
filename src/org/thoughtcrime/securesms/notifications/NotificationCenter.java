@@ -502,9 +502,11 @@ public class NotificationCenter {
     }
 
     public void removeNotifications(int chatId) {
-        boolean removeSummary = false;
+        boolean removeSummary;
         synchronized (inboxes) {
-            inboxes.remove(chatId);
+            if (inboxes.remove(chatId) == null) {
+              return; // speed up things when there is nothing to remove
+            }
             removeSummary = inboxes.isEmpty();
         }
 
