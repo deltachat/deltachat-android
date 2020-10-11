@@ -192,7 +192,7 @@ public class InputPanel extends ConstraintLayout
   }
 
   public Optional<QuoteModel> getQuote() {
-    if (quoteView.getVisibility() == View.VISIBLE) {
+    if (quoteView.getVisibility() == View.VISIBLE && quoteView.getBody() != null) {
       return Optional.of(new QuoteModel(
               quoteView.getDcContact(), quoteView.getBody().toString(),
               false, quoteView.getAttachments(), quoteView.getOriginalMsg()
