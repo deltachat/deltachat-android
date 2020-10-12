@@ -287,6 +287,8 @@
     <string name="chat_self_talk_subtitle">Kendime gönderdiğim iletiler</string>
     <string name="saved_messages">Kaydedilen iletiler</string>
     <string name="saved_messages_explain">• Kolay erişim için iletileri buraya iletin\n\n• Notlar ya da sesli notlar alın\n\n• Onları kaydetmek için ortamlar iliştirin</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Kaydedilen</string>
     <string name="chat_contact_request">İletişim isteği</string>
     <string name="chat_no_contact_requests">İletişim isteği yok.\n\nKlasik e-postaları burada iletişim isteği olarak görmek istiyorsanız, ilgili ayarı uygulama ayarlarında değiştirebilirsiniz.</string>
     <string name="retry_send">İletiyi göndermeyi yeniden dene</string>

@@ -287,6 +287,8 @@
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
     <string name="saved_messages">Opgeslagen berichten</string>
     <string name="saved_messages_explain">• Stuur berichten door naar hier om ze snel terug te kunnen lezen\n\n• Maak aantekeningen of spraakopnamen\n\n• Voeg media toe om deze op te slaan</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Opgeslagen</string>
     <string name="chat_contact_request">Contactpersoonverzoek</string>
     <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnt in de vorm van contactpersoonverzoeken, dan kun je dat aangeven in de app-instellingen.</string>
     <string name="retry_send">Bericht opnieuw versturen</string>
