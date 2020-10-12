@@ -287,6 +287,8 @@
     <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
     <string name="saved_messages">Mesazhe të ruajtur</string>
     <string name="saved_messages_explain">• Përcillini mesazhet këtu për përdorim të lehtë\n\n• Mbani shënime ose kujtesa zanore\n\n• Bashkëngjitni media për t’i ruajtur</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Të ruajtur</string>
     <string name="chat_contact_request">Kërkesë kontakti</string>
     <string name="chat_no_contact_requests">S\’ka kërkesa kontakti.\n\nNëse doni që email-e klasikë të shfaqen këtu si kërkesa kontakti, mund të ndryshoni rregullimin përkatës te rregullimet e aplikacionit.</string>
     <string name="retry_send">Riprovo të dërgosh mesazhin</string>

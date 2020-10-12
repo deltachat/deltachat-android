@@ -287,6 +287,8 @@
     <string name="chat_self_talk_subtitle">Messaggi inviati a me stesso</string>
     <string name="saved_messages">Messaggi salvati</string>
     <string name="saved_messages_explain">• Inoltra i messaggi per trovarli facilmente\n\n• Memorizza note scritte o vocali\n\n• Allega oggetti per salvarli</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Salvato</string>
     <string name="chat_contact_request">Richiesta di contatto</string>
     <string name="chat_no_contact_requests">Nessuna richiesta di contatto.\n\nSe vuoi che le email tradizionali appaiano qui come richieste di contatto puoi selezionare la relativa opzione nelle impostazioni.</string>
     <string name="retry_send">Riprova l\'invio del messaggio</string>
