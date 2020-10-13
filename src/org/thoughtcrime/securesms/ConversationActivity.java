@@ -156,7 +156,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public static final String CHAT_ID_EXTRA           = "chat_id";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
-  public static final String SCROLL_TO_MSG_ID_EXTRA  = "scroll_to_msg_id_extra";
 
   private static final int PICK_GALLERY        = 1;
   private static final int PICK_DOCUMENT       = 2;
