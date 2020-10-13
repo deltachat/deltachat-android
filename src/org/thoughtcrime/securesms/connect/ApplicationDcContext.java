@@ -324,11 +324,10 @@ public class ApplicationDcContext extends DcContext {
     Recipient recipient = getRecipient(chat);
     long date = summary.getTimestamp();
     int unreadCount = getFreshMsgCount(chatId);
-    boolean verified = chat.isVerified();
 
     return new ThreadRecord(body, recipient, date,
         unreadCount, chatId,
-        chat.getVisibility(), verified, chat.isSendingLocations(), chat.isMuted(), summary);
+        chat.getVisibility(), chat.isProtected(), chat.isSendingLocations(), chat.isMuted(), summary);
   }
 
   /***********************************************************************************************

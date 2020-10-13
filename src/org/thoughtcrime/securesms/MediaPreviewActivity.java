@@ -259,7 +259,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   private void editAvatar() {
     Intent intent = new Intent(this, GroupCreateActivity.class);
     intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, editAvatarChatId);
-    if (dcContext.getChat(editAvatarChatId).isVerified()) {
+    if (dcContext.getChat(editAvatarChatId).isProtected()) {
       intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
     }
     startActivity(intent);
