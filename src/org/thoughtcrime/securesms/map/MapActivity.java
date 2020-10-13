@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AlertDialog;
@@ -294,14 +295,7 @@ public class MapActivity extends BaseActivity implements Observer,
                 continue;
             }
 
-            int msgs[] = DcHelper.getContext(MapActivity.this).getChatMsgs(dcMsgChatId, 0, 0);
-            int startingPosition = -1;
-            for(int i=0; i< msgs.length; i++ ) {
-                if(msgs[i] == messageId) {
-                    startingPosition = msgs.length-1-i;
-                    break;
-                }
-            }
+            int startingPosition = DcMsg.getMessagePosition(dcMsg, DcHelper.getContext(this));
 
             Intent intent = new Intent(MapActivity.this, ConversationActivity.class);
             intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, dcMsgChatId);

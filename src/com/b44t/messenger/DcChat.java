@@ -1,5 +1,7 @@
 package com.b44t.messenger;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+
 public class DcChat {
 
     public static final int DC_CHAT_NO_CHAT          = 0;
@@ -16,7 +18,7 @@ public class DcChat {
         this.chatCPtr = chatCPtr;
     }
 
-    @Override protected void finalize() throws Throwable {
+  @Override protected void finalize() throws Throwable {
         super.finalize();
         unrefChatCPtr();
         chatCPtr = 0;
@@ -44,4 +46,5 @@ public class DcChat {
     private long        chatCPtr;    // CAVE: the name is referenced in the JNI
     private native void unrefChatCPtr();
     public long         getChatCPtr  () { return chatCPtr; }
+
 }
