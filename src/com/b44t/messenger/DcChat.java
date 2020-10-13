@@ -32,7 +32,7 @@ public class DcChat {
     public native boolean isSelfTalk        ();
     public native boolean isDeviceTalk      ();
     public native boolean canSend           ();
-    public native boolean isVerified        ();
+    public native boolean isProtected       ();
     public native boolean isSendingLocations();
     public native boolean isMuted           ();
 
