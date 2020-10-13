@@ -69,6 +69,7 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -364,7 +365,8 @@ public class ConversationFragment extends Fragment
     }
 
     public void scrollToBottom() {
-        if (((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() < SCROLL_ANIMATION_THRESHOLD) {
+        if (((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() < SCROLL_ANIMATION_THRESHOLD
+                && !AccessibilityUtil.areAnimationsDisabled(getContext())) {
             list.smoothScrollToPosition(0);
         } else {
             list.scrollToPosition(0);
@@ -575,7 +577,7 @@ public class ConversationFragment extends Fragment
 
     private void scrollAndHighlight(final int pos, boolean smooth) {
         list.post(() -> {
-            if (smooth) {
+            if (smooth && !AccessibilityUtil.areAnimationsDisabled(getContext())) {
                 list.smoothScrollToPosition(pos);
             } else {
                 list.scrollToPosition(pos);
