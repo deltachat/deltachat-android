@@ -760,11 +760,11 @@
     <string name="emoji_search_results">Search results</string>
     <string name="emoji_not_found">No emoji found</string>
     <string name="emoji_recent">Recently Used</string>
-    <string name="emoji_people">People & Body</string>
-    <string name="emoji_nature">Animals & Nature</string>
-    <string name="emoji_foods">Food & Drink</string>
+    <string name="emoji_people">People &amp; Body</string>
+    <string name="emoji_nature">Animals &amp; Nature</string>
+    <string name="emoji_foods">Food &amp; Drink</string>
     <string name="emoji_activity">Activity</string>
-    <string name="emoji_places">Travel & Places</string>
+    <string name="emoji_places">Travel &amp; Places</string>
     <string name="emoji_objects">Objects</string>
     <string name="emoji_symbols">Symbols</string>
     <string name="emoji_flags">Flags</string>
