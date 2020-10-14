@@ -766,7 +766,7 @@
     <string name="messaging_disabled_deaddrop">Click on a message to start accept or deny the contact request</string>
 
     <!-- misc/unsorted -->
-    <string name="can_not_display_unsuported_file_type">Can not display this file type: %s</string>
+    <string name="can_not_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Attachment failed to load</string>
     <string name="paste_from_clipboard">Paste from clipboard</string>
     <string name="copy_qr_data_success">Copied QR url to clipboard</string>
