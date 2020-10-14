@@ -706,12 +706,7 @@
 
     <!-- Zoom level (currently only used by desktop) -->
     <string name="global_menu_view_zoom_factor">Zoom Factor</string>
-    <string name="global_zoom_factor_custom">custom</string>
     <string name="global_zoom_factor_micro">micro</string>
-    <string name="global_zoom_factor_small">small</string>
-    <string name="global_zoom_factor_default">default</string>
-    <string name="global_zoom_factor_large">large</string>
-    <string name="global_zoom_factor_huge">huge</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Delivery status: Error</string>
