@@ -313,8 +313,7 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Group name</string>
     <string name="group_avatar">Group avatar</string>
-    <string name="set_group_avatar">Set Group Avatar</string>
-    <string name="remove_group_avatar">Remove Group Avatar</string>
+    <string name="remove_group_image">Remove group image</string>
     <string name="group_create_button">Create group</string>
     <string name="group_please_enter_group_name">Please enter a name for the group.</string>
     <string name="group_add_members">Add members</string>
