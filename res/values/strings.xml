@@ -542,8 +542,6 @@
     <string name="systemmsg_ephemeral_timer_day">Disappearing messages timer set to 1 day.</string>
     <string name="systemmsg_ephemeral_timer_week">Disappearing messages timer set to 1 week.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Disappearing messages timer set to 4 weeks.</string>
-    <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
-    <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
 
 
     <!-- screen lock -->
