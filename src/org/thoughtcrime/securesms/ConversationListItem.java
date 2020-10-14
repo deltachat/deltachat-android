@@ -213,7 +213,7 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    contactPhotoImage.setAvatar(glideRequests, recipient, true);
+    contactPhotoImage.setAvatar(glideRequests, recipient, false);
   }
 
   public void bind(@NonNull  DcMsg         messageResult,
@@ -244,7 +244,7 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    contactPhotoImage.setAvatar(glideRequests, recipient, true);
+    contactPhotoImage.setAvatar(glideRequests, recipient, false);
   }
 
   @Override
