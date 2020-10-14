@@ -723,7 +723,7 @@
     <string name="profile_image_delete">Delete profile image</string>
     <string name="a11y_copy_qr_data">Copied QR url to clipboard</string>
     <string name="a11y_change_group_image">change group image</string>
-    <string name="a11y_disappearing_messages_activated">Disapearing messages are active for this chat</string>
+    <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
 
 
 
