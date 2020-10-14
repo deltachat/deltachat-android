@@ -628,7 +628,6 @@
     <string name="encrypted_message">Encrypted message</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="ask_delete_chat_desktop">Are you sure you want to delete \"%1$s\"?</string>
     <string name="about_offical_app_desktop">This is the official Delta Chat Desktop app.</string>
     <string name="about_licensed_under_desktop">This software is licensed under GNU GPL version 3 and the source code is available on GitHub.</string>
     <string name="welcome_desktop">Welcome to Delta Chat</string>
@@ -683,6 +682,7 @@
     <string name="autocrypt_incorrect_desktop">Incorrect setup code. Please try again.</string>
     <string name="create_chat_error_desktop">Could not create chat.</string>
     <string name="ask_delete_chat_desktop">Delete this chat?</string>
+    <string name="ask_delete_named_chat_desktop">Are you sure you want to delete \"%1$s\"?</string>
     <string name="email_validation_failed_desktop">Email address required.</string>
     <string name="delete_account_confirmation_header_desktop">Delete %s?</string>
     <string name="delete_account_confirmation_desktop">All account data of \"%s\" on this device will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
