@@ -718,7 +718,6 @@
     <string name="a11y_delivery_status_invalid">Invalid delivery status</string>
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Background preview</string>
-    <string name="a11y_profile_image_label">Your profile image</string>
     <string name="profile_image_select">Select profile image</string>
     <string name="profile_image_delete">Delete profile image</string>
     <string name="a11y_copy_qr_data">Copied QR url to clipboard</string>
