@@ -377,7 +377,7 @@
     <string name="add_account">Add account</string>
     <string name="delete_account">Delete account</string>
     <string name="delete_account_ask">Are you sure you want to delete your account data?</string>
-    <string name="delete_account_explain_with_name">All account data of \"%s\" on this device will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
+    <string name="delete_account_explain_with_name">All account data of \"%s\" on this device will be deleted, including your end-to-end encryption setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="switching_account">Switching account…</string>
     <string name="try_connect_now">Try to connect now</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
