@@ -135,8 +135,6 @@
 
 
     <!-- menu labels (or icon, buttons...) -->
-    <string name="menu_copy_selection_to_clipboard">Copy selection</string>
-    <string name="menu_copy_link_to_clipboard">Copy link</string>
     <string name="menu_new_contact">New contact</string>
     <string name="menu_new_chat">New chat</string>
     <string name="menu_new_group">New group</string>
@@ -158,6 +156,8 @@
     <string name="menu_delete_location">Delete this location?</string>
     <string name="menu_message_details">Message details</string>
     <string name="menu_copy_to_clipboard">Copy to clipboard</string>
+    <string name="menu_copy_selection_to_clipboard">Copy selection</string>
+    <string name="menu_copy_link_to_clipboard">Copy link</string>
     <string name="menu_forward">Forward message</string>
     <string name="menu_resend">Resend message</string>
     <string name="menu_reply">Reply to message</string>
