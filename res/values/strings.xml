@@ -95,6 +95,8 @@
     <string name="self">Me</string>
     <string name="draft">Draft</string>
     <string name="image">Image</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Reply</string>
     <string name="gif">Gif</string>
     <string name="images">Images</string>
     <string name="audio">Audio</string>
@@ -540,6 +542,8 @@
     <string name="systemmsg_ephemeral_timer_day">Disappearing messages timer set to 1 day.</string>
     <string name="systemmsg_ephemeral_timer_week">Disappearing messages timer set to 1 week.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Disappearing messages timer set to 4 weeks.</string>
+    <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
+    <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
 
 
     <!-- screen lock -->
