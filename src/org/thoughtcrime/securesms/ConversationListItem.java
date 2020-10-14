@@ -190,7 +190,7 @@ public class ConversationListItem extends RelativeLayout
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
-        thread.isVerified()? R.drawable.ic_verified : 0,
+        thread.isProtected()? R.drawable.ic_verified : 0,
         0);
   }
 

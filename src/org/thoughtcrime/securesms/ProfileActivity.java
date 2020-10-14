@@ -425,7 +425,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     if (chatIsGroup) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
-      if (dcContext.getChat(chatId).isVerified()) {
+      if (dcContext.getChat(chatId).isProtected()) {
         intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
       }
       startActivity(intent);

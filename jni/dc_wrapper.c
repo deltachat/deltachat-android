@@ -1022,8 +1022,7 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChat_getId(JNIEnv *env, jobject obj)
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isGroup(JNIEnv *env, jobject obj)
 {
-    int chat_type = dc_chat_get_type(get_dc_chat(env, obj));
-    return (chat_type==DC_CHAT_TYPE_GROUP || chat_type==DC_CHAT_TYPE_VERIFIED_GROUP);
+    return dc_chat_get_type(get_dc_chat(env, obj)) == DC_CHAT_TYPE_GROUP;
 }
 
 
@@ -1081,9 +1080,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_canSend(JNIEnv *env, jobject o
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isVerified(JNIEnv *env, jobject obj)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtected(JNIEnv *env, jobject obj)
 {
-    return dc_chat_is_verified(get_dc_chat(env, obj))!=0;
+    return dc_chat_is_protected(get_dc_chat(env, obj))!=0;
 }
 
 

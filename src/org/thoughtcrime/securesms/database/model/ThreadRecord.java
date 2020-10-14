@@ -44,7 +44,7 @@ public class ThreadRecord {
 
   private           final int     unreadCount;
   private           final int     visibility;
-  private           final boolean verified;
+  private           final boolean isProtected;
   private           final boolean isSendingLocations;
   private           final boolean isMuted;
   private @Nullable final DcLot   dcSummary;
@@ -53,7 +53,7 @@ public class ThreadRecord {
                       @NonNull Recipient recipient, long dateReceived, int unreadCount,
                       long threadId,
                       int visibility,
-                      boolean verified,
+                      boolean isProtected,
                       boolean isSendingLocations,
                       boolean isMuted,
                       @Nullable DcLot dcSummary)
@@ -64,7 +64,7 @@ public class ThreadRecord {
     this.body                 = body;
     this.unreadCount      = unreadCount;
     this.visibility       = visibility;
-    this.verified         = verified;
+    this.isProtected      = isProtected;
     this.isSendingLocations = isSendingLocations;
     this.isMuted          = isMuted;
     this.dcSummary        = dcSummary;
@@ -114,8 +114,8 @@ public class ThreadRecord {
     return visibility;
   }
 
-  public boolean isVerified() {
-    return verified;
+  public boolean isProtected() {
+    return isProtected;
   }
 
   public boolean isSendingLocations() {
