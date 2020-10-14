@@ -777,6 +777,6 @@
     <!-- misc/unsorted -->
     <string name="can_not_display_unsuported_file_type">Can not display this file type: %s</string>
     <string name="attachment_failed_to_load">Attachment failed to load</string>
-    <string name="paste_from_clipboard">Click to paste from clip board</string>
-    <string name="copy_qr_data_success">Copied QR url to clipboard</string>
+    <string name="paste_from_clipboard">Paste from Clipboard</string>
+    <string name="copy_qr_data_success">Copied QR url to Clipboard</string>
 </resources>
