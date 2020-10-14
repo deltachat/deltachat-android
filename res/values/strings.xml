@@ -383,7 +383,6 @@
 
     <string name="default_value">Default (%1$s)</string>
     <string name="default_value_as_above">Default (same as above)</string>
-    <string name="default_value_automatic">Automatic</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
