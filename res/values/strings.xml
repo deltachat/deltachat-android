@@ -248,6 +248,7 @@
     <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
+    <string name="ask_delete_value">Delete %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
@@ -376,6 +377,7 @@
     <string name="add_account">Add account</string>
     <string name="delete_account">Delete account</string>
     <string name="delete_account_ask">Are you sure you want to delete your account data?</string>
+    <string name="delete_account_explain_with_name">All account data of \"%s\" on this device will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="switching_account">Switching account…</string>
     <string name="try_connect_now">Try to connect now</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -684,8 +686,6 @@
     <string name="ask_delete_chat_desktop">Delete this chat?</string>
     <string name="ask_delete_named_chat_desktop">Are you sure you want to delete \"%1$s\"?</string>
     <string name="email_validation_failed_desktop">Email address required.</string>
-    <string name="delete_account_confirmation_header_desktop">Delete %s?</string>
-    <string name="delete_account_confirmation_desktop">All account data of \"%s\" on this device will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="account_info_hover_tooltip_desktop">E-Mail: %s\nSize: %s\nPath: %s</string>
     <string name="me_desktop">me</string>
     <string name="in_this_group_desktop">Group members</string>
