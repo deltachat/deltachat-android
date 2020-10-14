@@ -190,7 +190,6 @@
     <string name="device_talk_explain">Messages in this chat are generated locally by your Delta Chat app. Its makers use it to inform about app updates and problems during usage.</string>
     <string name="device_talk_welcome_message">Welcome to Delta Chat! – Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, Delta Chat is an email application with a modern chat interface. Email in a new dress if you will 👻\n\nUse Delta Chat with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install Delta Chat, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edit contact</string>
-    <string name="back_to_top">Back to Top</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Pin chat</string>
     <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
