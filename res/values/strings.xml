@@ -313,7 +313,7 @@
     <string name="messaging_disabled_not_in_group">You cannot write because you are not in this group. To join, ask another member.</string>
     <string name="messaging_disabled_device_chat">This chat contains locally generated messages. Therefore you cannot write any messages.</string>
     <string name="messaging_disabled_deaddrop">Click on a message to accept or deny the contact request</string>
-    <string name="can_not_display_unsuported_file_type">Cannot display this file type: %s</string>
+    <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
 
 
