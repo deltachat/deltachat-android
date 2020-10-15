@@ -333,7 +333,7 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Group name</string>
-    <string name="group_avatar">Group avatar</string>
+    <string name="group_avatar">Group image</string>
     <string name="remove_group_image">Remove group image</string>
     <string name="change_group_image">Change group image</string>
     <string name="group_create_button">Create group</string>
@@ -417,11 +417,11 @@
     <string name="pref_using_custom">Using custom: %s</string>
     <string name="pref_using_default">Using default: %s</string>
     <string name="pref_profile_info_headline">Your profile info</string>
-    <string name="pref_profile_photo">Profile picture</string>
+    <string name="pref_profile_photo">Profile image</string>
     <string name="pref_blocked_contacts">Blocked contacts</string>
-    <string name="pref_profile_photo_remove_ask">Remove profile photo?</string>
+    <string name="pref_profile_photo_remove_ask">Remove profile image?</string>
     <string name="pref_password_and_account_settings">Password and account</string>
-    <string name="pref_who_can_see_profile_explain">Your profile picture and name will be shown alongside your messages when communicating with other users. Already sent information can not be deleted or removed.</string>
+    <string name="pref_who_can_see_profile_explain">Your profile image and name will be shown alongside your messages when communicating with other users. Already sent information can not be deleted or removed.</string>
     <string name="pref_your_name">Your name</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signature text</string>
@@ -628,7 +628,7 @@
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
     <string name="qraccount_ask_create_and_login">Create new e-mail address on \"%1$s\" and log in there?</string>
     <string name="qraccount_ask_create_and_login_another">Create new e-mail address on \"%1$s\" and log in there?\n\nYour existing account will not be deleted. Use the \"Switch account\" item to switch between your accounts.</string>
-    <string name="qraccount_success_enter_name">Login successful—your email address is %1$s\n\nIf you like, you can now enter a name and an avatar image that will be displayed to people you write to.</string>
+    <string name="qraccount_success_enter_name">Login successful—your email address is %1$s\n\nIf you like, you can now enter a name and an profile image that will be displayed to people you write to.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new account.</string>
     <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new account. You can scan the QR code when setting up a new Delta Chat installation.</string>
     <string name="contact_verified">%1$s verified.</string>
