@@ -524,6 +524,5 @@
     <string name="menu.view.developer.open.current.log.file">Obre el fitxer de registre actual</string>
     <string name="user_location_permission_explanation">Delta Chat necessita permís per accedir a la ubicació per poder-la mostrar i compartir.</string>
 
-
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
     </resources>

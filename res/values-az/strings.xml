@@ -202,8 +202,6 @@
     <string name="ask_start_chat_with">%1$s ilə çat? </string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s qrupdan silmək? </string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontaktlar</string>
     <string name="contacts_enter_name_or_email">Ad ya e-poçt daxil et</string>
@@ -245,7 +243,6 @@
     <string name="chat_no_contact_requests">Əlaqə sorğuları yoxdur. \n\nƏgər klassik e-poçtların burada əlaqə istəkləri kimi görünməsini istəyirsinizsə, tətbiq parametrlərindəki müvafiq parametrləri dəyişə bilərsiniz.</string>
     <string name="retry_send">Mesaji yenidən göndərməyə cəht et</string>
     <string name="send_failed">Mesaj göndərilmədi</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Vaxt məhdudiyyəti ilə yerləşmə yerləri göstərin</string>
     <string name="show_location_traces">İzləri göstərmək</string>
@@ -550,7 +547,6 @@
     <string name="menu.view.developer.open.log.folder">Loq mələfini açın</string>
     <string name="menu.view.developer.open.current.log.file">Loq-faylı açın</string>
     <string name="user_location_permission_explanation">Delta Chat yerinizi göstərmək və bölüşmək üçün yer icazəsinə ehtiyac duyur.</string>
-
 
     <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
     </resources>

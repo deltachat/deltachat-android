@@ -190,8 +190,6 @@
     <string name="ask_start_chat_with">Ћаскати са %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Уклонити %1$s из групе?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
     <string name="contacts_empty_hint">Још нема контаката.</string>
@@ -357,7 +355,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Шифрована порука</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Добро дошли у Delta Chat.</string>
     <string name="global_menu_preferences_language_desktop">Језик</string>
     <string name="global_menu_file_desktop">Фајл</string>

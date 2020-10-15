@@ -10,11 +10,14 @@
     <string name="on">An</string>
     <string name="off">Aus</string>
     <string name="def">Standard</string>
+    <string name="default_value">Standard (%1$s)</string>
+    <string name="default_value_as_above">Standard (siehe oben)</string>
     <string name="custom">Benutzerdefiniert</string>
     <string name="none">Keine</string>
     <string name="automatic">Automatisch</string>
     <string name="strict">Strikt</string>
     <string name="open">Öffnen</string>
+    <string name="open_attachment">Anhang öffnen</string>
     <string name="join">Teilnehmen</string>
     <string name="rejoin">Öffnen</string>
     <string name="delete">Löschen</string>
@@ -42,6 +45,7 @@
     <string name="one_moment">Einen Moment …</string>
     <string name="done">Fertig</string>
     <string name="undo">Rückgängig</string>
+    <string name="offline">Offline</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Weiter</string>
     <string name="error">Fehler</string>
@@ -95,6 +99,8 @@
     <string name="self">Ich</string>
     <string name="draft">Entwurf</string>
     <string name="image">Bild</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Antwort</string>
     <string name="gif">Gif</string>
     <string name="images">Bilder</string>
     <string name="audio">Audio</string>
@@ -121,6 +127,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Weiß</string>
 
+    <string name="zoom">Zoom</string>
+    <string name="extra_small">Extraklein</string>
     <string name="small">Klein</string>
     <string name="normal">Normal</string>
     <string name="large">Groß</string>
@@ -149,12 +157,16 @@
     <string name="menu_add_attachment">Dateien anhängen</string>
     <string name="menu_leave_group">Gruppe verlassen</string>
     <string name="menu_delete_chat">Chat löschen</string>
+    <string name="ask_delete_named_chat">Sind Sie sicher, dass Sie \"%1$s\" löschen möchten?</string>
     <string name="menu_delete_messages">Nachrichten löschen</string>
     <string name="menu_delete_image">Bild löschen</string>
     <string name="menu_delete_locations">Alle Standorte löschen?</string>
     <string name="menu_delete_location">Diesen Standort löschen?</string>
     <string name="menu_message_details">Nachrichtendetails</string>
     <string name="menu_copy_to_clipboard">In Zwischenablage kopieren</string>
+    <string name="menu_copy_selection_to_clipboard">Auswahl kopieren</string>
+    <string name="menu_copy_link_to_clipboard">Verweis kopieren</string>
+    <string name="paste_from_clipboard">Von der Zwischenablage einfügen</string>
     <string name="menu_forward">Nachricht weiterleiten</string>
     <string name="menu_resend">Nachricht erneut versenden</string>
     <string name="menu_reply">Antworten</string>
@@ -209,6 +221,10 @@
     <string name="share_location_for_two_hours">für 2 Stunden</string>
     <string name="share_location_for_six_hours">für 6 Stunden</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Die folgende Datei an %s senden?</item>
+        <item quantity="other">Die folgenden %d Dateien an %s senden?</item>
+    </plurals>
     <string name="file_saved_to">Datei gespeichert unter \"%1$s\".</string>
 
     <string name="videochat">Videochat</string>
@@ -245,8 +261,10 @@
     <string name="ask_delete_contact">Kontakt %1$s dauerhaft löschen?\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
     <string name="cannot_delete_contacts_in_use">Kontakte mit laufenden Chats können nicht gelöscht werden.</string>
     <string name="ask_start_chat_with">Chat mit %1$s starten?</string>
+    <string name="ask_delete_value">%s löschen?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s aus der Gruppe löschen?</string>
+    <string name="open_url_confirmation">Diesen Verweis öffnen?</string>
 
 
     <!-- contact list -->
@@ -293,6 +311,13 @@
     <string name="chat_no_contact_requests">Keine Kontaktanfragen.\n\nWenn normale E-Mails hier erscheinen sollen, müssen Sie die entsprechende erweiterte Einstellung ändern.</string>
     <string name="retry_send">Nachricht erneut senden</string>
     <string name="send_failed">Nachricht senden fehlgeschlagen</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Sie können nicht schreiben, da Sie kein Mitglied dieser Gruppe sind. Bitten Sie ein anderes Mitglied, Sie hinzuzufügen.</string>
+    <string name="messaging_disabled_device_chat">Dieser Chat entält lokal generierte Nachrichten. Sie können hier keine Nachrichten schreiben.</string>
+    <string name="messaging_disabled_deaddrop">Klicken Sie auf eine Nachricht, um eine Kontaktanfrage zu akzeptieren oder abzulehnen.</string>
+    <string name="cannot_display_unsuported_file_type">Kann diesen Dateityp nicht anzeigen: %s</string>
+    <string name="attachment_failed_to_load">Kann Anhang nicht laden</string>
+
 
     <!-- map -->
     <string name="filter_map_on_time">Standorte im Zeitrahmen anzeigen</string>
@@ -309,6 +334,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Gruppenname</string>
     <string name="group_avatar">Gruppenbild</string>
+    <string name="remove_group_image">Gruppenbild löschen</string>
+    <string name="change_group_image">Gruppenbild ändern</string>
     <string name="group_create_button">Gruppe erstellen</string>
     <string name="group_please_enter_group_name">Bitte einen Gruppennamen eingeben.</string>
     <string name="group_add_members">Mitglied hinzufügen</string>
@@ -373,7 +400,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="add_account">E-Mail-Konto hinzufügen</string>
     <string name="delete_account">E-Mail-Konto löschen</string>
     <string name="delete_account_ask">Möchten Sie das E-Mail-Konto und alle Daten wirklich von diesem Gerät löschen?</string>
+    <string name="delete_account_explain_with_name">Alle Daten des E-Mail-Kontos \"%s\" werden von diesem Gerät gelöscht, dies schließt Ihre Ende-zu-Ende Autocrypt-Einstellungen, Kontakte, Chats, Nachrichten und Medien mit ein. Diese Aktion kann nicht rückgängig gemacht werden.</string>
     <string name="switching_account">E-Mail-Konto wechseln…</string>
+    <string name="try_connect_now">Versuche, zu verbinden</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Konfiguration fehlgeschlagen. Fehler: %1$s</string>
 
@@ -415,6 +444,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_notifications">Benachrichtigungen</string>
     <string name="pref_notifications_show">Anzeigen</string>
     <string name="pref_notifications_priority">Priorität</string>
+    <string name="pref_notifications_explain">System-Benachrichtigungen bei neuen Nachrichten aktivieren</string>
+    <string name="pref_show_notification_content">Textinhalt in Benachrichtigungen anzeigen</string>
+    <string name="pref_show_notification_content_explain">Absender und Textbeginn in Benachrichtigungen anzeigen</string>
     <string name="pref_led_color">LED-Farbe</string>
     <string name="pref_sound">Ton</string>
     <string name="pref_silent">Leise</string>
@@ -478,6 +510,24 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_background_custom_image">Benutzerdefiniertes Hintergrundbild</string>
     <string name="pref_background_custom_color">Benutzerdefinierte Farbe</string>
     <string name="export_aborted">Export abgebrochen.</string>
+    <string name="profile_image_select">Profilbild auswählen</string>
+    <string name="select_your_new_profile_image">Wählen Sie Ihr Profilbild aus</string>
+    <string name="profile_image_delete">Profilbild löschen</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Suchergebnisse</string>
+    <string name="emoji_not_found">Keine Emoji gefunden</string>
+    <string name="emoji_recent">Zuletzt verwendet</string>
+    <string name="emoji_people">Leute</string>
+    <string name="emoji_nature">Tiere und Natur</string>
+    <string name="emoji_foods">Essen und Trinken</string>
+    <string name="emoji_activity">Aktivitäten</string>
+    <string name="emoji_places">Reisen und Orte</string>
+    <string name="emoji_objects">Objekte</string>
+    <string name="emoji_symbols">Symbole</string>
+    <string name="emoji_flags">Flaggen</string>
+
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Alte Nachrichten löschen</string>
@@ -557,8 +607,10 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
 
     <!-- qr code stuff -->
     <string name="qr_code">QR-Code</string>
+    <string name="load_qr_code_as_image">QR-Code als Bild laden</string>
     <string name="qrscan_title">QR-Code scannen</string>
     <string name="qrscan_hint">Kamera über den QR-Code halten</string>
+    <string name="qrscan_failed">QR-Code kann nicht dekodiert werden.</string>
     <string name="qrscan_ask_join_group">Der Gruppe \"%1$s\" beitreten?</string>
     <string name="qrscan_fingerprint_mismatch">Der gescannte Fingerabdruck stimmt nicht mit dem zuletzt für %1$s gesehenen Fingerabdruck überein.</string>
     <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine E-Mail-Adresse.\n\nFür eine Out-of-Band-Verifizierung bitte zuerst eine verschlüsselte Verbindung zur EmpfängerIn herstellen.</string>
@@ -588,6 +640,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
     <string name="verified_group_explain">Verifizierte Gruppen (experimentell) bieten Schutz gegen aktive Angriffe mittels Zwei-Faktor-Authentifizierung aller Mitglieder und immer aktiver Ende-zu-Ende-Verschlüsselung.</string>
+    <string name="copy_qr_data_success">QR-Code auf die Zwischenablage kopiert</string>
 
 
     <!-- notifications  -->
@@ -618,6 +671,8 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="encrypted_message">Verschlüsselte Nachricht</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Dies ist die offizielle Delta Chat Desktop App.</string>
+    <string name="about_licensed_under_desktop">Dieses Programm ist lizenziert unter der GNU GPL version 3 und der Quellcode ist auf Github verfügbar.</string>
     <string name="welcome_desktop">Willkommen bei Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Bekannte E-Mail-Konten</string>
     <string name="global_menu_preferences_language_desktop">Sprache</string>
@@ -672,6 +727,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="ask_delete_chat_desktop">Chat wirklich löschen?</string>
     <string name="email_validation_failed_desktop">E-Mail-Adresse benötigt.</string>
     <string name="forget_login_confirmation_desktop">Dieses Login löschen? Alles wird gelöscht, einschließlich des Ende-zu-Ende-Setups, der Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
+    <string name="account_info_hover_tooltip_desktop">E-Mail: %s\nGröße: %s\nPfad: %s</string>
     <string name="me_desktop">ich</string>
     <string name="in_this_group_desktop">Gruppenmitglieder</string>
     <string name="not_in_this_group_desktop">Potenzielle Gruppenmitglieder (nicht in der Gruppe)</string>
@@ -683,7 +739,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
     <string name="user_location_permission_explanation">Delta Chat benötigt die Standortberechtigung, um Ihren Standort anzuzeigen und zu teilen.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Übertragungsstatus: Fehler</string>
     <string name="a11y_encryption_padlock">Verschlüsselungsschloss</string>
@@ -694,6 +749,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="a11y_delivery_status_invalid">Übertragungsstatus: Ungültig</string>
     <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
+    <string name="a11y_disappearing_messages_activated">Verschwindende Nachrichten aktiviert</string>
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
@@ -713,5 +769,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_already_done">Sie haben Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfen Sie bitte auch Ihre Systemeinstellungen.</string>
+	<string name="ConversationFragment_quoted_message_not_found">Originalnachricht nicht gefunden</string>
+	<string name="reply_privately">Privat antworten</string>
 
 </resources>

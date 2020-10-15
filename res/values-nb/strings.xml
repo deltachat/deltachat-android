@@ -247,8 +247,6 @@
     <string name="ask_start_chat_with">Begynn å sludre med %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Fjern %1$s fra gruppen?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Skriv navn eller e-postadresse</string>
@@ -441,7 +439,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Kryptert melding</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Velkommen til Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Språk</string>
     <string name="global_menu_edit_desktop">Rediger</string>

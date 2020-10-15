@@ -89,6 +89,8 @@
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">图像</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">回复</string>
     <string name="gif">Gif</string>
     <string name="images">图像</string>
     <string name="audio">音频</string>
@@ -239,8 +241,6 @@
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">联系人</string>
     <string name="contacts_enter_name_or_email">输入名称或电子邮件地址</string>
@@ -282,7 +282,6 @@
     <string name="chat_no_contact_requests">没有联系人请求。\n\n如果您希望传统的电子邮件作为联系人请求出现在这里，则可以更改本应用相关设置。</string>
     <string name="retry_send">重试发送消息</string>
     <string name="send_failed">无法发送消息</string>
-
     <!-- map -->
     <string name="filter_map_on_time">显示在时间范围内的位置</string>
     <string name="show_location_traces">显示轨迹</string>
@@ -465,7 +464,6 @@
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
     <string name="export_aborted">导出已中止。</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">删除旧消息</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -573,8 +571,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">更改了 %1$s 的加密设置。</string>
     <string name="verified_group_explain">已验证群组（实验性）可提供针对主动攻击的安全性。其中的成员被其他成员用第二个因素进行了验证，并且消息始终是端到端加密的。</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%2$d 个聊天中有 %1$d 条新消息</string>
     <string name="notify_mark_read">标记为已读</string>
@@ -602,7 +598,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密的消息</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">欢迎使用 Delta Chat</string>
     <string name="login_known_accounts_title_desktop">已知账户</string>
     <string name="global_menu_preferences_language_desktop">语言</string>
@@ -668,7 +663,6 @@
     <string name="menu.view.developer.open.current.log.file">打开当前日志文件</string>
     <string name="user_location_permission_explanation">Delta Chat 需要位置权限来显示和分享您的位置。</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">发送状态：错误</string>
     <string name="a11y_encryption_padlock">加密挂锁</string>
@@ -679,8 +673,6 @@
     <string name="a11y_delivery_status_invalid">无效的发送状态</string>
     <string name="a11y_message_context_menu_btn_label">消息操作</string>
     <string name="a11y_background_preview_label">背景预览</string>
-
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用您的相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
@@ -698,5 +690,7 @@
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
+	<string name="ConversationFragment_quoted_message_not_found">原消息未找到</string>
+	<string name="reply_privately">私下回复</string>
 
 </resources>
