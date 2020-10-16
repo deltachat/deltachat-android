@@ -14,12 +14,8 @@ import org.thoughtcrime.securesms.util.StorageUtil;
 
 public class DocumentSlide extends Slide {
 
-  public DocumentSlide(@NonNull Context context, @NonNull Attachment attachment) {
-    super(context, attachment);
-  }
-
   public DocumentSlide(Context context, DcMsg dcMsg) {
-    this(context, new DcAttachment(dcMsg));
+    super(context, new DcAttachment(dcMsg));
     dcMsgId = dcMsg.getId();
   }
 
