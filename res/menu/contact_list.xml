@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/menu_delete_chat"
+    <item android:title="@string/delete_contact"
           android:id="@+id/menu_delete_selected"
           android:icon="?menu_trash_icon"
           app:showAsAction="always" />

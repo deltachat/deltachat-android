@@ -160,6 +160,7 @@
     <string name="ask_delete_named_chat">Are you sure you want to delete \"%1$s\"?</string>
     <string name="menu_delete_messages">Delete messages</string>
     <string name="menu_delete_image">Delete image</string>
+    <string name="delete_contact">Delete contact</string>
     <string name="menu_delete_locations">Delete all locations?</string>
     <string name="menu_delete_location">Delete this location?</string>
     <string name="menu_message_details">Message details</string>
